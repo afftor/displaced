@@ -1,0 +1,252 @@
+extends Object
+
+var name = ""
+var id = 0
+var itembase
+var code
+var icon
+var descirption
+var stackable = false
+var inventory
+
+#Useable data
+var amount setget amount_set
+var useeffects
+var useskill
+var foodvalue
+
+#Gear Data
+var itemtype
+var geartype
+var subtype
+var durability
+var maxdurability
+var price
+var bonusstats = {} #bonus stats apply to chars
+var parts = {}
+var effects = []
+var task
+var owner
+var partcolororder
+var broken = false
+var tags = []
+var materials = []
+var weaponrange
+var multislots = []
+var availslots = []
+
+func CreateUsable(ItemName = '', number = 1):
+	itembase = ItemName
+	code = ItemName
+	stackable = true
+	amount = number
+	var itemtemplate = globals.items.Items[ItemName]
+	if itemtemplate.icon != null:
+		icon = itemtemplate.icon.get_path()
+	name = itemtemplate.name
+	foodvalue = itemtemplate.foodvalue
+	itemtype = itemtemplate.itemtype
+	useeffects = itemtemplate.useeffects
+	useskill = itemtemplate.useskill
+	descirption = itemtemplate.description
+
+func amount_set(value):
+	amount = value
+	if amount <= 0:
+		inventory.erase(id)
+
+func UseItem(user = null, target = null):
+	var finaltarget
+	for i in effects:
+		var effect = globals.effects[i]
+		if i.taker == 'caster':
+			if user == null:
+				return
+			finaltarget = user
+		elif i.taker == 'target':
+			if target == null:
+				return
+			finaltarget = target
+		globals.effectdata.call(effect.effect, finaltarget, effect.value)
+
+
+func CreateGear(ItemName = '', dictparts = {}):
+	itembase = ItemName
+	bonusstats = {damage = 0, damagemod = 1, armor = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	stackable = false
+	var itemtemplate = globals.items.Items[ItemName]
+	if dictparts.size() == itemtemplate.parts.size():
+		name = globals.items.Materials[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + itemtemplate.name
+	else:
+		name = itemtemplate.name
+	
+	partcolororder = itemtemplate.partcolororder
+	geartype = itemtemplate.geartype
+	if itemtemplate.has('weaponrange'):
+		weaponrange = itemtemplate.weaponrange
+	itemtype = itemtemplate.itemtype
+	if itemtemplate.icon != null:
+		icon = itemtemplate.icon.get_path()
+	for i in itemtemplate.basestats:
+		if bonusstats.has(i):
+			bonusstats[i] += itemtemplate.basestats[i]
+	
+	
+	
+	parts = dictparts.duplicate()
+	durability = itemtemplate.basedurability
+	tags = itemtemplate.tags
+	if itemtemplate.has('multislots'):
+		multislots = itemtemplate.multislots
+	availslots = itemtemplate.availslots
+	var parteffectdict = {}
+	for i in parts:
+		var material = globals.items.Materials[parts[i]]
+		var materialeffects = material['parts'][i]
+		materials.append(material.code)
+		globals.AddOrIncrementDict(parteffectdict, materialeffects)
+	if parteffectdict.has('durabilitymod'):
+		durability *= parteffectdict.durabilitymod
+	for i in parteffectdict:
+		if self.get(i) != null && i != 'effects':
+			self[i] += parteffectdict[i]
+		elif bonusstats.has(i):
+			bonusstats[i] += parteffectdict[i]
+		elif i == 'effects':
+			for k in parteffectdict[i]:
+				effects.append(k)
+	for i in itemtemplate.basemods:
+		if bonusstats.has(i):
+			bonusstats[i] *= itemtemplate.basemods[i]
+	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
+	bonusstats.erase('damagemod')
+	
+	durability = round(durability)
+	maxdurability = round(durability)
+
+func substractitemcost():
+	var itemtemplate = globals.items.Items[itembase]
+	for i in parts:
+		globals.state.materials[parts[i]] -= itemtemplate.parts[i]
+
+func itemshadeimage(node):
+	var shader = load("res://files/ItemShader.tres").duplicate()
+	if node.get_class() == "TextureButton":
+		node.texture_normal = load(icon)
+	else:
+		node.texture = load(icon)
+	if node.material != shader:
+		node.material = shader
+	else:
+		shader = node.material
+	for i in parts:
+		var part = 'part' +  str(partcolororder[i]) + 'color'
+		var color = globals.items.Materials[parts[i]].color
+		node.material.set_shader_param(part, color)
+
+func tooltiptext():
+	var text = ''
+	text += '[center]' + name + '[/center]\n' 
+	if itemtype in ['armor','weapon']:
+		text += 'Durability: ' + str(durability) + '/' + str(maxdurability)
+		text += "\n\n"
+		for i in bonusstats:
+			if bonusstats[i] != 0:
+				var value = bonusstats[i]
+				var change = ''
+				if i in ['hpmod', 'manamod']:
+					value = value*100
+				text += globals.items.stats[i] + ': {color='
+				if value > 0:
+					change = '+'
+					text += 'green|'
+				else:
+					text += 'red|'
+				value = str(value)
+				if i in ['hpmod', 'manamod']:
+					value = change + value + '%'
+				text += value + '}\n'
+	elif itemtype == 'usable':
+		text += descirption + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
+	
+	return text
+
+func tooltipeffects(mode):
+	var text = ''
+	for i in effects:
+		text += "{color=" + globals.effects[i].textcolor + '|' + globals.effects[i].descript
+		text += '}\n'
+	return text
+
+func tooltip():
+	var text = tooltiptext()
+	if itemtype in ['armor','weapon']:
+		text += tooltipeffects('short')
+	return globals.TextEncoder(text)
+
+func tooltipfull():
+	var text = tooltiptext() + '\n'
+	if itemtype in ['armor','weapon']:
+		text += tooltipeffects('full')
+	return globals.TextEncoder(text)
+
+
+
+func repairwithmaterials():
+	var materialsdict = counterepairmaterials()
+	
+	durability = maxdurability
+	
+	for i in materialsdict:
+		globals.state.materials[i] -= materialsdict[i]
+
+func canrepairwithmaterials(): #checks if item can be repaired at present state and returns the problem
+	var canrepair = true
+	var text = ''
+	var materialsdict = counterepairmaterials()
+	
+	for i in materialsdict:
+		if globals.state.materials[i] < materialsdict[i]:
+			canrepair = false
+			text += tr("NOTENOUGH") + ' [color=yellow]' + globals.items.Materials[i].name + '[/color]'
+	
+	if effects.has('brittle'):
+		canrepair = false
+		text = tr("CANTREPAIREFFECT")
+	
+	var returndict = {canrepair = canrepair, text = text}
+	
+	return returndict
+
+
+func counterepairmaterials():
+	var itemtemplate = globals.items.Items[itembase] #item base for item parts cost
+	var requiredmaterialsdict = {} #total materials used in creation
+	
+	#collecting parts info
+	for i in parts:
+		if requiredmaterialsdict.has(parts[i]):
+			requiredmaterialsdict[parts[i]] += itemtemplate.parts[i]
+		else:
+			requiredmaterialsdict[parts[i]] = itemtemplate.parts[i]
+	
+	#calculating total resource needs
+	var multiplier = 0
+	match itemtemplate.repairdifficulty: #0.5, 0.65, 0.8
+		'easy':
+			multiplier = variables.RepairCostMultiplierEasy
+		'medium':
+			multiplier = variables.RepairCostMultiplierMedium
+		'hard':
+			multiplier = variables.RepairCostMultiplierHard
+	if effects.has('natural'): #0.15
+		multiplier -= variables.ItemEffectNaturalMultiplier
+	
+	var durabilitymultiplier = 1 - durability/maxdurability
+	
+	for i in requiredmaterialsdict:
+		requiredmaterialsdict[i] *= multiplier * durabilitymultiplier
+		requiredmaterialsdict[i] = ceil(requiredmaterialsdict[i])
+	
+	
+	return requiredmaterialsdict
