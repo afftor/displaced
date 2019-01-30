@@ -18,7 +18,7 @@ var Delay = 0
 var ReceiveInput = false
 
 
-var SceneData = load("res://files/DialoguesData.gd").new()
+# var SceneData = load("res://files/DialoguesData.gd").new()
 
 
 var choicedict = {
@@ -75,16 +75,6 @@ func _ready():
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
 	#CurrentScene = SceneData.introdesert
 	
-	
-	$Background.texture = null
-	$CharImage.texture = null
-	$Panel/CharPortrait.texture = null
-	$Panel/DisplayText.bbcode_text = ''
-	$Panel/DisplayName/Label.text = ''
-	$Panel/DisplayName.visible = false
-	$Panel/CharPortrait.visible = false
-	$Panel.visible = false
-	
 
 
 func OpenLog():
@@ -99,6 +89,14 @@ func OpenOptions():
 func Start(dict):
 	CurrentScene = dict
 	CurrentLine = 0
+	$Background.texture = null
+	$CharImage.texture = null
+	$Panel/CharPortrait.texture = null
+	$Panel/DisplayText.bbcode_text = ''
+	$Panel/DisplayName/Label.text = ''
+	$Panel/DisplayName.visible = false
+	$Panel/CharPortrait.visible = false
+	$Panel.visible = false
 	AdvanceScene()
 
 func AdvanceScene():
