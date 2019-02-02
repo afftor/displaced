@@ -17,10 +17,15 @@ config/icon="res://icon.png"
 
 [autoload]
 
+images="*res://files/scripts/ResourceImages.gd"
+audio="*res://files/scripts/ResourceAudio.gd"
 variables="*res://files/variables.gd"
+TownData="*res://files/TownData.gd"
+combatantdata="*res://files/CombatantClass.gd"
+state="*res://files/scripts/gamestate.gd"
+Items="*res://files/Items.gd"
 globals="*res://files/scripts/globals.gd"
 input_handler="*res://files/input_handler.gd"
-state="*res://files/scripts/gamestate.gd"
 
 [debug]
 

@@ -3,7 +3,7 @@ extends Node
 var backgrounds = {
 	castle = load("res://assets/images/backgrounds/castle.png"),
 	castleroom = load('res://assets/images/backgrounds/castleroom.png'),
-	desert = load("res://assets/images/backgrounds/desert.jpg"),
+	desert = load("res://assets/images/backgrounds/desert.png"),
 	villageday = load("res://assets/images/backgrounds/villageday.png"),
 	villagnight = load("res://assets/images/backgrounds/villagenight.png"),
 	}

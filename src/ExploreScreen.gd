@@ -26,9 +26,9 @@ func show():
 	.show()
 	input_handler.CurrentScreen = 'Explore'
 	$HeroList.open()
-	globals.state.combatparty[1] = globals.state.heroes[0].id
-	globals.state.combatparty[2] = globals.state.heroes[1].id
-	globals.state.heroes[1].mana = 10
+	state.combatparty[1] = state.heroes[0].id
+	state.combatparty[2] = state.heroes[1].id
+	state.heroes[1].mana = 10
 	UpdatePositions()
 
 var SelectingPosition
@@ -39,25 +39,25 @@ func selectfighter(pos):
 
 func HeroSelected(hero):
 	if hero == null:
-		globals.state.combatparty[SelectingPosition] = null
+		state.combatparty[SelectingPosition] = null
 		UpdatePositions() 
 		return
 	
 	var positiontaken = false
 	var oldheroposition = null
 	
-	if globals.state.combatparty[SelectingPosition] != null:
+	if state.combatparty[SelectingPosition] != null:
 		positiontaken = true
 	
-	for i in globals.state.combatparty:
-		if globals.state.combatparty[i] == hero.id:
+	for i in state.combatparty:
+		if state.combatparty[i] == hero.id:
 			oldheroposition = i
-			globals.state.combatparty[i] = null
+			state.combatparty[i] = null
 	
 	if oldheroposition != null && positiontaken == true:
-		globals.state.combatparty[oldheroposition] = globals.state.combatparty[SelectingPosition]
+		state.combatparty[oldheroposition] = state.combatparty[SelectingPosition]
 	
-	globals.state.combatparty[SelectingPosition] = hero.id
+	state.combatparty[SelectingPosition] = hero.id
 	UpdatePositions()
 
 
@@ -131,11 +131,11 @@ func UpdatePositions():
 	for i in positiondict.values():
 		get_node(i).texture_normal = load("res://icon.png")
 	
-	for i in globals.state.combatparty:
-		if globals.state.combatparty[i] == null:
+	for i in state.combatparty:
+		if state.combatparty[i] == null:
 			get_node(positiondict[i]).texture_normal = load("res://icon.png")
 		else:
-			get_node(positiondict[i]).texture_normal = globals.state.heroes[globals.state.combatparty[i]].portrait()
+			get_node(positiondict[i]).texture_normal = state.heroes[state.combatparty[i]].portrait()
 
 func openinventory(hero):
 	$Inventory.open(hero)

@@ -21,7 +21,7 @@ func open(hero):
 			globals.connecttooltip(node, gear.tooltip())
 		else:
 			node.texture_normal = null
-	$Main/Panel/charandgear/image.texture = globals.images.sprites[character.image]
+	$Main/Panel/charandgear/image.texture = images.sprites[character.image]
 	$Main/Panel/charandgear/hp.value = globals.calculatepercent(character.hp, character.hpmax())
 	$Main/Panel/charandgear/hp/Label.text = str(character.hp) + '/' + str(character.hpmax())
 	$Main/Panel/charandgear/mp.value = globals.calculatepercent(character.mana, character.manamax())
@@ -31,7 +31,7 @@ func open(hero):
 	
 	for i in ['damage','armorpenetration','hitrate','speed','armor','evasion', 'resistfire','resistearth','resistwater','resistair']:
 		var node = get_node("Main/stats&skills/" + i)
-		var text = globals.items.stats[i] + ": " + str(character[i])
+		var text = Items.stats[i] + ": " + str(character[i])
 		node.text = text
 	
 	globals.ClearContainer($"Main/stats&skills/VBoxContainer")

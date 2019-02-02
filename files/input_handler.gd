@@ -143,14 +143,14 @@ func StopTweenRepeat(node):
 
 func SetMusic(name):
 	var musicnode = GetMusicNode()
-	musicnode.stream = globals.audio.music[name]
+	musicnode.stream = audio.music[name]
 	musicnode.play(0)
 	AudioServer.set_bus_volume_db(1, -60)
 	musicraising = true
 
 func PlaySound(name):
 	var soundnode = GetSoundNode()
-	soundnode.stream = globals.audio.sounds[name]
+	soundnode.stream = audio.sounds[name]
 	soundnode.seek(0)
 	soundnode.play(0)
 
@@ -215,7 +215,7 @@ func itemshadeimage(node, item):
 		shader = node.material
 	for i in item.parts:
 		var part = 'part' +  str(item.partcolororder[i]) + 'color'
-		var color = globals.items.Materials[item.parts[i]].color
+		var color = Items.Materials[item.parts[i]].color
 		node.material.set_shader_param(part, color)
 
 
@@ -235,6 +235,7 @@ func CloseAnimation(node):
 	node.visible = false
 	BeingAnimated.erase(node)
 	globals.hidetooltip()
+	globals.call_deferred('EventCheck');
 
 func OpenAnimation(node):
 	if BeingAnimated.has(node) == true:
@@ -268,10 +269,10 @@ func ShakeAnimation(node, time = 0.5, magnitude = 5):
 
 func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false):
 	var x = TextureRect.new()
-	x.texture = globals.images.GFX[effect]
+	x.texture = images.GFX[effect]
 	x.stretch_mode = 6
 	if rotate == true:
-		x.rect_pivot_offset = globals.images.GFX[effect].get_size()/2
+		x.rect_pivot_offset = images.GFX[effect].get_size()/2
 		x.rect_rotation = rand_range(0,360)
 	
 	node.add_child(x)
@@ -309,7 +310,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 					var tempresult = false
 					for i in combatant.gear.values():
 						if i != null:
-							tempresult = input_handler.operate(req.operant, globals.state.items[i][req.name], globals.state.items[i][req.value])
+							tempresult = input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value])
 							if tempresult == true:
 								result = true
 								break
@@ -317,7 +318,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 					result = true
 					for i in combatant.gear.values():
 						if i != null:
-							if input_handler.operate(req.operant, globals.state.items[i][req.name], globals.state.items[i][req.value]) == false:
+							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
 								result = false
 								break
 	

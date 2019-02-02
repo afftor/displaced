@@ -33,12 +33,12 @@ func _process(delta):
 			restoreoldspeed(previouspeed)
 			gamepaused = false
 	
-	$ControlPanel/Gold.text = 'Gold ' + str(globals.state.money)
-	$ControlPanel/Food.text = "Food " + str(globals.state.food)
+	$ControlPanel/Gold.text = 'Gold ' + str(state.money)
+	$ControlPanel/Food.text = "Food " + str(state.food)
 	
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
-		globals.state.daytime += delta * gamespeed
+		state.daytime += delta * gamespeed
 		
 		movesky()
 		for i in tasks:
@@ -51,13 +51,13 @@ func _process(delta):
 		
 		if daycolorchange == false:
 			
-			if floor(globals.state.daytime) == 0.0:
+			if floor(state.daytime) == 0.0:
 				EnvironmentColor('morning')
-			elif floor(globals.state.daytime) == floor(variables.TimePerDay/4):
+			elif floor(state.daytime) == floor(variables.TimePerDay/4):
 				EnvironmentColor('day')
-			elif floor(globals.state.daytime) == floor(variables.TimePerDay/4*2):
+			elif floor(state.daytime) == floor(variables.TimePerDay/4*2):
 				EnvironmentColor('evening')
-			elif floor(globals.state.daytime) == floor(variables.TimePerDay/4*3):
+			elif floor(state.daytime) == floor(variables.TimePerDay/4*3):
 				EnvironmentColor('night')
 
 func movesky():
@@ -129,21 +129,21 @@ func _ready():
 	#$BlackScreen.visible = true
 	#$BlackScreen.modulate.a = 1
 	globals.CurrentScene = self
-	tasks = globals.state.tasks
+	tasks = state.tasks
 #	var x = 3
 #	while x > 1:
-#		var y = globals.combatantdata.combatant.new()
+#		var y = combatantdata.combatant.new()
 #		y.createfromclass('warrior')
 #		x -= 1
-#		globals.state.heroes[y.id] = y
+#		state.heroes[y.id] = y
 	
-	var character = globals.combatantdata.combatant.new()
+	var character = combatantdata.combatant.new()
 	character.createfromname('Arron')
-	globals.state.heroes[character.id] = character
+	state.heroes[character.id] = character
 	
-	character = globals.combatantdata.combatant.new()
+	character = combatantdata.combatant.new()
 	character.createfromname('Rose')
-	globals.state.heroes[character.id] = character
+	state.heroes[character.id] = character
 	
 	
 	var speedvalues = [0,1,10]
@@ -171,12 +171,12 @@ func _ready():
 		worker.create(globals.workersdict.goblin)
 		#globals.AddItemToInventory(globals.crea
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
-		#globals.state.items[0].durability = floor(rand_range(1,5))
+		#state.items[0].durability = floor(rand_range(1,5))
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'elvenmetal', ArmorTrim = 'elvenwood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
 		globals.AddItemToInventory(globals.CreateUsableItem('meatsteak', 2))
-		#globals.state.items[1].durability = floor(rand_range(1,5))
+		#state.items[1].durability = floor(rand_range(1,5))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
@@ -216,11 +216,11 @@ func restoreoldspeed(value):
 			changespeed(i, false)
 
 func settime():
-	if globals.state.daytime > variables.TimePerDay:
-		globals.state.date += 1
-		globals.state.daytime = 0
-	$TimeNode/Date.text = tr("DAY") + ": " + str(globals.state.date)
-	$TimeNode/TimeWheel.rect_rotation = (globals.state.daytime / variables.TimePerDay * 360) - 90
+	if state.daytime > variables.TimePerDay:
+		state.date += 1
+		state.daytime = 0
+	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
+	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
 
 func FadeToBlackAnimation(time = 1):
 	input_handler.UnfadeAnimation($BlackScreen, time)
@@ -281,10 +281,10 @@ func woodcuttingperiod(data):
 		#Check if need to access multiple subcategory  
 		if i.code.find('.') != -1:
 			var array = i.code.split('.')
-			globals.state[array[0]][array[1]] += taskresult
+			state[array[0]][array[1]] += taskresult
 			flyingitemicon(data.counter, array[1])
 		else:
-			globals.state[i] += taskresult
+			state[i] += taskresult
 		
 		#targetvalue 
 		data.worker.energy -= taskdata.energycost
@@ -318,7 +318,7 @@ func flyingitemicon(taskbar, item):
 
 func _on_Lumber_pressed():
 	$SelectWorker.show()
-	$SelectWorker.OpenSelectTab(globals.TownData.tasksdict.woodcutting)
+	$SelectWorker.OpenSelectTab(TownData.tasksdict.woodcutting)
 
 
 func SlavePanelShow():
@@ -327,7 +327,7 @@ func SlavePanelShow():
 
 func _on_Herolist_pressed():
 	globals.ClearContainer($HeroList/VBoxContainer)
-	for i in globals.state.heroes.values():
+	for i in state.heroes.values():
 		var newbutton = globals.DuplicateContainerTemplate($HeroList/VBoxContainer)
 		newbutton.text = i.name
 		newbutton.connect("pressed",self,'OpenHeroTab', [i])
@@ -340,3 +340,4 @@ func openheroguild():
 
 func explorescreen():
 	$ExploreScreen.show()
+	globals.call_deferred('EventCheck');

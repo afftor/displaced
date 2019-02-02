@@ -29,6 +29,9 @@ var CurrentLine
 
 var heroguild = []
 
+var OldEvents = [];
+var CurEvent; #event name
+
 func _init():
 	oldmaterials = materials.duplicate()
 
@@ -43,7 +46,7 @@ func materials_set(value):
 					text += 'Gained '
 				else:
 					text += "Lost "
-				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + globals.items.Materials[i].name + '}'
+				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + Items.Materials[i].name + '}'
 				logupdate(text)
 	materials = value
 	oldmaterials = materials.duplicate()
@@ -79,17 +82,43 @@ func gettaskfromworker(worker):
 			return i
 	return false
 
+func FinishEvent():
+	if CurEvent == "" or CurEvent == null:return;
+	OldEvents.push_back(CurEvent);
+	CurEvent = "";
+	pass
+
+
 func if_has_money(value):
 	return (money >= value);
 	pass
 
 func if_has_property(prop, value):
-	var tmp = _get(prop);
+	var tmp = get(prop);
 	if tmp == null: 
 		print ("ERROR: NO PROPERTY IN GAMESTATE %s\n", prop);
 		return false;
 	return (tmp >= value);
 	pass
+
+func if_has_hero(name):
+	for h in heroes.values():
+		if h.name == name: return true;
+		pass
+	return false;
+	pass
+
+func if_has_material(mat, val):
+	if !materials.has(mat): return false;
+	return materials[mat] >= val;
+	pass
+
+func if_has_item(name):
+	for i in items.values():
+		if i.name == name: return true;
+	return false;
+	pass
+
 
 func valuecheck(dict):
 	if !dict.has('type'): return true;
@@ -101,6 +130,17 @@ func valuecheck(dict):
 			return if_has_money(dict['value']);
 			pass
 		"has_property":
-			return if_has_property(dict['property'], dict['value']);
+			return if_has_property(dict['prop'], dict['value']);
 			pass
+		"has_hero":
+			return if_has_hero(dict['name']);
+		"event_finished":
+			return OldEvents.has(dict['name']);
+		"has_material":
+			return if_has_material(dict['material'], dict['value']);
+			pass
+		"date":
+			return date >= dict['date'];
+		"item":
+			return if_has_item(dict['name']);
 	pass

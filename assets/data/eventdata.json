@@ -4,6 +4,8 @@
 {"type":"has_property", "prop":"money", "value":100}
 ],
 "test_event_2":[
-{"type":"no_check"}
+{"type":"no_check"},
+{"type":"has_hero", "name":"alex"},
+{"type":"event_finished", "name":"test_event"}
 ]
 }

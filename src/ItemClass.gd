@@ -1,4 +1,4 @@
-extends Object
+extends Reference
 
 var name = ""
 var id = 0
@@ -40,7 +40,7 @@ func CreateUsable(ItemName = '', number = 1):
 	code = ItemName
 	stackable = true
 	amount = number
-	var itemtemplate = globals.items.Items[ItemName]
+	var itemtemplate = Items.Items[ItemName]
 	if itemtemplate.icon != null:
 		icon = itemtemplate.icon.get_path()
 	name = itemtemplate.name
@@ -74,9 +74,9 @@ func CreateGear(ItemName = '', dictparts = {}):
 	itembase = ItemName
 	bonusstats = {damage = 0, damagemod = 1, armor = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
-	var itemtemplate = globals.items.Items[ItemName]
+	var itemtemplate = Items.Items[ItemName]
 	if dictparts.size() == itemtemplate.parts.size():
-		name = globals.items.Materials[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + itemtemplate.name
+		name = Items.Materials[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + itemtemplate.name
 	else:
 		name = itemtemplate.name
 	
@@ -101,7 +101,7 @@ func CreateGear(ItemName = '', dictparts = {}):
 	availslots = itemtemplate.availslots
 	var parteffectdict = {}
 	for i in parts:
-		var material = globals.items.Materials[parts[i]]
+		var material = Items.Materials[parts[i]]
 		var materialeffects = material['parts'][i]
 		materials.append(material.code)
 		globals.AddOrIncrementDict(parteffectdict, materialeffects)
@@ -125,9 +125,9 @@ func CreateGear(ItemName = '', dictparts = {}):
 	maxdurability = round(durability)
 
 func substractitemcost():
-	var itemtemplate = globals.items.Items[itembase]
+	var itemtemplate = Items.Items[itembase]
 	for i in parts:
-		globals.state.materials[parts[i]] -= itemtemplate.parts[i]
+		state.materials[parts[i]] -= itemtemplate.parts[i]
 
 func itemshadeimage(node):
 	var shader = load("res://files/ItemShader.tres").duplicate()
@@ -141,7 +141,7 @@ func itemshadeimage(node):
 		shader = node.material
 	for i in parts:
 		var part = 'part' +  str(partcolororder[i]) + 'color'
-		var color = globals.items.Materials[parts[i]].color
+		var color = Items.Materials[parts[i]].color
 		node.material.set_shader_param(part, color)
 
 func tooltiptext():
@@ -156,7 +156,7 @@ func tooltiptext():
 				var change = ''
 				if i in ['hpmod', 'manamod']:
 					value = value*100
-				text += globals.items.stats[i] + ': {color='
+				text += Items.stats[i] + ': {color='
 				if value > 0:
 					change = '+'
 					text += 'green|'
@@ -198,7 +198,7 @@ func repairwithmaterials():
 	durability = maxdurability
 	
 	for i in materialsdict:
-		globals.state.materials[i] -= materialsdict[i]
+		state.materials[i] -= materialsdict[i]
 
 func canrepairwithmaterials(): #checks if item can be repaired at present state and returns the problem
 	var canrepair = true
@@ -206,9 +206,9 @@ func canrepairwithmaterials(): #checks if item can be repaired at present state 
 	var materialsdict = counterepairmaterials()
 	
 	for i in materialsdict:
-		if globals.state.materials[i] < materialsdict[i]:
+		if state.materials[i] < materialsdict[i]:
 			canrepair = false
-			text += tr("NOTENOUGH") + ' [color=yellow]' + globals.items.Materials[i].name + '[/color]'
+			text += tr("NOTENOUGH") + ' [color=yellow]' + Items.Materials[i].name + '[/color]'
 	
 	if effects.has('brittle'):
 		canrepair = false
@@ -220,7 +220,7 @@ func canrepairwithmaterials(): #checks if item can be repaired at present state 
 
 
 func counterepairmaterials():
-	var itemtemplate = globals.items.Items[itembase] #item base for item parts cost
+	var itemtemplate = Items.Items[itembase] #item base for item parts cost
 	var requiredmaterialsdict = {} #total materials used in creation
 	
 	#collecting parts info

@@ -9,7 +9,7 @@ func open():
 	show()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	
-	for i in globals.state.items.values():
+	for i in state.items.values():
 		if i.foodvalue != null && i.foodvalue > 0:
 			var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.get_node("Name").text = i.name
@@ -37,7 +37,7 @@ func Increase(item, node):
 	update()
 
 func update():
-	$CurFood.text = tr("CURRENTFOOD") + ": " + str(globals.state.food)
+	$CurFood.text = tr("CURRENTFOOD") + ": " + str(state.food)
 	var endfood = 0
 	for i in ItemsToConvert.values():
 		endfood += i.item.foodvalue*i.amount
@@ -47,7 +47,7 @@ func update():
 
 func exchange():
 	for i in ItemsToConvert.values():
-		globals.state.food += i.item.foodvalue*i.amount
+		state.food += i.item.foodvalue*i.amount
 		i.item.amount -= i.amount
 	ItemsToConvert.clear()
 	open()

@@ -14,8 +14,8 @@ var scenedict = {
 	
 }
 
-var items
-var TownData
+#var items
+#var TownData
 var workersdict
 var enemydata
 var randomgroups
@@ -23,7 +23,7 @@ var enemylist
 var skillsdata
 var effectdata
 
-var combatantdata = load("res://files/CombatantClass.gd").new()
+#var combatantdata = load("res://files/CombatantClass.gd").new()
 
 var classes = combatantdata.classlist
 var characters = combatantdata.charlist
@@ -42,6 +42,23 @@ var LocalizationFolder = "res://localization/"
 #var state
 
 var userfolder = 'user://'
+
+#var images = load("res://files/scripts/ResourceImages.gd").new()
+#var audio = load("res://files/scripts/ResourceAudio.gd").new()
+var scenes = {}
+
+var hexcolordict = {
+	red = '#ff0000',
+	yellow = "#ffff00",
+	brown = "#8B572A",
+	gray = "#4B4B4B",
+	green = '#00b700',
+}
+var textcodedict = {
+	color = {start = '[color=', end = '[/color]'},
+	url = {start = '[url=',end = '[/url]'}
+}
+
 
 var globalsettings = { 
 	ActiveLocalization = 'en',
@@ -80,12 +97,7 @@ func settings_save(value):
 	for i in globalsettings:
 		config.set_value('settings', i, globalsettings[i])
 	config.save(userfolder + "Settings.ini")
-	
-	
 
-var images = load("res://files/scripts/ResourceImages.gd").new()
-var audio = load("res://files/scripts/ResourceAudio.gd").new()
-var scenes = {}
 
 func _init():
 	if dir.dir_exists(userfolder + 'saves') == false:
@@ -118,8 +130,8 @@ func _ready():
 	settings_load()
 	LoadEventData();
 	
-	items = load("res://files/Items.gd").new()
-	TownData = load('res://files/TownData.gd').new()
+	#items = load("res://files/Items.gd").new()
+	#TownData = load('res://files/TownData.gd').new()
 	enemydata = load("res://assets/data/enemydata.gd").new()
 	randomgroups = enemydata.randomgroups
 	enemylist = enemydata.enemylist
@@ -132,7 +144,7 @@ func _ready():
 	workersdict = TownData.workersdict
 	
 #	state = gamestate.new()
-	for i in items.Materials:
+	for i in Items.Materials:
 		state.materials[i] = 0
 	state.materials.wood = 10
 	state.materials.elvenwood = 10
@@ -169,6 +181,7 @@ func LoadEventData():
 
 func EventCheck():
 	for event in EventList.keys():
+		if state.OldEvents.has(name): continue;
 		var res = true;
 		for check in EventList[event]:
 			if !state.valuecheck(check): 
@@ -177,6 +190,7 @@ func EventCheck():
 			pass
 		pass
 		if res:
+			state.CurEvent = name;
 			StartEventScene(event);
 			break;
 	pass
@@ -190,7 +204,6 @@ func LoadEvent(name):
 		file.close()
 	else:
 		print('Event not found: ' + name)
-	
 	return dict
 
 func StartEventScene(name):
@@ -213,7 +226,7 @@ func CreateUsableItem(item, amount = 1):
 	return newitem
 
 func AddItemToInventory(item):
-	item.inventory = globals.state.items
+	item.inventory = state.items
 	if item.stackable == false:
 		item.id = state.itemidcounter
 		state.items[item.id] = item
@@ -371,22 +384,11 @@ func AddPanelOpenCloseAnimation(node):
 	node._ready()
 
 func MaterialTooltip(value):
-	var text = '[center][color=yellow]' + globals.items.Materials[value].name + '[/color][/center]\n' + globals.items.Materials[value].description + '\n\n' + tr("INPOSESSION") + ': ' + str(globals.state.materials[value])
+	var text = '[center][color=yellow]' + Items.Materials[value].name + '[/color][/center]\n' + Items.Materials[value].description + '\n\n' + tr("INPOSESSION") + ': ' + str(state.materials[value])
 	return text
 
 
 
-var hexcolordict = {
-	red = '#ff0000',
-	yellow = "#ffff00",
-	brown = "#8B572A",
-	gray = "#4B4B4B",
-	green = '#00b700',
-}
-var textcodedict = {
-	color = {start = '[color=', end = '[/color]'},
-	url = {start = '[url=',end = '[/url]'}
-}
 
 func TextEncoder(text, node = null):
 	var tooltiparray = []
@@ -427,7 +429,7 @@ func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	showtooltip(text, node)
 
-func CharacterSelect(targetscript, type, function, requirements):
+func CharacterSstateelect(targetscript, type, function, requirements):
 	var node 
 	if get_tree().get_root().has_node("CharacterSelect"):
 		node = get_tree().get_root().get_node("CharacterSelect")
@@ -481,7 +483,7 @@ func HeroSelect(targetscript, type, function, requirements):
 	for i in array:
 		newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
-		newnode.get_node("Icon").texture = globals.images.portraits[i.icon]
+		newnode.get_node("Icon").texture = images.portraits[i.icon]
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 

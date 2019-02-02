@@ -22,7 +22,7 @@ func BuildSlaveList():
 
 func SlaveFeed(worker):
 	currentworker = worker
-	globals.ItemSelect(self, 'edible', 'SlaveFeedItem')
+	itemselect(self, 'edible', 'SlaveFeedItem')
 
 func SlaveFeedItem(item):
 	pass

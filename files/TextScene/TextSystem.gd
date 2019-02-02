@@ -86,9 +86,12 @@ func OpenLog():
 func OpenOptions():
 	$MenuPanel.show()
 
-func Start(dict):
+func Start(dict, line = 0):
+	if dict == null: 
+		call_deferred('StopEvent');
+		return;
 	CurrentScene = dict
-	CurrentLine = 0
+	CurrentLine = line;
 	$Background.texture = null
 	$CharImage.texture = null
 	$Panel/CharPortrait.texture = null
@@ -106,7 +109,7 @@ func AdvanceScene():
 			'gui':
 				$Panel.visible = !$Panel.visible
 			'background':
-				input_handler.SmoothTextureChange($Background, globals.images.backgrounds[NewEffect.value])
+				input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value])
 			'music':
 				input_handler.SetMusic(NewEffect.value)
 			'sfx':
@@ -123,10 +126,10 @@ func AdvanceScene():
 				$Panel/CharPortrait.visible = NewEffect.source != 'narrator'
 				$Panel/DisplayName/Label.text = tr(NewEffect.source)
 				if $Panel/CharPortrait.visible:
-					if NewEffect.portrait == null || globals.images.portraits.has(NewEffect.portrait) == false:
+					if NewEffect.portrait == null || images.portraits.has(NewEffect.portrait) == false:
 						$Panel/CharPortrait.texture = null
 					else:
-						$Panel/CharPortrait.texture = globals.images.portraits[NewEffect.portrait]
+						$Panel/CharPortrait.texture = images.portraits[NewEffect.portrait]
 				ReceiveInput = true
 			'sprite':
 				SpriteDo($CharImage, NewEffect.value, NewEffect.args)
@@ -142,7 +145,7 @@ func AdvanceScene():
 func SpriteDo(node, value, args):
 	match value:
 		'set':
-			node.texture = globals.images.sprites[args]
+			node.texture = images.sprites[args]
 		'unfade':
 			input_handler.UnfadeAnimation(node, args)
 		'fade':
@@ -169,8 +172,10 @@ func Choice(array):
 func StopEvent():
 	set_process(false)
 	set_process_input(false)
+	state.FinishEvent();
 	globals.CurrentScene.show()
 	hide()
+	globals.call_deferred('EventCheck');
 
 func blackscreentransition(duration = 0.5):
 	input_handler.UnfadeAnimation($BlackScreen, duration)
