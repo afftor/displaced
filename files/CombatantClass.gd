@@ -23,7 +23,7 @@ var classlist = {
 		basehp = 200,
 		basemana = 25,
 		speed = 50,
-		damage = 10,
+		damage = 15,
 		skills = ['attack','slash'],
 		learnableskills = [],
 		icon = null,
@@ -36,7 +36,7 @@ var classlist = {
 		basehp = 100,
 		basemana = 100,
 		speed = 30,
-		damage = 5,
+		damage = 15,
 		skills = ['attack', 'firebolt', 'concentrate'],
 		learnableskills = [],
 		icon = null,
@@ -48,14 +48,14 @@ var charlist = {
 	Arron = {
 		code = 'Arron',
 		name = 'Arron',
-		icon = 'ArronSmile',
+		icon = 'arron',
 		image = 'Arron',
 		subclass = 'warrior',
 	},
 	Rose = {
 		code = 'Rose',
 		name = 'Rose',
-		icon = 'RoseNormal',
+		icon = 'rose',
 		image = 'Rose',
 		subclass = 'mage',
 	},
@@ -95,13 +95,14 @@ class combatant:
 	var portrait
 	var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null, lhand = null, neck = null, ring1 = null, ring2 = null}
 	var skills = ['attack']
+	var traits = {}
+	var traitpoints = 0
 	var inactiveskills = []
 	var cooldowns = []
 	var buffs = {}
-	var passives = {skillhit = [], spellhit = [], endturn = []} # combat passives
+	var passives = {skillhit = [], spellhit = [], anyhit = [], endturn = []} # combat passives
 	var classpassives = {}
 	var position
-	var traits = []
 	var price = 0
 	var loottable
 	var selectedskill = 'attack'
@@ -252,7 +253,15 @@ class combatant:
 		
 		return check
 	
-#
+	func applytrait(traitcode):
+		var trait = globals.traits[traitcode]
+		for i in trait.effects():
+			if i.trigger == 'onactive':
+				pass
+			else:
+				addpassiveeffect(i.triggereffect)
+	
+	
 	func seteffect(passive):
 		var effect = globals.effects[passive.code]
 		var state = passive.enabled
@@ -282,13 +291,19 @@ class combatant:
 		for i in item.bonusstats:
 			self[i] += item.bonusstats[i]
 		for i in item.effects:
-			var effect = globals.effects[i]
-			if !passives.has(effect.trigger):
-				passives[effect.trigger] = []
-			passives[effect.trigger].append(i)
+			addpassiveeffect(i)
 		
 		
 		checkequipmenteffects()
+	
+	func addpassiveeffect(passive):
+		var effect = globals.effects[passive]
+		if !passives.has(effect.trigger):
+			passives[effect.trigger] = []
+		passives[effect.trigger].append(effect)
+	
+	func removepassiveeffect(passive):
+		passives[globals.effects[passive].trigger].erase(globals.effects[passive])
 	
 	func unequip(item):
 		
@@ -303,7 +318,7 @@ class combatant:
 			self[i] -= item.bonusstats[i]
 		
 		for i in item.effects:
-			passives[globals.effects[i]].erase(i)
+			removepassiveeffect(i)
 		
 		checkequipmenteffects()
 	
@@ -321,7 +336,11 @@ class combatant:
 	
 	func portrait():
 		if icon != null:
-			return globals.images.portraits[icon]
+			return globals.images.combatportraits[icon]
+	
+	func portrait_circle():
+		if icon != null:
+			return globals.images.circleportraits[icon]
 	
 	func createtrait(data, type = 'starter'):
 		var array = []

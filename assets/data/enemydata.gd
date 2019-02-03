@@ -41,7 +41,7 @@ var enemylist = {
 		resists = {},
 		xpreward = 10,
 		
-		icon = null,
+		icon = 'rat',
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
@@ -55,7 +55,7 @@ var enemylist = {
 		passives = [],
 		basehp = 120,
 		basemana = 0,
-		armor = 15,
+		armor = 25,
 		armorpenetration = 0,
 		mdef = 0,
 		evasion = 0,
@@ -65,7 +65,7 @@ var enemylist = {
 		resists = {},
 		xpreward = 10,
 		
-		icon = null,
+		icon = 'ent',
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'treantloot',

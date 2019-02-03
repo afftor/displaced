@@ -3,7 +3,7 @@ extends Node
 var backgrounds = {
 	castle = load("res://assets/images/backgrounds/castle.png"),
 	castleroom = load('res://assets/images/backgrounds/castleroom.png'),
-	desert = load("res://assets/images/backgrounds/desert.jpg"),
+	desert = load("res://assets/images/backgrounds/desert.png"),
 	villageday = load("res://assets/images/backgrounds/villageday.png"),
 	villagnight = load("res://assets/images/backgrounds/villagenight.png"),
 	}
@@ -30,6 +30,26 @@ var portraits = {
 	RoseNormal = load("res://assets/images/portraits/RoseNormal.png"),
 	RoseSad = load("res://assets/images/portraits/RoseSad.png"),
 	RoseSarcastic = load("res://assets/images/portraits/RoseSarcastic.png"),
+}
+
+var combatportraits = {
+	arron = load("res://assets/images/combatportraits/arronfull.png"),
+	rose = load("res://assets/images/combatportraits/rosefull.png"),
+	ember = load("res://assets/images/combatportraits/emberfull.png"),
+	erika = load("res://assets/images/combatportraits/erikafull.png"),
+	
+	##enemies
+	rat = load("res://assets/images/enemies/RatIcon2.png"),
+	ent = load("res://assets/images/enemies/EntIcon.png"),
+	}
+
+var circleportraits = {
+	arron = load("res://assets/images/combatportraits/arroncircle.png"),
+	rose = load("res://assets/images/combatportraits/rosecircle.png"),
+	ember = load("res://assets/images/combatportraits/embercircle.png"),
+	erika = load("res://assets/images/combatportraits/erikacircle.png"),
+	
+	
 }
 
 var GFX = {

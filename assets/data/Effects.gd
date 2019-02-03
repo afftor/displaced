@@ -16,6 +16,11 @@ var effects = {
 }
 
 var combateffects = {
+#traits
+beastdamage = {effect = 'skillmod', effectvalue = {type = "damagemod", value = ['0.2'], targetreq = {type = 'stats', name = 'race', operant = 'eq', value = 'animal'}}},
+
+
+#items
 gobmetalhandleeffect = {effect = 'skillmod', effectvalue = {type = 'damagemod', value = ['0.15']}, targetreq = {type = 'stats', name = 'hppercent', operant = 'lte', value = 25}},
 elfmetalhandleeffect = {effect = 'gainstat', receiver = 'caster', effectvalue = {type = 'mana', value = ['1']}},
 boneboweffect = {effect = 'gainstat', receiver = 'caster', effectvalue = {type = 'hp', value = ['1']}},
