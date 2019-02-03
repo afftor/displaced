@@ -153,7 +153,7 @@ func victory():
 		if i == null:
 			continue
 		rewardsdict.xp += i.xpreward
-		var loot = {materials = globals.enemydata.loottables[i.loottable].materials.duplicate()}
+		var loot = {materials = Enemydata.loottables[i.loottable].materials.duplicate()}
 		for j in loot.materials:
 			loot.materials[j] = round(rand_range(loot.materials[j][0], loot.materials[j][1]))
 		globals.AddOrIncrementDict(rewardsdict.materials, loot.materials)

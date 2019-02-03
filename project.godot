@@ -17,9 +17,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
+variables="*res://files/variables.gd"
 images="*res://files/scripts/ResourceImages.gd"
 audio="*res://files/scripts/ResourceAudio.gd"
-variables="*res://files/variables.gd"
+Enemydata="*res://assets/data/enemydata.gd"
+Skilldata="*res://assets/data/Skills.gd"
+Effectdata="*res://assets/data/Effects.gd"
 TownData="*res://files/TownData.gd"
 combatantdata="*res://files/CombatantClass.gd"
 state="*res://files/scripts/gamestate.gd"

@@ -62,7 +62,7 @@ func HeroSelected(hero):
 
 
 func StartCombat(area):
-	var enemies = globals.enemydata.locationgroups[area].duplicate()
+	var enemies = Enemydata.locationgroups[area].duplicate()
 	enemies = makerandomgroup(enemies)
 	$combat.start_combat(enemies)
 	$combat.show()

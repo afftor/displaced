@@ -67,7 +67,7 @@ func UseItem(user = null, target = null):
 			if target == null:
 				return
 			finaltarget = target
-		globals.effectdata.call(effect.effect, finaltarget, effect.value)
+		Effectdata.call(effect.effect, finaltarget, effect.value)
 
 
 func CreateGear(ItemName = '', dictparts = {}):

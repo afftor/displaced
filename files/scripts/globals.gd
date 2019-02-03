@@ -17,11 +17,11 @@ var scenedict = {
 #var items
 #var TownData
 var workersdict
-var enemydata
+#var enemydata
 var randomgroups
 var enemylist
-var skillsdata
-var effectdata
+#var skillsdata
+#var effectdata
 
 #var combatantdata = load("res://files/CombatantClass.gd").new()
 
@@ -132,14 +132,14 @@ func _ready():
 	
 	#items = load("res://files/Items.gd").new()
 	#TownData = load('res://files/TownData.gd').new()
-	enemydata = load("res://assets/data/enemydata.gd").new()
-	randomgroups = enemydata.randomgroups
-	enemylist = enemydata.enemylist
-	skillsdata = load("res://assets/data/Skills.gd").new()
-	effectdata = load("res://assets/data/Effects.gd").new()
+	#enemydata = load("res://assets/data/enemydata.gd").new()
+	randomgroups = Enemydata.randomgroups
+	enemylist = Enemydata.enemylist
+	#skillsdata = load("res://assets/data/Skills.gd").new()
+	#effectdata = load("res://assets/data/Effects.gd").new()
 	effects = effectdata.effects
 	combateffects = effectdata.combateffects
-	skills = skillsdata.skilllist
+	skills = Skillsdata.skilllist
 	
 	workersdict = TownData.workersdict
 	
