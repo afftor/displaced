@@ -219,6 +219,7 @@ func settime():
 	if state.daytime > variables.TimePerDay:
 		state.date += 1
 		state.daytime = 0
+		globals.EventCheck();
 	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
 	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
 

@@ -137,8 +137,8 @@ func _ready():
 	enemylist = Enemydata.enemylist
 	#skillsdata = load("res://assets/data/Skills.gd").new()
 	#effectdata = load("res://assets/data/Effects.gd").new()
-	effects = effectdata.effects
-	combateffects = effectdata.combateffects
+	effects = Effectdata.effects
+	combateffects = Effectdata.combateffects
 	skills = Skillsdata.skilllist
 	
 	workersdict = TownData.workersdict
@@ -181,7 +181,7 @@ func LoadEventData():
 
 func EventCheck():
 	for event in EventList.keys():
-		if state.OldEvents.has(name): continue;
+		if state.OldEvents.has(event): continue;
 		var res = true;
 		for check in EventList[event]:
 			if !state.valuecheck(check): 
@@ -190,7 +190,7 @@ func EventCheck():
 			pass
 		pass
 		if res:
-			state.CurEvent = name;
+			state.CurEvent = event;
 			StartEventScene(event);
 			break;
 	pass
