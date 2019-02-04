@@ -87,8 +87,6 @@ class combatant:
 	var armorpenetration = 0
 	var mdef = 0
 	var speed = 0
-	var critchance = 0.05
-	var critmod = 1.5
 	var resistfire = 0
 	var resistearth = 0
 	var resistwater = 0
@@ -102,7 +100,7 @@ class combatant:
 	var inactiveskills = []
 	var cooldowns = []
 	var buffs = {}
-	var passives = {skillhit = [], spellhit = [], anyhit = [], endturn = [], damagetaken = []} # combat passives
+	var passives = {skillhit = [], spellhit = [], anyhit = [], endturn = []} # combat passives
 	var classpassives = {}
 	var position
 	var price = 0
