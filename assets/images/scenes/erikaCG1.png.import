@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Leather.png-f0f5921d18f432237c618e4a53f24836.stex"
+path="res://.import/erikaCG1.png-c0df3d04ad4981668086d7300a869c77.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/Leather.png"
-dest_files=[ "res://.import/Leather.png-f0f5921d18f432237c618e4a53f24836.stex" ]
+source_file="res://assets/images/scenes/erikaCG1.png"
+dest_files=[ "res://.import/erikaCG1.png-c0df3d04ad4981668086d7300a869c77.stex" ]
 
 [params]
 
@@ -16,11 +16,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-
-flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
-
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

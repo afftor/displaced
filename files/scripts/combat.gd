@@ -696,6 +696,11 @@ func execute_skill(skill, caster, target):
 		damagetype = 'phys'
 	else:
 		damagetype = skill.damagetype
+	
+	#crit calculations
+	if randf() < caster.critchance:
+		endvalue *= caster.critmod
+	
 	var damage_dict = {value = endvalue, element = damagetype, type = skill.skilltype, tags = skill.tags}
 	deal_damage(damage_dict, caster, target)
 	for i in extradamage:
@@ -723,6 +728,38 @@ func deal_damage(damage_dict, caster, target):
 	
 	if damagetype in ['fire','water','air','earth']:
 		endvalue = endvalue * ((100 - target['resist' + damagetype])/100)
+	
+	for i in target.passives.damagetaken:
+		var passive = globals.combateffects[globals.effects[i].triggereffect]
+		if checkreqs(passive, caster, target) == false:
+			continue
+		
+		var neweffect = passive.effectvalue
+		var newvalue
+		if passive.effect != 'buff':
+			newvalue = calculate_number_from_string_array(neweffect.value, caster, target)
+		var subtarget
+		if passive.has('receiver'):
+			if passive.receiver == 'caster':
+				subtarget = caster
+			elif passive.receiver == 'target':
+				subtarget = target
+		match passive.effect:
+			'skillmod':
+				match neweffect.type:
+					'damagemod':
+						endvalue *= (1+newvalue)
+					'damage':
+						endvalue += newvalue
+				
+			'gainstat':
+				subtarget[neweffect.type] += newvalue
+			'buff':
+				var buff = makebuff(passive.effectvalue, caster, target)
+				subtarget.add_buff(buff)
+			'extradamage':
+				extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
+	
 	if damage_dict.tags.has('heal'):
 		target.hp += ceil(endvalue)
 	else:
