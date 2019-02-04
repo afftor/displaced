@@ -62,6 +62,7 @@ func _ready():
 	for i in range(1,13):
 		battlefield[i] = null
 	add_child(CombatAnimations)
+	$ItemPanel/debugvictory.connect("pressed",self, 'victory')
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
 
 
@@ -70,6 +71,10 @@ func _process(delta):
 
 
 func start_combat(newenemygroup):
+	enemygroup.clear()
+	playergroup.clear()
+	turnorder.clear()
+	
 	fightover = false
 	$Rewards.visible = false
 	allowaction = false
@@ -171,7 +176,7 @@ func victory():
 		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 			$Rewards/HBoxContainer/first.remove_child(newbutton)
 			$Rewards/HBoxContainer/second.add_child(newbutton)
-		newbutton.get_node('icon').texture = i.portrait()
+		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
 		i.baseexp += rewardsdict.xp
 		var subtween = input_handler.GetTweenNode(newbutton)
@@ -180,11 +185,17 @@ func victory():
 		subtween.start()
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
+	for i in battlefield:
+		if battlefield[i] != null:
+			battlefield[i] = null
 
 
 func defeat():
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'defeat')
+	for i in battlefield:
+		if battlefield[i] != null:
+			battlefield[i] = null
 
 func player_turn(pos):
 	var selected_character = playergroup[pos]
@@ -534,6 +545,7 @@ func use_skill(skill, caster, target):
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
+		SelectSkill('attack')
 	
 	if animationdict.predamage.size() > 0:
 		yield(CombatAnimations, 'alleffectsfinished')
@@ -593,11 +605,16 @@ func CalculateTargets(skill, caster, target):
 func hitchance(skill, caster, target):
 	var rval
 	
-	if caster.hitrate - target.evasion > rand_range(0,100):
+	if hitchancevalue(skill, caster, target) > rand_range(0,100):
 		rval = 'hit'
 	else:
 		rval = 'miss'
 	
+	return rval
+
+func hitchancevalue(skill, caster, target):
+	var rval = 0
+	rval = caster.hitrate - target.evasion
 	return rval
 
 func calculate_number_from_string_array(array, caster, target):
@@ -645,7 +662,7 @@ func execute_skill(skill, caster, target):
 	
 	#onhiteffects
 	if skill.skilltype in ['skill', 'spell']:
-		for i in caster.passives[skill.skilltype+'hit']:
+		for i in caster.passives[skill.skilltype+'hit'] + caster.passives['anyhit']:
 			var passive = globals.combateffects[globals.effects[i].triggereffect]
 			if checkreqs(passive, caster, target) == false:
 				continue
@@ -697,11 +714,11 @@ func deal_damage(damage_dict, caster, target):
 	var reduction = 0
 	
 	if type == 'skill':
-		reduction = min(0, target.armor - caster.armorpenetration)
+		reduction = max(0, target.armor - caster.armorpenetration)
 	elif type == 'spell':
-		reduction = min(0, target.mdef)
+		reduction = max(0, target.mdef)
 	if !damage_dict.tags.has('heal'):
-		endvalue = endvalue * ((100 - reduction)/100)
+		endvalue = endvalue * (float(100 - reduction)/100)
 	
 	
 	if damagetype in ['fire','water','air','earth']:

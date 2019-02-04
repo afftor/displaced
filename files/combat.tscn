@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://files/scripts/combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=2]
@@ -19,8 +19,9 @@
 [ext_resource path="res://assets/images/gui/Wood.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/combat/combatwincharacter.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=20]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=21]
+[ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=21]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=22]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -82,7 +83,7 @@ draw_center = true
 size = 55
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 21 )
+font_data = ExtResource( 22 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="combat" type="Control"]
@@ -214,7 +215,7 @@ anchor_bottom = 0.0
 margin_left = 5.0
 margin_top = 7.0
 margin_right = 242.0
-margin_bottom = 291.0
+margin_bottom = 244.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -958,6 +959,31 @@ expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Hint", "Mouse", "Rect", "Visibility" ]
 
+[node name="debugvictory" type="Button" parent="ItemPanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 18.0
+margin_top = 14.0
+margin_right = 392.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Victory"
+flat = false
+align = 1
+
 [node name="Rewards" type="TextureRect" parent="." index="6"]
 
 visible = false
@@ -965,10 +991,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 615.0
-margin_top = 77.0
-margin_right = 1274.0
-margin_bottom = 953.0
+margin_left = 535.0
+margin_top = 17.0
+margin_right = 1194.0
+margin_bottom = 893.0
+rect_scale = Vector2( 1.2, 1.2 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -977,6 +1004,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 13 )
 stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
 
 [node name="Control" type="Control" parent="Rewards" index="0"]
 
@@ -1150,6 +1178,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_right = 278.0
 margin_bottom = 587.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1234,19 +1263,19 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 24.0
-margin_top = 14.0
-margin_right = 99.0
-margin_bottom = 99.0
+margin_left = 10.0
+margin_right = 117.0
+margin_bottom = 117.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 12 )
+texture = ExtResource( 20 )
 expand = true
 stretch_mode = 5
+_sections_unfolded = [ "Visibility" ]
 
 [node name="second" type="VBoxContainer" parent="Rewards/HBoxContainer" index="1"]
 
@@ -1254,8 +1283,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 13.0
-margin_right = 13.0
+margin_left = 291.0
+margin_right = 291.0
 margin_bottom = 587.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1281,7 +1310,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 stretch_mode = 6
 _sections_unfolded = [ "Rect" ]
 

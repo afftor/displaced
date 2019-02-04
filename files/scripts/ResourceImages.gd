@@ -32,6 +32,26 @@ var portraits = {
 	RoseSarcastic = load("res://assets/images/portraits/RoseSarcastic.png"),
 }
 
+var combatportraits = {
+	arron = load("res://assets/images/combatportraits/arronfull.png"),
+	rose = load("res://assets/images/combatportraits/rosefull.png"),
+	ember = load("res://assets/images/combatportraits/emberfull.png"),
+	erika = load("res://assets/images/combatportraits/erikafull.png"),
+	
+	##enemies
+	rat = load("res://assets/images/enemies/RatIcon2.png"),
+	ent = load("res://assets/images/enemies/EntIcon.png"),
+	}
+
+var circleportraits = {
+	arron = load("res://assets/images/combatportraits/arroncircle.png"),
+	rose = load("res://assets/images/combatportraits/rosecircle.png"),
+	ember = load("res://assets/images/combatportraits/embercircle.png"),
+	erika = load("res://assets/images/combatportraits/erikacircle.png"),
+	
+	
+}
+
 var GFX = {
 	slash = load("res://assets/images/gfx/slash-effect.png"),
 	

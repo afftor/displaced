@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/ExploreScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=2]
-[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=3]
-[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=4]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/images/combatportraits/erikafull.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/combatportraits/emberfull.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/combatportraits/arronfull.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/combatportraits/rosefull.png" type="Texture" id=6]
+[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=7]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=8]
+[ext_resource path="res://files/combat.tscn" type="PackedScene" id=9]
 
 [node name="ExploreScreen" type="Control"]
 
@@ -126,7 +130,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 19
 alignment = 0
-_sections_unfolded = [ "custom_constants" ]
+_sections_unfolded = [ "Visibility", "custom_constants" ]
 
 [node name="frontrow" type="VBoxContainer" parent="Positions/HBoxContainer" index="0"]
 
@@ -166,9 +170,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
+texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 6
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="2" type="TextureButton" parent="Positions/HBoxContainer/frontrow" index="1"]
 
@@ -191,9 +196,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
+texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 6
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="3" type="TextureButton" parent="Positions/HBoxContainer/frontrow" index="2"]
 
@@ -259,9 +265,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
+texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 6
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="5" type="TextureButton" parent="Positions/HBoxContainer/backrow" index="1"]
 
@@ -284,9 +291,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
+texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 6
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="6" type="TextureButton" parent="Positions/HBoxContainer/backrow" index="2"]
 
@@ -487,11 +495,11 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="HeroList" parent="." index="5" instance=ExtResource( 3 )]
+[node name="HeroList" parent="." index="5" instance=ExtResource( 7 )]
 
 visible = false
 
-[node name="Inventory" parent="." index="6" instance=ExtResource( 4 )]
+[node name="Inventory" parent="." index="6" instance=ExtResource( 8 )]
 
 visible = false
 margin_left = 23.0
@@ -501,7 +509,7 @@ margin_bottom = 841.0
 
 [node name="combat" parent="." index="7" groups=[
 "pauseprocess",
-] instance=ExtResource( 5 )]
+] instance=ExtResource( 9 )]
 
 visible = false
 
