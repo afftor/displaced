@@ -5,7 +5,7 @@
 ],
 "test_event_2":[
 {"type":"no_check"},
-{"type":"has_hero", "name":"alex"},
+{"type":"date", "date":3},
 {"type":"event_finished", "name":"test_event"}
 ]
 }

@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( 626, 285 ), Vector2( 624, 166 ), Vector2( 621, 437 ) ]
 }
 
-[node name="LoadScreen" type="Node" index="0"]
+[node name="LoadScreen" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]

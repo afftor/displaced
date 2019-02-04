@@ -10,7 +10,7 @@ func open():
 	show()
 	globals.ClearContainer($Panel/ScrollContainer/VBoxContainer)
 	selectedhero = null
-	for i in globals.state.heroguild:
+	for i in state.heroguild:
 		var newhero = globals.DuplicateContainerTemplate($Panel/ScrollContainer/VBoxContainer)
 		newhero.get_node('Icon').texture = i.icon
 		newhero.get_node('Label').text = i.name
@@ -35,11 +35,11 @@ func selecthero(hero):
 		newlabel.text = trait.name
 		globals.connecttooltip(newlabel,trait.description)
 	
-	$HeroHire/Button.disabled = globals.state.money < hero.price
+	$HeroHire/Button.disabled = state.money < hero.price
 
 func hirehero():
-	globals.state.money -= selectedhero.price
-	globals.state.heroes[selectedhero.id] = selectedhero
-	globals.state.heroguild.erase(selectedhero)
+	state.money -= selectedhero.price
+	state.heroes[selectedhero.id] = selectedhero
+	state.heroguild.erase(selectedhero)
 	$HeroHire.hide()
 	open()

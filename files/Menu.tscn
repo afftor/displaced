@@ -7,7 +7,7 @@
 [ext_resource path="res://files/Options.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=6]
 
-[node name="Menu" type="Node"]
+[node name="Menu" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
