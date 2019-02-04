@@ -79,7 +79,7 @@ func start_combat(newenemygroup):
 	$Rewards.visible = false
 	allowaction = false
 	enemygroup = newenemygroup
-	playergroup = globals.state.combatparty
+	playergroup = state.combatparty
 	buildenemygroup(enemygroup)
 	buildplayergroup(playergroup)
 	#victory()
@@ -87,6 +87,7 @@ func start_combat(newenemygroup):
 
 func FinishCombat():
 	hide()
+	globals.call_deferred('EventCheck');
 
 
 func select_actor():
@@ -157,13 +158,13 @@ func victory():
 		if i == null:
 			continue
 		rewardsdict.xp += i.xpreward
-		var loot = {materials = globals.enemydata.loottables[i.loottable].materials.duplicate()}
+		var loot = {materials = Enemydata.loottables[i.loottable].materials.duplicate()}
 		for j in loot.materials:
 			loot.materials[j] = round(rand_range(loot.materials[j][0], loot.materials[j][1]))
 		globals.AddOrIncrementDict(rewardsdict.materials, loot.materials)
 	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in rewardsdict.materials:
-		var item = globals.items.Materials[i]
+		var item = Items.Materials[i]
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		newbutton.texture = item.icon
 		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
@@ -228,7 +229,7 @@ func UpdateSkillTargets():
 		if activecharacter.gear.rhand == null:
 			rangetype = 'melee'
 		else:
-			var weapon = globals.state.items[activecharacter.gear.rhand]
+			var weapon = state.items[activecharacter.gear.rhand]
 			rangetype = weapon.weaponrange
 	
 	
@@ -323,7 +324,7 @@ func enemy_turn(pos):
 		if fighter.gear.rhand == null:
 			skillrange = 'melee'
 		else:
-			var weapon = globals.state.items[fighter.gear.rhand]
+			var weapon = state.items[fighter.gear.rhand]
 			skillrange = weapon.weaponrange
 	
 	#Making possible targets array
@@ -444,7 +445,7 @@ func buildenemygroup(enemygroup):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		enemygroup[i] = globals.combatantdata.combatant.new()
+		enemygroup[i] = combatantdata.combatant.new()
 		enemygroup[i].createfromenemy(tempname)
 	
 	for i in enemygroup:
@@ -459,7 +460,7 @@ func buildplayergroup(group):
 	for i in group:
 		if group[i] == null:
 			continue
-		var fighter = globals.state.heroes[group[i]]
+		var fighter = state.heroes[group[i]]
 		battlefield[i] = fighter
 		make_fighter_panel(battlefield[i], i)
 		newgroup[i] = fighter
@@ -650,7 +651,7 @@ func execute_skill(skill, caster, target):
 		if caster.gear.rhand == null:
 			rangetype = 'melee'
 		else:
-			var weapon = globals.state.items[caster.gear.rhand]
+			var weapon = state.items[caster.gear.rhand]
 			rangetype = weapon.weaponrange
 	if rangetype == 'melee' && FindFighterRow(caster) == 'backrow' && !CheckMeleeRange(CheckParty(caster)):
 		endvalue /= 2
@@ -836,7 +837,7 @@ func RebuildItemPanel():
 	
 	ClearItemPanel()
 	
-	for i in globals.state.items.values():
+	for i in state.items.values():
 		if i.itemtype == 'usable':
 			array.append(i)
 	

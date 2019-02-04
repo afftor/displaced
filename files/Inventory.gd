@@ -21,7 +21,7 @@ func buildinventory():
 		if globals.state.materials[i] <= 0:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate(itemcontainer)
-		var material = globals.items.Materials[i]
+		var material = Items.Materials[i]
 		newbutton.get_node('Image').texture = material.icon
 		newbutton.get_node('Number').text = str(globals.state.materials[i])
 		newbutton.get_node('Number').show()

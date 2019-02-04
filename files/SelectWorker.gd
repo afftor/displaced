@@ -17,10 +17,10 @@ func OpenSelectTab(task):
 	globals.ClearContainer($HBoxContainer)
 	for i in task.product:
 		var newresource = globals.DuplicateContainerTemplate($HBoxContainer)
-		var material = globals.items.Materials[i]
+		var material = Items.Materials[i]
 		globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=yellow]' + str(task.product[i].chance) + '%[/color]')
 		
-		newresource.texture = globals.items.Materials[i].icon
+		newresource.texture = Items.Materials[i].icon
 	
 	$RichTextLabel.bbcode_text = task.description
 	$Time.text = str(task.basetimer)
@@ -31,7 +31,7 @@ func SelectWorker():
 	globals.CharacterSelect(self, 'workers', 'WorkerSelected', 'notask')
 
 func SelectTool():
-	globals.ItemSelect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
+	itemselect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
 
 func WorkerSelected(worker):
 	selectedworker = worker

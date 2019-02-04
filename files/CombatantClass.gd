@@ -186,8 +186,8 @@ class combatant:
 	
 	func createfromclass(classid):
 		var classtemplate = globals.classes[classid].duplicate()
-		id = globals.state.heroidcounter
-		globals.state.heroidcounter += 1
+		id = state.heroidcounter
+		state.heroidcounter += 1
 		base = classtemplate.code
 		hpmax = classtemplate.basehp
 		self.hp = hpmax
@@ -199,7 +199,7 @@ class combatant:
 		hitrate = 85
 		price = variables.BaseHeroPrice
 		
-		name = globals.combatantdata.namesarray[randi()%globals.combatantdata.namesarray.size()]
+		name = combatantdata.namesarray[randi()%combatantdata.namesarray.size()]
 		
 		var newtrait = createtrait(self, 'starter')
 		
@@ -210,8 +210,8 @@ class combatant:
 		var nametemplate = globals.characters[charname]
 		var classid = nametemplate.subclass
 		var classtemplate = globals.classes[classid].duplicate()
-		id = globals.state.heroidcounter
-		globals.state.heroidcounter += 1
+		id = state.heroidcounter
+		state.heroidcounter += 1
 		base = classtemplate.code
 		hpmax = classtemplate.basehp
 		speed = classtemplate.speed
@@ -279,12 +279,12 @@ class combatant:
 		
 		for i in item.multislots:
 			if gear[i] != null:
-				unequip(globals.state.items[gear[i]])
+				unequip(state.items[gear[i]])
 		
 		
 		for i in item.availslots:
 			if gear[i] != null:
-				unequip(globals.state.items[gear[i]])
+				unequip(state.items[gear[i]])
 			gear[i] = item.id
 		
 		
@@ -338,11 +338,11 @@ class combatant:
 	
 	func portrait():
 		if icon != null:
-			return globals.images.combatportraits[icon]
+			return images.combatportraits[icon]
 	
 	func portrait_circle():
 		if icon != null:
-			return globals.images.circleportraits[icon]
+			return images.circleportraits[icon]
 	
 	func createtrait(data, type = 'starter'):
 		var array = []
