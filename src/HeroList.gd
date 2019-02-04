@@ -19,7 +19,7 @@ func open():
 	$HeroPanel.hide()
 	show()
 	#popup()
-	for i in globals.state.heroes.values():
+	for i in state.heroes.values():
 		var newbutton = globals.DuplicateContainerTemplate($HBoxContainer)
 		newbutton.get_node("Label").text = i.name
 		newbutton.get_node("Icon").texture = i.portrait()

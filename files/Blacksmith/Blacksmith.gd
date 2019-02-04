@@ -31,7 +31,7 @@ func chooseitem():
 	$ItemSelection.show()
 	globals.ClearContainer($ItemSelection/ScrollContainer/GridContainer)
 	
-	for i in globals.items.Items.values():
+	for i in Items.Items.values():
 		if i.tags.has('recipe') && i.unlockreq == true:
 			var newbutton = globals.DuplicateContainerTemplate($ItemSelection/ScrollContainer/GridContainer)
 			newbutton.texture_normal = i.icon
@@ -73,11 +73,11 @@ func choosematerial(button):
 	var part = button.get_meta('part')
 	var cost = button.get_meta('cost')
 	
-	var text = globals.items.Parts[part].name + ' - ' + tr('REQUIREDMATERIAL') + ': ' + str(cost)
+	var text = Items.Parts[part].name + ' - ' + tr('REQUIREDMATERIAL') + ': ' + str(cost)
 	$ItemCreationWindow/MaterialSelect/PartLabel.text = text
 	
-	for i in globals.items.Materials.values():
-		var tempmaterial = globals.state.materials[i.code]
+	for i in Items.Materials.values():
+		var tempmaterial = state.materials[i.code]
 		if tempmaterial <= 0:
 			continue
 		for j in itemparts.values():
@@ -106,16 +106,16 @@ func selectmaterial(material, part, cost):
 	globals.hidetooltip()
 	itemparts[part] = {material = material.code, price = cost}
 	chosenpartbutton.texture_normal = material.icon
-	var text = globals.items.Parts[part].name + "\n" 
+	var text = Items.Parts[part].name + "\n" 
 	$ItemCreationWindow/MaterialSelect.hide()
 	checkcreatingitem(itemtemplate)
 	for i in material.parts[part]:
 		if typeof(material.parts[part][i]) != TYPE_ARRAY:
 			var endvalue = material.parts[part][i]
-			if globals.items.Items[itemtemplate].basemods.has(i):
-				endvalue = material.parts[part][i]*float(globals.items.Items[itemtemplate].basemods[i])
+			if Items.Items[itemtemplate].basemods.has(i):
+				endvalue = material.parts[part][i]*float(Items.Items[itemtemplate].basemods[i])
 			if endvalue != 0:
-				text += '\n' + globals.items.stats[i] + ': ' + str(endvalue)
+				text += '\n' + Items.stats[i] + ': ' + str(endvalue)
 		else:
 			for k in material.parts[part][i]:
 				text += '\n' + globals.effects[k].descript
@@ -125,7 +125,7 @@ var enditem
 
 func checkcreatingitem(item):
 	enditem = null
-	var baseitem = globals.items.Items[item]
+	var baseitem = Items.Items[item]
 	var text = tr('TOTALPRICE') + ': '
 	var resourcedict = {}
 	for i in itemparts.values():
@@ -182,7 +182,7 @@ func repairitems():
 	$RepairPanel.show()
 	repairitemlist.clear()
 	globals.ClearContainer($RepairPanel/ScrollContainer/GridContainer)
-	for i in globals.state.items.values():
+	for i in state.items.values():
 		if i.itemtype != 'gear' || i.durability >= i.maxdurability:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($RepairPanel/ScrollContainer/GridContainer)
@@ -203,11 +203,11 @@ func updaterepairlist():
 		globals.MergeDicts(resourcedict,i.counterepairmaterials())
 	
 	for i in resourcedict:
-		var material = globals.items.Materials[i]
+		var material = Items.Materials[i]
 		var newicon = globals.DuplicateContainerTemplate($RepairPanel/MatScrollContainer/HBoxContainer)
 		newicon.texture = material.icon
-		newicon.get_node("Label").text = str(resourcedict[i]) + '/' + str(globals.state.materials[i])
-		if resourcedict[i] > globals.state.materials[i]:
+		newicon.get_node("Label").text = str(resourcedict[i]) + '/' + str(state.materials[i])
+		if resourcedict[i] > state.materials[i]:
 			newicon.get_node('Label').set("custom_colors/font_color", Color(1,0,0))
 			canexecute = false
 		globals.connecttooltip(newicon, mattooltip(material))
@@ -249,9 +249,9 @@ func repairallitems():
 #
 #	for i in repairmaterials:
 #		var newimage = globals.DuplicateContainerTemplate($RepairItem/Panel/RepairMaterials/Button)
-#		var material = globals.items.Materials[i]
+#		var material = Items.Materials[i]
 #		newimage.texture = material.icon
-#		newimage.get_node('amount').text = str(repairmaterials[i]) +'/'+ str(globals.state.materials[i]) 
-#		if globals.state.materials[i] < repairmaterials[i]:
+#		newimage.get_node('amount').text = str(repairmaterials[i]) +'/'+ str(state.materials[i]) 
+#		if state.materials[i] < repairmaterials[i]:
 #			newimage.get_node('amount').set("custom_colors/font_color", Color(1,0,0))
 

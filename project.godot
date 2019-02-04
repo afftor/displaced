@@ -18,6 +18,15 @@ config/icon="res://icon.png"
 [autoload]
 
 variables="*res://files/variables.gd"
+images="*res://files/scripts/ResourceImages.gd"
+audio="*res://files/scripts/ResourceAudio.gd"
+Enemydata="*res://assets/data/enemydata.gd"
+Skillsdata="*res://assets/data/Skills.gd"
+Effectdata="*res://assets/data/Effects.gd"
+TownData="*res://files/TownData.gd"
+combatantdata="*res://files/CombatantClass.gd"
+state="*res://files/scripts/gamestate.gd"
+Items="*res://files/Items.gd"
 globals="*res://files/scripts/globals.gd"
 input_handler="*res://files/input_handler.gd"
 
@@ -66,4 +75,5 @@ MouseClick=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resou
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
 environment/default_environment="res://default_env.tres"

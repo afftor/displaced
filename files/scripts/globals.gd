@@ -1,19 +1,29 @@
 extends Node
 
+const worker = preload("res://files/scripts/worker.gd");
+const Item = preload("res://src/ItemClass.gd")
+
 var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var items
-var TownData
+var EventList = {};
+var scenedict = {
+	menu = "res://files/Menu.tscn",
+	town = "res://files/MainScreen.tscn"
+	
+}
+
+#var items
+#var TownData
 var workersdict
-var enemydata
+#var enemydata
 var randomgroups
 var enemylist
-var skillsdata
-var effectdata
+#var skillsdata
+#var effectdata
 
-var combatantdata = load("res://files/CombatantClass.gd").new()
+#var combatantdata = load("res://files/CombatantClass.gd").new()
 
 var classes = combatantdata.classlist
 var characters = combatantdata.charlist
@@ -29,9 +39,26 @@ var file = File.new()
 var dir = Directory.new()
 
 var LocalizationFolder = "res://localization/"
-var state
+#var state
 
 var userfolder = 'user://'
+
+#var images = load("res://files/scripts/ResourceImages.gd").new()
+#var audio = load("res://files/scripts/ResourceAudio.gd").new()
+var scenes = {}
+
+var hexcolordict = {
+	red = '#ff0000',
+	yellow = "#ffff00",
+	brown = "#8B572A",
+	gray = "#4B4B4B",
+	green = '#00b700',
+}
+var textcodedict = {
+	color = {start = '[color=', end = '[/color]'},
+	url = {start = '[url=',end = '[/url]'}
+}
+
 
 var globalsettings = { 
 	ActiveLocalization = 'en',
@@ -70,12 +97,7 @@ func settings_save(value):
 	for i in globalsettings:
 		config.set_value('settings', i, globalsettings[i])
 	config.save(userfolder + "Settings.ini")
-	
-	
 
-var images = load("res://files/scripts/ResourceImages.gd").new()
-var audio = load("res://files/scripts/ResourceAudio.gd").new()
-var scenes = {}
 
 func _init():
 	if dir.dir_exists(userfolder + 'saves') == false:
@@ -106,23 +128,23 @@ func _ready():
 	randomize()
 	#Settings and folders
 	settings_load()
+	LoadEventData();
 	
-	
-	items = load("res://files/Items.gd").new()
-	TownData = load('res://files/TownData.gd').new()
-	enemydata = load("res://assets/data/enemydata.gd").new()
-	randomgroups = enemydata.randomgroups
-	enemylist = enemydata.enemylist
-	skillsdata = load("res://assets/data/Skills.gd").new()
-	effectdata = load("res://assets/data/Effects.gd").new()
-	effects = effectdata.effects
-	combateffects = effectdata.combateffects
-	skills = skillsdata.skilllist
+	#items = load("res://files/Items.gd").new()
+	#TownData = load('res://files/TownData.gd').new()
+	#enemydata = load("res://assets/data/enemydata.gd").new()
+	randomgroups = Enemydata.randomgroups
+	enemylist = Enemydata.enemylist
+	#skillsdata = load("res://assets/data/Skills.gd").new()
+	#effectdata = load("res://assets/data/Effects.gd").new()
+	effects = Effectdata.effects
+	combateffects = Effectdata.combateffects
+	skills = Skillsdata.skilllist
 	
 	workersdict = TownData.workersdict
 	
-	state = gamestate.new()
-	for i in items.Materials:
+#	state = gamestate.new()
+	for i in Items.Materials:
 		state.materials[i] = 0
 	state.materials.wood = 10
 	state.materials.elvenwood = 10
@@ -134,132 +156,8 @@ func _ready():
 func logupdate(text):
 	state.logupdate(text)
 
-class gamestate:
-	
-	
-	var date = 1
-	var daytime = 0
-	
-	#resources
-	var itemidcounter = 0
-	var heroidcounter = 0
-	var workeridcounter = 0
-	var money = 0
-	var food = 50
-	var townupgrades = {workerlimit = 5}
-	var workers = {}
-	var heroes = {}
-	var items = {}
-	var tasks = []
-	var materials = {} setget materials_set
-	var lognode 
-	var oldmaterials = {}
-	var unlocks = []
-	
-	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
-	
-	var CurrentTextScene
-	var CurrentScreen
-	var CurrentLine
-	
-	var heroguild = []
-	
-	func _init():
-		oldmaterials = materials.duplicate()
-	
-	func materials_set(value):
-		var text = ''
-		for i in value:
-			if oldmaterials.has(i) == false || oldmaterials[i] != value[i]:
-				if oldmaterials.has(i) == false:
-					oldmaterials[i] = 0
-				else:
-					if oldmaterials[i] - value[i] < 0:
-						text += 'Gained '
-					else:
-						text += "Lost "
-					text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + globals.items.Materials[i].name + '}'
-					logupdate(text)
-		materials = value
-		oldmaterials = materials.duplicate()
-	
-	func logupdate(text):
-		if globals.get_tree().get_root().has_node("LogPanel/RichTextLabel") == false:
-			return
-		lognode = globals.get_tree().get_root().get_node("LogPanel/RichTextLabel")
-		text = lognode.bbcode_text + '\n' + text
-		
-		#lognode.bbcode_text += '\n' + 
-		lognode.bbcode_text = globals.TextEncoder(text)
-	
-	func assignworker(data):
-		data.worker.task = data
-		if data.instrument != null:
-			data.instrument.task = data
-		tasks.append(data)
-	
-	func stoptask(data):
-		data.worker.task = null
-		data.instrument.task = null
-		tasks.erase(data)
-	
-	func stopworkertask(worker):
-		var data = gettaskfromworker(worker)
-		if data != false:
-			stoptask(data)
-	
-	func gettaskfromworker(worker):
-		for i in tasks:
-			if i.worker == worker:
-				return i
-		return false
-	
 
 
-
-
-
-
-class worker:
-	var name
-	var type
-	var id
-	var task
-	var energy
-	var maxenergy
-	var currenttask
-	var icon
-	var model
-	var autoconsume = true
-	
-	func create(data):
-		name = data.name
-		type = data.type
-		id = globals.state.workeridcounter
-		globals.state.workeridcounter += 1
-		maxenergy = data.maxenergy
-		energy = data.maxenergy
-		icon = data.icon
-		globals.state.workers[id] = self
-	
-	func restoreenergy():
-		var value = maxenergy - energy
-		if globals.state.food > value:
-			energy += value
-			globals.state.food -= value
-			return true
-		else:
-			if globals.state.food == 0:
-				return false
-			energy += globals.state.food
-			globals.state.food = 0
-			return true
-
-var scenedict = {
-	menu = "res://files/Menu.tscn",
-	town = "res://files/MainScreen.tscn"
-	
-}
 
 signal scene_changed
 
@@ -272,6 +170,31 @@ func ChangeScene(name):
 func StartCombat(enemygroup):
 	pass
 
+func LoadEventData():
+	if file.file_exists("res://assets/data/eventdata.json"):
+		file.open("res://assets/data/eventdata.json", File.READ);
+		EventList = parse_json(file.get_as_text());
+		file.close();
+	else:
+		print('Event not found: ' + name)
+	pass
+
+func EventCheck():
+	for event in EventList.keys():
+		if state.OldEvents.has(event): continue;
+		var res = true;
+		for check in EventList[event]:
+			if !state.valuecheck(check): 
+				res = false;
+				break;
+			pass
+		pass
+		if res:
+			state.CurEvent = event;
+			StartEventScene(event);
+			break;
+	pass
+
 func LoadEvent(name):
 	var dict
 	
@@ -281,7 +204,6 @@ func LoadEvent(name):
 		file.close()
 	else:
 		print('Event not found: ' + name)
-	
 	return dict
 
 func StartEventScene(name):
@@ -289,8 +211,6 @@ func StartEventScene(name):
 	var scene = input_handler.GetEventNode()
 	scene.visible = true
 	scene.Start(scenes[name])
-
-const Item = preload("res://src/ItemClass.gd")
 
 func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()
@@ -306,7 +226,7 @@ func CreateUsableItem(item, amount = 1):
 	return newitem
 
 func AddItemToInventory(item):
-	item.inventory = globals.state.items
+	item.inventory = state.items
 	if item.stackable == false:
 		item.id = state.itemidcounter
 		state.items[item.id] = item
@@ -464,22 +384,11 @@ func AddPanelOpenCloseAnimation(node):
 	node._ready()
 
 func MaterialTooltip(value):
-	var text = '[center][color=yellow]' + globals.items.Materials[value].name + '[/color][/center]\n' + globals.items.Materials[value].description + '\n\n' + tr("INPOSESSION") + ': ' + str(globals.state.materials[value])
+	var text = '[center][color=yellow]' + Items.Materials[value].name + '[/color][/center]\n' + Items.Materials[value].description + '\n\n' + tr("INPOSESSION") + ': ' + str(state.materials[value])
 	return text
 
 
 
-var hexcolordict = {
-	red = '#ff0000',
-	yellow = "#ffff00",
-	brown = "#8B572A",
-	gray = "#4B4B4B",
-	green = '#00b700',
-}
-var textcodedict = {
-	color = {start = '[color=', end = '[/color]'},
-	url = {start = '[url=',end = '[/url]'}
-}
 
 func TextEncoder(text, node = null):
 	var tooltiparray = []
@@ -520,7 +429,7 @@ func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	showtooltip(text, node)
 
-func CharacterSelect(targetscript, type, function, requirements):
+func CharacterSstateelect(targetscript, type, function, requirements):
 	var node 
 	if get_tree().get_root().has_node("CharacterSelect"):
 		node = get_tree().get_root().get_node("CharacterSelect")
@@ -574,7 +483,9 @@ func HeroSelect(targetscript, type, function, requirements):
 	for i in array:
 		newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
-		newnode.get_node("Icon").texture = globals.images.circleportraits[i.icon]
+
+		newnode.get_node("Icon").texture = images.circleportraits[i.icon]
+
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
