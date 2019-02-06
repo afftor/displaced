@@ -7,5 +7,12 @@
 {"type":"no_check"},
 {"type":"date", "date":3},
 {"type":"event_finished", "name":"test_event"}
+],
+"intro 2":[
+{"type":"no_check"}
+],
+"Market":[
+{"type":"no_check"},
+{"type":"event_finished", "name":"intro 2"}
 ]
 }
