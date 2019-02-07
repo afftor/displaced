@@ -29,4 +29,5 @@ func hide():
 	if is_visible_in_tree() && close_played == false:
 		input_handler.PlaySound(close_sound)
 		close_played = true
+	state.CurBuild = "";
 	input_handler.Close(self)

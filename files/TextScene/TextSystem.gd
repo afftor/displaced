@@ -90,8 +90,7 @@ func Start(dict, line = 0):
 	if dict == null: 
 		call_deferred('StopEvent');
 		return;
-	CurrentScene = dict
-	CurrentLine = line;
+
 	$Background.texture = null
 	$CharImage.texture = null
 	$Panel/CharPortrait.texture = null
@@ -100,7 +99,52 @@ func Start(dict, line = 0):
 	$Panel/DisplayName.visible = false
 	$Panel/CharPortrait.visible = false
 	$Panel.visible = false
+	CurrentScene = dict
+	if line > 0:
+		RestoreEnv(line);
+	CurrentLine = line;
 	AdvanceScene()
+
+func RestoreEnv(line):
+	var tmp;
+	tmp = line - 1;
+	while tmp >= 0:
+		if CurrentScene[tmp].effect == 'gui':
+			$Panel.visible = !$Panel.visible;
+			break;
+			pass
+		tmp -= 1;
+		pass
+	tmp = line - 1;
+	while tmp >= 0:
+		if CurrentScene[tmp].effect == 'background':
+			input_handler.SmoothTextureChange($Background, images.backgrounds[CurrentScene[tmp].value]);
+			break;
+			pass
+		tmp -= 1;
+		pass
+	tmp = line - 1;
+	while tmp >= 0:
+		if CurrentScene[tmp].effect == 'music':
+			input_handler.SetMusic(CurrentScene[tmp].value);
+			break;
+			pass
+		tmp -= 1;
+		pass
+	tmp = line - 1;
+	while tmp >= 0:
+		if CurrentScene[tmp].effect == 'sprite':
+			if CurrentScene[tmp].value == 'hide':
+				break
+			if CurrentScene[tmp].value == 'set':
+				SpriteDo($CharImage, 'set', CurrentScene[tmp].args);
+				break
+			if CurrentScene[tmp].value == 'fade':
+				$CharImage.modulate = Color(1, 1, 1, 0);
+			pass
+		tmp -= 1;
+		pass
+	pass
 
 func AdvanceScene():
 	if CurrentScene.size() > CurrentLine:
