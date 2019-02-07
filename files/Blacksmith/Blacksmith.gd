@@ -240,10 +240,13 @@ func repairallitems():
 	updaterepairlist()
 
 func show():
-	.show();
 	state.CurBuild = "blacksmith"
+	.show();
 	pass
 
+func hide():
+		state.CurBuild = "";
+		.hide();
 #var selectedrepairingitem
 #
 #func repairingitemselected(item):

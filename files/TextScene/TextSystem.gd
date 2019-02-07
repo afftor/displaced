@@ -99,10 +99,13 @@ func Start(dict, line = 0):
 	$Panel/DisplayName.visible = false
 	$Panel/CharPortrait.visible = false
 	$Panel.visible = false
+	$CharImage.modulate = Color(1, 1, 1, 1);
 	CurrentScene = dict
 	if line > 0:
 		RestoreEnv(line);
 	CurrentLine = line;
+	set_process(true);
+	set_process_input(true);
 	AdvanceScene()
 
 func RestoreEnv(line):

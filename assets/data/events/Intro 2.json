@@ -1,9 +1,5 @@
 [
   {
-    "effect": "music",
-    "value": "intro"
-  },
-  {
     "effect": "sfx",
     "value": "blackscreenturnon",
 	"args": null,
@@ -178,7 +174,8 @@
   {
 		"effect": "sprite",
 		"value": "fade",
-		"args": 2,
+		"args": 1,
+		"delay": 1
 	},
   {
     "effect": "sfx",
@@ -251,7 +248,7 @@
   {
 		"effect": "sprite",
 		"value": "unfade",
-		"args": 2,
+		"args": 1,
 	},
   {
     "effect": "text",
@@ -284,7 +281,7 @@
   {
 		"effect": "sprite",
 		"value": "fade",
-		"args": 2,
+		"args": 1,
 	},
   {
     "effect": "text",

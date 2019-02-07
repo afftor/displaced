@@ -1,13 +1,4 @@
 {
-"test_event":[
-{"type":"has_money", "value":100},
-{"type":"has_property", "prop":"money", "value":100}
-],
-"test_event_2":[
-{"type":"no_check"},
-{"type":"date", "date":3},
-{"type":"event_finished", "name":"test_event"}
-],
 "intro 2":[
 {"type":"no_check"}
 ],
