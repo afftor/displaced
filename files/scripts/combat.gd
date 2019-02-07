@@ -759,7 +759,7 @@ func deal_damage(damage_dict, caster, target):
 				subtarget.add_buff(buff)
 			'extradamage':
 				extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
-	
+	# строчкой выше - баг, так как extradamage определён внутри другой функции
 	if damage_dict.tags.has('heal'):
 		target.hp += ceil(endvalue)
 	else:
