@@ -70,3 +70,8 @@ func StopTask():
 func StopTaskConfirm():
 	globals.CurrentScene.stoptask(currenttask)
 	BuildSlaveList()
+
+func show():
+	.show();
+	state.CurBuild = "slave"
+	pass

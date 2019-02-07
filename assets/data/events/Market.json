@@ -38,6 +38,11 @@
 		"value":"Hey, anyone around? "
 	},
 	{
+		"effect": "sprite",
+		"value": "set",
+		"args": "goblinmerc",
+	},
+	{
 		"effect":"text",
 		"portrait":"Null",
 		"sound":null,

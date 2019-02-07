@@ -12,7 +12,7 @@
 {"type":"no_check"}
 ],
 "Market":[
-{"type":"no_check"},
+{"type":"building", "value":"slave"},
 {"type":"event_finished", "name":"intro 2"}
 ]
 }

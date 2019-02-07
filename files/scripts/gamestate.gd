@@ -31,6 +31,7 @@ var heroguild = []
 
 var OldEvents = [];
 var CurEvent; #event name
+var CurBuild;
 
 func _init():
 	oldmaterials = materials.duplicate()
@@ -143,4 +144,6 @@ func valuecheck(dict):
 			return date >= dict['date'];
 		"item":
 			return if_has_item(dict['name']);
+		"building":
+			return CurBuild == dict['value'];
 	pass

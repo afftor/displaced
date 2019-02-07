@@ -43,3 +43,8 @@ func hirehero():
 	state.heroguild.erase(selectedhero)
 	$HeroHire.hide()
 	open()
+
+func show():
+	.show();
+	state.CurBuild = "hero"
+	pass

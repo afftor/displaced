@@ -66,6 +66,11 @@
     "value": "Arron calls for attention of single goblin who does not seem anyhow surprised by his appearance."
   },
   {
+		"effect": "sprite",
+		"value": "set",
+		"args": "goblin",
+	},
+  {
     "effect": "text",
     "portrait": "ArronNeutral",
     "sound": null,
@@ -171,6 +176,11 @@
     "value": "Tell me, friend, do you know the benefits of having someone to organize and take care of town's problems?"
   },
   {
+		"effect": "sprite",
+		"value": "fade",
+		"args": 2,
+	},
+  {
     "effect": "sfx",
     "value": "blackscreenturnon",
 	"args": null,
@@ -239,6 +249,11 @@
     "value": "A shabby looking goblin casually walks in, disinterestedly looking around."
   },
   {
+		"effect": "sprite",
+		"value": "unfade",
+		"args": 2,
+	},
+  {
     "effect": "text",
     "portrait": "Null",
     "sound": null,
@@ -266,6 +281,11 @@
     "source": "GOBLIN",
     "value": "He is busy, I guess. Just don't take too long."
   },
+  {
+		"effect": "sprite",
+		"value": "fade",
+		"args": 2,
+	},
   {
     "effect": "text",
     "portrait": null,
