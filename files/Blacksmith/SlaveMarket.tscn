@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/backgrounds/castleroom.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/backgrounds/market.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/sprites/goblinmerc2.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=10]
@@ -169,9 +169,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 18.0
-margin_top = 41.0
-margin_right = 1758.0
+margin_left = 4.0
+margin_top = 18.0
+margin_right = 1768.0
 margin_bottom = 915.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false

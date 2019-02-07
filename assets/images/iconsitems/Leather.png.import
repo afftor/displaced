@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/food.png-42be9a86f7da97001ca45f8b2687dcf1.stex"
+path="res://.import/Leather.png-bdaedaa9ac7f9d32c361697fcce140a0.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/food.png"
-dest_files=[ "res://.import/food.png-42be9a86f7da97001ca45f8b2687dcf1.stex" ]
+source_file="res://assets/images/iconsitems/Leather.png"
+dest_files=[ "res://.import/Leather.png-bdaedaa9ac7f9d32c361697fcce140a0.stex" ]
 
 [params]
 
@@ -16,9 +16,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

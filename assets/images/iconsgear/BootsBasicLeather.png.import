@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GoblinStell.png-bf13c09d7d8763d2bd0cb53d797c2372.stex"
+path="res://.import/BootsBasicLeather.png-52359d155ab3d082b2c5b25ff974f4c4.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/GoblinStell.png"
-dest_files=[ "res://.import/GoblinStell.png-bf13c09d7d8763d2bd0cb53d797c2372.stex" ]
+source_file="res://assets/images/iconsgear/BootsBasicLeather.png"
+dest_files=[ "res://.import/BootsBasicLeather.png-52359d155ab3d082b2c5b25ff974f4c4.stex" ]
 
 [params]
 

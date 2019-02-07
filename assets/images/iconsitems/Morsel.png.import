@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ElvenWood.png-e599c2684b58ab15e8c19ee5718808dc.stex"
+path="res://.import/Morsel.png-b34e5ebc6c6cb02ca5e7b872eae854e5.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/ElvenWood.png"
-dest_files=[ "res://.import/ElvenWood.png-e599c2684b58ab15e8c19ee5718808dc.stex" ]
+source_file="res://assets/images/iconsitems/Morsel.png"
+dest_files=[ "res://.import/Morsel.png-b34e5ebc6c6cb02ca5e7b872eae854e5.stex" ]
 
 [params]
 
@@ -16,11 +16,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-
-flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
-
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

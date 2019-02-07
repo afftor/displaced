@@ -128,22 +128,25 @@ func _ready():
 	randomize()
 	#Settings and folders
 	settings_load()
-	LoadEventData();
+	LoadEventData()
 	
-	#items = load("res://files/Items.gd").new()
-	#TownData = load('res://files/TownData.gd').new()
-	#enemydata = load("res://assets/data/enemydata.gd").new()
+	#===Necessary to apply translation===
+	Items = load("res://files/Items.gd").new()
+	Enemydata = load("res://assets/data/enemydata.gd").new()
+	Skillsdata = load("res://assets/data/Skills.gd").new()
+	Effectdata = load("res://assets/data/Effects.gd").new()
+	TownData = load("res://files/TownData.gd").new()
+	#====================================
+	
+	
 	randomgroups = Enemydata.randomgroups
 	enemylist = Enemydata.enemylist
-	#skillsdata = load("res://assets/data/Skills.gd").new()
-	#effectdata = load("res://assets/data/Effects.gd").new()
 	effects = Effectdata.effects
 	combateffects = Effectdata.combateffects
 	skills = Skillsdata.skilllist
 	
 	workersdict = TownData.workersdict
 	
-#	state = gamestate.new()
 	for i in Items.Materials:
 		state.materials[i] = 0
 	state.materials.wood = 10
@@ -296,34 +299,40 @@ func disconnecttooltip(node):
 	if node.is_connected("mouse_entered",self,'showtooltip'):
 		node.disconnect("mouse_entered",self,'showtooltip')
 
-func itemtooltip(item, node):
-	var screen = get_viewport().get_visible_rect()
-	var text = ''
-	var tooltip 
-	if get_tree().get_root().has_node("itemtooltip") == false:
-		tooltip = load("res://files/Simple Tooltip/Imagetooltip.tscn").instance()
-		get_tree().get_root().add_child(tooltip)
-		tooltip.name = 'itemtooltip'
-	else:
-		tooltip = get_tree().get_root().get_node('itemtooltip')
-	var type
-	if item.get('itembase'):
-		type = 'gear'
-	else:
-		type = 'material'
-	
-	if type == 'gear':
-		tooltip.get_node("Image").texture = load(item.icon)
-		text = item.tooltip()
-	else:
-		tooltip.get_node("Image").texture = item.icon
-		text = item.description
-	
-	#tooltip.get_node("RichTextLabel").bbcode_text = text
-	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
-	tooltip.set_global_position(pos)
-	tooltip.showup(node, text)
+func connectitemtooltip(node, item):
+	if node.is_connected("mouse_entered",item,'tooltip'):
+		node.disconnect("mouse_entered",item,'tooltip')
+	node.connect("mouse_entered",item,'tooltip', [node])
+
+
+#func itemtooltip(item, node):
+#	var screen = get_viewport().get_visible_rect()
+#	var text = ''
+#	var tooltip 
+#	if get_tree().get_root().has_node("itemtooltip") == false:
+#		tooltip = load("res://files/Simple Tooltip/Imagetooltip.tscn").instance()
+#		get_tree().get_root().add_child(tooltip)
+#		tooltip.name = 'itemtooltip'
+#	else:
+#		tooltip = get_tree().get_root().get_node('itemtooltip')
+#	var type
+#	if item.has('itembase'):
+#		type = 'gear'
+#	else:
+#		type = 'material'
+#
+#	if type == 'gear':
+#		tooltip.get_node("Image").texture = load(item.icon)
+#		text = item.tooltip()
+#	else:
+#		tooltip.get_node("Image").texture = item.icon
+#		text = item.description
+#
+#	#tooltip.get_node("RichTextLabel").bbcode_text = text
+#	var pos = node.get_global_rect()
+#	pos = Vector2(pos.position.x, pos.end.y + 10)
+#	tooltip.set_global_position(pos)
+#	tooltip.showup(node, text)
 
 func showtooltip(text, node):
 	var screen = get_viewport().get_visible_rect()

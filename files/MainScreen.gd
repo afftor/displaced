@@ -10,6 +10,66 @@ var daycolorchange = false
 var tasks = [] #Task Data Dict var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/3speed"]
 
+func _ready():
+	#self.visible = false
+	#$BlackScreen.visible = true
+	#$BlackScreen.modulate.a = 1
+	globals.CurrentScene = self
+	tasks = state.tasks
+#	var x = 3
+#	while x > 1:
+#		var y = combatantdata.combatant.new()
+#		y.createfromclass('warrior')
+#		x -= 1
+#		state.heroes[y.id] = y
+	
+	var character = combatantdata.combatant.new()
+	character.createfromname('Arron')
+	state.heroes[character.id] = character
+	
+	character = combatantdata.combatant.new()
+	character.createfromname('Rose')
+	state.heroes[character.id] = character
+	
+	
+	var speedvalues = [0,1,10]
+	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
+	var counter = 0
+	for i in timebuttons:
+		i.hint_tooltip = tooltips[counter]
+		i.connect("pressed",self,'changespeed',[i])
+		i.set_meta('value', speedvalues[counter])
+		counter += 1
+	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
+	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
+	$ControlPanel/Options.connect("pressed",self, 'openmenu')
+	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
+	$ControlPanel/FoodConv.connect("pressed", $FoodConvert, 'open')
+	$TownHallNode.connect("pressed",self,'opentownhall')
+	$BlacksmithNode.connect("pressed",self,'openblacksmith')
+	$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
+	$TownHallNode.connect("pressed",self,'OpenTownhall')
+	#$HeroBuildNode.connect("pressed",self,'openheroguild')
+	$Lumber.connect("pressed", self, '_on_Lumber_pressed')
+	$Gate.connect("pressed",self,'explorescreen')
+	
+	if debug == true:
+		var worker = globals.worker.new()
+		worker.create(globals.workersdict.goblin)
+		#globals.AddItemToInventory(globals.crea
+		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
+		#state.items[0].durability = floor(rand_range(1,5))
+		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
+		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'elvenmetal', ArmorTrim = 'elvenwood'}))
+		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
+		globals.AddItemToInventory(globals.CreateUsableItem('meatsteak', 2))
+		#state.items[1].durability = floor(rand_range(1,5))
+#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
+
 
 func _process(delta):
 	if self.visible == false:
@@ -124,64 +184,7 @@ func updatecounter(task):
 func deletecounter(task):
 	task.counter.queue_free()
 
-func _ready():
-	#self.visible = false
-	#$BlackScreen.visible = true
-	#$BlackScreen.modulate.a = 1
-	globals.CurrentScene = self
-	tasks = state.tasks
-#	var x = 3
-#	while x > 1:
-#		var y = combatantdata.combatant.new()
-#		y.createfromclass('warrior')
-#		x -= 1
-#		state.heroes[y.id] = y
-	
-	var character = combatantdata.combatant.new()
-	character.createfromname('Arron')
-	state.heroes[character.id] = character
-	
-	character = combatantdata.combatant.new()
-	character.createfromname('Rose')
-	state.heroes[character.id] = character
-	
-	
-	var speedvalues = [0,1,10]
-	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
-	var counter = 0
-	for i in timebuttons:
-		i.hint_tooltip = tooltips[counter]
-		i.connect("pressed",self,'changespeed',[i])
-		i.set_meta('value', speedvalues[counter])
-		counter += 1
-	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
-	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
-	$ControlPanel/Options.connect("pressed",self, 'openmenu')
-	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
-	$ControlPanel/FoodConv.connect("pressed", $FoodConvert, 'open')
-	$TownHallNode.connect("pressed",self,'opentownhall')
-	$BlacksmithNode.connect("pressed",self,'openblacksmith')
-	$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
-	#$HeroBuildNode.connect("pressed",self,'openheroguild')
-	$Lumber.connect("pressed", self, '_on_Lumber_pressed')
-	$Gate.connect("pressed",self,'explorescreen')
-	
-	if debug == true:
-		var worker = globals.worker.new()
-		worker.create(globals.workersdict.goblin)
-		#globals.AddItemToInventory(globals.crea
-		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
-		#state.items[0].durability = floor(rand_range(1,5))
-		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
-		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'elvenmetal', ArmorTrim = 'elvenwood'}))
-		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
-		globals.AddItemToInventory(globals.CreateUsableItem('meatsteak', 2))
-		#state.items[1].durability = floor(rand_range(1,5))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
+
 
 func openmenu():
 	if !$MenuPanel.visible:
@@ -194,6 +197,10 @@ func openherolist():
 		$HeroList.open()
 	else:
 		$HeroList.hide()
+
+
+func OpenTownhall():
+	$TownHall.open()
 
 func OpenSlaveMarket():
 	$SlaveMarket.open()

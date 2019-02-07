@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GoblinMetal.png-3f5028774bbcb0c9958d3f0469ff6a2d.stex"
+path="res://.import/HelmetBasicLeather.png-ef7e1009c68fe78c3e3cbe09b8a1523d.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/GoblinMetal.png"
-dest_files=[ "res://.import/GoblinMetal.png-3f5028774bbcb0c9958d3f0469ff6a2d.stex" ]
+source_file="res://assets/images/iconsgear/HelmetBasicLeather.png"
+dest_files=[ "res://.import/HelmetBasicLeather.png-ef7e1009c68fe78c3e3cbe09b8a1523d.stex" ]
 
 [params]
 
@@ -16,9 +16,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

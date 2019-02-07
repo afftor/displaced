@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ElvenSteel.png-8279e978f7e0024196127974d1451da2.stex"
+path="res://.import/HelmetBasic.png-d405061998ce05ccd3d117123dceaf14.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/ElvenSteel.png"
-dest_files=[ "res://.import/ElvenSteel.png-8279e978f7e0024196127974d1451da2.stex" ]
+source_file="res://assets/images/iconsgear/HelmetBasic.png"
+dest_files=[ "res://.import/HelmetBasic.png-d405061998ce05ccd3d117123dceaf14.stex" ]
 
 [params]
 

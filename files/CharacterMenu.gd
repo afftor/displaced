@@ -16,9 +16,9 @@ func open(hero):
 	for i in globals.gearlist:
 		var node = get_node('Main/Panel/charandgear/' + i)
 		if character.gear[i] != null:
-			var gear = globals.state.items[character.gear[i]]
+			var gear = state.items[character.gear[i]]
 			input_handler.itemshadeimage(node, gear)
-			globals.connecttooltip(node, gear.tooltip())
+			globals.connectitemtooltip(node, gear)
 		else:
 			node.texture_normal = null
 	$Main/Panel/charandgear/image.texture = images.sprites[character.image]

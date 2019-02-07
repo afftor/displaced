@@ -1,40 +1,17 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=1]
-
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform vec4 target1color : hint_color;
-uniform vec4 target2color : hint_color;
-uniform vec4 target3color : hint_color;
-
-uniform vec4 part1color : hint_color;
-uniform vec4 part2color : hint_color;
-uniform vec4 part3color : hint_color;
-
-
-void fragment(){
-    vec4 color = texture(TEXTURE, UV);
-    if  (distance(color, target1color) < 0.01){
-        color = part1color;  
-    }
-    else if (distance(color, target2color) < 0.01) {
-        color = part2color; 
-   }
-    COLOR = color;
-}"
-_sections_unfolded = [ "Resource" ]
+[ext_resource path="res://files/recolor shader.shader" type="Shader" id=1]
 
 [resource]
 
 render_priority = 0
-shader = SubResource( 1 )
-shader_param/target1color = Color( 0.392157, 0.392157, 0.392157, 1 )
-shader_param/target2color = Color( 0.431373, 0.431373, 0.431373, 1 )
-shader_param/target3color = Color( 0.470588, 0.470588, 0.470588, 1 )
-shader_param/part1color = Color( 0.149932, 0.0701752, 0.855469, 1 )
-shader_param/part2color = Color( 0.964844, 0.531418, 0.531418, 1 )
-shader_param/part3color = Color( 0.132813, 0.112579, 0.112579, 1 )
+shader = ExtResource( 1 )
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 1, 1, 1 )
+shader_param/part2color = Color( 1, 1, 1, 1 )
+shader_param/part3color = Color( 1, 1, 1, 1 )
+shader_param/dist = 0.1
 _sections_unfolded = [ "Resource", "shader_param" ]
 
