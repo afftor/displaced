@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ElvenMetal.png-dd26cfff3a3b615b097344e46ba8d7ad.stex"
+path="res://.import/HelmetBasicCloth.png-e4a29cfe966618ae84fb62d09c0c0ec4.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/ElvenMetal.png"
-dest_files=[ "res://.import/ElvenMetal.png-dd26cfff3a3b615b097344e46ba8d7ad.stex" ]
+source_file="res://assets/images/iconsgear/HelmetBasicCloth.png"
+dest_files=[ "res://.import/HelmetBasicCloth.png-e4a29cfe966618ae84fb62d09c0c0ec4.stex" ]
 
 [params]
 
@@ -16,9 +16,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

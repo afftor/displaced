@@ -13,16 +13,12 @@ var effects = {
 	natural = {name = tr("NATURAL"), code = 'natural', descript = tr("NATURALEFFECTDESCRIPT"), textcolor = 'brown', trigger = 'custom', tags = []},
 	brittle = {name = tr("BRITTLE"), code = 'brittle', descript = tr("BRITTELEFFECTDESCRIPT"), textcolor = 'gray', tags = []},
 	
-	
-	#TraitEffects
-	
-	
 }
 
 var combateffects = {
 #traits
 beastdamage = {effect = 'skillmod', effectvalue = {type = "damagemod", value = ['0.2'], targetreq = {type = 'stats', name = 'race', operant = 'eq', value = 'animal'}}},
-protectbeast = {effect = 'skillmod', effectvalue = {type = "damagemod", value = ['-0.2'], targetreq = {type = 'stats', name = 'race', operant = 'eq', value = 'animal'}}},
+
 
 #items
 gobmetalhandleeffect = {effect = 'skillmod', effectvalue = {type = 'damagemod', value = ['0.15']}, targetreq = {type = 'stats', name = 'hppercent', operant = 'lte', value = 25}},

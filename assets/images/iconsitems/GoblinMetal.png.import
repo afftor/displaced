@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DwarfStell.png-44b8102c3211d2cf775c1d2c45ee54b3.stex"
+path="res://.import/GoblinMetal.png-256f5ce2b2c687ead7788ccdae6f59ea.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/DwarfStell.png"
-dest_files=[ "res://.import/DwarfStell.png-44b8102c3211d2cf775c1d2c45ee54b3.stex" ]
+source_file="res://assets/images/iconsitems/GoblinMetal.png"
+dest_files=[ "res://.import/GoblinMetal.png-256f5ce2b2c687ead7788ccdae6f59ea.stex" ]
 
 [params]
 

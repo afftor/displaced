@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wood.png-e81a719ced5f5e089a59325feb3a950e.stex"
+path="res://.import/DwarvenMetal.png-bb2f3307c59c929efd5f39dce9e1d9a6.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/Wood.png"
-dest_files=[ "res://.import/Wood.png-e81a719ced5f5e089a59325feb3a950e.stex" ]
+source_file="res://assets/images/iconsitems/DwarvenMetal.png"
+dest_files=[ "res://.import/DwarvenMetal.png-bb2f3307c59c929efd5f39dce9e1d9a6.stex" ]
 
 [params]
 
@@ -16,9 +16,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

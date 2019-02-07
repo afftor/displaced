@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eat.png-d88df8ffa5fe776f1dafc7f363be3842.stex"
+path="res://.import/SwordBasic.png-ccb19e430f9a042ac91cdfea6db8033d.stex"
 
 [deps]
 
-source_file="res://assets/images/icons/eat.png"
-dest_files=[ "res://.import/eat.png-d88df8ffa5fe776f1dafc7f363be3842.stex" ]
+source_file="res://assets/images/iconsgear/SwordBasic.png"
+dest_files=[ "res://.import/SwordBasic.png-ccb19e430f9a042ac91cdfea6db8033d.stex" ]
 
 [params]
 

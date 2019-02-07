@@ -129,11 +129,12 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 4 )
 expand = true
-stretch_mode = 6
+stretch_mode = 7
 _sections_unfolded = [ "Mouse", "Visibility" ]
 
 [node name="HeroPanel" parent="." index="1" instance=ExtResource( 5 )]
 
+visible = false
 margin_left = 230.0
 margin_top = -890.0
 margin_right = 1178.0

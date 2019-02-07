@@ -8,10 +8,34 @@ var TranslationDict = {
 	MATERIALSTONE = "Stone",
 	MATERIALDESCRIPTSTONE = "Stone comes in many forms and shapes, but might serve as good building material or even poor instrumentum.",
 	STONEADJ = 'stone',
+	MATERIALELVENWOOD = "Elven Wood",
+	MATERIALDESCRIPTELVENWOOD = "An unusual wood with additional magic properties. ",
+	ELVENWOODADJ = "Elven",
+	MATERIALGOBLINMETAL = "Goblin Metal",
+	METARIALGOBLINGMETALDESCRIPT = "Rusty looking metal, still decent for some work. Can be used for a heavy armor. ",
+	GOBLINMETALADJ = "Goblin",
+	MATERIALELVENMETAL = "Elven Metal",
+	METARIALELVENMETALDESCRIPT = "Soft, but strong alloy storing some magic properties. ",
+	ELVENMETALADJ = "Elven",
+	MATERIALLETHER = "Leather",
+	MATERIALLETHERDESCRIPT = "A common animal leather. Can be used for a light armor.",
+	LEATHERADJ = "Leather",
+	MATERIALBONE = "Bone",
+	MATERIALBONEDESCRIPT = "A common animal bone. With right approach can provide some interesting properties. ",
+	BONEADJ = "Bone",
+	MATERIALCLOTH = "Cloth",
+	MATERIALCLOTHDESCRIPT = "A simple cotton fibre for simple clothes. Can be used for cloth armor. ",
+	CLOTHADJ = "Cotton",
+	
 	
 	#Items
 	WEAPONAXENAME = "Axe",
+	WEAPONPICKAXENAME = "Pickaxe",
 	WEAPONSWORDNAME = 'Sword',
+	WEAPONBOWNAME = "Bow",
+	WEAPONSTAFFNAME = "Staff",
+	
+	
 	WEAPONAXEDESCRIPT = 'Axe can be used for wood cutting and combat.',
 	WEAPONSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	
@@ -121,5 +145,9 @@ var TranslationDict = {
 	EMBER = 'Ember',
 	GOBLIN = 'Goblin',
 	GUARD = 'Guard',
+	
+	#Skills
+	ATTACK = "Attack",
+	ATTACKDESCRIPT = "Attacks target with equipped weapon. ",
 	
 }
