@@ -24,10 +24,10 @@ func show():
 		input_handler.PlaySound(open_sound)
 	close_played = false
 	input_handler.Open(self)
+	globals.call_deferred("EventCheck");
 
 func hide():
 	if is_visible_in_tree() && close_played == false:
 		input_handler.PlaySound(close_sound)
 		close_played = true
-	state.CurBuild = "";
 	input_handler.Close(self)

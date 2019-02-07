@@ -1,9 +1,5 @@
 [
 	{
-		"effect": "music",
-		"value": "intro"
-	},
-	{
 		"effect": "sfx",
 		"value": "blackscreenturnon",
 		"args": null,
@@ -40,7 +36,7 @@
 	{
 		"effect": "sprite",
 		"value": "set",
-		"args": "goblinmerc",
+		"args": "goblincmerc",
 	},
 	{
 		"effect":"text",

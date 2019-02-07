@@ -45,6 +45,10 @@ func hirehero():
 	open()
 
 func show():
-	.show();
 	state.CurBuild = "hero"
+	.show();
 	pass
+
+func hide():
+		state.CurBuild = "";
+		.hide();
