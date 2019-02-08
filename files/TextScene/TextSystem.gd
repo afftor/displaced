@@ -109,6 +109,7 @@ func Start(dict, line = 0):
 	CurrentLine = line;
 	set_process(true);
 	set_process_input(true);
+	enableskip = false;
 	AdvanceScene()
 
 func RestoreEnv(line):
