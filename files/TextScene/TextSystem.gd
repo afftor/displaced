@@ -36,7 +36,7 @@ func _process(delta):
 		Delay -= delta
 		if Delay < 0:
 			Delay = 0
-	if ((ReceiveInput == false && Delay == 0) || enableskip == true):
+	if ((ReceiveInput == false && Delay == 0) || (ReceiveInput == true && enableskip == true)):
 		AdvanceScene()
 
 func _input(event):
@@ -168,12 +168,16 @@ func AdvanceScene():
 		match NewEffect.effect:
 			'gui': #надо пофиксить некорректное скрытие-раскрытие 
 				GuiDo(NewEffect.value);
+				ReceiveInput = false;
 			'background':
 				input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value])
+				ReceiveInput = false;
 			'music':
 				input_handler.SetMusic(NewEffect.value)
+				ReceiveInput = false;
 			'sfx':
 				self.call(NewEffect.value, NewEffect.args)
+				ReceiveInput = false;
 			'text':
 				ShownCharacters = 0
 				if NewEffect.source != 'narrator':
@@ -193,6 +197,7 @@ func AdvanceScene():
 				ReceiveInput = true
 			'sprite':
 				SpriteDo(ImageSprite, NewEffect.value, NewEffect.args)
+				ReceiveInput = false;
 			'nextevent':
 				Start(NewEffect.value)
 			'stop':
