@@ -9,6 +9,7 @@ var previouspeed
 var daycolorchange = false
 var tasks = [] #Task Data Dict var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/3speed"]
+onready var BS = $BlackScreen;
 
 func _ready():
 	#self.visible = false
@@ -69,7 +70,8 @@ func _ready():
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-
+	globals.EventCheck();
+	
 
 func _process(delta):
 	if self.visible == false:

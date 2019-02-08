@@ -1,14 +1,15 @@
 [
   {
-    "effect": "music",
-    "value": "intro"
-  },
-  {
     "effect": "sfx",
     "value": "blackscreenturnon",
-	"args": null,
+	"args": null
+  },
+  {
+    "effect": "music",
+    "value": "intro",
 	"delay": 2
   },
+
   {
     "effect": "background",
     "value": "castle"
@@ -16,8 +17,8 @@
   {
     "effect": "sfx",
     "value": "blackscreenfade",
-	"args": 3,
-	"delay": 3
+	"args": 0.5,
+	"delay": 0.5
   },
   {
     "effect": "gui",
@@ -44,15 +45,16 @@
     "source": "narrator",
     "value": "His son and successor, Alcor, reinforced his father's achievments and continues his ruleship. As it happens in monarchy, his first son, Norbert, prepares to take his place, given Alcor's old age."
   },
+    {
+    "effect": "sprite",
+    "value": "set",
+	"args": "Arron",
+  },
   {
     "effect": "sprite",
     "value": "unfade",
 	"args": 0.5,
-  },
-  {
-    "effect": "sprite",
-    "value": "set",
-	"args": "Arron",
+	"delay":0.5
   },
   {
     "effect": "text",
@@ -81,15 +83,27 @@
   },
   {
     "effect": "text",
-    "portrait": null,
+    "portrait": "Lyra",
     "sound": null,
     "source": "LYRA",
     "value": "Huhu, enough, Arron, just come inside already. "
   },
   {
     "effect": "sprite",
+    "value": "fade",
+	"args": 0.5,
+	"delay":0.5
+  },  
+  {
+    "effect": "sprite",
     "value": "set",
 	"args": "Rose",
+  },
+  {
+    "effect": "sprite",
+    "value": "unfade",
+	"args": 0.5,
+	"delay":0.5
   },
   {
     "effect": "text",
@@ -105,6 +119,12 @@
     "source": "ROSE",
     "value": "(Oh, they went in. I better take my position. Sigh...) "
   },
+    {
+    "effect": "sprite",
+    "value": "fade",
+	"args": 0.5,
+	"delay":0.5
+  },  
   {
     "effect": "text",
     "portrait": "ArronSmile",
@@ -114,7 +134,7 @@
   },
   {
     "effect": "text",
-    "portrait": "LyraSmile",
+    "portrait": "Lyra",
     "sound": null,
     "source": "LYRA",
     "value": "You and your flattering again... Gosh, why are you naked already?"
@@ -128,7 +148,7 @@
   },
   {
     "effect": "text",
-    "portrait": "LyraSmile",
+    "portrait": "Lyra",
     "sound": null,
     "source": "LYRA",
     "value": "Oh my..."
@@ -139,6 +159,12 @@
     "sound": null,
     "source": "narrator",
     "value": "Few moments later"
+  },
+  {
+    "effect": "sprite",
+    "value": "unfade",
+	"args": 0.5,
+	"delay":0.5
   },
   {
     "effect": "text",
@@ -161,6 +187,12 @@
     "source": "narrator",
     "value": "*Knock Knock Knock*"
   },
+    {
+    "effect": "sprite",
+    "value": "fade",
+	"args": 0.5,
+	"delay":0.5
+  },  
   {
     "effect": "text",
     "portrait": null,
@@ -177,7 +209,7 @@
   },
   {
     "effect": "text",
-    "portrait": null,
+    "portrait": "ArronNeutral",
     "sound": null,
     "source": "ArronSmile",
     "value": "My sincirest apologies, My Lady."
@@ -191,7 +223,7 @@
   },
   {
     "effect": "text",
-    "portrait": "LyraShock",
+    "portrait": "Lyra",
     "sound": null,
     "source": "LYRA",
     "value": "I completely forgot, Norbert has jammed the door after last time."
@@ -212,21 +244,21 @@
   },
   {
     "effect": "text",
-    "portrait": "NorbertAngry",
+    "portrait": "NorbertRage",
     "sound": null,
     "source": "NORBERT",
     "value": "Where's he? "
   },
   {
     "effect": "text",
-    "portrait": "LyraSmile",
+    "portrait": "Lyra",
     "sound": null,
     "source": "LYRA",
     "value": "Dear, what are you doing? I've been taking a nap so nicely. Why have you brought these people into our love nest?"
   },
   {
     "effect": "text",
-    "portrait": "NorbertAngry",
+    "portrait": "NorbertRage",
     "sound": null,
     "source": "NORBERT",
     "value": "Check all cabinets... and look under the bed!"
@@ -254,14 +286,14 @@
   },
   {
     "effect": "text",
-    "portrait": "NorbertAngry",
+    "portrait": "NorbertRage",
     "sound": null,
     "source": "NORBERT",
     "value": "No way! He couldn't have gotten away, search it again."
   },
   {
     "effect": "text",
-    "portrait": "LyraNormal",
+    "portrait": "Lyra",
     "sound": null,
     "source": "LYRA",
     "value": "Hmph, if only you were this zealous at nights as you are right now. "
@@ -275,7 +307,7 @@
   },
   {
     "effect": "text",
-    "portrait": "NorbertAngry",
+    "portrait": "NorbertRage",
     "sound": null,
     "source": "NORBERT",
     "value": "What the... "
@@ -296,7 +328,7 @@
   },
   {
     "effect": "text",
-    "portrait": "NorbertAngry",
+    "portrait": "NorbertRage",
     "sound": null,
     "source": "NORBERT",
     "value": "ARRON!!"
@@ -323,11 +355,41 @@
     "value": "Ouch, stop dragging me, I can walk on my own!"
   },
   {
+    "effect": "sprite",
+    "value": "unfade",
+	"args": 0.5,
+	"delay":0.5
+  },
+  {
     "effect": "text",
     "portrait": "RoseShock",
     "sound": null,
     "source": "ROSE",
     "value": "(Oh-uh.. this didn't go well. I better follow them...)"
+  },
+    {
+    "effect": "gui",
+    "value": "hidegui",
+  },
+   {
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 0.5,
+	"delay": 0.5
+  },
+  {
+    "effect": "background",
+    "value": "dungeon"
+  }, 
+  {
+    "effect": "sprite",
+    "value": "set",
+	"args": "Arron",
+	"delay": 0.5
+  },
+    {
+    "effect": "gui",
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -387,7 +449,7 @@
   },
   {
     "effect": "text",
-    "portrait": "NorbertAngry",
+    "portrait": "NorbertRage",
     "sound": null,
     "source": "NORBERT",
     "value": "THAT WAS THE ONLY REASON!? Because she's MY wife?"
@@ -441,6 +503,10 @@
     "source": "ARRON",
     "value": "... What? This is what you are preparing?"
   },
+    {
+    "effect": "background",
+    "value": "dungeon1"
+  },
   {
     "effect": "text",
     "portrait": null,
@@ -483,6 +549,23 @@
     "source": "NORBERT",
     "value": "Nobody will know, and nobles will confirm that you just disappered during the night. Everyone will be more happy without you around."
   },
+    {
+    "effect": "sprite",
+    "value": "fade",
+	"args": 0.5,
+	"delay":0.5
+  },  
+  {
+    "effect": "sprite",
+    "value": "set",
+	"args": "Rose",
+  },
+  {
+    "effect": "sprite",
+    "value": "unfade",
+	"args": 0.5,
+	"delay":0.5
+  },
   {
     "effect": "text",
     "portrait": "RoseShock",
@@ -512,6 +595,12 @@
     "value": "Rose? What the... "
   },
   {
+    "effect": "sprite",
+    "value": "fade",
+	"args": 0.5,
+	"delay":0.5
+  }, 
+  {
     "effect": "text",
     "portrait": null,
     "sound": null,
@@ -525,11 +614,15 @@
     "source": "NORBERT",
     "value": "Huh... was it his slave? Well, one less witness to carry about. Clean it all up, I'll prepare to make a report for father. "
   },
+    {
+    "effect": "gui",
+    "value": "hidegui",
+  },
   {
     "effect": "sfx",
     "value": "blackscreenturnon",
 	"args": null,
-	"delay": 2
+	"delay": 0.5
   },
   {
     "effect": "background",
@@ -538,8 +631,12 @@
   {
     "effect": "sfx",
     "value": "blackscreenfade",
-	"args": 2,
-	"delay": 2
+	"args": 0.5,
+	"delay": 0.5
+  },
+    {
+    "effect": "gui",
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -548,6 +645,18 @@
     "source": "narrator",
     "value": "*Slam*"
   },
+    {
+    "effect": "sfx",
+    "value": "shakeanim",
+	"args": 0.5,
+	"delay": 0.5
+  },
+  {
+    "effect": "sprite",
+    "value": "unfade",
+	"args": 0.5,
+	"delay":0.5
+  }, 
   {
     "effect": "text",
     "portrait": null,
@@ -596,6 +705,12 @@
     "sound": null,
     "source": "narrator",
     "value": "*Slam* "
+  },
+   {
+    "effect": "sfx",
+    "value": "shakespr",
+	"args": 0.5,
+	"delay": 0.5
   },
   {
     "effect": "text",
@@ -716,6 +831,12 @@
     "source": "ROSE",
     "value": "...Thankfully"
   },
+    {
+    "effect": "sprite",
+    "value": "fade",
+	"args": 0.5,
+	"delay": 0.5
+  },  
   {
     "effect": "stop",
     "value": ""

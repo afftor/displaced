@@ -30,7 +30,7 @@ var CurrentLine
 var heroguild = []
 
 var OldEvents = [];
-var CurEvent; #event name
+var CurEvent = ""; #event name
 var CurBuild;
 
 func _init():
