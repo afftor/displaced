@@ -2,8 +2,7 @@
 	{
 		"effect": "sfx",
 		"value": "blackscreenturnon",
-		"args": null,
-		"delay": 2
+		"args": null
 	},
 	{
 		"effect": "background",
@@ -12,8 +11,8 @@
 	{
 		"effect": "sfx",
 		"value": "blackscreenfade",
-		"args": 3,
-		"delay": 3
+		"args": 0.5,
+		"delay": 0.5
 	},
 	{
 		"effect": "gui",
@@ -40,7 +39,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"Oh, the pink skin mayor guy. Nice of you to drop by."
@@ -54,21 +53,21 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"You should be happy to see me. If you need anything done around here, you gonna need some workers, unless you are prepared to work with your two hands."
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"And neither of you look like you are used to working on your own."
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"Call me Flak. I'm the head of worker guild. You pay me, I lend you workers to do whatever you need."
@@ -82,21 +81,21 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"What a foul word for a young lady. They are not slaves, they are workers. And you will need them to move things around."
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"You have to feed them once in a while or they will stop working. Actually, business wasn't so great recently and since you just started here, I'll let you have one worker as a gift. "
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"Make sure to make some use of them. Goblins are shitty workers, so don't be shy of using a stick discipline."
@@ -117,7 +116,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
 		"value":"You bet. Good think I'm not a worker, heh. "

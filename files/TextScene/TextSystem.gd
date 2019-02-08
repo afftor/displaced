@@ -75,7 +75,7 @@ func _ready():
 	$Panel/Log.connect("pressed",self,'OpenLog')
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
 	#CurrentScene = SceneData.introdesert
-	
+	add_to_group('pauseprocess');
 
 
 func OpenLog():
@@ -100,7 +100,9 @@ func Start(dict, line = 0):
 	$Panel/DisplayName.visible = false
 	$Panel/CharPortrait.visible = false
 	$Panel.visible = false
-	$CharImage.modulate = Color(1, 1, 1, 1);
+	$CharImage.modulate = Color(1, 1, 1, 0);
+	#$bl.modulate = Color(1, 1, 1, 1);
+	$BlackScreen.modulate.a = 0;
 	CurrentScene = dict
 	if line > 0:
 		RestoreEnv(line);
@@ -148,14 +150,23 @@ func RestoreEnv(line):
 			pass
 		tmp -= 1;
 		pass
+		tmp = line - 1;
+	while tmp >= 0:
+		if CurrentScene[tmp].effect == 'sfx':
+			if CurrentScene[tmp].value == 'blackscreenturnon' or CurrentScene[tmp].value == 'blackscreenunfade':
+				blackscreenturnon();
+				break
+			pass
+		tmp -= 1;
+		pass
 	pass
 
 func AdvanceScene():
 	if CurrentScene.size() > CurrentLine:
 		var NewEffect = CurrentScene[CurrentLine]
 		match NewEffect.effect:
-			'gui':
-				$Panel.visible = !$Panel.visible
+			'gui': #надо пофиксить некорректное скрытие-раскрытие 
+				GuiDo(NewEffect.value);
 			'background':
 				input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value])
 			'music':
@@ -180,7 +191,7 @@ func AdvanceScene():
 						$Panel/CharPortrait.texture = images.portraits[NewEffect.portrait]
 				ReceiveInput = true
 			'sprite':
-				SpriteDo($CharImage, NewEffect.value, NewEffect.args)
+				SpriteDo(ImageSprite, NewEffect.value, NewEffect.args)
 			'nextevent':
 				Start(NewEffect.value)
 			'stop':
@@ -241,4 +252,21 @@ func blackscreenfade(duration = 0.5):
 func blackscreenunfade(duration = 0.5):
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.UnfadeAnimation($BlackScreen, duration)
+
+func shakeanim(duration = 0.2):
+	input_handler.emit_signal("ScreenChanged")
+	input_handler.ShakeAnimation(self, duration)
+
+func shakespr(duration = 0.2):
+	input_handler.emit_signal("ScreenChanged")
+	input_handler.ShakeAnimation(ImageSprite, duration)
+
+func GuiDo(value):
+	match value:
+		'showgui':
+			$Panel/DisplayName.visible = false
+			$Panel/CharPortrait.visible = false
+			$Panel.visible = true
+		'hidegui':
+			$Panel.visible = false
 

@@ -6,6 +6,11 @@ var backgrounds = {
 	desert = load("res://assets/images/backgrounds/desert.png"),
 	villageday = load("res://assets/images/backgrounds/villageday.png"),
 	villagnight = load("res://assets/images/backgrounds/villagenight.png"),
+	dungeon = load("res://assets/images/backgrounds/dungeon.png"),
+	dungeon1 = load("res://assets/images/backgrounds/dungeoncircle.png"),
+	forge = load("res://assets/images/backgrounds/forge.png"),
+	market = load("res://assets/images/backgrounds/market.png"),
+	hall = load("res://assets/images/backgrounds/townhall.png"),
 	}
 
 var sprites = {
@@ -16,6 +21,8 @@ var sprites = {
 	goblincmerc = load("res://assets/images/sprites/goblinmerc.png"),
 	emberhappy = load("res://assets/images/sprites/EmberHappy.png"),
 	embershock = load("res://assets/images/sprites/EmberSurprise.png"),
+	erica = load("res://assets/images/sprites/erica.png"),
+	erica_n = load("res://assets/images/sprites/ericanaked.png")
 	}
 
 var portraits = {
@@ -30,6 +37,17 @@ var portraits = {
 	RoseNormal = load("res://assets/images/portraits/RoseNormal.png"),
 	RoseSad = load("res://assets/images/portraits/RoseSad.png"),
 	RoseSarcastic = load("res://assets/images/portraits/RoseSarcastic.png"),
+	RoseShock = load("res://assets/images/portraits/RoseShocked.png"),
+	RoseTalk = load("res://assets/images/portraits/RoseTalk.png"),
+	EricaAnnoyed = load("res://assets/images/portraits/EricaAnnoyed.png"),
+	EricaHappy = load("res://assets/images/portraits/EricaHappy.png"),
+	EricaNormal = load("res://assets/images/portraits/EricaNormal.png"),
+	goblin = load("res://assets/images/portraits/GoblinPeasant.png"),
+	Flak = load("res://assets/images/portraits/GoblinTrader.png"),
+	Guard = load("res://assets/images/portraits/guard.png"),
+	Lyra = load("res://assets/images/portraits/Lyra.png"),
+	NorbertNormal = load("res://assets/images/portraits/NorbertNormal.png"),
+	NorbertRage = load("res://assets/images/portraits/NorbertRage.png"),
 }
 
 var combatportraits = {

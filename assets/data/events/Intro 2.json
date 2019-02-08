@@ -2,8 +2,7 @@
   {
     "effect": "sfx",
     "value": "blackscreenturnon",
-	"args": null,
-	"delay": 2
+	"args": null
   },
   {
     "effect": "background",
@@ -12,8 +11,8 @@
   {
     "effect": "sfx",
     "value": "blackscreenfade",
-	"args": 3,
-	"delay": 3
+	"args": 0.5,
+	"delay": 0.5
   },
   {
     "effect": "gui",
@@ -66,6 +65,12 @@
 		"value": "set",
 		"args": "goblin",
 	},
+{
+		"effect": "sprite",
+		"value": "unfade",
+		"args": 0.5,
+		"delay":0.5
+	},
   {
     "effect": "text",
     "portrait": "ArronNeutral",
@@ -75,7 +80,7 @@
   },
   {
     "effect": "text",
-    "portrait": "Null",
+    "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
     "value": "What does it look like to you? We live here."
@@ -89,7 +94,7 @@
   },
   {
     "effect": "text",
-    "portrait": "Null",
+    "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
     "value": "Do I look like I ever was somewhere else to care about? Or like I ever seen a map? "
@@ -110,7 +115,7 @@
   },
   {
     "effect": "text",
-    "portrait": "Null",
+    "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
     "value": "A fucking big deal. Adventurers come and go all the time. Some even stay around for a while."
@@ -124,7 +129,7 @@
   },
   {
     "effect": "text",
-    "portrait": "Null",
+    "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
     "value": "Eh? We don't belong to anyone, since nobody really cares about this desert. This place might look like a dump, but it's totally free. "
@@ -138,7 +143,7 @@
   },
   {
     "effect": "text",
-    "portrait": "Null",
+    "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
     "value": "No. I told just you, that..."
@@ -174,14 +179,22 @@
   {
 		"effect": "sprite",
 		"value": "fade",
-		"args": 1,
-		"delay": 1
+		"args":0.5,
+		"delay": 0.5
 	},
+	{
+    "effect": "gui",
+    "value": "hidegui",
+  },
   {
     "effect": "sfx",
     "value": "blackscreenturnon",
 	"args": null,
-	"delay": 2
+	"delay":0.5
+  },
+   {
+    "effect": "gui",
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -193,8 +206,8 @@
   {
     "effect": "sfx",
     "value": "blackscreenfade",
-	"args": 3,
-	"delay": 3
+	"args": 0.5,
+	"delay": 0.5
   },
   {
     "effect": "text",
@@ -248,11 +261,12 @@
   {
 		"effect": "sprite",
 		"value": "unfade",
-		"args": 1,
+		"args": 0.5,
+		"delay": 0.5
 	},
   {
     "effect": "text",
-    "portrait": "Null",
+    "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
     "value": "Oi, Governor, since you are responsible for the village now, Flak from market asks you to visit him."
@@ -273,7 +287,7 @@
   },
   {
     "effect": "text",
-    "portrait": "Null",
+    "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
     "value": "He is busy, I guess. Just don't take too long."
@@ -281,7 +295,8 @@
   {
 		"effect": "sprite",
 		"value": "fade",
-		"args": 1,
+		"args":0.5,
+		"delay": 0.5
 	},
   {
     "effect": "text",

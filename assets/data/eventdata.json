@@ -1,9 +1,15 @@
 {
-"intro 2":[
+"intro":[
 {"type":"no_check"}
+],
+"intro 2":[
+{"type":"event_finished", "name":"intro"}
 ],
 "Market":[
 {"type":"building", "value":"slave"},
 {"type":"event_finished", "name":"intro 2"}
+],
+"test":[
+{"type":"no_check"}
 ]
 }

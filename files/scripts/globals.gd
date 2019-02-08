@@ -183,6 +183,7 @@ func LoadEventData():
 	pass
 
 func EventCheck():
+	if state.CurEvent != "": return;
 	for event in EventList.keys():
 		if state.OldEvents.has(event): continue;
 		var res = true;

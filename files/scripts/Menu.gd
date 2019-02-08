@@ -10,10 +10,11 @@ func _ready():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 
 func newgame():
-	globals.ChangeScene('town')
 	get_node("/root").remove_child(self)
+	globals.ChangeScene('town')
+	
 	yield(globals, 'scene_changed')
-	globals.StartEventScene("Intro")
+	#globals.StartEventScene("Intro")
 	self.queue_free()
 
 func loadwindow():
