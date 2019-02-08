@@ -144,7 +144,11 @@ var TranslationDict = {
 	ROSE = 'Rose',
 	EMBER = 'Ember',
 	GOBLIN = 'Goblin',
-	GUARD = 'Guard',
+	GUARD1 = 'Guard1',
+	GUARD2 = 'Guard2',
+	GUARD3 = 'Guard3',
+	NORBERT = 'Norbert',
+	LYRA = "Lyra",
 	
 	#Skills
 	ATTACK = "Attack",

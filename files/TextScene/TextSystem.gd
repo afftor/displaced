@@ -54,6 +54,7 @@ func _input(event):
 			$LogPanel.hide()
 		return
 	
+	
 	if (event.is_action("LMB") || event.is_action("MouseDown")) && event.is_pressed() && $Panel.visible:
 		if $Panel/Log.get_global_rect().has_point(get_global_mouse_position()) || $Panel/Options.get_global_rect().has_point(get_global_mouse_position()):
 			return
