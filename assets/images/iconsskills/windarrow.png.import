@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/5.png-bcef7ddc2c936c035b7adb28761625aa.stex"
+path="res://.import/windarrow.png-988186fdaa430651376779e74b3937f6.stex"
 
 [deps]
 
-source_file="res://assets/images/scenes/5.png"
-dest_files=[ "res://.import/5.png-bcef7ddc2c936c035b7adb28761625aa.stex" ]
+source_file="res://assets/images/iconsskills/windarrow.png"
+dest_files=[ "res://.import/windarrow.png-988186fdaa430651376779e74b3937f6.stex" ]
 
 [params]
 

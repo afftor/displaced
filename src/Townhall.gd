@@ -14,7 +14,7 @@ func tasklist():
 	globals.ClearContainer($TaskList/ScrollContainer/VBoxContainer)
 	for i in TownData.tasksdict:
 		var newbutton = globals.DuplicateContainerTemplate($TaskList/ScrollContainer/VBoxContainer)
-		newbutton.get_node("Label").text = i.name
+		newbutton.get_node("name").text = i.name
 		newbutton.connect("pressed", self, 'selecttaskfromlist', [i])
 
 

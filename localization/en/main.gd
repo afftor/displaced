@@ -39,11 +39,12 @@ var TranslationDict = {
 	WEAPONAXEDESCRIPT = 'Axe can be used for wood cutting and combat.',
 	WEAPONSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	
-	ARMORHEAVYCHEST = "Plate Chest",
+	ARMORBASICCHEST = "Chestplate",
 	
 	#Stats
 	DAMAGE = 'Damage',
 	ARMOR = 'Armor',
+	MDEF = "Magic Armor",
 	EVASION = 'Evasion',
 	HITRATE = 'Hit Chance',
 	HEALTH = 'Health',
@@ -54,6 +55,9 @@ var TranslationDict = {
 	RESISTEARTH = "Earth Res.",
 	RESISTAIR = "Air Res.",
 	RESISTWATER = "Water Res.",
+	HEALTHPERCENT = "Max. Health",
+	MANAPERCENT = "Max. Mana",
+	
 	
 	
 	#Item Parts

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/4.png-3e4da4b12ab2589dea710b412c8df367.stex"
+path="res://.import/cripple.png-45f7789487eb7cd50dd2a26b000c3670.stex"
 
 [deps]
 
-source_file="res://assets/images/scenes/4.png"
-dest_files=[ "res://.import/4.png-3e4da4b12ab2589dea710b412c8df367.stex" ]
+source_file="res://assets/images/iconsskills/cripple.png"
+dest_files=[ "res://.import/cripple.png-45f7789487eb7cd50dd2a26b000c3670.stex" ]
 
 [params]
 

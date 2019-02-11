@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/2.png-e8f934cf52a3de48cbed34fee1ad83f2.stex"
+path="res://.import/meditate.png-8ab0eb9b2c1c6969e557273b03cf6c9b.stex"
 
 [deps]
 
-source_file="res://assets/images/scenes/2.png"
-dest_files=[ "res://.import/2.png-e8f934cf52a3de48cbed34fee1ad83f2.stex" ]
+source_file="res://assets/images/iconsskills/meditate.png"
+dest_files=[ "res://.import/meditate.png-8ab0eb9b2c1c6969e557273b03cf6c9b.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/3.png-952011dfb628ec5ef8a6bf22e4138747.stex"
+path="res://.import/RoseCG3.png-bb5d0ee06f9d429cca82560ffbd28d10.stex"
 
 [deps]
 
-source_file="res://assets/images/scenes/3.png"
-dest_files=[ "res://.import/3.png-952011dfb628ec5ef8a6bf22e4138747.stex" ]
+source_file="res://assets/images/scenes/RoseCG3.png"
+dest_files=[ "res://.import/RoseCG3.png-bb5d0ee06f9d429cca82560ffbd28d10.stex" ]
 
 [params]
 
