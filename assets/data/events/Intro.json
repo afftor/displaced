@@ -22,7 +22,7 @@
   },
   {
     "effect": "gui",
-    "value": "showgui",
+    "value": "gui_normal",
   },
   {
     "effect": "text",
@@ -389,7 +389,7 @@
   },
     {
     "effect": "gui",
-    "value": "showgui",
+    "value": "showgui"
   },
   {
     "effect": "text",
@@ -636,7 +636,7 @@
   },
     {
     "effect": "gui",
-    "value": "showgui",
+    "value": "showgui"
   },
   {
     "effect": "text",

@@ -1,0 +1,48 @@
+  {
+    "effect": "text",
+    "portrait": "",
+    "sound": null,
+    "source": "ROSE",
+    "value": ""
+  },
+  
+    {
+    "effect": "text",
+    "portrait": "",
+    "sound": null,
+    "source": "ARRON",
+    "value": ""
+  },
+  
+  
+    {
+    "effect": "text",
+    "portrait": null,
+    "sound": null,
+    "source": "narrator",
+    "value": ""
+  },
+  
+  {
+    "effect": "text",
+    "portrait": null,
+    "sound": null,
+    "source": "GOBLIN",
+    "value": ""
+  },
+  
+  {
+    "effect": "sprite",
+    "value": "fade",
+	"args": 0.5,
+  },  
+  {
+    "effect": "sprite",
+    "value": "set",
+	"args": "Arron",
+  },
+  {
+    "effect": "sprite",
+    "value": "unfade",
+	"args": 0.5,
+  },

@@ -16,7 +16,7 @@
 	},
 	{
 		"effect": "gui",
-		"value": "showgui",
+		"value": "showgui"
 	},
 	{
 		"effect":"text",
@@ -39,7 +39,7 @@
 	{
 		"effect": "sprite",
 		"value": "set",
-		"args": "goblincmerc",
+		"args": "goblincmerc"
 	},
 	{
 		"effect":"text",
@@ -123,7 +123,8 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"You bet. Good think I'm not a worker, heh. "
+		"value":"You bet. Good think I'm not a worker, heh. ",
+		"delay": 0.1
 	},
 	{
 		"effect": "stop",

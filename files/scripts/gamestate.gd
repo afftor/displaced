@@ -147,3 +147,8 @@ func valuecheck(dict):
 		"building":
 			return CurBuild == dict['value'];
 	pass
+
+func get_character_by_pos(pos):
+	if combatparty[pos] == null: return null;
+	return heroes[combatparty[pos]];
+	pass

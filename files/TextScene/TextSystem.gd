@@ -186,8 +186,8 @@ func AdvanceScene():
 					text_log += '\n\n' + tr(NewEffect.value)
 				TextField.visible_characters = ShownCharacters
 				TextField.bbcode_text = tr(NewEffect.value)
-				$Panel/DisplayName.visible = NewEffect.source != 'narrator'
-				$Panel/CharPortrait.visible = NewEffect.source != 'narrator'
+				$Panel/DisplayName.modulate = Color(1,1,1,1) if NewEffect.source != 'narrator' else Color(1,1,1,0);
+				$Panel/CharPortrait.modulate = Color(1,1,1,1) if NewEffect.source != 'narrator' else Color(1,1,1,0);
 				$Panel/DisplayName/Label.text = tr(NewEffect.source)
 				if $Panel/CharPortrait.visible:
 					if NewEffect.portrait == null || images.portraits.has(NewEffect.portrait) == false:
@@ -206,6 +206,7 @@ func AdvanceScene():
 			Delay = NewEffect.delay
 		
 		CurrentLine += 1
+#	else: StopEvent();
 
 func SpriteDo(node, value, args):
 	match value:
@@ -269,10 +270,39 @@ func shakespr(duration = 0.2):
 
 func GuiDo(value):
 	match value:
-		'showgui':
-			$Panel/DisplayName.visible = false
-			$Panel/CharPortrait.visible = false
+		'gui_normal', 'showgui':
+			$Panel.texture = images.gui['norm_back'];
+			$Panel.modulate = Color(1,1,1,1);
+			$Panel/DisplayName.visible = true
+			$Panel/DisplayName.modulate = Color(1,1,1,0);
+			$Panel/CharPortrait.visible = true
+			$Panel/CharPortrait.modulate = Color(1,1,1,0);
 			$Panel.visible = true
+			$Panel/Options.visible = true;
+			$CharImage.visible = true;
+			$Background.visible = true;
 		'hidegui':
 			$Panel.visible = false
+		'gui_full':
+			$Panel.texture = images.gui['alt_back'];
+			$Panel.modulate = Color(1.0, 0.5, 0.5, 0.5);
+			$Panel/DisplayName.visible = true
+			$Panel/CharPortrait.visible = false
+			$Panel.visible = true
+			$Panel/Options.visible = true;
+			$CharImage.visible = false;
+			$Background.visible = true;
+			pass
+		'gui_inside':
+			$Panel.texture = images.gui['norm_back'];
+			$Panel.modulate = Color(1,1,1,1);
+			$Panel/DisplayName.visible = true
+			$Panel/DisplayName.modulate = Color(1,1,1,0);
+			$Panel/CharPortrait.visible = true
+			$Panel/CharPortrait.modulate = Color(1,1,1,0);
+			$Panel.visible = true
+			$Panel/Options.visible = false;
+			$CharImage.visible = false;
+			$Background.visible = false;
+			pass
 

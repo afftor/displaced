@@ -140,7 +140,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="TextSystem" type="Control"]
+[node name="TextSystem" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -225,6 +225,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="Panel" type="TextureRect" parent="." index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -303,7 +304,7 @@ group = null
 text = "Log"
 flat = false
 align = 1
-_sections_unfolded = [ "Textures", "custom_styles" ]
+_sections_unfolded = [ "Textures", "Visibility", "custom_styles" ]
 
 [node name="Options" type="Button" parent="Panel" index="2"]
 
