@@ -151,7 +151,7 @@ func checkcreatingitem(item):
 		partdict[i] = itemparts[i].material
 	enditem = globals.CreateGearItem(item, partdict)
 	#enditem.CreateGear(item, partdict)
-	text = enditem.tooltipfull()
+	text = enditem.tooltiptext()
 	if fullrecipe == false:
 		text += '\n\n[color=red]' + tr('SELECTMATERIAL') + '[/color]\n\n'
 	else:
@@ -239,7 +239,14 @@ func repairallitems():
 	repairitems()
 	updaterepairlist()
 
+func show():
+	state.CurBuild = "blacksmith"
+	.show();
+	pass
 
+func hide():
+		state.CurBuild = "";
+		.hide();
 #var selectedrepairingitem
 #
 #func repairingitemselected(item):

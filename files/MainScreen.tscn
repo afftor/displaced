@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/MainScreen.gd" type="Script" id=2]
@@ -58,12 +58,14 @@
 [ext_resource path="res://assets/images/gui/universal/progressbar.png" type="Texture" id=56]
 [ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=57]
 [ext_resource path="res://files/Blacksmith/Blacksmith.tscn" type="PackedScene" id=58]
-[ext_resource path="res://files/Blacksmith/SlaveMarket.tscn" type="PackedScene" id=59]
-[ext_resource path="res://files/HeroGuild.tscn" type="PackedScene" id=60]
-[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=61]
-[ext_resource path="res://FoodConvert.tscn" type="PackedScene" id=62]
-[ext_resource path="res://src/ExploreScreen.tscn" type="PackedScene" id=63]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=64]
+[ext_resource path="res://files/Blacksmith/TownHall.tscn" type="PackedScene" id=59]
+[ext_resource path="res://files/Blacksmith/SlaveMarket.tscn" type="PackedScene" id=60]
+[ext_resource path="res://files/HeroGuild.tscn" type="PackedScene" id=61]
+[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=62]
+[ext_resource path="res://FoodConvert.tscn" type="PackedScene" id=63]
+[ext_resource path="res://src/ExploreScreen.tscn" type="PackedScene" id=64]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=65]
+[ext_resource path="res://files/SFX/black.png" type="Texture" id=66]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -1754,35 +1756,41 @@ _sections_unfolded = [ "BBCode", "Mouse" ]
 
 visible = false
 
-[node name="SlaveMarket" parent="." index="17" groups=[
+[node name="TownHall" parent="." index="17" groups=[
 "pauseprocess",
 ] instance=ExtResource( 59 )]
 
 visible = false
 
-[node name="HeroGuild" parent="." index="18" groups=[
+[node name="SlaveMarket" parent="." index="18" groups=[
 "pauseprocess",
 ] instance=ExtResource( 60 )]
 
 visible = false
 
-[node name="HeroList" parent="." index="19" instance=ExtResource( 61 )]
-
-visible = false
-
-[node name="FoodConvert" parent="." index="20" instance=ExtResource( 62 )]
-
-visible = false
-
-[node name="ExploreScreen" parent="." index="21" groups=[
+[node name="HeroGuild" parent="." index="19" groups=[
 "pauseprocess",
-] instance=ExtResource( 63 )]
+] instance=ExtResource( 61 )]
 
 visible = false
 
-[node name="MenuPanel" parent="." index="22" groups=[
+[node name="HeroList" parent="." index="20" instance=ExtResource( 62 )]
+
+visible = false
+
+[node name="FoodConvert" parent="." index="21" instance=ExtResource( 63 )]
+
+visible = false
+
+[node name="ExploreScreen" parent="." index="22" groups=[
 "pauseprocess",
 ] instance=ExtResource( 64 )]
+
+visible = false
+
+[node name="MenuPanel" parent="." index="23" groups=[
+"pauseprocess",
+] instance=ExtResource( 65 )]
 
 visible = false
 margin_left = 780.0
@@ -1790,7 +1798,7 @@ margin_top = 320.0
 margin_right = 1099.0
 margin_bottom = 714.0
 
-[node name="BlackScreen" type="Panel" parent="." index="23"]
+[node name="BlackScreen" type="TextureRect" parent="." index="24"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -1802,13 +1810,16 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+texture = ExtResource( 66 )
+expand = true
+stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Tween" type="Tween" parent="." index="24"]
+[node name="Tween" type="Tween" parent="." index="25"]
 
 repeat = false
 playback_process_mode = 1

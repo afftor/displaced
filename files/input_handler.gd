@@ -74,6 +74,17 @@ func Open(node):
 	OpenAnimation(node)
 	CloseableWindowsArray.append(node)
 
+func GetItemTooltip():
+	var tooltipnode
+	var node = get_tree().get_root()
+	if node.has_node('itemtooltip'):
+		tooltipnode = node.get_node('itemtooltip')
+	else:
+		tooltipnode = load("res://files/Simple Tooltip/Imagetooltip.tscn").instance()
+		tooltipnode.name = 'itemtooltip'
+		node.add_child(tooltipnode)
+	return tooltipnode
+
 func GetTweenNode(node):
 	var tweennode
 	if node.find_node('tween'):
@@ -217,7 +228,7 @@ func itemshadeimage(node, item):
 		var part = 'part' +  str(item.partcolororder[i]) + 'color'
 		var color = Items.Materials[item.parts[i]].color
 		node.material.set_shader_param(part, color)
-
+	
 
 
 #Enlarge/fade out animation
@@ -235,7 +246,7 @@ func CloseAnimation(node):
 	node.visible = false
 	BeingAnimated.erase(node)
 	globals.hidetooltip()
-	globals.call_deferred('EventCheck');
+	#globals.call_deferred('EventCheck');
 
 func OpenAnimation(node):
 	if BeingAnimated.has(node) == true:
@@ -248,6 +259,7 @@ func OpenAnimation(node):
 	tweennode.start()
 	yield(get_tree().create_timer(0.3), 'timeout')
 	BeingAnimated.erase(node)
+	#globals.call_deferred('EventCheck');
 
 func FadeAnimation(node, time = 0.3, delay = 0):
 	var tweennode = GetTweenNode(node)
@@ -303,7 +315,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 	var result
 	match req.type:
 		'stats':
-			result = input_handler.operate(req.operant, combatant[req.name], req.value)
+			result = input_handler.operate(req.operant, combatant.get(req.name), req.value)
 		'gear':
 			match req.slot:
 				'any':

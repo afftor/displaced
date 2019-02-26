@@ -16,6 +16,7 @@ var useskill
 var foodvalue
 
 #Gear Data
+var type
 var itemtype
 var geartype
 var subtype
@@ -166,31 +167,30 @@ func tooltiptext():
 				if i in ['hpmod', 'manamod']:
 					value = change + value + '%'
 				text += value + '}\n'
+		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += descirption + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
 	
+	
+	text = globals.TextEncoder(text)
 	return text
 
-func tooltipeffects(mode):
+func tooltipeffects():
 	var text = ''
 	for i in effects:
 		text += "{color=" + globals.effects[i].textcolor + '|' + globals.effects[i].descript
 		text += '}\n'
 	return text
 
-func tooltip():
+func tooltip(targetnode):
 	var text = tooltiptext()
-	if itemtype in ['armor','weapon']:
-		text += tooltipeffects('short')
-	return globals.TextEncoder(text)
+	var image
+	var node = input_handler.GetItemTooltip()
+	node.showup(targetnode, self)
 
-func tooltipfull():
-	var text = tooltiptext() + '\n'
-	if itemtype in ['armor','weapon']:
-		text += tooltipeffects('full')
-	return globals.TextEncoder(text)
-
-
+func hidetooltip():
+	var node = input_handler.GetItemTooltip()
+	node.hide()
 
 func repairwithmaterials():
 	var materialsdict = counterepairmaterials()

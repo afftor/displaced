@@ -1,11 +1,16 @@
 {
-"test_event":[
-{"type":"has_money", "value":100},
-{"type":"has_property", "prop":"money", "value":100}
+
+"Intro 2":[
+{"type":"event_finished", "name":"Intro_convert"}
 ],
-"test_event_2":[
-{"type":"no_check"},
-{"type":"date", "date":3},
-{"type":"event_finished", "name":"test_event"}
+"Market":[
+{"type":"building", "value":"slave"},
+{"type":"event_finished", "name":"Intro 2"}
+],
+"Test 1":[
+{"type":"no_check"}
+],
+"Intro_convert":[
+{"type":"no_check"}
 ]
 }

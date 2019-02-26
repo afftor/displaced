@@ -1,0 +1,60 @@
+[
+	{
+		"effect": "gui",
+		"value": "gui_inside"
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Different workers, eh?"
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Few months ago we also had elves delivered from the east forest. "
+	},
+	{
+		"effect":"text",
+		"portrait":"RoseNormal",
+		"sound":null,
+		"source":"ROSE",
+		"value":"Wow, elves as hired workers? Had no idea they do stuff like that. Not from at our kingdom at least."
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Everyone have to eat, young lady. At more prosper times there were all sorts of workers here."
+	},
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
+		"value":"So why they no longer come here? "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"No clue. I prefer not to stick my nose into their... lifestyle. Maybe you will figure out. "
+	},
+	{
+		"effect":"text",
+		"portrait":"RoseNormal",
+		"sound":null,
+		"source":"ROSE",
+		"value":"Speaking of which, the elves might have some clues on our problem. ",
+		"delay": 0.1
+	},
+	  {
+    "effect": "stop",
+    "value": ""
+  }
+]

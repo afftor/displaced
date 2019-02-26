@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/images/backgrounds/forge.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/sprites/EmberHappy.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/axe.jpg" type="Texture" id=10]
+[ext_resource path="res://files/ItemShader.tres" type="Material" id=10]
 [ext_resource path="res://assets/images/gui/buildings/itemcreationpanel.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/axe.png" type="Texture" id=12]
 [ext_resource path="res://icon.png" type="Texture" id=13]
@@ -82,7 +82,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="Blacksmith" type="TextureRect" index="0"]
+[node name="Blacksmith" type="TextureRect"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -248,7 +248,6 @@ _sections_unfolded = [ "Mouse", "Visibility" ]
 
 [node name="ItemSelection" type="TextureRect" parent="." index="3"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -311,6 +310,7 @@ _sections_unfolded = [ "custom_constants" ]
 [node name="Button" type="TextureButton" parent="ItemSelection/ScrollContainer/GridContainer" index="0"]
 
 visible = false
+material = ExtResource( 10 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -329,9 +329,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 10 )
 expand = true
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Material", "Textures" ]
 
 [node name="ItemCreationWindow" type="TextureRect" parent="." index="4"]
 

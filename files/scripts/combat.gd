@@ -401,7 +401,7 @@ func FighterMouseOver(fighter):
 	panel.get_node("hplabel").text = str(fighter.hp) + '/' + str(fighter.hpmax())
 	panel.get_node("mplabel").text = str(fighter.mana) + '/' + str(fighter.manamax())
 	if allowaction == true && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
-		if CheckParty(fighter) == 'enemy':
+		if fighter.combatgroup == 'enemy':
 			Input.set_custom_mouse_cursor(cursors.attack)
 		else:
 			Input.set_custom_mouse_cursor(cursors.support)
@@ -451,6 +451,7 @@ func buildenemygroup(enemygroup):
 	for i in enemygroup:
 		if enemygroup[i] == null:
 			continue
+		enemygroup[i].combatgroup = 'enemy'
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)
 
@@ -461,6 +462,7 @@ func buildplayergroup(group):
 		if group[i] == null:
 			continue
 		var fighter = state.heroes[group[i]]
+		fighter.combatgroup = 'ally'
 		battlefield[i] = fighter
 		make_fighter_panel(battlefield[i], i)
 		newgroup[i] = fighter
@@ -605,7 +607,8 @@ func CalculateTargets(skill, caster, target):
 func hitchance(skill, caster, target):
 	var rval
 	
-	if hitchancevalue(skill, caster, target) > rand_range(0,100):
+	
+	if skill.skilltype == 'item' || caster.combatgroup == target.combatgroup || hitchancevalue(skill, caster, target) > rand_range(0,100):
 		rval = 'hit'
 	else:
 		rval = 'miss'
@@ -642,6 +645,10 @@ func execute_skill(skill, caster, target):
 	var endvalue = 0
 	
 	
+	var crit = false
+	if caster.critchance >= randf()*100:
+		crit = true
+	
 	#damage calculation
 	
 	endvalue = calculate_number_from_string_array(skill.value, caster, target)
@@ -653,9 +660,8 @@ func execute_skill(skill, caster, target):
 		else:
 			var weapon = state.items[caster.gear.rhand]
 			rangetype = weapon.weaponrange
-	if rangetype == 'melee' && FindFighterRow(caster) == 'backrow' && !CheckMeleeRange(CheckParty(caster)):
+	if rangetype == 'melee' && FindFighterRow(caster) == 'backrow' && !CheckMeleeRange(caster.combatgroup):
 		endvalue /= 2
-	
 	
 	var damagetype
 	var extradamage = []
@@ -692,25 +698,25 @@ func execute_skill(skill, caster, target):
 					subtarget.add_buff(buff)
 				'extradamage':
 					extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
+	
+	
+	if crit == true:
+		endvalue *= caster.critmod
+	
+	
+	#damage type
 	if skill.damagetype == 'weapon':
 		damagetype = 'phys'
 	else:
 		damagetype = skill.damagetype
 	
-	#crit calculations
-	if randf() < caster.critchance:
-		endvalue *= caster.critmod
-	
 	var damage_dict = {value = endvalue, element = damagetype, type = skill.skilltype, tags = skill.tags}
+	
+	
 	deal_damage(damage_dict, caster, target)
 	for i in extradamage:
 		deal_damage(i.damage_dict, caster, i.target)
 
-func CheckParty(fighter):
-	if fighter.position in range(1,7):
-		return 'player'
-	else:
-		return 'enemy'
 
 func deal_damage(damage_dict, caster, target):
 	var endvalue = damage_dict.value
@@ -728,38 +734,7 @@ func deal_damage(damage_dict, caster, target):
 	
 	if damagetype in ['fire','water','air','earth']:
 		endvalue = endvalue * ((100 - target['resist' + damagetype])/100)
-	
-	for i in target.passives.damagetaken:
-		var passive = globals.combateffects[globals.effects[i].triggereffect]
-		if checkreqs(passive, caster, target) == false:
-			continue
-		
-		var neweffect = passive.effectvalue
-		var newvalue
-		if passive.effect != 'buff':
-			newvalue = calculate_number_from_string_array(neweffect.value, caster, target)
-		var subtarget
-		if passive.has('receiver'):
-			if passive.receiver == 'caster':
-				subtarget = caster
-			elif passive.receiver == 'target':
-				subtarget = target
-		match passive.effect:
-			'skillmod':
-				match neweffect.type:
-					'damagemod':
-						endvalue *= (1+newvalue)
-					'damage':
-						endvalue += newvalue
-				
-			'gainstat':
-				subtarget[neweffect.type] += newvalue
-			'buff':
-				var buff = makebuff(passive.effectvalue, caster, target)
-				subtarget.add_buff(buff)
-			'extradamage':
-				extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
-	# строчкой выше - баг, так как extradamage определён внутри другой функции
+
 	if damage_dict.tags.has('heal'):
 		target.hp += ceil(endvalue)
 	else:
@@ -847,7 +822,7 @@ func RebuildItemPanel():
 		newbutton.get_node("Label").text = str(i.amount)
 		newbutton.set_meta('skill', i.useskill)
 		newbutton.connect('pressed', self, 'ActivateItem', [i])
-		globals.connecttooltip(newbutton, i.tooltip())
+		globals.connectitemtooltip(newbutton, i)
 
 func ClearItemPanel():
 	globals.ClearContainer($ItemPanel/ScrollContainer/GridContainer)

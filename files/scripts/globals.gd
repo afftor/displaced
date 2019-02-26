@@ -19,18 +19,18 @@ var scenedict = {
 var workersdict
 #var enemydata
 var randomgroups
-var enemylist
+#var enemylist
 #var skillsdata
 #var effectdata
 
 #var combatantdata = load("res://files/CombatantClass.gd").new()
 
-var classes = combatantdata.classlist
-var characters = combatantdata.charlist
-var skills
-var traits = combatantdata.traitlist
-var effects
-var combateffects
+#var classes = combatantdata.classlist
+#var characters = combatantdata.charlist
+#var skills
+#var traits = combatantdata.traitlist
+#var effects
+#var combateffects
 
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -128,22 +128,25 @@ func _ready():
 	randomize()
 	#Settings and folders
 	settings_load()
-	LoadEventData();
+	LoadEventData()
 	
-	#items = load("res://files/Items.gd").new()
-	#TownData = load('res://files/TownData.gd').new()
-	#enemydata = load("res://assets/data/enemydata.gd").new()
-	randomgroups = Enemydata.randomgroups
-	enemylist = Enemydata.enemylist
-	#skillsdata = load("res://assets/data/Skills.gd").new()
-	#effectdata = load("res://assets/data/Effects.gd").new()
-	effects = Effectdata.effects
-	combateffects = Effectdata.combateffects
-	skills = Skillsdata.skilllist
+	#===Necessary to apply translation===
+	#Items = load("res://files/Items.gd").new()
+	#Enemydata = load("res://assets/data/enemydata.gd").new()
+	#Skillsdata = load("res://assets/data/Skills.gd").new()
+	#Effectdata = load("res://assets/data/Effects.gd").new()
+	#TownData = load("res://files/TownData.gd").new()
+	#====================================
 	
-	workersdict = TownData.workersdict
 	
-#	state = gamestate.new()
+	#randomgroups = Enemydata.randomgroups
+	#enemylist = Enemydata.enemylist
+	#effects = Effectdata.effects
+	#combateffects = Effectdata.combateffects
+	#skills = Skillsdata.skilllist
+	
+	#workersdict = TownData.workersdict
+	
 	for i in Items.Materials:
 		state.materials[i] = 0
 	state.materials.wood = 10
@@ -180,19 +183,23 @@ func LoadEventData():
 	pass
 
 func EventCheck():
+	if state.CurEvent != "": return;
 	for event in EventList.keys():
-		if state.OldEvents.has(event): continue;
-		var res = true;
-		for check in EventList[event]:
-			if !state.valuecheck(check): 
-				res = false;
-				break;
-			pass
-		pass
-		if res:
-			state.CurEvent = event;
+		if SimpleEventCheck(event, false):
 			StartEventScene(event);
 			break;
+	pass
+
+func SimpleEventCheck(event, skip = true):
+	if state.OldEvents.has(event): return false;
+	for check in EventList[event]:
+		if check == {global = 'skip'}:
+			if skip: continue;
+			else: return false;
+		if !state.valuecheck(check): 
+			return false;
+		pass
+	return true;
 	pass
 
 func LoadEvent(name):
@@ -207,6 +214,7 @@ func LoadEvent(name):
 	return dict
 
 func StartEventScene(name):
+	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
 	var scene = input_handler.GetEventNode()
 	scene.visible = true
@@ -296,34 +304,40 @@ func disconnecttooltip(node):
 	if node.is_connected("mouse_entered",self,'showtooltip'):
 		node.disconnect("mouse_entered",self,'showtooltip')
 
-func itemtooltip(item, node):
-	var screen = get_viewport().get_visible_rect()
-	var text = ''
-	var tooltip 
-	if get_tree().get_root().has_node("itemtooltip") == false:
-		tooltip = load("res://files/Simple Tooltip/Imagetooltip.tscn").instance()
-		get_tree().get_root().add_child(tooltip)
-		tooltip.name = 'itemtooltip'
-	else:
-		tooltip = get_tree().get_root().get_node('itemtooltip')
-	var type
-	if item.get('itembase'):
-		type = 'gear'
-	else:
-		type = 'material'
-	
-	if type == 'gear':
-		tooltip.get_node("Image").texture = load(item.icon)
-		text = item.tooltip()
-	else:
-		tooltip.get_node("Image").texture = item.icon
-		text = item.description
-	
-	#tooltip.get_node("RichTextLabel").bbcode_text = text
-	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
-	tooltip.set_global_position(pos)
-	tooltip.showup(node, text)
+func connectitemtooltip(node, item):
+	if node.is_connected("mouse_entered",item,'tooltip'):
+		node.disconnect("mouse_entered",item,'tooltip')
+	node.connect("mouse_entered",item,'tooltip', [node])
+
+
+#func itemtooltip(item, node):
+#	var screen = get_viewport().get_visible_rect()
+#	var text = ''
+#	var tooltip 
+#	if get_tree().get_root().has_node("itemtooltip") == false:
+#		tooltip = load("res://files/Simple Tooltip/Imagetooltip.tscn").instance()
+#		get_tree().get_root().add_child(tooltip)
+#		tooltip.name = 'itemtooltip'
+#	else:
+#		tooltip = get_tree().get_root().get_node('itemtooltip')
+#	var type
+#	if item.has('itembase'):
+#		type = 'gear'
+#	else:
+#		type = 'material'
+#
+#	if type == 'gear':
+#		tooltip.get_node("Image").texture = load(item.icon)
+#		text = item.tooltip()
+#	else:
+#		tooltip.get_node("Image").texture = item.icon
+#		text = item.description
+#
+#	#tooltip.get_node("RichTextLabel").bbcode_text = text
+#	var pos = node.get_global_rect()
+#	pos = Vector2(pos.position.x, pos.end.y + 10)
+#	tooltip.set_global_position(pos)
+#	tooltip.showup(node, text)
 
 func showtooltip(text, node):
 	var screen = get_viewport().get_visible_rect()
@@ -563,6 +577,12 @@ func scanfolder(path): #makes an array of all folders in modfolder
 				array.append(path + file_name)
 			file_name = dir.get_next()
 		return array
+
+func QuickSave():
+	pass
+
+func EndGame(result):
+	pass
 
 func SaveGame(name):
 	var savedict = {}

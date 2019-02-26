@@ -10,7 +10,7 @@ func BuildSlaveList():
 	ClearScene()
 	show()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	for i in globals.state.workers.values():
+	for i in state.workers.values():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("Icon").texture = i.icon
 		newbutton.get_node("Name").text = i.name
@@ -70,3 +70,4 @@ func StopTask():
 func StopTaskConfirm():
 	globals.CurrentScene.stoptask(currenttask)
 	BuildSlaveList()
+
