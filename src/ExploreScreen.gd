@@ -129,13 +129,12 @@ func ReturnToVillage():
 
 func UpdatePositions():
 	for i in positiondict.values():
-		get_node(i).texture_normal = load("res://icon.png")
+		get_node(i+'/Image').hide()
 	
 	for i in state.combatparty:
-		if state.combatparty[i] == null:
-			get_node(positiondict[i]).texture_normal = load("res://icon.png")
-		else:
-			get_node(positiondict[i]).texture_normal = state.heroes[state.combatparty[i]].portrait()
+		if state.combatparty[i] != null:
+			get_node(positiondict[i] + "/Image").texture = state.heroes[state.combatparty[i]].portrait()
+			get_node(positiondict[i] + "/Image").show()
 
 func openinventory(hero):
 	$Inventory.open(hero)
