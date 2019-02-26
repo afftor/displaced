@@ -7,7 +7,7 @@
 {"type":"building", "value":"slave"},
 {"type":"event_finished", "name":"Intro 2"}
 ],
-"Test 1":[
+"Test 2":[
 {"type":"no_check"}
 ],
 "Intro_convert":[
