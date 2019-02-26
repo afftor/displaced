@@ -1,0 +1,24 @@
+[
+	{
+		"effect": "gui",
+		"value": "gui_inside"
+	},
+	{
+		"effect":"choice",
+		"value":[
+			{"text":"option 1", "index":0},
+			{"text":"option 2", "index":1}
+		]
+	},
+	{
+		"effect":"text",
+		"portrait":"ArronNeutral",
+		"sound":null,
+		"source":"ARRON",
+		"value":"Well, this is the only building which does not look like it will crash on us, so it must be here."
+	},
+	{
+		"effect": "stop",
+		"value": ""
+	}
+]
