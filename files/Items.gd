@@ -65,7 +65,7 @@ func _init():
 
 
 var Materials = {
-	wood = {name = tr("MATERIALWOOD"), price = 1, icon = load("res://assets/images/iconsitems/Wood.png"), description = tr('MATERIALWOODDESCRIpT'),
+	wood = {name = tr("MATERIALWOOD"), price = 1, icon = load("res://assets/images/iconsitems/Wood.png"), description = tr('MATERIALWOODDESCRIPT'),
 	adjective = tr("WOODADJ"),
 	DefaultEffect = 'natural',
 	code = 'wood',

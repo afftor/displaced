@@ -11,6 +11,7 @@ func _ready():
 	$ConfirmButton.connect("pressed", self, 'ConfirmTask')
 
 func OpenSelectTab(task):
+	show()
 	selectedtask = task
 	selectedtool = null
 	selectedworker = null
@@ -31,7 +32,7 @@ func SelectWorker():
 	globals.CharacterSelect(self, 'workers', 'WorkerSelected', 'notask')
 
 func SelectTool():
-	itemselect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
+	globals.ItemSelect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
 
 func WorkerSelected(worker):
 	selectedworker = worker
