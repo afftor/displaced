@@ -19,7 +19,12 @@ var scenedict = {
 var workersdict
 #var enemydata
 var randomgroups
+<<<<<<< HEAD
 #var enemylist
+=======
+var enemylist
+var upgradelist
+>>>>>>> a251f69... icons, tooltips, upgrades
 #var skillsdata
 #var effectdata
 
@@ -131,11 +136,20 @@ func _ready():
 	LoadEventData()
 	
 	#===Necessary to apply translation===
+<<<<<<< HEAD
 	#Items = load("res://files/Items.gd").new()
 	#Enemydata = load("res://assets/data/enemydata.gd").new()
 	#Skillsdata = load("res://assets/data/Skills.gd").new()
 	#Effectdata = load("res://assets/data/Effects.gd").new()
 	#TownData = load("res://files/TownData.gd").new()
+=======
+	Items = load("res://files/Items.gd").new()
+	Enemydata = load("res://assets/data/enemydata.gd").new()
+	Skillsdata = load("res://assets/data/Skills.gd").new()
+	Effectdata = load("res://assets/data/Effects.gd").new()
+	TownData = load("res://files/TownData.gd").new()
+	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
+>>>>>>> a251f69... icons, tooltips, upgrades
 	#====================================
 	
 	

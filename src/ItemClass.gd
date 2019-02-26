@@ -183,14 +183,9 @@ func tooltipeffects():
 	return text
 
 func tooltip(targetnode):
-	var text = tooltiptext()
 	var image
 	var node = input_handler.GetItemTooltip()
 	node.showup(targetnode, self)
-
-func hidetooltip():
-	var node = input_handler.GetItemTooltip()
-	node.hide()
 
 func repairwithmaterials():
 	var materialsdict = counterepairmaterials()
