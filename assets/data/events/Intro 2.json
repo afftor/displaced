@@ -16,7 +16,7 @@
   },
   {
     "effect": "gui",
-    "value": "showgui"
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -63,7 +63,7 @@
   {
 		"effect": "sprite",
 		"value": "set",
-		"args": "goblin"
+		"args": "goblin",
 	},
 {
 		"effect": "sprite",
@@ -184,12 +184,8 @@
 	},
 	{
     "effect": "gui",
-    "value": "hidegui"
+    "value": "hidegui",
   },
-  {
-		"effect": "background",
-		"value": "hall"
-	},
   {
     "effect": "sfx",
     "value": "blackscreenturnon",
@@ -198,7 +194,7 @@
   },
    {
     "effect": "gui",
-    "value": "showgui"
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -335,8 +331,7 @@
     "portrait": "ArronNeutral",
     "sound": null,
     "source": "ARRON",
-    "value": "Democracy was a mistake. ",
-	"delay": 0.1
+    "value": "Democracy was a mistake. "
   },
   {
     "effect": "stop",

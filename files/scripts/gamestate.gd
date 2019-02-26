@@ -29,10 +29,9 @@ var CurrentLine
 
 var heroguild = []
 
-var OldEvents = {};
+var OldEvents = [];
 var CurEvent = ""; #event name
 var CurBuild;
-var keyframes = [];
 
 func _init():
 	oldmaterials = materials.duplicate()
@@ -84,15 +83,10 @@ func gettaskfromworker(worker):
 			return i
 	return false
 
-func StoreEvent (nm):
-	OldEvents[nm] = date;
-	pass
-
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return;
-	StoreEvent(CurEvent);
+	OldEvents.push_back(CurEvent);
 	CurEvent = "";
-	keyframes.clear();
 	pass
 
 
@@ -142,10 +136,7 @@ func valuecheck(dict):
 		"has_hero":
 			return if_has_hero(dict['name']);
 		"event_finished":
-			var tmp = OldEvents.has(dict['name']);
-			if tmp and dict.has('delay'):
-				tmp = OldEvents[dict['name']] + dict['delay'] <= date;
-			return tmp;
+			return OldEvents.has(dict['name']);
 		"has_material":
 			return if_has_material(dict['material'], dict['value']);
 			pass
@@ -155,9 +146,4 @@ func valuecheck(dict):
 			return if_has_item(dict['name']);
 		"building":
 			return CurBuild == dict['value'];
-	pass
-
-func get_character_by_pos(pos):
-	if combatparty[pos] == null: return null;
-	return heroes[combatparty[pos]];
 	pass

@@ -22,7 +22,7 @@
   },
   {
     "effect": "gui",
-    "value": "gui_normal"
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -48,7 +48,7 @@
     {
     "effect": "sprite",
     "value": "set",
-	"args": "Arron"
+	"args": "Arron",
   },
   {
     "effect": "sprite",
@@ -97,7 +97,7 @@
   {
     "effect": "sprite",
     "value": "set",
-	"args": "Rose"
+	"args": "Rose",
   },
   {
     "effect": "sprite",
@@ -369,7 +369,7 @@
   },
     {
     "effect": "gui",
-    "value": "hidegui"
+    "value": "hidegui",
   },
    {
     "effect": "sfx",
@@ -389,7 +389,7 @@
   },
     {
     "effect": "gui",
-    "value": "showgui"
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -558,7 +558,7 @@
   {
     "effect": "sprite",
     "value": "set",
-	"args": "Rose"
+	"args": "Rose",
   },
   {
     "effect": "sprite",
@@ -616,7 +616,7 @@
   },
     {
     "effect": "gui",
-    "value": "hidegui"
+    "value": "hidegui",
   },
   {
     "effect": "sfx",
@@ -636,7 +636,7 @@
   },
     {
     "effect": "gui",
-    "value": "showgui"
+    "value": "showgui",
   },
   {
     "effect": "text",
@@ -840,5 +840,5 @@
   {
     "effect": "stop",
     "value": ""
-  }
+  },
 ]

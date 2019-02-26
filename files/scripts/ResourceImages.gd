@@ -1,33 +1,16 @@
 extends Node
 
 var backgrounds = {
-	#backgrounds
-	Null = null,
 	castle = load("res://assets/images/backgrounds/castle.png"),
 	castleroom = load('res://assets/images/backgrounds/castleroom.png'),
 	desert = load("res://assets/images/backgrounds/desert.png"),
 	villageday = load("res://assets/images/backgrounds/villageday.png"),
-	villagenight = load("res://assets/images/backgrounds/villagenight.png"),
+	villagnight = load("res://assets/images/backgrounds/villagenight.png"),
 	dungeon = load("res://assets/images/backgrounds/dungeon.png"),
 	dungeon1 = load("res://assets/images/backgrounds/dungeoncircle.png"),
 	forge = load("res://assets/images/backgrounds/forge.png"),
 	market = load("res://assets/images/backgrounds/market.png"),
 	hall = load("res://assets/images/backgrounds/townhall.png"),
-	#scenes
-	s_er_1_1 = load("res://assets/images/scenes/erikaCG1.png"),
-	s_er_1_2 = load("res://assets/images/scenes/erikaCG2.png"),
-	s_em_1_1 = load("res://assets/images/scenes/EmberCG1.png"),
-	s_em_1_2 = load("res://assets/images/scenes/EmberCG2.png"),
-	s_em_1_3 = load("res://assets/images/scenes/EmberCG3.png"),
-	s_em_1_4 = load("res://assets/images/scenes/EmberCG4.png"),
-	s_r_1_1 = load("res://assets/images/scenes/RoseBJ1.png"),
-	s_r_1_2 = load("res://assets/images/scenes/RoseBJ2.png"),
-	s_r_1_3 = load("res://assets/images/scenes/RoseBJ3.png"),
-	s_r_1_4 = load("res://assets/images/scenes/RoseBJ4.png"),
-	s_r_1_5 = load("res://assets/images/scenes/RoseBJ5.png"),
-	s_r_1_6 = load("res://assets/images/scenes/RoseCG1.png"),
-	s_r_1_7 = load("res://assets/images/scenes/RoseCG2.png"),
-	s_r_1_8 = load("res://assets/images/scenes/RoseCG5.png"),
 	}
 
 var sprites = {
@@ -49,7 +32,7 @@ var portraits = {
 	ArronShock = load("res://assets/images/portraits/ArronShock.png"),
 	EmberFriendly = load("res://assets/images/portraits/EmberFriendly.png"),
 	EmberHappy = load("res://assets/images/portraits/EmberHappy.png"),
-	EmberTired = load("res://assets/images/portraits/EmberTired.png"),
+	EMberTired = load("res://assets/images/portraits/EmberTired.png"),
 	RoseHappy = load("res://assets/images/portraits/RoseHappy.png"),
 	RoseNormal = load("res://assets/images/portraits/RoseNormal.png"),
 	RoseSad = load("res://assets/images/portraits/RoseSad.png"),
@@ -86,11 +69,6 @@ var circleportraits = {
 	
 	
 }
-
-var gui = {
-	norm_back = load("res://assets/images/gui/text scene/textfieldpanel.png"),
-	alt_back = load("res://assets/images/gui/text scene/textfieldpanel.png"), #stub
-};
 
 var GFX = {
 	slash = load("res://assets/images/gfx/slash-effect.png"),
