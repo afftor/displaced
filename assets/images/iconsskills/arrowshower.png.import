@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1.png-ac499d6378a763d0002ec181278f0a5d.stex"
+path="res://.import/arrowshower.png-5423d0cb18c3420fd2e9d8af823398c5.stex"
 
 [deps]
 
-source_file="res://assets/images/scenes/1.png"
-dest_files=[ "res://.import/1.png-ac499d6378a763d0002ec181278f0a5d.stex" ]
+source_file="res://assets/images/iconsskills/arrowshower.png"
+dest_files=[ "res://.import/arrowshower.png-5423d0cb18c3420fd2e9d8af823398c5.stex" ]
 
 [params]
 

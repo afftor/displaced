@@ -61,7 +61,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
-		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'elvenmetal', ArmorTrim = 'elvenwood'}))
+		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
 		globals.AddItemToInventory(globals.CreateUsableItem('meatsteak', 2))
 		#state.items[1].durability = floor(rand_range(1,5))
