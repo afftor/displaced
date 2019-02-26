@@ -28,12 +28,12 @@ var upgradelist
 
 #var combatantdata = load("res://files/CombatantClass.gd").new()
 
-#var classes = combatantdata.classlist
-#var characters = combatantdata.charlist
-#var skills
-#var traits = combatantdata.traitlist
-#var effects
-#var combateffects
+var classes = combatantdata.classlist
+var characters = combatantdata.charlist
+var skills
+var traits = combatantdata.traitlist
+var effects
+var combateffects
 
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
