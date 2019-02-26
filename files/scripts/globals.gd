@@ -578,6 +578,12 @@ func scanfolder(path): #makes an array of all folders in modfolder
 			file_name = dir.get_next()
 		return array
 
+func QuickSave():
+	pass
+
+func EndGame(result):
+	pass
+
 func SaveGame(name):
 	var savedict = {}
 	savedict.gameprogress = inst2dict(state)
