@@ -19,19 +19,21 @@ var scenedict = {
 var workersdict
 #var enemydata
 var randomgroups
-var enemylist
+
+#var enemylist
 var upgradelist
+
 #var skillsdata
 #var effectdata
 
 #var combatantdata = load("res://files/CombatantClass.gd").new()
 
-var classes = combatantdata.classlist
-var characters = combatantdata.charlist
-var skills
-var traits = combatantdata.traitlist
-var effects
-var combateffects
+#var classes = combatantdata.classlist
+#var characters = combatantdata.charlist
+#var skills
+#var traits = combatantdata.traitlist
+#var effects
+#var combateffects
 
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -132,22 +134,25 @@ func _ready():
 	LoadEventData()
 	
 	#===Necessary to apply translation===
-	Items = load("res://files/Items.gd").new()
-	Enemydata = load("res://assets/data/enemydata.gd").new()
-	Skillsdata = load("res://assets/data/Skills.gd").new()
-	Effectdata = load("res://assets/data/Effects.gd").new()
-	TownData = load("res://files/TownData.gd").new()
+
+	#Items = load("res://files/Items.gd").new()
+	#Enemydata = load("res://assets/data/enemydata.gd").new()
+	#Skillsdata = load("res://assets/data/Skills.gd").new()
+	#Effectdata = load("res://assets/data/Effects.gd").new()
+	#TownData = load("res://files/TownData.gd").new()
+
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
+
 	#====================================
 	
 	
-	randomgroups = Enemydata.randomgroups
-	enemylist = Enemydata.enemylist
-	effects = Effectdata.effects
-	combateffects = Effectdata.combateffects
-	skills = Skillsdata.skilllist
+	#randomgroups = Enemydata.randomgroups
+	#enemylist = Enemydata.enemylist
+	#effects = Effectdata.effects
+	#combateffects = Effectdata.combateffects
+	#skills = Skillsdata.skilllist
 	
-	workersdict = TownData.workersdict
+	#workersdict = TownData.workersdict
 	
 	for i in Items.Materials:
 		state.materials[i] = 0
@@ -187,18 +192,21 @@ func LoadEventData():
 func EventCheck():
 	if state.CurEvent != "": return;
 	for event in EventList.keys():
-		if state.OldEvents.has(event): continue;
-		var res = true;
-		for check in EventList[event]:
-			if !state.valuecheck(check): 
-				res = false;
-				break;
-			pass
-		pass
-		if res:
-			state.CurEvent = event;
+		if SimpleEventCheck(event, false):
 			StartEventScene(event);
 			break;
+	pass
+
+func SimpleEventCheck(event, skip = true):
+	if state.OldEvents.has(event): return false;
+	for check in EventList[event]:
+		if check == {global = 'skip'}:
+			if skip: continue;
+			else: return false;
+		if !state.valuecheck(check): 
+			return false;
+		pass
+	return true;
 	pass
 
 func LoadEvent(name):
@@ -213,6 +221,7 @@ func LoadEvent(name):
 	return dict
 
 func StartEventScene(name):
+	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
 	var scene = input_handler.GetEventNode()
 	scene.visible = true
@@ -556,6 +565,12 @@ func scanfolder(path): #makes an array of all folders in modfolder
 				array.append(path + file_name)
 			file_name = dir.get_next()
 		return array
+
+func QuickSave():
+	pass
+
+func EndGame(result):
+	pass
 
 func SaveGame(name):
 	var savedict = {}

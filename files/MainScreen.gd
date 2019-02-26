@@ -56,7 +56,7 @@ func _ready():
 	
 	if debug == true:
 		var worker = globals.worker.new()
-		worker.create(globals.workersdict.goblin)
+		worker.create(TownData.workersdict.goblin)
 		#globals.AddItemToInventory(globals.crea
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
@@ -70,7 +70,7 @@ func _ready():
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-	globals.EventCheck();
+	globals.call_deferred('EventCheck');
 	
 
 func _process(delta):

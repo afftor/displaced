@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextScene/TextSystem.gd" type="Script" id=2]
@@ -11,8 +11,9 @@
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/text scene/namepanel.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/text scene/portraitpanel.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/text scene/logpanel.png" type="Texture" id=12]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/indexed_button.gd" type="Script" id=12]
+[ext_resource path="res://assets/images/gui/text scene/logpanel.png" type="Texture" id=13]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -127,7 +128,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 1171, 788 )
 margin_left = 0.0
 margin_right = 0.0
@@ -140,7 +141,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="TextSystem" type="Control"]
+[node name="TextSystem" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -225,6 +226,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="Panel" type="TextureRect" parent="." index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -303,7 +305,7 @@ group = null
 text = "Log"
 flat = false
 align = 1
-_sections_unfolded = [ "Textures", "custom_styles" ]
+_sections_unfolded = [ "Textures", "Visibility", "custom_styles" ]
 
 [node name="Options" type="Button" parent="Panel" index="2"]
 
@@ -476,12 +478,15 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
+action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
 flat = false
 align = 1
+script = ExtResource( 12 )
 _sections_unfolded = [ "Rect" ]
+index = 0
 
 [node name="LogPanel" type="Panel" parent="." index="6"]
 
@@ -550,7 +555,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "custom_colors" ]
 
-[node name="MenuPanel" parent="." index="7" instance=ExtResource( 13 )]
+[node name="MenuPanel" parent="." index="7" instance=ExtResource( 14 )]
 
 visible = false
 margin_left = 740.0

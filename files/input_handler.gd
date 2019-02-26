@@ -315,7 +315,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 	var result
 	match req.type:
 		'stats':
-			result = input_handler.operate(req.operant, combatant[req.name], req.value)
+			result = input_handler.operate(req.operant, combatant.get(req.name), req.value)
 		'gear':
 			match req.slot:
 				'any':
