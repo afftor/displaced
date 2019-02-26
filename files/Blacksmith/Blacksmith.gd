@@ -99,7 +99,7 @@ func choosematerial(button):
 
 func cleartemplate():
 	$ItemCreationWindow/CreateItem.disabled = true
-	$ItemCreationWindow/EndItemDescript.bbcode_text = ''
+	$ItemCreationWindow/EndItemDescript.hide()
 	globals.disconnecttooltip($ItemCreationWindow/EndItem)
 
 func selectmaterial(material, part, cost):
@@ -157,7 +157,8 @@ func checkcreatingitem(item):
 	else:
 		text += '\n\n'
 	
-	globals.TextEncoder(text, $ItemCreationWindow/EndItemDescript)
+	globals.TextEncoder(text, $ItemCreationWindow/EndItemDescript/RichTextLabel)
+	$ItemCreationWindow/EndItemDescript.show()
 	#globals.connecttooltip($ItemCreationWindow/EndItem, text)
 	$ItemCreationWindow/EndItem.set_texture(baseitem.icon)
 	input_handler.itemshadeimage($ItemCreationWindow/EndItem, enditem)

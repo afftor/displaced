@@ -19,7 +19,7 @@ var classlist = {
 		code = 'warrior',
 		name = tr("WARRIOR"),
 		description = tr("WARRIORDESCRIPT"),
-		gearsubtypes = ['dagger','sword','axe','spear'],
+		gearsubtypes = ['dagger','sword','axe','spear','heavy','light'],
 		basehp = 200,
 		basemana = 25,
 		speed = 50,
@@ -32,7 +32,7 @@ var classlist = {
 		code = 'mage',
 		name = tr("MAGE"),
 		description = tr("MAGEDESCRIPT"),
-		gearsubtypes = ['rod','dagger'],
+		gearsubtypes = ['rod','robe','dagger'],
 		basehp = 100,
 		basemana = 100,
 		speed = 30,
@@ -40,67 +40,24 @@ var classlist = {
 		skills = ['attack', 'firebolt', 'concentrate'],
 		learnableskills = [],
 		icon = null,
-	},
-	archer = {
-		code = 'archer',
-		name = tr("ARCHER"),
-		description = tr("ARCHERDESCRIPT"),
-		gearsubtypes = ['bow', 'dagger'],
-		basehp = 150,
-		basemana = 50,
-		speed = 55,
-		damage = 15,
-		skills = ['attack', 'firebolt', 'concentrate'],
-		learnableskills = [],
-		icon = null,
-	},
-	brawler = {
-		code = 'brawler',
-		name = tr("BRAWLER"),
-		description = tr("BRAWLERDESCRIPT"),
-		gearsubtypes = [],
-		basehp = 175,
-		basemana = 50,
-		speed = 40,
-		damage = 15,
-		skills = ['attack'],
-		learnableskills = [],
-		icon = null,
 	}
+	
 }
 
 var charlist = {
 	Arron = {
 		code = 'Arron',
-		name = tr('ARRON'),
-		icon = 'ArronSmile',
-		combaticon = 'arron',
+		name = 'Arron',
+		icon = 'arron',
 		image = 'Arron',
 		subclass = 'warrior',
 	},
 	Rose = {
 		code = 'Rose',
-		name = tr('ROSE'),
-		icon = 'RoseNormal',
-		combaticon = 'rose',
+		name = 'Rose',
+		icon = 'rose',
 		image = 'Rose',
 		subclass = 'mage',
-	},
-	Erika = {
-		code = 'Erika',
-		name = tr('ERIKA'),
-		icon = 'ErikaNormal',
-		combaticon = 'erika',
-		image = 'Erika',
-		subclass = 'archer',
-	},
-	Ember = {
-		code = 'Ember',
-		name = tr('EMBER'),
-		icon = 'EmberHappy',
-		combaticon = 'ember',
-		image = 'Ember',
-		subclass = 'Brawler',
 	},
 }
 
@@ -110,7 +67,6 @@ class combatant:
 	var base
 	
 	var icon
-	var combaticon
 	
 	var level = 1
 	var baseexp = 0 setget exp_set
@@ -139,7 +95,6 @@ class combatant:
 	var resistair = 0
 	var image
 	var portrait
-	var combatportrait
 	var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null, lhand = null, neck = null, ring1 = null, ring2 = null}
 	var skills = ['attack']
 	var traits = {}
@@ -226,7 +181,7 @@ class combatant:
 		skills = template.skills
 		for i in template.resists:
 			self['resist' + i] = template.resists[i]
-		for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward']:
+		for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','icon', 'aiposition', 'loottable', 'xpreward']:
 			self[i] = template[i]
 		
 	
@@ -266,7 +221,6 @@ class combatant:
 		mana = manamax
 		skills = classtemplate.skills
 		icon = nametemplate.icon
-		combaticon = nametemplate.combaticon
 		image = nametemplate.image
 		damage = classtemplate.damage
 		hitrate = 80
@@ -385,15 +339,11 @@ class combatant:
 	
 	func portrait():
 		if icon != null:
-			return images.portraits[icon]
-	
-	func combat_portrait():
-		if combaticon != null:
-			return images.combatportraits[combaticon]
+			return images.combatportraits[icon]
 	
 	func portrait_circle():
 		if icon != null:
-			return images.circleportraits[combaticon]
+			return images.circleportraits[icon]
 	
 	func createtrait(data, type = 'starter'):
 		var array = []

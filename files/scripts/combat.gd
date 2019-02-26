@@ -383,7 +383,7 @@ func make_fighter_panel(fighter, spot):
 	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter])
 	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter])
 	panel.set_meta('character',fighter)
-	panel.get_node("Icon").texture = fighter.combat_portrait()
+	panel.get_node("Icon").texture = fighter.portrait()
 	panel.update_hp()
 	panel.get_node("Mana").value = globals.calculatepercent(fighter.mana, fighter.manamax)
 	panel.get_node("Label").text = fighter.name
@@ -734,6 +734,7 @@ func deal_damage(damage_dict, caster, target):
 	
 	if damagetype in ['fire','water','air','earth']:
 		endvalue = endvalue * ((100 - target['resist' + damagetype])/100)
+
 	if damage_dict.tags.has('heal'):
 		target.hp += ceil(endvalue)
 	else:

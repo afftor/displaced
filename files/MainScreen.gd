@@ -8,7 +8,7 @@ var gamepaused = false
 var previouspeed
 var daycolorchange = false
 var tasks = [] #Task Data Dict var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
-onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
+onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/3speed"]
 onready var BS = $BlackScreen;
 
 func _ready():
@@ -56,7 +56,7 @@ func _ready():
 	
 	if debug == true:
 		var worker = globals.worker.new()
-		worker.create(globals.workersdict.goblin)
+		worker.create(TownData.workersdict.goblin)
 		#globals.AddItemToInventory(globals.crea
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
@@ -70,7 +70,7 @@ func _ready():
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-	globals.EventCheck();
+	globals.call_deferred('EventCheck');
 	
 
 func _process(delta):
@@ -213,9 +213,11 @@ func changespeed(button, playsound = true):
 	for i in timebuttons:
 		i.pressed = i == button
 	gamespeed = newvalue
-	var soundarray = ['time_stop', 'time_start', 'time_up']
 	if oldvalue != newvalue && playsound:
-		input_handler.PlaySound(soundarray[int(button.name[0])])
+		if oldvalue == 0:
+			input_handler.PlaySound('time_start')
+		elif newvalue == 0:
+			input_handler.PlaySound('time_stop')
 
 func restoreoldspeed(value):
 	for i in timebuttons:

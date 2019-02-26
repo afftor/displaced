@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/ExploreScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/combatportraits/arronfull.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=5]
-[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=6]
-[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/images/combatportraits/erikafull.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/combatportraits/emberfull.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/combatportraits/arronfull.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/combatportraits/rosefull.png" type="Texture" id=6]
+[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=7]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=8]
+[ext_resource path="res://files/combat.tscn" type="PackedScene" id=9]
 
 [node name="ExploreScreen" type="Control"]
 
@@ -171,26 +172,8 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 3 )
 expand = true
-stretch_mode = 3
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
-
-[node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 174.0
-margin_bottom = 216.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 7
+stretch_mode = 6
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="2" type="TextureButton" parent="Positions/HBoxContainer/frontrow" index="1"]
 
@@ -213,28 +196,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 4 )
 expand = true
-stretch_mode = 3
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
-
-[node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 174.0
-margin_bottom = 216.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 7
+stretch_mode = 6
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="3" type="TextureButton" parent="Positions/HBoxContainer/frontrow" index="2"]
 
@@ -257,28 +222,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
 expand = true
-stretch_mode = 3
+stretch_mode = 6
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
-
-[node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 174.0
-margin_bottom = 216.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 7
 
 [node name="backrow" type="VBoxContainer" parent="Positions/HBoxContainer" index="1"]
 
@@ -319,28 +265,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 5 )
 expand = true
-stretch_mode = 3
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
-
-[node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/4" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 174.0
-margin_bottom = 216.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 7
+stretch_mode = 6
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="5" type="TextureButton" parent="Positions/HBoxContainer/backrow" index="1"]
 
@@ -363,28 +291,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 6 )
 expand = true
-stretch_mode = 3
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
-
-[node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/5" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 174.0
-margin_bottom = 216.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 7
+stretch_mode = 6
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Textures" ]
 
 [node name="6" type="TextureButton" parent="Positions/HBoxContainer/backrow" index="2"]
 
@@ -407,28 +317,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
 expand = true
-stretch_mode = 3
+stretch_mode = 6
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
-
-[node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/6" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 174.0
-margin_bottom = 216.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 7
 
 [node name="Label" type="Label" parent="Positions" index="1"]
 
@@ -473,26 +364,6 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="TextureRect" type="TextureRect" parent="Positions" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 5.0
-margin_right = 445.0
-margin_bottom = 708.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 5
-_sections_unfolded = [ "Mouse" ]
 
 [node name="Panel" type="Panel" parent="." index="4"]
 
@@ -624,11 +495,11 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="HeroList" parent="." index="5" instance=ExtResource( 6 )]
+[node name="HeroList" parent="." index="5" instance=ExtResource( 7 )]
 
 visible = false
 
-[node name="Inventory" parent="." index="6" instance=ExtResource( 7 )]
+[node name="Inventory" parent="." index="6" instance=ExtResource( 8 )]
 
 visible = false
 margin_left = 23.0
@@ -638,7 +509,7 @@ margin_bottom = 841.0
 
 [node name="combat" parent="." index="7" groups=[
 "pauseprocess",
-] instance=ExtResource( 8 )]
+] instance=ExtResource( 9 )]
 
 visible = false
 

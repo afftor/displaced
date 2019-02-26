@@ -18,27 +18,19 @@ func _init():
 
 func showup(node, item):
 	parentnode = node
-	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
 	var type
 	
 	if typeof(item) == TYPE_DICTIONARY:
 		type = 'material'
-	else:
-		type = item.itemtype
 	
-	var text = ''
+	type = item.itemtype
 	
-	if type == 'material':
-		text = '[center]' + item.name + '[/center]\n' + item.description
-		if state.materials[item.code] > 0:
-			text += '\n\n' + tr("INPOSESSION") + ": " + str(state.materials[item.code])
-		textnode.bbcode_text = text
-		iconnode.texture = item.icon
-		iconnode.material = null
-	else:
-		text = item.tooltiptext()
+	if type != 'material':
+		var text = item.tooltiptext()
+#		if type in ['armor','weapon']:
+#			text += item.tooltipeffects()
 		textnode.bbcode_text = globals.TextEncoder(text)
 		input_handler.itemshadeimage(iconnode, item)
 	
@@ -49,12 +41,6 @@ func showup(node, item):
 	var pos = node.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	self.set_global_position(pos)
-	
-	
-	if get_rect().end.x > screen.size.x:
-		rect_global_position.x -= get_rect().end.x - screen.size.x
-	if node.get_rect().end.y > screen.size.y:
-		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
 	set_process(true)
 

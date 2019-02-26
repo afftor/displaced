@@ -4,7 +4,6 @@ var currenttask
 var currentworker
 
 func _ready():
-	globals.AddPanelOpenCloseAnimation($TaskPanel)
 	$TaskPanel/StopButton.connect("pressed", self, 'StopTask')
 
 func BuildSlaveList():
@@ -57,7 +56,7 @@ func ShowTaskInformation(task):
 	currenttask = task
 	if task.instrument != null:
 		input_handler.itemshadeimage($TaskPanel/ToolImage, task.instrument)
-		task.instrument.tooltip($TaskPanel/ToolImage)
+		globals.connecttooltip($TaskPanel/ToolImage, task.instrument.tooltip())
 	var text = task.taskdata.name
 	$TaskPanel/EnergyIcon/EnergyCost.text = str(task.taskdata.energycost)
 	$TaskPanel/TimeIcon/TimeCost.text = str(task.threshold)

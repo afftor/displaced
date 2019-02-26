@@ -3,13 +3,13 @@ extends Node
 var TranslationDict = {
 	#Materials
 	MATERIALWOOD = "Wood",
-	MATERIALWOODDESCRIPT = "Sturdy wood for general building and furnishing purposes.",
+	MATERIALDESCRIPTWOOD = "Sturdy wood for general building and furnishing purposes.",
 	WOODADJ = "wooden",
 	MATERIALSTONE = "Stone",
-	MATERIALSTONEDESCRIPT = "Stone comes in many forms and shapes, but might serve as good building material or even poor instrumentum.",
+	MATERIALDESCRIPTSTONE = "Stone comes in many forms and shapes, but might serve as good building material or even poor instrumentum.",
 	STONEADJ = 'stone',
 	MATERIALELVENWOOD = "Elven Wood",
-	MATERIALELVENWOODDESCRIPT = "An unusual wood with additional magic properties. ",
+	MATERIALDESCRIPTELVENWOOD = "An unusual wood with additional magic properties. ",
 	ELVENWOODADJ = "Elven",
 	MATERIALGOBLINMETAL = "Goblin Metal",
 	METARIALGOBLINGMETALDESCRIPT = "Rusty looking metal, still decent for some work. Can be used for a heavy armor. ",
@@ -122,9 +122,6 @@ var TranslationDict = {
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
 	
-	
-	
-	
 	#Confirms
 	
 	LEAVECONFIRM = "Leave to Main Menu? Unsaved progress will be lost. ",
@@ -160,26 +157,5 @@ var TranslationDict = {
 	#Skills
 	ATTACK = "Attack",
 	ATTACKDESCRIPT = "Attacks target with equipped weapon. ",
-	
-	#Upgrades
-	UPGRADEPREVBONUS = "Current bonus",
-	UPGRADENEXTBONUS = "Unlock bonus",
-	BRIDGEUPGRADE = "Bridge",
-	UPGRADEBRIDGEDESCRIPT = "Reinforce the bridge leading to the outer lands. Currently it barely allows locals move in and out, but you are afraid it might prove to dangerous for you to cross as is.",
-	UPGRADEBRIDGEBONUS = "Unlocks exploration",
-	MINEUPGRADE = "Mine",
-	UPGRADEMINEDESCRIPT = "The old mine should still be rich in resources, but will require some work on it. ",
-	UPGRADEMINEBONUS = "Allows production of ores.",
-	FARMUPGRADE = "Farm",
-	UPGRADEFARMDESCRIPT = "The farm allows cultivation of various plant fibers, useful for crafting. ",
-	UPGRADEFARMBONUS = "Allows production of cloth",
-	HOUSESUPGRADE = "Worker Barracks",
-	UPGRADEHOUSESDESCRIPT = "Living quarters for your workers. ",
-	UPGRADHOUSEBONUS1 = "Hosts up to 2 workers",
-	UPGRADHOUSEBONUS2 = "Hosts up to 5 workers",
-	BLACKSMITHUPGRADE = "Blacksmith",
-	UPGRADEBLACKSMITHDESCRIPT = "Upgrade of Ember's forge will allow the production of new gear.",
-	UPGRADEBLACKSMITHBONUS1 = "Unlocks Headgear",
-	UPGRADEBLACKSMITHBONUS2 = "Unlocks footgear",
 	
 }
