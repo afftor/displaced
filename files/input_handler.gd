@@ -336,6 +336,9 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 	
 	return result
 
+func requirementstatecheck(req):
+	pass
+
 func operate(operation, value1, value2):
 	var result
 	

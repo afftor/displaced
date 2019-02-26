@@ -34,7 +34,7 @@ var tasksdict = {
 }
 
 var workersdict = {
-	goblin = {name = 'Goblin', 
+	goblin = {name = tr('GOBLINWORKER'), 
 	description = '',
 	price = 50, 
 	type = 'goblin', 
@@ -42,12 +42,20 @@ var workersdict = {
 	icon = load("res://assets/images/gui/goblin.png"), 
 	unlockreq = null
 	},
-	elf = {name = 'Elf', 
+	elf = {name = tr("ELFWORKER"), 
 	description = '',
 	price = 75, 
 	type = 'elf', 
 	maxenergy = 100, 
-	icon = load("res://assets/images/gui/goblin.png"), 
+	icon = load("res://assets/images/gui/elf.png"), 
+	unlockreq = null
+	},
+	dwarf = {name = tr('DWARFWORKER'), 
+	description = '',
+	price = 75, 
+	type = 'dwarf', 
+	maxenergy = 100, 
+	icon = load("res://assets/images/gui/dwarf.png"), 
 	unlockreq = null
 	},
 }

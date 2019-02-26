@@ -8,7 +8,7 @@ var gamepaused = false
 var previouspeed
 var daycolorchange = false
 var tasks = [] #Task Data Dict var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
-onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/3speed"]
+onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 onready var BS = $BlackScreen;
 
 func _ready():
@@ -61,7 +61,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
-		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'elvenmetal', ArmorTrim = 'elvenwood'}))
+		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
 		globals.AddItemToInventory(globals.CreateUsableItem('meatsteak', 2))
 		#state.items[1].durability = floor(rand_range(1,5))
@@ -213,11 +213,9 @@ func changespeed(button, playsound = true):
 	for i in timebuttons:
 		i.pressed = i == button
 	gamespeed = newvalue
+	var soundarray = ['time_stop', 'time_start', 'time_up']
 	if oldvalue != newvalue && playsound:
-		if oldvalue == 0:
-			input_handler.PlaySound('time_start')
-		elif newvalue == 0:
-			input_handler.PlaySound('time_stop')
+		input_handler.PlaySound(soundarray[int(button.name[0])])
 
 func restoreoldspeed(value):
 	for i in timebuttons:

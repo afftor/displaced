@@ -26,6 +26,7 @@ func buildinventory():
 		newbutton.get_node('Number').text = str(state.materials[i])
 		newbutton.get_node('Number').show()
 		newbutton.set_meta('type', 'mat')
+		globals.connectmaterialtooltip(newbutton, material)
 		#globals.itemtooltip(material, newbutton)
 		#globals.connecttooltip(newbutton, '[center]' + material.name + '[/center]\n' + material.description)
 	for i in state.items.values():
