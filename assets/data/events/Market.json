@@ -42,6 +42,12 @@
 		"args": "goblincmerc"
 	},
 	{
+		"effect": "sprite",
+		"value": "unfade",
+		"args": 0.5,
+		"delay": 0.5
+	},
+	{
 		"effect":"text",
 		"portrait":"Flak",
 		"sound":null,
