@@ -5,6 +5,7 @@ var itemparts = {}
 var itemtemplate
 var repairitemlist = []
 
+
 func _ready():
 	for i in [$ItemCreationWindow/Part1, $ItemCreationWindow/Part2, $ItemCreationWindow/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])
@@ -51,6 +52,7 @@ func selectcraftitem(item):
 	
 	for i in ['Part1','Part2','Part3']:
 		get_node("ItemCreationWindow/" + i).texture_normal = null
+		get_node("ItemCreationWindow/" + i + '/number').hide()
 		get_node("ItemCreationWindow/" + i + 'Descript').bbcode_text = ''
 	$ItemCreationWindow/EndItem.texture = null
 	
@@ -106,6 +108,8 @@ func selectmaterial(material, part, cost):
 	globals.hidetooltip()
 	itemparts[part] = {material = material.code, price = cost}
 	chosenpartbutton.texture_normal = material.icon
+	chosenpartbutton.get_node("number").text = str(cost)
+	chosenpartbutton.get_node("number").show()
 	var text = Items.Parts[part].name + "\n" 
 	$ItemCreationWindow/MaterialSelect.hide()
 	checkcreatingitem(itemtemplate)
@@ -164,9 +168,17 @@ func checkcreatingitem(item):
 
 
 func CreateItem():
-	$ItemCreationWindow.hide()
+	input_handler.PlaySound("itemcreate")
+	$ItemCreationWindow/CreateItem.disabled = true
 	enditem.substractitemcost()
+	var time = 1.5
+	input_handler.SmoothValueAnimation($ItemCreationWindow/CraftProgress, time, 0, 100)
+	yield(get_tree().create_timer(time), 'timeout')
+	$ItemCreationWindow/CraftProgress.value = 0
+	input_handler.SystemMessage(tr("ITEMCREATED" +": " + enditem.name))
 	globals.AddItemToInventory(enditem)
+	selectcraftitem(Items.Items[itemtemplate])
+	#$ItemCreationWindow.hide()
 	
 
 func selectallrepair():
