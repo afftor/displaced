@@ -13,7 +13,7 @@ func open():
 func purchase():
 	$PurchaseMenu.show()
 	globals.ClearContainer($PurchaseMenu/ScrollContainer/VBoxContainer)
-	for i in globals.workersdict.values():
+	for i in TownData.workersdict.values():
 		var newbutton = globals.DuplicateContainerTemplate($PurchaseMenu/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Icon").texture = i.icon
 		newbutton.get_node("Label").text = i.name

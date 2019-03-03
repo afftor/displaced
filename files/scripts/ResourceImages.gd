@@ -29,7 +29,7 @@ var backgrounds = {
 	s_r_1_5 = load("res://assets/images/scenes/RoseBJ5.png"),
 	s_r_1_6 = load("res://assets/images/scenes/RoseCG1.png"),
 	s_r_1_7 = load("res://assets/images/scenes/RoseCG2.png"),
-	s_r_1_8 = load("res://assets/images/scenes/RoseCG5.png"),
+	s_r_1_8 = load("res://assets/images/scenes/RoseCG3.png"),
 	}
 
 var sprites = {

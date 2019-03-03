@@ -88,7 +88,7 @@ func OpenLog():
 func OpenOptions():
 	$MenuPanel.show()
 
-func Start(dict, line = 0, f = false):
+func Start(dict, f = false, line = 0):
 	if dict == null: 
 		call_deferred('StopEvent');
 		return;
@@ -179,10 +179,11 @@ func AdvanceScene():
 				ReceiveInput = false;
 			'text':
 				ShownCharacters = 0
-				if NewEffect.source != 'narrator':
-					text_log += '\n\n' + '[' + tr(NewEffect.source) + ']\n' + tr(NewEffect.value)
-				else:
-					text_log += '\n\n' + tr(NewEffect.value)
+				if !debug:
+					if NewEffect.source != 'narrator':
+						text_log += '\n\n' + '[' + tr(NewEffect.source) + ']\n' + tr(NewEffect.value)
+					else:
+						text_log += '\n\n' + tr(NewEffect.value)
 				TextField.visible_characters = ShownCharacters
 				#print(tr(NewEffect.value));
 				TextField.bbcode_text = tr(NewEffect.value)
@@ -278,9 +279,10 @@ func StopEvent():
 	set_process(false)
 	set_process_input(false)
 	state.FinishEvent();
-	globals.CurrentScene.show()
+	#globals.CurrentScene.show()
 	hide()
-	globals.call_deferred('EventCheck');
+	if !debug:
+		globals.call_deferred('EventCheck');
 
 func blackscreentransition(duration = 0.5):
 	input_handler.UnfadeAnimation($BlackScreen, duration)
