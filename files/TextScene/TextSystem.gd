@@ -278,10 +278,10 @@ func get_choice(i):
 func StopEvent():
 	set_process(false)
 	set_process_input(false)
-	state.FinishEvent();
 	#globals.CurrentScene.show()
 	hide()
 	if !debug:
+		state.FinishEvent();
 		globals.call_deferred('EventCheck');
 
 func blackscreentransition(duration = 0.5):
