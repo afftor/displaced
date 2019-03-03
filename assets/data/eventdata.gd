@@ -30,7 +30,7 @@ var checks = {
 		{type = "building", value = "slave"},
 		{type = "event_finished", name = "Intro 2"}
 	],
-	"Intro_convert_":
+	"Intro_convert":
 	[
 		{type = "no_check"}
 	],
