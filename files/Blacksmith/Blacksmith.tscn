@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=19]
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=20]
+[ext_resource path="res://assets/images/gui/buildings/itemcreationpanel2.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/taskmenu/repairgui.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=24]
