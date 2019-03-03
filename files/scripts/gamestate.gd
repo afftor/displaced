@@ -5,6 +5,8 @@ var worker = preload("res://files/scripts/worker.gd");
 var date = 1
 var daytime = 0
 
+var newgame = false
+
 #resources
 var itemidcounter = 0
 var heroidcounter = 0
@@ -155,6 +157,8 @@ func valuecheck(dict):
 			return if_has_item(dict['name']);
 		"building":
 			return CurBuild == dict['value'];
+		"gamestart":
+			return newgame
 	pass
 
 func get_character_by_pos(pos):

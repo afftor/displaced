@@ -32,7 +32,7 @@ var checks = {
 	],
 	"Intro_convert":
 	[
-		{type = "no_check"}
+		{type = "gamestart"}
 	],
 	"Market 2":
 	[

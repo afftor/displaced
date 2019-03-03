@@ -7,7 +7,7 @@ var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var EventList = events.checks;
+var EventList = events.checks
 
 var scenedict = {
 	menu = "res://files/Menu.tscn",
@@ -194,25 +194,24 @@ func EventCheck():
 	if state.CurEvent != "": return;
 	for s in get_tree().get_nodes_in_group('char_sprite'):
 		s.set_active_val();
-		pass
 	for event in EventList.keys():
 		if SimpleEventCheck(event, false):
 			StartEventScene(event);
 			break;
-	pass
 
 func SimpleEventCheck(event, skip = true):
-	var tmp_d = {global = 'skip'};
-	if state.OldEvents.has(event): return false;
+	#var tmp_d = {global = 'skip'};
+	if state.OldEvents.has(event):
+		return false
 	for check in EventList[event]:
 		if check.size() == 0:
-			if skip: continue;
-			else: return false;
+			if skip:
+				continue
+			else:
+				return false
 		if !state.valuecheck(check): 
-			return false;
-		pass
-	return true;
-	pass
+			return false
+	return true
 
 func LoadEvent(name):
 	var dict

@@ -1,7 +1,7 @@
 extends Node
 #Game Settings
 var TimePerDay = 120
-var NoScenes = true;
+var NoScenes = false
 
 #Items
 var RepairCostMultiplierEasy = 0.5

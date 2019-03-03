@@ -343,6 +343,7 @@ _sections_unfolded = [ "Material", "Textures" ]
 
 [node name="ItemCreationWindow" type="TextureRect" parent="." index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
