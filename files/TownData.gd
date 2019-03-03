@@ -13,23 +13,36 @@ var buildingoptions = {
 }
 
 var tasksdict = {
-	woodcutting = {basetimer = 10, energycost = 5, triggerfunction = 'woodcuttingperiod',
+	woodcutting = {basetimer = 10, energycost = 5,
 	name = tr("HARVESTWOOD"),
 	description = tr('WOODCUTTINGTASKDESCRIPTION'),
-	product = {
-		wood = {code = 'materials.wood', amount = 1, chance = 100, reqs = true, toolproductionfactor = 2},
+	unlockreq = true,
+	tasktool = {type = 'axe', required = false, durabilityfactor = 0, effects = [{code = 'speed', value = 5}]}, 
+	workerproducts = {
+		goblin = [{code = 'materials.wood', amount = 1, chance = 100, critamount = 2, critchance = 10}],
+		elf = [{code = 'materials.elvenwood', amount = 1, chance = 100, critamount = 2, critchance = 10}],
 	},
-	tasktool = {type = 'axe', required = false, durabilityfactor = 1}, 
-	},
-	mining = {basetimer = 10, energycost = 5, triggerfunction = 'miningperiod',
+},
+	mining = {basetimer = 10, energycost = 5,
 	name = tr("HARVESTMETAL"),
 	description = tr('HARVESTMETALDESCRIPTION'),
-	product = {
-		goblinmetal = {code = 'materials.goblinmetal', amount = 1, chance = 100, reqs = true},
+	unlockreqs = 'mineupgrade',
+	tasktool = {type = 'pickaxe', required = true, durabilityfactor = 0}, 
+	workerproducts = {
+		goblin = [{code = 'materials.goblinmetal', amount = 1, chance = 100, critamount = 2, critchance = 10}],
+		elf = [{code = 'materials.elvenmetal', amount = 1, chance = 100, critamount = 2, critchance = 10}],
 	},
-	tasktool = {type = 'pickaxe', required = true, durabilityfactor = 1}, 
-	}
-	
+},
+	plantgathering = {basetimer = 10, energycost = 5,
+	name = tr("HARVESTPLANT"),
+	description = tr('HARVESTPLANTTASKDESCRIPTION'),
+	unlockreq = true,
+	tasktool = {type = 'none', required = false, durabilityfactor = 0}, 
+	workerproducts = {
+		goblin = [{code = 'materials.cloth', amount = 1, chance = 100, critamount = 2, critchance = 15}],
+		elf = [{code = 'materials.cloth', amount = 1, chance = 100, critamount = 2, critchance = 15}],
+	},
+},
 	
 }
 
@@ -39,23 +52,23 @@ var workersdict = {
 	price = 50, 
 	type = 'goblin', 
 	maxenergy = 50, 
-	icon = load("res://assets/images/gui/goblin.png"), 
-	unlockreq = null
+	icon = load("res://assets/images/gui/goblinicon.png"), 
+	unlockreq = true
 	},
 	elf = {name = tr("ELFWORKER"), 
 	description = '',
 	price = 75, 
 	type = 'elf', 
 	maxenergy = 100, 
-	icon = load("res://assets/images/gui/elf.png"), 
-	unlockreq = null
+	icon = load("res://assets/images/gui/elficon.png"), 
+	unlockreq = false
 	},
 	dwarf = {name = tr('DWARFWORKER'), 
 	description = '',
 	price = 75, 
 	type = 'dwarf', 
 	maxenergy = 100, 
-	icon = load("res://assets/images/gui/dwarf.png"), 
-	unlockreq = null
+	icon = null, 
+	unlockreq = false
 	},
 }

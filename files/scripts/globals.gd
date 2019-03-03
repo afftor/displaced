@@ -29,12 +29,12 @@ var upgradelist
 
 #var combatantdata = load("res://files/CombatantClass.gd").new()
 
-#var classes = combatantdata.classlist
-#var characters = combatantdata.charlist
-#var skills
-#var traits = combatantdata.traitlist
-#var effects
-#var combateffects
+var classes = combatantdata.classlist
+var characters = combatantdata.charlist
+var skills
+var traits = combatantdata.traitlist
+var effects
+var combateffects
 
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -136,11 +136,11 @@ func _ready():
 	
 	#===Necessary to apply translation===
 
-	#Items = load("res://files/Items.gd").new()
-	#Enemydata = load("res://assets/data/enemydata.gd").new()
-	#Skillsdata = load("res://assets/data/Skills.gd").new()
-	#Effectdata = load("res://assets/data/Effects.gd").new()
-	#TownData = load("res://files/TownData.gd").new()
+	Items = load("res://files/Items.gd").new()
+	Enemydata = load("res://assets/data/enemydata.gd").new()
+	Skillsdata = load("res://assets/data/Skills.gd").new()
+	Effectdata = load("res://assets/data/Effects.gd").new()
+	TownData = load("res://files/TownData.gd").new()
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 
@@ -149,7 +149,7 @@ func _ready():
 	
 	#randomgroups = Enemydata.randomgroups
 	#enemylist = Enemydata.enemylist
-	#effects = Effectdata.effects
+	effects = Effectdata.effects
 	#combateffects = Effectdata.combateffects
 	#skills = Skillsdata.skilllist
 	

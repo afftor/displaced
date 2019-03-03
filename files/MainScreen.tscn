@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/MainScreen.gd" type="Script" id=2]
@@ -64,6 +64,7 @@
 [ext_resource path="res://src/ExploreScreen.tscn" type="PackedScene" id=62]
 [ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=63]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=64]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=65]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -104,7 +105,17 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="MainScreen" type="Control"]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 45
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 65 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="MainScreen" type="Control" index="0"]
+
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -330,7 +341,6 @@ _sections_unfolded = [ "Textures" ]
 
 [node name="ControlPanel" type="TextureRect" parent="." index="9"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -450,6 +460,7 @@ _sections_unfolded = [ "Textures" ]
 
 [node name="FoodConv" type="TextureButton" parent="ControlPanel" index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -479,10 +490,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -103.0
-margin_top = 30.0
-margin_right = -51.0
-margin_bottom = 54.0
+margin_left = -99.0
+margin_top = 29.0
+margin_right = -47.0
+margin_bottom = 53.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -500,10 +511,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -103.0
-margin_top = 60.0
-margin_right = -44.0
-margin_bottom = 84.0
+margin_left = -99.0
+margin_top = 59.0
+margin_right = -40.0
+margin_bottom = 83.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -517,6 +528,7 @@ max_lines_visible = -1
 
 [node name="TimeNode" type="TextureRect" parent="." index="10"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1449,7 +1461,69 @@ expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Tween" type="Tween" parent="." index="25"]
+[node name="SystemMessageShadow" type="RichTextLabel" parent="." index="25"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 921.0
+margin_right = 1902.0
+margin_bottom = 960.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "#[center]Test Text[/center]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "#Test Text"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Mouse", "Rect", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="SystemMessageLabel" type="RichTextLabel" parent="." index="26"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 29.0
+margin_top = 919.0
+margin_right = 1901.0
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "#[center]Test Text[/center]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "#Test Text"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Mouse", "Rect", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Tween" type="Tween" parent="." index="27"]
 
 repeat = false
 playback_process_mode = 1

@@ -11,10 +11,12 @@ var tasks = [] #Task Data Dict var data = {function = selectedtask.triggerfuncti
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 onready var BS = $BlackScreen;
 
+
 func _ready():
 	#self.visible = false
 	#$BlackScreen.visible = true
 	#$BlackScreen.modulate.a = 1
+	input_handler.SystemMessageNode = $SystemMessageLabel
 	globals.CurrentScene = self
 	tasks = state.tasks
 #	var x = 3
@@ -109,7 +111,8 @@ func _process(delta):
 			
 			if i.time >= i.threshold:
 				i.time -= i.threshold
-				call(i.function, i)
+				taskperiod(i)
+				#call(i.function, i)
 		
 		if daycolorchange == false:
 			
@@ -121,6 +124,7 @@ func _process(delta):
 				EnvironmentColor('evening')
 			elif floor(state.daytime) == floor(variables.TimePerDay/4*3):
 				EnvironmentColor('night')
+
 
 func movesky():
 	$Sky.region_rect.position.x += gamespeed
@@ -272,25 +276,32 @@ func stoptask(data):
 	deletecounter(data)
 	tasks.erase(data)
 
-func woodcuttingperiod(data):
+func taskperiod(data):
 	var taskdata = data.taskdata
-	for i in taskdata.product.values():
+	var worker = data.worker
+	for i in taskdata.workerproducts[worker.type]:
 		#Calculate results and reward player
 		
 		#Check if requirements are met
-		if i.reqs == false:
+		if randf()*100 >= i.chance:
 			continue
 		
 		var taskresult = i.amount
-		if data.instrument != null:
-			taskresult *= i.toolproductionfactor
+		
+		if randf()*100 <= i.critchance:
+			taskresult = i.critamount
+			#print('crit triggered')
+		
+		
 		
 		
 		#Check if need to access multiple subcategory  
 		if i.code.find('.') != -1:
 			var array = i.code.split('.')
 			state[array[0]][array[1]] += taskresult
-			flyingitemicon(data.counter, array[1])
+			while taskresult > 0:
+				flyingitemicon(data.counter, array[1])
+				taskresult -= 1
 		else:
 			state[i] += taskresult
 		
@@ -317,6 +328,7 @@ func flyingitemicon(taskbar, item):
 	var x = itemicon.instance()
 	add_child(x)
 	x.rect_global_position = taskbar.rect_global_position
+	input_handler.PlaySound("itemget")
 	input_handler.ResourceGetAnimation(x, taskbar.rect_global_position, $ControlPanel/Inventory.rect_global_position)
 	yield(get_tree().create_timer(0.7), 'timeout')
 	x.queue_free()

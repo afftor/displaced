@@ -734,6 +734,7 @@ func deal_damage(damage_dict, caster, target):
 	
 	if damagetype in ['fire','water','air','earth']:
 		endvalue = endvalue * ((100 - target['resist' + damagetype])/100)
+
 	if damage_dict.tags.has('heal'):
 		target.hp += ceil(endvalue)
 	else:

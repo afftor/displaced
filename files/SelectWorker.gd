@@ -16,12 +16,12 @@ func OpenSelectTab(task):
 	selectedtool = null
 	selectedworker = null
 	globals.ClearContainer($HBoxContainer)
-	for i in task.product:
-		var newresource = globals.DuplicateContainerTemplate($HBoxContainer)
-		var material = Items.Materials[i]
-		globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=yellow]' + str(task.product[i].chance) + '%[/color]')
-		
-		newresource.texture = Items.Materials[i].icon
+#	for i in task.product:
+#		var newresource = globals.DuplicateContainerTemplate($HBoxContainer)
+#		var material = Items.Materials[i]
+#		globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=yellow]' + str(task.product[i].chance) + '%[/color]')
+#
+#		newresource.texture = Items.Materials[i].icon
 	
 	$RichTextLabel.bbcode_text = task.description
 	$Time.text = str(task.basetimer)
@@ -66,6 +66,13 @@ func UpdateButtons():
 func ConfirmTask():
 	hide()
 	#Task Data Dict
-	var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
+	var threshold = selectedtask.basetimer
+	
+	if selectedtool != null:
+		for i in selectedtask.tasktool.effects:
+			if i.code == 'speed':
+				threshold -= i.value
+	
+	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}
 	
 	globals.CurrentScene.assignworker(data)

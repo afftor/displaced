@@ -344,4 +344,3 @@ texture_pressed = ExtResource( 23 )
 texture_hover = ExtResource( 24 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-
