@@ -5,11 +5,13 @@ var backgrounds = {
 	Null = null,
 	castle = load("res://assets/images/backgrounds/castle.png"),
 	castleroom = load('res://assets/images/backgrounds/castleroom.png'),
+	cave = load("res://assets/images/backgrounds/cave.png"),
 	desert = load("res://assets/images/backgrounds/desert.png"),
 	villageday = load("res://assets/images/backgrounds/villageday.png"),
 	villagenight = load("res://assets/images/backgrounds/villagenight.png"),
 	dungeon = load("res://assets/images/backgrounds/dungeon.png"),
 	dungeon1 = load("res://assets/images/backgrounds/dungeoncircle.png"),
+	forest = load("res://assets/images/backgrounds/forest.png"),
 	forge = load("res://assets/images/backgrounds/forge.png"),
 	market = load("res://assets/images/backgrounds/market.png"),
 	hall = load("res://assets/images/backgrounds/townhall.png"),
@@ -27,7 +29,7 @@ var backgrounds = {
 	s_r_1_5 = load("res://assets/images/scenes/RoseBJ5.png"),
 	s_r_1_6 = load("res://assets/images/scenes/RoseCG1.png"),
 	s_r_1_7 = load("res://assets/images/scenes/RoseCG2.png"),
-	s_r_1_8 = load("res://assets/images/scenes/RoseCG5.png"),
+	s_r_1_8 = load("res://assets/images/scenes/RoseCG3.png"),
 	}
 
 var sprites = {
@@ -39,7 +41,8 @@ var sprites = {
 	emberhappy = load("res://assets/images/sprites/EmberHappy.png"),
 	embershock = load("res://assets/images/sprites/EmberSurprise.png"),
 	erica = load("res://assets/images/sprites/erica.png"),
-	erica_n = load("res://assets/images/sprites/ericanaked.png")
+	erica_n = load("res://assets/images/sprites/ericanaked.png"),
+	demitrius = load("res://assets/images/sprites/Demitrius.png"),
 	}
 
 var portraits = {
@@ -65,6 +68,8 @@ var portraits = {
 	Lyra = load("res://assets/images/portraits/Lyra.png"),
 	NorbertNormal = load("res://assets/images/portraits/NorbertNormal.png"),
 	NorbertRage = load("res://assets/images/portraits/NorbertRage.png"),
+	Demitrius = load("res://assets/images/portraits/Demitrius.png"),
+	DemitriusTalk = load("res://assets/images/portraits/DemitriusTalk.png"),
 }
 
 var combatportraits = {

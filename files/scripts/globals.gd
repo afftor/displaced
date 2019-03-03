@@ -7,7 +7,8 @@ var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var EventList = {};
+var EventList = events.checks;
+
 var scenedict = {
 	menu = "res://files/Menu.tscn",
 	town = "res://files/MainScreen.tscn"
@@ -131,7 +132,7 @@ func _ready():
 	randomize()
 	#Settings and folders
 	settings_load()
-	LoadEventData()
+	#LoadEventData()
 	
 	#===Necessary to apply translation===
 
@@ -180,17 +181,20 @@ func ChangeScene(name):
 func StartCombat(enemygroup):
 	pass
 
-func LoadEventData():
-	if file.file_exists("res://assets/data/eventdata.json"):
-		file.open("res://assets/data/eventdata.json", File.READ);
-		EventList = parse_json(file.get_as_text());
-		file.close();
-	else:
-		print('Event not found: ' + name)
-	pass
+#func LoadEventData():
+#	if file.file_exists("res://assets/data/eventdata.json"):
+#		file.open("res://assets/data/eventdata.json", File.READ);
+#		EventList = parse_json(file.get_as_text());
+#		file.close();
+#	else:
+#		print('Event not found: ' + name)
+#	pass
 
 func EventCheck():
 	if state.CurEvent != "": return;
+	for s in get_tree().get_nodes_in_group('char_sprite'):
+		s.set_active_val();
+		pass
 	for event in EventList.keys():
 		if SimpleEventCheck(event, false):
 			StartEventScene(event);
@@ -198,9 +202,10 @@ func EventCheck():
 	pass
 
 func SimpleEventCheck(event, skip = true):
+	var tmp_d = {global = 'skip'};
 	if state.OldEvents.has(event): return false;
 	for check in EventList[event]:
-		if check == {global = 'skip'}:
+		if check.size() == 0:
 			if skip: continue;
 			else: return false;
 		if !state.valuecheck(check): 
@@ -220,12 +225,12 @@ func LoadEvent(name):
 		print('Event not found: ' + name)
 	return dict
 
-func StartEventScene(name):
+func StartEventScene(name, debug = false):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
 	var scene = input_handler.GetEventNode()
 	scene.visible = true
-	scene.Start(scenes[name])
+	scene.Start(scenes[name], debug)
 
 func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()

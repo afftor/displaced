@@ -1,7 +1,7 @@
 [
 	{
 		"effect": "background",
-		"value": "Null"
+		"value": "forest"
 	},
 	{
 		"effect": "sfx",
@@ -214,7 +214,7 @@
 	},
 	{
 		"effect": "background",
-		"value": "Null"
+		"value": "forest"
 	},
 	{
 		"effect": "sfx",
