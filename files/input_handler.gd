@@ -7,6 +7,8 @@ var ShakingNodes = []
 var CurrentScreen = 'Town'
 
 var BeingAnimated = []
+var SystemMessageNode
+
 
 signal ScreenChanged
 
@@ -279,6 +281,12 @@ func ShakeAnimation(node, time = 0.5, magnitude = 5):
 			ShakingNodes.erase(i)
 	ShakingNodes.append(newdict)
 
+func SmoothValueAnimation(node, time, value1, value2):
+	var tween = GetTweenNode(node)
+	tween.interpolate_property(node, 'value', value1, value2, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+
+
 func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false):
 	var x = TextureRect.new()
 	x.texture = images.GFX[effect]
@@ -396,4 +404,14 @@ func open_shell(string):
 			path = 'https://www.patreon.com/maverik'
 	OS.shell_open(path)
 
-
+func SystemMessage(text, time = 4):
+	if SystemMessageNode == null:
+		return
+	var array = [SystemMessageNode, SystemMessageNode.get_parent().get_node("SystemMessageShadow")]
+	text = '[center]' + text + '[/center]'
+	for i in array:
+		i.modulate.a = 1
+		i.bbcode_text = text
+		var basetime = time
+		FadeAnimation(i, 1, basetime)
+	

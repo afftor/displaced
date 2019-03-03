@@ -118,6 +118,7 @@ func unlockupgrade():
 		state.townupgrades[upgrade.code] += 1
 	else:
 		state.townupgrades[upgrade.code] = 1
+	input_handler.SystemMessage(tr("UPGRADEUNLOCKED") + ": " + upgrade.name)
 	upgradelist()
 	#state.townupgrades[upgrade.code] = true
 
