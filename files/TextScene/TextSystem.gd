@@ -89,7 +89,7 @@ func OpenOptions():
 	$MenuPanel.show()
 
 func Start(dict, f = false, line = 0):
-	if dict == null: 
+	if dict == null or variables.NoScenes: 
 		call_deferred('StopEvent');
 		return;
 	debug = f;
