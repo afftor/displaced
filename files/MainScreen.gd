@@ -33,7 +33,7 @@ func _ready():
 	character = combatantdata.combatant.new()
 	character.createfromname('Rose')
 	state.heroes[character.id] = character
-	
+	input_handler.SetMusic("towntheme")
 	
 	var speedvalues = [0,1,10]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
@@ -73,7 +73,11 @@ func _ready():
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 	globals.call_deferred('EventCheck');
-	
+	$testbutton.connect("pressed", self, "testfunction")
+
+func testfunction():
+	input_handler.PlaySound("victory")
+	#input_handler.SetMusic("maintheme")
 
 func _process(delta):
 	if self.visible == false:

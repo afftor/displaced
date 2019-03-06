@@ -5,6 +5,10 @@
 		"args": null
 	},
 	{
+		"effect": "music",
+		"value": "eventlight",
+    },
+	{
 		"effect": "background",
 		"value": "villageday"
 	},
@@ -52,7 +56,14 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"Oh, the pink skin mayor guy. Nice of you to drop by."
+		"value":"Oh, the pink skin mayor guy. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Nice of you to drop by. "
 	},
 	{
 		"effect":"text",
@@ -84,7 +95,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"RoseSad",
+		"portrait":"RoseSarcastic",
 		"sound":null,
 		"source":"ROSE",
 		"value":"Pay to you, but not them? This sounds awful like slavery."
@@ -94,14 +105,35 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"What a foul word for a young lady. They are not slaves, they are workers. And you will need them to move things around."
+		"value":"What a foul word for a young lady."
 	},
 	{
 		"effect":"text",
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"You have to feed them once in a while or they will stop working. Actually, business wasn't so great recently and since you just started here, I'll let you have one worker as a gift. "
+		"value":"They are not slaves, they are workers. And you will need them to move things around."
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"You have to feed them once in a while or they will stop working. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Actually, business wasn't so great recently. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"You know what? Since you just started here, I'll let you have one worker as a gift. "
 	},
 	{
 		"effect":"text",
@@ -112,7 +144,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"RoseSad",
+		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
 		"value":"(Gulp)"
@@ -131,7 +163,13 @@
 		"source":"FLAK",
 		"value":"You bet. Good think I'm not a worker, heh. ",
 		"delay": 0.1
-	},
+	},  
+	{
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 1,
+	"delay": 1
+    },
 	{
 		"effect": "stop",
 		"value": ""

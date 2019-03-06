@@ -20,7 +20,7 @@ var checks = {
 	],
 	"Intro 2":
 	[
-		{type = "event_finished", name = "Intro_convert"}
+		{type = "event_finished", name = "Intro"}
 	],
 	"Intro 3":[
 		{type = "date", date = 2}
@@ -28,9 +28,9 @@ var checks = {
 	"Market":
 	[
 		{type = "building", value = "slave"},
-		{type = "event_finished", name = "Intro 2"}
+		#{type = "event_finished", name = "Intro 2"}
 	],
-	"Intro_convert":
+	"Intro":
 	[
 		{type = "gamestart"}
 	],

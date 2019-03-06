@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/desert.png-7d31aa0e98849c79463acf17af003165.stex"
+path="res://.import/RoundoShadow40.sv.png-affa5f2d7939e13cb9b3218397aa90da.stex"
 
 [deps]
 
-source_file="res://files/backgrounds/desert.png"
-dest_files=[ "res://.import/desert.png-7d31aa0e98849c79463acf17af003165.stex" ]
+source_file="res://assets/fonts/RoundoShadow40.sv.png"
+dest_files=[ "res://.import/RoundoShadow40.sv.png-affa5f2d7939e13cb9b3218397aa90da.stex" ]
 
 [params]
 

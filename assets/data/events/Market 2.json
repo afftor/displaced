@@ -19,7 +19,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"RoseNormal",
+		"portrait":"RoseShock",
 		"sound":null,
 		"source":"ROSE",
 		"value":"Wow, elves as hired workers? Had no idea they do stuff like that. Not from at our kingdom at least."
@@ -43,7 +43,7 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"No clue. I prefer not to stick my nose into their... lifestyle. Maybe you will figure out. "
+		"value":"No clue. I prefer not to stick my nose into their... lifestyle. Maybe you can figure out. "
 	},
 	{
 		"effect":"text",
@@ -53,7 +53,7 @@
 		"value":"Speaking of which, the elves might have some clues on our problem. ",
 		"delay": 0.1
 	},
-	  {
+	{
     "effect": "stop",
     "value": ""
   }

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/erica.png-abe2d5f695515648ba772c0024d422a8.stex"
+path="res://.import/erika.png-c14c4318ebb1f54cdb027d4115c6f521.stex"
 
 [deps]
 
-source_file="res://assets/images/sprites/erica.png"
-dest_files=[ "res://.import/erica.png-abe2d5f695515648ba772c0024d422a8.stex" ]
+source_file="res://assets/images/sprites/erika.png"
+dest_files=[ "res://.import/erika.png-c14c4318ebb1f54cdb027d4115c6f521.stex" ]
 
 [params]
 

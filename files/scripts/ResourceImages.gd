@@ -40,9 +40,10 @@ var sprites = {
 	goblincmerc = load("res://assets/images/sprites/goblinmerc.png"),
 	emberhappy = load("res://assets/images/sprites/EmberHappy.png"),
 	embershock = load("res://assets/images/sprites/EmberSurprise.png"),
-	erica = load("res://assets/images/sprites/erica.png"),
-	erica_n = load("res://assets/images/sprites/ericanaked.png"),
+	erika = load("res://assets/images/sprites/erika.png"),
+	erika_n = load("res://assets/images/sprites/erikanaked.png"),
 	demitrius = load("res://assets/images/sprites/Demitrius.png"),
+	ent = load("res://assets/images/sprites/ent.png"),
 	}
 
 var portraits = {
@@ -70,6 +71,7 @@ var portraits = {
 	NorbertRage = load("res://assets/images/portraits/NorbertRage.png"),
 	Demitrius = load("res://assets/images/portraits/Demitrius.png"),
 	DemitriusTalk = load("res://assets/images/portraits/DemitriusTalk.png"),
+	Ent = load("res://assets/images/enemies/BigEntIcon.png"),
 }
 
 var combatportraits = {

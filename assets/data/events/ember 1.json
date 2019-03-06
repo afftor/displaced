@@ -5,6 +5,10 @@
 		"args": null
 	},
 	{
+		"effect": "music",
+		"value": "eventgeneric",
+    },
+	{
 		"effect": "background",
 		"value": "hall"
 	},
@@ -31,23 +35,35 @@
 		"sound":null,
 		"source":"ARRON",
 		"value":"Oho, a new lady? Finally this position begins to pay of. Come in!"
-	},
-	{
-		"effect":"text",
-		"portrait":null,
-		"sound":null,
-		"source":"narrator",
-		"value":"*Slam, dragon girl appears in room*"
-	},
+	},	
 	{
 		"effect": "sfx",
 		"value": "shakeanim",
 		"args": 0.5
 	},
 	{
+    "effect": "sound",
+    "value": "crash",
+	"delay": 0
+    },
+	{
+		"effect":"text",
+		"portrait":null,
+		"sound":null,
+		"source":"narrator",
+		"value":"*Slam*"
+	},
+	{
 		"effect": "sprite",
 		"value": "set",
 		"args": "emberhappy"
+	},
+	{
+		"effect":"text",
+		"portrait":null,
+		"sound":null,
+		"source":"narrator",
+		"value":"Dragon girl appears in room"
 	},
 	{
 		"effect": "sprite",
@@ -60,7 +76,21 @@
 		"portrait":"EmberFriendly",
 		"sound":null,
 		"source":"EMBER",
-		"value":"Hey! You are a mayor, right?! My name is Ember."
+		"value":"Hey!"
+	},
+	{
+		"effect":"text",
+		"portrait":"EmberFriendly",
+		"sound":null,
+		"source":"EMBER",
+		"value":"You are a mayor, right?!"
+	},
+	{
+		"effect":"text",
+		"portrait":"EmberFriendly",
+		"sound":null,
+		"source":"EMBER",
+		"value":"My name is Ember."
 	},
 	{
 		"effect":"text",
@@ -88,7 +118,7 @@
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"(She's certainly the hottest dragon I've ever seen, though. Although, other were hot just because they breath fire.)"
+		"value":"(She's certainly the hottest dragon I've ever seen, though. Although, for others it was generally their biology. )"
 	},
 	{
 		"effect":"text",
@@ -102,14 +132,21 @@
 		"portrait":"EmberFriendly",
 		"sound":null,
 		"source":"EMBER",
-		"value":"I'm sorry, I'm being too blunt again? Ah-ha, Sorry... Wow, this place is really great! And you look very representative as well!"
+		"value":"I'm sorry, I'm being too blunt again? Ah-ha, Sorry..."
+	},
+	{
+		"effect":"text",
+		"portrait":"EmberFriendly",
+		"sound":null,
+		"source":"EMBER",
+		"value":"Wow, this place is really great! And you look very representative as well!"
 	},
 	{
 		"effect":"text",
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"It is, indeed. My skills were recognized by the folk so I was found the most suitable ruler. "
+		"value":"It is, indeed. My skills were recognized by the folk so I was found to be the most suitable ruler. "
 	},
 	{
 		"effect":"text",
@@ -137,7 +174,7 @@
 		"portrait":"EmberFriendly",
 		"sound":null,
 		"source":"EMBER",
-		"value":"Ah, I'm a blacksmith's..."
+		"value":"Ah, You see, I'm a blacksmith's..."
 	},
 	{
 		"effect":"text",
@@ -211,7 +248,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"RoseNormal",
+		"portrait":"RoseSarcastic",
 		"sound":null,
 		"source":"ROSE",
 		"value":"*Frown*"
@@ -221,7 +258,28 @@
 		"portrait":"EmberFriendly",
 		"sound":null,
 		"source":"EMBER",
-		"value":"Have you seen the competition? Do you realize how much profit I'll be making with no other blacksmiths around? This is a perfect opportunity to start my own shop!"
+		"value":"Have you seen the competition?"
+	},
+	{
+		"effect":"text",
+		"portrait":"EmberFriendly",
+		"sound":null,
+		"source":"EMBER",
+		"value":"Do you realize how much profit I'll be making with no other blacksmiths around? This is a perfect opportunity to start my own shop!"
+	},
+	{
+		"effect":"text",
+		"portrait":"EmberFriendly",
+		"sound":null,
+		"source":"EMBER",
+		"value":"I might not look like it, but I have studied things about it."
+	},
+	{
+		"effect":"text",
+		"portrait":"EmberFriendly",
+		"sound":null,
+		"source":"EMBER",
+		"value":"This is a perfect opportunity to start my own shop!"
 	},
 	{
 		"effect":"text",
@@ -439,11 +497,6 @@
 		"value":"Embers eyes shine with happiness"
 	},
 	{
-		"effect": "sprite",
-		"value": "set",
-		"args": "emberhappy"
-	},
-	{
 		"effect":"text",
 		"portrait":"EmberHappy",
 		"sound":null,
@@ -452,7 +505,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"RoseNormal",
+		"portrait":"RoseSarcastic",
 		"sound":null,
 		"source":"ROSE",
 		"value":"(What a coincidental use of words.)"
@@ -480,7 +533,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"RoseNormal",
+		"portrait":"RoseTalk",
 		"sound":null,
 		"source":"ROSE",
 		"value":"Huh, really. You carried it all by yourself? Half-dragons can do stuff like that? "

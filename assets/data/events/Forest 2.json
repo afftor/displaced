@@ -4,6 +4,10 @@
 		"value": "forest"
 	},
 	{
+		"effect": "music",
+		"value": "eventgeneric",
+    },
+	{
 		"effect": "sfx",
 		"value": "blackscreenfade",
 		"args": 0.5,
@@ -14,8 +18,19 @@
 		"value": "showgui"
 	},
 	{
+    "effect": "sprite",
+    "value": "set",
+	"args": "ent"
+    },
+    {
+    "effect": "sprite",
+    "value": "unfade",
+	"args": 0.5,
+	"delay":0.5
+    },
+	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"Enough slaughtering of my brethren! What do thou want, fleshling? "
@@ -29,21 +44,28 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
-		"value":"Hey, I demand thou not disrespect me! Calling me 'it' assumes thou do not recognize my sentience. I'm over centuries old and everyone address to me as a male."
+		"value":"Hey, I demand thou not disrespect me! Calling me 'it' assumes thou do not recognize my sentience. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Ent",
+		"sound":null,
+		"source":"Great Willow",
+		"value":"I'm over centuries old and everyone address to me as a male."
 	},
 	{
 		"effect":"text",
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"That's stupid, trees are hermaphrodites. Since when do treants even have a society?"
+		"value":"That's stupid, trees are hermaphrodites. Since when do you even have a society?"
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"Since we moved into this grove. "
@@ -57,14 +79,14 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"Those elves, thou speak of, are hardly live up to the name of elves as I remember them."
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"We have taken them into our custody now and we peacefully coexist."
@@ -74,11 +96,11 @@
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"Huh... taken into custody by trees? Whatever, we want them as well, must still be more useful than goblins. "
+		"value":"Huh... taken into custody by trees? Whatever, we want them as well, might still be of some use to us. "
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"Thou propose a trade agreement? Of course, we have elves to spare for you and others. Are thou willing to see them?"
@@ -92,7 +114,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"*Groan*"
@@ -105,29 +127,18 @@
 		"value":"Another huge treant slowly comes close. Its trunk bark bends to the sides, revealing a semi-conscious naked figure of an elven girl restricted inside of it. "
 	},
 	{
-		"effect":"gui",
-		"value":"hidegui"
-	},
-	{
-		"effect": "sfx",
-		"value": "blackscreenunfade",
-		"args": 0.2,
-		"delay": 0.2
-	},
-	{
 		"effect": "background",
 		"value": "s_er_1_1"
-	},
-	{
-		"effect": "sfx",
-		"value": "blackscreenfade",
-		"args": 0.2,
-		"delay": 0.2
 	},
 	{
 		"effect":"gui",
 		"value":"gui_full"
 	},
+	{
+		"effect": "sprite",
+		"value": "hide",
+		"args": ""
+    },
 	{
 		"effect":"text",
 		"portrait":null,
@@ -137,7 +148,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":null,
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"This is an elf thou were looking for."
@@ -151,7 +162,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":null,
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"This way we can protect them and they feed us with their fluids and energy. "
@@ -179,11 +190,11 @@
 		"portrait":null,
 		"sound":null,
 		"source":"ARRON",
-		"value":"Enough, release her."
+		"value":"That's enough, you should release her."
 	},
 	{
 		"effect":"text",
-		"portrait":null,
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"What? This is not correct..."
@@ -197,46 +208,30 @@
 	},
 	{
 		"effect":"text",
-		"portrait":null,
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"Alright, alright..."
 	},
 	{
 		"effect":"gui",
-		"value":"hidegui"
-	},
-	{
-		"effect": "sfx",
-		"value": "blackscreenunfade",
-		"args": 0.2,
-		"delay": 0.2
+		"value":"gui_normal"
 	},
 	{
 		"effect": "background",
 		"value": "forest"
 	},
-	{
-		"effect": "sfx",
-		"value": "blackscreenfade",
-		"args": 0.2,
-		"delay": 0.2
-	},
-	{
-		"effect":"gui",
-		"value":"gui_normal"
-	},
-  {
-    "effect": "sprite",
-    "value": "set",
-	"args": "erica_n"
-  },
-  {
+    {
     "effect": "sprite",
     "value": "unfade",
 	"args": 0.5,
+    },
+    {
+    "effect": "sprite",
+    "value": "set",
+	"args": "erika_n",
 	"delay":0.5
-  },
+    },
 	{
 		"effect":"text",
 		"portrait":"",
@@ -267,10 +262,10 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
-		"value":"You see, Erika, this is Arron. He wanted to... talk to you."
+		"value":"You see, Erika, this is Arron. He wants to... talk to you."
 	},
 	{
 		"effect":"text",
@@ -316,7 +311,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"Thee see now, this is completely consensual. We even have papers..."
@@ -326,7 +321,7 @@
 		"portrait":"ErikaNormal",
 		"sound":null,
 		"source":"Erika",
-		"value":"Boring talks again... what a waste of a good time."
+		"value":"Boring talks again... what a waste of a time."
 	},
 	{
 		"effect":"text",
@@ -351,7 +346,7 @@
 	},
 	{
 		"effect":"text",
-		"portrait":"Null",
+		"portrait":"Ent",
 		"sound":null,
 		"source":"Great Willow",
 		"value":"My apologies, do thou want to go to slumber again? "
@@ -361,7 +356,14 @@
 		"portrait":"ErikaNormal",
 		"sound":null,
 		"source":"Erika",
-		"value":"Now when you mention it... Say Arron, right? I haven't seen anyone like you around here before."
+		"value":"Now when you mention it... Say Arron, right?"
+	},
+	{
+		"effect":"text",
+		"portrait":"ErikaHappy",
+		"sound":null,
+		"source":"Erika",
+		"value":"I haven't seen anyone like you around here before."
 	},
 	{
 		"effect":"text",
@@ -454,16 +456,22 @@
 		"source":"ARRON",
 		"value":"Meanwhile, let's settle what we have came her for. Hey, willow guy..."
 	},
-	  {
+	{
     "effect": "sprite",
     "value": "fade",
 	"args": 0.2,
 	"delay":0.2
+   },
+   {
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 0.5,
+	"delay": 0.5
   },
   {
     "effect": "sprite",
     "value": "set",
-	"args": "erica"
+	"args": "erika"
   },
   {
     "effect": "sprite",
@@ -504,9 +512,15 @@
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"(This is certainly not what I expected...)",
+		"value":"(...)",
 		"delay":0.1
 	},
+	{
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 1,
+	"delay": 1
+    },
 	{
     "effect": "stop",
     "value": ""

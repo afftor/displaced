@@ -6,6 +6,10 @@
 		"delay": 0.5
 	},
 	{
+		"effect": "music",
+		"value": "eventlight",
+    },
+	{
 		"effect": "gui",
 		"value": "gui_inside"
 	},
@@ -56,7 +60,7 @@
 		"portrait":"EmberFriendly",
 		"sound":null,
 		"source":"EMBER",
-		"value":"Depends on the material used, can make you stronger, faster, stuff like that."
+		"value":"Depends on the material used, it can make you stronger, faster... stuff like that."
 	},
 	{
 		"effect":"text",
@@ -70,18 +74,18 @@
 		"portrait":"EmberFriendly",
 		"sound":null,
 		"source":"EMBER",
-		"value":"Huh? Your wood? Do humans actually have wood?"
+		"value":"Huh? Your wood? You are not a human?"
 	},
 	{
 		"effect":"text",
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"Nah, we don't but I'm a half-ent. "
+		"value":"Nah, I'm actually a half-ent. "
 	},
 	{
 		"effect":"text",
-		"portrait":"EmberFriendly",
+		"portrait":"EmberHappy",
 		"sound":null,
 		"source":"EMBER",
 		"value":"REALLY?!"
@@ -126,10 +130,23 @@
 		"portrait":"EmberTired",
 		"sound":null,
 		"source":"EMBER",
-		"value":"(tried) Uh... I still don't understand, but in either case, if you find any more rare materials, make sure to bring them to me!"
+		"value":"Uh... I still don't understand, but in either case, if you find any more rare materials, make sure to bring them to me!"
 	},
-
-	  {
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
+		"value":"Aren't I'm one of a kind? "
+	},
+	{
+		"effect":"text",
+		"portrait":"RoseNormal",
+		"sound":null,
+		"source":"ROSE",
+		"value":"Please, stop. "
+	},
+	{
     "effect": "stop",
     "value": ""
   }

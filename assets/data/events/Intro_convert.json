@@ -1,6 +1,6 @@
 [
 {"args":null,"effect":"sfx","value":"blackscreenturnon"},
-{"delay":2,"effect":"music","value":"intro"},
+{"delay":2,"effect":"music","value":"events"},
 {"effect":"background","value":"castle"},
 {"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
 {"effect":"gui","value":"gui_normal"},

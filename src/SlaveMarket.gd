@@ -26,7 +26,7 @@ func PurchaseSlave(worker):
 
 func HireConfirm():
 	var newworker = globals.worker.new()
-	globals.state.money -= selectedworker.price
+	state.money -= selectedworker.price
 	newworker.create(selectedworker)
 
 func show():

@@ -113,7 +113,7 @@ use_filter = true
 font_data = ExtResource( 65 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="MainScreen" type="Control" index="0"]
+[node name="MainScreen" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -368,6 +368,7 @@ margin_right = 108.0
 margin_bottom = 101.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+hint_tooltip = "INVENTORY"
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -379,7 +380,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 18 )
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="Slavelist" type="TextureButton" parent="ControlPanel" index="1"]
 
@@ -393,6 +394,7 @@ margin_right = 228.0
 margin_bottom = 102.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+hint_tooltip = "WORKERLIST"
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -404,7 +406,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 20 )
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="Herolist" type="TextureButton" parent="ControlPanel" index="2"]
 
@@ -418,6 +420,7 @@ margin_right = 346.0
 margin_bottom = 101.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+hint_tooltip = "HEROLIST"
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -429,7 +432,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 22 )
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="Options" type="TextureButton" parent="ControlPanel" index="3"]
 
@@ -443,6 +446,7 @@ margin_right = 465.0
 margin_bottom = 101.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+hint_tooltip = "OPTIONMENU"
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -454,7 +458,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 24 )
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="FoodConv" type="TextureButton" parent="ControlPanel" index="4"]
 
@@ -526,7 +530,6 @@ max_lines_visible = -1
 
 [node name="TimeNode" type="TextureRect" parent="." index="10"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1529,5 +1532,40 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="testbutton" type="Button" parent="." index="28"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 770.0
+margin_top = 750.0
+margin_right = 944.0
+margin_bottom = 907.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="29"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Sound"
+_sections_unfolded = [ "Pause" ]
 
 

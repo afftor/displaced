@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ericanaked.png-885ebe910c1fd9e0805c9ed47ac88017.stex"
+path="res://.import/erikanaked.png-75786a3a3bc542caca97c49c75467704.stex"
 
 [deps]
 
-source_file="res://assets/images/sprites/ericanaked.png"
-dest_files=[ "res://.import/ericanaked.png-885ebe910c1fd9e0805c9ed47ac88017.stex" ]
+source_file="res://assets/images/sprites/erikanaked.png"
+dest_files=[ "res://.import/erikanaked.png-75786a3a3bc542caca97c49c75467704.stex" ]
 
 [params]
 

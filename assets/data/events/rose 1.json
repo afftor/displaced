@@ -4,6 +4,10 @@
 		"value": "villagenight"
 	},
 	{
+		"effect": "music",
+		"value": "eventgeneric",
+    },
+	{
 		"effect": "sprite",
 		"value": "set",
 		"args": "Rose"
@@ -154,6 +158,13 @@
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
+		"value":"*yawn* Hmmm... who might it be here?"
+	},
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
 		"value":"Oh... This masterful technique can be no other, but my cute pet's."
 	},
 	{
@@ -168,7 +179,21 @@
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"Getting a blowjob in the middle of the night from you... Makes me really happy back then I've chosen you, heh."
+		"value":"Giving a blowjob in the middle of the night like that. "
+	},
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
+		"value":"What a naughty girl."
+	},
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
+		"value":"But it makes me rather happy. "
 	},
 	{
 		"effect":"text",
@@ -179,7 +204,7 @@
 	},
 	{
 		"effect": "background",
-		"value": "s_r_1_4"
+		"value": "s_r_1_2"
 	},
 	{
 		"effect":"text",
@@ -237,9 +262,15 @@
 		"source":"ARRON",
 		"value":"Here it comes..."
 	},
-		{
+	{
 		"effect": "background",
-		"value": "s_r_1_5"
+		"value": "s_r_1_3"
+	},
+	{
+		"effect": "sfx",
+		"value": "WhiteScreenGFX",
+		"delay": 0.5,
+		"args": "default"
 	},
 	{
 		"effect":"text",
@@ -313,7 +344,7 @@
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"It was your fault, making me like that..."
+		"value":"I-It's your fault, making me like that..."
 	},
 	{
 		"effect":"text",
@@ -328,6 +359,10 @@
 		"sound":null,
 		"source":"narrator",
 		"value":"Ignoring her Master's mocking, Rose yearningly landed on his cock."
+	},
+	{
+		"effect": "background",
+		"value": "s_r_1_7"
 	},
 	{
 		"effect":"text",
@@ -351,10 +386,6 @@
 		"value":"This is... because you didn't approach me for so long... Ah!"
 	},
 	{
-		"effect": "background",
-		"value": "s_r_1_7"
-	},
-	{
 		"effect":"text",
 		"portrait":"ArronSmile",
 		"sound":null,
@@ -366,14 +397,21 @@
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"Ah... Foolish..."
+		"value":"Ah... Stupid..."
 	},
 	{
 		"effect":"text",
 		"portrait":null,
 		"sound":null,
 		"source":"narrator",
-		"value":"Rose was losing herself to pleasure with every move. It always surprised her, how different she feels about it in contrast with her everyday composed personality."
+		"value":"Rose was losing herself to pleasure with every move."
+	},
+	{
+		"effect":"text",
+		"portrait":null,
+		"sound":null,
+		"source":"narrator",
+		"value":"It always surprised her, how different she was acting in contrast with her everyday uptight personality."
 	},
 	{
 		"effect":"text",
@@ -401,11 +439,14 @@
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"Ah... Master, please, hug me!"
+		"value":"I'm almost there..."
 	},
 	{
-		"effect": "background",
-		"value": "s_r_1_8"
+		"effect":"text",
+		"portrait":"RoseNormal",
+		"sound":null,
+		"source":"ROSE",
+		"value":"Ah... Master, please, hug me!"
 	},
 	{
 		"effect":"text",
@@ -429,6 +470,30 @@
 		"value":"..."
 	},
 	{
+		"effect": "background",
+		"value": "s_r_1_8"
+	},	
+	{
+		"effect": "sfx",
+		"value": "WhiteScreenGFX",
+		"delay": 0.5,
+		"args": "default"
+	},
+	{
+		"effect":"text",
+		"portrait":"RoseNormal",
+		"sound":null,
+		"source":"narrator",
+		"value":"Umh... "
+	},
+	{
+		"effect":"text",
+		"portrait":"RoseNormal",
+		"sound":null,
+		"source":"ROSE",
+		"value":"Ah... I did it again..."
+	},
+	{
 		"effect":"text",
 		"portrait":"ArronSmile",
 		"sound":null,
@@ -441,6 +506,12 @@
 		"sound":null,
 		"source":"ROSE",
 		"value":"..."
+	},  
+	{
+    "effect": "sfx",
+    "value": "blackscreenturnon",
+	"args": null,
+	"delay": 0.5
 	},
 	{
 		"effect":"text",

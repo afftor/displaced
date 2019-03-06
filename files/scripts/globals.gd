@@ -75,6 +75,7 @@ var globalsettings = {
 	fullscreen = false,
 	textspeed = 60,
 	skipread = false,
+	textmonocolor = false,
 } setget settings_save
 
 func settings_load():

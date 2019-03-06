@@ -4,6 +4,10 @@
 		"value": "hall"
 	},
 	{
+		"effect": "music",
+		"value": "eventgeneric",
+    },
+	{
 		"effect": "sprite",
 		"value": "set",
 		"args": "Rose"
@@ -23,7 +27,14 @@
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"I've finished asking around. It seems there's no known info about Avior, or where it even might be. "
+		"value":"I've finished asking around."
+	},
+	{
+		"effect":"text",
+		"portrait":"RoseNormal",
+		"sound":null,
+		"source":"ROSE",
+		"value":"It seems there's no known info about Avior, or where it even might be. "
 	},
 	{
 		"effect":"text",
@@ -86,7 +97,14 @@
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"That also means we have no idea how to get back. Wait, master, are you actually planning to get back? "
+		"value":"That also means we have no idea how to get back."
+	},
+	{
+		"effect":"text",
+		"portrait":"RoseSarcastic",
+		"sound":null,
+		"source":"ROSE",
+		"value":"Wait, master, are you actually planning to return? "
 	},
 	{
 		"effect":"text",
@@ -100,7 +118,7 @@
 		"portrait":"RoseTalk",
 		"sound":null,
 		"source":"ROSE",
-		"value":"What the hell!? We can't stay here for the rest of our lives. "
+		"value":"What!? We can't stay here for the rest of our lives. "
 	},
 	{
 		"effect":"text",
@@ -135,17 +153,30 @@
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"That might prove to be a challenge already. From what adventurers said, teleportation magic does not seem to be common here. "
+		"value":"That might prove to be a challenge already. From what passing adventurers said, teleportation magic does not seem to be common here. "
 	},
 	{
 		"effect":"text",
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"Well, all the more reasons to make sure our position here is nice and stable. Plus when else am I going to get the chance to rule anyone but mere servants?",
-		"delay": 0.1
+		"value":"Well, all the more reasons to make sure our position here is nice and stable.",
 	},
-	  {
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
+		"value":"Plus when else am I going to get the chance to rule anyone but mere servants?",
+		"delay": 0.5
+	},
+	{ 
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 1,
+	"delay": 1
+    },
+	{
     "effect": "stop",
     "value": ""
   }

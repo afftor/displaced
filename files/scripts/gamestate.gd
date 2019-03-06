@@ -88,19 +88,16 @@ func gettaskfromworker(worker):
 
 func StoreEvent (nm):
 	OldEvents[nm] = date;
-	pass
 
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return;
 	StoreEvent(CurEvent);
 	CurEvent = "";
 	keyframes.clear();
-	pass
 
 
 func if_has_money(value):
 	return (money >= value);
-	pass
 
 func if_has_property(prop, value):
 	var tmp = get(prop);
@@ -108,25 +105,20 @@ func if_has_property(prop, value):
 		print ("ERROR: NO PROPERTY IN GAMESTATE %s\n", prop);
 		return false;
 	return (tmp >= value);
-	pass
 
 func if_has_hero(name):
 	for h in heroes.values():
 		if h.name == name: return true;
-		pass
 	return false;
-	pass
 
 func if_has_material(mat, val):
 	if !materials.has(mat): return false;
 	return materials[mat] >= val;
-	pass
 
 func if_has_item(name):
 	for i in items.values():
 		if i.name == name: return true;
 	return false;
-	pass
 
 
 func valuecheck(dict):
@@ -134,13 +126,10 @@ func valuecheck(dict):
 	match dict['type']:
 		"no_check":
 			return true;
-			pass
 		"has_money":
 			return if_has_money(dict['value']);
-			pass
 		"has_property":
 			return if_has_property(dict['prop'], dict['value']);
-			pass
 		"has_hero":
 			return if_has_hero(dict['name']);
 		"event_finished":
@@ -150,7 +139,6 @@ func valuecheck(dict):
 			return tmp;
 		"has_material":
 			return if_has_material(dict['material'], dict['value']);
-			pass
 		"date":
 			return date >= dict['date'];
 		"item":
@@ -159,9 +147,7 @@ func valuecheck(dict):
 			return CurBuild == dict['value'];
 		"gamestart":
 			return newgame
-	pass
 
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null;
 	return heroes[combatparty[pos]];
-	pass
