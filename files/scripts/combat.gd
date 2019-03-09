@@ -490,11 +490,9 @@ func use_skill(skill, caster, target):
 	var debugtext = caster.name + ' uses ' + skill + ' on ' + target.name
 	allowaction = false
 	
-	
 	skill = globals.skills[skill]
 	
 	caster.mana -= skill.manacost
-	
 	
 	#making skill effects dict
 	var skilleffects = {oncast = [], onhit = []}
@@ -584,8 +582,6 @@ func CalculateTargets(skill, caster, target):
 	else:
 		targetgroup = 'enemy'
 	
-	
-	
 	match skill.targetpattern:
 		'single':
 			array = [target]
@@ -604,21 +600,21 @@ func CalculateTargets(skill, caster, target):
 	#print(array)
 	return array
 
-func hitchance(skill, caster, target):
-	var rval
-	
-	
-	if skill.skilltype == 'item' || caster.combatgroup == target.combatgroup || hitchancevalue(skill, caster, target) > rand_range(0,100):
-		rval = 'hit'
-	else:
-		rval = 'miss'
-	
-	return rval
-
-func hitchancevalue(skill, caster, target):
-	var rval = 0
-	rval = caster.hitrate - target.evasion
-	return rval
+#func hitchance(skill, caster, target):
+#	var rval
+#
+#
+#	if skill.skilltype == 'item' || caster.combatgroup == target.combatgroup || hitchancevalue(skill, caster, target) > rand_range(0,100):
+#		rval = 'hit'
+#	else:
+#		rval = 'miss'
+#
+#	return rval
+#
+#func hitchancevalue(skill, caster, target):
+#	var rval = 0
+#	rval = caster.hitrate - target.evasion
+#	return rval
 
 func calculate_number_from_string_array(array, caster, target):
 	var endvalue = 0
@@ -644,13 +640,11 @@ func calculate_number_from_string_array(array, caster, target):
 func execute_skill(skill, caster, target):
 	var endvalue = 0
 	
-	
-	var crit = false
-	if caster.critchance >= randf()*100:
-		crit = true
+#	var crit = false
+#	if caster.critchance >= randf()*100:
+#		crit = true
 	
 	#damage calculation
-	
 	endvalue = calculate_number_from_string_array(skill.value, caster, target)
 	
 	var rangetype
@@ -664,45 +658,43 @@ func execute_skill(skill, caster, target):
 		endvalue /= 2
 	
 	var damagetype
-	var extradamage = []
+	#var extradamage = []
 	
 	#onhiteffects
-	if skill.skilltype in ['skill', 'spell']:
-		for i in caster.passives[skill.skilltype+'hit'] + caster.passives['anyhit']:
-			var passive = globals.combateffects[globals.effects[i].triggereffect]
-			if checkreqs(passive, caster, target) == false:
-				continue
-			
-			var neweffect = passive.effectvalue
-			var newvalue
-			if passive.effect != 'buff':
-				newvalue = calculate_number_from_string_array(neweffect.value, caster, target)
-			var subtarget
-			if passive.has('receiver'):
-				if passive.receiver == 'caster':
-					subtarget = caster
-				elif passive.receiver == 'target':
-					subtarget = target
-			match passive.effect:
-				'skillmod':
-					match neweffect.type:
-						'damagemod':
-							endvalue *= (1+newvalue)
-						'damage':
-							endvalue += newvalue
-					
-				'gainstat':
-					subtarget[neweffect.type] += newvalue
-				'buff':
-					var buff = makebuff(passive.effectvalue, caster, target)
-					subtarget.add_buff(buff)
-				'extradamage':
-					extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
-	
-	
+#	if skill.skilltype in ['skill', 'spell']:
+#		for i in caster.passives[skill.skilltype+'hit'] + caster.passives['anyhit']:
+#			var passive = globals.combateffects[globals.effects[i].triggereffect]
+#			if checkreqs(passive, caster, target) == false:
+#				continue
+#
+#			var neweffect = passive.effectvalue
+#			var newvalue
+#			if passive.effect != 'buff':
+#				newvalue = calculate_number_from_string_array(neweffect.value, caster, target)
+#			var subtarget
+#			if passive.has('receiver'):
+#				if passive.receiver == 'caster':
+#					subtarget = caster
+#				elif passive.receiver == 'target':
+#					subtarget = target
+#			match passive.effect:
+#				'skillmod':
+#					match neweffect.type:
+#						'damagemod':
+#							endvalue *= (1+newvalue)
+#						'damage':
+#							endvalue += newvalue
+#
+#				'gainstat':
+#					subtarget[neweffect.type] += newvalue
+#				'buff':
+#					var buff = makebuff(passive.effectvalue, caster, target)
+#					subtarget.add_buff(buff)
+#				'extradamage':
+#					extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
+#
 	if crit == true:
 		endvalue *= caster.critmod
-	
 	
 	#damage type
 	if skill.damagetype == 'weapon':
@@ -710,12 +702,10 @@ func execute_skill(skill, caster, target):
 	else:
 		damagetype = skill.damagetype
 	
-	var damage_dict = {value = endvalue, element = damagetype, type = skill.skilltype, tags = skill.tags}
-	
-	
-	deal_damage(damage_dict, caster, target)
-	for i in extradamage:
-		deal_damage(i.damage_dict, caster, i.target)
+#	var damage_dict = {value = endvalue, element = damagetype, type = skill.skilltype, tags = skill.tags}
+#	deal_damage(damage_dict, caster, target)
+#	for i in extradamage:
+#		deal_damage(i.damage_dict, caster, i.target)
 
 
 func deal_damage(damage_dict, caster, target):

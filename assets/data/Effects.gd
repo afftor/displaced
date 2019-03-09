@@ -1,5 +1,5 @@
 extends Node
-
+#old part, to replace
 var effects = {
 	gobmetalhandle = {descript = tr("GOBMETALHANDLEDESCRIPT"), code = 'gobmetalhandle', textcolor = 'yellow', trigger = 'skillhit', triggereffect = 'gobmetalhandleffect'},
 	elfmetalhandle = {descript = tr("ELFMETALHANDLEDESCRIPT"), code = 'elfmetalhandle', textcolor = 'yellow', trigger = 'skillhit', triggereffect = 'elfmetalhandleffect'},
@@ -31,3 +31,12 @@ gobmetalrodeffect = {effect = 'buff', receiver = 'target', effectvalue = {code =
 bonerodeffect = {effect = 'gainstat', receiver = 'caster', effectvalue = {type = 'hp', value = ['hpmax','*0.03']}},
 
 }
+
+#new part
+var effect_table = {
+	
+};
+
+var atomic = {
+	
+};
