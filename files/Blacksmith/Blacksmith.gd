@@ -252,8 +252,8 @@ func repairallitems():
 
 func show():
 	state.CurBuild = "blacksmith"
-	.show();
-	pass
+	input_handler.emit_signal("BuildingEntered", 'blacksmith')
+	.show()
 
 func hide():
 		state.CurBuild = "";

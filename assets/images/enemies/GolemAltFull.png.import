@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wood.png-45f273df6156cf3086be933f3e5c494a.stex"
+path="res://.import/GolemAltFull.png-d6885c7e36fe8ed1b3bf25e2b20ac577.stex"
 
 [deps]
 
-source_file="res://assets/images/gui/Wood.png"
-dest_files=[ "res://.import/Wood.png-45f273df6156cf3086be933f3e5c494a.stex" ]
+source_file="res://assets/images/enemies/GolemAltFull.png"
+dest_files=[ "res://.import/GolemAltFull.png-d6885c7e36fe8ed1b3bf25e2b20ac577.stex" ]
 
 [params]
 

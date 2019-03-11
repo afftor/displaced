@@ -8,10 +8,23 @@ var upgradelist = {
 		descript = tr("UPGRADEBRIDGEDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [], 
 				bonusdescript = tr("UPGRADEBRIDGEBONUS"),
 				cost = {wood = 5},
+			}
+		}
+	},
+	lumbermill = {
+		code = 'lumbermill',
+		name = tr("LUMBERMILLUPGRADE"),
+		positionorder = 2,
+		descript = tr("UPGRADELUMBERMILLDESCRIPT"),
+		levels = {
+			1:{
+				unlockreqs = [], 
+				bonusdescript = tr("UPGRADELUMBERMILLBONUS"),
+				cost = {goblinmetal = 5, cloth = 5},
+				limitchange = 4
 			}
 		}
 	},
@@ -22,10 +35,10 @@ var upgradelist = {
 		descript = tr("UPGRADEMINEDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
 				bonusdescript = tr("UPGRADEMINEBONUS"),
 				cost = {wood = 5, elvenwood = 5},
+				limitchange = 2
 			}
 		}
 	},
@@ -36,10 +49,10 @@ var upgradelist = {
 		descript = tr("UPGRADEFARMDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
 				bonusdescript = tr("UPGRADEFARMBONUS"),
 				cost = {wood = 10},
+				limitchange = 2
 			}
 		}
 	},
@@ -50,16 +63,16 @@ var upgradelist = {
 		descript = tr("UPGRADEHOUSESDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [],
 				bonusdescript = tr("UPGRADHOUSEBONUS1"),
 				cost = {wood = 10},
+				limitchange = 4,
 			},
 			2:{
-				unlockreqs = true,
-				purchasereqs = true,
-				bonusdescript = tr("UPGRADHOUSEBONUS1"),
+				unlockreqs = [], 
+				bonusdescript = tr("UPGRADHOUSEBONUS2"),
 				cost = {wood = 10, elvenwood = 5},
+				limitchange = 6
 			}
 		}
 	},
@@ -70,14 +83,12 @@ var upgradelist = {
 		descript = tr("UPGRADEBLACKSMITHDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #ember unlocked
-				purchasereqs = true,
+				unlockreqs = [{type = "has_hero", name = "EMBER"}], 
 				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
 				cost = {goblinmetal = 10},
 			},
 			2:{
-				unlockreqs = true,
-				purchasereqs = true,
+				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
 				cost = {elvenmetal = 10},
 			},

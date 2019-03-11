@@ -11,6 +11,16 @@ var SystemMessageNode
 
 
 signal ScreenChanged
+signal BuildingEntered
+signal ItemObtained
+signal MaterialObtained
+signal ExplorationStarted
+signal CombatStarted
+signal WorkerAssigned
+signal SpeedChanged
+signal UpgradeUnlocked
+
+
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
@@ -354,8 +364,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 	
 	return result
 
-func requirementstatecheck(req):
-	pass
+
 
 func operate(operation, value1, value2):
 	var result
@@ -415,13 +424,30 @@ func open_shell(string):
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):
+	var basetime = time
 	if SystemMessageNode == null:
 		return
-	var array = [SystemMessageNode, SystemMessageNode.get_parent().get_node("SystemMessageShadow")]
 	text = '[center]' + text + '[/center]'
-	for i in array:
-		i.modulate.a = 1
-		i.bbcode_text = text
-		var basetime = time
-		FadeAnimation(i, 1, basetime)
-	
+	SystemMessageNode.modulate.a = 1
+	SystemMessageNode.bbcode_text = text
+	FadeAnimation(SystemMessageNode, 1, basetime)
+
+func GetTutorialNode():
+	var node = get_tree().get_root()
+	if node.has_node("MainScreen"):
+		node = node.get_node("MainScreen")
+	var tutnode
+	if node.has_node('TutorialNode'):
+		tutnode = node.get_node('TutorialNode')
+	else:
+		tutnode = load("res://src/Tutorial.tscn").instance()
+		tutnode.name = 'TutorialNode'
+		node.add_child(tutnode)
+	return tutnode
+
+
+func ActivateTutorial(stage):
+	var node = GetTutorialNode()
+	node.activatetutorial(stage)
+
+

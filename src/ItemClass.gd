@@ -121,7 +121,6 @@ func CreateGear(ItemName = '', dictparts = {}):
 			bonusstats[i] *= itemtemplate.basemods[i]
 	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
 	bonusstats.erase('damagemod')
-	
 	durability = round(durability)
 	maxdurability = round(durability)
 
@@ -171,7 +170,6 @@ func tooltiptext():
 	elif itemtype == 'usable':
 		text += descirption + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
 	
-	
 	text = globals.TextEncoder(text)
 	return text
 
@@ -213,17 +211,20 @@ func canrepairwithmaterials(): #checks if item can be repaired at present state 
 	
 	return returndict
 
-
-func counterepairmaterials():
-	var itemtemplate = Items.Items[itembase] #item base for item parts cost
-	var requiredmaterialsdict = {} #total materials used in creation
-	
+func calculatematerials():
+	var itemtemplate = Items.Items[itembase] #item base for item parts amount
+	var materialsdict = {} #total materials used in creation
 	#collecting parts info
 	for i in parts:
-		if requiredmaterialsdict.has(parts[i]):
-			requiredmaterialsdict[parts[i]] += itemtemplate.parts[i]
+		if materialsdict.has(parts[i]):
+			materialsdict[parts[i]] += itemtemplate.parts[i]
 		else:
-			requiredmaterialsdict[parts[i]] = itemtemplate.parts[i]
+			materialsdict[parts[i]] = itemtemplate.parts[i]
+	return materialsdict
+
+func counterepairmaterials():
+	var requiredmaterialsdict = calculatematerials()
+	var itemtemplate = Items.Items[itembase] 
 	
 	#calculating total resource needs
 	var multiplier = 0
@@ -245,3 +246,13 @@ func counterepairmaterials():
 	
 	
 	return requiredmaterialsdict
+
+func calculateprice():
+	var price = 0
+	if itemtype == 'usable':
+		price = Items.Items[itembase].price
+	else:
+		var materialsdict = calculatematerials()
+		for i in materialsdict:
+			price += Items.Materials[i].price*materialsdict[i]
+	return price

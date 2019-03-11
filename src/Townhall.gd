@@ -4,10 +4,11 @@ var selectedworker
 var selectedupgrade
 
 func _ready():
-	$ButtonPanel/VBoxContainer/Tasks.connect("pressed",self,'tasklist')
+	#$ButtonPanel/VBoxContainer/Tasks.connect("pressed",self,'tasklist')
 	$ButtonPanel/VBoxContainer/Upgrades.connect('pressed', self, 'upgradelist')
 	$UpgradeDescript/UnlockButton.connect("pressed", self, 'unlockupgrade')
-	globals.AddPanelOpenCloseAnimation($TaskList)
+	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
+	#globals.AddPanelOpenCloseAnimation($TaskList)
 	globals.AddPanelOpenCloseAnimation($UpgradeList)
 	globals.AddPanelOpenCloseAnimation($UpgradeDescript)
 
@@ -15,17 +16,9 @@ func _ready():
 func open():
 	show()
 
-func tasklist():
-	$TaskList.show()
-	globals.ClearContainer($TaskList/ScrollContainer/VBoxContainer)
-	for i in TownData.tasksdict.values():
-		var newbutton = globals.DuplicateContainerTemplate($TaskList/ScrollContainer/VBoxContainer)
-		newbutton.get_node("name").text = i.name
-		newbutton.connect("pressed", self, 'selecttaskfromlist', [i])
 
-
-func selecttaskfromlist(task):
-	$SelectWorker.OpenSelectTab(task)
+#func selecttaskfromlist(task):
+#	$SelectWorker.OpenSelectTab(task)
 
 func upgradelist():
 	$UpgradeList.show()
@@ -39,6 +32,14 @@ func upgradelist():
 	
 	for i in array:
 		var currentupgradelevel = findupgradelevel(i)
+		
+		var check = true
+		if i.levels.has(currentupgradelevel):
+			for k in i.levels[currentupgradelevel].unlockreqs:
+				if state.valuecheck(k) == false:
+					check = false
+		if check == false:
+			continue
 		
 		var text = i.name
 		
@@ -119,6 +120,7 @@ func unlockupgrade():
 	else:
 		state.townupgrades[upgrade.code] = 1
 	input_handler.SystemMessage(tr("UPGRADEUNLOCKED") + ": " + upgrade.name)
+	input_handler.emit_signal("UpgradeUnlocked", upgrade)
 	upgradelist()
 	#state.townupgrades[upgrade.code] = true
 

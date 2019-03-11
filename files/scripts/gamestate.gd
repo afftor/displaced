@@ -13,7 +13,7 @@ var heroidcounter = 0
 var workeridcounter = 0
 var money = 0
 var food = 50
-var townupgrades = {workerlimit = 5}
+var townupgrades = {}
 var workers = {}
 var heroes = {}
 var items = {}
@@ -48,6 +48,7 @@ func materials_set(value):
 			else:
 				if oldmaterials[i] - value[i] < 0:
 					text += 'Gained '
+					input_handler.emit_signal("MaterialObtained", i)
 				else:
 					text += "Lost "
 				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + Items.Materials[i].name + '}'
@@ -85,6 +86,14 @@ func gettaskfromworker(worker):
 		if i.worker == worker:
 			return i
 	return false
+
+func GetWorkerLimit():
+	var value
+	if townupgrades.has("houses") == false:
+		value = 3
+	else:
+		value = globals.upgradelist.houses.levels[townupgrades.houses].limitchange
+	return value
 
 func StoreEvent (nm):
 	OldEvents[nm] = date;
@@ -147,6 +156,12 @@ func valuecheck(dict):
 			return CurBuild == dict['value'];
 		"gamestart":
 			return newgame
+		"has_upgrade":
+			return if_has_upgrade(dict.name, dict.value)
+
+func if_has_upgrade(upgrade, level):
+	if !townupgrades.has(upgrade): return false
+	else: return townupgrades[upgrade] >= level
 
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null;

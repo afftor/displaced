@@ -37,11 +37,12 @@ func showup(node, item):
 		textnode.bbcode_text = text
 		iconnode.texture = item.icon
 		iconnode.material = null
+		$Cost/Label.text = str(Items.Materials[item.code].price)
 	else:
 		text = item.tooltiptext()
 		textnode.bbcode_text = globals.TextEncoder(text)
 		input_handler.itemshadeimage(iconnode, item)
-	
+		$Cost/Label.text = str(item.calculateprice())
 	prevnode = parentnode
 	
 	popup()

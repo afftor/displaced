@@ -10,11 +10,11 @@ func _ready():
 	$SelectToolButton.connect("pressed",self,'SelectTool')
 	$ConfirmButton.connect("pressed", self, 'ConfirmTask')
 
-func OpenSelectTab(task):
+func OpenSelectTab(task, worker):
 	show()
 	selectedtask = task
 	selectedtool = null
-	selectedworker = null
+	selectedworker = worker
 	globals.ClearContainer($HBoxContainer)
 #	for i in task.product:
 #		var newresource = globals.DuplicateContainerTemplate($HBoxContainer)
@@ -43,15 +43,16 @@ func ToolSelected(item):
 	UpdateButtons()
 
 func UpdateButtons():
+	$SelectToolButton/Icon.material = null
 	if selectedtool != null:
-		input_handler.itemshadeimage($SelectToolButton, selectedtool)
+		input_handler.itemshadeimage($SelectToolButton/Icon, selectedtool)
 	else:
-		$SelectToolButton.texture_normal = load("res://icon.png")
+		$SelectToolButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
 	if selectedworker != null:
-		$SelectWorkerButton.texture_normal = selectedworker.icon
+		$SelectWorkerButton/Icon.texture = selectedworker.icon
 	else:
-		$SelectWorkerButton.texture_normal = load("res://icon.png")
+		$SelectWorkerButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
 	var conditioncheck = true
 	if selectedworker == null:
@@ -76,3 +77,4 @@ func ConfirmTask():
 	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}
 	
 	globals.CurrentScene.assignworker(data)
+	input_handler.emit_signal("WorkerAssigned", data)
