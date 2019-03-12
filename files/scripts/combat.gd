@@ -83,6 +83,11 @@ func start_combat(newenemygroup):
 	buildenemygroup(enemygroup)
 	buildplayergroup(playergroup)
 	#victory()
+	#start combat triggers
+	for p in playergroup:
+		p.basic_check(variables.TR_COMBAT_S);
+	for p in enemygroup:
+		p.basic_check(variables.TR_COMBAT_S);
 	select_actor()
 
 func FinishCombat():
@@ -102,6 +107,7 @@ func select_actor():
 		calculateorder()
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
+	currentactor.update_timers();
 	if currentactor < 7:
 		player_turn(currentactor)
 	else:
@@ -109,15 +115,17 @@ func select_actor():
 
 func newturn():
 	for i in playergroup.values() + enemygroup.values():
-		for k in i.buffs.values():
-			k.duration -= 1
-			if k.duration < 0:
-				i.remove_buff(k.code)
+#		for k in i.buffs.values():
+#			k.duration -= 1
+#			if k.duration < 0:
+#				i.remove_buff(k.code)
+		i.update_temp_effects();
+		i.basic_check(variables.TR_TURN_S);
 
-func debuff_all():
-	for i in playergroup.values() + enemygroup.values():
-		for k in i.buffs:
-			i.remove_buff(k.code)
+#func debuff_all():
+#	for i in playergroup.values() + enemygroup.values():
+#		for k in i.buffs:
+#			i.remove_buff(k.code)
 
 func checkdeaths():
 	for i in battlefield:
@@ -146,6 +154,9 @@ func checkwinlose():
 
 func victory():
 	fightover = true
+	#on combat ends triggers
+	for p in playergroup:
+		p.basic_check(variables.TR_COMBAT_F);
 	
 	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
 	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -199,10 +210,9 @@ func defeat():
 
 func player_turn(pos):
 	var selected_character = playergroup[pos]
-	if selected_character.effects.has('stun'):
-		select_actor()
+	if !selected_character.can_act():
+		call_deferred('select_actor');
 		return
-	
 	allowaction = true
 	activecharacter = selected_character
 	RebuildSkillPanel()
@@ -298,8 +308,8 @@ func FindFighterRow(fighter):
 
 func enemy_turn(pos):
 	var fighter = enemygroup[pos]
-	if fighter.effects.has('stun'):
-		select_actor()
+	if !fighter.can_act():
+		call_deferred('select_actor');
 		return
 	
 	var castskill = []
@@ -495,13 +505,20 @@ func use_skill(skill, caster, target):
 	caster.mana -= skill.manacost
 	
 	#making skill effects dict
-	var skilleffects = {oncast = [], onhit = []}
-	
+#	var skilleffects = {oncast = [], onhit = []}
+#
+#	for i in skill.casteffects:
+#		skilleffects[i.period].append(i)
+#
+#	for i in skilleffects.oncast:
+#		SendSkillEffect(i, caster, target)
+	#oncast effects. FOR SKILLS - ONLY ONESHOT NON-REVERCIBLE EFFECTS (or effects that can handle their removal by itself)
 	for i in skill.casteffects:
-		skilleffects[i.period].append(i)
-	
-	for i in skilleffects.oncast:
-		SendSkillEffect(i, caster, target)
+		var tmp = Effectdata.effect_table[i];
+		if tmp.trigger != variables.TR_CAST:
+			continue;
+		caster.apply_effect(i);
+	caster.basic_check(variables.TR_CAST); #can do this as on_skill_check(), but this can lead to more code rewriting, since this reqires providing access to skill parameters that are not yet determined
 	
 	var animations = skill.sfx
 	var animationdict = {windup = [], predamage = []}
@@ -520,9 +537,8 @@ func use_skill(skill, caster, target):
 	
 	if animationdict.windup.size() > 0:
 		yield(CombatAnimations, 'cast_finished')
-	
+	#here must be triggers for skill activate NEEDS IMPLEMENTATION
 	for i in targets:
-		
 		for j in animationdict.predamage:
 			var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 			CombatAnimations.call(j.code, sfxtarget)
@@ -531,17 +547,13 @@ func use_skill(skill, caster, target):
 		if animationdict.predamage.size() > 0:
 			yield(CombatAnimations, 'predamage_finished')
 		
-		if hitchance(skill,caster,i) == 'hit':
-			execute_skill(skill, caster, i)
-			for j in skilleffects.onhit:
-				SendSkillEffect(j, caster, i)
-		else:
-			miss(target)
-
-	
-	
-	
-	
+		execute_skill(skill, caster, i);
+#		if hitchance(skill,caster,i) == 'hit':
+#			execute_skill(skill, caster, i)
+#			for j in skilleffects.onhit:
+#				SendSkillEffect(j, caster, i)
+#		else:
+#			miss(target)
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
@@ -553,7 +565,9 @@ func use_skill(skill, caster, target):
 	if fighterhighlighted == true:
 		FighterMouseOver(target)
 	#print(caster.name + ' finished attacking') 
-	select_actor()
+	#on end turn triggers
+	caster.basic_check(variables.TR_TURN_F);
+	call_deferred('select_actor');
 
 func ProcessSfxTarget(sfxtarget, caster, target):
 	match sfxtarget:
@@ -638,15 +652,12 @@ func calculate_number_from_string_array(array, caster, target):
 	return endvalue
 
 func execute_skill(skill, caster, target):
+	var s_skill = Skillsdata.S_Skill.new(caster, target);
+	s_skill.createfrmskill(skill);
+	s_skill.hit_roll();
 	var endvalue = 0
-	
-#	var crit = false
-#	if caster.critchance >= randf()*100:
-#		crit = true
-	
-	#damage calculation
+	#value pre_calculation, using in triggers
 	endvalue = calculate_number_from_string_array(skill.value, caster, target)
-	
 	var rangetype
 	if skill.userange == 'weapon':
 		if caster.gear.rhand == null:
@@ -656,93 +667,37 @@ func execute_skill(skill, caster, target):
 			rangetype = weapon.weaponrange
 	if rangetype == 'melee' && FindFighterRow(caster) == 'backrow' && !CheckMeleeRange(caster.combatgroup):
 		endvalue /= 2
-	
-	var damagetype
-	#var extradamage = []
-	
-	#onhiteffects
-#	if skill.skilltype in ['skill', 'spell']:
-#		for i in caster.passives[skill.skilltype+'hit'] + caster.passives['anyhit']:
-#			var passive = globals.combateffects[globals.effects[i].triggereffect]
-#			if checkreqs(passive, caster, target) == false:
-#				continue
-#
-#			var neweffect = passive.effectvalue
-#			var newvalue
-#			if passive.effect != 'buff':
-#				newvalue = calculate_number_from_string_array(neweffect.value, caster, target)
-#			var subtarget
-#			if passive.has('receiver'):
-#				if passive.receiver == 'caster':
-#					subtarget = caster
-#				elif passive.receiver == 'target':
-#					subtarget = target
-#			match passive.effect:
-#				'skillmod':
-#					match neweffect.type:
-#						'damagemod':
-#							endvalue *= (1+newvalue)
-#						'damage':
-#							endvalue += newvalue
-#
-#				'gainstat':
-#					subtarget[neweffect.type] += newvalue
-#				'buff':
-#					var buff = makebuff(passive.effectvalue, caster, target)
-#					subtarget.add_buff(buff)
-#				'extradamage':
-#					extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
-#
-	if crit == true:
-		endvalue *= caster.critmod
-	
-	#damage type
-	if skill.damagetype == 'weapon':
-		damagetype = 'phys'
-	else:
-		damagetype = skill.damagetype
-	
-#	var damage_dict = {value = endvalue, element = damagetype, type = skill.skilltype, tags = skill.tags}
-#	deal_damage(damage_dict, caster, target)
-#	for i in extradamage:
-#		deal_damage(i.damage_dict, caster, i.target)
+	s_skill.value = endvalue;
+	#apply triggers
+	for t in s_skill.casteffects:
+		s_skill.apply_effect(t, variables.TR_HIT);
+	caster.on_skill_check(s_skill, variables.TR_HIT);
+	target.on_skill_check(s_skill, variables.TR_DEF);
+	#apply resists and modifiers
+	if s_skill.hit_res == variables.RES_MISS:
+		miss(target);
+		return;
+	s_skill.calc_damage(); 
+	#deal damage
+	target.deal_damage(s_skill.value, s_skill.damagesrc);
+	if target.hp <= 0:
+		target.death();
+		caster.basic_check(variables.TR_KILL);
 
-
-func deal_damage(damage_dict, caster, target):
-	var endvalue = damage_dict.value
-	var damagetype = damage_dict.element
-	var type = damage_dict.type
-	var reduction = 0
-	
-	if type == 'skill':
-		reduction = max(0, target.armor - caster.armorpenetration)
-	elif type == 'spell':
-		reduction = max(0, target.mdef)
-	if !damage_dict.tags.has('heal'):
-		endvalue = endvalue * (float(100 - reduction)/100)
-	
-	
-	if damagetype in ['fire','water','air','earth']:
-		endvalue = endvalue * ((100 - target['resist' + damagetype])/100)
-
-	if damage_dict.tags.has('heal'):
-		target.hp += ceil(endvalue)
-	else:
-		target.hp -= ceil(endvalue)
 
 func miss(fighter):
 	CombatAnimations.miss(fighter.displaynode)
 
-func makebuff(buff, caster, target):
-	var newbuff = {code = buff.code, caster = caster, duration = buff.duration, effects = [], tags = []}
-	if buff.has('icon'):
-		newbuff.icon = buff.icon
-	for i in buff.effects:
-		var value = calculate_number_from_string_array(i.value, caster, target)
-		var buffeffect = {value = value, stat = i.stat}
-		newbuff.effects.append(buffeffect)
-	
-	return newbuff
+#func makebuff(buff, caster, target):
+#	var newbuff = {code = buff.code, caster = caster, duration = buff.duration, effects = [], tags = []}
+#	if buff.has('icon'):
+#		newbuff.icon = buff.icon
+#	for i in buff.effects:
+#		var value = calculate_number_from_string_array(i.value, caster, target)
+#		var buffeffect = {value = value, stat = i.stat}
+#		newbuff.effects.append(buffeffect)
+#
+#	return newbuff
 
 func checkreqs(passive, caster, target):
 	var rval = true

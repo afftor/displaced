@@ -34,9 +34,17 @@ bonerodeffect = {effect = 'gainstat', receiver = 'caster', effectvalue = {type =
 
 #new part
 var effect_table = {
-	
+	#traits
+	#skills
+	#weapon
+	#item
+	#secondary
 };
 
 var atomic = {
 	
+};
+
+var buffs = {
+	#code = {icon, description}
 };

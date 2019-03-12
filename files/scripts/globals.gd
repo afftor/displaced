@@ -24,7 +24,7 @@ var randomgroups
 #var enemylist
 var upgradelist
 
-#var skillsdata
+var skillsdata = Skillsdata.skilllist;
 #var effectdata
 
 #var combatantdata = load("res://files/CombatantClass.gd").new()

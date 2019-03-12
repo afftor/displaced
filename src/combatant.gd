@@ -32,6 +32,9 @@ var resistfire = 0
 var resistearth = 0
 var resistwater = 0
 var resistair = 0
+var shield = 0;
+var shieldtype = variables.S_FULL;
+
 var image
 var portrait
 var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null, lhand = null, neck = null, ring1 = null, ring2 = null}
@@ -114,6 +117,7 @@ func exp_set(value):
 
 func levelup():
 	level += 1
+	#add trait obtaining and other trait related stuff
 
 func can_acq_trait(trait_code):
 	if traits.keys().has(trait_code): return false;
@@ -164,11 +168,11 @@ func deactivate_trait(trait_code):
 		remove_effect(e, 'once');
 	pass
 
-func clear_oneshot():
-	for e in oneshot_effects:
-		remove_effect(e, 'once');
-	oneshot_effects.clear();
-	pass
+#func clear_oneshot():
+#	for e in oneshot_effects:
+#		remove_effect(e, 'once');
+#	oneshot_effects.clear();
+#	pass
 
 func apply_atomic(effect): #can be name or dictionary
 	var tmp;
@@ -225,15 +229,15 @@ func remove_atomic(effect):
 func find_temp_effect(eff_code):
 	var res = -1;
 	var tres = 9999999;
-	var num = 0;
+	var nm = 0;
 	for i in range(temp_effects.size()):
 		if temp_effects[i].effect != eff_code:continue;
-		num += 1;
+		nm += 1;
 		if temp_effects[i].time < tres: 
 			tres = temp_effects[i].time;
 			res = i;
 		pass
-	return {num = num, index = res};
+	return {num = nm, index = res};
 	pass
 
 
@@ -324,7 +328,7 @@ func apply_effect(eff_code):
 				pass
 			pass
 		'oneshot':
-			oneshot_effects.push_back(eff_code);
+			#oneshot_effects.push_back(eff_code);
 			for ee in tmp.effects:
 				apply_atomic(Effectdata.atomic[ee]);
 				pass
@@ -357,11 +361,11 @@ func remove_effect(eff_code, option = 'once'):
 					pass
 				pass
 			pass
-		'oneshot':
-			for ee in tmp.effects:
-				remove_atomic(ee);
-				pass
-			pass
+#		'oneshot':
+#			for ee in tmp.effects:
+#				remove_atomic(ee);
+#				pass
+#			pass
 		'trigger':
 			if option == 'once':
 				triggered_effects.erase(eff_code);
@@ -633,6 +637,17 @@ func hitchance(target):
 		return false
 
 func deal_damage(value, source):
+	if (shield > 0) and ((shieldtype & source) != 0):
+		shield -= value;
+		if shield < 0:
+			self.hp = hp + shield;
+			basic_check(variables.TR_DMG);
+			shield = 0;
+		if shield == 0: basic_check(variables.TR_SHIELD_DOWN);
+		pass
+	else:
+		self.hp = hp - value;
+		basic_check(variables.TR_DMG);
 	pass
 
 func death():

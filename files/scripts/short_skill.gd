@@ -2,6 +2,7 @@ extends Reference
 
 var code;
 var damagetype;
+var damagesrc;
 var skilltype;
 var tags;
 var value;
@@ -14,7 +15,7 @@ var caster;
 var target;
 var critchance;
 var hit_res;
-
+var armor_p;
 
 func _init(c,t):
 	caster = c;
@@ -40,6 +41,10 @@ func createfromskill(s_code):
 		evade = ref.evade;
 	else:
 		evade = target.evasion;
+	if ref.has('armor_p'):
+		armor_p = ref['armor_p'];
+	else:
+		armor_p = caster.armorpenetration;
 	pass
 
 
@@ -68,10 +73,11 @@ func apply_atomic(effect):
 			pass
 	pass
 
-func apply_effect(code):
+func apply_effect(code, trigger):
 	var tmp = Effectdata.effect_table[code];
 	var rec;
 	var res;
+	if tmp.trigger != trigger: return;
 	for cond in tmp.conditions:
 		match cond.target:
 			'skill':
@@ -102,3 +108,25 @@ func apply_effect(code):
 					rec = self;
 			rec.apply_atomic(eee);
 	pass
+
+func calculate_dmg():
+	if damagetype == 'weapon':
+		damagesrc = variables.S_PHYS;
+	elif damagetype == 'fire':
+		damagesrc = variables.S_FIRE
+	elif damagetype == 'water':
+		damagesrc = variables.S_WATER
+	elif damagetype == 'air':
+		damagesrc = variables.S_AIR
+	elif damagetype == 'earth':
+		damagesrc = variables.S_EARTH
+	if hit_res == variables.RES_CRIT:
+		value *= caster.critmod;
+	var reduction = 0;
+	if type == 'skill':
+		reduction = max(0, target.armor - armor_p)
+	elif type == 'spell':
+		reduction = max(0, target.mdef)
+	endvalue = endvalue * (float(100 - reduction)/100);
+	if damagetype in ['fire','water','air','earth']:
+		value = value * ((100 - target['resist' + damagetype])/100);
