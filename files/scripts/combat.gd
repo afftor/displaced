@@ -84,9 +84,9 @@ func start_combat(newenemygroup):
 	buildplayergroup(playergroup)
 	#victory()
 	#start combat triggers
-	for p in playergroup:
+	for p in playergroup.values():
 		p.basic_check(variables.TR_COMBAT_S);
-	for p in enemygroup:
+	for p in enemygroup.values():
 		p.basic_check(variables.TR_COMBAT_S);
 	select_actor()
 
@@ -154,8 +154,9 @@ func checkwinlose():
 
 func victory():
 	fightover = true
+	#need to fastfinish all temp effects, TOMAKE
 	#on combat ends triggers
-	for p in playergroup:
+	for p in playergroup.values():
 		p.basic_check(variables.TR_COMBAT_F);
 	
 	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
@@ -189,7 +190,7 @@ func victory():
 			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
-		i.baseexp += rewardsdict.xp
+		i.baseexp += rewardsdict.xp*i.xpmod;
 		var subtween = input_handler.GetTweenNode(newbutton)
 		subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 		subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))

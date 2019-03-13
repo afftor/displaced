@@ -89,6 +89,8 @@ func apply_effect(code, trigger):
 				res = res and input_handler.requirementcombatantcheck(cond.value, caster);
 			'target':
 				res = res and input_handler.requirementcombatantcheck(cond.value, target);
+			'chance':
+				res = res and (randf()*100 < cond.value);
 	if !res: return;
 	for ee in tmp.effects:
 			var eee;

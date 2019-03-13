@@ -15,7 +15,7 @@ var xpreward #for enemies
 var hp = 0 setget hp_set
 var hppercent = 100 setget hp_p_set
 var hpmaxvalue = 0
-var hpmax = 0
+var hpmax = 0 setget hp_max_set
 var defeated = false
 var mana = 0 setget mana_set
 var manamax = 0
@@ -98,6 +98,10 @@ func hp_set(value):
 	if displaynode != null:
 		displaynode.update_hp()
 	hppercent = (hp*100)/hpmax()
+
+func hp_max_set(value):
+	hpmax = value;
+	set('hppercent', hppercent);
 
 func hp_p_set(value):
 	hppercent = clamp(value, 0, 100);
@@ -263,7 +267,7 @@ func add_area_effect(eff_code):
 			pass
 	#own_area_effects.push_back(effect.code);
 	for pos in area:
-		for h in state.heroes:
+		for h in state.heroes.values():
 			h.add_ext_area_effect({effect = effect.value, position = pos});
 		pass
 	pass
@@ -280,7 +284,7 @@ func remove_area_effect(eff_code):
 			pass
 	#own_area_effects.erase(effect.code);
 	for pos in area:
-		for h in state.heroes:
+		for h in state.heroes.values():
 			h.remove_ext_area_effect({effect = effect.value, position = pos});
 		pass
 	pass
@@ -324,13 +328,13 @@ func apply_effect(eff_code):
 		'static':
 			static_effects.push_back(eff_code);
 			for ee in tmp.effects:
-				apply_atomic(Effectdata.atomic[ee]);
+				apply_atomic(ee);
 				pass
 			pass
 		'oneshot':
 			#oneshot_effects.push_back(eff_code);
 			for ee in tmp.effects:
-				apply_atomic(Effectdata.atomic[ee]);
+				apply_atomic(ee);
 				pass
 			pass
 		'trigger':
@@ -339,6 +343,8 @@ func apply_effect(eff_code):
 		'area':
 			own_area_effects.push_back(eff_code);
 			add_area_effect(eff_code);
+			for ee in tmp.effects:
+				apply_atomic(ee);
 			pass
 	pass
 
@@ -380,6 +386,8 @@ func remove_effect(eff_code, option = 'once'):
 		'area':
 			own_area_effects.erase(eff_code);
 			remove_area_effect(eff_code);
+			for ee in tmp.effects:
+				remove_atomic(ee);
 			pass
 	pass
 
@@ -394,7 +402,7 @@ func update_temp_effects():
 func update_timers():
 	for e in timers:
 		e.delay -= 1;
-		if e.delay <= 0:
+		if e.delay < 0:
 			apply_effect(e.effect);
 			pass
 	pass
@@ -442,6 +450,8 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 				'target':
 					res = res and input_handler.requirementcombatantcheck(cond.value, skill.target);
 					pass
+				'chance':
+					res = res and (randf()*100 < cond.value);
 			pass
 		if !res: return;
 		#apply effect
@@ -637,6 +647,7 @@ func hitchance(target):
 		return false
 
 func deal_damage(value, source):
+	value *= damagemod;
 	if (shield > 0) and ((shieldtype & source) != 0):
 		shield -= value;
 		if shield < 0:
