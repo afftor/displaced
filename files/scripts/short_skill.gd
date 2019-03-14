@@ -33,19 +33,19 @@ func createfromskill(s_code):
 	long_value = ref.value; 
 	userange = ref.userange;
 	casteffects = ref.casteffects.duplicate();
-	if ref.has('chance'):
+	if ref.keys().has('chance'):
 		chance = ref.chance;
 	else:
 		chance = caster.hitrate;
-	if ref.has('critchance'):
+	if ref.keys().has('critchance'):
 		critchance = ref.critchance;
 	else:
 		critchance = caster.critchance;
-	if ref.has('evade'):
+	if ref.keys().has('evade'):
 		evade = ref.evade;
 	else:
 		evade = target.evasion;
-	if ref.has('armor_p'):
+	if ref.keys().has('armor_p'):
 		armor_p = ref['armor_p'];
 	else:
 		armor_p = caster.armorpenetration;

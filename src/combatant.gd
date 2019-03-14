@@ -23,7 +23,7 @@ var manamax = 0
 var damage = 0 setget damage_set, damage_get
 var evasion = 0 setget eva_set
 var hitrate = 0
-var armor = 0
+var armor = 0 setget ,armor_get
 var armorpenetration = 0
 var mdef = 0 setget mdef_set
 var speed = 0
@@ -131,6 +131,10 @@ func mdef_set(value):
 	if traits.keys().has('mage_trait') and traits['mage_trait']:
 		damage += delta * 0.5;
 	mdef = value;
+
+func armor_get():
+	return max(0, armor);
+
 
 func levelup():
 	level += 1
@@ -518,7 +522,9 @@ func createfromenemy(enemy):
 		self['resist' + i] = template.resists[i]
 	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward']:
 		self[i] = template[i]
-	
+	if template.keys().has('traits'):
+		for t in template.traits:
+			traits[t] = true;
 
 func createfromclass(classid):
 	var classtemplate = combatantdata.classlist[classid].duplicate()
@@ -536,10 +542,11 @@ func createfromclass(classid):
 	price = variables.BaseHeroPrice
 	
 	name = combatantdata.namesarray[randi()%combatantdata.namesarray.size()]
-	
-	var newtrait = createtrait(self, classtemplate.code);
-	
-	traits.append(newtrait)
+#	var newtrait = createtrait(self, classtemplate.code);
+#	traits.append(newtrait)
+	if template.keys().has('traits'):
+		for t in template.traits:
+			traits[t] = true;
 	
 
 func createfromname(charname):

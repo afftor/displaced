@@ -11,6 +11,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_dmgbeast']
 	},
 	nodamagebeast = {
@@ -20,6 +22,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_nodmgbeast']
 	},
 	fastlearn = {
@@ -29,6 +33,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_fastlearn']
 	},
 	hitrate = {
@@ -38,6 +44,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_hitrate']
 	},
 	ev10 = {
@@ -47,6 +55,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_ev10']
 	},
 	ev15 = {
@@ -56,6 +66,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_ev15']
 	},
 	crit = {
@@ -65,6 +77,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_crit']
 	},
 	resist = {
@@ -74,6 +88,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_resist']
 	},
 	armor = {
@@ -83,6 +99,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_armor']
 	},
 	speed = {
@@ -92,6 +110,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_speed']
 	},
 	hpmax = {
@@ -101,6 +121,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'all',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_crit']
 	},
 	regen = {
@@ -110,6 +132,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'warrior',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_regen']
 	},
 	noevade = {
@@ -119,6 +143,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'warrior',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_noevade']
 	},
 	areaprot = {
@@ -128,6 +154,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'warrior',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_areaprot', 'e_tr_prot']
 	},
 	healer = {
@@ -137,6 +165,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'mage',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_healer']
 	},
 	react = {
@@ -146,6 +176,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'mage',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_react']
 	},
 	magecrit = {
@@ -155,6 +187,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'mage',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_magecrit']
 	},
 	slowarrow = {
@@ -164,6 +198,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'archer',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_slowarrow']
 	},
 	killer = {
@@ -173,6 +209,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'archer',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_killer']
 	},
 	rangecrit = {
@@ -182,6 +220,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'archer',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_rangecrit']
 	},
 	areaspeed = {
@@ -191,6 +231,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'brawler',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_areaspeed', 'e_tr_speed_icon']
 	},
 	noresist = {
@@ -200,6 +242,8 @@ var traitlist = {
 		icon = null,
 		req_class = 'brawler',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_noresist']
 	},
 	firefist = {
@@ -209,6 +253,20 @@ var traitlist = {
 		icon = null,
 		req_class = 'brawler',
 		cost = 1,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_firefist']
+	},
+	#monsters
+	el_heal = {
+		code = 'el_heal',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = 'monster',
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = ['e_tr_elheal']
 	},
 };

@@ -176,6 +176,12 @@ var effect_table = {
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = ['firefist']
 	},
+	e_tr_elheal = {
+		type = 'trigger',
+		trigger = variables.TR_TURN_S,
+		conditions = [],
+		effects = [{type = 'stat_once', stat = 'hp', value = 20}]
+	},
 	#skills
 	e_s_stun05 = {
 		type = 'oneshot',
@@ -200,6 +206,31 @@ var effect_table = {
 	},
 	#weapon
 	#item
+	e_i_barrier2 = {
+		type = 'oneshot',
+		trigger = variables.TR_CAST,
+		conditions = [],
+		effects = [{type = 'temp_effect', target = 'caster', effect = 'e_addbarrier2', duration = 2, stack = 1}]
+	},
+	e_i_barrier3 = {
+		type = 'oneshot',
+		trigger = variables.TR_CAST,
+		conditions = [],
+		effects = [{type = 'temp_effect', target = 'caster', effect = 'e_addbarrier3', duration = 2, stack = 1}]
+	},
+	e_i_restoremana25 = {
+		type = 'oneshot',
+		trigger = variables.TR_HIT,
+		conditions = [],
+		effects = [{target = 'target', type = 'stat_once', stat = 'mana', value = 25}]
+	},
+	e_i_elixir = {
+		type = 'oneshot',
+		trigger = variables.TR_CAST,
+		conditions = [],
+		effects = [{type = 'stat_once', stat = 'mana', value = 40},
+		{type = 'stat_once', stat = 'hp', value = 75}]
+	},
 	#secondary
 	e_stun = {
 		type = 'static',
@@ -240,7 +271,7 @@ var effect_table = {
 		type = 'static',
 		effects = [{type = 'block_effect', effect = 'e_tr_killer'}]
 	},
-	e_noresist = {#no icon for buff as this is the only effect of trait. can add if reqired
+	e_noresist = {
 		type = 'static',
 		effects = [
 			{type = 'stat', stat = 'resistfire', value = -15},
@@ -250,7 +281,7 @@ var effect_table = {
 			'noresist_icon'
 		]
 	},
-	e_addbarrier1 = {
+	e_addbarrier1 = { #additional trigger to remove effect in those effects only effectively removes icon. but this is the pattern for creating barriers with additional bonuses
 		type = 'static',
 		effects = [{type = 'effect', effect = 'e_rembarrier1'},
 		{type = 'stat_s', stat = 'shield', value = 15},
@@ -262,6 +293,32 @@ var effect_table = {
 		conditions = [],
 		trigger = variables.TR_SHIELD_DOWN,
 		effects = [{type = 'delete_effect', effect = e_addbarrier1}]
+	},
+	e_addbarrier2 = { #additional trigger to remove effect in those effects only effectively removes icon. but this is the pattern for creating barriers with additional bonuses
+		type = 'static',
+		effects = [{type = 'effect', effect = 'e_rembarrier2'},
+		{type = 'stat_s', stat = 'shield', value = 50},
+		{type = 'stat_s', stat = 'shieldtype', value = variables.S_PHYS},
+		'shield2_icon']
+	},
+	e_rembarrier2 = {
+		type = 'trigger',
+		conditions = [],
+		trigger = variables.TR_SHIELD_DOWN,
+		effects = [{type = 'delete_effect', effect = e_addbarrier2}]
+	},
+	e_addbarrier3 = { #additional trigger to remove effect in those effects only effectively removes icon. but this is the pattern for creating barriers with additional bonuses
+		type = 'static',
+		effects = [{type = 'effect', effect = 'e_rembarrier3'},
+		{type = 'stat_s', stat = 'shield', value = 50},
+		{type = 'stat_s', stat = 'shieldtype', value = variables.S_MAG},
+		'shield3_icon']
+	},
+	e_rembarrier3 = {
+		type = 'trigger',
+		conditions = [],
+		trigger = variables.TR_SHIELD_DOWN,
+		effects = [{type = 'delete_effect', effect = e_addbarrier3}]
 	},
 };
 
@@ -277,6 +334,8 @@ var atomic = {
 	area_speed_icon = {type = 'buff', value = 'area_speed'},
 	noresist_icon = {type = 'buff', value = 'noresist'},
 	shield1_icon = {type = 'buff', value = 'shield1'},
+	shield2_icon = {type = 'buff', value = 'shield2'},
+	shield3_icon = {type = 'buff', value = 'shield3'},
 	#add effect
 	stun1 = {type = 'temp_effect', target = 'target', effect = 'e_stun', duration = 1, stack = 10},
 	noevade10 = {type = 'temp_effect', target = 'target', effect = 'e_noevade10', duration = 2, stack = 1},
@@ -304,4 +363,6 @@ var buffs = {
 	area_speed = {icon = null, description = null}, #marks owner of area speed effect
 	noresist = {icon = null, description = null},
 	shield1 = {icon = null, description = null},
+	shield2 = {icon = null, description = null},
+	shield3 = {icon = null, description = null},
 };
