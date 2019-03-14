@@ -6,8 +6,10 @@ var damagesrc;
 var skilltype;
 var tags;
 var value;
+var long_value;
 var manacost;
 var casteffects;
+var userange;
 
 var chance;
 var evade;
@@ -28,6 +30,8 @@ func createfromskill(s_code):
 	skilltype = ref.skilltype;
 	tags = ref.tags.duplicate();
 	manacost = ref.manacost;
+	long_value = ref.value; 
+	userange = ref.userange;
 	casteffects = ref.casteffects.duplicate();
 	if ref.has('chance'):
 		chance = ref.chance;
@@ -125,10 +129,11 @@ func calculate_dmg():
 	if hit_res == variables.RES_CRIT:
 		value *= caster.critmod;
 	var reduction = 0;
-	if type == 'skill':
+	if skilltype == 'skill':
 		reduction = max(0, target.armor - armor_p)
-	elif type == 'spell':
+	elif skilltype == 'spell':
 		reduction = max(0, target.mdef)
-	endvalue = endvalue * (float(100 - reduction)/100);
+	if !tags.has('heal'):
+		value = value * (float(100 - reduction)/100);
 	if damagetype in ['fire','water','air','earth']:
 		value = value * ((100 - target['resist' + damagetype])/100);

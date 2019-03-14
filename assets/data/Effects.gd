@@ -170,6 +170,12 @@ var effect_table = {
 		conditions = [],
 		effects = ['noresist']
 	},
+	e_tr_firefist = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = ['firefist']
+	},
 	#skills
 	e_s_stun05 = {
 		type = 'oneshot',
@@ -183,7 +189,14 @@ var effect_table = {
 	e_s_restoremana20 = {
 		type = 'oneshot',
 		trigger = variables.TR_CAST,
-		effect = [{type = 'stat_once', stat = 'mana', value = 20}]
+		conditions = [],
+		effects = [{type = 'stat_once', stat = 'mana', value = 20}]
+	},
+	e_s_treantbarrier = {
+		type = 'oneshot',
+		trigger = variables.TR_CAST,
+		conditions = [],
+		effects = [{type = 'temp_effect', target = 'caster', effect = 'e_addbarrier1', duration = 1, stack = 1}]
 	},
 	#weapon
 	#item
@@ -201,7 +214,7 @@ var effect_table = {
 		type = 'static',
 		effects = ['react_icon', {type = 'stat', stat = 'speed', value = 20}]
 	},
-	e_magecrit_once = {#ensure one triggering of magecrit per cast, potential unsafe construction (works only because after skill activating player can't deactivate and activate traits) do not copy this pattern for blocking effects for more than 0 time
+	e_magecrit_once = {#ensures one triggering of magecrit per cast, potential unsafe construction (works only because after skill activating player can't deactivate and activate traits) do not copy this pattern for blocking effects for more than 0 time
 		type = 'static',
 		effects = [{type = 'block_effect', effect = 'e_tr_magecrit'}]
 	},
@@ -223,7 +236,7 @@ var effect_table = {
 			{type = 'param_m', stat = 'value', value = 2, target = 'skill'},
 			'clear_killer']
 	},
-	e_killer_once = {#ensure one triggering of magecrit per cast, potential unsafe construction (works only because after skill activating player can't deactivate and activate traits) do not copy this pattern for blocking effects for more than 0 time
+	e_killer_once = {#ensures one triggering of killer per cast, potential unsafe construction (works only because after skill activating player can't deactivate and activate traits) do not copy this pattern for blocking effects for more than 0 time
 		type = 'static',
 		effects = [{type = 'block_effect', effect = 'e_tr_killer'}]
 	},
@@ -236,6 +249,19 @@ var effect_table = {
 			{type = 'stat', stat = 'resistearth', value = -15},
 			'noresist_icon'
 		]
+	},
+	e_addbarrier1 = {
+		type = 'static',
+		effects = [{type = 'effect', effect = 'e_rembarrier1'},
+		{type = 'stat_s', stat = 'shield', value = 15},
+		{type = 'stat_s', stat = 'shieldtype', value = variables.S_PHYS},
+		'shield1_icon']
+	},
+	e_rembarrier1 = {
+		type = 'trigger',
+		conditions = [],
+		trigger = variables.TR_SHIELD_DOWN,
+		effects = [{type = 'delete_effect', effect = e_addbarrier1}]
 	},
 };
 
@@ -250,6 +276,7 @@ var atomic = {
 	speed_icon = {type = 'buff', value = 'speed'},
 	area_speed_icon = {type = 'buff', value = 'area_speed'},
 	noresist_icon = {type = 'buff', value = 'noresist'},
+	shield1_icon = {type = 'buff', value = 'shield1'},
 	#add effect
 	stun1 = {type = 'temp_effect', target = 'target', effect = 'e_stun', duration = 1, stack = 10},
 	noevade10 = {type = 'temp_effect', target = 'target', effect = 'e_noevade10', duration = 2, stack = 1},
@@ -261,18 +288,20 @@ var atomic = {
 	clear_kiler = {type = 'delete_effect', effect = 'e_killer'},
 	killer_once = {type = 'temp_effect', effect = 'e_killer_once', duration = 0, stack = 1},
 	noresist = {type = 'temp_effect', target = 'target', effect = 'e_noresist', duration = 1, stack = 1},
+	firefist = {type = 'skill', new_type = 'damage', target = 'target', source = variables.S_FIRE, value = 'value', mul = 0.2},
 };
 #needs filling
 var buffs = {
 	#code = {icon, description}
-	stun = {icon = Null, description = null},
-	noevade = {icon = Null, description = null},
-	prot10 = {icon = Null, description = null},
-	area_prot = {icon = Null, description = null}, #marks owner of area protection effect
-	react = {icon = Null, description = null},
-	slowarrow = {icon = Null, description = null},
-	killer = {icon = Null, description = null},
-	speed = {icon = Null, description = null},
-	area_speed = {icon = Null, description = null}, #marks owner of area speed effect
-	noresist = {icon = Null, description = null},
+	stun = {icon = null, description = null},
+	noevade = {icon = null, description = null},
+	prot10 = {icon = null, description = null},
+	area_prot = {icon = null, description = null}, #marks owner of area protection effect
+	react = {icon = null, description = null},
+	slowarrow = {icon = null, description = null},
+	killer = {icon = null, description = null},
+	speed = {icon = null, description = null},
+	area_speed = {icon = null, description = null}, #marks owner of area speed effect
+	noresist = {icon = null, description = null},
+	shield1 = {icon = null, description = null},
 };

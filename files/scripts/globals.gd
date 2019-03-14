@@ -21,7 +21,7 @@ var workersdict
 #var enemydata
 var randomgroups
 
-#var enemylist
+var enemylist
 var upgradelist
 
 var skillsdata = Skillsdata.skilllist;
@@ -32,7 +32,8 @@ var skillsdata = Skillsdata.skilllist;
 var classes = combatantdata.classlist
 var characters = combatantdata.charlist
 var skills
-var traits = combatantdata.traitlist
+#var traits = combatantdata.traitlist
+var traits = Traitdata.traitlist;
 var effects
 var combateffects
 
@@ -136,24 +137,24 @@ func _ready():
 	
 	#===Necessary to apply translation===
 
-	Items = load("res://files/Items.gd").new()
-	Enemydata = load("res://assets/data/enemydata.gd").new()
-	Skillsdata = load("res://assets/data/Skills.gd").new()
-	Effectdata = load("res://assets/data/Effects.gd").new()
-	TownData = load("res://files/TownData.gd").new()
+	#Items = load("res://files/Items.gd").new()
+	#Enemydata = load("res://assets/data/enemydata.gd").new()
+	#Skillsdata = load("res://assets/data/Skills.gd").new()
+	#Effectdata = load("res://assets/data/Effects.gd").new()
+	#TownData = load("res://files/TownData.gd").new()
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 
 	#====================================
 	
 	
-	#randomgroups = Enemydata.randomgroups
-	#enemylist = Enemydata.enemylist
+	randomgroups = Enemydata.randomgroups
+	enemylist = Enemydata.enemylist
 	effects = Effectdata.effects
-	#combateffects = Effectdata.combateffects
-	#skills = Skillsdata.skilllist
+	combateffects = Effectdata.combateffects
+	skills = Skillsdata.skilllist
 	
-	#workersdict = TownData.workersdict
+	workersdict = TownData.workersdict
 	
 	for i in Items.Materials:
 		state.materials[i] = 0

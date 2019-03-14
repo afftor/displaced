@@ -93,10 +93,10 @@ var charlist = {
 	Ember = {
 		code = 'Ember',
 		name = tr('EMBER'),
-		icon = 'EmberHappy',
+		icon = 'EmberFriendly',
 		combaticon = 'ember',
 		image = 'Ember',
-		subclass = 'Brawler',
+		subclass = 'brawler',
 	},
 }
 #

@@ -6,6 +6,7 @@ var base
 var race
 
 var icon
+var combaticon
 
 var level = 1
 var baseexp = 0 setget exp_set
@@ -20,11 +21,11 @@ var defeated = false
 var mana = 0 setget mana_set
 var manamax = 0
 var damage = 0 setget damage_set, damage_get
-var evasion = 0
+var evasion = 0 setget eva_set
 var hitrate = 0
 var armor = 0
 var armorpenetration = 0
-var mdef = 0
+var mdef = 0 setget mdef_set
 var speed = 0
 var critchance = 5
 var critmod = 1.5
@@ -37,10 +38,11 @@ var shieldtype = variables.S_FULL;
 
 var image
 var portrait
+var combatportrait
 var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null, lhand = null, neck = null, ring1 = null, ring2 = null}
 
 var skills = ['attack']
-var traits = {} #{'trait','state'}
+var traits = {} #{'trait':'state'}
 var traitpoints = 0
 
 var inactiveskills = []
@@ -117,7 +119,18 @@ func exp_set(value):
 	while baseexp > 100:
 		baseexp -= 100
 		levelup()
-	
+
+func eva_set(value):
+	var delta = value - evasion;
+	if traits.keys().has('arch_trait') and traits['arch_trait']:
+		hitrate += delta;
+	evasion = value;
+
+func mdef_set(value):
+	var delta = value - mdef;
+	if traits.keys().has('mage_trait') and traits['mage_trait']:
+		damage += delta * 0.5;
+	mdef = value;
 
 func levelup():
 	level += 1
@@ -172,6 +185,10 @@ func deactivate_trait(trait_code):
 		remove_effect(e, 'once');
 	pass
 
+func add_trait(trait_code):
+	if !can_acq_trait(trait_code): return;
+	traits[trait_code] = false;
+
 #func clear_oneshot():
 #	for e in oneshot_effects:
 #		remove_effect(e, 'once');
@@ -186,11 +203,11 @@ func apply_atomic(effect): #can be name or dictionary
 		tmp = effect.duplicate();
 	match tmp.type:
 		'stat_s':
-			set(tmp.stat, tmp.value);
+			self.set(tmp.stat, tmp.value);
 		'stat_m':
-			set(tmp.stat, get(tmp.stat) * tmp.value);
+			self.set(tmp.stat, get(tmp.stat) * tmp.value);
 		'stat', 'stat_once':
-			set(tmp.stat, get(tmp.stat) + tmp.value);
+			self.set(tmp.stat, get(tmp.stat) + tmp.value);
 			pass
 		'effect':
 			apply_effect(tmp.effect);
@@ -217,9 +234,9 @@ func remove_atomic(effect):
 		tmp = effect.duplicate();
 	match tmp.type:
 		'stat_m':
-			set(tmp.stat, get(tmp.stat) / tmp.value);
+			self.set(tmp.stat, get(tmp.stat) / tmp.value);
 		'stat':
-			set(tmp.stat, get(tmp.stat) - tmp.value);
+			self.set(tmp.stat, get(tmp.stat) - tmp.value);
 			pass
 		'effect':
 			remove_effect(tmp.effect, 'once');
@@ -408,7 +425,7 @@ func update_timers():
 	pass
 
 func basic_check(trigger):
-	clear_oneshot();
+	#clear_oneshot();
 	for e in triggered_effects:
 		var tmp = Effectdata.effect_table[e];
 		if tmp.trigger != trigger: continue;
@@ -422,7 +439,7 @@ func basic_check(trigger):
 		for ee in tmp.effects:
 			apply_atomic(Effectdata.atomic[ee]);
 		pass
-	clear_oneshot();
+	#clear_oneshot();
 	pass
 
 func on_skill_check(skill, check): #skill has to be in constant form without metascripting. this part has to be done in conbat.gd in execute_skill
@@ -458,6 +475,7 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 		
 		for ee in tmp.effects:
 			var eee = Effectdata.atomic[ee].duplicate();
+			var rec;
 			#convert effect to constant form
 			if eee.type == 'skill':
 				eee.type = eee.new_type;
@@ -465,9 +483,9 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 				pass
 			match eee.target:
 				'caster':
-					rec = caster;
+					rec = skill.caster;
 				'target':
-					rec = target;
+					rec = skill.target;
 				'skill':
 					rec = skill;
 			rec.apply_atomic(eee);
@@ -498,7 +516,7 @@ func createfromenemy(enemy):
 	skills = template.skills
 	for i in template.resists:
 		self['resist' + i] = template.resists[i]
-	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','icon', 'aiposition', 'loottable', 'xpreward']:
+	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward']:
 		self[i] = template[i]
 	
 
@@ -681,11 +699,15 @@ func can_act():
 
 func portrait():
 	if icon != null:
-		return images.combatportraits[icon]
+		return images.portraits[icon]
+
+func combat_portrait():
+	if combaticon != null:
+		return images.combatportraits[combaticon]
 
 func portrait_circle():
-	if icon != null:
-		return images.circleportraits[icon]
+	if combaticon != null:
+		return images.circleportraits[combaticon]
 
 func createtrait(data, type = 'starter'):
 	var array = []

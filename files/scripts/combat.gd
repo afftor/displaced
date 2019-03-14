@@ -107,7 +107,7 @@ func select_actor():
 		calculateorder()
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
-	currentactor.update_timers();
+	#currentactor.update_timers();
 	if currentactor < 7:
 		player_turn(currentactor)
 	else:
@@ -211,6 +211,7 @@ func defeat():
 
 func player_turn(pos):
 	var selected_character = playergroup[pos]
+	selected_character.update_timers();
 	if !selected_character.can_act():
 		call_deferred('select_actor');
 		return
@@ -309,6 +310,7 @@ func FindFighterRow(fighter):
 
 func enemy_turn(pos):
 	var fighter = enemygroup[pos]
+	fighter.update_timers();
 	if !fighter.can_act():
 		call_deferred('select_actor');
 		return
@@ -497,11 +499,11 @@ func SendSkillEffect(skilleffect, caster, target):
 		globals.skillsdata.call(skilleffect.effect, data)
 	
 
-func use_skill(skill, caster, target):
-	var debugtext = caster.name + ' uses ' + skill + ' on ' + target.name
+func use_skill(skill_code, caster, target):
+	var debugtext = caster.name + ' uses ' + skill_code + ' on ' + target.name
 	allowaction = false
 	
-	skill = globals.skills[skill]
+	var skill = globals.skills[skill_code]
 	
 	caster.mana -= skill.manacost
 	
@@ -548,7 +550,7 @@ func use_skill(skill, caster, target):
 		if animationdict.predamage.size() > 0:
 			yield(CombatAnimations, 'predamage_finished')
 		
-		execute_skill(skill, caster, i);
+		execute_skill(skill_code, caster, i);
 #		if hitchance(skill,caster,i) == 'hit':
 #			execute_skill(skill, caster, i)
 #			for j in skilleffects.onhit:
@@ -580,6 +582,14 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 
 var rows = {
+	1:[1,4],
+	2:[2,5],
+	3:[3,6],
+	4:[7,10],
+	5:[8,11],
+	6:[9,12],
+} # was completely non-intuitive because there were columns stored not rows
+var lines = {
 	1 : [1,2,3],
 	2 : [4,5,6],
 	3 : [7,8,9],
@@ -604,6 +614,12 @@ func CalculateTargets(skill, caster, target):
 			for i in rows:
 				if rows[i].has(target.position):
 					for j in rows[i]:
+						if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
+		'line':
+			for i in lines:
+				if lines[i].has(target.position):
+					for j in lines[i]:
 						if battlefield[j] != null && battlefield[j].defeated != true:
 							array.append(battlefield[j])
 		'all':
@@ -654,13 +670,13 @@ func calculate_number_from_string_array(array, caster, target):
 
 func execute_skill(skill, caster, target):
 	var s_skill = Skillsdata.S_Skill.new(caster, target);
-	s_skill.createfrmskill(skill);
+	s_skill.createfromskill(skill);
 	s_skill.hit_roll();
 	var endvalue = 0
 	#value pre_calculation, using in triggers
-	endvalue = calculate_number_from_string_array(skill.value, caster, target)
+	endvalue = calculate_number_from_string_array(s_skill.long_value, caster, target)
 	var rangetype
-	if skill.userange == 'weapon':
+	if s_skill.userange == 'weapon':
 		if caster.gear.rhand == null:
 			rangetype = 'melee'
 		else:
@@ -678,7 +694,7 @@ func execute_skill(skill, caster, target):
 	if s_skill.hit_res == variables.RES_MISS:
 		miss(target);
 		return;
-	s_skill.calc_damage(); 
+	s_skill.calculate_dmg(); 
 	#deal damage
 	target.deal_damage(s_skill.value, s_skill.damagesrc);
 	if target.hp <= 0:
