@@ -144,7 +144,7 @@ var effect_table = {
 	e_tr_killer = {
 		type = 'trigger',
 		trigger = variables.TR_KILL,
-		effects = ['killer', 'clear_killer', 'killer_once']
+		effects = ['killer', 'killer_once']
 	},
 	e_tr_rangecrit = {
 		type = 'trigger',
@@ -176,11 +176,24 @@ var effect_table = {
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = ['firefist']
 	},
+	#monstertraits
 	e_tr_elheal = {
 		type = 'trigger',
 		trigger = variables.TR_TURN_S,
 		conditions = [],
 		effects = [{type = 'stat_once', stat = 'hp', value = 20}]
+	},
+	e_tr_dwarwenbuf = {#pattern for buffs with limited but not defined duration
+		type = 'trigger',
+		trigger = variables.TR_DMG,
+		conditions = [],
+		effects = [{type = 'effect', effect = 'e_dwarwenbuf'}]
+	},
+	e_tr_dwarwenclear = {#clear buff trigger, not that usable for enemy, but part of pattern
+		type = 'trigger',
+		trigger = variables.TR_COMBAT_F,
+		conditions = [],
+		effects = [{type = 'delete_effect', effect = 'e_dwarwenbuf'}]
 	},
 	#skills
 	e_s_stun05 = {
@@ -204,8 +217,20 @@ var effect_table = {
 		conditions = [],
 		effects = [{type = 'temp_effect', target = 'caster', effect = 'e_addbarrier1', duration = 1, stack = 1}]
 	},
+	e_s_spidernoarmor = {
+		type = 'oneshot',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = [{target = 'target', type = 'temp_effect', effect = 'e_spidernoarmor', duration = 2, stack = 99}]
+	},
+	e_s_faery = {
+		type = 'oneshot',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = [{target = 'target', type = 'stat', stat = 'mana', value = -20}] # ! value to check
+	},
 	#weapon
-	#item
+	#item skills
 	e_i_barrier2 = {
 		type = 'oneshot',
 		trigger = variables.TR_CAST,
@@ -255,17 +280,23 @@ var effect_table = {
 			{type = 'stat', stat = 'evasion', value = -10},
 			{type = 'stat', stat = 'speed', value = -10}]
 	},
-	e_killer = {
+	e_killer = { #killer buff, adds icon, atk trigger and eoc trigger
 		type = 'static',
-		effects = ['tr_killer', 'killer_icon']
+		effects = ['tr_killer', 'killer_icon', 'killer_eoc']
 	},
-	e_t_kiler = {
+	e_t_kiler = { #atk check for killer buff. doubles damage than removes buff (so do not triggers on next target if triggers on skill with multiple targets)
 		type = 'trigger',
 		trigger = variables.TR_HIT,
-		conditions = [],
+		conditions = [{target = 'skill', check = 'type', value = 'skill'}],#not triggers on item use and spells
 		effects = [
 			{type = 'param_m', stat = 'value', value = 2, target = 'skill'},
 			'clear_killer']
+	},
+	e_kiler_eoc = { #clears killer buf at the end of combat
+		type = 'trigger',
+		trigger = variables.TR_COMBAT_F,
+		conditions = [],
+		effects = ['clear_killer']
 	},
 	e_killer_once = {#ensures one triggering of killer per cast, potential unsafe construction (works only because after skill activating player can't deactivate and activate traits) do not copy this pattern for blocking effects for more than 0 time
 		type = 'static',
@@ -320,6 +351,16 @@ var effect_table = {
 		trigger = variables.TR_SHIELD_DOWN,
 		effects = [{type = 'delete_effect', effect = e_addbarrier3}]
 	},
+	e_dwarwenbuf = {
+		type = 'static',
+		effects = [{type = 'stat', stat = 'damage', value = 5}]
+	},
+	e_spidernoarmor = {
+		type = 'static',
+		effects = ['spider_icon',
+		{type = 'stat', stat = 'armor', value = -10} #!!!value to check
+		]
+	},
 };
 
 var atomic = {
@@ -336,6 +377,7 @@ var atomic = {
 	shield1_icon = {type = 'buff', value = 'shield1'},
 	shield2_icon = {type = 'buff', value = 'shield2'},
 	shield3_icon = {type = 'buff', value = 'shield3'},
+	spider_icon = {type = 'buff', value = 'spider_noarmor'},
 	#add effect
 	stun1 = {type = 'temp_effect', target = 'target', effect = 'e_stun', duration = 1, stack = 10},
 	noevade10 = {type = 'temp_effect', target = 'target', effect = 'e_noevade10', duration = 2, stack = 1},
@@ -346,6 +388,7 @@ var atomic = {
 	tr_killer = {type = 'effect', effect = 'e_t_killer'},
 	clear_kiler = {type = 'delete_effect', effect = 'e_killer'},
 	killer_once = {type = 'temp_effect', effect = 'e_killer_once', duration = 0, stack = 1},
+	killer_eoc = {type = 'effect', effect = 'e_killer_eoc'},
 	noresist = {type = 'temp_effect', target = 'target', effect = 'e_noresist', duration = 1, stack = 1},
 	firefist = {type = 'skill', new_type = 'damage', target = 'target', source = variables.S_FIRE, value = 'value', mul = 0.2},
 };
@@ -365,4 +408,5 @@ var buffs = {
 	shield1 = {icon = null, description = null},
 	shield2 = {icon = null, description = null},
 	shield3 = {icon = null, description = null},
+	spider_noarmor = {icon = null, description = null},
 };

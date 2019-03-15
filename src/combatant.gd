@@ -227,7 +227,7 @@ func apply_atomic(effect): #can be name or dictionary
 		'buff':
 			buffs.push_back(tmp.value);
 		'timer':
-			timers.push_back({effect = tmp.value, delay = tmp.delay})
+			timers.push_back({effect = tmp.effect, delay = tmp.delay})
 	pass
 
 func remove_atomic(effect):

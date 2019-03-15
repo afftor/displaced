@@ -257,6 +257,29 @@ var traitlist = {
 		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_firefist']
 	},
+	#class passives
+	arch_trait = {
+		code = 'arch_trait',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = 'auto',
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = []
+	},
+	mage_trait = {
+		code = 'mage_trait',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = 'auto',
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = []
+	},
 	#monsters
 	el_heal = {
 		code = 'el_heal',
@@ -268,5 +291,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		non_editable = true, #displayed but can not be deactivated
 		effects = ['e_tr_elheal']
+	},
+	dw_fury = {
+		code = 'dw_fury',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = 'monster',
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = ['e_tr_dwarwenbuf', 'e_tr_dwarwenclear']
 	},
 };
