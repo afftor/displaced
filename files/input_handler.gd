@@ -342,6 +342,8 @@ func DelayedText(node, text):
 func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stats
 	var result
 	match req.type:
+		'chance':
+			result = (randf()*100 < req.value);
 		'stats':
 			result = input_handler.operate(req.operant, combatant.get(req.name), req.value)
 		'gear':
@@ -361,7 +363,8 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
 								result = false
 								break
-	
+		'race': 
+			result = (req.value == combatant.race);
 	return result
 
 

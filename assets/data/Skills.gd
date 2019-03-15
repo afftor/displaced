@@ -1,4 +1,5 @@
 extends Node
+var S_Skill = preload("res://files/scripts/short_skill.gd");
 
 var skilllist = {
 	attack = {
@@ -40,7 +41,7 @@ var skilllist = {
 		damagetype = "fire",
 		skilltype = 'spell',
 		userange = "any",
-		targetpattern = 'single',
+		targetpattern = 'row',
 		allowedtargets = ['enemy'],
 		reqs = [],
 		tags = [],
@@ -72,7 +73,7 @@ var skilllist = {
 		userange = "any",
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
-		reqs = [],
+		reqs = [{type = 'gear', slot = 'any', name = 'geartype', operant = 'eq', value = 'bow'}],
 		tags = [],
 		value = ['caster.damage','*1.3'],
 		cooldown = 2,
@@ -92,7 +93,7 @@ var skilllist = {
 		aipriority = 2,
 	},
 	
-	tackle = {
+	tackle = { #not used now. intended?
 		code = 'tackle',
 		name = tr("TACKLE"),
 		description = tr("TACKLEDESCRIPT"),
@@ -109,12 +110,13 @@ var skilllist = {
 		cooldown = 0,
 		manacost = 10,
 		casteffects = [
-			{period = 'onhit',
-			target = 'target', 
-			effect = 'stun',
-			chance = 0.5,
-			reqs = null,
-			}
+#			{period = 'onhit',
+#			target = 'target', 
+#			effect = 'stun',
+#			chance = 0.5,
+#			reqs = null,
+#			}
+			'e_s_stun05'
 		],
 		hidden = false,
 		sfx = [],
@@ -138,7 +140,7 @@ var skilllist = {
 		damagetype = "weapon",
 		skilltype = 'skill',
 		userange = "melee",
-		targetpattern = 'row',
+		targetpattern = 'line',
 		allowedtargets = ['enemy'],
 		reqs = [],
 		tags = [],
@@ -209,12 +211,7 @@ var skilllist = {
 		value = ['0'],
 		cooldown = 0,
 		manacost = 0,
-		casteffects = [
-			{period = 'oncast',
-			target = 'self', 
-			effect = 'restoremana', 
-			value = 20}
-		],
+		casteffects = ['e_s_restoremana20'],
 		
 		hidden = false,
 		sfx = [],
@@ -230,7 +227,7 @@ var skilllist = {
 	},
 	
 	
-	steakheal = {
+	steakheal = { #not used now. intended?
 		code = 'steakheal',
 		name = '',
 		description = '',
