@@ -228,7 +228,6 @@ class combatant:
 			self['resist' + i] = template.resists[i]
 		for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward']:
 			self[i] = template[i]
-		
 	
 	func createfromclass(classid):
 		var classtemplate = globals.classes[classid].duplicate()

@@ -224,7 +224,9 @@ func AdvanceScene():
 				if !debug: globals.QuickSave();
 			'event':
 				ReceiveInput = false;
-				if !debug: state.StoreEvent(NewEffect.value);
+				if !debug: state.StoreEvent(NewEffect.value)
+			'quest':
+				QuestSet(NewEffect.value, NewEffect.args)
 			'game':
 				ReceiveInput = false;
 				if !debug: globals.EndGame(NewEffect.value);
@@ -247,6 +249,15 @@ func SpriteDo(node, value, args):
 		'hide':
 			node.texture = null
 
+func QuestSet(value, args):
+	match value:
+		'start':
+			state.MakeQuest(args)
+		'progress':
+			state.ProgressQuest(args)
+		'finish':
+			state.FinishQuest(args)
+
 func Choice(array):
 	set_process_input(false);
 	enableskip = false;
@@ -264,7 +275,7 @@ func Choice(array):
 		var newbutton = ChoiceContainer.get_node("Button").duplicate()
 		ChoiceContainer.add_child(newbutton)
 		newbutton.show();
-		newbutton.text = tr(dict.text);
+		newbutton.get_node("Label").text = tr(dict.text);
 		newbutton.index = int(dict.index);
 		#newbutton.connect("pressed", self, dictionary.function)
 		newbutton.connect('i_pressed', self, 'get_choice')

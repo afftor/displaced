@@ -35,6 +35,7 @@ var skills
 var traits = combatantdata.traitlist
 var effects
 var combateffects
+var explorationares 
 
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -142,6 +143,7 @@ func _ready():
 	Skillsdata = load("res://assets/data/Skills.gd").new()
 	Effectdata = load("res://assets/data/Effects.gd").new()
 	TownData = load("res://files/TownData.gd").new()
+	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 

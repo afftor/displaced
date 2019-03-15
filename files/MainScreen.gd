@@ -84,6 +84,10 @@ func _ready():
 	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
 	changespeed($"TimeNode/0speed", false)
+	buildscreen()
+
+func buildscreen():
+	$Gate.visible = state.townupgrades.has('bridge')
 
 func testfunction():
 	input_handler.ActivateTutorial('tutorial1')
@@ -93,6 +97,8 @@ func _process(delta):
 		return
 	$TimeNode/HidePanel.visible = gamepaused
 	settime()
+	
+	buildscreen()
 	
 	if gamepaused == false:
 		for i in get_tree().get_nodes_in_group("pauseprocess"):

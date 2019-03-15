@@ -133,6 +133,12 @@ var TranslationDict = {
 	NOTENOUGH = "Not enough",
 	ITEMCREATED = "Item Created",
 	UPGRADEUNLOCKED = "Upgrade Unlocked",
+	MAINQUEST = "Main Quest",
+	SIDEQUESTS = "Sidequests",
+	MAINQUESTUPDATED = "Main Quest Updated",
+	QUESTLOG = "Quest Log",
+	NOACTIVEQUESTS = "You have no active quests.",
+	
 	
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",

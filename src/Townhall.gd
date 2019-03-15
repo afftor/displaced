@@ -8,6 +8,7 @@ func _ready():
 	$ButtonPanel/VBoxContainer/Upgrades.connect('pressed', self, 'upgradelist')
 	$UpgradeDescript/UnlockButton.connect("pressed", self, 'unlockupgrade')
 	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
+	$ButtonPanel/VBoxContainer/Quests.connect("pressed", $Questlog, 'open')
 	#globals.AddPanelOpenCloseAnimation($TaskList)
 	globals.AddPanelOpenCloseAnimation($UpgradeList)
 	globals.AddPanelOpenCloseAnimation($UpgradeDescript)

@@ -63,7 +63,14 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"Nice of you to drop by. "
+		"value":"Congratulations on the winning the elections, I guess. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Good thing you dropped by. "
 	},
 	{
 		"effect":"text",
@@ -77,7 +84,35 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"You should be happy to see me. If you need anything done around here, you gonna need some workers, unless you are prepared to work with your two hands."
+		"value":"Okay, let me tell you one thing."
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"You might have became a mayor, for how little it counts here. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"But that doesn't mean anyone will be jumping around you like you are some sort of prince. "
+	},
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
+		"value":"Sheesh, you got me there. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Now, you gonna have to work hard to get anything reasonable done around here. "
 	},
 	{
 		"effect":"text",
@@ -91,14 +126,21 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"Call me Flak. I'm the head of worker guild. You pay me, I lend you workers to do whatever you need."
+		"value":"You can call me Flak and I'm the head of our only worker guild."
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"You pay me, I lend you workers to do whatever you need."
 	},
 	{
 		"effect":"text",
 		"portrait":"RoseSarcastic",
 		"sound":null,
 		"source":"ROSE",
-		"value":"Pay to you, but not them? This sounds awful like slavery."
+		"value":"Pay to you, but not them? This sounds awful lot like slavery."
 	},
 	{
 		"effect":"text",
@@ -112,7 +154,21 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"They are not slaves, they are workers. And you will need them to move things around."
+		"value":"They are not slaves, they are workers. That's different. "
+	},
+	{
+		"effect":"text",
+		"portrait":"ArronSmile",
+		"sound":null,
+		"source":"ARRON",
+		"value":"What is? "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"The latter sounds better."
 	},
 	{
 		"effect":"text",
