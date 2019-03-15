@@ -6,10 +6,9 @@
   },
   {
     "effect": "music",
-    "value": "intro",
+    "value": "eventgeneric",
 	"delay": 2
   },
-
   {
     "effect": "background",
     "value": "castle"
@@ -17,8 +16,8 @@
   {
     "effect": "sfx",
     "value": "blackscreenfade",
-	"args": 0.5,
-	"delay": 0.5
+	"args": 1,
+	"delay": 1
   },
   {
     "effect": "gui",
@@ -43,9 +42,27 @@
     "portrait": null,
     "sound": null,
     "source": "narrator",
-    "value": "His son and successor, Alcor, reinforced his father's achievments and continues his ruleship. As it happens in monarchy, his first son, Norbert, prepares to take his place, given Alcor's old age."
+    "value": "His son and successor, Alcor, reinforced his father's achievments and continues his ruleship."
   },
-    {
+  {
+    "effect": "text",
+    "portrait": null,
+    "sound": null,
+    "source": "narrator",
+    "value": "As it happens in monarchy, his first son, Norbert, prepares to take his place, given Alcor's old age."
+  },
+  {
+    "effect": "text",
+    "portrait": null,
+    "sound": null,
+    "source": "narrator",
+    "value": "However, at his twenties, the second prince Arron does not look like anything, but a big trouble to his family..."
+  },
+  {
+    "effect": "background",
+    "value": "castleroom"
+  },
+  {
     "effect": "sprite",
     "value": "set",
 	"args": "Arron"
@@ -55,17 +72,6 @@
     "value": "unfade",
 	"args": 0.5,
 	"delay":0.5
-  },
-  {
-    "effect": "text",
-    "portrait": null,
-    "sound": null,
-    "source": "narrator",
-    "value": "Although, King also has a second son, Arron, who's life is immesurably happier than most normal people could ever dream of. However, at his twenties, Arron does not look like anything, but a big trouble to his family..."
-  },
-  {
-    "effect": "background",
-    "value": "castleroom"
   },
   {
     "effect": "text",
@@ -154,11 +160,23 @@
     "value": "Oh my..."
   },
   {
+    "effect": "sfx",
+    "value": "blackscreenunfade",
+	"args": 0.5,
+	"delay": 0.5
+  },
+  {
     "effect": "text",
     "portrait": null,
     "sound": null,
     "source": "narrator",
     "value": "Few moments later"
+  },
+  {
+    "effect": "sfx",
+    "value": "blackscreenfade",
+	"args": 0.5,
+	"delay": 0.5
   },
   {
     "effect": "sprite",
@@ -181,13 +199,18 @@
     "value": "(It's a Prince Norbert!)"
   },
   {
+    "effect": "sound",
+    "value": "knocking",
+	"delay": 0
+  },
+  {
     "effect": "text",
     "portrait": null,
     "sound": null,
     "source": "narrator",
     "value": "*Knock Knock Knock*"
   },
-    {
+  {
     "effect": "sprite",
     "value": "fade",
 	"args": 0.5,
@@ -198,7 +221,7 @@
     "portrait": null,
     "sound": null,
     "source": "narrator",
-    "value": "Arron recognized the signal, Rose was instructed to give. "
+    "value": "Arron recognized the signal, his servant, Rose, was instructed to give. "
   },
   {
     "effect": "text",
@@ -209,24 +232,43 @@
   },
   {
     "effect": "text",
+    "portrait": "ArronSmile",
+    "sound": null,
+    "source": "ARRON",
+    "value": "My sincirest apologies, My Lady."
+  },
+  {
+    "effect": "sound",
+    "value": "doorlocked",
+	"delay": 0
+  },
+  {
+    "effect": "text",
     "portrait": "ArronNeutral",
     "sound": null,
-    "source": "ArronSmile",
-    "value": "My sincirest apologies, My Lady."
+    "source": "ARRON",
+    "value": "... Huh?"
   },
   {
     "effect": "text",
     "portrait": "ArronShock",
     "sound": null,
     "source": "ARRON",
-    "value": "Huh... The balcony door is stuck? "
+    "value": "The balcony door is stuck? "
   },
   {
     "effect": "text",
     "portrait": "Lyra",
     "sound": null,
     "source": "LYRA",
-    "value": "I completely forgot, Norbert has jammed the door after last time."
+    "value": "Oh, it completely slipped my mind."
+  },
+  {
+    "effect": "text",
+    "portrait": "Lyra",
+    "sound": null,
+    "source": "LYRA",
+    "value": "Norbert has jammed the door after last time."
   },
   {
     "effect": "text",
@@ -234,6 +276,17 @@
     "sound": null,
     "source": "ARRON",
     "value": "......... Shit."
+  },
+  {
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 0.5,
+	"delay": 0.5
+  },
+  {
+    "effect": "sound",
+    "value": "doorsmash",
+	"delay": 0
   },
   {
     "effect": "text",
@@ -321,10 +374,10 @@
   },
   {
     "effect": "text",
-    "portrait": "ArronNeutral",
+    "portrait": "ArronSmile",
     "sound": null,
     "source": "ARRON",
-    "value": "It's just a friendly ghost!"
+    "value": "There's nobody here!"
   },
   {
     "effect": "text",
@@ -371,11 +424,11 @@
     "effect": "gui",
     "value": "hidegui"
   },
-   {
+  {
     "effect": "sfx",
     "value": "blackscreentransition",
 	"args": 0.5,
-	"delay": 0.5
+	"delay": 0
   },
   {
     "effect": "background",
@@ -463,14 +516,14 @@
   },
   {
     "effect": "text",
-    "portrait": "NorbertAngry",
+    "portrait": "NorbertRage",
     "sound": null,
     "source": "NORBERT",
     "value": "Shut the hell up, I'm not going to hear from you that my wife is unfaithful. "
   },
   {
     "effect": "text",
-    "portrait": "ArronSmile",
+    "portrait": "ArronNeutral",
     "sound": null,
     "source": "ARRON",
     "value": "Sure, it's all my fault."
@@ -537,7 +590,7 @@
   },
   {
     "effect": "text",
-    "portrait": "ArronNeutral",
+    "portrait": "ArronShock",
     "sound": null,
     "source": "ARRON",
     "value": "Hey, stop it, Norb, the father will know! "
@@ -578,7 +631,7 @@
     "portrait": "NorbertNormal",
     "sound": null,
     "source": "NORBERT",
-    "value": "Farewell, Arron, you were a huge pain in the ass. "
+    "value": "Farewell, Arron, you were a huge pain in the ass all these years. "
   },
   {
     "effect": "text",
@@ -600,6 +653,11 @@
 	"args": 0.5,
 	"delay":0.5
   }, 
+  {
+    "effect": "sound",
+    "value": "teleport",
+	"delay": 0
+  },
   {
     "effect": "text",
     "portrait": null,
@@ -639,17 +697,22 @@
     "value": "showgui"
   },
   {
+    "effect": "sound",
+    "value": "crash",
+	"delay": 0
+  },
+  {
+    "effect": "sfx",
+    "value": "shakeanim",
+	"args": 0.5,
+	"delay": 0
+  },
+  {
     "effect": "text",
     "portrait": null,
     "sound": null,
     "source": "narrator",
     "value": "*Slam*"
-  },
-    {
-    "effect": "sfx",
-    "value": "shakeanim",
-	"args": 0.5,
-	"delay": 0.5
   },
   {
     "effect": "sprite",
@@ -697,7 +760,18 @@
     "portrait": null,
     "sound": null,
     "source": "narrator",
-    "value": "*Rose frees Arron from ropes*"
+    "value": "Rose frees Arron from ropes. "
+  },
+  {
+    "effect": "sound",
+    "value": "punch",
+	"delay": 0
+  },
+  {
+    "effect": "sfx",
+    "value": "shakespr",
+	"args": 0.3,
+	"delay": 0
   },
   {
     "effect": "text",
@@ -705,12 +779,6 @@
     "sound": null,
     "source": "narrator",
     "value": "*Slam* "
-  },
-   {
-    "effect": "sfx",
-    "value": "shakespr",
-	"args": 0.5,
-	"delay": 0.5
   },
   {
     "effect": "text",
@@ -738,7 +806,21 @@
     "portrait": "ArronNeutral",
     "sound": null,
     "source": "ARRON",
-    "value": "Forget it. Now what is this place? Shit, I really shouldn't have sleept during those geography lessons."
+    "value": "Forget it. Now what is this place?"
+  },
+  {
+    "effect": "text",
+    "portrait": null,
+    "sound": null,
+    "source": "narrator",
+    "value": "The couple takes a long look on their surroundings, finding only desert and rocks. "
+  },
+  {
+    "effect": "text",
+    "portrait": "ArronNeutral",
+    "sound": null,
+    "source": "ARRON",
+    "value": "Shit, I really shouldn't have sleept during those geography lessons."
   },
   {
     "effect": "text",
@@ -746,6 +828,13 @@
     "sound": null,
     "source": "ARRON",
     "value": "Norb will really pay for this once I get back. Firstly I'll take care of those suspicious guys with him..."
+  },
+  {
+    "effect": "text",
+    "portrait": "ArronSmile",
+    "sound": null,
+    "source": "ARRON",
+    "value": "Firstly I'll take care of those suspicious guys with him..."
   },
   {
     "effect": "text",
@@ -759,7 +848,7 @@
     "portrait": "ArronSmile",
     "sound": null,
     "source": "ARRON",
-    "value": "Yeah, it does not seem like anyone will be serving us any time soon. Let's go."
+    "value": "Yeah, it does not seem like anyone will be helping us any time soon. Let's go."
   },
   {
     "effect": "text",
@@ -770,17 +859,30 @@
   },
   {
     "effect": "text",
-    "portrait": "ArronSmile",
+    "portrait": "ArronNeutral",
     "sound": null,
     "source": "ARRON",
-    "value": "Hrm.. Anywhere! I'm free now, so I can go anywhere I want, Mwahaha!"
+    "value": "Hrm..."
   },
   {
     "effect": "text",
-    "portrait": "RoseSmile",
+    "portrait": "ArronSmile",
+    "sound": null,
+    "source": "ARRON",
+    "value": "Anywhere! I'm free now, so I can go anywhere I want, Mwahaha!"
+  },
+  {
+    "effect": "text",
+    "portrait": "RoseNormal",
     "sound": null,
     "source": "ROSE",
     "value": "(Despite the situtation, looks like Master has returned to his normal mood really quickly. That's a reflief...)"
+  },
+  {
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 0.5,
+	"delay": 0.5
   },
   {
     "effect": "text",
@@ -829,7 +931,7 @@
     "portrait": "RoseSarcastic",
     "sound": null,
     "source": "ROSE",
-    "value": "...Thankfully"
+    "value": "...Thankfully."
   },
     {
     "effect": "sprite",

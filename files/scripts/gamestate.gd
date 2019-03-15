@@ -5,13 +5,15 @@ var worker = preload("res://files/scripts/worker.gd");
 var date = 1
 var daytime = 0
 
+var newgame = false
+
 #resources
 var itemidcounter = 0
 var heroidcounter = 0
 var workeridcounter = 0
 var money = 0
 var food = 50
-var townupgrades = {workerlimit = 5}
+var townupgrades = {}
 var workers = {}
 var heroes = {}
 var items = {}
@@ -46,6 +48,7 @@ func materials_set(value):
 			else:
 				if oldmaterials[i] - value[i] < 0:
 					text += 'Gained '
+					input_handler.emit_signal("MaterialObtained", i)
 				else:
 					text += "Lost "
 				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + Items.Materials[i].name + '}'
@@ -84,21 +87,26 @@ func gettaskfromworker(worker):
 			return i
 	return false
 
+func GetWorkerLimit():
+	var value
+	if townupgrades.has("houses") == false:
+		value = 3
+	else:
+		value = globals.upgradelist.houses.levels[townupgrades.houses].limitchange
+	return value
+
 func StoreEvent (nm):
 	OldEvents[nm] = date;
-	pass
 
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return;
 	StoreEvent(CurEvent);
 	CurEvent = "";
 	keyframes.clear();
-	pass
 
 
 func if_has_money(value):
 	return (money >= value);
-	pass
 
 func if_has_property(prop, value):
 	var tmp = get(prop);
@@ -106,25 +114,20 @@ func if_has_property(prop, value):
 		print ("ERROR: NO PROPERTY IN GAMESTATE %s\n", prop);
 		return false;
 	return (tmp >= value);
-	pass
 
 func if_has_hero(name):
 	for h in heroes.values():
 		if h.name == name: return true;
-		pass
 	return false;
-	pass
 
 func if_has_material(mat, val):
 	if !materials.has(mat): return false;
 	return materials[mat] >= val;
-	pass
 
 func if_has_item(name):
 	for i in items.values():
 		if i.name == name: return true;
 	return false;
-	pass
 
 
 func valuecheck(dict):
@@ -132,13 +135,10 @@ func valuecheck(dict):
 	match dict['type']:
 		"no_check":
 			return true;
-			pass
 		"has_money":
 			return if_has_money(dict['value']);
-			pass
 		"has_property":
 			return if_has_property(dict['prop'], dict['value']);
-			pass
 		"has_hero":
 			return if_has_hero(dict['name']);
 		"event_finished":
@@ -148,16 +148,21 @@ func valuecheck(dict):
 			return tmp;
 		"has_material":
 			return if_has_material(dict['material'], dict['value']);
-			pass
 		"date":
 			return date >= dict['date'];
 		"item":
 			return if_has_item(dict['name']);
 		"building":
 			return CurBuild == dict['value'];
-	pass
+		"gamestart":
+			return newgame
+		"has_upgrade":
+			return if_has_upgrade(dict.name, dict.value)
+
+func if_has_upgrade(upgrade, level):
+	if !townupgrades.has(upgrade): return false
+	else: return townupgrades[upgrade] >= level
 
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null;
 	return heroes[combatparty[pos]];
-	pass

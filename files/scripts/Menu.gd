@@ -10,6 +10,7 @@ func _ready():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 
 func newgame():
+	state.newgame = true
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('town')
 	

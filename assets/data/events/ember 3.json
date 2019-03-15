@@ -6,6 +6,10 @@
 		"delay": 0.5
 	},
 	{
+		"effect": "music",
+		"value": "eventgeneric",
+    },
+	{
 		"effect": "gui",
 		"value": "gui_inside"
 	},
@@ -126,7 +130,7 @@
 		"portrait":"EmberFriendly",
 		"sound":null,
 		"source":"EMBER",
-		"value":"Oooh, Sir Arron, you can do this for me!? "
+		"value":"OOOOH, Sir Arron, you can do this for me!? "
 	},
 	{
 		"effect":"text",
@@ -147,7 +151,7 @@
 		"portrait":"ArronSmile",
 		"sound":null,
 		"source":"ARRON",
-		"value":"(Wow.. this was way too easy, I should probably later give her a couple of lessons about dignity)"
+		"value":"(Darn.. this was way too easy, maybe I should later give her a couple of lessons about dignity)"
 	},
 	{
 		"effect": "background",
@@ -473,9 +477,7 @@
 		"source":"ARRON",
 		"value":"Gladly."
 	},
-
-
-	  {
+	{
     "effect": "stop",
     "value": ""
   }

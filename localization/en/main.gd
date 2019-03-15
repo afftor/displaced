@@ -1,6 +1,19 @@
 extends Node
 
 var TranslationDict = {
+	#Buildings
+	WORKERMARKET = "Market",
+	PURCHASE = "Purchase",
+	TASKS = "Tasks",
+	UPGRADES = "Upgrades",
+	TOWNHALL = "Town Hall",
+	FOODCONV = "Food Conversion",
+	HARVESTMETAL = "Harvest Ore",
+	HARVESTPLANT = "Harvest Plants",
+	GOBLINWORKER = "Goblin Worker",
+	ELVENWORKER = "Elven Worker",
+	
+	
 	#Materials
 	MATERIALWOOD = "Wood",
 	MATERIALWOODDESCRIPT = "Sturdy wood for general building and furnishing purposes.",
@@ -118,12 +131,31 @@ var TranslationDict = {
 	BASECHANCE = "Base Chance",
 	CANTREPAIREFFECT = "This item can't be repaired.",
 	NOTENOUGH = "Not enough",
+	ITEMCREATED = "Item Created",
+	UPGRADEUNLOCKED = "Upgrade Unlocked",
 	
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
+	WORKERLIMITREACHER = "Worker Limit Reached: Upgrade Houses to increase",
+	TOTALWORKERS = "Total Workers",
 	
+	TUTORIAL = "Tutorial",
 	
+	INVENTORY = "Inventory",
+	WORKERLIST = "Worker List",
+	HEROLIST = "Hero List",
+	OPTIONMENU = "Options",
 	
+	INVENTORYALL = "All items",
+	INVENTORYWEAPON = "Weapons",
+	INVENTORYARMOR = "Armor",
+	INVENTORYMATERIAL = "Materials",
+	INVENTORYUSE = "Usables",
+	INVENTORYQUEST = "Misc",
+	SELLCONFIRM = "Sell",
+	RAWPRICE = "Raw Price",
+	FOODDESCRIPT = "Food is used to feed workers. ",
+	MONEYDESCRIPT = "Money are used to purchase goods and workers.",
 	
 	#Confirms
 	
@@ -175,11 +207,13 @@ var TranslationDict = {
 	UPGRADEFARMBONUS = "Allows production of cloth",
 	HOUSESUPGRADE = "Worker Barracks",
 	UPGRADEHOUSESDESCRIPT = "Living quarters for your workers. ",
-	UPGRADHOUSEBONUS1 = "Hosts up to 2 workers",
-	UPGRADHOUSEBONUS2 = "Hosts up to 5 workers",
+	UPGRADHOUSEBONUS1 = "Hosts up to 4 workers",
+	UPGRADHOUSEBONUS2 = "Hosts up to 8 workers",
 	BLACKSMITHUPGRADE = "Blacksmith",
 	UPGRADEBLACKSMITHDESCRIPT = "Upgrade of Ember's forge will allow the production of new gear.",
 	UPGRADEBLACKSMITHBONUS1 = "Unlocks Headgear",
 	UPGRADEBLACKSMITHBONUS2 = "Unlocks footgear",
-	
+	LUMBERMILLUPGRADE = "Lumber mill",
+	UPGRADELUMBERMILLDESCRIPT = "Improves the quality of Lumber Mill building.",
+	UPGRADELUMBERMILLBONUS = "Increases the number of workers allowed in same time to 4. ",
 }

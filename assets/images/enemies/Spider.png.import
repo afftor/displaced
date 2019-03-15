@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Аррон 2_.png-3b95d592c2db86a008b08cb08fc7e8a5.stex"
+path="res://.import/Spider.png-2ac0f4851187ee317b5b42e023757a26.stex"
 
 [deps]
 
-source_file="res://assets/images/combatportraits/Аррон 2_.png"
-dest_files=[ "res://.import/Аррон 2_.png-3b95d592c2db86a008b08cb08fc7e8a5.stex" ]
+source_file="res://assets/images/enemies/Spider.png"
+dest_files=[ "res://.import/Spider.png-2ac0f4851187ee317b5b42e023757a26.stex" ]
 
 [params]
 

@@ -4,8 +4,15 @@ var currenttask
 var currentworker
 
 func _ready():
-	globals.AddPanelOpenCloseAnimation($TaskPanel)
 	$TaskPanel/StopButton.connect("pressed", self, 'StopTask')
+	globals.AddPanelOpenCloseAnimation($TaskPanel)
+	input_handler.connect("WorkerAssigned", self, 'update')
+
+
+func update(args):
+	if self.visible == true:
+		BuildSlaveList()
+
 
 func BuildSlaveList():
 	ClearScene()
@@ -16,7 +23,8 @@ func BuildSlaveList():
 		newbutton.get_node("Icon").texture = i.icon
 		newbutton.get_node("Name").text = i.name
 		newbutton.get_node("Task").visible = i.task != null
-		newbutton.get_node("Line").connect("mouse_entered",self, 'SelectSlave', [i])
+		#newbutton.get_node("Line").connect("mouse_entered",self, 'SelectSlave', [i])
+		newbutton.get_node("Button").connect("pressed",self, 'SelectSlave', [i])
 		newbutton.get_node("Use").connect("pressed",self, 'SlaveFeed', [i])
 		newbutton.get_node("Remove").connect("pressed",self, 'SlaveRemove', [i])
 		newbutton.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
@@ -30,12 +38,12 @@ func SlaveFeedItem(item):
 
 func SlaveRemove(worker):
 	currentworker = worker
-	if worker.task != null:
-		globals.CurrentScene.stoptask(worker.task)
 	input_handler.ShowConfirmPanel(self, 'SlaveRemoveConfirm', tr('SLAVEREMOVECONFIRM'))
 
 func SlaveRemoveConfirm():
-	globals.state.workers.erase(currentworker.id)
+	if currentworker.task != null:
+		globals.CurrentScene.stoptask(currentworker.task)
+	state.workers.erase(currentworker.id)
 	BuildSlaveList()
 
 func ClearScene():
@@ -47,14 +55,17 @@ func SelectSlave(worker):
 	currentworker = worker
 	if worker.task == null:
 		$TaskPanel.hide()
+		$TaskList.tasklist()
+		$TaskList.selectedworker = worker
 	else:
-		$TaskPanel.show()
+		$TaskList.hide()
 		text += worker.task.taskdata.name
 		ShowTaskInformation(worker.task)
 
 
 func ShowTaskInformation(task):
 	currenttask = task
+	$TaskPanel.show()
 	if task.instrument != null:
 		input_handler.itemshadeimage($TaskPanel/ToolImage, task.instrument)
 		task.instrument.tooltip($TaskPanel/ToolImage)

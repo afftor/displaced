@@ -17,14 +17,12 @@ func _process(delta):
 		k = 1.0;
 	if material == null: return;
 	material.set_shader_param('opacity', timer);
-	pass
 
 func _ready():
 	connect('pressed', self, '_onclick');
 	add_to_group("char_sprite");
 	set_active_val();
 	regenerate_click_mask();
-	pass
 
 func regenerate_click_mask():
 	var t = texture_normal.get_data();
@@ -46,7 +44,6 @@ func _onclick():
 	set_process(false);
 	.update();
 	globals.StartEventScene(next_scene);
-	pass
 
 func set_active_val():
 	if state.CurEvent != "": return;
@@ -66,4 +63,3 @@ func set_active_val():
 	next_scene = "";
 	set_process(false);
 	.update();
-	pass

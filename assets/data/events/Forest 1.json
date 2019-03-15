@@ -4,6 +4,10 @@
 		"value": "forest"
 	},
 	{
+		"effect": "music",
+		"value": "eventlight",
+    },
+	{
 		"effect": "sprite",
 		"value": "set",
 		"args": "Rose"
@@ -62,10 +66,17 @@
 	},
 	{
 		"effect":"text",
+		"portrait":"RoseTalk",
+		"sound":null,
+		"source":"ROSE",
+		"value":"Master, please, don't say that them in the face."
+	},
+	{
+		"effect":"text",
 		"portrait":"RoseNormal",
 		"sound":null,
 		"source":"ROSE",
-		"value":"Master, please, don't say that them in the face. I'm sure they wouldn't like it, and they probably live in a much better conditions than we currently are."
+		"value":"I'm sure they wouldn't like it, and they probably live in a much better conditions than we currently are."
 	},
 	{
 		"effect":"text",
@@ -89,14 +100,12 @@
 		"value":"As if you have a choice."
 	},
 	{
-		"effect":"text",
-		"portrait":"",
-		"sound":null,
-		"source":"narrator",
-		"value":"",
-		"delay": 0.1
-	},
-	  {
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 1,
+	"delay": 1
+  },
+	 {
     "effect": "stop",
     "value": ""
   }

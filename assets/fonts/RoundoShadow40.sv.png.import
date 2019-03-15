@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ericanaked.png-885ebe910c1fd9e0805c9ed47ac88017.stex"
+path="res://.import/RoundoShadow40.sv.png-affa5f2d7939e13cb9b3218397aa90da.stex"
 
 [deps]
 
-source_file="res://assets/images/sprites/ericanaked.png"
-dest_files=[ "res://.import/ericanaked.png-885ebe910c1fd9e0805c9ed47ac88017.stex" ]
+source_file="res://assets/fonts/RoundoShadow40.sv.png"
+dest_files=[ "res://.import/RoundoShadow40.sv.png-affa5f2d7939e13cb9b3218397aa90da.stex" ]
 
 [params]
 
@@ -16,8 +16,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
+flags/filter=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

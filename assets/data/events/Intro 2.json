@@ -5,6 +5,10 @@
 	"args": null
   },
   {
+		"effect": "music",
+		"value": "eventlight",
+  },
+  {
     "effect": "background",
     "value": "villageday"
   },
@@ -27,7 +31,7 @@
   },
   {
     "effect": "text",
-    "portrait": "RoseHappy",
+    "portrait": "RoseShock",
     "sound": null,
     "source": "ROSE",
     "value": "Look, Master, a goblin village!"
@@ -41,7 +45,7 @@
   },
     {
     "effect": "text",
-    "portrait": "RoseSad",
+    "portrait": "RoseNormal",
     "sound": null,
     "source": "ROSE",
     "value": "We haven't seen any people for 2 days... Let's check it out at least."
@@ -101,7 +105,7 @@
   },
     {
     "effect": "text",
-    "portrait": "RoseSad",
+    "portrait": "RoseNormal",
     "sound": null,
     "source": "ROSE",
     "value": "..."
@@ -118,7 +122,7 @@
     "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
-    "value": "A fucking big deal. Adventurers come and go all the time. Some even stay around for a while."
+    "value": "A freaking big deal. Adventurers come and go all the time. Some even stay and leech on our food."
   },
   {
     "effect": "text",
@@ -132,7 +136,14 @@
     "portrait": "goblin",
     "sound": null,
     "source": "GOBLIN",
-    "value": "Eh? We don't belong to anyone, since nobody really cares about this desert. This place might look like a dump, but it's totally free. "
+    "value": "Eh? We don't belong to anyone, since nobody really cares about this land. "
+  },
+  {
+    "effect": "text",
+    "portrait": "goblin",
+    "sound": null,
+    "source": "GOBLIN",
+    "value": "This place might look like a dump, but it's totally independent. "
   },
   {
     "effect": "text",
@@ -177,26 +188,26 @@
     "value": "Tell me, friend, do you know the benefits of having someone to organize and take care of town's problems?"
   },
   {
-		"effect": "sprite",
-		"value": "fade",
-		"args":0.5,
-		"delay": 0.5
-	},
-	{
     "effect": "gui",
     "value": "hidegui"
   },
   {
-		"effect": "background",
-		"value": "hall"
-	},
-  {
     "effect": "sfx",
-    "value": "blackscreenturnon",
-	"args": null,
-	"delay":0.5
+    "value": "blackscreenunfade",
+	"args": 1,
+	"delay": 1
   },
-   {
+  {
+	"effect": "sprite",
+	"value": "fade",
+	"args":0.5,
+	"delay": 0.5
+  },
+  {
+	"effect": "background",
+	"value": "hall"
+  },
+  {
     "effect": "gui",
     "value": "showgui"
   },
@@ -205,13 +216,13 @@
     "portrait": null,
     "sound": null,
     "source": "narrator",
-    "value": "FEW DAYS LATER"
+    "value": "Few days later"
   },
   {
     "effect": "sfx",
     "value": "blackscreenfade",
-	"args": 0.5,
-	"delay": 0.5
+	"args": 1,
+	"delay": 1
   },
   {
     "effect": "text",
@@ -232,25 +243,25 @@
     "portrait": "RoseSarcastic",
     "sound": null,
     "source": "ROSE",
-    "value": "(Makes me realize why.)"
+    "value": "(Makes me realize why)"
   },
     {
     "effect": "text",
-    "portrait": "RoseHappy",
+    "portrait": "RoseTalk",
     "sound": null,
     "source": "ROSE",
     "value": "Must say, this is a rather nice living space."
   },
     {
     "effect": "text",
-    "portrait": "RoseNormal",
+    "portrait": "RoseTalk",
     "sound": null,
     "source": "ROSE",
     "value": "Oh, also, we have a first visitor today."
   },
   {
     "effect": "text",
-    "portrait": "ArronNeutral",
+    "portrait": "ArronSmile",
     "sound": null,
     "source": "ARRON",
     "value": "People want to contemplate their leader. Let's not keep them waiting. Bring them in."
@@ -284,7 +295,7 @@
   },
   {
     "effect": "text",
-    "portrait": "ArronShock",
+    "portrait": "ArronNeutral",
     "sound": null,
     "source": "ARRON",
     "value": "Why he did not visit himself?"
@@ -337,6 +348,12 @@
     "source": "ARRON",
     "value": "Democracy was a mistake. ",
 	"delay": 0.1
+  },
+  {
+    "effect": "sfx",
+    "value": "blackscreentransition",
+	"args": 1,
+	"delay": 1
   },
   {
     "effect": "stop",

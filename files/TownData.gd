@@ -14,9 +14,12 @@ var buildingoptions = {
 
 var tasksdict = {
 	woodcutting = {basetimer = 10, energycost = 5,
+	code = 'woodcutting',
+	baselimit = 2,
+	upgradelimit = null,
 	name = tr("HARVESTWOOD"),
 	description = tr('WOODCUTTINGTASKDESCRIPTION'),
-	unlockreq = true,
+	unlockreqs = [],
 	tasktool = {type = 'axe', required = false, durabilityfactor = 0, effects = [{code = 'speed', value = 5}]}, 
 	workerproducts = {
 		goblin = [{code = 'materials.wood', amount = 1, chance = 100, critamount = 2, critchance = 10}],
@@ -24,9 +27,12 @@ var tasksdict = {
 	},
 },
 	mining = {basetimer = 10, energycost = 5,
+	code = 'mining',
+	baselimit = 2,
+	upgradelimit = 'mine',
 	name = tr("HARVESTMETAL"),
 	description = tr('HARVESTMETALDESCRIPTION'),
-	unlockreqs = 'mineupgrade',
+	unlockreqs = [{type = "has_upgrade", name = "mine", value = 1}],
 	tasktool = {type = 'pickaxe', required = true, durabilityfactor = 0}, 
 	workerproducts = {
 		goblin = [{code = 'materials.goblinmetal', amount = 1, chance = 100, critamount = 2, critchance = 10}],
@@ -34,9 +40,12 @@ var tasksdict = {
 	},
 },
 	plantgathering = {basetimer = 10, energycost = 5,
+	code = 'plantgathering',
+	baselimit = 2, 
+	upgradelimit = 'farm',
 	name = tr("HARVESTPLANT"),
 	description = tr('HARVESTPLANTTASKDESCRIPTION'),
-	unlockreq = true,
+	unlockreqs = [{type = "has_upgrade", name = "farm", value = 1}],
 	tasktool = {type = 'none', required = false, durabilityfactor = 0}, 
 	workerproducts = {
 		goblin = [{code = 'materials.cloth', amount = 1, chance = 100, critamount = 2, critchance = 15}],
@@ -53,7 +62,7 @@ var workersdict = {
 	type = 'goblin', 
 	maxenergy = 50, 
 	icon = load("res://assets/images/gui/goblinicon.png"), 
-	unlockreq = true
+	unlockreqs = []
 	},
 	elf = {name = tr("ELFWORKER"), 
 	description = '',
@@ -61,14 +70,14 @@ var workersdict = {
 	type = 'elf', 
 	maxenergy = 100, 
 	icon = load("res://assets/images/gui/elficon.png"), 
-	unlockreq = false
+	unlockreqs = []
 	},
-	dwarf = {name = tr('DWARFWORKER'), 
-	description = '',
-	price = 75, 
-	type = 'dwarf', 
-	maxenergy = 100, 
-	icon = null, 
-	unlockreq = false
-	},
+#	dwarf = {name = tr('DWARFWORKER'), 
+#	description = '',
+#	price = 75, 
+#	type = 'dwarf', 
+#	maxenergy = 100, 
+#	icon = null, 
+#	unlockreqs = []
+#	},
 }

@@ -34,6 +34,11 @@ func _ready():
 	character.createfromname('Rose')
 	state.heroes[character.id] = character
 	
+	character = combatantdata.combatant.new()
+	character.createfromname('Ember')
+	state.heroes[character.id] = character
+	
+	input_handler.SetMusic("towntheme")
 	
 	var speedvalues = [0,1,10]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
@@ -47,7 +52,6 @@ func _ready():
 	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
-	$ControlPanel/FoodConv.connect("pressed", $FoodConvert, 'open')
 	$TownHallNode.connect("pressed",self,'opentownhall')
 	$BlacksmithNode.connect("pressed",self,'openblacksmith')
 	$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
@@ -57,7 +61,12 @@ func _ready():
 	$Gate.connect("pressed",self,'explorescreen')
 	
 	if debug == true:
+		state.OldEvents['Market'] = 0
 		var worker = globals.worker.new()
+		worker.create(TownData.workersdict.goblin)
+		worker = globals.worker.new()
+		worker.create(TownData.workersdict.goblin)
+		worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
 		#globals.AddItemToInventory(globals.crea
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
@@ -73,7 +82,11 @@ func _ready():
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 	globals.call_deferred('EventCheck');
-	
+	$testbutton.connect("pressed", self, "testfunction")
+	changespeed($"TimeNode/0speed", false)
+
+func testfunction():
+	input_handler.ActivateTutorial('tutorial1')
 
 func _process(delta):
 	if self.visible == false:
@@ -97,8 +110,8 @@ func _process(delta):
 			restoreoldspeed(previouspeed)
 			gamepaused = false
 	
-	$ControlPanel/Gold.text = 'Gold ' + str(state.money)
-	$ControlPanel/Food.text = "Food " + str(state.food)
+	$ControlPanel/Gold.text = str(state.money)
+	$ControlPanel/Food.text = str(state.food)
 	
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
@@ -220,6 +233,7 @@ func changespeed(button, playsound = true):
 	var soundarray = ['time_stop', 'time_start', 'time_up']
 	if oldvalue != newvalue && playsound:
 		input_handler.PlaySound(soundarray[int(button.name[0])])
+	input_handler.emit_signal("SpeedChanged", gamespeed)
 
 func restoreoldspeed(value):
 	for i in timebuttons:
@@ -241,8 +255,10 @@ func FadeToBlackAnimation(time = 1):
 
 
 func openinventory(hero = null):
-	$Inventory.open(hero)
+	$Inventory.open('hero', hero)
 
+func openinventorytrade():
+	$Inventory.open("shop")
 
 func openblacksmith():
 	$blacksmith.show()
@@ -272,7 +288,8 @@ func assignworker(data):
 
 func stoptask(data):
 	data.worker.task = null
-	data.instrument.task = null
+	if data.instrument != null:
+		data.instrument.task = null
 	deletecounter(data)
 	tasks.erase(data)
 
@@ -327,6 +344,7 @@ var itemicon = preload("res://src/ItemIcon.tscn")
 func flyingitemicon(taskbar, item):
 	var x = itemicon.instance()
 	add_child(x)
+	x.texture = Items.Materials[item].icon
 	x.rect_global_position = taskbar.rect_global_position
 	input_handler.PlaySound("itemget")
 	input_handler.ResourceGetAnimation(x, taskbar.rect_global_position, $ControlPanel/Inventory.rect_global_position)

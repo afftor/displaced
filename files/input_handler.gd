@@ -11,6 +11,16 @@ var SystemMessageNode
 
 
 signal ScreenChanged
+signal BuildingEntered
+signal ItemObtained
+signal MaterialObtained
+signal ExplorationStarted
+signal CombatStarted
+signal WorkerAssigned
+signal SpeedChanged
+signal UpgradeUnlocked
+
+
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
@@ -89,7 +99,7 @@ func GetItemTooltip():
 
 func GetTweenNode(node):
 	var tweennode
-	if node.find_node('tween'):
+	if node.has_node('tween'):
 		tweennode = node.get_node('tween')
 	else:
 		tweennode = Tween.new()
@@ -154,41 +164,51 @@ func StopTweenRepeat(node):
 	tween.set_active(false)
 	tween.remove_all()
 
-func SetMusic(name):
+#Music
+
+func SetMusic(name, delay = 0):
+	yield(get_tree().create_timer(delay), 'timeout')
 	var musicnode = GetMusicNode()
 	musicnode.stream = audio.music[name]
 	musicnode.play(0)
-	AudioServer.set_bus_volume_db(1, -60)
-	musicraising = true
+#	AudioServer.set_bus_volume_db(1, -60)
+#	musicraising = true
 
-func PlaySound(name):
-	var soundnode = GetSoundNode()
-	soundnode.stream = audio.sounds[name]
-	soundnode.seek(0)
-	soundnode.play(0)
+func StopMusic(instant = false):
+	musicfading = true
 
 func GetMusicNode():
 	var node = get_tree().get_root()
 	var musicnode
-	if node.find_node('music'):
+	if node.has_node('music'):
 		musicnode = node.get_node('music')
 	else:
 		musicnode = AudioStreamPlayer.new()
 		musicnode.name = 'music'
 		musicnode.bus = 'Music'
-		node.add_child(musicnode)
+		node.call_deferred('add_child', musicnode)
 	return musicnode
+
+#Sounds
+
+func PlaySound(name, delay = 0):
+	yield(get_tree().create_timer(delay), 'timeout')
+	var soundnode = GetSoundNode()
+	soundnode.stream = audio.sounds[name]
+	soundnode.seek(0)
+	soundnode.play(0)
+	yield(soundnode, 'finished')
+	soundnode.queue_free()
 
 func GetSoundNode():
 	var node = get_tree().get_root()
-	var soudnnode
-	if node.find_node('sound'):
-		soudnnode = node.get_node('sound')
-	else:
-		soudnnode = AudioStreamPlayer.new()
-		soudnnode.name = 'sound'
-		soudnnode.bus = 'Sound'
-		node.add_child(soudnnode)
+	var soudnnode = AudioStreamPlayer.new()
+#	if node.has_node('sound'):
+#		soudnnode = node.get_node('sound')
+#	else:
+#		soudnnode.name = 'sound'
+	soudnnode.bus = 'Sound'
+	node.add_child(soudnnode)
 	return soudnnode
 
 func GetEventNode():
@@ -308,12 +328,12 @@ func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay + (time/1.2))
 	tweennode.start()
 
-func SmoothTextureChange(node, newtexture):
+func SmoothTextureChange(node, newtexture, time = 0.5):
 	var NodeCopy = node.duplicate()
 	node.get_parent().add_child_below_node(node, NodeCopy)
 	node.texture = newtexture
-	FadeAnimation(NodeCopy, 0.2)
-	yield(get_tree().create_timer(0.3), 'timeout')
+	FadeAnimation(NodeCopy, time)
+	yield(get_tree().create_timer(time+0.1), 'timeout')
 	NodeCopy.queue_free()
 
 func DelayedText(node, text):
@@ -347,8 +367,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 			result = (req.value == combatant.race);
 	return result
 
-func requirementstatecheck(req):
-	pass
+
 
 func operate(operation, value1, value2):
 	var result
@@ -408,13 +427,30 @@ func open_shell(string):
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):
+	var basetime = time
 	if SystemMessageNode == null:
 		return
-	var array = [SystemMessageNode, SystemMessageNode.get_parent().get_node("SystemMessageShadow")]
 	text = '[center]' + text + '[/center]'
-	for i in array:
-		i.modulate.a = 1
-		i.bbcode_text = text
-		var basetime = time
-		FadeAnimation(i, 1, basetime)
-	
+	SystemMessageNode.modulate.a = 1
+	SystemMessageNode.bbcode_text = text
+	FadeAnimation(SystemMessageNode, 1, basetime)
+
+func GetTutorialNode():
+	var node = get_tree().get_root()
+	if node.has_node("MainScreen"):
+		node = node.get_node("MainScreen")
+	var tutnode
+	if node.has_node('TutorialNode'):
+		tutnode = node.get_node('TutorialNode')
+	else:
+		tutnode = load("res://src/Tutorial.tscn").instance()
+		tutnode.name = 'TutorialNode'
+		node.add_child(tutnode)
+	return tutnode
+
+
+func ActivateTutorial(stage):
+	var node = GetTutorialNode()
+	node.activatetutorial(stage)
+
+

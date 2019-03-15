@@ -65,7 +65,7 @@ func _init():
 
 
 var Materials = {
-	wood = {name = tr("MATERIALWOOD"), price = 1, icon = load("res://assets/images/iconsitems/Wood.png"), description = tr('MATERIALWOODDESCRIPT'),
+	wood = {name = tr("MATERIALWOOD"), price = 5, icon = load("res://assets/images/iconsitems/Wood.png"), description = tr('MATERIALWOODDESCRIPT'),
 	adjective = tr("WOODADJ"),
 	DefaultEffect = 'natural',
 	code = 'wood',
@@ -73,7 +73,7 @@ var Materials = {
 	color = Color8(160,100,53),
 	parts = {
 	}},
-	elvenwood = {name = tr("MATERIALELVENWOOD"), price = 1, icon = load("res://assets/images/iconsitems/ElvenWood.png"), description = tr('MATERIALELVENWOODDESCRIPT'),
+	elvenwood = {name = tr("MATERIALELVENWOOD"), price = 10, icon = load("res://assets/images/iconsitems/ElvenWood.png"), description = tr('MATERIALELVENWOODDESCRIPT'),
 	adjective = tr("ELVENWOODADJ"),
 	DefaultEffect = '',
 	code = 'elvenwood',
@@ -93,7 +93,7 @@ var Materials = {
 #		Rod = {durabilitymod = 0.4, damage = 5},
 #		ArmorBase = {armor = 20, durabilitymod = 0.5, evasion = -10},
 #	}},
-	goblinmetal = {name = tr("MATERIALGOBLINMETAL"), price = 1, icon = load("res://assets/images/iconsitems/GoblinMetal.png"), description = tr('METARIALGOBLINGMETALDESCRIPT'),
+	goblinmetal = {name = tr("MATERIALGOBLINMETAL"), price = 10, icon = load("res://assets/images/iconsitems/GoblinMetal.png"), description = tr('METARIALGOBLINGMETALDESCRIPT'),
 	adjective = tr("GOBLINMETALADJ"),
 	DefaultEffect = '',
 	code = 'goblinmetal',
@@ -101,7 +101,7 @@ var Materials = {
 	color = Color8(255,182,124),
 	parts = {
 	}},
-	elvenmetal = {name = tr("MATERIALELVENMETAL"), price = 1, icon = load("res://assets/images/iconsitems/ElvenMetal.png"), description = tr('METARIALELVENMETALDESCRIPT'),
+	elvenmetal = {name = tr("MATERIALELVENMETAL"), price = 10, icon = load("res://assets/images/iconsitems/ElvenMetal.png"), description = tr('METARIALELVENMETALDESCRIPT'),
 	adjective = tr("ELVENMETALADJ"),
 	DefaultEffect = '',
 	code = 'elvenmetal',
@@ -109,7 +109,7 @@ var Materials = {
 	color = Color8(200,200,55),
 	parts = {
 	}},
-	leather = {name = tr("MATERIALLETHER"), price = 1, icon = load("res://assets/images/iconsitems/Leather.png"), description = tr('MATERIALLEATHERDESCRIPT'),
+	leather = {name = tr("MATERIALLETHER"), price = 5, icon = load("res://assets/images/iconsitems/Leather.png"), description = tr('MATERIALLEATHERDESCRIPT'),
 	adjective = tr("LEATHERADJ"),
 	DefaultEffect = '',
 	code = 'leather',
@@ -117,7 +117,7 @@ var Materials = {
 	color = Color8(160,87,52),
 	parts = {
 	}},
-	bone = {name = tr("MATERIALBONE"), price = 1, icon = load("res://assets/images/iconsitems/Bone.png"), description = tr('MATERIALBONEDESCRIPT'),
+	bone = {name = tr("MATERIALBONE"), price = 5, icon = load("res://assets/images/iconsitems/Bone.png"), description = tr('MATERIALBONEDESCRIPT'),
 	adjective = tr("BONEADJ"),
 	DefaultEffect = '',
 	code = 'bone',
@@ -125,7 +125,7 @@ var Materials = {
 	color = Color8(164,180,180),
 	parts = {}
 	},
-	cloth = {name = tr("MATERIALCLOTH"), price = 1, icon = load("res://assets/images/iconsitems/Cloth.png"), description = tr('MATERIALCLOTHDESCRIPT'),
+	cloth = {name = tr("MATERIALCLOTH"), price = 5, icon = load("res://assets/images/iconsitems/Cloth.png"), description = tr('MATERIALCLOTHDESCRIPT'),
 	adjective = tr("CLOTHADJ"),
 	DefaultEffect = '',
 	code = 'cloth',
@@ -347,6 +347,26 @@ var Items = {
 	foodvalue = 50,
 	tags = [],
 	price = 10,
+	},
+	managrass = {name = tr("MANAGRASS"), code = 'managrass', description = tr("USABLEMANAGRASSDESCRIPT"),
+	icon = load("res://assets/images/iconsitems/Morsel.png"),
+	itemtype = 'usable',
+	unlockreq = true,
+	useeffects = [],
+	useskill = '',
+	foodvalue = 0,
+	tags = [],
+	price = 25,
+	},
+	protectivecharm = {name = tr("PROTECTIVECHARM"), code = 'protectivecharm', description = tr("USABLEPROTECTIVECHARMDESCRIPT"),
+	icon = load("res://assets/images/iconsitems/Morsel.png"),
+	itemtype = 'usable',
+	unlockreq = true,
+	useeffects = [],
+	useskill = '',
+	foodvalue = 0,
+	tags = [],
+	price = 50,
 	},
 	
 }

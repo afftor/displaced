@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/erica.png-abe2d5f695515648ba772c0024d422a8.stex"
+path="res://.import/Golem.png-66e144014d1364fc9b3b92cc48750a62.stex"
 
 [deps]
 
-source_file="res://assets/images/sprites/erica.png"
-dest_files=[ "res://.import/erica.png-abe2d5f695515648ba772c0024d422a8.stex" ]
+source_file="res://assets/images/enemies/Golem.png"
+dest_files=[ "res://.import/Golem.png-66e144014d1364fc9b3b92cc48750a62.stex" ]
 
 [params]
 
@@ -16,8 +16,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
+flags/filter=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

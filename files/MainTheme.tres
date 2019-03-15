@@ -16,13 +16,13 @@ margin_left = 20.0
 margin_right = 20.0
 margin_top = 20.0
 margin_bottom = 20.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
+expand_margin_left = 50.0
+expand_margin_right = 50.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
-_sections_unfolded = [ "Margin" ]
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
 [sub_resource type="StyleBoxTexture" id=2]
 
