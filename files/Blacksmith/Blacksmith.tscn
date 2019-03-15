@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=30 format=2]
+
 
 [ext_resource path="res://assets/images/gui/buildings/panel.png" type="Texture" id=1]
 [ext_resource path="res://files/Blacksmith/Blacksmith.gd" type="Script" id=2]
@@ -26,6 +28,7 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/stone.jpg" type="Texture" id=26]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 

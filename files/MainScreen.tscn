@@ -111,6 +111,7 @@ draw_center = true
 
 [node name="MainScreen" type="Control" index="0"]
 
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
