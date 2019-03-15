@@ -25,6 +25,7 @@ var unlocks = []
 
 var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
 
+
 var CurrentTextScene
 var CurrentScreen
 var CurrentLine
@@ -33,8 +34,15 @@ var heroguild = []
 
 var OldEvents = {};
 var CurEvent = ""; #event name
-var CurBuild;
-var keyframes = [];
+var CurBuild
+var keyframes = []
+
+#Progress
+var mainprogress = 0
+var decisions = []
+var activequests = []
+var completedquests = []
+
 
 func _init():
 	oldmaterials = materials.duplicate()
@@ -95,8 +103,31 @@ func GetWorkerLimit():
 		value = globals.upgradelist.houses.levels[townupgrades.houses].limitchange
 	return value
 
-func StoreEvent (nm):
-	OldEvents[nm] = date;
+func ProgressMainStage(stage = null):
+	if stage == null:
+		mainprogress += 1
+	else:
+		mainprogress = stage
+
+func MakeQuest(code):
+	activequests.append({code = code, stage = 1})
+
+func ProgressQuest(code):
+	for i in activequests:
+		if i.code == code:
+			i.stage += 1
+
+func FinishQuest(code):
+	var tempquest
+	for i in activequests:
+		if i.code == code:
+			tempquest = i
+	
+	activequests.erase(tempquest)
+	completedquests.append(tempquest.code)
+
+func StoreEvent(nm):
+	OldEvents[nm] = date
 
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return;
@@ -158,6 +189,15 @@ func valuecheck(dict):
 			return newgame
 		"has_upgrade":
 			return if_has_upgrade(dict.name, dict.value)
+		"main_progress":
+			return if_has_progress(dict.value, dict.operant)
+		"decision":
+			return decisions.has(dict.name)
+		"quest_completed":
+			return completedquests.has(dict.name)
+
+func if_has_progress(value, operant):
+	return input_handler.operate(operant, mainprogress, value)
 
 func if_has_upgrade(upgrade, level):
 	if !townupgrades.has(upgrade): return false

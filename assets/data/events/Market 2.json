@@ -8,21 +8,42 @@
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"Different workers, eh?"
+		"value":"So you have fixed the bridge, huh?"
 	},
 	{
 		"effect":"text",
 		"portrait":"Flak",
 		"sound":null,
 		"source":"FLAK",
-		"value":"Few months ago we also had elves delivered from the east forest. "
+		"value":"I guess you can be of some use after all. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Now, since that bridge is fixed, you could work out one thing which was buggering me for some time. "
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"You might have noticed our worker options are quite few. This wasn't always so."
+	},
+	{
+		"effect":"text",
+		"portrait":"Flak",
+		"sound":null,
+		"source":"FLAK",
+		"value":"Few months ago we also had elves delivered from the east forests. "
 	},
 	{
 		"effect":"text",
 		"portrait":"RoseShock",
 		"sound":null,
 		"source":"ROSE",
-		"value":"Wow, elves as hired workers? Had no idea they do stuff like that. Not from at our kingdom at least."
+		"value":"Wow, elves working in such place? Had no idea they do stuff like that. Not from where we came from at least."
 	},
 	{
 		"effect":"text",

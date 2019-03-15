@@ -39,8 +39,6 @@ var tutorialdict = {
 	
 }
 
-func _ready():
-	pass
 
 func activatetutorial(stage):
 	show()

@@ -61,8 +61,8 @@ func HeroSelected(hero):
 	UpdatePositions()
 
 
-func StartCombat(area):
-	var enemies = Enemydata.locationgroups[area].duplicate()
+func StartCombat(data):
+	var enemies = data.duplicate()
 	enemies = makerandomgroup(enemies)
 	$combat.start_combat(enemies)
 	$combat.show()
@@ -139,4 +139,34 @@ func UpdatePositions():
 func openinventory(hero):
 	$Inventory.open(hero)
 
+
+func showareas():
+	var container
+	globals.ClearContainer(container)
+	for i in globals.explorationares:
+		var check = true
+		for k in i.requirements:
+			if state.valuecheck(k) == false:
+				check = false
+		if check == false: continue
+		var newbutton = globals.DuplicateContainerTemplate(container)
+		newbutton.text = i.name
+		newbutton.connect("pressed", self, "startexploration", [i])
+
+#exploration vars
+var area
+var stage
+var period
+
+func startexploration(activearea, nextstage = 0):
+	stage = nextstage
+	area = activearea
+	period = 'fight'
+	if area.stagedenemies.has(stage):
+		StartCombat([area.stagedenemies[stage]])
+	else:
+		StartCombat(area.enemygroups)
+
+func wincontinue():
+	startexploration(area, stage+1)
 

@@ -36,8 +36,7 @@ var checks = {
 	],
 	"Market 2":
 	[
-		{},
-		{type = "event_finished", name = "Market"}
+		{type = "has_upgrade", name = "bridge", value = 1}
 	],
 	"Forest 1":[{}], #пока нет условия на эксплор
 	"Forest 2":[{}], #аналогично
@@ -53,3 +52,8 @@ var characters = {
 	'ember':
 	['ember 2', 'ember 3']
 };
+
+var progressdata = {
+	0 : "Search for clues for "
+	
+}

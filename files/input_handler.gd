@@ -16,6 +16,7 @@ signal ItemObtained
 signal MaterialObtained
 signal ExplorationStarted
 signal CombatStarted
+signal CombatEnded
 signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
