@@ -323,7 +323,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = variables.TR_SHIELD_DOWN,
-		effects = [{type = 'delete_effect', effect = e_addbarrier1}]
+		effects = [{type = 'delete_effect', effect = 'e_addbarrier1'}]
 	},
 	e_addbarrier2 = { #additional trigger to remove effect in those effects only effectively removes icon. but this is the pattern for creating barriers with additional bonuses
 		type = 'static',
@@ -336,7 +336,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = variables.TR_SHIELD_DOWN,
-		effects = [{type = 'delete_effect', effect = e_addbarrier2}]
+		effects = [{type = 'delete_effect', effect = 'e_addbarrier2'}]
 	},
 	e_addbarrier3 = { #additional trigger to remove effect in those effects only effectively removes icon. but this is the pattern for creating barriers with additional bonuses
 		type = 'static',
@@ -349,7 +349,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = variables.TR_SHIELD_DOWN,
-		effects = [{type = 'delete_effect', effect = e_addbarrier3}]
+		effects = [{type = 'delete_effect', effect = 'e_addbarrier3'}]
 	},
 	e_dwarwenbuf = {
 		type = 'static',

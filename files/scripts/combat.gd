@@ -172,8 +172,8 @@ func victory():
 		rewardsdict.xp += i.xpreward
 		var loot = {materials = Enemydata.loottables[i.loottable].materials.duplicate()}
 		for j in loot.materials:
-			loot.materials[j] = round(rand_range(loot.materials[j][0], loot.materials[j][1]))
-		globals.AddOrIncrementDict(rewardsdict.materials, loot.materials)
+			loot.materials[j] = round(rand_range(loot.materials[j][0], loot.materials[j][1])) #ERROR!!!! TO FIX comletely different data templates
+		globals.AddOrIncrementDict(rewardsdict.materials, loot.materials) #possible error due to another different data template
 	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in rewardsdict.materials:
 		var item = Items.Materials[i]

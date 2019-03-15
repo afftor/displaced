@@ -544,8 +544,8 @@ func createfromclass(classid):
 	name = combatantdata.namesarray[randi()%combatantdata.namesarray.size()]
 #	var newtrait = createtrait(self, classtemplate.code);
 #	traits.append(newtrait)
-	if template.keys().has('traits'):
-		for t in template.traits:
+	if classtemplate.keys().has('traits'):
+		for t in classtemplate.traits:
 			traits[t] = true;
 	
 
