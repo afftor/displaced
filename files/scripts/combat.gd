@@ -458,7 +458,7 @@ func buildenemygroup(enemygroup):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		enemygroup[i] = combatantdata.combatant.new()
+		enemygroup[i] = globals.combatant.new()
 		enemygroup[i].createfromenemy(tempname)
 	
 	for i in enemygroup:

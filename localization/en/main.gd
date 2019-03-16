@@ -222,4 +222,32 @@ var TranslationDict = {
 	LUMBERMILLUPGRADE = "Lumber mill",
 	UPGRADELUMBERMILLDESCRIPT = "Improves the quality of Lumber Mill building.",
 	UPGRADELUMBERMILLBONUS = "Increases the number of workers allowed in same time to 4. ",
+	
+	#traitdescriptions
+	TRAITBEASTBONUSDAMAGE = "Deals 20% more damage to animals",
+	TRAITBEASTBONUSRESIST = "Takes 20% less damage from animals",
+	TRAITBEASTBONUSEXP = "Receive 15% more Experience after combat",
+	TRAITBONUSHIT = "+10 Hit Rate",
+	TRAITBONUSEVASION = "+10 Evasion",
+	TRAITBONUSEVASIONPLUS = "+15 Evasion",
+	TRAITBONUSCRIT = "+10% Critical Strike Chance",
+	TRAITBONUSRESIST = "+10 To all elemental resists",
+	TRAITBONUSARMOR = "+5 Armor",
+	TRAITBONUSSPEED = "+10 Speed",
+	TRAITBONUSHPMAX = "+25 Maximum Health",
+	TRAITBONUSREGEN = "Regenerates 5% Health in the end of each turn",
+	TRAITDODGEDEBUFF = "On hit: Reduces Enemy's evasion by 10 for 2 turns",
+	TRAITGROUPARMOR = "+10 Armor to all characters in same row",
+	TRAITDOUBLEHEAL = "When heals an ally, Caster also heals for 50% of effect",
+	TRAITSPEEDONDAMAGE = "+20 Speed for 2 turns after taking damage",
+	TRAITSPELLCRITBONUS = "Restores Spell's mana cost on Spell critical",
+	TRAITSPEEDDEBUFF = "Reduces Speed and Evasion by 10 when hitting an enemy (stacks up to 2 times)",
+	TRAITBOWEXTRADAMAGE = "After dealing a finishing blow, your next attack deals 100% more damage",
+	TRAITCRITARMORIGNORE = "Critical strikes ignore target's Armor",
+	TRAITDODGEGROUP = "+10 Speed to all characters on the same column",
+	TRAITRESISTDEBUFF = "On hit reduces all target resists for 15 for 1 turn",
+	TRAITFIREDAMAGEBONUS = "20% Extra Fire damage to skills",
+	
+	TAKEGOLDBUTTON = "Take Gold Instead",
+	TAKEGOLDBUTTONTOOLTIP = "Refuse all traits and receive 100 gold"
 }

@@ -21,7 +21,7 @@ var workersdict
 #var enemydata
 var randomgroups
 
-#var enemylist
+var enemylist
 var upgradelist
 
 #var skillsdata
@@ -32,11 +32,11 @@ var upgradelist
 var classes = combatantdata.classlist
 var characters = combatantdata.charlist
 var skills
-var traits = combatantdata.traitlist
 var effects
 var combateffects
 var explorationares 
 
+var combatant = preload ('res://src/combatant.gd')
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
 
@@ -143,6 +143,7 @@ func _ready():
 	Skillsdata = load("res://assets/data/Skills.gd").new()
 	Effectdata = load("res://assets/data/Effects.gd").new()
 	TownData = load("res://files/TownData.gd").new()
+	Traitdata = load("res://assets/data/Traits.gd").new()
 	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
@@ -150,11 +151,11 @@ func _ready():
 	#====================================
 	
 	
-	#randomgroups = Enemydata.randomgroups
-	#enemylist = Enemydata.enemylist
+	randomgroups = Enemydata.randomgroups
+	enemylist = Enemydata.enemylist
 	effects = Effectdata.effects
 	#combateffects = Effectdata.combateffects
-	#skills = Skillsdata.skilllist
+	skills = Skillsdata.skilllist
 	
 	#workersdict = TownData.workersdict
 	
@@ -163,6 +164,9 @@ func _ready():
 	state.materials.wood = 10
 	state.materials.elvenwood = 10
 	state.materials.elvenmetal = 10
+	state.materials.goblinmetal = 10
+	state.materials.bone = 10
+	state.materials.cloth = 10
 	#state.materials.stone = 5
 	state.money = 200
 	
