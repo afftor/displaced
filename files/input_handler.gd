@@ -154,11 +154,24 @@ func FloatText(node, text, color = Color(1,1,1), time = 3, fadetime = 0.5, posit
 	textnode.text = text
 	textnode.rect_position = positionoffset
 	textnode.set("custom_colors/font_color", color)
-	floatfont.size = 30
+	floatfont.size = 50
 	textnode.set("custom_fonts/font", floatfont)
-	FadeAnimation(textnode, fadetime, time)
+	DamageTextFly(textnode)
+	#FadeAnimation(textnode, fadetime, time)
 	yield(get_tree().create_timer(time+1), 'timeout')
 	textnode.queue_free()
+
+func DamageTextFly(node, reverse = false):
+	var tween = GetTweenNode(node)
+	var firstvector = Vector2(20, -50)
+	var secondvector = Vector2(50, 120)
+	if reverse == true:
+		firstvector = Vector2(-20, -50)
+		secondvector = Vector2(-50, 120)
+	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(node, 'rect_position', node.rect_position+firstvector, node.rect_position+secondvector, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
+	FadeAnimation(node, 0.2 ,0.5)
+	tween.start()
 
 func StopTweenRepeat(node):
 	var tween = GetRepeatTweenNode(node)

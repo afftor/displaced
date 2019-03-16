@@ -10,7 +10,7 @@ var combatlog = ''
 
 var instantanimation = null
 
-var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0} 
+var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0}
 
 var CombatAnimations = preload("res://src/CombatAnimations.gd").new()
 
@@ -74,7 +74,7 @@ func start_combat(newenemygroup):
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
-	
+	input_handler.SetMusic("combattheme")
 	fightover = false
 	$Rewards.visible = false
 	allowaction = false
@@ -92,6 +92,7 @@ func start_combat(newenemygroup):
 
 func FinishCombat():
 	hide()
+	input_handler.SetMusic("towntheme")
 	globals.call_deferred('EventCheck');
 
 
@@ -154,6 +155,8 @@ func checkwinlose():
 
 func victory():
 	fightover = true
+	
+	input_handler.StopMusic()
 	#need to fastfinish all temp effects, TOMAKE
 	#on combat ends triggers
 	for p in playergroup.values():
@@ -165,22 +168,23 @@ func victory():
 	
 	input_handler.PlaySound("victory")
 	
-	var rewardsdict = {materials = {}, items = {}, xp = 0}
+	var rewardsdict = {materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null:
 			continue
 		rewardsdict.xp += i.xpreward
-		var loot = {materials = Enemydata.loottables[i.loottable].materials.duplicate()}
-		for j in loot.materials:
-			loot.materials[j] = round(rand_range(loot.materials[j][0], loot.materials[j][1])) #ERROR!!!! TO FIX comletely different data templates
-		globals.AddOrIncrementDict(rewardsdict.materials, loot.materials) #possible error due to another different data template
-	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
-	for i in rewardsdict.materials:
-		var item = Items.Materials[i]
-		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newbutton.texture = item.icon
-		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
-		globals.connecttooltip(newbutton, item.description)
+		var loot = {}
+		if Enemydata.loottables[i.loottable].has('materials'):
+			for j in Enemydata.loottables[i.loottable].materials:
+				if randf()*100 <= j.chance:
+					loot[j.code] = round(rand_range(j.min, j.max))
+			globals.AddOrIncrementDict(rewardsdict.materials, loot)
+		if Enemydata.loottables[i.loottable].has('usables'):
+			for j in Enemydata.loottables[i.loottable].usables:
+				if randf()*100 <= j.chance:
+					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
+					rewardsdict.items.append(newitem)
+	
 	globals.ClearContainer($Rewards/HBoxContainer/first)
 	globals.ClearContainer($Rewards/HBoxContainer/second)
 	for i in playergroup.values():
@@ -197,10 +201,28 @@ func victory():
 		subtween.start()
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
+	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
+	for i in rewardsdict.materials:
+		var item = Items.Materials[i]
+		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.texture = item.icon
+		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
+		globals.connectmaterialtooltip(newbutton, item)
+	for i in rewardsdict.items:
+		var newnode = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newnode.texture = load(i.icon)
+		#globals.connectitemtooltip(newnode, i)
+		newnode.connect("mouse_entered", self, 'crutchconnection', [newnode, i]) #for some unknown reason this is the only way to make tooltip work
+		if i.amount == null:
+			newnode.get_node("Label").visible = false
+		else:
+			newnode.get_node("Label").text = str(i.amount)
 	for i in battlefield:
 		if battlefield[i] != null:
 			battlefield[i] = null
 
+func crutchconnection(node, i):
+	globals.connectitemtooltip(node, i)
 
 func defeat():
 	$Rewards.visible = true
@@ -386,7 +408,7 @@ func make_fighter_panel(fighter, spot):
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
 	fighter.displaynode = panel
 	panel.name = 'Character'
-	panel.set_script(load("res://files/FigterNode.gd"))
+	panel.set_script(load("res://files/FighterNode.gd"))
 	panel.position = spot
 	fighter.position = spot
 	panel.fighter = fighter
@@ -395,6 +417,9 @@ func make_fighter_panel(fighter, spot):
 	panel.connect("signal_LMB", self, 'FighterPress')
 	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter])
 	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter])
+	if variables.CombatAllyHpAlwaysVisible && fighter.combatgroup == 'ally':
+		panel.get_node("hplabel").show()
+		panel.get_node("mplabel").show()
 	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.combat_portrait()
 	panel.update_hp()
@@ -406,13 +431,21 @@ func make_fighter_panel(fighter, spot):
 
 var fighterhighlighted = false
 
-func FighterMouseOver(fighter):
+func FighterShowStats(fighter):
 	var panel = fighter.displaynode
-	fighterhighlighted = true
 	panel.get_node("hplabel").show()
 	panel.get_node("mplabel").show()
-	panel.get_node("hplabel").text = str(fighter.hp) + '/' + str(fighter.hpmax())
-	panel.get_node("mplabel").text = str(fighter.mana) + '/' + str(fighter.manamax())
+#	if fighter.combatgroup == 'ally':
+#		panel.get_node("hplabel").text = str(fighter.hp) + '/' + str(fighter.hpmax())
+#		panel.get_node("mplabel").text = str(fighter.mana) + '/' + str(fighter.manamax())
+#	else:
+#		panel.get_node("hplabel").text = str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + '%'
+#		panel.get_node("mplabel").text = str(globals.calculatepercent(fighter.mana, fighter.manamax())) + '%'
+		
+	
+
+func FighterMouseOver(fighter):
+	FighterShowStats(fighter)
 	if allowaction == true && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
 		if fighter.combatgroup == 'enemy':
 			Input.set_custom_mouse_cursor(cursors.attack)
@@ -423,8 +456,9 @@ func FighterMouseOver(fighter):
 func FighterMouseOverFinish(fighter):
 	var panel = fighter.displaynode
 	fighterhighlighted = false
-	panel.get_node("hplabel").hide()
-	panel.get_node("mplabel").hide()
+	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
+		panel.get_node("hplabel").hide()
+		panel.get_node("mplabel").hide()
 	Input.set_custom_mouse_cursor(cursors.default)
 
 func ShowFighterStats(fighter):
@@ -694,7 +728,7 @@ func execute_skill(skill, caster, target):
 	if s_skill.hit_res == variables.RES_MISS:
 		miss(target);
 		return;
-	s_skill.calculate_dmg(); 
+	s_skill.calculate_dmg();
 	#deal damage
 	if s_skill.tags.has('heal'): target.heal(s_skill.value);
 	else: target.deal_damage(s_skill.value, s_skill.damagesrc);

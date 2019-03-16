@@ -201,22 +201,22 @@ var enemylist = {
 
 var loottables = {
 	elvenratloot = {
-		materials = [{code = 'leather', min = 1, max = 1, chance = 15}, {code = 'bone', min = 1, max = 1, chance = 10}],
-		usables = [{code = 'meatsteak', min = 1, max = 1, chance = 10}],
+		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
+		usables = [{code = 'meatsteak', min = 1, max = 1, chance = 25}],
 	},
 	treantloot = {
-		materials = [{code = 'wood', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'wood', min = 1, max = 1, chance = 25}],
 	},
 	bigtreantloot = {
-		materials = [{code = 'wood', min = 3, max = 3, chance = 100}, {code = 'elvenwood', min = 1, max = 3, chance = 30}],
+		materials = [{code = 'wood', min = 3, max = 5, chance = 100}, {code = 'elvenwood', min = 1, max = 3, chance = 30}],
 	},
 	spiderloot = {
-		materials = [{code = 'cloth', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'cloth', min = 1, max = 1, chance = 35}],
 	},
 	earthelementalloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
 	},
 	dwarfloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
 	},
 }

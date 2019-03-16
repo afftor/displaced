@@ -14,7 +14,7 @@ func _process(delta):
 
 func _init():
 	set_process(false)
-	connect("popup_hide", self, 'cooldown')
+	#connect("popup_hide", self, 'cooldown')
 
 func showup(node, item):
 	parentnode = node
