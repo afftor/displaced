@@ -696,10 +696,12 @@ func execute_skill(skill, caster, target):
 		return;
 	s_skill.calculate_dmg(); 
 	#deal damage
-	target.deal_damage(s_skill.value, s_skill.damagesrc);
+	if s_skill.tags.has('heal'): target.heal(s_skill.value);
+	else: target.deal_damage(s_skill.value, s_skill.damagesrc);
 	if target.hp <= 0:
 		target.death();
 		caster.basic_check(variables.TR_KILL);
+	checkdeaths();
 
 
 func miss(fighter):

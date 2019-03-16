@@ -561,6 +561,7 @@ func createfromname(charname):
 	mana = manamax
 	skills = classtemplate.skills
 	icon = nametemplate.icon
+	combaticon = nametemplate.combaticon
 	image = nametemplate.image
 	damage = classtemplate.damage
 	hitrate = 80
@@ -671,6 +672,7 @@ func hitchance(target):
 
 func deal_damage(value, source):
 	value *= damagemod
+	value = round(value);
 	if (shield > 0) and ((shieldtype & source) != 0):
 		shield -= value
 		if shield < 0:
@@ -682,6 +684,12 @@ func deal_damage(value, source):
 	else:
 		self.hp = hp - value
 		basic_check(variables.TR_DMG)
+	pass
+
+func heal(value):
+	value = round(value);
+	self.hp += value;
+	basic_check(variables.TR_HEAL);
 	pass
 
 func death():
