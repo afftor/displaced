@@ -931,7 +931,7 @@ _sections_unfolded = [ "custom_constants" ]
 
 [node name="Button" type="TextureRect" parent="Main/stats&skills/VBoxContainer" index="0"]
 
-editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

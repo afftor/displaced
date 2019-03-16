@@ -4,9 +4,9 @@ var S_Skill = preload("res://files/scripts/short_skill.gd");
 var skilllist = {
 	attack = {
 		code = 'attack',
-		name = tr("ATTACK"),
-		description = tr("ATTACKDESCRIPT"),
-		icon = null,
+		name = tr("SKILLATTACK"),
+		description = tr("SKILLATTACKDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/defaultattack.png"),
 		
 		damagetype = "weapon",
 		skilltype = 'skill',
@@ -34,9 +34,9 @@ var skilllist = {
 	},
 	firebolt = {
 		code = 'firebolt',
-		name = tr("FIREBOLT"),
-		description = tr("FIREBOLTDESCRIPT"),
-		icon = null,
+		name = tr("SKILLFIREBOLT"),
+		description = tr("SKILLFIREBOLTDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/firebolt.png"),
 		
 		damagetype = "fire",
 		skilltype = 'spell',
@@ -64,9 +64,9 @@ var skilllist = {
 	},
 	windarrow = {
 		code = 'windarrow',
-		name = tr("WINDARROW"),
-		description = tr("WINDARROWDESCRIPT"),
-		icon = null,
+		name = tr("SKILLWINDARROW"),
+		description = tr("SKILLWINDARROWDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/windarrow.png"),
 		
 		damagetype = "air",
 		skilltype = 'skill',
@@ -95,9 +95,9 @@ var skilllist = {
 	
 	tackle = { #not used now. intended?
 		code = 'tackle',
-		name = tr("TACKLE"),
-		description = tr("TACKLEDESCRIPT"),
-		icon = null,
+		name = tr("SKILLTACKLE"),
+		description = tr("SKILLTACKLEDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/tackle.png"),
 		
 		damagetype = "weapon",
 		skilltype = 'skill',
@@ -133,9 +133,9 @@ var skilllist = {
 	},
 	slash = {
 		code = 'slash',
-		name = tr("SLASH"),
-		description = tr("SLASHDESCRIPT"),
-		icon = null,
+		name = tr("SKILLSLASH"),
+		description = tr("SKILLSLASHDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/slash.png"),
 		
 		damagetype = "weapon",
 		skilltype = 'skill',
@@ -165,9 +165,9 @@ var skilllist = {
 	
 	minorheal = {
 		code = 'minorheal',
-		name = tr("MINORHEAL"),
-		description = tr("MINORHEALDESCRIPT"),
-		icon = null,
+		name = tr("SKILLMINORHEAL"),
+		description = tr("SKILLMINORHEALDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/lesserheal.png"),
 		
 		damagetype = "magic",
 		
@@ -196,9 +196,9 @@ var skilllist = {
 	},
 	concentrate = {
 		code = 'concentrate',
-		name = tr("CONCENTRATE"),
-		description = tr("MCONCENTRATEDESCRIPT"),
-		icon = null,
+		name = tr("SKILLCONCENTRATE"),
+		description = tr("SKILLCONCENTRATEDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/meditate.png"),
 		
 		damagetype = "magic",
 		

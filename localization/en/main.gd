@@ -86,10 +86,15 @@ var TranslationDict = {
 	
 	
 	#Material Effects
-	NATURAL = "Natural",
-	BRITTLE = "Brittle",
-	NATURALEFFECTDESCRIPT = "Repairing costs are reduced",
-	BRITTELEFFECTDESCRIPT = "Can't be repaired",
+	GOBMETALHANDLEDESCRIPT = "Deals 15% more damage when enemy's health below 30%",
+	ELFMETALHANDLEDESCRIPT = "Gain +1 Mana on skill hit",
+	GOBMETALBLADEDESCRIPT = "Deals small bonus earth damage",
+	ELFMETALBLADEDESCRIPT = "Deals +10 damage on first hit",
+	ELFWOODRODDESCRIPT = "Restores 10% mana on the end of combat",
+	GOBMETALRODDESCRIPT = "For 1 turn reduces target's speed by 10 on spell hit",
+	BONERODDESCRIPT = "Restores 3% health on spell hit",
+	BONEBOWDESCRIPT = "+1 health on hit",
+	
 	
 	#Menu
 	NEWGAME = "New Game",
@@ -196,8 +201,32 @@ var TranslationDict = {
 	LYRA = "Lyra",
 	
 	#Skills
-	ATTACK = "Attack",
-	ATTACKDESCRIPT = "Attacks target with equipped weapon. ",
+	SKILLATTACK = "Attack",
+	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon for %n damage. ",
+	SKILLFIREBOLT = "Firebolt",
+	SKILLFIREBOLTDESCRIPT = "Launches a fire spell on target. Deal %n Fire damage to all targets in same row.",
+	SKILLWINDARROW = "Wind Arrow",
+	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %n damage. Requires a bow equipped.",
+	SKILLSLASH = "Slash",
+	SKILLSLASHDESCRIPT = "Deals %n Weapon damage to all targets in nearby column. Requires a weapon equipped.",
+	SKILLMINORHEAL = "Minor Heal",
+	SKILLMINORHEALDESCRIPT = "Restore %n health of the target.",
+	SKILLCONCENTRATE = "Concentrate",
+	SKILLCONCENTRATEDESCRIPT = "Restore %n mana for self.",
+	SKILLFIRESTORM = "Fire Storm",
+	SKILLFIRESTORMDESCRIPT = "Deals %n fire damage to all enemies.",
+	SKILLSTRONGSHOT = "Strong Shot",
+	SKILLSTRONGSHOTDESCRIPT = "Deals %n Weapon damage to target enemy and stuns for 1 turn. Requires a bow equipped.",
+	SKILLARROWSHOWER = "Arrow Shower",
+	SKILLARROWSHOWERDESCRIPT = "Deals %n Weapon damage to all enemies.",
+	SKILLTACKLE = "Tackle",
+	SKILLTACKLEDESCRIPT = "Deals %n Physical damage and stuns target for 1 turn.",
+	SKILLCRIPPLE = "Cripple",
+	SKILLCRIPPLEDESCRIPT = "Deals %n Weapon damage and reduces target's damage for 3 turns.",
+	SKILLCOMBOATTACK = "Combo Attack",
+	SKILLCOMBOATTACKDESCRIPT = "Deals 3 consecutive hits for %n Weapon damage to target. ",
+	
+	
 	
 	#Upgrades
 	UPGRADEPREVBONUS = "Current bonus",

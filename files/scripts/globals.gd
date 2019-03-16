@@ -144,6 +144,7 @@ func _ready():
 	Effectdata = load("res://assets/data/Effects.gd").new()
 	TownData = load("res://files/TownData.gd").new()
 	Traitdata = load("res://assets/data/Traits.gd").new()
+	combatantdata = load("res://files/CombatantClass.gd").new()
 	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist

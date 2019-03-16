@@ -99,7 +99,7 @@ var charlist = {
 		name = tr('EMBER'),
 		icon = 'EmberFriendly',
 		combaticon = 'ember',
-		image = 'Ember',
+		image = 'emberhappy',
 		subclass = 'brawler',
 	},
 }

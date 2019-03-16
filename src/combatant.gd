@@ -728,3 +728,9 @@ func createtrait(data, type = 'starter'):
 		if i.type == type && (data.traits.has(i) == false):
 			array.append([i.code, i.weight])
 	return input_handler.weightedrandom(array)
+
+
+func skill_tooltip_text(skillcode):
+	var skill = globals.skills[skillcode]
+	var text = '[center]' + skill.name + '[/center]\n' + skill.description
+	return text

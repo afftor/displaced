@@ -98,6 +98,7 @@ func GetItemTooltip():
 		node.add_child(tooltipnode)
 	return tooltipnode
 
+
 func GetTweenNode(node):
 	var tweennode
 	if node.has_node('tween'):

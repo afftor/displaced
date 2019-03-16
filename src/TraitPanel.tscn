@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/TrautPanel.gd" type="Script" id=1]
+[ext_resource path="res://src/TraitPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/traitfield.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/traits/beastdamage.png" type="Texture" id=3]
+
 
 [node name="Panel" type="Panel" index="0"]
 
