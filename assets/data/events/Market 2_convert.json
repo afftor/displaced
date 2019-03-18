@@ -1,0 +1,14 @@
+[
+{"effect":"gui","value":"gui_inside"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 2.json_1"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 2.json_2"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 2.json_3"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 2.json_4"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 2.json_5"},
+{"effect":"text","portrait":"RoseShock","sound":null,"source":"ROSE","value":"Market 2.json_6"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 2.json_7"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Market 2.json_8"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 2.json_9"},
+{"delay":0.1,"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Market 2.json_10"},
+{"effect":"stop","value":""}
+]
