@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=9]
 
-[node name="FoodConvert" type="TextureRect"]
+[node name="FoodConvert" type="TextureRect" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -104,11 +104,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="Name" type="Label" parent="ScrollContainer/VBoxContainer/Button" index="1"]
 

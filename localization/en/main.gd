@@ -203,6 +203,7 @@ var TranslationDict = {
 	GUARD3 = 'Guard3',
 	NORBERT = 'Norbert',
 	LYRA = "Lyra",
+	FLAK = "Flak",
 	
 	#Skills
 	SKILLATTACK = "Attack",

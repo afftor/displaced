@@ -1,4 +1,4 @@
-extends PopupPanel
+extends Panel
 
 var parentnode
 var shutoff = false
@@ -45,7 +45,10 @@ func showup(node, item):
 		$Cost/Label.text = str(item.calculateprice())
 	prevnode = parentnode
 	
-	popup()
+	input_handler.GetTweenNode(self).stop_all()
+	self.modulate.a = 1
+	
+	show()
 	
 	var pos = node.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
@@ -67,4 +70,4 @@ func cooldown():
 func hide():
 	parentnode = null
 	set_process(false)
-	.hide()
+	input_handler.FadeAnimation(self, 0.2)
