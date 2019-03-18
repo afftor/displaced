@@ -42,6 +42,7 @@ var tutorialdict = {
 
 func activatetutorial(stage):
 	show()
+	blink()
 	var data = tutorialdict[stage]
 	$RichTextLabel.bbcode_text = data.text
 	currentmission = data
@@ -68,3 +69,13 @@ func completetutorialstage():
 			match i.type:
 				'nexttutor':
 					activatetutorial(i.value)
+
+func blink():
+	var tween = input_handler.GetTweenNode(self)
+	tween.start()
+	tween.interpolate_property(self, 'self_modulate', Color(1,1,1,0.5), Color(1,1,1,0.8), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,1)
+	tween.interpolate_property(self, 'self_modulate', Color(1,1,1,0.8), Color(1,1,1,0.5), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,2)
+	tween.interpolate_property(self, 'self_modulate', Color(1,1,1,0.5), Color(1,1,1,0.8), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,3)
+	tween.interpolate_property(self, 'self_modulate', Color(1,1,1,0.8), Color(1,1,1,0.5), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,4)
+	tween.interpolate_property(self, 'self_modulate', Color(1,1,1,0.5), Color(1,1,1,0.8), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,5)
+	tween.interpolate_property(self, 'self_modulate', Color(1,1,1,0.8), Color(1,1,1,0.5), 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,6)

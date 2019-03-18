@@ -39,11 +39,15 @@ func open(hero):
 		var skill = globals.skills[i]
 		var newbutton = globals.DuplicateContainerTemplate($"Main/stats&skills/VBoxContainer")
 		#newbutton.get_node("Label").text = skill.name
+		#newbutton.connect("pressed", self, "SkillTooltip", [skill])
+		globals.connecttooltip(newbutton, character.skill_tooltip_text(i))
 		newbutton.get_node("Icon").texture = skill.icon
 
 func unequip(slot):
 	if character.gear[slot] != null:
-		var gear = globals.state.items[character.gear[slot]]
+		var gear = state.items[character.gear[slot]]
 		character.unequip(gear)
 		globals.disconnecttooltip(get_node('Main/Panel/charandgear/' + slot))
 		open(character)
+
+

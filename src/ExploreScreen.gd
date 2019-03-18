@@ -13,7 +13,7 @@ var positiondict = {
 var charpanel = load("res://assets/images/gui/combat/combatpanel.png")
 
 func _ready():
-	$Forest.connect("pressed", self, "StartCombat", ['forest'])
+	$Forest.connect("pressed", self, "startexploration", ['forestexplore'])
 	$Return.connect("pressed", self, "ReturnToVillage")
 	globals.CurrentScene = self
 	for i in positiondict:
@@ -158,9 +158,9 @@ var area
 var stage
 var period
 
-func startexploration(activearea, nextstage = 0):
+func startexploration(areacode, nextstage = 0):
 	stage = nextstage
-	area = activearea
+	area = globals.explorationares[areacode]
 	period = 'fight'
 	if area.stagedenemies.has(stage):
 		StartCombat([area.stagedenemies[stage]])
@@ -170,3 +170,12 @@ func startexploration(activearea, nextstage = 0):
 func wincontinue():
 	startexploration(area, stage+1)
 
+func levelupscheck():
+	for i in state.heroes:
+		if i.recentlevelups > 0:
+			levelupwindow(i)
+			return
+
+func levelupwindow(character):
+	$LevelupTrait.levelup(character)
+	character.recentleveups -= 1

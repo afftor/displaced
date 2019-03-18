@@ -10,7 +10,7 @@ var combatlog = ''
 
 var instantanimation = null
 
-var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0} 
+var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0}
 
 var CombatAnimations = preload("res://src/CombatAnimations.gd").new()
 
@@ -74,7 +74,7 @@ func start_combat(newenemygroup):
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
-	
+	input_handler.SetMusic("combattheme")
 	fightover = false
 	$Rewards.visible = false
 	allowaction = false
@@ -92,6 +92,7 @@ func start_combat(newenemygroup):
 
 func FinishCombat():
 	hide()
+	input_handler.SetMusic("towntheme")
 	globals.call_deferred('EventCheck');
 
 
@@ -152,8 +153,12 @@ func checkwinlose():
 		victory()
 		return true
 
+var rewardsdict
+
 func victory():
 	fightover = true
+	$Rewards/CloseButton.disabled = true
+	input_handler.StopMusic()
 	#need to fastfinish all temp effects, TOMAKE
 	#on combat ends triggers
 	for p in playergroup.values():
@@ -165,24 +170,26 @@ func victory():
 	
 	input_handler.PlaySound("victory")
 	
-	var rewardsdict = {materials = {}, items = {}, xp = 0}
+	rewardsdict = {materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null:
 			continue
 		rewardsdict.xp += i.xpreward
-		var loot = {materials = Enemydata.loottables[i.loottable].materials.duplicate()}
-		for j in loot.materials:
-			loot.materials[j] = round(rand_range(loot.materials[j][0], loot.materials[j][1])) #ERROR!!!! TO FIX comletely different data templates
-		globals.AddOrIncrementDict(rewardsdict.materials, loot.materials) #possible error due to another different data template
-	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
-	for i in rewardsdict.materials:
-		var item = Items.Materials[i]
-		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newbutton.texture = item.icon
-		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
-		globals.connecttooltip(newbutton, item.description)
+		var loot = {}
+		if Enemydata.loottables[i.loottable].has('materials'):
+			for j in Enemydata.loottables[i.loottable].materials:
+				if randf()*100 <= j.chance:
+					loot[j.code] = round(rand_range(j.min, j.max))
+			globals.AddOrIncrementDict(rewardsdict.materials, loot)
+		if Enemydata.loottables[i.loottable].has('usables'):
+			for j in Enemydata.loottables[i.loottable].usables:
+				if randf()*100 <= j.chance:
+					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
+					rewardsdict.items.append(newitem)
+	
 	globals.ClearContainer($Rewards/HBoxContainer/first)
 	globals.ClearContainer($Rewards/HBoxContainer/second)
+	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in playergroup.values():
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
@@ -190,13 +197,55 @@ func victory():
 			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
-		i.baseexp += rewardsdict.xp*i.xpmod;
+		var level = i.level
+		i.baseexp += rewardsdict.xp*i.xpmod
 		var subtween = input_handler.GetTweenNode(newbutton)
-		subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-		subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))
+		if i.level > level:
+			#newbutton.get_node("xpbar").value = 100
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			#subtween.interpolate_property(newbutton, 'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 1)
+			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
+		else:
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))
 		subtween.start()
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
+	for i in rewardsdict.materials:
+		var item = Items.Materials[i]
+		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.texture = item.icon
+		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
+		state.materials[i] += rewardsdict.materials[i]
+		globals.connectmaterialtooltip(newbutton, item)
+	for i in rewardsdict.items:
+		var newnode = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newnode.hide()
+		newnode.texture = load(i.icon)
+		globals.AddItemToInventory(i)
+		globals.connectitemtooltip(newnode, state.items[globals.get_item_id_by_code(i.itembase)])
+		if i.amount == null:
+			newnode.get_node("Label").visible = false
+		else:
+			newnode.get_node("Label").text = str(i.amount)
+	
+	yield(get_tree().create_timer(1.7), 'timeout')
+	
+	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
+		if i.name == 'Button':
+			continue
+		tween = input_handler.GetTweenNode(i)
+		yield(get_tree().create_timer(1), 'timeout')
+		i.show()
+		input_handler.PlaySound("itemget")
+		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
+	
+	yield(get_tree().create_timer(1), 'timeout')
+	$Rewards/CloseButton.disabled = false
+	
 	for i in battlefield:
 		if battlefield[i] != null:
 			battlefield[i] = null
@@ -386,7 +435,7 @@ func make_fighter_panel(fighter, spot):
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
 	fighter.displaynode = panel
 	panel.name = 'Character'
-	panel.set_script(load("res://files/FigterNode.gd"))
+	panel.set_script(load("res://files/FighterNode.gd"))
 	panel.position = spot
 	fighter.position = spot
 	panel.fighter = fighter
@@ -395,6 +444,9 @@ func make_fighter_panel(fighter, spot):
 	panel.connect("signal_LMB", self, 'FighterPress')
 	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter])
 	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter])
+	if variables.CombatAllyHpAlwaysVisible && fighter.combatgroup == 'ally':
+		panel.get_node("hplabel").show()
+		panel.get_node("mplabel").show()
 	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.combat_portrait()
 	panel.update_hp()
@@ -406,13 +458,13 @@ func make_fighter_panel(fighter, spot):
 
 var fighterhighlighted = false
 
-func FighterMouseOver(fighter):
+func FighterShowStats(fighter):
 	var panel = fighter.displaynode
-	fighterhighlighted = true
 	panel.get_node("hplabel").show()
 	panel.get_node("mplabel").show()
-	panel.get_node("hplabel").text = str(fighter.hp) + '/' + str(fighter.hpmax())
-	panel.get_node("mplabel").text = str(fighter.mana) + '/' + str(fighter.manamax())
+
+func FighterMouseOver(fighter):
+	FighterShowStats(fighter)
 	if allowaction == true && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
 		if fighter.combatgroup == 'enemy':
 			Input.set_custom_mouse_cursor(cursors.attack)
@@ -423,8 +475,9 @@ func FighterMouseOver(fighter):
 func FighterMouseOverFinish(fighter):
 	var panel = fighter.displaynode
 	fighterhighlighted = false
-	panel.get_node("hplabel").hide()
-	panel.get_node("mplabel").hide()
+	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
+		panel.get_node("hplabel").hide()
+		panel.get_node("mplabel").hide()
 	Input.set_custom_mouse_cursor(cursors.default)
 
 func ShowFighterStats(fighter):
@@ -458,7 +511,7 @@ func buildenemygroup(enemygroup):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		enemygroup[i] = combatantdata.combatant.new()
+		enemygroup[i] = globals.combatant.new()
 		enemygroup[i].createfromenemy(tempname)
 	
 	for i in enemygroup:
@@ -694,12 +747,14 @@ func execute_skill(skill, caster, target):
 	if s_skill.hit_res == variables.RES_MISS:
 		miss(target);
 		return;
-	s_skill.calculate_dmg(); 
+	s_skill.calculate_dmg();
 	#deal damage
-	target.deal_damage(s_skill.value, s_skill.damagesrc);
+	if s_skill.tags.has('heal'): target.heal(s_skill.value);
+	else: target.deal_damage(s_skill.value, s_skill.damagesrc);
 	if target.hp <= 0:
 		target.death();
 		caster.basic_check(variables.TR_KILL);
+	checkdeaths();
 
 
 func miss(fighter):

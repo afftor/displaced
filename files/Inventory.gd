@@ -76,7 +76,7 @@ func useitem(item, type):
 			return
 		selectedhero.equip(item)
 		get_parent().get_node("HeroList/HeroPanel").open(selectedhero)
-		item.hidetooltip()
+		input_handler.GetItemTooltip().hide()
 		buildinventory()
 	elif mode == 'shop':
 		sellwindow(item, type)

@@ -31,7 +31,7 @@ var TranslationDict = {
 	METARIALELVENMETALDESCRIPT = "Soft, but strong alloy storing some magic properties. ",
 	ELVENMETALADJ = "Elven",
 	MATERIALLETHER = "Leather",
-	MATERIALLETHERDESCRIPT = "A common animal leather. Can be used for a light armor.",
+	MATERIALLEATHERDESCRIPT = "A common animal leather. Can be used for a light armor.",
 	LEATHERADJ = "Leather",
 	MATERIALBONE = "Bone",
 	MATERIALBONEDESCRIPT = "A common animal bone. With right approach can provide some interesting properties. ",
@@ -54,6 +54,9 @@ var TranslationDict = {
 	
 	ARMORBASICCHEST = "Chestplate",
 	
+	USABLEMORSEL = "Morsel",
+	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted to Food.",
+	
 	#Stats
 	DAMAGE = 'Damage',
 	ARMOR = 'Armor',
@@ -70,7 +73,8 @@ var TranslationDict = {
 	RESISTWATER = "Water Res.",
 	HEALTHPERCENT = "Max. Health",
 	MANAPERCENT = "Max. Mana",
-	
+	LEVELUP = "Level up",
+	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	
 	
 	#Item Parts
@@ -86,10 +90,15 @@ var TranslationDict = {
 	
 	
 	#Material Effects
-	NATURAL = "Natural",
-	BRITTLE = "Brittle",
-	NATURALEFFECTDESCRIPT = "Repairing costs are reduced",
-	BRITTELEFFECTDESCRIPT = "Can't be repaired",
+	GOBMETALHANDLEDESCRIPT = "Deals 15% more damage when enemy's health below 30%",
+	ELFMETALHANDLEDESCRIPT = "Gain +1 Mana on skill hit",
+	GOBMETALBLADEDESCRIPT = "Deals small bonus earth damage",
+	ELFMETALBLADEDESCRIPT = "Deals +10 damage on first hit",
+	ELFWOODRODDESCRIPT = "Restores 10% mana on the end of combat",
+	GOBMETALRODDESCRIPT = "For 1 turn reduces target's speed by 10 on spell hit",
+	BONERODDESCRIPT = "Restores 3% health on spell hit",
+	BONEBOWDESCRIPT = "+1 health on hit",
+	
 	
 	#Menu
 	NEWGAME = "New Game",
@@ -194,10 +203,35 @@ var TranslationDict = {
 	GUARD3 = 'Guard3',
 	NORBERT = 'Norbert',
 	LYRA = "Lyra",
+	FLAK = "Flak",
 	
 	#Skills
-	ATTACK = "Attack",
-	ATTACKDESCRIPT = "Attacks target with equipped weapon. ",
+	SKILLATTACK = "Attack",
+	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon for %n damage. ",
+	SKILLFIREBOLT = "Firebolt",
+	SKILLFIREBOLTDESCRIPT = "Launches a fire spell on target. Deal %n Fire damage to all targets in same row.",
+	SKILLWINDARROW = "Wind Arrow",
+	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %n damage. Requires a bow equipped.",
+	SKILLSLASH = "Slash",
+	SKILLSLASHDESCRIPT = "Deals %n Weapon damage to all targets in nearby column. Requires a weapon equipped.",
+	SKILLMINORHEAL = "Minor Heal",
+	SKILLMINORHEALDESCRIPT = "Restore %n health of the target.",
+	SKILLCONCENTRATE = "Concentrate",
+	SKILLCONCENTRATEDESCRIPT = "Restore %n mana for self.",
+	SKILLFIRESTORM = "Fire Storm",
+	SKILLFIRESTORMDESCRIPT = "Deals %n fire damage to all enemies.",
+	SKILLSTRONGSHOT = "Strong Shot",
+	SKILLSTRONGSHOTDESCRIPT = "Deals %n Weapon damage to target enemy and stuns for 1 turn. Requires a bow equipped.",
+	SKILLARROWSHOWER = "Arrow Shower",
+	SKILLARROWSHOWERDESCRIPT = "Deals %n Weapon damage to all enemies.",
+	SKILLTACKLE = "Tackle",
+	SKILLTACKLEDESCRIPT = "Deals %n Physical damage and stuns target for 1 turn.",
+	SKILLCRIPPLE = "Cripple",
+	SKILLCRIPPLEDESCRIPT = "Deals %n Weapon damage and reduces target's damage for 3 turns.",
+	SKILLCOMBOATTACK = "Combo Attack",
+	SKILLCOMBOATTACKDESCRIPT = "Deals 3 consecutive hits for %n Weapon damage to target. ",
+	
+	
 	
 	#Upgrades
 	UPGRADEPREVBONUS = "Current bonus",
@@ -222,4 +256,32 @@ var TranslationDict = {
 	LUMBERMILLUPGRADE = "Lumber mill",
 	UPGRADELUMBERMILLDESCRIPT = "Improves the quality of Lumber Mill building.",
 	UPGRADELUMBERMILLBONUS = "Increases the number of workers allowed in same time to 4. ",
+	
+	#traitdescriptions
+	TRAITBEASTBONUSDAMAGE = "Deals 20% more damage to animals",
+	TRAITBEASTBONUSRESIST = "Takes 20% less damage from animals",
+	TRAITBEASTBONUSEXP = "Receive 15% more Experience after combat",
+	TRAITBONUSHIT = "+10 Hit Rate",
+	TRAITBONUSEVASION = "+10 Evasion",
+	TRAITBONUSEVASIONPLUS = "+15 Evasion",
+	TRAITBONUSCRIT = "+10% Critical Strike Chance",
+	TRAITBONUSRESIST = "+10 To all elemental resists",
+	TRAITBONUSARMOR = "+5 Armor",
+	TRAITBONUSSPEED = "+10 Speed",
+	TRAITBONUSHPMAX = "+25 Maximum Health",
+	TRAITBONUSREGEN = "Regenerates 5% Health in the end of each turn",
+	TRAITDODGEDEBUFF = "On hit: Reduces Enemy's evasion by 10 for 2 turns",
+	TRAITGROUPARMOR = "+10 Armor to all characters in same row",
+	TRAITDOUBLEHEAL = "When heals an ally, Caster also heals for 50% of effect",
+	TRAITSPEEDONDAMAGE = "+20 Speed for 2 turns after taking damage",
+	TRAITSPELLCRITBONUS = "Restores Spell's mana cost on Spell critical",
+	TRAITSPEEDDEBUFF = "Reduces Speed and Evasion by 10 when hitting an enemy (stacks up to 2 times)",
+	TRAITBOWEXTRADAMAGE = "After dealing a finishing blow, your next attack deals 100% more damage",
+	TRAITCRITARMORIGNORE = "Critical strikes ignore target's Armor",
+	TRAITDODGEGROUP = "+10 Speed to all characters on the same column",
+	TRAITRESISTDEBUFF = "On hit reduces all target resists for 15 for 1 turn",
+	TRAITFIREDAMAGEBONUS = "20% Extra Fire damage to skills",
+	
+	TAKEGOLDBUTTON = "Take Gold Instead",
+	TAKEGOLDBUTTONTOOLTIP = "Refuse all traits and receive 100 gold"
 }

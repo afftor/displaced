@@ -1,0 +1,13 @@
+[
+{"effect":"music","value":"eventlight"},
+{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
+{"effect":"gui","value":"gui_inside"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 3.json_1"},
+{"effect":"text","portrait":"ErikaHappy","sound":null,"source":"ERIKA","value":"Market 3.json_2"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 3.json_3"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 3.json_4"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 3.json_5"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Market 3.json_6"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Market 3.json_7"},
+{"effect":"stop","value":""}
+]

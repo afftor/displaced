@@ -38,11 +38,29 @@ var checks = {
 	[
 		{type = "has_upgrade", name = "bridge", value = 1}
 	],
+	"Market 3":
+	[
+		{},
+		{type = "event_finished", name = "Forest 2"}
+	],
 	"Forest 1":[{}], #пока нет условия на эксплор
 	"Forest 2":[{}], #аналогично
 	"rose 1":[
 		{type = "event_finished", name = "ember 3", delay = 3},
 		{type = "event_finished", name = "erika 1", delay = 1} # в ТЗ нет, но по смыслу должно быть
+	],
+	"demitrius 1":[
+		{}
+	],
+	"demitrius 2":[
+		{}
+	],
+	"demitrius 3":[
+		{}
+	],
+	"Outro":
+	[
+		{type = "event_finished", name = "demitrius 3"}
 	],
 };
 

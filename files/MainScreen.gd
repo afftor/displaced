@@ -26,15 +26,16 @@ func _ready():
 #		x -= 1
 #		state.heroes[y.id] = y
 	
-	var character = combatantdata.combatant.new()
+	var character = globals.combatant.new()
 	character.createfromname('Arron')
+	character.baseexp = 90
 	state.heroes[character.id] = character
 	
-	character = combatantdata.combatant.new()
+	character = globals.combatant.new()
 	character.createfromname('Rose')
 	state.heroes[character.id] = character
 	
-	character = combatantdata.combatant.new()
+	character = globals.combatant.new()
 	character.createfromname('Ember')
 	state.heroes[character.id] = character
 	
@@ -62,6 +63,7 @@ func _ready():
 	
 	if debug == true:
 		state.OldEvents['Market'] = 0
+		
 		var worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
 		worker = globals.worker.new()
@@ -74,7 +76,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
-		globals.AddItemToInventory(globals.CreateUsableItem('meatsteak', 2))
+		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
 		#state.items[1].durability = floor(rand_range(1,5))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
@@ -84,7 +86,7 @@ func _ready():
 	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
 	changespeed($"TimeNode/0speed", false)
-	buildscreen()
+	#buildscreen()
 
 func buildscreen():
 	$Gate.visible = state.townupgrades.has('bridge')
@@ -98,7 +100,7 @@ func _process(delta):
 	$TimeNode/HidePanel.visible = gamepaused
 	settime()
 	
-	buildscreen()
+	#buildscreen()
 	
 	if gamepaused == false:
 		for i in get_tree().get_nodes_in_group("pauseprocess"):

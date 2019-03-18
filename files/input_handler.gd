@@ -98,6 +98,7 @@ func GetItemTooltip():
 		node.add_child(tooltipnode)
 	return tooltipnode
 
+
 func GetTweenNode(node):
 	var tweennode
 	if node.has_node('tween'):
@@ -147,17 +148,48 @@ func TargetEnemyTurn(node):
 
 var floatfont = preload("res://FloatFont.tres")
 
-func FloatText(node, text, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
+
+func FloatText(node, text, type = '', color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
 	var textnode = Label.new()
 	node.add_child(textnode)
 	textnode.text = text
 	textnode.rect_position = positionoffset
 	textnode.set("custom_colors/font_color", color)
-	floatfont.size = 30
+	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
+	floatfont.size = 50
 	textnode.set("custom_fonts/font", floatfont)
-	FadeAnimation(textnode, fadetime, time)
+	match type:
+		'damageenemy':
+			DamageTextFly(textnode, false)
+		'damageally':
+			DamageTextFly(textnode, true)
+		'miss':
+			FadeAnimation(textnode, fadetime, time)
+		"heal":
+			HealTextFly(textnode)
+	#FadeAnimation(textnode, fadetime, time)
 	yield(get_tree().create_timer(time+1), 'timeout')
 	textnode.queue_free()
+
+func DamageTextFly(node, reverse = false):
+	var tween = GetTweenNode(node)
+	var firstvector = Vector2(100, -100)
+	var secondvector = Vector2(200, 200)
+	if reverse == true:
+		firstvector = Vector2(-100, -100)
+		secondvector = Vector2(-200, 200)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(node, 'rect_position', node.rect_position+firstvector, node.rect_position+secondvector, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
+	FadeAnimation(node, 0.2 , 0.7)
+	tween.start()
+
+func HealTextFly(node):
+	var tween = GetTweenNode(node)
+	var firstvector = Vector2(0, -150)
+	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,0.5)
+	FadeAnimation(node, 0.2, 1)
+	tween.start()
 
 func StopTweenRepeat(node):
 	var tween = GetRepeatTweenNode(node)

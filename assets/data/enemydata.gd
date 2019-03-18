@@ -41,6 +41,8 @@ var enemylist = {
 		resists = {},
 		xpreward = 10,
 		
+		bodyhitsound = 'flesh',
+		
 		combaticon = 'rat',
 		bodyimage = null,
 		aiposition = 'melee',
@@ -64,6 +66,8 @@ var enemylist = {
 		speed = 30,
 		resists = {},
 		xpreward = 10,
+		
+		bodyhitsound = 'wood',
 		
 		combaticon = 'ent',
 		bodyimage = null,
@@ -89,6 +93,8 @@ var enemylist = {
 		resists = {},
 		xpreward = 50,
 		
+		bodyhitsound = 'wood',
+		
 		combaticon = null,
 		bodyimage = null,
 		aiposition = 'ranged',
@@ -112,6 +118,8 @@ var enemylist = {
 		speed = 40,
 		resists = {earth = 50, air = 50},
 		xpreward = 30,
+		
+		bodyhitsound = 'stone',
 		
 		combaticon = null,
 		bodyimage = null,
@@ -137,6 +145,8 @@ var enemylist = {
 		resists = {},
 		xpreward = 20,
 		
+		bodyhitsound = 'flesh',
+		
 		combaticon = null,
 		bodyimage = null,
 		aiposition = 'melee',
@@ -160,6 +170,8 @@ var enemylist = {
 		speed = 60,
 		resists = {},
 		xpreward = 20,
+		
+		bodyhitsound = 'flesh',
 		
 		combaticon = null,
 		bodyimage = null,
@@ -201,22 +213,22 @@ var enemylist = {
 
 var loottables = {
 	elvenratloot = {
-		materials = [{code = 'leather', min = 1, max = 1, chance = 15}, {code = 'bone', min = 1, max = 1, chance = 10}],
-		usables = [{code = 'meatsteak', min = 1, max = 1, chance = 10}],
+		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
+		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
 	},
 	treantloot = {
-		materials = [{code = 'wood', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'wood', min = 1, max = 1, chance = 25}],
 	},
 	bigtreantloot = {
-		materials = [{code = 'wood', min = 3, max = 3, chance = 100}, {code = 'elvenwood', min = 1, max = 3, chance = 30}],
+		materials = [{code = 'wood', min = 3, max = 5, chance = 100}, {code = 'elvenwood', min = 1, max = 3, chance = 30}],
 	},
 	spiderloot = {
-		materials = [{code = 'cloth', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'cloth', min = 1, max = 1, chance = 35}],
 	},
 	earthelementalloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
 	},
 	dwarfloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
 	},
 }
