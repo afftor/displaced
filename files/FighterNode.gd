@@ -37,12 +37,19 @@ func update_hp():
 	var node = get_node("HP")
 	if hp != null && hp != fighter.hp:
 		var difference = fighter.hp - hp
+		var type
 		var color
 		if difference < 0:
 			color = Color(1,0.2,0.2)
+			if fighter.combatgroup == 'ally':
+				type = 'damageally'
+			else:
+				type = 'damageenemy' 
 		else:
+			type = 'heal'
 			color = Color(0.2,1,0.2)
-		input_handler.FloatText(self, str(difference), color, 2, 0.2, get_node('Icon').rect_size/2-Vector2(20,20))
+		
+		input_handler.FloatText(self, str(difference), type, color, 2, 0.2, get_node('Icon').rect_size/2)
 	hp = fighter.hp
 	
 	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.hp, fighter.hpmax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

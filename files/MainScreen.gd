@@ -28,6 +28,7 @@ func _ready():
 	
 	var character = globals.combatant.new()
 	character.createfromname('Arron')
+	character.baseexp = 90
 	state.heroes[character.id] = character
 	
 	character = globals.combatant.new()
@@ -75,7 +76,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
-		globals.AddItemToInventory(globals.CreateUsableItem('meatsteak', 2))
+		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
 		#state.items[1].durability = floor(rand_range(1,5))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))

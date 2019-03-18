@@ -338,7 +338,7 @@ var Items = {
 	
 	
 	#usables
-	meatsteak = {name = tr("MEATSTEAK"), code = 'meatsteak', description = tr("USABLEMEATSTEAKDESCRIPT"),
+	morsel = {name = tr("USABLEMORSEL"), code = 'morsel', description = tr("USABLEMORSELDESCRIPT"),
 	icon = load("res://assets/images/iconsitems/Morsel.png"),
 	itemtype = 'usable',
 	unlockreq = true,

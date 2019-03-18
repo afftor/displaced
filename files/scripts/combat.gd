@@ -153,9 +153,11 @@ func checkwinlose():
 		victory()
 		return true
 
+var rewardsdict
+
 func victory():
 	fightover = true
-	
+	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
 	#need to fastfinish all temp effects, TOMAKE
 	#on combat ends triggers
@@ -168,7 +170,7 @@ func victory():
 	
 	input_handler.PlaySound("victory")
 	
-	var rewardsdict = {materials = {}, items = [], xp = 0}
+	rewardsdict = {materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null:
 			continue
@@ -187,6 +189,7 @@ func victory():
 	
 	globals.ClearContainer($Rewards/HBoxContainer/first)
 	globals.ClearContainer($Rewards/HBoxContainer/second)
+	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in playergroup.values():
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
@@ -194,35 +197,59 @@ func victory():
 			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
-		i.baseexp += rewardsdict.xp*i.xpmod;
+		var level = i.level
+		i.baseexp += rewardsdict.xp*i.xpmod
 		var subtween = input_handler.GetTweenNode(newbutton)
-		subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-		subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))
+		if i.level > level:
+			#newbutton.get_node("xpbar").value = 100
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			#subtween.interpolate_property(newbutton, 'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 1)
+			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
+		else:
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))
 		subtween.start()
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
-	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in rewardsdict.materials:
 		var item = Items.Materials[i]
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
 		newbutton.texture = item.icon
 		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
+		state.materials[i] += rewardsdict.materials[i]
 		globals.connectmaterialtooltip(newbutton, item)
 	for i in rewardsdict.items:
 		var newnode = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newnode.hide()
 		newnode.texture = load(i.icon)
-		#globals.connectitemtooltip(newnode, i)
-		newnode.connect("mouse_entered", self, 'crutchconnection', [newnode, i]) #for some unknown reason this is the only way to make tooltip work
+		globals.AddItemToInventory(i)
+		globals.connectitemtooltip(newnode, state.items[globals.get_item_id_by_code(i.itembase)])
 		if i.amount == null:
 			newnode.get_node("Label").visible = false
 		else:
 			newnode.get_node("Label").text = str(i.amount)
+	
+	yield(get_tree().create_timer(1.7), 'timeout')
+	
+	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
+		if i.name == 'Button':
+			continue
+		tween = input_handler.GetTweenNode(i)
+		yield(get_tree().create_timer(1), 'timeout')
+		i.show()
+		input_handler.PlaySound("itemget")
+		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
+	
+	yield(get_tree().create_timer(1), 'timeout')
+	$Rewards/CloseButton.disabled = false
+	
 	for i in battlefield:
 		if battlefield[i] != null:
 			battlefield[i] = null
 
-func crutchconnection(node, i):
-	globals.connectitemtooltip(node, i)
 
 func defeat():
 	$Rewards.visible = true
@@ -435,14 +462,6 @@ func FighterShowStats(fighter):
 	var panel = fighter.displaynode
 	panel.get_node("hplabel").show()
 	panel.get_node("mplabel").show()
-#	if fighter.combatgroup == 'ally':
-#		panel.get_node("hplabel").text = str(fighter.hp) + '/' + str(fighter.hpmax())
-#		panel.get_node("mplabel").text = str(fighter.mana) + '/' + str(fighter.manamax())
-#	else:
-#		panel.get_node("hplabel").text = str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + '%'
-#		panel.get_node("mplabel").text = str(globals.calculatepercent(fighter.mana, fighter.manamax())) + '%'
-		
-	
 
 func FighterMouseOver(fighter):
 	FighterShowStats(fighter)

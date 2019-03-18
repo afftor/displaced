@@ -24,7 +24,7 @@ var skilllist = {
 		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -54,7 +54,7 @@ var skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -84,7 +84,7 @@ var skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -122,7 +122,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -153,7 +153,7 @@ var skilllist = {
 		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -186,7 +186,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -217,7 +217,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -250,7 +250,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sound = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
