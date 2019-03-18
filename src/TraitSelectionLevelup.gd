@@ -10,6 +10,7 @@ func _ready():
 
 func levelup(character):
 	globals.ClearContainer($HBoxContainer)
+	$Label.text =  tr(character.nametemplate) + tr("LEVEUPTEXT")
 	var array = character.get_lvup_traits()
 	for i in array:
 		var newtrait = Traitdata.traitlist[i]
@@ -21,7 +22,9 @@ func levelup(character):
 func selecttrait(trait):
 	character.add_trait(trait)
 	hide()
+	get_parent().levelupscheck()
 
 func goldbuttonpress():
 	state.money += 100
 	hide()
+	get_parent().levelupscheck()

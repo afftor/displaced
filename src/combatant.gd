@@ -9,6 +9,7 @@ var icon
 var combaticon
 
 var level = 1
+var recentlevelups = 0
 var baseexp = 0 setget exp_set
 
 var xpreward #for enemies
@@ -47,6 +48,8 @@ var traitpoints = 0
 
 var inactiveskills = []
 var cooldowns = []
+
+var bodyhitsound = 'flesh' #for sound effect calculations
 
 var buffs = [] #for display purpose ONLY, list of names 
 #var passives = {skillhit = [], spellhit = [], anyhit = [], endturn = []} # combat passives
@@ -138,6 +141,7 @@ func armor_get():
 
 func levelup():
 	level += 1
+	recentlevelups += 1
 	#add trait obtaining and other trait related stuff
 
 func can_acq_trait(trait_code):
@@ -518,7 +522,7 @@ func createfromenemy(enemy):
 	skills = template.skills
 	for i in template.resists:
 		self['resist' + i] = template.resists[i]
-	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward']:
+	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward', 'bodyhitsound']:
 		self[i] = template[i]
 	if template.keys().has('traits'):
 		for t in template.traits:

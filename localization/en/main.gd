@@ -31,7 +31,7 @@ var TranslationDict = {
 	METARIALELVENMETALDESCRIPT = "Soft, but strong alloy storing some magic properties. ",
 	ELVENMETALADJ = "Elven",
 	MATERIALLETHER = "Leather",
-	MATERIALLETHERDESCRIPT = "A common animal leather. Can be used for a light armor.",
+	MATERIALLEATHERDESCRIPT = "A common animal leather. Can be used for a light armor.",
 	LEATHERADJ = "Leather",
 	MATERIALBONE = "Bone",
 	MATERIALBONEDESCRIPT = "A common animal bone. With right approach can provide some interesting properties. ",
@@ -54,6 +54,9 @@ var TranslationDict = {
 	
 	ARMORBASICCHEST = "Chestplate",
 	
+	USABLEMORSEL = "Morsel",
+	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted to Food.",
+	
 	#Stats
 	DAMAGE = 'Damage',
 	ARMOR = 'Armor',
@@ -70,7 +73,8 @@ var TranslationDict = {
 	RESISTWATER = "Water Res.",
 	HEALTHPERCENT = "Max. Health",
 	MANAPERCENT = "Max. Mana",
-	
+	LEVELUP = "Level up",
+	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	
 	
 	#Item Parts
@@ -199,6 +203,7 @@ var TranslationDict = {
 	GUARD3 = 'Guard3',
 	NORBERT = 'Norbert',
 	LYRA = "Lyra",
+	FLAK = "Flak",
 	
 	#Skills
 	SKILLATTACK = "Attack",

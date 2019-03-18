@@ -31,7 +31,7 @@ func casterattack(node):
 	tween.start()
 	
 	
-	tween.interpolate_callback(input_handler, 0,'PlaySound',"slash")
+	#tween.interpolate_callback(input_handler, 0,'PlaySound',"slash")
 	
 	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	
@@ -66,7 +66,8 @@ func miss(node):
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.8
-	input_handler.FloatText(node, tr("MISS"), Color(1,1,1), 2, 0.2, node.get_node('Icon').rect_size/2-Vector2(20,20))
+	input_handler.PlaySound("combatmiss")
+	input_handler.FloatText(node, tr("MISS"), 'miss', Color(1,1,1), 2, 0.2, node.get_node('Icon').rect_size/2-Vector2(20,20))
 	tween.interpolate_property(node, 'modulate', Color(1,1,1), Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
 	tween.start()

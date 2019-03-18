@@ -170,3 +170,12 @@ func startexploration(areacode, nextstage = 0):
 func wincontinue():
 	startexploration(area, stage+1)
 
+func levelupscheck():
+	for i in state.heroes:
+		if i.recentlevelups > 0:
+			levelupwindow(i)
+			return
+
+func levelupwindow(character):
+	$LevelupTrait.levelup(character)
+	character.recentleveups -= 1

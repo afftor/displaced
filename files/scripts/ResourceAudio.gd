@@ -24,13 +24,15 @@ var sounds = {
 	punch = load("res://assets/sounds/sounds/punch.wav"),
 	
 	
-	slash = load("res://assets/sounds/sounds/slash.wav"),
+	slash = load("res://assets/sounds/sounds/fx knife hit solo.wav"),
+	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
+	heal = load("res://assets/sounds/sounds/healeffect.wav"),
 	itemget = load("res://assets/sounds/sounds/itemget.wav"),
 	itemcreate = load("res://assets/sounds/sounds/itemcraft.wav"),
 	
 	#combat
 	victory = load("res://assets/sounds/sounds/victory.wav"),
-	dodge = load('res://assets/sounds/sounds/dodge.wav'),
+	combatmiss = load('res://assets/sounds/sounds/dodge.wav'),
 	
 	
 	
