@@ -813,7 +813,8 @@ func RebuildSkillPanel():
 		if activecharacter.mana < skill.manacost:
 			newbutton.disabled = true
 		newbutton.set_meta('skill', skill.code)
-		globals.connecttooltip(newbutton, skill.description)
+		#globals.connecttooltip(newbutton, skill.description)
+		globals.connecttooltip(newbutton, activecharacter.skill_tooltip_text(i))
 
 func SelectSkill(skill):
 	skill = globals.skills[skill]

@@ -733,8 +733,29 @@ func createtrait(data, type = 'starter'):
 			array.append([i.code, i.weight])
 	return input_handler.weightedrandom(array)
 
+func calculate_number_from_string_array(array):
+	var endvalue = 0
+	var firstrun = true
+	for i in array:
+		var modvalue = i
+		if i.find('.') >= 0:
+			i = i.split('.')
+			if i[0] == 'caster':
+				modvalue = str(self[i[1]])
+			elif i[0] == 'target':
+				return ""; #nonexistent yet case of skill value being based completely on target
+		if !modvalue[0].is_valid_float():
+			if modvalue[0] == '-' && firstrun == true:
+				endvalue += float(modvalue)
+			else:
+				input_handler.string_to_math(endvalue, modvalue)
+		else:
+			endvalue += float(modvalue)
+		firstrun = false
+	return endvalue
+
 
 func skill_tooltip_text(skillcode):
 	var skill = globals.skills[skillcode]
-	var text = '[center]' + skill.name + '[/center]\n' + skill.description
+	var text = '[center]' + skill.name + '[/center]\n' + (skill.description % calculate_number_from_string_array(skill.value))
 	return text
