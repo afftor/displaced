@@ -2,6 +2,7 @@ extends Reference
 
 var id
 var name
+var namebase
 var base
 var race
 
@@ -37,6 +38,8 @@ var resistair = 0
 var shield = 0
 var shieldtype = variables.S_FULL
 
+var flavor
+
 var image
 var portrait
 var combatportrait
@@ -44,7 +47,7 @@ var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null
 
 var skills = ['attack']
 var traits = {} #{'trait':'state'}
-var traitpoints = 0
+var traitpoints = 5
 
 var inactiveskills = []
 var cooldowns = []
@@ -151,11 +154,17 @@ func can_acq_trait(trait_code):
 	return false
 
 func can_activate_trait(trait_code):
-	if !traits.keys().has(trait_code): return false
-	if traits[trait_code] == true: return false
+	if !traits.keys().has(trait_code):
+		print("no trait")
+		return false
+	if traits[trait_code] == true:
+		print('already active')
+		return false
 	var tmp = Traitdata.traitlist[trait_code]
-	if traitpoints >= tmp.cost: return true
-	return false
+	if traitpoints >= tmp.cost:
+		return true
+	else:
+		return false
 
 func get_aval_traits():
 	var res = []
@@ -269,7 +278,7 @@ func find_temp_effect(eff_code):
 
 
 func apply_temp_effect(eff_code, duration = 1, stack = 1):
-	var pos = find_min_temp_effect(eff_code)
+	var pos = find_temp_effect(eff_code)
 	if pos.num < stack:
 		temp_effects.push_back({effect = eff_code, time = duration})
 		apply_effect(eff_code)
@@ -442,8 +451,8 @@ func basic_check(trigger):
 			pass
 		if !res: return
 		#apply effect
-		for ee in tmp.effects:
-			apply_atomic(Effectdata.atomic[ee])
+		for ee in tmp.effects: 
+			apply_atomic(ee)
 		pass
 	#clear_oneshot()
 	pass
@@ -479,8 +488,12 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 		if !res: return
 		#apply effect
 		
+		
 		for ee in tmp.effects:
-			var eee = Effectdata.atomic[ee].duplicate()
+			var eee
+			if typeof(ee) == TYPE_STRING: eee = Effectdata.atomic[ee].duplicate()
+			else: 
+				eee = ee.duplicate()
 			var rec
 			#convert effect to constant form
 			if eee.type == 'skill':
@@ -495,8 +508,6 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 				'skill':
 					rec = skill
 			rec.apply_atomic(eee)
-		pass
-	pass
 
 
 
@@ -522,7 +533,7 @@ func createfromenemy(enemy):
 	skills = template.skills
 	for i in template.resists:
 		self['resist' + i] = template.resists[i]
-	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward', 'bodyhitsound']:
+	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward', 'bodyhitsound', 'flavor']:
 		self[i] = template[i]
 	if template.keys().has('traits'):
 		for t in template.traits:
@@ -569,7 +580,9 @@ func createfromname(charname):
 	image = nametemplate.image
 	damage = classtemplate.damage
 	hitrate = 80
-	name = nametemplate.name
+	name = tr(nametemplate.name)
+	namebase = nametemplate.name
+	flavor = nametemplate.flavor
 
 
 func checkequipmenteffects():
@@ -700,10 +713,13 @@ func death():
 	#remove own area effects
 	for e in own_area_effects:
 		remove_area_effect(e)
-		pass
 	#trigger death triggers
 	basic_check(variables.TR_DEATH)
-	pass
+	defeated = true
+	hp = 0
+	if displaynode != null:
+		displaynode.defeat()
+	
 
 func can_act():
 	var res = true
@@ -721,6 +737,10 @@ func portrait():
 func combat_portrait():
 	if combaticon != null:
 		return images.combatportraits[combaticon]
+
+func combat_full_portrait():
+	if combaticon != null:
+		return images.combatfullpictures[combaticon]
 
 func portrait_circle():
 	if combaticon != null:

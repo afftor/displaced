@@ -42,7 +42,8 @@ var mainprogress = 0
 var decisions = []
 var activequests = []
 var completedquests = []
-
+var areaprogress = {}
+var currentarea
 
 func _init():
 	oldmaterials = materials.duplicate()

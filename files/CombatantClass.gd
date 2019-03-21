@@ -72,35 +72,39 @@ var classlist = {
 var charlist = {
 	Arron = {
 		code = 'Arron',
-		name = tr('ARRON'),
+		name = 'ARRON',
 		icon = 'ArronSmile',
 		combaticon = 'arron',
 		image = 'Arron',
 		subclass = 'warrior',
+		flavor = 'The honorable me',
 	},
 	Rose = {
 		code = 'Rose',
-		name = tr('ROSE'),
+		name = 'ROSE',
 		icon = 'RoseNormal',
 		combaticon = 'rose',
 		image = 'Rose',
 		subclass = 'mage',
+		flavor = 'My loyal pet',
 	},
 	Erika = {
 		code = 'Erika',
-		name = tr('ERIKA'),
+		name = 'ERIKA',
 		icon = 'ErikaNormal',
 		combaticon = 'erika',
 		image = 'Erika',
 		subclass = 'archer',
+		flavor = 'An elven gal',
 	},
 	Ember = {
 		code = 'Ember',
-		name = tr('EMBER'),
+		name = 'EMBER',
 		icon = 'EmberFriendly',
 		combaticon = 'ember',
 		image = 'emberhappy',
 		subclass = 'brawler',
+		flavor = '',
 	},
 }
 

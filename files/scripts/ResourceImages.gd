@@ -83,7 +83,26 @@ var combatportraits = {
 	##enemies
 	rat = load("res://assets/images/enemies/RatIcon2.png"),
 	ent = load("res://assets/images/enemies/EntIcon.png"),
+	bigent = load("res://assets/images/enemies/BigEntIcon.png"),
+	golem = load("res://assets/images/enemies/GolemIcon.png"),
+	spider = load("res://assets/images/enemies/SpiderIcon.png"),
+	dwarf = load("res://assets/images/enemies/AngryDwarfIcon.png"),
+	fairies = load("res://assets/images/enemies/FairiesIcon.png"),
 	}
+
+var combatfullpictures = {
+	arron = sprites.Arron,
+	rose = sprites.Rose,
+	erika = sprites.erika,
+	ember = sprites.emberhappy,
+	rat = load("res://assets/images/enemies/RatFull.png"),
+	ent = load("res://assets/images/enemies/EntFull.png"),
+	bigent = load("res://assets/images/enemies/BigEntFull.png"),
+	golem = load("res://assets/images/enemies/Golem.png"),
+	spider = load("res://assets/images/enemies/Spider.png"),
+	dwarf = load("res://assets/images/enemies/AngryDwarf.png"),
+	fairies = load("res://assets/images/enemies/Fairies.png"),
+}
 
 var circleportraits = {
 	arron = load("res://assets/images/combatportraits/arroncircle.png"),

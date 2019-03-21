@@ -203,6 +203,7 @@ var Items = {
 	tags = ['tool', 'recipe'],
 	repairdifficulty = 'easy',
 	availslots = ['rhand'],
+	hitsound = 'blade',
 	},
 	pickaxe = {name = tr("WEAPONPICKAXENAME"), code = 'pickaxe', description = tr("WEAPONPICKAXEDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/PickaxeBasic.png"),
@@ -219,6 +220,7 @@ var Items = {
 	tags = ['tool', 'recipe'],
 	repairdifficulty = 'easy',
 	availslots = ['rhand'],
+	hitsound = 'blade',
 	},
 	sword = {name = tr("WEAPONSWORDNAME"), code = 'axe', description = tr("WEAPONSWORDDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/SwordBasic.png"),
@@ -235,6 +237,7 @@ var Items = {
 	tags = ['weapon', 'recipe'],
 	repairdifficulty = 'easy',
 	availslots = ['rhand'],
+	hitsound = 'blade',
 	},
 	bow = {name = tr("WEAPONBOWNAME"), code = 'bow', description = tr("WEAPONBOWDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/BowBasic.png"),
@@ -251,6 +254,7 @@ var Items = {
 	tags = ['weapon', 'recipe'],
 	repairdifficulty = 'easy',
 	availslots = ['rhand', 'lhand'],
+	hitsound = 'bow',
 	},
 	staff = {name = tr("WEAPONSTAFFNAME"), code = 'staff', description = tr("WEAPONSTAFFDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/StaffBasic.png"),
@@ -267,6 +271,7 @@ var Items = {
 	tags = ['staff', 'recipe'],
 	repairdifficulty = 'easy',
 	availslots = ['rhand', 'lhand'],
+	hitsound = 'dodge',
 	},
 	
 	#basic Armor
@@ -338,7 +343,7 @@ var Items = {
 	
 	
 	#usables
-	morsel = {name = tr("USABLEMORSEL"), code = 'morsel', description = tr("USABLEMORSELDESCRIPT"),
+	morsel = {name = tr("MORSEL"), code = 'morsel', description = tr("USABLEMORSELDESCRIPT"),
 	icon = load("res://assets/images/iconsitems/Morsel.png"),
 	itemtype = 'usable',
 	unlockreq = true,

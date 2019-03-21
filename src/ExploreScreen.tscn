@@ -1,13 +1,21 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/ExploreScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=4]
-[ext_resource path="res://src/TraitSelectionLevelup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=6]
-[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/images/backgrounds/forest.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/taskmenu/workerpanelalt.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=12]
+[ext_resource path="res://src/TraitSelectionLevelup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=14]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=15]
+[ext_resource path="res://files/combat.tscn" type="PackedScene" id=16]
 
 [node name="ExploreScreen" type="Control"]
 
@@ -26,7 +34,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Mouse" ]
 
-[node name="BackGround" type="Panel" parent="." index="0"]
+[node name="BackGround" type="TextureRect" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -36,21 +44,80 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+texture = ExtResource( 2 )
+stretch_mode = 0
 
-[node name="Forest" type="Button" parent="." index="1"]
+[node name="areaspanel" type="TextureRect" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 479.0
-margin_top = 179.0
-margin_right = 712.0
-margin_bottom = 321.0
+margin_left = 61.0
+margin_top = 61.0
+margin_right = 710.0
+margin_bottom = 849.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="areaspanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 43.0
+margin_top = 102.0
+margin_right = 584.0
+margin_bottom = 650.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+scroll_horizontal_enabled = false
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+scroll_deadzone = 0
+_sections_unfolded = [ "Scroll" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="areaspanel/ScrollContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Button" type="TextureButton" parent="areaspanel/ScrollContainer/VBoxContainer" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 530.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 530, 80 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -62,20 +129,46 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "FOREST"
-flat = false
-align = 1
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+expand = true
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Return" type="Button" parent="." index="2"]
+[node name="Label" type="Label" parent="areaspanel/ScrollContainer/VBoxContainer/Button" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 479.0
-margin_top = 439.0
-margin_right = 712.0
-margin_bottom = 581.0
+margin_left = 45.0
+margin_top = 27.0
+margin_right = 479.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Area Name"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Return" type="TextureButton" parent="areaspanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 166.0
+margin_top = 658.0
+margin_right = 459.0
+margin_bottom = 737.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -87,9 +180,164 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "RETURN"
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Label" type="Label" parent="areaspanel/Return" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_top = 23.0
+margin_right = 264.0
+margin_bottom = 47.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "TOWNRETURN"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AreaProgress" type="Panel" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 738.0
+margin_top = 76.0
+margin_right = 1410.0
+margin_bottom = 843.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="AreaProgress" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 22.0
+margin_top = 707.0
+margin_right = 649.0
+margin_bottom = 731.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent" ]
+
+[node name="TextureRect" type="TextureRect" parent="AreaProgress" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 98.0
+margin_right = 596.0
+margin_bottom = 398.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="AreaProgress" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 179.0
+margin_top = 35.0
+margin_right = 474.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Area Name"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ProceedButton" type="Button" parent="AreaProgress" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 230.0
+margin_top = 575.0
+margin_right = 456.0
+margin_bottom = 621.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "PROCEED"
 flat = false
 align = 1
+
+[node name="Label2" type="Label" parent="AreaProgress" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 76.0
+margin_top = 671.0
+margin_right = 607.0
+margin_bottom = 695.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "test"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Positions" type="TextureRect" parent="." index="3"]
 
@@ -107,7 +355,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
@@ -169,7 +417,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -212,7 +460,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -255,7 +503,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -316,7 +564,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -359,7 +607,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -402,7 +650,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -483,150 +731,20 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Mouse" ]
 
-[node name="Panel" type="Panel" parent="." index="4"]
-
-editor/display_folded = true
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 480.0
-margin_top = 205.0
-margin_right = 1501.0
-margin_bottom = 753.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="Button" type="Button" parent="Panel" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 441.0
-margin_top = 468.0
-margin_right = 549.0
-margin_bottom = 527.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Close"
-flat = false
-align = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 232.0
-margin_top = 22.0
-margin_right = 749.0
-margin_bottom = 261.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-bbcode_enabled = false
-bbcode_text = "Victory Stats"
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = "Victory Stats"
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-_sections_unfolded = [ "BBCode" ]
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 147.0
-margin_top = 370.0
-margin_right = 860.0
-margin_bottom = 445.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = false
-scroll_vertical = 0
-scroll_deadzone = 0
-_sections_unfolded = [ "Scroll" ]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-
-[node name="Button" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer" index="0"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-expand = true
-stretch_mode = 5
-_sections_unfolded = [ "Rect", "Textures" ]
-
-[node name="LevelupTrait" parent="." index="5" instance=ExtResource( 5 )]
+[node name="LevelupTrait" parent="." index="4" instance=ExtResource( 13 )]
 
 visible = false
 
-[node name="HeroList" parent="." index="6" instance=ExtResource( 6 )]
+[node name="HeroList" parent="." index="5" instance=ExtResource( 14 )]
 
 visible = false
 
-[node name="Inventory" parent="." index="7" instance=ExtResource( 7 )]
+[node name="Inventory" parent="." index="6" instance=ExtResource( 15 )]
 
 visible = false
 margin_left = 23.0
@@ -634,9 +752,9 @@ margin_top = 53.0
 margin_right = 672.0
 margin_bottom = 841.0
 
-[node name="combat" parent="." index="8" groups=[
+[node name="combat" parent="." index="7" groups=[
 "pauseprocess",
-] instance=ExtResource( 8 )]
+] instance=ExtResource( 16 )]
 
 visible = false
 

@@ -2,9 +2,11 @@ extends Node
 
 func _ready():
 	var buttonlist = ['newgame','loadwindow','options','quit']
+	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
 	for i in range(0,4):
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
+		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])

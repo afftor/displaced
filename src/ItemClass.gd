@@ -35,6 +35,7 @@ var materials = []
 var weaponrange
 var multislots = []
 var availslots = []
+var hitsound
 
 func CreateUsable(ItemName = '', number = 1):
 	itembase = ItemName
@@ -99,6 +100,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 	tags = itemtemplate.tags
 	if itemtemplate.has('multislots'):
 		multislots = itemtemplate.multislots
+	if itemtemplate.has('hitsound'):
+		hitsound = itemtemplate.hitsound
 	availslots = itemtemplate.availslots
 	var parteffectdict = {}
 	for i in parts:

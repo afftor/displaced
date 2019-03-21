@@ -13,13 +13,12 @@ var positiondict = {
 var charpanel = load("res://assets/images/gui/combat/combatpanel.png")
 
 func _ready():
-	$Forest.connect("pressed", self, "startexploration", ['forestexplore'])
-	$Return.connect("pressed", self, "ReturnToVillage")
+	$AreaProgress/ProceedButton.connect("pressed", self, "startexploration")
+	$areaspanel/Return.connect("pressed", self, "ReturnToVillage")
 	globals.CurrentScene = self
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
-	
-	
+
 
 
 func show():
@@ -28,10 +27,17 @@ func show():
 	$HeroList.open()
 	state.combatparty[1] = state.heroes[0].id
 	state.combatparty[2] = state.heroes[1].id
-	state.heroes[1].mana = 10
+#	state.heroes[1].mana = 10
 	UpdatePositions()
+	showexplorelist()
+	if state.currentarea != null:
+		updateexplorepanel(globals.explorationares[state.currentarea])
+	else:
+		$AreaProgress.hide()
 
 var SelectingPosition
+
+
 
 func selectfighter(pos):
 	SelectingPosition = pos
@@ -64,7 +70,7 @@ func HeroSelected(hero):
 func StartCombat(data):
 	var enemies = data.duplicate()
 	enemies = makerandomgroup(enemies)
-	$combat.start_combat(enemies)
+	$combat.start_combat(enemies, area.category)
 	$combat.show()
 
 
@@ -158,9 +164,45 @@ var area
 var stage
 var period
 
-func startexploration(areacode, nextstage = 0):
-	stage = nextstage
-	area = globals.explorationares[areacode]
+func showexplorelist():
+	globals.ClearContainer($areaspanel/ScrollContainer/VBoxContainer)
+	for i in globals.explorationares.values():
+		var valid = true
+		for k in i.requirements:
+			if state.valuecheck(k) == false || state.areaprogress[i.code] > i.stages:
+				valid = false
+		if valid == false:
+			continue
+		var newbutton = globals.DuplicateContainerTemplate($areaspanel/ScrollContainer/VBoxContainer)
+		newbutton.get_node("Label").text = i.name
+		newbutton.connect("pressed",self,'updateexplorepanel', [i])
+
+
+func updateexplorepanel(newarea = null):
+	$AreaProgress.show()
+	if newarea != null:
+		area = newarea
+	else:
+		area = newarea
+	if state.areaprogress.has(area.code):
+		stage = state.areaprogress[area.code]
+	else:
+		stage = 0
+		state.areaprogress[area.code] = stage
+	state.currentarea = area.code
+	period = 'prefight'
+	$AreaProgress/Label.text = area.name
+	$AreaProgress/TextureRect.texture = images.backgrounds[area.category]
+	var text = ''
+	if area.stages > 0:
+		$AreaProgress/ProgressBar.value = globals.calculatepercent(stage, area.stages)
+		text = tr("PROGRESS") + ": " + str(stage) + '/' + str(area.stages)
+	else:
+		$AreaProgress/ProgressBar.value = 100
+		text = tr("AREAISENDLESS")
+	$AreaProgress/Label2.text = text
+
+func startexploration():
 	period = 'fight'
 	if area.stagedenemies.has(stage):
 		StartCombat([area.stagedenemies[stage]])
@@ -168,14 +210,20 @@ func startexploration(areacode, nextstage = 0):
 		StartCombat(area.enemygroups)
 
 func wincontinue():
-	startexploration(area, stage+1)
+	stage += 1
+	state.areaprogress[area.code] = stage
+	if stage > area.stages:
+		showexplorelist()
+		$AreaProgress.hide()
+	else:
+		updateexplorepanel()
 
 func levelupscheck():
-	for i in state.heroes:
+	for i in state.heroes.values():
 		if i.recentlevelups > 0:
 			levelupwindow(i)
 			return
 
 func levelupwindow(character):
 	$LevelupTrait.levelup(character)
-	character.recentleveups -= 1
+	character.recentlevelups -= 1

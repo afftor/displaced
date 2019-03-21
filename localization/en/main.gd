@@ -55,7 +55,24 @@ var TranslationDict = {
 	ARMORBASICCHEST = "Chestplate",
 	
 	USABLEMORSEL = "Morsel",
-	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted to Food.",
+	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted into Food.",
+	
+	#enemies
+	MONSTERELVENRAT = "Elven Rat",
+	MONSTERELVENRATFLAVOR = "These animals are fairly common in most areas. Distinct ears make them accumulate all sorts of moniker, but goblins seem to label them exactly this way...",
+	MONSTERTREANT = "Ent",
+	MONSTERTREANTFLAVOR = "Despite its looks, this thing is actually a plant. Often disguise itself as a simple trump for a nasty surprise.",
+	MONSTERBIGTREANT = "Big Ent",
+	MONSTERBIGTREANTFLAVOR = "Big ents are somewhat mobile and quite dangerous when provoked.",
+	MONSTEREARTHGOLEM = "Earth Golem",
+	MONSTEREARTHGOLEMFLAVOR = "A magic creature of considerable power. They seem to roam around some caves and dungeons with little thought. I would expect more from hand-made slave. ",
+	MONSTERSPIDER = "Spider",
+	MONSTERSPIDERFLAVOR = "Of course just ents weren't enough...",
+	MONSTERFAIRIES = "Fairies",
+	MONSTERFAIRIESFLAVOR = "If not for their nasty nature, I would even consider them appealing.",
+	MONSTERANGRYDWARF = "Angry Dwarf",
+	MONSTERANGRYDWARFFLAVOR = "Dumb but damn strong for their size. Despite my best attempts, they didn't seem to be up for any sort of negotiation. ",
+	
 	
 	#Stats
 	DAMAGE = 'Damage',
@@ -171,6 +188,9 @@ var TranslationDict = {
 	RAWPRICE = "Raw Price",
 	FOODDESCRIPT = "Food is used to feed workers. ",
 	MONEYDESCRIPT = "Money are used to purchase goods and workers.",
+	
+	AREAISENDLESS = "This area has no progression",
+	TOWNRETURN = "Return",
 	
 	#Confirms
 	

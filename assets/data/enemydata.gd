@@ -24,8 +24,8 @@ var randomgroups = {
 var enemylist = {
 	elvenrat = {
 		code = 'elvenrat',
-		name = tr('ELVENRAT'),
-		description = tr("ELVENRATDESCRIPT"),
+		name = tr("MONSTERELVENRAT"),
+		flavor = tr("MONSTERELVENRATFLAVOR"),
 		race = 'animal',
 		skills = ['attack'],
 		passives = [],
@@ -50,8 +50,8 @@ var enemylist = {
 	},
 	treant = {
 		code = 'treant',
-		name = tr('TREANT'),
-		description = tr("TREANTDESCRIPT"),
+		name = tr("MONSTERTREANT"),
+		flavor = tr("MONSTERTREANTFLAVOR"),
 		race = 'plant',
 		skills = ['attack'],
 		passives = [],
@@ -76,8 +76,8 @@ var enemylist = {
 	},
 	bigtreant = {
 		code = 'bigtreant',
-		name = tr('BIGTREANT'),
-		description = tr("BIGTREANTDESCRIPT"),
+		name = tr("MONSTERBIGTREANT"),
+		flavor = tr("MONSTERBIGTREANTFLAVOR"),
 		race = 'plant',
 		skills = ['attack', 'summontreant'],
 		passives = [],
@@ -100,10 +100,10 @@ var enemylist = {
 		aiposition = 'ranged',
 		loottable = 'bigtreantloot',
 	},
-	earthelemental = {
+	earthgolem = {
 		code = 'earthelemental',
-		name = tr('EARTHELEMENTAL'),
-		description = tr("EARTHELEMENTALDESCRIPT"),
+		name = tr("MONSTEREARTHGOLEM"),
+		flavor = tr("MONSTEREARTHGOLEMFLAVOR"),
 		race = 'rock',
 		skills = ['attack'],
 		passives = ['weakbarrier'],
@@ -124,12 +124,12 @@ var enemylist = {
 		combaticon = null,
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthelementalloot',
+		loottable = 'earthgolemloot',
 	},
 	spider = {
 		code = 'spider',
-		name = tr('SPIDER'),
-		description = tr("SPIDERDESCRIPT"),
+		name = tr("MONSTERSPIDER"),
+		flavor = tr("MONSTERSPIDERFLAVOR"),
 		race = 'animal',
 		skills = ['attack'],
 		passives = [],
@@ -154,8 +154,8 @@ var enemylist = {
 	},
 	fairies = {
 		code = 'fairies',
-		name = tr('FAIRIES'),
-		description = tr("FAIRIESDESCRIPT"),
+		name = tr("MONSTERFAIRIES"),
+		flavor = tr("MONSTERFAIRIESFLAVOR"),
 		race = 'humanoid',
 		skills = ['attack'],
 		passives = [],
@@ -180,8 +180,8 @@ var enemylist = {
 	},
 	angrydwarf = {
 		code = 'angrydwarf',
-		name = tr('ANGRYDWARF'),
-		description = tr("ANGRYDWARFDESCRIPT"),
+		name = tr("MONSTERANGRYDWARF"),
+		flavor = tr("MONSTERANGRYDWARFFLAVOR"),
 		race = 'humanoid',
 		skills = ['attack'],
 		passives = [],
@@ -225,7 +225,7 @@ var loottables = {
 	spiderloot = {
 		materials = [{code = 'cloth', min = 1, max = 1, chance = 35}],
 	},
-	earthelementalloot = {
+	earthgolemloot = {
 		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
 	},
 	dwarfloot = {

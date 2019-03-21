@@ -1,5 +1,7 @@
 extends Node
 
+const gameversion = '0.1.0'
+
 const worker = preload("res://files/scripts/worker.gd");
 const Item = preload("res://src/ItemClass.gd")
 

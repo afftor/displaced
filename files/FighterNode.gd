@@ -75,3 +75,6 @@ func update_mp_label():
 	else:
 		$mplabel.text = str(globals.calculatepercent(fighter.mana, fighter.manamax())) + '%'
 
+func defeat():
+	$Icon.material = load("res://assets/sfx/bw_shader.tres")
+	input_handler.FadeAnimation(self, 0.5, 0.3)

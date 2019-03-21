@@ -134,7 +134,7 @@ var traitlist = {
 		price = 200,
 		hidden = false, #is not displayed at all
 		non_editable = false, #displayed but can not be deactivated
-		effects = ['e_tr_crit']
+		effects = ['e_tr_hpmax']
 	},
 	bonusregen = {
 		code = 'bonusregen',

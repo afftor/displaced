@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/images/gui/charpanel/healthorb.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/charpanel/manabar.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/charpanel/manaorb.png" type="Texture" id=16]
-[ext_resource path="res://icon.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/iconsskills/strongattack.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/charpanel/leftbutton.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/charpanel/leftbuttonpress.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/charpanel/leftbuttonhl.png" type="Texture" id=20]
@@ -947,7 +947,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 17 )
 expand = true
-stretch_mode = 0
+stretch_mode = 6
 _sections_unfolded = [ "Rect" ]
 
 [node name="Icon" type="TextureRect" parent="Main/stats&skills/VBoxContainer/Button" index="0"]

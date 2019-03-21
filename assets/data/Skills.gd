@@ -54,7 +54,7 @@ var skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -84,7 +84,7 @@ var skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -186,7 +186,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -217,7 +217,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -250,7 +250,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
