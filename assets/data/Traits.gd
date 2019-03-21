@@ -326,4 +326,15 @@ var traitlist = {
 		non_editable = true, #displayed but can not be deactivated
 		effects = ['e_tr_dwarwenbuf', 'e_tr_dwarwenclear']
 	},
+	treant_barrier = {
+		code = 'treant_barrier',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = 'monster',
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = ['e_tr_treant_barrier']
+	},
 };
