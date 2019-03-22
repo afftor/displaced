@@ -85,6 +85,7 @@ func _ready():
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
+	EnvironmentColor('morning', true)
 	changespeed($"TimeNode/0speed", false)
 	#buildscreen()
 
@@ -152,9 +153,9 @@ func movesky():
 	if $Sky.region_rect.position.x > 3500:
 		$Sky.region_rect.position.x = -500
 
+var currenttime
 
-func EnvironmentColor(time):
-	
+func EnvironmentColor(time, instant = false):
 	var morning = Color8(189,182,128)
 	var day = Color8(255,255,255)
 	var night = Color8(73,73,91)
@@ -167,26 +168,29 @@ func EnvironmentColor(time):
 	
 	var changetime = 2
 	
-	daycolorchange = true
+	if instant == true:
+		changetime = 0.01
 	
-	match time:
-		'morning':
-			currentcolor = night
-			nextcolor = morning
-		'day':
-			currentcolor = morning
-			nextcolor = day
-		'evening':
-			currentcolor = day
-			nextcolor = evening
-		'night':
-			currentcolor = evening
-			nextcolor = night
-	
-	for i in array:
-		tween.interpolate_property(i, 'modulate', currentcolor, nextcolor, changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	tween.interpolate_callback(self, changetime, 'finishcolorchange')
+	if currenttime != time:
+		daycolorchange = true
+		match time:
+			'morning':
+				currentcolor = night
+				nextcolor = morning
+			'day':
+				currentcolor = morning
+				nextcolor = day
+			'evening':
+				currentcolor = day
+				nextcolor = evening
+			'night':
+				currentcolor = evening
+				nextcolor = night
+		currenttime = time
+		for i in array:
+			tween.interpolate_property(i, 'modulate', currentcolor, nextcolor, changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
+		tween.interpolate_callback(self, changetime, 'finishcolorchange')
 
 func finishcolorchange():
 	daycolorchange = false
@@ -274,8 +278,6 @@ func openblacksmith():
 func openherohiretab():
 	$herohire.show()
 
-func opentownhall():
-	pass
 
 
 func BuildingOptions(building = {}):

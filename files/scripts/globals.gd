@@ -171,7 +171,7 @@ func _ready():
 	state.materials.bone = 10
 	state.materials.cloth = 10
 	#state.materials.stone = 5
-	state.money = 200
+	state.money = 500
 	
 
 func logupdate(text):
@@ -329,6 +329,10 @@ func connectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):
 		node.disconnect("mouse_entered",item,'tooltip')
 	node.connect("mouse_entered",item,'tooltip', [node])
+
+func disconnectitemtooltip(node, item):
+	if node.is_connected("mouse_entered",item,'tooltip'):
+		node.disconnect("mouse_entered",item,'tooltip')
 
 func connectmaterialtooltip(node, material):
 	if node.is_connected("mouse_entered",self,'mattooltip'):

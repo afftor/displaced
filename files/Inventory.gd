@@ -4,6 +4,9 @@ onready var itemcontainer = $ScrollContainer/GridContainer
 
 var selectedhero
 var mode
+var category = 'all'
+var itemarray = []
+
 
 func _ready():
 	$ScrollContainer/GridContainer/Button.set_meta('type', 'none')
@@ -23,10 +26,13 @@ func open(newmode = null, args = null):
 	mode = newmode
 	show()
 	buildinventory()
-	selectcategory($HBoxContainer/all)
+	#selectcategory($HBoxContainer/all)
 
 func buildinventory():
 	globals.ClearContainer(itemcontainer)
+	globals.ClearContainer($HiddenContainer/GridContainer)
+	itemarray.clear()
+	
 	for i in state.materials:
 		if state.materials[i] <= 0:
 			continue
@@ -37,9 +43,8 @@ func buildinventory():
 		newbutton.get_node('Number').show()
 		newbutton.set_meta('type', 'mat')
 		globals.connectmaterialtooltip(newbutton, material)
-		#globals.itemtooltip(material, newbutton)
-		#globals.connecttooltip(newbutton, '[center]' + material.name + '[/center]\n' + material.description)
 		newbutton.connect("pressed",self,'useitem', [i, 'material'])
+		itemarray.append(newbutton)
 	for i in state.items.values():
 		if i.owner != null:
 			continue
@@ -54,18 +59,31 @@ func buildinventory():
 		globals.connectitemtooltip(newnode, i)
 		newnode.set_meta('type', i.itemtype)
 		newnode.connect("pressed",self,'useitem', [i, i.itemtype])
+		itemarray.append(newnode)
+	rebuildinventory()
 
+func rebuildinventory():
+	for i in itemarray:
+		i.get_parent().remove_child(i)
+		if (category == 'all' || i.get_meta('type') == category):
+			itemcontainer.add_child(i)
+		else:
+			$HiddenContainer/GridContainer.add_child(i)
+	itemcontainer.move_child(itemcontainer.get_node("Button"), itemcontainer.get_children().size())
 
 func selectcategory(button):
 	var type = button.name
 	for i in $HBoxContainer.get_children():
 		i.pressed = i == button
+	category = type
 	
-	for i in itemcontainer.get_children():
-		i.visible = i.get_meta('type') == type || type == 'all'
-		if i.get_meta('type') == 'none':
-			i.hide()
-	$ScrollContainer/GridContainer.queue_sort()
+	rebuildinventory()
+	
+	
+#	for i in itemcontainer.get_children():
+#		i.visible = i.get_meta('type') == type || type == 'all'
+#		if i.get_meta('type') == 'none':
+#			i.hide()
 
 func useitem(item, type):
 	activeitem = item
@@ -74,10 +92,12 @@ func useitem(item, type):
 	elif mode == 'hero' && selectedhero != null:
 		if type == 'material':
 			return
+		for i in item.availslots:
+			get_parent().get_node("HeroList/HeroPanel").unequip(i)
 		selectedhero.equip(item)
 		get_parent().get_node("HeroList/HeroPanel").open(selectedhero)
 		input_handler.GetItemTooltip().hide()
-		buildinventory()
+		rebuildinventory()
 	elif mode == 'shop':
 		sellwindow(item, type)
 

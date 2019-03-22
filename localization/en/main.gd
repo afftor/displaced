@@ -72,7 +72,11 @@ var TranslationDict = {
 	MONSTERFAIRIESFLAVOR = "If not for their nasty nature, I would even consider them appealing.",
 	MONSTERANGRYDWARF = "Angry Dwarf",
 	MONSTERANGRYDWARFFLAVOR = "Dumb but damn strong for their size. Despite my best attempts, they didn't seem to be up for any sort of negotiation. ",
-	
+	#gearclasses
+	GEARSWORD = "Swords",
+	GEARAXE = "Axes",
+	GEARSTAFF = "Staves",
+	GEARBOW = "Bows",
 	
 	#Stats
 	DAMAGE = 'Damage',
@@ -90,8 +94,23 @@ var TranslationDict = {
 	RESISTWATER = "Water Res.",
 	HEALTHPERCENT = "Max. Health",
 	MANAPERCENT = "Max. Mana",
+	CRITICAL = "Critical",
+	CRITCHANCE = "Crit. Chance",
+	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
+	
+	#stat tooltips
+	TOOLTIPDAMAGE = "Defines damage output of skills and spells",
+	TOOLTIPARMOR = "Reduces skill damage taken by this percent",
+	TOOLTIPMDEF = "Reduces spell damage taken by this percent",
+	TOOLTIPCRIT = "Percent chance to crit for extra damage\nFirst value is a chance. Second value is a modifier.",
+	TOOLTIPHITRATE = "Percent chance to hit target\nReduced by enemy's evasion",
+	TOOLTIPARMORPEN = "Reduces enemy armor by this value",
+	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
+	TOOLTIPSPEED = "Improves your odds to act before other characters",
+	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
+	
 	
 	
 	#Item Parts
@@ -164,7 +183,12 @@ var TranslationDict = {
 	MAINQUESTUPDATED = "Main Quest Updated",
 	QUESTLOG = "Quest Log",
 	NOACTIVEQUESTS = "You have no active quests.",
-	
+	INVALIDCLASS = "Invalid class for this gear.",
+	NOTENOUGHGOLD = "Not enough gold",
+	PURCHASETHISTRAIT = "Purchase this trait",
+	TRAITPOINTSCOST = "Trait Points",
+	TRAITPOINTS = "Trait Points used",
+	GOLDPRICE = "Gold Cost",
 	
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
@@ -172,6 +196,8 @@ var TranslationDict = {
 	TOTALWORKERS = "Total Workers",
 	
 	TUTORIAL = "Tutorial",
+	TRAITS = "Traits",
+	CLASSINFO = "Class Details",
 	
 	INVENTORY = "Inventory",
 	WORKERLIST = "Worker List",
@@ -212,6 +238,20 @@ var TranslationDict = {
 	HARVESTWOOD = "Harvest Lumber",
 	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation",
 	
+	#Classes
+	CLASSDESCRIPT = "Class defines character's basic characteristics, abilities, specific traits and allowed gear. More abilities are unlocked as you level up. After certain level you can advance into one of the new classes.",
+	WARRIOR = "Warrior",
+	MAGE = "Mage",
+	ARCHER = "Archer",
+	BRAWLER = "Brawler",
+	WARRIORDESCRIPT = "Warrior is a strong melee class focusing on tanking and dealing damage. They can handle many weapons but lack in magic and range. ",
+	MAGEDESCRIPT = "Mage is a supporting class capable of both healing and slinging powerful area spells. ",
+	ARCHERDESCRIPT = "Archer is a ranged damaging class. Having access to some spells, they can hit any target on the battlefield. ",
+	BRAWLERDESCRIPT = "Brawler is a melee supporting class. They specialize in using special attacks for crowd control. ",
+	MAGETRAITDESCRIPT = "Gain 1 bonus Damage for every 2 bonus Magic Armor.",
+	ARCHERTRAITDESCRIPT = "Gain 1 bonus Hit Rate for every 1 bonus Evasion.",
+	CLASSALLOWEDWEAPONS = "Allowed gear",
+	CLASSTRAIT = "Class bonus",
 	
 	#Names
 	ARRON = 'Arron',

@@ -460,6 +460,8 @@ func make_fighter_panel(fighter, spot):
 	panel.get_node("Icon").texture = fighter.combat_portrait()
 	panel.update_hp()
 	panel.get_node("Mana").value = globals.calculatepercent(fighter.mana, fighter.manamax)
+	if fighter.manamax == 0:
+		panel.get_node("Mana").value = 0
 	panel.get_node("Label").text = fighter.name
 	container.add_child(panel)
 	panel.rect_position = Vector2(0,0)
@@ -493,7 +495,10 @@ func ShowFighterStats(fighter):
 	if fightover == true:
 		return
 	var text = ''
-	text += '\nHealth: ' + str(fighter.hp) + '/' + str(fighter.hpmax()) + "\nMana: " + str(fighter.mana) + '/' + str(fighter.manamax) + "\n\n"
+	text += '\nHealth: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
+	if fighter.manamax > 0:
+		text += "\nMana: " + str(fighter.mana) + '/' + str(fighter.manamax)
+	text += "\n\n"
 	text += "Damage: " + str(fighter.damage) + "\nCritical Chance/Mod: " + str(fighter.critchance) + "%/" + str(fighter.critmod*100) + '%' + "\nHit Rate: " + str(fighter.hitrate) + "\nArmor Penetration: " + str(fighter.armorpenetration) + "\n\n"
 	text += "Armor: " + str(fighter.armor) + "\nEvasion: " + str(fighter.evasion) + "\nSpeed: " + str(fighter.speed) + "\nResists: "
 	for i in ['fire','water','earth','air']:

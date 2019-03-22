@@ -145,12 +145,18 @@ func armor_get():
 func levelup():
 	level += 1
 	recentlevelups += 1
+	
+	var baseclass = combatantdata.classlist[base]
+	for i in baseclass.learnableskills:
+		if skills.has(i) == false && level >= baseclass.learnableskills[i]:
+			skills.append(i)
+	
 	#add trait obtaining and other trait related stuff
 
 func can_acq_trait(trait_code):
 	if traits.keys().has(trait_code): return false
 	var tmp = Traitdata.traitlist[trait_code]
-	if tmp.req_class == 'all' or tmp.req_class == base: return true
+	if tmp.req_class.has('all') or tmp.req_class.has(base): return true
 	return false
 
 func can_activate_trait(trait_code):
@@ -188,7 +194,6 @@ func activate_trait(trait_code):
 	traitpoints -= tmp.cost
 	for e in tmp.effects:
 		apply_effect(e)
-	pass
 
 func deactivate_trait(trait_code):
 	if !traits.keys().has(trait_code): return
@@ -223,23 +228,18 @@ func apply_atomic(effect): #can be name or dictionary
 			self.set(tmp.stat, get(tmp.stat) * tmp.value)
 		'stat', 'stat_once':
 			self.set(tmp.stat, get(tmp.stat) + tmp.value)
-			pass
 		'effect':
 			apply_effect(tmp.effect)
-			pass
 		'temp_effect':
 			apply_temp_effect(tmp.effect, tmp.duration, tmp.stack)
-			pass
 		'block_effect', 'delete_effect':
 			remove_effect(tmp.effect, 'all')
-			pass
 		'damage':
 			deal_damage(tmp.value, tmp.source)
 		'buff':
 			buffs.push_back(tmp.value)
 		'timer':
 			timers.push_back({effect = tmp.effect, delay = tmp.delay})
-	pass
 
 func remove_atomic(effect):
 	var tmp
@@ -252,10 +252,8 @@ func remove_atomic(effect):
 			self.set(tmp.stat, get(tmp.stat) / tmp.value)
 		'stat':
 			self.set(tmp.stat, get(tmp.stat) - tmp.value)
-			pass
 		'effect':
 			remove_effect(tmp.effect, 'once')
-			pass
 		'block_effect':
 			apply_effect(tmp.effect)
 		'buff':
@@ -272,9 +270,7 @@ func find_temp_effect(eff_code):
 		if temp_effects[i].time < tres: 
 			tres = temp_effects[i].time
 			res = i
-		pass
 	return {num = nm, index = res}
-	pass
 
 
 func apply_temp_effect(eff_code, duration = 1, stack = 1):
@@ -282,10 +278,8 @@ func apply_temp_effect(eff_code, duration = 1, stack = 1):
 	if pos.num < stack:
 		temp_effects.push_back({effect = eff_code, time = duration})
 		apply_effect(eff_code)
-		pass
 	else:
 		temp_effects[pos.index].time = duration
-	pass
 
 func add_area_effect(eff_code):
 	var effect = Effectdata.effect_table[eff_code]
@@ -296,13 +290,10 @@ func add_area_effect(eff_code):
 			if [1,2,3].has(position): area = [1,2,3]
 			elif [4,5,6].has(position): area = [4,5,6]
 			area.erase(position)
-			pass
 	#own_area_effects.push_back(effect.code)
 	for pos in area:
 		for h in state.heroes.values():
 			h.add_ext_area_effect({effect = effect.value, position = pos})
-		pass
-	pass
 
 func remove_area_effect(eff_code):
 	var effect = Effectdata.effect_table[eff_code]
@@ -313,45 +304,35 @@ func remove_area_effect(eff_code):
 			if [1,2,3].has(position): area = [1,2,3]
 			elif [4,5,6].has(position): area = [4,5,6]
 			area.erase(position)
-			pass
 	#own_area_effects.erase(effect.code)
 	for pos in area:
 		for h in state.heroes.values():
 			h.remove_ext_area_effect({effect = effect.value, position = pos})
-		pass
-	pass
 
 func add_ext_area_effect(dict):
 	area_effects.push_back(dict)
 	if dict.position == position: apply_effect(dict.effect)
-	pass
 
 func remove_ext_area_effect(dict):
 	area_effects.erase(dict)
 	if dict.position == position: remove_effect(dict.effect, 'once')
-	pass
 
 func set_position(new_pos):
 	if new_pos == position: return
 	#remove own area effects
 	for e in own_area_effects:
 		remove_area_effect(e)
-		pass
 	#remove ext area effects
 	for e in area_effects:
 		if e.position == position: remove_effect(e.effect)
-		pass
 	
 	position = new_pos
 	#reapply own area effects
 	for e in own_area_effects:
 		add_area_effect(e)
-		pass
 	#reapply ext area effects
 	for e in area_effects:
 		if e.position == position: apply_effect(e.effect)
-		pass
-	pass
 
 
 func apply_effect(eff_code):
@@ -361,24 +342,17 @@ func apply_effect(eff_code):
 			static_effects.push_back(eff_code)
 			for ee in tmp.effects:
 				apply_atomic(ee)
-				pass
-			pass
 		'oneshot':
 			#oneshot_effects.push_back(eff_code)
 			for ee in tmp.effects:
 				apply_atomic(ee)
-				pass
-			pass
 		'trigger':
 			triggered_effects.push_back(eff_code)
-			pass
 		'area':
 			own_area_effects.push_back(eff_code)
 			add_area_effect(eff_code)
 			for ee in tmp.effects:
 				apply_atomic(ee)
-			pass
-	pass
 
 func remove_effect(eff_code, option = 'once'):
 	var tmp = Effectdata.effect_table[eff_code]
@@ -388,17 +362,11 @@ func remove_effect(eff_code, option = 'once'):
 				static_effects.erase(eff_code)
 				for ee in tmp.effects:
 					remove_atomic(ee)
-					pass
-				pass
 			else:
 				while static_effects.has(eff_code):
 					static_effects.erase(eff_code)
 					for ee in tmp.effects:
 						remove_atomic(ee)
-						pass
-					pass
-				pass
-			pass
 #		'oneshot':
 #			for ee in tmp.effects:
 #				remove_atomic(ee)
@@ -407,37 +375,29 @@ func remove_effect(eff_code, option = 'once'):
 		'trigger':
 			if option == 'once':
 				triggered_effects.erase(eff_code)
-				pass
 			else:
 				while triggered_effects.has(eff_code):
 					triggered_effects.erase(eff_code)
-					pass
-				pass
-			pass
-			pass
 		'area':
 			own_area_effects.erase(eff_code)
 			remove_area_effect(eff_code)
 			for ee in tmp.effects:
 				remove_atomic(ee)
-			pass
-	pass
+
 
 func update_temp_effects():
 	for e in temp_effects:
 		e.time -= 1
 		if e.time < 0:
 			remove_effect(e.effect)
-			pass
-	pass
+
 
 func update_timers():
 	for e in timers:
 		e.delay -= 1
 		if e.delay < 0:
 			apply_effect(e.effect)
-			pass
-	pass
+
 
 func basic_check(trigger):
 	#clear_oneshot()
@@ -448,14 +408,11 @@ func basic_check(trigger):
 		var res = true
 		for cond in tmp.conditions:
 			res = res and input_handler.requirementcombatantcheck(cond, self)
-			pass
 		if !res: return
 		#apply effect
 		for ee in tmp.effects: 
 			apply_atomic(ee)
-		pass
 	#clear_oneshot()
-	pass
 
 func on_skill_check(skill, check): #skill has to be in constant form without metascripting. this part has to be done in conbat.gd in execute_skill
 	#var tt = Skillsdata.skilllist[skill].copy()
@@ -470,21 +427,15 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 					match cond.check:
 						'type':
 							res = res and (skill.skilltype == cond.value)
-							pass
 						'tag':
 							res = res and skill.tags.has(cond.value)
-							pass
 						'result': res = res and (skill.hit_res & cond.value != 0)
-					pass
 				'caster':
 					res = res and input_handler.requirementcombatantcheck(cond.value, skill.caster)
-					pass
 				'target':
 					res = res and input_handler.requirementcombatantcheck(cond.value, skill.target)
-					pass
 				'chance':
 					res = res and (randf()*100 < cond.value)
-			pass
 		if !res: return
 		#apply effect
 		
@@ -499,7 +450,6 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 			if eee.type == 'skill':
 				eee.type = eee.new_type
 				eee.value = skill.get(eee.value) * eee.mul
-				pass
 			match eee.target:
 				'caster':
 					rec = skill.caster
@@ -579,7 +529,7 @@ func createfromname(charname):
 	combaticon = nametemplate.combaticon
 	image = nametemplate.image
 	damage = classtemplate.damage
-	hitrate = 80
+	hitrate = 85
 	name = tr(nametemplate.name)
 	namebase = nametemplate.name
 	flavor = nametemplate.flavor
@@ -635,6 +585,9 @@ func checkequipmenteffects():
 #			passives.append(effect.code)
 
 func equip(item):
+	if !item.geartype in combatantdata.classlist[base].gearsubtypes && !item.geartype in ['chest', 'helm','boots', 'gloves']:
+		input_handler.SystemMessage(tr("INVALIDCLASS"))
+		return
 	for i in item.multislots:
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
@@ -697,17 +650,14 @@ func deal_damage(value, source):
 			basic_check(variables.TR_DMG)
 			shield = 0
 		if shield == 0: basic_check(variables.TR_SHIELD_DOWN)
-		pass
 	else:
 		self.hp = hp - value
 		basic_check(variables.TR_DMG)
-	pass
 
 func heal(value):
-	value = round(value);
-	self.hp += value;
-	basic_check(variables.TR_HEAL);
-	pass
+	value = round(value)
+	self.hp += value
+	basic_check(variables.TR_HEAL)
 
 func death():
 	#remove own area effects
@@ -728,7 +678,6 @@ func can_act():
 	for e in temp_effects:
 		if Effectdata.effect_table[e.effect].has('disable'): res = false
 	return res
-	pass
 
 func portrait():
 	if icon != null:

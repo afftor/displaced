@@ -543,10 +543,10 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
-	faery = { #new, to overlook
+	fairy = { #new, to overlook
 		code = 'faery',
-		name = tr("SKILLFAERY"),
-		description = tr("SKILLFAERYDESCRIPT"),
+		name = tr("SKILLFAIRY"),
+		description = tr("SKILLFAIRYDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),
 		
 		damagetype = "weapon",

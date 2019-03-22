@@ -175,7 +175,7 @@ func CreateItem():
 	input_handler.SmoothValueAnimation($ItemCreationWindow/CraftProgress, time, 0, 100)
 	yield(get_tree().create_timer(time), 'timeout')
 	$ItemCreationWindow/CraftProgress.value = 0
-	input_handler.SystemMessage(tr("ITEMCREATED" +": " + enditem.name))
+	input_handler.SystemMessage(tr("ITEMCREATED") +": " + enditem.name)
 	globals.AddItemToInventory(enditem)
 	selectcraftitem(Items.Items[itemtemplate])
 	#$ItemCreationWindow.hide()
