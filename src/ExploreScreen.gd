@@ -24,12 +24,17 @@ func _ready():
 
 func show():
 	.show()
+	state.CurBuild = 'ExploreScreen'
 	input_handler.CurrentScreen = 'Explore'
 	$HeroList.open()
 	state.combatparty[1] = state.heroes[0].id
 	state.combatparty[2] = state.heroes[1].id
 	state.heroes[1].mana = 10
 	UpdatePositions()
+
+func hide():
+	state.CurBuild = '';
+	.hide()
 
 var SelectingPosition
 

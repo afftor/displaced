@@ -27,7 +27,7 @@ var bonusstats = {} #bonus stats apply to chars
 var parts = {}
 var effects = []
 var task
-var owner
+var owner = -1;
 var partcolororder
 var broken = false
 var tags = []
@@ -257,3 +257,27 @@ func calculateprice():
 		for i in materialsdict:
 			price += Items.Materials[i].price*materialsdict[i]
 	return price
+
+func serialize():
+	var tmp = {};
+	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'amount', 'useeffects', 'useskill', 'foodvalue', 'type', 'itemtype', 'geartype', 'subtype', 'durability', 'maxdurability', 'price', 'task', 'owner', 'partcolororder', 'broken', 'weaponrange'];
+	var atr2 = ['bonusstats', 'parts', 'effects', 'tags', 'materials', 'multislots', 'availslots'];
+	for a in atr:
+		tmp[a] = get(a)
+	for a in atr2:
+		tmp[a] = get(a).duplicate()
+	return tmp;
+
+func deserialize(tmp):
+	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'useeffects', 'useskill', 'foodvalue', 'type', 'itemtype', 'geartype', 'subtype', 'durability', 'maxdurability', 'price', 'task', 'owner', 'partcolororder', 'broken', 'weaponrange'];
+	var atr2 = ['bonusstats', 'parts', 'effects', 'tags', 'materials', 'multislots', 'availslots'];
+	for a in atr:
+		set(a, tmp[a])
+	for a in atr2:
+		set(a, tmp[a].duplicate())
+	amount = tmp.amount;
+	inventory = state.items;
+	id = int(id);
+	if owner != null: owner = int(owner);
+	pass
+

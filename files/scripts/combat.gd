@@ -26,6 +26,8 @@ var playergroup = {}
 var enemygroup = {}
 var currentactor
 
+var summons = [];
+
 var activeaction
 var activeitem
 var activecharacter
@@ -133,6 +135,11 @@ func checkdeaths():
 		if battlefield[i] != null && battlefield[i].hp <= 0:
 			battlefield[i].defeated = true
 			turnorder.erase(battlefield[i])
+			if summons.has(i):
+				battlefield[i] = null;
+				summons.erase(i);
+				#not yet implemented clearing of related panel
+				#make_fighter_panel(battlefield[i], i)
 
 func checkwinlose():
 	var playergroupcounter = 0
@@ -159,7 +166,9 @@ func victory():
 	fightover = true
 	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
-	#need to fastfinish all temp effects, TOMAKE
+	#fastfinish all temp effects
+	for p in playergroup.values():
+		p.remove_all_temp_effects();
 	#on combat ends triggers
 	for p in playergroup.values():
 		p.basic_check(variables.TR_COMBAT_F);
@@ -402,6 +411,8 @@ func enemy_turn(pos):
 	elif castskill.allowedtargets.has('ally'):
 		for i in enemygroup:
 			target.append([enemygroup[i], 1])
+	elif castskill.allowedtargets.has('self'):
+		target.append([fighter, 1]);
 	
 	target = input_handler.weightedrandom(target)
 	
@@ -431,6 +442,8 @@ func speedsort(first, second):
 		return false
 
 func make_fighter_panel(fighter, spot):
+	#need to implement clearing panel if fighter is null for the sake of removing summons
+	#or simply implement func clear_fighter_panel(pos)
 	var container = battlefieldpositions[spot]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
 	fighter.displaynode = panel
@@ -534,6 +547,26 @@ func buildplayergroup(group):
 		newgroup[i] = fighter
 	playergroup = newgroup
 
+func summon(montype, limit):
+	# for now summoning is implemented only for opponents
+	# cause i don't know if ally summons must be player- or ai-controlled
+	# and don't know if it is possible to implement ai-controlled ally
+	if summons.size() >= limit: return
+	#find empty slot in enemy group
+	var group = [7,8,9,10,11,12];
+	var pos = [];
+	for p in group:
+		if battlefield[p] == null: pos.push_back(p);
+	if pos.size() == 0: return;
+	var sum_pos = pos[randi() % pos.size()];
+	summons.push_back(sum_pos);
+	enemygroup[sum_pos] = globals.combatant.new();
+	enemygroup[sum_pos].createfromenemy(montype);
+	enemygroup[sum_pos].combatgroup = 'enemy'
+	battlefield[sum_pos] = enemygroup[sum_pos];
+	make_fighter_panel(battlefield[sum_pos], sum_pos);
+	pass
+
 func SendSkillEffect(skilleffect, caster, target):
 	var endtargets = []
 	if skilleffect.target == 'self':
@@ -576,34 +609,44 @@ func use_skill(skill_code, caster, target):
 		caster.apply_effect(i);
 	caster.basic_check(variables.TR_CAST); #can do this as on_skill_check(), but this can lead to more code rewriting, since this reqires providing access to skill parameters that are not yet determined
 	
-	var animations = skill.sfx
-	var animationdict = {windup = [], predamage = []}
-	
 	var targets = CalculateTargets(skill, caster, target)
-	#sort animations
-	for i in animations:
-		animationdict[i.period].append(i)
 	
-	#casteranimations
+	var repeat = 1;
+	if skill.has('repeat'):
+		repeat = skill.repeat;
 	
-	for i in animationdict.windup:
-		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
-		CombatAnimations.call(i.code, sfxtarget)
-		yield(CombatAnimations, 'pass_next_animation')
-	
-	if animationdict.windup.size() > 0:
-		yield(CombatAnimations, 'cast_finished')
-	#here must be triggers for skill activate NEEDS IMPLEMENTATION
-	for i in targets:
-		for j in animationdict.predamage:
-			var sfxtarget = ProcessSfxTarget(j.target, caster, i)
-			CombatAnimations.call(j.code, sfxtarget)
+	for n in range(repeat):
+		var animations = skill.sfx
+		var animationdict = {windup = [], predamage = []}
+		
+		
+		#sort animations
+		for i in animations:
+			animationdict[i.period].append(i)
+		
+		#casteranimations
+		
+		for i in animationdict.windup:
+			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
+			CombatAnimations.call(i.code, sfxtarget)
 			yield(CombatAnimations, 'pass_next_animation')
 		
-		if animationdict.predamage.size() > 0:
-			yield(CombatAnimations, 'predamage_finished')
-		
-		execute_skill(skill_code, caster, i);
+		if animationdict.windup.size() > 0:
+			yield(CombatAnimations, 'cast_finished')
+		for i in targets:
+			for j in animationdict.predamage:
+				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
+				CombatAnimations.call(j.code, sfxtarget)
+				yield(CombatAnimations, 'pass_next_animation')
+			
+			if animationdict.predamage.size() > 0:
+				yield(CombatAnimations, 'predamage_finished')
+			if skill.damagetype == 'summon':
+				summon(skill.value[0], skill.value[1]);
+			else: 
+				execute_skill(skill_code, caster, i);
+			if animationdict.predamage.size() > 0:
+				yield(CombatAnimations, 'alleffectsfinished')
 #		if hitchance(skill,caster,i) == 'hit':
 #			execute_skill(skill, caster, i)
 #			for j in skilleffects.onhit:
@@ -615,8 +658,7 @@ func use_skill(skill_code, caster, target):
 		activeitem = null
 		SelectSkill('attack')
 	
-	if animationdict.predamage.size() > 0:
-		yield(CombatAnimations, 'alleffectsfinished')
+	
 	
 	if fighterhighlighted == true:
 		FighterMouseOver(target)

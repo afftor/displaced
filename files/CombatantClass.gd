@@ -63,7 +63,7 @@ var classlist = {
 		basemana = 50,
 		speed = 40,
 		damage = 15,
-		skills = ['attack'],
+		skills = ['attack', 'comboattack'],
 		learnableskills = [],
 		icon = null,
 	}

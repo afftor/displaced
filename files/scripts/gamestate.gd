@@ -30,11 +30,11 @@ var CurrentTextScene
 var CurrentScreen
 var CurrentLine
 
-var heroguild = []
+var heroguild = {}
 
 var OldEvents = {};
 var CurEvent = ""; #event name
-var CurBuild
+var CurBuild = "";
 var keyframes = []
 
 #Progress
@@ -206,3 +206,58 @@ func if_has_upgrade(upgrade, level):
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null;
 	return heroes[combatparty[pos]];
+
+func serialize():
+	var tmp = {};
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine'];
+	var arr2 = ['townupgrades', 'tasks', 'materials', 'unlocks', 'combatparty', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests'];
+	var arr3 = ['workers', 'heroes', 'items', 'heroguild'];
+	for prop in arr:
+		tmp[prop] = get(prop);
+	for prop in arr2:
+		tmp[prop] = get(prop).duplicate();
+	for prop in arr3:
+		var tmp1 = {};
+		var ref = get(prop);
+		for key in ref.keys():
+			tmp1[key] = ref[key].serialize();
+		tmp[prop] = tmp1;
+	return tmp;
+	pass
+
+func deserialize(tmp):
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine'];
+	var arr2 = ['townupgrades', 'tasks', 'unlocks', 'combatparty', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests'];
+	#var arr3 = ['workers', 'heroes', 'items', 'heroguild'];
+	for prop in arr:
+		set(prop, tmp[prop]);
+	for prop in arr2:
+		set(prop, tmp[prop].duplicate());
+	materials = tmp.materials.duplicate();
+	for key in tmp['workers'].keys():
+		var t = globals.worker.new();
+		t.deserialize(tmp['workers'][key]);
+		workers[int(key)] = t;
+	for key in tmp['heroes'].keys():
+		var t = globals.combatant.new();
+		t.deserialize(tmp['heroes'][key]);
+		t.id = int(key);
+		heroes[int(key)] = t;
+	for key in tmp['heroguild'].keys():
+		var t = globals.combatant.new(); #not sure if heroguild consists of combatants, but it has no use now
+		t.deserialize(tmp['heroguild'][key]);
+		heroguild[int(key)] = t;
+	for key in tmp['items'].keys():
+		var t = globals.Item.new();
+		t.deserialize(tmp['items'][key]);
+		if t.owner != -1 and t.owner != null:
+			for s in t.availslots:
+				heroes[t.owner].gear[s] = t.id;
+		items[int(key)] = t;
+	date = int(date);
+	CurrentLine = int(CurrentLine);
+	itemidcounter = int(itemidcounter);
+	heroidcounter = int(heroidcounter);
+	workeridcounter = int(workeridcounter);
+	oldmaterials = materials.duplicate();
+	pass

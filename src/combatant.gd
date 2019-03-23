@@ -65,18 +65,18 @@ var own_area_effects = []
 var timers = [] #{'effect', 'delay'}
 
 var position setget set_position
-var combatgroup
+var combatgroup = 'ally'
 var price = 0
 var loottable
 var selectedskill = 'attack'
 #var effects = {}
 #mods
 var damagemod = 1
-var hpmod = 1
+var hpmod = 1 setget hpmod_set
 var manamod = 1
 var xpmod = 1
 
-var displaynode
+var displaynode = null
 
 var detoriatemod = 1
 #ai
@@ -97,6 +97,11 @@ func hpmax():
 
 func manamax():
 	return ceil(manamax*manamod)
+
+func hpmod_set(value):
+	hpmod = value;
+	hpmax();
+	set('hp', (hppercent * hpmax()) / 100)
 
 func hp_set(value):
 	hp = clamp(value, 0, hpmax())
@@ -422,6 +427,10 @@ func update_temp_effects():
 			pass
 	pass
 
+func remove_all_temp_effects():
+	for e in temp_effects:
+		remove_effect(e.effect);
+
 func update_timers():
 	for e in timers:
 		e.delay -= 1
@@ -572,8 +581,8 @@ func createfromname(charname):
 	name = nametemplate.name
 
 
-func checkequipmenteffects():
-	pass
+#func checkequipmenteffects():
+#	pass
 #		for i in passives.values():
 #			if i.trigger == 'onequip':
 #				checkpassive(i)
@@ -621,7 +630,7 @@ func checkequipmenteffects():
 #			self[i.effect] += i.value
 #			passives.append(effect.code)
 
-func equip(item):
+func equip(item):#NEEDS REMAKING!!!!
 	for i in item.multislots:
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
@@ -629,7 +638,6 @@ func equip(item):
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
 		gear[i] = item.id
-	
 	item.owner = id
 	#adding bonuses
 	for i in item.bonusstats:
@@ -638,8 +646,7 @@ func equip(item):
 		#addpassiveeffect(i)
 		#NEED REPLACING
 		pass
-	
-	checkequipmenteffects()
+	#checkequipmenteffects()
 #
 #func addpassiveeffect(passive):
 #	var effect = globals.effects[passive]
@@ -650,8 +657,7 @@ func equip(item):
 #func removepassiveeffect(passive):
 #	passives[globals.effects[passive].trigger].erase(globals.effects[passive])
 
-func unequip(item):
-	
+func unequip(item):#NEEDS REMAKING!!!!
 	#removing links
 	item.owner = null
 	for i in gear:
@@ -759,3 +765,39 @@ func skill_tooltip_text(skillcode):
 	var skill = globals.skills[skillcode]
 	var text = '[center]' + skill.name + '[/center]\n' + (skill.description % calculate_number_from_string_array(skill.value))
 	return text
+
+func serialize():
+	var tmp = {};
+	var atr = ['name','level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed','critchance','critmod','resistfire','resistearth','resistwater','resistair','shield','shieldtype','traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
+	var atr1 = ['evasion', 'mdef', 'position', 'mana']
+	var atr2 = ['skills', 'traits', 'buffs', 'static_effects','temp_effects','triggered_effects','oneshot_effects','area_effects','own_area_effects',]
+	for a in atr:
+		tmp[a] = get(a)
+	for a in atr1:
+		tmp[a] = get(a)
+	for a in atr2:
+		tmp[a] = get(a).duplicate()
+	#return to_json(tmp)
+	return tmp
+	pass
+
+func deserialize(tmp):
+	#var tmp = parse_json(buff);
+	var nametemplate = combatantdata.charlist[tmp.name]
+	base = nametemplate.subclass;
+	icon = nametemplate.icon
+	combaticon = nametemplate.combaticon
+	image = nametemplate.image
+	name = nametemplate.name
+	var atr = ['level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed','critchance','critmod','resistfire','resistearth','resistwater','resistair','shield','shieldtype','traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
+	var atr1 = ['evasion', 'mdef', 'position', 'mana']
+	var atr2 = ['skills', 'traits', 'buffs', 'static_effects','temp_effects','triggered_effects','oneshot_effects','area_effects','own_area_effects',]
+	for a in atr:
+		self.set(a, tmp[a])
+	evasion = tmp.evasion;
+	mdef = tmp.mdef;
+	position = tmp.position;
+	mana =tmp.mana;
+	for a in atr2:
+		set(a, tmp[a].duplicate())
+	pass

@@ -2,6 +2,7 @@ extends Node
 
 const worker = preload("res://files/scripts/worker.gd");
 const Item = preload("res://src/ItemClass.gd")
+const combatant = preload ('res://src/combatant.gd')
 
 var SpriteDict = {}
 var TranslationData = {}
@@ -36,7 +37,7 @@ var effects
 var combateffects
 var explorationares 
 
-var combatant = preload ('res://src/combatant.gd')
+
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
 
@@ -232,12 +233,12 @@ func LoadEvent(name):
 		print('Event not found: ' + name)
 	return dict
 
-func StartEventScene(name, debug = false):
+func StartEventScene(name, debug = false, line = 0):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
 	var scene = input_handler.GetEventNode()
 	scene.visible = true
-	scene.Start(scenes[name], debug)
+	scene.Start(scenes[name], debug, line)
 
 func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()
@@ -579,19 +580,37 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		return array
 
 func QuickSave():
+	SaveGame('QuickSave');
 	pass
 
 func EndGame(result):
 	pass
 
 func SaveGame(name):
-	var savedict = {}
-	savedict.gameprogress = inst2dict(state)
+	state.CurrentLine = input_handler.GetEventNode().CurrentLine;
+	var savedict = state.serialize();
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
 
-func LoadGame(name):
-	var gamefile = file.open(userfolder+'saves/'+name + '.sav', File.READ)
-	
-	ChangeScene("MainMenu")
+func LoadGame(filename):
+	ChangeScene('town');
+	yield(self, "scene_changed");
+	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
+		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
+		return
+	#var gamefile = 
+	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
+	var savedict = parse_json(file.get_as_text());
+	file.close();
+	state.deserialize(savedict);
+	#ChangeScene("MainMenu")
+	#setup state node links. do nothing as they are not used now
+	#open building
+	if state.CurBuild != '' and state.CurBuild != null:
+		CurrentScene.get_node(state.CurBuild).show();
+		pass
+	#opentextscene
+	if state.CurEvent != "":
+		StartEventScene(state.CurEvent, false, state.CurrentLine);
+		pass
