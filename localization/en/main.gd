@@ -262,6 +262,7 @@ var TranslationDict = {
 	GUARD2 = 'Guard2',
 	GUARD3 = 'Guard3',
 	NORBERT = 'Norbert',
+	DEMITRIUS = "Demitrius",
 	LYRA = "Lyra",
 	FLAK = "Flak",
 	
