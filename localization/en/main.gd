@@ -51,8 +51,18 @@ var TranslationDict = {
 	
 	WEAPONAXEDESCRIPT = 'Axe can be used for wood cutting and combat.',
 	WEAPONSWORDDESCRIPT = "Good damage vs unarmored enemies.",
+	WEAPONPICKAXEDESCRIPT = "Allows workers to harvest ore.",
+	WEAPONBOWDESCRIPT = "Simple weapon for ranged fighters.",
+	WEAPONSTAFFDESCRIPT = "A simple tool for magic users.",
 	
 	ARMORBASICCHEST = "Chestplate",
+	ARMORBASICCHESTDESCRIPT = "Offers basic body protection.",
+	ARMORBASICHELM = "Helmet",
+	ARMORBASICHELMDESCRIPT = "Offers basic head protection.",
+	ARMORBASICBOOTS = "Boots",
+	ARMORBASICBOOTSDESCRIPT = "Offers basic foot protection",
+	ARMORBASICGLOVES = "Gloves",
+	ARMORBASICGLOVESDESCRIPT = "Offers basic hand protection",
 	
 	USABLEMORSEL = "Morsel",
 	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted into Food.",

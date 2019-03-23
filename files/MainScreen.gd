@@ -197,7 +197,7 @@ func finishcolorchange():
 
 func buildcounter(task):
 	var newnode = globals.DuplicateContainerTemplate($TaskCounter)
-	newnode.get_node('Icon').texture = task.worker.icon
+	newnode.get_node('Icon').texture = load(task.worker.icon)
 	newnode.get_node("Progress").value = globals.calculatepercent(task.time, task.threshold)
 	newnode.connect("pressed", self, "OpenWorkerTask", [task])
 	newnode.set_meta('task', task)
