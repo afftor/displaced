@@ -279,6 +279,7 @@ var Items = {
 	#basic Armor
 	basicchest = {name = tr("ARMORBASICCHEST"), code = 'basicchest', description = tr("ARMORBASICCHESTDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/ArmorBasic.png"),
+	alticons = {cloth = {icon = load("res://assets/images/iconsgear/ArmorBasicCloth.png"), part = "ArmorBase", materials = ['cloth'], altname = tr('ARMORROBE')}},
 	basedurability = 100.0,
 	basestats = {},
 	basemods = {},
@@ -295,6 +296,7 @@ var Items = {
 	},
 	basichelm = {name = tr("ARMORBASICHELM"), code = 'basichelm', description = tr("ARMORBASICHELMDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/HelmetBasic.png"),
+	alticons = {cloth = {icon = load("res://assets/images/iconsgear/HelmetBasicCloth.png"), part = "ArmorBase", materials = ['cloth','leather'], altname = tr('ARMORHOOD')}},
 	basedurability = 100.0,
 	basestats = {},
 	basemods = {},
@@ -311,6 +313,7 @@ var Items = {
 	},
 	basicboots = {name = tr("ARMORBASICBOOTS"), code = 'basicboots', description = tr("ARMORBASICBOOTSDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/BootsBasic.png"),
+	alticons = {cloth = {icon = load("res://assets/images/iconsgear/BootsBasicCloth.png"), part = "ArmorBase", materials = ['cloth'], altname = tr('ARMORSHOES')}},
 	basedurability = 100.0,
 	basestats = {},
 	basemods = {},

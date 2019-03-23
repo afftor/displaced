@@ -102,7 +102,7 @@ func manamax():
 	return ceil(manamax*manamod)
 
 func hp_set(value):
-	hp = clamp(value, 0, hpmax())
+	hp = clamp(round(value), 0, hpmax())
 	if displaynode != null:
 		displaynode.update_hp()
 	hppercent = (hp*100)/hpmax()
@@ -116,7 +116,7 @@ func hp_p_set(value):
 	set('hp', (hppercent * hpmax()) / 100)
 
 func mana_set(value):
-	mana = clamp(value, 0, manamax())
+	mana = clamp(round(value), 0, manamax())
 	if displaynode != null:
 		displaynode.update_mana()
 
@@ -516,6 +516,9 @@ func createfromname(charname):
 	var nametemplate = combatantdata.charlist[charname]
 	var classid = nametemplate.subclass
 	var classtemplate = combatantdata.classlist[classid].duplicate()
+	if classtemplate.has('basetraits'):
+		for i in classtemplate.basetraits:
+			traits[i] = true
 	id = state.heroidcounter
 	state.heroidcounter += 1
 	base = classtemplate.code

@@ -77,18 +77,15 @@ func CreateGear(ItemName = '', dictparts = {}):
 	bonusstats = {damage = 0, damagemod = 1, armor = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
 	var itemtemplate = Items.Items[ItemName]
-	if dictparts.size() == itemtemplate.parts.size():
-		name = Items.Materials[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + itemtemplate.name
-	else:
-		name = itemtemplate.name
+	var tempname = itemtemplate.name
+	
 	
 	partcolororder = itemtemplate.partcolororder
 	geartype = itemtemplate.geartype
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype
-	if itemtemplate.icon != null:
-		icon = itemtemplate.icon.get_path()
+	
 	for i in itemtemplate.basestats:
 		if bonusstats.has(i):
 			bonusstats[i] += itemtemplate.basestats[i]
@@ -122,6 +119,29 @@ func CreateGear(ItemName = '', dictparts = {}):
 	for i in itemtemplate.basemods:
 		if bonusstats.has(i):
 			bonusstats[i] *= itemtemplate.basemods[i]
+	
+	
+	if itemtemplate.icon != null:
+		if itemtemplate.has("alticons"):
+			var alticon = false
+			for i in itemtemplate.alticons.values():
+				if i.materials.has(parts[i.part]):
+					icon = i.icon.get_path()
+					if i.has('altname'):
+						tempname = i.altname
+					alticon = true
+			if alticon == false:
+				icon = itemtemplate.icon.get_path()
+		else:
+			icon = itemtemplate.icon.get_path()
+	
+	
+	
+	if dictparts.size() == itemtemplate.parts.size():
+		name = Items.Materials[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + tempname
+	else:
+		name = tempname
+	
 	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
 	bonusstats.erase('damagemod')
 	durability = round(durability)

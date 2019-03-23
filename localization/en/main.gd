@@ -56,6 +56,9 @@ var TranslationDict = {
 	WEAPONSTAFFDESCRIPT = "A simple tool for magic users.",
 	
 	ARMORBASICCHEST = "Chestplate",
+	ARMORROBE = "Robe",
+	ARMORHOOD = "Hood",
+	ARMORSHOES = "Shoes",
 	ARMORBASICCHESTDESCRIPT = "Offers basic body protection.",
 	ARMORBASICHELM = "Helmet",
 	ARMORBASICHELMDESCRIPT = "Offers basic head protection.",
