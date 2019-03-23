@@ -34,3 +34,18 @@ func restoreenergy():
 		energy += state.food
 		state.food = 0
 		return true
+
+
+func serialize():
+	var tmp = {};
+	var arr = ['name', 'type', 'id', 'task', 'energy', 'maxenergy','icon', 'currenttask', 'model', 'autoconsume'];
+	for prop in arr:
+		tmp[prop] = get(prop);
+	return tmp
+
+func deserialize(tmp):
+	var arr = ['name', 'type', 'id', 'task', 'energy', 'maxenergy','icon', 'currenttask', 'model', 'autoconsume'];
+	for prop in arr:
+		set(prop, tmp[prop]);
+	id = int(id)
+	pass

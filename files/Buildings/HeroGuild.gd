@@ -45,10 +45,11 @@ func hirehero():
 	open()
 
 func show():
-	state.CurBuild = "hero"
+	state.CurBuild = "HeroGuild"
+	input_handler.emit_signal("BuildingEntered", "HeroGuild");
 	.show();
 	pass
 
 func hide():
-		state.CurBuild = "";
-		.hide();
+	state.CurBuild = "";
+	.hide();

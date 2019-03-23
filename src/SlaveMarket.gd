@@ -45,9 +45,9 @@ func HireConfirm():
 	newworker.create(selectedworker)
 
 func show():
-	state.CurBuild = "slave"
+	state.CurBuild = "SlaveMarket"
 	.show()
 
 func hide():
-		state.CurBuild = ""
-		.hide()
+	state.CurBuild = ""
+	.hide()

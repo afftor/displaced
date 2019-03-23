@@ -17,6 +17,14 @@ func _ready():
 func open():
 	show()
 
+func show():
+	state.CurBuild = 'TownHall';
+	input_handler.emit_signal("BuildingEntered", 'TownHall')
+	.show();
+
+func hide():
+		state.CurBuild = "";
+		.hide();
 
 #func selecttaskfromlist(task):
 #	$SelectWorker.OpenSelectTab(task)

@@ -132,7 +132,8 @@ func RestoreEnv():
 			break;
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'background':
-			input_handler.SmoothTextureChange($Background, images.backgrounds[CurrentScene[tmp].value]);
+			#input_handler.SmoothTextureChange($Background, images.backgrounds[CurrentScene[tmp].value]);
+			$Background.texture = images.backgrounds[CurrentScene[tmp].value];
 			break;
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'music':
@@ -140,17 +141,28 @@ func RestoreEnv():
 			break;
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'sprite':
-			if CurrentScene[tmp].value == 'hide':
-				break
 			if CurrentScene[tmp].value == 'set':
 				SpriteDo($CharImage, 'set', CurrentScene[tmp].args);
 				break
+	for tmp in tlist:
+		if CurrentScene[tmp].effect == 'sprite':
+			if CurrentScene[tmp].value == 'hide':
+				$CharImage.modulate = Color(1, 1, 1, 0);
+				break
 			if CurrentScene[tmp].value == 'fade':
 				$CharImage.modulate = Color(1, 1, 1, 0);
+				break
+			if CurrentScene[tmp].value == 'unfade':
+				$CharImage.modulate = Color(1, 1, 1, 1);
+				break
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'sfx':
 			if CurrentScene[tmp].value == 'blackscreenturnon' or CurrentScene[tmp].value == 'blackscreenunfade':
 				blackscreenturnon();
+				break;
+			if CurrentScene[tmp].value == 'blackscreenfade':
+				blackscreenturnoff()
+				break;
 
 
 func skip (n):
@@ -307,6 +319,10 @@ func blackscreentransition(duration = 0.5):
 func blackscreenturnon(args = null):
 	$BlackScreen.visible = true
 	$BlackScreen.modulate.a = 1
+
+func blackscreenturnoff():
+	$BlackScreen.visible = true
+	$BlackScreen.modulate.a = 0
 
 func blackscreenfade(duration = 0.5):
 	input_handler.emit_signal("ScreenChanged")

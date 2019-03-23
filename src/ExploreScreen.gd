@@ -23,6 +23,7 @@ func _ready():
 
 func show():
 	.show()
+	state.CurBuild = 'ExploreScreen'
 	input_handler.CurrentScreen = 'Explore'
 	$HeroList.open()
 	state.combatparty[1] = state.heroes[0].id
@@ -34,6 +35,10 @@ func show():
 		updateexplorepanel(globals.explorationares[state.currentarea])
 	else:
 		$AreaProgress.hide()
+
+func hide():
+	state.CurBuild = '';
+	.hide()
 
 var SelectingPosition
 

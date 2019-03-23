@@ -317,6 +317,39 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
+
+	comboattack = {
+		code = 'comboattack',
+		name = tr("SKILLCOMBOATTACK"),
+		description = tr("SKILLCOMBOATTACKDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/comboattack.png"),
+		
+		damagetype = "weapon",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = [],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 0,
+		casteffects = [],
+		repeat = 3,
+		
+		hidden = false,
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
+
 	slash = {
 		code = 'slash',
 		name = tr("SKILLSLASH"),
@@ -447,7 +480,9 @@ var skilllist = {
 		aiselfcond = 'any',
 		aitargetcond = 'any',
 		aipriority = 2,
+		
 	},
+
 	barrier2 = { #new, to overlook
 		code = 'barrier2',
 		name = '',
@@ -466,7 +501,7 @@ var skilllist = {
 		cooldown = 0,
 		manacost = 0,
 		casteffects = ['e_i_barrier2'],
-		
+	
 		hidden = false,
 		sfx = [],
 		sfxcaster = null,
@@ -510,6 +545,7 @@ var skilllist = {
 		aitargetcond = 'any',
 		aipriority = 2,
 	},
+	
 	#monsters
 	spider = { #new, to overlook
 		code = 'spider',
@@ -575,7 +611,37 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
-	
+	summontreant = {
+		code = 'summontreant',
+		name = tr("SKILLSUMMONTREANT"),
+		description = tr("SKILLSUMMONTREANTDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/cripple.png"),
+		
+		damagetype = "summon",
+		
+		skilltype = 'spell',
+		userange = "any",
+		targetpattern = 'single',
+		allowedtargets = ['self'],
+		reqs = [],
+		tags = [],
+		value = ['treant', 2],
+		cooldown = 2,
+		manacost = 0,
+		casteffects = ['e_s_restoremana20'],
+		
+		hidden = false,
+		sfx = [],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
 }
 
 
