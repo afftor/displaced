@@ -317,6 +317,7 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
+
 	comboattack = {
 		code = 'comboattack',
 		name = tr("SKILLCOMBOATTACK"),
@@ -348,6 +349,7 @@ var skilllist = {
 		aitargetcond = 'any',
 		aipriority = 2,
 	},
+
 	slash = {
 		code = 'slash',
 		name = tr("SKILLSLASH"),
@@ -478,7 +480,9 @@ var skilllist = {
 		aiselfcond = 'any',
 		aitargetcond = 'any',
 		aipriority = 2,
+		
 	},
+
 	barrier2 = { #new, to overlook
 		code = 'barrier2',
 		name = '',
@@ -497,7 +501,7 @@ var skilllist = {
 		cooldown = 0,
 		manacost = 0,
 		casteffects = ['e_i_barrier2'],
-		
+	
 		hidden = false,
 		sfx = [],
 		sfxcaster = null,

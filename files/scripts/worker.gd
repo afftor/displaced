@@ -18,8 +18,9 @@ func create(data):
 	state.workeridcounter += 1
 	maxenergy = data.maxenergy
 	energy = data.maxenergy
-	icon = data.icon
+	icon = data.icon.get_path()
 	state.workers[id] = self
+	
 
 func restoreenergy():
 	var value = maxenergy - energy

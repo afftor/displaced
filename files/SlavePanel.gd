@@ -20,7 +20,7 @@ func BuildSlaveList():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.workers.values():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.get_node("Icon").texture = i.icon
+		newbutton.get_node("Icon").texture = load(i.icon)
 		newbutton.get_node("Name").text = i.name
 		newbutton.get_node("Task").visible = i.task != null
 		#newbutton.get_node("Line").connect("mouse_entered",self, 'SelectSlave', [i])

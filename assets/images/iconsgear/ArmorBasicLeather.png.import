@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ArnorBasicCloth.png-ec034a8c409e68242df0c33b3d27c40a.stex"
+path="res://.import/ArmorBasicLeather.png-958f1cc6f07ea9feb1232247c679fbc3.stex"
 
 [deps]
 
-source_file="res://assets/images/iconsgear/ArnorBasicCloth.png"
-dest_files=[ "res://.import/ArnorBasicCloth.png-ec034a8c409e68242df0c33b3d27c40a.stex" ]
+source_file="res://assets/images/iconsgear/ArmorBasicLeather.png"
+dest_files=[ "res://.import/ArmorBasicLeather.png-958f1cc6f07ea9feb1232247c679fbc3.stex" ]
 
 [params]
 

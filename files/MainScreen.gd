@@ -29,6 +29,7 @@ func _ready():
 	var character = globals.combatant.new()
 	character.createfromname('Arron')
 	character.baseexp = 90
+	character.hp = 100
 	state.heroes[character.id] = character
 	
 	character = globals.combatant.new()
@@ -75,6 +76,7 @@ func _ready():
 		#state.items[0].durability = floor(rand_range(1,5))
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
+		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'cloth', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
 		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
 		#state.items[1].durability = floor(rand_range(1,5))
@@ -85,6 +87,7 @@ func _ready():
 #		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
 	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
+	EnvironmentColor('morning', true)
 	changespeed($"TimeNode/0speed", false)
 	#buildscreen()
 
@@ -152,9 +155,9 @@ func movesky():
 	if $Sky.region_rect.position.x > 3500:
 		$Sky.region_rect.position.x = -500
 
+var currenttime
 
-func EnvironmentColor(time):
-	
+func EnvironmentColor(time, instant = false):
 	var morning = Color8(189,182,128)
 	var day = Color8(255,255,255)
 	var night = Color8(73,73,91)
@@ -167,33 +170,36 @@ func EnvironmentColor(time):
 	
 	var changetime = 2
 	
-	daycolorchange = true
+	if instant == true:
+		changetime = 0.01
 	
-	match time:
-		'morning':
-			currentcolor = night
-			nextcolor = morning
-		'day':
-			currentcolor = morning
-			nextcolor = day
-		'evening':
-			currentcolor = day
-			nextcolor = evening
-		'night':
-			currentcolor = evening
-			nextcolor = night
-	
-	for i in array:
-		tween.interpolate_property(i, 'modulate', currentcolor, nextcolor, changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	tween.interpolate_callback(self, changetime, 'finishcolorchange')
+	if currenttime != time:
+		daycolorchange = true
+		match time:
+			'morning':
+				currentcolor = night
+				nextcolor = morning
+			'day':
+				currentcolor = morning
+				nextcolor = day
+			'evening':
+				currentcolor = day
+				nextcolor = evening
+			'night':
+				currentcolor = evening
+				nextcolor = night
+		currenttime = time
+		for i in array:
+			tween.interpolate_property(i, 'modulate', currentcolor, nextcolor, changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
+		tween.interpolate_callback(self, changetime, 'finishcolorchange')
 
 func finishcolorchange():
 	daycolorchange = false
 
 func buildcounter(task):
 	var newnode = globals.DuplicateContainerTemplate($TaskCounter)
-	newnode.get_node('Icon').texture = task.worker.icon
+	newnode.get_node('Icon').texture = load(task.worker.icon)
 	newnode.get_node("Progress").value = globals.calculatepercent(task.time, task.threshold)
 	newnode.connect("pressed", self, "OpenWorkerTask", [task])
 	newnode.set_meta('task', task)
@@ -274,8 +280,6 @@ func openblacksmith():
 func openherohiretab():
 	$herohire.show()
 
-func opentownhall():
-	pass
 
 
 func BuildingOptions(building = {}):

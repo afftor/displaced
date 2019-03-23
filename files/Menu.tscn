@@ -159,28 +159,7 @@ texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Label" type="Label" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 13.0
-margin_top = 1047.0
-margin_right = 231.0
-margin_bottom = 1071.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "Version"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Panel" type="Panel" parent="." index="3"]
+[node name="Panel" type="Panel" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -267,11 +246,11 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Options" parent="." index="4" instance=ExtResource( 13 )]
+[node name="Options" parent="." index="3" instance=ExtResource( 13 )]
 
 visible = false
 
-[node name="saveloadpanel" parent="." index="5" instance=ExtResource( 14 )]
+[node name="saveloadpanel" parent="." index="4" instance=ExtResource( 14 )]
 
 visible = false
 margin_left = 594.0
@@ -279,7 +258,7 @@ margin_top = 212.0
 margin_right = 1221.0
 margin_bottom = 735.0
 
-[node name="version" type="Label" parent="." index="6"]
+[node name="version" type="Label" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -293,7 +272,6 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "ver. 0.1.0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

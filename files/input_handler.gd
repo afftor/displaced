@@ -151,9 +151,9 @@ var floatfont = preload("res://FloatFont.tres")
 
 func FloatText(node, text, type = '', color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
 	var textnode = Label.new()
-	node.add_child(textnode)
+	get_tree().get_root().add_child(textnode)
 	textnode.text = text
-	textnode.rect_position = positionoffset
+	textnode.rect_global_position = node.rect_global_position+positionoffset
 	textnode.set("custom_colors/font_color", color)
 	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
 	floatfont.size = 50
@@ -486,4 +486,5 @@ func ActivateTutorial(stage):
 	var node = GetTutorialNode()
 	node.activatetutorial(stage)
 
-
+func ConnectSound(node, sound, action):
+	node.connect(action, input_handler, 'PlaySound', [sound])

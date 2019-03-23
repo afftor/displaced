@@ -23,9 +23,11 @@ var sounds = {
 	crash = load("res://assets/sounds/sounds/crash.wav"),
 	punch = load("res://assets/sounds/sounds/punch.wav"),
 	
+	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
 	
 	slash = load("res://assets/sounds/sounds/fx knife hit solo.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
+	arrowshot = load("res://assets/sounds/sounds/ArrowShot.wav"),
 	heal = load("res://assets/sounds/sounds/healeffect.wav"),
 	itemget = load("res://assets/sounds/sounds/itemget.wav"),
 	itemcreate = load("res://assets/sounds/sounds/itemcraft.wav"),
@@ -33,7 +35,12 @@ var sounds = {
 	#combat
 	victory = load("res://assets/sounds/sounds/victory.wav"),
 	combatmiss = load('res://assets/sounds/sounds/dodge.wav'),
+	dodge = load("res://assets/sounds/sounds/dodge.wav"),
+	levelup = load("res://assets/sounds/sounds/levelup.wav"),
 	
-	
+	#skills
+	arrowshower = load("res://assets/sounds/sounds/arrowshower.wav"),
+	firebolt = load("res://assets/sounds/sounds/firebolt.wav"),
+	firehit = load("res://assets/sounds/sounds/firedamage.wav"),
 	
 }

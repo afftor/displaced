@@ -195,6 +195,12 @@ var effect_table = {
 		conditions = [],
 		effects = [{type = 'delete_effect', effect = 'e_dwarwenbuf'}]
 	},
+	e_tr_treant_barrier = {
+		type = 'trigger',
+		trigger = variables.TR_TURN_S,
+		conditions = [],
+		effects = [{type = 'temp_effect', effect = 'e_addbarrier1', duration = 1, stack = 1}]
+	},
 	#skills
 	e_s_stun05 = {
 		type = 'oneshot',
@@ -205,17 +211,27 @@ var effect_table = {
 		],
 		effects = ['stun1']
 	},
+	e_s_stun = {
+		type = 'oneshot',
+		trigger = variables.TR_HIT,
+		conditions = [
+			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
+		],
+		effects = ['stun1']
+	},
+	e_s_cripple = {
+		type = 'oneshot',
+		trigger = variables.TR_HIT,
+		conditions = [
+			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
+		],
+		effects = ['cripple']
+	},
 	e_s_restoremana20 = {
 		type = 'oneshot',
 		trigger = variables.TR_CAST,
 		conditions = [],
 		effects = [{type = 'stat_once', stat = 'mana', value = 20}]
-	},
-	e_s_treantbarrier = {
-		type = 'oneshot',
-		trigger = variables.TR_CAST,
-		conditions = [],
-		effects = [{type = 'temp_effect', target = 'caster', effect = 'e_addbarrier1', duration = 1, stack = 1}]
 	},
 	e_s_spidernoarmor = {
 		type = 'oneshot',
@@ -233,15 +249,15 @@ var effect_table = {
 	#item skills
 	e_i_barrier2 = {
 		type = 'oneshot',
-		trigger = variables.TR_CAST,
+		trigger = variables.TR_HIT,
 		conditions = [],
-		effects = [{type = 'temp_effect', target = 'caster', effect = 'e_addbarrier2', duration = 2, stack = 1}]
+		effects = [{target = 'target', type = 'temp_effect', effect = 'e_addbarrier2', duration = 2, stack = 1}]
 	},
 	e_i_barrier3 = {
 		type = 'oneshot',
-		trigger = variables.TR_CAST,
+		trigger = variables.TR_HIT,
 		conditions = [],
-		effects = [{type = 'temp_effect', target = 'caster', effect = 'e_addbarrier3', duration = 2, stack = 1}]
+		effects = [{target = 'target', type = 'temp_effect', effect = 'e_addbarrier3', duration = 2, stack = 1}]
 	},
 	e_i_restoremana25 = {
 		type = 'oneshot',
@@ -251,10 +267,10 @@ var effect_table = {
 	},
 	e_i_elixir = {
 		type = 'oneshot',
-		trigger = variables.TR_CAST,
+		trigger = variables.TR_HIT,
 		conditions = [],
-		effects = [{type = 'stat_once', stat = 'mana', value = 40},
-		{type = 'stat_once', stat = 'hp', value = 75}]
+		effects = [{target = 'target', type = 'stat_once', stat = 'mana', value = 40},
+		{target = 'target', type = 'stat_once', stat = 'hp', value = 75}]
 	},
 	#secondary
 	e_stun = {
@@ -361,6 +377,10 @@ var effect_table = {
 		{type = 'stat', stat = 'armor', value = -10} #!!!value to check
 		]
 	},
+	e_cripple = {
+		type = 'static',
+		effects = ['cripple_icon', {type = 'stat', stat = 'damagemod', value = -0.5}]
+	},
 };
 
 var atomic = {
@@ -378,6 +398,7 @@ var atomic = {
 	shield2_icon = {type = 'buff', value = 'shield2'},
 	shield3_icon = {type = 'buff', value = 'shield3'},
 	spider_icon = {type = 'buff', value = 'spider_noarmor'},
+	cripple_icon = {type = 'buff', value = 'cripple'},
 	#add effect
 	stun1 = {type = 'temp_effect', target = 'target', effect = 'e_stun', duration = 1, stack = 10},
 	noevade10 = {type = 'temp_effect', target = 'target', effect = 'e_noevade10', duration = 2, stack = 1},
@@ -391,6 +412,7 @@ var atomic = {
 	killer_eoc = {type = 'effect', effect = 'e_killer_eoc'},
 	noresist = {type = 'temp_effect', target = 'target', effect = 'e_noresist', duration = 1, stack = 1},
 	firefist = {type = 'skill', new_type = 'damage', target = 'target', source = variables.S_FIRE, value = 'value', mul = 0.2},
+	cripple = {type = 'temp_effect', target = 'target', effect = 'e_cripple', duration = 3, stack = 1},
 };
 #needs filling
 var buffs = {
@@ -409,4 +431,5 @@ var buffs = {
 	shield2 = {icon = null, description = null},
 	shield3 = {icon = null, description = null},
 	spider_noarmor = {icon = null, description = null},
+	cripple = {icon = null, description = null},
 };

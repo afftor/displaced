@@ -2,6 +2,7 @@ extends Node
 
 var areas = {
 	forestexplore = {
+		code = 'forestexplore',
 		name = 'Roam at Forest', 
 		category = 'forest',
 		image = '',
@@ -11,6 +12,7 @@ var areas = {
 		stagedenemies = {}
 		},
 	forestelves = {
+		code = 'forestelves',
 		name = 'Search for elves', 
 		category = 'forest',
 		image = '',
@@ -20,6 +22,7 @@ var areas = {
 		stagedenemies = {6 : ""}
 		},
 	caveexplore = {
+		code = 'caveexplore',
 		name = 'Roam at Caves', 
 		category = 'cave',
 		image = '',

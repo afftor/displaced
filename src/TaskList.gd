@@ -98,7 +98,7 @@ func UpdateButtons():
 		$SelectWorker/SelectToolButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
 	if selectedworker != null:
-		$SelectWorker/SelectWorkerButton/Icon.texture = selectedworker.icon
+		$SelectWorker/SelectWorkerButton/Icon.texture = load(selectedworker.icon)
 	else:
 		$SelectWorker/SelectWorkerButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	

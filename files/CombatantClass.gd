@@ -1,19 +1,5 @@
 extends Node
 
-
-
-
-
-
-
-var lootlist = {
-	elvenratloot = {
-		
-		
-	}
-	
-}
-
 var classlist = {
 	warrior = {
 		code = 'warrior',
@@ -21,24 +7,25 @@ var classlist = {
 		description = tr("WARRIORDESCRIPT"),
 		gearsubtypes = ['dagger','sword','axe','spear'],
 		basehp = 200,
-		basemana = 25,
+		basemana = 50,
 		speed = 50,
 		damage = 15,
-		skills = ['attack','slash'],
-		learnableskills = [],
+		skills = ['attack'],
+		learnableskills = {slash = 2},
 		icon = null,
 	},
 	mage = {
 		code = 'mage',
 		name = tr("MAGE"),
 		description = tr("MAGEDESCRIPT"),
-		gearsubtypes = ['rod','dagger'],
-		basehp = 100,
+		gearsubtypes = ['staff','dagger'],
+		basehp = 120,
 		basemana = 100,
 		speed = 30,
 		damage = 15,
-		skills = ['attack', 'firebolt', 'concentrate'],
-		learnableskills = [],
+		skills = ['attack', 'firebolt', 'minorheal'],
+		basetraits = ['mage_trait'],
+		learnableskills = {concentrate = 2, firestorm = 3},
 		icon = null,
 	},
 	archer = {
@@ -50,21 +37,22 @@ var classlist = {
 		basemana = 50,
 		speed = 55,
 		damage = 15,
-		skills = ['attack', 'firebolt', 'concentrate'],
-		learnableskills = [],
+		skills = ['attack', 'windarrow'],
+		basetraits = ['arch_trait'],
+		learnableskills = {heavyshot = 2, arrowshower = 3},
 		icon = null,
 	},
 	brawler = {
 		code = 'brawler',
 		name = tr("BRAWLER"),
 		description = tr("BRAWLERDESCRIPT"),
-		gearsubtypes = [],
+		gearsubtypes = ['sword', 'axe'],
 		basehp = 175,
 		basemana = 50,
 		speed = 40,
 		damage = 15,
-		skills = ['attack', 'comboattack'],
-		learnableskills = [],
+		skills = ['attack', 'tackle'],
+		learnableskills = {cripple = 2, comboattack = 3},
 		icon = null,
 	}
 }
@@ -72,35 +60,39 @@ var classlist = {
 var charlist = {
 	Arron = {
 		code = 'Arron',
-		name = tr('ARRON'),
+		name = 'ARRON',
 		icon = 'ArronSmile',
 		combaticon = 'arron',
 		image = 'Arron',
 		subclass = 'warrior',
+		flavor = 'The honorable me',
 	},
 	Rose = {
 		code = 'Rose',
-		name = tr('ROSE'),
+		name = 'ROSE',
 		icon = 'RoseNormal',
 		combaticon = 'rose',
 		image = 'Rose',
 		subclass = 'mage',
+		flavor = 'My loyal pet',
 	},
 	Erika = {
 		code = 'Erika',
-		name = tr('ERIKA'),
+		name = 'ERIKA',
 		icon = 'ErikaNormal',
 		combaticon = 'erika',
 		image = 'Erika',
 		subclass = 'archer',
+		flavor = 'An elven gal',
 	},
 	Ember = {
 		code = 'Ember',
-		name = tr('EMBER'),
+		name = 'EMBER',
 		icon = 'EmberFriendly',
 		combaticon = 'ember',
 		image = 'emberhappy',
 		subclass = 'brawler',
+		flavor = 'A dragon gal',
 	},
 }
 

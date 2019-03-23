@@ -51,11 +51,45 @@ var TranslationDict = {
 	
 	WEAPONAXEDESCRIPT = 'Axe can be used for wood cutting and combat.',
 	WEAPONSWORDDESCRIPT = "Good damage vs unarmored enemies.",
+	WEAPONPICKAXEDESCRIPT = "Allows workers to harvest ore.",
+	WEAPONBOWDESCRIPT = "Simple weapon for ranged fighters.",
+	WEAPONSTAFFDESCRIPT = "A simple tool for magic users.",
 	
 	ARMORBASICCHEST = "Chestplate",
+	ARMORROBE = "Robe",
+	ARMORHOOD = "Hood",
+	ARMORSHOES = "Shoes",
+	ARMORBASICCHESTDESCRIPT = "Offers basic body protection.",
+	ARMORBASICHELM = "Helmet",
+	ARMORBASICHELMDESCRIPT = "Offers basic head protection.",
+	ARMORBASICBOOTS = "Boots",
+	ARMORBASICBOOTSDESCRIPT = "Offers basic foot protection",
+	ARMORBASICGLOVES = "Gloves",
+	ARMORBASICGLOVESDESCRIPT = "Offers basic hand protection",
 	
 	USABLEMORSEL = "Morsel",
-	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted to Food.",
+	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted into Food.",
+	
+	#enemies
+	MONSTERELVENRAT = "Elven Rat",
+	MONSTERELVENRATFLAVOR = "These animals are fairly common in most areas. Distinct ears make them accumulate all sorts of moniker, but goblins seem to label them exactly this way...",
+	MONSTERTREANT = "Ent",
+	MONSTERTREANTFLAVOR = "Despite its looks, this thing is actually a plant. Often disguise itself as a simple trump for a nasty surprise.",
+	MONSTERBIGTREANT = "Big Ent",
+	MONSTERBIGTREANTFLAVOR = "Big ents are somewhat mobile and quite dangerous when provoked.",
+	MONSTEREARTHGOLEM = "Earth Golem",
+	MONSTEREARTHGOLEMFLAVOR = "A magic creature of considerable power. They seem to roam around some caves and dungeons with little thought. I would expect more from hand-made slave. ",
+	MONSTERSPIDER = "Spider",
+	MONSTERSPIDERFLAVOR = "Of course just ents weren't enough...",
+	MONSTERFAIRIES = "Fairies",
+	MONSTERFAIRIESFLAVOR = "If not for their nasty nature, I would even consider them appealing.",
+	MONSTERANGRYDWARF = "Angry Dwarf",
+	MONSTERANGRYDWARFFLAVOR = "Dumb but damn strong for their size. Despite my best attempts, they didn't seem to be up for any sort of negotiation. ",
+	#gearclasses
+	GEARSWORD = "Swords",
+	GEARAXE = "Axes",
+	GEARSTAFF = "Staves",
+	GEARBOW = "Bows",
 	
 	#Stats
 	DAMAGE = 'Damage',
@@ -73,8 +107,23 @@ var TranslationDict = {
 	RESISTWATER = "Water Res.",
 	HEALTHPERCENT = "Max. Health",
 	MANAPERCENT = "Max. Mana",
+	CRITICAL = "Critical",
+	CRITCHANCE = "Crit. Chance",
+	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
+	
+	#stat tooltips
+	TOOLTIPDAMAGE = "Defines damage output of skills and spells",
+	TOOLTIPARMOR = "Reduces skill damage taken by this percent",
+	TOOLTIPMDEF = "Reduces spell damage taken by this percent",
+	TOOLTIPCRIT = "Percent chance to crit for extra damage\nFirst value is a chance. Second value is a modifier.",
+	TOOLTIPHITRATE = "Percent chance to hit target\nReduced by enemy's evasion",
+	TOOLTIPARMORPEN = "Reduces enemy armor by this value",
+	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
+	TOOLTIPSPEED = "Improves your odds to act before other characters",
+	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
+	
 	
 	
 	#Item Parts
@@ -147,7 +196,12 @@ var TranslationDict = {
 	MAINQUESTUPDATED = "Main Quest Updated",
 	QUESTLOG = "Quest Log",
 	NOACTIVEQUESTS = "You have no active quests.",
-	
+	INVALIDCLASS = "Invalid class for this gear.",
+	NOTENOUGHGOLD = "Not enough gold",
+	PURCHASETHISTRAIT = "Purchase this trait",
+	TRAITPOINTSCOST = "Trait Points",
+	TRAITPOINTS = "Trait Points used",
+	GOLDPRICE = "Gold Cost",
 	
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
@@ -155,6 +209,8 @@ var TranslationDict = {
 	TOTALWORKERS = "Total Workers",
 	
 	TUTORIAL = "Tutorial",
+	TRAITS = "Traits",
+	CLASSINFO = "Class Details",
 	
 	INVENTORY = "Inventory",
 	WORKERLIST = "Worker List",
@@ -171,6 +227,9 @@ var TranslationDict = {
 	RAWPRICE = "Raw Price",
 	FOODDESCRIPT = "Food is used to feed workers. ",
 	MONEYDESCRIPT = "Money are used to purchase goods and workers.",
+	
+	AREAISENDLESS = "This area has no progression",
+	TOWNRETURN = "Return",
 	
 	#Confirms
 	
@@ -192,6 +251,20 @@ var TranslationDict = {
 	HARVESTWOOD = "Harvest Lumber",
 	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation",
 	
+	#Classes
+	CLASSDESCRIPT = "Class defines character's basic characteristics, abilities, specific traits and allowed gear. More abilities are unlocked as you level up. After certain level you can advance into one of the new classes.",
+	WARRIOR = "Warrior",
+	MAGE = "Mage",
+	ARCHER = "Archer",
+	BRAWLER = "Brawler",
+	WARRIORDESCRIPT = "Warrior is a strong melee class focusing on tanking and dealing damage. They can handle many weapons but lack in magic and range. ",
+	MAGEDESCRIPT = "Mage is a supporting class capable of both healing and slinging powerful area spells. ",
+	ARCHERDESCRIPT = "Archer is a ranged damaging class. Having access to some spells, they can hit any target on the battlefield. ",
+	BRAWLERDESCRIPT = "Brawler is a melee supporting class. They specialize in using special attacks for crowd control. ",
+	MAGETRAITDESCRIPT = "Gain 1 bonus Damage for every 2 bonus Magic Armor.",
+	ARCHERTRAITDESCRIPT = "Gain 1 bonus Hit Rate for every 1 bonus Evasion.",
+	CLASSALLOWEDWEAPONS = "Allowed gear",
+	CLASSTRAIT = "Class bonus",
 	
 	#Names
 	ARRON = 'Arron',
@@ -202,6 +275,7 @@ var TranslationDict = {
 	GUARD2 = 'Guard2',
 	GUARD3 = 'Guard3',
 	NORBERT = 'Norbert',
+	DEMITRIUS = "Demitrius",
 	LYRA = "Lyra",
 	FLAK = "Flak",
 	
