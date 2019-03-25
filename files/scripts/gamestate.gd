@@ -23,7 +23,7 @@ var lognode
 var oldmaterials = {}
 var unlocks = []
 
-var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
 
 var CurrentTextScene
@@ -44,6 +44,13 @@ var activequests = []
 var completedquests = []
 var areaprogress = {}
 var currentarea
+
+func pos_set(value):
+	combatparty = value;
+	for p in combatparty:
+		if combatparty[p] == null: continue;
+		heroes[combatparty[p]].position = p;
+
 
 func _init():
 	oldmaterials = materials.duplicate()
@@ -228,7 +235,7 @@ func serialize():
 
 func deserialize(tmp):
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine'];
-	var arr2 = ['townupgrades', 'tasks', 'unlocks', 'combatparty', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests'];
+	var arr2 = ['townupgrades', 'tasks', 'unlocks', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests'];
 	#var arr3 = ['workers', 'heroes', 'items', 'heroguild'];
 	for prop in arr:
 		set(prop, tmp[prop]);
@@ -260,5 +267,6 @@ func deserialize(tmp):
 	itemidcounter = int(itemidcounter);
 	heroidcounter = int(heroidcounter);
 	workeridcounter = int(workeridcounter);
+	combatparty = tmp.combatparty.duplicate();
 	oldmaterials = materials.duplicate();
 	pass
