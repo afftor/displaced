@@ -6,6 +6,8 @@ var area
 var turns = 0
 var animationskip = false
 
+var encountercode
+
 var combatlog = ''
 
 var instantanimation = null
@@ -100,6 +102,7 @@ func start_combat(newenemygroup, background):
 
 func FinishCombat():
 	hide()
+	input_handler.emit_signal("CombatEnded", encountercode)
 	input_handler.SetMusic("towntheme")
 	get_parent().levelupscheck()
 	globals.call_deferred('EventCheck')
@@ -524,9 +527,14 @@ func ShowFighterStats(fighter):
 	if fightover == true:
 		return
 	var text = ''
-	text += '\nHealth: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
-	if fighter.manamax > 0:
-		text += "\nMana: " + str(fighter.mana) + '/' + str(fighter.manamax)
+	if fighter.combatgroup == 'ally':
+		text += '\nHealth: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
+		if fighter.manamax > 0:
+			text += "\nMana: " + str(fighter.mana) + '/' + str(fighter.manamax)
+	else:
+		text += '\nHealth: ' + str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + "%"
+		if fighter.manamax > 0:
+			text += "\nMana: " + str(globals.calculatepercent(fighter.mana, fighter.manamax)) + "%"
 	text += "\n\n"
 	text += "Damage: " + str(fighter.damage) + "\nCritical Chance/Mod: " + str(fighter.critchance) + "%/" + str(fighter.critmod*100) + '%' + "\nHit Rate: " + str(fighter.hitrate) + "\nArmor Penetration: " + str(fighter.armorpenetration) + "\n\n"
 	text += "Armor: " + str(fighter.armor) + "\nEvasion: " + str(fighter.evasion) + "\nSpeed: " + str(fighter.speed) + "\nResists: "
@@ -690,12 +698,6 @@ func use_skill(skill_code, caster, target):
 					input_handler.PlaySound(skill.sounddata.hit)
 				elif skill.sounddata.hittype == 'bodyarmor':
 					input_handler.PlaySound(calculate_hit_sound(skill, caster, target))
-#		if hitchance(skill,caster,i) == 'hit':
-#			execute_skill(skill, caster, i)
-#			for j in skilleffects.onhit:
-#				SendSkillEffect(j, caster, i)
-#		else:
-#			miss(target)
 
 	if activeitem != null:
 		activeitem.amount -= 1
@@ -956,6 +958,10 @@ func ActivateItem(item):
 
 func get_weapon_sound(caster):
 	var item = caster.gear.rhand
+	if state.items.has(item):
+		item = state.items[item]
+	else:
+		item = null
 	if item == null:
 		return 'dodge'
 	else:
@@ -969,14 +975,17 @@ func calculate_hit_sound(skill, caster, target):
 	else:
 		hitsound = skill.sounddata.strike
 	
-	if hitsound == 'dodge':
-		match target.bodyhitsound:
-			'flesh':
-				pass
-			'wood':
-				pass
-			'stone':
-				pass
+	match hitsound:
+		'dodge':
+			match target.bodyhitsound:
+				'flesh':pass
+				'wood':pass
+				'stone':pass
+		'blade':
+			match target.bodyhitsound:
+				'flesh':pass
+				'wood':pass
+				'stone':pass
 	rval = 'fleshhit'
 	
 	return rval

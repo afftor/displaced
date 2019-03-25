@@ -53,4 +53,6 @@
 {"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"..."},
 {"delay":0.1,"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Democracy was a mistake."},
 {"args":1,"delay":1,"effect":"sfx","value":"blackscreentransition"},
+{"effect":"state","value":"character_add", "args":"arron"},
+{"effect":"state","value":"character_add", "args":"rose"},
 {"effect":"stop","value":""}]

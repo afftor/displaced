@@ -36,6 +36,11 @@ var checks = {
 	],
 	"Market 2":
 	[
+		{},
+		{type = "has_upgrade", name = "bridge", value = 1}
+	],
+	"bridge":
+	[
 		{type = "has_upgrade", name = "bridge", value = 1}
 	],
 	"Market 3":

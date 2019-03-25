@@ -9,4 +9,5 @@
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"So why do they no longer come here? "},
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"No clue. I prefer not to stick my nose into their... lifestyle. Maybe you can figure it out."},
 {"delay":0.1,"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Speaking of which, the elves might have some clues for our problem."},
+{"effect":"state","value":"make_quest", "args":"elves"},
 {"effect":"stop","value":""}]

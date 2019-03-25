@@ -224,7 +224,7 @@ var Items = {
 	availslots = ['rhand'],
 	hitsound = 'blade',
 	},
-	sword = {name = tr("WEAPONSWORDNAME"), code = 'axe', description = tr("WEAPONSWORDDESCRIPT"),
+	sword = {name = tr("WEAPONSWORDNAME"), code = 'sword', description = tr("WEAPONSWORDDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/SwordBasic.png"),
 	basedurability = 100.0,
 	basestats = {damage = 25},

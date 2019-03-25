@@ -71,10 +71,13 @@ func HeroSelected(hero):
 	state.combatparty[SelectingPosition] = hero.id
 	UpdatePositions()
 
+var encountercode
 
 func StartCombat(data):
 	var enemies = data.duplicate()
 	enemies = makerandomgroup(enemies)
+	input_handler.emit_signal("CombatStarted", encountercode)
+	$combat.encountercode = encountercode 
 	$combat.start_combat(enemies, area.category)
 	$combat.show()
 
@@ -128,6 +131,8 @@ func makerandomgroup(pool):
 			
 			combatparty[temparray[randi()%temparray.size()]] = i.units
 			i.number -= 1
+	
+	encountercode = enemygroup.code
 	
 	return combatparty
 

@@ -19,7 +19,7 @@ var areas = {
 		stages = 6, 
 		enemygroups = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard'], 
 		requirements = [{type = "main_progress", operant = "eq", value = 1}], 
-		stagedenemies = {6 : ""}
+		stagedenemies = {6 : "forestboss"}
 		},
 	caveexplore = {
 		code = 'caveexplore',

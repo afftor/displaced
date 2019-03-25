@@ -5,18 +5,18 @@ var locationgroups = {
 }
 
 var predeterminatedgroups = {
-	boss = {weight = 0.1, group = {2 : 'bigtreant'}},
+	forestboss = {weight = 0.1, group = {2 : 'bigtreant'}, code = 'forestboss'},
 	
 	
 	
 }
 
 var randomgroups = {
-	foresteasy = {units = {elvenrat = [1,2]}, weight = 1},
-	foresteasymed = {units = {elvenrat = [2,4]}, weight = 1},
-	forestmedium = {units = {elvenrat = [1,3], treant = [0,1]}, weight = 1},
-	forestmedium2 = {units = {elvenrat = [1,2], treant = [1,2]}, weight = 1},
-	foresthard = {units = {treant = [2,3], elvenrat = [1,2]}, weight = 1},
+	foresteasy = {units = {elvenrat = [1,2]}, weight = 1, code = 'foresteasy'},
+	foresteasymed = {units = {elvenrat = [2,4]}, weight = 1, code = 'foresteasymed'},
+	forestmedium = {units = {elvenrat = [1,3], treant = [0,1]}, weight = 1, code = 'forestmedium'},
+	forestmedium2 = {units = {elvenrat = [1,2], treant = [1,2]}, weight = 1, code = 'forestmedium2'},
+	foresthard = {units = {treant = [2,3], elvenrat = [1,2]}, weight = 1, code = 'foresthard'},
 	
 	
 }

@@ -249,6 +249,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="Template" type="TextureButton" parent="Panel/PlayerGroup/Back/left" index="0"]
 
 pause_mode = 2
+editor/display_folded = true
 visible = false
 material = SubResource( 2 )
 anchor_left = 0.0

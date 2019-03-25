@@ -8,4 +8,5 @@
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Do note, that you might be able to get different results from using different workers, so make sure to give it a try."},
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Are you just making me spend more money on your service?"},
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Shut up. I'll charge you extra for them now."},
+{"effect":"state","value":"finish_quest", "args":"elves"},
 {"effect":"stop","value":""}]

@@ -245,6 +245,8 @@ func AdvanceScene():
 				StopEvent()
 			'stop':
 				StopEvent()
+			'state':
+				StateEffect(NewEffect.value, NewEffect.args)
 		if NewEffect.has('delay'):
 			Delay = NewEffect.delay
 		
@@ -260,6 +262,17 @@ func SpriteDo(node, value, args):
 			input_handler.FadeAnimation(node, args)
 		'hide':
 			node.texture = null
+
+func StateEffect(value, args):
+	match value:
+		'character_add':
+			combatantdata.MakeCharacterFromData(args)
+		'make_quest':
+			state.MakeQuest(args)
+		"advance_quest":
+			state.AdvanceQuest(args)
+		"finish_quest":
+			state.FinishQuest(args)
 
 func QuestSet(value, args):
 	match value:

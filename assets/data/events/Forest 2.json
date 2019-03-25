@@ -78,4 +78,6 @@
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Looks good to me, let's go. "},
 {"delay":0.1,"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"(...)"},
 {"args":1,"delay":1,"effect":"sfx","value":"blackscreentransition"},
+{"effect":"state","value":"character_add", "args":"erika"},
+{"effect":"state","value":"advance_quest", "args":"elves"},
 {"effect":"stop","value":""}]

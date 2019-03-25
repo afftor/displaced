@@ -86,5 +86,6 @@
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Well, that's the better for us, but I'll have to tax you for taking town's space. "},
 {"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"Okay!"},
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Ember has joined the settlement. Forge is available now."},
+{"effect":"state","value":"character_add", "args":"ember"},
 {"effect":"town","value":"forge"},
 {"effect":"stop","value":""}]

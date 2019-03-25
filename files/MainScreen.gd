@@ -19,27 +19,7 @@ func _ready():
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	globals.CurrentScene = self
 	tasks = state.tasks
-#	var x = 3
-#	while x > 1:
-#		var y = combatantdata.combatant.new()
-#		y.createfromclass('warrior')
-#		x -= 1
-#		state.heroes[y.id] = y
-	
-	var character = globals.combatant.new()
-	character.createfromname('Arron')
-	character.baseexp = 90
-	character.hp = 100
-	state.heroes[character.id] = character
-	
-	character = globals.combatant.new()
-	character.createfromname('Rose')
-	state.heroes[character.id] = character
-	
-	character = globals.combatant.new()
-	character.createfromname('Ember')
-	state.heroes[character.id] = character
-	
+	combatantdata.MakeCharacterFromData("arron")
 	input_handler.SetMusic("towntheme")
 	
 	var speedvalues = [0,1,10]
@@ -54,7 +34,6 @@ func _ready():
 	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
-	$TownHallNode.connect("pressed",self,'opentownhall')
 	$BlacksmithNode.connect("pressed",self,'openblacksmith')
 	$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
 	$TownHallNode.connect("pressed",self,'OpenTownhall')
@@ -64,6 +43,20 @@ func _ready():
 	
 	if debug == true:
 		state.OldEvents['Market'] = 0
+		
+		var character = globals.combatant.new()
+		character.createfromname('Arron')
+		character.baseexp = 90
+		character.hp = 100
+		state.heroes[character.id] = character
+	
+		character = globals.combatant.new()
+		character.createfromname('Rose')
+		state.heroes[character.id] = character
+	
+		character = globals.combatant.new()
+		character.createfromname('Ember')
+		state.heroes[character.id] = character
 		
 		var worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
