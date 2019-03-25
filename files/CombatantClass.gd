@@ -57,6 +57,23 @@ var classlist = {
 	}
 }
 
+var chardata = {
+	arron = {code = "Arron", gear = [{item = 'sword', parts = {ToolHandle = 'wood', Blade = 'wood'}}], details = []},
+	rose = {code = "Rose", gear = [{item = 'staff', parts = {ToolHandle = 'wood', Rod = 'wood'}}], details = []},
+	ember = {code = "Ember", gear = [{item = 'staff', parts = {ToolHandle = 'wood', Rod = 'wood'}}], details = []},
+	erika = {code = "Erika", gear = [{item = 'Bow', parts = {ToolHandle = 'wood', BowBase = 'wood'}}], details = []},
+}
+
+func MakeCharacterFromData(code):
+	var data = chardata[code]
+	var character = globals.combatant.new()
+	character.createfromname(data.code)
+	state.heroes[character.id] = character
+	for i in data.gear:
+		var newitem = globals.CreateGearItem(i.item, i.parts)
+		globals.AddItemToInventory(newitem)
+		character.equip(newitem)
+
 var charlist = {
 	Arron = {
 		code = 'Arron',

@@ -189,17 +189,6 @@ func ChangeScene(name):
 	get_tree().get_root().add_child(loadscreen)
 	loadscreen.goto_scene(scenedict[name])
 
-func StartCombat(enemygroup):
-	pass
-
-#func LoadEventData():
-#	if file.file_exists("res://assets/data/eventdata.json"):
-#		file.open("res://assets/data/eventdata.json", File.READ);
-#		EventList = parse_json(file.get_as_text());
-#		file.close();
-#	else:
-#		print('Event not found: ' + name)
-#	pass
 
 func EventCheck():
 	if state.CurEvent != "": return;

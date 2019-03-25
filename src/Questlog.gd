@@ -2,7 +2,7 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var queststext = {
 	elves = {
-		1 : "Search Eastern Forest for elves",
+		1 : "Search Eastern Forest for Elves",
 		2 : "Report your discoveries to Flak"
 		},
 	demitrus = {

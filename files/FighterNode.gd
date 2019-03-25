@@ -1,7 +1,5 @@
 extends Node
 
-func _ready():
-	pass
 
 signal signal_RMB
 signal signal_RMB_release
@@ -78,3 +76,4 @@ func update_mp_label():
 func defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
 	input_handler.FadeAnimation(self, 0.5, 0.3)
+	set_process_input(false)

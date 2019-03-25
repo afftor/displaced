@@ -25,7 +25,7 @@ var sounds = {
 	
 	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
 	
-	slash = load("res://assets/sounds/sounds/fx knife hit solo.wav"),
+	blade = load("res://assets/sounds/sounds/dodge.wav"),#load("res://assets/sounds/sounds/fx knife hit solo.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
 	arrowshot = load("res://assets/sounds/sounds/ArrowShot.wav"),
 	heal = load("res://assets/sounds/sounds/healeffect.wav"),

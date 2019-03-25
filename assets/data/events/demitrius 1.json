@@ -55,4 +55,5 @@
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"I mean, we gladly will help you out, Father Demitrius."},
 {"effect":"text","portrait":"Demitrius","sound":null,"source":"DEMITRIUS","value":"I'm glad to know this village is so highly spirited. Once you prepare, I'll be waiting for you at the exit."},
 {"args":0.5,"delay":1,"effect":"sfx","value":"blackscreenunfade"},
+{"effect":"state","value":"make_quest", "args":"demitrus"},
 {"effect":"stop","value":""}]

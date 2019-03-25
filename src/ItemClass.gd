@@ -27,7 +27,7 @@ var bonusstats = {} #bonus stats apply to chars
 var parts = {}
 var effects = []
 var task
-var owner = -1;
+var owner = null
 var partcolororder
 var broken = false
 var tags = []
@@ -302,5 +302,4 @@ func deserialize(tmp):
 	inventory = state.items;
 	id = int(id);
 	if owner != null: owner = int(owner);
-	pass
 

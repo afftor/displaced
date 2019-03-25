@@ -113,7 +113,7 @@ func ProgressMainStage(stage = null):
 func MakeQuest(code):
 	activequests.append({code = code, stage = 1})
 
-func ProgressQuest(code):
+func AdvanceQuest(code):
 	for i in activequests:
 		if i.code == code:
 			i.stage += 1
