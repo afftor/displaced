@@ -146,7 +146,9 @@ func checkdeaths():
 			battlefield[i].death()
 			turnorder.erase(battlefield[i])
 			if summons.has(i):
-				battlefield[i] = null;
+				battlefield[i].displaynode.queue_free()
+				battlefield[i].displaynode = null
+				battlefield[i] = null
 				summons.erase(i);
 				#not yet implemented clearing of related panel
 				#make_fighter_panel(battlefield[i], i)
@@ -458,6 +460,7 @@ func make_fighter_panel(fighter, spot):
 	#or simply implement func clear_fighter_panel(pos)
 	var container = battlefieldpositions[spot]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
+	panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
 	fighter.displaynode = panel
 	panel.name = 'Character'
 	panel.set_script(load("res://files/FighterNode.gd"))
@@ -481,6 +484,14 @@ func make_fighter_panel(fighter, spot):
 	panel.get_node("Label").text = fighter.name
 	container.add_child(panel)
 	panel.rect_position = Vector2(0,0)
+	#setuping target glowing
+	var g_color;
+	if spot < 7:
+		g_color = Color(0.0, 1.0, 0.0, 0.0);
+	else:
+		g_color = Color(1.0, 0.0, 0.0, 0.0);
+	panel.material.set_shader_param('modulate', g_color);
+	
 	panel.visible = true
 
 var fighterhighlighted = false
@@ -497,6 +508,10 @@ func FighterMouseOver(fighter):
 			Input.set_custom_mouse_cursor(cursors.attack)
 		else:
 			Input.set_custom_mouse_cursor(cursors.support)
+		var cur_targets = [];
+		cur_targets = CalculateTargets(Skillsdata.skilllist[activeaction], activecharacter, fighter); 
+		for c in cur_targets:
+			Target_Glow(c.position);
 
 
 func FighterMouseOverFinish(fighter):
@@ -506,6 +521,7 @@ func FighterMouseOverFinish(fighter):
 		panel.get_node("hplabel").hide()
 		panel.get_node("mplabel").hide()
 	Input.set_custom_mouse_cursor(cursors.default)
+	Stop_Target_Glow();
 
 func ShowFighterStats(fighter):
 	if fightover == true:
@@ -859,16 +875,34 @@ func Highlight(pos, type):
 	match type:
 		'selected':
 			input_handler.SelectionGlow(node)
-		'target':
-			input_handler.TargetGlow(node)
-		'targetsupport':
-			input_handler.TargetSupport(node)
-		'enemy':
-			input_handler.TargetEnemyTurn(node)
+#		'target':
+#			input_handler.TargetGlow(node)
+#		'targetsupport':
+#			input_handler.TargetSupport(node)
+#		'enemy':
+#			input_handler.TargetEnemyTurn(node)
 
 func StopHighlight(pos):
 	var node = battlefieldpositions[pos].get_node("Character")
 	input_handler.StopTweenRepeat(node)
+
+func Target_Glow (pos):
+	var node = battlefieldpositions[pos].get_node("Character");
+	if node == null: return;
+	var temp = node.material.get_shader_param('modulate');
+	temp.a = 1.0;
+	node.material.set_shader_param('modulate', temp);
+
+func Stop_Target_Glow ():
+	for pos in range(1,13):
+		var p_node = battlefieldpositions[pos];
+		if !p_node.has_node('Character'): continue;
+		var node = p_node.get_node("Character");
+		#if node == null: continue;
+		#node.material.shader_param.Modulate.a = 0.0;
+		var temp = node.material.get_shader_param('modulate');
+		temp.a = 0.0;
+		node.material.set_shader_param('modulate', temp);
 
 func ClearSkillPanel():
 	globals.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
