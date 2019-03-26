@@ -98,7 +98,7 @@ var charlist = {
 		name = 'ERIKA',
 		icon = 'ErikaNormal',
 		combaticon = 'erika',
-		image = 'Erika',
+		image = 'erika',
 		subclass = 'archer',
 		flavor = 'An elven gal',
 	},
