@@ -5,7 +5,7 @@ func _ready():
 	$Quit.connect("pressed",self, "Quit")
 
 func Accept():
-	pass
+	hide()
 
 func Quit():
-	pass
+	get_tree().quit()

@@ -197,17 +197,17 @@ func valuecheck(dict):
 			return newgame
 		"has_upgrade":
 			return if_has_upgrade(dict.name, dict.value)
-		"has_progress":
-			if dict.has('area'):
-				return if_has_area_progress(dict.value, dict.operant, dict.area)
-			else: 
-				return if_has_progress(dict.value, dict.operant)
+		"main_progress":
+			return if_has_progress(dict.value, dict.operant)
+		"area_progress":
+			return if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
 			return decisions.has(dict.name)
 		"quest_completed":
 			return completedquests.has(dict.name)
 
 func if_has_area_progress(value, operant, area):
+	if !areaprogress.has(area):return false;
 	return input_handler.operate(operant, areaprogress[area], value)
 
 func if_has_progress(value, operant):

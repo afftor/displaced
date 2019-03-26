@@ -15,7 +15,7 @@
 [ext_resource path="res://files/Options.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=14]
 
-[node name="Menu" type="Node" index="0"]
+[node name="Menu" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -161,20 +161,22 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Panel" type="Panel" parent="." index="2"]
 
+modulate = Color( 1, 1, 1, 0.607765 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1700.0
-margin_top = 122.0
-margin_right = 1886.0
-margin_bottom = 499.0
+margin_left = 1730.0
+margin_top = 742.0
+margin_right = 1916.0
+margin_bottom = 1075.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" index="0"]
 
