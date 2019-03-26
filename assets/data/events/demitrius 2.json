@@ -1,4 +1,6 @@
-[{"effect":"background","value":"cave"},
+[
+{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenunfade"}
+{"effect":"background","value":"cave"},
 {"effect":"music","value":"eventlight"},
 {"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
 {"effect":"gui","value":"gui_normal"},
@@ -16,4 +18,5 @@
 {"effect":"text","portrait":"ErikaNormal","sound":null,"source":"Erika","value":"Unless you are interested in my oral skills."},
 {"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"*Sigh* Let's just get this over with."},
 {"args":1,"delay":1,"effect":"sfx","value":"blackscreentransition"},
+{"effect":"background","value":"Null"},
 {"effect":"stop","value":""}]

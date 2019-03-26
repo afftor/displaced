@@ -531,6 +531,7 @@ func ShowFighterStats(fighter):
 		return
 	var text = ''
 	if fighter.combatgroup == 'ally':
+
 		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
 		if fighter.manamax > 0:
 			$StatsPanel/mana.text = "Mana: " + str(fighter.mana) + '/' + str(fighter.manamax)
@@ -551,6 +552,7 @@ func ShowFighterStats(fighter):
 	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.mdef)
 	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.evasion) 
 	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
+
 	for i in ['fire','water','earth','air']:
 		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter['resist'+i]) + " "
 	$StatsPanel.show()
@@ -702,8 +704,10 @@ func use_skill(skill_code, caster, target):
 					input_handler.PlaySound(skill.sounddata.hit)
 				elif skill.sounddata.hittype == 'bodyarmor':
 					input_handler.PlaySound(calculate_hit_sound(skill, caster, target))
+
 		if animationdict.predamage.size() > 0:
 			yield(CombatAnimations, 'alleffectsfinished')
+
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null

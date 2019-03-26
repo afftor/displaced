@@ -77,3 +77,16 @@ func defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
 	input_handler.FadeAnimation(self, 0.5, 0.3)
 	set_process_input(false)
+
+
+func update_shield():
+	if fighter.shield <= 0: 
+		$shield.visible = false;
+		return
+	else:
+		$shield.visible = true;
+		match fighter.shieldtype:
+			variables.S_AIR: #tempate, add all other values from this enum
+				$shield.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 1.0)); #example
+	pass
+
