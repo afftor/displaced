@@ -57,7 +57,7 @@ func _ready():
 		character = globals.combatant.new()
 		character.createfromname('Ember')
 		state.heroes[character.id] = character
-		
+		combatantdata.MakeCharacterFromData('erika')
 		var worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
 		worker = globals.worker.new()

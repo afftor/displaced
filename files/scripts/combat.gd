@@ -81,6 +81,7 @@ func _process(delta):
 
 func start_combat(newenemygroup, background):
 	$Background.texture = images.backgrounds[background]
+	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
@@ -101,6 +102,11 @@ func start_combat(newenemygroup, background):
 	select_actor()
 
 func FinishCombat():
+	for i in battlefield:
+		if battlefield[i] != null:
+			battlefield[i].displaynode.queue_free()
+			battlefield[i].displaynode = null
+			battlefield[i] = null
 	hide()
 	input_handler.emit_signal("CombatEnded", encountercode)
 	input_handler.SetMusic("towntheme")
@@ -175,6 +181,7 @@ func checkwinlose():
 var rewardsdict
 
 func victory():
+	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
 	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
@@ -266,11 +273,7 @@ func victory():
 	#yield(get_tree().create_timer(1), 'timeout')
 	$Rewards/CloseButton.disabled = false
 	
-	for i in battlefield:
-		if battlefield[i] != null:
-			battlefield[i].displaynode.queue_free()
-			battlefield[i].displaynode = null
-			battlefield[i] = null
+	
 
 
 func defeat():
@@ -528,23 +531,31 @@ func ShowFighterStats(fighter):
 		return
 	var text = ''
 	if fighter.combatgroup == 'ally':
-		text += '\nHealth: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
+		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
 		if fighter.manamax > 0:
-			text += "\nMana: " + str(fighter.mana) + '/' + str(fighter.manamax)
+			$StatsPanel/mana.text = "Mana: " + str(fighter.mana) + '/' + str(fighter.manamax)
+		else:
+			$StatsPanel/mana.text = ''
 	else:
-		text += '\nHealth: ' + str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + "%"
+		$StatsPanel/hp.text = 'Health: ' + str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + "%"
 		if fighter.manamax > 0:
-			text += "\nMana: " + str(globals.calculatepercent(fighter.mana, fighter.manamax)) + "%"
-	text += "\n\n"
-	text += "Damage: " + str(fighter.damage) + "\nCritical Chance/Mod: " + str(fighter.critchance) + "%/" + str(fighter.critmod*100) + '%' + "\nHit Rate: " + str(fighter.hitrate) + "\nArmor Penetration: " + str(fighter.armorpenetration) + "\n\n"
-	text += "Armor: " + str(fighter.armor) + "\nEvasion: " + str(fighter.evasion) + "\nSpeed: " + str(fighter.speed) + "\nResists: "
+			$StatsPanel/mana.text = "Mana: " + str(globals.calculatepercent(fighter.mana, fighter.manamax)) + "%"
+		else:
+			$StatsPanel/mana.text = ''
+	$StatsPanel/damage.text = "Damage: " + str(fighter.damage) 
+	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.critchance) + "%/" + str(fighter.critmod*100) + '%' 
+	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
+	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)
+	
+	$StatsPanel/armor.text = "Armor: " + str(fighter.armor) 
+	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.mdef)
+	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.evasion) 
+	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
 	for i in ['fire','water','earth','air']:
-		if fighter['resist'+i] != 0:
-			text += i.capitalize() + " - " + str(fighter['resist'+i]) + " "
+		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter['resist'+i]) + " "
 	$StatsPanel.show()
 	$StatsPanel/name.text = tr(fighter.name)
 	$StatsPanel/descript.text = fighter.flavor
-	$StatsPanel/RichTextLabel.bbcode_text = text
 	$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
 
 func HideFighterStats():
@@ -631,22 +642,13 @@ func SendSkillEffect(skilleffect, caster, target):
 	
 
 func use_skill(skill_code, caster, target):
-	var debugtext = caster.name + ' uses ' + skill_code + ' on ' + target.name
+	combatlogadd('\n'+ caster.name + ' uses ' + skill_code + ". ")
 	allowaction = false
 	
 	var skill = globals.skills[skill_code]
 	
 	caster.mana -= skill.manacost
 	
-	#making skill effects dict
-#	var skilleffects = {oncast = [], onhit = []}
-#
-#	for i in skill.casteffects:
-#		skilleffects[i.period].append(i)
-#
-#	for i in skilleffects.oncast:
-#		SendSkillEffect(i, caster, target)
-	#oncast effects. FOR SKILLS - ONLY ONESHOT NON-REVERCIBLE EFFECTS (or effects that can handle their removal by itself)
 	for i in skill.casteffects:
 		var tmp = Effectdata.effect_table[i]
 		if tmp.trigger != variables.TR_CAST:
@@ -689,6 +691,8 @@ func use_skill(skill_code, caster, target):
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 				CombatAnimations.call(j.code, sfxtarget)
 				yield(CombatAnimations, 'pass_next_animation')
+			if animationdict.predamage.size() > 0:
+				yield(CombatAnimations, 'predamage_finished')
 			if skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			else: 
@@ -698,7 +702,8 @@ func use_skill(skill_code, caster, target):
 					input_handler.PlaySound(skill.sounddata.hit)
 				elif skill.sounddata.hittype == 'bodyarmor':
 					input_handler.PlaySound(calculate_hit_sound(skill, caster, target))
-
+		if animationdict.predamage.size() > 0:
+			yield(CombatAnimations, 'alleffectsfinished')
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
@@ -772,22 +777,6 @@ func CalculateTargets(skill, caster, target):
 	#print(array)
 	return array
 
-#func hitchance(skill, caster, target):
-#	var rval
-#
-#
-#	if skill.skilltype == 'item' || caster.combatgroup == target.combatgroup || hitchancevalue(skill, caster, target) > rand_range(0,100):
-#		rval = 'hit'
-#	else:
-#		rval = 'miss'
-#
-#	return rval
-#
-#func hitchancevalue(skill, caster, target):
-#	var rval = 0
-#	rval = caster.hitrate - target.evasion
-#	return rval
-
 func calculate_number_from_string_array(array, caster, target):
 	var endvalue = 0
 	var firstrun = true
@@ -834,8 +823,13 @@ func execute_skill(skill, caster, target):
 	#apply resists and modifiers
 	if s_skill.hit_res == variables.RES_MISS:
 		miss(target)
+		combatlogadd(target.name + " evades the damage.")
 		return
 	s_skill.calculate_dmg()
+	if s_skill.tags.has('heal'):
+		combatlogadd("\n" + target.name + " restores " + str(s_skill.value) + " health.")
+	else:
+		combatlogadd("\n" + target.name + " takes " + str(s_skill.value) + " damage.")
 	#deal damage
 	if s_skill.tags.has('heal'): target.heal(s_skill.value)
 	else: target.deal_damage(s_skill.value, s_skill.damagesrc)
@@ -914,6 +908,8 @@ func RebuildSkillPanel():
 		var skill = globals.skills[i]
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.get_node("manacost").text = str(skill.manacost)
+		if skill.manacost <= 0:
+			newbutton.get_node("manacost").hide()
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
 		if activecharacter.mana < skill.manacost:
 			newbutton.disabled = true
@@ -989,3 +985,6 @@ func calculate_hit_sound(skill, caster, target):
 	rval = 'fleshhit'
 	
 	return rval
+
+func combatlogadd(text):
+	$Combatlog/RichTextLabel.append_bbcode(text)

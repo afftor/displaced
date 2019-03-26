@@ -55,11 +55,11 @@ func _process(delta):
 	
 	
 	if musicfading:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*25)
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
 		if AudioServer.get_bus_volume_db(1) <= -80:
 			musicfading = false
 	if musicraising:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*25)
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*100)
 		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
 			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
 			musicraising = false
@@ -201,6 +201,7 @@ func StopTweenRepeat(node):
 
 func SetMusic(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
+	musicraising = true
 	var musicnode = GetMusicNode()
 	musicnode.stream = audio.music[name]
 	musicnode.play(0)

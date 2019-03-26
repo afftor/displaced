@@ -137,3 +137,4 @@ func calculate_dmg():
 		value = value * (float(100 - reduction)/100)
 	if damagetype in ['fire','water','air','earth']:
 		value = value * ((100 - target['resist' + damagetype])/100)
+	value = round(value)

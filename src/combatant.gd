@@ -651,7 +651,6 @@ func hitchance(target):
 		return false
 
 func deal_damage(value, source):
-	value *= damagemod
 	value = round(value);
 	if (shield > 0) and ((shieldtype & source) != 0):
 		shield -= value
