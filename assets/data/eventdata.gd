@@ -49,13 +49,13 @@ var checks = {
 		{type = "event_finished", name = "Forest 2"}
 	],
 	"Forest 1":[{
-		type = 'has_progress',
+		type = 'area_progress',
 		area = 'forest',
 		operant = 'gte',
 		value = 3
 	}], 
 	"Forest 2":[{
-		type = 'has_progress',
+		type = 'area_progress',
 		area = 'forest',
 		operant = 'gte',
 		value = 6
