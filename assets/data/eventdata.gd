@@ -51,11 +51,13 @@ var checks = {
 	"Forest 1":[{
 		type = 'has_progress',
 		area = 'forest',
+		operant = 'gte',
 		value = 3
 	}], 
 	"Forest 2":[{
 		type = 'has_progress',
 		area = 'forest',
+		operant = 'gte',
 		value = 6
 	}], 
 	"rose 1":[
