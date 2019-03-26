@@ -48,8 +48,16 @@ var checks = {
 		{},
 		{type = "event_finished", name = "Forest 2"}
 	],
-	"Forest 1":[{}], #пока нет условия на эксплор
-	"Forest 2":[{}], #аналогично
+	"Forest 1":[{
+		type = 'has_progress',
+		area = 'forest',
+		value = 3
+	}], 
+	"Forest 2":[{
+		type = 'has_progress',
+		area = 'forest',
+		value = 6
+	}], 
 	"rose 1":[
 		{type = "event_finished", name = "ember 3", delay = 3},
 		{type = "event_finished", name = "erika 1", delay = 1} # в ТЗ нет, но по смыслу должно быть

@@ -104,7 +104,9 @@ func Start(dict, f = false, line = 0):
 		return;
 	debug = f;
 	$Background.texture = null
+	$Background.visible = true;
 	$CharImage.texture = null
+	#$CharImage.visible = false;
 	$Panel/CharPortrait.texture = null
 	$Panel/DisplayText.bbcode_text = ''
 	$Panel/DisplayName/Label.text = ''
@@ -170,6 +172,7 @@ func skip (n):
 
 func AdvanceScene():
 	if CurrentScene.size() > CurrentLine:
+		#print ("next line: %d \n" % OS.get_ticks_msec ());
 		var NewEffect = CurrentScene[CurrentLine]
 		match NewEffect.effect:
 			'gui': #надо пофиксить некорректное скрытие-раскрытие 
@@ -177,7 +180,9 @@ func AdvanceScene():
 				state.keyframes.push_back(CurrentLine);
 				ReceiveInput = false;
 			'background':
-				input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value])
+				#input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value])
+				$Background.texture = images.backgrounds[NewEffect.value];
+				$Background.update();
 				state.keyframes.push_back(CurrentLine);
 				ReceiveInput = false;
 			'music':
@@ -238,7 +243,7 @@ func AdvanceScene():
 				ReceiveInput = false;
 				if !debug: state.StoreEvent(NewEffect.value)
 			'quest':
-				QuestSet(NewEffect.value, NewEffect.args)
+				if !debug:QuestSet(NewEffect.value, NewEffect.args)
 			'game':
 				ReceiveInput = false;
 				if !debug: globals.EndGame(NewEffect.value);
@@ -246,7 +251,7 @@ func AdvanceScene():
 			'stop':
 				StopEvent()
 			'state':
-				StateEffect(NewEffect.value, NewEffect.args)
+				if !debug:StateEffect(NewEffect.value, NewEffect.args)
 		if NewEffect.has('delay'):
 			Delay = NewEffect.delay
 		
@@ -333,7 +338,7 @@ func blackscreenturnon(args = null):
 	$BlackScreen.visible = true
 	$BlackScreen.modulate.a = 1
 
-func blackscreenturnoff():
+func blackscreenturnoff(args = null):
 	$BlackScreen.visible = true
 	$BlackScreen.modulate.a = 0
 

@@ -35,8 +35,8 @@ var resistfire = 0
 var resistearth = 0
 var resistwater = 0
 var resistair = 0
-var shield = 0
-var shieldtype = variables.S_FULL
+var shield = 0 setget set_shield;
+var shieldtype = variables.S_FULL setget set_shield_t;
 
 var flavor
 
@@ -86,6 +86,18 @@ var detoriatemod = 1
 var ai
 var aiposition
 var aimemory
+
+func set_shield(value):
+	shield = value;
+	if displaynode != null:
+		displaynode.update_shield()
+	pass
+
+func set_shield_t(value):
+	shieldtype = value;
+	if displaynode != null:
+		displaynode.update_shield()
+	pass
 
 func damage_set(value):
 	damage = value
@@ -651,14 +663,14 @@ func hitchance(target):
 		return false
 
 func deal_damage(value, source):
-	value *= damagemod
+	#value *= damagemod
 	value = round(value);
 	if (shield > 0) and ((shieldtype & source) != 0):
-		shield -= value
+		self.shield -= value
 		if shield < 0:
 			self.hp = hp + shield
 			basic_check(variables.TR_DMG)
-			shield = 0
+			self.shield = 0
 		if shield == 0: basic_check(variables.TR_SHIELD_DOWN)
 	else:
 		self.hp = hp - value
