@@ -346,10 +346,14 @@ func UpdateSkillTargets():
 	if targetgroups.has('self'):
 		allowedtargets.ally.append(fighter.position)
 	Highlight(currentactor,'selected')
-	for i in allowedtargets.enemy:
-		Highlight(i, 'target')
-	for i in allowedtargets.ally:
-		Highlight(i, 'targetsupport')
+	for f in allowedtargets.enemy:
+		Target_Glow(f);
+	for f in allowedtargets.ally:
+		Target_Glow(f);
+#	for i in allowedtargets.enemy:
+#		Highlight(i, 'target')
+#	for i in allowedtargets.ally:
+#		Highlight(i, 'targetsupport')
 
 func ClearSkillTargets():
 	for i in battlefield:
@@ -471,6 +475,7 @@ func make_fighter_panel(fighter, spot):
 	var container = battlefieldpositions[spot]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
 	panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
+	panel.get_node('border').material = $Panel/PlayerGroup/Back/left/Template.get_node('border').material.duplicate()
 	fighter.displaynode = panel
 	panel.name = 'Character'
 	panel.set_script(load("res://files/FighterNode.gd"))
@@ -520,8 +525,9 @@ func FighterMouseOver(fighter):
 			Input.set_custom_mouse_cursor(cursors.support)
 		var cur_targets = [];
 		cur_targets = CalculateTargets(Skillsdata.skilllist[activeaction], activecharacter, fighter); 
+		Stop_Target_Glow();
 		for c in cur_targets:
-			Target_Glow(c.position);
+			Target_eff_Glow(c.position);
 
 
 func FighterMouseOverFinish(fighter):
@@ -532,6 +538,10 @@ func FighterMouseOverFinish(fighter):
 		panel.get_node("mplabel").hide()
 	Input.set_custom_mouse_cursor(cursors.default)
 	Stop_Target_Glow();
+	for f in allowedtargets.enemy:
+		Target_Glow(f);
+	for f in allowedtargets.ally:
+		Target_Glow(f);
 
 func ShowFighterStats(fighter):
 	if fightover == true:
@@ -672,6 +682,16 @@ func use_skill(skill_code, caster, target):
 		repeat = skill.repeat;
 	
 	for n in range(repeat):
+		if target.hp <=0:
+			UpdateSkillTargets();
+			var new_targets = [];
+			for t in allowedtargets.ally:
+				new_targets.push_back(playergroup[t]);
+			for t in allowedtargets.enemy:
+				new_targets.push_back(enemygroup[t]);
+			if new_targets.size() == 0:
+				break;
+			target = new_targets[int(randf()*new_targets.size())];
 		var animations = skill.sfx
 		var animationdict = {windup = [], predamage = []}
 		
@@ -855,6 +875,7 @@ func execute_skill(skill, caster, target):
 	if target.hp <= 0:
 		caster.basic_check(variables.TR_KILL)
 	checkdeaths()
+	Off_Target_Glow();
 
 
 func miss(fighter):
@@ -899,12 +920,22 @@ func StopHighlight(pos):
 	var node = battlefieldpositions[pos].get_node("Character")
 	input_handler.StopTweenRepeat(node)
 
+func Target_eff_Glow (pos):
+	var node = battlefieldpositions[pos].get_node("Character");
+	if node == null: return;
+	var temp# = node.material.get_shader_param('modulate');
+	if pos in range(1,7):
+		temp = Color(0.0, 1.0,0.0,1.0);
+	else:
+		temp = Color(1.0, 0.0,0.0,1.0);
+	node.get_node('border').material.set_shader_param('modulate', temp);
+
 func Target_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
 	if node == null: return;
-	var temp = node.material.get_shader_param('modulate');
-	temp.a = 1.0;
-	node.material.set_shader_param('modulate', temp);
+	var temp = Color(0.0, 0.0, 1.0, 1.0);
+	node.get_node('border').visible = true;
+	node.get_node('border').material.set_shader_param('modulate', temp);
 
 func Stop_Target_Glow ():
 	for pos in range(1,13):
@@ -913,9 +944,20 @@ func Stop_Target_Glow ():
 		var node = p_node.get_node("Character");
 		#if node == null: continue;
 		#node.material.shader_param.Modulate.a = 0.0;
-		var temp = node.material.get_shader_param('modulate');
+		var temp = node.get_node('border').material.get_shader_param('modulate');
 		temp.a = 0.0;
-		node.material.set_shader_param('modulate', temp);
+		node.get_node('border').material.set_shader_param('modulate', temp);
+
+func Off_Target_Glow ():
+	for pos in range(1,13):
+		var p_node = battlefieldpositions[pos];
+		if !p_node.has_node('Character'): continue;
+		var node = p_node.get_node("Character");
+		#if node == null: continue;
+		#node.material.shader_param.Modulate.a = 0.0;
+		#var temp = node.get_node('border').material.get_shader_param('modulate');
+		#temp.a = 0.0;
+		node.get_node('border').visible = false;
 
 func ClearSkillPanel():
 	globals.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
