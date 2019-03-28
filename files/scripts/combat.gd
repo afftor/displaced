@@ -780,11 +780,13 @@ func CalculateTargets(skill, caster, target):
 						if battlefield[j] != null && battlefield[j].defeated != true:
 							array.append(battlefield[j])
 		'all':
-			for i in battlefield:
-				if i in range(1,7) && targetgroup == 'player':
-					array.append(battlefield[i])
-				elif i in range(7, 13) && targetgroup == 'enemy':
-					array.append(battlefield[i])
+			for j in battlefield:
+				if j in range(1,7) && targetgroup == 'player':
+					if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
+				elif j in range(7, 13) && targetgroup == 'enemy':
+					if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
 	#print(array)
 	return array
 
