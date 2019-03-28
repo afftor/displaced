@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://files/scripts/combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/cave.png" type="Texture" id=2]
@@ -8,25 +8,26 @@
 [ext_resource path="res://assets/images/portraits/EmberFriendly.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/charpanel/healthbar.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/charpanel/manabar.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/combat/combatpanelright.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/combat/skillmenu.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/iconsskills/comboattack.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=14]
-[ext_resource path="res://assets/sfx/white shader material.tres" type="Material" id=15]
-[ext_resource path="res://assets/images/sprites/EmberHappy.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/combat/combatwinpanel.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/combat/combatwincharacter.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=26]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=27]
+[ext_resource path="res://assets/images/gui/combat/cloud1.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/combat/combatpanelright.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/combat/skillmenu.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsskills/comboattack.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=15]
+[ext_resource path="res://assets/sfx/white shader material.tres" type="Material" id=16]
+[ext_resource path="res://assets/images/sprites/EmberHappy.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/combat/combatwinpanel.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/combat/combatwincharacter.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=27]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=28]
 
 [sub_resource type="Shader" id=1]
 
@@ -127,7 +128,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=7]
 
 code = "shader_type canvas_item;
 render_mode blend_mix;
@@ -150,22 +151,22 @@ void fragment() {
 	COLOR = col;
 	}"
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=8]
 
 render_priority = 0
-shader = SubResource( 6 )
-shader_param/modulate = Color( 0.340851, 0.423109, 0.597656, 1 )
+shader = SubResource( 7 )
+shader_param/modulate = Color( 0, 0.320313, 1, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 
 size = 55
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="combat" type="Control"]
+[node name="combat" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -278,6 +279,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="Template" type="TextureButton" parent="Panel/PlayerGroup/Back/left" index="0"]
 
 pause_mode = 2
+editor/display_folded = true
 visible = false
 material = SubResource( 2 )
 anchor_left = 0.0
@@ -455,8 +457,9 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="shield" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template" index="6"]
 
+visible = false
 modulate = Color( 1, 1, 1, 0.640863 )
-material = SubResource( 7 )
+material = SubResource( 8 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -471,10 +474,10 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 0
-_sections_unfolded = [ "Material", "Mouse", "Rect", "Visibility" ]
+_sections_unfolded = [ "Hint", "Material", "Mouse" ]
 
 [node name="mid" type="Container" parent="Panel/PlayerGroup/Back" index="1"]
 
@@ -600,7 +603,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 stretch_mode = 0
 
 [node name="EnemyGroup" type="HBoxContainer" parent="Panel2" index="0"]
@@ -777,6 +780,7 @@ playback/speed = 1.0
 
 [node name="SkillPanel" type="TextureRect" parent="." index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -791,7 +795,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Rect", "Visibility" ]
 
@@ -855,9 +859,9 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Textures" ]
@@ -903,7 +907,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Hint", "Mouse", "Rect", "Visibility" ]
@@ -924,7 +928,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Rect", "Visibility" ]
 
@@ -988,9 +992,9 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Pause", "Textures" ]
@@ -1132,7 +1136,7 @@ size_flags_vertical = 1
 
 [node name="TextureRect" type="TextureRect" parent="StatsPanel" index="0"]
 
-material = ExtResource( 15 )
+material = ExtResource( 16 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1147,7 +1151,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 expand = true
 stretch_mode = 7
 _sections_unfolded = [ "Material", "Mouse" ]
@@ -1511,7 +1515,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
@@ -1553,10 +1557,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 20 )
-texture_disabled = ExtResource( 21 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Label" type="Label" parent="Rewards/CloseButton" index="0"]
@@ -1634,7 +1638,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Mouse", "Rect", "Textures" ]
@@ -1713,7 +1717,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect", "Visibility" ]
 
@@ -1742,7 +1746,7 @@ exp_edit = true
 rounded = false
 texture_under = null
 texture_over = null
-texture_progress = ExtResource( 24 )
+texture_progress = ExtResource( 25 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
@@ -1783,7 +1787,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Visibility" ]
@@ -1821,7 +1825,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 26 )
+texture = ExtResource( 27 )
 stretch_mode = 6
 _sections_unfolded = [ "Rect" ]
 
@@ -1841,7 +1845,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "VICTORY"
 align = 1
 percent_visible = 1.0
