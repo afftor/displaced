@@ -346,6 +346,7 @@ func UpdateSkillTargets():
 	if targetgroups.has('self'):
 		allowedtargets.ally.append(fighter.position)
 	Highlight(currentactor,'selected')
+	Off_Target_Glow();
 	for f in allowedtargets.enemy:
 		Target_Glow(f);
 	for f in allowedtargets.ally:
@@ -531,6 +532,7 @@ func FighterMouseOver(fighter):
 
 
 func FighterMouseOverFinish(fighter):
+	if !allowaction: return;
 	var panel = fighter.displaynode
 	fighterhighlighted = false
 	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
@@ -986,6 +988,7 @@ func SelectSkill(skill):
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets()
+	
 
 func RebuildItemPanel():
 	var array = []
