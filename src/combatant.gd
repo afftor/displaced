@@ -373,10 +373,21 @@ func apply_effect(eff_code):
 				apply_atomic(ee)
 
 func remove_effect(eff_code, option = 'once'):
-	for i in range(temp_effects.size()):
-		if temp_effects[i].effect == eff_code:
-			if option == 'all' or temp_effects[i].time <0:
-				temp_effects.remove(i);
+#	for i in range(temp_effects.size()):
+#		if temp_effects[i].effect == eff_code:
+#			if option == 'all' or temp_effects[i].time <0:
+#				temp_effects.remove(i);
+	while true:
+		var if_temp = find_temp_effect(eff_code);
+		if if_temp.num == 0: break;
+		if option == 'once':
+			if temp_effects[if_temp.index].duration >= 0:
+				print ("warning, possible incorrect temporal effect removing!")
+			temp_effects.remove(if_temp.index);
+			break;
+		else: 
+			temp_effects.remove(if_temp.index);
+	
 	var tmp = Effectdata.effect_table[eff_code]
 	match tmp.type:
 		'static':

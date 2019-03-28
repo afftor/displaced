@@ -79,14 +79,13 @@ func defeat():
 	set_process_input(false)
 
 
-func update_shield():
+func update_shield(): #
 	if fighter.shield <= 0: 
-		$shield.visible = false;
+		self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 0.0))
 		return
 	else:
-		$shield.visible = true;
 		match fighter.shieldtype:
-			variables.S_AIR: #tempate, add all other values from this enum
-				$shield.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 1.0)); #example
+			variables.S_PHYS: #tempate, add all other values from this enum
+				self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 1.0)); #example
 	pass
 
