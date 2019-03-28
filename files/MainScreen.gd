@@ -19,7 +19,6 @@ func _ready():
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	globals.CurrentScene = self
 	tasks = state.tasks
-	combatantdata.MakeCharacterFromData("arron")
 	input_handler.SetMusic("towntheme")
 	
 	var speedvalues = [0,1,10]
@@ -43,24 +42,29 @@ func _ready():
 	
 	if debug == true:
 		state.OldEvents['Market'] = 0
-		
-		var character = globals.combatant.new()
-		character.createfromname('Arron')
-		character.baseexp = 90
-		character.hp = 100
-		state.heroes[character.id] = character
-	
-		character = globals.combatant.new()
-		character.createfromname('Rose')
-		state.heroes[character.id] = character
-	
-		character = globals.combatant.new()
-		character.createfromname('Ember')
-		state.heroes[character.id] = character
+		state.townupgrades['bridge'] = 1
+		state.OldEvents['bridge'] = 0
+		state.MakeQuest('elves')
+		combatantdata.MakeCharacterFromData('arron')
+		combatantdata.MakeCharacterFromData('rose')
 		combatantdata.MakeCharacterFromData('erika')
+		combatantdata.MakeCharacterFromData('ember')
+		var x = 5
+		while x > 0:
+			x -= 1
+			for i in state.heroes.values():
+				i.levelup()
+#		var character = globals.combatant.new()
+#		character.createfromname('Arron')
+#		state.heroes[character.id] = character
+#		character = globals.combatant.new()
+#		character.createfromname('Rose')
+#		state.heroes[character.id] = character
+#		character = globals.combatant.new()
+#		character.createfromname('Ember')
+#		state.heroes[character.id] = character
+#		combatantdata.MakeCharacterFromData('erika')
 		var worker = globals.worker.new()
-		worker.create(TownData.workersdict.goblin)
-		worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
 		worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
@@ -382,5 +386,8 @@ func openheroguild():
 	$HeroGuild.open()
 
 func explorescreen():
-	$ExploreScreen.show()
-	globals.call_deferred('EventCheck');
+	if state.townupgrades.has('bridge'):
+		$ExploreScreen.show()
+		globals.call_deferred('EventCheck');
+	else:
+		input_handler.SystemMessage("Purchase 'Bridge' Upgrade first")

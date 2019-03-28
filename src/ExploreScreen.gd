@@ -74,21 +74,41 @@ func HeroSelected(hero):
 var encountercode
 
 func StartCombat(data):
-	var enemies = data.duplicate()
-	enemies = makerandomgroup(enemies)
+	var enemygroup = {}
+	var enemies
+	var music = 'combattheme'
+	if typeof(data) == TYPE_ARRAY:
+		enemies = data.duplicate()
+		for i in data:
+			var currentgroup = globals.randomgroups[i]
+			var check = true
+			for k in currentgroup.reqs:
+				if state.valuecheck(k) == false:
+					check = false
+			if check == false:
+				continue
+			enemygroup[i] = currentgroup
+		enemygroup = input_handler.weightedrandom(enemygroup.values())
+		enemies = makerandomgroup(enemygroup)
+	else:
+		enemies = makespecificgroup(data)
+	
 	input_handler.emit_signal("CombatStarted", encountercode)
 	$combat.encountercode = encountercode 
-	$combat.start_combat(enemies, area.category)
+	$combat.start_combat(enemies, area.category, music)
 	$combat.show()
 
+func makespecificgroup(group):
+	var enemies = Enemydata.predeterminatedgroups[group]
+	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+	for i in enemies.group:
+		combatparty[i] = enemies.group[i]
+	
+	return combatparty
+	
 
-func makerandomgroup(pool):
+func makerandomgroup(enemygroup):
 	var array = []
-	var enemygroup = {}
-	for i in pool:
-		var currentgroup = globals.randomgroups[i]
-		enemygroup[i] = currentgroup
-	enemygroup = input_handler.weightedrandom(enemygroup.values())
 	for i in enemygroup.units:
 		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
 		if size != 0:
@@ -136,7 +156,6 @@ func makerandomgroup(pool):
 	
 	return combatparty
 
-
 func ReturnToVillage():
 	hide()
 	input_handler.CurrentScreen = 'Town'
@@ -179,7 +198,7 @@ func showexplorelist():
 	for i in globals.explorationares.values():
 		var valid = true
 		for k in i.requirements:
-			if state.valuecheck(k) == false || state.areaprogress[i.code] > i.stages:
+			if state.valuecheck(k) == false || (state.areaprogress.has(i.code) && state.areaprogress[i.code] > i.stages):
 				valid = false
 		if valid == false:
 			continue
@@ -214,19 +233,19 @@ func updateexplorepanel(newarea = null):
 
 func startexploration():
 	period = 'fight'
+	stage += 1
 	if area.stagedenemies.has(stage):
-		StartCombat([area.stagedenemies[stage]])
+		StartCombat(area.stagedenemies[stage])
 	else:
 		StartCombat(area.enemygroups)
 
 func wincontinue():
-	stage += 1
 	state.areaprogress[area.code] = stage
 	if stage > area.stages:
 		showexplorelist()
 		$AreaProgress.hide()
 	else:
-		updateexplorepanel()
+		updateexplorepanel(area)
 
 func levelupscheck():
 	for i in state.heroes.values():

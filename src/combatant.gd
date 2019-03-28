@@ -512,6 +512,7 @@ func createfromenemy(enemy):
 			traits[t] = false;
 			activate_trait(t);
 
+
 func createfromclass(classid):
 	var classtemplate = combatantdata.classlist[classid].duplicate()
 	id = state.heroidcounter
@@ -750,7 +751,11 @@ func calculate_number_from_string_array(array):
 
 func skill_tooltip_text(skillcode):
 	var skill = globals.skills[skillcode]
-	var text = '[center]' + skill.name + '[/center]\n'# + (skill.description % calculate_number_from_string_array(skill.value))
+	var text = '[center]' + skill.name + '[/center]\n'
+	if skill.description.find("%d") >= 0:
+		text += (skill.description % calculate_number_from_string_array(skill.value))
+	else:
+		text += skill.description
 	return text
 
 func serialize():

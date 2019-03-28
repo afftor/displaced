@@ -1,23 +1,29 @@
 extends Node
 
-var locationgroups = {
-	forest = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard'],
-}
 
 var predeterminatedgroups = {
-	forestboss = {weight = 0.1, group = {2 : 'bigtreant'}, code = 'forestboss'},
+	forestboss = {weight = 0.1, group = {2 : 'bigtreant'}, code = 'forestboss', music = 'boss'},
 	
 	
 	
 }
 
 var randomgroups = {
-	foresteasy = {units = {elvenrat = [1,2]}, weight = 1, code = 'foresteasy'},
-	foresteasymed = {units = {elvenrat = [2,4]}, weight = 1, code = 'foresteasymed'},
-	forestmedium = {units = {elvenrat = [1,3], treant = [0,1]}, weight = 1, code = 'forestmedium'},
-	forestmedium2 = {units = {elvenrat = [1,2], treant = [1,2]}, weight = 1, code = 'forestmedium2'},
-	foresthard = {units = {treant = [2,3], elvenrat = [1,2]}, weight = 1, code = 'foresthard'},
+	foresteasy = {units = {elvenrat = [1,2]}, weight = 1, code = 'foresteasy', reqs = [{type = "party_level", operant = "lte", value = 3}]},
+	foresteasymed = {units = {elvenrat = [2,4]}, weight = 1, code = 'foresteasymed', reqs = []},
+	forestmedium = {units = {elvenrat = [1,3], treant = [0,1]}, weight = 1, code = 'forestmedium',reqs = [{type = "party_level", operant = "gte", value = 3}]},
+	forestmedium2 = {units = {elvenrat = [1,2], treant = [1,2]}, weight = 1, code = 'forestmedium2',reqs = [{type = "party_level", operant = "gte", value = 3}]},
+	foresthard = {units = {treant = [2,3], elvenrat = [1,2]}, weight = 1, code = 'foresthard',reqs = [{type = "party_level", operant = "gte", value = 5}]},
+	foresthard2 = {units = {spider = [1,2], treant = [1,2]}, weight = 1, code = 'foresthard2',reqs = [{type = "party_level", operant = "gte", value = 4}]},
+	foresthard3 = {units = {fairies = [1,1], treant = [1,2]}, weight = 1, code = 'foresthard3',reqs = [{type = "party_level", operant = "gte", value = 4}]},
+	forestextraboss = {units = {entboss = [1,1], treant = [1,2]}, weight = 0.2, code = 'forestextraboss',reqs = [{type = "party_level", operant = "gte", value = 8}]},
 	
+	#caves
+	
+	caveeasy = {units = {spider = [1,2]}, weight = 1, code = 'caveeasy',reqs = [{type = "party_level", operant = "lte", value = 4}]},
+	cavemedium = {units = {spider = [1,2], earthgolem = [1,2]}, weight = 1, code = 'cavemedium',reqs = [{type = "party_level", operant = "gte", value = 4}]},
+	cavemedium2 = {units = {earthgolem = [1,2], angrydwarf = [1,1]}, weight = 1, code = 'cavemedium2',reqs = [{type = "party_level", operant = "gte", value = 4}]},
+	cavemedium3 = {units = {angrydwarf = [2,2]}, weight = 1, code = 'cavemedium3',reqs = [{type = "party_level", operant = "gte", value = 5}]},
 	
 }
 
@@ -54,7 +60,8 @@ var enemylist = {
 		flavor = tr("MONSTERTREANTFLAVOR"),
 		race = 'plant',
 		skills = ['attack'],
-		passives = [],
+		passives = ['treant_barrier'],
+		traits = ['treant_barrier'],
 		basehp = 50,
 		basemana = 0,
 		armor = 50,
@@ -96,7 +103,7 @@ var enemylist = {
 		
 		bodyhitsound = 'wood',
 		
-		combaticon = null,
+		combaticon = 'bigent',
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = 'bigtreantloot',
@@ -148,7 +155,7 @@ var enemylist = {
 		
 		bodyhitsound = 'flesh',
 		
-		combaticon = null,
+		combaticon = 'spider',
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'spiderloot',
@@ -174,7 +181,7 @@ var enemylist = {
 		
 		bodyhitsound = 'flesh',
 		
-		combaticon = null,
+		combaticon = 'fairies',
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'fairiesloot',
@@ -198,7 +205,7 @@ var enemylist = {
 		resists = {},
 		xpreward = 20,
 		
-		combaticon = null,
+		combaticon = 'dwarf',
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'angrydwarfloot',

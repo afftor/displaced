@@ -120,6 +120,12 @@ func ProgressMainStage(stage = null):
 func MakeQuest(code):
 	activequests.append({code = code, stage = 1})
 
+func GetQuest(code):
+	for i in activequests:
+		if i.code == code:
+			return i.stage
+	return null
+
 func AdvanceQuest(code):
 	for i in activequests:
 		if i.code == code:
@@ -203,8 +209,20 @@ func valuecheck(dict):
 			return if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
 			return decisions.has(dict.name)
+		"quest_stage":
+			return if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
 			return completedquests.has(dict.name)
+		"party_level":
+			return if_party_level(dict.operant, dict.value)
+
+func if_quest_stage(name, value, operant):
+	var questprogress
+	questprogress = GetQuest(name)
+	if questprogress == null:
+		questprogress = 0
+	
+	return input_handler.operate(operant, questprogress, value)
 
 func if_has_area_progress(value, operant, area):
 	if !areaprogress.has(area):return false;
@@ -220,6 +238,13 @@ func if_has_upgrade(upgrade, level):
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null;
 	return heroes[combatparty[pos]];
+
+func if_party_level(operant,value):
+	var counter = 0
+	for i in combatparty.values():
+		if i != null:
+			counter += heroes[i].level
+	return input_handler.operate(operant, counter, value)
 
 func serialize():
 	var tmp = {};

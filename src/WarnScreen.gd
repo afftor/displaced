@@ -1,6 +1,7 @@
 extends Panel
 
 func _ready():
+	show()
 	$Accept.connect("pressed",self,"Accept")
 	$Quit.connect("pressed",self, "Quit")
 
