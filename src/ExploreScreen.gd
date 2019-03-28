@@ -241,6 +241,10 @@ func startexploration():
 
 func wincontinue():
 	state.areaprogress[area.code] = stage
+	for i in state.heroes:
+		if i.hp <= 0:
+			i.hp = 1
+	
 	if stage > area.stages:
 		showexplorelist()
 		$AreaProgress.hide()

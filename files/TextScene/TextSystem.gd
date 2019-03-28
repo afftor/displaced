@@ -324,7 +324,7 @@ func StopEvent():
 	set_process_input(false)
 	#globals.CurrentScene.show()
 	hide()
-	input_handler.SetMusic("maintheme")
+	input_handler.SetMusic("towntheme")
 	if !debug:
 		state.FinishEvent();
 		globals.call_deferred('EventCheck');

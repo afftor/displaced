@@ -171,7 +171,10 @@ var TranslationDict = {
 	
 	#System
 	CONFIRM = "Confirm",
+	FRONT = "Front",
+	BACK = "Back",
 	CANCEL = "Cancel",
+	REMOVE = "Remove",
 	NONE = "None",
 	SPEED = "Speed",
 	DAY = "Day",
@@ -292,6 +295,8 @@ var TranslationDict = {
 	SKILLFIREBOLTDESCRIPT = "Launches a fire spell on target. Deal %d Fire damage to all targets in same row.",
 	SKILLWINDARROW = "Wind Arrow",
 	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %d damage. Requires a bow equipped.",
+	SKILLTAUNT = "Taunt",
+	SKILLTAUNTDESCRIPT = "Forces enemy to attack you on its next turn.",
 	SKILLSLASH = "Slash",
 	SKILLSLASHDESCRIPT = "Deals %d Weapon damage to all targets in nearby column. Requires a weapon equipped.",
 	SKILLMINORHEAL = "Minor Heal",
