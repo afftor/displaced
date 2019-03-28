@@ -180,8 +180,10 @@ func AdvanceScene():
 				state.keyframes.push_back(CurrentLine);
 				ReceiveInput = false;
 			'background':
-				#input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value])
-				$Background.texture = images.backgrounds[NewEffect.value];
+				if NewEffect.has('time'):
+					input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value], NewEffect.time);
+				else:
+					$Background.texture = images.backgrounds[NewEffect.value];
 				$Background.update();
 				state.keyframes.push_back(CurrentLine);
 				ReceiveInput = false;

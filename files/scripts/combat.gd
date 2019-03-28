@@ -433,10 +433,16 @@ func enemy_turn(pos):
 	
 	target = input_handler.weightedrandom(target)
 	
+	
+	if fighter.taunt != null:
+		var t_pos = int(fighter.taunt);
+		fighter.taunt = null
+		if playergroup[t_pos].hp > 0:
+			target = playergroup[t_pos];
+			castskill = globals.skills['attack'];
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
-	
 	use_skill(castskill.code, fighter, target)
 
 func calculateorder():

@@ -73,6 +73,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'treantloot',
+		traits = ['treant_barrier']
 	},
 	bigtreant = {
 		code = 'bigtreant',

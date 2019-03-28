@@ -245,6 +245,15 @@ var effect_table = {
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = [{target = 'target', type = 'stat', stat = 'mana', value = -20}] # ! value to check
 	},
+	e_s_taunt = {
+		type = 'oneshot',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = [
+		{target = 'target', type = 'skill', new_type = 'stat_s', stat = 'taunt', value = 'value', mul = 1.0},
+		{target = 'skill', type = 'param_m', stat = 'value', value = 0}
+		] # ! value to check
+	},
 	#weapon
 	#item skills
 	e_i_barrier2 = {
