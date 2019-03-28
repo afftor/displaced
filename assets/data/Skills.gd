@@ -381,7 +381,40 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
-	
+	taunt = {
+		code = 'taunt',
+		name = tr("SKILLTAUNT"),
+		description = tr("SKILLTAUNTDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/taunt.png"),
+		
+		damagetype = "weapon",
+		skilltype = 'skill',
+		userange = "melee",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = [],
+		value = ['caster.position'],
+		cooldown = 0,
+		manacost = 20,
+		chance = 100,
+		evade = 0,
+		critchance = 0,
+		casteffects = ['e_s_taunt'],
+		
+		hidden = false,
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+		
+	},
 	
 
 	

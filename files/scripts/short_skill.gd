@@ -80,7 +80,7 @@ func apply_atomic(effect):
 func apply_effect(code, trigger):
 	var tmp = Effectdata.effect_table[code]
 	var rec
-	var res
+	var res = true
 	if tmp.trigger != trigger: return
 	for cond in tmp.conditions:
 		match cond.target:

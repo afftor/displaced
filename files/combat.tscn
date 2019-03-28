@@ -478,6 +478,7 @@ expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Mouse", "Rect", "Visibility" ]
 
+
 [node name="mid" type="Container" parent="Panel/PlayerGroup/Back" index="1"]
 
 anchor_left = 0.0
