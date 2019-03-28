@@ -3,6 +3,7 @@ extends Node
 
 var partmaterials = {
 	ToolHandle = {
+		starting = {},
 		wood = {hitrate = 5},
 		elvenwood = {hitrate = 10},
 		goblinmetal = {effects = ['gobmetalhandle']},
@@ -10,6 +11,7 @@ var partmaterials = {
 		bone = {},
 	},
 	Blade = {
+		starting = {damagemod = -0.4},
 		wood = {damagemod = -0.5},
 		elvenwood = {damagemod = -0.4},
 		goblinmetal = {damage = 3, effects = ['gobmetalblade']},
@@ -24,6 +26,7 @@ var partmaterials = {
 		bone = {damagemod = -0.1},
 	},
 	BowBase = {
+		starting = {damagemod = -0.4},
 		wood = {},
 		elvenwood = {damagemod = 0.3, effects = ['elfmetalhandle']},
 		bone = {damagemod = 0.1, effects = ['bonebow']},
@@ -31,6 +34,7 @@ var partmaterials = {
 		elvenmetal = {damagemod = 0.2, effects = ['elfmetalblade']},
 	},
 	Rod = {
+		starting = {damagemod = -0.4},
 		wood = {},
 		elvenwood = {damagemod = 0.2, effects = ['elfwoodrod']},
 		bone = {effects = ['bonerod']},
@@ -65,6 +69,15 @@ func _init():
 
 
 var Materials = {
+	#Only for basic equipment
+	starting = {name = "Dummy Material", price = 0, icon = load("res://assets/images/iconsitems/Wood.png"), description = "",
+	adjective = tr("STARTINGADJ"),
+	DefaultEffect = '',
+	code = 'starting',
+	unlockreq = false,
+	color = Color8(73,49,28),
+	parts = {
+	}},
 	wood = {name = tr("MATERIALWOOD"), price = 5, icon = load("res://assets/images/iconsitems/Wood.png"), description = tr('MATERIALWOODDESCRIPT'),
 	adjective = tr("WOODADJ"),
 	DefaultEffect = 'natural',

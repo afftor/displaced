@@ -15,6 +15,8 @@ var TranslationDict = {
 	
 	
 	#Materials
+	STARTINGADJ = "Starting",
+	
 	MATERIALWOOD = "Wood",
 	MATERIALWOODDESCRIPT = "Sturdy wood for general building and furnishing purposes.",
 	WOODADJ = "wooden",
@@ -154,6 +156,8 @@ var TranslationDict = {
 	LOAD = 'Load',
 	OPTIONS = 'Options',
 	QUIT = 'Quit',
+	CLOSE = "Close",
+	PROCEED = "Proceed",
 	
 	SOUND = "Sound",
 	MUSIC = "Music",
@@ -175,6 +179,7 @@ var TranslationDict = {
 	TIME = "Time",
 	CRAFT = "Craft",
 	BLACKSMITH = "Blacksmith",
+	PROGRESS = "Progress",
 	REPAIR = "Repair",
 	REPAIRALL = "Repair All",
 	WORKERNOENERGY = " has no energy left and stopped working.",
@@ -270,6 +275,7 @@ var TranslationDict = {
 	ARRON = 'Arron',
 	ROSE = 'Rose',
 	EMBER = 'Ember',
+	ERIKA = 'Erika',
 	GOBLIN = 'Goblin',
 	GUARD1 = 'Guard1',
 	GUARD2 = 'Guard2',

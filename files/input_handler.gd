@@ -237,10 +237,6 @@ func PlaySound(name, delay = 0):
 func GetSoundNode():
 	var node = get_tree().get_root()
 	var soudnnode = AudioStreamPlayer.new()
-#	if node.has_node('sound'):
-#		soudnnode = node.get_node('sound')
-#	else:
-#		soudnnode.name = 'sound'
 	soudnnode.bus = 'Sound'
 	node.add_child(soudnnode)
 	return soudnnode

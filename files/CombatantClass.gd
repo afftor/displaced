@@ -58,10 +58,10 @@ var classlist = {
 }
 
 var chardata = {
-	arron = {code = "Arron", gear = [{item = 'sword', parts = {ToolHandle = 'wood', Blade = 'wood'}}], details = []},
-	rose = {code = "Rose", gear = [{item = 'staff', parts = {ToolHandle = 'wood', Rod = 'wood'}}], details = []},
-	ember = {code = "Ember", gear = [{item = 'staff', parts = {ToolHandle = 'wood', Rod = 'wood'}}], details = []},
-	erika = {code = "Erika", gear = [{item = 'bow', parts = {ToolHandle = 'wood', BowBase = 'wood'}}], details = []},
+	arron = {code = "Arron", gear = [{item = 'sword', parts = {ToolHandle = 'starting', Blade = 'starting'}}], details = []},
+	rose = {code = "Rose", gear = [{item = 'staff', parts = {ToolHandle = 'starting', Rod = 'starting'}}], details = []},
+	ember = {code = "Ember", gear = [{item = 'axe', parts = {ToolHandle = 'starting', Blade = 'starting'}}], details = []},
+	erika = {code = "Erika", gear = [{item = 'bow', parts = {ToolHandle = 'starting', BowBase = 'starting'}}], details = []},
 }
 
 func MakeCharacterFromData(code):

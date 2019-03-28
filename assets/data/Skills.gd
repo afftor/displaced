@@ -74,7 +74,7 @@ var skilllist = {
 		skilltype = 'spell',
 		userange = "any",
 		targetpattern = 'single',
-		allowedtargets = ['ally'],
+		allowedtargets = ['ally','self'],
 		reqs = [],
 		tags = ['heal'],
 		value = ['50'],
@@ -86,7 +86,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -107,7 +107,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['self'],
 		reqs = [],
-		tags = [],
+		tags = ['mana'],
 		value = ['0'],
 		cooldown = 0,
 		manacost = 0,
@@ -117,7 +117,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -178,7 +178,7 @@ var skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'weapon', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -188,8 +188,8 @@ var skilllist = {
 	},
 	heavyshot = { #new, to overlook
 		code = 'heavyshot',
-		name = tr("SKILLHEAVYSHOT"),
-		description = tr("SKILLHEAVYSHOTDESCRIPT"),
+		name = tr("SKILLSTRONGSHOT"),
+		description = tr("SKILLSTRONGSHOTDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/heavyshot.png"),
 		
 		damagetype = "weapon",
@@ -208,7 +208,7 @@ var skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'weapon', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -238,7 +238,7 @@ var skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'weapon', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -276,7 +276,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'weapon', hit = null, hittype = 'bodyarmor'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -308,7 +308,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'weapon', hit = null, hittype = 'bodyarmor'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
@@ -409,7 +409,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -444,7 +444,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',
@@ -478,7 +478,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['heal'],
 		aitargets = '1ally',

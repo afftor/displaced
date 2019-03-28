@@ -80,6 +80,7 @@ var globalsettings = {
 	textspeed = 60,
 	skipread = false,
 	textmonocolor = false,
+	warnseen = false,
 } setget settings_save
 
 func settings_load():
@@ -165,14 +166,13 @@ func _ready():
 	
 	for i in Items.Materials:
 		state.materials[i] = 0
-	state.materials.wood = 10
-	state.materials.elvenwood = 10
-	state.materials.elvenmetal = 10
-	state.materials.goblinmetal = 10
-	state.materials.bone = 10
-	state.materials.cloth = 10
-	#state.materials.stone = 5
-	state.money = 500
+#	state.materials.wood = 10
+#	state.materials.elvenwood = 10
+#	state.materials.elvenmetal = 10
+#	state.materials.goblinmetal = 10
+#	state.materials.bone = 10
+#	state.materials.cloth = 10
+#	state.money = 500
 	
 
 func logupdate(text):
