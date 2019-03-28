@@ -7,19 +7,19 @@ var areas = {
 		category = 'forest',
 		image = '',
 		stages = 0, 
-		enemygroups = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard'], 
+		enemygroups = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard','foresthard2','foresthard3','forestextraboss'], 
 		requirements = [], 
 		stagedenemies = {}
 		},
 	forestelves = {
 		code = 'forestelves',
-		name = 'Search for elves', 
+		name = 'Search for Elves', 
 		category = 'forest',
 		image = '',
-		stages = 6, 
+		stages = 8, 
 		enemygroups = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard'], 
-		requirements = [{type = "main_progress", operant = "eq", value = 1}], 
-		stagedenemies = {6 : "forestboss"}
+		requirements = [{type = "quest_stage", name = 'elves', operant = "eq", value = 1}], 
+		stagedenemies = {8 : "forestboss"}
 		},
 	caveexplore = {
 		code = 'caveexplore',
@@ -27,11 +27,20 @@ var areas = {
 		category = 'cave',
 		image = '',
 		stages = 0, 
-		enemygroups = [], 
-		requirements = [{type = "main_progress", operant = "gte", value = 2}], 
+		enemygroups = ['caveeasy','cavemedium','cavemedium2','cavemedium3'], 
+		requirements = [{type = "quest_completed", name = 'elves'}], 
 		stagedenemies = {}
 		},
-	
+	cavedemitrius = {
+		code = 'cavedemitrius',
+		name = 'Escort Demitrius', 
+		category = 'cave',
+		image = '',
+		stages = 10, 
+		enemygroups = ['caveeasy','cavemedium','cavemedium2','cavemedium3'], 
+		requirements = [{type = "quest_stage", name = 'demitrus', operant = 'eq', value = 1}], 
+		stagedenemies = {}
+		},
 	
 	
 }

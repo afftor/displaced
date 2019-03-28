@@ -86,6 +86,7 @@ var detoriatemod = 1
 var ai
 var aiposition
 var aimemory
+var taunt = null;
 
 func set_shield(value):
 	shield = value;
@@ -372,6 +373,10 @@ func apply_effect(eff_code):
 				apply_atomic(ee)
 
 func remove_effect(eff_code, option = 'once'):
+	for i in range(temp_effects.size()):
+		if temp_effects[i].effect == eff_code:
+			if option == 'all' or temp_effects[i].time <0:
+				temp_effects.remove(i);
 	var tmp = Effectdata.effect_table[eff_code]
 	match tmp.type:
 		'static':
@@ -508,7 +513,9 @@ func createfromenemy(enemy):
 		self[i] = template[i]
 	if template.keys().has('traits'):
 		for t in template.traits:
-			traits[t] = true
+			traits[t] = false;
+			activate_trait(t);
+
 
 func createfromclass(classid):
 	var classtemplate = combatantdata.classlist[classid].duplicate()
@@ -748,7 +755,11 @@ func calculate_number_from_string_array(array):
 
 func skill_tooltip_text(skillcode):
 	var skill = globals.skills[skillcode]
-	var text = '[center]' + skill.name + '[/center]\n' + (skill.description % calculate_number_from_string_array(skill.value))
+	var text = '[center]' + skill.name + '[/center]\n'
+	if skill.description.find("%d") >= 0:
+		text += (skill.description % calculate_number_from_string_array(skill.value))
+	else:
+		text += skill.description
 	return text
 
 func serialize():

@@ -1,11 +1,12 @@
 extends Node
 
 var music = {
-	intro = load("res://assets/sounds/music/opening.ogg"),
 	eventlight = load("res://assets/sounds/music/TSGM - Track 4 (Displaced OST).ogg"),
 	eventgeneric = load("res://assets/sounds/music/TSGM - Track 1 (Displaced OST).ogg"),
 	towntheme = load("res://assets/sounds/music/TSGM - Track 3 (Displaced OST).ogg"),
-	combattheme = load("res://assets/sounds/music/TSGM - Track 2 (Displaced OST).ogg"),
+	combattheme = load("res://assets/sounds/music/Lets_Fight.ogg"),
+	erotheme = load("res://assets/sounds/music/Green_House.ogg"),
+	bosstheme = load("res://assets/sounds/music/TSGM - Track 2 (Displaced OST).ogg"),
 	
 	
 }
@@ -27,7 +28,7 @@ var sounds = {
 	
 	blade = load("res://assets/sounds/sounds/dodge.wav"),#load("res://assets/sounds/sounds/fx knife hit solo.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
-	arrowshot = load("res://assets/sounds/sounds/ArrowShot.wav"),
+	bow = load("res://assets/sounds/sounds/ArrowShot.wav"),
 	heal = load("res://assets/sounds/sounds/healeffect.wav"),
 	itemget = load("res://assets/sounds/sounds/itemget.wav"),
 	itemcreate = load("res://assets/sounds/sounds/itemcraft.wav"),

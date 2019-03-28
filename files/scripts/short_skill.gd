@@ -56,7 +56,7 @@ func hit_roll():
 	var prop = chance - evade
 	if prop < randf()*100:
 		hit_res = variables.RES_MISS
-	elif critchance < randf()*100:
+	elif critchance < randf()*100 || caster.combatgroup == target.combatgroup:
 		hit_res = variables.RES_HIT
 	else:
 		hit_res = variables.RES_CRIT
@@ -80,7 +80,7 @@ func apply_atomic(effect):
 func apply_effect(code, trigger):
 	var tmp = Effectdata.effect_table[code]
 	var rec
-	var res
+	var res = true
 	if tmp.trigger != trigger: return
 	for cond in tmp.conditions:
 		match cond.target:

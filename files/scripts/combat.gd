@@ -79,13 +79,13 @@ func _process(delta):
 	pass
 
 
-func start_combat(newenemygroup, background):
+func start_combat(newenemygroup, background, music = 'combattheme'):
 	$Background.texture = images.backgrounds[background]
 	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
-	input_handler.SetMusic("combattheme")
+	input_handler.SetMusic(music)
 	fightover = false
 	$Rewards.visible = false
 	allowaction = false
@@ -110,6 +110,7 @@ func FinishCombat():
 	hide()
 	input_handler.emit_signal("CombatEnded", encountercode)
 	input_handler.SetMusic("towntheme")
+	get_parent().wincontinue()
 	get_parent().levelupscheck()
 	globals.call_deferred('EventCheck')
 
@@ -433,10 +434,16 @@ func enemy_turn(pos):
 	
 	target = input_handler.weightedrandom(target)
 	
+	
+	if fighter.taunt != null:
+		var t_pos = int(fighter.taunt);
+		fighter.taunt = null
+		if playergroup[t_pos].hp > 0:
+			target = playergroup[t_pos];
+			castskill = globals.skills['attack'];
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
-	
 	use_skill(castskill.code, fighter, target)
 
 func calculateorder():
@@ -773,11 +780,13 @@ func CalculateTargets(skill, caster, target):
 						if battlefield[j] != null && battlefield[j].defeated != true:
 							array.append(battlefield[j])
 		'all':
-			for i in battlefield:
-				if i in range(1,7) && targetgroup == 'player':
-					array.append(battlefield[i])
-				elif i in range(7, 13) && targetgroup == 'enemy':
-					array.append(battlefield[i])
+			for j in battlefield:
+				if j in range(1,7) && targetgroup == 'player':
+					if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
+				elif j in range(7, 13) && targetgroup == 'enemy':
+					if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
 	#print(array)
 	return array
 
@@ -830,10 +839,16 @@ func execute_skill(skill, caster, target):
 		combatlogadd(target.name + " evades the damage.")
 		return
 	s_skill.calculate_dmg()
+	var text = '\n'
+	if s_skill.hit_res == variables.RES_CRIT:
+		text += "[color=yellow]Critical!![/color] "
 	if s_skill.tags.has('heal'):
-		combatlogadd("\n" + target.name + " restores " + str(s_skill.value) + " health.")
+		text += target.name + " restores " + str(s_skill.value) + " health."
+	elif s_skill.tags.has("mana"):
+		text += target.name + " restores " + str(s_skill.value) + " mana."
 	else:
-		combatlogadd("\n" + target.name + " takes " + str(s_skill.value) + " damage.")
+		text += target.name + " takes " + str(s_skill.value) + " damage."
+	combatlogadd(text)
 	#deal damage
 	if s_skill.tags.has('heal'): target.heal(s_skill.value)
 	else: target.deal_damage(s_skill.value, s_skill.damagesrc)
