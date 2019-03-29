@@ -151,6 +151,7 @@ func checkdeaths():
 	for i in battlefield:
 		if battlefield[i] != null && battlefield[i].defeated != true && battlefield[i].hp <= 0:
 			battlefield[i].death()
+			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
 			turnorder.erase(battlefield[i])
 			if summons.has(i):
 				battlefield[i].displaynode.queue_free()
@@ -557,9 +558,9 @@ func ShowFighterStats(fighter):
 		else:
 			$StatsPanel/mana.text = ''
 	else:
-		$StatsPanel/hp.text = 'Health: ' + str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + "%"
+		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.hpmax()))) + "%"
 		if fighter.manamax > 0:
-			$StatsPanel/mana.text = "Mana: " + str(globals.calculatepercent(fighter.mana, fighter.manamax)) + "%"
+			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.manamax))) + "%"
 		else:
 			$StatsPanel/mana.text = ''
 	$StatsPanel/damage.text = "Damage: " + str(fighter.damage) 
@@ -578,6 +579,9 @@ func ShowFighterStats(fighter):
 	$StatsPanel/name.text = tr(fighter.name)
 	$StatsPanel/descript.text = fighter.flavor
 	$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
+	for i in fighter.buffs:
+		text += i + "\n"
+	$StatsPanel/effects.bbcode_text = text
 
 func HideFighterStats():
 	$StatsPanel.hide()
@@ -926,16 +930,18 @@ func Target_eff_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
 	if node == null: return;
 	var temp# = node.material.get_shader_param('modulate');
-	if pos in range(1,7):
-		temp = Color(0.0, 1.0,0.0,1.0);
-	else:
-		temp = Color(1.0, 0.0,0.0,1.0);
+	
+	temp = Color(1.0,0.0,1.0,1.0);
 	node.get_node('border').material.set_shader_param('modulate', temp);
 
 func Target_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
 	if node == null: return;
-	var temp = Color(0.0, 0.0, 1.0, 1.0);
+	var temp
+	if pos in range(1,7):
+		temp = Color(0.0,1.0,0.0,1.0);
+	else:
+		temp = Color(1.0,0.0,0.0,1.0);
 	node.get_node('border').visible = true;
 	node.get_node('border').material.set_shader_param('modulate', temp);
 

@@ -92,13 +92,11 @@ func set_shield(value):
 	shield = value;
 	if displaynode != null:
 		displaynode.update_shield()
-	pass
 
 func set_shield_t(value):
 	shieldtype = value;
 	if displaynode != null:
 		displaynode.update_shield()
-	pass
 
 func damage_set(value):
 	damage = value
@@ -275,7 +273,7 @@ func remove_atomic(effect):
 		'block_effect':
 			apply_effect(tmp.effect)
 		'buff':
-			buffs.remove(tmp.value)
+			buffs.erase(tmp.value)
 	pass
 
 func find_temp_effect(eff_code):
@@ -381,7 +379,7 @@ func remove_effect(eff_code, option = 'once'):
 		var if_temp = find_temp_effect(eff_code);
 		if if_temp.num == 0: break;
 		if option == 'once':
-			if temp_effects[if_temp.index].duration >= 0:
+			if temp_effects[if_temp.index].time >= 0:
 				print ("warning, possible incorrect temporal effect removing!")
 			temp_effects.remove(if_temp.index);
 			break;

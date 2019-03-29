@@ -589,8 +589,8 @@ var skilllist = {
 	},
 	
 	#monsters
-	spider = { #new, to overlook
-		code = 'spider',
+	spiderattack = { #new, to overlook
+		code = 'spiderattack',
 		name = tr("SKILLSPIDER"),
 		description = tr("SKILLSPIDERDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),
@@ -621,8 +621,8 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
-	fairy = { #new, to overlook
-		code = 'faery',
+	fairyattack = { #new, to overlook
+		code = 'fairyattack',
 		name = tr("SKILLFAIRY"),
 		description = tr("SKILLFAIRYDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),

@@ -257,7 +257,10 @@ var TranslationDict = {
 	
 	#Tasks
 	HARVESTWOOD = "Harvest Lumber",
-	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation",
+	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation.",
+	HARVESTMETALDESCRIPTION = "Harvest metal ores from the mine. Requires a pickaxe.",
+	HARVESTPLANTDESCRIPTION = "Produce plants from the farm.",
+	
 	
 	#Classes
 	CLASSDESCRIPT = "Class defines character's basic characteristics, abilities, specific traits and allowed gear. More abilities are unlocked as you level up. After certain level you can advance into one of the new classes.",
@@ -339,7 +342,7 @@ var TranslationDict = {
 	UPGRADEBLACKSMITHBONUS1 = "Unlocks Headgear",
 	UPGRADEBLACKSMITHBONUS2 = "Unlocks footgear",
 	LUMBERMILLUPGRADE = "Lumber mill",
-	UPGRADELUMBERMILLDESCRIPT = "Improves the quality of Lumber Mill building.",
+	UPGRADELUMBERMILLDESCRIPT = "Provides a room for more Lumber Harvesters.",
 	UPGRADELUMBERMILLBONUS = "Increases the number of workers allowed in same time to 4. ",
 	
 	#traitdescriptions
@@ -367,6 +370,6 @@ var TranslationDict = {
 	TRAITRESISTDEBUFF = "On hit reduces all target resists for 15 for 1 turn",
 	TRAITFIREDAMAGEBONUS = "20% Extra Fire damage to skills",
 	
-	TAKEGOLDBUTTON = "Take Gold Instead",
+	TAKEGOLDBUTTON = "Take 100 Gold",
 	TAKEGOLDBUTTONTOOLTIP = "Refuse all traits and receive 100 gold"
 }

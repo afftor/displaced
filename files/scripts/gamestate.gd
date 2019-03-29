@@ -206,7 +206,6 @@ func valuecheck(dict):
 		"main_progress":
 			return if_has_progress(dict.value, dict.operant)
 		"area_progress":
-			print(areaprogress)
 			return if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
 			return decisions.has(dict.name)

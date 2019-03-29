@@ -366,6 +366,14 @@ func SmoothTextureChange(node, newtexture, time = 0.5):
 	yield(get_tree().create_timer(time+0.1), 'timeout')
 	NodeCopy.queue_free()
 
+func BlackScreenTransition(duration = 0.5):
+	var blackscreen = load("res://files/SFX/BlackScreen.tscn").instance()
+	get_tree().get_root().add_child(blackscreen)
+	UnfadeAnimation(blackscreen, duration)
+	FadeAnimation(blackscreen, duration, duration)
+	yield(get_tree().create_timer(duration*2+0.1), 'timeout')
+	blackscreen.queue_free()
+
 func DelayedText(node, text):
 	node.text = text
 

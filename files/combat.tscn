@@ -1,9 +1,9 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://files/scripts/combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/cave.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/combat/cloud.png" type="Texture" id=4]
+[ext_resource path="res://files/SFX/BarrierShader.tres" type="Material" id=4]
 [ext_resource path="res://assets/images/gui/combat/combatpanel.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/portraits/EmberFriendly.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/charpanel/healthbar.png" type="Texture" id=7]
@@ -11,9 +11,9 @@
 [ext_resource path="res://assets/images/gui/combat/cloud1.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/combat/combatpanelright.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/combat/skillmenu.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/iconsskills/comboattack.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=15]
 [ext_resource path="res://assets/sfx/white shader material.tres" type="Material" id=16]
 [ext_resource path="res://assets/images/sprites/EmberHappy.png" type="Texture" id=17]
@@ -28,50 +28,6 @@
 [ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=27]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=28]
-
-[sub_resource type="Shader" id=1]
-
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform vec4 modulate:hint_color;
-uniform sampler2D glow_texture;
-
-float edge_dist (vec2 r){
-	float res = 1.0;
-	res = min(res, r.x);
-	res = min(res, r.y);
-	res = min(res, 1.0 - r.x);
-	res = min(res, 1.0 - r.y);
-	return res;
-}
-
-void fragment() {
-	vec4 col = texture(TEXTURE, UV);
-	if (modulate.a >0.0){
-		col.rgb = col.rgb * col.a;
-		vec2 ps = TEXTURE_PIXEL_SIZE;
-		vec4 glow = texture(glow_texture, UV);
-		if (glow.a > 0.05){
-			glow = glow * modulate;
-			vec4 glow2 = modulate;
-			glow.a = max(0.0, 0.8 - 2.0*edge_dist(UV));
-			glow2.a = glow.a * 0.5;
-			col = mix(col, glow, 1.0-col.a);
-			//col = mix(col, glow, 0.2);
-			col = col + glow2 * 0.2;
-		}
-	}
-	COLOR = col;
-	}"
-
-[sub_resource type="ShaderMaterial" id=2]
-
-render_priority = 0
-shader = SubResource( 1 )
-shader_param/modulate = null
-shader_param/glow_texture = ExtResource( 4 )
-_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="StyleBoxTexture" id=3]
 
@@ -128,7 +84,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=6]
 
 code = "shader_type canvas_item;
 render_mode blend_mix;
@@ -151,14 +107,14 @@ void fragment() {
 	COLOR = col;
 	}"
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 6 )
 shader_param/modulate = Color( 0, 0.320313, 1, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 
 size = 55
 use_mipmaps = false
@@ -166,7 +122,7 @@ use_filter = true
 font_data = ExtResource( 28 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="combat" type="Control" index="0"]
+[node name="combat" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -279,9 +235,8 @@ _sections_unfolded = [ "Rect" ]
 [node name="Template" type="TextureButton" parent="Panel/PlayerGroup/Back/left" index="0"]
 
 pause_mode = 2
-editor/display_folded = true
 visible = false
-material = SubResource( 2 )
+material = ExtResource( 4 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -303,7 +258,7 @@ group = null
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 5
-_sections_unfolded = [ "Material", "Mouse", "Pause", "Rect", "Size Flags", "Textures" ]
+_sections_unfolded = [ "Material", "Pause", "Rect", "Size Flags", "Textures" ]
 
 [node name="Icon" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template" index="0"]
 
@@ -325,7 +280,7 @@ size_flags_vertical = 1
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
-_sections_unfolded = [ "Hint", "Mouse", "Rect", "Visibility" ]
+_sections_unfolded = [ "Hint", "Material", "Mouse", "Rect", "Visibility" ]
 
 [node name="HP" type="ProgressBar" parent="Panel/PlayerGroup/Back/left/Template" index="1"]
 
@@ -455,11 +410,11 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="shield" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template" index="6"]
+[node name="border" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template" index="6"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.640863 )
-material = SubResource( 8 )
+material = SubResource( 7 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -780,7 +735,6 @@ playback/speed = 1.0
 
 [node name="SkillPanel" type="TextureRect" parent="." index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1117,7 +1071,6 @@ _sections_unfolded = [ "BBCode" ]
 
 [node name="StatsPanel" type="Panel" parent="." index="7"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1496,6 +1449,35 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="effects" type="RichTextLabel" parent="StatsPanel" index="17"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 538.0
+margin_top = 372.0
+margin_right = 932.0
+margin_bottom = 665.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
+
 [node name="Rewards" type="TextureRect" parent="." index="8"]
 
 editor/display_folded = true
@@ -1845,13 +1827,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "VICTORY"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
-
 
 
