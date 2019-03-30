@@ -18,6 +18,7 @@ var target
 var critchance
 var hit_res
 var armor_p
+var temp
 
 func _init(c,t):
 	caster = c
@@ -49,6 +50,10 @@ func createfromskill(s_code):
 		armor_p = ref['armor_p']
 	else:
 		armor_p = caster.armorpenetration
+	if ref.keys().has('temp'):#for additional information
+		temp = ref['temp'];
+	else:
+		temp = ['0'];
 	
 
 

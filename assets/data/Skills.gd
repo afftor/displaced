@@ -394,9 +394,12 @@ var skilllist = {
 		allowedtargets = ['enemy'],
 		reqs = [],
 		tags = [],
-		value = ['caster.position'],
+
+		temp = ['caster.position'],
+		value = ['caster.damage'],
 		cooldown = 2,
 		manacost = 5,
+
 		chance = 100,
 		evade = 0,
 		critchance = 0,

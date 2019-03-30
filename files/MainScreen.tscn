@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/buildings/tavern.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/buildings/market.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/buildings/market_hl.png" type="Texture" id=17]
+[ext_resource path="res://src/Clickable_Sprite.gd" type="Script" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/buildings/gate.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/buildings/gate_hl.png" type="Texture" id=20]
@@ -356,9 +356,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 223.0
+margin_left = 225.0
 margin_top = 493.0
-margin_right = 538.0
+margin_right = 540.0
 margin_bottom = 916.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -372,9 +372,33 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 texture_normal = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
 stretch_mode = 4
+script = ExtResource( 17 )
 _sections_unfolded = [ "Rect", "Textures" ]
+charname = "flak"
+inside_node_name = "SlaveMarket"
+is_char = false
+
+[node name="QuestActive" type="TextureRect" parent="WorkBuildNode" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 174.0
+margin_top = -42.0
+margin_right = 299.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Mouse", "Textures" ]
 
 [node name="QuestActive" type="TextureRect" parent="WorkBuildNode" index="0"]
 

@@ -34,7 +34,7 @@ func _ready():
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
 	$BlacksmithNode.connect("pressed",self,'openblacksmith')
-	$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
+	#$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
 	$TownHallNode.connect("pressed",self,'OpenTownhall')
 	#$HeroBuildNode.connect("pressed",self,'openheroguild')
 	$Lumber.connect("pressed", self, '_on_Lumber_pressed')

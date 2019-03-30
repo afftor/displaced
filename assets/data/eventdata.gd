@@ -94,3 +94,13 @@ var characters = {
 	['ember 2', 'ember 3']
 };
 
+var buildings = {
+	'flak':
+	["Market"],
+	'ember':[]
+};
+var progressdata = {
+	0 : "Search for clues for "
+	
+}
+
