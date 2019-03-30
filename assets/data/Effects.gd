@@ -426,19 +426,19 @@ var atomic = {
 #needs filling
 var buffs = {
 	#code = {icon, description}
-	stun = {icon = null, description = null},
-	noevade = {icon = null, description = null},
+	stun = {icon = load("res://assets/images/traits/experience.png"), description = "Stunned"},
+	noevade = {icon = load("res://assets/images/traits/dodgedebuff.png"), description = "Evasion Reduced"},
 	prot10 = {icon = null, description = null},
 	area_prot = {icon = null, description = null}, #marks owner of area protection effect
-	react = {icon = null, description = null},
-	slowarrow = {icon = null, description = null},
-	killer = {icon = null, description = null},
+	react = {icon = load("res://assets/images/traits/speedondamage.png"), description = "Speed Increased"},
+	slowarrow = {icon = load("res://assets/images/traits/dodgedebuff.png"), description = "Speed and Evasion reduced"},
+	killer = {icon = load("res://assets/images/traits/bowextradamage.png"), description = "Next skill damage increased"},
 	speed = {icon = null, description = null},
 	area_speed = {icon = null, description = null}, #marks owner of area speed effect
-	noresist = {icon = null, description = null},
+	noresist = {icon = load("res://assets/images/traits/resistdebuf.png"), description = "Resists Reduced"},
 	shield1 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Every turn creates a barrier, absorbing 15 physical damage"},
 	shield2 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Absorbs 50 physical damage for 2 turns"},
 	shield3 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Absorbs 50 magic damage for 2 turns"},
-	spider_noarmor = {icon = null, description = null},
-	cripple = {icon = null, description = null},
+	spider_noarmor = {icon = load("res://assets/images/traits/armorignore.png"), description = "Armor Reduced"},
+	cripple = {icon = load("res://assets/images/traits/speeddebuf.png"), description = "Damage Reduced"},
 };

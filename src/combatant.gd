@@ -47,7 +47,7 @@ var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null
 
 var skills = ['attack']
 var traits = {} #{'trait':'state'}
-var traitpoints = 5
+var traitpoints = 0
 
 var inactiveskills = []
 var cooldowns = {}
@@ -137,10 +137,13 @@ func mana_set(value):
 		displaynode.update_mana()
 
 func exp_set(value):
-	baseexp = value
-	while baseexp > 100:
-		baseexp -= 100
-		levelup()
+	if level >= variables.MaxLevel:
+		baseexp = 100
+	else:
+		baseexp = value
+		while baseexp > 100:
+			baseexp -= 100
+			levelup()
 
 func eva_set(value):
 	var delta = value - evasion
@@ -161,6 +164,7 @@ func armor_get():
 func levelup():
 	level += 1
 	recentlevelups += 1
+	traitpoints += variables.TraitPointsPerLevel
 	
 	var baseclass = combatantdata.classlist[base]
 	for i in baseclass.learnableskills:

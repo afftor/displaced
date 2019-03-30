@@ -94,6 +94,7 @@ func rebuildbuffs():
 		var newbuff = globals.DuplicateContainerTemplate($Buffs)
 		var buff = Effectdata.buffs[i]
 		var text = buff.description
+		newbuff.texture = buff.icon
 		if buff.has('bonuseffect'):
 			match buff.bonuseffect:
 				'barrier':

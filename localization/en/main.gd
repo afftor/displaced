@@ -71,6 +71,15 @@ var TranslationDict = {
 	
 	USABLEMORSEL = "Morsel",
 	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted into Food.",
+	USABLEMANAGRASS = "Blue Grass",
+	USABLEMANAGRASSDESCRIPT = "An unusual plant with magical properties. Restores 25 mana on use. ",
+	USABLEBARRICADE = "Barricade",
+	USABLEBARRICADEDESCRIPT = "A makeshift wooden obstacle. Shields target from 50 physical damage for 2 turns",
+	USABLEPROTECTIVECHARM = "Protective Charm",
+	USABLEPROTECTIVECHARMDESCRIPT = "An enchanted piece of paper. Shields target from 50 magic damage for 2 turns",
+	USABLEELIXIR = "Elixir",
+	USABLEELIXIRDESCRIPT = "A rejuvinating potion. Restores 75 health and 40 mana.",
+	
 	
 	#enemies
 	MONSTERELVENRAT = "Elven Rat",
@@ -113,6 +122,7 @@ var TranslationDict = {
 	CRITCHANCE = "Crit. Chance",
 	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
+	MAXLEVEL =  "Maximum Level",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	
 	#stat tooltips
@@ -211,6 +221,7 @@ var TranslationDict = {
 	TRAITPOINTS = "Trait Points used",
 	GOLDPRICE = "Gold Cost",
 	
+	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
 	WORKERLIMITREACHER = "Worker Limit Reached: Upgrade Houses to increase",
