@@ -669,6 +669,7 @@ func use_skill(skill_code, caster, target):
 	var skill = globals.skills[skill_code]
 	
 	caster.mana -= skill.manacost
+	var endturn = skill.tags.has('instant');
 	
 	for i in skill.casteffects:
 		var tmp = Effectdata.effect_table[i]
@@ -742,14 +743,18 @@ func use_skill(skill_code, caster, target):
 		activeitem = null
 		SelectSkill('attack')
 	
-	
-	
 	if fighterhighlighted == true:
 		FighterMouseOver(target)
 	#print(caster.name + ' finished attacking') 
-	#on end turn triggers
-	caster.basic_check(variables.TR_TURN_F)
-	call_deferred('select_actor')
+	if endturn or caster.hp <= 0 or !caster.can_act():
+		#on end turn triggers
+		caster.basic_check(variables.TR_TURN_F)
+		call_deferred('select_actor')
+	else:
+		allowaction = true
+		RebuildSkillPanel()
+		RebuildItemPanel()
+		SelectSkill(activeaction)
 
 func ProcessSfxTarget(sfxtarget, caster, target):
 	match sfxtarget:

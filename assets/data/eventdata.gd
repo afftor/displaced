@@ -27,7 +27,9 @@ var checks = {
 	],
 	"Market":
 	[
-		{type = "building", value = "slave"},
+		{},
+		{type = "no_check"}
+		#{type = "building", value = "slave"},
 		#{type = "event_finished", name = "Intro 2"}
 	],
 	"Intro":
@@ -85,7 +87,11 @@ var characters = {
 	'ember':
 	['ember 2', 'ember 3']
 };
-
+var buildings = {
+	'flak':
+	["Market"],
+	'ember':[]
+};
 var progressdata = {
 	0 : "Search for clues for "
 	
