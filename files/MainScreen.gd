@@ -45,6 +45,9 @@ func _ready():
 		state.townupgrades['bridge'] = 1
 		state.OldEvents['bridge'] = 0
 		state.MakeQuest('elves')
+		state.materials.goblinmetal = 20
+		state.materials.wood = 20
+		state.materials.elvenwood = 20
 		combatantdata.MakeCharacterFromData('arron')
 		combatantdata.MakeCharacterFromData('rose')
 		combatantdata.MakeCharacterFromData('erika')
@@ -88,8 +91,30 @@ func _ready():
 	changespeed($"TimeNode/0speed", false)
 	#buildscreen()
 
+var forgeimage = {
+	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},
+	first = {normal = load("res://assets/images/buildings/forge1.png"), hl = null},
+	second = {normal = load("res://assets/images/buildings/forge2.png"), hl = null},
+	
+}
+
 func buildscreen():
-	$Gate.visible = state.townupgrades.has('bridge')
+	$Background/bridge.visible = state.townupgrades.has('bridge')
+	$Background/mine.visible = state.townupgrades.has("mine")
+	$Background/farm.visible = state.townupgrades.has("farm")
+	$Background/house.visible = state.townupgrades.has("houses")
+	$Background/lumbermill.visible = state.townupgrades.has("lumbermill")
+	if state.townupgrades.has('blacksmith') == false:
+		$BlacksmithNode.texture_normal = forgeimage.base.normal
+		$BlacksmithNode.texture_hover = forgeimage.base.hl
+	else:
+		match state.townupgrades.blacksmith:
+			1:
+				$BlacksmithNode.texture_normal = forgeimage.first.normal
+				$BlacksmithNode.texture_hover = forgeimage.first.hl
+			2:
+				$BlacksmithNode.texture_normal = forgeimage.second.normal
+				$BlacksmithNode.texture_hover = forgeimage.second.hl
 
 func testfunction():
 	input_handler.ActivateTutorial('tutorial1')
@@ -124,6 +149,10 @@ func _process(delta):
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
 		state.daytime += delta * gamespeed
+		
+		for i in state.heroes.values():
+			i.hppercent += (delta*gamespeed*100)/variables.TimePerDay
+			i.mana += (delta*gamespeed*i.manamax)/variables.TimePerDay
 		
 		movesky()
 		for i in tasks:

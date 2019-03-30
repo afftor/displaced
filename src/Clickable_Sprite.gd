@@ -25,8 +25,8 @@ var inside_node = null;
 func _ready():
 	material = load("res://files/portret_shader.tres");
 	material.set_shader_param('opacity', 0.0);
-	if has_node('active_icon'):
-		var node = get_node('active_icon');
+	if has_node('QuestActive'):
+		var node = get_node('QuestActive');
 		node.connect('pressed', self, '_onclick')
 		node.connect('mouse_entered', self, 'activate_outline');
 		node.connect('mouse_exited', self, 'deactivate_outline');
@@ -73,31 +73,34 @@ func _onclick():
 
 func set_active_val():#temporal contruction, until event starting reworking
 	if state.CurEvent != "": return
+	active = false;
 	for e in events.characters[charname]:
 		var res = globals.SimpleEventCheck(e)
 		if res:
 			active = true
-			if has_node('active_icon'):
-				$active_icon.visible = true;
+			if has_node('QuestActive'):
+				$QuestActive.visible = true;
 			if is_char:
 				next_scene = e
 				#material = load("res://files/portret_shader.tres")
 				#set_process(true)
 				#.update()
 				return
+			else:
+				break
 	if !is_char:
 		for e in events.buildings[charname]:
 			var res = globals.SimpleEventCheck(e);
 			if res:
 				active = true
-				if has_node('active_icon'):
-					$active_icon.visible = true;
+				if has_node('QuestActive'):
+					$QuestActive.visible = true;
 				next_scene = e
 				return
-	active = false
+	next_scene = "";
+	if active == false:
 	#material = null
-	next_scene = ""
-	if has_node('active_icon'):
-		$active_icon.visible = false;
+		if has_node('QuestActive'):
+			$QuestActive.visible = false;
 	#set_process(false)
 	#.update()
