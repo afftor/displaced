@@ -840,6 +840,7 @@ func execute_skill(skill, caster, target):
 	var endvalue = 0
 	#value pre_calculation, using in triggers
 	endvalue = calculate_number_from_string_array(s_skill.long_value, caster, target)
+	s_skill.temp = calculate_number_from_string_array(s_skill.temp, caster, target)
 	var rangetype
 	if s_skill.userange == 'weapon':
 		if caster.gear.rhand == null:

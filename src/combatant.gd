@@ -275,7 +275,7 @@ func remove_atomic(effect):
 		'block_effect':
 			apply_effect(tmp.effect)
 		'buff':
-			buffs.remove(tmp.value)
+			buffs.erase(tmp.value)
 	pass
 
 func find_temp_effect(eff_code):
