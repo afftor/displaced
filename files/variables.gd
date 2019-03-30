@@ -15,3 +15,6 @@ var RepairCostMultiplierHard = 0.8
 var ItemEffectNaturalMultiplier = 0.15
 #Heroes
 var BaseHeroPrice = 100
+var MaxLevel = 5
+var StartTraitPoints = 0
+var TraitPointsPerLevel = 1

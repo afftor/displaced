@@ -11,7 +11,7 @@ var classlist = {
 		speed = 50,
 		damage = 15,
 		skills = ['attack'],
-		learnableskills = {slash = 2},
+		learnableskills = {taunt = 2, slash = 3},
 		icon = null,
 	},
 	mage = {

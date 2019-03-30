@@ -65,13 +65,13 @@ func update_hp_label():
 	if fighter.combatgroup == 'ally':
 		$hplabel.text = str(fighter.hp) + '/' + str(fighter.hpmax())
 	else:
-		$hplabel.text = str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + '%'
+		$hplabel.text = str(round(globals.calculatepercent(fighter.hp, fighter.hpmax()))) + '%'
 
 func update_mp_label():
 	if fighter.combatgroup == 'ally':
 		$mplabel.text = str(fighter.mana) + '/' + str(fighter.manamax())
 	else:
-		$mplabel.text = str(globals.calculatepercent(fighter.mana, fighter.manamax())) + '%'
+		$mplabel.text = str(round(globals.calculatepercent(fighter.mana, fighter.manamax()))) + '%'
 
 func defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
@@ -86,6 +86,19 @@ func update_shield(): #
 	else:
 		match fighter.shieldtype:
 			variables.S_PHYS: #tempate, add all other values from this enum
-				self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 1.0)); #example
-	pass
+				self.material.set_shader_param('modulate', Color(1, 0.8, 0, 1.0)); #example
+
+func rebuildbuffs():
+	globals.ClearContainer($Buffs)
+	for i in fighter.buffs:
+		var newbuff = globals.DuplicateContainerTemplate($Buffs)
+		var buff = Effectdata.buffs[i]
+		var text = buff.description
+		newbuff.texture = buff.icon
+		if buff.has('bonuseffect'):
+			match buff.bonuseffect:
+				'barrier':
+					newbuff.get_node("Label").show()
+					newbuff.get_node("Label").text = str(fighter.shield)
+		globals.connecttooltip(newbuff, text)
 

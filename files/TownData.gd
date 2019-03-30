@@ -44,7 +44,7 @@ var tasksdict = {
 	baselimit = 2, 
 	upgradelimit = 'farm',
 	name = tr("HARVESTPLANT"),
-	description = tr('HARVESTPLANTTASKDESCRIPTION'),
+	description = tr('HARVESTPLANTDESCRIPTION'),
 	unlockreqs = [{type = "has_upgrade", name = "farm", value = 1}],
 	tasktool = {type = 'none', required = false, durabilityfactor = 0}, 
 	workerproducts = {

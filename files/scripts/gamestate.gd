@@ -162,12 +162,12 @@ func if_has_property(prop, value):
 
 func if_has_hero(name):
 	for h in heroes.values():
-		if h.name == name: return true;
+		if h.namebase == name: return true;
 	return false;
 
-func if_has_material(mat, val):
+func if_has_material(mat, operant, val):
 	if !materials.has(mat): return false;
-	return materials[mat] >= val;
+	return input_handler.operate(operant, materials[mat], val)
 
 func if_has_item(name):
 	for i in items.values():
@@ -192,7 +192,7 @@ func valuecheck(dict):
 				tmp = OldEvents[dict['name']] + dict['delay'] <= date;
 			return tmp;
 		"has_material":
-			return if_has_material(dict['material'], dict['value']);
+			return if_has_material(dict['material'], dict.operant, dict['value']);
 		"date":
 			return date >= dict['date'];
 		"item":
@@ -215,6 +215,11 @@ func valuecheck(dict):
 			return completedquests.has(dict.name)
 		"party_level":
 			return if_party_level(dict.operant, dict.value)
+		"hero_level":
+			if if_has_hero(dict.name) == false:
+				return false
+			else:
+				return if_hero_level(dict.name, dict.operant, dict.value)
 
 func if_quest_stage(name, value, operant):
 	var questprogress
@@ -245,6 +250,13 @@ func if_party_level(operant,value):
 		if i != null:
 			counter += heroes[i].level
 	return input_handler.operate(operant, counter, value)
+
+func if_hero_level(name, operant, value):
+	var hero
+	for h in heroes.values():
+		if h.name == name: hero = h
+	return input_handler.operate(operant, hero.level, value)
+
 
 func serialize():
 	var tmp = {};

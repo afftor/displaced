@@ -239,11 +239,11 @@ var effect_table = {
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = [{target = 'target', type = 'temp_effect', effect = 'e_spidernoarmor', duration = 2, stack = 99}]
 	},
-	e_s_faery = {
+	e_s_fairy = {
 		type = 'oneshot',
 		trigger = variables.TR_HIT,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
-		effects = [{target = 'target', type = 'stat', stat = 'mana', value = -20}] # ! value to check
+		effects = [{target = 'target', type = 'stat', stat = 'mana', value = -5}] # ! value to check
 	},
 	e_s_taunt = {
 		type = 'oneshot',
@@ -385,7 +385,7 @@ var effect_table = {
 	e_spidernoarmor = {
 		type = 'static',
 		effects = ['spider_icon',
-		{type = 'stat', stat = 'armor', value = -10} #!!!value to check
+		{type = 'stat', stat = 'armor', value = -10}
 		]
 	},
 	e_cripple = {
@@ -433,20 +433,23 @@ var atomic = {
 #needs filling
 var buffs = {
 	#code = {icon, description}
-	stun = {icon = null, description = null},
-	noevade = {icon = null, description = null},
+	stun = {icon = load("res://assets/images/traits/experience.png"), description = "Stunned"},
+	noevade = {icon = load("res://assets/images/traits/dodgedebuff.png"), description = "Evasion Reduced"},
 	prot10 = {icon = null, description = null},
 	area_prot = {icon = null, description = null}, #marks owner of area protection effect
-	react = {icon = null, description = null},
-	slowarrow = {icon = null, description = null},
-	killer = {icon = null, description = null},
+	react = {icon = load("res://assets/images/traits/speedondamage.png"), description = "Speed Increased"},
+	slowarrow = {icon = load("res://assets/images/traits/dodgedebuff.png"), description = "Speed and Evasion reduced"},
+	killer = {icon = load("res://assets/images/traits/bowextradamage.png"), description = "Next skill damage increased"},
 	speed = {icon = null, description = null},
 	area_speed = {icon = null, description = null}, #marks owner of area speed effect
-	noresist = {icon = null, description = null},
-	shield1 = {icon = null, description = null},
-	shield2 = {icon = null, description = null},
-	shield3 = {icon = null, description = null},
-	spider_noarmor = {icon = null, description = null},
-	cripple = {icon = null, description = null},
+
 	taunted = {icon = null, description = null},
+
+	noresist = {icon = load("res://assets/images/traits/resistdebuf.png"), description = "Resists Reduced"},
+	shield1 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Every turn creates a barrier, absorbing 15 physical damage"},
+	shield2 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Absorbs 50 physical damage for 2 turns"},
+	shield3 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Absorbs 50 magic damage for 2 turns"},
+	spider_noarmor = {icon = load("res://assets/images/traits/armorignore.png"), description = "Armor Reduced"},
+	cripple = {icon = load("res://assets/images/traits/speeddebuf.png"), description = "Damage Reduced"},
+
 };

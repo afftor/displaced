@@ -22,6 +22,9 @@ func _ready():
 
 
 func show():
+	input_handler.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	
 	.show()
 	state.CurBuild = 'ExploreScreen'
 	input_handler.CurrentScreen = 'Explore'
@@ -37,6 +40,8 @@ func show():
 		$AreaProgress.hide()
 
 func hide():
+	input_handler.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
 	state.CurBuild = '';
 	.hide()
 
@@ -94,6 +99,8 @@ func StartCombat(data):
 		enemies = makespecificgroup(data)
 	
 	input_handler.emit_signal("CombatStarted", encountercode)
+	input_handler.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
 	$combat.encountercode = encountercode 
 	$combat.start_combat(enemies, area.category, music)
 	$combat.show()
@@ -241,6 +248,10 @@ func startexploration():
 
 func wincontinue():
 	state.areaprogress[area.code] = stage
+	for i in state.heroes.values():
+		if i.hp <= 0:
+			i.hp = 1
+	
 	if stage > area.stages:
 		showexplorelist()
 		$AreaProgress.hide()

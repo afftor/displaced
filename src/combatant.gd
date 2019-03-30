@@ -47,10 +47,10 @@ var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null
 
 var skills = ['attack']
 var traits = {} #{'trait':'state'}
-var traitpoints = 5
+var traitpoints = 0
 
 var inactiveskills = []
-var cooldowns = []
+var cooldowns = {}
 
 var bodyhitsound = 'flesh' #for sound effect calculations
 
@@ -92,13 +92,11 @@ func set_shield(value):
 	shield = value;
 	if displaynode != null:
 		displaynode.update_shield()
-	pass
 
 func set_shield_t(value):
 	shieldtype = value;
 	if displaynode != null:
 		displaynode.update_shield()
-	pass
 
 func damage_set(value):
 	damage = value
@@ -139,10 +137,13 @@ func mana_set(value):
 		displaynode.update_mana()
 
 func exp_set(value):
-	baseexp = value
-	while baseexp > 100:
-		baseexp -= 100
-		levelup()
+	if level >= variables.MaxLevel:
+		baseexp = 100
+	else:
+		baseexp = value
+		while baseexp > 100:
+			baseexp -= 100
+			levelup()
 
 func eva_set(value):
 	var delta = value - evasion
@@ -163,6 +164,7 @@ func armor_get():
 func levelup():
 	level += 1
 	recentlevelups += 1
+	traitpoints += variables.TraitPointsPerLevel
 	
 	var baseclass = combatantdata.classlist[base]
 	for i in baseclass.learnableskills:
@@ -381,7 +383,7 @@ func remove_effect(eff_code, option = 'once'):
 		var if_temp = find_temp_effect(eff_code);
 		if if_temp.num == 0: break;
 		if option == 'once':
-			if temp_effects[if_temp.index].duration >= 0:
+			if temp_effects[if_temp.index].time >= 0:
 				print ("warning, possible incorrect temporal effect removing!")
 			temp_effects.remove(if_temp.index);
 			break;
@@ -768,7 +770,7 @@ func skill_tooltip_text(skillcode):
 	var skill = globals.skills[skillcode]
 	var text = '[center]' + skill.name + '[/center]\n'
 	if skill.description.find("%d") >= 0:
-		text += (skill.description % calculate_number_from_string_array(skill.value))
+		text += skill.description % calculate_number_from_string_array(skill.value)
 	else:
 		text += skill.description
 	return text
@@ -786,7 +788,6 @@ func serialize():
 		tmp[a] = get(a).duplicate()
 	#return to_json(tmp)
 	return tmp
-	pass
 
 func deserialize(tmp):
 	#var tmp = parse_json(buff);

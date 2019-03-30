@@ -60,6 +60,9 @@ func upgradelist():
 		if i.levels.has(currentupgradelevel) == false:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
 			text += ' Unlocked'
+			newbutton.get_node("icon").texture = i.levels[currentupgradelevel-1].icon
+		else:
+			newbutton.get_node("icon").texture = i.levels[currentupgradelevel].icon
 		newbutton.get_node("name").text = text
 		newbutton.connect("pressed", self, "selectupgrade", [i])
 

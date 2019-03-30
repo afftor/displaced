@@ -462,7 +462,7 @@ func CharacterSelect(targetscript, type, function, requirements):
 			continue
 		var newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
-		newnode.get_node("Icon").texture = i.icon
+		newnode.get_node("Icon").texture = load(i.icon)
 		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])
@@ -589,6 +589,8 @@ func SaveGame(name):
 	file.close()
 
 func LoadGame(filename):
+	input_handler.BlackScreenTransition(1)
+	yield(get_tree().create_timer(1), 'timeout')
 	ChangeScene('town');
 	yield(self, "scene_changed");
 	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :

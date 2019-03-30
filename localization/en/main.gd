@@ -71,6 +71,15 @@ var TranslationDict = {
 	
 	USABLEMORSEL = "Morsel",
 	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted into Food.",
+	USABLEMANAGRASS = "Blue Grass",
+	USABLEMANAGRASSDESCRIPT = "An unusual plant with magical properties. Restores 25 mana on use. ",
+	USABLEBARRICADE = "Barricade",
+	USABLEBARRICADEDESCRIPT = "A makeshift wooden obstacle. Shields target from 50 physical damage for 2 turns",
+	USABLEPROTECTIVECHARM = "Protective Charm",
+	USABLEPROTECTIVECHARMDESCRIPT = "An enchanted piece of paper. Shields target from 50 magic damage for 2 turns",
+	USABLEELIXIR = "Elixir",
+	USABLEELIXIRDESCRIPT = "A rejuvinating potion. Restores 75 health and 40 mana.",
+	
 	
 	#enemies
 	MONSTERELVENRAT = "Elven Rat",
@@ -113,6 +122,7 @@ var TranslationDict = {
 	CRITCHANCE = "Crit. Chance",
 	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
+	MAXLEVEL =  "Maximum Level",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	
 	#stat tooltips
@@ -171,7 +181,10 @@ var TranslationDict = {
 	
 	#System
 	CONFIRM = "Confirm",
+	FRONT = "Front",
+	BACK = "Back",
 	CANCEL = "Cancel",
+	REMOVE = "Remove",
 	NONE = "None",
 	SPEED = "Speed",
 	DAY = "Day",
@@ -208,6 +221,7 @@ var TranslationDict = {
 	TRAITPOINTS = "Trait Points used",
 	GOLDPRICE = "Gold Cost",
 	
+	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
 	WORKERLIMITREACHER = "Worker Limit Reached: Upgrade Houses to increase",
@@ -254,7 +268,10 @@ var TranslationDict = {
 	
 	#Tasks
 	HARVESTWOOD = "Harvest Lumber",
-	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation",
+	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation.",
+	HARVESTMETALDESCRIPTION = "Harvest metal ores from the mine. Requires a pickaxe.",
+	HARVESTPLANTDESCRIPTION = "Produce plants from the farm.",
+	
 	
 	#Classes
 	CLASSDESCRIPT = "Class defines character's basic characteristics, abilities, specific traits and allowed gear. More abilities are unlocked as you level up. After certain level you can advance into one of the new classes.",
@@ -292,6 +309,8 @@ var TranslationDict = {
 	SKILLFIREBOLTDESCRIPT = "Launches a fire spell on target. Deal %d Fire damage to all targets in same row.",
 	SKILLWINDARROW = "Wind Arrow",
 	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %d damage. Requires a bow equipped.",
+	SKILLTAUNT = "Taunt",
+	SKILLTAUNTDESCRIPT = "Forces enemy to attack you on its next turn.",
 	SKILLSLASH = "Slash",
 	SKILLSLASHDESCRIPT = "Deals %d Weapon damage to all targets in nearby column. Requires a weapon equipped.",
 	SKILLMINORHEAL = "Minor Heal",
@@ -334,7 +353,7 @@ var TranslationDict = {
 	UPGRADEBLACKSMITHBONUS1 = "Unlocks Headgear",
 	UPGRADEBLACKSMITHBONUS2 = "Unlocks footgear",
 	LUMBERMILLUPGRADE = "Lumber mill",
-	UPGRADELUMBERMILLDESCRIPT = "Improves the quality of Lumber Mill building.",
+	UPGRADELUMBERMILLDESCRIPT = "Provides a room for more Lumber Harvesters.",
 	UPGRADELUMBERMILLBONUS = "Increases the number of workers allowed in same time to 4. ",
 	
 	#traitdescriptions
@@ -362,6 +381,6 @@ var TranslationDict = {
 	TRAITRESISTDEBUFF = "On hit reduces all target resists for 15 for 1 turn",
 	TRAITFIREDAMAGEBONUS = "20% Extra Fire damage to skills",
 	
-	TAKEGOLDBUTTON = "Take Gold Instead",
+	TAKEGOLDBUTTON = "Take 100 Gold",
 	TAKEGOLDBUTTONTOOLTIP = "Refuse all traits and receive 100 gold"
 }

@@ -8,7 +8,8 @@ var upgradelist = {
 		descript = tr("UPGRADEBRIDGEDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = [], 
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_bridge.png'),
 				bonusdescript = tr("UPGRADEBRIDGEBONUS"),
 				cost = {wood = 5},
 			}
@@ -22,6 +23,7 @@ var upgradelist = {
 		levels = {
 			1:{
 				unlockreqs = [], 
+				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				bonusdescript = tr("UPGRADELUMBERMILLBONUS"),
 				cost = {goblinmetal = 5, cloth = 5},
 				limitchange = 4
@@ -36,6 +38,7 @@ var upgradelist = {
 		levels = {
 			1:{
 				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
+				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				bonusdescript = tr("UPGRADEMINEBONUS"),
 				cost = {wood = 5, elvenwood = 5},
 				limitchange = 2
@@ -49,7 +52,8 @@ var upgradelist = {
 		descript = tr("UPGRADEFARMDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
+				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}],
+				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
 				bonusdescript = tr("UPGRADEFARMBONUS"),
 				cost = {wood = 10},
 				limitchange = 2
@@ -64,12 +68,14 @@ var upgradelist = {
 		levels = {
 			1:{
 				unlockreqs = [],
+				icon = load("res://assets/images/buildings/upgrade_house.png"),
 				bonusdescript = tr("UPGRADHOUSEBONUS1"),
 				cost = {wood = 10},
 				limitchange = 4,
 			},
 			2:{
 				unlockreqs = [], 
+				icon = load("res://assets/images/buildings/upgrade_house.png"),
 				bonusdescript = tr("UPGRADHOUSEBONUS2"),
 				cost = {wood = 10, elvenwood = 5},
 				limitchange = 6
@@ -84,13 +90,15 @@ var upgradelist = {
 		levels = {
 			1:{
 				unlockreqs = [{type = "has_hero", name = "EMBER"}], 
+				icon = load('res://assets/images/buildings/upgrade_forge.png'),
 				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
 				cost = {goblinmetal = 10},
 			},
 			2:{
 				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_forge2.png'),
 				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
-				cost = {elvenmetal = 10},
+				cost = {goblinmetal = 10, elvenmetal = 10},
 			},
 		}
 	},

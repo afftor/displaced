@@ -97,8 +97,10 @@ func start_combat(newenemygroup, background, music = 'combattheme'):
 	#start combat triggers
 	for p in playergroup.values():
 		p.basic_check(variables.TR_COMBAT_S)
+		p.displaynode.rebuildbuffs()
 	for p in enemygroup.values():
 		p.basic_check(variables.TR_COMBAT_S)
+		p.displaynode.rebuildbuffs()
 	select_actor()
 
 func FinishCombat():
@@ -135,22 +137,21 @@ func select_actor():
 
 func newturn():
 	for i in playergroup.values() + enemygroup.values():
-#		for k in i.buffs.values():
-#			k.duration -= 1
-#			if k.duration < 0:
-#				i.remove_buff(k.code)
 		i.update_temp_effects()
 		i.basic_check(variables.TR_TURN_S)
-
-#func debuff_all():
-#	for i in playergroup.values() + enemygroup.values():
-#		for k in i.buffs:
-#			i.remove_buff(k.code)
+		var cooldowncleararray = []
+		for k in i.cooldowns:
+			i.cooldowns[k] -= 1
+			if i.cooldowns[k] <= 0:
+				cooldowncleararray.append(k)
+		for k in cooldowncleararray:
+			i.cooldowns.erase(k)
 
 func checkdeaths():
 	for i in battlefield:
 		if battlefield[i] != null && battlefield[i].defeated != true && battlefield[i].hp <= 0:
 			battlefield[i].death()
+			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
 			turnorder.erase(battlefield[i])
 			if summons.has(i):
 				battlefield[i].displaynode.queue_free()
@@ -234,6 +235,10 @@ func victory():
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
 			subtween.interpolate_callback(input_handler, 1, 'PlaySound', "levelup")
+		elif i.level == level && i.baseexp == 100 :
+			newbutton.get_node("xpbar").value = 100
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))
 		else:
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))
@@ -507,8 +512,8 @@ func make_fighter_panel(fighter, spot):
 	else:
 		g_color = Color(1.0, 0.0, 0.0, 0.0);
 	panel.material.set_shader_param('modulate', g_color);
-	
 	panel.visible = true
+	panel.rebuildbuffs()
 
 var fighterhighlighted = false
 
@@ -557,9 +562,9 @@ func ShowFighterStats(fighter):
 		else:
 			$StatsPanel/mana.text = ''
 	else:
-		$StatsPanel/hp.text = 'Health: ' + str(globals.calculatepercent(fighter.hp, fighter.hpmax())) + "%"
+		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.hpmax()))) + "%"
 		if fighter.manamax > 0:
-			$StatsPanel/mana.text = "Mana: " + str(globals.calculatepercent(fighter.mana, fighter.manamax)) + "%"
+			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.manamax))) + "%"
 		else:
 			$StatsPanel/mana.text = ''
 	$StatsPanel/damage.text = "Damage: " + str(fighter.damage) 
@@ -578,6 +583,9 @@ func ShowFighterStats(fighter):
 	$StatsPanel/name.text = tr(fighter.name)
 	$StatsPanel/descript.text = fighter.flavor
 	$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
+	for i in fighter.buffs:
+		text += i + "\n"
+	$StatsPanel/effects.bbcode_text = text
 
 func HideFighterStats():
 	$StatsPanel.hide()
@@ -642,7 +650,6 @@ func summon(montype, limit):
 	enemygroup[sum_pos].combatgroup = 'enemy'
 	battlefield[sum_pos] = enemygroup[sum_pos];
 	make_fighter_panel(battlefield[sum_pos], sum_pos);
-	pass
 
 func SendSkillEffect(skilleffect, caster, target):
 	var endtargets = []
@@ -685,7 +692,7 @@ func use_skill(skill_code, caster, target):
 		repeat = skill.repeat;
 	
 	for n in range(repeat):
-		if target.hp <=0:
+		if target.hp <= 0:
 			UpdateSkillTargets();
 			var new_targets = [];
 			for t in allowedtargets.ally:
@@ -734,15 +741,18 @@ func use_skill(skill_code, caster, target):
 					input_handler.PlaySound(skill.sounddata.hit)
 				elif skill.sounddata.hittype == 'bodyarmor':
 					input_handler.PlaySound(calculate_hit_sound(skill, caster, target))
-
+		
 		if animationdict.predamage.size() > 0:
 			yield(CombatAnimations, 'alleffectsfinished')
-
+		target.displaynode.rebuildbuffs()
+	
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
 		SelectSkill('attack')
 	
+
+	caster.displaynode.rebuildbuffs()
 	if fighterhighlighted == true:
 		FighterMouseOver(target)
 	#print(caster.name + ' finished attacking') 
@@ -755,6 +765,7 @@ func use_skill(skill_code, caster, target):
 		RebuildSkillPanel()
 		RebuildItemPanel()
 		SelectSkill(activeaction)
+
 
 func ProcessSfxTarget(sfxtarget, caster, target):
 	match sfxtarget:
@@ -839,6 +850,9 @@ func calculate_number_from_string_array(array, caster, target):
 	return endvalue
 
 func execute_skill(skill, caster, target):
+	var ref = Skillsdata.skilllist[skill]
+	if ref.cooldown > 0:
+		caster.cooldowns[skill] = ref.cooldown
 	var s_skill = Skillsdata.S_Skill.new(caster, target)
 	s_skill.createfromskill(skill)
 	s_skill.hit_roll()
@@ -931,17 +945,19 @@ func StopHighlight(pos):
 func Target_eff_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
 	if node == null: return;
-	var temp# = node.material.get_shader_param('modulate');
-	if pos in range(1,7):
-		temp = Color(0.0, 1.0,0.0,1.0);
-	else:
-		temp = Color(1.0, 0.0,0.0,1.0);
+	var temp
+	
+	temp = Color(1.0,0.0,1.0,1.0);
 	node.get_node('border').material.set_shader_param('modulate', temp);
 
 func Target_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
 	if node == null: return;
-	var temp = Color(0.0, 0.0, 1.0, 1.0);
+	var temp
+	if pos in range(1,7):
+		temp = Color(0.0,1.0,0.0,1.0);
+	else:
+		temp = Color(1.0,0.0,0.0,1.0);
 	node.get_node('border').visible = true;
 	node.get_node('border').material.set_shader_param('modulate', temp);
 
@@ -979,16 +995,20 @@ func RebuildSkillPanel():
 		newbutton.get_node("manacost").text = str(skill.manacost)
 		if skill.manacost <= 0:
 			newbutton.get_node("manacost").hide()
+		if skill.manacost > activecharacter.mana:
+			newbutton.get_node("Icon").modulate = Color(0,0,1)
+		if activecharacter.cooldowns.has(i):
+			newbutton.disabled = true
+			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
 		if activecharacter.mana < skill.manacost:
 			newbutton.disabled = true
 		newbutton.set_meta('skill', skill.code)
-		#globals.connecttooltip(newbutton, skill.description)
 		globals.connecttooltip(newbutton, activecharacter.skill_tooltip_text(i))
 
 func SelectSkill(skill):
 	skill = globals.skills[skill]
-	if activecharacter.mana < skill.manacost:
+	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code):
 		SelectSkill('attack')
 		return
 	activecharacter.selectedskill = skill.code

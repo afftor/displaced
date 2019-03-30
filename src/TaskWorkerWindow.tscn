@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/images/gui/taskmenu/jobgui.png" type="Texture" id=1]
 [ext_resource path="res://files/SelectWorker.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -360,6 +361,7 @@ group = null
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 10 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Label" type="Label" parent="ConfirmButton" index="0"]

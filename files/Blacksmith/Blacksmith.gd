@@ -33,7 +33,12 @@ func chooseitem():
 	globals.ClearContainer($ItemSelection/ScrollContainer/GridContainer)
 	
 	for i in Items.Items.values():
-		if i.tags.has('recipe') && i.unlockreq == true:
+		if i.tags.has('recipe'):
+			var check = true
+			for k in i.unlockreqs:
+				if state.valuecheck(k) == false:
+					check = false
+			if check == false:continue
 			var newbutton = globals.DuplicateContainerTemplate($ItemSelection/ScrollContainer/GridContainer)
 			newbutton.texture_normal = i.icon
 			globals.connecttooltip(newbutton, '[center]' + i.name + "[/center]\n"+ i.description)
