@@ -50,7 +50,7 @@ var traits = {} #{'trait':'state'}
 var traitpoints = 5
 
 var inactiveskills = []
-var cooldowns = []
+var cooldowns = {}
 
 var bodyhitsound = 'flesh' #for sound effect calculations
 
@@ -784,7 +784,6 @@ func serialize():
 		tmp[a] = get(a).duplicate()
 	#return to_json(tmp)
 	return tmp
-	pass
 
 func deserialize(tmp):
 	#var tmp = parse_json(buff);

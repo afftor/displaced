@@ -16,7 +16,7 @@ var randomgroups = {
 	foresthard = {units = {treant = [2,3], elvenrat = [1,2]}, weight = 1, code = 'foresthard',reqs = [{type = "party_level", operant = "gte", value = 5}]},
 	foresthard2 = {units = {spider = [1,2], treant = [1,2]}, weight = 1, code = 'foresthard2',reqs = [{type = "party_level", operant = "gte", value = 4}]},
 	foresthard3 = {units = {fairies = [1,1], treant = [1,2]}, weight = 1, code = 'foresthard3',reqs = [{type = "party_level", operant = "gte", value = 4}]},
-	forestextraboss = {units = {entboss = [1,1], treant = [1,2]}, weight = 0.2, code = 'forestextraboss',reqs = [{type = "party_level", operant = "gte", value = 8}]},
+	forestextraboss = {units = {bigtreant = [1,1], treant = [1,2]}, weight = 0.2, code = 'forestextraboss',reqs = [{type = "party_level", operant = "gte", value = 8}]},
 	
 	#caves
 	
@@ -165,7 +165,7 @@ var enemylist = {
 		name = tr("MONSTERFAIRIES"),
 		flavor = tr("MONSTERFAIRIESFLAVOR"),
 		race = 'humanoid',
-		skills = ['attack','fairyattack'],
+		skills = ['fairyattack'],
 		passives = [],
 		basehp = 100,
 		basemana = 0,
@@ -183,7 +183,7 @@ var enemylist = {
 		
 		combaticon = 'fairies',
 		bodyimage = null,
-		aiposition = 'melee',
+		aiposition = 'ranged',
 		loottable = 'fairiesloot',
 	},
 	angrydwarf = {
@@ -226,17 +226,24 @@ var loottables = {
 	},
 	treantloot = {
 		materials = [{code = 'wood', min = 1, max = 1, chance = 25}],
+		usables = [{code = 'managrass', min = 1, max = 1, chance = 15}],
 	},
 	bigtreantloot = {
 		materials = [{code = 'wood', min = 3, max = 5, chance = 100}, {code = 'elvenwood', min = 1, max = 3, chance = 30}],
+		usables = [{code = 'managrass', min = 1, max = 3, chance = 100}],
 	},
 	spiderloot = {
 		materials = [{code = 'cloth', min = 1, max = 1, chance = 35}],
+		usables = [{code = 'morsel', min = 1, max = 1, chance = 35}],
 	},
 	earthgolemloot = {
 		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
+		usables = [{code = 'protectivecharm', min = 1, max = 1, chance = 10}],
 	},
-	fairiesloot = {},
+	fairiesloot = {
+		
+		usables = [{code = 'managrass', min = 1, max = 2, chance = 25},{code = 'lesserpotion', min = 1, max = 1, chance = 15},{code = 'protectivecharm', min = 1, max = 1, chance = 5}],
+	},
 	dwarfloot = {
 		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
 	},

@@ -401,7 +401,7 @@ var Items = {
 	tags = [],
 	price = 50,
 	},
-	elixir = {name = tr("ELIXIR"), code = 'elixir', description = tr("USABLEELIXIRDESCRIPT"),
+	lesserpotion = {name = tr("ELIXIR"), code = 'lesserpotion', description = tr("USABLEELIXIRDESCRIPT"),
 	icon = load("res://assets/images/iconsitems/PotionLesser.png"),
 	itemtype = 'usable',
 	unlockreqs = [],

@@ -88,3 +88,16 @@ func update_shield(): #
 			variables.S_PHYS: #tempate, add all other values from this enum
 				self.material.set_shader_param('modulate', Color(1, 0.8, 0, 1.0)); #example
 
+func rebuildbuffs():
+	globals.ClearContainer($Buffs)
+	for i in fighter.buffs:
+		var newbuff = globals.DuplicateContainerTemplate($Buffs)
+		var buff = Effectdata.buffs[i]
+		var text = buff.description
+		if buff.has('bonuseffect'):
+			match buff.bonuseffect:
+				'barrier':
+					newbuff.get_node("Label").show()
+					newbuff.get_node("Label").text = str(fighter.shield)
+		globals.connecttooltip(newbuff, text)
+
