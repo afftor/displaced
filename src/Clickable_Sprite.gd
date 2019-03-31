@@ -23,11 +23,11 @@ var inside_node = null;
 #	material.set_shader_param('opacity', timer)
 
 func _ready():
-	material = load("res://files/portret_shader.tres");
+	material = load("res://files/portret_shader.tres").duplicate();
 	material.set_shader_param('opacity', 0.0);
 	if has_node('QuestActive'):
 		var node = get_node('QuestActive');
-		node.connect('pressed', self, '_onclick')
+		#node.connect('pressed', self, '_onclick')
 		node.connect('mouse_entered', self, 'activate_outline');
 		node.connect('mouse_exited', self, 'deactivate_outline');
 		node.visible = false;
@@ -66,6 +66,8 @@ func _onclick():
 		inside_node.open();
 	if !active:return
 	active = false
+	if has_node('QuestActive'):
+		$QuestActive.visible = false;
 	#material = null
 	#set_process(false)
 	#.update()

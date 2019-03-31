@@ -25,8 +25,10 @@ var checks = {
 		value = 8
 	}], 
 	"erika 1":[
+		{},
 		{type = "event_finished", name = "Forest 2"},
-		{type = "building", value = 'hall'} #хз, если честно, но надо проконтролировать, что из города откуда-то
+		#{type = "building", value = 'hall'}
+		#хз, если честно, но надо проконтролировать, что из города откуда-то
 	],
 	"ember 1":[
 		{type = "event_finished", name = "Intro 2", delay = 3},
@@ -91,13 +93,16 @@ var characters = {
 	'flak':
 	["Market 2"],
 	'ember':
-	['ember 2', 'ember 3']
+	['ember 2', 'ember 3'],
+	'erika':[],
 };
 
 var buildings = {
 	'flak':
-	["Market"],
-	'ember':[]
+		["Market"],
+	'ember':[],
+	'erika':
+		["erika 1"]
 };
 var progressdata = {
 	0 : "Search for clues for "
