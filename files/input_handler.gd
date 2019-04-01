@@ -43,6 +43,7 @@ var musicvalue
 
 func _process(delta):
 	for i in CloseableWindowsArray:
+		if typeof(i) == TYPE_STRING: continue
 		if i.is_visible_in_tree() == false:
 			i.hide()
 	for i in ShakingNodes:
@@ -70,7 +71,18 @@ func _process(delta):
 
 func CloseTopWindow():
 	var node = CloseableWindowsArray.back()
+	if typeof(node) == TYPE_STRING:
+		return;
 	node.hide()
+	CloseableWindowsArray.pop_back(); #i think this is required
+
+func LockOpenWindow():
+	CloseableWindowsArray.append('lock')
+ 
+func UnlockOpenWindow():
+	var node = CloseableWindowsArray.back()
+	if typeof(node) == TYPE_STRING:
+		CloseableWindowsArray.pop_back();
 
 func OpenClose(node):
 	node.show()

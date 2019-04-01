@@ -450,7 +450,14 @@ func basic_check(trigger):
 		if !res: return
 		#apply effect
 		for ee in tmp.effects: 
-			apply_atomic(ee)
+			var eee
+			if typeof(ee) == TYPE_STRING: eee = Effectdata.atomic[ee].duplicate()
+			else: 
+				eee = ee.duplicate()
+			if eee.type == 'caster':
+				eee.type = eee.new_type
+				eee.value = self.get(eee.value) * eee.mul
+			apply_atomic(eee)
 	#clear_oneshot()
 
 func on_skill_check(skill, check): #skill has to be in constant form without metascripting. this part has to be done in conbat.gd in execute_skill
@@ -489,6 +496,12 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 			if eee.type == 'skill':
 				eee.type = eee.new_type
 				eee.value = skill.get(eee.value) * eee.mul
+			if eee.type == 'caster':
+				eee.type = eee.new_type
+				eee.value = skill.caster.get(eee.value) * eee.mul
+			if eee.type == 'target':
+				eee.type = eee.new_type
+				eee.value = skill.target.get(eee.value) * eee.mul
 			match eee.target:
 				'caster':
 					rec = skill.caster
@@ -645,6 +658,9 @@ func equip(item):
 	for i in item.bonusstats:
 		self[i] += item.bonusstats[i]
 	for i in item.effects:
+		var tmp = globals.effects[i].effects;
+		for e in tmp:
+			apply_effect(e);
 		#addpassiveeffect(i)
 		#NEED REPLACING
 		pass
@@ -670,6 +686,9 @@ func unequip(item):#NEEDS REMAKING!!!!
 		self[i] -= item.bonusstats[i]
 	
 	for i in item.effects:
+		var tmp = globals.effects[i].effects;
+		for e in tmp:
+			remove_effect(e);
 		#removepassiveeffect(i) 
 		#NEED REPLACING
 		pass

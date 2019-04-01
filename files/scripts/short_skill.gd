@@ -74,12 +74,12 @@ func apply_atomic(effect):
 	else:
 		tmp = effect.duplicate()
 	match tmp.type:
-		'param':
+		'param_a':
 			set(tmp.stat, get(tmp.stat) + tmp.value)
-			
 		'param_m':
 			set(tmp.stat, get(tmp.stat) * tmp.value)
-			
+		'param_set':
+			set(tmp.stat, tmp.value)
 	
 
 func apply_effect(code, trigger):
@@ -109,7 +109,13 @@ func apply_effect(code, trigger):
 			if eee.type == 'skill':
 				eee.type = eee.new_type
 				eee.value = get(eee.value) * eee.mul
-				
+			if eee.type == 'caster':
+				eee.type = eee.new_type
+				eee.value = caster.get(eee.value) * eee.mul
+			if eee.type == 'target':
+				eee.type = eee.new_type
+				eee.value = target.get(eee.value) * eee.mul
+			
 			match eee.target:
 				'caster':
 					rec = caster

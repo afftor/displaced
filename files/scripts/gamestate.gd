@@ -28,7 +28,7 @@ var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} s
 
 var CurrentTextScene
 var CurrentScreen
-var CurrentLine
+var CurrentLine = 0;
 
 var heroguild = {}
 

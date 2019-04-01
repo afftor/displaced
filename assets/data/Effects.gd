@@ -1,17 +1,88 @@
 extends Node
-#old part, to replace
+#old part, reworked 
 var effects = {
-	gobmetalhandle = {descript = tr("GOBMETALHANDLEDESCRIPT"), code = 'gobmetalhandle', textcolor = 'yellow', trigger = 'skillhit', triggereffect = 'gobmetalhandleffect'},
-	elfmetalhandle = {descript = tr("ELFMETALHANDLEDESCRIPT"), code = 'elfmetalhandle', textcolor = 'yellow', trigger = 'skillhit', triggereffect = 'elfmetalhandleffect'},
-	gobmetalblade = {descript = tr("GOBMETALBLADEDESCRIPT"), code = 'gobmetalblade', textcolor = 'yellow', trigger = 'skillhit', triggereffect = 'gobmetalbladeeffect'},
-	elfmetalblade = {descript = tr("ELFMETALBLADEDESCRIPT"), code = 'elfmetalblade', textcolor = 'yellow', trigger = 'skillhit', triggereffect = 'elfmetalbladeeffect'},
-	elfwoodrod = {descript = tr("ELFWOODRODDESCRIPT"), code = 'elfwoodrod', textcolor = 'yellow', trigger = 'endcombat',triggereffect = 'elfwoodrodeffect'},
-	gobmetalrod = {descript = tr("GOBMETALRODDESCRIPT"), code = 'gobmetalrod', textcolor = 'yellow', trigger = 'spellhit', triggereffect = 'gobmetalrodeffect'},
-	bonerod = {descript = tr("BONERODDESCRIPT"), code = 'bonerod', textcolor = 'yellow', trigger = 'spellhit', triggereffect = 'bonerodeffect'},
-	bonebow = {descript = tr("BONEBOWDESCRIPT"), code = 'bonebow', textcolor = 'yellow', trigger = 'skillhit', triggereffect = 'boneboweffect'},
+	gobmetalhandle = {
+		descript = tr("GOBMETALHANDLEDESCRIPT"), 
+		code = 'gobmetalhandle', 
+		textcolor = 'yellow', 
+		#trigger = 'skillhit', 
+		#triggereffect = 'gobmetalhandleffect'
+		effects = []
+	},
+	elfmetalhandle = {
+		descript = tr("ELFMETALHANDLEDESCRIPT"), 
+		code = 'elfmetalhandle', 
+		textcolor = 'yellow', 
+		#trigger = 'skillhit', 
+		#triggereffect = 'elfmetalhandleffect'
+		effects = []
+	},
+	gobmetalblade = {
+		descript = tr("GOBMETALBLADEDESCRIPT"), 
+		code = 'gobmetalblade', 
+		textcolor = 'yellow', 
+		#trigger = 'skillhit', 
+		#triggereffect = 'gobmetalbladeeffect'
+		effects = []
+	},
+	elfmetalblade = {
+		descript = tr("ELFMETALBLADEDESCRIPT"), 
+		code = 'elfmetalblade', 
+		textcolor = 'yellow', 
+		#trigger = 'skillhit', 
+		#triggereffect = 'elfmetalbladeeffect',
+		effects = []
+	},
+	elfwoodrod = {
+		descript = tr("ELFWOODRODDESCRIPT"), 
+		code = 'elfwoodrod', 
+		textcolor = 'yellow', 
+		#trigger = 'endcombat',
+		#triggereffect = 'elfwoodrodeffect'
+		effects = []
+	},
+	gobmetalrod = {
+		descript = tr("GOBMETALRODDESCRIPT"), 
+		code = 'gobmetalrod', 
+		textcolor = 'yellow', 
+		#trigger = 'spellhit', 
+		#triggereffect = 'gobmetalrodeffect',
+		effects = []
+	},
+	bonerod = {
+		descript = tr("BONERODDESCRIPT"), 
+		code = 'bonerod', 
+		textcolor = 'yellow', 
+		effects = [],
+#		trigger = 'spellhit', 
+#		triggereffect = 'bonerodeffect'
+	},
+	bonebow = {
+		descript = tr("BONEBOWDESCRIPT"), 
+		code = 'bonebow', 
+		textcolor = 'yellow', 
+		#trigger = 'skillhit', 
+		#triggereffect = 'boneboweffect'
+		effects = []
+	},
 	
-	natural = {name = tr("NATURAL"), code = 'natural', descript = tr("NATURALEFFECTDESCRIPT"), textcolor = 'brown', trigger = 'custom', tags = []},
-	brittle = {name = tr("BRITTLE"), code = 'brittle', descript = tr("BRITTELEFFECTDESCRIPT"), textcolor = 'gray', tags = []},
+	natural = {
+		name = tr("NATURAL"), 
+		code = 'natural', 
+		descript = tr("NATURALEFFECTDESCRIPT"), 
+		textcolor = 'brown', 
+#		trigger = 'custom', 
+#		tags = []
+		effects = []
+		},
+	brittle = {
+		name = tr("BRITTLE"), 
+		code = 'brittle', 
+		descript = tr("BRITTELEFFECTDESCRIPT"), 
+		textcolor = 'gray', 
+		tags = [],
+		effects = []
+	},
 	
 }
 
@@ -152,7 +223,7 @@ var effect_table = {
 		conditions = [
 			{target = 'skill', check = 'result', value = variables.RES_CRIT} 
 		],
-		effects = [{type = 'param', stat = 'armor_p', value = 100000, target = 'skill'}]
+		effects = [{type = 'param_set', stat = 'armor_p', value = 100000, target = 'skill'}]
 	},
 	e_tr_speed_icon = {
 		type = 'static',
@@ -256,6 +327,64 @@ var effect_table = {
 		] # ! value to check
 	},
 	#weapon
+	e_w_gobmet_h = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'target', value = {type = 'stats', name = 'hppercent', operant = 'lte', value = 25} }],
+		effects = [
+			{target = 'skill', type = 'param_m', stat = 'value', value = 1.15}
+		]
+	},
+	e_w_elfmet_h = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = [
+			{target = 'caster', type = 'stat_once', stat = 'mana', value = 1}
+		]
+	},
+	e_w_bone_b = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = [
+			{target = 'caster', type = 'stat_once', stat = 'hp', value = 1}
+		]
+	},
+	e_w_gobmet_bl = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = ['gobmetal_blade']
+	},
+	e_w_elfmet_bl = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'target', value = {type = 'stats', name = 'hppercent', operant = 'gte', value = 100} }],
+		effects = [
+			{target = 'skill', type = 'param_a', stat = 'value', value = 10}
+		]
+	},
+	e_w_elfw_r = {
+		type = 'trigger',
+		trigger = variables.TR_COMBAT_F,
+		conditions = [],
+		effects = [{new_type = 'stat_once', stat = 'mana', type = 'caster', value = 'mana', mul = 0.1}]
+	},
+	e_tr_gobmet_r = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = ['gobmetal_rod']
+	},
+	e_w_bone_r = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
+		effects = [
+			{target = 'caster', type = 'stat_once', stat = 'hppercent', value = 3}
+		]
+	},
 	#item skills
 	e_i_barrier2 = {
 		type = 'oneshot',
@@ -305,8 +434,13 @@ var effect_table = {
 	},
 	e_slowarrow = {
 		type = 'static',
-		effects = ['slowarrow', 
+		effects = ['slowarrow_icon', #'slowarrow' - was it my error or your 'fix'?
 			{type = 'stat', stat = 'evasion', value = -10},
+			{type = 'stat', stat = 'speed', value = -10}]
+	},
+	e_gobmet_rod = {
+		type = 'static',
+		effects = ['speed_debuf_icon', 
 			{type = 'stat', stat = 'speed', value = -10}]
 	},
 	e_killer = { #killer buff, adds icon, atk trigger and eoc trigger
@@ -418,6 +552,8 @@ var atomic = {
 	spider_icon = {type = 'buff', value = 'spider_noarmor'},
 	cripple_icon = {type = 'buff', value = 'cripple'},
 	taunted_icon = {type = 'buff', value = 'taunted'},
+	slowarrow_icon = {type = 'buff', value = 'slowarrow'},
+	speed_debuf_icon = {type = 'buff', value = 'speed_debuf'},
 	#add effect
 	stun1 = {type = 'temp_effect', target = 'target', effect = 'e_stun', duration = 1, stack = 10},
 	noevade10 = {type = 'temp_effect', target = 'target', effect = 'e_noevade10', duration = 2, stack = 1},
@@ -432,6 +568,8 @@ var atomic = {
 	noresist = {type = 'temp_effect', target = 'target', effect = 'e_noresist', duration = 1, stack = 1},
 	firefist = {type = 'skill', new_type = 'damage', target = 'target', source = variables.S_FIRE, value = 'value', mul = 0.2},
 	cripple = {type = 'temp_effect', target = 'target', effect = 'e_cripple', duration = 3, stack = 1},
+	gobmetal_balde = {type = 'caster', new_type = 'damage', target = 'target', source = variables.S_EARTH, value = 'level', mul = 1.0},
+	gobmetal_rod = {type = 'temp_effect', target = 'target', effect = 'e_gobmet_r', duration = 1, stack = 1},
 };
 #needs filling
 var buffs = {
@@ -447,6 +585,7 @@ var buffs = {
 	area_speed = {icon = null, description = null}, #marks owner of area speed effect
 
 	taunted = {icon = null, description = null},
+	speed_debuf = {icon = null, description = null},
 
 	noresist = {icon = load("res://assets/images/traits/resistdebuf.png"), description = "Resists Reduced"},
 	shield1 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Every turn creates a barrier, absorbing 15 physical damage"},

@@ -103,6 +103,7 @@ func Start(dict, f = false, line = 0):
 		call_deferred('StopEvent');
 		return;
 	debug = f;
+	input_handler.LockOpenWindow();
 	$Background.texture = null
 	$Background.visible = true;
 	$CharImage.texture = null
@@ -324,6 +325,7 @@ func StopEvent():
 	set_process_input(false)
 	#globals.CurrentScene.show()
 	hide()
+	input_handler.UnlockOpenWindow();
 	input_handler.SetMusic("towntheme")
 	if !debug:
 		state.FinishEvent();
