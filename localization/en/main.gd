@@ -4,6 +4,7 @@ var TranslationDict = {
 	#Buildings
 	WORKERMARKET = "Market",
 	PURCHASE = "Purchase",
+	SELL = "Sell",
 	TASKS = "Tasks",
 	UPGRADES = "Upgrades",
 	TOWNHALL = "Town Hall",

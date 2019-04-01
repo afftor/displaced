@@ -27,7 +27,7 @@ func _ready():
 	material.set_shader_param('opacity', 0.0);
 	if has_node('QuestActive'):
 		var node = get_node('QuestActive');
-		node.connect('pressed', self, '_onclick')
+		#node.connect('pressed', self, '_onclick')
 		node.connect('mouse_entered', self, 'activate_outline');
 		node.connect('mouse_exited', self, 'deactivate_outline');
 		node.visible = false;

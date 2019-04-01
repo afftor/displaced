@@ -749,7 +749,7 @@ func calculate_number_from_string_array(array):
 	var firstrun = true
 	for i in array:
 		var modvalue = i
-		if i.find('.') >= 0:
+		if i.find('caster') >= 0:
 			i = i.split('.')
 			if i[0] == 'caster':
 				modvalue = str(self[i[1]])
@@ -768,7 +768,7 @@ func calculate_number_from_string_array(array):
 
 func skill_tooltip_text(skillcode):
 	var skill = globals.skills[skillcode]
-	var text = '[center]' + skill.name + '[/center]\n'
+	var text = ''
 	if skill.description.find("%d") >= 0:
 		text += skill.description % calculate_number_from_string_array(skill.value)
 	else:

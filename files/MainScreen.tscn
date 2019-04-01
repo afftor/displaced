@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/images/buildings/sawmill.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/buildings/city_hall.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/buildings/city_hall_hl.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/buildings/forge_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/buildings/forge.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/buildings/forge_hl.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/buildings/tavern.png" type="Texture" id=15]
@@ -306,6 +306,7 @@ _sections_unfolded = [ "Hint", "Rect", "Textures", "Visibility" ]
 
 [node name="QuestActive" type="TextureRect" parent="BlacksmithNode" index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -381,27 +382,7 @@ is_char = false
 
 [node name="QuestActive" type="TextureRect" parent="WorkBuildNode" index="0"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 174.0
-margin_top = -42.0
-margin_right = 299.0
-margin_bottom = 80.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 6
-_sections_unfolded = [ "Mouse", "Textures" ]
-
-[node name="QuestActive" type="TextureRect" parent="WorkBuildNode" index="0"]
-
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

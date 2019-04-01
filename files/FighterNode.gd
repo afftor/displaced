@@ -86,7 +86,7 @@ func update_shield(): #
 	else:
 		match fighter.shieldtype:
 			variables.S_PHYS: #tempate, add all other values from this enum
-				self.material.set_shader_param('modulate', Color(1, 0.8, 0, 1.0)); #example
+				self.material.set_shader_param('modulate', Color(0.8, 0.8, 0.8, 1.0)); #example
 
 func rebuildbuffs():
 	globals.ClearContainer($Buffs)

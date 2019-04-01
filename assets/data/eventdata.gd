@@ -37,7 +37,7 @@ var checks = {
 		{type = "has_material", material = 'elvenwood', value = 1, operant = 'gte'}
 	],
 	"ember 3":[
-		{},
+		{type = 'building', value = 'blacksmith'},
 		{type = "event_finished", name = "ember 2", delay = 2},
 		{type = "hero_level", operant = 'gte', name = 'EMBER', value = 3}
 	],
@@ -48,7 +48,7 @@ var checks = {
 	
 	"Market":
 	[
-		{type = "building", value = "slave"},
+		{type = "building", value = "Market"},
 	],
 	
 	"Market 2":

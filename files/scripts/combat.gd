@@ -139,6 +139,7 @@ func newturn():
 	for i in playergroup.values() + enemygroup.values():
 		i.update_temp_effects()
 		i.basic_check(variables.TR_TURN_S)
+		i.displaynode.rebuildbuffs()
 		var cooldowncleararray = []
 		for k in i.cooldowns:
 			i.cooldowns[k] -= 1
@@ -676,7 +677,7 @@ func use_skill(skill_code, caster, target):
 	var skill = globals.skills[skill_code]
 	
 	caster.mana -= skill.manacost
-	var endturn = skill.tags.has('instant');
+	var endturn = !skill.tags.has('instant');
 	
 	for i in skill.casteffects:
 		var tmp = Effectdata.effect_table[i]
@@ -833,7 +834,7 @@ func calculate_number_from_string_array(array, caster, target):
 	var firstrun = true
 	for i in array:
 		var modvalue = i
-		if i.find('.') >= 0:
+		if (i.find('caster') >= 0) or (i.find('target') >= 0):
 			i = i.split('.')
 			if i[0] == 'caster':
 				modvalue = str(caster[i[1]])
@@ -1004,7 +1005,7 @@ func RebuildSkillPanel():
 		if activecharacter.mana < skill.manacost:
 			newbutton.disabled = true
 		newbutton.set_meta('skill', skill.code)
-		globals.connecttooltip(newbutton, activecharacter.skill_tooltip_text(i))
+		globals.connectskilltooltip(newbutton, i, activecharacter)
 
 func SelectSkill(skill):
 	skill = globals.skills[skill]
