@@ -33,9 +33,9 @@ func _ready():
 	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
-	$BlacksmithNode.connect("pressed",self,'openblacksmith')
+	#$BlacksmithNode.connect("pressed",self,'openblacksmith')
 	#$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
-	$TownHallNode.connect("pressed",self,'OpenTownhall')
+	#$TownHallNode.connect("pressed",self,'OpenTownhall')
 	#$HeroBuildNode.connect("pressed",self,'openheroguild')
 	$Gate.connect("pressed",self,'explorescreen')
 	

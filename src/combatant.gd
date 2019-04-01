@@ -759,7 +759,7 @@ func calculate_number_from_string_array(array):
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
 			else:
-				input_handler.string_to_math(endvalue, modvalue)
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
 		else:
 			endvalue += float(modvalue)
 		firstrun = false
