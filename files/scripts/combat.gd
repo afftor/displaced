@@ -158,8 +158,6 @@ func checkdeaths():
 				battlefield[i].displaynode = null
 				battlefield[i] = null
 				summons.erase(i);
-				#not yet implemented clearing of related panel
-				#make_fighter_panel(battlefield[i], i)
 
 func checkwinlose():
 	var playergroupcounter = 0
@@ -676,7 +674,7 @@ func use_skill(skill_code, caster, target):
 	var skill = globals.skills[skill_code]
 	
 	caster.mana -= skill.manacost
-	var endturn = skill.tags.has('instant');
+	var endturn = !skill.tags.has('instant');
 	
 	for i in skill.casteffects:
 		var tmp = Effectdata.effect_table[i]
@@ -833,7 +831,7 @@ func calculate_number_from_string_array(array, caster, target):
 	var firstrun = true
 	for i in array:
 		var modvalue = i
-		if i.find('.') >= 0:
+		if (i.find('caster') >= 0) or (i.find('target') >= 0):
 			i = i.split('.')
 			if i[0] == 'caster':
 				modvalue = str(caster[i[1]])
@@ -843,7 +841,7 @@ func calculate_number_from_string_array(array, caster, target):
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
 			else:
-				input_handler.string_to_math(endvalue, modvalue)
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
 		else:
 			endvalue += float(modvalue)
 		firstrun = false
@@ -892,8 +890,12 @@ func execute_skill(skill, caster, target):
 		text += target.name + " takes " + str(s_skill.value) + " damage."
 	combatlogadd(text)
 	#deal damage
-	if s_skill.tags.has('heal'): target.heal(s_skill.value)
-	else: target.deal_damage(s_skill.value, s_skill.damagesrc)
+	if s_skill.tags.has('heal'): 
+		target.heal(s_skill.value)
+	elif s_skill.tags.has("mana"): 
+		pass #
+	else: 
+		target.deal_damage(s_skill.value, s_skill.damagesrc)
 	if target.hp <= 0:
 		caster.basic_check(variables.TR_KILL)
 	checkdeaths()
@@ -1009,11 +1011,14 @@ func RebuildSkillPanel():
 func SelectSkill(skill):
 	skill = globals.skills[skill]
 	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code):
-		SelectSkill('attack')
+		#SelectSkill('attack')
+		call_deferred('SelectSkill', 'attack');
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets()
+	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
+		checkwinlose();
 	
 
 func RebuildItemPanel():

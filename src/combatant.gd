@@ -749,7 +749,7 @@ func calculate_number_from_string_array(array):
 	var firstrun = true
 	for i in array:
 		var modvalue = i
-		if i.find('.') >= 0:
+		if i.find('caster') >= 0:
 			i = i.split('.')
 			if i[0] == 'caster':
 				modvalue = str(self[i[1]])
@@ -759,7 +759,7 @@ func calculate_number_from_string_array(array):
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
 			else:
-				input_handler.string_to_math(endvalue, modvalue)
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
 		else:
 			endvalue += float(modvalue)
 		firstrun = false

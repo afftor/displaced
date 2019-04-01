@@ -227,12 +227,12 @@ var effect_table = {
 		],
 		effects = ['cripple']
 	},
-	e_s_restoremana20 = {
-		type = 'oneshot',
-		trigger = variables.TR_CAST,
-		conditions = [],
-		effects = [{type = 'stat_once', stat = 'mana', value = 20}]
-	},
+#	e_s_restoremana20 = {
+#		type = 'oneshot',
+#		trigger = variables.TR_CAST,
+#		conditions = [],
+#		effects = [{type = 'stat_once', stat = 'mana', value = 20}]
+#	},
 	e_s_spidernoarmor = {
 		type = 'oneshot',
 		trigger = variables.TR_HIT,
@@ -269,11 +269,14 @@ var effect_table = {
 		conditions = [],
 		effects = [{target = 'target', type = 'temp_effect', effect = 'e_addbarrier3', duration = 2, stack = 1}]
 	},
-	e_i_restoremana25 = {
+	e_g_restoremana_value = {
 		type = 'oneshot',
 		trigger = variables.TR_HIT,
 		conditions = [],
-		effects = [{target = 'target', type = 'stat_once', stat = 'mana', value = 25}]
+		effects = [
+			{target = 'target', type = 'skill', new_type = 'stat_once', stat = 'mana', value = 'value', mul = 1.0},
+			#{target = 'skill', type = 'param_m', stat = 'value', value = 0}
+			]
 	},
 	e_i_elixir = {
 		type = 'oneshot',

@@ -4,7 +4,7 @@
 {"effect":"background","value":"forest"},
 {"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
 {"args":"Rose","effect":"sprite","value":"set"},
-{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
+{"args":0.5,"delay":0.5,"effect":"sprite","value":"unfade"},
 {"effect":"gui","value":"showgui"},
 {"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"These woods do not seem like they have any civilized life. How exactly do we find elves? "},
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Dunno, maybe we should yell how we are planning to burn down woods?"},
