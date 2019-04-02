@@ -68,8 +68,12 @@ func OpenSelectTab(task, worker):
 			var material = Items.Materials[item[1]]
 			newresource.get_node("amount").text = str(i.amount)
 			globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
-	
 			newresource.texture = material.icon
+		elif item[0] == 'usables':
+			var usable = Items.Items[item[1]]
+			newresource.get_node("amount").text = str(i.amount)
+			newresource.texture = usable.icon
+			globals.connecttooltip(newresource, '[center]' + usable.name + '[/center]\n' + usable.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
 	
 	$SelectWorker/RichTextLabel.bbcode_text = task.description
 	$SelectWorker/Time.text = str(task.basetimer)

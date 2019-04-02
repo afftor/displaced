@@ -255,7 +255,7 @@ func repairallitems():
 	repairitems()
 	updaterepairlist()
 
-func show():
+func open():
 	state.CurBuild = "blacksmith"
 	input_handler.emit_signal("BuildingEntered", 'blacksmith')
 	.show()

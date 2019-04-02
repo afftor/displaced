@@ -52,7 +52,7 @@ var skilllist = {
 		casteffects = [],
 		
 		hidden = false,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -144,7 +144,7 @@ var skilllist = {
 		casteffects = [],
 		
 		hidden = false,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},

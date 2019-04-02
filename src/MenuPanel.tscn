@@ -260,9 +260,9 @@ visible = false
 [node name="Options" parent="." index="3" instance=ExtResource( 7 )]
 
 visible = false
-margin_left = -650.0
-margin_top = -180.0
-margin_right = -650.0
-margin_bottom = -180.0
+margin_left = -99.0
+margin_top = -78.0
+margin_right = 550.0
+margin_bottom = 710.0
 
 

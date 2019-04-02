@@ -13,9 +13,6 @@ onready var BS = $BlackScreen;
 
 
 func _ready():
-	#self.visible = false
-	#$BlackScreen.visible = true
-	#$BlackScreen.modulate.a = 1
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	globals.CurrentScene = self
 	tasks = state.tasks
@@ -33,11 +30,6 @@ func _ready():
 	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
-	#$BlacksmithNode.connect("pressed",self,'openblacksmith')
-	#$WorkBuildNode.connect("pressed",self,'OpenSlaveMarket')
-	#$TownHallNode.connect("pressed",self,'OpenTownhall')
-	#$HeroBuildNode.connect("pressed",self,'openheroguild')
-	$Lumber.connect("pressed", self, '_on_Lumber_pressed')
 	$Gate.connect("pressed",self,'explorescreen')
 	
 	if debug == true:
@@ -57,16 +49,6 @@ func _ready():
 			x -= 1
 			for i in state.heroes.values():
 				i.levelup()
-#		var character = globals.combatant.new()
-#		character.createfromname('Arron')
-#		state.heroes[character.id] = character
-#		character = globals.combatant.new()
-#		character.createfromname('Rose')
-#		state.heroes[character.id] = character
-#		character = globals.combatant.new()
-#		character.createfromname('Ember')
-#		state.heroes[character.id] = character
-#		combatantdata.MakeCharacterFromData('erika')
 		var worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
 		worker = globals.worker.new()
@@ -79,17 +61,14 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'cloth', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
 		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
-		#state.items[1].durability = floor(rand_range(1,5))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
-#		globals.AddItemToInventory(globals.CreateGearItem('heavychest', {ArmorPlate = 'stone', ArmorTrim = 'wood'}))
+	
+	
 	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
 	EnvironmentColor('morning', true)
 	changespeed($"TimeNode/0speed", false)
-	#buildscreen()
+	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
+	input_handler.connect("EventFinished", self, "buildscreen")
 
 var forgeimage = {
 	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},
@@ -98,12 +77,13 @@ var forgeimage = {
 	
 }
 
-func buildscreen():
+func buildscreen(empty = null):
 	$Background/bridge.visible = state.townupgrades.has('bridge')
 	$Background/mine.visible = state.townupgrades.has("mine")
 	$Background/farm.visible = state.townupgrades.has("farm")
 	$Background/house.visible = state.townupgrades.has("houses")
 	$Background/lumbermill.visible = state.townupgrades.has("lumbermill")
+	$BlacksmithNode.visible = state.decisions.has("blacksmith")
 	if state.townupgrades.has('blacksmith') == false:
 		$BlacksmithNode.texture_normal = forgeimage.base.normal
 		$BlacksmithNode.texture_hover = forgeimage.base.hl
@@ -273,6 +253,8 @@ func changespeed(button, playsound = true):
 	var soundarray = ['time_stop', 'time_start', 'time_up']
 	if oldvalue != newvalue && playsound:
 		input_handler.PlaySound(soundarray[int(button.name[0])])
+	
+	gamepaused = newvalue == 0
 	input_handler.emit_signal("SpeedChanged", gamespeed)
 
 func restoreoldspeed(value):
@@ -301,7 +283,7 @@ func openinventorytrade():
 	$Inventory.open("shop")
 
 func openblacksmith():
-	$blacksmith.show()
+	$blacksmith.open()
 
 func openherohiretab():
 	$herohire.show()
@@ -353,10 +335,13 @@ func taskperiod(data):
 		#Check if need to access multiple subcategory  
 		if i.code.find('.') != -1:
 			var array = i.code.split('.')
-			state[array[0]][array[1]] += taskresult
-			while taskresult > 0:
-				flyingitemicon(data.counter, array[1])
-				taskresult -= 1
+			if array[0] == 'materials':
+				state[array[0]][array[1]] += taskresult
+				while taskresult > 0:
+					flyingitemicon(data.counter, array[1])
+					taskresult -= 1
+			elif array[0] == 'usables':
+				globals.AddItemToInventory(globals.CreateUsableItem(array[1]))
 		else:
 			state[i] += taskresult
 		

@@ -22,8 +22,8 @@ var tasksdict = {
 	unlockreqs = [],
 	tasktool = {type = 'axe', required = false, durabilityfactor = 0, effects = [{code = 'speed', value = 5}]}, 
 	workerproducts = {
-		goblin = [{code = 'materials.wood', amount = 1, chance = 100, critamount = 2, critchance = 10}],
-		elf = [{code = 'materials.elvenwood', amount = 1, chance = 100, critamount = 2, critchance = 10}],
+		goblin = [{code = 'materials.wood', amount = 1, chance = 100, critamount = 2, critchance = 10},{code = 'usables.barricade', amount = 1, chance = 10, critamount = 2, critchance = 5}],
+		elf = [{code = 'materials.elvenwood', amount = 1, chance = 100, critamount = 2, critchance = 10},{code = 'usables.protectivecharm', amount = 1, chance = 15, critamount = 2, critchance = 5}],
 	},
 },
 	mining = {basetimer = 10, energycost = 5,
@@ -49,7 +49,7 @@ var tasksdict = {
 	tasktool = {type = 'none', required = false, durabilityfactor = 0}, 
 	workerproducts = {
 		goblin = [{code = 'materials.cloth', amount = 1, chance = 100, critamount = 2, critchance = 15}],
-		elf = [{code = 'materials.cloth', amount = 1, chance = 100, critamount = 2, critchance = 15}],
+		elf = [{code = 'materials.cloth', amount = 1, chance = 100, critamount = 2, critchance = 15},{code = 'usables.managrass', amount = 1, chance = 15, critamount = 2, critchance = 5}],
 	},
 },
 	

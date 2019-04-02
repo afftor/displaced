@@ -13,7 +13,8 @@ config_version=3
 config/name="Displaced"
 run/main_scene="res://files/Menu.tscn"
 config/use_custom_user_dir=true
-config/icon="res://icon.png"
+boot_splash/image="res://assets/images/backgrounds/loading.png"
+config/icon="res://assets/images/gui/timesphere.png"
 
 [autoload]
 
