@@ -1,13 +1,14 @@
 extends Node
 
 var blacksmith
-var debug = false
+var debug = true
 
 var gamespeed = 1
 var gamepaused = false
+var gamepaused_nonplayer = false
 var previouspeed
 var daycolorchange = false
-var tasks = [] #Task Data Dict var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
+var tasks #Task Data Dict var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 onready var BS = $BlackScreen;
 
@@ -104,7 +105,7 @@ func testfunction():
 func _process(delta):
 	if self.visible == false:
 		return
-	$TimeNode/HidePanel.visible = gamepaused
+	$TimeNode/HidePanel.visible = gamepaused_nonplayer
 	settime()
 	
 	#buildscreen()
@@ -115,14 +116,19 @@ func _process(delta):
 				previouspeed = gamespeed
 				changespeed(timebuttons[0], false)
 				gamepaused = true
+				gamepaused_nonplayer = true
 	else:
 		var allnodeshidden = true
 		for i in get_tree().get_nodes_in_group("pauseprocess"):
 			if i.visible == true:
 				allnodeshidden = false
 				break
-		if allnodeshidden == true:
+		
+		
+		
+		if allnodeshidden == true && gamepaused_nonplayer == true:
 			restoreoldspeed(previouspeed)
+			gamepaused_nonplayer = false
 			gamepaused = false
 	
 	$ControlPanel/Gold.text = str(state.money)
@@ -131,13 +137,11 @@ func _process(delta):
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
 		state.daytime += delta * gamespeed
-		
 		for i in state.heroes.values():
-			i.hppercent += (delta*gamespeed*100)/variables.TimePerDay
-			i.mana += (delta*gamespeed*i.manamax)/variables.TimePerDay
+			i.regen_tick(delta*gamespeed)
 		
 		movesky()
-		for i in tasks:
+		for i in state.tasks:
 			i.time += delta*gamespeed
 			updatecounter(i)
 			
@@ -207,15 +211,12 @@ func finishcolorchange():
 
 func buildcounter(task):
 	var newnode = globals.DuplicateContainerTemplate($TaskCounter)
-	newnode.get_node('Icon').texture = load(task.worker.icon)
+	newnode.get_node('Icon').texture = load(state.workers[task.worker].icon)
 	newnode.get_node("Progress").value = globals.calculatepercent(task.time, task.threshold)
 	newnode.connect("pressed", self, "OpenWorkerTask", [task])
 	newnode.set_meta('task', task)
 	task.counter = newnode
 
-func OpenWorkerTask(task):
-	$SlavePanel.BuildSlaveList()
-	$SlavePanel.SelectSlave(task.worker)
 
 func updatecounter(task):
 	if task.counter == null:
@@ -225,6 +226,9 @@ func updatecounter(task):
 func deletecounter(task):
 	task.counter.queue_free()
 
+func OpenWorkerTask(task):
+	$SlavePanel.BuildSlaveList()
+	$SlavePanel.SelectSlave(state.workers[task.worker])
 
 
 func openmenu():
@@ -302,22 +306,18 @@ func BuildingOptions(building = {}):
 	node.set_global_position(pos)
 
 func assignworker(data):
-	data.worker.task = data
 	buildcounter(data)
 	if data.instrument != null:
-		data.instrument.task = data
-	tasks.append(data)
+		state.items[data.instrument].owner = data.worker
+	state.tasks.append(data)
 
 func stoptask(data):
-	data.worker.task = null
-	if data.instrument != null:
-		data.instrument.task = null
 	deletecounter(data)
 	tasks.erase(data)
 
 func taskperiod(data):
 	var taskdata = data.taskdata
-	var worker = data.worker
+	var worker = state.workers[data.worker]
 	for i in taskdata.workerproducts[worker.type]:
 		#Calculate results and reward player
 		
@@ -348,20 +348,20 @@ func taskperiod(data):
 			state[i] += taskresult
 		
 		#targetvalue 
-		data.worker.energy -= taskdata.energycost
-		if data.instrument != null:
-			data.instrument.durability -= taskdata.tasktool.durabilityfactor
-			if data.instrument.durability <= 0:
-				stoptask(data)
+		worker.energy -= taskdata.energycost
+#		if data.instrument != null:
+#			data.instrument.durability -= taskdata.tasktool.durabilityfactor
+#			if data.instrument.durability <= 0:
+#				stoptask(data)
 				#globals.logupdate(data.instrument.name + tr("TOOLBROKEN"))
 	
-	if data.worker.energy < taskdata.energycost:
-		if data.worker.autoconsume == true:
-			var state = data.worker.restoreenergy()
+	if worker.energy < taskdata.energycost:
+		if worker.autoconsume == true:
+			var state = worker.restoreenergy()
 			if state == false:
 				tasks.erase(data)
 				
-	elif data.instrument != null && data.instrument.durability <= 0 && taskdata.tasktool.required != false:
+	elif data.instrument != null && state.items[data.instrument].durability <= 0 && taskdata.tasktool.required != false:
 		tasks.erase(data)
 
 var itemicon = preload("res://src/ItemIcon.tscn")

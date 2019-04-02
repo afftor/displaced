@@ -270,10 +270,12 @@ func GetEventNode():
 	if get_tree().get_root().has_node('EventNode') == false:
 		node = load("res://files/TextScene/TextSystem.tscn").instance()
 		get_tree().get_root().add_child(node)
-		node.set_as_toplevel(true)
+		#node.set_as_toplevel(true)
 		node.name = 'EventNode'
 	else:
 		node = get_tree().get_root().get_node("EventNode")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
 	return node
 
 func ShowConfirmPanel(TargetNode, TargetFunction, Text):

@@ -58,7 +58,7 @@ func OpenSelectTab(task, worker):
 	$SelectWorker.show()
 	selectedtask = task
 	selectedtool = null
-	selectedworker = worker
+	selectedworker = worker.id
 	globals.ClearContainer($SelectWorker/HBoxContainer)
 	for i in task.workerproducts[worker.type]:
 		var newresource = globals.DuplicateContainerTemplate($SelectWorker/HBoxContainer)
@@ -87,11 +87,11 @@ func SelectTool():
 	globals.ItemSelect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
 
 func WorkerSelected(worker):
-	selectedworker = worker
+	selectedworker = worker.id
 	UpdateButtons()
 
 func ToolSelected(item):
-	selectedtool = item
+	selectedtool = item.id
 	UpdateButtons()
 
 func UpdateButtons():
@@ -102,7 +102,7 @@ func UpdateButtons():
 		$SelectWorker/SelectToolButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
 	if selectedworker != null:
-		$SelectWorker/SelectWorkerButton/Icon.texture = load(selectedworker.icon)
+		$SelectWorker/SelectWorkerButton/Icon.texture = load(state.workers[selectedworker].icon)
 	else:
 		$SelectWorker/SelectWorkerButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
@@ -126,6 +126,5 @@ func ConfirmTask():
 				threshold -= i.value
 	
 	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}
-	
 	globals.CurrentScene.assignworker(data)
 	input_handler.emit_signal("WorkerAssigned", data)

@@ -12,7 +12,7 @@ var TranslationDict = {
 	HARVESTMETAL = "Harvest Ore",
 	HARVESTPLANT = "Harvest Plants",
 	GOBLINWORKER = "Goblin Worker",
-	ELVENWORKER = "Elven Worker",
+	ELFWORKER = "Elven Worker",
 	
 	
 	#Materials
@@ -181,6 +181,7 @@ var TranslationDict = {
 	
 	CURRENTFOOD = "Current Food",
 	GAINFOOD = "Food Value",
+	FOODCONVERT = "Convert Food",
 	
 	#System
 	CONFIRM = "Confirm",
@@ -313,7 +314,7 @@ var TranslationDict = {
 	SKILLWINDARROW = "Wind Arrow",
 	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %d damage. Requires a bow equipped.",
 	SKILLTAUNT = "Taunt",
-	SKILLTAUNTDESCRIPT = "Forces enemy to attack you on its next turn.",
+	SKILLTAUNTDESCRIPT = "Forces enemy to attack you on its next turn and reduces its damage by 25% for 2 turns.",
 	SKILLSLASH = "Slash",
 	SKILLSLASHDESCRIPT = "Deals %d Weapon damage to all targets in nearby column. Requires a weapon equipped.",
 	SKILLMINORHEAL = "Minor Heal",
@@ -329,7 +330,7 @@ var TranslationDict = {
 	SKILLTACKLE = "Tackle",
 	SKILLTACKLEDESCRIPT = "Deals %d Physical damage and stuns target for 1 turn.",
 	SKILLCRIPPLE = "Cripple",
-	SKILLCRIPPLEDESCRIPT = "Deals %d Weapon damage and reduces target's damage for 3 turns.",
+	SKILLCRIPPLEDESCRIPT = "Deals %d Weapon damage and reduces target's damage by 33% for 3 turns.",
 	SKILLCOMBOATTACK = "Combo Attack",
 	SKILLCOMBOATTACKDESCRIPT = "Deals 3 consecutive hits for %d Weapon damage to target. ",
 	

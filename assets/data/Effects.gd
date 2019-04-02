@@ -527,11 +527,11 @@ var effect_table = {
 	},
 	e_cripple = {
 		type = 'static',
-		effects = ['cripple_icon', {type = 'stat', stat = 'damagemod', value = -0.5}]
+		effects = ['cripple_icon', {type = 'stat', stat = 'damagemod', value = -0.33}]
 	},
 	e_taunted = {
 		type = 'static',
-		effects = ['taunted_icon', {type = 'stat', stat = 'damagemod', value = -0.2}]
+		effects = ['taunted_icon', {type = 'stat', stat = 'damagemod', value = -0.25}]
 	},
 };
 

@@ -641,13 +641,14 @@ func LoadGame(filename):
 	for i in savedict.items:
 		var t = globals.Item.new()
 		t = dict2inst(i)
+		t.inventory = state.items #no other inventories currently exist
 		state.items[t.id] = t
 	for i in savedict.workers:
 		var t = globals.worker.new()
 		t = dict2inst(i)
 		state.workers[t.id] = t
 	
-	#converting ints
+	#converting floats to ints
 	
 	var tempdict = {}
 	for i in state.combatparty.keys():
@@ -664,6 +665,9 @@ func LoadGame(filename):
 		tempdict[i] = int(state.townupgrades[i])
 	state.townupgrades = tempdict.duplicate()
 	tempdict.clear()
+	
+	for i in state.tasks:
+		CurrentScene.buildcounter(i)
 	
 	if state.CurBuild != '' and state.CurBuild != null:
 		CurrentScene.get_node(state.CurBuild).show()

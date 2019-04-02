@@ -12,16 +12,11 @@ func _ready():
 
 func OpenSelectTab(task, worker):
 	show()
+	print(true)
 	selectedtask = task
 	selectedtool = null
-	selectedworker = worker
+	selectedworker = worker.id
 	globals.ClearContainer($HBoxContainer)
-#	for i in task.product:
-#		var newresource = globals.DuplicateContainerTemplate($HBoxContainer)
-#		var material = Items.Materials[i]
-#		globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=yellow]' + str(task.product[i].chance) + '%[/color]')
-#
-#		newresource.texture = Items.Materials[i].icon
 	
 	$RichTextLabel.bbcode_text = task.description
 	$Time.text = str(task.basetimer)
@@ -35,11 +30,11 @@ func SelectTool():
 	globals.ItemSelect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
 
 func WorkerSelected(worker):
-	selectedworker = worker
+	selectedworker = worker.id
 	UpdateButtons()
 
 func ToolSelected(item):
-	selectedtool = item
+	selectedtool = item.id
 	UpdateButtons()
 
 func UpdateButtons():
@@ -75,6 +70,5 @@ func ConfirmTask():
 				threshold -= i.value
 	
 	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}
-	
 	globals.CurrentScene.assignworker(data)
 	input_handler.emit_signal("WorkerAssigned", data)

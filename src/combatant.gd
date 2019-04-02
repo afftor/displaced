@@ -88,7 +88,30 @@ var detoriatemod = 1
 var ai
 var aiposition
 var aimemory
-var taunt = null;
+var taunt = null
+
+
+#out of combat regen stats
+var regen_threshholds = {health = 0, mana = 0}
+var regen_collected = {health = 0, mana = 0}
+
+func regen_tick(delta):
+	
+	for i in regen_collected:
+		
+		regen_collected[i] += delta
+		
+		if regen_collected[i] >= regen_threshholds[i]:
+			regen_collected[i] -= regen_threshholds[i]
+			match i:
+				'health':
+					self.hp += 1
+				"mana":
+					self.mana += 1
+
+func regen_calculate_threshhold():
+	regen_threshholds.health = variables.TimePerDay/max(hpmaxvalue,1)
+	regen_threshholds.mana = variables.TimePerDay/max(manamax,1)
 
 func set_shield(value):
 	shield = value;
@@ -109,9 +132,11 @@ func damage_get():
 func hpmax():
 	var value = ceil(hpmax*hpmod)
 	hpmaxvalue = value
+	regen_calculate_threshhold()
 	return value
 
 func manamax():
+	regen_calculate_threshhold()
 	return ceil(manamax*manamod)
 
 func hpmod_set(value):

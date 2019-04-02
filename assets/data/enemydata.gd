@@ -222,7 +222,7 @@ var enemylist = {
 var loottables = {
 	elvenratloot = {
 		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
-		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
+		usables = [{code = 'morsel', min = 1, max = 1, chance = 35}],
 	},
 	treantloot = {
 		materials = [{code = 'wood', min = 1, max = 1, chance = 25}],

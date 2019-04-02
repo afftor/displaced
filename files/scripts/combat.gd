@@ -28,11 +28,13 @@ var playergroup = {}
 var enemygroup = {}
 var currentactor
 
-var summons = [];
+var summons = []
 
 var activeaction
 var activeitem
 var activecharacter
+
+
 
 var cursors = {
 	default = load("res://assets/images/gui/universal/cursordefault.png"),
@@ -40,8 +42,6 @@ var cursors = {
 	support = load("res://assets/images/gui/universal/cursorsupport.png"),
 	
 }
-
-
 
 var enemypaneltextures = {
 	normal = null,
@@ -184,6 +184,7 @@ func checkwinlose():
 var rewardsdict
 
 func victory():
+	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
 	$Rewards/CloseButton.disabled = true
@@ -568,7 +569,7 @@ func ShowFighterStats(fighter):
 			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.manamax))) + "%"
 		else:
 			$StatsPanel/mana.text = ''
-	$StatsPanel/damage.text = "Damage: " + str(fighter.damage) 
+	$StatsPanel/damage.text = "Damage: " + str(round(fighter.damage)) 
 	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.critchance) + "%/" + str(fighter.critmod*100) + '%' 
 	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
 	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)
