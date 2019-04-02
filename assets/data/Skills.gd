@@ -349,7 +349,37 @@ var skilllist = {
 		aitargetcond = 'any',
 		aipriority = 2,
 	},
-
+	doubleattack = {
+		code = 'doubleattack',
+		name = tr("SKILLDOUBLEATTACK"),
+		description = tr("SKILLDOUBLEATTACKDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/strongattack.png"),
+		
+		damagetype = "weapon",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = [],
+		value = ['caster.damage','*0.85'],
+		cooldown = 1,
+		manacost = 8,
+		casteffects = [],
+		repeat = 2,
+		
+		hidden = false,
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
 	slash = {
 		code = 'slash',
 		name = tr("SKILLSLASH"),

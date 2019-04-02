@@ -333,7 +333,8 @@ var TranslationDict = {
 	SKILLCRIPPLEDESCRIPT = "Deals %d Weapon damage and reduces target's damage by 33% for 3 turns.",
 	SKILLCOMBOATTACK = "Combo Attack",
 	SKILLCOMBOATTACKDESCRIPT = "Deals 3 consecutive hits for %d Weapon damage to target. ",
-	
+	SKILLDOUBLEATTACK = "Double Attack",
+	SKILLDOUBLEATTACKDESCRIPT= "Attacks for %d damage twice.",
 	
 	
 	#Upgrades
