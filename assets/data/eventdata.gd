@@ -50,6 +50,7 @@ var checks = {
 	
 	"Market":
 	[
+		{},
 		{type = "building", value = "slave"},
 	],
 	

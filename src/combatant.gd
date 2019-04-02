@@ -564,18 +564,20 @@ func createfromclass(classid):
 	name = combatantdata.namesarray[randi()%combatantdata.namesarray.size()]
 #	var newtrait = createtrait(self, classtemplate.code)
 #	traits.append(newtrait)
-	if classtemplate.keys().has('traits'):
-		for t in classtemplate.traits:
-			traits[t] = true
+	if classtemplate.keys().has('basetraits'):
+		for t in classtemplate.basetraits:
+			traits[t] = false;
+			activate_trait(t);
 	
 
 func createfromname(charname):
 	var nametemplate = combatantdata.charlist[charname]
 	var classid = nametemplate.subclass
 	var classtemplate = combatantdata.classlist[classid].duplicate()
-	if classtemplate.has('basetraits'):
+	if classtemplate.keys().has('basetraits'):
 		for i in classtemplate.basetraits:
-			traits[i] = true
+			traits[i] = false
+			activate_trait(i);
 	id = state.heroidcounter
 	state.heroidcounter += 1
 	base = nametemplate.code
@@ -758,11 +760,13 @@ func serialize():
 func deserialize(tmp):
 	#var tmp = parse_json(buff);
 	var nametemplate = combatantdata.charlist[tmp.base]
-	base = nametemplate.base
+	combatclass = nametemplate.subclass;
+	base = tmp.base
 	icon = nametemplate.icon
 	combaticon = nametemplate.combaticon
 	image = nametemplate.image
-	name = nametemplate.name
+	name = tr(nametemplate.name)
+	namebase = nametemplate.name
 	var atr = ['level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed','critchance','critmod','resistfire','resistearth','resistwater','resistair','shield','shieldtype','traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
 	var atr1 = ['evasion', 'mdef', 'position', 'mana']
 	var atr2 = ['skills', 'traits', 'buffs', 'static_effects','temp_effects','triggered_effects','oneshot_effects','area_effects','own_area_effects',]

@@ -285,19 +285,23 @@ func deserialize(tmp):
 	for prop in arr2:
 		set(prop, tmp[prop].duplicate());
 	materials = tmp.materials.duplicate();
+	workers.clear();
 	for key in tmp['workers'].keys():
 		var t = globals.worker.new();
 		t.deserialize(tmp['workers'][key]);
 		workers[int(key)] = t;
+	heroes.clear();
 	for key in tmp['heroes'].keys():
 		var t = globals.combatant.new();
 		t.deserialize(tmp['heroes'][key]);
 		t.id = int(key);
 		heroes[int(key)] = t;
+	heroguild.clear();
 	for key in tmp['heroguild'].keys():
 		var t = globals.combatant.new(); #not sure if heroguild consists of combatants, but it has no use now
 		t.deserialize(tmp['heroguild'][key]);
 		heroguild[int(key)] = t;
+	items.clear();
 	for key in tmp['items'].keys():
 		var t = globals.Item.new();
 		t.deserialize(tmp['items'][key]);
