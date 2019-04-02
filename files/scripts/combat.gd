@@ -350,7 +350,7 @@ func UpdateSkillTargets():
 				continue
 			allowedtargets.ally.append(i)
 	if targetgroups.has('self'):
-		allowedtargets.ally.append(fighter.position)
+		allowedtargets.ally.append(int(fighter.position))
 	Highlight(currentactor,'selected')
 	Off_Target_Glow();
 	for f in allowedtargets.enemy:
@@ -486,8 +486,8 @@ func make_fighter_panel(fighter, spot):
 	fighter.displaynode = panel
 	panel.name = 'Character'
 	panel.set_script(load("res://files/FighterNode.gd"))
-	panel.position = spot
-	fighter.position = spot
+	panel.position = int(spot)
+	fighter.position = int(spot)
 	panel.fighter = fighter
 	panel.connect("signal_RMB", self, "ShowFighterStats")
 	panel.connect("signal_RMB_release", self, 'HideFighterStats')
@@ -621,8 +621,7 @@ func buildenemygroup(enemygroup):
 		make_fighter_panel(battlefield[i], i)
 
 func buildplayergroup(group):
-	var newgroup =  {}
-	
+	var newgroup = {}
 	for i in group:
 		if group[i] == null:
 			continue
@@ -754,7 +753,8 @@ func use_skill(skill_code, caster, target):
 		
 		if animationdict.postdamage.size() > 0:
 			yield(CombatAnimations, 'alleffectsfinished')
-		target.displaynode.rebuildbuffs()
+		if target.displaynode != null:
+			target.displaynode.rebuildbuffs()
 	
 	if activeitem != null:
 		activeitem.amount -= 1

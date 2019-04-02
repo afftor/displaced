@@ -396,7 +396,7 @@ var skilllist = {
 		tags = [],
 
 		temp = ['caster.position'],
-		value = ['caster.damage'],
+		value = ['caster.damage','/1.3'],
 		cooldown = 2,
 		manacost = 5,
 
@@ -671,7 +671,7 @@ var skilllist = {
 		reqs = [],
 		tags = [],
 		value = ['treant', 2],
-		cooldown = 2,
+		cooldown = 1,
 		manacost = 0,
 		casteffects = [],
 		
@@ -679,13 +679,13 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
 		
 		aipatterns = ['attack'],
 		aitargets = '1ally',
 		aiselfcond = 'any',
 		aitargetcond = 'any',
-		aipriority = 2,
+		aipriority = 5,
 	},
 }
 

@@ -2,7 +2,7 @@ extends Node
 
 
 var predeterminatedgroups = {
-	forestboss = {weight = 0.1, group = {2 : 'bigtreant'}, code = 'forestboss', music = 'boss'},
+	forestboss = {weight = 0.1, group = {5 : 'bigtreant'}, code = 'forestboss', music = 'boss'},
 	
 	
 	
@@ -11,8 +11,8 @@ var predeterminatedgroups = {
 var randomgroups = {
 	foresteasy = {units = {elvenrat = [1,2]}, weight = 1, code = 'foresteasy', reqs = [{type = "party_level", operant = "lte", value = 3}]},
 	foresteasymed = {units = {elvenrat = [2,4]}, weight = 1, code = 'foresteasymed', reqs = []},
-	forestmedium = {units = {elvenrat = [1,3], treant = [0,1]}, weight = 1, code = 'forestmedium',reqs = [{type = "party_level", operant = "gte", value = 3}]},
-	forestmedium2 = {units = {elvenrat = [1,2], treant = [1,2]}, weight = 1, code = 'forestmedium2',reqs = [{type = "party_level", operant = "gte", value = 3}]},
+	forestmedium = {units = {elvenrat = [1,3], treant = [0,1]}, weight = 1, code = 'forestmedium',reqs = [{type = "party_level", operant = "gte", value = 2}]},
+	forestmedium2 = {units = {elvenrat = [1,2], treant = [1,2]}, weight = 1, code = 'forestmedium2',reqs = [{type = "party_level", operant = "gte", value = 2}]},
 	foresthard = {units = {treant = [2,3], elvenrat = [1,2]}, weight = 1, code = 'foresthard',reqs = [{type = "party_level", operant = "gte", value = 5}]},
 	foresthard2 = {units = {spider = [1,2], treant = [1,2]}, weight = 1, code = 'foresthard2',reqs = [{type = "party_level", operant = "gte", value = 4}]},
 	foresthard3 = {units = {fairies = [1,1], treant = [1,2]}, weight = 1, code = 'foresthard3',reqs = [{type = "party_level", operant = "gte", value = 4}]},

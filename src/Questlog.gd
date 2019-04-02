@@ -22,7 +22,7 @@ func open():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.activequests: #{code = name, stage = value}
 		var newquest = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newquest.get_node("RichTextLabel").bbcode_text = queststext[i.code][i.stage]
+		newquest.get_node("RichTextLabel").bbcode_text = queststext[i.code][int(i.stage)]
 	if state.activequests.size() == 0:
 		var newquest = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newquest.get_node("RichTextLabel").bbcode_text = tr("NOACTIVEQUESTS")

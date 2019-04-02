@@ -646,10 +646,25 @@ func LoadGame(filename):
 		var t = globals.worker.new()
 		t = dict2inst(i)
 		state.workers[t.id] = t
+	
+	#converting ints
+	
 	var tempdict = {}
 	for i in state.combatparty.keys():
-		tempdict[int(i)]  = state.combatparty[i]
+		tempdict[int(i)] = state.combatparty[i]
 	state.combatparty = tempdict.duplicate()
+	tempdict.clear()
+	
+	for i in state.areaprogress.keys():
+		tempdict[i] = int(state.areaprogress[i])
+	state.areaprogress = tempdict.duplicate()
+	tempdict.clear()
+	
+	for i in state.townupgrades.keys():
+		tempdict[i] = int(state.townupgrades[i])
+	state.townupgrades = tempdict.duplicate()
+	tempdict.clear()
+	
 	if state.CurBuild != '' and state.CurBuild != null:
 		CurrentScene.get_node(state.CurBuild).show()
 	#opentextscene

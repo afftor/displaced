@@ -245,7 +245,7 @@ func updateexplorepanel(newarea = null):
 func startexploration():
 	period = 'fight'
 	stage += 1
-	if area.stagedenemies.has(stage):
+	if area.stagedenemies.has(int(stage)):
 		StartCombat(area.stagedenemies[stage])
 	else:
 		StartCombat(area.enemygroups)

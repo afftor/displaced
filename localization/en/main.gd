@@ -179,6 +179,8 @@ var TranslationDict = {
 	TEXTSPEED = "Text Speed",
 	SKIPREAD = "Skip Read",
 	
+	CURRENTFOOD = "Current Food",
+	GAINFOOD = "Food Value",
 	
 	#System
 	CONFIRM = "Confirm",

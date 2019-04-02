@@ -584,7 +584,7 @@ var buffs = {
 	speed = {icon = null, description = null},
 	area_speed = {icon = null, description = null}, #marks owner of area speed effect
 
-	taunted = {icon = null, description = null},
+	taunted = {icon = load("res://assets/images/iconsskills/taunt.png"), description = "This unit is taunted and must attack next turn"},
 	speed_debuf = {icon = null, description = null},
 
 	noresist = {icon = load("res://assets/images/traits/resistdebuf.png"), description = "Resists Reduced"},
