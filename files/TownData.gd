@@ -81,3 +81,10 @@ var workersdict = {
 #	unlockreqs = []
 #	},
 }
+
+var questdict = {
+	questeasy = {task = 'kill', tasktarget = 'elvenrat', tasknumber = [3,5], rewardmoney = 100},
+	questmedium = {task = 'kill', tasktarget = 'spider', tasknumber = [3,6], rewardmoney = 200},
+	questmedium2 = {task = 'kill', tasktarget = 'earthgolem', tasknumber = [4,6], rewardmoney = 250},
+	
+}

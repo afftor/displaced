@@ -54,7 +54,8 @@ func open(hero):
 		var newbutton = globals.DuplicateContainerTemplate($Main/skillcontainer)
 		#newbutton.get_node("Label").text = skill.name
 		#newbutton.connect("pressed", self, "SkillTooltip", [skill])
-		globals.connecttooltip(newbutton, character.skill_tooltip_text(i))
+		#globals.connecttooltip(newbutton, character.skill_tooltip_text(i))
+		globals.connectskilltooltip(newbutton, i, hero)
 		newbutton.get_node("Icon").texture = skill.icon
 
 func unequip(slot):

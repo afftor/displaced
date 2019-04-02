@@ -111,6 +111,17 @@ func GetItemTooltip():
 		node.add_child(tooltipnode)
 	return tooltipnode
 
+func GetSkillTooltip():
+	var tooltipnode
+	var node = get_tree().get_root()
+	if node.has_node('skilltooltip'):
+		tooltipnode = node.get_node('skilltooltip')
+	else:
+		tooltipnode = load("res://src/SkillToolTip.tscn").instance()
+		tooltipnode.name = 'skilltooltip'
+		node.add_child(tooltipnode)
+	return tooltipnode
+
 
 func GetTweenNode(node):
 	var tweennode
@@ -216,10 +227,10 @@ func SetMusic(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = GetMusicNode()
+	if musicnode.stream == audio.music[name]:
+		return
 	musicnode.stream = audio.music[name]
 	musicnode.play(0)
-#	AudioServer.set_bus_volume_db(1, -60)
-#	musicraising = true
 
 func StopMusic(instant = false):
 	musicfading = true

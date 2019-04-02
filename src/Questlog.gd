@@ -8,6 +8,9 @@ var queststext = {
 	demitrus = {
 		1 : "Explore Caves with Dimitrus",
 		},
+	forge = {
+		1 : "Upgrade Blacksmith Forge to unlock more recipes",
+		},
 	demofinish = {
 		1 : "You have completed the demo!"
 	}

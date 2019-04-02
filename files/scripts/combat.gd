@@ -141,6 +141,7 @@ func newturn():
 	for i in playergroup.values() + enemygroup.values():
 		i.update_temp_effects()
 		i.basic_check(variables.TR_TURN_S)
+		i.displaynode.rebuildbuffs()
 		var cooldowncleararray = []
 		for k in i.cooldowns:
 			i.cooldowns[k] -= 1
@@ -1017,7 +1018,7 @@ func RebuildSkillPanel():
 		if activecharacter.mana < skill.manacost:
 			newbutton.disabled = true
 		newbutton.set_meta('skill', skill.code)
-		globals.connecttooltip(newbutton, activecharacter.skill_tooltip_text(i))
+		globals.connectskilltooltip(newbutton, i, activecharacter)
 
 func SelectSkill(skill):
 	skill = globals.skills[skill]

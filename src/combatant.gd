@@ -736,7 +736,7 @@ func calculate_number_from_string_array(array):
 
 func skill_tooltip_text(skillcode):
 	var skill = globals.skills[skillcode]
-	var text = '[center]' + skill.name + '[/center]\n'
+	var text = ''
 	if skill.description.find("%d") >= 0:
 		text += skill.description % calculate_number_from_string_array(skill.value)
 	else:

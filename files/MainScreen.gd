@@ -72,8 +72,8 @@ func _ready():
 
 var forgeimage = {
 	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},
-	first = {normal = load("res://assets/images/buildings/forge1.png"), hl = null},
-	second = {normal = load("res://assets/images/buildings/forge2.png"), hl = null},
+	first = {normal = load("res://assets/images/buildings/forge_1.png"), hl = load("res://assets/images/buildings/forge1_hl.png")},
+	second = {normal = load("res://assets/images/buildings/forge_2.png"), hl = load("res://assets/images/buildings/forge2_hl.png")},
 	
 }
 

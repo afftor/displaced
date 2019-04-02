@@ -320,6 +320,19 @@ func connectitemtooltip(node, item):
 		node.disconnect("mouse_entered",item,'tooltip')
 	node.connect("mouse_entered",item,'tooltip', [node])
 
+func connectskilltooltip(node, skill, character):
+	if node.is_connected("mouse_entered",self,'showskilltooltip'):
+		node.disconnect("mouse_entered",self,'showskilltooltip')
+	node.connect("mouse_entered",self,'showskilltooltip', [skill,node,character])
+
+func showskilltooltip(skill, node, character):
+	var skilltooltip = input_handler.GetSkillTooltip()
+	var pos = node.get_global_rect()
+	pos = Vector2(pos.position.x, pos.end.y + 10)
+	skilltooltip.set_global_position(pos)
+	skilltooltip.character = character
+	skilltooltip.showup(node, skill)
+
 func disconnectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):
 		node.disconnect("mouse_entered",item,'tooltip')
