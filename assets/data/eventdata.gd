@@ -50,7 +50,7 @@ var checks = {
 	
 	"Market":
 	[
-		{type = "building", value = "Market"},
+		{},
 	],
 	
 	"Market 2":

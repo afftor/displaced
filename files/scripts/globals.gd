@@ -595,7 +595,8 @@ func EndGame(result):
 	pass
 
 func SaveGame(name):
-	state.CurrentLine = input_handler.GetEventNode().CurrentLine;
+	if state.CurEvent != '':
+		state.CurrentLine = input_handler.GetEventNode().CurrentLine;
 	var savedict = state.serialize();
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
@@ -622,4 +623,8 @@ func LoadGame(filename):
 		CurrentScene.get_node(state.CurBuild).show()
 	#opentextscene
 	if state.CurEvent != "":
-		StartEventScene(state.CurEvent, false, state.CurrentLine)
+		StartEventScene(state.CurEvent, false, state.CurrentLine);
+		pass
+	else:
+		call_deferred('EventCheck');
+
