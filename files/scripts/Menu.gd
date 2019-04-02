@@ -21,8 +21,8 @@ func newgame():
 	state.newgame = true
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('town')
-	
 	yield(globals, 'scene_changed')
+	input_handler.ActivateTutorial()
 	#globals.StartEventScene("Intro")
 	self.queue_free()
 

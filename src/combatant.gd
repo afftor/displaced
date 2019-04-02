@@ -4,7 +4,7 @@ var id
 var name
 var namebase
 var base
-var race
+var combatclass
 
 var icon
 var combaticon
@@ -575,7 +575,8 @@ func createfromname(charname):
 			traits[i] = true
 	id = state.heroidcounter
 	state.heroidcounter += 1
-	base = classtemplate.code
+	base = nametemplate.code
+	combatclass = classtemplate.code
 	hpmax = classtemplate.basehp
 	speed = classtemplate.speed
 	self.hp = hpmax
