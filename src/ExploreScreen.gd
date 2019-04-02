@@ -29,8 +29,8 @@ func show():
 	state.CurBuild = 'ExploreScreen'
 	input_handler.CurrentScreen = 'Explore'
 	$HeroList.open()
-	state.combatparty[1] = state.heroes[0].id
-	state.combatparty[2] = state.heroes[1].id
+#	state.combatparty[1] = state.heroes[0].id
+#	state.combatparty[2] = state.heroes[1].id
 #	state.heroes[1].mana = 10
 	UpdatePositions()
 	showexplorelist()
@@ -177,6 +177,11 @@ func UpdatePositions():
 		if state.combatparty[i] != null:
 			get_node(positiondict[i] + "/Image").texture = state.heroes[state.combatparty[i]].portrait()
 			get_node(positiondict[i] + "/Image").show()
+	$AreaProgress/ProceedButton.disabled = state.if_party_level('lte', 0)
+	if $AreaProgress/ProceedButton.disabled:
+		$AreaProgress/ProceedButton.hint_tooltip = "You must assign party before venturing"
+	else:
+		$AreaProgress/ProceedButton.hint_tooltip = ''
 
 func openinventory(hero):
 	$Inventory.open(hero)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
@@ -14,8 +14,9 @@
 [ext_resource path="res://files/buttons/mainmenu/itchio.jpg" type="Texture" id=12]
 [ext_resource path="res://files/Options.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=15]
 
-[node name="Menu" type="Node"]
+[node name="Menu" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -159,28 +160,7 @@ texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Label" type="Label" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 13.0
-margin_top = 1047.0
-margin_right = 231.0
-margin_bottom = 1071.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "Version"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Panel" type="Panel" parent="." index="3"]
+[node name="Panel" type="Panel" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -267,11 +247,11 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Options" parent="." index="4" instance=ExtResource( 13 )]
+[node name="Options" parent="." index="3" instance=ExtResource( 13 )]
 
 visible = false
 
-[node name="saveloadpanel" parent="." index="5" instance=ExtResource( 14 )]
+[node name="saveloadpanel" parent="." index="4" instance=ExtResource( 14 )]
 
 visible = false
 margin_left = 594.0
@@ -279,7 +259,7 @@ margin_top = 212.0
 margin_right = 1221.0
 margin_bottom = 735.0
 
-[node name="version" type="Label" parent="." index="6"]
+[node name="version" type="Label" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -297,5 +277,80 @@ text = "ver. 0.1.0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="WarnScreen" parent="." index="6" instance=ExtResource( 15 )]
+
+visible = false
+
+[node name="DemoPanel" type="Panel" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 716.0
+margin_top = 347.0
+margin_right = 1336.0
+margin_bottom = 712.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DemoPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 47.0
+margin_top = 47.0
+margin_right = 574.0
+margin_bottom = 215.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
+
+[node name="Button" type="Button" parent="DemoPanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 170.0
+margin_top = 289.0
+margin_right = 431.0
+margin_bottom = 340.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Confirm"
+flat = false
+align = 1
 
 

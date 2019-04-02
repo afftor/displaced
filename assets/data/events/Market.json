@@ -36,4 +36,5 @@
 {"effect":"gui","value":"hidegui"},
 {"args":1,"delay":1,"effect":"sfx","value":"blackscreentransition"},
 {"effect":"background","value":"Null"},
+{"effect":"state","value":"worker_add", "args":"goblin"},
 {"effect":"stop","value":""}]

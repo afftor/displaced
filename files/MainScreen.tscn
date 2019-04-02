@@ -112,7 +112,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="MainScreen" type="Control" index="0"]
+[node name="MainScreen" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -218,10 +218,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1102.0
-margin_top = 465.0
-margin_right = 1537.0
-margin_bottom = 668.0
+margin_left = 1119.0
+margin_top = 455.0
+margin_right = 1554.0
+margin_bottom = 658.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -285,10 +285,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 344.0
-margin_top = 29.0
-margin_right = 478.0
-margin_bottom = 152.0
+margin_left = 272.0
+margin_top = 18.0
+margin_right = 406.0
+margin_bottom = 141.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -304,9 +304,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 550.0
+margin_left = 562.0
 margin_top = 406.0
-margin_right = 863.0
+margin_right = 875.0
 margin_bottom = 752.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1758,7 +1758,5 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-
 
 

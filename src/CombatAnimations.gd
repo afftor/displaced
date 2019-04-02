@@ -3,10 +3,12 @@ extends Node
 signal pass_next_animation
 signal cast_finished
 signal predamage_finished
+signal postdamage_finished
 signal alleffectsfinished
 
 var cast_timer = 0
 var aftereffecttimer = 0
+var postdamagetimer = 0
 var aftereffectdelay = 0.1
 
 func _process(delta):
@@ -18,6 +20,10 @@ func _process(delta):
 		aftereffecttimer -= delta
 		if aftereffecttimer <= 0:
 			predamage_finished()
+	if postdamagetimer > 0:
+		postdamagetimer -= delta
+		if postdamagetimer <= 0:
+			postdamage_finished()
 
 func casterattack(node):
 	var tween = input_handler.GetTweenNode(node)
@@ -45,6 +51,12 @@ func cast_finished():
 
 func predamage_finished():
 	emit_signal("predamage_finished")
+#	var tween = input_handler.GetTweenNode(self)
+#	tween.interpolate_callback(self, 1, 'allanimationsfinished')
+#	tween.start()
+
+func postdamage_finished():
+	emit_signal("postdamage_finished")
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
@@ -60,6 +72,15 @@ func targetattack(node):
 	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	aftereffecttimer = nextanimationtime + aftereffectdelay
+
+
+func targetfire(node):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.2
+	input_handler.gfx(node, 'fire')
+	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
+	tween.start()
+	postdamagetimer = nextanimationtime + aftereffectdelay
 
 func miss(node):
 	var tween = input_handler.GetTweenNode(node)

@@ -8,11 +8,11 @@ func _ready():
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	
-	#causes error
-	#$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
+	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	
 	if globals.globalsettings.warnseen == true:
 		$DemoPanel.hide()
+	
 	
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])

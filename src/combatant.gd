@@ -579,55 +579,6 @@ func createfromname(charname):
 	flavor = nametemplate.flavor
 
 
-#func checkequipmenteffects():
-#	pass
-#		for i in passives.values():
-#			if i.trigger == 'onequip':
-#				checkpassive(i)
-
-#
-#func checkpassive(passive, change = true):
-#	var prevresult = passive.enabled
-#	var effect = globals.effects[passive.code]
-#
-#	var check = true
-#	for i in effect.reqs:
-#		if input_handler.requirementcombatantcheck(i, self) == false:
-#			check = false
-#
-#
-#	if prevresult != passive.enabled && change:
-#		passive.enabled = check
-#		for i in effect.effects:
-#			if passive.enabled == false:
-#				self[i.effect] -= i.value
-#				passives.erase(effect.code)
-#			elif passive.enabled == true:
-#				self[i.effect] += i.value
-#				passives.append(effect.code)
-#
-#	return check
-
-#func applytrait(traitcode):
-#	var trait = globals.traits[traitcode]
-#	for i in trait.effects():
-#		if i.trigger == 'onactive':
-#			pass
-#		else:
-#			addpassiveeffect(i.triggereffect)
-
-
-#func seteffect(passive):
-#	var effect = globals.effects[passive.code]
-#	var state = passive.enabled
-#	for i in effect.effects:
-#		if state == false:
-#			self[i.effect] -= i.value
-#			passives.erase(effect.code)
-#		elif state == true:
-#			self[i.effect] += i.value
-#			passives.append(effect.code)
-
 
 func equip(item):
 	if !item.geartype in combatantdata.classlist[base].gearsubtypes && !item.geartype in ['chest', 'helm','boots', 'gloves']:
@@ -649,15 +600,7 @@ func equip(item):
 		#NEED REPLACING
 		pass
 	#checkequipmenteffects()
-#
-#func addpassiveeffect(passive):
-#	var effect = globals.effects[passive]
-#	if !passives.has(effect.trigger):
-#		passives[effect.trigger] = []
-#	passives[effect.trigger].append(effect)
-#
-#func removepassiveeffect(passive):
-#	passives[globals.effects[passive].trigger].erase(globals.effects[passive])
+
 
 func unequip(item):#NEEDS REMAKING!!!!
 	#removing links
@@ -777,7 +720,7 @@ func skill_tooltip_text(skillcode):
 
 func serialize():
 	var tmp = {};
-	var atr = ['name','level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed','critchance','critmod','resistfire','resistearth','resistwater','resistair','shield','shieldtype','traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
+	var atr = ['base','name','level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed','critchance','critmod','resistfire','resistearth','resistwater','resistair','shield','shieldtype','traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
 	var atr1 = ['evasion', 'mdef', 'position', 'mana']
 	var atr2 = ['skills', 'traits', 'buffs', 'static_effects','temp_effects','triggered_effects','oneshot_effects','area_effects','own_area_effects',]
 	for a in atr:
@@ -791,8 +734,8 @@ func serialize():
 
 func deserialize(tmp):
 	#var tmp = parse_json(buff);
-	var nametemplate = combatantdata.charlist[tmp.name]
-	base = nametemplate.subclass;
+	var nametemplate = combatantdata.charlist[tmp.base]
+	base = nametemplate.base
 	icon = nametemplate.icon
 	combaticon = nametemplate.combaticon
 	image = nametemplate.image
@@ -808,4 +751,3 @@ func deserialize(tmp):
 	mana =tmp.mana;
 	for a in atr2:
 		set(a, tmp[a].duplicate())
-	pass

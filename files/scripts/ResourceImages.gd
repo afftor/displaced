@@ -120,6 +120,6 @@ var gui = {
 
 var GFX = {
 	slash = load("res://assets/images/gfx/slash-effect.png"),
-	
+	fire = load("res://assets/sfx/fire_effect.png"),
 }
 

@@ -36,7 +36,7 @@ var choicedict = {
 
 func _process(delta):
 	if TextField.get_total_character_count() > TextField.visible_characters:
-		if globals.globalsettings.textspeed >= 240:
+		if globals.globalsettings.textspeed >= 200:
 			ShownCharacters = TextField.get_total_character_count()
 		else:
 			ShownCharacters += delta*globals.globalsettings.textspeed
@@ -232,9 +232,9 @@ func AdvanceScene():
 			'choice':
 				ReceiveInput = true;
 				Choice(NewEffect.value);
-			'town':
+			'decision':
 				ReceiveInput = false;
-				TownDo(NewEffect.value);
+				state.decisions.append(NewEffect.value)
 			'party':
 				ReceiveInput = false;
 				PartyDo(NewEffect.value);
@@ -280,6 +280,9 @@ func StateEffect(value, args):
 			state.AdvanceQuest(args)
 		"finish_quest":
 			state.FinishQuest(args)
+		'worker_add':
+			var newworker = globals.worker.new()
+			newworker.create(TownData.workersdict[args])
 
 func QuestSet(value, args):
 	match value:
@@ -322,7 +325,7 @@ func get_choice(i):
 func StopEvent():
 	set_process(false)
 	set_process_input(false)
-	#globals.CurrentScene.show()
+	input_handler.emit_signal("EventFinished")
 	hide()
 	input_handler.SetMusic("towntheme")
 	if !debug:

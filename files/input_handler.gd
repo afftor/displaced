@@ -20,6 +20,7 @@ signal CombatEnded
 signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
+signal EventFinished
 
 
 
@@ -351,12 +352,16 @@ func SmoothValueAnimation(node, time, value1, value2):
 func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false):
 	var x = TextureRect.new()
 	x.texture = images.GFX[effect]
+	x.expand = true
 	x.stretch_mode = 6
+	node.add_child(x)
+	
+	x.rect_size = node.rect_size
+	
 	if rotate == true:
 		x.rect_pivot_offset = images.GFX[effect].get_size()/2
 		x.rect_rotation = rand_range(0,360)
 	
-	node.add_child(x)
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
 	

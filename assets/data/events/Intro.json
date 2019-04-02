@@ -1,6 +1,6 @@
 [
 {"args":null,"effect":"sfx","value":"blackscreenturnon"},
-{"delay":2,"effect":"music","value":"eventgeneric"},
+{"delay":2,"effect":"music","value":"eventlight"},
 {"effect":"background","value":"castle"},
 {"args":1,"delay":1,"effect":"sfx","value":"blackscreenfade"},
 {"effect":"gui","value":"gui_normal"},
@@ -26,7 +26,7 @@
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"And why aren't you? "},
 {"effect":"text","portrait":"Lyra","sound":null,"source":"LYRA","value":"Oh my..."},
 {"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenunfade"},
-{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Few moments later"},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Few moments later..."},
 {"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
 {"args":0.5,"delay":0.5,"effect":"sprite","value":"unfade"},
 {"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"(Someone is coming... )"},

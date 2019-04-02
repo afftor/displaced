@@ -604,23 +604,22 @@ func SaveGame(name):
 func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
+	input_handler.CloseableWindowsArray.clear()
+	CurrentScene.queue_free()
 	ChangeScene('town');
-	yield(self, "scene_changed");
+	yield(self, "scene_changed")
 	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
 		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
 		return
-	#var gamefile = 
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
-	var savedict = parse_json(file.get_as_text());
-	file.close();
-	state.deserialize(savedict);
+	var savedict = parse_json(file.get_as_text())
+	file.close()
+	state.deserialize(savedict)
 	#ChangeScene("MainMenu")
 	#setup state node links. do nothing as they are not used now
 	#open building
 	if state.CurBuild != '' and state.CurBuild != null:
-		CurrentScene.get_node(state.CurBuild).show();
-		pass
+		CurrentScene.get_node(state.CurBuild).show()
 	#opentextscene
 	if state.CurEvent != "":
-		StartEventScene(state.CurEvent, false, state.CurrentLine);
-		pass
+		StartEventScene(state.CurEvent, false, state.CurrentLine)

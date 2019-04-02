@@ -104,6 +104,8 @@ func start_combat(newenemygroup, background, music = 'combattheme'):
 	select_actor()
 
 func FinishCombat():
+	for i in state.heroes.values():
+		i.cooldowns.clear()
 	for i in battlefield:
 		if battlefield[i] != null:
 			battlefield[i].displaynode.queue_free()
@@ -702,7 +704,7 @@ func use_skill(skill_code, caster, target):
 				break;
 			target = new_targets[int(randf()*new_targets.size())];
 		var animations = skill.sfx
-		var animationdict = {windup = [], predamage = []}
+		var animationdict = {windup = [], predamage = [], postdamage = []}
 		
 		
 		#sort animations
@@ -735,13 +737,22 @@ func use_skill(skill_code, caster, target):
 				summon(skill.value[0], skill.value[1]);
 			else: 
 				execute_skill(skill_code, caster, i);
+			
+			#hit landed animation
+			
 			if skill.sounddata.hit != null:
 				if skill.sounddata.hittype == 'absolute':
 					input_handler.PlaySound(skill.sounddata.hit)
 				elif skill.sounddata.hittype == 'bodyarmor':
 					input_handler.PlaySound(calculate_hit_sound(skill, caster, target))
+			for j in animationdict.postdamage:
+				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
+				CombatAnimations.call(j.code, sfxtarget)
+				yield(CombatAnimations, 'pass_next_animation')
+			if animationdict.postdamage.size() > 0:
+				yield(CombatAnimations, 'postdamage_finished')
 		
-		if animationdict.predamage.size() > 0:
+		if animationdict.postdamage.size() > 0:
 			yield(CombatAnimations, 'alleffectsfinished')
 		target.displaynode.rebuildbuffs()
 	
