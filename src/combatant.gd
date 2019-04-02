@@ -166,7 +166,7 @@ func levelup():
 	recentlevelups += 1
 	traitpoints += variables.TraitPointsPerLevel
 	
-	var baseclass = combatantdata.classlist[base]
+	var baseclass = combatantdata.classlist[combatclass]
 	for i in baseclass.learnableskills:
 		if skills.has(i) == false && level >= baseclass.learnableskills[i]:
 			skills.append(i)
@@ -582,7 +582,7 @@ func createfromname(charname):
 
 
 func equip(item):
-	if !item.geartype in combatantdata.classlist[base].gearsubtypes && !item.geartype in ['chest', 'helm','boots', 'gloves']:
+	if !item.geartype in combatantdata.classlist[combatclass].gearsubtypes && !item.geartype in ['chest', 'helm','boots', 'gloves']:
 		input_handler.SystemMessage(tr("INVALIDCLASS"))
 		return
 	for i in item.multislots:
