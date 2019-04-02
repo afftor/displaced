@@ -88,5 +88,6 @@
 {"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"Okay!"},
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Ember has joined the settlement. Forge is available now."},
 {"effect":"state","value":"character_add", "args":"ember"},
-{"effect":"town","value":"forge"},
+{"effect":"decision","value":"blacksmith"},
+{"effect":"state","value":"make_quest", "args":"forge"},
 {"effect":"stop","value":""}]

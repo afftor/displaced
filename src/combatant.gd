@@ -9,6 +9,8 @@ var combatclass
 var icon
 var combaticon
 
+var race
+
 var level = 1
 var recentlevelups = 0
 var baseexp = 0 setget exp_set
@@ -527,6 +529,7 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 func createfromenemy(enemy):
 	var template = Enemydata.enemylist[enemy]
 	base = enemy
+	race = template.race
 	hpmax = template.basehp
 	self.hp = hpmax
 	manamax = template.basemana
