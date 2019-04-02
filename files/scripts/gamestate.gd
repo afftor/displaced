@@ -162,7 +162,7 @@ func if_has_property(prop, value):
 
 func if_has_hero(name):
 	for h in heroes.values():
-		if h.namebase == name: return true;
+		if h.base == name: return true;
 	return false;
 
 func if_has_material(mat, operant, val):
