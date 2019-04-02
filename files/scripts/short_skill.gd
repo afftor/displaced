@@ -59,9 +59,9 @@ func createfromskill(s_code):
 
 func hit_roll():
 	var prop = chance - evade
-	if prop < randf()*100:
+	if prop < randf()*100 && caster.combatgroup != target.combatgroup:
 		hit_res = variables.RES_MISS
-	elif critchance < randf()*100 || caster.combatgroup == target.combatgroup:
+	elif critchance < randf()*100:
 		hit_res = variables.RES_HIT
 	else:
 		hit_res = variables.RES_CRIT

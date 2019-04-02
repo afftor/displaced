@@ -1,7 +1,7 @@
 extends Node
 
 var blacksmith
-var debug = true
+var debug = false
 
 var gamespeed = 1
 var gamepaused = false
@@ -69,6 +69,7 @@ func _ready():
 	changespeed($"TimeNode/0speed", false)
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
 	input_handler.connect("EventFinished", self, "buildscreen")
+	$TutorialNode.activatetutorial(state.currenttutorial)
 
 var forgeimage = {
 	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},

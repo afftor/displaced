@@ -578,7 +578,7 @@ func createfromname(charname):
 		for i in classtemplate.basetraits:
 			traits[i] = false
 			activate_trait(i);
-	id = state.heroidcounter
+	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
 	base = nametemplate.code
 	combatclass = classtemplate.code

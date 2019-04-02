@@ -61,7 +61,6 @@ func HeroSelected(hero):
 	
 	var positiontaken = false
 	var oldheroposition = null
-	
 	if state.combatparty[SelectingPosition] != null:
 		positiontaken = true
 	

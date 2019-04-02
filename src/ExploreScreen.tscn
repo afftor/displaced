@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/ExploreScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/forest.png" type="Texture" id=2]
@@ -9,17 +9,57 @@
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=16]
-[ext_resource path="res://src/TraitSelectionLevelup.tscn" type="PackedScene" id=17]
-[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=18]
-[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=19]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/images/gui/universal/progressbar2.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/universal/progressbar.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=18]
+[ext_resource path="res://src/TraitSelectionLevelup.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=20]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=21]
+[ext_resource path="res://files/combat.tscn" type="PackedScene" id=22]
+
+[sub_resource type="StyleBoxTexture" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 382, 39 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 382, 39 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
 
 [node name="ExploreScreen" type="Control"]
 
@@ -236,16 +276,18 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 44.0
-margin_top = 467.0
-margin_right = 604.0
-margin_bottom = 491.0
+margin_left = 43.0
+margin_top = 460.0
+margin_right = 603.0
+margin_bottom = 499.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -254,7 +296,7 @@ value = 0.0
 exp_edit = false
 rounded = false
 percent_visible = false
-_sections_unfolded = [ "Percent" ]
+_sections_unfolded = [ "Percent", "custom_styles" ]
 
 [node name="TextureRect" type="TextureRect" parent="AreaProgress" index="1"]
 
@@ -319,10 +361,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
-texture_disabled = ExtResource( 13 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+texture_disabled = ExtResource( 15 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Textures" ]
@@ -389,7 +431,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6
 
@@ -451,7 +493,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -494,7 +536,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -537,7 +579,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -598,7 +640,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -641,7 +683,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -684,7 +726,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
@@ -765,20 +807,20 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Mouse" ]
 
-[node name="LevelupTrait" parent="." index="4" instance=ExtResource( 17 )]
+[node name="LevelupTrait" parent="." index="4" instance=ExtResource( 19 )]
 
 visible = false
 
-[node name="HeroList" parent="." index="5" instance=ExtResource( 18 )]
+[node name="HeroList" parent="." index="5" instance=ExtResource( 20 )]
 
 visible = false
 
-[node name="Inventory" parent="." index="6" instance=ExtResource( 19 )]
+[node name="Inventory" parent="." index="6" instance=ExtResource( 21 )]
 
 visible = false
 margin_left = 23.0
@@ -788,7 +830,7 @@ margin_bottom = 841.0
 
 [node name="combat" parent="." index="7" groups=[
 "pauseprocess",
-] instance=ExtResource( 20 )]
+] instance=ExtResource( 22 )]
 
 visible = false
 

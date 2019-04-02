@@ -65,7 +65,7 @@ func _input(event):
 	
 	
 	if (event.is_action("LMB") || event.is_action("MouseDown")) && event.is_pressed() && $Panel.visible:
-		if $ChoicePanel.visible: return;
+		if $ChoicePanel.visible: return
 		if $Panel/Log.get_global_rect().has_point(get_global_mouse_position()) || $Panel/Options.get_global_rect().has_point(get_global_mouse_position()):
 			return
 		if TextField.get_visible_characters() < TextField.get_total_character_count():
@@ -86,7 +86,7 @@ func _ready():
 	$Panel/Log.connect("pressed",self,'OpenLog')
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
 	#CurrentScene = SceneData.introdesert
-	add_to_group('pauseprocess');
+	add_to_group('pauseprocess')
 
 
 func OpenLog():
@@ -100,110 +100,110 @@ func OpenOptions():
 
 func Start(dict, f = false, line = 0):
 	if dict == null or (variables.NoScenes and !f):  
-		call_deferred('StopEvent');
-		return;
-	debug = f;
-	input_handler.LockOpenWindow();
+		call_deferred('StopEvent')
+		return
+	debug = f
+	input_handler.LockOpenWindow()
 	$Background.texture = null
-	$Background.visible = true;
+	$Background.visible = true
 	$CharImage.texture = null
-	#$CharImage.visible = false;
+	#$CharImage.visible = false
 	$Panel/CharPortrait.texture = null
 	$Panel/DisplayText.bbcode_text = ''
 	$Panel/DisplayName/Label.text = ''
 	$Panel/DisplayName.visible = true
 	$Panel/CharPortrait.visible = false
 	$Panel.visible = false
-	$CharImage.modulate = Color(1, 1, 1, 0);
-	#$bl.modulate = Color(1, 1, 1, 1);
-	$BlackScreen.modulate.a = 0;
+	$CharImage.modulate = Color(1, 1, 1, 0)
+	#$bl.modulate = Color(1, 1, 1, 1)
+	$BlackScreen.modulate.a = 0
 	CurrentScene = dict
 	if line > 0:
-		RestoreEnv();
-	CurrentLine = line;
-	set_process(true);
-	set_process_input(true);
-	enableskip = false;
+		RestoreEnv()
+	CurrentLine = line
+	set_process(true)
+	set_process_input(true)
+	enableskip = false
 	AdvanceScene()
 
 func RestoreEnv():
-	var tlist = state.keyframes.duplicate();
-	tlist.invert();
+	var tlist = state.keyframes.duplicate()
+	tlist.invert()
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'gui':
-			GuiDo(CurrentScene[tmp].value);
-			break;
+			GuiDo(CurrentScene[tmp].value)
+			break
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'background':
-			#input_handler.SmoothTextureChange($Background, images.backgrounds[CurrentScene[tmp].value]);
-			$Background.texture = images.backgrounds[CurrentScene[tmp].value];
-			break;
+			#input_handler.SmoothTextureChange($Background, images.backgrounds[CurrentScene[tmp].value])
+			$Background.texture = images.backgrounds[CurrentScene[tmp].value]
+			break
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'music':
-			input_handler.SetMusic(CurrentScene[tmp].value);
-			break;
+			input_handler.SetMusic(CurrentScene[tmp].value)
+			break
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'sprite':
 			if CurrentScene[tmp].value == 'set':
-				SpriteDo($CharImage, 'set', CurrentScene[tmp].args);
+				SpriteDo($CharImage, 'set', CurrentScene[tmp].args)
 				break
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'sprite':
 			if CurrentScene[tmp].value == 'hide':
-				$CharImage.modulate = Color(1, 1, 1, 0);
+				$CharImage.modulate = Color(1, 1, 1, 0)
 				break
 			if CurrentScene[tmp].value == 'fade':
-				$CharImage.modulate = Color(1, 1, 1, 0);
+				$CharImage.modulate = Color(1, 1, 1, 0)
 				break
 			if CurrentScene[tmp].value == 'unfade':
-				$CharImage.modulate = Color(1, 1, 1, 1);
+				$CharImage.modulate = Color(1, 1, 1, 1)
 				break
 	for tmp in tlist:
 		if CurrentScene[tmp].effect == 'sfx':
 			if CurrentScene[tmp].value == 'blackscreenturnon' or CurrentScene[tmp].value == 'blackscreenunfade':
-				blackscreenturnon();
-				break;
+				blackscreenturnon()
+				break
 			if CurrentScene[tmp].value == 'blackscreenfade':
 				blackscreenturnoff()
-				break;
+				break
 
 
 func skip (n):
-	CurrentLine += int(n);
+	CurrentLine += int(n)
 
 func AdvanceScene():
 	if CurrentScene.size() > CurrentLine:
-		#print ("next line: %d \n" % OS.get_ticks_msec ());
+		#print ("next line: %d \n" % OS.get_ticks_msec ())
 		var NewEffect = CurrentScene[CurrentLine]
 		match NewEffect.effect:
 			'gui': #надо пофиксить некорректное скрытие-раскрытие 
-				GuiDo(NewEffect.value);
-				state.keyframes.push_back(CurrentLine);
-				ReceiveInput = false;
+				GuiDo(NewEffect.value)
+				state.keyframes.push_back(CurrentLine)
+				ReceiveInput = false
 			'background':
 				if NewEffect.has('time'):
-					input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value], NewEffect.time);
+					input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value], NewEffect.time)
 				else:
-					$Background.texture = images.backgrounds[NewEffect.value];
-				$Background.update();
-				state.keyframes.push_back(CurrentLine);
-				ReceiveInput = false;
+					$Background.texture = images.backgrounds[NewEffect.value]
+				$Background.update()
+				state.keyframes.push_back(CurrentLine)
+				ReceiveInput = false
 			'music':
 				input_handler.SetMusic(NewEffect.value)
-				ReceiveInput = false;
+				ReceiveInput = false
 			'sound':
 				input_handler.PlaySound(NewEffect.value)
-				ReceiveInput = false;
+				ReceiveInput = false
 			'sfx':
 				self.call(NewEffect.value, NewEffect.args)
-				state.keyframes.push_back(CurrentLine);
-				ReceiveInput = false;
+				state.keyframes.push_back(CurrentLine)
+				ReceiveInput = false
 			'text':
 				ShownCharacters = 0
 				var text =  tr(NewEffect.value)
 				TextField.visible_characters = ShownCharacters
-				$Panel/DisplayName.modulate = Color(1,1,1,1) if NewEffect.source != 'narrator' else Color(1,1,1,0);
-				$Panel/CharPortrait.modulate = Color(1,1,1,1) if NewEffect.source != 'narrator' else Color(1,1,1,0);
+				$Panel/DisplayName.modulate = Color(1,1,1,1) if NewEffect.source != 'narrator' else Color(1,1,1,0)
+				$Panel/CharPortrait.modulate = Color(1,1,1,1) if NewEffect.source != 'narrator' else Color(1,1,1,0)
 				$Panel/DisplayName/Label.text = tr(NewEffect.source)
 				if $Panel/CharPortrait.visible:
 					if NewEffect.portrait == null || images.portraits.has(NewEffect.portrait) == false:
@@ -222,34 +222,34 @@ func AdvanceScene():
 				ReceiveInput = true
 			'sprite':
 				SpriteDo(ImageSprite, NewEffect.value, NewEffect.args)
-				state.keyframes.push_back(CurrentLine);
-				ReceiveInput = false;
+				state.keyframes.push_back(CurrentLine)
+				ReceiveInput = false
 #			'nextevent':
 #				Start(NewEffect.value)
 			'skip':
-				ReceiveInput = false;
-				skip(NewEffect.value);
-				text_log += '\n\n' + tr(NewEffect.log);
+				ReceiveInput = false
+				skip(NewEffect.value)
+				text_log += '\n\n' + tr(NewEffect.log)
 			'choice':
-				ReceiveInput = true;
-				Choice(NewEffect.value);
+				ReceiveInput = true
+				Choice(NewEffect.value)
 			'decision':
-				ReceiveInput = false;
+				ReceiveInput = false
 				state.decisions.append(NewEffect.value)
 			'party':
-				ReceiveInput = false;
-				PartyDo(NewEffect.value);
+				ReceiveInput = false
+				PartyDo(NewEffect.value)
 			'save':
-				ReceiveInput = false;
-				if !debug: globals.QuickSave();
+				ReceiveInput = false
+				if !debug: globals.QuickSave()
 			'event':
-				ReceiveInput = false;
+				ReceiveInput = false
 				if !debug: state.StoreEvent(NewEffect.value)
 			'quest':
 				if !debug:QuestSet(NewEffect.value, NewEffect.args)
 			'game':
-				ReceiveInput = false;
-				if !debug: globals.EndGame(NewEffect.value);
+				ReceiveInput = false
+				if !debug: globals.EndGame(NewEffect.value)
 				StopEvent()
 			'stop':
 				StopEvent()
@@ -295,9 +295,9 @@ func QuestSet(value, args):
 			state.FinishQuest(args)
 
 func Choice(array):
-	set_process_input(false);
-	enableskip = false;
-	if !debug: globals.QuickSave();
+	set_process_input(false)
+	enableskip = false
+	if !debug: globals.QuickSave()
 	
 	for i in ChoiceContainer.get_children():
 		if i.name != 'Button':
@@ -310,29 +310,29 @@ func Choice(array):
 			continue #запас на будущее, пока не нужно
 		var newbutton = ChoiceContainer.get_node("Button").duplicate()
 		ChoiceContainer.add_child(newbutton)
-		newbutton.show();
-		newbutton.get_node("Label").text = tr(dict.text);
-		newbutton.index = int(dict.index);
+		newbutton.show()
+		newbutton.get_node("Label").text = tr(dict.text)
+		newbutton.index = int(dict.index)
 		#newbutton.connect("pressed", self, dictionary.function)
 		newbutton.connect('i_pressed', self, 'get_choice')
 
 func get_choice(i):
-	CurrentLine += i;
-	#print(i);
-	$ChoicePanel.visible = false;
-	set_process_input(true);
-	AdvanceScene();
+	CurrentLine += i
+	#print(i)
+	$ChoicePanel.visible = false
+	set_process_input(true)
+	AdvanceScene()
 
 func StopEvent():
 	set_process(false)
 	set_process_input(false)
 	input_handler.emit_signal("EventFinished")
 	hide()
-	input_handler.UnlockOpenWindow();
+	input_handler.UnlockOpenWindow()
 	input_handler.SetMusic("towntheme")
 	if !debug:
-		state.FinishEvent();
-		globals.call_deferred('EventCheck');
+		state.FinishEvent()
+		globals.call_deferred('EventCheck')
 
 func blackscreentransition(duration = 0.5):
 	TextField.bbcode_text = ''
@@ -369,17 +369,17 @@ func shakespr(duration = 0.2):
 func GuiDo(value):
 	match value:
 		'gui_normal', 'showgui':
-			$Panel.texture = images.gui['norm_back'];
+			$Panel.texture = images.gui['norm_back']
 			$Panel/Panel.modulate.a = 0
-			$Panel.modulate = Color(1,1,1,1);
+			$Panel.modulate = Color(1,1,1,1)
 			$Panel/DisplayName.self_modulate.a = 1
 			$Panel/DisplayName/Label.set("custom_colors/font_color", Color('ffd204'))
 			$Panel/CharPortrait.visible = true
-			$Panel/CharPortrait.modulate = Color(1,1,1,0);
+			$Panel/CharPortrait.modulate = Color(1,1,1,0)
 			$Panel.visible = true
-			$Panel/Options.visible = true;
-			$CharImage.visible = true;
-			$Background.visible = true;
+			$Panel/Options.visible = true
+			$CharImage.visible = true
+			$Background.visible = true
 		'hidegui':
 			$Panel.visible = false
 		'gui_full':
@@ -389,21 +389,21 @@ func GuiDo(value):
 			$Panel/CharPortrait.visible = false
 			$Panel/DisplayName/Label.set("custom_colors/font_color", Color('ffffff'))
 			$Panel.visible = true
-			$Panel/Options.visible = true;
-			$CharImage.visible = false;
-			$Background.visible = true;
+			$Panel/Options.visible = true
+			$CharImage.visible = false
+			$Background.visible = true
 		'gui_inside':
-			$Panel.texture = images.gui['norm_back'];
+			$Panel.texture = images.gui['norm_back']
 			$Panel/Panel.modulate.a = 0
-			$Panel.modulate = Color(1,1,1,1);
+			$Panel.modulate = Color(1,1,1,1)
 			$Panel/DisplayName.self_modulate.a = 1
 			$Panel/DisplayName/Label.set("custom_colors/font_color", Color('ffd204'))
 			$Panel/CharPortrait.visible = true
-			$Panel/CharPortrait.modulate = Color(1,1,1,0);
+			$Panel/CharPortrait.modulate = Color(1,1,1,0)
 			$Panel.visible = true
-			$Panel/Options.visible = false;
-			$CharImage.visible = false;
-			$Background.visible = false;
+			$Panel/Options.visible = false
+			$CharImage.visible = false
+			$Background.visible = false
 
 func WhiteScreenGFX(mode = 'default'):
 	var tween = input_handler.GetTweenNode($WhiteScreenGFX)
@@ -423,9 +423,9 @@ func WhiteScreenGFX(mode = 'default'):
 	node.visible = true
 
 func TownDo(value):
-	if debug: return;
+	if debug: return
 
 func PartyDo(value):
-	if debug: return;
+	if debug: return
 
 

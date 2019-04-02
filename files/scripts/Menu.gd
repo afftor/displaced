@@ -18,7 +18,9 @@ func _ready():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 
 func newgame():
+	state = load("res://files/scripts/gamestate.gd").new()
 	state.newgame = true
+	state._ready()
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('town')
 	yield(globals, 'scene_changed')

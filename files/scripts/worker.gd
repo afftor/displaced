@@ -14,7 +14,7 @@ var autoconsume = true
 func create(data):
 	name = data.name
 	type = data.type
-	id = state.workeridcounter
+	id = "w" + str(state.workeridcounter)
 	state.workeridcounter += 1
 	maxenergy = data.maxenergy
 	energy = data.maxenergy

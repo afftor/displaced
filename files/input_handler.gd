@@ -515,7 +515,7 @@ func GetTutorialNode():
 	return tutnode
 
 
-func ActivateTutorial(stage):
+func ActivateTutorial(stage = 'tutorial1'):
 	var node = GetTutorialNode()
 	node.activatetutorial(stage)
 

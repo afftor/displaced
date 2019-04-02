@@ -27,7 +27,7 @@ var tutorialdict = {
 		text = "Collect 5 Wood to progress.",
 		trigger = "MaterialObtained",
 		check = 'state',
-		checkvalue = {type = 'has_material', material = 'wood', value = 5},
+		checkvalue = {type = 'has_material', material = 'wood', value = 5, operant = 'gte'},
 		completioneffects = [{type = 'nexttutor', value = 'tutorial5'}]
 	},
 	tutorial5 = {
@@ -41,6 +41,8 @@ var tutorialdict = {
 
 
 func activatetutorial(stage):
+	if !tutorialdict.has(stage):
+		return
 	show()
 	blink()
 	var data = tutorialdict[stage]

@@ -164,8 +164,7 @@ func _ready():
 	
 	#workersdict = TownData.workersdict
 	
-	for i in Items.Materials:
-		state.materials[i] = 0
+	
 #	state.materials.wood = 10
 #	state.materials.elvenwood = 10
 #	state.materials.elvenmetal = 10
@@ -247,7 +246,7 @@ func CreateUsableItem(item, amount = 1):
 func AddItemToInventory(item):
 	item.inventory = state.items
 	if item.stackable == false:
-		item.id = state.itemidcounter
+		item.id = "i" + str(state.itemidcounter)
 		state.items[item.id] = item
 		state.itemidcounter += 1
 	else:
@@ -594,37 +593,103 @@ func QuickSave():
 func EndGame(result):
 	pass
 
+
+
 func SaveGame(name):
 	if state.CurEvent != '':
-		state.CurrentLine = input_handler.GetEventNode().CurrentLine;
-	var savedict = state.serialize();
+		state.CurrentLine = input_handler.GetEventNode().CurrentLine
+	var savedict = {state = null, heroes = [], items = [], workers = []}
+	savedict.state = inst2dict(state)
+	for i in state.heroes.values():
+		savedict.heroes.append(inst2dict(i))
+	for i in state.items.values():
+		savedict.items.append(inst2dict(i))
+	for i in state.workers.values():
+		savedict.workers.append(inst2dict(i))
+	
+	
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
 
 func LoadGame(filename):
-	input_handler.BlackScreenTransition(1)
-	yield(get_tree().create_timer(1), 'timeout')
-	input_handler.CloseableWindowsArray.clear()
-	CurrentScene.queue_free()
-	ChangeScene('town');
-	yield(self, "scene_changed")
 	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
 		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
 		return
+	
+	input_handler.BlackScreenTransition(1)
+	yield(get_tree().create_timer(1), 'timeout')
+	input_handler.CloseableWindowsArray.clear()
+	state = load("res://files/scripts/gamestate.gd").new()
+	state._ready()
+	CurrentScene.queue_free()
+	ChangeScene('town');
+	yield(self, "scene_changed")
+	
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
-	state.deserialize(savedict)
-	#ChangeScene("MainMenu")
-	#setup state node links. do nothing as they are not used now
-	#open building
+	
+	state = dict2inst(savedict.state)
+	state.heroes.clear()
+	state.items.clear()
+	state.workers.clear()
+	for i in savedict.heroes:
+		var t = globals.combatant.new()
+		t = dict2inst(i)
+		state.heroes[t.id] = t
+	for i in savedict.items:
+		var t = globals.Item.new()
+		t = dict2inst(i)
+		state.items[t.id] = t
+	for i in savedict.workers:
+		var t = globals.worker.new()
+		t = dict2inst(i)
+		state.workers[t.id] = t
+	var tempdict = {}
+	for i in state.combatparty.keys():
+		tempdict[int(i)]  = state.combatparty[i]
+	state.combatparty = tempdict.duplicate()
 	if state.CurBuild != '' and state.CurBuild != null:
 		CurrentScene.get_node(state.CurBuild).show()
 	#opentextscene
 	if state.CurEvent != "":
 		StartEventScene(state.CurEvent, false, state.CurrentLine);
-		pass
 	else:
 		call_deferred('EventCheck');
+
+#func SaveGame(name):
+#	if state.CurEvent != '':
+#		state.CurrentLine = input_handler.GetEventNode().CurrentLine;
+#	var savedict = state.serialize();
+#	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
+#	file.store_line(to_json(savedict))
+#	file.close(
+
+#func LoadGame(filename):
+#	input_handler.BlackScreenTransition(1)
+#	yield(get_tree().create_timer(1), 'timeout')
+#	input_handler.CloseableWindowsArray.clear()
+#	state = load("res://files/scripts/gamestate.gd").new()
+#	state._ready()
+#	CurrentScene.queue_free()
+#	ChangeScene('town');
+#	yield(self, "scene_changed")
+#	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
+#		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
+#		return
+#	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
+#	var savedict = parse_json(file.get_as_text())
+#	file.close()
+#	state.deserialize(savedict)
+#	#ChangeScene("MainMenu")
+#	#setup state node links. do nothing as they are not used now
+#	#open building
+#	if state.CurBuild != '' and state.CurBuild != null:
+#		CurrentScene.get_node(state.CurBuild).show()
+#	#opentextscene
+#	if state.CurEvent != "":
+#		StartEventScene(state.CurEvent, false, state.CurrentLine);
+#	else:
+#		call_deferred('EventCheck');
 

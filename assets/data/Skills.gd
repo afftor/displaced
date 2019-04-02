@@ -673,7 +673,7 @@ var skilllist = {
 		value = ['treant', 2],
 		cooldown = 2,
 		manacost = 0,
-		casteffects = ['e_s_restoremana20'],
+		casteffects = [],
 		
 		hidden = false,
 		sfx = [],

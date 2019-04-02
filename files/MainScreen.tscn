@@ -112,7 +112,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="MainScreen" type="Control"]
+[node name="MainScreen" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -743,7 +743,6 @@ _sections_unfolded = [ "Hint" ]
 
 [node name="TimeNode" type="TextureRect" parent="." index="11"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1714,10 +1713,10 @@ _sections_unfolded = [ "Visibility" ]
 [node name="TutorialNode" parent="." index="25" instance=ExtResource( 71 )]
 
 visible = false
-margin_left = 1352.0
-margin_top = 47.0
-margin_right = 1868.0
-margin_bottom = 213.0
+margin_left = 1222.0
+margin_top = 45.0
+margin_right = 1738.0
+margin_bottom = 211.0
 
 [node name="SystemMessageLabel" type="RichTextLabel" parent="." index="26"]
 
