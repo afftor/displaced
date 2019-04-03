@@ -160,6 +160,7 @@ func checkdeaths():
 				battlefield[i].displaynode.queue_free()
 				battlefield[i].displaynode = null
 				battlefield[i] = null
+				enemygroup.remove(i)
 				summons.erase(i);
 
 func checkwinlose():
@@ -412,7 +413,7 @@ func enemy_turn(pos):
 	
 	for i in fighter.skills:
 		var skill = globals.skills[i]
-		if fighter.cooldowns.has(skill.code):
+		if fighter.cooldowns.has(skill.code) || fighter.mana < skill.manacost:
 			continue
 		if skill.aipatterns.has('attack'):
 			castskill.append([skill, skill.aipriority])

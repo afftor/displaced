@@ -702,7 +702,7 @@ var skilllist = {
 		tags = [],
 		value = ['treant', 2],
 		cooldown = 1,
-		manacost = 0,
+		manacost = 30,
 		casteffects = [],
 		
 		hidden = false,

@@ -13,7 +13,12 @@ func levelup(arg):
 	show()
 	$Portrait.texture = character.portrait_circle()
 	globals.ClearContainer($HBoxContainer)
-	$Label.text = tr(character.namebase) + tr("LEVEUPTEXT")
+	var text = tr(character.namebase) + tr("LEVEUPTEXT")
+	for i in combatantdata.classlist[character.combatclass].learnableskills:
+		if combatantdata.classlist[character.combatclass].learnableskills[i] == character.level:
+			text += "\nNew skill unlocked: "+"[color=aqua]" + Skillsdata.skilllist[i].name + "[/color]!"
+	$Label.bbcode_text = text
+	
 	var array = character.get_lvup_traits()
 	for i in array:
 		var newtrait = Traitdata.traitlist[i]

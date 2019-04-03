@@ -34,7 +34,7 @@ func show():
 #	state.heroes[1].mana = 10
 	UpdatePositions()
 	showexplorelist()
-	if state.currentarea != null:
+	if state.currentarea != null && globals.explorationares[state.currentarea].stages < state.areaprogress[state.currentarea]:
 		updateexplorepanel(globals.explorationares[state.currentarea])
 	else:
 		$AreaProgress.hide()
@@ -256,7 +256,7 @@ func wincontinue():
 		if i.hp <= 0:
 			i.hp = 1
 	
-	if stage > area.stages:
+	if stage >= area.stages:
 		showexplorelist()
 		$AreaProgress.hide()
 	else:
