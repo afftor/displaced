@@ -133,6 +133,7 @@ func unlockupgrade():
 		state.townupgrades[upgrade.code] = 1
 	input_handler.SystemMessage(tr("UPGRADEUNLOCKED") + ": " + upgrade.name)
 	input_handler.emit_signal("UpgradeUnlocked", upgrade)
+	globals.EventCheck()
 	upgradelist()
 	#state.townupgrades[upgrade.code] = true
 
