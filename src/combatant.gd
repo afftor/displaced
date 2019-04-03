@@ -56,7 +56,7 @@ var cooldowns = {}
 
 var bodyhitsound = 'flesh' #for sound effect calculations
 
-var buffs = [] #for display purpose ONLY, list of names 
+var buffs = {} #for display purpose ONLY, list of names 
 #var passives = {skillhit = [], spellhit = [], anyhit = [], endturn = []} # combat passives
 #var classpassives = {}
 
@@ -283,7 +283,11 @@ func apply_atomic(effect): #can be name or dictionary
 		'damage':
 			deal_damage(tmp.value, tmp.source)
 		'buff':
-			buffs.push_back(tmp.value)
+			#buffs.push_back(tmp.value)
+			if buffs.has(tmp.value):
+				buffs[tmp.value] += 1
+			else:
+				buffs[tmp.value] = 1
 		'timer':
 			timers.push_back({effect = tmp.effect, delay = tmp.delay})
 
@@ -303,7 +307,10 @@ func remove_atomic(effect):
 		'block_effect':
 			apply_effect(tmp.effect)
 		'buff':
-			buffs.erase(tmp.value)
+			#buffs.erase(tmp.value)
+			buffs[tmp.value] -= 1;
+			if buffs[tmp.value] < 0.1:
+				buffs.erase(tmp.value)
 	pass
 
 func find_temp_effect(eff_code):
