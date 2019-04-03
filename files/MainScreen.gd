@@ -72,6 +72,7 @@ func _ready():
 	input_handler.connect("EventFinished", self, "buildscreen")
 	#$TutorialNode.activatetutorial(state.currenttutorial)
 	buildscreen()
+	print(combatantdata.classlist.warrior.skills)
 
 var forgeimage = {
 	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},
@@ -170,7 +171,7 @@ func movesky():
 var currenttime
 
 func EnvironmentColor(time, instant = false):
-	var morning = Color8(189,182,128)
+	var morning = Color8(229,226,174)
 	var day = Color8(255,255,255)
 	var night = Color8(73,73,91)
 	var evening = Color8(120, 96, 96)
@@ -191,15 +192,19 @@ func EnvironmentColor(time, instant = false):
 			'morning':
 				currentcolor = night
 				nextcolor = morning
+				tween.inte
+				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,1), Color(1,1,1,0), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			'day':
 				currentcolor = morning
 				nextcolor = day
 			'evening':
 				currentcolor = day
 				nextcolor = evening
+				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,0), Color(1,1,1,0.5), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			'night':
 				currentcolor = evening
 				nextcolor = night
+				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,0.5), Color(1,1,1,1), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		currenttime = time
 		for i in array:
 			tween.interpolate_property(i, 'modulate', currentcolor, nextcolor, changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -313,7 +318,9 @@ func assignworker(data):
 
 func stoptask(data):
 	deletecounter(data)
-	tasks.erase(data)
+	if data.instrument != null:
+		state.items[data.instrument].owner = null
+	state.tasks.erase(data)
 
 func taskperiod(data):
 	var taskdata = data.taskdata
@@ -359,8 +366,9 @@ func taskperiod(data):
 		if worker.autoconsume == true:
 			var state = worker.restoreenergy()
 			if state == false:
-				tasks.erase(data)
-				
+				stoptask(data)
+		else:
+			stoptask(data)
 	elif data.instrument != null && state.items[data.instrument].durability <= 0 && taskdata.tasktool.required != false:
 		tasks.erase(data)
 

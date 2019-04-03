@@ -703,6 +703,8 @@ func use_skill(skill_code, caster, target):
 			if new_targets.size() == 0:
 				break;
 			target = new_targets[int(randf()*new_targets.size())];
+			targets = CalculateTargets(skill, caster, target) 
+			#target = new_targets[int(randf()*new_targets.size())];
 		var animations = skill.sfx
 		var animationdict = {windup = [], predamage = [], postdamage = []}
 		
@@ -754,6 +756,8 @@ func use_skill(skill_code, caster, target):
 		
 		if animationdict.postdamage.size() > 0:
 			yield(CombatAnimations, 'alleffectsfinished')
+		target.displaynode.rebuildbuffs()
+		checkdeaths()
 		if target.displaynode != null:
 			target.displaynode.rebuildbuffs()
 	
@@ -911,7 +915,7 @@ func execute_skill(skill, caster, target):
 		target.deal_damage(s_skill.value, s_skill.damagesrc)
 	if target.hp <= 0:
 		caster.basic_check(variables.TR_KILL)
-	checkdeaths()
+	#checkdeaths()
 	Off_Target_Glow();
 
 

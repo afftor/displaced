@@ -229,7 +229,7 @@ var loottables = {
 		usables = [{code = 'managrass', min = 1, max = 1, chance = 15}],
 	},
 	bigtreantloot = {
-		materials = [{code = 'wood', min = 3, max = 5, chance = 100}, {code = 'elvenwood', min = 1, max = 3, chance = 30}],
+		materials = [{code = 'wood', min = 3, max = 7, chance = 100}, {code = 'elvenwood', min = 3, max = 5, chance = 100}],
 		usables = [{code = 'managrass', min = 1, max = 3, chance = 100}],
 	},
 	spiderloot = {

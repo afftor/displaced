@@ -1,6 +1,5 @@
 extends Node
 
-#var worker = preload("res://files/scripts/worker.gd")
 
 var date = 1
 var daytime = 0

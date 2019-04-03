@@ -86,14 +86,14 @@ var geartypes = {
 
 func ClassInfo():
 	$ClassPanel.show()
-	var text = tr(classinfo[character.base])
+	var text = tr(classinfo[character.combatclass])
 	
 	text += "\n\n[color=grey]" + tr("CLASSALLOWEDWEAPONS") + "[/color]: "
-	for i in combatantdata.classlist[character.base].gearsubtypes:
+	for i in combatantdata.classlist[character.combatclass].gearsubtypes:
 		if geartypes.has(i):
 			text += tr(geartypes[i]) + ", "
 	text = text.substr(0,text.length()-2) + '.'
 	
-	if character.base in ['mage','archer']:
-		text += "\n\n[color=purple]" + tr("CLASSTRAIT") + ": " + tr(classtrait[character.base]) + '[/color]'
+	if character.combatclass in ['mage','archer']:
+		text += "\n\n[color=purple]" + tr("CLASSTRAIT") + ": " + tr(classtrait[character.combatclass]) + '[/color]'
 	$ClassPanel/RichTextLabel.bbcode_text = text

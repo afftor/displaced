@@ -53,14 +53,20 @@ func ClearScene():
 func SelectSlave(worker):
 	var text = tr("CURRENTTASK") + ': '
 	currentworker = worker
-	if worker.task == null:
+	
+	var temptask
+	for i in state.tasks:
+		if i.worker == worker.id:
+			temptask = i
+			break
+	if temptask == null:
 		$TaskPanel.hide()
 		$TaskList.tasklist()
 		$TaskList.selectedworker = worker
 	else:
 		$TaskList.hide()
-		text += worker.task.taskdata.name
-		ShowTaskInformation(worker.task)
+		text += temptask.taskdata.name
+		ShowTaskInformation(temptask)
 
 
 func ShowTaskInformation(task):

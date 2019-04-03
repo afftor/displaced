@@ -620,7 +620,7 @@ func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
-	state = load("res://files/scripts/gamestate.gd").new()
+	state = load("res://src/gamestate.gd").new()
 	state._ready()
 	CurrentScene.queue_free()
 	ChangeScene('town');

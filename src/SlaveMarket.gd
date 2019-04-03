@@ -36,6 +36,9 @@ func PurchaseSlave(worker):
 	if state.workers.size() >= state.GetWorkerLimit():
 		input_handler.SystemMessage(tr("WORKERLIMITREACHER"))
 		return
+	elif state.money < worker.price:
+		input_handler.SystemMessage(tr("NOTENOUGHGOLD"))
+		return
 	selectedworker = worker
 	input_handler.ShowConfirmPanel(self, "HireConfirm", "Hire this worker for " + str(worker.price) + "?")
 

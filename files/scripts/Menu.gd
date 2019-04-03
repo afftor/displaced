@@ -18,7 +18,7 @@ func _ready():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 
 func newgame():
-	state = load("res://files/scripts/gamestate.gd").new()
+	state = load("res://src/gamestate.gd").new()
 	state.newgame = true
 	state._ready()
 	get_node("/root").remove_child(self)
