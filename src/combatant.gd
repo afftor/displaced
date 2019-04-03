@@ -198,7 +198,6 @@ func levelup():
 		if skills.has(i) == false && level >= baseclass.learnableskills[i]:
 			skills.append(i)
 	
-	#add trait obtaining and other trait related stuff
 
 func can_acq_trait(trait_code):
 	if traits.keys().has(trait_code): return false
@@ -552,7 +551,7 @@ func on_skill_check(skill, check): #skill has to be in constant form without met
 #	buffs.erase(buff.code)
 
 func createfromenemy(enemy):
-	var template = Enemydata.enemylist[enemy]
+	var template = Enemydata.enemylist[enemy].duplicate()
 	base = enemy
 	race = template.race
 	hpmax = template.basehp
@@ -612,7 +611,7 @@ func createfromname(charname):
 	self.hp = hpmax
 	manamax = classtemplate.basemana
 	mana = manamax
-	skills = classtemplate.skills
+	skills = classtemplate.skills.duplicate()
 	icon = nametemplate.icon
 	combaticon = nametemplate.combaticon
 	image = nametemplate.image

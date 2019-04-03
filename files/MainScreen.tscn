@@ -1,77 +1,78 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/MainScreen.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/backgrounds/sky.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/backgrounds/town.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/buildings/mine.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/buildings/bridge.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/buildings/house.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/buildings/farm.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/buildings/sawmill.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/buildings/city_hall.png" type="Texture" id=10]
-[ext_resource path="res://src/Clickable_Sprite.gd" type="Script" id=11]
-[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/buildings/forge_1.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/buildings/tavern.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/buildings/market.png" type="Texture" id=15]
-[ext_resource path="res://icon.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/buildings/gate.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/buildings/gate_hl.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/universal/mspanel.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/universal/msstash1.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/universal/msstash2.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/universal/msworkers1.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/universal/msworkers2.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/gui/universal/msheroes1.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/gui/universal/msheroes2.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/gui/universal/msoptions1.png" type="Texture" id=26]
-[ext_resource path="res://assets/images/gui/universal/msoptions2.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/iconsitems/Food.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=29]
-[ext_resource path="res://assets/images/gui/timepanel.png" type="Texture" id=30]
-[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=31]
-[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=32]
-[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=33]
-[ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=34]
-[ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=35]
-[ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=36]
-[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=37]
-[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=38]
-[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=39]
-[ext_resource path="res://assets/images/gui/timesphere.png" type="Texture" id=40]
-[ext_resource path="res://assets/images/gui/goblin.png" type="Texture" id=41]
-[ext_resource path="res://src/TaskWorkerWindow.tscn" type="PackedScene" id=42]
-[ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=43]
-[ext_resource path="res://files/SlavePanel.gd" type="Script" id=44]
-[ext_resource path="res://assets/images/gui/buildings/workericon.png" type="Texture" id=45]
-[ext_resource path="res://assets/images/gui/buildings/workerline.png" type="Texture" id=46]
-[ext_resource path="res://assets/images/gui/buildings/remove.png" type="Texture" id=47]
-[ext_resource path="res://assets/images/gui/buildings/removehl.png" type="Texture" id=48]
-[ext_resource path="res://assets/images/gui/buildings/use.png" type="Texture" id=49]
-[ext_resource path="res://assets/images/gui/buildings/usehl.png" type="Texture" id=50]
-[ext_resource path="res://assets/images/gui/buildings/activetask.png" type="Texture" id=51]
-[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=52]
-[ext_resource path="res://assets/images/gui/goblinicon.png" type="Texture" id=53]
-[ext_resource path="res://assets/images/gui/taskmenu/jobgui.png" type="Texture" id=54]
-[ext_resource path="res://assets/images/gui/universal/progressbar2.png" type="Texture" id=55]
-[ext_resource path="res://assets/images/gui/universal/progressbar.png" type="Texture" id=56]
-[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=57]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=58]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=59]
-[ext_resource path="res://assets/images/gui/taskmenu/timeicon.png" type="Texture" id=60]
-[ext_resource path="res://src/TaskList.tscn" type="PackedScene" id=61]
-[ext_resource path="res://files/Blacksmith/Blacksmith.tscn" type="PackedScene" id=62]
-[ext_resource path="res://files/Blacksmith/TownHall.tscn" type="PackedScene" id=63]
-[ext_resource path="res://files/Blacksmith/SlaveMarket.tscn" type="PackedScene" id=64]
-[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=65]
-[ext_resource path="res://files/HeroGuild.tscn" type="PackedScene" id=66]
-[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=67]
-[ext_resource path="res://src/ExploreScreen.tscn" type="PackedScene" id=68]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=69]
-[ext_resource path="res://files/SFX/black.png" type="Texture" id=70]
-[ext_resource path="res://src/Tutorial.tscn" type="PackedScene" id=71]
-[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=72]
+[ext_resource path="res://assets/images/backgrounds/sky_night.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/backgrounds/town.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/buildings/mine.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/buildings/bridge.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/buildings/house.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/buildings/farm.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/buildings/sawmill.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/buildings/city_hall.png" type="Texture" id=11]
+[ext_resource path="res://src/Clickable_Sprite.gd" type="Script" id=12]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/buildings/forge_1.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/buildings/tavern.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/buildings/market.png" type="Texture" id=16]
+[ext_resource path="res://icon.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/buildings/gate.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/buildings/gate_hl.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/universal/mspanel.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/universal/msstash1.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/universal/msstash2.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/universal/msworkers1.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/universal/msworkers2.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/universal/msheroes1.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/universal/msheroes2.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/universal/msoptions1.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/gui/universal/msoptions2.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/iconsitems/Food.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/timepanel.png" type="Texture" id=31]
+[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=32]
+[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=33]
+[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=34]
+[ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=35]
+[ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=36]
+[ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=37]
+[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=38]
+[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=39]
+[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=40]
+[ext_resource path="res://assets/images/gui/timesphere.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/gui/goblin.png" type="Texture" id=42]
+[ext_resource path="res://src/TaskWorkerWindow.tscn" type="PackedScene" id=43]
+[ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=44]
+[ext_resource path="res://files/SlavePanel.gd" type="Script" id=45]
+[ext_resource path="res://assets/images/gui/buildings/workericon.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/gui/buildings/workerline.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/gui/buildings/remove.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/gui/buildings/removehl.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/gui/buildings/use.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/gui/buildings/usehl.png" type="Texture" id=51]
+[ext_resource path="res://assets/images/gui/buildings/activetask.png" type="Texture" id=52]
+[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=53]
+[ext_resource path="res://assets/images/gui/goblinicon.png" type="Texture" id=54]
+[ext_resource path="res://assets/images/gui/taskmenu/jobgui.png" type="Texture" id=55]
+[ext_resource path="res://assets/images/gui/universal/progressbar2.png" type="Texture" id=56]
+[ext_resource path="res://assets/images/gui/universal/progressbar.png" type="Texture" id=57]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=58]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=59]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=60]
+[ext_resource path="res://assets/images/gui/taskmenu/timeicon.png" type="Texture" id=61]
+[ext_resource path="res://src/TaskList.tscn" type="PackedScene" id=62]
+[ext_resource path="res://files/Blacksmith/Blacksmith.tscn" type="PackedScene" id=63]
+[ext_resource path="res://files/Blacksmith/TownHall.tscn" type="PackedScene" id=64]
+[ext_resource path="res://files/Blacksmith/SlaveMarket.tscn" type="PackedScene" id=65]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=66]
+[ext_resource path="res://files/HeroGuild.tscn" type="PackedScene" id=67]
+[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=68]
+[ext_resource path="res://src/ExploreScreen.tscn" type="PackedScene" id=69]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=70]
+[ext_resource path="res://files/SFX/black.png" type="Texture" id=71]
+[ext_resource path="res://src/Tutorial.tscn" type="PackedScene" id=72]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=73]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -79,7 +80,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 55 )
+texture = ExtResource( 56 )
 region_rect = Rect2( 0, 0, 368, 31 )
 margin_left = 0.0
 margin_right = 0.0
@@ -99,7 +100,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 56 )
+texture = ExtResource( 57 )
 region_rect = Rect2( 0, 0, 382, 39 )
 margin_left = 0.0
 margin_right = 0.0
@@ -137,7 +138,27 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
-[node name="Background" type="TextureRect" parent="." index="1"]
+[node name="NightSky" type="TextureRect" parent="." index="1"]
+
+modulate = Color( 0.664909, 0.656204, 0.714844, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 440.0
+margin_right = 1920.0
+margin_bottom = 394.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+stretch_mode = 0
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="Background" type="TextureRect" parent="." index="2"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -152,7 +173,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 stretch_mode = 4
 _sections_unfolded = [ "Material", "Rect", "Visibility" ]
 
@@ -172,7 +193,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 stretch_mode = 0
 
 [node name="bridge" type="TextureRect" parent="Background" index="1"]
@@ -191,7 +212,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 stretch_mode = 0
 
 [node name="house" type="TextureRect" parent="Background" index="2"]
@@ -210,7 +231,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 stretch_mode = 0
 
 [node name="farm" type="TextureRect" parent="Background" index="3"]
@@ -229,7 +250,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 stretch_mode = 0
 
 [node name="lumbermill" type="TextureRect" parent="Background" index="4"]
@@ -248,10 +269,10 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 stretch_mode = 0
 
-[node name="TownHallNode" type="TextureButton" parent="." index="2"]
+[node name="TownHallNode" type="TextureButton" parent="." index="3"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -273,9 +294,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 11 )
 stretch_mode = 4
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Hint", "Rect", "Textures", "Visibility" ]
 charname = "erika"
 inside_node_name = "TownHall"
@@ -297,10 +318,10 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 stretch_mode = 0
 
-[node name="BlacksmithNode" type="TextureButton" parent="." index="3"]
+[node name="BlacksmithNode" type="TextureButton" parent="." index="4"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -322,9 +343,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 13 )
+texture_normal = ExtResource( 14 )
 stretch_mode = 4
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Hint", "Rect", "Textures", "Visibility" ]
 charname = "ember"
 inside_node_name = "blacksmith"
@@ -346,12 +367,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Mouse", "Textures" ]
 
-[node name="TavernNode" type="TextureButton" parent="." index="4"]
+[node name="TavernNode" type="TextureButton" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -372,11 +393,11 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 14 )
+texture_normal = ExtResource( 15 )
 stretch_mode = 4
 _sections_unfolded = [ "Hint", "Rect", "Textures", "Visibility" ]
 
-[node name="WorkBuildNode" type="TextureButton" parent="." index="5"]
+[node name="WorkBuildNode" type="TextureButton" parent="." index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -397,9 +418,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 16 )
 stretch_mode = 4
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Rect", "Textures" ]
 charname = "flak"
 inside_node_name = "SlaveMarket"
@@ -421,12 +442,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Mouse", "Textures" ]
 
-[node name="HeroBuildNode" type="TextureButton" parent="." index="6"]
+[node name="HeroBuildNode" type="TextureButton" parent="." index="7"]
 
 visible = false
 anchor_left = 0.0
@@ -448,11 +469,11 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 16 )
+texture_normal = ExtResource( 17 )
 expand = true
 _sections_unfolded = [ "Textures" ]
 
-[node name="Gate" type="TextureButton" parent="." index="7"]
+[node name="Gate" type="TextureButton" parent="." index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -473,12 +494,12 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 18 )
-texture_hover = ExtResource( 18 )
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 19 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="Lumber" type="TextureButton" parent="." index="8"]
+[node name="Lumber" type="TextureButton" parent="." index="9"]
 
 visible = false
 anchor_left = 0.0
@@ -500,11 +521,11 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 16 )
+texture_normal = ExtResource( 17 )
 expand = true
 _sections_unfolded = [ "Textures" ]
 
-[node name="testbutton" type="Button" parent="." index="9"]
+[node name="testbutton" type="Button" parent="." index="10"]
 
 visible = false
 anchor_left = 0.0
@@ -529,7 +550,7 @@ group = null
 flat = false
 align = 1
 
-[node name="ControlPanel" type="TextureRect" parent="." index="10"]
+[node name="ControlPanel" type="TextureRect" parent="." index="11"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -546,7 +567,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 stretch_mode = 0
 
 [node name="Inventory" type="TextureButton" parent="ControlPanel" index="0"]
@@ -571,8 +592,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 21 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
 _sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="Slavelist" type="TextureButton" parent="ControlPanel" index="1"]
@@ -597,8 +618,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 22 )
-texture_pressed = ExtResource( 23 )
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
 _sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="Herolist" type="TextureButton" parent="ControlPanel" index="2"]
@@ -623,8 +644,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 25 )
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
 _sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="Options" type="TextureButton" parent="ControlPanel" index="3"]
@@ -649,8 +670,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 26 )
-texture_pressed = ExtResource( 27 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 28 )
 _sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="Gold" type="Label" parent="ControlPanel" index="4"]
@@ -718,7 +739,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Hint", "Mouse", "Size Flags" ]
@@ -740,14 +761,13 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 29 )
+texture = ExtResource( 30 )
 expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Hint" ]
 
-[node name="TimeNode" type="TextureRect" parent="." index="11"]
+[node name="TimeNode" type="TextureRect" parent="." index="12"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -760,7 +780,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 stretch_mode = 0
 _sections_unfolded = [ "Theme", "custom_styles" ]
 
@@ -809,9 +829,9 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 31 )
-texture_pressed = ExtResource( 32 )
-texture_hover = ExtResource( 33 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 34 )
 _sections_unfolded = [ "Hint", "Textures" ]
 
 [node name="1speed" type="TextureButton" parent="TimeNode" index="2"]
@@ -835,9 +855,9 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 35 )
-texture_hover = ExtResource( 36 )
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 36 )
+texture_hover = ExtResource( 37 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="2speed" type="TextureButton" parent="TimeNode" index="3"]
@@ -861,9 +881,9 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 37 )
-texture_pressed = ExtResource( 38 )
-texture_hover = ExtResource( 39 )
+texture_normal = ExtResource( 38 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 40 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="HidePanel" type="Panel" parent="TimeNode" index="4"]
@@ -903,11 +923,11 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 40 )
+texture = ExtResource( 41 )
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Mouse", "Rect", "Visibility" ]
 
-[node name="TaskCounter" type="VBoxContainer" parent="." index="12"]
+[node name="TaskCounter" type="VBoxContainer" parent="." index="13"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -965,7 +985,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Mouse", "Theme" ]
@@ -996,13 +1016,14 @@ rounded = false
 percent_visible = false
 _sections_unfolded = [ "Mouse", "Percent", "Textures" ]
 
-[node name="SelectWorker" parent="." index="13" instance=ExtResource( 42 )]
+[node name="SelectWorker" parent="." index="14" instance=ExtResource( 43 )]
 
-[node name="SlavePanel" type="TextureRect" parent="." index="14" groups=[
+visible = false
+
+[node name="SlavePanel" type="TextureRect" parent="." index="15" groups=[
 "pauseprocess",
 ]]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1018,9 +1039,9 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 43 )
+texture = ExtResource( 44 )
 stretch_mode = 0
-script = ExtResource( 44 )
+script = ExtResource( 45 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlavePanel" index="0"]
@@ -1079,7 +1100,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 45 )
+texture = ExtResource( 46 )
 expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Rect", "Textures" ]
@@ -1101,7 +1122,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 46 )
+texture = ExtResource( 47 )
 stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
@@ -1148,9 +1169,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 47 )
-texture_pressed = ExtResource( 48 )
-texture_hover = ExtResource( 48 )
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 49 )
+texture_hover = ExtResource( 49 )
 _sections_unfolded = [ "Hint", "Rect", "Textures" ]
 
 [node name="Use" type="TextureButton" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="3"]
@@ -1176,9 +1197,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 49 )
-texture_pressed = ExtResource( 50 )
-texture_hover = ExtResource( 50 )
+texture_normal = ExtResource( 50 )
+texture_pressed = ExtResource( 51 )
+texture_hover = ExtResource( 51 )
 _sections_unfolded = [ "Hint", "Rect", "Textures" ]
 
 [node name="Task" type="TextureRect" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="4"]
@@ -1197,7 +1218,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 51 )
+texture = ExtResource( 52 )
 stretch_mode = 0
 
 [node name="EnIcon" type="TextureRect" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="5"]
@@ -1216,7 +1237,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 52 )
+texture = ExtResource( 53 )
 expand = true
 stretch_mode = 6
 
@@ -1236,7 +1257,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 53 )
+texture = ExtResource( 54 )
 expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Rect" ]
@@ -1298,7 +1319,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 54 )
+texture = ExtResource( 55 )
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -1448,9 +1469,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 57 )
-texture_pressed = ExtResource( 58 )
-texture_hover = ExtResource( 59 )
+texture_normal = ExtResource( 58 )
+texture_pressed = ExtResource( 59 )
+texture_hover = ExtResource( 60 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Label" type="Label" parent="SlavePanel/TaskPanel/StopButton" index="0"]
@@ -1491,7 +1512,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 52 )
+texture = ExtResource( 53 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
@@ -1534,7 +1555,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 60 )
+texture = ExtResource( 61 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
@@ -1582,14 +1603,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="TaskList" parent="SlavePanel" index="2" instance=ExtResource( 61 )]
+[node name="TaskList" parent="SlavePanel" index="2" instance=ExtResource( 62 )]
 
 margin_left = 657.0
 margin_top = 1.0
 margin_right = 1306.0
 margin_bottom = 789.0
 
-[node name="LogPanel" type="Panel" parent="." index="15"]
+[node name="LogPanel" type="Panel" parent="." index="16"]
 
 editor/display_folded = true
 visible = false
@@ -1639,27 +1660,27 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Mouse" ]
 
-[node name="blacksmith" parent="." index="16" groups=[
-"pauseprocess",
-] instance=ExtResource( 62 )]
-
-visible = false
-
-[node name="TownHall" parent="." index="17" groups=[
+[node name="blacksmith" parent="." index="17" groups=[
 "pauseprocess",
 ] instance=ExtResource( 63 )]
 
 visible = false
 
-[node name="SlaveMarket" parent="." index="18" groups=[
+[node name="TownHall" parent="." index="18" groups=[
 "pauseprocess",
 ] instance=ExtResource( 64 )]
 
 visible = false
 
-[node name="Inventory" parent="." index="19" groups=[
+[node name="SlaveMarket" parent="." index="19" groups=[
 "pauseprocess",
 ] instance=ExtResource( 65 )]
+
+visible = false
+
+[node name="Inventory" parent="." index="20" groups=[
+"pauseprocess",
+] instance=ExtResource( 66 )]
 
 visible = false
 margin_left = 40.0
@@ -1668,25 +1689,25 @@ margin_right = 689.0
 margin_bottom = 828.0
 theme = ExtResource( 1 )
 
-[node name="HeroGuild" parent="." index="20" groups=[
+[node name="HeroGuild" parent="." index="21" groups=[
 "pauseprocess",
-] instance=ExtResource( 66 )]
+] instance=ExtResource( 67 )]
 
 visible = false
 
-[node name="HeroList" parent="." index="21" instance=ExtResource( 67 )]
+[node name="HeroList" parent="." index="22" instance=ExtResource( 68 )]
 
 visible = false
 
-[node name="ExploreScreen" parent="." index="22" groups=[
-"pauseprocess",
-] instance=ExtResource( 68 )]
-
-visible = false
-
-[node name="MenuPanel" parent="." index="23" groups=[
+[node name="ExploreScreen" parent="." index="23" groups=[
 "pauseprocess",
 ] instance=ExtResource( 69 )]
+
+visible = false
+
+[node name="MenuPanel" parent="." index="24" groups=[
+"pauseprocess",
+] instance=ExtResource( 70 )]
 
 visible = false
 margin_left = 780.0
@@ -1694,7 +1715,7 @@ margin_top = 320.0
 margin_right = 1099.0
 margin_bottom = 714.0
 
-[node name="BlackScreen" type="TextureRect" parent="." index="24"]
+[node name="BlackScreen" type="TextureRect" parent="." index="25"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -1710,12 +1731,12 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 70 )
+texture = ExtResource( 71 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
-[node name="TutorialNode" parent="." index="25" instance=ExtResource( 71 )]
+[node name="TutorialNode" parent="." index="26" instance=ExtResource( 72 )]
 
 visible = false
 margin_left = 1222.0
@@ -1723,7 +1744,7 @@ margin_top = 45.0
 margin_right = 1738.0
 margin_bottom = 211.0
 
-[node name="SystemMessageLabel" type="RichTextLabel" parent="." index="26"]
+[node name="SystemMessageLabel" type="RichTextLabel" parent="." index="27"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1739,22 +1760,22 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/normal_font = ExtResource( 72 )
+custom_fonts/normal_font = ExtResource( 73 )
 custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "#[center]Test Text[/center]"
+bbcode_text = ""
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "#Test Text"
+text = ""
 scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Mouse", "Rect", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="Tween" type="Tween" parent="." index="27"]
+[node name="Tween" type="Tween" parent="." index="28"]
 
 repeat = false
 playback_process_mode = 1

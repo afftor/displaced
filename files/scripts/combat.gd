@@ -755,6 +755,8 @@ func use_skill(skill_code, caster, target):
 		
 		if animationdict.postdamage.size() > 0:
 			yield(CombatAnimations, 'alleffectsfinished')
+		target.displaynode.rebuildbuffs()
+		checkdeaths()
 		if target.displaynode != null:
 			target.displaynode.rebuildbuffs()
 		checkdeaths()

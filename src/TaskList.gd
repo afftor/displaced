@@ -75,9 +75,14 @@ func OpenSelectTab(task, worker):
 			newresource.texture = usable.icon
 			globals.connecttooltip(newresource, '[center]' + usable.name + '[/center]\n' + usable.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
 	
+	
 	$SelectWorker/RichTextLabel.bbcode_text = task.description
 	$SelectWorker/Time.text = str(task.basetimer)
 	$SelectWorker/Energy.text = str(task.energycost)
+	
+	
+	
+	
 	UpdateButtons()
 
 func SelectWorker():
@@ -97,7 +102,7 @@ func ToolSelected(item):
 func UpdateButtons():
 	$SelectWorker/SelectToolButton/Icon.material = null
 	if selectedtool != null:
-		input_handler.itemshadeimage($SelectWorker/SelectToolButton/Icon, selectedtool)
+		input_handler.itemshadeimage($SelectWorker/SelectToolButton/Icon, state.items[selectedtool])
 	else:
 		$SelectWorker/SelectToolButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
@@ -110,6 +115,8 @@ func UpdateButtons():
 	if selectedworker == null:
 		conditioncheck = false
 	if selectedtool == null && selectedtask.tasktool.required == true:
+		conditioncheck = false
+	if state.workers[selectedworker].energy + state.food < selectedtask.energycost:
 		conditioncheck = false
 	
 	$SelectWorker/ConfirmButton.disabled = !conditioncheck
@@ -124,6 +131,7 @@ func ConfirmTask():
 		for i in selectedtask.tasktool.effects:
 			if i.code == 'speed':
 				threshold -= i.value
+	
 	
 	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}
 	globals.CurrentScene.assignworker(data)

@@ -31,7 +31,7 @@ var checks = {
 		#хз, если честно, но надо проконтролировать, что из города откуда-то
 	],
 	"ember 1":[
-		{type = "event_finished", name = "Intro 2", delay = 3},
+		{type = "event_finished", name = "Intro 3", delay = 2},
 	],
 	"ember 2":[
 		{},
@@ -91,7 +91,7 @@ var checks = {
 
 var characters = {
 	'flak':
-	["Market 2"],
+	["Market 2", "Market 3"],
 	'ember':
 	['ember 2', 'ember 3'],
 	'erika':[],

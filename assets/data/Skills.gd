@@ -48,7 +48,7 @@ var skilllist = {
 		tags = [],
 		value = ['caster.damage','*2'],
 		cooldown = 0,
-		manacost = 5,
+		manacost = 7,
 		casteffects = [],
 		
 		hidden = false,

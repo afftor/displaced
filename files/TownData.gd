@@ -70,7 +70,7 @@ var workersdict = {
 	type = 'elf', 
 	maxenergy = 100, 
 	icon = load("res://assets/images/gui/elficon.png"), 
-	unlockreqs = []
+	unlockreqs = [{type = "quest_completed", name = "elves"}]
 	},
 #	dwarf = {name = tr('DWARFWORKER'), 
 #	description = '',
