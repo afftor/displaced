@@ -170,7 +170,7 @@ var TranslationDict = {
 	QUIT = 'Quit',
 	CLOSE = "Close",
 	PROCEED = "Proceed",
-	
+	SELECTHERO = "Select Hero",
 	SOUND = "Sound",
 	MUSIC = "Music",
 	MASTERSOUND = "Master Volume",

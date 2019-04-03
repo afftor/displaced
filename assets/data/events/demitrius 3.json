@@ -1,5 +1,5 @@
 [
-{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenunfade"}
+{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenunfade"},
 {"effect":"background","value":"cave"},
 {"effect":"music","value":"eventlight"},
 {"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},

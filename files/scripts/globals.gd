@@ -81,6 +81,7 @@ var globalsettings = {
 	skipread = false,
 	textmonocolor = false,
 	warnseen = false,
+	disabletips = false
 } setget settings_save
 
 func settings_load():
@@ -484,12 +485,13 @@ func HeroSelect(targetscript, type, function, requirements):
 	if get_tree().get_root().has_node("HeroSelect"):
 		node = get_tree().get_root().get_node("HeroSelect")
 		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
 		
 	else:
 		node = load("res://HeroSelect.tscn").instance()
 		node.name = 'HeroSelect'
+		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
-	get_tree().get_root().add_child(node)
 	
 	node.show()
 	node.set_as_toplevel(true)

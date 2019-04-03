@@ -44,6 +44,7 @@ var completedquests = []
 var areaprogress = {}
 var currentarea
 var currenttutorial = 'tutorial1'
+var viewed_tips = []
 
 func pos_set(value):
 	combatparty = value

@@ -259,6 +259,7 @@ func repairallitems():
 
 func open():
 	state.CurBuild = "blacksmith"
+	input_handler.ShowGameTip('blacksmith')
 	input_handler.emit_signal("BuildingEntered", 'blacksmith')
 	.show()
 

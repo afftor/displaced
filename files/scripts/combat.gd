@@ -101,6 +101,7 @@ func start_combat(newenemygroup, background, music = 'combattheme'):
 	for p in enemygroup.values():
 		p.basic_check(variables.TR_COMBAT_S)
 		p.displaynode.rebuildbuffs()
+	input_handler.ShowGameTip('aftercombat')
 	select_actor()
 
 func FinishCombat():
@@ -112,6 +113,7 @@ func FinishCombat():
 			battlefield[i].displaynode = null
 			battlefield[i] = null
 	hide()
+	input_handler.ShowGameTip('explore')
 	input_handler.emit_signal("CombatEnded", encountercode)
 	input_handler.SetMusic("towntheme")
 	get_parent().wincontinue()

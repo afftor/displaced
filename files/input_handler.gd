@@ -497,7 +497,7 @@ func open_shell(string):
 		'Patreon':
 			path = 'https://www.patreon.com/maverik'
 		'Discord':
-			path = "https://discord.gg/Ct5gY7"
+			path = "https://discord.gg/VXSx9Zk"
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):
@@ -522,10 +522,24 @@ func GetTutorialNode():
 		node.add_child(tutnode)
 	return tutnode
 
-
 func ActivateTutorial(stage = 'tutorial1'):
 	var node = GetTutorialNode()
 	node.activatetutorial(stage)
+
+func ShowGameTip(tip):
+	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
+		return
+	var node = get_tree().get_root()
+	var tipnode
+	if node.has_node("GameTips"):
+		tipnode = node.get_node("GameTips")
+		node.remove_child(tipnode)
+	else:
+		tipnode = load("res://src/GameplayTips.tscn").instance()
+		tipnode.name = "GameTips"
+	node.add_child(tipnode)
+	tipnode.showtip(tip)
+	
 
 func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])

@@ -130,10 +130,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 211.0
-margin_top = 11.0
-margin_right = -241.0
-margin_bottom = -716.0
+margin_left = 381.0
+margin_top = 100.0
+margin_right = -71.0
+margin_bottom = -627.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -157,8 +157,6 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -7.0
-margin_bottom = -46.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -204,8 +202,6 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -7.0
-margin_bottom = -46.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -361,6 +357,7 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="neck" type="TextureButton" parent="Main/Panel/charandgear" index="5"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -408,6 +405,7 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="ring1" type="TextureButton" parent="Main/Panel/charandgear" index="6"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -434,6 +432,7 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="ring1" type="TextureRect" parent="Main/Panel/charandgear/ring1" index="0"]
 
+visible = false
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -455,6 +454,7 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="ring2" type="TextureButton" parent="Main/Panel/charandgear" index="7"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0

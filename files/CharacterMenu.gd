@@ -13,6 +13,7 @@ func _ready():
 		node.connect("pressed",self,'unequip', [i])
 
 func open(hero):
+	input_handler.ShowGameTip('character')
 	for i in globals.gearlist:
 		var node = get_node('Main/Panel/charandgear/' + i)
 		if node.has_meta("item") && node.get_meta("item") != null:

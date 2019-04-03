@@ -52,6 +52,7 @@ var SelectingPosition
 func selectfighter(pos):
 	SelectingPosition = pos
 	globals.HeroSelect(self, 'heroposition', 'HeroSelected', 'any')
+	input_handler.ShowGameTip('explorepositioning')
 
 func HeroSelected(hero):
 	if hero == null:
@@ -212,6 +213,7 @@ func showexplorelist():
 
 func updateexplorepanel(newarea = null):
 	$AreaProgress.show()
+	input_handler.ShowGameTip('explore')
 	if newarea != null:
 		area = newarea
 	else:
