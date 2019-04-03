@@ -192,8 +192,9 @@ func FloatText(node, text, type = '', color = Color(1,1,1), time = 3, fadetime =
 		"heal":
 			HealTextFly(textnode)
 	#FadeAnimation(textnode, fadetime, time)
+	var wr = weakref(textnode)
 	yield(get_tree().create_timer(time+1), 'timeout')
-	textnode.queue_free()
+	if wr.get_ref(): textnode.queue_free()
 
 func DamageTextFly(node, reverse = false):
 	var tween = GetTweenNode(node)
@@ -377,9 +378,10 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 		x.rect_rotation = rand_range(0,360)
 	
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+	var wr = weakref(x)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
 	
-	x.queue_free()
+	if wr.get_ref(): x.queue_free()
 
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
