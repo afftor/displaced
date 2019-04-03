@@ -681,6 +681,33 @@ func LoadGame(filename):
 	else:
 		call_deferred('EventCheck');
 
+func datetime_comp(a, b):
+	if a.year > b.year: return true
+	if a.month > b.month: return true
+	if a.day > b.day: return true
+	if a.hour > b.hour: return true
+	if a.minute > b.minute: return true
+	if a.second > b.second: return true
+	return false
+	pass
+
+func get_last_save():
+	var dir = dir_contents(globals.userfolder + 'saves')
+	var dated_dir = {}
+	var tmp = File.new()
+	for i in globals.dir_contents(globals.userfolder + 'saves'):
+		if i.ends_with('.sav') == false:
+			continue
+		dated_dir[i] = OS.get_datetime_from_unix_time(tmp.get_modified_time(i))
+	if dated_dir.size() == 0: return null
+	var b = dated_dir.keys()[0]
+	for i in range(dated_dir.keys().size()):
+		if datetime_comp(dated_dir[dated_dir.keys()[i]], dated_dir[b]):
+			b = dated_dir.keys()[i]
+	return b
+	pass
+
+
 #func SaveGame(name):
 #	if state.CurEvent != '':
 #		state.CurrentLine = input_handler.GetEventNode().CurrentLine;

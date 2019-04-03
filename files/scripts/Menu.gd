@@ -1,10 +1,13 @@
 extends Node
 
+var lastsave = null
+
 func _ready():
-	var buttonlist = ['newgame','loadwindow','options','quit']
+	var buttonlist = ['newgame','continueb','loadwindow','options','quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
-	for i in range(0,4):
+	check_last_save()
+	for i in range(0,5):
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	
@@ -16,6 +19,17 @@ func _ready():
 	
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
+
+func check_last_save():
+	lastsave = globals.get_last_save();
+	if lastsave == null: 
+		$VBoxContainer/continuebutton.visible = false
+	else:
+		$VBoxContainer/continuebutton.visible = true
+	pass
+
+func continueb():
+	globals.LoadGame(lastsave.get_file().get_basename());
 
 func newgame():
 	state = load("res://src/gamestate.gd").new()
