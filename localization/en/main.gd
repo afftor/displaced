@@ -54,7 +54,7 @@ var TranslationDict = {
 	
 	WEAPONAXEDESCRIPT = 'Axe can be used for cutting wood and combat.',
 	WEAPONSWORDDESCRIPT = "Good damage vs unarmored enemies.",
-	WEAPONPICKAXEDESCRIPT = "Allows workers to harvest ore.",
+	WEAPONPICKAXEDESCRIPT = "Allows workers to harvest ore, but also can be use in combat.",
 	WEAPONBOWDESCRIPT = "Simple weapon for ranged fighters.",
 	WEAPONSTAFFDESCRIPT = "A simple tool for magic users.",
 	
@@ -102,6 +102,7 @@ var TranslationDict = {
 	GEARAXE = "Axes",
 	GEARSTAFF = "Staves",
 	GEARBOW = "Bows",
+	GEARPICKAXE = "Pickaxes",
 	
 	#Stats
 	DAMAGE = 'Damage',
@@ -225,6 +226,8 @@ var TranslationDict = {
 	TRAITPOINTS = "Trait Points used",
 	GOLDPRICE = "Gold Cost",
 	
+	SYSNOFOOD = "Work canceled: No food",
+	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
@@ -273,7 +276,7 @@ var TranslationDict = {
 	#Tasks
 	HARVESTWOOD = "Harvest Lumber",
 	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation.",
-	HARVESTMETALDESCRIPTION = "Harvest metal ores from the mine. Requires a pickaxe.",
+	HARVESTMETALDESCRIPTION = "Harvest metal ores from the mine. \n[color=red]Requires a pickaxe.[/color]",
 	HARVESTPLANTDESCRIPTION = "Produce plants from the farm.",
 	
 	

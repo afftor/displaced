@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
@@ -11,10 +11,11 @@
 [ext_resource path="res://assets/images/gui/MainScreen/Quit.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/MainScreen/QuitSelect.png" type="Texture" id=10]
 [ext_resource path="res://files/buttons/mainmenu/patreonlogo.png" type="Texture" id=11]
-[ext_resource path="res://files/buttons/mainmenu/itchio.jpg" type="Texture" id=12]
-[ext_resource path="res://files/Options.tscn" type="PackedScene" id=13]
-[ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=14]
-[ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/images/gui/Discord_Logo.png" type="Texture" id=12]
+[ext_resource path="res://files/buttons/mainmenu/itchio.jpg" type="Texture" id=13]
+[ext_resource path="res://files/Options.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=16]
 
 [node name="Menu" type="Node" index="0"]
 
@@ -162,20 +163,23 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Panel" type="Panel" parent="." index="2"]
 
+self_modulate = Color( 1, 1, 1, 0.480667 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1700.0
-margin_top = 122.0
-margin_right = 1886.0
-margin_bottom = 499.0
+margin_left = 1750.0
+margin_top = 70.0
+margin_right = 1936.0
+margin_bottom = 556.0
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" index="0"]
 
@@ -221,7 +225,7 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Itch" type="TextureButton" parent="Panel/VBoxContainer" index="1"]
+[node name="Discord" type="TextureButton" parent="Panel/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -247,11 +251,38 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Options" parent="." index="3" instance=ExtResource( 13 )]
+[node name="Itch" type="TextureButton" parent="Panel/VBoxContainer" index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 308.0
+margin_right = 150.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 150, 150 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="Options" parent="." index="3" instance=ExtResource( 14 )]
 
 visible = false
 
-[node name="saveloadpanel" parent="." index="4" instance=ExtResource( 14 )]
+[node name="saveloadpanel" parent="." index="4" instance=ExtResource( 15 )]
 
 visible = false
 margin_left = 594.0
@@ -278,7 +309,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="WarnScreen" parent="." index="6" instance=ExtResource( 15 )]
+[node name="WarnScreen" parent="." index="6" instance=ExtResource( 16 )]
 
 visible = false
 

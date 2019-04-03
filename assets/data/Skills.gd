@@ -635,9 +635,9 @@ var skilllist = {
 		allowedtargets = ['enemy'],
 		reqs = [],
 		tags = [],
-		value = ['caster.damage','*0.5'],
+		value = ['caster.damage'],
 		cooldown = 0,
-		manacost = 10,
+		manacost = 0,
 		casteffects = [
 			'e_s_spidernoarmor'
 		],

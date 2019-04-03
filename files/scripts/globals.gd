@@ -476,18 +476,20 @@ func CharacterSelect(targetscript, type, function, requirements):
 		newnode.get_node("Label").text = i.name
 		newnode.get_node("Icon").texture = load(i.icon)
 		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
-		newnode.connect('pressed', targetscript, function, [i])
+		newnode.connect('pressed', targetscript, function, [i.id])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
 func HeroSelect(targetscript, type, function, requirements):
 	var node 
 	if get_tree().get_root().has_node("HeroSelect"):
 		node = get_tree().get_root().get_node("HeroSelect")
+		get_tree().get_root().remove_child(node)
+		
 	else:
 		node = load("res://HeroSelect.tscn").instance()
-		get_tree().get_root().add_child(node)
 		node.name = 'HeroSelect'
 		AddPanelOpenCloseAnimation(node)
+	get_tree().get_root().add_child(node)
 	
 	node.show()
 	node.set_as_toplevel(true)
@@ -665,7 +667,7 @@ func LoadGame(filename):
 		tempdict[i] = int(state.townupgrades[i])
 	state.townupgrades = tempdict.duplicate()
 	tempdict.clear()
-	
+	CurrentScene.buildscreen()
 	for i in state.tasks:
 		CurrentScene.buildcounter(i)
 	

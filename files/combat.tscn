@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=1]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -49,7 +49,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=2]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -66,7 +66,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=3]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -85,7 +85,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=4]
 
 code = "shader_type canvas_item;
 render_mode blend_mix;
@@ -108,14 +108,14 @@ void fragment() {
 	COLOR = col;
 	}"
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=5]
 
 render_priority = 0
-shader = SubResource( 6 )
+shader = SubResource( 4 )
 shader_param/modulate = Color( 0, 0.320313, 1, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=6]
 
 size = 32
 use_mipmaps = false
@@ -123,7 +123,7 @@ use_filter = true
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 
 size = 55
 use_mipmaps = false
@@ -307,8 +307,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -335,8 +335,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 2 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -423,7 +423,7 @@ _sections_unfolded = [ "Visibility" ]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.640863 )
-material = SubResource( 7 )
+material = SubResource( 5 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -499,7 +499,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "555"
@@ -1169,9 +1169,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 29.0
+margin_left = -153.0
 margin_top = 30.0
-margin_right = 489.0
+margin_right = 690.0
 margin_bottom = 730.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1181,7 +1181,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 19 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 _sections_unfolded = [ "Material", "Mouse" ]
 
 [node name="name" type="Label" parent="StatsPanel" index="1"]
@@ -1902,7 +1902,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "VICTORY"
 align = 1
 percent_visible = 1.0

@@ -517,7 +517,7 @@ var effect_table = {
 	},
 	e_dwarwenbuf = {
 		type = 'static',
-		effects = [{type = 'stat', stat = 'damage', value = 5}]
+		effects = [{type = 'stat', stat = 'damage', value = 5}, 'dwarwnbuf_icon']
 	},
 	e_spidernoarmor = {
 		type = 'static',
@@ -554,6 +554,7 @@ var atomic = {
 	taunted_icon = {type = 'buff', value = 'taunted'},
 	slowarrow_icon = {type = 'buff', value = 'slowarrow'},
 	speed_debuf_icon = {type = 'buff', value = 'speed_debuf'},
+	dwarwnbuf_icon = {type = 'buff', value = 'dwarwnbuf_icon'},
 	#add effect
 	stun1 = {type = 'temp_effect', target = 'target', effect = 'e_stun', duration = 1, stack = 10},
 	noevade10 = {type = 'temp_effect', target = 'target', effect = 'e_noevade10', duration = 2, stack = 1},
@@ -593,5 +594,6 @@ var buffs = {
 	shield3 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Absorbs 50 magic damage for 2 turns"},
 	spider_noarmor = {icon = load("res://assets/images/traits/armorignore.png"), description = "Armor Reduced"},
 	cripple = {icon = load("res://assets/images/traits/speeddebuf.png"), description = "Damage Reduced"},
+	dwarwnbuf_icon = {icon = load("res://assets/images/traits/beastdamage.png"), description = "Damage increases when taking damage"},
 
 };

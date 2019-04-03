@@ -114,7 +114,7 @@ var enemylist = {
 		race = 'rock',
 		skills = ['attack'],
 		passives = [],
-		traits = ['weakbarrier'],
+		traits = ['el_heal'],
 		basehp = 100,
 		basemana = 0,
 		armor = 50,
@@ -122,14 +122,14 @@ var enemylist = {
 		mdef = 10,
 		evasion = 0,
 		hitrate = 80,
-		damage = 40,
+		damage = 50,
 		speed = 40,
 		resists = {earth = 50, air = 50},
 		xpreward = 30,
 		
 		bodyhitsound = 'stone',
 		
-		combaticon = null,
+		combaticon = 'golem',
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'earthgolemloot',
@@ -193,17 +193,20 @@ var enemylist = {
 		race = 'humanoid',
 		skills = ['attack'],
 		passives = [],
-		basehp = 125,
+		traits = ['dw_fury'],
+		basehp = 150,
 		basemana = 0,
 		armor = 20,
 		armorpenetration = 0,
 		mdef = 0,
 		evasion = 0,
 		hitrate = 80,
-		damage = 45,
+		damage = 75,
 		speed = 45,
 		resists = {},
 		xpreward = 20,
+		
+		bodyhitsound = 'flesh',
 		
 		combaticon = 'dwarf',
 		bodyimage = null,
@@ -222,7 +225,7 @@ var enemylist = {
 var loottables = {
 	elvenratloot = {
 		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
-		usables = [{code = 'morsel', min = 1, max = 1, chance = 35}],
+		usables = [{code = 'morsel', min = 1, max = 1, chance = 15}],
 	},
 	treantloot = {
 		materials = [{code = 'wood', min = 1, max = 1, chance = 25}],
@@ -244,7 +247,7 @@ var loottables = {
 		
 		usables = [{code = 'managrass', min = 1, max = 2, chance = 25},{code = 'lesserpotion', min = 1, max = 1, chance = 15},{code = 'protectivecharm', min = 1, max = 1, chance = 5}],
 	},
-	dwarfloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
+	angrydwarfloot = {
+		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35},{code = 'morsel', min = 1, max = 1, chance = 15}],
 	},
 }

@@ -223,7 +223,7 @@ var Items = {
 	pickaxe = {name = tr("WEAPONPICKAXENAME"), code = 'pickaxe', description = tr("WEAPONPICKAXEDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/PickaxeBasic.png"),
 	basedurability = 50.0,
-	basestats = {damage = 15},
+	basestats = {damage = 15, armorpenetration = 15},
 	basemods = {},
 	itemtype = 'weapon',
 	geartype = 'pickaxe',

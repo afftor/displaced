@@ -3,7 +3,7 @@
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextScene/TextSystem.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/backgrounds/desert.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/sprites/rose.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/sprites/Arron.png" type="Texture" id=4]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=5]
 [ext_resource path="res://files/SFX/white.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/text scene/textfieldpanel.png" type="Texture" id=7]
@@ -140,7 +140,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="TextSystem" type="Control"]
+[node name="TextSystem" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -189,7 +189,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 421.0
+margin_left = 193.0
 margin_right = 1727.0
 margin_bottom = 1080.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -299,12 +299,12 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
-bbcode_text = "[color=#C0C0C0]Sadly, for now we have no other options, but to sit and patiently wait.[/color]"
+bbcode_text = ""
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Sadly, for now we have no other options, but to sit and patiently wait."
+text = ""
 scroll_active = true
 scroll_following = false
 selection_enabled = false

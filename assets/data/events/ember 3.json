@@ -1,5 +1,6 @@
 [
 {"effect":"music","value":"eventgeneric"},
+{"args":0.4,"delay":1,"effect":"sfx","value":"blackscreentransition"},
 {"effect":"gui","value":"gui_inside"},
 {"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"Sir Arron, great to see you! What can I help you with?"},
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"I'm good. Just curious how you are doing."},
@@ -71,4 +72,5 @@
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"This seems passable to me. With some time and work you will surely be able to live with humans nicely."},
 {"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"Really!? This makes me so happy. Please, help me in the future too, Sir Arron!"},
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Gladly."},
+{"args":0.4,"delay":1,"effect":"sfx","value":"blackscreentransition"},
 {"effect":"stop","value":""}]

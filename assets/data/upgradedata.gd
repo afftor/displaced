@@ -89,7 +89,7 @@ var upgradelist = {
 		descript = tr("UPGRADEBLACKSMITHDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = [{type = "has_hero", name = "EMBER"}], 
+				unlockreqs = [{type = "has_hero", name = "Ember"}], 
 				icon = load('res://assets/images/buildings/upgrade_forge.png'),
 				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
 				cost = {goblinmetal = 10},

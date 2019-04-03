@@ -74,7 +74,7 @@ func UseItem(user = null, target = null):
 
 func CreateGear(ItemName = '', dictparts = {}):
 	itembase = ItemName
-	bonusstats = {damage = 0, damagemod = 1, armor = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	bonusstats = {damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
 	var itemtemplate = Items.Items[ItemName]
 	var tempname = itemtemplate.name
@@ -204,7 +204,6 @@ func tooltipeffects():
 	return text
 
 func tooltip(targetnode):
-	var image
 	var node = input_handler.GetItemTooltip()
 	node.showup(targetnode, self)
 

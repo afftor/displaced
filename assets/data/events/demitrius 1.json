@@ -20,7 +20,7 @@
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Fine. But I refuse to treat him seriously on the inside. "},
 {"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Maybe you should, given he probably has more authority here than you."},
 {"effect":"gui","value":"gui_hide"},
-{"args":2,"delay":2,"effect":"sfx","value":"blackscreentransition"},
+{"args":1,"delay":1,"effect":"sfx","value":"blackscreentransition"},
 {"args":"demitrius","effect":"sprite","value":"set"},
 {"args":0.5, "delay":1,"effect":"sprite","value":"unfade"},
 {"effect":"gui","value":"gui_normal"},

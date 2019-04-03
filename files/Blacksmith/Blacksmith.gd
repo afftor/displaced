@@ -90,7 +90,9 @@ func choosematerial(button):
 		for j in itemparts.values():
 			if j.material == i.code:
 				tempmaterial -= j.price
-		if i.parts.has(part) && i.unlockreq == true:
+		if i.parts.has(part):
+			if state.checkreqs(i.unlockreqs) == false:
+				continue
 			var newbutton = $ItemCreationWindow/MaterialSelect/Container/VBoxContainer/Button.duplicate()
 			newbutton.show()
 			$ItemCreationWindow/MaterialSelect/Container/VBoxContainer.add_child(newbutton)

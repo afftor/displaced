@@ -85,11 +85,7 @@ func StartCombat(data):
 		enemies = data.duplicate()
 		for i in data:
 			var currentgroup = globals.randomgroups[i]
-			var check = true
-			for k in currentgroup.reqs:
-				if state.valuecheck(k) == false:
-					check = false
-			if check == false:
+			if state.checkreqs(currentgroup.reqs) == false:
 				continue
 			enemygroup[i] = currentgroup
 		enemygroup = input_handler.weightedrandom(enemygroup.values())
@@ -207,11 +203,7 @@ var period
 func showexplorelist():
 	globals.ClearContainer($areaspanel/ScrollContainer/VBoxContainer)
 	for i in globals.explorationares.values():
-		var valid = true
-		for k in i.requirements:
-			if state.valuecheck(k) == false || (state.areaprogress.has(i.code) && state.areaprogress[i.code] > i.stages):
-				valid = false
-		if valid == false:
+		if state.checkreqs(i.requirements) == false:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($areaspanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = i.name

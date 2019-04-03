@@ -155,12 +155,16 @@ func checkdeaths():
 		if battlefield[i] != null && battlefield[i].defeated != true && battlefield[i].hp <= 0:
 			battlefield[i].death()
 			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
-			turnorder.erase(battlefield[i])
+			for j in range(turnorder.size()):
+				if turnorder[j].pos == i:
+					turnorder.remove(j)
+					break
+			#turnorder.erase(battlefield[i])
 			if summons.has(i):
 				battlefield[i].displaynode.queue_free()
 				battlefield[i].displaynode = null
 				battlefield[i] = null
-				enemygroup.remove(i)
+				enemygroup.erase(i)
 				summons.erase(i);
 
 func checkwinlose():
@@ -231,7 +235,7 @@ func victory():
 		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
 		var level = i.level
-		i.baseexp += rewardsdict.xp*i.xpmod
+		i.baseexp += ceil(rewardsdict.xp*i.xpmod)
 		var subtween = input_handler.GetTweenNode(newbutton)
 		if i.level > level:
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
@@ -244,7 +248,7 @@ func victory():
 			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))
 		else:
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))
+			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*i.xpmod)))
 		subtween.start()
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
@@ -694,6 +698,7 @@ func use_skill(skill_code, caster, target):
 		repeat = skill.repeat;
 	
 	for n in range(repeat):
+		var finalhit = n == repeat - 1
 		if target.hp <= 0:
 			UpdateSkillTargets();
 			var new_targets = [];

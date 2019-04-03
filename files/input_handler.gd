@@ -105,10 +105,11 @@ func GetItemTooltip():
 	var node = get_tree().get_root()
 	if node.has_node('itemtooltip'):
 		tooltipnode = node.get_node('itemtooltip')
+		node.remove_child(tooltipnode)
 	else:
 		tooltipnode = load("res://files/Simple Tooltip/Imagetooltip.tscn").instance()
 		tooltipnode.name = 'itemtooltip'
-		node.add_child(tooltipnode)
+	node.add_child(tooltipnode)
 	return tooltipnode
 
 func GetSkillTooltip():
@@ -116,10 +117,11 @@ func GetSkillTooltip():
 	var node = get_tree().get_root()
 	if node.has_node('skilltooltip'):
 		tooltipnode = node.get_node('skilltooltip')
+		node.remove_child(tooltipnode)
 	else:
 		tooltipnode = load("res://src/SkillToolTip.tscn").instance()
 		tooltipnode.name = 'skilltooltip'
-		node.add_child(tooltipnode)
+	node.add_child(tooltipnode)
 	return tooltipnode
 
 
@@ -494,6 +496,8 @@ func open_shell(string):
 			path = 'https://strive4power.itch.io/strive-for-power'
 		'Patreon':
 			path = 'https://www.patreon.com/maverik'
+		'Discord':
+			path = "https://discord.gg/Ct5gY7"
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):

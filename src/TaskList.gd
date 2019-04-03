@@ -14,6 +14,7 @@ func _ready():
 
 func tasklist():
 	show()
+	$SelectWorker.hide()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in TownData.tasksdict.values():
 		var check = true
@@ -58,22 +59,9 @@ func OpenSelectTab(task, worker):
 	$SelectWorker.show()
 	selectedtask = task
 	selectedtool = null
-	selectedworker = worker.id
-	globals.ClearContainer($SelectWorker/HBoxContainer)
-	for i in task.workerproducts[worker.type]:
-		var newresource = globals.DuplicateContainerTemplate($SelectWorker/HBoxContainer)
-		var item = i.code.split('.')
-		
-		if item[0] == 'materials':
-			var material = Items.Materials[item[1]]
-			newresource.get_node("amount").text = str(i.amount)
-			globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
-			newresource.texture = material.icon
-		elif item[0] == 'usables':
-			var usable = Items.Items[item[1]]
-			newresource.get_node("amount").text = str(i.amount)
-			newresource.texture = usable.icon
-			globals.connecttooltip(newresource, '[center]' + usable.name + '[/center]\n' + usable.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
+	selectedworker = worker
+	#worker = state.workers[worker]
+	
 	
 	
 	$SelectWorker/RichTextLabel.bbcode_text = task.description
@@ -92,7 +80,7 @@ func SelectTool():
 	globals.ItemSelect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
 
 func WorkerSelected(worker):
-	selectedworker = worker.id
+	selectedworker = worker
 	UpdateButtons()
 
 func ToolSelected(item):
@@ -103,6 +91,7 @@ func UpdateButtons():
 	$SelectWorker/SelectToolButton/Icon.material = null
 	if selectedtool != null:
 		input_handler.itemshadeimage($SelectWorker/SelectToolButton/Icon, state.items[selectedtool])
+		state.items[selectedtool].tooltip($SelectWorker/SelectToolButton)
 	else:
 		$SelectWorker/SelectToolButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
@@ -121,16 +110,35 @@ func UpdateButtons():
 	
 	$SelectWorker/ConfirmButton.disabled = !conditioncheck
 	
+	globals.ClearContainer($SelectWorker/HBoxContainer)
+	var worker = state.workers[selectedworker]
+	var task = selectedtask
+	for i in task.workerproducts[worker.type]:
+		var newresource = globals.DuplicateContainerTemplate($SelectWorker/HBoxContainer)
+		var item = i.code.split('.')
+		
+		if item[0] == 'materials':
+			var material = Items.Materials[item[1]]
+			newresource.get_node("amount").text = str(i.amount)
+			globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
+			newresource.texture = material.icon
+		elif item[0] == 'usables':
+			var usable = Items.Items[item[1]]
+			newresource.get_node("amount").text = str(i.amount)
+			newresource.texture = usable.icon
+			globals.connecttooltip(newresource, '[center]' + usable.name + '[/center]\n' + usable.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
+	
 
 
 func ConfirmTask():
 	hide()
 	var threshold = selectedtask.basetimer
 	
-	if selectedtool != null:
-		for i in selectedtask.tasktool.effects:
-			if i.code == 'speed':
-				threshold -= i.value
+	if selectedtool != null && selectedtask.tasktool.required == false:
+		threshold -= threshold/2
+#		for i in state.items[selectedtool].effects:
+#			if i.code == 'speed':
+#				threshold -= i.value
 	
 	
 	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}

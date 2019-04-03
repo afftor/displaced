@@ -176,6 +176,12 @@ func if_has_item(name):
 		if i.name == name: return true
 	return false
 
+func checkreqs(array):
+	var check = true
+	for i in array:
+		if valuecheck(i) == false:
+			check = false
+	return check
 
 func valuecheck(dict):
 	if !dict.has('type'): return true

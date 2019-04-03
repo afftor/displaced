@@ -53,7 +53,7 @@ func _ready():
 		var worker = globals.worker.new()
 		worker.create(TownData.workersdict.goblin)
 		worker = globals.worker.new()
-		worker.create(TownData.workersdict.goblin)
+		worker.create(TownData.workersdict.elf)
 		#globals.AddItemToInventory(globals.crea
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
@@ -66,12 +66,22 @@ func _ready():
 	
 	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
-	EnvironmentColor('morning', true)
 	changespeed($"TimeNode/0speed", false)
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
 	input_handler.connect("EventFinished", self, "buildscreen")
 	#$TutorialNode.activatetutorial(state.currenttutorial)
 	buildscreen()
+	yield(get_tree(),'idle_frame')
+	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
+		EnvironmentColor('morning', true)
+	elif floor(state.daytime) >= floor(variables.TimePerDay/4) && floor(state.daytime) < floor(variables.TimePerDay/4*2):
+		EnvironmentColor('day', true)
+	elif floor(state.daytime) >= floor(variables.TimePerDay/4*2) && floor(state.daytime) < floor(variables.TimePerDay/4*3):
+		EnvironmentColor('evening', true)
+	elif floor(state.daytime) >= floor(variables.TimePerDay/4*3) && floor(state.daytime) < floor(variables.TimePerDay):
+		EnvironmentColor('night',true)
+	#EnvironmentColor('night', true)
+	set_process(true)
 
 var forgeimage = {
 	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},
@@ -232,7 +242,7 @@ func deletecounter(task):
 
 func OpenWorkerTask(task):
 	$SlavePanel.BuildSlaveList()
-	$SlavePanel.SelectSlave(state.workers[task.worker])
+	$SlavePanel.SelectSlave(task.worker)
 
 
 func openmenu():
@@ -276,7 +286,7 @@ func settime():
 	if state.daytime > variables.TimePerDay:
 		state.date += 1
 		state.daytime = 0
-		globals.EventCheck();
+		globals.EventCheck() #После переноса эвентов на сигналы нужно перенести все эвенты, тригерящиеся в определенные дни на середину дня а не на начало
 	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
 	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
 
@@ -365,6 +375,7 @@ func taskperiod(data):
 		if worker.autoconsume == true:
 			var state = worker.restoreenergy()
 			if state == false:
+				input_handler.SystemMessage("SYSNOFOOD")
 				stoptask(data)
 		else:
 			stoptask(data)

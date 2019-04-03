@@ -92,8 +92,8 @@ func useitem(item, type):
 	elif mode == 'hero' && selectedhero != null:
 		if type == 'material':
 			return
-		for i in item.availslots:
-			get_parent().get_node("HeroList/HeroPanel").unequip(i)
+#		for i in item.availslots:
+#			get_parent().get_node("HeroList/HeroPanel").unequip(i)
 		selectedhero.equip(item)
 		get_parent().get_node("HeroList/HeroPanel").open(selectedhero)
 		input_handler.GetItemTooltip().hide()
@@ -123,7 +123,7 @@ func sellwindow(item, type):
 	else:
 		itemprice = item.calculateprice()
 		amount = 1
-		maxamount = 1
+		maxamount = item.amount
 		text = tr("SELLCONFIRM") + " " + item.name + "?" 
 	$NumberSelectPanel/RichTextLabel.bbcode_text = text
 	updateprice()
@@ -144,7 +144,7 @@ func NumberConfirm():
 		if typeof(activeitem) == TYPE_STRING:
 			state.materials[activeitem] -= amount
 		else:
-			state.items.erase(activeitem.id)
+			activeitem.amount -= amount# (activeitem.id)
 	$NumberSelectPanel.hide()
 	buildinventory()
 

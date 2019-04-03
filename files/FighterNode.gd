@@ -48,6 +48,8 @@ func update_hp():
 			color = Color(0.2,1,0.2)
 		
 		input_handler.FloatText(self, str(difference), type, color, 2, 0.2, get_node('Icon').rect_size/2)
+#		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,0), Color(1,0,0,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,1), Color(1,0,0,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
 	hp = fighter.hp
 	
 	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.hp, fighter.hpmax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

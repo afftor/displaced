@@ -81,6 +81,7 @@ var geartypes = {
 	axe = 'GEARAXE',
 	bow = 'GEARBOW',
 	staff = 'GEARSTAFF',
+	pickaxe = "GEARPICKAXE",
 }
 
 

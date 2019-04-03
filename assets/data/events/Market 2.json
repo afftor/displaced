@@ -1,4 +1,5 @@
 [{"effect":"gui","value":"gui_inside"},
+{"args":0.4,"delay":1,"effect":"sfx","value":"blackscreentransition"},
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"So you have fixed the bridge, huh?"},
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"I guess you can be of some use after all."},
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Now, since that bridge is fixed, you could work out one thing which was bugging me for some time."},
@@ -10,4 +11,5 @@
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"No clue. I prefer not to stick my nose into their... lifestyle. Maybe you can figure it out."},
 {"delay":0.1,"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Speaking of which, the elves might have some clues for our problem."},
 {"effect":"state","value":"make_quest", "args":"elves"},
+{"args":0.4,"delay":1,"effect":"sfx","value":"blackscreentransition"},
 {"effect":"stop","value":""}]

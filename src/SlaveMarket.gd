@@ -20,11 +20,7 @@ func purchase():
 	$PurchaseMenu/Label.text = tr("TOTALWORKERS") + ": " + str(state.workers.size()) + '/' + str(state.GetWorkerLimit())
 	globals.ClearContainer($PurchaseMenu/ScrollContainer/VBoxContainer)
 	for i in TownData.workersdict.values():
-		var check = true
-		for k in i.unlockreqs:
-			if state.valuecheck(k) == false:
-				check = false
-		if check == false:
+		if state.checkreqs(i.unlockreqs) == false:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($PurchaseMenu/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Icon").texture = i.icon

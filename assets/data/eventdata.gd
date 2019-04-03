@@ -39,9 +39,9 @@ var checks = {
 		{type = "has_material", material = 'elvenwood', value = 1, operant = 'gte'}
 	],
 	"ember 3":[
-		{type = 'building', value = 'blacksmith'},
+		{},
 		{type = "event_finished", name = "ember 2", delay = 2},
-		{type = "hero_level", operant = 'gte', name = 'EMBER', value = 3}
+		{type = "hero_level", operant = 'gte', name = 'Ember', value = 3}
 	],
 	"bridge":
 	[
@@ -69,7 +69,8 @@ var checks = {
 		{type = "event_finished", name = "ember 3", delay = 1},
 	],
 	"demitrius 1":[
-		{type = "event_finished", name = "ember 3", delay = 1},
+		{type = "has_hero", name = "Erika"},
+		{type = "event_finished", name = "ember 3", delay = 2},
 	],
 	"demitrius 2":[{
 		type = 'area_progress',

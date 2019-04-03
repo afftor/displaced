@@ -13,7 +13,7 @@ var buildingoptions = {
 }
 
 var tasksdict = {
-	woodcutting = {basetimer = 10, energycost = 5,
+	woodcutting = {basetimer = 12, energycost = 5,
 	code = 'woodcutting',
 	baselimit = 2,
 	upgradelimit = null,
@@ -22,11 +22,11 @@ var tasksdict = {
 	unlockreqs = [],
 	tasktool = {type = 'axe', required = false, durabilityfactor = 0, effects = [{code = 'speed', value = 5}]}, 
 	workerproducts = {
-		goblin = [{code = 'materials.wood', amount = 1, chance = 100, critamount = 2, critchance = 10},{code = 'usables.barricade', amount = 1, chance = 10, critamount = 2, critchance = 5}],
+		goblin = [{code = 'materials.wood', amount = 1, chance = 100, critamount = 2, critchance = 10},{code = 'usables.morsel', amount = 1, chance = 25, critamount = 2, critchance = 15}],
 		elf = [{code = 'materials.elvenwood', amount = 1, chance = 100, critamount = 2, critchance = 10},{code = 'usables.protectivecharm', amount = 1, chance = 15, critamount = 2, critchance = 5}],
 	},
 },
-	mining = {basetimer = 10, energycost = 5,
+	mining = {basetimer = 15, energycost = 5,
 	code = 'mining',
 	baselimit = 2,
 	upgradelimit = 'mine',
@@ -35,7 +35,7 @@ var tasksdict = {
 	unlockreqs = [{type = "has_upgrade", name = "mine", value = 1}],
 	tasktool = {type = 'pickaxe', required = true, durabilityfactor = 0}, 
 	workerproducts = {
-		goblin = [{code = 'materials.goblinmetal', amount = 1, chance = 100, critamount = 2, critchance = 10}],
+		goblin = [{code = 'materials.goblinmetal', amount = 1, chance = 100, critamount = 2, critchance = 10},{code = 'usables.barricade', amount = 1, chance = 10, critamount = 2, critchance = 15}],
 		elf = [{code = 'materials.elvenmetal', amount = 1, chance = 100, critamount = 2, critchance = 10}],
 	},
 },
