@@ -7,7 +7,7 @@ var effects = {
 		textcolor = 'yellow', 
 		#trigger = 'skillhit', 
 		#triggereffect = 'gobmetalhandleffect'
-		effects = []
+		effects = ['e_w_gobmet_h']
 	},
 	elfmetalhandle = {
 		descript = tr("ELFMETALHANDLEDESCRIPT"), 
@@ -15,7 +15,7 @@ var effects = {
 		textcolor = 'yellow', 
 		#trigger = 'skillhit', 
 		#triggereffect = 'elfmetalhandleffect'
-		effects = []
+		effects = ['e_w_elfmet_h']
 	},
 	gobmetalblade = {
 		descript = tr("GOBMETALBLADEDESCRIPT"), 
@@ -23,7 +23,7 @@ var effects = {
 		textcolor = 'yellow', 
 		#trigger = 'skillhit', 
 		#triggereffect = 'gobmetalbladeeffect'
-		effects = []
+		effects = ['e_w_gobmet_bl']
 	},
 	elfmetalblade = {
 		descript = tr("ELFMETALBLADEDESCRIPT"), 
@@ -31,7 +31,7 @@ var effects = {
 		textcolor = 'yellow', 
 		#trigger = 'skillhit', 
 		#triggereffect = 'elfmetalbladeeffect',
-		effects = []
+		effects = ['e_w_elfmet_bl']
 	},
 	elfwoodrod = {
 		descript = tr("ELFWOODRODDESCRIPT"), 
@@ -39,7 +39,7 @@ var effects = {
 		textcolor = 'yellow', 
 		#trigger = 'endcombat',
 		#triggereffect = 'elfwoodrodeffect'
-		effects = []
+		effects = ['e_w_elfw_r']
 	},
 	gobmetalrod = {
 		descript = tr("GOBMETALRODDESCRIPT"), 
@@ -47,13 +47,13 @@ var effects = {
 		textcolor = 'yellow', 
 		#trigger = 'spellhit', 
 		#triggereffect = 'gobmetalrodeffect',
-		effects = []
+		effects = ['e_tr_gobmet_r']
 	},
 	bonerod = {
 		descript = tr("BONERODDESCRIPT"), 
 		code = 'bonerod', 
 		textcolor = 'yellow', 
-		effects = [],
+		effects = ['e_w_bone_r'],
 #		trigger = 'spellhit', 
 #		triggereffect = 'bonerodeffect'
 	},
@@ -63,7 +63,7 @@ var effects = {
 		textcolor = 'yellow', 
 		#trigger = 'skillhit', 
 		#triggereffect = 'boneboweffect'
-		effects = []
+		effects = ['e_w_bone_b']
 	},
 	
 	natural = {
@@ -89,7 +89,7 @@ var effects = {
 		code = 'axe', 
 		descript = tr("BRITTELEFFECTDESCRIPT"), 
 		textcolor = 'gray', 
-		tags = [],
+		#tags = [],
 		effects = ['e_w_dmgtreant','e_w_dmgbigtreant']
 	},
 	pick = {#to complete
@@ -97,7 +97,7 @@ var effects = {
 		code = 'pick', 
 		descript = tr("BRITTELEFFECTDESCRIPT"), 
 		textcolor = 'gray', 
-		tags = [],
+		#tags = [],
 		effects = ['e_w_dmggolem']
 	},
 }
@@ -624,7 +624,7 @@ var atomic = {
 	noresist = {type = 'temp_effect', target = 'target', effect = 'e_noresist', duration = 1, stack = 1},
 	firefist = {type = 'skill', new_type = 'damage', target = 'target', source = variables.S_FIRE, value = 'value', mul = 0.2},
 	cripple = {type = 'temp_effect', target = 'target', effect = 'e_cripple', duration = 3, stack = 1},
-	gobmetal_balde = {type = 'caster', new_type = 'damage', target = 'target', source = variables.S_EARTH, value = 'level', mul = 1.0},
+	gobmetal_blade = {type = 'caster', new_type = 'damage', target = 'target', source = variables.S_EARTH, value = 'level', mul = 1.0},
 	gobmetal_rod = {type = 'temp_effect', target = 'target', effect = 'e_gobmet_r', duration = 1, stack = 1},
 	autocrit = {target = 'skill', type = 'param_set', stat = 'hit_res', value = variables.RES_CRIT},
 };
