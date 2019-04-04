@@ -47,5 +47,5 @@ var sounds = {
 	arrowshower = load("res://assets/sounds/sounds/arrowshower.wav"),
 	firebolt = load("res://assets/sounds/sounds/firebolt.wav"),
 	firehit = load("res://assets/sounds/sounds/firedamage.wav"),
-	
+	avalanche = load("res://assets/sounds/sounds/avalanche.wav"),
 }

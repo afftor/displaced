@@ -70,7 +70,7 @@ var effects = {
 	axe = {#to complete
 		name = tr("BRITTLE"), 
 		code = 'axe', 
-		descript = tr("BRITTELEFFECTDESCRIPT"), 
+		descript = tr(""), 
 		textcolor = 'gray', 
 		#tags = [],
 		effects = ['e_w_dmgtreant','e_w_dmgbigtreant']
@@ -78,7 +78,7 @@ var effects = {
 	pick = {#to complete
 		name = tr("BRITTLE"), 
 		code = 'pick', 
-		descript = tr("BRITTELEFFECTDESCRIPT"), 
+		descript = tr(""), 
 		textcolor = 'gray', 
 		#tags = [],
 		effects = ['e_w_dmggolem']
@@ -607,7 +607,7 @@ var atomic = {
 	noresist = {type = 'temp_effect', target = 'target', effect = 'e_noresist', duration = 1, stack = 1},
 	firefist = {type = 'skill', new_type = 'damage', target = 'target', source = variables.S_FIRE, value = 'value', mul = 0.2},
 	cripple = {type = 'temp_effect', target = 'target', effect = 'e_cripple', duration = 3, stack = 1},
-	gobmetal_blade = {type = 'caster', new_type = 'damage', target = 'target', source = variables.S_EARTH, value = 'level', mul = 1.5},
+	gobmetal_blade = {type = 'caster', new_type = 'damage', target = 'target', source = variables.S_EARTH, value = 'level', mul = 1.0},
 	gobmetal_rod = {type = 'temp_effect', target = 'target', effect = 'e_gobmet_r', duration = 1, stack = 1},
 	autocrit = {target = 'skill', type = 'param_set', stat = 'hit_res', value = variables.RES_CRIT},
 };

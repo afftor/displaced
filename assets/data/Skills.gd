@@ -30,7 +30,7 @@ var skilllist = {
 		aitargets = '1ally',
 		aiselfcond = 'any',
 		aitargetcond = 'any',
-		aipriority = 2,
+		aipriority = 1,
 	},
 	#mage
 	firebolt = {
@@ -624,7 +624,7 @@ var skilllist = {
 	#monsters
 	spiderattack = { #new, to overlook
 		code = 'spiderattack',
-		name = tr("SKILLSPIDER"),
+		name = "Piercing Attack",
 		description = tr("SKILLSPIDERDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),
 		
@@ -642,7 +642,7 @@ var skilllist = {
 			'e_s_spidernoarmor'
 		],
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
@@ -656,12 +656,12 @@ var skilllist = {
 	},
 	fairyattack = { #new, to overlook
 		code = 'fairyattack',
-		name = tr("SKILLFAIRY"),
+		name = "Magic Arrow",
 		description = tr("SKILLFAIRYDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),
 		
 		damagetype = "weapon",
-		skilltype = 'skill',
+		skilltype = 'spell',
 		userange = "ranged",
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
@@ -674,7 +674,7 @@ var skilllist = {
 			'e_s_fairy'
 		],
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = null, hittype = 'bodyarmor'},
@@ -686,9 +686,40 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
+	golemattack = {
+		code = 'golemattack',
+		name = "Avalanche",
+		description = tr("SKILLFAIRYDESCRIPT"),
+		icon = load("res://assets/images/iconsskills/cripple.png"),
+		
+		damagetype = "earth",
+		skilltype = 'spell',
+		userange = "ranged",
+		targetpattern = 'all',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = [],
+		value = ['caster.damage', "*0.3"],
+		cooldown = 6,
+		manacost = 0,
+		casteffects = [],
+		hidden = false,
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 0.3,
+		
+	},
+	
 	summontreant = {
 		code = 'summontreant',
-		name = tr("SKILLSUMMONTREANT"),
+		name = "Summon",
 		description = tr("SKILLSUMMONTREANTDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),
 		

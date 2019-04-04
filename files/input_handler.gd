@@ -553,7 +553,7 @@ func ShowOutline(node):
 	node.material.set_shader_param('opacity', 1)
 
 func HideOutline(node):
-	node.material = null
+	node.material.set_shader_param('opacity', 0)
 
 func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])

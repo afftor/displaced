@@ -676,10 +676,10 @@ func SendSkillEffect(skilleffect, caster, target):
 	
 
 func use_skill(skill_code, caster, target):
-	combatlogadd('\n'+ caster.name + ' uses ' + skill_code + ". ")
 	allowaction = false
 	
 	var skill = globals.skills[skill_code]
+	combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
 	
 	caster.mana -= skill.manacost
 	var endturn = !skill.tags.has('instant');
@@ -906,11 +906,11 @@ func execute_skill(skill, caster, target):
 	if s_skill.hit_res == variables.RES_CRIT:
 		text += "[color=yellow]Critical!![/color] "
 	if s_skill.tags.has('heal'):
-		text += target.name + " restores " + str(s_skill.value) + " health."
+		text += target.name + " is healed. (" + str(s_skill.value) + ")"
 	elif s_skill.tags.has("mana"):
-		text += target.name + " restores " + str(s_skill.value) + " mana."
+		text += target.name + "'s mana restored. (" + str(s_skill.value) + ")"
 	else:
-		text += target.name + " takes " + str(s_skill.value) + " damage."
+		text += target.name + " is hit. (" + str(s_skill.value) + ")"
 	combatlogadd(text)
 	#deal damage
 	if s_skill.tags.has('heal'): 

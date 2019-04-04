@@ -9,6 +9,8 @@ var position = 0
 var fighter
 var RMBpressed = false
 
+var damageeffectsarray = []
+
 var hp
 var mp
 
@@ -17,6 +19,11 @@ func _process(delta):
 		update_hp_label()
 	if $mplabel.visible:
 		update_mp_label()
+	for i in damageeffectsarray:
+		if i.played == false:
+			textdamageeffect(i)
+			i.played = true
+		yield(get_tree().create_timer(0.5), "timeout")
 
 func _input(event):
 	if get_global_rect().has_point(get_global_mouse_position()):
@@ -30,27 +37,36 @@ func _input(event):
 		emit_signal("signal_RMB_release")
 		RMBpressed = false
 
+
 func update_hp():
+	if hp == null:
+		hp = fighter.hp
+	if hp != null && hp != fighter.hp:
+		var data = {value = 0, type = '', color = Color(), played = false}
+		data.value = fighter.hp - hp
+		if data.value < 0:
+			data.color = Color(1,0.2,0.2)
+			if fighter.combatgroup == 'ally':
+				data.type = 'damageally'
+			else:
+				data.type = 'damageenemy' 
+		else:
+			data.type = 'heal'
+			data.color = Color(0.2,1,0.2)
+		
+		hp = fighter.hp
+		damageeffectsarray.append(data)
+	
+
+func textdamageeffect(data):
 	var tween = input_handler.GetTweenNode(self)
 	var node = get_node("HP")
-	if hp != null && hp != fighter.hp:
-		var difference = fighter.hp - hp
-		var type
-		var color
-		if difference < 0:
-			color = Color(1,0.2,0.2)
-			if fighter.combatgroup == 'ally':
-				type = 'damageally'
-			else:
-				type = 'damageenemy' 
-		else:
-			type = 'heal'
-			color = Color(0.2,1,0.2)
-		
-		input_handler.FloatText(self, str(difference), type, color, 2, 0.2, get_node('Icon').rect_size/2)
+	
+	
+	input_handler.FloatText(self, str(data.value), data.type, data.color, 2, 0.2, get_node('Icon').rect_size/2)
 #		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,0), Color(1,0,0,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 #		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,1), Color(1,0,0,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
-	hp = fighter.hp
+	
 	
 	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.hp, fighter.hpmax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()

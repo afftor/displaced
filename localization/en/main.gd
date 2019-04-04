@@ -106,6 +106,7 @@ var TranslationDict = {
 	
 	#Stats
 	DAMAGE = 'Damage',
+	DAMAGEMOD = "Damage Mult.",
 	ARMOR = 'Armor',
 	MDEF = "Magic Armor",
 	EVASION = 'Evasion',
@@ -145,7 +146,7 @@ var TranslationDict = {
 	BLADE = 'Blade',
 	BLUNT = 'Head',
 	ROD = 'Knub',
-	BOW = 'Bow Limb',
+	BOWBASE = 'Bow Limb',
 	ARMORBASE = 'Base',
 	ARMORPLATE = 'Plate',
 	ARMORTRIM = 'Trim',

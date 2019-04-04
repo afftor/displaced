@@ -38,6 +38,7 @@ func _ready():
 	if debug == true:
 		state.OldEvents['Market'] = 0
 		state.townupgrades['bridge'] = 1
+		state.townupgrades.blacksmith = 2
 		state.OldEvents['bridge'] = 0
 		state.MakeQuest('elves')
 		for i in state.materials:
@@ -115,16 +116,19 @@ func buildscreen(empty = null):
 	$Background/lumbermill.visible = state.townupgrades.has("lumbermill")
 	$BlacksmithNode.visible = state.decisions.has("blacksmith")
 	if state.townupgrades.has('blacksmith') == false:
+		$BlacksmithNode.regenerate_click_mask()
 		$BlacksmithNode.texture_normal = forgeimage.base.normal
-		$BlacksmithNode.texture_hover = forgeimage.base.hl
+		#$BlacksmithNode.texture_hover = forgeimage.base.hl
 	else:
 		match state.townupgrades.blacksmith:
 			1:
+				$BlacksmithNode.regenerate_click_mask()
 				$BlacksmithNode.texture_normal = forgeimage.first.normal
-				$BlacksmithNode.texture_hover = forgeimage.first.hl
+				#$BlacksmithNode.texture_hover = forgeimage.first.hl
 			2:
+				$BlacksmithNode.regenerate_click_mask()
 				$BlacksmithNode.texture_normal = forgeimage.second.normal
-				$BlacksmithNode.texture_hover = forgeimage.second.hl
+				#$BlacksmithNode.texture_hover = forgeimage.second.hl
 
 func testfunction():
 	input_handler.ActivateTutorial('tutorial1')
@@ -376,10 +380,13 @@ func taskperiod(data):
 			if array[0] == 'materials':
 				state[array[0]][array[1]] += taskresult
 				while taskresult > 0:
-					flyingitemicon(data.counter, array[1])
+					flyingitemicon(data.counter, Items.Materials[array[1]].icon)
 					taskresult -= 1
+					yield(get_tree().create_timer(0.2),"timeout")
 			elif array[0] == 'usables':
 				globals.AddItemToInventory(globals.CreateUsableItem(array[1]))
+				flyingitemicon(data.counter, Items.Items[array[1]].icon)
+			yield(get_tree().create_timer(0.2),"timeout")
 		else:
 			state[i] += taskresult
 		
@@ -412,10 +419,10 @@ func taskperiod(data):
 
 var itemicon = preload("res://src/ItemIcon.tscn")
 
-func flyingitemicon(taskbar, item):
+func flyingitemicon(taskbar, icon):
 	var x = itemicon.instance()
 	add_child(x)
-	x.texture = Items.Materials[item].icon
+	x.texture = icon
 	x.rect_global_position = taskbar.rect_global_position
 	input_handler.PlaySound("itemget")
 	input_handler.ResourceGetAnimation(x, taskbar.rect_global_position, $ControlPanel/Inventory.rect_global_position)

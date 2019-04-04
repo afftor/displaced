@@ -8,7 +8,7 @@ var partmaterials = {
 		elvenwood = {hitrate = 10},
 		goblinmetal = {effects = ['gobmetalhandle']},
 		elvenmetal = {effects = ['elfmetalhandle']},
-		bone = {},
+		bone = {hpmod = 5},
 	},
 	Blade = {
 		starting = {damagemod = -0.4},
@@ -30,7 +30,7 @@ var partmaterials = {
 		wood = {},
 		elvenwood = {damagemod = 0.3, effects = ['elfmetalhandle']},
 		bone = {damagemod = 0.1, effects = ['bonebow']},
-		goblinmetal = {damagemod = 0.1, effects = ['gobmetalbow']},
+		goblinmetal = {damagemod = 0.1, effects = ['gobmetalblade']},
 		elvenmetal = {damagemod = 0.2, effects = ['elfmetalblade']},
 	},
 	Rod = {
@@ -283,7 +283,7 @@ var Items = {
 	weaponrange = 'melee',
 	unlockreqs = [],
 	parts = {Rod = 2, ToolHandle = 3},
-	partcolororder = {ToolHandle = 1, Rod = 2},
+	partcolororder = {Rod = 1, ToolHandle = 2},
 	partmaterialname = "Rod",
 	tags = ['staff', 'recipe'],
 	repairdifficulty = 'easy',
