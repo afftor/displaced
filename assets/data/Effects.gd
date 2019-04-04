@@ -84,6 +84,22 @@ var effects = {
 		effects = []
 	},
 	
+	axe = {#to complete
+		name = tr("BRITTLE"), 
+		code = 'axe', 
+		descript = tr("BRITTELEFFECTDESCRIPT"), 
+		textcolor = 'gray', 
+		tags = [],
+		effects = ['e_w_dmgtreant','e_w_dmgbigtreant']
+	},
+	pick = {#to complete
+		name = tr("BRITTLE"), 
+		code = 'pick', 
+		descript = tr("BRITTELEFFECTDESCRIPT"), 
+		textcolor = 'gray', 
+		tags = [],
+		effects = ['e_w_dmggolem']
+	},
 }
 
 var combateffects = {
@@ -385,6 +401,36 @@ var effect_table = {
 			{target = 'caster', type = 'stat_once', stat = 'hppercent', value = 3}
 		]
 	},
+	e_w_dmgtreant = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [
+			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
+			{target = 'skill', check = 'type', value = 'skill'},
+			{target = 'target', value = {type = 'stat', name = 'base', operant = 'eq', value = 'treant' } }
+		],
+		effects = ['autocrit']
+	},
+	e_w_dmgbigtreant = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [
+			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
+			{target = 'skill', check = 'type', value = 'skill'},
+			{target = 'target', value = {type = 'stat', name = 'base', operant = 'eq', value = 'bigtreant' } }
+		],
+		effects = ['autocrit']
+	},
+	e_w_dmggolem = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [
+			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
+			{target = 'skill', check = 'type', value = 'skill'},
+			{target = 'target', value = {type = 'stat', name = 'base', operant = 'eq', value = 'earthgolem' } }
+		],
+		effects = ['autocrit']
+	},
 	#item skills
 	e_i_barrier2 = {
 		type = 'oneshot',
@@ -414,6 +460,7 @@ var effect_table = {
 		effects = [{target = 'target', type = 'stat_once', stat = 'mana', value = 40},
 		{target = 'target', type = 'stat_once', stat = 'hp', value = 75}]
 	},
+	
 	#secondary
 	e_stun = {
 		type = 'static',
@@ -533,6 +580,14 @@ var effect_table = {
 		type = 'static',
 		effects = ['taunted_icon', {type = 'stat', stat = 'damagemod', value = -0.25}]
 	},
+	e_convert_value_to_hppercent = {#not required but usefull. allows setting value of skill to % of target hp. warning! 100 is not autokill cause final damage still can be reduced and resisted
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [],
+		effects = [
+			{type = 'target', new_type = 'param_m', target = 'skill', value = 'hp', mul = 0.01}
+		]
+	},
 };
 
 var atomic = {
@@ -571,6 +626,7 @@ var atomic = {
 	cripple = {type = 'temp_effect', target = 'target', effect = 'e_cripple', duration = 3, stack = 1},
 	gobmetal_balde = {type = 'caster', new_type = 'damage', target = 'target', source = variables.S_EARTH, value = 'level', mul = 1.0},
 	gobmetal_rod = {type = 'temp_effect', target = 'target', effect = 'e_gobmet_r', duration = 1, stack = 1},
+	autocrit = {target = 'skill', type = 'param_set', stat = 'hit_res', value = variables.RES_CRIT},
 };
 #needs filling
 var buffs = {

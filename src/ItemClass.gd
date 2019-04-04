@@ -91,6 +91,9 @@ func CreateGear(ItemName = '', dictparts = {}):
 			bonusstats[i] += itemtemplate.basestats[i]
 	
 	
+	if itemtemplate.has('effects'):
+		for e in itemtemplate.effects:
+			effects.push_back(e)
 	
 	parts = dictparts.duplicate()
 	durability = itemtemplate.basedurability
