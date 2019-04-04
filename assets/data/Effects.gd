@@ -170,7 +170,7 @@ var effect_table = {
 	},
 	e_tr_noevade = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [],
 		effects = ['noevade10']
 	},
@@ -186,7 +186,7 @@ var effect_table = {
 	},
 	e_tr_healer = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'tag', value = 'heal'}],
 		effects = [{type = 'skill', new_type = 'stat_once', target = 'caster', stat = 'hp', value = 'value', mul = 0.5}]
 	},
@@ -198,7 +198,7 @@ var effect_table = {
 	},
 	e_tr_magecrit = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_CRIT}],
 		effects = [
 			{type = 'skill', new_type = 'stat_once', target = 'caster', stat = 'mana', value = 'manacost', mul = 1}, 
@@ -207,7 +207,7 @@ var effect_table = {
 	},
 	e_tr_slowarrow = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = ['slowarrow']
 	},
@@ -236,13 +236,13 @@ var effect_table = {
 	},
 	e_tr_noresist = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [],
 		effects = ['noresist']
 	},
 	e_tr_firefist = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = ['firefist']
 	},
@@ -274,7 +274,7 @@ var effect_table = {
 	#skills
 	e_s_stun05 = {
 		type = 'oneshot',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [
 			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
 			{target = 'chance', value = 50}
@@ -283,7 +283,7 @@ var effect_table = {
 	},
 	e_s_stun = {
 		type = 'oneshot',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [
 			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
 		],
@@ -291,7 +291,7 @@ var effect_table = {
 	},
 	e_s_cripple = {
 		type = 'oneshot',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [
 			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
 		],
@@ -305,19 +305,19 @@ var effect_table = {
 #	},
 	e_s_spidernoarmor = {
 		type = 'oneshot',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = [{target = 'target', type = 'temp_effect', effect = 'e_spidernoarmor', duration = 2, stack = 99}]
 	},
 	e_s_fairy = {
 		type = 'oneshot',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = [{target = 'target', type = 'stat', stat = 'mana', value = -5}] # ! value to check
 	},
 	e_s_taunt = {
 		type = 'oneshot',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = [
 		{target = 'target', type = 'skill', new_type = 'stat_s', stat = 'taunt', value = 'temp', mul = 1.0},
@@ -352,7 +352,7 @@ var effect_table = {
 	},
 	e_w_gobmet_bl = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = ['gobmetal_blade']
 	},
@@ -372,7 +372,7 @@ var effect_table = {
 	},
 	e_tr_gobmet_r = {
 		type = 'trigger',
-		trigger = variables.TR_HIT,
+		trigger = variables.TR_POSTDAMAGE,
 		conditions = [{target = 'skill', check = 'result', value = variables.RES_HITCRIT}],
 		effects = ['gobmetal_rod']
 	},
