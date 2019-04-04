@@ -131,9 +131,26 @@ func unlockupgrade():
 		state.townupgrades[upgrade.code] += 1
 	else:
 		state.townupgrades[upgrade.code] = 1
+	
 	input_handler.SystemMessage(tr("UPGRADEUNLOCKED") + ": " + upgrade.name)
+	upgradelist()
+	#animation
+	if upgrade.levels[currentupgradelevel].has("townnode"):
+		var animnode
+		if get_parent().has_node(upgrade.levels[currentupgradelevel].townnode):
+			animnode = get_parent().get_node(upgrade.levels[currentupgradelevel].townnode)
+		else:
+			animnode = get_parent().get_node("Background/"+upgrade.levels[currentupgradelevel].townnode)
+		if animnode != null:
+			self.modulate.a = 0
+			animnode.show()
+			input_handler.ShowOutline(animnode)
+			input_handler.UnfadeAnimation(animnode, 2.5, 0)
+			input_handler.PlaySound("building")
+			yield(get_tree().create_timer(2.5), 'timeout')
+			self.modulate.a = 1
+			input_handler.HideOutline(animnode)
 	input_handler.emit_signal("UpgradeUnlocked", upgrade)
 	globals.EventCheck()
-	upgradelist()
 	#state.townupgrades[upgrade.code] = true
 

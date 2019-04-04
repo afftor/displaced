@@ -24,6 +24,8 @@ var sounds = {
 	crash = load("res://assets/sounds/sounds/crash.wav"),
 	punch = load("res://assets/sounds/sounds/punch.wav"),
 	
+	morning = load("res://assets/sounds/sounds/morning_rooster.wav"),
+	
 	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
 	
 	blade = load("res://assets/sounds/sounds/dodge.wav"),#load("res://assets/sounds/sounds/fx knife hit solo.wav"),
@@ -32,6 +34,7 @@ var sounds = {
 	heal = load("res://assets/sounds/sounds/healeffect.wav"),
 	itemget = load("res://assets/sounds/sounds/itemget.wav"),
 	itemcreate = load("res://assets/sounds/sounds/itemcraft.wav"),
+	building = load("res://assets/sounds/sounds/building.wav"),
 	
 	#combat
 	victory = load("res://assets/sounds/sounds/victory.wav"),

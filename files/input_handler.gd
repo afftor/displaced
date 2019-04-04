@@ -539,7 +539,13 @@ func ShowGameTip(tip):
 		tipnode.name = "GameTips"
 	node.add_child(tipnode)
 	tipnode.showtip(tip)
-	
+
+func ShowOutline(node):
+	node.material = load('res://files/portret_shader.tres')
+	node.material.set_shader_param('opacity', 1)
+
+func HideOutline(node):
+	node.material = null
 
 func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])

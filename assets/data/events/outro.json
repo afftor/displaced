@@ -3,6 +3,7 @@
 {"effect":"gui","value":"gui_normal"},
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"This is the end of playable demo story."},
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"We hope you enjoyed it as much as we enjoyed working on it."},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"We want to especially thanks all the patrons who made this project possible."},
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"In case you wish to support or check out our previous game, make sure to visit it at [url]https://www.patreon.com/maverik[/url]"},
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Also, you can leave the feedback at %email link%."},
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"All links can be found at the main menu."},
