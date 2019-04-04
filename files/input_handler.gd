@@ -54,7 +54,7 @@ func _process(delta):
 		else:
 			i.node.rect_position = i.originpos
 			ShakingNodes.erase(i)
-	
+	soundcooldown -= delta
 	
 	if musicfading:
 		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
@@ -260,6 +260,14 @@ func PlaySound(name, delay = 0):
 	soundnode.play(0)
 	yield(soundnode, 'finished')
 	soundnode.queue_free()
+
+var soundcooldown = 0
+
+func PlaySoundIsolated(sound, cooldown):
+	if soundcooldown > 0:
+		return
+	PlaySound(sound)
+	soundcooldown = cooldown
 
 func GetSoundNode():
 	var node = get_tree().get_root()
@@ -504,7 +512,7 @@ func SystemMessage(text, time = 4):
 	var basetime = time
 	if SystemMessageNode == null:
 		return
-	text = '[center]' + text + '[/center]'
+	text = '[center]' + tr(text) + '[/center]'
 	SystemMessageNode.modulate.a = 1
 	SystemMessageNode.bbcode_text = text
 	FadeAnimation(SystemMessageNode, 1, basetime)

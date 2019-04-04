@@ -225,7 +225,7 @@ var enemylist = {
 var loottables = {
 	elvenratloot = {
 		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
-		usables = [{code = 'morsel', min = 1, max = 1, chance = 15}],
+		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
 	},
 	treantloot = {
 		materials = [{code = 'wood', min = 1, max = 1, chance = 25}],
@@ -240,12 +240,11 @@ var loottables = {
 		usables = [{code = 'morsel', min = 1, max = 1, chance = 35}],
 	},
 	earthgolemloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
+		materials = [{code = 'goblinmetal', min = 1, max = 2, chance = 35},{code = 'elvenmetal', min = 1, max = 1, chance = 15}],
 		usables = [{code = 'protectivecharm', min = 1, max = 1, chance = 10}],
 	},
 	fairiesloot = {
-		
-		usables = [{code = 'managrass', min = 1, max = 2, chance = 25},{code = 'lesserpotion', min = 1, max = 1, chance = 15},{code = 'protectivecharm', min = 1, max = 1, chance = 5}],
+		usables = [{code = 'managrass', min = 1, max = 2, chance = 25},{code = 'lesserpotion', min = 1, max = 1, chance = 15},{code = 'protectivecharm', min = 1, max = 1, chance = 10}],
 	},
 	angrydwarfloot = {
 		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35},{code = 'morsel', min = 1, max = 1, chance = 15}],

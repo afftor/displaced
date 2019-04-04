@@ -249,7 +249,7 @@ func AdvanceScene():
 				if !debug:QuestSet(NewEffect.value, NewEffect.args)
 			'game':
 				ReceiveInput = false
-				if !debug: globals.EndGame(NewEffect.value)
+				if !debug: globals.CurrentScene.GameOverShow()
 				StopEvent()
 			'stop':
 				StopEvent()

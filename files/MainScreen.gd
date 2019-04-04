@@ -33,14 +33,19 @@ func _ready():
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
 	$Gate.connect("pressed",self,'explorescreen')
 	
+	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
+	
 	if debug == true:
 		state.OldEvents['Market'] = 0
 		state.townupgrades['bridge'] = 1
 		state.OldEvents['bridge'] = 0
 		state.MakeQuest('elves')
-		state.materials.goblinmetal = 20
-		state.materials.wood = 20
-		state.materials.elvenwood = 20
+		for i in state.materials:
+			state.materials[i] = 20
+#		state.materials.goblinmetal = 20
+#		state.materials.wood = 20
+#		state.materials.elvenwood = 20
+		state.decisions.append("blacksmith")
 		combatantdata.MakeCharacterFromData('arron')
 		combatantdata.MakeCharacterFromData('rose')
 		combatantdata.MakeCharacterFromData('erika')
@@ -54,6 +59,7 @@ func _ready():
 		worker.create(TownData.workersdict.goblin)
 		worker = globals.worker.new()
 		worker.create(TownData.workersdict.elf)
+		worker.energy = 0
 		#globals.AddItemToInventory(globals.crea
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
@@ -89,6 +95,17 @@ var forgeimage = {
 	second = {normal = load("res://assets/images/buildings/forge_2.png"), hl = load("res://assets/images/buildings/forge2_hl.png")},
 	
 }
+
+func GameOverShow():
+	$GameOverPanel.show()
+	input_handler.UnfadeAnimation($GameOverPanel, 2)
+	input_handler.StopMusic(true)
+	input_handler.PlaySound("defeat")
+
+
+func GameOver():
+	globals.CurrentScene.queue_free()
+	globals.ChangeScene('menu')
 
 func buildscreen(empty = null):
 	$Background/bridge.visible = state.townupgrades.has('bridge')
@@ -165,7 +182,7 @@ func _process(delta):
 			if floor(state.daytime) == 0.0:
 				EnvironmentColor('morning')
 				yield(get_tree().create_timer(1), "timeout")
-				input_handler.PlaySound("morning")
+				input_handler.PlaySoundIsolated("morning", 1) #prevents multiple sounds stacking
 				
 			elif floor(state.daytime) == floor(variables.TimePerDay/4):
 				EnvironmentColor('day')
@@ -367,20 +384,28 @@ func taskperiod(data):
 			state[i] += taskresult
 		
 		#targetvalue 
-		worker.energy -= taskdata.energycost
 #		if data.instrument != null:
 #			data.instrument.durability -= taskdata.tasktool.durabilityfactor
 #			if data.instrument.durability <= 0:
 #				stoptask(data)
 				#globals.logupdate(data.instrument.name + tr("TOOLBROKEN"))
 	
+	worker.energy -= taskdata.energycost
+	
+	if data.iterations > 0:
+		data.iterations -= 1
+		if data.iterations == 0:
+			stoptask(data)
+	
+	
 	if worker.energy < taskdata.energycost:
-		if worker.autoconsume == true:
+		if data.autoconsume == true:
 			var state = worker.restoreenergy()
 			if state == false:
 				input_handler.SystemMessage("SYSNOFOOD")
 				stoptask(data)
 		else:
+			input_handler.SystemMessage("SYSNOWORKERENERGY")
 			stoptask(data)
 	elif data.instrument != null && state.items[data.instrument].durability <= 0 && taskdata.tasktool.required != false:
 		tasks.erase(data)

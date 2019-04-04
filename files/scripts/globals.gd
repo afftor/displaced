@@ -72,7 +72,7 @@ var globalsettings = {
 	ActiveLocalization = 'en',
 	mastervol = -15,
 	mastermute = false,
-	musicvol = -15,
+	musicvol = -20,
 	musicmute = false,
 	soundvol = -15,
 	soundmute = false,
@@ -536,17 +536,27 @@ func ItemSelect(targetscript, type, function, requirements = true):
 			if i.geartype == requirements && i.task == null && i.owner == null && i.durability > 0:
 				array.append(i)
 	elif type == 'repairable':
-		for i in state.items:
+		for i in state.items.values():
 			if i.durability < i.maxdurability:
+				array.append(i)
+	elif type == 'edible':
+		for i in state.items.values():
+			if i.foodvalue > 0:
 				array.append(i)
 	
 	for i in array:
 		var newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
-		if type == 'gear':
-			input_handler.itemshadeimage(newnode, i)
-			newnode.get_node("Percent").show()
-			newnode.get_node("Percent").text = str(calculatepercent(i.durability, i.maxdurability)) + '%'
-			connectitemtooltip(newnode, i)
+		match type:
+			'gear':
+				input_handler.itemshadeimage(newnode, i)
+				newnode.get_node("Percent").show()
+				newnode.get_node("Percent").text = str(calculatepercent(i.durability, i.maxdurability)) + '%'
+				connectitemtooltip(newnode, i)
+			"edible":
+				newnode.texture_normal = load(i.icon)
+				newnode.get_node("Percent").show()
+				newnode.get_node("Percent").text = str(i.foodvalue)
+				connectitemtooltip(newnode, i)
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
@@ -594,8 +604,6 @@ func QuickSave():
 	SaveGame('QuickSave');
 	pass
 
-func EndGame(result):
-	pass
 
 
 

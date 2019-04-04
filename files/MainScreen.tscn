@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/MainScreen.gd" type="Script" id=2]
@@ -71,8 +71,12 @@
 [ext_resource path="res://src/ExploreScreen.tscn" type="PackedScene" id=69]
 [ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=70]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=71]
-[ext_resource path="res://src/Tutorial.tscn" type="PackedScene" id=72]
-[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=73]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=72]
+[ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=73]
+[ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=74]
+[ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=75]
+[ext_resource path="res://src/Tutorial.tscn" type="PackedScene" id=76]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=77]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -112,6 +116,14 @@ expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 100
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 72 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="MainScreen" type="Control" index="0"]
 
@@ -1175,7 +1187,6 @@ _sections_unfolded = [ "Hint", "Rect", "Textures" ]
 
 [node name="Use" type="TextureButton" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="3"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1207,9 +1218,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 387.0
+margin_left = 317.0
 margin_top = 23.0
-margin_right = 439.0
+margin_right = 369.0
 margin_bottom = 76.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1430,10 +1441,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 160.0
-margin_top = -40.0
-margin_right = 377.0
-margin_bottom = -16.0
+margin_left = 113.0
+margin_top = -38.0
+margin_right = 455.0
+margin_bottom = -14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1442,6 +1453,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Progress until next"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -1736,7 +1748,95 @@ expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
-[node name="TutorialNode" parent="." index="26" instance=ExtResource( 72 )]
+[node name="GameOverPanel" type="Panel" parent="." index="26"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 1079.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="RichTextLabel" type="Label" parent="GameOverPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 582.0
+margin_top = 207.0
+margin_right = 1296.0
+margin_bottom = 454.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "Game Over"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "BBCode", "custom_fonts" ]
+
+[node name="ExitButton" type="TextureButton" parent="GameOverPanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 806.0
+margin_top = 587.0
+margin_right = 1099.0
+margin_bottom = 666.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 73 )
+texture_pressed = ExtResource( 74 )
+texture_hover = ExtResource( 75 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Label" type="Label" parent="GameOverPanel/ExitButton" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 21.0
+margin_top = 23.0
+margin_right = 265.0
+margin_bottom = 47.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Return to Main Menu"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TutorialNode" parent="." index="27" instance=ExtResource( 76 )]
 
 visible = false
 margin_left = 1222.0
@@ -1744,7 +1844,7 @@ margin_top = 45.0
 margin_right = 1738.0
 margin_bottom = 211.0
 
-[node name="SystemMessageLabel" type="RichTextLabel" parent="." index="27"]
+[node name="SystemMessageLabel" type="RichTextLabel" parent="." index="28"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1760,7 +1860,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/normal_font = ExtResource( 73 )
+custom_fonts/normal_font = ExtResource( 77 )
 custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
 bbcode_enabled = true
 bbcode_text = ""
@@ -1775,7 +1875,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Mouse", "Rect", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="Tween" type="Tween" parent="." index="28"]
+[node name="Tween" type="Tween" parent="." index="29"]
 
 repeat = false
 playback_process_mode = 1

@@ -13,7 +13,7 @@ var inventory
 var amount setget amount_set
 var useeffects
 var useskill
-var foodvalue
+var foodvalue = 0
 
 #Gear Data
 var type

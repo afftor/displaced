@@ -292,11 +292,9 @@ func victory():
 
 
 func defeat():
-	$Rewards.visible = true
-	$Rewards.set_meta("result", 'defeat')
-	for i in battlefield:
-		if battlefield[i] != null:
-			battlefield[i] = null
+	globals.CurrentScene.GameOverShow()
+	set_process(false)
+	set_process_input(false)
 
 func player_turn(pos):
 	var selected_character = playergroup[pos]

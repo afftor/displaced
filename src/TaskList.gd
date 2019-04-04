@@ -3,7 +3,7 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var selectedworker
 var selectedtask
 var selectedtool
-
+var iterations = 1
 
 func _ready():
 	hide()
@@ -11,6 +11,7 @@ func _ready():
 	$SelectWorker/SelectWorkerButton.connect("pressed", self, 'SelectWorker')
 	$SelectWorker/SelectToolButton.connect("pressed",self,'SelectTool')
 	$SelectWorker/ConfirmButton.connect("pressed", self, 'ConfirmTask')
+	$SelectWorker/CounterSlider.connect("value_changed", self, "IterationSet")
 
 func tasklist():
 	show()
@@ -65,11 +66,10 @@ func OpenSelectTab(task, worker):
 	
 	
 	$SelectWorker/RichTextLabel.bbcode_text = task.description
-	$SelectWorker/Time.text = str(task.basetimer)
-	$SelectWorker/Energy.text = str(task.energycost)
 	
-	
-	
+	iterations = 1
+	$SelectWorker/CounterSlider.value = iterations
+	#$SelectWorker/CounterSlider.max_value = 100
 	
 	UpdateButtons()
 
@@ -88,6 +88,10 @@ func ToolSelected(item):
 	UpdateButtons()
 
 func UpdateButtons():
+	var displayediteration = str(iterations) 
+	if iterations == -1:
+		displayediteration = "∞"
+	
 	$SelectWorker/SelectToolButton/Icon.material = null
 	if selectedtool != null:
 		input_handler.itemshadeimage($SelectWorker/SelectToolButton/Icon, state.items[selectedtool])
@@ -108,8 +112,15 @@ func UpdateButtons():
 	if state.workers[selectedworker].energy + state.food < selectedtask.energycost:
 		conditioncheck = false
 	
-	$SelectWorker/ConfirmButton.disabled = !conditioncheck
+	if iterations == -1:
+		$SelectWorker/Time.text = '∞'
+		$SelectWorker/Energy.text = '∞'
+	else:
+		$SelectWorker/Time.text = str(selectedtask.basetimer*iterations)
+		$SelectWorker/Energy.text = str(selectedtask.energycost*iterations)
 	
+	$SelectWorker/ConfirmButton.disabled = !conditioncheck
+	$SelectWorker/CounterSlider/Label.text = "Repeat " + displayediteration + " times"
 	globals.ClearContainer($SelectWorker/HBoxContainer)
 	var worker = state.workers[selectedworker]
 	var task = selectedtask
@@ -119,20 +130,42 @@ func UpdateButtons():
 		
 		if item[0] == 'materials':
 			var material = Items.Materials[item[1]]
-			newresource.get_node("amount").text = str(i.amount)
+			if iterations == -1:
+				newresource.get_node("amount").text = displayediteration
+			else:
+				newresource.get_node("amount").text = str(float(i.amount)/100*i.chance*iterations)
 			globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
 			newresource.texture = material.icon
 		elif item[0] == 'usables':
 			var usable = Items.Items[item[1]]
-			newresource.get_node("amount").text = str(i.amount)
+			if iterations == -1:
+				newresource.get_node("amount").text = displayediteration
+			else:
+				newresource.get_node("amount").text = str(float(i.amount)/100*i.chance*iterations)
 			newresource.texture = usable.icon
 			globals.connecttooltip(newresource, '[center]' + usable.name + '[/center]\n' + usable.description + '\n' +tr('BASECHANCE') + ' - [color=green]' + str(i.chance) + '%[/color]')
-	
 
+func IterationSet(value):
+	iterations = value
+	if iterations >= 100:
+		iterations = -1
+	UpdateButtons()
 
 func ConfirmTask():
-	hide()
+	var autoconsume = $SelectWorker/CounterSlider/CheckBox.pressed
 	var threshold = selectedtask.basetimer
+	if state.workers[selectedworker].energy < selectedtask.energycost:
+		if autoconsume == true:
+			if state.workers[selectedworker].restoreenergy() == false:
+				input_handler.SystemMessage("SYSNOFOOD")
+				return
+			if state.workers[selectedworker].energy < selectedtask.energycost:
+				input_handler.SystemMessage("SYSNOFOOD")
+				return
+		else:
+			input_handler.SystemMessage("SYSNOWORKERENERGY")
+			return
+	hide()
 	
 	if selectedtool != null && selectedtask.tasktool.required == false:
 		threshold -= threshold/2
@@ -141,6 +174,6 @@ func ConfirmTask():
 #				threshold -= i.value
 	
 	
-	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}
+	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool, iterations = iterations, autoconsume = autoconsume}
 	globals.CurrentScene.assignworker(data)
 	input_handler.emit_signal("WorkerAssigned", data)

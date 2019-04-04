@@ -38,6 +38,7 @@ var sounds = {
 	
 	#combat
 	victory = load("res://assets/sounds/sounds/victory.wav"),
+	defeat = load('res://assets/sounds/sounds/defeat.wav'),
 	combatmiss = load('res://assets/sounds/sounds/dodge.wav'),
 	dodge = load("res://assets/sounds/sounds/dodge.wav"),
 	levelup = load("res://assets/sounds/sounds/levelup.wav"),

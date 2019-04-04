@@ -4,12 +4,11 @@ var name
 var type
 var id
 var task
-var energy
+var energy setget energy_set
 var maxenergy
 var currenttask
 var icon
 var model
-var autoconsume = true
 
 func create(data):
 	name = data.name
@@ -20,7 +19,9 @@ func create(data):
 	energy = data.maxenergy
 	icon = data.icon.get_path()
 	state.workers[id] = self
-	
+
+func energy_set(value):
+	energy = clamp(0, round(value), maxenergy)
 
 func restoreenergy():
 	var value = maxenergy - energy
@@ -35,16 +36,22 @@ func restoreenergy():
 		state.food = 0
 		return true
 
+func get_task():
+	for i in state.tasks:
+		if i.worker == id:
+			return i
+	return null
+
 
 func serialize():
 	var tmp = {};
-	var arr = ['name', 'type', 'id', 'task', 'energy', 'maxenergy','icon', 'currenttask', 'model', 'autoconsume'];
+	var arr = ['name', 'type', 'id', 'task', 'energy', 'maxenergy','icon', 'currenttask', 'model'];
 	for prop in arr:
 		tmp[prop] = get(prop);
 	return tmp
 
 func deserialize(tmp):
-	var arr = ['name', 'type', 'id', 'task', 'energy', 'maxenergy','icon', 'currenttask', 'model', 'autoconsume'];
+	var arr = ['name', 'type', 'id', 'task', 'energy', 'maxenergy','icon', 'currenttask', 'model'];
 	for prop in arr:
 		set(prop, tmp[prop]);
 	id = int(id)

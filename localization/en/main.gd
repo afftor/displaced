@@ -227,10 +227,13 @@ var TranslationDict = {
 	GOLDPRICE = "Gold Cost",
 	
 	SYSNOFOOD = "Work canceled: No food",
+	SYSNOWORKERENERGY = "Work canceled: No energy",
+	
 	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
+	SELECTITEM = "Select Item",
 	WORKERLIMITREACHER = "Worker Limit Reached: Upgrade Houses to increase",
 	TOTALWORKERS = "Total Workers",
 	
