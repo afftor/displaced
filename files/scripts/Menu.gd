@@ -3,7 +3,7 @@ extends Node
 var lastsave = null
 
 func _ready():
-	var buttonlist = ['newgame','continueb','loadwindow','options','quit']
+	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
 	check_last_save()
@@ -26,7 +26,6 @@ func check_last_save():
 		$VBoxContainer/continuebutton.visible = false
 	else:
 		$VBoxContainer/continuebutton.visible = true
-	pass
 
 func continueb():
 	globals.LoadGame(lastsave.get_file().get_basename());

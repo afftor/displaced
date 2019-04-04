@@ -164,6 +164,9 @@ func _process(delta):
 			
 			if floor(state.daytime) == 0.0:
 				EnvironmentColor('morning')
+				yield(get_tree().create_timer(1), "timeout")
+				input_handler.PlaySound("morning")
+				
 			elif floor(state.daytime) == floor(variables.TimePerDay/4):
 				EnvironmentColor('day')
 			elif floor(state.daytime) == floor(variables.TimePerDay/4*2):
