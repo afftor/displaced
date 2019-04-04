@@ -24,6 +24,10 @@ func _process(delta):
 			textdamageeffect(i)
 			i.played = true
 		yield(get_tree().create_timer(0.5), "timeout")
+	for i in damageeffectsarray:
+		if i.played == true:
+			damageeffectsarray.erase(i)
+			break
 
 func _input(event):
 	if get_global_rect().has_point(get_global_mouse_position()):

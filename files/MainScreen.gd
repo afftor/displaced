@@ -1,7 +1,7 @@
 extends Node
 
 var blacksmith
-var debug = true
+var debug = false
 
 var gamespeed = 1
 var gamepaused = false

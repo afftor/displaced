@@ -919,6 +919,8 @@ func execute_skill(skill, caster, target):
 		pass #
 	else: 
 		target.deal_damage(s_skill.value, s_skill.damagesrc)
+		for t in s_skill.casteffects:
+            s_skill.apply_effect(t, variables.TR_POSTDAMAGE)
 		caster.on_skill_check(s_skill, variables.TR_POSTDAMAGE)
 	if target.hp <= 0:
 		caster.basic_check(variables.TR_KILL)

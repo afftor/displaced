@@ -250,7 +250,7 @@ func wincontinue():
 		if i.hp <= 0:
 			i.hp = 1
 	
-	if stage >= area.stages:
+	if stage >= area.stages && area.stages > 0:
 		showexplorelist()
 		$AreaProgress.hide()
 	else:

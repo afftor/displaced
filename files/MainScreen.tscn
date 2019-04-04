@@ -125,7 +125,7 @@ use_filter = true
 font_data = ExtResource( 72 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="MainScreen" type="Control" index="0"]
+[node name="MainScreen" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0

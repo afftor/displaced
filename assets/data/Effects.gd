@@ -81,7 +81,7 @@ var effects = {
 		descript = tr(""), 
 		textcolor = 'gray', 
 		#tags = [],
-		effects = ['e_w_dmggolem']
+		effects = ['e_w_dmggolem','e_w_dmgbiggolem']
 	},
 }
 
@@ -390,7 +390,7 @@ var effect_table = {
 		conditions = [
 			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
 			{target = 'skill', check = 'type', value = 'skill'},
-			{target = 'target', value = {type = 'stat', name = 'base', operant = 'eq', value = 'treant' } }
+			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'treant' } }
 		],
 		effects = ['autocrit']
 	},
@@ -400,7 +400,7 @@ var effect_table = {
 		conditions = [
 			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
 			{target = 'skill', check = 'type', value = 'skill'},
-			{target = 'target', value = {type = 'stat', name = 'base', operant = 'eq', value = 'bigtreant' } }
+			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'bigtreant' } }
 		],
 		effects = ['autocrit']
 	},
@@ -410,7 +410,17 @@ var effect_table = {
 		conditions = [
 			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
 			{target = 'skill', check = 'type', value = 'skill'},
-			{target = 'target', value = {type = 'stat', name = 'base', operant = 'eq', value = 'earthgolem' } }
+			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolem' } }
+		],
+		effects = ['autocrit']
+	},
+	e_w_dmgbiggolem = {
+		type = 'trigger',
+		trigger = variables.TR_HIT,
+		conditions = [
+			{target = 'skill', check = 'result', value = variables.RES_HITCRIT},
+			{target = 'skill', check = 'type', value = 'skill'},
+			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolemboss' } }
 		],
 		effects = ['autocrit']
 	},

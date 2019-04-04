@@ -191,6 +191,9 @@ func AdvanceScene():
 			'music':
 				input_handler.SetMusic(NewEffect.value)
 				ReceiveInput = false
+			'music_stop':
+				input_handler.StopMusic(NewEffect.value)
+				ReceiveInput = false
 			'sound':
 				input_handler.PlaySound(NewEffect.value)
 				ReceiveInput = false

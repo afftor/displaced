@@ -8,7 +8,7 @@ var partmaterials = {
 		elvenwood = {hitrate = 10},
 		goblinmetal = {effects = ['gobmetalhandle']},
 		elvenmetal = {effects = ['elfmetalhandle']},
-		bone = {hpmod = 5},
+		bone = {hpmod = 0.05},
 	},
 	Blade = {
 		starting = {damagemod = -0.4},

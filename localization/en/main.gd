@@ -97,6 +97,8 @@ var TranslationDict = {
 	MONSTERFAIRIESFLAVOR = "If not for their nasty nature, I would even consider them appealing.",
 	MONSTERANGRYDWARF = "Angry Dwarf",
 	MONSTERANGRYDWARFFLAVOR = "Dumb but strong for their size. Despite my best attempts, they didn't seem to be up for any sort of negotiation. ",
+	MONSTEREARTHGOLEMBOSS = "Greater Golem",
+	MONSTEREARTHGOLEMBOSSFLAVOR = "Twice as big as normal golem. And twice as angry...",
 	#gearclasses
 	GEARSWORD = "Swords",
 	GEARAXE = "Axes",

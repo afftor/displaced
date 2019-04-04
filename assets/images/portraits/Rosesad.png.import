@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex"
+path="res://.import/RoseSad.png-cde6c0ea5451ed4d43aa71976222e222.stex"
 
 [deps]
 
-source_file="res://assets/images/portraits/Rosesad.png"
-dest_files=[ "res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex" ]
+source_file="res://assets/images/portraits/RoseSad.png"
+dest_files=[ "res://.import/RoseSad.png-cde6c0ea5451ed4d43aa71976222e222.stex" ]
 
 [params]
 

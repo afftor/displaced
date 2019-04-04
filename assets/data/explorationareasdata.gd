@@ -39,7 +39,7 @@ var areas = {
 		stages = 10, 
 		enemygroups = ['caveeasy','cavemedium','cavemedium2','cavemedium3'], 
 		requirements = [{type = "quest_stage", name = 'demitrus', operant = 'eq', value = 1}], 
-		stagedenemies = {}
+		stagedenemies = {10 : "caveboss"}
 		},
 	
 	

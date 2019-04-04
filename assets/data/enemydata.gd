@@ -3,6 +3,7 @@ extends Node
 
 var predeterminatedgroups = {
 	forestboss = {weight = 0.1, group = {5 : 'bigtreant'}, code = 'forestboss', music = 'boss'},
+	caveboss = {weight = 0.1, group = {2 : 'earthgolemboss'}, code = 'caveboss', music = 'boss'},
 	
 	
 	
@@ -142,24 +143,24 @@ var enemylist = {
 		skills = ['attack','golemattack'],
 		passives = [],
 		traits = [],
-		basehp = 250,
+		basehp = 450,
 		basemana = 0,
-		armor = 50,
+		armor = 35,
 		armorpenetration = 0,
-		mdef = 10,
+		mdef = 15,
 		evasion = 0,
-		hitrate = 80,
-		damage = 50,
+		hitrate = 95,
+		damage = 100,
 		speed = 30,
 		resists = {earth = 50, air = 25},
-		xpreward = 30,
+		xpreward = 50,
 		
 		bodyhitsound = 'stone',
 		
-		combaticon = 'golem',
+		combaticon = 'golemalt',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolemloot',
+		loottable = 'earthgolembossloot',
 	},
 	
 	spider = {
@@ -276,5 +277,9 @@ var loottables = {
 	},
 	angrydwarfloot = {
 		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35},{code = 'morsel', min = 1, max = 1, chance = 15}],
+	},
+	earthgolembossloot = {
+		materials = [{code = 'goblinmetal', min = 4, max = 7, chance = 100},{code = 'elvenmetal', min = 3, max = 5, chance = 100}],
+		usables = [{code = 'protectivecharm', min = 1, max = 1, chance = 100}],
 	},
 }

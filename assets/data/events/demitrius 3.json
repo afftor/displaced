@@ -27,6 +27,7 @@
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Demitrius at some distance from the group Demitrius was standing tall with eyes wide open. "},
 {"args":0.5,"effect":"sprite","value":"unfade"},
 {"effect":"gui","value":"gui_normal"},
+{"effect":"music","value":"bosstheme"},
 {"effect":"text","portrait":"DemitriusTalk","sound":null,"source":"DEMITRIUS","value":"Freeze. I know who you are!"},
 {"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Eh?"},
 {"effect":"text","portrait":"Demitrius","sound":null,"source":"DEMITRIUS","value":"You are not of this world!"},

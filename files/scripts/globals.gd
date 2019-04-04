@@ -76,7 +76,7 @@ var globalsettings = {
 	musicmute = false,
 	soundvol = -15,
 	soundmute = false,
-	fullscreen = false,
+	fullscreen = true,
 	textspeed = 60,
 	skipread = false,
 	textmonocolor = false,
@@ -134,13 +134,14 @@ func _init():
 	TranslationServer.add_translation(activetranslation)
 
 func _ready():
-	OS.window_size = Vector2(1280,720)
-	OS.window_position = Vector2(300,0)
+#	OS.window_size = Vector2(1280,720)
+#	OS.window_position = Vector2(300,0)
 	randomize()
 	#Settings and folders
 	settings_load()
 	#LoadEventData()
-	
+#	if globalsettings.fullscreen == true:
+#		OS.window_fullscreen = true
 	#===Necessary to apply translation===
 
 	Items = load("res://files/Items.gd").new()
