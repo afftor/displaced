@@ -19,7 +19,7 @@
 [ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=18]
 
-[node name="Menu" type="Node" index="0"]
+[node name="Menu" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -409,5 +409,51 @@ group = null
 text = "Confirm"
 flat = false
 align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="8"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = "0.1.2
+Fixed ending scene not triggering
+Fixed completed areas still being presented in the list
+Fixed angry dwarves causing issues with loot
+Fixed barrier items being mixed
+0.1.1
+Fixed issues with fullscreen, Added hotkey (F9) and option to toggle fullscreen in menu 
+Fixed gear items selling
+Fixed defeated characters not being able to participate in combat
+Fixed certain issues with some panels on scene change"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "0.1.2
+Fixed ending scene not triggering
+Fixed completed areas still being presented in the list
+Fixed angry dwarves causing issues with loot
+Fixed barrier items being mixed
+0.1.1
+Fixed issues with fullscreen, Added hotkey (F9) and option to toggle fullscreen in menu 
+Fixed gear items selling
+Fixed defeated characters not being able to participate in combat
+Fixed certain issues with some panels on scene change"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
 
 

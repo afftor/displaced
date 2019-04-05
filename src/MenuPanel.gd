@@ -10,6 +10,12 @@ func _ready():
 	for i in $VBoxContainer.get_children():
 		i.connect("pressed", self, "PlayClickSound")
 
+func show():
+	.show()
+	if globals.CurrentScene.get_node("ExploreScreen/combat") != null && globals.CurrentScene.get_node("ExploreScreen/combat").visible:
+		$VBoxContainer/Save.disabled = true
+	else:
+		$VBoxContainer/Save.disabled = false
 
 func OptionsOpen():
 	$Options.open()

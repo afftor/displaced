@@ -33,7 +33,12 @@ func _input(event):
 		else:
 			if globals.CurrentScene.name == 'MainScreen':
 				globals.CurrentScene.openmenu()
-		
+	if event.is_action("F9") && event.is_pressed():
+		OS.window_fullscreen = !OS.window_fullscreen
+		globals.globalsettings.fullscreen = OS.window_fullscreen
+		if globals.globalsettings.fullscreen == false:
+			OS.window_position = Vector2(0,0)
+	
 	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0:
 		if str(int(event.as_text())) in str(range(1,4)):
 			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
@@ -294,10 +299,11 @@ func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 	if get_tree().get_root().has_node('ConfirmPanel') == false:
 		node = load("res://src/ConfirmPanel.tscn").instance()
 		get_tree().get_root().add_child(node)
-		node.set_as_toplevel(true)
 		node.name = 'ConfirmPanel'
 	else:
 		node = get_tree().get_root().get_node("ConfirmPanel")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
 	node.Show(TargetNode, TargetFunction, Text)
 	
 
@@ -524,10 +530,11 @@ func GetTutorialNode():
 	var tutnode
 	if node.has_node('TutorialNode'):
 		tutnode = node.get_node('TutorialNode')
+		node.remove_child(tutnode)
 	else:
 		tutnode = load("res://src/Tutorial.tscn").instance()
 		tutnode.name = 'TutorialNode'
-		node.add_child(tutnode)
+	node.add_child(tutnode)
 	return tutnode
 
 func ActivateTutorial(stage = 'tutorial1'):

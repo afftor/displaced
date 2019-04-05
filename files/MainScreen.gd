@@ -34,13 +34,16 @@ func _ready():
 	$Gate.connect("pressed",self,'explorescreen')
 	
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
-	
 	if debug == true:
+		$ExploreScreen/combat/ItemPanel/debugvictory.show()
 		state.OldEvents['Market'] = 0
 		state.townupgrades['bridge'] = 1
 		state.townupgrades.blacksmith = 2
 		state.OldEvents['bridge'] = 0
-		state.MakeQuest('elves')
+		state.completedquests.append('elves')
+		#state.FinishQuest('elves')
+		#.MakeQuest("demitrus")
+		#state.areaprogress.forestelves = 7
 		for i in state.materials:
 			state.materials[i] = 20
 #		state.materials.goblinmetal = 20
@@ -69,6 +72,9 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'cloth', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
 		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
+		globals.AddItemToInventory(globals.CreateUsableItem('barricade', 2))
+		globals.AddItemToInventory(globals.CreateUsableItem('protectivecharm', 2))
+	
 	
 	
 	globals.call_deferred('EventCheck');

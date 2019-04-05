@@ -41,6 +41,4 @@ var areas = {
 		requirements = [{type = "quest_stage", name = 'demitrus', operant = 'eq', value = 1}], 
 		stagedenemies = {10 : "caveboss"}
 		},
-	
-	
 }

@@ -276,7 +276,8 @@ var loottables = {
 		usables = [{code = 'managrass', min = 1, max = 2, chance = 25},{code = 'lesserpotion', min = 1, max = 1, chance = 15},{code = 'protectivecharm', min = 1, max = 1, chance = 10}],
 	},
 	angrydwarfloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35},{code = 'morsel', min = 1, max = 1, chance = 15}],
+		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
+		usables = [{code = 'morsel', min = 1, max = 1, chance = 15}],
 	},
 	earthgolembossloot = {
 		materials = [{code = 'goblinmetal', min = 4, max = 7, chance = 100},{code = 'elvenmetal', min = 3, max = 5, chance = 100}],

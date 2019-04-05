@@ -8,7 +8,9 @@ func _ready():
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
 	$TabContainer/Text/textspeed.connect("value_changed", self, 'textspeed') 
 	$TabContainer/Text/skipread.connect("pressed", self, 'pressedskipread') 
+	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 	$CloseButton.connect("pressed",self,'close')
+	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
 
 func open():
 	show()
@@ -18,6 +20,12 @@ func open():
 		i.value = globals.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
 		i.editable = !i.get_node("CheckBox").pressed
+
+func togglefullscreen():
+	globals.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
+	OS.window_fullscreen = globals.globalsettings.fullscreen
+	if globals.globalsettings.fullscreen == false:
+		OS.window_position = Vector2(0,0)
 
 func soundsliderchange(value,name):
 	if value <= -39:

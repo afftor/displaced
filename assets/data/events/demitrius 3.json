@@ -36,6 +36,6 @@
 {"effect":"text","portrait":"Demitrius","sound":null,"source":"DEMITRIUS","value":"You must take me for a fool if you think you can delude me with your lies."},
 {"effect":"text","portrait":"DemitriusTalk","sound":null,"source":"DEMITRIUS","value":"Surrender now, or face the Ancestor’s Wrath!"},
 {"args":1,"delay":1,"effect":"sfx","value":"blackscreentransition"},
-{"effect":"state","value":"finish_quest", "args":"demitrius"},
+{"effect":"state","value":"finish_quest", "args":"demitrus"},
 {"effect":"state","value":"make_quest", "args":"demofinish"},
 {"effect":"stop","value":""}]

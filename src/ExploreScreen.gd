@@ -204,7 +204,7 @@ var period
 func showexplorelist():
 	globals.ClearContainer($areaspanel/ScrollContainer/VBoxContainer)
 	for i in globals.explorationares.values():
-		if state.checkreqs(i.requirements) == false:
+		if state.checkreqs(i.requirements) == false || (state.areaprogress.has(i.code) && state.areaprogress[i.code] >= i.stages && i.stages != 0):
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($areaspanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = i.name
@@ -249,6 +249,7 @@ func wincontinue():
 	for i in state.heroes.values():
 		if i.hp <= 0:
 			i.hp = 1
+			i.defeated = false
 	
 	if stage >= area.stages && area.stages > 0:
 		showexplorelist()

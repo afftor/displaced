@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.0'
+const gameversion = '0.1.2'
 
 const worker = preload("res://files/scripts/worker.gd");
 const Item = preload("res://src/ItemClass.gd")
@@ -457,14 +457,16 @@ func CharacterSelect(targetscript, type, function, requirements):
 	var node 
 	if get_tree().get_root().has_node("CharacterSelect"):
 		node = get_tree().get_root().get_node("CharacterSelect")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
 	else:
 		node = load("res://WorkerSelect.tscn").instance()
-		get_tree().get_root().add_child(node)
 		node.name = 'CharacterSelect'
+		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
 	
 	node.show()
-	node.set_as_toplevel(true)
+	#node.set_as_toplevel(true)
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 	
 	var array = []
@@ -495,7 +497,7 @@ func HeroSelect(targetscript, type, function, requirements):
 		AddPanelOpenCloseAnimation(node)
 	
 	node.show()
-	node.set_as_toplevel(true)
+	#node.set_as_toplevel(true)
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 	
 	var array = []
@@ -521,13 +523,16 @@ func ItemSelect(targetscript, type, function, requirements = true):
 	var node 
 	if get_tree().get_root().has_node("ItemSelect"):
 		node = get_tree().get_root().get_node("ItemSelect")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
 	else:
 		node = load("res://ItemSelect.tscn").instance()
 		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
 		node.name = 'ItemSelect'
+	
+	
 	node.show()
-	node.set_as_toplevel(true)
 	
 	ClearContainer(node.get_node("ScrollContainer/GridContainer"))
 	
@@ -716,39 +721,4 @@ func get_last_save():
 	return b
 	pass
 
-
-#func SaveGame(name):
-#	if state.CurEvent != '':
-#		state.CurrentLine = input_handler.GetEventNode().CurrentLine;
-#	var savedict = state.serialize();
-#	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
-#	file.store_line(to_json(savedict))
-#	file.close(
-
-#func LoadGame(filename):
-#	input_handler.BlackScreenTransition(1)
-#	yield(get_tree().create_timer(1), 'timeout')
-#	input_handler.CloseableWindowsArray.clear()
-#	state = load("res://files/scripts/gamestate.gd").new()
-#	state._ready()
-#	CurrentScene.queue_free()
-#	ChangeScene('town');
-#	yield(self, "scene_changed")
-#	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
-#		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
-#		return
-#	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
-#	var savedict = parse_json(file.get_as_text())
-#	file.close()
-#	state.deserialize(savedict)
-#	#ChangeScene("MainMenu")
-#	#setup state node links. do nothing as they are not used now
-#	#open building
-#	if state.CurBuild != '' and state.CurBuild != null:
-#		CurrentScene.get_node(state.CurBuild).show()
-#	#opentextscene
-#	if state.CurEvent != "":
-#		StartEventScene(state.CurEvent, false, state.CurrentLine);
-#	else:
-#		call_deferred('EventCheck');
 

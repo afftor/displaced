@@ -10,7 +10,7 @@ var stackable = false
 var inventory
 
 #Useable data
-var amount setget amount_set
+var amount = 1 setget amount_set
 var useeffects
 var useskill
 var foodvalue = 0
