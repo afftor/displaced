@@ -84,7 +84,7 @@ var checks = {
 		operant = 'gte',
 		value = 10
 	}], 
-	"Outro":
+	"outro":
 	[
 		{type = "event_finished", name = "demitrius 3"}
 	],

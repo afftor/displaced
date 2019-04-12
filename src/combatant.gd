@@ -623,7 +623,7 @@ func createfromname(charname):
 	combaticon = nametemplate.combaticon
 	image = nametemplate.image
 	damage = classtemplate.damage
-	hitrate = 85
+	hitrate = 95
 	name = tr(nametemplate.name)
 	namebase = nametemplate.name
 	flavor = nametemplate.flavor

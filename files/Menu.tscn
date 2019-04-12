@@ -426,7 +426,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 bbcode_enabled = true
-bbcode_text = "0.1.2
+bbcode_text = "Added health bars to heroes on main screen
+0.1.3
+Fixed lumber mill
+Fixed outro ending
+0.1.2
 Fixed ending scene not triggering
 Fixed completed areas still being presented in the list
 Fixed angry dwarves causing issues with loot
@@ -440,7 +444,11 @@ visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "0.1.2
+text = "Added health bars to heroes on main screen
+0.1.3
+Fixed lumber mill
+Fixed outro ending
+0.1.2
 Fixed ending scene not triggering
 Fixed completed areas still being presented in the list
 Fixed angry dwarves causing issues with loot

@@ -26,7 +26,7 @@ var upgradelist = {
 				unlockreqs = [], 
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				bonusdescript = tr("UPGRADELUMBERMILLBONUS"),
-				townnode = "Lumber",
+				townnode = "lumbermill",
 				cost = {goblinmetal = 5, cloth = 5},
 				limitchange = 4
 			}

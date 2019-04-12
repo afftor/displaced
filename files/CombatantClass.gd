@@ -73,6 +73,7 @@ func MakeCharacterFromData(code):
 		var newitem = globals.CreateGearItem(i.item, i.parts)
 		globals.AddItemToInventory(newitem)
 		character.equip(newitem)
+	return character
 
 var charlist = {
 	Arron = {

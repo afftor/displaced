@@ -13,7 +13,7 @@ var areas = {
 		},
 	forestelves = {
 		code = 'forestelves',
-		name = 'Search for Elves', 
+		name = 'Search for Elves',
 		category = 'forest',
 		image = '',
 		stages = 8, 

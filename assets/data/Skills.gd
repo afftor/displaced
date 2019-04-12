@@ -419,14 +419,14 @@ var skilllist = {
 		
 		damagetype = "weapon",
 		skilltype = 'skill',
-		userange = "melee",
+		userange = "any",
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		reqs = [],
 		tags = [],
 
 		temp = ['caster.position'],
-		value = ['caster.damage','/1.3'],
+		value = ['0'],
 		cooldown = 2,
 		manacost = 5,
 

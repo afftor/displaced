@@ -226,8 +226,8 @@ func victory():
 					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
 					rewardsdict.items.append(newitem)
 	
-	globals.ClearContainer($Rewards/HBoxContainer/first)
-	globals.ClearContainer($Rewards/HBoxContainer/second)
+	globals.ClearContainerForced($Rewards/HBoxContainer/first)
+	globals.ClearContainerForced($Rewards/HBoxContainer/second)
 	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in playergroup.values():
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
@@ -252,6 +252,7 @@ func victory():
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*i.xpmod)))
 		subtween.start()
+	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
 	for i in rewardsdict.materials:
@@ -505,8 +506,9 @@ func make_fighter_panel(fighter, spot):
 		panel.get_node("mplabel").show()
 	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.combat_portrait()
-	panel.update_hp()
+	panel.get_node("HP").value = globals.calculatepercent(fighter.hp, fighter.hpmax)
 	panel.get_node("Mana").value = globals.calculatepercent(fighter.mana, fighter.manamax)
+	panel.hp = fighter.hp
 	if fighter.manamax == 0:
 		panel.get_node("Mana").value = 0
 	panel.get_node("Label").text = fighter.name

@@ -40,6 +40,7 @@ func open(hero):
 	$Main/Panel/charandgear/hp/Label.text = str(character.hp) + '/' + str(character.hpmax())
 	$Main/Panel/charandgear/mp.value = globals.calculatepercent(character.mana, character.manamax())
 	$Main/Panel/charandgear/mp/Label.text = str(character.mana) + '/' + str(character.manamax())
+	$Main/Panel/charandgear/xp.value = character.baseexp
 	
 	$Name.text = character.name + ' Level: ' + str(character.level)
 	

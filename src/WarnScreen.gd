@@ -9,4 +9,4 @@ func Accept():
 	hide()
 
 func Quit():
-	get_tree().quit()
+	get_parent().quit()

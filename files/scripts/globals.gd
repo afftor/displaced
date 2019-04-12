@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.2'
+const gameversion = '0.1.3'
 
 const worker = preload("res://files/scripts/worker.gd");
 const Item = preload("res://src/ItemClass.gd")
@@ -76,7 +76,12 @@ var globalsettings = {
 	musicmute = false,
 	soundvol = -15,
 	soundmute = false,
+	
+	#Window settings
 	fullscreen = true,
+	window_size = Vector2(1366,768),
+	window_pos = Vector2(0,0),
+	
 	textspeed = 60,
 	skipread = false,
 	textmonocolor = false,
@@ -109,6 +114,12 @@ func settings_save(value):
 		config.set_value('settings', i, globalsettings[i])
 	config.save(userfolder + "Settings.ini")
 
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		globalsettings.window_size = OS.window_size
+		globalsettings.window_pos = OS.window_position
+		settings_save(globalsettings)
+		get_tree().quit()
 
 func _init():
 	if dir.dir_exists(userfolder + 'saves') == false:
@@ -299,6 +310,12 @@ func ClearContainer(container):
 		if i.name != 'Button':
 			i.hide()
 			i.queue_free()
+
+func ClearContainerForced(container):
+	for i in container.get_children():
+		if i.name != 'Button':
+			i.hide()
+			i.free()
 
 func DuplicateContainerTemplate(container):
 	var newbutton = container.get_node('Button').duplicate()

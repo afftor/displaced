@@ -21,7 +21,8 @@ signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
 signal EventFinished
-
+signal QuestStarted
+signal QuestCompleted
 
 
 func _input(event):
@@ -556,7 +557,7 @@ func ShowGameTip(tip):
 	tipnode.showtip(tip)
 
 func ShowOutline(node):
-	node.material = load('res://files/portret_shader.tres')
+	node.material = load('res://files/portret_shader.tres').duplicate()
 	node.material.set_shader_param('opacity', 1)
 
 func HideOutline(node):

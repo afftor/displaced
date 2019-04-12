@@ -1,22 +1,11 @@
 extends Node
 
-var buildings = {
-	lumbermill = {name = 'Lumbermill', node = 'Lumber', options = ['lumberaddworker','lumberseeworkers','lumberupgrade']}
-	
-}
-
-var buildingoptions = {
-	lumberaddworker = {},
-	lumberseeworkers = {},
-	lumberupgrade = {},
-	
-}
 
 var tasksdict = {
 	woodcutting = {basetimer = 12, energycost = 5,
 	code = 'woodcutting',
 	baselimit = 2,
-	upgradelimit = null,
+	upgradelimit = 'lumbermill',
 	name = tr("HARVESTWOOD"),
 	description = tr('WOODCUTTINGTASKDESCRIPTION'),
 	unlockreqs = [],

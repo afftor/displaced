@@ -6,6 +6,8 @@ var daytime = 0
 
 var newgame = false
 
+var votelinksseen = false
+
 #resources
 var itemidcounter = 0
 var heroidcounter = 0
@@ -51,7 +53,6 @@ func pos_set(value):
 	for p in combatparty:
 		if combatparty[p] == null: continue
 		heroes[combatparty[p]].position = p
-
 
 func _ready():
 	for i in Items.Materials:
@@ -122,6 +123,7 @@ func ProgressMainStage(stage = null):
 
 func MakeQuest(code):
 	activequests.append({code = code, stage = 1})
+	input_handler.emit_signal("QuestStarted", code)
 
 func GetQuest(code):
 	for i in activequests:
@@ -142,6 +144,7 @@ func FinishQuest(code):
 	
 	activequests.erase(tempquest)
 	completedquests.append(tempquest.code)
+	input_handler.emit_signal("QuestCompleted", code)
 
 func StoreEvent(nm):
 	OldEvents[nm] = date

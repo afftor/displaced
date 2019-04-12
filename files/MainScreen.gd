@@ -1,7 +1,6 @@
 extends Node
 
-var blacksmith
-var debug = false
+var debug = true
 
 var gamespeed = 1
 var gamepaused = false
@@ -14,6 +13,7 @@ onready var BS = $BlackScreen;
 
 
 func _ready():
+	get_tree().set_auto_accept_quit(false)
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	globals.CurrentScene = self
 	tasks = state.tasks
@@ -34,24 +34,35 @@ func _ready():
 	$Gate.connect("pressed",self,'explorescreen')
 	
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
+	
+	######Vote stuff
+	
+	input_handler.connect("QuestStarted", self, "VotePanelShow")
+	$VotePanel/Links.connect("pressed", self, "VoteLinkOpen")
+	$VotePanel/Close.connect("pressed", self, "VotePanelClose")
+	
+	####
+	
 	if debug == true:
 		$ExploreScreen/combat/ItemPanel/debugvictory.show()
 		state.OldEvents['Market'] = 0
 		state.townupgrades['bridge'] = 1
-		state.townupgrades.blacksmith = 2
+		state.townupgrades.blacksmith = 0
 		state.OldEvents['bridge'] = 0
+		state.MakeQuest("demofinish")
 		state.completedquests.append('elves')
 		#state.FinishQuest('elves')
-		#.MakeQuest("demitrus")
-		#state.areaprogress.forestelves = 7
+		state.MakeQuest("demitrus")
+		state.areaprogress.cavedemitrius = 9
 		for i in state.materials:
 			state.materials[i] = 20
 #		state.materials.goblinmetal = 20
 #		state.materials.wood = 20
 #		state.materials.elvenwood = 20
+		#state.townupgrades.lumbermill = 1
 		state.decisions.append("blacksmith")
-		combatantdata.MakeCharacterFromData('arron')
-		combatantdata.MakeCharacterFromData('rose')
+		var hero = combatantdata.MakeCharacterFromData('arron')
+		hero = combatantdata.MakeCharacterFromData('rose')
 		combatantdata.MakeCharacterFromData('erika')
 		combatantdata.MakeCharacterFromData('ember')
 		var x = 5
@@ -77,6 +88,9 @@ func _ready():
 	
 	
 	
+	
+	
+	
 	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
 	changespeed($"TimeNode/0speed", false)
@@ -95,6 +109,18 @@ func _ready():
 		EnvironmentColor('night',true)
 	#EnvironmentColor('night', true)
 	set_process(true)
+
+func VotePanelShow(quest):
+	if quest == 'demofinish' && state.votelinksseen == false && debug == false:
+		$VotePanel.show()
+		state.votelinksseen = true
+
+func VoteLinkOpen():
+	OS.shell_open("https://forms.gle/fADzTnSbg94HauBP8")
+	OS.shell_open("https://forms.gle/5qHPJ57ngB61LuBq6")
+
+func VotePanelClose():
+	$VotePanel.hide()
 
 var forgeimage = {
 	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},

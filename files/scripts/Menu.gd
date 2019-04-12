@@ -3,6 +3,9 @@ extends Node
 var lastsave = null
 
 func _ready():
+	
+	get_tree().set_auto_accept_quit(false)
+	
 	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
@@ -18,6 +21,9 @@ func _ready():
 		$DemoPanel.hide()
 	
 	OS.window_fullscreen = globals.globalsettings.fullscreen
+	if OS.window_fullscreen == false:
+		OS.window_size = globals.globalsettings.window_size
+		OS.window_position = globals.globalsettings.window_pos
 	
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
@@ -54,4 +60,6 @@ func options():
 	$Options.open()
 
 func quit():
+	globals.globalsettings.window_size = OS.window_size
+	globals.globalsettings.window_pos = OS.window_position
 	get_tree().quit()
