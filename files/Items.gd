@@ -419,7 +419,7 @@ func gainhealth(target, value):
 	target.hp += value
 
 func itemtofood(item):
-	globals.state.food += item.foodvalue
+	state.food += item.foodvalue
 
 var bonustatsarray = ['damage','damagemod','armor','evasion', 'hitrate','hp', 'hpmod','speed', 'armorpenetration','resistfire', 'resistearth', 'resistair', 'resistwater']
 

@@ -1,4 +1,4 @@
-extends Node
+extends Panel
 
 var currentmission
 
@@ -48,6 +48,7 @@ func activatetutorial(stage):
 	var data = tutorialdict[stage]
 	$RichTextLabel.bbcode_text = data.text
 	currentmission = data
+#warning-ignore:return_value_discarded
 	input_handler.connect(data.trigger, self, 'sendsignal')
 
 func sendsignal(string):

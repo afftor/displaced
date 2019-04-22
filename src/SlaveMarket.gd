@@ -1,9 +1,11 @@
-	extends "res://files/Close Panel Button/ClosingPanel.gd"
+extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var selectedworker
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$ButtonPanel/PurchaseButton.connect("pressed", self, "purchase")
+#warning-ignore:return_value_discarded
 	$ButtonPanel/SellButton.connect('pressed', self, 'shop')
 	globals.AddPanelOpenCloseAnimation($PurchaseMenu)
 
@@ -39,7 +41,7 @@ func PurchaseSlave(worker):
 	input_handler.ShowConfirmPanel(self, "HireConfirm", "Hire this worker for " + str(worker.price) + "?")
 
 func HireConfirm():
-	var newworker = globals.worker.new()
+	var newworker = worker.new()
 	state.money -= selectedworker.price
 	newworker.create(selectedworker)
 

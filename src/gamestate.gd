@@ -299,23 +299,23 @@ func deserialize(tmp):
 	materials = tmp.materials.duplicate()
 	workers.clear()
 	for key in tmp['workers'].keys():
-		var t = globals.worker.new()
+		var t = worker.new()
 		t.deserialize(tmp['workers'][key])
 		workers[int(key)] = t
 	heroes.clear()
 	for key in tmp['heroes'].keys():
-		var t = globals.combatant.new()
+		var t = combatant.new()
 		t.deserialize(tmp['heroes'][key])
 		t.id = int(key)
 		heroes[int(key)] = t
 	heroguild.clear()
 	for key in tmp['heroguild'].keys():
-		var t = globals.combatant.new() #not sure if heroguild consists of combatants, but it has no use now
+		var t = combatant.new() #not sure if heroguild consists of combatants, but it has no use now
 		t.deserialize(tmp['heroguild'][key])
 		heroguild[int(key)] = t
 	items.clear()
 	for key in tmp['items'].keys():
-		var t = globals.Item.new()
+		var t = Item.new()
 		t.deserialize(tmp['items'][key])
 		if t.owner != -1 and t.owner != null:
 			for s in t.availslots:

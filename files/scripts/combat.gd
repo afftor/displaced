@@ -1,5 +1,4 @@
-
-extends Node
+extends Control
 
 var currentenemies
 var area
@@ -66,7 +65,9 @@ func _ready():
 	for i in range(1,13):
 		battlefield[i] = null
 	add_child(CombatAnimations)
+#warning-ignore:return_value_discarded
 	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
+#warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
 
 
@@ -312,7 +313,7 @@ func player_turn(pos):
 #rangetypes melee, any, backmelee
 
 func UpdateSkillTargets():
-	var skill = globals.skills[activeaction]
+	var skill = Skillsdata.skilllist[activeaction]
 	var fighter = activecharacter
 	var targetgroups = skill.allowedtargets
 	var targetpattern = skill.targetpattern
@@ -417,7 +418,7 @@ func enemy_turn(pos):
 	Highlight(pos, 'enemy')
 	
 	for i in fighter.skills:
-		var skill = globals.skills[i]
+		var skill = Skillsdata.skilllist[i]
 		if fighter.cooldowns.has(skill.code) || fighter.mana < skill.manacost:
 			continue
 		if skill.aipatterns.has('attack'):
@@ -458,7 +459,7 @@ func enemy_turn(pos):
 		fighter.taunt = null
 		if playergroup[t_pos].hp > 0:
 			target = playergroup[t_pos];
-			castskill = globals.skills['attack'];
+			castskill = Skillsdata.skilllist['attack'];
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
@@ -618,7 +619,7 @@ func buildenemygroup(enemygroup):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		enemygroup[i] = globals.combatant.new()
+		enemygroup[i] = combatant.new()
 		enemygroup[i].createfromenemy(tempname)
 	
 	for i in enemygroup:
@@ -653,34 +654,34 @@ func summon(montype, limit):
 	if pos.size() == 0: return;
 	var sum_pos = pos[randi() % pos.size()];
 	summons.push_back(sum_pos);
-	enemygroup[sum_pos] = globals.combatant.new();
+	enemygroup[sum_pos] = combatant.new();
 	enemygroup[sum_pos].createfromenemy(montype);
 	enemygroup[sum_pos].combatgroup = 'enemy'
 	battlefield[sum_pos] = enemygroup[sum_pos];
 	make_fighter_panel(battlefield[sum_pos], sum_pos);
-
-func SendSkillEffect(skilleffect, caster, target):
-	var endtargets = []
-	if skilleffect.target == 'self':
-		endtargets.append(caster)
-	elif skilleffect.target == 'target':
-		endtargets.append(target)
-	
-	var data = {caster = caster}
-	if skilleffect.has('value'):
-		data.value = skilleffect.value
-	
-	for i in endtargets:
-		if skilleffect.has('chance') && skilleffect.chance < randf():
-			continue
-		data.target = i
-		globals.skillsdata.call(skilleffect.effect, data)
-	
+#
+#func SendSkillEffect(skilleffect, caster, target):
+#	var endtargets = []
+#	if skilleffect.target == 'self':
+#		endtargets.append(caster)
+#	elif skilleffect.target == 'target':
+#		endtargets.append(target)
+#
+#	var data = {caster = caster}
+#	if skilleffect.has('value'):
+#		data.value = skilleffect.value
+#
+#	for i in endtargets:
+#		if skilleffect.has('chance') && skilleffect.chance < randf():
+#			continue
+#		data.target = i
+#		globals.skillsdata.call(skilleffect.effect, data)
+#
 
 func use_skill(skill_code, caster, target):
 	allowaction = false
 	
-	var skill = globals.skills[skill_code]
+	var skill = Skillsdata.skilllist[skill_code]
 	combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
 	
 	caster.mana -= skill.manacost
@@ -1020,7 +1021,7 @@ func RebuildSkillPanel():
 	ClearSkillPanel()
 	for i in activecharacter.skills:
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
-		var skill = globals.skills[i]
+		var skill = Skillsdata.skilllist[i]
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.get_node("manacost").text = str(skill.manacost)
 		if skill.manacost <= 0:
@@ -1037,7 +1038,7 @@ func RebuildSkillPanel():
 		globals.connectskilltooltip(newbutton, i, activecharacter)
 
 func SelectSkill(skill):
-	skill = globals.skills[skill]
+	skill = Skillsdata.skilllist[skill]
 	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code):
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack');

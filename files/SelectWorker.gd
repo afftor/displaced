@@ -6,8 +6,11 @@ var selectedtool
 
 func _ready():
 	#globals.AddPanelOpenCloseAnimation(self)
+#warning-ignore:return_value_discarded
 	$SelectWorkerButton.connect("pressed", self, 'SelectWorker')
+#warning-ignore:return_value_discarded
 	$SelectToolButton.connect("pressed",self,'SelectTool')
+#warning-ignore:return_value_discarded
 	$ConfirmButton.connect("pressed", self, 'ConfirmTask')
 
 func OpenSelectTab(task, worker):

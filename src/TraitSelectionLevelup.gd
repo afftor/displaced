@@ -3,6 +3,7 @@ extends TextureRect
 var character
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$GoldButton.connect("pressed",self,'goldbuttonpress')
 #	character = globals.combatant.new()
 #	character.createfromname('Arron')

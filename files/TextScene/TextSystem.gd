@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 onready var TextField = $Panel/DisplayText
 onready var ImageSprite = $CharImage
@@ -83,7 +83,9 @@ func _input(event):
 func _ready():
 	set_process(false)
 	globals.AddPanelOpenCloseAnimation($LogPanel)
+#warning-ignore:return_value_discarded
 	$Panel/Log.connect("pressed",self,'OpenLog')
+#warning-ignore:return_value_discarded
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
 	#CurrentScene = SceneData.introdesert
 	add_to_group('pauseprocess')
@@ -285,7 +287,7 @@ func StateEffect(value, args):
 		"finish_quest":
 			state.FinishQuest(args)
 		'worker_add':
-			var newworker = globals.worker.new()
+			var newworker = worker.new()
 			newworker.create(TownData.workersdict[args])
 
 func QuestSet(value, args):

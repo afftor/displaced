@@ -1,4 +1,5 @@
 extends Reference
+class_name worker
 
 var name
 var type

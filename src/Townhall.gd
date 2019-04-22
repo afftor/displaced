@@ -1,13 +1,17 @@
-	extends "res://files/Close Panel Button/ClosingPanel.gd"
+extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var selectedworker
 var selectedupgrade
 
 func _ready():
 	#$ButtonPanel/VBoxContainer/Tasks.connect("pressed",self,'tasklist')
+#warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Upgrades.connect('pressed', self, 'upgradelist')
+#warning-ignore:return_value_discarded
 	$UpgradeDescript/UnlockButton.connect("pressed", self, 'unlockupgrade')
+#warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
+#warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Quests.connect("pressed", $Questlog, 'open')
 	#globals.AddPanelOpenCloseAnimation($TaskList)
 	globals.AddPanelOpenCloseAnimation($UpgradeList)

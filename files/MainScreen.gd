@@ -27,18 +27,27 @@ func _ready():
 		i.connect("pressed",self,'changespeed',[i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
+#warning-ignore:return_value_discarded
 	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
+#warning-ignore:return_value_discarded
 	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
+#warning-ignore:return_value_discarded
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
+#warning-ignore:return_value_discarded
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
+#warning-ignore:return_value_discarded
 	$Gate.connect("pressed",self,'explorescreen')
 	
+#warning-ignore:return_value_discarded
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 	
 	######Vote stuff
 	
+#warning-ignore:return_value_discarded
 	input_handler.connect("QuestStarted", self, "VotePanelShow")
+#warning-ignore:return_value_discarded
 	$VotePanel/Links.connect("pressed", self, "VoteLinkOpen")
+#warning-ignore:return_value_discarded
 	$VotePanel/Close.connect("pressed", self, "VotePanelClose")
 	
 	####
@@ -70,11 +79,13 @@ func _ready():
 			x -= 1
 			for i in state.heroes.values():
 				i.levelup()
-		var worker = globals.worker.new()
-		worker.create(TownData.workersdict.goblin)
-		worker = globals.worker.new()
-		worker.create(TownData.workersdict.elf)
-		worker.energy = 0
+		var _worker = worker.new()
+		_worker.create(TownData.workersdict.goblin)
+		#_worker.energy = 0
+		#isn't this ^ requied?
+		_worker = worker.new()
+		_worker.create(TownData.workersdict.elf)
+		_worker.energy = 0
 		#globals.AddItemToInventory(globals.crea
 		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
@@ -92,9 +103,12 @@ func _ready():
 	
 	
 	globals.call_deferred('EventCheck');
+#warning-ignore:return_value_discarded
 	$testbutton.connect("pressed", self, "testfunction")
 	changespeed($"TimeNode/0speed", false)
+#warning-ignore:return_value_discarded
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
+#warning-ignore:return_value_discarded
 	input_handler.connect("EventFinished", self, "buildscreen")
 	#$TutorialNode.activatetutorial(state.currenttutorial)
 	buildscreen()
@@ -116,7 +130,9 @@ func VotePanelShow(quest):
 		state.votelinksseen = true
 
 func VoteLinkOpen():
+#warning-ignore:return_value_discarded
 	OS.shell_open("https://forms.gle/fADzTnSbg94HauBP8")
+#warning-ignore:return_value_discarded
 	OS.shell_open("https://forms.gle/5qHPJ57ngB61LuBq6")
 
 func VotePanelClose():
@@ -257,7 +273,7 @@ func EnvironmentColor(time, instant = false):
 			'morning':
 				currentcolor = night
 				nextcolor = morning
-				tween.inte
+				#tween.inte
 				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,1), Color(1,1,1,0), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			'day':
 				currentcolor = morning

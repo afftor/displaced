@@ -4,12 +4,14 @@ var currenttask
 var currentworker
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$TaskPanel/StopButton.connect("pressed", self, 'StopTask')
 	globals.AddPanelOpenCloseAnimation($TaskPanel)
+#warning-ignore:return_value_discarded
 	input_handler.connect("WorkerAssigned", self, 'update')
 
 
-func update(args):
+func update():
 	if self.visible == true:
 		BuildSlaveList()
 

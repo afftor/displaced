@@ -5,7 +5,9 @@ var character
 var emptygearicons = {}
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$Traits.connect("pressed", $Traitlist, 'open')
+#warning-ignore:return_value_discarded
 	$ClassInfo.connect("pressed", self, 'ClassInfo')
 	globals.AddPanelOpenCloseAnimation($ClassPanel)
 	for i in globals.gearlist:
@@ -52,7 +54,7 @@ func open(hero):
 	
 	globals.ClearContainer($Main/skillcontainer)
 	for i in character.skills:
-		var skill = globals.skills[i]
+		var skill = Skillsdata.skilllist[i]
 		var newbutton = globals.DuplicateContainerTemplate($Main/skillcontainer)
 		#newbutton.get_node("Label").text = skill.name
 		#newbutton.connect("pressed", self, "SkillTooltip", [skill])

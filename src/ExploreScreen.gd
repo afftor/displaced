@@ -13,10 +13,13 @@ var positiondict = {
 var charpanel = load("res://assets/images/gui/combat/combatpanel.png")
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$AreaProgress/ProceedButton.connect("pressed", self, "startexploration")
+#warning-ignore:return_value_discarded
 	$areaspanel/Return.connect("pressed", self, "ReturnToVillage")
 	globals.CurrentScene = self
 	for i in positiondict:
+#warning-ignore:return_value_discarded
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
 
 
@@ -85,7 +88,7 @@ func StartCombat(data):
 	if typeof(data) == TYPE_ARRAY:
 		enemies = data.duplicate()
 		for i in data:
-			var currentgroup = globals.randomgroups[i]
+			var currentgroup = Enemydata.randomgroups[i]
 			if state.checkreqs(currentgroup.reqs) == false:
 				continue
 			enemygroup[i] = currentgroup
@@ -120,12 +123,14 @@ func makerandomgroup(enemygroup):
 	for i in array:
 		countunits += i.number
 	if countunits > 6:
-		array[randi()%array.size()].size - (countunits-6)
+		#potential error
+		#array[randi()%array.size()].size - (countunits-6)
+		array[randi()%array.size()].number -= (countunits-6)
 	
 	#Assign units to rows
 	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
 	for i in array:
-		var unit = globals.enemylist[i.units]
+		var unit = Enemydata.enemylist[i.units]
 		while i.number > 0:
 			var temparray = []
 			
@@ -182,19 +187,20 @@ func UpdatePositions():
 func openinventory(hero):
 	$Inventory.open(hero)
 
-
-func showareas():
-	var container
-	globals.ClearContainer(container)
-	for i in globals.explorationares:
-		var check = true
-		for k in i.requirements:
-			if state.valuecheck(k) == false:
-				check = false
-		if check == false: continue
-		var newbutton = globals.DuplicateContainerTemplate(container)
-		newbutton.text = i.name
-		newbutton.connect("pressed", self, "startexploration", [i])
+#
+#func showareas():
+#	var container
+#	globals.ClearContainer(container)
+#	#what was this? and for what? did you forget to set container up?
+#	for i in globals.explorationares:
+#		var check = true
+#		for k in i.requirements:
+#			if state.valuecheck(k) == false:
+#				check = false
+#		if check == false: continue
+#		var newbutton = globals.DuplicateContainerTemplate(container)
+#		newbutton.text = i.name
+#		newbutton.connect("pressed", self, "startexploration", [i])
 
 #exploration vars
 var area

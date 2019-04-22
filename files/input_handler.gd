@@ -10,18 +10,31 @@ var BeingAnimated = []
 var SystemMessageNode
 
 
+#warning-ignore:unused_signal
 signal ScreenChanged
+#warning-ignore:unused_signal
 signal BuildingEntered
+#warning-ignore:unused_signal
 signal ItemObtained
+#warning-ignore:unused_signal
 signal MaterialObtained
+#warning-ignore:unused_signal
 signal ExplorationStarted
+#warning-ignore:unused_signal
 signal CombatStarted
+#warning-ignore:unused_signal
 signal CombatEnded
+#warning-ignore:unused_signal
 signal WorkerAssigned
+#warning-ignore:unused_signal
 signal SpeedChanged
+#warning-ignore:unused_signal
 signal UpgradeUnlocked
+#warning-ignore:unused_signal
 signal EventFinished
+#warning-ignore:unused_signal
 signal QuestStarted
+#warning-ignore:unused_signal
 signal QuestCompleted
 
 
@@ -513,6 +526,7 @@ func open_shell(string):
 			path = 'https://www.patreon.com/maverik'
 		'Discord':
 			path = "https://discord.gg/VXSx9Zk"
+#warning-ignore:return_value_discarded
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):

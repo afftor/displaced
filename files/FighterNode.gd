@@ -1,4 +1,4 @@
-extends Node
+extends TextureButton
 
 
 signal signal_RMB
@@ -101,7 +101,7 @@ func defeat():
 	set_process_input(false)
 
 
-func update_shield(): #
+func update_shield(): #FILL COLORS FOR OTHER SHIELD TYPES
 	if fighter.shield <= 0: 
 		self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 0.0))
 		return

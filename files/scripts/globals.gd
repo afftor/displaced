@@ -2,9 +2,9 @@ extends Node
 
 const gameversion = '0.1.3'
 
-const worker = preload("res://files/scripts/worker.gd");
-const Item = preload("res://src/ItemClass.gd")
-const combatant = preload ('res://src/combatant.gd')
+#const worker = preload("res://files/scripts/worker.gd");
+#const Item = preload("res://src/ItemClass.gd")
+#const combatant = preload ('res://src/combatant.gd')
 
 var SpriteDict = {}
 var TranslationData = {}
@@ -32,8 +32,8 @@ var upgradelist
 
 #var combatantdata = load("res://files/CombatantClass.gd").new()
 
-var classes = combatantdata.classlist
-var characters = combatantdata.charlist
+#var classes = combatantdata.classlist
+#var characters = combatantdata.charlist
 var skills
 var effects
 var combateffects
@@ -101,8 +101,8 @@ func settings_load():
 	#updatevolume
 	var counter = 0
 	for i in ['master','music','sound']:
-		AudioServer.set_bus_mute(counter, globals.globalsettings[i+'mute'])
-		AudioServer.set_bus_volume_db(counter, globals.globalsettings[i+'vol'])
+		AudioServer.set_bus_mute(counter, globalsettings[i+'mute'])
+		AudioServer.set_bus_volume_db(counter, globalsettings[i+'vol'])
 		counter += 1
 	
 
@@ -155,13 +155,13 @@ func _ready():
 #		OS.window_fullscreen = true
 	#===Necessary to apply translation===
 
-	Items = load("res://files/Items.gd").new()
-	Enemydata = load("res://assets/data/enemydata.gd").new()
-	Skillsdata = load("res://assets/data/Skills.gd").new()
-	Effectdata = load("res://assets/data/Effects.gd").new()
-	TownData = load("res://files/TownData.gd").new()
-	Traitdata = load("res://assets/data/Traits.gd").new()
-	combatantdata = load("res://files/CombatantClass.gd").new()
+	#Items = load("res://files/Items.gd").new()
+	#Enemydata = load("res://assets/data/enemydata.gd").new()
+	#Skillsdata = load("res://assets/data/Skills.gd").new()
+	#Effectdata = load("res://assets/data/Effects.gd").new()
+	#TownData = load("res://files/TownData.gd").new()
+	#Traitdata = load("res://assets/data/Traits.gd").new()
+	#combatantdata = load("res://files/CombatantClass.gd").new()
 	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
@@ -169,11 +169,11 @@ func _ready():
 	#====================================
 	
 	
-	randomgroups = Enemydata.randomgroups
-	enemylist = Enemydata.enemylist
-	effects = Effectdata.effects
+	#randomgroups = Enemydata.randomgroups
+	#enemylist = Enemydata.enemylist
+	#effects = Effectdata.effects
 	#combateffects = Effectdata.combateffects
-	skills = Skillsdata.skilllist
+	#skills = Skillsdata.skilllist
 	
 	#workersdict = TownData.workersdict
 	
@@ -193,6 +193,7 @@ func logupdate(text):
 
 
 
+#warning-ignore:unused_signal
 signal scene_changed
 
 func ChangeScene(name):
@@ -493,7 +494,7 @@ func CharacterSelect(targetscript, type, function, requirements):
 	for i in array:
 		if requirements == 'notask' && i.task != null:
 			continue
-		var newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 		newnode.get_node("Icon").texture = load(i.icon)
 		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
@@ -521,13 +522,13 @@ func HeroSelect(targetscript, type, function, requirements):
 	var newnode
 	if type == 'heroposition':
 		array = state.heroes.values()
-		newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = tr("REMOVE")
 		newnode.connect('pressed', targetscript, function, [null])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 	
 	for i in array:
-		newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 
 		newnode.get_node("Icon").texture = images.portraits[i.icon]
@@ -568,7 +569,7 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				array.append(i)
 	
 	for i in array:
-		var newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
+		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
 		match type:
 			'gear':
 				input_handler.itemshadeimage(newnode, i)
@@ -655,7 +656,7 @@ func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
-	state = load("res://src/gamestate.gd").new()
+	#state = load("res://src/gamestate.gd").new()
 	state._ready()
 	CurrentScene.queue_free()
 	ChangeScene('town');
@@ -665,21 +666,21 @@ func LoadGame(filename):
 	var savedict = parse_json(file.get_as_text())
 	file.close()
 	
-	state = dict2inst(savedict.state)
+	#state = dict2inst(savedict.state)
 	state.heroes.clear()
 	state.items.clear()
 	state.workers.clear()
-	for i in savedict.heroes:
-		var t = globals.combatant.new()
-		t = dict2inst(i)
-		state.heroes[t.id] = t
+#	for i in savedict.heroes:
+#		var t = combatant.new()
+#		t = dict2inst(i)
+#		state.heroes[t.id] = t
 	for i in savedict.items:
-		var t = globals.Item.new()
+		var t = Item.new()
 		t = dict2inst(i)
 		t.inventory = state.items #no other inventories currently exist
 		state.items[t.id] = t
 	for i in savedict.workers:
-		var t = globals.worker.new()
+		var t = worker.new()
 		t = dict2inst(i)
 		state.workers[t.id] = t
 	
@@ -723,10 +724,10 @@ func datetime_comp(a, b):
 	pass
 
 func get_last_save():
-	var dir = dir_contents(globals.userfolder + 'saves')
+	var dir = dir_contents(userfolder + 'saves')
 	var dated_dir = {}
 	var tmp = File.new()
-	for i in globals.dir_contents(globals.userfolder + 'saves'):
+	for i in dir_contents(userfolder + 'saves'):
 		if i.ends_with('.sav') == false:
 			continue
 		dated_dir[i] = OS.get_datetime_from_unix_time(tmp.get_modified_time(i))

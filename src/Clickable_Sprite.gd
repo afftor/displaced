@@ -32,8 +32,11 @@ func _ready():
 		node.connect('mouse_exited', self, 'deactivate_outline');
 		node.mouse_filter = MOUSE_FILTER_PASS;
 		node.visible = false;
+#warning-ignore:return_value_discarded
 	connect('pressed', self, '_onclick')
+#warning-ignore:return_value_discarded
 	connect('mouse_entered', self, 'activate_outline');
+#warning-ignore:return_value_discarded
 	connect('mouse_exited', self, 'deactivate_outline');
 	add_to_group("char_sprite")
 	set_active_val()

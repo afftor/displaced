@@ -1,4 +1,5 @@
 extends Reference
+class_name combatant
 
 var id
 var name
@@ -568,9 +569,11 @@ func createfromenemy(enemy):
 	mana = manamax
 	skills = template.skills
 	for i in template.resists:
-		self['resist' + i] = template.resists[i]
+		#self['resist' + i] = template.resists[i]
+		set('resist' + i, template.resists[i])
 	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward', 'bodyhitsound', 'flavor']:
-		self[i] = template[i]
+		#self[i] = template[i]
+		set(i, template[i])
 	if template.keys().has('traits'):
 		for t in template.traits:
 			traits[t] = false;
@@ -644,9 +647,10 @@ func equip(item):
 	item.owner = id
 	#adding bonuses
 	for i in item.bonusstats:
-		self[i] += item.bonusstats[i]
+		#self[i] += item.bonusstats[i]
+		set(i, get(i) + item.bonusstats[i])
 	for i in item.effects:
-		var tmp = globals.effects[i].effects;
+		var tmp = Effectdata.effects[i].effects;
 		for e in tmp:
 			apply_effect(e);
 		#addpassiveeffect(i)
@@ -663,10 +667,11 @@ func unequip(item):#NEEDS REMAKING!!!!
 			gear[i] = null
 	#removing bonuses
 	for i in item.bonusstats:
-		self[i] -= item.bonusstats[i]
+		#self[i] -= item.bonusstats[i]
+		set(i, get(i) - item.bonusstats[i])
 	
 	for i in item.effects:
-		var tmp = globals.effects[i].effects;
+		var tmp = Effectdata.effects[i].effects;
 		for e in tmp:
 			remove_effect(e);
 		#removepassiveeffect(i) 
@@ -738,7 +743,7 @@ func portrait_circle():
 
 func createtrait(data, type = 'starter'):
 	var array = []
-	for i in globals.traits.values():
+	for i in Traitdata.traitlist.values():
 		if i.type == type && (data.traits.has(i) == false):
 			array.append([i.code, i.weight])
 	return input_handler.weightedrandom(array)
@@ -751,7 +756,8 @@ func calculate_number_from_string_array(array):
 		if i.find('caster') >= 0:
 			i = i.split('.')
 			if i[0] == 'caster':
-				modvalue = str(self[i[1]])
+				#modvalue = str(self[i[1]])
+				modvalue = str(get(i[1]))
 			elif i[0] == 'target':
 				return ""; #nonexistent yet case of skill value being based completely on target
 		if !modvalue[0].is_valid_float():
@@ -766,7 +772,7 @@ func calculate_number_from_string_array(array):
 
 
 func skill_tooltip_text(skillcode):
-	var skill = globals.skills[skillcode]
+	var skill = Skillsdata.skilllist[skillcode]
 	var text = ''
 	if skill.description.find("%d") >= 0:
 		text += skill.description % calculate_number_from_string_array(skill.value)

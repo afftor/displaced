@@ -12,10 +12,15 @@ func _ready():
 	$ItemCreationWindow.hide()
 	$ItemCreationWindow/MaterialSelect.hide()
 	
+#warning-ignore:return_value_discarded
 	$ButtonPanel/CraftButton.connect("pressed", self, 'chooseitem')
+#warning-ignore:return_value_discarded
 	$ButtonPanel/RepairButton.connect('pressed', self, 'repairitems')
+#warning-ignore:return_value_discarded
 	$RepairPanel/RepairConfirm.connect("pressed", self, 'repairallitems')
+#warning-ignore:return_value_discarded
 	$RepairPanel/RepairAll.connect('pressed', self, 'selectallrepair')
+#warning-ignore:return_value_discarded
 	$ItemCreationWindow/CreateItem.connect("pressed", self, 'CreateItem')
 	$RepairPanel.hide()
 	$ItemSelection.hide()

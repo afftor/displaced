@@ -1,4 +1,5 @@
 extends Reference
+class_name Item
 
 var name = ""
 var id = 0
@@ -60,7 +61,7 @@ func amount_set(value):
 func UseItem(user = null, target = null):
 	var finaltarget
 	for i in effects:
-		var effect = globals.effects[i]
+		var effect = Effectdata.effects[i]
 		if i.taker == 'caster':
 			if user == null:
 				return
@@ -113,7 +114,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 		durability *= parteffectdict.durabilitymod
 	for i in parteffectdict:
 		if self.get(i) != null && i != 'effects':
-			self[i] += parteffectdict[i]
+			#self[i] += parteffectdict[i]
+			set(i, get(i)+parteffectdict[i])
 		elif bonusstats.has(i):
 			bonusstats[i] += parteffectdict[i]
 		elif i == 'effects':
@@ -202,7 +204,7 @@ func tooltiptext():
 func tooltipeffects():
 	var text = ''
 	for i in effects:
-		text += "{color=" + globals.effects[i].textcolor + '|' + globals.effects[i].descript
+		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
 		text += '}\n'
 	return text
 

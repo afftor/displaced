@@ -10,7 +10,9 @@ var textdict = {
 }
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$CheckBox.connect("pressed", self, "disabletips")
+#warning-ignore:return_value_discarded
 	$Close.connect("pressed", self, 'hide')
 
 func showtip(tip):

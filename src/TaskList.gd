@@ -8,9 +8,13 @@ var iterations = 1
 func _ready():
 	hide()
 	globals.AddPanelOpenCloseAnimation($SelectWorker)
+#warning-ignore:return_value_discarded
 	$SelectWorker/SelectWorkerButton.connect("pressed", self, 'SelectWorker')
+#warning-ignore:return_value_discarded
 	$SelectWorker/SelectToolButton.connect("pressed",self,'SelectTool')
+#warning-ignore:return_value_discarded
 	$SelectWorker/ConfirmButton.connect("pressed", self, 'ConfirmTask')
+#warning-ignore:return_value_discarded
 	$SelectWorker/CounterSlider.connect("value_changed", self, "IterationSet")
 
 func tasklist():

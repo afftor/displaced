@@ -12,9 +12,11 @@ func _ready():
 	input_handler.StopMusic()
 	check_last_save()
 	for i in range(0,5):
+#warning-ignore:return_value_discarded
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	
+#warning-ignore:return_value_discarded
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	
 	if globals.globalsettings.warnseen == true:
@@ -39,7 +41,8 @@ func continueb():
 	globals.LoadGame(lastsave.get_file().get_basename());
 
 func newgame():
-	state = load("res://src/gamestate.gd").new()
+	#state = load("res://src/gamestate.gd").new()
+	
 	state.newgame = true
 	state._ready()
 	get_node("/root").remove_child(self)

@@ -3,6 +3,7 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var ItemsToConvert = {}
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$Exchange.connect("pressed", self, 'exchange')
 
 func open():

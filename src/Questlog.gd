@@ -1,5 +1,6 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
+#i think, this variable should be in data as singleton
 var queststext = {
 	elves = {
 		1 : "Search Eastern Forest for Elves",

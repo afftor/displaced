@@ -66,7 +66,7 @@ var chardata = {
 
 func MakeCharacterFromData(code):
 	var data = chardata[code]
-	var character = globals.combatant.new()
+	var character = combatant.new()
 	character.createfromname(data.code)
 	state.heroes[character.id] = character
 	for i in data.gear:
@@ -113,304 +113,306 @@ var charlist = {
 		flavor = 'A dragon gal',
 	},
 }
-
-class combatant:
-	var id
-	var name
-	var base
-	
-	var icon
-	var combaticon
-	
-	var level = 1
-	var baseexp = 0 setget exp_set
-	
-	var xpreward #for enemies
-	
-	var hp = 0 setget hp_set
-	var hppercent = 0
-	var hpmaxvalue = 0
-	var hpmax = 0
-	var defeated = false
-	var mana = 0 setget mana_set
-	var manamax = 0
-	var damage = 0 setget damage_set, damage_get
-	var evasion = 0
-	var hitrate = 0
-	var armor = 0
-	var armorpenetration = 0
-	var mdef = 0
-	var speed = 0
-	var critchance = 5
-	var critmod = 1.5
-	var resistfire = 0
-	var resistearth = 0
-	var resistwater = 0
-	var resistair = 0
-	var image
-	var portrait
-	var combatportrait
-	var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null, lhand = null, neck = null, ring1 = null, ring2 = null}
-	var skills = ['attack']
-	var traits = {}
-	var traitpoints = 0
-	var inactiveskills = []
-	var cooldowns = []
-	var buffs = {}
-	var passives = {skillhit = [], spellhit = [], anyhit = [], endturn = []} # combat passives
-	var classpassives = {}
-	var position
-	var combatgroup
-	var price = 0
-	var loottable
-	var selectedskill = 'attack'
-	var effects = {}
-	#mods
-	var damagemod = 1
-	var hpmod = 1
-	var manamod = 1
-	var xpmod = 1
-	
-	var displaynode
-	
-	var detoriatemod = 1
-	#ai
-	var ai
-	var aiposition
-	var aimemory
-	
-	func damage_set(value):
-		damage = value
-	
-	func damage_get():
-		return damage * damagemod
-	
-	func hpmax():
-		var value = ceil(hpmax*hpmod)
-		hpmaxvalue = value
-		return value
-	
-	func manamax():
-		return ceil(manamax*manamod)
-	
-	func hp_set(value):
-		hp = clamp(value, 0, hpmax())
-		if displaynode != null:
-			displaynode.update_hp()
-		hppercent = hp/hpmax()*100
-	
-	func mana_set(value):
-		mana = clamp(value, 0, manamax())
-		if displaynode != null:
-			displaynode.update_mana()
-	
-	func exp_set(value):
-		baseexp = value
-		while baseexp > 100:
-			baseexp -= 100
-			levelup()
-		
-	
-	func levelup():
-		level += 1
-	
-	func add_buff(buff):#= {caster, code, effects = [{value, stat}], tags, icon, duration}
-		buffs[buff.code] = buff
-		for i in buff.effects:
-			self[i.stat] += i.value
-	
-	func remove_buff(buff):
-		buff = buffs[buff]
-		for i in buff.effects:
-			self[i.stat] -= i.value
-		buffs.erase(buff.code)
-	
-	func createfromenemy(enemy):
-		var template = globals.enemylist[enemy]
-		base = enemy
-		hpmax = template.basehp
-		self.hp = hpmax
-		manamax = template.basemana
-		speed = template.speed
-		mana = manamax
-		skills = template.skills
-		for i in template.resists:
-			self['resist' + i] = template.resists[i]
-		for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward']:
-			self[i] = template[i]
-	
-	func createfromclass(classid):
-		var classtemplate = globals.classes[classid].duplicate()
-		id = state.heroidcounter
-		state.heroidcounter += 1
-		base = classtemplate.code
-		hpmax = classtemplate.basehp
-		self.hp = hpmax
-		manamax = classtemplate.basemana
-		mana = manamax
-		speed = classtemplate.speed
-		skills = classtemplate.skills
-		damage = classtemplate.damage
-		hitrate = 85
-		price = variables.BaseHeroPrice
-		
-		name = combatantdata.namesarray[randi()%combatantdata.namesarray.size()]
-		
-		var newtrait = createtrait(self, 'starter')
-		
-		traits.append(newtrait)
-		
-	
-	func createfromname(charname):
-		var nametemplate = globals.characters[charname]
-		var classid = nametemplate.subclass
-		var classtemplate = globals.classes[classid].duplicate()
-		id = state.heroidcounter
-		state.heroidcounter += 1
-		base = classtemplate.code
-		hpmax = classtemplate.basehp
-		speed = classtemplate.speed
-		self.hp = hpmax
-		manamax = classtemplate.basemana
-		mana = manamax
-		skills = classtemplate.skills
-		icon = nametemplate.icon
-		combaticon = nametemplate.combaticon
-		image = nametemplate.image
-		damage = classtemplate.damage
-		hitrate = 80
-		name = nametemplate.name
-	
-	
-	func checkequipmenteffects():
-		pass
-#		for i in passives.values():
-#			if i.trigger == 'onequip':
-#				checkpassive(i)
-	
-
-	func checkpassive(passive, change = true):
-		var prevresult = passive.enabled
-		var effect = globals.effects[passive.code]
-		
-		var check = true
-		for i in effect.reqs:
-			if input_handler.requirementcombatantcheck(i, self) == false:
-				check = false
-		
-		
-		if prevresult != passive.enabled && change:
-			passive.enabled = check
-			for i in effect.effects:
-				if passive.enabled == false:
-					self[i.effect] -= i.value
-					passives.erase(effect.code)
-				elif passive.enabled == true:
-					self[i.effect] += i.value
-					passives.append(effect.code)
-		
-		return check
-	
-	func applytrait(traitcode):
-		var trait = globals.traits[traitcode]
-		for i in trait.effects():
-			if i.trigger == 'onactive':
-				pass
-			else:
-				addpassiveeffect(i.triggereffect)
-	
-	
-	func seteffect(passive):
-		var effect = globals.effects[passive.code]
-		var state = passive.enabled
-		for i in effect.effects:
-			if state == false:
-				self[i.effect] -= i.value
-				passives.erase(effect.code)
-			elif state == true:
-				self[i.effect] += i.value
-				passives.append(effect.code)
-	
-	func equip(item):
-		
-		for i in item.multislots:
-			if gear[i] != null:
-				unequip(state.items[gear[i]])
-		
-		
-		for i in item.availslots:
-			if gear[i] != null:
-				unequip(state.items[gear[i]])
-			gear[i] = item.id
-		
-		
-		item.owner = id
-		#adding bonuses
-		for i in item.bonusstats:
-			self[i] += item.bonusstats[i]
-		for i in item.effects:
-			addpassiveeffect(i)
-		
-		
-		checkequipmenteffects()
-	
-	func addpassiveeffect(passive):
-		var effect = globals.effects[passive]
-		if !passives.has(effect.trigger):
-			passives[effect.trigger] = []
-		passives[effect.trigger].append(effect)
-	
-	func removepassiveeffect(passive):
-		passives[globals.effects[passive].trigger].erase(globals.effects[passive])
-	
-	func unequip(item):
-		
-		#removing links
-		item.owner = null
-		for i in gear:
-			if gear[i] == item.id:
-				gear[i] = null
-		
-		#removing bonuses
-		for i in item.bonusstats:
-			self[i] -= item.bonusstats[i]
-		
-		for i in item.effects:
-			removepassiveeffect(i)
-		
-		checkequipmenteffects()
-	
-	func hitchance(target):
-		var chance = hitrate - target.evasion
-		if randf() <= chance/100:
-			return true
-		else:
-			return false
-	
-	
-	
-	func death():
-		pass
-	
-	func portrait():
-		if icon != null:
-			return images.portraits[icon]
-	
-	func combat_portrait():
-		if combaticon != null:
-			return images.combatportraits[combaticon]
-	
-	func portrait_circle():
-		if icon != null:
-			return images.circleportraits[combaticon]
-	
-	func createtrait(data, type = 'starter'):
-		var array = []
-		for i in globals.traits.values():
-			if i.type == type && data.traits.has(i) == false:
-				array.append([i.code, i.weight])
-		return input_handler.weightedrandom(array)
-
+#
+#class combatant:
+#	var id
+#	var name
+#	var base
+#
+#	var icon
+#	var combaticon
+#
+#	var level = 1
+#	var baseexp = 0 setget exp_set
+#
+#	var xpreward #for enemies
+#
+#	var hp = 0 setget hp_set
+#	var hppercent = 0
+#	var hpmaxvalue = 0
+#	var hpmax = 0
+#	var defeated = false
+#	var mana = 0 setget mana_set
+#	var manamax = 0
+#	var damage = 0 setget damage_set, damage_get
+#	var evasion = 0
+#	var hitrate = 0
+#	var armor = 0
+#	var armorpenetration = 0
+#	var mdef = 0
+#	var speed = 0
+#	var critchance = 5
+#	var critmod = 1.5
+#	var resistfire = 0
+#	var resistearth = 0
+#	var resistwater = 0
+#	var resistair = 0
+#	var image
+#	var portrait
+#	var combatportrait
+#	var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null, lhand = null, neck = null, ring1 = null, ring2 = null}
+#	var skills = ['attack']
+#	var traits = {}
+#	var traitpoints = 0
+#	var inactiveskills = []
+#	var cooldowns = []
+#	var buffs = {}
+#	var passives = {skillhit = [], spellhit = [], anyhit = [], endturn = []} # combat passives
+#	var classpassives = {}
+#	var position
+#	var combatgroup
+#	var price = 0
+#	var loottable
+#	var selectedskill = 'attack'
+#	var effects = {}
+#	#mods
+#	var damagemod = 1
+#	var hpmod = 1
+#	var manamod = 1
+#	var xpmod = 1
+#
+#	var displaynode
+#
+#	var detoriatemod = 1
+#	#ai
+#	var ai
+#	var aiposition
+#	var aimemory
+#
+#	func damage_set(value):
+#		damage = value
+#
+#	func damage_get():
+#		return damage * damagemod
+#
+#	func hpmax():
+#		var value = ceil(hpmax*hpmod)
+#		hpmaxvalue = value
+#		return value
+#
+#	func manamax():
+#		return ceil(manamax*manamod)
+#
+#	func hp_set(value):
+#		hp = clamp(value, 0, hpmax())
+#		if displaynode != null:
+#			displaynode.update_hp()
+#		hppercent = hp/hpmax()*100
+#
+#	func mana_set(value):
+#		mana = clamp(value, 0, manamax())
+#		if displaynode != null:
+#			displaynode.update_mana()
+#
+#	func exp_set(value):
+#		baseexp = value
+#		while baseexp > 100:
+#			baseexp -= 100
+#			levelup()
+#
+#
+#	func levelup():
+#		level += 1
+#
+#	func add_buff(buff):#= {caster, code, effects = [{value, stat}], tags, icon, duration}
+#		buffs[buff.code] = buff
+#		for i in buff.effects:
+#			#self[i.stat] += i.value
+#			set (i.stat, get(i.stat) + i.value)
+#
+#	func remove_buff(buff):
+#		buff = buffs[buff]
+#		for i in buff.effects:
+#			#self[i.stat] -= i.value
+#			set (i.stat, get(i.stat) - i.value)
+#		buffs.erase(buff.code)
+#
+#	func createfromenemy(enemy):
+#		var template = globals.enemylist[enemy]
+#		base = enemy
+#		hpmax = template.basehp
+#		self.hp = hpmax
+#		manamax = template.basemana
+#		speed = template.speed
+#		mana = manamax
+#		skills = template.skills
+#		for i in template.resists:
+#			self['resist' + i] = template.resists[i]
+#		for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward']:
+#			self[i] = template[i]
+#
+#	func createfromclass(classid):
+#		var classtemplate = globals.classes[classid].duplicate()
+#		id = state.heroidcounter
+#		state.heroidcounter += 1
+#		base = classtemplate.code
+#		hpmax = classtemplate.basehp
+#		self.hp = hpmax
+#		manamax = classtemplate.basemana
+#		mana = manamax
+#		speed = classtemplate.speed
+#		skills = classtemplate.skills
+#		damage = classtemplate.damage
+#		hitrate = 85
+#		price = variables.BaseHeroPrice
+#
+#		name = combatantdata.namesarray[randi()%combatantdata.namesarray.size()]
+#
+#		var newtrait = createtrait(self, 'starter')
+#
+#		traits.append(newtrait)
+#
+#
+#	func createfromname(charname):
+#		var nametemplate = globals.characters[charname]
+#		var classid = nametemplate.subclass
+#		var classtemplate = globals.classes[classid].duplicate()
+#		id = state.heroidcounter
+#		state.heroidcounter += 1
+#		base = classtemplate.code
+#		hpmax = classtemplate.basehp
+#		speed = classtemplate.speed
+#		self.hp = hpmax
+#		manamax = classtemplate.basemana
+#		mana = manamax
+#		skills = classtemplate.skills
+#		icon = nametemplate.icon
+#		combaticon = nametemplate.combaticon
+#		image = nametemplate.image
+#		damage = classtemplate.damage
+#		hitrate = 80
+#		name = nametemplate.name
+#
+#
+#	func checkequipmenteffects():
+#		pass
+##		for i in passives.values():
+##			if i.trigger == 'onequip':
+##				checkpassive(i)
+#
+#
+#	func checkpassive(passive, change = true):
+#		var prevresult = passive.enabled
+#		var effect = globals.effects[passive.code]
+#
+#		var check = true
+#		for i in effect.reqs:
+#			if input_handler.requirementcombatantcheck(i, self) == false:
+#				check = false
+#
+#
+#		if prevresult != passive.enabled && change:
+#			passive.enabled = check
+#			for i in effect.effects:
+#				if passive.enabled == false:
+#					self[i.effect] -= i.value
+#					passives.erase(effect.code)
+#				elif passive.enabled == true:
+#					self[i.effect] += i.value
+#					passives.append(effect.code)
+#
+#		return check
+#
+#	func applytrait(traitcode):
+#		var trait = globals.traits[traitcode]
+#		for i in trait.effects():
+#			if i.trigger == 'onactive':
+#				pass
+#			else:
+#				addpassiveeffect(i.triggereffect)
+#
+#
+#	func seteffect(passive):
+#		var effect = globals.effects[passive.code]
+#		var state = passive.enabled
+#		for i in effect.effects:
+#			if state == false:
+#				self[i.effect] -= i.value
+#				passives.erase(effect.code)
+#			elif state == true:
+#				self[i.effect] += i.value
+#				passives.append(effect.code)
+#
+#	func equip(item):
+#
+#		for i in item.multislots:
+#			if gear[i] != null:
+#				unequip(state.items[gear[i]])
+#
+#
+#		for i in item.availslots:
+#			if gear[i] != null:
+#				unequip(state.items[gear[i]])
+#			gear[i] = item.id
+#
+#
+#		item.owner = id
+#		#adding bonuses
+#		for i in item.bonusstats:
+#			self[i] += item.bonusstats[i]
+#		for i in item.effects:
+#			addpassiveeffect(i)
+#
+#
+#		checkequipmenteffects()
+#
+#	func addpassiveeffect(passive):
+#		var effect = globals.effects[passive]
+#		if !passives.has(effect.trigger):
+#			passives[effect.trigger] = []
+#		passives[effect.trigger].append(effect)
+#
+#	func removepassiveeffect(passive):
+#		passives[globals.effects[passive].trigger].erase(globals.effects[passive])
+#
+#	func unequip(item):
+#
+#		#removing links
+#		item.owner = null
+#		for i in gear:
+#			if gear[i] == item.id:
+#				gear[i] = null
+#
+#		#removing bonuses
+#		for i in item.bonusstats:
+#			self[i] -= item.bonusstats[i]
+#
+#		for i in item.effects:
+#			removepassiveeffect(i)
+#
+#		checkequipmenteffects()
+#
+#	func hitchance(target):
+#		var chance = hitrate - target.evasion
+#		if randf() <= chance/100:
+#			return true
+#		else:
+#			return false
+#
+#
+#
+#	func death():
+#		pass
+#
+#	func portrait():
+#		if icon != null:
+#			return images.portraits[icon]
+#
+#	func combat_portrait():
+#		if combaticon != null:
+#			return images.combatportraits[combaticon]
+#
+#	func portrait_circle():
+#		if icon != null:
+#			return images.circleportraits[combaticon]
+#
+#	func createtrait(data, type = 'starter'):
+#		var array = []
+#		for i in globals.traits.values():
+#			if i.type == type && data.traits.has(i) == false:
+#				array.append([i.code, i.weight])
+#		return input_handler.weightedrandom(array)
+#
 
 
 
