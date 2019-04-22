@@ -2,7 +2,7 @@ extends Reference
 class_name Item
 
 var name = ""
-var id = 0
+var id
 var itembase
 var code
 var icon
@@ -304,6 +304,6 @@ func deserialize(tmp):
 		set(a, tmp[a].duplicate())
 	amount = tmp.amount;
 	inventory = state.items;
-	id = int(id);
-	if owner != null: owner = int(owner);
+	#id = int(id);
+	#if owner != null: owner = int(owner);
 

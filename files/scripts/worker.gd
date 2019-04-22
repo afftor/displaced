@@ -52,8 +52,9 @@ func serialize():
 	return tmp
 
 func deserialize(tmp):
-	var arr = ['name', 'type', 'id', 'task', 'energy', 'maxenergy','icon', 'currenttask', 'model'];
+	var arr = ['name', 'type', 'id', 'task', 'maxenergy','icon', 'currenttask', 'model'];
 	for prop in arr:
 		set(prop, tmp[prop]);
-	id = int(id)
+	energy = tmp.energy
+	#id = int(id)
 	pass

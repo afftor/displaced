@@ -1,7 +1,7 @@
 extends Node
 
 
-var date = 1
+var date := 1
 var daytime = 0
 
 var newgame = false
@@ -9,44 +9,81 @@ var newgame = false
 var votelinksseen = false
 
 #resources
-var itemidcounter = 0
-var heroidcounter = 0
-var workeridcounter = 0
+var itemidcounter := 0
+var heroidcounter := 0
+var workeridcounter := 0
 var money = 0
 var food = 50
-var townupgrades = {}
-var workers = {}
-var heroes = {}
-var items = {}
-var tasks = []
-var materials = {} setget materials_set
+var townupgrades := {}
+var workers := {}
+var heroes := {}
+var items := {}
+var tasks := []
+var materials := {} setget materials_set
 var lognode 
-var oldmaterials = {}
-var unlocks = []
+var oldmaterials := {}
+var unlocks := []
 
-var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
+var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
 
 var CurrentTextScene
 var CurrentScreen
-var CurrentLine = 0
+var CurrentLine := 0
 
-var heroguild = {}
+var heroguild := {}
 
-var OldEvents = {}
-var CurEvent = "" #event name
-var CurBuild = ""
-var keyframes = []
+var OldEvents := {}
+var CurEvent := "" #event name
+var CurBuild := ""
+var keyframes := []
 
 #Progress
 var mainprogress = 0
-var decisions = []
-var activequests = []
-var completedquests = []
-var areaprogress = {}
+var decisions := []
+var activequests := []
+var completedquests := []
+var areaprogress := {}
 var currentarea
 var currenttutorial = 'tutorial1'
-var viewed_tips = []
+var viewed_tips := []
+
+func revert():
+	date = 1
+	daytime = 0
+	newgame = false
+	votelinksseen = false
+	itemidcounter = 0
+	heroidcounter = 0
+	workeridcounter = 0
+	money = 0
+	food = 50
+	townupgrades.clear()
+	workers.clear()
+	heroes.clear()
+	items.clear()
+	tasks.resize(0)
+	materials.clear()
+	lognode = null
+	oldmaterials.clear()
+	unlocks.resize(0)
+	combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} 
+	CurrentTextScene = null
+	CurrentScreen = null
+	CurrentLine = 0
+	heroguild.clear()
+	OldEvents.clear()
+	CurEvent = "" #event name
+	CurBuild = ""
+	keyframes.resize(0)
+	mainprogress = 0
+	decisions.resize(0)
+	activequests.resize(0)
+	completedquests.resize(0)
+	areaprogress.clear()
+	currentarea = null
+	currenttutorial = 'tutorial1'
+	viewed_tips.resize(0)
 
 func pos_set(value):
 	combatparty = value
@@ -272,8 +309,8 @@ func if_hero_level(name, operant, value):
 
 func serialize():
 	var tmp = {}
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial']
-	var arr2 = ['townupgrades', 'tasks', 'materials', 'unlocks', 'combatparty', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
+	var arr2 = ['townupgrades', 'tasks', 'materials', 'unlocks', 'combatparty', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'areaprogress']
 	var arr3 = ['workers', 'heroes', 'items', 'heroguild']
 	for prop in arr:
 		tmp[prop] = get(prop)
@@ -288,8 +325,8 @@ func serialize():
 	return tmp
 
 func deserialize(tmp):
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine', 'currentutorial']
-	var arr2 = ['townupgrades', 'tasks', 'unlocks', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine', 'currentutorial', 'newgame', 'votelinksseen']
+	var arr2 = [ 'tasks', 'unlocks', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests']
 	#var arr3 = ['workers', 'heroes', 'items', 'heroguild']
 	for prop in arr:
 		if get(prop) != null:
@@ -301,30 +338,39 @@ func deserialize(tmp):
 	for key in tmp['workers'].keys():
 		var t = worker.new()
 		t.deserialize(tmp['workers'][key])
-		workers[int(key)] = t
+		t.id = key
+		workers[key] = t
 	heroes.clear()
 	for key in tmp['heroes'].keys():
 		var t = combatant.new()
 		t.deserialize(tmp['heroes'][key])
-		t.id = int(key)
-		heroes[int(key)] = t
+		t.id = key
+		heroes[key] = t
 	heroguild.clear()
 	for key in tmp['heroguild'].keys():
 		var t = combatant.new() #not sure if heroguild consists of combatants, but it has no use now
 		t.deserialize(tmp['heroguild'][key])
-		heroguild[int(key)] = t
+		t.id = key
+		heroguild[key] = t
 	items.clear()
 	for key in tmp['items'].keys():
 		var t = Item.new()
 		t.deserialize(tmp['items'][key])
-		if t.owner != -1 and t.owner != null:
+		t.inventory = items
+		if t.owner != null:
 			for s in t.availslots:
 				heroes[t.owner].gear[s] = t.id
-		items[int(key)] = t
-	date = int(date)
-	CurrentLine = int(CurrentLine)
-	itemidcounter = int(itemidcounter)
-	heroidcounter = int(heroidcounter)
-	workeridcounter = int(workeridcounter)
-	combatparty = tmp.combatparty.duplicate()
+		items[key] = t
+	#date = int(date)
+	#CurrentLine = int(CurrentLine)
+	#itemidcounter = int(itemidcounter)
+	#heroidcounter = int(heroidcounter)
+	#workeridcounter = int(workeridcounter)
+	#combatparty = tmp.combatparty.duplicate()
+	for k in tmp['combatparty'].keys() :
+		combatparty[int(k)] = tmp['combatparty'][k]
+	for k in tmp['areaprogress'].keys() :
+		areaprogress[k] = int(tmp['areaprogress'][k])
+	for k in tmp['townupgrades'].keys() :
+		townupgrades[k] = int(tmp['townupgrades'][k])
 	oldmaterials = materials.duplicate()

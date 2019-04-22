@@ -134,7 +134,7 @@ func selectmaterial(material, part, cost):
 				text += '\n' + Items.stats[i] + ': ' + str(endvalue)
 		else:
 			for k in material.parts[part][i]:
-				text += '\n' + globals.effects[k].descript
+				text += '\n' + Effectdata.effects[k].descript
 	get_node('ItemCreationWindow/' + chosenpartbutton.name + 'Descript').bbcode_text = text
 
 var enditem

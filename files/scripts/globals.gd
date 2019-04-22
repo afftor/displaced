@@ -634,16 +634,17 @@ func QuickSave():
 func SaveGame(name):
 	if state.CurEvent != '':
 		state.CurrentLine = input_handler.GetEventNode().CurrentLine
-	var savedict = {state = null, heroes = [], items = [], workers = []}
-	savedict.state = inst2dict(state)
-	for i in state.heroes.values():
-		savedict.heroes.append(inst2dict(i))
-	for i in state.items.values():
-		savedict.items.append(inst2dict(i))
-	for i in state.workers.values():
-		savedict.workers.append(inst2dict(i))
-	
-	
+#	approach 1, not compatrible with sigletones + still  need reworking
+#	var savedict = {state = null, heroes = [], items = [], workers = []}
+#	savedict.state = inst2dict(state)
+#	for i in state.heroes.values():
+#		savedict.heroes.append(inst2dict(i))
+#	for i in state.items.values():
+#		savedict.items.append(inst2dict(i))
+#	for i in state.workers.values():
+#		savedict.workers.append(inst2dict(i))
+	#approach 2
+	var savedict = state.serialize(); 
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
@@ -656,8 +657,9 @@ func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
+	#approach 1
 	#state = load("res://src/gamestate.gd").new()
-	state._ready()
+	#state._ready()
 	CurrentScene.queue_free()
 	ChangeScene('town');
 	yield(self, "scene_changed")
@@ -667,40 +669,41 @@ func LoadGame(filename):
 	file.close()
 	
 	#state = dict2inst(savedict.state)
-	state.heroes.clear()
-	state.items.clear()
-	state.workers.clear()
+	#state.heroes.clear()
+	#state.items.clear()
+	#state.workers.clear()
 #	for i in savedict.heroes:
 #		var t = combatant.new()
 #		t = dict2inst(i)
 #		state.heroes[t.id] = t
-	for i in savedict.items:
-		var t = Item.new()
-		t = dict2inst(i)
-		t.inventory = state.items #no other inventories currently exist
-		state.items[t.id] = t
-	for i in savedict.workers:
-		var t = worker.new()
-		t = dict2inst(i)
-		state.workers[t.id] = t
+#	for i in savedict.items:
+#		var t = Item.new()
+#		t = dict2inst(i)
+#		t.inventory = state.items #no other inventories currently exist
+#		state.items[t.id] = t
+#	for i in savedict.workers:
+#		var t = worker.new()
+#		t = dict2inst(i)
+#		state.workers[t.id] = t
 	
+	state.deserialize(savedict)
 	#converting floats to ints
 	
-	var tempdict = {}
-	for i in state.combatparty.keys():
-		tempdict[int(i)] = state.combatparty[i]
-	state.combatparty = tempdict.duplicate()
-	tempdict.clear()
+#	var tempdict = {}
+#	for i in state.combatparty.keys():
+#		tempdict[int(i)] = state.combatparty[i]
+#	state.combatparty = tempdict.duplicate()
+#	tempdict.clear()
 	
-	for i in state.areaprogress.keys():
-		tempdict[i] = int(state.areaprogress[i])
-	state.areaprogress = tempdict.duplicate()
-	tempdict.clear()
+#	for i in state.areaprogress.keys():
+#		tempdict[i] = int(state.areaprogress[i])
+#	state.areaprogress = tempdict.duplicate()
+#	tempdict.clear()
 	
-	for i in state.townupgrades.keys():
-		tempdict[i] = int(state.townupgrades[i])
-	state.townupgrades = tempdict.duplicate()
-	tempdict.clear()
+#	for i in state.townupgrades.keys():
+#		tempdict[i] = int(state.townupgrades[i])
+#	state.townupgrades = tempdict.duplicate()
+#	tempdict.clear()
 	CurrentScene.buildscreen()
 	for i in state.tasks:
 		CurrentScene.buildcounter(i)

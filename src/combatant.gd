@@ -12,9 +12,9 @@ var combaticon
 
 var race
 
-var level = 1
-var recentlevelups = 0
-var baseexp = 0 setget exp_set
+var level := 1
+var recentlevelups := 0
+var baseexp := 0 setget exp_set
 
 var xpreward #for enemies
 
@@ -39,7 +39,7 @@ var resistearth = 0
 var resistwater = 0
 var resistair = 0
 var shield = 0 setget set_shield;
-var shieldtype = variables.S_FULL setget set_shield_t;
+var shieldtype := variables.S_FULL setget set_shield_t;
 
 var flavor
 
@@ -50,7 +50,7 @@ var gear = {helm = null, chest = null, gloves = null, boots = null, rhand = null
 
 var skills = ['attack']
 var traits = {} #{'trait':'state'}
-var traitpoints = 0
+var traitpoints := 0
 
 var inactiveskills = []
 var cooldowns = {}
@@ -582,7 +582,7 @@ func createfromenemy(enemy):
 
 func createfromclass(classid):
 	var classtemplate = combatantdata.classlist[classid].duplicate()
-	id = state.heroidcounter
+	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
 	base = classtemplate.code
 	hpmax = classtemplate.basehp
@@ -782,9 +782,9 @@ func skill_tooltip_text(skillcode):
 
 func serialize():
 	var tmp = {};
-	var atr = ['base','name','level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed','critchance','critmod','resistfire','resistearth','resistwater','resistair','shield','shieldtype','traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
+	var atr = ['base','name','level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed', 'critchance', 'critmod', 'resistfire', 'resistearth', 'resistwater', 'resistair', 'shield', 'shieldtype', 'traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
 	var atr1 = ['evasion', 'mdef', 'position', 'mana']
-	var atr2 = ['skills', 'traits', 'buffs', 'static_effects','temp_effects','triggered_effects','oneshot_effects','area_effects','own_area_effects',]
+	var atr2 = ['skills', 'traits', 'buffs', 'static_effects', 'temp_effects', 'triggered_effects', 'oneshot_effects', 'area_effects', 'own_area_effects',]
 	for a in atr:
 		tmp[a] = get(a)
 	for a in atr1:
@@ -804,14 +804,14 @@ func deserialize(tmp):
 	image = nametemplate.image
 	name = tr(nametemplate.name)
 	namebase = nametemplate.name
-	var atr = ['level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed','critchance','critmod','resistfire','resistearth','resistwater','resistair','shield','shieldtype','traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
+	var atr = ['level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed', 'critchance', 'critmod', 'resistfire', 'resistearth', 'resistwater', 'resistair', 'shield', 'shieldtype', 'traitpoints', 'price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
 	var atr1 = ['evasion', 'mdef', 'position', 'mana']
-	var atr2 = ['skills', 'traits', 'buffs', 'static_effects','temp_effects','triggered_effects','oneshot_effects','area_effects','own_area_effects',]
+	var atr2 = ['skills', 'traits', 'buffs', 'static_effects', 'temp_effects', 'triggered_effects', 'oneshot_effects', 'area_effects', 'own_area_effects',]
 	for a in atr:
 		self.set(a, tmp[a])
 	evasion = tmp.evasion;
 	mdef = tmp.mdef;
 	position = tmp.position;
-	mana =tmp.mana;
+	mana = tmp.mana;
 	for a in atr2:
 		set(a, tmp[a].duplicate())
