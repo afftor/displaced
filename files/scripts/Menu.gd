@@ -42,7 +42,7 @@ func continueb():
 
 func newgame():
 	#state = load("res://src/gamestate.gd").new()
-	
+	state.revert()
 	state.newgame = true
 	state._ready()
 	get_node("/root").remove_child(self)
