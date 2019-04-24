@@ -15,9 +15,13 @@ var workeridcounter := 0
 var money = 0
 var food = 50
 var townupgrades := {}
+var town_save
 var workers := {}
+var workers_save
 var heroes := {}
+var heroes_save
 var items := {}
+var items_save
 var tasks := []
 var materials := {} setget materials_set
 var lognode 
@@ -25,13 +29,14 @@ var oldmaterials := {}
 var unlocks := []
 
 var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
-
+var party_save
 
 var CurrentTextScene
 var CurrentScreen
 var CurrentLine := 0
 
 var heroguild := {}
+var guild_save
 
 var OldEvents := {}
 var CurEvent := "" #event name
@@ -44,6 +49,7 @@ var decisions := []
 var activequests := []
 var completedquests := []
 var areaprogress := {}
+var area_save
 var currentarea
 var currenttutorial = 'tutorial1'
 var viewed_tips := []
@@ -308,54 +314,64 @@ func if_hero_level(name, operant, value):
 
 
 func serialize():
+	area_save = areaprogress
+	town_save = townupgrades
+	party_save = combatparty
 	var tmp = {}
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
-	var arr2 = ['townupgrades', 'tasks', 'materials', 'unlocks', 'combatparty', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'areaprogress']
+	var arr2 = ['town_save', 'tasks', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save']
 	var arr3 = ['workers', 'heroes', 'items', 'heroguild']
+	var arr4 = ['workers_save', 'heroes_save', 'items_save', 'guild_save']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
 		tmp[prop] = get(prop).duplicate()
-	for prop in arr3:
+	for prop in range(arr3.size()):
 		var tmp1 = {}
-		var ref = get(prop)
+		var ref = get(arr3[prop])
 		for key in ref.keys():
 			tmp1[key] = ref[key].serialize()
-		tmp[prop] = tmp1
+		tmp[arr4[prop]] = tmp1
 	return tmp
 
-func deserialize(tmp):
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine', 'currentutorial', 'newgame', 'votelinksseen']
-	var arr2 = [ 'tasks', 'unlocks', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests']
-	#var arr3 = ['workers', 'heroes', 'items', 'heroguild']
-	for prop in arr:
-		if get(prop) != null:
-			set(prop, tmp[prop])
-	for prop in arr2:
-		set(prop, tmp[prop].duplicate())
-	materials = tmp.materials.duplicate()
+func deserialize(tmp:Dictionary):
+#	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine', 'currentutorial', 'newgame', 'votelinksseen']
+#	var arr2 = [ 'tasks', 'unlocks', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests']
+#	#var arr3 = ['workers', 'heroes', 'items', 'heroguild']
+#	for prop in arr:
+#		if get(prop) != null:
+#			set(prop, tmp[prop])
+#	for prop in arr2:
+#		set(prop, tmp[prop].duplicate())
+	for prop in tmp.keys():
+		set(prop, tmp[prop])
+	#materials = tmp.materials.duplicate()
 	workers.clear()
-	for key in tmp['workers'].keys():
-		var t = worker.new()
-		t.deserialize(tmp['workers'][key])
+	#for key in tmp['workers'].keys():
+	for key in workers_save.keys():
+		var t := worker.new()
+		t.deserialize(workers_save[key])
 		t.id = key
 		workers[key] = t
 	heroes.clear()
-	for key in tmp['heroes'].keys():
+	#for key in tmp['heroes'].keys():
+	for key in heroes_save.keys():
 		var t = combatant.new()
-		t.deserialize(tmp['heroes'][key])
+		t.deserialize(heroes_save[key])
 		t.id = key
 		heroes[key] = t
 	heroguild.clear()
-	for key in tmp['heroguild'].keys():
+	#for key in tmp['heroguild'].keys():
+	for key in guild_save.keys():
 		var t = combatant.new() #not sure if heroguild consists of combatants, but it has no use now
-		t.deserialize(tmp['heroguild'][key])
+		t.deserialize(guild_save[key])
 		t.id = key
 		heroguild[key] = t
 	items.clear()
-	for key in tmp['items'].keys():
+	#for key in tmp['items'].keys():
+	for key in items_save.keys():
 		var t = Item.new()
-		t.deserialize(tmp['items'][key])
+		t.deserialize(items_save[key])
 		t.inventory = items
 		if t.owner != null:
 			for s in t.availslots:
@@ -367,10 +383,13 @@ func deserialize(tmp):
 	#heroidcounter = int(heroidcounter)
 	#workeridcounter = int(workeridcounter)
 	#combatparty = tmp.combatparty.duplicate()
-	for k in tmp['combatparty'].keys() :
-		combatparty[int(k)] = tmp['combatparty'][k]
-	for k in tmp['areaprogress'].keys() :
-		areaprogress[k] = int(tmp['areaprogress'][k])
-	for k in tmp['townupgrades'].keys() :
-		townupgrades[k] = int(tmp['townupgrades'][k])
+	combatparty.clear()
+	for k in party_save.keys() :
+		combatparty[int(k)] = party_save[k]
+	areaprogress.clear()
+	for k in area_save.keys() :
+		areaprogress[k] = int(area_save[k])
+	townupgrades.clear()
+	for k in town_save.keys() :
+		townupgrades[k] = int(town_save[k])
 	oldmaterials = materials.duplicate()
