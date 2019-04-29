@@ -69,7 +69,7 @@ modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 _sections_unfolded = [ "Margin" ]
 
-[node name="saveloadpanel" type="TextureRect"]
+[node name="saveloadpanel" type="TextureRect" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -171,10 +171,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Savename"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
 [node name="Delete" type="Button" parent="ScrollContainer/VBoxContainer/Button" index="1"]
 
@@ -223,6 +225,7 @@ size_flags_vertical = 1
 custom_styles/read_only = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 focus_mode = 2
 context_menu_enabled = true
 placeholder_text = "savename"
@@ -230,6 +233,6 @@ placeholder_alpha = 0.6
 caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
-_sections_unfolded = [ "Caret", "Placeholder", "custom_styles" ]
+_sections_unfolded = [ "Caret", "Placeholder", "custom_colors", "custom_fonts", "custom_styles" ]
 
 

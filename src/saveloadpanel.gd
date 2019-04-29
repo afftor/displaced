@@ -4,6 +4,7 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var saveloadmode
 
 func _ready():
+#warning-ignore:return_value_discarded
 	$LineEdit.connect("text_entered",self,'PressSaveGame')
 
 func ResetSavePanel():
