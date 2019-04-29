@@ -55,16 +55,18 @@ func deactivate_outline():
 
 func regenerate_click_mask():
 	var t = texture_normal.get_data()
-	var ti = Image.new()
-	ti.copy_from(t)
-	var tti = Image.new()
-	tti.create(rect_size.x, rect_size.y, false, 5)
-	var k = min (tti.get_width()*1.0/ti.get_width(), tti.get_height()*1.0/ti.get_height())
-	ti.resize(int(ti.get_width()*k), int(ti.get_height()*k))
-	var offset = 0.5*(tti.get_size() - ti.get_size())
-	tti.blend_rect(ti, Rect2(Vector2(0,0), ti.get_size()), offset)
+#	3.0.6 legacy code
+#	var ti = Image.new()
+#	ti.copy_from(t)
+#	var tti = Image.new()
+#	tti.create(rect_size.x, rect_size.y, false, 5)
+#	var k = min (tti.get_width()*1.0/ti.get_width(), tti.get_height()*1.0/ti.get_height())
+#	ti.resize(int(ti.get_width()*k), int(ti.get_height()*k))
+#	var offset = 0.5*(tti.get_size() - ti.get_size())
+#	tti.blend_rect(ti, Rect2(Vector2(0,0), ti.get_size()), offset)
 	texture_click_mask = BitMap.new()
-	texture_click_mask.create_from_image_alpha(tti)
+#	texture_click_mask.create_from_image_alpha(tti)
+	texture_click_mask.create_from_image_alpha(t)
 
 func _onclick():
 	if inside_node != null:
