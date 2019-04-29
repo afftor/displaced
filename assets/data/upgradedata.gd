@@ -8,10 +8,27 @@ var upgradelist = {
 		descript = tr("UPGRADEBRIDGEDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_bridge.png'),
 				bonusdescript = tr("UPGRADEBRIDGEBONUS"),
+				townnode = "bridge",
 				cost = {wood = 5},
+			}
+		}
+	},
+	lumbermill = {
+		code = 'lumbermill',
+		name = tr("LUMBERMILLUPGRADE"),
+		positionorder = 2,
+		descript = tr("UPGRADELUMBERMILLDESCRIPT"),
+		levels = {
+			1:{
+				unlockreqs = [], 
+				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
+				bonusdescript = tr("UPGRADELUMBERMILLBONUS"),
+				townnode = "lumbermill",
+				cost = {goblinmetal = 5, cloth = 5},
+				limitchange = 4
 			}
 		}
 	},
@@ -22,10 +39,12 @@ var upgradelist = {
 		descript = tr("UPGRADEMINEDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
+				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				bonusdescript = tr("UPGRADEMINEBONUS"),
+				townnode = "mine",
 				cost = {wood = 5, elvenwood = 5},
+				limitchange = 2
 			}
 		}
 	},
@@ -36,10 +55,12 @@ var upgradelist = {
 		descript = tr("UPGRADEFARMDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}],
+				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
 				bonusdescript = tr("UPGRADEFARMBONUS"),
+				townnode = "farm",
 				cost = {wood = 10},
+				limitchange = 2
 			}
 		}
 	},
@@ -50,16 +71,19 @@ var upgradelist = {
 		descript = tr("UPGRADEHOUSESDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #workersunlocked
-				purchasereqs = true,
+				unlockreqs = [],
+				icon = load("res://assets/images/buildings/upgrade_house.png"),
 				bonusdescript = tr("UPGRADHOUSEBONUS1"),
 				cost = {wood = 10},
+				townnode = "house",
+				limitchange = 4,
 			},
 			2:{
-				unlockreqs = true,
-				purchasereqs = true,
-				bonusdescript = tr("UPGRADHOUSEBONUS1"),
+				unlockreqs = [], 
+				icon = load("res://assets/images/buildings/upgrade_house.png"),
+				bonusdescript = tr("UPGRADHOUSEBONUS2"),
 				cost = {wood = 10, elvenwood = 5},
+				limitchange = 6
 			}
 		}
 	},
@@ -70,16 +94,18 @@ var upgradelist = {
 		descript = tr("UPGRADEBLACKSMITHDESCRIPT"),
 		levels = {
 			1:{
-				unlockreqs = true, #ember unlocked
-				purchasereqs = true,
+				unlockreqs = [{type = "has_hero", name = "Ember"}], 
+				icon = load('res://assets/images/buildings/upgrade_forge.png'),
 				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
+				townnode = "BlacksmithNode",
 				cost = {goblinmetal = 10},
 			},
 			2:{
-				unlockreqs = true,
-				purchasereqs = true,
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_forge2.png'),
 				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
-				cost = {elvenmetal = 10},
+				townnode = "BlacksmithNode",
+				cost = {goblinmetal = 10, elvenmetal = 10},
 			},
 		}
 	},

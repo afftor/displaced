@@ -1,16 +1,17 @@
-
-extends Node
+extends Control
 
 var currentenemies
 var area
 var turns = 0
 var animationskip = false
 
+var encountercode
+
 var combatlog = ''
 
 var instantanimation = null
 
-var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0} 
+var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0}
 
 var CombatAnimations = preload("res://src/CombatAnimations.gd").new()
 
@@ -26,9 +27,13 @@ var playergroup = {}
 var enemygroup = {}
 var currentactor
 
+var summons = []
+
 var activeaction
 var activeitem
 var activecharacter
+
+
 
 var cursors = {
 	default = load("res://assets/images/gui/universal/cursordefault.png"),
@@ -36,8 +41,6 @@ var cursors = {
 	support = load("res://assets/images/gui/universal/cursorsupport.png"),
 	
 }
-
-
 
 var enemypaneltextures = {
 	normal = null,
@@ -62,19 +65,28 @@ func _ready():
 	for i in range(1,13):
 		battlefield[i] = null
 	add_child(CombatAnimations)
-	$ItemPanel/debugvictory.connect("pressed",self, 'victory')
+#warning-ignore:return_value_discarded
+	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
+#warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
 
+
+func cheatvictory():
+	for i in enemygroup.values():
+		i.hp = 0
+	#checkwinlose()
 
 func _process(delta):
 	pass
 
 
-func start_combat(newenemygroup):
+func start_combat(newenemygroup, background, music = 'combattheme'):
+	$Background.texture = images.backgrounds[background]
+	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
-	
+	input_handler.SetMusic(music)
 	fightover = false
 	$Rewards.visible = false
 	allowaction = false
@@ -83,18 +95,38 @@ func start_combat(newenemygroup):
 	buildenemygroup(enemygroup)
 	buildplayergroup(playergroup)
 	#victory()
+	#start combat triggers
+	for p in playergroup.values():
+		p.basic_check(variables.TR_COMBAT_S)
+		p.displaynode.rebuildbuffs()
+	for p in enemygroup.values():
+		p.basic_check(variables.TR_COMBAT_S)
+		p.displaynode.rebuildbuffs()
+	input_handler.ShowGameTip('aftercombat')
 	select_actor()
 
 func FinishCombat():
+	for i in state.heroes.values():
+		i.cooldowns.clear()
+	for i in battlefield:
+		if battlefield[i] != null:
+			battlefield[i].displaynode.queue_free()
+			battlefield[i].displaynode = null
+			battlefield[i] = null
 	hide()
-	globals.call_deferred('EventCheck');
+	input_handler.ShowGameTip('explore')
+	input_handler.emit_signal("CombatEnded", encountercode)
+	input_handler.SetMusic("towntheme")
+	get_parent().wincontinue()
+	get_parent().levelupscheck()
+	globals.call_deferred('EventCheck')
 
 
 func select_actor():
-	checkdeaths()
 	ClearSkillTargets()
 	ClearSkillPanel()
 	ClearItemPanel()
+	checkdeaths()
 	if checkwinlose() == true:
 		return
 	if turnorder.empty():
@@ -102,6 +134,7 @@ func select_actor():
 		calculateorder()
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
+	#currentactor.update_timers()
 	if currentactor < 7:
 		player_turn(currentactor)
 	else:
@@ -109,21 +142,33 @@ func select_actor():
 
 func newturn():
 	for i in playergroup.values() + enemygroup.values():
-		for k in i.buffs.values():
-			k.duration -= 1
-			if k.duration < 0:
-				i.remove_buff(k.code)
-
-func debuff_all():
-	for i in playergroup.values() + enemygroup.values():
-		for k in i.buffs:
-			i.remove_buff(k.code)
+		i.update_temp_effects()
+		i.basic_check(variables.TR_TURN_S)
+		i.displaynode.rebuildbuffs()
+		var cooldowncleararray = []
+		for k in i.cooldowns:
+			i.cooldowns[k] -= 1
+			if i.cooldowns[k] <= 0:
+				cooldowncleararray.append(k)
+		for k in cooldowncleararray:
+			i.cooldowns.erase(k)
 
 func checkdeaths():
 	for i in battlefield:
-		if battlefield[i] != null && battlefield[i].hp <= 0:
-			battlefield[i].defeated = true
-			turnorder.erase(battlefield[i])
+		if battlefield[i] != null && battlefield[i].defeated != true && battlefield[i].hp <= 0:
+			battlefield[i].death()
+			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
+			for j in range(turnorder.size()):
+				if turnorder[j].pos == i:
+					turnorder.remove(j)
+					break
+			#turnorder.erase(battlefield[i])
+			if summons.has(i):
+				battlefield[i].displaynode.queue_free()
+				battlefield[i].displaynode = null
+				battlefield[i] = null
+				enemygroup.erase(i)
+				summons.erase(i);
 
 func checkwinlose():
 	var playergroupcounter = 0
@@ -144,8 +189,20 @@ func checkwinlose():
 		victory()
 		return true
 
+var rewardsdict
+
 func victory():
+	Input.set_custom_mouse_cursor(cursors.default)
+	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
+	$Rewards/CloseButton.disabled = true
+	input_handler.StopMusic()
+	#fastfinish all temp effects
+	for p in playergroup.values():
+		p.remove_all_temp_effects();
+	#on combat ends triggers
+	for p in playergroup.values():
+		p.basic_check(variables.TR_COMBAT_F)
 	
 	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
 	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -153,24 +210,26 @@ func victory():
 	
 	input_handler.PlaySound("victory")
 	
-	var rewardsdict = {materials = {}, items = {}, xp = 0}
+	rewardsdict = {materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null:
 			continue
 		rewardsdict.xp += i.xpreward
-		var loot = {materials = Enemydata.loottables[i.loottable].materials.duplicate()}
-		for j in loot.materials:
-			loot.materials[j] = round(rand_range(loot.materials[j][0], loot.materials[j][1]))
-		globals.AddOrIncrementDict(rewardsdict.materials, loot.materials)
+		var loot = {}
+		if Enemydata.loottables[i.loottable].has('materials'):
+			for j in Enemydata.loottables[i.loottable].materials:
+				if randf()*100 <= j.chance:
+					loot[j.code] = round(rand_range(j.min, j.max))
+			globals.AddOrIncrementDict(rewardsdict.materials, loot)
+		if Enemydata.loottables[i.loottable].has('usables'):
+			for j in Enemydata.loottables[i.loottable].usables:
+				if randf()*100 <= j.chance:
+					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
+					rewardsdict.items.append(newitem)
+	
+	globals.ClearContainerForced($Rewards/HBoxContainer/first)
+	globals.ClearContainerForced($Rewards/HBoxContainer/second)
 	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
-	for i in rewardsdict.materials:
-		var item = Items.Materials[i]
-		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newbutton.texture = item.icon
-		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
-		globals.connecttooltip(newbutton, item.description)
-	globals.ClearContainer($Rewards/HBoxContainer/first)
-	globals.ClearContainer($Rewards/HBoxContainer/second)
 	for i in playergroup.values():
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
@@ -178,31 +237,73 @@ func victory():
 			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
-		i.baseexp += rewardsdict.xp
+		var level = i.level
+		i.baseexp += ceil(rewardsdict.xp*i.xpmod)
 		var subtween = input_handler.GetTweenNode(newbutton)
-		subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-		subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(rewardsdict.xp))
+		if i.level > level:
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
+			subtween.interpolate_callback(input_handler, 1, 'PlaySound', "levelup")
+		elif i.level == level && i.baseexp == 100 :
+			newbutton.get_node("xpbar").value = 100
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))
+		else:
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*i.xpmod)))
 		subtween.start()
+	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
-	for i in battlefield:
-		if battlefield[i] != null:
-			battlefield[i] = null
+	for i in rewardsdict.materials:
+		var item = Items.Materials[i]
+		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.texture = item.icon
+		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
+		state.materials[i] += rewardsdict.materials[i]
+		globals.connectmaterialtooltip(newbutton, item)
+	for i in rewardsdict.items:
+		var newnode = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newnode.hide()
+		newnode.texture = load(i.icon)
+		globals.AddItemToInventory(i)
+		globals.connectitemtooltip(newnode, state.items[globals.get_item_id_by_code(i.itembase)])
+		if i.amount == null:
+			newnode.get_node("Label").visible = false
+		else:
+			newnode.get_node("Label").text = str(i.amount)
+	
+	yield(get_tree().create_timer(1.7), 'timeout')
+	
+	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
+		if i.name == 'Button':
+			continue
+		tween = input_handler.GetTweenNode(i)
+		yield(get_tree().create_timer(1), 'timeout')
+		i.show()
+		input_handler.PlaySound("itemget")
+		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
+	
+	#yield(get_tree().create_timer(1), 'timeout')
+	$Rewards/CloseButton.disabled = false
+	
+	
 
 
 func defeat():
-	$Rewards.visible = true
-	$Rewards.set_meta("result", 'defeat')
-	for i in battlefield:
-		if battlefield[i] != null:
-			battlefield[i] = null
+	globals.CurrentScene.GameOverShow()
+	set_process(false)
+	set_process_input(false)
 
 func player_turn(pos):
 	var selected_character = playergroup[pos]
-	if selected_character.effects.has('stun'):
-		select_actor()
+	selected_character.update_timers()
+	if !selected_character.can_act():
+		call_deferred('select_actor')
 		return
-	
 	allowaction = true
 	activecharacter = selected_character
 	RebuildSkillPanel()
@@ -212,7 +313,7 @@ func player_turn(pos):
 #rangetypes melee, any, backmelee
 
 func UpdateSkillTargets():
-	var skill = globals.skills[activeaction]
+	var skill = Skillsdata.skilllist[activeaction]
 	var fighter = activecharacter
 	var targetgroups = skill.allowedtargets
 	var targetpattern = skill.targetpattern
@@ -257,17 +358,23 @@ func UpdateSkillTargets():
 				continue
 			allowedtargets.ally.append(i)
 	if targetgroups.has('self'):
-		allowedtargets.ally.append(fighter.position)
+		allowedtargets.ally.append(int(fighter.position))
 	Highlight(currentactor,'selected')
-	for i in allowedtargets.enemy:
-		Highlight(i, 'target')
-	for i in allowedtargets.ally:
-		Highlight(i, 'targetsupport')
+	Off_Target_Glow();
+	for f in allowedtargets.enemy:
+		Target_Glow(f);
+	for f in allowedtargets.ally:
+		Target_Glow(f);
+#	for i in allowedtargets.enemy:
+#		Highlight(i, 'target')
+#	for i in allowedtargets.ally:
+#		Highlight(i, 'targetsupport')
 
 func ClearSkillTargets():
 	for i in battlefield:
-		if battlefield[i] != null:
+		if battlefield[i] != null && battlefield[i].displaynode != null:
 			StopHighlight(i)
+	
 
 func CheckMeleeRange(group): #Check if enemy front row is still in place
 	var rval = false
@@ -298,8 +405,9 @@ func FindFighterRow(fighter):
 
 func enemy_turn(pos):
 	var fighter = enemygroup[pos]
-	if fighter.effects.has('stun'):
-		select_actor()
+	fighter.update_timers()
+	if !fighter.can_act():
+		call_deferred('select_actor')
 		return
 	
 	var castskill = []
@@ -310,8 +418,8 @@ func enemy_turn(pos):
 	Highlight(pos, 'enemy')
 	
 	for i in fighter.skills:
-		var skill = globals.skills[i]
-		if fighter.cooldowns.has(skill.code):
+		var skill = Skillsdata.skilllist[i]
+		if fighter.cooldowns.has(skill.code) || fighter.mana < skill.manacost:
 			continue
 		if skill.aipatterns.has('attack'):
 			castskill.append([skill, skill.aipriority])
@@ -340,13 +448,21 @@ func enemy_turn(pos):
 	elif castskill.allowedtargets.has('ally'):
 		for i in enemygroup:
 			target.append([enemygroup[i], 1])
+	elif castskill.allowedtargets.has('self'):
+		target.append([fighter, 1]);
 	
 	target = input_handler.weightedrandom(target)
 	
+	
+	if fighter.taunt != null:
+		var t_pos = int(fighter.taunt);
+		fighter.taunt = null
+		if playergroup[t_pos].hp > 0:
+			target = playergroup[t_pos];
+			castskill = Skillsdata.skilllist['attack'];
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
-	
 	use_skill(castskill.code, fighter, target)
 
 func calculateorder():
@@ -369,59 +485,117 @@ func speedsort(first, second):
 		return false
 
 func make_fighter_panel(fighter, spot):
+	#need to implement clearing panel if fighter is null for the sake of removing summons
+	#or simply implement func clear_fighter_panel(pos)
 	var container = battlefieldpositions[spot]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
+	panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
+	panel.get_node('border').material = $Panel/PlayerGroup/Back/left/Template.get_node('border').material.duplicate()
 	fighter.displaynode = panel
 	panel.name = 'Character'
-	panel.set_script(load("res://files/FigterNode.gd"))
-	panel.position = spot
-	fighter.position = spot
+	panel.set_script(load("res://files/FighterNode.gd"))
+	panel.position = int(spot)
+	fighter.position = int(spot)
 	panel.fighter = fighter
 	panel.connect("signal_RMB", self, "ShowFighterStats")
 	panel.connect("signal_RMB_release", self, 'HideFighterStats')
 	panel.connect("signal_LMB", self, 'FighterPress')
 	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter])
 	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter])
+	if variables.CombatAllyHpAlwaysVisible && fighter.combatgroup == 'ally':
+		panel.get_node("hplabel").show()
+		panel.get_node("mplabel").show()
 	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.combat_portrait()
-	panel.update_hp()
+	panel.get_node("HP").value = globals.calculatepercent(fighter.hp, fighter.hpmax)
 	panel.get_node("Mana").value = globals.calculatepercent(fighter.mana, fighter.manamax)
+	panel.hp = fighter.hp
+	if fighter.manamax == 0:
+		panel.get_node("Mana").value = 0
 	panel.get_node("Label").text = fighter.name
 	container.add_child(panel)
 	panel.rect_position = Vector2(0,0)
+	#setuping target glowing
+	var g_color;
+	if spot < 7:
+		g_color = Color(0.0, 1.0, 0.0, 0.0);
+	else:
+		g_color = Color(1.0, 0.0, 0.0, 0.0);
+	panel.material.set_shader_param('modulate', g_color);
 	panel.visible = true
+	panel.rebuildbuffs()
 
 var fighterhighlighted = false
 
-func FighterMouseOver(fighter):
+func FighterShowStats(fighter):
 	var panel = fighter.displaynode
-	fighterhighlighted = true
 	panel.get_node("hplabel").show()
 	panel.get_node("mplabel").show()
-	panel.get_node("hplabel").text = str(fighter.hp) + '/' + str(fighter.hpmax())
-	panel.get_node("mplabel").text = str(fighter.mana) + '/' + str(fighter.manamax())
+
+func FighterMouseOver(fighter):
+	FighterShowStats(fighter)
 	if allowaction == true && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
 		if fighter.combatgroup == 'enemy':
 			Input.set_custom_mouse_cursor(cursors.attack)
 		else:
 			Input.set_custom_mouse_cursor(cursors.support)
+		var cur_targets = [];
+		cur_targets = CalculateTargets(Skillsdata.skilllist[activeaction], activecharacter, fighter); 
+		Stop_Target_Glow();
+		for c in cur_targets:
+			Target_eff_Glow(c.position);
 
 
 func FighterMouseOverFinish(fighter):
+	if !allowaction: return;
 	var panel = fighter.displaynode
 	fighterhighlighted = false
-	panel.get_node("hplabel").hide()
-	panel.get_node("mplabel").hide()
+	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
+		panel.get_node("hplabel").hide()
+		panel.get_node("mplabel").hide()
 	Input.set_custom_mouse_cursor(cursors.default)
+	Stop_Target_Glow();
+	for f in allowedtargets.enemy:
+		Target_Glow(f);
+	for f in allowedtargets.ally:
+		Target_Glow(f);
 
 func ShowFighterStats(fighter):
 	if fightover == true:
 		return
-	var text = fighter.name + '\nHealth:' + str(fighter.hp) + '/' + str(fighter.hpmax()) + "\nMana" + str(fighter.mana) + '/' + str(fighter.manamax) + '\nDamage:' + str(fighter.damage)
-	for i in ['evasion', 'hitrate','armor','armorpenetration','speed']:
-		text += '\n' + i + ': ' + str(fighter[i])
+	var text = ''
+	if fighter.combatgroup == 'ally':
+
+		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
+		if fighter.manamax > 0:
+			$StatsPanel/mana.text = "Mana: " + str(fighter.mana) + '/' + str(fighter.manamax)
+		else:
+			$StatsPanel/mana.text = ''
+	else:
+		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.hpmax()))) + "%"
+		if fighter.manamax > 0:
+			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.manamax))) + "%"
+		else:
+			$StatsPanel/mana.text = ''
+	$StatsPanel/damage.text = "Damage: " + str(round(fighter.damage)) 
+	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.critchance) + "%/" + str(fighter.critmod*100) + '%' 
+	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
+	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)
+	
+	$StatsPanel/armor.text = "Armor: " + str(fighter.armor) 
+	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.mdef)
+	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.evasion) 
+	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
+
+	for i in ['fire','water','earth','air']:
+		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter['resist'+i]) + " "
 	$StatsPanel.show()
-	$StatsPanel/RichTextLabel.bbcode_text = text
+	$StatsPanel/name.text = tr(fighter.name)
+	$StatsPanel/descript.text = fighter.flavor
+	$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
+	for i in fighter.buffs:
+		text += i + "\n"
+	$StatsPanel/effects.bbcode_text = text
 
 func HideFighterStats():
 	$StatsPanel.hide()
@@ -429,9 +603,9 @@ func HideFighterStats():
 func FighterPress(pos):
 	if allowaction == false || (!allowedtargets.enemy.has(pos) && !allowedtargets.ally.has(pos)):
 		return
+	ClearSkillTargets()
 	ClearItemPanel()
 	ClearSkillPanel()
-	ClearSkillTargets()
 	use_skill(activeaction, activecharacter, battlefield[pos])
 
 
@@ -445,7 +619,7 @@ func buildenemygroup(enemygroup):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		enemygroup[i] = combatantdata.combatant.new()
+		enemygroup[i] = combatant.new()
 		enemygroup[i].createfromenemy(tempname)
 	
 	for i in enemygroup:
@@ -456,8 +630,7 @@ func buildenemygroup(enemygroup):
 		make_fighter_panel(battlefield[i], i)
 
 func buildplayergroup(group):
-	var newgroup =  {}
-	
+	var newgroup = {}
 	for i in group:
 		if group[i] == null:
 			continue
@@ -468,94 +641,155 @@ func buildplayergroup(group):
 		newgroup[i] = fighter
 	playergroup = newgroup
 
-func SendSkillEffect(skilleffect, caster, target):
-	var endtargets = []
-	if skilleffect.target == 'self':
-		endtargets.append(caster)
-	elif skilleffect.target == 'target':
-		endtargets.append(target)
-	
-	var data = {caster = caster}
-	if skilleffect.has('value'):
-		data.value = skilleffect.value
-	
-	for i in endtargets:
-		if skilleffect.has('chance') && skilleffect.chance < randf():
-			continue
-		data.target = i
-		globals.skillsdata.call(skilleffect.effect, data)
-	
+func summon(montype, limit):
+	# for now summoning is implemented only for opponents
+	# cause i don't know if ally summons must be player- or ai-controlled
+	# and don't know if it is possible to implement ai-controlled ally
+	if summons.size() >= limit: return
+	#find empty slot in enemy group
+	var group = [7,8,9,10,11,12];
+	var pos = [];
+	for p in group:
+		if battlefield[p] == null: pos.push_back(p);
+	if pos.size() == 0: return;
+	var sum_pos = pos[randi() % pos.size()];
+	summons.push_back(sum_pos);
+	enemygroup[sum_pos] = combatant.new();
+	enemygroup[sum_pos].createfromenemy(montype);
+	enemygroup[sum_pos].combatgroup = 'enemy'
+	battlefield[sum_pos] = enemygroup[sum_pos];
+	make_fighter_panel(battlefield[sum_pos], sum_pos);
+#
+#func SendSkillEffect(skilleffect, caster, target):
+#	var endtargets = []
+#	if skilleffect.target == 'self':
+#		endtargets.append(caster)
+#	elif skilleffect.target == 'target':
+#		endtargets.append(target)
+#
+#	var data = {caster = caster}
+#	if skilleffect.has('value'):
+#		data.value = skilleffect.value
+#
+#	for i in endtargets:
+#		if skilleffect.has('chance') && skilleffect.chance < randf():
+#			continue
+#		data.target = i
+#		globals.skillsdata.call(skilleffect.effect, data)
+#
 
-func use_skill(skill, caster, target):
-	var debugtext = caster.name + ' uses ' + skill + ' on ' + target.name
+func use_skill(skill_code, caster, target):
 	allowaction = false
 	
-	
-	skill = globals.skills[skill]
+	var skill = Skillsdata.skilllist[skill_code]
+	combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
 	
 	caster.mana -= skill.manacost
-	
-	
-	#making skill effects dict
-	var skilleffects = {oncast = [], onhit = []}
+	var endturn = !skill.tags.has('instant');
 	
 	for i in skill.casteffects:
-		skilleffects[i.period].append(i)
-	
-	for i in skilleffects.oncast:
-		SendSkillEffect(i, caster, target)
-	
-	var animations = skill.sfx
-	var animationdict = {windup = [], predamage = []}
+		var tmp = Effectdata.effect_table[i]
+		if tmp.trigger != variables.TR_CAST:
+			continue
+		caster.apply_effect(i)
+	caster.basic_check(variables.TR_CAST) #can do this as on_skill_check(), but this can lead to more code rewriting, since this reqires providing access to skill parameters that are not yet determined
 	
 	var targets = CalculateTargets(skill, caster, target)
-	#sort animations
-	for i in animations:
-		animationdict[i.period].append(i)
+
+	var repeat = 1;
+	if skill.has('repeat'):
+		repeat = skill.repeat;
 	
-	#casteranimations
-	
-	for i in animationdict.windup:
-		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
-		CombatAnimations.call(i.code, sfxtarget)
-		yield(CombatAnimations, 'pass_next_animation')
-	
-	if animationdict.windup.size() > 0:
-		yield(CombatAnimations, 'cast_finished')
-	
-	for i in targets:
+	for n in range(repeat):
+		var finalhit = n == repeat - 1
+		if target.hp <= 0:
+			UpdateSkillTargets();
+			var new_targets = [];
+			for t in allowedtargets.ally:
+				new_targets.push_back(playergroup[t]);
+			for t in allowedtargets.enemy:
+				new_targets.push_back(enemygroup[t]);
+			if new_targets.size() == 0:
+				break;
+			target = new_targets[int(randf()*new_targets.size())];
+			targets = CalculateTargets(skill, caster, target) 
+		var animations = skill.sfx
+		var animationdict = {windup = [], predamage = [], postdamage = []}
 		
-		for j in animationdict.predamage:
-			var sfxtarget = ProcessSfxTarget(j.target, caster, i)
-			CombatAnimations.call(j.code, sfxtarget)
+		
+		#sort animations
+		for i in animations:
+			animationdict[i.period].append(i)
+		
+		#casteranimations
+		if skill.sounddata.initiate != null:
+			input_handler.PlaySound(skill.sounddata.initiate)
+		for i in animationdict.windup:
+			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
+			CombatAnimations.call(i.code, sfxtarget)
 			yield(CombatAnimations, 'pass_next_animation')
 		
-		if animationdict.predamage.size() > 0:
-			yield(CombatAnimations, 'predamage_finished')
+		if animationdict.windup.size() > 0:
+			yield(CombatAnimations, 'cast_finished')
+		for i in targets:
+			if skill.sounddata.strike != null:
+				if skill.sounddata.strike == 'weapon':
+					input_handler.PlaySound(get_weapon_sound(caster))
+				else:
+					input_handler.PlaySound(skill.sounddata.strike)
+			for j in animationdict.predamage:
+				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
+				CombatAnimations.call(j.code, sfxtarget)
+				yield(CombatAnimations, 'pass_next_animation')
+			if animationdict.predamage.size() > 0:
+				yield(CombatAnimations, 'predamage_finished')
+			if skill.damagetype == 'summon':
+				summon(skill.value[0], skill.value[1]);
+			else: 
+				execute_skill(skill_code, caster, i);
+			
+			#hit landed animation
+			
+			if skill.sounddata.hit != null:
+				if skill.sounddata.hittype == 'absolute':
+					input_handler.PlaySound(skill.sounddata.hit)
+				elif skill.sounddata.hittype == 'bodyarmor':
+					input_handler.PlaySound(calculate_hit_sound(skill, caster, target))
+			for j in animationdict.postdamage:
+				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
+				CombatAnimations.call(j.code, sfxtarget)
+				yield(CombatAnimations, 'pass_next_animation')
+			if animationdict.postdamage.size() > 0:
+				yield(CombatAnimations, 'postdamage_finished')
 		
-		if hitchance(skill,caster,i) == 'hit':
-			execute_skill(skill, caster, i)
-			for j in skilleffects.onhit:
-				SendSkillEffect(j, caster, i)
-		else:
-			miss(target)
-
-	
-	
-	
+		if animationdict.postdamage.size() > 0:
+			yield(CombatAnimations, 'alleffectsfinished')
+		target.displaynode.rebuildbuffs()
+		checkdeaths()
+		if target.displaynode != null:
+			target.displaynode.rebuildbuffs()
+		checkdeaths()
 	
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
 		SelectSkill('attack')
 	
-	if animationdict.predamage.size() > 0:
-		yield(CombatAnimations, 'alleffectsfinished')
-	
+
+	caster.displaynode.rebuildbuffs()
 	if fighterhighlighted == true:
 		FighterMouseOver(target)
 	#print(caster.name + ' finished attacking') 
-	select_actor()
+	if endturn or caster.hp <= 0 or !caster.can_act():
+		#on end turn triggers
+		caster.basic_check(variables.TR_TURN_F)
+		call_deferred('select_actor')
+	else:
+		allowaction = true
+		RebuildSkillPanel()
+		RebuildItemPanel()
+		SelectSkill(activeaction)
+
 
 func ProcessSfxTarget(sfxtarget, caster, target):
 	match sfxtarget:
@@ -567,6 +801,14 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 
 var rows = {
+	1:[1,4],
+	2:[2,5],
+	3:[3,6],
+	4:[7,10],
+	5:[8,11],
+	6:[9,12],
+} # was completely non-intuitive because there were columns stored not rows
+var lines = {
 	1 : [1,2,3],
 	2 : [4,5,6],
 	3 : [7,8,9],
@@ -584,8 +826,6 @@ func CalculateTargets(skill, caster, target):
 	else:
 		targetgroup = 'enemy'
 	
-	
-	
 	match skill.targetpattern:
 		'single':
 			array = [target]
@@ -595,37 +835,29 @@ func CalculateTargets(skill, caster, target):
 					for j in rows[i]:
 						if battlefield[j] != null && battlefield[j].defeated != true:
 							array.append(battlefield[j])
+		'line':
+			for i in lines:
+				if lines[i].has(target.position):
+					for j in lines[i]:
+						if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
 		'all':
-			for i in battlefield:
-				if i in range(1,7) && targetgroup == 'player':
-					array.append(battlefield[i])
-				elif i in range(7, 13) && targetgroup == 'enemy':
-					array.append(battlefield[i])
+			for j in battlefield:
+				if j in range(1,7) && targetgroup == 'player':
+					if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
+				elif j in range(7, 13) && targetgroup == 'enemy':
+					if battlefield[j] != null && battlefield[j].defeated != true:
+							array.append(battlefield[j])
 	#print(array)
 	return array
-
-func hitchance(skill, caster, target):
-	var rval
-	
-	
-	if skill.skilltype == 'item' || caster.combatgroup == target.combatgroup || hitchancevalue(skill, caster, target) > rand_range(0,100):
-		rval = 'hit'
-	else:
-		rval = 'miss'
-	
-	return rval
-
-func hitchancevalue(skill, caster, target):
-	var rval = 0
-	rval = caster.hitrate - target.evasion
-	return rval
 
 func calculate_number_from_string_array(array, caster, target):
 	var endvalue = 0
 	var firstrun = true
 	for i in array:
 		var modvalue = i
-		if i.find('.') >= 0:
+		if (i.find('caster') >= 0) or (i.find('target') >= 0):
 			i = i.split('.')
 			if i[0] == 'caster':
 				modvalue = str(caster[i[1]])
@@ -635,26 +867,25 @@ func calculate_number_from_string_array(array, caster, target):
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
 			else:
-				input_handler.string_to_math(endvalue, modvalue)
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
 		else:
 			endvalue += float(modvalue)
 		firstrun = false
 	return endvalue
 
 func execute_skill(skill, caster, target):
+	var ref = Skillsdata.skilllist[skill]
+	if ref.cooldown > 0:
+		caster.cooldowns[skill] = ref.cooldown
+	var s_skill = Skillsdata.S_Skill.new(caster, target)
+	s_skill.createfromskill(skill)
+	s_skill.hit_roll()
 	var endvalue = 0
-	
-	
-	var crit = false
-	if caster.critchance >= randf()*100:
-		crit = true
-	
-	#damage calculation
-	
-	endvalue = calculate_number_from_string_array(skill.value, caster, target)
-	
+	#value pre_calculation, using in triggers
+	endvalue = calculate_number_from_string_array(s_skill.long_value, caster, target)
+	s_skill.temp = calculate_number_from_string_array(s_skill.temp, caster, target)
 	var rangetype
-	if skill.userange == 'weapon':
+	if s_skill.userange == 'weapon':
 		if caster.gear.rhand == null:
 			rangetype = 'melee'
 		else:
@@ -662,97 +893,57 @@ func execute_skill(skill, caster, target):
 			rangetype = weapon.weaponrange
 	if rangetype == 'melee' && FindFighterRow(caster) == 'backrow' && !CheckMeleeRange(caster.combatgroup):
 		endvalue /= 2
-	
-	var damagetype
-	var extradamage = []
-	
-	#onhiteffects
-	if skill.skilltype in ['skill', 'spell']:
-		for i in caster.passives[skill.skilltype+'hit'] + caster.passives['anyhit']:
-			var passive = globals.combateffects[globals.effects[i].triggereffect]
-			if checkreqs(passive, caster, target) == false:
-				continue
-			
-			var neweffect = passive.effectvalue
-			var newvalue
-			if passive.effect != 'buff':
-				newvalue = calculate_number_from_string_array(neweffect.value, caster, target)
-			var subtarget
-			if passive.has('receiver'):
-				if passive.receiver == 'caster':
-					subtarget = caster
-				elif passive.receiver == 'target':
-					subtarget = target
-			match passive.effect:
-				'skillmod':
-					match neweffect.type:
-						'damagemod':
-							endvalue *= (1+newvalue)
-						'damage':
-							endvalue += newvalue
-					
-				'gainstat':
-					subtarget[neweffect.type] += newvalue
-				'buff':
-					var buff = makebuff(passive.effectvalue, caster, target)
-					subtarget.add_buff(buff)
-				'extradamage':
-					extradamage.append({damage_dict = {value = newvalue, element = neweffect.element, tags = [], type = neweffect.type}, target = subtarget})
-	
-	
-	if crit == true:
-		endvalue *= caster.critmod
-	
-	
-	#damage type
-	if skill.damagetype == 'weapon':
-		damagetype = 'phys'
+	s_skill.value = endvalue
+	#apply triggers
+	for t in s_skill.casteffects:
+		s_skill.apply_effect(t, variables.TR_HIT)
+	caster.on_skill_check(s_skill, variables.TR_HIT)
+	target.on_skill_check(s_skill, variables.TR_DEF)
+	#apply resists and modifiers
+	if s_skill.hit_res == variables.RES_MISS:
+		miss(target)
+		combatlogadd(target.name + " evades the damage.")
+		return
+	s_skill.calculate_dmg()
+	var text = '\n'
+	if s_skill.hit_res == variables.RES_CRIT:
+		text += "[color=yellow]Critical!![/color] "
+	if s_skill.tags.has('heal'):
+		text += target.name + " is healed. (" + str(s_skill.value) + ")"
+	elif s_skill.tags.has("mana"):
+		text += target.name + "'s mana restored. (" + str(s_skill.value) + ")"
 	else:
-		damagetype = skill.damagetype
-	
-	var damage_dict = {value = endvalue, element = damagetype, type = skill.skilltype, tags = skill.tags}
-	
-	
-	deal_damage(damage_dict, caster, target)
-	for i in extradamage:
-		deal_damage(i.damage_dict, caster, i.target)
+		text += target.name + " is hit. (" + str(s_skill.value) + ")"
+	combatlogadd(text)
+	#deal damage
+	if s_skill.tags.has('heal'): 
+		target.heal(s_skill.value)
+	elif s_skill.tags.has("mana"): 
+		pass #
+	else: 
+		target.deal_damage(s_skill.value, s_skill.damagesrc)
+		for t in s_skill.casteffects:
+            s_skill.apply_effect(t, variables.TR_POSTDAMAGE)
+		caster.on_skill_check(s_skill, variables.TR_POSTDAMAGE)
+	if target.hp <= 0:
+		caster.basic_check(variables.TR_KILL)
+	#checkdeaths()
+	Off_Target_Glow();
 
-
-func deal_damage(damage_dict, caster, target):
-	var endvalue = damage_dict.value
-	var damagetype = damage_dict.element
-	var type = damage_dict.type
-	var reduction = 0
-	
-	if type == 'skill':
-		reduction = max(0, target.armor - caster.armorpenetration)
-	elif type == 'spell':
-		reduction = max(0, target.mdef)
-	if !damage_dict.tags.has('heal'):
-		endvalue = endvalue * (float(100 - reduction)/100)
-	
-	
-	if damagetype in ['fire','water','air','earth']:
-		endvalue = endvalue * ((100 - target['resist' + damagetype])/100)
-
-	if damage_dict.tags.has('heal'):
-		target.hp += ceil(endvalue)
-	else:
-		target.hp -= ceil(endvalue)
 
 func miss(fighter):
 	CombatAnimations.miss(fighter.displaynode)
 
-func makebuff(buff, caster, target):
-	var newbuff = {code = buff.code, caster = caster, duration = buff.duration, effects = [], tags = []}
-	if buff.has('icon'):
-		newbuff.icon = buff.icon
-	for i in buff.effects:
-		var value = calculate_number_from_string_array(i.value, caster, target)
-		var buffeffect = {value = value, stat = i.stat}
-		newbuff.effects.append(buffeffect)
-	
-	return newbuff
+#func makebuff(buff, caster, target):
+#	var newbuff = {code = buff.code, caster = caster, duration = buff.duration, effects = [], tags = []}
+#	if buff.has('icon'):
+#		newbuff.icon = buff.icon
+#	for i in buff.effects:
+#		var value = calculate_number_from_string_array(i.value, caster, target)
+#		var buffeffect = {value = value, stat = i.stat}
+#		newbuff.effects.append(buffeffect)
+#
+#	return newbuff
 
 func checkreqs(passive, caster, target):
 	var rval = true
@@ -771,16 +962,57 @@ func Highlight(pos, type):
 	match type:
 		'selected':
 			input_handler.SelectionGlow(node)
-		'target':
-			input_handler.TargetGlow(node)
-		'targetsupport':
-			input_handler.TargetSupport(node)
-		'enemy':
-			input_handler.TargetEnemyTurn(node)
+#		'target':
+#			input_handler.TargetGlow(node)
+#		'targetsupport':
+#			input_handler.TargetSupport(node)
+#		'enemy':
+#			input_handler.TargetEnemyTurn(node)
 
 func StopHighlight(pos):
 	var node = battlefieldpositions[pos].get_node("Character")
 	input_handler.StopTweenRepeat(node)
+
+func Target_eff_Glow (pos):
+	var node = battlefieldpositions[pos].get_node("Character");
+	if node == null: return;
+	var temp
+	
+	temp = Color(1.0,0.0,1.0,1.0);
+	node.get_node('border').material.set_shader_param('modulate', temp);
+
+func Target_Glow (pos):
+	var node = battlefieldpositions[pos].get_node("Character");
+	if node == null: return;
+	var temp
+	if pos in range(1,7):
+		temp = Color(0.0,1.0,0.0,1.0);
+	else:
+		temp = Color(1.0,0.0,0.0,1.0);
+	node.get_node('border').visible = true;
+	node.get_node('border').material.set_shader_param('modulate', temp);
+
+func Stop_Target_Glow ():
+	for pos in range(1,13):
+		var p_node = battlefieldpositions[pos];
+		if !p_node.has_node('Character'): continue;
+		var node = p_node.get_node("Character");
+		#if node == null: continue;
+		#node.material.shader_param.Modulate.a = 0.0;
+		var temp = node.get_node('border').material.get_shader_param('modulate');
+		temp.a = 0.0;
+		node.get_node('border').material.set_shader_param('modulate', temp);
+
+func Off_Target_Glow ():
+	for pos in range(1,13):
+		var p_node = battlefieldpositions[pos];
+		if !p_node.has_node('Character'): continue;
+		var node = p_node.get_node("Character");
+		#if node == null: continue;
+		#node.material.shader_param.Modulate.a = 0.0;
+		#var temp = node.get_node('border').material.get_shader_param('modulate');
+		#temp.a = 0.0;
+		node.get_node('border').visible = false;
 
 func ClearSkillPanel():
 	globals.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
@@ -789,23 +1021,34 @@ func RebuildSkillPanel():
 	ClearSkillPanel()
 	for i in activecharacter.skills:
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
-		var skill = globals.skills[i]
+		var skill = Skillsdata.skilllist[i]
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.get_node("manacost").text = str(skill.manacost)
+		if skill.manacost <= 0:
+			newbutton.get_node("manacost").hide()
+		if skill.manacost > activecharacter.mana:
+			newbutton.get_node("Icon").modulate = Color(0,0,1)
+		if activecharacter.cooldowns.has(i):
+			newbutton.disabled = true
+			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
 		if activecharacter.mana < skill.manacost:
 			newbutton.disabled = true
 		newbutton.set_meta('skill', skill.code)
-		globals.connecttooltip(newbutton, skill.description)
+		globals.connectskilltooltip(newbutton, i, activecharacter)
 
 func SelectSkill(skill):
-	skill = globals.skills[skill]
-	if activecharacter.mana < skill.manacost:
-		SelectSkill('attack')
+	skill = Skillsdata.skilllist[skill]
+	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code):
+		#SelectSkill('attack')
+		call_deferred('SelectSkill', 'attack');
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets()
+	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
+		checkwinlose();
+	
 
 func RebuildItemPanel():
 	var array = []
@@ -832,3 +1075,40 @@ func ActivateItem(item):
 	activeitem = item
 	SelectSkill(activeaction)
 	#UpdateSkillTargets()
+
+func get_weapon_sound(caster):
+	var item = caster.gear.rhand
+	if state.items.has(item):
+		item = state.items[item]
+	else:
+		item = null
+	if item == null:
+		return 'dodge'
+	else:
+		return item.hitsound
+
+func calculate_hit_sound(skill, caster, target):
+	var rval
+	var hitsound
+	if skill.sounddata.strike == 'weapon':
+		hitsound = get_weapon_sound(caster)
+	else:
+		hitsound = skill.sounddata.strike
+	
+	match hitsound:
+		'dodge':
+			match target.bodyhitsound:
+				'flesh':pass
+				'wood':pass
+				'stone':pass
+		'blade':
+			match target.bodyhitsound:
+				'flesh':pass
+				'wood':pass
+				'stone':pass
+	rval = 'fleshhit'
+	
+	return rval
+
+func combatlogadd(text):
+	$Combatlog/RichTextLabel.append_bbcode(text)

@@ -1,7 +1,8 @@
 extends Reference
+class_name Item
 
 var name = ""
-var id = 0
+var id
 var itembase
 var code
 var icon
@@ -10,10 +11,10 @@ var stackable = false
 var inventory
 
 #Useable data
-var amount setget amount_set
+var amount = 1 setget amount_set
 var useeffects
 var useskill
-var foodvalue
+var foodvalue = 0
 
 #Gear Data
 var type
@@ -27,7 +28,7 @@ var bonusstats = {} #bonus stats apply to chars
 var parts = {}
 var effects = []
 var task
-var owner
+var owner = null
 var partcolororder
 var broken = false
 var tags = []
@@ -35,6 +36,7 @@ var materials = []
 var weaponrange
 var multislots = []
 var availslots = []
+var hitsound
 
 func CreateUsable(ItemName = '', number = 1):
 	itembase = ItemName
@@ -59,7 +61,7 @@ func amount_set(value):
 func UseItem(user = null, target = null):
 	var finaltarget
 	for i in effects:
-		var effect = globals.effects[i]
+		var effect = Effectdata.effects[i]
 		if i.taker == 'caster':
 			if user == null:
 				return
@@ -73,32 +75,34 @@ func UseItem(user = null, target = null):
 
 func CreateGear(ItemName = '', dictparts = {}):
 	itembase = ItemName
-	bonusstats = {damage = 0, damagemod = 1, armor = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	bonusstats = {damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
 	var itemtemplate = Items.Items[ItemName]
-	if dictparts.size() == itemtemplate.parts.size():
-		name = Items.Materials[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + itemtemplate.name
-	else:
-		name = itemtemplate.name
+	var tempname = itemtemplate.name
+	
 	
 	partcolororder = itemtemplate.partcolororder
 	geartype = itemtemplate.geartype
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype
-	if itemtemplate.icon != null:
-		icon = itemtemplate.icon.get_path()
+	
 	for i in itemtemplate.basestats:
 		if bonusstats.has(i):
 			bonusstats[i] += itemtemplate.basestats[i]
 	
 	
+	if itemtemplate.has('effects'):
+		for e in itemtemplate.effects:
+			effects.push_back(e)
 	
 	parts = dictparts.duplicate()
 	durability = itemtemplate.basedurability
 	tags = itemtemplate.tags
 	if itemtemplate.has('multislots'):
 		multislots = itemtemplate.multislots
+	if itemtemplate.has('hitsound'):
+		hitsound = itemtemplate.hitsound
 	availslots = itemtemplate.availslots
 	var parteffectdict = {}
 	for i in parts:
@@ -110,7 +114,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 		durability *= parteffectdict.durabilitymod
 	for i in parteffectdict:
 		if self.get(i) != null && i != 'effects':
-			self[i] += parteffectdict[i]
+			#self[i] += parteffectdict[i]
+			set(i, get(i)+parteffectdict[i])
 		elif bonusstats.has(i):
 			bonusstats[i] += parteffectdict[i]
 		elif i == 'effects':
@@ -119,9 +124,31 @@ func CreateGear(ItemName = '', dictparts = {}):
 	for i in itemtemplate.basemods:
 		if bonusstats.has(i):
 			bonusstats[i] *= itemtemplate.basemods[i]
+	
+	
+	if itemtemplate.icon != null:
+		if itemtemplate.has("alticons"):
+			var alticon = false
+			for i in itemtemplate.alticons.values():
+				if i.materials.has(parts[i.part]):
+					icon = i.icon.get_path()
+					if i.has('altname'):
+						tempname = i.altname
+					alticon = true
+			if alticon == false:
+				icon = itemtemplate.icon.get_path()
+		else:
+			icon = itemtemplate.icon.get_path()
+	
+	
+	
+	if dictparts.size() == itemtemplate.parts.size():
+		name = Items.Materials[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + tempname
+	else:
+		name = tempname
+	
 	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
 	bonusstats.erase('damagemod')
-	
 	durability = round(durability)
 	maxdurability = round(durability)
 
@@ -171,21 +198,20 @@ func tooltiptext():
 	elif itemtype == 'usable':
 		text += descirption + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
 	
-	
 	text = globals.TextEncoder(text)
 	return text
 
 func tooltipeffects():
 	var text = ''
 	for i in effects:
-		text += "{color=" + globals.effects[i].textcolor + '|' + globals.effects[i].descript
+		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
 		text += '}\n'
 	return text
 
 func tooltip(targetnode):
-	var image
 	var node = input_handler.GetItemTooltip()
 	node.showup(targetnode, self)
+
 
 func repairwithmaterials():
 	var materialsdict = counterepairmaterials()
@@ -213,17 +239,20 @@ func canrepairwithmaterials(): #checks if item can be repaired at present state 
 	
 	return returndict
 
-
-func counterepairmaterials():
-	var itemtemplate = Items.Items[itembase] #item base for item parts cost
-	var requiredmaterialsdict = {} #total materials used in creation
-	
+func calculatematerials():
+	var itemtemplate = Items.Items[itembase] #item base for item parts amount
+	var materialsdict = {} #total materials used in creation
 	#collecting parts info
 	for i in parts:
-		if requiredmaterialsdict.has(parts[i]):
-			requiredmaterialsdict[parts[i]] += itemtemplate.parts[i]
+		if materialsdict.has(parts[i]):
+			materialsdict[parts[i]] += itemtemplate.parts[i]
 		else:
-			requiredmaterialsdict[parts[i]] = itemtemplate.parts[i]
+			materialsdict[parts[i]] = itemtemplate.parts[i]
+	return materialsdict
+
+func counterepairmaterials():
+	var requiredmaterialsdict = calculatematerials()
+	var itemtemplate = Items.Items[itembase] 
 	
 	#calculating total resource needs
 	var multiplier = 0
@@ -245,3 +274,36 @@ func counterepairmaterials():
 	
 	
 	return requiredmaterialsdict
+
+func calculateprice():
+	var price = 0
+	if itemtype == 'usable':
+		price = Items.Items[itembase].price
+	else:
+		var materialsdict = calculatematerials()
+		for i in materialsdict:
+			price += Items.Materials[i].price*materialsdict[i]
+	return price
+
+func serialize():
+	var tmp = {};
+	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'amount', 'useeffects', 'useskill', 'foodvalue', 'type', 'itemtype', 'geartype', 'subtype', 'durability', 'maxdurability', 'price', 'task', 'owner', 'partcolororder', 'broken', 'weaponrange'];
+	var atr2 = ['bonusstats', 'parts', 'effects', 'tags', 'materials', 'multislots', 'availslots'];
+	for a in atr:
+		tmp[a] = get(a)
+	for a in atr2:
+		tmp[a] = get(a).duplicate()
+	return tmp;
+
+func deserialize(tmp):
+	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'useeffects', 'useskill', 'foodvalue', 'type', 'itemtype', 'geartype', 'subtype', 'durability', 'maxdurability', 'price', 'task', 'owner', 'partcolororder', 'broken', 'weaponrange'];
+	var atr2 = ['bonusstats', 'parts', 'effects', 'tags', 'materials', 'multislots', 'availslots'];
+	for a in atr:
+		set(a, tmp[a])
+	for a in atr2:
+		set(a, tmp[a].duplicate())
+	amount = tmp.amount;
+	inventory = state.items;
+	#id = int(id);
+	#if owner != null: owner = int(owner);
+

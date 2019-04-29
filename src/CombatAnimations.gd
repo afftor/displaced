@@ -3,10 +3,12 @@ extends Node
 signal pass_next_animation
 signal cast_finished
 signal predamage_finished
+signal postdamage_finished
 signal alleffectsfinished
 
 var cast_timer = 0
 var aftereffecttimer = 0
+var postdamagetimer = 0
 var aftereffectdelay = 0.1
 
 func _process(delta):
@@ -18,6 +20,10 @@ func _process(delta):
 		aftereffecttimer -= delta
 		if aftereffecttimer <= 0:
 			predamage_finished()
+	if postdamagetimer > 0:
+		postdamagetimer -= delta
+		if postdamagetimer <= 0:
+			postdamage_finished()
 
 func casterattack(node):
 	var tween = input_handler.GetTweenNode(node)
@@ -31,7 +37,7 @@ func casterattack(node):
 	tween.start()
 	
 	
-	tween.interpolate_callback(input_handler, 0,'PlaySound',"slash")
+	#tween.interpolate_callback(input_handler, 0,'PlaySound',"slash")
 	
 	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	
@@ -45,6 +51,12 @@ func cast_finished():
 
 func predamage_finished():
 	emit_signal("predamage_finished")
+#	var tween = input_handler.GetTweenNode(self)
+#	tween.interpolate_callback(self, 1, 'allanimationsfinished')
+#	tween.start()
+
+func postdamage_finished():
+	emit_signal("postdamage_finished")
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
@@ -55,18 +67,28 @@ func allanimationsfinished():
 
 func targetattack(node):
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.0
+	var nextanimationtime = 0.2
 	input_handler.gfx(node, 'slash')
 	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	aftereffecttimer = nextanimationtime + aftereffectdelay
+
+
+func targetfire(node):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.2
+	input_handler.gfx(node, 'fire')
+	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
+	tween.start()
+	postdamagetimer = nextanimationtime + aftereffectdelay
 
 func miss(node):
 	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.8
-	input_handler.FloatText(node, tr("MISS"), Color(1,1,1), 2, 0.2, node.get_node('Icon').rect_size/2-Vector2(20,20))
+	input_handler.PlaySound("combatmiss")
+	input_handler.FloatText(node, tr("MISS"), 'miss', Color(1,1,1), 2, 0.2, node.get_node('Icon').rect_size/2-Vector2(20,20))
 	tween.interpolate_property(node, 'modulate', Color(1,1,1), Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
 	tween.start()

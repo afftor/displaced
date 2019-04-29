@@ -1,13 +1,17 @@
 extends Node
 
-const worker = preload("res://files/scripts/worker.gd");
-const Item = preload("res://src/ItemClass.gd")
+const gameversion = '0.1.3'
+
+#const worker = preload("res://files/scripts/worker.gd");
+#const Item = preload("res://src/ItemClass.gd")
+#const combatant = preload ('res://src/combatant.gd')
 
 var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var EventList = {};
+var EventList = events.checks
+
 var scenedict = {
 	menu = "res://files/Menu.tscn",
 	town = "res://files/MainScreen.tscn"
@@ -19,12 +23,10 @@ var scenedict = {
 var workersdict
 #var enemydata
 var randomgroups
-<<<<<<< HEAD
-#var enemylist
-=======
+
 var enemylist
 var upgradelist
->>>>>>> a251f69... icons, tooltips, upgrades
+
 #var skillsdata
 #var effectdata
 
@@ -32,10 +34,11 @@ var upgradelist
 
 #var classes = combatantdata.classlist
 #var characters = combatantdata.charlist
-#var skills
-#var traits = combatantdata.traitlist
-#var effects
-#var combateffects
+var skills
+var effects
+var combateffects
+var explorationares 
+
 
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -69,13 +72,21 @@ var globalsettings = {
 	ActiveLocalization = 'en',
 	mastervol = -15,
 	mastermute = false,
-	musicvol = -15,
+	musicvol = -20,
 	musicmute = false,
 	soundvol = -15,
 	soundmute = false,
-	fullscreen = false,
+	
+	#Window settings
+	fullscreen = true,
+	window_size = Vector2(1366,768),
+	window_pos = Vector2(0,0),
+	
 	textspeed = 60,
 	skipread = false,
+	textmonocolor = false,
+	warnseen = false,
+	disabletips = false
 } setget settings_save
 
 func settings_load():
@@ -90,8 +101,8 @@ func settings_load():
 	#updatevolume
 	var counter = 0
 	for i in ['master','music','sound']:
-		AudioServer.set_bus_mute(counter, globals.globalsettings[i+'mute'])
-		AudioServer.set_bus_volume_db(counter, globals.globalsettings[i+'vol'])
+		AudioServer.set_bus_mute(counter, globalsettings[i+'mute'])
+		AudioServer.set_bus_volume_db(counter, globalsettings[i+'vol'])
 		counter += 1
 	
 
@@ -103,6 +114,12 @@ func settings_save(value):
 		config.set_value('settings', i, globalsettings[i])
 	config.save(userfolder + "Settings.ini")
 
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		globalsettings.window_size = OS.window_size
+		globalsettings.window_pos = OS.window_position
+		settings_save(globalsettings)
+		get_tree().quit()
 
 func _init():
 	if dir.dir_exists(userfolder + 'saves') == false:
@@ -128,28 +145,27 @@ func _init():
 	TranslationServer.add_translation(activetranslation)
 
 func _ready():
-	OS.window_size = Vector2(1280,720)
-	OS.window_position = Vector2(300,0)
+#	OS.window_size = Vector2(1280,720)
+#	OS.window_position = Vector2(300,0)
 	randomize()
 	#Settings and folders
 	settings_load()
-	LoadEventData()
-	
+	#LoadEventData()
+#	if globalsettings.fullscreen == true:
+#		OS.window_fullscreen = true
 	#===Necessary to apply translation===
-<<<<<<< HEAD
+
 	#Items = load("res://files/Items.gd").new()
 	#Enemydata = load("res://assets/data/enemydata.gd").new()
 	#Skillsdata = load("res://assets/data/Skills.gd").new()
 	#Effectdata = load("res://assets/data/Effects.gd").new()
 	#TownData = load("res://files/TownData.gd").new()
-=======
-	Items = load("res://files/Items.gd").new()
-	Enemydata = load("res://assets/data/enemydata.gd").new()
-	Skillsdata = load("res://assets/data/Skills.gd").new()
-	Effectdata = load("res://assets/data/Effects.gd").new()
-	TownData = load("res://files/TownData.gd").new()
+	#Traitdata = load("res://assets/data/Traits.gd").new()
+	#combatantdata = load("res://files/CombatantClass.gd").new()
+	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
+
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
->>>>>>> a251f69... icons, tooltips, upgrades
+
 	#====================================
 	
 	
@@ -161,13 +177,14 @@ func _ready():
 	
 	#workersdict = TownData.workersdict
 	
-	for i in Items.Materials:
-		state.materials[i] = 0
-	state.materials.wood = 10
-	state.materials.elvenwood = 10
-	state.materials.elvenmetal = 10
-	#state.materials.stone = 5
-	state.money = 200
+	
+#	state.materials.wood = 10
+#	state.materials.elvenwood = 10
+#	state.materials.elvenmetal = 10
+#	state.materials.goblinmetal = 10
+#	state.materials.bone = 10
+#	state.materials.cloth = 10
+#	state.money = 500
 	
 
 func logupdate(text):
@@ -176,6 +193,7 @@ func logupdate(text):
 
 
 
+#warning-ignore:unused_signal
 signal scene_changed
 
 func ChangeScene(name):
@@ -184,37 +202,29 @@ func ChangeScene(name):
 	get_tree().get_root().add_child(loadscreen)
 	loadscreen.goto_scene(scenedict[name])
 
-func StartCombat(enemygroup):
-	pass
-
-func LoadEventData():
-	if file.file_exists("res://assets/data/eventdata.json"):
-		file.open("res://assets/data/eventdata.json", File.READ);
-		EventList = parse_json(file.get_as_text());
-		file.close();
-	else:
-		print('Event not found: ' + name)
-	pass
 
 func EventCheck():
 	if state.CurEvent != "": return;
+	for s in get_tree().get_nodes_in_group('char_sprite'):
+		s.set_active_val();
 	for event in EventList.keys():
 		if SimpleEventCheck(event, false):
 			StartEventScene(event);
 			break;
-	pass
 
 func SimpleEventCheck(event, skip = true):
-	if state.OldEvents.has(event): return false;
+	#var tmp_d = {global = 'skip'};
+	if state.OldEvents.has(event):
+		return false
 	for check in EventList[event]:
-		if check == {global = 'skip'}:
-			if skip: continue;
-			else: return false;
+		if check.size() == 0:
+			if skip:
+				continue
+			else:
+				return false
 		if !state.valuecheck(check): 
-			return false;
-		pass
-	return true;
-	pass
+			return false
+	return true
 
 func LoadEvent(name):
 	var dict
@@ -227,12 +237,12 @@ func LoadEvent(name):
 		print('Event not found: ' + name)
 	return dict
 
-func StartEventScene(name):
+func StartEventScene(name, debug = false, line = 0):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
 	var scene = input_handler.GetEventNode()
 	scene.visible = true
-	scene.Start(scenes[name])
+	scene.Start(scenes[name], debug, line)
 
 func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()
@@ -250,7 +260,7 @@ func CreateUsableItem(item, amount = 1):
 func AddItemToInventory(item):
 	item.inventory = state.items
 	if item.stackable == false:
-		item.id = state.itemidcounter
+		item.id = "i" + str(state.itemidcounter)
 		state.items[item.id] = item
 		state.itemidcounter += 1
 	else:
@@ -302,6 +312,12 @@ func ClearContainer(container):
 			i.hide()
 			i.queue_free()
 
+func ClearContainerForced(container):
+	for i in container.get_children():
+		if i.name != 'Button':
+			i.hide()
+			i.free()
+
 func DuplicateContainerTemplate(container):
 	var newbutton = container.get_node('Button').duplicate()
 	newbutton.show()
@@ -322,6 +338,23 @@ func connectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):
 		node.disconnect("mouse_entered",item,'tooltip')
 	node.connect("mouse_entered",item,'tooltip', [node])
+
+func connectskilltooltip(node, skill, character):
+	if node.is_connected("mouse_entered",self,'showskilltooltip'):
+		node.disconnect("mouse_entered",self,'showskilltooltip')
+	node.connect("mouse_entered",self,'showskilltooltip', [skill,node,character])
+
+func showskilltooltip(skill, node, character):
+	var skilltooltip = input_handler.GetSkillTooltip()
+	var pos = node.get_global_rect()
+	pos = Vector2(pos.position.x, pos.end.y + 10)
+	skilltooltip.set_global_position(pos)
+	skilltooltip.character = character
+	skilltooltip.showup(node, skill)
+
+func disconnectitemtooltip(node, item):
+	if node.is_connected("mouse_entered",item,'tooltip'):
+		node.disconnect("mouse_entered",item,'tooltip')
 
 func connectmaterialtooltip(node, material):
 	if node.is_connected("mouse_entered",self,'mattooltip'):
@@ -442,14 +475,16 @@ func CharacterSelect(targetscript, type, function, requirements):
 	var node 
 	if get_tree().get_root().has_node("CharacterSelect"):
 		node = get_tree().get_root().get_node("CharacterSelect")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
 	else:
 		node = load("res://WorkerSelect.tscn").instance()
-		get_tree().get_root().add_child(node)
 		node.name = 'CharacterSelect'
+		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
 	
 	node.show()
-	node.set_as_toplevel(true)
+	#node.set_as_toplevel(true)
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 	
 	var array = []
@@ -459,38 +494,41 @@ func CharacterSelect(targetscript, type, function, requirements):
 	for i in array:
 		if requirements == 'notask' && i.task != null:
 			continue
-		var newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
-		newnode.get_node("Icon").texture = i.icon
+		newnode.get_node("Icon").texture = load(i.icon)
 		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
-		newnode.connect('pressed', targetscript, function, [i])
+		newnode.connect('pressed', targetscript, function, [i.id])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
 func HeroSelect(targetscript, type, function, requirements):
 	var node 
 	if get_tree().get_root().has_node("HeroSelect"):
 		node = get_tree().get_root().get_node("HeroSelect")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
+		
 	else:
 		node = load("res://HeroSelect.tscn").instance()
-		get_tree().get_root().add_child(node)
 		node.name = 'HeroSelect'
+		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
 	
 	node.show()
-	node.set_as_toplevel(true)
+	#node.set_as_toplevel(true)
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 	
 	var array = []
 	var newnode
 	if type == 'heroposition':
 		array = state.heroes.values()
-		newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = tr("REMOVE")
 		newnode.connect('pressed', targetscript, function, [null])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 	
 	for i in array:
-		newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 
 		newnode.get_node("Icon").texture = images.portraits[i.icon]
@@ -503,13 +541,16 @@ func ItemSelect(targetscript, type, function, requirements = true):
 	var node 
 	if get_tree().get_root().has_node("ItemSelect"):
 		node = get_tree().get_root().get_node("ItemSelect")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
 	else:
 		node = load("res://ItemSelect.tscn").instance()
 		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
 		node.name = 'ItemSelect'
+	
+	
 	node.show()
-	node.set_as_toplevel(true)
 	
 	ClearContainer(node.get_node("ScrollContainer/GridContainer"))
 	
@@ -519,17 +560,27 @@ func ItemSelect(targetscript, type, function, requirements = true):
 			if i.geartype == requirements && i.task == null && i.owner == null && i.durability > 0:
 				array.append(i)
 	elif type == 'repairable':
-		for i in state.items:
+		for i in state.items.values():
 			if i.durability < i.maxdurability:
+				array.append(i)
+	elif type == 'edible':
+		for i in state.items.values():
+			if i.foodvalue > 0:
 				array.append(i)
 	
 	for i in array:
-		var newnode = globals.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
-		if type == 'gear':
-			input_handler.itemshadeimage(newnode, i)
-			newnode.get_node("Percent").show()
-			newnode.get_node("Percent").text = str(calculatepercent(i.durability, i.maxdurability)) + '%'
-			connectitemtooltip(newnode, i)
+		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
+		match type:
+			'gear':
+				input_handler.itemshadeimage(newnode, i)
+				newnode.get_node("Percent").show()
+				newnode.get_node("Percent").text = str(calculatepercent(i.durability, i.maxdurability)) + '%'
+				connectitemtooltip(newnode, i)
+			"edible":
+				newnode.texture_normal = load(i.icon)
+				newnode.get_node("Percent").show()
+				newnode.get_node("Percent").text = str(i.foodvalue)
+				connectitemtooltip(newnode, i)
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
@@ -574,19 +625,121 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		return array
 
 func QuickSave():
+	SaveGame('QuickSave');
 	pass
 
-func EndGame(result):
-	pass
+
+
 
 func SaveGame(name):
-	var savedict = {}
-	savedict.gameprogress = inst2dict(state)
+	if state.CurEvent != '':
+		state.CurrentLine = input_handler.GetEventNode().CurrentLine
+#	approach 1, not compatrible with sigletones + still  need reworking
+#	var savedict = {state = null, heroes = [], items = [], workers = []}
+#	savedict.state = inst2dict(state)
+#	for i in state.heroes.values():
+#		savedict.heroes.append(inst2dict(i))
+#	for i in state.items.values():
+#		savedict.items.append(inst2dict(i))
+#	for i in state.workers.values():
+#		savedict.workers.append(inst2dict(i))
+	#approach 2
+	var savedict = state.serialize(); 
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
 
-func LoadGame(name):
-	var gamefile = file.open(userfolder+'saves/'+name + '.sav', File.READ)
+func LoadGame(filename):
+	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
+		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
+		return
 	
-	ChangeScene("MainMenu")
+	input_handler.BlackScreenTransition(1)
+	yield(get_tree().create_timer(1), 'timeout')
+	input_handler.CloseableWindowsArray.clear()
+	#approach 1
+	#state = load("res://src/gamestate.gd").new()
+	#state._ready()
+	CurrentScene.queue_free()
+	ChangeScene('town');
+	yield(self, "scene_changed")
+	
+	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
+	var savedict = parse_json(file.get_as_text())
+	file.close()
+	
+	#state = dict2inst(savedict.state)
+	#state.heroes.clear()
+	#state.items.clear()
+	#state.workers.clear()
+#	for i in savedict.heroes:
+#		var t = combatant.new()
+#		t = dict2inst(i)
+#		state.heroes[t.id] = t
+#	for i in savedict.items:
+#		var t = Item.new()
+#		t = dict2inst(i)
+#		t.inventory = state.items #no other inventories currently exist
+#		state.items[t.id] = t
+#	for i in savedict.workers:
+#		var t = worker.new()
+#		t = dict2inst(i)
+#		state.workers[t.id] = t
+	
+	state.deserialize(savedict)
+	#converting floats to ints
+	
+#	var tempdict = {}
+#	for i in state.combatparty.keys():
+#		tempdict[int(i)] = state.combatparty[i]
+#	state.combatparty = tempdict.duplicate()
+#	tempdict.clear()
+	
+#	for i in state.areaprogress.keys():
+#		tempdict[i] = int(state.areaprogress[i])
+#	state.areaprogress = tempdict.duplicate()
+#	tempdict.clear()
+	
+#	for i in state.townupgrades.keys():
+#		tempdict[i] = int(state.townupgrades[i])
+#	state.townupgrades = tempdict.duplicate()
+#	tempdict.clear()
+	CurrentScene.buildscreen()
+	for i in state.tasks:
+		CurrentScene.buildcounter(i)
+	
+	if state.CurBuild != '' and state.CurBuild != null:
+		CurrentScene.get_node(state.CurBuild).show()
+	#opentextscene
+	if state.CurEvent != "":
+		StartEventScene(state.CurEvent, false, state.CurrentLine);
+	else:
+		call_deferred('EventCheck');
+
+func datetime_comp(a, b):
+	if a.year > b.year: return true
+	if a.month > b.month: return true
+	if a.day > b.day: return true
+	if a.hour > b.hour: return true
+	if a.minute > b.minute: return true
+	if a.second > b.second: return true
+	return false
+	pass
+
+func get_last_save():
+	var dir = dir_contents(userfolder + 'saves')
+	var dated_dir = {}
+	var tmp = File.new()
+	for i in dir_contents(userfolder + 'saves'):
+		if i.ends_with('.sav') == false:
+			continue
+		dated_dir[i] = OS.get_datetime_from_unix_time(tmp.get_modified_time(i))
+	if dated_dir.size() == 0: return null
+	var b = dated_dir.keys()[0]
+	for i in range(dated_dir.keys().size()):
+		if datetime_comp(dated_dir[dated_dir.keys()[i]], dated_dir[b]):
+			b = dated_dir.keys()[i]
+	return b
+	pass
+
+

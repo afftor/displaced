@@ -5,16 +5,22 @@ var itemparts = {}
 var itemtemplate
 var repairitemlist = []
 
+
 func _ready():
 	for i in [$ItemCreationWindow/Part1, $ItemCreationWindow/Part2, $ItemCreationWindow/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])
 	$ItemCreationWindow.hide()
 	$ItemCreationWindow/MaterialSelect.hide()
 	
+#warning-ignore:return_value_discarded
 	$ButtonPanel/CraftButton.connect("pressed", self, 'chooseitem')
+#warning-ignore:return_value_discarded
 	$ButtonPanel/RepairButton.connect('pressed', self, 'repairitems')
+#warning-ignore:return_value_discarded
 	$RepairPanel/RepairConfirm.connect("pressed", self, 'repairallitems')
+#warning-ignore:return_value_discarded
 	$RepairPanel/RepairAll.connect('pressed', self, 'selectallrepair')
+#warning-ignore:return_value_discarded
 	$ItemCreationWindow/CreateItem.connect("pressed", self, 'CreateItem')
 	$RepairPanel.hide()
 	$ItemSelection.hide()
@@ -32,7 +38,12 @@ func chooseitem():
 	globals.ClearContainer($ItemSelection/ScrollContainer/GridContainer)
 	
 	for i in Items.Items.values():
-		if i.tags.has('recipe') && i.unlockreq == true:
+		if i.tags.has('recipe'):
+			var check = true
+			for k in i.unlockreqs:
+				if state.valuecheck(k) == false:
+					check = false
+			if check == false:continue
 			var newbutton = globals.DuplicateContainerTemplate($ItemSelection/ScrollContainer/GridContainer)
 			newbutton.texture_normal = i.icon
 			globals.connecttooltip(newbutton, '[center]' + i.name + "[/center]\n"+ i.description)
@@ -51,6 +62,7 @@ func selectcraftitem(item):
 	
 	for i in ['Part1','Part2','Part3']:
 		get_node("ItemCreationWindow/" + i).texture_normal = null
+		get_node("ItemCreationWindow/" + i + '/number').hide()
 		get_node("ItemCreationWindow/" + i + 'Descript').bbcode_text = ''
 	$ItemCreationWindow/EndItem.texture = null
 	
@@ -83,7 +95,9 @@ func choosematerial(button):
 		for j in itemparts.values():
 			if j.material == i.code:
 				tempmaterial -= j.price
-		if i.parts.has(part) && i.unlockreq == true:
+		if i.parts.has(part):
+			if state.checkreqs(i.unlockreqs) == false:
+				continue
 			var newbutton = $ItemCreationWindow/MaterialSelect/Container/VBoxContainer/Button.duplicate()
 			newbutton.show()
 			$ItemCreationWindow/MaterialSelect/Container/VBoxContainer.add_child(newbutton)
@@ -106,6 +120,8 @@ func selectmaterial(material, part, cost):
 	globals.hidetooltip()
 	itemparts[part] = {material = material.code, price = cost}
 	chosenpartbutton.texture_normal = material.icon
+	chosenpartbutton.get_node("number").text = str(cost)
+	chosenpartbutton.get_node("number").show()
 	var text = Items.Parts[part].name + "\n" 
 	$ItemCreationWindow/MaterialSelect.hide()
 	checkcreatingitem(itemtemplate)
@@ -118,7 +134,7 @@ func selectmaterial(material, part, cost):
 				text += '\n' + Items.stats[i] + ': ' + str(endvalue)
 		else:
 			for k in material.parts[part][i]:
-				text += '\n' + globals.effects[k].descript
+				text += '\n' + Effectdata.effects[k].descript
 	get_node('ItemCreationWindow/' + chosenpartbutton.name + 'Descript').bbcode_text = text
 
 var enditem
@@ -164,9 +180,17 @@ func checkcreatingitem(item):
 
 
 func CreateItem():
-	$ItemCreationWindow.hide()
+	input_handler.PlaySound("itemcreate")
+	$ItemCreationWindow/CreateItem.disabled = true
 	enditem.substractitemcost()
+	var time = 1.5
+	input_handler.SmoothValueAnimation($ItemCreationWindow/CraftProgress, time, 0, 100)
+	yield(get_tree().create_timer(time), 'timeout')
+	$ItemCreationWindow/CraftProgress.value = 0
+	input_handler.SystemMessage(tr("ITEMCREATED") +": " + enditem.name)
 	globals.AddItemToInventory(enditem)
+	selectcraftitem(Items.Items[itemtemplate])
+	#$ItemCreationWindow.hide()
 	
 
 func selectallrepair():
@@ -238,10 +262,11 @@ func repairallitems():
 	repairitems()
 	updaterepairlist()
 
-func show():
+func open():
 	state.CurBuild = "blacksmith"
-	.show();
-	pass
+	input_handler.ShowGameTip('blacksmith')
+	input_handler.emit_signal("BuildingEntered", 'blacksmith')
+	.show()
 
 func hide():
 		state.CurBuild = "";

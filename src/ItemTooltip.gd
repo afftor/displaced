@@ -1,4 +1,4 @@
-extends PopupPanel
+extends Panel
 
 var parentnode
 var shutoff = false
@@ -14,10 +14,11 @@ func _process(delta):
 
 func _init():
 	set_process(false)
-	connect("popup_hide", self, 'cooldown')
+	#connect("popup_hide", self, 'cooldown')
 
 func showup(node, item):
 	parentnode = node
+	
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
@@ -37,14 +38,18 @@ func showup(node, item):
 		textnode.bbcode_text = text
 		iconnode.texture = item.icon
 		iconnode.material = null
+		$Cost/Label.text = str(Items.Materials[item.code].price)
 	else:
 		text = item.tooltiptext()
 		textnode.bbcode_text = globals.TextEncoder(text)
 		input_handler.itemshadeimage(iconnode, item)
-	
+		$Cost/Label.text = str(item.calculateprice())
 	prevnode = parentnode
 	
-	popup()
+	input_handler.GetTweenNode(self).stop_all()
+	self.modulate.a = 1
+	
+	show()
 	
 	var pos = node.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
@@ -66,4 +71,4 @@ func cooldown():
 func hide():
 	parentnode = null
 	set_process(false)
-	.hide()
+	input_handler.FadeAnimation(self, 0.2)

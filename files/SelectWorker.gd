@@ -6,22 +6,20 @@ var selectedtool
 
 func _ready():
 	#globals.AddPanelOpenCloseAnimation(self)
+#warning-ignore:return_value_discarded
 	$SelectWorkerButton.connect("pressed", self, 'SelectWorker')
+#warning-ignore:return_value_discarded
 	$SelectToolButton.connect("pressed",self,'SelectTool')
+#warning-ignore:return_value_discarded
 	$ConfirmButton.connect("pressed", self, 'ConfirmTask')
 
-func OpenSelectTab(task):
+func OpenSelectTab(task, worker):
 	show()
+	print(true)
 	selectedtask = task
 	selectedtool = null
-	selectedworker = null
+	selectedworker = worker.id
 	globals.ClearContainer($HBoxContainer)
-	for i in task.product:
-		var newresource = globals.DuplicateContainerTemplate($HBoxContainer)
-		var material = Items.Materials[i]
-		globals.connecttooltip(newresource, '[center]' + material.name + '[/center]\n' + material.description + '\n' +tr('BASECHANCE') + ' - [color=yellow]' + str(task.product[i].chance) + '%[/color]')
-		
-		newresource.texture = Items.Materials[i].icon
 	
 	$RichTextLabel.bbcode_text = task.description
 	$Time.text = str(task.basetimer)
@@ -35,23 +33,24 @@ func SelectTool():
 	globals.ItemSelect(self, 'gear','ToolSelected', selectedtask.tasktool.type)
 
 func WorkerSelected(worker):
-	selectedworker = worker
+	selectedworker = worker.id
 	UpdateButtons()
 
 func ToolSelected(item):
-	selectedtool = item
+	selectedtool = item.id
 	UpdateButtons()
 
 func UpdateButtons():
+	$SelectToolButton/Icon.material = null
 	if selectedtool != null:
-		input_handler.itemshadeimage($SelectToolButton, selectedtool)
+		input_handler.itemshadeimage($SelectToolButton/Icon, selectedtool)
 	else:
-		$SelectToolButton.texture_normal = load("res://icon.png")
+		$SelectToolButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
 	if selectedworker != null:
-		$SelectWorkerButton.texture_normal = selectedworker.icon
+		$SelectWorkerButton/Icon.texture = load(selectedworker.icon)
 	else:
-		$SelectWorkerButton.texture_normal = load("res://icon.png")
+		$SelectWorkerButton/Icon.texture = load("res://assets/images/gui/ui_slot_cross.png")
 	
 	var conditioncheck = true
 	if selectedworker == null:
@@ -66,6 +65,13 @@ func UpdateButtons():
 func ConfirmTask():
 	hide()
 	#Task Data Dict
-	var data = {function = selectedtask.triggerfunction, taskdata = selectedtask, time = 0, threshold = selectedtask.basetimer, worker = selectedworker, instrument = selectedtool}
+	var threshold = selectedtask.basetimer
 	
+	if selectedtool != null:
+		for i in selectedtask.tasktool.effects:
+			if i.code == 'speed':
+				threshold -= i.value
+	
+	var data = {taskdata = selectedtask, time = 0, threshold = threshold, worker = selectedworker, instrument = selectedtool}
 	globals.CurrentScene.assignworker(data)
+	input_handler.emit_signal("WorkerAssigned", data)
