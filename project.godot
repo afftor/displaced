@@ -10,22 +10,40 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "Buff",
+"language": "GDScript",
+"path": "res://files/classes/buff.gd"
+}, {
+"base": "Reference",
 "class": "Item",
 "language": "GDScript",
-"path": "res://src/ItemClass.gd"
+"path": "res://files/classes/ItemClass.gd"
+}, {
+"base": "Reference",
+"class": "S_Skill",
+"language": "GDScript",
+"path": "res://files/classes/short_skill.gd"
+}, {
+"base": "Reference",
+"class": "base_effect",
+"language": "GDScript",
+"path": "res://files/classes/base_effect.gd"
 }, {
 "base": "Reference",
 "class": "combatant",
 "language": "GDScript",
-"path": "res://src/combatant.gd"
+"path": "res://files/classes/combatant.gd"
 }, {
 "base": "Reference",
 "class": "worker",
 "language": "GDScript",
-"path": "res://files/scripts/worker.gd"
+"path": "res://files/classes/worker.gd"
 } ]
 _global_script_class_icons={
+"Buff": "",
 "Item": "",
+"S_Skill": "",
+"base_effect": "",
 "combatant": "",
 "worker": ""
 }
@@ -33,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Displaced"
-run/main_scene="res://files/Menu.tscn"
+run/main_scene="res://files/scenes/Menu.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://assets/images/backgrounds/loading.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -41,20 +59,20 @@ config/icon="res://assets/images/gui/timesphere.png"
 
 [autoload]
 
-variables="*res://files/variables.gd"
+variables="*res://core/variables.gd"
 events="*res://assets/data/eventdata.gd"
-images="*res://files/scripts/ResourceImages.gd"
-audio="*res://files/scripts/ResourceAudio.gd"
+images="*res://assets/data/ResourceImages.gd"
+audio="*res://assets/data/ResourceAudio.gd"
 Enemydata="*res://assets/data/enemydata.gd"
 Skillsdata="*res://assets/data/Skills.gd"
 Effectdata="*res://assets/data/Effects.gd"
 Traitdata="*res://assets/data/Traits.gd"
-TownData="*res://files/TownData.gd"
-combatantdata="*res://files/CombatantClass.gd"
-state="*res://src/gamestate.gd"
-Items="*res://files/Items.gd"
-globals="*res://files/scripts/globals.gd"
-input_handler="*res://files/input_handler.gd"
+TownData="*res://assets/data/TownData.gd"
+combatantdata="*res://assets/data/CombatantData.gd"
+state="*res://core/gamestate.gd"
+Items="*res://assets/data/Items.gd"
+globals="*res://core/globals.gd"
+input_handler="*res://core/input_handler.gd"
 
 [debug]
 

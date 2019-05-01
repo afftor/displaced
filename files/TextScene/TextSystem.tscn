@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextScene/TextSystem.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/backgrounds/villagenight.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/sprites/rose.png" type="Texture" id=4]
@@ -18,9 +18,12 @@
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=18]
-[ext_resource path="res://src/indexed_button.gd" type="Script" id=19]
+[ext_resource path="res://files/scenes/indexed_button.gd" type="Script" id=19]
 [ext_resource path="res://assets/images/gui/text scene/logpanel.png" type="Texture" id=20]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=21]
+[ext_resource path="res://files/scenes/MenuPanel.tscn" type="PackedScene" id=21]
+
+
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )

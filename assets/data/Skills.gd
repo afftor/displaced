@@ -1,5 +1,5 @@
 extends Node
-var S_Skill = preload("res://files/scripts/short_skill.gd");
+#var S_Skill = preload("res://files/scripts/short_skill.gd");
 
 var skilllist = {
 	attack = {
