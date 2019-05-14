@@ -379,7 +379,7 @@ func ClearSkillTargets():
 func CheckMeleeRange(group): #Check if enemy front row is still in place
 	var rval = false
 	var counter = 0
-
+	
 	match group:
 		'enemy':
 			for i in range(7,10):
@@ -392,15 +392,6 @@ func CheckMeleeRange(group): #Check if enemy front row is still in place
 	if counter == 3:
 		rval = true
 	return rval
-
-func FindFighterRow(fighter):
-	var pos = fighter.position
-	if pos in range(4,7) || pos in range(10,13):
-		pos = 'backrow'
-	else:
-		pos = 'frontrow'
-	return pos
-
 
 
 func enemy_turn(pos):
@@ -800,20 +791,21 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 
 
-var rows = {
-	1:[1,4],
-	2:[2,5],
-	3:[3,6],
-	4:[7,10],
-	5:[8,11],
-	6:[9,12],
-} # was completely non-intuitive because there were columns stored not rows
-var lines = {
-	1 : [1,2,3],
-	2 : [4,5,6],
-	3 : [7,8,9],
-	4 : [10,11,12],
-}
+#var rows = {
+#	1:[1,4],
+#	2:[2,5],
+#	3:[3,6],
+#	4:[7,10],
+#	5:[8,11],
+#	6:[9,12],
+#} 
+#var lines = {
+#	1 : [1,2,3],
+#	2 : [4,5,6],
+#	3 : [7,8,9],
+#	4 : [10,11,12],
+#}
+
 
 func CalculateTargets(skill, caster, target):
 	var array = []
@@ -830,15 +822,15 @@ func CalculateTargets(skill, caster, target):
 		'single':
 			array = [target]
 		'row':
-			for i in rows:
-				if rows[i].has(target.position):
-					for j in rows[i]:
+			for i in variables.rows:
+				if variables.rows[i].has(target.position):
+					for j in variables.rows[i]:
 						if battlefield[j] != null && battlefield[j].defeated != true:
 							array.append(battlefield[j])
 		'line':
-			for i in lines:
-				if lines[i].has(target.position):
-					for j in lines[i]:
+			for i in variables.lines:
+				if variables.lines[i].has(target.position):
+					for j in variables.lines[i]:
 						if battlefield[j] != null && battlefield[j].defeated != true:
 							array.append(battlefield[j])
 		'all':
@@ -852,26 +844,7 @@ func CalculateTargets(skill, caster, target):
 	#print(array)
 	return array
 
-func calculate_number_from_string_array(array, caster, target):
-	var endvalue = 0
-	var firstrun = true
-	for i in array:
-		var modvalue = i
-		if (i.find('caster') >= 0) or (i.find('target') >= 0):
-			i = i.split('.')
-			if i[0] == 'caster':
-				modvalue = str(caster[i[1]])
-			elif i[0] == 'target':
-				modvalue = str(target[i[1]])
-		if !modvalue[0].is_valid_float():
-			if modvalue[0] == '-' && firstrun == true:
-				endvalue += float(modvalue)
-			else:
-				endvalue = input_handler.string_to_math(endvalue, modvalue)
-		else:
-			endvalue += float(modvalue)
-		firstrun = false
-	return endvalue
+
 
 func execute_skill(skill, caster, target):
 	var ref = Skillsdata.skilllist[skill]
@@ -882,18 +855,18 @@ func execute_skill(skill, caster, target):
 	s_skill.hit_roll()
 	var endvalue = 0
 	#value pre_calculation, using in triggers
-	endvalue = calculate_number_from_string_array(s_skill.long_value, caster, target)
-	s_skill.temp = calculate_number_from_string_array(s_skill.temp, caster, target)
-	var rangetype
-	if s_skill.userange == 'weapon':
-		if caster.gear.rhand == null:
-			rangetype = 'melee'
-		else:
-			var weapon = state.items[caster.gear.rhand]
-			rangetype = weapon.weaponrange
-	if rangetype == 'melee' && FindFighterRow(caster) == 'backrow' && !CheckMeleeRange(caster.combatgroup):
-		endvalue /= 2
-	s_skill.value = endvalue
+#	endvalue = calculate_number_from_string_array(s_skill.long_value, caster, target)
+#	s_skill.temp = calculate_number_from_string_array(s_skill.temp, caster, target)
+#	var rangetype
+#	if s_skill.userange == 'weapon':
+#		if caster.gear.rhand == null:
+#			rangetype = 'melee'
+#		else:
+#			var weapon = state.items[caster.gear.rhand]
+#			rangetype = weapon.weaponrange
+#	if rangetype == 'melee' && FindFighterRow(caster) == 'backrow' && !CheckMeleeRange(caster.combatgroup):
+#		endvalue /= 2
+#	s_skill.value = endvalue
 	#apply triggers
 	for t in s_skill.casteffects:
 		s_skill.apply_effect(t, variables.TR_HIT)

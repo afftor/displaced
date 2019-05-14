@@ -39,7 +39,7 @@ var effects
 var combateffects
 var explorationares 
 
-
+var rng := RandomNumberGenerator.new()
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
 
@@ -148,6 +148,7 @@ func _ready():
 #	OS.window_size = Vector2(1280,720)
 #	OS.window_position = Vector2(300,0)
 	randomize()
+	rng.randomize()
 	#Settings and folders
 	settings_load()
 	#LoadEventData()

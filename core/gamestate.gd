@@ -29,6 +29,7 @@ var oldmaterials := {}
 var unlocks := []
 
 var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
+
 var party_save
 
 var CurrentTextScene
@@ -53,6 +54,7 @@ var area_save
 var currentarea
 var currenttutorial = 'tutorial1'
 var viewed_tips := []
+
 
 func revert():
 	date = 1
@@ -90,6 +92,7 @@ func revert():
 	currentarea = null
 	currenttutorial = 'tutorial1'
 	viewed_tips.clear()
+
 
 func pos_set(value):
 	combatparty = value

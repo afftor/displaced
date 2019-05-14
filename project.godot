@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://files/classes/short_skill.gd"
 }, {
+"base": "base_effect",
+"class": "area_effect",
+"language": "GDScript",
+"path": "res://files/classes/area_effect.gd"
+}, {
+"base": "Reference",
+"class": "atomic_effect",
+"language": "GDScript",
+"path": "res://files/classes/atomic_effect.gd"
+}, {
 "base": "Reference",
 "class": "base_effect",
 "language": "GDScript",
@@ -34,6 +44,36 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://files/classes/combatant.gd"
 }, {
+"base": "base_effect",
+"class": "oneshot_effect",
+"language": "GDScript",
+"path": "res://files/classes/oneshot_effect.gd"
+}, {
+"base": "base_effect",
+"class": "static_effect",
+"language": "GDScript",
+"path": "res://files/classes/static_effect.gd"
+}, {
+"base": "base_effect",
+"class": "temp_e_progress",
+"language": "GDScript",
+"path": "res://files/classes/temp_effect_progress.gd"
+}, {
+"base": "base_effect",
+"class": "temp_e_simple",
+"language": "GDScript",
+"path": "res://files/classes/temp_effect_simple.gd"
+}, {
+"base": "base_effect",
+"class": "temp_e_upgrade",
+"language": "GDScript",
+"path": "res://files/classes/temp_effect_upgrade.gd"
+}, {
+"base": "base_effect",
+"class": "triggered_effect",
+"language": "GDScript",
+"path": "res://files/classes/triggered_effect.gd"
+}, {
 "base": "Reference",
 "class": "worker",
 "language": "GDScript",
@@ -43,8 +83,16 @@ _global_script_class_icons={
 "Buff": "",
 "Item": "",
 "S_Skill": "",
+"area_effect": "",
+"atomic_effect": "",
 "base_effect": "",
 "combatant": "",
+"oneshot_effect": "",
+"static_effect": "",
+"temp_e_progress": "",
+"temp_e_simple": "",
+"temp_e_upgrade": "",
+"triggered_effect": "",
 "worker": ""
 }
 
@@ -73,6 +121,7 @@ state="*res://core/gamestate.gd"
 Items="*res://assets/data/Items.gd"
 globals="*res://core/globals.gd"
 input_handler="*res://core/input_handler.gd"
+effects_pool="*res://core/effects_pool.gd"
 
 [debug]
 

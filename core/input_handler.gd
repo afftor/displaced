@@ -469,7 +469,34 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 			result = (req.value == combatant.race);
 	return result
 
+func calculate_number_from_string_array(array, caster, target):
+	var endvalue = 0
+	var firstrun = true
+	for i in array:
+		var modvalue = i
+		if (i.find('caster') >= 0) or (i.find('target') >= 0):
+			i = i.split('.')
+			if i[0] == 'caster':
+				modvalue = str(caster[i[1]])
+			elif i[0] == 'target':
+				modvalue = str(target[i[1]])
+		if !modvalue[0].is_valid_float():
+			if modvalue[0] == '-' && firstrun == true:
+				endvalue += float(modvalue)
+			else:
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
+		else:
+			endvalue += float(modvalue)
+		firstrun = false
+	return endvalue
 
+func FindFighterRow(fighter):
+	var pos = fighter.position
+	if pos in range(4,7) || pos in range(10,13):
+		pos = 'backrow'
+	else:
+		pos = 'frontrow'
+	return pos
 
 func operate(operation, value1, value2):
 	var result
