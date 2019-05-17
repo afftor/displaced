@@ -54,8 +54,8 @@ func resolve_template():
 	for e in template.keys():
 		if typeof(template[e]) == TYPE_ARRAY:
 			template[e] = calculate_property(template[e])
-
-func apply_template(obj):#to move 
+#to move 
+func apply_template(obj):
 	match template.type:
 		'damage':
 			obj.deal_damage(template.value, template.source)

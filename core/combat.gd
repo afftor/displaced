@@ -850,7 +850,7 @@ func execute_skill(skill, caster, target):
 	var ref = Skillsdata.skilllist[skill]
 	if ref.cooldown > 0:
 		caster.cooldowns[skill] = ref.cooldown
-	var s_skill = S_Skill.new(caster, target)
+	var s_skill = S_Skill.new()#caster, target)
 	s_skill.createfromskill(skill)
 	s_skill.hit_roll()
 	var endvalue = 0

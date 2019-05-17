@@ -3,6 +3,7 @@ class_name area_effect
 
 #area effects stable version - may be subject to reworking
 #area effects can't own sub_effects (cause those can not be linked to applied objects as one-to-one), only buffs and atomic effects
+#area effects can't be initial effects
 
 var area = []
 
@@ -25,7 +26,8 @@ func remove_pos(pos):
 		obj.remove_atomic(a)
 
 func apply():
-	remove()
+	if is_applied:
+		remove()
 	calculate_args()
 	is_applied = true
 	atomic.clear()
@@ -41,6 +43,8 @@ func apply():
 		buffs.push_back(tmp)
 	for pos in area:
 		apply_pos(pos)
+	for ch in state.heroes.values():
+		ch.add_ext_area_effect(id)
 
 
 func remove():
@@ -49,6 +53,8 @@ func remove():
 	is_applied = false
 	buffs.clear()
 	atomic.clear()
+	for ch in state.heroes.values():
+		ch.remove_ext_area_effect(id)
 
 func calculate_args():
 	.calculate_args()

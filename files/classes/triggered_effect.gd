@@ -9,6 +9,7 @@ var req_skill = false
 #var skill :S_Skill
 
 func _init(caller).(caller):
+	is_applied = true
 	pass
 
 func createfromtemplate(buff_t):
@@ -73,7 +74,6 @@ func process_event(ev):
 	pass
 
 func apply():
-	is_applied = true
 	sub_effects.clear()
 	for e in template.sub_effects:
 		var tmp = effects_pool.e_createfromtemplate(e, id)

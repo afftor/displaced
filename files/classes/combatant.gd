@@ -25,6 +25,7 @@ var hpmax = 0 setget hp_max_set
 var defeated = false
 var mana = 0 setget mana_set
 var manamax = 0
+var alt_mana = 0 setget a_mana_set
 var damage = 0 setget damage_set, damage_get
 var evasion = 0 setget eva_set
 var hitrate = 0
@@ -63,12 +64,11 @@ var buffs = {} #for display purpose ONLY, list of names
 
 #effects new part
 var static_effects = []
-var temp_effects = []   #{'effect','time'}
+var temp_effects = []  
 var triggered_effects = []
-var oneshot_effects = []
-var area_effects = [] #{'effect', 'position'}
+var area_effects = [] 
 var own_area_effects = [] 
-var timers = [] #{'effect', 'delay'}
+
 
 var position setget set_position
 var combatgroup = 'ally'
@@ -115,6 +115,8 @@ func regen_calculate_threshhold():
 	regen_threshholds.mana = variables.TimePerDay/max(manamax,1)
 
 func set_shield(value):
+	if shield != 0: 
+		process_event(variables.TR_SHIELD_DOWN)
 	shield = value;
 	if displaynode != null:
 		displaynode.update_shield()
@@ -185,6 +187,13 @@ func mdef_set(value):
 		damage += delta * 0.5
 	mdef = value
 
+func a_mana_set(value):
+	alt_mana = value
+	if traits.keys().has('necro_trait') and traits['necro_trait']:
+		var tmp = find_temp_effect('necro_trait')
+		tmp.set_args('count', value)
+		pass
+
 func armor_get():
 	return max(0, armor)
 
@@ -240,7 +249,8 @@ func activate_trait(trait_code):
 	var tmp = Traitdata.traitlist[trait_code]
 	traitpoints -= tmp.cost
 	for e in tmp.effects:
-		apply_effect(e)
+		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+		apply_effect(effects_pool.add_effect(eff))
 
 func deactivate_trait(trait_code):
 	if !traits.keys().has(trait_code): return
@@ -248,8 +258,10 @@ func deactivate_trait(trait_code):
 	traits[trait_code] = false
 	var tmp = Traitdata.traitlist[trait_code]
 	traitpoints += tmp.cost
-	for e in tmp.effects:
-		remove_effect(e, 'once')
+	for e in (static_effects + own_area_effects + triggered_effects):
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.template.has('trait_effect') && eff.template.trait_effect == trait_code:
+			eff.call_deferred('remove')
 	pass
 
 func add_trait(trait_code):
@@ -262,56 +274,46 @@ func add_trait(trait_code):
 #	oneshot_effects.clear()
 #	pass
 
-func apply_atomic(effect): #can be name or dictionary
-	var tmp
-	if typeof(effect) == TYPE_STRING:
-		tmp = Effectdata.atomic[effect]
-	else:
-		tmp = effect.duplicate()
-	match tmp.type:
-		'stat_s':
-			self.set(tmp.stat, tmp.value)
-		'stat_m':
-			self.set(tmp.stat, get(tmp.stat) * tmp.value)
-		'stat', 'stat_once':
-			self.set(tmp.stat, get(tmp.stat) + tmp.value)
-		'effect':
-			apply_effect(tmp.effect)
-		'temp_effect':
-			apply_temp_effect(tmp.effect, tmp.duration, tmp.stack)
-		'block_effect', 'delete_effect':
-			remove_effect(tmp.effect, 'all')
+func apply_atomic(template): 
+	match template.type:
 		'damage':
-			deal_damage(tmp.value, tmp.source)
-		'buff':
-			#buffs.push_back(tmp.value)
-			if buffs.has(tmp.value):
-				buffs[tmp.value] += 1
-			else:
-				buffs[tmp.value] = 1
-		'timer':
-			timers.push_back({effect = tmp.effect, delay = tmp.delay})
+			deal_damage(template.value, template.source)
+			pass
+		'heal':
+			heal(template.value)
+			pass
+		'mana':
+			mana_update(template.value)
+			pass
+		'stat_set', 'stat_set_revert':
+			template.buffer = get(template.stat)
+			set(template.stat, template.value)
+			pass
+		'stat_add':
+			set(template.stat, get(template.stat) + template.value)
+			pass
+		'stat_mul':
+			set(template.stat, get(template.stat) * template.value)
+			pass
+		'signal':
+			#stub for signal emitting
+			globals.emit_signal(template.value)
+		'remove_effect': 
+			remove_temp_effect_tag(template.value)
+			pass
 
-func remove_atomic(effect):
-	var tmp
-	if typeof(effect) == TYPE_STRING:
-		tmp = Effectdata.atomic[effect]
-	else:
-		tmp = effect.duplicate()
-	match tmp.type:
-		'stat_m':
-			self.set(tmp.stat, get(tmp.stat) / tmp.value)
-		'stat':
-			self.set(tmp.stat, get(tmp.stat) - tmp.value)
-		'effect':
-			remove_effect(tmp.effect, 'once')
-		'block_effect':
-			apply_effect(tmp.effect)
-		'buff':
-			#buffs.erase(tmp.value)
-			buffs[tmp.value] -= 1;
-			if buffs[tmp.value] < 0.1:
-				buffs.erase(tmp.value)
+
+func remove_atomic(template):
+	match template.type:
+		'stat_set_revert':
+			set(template.stat, template.buffer)
+			pass
+		'stat_add':
+			set(template.stat, get(template.stat) - template.value)
+			pass
+		'stat_mul':
+			set(template.stat, get(template.stat) / template.value)
+			pass
 	pass
 
 func find_temp_effect(eff_code):
@@ -319,244 +321,129 @@ func find_temp_effect(eff_code):
 	var tres = 9999999
 	var nm = 0
 	for i in range(temp_effects.size()):
-		if temp_effects[i].effect != eff_code:continue
+		var eff = effects_pool.get_effect_by_id(temp_effects[i])
+		if eff.template.name != eff_code:continue
 		nm += 1
-		if temp_effects[i].time < tres: 
-			tres = temp_effects[i].time
+		if eff.remains < tres: 
+			tres = eff.remains
 			res = i
 	return {num = nm, index = res}
 
+func find_temp_effect_tag(eff_tag):
+	var res = []
+	for e in temp_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.tags.has(eff_tag):
+			res.push_back(e)
+		return res
 
-func apply_temp_effect(eff_code, duration = 1, stack = 1):
-	var pos = find_temp_effect(eff_code)
-	if pos.num < stack:
-		temp_effects.push_back({effect = eff_code, time = duration})
-		apply_effect(eff_code)
+
+func apply_temp_effect(eff_id):
+	var eff = effects_pool.get_effect_by_id(eff_id)
+	var eff_n = eff.template.name
+	var tmp = find_temp_effect(eff_n)
+	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
+		temp_effects.push_back(eff_id)
+		eff.applied_pos = position
+		eff.applied_char = id
+		eff.apply()
 	else:
-		temp_effects[pos.index].time = duration
+		var eff_a = effects_pool.get_effect_by_id(temp_effects[tmp.index])
+		match eff_a.template.type:
+			'temp_s':eff_a.reset_duration()
+			'temp_p':eff_a.reset_duration() #i'm not sure if this case should exist or if it should be treated like this
+			'temp_u':eff_a.upgrade() #i'm also not sure about this collision treatement, but for this i'm sure that upgradeable effects should have stack 1
+		eff.remove()
 
-func add_area_effect(eff_code):
-	var effect = Effectdata.effect_table[eff_code]
-	var area = []
-	match effect.area:
-		'back': if [1,2,3].has(position): area.push_back(position + 3)
-		'line':
-			if [1,2,3].has(position): area = [1,2,3]
-			elif [4,5,6].has(position): area = [4,5,6]
-			area.erase(position)
-	#own_area_effects.push_back(effect.code)
-	for pos in area:
-		for h in state.heroes.values():
-			h.add_ext_area_effect({effect = effect.value, position = pos})
 
-func remove_area_effect(eff_code):
-	var effect = Effectdata.effect_table[eff_code]
-	var area = []
-	match effect.area:
-		'back': if [1,2,3].has(position): area.push_back(position + 3)
-		'line':
-			if [1,2,3].has(position): area = [1,2,3]
-			elif [4,5,6].has(position): area = [4,5,6]
-			area.erase(position)
-	#own_area_effects.erase(effect.code)
-	for pos in area:
-		for h in state.heroes.values():
-			h.remove_ext_area_effect({effect = effect.value, position = pos})
+func add_area_effect(eff_id):
+	var eff = effects_pool.get_effect_by_id(eff_id)
+	own_area_effects.push_back(eff_id)
+	eff.apply()
 
-func add_ext_area_effect(dict):
-	area_effects.push_back(dict)
-	if dict.position == position: apply_effect(dict.effect)
+func remove_area_effect(eff_id):
+	own_area_effects.erase(eff_id)
 
-func remove_ext_area_effect(dict):
-	area_effects.erase(dict)
-	if dict.position == position: remove_effect(dict.effect, 'once')
+func add_ext_area_effect(eff_id):
+	if own_area_effects.has(eff_id): return
+	area_effects.push_back(eff_id)
+
+func remove_ext_area_effect(eff_id):
+	if own_area_effects.has(eff_id): return
+	area_effects.erase(eff_id)
 
 func set_position(new_pos):
 	if new_pos == position: return
-	#remove own area effects
-	for e in own_area_effects:
-		remove_area_effect(e)
 	#remove ext area effects
 	for e in area_effects:
-		if e.position == position: remove_effect(e.effect)
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove_pos(position)
 	
 	position = new_pos
 	#reapply own area effects
 	for e in own_area_effects:
-		add_area_effect(e)
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.apply()
 	#reapply ext area effects
 	for e in area_effects:
-		if e.position == position: apply_effect(e.effect)
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.apply_pos(position)
 
 
-func apply_effect(eff_code):
-	var tmp = Effectdata.effect_table[eff_code]
-	match tmp.type:
-		'static':
-			static_effects.push_back(eff_code)
-			for ee in tmp.effects:
-				apply_atomic(ee)
-		'oneshot':
-			#oneshot_effects.push_back(eff_code)
-			for ee in tmp.effects:
-				apply_atomic(ee)
-		'trigger':
-			triggered_effects.push_back(eff_code)
-		'area':
-			own_area_effects.push_back(eff_code)
-			add_area_effect(eff_code)
-			for ee in tmp.effects:
-				apply_atomic(ee)
-
-func remove_effect(eff_code, option = 'once'):
-#	for i in range(temp_effects.size()):
-#		if temp_effects[i].effect == eff_code:
-#			if option == 'all' or temp_effects[i].time <0:
-#				temp_effects.remove(i);
-	while true:
-		var if_temp = find_temp_effect(eff_code);
-		if if_temp.num == 0: break;
-		if option == 'once':
-			if temp_effects[if_temp.index].time >= 0:
-				print ("warning, possible incorrect temporal effect removing!")
-			temp_effects.remove(if_temp.index);
-			break;
-		else: 
-			temp_effects.remove(if_temp.index);
-	
-	var tmp = Effectdata.effect_table[eff_code]
-	match tmp.type:
-		'static':
-			if option == 'once':
-				static_effects.erase(eff_code)
-				for ee in tmp.effects:
-					remove_atomic(ee)
-			else:
-				while static_effects.has(eff_code):
-					static_effects.erase(eff_code)
-					for ee in tmp.effects:
-						remove_atomic(ee)
-#		'oneshot':
-#			for ee in tmp.effects:
-#				remove_atomic(ee)
-#				pass
-#			pass
-		'trigger':
-			if option == 'once':
-				triggered_effects.erase(eff_code)
-			else:
-				while triggered_effects.has(eff_code):
-					triggered_effects.erase(eff_code)
-		'area':
-			own_area_effects.erase(eff_code)
-			remove_area_effect(eff_code)
-			for ee in tmp.effects:
-				remove_atomic(ee)
+func apply_effect(eff_id):
+	var obj = effects_pool.get_effect_by_id(eff_id)
+	match obj.template.type:
+		'static': 
+			static_effects.push_back(eff_id)
+			obj.applied_pos = position
+			obj.applied_char = id
+			obj.apply()
+		'trigger': 
+			triggered_effect.push_back(eff_id)
+			obj.applied_pos = position
+			obj.applied_char = id
+		'temp_s','temp_p','temp_u': apply_temp_effect(eff_id)
+		'area': add_area_effect(eff_id)
+		'oneshot': 
+			obj.applied_obj = self
+			obj.apply()
 
 
-func update_temp_effects():
-	for e in temp_effects:
-		e.time -= 1
-		if e.time < 0:
-			remove_effect(e.effect)
+func remove_effect(eff_id):
+	var obj = effects_pool.get_effect_by_id(eff_id)
+	match obj.template.type:
+		'static': static_effects.erase(eff_id)
+		'trigger': triggered_effects.erase(eff_id)
+		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
+		'area': remove_area_effect(eff_id)
+	pass
 
+func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
+	var eff = effects_pool.get_effect_by_id(eff_id)
+	eff.remove()
+	pass
 
 func remove_all_temp_effects():
 	for e in temp_effects:
-		remove_effect(e.effect);
+		var obj = effects_pool.get_effect_by_id(e)
+		obj.call_deferred('remove')
 
-func update_timers():
-	for e in timers:
-		e.delay -= 1
-		if e.delay < 0:
-			apply_effect(e.effect)
+func remove_temp_effect_tag(eff_tag):#function for nonn-direct temps removing, like heal or dispel
+	var tmp = find_temp_effect_tag(eff_tag)
+	if tmp.size() == 0: return
+	var i = globals.rng.randi_range(0, tmp.size()-1)
+	remove_temp_effect(tmp[i])
+	pass
 
-
-func basic_check(trigger):
-	#clear_oneshot()
+func process_event(ev):
+	for e in temp_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.process_event(ev)
 	for e in triggered_effects:
-		var tmp = Effectdata.effect_table[e]
-		if tmp.trigger != trigger: continue
-		#check conditions
-		var res = true
-		for cond in tmp.conditions:
-			res = res and input_handler.requirementcombatantcheck(cond, self)
-		if !res: return
-		#apply effect
-		for ee in tmp.effects: 
-			var eee
-			if typeof(ee) == TYPE_STRING: eee = Effectdata.atomic[ee].duplicate()
-			else: 
-				eee = ee.duplicate()
-			if eee.type == 'caster':
-				eee.type = eee.new_type
-				eee.value = self.get(eee.value) * eee.mul
-			apply_atomic(eee)
-	#clear_oneshot()
-
-func on_skill_check(skill, check): #skill has to be in constant form without metascripting. this part has to be done in conbat.gd in execute_skill
-	#var tt = Skillsdata.skilllist[skill].copy()
-	for e in triggered_effects:
-		var tmp = Effectdata.effect_table[e]
-		if tmp.trigger != check: continue
-		#check conditions
-		var res = true
-		for cond in tmp.conditions:
-			match cond.target:
-				'skill':
-					match cond.check:
-						'type':
-							res = res and (skill.skilltype == cond.value)
-						'tag':
-							res = res and skill.tags.has(cond.value)
-						'result': res = res and (skill.hit_res & cond.value != 0)
-				'caster':
-					res = res and input_handler.requirementcombatantcheck(cond.value, skill.caster)
-				'target':
-					res = res and input_handler.requirementcombatantcheck(cond.value, skill.target)
-				'chance':
-					res = res and (randf()*100 < cond.value)
-		if !res: return
-		#apply effect
-		
-		
-		for ee in tmp.effects:
-			var eee
-			if typeof(ee) == TYPE_STRING: eee = Effectdata.atomic[ee].duplicate()
-			else: 
-				eee = ee.duplicate()
-			var rec
-			#convert effect to constant form
-			if eee.type == 'skill':
-				eee.type = eee.new_type
-				eee.value = skill.get(eee.value) * eee.mul
-			if eee.type == 'caster':
-				eee.type = eee.new_type
-				eee.value = skill.caster.get(eee.value) * eee.mul
-			if eee.type == 'target':
-				eee.type = eee.new_type
-				eee.value = skill.target.get(eee.value) * eee.mul
-			match eee.target:
-				'caster':
-					rec = skill.caster
-				'target':
-					rec = skill.target
-				'skill':
-					rec = skill
-			rec.apply_atomic(eee)
-
-
-
-#func add_buff(buff):#= {caster, code, effects = [{value, stat}], tags, icon, duration}
-#	buffs[buff.code] = buff
-#	for i in buff.effects:
-#		self[i.stat] += i.value
-#
-#func remove_buff(buff):
-#	buff = buffs[buff]
-#	for i in buff.effects:
-#		self[i.stat] -= i.value
-#	buffs.erase(buff.code)
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill: continue
+		var tr = eff.process_event(ev) #stub for more direct controling of temps removal
+	pass
 
 func createfromenemy(enemy):
 	var template = Enemydata.enemylist[enemy].duplicate()
@@ -687,30 +574,44 @@ func hitchance(target):
 		return false
 
 func deal_damage(value, source):
-
+	var tmp = hp
 	value = round(value);
 	if (shield > 0) and ((shieldtype & source) != 0):
 		self.shield -= value
 		if shield < 0:
 			self.hp = hp + shield
-			basic_check(variables.TR_DMG)
+			process_event(variables.TR_DMG)
 			self.shield = 0
-		if shield == 0: basic_check(variables.TR_SHIELD_DOWN)
+		if shield == 0: process_event(variables.TR_SHIELD_DOWN)
 	else:
 		self.hp = hp - value
-		basic_check(variables.TR_DMG)
+		process_event(variables.TR_DMG)
+	tmp = tmp - hp
+	return tmp
 
 func heal(value):
+	var tmp = hp
 	value = round(value)
 	self.hp += value
-	basic_check(variables.TR_HEAL)
+	tmp = hp - tmp
+	process_event(variables.TR_HEAL)
+	return tmp
+
+func mana_update(value):
+	var tmp = mana
+	value = round(value)
+	self.mana += value
+	tmp = mana - tmp
+	#maybe better to rigger heal triggers on this
+	#process_event(variables.TR_HEAL)
+	return tmp
 
 func death():
 	#remove own area effects
 	for e in own_area_effects:
 		remove_area_effect(e)
 	#trigger death triggers
-	basic_check(variables.TR_DEATH)
+	process_event(variables.TR_DEATH)
 	defeated = true
 	hp = 0
 	if displaynode != null:
@@ -770,6 +671,21 @@ func calculate_number_from_string_array(array):
 		firstrun = false
 	return endvalue
 
+func process_check(check):
+	return input_handler.requirementcombatantcheck(check, self)
+	pass
+
+func get_all_buffs():
+	var res = {}
+	for e in temp_effects + static_effects + area_effects + triggered_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		for b in eff.buffs:
+			if !res.has(b.template_name):
+				res[b.template_name] = []
+				res[b.template_name].push_back(b)
+			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
+				res[b.template_name].push_back(b)
+	return res
 
 func skill_tooltip_text(skillcode):
 	var skill = Skillsdata.skilllist[skillcode]
@@ -780,38 +696,3 @@ func skill_tooltip_text(skillcode):
 		text += skill.description
 	return text
 
-func serialize():
-	var tmp = {};
-	var atr = ['base','name','level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed', 'critchance', 'critmod', 'resistfire', 'resistearth', 'resistwater', 'resistair', 'shield', 'shieldtype', 'traitpoints','price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
-	var atr1 = ['evasion', 'mdef', 'position', 'mana']
-	var atr2 = ['skills', 'traits', 'buffs', 'static_effects', 'temp_effects', 'triggered_effects', 'oneshot_effects', 'area_effects', 'own_area_effects',]
-	for a in atr:
-		tmp[a] = get(a)
-	for a in atr1:
-		tmp[a] = get(a)
-	for a in atr2:
-		tmp[a] = get(a).duplicate()
-	#return to_json(tmp)
-	return tmp
-
-func deserialize(tmp):
-	#var tmp = parse_json(buff);
-	var nametemplate = combatantdata.charlist[tmp.base]
-	combatclass = nametemplate.subclass;
-	base = tmp.base
-	icon = nametemplate.icon
-	combaticon = nametemplate.combaticon
-	image = nametemplate.image
-	name = tr(nametemplate.name)
-	namebase = nametemplate.name
-	var atr = ['level', 'baseexp', 'hpmax', 'hppercent', 'manamax', 'damage', 'hitrate', 'armor', 'armorpenetration', 'speed', 'critchance', 'critmod', 'resistfire', 'resistearth', 'resistwater', 'resistair', 'shield', 'shieldtype', 'traitpoints', 'price', 'damagemod', 'hpmod', 'manamod', 'xpmod', 'detoriatemod'];
-	var atr1 = ['evasion', 'mdef', 'position', 'mana']
-	var atr2 = ['skills', 'traits', 'buffs', 'static_effects', 'temp_effects', 'triggered_effects', 'oneshot_effects', 'area_effects', 'own_area_effects',]
-	for a in atr:
-		self.set(a, tmp[a])
-	evasion = tmp.evasion;
-	mdef = tmp.mdef;
-	position = tmp.position;
-	mana = tmp.mana;
-	for a in atr2:
-		set(a, tmp[a].duplicate())

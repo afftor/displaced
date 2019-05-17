@@ -44,6 +44,8 @@ func apply():
 
 func remove():
 	var obj = get_applied_obj()
+	if obj != null:
+		obj.remove_effect(id)
 	for a in atomic:
 		if obj != null: 
 			#tmp.remove_template(obj)
@@ -91,10 +93,12 @@ func calculate_args():
 					else:
 						par = parent
 					args.push_back(par.args[arg.param])
-		pass
+	for b in buffs:
+		b.calculate_args()
 
 func set_args(arg, value):
 	self_args[arg] = value
+	calculate_args()
 
 func serialize():
 	var tmp := {}

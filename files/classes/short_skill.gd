@@ -72,6 +72,15 @@ func createfromskill(s_code):
 #	else:
 #		armor_p = caster.armorpenetration
 
+func process_check(check):
+	var op1 = check[0]
+	var op2 = check[2]
+	if typeof(op1) == TYPE_STRING:
+		op1 = get(op1)
+	if typeof(op2) == TYPE_STRING:
+		op2 = get(op2)
+	return input_handler.operate(check[1], op1, op2)
+	pass
 
 func setup_caster(c):
 	caster = c
@@ -192,7 +201,21 @@ func process_event(ev):
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(ev)
-	pass
+	# NB !! move this part to combat
+#	if caster != null:
+#		for eff in caster.triggered_effects:
+#			var obj = effects_pool.get_effect_by_id(eff)
+#			if !eff.req_skill: continue
+#			obj.set_args('skill', self)
+#			obj.process_event(ev)
+
+#	if target != null:
+#		for eff in target.triggered_effects:
+#			var obj = effects_pool.get_effect_by_id(eff)
+#			if !eff.req_skill: continue
+#			obj.set_args('skill', self)
+#			obj.process_event(ev)
+
 
 func resolve_value(check_m):
 	for i in range(long_value.size()):
