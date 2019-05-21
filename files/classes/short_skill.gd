@@ -13,9 +13,9 @@ var tags
 var value = []
 var long_value = []
 var manacost
-var casteffects
 var userange
 var targetpattern
+var repeat
 
 var chance
 var evade
@@ -31,6 +31,9 @@ func _init():
 	caster = null
 	target = null
 	pass
+
+func clone():
+	return dict2inst(inst2dict(self))
 
 func createfromskill(s_code):
 	template = Skillsdata.skilllist[s_code]
@@ -50,10 +53,15 @@ func createfromskill(s_code):
 		else:
 			damagestat.push_back('hp')
 	userange = template.userange
-	casteffects = template.casteffects.duplicate()
-	for e in template.effects:
+	for e in template.casteffects:
 		var eff = effects_pool.e_createfromtemplate(e)
 		apply_effect(effects_pool.add_effect(eff))
+	if template.has('repeat'):
+		repeat = template.repeat
+	else:
+		repeat = 1
+	if template.has('is_drain'):
+		is_drain = true
 	
 #	if template.keys().has('chance'):
 #		chance = template.chance
@@ -101,6 +109,7 @@ func setup_final():
 		evade = template.evade
 	if template.keys().has('armor_p'):
 		armor_p = template['armor_p']
+
 
 func hit_roll():
 	var prop = chance - evade
@@ -218,6 +227,7 @@ func process_event(ev):
 
 
 func resolve_value(check_m):
+	value.resize(long_value.size())
 	for i in range(long_value.size()):
 		var endvalue = input_handler.calculate_number_from_string_array(long_value[i], caster, target)
 		if !(damagestat[i] in variables.dmg_mod_list): 
@@ -256,12 +266,12 @@ func calculate_dmg():
 		reduction = max(0, target.armor - armor_p)
 	elif skilltype == 'spell':
 		reduction = max(0, target.mdef)
-	if !tags.has('heal'):
+	if !tags.has('noreduce'):#tag for all reduction-ignoring skills i.e heals and others
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
-				 value[i] *= (float(100 - reduction)/100)
+				 value[i] *= (float(100 - reduction)/100.0)
 	if damagetype in ['fire','water','air','earth']:
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
-				 value[i] *= ((100 - target['resist' + damagetype])/100)
+				 value[i] *= ((100 - target['resist' + damagetype])/100.0)
 	for v in value: v = round(v)

@@ -190,9 +190,10 @@ func mdef_set(value):
 func a_mana_set(value):
 	alt_mana = value
 	if traits.keys().has('necro_trait') and traits['necro_trait']:
-		var tmp = find_temp_effect('necro_trait')
-		tmp.set_args('count', value)
-		pass
+		for e in find_eff_by_trait('necro_trait'):
+			var tmp = effects_pool.get_effect_by_id(e)
+			tmp.set_args('count', value)
+		
 
 func armor_get():
 	return max(0, armor)
@@ -250,6 +251,7 @@ func activate_trait(trait_code):
 	traitpoints -= tmp.cost
 	for e in tmp.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+		eff.set_args('trait', tmp.code)
 		apply_effect(effects_pool.add_effect(eff))
 
 func deactivate_trait(trait_code):
@@ -258,10 +260,9 @@ func deactivate_trait(trait_code):
 	traits[trait_code] = false
 	var tmp = Traitdata.traitlist[trait_code]
 	traitpoints += tmp.cost
-	for e in (static_effects + own_area_effects + triggered_effects):
+	for e in find_eff_by_trait(trait_code):
 		var eff = effects_pool.get_effect_by_id(e)
-		if eff.template.has('trait_effect') && eff.template.trait_effect == trait_code:
-			eff.call_deferred('remove')
+		eff.remove()
 	pass
 
 func add_trait(trait_code):
@@ -337,6 +338,23 @@ func find_temp_effect_tag(eff_tag):
 			res.push_back(e)
 		return res
 
+func find_eff_by_trait(trait_code):
+	var res = []
+	for e in (static_effects + own_area_effects + triggered_effects + temp_effects):
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.self_args.has('trait'):
+			if eff.self_args.trait == trait_code:
+				res.push_back(e)
+	return res
+
+func find_eff_by_item(item_id):
+	var res = []
+	for e in (static_effects + own_area_effects + triggered_effects + temp_effects):
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.self_args.has('item'):
+			if eff.self_args.item == item_id:
+				res.push_back(e)
+	return res
 
 func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
@@ -455,6 +473,8 @@ func createfromenemy(enemy):
 	speed = template.speed
 	mana = manamax
 	skills = template.skills
+	id = 'h'+str(state.heroidcounter)
+	state.heroidcounter += 1
 	for i in template.resists:
 		#self['resist' + i] = template.resists[i]
 		set('resist' + i, template.resists[i])
@@ -539,7 +559,10 @@ func equip(item):
 	for i in item.effects:
 		var tmp = Effectdata.effects[i].effects;
 		for e in tmp:
-			apply_effect(e);
+			#apply_effect(e);
+			var eff = effects_pool.e_createfromtemplate(e)
+			eff.set_args('item', item.id)
+			apply_effect(effects_pool.add_effect(eff))
 		#addpassiveeffect(i)
 		#NEED REPLACING
 		pass
@@ -559,8 +582,9 @@ func unequip(item):#NEEDS REMAKING!!!!
 	
 	for i in item.effects:
 		var tmp = Effectdata.effects[i].effects;
-		for e in tmp:
-			remove_effect(e);
+		for e in find_eff_by_item(item.id):
+			var eff = effects_pool.get_effect_by_id(e)
+			eff.remove()
 		#removepassiveeffect(i) 
 		#NEED REPLACING
 		pass
@@ -606,6 +630,13 @@ func mana_update(value):
 	#process_event(variables.TR_HEAL)
 	return tmp
 
+func stat_update(stat, value):
+	var tmp = get(stat)
+	value = round(value)
+	set(stat, value)
+	tmp = get(stat) - tmp
+	return tmp
+
 func death():
 	#remove own area effects
 	for e in own_area_effects:
@@ -620,10 +651,10 @@ func death():
 
 func can_act():
 	var res = true
-	for e in static_effects:
-		if Effectdata.effect_table[e].has('disable'): res = false
-	for e in temp_effects:
-		if Effectdata.effect_table[e.effect].has('disable'): res = false
+	for e in static_effects + temp_effects:
+		var obj = effects_pool.get_effect_by_id(e)
+		if obj.template.has('disable'):
+			res = false
 	return res
 
 func portrait():
@@ -679,6 +710,7 @@ func get_all_buffs():
 	var res = {}
 	for e in temp_effects + static_effects + area_effects + triggered_effects:
 		var eff = effects_pool.get_effect_by_id(e)
+		eff.calculate_args()
 		for b in eff.buffs:
 			if !res.has(b.template_name):
 				res[b.template_name] = []

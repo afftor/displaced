@@ -23,7 +23,7 @@ func apply():
 	is_applied = true
 	atomic.clear()
 	for a in template.atomic:
-		var tmp := atomic_effect.new(a, self)
+		var tmp := atomic_effect.new(a, id)
 		tmp.resolve_template()
 		#tmp.apply_template(obj)
 		obj.apply_atomic(tmp.template)
@@ -34,13 +34,27 @@ func apply():
 		tmp.calculate_args()
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
+	setup_siblings()
 	buffs.clear()
 	for e in template.buffs:
 		var tmp = Buff.new(id)
 		tmp.createfromtemplate(e)
 		tmp.calculate_args()
 		buffs.push_back(tmp)
-	pass
+
+func setup_siblings():
+	if sub_effects.size() < 2:
+		return
+	for se in sub_effects:
+		var eff = effects_pool.get_effect_by_id(se)
+		eff.self_args['siblings'] = sub_effects.duplicate()
+		eff.self_args['siblings'].erase(se)
+
+func remove_siblings():
+	if !self_args.has('siblings'):return
+	for se in self_args['siblings']:
+		var eff = effects_pool.get_effect_by_id(se)
+		eff.remove()
 
 func remove():
 	var obj = get_applied_obj()
@@ -93,6 +107,9 @@ func calculate_args():
 					else:
 						par = parent
 					args.push_back(par.args[arg.param])
+				'app_obj':
+					var par = get_applied_obj()
+					args.push_back(par.get(arg.param))
 	for b in buffs:
 		b.calculate_args()
 

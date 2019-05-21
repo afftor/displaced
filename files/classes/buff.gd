@@ -8,6 +8,7 @@ var template
 var args: = []
 var self_args := []
 var template_name
+var name setget ,get_name
 
 func _init(caller):
 	parent = caller
@@ -20,12 +21,16 @@ func createfromtemplate(buff_t):
 		template = buff_t.duplicate()
 	tooltip = tr(template.description)
 	icon = template.icon
-	template_name = template.name
+	template_name = template.t_name
+	name = template.name
 
 func get_tooltip():
 	calculate_args()
 	return tooltip % args
 	pass
+
+func get_name():
+	return tr(name)
 
 func calculate_args():
 	args.clear()
@@ -41,6 +46,10 @@ func calculate_args():
 					pass
 				'template':
 					args.push_back(template[arg.param])
+				'parent_args':
+					var par
+					par = effects_pool.get_effect_by_id(parent)
+					args.push_back(par.args[arg.param])
 		pass
 
 func set_args(arg, value):
@@ -57,4 +66,5 @@ func deserialize(tmp):
 	self_args = tmp['args'].duplicate()
 	tooltip = tr(template.description)
 	icon = template.icon
-	template_name = template.name
+	template_name = template.t_name
+	name = template.name

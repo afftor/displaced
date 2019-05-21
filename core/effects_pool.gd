@@ -75,6 +75,7 @@ func e_createfromtemplate(buff_t, caller = null):
 		'temp_p': tmp = temp_e_progress.new(caller)
 		'temp_u': tmp = temp_e_upgrade.new(caller)
 		'area': tmp = area_effect.new(caller)
+		'oneshot': tmp = oneshot_effect.new(caller)
 	tmp.createfromtemplate(template)
 	return tmp
 	pass
@@ -82,5 +83,5 @@ func e_createfromtemplate(buff_t, caller = null):
 func deserialize(tmp):
 	effects.clear()
 	for k in tmp.keys():
-		var eff = deserialize_effect(tmp, null)
+		var eff = deserialize_effect(tmp)
 		effects[k] = eff

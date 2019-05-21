@@ -80,6 +80,7 @@ func apply():
 		tmp.calculate_args()
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
+	setup_siblings()
 	buffs.clear()
 	for e in template.buffs:
 		var tmp = Buff.new(id)
@@ -90,26 +91,32 @@ func apply():
 		var eff = effects_pool.get_effect_by_id(e)
 		var t1 = eff.template.target
 		match t1:
+			'self':
+				match eff.template.execute:
+					'remove':
+						call_deferred('remove')
+					'remove_parent':
+						var obj = effects_pool.get_effect_by_id(parent)
+						obj.remove()
+					'remove_sibling':
+						var obj = effects_pool.get_effect_by_id(parent)
+						obj.remove_siblings()
+						obj.remove()
 			'skill':
 				var obj = self_args['skill']
 				obj.apply(eff)
-				pass
 			'caster':
 				var obj = self_args['skill']
 				obj.caster.apply(eff)
-				pass
 			'target':
 				var obj = self_args['skill']
 				obj.target.apply(eff)
-				pass
 			'owner':
 				var obj = get_applied_obj()
 				obj.apply(eff)
-				pass
 			'parent':
 				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
 				obj.apply(eff)
-				pass
 		pass
 	sub_effects.clear()
 	pass

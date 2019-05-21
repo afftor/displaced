@@ -14,16 +14,17 @@ func _init(buff_ta, obj):
 
 func calculate_property(prop: Array):
 	var res = 0
+	var par = effects_pool.get_effect_by_id(parent)
 	if typeof(prop[0]) == TYPE_ARRAY:
 		prop[0] = calculate_property(prop[0])
 	if typeof(prop[0]) == TYPE_STRING:
 		match prop[0]:
 			'parent':
-				var value = parent.get(prop[1])
+				var value = par.get(prop[1])
 				prop.pop_front()
 				prop[0] = value
 			'parent_arg':
-				var value = parent.args[prop[1]]
+				var value = par.args[prop[1]]
 				prop.pop_front()
 				prop[0] = value
 			'random':
@@ -54,44 +55,45 @@ func resolve_template():
 	for e in template.keys():
 		if typeof(template[e]) == TYPE_ARRAY:
 			template[e] = calculate_property(template[e])
-#to move 
-func apply_template(obj):
-	match template.type:
-		'damage':
-			obj.deal_damage(template.value, template.source)
-			pass
-		'heal':
-			obj.heal(template.value)
-			pass
-		'mana':
-			obj.mana(template.value)
-			pass
-		'stat_set', 'stat_set_revert':
-			template.buffer = obj.get(template.stat)
-			obj.set(template.stat, template.value)
-			pass
-		'stat_add':
-			obj.set(template.stat, obj.get(template.stat) + template.value)
-			pass
-		'stat_mul':
-			obj.set(template.stat, obj.get(template.stat) * template.value)
-			pass
-		'signal':
-			#stub for signal emitting
-			globals.emit_signal(template.value)
-		'remove_effect': #stub
-			pass
-	pass
 
-func remove_template(obj):#to move
-	match template.type:
-		'stat_set_revert':
-			obj.set(template.stat, template.buffer)
-			pass
-		'stat_add':
-			obj.set(template.stat, obj.get(template.stat) - template.value)
-			pass
-		'stat_mul':
-			obj.set(template.stat, obj.get(template.stat) / template.value)
-			pass
-	pass
+#to move 
+#func apply_template(obj):
+#	match template.type:
+#		'damage':
+#			obj.deal_damage(template.value, template.source)
+#			pass
+#		'heal':
+#			obj.heal(template.value)
+#			pass
+#		'mana':
+#			obj.mana(template.value)
+#			pass
+#		'stat_set', 'stat_set_revert':
+#			template.buffer = obj.get(template.stat)
+#			obj.set(template.stat, template.value)
+#			pass
+#		'stat_add':
+#			obj.set(template.stat, obj.get(template.stat) + template.value)
+#			pass
+#		'stat_mul':
+#			obj.set(template.stat, obj.get(template.stat) * template.value)
+#			pass
+#		'signal':
+#			#stub for signal emitting
+#			globals.emit_signal(template.value)
+#		'remove_effect': #stub
+#			pass
+#	pass
+
+#func remove_template(obj):#to move
+#	match template.type:
+#		'stat_set_revert':
+#			obj.set(template.stat, template.buffer)
+#			pass
+#		'stat_add':
+#			obj.set(template.stat, obj.get(template.stat) - template.value)
+#			pass
+#		'stat_mul':
+#			obj.set(template.stat, obj.get(template.stat) / template.value)
+#			pass
+#	pass

@@ -112,15 +112,22 @@ func update_shield(): #FILL COLORS FOR OTHER SHIELD TYPES
 
 func rebuildbuffs():
 	globals.ClearContainer($Buffs)
-	for i in fighter.buffs:
+#	for i in fighter.buffs:
+#		var newbuff = globals.DuplicateContainerTemplate($Buffs)
+#		var buff = Effectdata.buffs[i]
+#		var text = buff.description
+#		newbuff.texture = buff.icon
+#		if buff.has('bonuseffect'):
+#			match buff.bonuseffect:
+#				'barrier':
+#					newbuff.get_node("Label").show()
+#					newbuff.get_node("Label").text = str(fighter.shield)
+	for b in fighter.get_all_buffs():
 		var newbuff = globals.DuplicateContainerTemplate($Buffs)
-		var buff = Effectdata.buffs[i]
-		var text = buff.description
-		newbuff.texture = buff.icon
-		if buff.has('bonuseffect'):
-			match buff.bonuseffect:
-				'barrier':
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(fighter.shield)
+		newbuff.texture = b.icon
+		var text = b.tooltip
+		if b.args.has('show_data'):
+			newbuff.get_node("Label").show()
+			newbuff.get_node("Label").text = str(b.args.show_data)
 		globals.connecttooltip(newbuff, text)
 
