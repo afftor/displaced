@@ -442,6 +442,8 @@ func DelayedText(node, text):
 	node.text = text
 
 func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stats
+	if req.size() == 0:
+		return true
 	var result
 	match req.type:
 		'chance':
@@ -477,9 +479,12 @@ func calculate_number_from_string_array(array, caster, target):
 		if (i.find('caster') >= 0) or (i.find('target') >= 0):
 			i = i.split('.')
 			if i[0] == 'caster':
-				modvalue = str(caster[i[1]])
+				modvalue = str(caster.get(i[1]))
 			elif i[0] == 'target':
-				modvalue = str(target[i[1]])
+				modvalue = str(target.get(i[1]))
+		if (i.find('random') >= 0):
+			i = i.split(' ')
+			modvalue = str(globals.rng.randi_range(0, int(i[1])))
 		if !modvalue[0].is_valid_float():
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
@@ -514,6 +519,10 @@ func operate(operation, value1, value2):
 			result = value1 <= value2
 		'lt':
 			result = value1 < value2
+		'has':
+			result = value1.has(value2)
+		'mask':
+			result = (int(value1) & int(value2)) != 0
 	return result
 
 func string_to_math(value = 0, string = ''):

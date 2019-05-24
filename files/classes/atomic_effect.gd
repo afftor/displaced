@@ -27,6 +27,11 @@ func calculate_property(prop: Array):
 				var value = par.args[prop[1]]
 				prop.pop_front()
 				prop[0] = value
+			'parent_arg_get':
+				var value = par.args[prop[1]].get(prop[2])
+				prop.pop_front()
+				prop.pop_front()
+				prop[0] = value
 			'random':
 				var value = globals.rng.randi_range(prop[1], prop[2])
 				prop.pop_front()

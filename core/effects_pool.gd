@@ -83,5 +83,6 @@ func e_createfromtemplate(buff_t, caller = null):
 func deserialize(tmp):
 	effects.clear()
 	for k in tmp.keys():
-		var eff = deserialize_effect(tmp)
+		var eff = deserialize_effect(tmp[k])
 		effects[k] = eff
+		eff.id = k

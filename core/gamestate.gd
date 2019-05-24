@@ -321,13 +321,16 @@ func serialize():
 	area_save = areaprogress
 	town_save = townupgrades
 	party_save = combatparty
-	items_save.clear()
+	tmp['items_save'] = {}
 	for i in items.keys():
 		tmp['items_save'][i] = inst2dict(items[i])
+	tmp['heroes_save'] = {}
 	for i in heroes.keys():
 		tmp['heroes_save'][i] = inst2dict(heroes[i])
+	tmp['guild_save'] = {}
 	for i in heroguild.keys():
 		tmp['guild_save'][i] = inst2dict(heroguild[i])
+	tmp['workers_save'] = {}
 	for i in workers.keys():
 		tmp['workers_save'][i] = inst2dict(workers[i])
 	

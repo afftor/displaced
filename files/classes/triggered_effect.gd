@@ -18,6 +18,8 @@ func createfromtemplate(buff_t):
 	if template.has('reset'):
 		reset_event = template.reset.duplicate()
 	req_skill = template.req_skill
+	if template.has('ready'):
+		ready = template.ready
 	pass
 
 func serialize():

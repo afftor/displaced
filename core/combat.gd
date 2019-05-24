@@ -112,6 +112,7 @@ func FinishCombat():
 			battlefield[i] = null
 	for i in range(7,13):
 		if state.combatparty[i] == null:continue
+#warning-ignore:return_value_discarded
 		state.heroes.erase(state.combatparty[i])
 		state.combatparty[i] = null
 	hide()
@@ -131,8 +132,9 @@ func select_actor():
 	if checkwinlose() == true:
 		return
 	if turnorder.empty():
-		newturn()
+		#to test, maybe this is wrong decision
 		calculateorder()
+		newturn()
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
 	#currentactor.update_timers()
@@ -169,6 +171,7 @@ func checkdeaths():
 				battlefield[i] = null
 				enemygroup.erase(i)
 				summons.erase(i);
+#warning-ignore:return_value_discarded
 				state.heroes.erase(state.combatparty[i])
 				state.combatparty[i] = null
 				
@@ -201,9 +204,6 @@ func victory():
 	fightover = true
 	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
-	#fastfinish all temp effects
-	for p in playergroup.values():
-		p.remove_all_temp_effects();
 	#on combat ends triggers
 	for p in playergroup.values():
 		p.process_event(variables.TR_COMBAT_F)
@@ -305,6 +305,7 @@ func player_turn(pos):
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
 	if !selected_character.can_act():
+		selected_character.process_event(variables.TR_TURN_F)
 		call_deferred('select_actor')
 		return
 	allowaction = true
@@ -391,6 +392,7 @@ func enemy_turn(pos):
 	#fighter.update_timers()
 	fighter.process_event(variables.TR_TURN_GET)
 	if !fighter.can_act():
+		fighter.process_event(variables.TR_TURN_F)
 		call_deferred('select_actor')
 		return
 	
@@ -405,7 +407,7 @@ func enemy_turn(pos):
 		var skill = Skillsdata.skilllist[i]
 		if fighter.cooldowns.has(skill.code) || fighter.mana < skill.manacost:
 			continue
-		if skill.has('condition') && !fighter.process_chech(skill.condition):
+		if !fighter.process_check(skill.reqs):
 			continue
 		if skill.aipatterns.has('attack'):
 			castskill.append([skill, skill.aipriority])
@@ -799,7 +801,7 @@ func use_skill(skill_code, caster, target):
 	#print(caster.name + ' finished attacking') 
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
-		caster.basic_check(variables.TR_TURN_F)
+		caster.process_event(variables.TR_TURN_F)
 		call_deferred('select_actor')
 	else:
 		allowaction = true
@@ -954,14 +956,14 @@ func execute_skill(skill, caster, target):
 			var rval = target.stat_update(s_skill2.damagestat[i], s_skill2.value[i])
 			if s_skill2.is_drain:
 				var rval2 = caster.stat_update(s_skill2.damagestat[i], caster.get(s_skill2.damagestat[i])-rval)
-			if s_skill2.tags.has('heal'):
+			if s_skill2.tags.has('s_heal'):
 				text += "%s restored %d %s" %[target.name, rval, tr(s_skill2.damagestat[i])] 
-			elif s_skill2.tags.has('drain') && s_skill2.is_drain:
+			elif s_skill2.tags.has('s_drain') && s_skill2.is_drain:
 				text += "%s drained %d %s from %s" %[caster.name, s_skill2.value[i], tr(s_skill2.damagestat[i]),  target.name]
-			elif s_skill2.tags.has('damage') && !s_skill2.is_drain:
+			elif s_skill2.tags.has('s_damage') && !s_skill2.is_drain:
 				text += "%s loses %d %s" %[target.name, -rval, tr(s_skill2.damagestat[i])]
-			elif s_skill2.tags.has('set') && !s_skill2.is_drain:
-				text += "%s's %s is now %d" %[target.name, tr(s_skill2.damagestat[i]), target.get(s_skill2.damagestat[i])] 
+			elif s_skill2.tags.has('s_set') && !s_skill2.is_drain:
+				text += "%s's %s is now %d" %[target.name, tr(s_skill2.damagestat[i], s_skill2.value[i]), target.get(s_skill2.damagestat[i])] 
 		combatlogadd(text)
 
 	s_skill2.process_event(variables.TR_POSTDAMAGE)
@@ -1079,7 +1081,7 @@ func RebuildSkillPanel():
 		if activecharacter.cooldowns.has(i):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if skill.has('condition') && !activecharacter.process_chech(skill.condition):
+		if !activecharacter.process_chech(skill.reqs):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])

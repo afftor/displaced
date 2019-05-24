@@ -2,8 +2,8 @@ extends base_effect
 class_name temp_e_progress
 #temp effect that progress on expiring
 
-var tick_event := -1
-var rem_event := -1
+var tick_event := []
+var rem_event := []
 var remains := -1
 
 var template_name
@@ -13,8 +13,18 @@ func _init(caller).(caller):
 
 func createfromtemplate(tmp):
 	.createfromtemplate(tmp)
-	if template.has('tick_event'): tick_event = template.tick_event
-	if template.has('rem_event'): rem_event = template.rem_event
+	if template.has('tick_event'): 
+		if typeof(template.tick_event) == TYPE_ARRAY:
+			tick_event = template.tick_event.duplicate()
+		else:
+			tick_event.clear()
+			tick_event.push_back(template.tick_event)
+	if template.has('rem_event'): 
+		if typeof(template.rem_event) == TYPE_ARRAY:
+			rem_event = template.rem_event.duplicate()
+		else:
+			rem_event.clear()
+			rem_event.push_back(template.rem_event)
 	template_name = template.name
 
 func apply():
@@ -31,6 +41,7 @@ func upgrade():
 	pass
 
 func process_event(ev):
+	if !is_applied: return
 	var res = variables.TE_RES_NOACT
 	if ev == tick_event:
 		res = variables.TE_RES_TICK
@@ -54,8 +65,19 @@ func serialize():
 
 func deserialize(tmp):
 	.deserialize(tmp)
-	if template.has('tick_event'): tick_event = template.tick_event
-	if template.has('rem_event'): rem_event = template.rem_event
+	if template.has('tick_event'): 
+		if typeof(template.tick_event) == TYPE_ARRAY:
+			for tr in template.tick_event:
+				tick_event.push_back(int(tr))
+		else:
+			tick_event.push_back(int(template.tick_event))
+	rem_event.clear()
+	if template.has('rem_event'): 
+		if typeof(template.rem_event) == TYPE_ARRAY:
+			for tr in template.rem_event:
+				rem_event.push_back(int(tr))
+		else:
+			rem_event.push_back(int(template.rem_event))
 	remains = tmp.remains
 	template_name = template.name
 	pass

@@ -126,8 +126,9 @@ func rebuildbuffs():
 		var newbuff = globals.DuplicateContainerTemplate($Buffs)
 		newbuff.texture = b.icon
 		var text = b.tooltip
-		if b.args.has('show_data'):
-			newbuff.get_node("Label").show()
-			newbuff.get_node("Label").text = str(b.args.show_data)
+		#to add this functional, cause this data can't be transferes via args
+#		if b.args.has('show_data'):
+#			newbuff.get_node("Label").show()
+#			newbuff.get_node("Label").text = str(b.args.show_data)
 		globals.connecttooltip(newbuff, text)
 

@@ -251,8 +251,8 @@ func activate_trait(trait_code):
 	traitpoints -= tmp.cost
 	for e in tmp.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-		eff.set_args('trait', tmp.code)
 		apply_effect(effects_pool.add_effect(eff))
+		eff.set_args('trait', tmp.code)
 
 func deactivate_trait(trait_code):
 	if !traits.keys().has(trait_code): return
@@ -413,12 +413,12 @@ func apply_effect(eff_id):
 	match obj.template.type:
 		'static': 
 			static_effects.push_back(eff_id)
-			obj.applied_pos = position
+			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
 		'trigger': 
-			triggered_effect.push_back(eff_id)
-			obj.applied_pos = position
+			triggered_effects.push_back(eff_id)
+			#obj.applied_pos = position
 			obj.applied_char = id
 		'temp_s','temp_p','temp_u': apply_temp_effect(eff_id)
 		'area': add_area_effect(eff_id)
@@ -561,8 +561,8 @@ func equip(item):
 		for e in tmp:
 			#apply_effect(e);
 			var eff = effects_pool.e_createfromtemplate(e)
-			eff.set_args('item', item.id)
 			apply_effect(effects_pool.add_effect(eff))
+			eff.set_args('item', item.id)
 		#addpassiveeffect(i)
 		#NEED REPLACING
 		pass
@@ -703,13 +703,29 @@ func calculate_number_from_string_array(array):
 	return endvalue
 
 func process_check(check):
-	return input_handler.requirementcombatantcheck(check, self)
+	if typeof(check) == TYPE_ARRAY:
+		var res = true
+		for ch in check:
+			res = res and input_handler.requirementcombatantcheck(ch, self)
+		return res
+	else: return input_handler.requirementcombatantcheck(check, self)
 	pass
 
 func get_all_buffs():
 	var res = {}
-	for e in temp_effects + static_effects + area_effects + triggered_effects:
+	for e in temp_effects + static_effects + triggered_effects:
 		var eff = effects_pool.get_effect_by_id(e)
+		eff.calculate_args()
+		for b in eff.buffs:
+			if !res.has(b.template_name):
+				res[b.template_name] = []
+				res[b.template_name].push_back(b)
+			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
+				res[b.template_name].push_back(b)
+	for e in area_effects:
+		var eff:area_effect = effects_pool.get_effect_by_id(e)
+		if !eff.is_applied_to_pos(position) :
+			continue
 		eff.calculate_args()
 		for b in eff.buffs:
 			if !res.has(b.template_name):

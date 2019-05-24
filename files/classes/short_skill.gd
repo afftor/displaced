@@ -26,6 +26,7 @@ var hit_res
 var armor_p
 
 var effects = []
+var process_value
 
 func _init():
 	caster = null
@@ -43,11 +44,12 @@ func createfromskill(s_code):
 	tags = template.tags.duplicate()
 	manacost = template.manacost
 	targetpattern = template.targetpattern
-	if typeof(template.value) == TYPE_ARRAY:
+	
+	if typeof(template.value[0]) == TYPE_ARRAY:
 		long_value = template.value.duplicate()
 		damagestat = template.damagestat.duplicate()
 	else:
-		long_value.push_back(template.value)
+		long_value.push_back(template.value.duplicate())
 		if template.has('damagestat'):
 			damagestat.push_back(template.damagestat)
 		else:
@@ -80,12 +82,12 @@ func createfromskill(s_code):
 #	else:
 #		armor_p = caster.armorpenetration
 
-func process_check(check):
+func process_check(check:Array):
 	var op1 = check[0]
 	var op2 = check[2]
 	if typeof(op1) == TYPE_STRING:
 		op1 = get(op1)
-	if typeof(op2) == TYPE_STRING:
+	if typeof(op2) == TYPE_STRING && check[1] != 'has':
 		op2 = get(op2)
 	return input_handler.operate(check[1], op1, op2)
 	pass
@@ -243,8 +245,7 @@ func resolve_value(check_m):
 		if rangetype == 'melee' && input_handler.FindFighterRow(caster) == 'backrow' && !check_m:
 			endvalue /= 2
 		value[i] = endvalue
-		pass
-	pass
+	process_value = value[0]
 
 func calculate_dmg():
 	if damagetype == 'weapon':

@@ -11,7 +11,7 @@ var tags := []
 var buffs := []
 var atomic := []
 var is_applied
-var applied_pos:int
+var applied_pos = null
 var applied_char = null
 
 func _init(caller):
@@ -68,8 +68,8 @@ func remove():
 	buffs.clear()
 
 func get_applied_obj():
-	if applied_pos == null: return null
 	if applied_char == null:
+		if applied_pos == null: return null
 		applied_char = state.combatparty[applied_pos]
 	return state.heroes[applied_char]
 
@@ -78,7 +78,8 @@ func createfromtemplate(buff_t):
 		template = Effectdata.effect_table[buff_t]
 	else:
 		template = buff_t.duplicate()
-	tags = template.tags.duplicate()
+	if template.has('tags'):
+		tags = template.tags.duplicate()
 
 
 
@@ -135,11 +136,12 @@ func serialize():
 func deserialize(tmp):
 	is_applied = tmp['is_applied']
 	template = tmp['template'].duplicate()
-	tags = template.tags.duplicate()
+	if template.has('tags'):
+		tags = template.tags.duplicate()
 	self_args = tmp['args'].duplicate()
 	sub_effects = tmp['sub_effects'].duplicate()
 	atomic = tmp['atomic'].duplicate()
-	applied_pos = int(tmp['app_pos'])
+	applied_pos = null if (tmp['app_pos'] == null) else int(tmp['app_pos'])
 	applied_char = tmp['app_char']
 	buffs.clear()
 	for b in tmp['buffs']:
