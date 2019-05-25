@@ -30,8 +30,6 @@
 [ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
 
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 274, 29 )
@@ -95,6 +93,7 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="Panel" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 34.0
 margin_top = 41.0
 margin_right = 675.0
@@ -591,6 +590,8 @@ margin_bottom = 665.0
 bbcode_enabled = true
 
 [node name="Rewards" type="TextureRect" parent="."]
+editor/display_folded = true
+visible = false
 margin_left = 535.0
 margin_top = 17.0
 margin_right = 1194.0

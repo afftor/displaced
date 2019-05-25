@@ -179,7 +179,8 @@ func buildscreen(empty = null):
 				#$BlacksmithNode.texture_hover = forgeimage.second.hl
 
 func testfunction():
-	input_handler.ActivateTutorial('tutorial1')
+	input_handler.gfx_sprite($testbutton, "slash")
+	#input_handler.ActivateTutorial('tutorial1')
 
 func _process(delta):
 	if self.visible == false:

@@ -204,7 +204,7 @@ func ChangeScene(name):
 
 
 func EventCheck():
-	if state.CurEvent != "": return;
+	if state.CurEvent != "" || CurrentScene.debug == true: return;
 	for s in get_tree().get_nodes_in_group('char_sprite'):
 		s.set_active_val();
 	for event in EventList.keys():

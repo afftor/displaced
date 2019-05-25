@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex"
+path="res://.import/slash_3.png-045e8cf2343cb7cfdcf54fca033ce94e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/Rosesad.png"
-dest_files=[ "res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex" ]
+source_file="res://assets/images/gfx/hit/slash_3.png"
+dest_files=[ "res://.import/slash_3.png-045e8cf2343cb7cfdcf54fca033ce94e.stex" ]
 
 [params]
 

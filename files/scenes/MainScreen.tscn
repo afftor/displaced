@@ -242,10 +242,10 @@ texture_hover = ExtResource( 19 )
 
 [node name="testbutton" type="Button" parent="."]
 visible = false
-margin_left = 1018.0
-margin_top = 885.0
-margin_right = 1192.0
-margin_bottom = 1042.0
+margin_left = 976.962
+margin_top = 762.54
+margin_right = 1150.96
+margin_bottom = 919.54
 
 [node name="ControlPanel" type="TextureRect" parent="."]
 margin_left = 111.0
