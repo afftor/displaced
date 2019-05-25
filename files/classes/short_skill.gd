@@ -211,6 +211,7 @@ func remove_effects():
 func process_event(ev):
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
+		eff.set_args('skill', self)
 		eff.process_event(ev)
 	# NB !! move this part to combat
 #	if caster != null:

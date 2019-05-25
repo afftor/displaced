@@ -31,10 +31,11 @@ func apply():
 	sub_effects.clear()
 	for e in template.sub_effects:
 		var tmp = effects_pool.e_createfromtemplate(e, id)
-		tmp.calculate_args()
+		#tmp.calculate_args()
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
 	setup_siblings()
+	calculate_args()
 	buffs.clear()
 	for e in template.buffs:
 		var tmp = Buff.new(id)
@@ -141,6 +142,7 @@ func deserialize(tmp):
 	self_args = tmp['args'].duplicate()
 	sub_effects = tmp['sub_effects'].duplicate()
 	atomic = tmp['atomic'].duplicate()
+#warning-ignore:incompatible_ternary
 	applied_pos = null if (tmp['app_pos'] == null) else int(tmp['app_pos'])
 	applied_char = tmp['app_char']
 	buffs.clear()

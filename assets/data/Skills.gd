@@ -418,7 +418,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		reqs = [],
-		tags = ['s_set'],
+		tags = [],
 		value = [['caster.position']],
 		damagestat = ['taunt'],
 		cooldown = 2,
@@ -577,7 +577,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
 		
-		aipatterns = ['heal','instant'],
+		aipatterns = ['instant'],
 		aitargets = '1ally',
 		aiselfcond = 'any',
 		aitargetcond = 'any',

@@ -22,7 +22,8 @@ func createfromtemplate(buff_t):
 	tooltip = tr(template.description)
 	icon = template.icon
 	template_name = template.t_name
-	name = template.name
+	if template.has('name'): name = template.name
+	else: name = template_name
 
 func get_tooltip():
 	calculate_args()

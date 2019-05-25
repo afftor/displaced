@@ -456,7 +456,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 					var tempresult = false
 					for i in combatant.gear.values():
 						if i != null:
-							tempresult = input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value])
+							tempresult = input_handler.operate(req.operant, state.items[i].get(req.name), req.value)
 							if tempresult == true:
 								result = true
 								break
@@ -464,7 +464,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 					result = true
 					for i in combatant.gear.values():
 						if i != null:
-							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
+							if input_handler.operate(req.operant, state.items[i].get(req.name), req.value) == false:
 								result = false
 								break
 		'race': 
@@ -482,7 +482,7 @@ func calculate_number_from_string_array(array, caster, target):
 				modvalue = str(caster.get(i[1]))
 			elif i[0] == 'target':
 				modvalue = str(target.get(i[1]))
-		if (i.find('random') >= 0):
+		elif (i.find('random') >= 0):
 			i = i.split(' ')
 			modvalue = str(globals.rng.randi_range(0, int(i[1])))
 		if !modvalue[0].is_valid_float():

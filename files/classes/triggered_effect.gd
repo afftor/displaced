@@ -70,25 +70,29 @@ func process_event(ev):
 		if res:
 			ready = false
 			#apply trigger
-			apply()
+			e_apply()
 	if reset_event.has(ev) or reset_event.size() == 0:
 		ready = true
 	pass
 
 func apply():
-	sub_effects.clear()
-	for e in template.sub_effects:
-		var tmp = effects_pool.e_createfromtemplate(e, id)
-		tmp.calculate_args()
-		sub_effects.push_back(effects_pool.add_effect(tmp))
-		pass
 	setup_siblings()
+	calculate_args()
 	buffs.clear()
 	for e in template.buffs:
 		var tmp = Buff.new(id)
 		tmp.createfromtemplate(e)
 		tmp.calculate_args()
 		buffs.push_back(tmp)
+
+func e_apply():
+	sub_effects.clear()
+	for e in template.sub_effects:
+		var tmp = effects_pool.e_createfromtemplate(e, id)
+		#tmp.calculate_args()
+		sub_effects.push_back(effects_pool.add_effect(tmp))
+		pass
+	
 	for e in sub_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		var t1 = eff.template.target
@@ -106,19 +110,19 @@ func apply():
 						obj.remove()
 			'skill':
 				var obj = self_args['skill']
-				obj.apply(eff)
+				obj.apply_effect(e)
 			'caster':
 				var obj = self_args['skill']
-				obj.caster.apply(eff)
+				obj.caster.apply_effect(e)
 			'target':
 				var obj = self_args['skill']
-				obj.target.apply(eff)
+				obj.target.apply_effect(e)
 			'owner':
 				var obj = get_applied_obj()
-				obj.apply(eff)
+				obj.apply_effect(e)
 			'parent':
 				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
-				obj.apply(eff)
+				obj.apply_effect(e)
 		pass
 	sub_effects.clear()
 	pass

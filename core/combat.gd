@@ -615,8 +615,9 @@ func buildenemygroup(enemygroup):
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)
 		#new part for gamestate 
-		state.combatparty[i] = enemygroup[i].id
 		state.heroes[enemygroup[i].id] = enemygroup[i]
+		state.combatparty[i] = enemygroup[i].id
+		
 
 func buildplayergroup(group):
 	var newgroup = {}
@@ -689,7 +690,7 @@ func use_skill(skill_code, caster, target):
 	if skill.cooldown > 0:
 		caster.cooldowns[skill_code] = skill.cooldown
 	var s_skill1 = S_Skill.new()
-	s_skill1.createfromskill(skill)
+	s_skill1.createfromskill(skill_code)
 	s_skill1.setup_caster(caster)
 	s_skill1.setup_target(target)
 	s_skill1.process_event(variables.TR_CAST)
@@ -875,7 +876,7 @@ func CalculateTargets(skill, caster, target):
 
 
 func execute_skill(skill, caster, target):
-	var ref = Skillsdata.skilllist[skill]
+	#var ref = Skillsdata.skilllist[skill]
 	var s_skill2:S_Skill = skill.clone()
 	s_skill2.setup_target(target)
 	#there has to be another trigger cycle but for now there is no one of this type
@@ -919,15 +920,15 @@ func execute_skill(skill, caster, target):
 		if s_skill2.damagestat[i] == 'hp': #heal, drain, damage, heal no log,  damage no log,  drain no log
 			if s_skill2.tags.has('heal'):
 				var rval = target.heal(s_skill2.value[i])
-				text += "%s is healed for %d hp (%d actually)" %[target.name, s_skill2.value[i], rval] 
+				text += "%s is healed for %d hp (%d actually)\n" %[target.name, s_skill2.value[i], rval] 
 			elif s_skill2.tags.has('drain') && s_skill2.is_drain:
 				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damagesrc)
 				var rval2 = caster.heal(rval)
-				text += "%s drained %d hp (%d actually) from %s and gained %d hp" %[caster.name, s_skill2.value[i], rval, target.name, rval2]
+				text += "%s drained %d hp (%d actually) from %s and gained %d hp\n" %[caster.name, s_skill2.value[i], rval, target.name, rval2]
 			elif s_skill2.tags.has('damage') && !s_skill2.is_drain:
 				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damagesrc)
-				text += "%s is hit for %d damage (%d actually)" %[target.name, s_skill2.value[i], rval] 
-			elif s_skill2.value[i] < 0:
+				text += "%s is hit for %d damage (%d actually)\n" %[target.name, s_skill2.value[i], rval] 
+			elif s_skill2.value[i] <= 0:
 				target.heal(-s_skill2.value[i])
 			elif s_skill2.is_drain:
 				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damagesrc)
@@ -937,14 +938,14 @@ func execute_skill(skill, caster, target):
 		elif s_skill2.damagestat[i] == 'mana': #heal, drain, damage, heal no log,  damage no log,  drain no log
 			if s_skill2.tags.has('heal'):
 				var rval = target.mana_update(s_skill2.value[i])
-				text += "%s restored %d mana (%d actually)" %[target.name, s_skill2.value[i], rval] 
+				text += "%s restored %d mana (%d actually)\n" %[target.name, s_skill2.value[i], rval] 
 			elif s_skill2.tags.has('drain') && s_skill2.is_drain:
 				var rval = target.mana_update(-s_skill2.value[i])
 				var rval2 = caster.mana_update(rval)
-				text += "%s drained %d mana (%d actually) from %s and gained %d mana" %[caster.name, s_skill2.value[i], rval, target.name, rval2]
+				text += "%s drained %d mana (%d actually) from %s and gained %d mana\n" %[caster.name, s_skill2.value[i], rval, target.name, rval2]
 			elif s_skill2.tags.has('damage') && !s_skill2.is_drain:
 				var rval = target.mana_update(-s_skill2.value[i])
-				text += "%s lost %d mana (%d actually)" %[target.name, s_skill2.value[i], rval] 
+				text += "%s lost %d mana (%d actually)\n" %[target.name, s_skill2.value[i], -rval] 
 			elif s_skill2.value[i] < 0:
 				target.mana_update(s_skill2.value[i])
 			elif s_skill2.is_drain:
@@ -957,15 +958,14 @@ func execute_skill(skill, caster, target):
 			if s_skill2.is_drain:
 				var rval2 = caster.stat_update(s_skill2.damagestat[i], caster.get(s_skill2.damagestat[i])-rval)
 			if s_skill2.tags.has('s_heal'):
-				text += "%s restored %d %s" %[target.name, rval, tr(s_skill2.damagestat[i])] 
+				text += "%s restored %d %s\n" %[target.name, rval, tr(s_skill2.damagestat[i])] 
 			elif s_skill2.tags.has('s_drain') && s_skill2.is_drain:
-				text += "%s drained %d %s from %s" %[caster.name, s_skill2.value[i], tr(s_skill2.damagestat[i]),  target.name]
+				text += "%s drained %d %s from %s\n" %[caster.name, s_skill2.value[i], tr(s_skill2.damagestat[i]),  target.name]
 			elif s_skill2.tags.has('s_damage') && !s_skill2.is_drain:
 				text += "%s loses %d %s" %[target.name, -rval, tr(s_skill2.damagestat[i])]
 			elif s_skill2.tags.has('s_set') && !s_skill2.is_drain:
-				text += "%s's %s is now %d" %[target.name, tr(s_skill2.damagestat[i], s_skill2.value[i]), target.get(s_skill2.damagestat[i])] 
-		combatlogadd(text)
-
+				text += "%s's %s is now %d\n" %[target.name, tr(s_skill2.damagestat[i]), s_skill2.value[i], target.get(s_skill2.damagestat[i])] 
+	combatlogadd(text)
 	s_skill2.process_event(variables.TR_POSTDAMAGE)
 	for e in caster.triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
@@ -1081,7 +1081,7 @@ func RebuildSkillPanel():
 		if activecharacter.cooldowns.has(i):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if !activecharacter.process_chech(skill.reqs):
+		if !activecharacter.process_check(skill.reqs):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
@@ -1092,6 +1092,7 @@ func RebuildSkillPanel():
 		globals.connectskilltooltip(newbutton, i, activecharacter)
 
 func SelectSkill(skill):
+	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skillsdata.skilllist[skill]
 	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code):
 		#SelectSkill('attack')

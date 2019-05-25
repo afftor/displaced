@@ -11,10 +11,10 @@ var icon
 var combaticon
 
 var race
-
-var level := 1
-var recentlevelups := 0
-var baseexp := 0 setget exp_set
+#i'm not sure if it is correct to allow this fields to be floats, but YOU INSIST ON NOT USING CUSTOM DESERIALIZING SO DICT2INST SETS THEM TO FLOATS AND ANY CONSEQ OPERATION FIRES COMPART ERROR
+var level = 1 
+var recentlevelups = 0
+var baseexp = 0 setget exp_set
 
 var xpreward #for enemies
 
@@ -40,7 +40,7 @@ var resistearth = 0
 var resistwater = 0
 var resistair = 0
 var shield = 0 setget set_shield;
-var shieldtype := variables.S_FULL setget set_shield_t;
+var shieldtype = variables.S_FULL setget set_shield_t;
 
 var flavor
 
@@ -420,6 +420,7 @@ func apply_effect(eff_id):
 			triggered_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
+			obj.apply()
 		'temp_s','temp_p','temp_u': apply_temp_effect(eff_id)
 		'area': add_area_effect(eff_id)
 		'oneshot': 
@@ -634,7 +635,8 @@ func stat_update(stat, value):
 	var tmp = get(stat)
 	value = round(value)
 	set(stat, value)
-	tmp = get(stat) - tmp
+	if tmp != null: tmp = get(stat) - tmp
+	else:  tmp = get(stat)
 	return tmp
 
 func death():
@@ -733,7 +735,10 @@ func get_all_buffs():
 				res[b.template_name].push_back(b)
 			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
 				res[b.template_name].push_back(b)
-	return res
+	var tmp = []
+	for b_a in res.values():
+		for b in b_a: tmp.push_back(b)
+	return tmp
 
 func skill_tooltip_text(skillcode):
 	var skill = Skillsdata.skilllist[skillcode]

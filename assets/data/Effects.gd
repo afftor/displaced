@@ -238,7 +238,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{target = 'skill', value = ['tags', 'has', 'type_heal']}],
+		conditions = [{type = 'skill', value = ['tags', 'has', 'type_heal']}],
 		args = [{obj = 'self', param = 'skill'}],
 		sub_effects = [
 			{
@@ -285,7 +285,7 @@ var effect_table = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		reset = [variables.TR_CAST],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]}],
 		args = [{obj = 'self', param = 'skill'}],
 		sub_effects = [
 			{
@@ -302,7 +302,7 @@ var effect_table = {
 	e_tr_slowarrow = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
 		sub_effects = ['e_t_slowarrow'],
 		buffs = []
@@ -360,7 +360,7 @@ var effect_table = {
 		trigger = [variables.TR_HIT],
 		reset = [variables.TR_CAST],
 		ready = false,#for the reason not to trigger on the same area attack as initial kill
-		conditions = [{target = 'skill', value = ['skilltype', 'eq', 'skill']}],
+		conditions = [{type = 'skill', value = ['skilltype', 'eq', 'skill']}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -380,7 +380,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_HIT],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -454,7 +454,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		args = [{obj = 'self', param = 'skill'}],
 		sub_effects = [
 			{
@@ -537,7 +537,8 @@ var effect_table = {
 				],
 				sub_effects = [],
 			}
-		]
+		],
+		buffs = []
 	},
 	#skills
 	e_s_stun05 = {
@@ -545,8 +546,8 @@ var effect_table = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{target = 'random', value = 0.5}
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'random', value = 0.5}
 		],
 		buffs = [],
 		sub_effects = ['e_stun']
@@ -556,7 +557,7 @@ var effect_table = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
 		],
 		buffs = [],
 		sub_effects = ['e_stun']
@@ -570,7 +571,8 @@ var effect_table = {
 		tags = ['afflict'],
 		disable = true,
 		sub_effects = [],
-		buffs = ['b_stun']
+		buffs = ['b_stun'],
+		atomic = [],
 	},
 	e_stun_alternate = { #template that can reset duration, no difference for one-turn effects but is an example for longer effects 
 		type = 'temp_s',
@@ -590,7 +592,7 @@ var effect_table = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
 		],
 		buffs = [],
 		sub_effects = ['e_cripple']
@@ -620,7 +622,7 @@ var effect_table = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
 		],
 		buffs = [],
 		sub_effects = ['e_spider_noarmor']
@@ -648,7 +650,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		sub_effects = ['e_taunt'],
 		buffs = []
 	},
@@ -677,7 +679,7 @@ var effect_table = {
 		trigger = [variables.TR_HIT],
 		req_skill = true,
 		conditions = [
-			{target = 'target', value = {type = 'stats', name = 'hppercent', operant = 'lte', value = 25} }
+			{type = 'target', value = {type = 'stats', name = 'hppercent', operant = 'lte', value = 25} }
 		],
 		atomic = [],
 		buffs = [],
@@ -695,7 +697,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_HIT],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -711,7 +713,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_HIT],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -727,7 +729,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		args = [{obj = 'app_obj', param = 'level'}],
 		sub_effects = [
 			{
@@ -745,7 +747,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_HIT],
-		conditions = [{target = 'target', value = {type = 'stats', name = 'hppercent', operant = 'gte', value = 100} }],
+		conditions = [{type = 'target', value = {type = 'stats', name = 'hppercent', operant = 'gte', value = 100} }],
 		atomic = [],
 		buffs = [],
 		sub_effects = [
@@ -779,7 +781,7 @@ var effect_table = {
 	e_w_gobmet_r = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		sub_effects = ['e_taunt'],
 		buffs = ['e_gobmet_rod']
 	},
@@ -806,7 +808,7 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_HIT],
-		conditions = [{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -823,9 +825,9 @@ var effect_table = {
 		trigger = [variables.TR_HIT],
 		req_skill = true,
 		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{target = 'skill', value = ['skilltype', 'eq', 'skill']},
-			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'treant' } }
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
+			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'treant' } }
 		],
 		buffs = [],
 		sub_effects = ['e_autocrit']
@@ -835,9 +837,9 @@ var effect_table = {
 		trigger = [variables.TR_HIT],
 		req_skill = true,
 		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{target = 'skill', value = ['skilltype', 'eq', 'skill']},
-			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'bigtreant' } }
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
+			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'bigtreant' } }
 		],
 		buffs = [],
 		sub_effects = ['e_autocrit']
@@ -847,9 +849,9 @@ var effect_table = {
 		trigger = [variables.TR_HIT],
 		req_skill = true,
 		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{target = 'skill', value = ['skilltype', 'eq', 'skill']},
-			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolem' } }
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
+			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolem' } }
 		],
 		buffs = [],
 		sub_effects = ['e_autocrit']
@@ -892,18 +894,19 @@ var effect_table = {
 					{type = 'stat_set_revert', stat = 'shield', value = 50},
 					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
 					],
-				ags = [{obj = 'app_obj', param = 'shield'}],
+				args = [{obj = 'app_obj', param = 'shield'}],
 				buffs = [
 					{
 						icon = load("res://assets/images/traits/armor.png"), 
 						description = "Damage-absorbing shield, blocks 50 phys damage (%d remains)",
-						args = [{obj = 'parent_arg', param = 0}],
+						args = [{obj = 'parent_args', param = 0}],
 						t_name = 'i_shield'
 					}
 				],
 				sub_effects = [],
 			}
-		]
+		],
+		buffs = []
 	},
 	e_i_barrier3 = {
 		type = 'trigger',
@@ -923,18 +926,19 @@ var effect_table = {
 					{type = 'stat_set_revert', stat = 'shield', value = 50},
 					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_MAG}
 					],
-				ags = [{obj = 'app_obj', param = 'shield'}],
+				args = [{obj = 'app_obj', param = 'shield'}],
 				buffs = [
 					{
 						icon = load("res://assets/images/traits/armor.png"), 
 						description = "Damage-absorbing shield, blocks 50 magic damage (%d remains)",
-						args = [{obj = 'parent_arg', param = 0}],
+						args = [{obj = 'parent_args', param = 0}],
 						t_name = 'i_shield'
 					}
 				],
 				sub_effects = [],
 			}
-		]
+		],
+		buffs = []
 	},
 #	e_i_barrier2 = {
 #		type = 'oneshot',
@@ -955,10 +959,10 @@ var atomic = {
 	a_caster_heal = {type = 'heal', value = [['parent_arg_get', 0, 'process_value'], '*', 0.5]},
 	a_magecrit = {type = 'mana', value = ['parent_arg_get', 0, 'manacost']},
 	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},
-	a_gobmet_blade = {type = 'gamage', source = variables.S_EARTH, value = ['parent_arg', 0]},
-	a_elvenwood_rod = {type = 'mana', value = [['parent_arg', 0], '*', 0.1]},
+	a_gobmet_blade = {type = 'gamage', source = variables.S_EARTH, value = ['parent_args', 0]},
+	a_elvenwood_rod = {type = 'mana', value = [['parent_args', 0], '*', 0.1]},
 	#not used new part (allows to setup stat changing with effect's template)
-	a_stat_add = {type = 'stat_add', stat = ['parent_arg', 0], value = ['parent_arg', 1]},
+	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 };
 #needs filling
 var buffs = {
