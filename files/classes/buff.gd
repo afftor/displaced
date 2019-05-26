@@ -1,7 +1,7 @@
 extends Reference
 class_name Buff
 
-var icon
+var icon:String setget ,get_icon
 var tooltip:String = "" setget ,get_tooltip
 var parent
 var template
@@ -30,6 +30,12 @@ func get_tooltip():
 	return tooltip % args
 	pass
 
+func get_icon():
+	if icon.is_rel_path() or icon.is_abs_path():
+		return load(icon)
+	else:
+		return images.icons[icon]
+
 func get_name():
 	return tr(name)
 
@@ -50,7 +56,7 @@ func calculate_args():
 				'parent_args':
 					var par
 					par = effects_pool.get_effect_by_id(parent)
-					args.push_back(par.args[arg.param])
+					args.push_back(par.args[int(arg.param)])
 		pass
 
 func set_args(arg, value):

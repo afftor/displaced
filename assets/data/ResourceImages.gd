@@ -125,3 +125,6 @@ var GFX = {
 	fire = load("res://assets/sfx/fire_effect.png"),
 }
 
+var icons = {
+	
+}

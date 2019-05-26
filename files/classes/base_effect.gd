@@ -58,6 +58,7 @@ func remove_siblings():
 		eff.remove()
 
 func remove():
+	if !is_applied: return
 	var obj = get_applied_obj()
 	if obj != null:
 		obj.remove_effect(id)
@@ -108,7 +109,7 @@ func calculate_args():
 						par = effects_pool.get_effect_by_id(parent)
 					else:
 						par = parent
-					args.push_back(par.args[arg.param])
+					args.push_back(par.args[int(arg.param)])
 				'app_obj':
 					var par = get_applied_obj()
 					args.push_back(par.get(arg.param))

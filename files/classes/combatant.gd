@@ -454,6 +454,12 @@ func remove_temp_effect_tag(eff_tag):#function for nonn-direct temps removing, l
 	remove_temp_effect(tmp[i])
 	pass
 
+func clean_effects():#clean effects before deleting character
+	for e in temp_effects + static_effects + triggered_effects + own_area_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove()
+	pass
+
 func process_event(ev):
 	for e in temp_effects:
 		var eff = effects_pool.get_effect_by_id(e)

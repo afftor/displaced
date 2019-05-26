@@ -323,7 +323,9 @@ func serialize():
 	party_save = combatparty
 	tmp['items_save'] = {}
 	for i in items.keys():
+		items[i].inventory = null
 		tmp['items_save'][i] = inst2dict(items[i])
+		items[i].inventory = items
 	tmp['heroes_save'] = {}
 	for i in heroes.keys():
 		tmp['heroes_save'][i] = inst2dict(heroes[i])
@@ -364,10 +366,15 @@ func deserialize(tmp:Dictionary):
 		heroguild[key] = t
 	items.clear()
 	#for key in tmp['items'].keys():
+	#with savefix for old broken add_item_to_inventory 
 	for key in items_save.keys():
+		var key1 = key 
+		if (typeof(key1) != TYPE_STRING) or (key1[0] != 'i'):
+			key1 = 'i' + str(key1)
 		var t := dict2inst(items_save[key])
 		t.inventory = items
-		items[key] = t
+		t.id = key1
+		items[key1] = t
 	#date = int(date)
 	#CurrentLine = int(CurrentLine)
 	#itemidcounter = int(itemidcounter)

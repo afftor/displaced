@@ -269,7 +269,7 @@ func AddItemToInventory(item):
 		if id != null:
 			state.items[id].amount += item.amount
 		else:
-			item.id = state.itemidcounter
+			item.id = "i" + str(state.itemidcounter)
 			state.items[item.id] = item
 			state.itemidcounter += 1
 		
@@ -278,7 +278,6 @@ func get_item_id_by_code(itembase):
 	for item in state.items.values():
 		if item.itembase == itembase:
 			return item.id
-	
 	return null
 
 func dir_contents(target):

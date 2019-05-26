@@ -48,6 +48,7 @@ func apply():
 
 
 func remove():
+	if !is_applied: return
 	for pos in area:
 		remove_pos(pos)
 	is_applied = false

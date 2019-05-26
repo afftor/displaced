@@ -202,7 +202,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'evasion', value = -10}],
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/dodgedebuff.png"), 
+				icon = "res://assets/images/traits/dodgedebuff.png", 
 				description = "Evasion reduced for %d turns",
 				args = [{obj = 'parent', param = 'remains'}],
 				t_name = 'eva10'
@@ -214,7 +214,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{#for testing purpose
-				icon = load("res://assets/images/traits/armorgroup.png"), 
+				icon = "res://assets/images/traits/armorgroup.png", 
 				description = "This unit owns area protection effect",
 				t_name = 'areaprot1'
 			}
@@ -227,7 +227,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'armor', value = 10}],
 		buffs = [
 			{#for testing purpose
-				icon = load("res://assets/images/traits/armorgroup.png"), 
+				icon = "res://assets/images/traits/armorgroup.png", 
 				description = "This unit's armor is increased by area effect ",
 				t_name = 'areaprot2'
 			}
@@ -273,7 +273,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'speed', value = 20}],
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/speedondamage.png"), 
+				icon = "res://assets/images/traits/speedondamage.png", 
 				description = "Speed increased for %d turns",
 				args = [{obj = 'parent', param = 'remains'}],
 				t_name = 'react'
@@ -323,7 +323,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/speeddebuf.png"), 
+				icon = "res://assets/images/traits/speeddebuf.png", 
 				description = "Speed and evasion reduced",
 				limit = 1,
 				t_name = 'slowarrow'
@@ -348,7 +348,7 @@ var effect_table = {
 		rem_event = variables.TR_COMBAT_F,
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/bowextradamage.png"), 
+				icon = "res://assets/images/traits/bowextradamage.png", 
 				description = "This unit's next attack will do double damage to its first target",
 				t_name = 'killerbuf'
 			}
@@ -397,7 +397,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{#for testing purpose
-				icon = load("res://assets/images/traits/dodgegroup.png"), 
+				icon = "res://assets/images/traits/dodgegroup.png", 
 				description = "This unit owns area speed increasing effect",
 				t_name = 'areaspeed1'
 			}
@@ -410,7 +410,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'speed', value = 10}],#i'm still confused if this buff should increase speed or evasion....
 		buffs = [
 			{#for testing purpose
-				icon = load("res://assets/images/traits/dodgegroup.png"), 
+				icon = "res://assets/images/traits/dodgegroup.png", 
 				description = "This unit's speed is increased by area effect ",
 				t_name = 'areaspeed2'
 			}
@@ -443,7 +443,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/resistdebuf.png"), 
+				icon = "res://assets/images/traits/resistdebuf.png", 
 				description = "All resistances reduced",
 				limit = 1,
 				t_name = 'noresist'
@@ -478,7 +478,8 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'owner',
-				atomic = [{type = 'heal', stat = 'hp', value = 20}]
+				atomic = [{type = 'heal', stat = 'hp', value = 20}],
+				sub_effects = []
 			}
 		]
 	},
@@ -502,7 +503,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/beastdamage.png"), 
+				icon = "res://assets/images/traits/beastdamage.png", 
 				description = "Damage increased",
 				limit = 1,
 				t_name = 'dwarwenbuf'
@@ -529,7 +530,7 @@ var effect_table = {
 					],
 				buffs = [
 					{
-						icon = load("res://assets/images/traits/armor.png"), 
+						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield, blocks 15 phys damage, recreates every turn",
 						limit = 1,
 						t_name = 'treant_shield'
@@ -610,7 +611,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.33}],
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/speeddebuf.png"), 
+				icon = "res://assets/images/traits/speeddebuf.png", 
 				description = "Damage reduced for %d turns",
 				args = [{obj = 'parent', param = 'remains'}],
 				t_name = 'cripple'
@@ -632,6 +633,7 @@ var effect_table = {
 		target = 'target',
 		tick_event = [variables.TR_TURN_S],
 		duration = 2,
+		stack = 0,
 		rem_event = [variables.TR_COMBAT_F],
 		name = 'sp_noarm',
 		tags = ['natural_debuf'],
@@ -639,7 +641,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.33}],
 		buffs = [
 			{
-				icon = load("res://assets/images/traits/armorignore.png"), 
+				icon = "res://assets/images/traits/armorignore.png", 
 				description = "Armor reduced",
 				limit = 1,
 				t_name = 'sp_noarm'
@@ -666,12 +668,152 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.25}],
 		buffs = [
 			{
-				icon = load("res://assets/images/iconsskills/taunt.png"), 
+				icon = "res://assets/images/iconsskills/taunt.png", 
 				description = "This unit is taunted and must attack next turn",
 				limit = 1,
 				t_name = 'taunt'
 			}
 		]
+	},
+	e_s_quake = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['e_t_quake'],
+		buffs = []
+	},
+	e_t_quake = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'earthquake',
+		tick_event = variables.TR_TURN_S,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 2,
+		stack = 1,
+		tags = ['natural_debuf'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'speed', value = -20},
+			{type = 'stat_add', stat = 'evasion', value = -20}
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/speeddebuf.png", 
+				description = "Speed and evasion reduced",
+				limit = 1,
+				t_name = 'earthquake'
+			}
+		],
+	},
+	e_s_wwalk = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['e_t_wwalk'],
+		buffs = []
+	},
+	e_t_wwalk = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'wwalk',
+		tick_event = variables.TR_TURN_S,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 3,
+		stack = 1,
+		tags = ['bless'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'speed', value = 15},
+			{type = 'stat_add', stat = 'hitrate', value = 25},
+			{type = 'stat_add', stat = 'evasion', value = 25}
+		],
+		buffs = ['b_wwalk'],
+	},
+	e_s_nbless = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['e_t_nbless'],
+		buffs = []
+	},
+	e_t_nbless = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'wwalk',
+		tick_event = variables.TR_TURN_F,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 3,
+		stack = 1,
+		tags = ['bless'],
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_TURN_GET],
+				conditions = [],
+				req_skill = false,
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'owner',
+						atomic = [{type = 'stat_add', stat = 'hppercent', value = 20}],
+						sub_effects = []
+					}
+				],
+				buffs = []
+			}
+		],
+		atomic = [],
+		buffs = ['b_nbless'],
+	},
+	e_s_bcry = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['e_t_bcry'],
+		buffs = []
+	},
+	e_t_bcry = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'battlecry',
+		tick_event = variables.TR_TURN_S,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 3,
+		stack = 1,
+		tags = ['bless'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'damagemod', value = 0.2}
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+				description = "Damage increased",
+				limit = 1,
+				t_name = 'battlecry'
+			},
+		],
+	},
+	e_s_execute = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_KILL],
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'manamax'}],
+				atomic = ['a_hp_restore_ex','a_mana_restore_ex'],
+				buffs = [],
+				sub_effects = []
+			}
+		],
+		buffs = []
 	},
 	#weapon
 	e_w_gobmet_h = {
@@ -736,7 +878,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'target',
 				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_gobmet_bade'],
+				atomic = ['a_gobmet_blade'],
 				buffs = [],
 				sub_effects = []
 			}
@@ -876,6 +1018,7 @@ var effect_table = {
 		sub_effects = []
 	},
 	#item skills
+	#those two barrier effects need fixing cause they for some reason do not work correctly in case of applying to one target 
 	e_i_barrier2 = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -897,7 +1040,7 @@ var effect_table = {
 				args = [{obj = 'app_obj', param = 'shield'}],
 				buffs = [
 					{
-						icon = load("res://assets/images/traits/armor.png"), 
+						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield, blocks 50 phys damage (%d remains)",
 						args = [{obj = 'parent_args', param = 0}],
 						t_name = 'i_shield'
@@ -929,7 +1072,7 @@ var effect_table = {
 				args = [{obj = 'app_obj', param = 'shield'}],
 				buffs = [
 					{
-						icon = load("res://assets/images/traits/armor.png"), 
+						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield, blocks 50 magic damage (%d remains)",
 						args = [{obj = 'parent_args', param = 0}],
 						t_name = 'i_shield'
@@ -959,19 +1102,34 @@ var atomic = {
 	a_caster_heal = {type = 'heal', value = [['parent_arg_get', 0, 'process_value'], '*', 0.5]},
 	a_magecrit = {type = 'mana', value = ['parent_arg_get', 0, 'manacost']},
 	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},
-	a_gobmet_blade = {type = 'gamage', source = variables.S_EARTH, value = ['parent_args', 0]},
+	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},
 	a_elvenwood_rod = {type = 'mana', value = [['parent_args', 0], '*', 0.1]},
 	#not used new part (allows to setup stat changing with effect's template)
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
+	a_hp_restore_ex = {type = 'heal', value = [['parent_args', 0], '*', 0.2]},#can be made as stat_add to hppercent
+	a_mana_restore_ex = {type = 'mana', value = [['parent_args', 1], '*', 0.2]},
 };
 #needs filling
 var buffs = {
 	#new part
+	#icons are defined by path or by name in images.icons, do not load images here!
 	b_stun = {
-		icon = load("res://assets/images/traits/experience.png"), 
+		icon = "res://assets/images/traits/experience.png", #?? mb to fix
 		description = "Stunned",
 		limit = 1,
 		t_name = 'stun'
+	},
+	b_wwalk = {
+		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		description = "Stats increased",
+		limit = 1,
+		t_name = 'wwalk'
+	},
+	b_nbless = {
+		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		description = "Regenerates HP every turn",
+		limit = 1,
+		t_name = 'nbless'
 	},
 	#code = {icon, description}
 #	stun = {icon = load("res://assets/images/traits/experience.png"), description = "Stunned"},

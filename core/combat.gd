@@ -765,7 +765,8 @@ func use_skill(skill_code, caster, target):
 			if skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			else: 
-				execute_skill(s_skill1, caster, i);
+				execute_skill(s_skill1, caster, i)
+				s_skill1.remove_effects()
 				pass
 			
 			#hit landed animation
@@ -976,7 +977,16 @@ func execute_skill(skill, caster, target):
 		else:
 			eff.process_event(variables.TR_POSTDAMAGE)
 	if target.hp <= 0:
-		caster.process_event(variables.TR_KILL)
+		s_skill2.process_event(variables.TR_KILL)
+		for e in caster.triggered_effects:
+			var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+			if eff.req_skill:
+				eff.set_args('skill', s_skill2)
+				eff.process_event(variables.TR_KILL)
+				eff.set_args('skill', null)
+			else:
+				eff.process_event(variables.TR_KILL)
+		#caster.process_event(variables.TR_KILL)
 	#checkdeaths()
 	Off_Target_Glow();
 

@@ -8,10 +8,14 @@ var applied_obj = null
 func _init(caller).(caller):
 	pass
 
+func get_applied_obj():
+	return applied_obj
+
 func apply():
 	atomic.clear()
+	calculate_args()
 	for a in template.atomic:
-		var tmp := atomic_effect.new(a, self)
+		var tmp := atomic_effect.new(a, id)
 		tmp.resolve_template()
 		applied_obj.apply_atomic(tmp.template)
 		atomic.push_back(tmp.template)

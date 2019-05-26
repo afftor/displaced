@@ -204,7 +204,8 @@ func apply_effect(eff):
 
 
 func remove_effects():
-	for eff in effects:
+	for e in effects:
+		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 		pass
 

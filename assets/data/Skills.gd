@@ -126,7 +126,7 @@ var skilllist = {
 		aitargetcond = 'any',
 		aipriority = 2,
 	},
-	firestorm = { #new, to overlook
+	firestorm = {
 		code = 'firestorm',
 		name = tr("SKILLFIRESTORM"),
 		description = tr("SKILLFIREBOLTDESCRIPT"),
@@ -143,6 +143,36 @@ var skilllist = {
 		cooldown = 2,
 		manacost = 30,
 		casteffects = [],
+		
+		hidden = false,
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
+	earthquake = { #NEW, NEED FILLING DATA
+		code = 'earthquake',
+		name = tr(""),
+		description = tr(""),
+		icon = load("res://assets/images/iconsskills/firebolt.png"),
+		
+		damagetype = "earth",
+		skilltype = 'spell',
+		userange = "any",
+		targetpattern = 'line',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 7,
+		casteffects = ['e_s_quake'],
 		
 		hidden = false,
 		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
@@ -187,7 +217,7 @@ var skilllist = {
 		aitargetcond = 'any',
 		aipriority = 2,
 	},
-	heavyshot = { #new, to overlook
+	heavyshot = { 
 		code = 'heavyshot',
 		name = tr("SKILLSTRONGSHOT"),
 		description = tr("SKILLSTRONGSHOTDESCRIPT"),
@@ -247,8 +277,72 @@ var skilllist = {
 		aitargetcond = 'any',
 		aipriority = 2,
 	},
+	windwalk = {#NEW, NEED FILLING DATA
+		code = 'windwalk',
+		name = tr(""),
+		description = tr(""),
+		icon = load("res://assets/images/iconsskills/arrowshower.png"),
+		
+		damagetype = "magic",
+		skilltype = 'spell',
+		userange = "any",
+		targetpattern = 'row',
+		allowedtargets = ['ally', 'self'],
+		reqs = [],
+		tags = ['magic'],
+		value = ['0'],
+		cooldown = 0,
+		manacost = 7,
+		chance = 100,
+		evade = 0,
+		casteffects = ['e_s_wwalk'],
+		
+		hidden = false,
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		
+		aipatterns = ['heal'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
+	naturesbless = {#NEW, NEED FILLING DATA
+		code = 'naturesbless',
+		name = tr(""),
+		description = tr(""),
+		icon = load("res://assets/images/iconsskills/arrowshower.png"),
+		
+		damagetype = "magic",
+		skilltype = 'spell',
+		userange = "any",
+		targetpattern = 'single',
+		allowedtargets = ['ally', 'self'],
+		reqs = [],
+		tags = ['magic'],
+		value = ['0'],
+		cooldown = 0,
+		manacost = 7,
+		chance = 100,
+		evade = 0,
+		casteffects = ['e_s_nbless'],
+		
+		hidden = false,
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		
+		aipatterns = ['heal'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
 	#brawler
-	tackle = { #not used now. intended?
+	tackle = { 
 		code = 'tackle',
 		name = tr("SKILLTACKLE"),
 		description = tr("SKILLTACKLEDESCRIPT"),
@@ -344,6 +438,69 @@ var skilllist = {
 		aitargetcond = 'any',
 		aipriority = 2,
 	},
+	battlecry = {#NEW, NEED FILLING DATA
+		code = 'battlecry',
+		name = tr(""),
+		description = tr(""),
+		icon = load("res://assets/images/iconsskills/arrowshower.png"),
+		
+		damagetype = "magic",
+		skilltype = 'spell',
+		userange = "any",
+		targetpattern = 'all',
+		allowedtargets = ['ally', 'self'],
+		reqs = [],
+		tags = ['magic'],
+		value = ['0'],
+		cooldown = 0,
+		manacost = 7,
+		chance = 100,
+		evade = 0,
+		casteffects = ['e_s_bcry'],
+		
+		hidden = false,
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		
+		aipatterns = ['heal'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
+	earthshock = { #NEW, NEED FILLING DATA
+		code = 'earthshock',
+		name = tr(""),
+		description = tr(""),
+		icon = load("res://assets/images/iconsskills/firebolt.png"),#!
+		
+		damagetype = "earth",
+		skilltype = 'spell',
+		userange = "melee",
+		targetpattern = 'line',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 7,
+		casteffects = [],
+		
+		hidden = false,
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
+	#warrior
 	doubleattack = {
 		code = 'doubleattack',
 		name = tr("SKILLDOUBLEATTACK"),
@@ -442,8 +599,66 @@ var skilllist = {
 		aipriority = 2,
 		
 	},
-	
-
+	lightningthrust = { #NEW, NEED FILLING DATA
+		code = 'lightningthrust',
+		name = tr(""),
+		description = tr(""),
+		icon = load("res://assets/images/iconsskills/firebolt.png"),#!
+		
+		damagetype = "air",
+		skilltype = 'spell',
+		userange = "melee",#i think this is correct do not let warrior to target backline
+		targetpattern = 'row',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 7,
+		casteffects = [],
+		
+		hidden = false,
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+	},
+	execute = { 
+		code = 'execute',
+		name = tr(""),
+		description = tr(""),
+		icon = load("res://assets/images/iconsskills/tackle.png"),#!
+		
+		damagetype = "weapon",
+		skilltype = 'skill',
+		userange = "melee",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage','*1.8'],
+		cooldown = 2,
+		manacost = 7,
+		casteffects = ['e_s_execute'],
+		hidden = false,
+		sfx = [],
+		sfxcaster = null,
+		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'weapon', hit = null, hittype = 'bodyarmor'},
+		
+		aipatterns = ['attack'],
+		aitargets = '1ally',
+		aiselfcond = 'any',
+		aitargetcond = 'any',
+		aipriority = 2,
+		
+	},
 	
 	#items
 	steakheal = {

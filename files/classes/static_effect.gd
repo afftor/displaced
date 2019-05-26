@@ -14,6 +14,7 @@ func apply():
 	pass
 
 func remove():
+	if !is_applied: return
 	.remove()
 	for e in sub_effects:
 		var t = effects_pool.get_effect_by_id(e)
