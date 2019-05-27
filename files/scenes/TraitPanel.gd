@@ -22,7 +22,7 @@ func open():
 	
 	globals.ClearContainer($ScrollContainer/GridContainer)
 	for i in Traitdata.traitlist.values():
-		if !i.req_class.has("all") && !i.req_class.has(character.base):
+		if !i.req_class.has("all") && !i.req_class.has(character.base) && !i.req_class.has(character.combatclass):
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		newbutton.connect("pressed",self,"activatetrait", [i])
