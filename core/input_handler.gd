@@ -444,6 +444,8 @@ func DelayedText(node, text):
 	node.text = text
 
 func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stats
+	if req.size() == 0:
+		return true
 	var result
 	match req.type:
 		'chance':
@@ -456,7 +458,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 					var tempresult = false
 					for i in combatant.gear.values():
 						if i != null:
-							tempresult = input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value])
+							tempresult = input_handler.operate(req.operant, state.items[i].get(req.name), req.value)
 							if tempresult == true:
 								result = true
 								break
@@ -464,13 +466,44 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 					result = true
 					for i in combatant.gear.values():
 						if i != null:
-							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
+							if input_handler.operate(req.operant, state.items[i].get(req.name), req.value) == false:
 								result = false
 								break
 		'race': 
 			result = (req.value == combatant.race);
 	return result
 
+func calculate_number_from_string_array(array, caster, target):
+	var endvalue = 0
+	var firstrun = true
+	for i in array:
+		var modvalue = i
+		if (i.find('caster') >= 0) or (i.find('target') >= 0):
+			i = i.split('.')
+			if i[0] == 'caster':
+				modvalue = str(caster.get(i[1]))
+			elif i[0] == 'target':
+				modvalue = str(target.get(i[1]))
+		elif (i.find('random') >= 0):
+			i = i.split(' ')
+			modvalue = str(globals.rng.randi_range(0, int(i[1])))
+		if !modvalue[0].is_valid_float():
+			if modvalue[0] == '-' && firstrun == true:
+				endvalue += float(modvalue)
+			else:
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
+		else:
+			endvalue += float(modvalue)
+		firstrun = false
+	return endvalue
+
+func FindFighterRow(fighter):
+	var pos = fighter.position
+	if pos in range(4,7) || pos in range(10,13):
+		pos = 'backrow'
+	else:
+		pos = 'frontrow'
+	return pos
 
 
 func operate(operation, value1, value2):
@@ -489,6 +522,10 @@ func operate(operation, value1, value2):
 			result = value1 <= value2
 		'lt':
 			result = value1 < value2
+		'has':
+			result = value1.has(value2)
+		'mask':
+			result = (int(value1) & int(value2)) != 0
 	return result
 
 func string_to_math(value = 0, string = ''):

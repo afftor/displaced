@@ -174,7 +174,7 @@ func UpdatePositions():
 	for i in positiondict.values():
 		get_node(i+'/Image').hide()
 	
-	for i in state.combatparty:
+	for i in range(1, 6):
 		if state.combatparty[i] != null:
 			get_node(positiondict[i] + "/Image").texture = state.heroes[state.combatparty[i]].portrait()
 			get_node(positiondict[i] + "/Image").show()
