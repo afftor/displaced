@@ -47,7 +47,7 @@ func serialize():
 		tmp[e] = effects[e].serialize()
 	return tmp
 
-func deserialize_effect(tmp, caller = null):
+func deserialize_effect(tmp, id, caller = null):
 	var eff
 	match tmp.type:
 		'base': eff = base_effect.new(caller)
@@ -57,6 +57,7 @@ func deserialize_effect(tmp, caller = null):
 		'temp_p': eff = temp_e_progress.new(caller)
 		'temp_u': eff = temp_e_upgrade.new(caller)
 		'area': eff = area_effect.new(caller)
+	eff.id = id
 	eff.deserialize(tmp)
 	return eff
 
@@ -83,6 +84,5 @@ func e_createfromtemplate(buff_t, caller = null):
 func deserialize(tmp):
 	effects.clear()
 	for k in tmp.keys():
-		var eff = deserialize_effect(tmp[k])
+		var eff = deserialize_effect(tmp[k], k)
 		effects[k] = eff
-		eff.id = k

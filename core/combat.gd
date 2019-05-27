@@ -791,6 +791,16 @@ func use_skill(skill_code, caster, target):
 			target.displaynode.rebuildbuffs()
 		checkdeaths()
 	
+	s_skill1.process_event(variables.TR_SKILL_FINISH)
+	for e in caster.triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill:
+			eff.set_args('skill', s_skill1)
+			eff.process_event(variables.TR_SKILL_FINISH)
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(variables.TR_SKILL_FINISH)
+	
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
@@ -918,6 +928,7 @@ func execute_skill(skill, caster, target):
 		text += "[color=yellow]Critical!![/color] "
 	#new section applying conception of multi-value skills
 	for i in range(s_skill2.value.size()):
+		if s_skill2.damagestat[i] == 'no_stat': continue #for skill values that directly process into effects
 		if s_skill2.damagestat[i] == 'hp': #heal, drain, damage, heal no log,  damage no log,  drain no log
 			if s_skill2.tags.has('heal'):
 				var rval = target.heal(s_skill2.value[i])
@@ -965,7 +976,7 @@ func execute_skill(skill, caster, target):
 			elif s_skill2.tags.has('s_damage') && !s_skill2.is_drain:
 				text += "%s loses %d %s" %[target.name, -rval, tr(s_skill2.damagestat[i])]
 			elif s_skill2.tags.has('s_set') && !s_skill2.is_drain:
-				text += "%s's %s is now %d\n" %[target.name, tr(s_skill2.damagestat[i]), s_skill2.value[i], target.get(s_skill2.damagestat[i])] 
+				text += "%s's %s is now %d\n" %[target.name, tr(s_skill2.damagestat[i]), s_skill2.value[i]] 
 	combatlogadd(text)
 	s_skill2.process_event(variables.TR_POSTDAMAGE)
 	for e in caster.triggered_effects:

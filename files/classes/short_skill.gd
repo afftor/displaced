@@ -56,7 +56,7 @@ func createfromskill(s_code):
 			damagestat.push_back('hp')
 	userange = template.userange
 	for e in template.casteffects:
-		var eff = effects_pool.e_createfromtemplate(e)
+		var eff = effects_pool.e_createfromtemplate(e, self)
 		apply_effect(effects_pool.add_effect(eff))
 	if template.has('repeat'):
 		repeat = template.repeat
@@ -196,6 +196,7 @@ func apply_effect(eff):
 		'trigger':
 			obj.set_args('skill', self)
 			effects.push_back(obj.id)
+			obj.apply()
 			pass
 		'oneshot':
 			obj.applied_obj = self

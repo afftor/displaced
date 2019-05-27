@@ -22,6 +22,7 @@ func apply():
 	var obj = get_applied_obj()
 	is_applied = true
 	atomic.clear()
+	calculate_args()
 	for a in template.atomic:
 		var tmp := atomic_effect.new(a, id)
 		tmp.resolve_template()
@@ -35,13 +36,40 @@ func apply():
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
 	setup_siblings()
-	calculate_args()
 	buffs.clear()
 	for e in template.buffs:
 		var tmp = Buff.new(id)
 		tmp.createfromtemplate(e)
 		tmp.calculate_args()
 		buffs.push_back(tmp)
+
+func reapply():
+	var obj = get_applied_obj()
+	for a in atomic:
+		obj.remove_atomic(a)
+	atomic.clear()
+	for a in template.atomic:
+		var tmp := atomic_effect.new(a, id)
+		tmp.resolve_template()
+		obj.apply_atomic(tmp.template)
+		atomic.push_back(tmp.template)
+	for e in sub_effects:
+		var t = effects_pool.get_effect_by_id(e)
+		t.remove()
+	sub_effects.clear()
+	for e in template.sub_effects:
+		var tmp = effects_pool.e_createfromtemplate(e, id)
+		sub_effects.push_back(effects_pool.add_effect(tmp))
+		pass
+	setup_siblings()
+	
+	buffs.clear()
+	for e in template.buffs:
+		var tmp = Buff.new(id)
+		tmp.createfromtemplate(e)
+		tmp.calculate_args()
+		buffs.push_back(tmp)
+	
 
 func setup_siblings():
 	if sub_effects.size() < 2:
@@ -99,7 +127,10 @@ func calculate_args():
 						par = effects_pool.get_effect_by_id(parent)
 					else:
 						par = parent
-					args.push_back(par.get(arg.param))
+					if par == null:
+						args.push_back(null)
+					else:
+						args.push_back(par.get(arg.param))
 					pass
 				'template':
 					args.push_back(template[arg.param])
@@ -109,16 +140,61 @@ func calculate_args():
 						par = effects_pool.get_effect_by_id(parent)
 					else:
 						par = parent
-					args.push_back(par.args[int(arg.param)])
+					if par == null:
+						args.push_back(null)
+					else:
+						args.push_back(par.get_arg(int(arg.param)))
+				'parent_arg_get':
+					var par
+					if typeof(parent) == TYPE_STRING:
+						par = effects_pool.get_effect_by_id(parent)
+					else:
+						par = parent
+					if par == null:
+						args.push_back(null)
+					else:
+						args.push_back(par.get_arg(arg.index).get(arg.param))
 				'app_obj':
 					var par = get_applied_obj()
 					args.push_back(par.get(arg.param))
-	for b in buffs:
-		b.calculate_args()
+
+func get_arg(index):
+	var arg = template.args[index]
+	if arg.has('dynamic'):
+		match arg.obj:
+			'parent':
+				var par
+				if typeof(parent) == TYPE_STRING:
+					par = effects_pool.get_effect_by_id(parent)
+				else:
+					par = parent
+				if par != null:
+					args[index] = par.get(arg.param)
+				pass
+			'parent_args':
+				var par
+				if typeof(parent) == TYPE_STRING:
+					par = effects_pool.get_effect_by_id(parent)
+				else:
+					par = parent
+				if par != null:
+					args[index] = par.get_arg(int(arg.param))
+			'parent_arg_get':
+				var par
+				if typeof(parent) == TYPE_STRING:
+					par = effects_pool.get_effect_by_id(parent)
+				else:
+					par = parent
+				if par != null:
+					args[index] = par.get_arg(int(arg.index)).get(arg.param)
+			'app_obj':
+				var par = get_applied_obj()
+				args[index] = par.get(arg.param)
+	return args[index]
 
 func set_args(arg, value):
 	self_args[arg] = value
-	calculate_args()
+	#calculate_args()
 
 func serialize():
 	var tmp := {}
@@ -147,8 +223,9 @@ func deserialize(tmp):
 	applied_pos = null if (tmp['app_pos'] == null) else int(tmp['app_pos'])
 	applied_char = tmp['app_char']
 	buffs.clear()
+	calculate_args()
 	for b in tmp['buffs']:
-		var t = Buff.new(self)
+		var t = Buff.new(id)
 		t.deserialize(b)
 		buffs.push_back(t)
 	pass

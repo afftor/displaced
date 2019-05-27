@@ -24,11 +24,11 @@ func calculate_property(prop: Array):
 				prop.pop_front()
 				prop[0] = value
 			'parent_args':
-				var value = par.args[prop[1]]
+				var value = par.get_arg(prop[1])
 				prop.pop_front()
 				prop[0] = value
 			'parent_arg_get':
-				var value = par.args[prop[1]].get(prop[2])
+				var value = par.get_arg(prop[1]).get(prop[2])
 				prop.pop_front()
 				prop.pop_front()
 				prop[0] = value

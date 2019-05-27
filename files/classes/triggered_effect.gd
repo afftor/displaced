@@ -128,6 +128,9 @@ func e_apply():
 	pass
 
 func remove():
+	var obj = get_applied_obj()
+	if obj != null:
+		obj.remove_effect(id)
 	#.remove()
 	is_applied = false
 	pass

@@ -22,7 +22,7 @@ func apply():
 	sub_effects.clear()
 	for e in template.sub_effects:
 		var tmp = effects_pool.e_createfromtemplate(e)
-		tmp.calculate_args()
+		#tmp.calculate_args()
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		applied_obj.apply_effect(tmp)
 	pass

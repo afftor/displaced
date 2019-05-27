@@ -115,8 +115,8 @@ func regen_calculate_threshhold():
 	regen_threshholds.mana = variables.TimePerDay/max(manamax,1)
 
 func set_shield(value):
-	if shield != 0: 
-		process_event(variables.TR_SHIELD_DOWN)
+#	if shield != 0: 
+#		process_event(variables.TR_SHIELD_DOWN)
 	shield = value;
 	if displaynode != null:
 		displaynode.update_shield()
@@ -188,11 +188,17 @@ func mdef_set(value):
 	mdef = value
 
 func a_mana_set(value):
-	alt_mana = value
+	alt_mana = clamp(round(value), 0, 3) #hardcoded for necromancer
 	if traits.keys().has('necro_trait') and traits['necro_trait']:
 		for e in find_eff_by_trait('necro_trait'):
 			var tmp = effects_pool.get_effect_by_id(e)
-			tmp.set_args('count', value)
+			tmp.reapply()
+			if value <= 0:
+				for b in tmp.buffs:
+					b.set_limit(0)
+			else:
+				for b in tmp.buffs:
+					b.set_limit(1)
 		
 
 func armor_get():
@@ -607,7 +613,7 @@ func hitchance(target):
 func deal_damage(value, source):
 	var tmp = hp
 	value = round(value);
-	if (shield > 0) and ((shieldtype & source) != 0):
+	if (shield > 0) and ((int(shieldtype) & int(source)) != 0):
 		self.shield -= value
 		if shield < 0:
 			self.hp = hp + shield
@@ -723,22 +729,26 @@ func get_all_buffs():
 	var res = {}
 	for e in temp_effects + static_effects + triggered_effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.calculate_args()
+		#eff.calculate_args()
 		for b in eff.buffs:
+			b.calculate_args()
 			if !res.has(b.template_name):
-				res[b.template_name] = []
-				res[b.template_name].push_back(b)
+				if !(b.template.has('limit') and b.template.limit == 0):
+					res[b.template_name] = []
+					res[b.template_name].push_back(b)
 			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
 				res[b.template_name].push_back(b)
 	for e in area_effects:
 		var eff:area_effect = effects_pool.get_effect_by_id(e)
 		if !eff.is_applied_to_pos(position) :
 			continue
-		eff.calculate_args()
+		#eff.calculate_args()
 		for b in eff.buffs:
+			b.calculate_args()
 			if !res.has(b.template_name):
-				res[b.template_name] = []
-				res[b.template_name].push_back(b)
+				if !(b.template.has('limit') and b.template.limit == 0):
+					res[b.template_name] = []
+					res[b.template_name].push_back(b)
 			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
 				res[b.template_name].push_back(b)
 	var tmp = []

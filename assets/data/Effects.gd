@@ -204,7 +204,7 @@ var effect_table = {
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png", 
 				description = "Evasion reduced for %d turns",
-				args = [{obj = 'parent', param = 'remains'}],
+				args = [{obj = 'parent', param = 'remains', dynamic = true}],
 				t_name = 'eva10'
 			}
 		],
@@ -468,6 +468,32 @@ var effect_table = {
 		],
 		buffs = []
 	},
+	e_tr_necro = {
+		type = 'static',
+		sub_effects = ['e_tr_necro_clean'],
+		atomic = ['a_souls1', 'a_souls2'],
+		buffs = ['b_souls'],
+		args = [{obj = 'app_obj', param = 'alt_mana', dynamic = true}]
+	},
+	e_tr_necro_clean = {
+		type = 'trigger',
+		req_skill = false,
+		trigger = [variables.TR_COMBAT_F],
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [
+					{type = 'stat_set', stat = 'alt_mana', value = 0}
+				],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	#monstertraits
 	e_tr_elheal = {
 		type = 'trigger',
@@ -638,7 +664,7 @@ var effect_table = {
 		name = 'sp_noarm',
 		tags = ['natural_debuf'],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.33}],
+		atomic = [{type = 'stat_add', stat = 'armor', value = -10}],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/armorignore.png", 
@@ -807,13 +833,303 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'caster',
-				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'manamax'}],
+				args = [{obj = 'app_obj', param = 'hpmax', dynamic = true}, {obj = 'app_obj', param = 'manamax', dynamic = true}],
 				atomic = ['a_hp_restore_ex','a_mana_restore_ex'],
 				buffs = [],
 				sub_effects = []
 			}
 		],
 		buffs = []
+	},
+	#as like all shield effects this is not a final version
+	e_s_ward = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		req_skill = true,
+		conditions = [],
+		args = [{obj = 'self', param = 'skill'}],
+		sub_effects = [
+			{
+				type = 'temp_s',
+				target = 'target',
+				tick_event = variables.TR_TURN_GET,
+				rem_event = [variables.TR_SHIELD_DOWN,variables.TR_COMBAT_F],
+				duration = 3,
+				stack = 1,
+				name = 'ward',
+				atomic = [
+					'a_ward_shield',
+					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL}
+					],
+				args = [{obj = 'app_obj', param = 'shield', dynamic = true},{obj = 'parent_arg_get', index = 0, param = 'process_value'}],
+				buffs = [
+					{
+						icon = "res://assets/images/traits/armor.png", 
+						description = "Damage-absorbing shield (%d remains)",
+						args = [{obj = 'parent_args', param = 0}],
+						t_name = 'ward'
+					}
+				],
+				sub_effects = [],
+			}
+		],
+		buffs = []
+	},
+	e_s_bless = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['e_t_bless'],
+		buffs = []
+	},
+	e_t_bless = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'bless',
+		tick_event = variables.TR_TURN_S,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 4,
+		stack = 1,
+		tags = ['bless'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'damade', value = 10},
+			{type = 'stat_add', stat = 'armor', value = 10},
+			{type = 'stat_add', stat = 'mdef', value = 10},
+			{type = 'stat_add', stat = 'speed', value = 10},
+			{type = 'stat_add', stat = 'hitrate', value = 10},
+			{type = 'stat_add', stat = 'evasion', value = 10},
+			{type = 'stat_add', stat = 'armorpenetration', value = 10}
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+				description = "Stats increased",
+				limit = 1,
+				t_name = 'bless'
+			}
+		],
+	},
+	e_s_sanctuary = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		args = [{obj = 'self', param = 'skill'}],
+		sub_effects = ['e_t_sanctuary'],
+		buffs = []
+	},
+	e_t_sanctuary = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'sanctuary',
+		tick_event = variables.TR_TURN_F,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 4,
+		stack = 1,
+		tags = ['bless'],
+		args = [{obj = 'parent_arg_get', index = 0, param = 'process_value'}],
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_TURN_GET],
+				conditions = [],
+				req_skill = false,
+				args = [{obj = 'parent_args', param = 0}],
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'owner',
+						args = [{obj = 'parent_args', param = 0}],
+						atomic = ['a_sanctuary_heal'],
+						sub_effects = []
+					}
+				],
+				buffs = []
+			}
+		],
+		atomic = [],
+		buffs = ['b_sanct'],
+	},
+	e_s_wave = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['e_t_wave'],
+		buffs = []
+	},
+	e_t_wave = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'wave',
+		tick_event = variables.TR_TURN_F,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 2,
+		stack = 1,
+		tags = ['natural_debuf'],
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_DEF],
+				conditions = [
+					{type = 'skill', value = ['damagesrc','eq',variables.S_AIR] },
+					{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
+				],
+				req_skill = true,
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'skill',
+						atomic = [{type = 'stat_mul', stat = 'value', value = 2.0}],
+						sub_effects = []
+					},
+					{
+						type = 'oneshot',
+						target = 'self',
+						execute = 'remove_parent'
+					}
+				],
+				buffs = []
+			}
+		],
+		atomic = [],
+		buffs = ['b_wave'],
+	},
+	e_s_spiritshield = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		req_skill = true,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'temp_s',
+				target = 'target',
+				tick_event = variables.TR_TURN_GET,
+				rem_event = [variables.TR_SHIELD_DOWN, variables.TR_COMBAT_F],
+				duration = 3,
+				stack = 1,
+				name = 'spirit_shield',
+				atomic = [
+					{type = 'stat_set_revert', stat = 'shield', value = 50},
+					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL}
+					],
+				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
+				buffs = [
+					{
+						icon = "res://assets/images/traits/armor.png", 
+						description = "Damage-absorbing shield, blocks 50 damage (%d remains)",
+						args = [{obj = 'parent_args', param = 0}],
+						t_name = 's_shield'
+					}
+				],
+				sub_effects = [],
+			}
+		],
+		buffs = []
+	},
+	e_s_drain_kill = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_KILL],
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'stat_add', stat = 'alt_mana', value = 3}],
+				buffs = [],
+				sub_effects = []
+			}
+		],
+		buffs = []
+	},
+	e_s_drain_crit = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'stat_add', stat = 'alt_mana', value = 1}],
+				buffs = [],
+				sub_effects = []
+			}
+		],
+		buffs = []
+	},
+	e_cost1 = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_SKILL_FINISH],
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'stat_add', stat = 'alt_mana', value = -1}],
+				buffs = [],
+				sub_effects = []
+			}
+		],
+		buffs = []
+	},
+	e_cost3 = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_SKILL_FINISH],
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'stat_add', stat = 'alt_mana', value = -3}],
+				buffs = [],
+				sub_effects = []
+			}
+		],
+		buffs = []
+	},
+	e_s_implosion = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [{obj = 'parent', param = 'target'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [{obj = 'parent_arg_get', index = 0, param = 'armor'}],
+				atomic = [{type = 'stat_add', stat = 'value', value = ['parent_args', 0]}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_s_explosion = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [{obj = 'parent', param = 'caster', dynamic = true}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [{obj = 'parent_arg_get', index = 0, param = 'alt_mana'}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = [['parent_args', 0],'+',1]}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
 	},
 	#weapon
 	e_w_gobmet_h = {
@@ -871,8 +1187,11 @@ var effect_table = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		args = [{obj = 'app_obj', param = 'level'}],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['skilltype', 'eq', 'skill']}# need to add this check to most of weapon effects
+		],
+		args = [{obj = 'app_obj', param = 'level', dynamic = true}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -1037,7 +1356,7 @@ var effect_table = {
 					{type = 'stat_set_revert', stat = 'shield', value = 50},
 					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
 					],
-				args = [{obj = 'app_obj', param = 'shield'}],
+				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 				buffs = [
 					{
 						icon = "res://assets/images/traits/armor.png", 
@@ -1069,7 +1388,7 @@ var effect_table = {
 					{type = 'stat_set_revert', stat = 'shield', value = 50},
 					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_MAG}
 					],
-				args = [{obj = 'app_obj', param = 'shield'}],
+				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 				buffs = [
 					{
 						icon = "res://assets/images/traits/armor.png", 
@@ -1108,6 +1427,10 @@ var atomic = {
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_hp_restore_ex = {type = 'heal', value = [['parent_args', 0], '*', 0.2]},#can be made as stat_add to hppercent
 	a_mana_restore_ex = {type = 'mana', value = [['parent_args', 1], '*', 0.2]},
+	a_ward_shield = {type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 1]},
+	a_sanctuary_heal = {type = 'heal', value = ['parent_args', 0]},
+	a_souls1 = {type = 'stat_add', stat = 'damage', value = [['parent_args', 0],'*',5]},
+	a_souls2 = {type = 'stat_add', stat = 'armor', value = [['parent_args', 0],'*',5]},
 };
 #needs filling
 var buffs = {
@@ -1131,6 +1454,25 @@ var buffs = {
 		limit = 1,
 		t_name = 'nbless'
 	},
+	b_sanct = {
+		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		description = "Regenerates HP every turn",
+		limit = 1,
+		t_name = 'sanctuary'
+	},
+	b_wave = {
+		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		description = "Damage from next air-based skill is doubled",
+		limit = 1,
+		t_name = 'wave'
+	},
+	b_souls = {
+		icon = "res://assets/images/traits/speedondamage.png", #to fix
+		description = "Has %d souls",
+		args = [{obj = 'parent_args', param = 0}],
+		t_name = 'souls',
+		limit = 0
+	}
 	#code = {icon, description}
 #	stun = {icon = load("res://assets/images/traits/experience.png"), description = "Stunned"},
 #	noevade = {icon = load("res://assets/images/traits/dodgedebuff.png"), description = "Evasion Reduced"},

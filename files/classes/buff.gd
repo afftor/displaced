@@ -56,7 +56,7 @@ func calculate_args():
 				'parent_args':
 					var par
 					par = effects_pool.get_effect_by_id(parent)
-					args.push_back(par.args[int(arg.param)])
+					args.push_back(par.get_arg(int(arg.param)))
 		pass
 
 func set_args(arg, value):
@@ -74,4 +74,8 @@ func deserialize(tmp):
 	tooltip = tr(template.description)
 	icon = template.icon
 	template_name = template.t_name
-	name = template.name
+	if template.has('name'): name = template.name
+	else: name = template_name
+
+func set_limit(val):
+	template.limit = val
