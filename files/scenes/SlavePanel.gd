@@ -1,13 +1,13 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
+#warning-ignore-all:return_value_discarded
+# warning-ignore-all:return_value_discarded
 var currenttask
 var currentworker
 
 func _ready():
-#warning-ignore:return_value_discarded
 	$TaskPanel/StopButton.connect("pressed", self, 'StopTask')
 	globals.AddPanelOpenCloseAnimation($TaskPanel)
-#warning-ignore:return_value_discarded
 	input_handler.connect("WorkerAssigned", self, 'update')
 
 

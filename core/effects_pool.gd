@@ -1,7 +1,6 @@
 extends Node
 
-func _ready():
-	pass # Replace with function body.
+# warning-ignore-all:return_value_discarded
 
 var effects: = {}
 
