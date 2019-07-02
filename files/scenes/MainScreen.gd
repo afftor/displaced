@@ -94,7 +94,7 @@ func _ready():
 	
 	
 	
-	globals.call_deferred('EventCheck');
+#	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
 	changespeed($"TimeNode/0speed", false)
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
@@ -204,6 +204,7 @@ func _process(delta):
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
 		state.daytime += delta * gamespeed
+		
 		for i in state.heroes.values():
 			i.regen_tick(delta*gamespeed)
 		
@@ -346,7 +347,6 @@ func settime():
 	if state.daytime > variables.TimePerDay:
 		state.date += 1
 		state.daytime = 0
-		globals.EventCheck() #После переноса эвентов на сигналы нужно перенести все эвенты, тригерящиеся в определенные дни на середину дня а не на начало
 	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
 	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
 
@@ -493,6 +493,6 @@ func openheroguild():
 func explorescreen():
 	if state.townupgrades.has('bridge'):
 		$ExploreScreen.show()
-		globals.call_deferred('EventCheck');
+#		globals.call_deferred('EventCheck');
 	else:
 		input_handler.SystemMessage("Purchase 'Bridge' Upgrade first")

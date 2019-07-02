@@ -11,7 +11,7 @@ func _ready():
 
 func open():
 	show()
-	input_handler.emit_signal("BuildingEntered", 'market')
+	globals.check_signal("BuildingEntered", 'market')
 	$PurchaseMenu.hide()
 
 func shop():

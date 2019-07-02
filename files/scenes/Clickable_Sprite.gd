@@ -99,16 +99,16 @@ func set_active_val():#temporal contruction, until event starting reworking
 				return
 			else:
 				break
-	if !is_char:
-		for e in events.buildings[charname]:
-			var res = globals.SimpleEventCheck(e);
-			if res:
-				f = true
-				active = true
-				if has_node('QuestActive'):
-					$QuestActive.visible = true;
-				next_scene = e
-				return
+#	if !is_char:
+#		for e in events.buildings[charname]:
+#			var res = globals.SimpleEventCheck(e);
+#			if res:
+#				f = true
+#				active = true
+#				if has_node('QuestActive'):
+#					$QuestActive.visible = true;
+#				next_scene = e
+#				return
 	next_scene = "";
 	if f == false:
 		active = false;

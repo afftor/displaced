@@ -25,6 +25,7 @@ signal UpgradeUnlocked
 signal EventFinished
 signal QuestStarted
 signal QuestCompleted
+signal Midday
 
 
 func _input(event):

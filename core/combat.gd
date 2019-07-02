@@ -117,11 +117,11 @@ func FinishCombat():
 		state.combatparty[i] = null
 	hide()
 	input_handler.ShowGameTip('explore')
-	input_handler.emit_signal("CombatEnded", encountercode)
+	globals.check_signal("CombatEnded", encountercode)
 	input_handler.SetMusic("towntheme")
 	get_parent().wincontinue()
 	get_parent().levelupscheck()
-	globals.call_deferred('EventCheck')
+#	globals.call_deferred('EventCheck')
 
 
 func select_actor():
