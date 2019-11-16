@@ -30,6 +30,36 @@ var backgrounds = {
 	s_r_1_6 = load("res://assets/images/scenes/RoseCG1.png"),
 	s_r_1_7 = load("res://assets/images/scenes/RoseCG2.png"),
 	s_r_1_8 = load("res://assets/images/scenes/RoseCG3.png"),
+	s_er_2_1 = load("res://assets/images/scenes/ErikaCG3.png"),
+	s_er_2_2 = load("res://assets/images/scenes/ErikaCG4.png"),
+	s_er_2_3 = load("res://assets/images/scenes/ErikaCG5.png"),
+	s_er_2_4 = load("res://assets/images/scenes/ErikaCG6.png"),
+	s_er_2_5 = load("res://assets/images/scenes/ErikaCG7.png"),
+	s_er_2_6 = load("res://assets/images/scenes/ErikaCG8.png"),
+	s_er_2_7 = load("res://assets/images/scenes/ErikaCG9.png"),
+	s_er_2_8 = load("res://assets/images/scenes/ErikaCG10.png"),
+	s_er_2_9 = load("res://assets/images/scenes/ErikaCG11.png"),
+	s_er_2_10 = load("res://assets/images/scenes/ErikaCG12.png"),
+	s_ri_1_1 = load("res://assets/images/scenes/Rilu1.png"),
+	s_ri_1_2 = load("res://assets/images/scenes/Rilu1_5.png"),
+	s_ri_1_3 = load("res://assets/images/scenes/Rilu2.png"),
+	s_ri_2_1 = load("res://assets/images/scenes/Rilu2_1.png"),
+	s_ri_2_2 = load("res://assets/images/scenes/Rilu2_2.png"),
+	s_ri_2_3 = load("res://assets/images/scenes/Rilu2_3.png"),
+	s_ri_2_4 = load("res://assets/images/scenes/Rilu2_4.png"),
+	s_r_er_1_1 = load("res://assets/images/scenes/RoseErika1.jpg"),
+	s_r_er_1_2 = load("res://assets/images/scenes/RoseErika2.jpg"),
+	s_r_er_1_3 = load("res://assets/images/scenes/RoseErika3.jpg"),
+	s_r_er_1_4 = load("res://assets/images/scenes/RoseErika4.jpg"),
+	s_r_er_1_5 = load("res://assets/images/scenes/RoseErika5.jpg"),
+	s_r_er_2_1 = load("res://assets/images/scenes/final-0001.png"),
+	s_r_er_2_2 = load("res://assets/images/scenes/final-0002.png"),
+	s_r_er_2_3 = load("res://assets/images/scenes/final-0003.png"),
+	s_r_er_2_4 = load("res://assets/images/scenes/final-0004.png"),
+	s_r_er_2_5 = load("res://assets/images/scenes/final-0005.png"),
+	s_r_er_2_6 = load("res://assets/images/scenes/final-0006.png"),
+	s_r_er_2_7 = load("res://assets/images/scenes/final-0007.png"),
+	
 	}
 
 var sprites = {
@@ -44,6 +74,10 @@ var sprites = {
 	erika_n = load("res://assets/images/sprites/erikanaked.png"),
 	demitrius = load("res://assets/images/sprites/Demitrius.png"),
 	ent = load("res://assets/images/sprites/ent.png"),
+	iola = load("res://assets/images/sprites/Iola.png"),
+	rilu = load("res://assets/images/sprites/Rilu.png"),
+	riluM = load("res://assets/images/sprites/Rilu2.png"),
+	kingdwarf = load("res://assets/images/enemies/Kingdwarf_sprite.png"),
 	}
 
 var portraits = {
@@ -72,6 +106,17 @@ var portraits = {
 	Demitrius = load("res://assets/images/portraits/Demitrius.png"),
 	DemitriusTalk = load("res://assets/images/portraits/DemitriusTalk.png"),
 	Ent = load("res://assets/images/enemies/BigEntIcon.png"),
+	IolaHappy = load("res://assets/images/portraits/IolaHappy.png"),
+	IolaNeutral = load("res://assets/images/portraits/IolaNeutral.png"),
+	IolaSad = load("res://assets/images/portraits/IolaSad.png"),
+	IolaShocked = load("res://assets/images/portraits/IolaShocked.png"),
+	RiluBlush = load("res://assets/images/portraits/RiluBlush.png"),
+	RiluNormal = load("res://assets/images/portraits/RiluNormal.png"),
+	RiluSpell = load("res://assets/images/portraits/RiluSpell.png"),
+	RiluTalk = load("res://assets/images/portraits/RiluTalk.png"),
+	Dwarf = load("res://assets/images/enemies/dwarf_soldier_portrait.png"),
+	KingDwarf = load("res://assets/images/enemies/Kingdwarf_portrait.png"),
+	
 }
 
 var combatportraits = {
