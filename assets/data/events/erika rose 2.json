@@ -125,6 +125,7 @@
 {"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Rose barely recognized what Erika said, as her mind was lost in the pleasure of approaching orgasm."},
 {"effect":"text","portrait":"ErikaNormal","sound":null,"source":"Erika","value":"Do it, you fucker, impregnate her asshole."},
 {"effect":"background","delay":0.5,"value":"s_r_er_2_6"},
+{"args":"default","delay":0.5,"effect":"sfx","value":"WhiteScreenGFX"},
 {"effect":"background","value":"s_r_er_2_7"},
 {"effect":"text","portrait":"ErikaNormal","sound":null,"source":"Erika","value":"Or spill it all over me. If you wish, I'll obediently lick it all."},
 {"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Aaahh, Master..!"},

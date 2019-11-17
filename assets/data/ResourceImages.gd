@@ -15,6 +15,8 @@ var backgrounds = {
 	forge = load("res://assets/images/backgrounds/forge.png"),
 	market = load("res://assets/images/backgrounds/market.png"),
 	hall = load("res://assets/images/backgrounds/townhall.png"),
+	town_out = load("res://assets/images/backgrounds/town_outside.png"),
+	town_in = load("res://assets/images/backgrounds/town_inside.png"),
 	#scenes
 	s_er_1_1 = load("res://assets/images/scenes/erikaCG1.png"),
 	s_er_1_2 = load("res://assets/images/scenes/erikaCG2.png"),
@@ -52,14 +54,48 @@ var backgrounds = {
 	s_r_er_1_3 = load("res://assets/images/scenes/RoseErika3.jpg"),
 	s_r_er_1_4 = load("res://assets/images/scenes/RoseErika4.jpg"),
 	s_r_er_1_5 = load("res://assets/images/scenes/RoseErika5.jpg"),
-	s_r_er_2_1 = load("res://assets/images/scenes/final-0001.png"),
-	s_r_er_2_2 = load("res://assets/images/scenes/final-0002.png"),
-	s_r_er_2_3 = load("res://assets/images/scenes/final-0003.png"),
-	s_r_er_2_4 = load("res://assets/images/scenes/final-0004.png"),
-	s_r_er_2_5 = load("res://assets/images/scenes/final-0005.png"),
-	s_r_er_2_6 = load("res://assets/images/scenes/final-0006.png"),
-	s_r_er_2_7 = load("res://assets/images/scenes/final-0007.png"),
-	
+	s_r_er_2_1 = load("res://assets/images/scenes/erika-rose1.png"),
+	s_r_er_2_2 = load("res://assets/images/scenes/erika-rose2.png"),
+	s_r_er_2_3 = load("res://assets/images/scenes/erika-rose3.png"),
+	s_r_er_2_4 = load("res://assets/images/scenes/erika-rose4.png"),
+	s_r_er_2_5 = load("res://assets/images/scenes/erika-rose5.png"),
+	s_r_er_2_6 = load("res://assets/images/scenes/erika-rose6.png"),
+	s_r_er_2_7 = load("res://assets/images/scenes/erika-rose7.png"),
+	s_em_2_1 = load("res://assets/images/scenes/Ember2CG001.png"),
+	s_em_2_2 = load("res://assets/images/scenes/Ember2CG002.png"),
+	s_em_2_3 = load("res://assets/images/scenes/Ember2CG003.png"),
+	s_em_2_4 = load("res://assets/images/scenes/Ember2CG004.png"),
+	s_em_2_5 = load("res://assets/images/scenes/Ember2CG005.png"),
+	s_er_3_1 = load("res://assets/images/scenes/Erika3-0001.png"),
+	s_er_3_2 = load("res://assets/images/scenes/Erika3-0002.png"),
+	s_er_3_3 = load("res://assets/images/scenes/Erika3-0003.png"),
+	s_er_3_4 = load("res://assets/images/scenes/Erika3-0004.png"),
+	s_er_3_5 = load("res://assets/images/scenes/Erika3-0005.png"),
+	s_er_3_6 = load("res://assets/images/scenes/Erika3-0006.png"),
+	s_er_3_7 = load("res://assets/images/scenes/Erika3-0007.png"),
+	s_i_1_1 = load("res://assets/images/scenes/Iola001.png"),
+	s_i_1_2 = load("res://assets/images/scenes/Iola002.png"),
+	s_i_1_3 = load("res://assets/images/scenes/Iola003.png"),
+	s_i_1_4 = load("res://assets/images/scenes/Iola004.png"),
+	s_i_1_5 = load("res://assets/images/scenes/Iola005.png"),
+	s_i_1_6 = load("res://assets/images/scenes/Iola006.png"),
+	s_ri_3_1 = load("res://assets/images/scenes/Rilu3-001.png"),
+	s_ri_3_2 = load("res://assets/images/scenes/Rilu3-002.png"),
+	s_ri_3_3 = load("res://assets/images/scenes/Rilu3-003.png"),
+	s_ri_3_4 = load("res://assets/images/scenes/Rilu3-004.png"),
+	s_ri_3_5 = load("res://assets/images/scenes/Rilu3-005.png"),
+	s_ri_4_1 = load("res://assets/images/scenes/Rilu4-001.png"),
+	s_ri_4_2 = load("res://assets/images/scenes/Rilu4-002.png"),
+	s_ri_4_3 = load("res://assets/images/scenes/Rilu4-003.png"),
+	s_ri_4_4 = load("res://assets/images/scenes/Rilu4-004.png"),
+	s_ri_4_5 = load("res://assets/images/scenes/Rilu4-005.png"),
+	s_r_2_1 = load("res://assets/images/scenes/RoseCG3-1.png"),
+	s_r_2_2 = load("res://assets/images/scenes/RoseCG3-2.png"),
+	s_r_2_3 = load("res://assets/images/scenes/RoseCG3-3.png"),
+	s_r_2_4 = load("res://assets/images/scenes/RoseCG3-4.png"),
+	s_r_2_5 = load("res://assets/images/scenes/RoseCG3-5.png"),
+	s_r_2_6 = load("res://assets/images/scenes/RoseCG3-6.png"),
+	s_r_2_7 = load("res://assets/images/scenes/RoseCG3-7.png"),
 	}
 
 var sprites = {
@@ -78,6 +114,7 @@ var sprites = {
 	rilu = load("res://assets/images/sprites/Rilu.png"),
 	riluM = load("res://assets/images/sprites/Rilu2.png"),
 	kingdwarf = load("res://assets/images/enemies/Kingdwarf_sprite.png"),
+	FaeryQueen = load("res://assets/images/enemies/fairy_sprite.png")
 	}
 
 var portraits = {
@@ -116,7 +153,7 @@ var portraits = {
 	RiluTalk = load("res://assets/images/portraits/RiluTalk.png"),
 	Dwarf = load("res://assets/images/enemies/dwarf_soldier_portrait.png"),
 	KingDwarf = load("res://assets/images/enemies/Kingdwarf_portrait.png"),
-	
+	FaeryQueen = load("res://assets/images/enemies/fairy_portrait.png"),
 }
 
 var combatportraits = {

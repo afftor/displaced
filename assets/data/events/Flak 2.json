@@ -1,11 +1,6 @@
 [
-{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenunfade"},
-{"effect":"background","value":"market"},
 {"effect":"music","value":"eventlight"},
-{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
-{"effect":"gui","value":"gui_normal"},
-{"args":"goblinmerc","effect":"sprite","value":"set"},
-{"args":0.5,"effect":"sprite","value":"unfade"},
+{"effect":"gui","value":"gui_inside"},
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Have you been at the Aeros City yet? "},
 {"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Don't think so. What about it?"},
 {"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"I want you to deliver a message there for me? "},
