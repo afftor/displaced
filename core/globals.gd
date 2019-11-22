@@ -148,7 +148,7 @@ func _ready():
 #	OS.window_size = Vector2(1280,720)
 #	OS.window_position = Vector2(300,0)
 	randomize()
-	rng.randomize()
+	rng.randomize()				
 	#Settings and folders
 	settings_load()
 	#LoadEventData()
@@ -204,25 +204,50 @@ func ChangeScene(name):
 	loadscreen.goto_scene(scenedict[name])
 
 
-func EventCheck():
-	if state.CurEvent != "": return;
-	for s in get_tree().get_nodes_in_group('char_sprite'):
-		s.set_active_val();
-	for event in EventList.keys():
-		if SimpleEventCheck(event, false):
-			StartEventScene(event);
-			break;
+#old version 
+#func EventCheck():
+#	if state.CurEvent != "" || CurrentScene.debug == true: return;
+#	for s in get_tree().get_nodes_in_group('char_sprite'):
+#		s.set_active_val();
+#	for event in EventList.keys():
+#		if SimpleEventCheck(event, false):
+#			StartEventScene(event);
+#			break;
 
-func SimpleEventCheck(event, skip = true):
-	#var tmp_d = {global = 'skip'};
+#func SimpleEventCheck(event, skip = true):
+#	#var tmp_d = {global = 'skip'};
+#	if state.OldEvents.has(event):
+#		return false
+#	for check in EventList[event]:
+#		if check.size() == 0:
+#			if skip:
+#				continue
+#			else:
+#				return false
+#		if !state.valuecheck(check): 
+#			return false
+#	return true
+
+func check_signal(sg_name, arg = null):
+	var events_to_check := []
+	if arg != null:
+		input_handler.emit_signal(sg_name, arg)
+		if typeof(events.signals[sg_name]) == TYPE_ARRAY:
+			events_to_check = events.signals[sg_name]
+		else:
+			events_to_check = events.signals[sg_name][arg]
+	else:
+		input_handler.emit_signal(sg_name)
+		events_to_check = events.signals[sg_name]
+	for e in events_to_check:
+		if SimpleEventCheck(e):
+			StartEventScene(e)
+			return
+
+func SimpleEventCheck(event):
 	if state.OldEvents.has(event):
 		return false
 	for check in EventList[event]:
-		if check.size() == 0:
-			if skip:
-				continue
-			else:
-				return false
 		if !state.valuecheck(check): 
 			return false
 	return true
@@ -278,6 +303,7 @@ func get_item_id_by_code(itembase):
 	for item in state.items.values():
 		if item.itembase == itembase:
 			return item.id
+	
 	return null
 
 func dir_contents(target):
@@ -713,8 +739,8 @@ func LoadGame(filename):
 	#opentextscene
 	if state.CurEvent != "":
 		StartEventScene(state.CurEvent, false, state.CurrentLine);
-	else:
-		call_deferred('EventCheck');
+#	else:
+#		call_deferred('EventCheck');
 
 func datetime_comp(a, b):
 	if a.year > b.year: return true

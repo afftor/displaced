@@ -2,6 +2,7 @@ extends Node
 
 #This script handles inputs, sounds, closes windows and plays animation
 
+#warning-ignore-all:unused_signal
 var CloseableWindowsArray = []
 var ShakingNodes = []
 var CurrentScreen = 'Town'
@@ -10,32 +11,21 @@ var BeingAnimated = []
 var SystemMessageNode
 
 
-#warning-ignore:unused_signal
+
 signal ScreenChanged
-#warning-ignore:unused_signal
 signal BuildingEntered
-#warning-ignore:unused_signal
 signal ItemObtained
-#warning-ignore:unused_signal
 signal MaterialObtained
-#warning-ignore:unused_signal
 signal ExplorationStarted
-#warning-ignore:unused_signal
 signal CombatStarted
-#warning-ignore:unused_signal
 signal CombatEnded
-#warning-ignore:unused_signal
 signal WorkerAssigned
-#warning-ignore:unused_signal
 signal SpeedChanged
-#warning-ignore:unused_signal
 signal UpgradeUnlocked
-#warning-ignore:unused_signal
 signal EventFinished
-#warning-ignore:unused_signal
 signal QuestStarted
-#warning-ignore:unused_signal
 signal QuestCompleted
+signal Midday
 
 
 func _input(event):
@@ -415,6 +405,19 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	
 	if wr.get_ref(): x.queue_free()
 
+var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'}
+
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+	var x = load(sprites[effect]).instance()
+	node.add_child(x)
+	x.play()
+	
+	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+	var wr = weakref(x)
+	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+
+	if wr.get_ref(): x.queue_free()
+
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	var tweennode = GetTweenNode(node)
@@ -502,6 +505,7 @@ func FindFighterRow(fighter):
 	else:
 		pos = 'frontrow'
 	return pos
+
 
 func operate(operation, value1, value2):
 	var result
@@ -617,3 +621,4 @@ func HideOutline(node):
 
 func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])
+

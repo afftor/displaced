@@ -2,6 +2,7 @@ extends Node
 
 var debug = true
 
+#warning-ignore-all:return_value_discarded
 var gamespeed = 1
 var gamepaused = false
 var gamepaused_nonplayer = false
@@ -27,27 +28,18 @@ func _ready():
 		i.connect("pressed",self,'changespeed',[i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
-#warning-ignore:return_value_discarded
 	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
-#warning-ignore:return_value_discarded
 	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
-#warning-ignore:return_value_discarded
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
-#warning-ignore:return_value_discarded
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
-#warning-ignore:return_value_discarded
 	$Gate.connect("pressed",self,'explorescreen')
 	
-#warning-ignore:return_value_discarded
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 	
 	######Vote stuff
 	
-#warning-ignore:return_value_discarded
 	input_handler.connect("QuestStarted", self, "VotePanelShow")
-#warning-ignore:return_value_discarded
 	$VotePanel/Links.connect("pressed", self, "VoteLinkOpen")
-#warning-ignore:return_value_discarded
 	$VotePanel/Close.connect("pressed", self, "VotePanelClose")
 	
 	####
@@ -102,13 +94,10 @@ func _ready():
 	
 	
 	
-	globals.call_deferred('EventCheck');
-#warning-ignore:return_value_discarded
+#	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
 	changespeed($"TimeNode/0speed", false)
-#warning-ignore:return_value_discarded
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
-#warning-ignore:return_value_discarded
 	input_handler.connect("EventFinished", self, "buildscreen")
 	#$TutorialNode.activatetutorial(state.currenttutorial)
 	buildscreen()
@@ -130,9 +119,7 @@ func VotePanelShow(quest):
 		state.votelinksseen = true
 
 func VoteLinkOpen():
-#warning-ignore:return_value_discarded
 	OS.shell_open("https://forms.gle/fADzTnSbg94HauBP8")
-#warning-ignore:return_value_discarded
 	OS.shell_open("https://forms.gle/5qHPJ57ngB61LuBq6")
 
 func VotePanelClose():
@@ -179,7 +166,8 @@ func buildscreen(empty = null):
 				#$BlacksmithNode.texture_hover = forgeimage.second.hl
 
 func testfunction():
-	input_handler.ActivateTutorial('tutorial1')
+	input_handler.gfx_sprite($testbutton, "slash")
+	#input_handler.ActivateTutorial('tutorial1')
 
 func _process(delta):
 	if self.visible == false:
@@ -216,6 +204,7 @@ func _process(delta):
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
 		state.daytime += delta * gamespeed
+		
 		for i in state.heroes.values():
 			i.regen_tick(delta*gamespeed)
 		
@@ -358,7 +347,6 @@ func settime():
 	if state.daytime > variables.TimePerDay:
 		state.date += 1
 		state.daytime = 0
-		globals.EventCheck() #После переноса эвентов на сигналы нужно перенести все эвенты, тригерящиеся в определенные дни на середину дня а не на начало
 	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
 	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
 
@@ -505,6 +493,6 @@ func openheroguild():
 func explorescreen():
 	if state.townupgrades.has('bridge'):
 		$ExploreScreen.show()
-		globals.call_deferred('EventCheck');
+#		globals.call_deferred('EventCheck');
 	else:
 		input_handler.SystemMessage("Purchase 'Bridge' Upgrade first")

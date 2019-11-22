@@ -93,6 +93,7 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="Panel" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 34.0
 margin_top = 41.0
 margin_right = 675.0
@@ -589,6 +590,8 @@ margin_bottom = 665.0
 bbcode_enabled = true
 
 [node name="Rewards" type="TextureRect" parent="."]
+editor/display_folded = true
+visible = false
 margin_left = 535.0
 margin_top = 17.0
 margin_right = 1194.0

@@ -331,13 +331,13 @@ func get_choice(i):
 func StopEvent():
 	set_process(false)
 	set_process_input(false)
-	input_handler.emit_signal("EventFinished")
+	globals.check_signal("EventFinished")
 	hide()
 	input_handler.UnlockOpenWindow()
 	input_handler.SetMusic("towntheme")
 	if !debug:
 		state.FinishEvent()
-		globals.call_deferred('EventCheck')
+#		globals.call_deferred('EventCheck')
 
 func blackscreentransition(duration = 0.5):
 	TextField.bbcode_text = ''

@@ -23,7 +23,7 @@ func open():
 
 func show():
 	state.CurBuild = 'TownHall';
-	input_handler.emit_signal("BuildingEntered", 'TownHall')
+	globals.check_signal("BuildingEntered", 'TownHall')
 	.show();
 
 func hide():
@@ -154,7 +154,7 @@ func unlockupgrade():
 			yield(get_tree().create_timer(2.5), 'timeout')
 			self.modulate.a = 1
 			input_handler.HideOutline(animnode)
-	input_handler.emit_signal("UpgradeUnlocked", upgrade)
-	globals.EventCheck()
+	globals.check_signal("UpgradeUnlocked", upgrade)
+#	globals.EventCheck()
 	#state.townupgrades[upgrade.code] = true
 

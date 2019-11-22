@@ -68,7 +68,7 @@ func allanimationsfinished():
 func targetattack(node):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
-	input_handler.gfx(node, 'slash')
+	input_handler.gfx_sprite(node, 'slash')
 	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	aftereffecttimer = nextanimationtime + aftereffectdelay

@@ -47,7 +47,7 @@ func hirehero():
 
 func show():
 	state.CurBuild = "HeroGuild"
-	input_handler.emit_signal("BuildingEntered", "HeroGuild");
+	globals.check_signal("BuildingEntered", "HeroGuild");
 	.show();
 	pass
 

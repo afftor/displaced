@@ -2,7 +2,7 @@ extends Node
 
 
 var date := 1
-var daytime = 0
+var daytime = 0  setget time_set
 
 var newgame = false
 
@@ -54,6 +54,13 @@ var area_save
 var currentarea
 var currenttutorial = 'tutorial1'
 var viewed_tips := []
+
+func time_set(value):
+	#here may be placed day changing code from main screen
+	#but for now i place here only new code for rising midday event
+	if (daytime < variables.TimePerDay / 2) and (value >= variables.TimePerDay / 2):
+		globals.check_signal('Midday')
+	daytime = value
 
 
 func revert():
@@ -114,7 +121,7 @@ func materials_set(value):
 			else:
 				if oldmaterials[i] - value[i] < 0:
 					text += 'Gained '
-					input_handler.emit_signal("MaterialObtained", i)
+					globals.check_signal("MaterialObtained", i)
 				else:
 					text += "Lost "
 				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + Items.Materials[i].name + '}'
@@ -169,7 +176,7 @@ func ProgressMainStage(stage = null):
 
 func MakeQuest(code):
 	activequests.append({code = code, stage = 1})
-	input_handler.emit_signal("QuestStarted", code)
+	globals.check_signal("QuestStarted", code)
 
 func GetQuest(code):
 	for i in activequests:
@@ -190,7 +197,7 @@ func FinishQuest(code):
 	
 	activequests.erase(tempquest)
 	completedquests.append(tempquest.code)
-	input_handler.emit_signal("QuestCompleted", code)
+	globals.check_signal("QuestCompleted", code)
 
 func StoreEvent(nm):
 	OldEvents[nm] = date
