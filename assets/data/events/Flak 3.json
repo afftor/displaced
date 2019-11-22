@@ -1,0 +1,18 @@
+[
+{"effect":"music","value":"eventlight"},
+{"effect":"gui","value":"gui_inside"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Hey, good job with the delivery. "},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Heard you dealt with those dwarves too."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"You hear things quickly."},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Naturally. So you can have those as workers now as well. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Well, finally a piece of good news at least. But can you actually work with them? "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Back in the caves they didn't seem particularly tame."},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"These are escapees from the fallen kingdom. After your victory, they finally managed to break free and escape. "},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"That's nice to know. But what was the whole problem then?"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Why you ask me? It was you who went there. "},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"All I know is this dwarven kingdom went nuts a few decades ago. "},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Probably the King's fault. You know those nobles are always up to no good. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"True, real bastards, I knew at least a couple up close and personal."},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"Right..."},
+{"effect":"stop","value":""}
+]

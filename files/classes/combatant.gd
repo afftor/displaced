@@ -755,7 +755,7 @@ func get_all_buffs():
 	for b_a in res.values():
 		for b in b_a: tmp.push_back(b)
 	return tmp
-
+#this function is broken and needs revision (but for now skill tooltips are broken as well due to translation issues so i did't fix this)
 func skill_tooltip_text(skillcode):
 	var skill = Skillsdata.skilllist[skillcode]
 	var text = ''

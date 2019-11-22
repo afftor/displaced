@@ -1,0 +1,23 @@
+[
+{"effect":"music","value":"eventlight"},
+{"effect":"gui","value":"gui_inside"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Have you been at the Aeros City yet? "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Don't think so. What about it?"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"I want you to deliver a message there for me? "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Eh? I don't wanna play delivery boy. "},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"You will also be able to find more information on that wacky magic you’re seeking there."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"I'm still not really convi..."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"We will do it!"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Goddamit, Rose. "},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"What's wrong?"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"This is not how you bargain for additional rewards. Anyway, are we getting any?"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"No. Why? You've already agreed. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"..."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"You've done it, Rose. A week with no dessert. "},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"Oh, come on, you calling me for a kid or something."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"You are not talking your way out of this."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Tsch..."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Anyway, how do we get there?"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Just go past the forest. There's a small path near the mountains."},
+{"effect":"stop","value":""}
+]
