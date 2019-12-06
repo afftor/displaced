@@ -678,7 +678,7 @@ func use_skill(skill_code, caster, target):
 	combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
 	
 	caster.mana -= skill.manacost
-	var endturn = !skill.tags.has('instant');
+	var endturn = !skill.tags.has('instant')
 	#old part
 #	for i in skill.casteffects:
 #		var tmp = Effectdata.effect_table[i]
