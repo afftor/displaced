@@ -9,6 +9,7 @@ var combatclass
 
 var icon
 var combaticon
+var ai = null
 
 var race
 #i'm not sure if it is correct to allow this fields to be floats, but YOU INSIST ON NOT USING CUSTOM DESERIALIZING SO DICT2INST SETS THEM TO FLOATS AND ANY CONSEQ OPERATION FIRES COMPART ERROR
@@ -35,10 +36,7 @@ var mdef = 0 setget mdef_set
 var speed = 0
 var critchance = 5
 var critmod = 1.5
-var resistfire = 0
-var resistearth = 0
-var resistwater = 0
-var resistair = 0
+var resists = {} setget ,get_res
 var shield = 0 setget set_shield;
 var shieldtype = variables.S_FULL setget set_shield_t;
 
@@ -85,16 +83,114 @@ var xpmod = 1
 var displaynode = null
 
 var detoriatemod = 1
+var bonuses = {}
+
 #ai
-var ai
-var aiposition
-var aimemory
 var taunt = null
 
 
 #out of combat regen stats
 var regen_threshholds = {health = 0, mana = 0}
 var regen_collected = {health = 0, mana = 0}
+
+func fix_serialize(data):
+	data.resists = resists.duplicate()
+
+func get_stat(statname):
+	var res = get(statname)
+	if variables.bonuses_stat_list.has(statname):
+		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
+		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
+#	elif statname in ['physics','wits','charm','sexuals']:
+#		res = get(statname) + get(statname+"_bonus")
+	return res
+
+func add_stat_bonuses(ls:Dictionary):
+	if variables.new_stat_bonuses_syntax:
+		for rec in ls:
+			add_bonus(rec, ls[rec])
+	else:
+		for rec in ls:
+			if (rec as String).begins_with('resist') :
+				add_bonus(rec + '_add', ls[rec])
+				continue
+			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
+				add_bonus(rec.replace('mod','_mul'), ls[rec])
+				continue
+			if get(rec) == null:
+			#safe variant
+			#add_bonus(rec, ls[rec])
+				continue
+			add_stat(rec, ls[rec])
+
+func remove_stat_bonuses(ls:Dictionary):
+	if variables.new_stat_bonuses_syntax:
+		for rec in ls:
+			add_bonus(rec, ls[rec], true)
+	else:
+		for rec in ls:
+			if (rec as String).begins_with('resist'):
+				add_bonus(rec + '_add', ls[rec], true)
+				continue
+			if (rec as String).ends_with('mod') :
+				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
+				continue
+			if get(rec) == null: continue
+			add_stat(rec, ls[rec], true)
+
+func add_bonus(b_rec:String, value, revert = false):
+	if value == 0: return
+	if bonuses.has(b_rec):
+		if revert:
+			bonuses[b_rec] -= value
+			if b_rec.ends_with('_add') and bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
+			if b_rec.ends_with('_mul') and bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
+		else: bonuses[b_rec] += value
+	else:
+		if revert: print('error bonus not found')
+		else:
+			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
+			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
+			else: bonuses[b_rec] = value
+	recheck_effect_tag('recheck_stats')
+
+func add_stat(statname, value, revert = false):
+	if variables.direct_access_stat_list.has(statname):
+		if revert: set(statname, get(statname) - value)
+		else: set(statname, get(statname) + value)
+	else:
+		add_bonus(statname+'_add', value, revert)
+
+func mul_stat(statname, value, revert = false):
+	if variables.direct_access_stat_list.has(statname):
+		if revert: set(statname, get(statname) / value)
+		else: set(statname, get(statname) * value)
+	else:
+		if bonuses.has(statname + '_mul'):
+			if revert:
+				bonuses[statname + '_mul'] /= value
+				if bonuses[statname + '_mul'] == 1:
+					bonuses.erase(statname + '_mul')
+			else: bonuses[statname + '_mul'] *= value
+		else:
+			if revert: print('error bonus not found')
+			else: bonuses[statname + '_mul'] = value
+
+func add_part_stat(statname, value, revert = false):
+	if variables.direct_access_stat_list.has(statname):
+		if revert: set(statname, get(statname) / (1.0 + value))
+		else: set(statname, get(statname) * (1.0 + value))
+	else:
+		add_bonus(statname+'_mul', value, revert)
+
+#confirmed getters
+func get_res():
+	var res = resists.duplicate()
+	for r in variables.resistlist:
+		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
+		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+	return res
+
 
 func regen_tick(delta):
 	
@@ -204,6 +300,36 @@ func a_mana_set(value):
 func armor_get():
 	return max(0, armor)
 
+func get_weapon_range():
+	if gear.rhand == null:
+		return 'melee'
+	else:
+		var weapon = state.items[gear.rhand]
+		return weapon.weaponrange
+
+#some AI-related functions
+func need_heal(): #stub. borderlines are subject to tuning
+	#if has_status('banish'): return -1.0
+	var rate = hp * 1.0 / self.hpmax
+	if rate < 0.2: return 1.0
+	if rate < 0.4: return 0.5
+	if rate < 0.6: return 0.0
+	if rate < 0.8: return -0.5
+	return -1.0
+
+func fill_ai(data):
+	match variables.ai_setup:
+		'off':
+			ai.set_single_state({})
+		'new':
+			ai.set_single_state(data)
+		'old':
+			var newdata = {}
+			for arr in data:
+				newdata[arr[0]] = arr[1]
+			ai.set_single_state(newdata)
+
+
 
 func levelup():
 	level += 1
@@ -281,7 +407,15 @@ func add_trait(trait_code):
 #	oneshot_effects.clear()
 #	pass
 
-func apply_atomic(template): 
+func recheck_effect_tag(tg):
+	var e_list = find_temp_effect_tag(tg)
+	for e in e_list:
+		var tmp = effects_pool.get_effect_by_id(e)
+		tmp.recheck()
+
+
+
+func apply_atomic(template):
 	match template.type:
 		'damage':
 			deal_damage(template.value, template.source)
@@ -292,36 +426,63 @@ func apply_atomic(template):
 		'mana':
 			mana_update(template.value)
 			pass
-		'stat_set', 'stat_set_revert':
+		'stat_set', 'stat_set_revert': #use this on direct-accessed stats
 			template.buffer = get(template.stat)
 			set(template.stat, template.value)
-			pass
 		'stat_add':
-			set(template.stat, get(template.stat) + template.value)
-			pass
-		'stat_mul':
-			set(template.stat, get(template.stat) * template.value)
-			pass
+			add_stat(template.stat, template.value)
+		'stat_mul':#do not mix add_p and mul for the sake of logic
+			mul_stat(template.stat, template.value)
+		'stat_add_p':
+			add_part_stat(template.stat, template.value)
+		'bonus': #reverting those effect can not clear no-bonus entries, so be careful not to overuse those
+			if bonuses.has(template.bonusname): bonuses[template.bonusname] += template.value
+			else: bonuses[template.bonusname] = template.value
 		'signal':
 			#stub for signal emitting
 			globals.emit_signal(template.value)
-		'remove_effect': 
+		'remove_effect':
 			remove_temp_effect_tag(template.value)
-			pass
+		'add_trait':
+			add_trait(template.trait)
+		'event':
+			process_event(template.value)
+		'resurrect':
+			if !defeated: return
+			self.hp = template.value
+			defeated = false
+			process_event(variables.TR_RES)
+		'use_combat_skill':
+			if globals.combat_node == null: return
+			globals.combat_node.use_skill(template.value, self, null)
+#		'add_counter':
+#			if counters.size() <= template.index + 1:
+#				counters.resize(template.index + 1)
+#			if counters[template.index] == null:counters[template.index] = template.value
+#			else:
+#				counters[template.index] += template.value
+		'add_skill':
+			skills.push_back(template.skill)
+		'sfx':
+			play_sfx(template.value)
 
 
 func remove_atomic(template):
 	match template.type:
 		'stat_set_revert':
 			set(template.stat, template.buffer)
-			pass
 		'stat_add':
-			set(template.stat, get(template.stat) - template.value)
-			pass
+			add_stat(template.stat, template.value, true)
 		'stat_mul':
-			set(template.stat, get(template.stat) / template.value)
-			pass
-	pass
+			mul_stat(template.stat, template.value, true)
+		'stat_add_p':
+			add_part_stat(template.stat, template.value, true)
+		'bonus':
+			if bonuses.has(template.bonusname): bonuses[template.bonusname] -= template.value
+			else: print('error bonus not found')
+		'add_combat_skill':
+			skills.erase(template.skill)
+			cooldowns.erase(template.skill)
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -342,7 +503,7 @@ func find_temp_effect_tag(eff_tag):
 		var eff = effects_pool.get_effect_by_id(e)
 		if eff.tags.has(eff_tag):
 			res.push_back(e)
-		return res
+	return res
 
 func find_eff_by_trait(trait_code):
 	var res = []
@@ -417,7 +578,7 @@ func set_position(new_pos):
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static': 
+		'static', 'c_static': 
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
@@ -437,7 +598,7 @@ func apply_effect(eff_id):
 func remove_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static': static_effects.erase(eff_id)
+		'static', 'c_static': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
 		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
 		'area': remove_area_effect(eff_id)
@@ -466,15 +627,18 @@ func clean_effects():#clean effects before deleting character
 		eff.remove()
 	pass
 
-func process_event(ev):
+func process_event(ev, skill = null):
 	for e in temp_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(ev)
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill: continue
-		var tr = eff.process_event(ev) #stub for more direct controling of temps removal
-	pass
+		if skill != null and eff.req_skill:
+			eff.set_args('skill', skill)
+			eff.process_event(ev)
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(ev)
 
 func createfromenemy(enemy):
 	var template = Enemydata.enemylist[enemy].duplicate()
@@ -488,9 +652,10 @@ func createfromenemy(enemy):
 	skills = template.skills
 	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
-	for i in template.resists:
-		#self['resist' + i] = template.resists[i]
-		set('resist' + i, template.resists[i])
+	for i in variables.resistlist:
+		resists[i] = 0
+		if template.resists.has(i):
+			resists[i] = template.resists[i]
 	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward', 'bodyhitsound', 'flavor']:
 		#self[i] = template[i]
 		set(i, template[i])
@@ -498,6 +663,14 @@ func createfromenemy(enemy):
 		for t in template.traits:
 			traits[t] = false;
 			activate_trait(t);
+	ai = ai_base.new()
+	if !template.has('ai'): template.ai = {}
+	if template.has('full_ai'):
+		ai.set_simple_ai(template.ai)
+	else:
+		#need check for hard difficulty
+		fill_ai(template.ai)
+	ai.app_obj = self
 
 
 func createfromclass(classid):
@@ -550,6 +723,10 @@ func createfromname(charname):
 	name = tr(nametemplate.name)
 	namebase = nametemplate.name
 	flavor = nametemplate.flavor
+	for i in variables.resistlist:
+		resists[i] = 0
+		if classtemplate.resists.has(i):
+			resists[i] = classtemplate.resists[i]
 
 
 
@@ -566,9 +743,10 @@ func equip(item):
 		gear[i] = item.id
 	item.owner = id
 	#adding bonuses
-	for i in item.bonusstats:
+	add_stat_bonuses(item.bonusstats)
+	#for i in item.bonusstats:
 		#self[i] += item.bonusstats[i]
-		set(i, get(i) + item.bonusstats[i])
+		#set(i, get(i) + item.bonusstats[i])
 	for i in item.effects:
 		var tmp = Effectdata.effects[i].effects;
 		for e in tmp:
@@ -582,26 +760,25 @@ func equip(item):
 	#checkequipmenteffects()
 
 
-func unequip(item):#NEEDS REMAKING!!!!
+func unequip(item):
 	#removing links
 	item.owner = null
 	for i in gear:
 		if gear[i] == item.id:
 			gear[i] = null
 	#removing bonuses
-	for i in item.bonusstats:
+	remove_stat_bonuses(item.bonusstats)
+#	for i in item.bonusstats:
 		#self[i] -= item.bonusstats[i]
-		set(i, get(i) - item.bonusstats[i])
+#		set(i, get(i) - item.bonusstats[i])
 	
 	for i in item.effects:
 		var tmp = Effectdata.effects[i].effects;
 		for e in find_eff_by_item(item.id):
 			var eff = effects_pool.get_effect_by_id(e)
 			eff.remove()
-		#removepassiveeffect(i) 
-		#NEED REPLACING
 		pass
-	#checkequipmenteffects()
+
 
 func hitchance(target):
 	var chance = hitrate - target.evasion
@@ -694,18 +871,29 @@ func createtrait(data, type = 'starter'):
 			array.append([i.code, i.weight])
 	return input_handler.weightedrandom(array)
 
-func calculate_number_from_string_array(array):
+func calculate_number_from_string_array(arr):
+	var array = arr.duplicate()
 	var endvalue = 0
 	var firstrun = true
+	var singleop = ''
 	for i in array:
+		if typeof(i) == TYPE_ARRAY:
+			i = str(calculate_number_from_string_array(i))
+		if i in ['+','-','*','/']:
+			singleop = i
+			continue
 		var modvalue = i
-		if i.find('caster') >= 0:
+		if i.find('caster') >= 0 or i.find('self') >= 0:
 			i = i.split('.')
-			if i[0] == 'caster':
+			if i[0] == 'caster' or i[0] == 'self':
 				#modvalue = str(self[i[1]])
-				modvalue = str(get(i[1]))
+				modvalue = str(get_stat(i[1]))
 			elif i[0] == 'target':
 				return ""; #nonexistent yet case of skill value being based completely on target
+		if singleop != '':
+			endvalue = input_handler.string_to_math(endvalue, singleop+modvalue)
+			singleop = ''
+			continue
 		if !modvalue[0].is_valid_float():
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
@@ -755,6 +943,7 @@ func get_all_buffs():
 	for b_a in res.values():
 		for b in b_a: tmp.push_back(b)
 	return tmp
+
 #this function is broken and needs revision (but for now skill tooltips are broken as well due to translation issues so i did't fix this)
 func skill_tooltip_text(skillcode):
 	var skill = Skillsdata.skilllist[skillcode]
@@ -765,3 +954,6 @@ func skill_tooltip_text(skillcode):
 		text += skill.description
 	return text
 
+func play_sfx(code):
+	if displaynode != null:
+		displaynode.process_sfx(code)

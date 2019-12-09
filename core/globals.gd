@@ -54,7 +54,7 @@ var userfolder = 'user://'
 #var images = load("res://files/scripts/ResourceImages.gd").new()
 #var audio = load("res://files/scripts/ResourceAudio.gd").new()
 var scenes = {}
-
+var combat_node
 var hexcolordict = {
 	red = '#ff0000',
 	yellow = "#ffff00",
@@ -613,7 +613,11 @@ func ItemSelect(targetscript, type, function, requirements = true):
 func CloseSelection(panel):
 	panel.hide()
 
-
+func closeskilltooltip():
+	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) 
+	var skilltooltip = input_handler.GetSkillTooltip()
+	skilltooltip.set_process(false)
+	skilltooltip.hide()
 
 func calculatepercent(value1, value2):
 	return value1*100/max(value2,1)

@@ -27,34 +27,65 @@ var armor_p
 
 var effects = []
 var process_value
+var tempdur
 
 func _init():
 	caster = null
 	target = null
-	pass
+	userange = 'any'
+	targetpattern = 'single'
+	damagetype = 'direct'
+	damagestat = '+damage_hp'
+#	random_factor = 0
+#	random_factor_p = 0.0
 
 func clone():
-	return dict2inst(inst2dict(self))
+	var res = dict2inst(inst2dict(self))
+	res.effects.clear()
+	for e in template.casteffects:
+		var eff = effects_pool.e_createfromtemplate(e, res)
+		res.apply_effect(effects_pool.add_effect(eff))
+	return res
+
+func get_from_template(attr, val_rel = false):
+	if template.has(attr): 
+		if typeof(template[attr]) == TYPE_ARRAY:
+			set(attr, template[attr].duplicate())
+			return
+		set(attr, template[attr])
+	if val_rel:
+		var tres = []
+		for i in range(long_value.size()): tres.push_back(get(attr))
+		set(attr, tres)
 
 func createfromskill(s_code):
 	template = Skillsdata.skilllist[s_code]
 	code = s_code
-	damagetype = template.damagetype
 	skilltype = template.skilltype
 	tags = template.tags.duplicate()
 	manacost = template.manacost
-	targetpattern = template.targetpattern
+	get_from_template('userange')
+	get_from_template('targetpattern')
+	get_from_template('damage_type')
+
 	
-	if typeof(template.value[0]) == TYPE_ARRAY:
-		long_value = template.value.duplicate()
-		damagestat = template.damagestat.duplicate()
-	else:
-		long_value.push_back(template.value.duplicate())
-		if template.has('damagestat'):
-			damagestat.push_back(template.damagestat)
+	if typeof(template.value) == TYPE_ARRAY: 
+		if typeof(template.value[0]) == TYPE_ARRAY:
+			long_value = template.value.duplicate()
 		else:
-			damagestat.push_back('hp')
-	userange = template.userange
+			long_value.push_back(template.value.duplicate())
+	else:
+		long_value.push_back(template.value)
+	
+	get_from_template('damagestat', true)
+	for s in range(damagestat.size()):
+		if damagestat[s] == 'no_stat': continue
+		if !(damagestat[s][0] in ['+','-','=']):
+			damagestat[s] = '+'+damagestat[s]
+	#get_from_template('receiver', true)
+	#get_from_template('random_factor', true)
+	#get_from_template('random_factor_p', true)
+	
 	for e in template.casteffects:
 		var eff = effects_pool.e_createfromtemplate(e, self)
 		apply_effect(effects_pool.add_effect(eff))
@@ -94,13 +125,13 @@ func process_check(check:Array):
 
 func setup_caster(c):
 	caster = c
-	chance = caster.hitrate
-	critchance = caster.critchance
-	armor_p = caster.armorpenetration
+	chance = caster.get_stat('hitrate')
+	critchance = caster.get_stat('critchance')
+	armor_p = caster.get_stat('armorpenetration')
 
 func setup_target(t):
 	target = t
-	evade = target.evasion
+	evade = target.get_stat('evasion')
 
 func setup_final():
 	if template.keys().has('chance'):
@@ -112,6 +143,12 @@ func setup_final():
 	if template.keys().has('armor_p'):
 		armor_p = template['armor_p']
 
+func setup_effects_final():
+	process_value = value[0]
+	if template.has('custom_duration'):
+		for e in effects:
+			var eff = effects_pool.get_effect_by_id(e)
+			eff.set_args('duration', tempdur)
 
 func hit_roll():
 	var prop = chance - evade
@@ -145,50 +182,8 @@ func apply_atomic(tmp):
 						value[i] = tmp.value
 				pass
 			else: set(tmp.stat, tmp.value)
-
-#old code
-#func apply_effect(code, trigger):
-#	var tmp = Effectdata.effect_table[code]
-#	var rec
-#	var res = true
-#	if tmp.trigger != trigger: return
-#	for cond in tmp.conditions:
-#		match cond.target:
-#			'skill':
-#				match cond.check:
-#					'type': res = res and (skilltype == cond.value)
-#					'tag': res = res and tags.has(cond.value)
-#					'result': res = res and (hit_res & cond.value != 0)
-#			'caster':
-#				res = res and input_handler.requirementcombatantcheck(cond.value, caster)
-#			'target':
-#				res = res and input_handler.requirementcombatantcheck(cond.value, target)
-#			'chance':
-#				res = res and (randf()*100 < cond.value)
-#	if !res: return
-#	for ee in tmp.effects:
-#			var eee
-#			if typeof(ee) == TYPE_STRING: eee = Effectdata.atomic[ee].duplicate()
-#			else: eee = ee.duplicate()
-#			#convert effect to constant form
-#			if eee.type == 'skill':
-#				eee.type = eee.new_type
-#				eee.value = get(eee.value) * eee.mul
-#			if eee.type == 'caster':
-#				eee.type = eee.new_type
-#				eee.value = caster.get(eee.value) * eee.mul
-#			if eee.type == 'target':
-#				eee.type = eee.new_type
-#				eee.value = target.get(eee.value) * eee.mul
-#
-#			match eee.target:
-#				'caster':
-#					rec = caster
-#				'target':
-#					rec = target
-#				'skill':
-#					rec = self
-#			rec.apply_atomic(eee)
+		'add_tag':
+			tags.push_back(tmp.value)
 
 func apply_effect(eff):
 	var obj = effects_pool.get_effect_by_id(eff)
@@ -215,20 +210,6 @@ func process_event(ev):
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.set_args('skill', self)
 		eff.process_event(ev)
-	# NB !! move this part to combat
-#	if caster != null:
-#		for eff in caster.triggered_effects:
-#			var obj = effects_pool.get_effect_by_id(eff)
-#			if !eff.req_skill: continue
-#			obj.set_args('skill', self)
-#			obj.process_event(ev)
-
-#	if target != null:
-#		for eff in target.triggered_effects:
-#			var obj = effects_pool.get_effect_by_id(eff)
-#			if !eff.req_skill: continue
-#			obj.set_args('skill', self)
-#			obj.process_event(ev)
 
 
 func resolve_value(check_m):
@@ -264,7 +245,7 @@ func calculate_dmg():
 	if hit_res == variables.RES_CRIT:
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
-				value[i] *= caster.critmod
+				value[i] *= caster.get_stat('critmod')
 	var reduction = 0
 	if skilltype == 'skill':
 		reduction = max(0, target.armor - armor_p)
@@ -274,8 +255,8 @@ func calculate_dmg():
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
 				 value[i] *= (float(100 - reduction)/100.0)
-	if damagetype in ['fire','water','air','earth']:
+	if damagetype in variables.resistlist:
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
-				 value[i] *= ((100 - target['resist' + damagetype])/100.0)
+				 value[i] *= ((100 - target.get_stat('resists')[damagetype])/100.0)
 	for v in value: v = round(v)

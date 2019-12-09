@@ -183,8 +183,11 @@ func TargetEnemyTurn(node):
 
 var floatfont = preload("res://FloatFont.tres")
 
+func FloatTextArgs(args):
+	#print('ftchecked')
+	FloatText(args.node, args.text, args.type, args.size, args.color, args.time, args.fadetime, args.offset)
 
-func FloatText(node, text, type = '', color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
+func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
 	var textnode = Label.new()
 	get_tree().get_root().add_child(textnode)
 	textnode.text = text

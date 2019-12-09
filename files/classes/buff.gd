@@ -2,7 +2,7 @@ extends Reference
 class_name Buff
 
 var icon:String setget ,get_icon
-var tooltip:String = "" setget ,get_tooltip
+var description:String = "" setget ,get_tooltip
 var parent
 var template
 var args: = []
@@ -19,7 +19,7 @@ func createfromtemplate(buff_t):
 		template = Effectdata.buffs[buff_t]
 	else:
 		template = buff_t.duplicate()
-	tooltip = tr(template.description)
+	description = tr(template.description)
 	icon = template.icon
 	template_name = template.t_name
 	if template.has('name'): name = template.name
@@ -27,8 +27,7 @@ func createfromtemplate(buff_t):
 
 func get_tooltip():
 	calculate_args()
-	return tooltip % args
-	pass
+	return description % args
 
 func get_icon():
 	if icon.is_rel_path() or icon.is_abs_path():
@@ -59,6 +58,10 @@ func calculate_args():
 					args.push_back(par.get_arg(int(arg.param)))
 		pass
 
+func get_duration():
+	var par = effects_pool.get_effect_by_id(parent)
+	return par.get('remains')
+
 func set_args(arg, value):
 	self_args[arg] = value
 
@@ -71,7 +74,7 @@ func serialize():
 func deserialize(tmp):
 	template = tmp['template'].duplicate()
 	self_args = tmp['args'].duplicate()
-	tooltip = tr(template.description)
+	description = tr(template.description)
 	icon = template.icon
 	template_name = template.t_name
 	if template.has('name'): name = template.name
