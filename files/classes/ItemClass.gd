@@ -209,7 +209,7 @@ func tooltipeffects():
 	return text
 
 func tooltip(targetnode):
-	var node = input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
 	node.showup(targetnode, self)
 
 

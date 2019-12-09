@@ -38,7 +38,8 @@ func PurchaseSlave(worker):
 		input_handler.SystemMessage(tr("NOTENOUGHGOLD"))
 		return
 	selectedworker = worker
-	input_handler.ShowConfirmPanel(self, "HireConfirm", "Hire this worker for " + str(worker.price) + "?")
+	#input_handler.ShowConfirmPanel(self, "HireConfirm", "Hire this worker for " + str(worker.price) + "?")
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, "HireConfirm", "Hire this worker for " + str(worker.price) + "?"])
 
 func HireConfirm():
 	var newworker = worker.new()

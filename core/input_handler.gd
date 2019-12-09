@@ -241,7 +241,7 @@ func StopTweenRepeat(node):
 func SetMusic(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
-	var musicnode = GetMusicNode()
+	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
 	if musicnode.stream == audio.music[name]:
 		return
 	musicnode.stream = audio.music[name]
@@ -268,7 +268,7 @@ func PlaySound(name, delay = 0):
 	if name == null: 
 		return #STAB to fix some skills cause crashing
 	yield(get_tree().create_timer(delay), 'timeout')
-	var soundnode = GetSoundNode()
+	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
 	soundnode.stream = audio.sounds[name]
 	soundnode.seek(0)
 	soundnode.play(0)
@@ -598,21 +598,13 @@ func GetTutorialNode():
 	return tutnode
 
 func ActivateTutorial(stage = 'tutorial1'):
-	var node = GetTutorialNode()
+	var node = get_spec_node(NODE_TUTORIAL)#GetTutorialNode()
 	node.activatetutorial(stage)
 
 func ShowGameTip(tip):
 	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
 		return
-	var node = get_tree().get_root()
-	var tipnode
-	if node.has_node("GameTips"):
-		tipnode = node.get_node("GameTips")
-		node.remove_child(tipnode)
-	else:
-		tipnode = load("res://files/scenes/GameplayTips.tscn").instance()
-		tipnode.name = "GameTips"
-	node.add_child(tipnode)
+	var tipnode = get_spec_node(NODE_GAMETIP)
 	tipnode.showtip(tip)
 
 func ShowOutline(node):
@@ -625,3 +617,57 @@ func HideOutline(node):
 func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])
 
+#variative get node method stuff
+enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS} #, NODE_TWEEN, NODE_REPEATTWEEN}
+
+var node_data = {
+	NODE_GAMETIP : {name = 'GameTips', mode = 'scene', scene = preload("res://files/scenes/GameplayTips.tscn")},
+#	NODE_CHAT : {name = 'chatwindow', mode = 'scene', scene = preload("res://src/scenes/ChatNode.tscn")},
+	NODE_TUTORIAL : {name = 'TutorialNode', mode = 'scene', scene = preload("res://files/scenes/Tutorial.tscn")},
+#	NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
+#	NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://src/InteractiveMessage.tscn")},
+#	NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://files/Inventory.tscn"), calls = 'open'},
+#	NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},
+	NODE_CONFIRMPANEL : {name = 'ConfirmPanel', mode = 'scene', scene = preload("res://files/scenes/ConfirmPanel.tscn"), calls = 'Show'},
+#	NODE_SLAVESELECT : {name = 'SlaveSelectMenu', mode = 'scene', scene = preload("res://src/SlaveSelectMenu.tscn")},
+#	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
+	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextScene/TextSystem.tscn")},
+	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
+	NODE_SOUND : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},
+	#NODE_TWEEN : {name = 'tween', mode = 'node', node = Tween},
+#	NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/TextEditField.tscn")},
+#	NODE_SLAVETOOLTIP : {name = 'slavetooltip', mode = 'scene', scene = preload("res://src/SlaveTooltip.tscn")},
+	NODE_SKILLTOOLTIP : {name = 'skilltooltip', mode = 'scene', scene = preload("res://files/scenes/SkillToolTip.tscn")},
+	NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://files/Simple Tooltip/Imagetooltip.tscn")},
+#	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
+#	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
+#	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
+#	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
+}
+
+func get_spec_node(type, args = null, raise = true):
+	var window
+	var node = get_tree().get_root()
+	if node.has_node(node_data[type].name) and !node_data[type].has('no_return'):
+		window = node.get_node(node_data[type].name)
+		#node.remove_child(window)
+	else:
+		match node_data[type].mode:
+			'scene':
+				window = node_data[type].scene.instance()
+			'node':
+				window = node_data[type].node.new()
+		window.name = node_data[type].name
+		node.add_child(window)
+	if raise: window.raise()
+	if node_data[type].has('args'): 
+		for param in node_data[type].args:
+			window.set(param, node_data[type].args[param])
+	if node_data[type].has('calls'): 
+		if args == null: args = []
+		window.callv(node_data[type].calls, args)
+	elif args != null: 
+		for param in args:
+			window.set(param, args[param])
+	return window

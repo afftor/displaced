@@ -49,7 +49,8 @@ func activatetrait(trait):
 			open()
 	else:
 		if trait.price <= state.money:
-			input_handler.ShowConfirmPanel(self, 'purchasetrait', tr("PURCHASETHISTRAIT") + ": " + str(trait.price) + tr("GOLD") + "?")
+#			input_handler.ShowConfirmPanel(self, 'purchasetrait', tr("PURCHASETHISTRAIT") + ": " + str(trait.price) + tr("GOLD") + "?")
+			input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL,[self, 'purchasetrait', tr("PURCHASETHISTRAIT") + ": " + str(trait.price) + tr("GOLD") + "?"])
 		else:
 			input_handler.SystemMessage(tr("NOTENOUGHGOLD"))
 		#purchasesuggestion

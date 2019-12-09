@@ -67,7 +67,8 @@ func unequip(slot):
 		var gear = state.items[character.gear[slot]]
 		character.unequip(gear)
 		globals.disconnectitemtooltip(get_node('Main/Panel/charandgear/' + slot), gear)
-		input_handler.GetItemTooltip().hide()
+		#input_handler.GetItemTooltip().hide()
+		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		open(character)
 
 var classinfo = {
