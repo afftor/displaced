@@ -2,6 +2,7 @@ extends TextureButton
 
 var animation_node
 
+
 signal signal_RMB
 signal signal_RMB_release
 signal signal_LMB
@@ -9,6 +10,7 @@ signal signal_LMB
 var position = 0
 var fighter
 var RMBpressed = false
+
 
 #var damageeffectsarray = []
 
@@ -33,6 +35,7 @@ var buffs = []
 #			damageeffectsarray.erase(i)
 #			break
 
+
 func _input(event):
 	if get_global_rect().has_point(get_global_mouse_position()):
 		if event.is_pressed():
@@ -45,9 +48,11 @@ func _input(event):
 		emit_signal("signal_RMB_release")
 		RMBpressed = false
 
+
 func get_attack_vector():
 	if fighter.combatgroup == 'ally': return Vector2(100, 0)
 	elif fighter.combatgroup == 'enemy': return Vector2(-100, 0)
+
 
 func update_hp():
 	if hp == null:
@@ -168,3 +173,4 @@ func update_mp_label(newmp, newmpp):
 		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('manamax')))
 	else:
 		$mplabel.text = str(round(newmpp)) + '%%'
+

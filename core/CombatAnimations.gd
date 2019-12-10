@@ -11,6 +11,7 @@ var aftereffecttimer = 0
 var postdamagetimer = 0
 var aftereffectdelay = 0.1
 
+
 var cur_timer
 var animations_queue = {}
 #format: time - node - animations (data)

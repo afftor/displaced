@@ -856,6 +856,7 @@ func use_skill(skill_code, caster, target):
 		activeitem = null
 		SelectSkill(caster.get_skill_by_tag('default'))
 	
+
 	caster.displaynode.rebuildbuffs()
 	if fighterhighlighted == true:
 		FighterMouseOver(target)
@@ -1029,6 +1030,7 @@ func execute_skill(s_skill2):
 					text += "%s's %s is now %d." %[s_skill2.target.name, tr(stat), s_skill2.value[i]] 
 			else: print('error in damagestat %s' % s_skill2.damagestat[i])
 	combatlogadd(text)
+
 
 
 func miss(fighter):
