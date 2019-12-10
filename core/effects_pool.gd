@@ -56,6 +56,8 @@ func deserialize_effect(tmp, id, caller = null):
 		'temp_p': eff = temp_e_progress.new(caller)
 		'temp_u': eff = temp_e_upgrade.new(caller)
 		'area': eff = area_effect.new(caller)
+		'c_static': eff = condition_effect.new(caller)
+
 	eff.id = id
 	eff.deserialize(tmp)
 	return eff
@@ -76,9 +78,10 @@ func e_createfromtemplate(buff_t, caller = null):
 		'temp_u': tmp = temp_e_upgrade.new(caller)
 		'area': tmp = area_effect.new(caller)
 		'oneshot': tmp = oneshot_effect.new(caller)
+		'c_static': tmp = condition_effect.new(caller)
 	tmp.createfromtemplate(template)
 	return tmp
-	pass
+
 
 func deserialize(tmp):
 	effects.clear()

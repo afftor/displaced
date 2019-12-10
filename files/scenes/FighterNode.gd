@@ -1,5 +1,7 @@
 extends TextureButton
 
+var animation_node
+
 
 signal signal_RMB
 signal signal_RMB_release
@@ -9,25 +11,30 @@ var position = 0
 var fighter
 var RMBpressed = false
 
-var damageeffectsarray = []
+
+#var damageeffectsarray = []
 
 var hp
 var mp
+var buffs = []
 
-func _process(delta):
-	if $hplabel.visible:
-		update_hp_label()
-	if $mplabel.visible:
-		update_mp_label()
-	for i in damageeffectsarray:
-		if i.played == false:
-			textdamageeffect(i)
-			i.played = true
-		yield(get_tree().create_timer(0.5), "timeout")
-	for i in damageeffectsarray:
-		if i.played == true:
-			damageeffectsarray.erase(i)
-			break
+#data format: node, time, type, slot, params
+
+#func _process(delta):
+#	if $hplabel.visible:
+#		update_hp_label()
+#	if $mplabel.visible:
+#		update_mp_label()
+#	for i in damageeffectsarray:
+#		if i.played == false:
+#			textdamageeffect(i)
+#			i.played = true
+#		yield(get_tree().create_timer(0.5), "timeout")
+#	for i in damageeffectsarray:
+#		if i.played == true:
+#			damageeffectsarray.erase(i)
+#			break
+
 
 func _input(event):
 	if get_global_rect().has_point(get_global_mouse_position()):
@@ -42,93 +49,128 @@ func _input(event):
 		RMBpressed = false
 
 
+func get_attack_vector():
+	if fighter.combatgroup == 'ally': return Vector2(100, 0)
+	elif fighter.combatgroup == 'enemy': return Vector2(-100, 0)
+
+
 func update_hp():
 	if hp == null:
 		hp = fighter.hp
 	if hp != null && hp != fighter.hp:
-		var data = {value = 0, type = '', color = Color(), played = false}
-		data.value = fighter.hp - hp
-		if data.value < 0:
-			data.color = Color(1,0.2,0.2)
+		var args = {damage = 0, type = '', color = Color(), newhp = fighter.hp, newhpp = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')), damage_float = true}
+		args.damage = fighter.hp - hp
+		if args.damage < 0:
+			args.color = Color(0.8,0.2,0.2)
 			if fighter.combatgroup == 'ally':
-				data.type = 'damageally'
+				args.type = 'damageally'
 			else:
-				data.type = 'damageenemy' 
+				args.type = 'damageenemy' 
 		else:
-			data.type = 'heal'
-			data.color = Color(0.2,1,0.2)
-		
+			args.type = 'heal'
+			args.color = Color(0.2,0.8,0.2)
+		if hp <= 0: args.damage_float = false
 		hp = fighter.hp
-		damageeffectsarray.append(data)
-	
-
-func textdamageeffect(data):
-	var tween = input_handler.GetTweenNode(self)
-	var node = get_node("HP")
-	
-	
-	input_handler.FloatText(self, str(data.value), data.type, data.color, 2, 0.2, get_node('Icon').rect_size/2)
-#		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,0), Color(1,0,0,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,1), Color(1,0,0,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
-	
-	
-	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.hp, fighter.hpmax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+		if hp < 0:
+			args.newhp = 0
+			args.newhpp = 0
+			hp = 0
+		#damageeffectsarray.append(data)
+		var data = {node = self, time = globals.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
+		animation_node.add_new_data(data)
 
 func update_mana():
-	var tween = input_handler.GetTweenNode(self)
-	var node = get_node("Mana")
-	mp = fighter.mana
-	
-	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.mana, fighter.manamax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+	if mp == null:
+		mp = fighter.mana
+	if mp != null && mp != fighter.mana:
+		var args = {newmp = fighter.mana, newmpp = globals.calculatepercent(fighter.mana, fighter.get_stat('manamax'))}
+		mp = fighter.mana
+		#damageeffectsarray.append(data)
+		var data = {node = self, time = globals.combat_node.turns,type = 'mp_update',slot = 'MP', params = args}
+		animation_node.add_new_data(data)
 
-func update_hp_label():
-	if fighter.combatgroup == 'ally':
-		$hplabel.text = str(fighter.hp) + '/' + str(fighter.hpmax())
-	else:
-		$hplabel.text = str(round(globals.calculatepercent(fighter.hp, fighter.hpmax()))) + '%'
-
-func update_mp_label():
-	if fighter.combatgroup == 'ally':
-		$mplabel.text = str(fighter.mana) + '/' + str(fighter.manamax())
-	else:
-		$mplabel.text = str(round(globals.calculatepercent(fighter.mana, fighter.manamax()))) + '%'
-
-func defeat():
+func defeat():#not working correctly at all
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
-	input_handler.FadeAnimation(self, 0.5, 0.3)
+	#input_handler.FadeAnimation(self, 0.5, 0.3)
 	set_process_input(false)
 
-
-func update_shield(): #FILL COLORS FOR OTHER SHIELD TYPES
+func update_shield(): 
+	var args = {}
 	if fighter.shield <= 0: 
-		self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 0.0))
-		return
+		args.color = Color(0.9, 0.9, 0.9, 0.0)
+		#self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 0.0))
+		#return
 	else:
-		match fighter.shieldtype:
-			variables.S_PHYS: #tempate, add all other values from this enum
-				self.material.set_shader_param('modulate', Color(0.8, 0.8, 0.8, 1.0)); #example
+		args.color = Color(0.8, 0.8, 0.8, 1.0)
+		#self.material.set_shader_param('modulate', Color(0.8, 0.8, 0.8, 1.0)); #example
+	var data = {node = self, time = globals.combat_node.turns, type = 'shield_update',slot = 'SHIELD', params = args}
+	animation_node.add_new_data(data)
+
+func process_sfx(code):
+	var data = {node = self, time = globals.combat_node.turns,type = code, slot = 'SFX', params = {}}
+	animation_node.add_new_data(data)
+
+func process_sound(sound):
+	var data = {node = self, time = globals.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
+	animation_node.add_new_data(data)
 
 func rebuildbuffs():
-	globals.ClearContainer($Buffs)
-#	for i in fighter.buffs:
-#		var newbuff = globals.DuplicateContainerTemplate($Buffs)
-#		var buff = Effectdata.buffs[i]
-#		var text = buff.description
-#		newbuff.texture = buff.icon
-#		if buff.has('bonuseffect'):
-#			match buff.bonuseffect:
-#				'barrier':
-#					newbuff.get_node("Label").show()
-#					newbuff.get_node("Label").text = str(fighter.shield)
-	for b in fighter.get_all_buffs():
-		var newbuff = globals.DuplicateContainerTemplate($Buffs)
-		newbuff.texture = b.icon
-		var text = b.tooltip
-		#to add this functional, cause this data can't be transferes via args
-#		if b.args.has('show_data'):
-#			newbuff.get_node("Label").show()
-#			newbuff.get_node("Label").text = str(b.args.show_data)
-		globals.connecttooltip(newbuff, text)
+	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_all_buffs()}
+	animation_node.add_new_data(data)
+
+func process_critical():
+	var data = {node = self, time = globals.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
+	animation_node.add_new_data(data)
+
+#control visuals
+func noq_rebuildbuffs(newbuffs):
+	var oldbuff = 0
+	for b in newbuffs:
+		if buffs.has(b.template_name): oldbuff += 1
+	if oldbuff == buffs.size():
+		for i in newbuffs:
+			if buffs.has(i.template_name): update_buff(i)
+			else: add_buff(i)
+	else:
+		globals.ClearContainer($Buffs)
+		buffs.clear()
+		for i in newbuffs:
+			add_buff(i)
+
+func add_buff(i):
+	var newbuff = globals.DuplicateContainerTemplate($Buffs)
+	var text = i.description
+	newbuff.texture = i.icon
+	buffs.push_back(i.template_name)
+	if i.template.has('bonuseffect'):
+		match i.template.bonuseffect:
+			'barrier':
+				newbuff.get_node("Label").show()
+				newbuff.get_node("Label").text = str(fighter.shield)
+	newbuff.hint_tooltip = text
+
+func update_buff(i):
+	var pos = buffs.find(i.template_name)
+	var newbuff = $Buffs.get_child(pos)
+	var text = i.description
+	newbuff.texture = i.icon
+	buffs.push_back(i.template_name)
+	if i.template.has('bonuseffect'):
+		match i.template.bonuseffect:
+			'barrier':
+				newbuff.get_node("Label").show()
+				newbuff.get_node("Label").text = str(fighter.shield)
+	newbuff.hint_tooltip = text
+
+func update_hp_label(newhp, newhpp):
+	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
+		$hplabel.text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
+	else:
+		$hplabel.text = str(round(newhpp)) + '%%'
+
+func update_mp_label(newmp, newmpp):
+	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
+		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('manamax')))
+	else:
+		$mplabel.text = str(round(newmpp)) + '%%'
 

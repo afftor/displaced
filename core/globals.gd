@@ -55,6 +55,8 @@ var userfolder = 'user://'
 #var audio = load("res://files/scripts/ResourceAudio.gd").new()
 var scenes = {}
 
+var combat_node
+
 var hexcolordict = {
 	red = '#ff0000',
 	yellow = "#ffff00",
@@ -266,7 +268,7 @@ func LoadEvent(name):
 func StartEventScene(name, debug = false, line = 0):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
-	var scene = input_handler.GetEventNode()
+	var scene = input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
@@ -371,7 +373,7 @@ func connectskilltooltip(node, skill, character):
 	node.connect("mouse_entered",self,'showskilltooltip', [skill,node,character])
 
 func showskilltooltip(skill, node, character):
-	var skilltooltip = input_handler.GetSkillTooltip()
+	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
 	var pos = node.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	skilltooltip.set_global_position(pos)
@@ -389,7 +391,7 @@ func connectmaterialtooltip(node, material):
 
 func mattooltip(targetnode, material):
 	var image
-	var node = input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
 	node.showup(targetnode, material)
 
 
@@ -613,7 +615,11 @@ func ItemSelect(targetscript, type, function, requirements = true):
 func CloseSelection(panel):
 	panel.hide()
 
-
+func closeskilltooltip():
+	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) 
+	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
+	skilltooltip.set_process(false)
+	skilltooltip.hide()
 
 func calculatepercent(value1, value2):
 	return value1*100/max(value2,1)
@@ -659,7 +665,7 @@ func QuickSave():
 
 func SaveGame(name):
 	if state.CurEvent != '':
-		state.CurrentLine = input_handler.GetEventNode().CurrentLine
+		state.CurrentLine = input_handler.get_spec_node(input_handler.NODE_EVENT).CurrentLine
 #	approach 1, not compatrible with sigletones + still  need reworking
 #	var savedict = {state = null, heroes = [], items = [], workers = []}
 #	savedict.state = inst2dict(state)
