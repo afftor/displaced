@@ -42,7 +42,7 @@ func SlaveFeedItem(item):
 
 func SlaveRemove(worker):
 	currentworker = worker
-	input_handler.ShowConfirmPanel(self, 'SlaveRemoveConfirm', tr('SLAVEREMOVECONFIRM'))
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SlaveRemoveConfirm', tr('SLAVEREMOVECONFIRM')]) #ShowConfirmPanel(self, 'SlaveRemoveConfirm', tr('SLAVEREMOVECONFIRM'))
 
 func SlaveRemoveConfirm():
 	if currentworker.task != null:
@@ -86,7 +86,7 @@ func ShowTaskInformation(task):
 	$TaskPanel/TaskProgress.value = globals.calculatepercent(task.time,task.threshold)
 
 func StopTask():
-	input_handler.ShowConfirmPanel(self, 'StopTaskConfirm', tr("STOPTASKCONFIRM"))
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'StopTaskConfirm', tr("STOPTASKCONFIRM")])#ShowConfirmPanel(self, 'StopTaskConfirm', tr("STOPTASKCONFIRM"))
 
 func StopTaskConfirm():
 	globals.CurrentScene.stoptask(currenttask)

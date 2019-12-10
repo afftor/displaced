@@ -36,12 +36,7 @@ func apply():
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
 	setup_siblings()
-	buffs.clear()
-	for e in template.buffs:
-		var tmp = Buff.new(id)
-		tmp.createfromtemplate(e)
-		tmp.calculate_args()
-		buffs.push_back(tmp)
+	rebuild_buffs()
 
 func reapply():
 	var obj = get_applied_obj()
@@ -62,13 +57,7 @@ func reapply():
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
 	setup_siblings()
-	
-	buffs.clear()
-	for e in template.buffs:
-		var tmp = Buff.new(id)
-		tmp.createfromtemplate(e)
-		tmp.calculate_args()
-		buffs.push_back(tmp)
+	rebuild_buffs()
 	
 
 func setup_siblings():
@@ -85,14 +74,15 @@ func remove_siblings():
 		var eff = effects_pool.get_effect_by_id(se)
 		eff.remove()
 
+func recheck(): #overriden in condition_static effect, have no meaning in other cases
+	pass
+
 func remove():
 	if !is_applied: return
 	var obj = get_applied_obj()
 	if obj != null:
 		obj.remove_effect(id)
-	for a in atomic:
-		if obj != null: 
-			#tmp.remove_template(obj)
+		for a in atomic:
 			obj.remove_atomic(a)
 	atomic.clear()
 	buffs.clear()
@@ -100,16 +90,29 @@ func remove():
 func get_applied_obj():
 	if applied_char == null:
 		if applied_pos == null: return null
-		applied_char = state.combatparty[applied_pos]
+		applied_char = state.combatparty[applied_pos] 
 	return state.heroes[applied_char]
 
+#func createfromtemplate(buff_t):
+#	if typeof(buff_t) == TYPE_STRING:
+#		template = Effectdata.effect_table[buff_t]
+#	else:
+#		template = buff_t.duplicate()
+#	if template.has('tags'):
+#		tags = template.tags.duplicate()
 func createfromtemplate(buff_t):
 	if typeof(buff_t) == TYPE_STRING:
-		template = Effectdata.effect_table[buff_t]
+		template = Effectdata.effect_table[buff_t].duplicate()
 	else:
 		template = buff_t.duplicate()
 	if template.has('tags'):
 		tags = template.tags.duplicate()
+	if !template.has('sub_effects'):
+		template['sub_effects'] = []
+	if !template.has('buffs'):
+		template['buffs'] = []
+	if !template.has('atomic'):
+		template['atomic'] = []
 
 
 
@@ -160,7 +163,7 @@ func calculate_args():
 
 func get_arg(index):
 	var arg = template.args[index]
-	if arg.has('dynamic'):
+	if arg.has('dynamic') || args[index] == null:
 		match arg.obj:
 			'parent':
 				var par
@@ -206,7 +209,7 @@ func serialize():
 	tmp['atomic'] = atomic
 	tmp['buffs'] = []
 	tmp['app_pos'] = applied_pos
-	tmp['app_char'] = applied_char
+	#tmp['app_char'] = applied_char
 	for b in buffs:
 		tmp['buffs'].push_back(b.serialize())
 	return tmp
@@ -229,3 +232,14 @@ func deserialize(tmp):
 		t.deserialize(b)
 		buffs.push_back(t)
 	pass
+
+func rebuild_buffs():
+	buffs.clear()
+	for e in template.buffs:
+		var tmp = Buff.new(id)
+		tmp.createfromtemplate(e)
+		tmp.calculate_args()
+		buffs.push_back(tmp)
+
+func clear_buffs():
+	buffs.clear()

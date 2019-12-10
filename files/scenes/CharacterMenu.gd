@@ -46,7 +46,7 @@ func open(hero):
 	
 	$Name.text = character.name + ' Level: ' + str(character.level)
 	
-	for i in ['damage','armorpenetration','hitrate','speed','armor', 'mdef','evasion', 'resistfire','resistearth','resistwater','resistair']:
+	for i in ['damage','armorpenetration','hitrate','speed','armor', 'mdef','evasion', ]:#'resistfire','resistearth','resistwater','resistair']:
 		var node = get_node("Main/stats&skills/" + i)
 		var text = Items.stats[i] + ": " + str(character[i])
 		node.text = text
@@ -67,7 +67,8 @@ func unequip(slot):
 		var gear = state.items[character.gear[slot]]
 		character.unequip(gear)
 		globals.disconnectitemtooltip(get_node('Main/Panel/charandgear/' + slot), gear)
-		input_handler.GetItemTooltip().hide()
+		#input_handler.GetItemTooltip().hide()
+		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		open(character)
 
 var classinfo = {

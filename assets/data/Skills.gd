@@ -572,8 +572,8 @@ var skilllist = {
 		allowedtargets = ['enemy'],
 		reqs = [],
 		tags = [],
-		value = [['caster.position']],
-		damagestat = ['taunt'],
+		value = [['caster.id']],
+		damagestat = ['=taunt'],
 		cooldown = 2,
 		manacost = 5,
 
@@ -1146,13 +1146,13 @@ var skilllist = {
 		
 		damagetype = "weapon",
 		skilltype = 'spell',
-		userange = "ranged",
+		userange = "any",#or should it be ranged only?
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		reqs = [],
 		tags = ['damage'],
 		value = [['caster.damage'],['random 5','+5']],
-		damagestat = ['hp', 'mana'],
+		damagestat = ['+damage_hp', '-mana'],
 		cooldown = 0,
 		manacost = 0,
 		casteffects = [],
@@ -1177,7 +1177,7 @@ var skilllist = {
 		
 		damagetype = "earth",
 		skilltype = 'spell',
-		userange = "ranged",
+		userange = "any",#or should it be ranged only?
 		targetpattern = 'all',
 		allowedtargets = ['enemy'],
 		reqs = [],
