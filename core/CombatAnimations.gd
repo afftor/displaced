@@ -297,6 +297,24 @@ func defeat(node, args = null):#stub, for this was not correct in FighterNode
 	input_handler.FadeAnimation(node, 0.5, 0.3)
 	return 0.1
 
+func disable(node, args = null):
+	node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
+	return 0.1
+
+func enable(node, args = null):
+	if node.get_node('Icon').material != null: node.get_node('Icon').material = null
+	node.disabled = false
+	return 0.1
+
+func disappear(node, args = null):
+	var delay = 0.5
+	input_handler.FadeAnimation(node, delay)
+	return delay
+
+func reappear(node, args = null):
+	var delay = 0.5
+	input_handler.UnfadeAnimation(node, delay)
+	return delay
 
 func death_animation(node):
 	var tween = input_handler.GetTweenNode(node)

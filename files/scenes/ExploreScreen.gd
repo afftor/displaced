@@ -104,16 +104,17 @@ func StartCombat(data):
 	$combat.start_combat(enemies, area.category, music)
 	$combat.show()
 
-func makespecificgroup(group):
+func makespecificgroup(group): #to remake
 	var enemies = Enemydata.predeterminatedgroups[group]
 	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
 	for i in enemies.group:
 		combatparty[i] = enemies.group[i]
 	
-	return combatparty
+	var res = [combatparty.duplicate()]
+	return res
 	
 
-func makerandomgroup(enemygroup):
+func makerandomgroup(enemygroup):#to remake
 	var array = []
 	for i in enemygroup.units:
 		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
@@ -161,8 +162,8 @@ func makerandomgroup(enemygroup):
 			i.number -= 1
 	
 	encountercode = enemygroup.code
-	
-	return combatparty
+	var res = [combatparty.duplicate()]
+	return res
 
 func ReturnToVillage():
 	hide()
