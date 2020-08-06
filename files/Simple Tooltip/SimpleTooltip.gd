@@ -11,6 +11,7 @@ func _process(delta):
 
 func _init():
 	set_process(false)
+#warning-ignore:return_value_discarded
 	connect("popup_hide", self, 'cooldown')
 
 func showup(node, text):

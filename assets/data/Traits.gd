@@ -303,6 +303,17 @@ var traitlist = {
 		non_editable = true, #displayed but can not be deactivated
 		effects = []
 	},
+	necro_trait = {
+		code = 'necro_trait',
+		name = '',
+		description = '',
+		icon = load("res://assets/images/traits/firedamagebonus.png"),#for test
+		req_class = ['auto'],
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = false, #displayed but can not be deactivated
+		effects = ['e_tr_necro']
+	},
 	#monsters
 	el_heal = {
 		code = 'el_heal',

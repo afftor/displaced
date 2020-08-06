@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=1]
-[ext_resource path="res://src/FoodConvert.gd" type="Script" id=2]
+[ext_resource path="res://core/FoodConvert.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/universal/arrowleft.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/universal/arrowlefthl.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/universal/arrowright.png" type="Texture" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=9]
+
 
 [node name="FoodConvert" type="TextureRect" index="0"]
 

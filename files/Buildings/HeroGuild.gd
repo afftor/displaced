@@ -4,6 +4,7 @@ var selectedhero
 
 func _ready():
 	globals.AddPanelOpenCloseAnimation($HeroHire)
+#warning-ignore:return_value_discarded
 	$HeroHire/Button.connect('pressed', self, 'hirehero')
 
 func open():
@@ -26,11 +27,11 @@ func selecthero(hero):
 	$HeroHire/hp.text = str(hero.hp) + '/' + str(hero.hpmax)
 	$HeroHire/mana.text = str(hero.mana) + '/' + str(hero.manamax)
 	
-	text += 'Name: ' + hero.name + '\nClass: ' + globals.classes[hero.base].name + '\nPrice: ' + str(hero.price)
+	text += 'Name: ' + hero.name + '\nClass: ' + combatantdata.classlist[hero.base].name + '\nPrice: ' + str(hero.price)
 	$HeroHire/RichTextLabel.bbcode_text = text
 	
 	for i in hero.traits:
-		var trait = globals.traits[i]
+		var trait = Traitdata.traitlist[i]
 		var newlabel = globals.DuplicateContainerTemplate($HeroHire/traits)
 		newlabel.text = trait.name
 		globals.connecttooltip(newlabel,trait.description)
@@ -46,7 +47,7 @@ func hirehero():
 
 func show():
 	state.CurBuild = "HeroGuild"
-	input_handler.emit_signal("BuildingEntered", "HeroGuild");
+	globals.check_signal("BuildingEntered", "HeroGuild");
 	.show();
 	pass
 
