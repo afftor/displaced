@@ -1,53 +1,63 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextScene/TextSystem.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/backgrounds/villagenight.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/sprites/rose.png" type="Texture" id=4]
-[ext_resource path="res://files/SFX/black.png" type="Texture" id=5]
-[ext_resource path="res://files/SFX/white.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/text scene/textfieldpanel.png" type="Texture" id=7]
-[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=8]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/text scene/namepanel.png" type="Texture" id=12]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=13]
-[ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/text scene/portraitpanel.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=18]
-[ext_resource path="res://files/scenes/indexed_button.gd" type="Script" id=19]
-[ext_resource path="res://assets/images/gui/text scene/logpanel.png" type="Texture" id=20]
-[ext_resource path="res://files/scenes/MenuPanel.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/images/sprites/Arron.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/sprites/eyes/arron_eyes1.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/sprites/eyes/arron_eyes2.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/sprites/eyes/arron_eyes3.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/sprites/eyes/arron_eyes4.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/sprites/eyes/arron_eyes5.png" type="Texture" id=9]
+[ext_resource path="res://files/SFX/black.png" type="Texture" id=10]
+[ext_resource path="res://files/SFX/white.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/text scene/textfieldpanel.png" type="Texture" id=12]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=13]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/text scene/namepanel.png" type="Texture" id=17]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=18]
+[ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/text scene/portraitpanel.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=23]
+[ext_resource path="res://files/scenes/indexed_button.gd" type="Script" id=24]
+[ext_resource path="res://assets/images/gui/text scene/logpanel.png" type="Texture" id=25]
+[ext_resource path="res://files/scenes/MenuPanel.tscn" type="PackedScene" id=26]
 
-
-
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 138, 68 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "default",
+"speed": 30.0
+} ]
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 10 )
+texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 138, 68 )
 
 [sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 138, 68 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 11 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 138, 68 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 32
 use_filter = true
-font_data = ExtResource( 13 )
+font_data = ExtResource( 18 )
 
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 20 )
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 25 )
 region_rect = Rect2( 0, 0, 1171, 788 )
 
 [node name="TextSystem" type="Control"]
@@ -70,18 +80,24 @@ margin_bottom = 1080.0
 texture = ExtResource( 4 )
 stretch_mode = 6
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CharImage"]
+position = Vector2( 767, 540 )
+frames = SubResource( 1 )
+frame = 4
+playing = true
+
 [node name="BlackScreen" type="TextureRect" parent="."]
 modulate = Color( 0, 0, 0, 0 )
 margin_right = 1920.0
 margin_bottom = 1080.0
-texture = ExtResource( 5 )
+texture = ExtResource( 10 )
 expand = true
 
 [node name="WhiteScreenGFX" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 1921.0
 margin_bottom = 1080.0
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 expand = true
 
 [node name="Panel" type="TextureRect" parent="."]
@@ -89,7 +105,7 @@ margin_left = 448.0
 margin_top = 849.0
 margin_right = 1718.0
 margin_bottom = 1088.0
-texture = ExtResource( 7 )
+texture = ExtResource( 12 )
 
 [node name="Panel" type="Panel" parent="Panel"]
 self_modulate = Color( 0.421875, 0.410339, 0.410339, 0.425412 )
@@ -103,7 +119,7 @@ margin_left = 35.0
 margin_top = 30.0
 margin_right = 1064.0
 margin_bottom = 212.0
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 
 [node name="Log" type="Button" parent="Panel"]
@@ -111,11 +127,11 @@ margin_left = 1095.0
 margin_top = 32.0
 margin_right = 1233.0
 margin_bottom = 100.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 text = "Log"
 
 [node name="Options" type="Button" parent="Panel"]
@@ -123,11 +139,11 @@ margin_left = 1095.0
 margin_top = 131.0
 margin_right = 1233.0
 margin_bottom = 199.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 text = "Options"
 
 [node name="DisplayName" type="TextureRect" parent="Panel"]
@@ -135,14 +151,14 @@ margin_left = -12.0
 margin_top = -62.0
 margin_right = 441.0
 margin_bottom = 20.0
-texture = ExtResource( 12 )
+texture = ExtResource( 17 )
 
 [node name="Label" type="Label" parent="Panel/DisplayName"]
 margin_left = 104.0
 margin_top = 32.0
 margin_right = 381.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 0.823822, 0.0195313, 1 )
 text = "Arron"
 
@@ -151,7 +167,7 @@ margin_left = -310.0
 margin_top = -164.0
 margin_right = -14.0
 margin_bottom = 201.0
-texture = ExtResource( 14 )
+texture = ExtResource( 19 )
 stretch_mode = 7
 
 [node name="Panel" type="TextureRect" parent="Panel/CharPortrait"]
@@ -159,7 +175,7 @@ margin_left = -19.0
 margin_top = -15.0
 margin_right = 312.0
 margin_bottom = 395.0
-texture = ExtResource( 15 )
+texture = ExtResource( 20 )
 
 [node name="ChoicePanel" type="TextureRect" parent="."]
 visible = false
@@ -181,18 +197,18 @@ margin_right = 555.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 action_mode = 0
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 18 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 23 )
 expand = true
-script = ExtResource( 19 )
+script = ExtResource( 24 )
 
 [node name="Label" type="Label" parent="ChoicePanel/VBoxContainer/Button"]
 margin_left = 36.0
 margin_top = 17.0
 margin_right = 520.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 13 )
 text = "Option"
 align = 1
 valign = 1
@@ -204,14 +220,14 @@ margin_left = 358.0
 margin_top = 30.0
 margin_right = 1529.0
 margin_bottom = 818.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 8 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LogPanel"]
 margin_left = 39.0
 margin_top = 145.0
 margin_right = 1138.0
 margin_bottom = 735.0
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 13 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie dolor et commodo pulvinar. Nam ac nisl quis mauris malesuada commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam semper venenatis elit, eget venenatis velit dictum mattis. Etiam pharetra erat sed dui eleifend, et vehicula nulla faucibus. Pellentesque ut dolor vel augue aliquet tincidunt eu vitae purus. Nullam tristique posuere dolor vel tincidunt. Sed sit amet ante quis lectus fringilla mollis. Quisque ac nisl purus. Nullam gravida pretium nisi. Maecenas imperdiet sed tortor eu interdum.
@@ -233,10 +249,9 @@ Etiam sodales, turpis id finibus tincidunt, urna augue cursus magna, quis rutrum
 
 In aliquam augue tellus, ut aliquam nisi condimentum id. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc eros enim, semper ut condimentum ultrices, placerat et turpis. Proin at felis sed ex malesuada congue. Ut quis feugiat urna, nec sodales arcu. Morbi dignissim massa felis, in varius massa faucibus vitae. Proin ut eleifend felis. Etiam imperdiet velit non dictum consectetur. Maecenas id mattis risus. Cras quis ante mollis, pulvinar eros eu, dapibus dui. Integer massa est, scelerisque at placerat eu, interdum eget urna. Vestibulum nunc justo, tristique vitae eros non, efficitur auctor lorem. Praesent porttitor nibh vitae purus aliquet, quis dignissim lorem laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in arcu sollicitudin, bibendum arcu sed, fringilla nibh. Quisque pulvinar convallis elit quis aliquam."
 
-[node name="MenuPanel" parent="." instance=ExtResource( 21 )]
+[node name="MenuPanel" parent="." instance=ExtResource( 26 )]
 visible = false
 margin_left = 740.0
 margin_top = 160.0
 margin_right = 1106.0
 margin_bottom = 602.0
-

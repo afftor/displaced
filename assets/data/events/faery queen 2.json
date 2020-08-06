@@ -5,6 +5,6 @@
 {"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
 {"effect":"gui","value":"gui_normal"},
 {"effect":"text","portrait":"ErikaNormal","sound":null,"source":"Erika","value":"Okay, I've found it."},
-{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Good. Let's deal with her know. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Good. Let's deal with her now. "},
 {"effect":"stop","value":""}
 ]

@@ -140,7 +140,6 @@ AI_data="*res://assets/data/ai_data.gd"
 
 settings/fps/force_fps=60
 gdscript/warnings/unused_variable=false
-gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 
 [display]

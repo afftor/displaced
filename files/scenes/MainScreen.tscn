@@ -170,7 +170,6 @@ margin_bottom = 141.0
 texture = ExtResource( 13 )
 
 [node name="BlacksmithNode" type="TextureButton" parent="."]
-editor/display_folded = true
 margin_left = 562.0
 margin_top = 406.0
 margin_right = 875.0
