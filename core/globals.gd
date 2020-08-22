@@ -760,6 +760,9 @@ func datetime_comp(a, b):
 
 func get_last_save():
 	var dir = dir_contents(userfolder + 'saves')
+	
+	if dir == null: return
+	
 	var dated_dir = {}
 	var tmp = File.new()
 	for i in dir_contents(userfolder + 'saves'):

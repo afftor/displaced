@@ -98,6 +98,15 @@ var backgrounds = {
 	s_r_2_7 = load("res://assets/images/scenes/RoseCG3-7.png"),
 	}
 
+var anims = {
+	Null = null,
+	e_cg1_1 = load("res://assets/videos/Ember_boobs/EmberCG1-1_idle.ogv"),
+	e_cg1_2 = load("res://assets/videos/Ember_boobs/EmberCG1-2_ruki_input.ogv"),
+	e_cg1_3 = load("res://assets/videos/Ember_boobs/EmberCG1-3_massage.ogv"),
+	e_cg1_4 = load("res://assets/videos/Ember_boobs/EmberCG1-4_Rouz_input.ogv"),
+	e_cg1_5 = load("res://assets/videos/Ember_boobs/EmberCG1-5_rouz_cycle.ogv"),
+	}
+
 var sprites = {
 	empty = null,
 	Arron = load("res://assets/images/sprites/Arron.png"),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextScene/TextSystem.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://files/scenes/indexed_button.gd" type="Script" id=24]
 [ext_resource path="res://assets/images/gui/text scene/logpanel.png" type="Texture" id=25]
 [ext_resource path="res://files/scenes/MenuPanel.tscn" type="PackedScene" id=26]
+[ext_resource path="res://files/TextScene/VideoBunch.gd" type="Script" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -61,10 +62,38 @@ texture = ExtResource( 25 )
 region_rect = Rect2( 0, 0, 1171, 788 )
 
 [node name="TextSystem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="VideoBunch" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="VideoPlayer" parent="VideoBunch"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="VideoPlayer" parent="VideoBunch"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 1920.0
@@ -214,7 +243,6 @@ align = 1
 valign = 1
 
 [node name="LogPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 358.0
 margin_top = 30.0
