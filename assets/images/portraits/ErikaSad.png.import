@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex"
+path="res://.import/ErikaSad.png-743e42835b9c6e8a54cabdb367d2646b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/Rosesad.png"
-dest_files=[ "res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex" ]
+source_file="res://assets/images/portraits/ErikaSad.png"
+dest_files=[ "res://.import/ErikaSad.png-743e42835b9c6e8a54cabdb367d2646b.stex" ]
 
 [params]
 

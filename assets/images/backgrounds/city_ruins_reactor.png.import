@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex"
+path="res://.import/city_ruins_reactor.png-ca819c0fe6f4d5cf2f438632de79bc34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/Rosesad.png"
-dest_files=[ "res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex" ]
+source_file="res://assets/images/backgrounds/city_ruins_reactor.png"
+dest_files=[ "res://.import/city_ruins_reactor.png-ca819c0fe6f4d5cf2f438632de79bc34.stex" ]
 
 [params]
 

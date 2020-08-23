@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex"
+path="res://.import/castle_interior.png-64b77a5bca1cc5f4f1897f652d44f99d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/Rosesad.png"
-dest_files=[ "res://.import/Rosesad.png-86439fb859d8385712711849e0b66628.stex" ]
+source_file="res://assets/images/backgrounds/castle_interior.png"
+dest_files=[ "res://.import/castle_interior.png-64b77a5bca1cc5f4f1897f652d44f99d.stex" ]
 
 [params]
 

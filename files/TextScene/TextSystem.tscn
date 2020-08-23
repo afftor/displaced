@@ -214,7 +214,6 @@ align = 1
 valign = 1
 
 [node name="LogPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 358.0
 margin_top = 30.0
