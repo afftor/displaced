@@ -64,6 +64,8 @@ func process_event(ev):
 					'owner':
 						var obj = get_applied_obj()
 						res = res and obj.process_check(cond.value)
+					'combat':
+						res = res and globals.combat_node.process_check(cond.value)
 			if res:
 				ready = false
 				.clear_buffs()
@@ -104,6 +106,10 @@ func e_apply():
 						var obj = effects_pool.get_effect_by_id(parent)
 						obj.remove_siblings()
 						obj.remove()
+					'tick_parent':
+						var obj = effects_pool.get_effect_by_id(parent)
+						if obj is temp_e_progress or obj is temp_e_simple or obj is temp_e_upgrade:
+							obj.tic_eff()
 			'skill':
 				var obj = self_args['skill']
 				obj.apply_effect(e)
@@ -122,6 +128,14 @@ func e_apply():
 			'parent':
 				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
 				obj.apply_effect(e)
+			'combat':
+				var obj = globals.combat_node
+				if obj != null:
+					match eff.template.execute:
+						'enable_followup':
+							obj.follow_up_flag = true
+						'resurrect_all':
+							obj.res_all(eff.template.value)
 		pass
 	sub_effects.clear()
 	pass

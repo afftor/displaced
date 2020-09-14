@@ -66,21 +66,20 @@ func upgrade():
 	get_applied_obj().apply_effect(id)
 	pass
 
+func tick_eff():
+	remains -= 1
+	for b in buffs:
+		b.calculate_args()
+	if remains == 0:
+		upgrade()
+
 func process_event(ev):
 	if !is_applied: return
-	var res = variables.TE_RES_NOACT
 	if ev == tick_event:
-		res = variables.TE_RES_TICK
-		remains -= 1
-		for b in buffs:
-			b.calculate_args()
-		if remains == 0:
-			upgrade()
-			res = variables.TE_RES_UPGRADE
+		tick_eff()
 	if ev == rem_event:
 		remove()
-		res = variables.TE_RES_REMOVE
-	return res
+
 
 func serialize():
 	var tmp = .serialize()

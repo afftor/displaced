@@ -58,16 +58,18 @@ func get_from_template(attr, val_rel = false):
 		for i in range(long_value.size()): tres.push_back(get(attr))
 		set(attr, tres)
 
-func createfromskill(s_code):
-	template = Skillsdata.skilllist[s_code]
+func createfromskill(s_code, i_caster):
+	template = Skillsdata.skilllist[s_code].dupliacte()
 	code = s_code
 	skilltype = template.skilltype
 	tags = template.tags.duplicate()
 	manacost = template.manacost
 	get_from_template('userange')
 	get_from_template('targetpattern')
-	get_from_template('damage_type')
-
+	get_from_template('damagetype')
+	if typeof(damagetype) == TYPE_ARRAY:
+		damagetype = input_handler.random_element(damagetype)
+	get_from_template('keep_target')
 	
 	if typeof(template.value) == TYPE_ARRAY: 
 		if typeof(template.value[0]) == TYPE_ARRAY:
@@ -96,6 +98,7 @@ func createfromskill(s_code):
 	if template.has('is_drain'):
 		is_drain = true
 	
+	setup_caster(i_caster)
 #	if template.keys().has('chance'):
 #		chance = template.chance
 #	else:
@@ -142,6 +145,10 @@ func setup_final():
 		evade = template.evade
 	if template.keys().has('armor_p'):
 		armor_p = template['armor_p']
+	if template.has('custom_duration'):
+		if typeof(template.custom_duration) == TYPE_ARRAY:
+			tempdur = input_handler.calculate_number_from_string_array(template.custom_duration, caster, target)
+		else: tempdur = template.custom_duration
 
 func setup_effects_final():
 	process_value = value[0]
@@ -233,15 +240,19 @@ func resolve_value(check_m):
 
 func calculate_dmg():
 	if damagetype == 'weapon':
-		damagesrc = variables.S_PHYS
-	elif damagetype == 'fire':
-		damagesrc = variables.S_FIRE
-	elif damagetype == 'water':
-		damagesrc = variables.S_WATER
-	elif damagetype == 'air':
-		damagesrc = variables.S_AIR
-	elif damagetype == 'earth':
-		damagesrc = variables.S_EARTH
+		damagetype = caster.get_weapon_damagetype()
+#	if typeof(damagetype) == TYPE_ARRAY:
+#		damagetype = input_handler.random_element(damagetype)
+#
+#		damagesrc = variables.S_PHYS
+#	elif damagetype == 'fire':
+#		damagesrc = variables.S_FIRE
+#	elif damagetype == 'water':
+#		damagesrc = variables.S_WATER
+#	elif damagetype == 'air':
+#		damagesrc = variables.S_AIR
+#	elif damagetype == 'earth':
+#		damagesrc = variables.S_EARTH
 	if hit_res == variables.RES_CRIT:
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
@@ -255,8 +266,8 @@ func calculate_dmg():
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
 				 value[i] *= (float(100 - reduction)/100.0)
-	if damagetype in variables.resistlist:
-		for i in range(value.size()): 
-			if damagestat[i] in variables.dmg_mod_list:
-				 value[i] *= ((100 - target.get_stat('resists')[damagetype])/100.0)
+#	if damagetype in variables.resistlist:
+#		for i in range(value.size()): 
+#			if damagestat[i] in variables.dmg_mod_list:
+#				 value[i] *= ((100 - target.get_stat('resists')[damagetype])/100.0)
 	for v in value: v = round(v)

@@ -58,27 +58,35 @@ func apply():
 					else:
 						print('error in template %s' % template_name)
 						remains = -1
-		else:
-			remains = template.duration
+		elif template.duration < 0:
+			var par
+			if typeof(parent) == TYPE_STRING:
+				par = effects_pool.get_effect_by_id(parent)
+			else:
+				par = parent
+			if par != null:
+				remains = int(par.get_arg(-template.duration))
+			else:
+				print('error in template %s' % template_name)
+				remains = -1
+		else: remains = template.duration
 	var obj = get_applied_obj()
 	for eff in sub_effects:
 		obj.apply_effect(eff)
 
+func tick_eff():
+	remains -= 1
+	for b in buffs:
+		b.calculate_args()
+	if remains == 0:
+		remove()
+
 func process_event(ev):
 	if !is_applied: return
-	var res = variables.TE_RES_NOACT
 	if tick_event.has(ev):
-		res = variables.TE_RES_TICK
-		remains -= 1
-		for b in buffs:
-			b.calculate_args()
-		if remains == 0:
-			remove()
-			res = variables.TE_RES_REMOVE
+		tick_eff()
 	if rem_event.has(ev):
 		remove()
-		res = variables.TE_RES_REMOVE
-	return res
 
 func reset_duration():
 	soft_remove()

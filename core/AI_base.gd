@@ -117,8 +117,15 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 						target_array.push_back(target_dir)
 		skill_targets[s_n] = target_array
 
+func if_has_target(s_name, t_pos):
+	for t in skill_targets[s_name]:
+		if t.position == t_pos: return true
+	return false
+
 func _get_weight_for_skill(s_name):
 	var res = 0
+	var t_skill = Skillsdata.skilllist[s_name]
+	if !app_obj.can_use_skill(t_skill): return 0
 	#check if skill is in cooldown
 	if app_obj.cooldowns.has(s_name): return res
 	#no targets check
@@ -127,7 +134,7 @@ func _get_weight_for_skill(s_name):
 	if ai_data[current_state].choices.size() == 0:
 		return 1.0
 	#calculate base weight for current state
-	var t_skill = Skillsdata.skilllist[s_name]
+
 	for tag in ai_data[current_state].choices:
 		if t_skill.tags.has(tag): res += ai_data[current_state].choices[tag]
 	#correct weight for skills with only bad-quality targets
@@ -135,6 +142,9 @@ func _get_weight_for_skill(s_name):
 	for target in skill_targets[s_name]: tmp = max(target.quality, tmp)
 	tmp = clamp(tmp, 0.3, 0.75)*2.0 - 0.5
 	res *= tmp
+	if app_obj.taunt != null:
+		var taunt_t = state.heroes[app_obj.taunt]
+		if !if_has_target(s_name, taunt_t.position): res = 0
 	return res
 
 func _get_action(hide_ignore = false):
@@ -142,14 +152,26 @@ func _get_action(hide_ignore = false):
 	if !hide_ignore: _set_next_state()
 	var actions = []
 	for s_n in app_obj.skills:
-		actions.push_back([s_n, _get_weight_for_skill(s_n)])
+		var tmp = _get_weight_for_skill(s_n)
+		if tmp > 0: actions.push_back([s_n, tmp])
 	if actions.size() == 0:
-		print ('ERROR IN AI TEMPLATE')
+		if app_obj.taunt != null:
+			print ("can't attack taunt")
+			app_obj.taunt = null
+			return _get_action(hide_ignore)
+		else:
+			print ('ERROR IN AI TEMPLATE')
 	var res = input_handler.weightedrandom(actions)
 	return res
 
 func _get_target(s_name):#for chosen with _get_action() func
 	var targets = []
+	if app_obj.taunt != null:
+		var taunt_t = state.heroes[app_obj.taunt]
+		return taunt_t.position
 	for t in skill_targets[s_name]:
 		targets.push_back([t.target, t.quality])
 	return input_handler.weightedrandom(targets)
+
+func get_spec_data():
+	return 0

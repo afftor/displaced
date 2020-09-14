@@ -37,8 +37,9 @@ var speed = 0
 var critchance = 5
 var critmod = 1.5
 var resists = {} setget ,get_res
+var status_resists = {} setget ,get_s_res
 var shield = 0 setget set_shield;
-var shieldtype = variables.S_FULL setget set_shield_t;
+#var shieldtype = variables.S_FULL setget set_shield_t;
 
 var flavor
 
@@ -87,6 +88,7 @@ var bonuses = {}
 
 #ai
 var taunt = null
+var ai_spec setget ,get_spec_data
 
 
 #out of combat regen stats
@@ -105,10 +107,24 @@ func get_stat(statname):
 #		res = get(statname) + get(statname+"_bonus")
 	return res
 
+func get_spec_data():
+	if ai == null: return null
+	return ai.get_spec_data()
+
+func get_weapon_damagetype():
+	var res = 'bludgeon' #or another type for unarmed attacks
+	var wid = gear.rhand
+	if wid != null:
+		var tempw = state.items[wid]
+		var t = tempw.get_damagetype()
+		if t != null: res = t
+	return res
+
 func add_stat_bonuses(ls:Dictionary):
 	if variables.new_stat_bonuses_syntax:
 		for rec in ls:
 			add_bonus(rec, ls[rec])
+		recheck_effect_tag('recheck_stats')
 	else:
 		for rec in ls:
 			if (rec as String).begins_with('resist') :
@@ -127,6 +143,7 @@ func remove_stat_bonuses(ls:Dictionary):
 	if variables.new_stat_bonuses_syntax:
 		for rec in ls:
 			add_bonus(rec, ls[rec], true)
+		recheck_effect_tag('recheck_stats')
 	else:
 		for rec in ls:
 			if (rec as String).begins_with('resist'):
@@ -152,7 +169,7 @@ func add_bonus(b_rec:String, value, revert = false):
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
-	recheck_effect_tag('recheck_stats')
+	
 
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -160,6 +177,7 @@ func add_stat(statname, value, revert = false):
 		else: set(statname, get(statname) + value)
 	else:
 		add_bonus(statname+'_add', value, revert)
+	recheck_effect_tag('recheck_stats')
 
 func mul_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -175,6 +193,7 @@ func mul_stat(statname, value, revert = false):
 		else:
 			if revert: print('error bonus not found')
 			else: bonuses[statname + '_mul'] = value
+	recheck_effect_tag('recheck_stats')
 
 func add_part_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -182,6 +201,7 @@ func add_part_stat(statname, value, revert = false):
 		else: set(statname, get(statname) * (1.0 + value))
 	else:
 		add_bonus(statname+'_mul', value, revert)
+	recheck_effect_tag('recheck_stats')
 
 #confirmed getters
 func get_res():
@@ -191,6 +211,12 @@ func get_res():
 		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
 	return res
 
+func get_s_res():
+	var res = status_resists.duplicate()
+	for r in variables.status_list:
+		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
+		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+	return res
 
 func regen_tick(delta):
 	
@@ -216,11 +242,13 @@ func set_shield(value):
 	shield = value;
 	if displaynode != null:
 		displaynode.update_shield()
+	recheck_effect_tag('recheck_stats')
 
-func set_shield_t(value):
-	shieldtype = value;
-	if displaynode != null:
-		displaynode.update_shield()
+#func set_shield_t(value):
+#	shieldtype = value;
+#	if displaynode != null:
+#		displaynode.update_shield()
+#	recheck_effect_tag('recheck_stats')
 
 func damage_set(value):
 	damage = value
@@ -244,9 +272,15 @@ func hpmod_set(value):
 	set('hp', (hppercent * hpmax()) / 100)
 
 func hp_set(value):
-	hp = clamp(round(value), 0, hpmax())
+	if has_status('soulprot') or (hppercent > 99 and base == 'bomber'):
+		hp = clamp(round(value), 1, hpmax())
+	else:
+		hp = clamp(round(value), 0, hpmax())
 	if displaynode != null:
 		displaynode.update_hp()
+	if hp <= 0:
+	#trigger death triggers
+		process_event(variables.TR_DEATH)
 	hppercent = (hp*100)/hpmax()
 
 func hp_max_set(value):
@@ -284,17 +318,24 @@ func mdef_set(value):
 	mdef = value
 
 func a_mana_set(value):
-	alt_mana = clamp(round(value), 0, 3) #hardcoded for necromancer
-	if traits.keys().has('necro_trait') and traits['necro_trait']:
-		for e in find_eff_by_trait('necro_trait'):
-			var tmp = effects_pool.get_effect_by_id(e)
-			tmp.reapply()
-			if value <= 0:
-				for b in tmp.buffs:
-					b.set_limit(0)
-			else:
-				for b in tmp.buffs:
-					b.set_limit(1)
+	#hardcoded for rilu
+	if value > alt_mana:
+		if cooldowns.has('soul_prot') and process_check({type = 'gear_level', slot = 'lhand', level = 4, op = 'gte'}):
+			var rnd = globals.rng.randf()
+			if rnd < 0.25: 
+				cooldowns['soul_prot'] -= 1
+				if cooldowns['soul_prot'] == 0: cooldowns.erase('soul_prot') 
+	alt_mana = clamp(round(value), 0, 5) 
+#	if traits.keys().has('necro_trait') and traits['necro_trait']:
+#		for e in find_eff_by_trait('necro_trait'):
+#			var tmp = effects_pool.get_effect_by_id(e)
+#			tmp.reapply()
+#			if value <= 0:
+#				for b in tmp.buffs:
+#					b.set_limit(0)
+#			else:
+#				for b in tmp.buffs:
+#					b.set_limit(1)
 		
 
 func armor_get():
@@ -401,6 +442,16 @@ func add_trait(trait_code):
 	if !can_acq_trait(trait_code): return
 	traits[trait_code] = false
 
+
+func tick_cooldowns():
+	var cooldowncleararray = []
+	for k in cooldowns:
+		cooldowns[k] -= 1
+		if cooldowns[k] <= 0:
+			cooldowncleararray.append(k)
+	for k in cooldowncleararray:
+		cooldowns.erase(k)
+
 #func clear_oneshot():
 #	for e in oneshot_effects:
 #		remove_effect(e, 'once')
@@ -443,6 +494,8 @@ func apply_atomic(template):
 			globals.emit_signal(template.value)
 		'remove_effect':
 			remove_temp_effect_tag(template.value)
+		'remove_all_effects':
+			remove_all_effect_tag(template.value)
 		'add_trait':
 			add_trait(template.trait)
 		'event':
@@ -454,7 +507,7 @@ func apply_atomic(template):
 			process_event(variables.TR_RES)
 		'use_combat_skill':
 			if globals.combat_node == null: return
-			globals.combat_node.use_skill(template.value, self, null)
+			globals.combat_node.use_skill(template.skill, self, null)
 #		'add_counter':
 #			if counters.size() <= template.index + 1:
 #				counters.resize(template.index + 1)
@@ -463,8 +516,13 @@ func apply_atomic(template):
 #				counters[template.index] += template.value
 		'add_skill':
 			skills.push_back(template.skill)
+		'remove_skill':
+			skills.erase(template.skill)
+			cooldowns.erase(template.skill)
 		'sfx':
 			play_sfx(template.value)
+		'tick_cd':
+			tick_cooldowns()
 
 
 func remove_atomic(template):
@@ -480,9 +538,11 @@ func remove_atomic(template):
 		'bonus':
 			if bonuses.has(template.bonusname): bonuses[template.bonusname] -= template.value
 			else: print('error bonus not found')
-		'add_combat_skill':
+		'add_skill':
 			skills.erase(template.skill)
 			cooldowns.erase(template.skill)
+		'remove_skill':
+			skills.push_back(template.skill)
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -523,8 +583,24 @@ func find_eff_by_item(item_id):
 				res.push_back(e)
 	return res
 
+func check_status_resist(eff):
+	for s in variables.status_list:
+		if !eff.tags.has(s): continue
+		var res = get_stat('status_resists')[s]
+		var roll = globals.rng.randi_range(0, 99)
+		if roll < res: return true
+	return false
+
 func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
+	if check_status_resist(eff): 
+		if globals.combat_node != null:
+			globals.combat_node.combatlogadd("\n%s resists %s." % [get_stat('name'), eff.template.name]) 
+			play_sfx('resist')
+		return
+	if globals.combat_node != null:
+		globals.combat_node.combatlogadd("\n%s is afflicted by %s." % [get_stat('name'), eff.template.name]) 
+
 	var eff_n = eff.template.name
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
@@ -563,6 +639,7 @@ func set_position(new_pos):
 	for e in area_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove_pos(position)
+	recheck_effect_tag('recheck_stats')
 	
 	position = new_pos
 	#reapply own area effects
@@ -619,13 +696,16 @@ func remove_temp_effect_tag(eff_tag):#function for nonn-direct temps removing, l
 	if tmp.size() == 0: return
 	var i = globals.rng.randi_range(0, tmp.size()-1)
 	remove_temp_effect(tmp[i])
-	pass
+
+func remove_all_effect_tag(eff_tag):#function for nonn-direct temps removing, like heal or dispel
+	var tmp = find_temp_effect_tag(eff_tag)
+	for eff in tmp:
+		remove_temp_effect(eff)
 
 func clean_effects():#clean effects before deleting character
 	for e in temp_effects + static_effects + triggered_effects + own_area_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
-	pass
 
 func process_event(ev, skill = null):
 	for e in temp_effects:
@@ -663,13 +743,16 @@ func createfromenemy(enemy):
 		for t in template.traits:
 			traits[t] = false;
 			activate_trait(t);
-	ai = ai_base.new()
 	if !template.has('ai'): template.ai = {}
-	if template.has('full_ai'):
-		ai.set_simple_ai(template.ai)
+	if template.ai is ai_base:
+		ai = template.ai
 	else:
-		#need check for hard difficulty
-		fill_ai(template.ai)
+		ai = ai_base.new()
+		if template.has('full_ai'):
+			ai.set_simple_ai(template.ai)
+		else:
+			#need check for hard difficulty
+			fill_ai(template.ai)
 	ai.app_obj = self
 
 
@@ -789,8 +872,11 @@ func hitchance(target):
 
 func deal_damage(value, source):
 	var tmp = hp
+	var res = get_stat('resists')
 	value = round(value);
-	if (shield > 0) and ((int(shieldtype) & int(source)) != 0):
+	value *= 1 - res['damage']/100.0
+	if variables.resistlist.has(source): value *= 1 - res[source]/100.0
+	if (shield > 0):
 		self.shield -= value
 		if shield < 0:
 			self.hp = hp + shield
@@ -826,19 +912,19 @@ func stat_update(stat, value):
 	set(stat, value)
 	if tmp != null: tmp = get(stat) - tmp
 	else:  tmp = get(stat)
+	recheck_effect_tag('recheck_stats')
 	return tmp
 
 func death():
 	#remove own area effects
 	for e in own_area_effects:
 		remove_area_effect(e)
-	#trigger death triggers
-	process_event(variables.TR_DEATH)
+
 	defeated = true
 	hp = 0
 	if displaynode != null:
 		displaynode.defeat()
-	
+
 
 func can_act():
 	var res = true
@@ -846,6 +932,23 @@ func can_act():
 		var obj = effects_pool.get_effect_by_id(e)
 		if obj.template.has('disable'):
 			res = false
+	return res
+
+func can_use_skill(skill):
+	if mana < skill.manacost: return false
+	if cooldowns.has(skill.code): return false
+	if has_status('disarm') and skill.skilltype == 'skill' and !skill.tags.has('default'): return false
+	if has_status('silence') and skill.skilltype == 'spell' and !skill.tags.has('default'): return false
+	return true
+
+func has_status(status):
+	var res = false
+	for e in static_effects + temp_effects + triggered_effects:
+		var obj = effects_pool.get_effect_by_id(e)
+		if obj.template.has(status):
+			res = true
+		if obj.tags.has(status):
+			res = true
 	return res
 
 func portrait():
@@ -912,6 +1015,19 @@ func process_check(check):
 		return res
 	else: return input_handler.requirementcombatantcheck(check, self)
 	pass
+
+func gear_check(slot, level, op):
+#	var tmp = gear[slot]
+	var tmp = gear.rhand
+	if  tmp == null: return false
+	match op:
+		'eq': return state.items[tmp].get_set_level(slot) == level
+		'neq': return state.items[tmp].get_set_level(slot) != level
+		'gt': return state.items[tmp].get_set_level(slot) > level
+		'gte': return state.items[tmp].get_set_level(slot) >= level
+		'lt': return state.items[tmp].get_set_level(slot) < level
+		'lte': return state.items[tmp].get_set_level(slot) <= level
+
 
 func get_all_buffs():
 	var res = {}

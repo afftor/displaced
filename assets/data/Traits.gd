@@ -280,6 +280,18 @@ var traitlist = {
 		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_firefist']
 	},
+	#characters
+	rose = {
+		code = 'rose',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = ['auto'],
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = ['e_tr_rose']
+	},
 	#class passives
 	arch_trait = {
 		code = 'arch_trait',
