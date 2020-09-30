@@ -62,8 +62,10 @@ func apply():
 
 func upgrade():
 	remove()
-	createfromtemplate(template.next_level)
-	get_applied_obj().apply_effect(id)
+#	createfromtemplate(template.next_level)
+	var tmp = effects_pool.e_createfromtemplate(template.next_level, id)
+#	get_applied_obj().apply_effect(id)
+	get_applied_obj().apply_effect(tmp.id)
 	pass
 
 func tick_eff():
@@ -75,9 +77,9 @@ func tick_eff():
 
 func process_event(ev):
 	if !is_applied: return
-	if ev == tick_event:
+	if tick_event.has(ev):
 		tick_eff()
-	if ev == rem_event:
+	if rem_event.has(ev):
 		remove()
 
 

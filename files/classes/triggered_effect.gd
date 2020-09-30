@@ -109,7 +109,7 @@ func e_apply():
 					'tick_parent':
 						var obj = effects_pool.get_effect_by_id(parent)
 						if obj is temp_e_progress or obj is temp_e_simple or obj is temp_e_upgrade:
-							obj.tic_eff()
+							obj.tick_eff()
 			'skill':
 				var obj = self_args['skill']
 				obj.apply_effect(e)

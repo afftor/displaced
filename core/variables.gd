@@ -34,7 +34,7 @@ var status_list = ['burn', 'stun', 'chill', 'negative']
 var ai_setup = 'off' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 var new_stat_bonuses_syntax = false
 #combat constants
-var dmg_mod_list = ['hp', 'mana']
+var dmg_mod_list = ['hp', 'mana', '+damage_hp', '-damage_hp']
 const playerparty = [1, 2, 3]
 const enemyparty = [4, 5, 6, 7, 8, 9]
 const rows = {

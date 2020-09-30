@@ -33,7 +33,8 @@ var summons = []
 var activeaction
 var activeitem
 var activecharacter
-var charselect = true
+var charselect = true 
+
 
 var follow_up_skill = null
 var follow_up_flag = false
@@ -63,14 +64,16 @@ onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Pane
 
 #player party should be placed onto 1-3 positions
 
-var testenemygroup = {1 : 'elvenrat', 5 : 'elvenrat', 6 : 'elvenrat'}
-var testplayergroup = {4 : 'elvenrat', 5 : 'elvenrat', 6 : 'elvenrat'}
 
 var eot = true
 var playeractions
 var nextenemy = 7
 var curstage = 0
 var defeated := []
+
+var q_skills = []
+
+enum {FIN_NO, FIN_STAGE, FIN_VIC, FIN_LOOSE}
 
 func _ready():
 	for i in range(1,10):
@@ -92,6 +95,14 @@ func cheatvictory():
 func _process(delta):
 	pass
 
+func test_combat():
+	for ch in ['rilu', 'ember', 'iola']:
+		combatantdata.MakeCharacterFromData(ch)
+	for i in range(state.heroes.keys().size()):
+		state.combatparty[i+1] = state.heroes.keys()[i]
+	start_combat([{1:'bomber'}, {2: 'bomber'}], 'cave')
+#	start_combat([{1:'elvenrat',2:'elvenrat',
+#	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}], 'cave')
 
 func start_combat(newenemygroup, background, music = 'combattheme'):
 	globals.combat_node = self
@@ -117,7 +128,7 @@ func start_combat(newenemygroup, background, music = 'combattheme'):
 		if state.combatparty[i] == null: continue
 		var p = state.heroes[state.combatparty[i]]
 		p.process_event(variables.TR_COMBAT_S)
-		p.displaynode.rebuildbuffs()
+		p.rebuildbuffs()
 	input_handler.ShowGameTip('aftercombat')
 	newturn()
 	call_deferred('select_actor')
@@ -130,7 +141,7 @@ func FinishCombat():
 			battlefield[i].displaynode.queue_free()
 			battlefield[i].displaynode = null
 			battlefield[i] = null
-	for i in range(7,13):
+	for i in range(4,10):
 		if state.combatparty[i] == null:continue
 #warning-ignore:return_value_discarded
 		state.heroes.erase(state.combatparty[i])
@@ -149,20 +160,29 @@ func select_actor():
 	ClearSkillPanel()
 	ClearItemPanel()
 	checkdeaths()
-	if checkwinlose() == true:
+	var f = checkwinlose()
+	if f == FIN_VIC or f == FIN_LOOSE:
 		return
-	charselect = false
+	self.charselect = false
 	while battlefield.has(nextenemy) and battlefield[nextenemy] == null:
 		nextenemy += 1
-	if nextenemy > 12:
+	if f == FIN_STAGE :
+		turns += 1
+		curstage += 1
+		combatlogadd("\n" + " Wave %d was cleared." % curstage)
+		combatlogadd("\n" + "New wave!")
+		buildenemygroup(enemygroup_full[curstage])
 		newturn()
+	elif nextenemy > 9: 
+		newturn()
+	
 	
 	if playeractions > 0:
 		allowaction = true
 		turns += 1
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		charselect = true
+		self.charselect = true
 	else:
 		enemy_turn(nextenemy)
 
@@ -176,10 +196,12 @@ func get_player_char_number():
 
 func newturn():
 	playeractions = get_player_char_number()
-	nextenemy = 7
-	for i in playergroup.values() + enemygroup.values():
+	nextenemy = 4
+#	for i in playergroup.values() + enemygroup.values():
+	for i in state.heroes.values():
+		if i.defeated: continue
 		i.process_event(variables.TR_TURN_S)
-		i.displaynode.rebuildbuffs()
+		i.rebuildbuffs()
 		i.displaynode.process_enable()
 		i.tick_cooldowns()
 
@@ -188,15 +210,16 @@ func advance_frontrow():
 		if battlefield[pos] == null: continue
 		if enemygroup[pos] == null : continue
 		enemygroup[pos - 3] = enemygroup[pos]
-		enemygroup[pos] = null
+#		enemygroup[pos] = null
+		enemygroup.erase(pos)
 	for i in range(6, 10):
 		if battlefield[i] == null: continue
 		#battlefield[i] = enemygroup[i]
 		#make_fighter_panel(battlefield[i], i, false)
 		battlefield[i].displaynode.disappear()
-	turns += 1
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
 	for i in range(6, 10):
 		if battlefield[i] == null: continue
 		battlefield[i].displaynode.queue_free()
@@ -204,11 +227,12 @@ func advance_frontrow():
 	for i in range(4, 7):
 		if !enemygroup.has(i): continue
 		battlefield[i] = enemygroup[i]
+		battlefield[i].position = i
 		make_fighter_panel(battlefield[i], i, false)
 		battlefield[i].displaynode.appear()
-	turns += 1
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
 	#advance_backrow()
 
 func advance_backrow():#not used for now
@@ -222,6 +246,7 @@ func advance_backrow():#not used for now
 	enemygroup.pop_back()
 	for i in range(6, 10):
 		battlefield[i] = enemygroup[i]
+		battlefield[i].position = i
 		make_fighter_panel(battlefield[i], i, false)
 		battlefield[i].displaynode.appear()
 	turns += 1
@@ -272,26 +297,30 @@ func checkwinlose():
 			continue
 		if battlefield[i].defeated == true:
 			continue
-		if i in range(1,7):
+		if i in range(1,4):
 			playergroupcounter += 1
 		else:
 			enemygroupcounter += 1
 	if playergroupcounter <= 0:
 		defeat()
-		return true
+		return FIN_LOOSE
 	elif enemygroupcounter <= 0:
-		curstage += 1
-		combatlogadd("\n" + " Wave %d was cleared." % curstage)
-		if curstage < enemygroup.size():
-			combatlogadd("\n" + "New wave!")
-			buildenemygroup(enemygroup_full[curstage])
-			return false
+#		curstage += 1
+#		turns += 1
+#		combatlogadd("\n" + " Wave %d was cleared." % (curstage + 1))
+		if curstage + 1 < enemygroup_full.size():
+#			combatlogadd("\n" + "New wave!")
+#			buildenemygroup(enemygroup_full[curstage])
+			return FIN_STAGE
 		victory()
-		return true
+		return FIN_VIC
+	return FIN_NO
 
 var rewardsdict
 
 func victory():
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
@@ -402,14 +431,14 @@ func player_turn(pos):
 	var selected_character = playergroup[pos]
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
-	selected_character.displaynode.rebuildbuffs()
+	selected_character.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	
 	if !selected_character.can_act():
 		selected_character.process_event(variables.TR_TURN_F)
-		selected_character.displaynode.rebuildbuffs()
+		selected_character.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	allowaction = true
@@ -461,7 +490,7 @@ func get_enemy_targets_melee(fighter, hide_ignore = false):
 	return res
 
 func UpdateSkillTargets(caster, glow_skip = false):
-	var skill = Skillsdata.patch_skill(activeaction, activecharacter)#Skillsdata.skilllist[activeaction]
+	var skill = Skillsdata.patch_skill(activeaction, caster)#Skillsdata.skilllist[activeaction]
 	var fighter = caster
 	var targetgroups = skill.allowedtargets
 	var targetpattern = skill.targetpattern
@@ -522,7 +551,7 @@ func CheckMeleeRange(group, hide_ignore = false): #Check if group front row is s
 	#reqires adding hide checks
 	match group:
 		'enemy':
-			for pos in range(7,10):
+			for pos in range(4,7):
 				if battlefield[pos] == null:continue
 				var tchar = battlefield[pos]
 				if tchar.defeated == true: continue
@@ -544,7 +573,7 @@ func can_be_taunted(caster, target):
 			if target.position < 4: return true
 			if !CheckMeleeRange('ally'): return true
 		'enemy':
-			if target.position < 10: return true
+			if target.position < 7: return true
 			if !CheckMeleeRange('enemy'): return true
 	#var s_code = caster.get_skill_by_tag('default')
 	var skill = Skillsdata.patch_skill('attack', activecharacter)#Skillsdata.skilllist['attack']
@@ -556,13 +585,13 @@ func enemy_turn(pos):
 	var fighter = enemygroup[pos]
 	#fighter.update_timers()
 	fighter.process_event(variables.TR_TURN_GET)
-	fighter.displaynode.rebuildbuffs()
+	fighter.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	if !fighter.can_act():
 		#combatlogadd("%s cannot act" % fighter.name)
 		fighter.process_event(variables.TR_TURN_F)
-		fighter.displaynode.rebuildbuffs()
+		fighter.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	#Selecting active skill
@@ -576,7 +605,8 @@ func enemy_turn(pos):
 		castskill = fighter.ai._get_action(true)
 		target = fighter.ai._get_target(castskill)
 	if target == null:
-		checkwinlose()
+		if checkwinlose() == FIN_NO: 
+			print ('error getting targets')
 		return
 	#target = battlefield[target]
 	
@@ -756,7 +786,7 @@ func FighterPress(pos):
 		if pos > 3: return
 		if battlefield[pos] == null: return
 		if battlefield[pos].displaynode.disabled: return
-		charselect = false
+		self.charselect = false
 		player_turn(pos)
 		return
 	if (!allowedtargets.enemy.has(pos) && !allowedtargets.ally.has(pos)):
@@ -769,11 +799,11 @@ func FighterPress(pos):
 
 func buildenemygroup(group):
 	for i in range(4,7):
-		if group[i] != null:
+		if group.has(i) and group[i] != null:
 			group[i+3] = group[i]
 		group.erase(i)
 	for i in range(1,4):
-		if group[i] != null:
+		if group.has(i) and group[i] != null:
 			group[i+3] = group[i]
 		group.erase(i)
 
@@ -787,14 +817,14 @@ func buildenemygroup(group):
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)
 		#new part for gamestate 
-		state.heroes[enemygroup[i].id] = enemygroup[i]
+#		state.heroes[enemygroup[i].id] = enemygroup[i]
 		state.combatparty[i] = enemygroup[i].id
 		
 
 func buildplayergroup(group):
 	var newgroup = {}
 	for i in group:
-		if i > 6: break
+		if i > 3: break
 		if group[i] == null:
 			continue
 		var fighter = state.heroes[group[i]]
@@ -830,7 +860,7 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 	var change = false
 	#var skill = Skillsdata.skilllist[s_code]
 	if target == null: change = true #forced change
-	elif target.defeated or target.hp <= 0: change = true #forced change. or not.
+#	elif target.defeated or target.hp <= 0: change = true #forced change. or not. nvn error
 	elif skill.keep_target == variables.TARGET_NOKEEP: change = true #intentional change
 	elif skill.keep_target == variables.TARGET_KEEPFIRST: skill.keep_target = variables.TARGET_NOKEEP
 	elif skill.keep_target == variables.TARGET_MOVEFIRST: 
@@ -841,28 +871,28 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 	match skill.next_target:
 		variables.NT_ANY: 
 			var avtargets = get_enemy_targets_all(caster)
-			return input_handler.random_element(avtargets)
+			return input_handler.random_element(avtargets).position
 		variables.NT_ANY_NOREPEAT: 
 			var avtargets = get_enemy_targets_all(caster)
 			avtargets.erase(target)
-			return input_handler.random_element(avtargets)
+			return input_handler.random_element(avtargets).position
 		variables.NT_MELEE:
 			var avtargets = get_enemy_targets_melee(caster)
-			return input_handler.random_element(avtargets)
+			return input_handler.random_element(avtargets).position
 		variables.NT_WEAK:
 			var avtargets = get_enemy_targets_all(caster)
 			if avtargets.size() == 0: return null
 			var t = 0
 			for i in range(avtargets.size()):
 				if avtargets[i].hp < avtargets[t].hp: t = i
-			return avtargets[t]
+			return avtargets[t].position
 		variables.NT_WEAK_MELEE:
 			var avtargets = get_enemy_targets_melee(caster)
 			if avtargets.size() == 0: return null
 			var t = 0
 			for i in range(avtargets.size()):
 				if avtargets[i].hp < avtargets[t].hp: t = i
-			return avtargets[t]
+			return avtargets[t].position
 		variables.NT_BACK:
 			if target > 6: return null
 			else: return target + 3
@@ -870,16 +900,17 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 			return caster.position
 
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
+	turns += 1
 	var target = battlefield[target_pos]
 	if activeaction != skill_code: activeaction = skill_code
 	allowaction = false
 	
-	var skill = Skillsdata.patch_skill(skill_code, activecharacter)#Skillsdata.skilllist[skill_code]
+	var skill = Skillsdata.patch_skill(skill_code, caster)#Skillsdata.skilllist[skill_code]
 	if skill.has('follow_up'):
 		follow_up_skill = skill.follow_up
 		follow_up_flag = true
 	elif skill.has('follow_up_cond'):
-		follow_up_skill = skill.follow_up
+		follow_up_skill = skill.follow_up_cond
 		follow_up_flag = false
 	else:
 		follow_up_skill = null
@@ -888,8 +919,11 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
+			print(caster.name + ' uses ' + activeitem.name)
 		else:
-			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
+#			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
+			combatlogadd("\n" + str(caster.position) + ' uses ' + skill.name + ". ")
+			print(str(caster.position) + ' uses ' + skill.name)
 		caster.mana -= skill.manacost
 		
 		if skill.cooldown > 0:
@@ -932,7 +966,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			s_skill1.remove_effects()
 			#follow-up
 			if skill.has('follow_up'):
-				use_skill(skill.follow_up, caster, target_pos)
+				yield(use_skill(skill.follow_up, caster, target_pos), 'completed')
 			if skill.has('not_final'): return
 			#final
 			turns += 1
@@ -941,14 +975,15 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				activeitem = null
 				SelectSkill(caster.get_skill_by_tag('default'))
 			
-			caster.displaynode.rebuildbuffs()
+			caster.rebuildbuffs()
 			if fighterhighlighted == true:
 				FighterMouseOver(target)
 			#print(caster.name + ' finished attacking')
-			if activecharacter.combatgroup == 'ally':
+			if caster.combatgroup == 'ally':
 				var temp = 0
 				for pos in range(4, 7): if  battlefield[pos] == null: temp += 1
-				if temp == 3: advance_frontrow()
+				if temp == 3: 
+					yield(advance_frontrow(), 'completed')
 			if endturn or caster.hp <= 0 or !caster.can_act():
 				#on end turn triggers
 				caster.process_event(variables.TR_TURN_F)
@@ -956,7 +991,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				call_deferred('select_actor')
 				eot = false
 			else:
-				if activecharacter.combatgroup == 'ally':
+				if caster.combatgroup == 'ally':
 					CombatAnimations.check_start()
 					if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 				allowaction = true
@@ -967,6 +1002,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			return
 		target_pos = newtarget
 		target = battlefield[newtarget]
+		if target == null and !skill.tags.has('empty_target'): continue
 		targets = CalculateTargets(skill, caster, target, true) 
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
@@ -1007,7 +1043,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
 				s_skill2.target.play_sfx('miss')
-				combatlogadd(target.name + " evades the damage.")
+				combatlogadd(s_skill2.target.name + " evades the damage.")
 				Off_Target_Glow()
 			else:
 				#hit landed animation
@@ -1024,6 +1060,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#logging result & dealing damage
 				execute_skill(s_skill2)
 		turns += 1
+		CombatAnimations.check_start()
+		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+		print(str(caster.position) + ' finishing ' + skill.name)
 		#postdamage triggers and cleanup real_target s_skills
 		var fkill = false
 		for s_skill2 in s_skill2_list:
@@ -1031,15 +1070,13 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
 			if s_skill2.target.hp <= 0:
 				fkill = true
-				s_skill2.process_event(variables.TR_KILL)
+				s_skill2.target.process_event(variables.TR_DEATH)
 				s_skill2.caster.process_event(variables.TR_KILL)
 			else:
 				s_skill2.target.process_event(variables.TR_POST_TARG, s_skill2)
-			CombatAnimations.check_start()
-			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
-				s_skill2.target.displaynode.rebuildbuffs()
+				s_skill2.target.rebuildbuffs()
 			Off_Target_Glow();
 			s_skill2.remove_effects()
 		if fkill: s_skill1.process_event(variables.TR_KILL)
@@ -1047,10 +1084,28 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 	s_skill1.remove_effects()
+	
+	var f = checkwinlose()
+	if f != FIN_NO:
+		CombatAnimations.check_start()
+		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+		q_skills.clear()
+		if f == FIN_STAGE: 
+			call_deferred('select_actor')
+		return
 	#follow-up
-	if follow_up_flag and follow_up_skill != null:
-		use_skill(follow_up_skill, caster, target_pos)
-	if skill.has('not_final'): return
+	if follow_up_flag and (follow_up_skill != null):
+		yield(use_skill(follow_up_skill, caster, target_pos), 'completed')
+	if skill.has('not_final'): 
+		print(str(caster.position) + ' ended pretime ' + skill.name)
+		return
+	
+	print(str(caster.position) + ' almost ended ' + skill.name)
+	
+	#use queued skills
+	while !q_skills.empty():
+		var tdata = q_skills.pop_front()
+		yield(use_skill(tdata.skill, tdata.caster, tdata.target), 'completed')
 	
 	#final
 	turns += 1
@@ -1059,15 +1114,17 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		activeitem = null
 		SelectSkill(caster.get_skill_by_tag('default'))
 	
-
-	caster.displaynode.rebuildbuffs()
+	caster.rebuildbuffs()
 	if fighterhighlighted == true:
 		FighterMouseOver(target)
 	#print(caster.name + ' finished attacking')
-	if activecharacter.combatgroup == 'ally':
+
+	if caster.combatgroup == 'ally' and checkwinlose() == FIN_NO:
 		var temp = 0
-		for pos in range(7, 10): if  battlefield[pos] == null: temp += 1
-		if temp == 3: advance_frontrow()
+		for pos in range(4, 7): if  battlefield[pos] == null: temp += 1
+		if temp == 3: 
+			yield(advance_frontrow(), 'completed')
+	turns +=1
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
 		caster.process_event(variables.TR_TURN_F)
@@ -1075,7 +1132,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		call_deferred('select_actor')
 		eot = false
 	else:
-		if activecharacter.combatgroup == 'ally':
+		if caster.combatgroup == 'ally':
 			CombatAnimations.check_start()
 			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		allowaction = true
@@ -1083,6 +1140,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		RebuildItemPanel()
 		SelectSkill(activeaction)
 		eot = true
+	print(str(caster.position) + ' ended ' + skill.name)
 
 
 func ProcessSfxTarget(sfxtarget, caster, target):
@@ -1185,15 +1243,17 @@ func CalculateTargets(skill, caster, target, finale = false):
 				tpos.push_back(target.position + 1)
 				tpos.push_back(target.position - 1)
 			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(pos)
-			if tpos2.size() == 3: tpos2.pop_front()
+			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
+			if tpos2.size() == 3: tpos2.pop_back()
 			array = tpos2
 		'2random':
 			var tpos = get_allied_targets(target)
 			while tpos.size() > 2:
 				var r = globals.rng.randi_range(0, tpos.size() - 1)
 				tpos.remove(r)
-			array = tpos
+			var tpos2 = []
+			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
+			array = tpos2
 		'neighbours':
 			var tpos = []
 			if target.position in [1, 4, 7]: tpos.push_back(target.position + 1)
@@ -1204,9 +1264,9 @@ func CalculateTargets(skill, caster, target, finale = false):
 			if target.position in [4, 5, 6]:#not sure about this
 				tpos.push_back(target.position + 3)
 			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(pos)
+			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
 			array = tpos2
-	if (!finale) and skill.has('random_target'):
+	if (!finale) and skill.tags.has('random_target'):
 		array.clear()
 		for pos in allowedtargets.enemy + allowedtargets.ally:
 			var tchar = battlefield[pos]
@@ -1335,17 +1395,19 @@ func StopHighlight(pos):
 
 func Target_eff_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
-	if node == null: return;
+	if node == null: 
+		return;
 	var temp
-	
 	temp = Color(1.0,0.0,1.0,1.0);
+	node.get_node('border').visible = true;
 	node.get_node('border').material.set_shader_param('modulate', temp);
 
 func Target_Glow (pos):
+	if !battlefieldpositions[pos].has_node("Character"):return
 	var node = battlefieldpositions[pos].get_node("Character");
 	if node == null: return;
 	var temp
-	if pos in range(1,7):
+	if pos in range(1,4):
 		temp = Color(0.0,1.0,0.0,1.0);
 	else:
 		temp = Color(1.0,0.0,0.0,1.0);
@@ -1353,7 +1415,7 @@ func Target_Glow (pos):
 	node.get_node('border').material.set_shader_param('modulate', temp);
 
 func Stop_Target_Glow ():
-	for pos in range(1,13):
+	for pos in range(1,10):
 		var p_node = battlefieldpositions[pos];
 		if !p_node.has_node('Character'): continue;
 		var node = p_node.get_node("Character");
@@ -1364,15 +1426,16 @@ func Stop_Target_Glow ():
 		node.get_node('border').material.set_shader_param('modulate', temp);
 
 func Off_Target_Glow ():
-	for pos in range(1,13):
-		var p_node = battlefieldpositions[pos];
-		if !p_node.has_node('Character'): continue;
-		var node = p_node.get_node("Character");
-		#if node == null: continue;
-		#node.material.shader_param.Modulate.a = 0.0;
-		#var temp = node.get_node('border').material.get_shader_param('modulate');
-		#temp.a = 0.0;
-		node.get_node('border').visible = false;
+	Stop_Target_Glow()
+#	for pos in range(1,10):
+#		var p_node = battlefieldpositions[pos];
+#		if !p_node.has_node('Character'): continue;
+#		var node = p_node.get_node("Character");
+#		#if node == null: continue;
+#		#node.material.shader_param.Modulate.a = 0.0;
+#		#var temp = node.get_node('border').material.get_shader_param('modulate');
+#		#temp.a = 0.0;
+#		node.get_node('border').visible = false;
 
 func ClearSkillPanel():
 	globals.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
@@ -1415,7 +1478,11 @@ func SelectSkill(skill):
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter)
 	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
-		checkwinlose();
+		if checkwinlose() == FIN_NO:
+			print ('no legal targets')
+			combatlogadd('No legal targets')
+			call_deferred('SelectSkill', 'attack')
+			return
 	if skill.allowedtargets.has('self') and skill.allowedtargets.size() == 1 :
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = 'attack'
@@ -1498,9 +1565,9 @@ func process_check(dir):
 				if ch != null: tres += 1
 			res = tres == 1
 		'is_player_turn':
-			res = activecharacter.positopn < 4
+			res = activecharacter.position < 4
 		'is_enemy_turn':
-			res = activecharacter.positopn >= 4
+			res = activecharacter.position >= 4
 	return res
 
 func res_all(hpval):

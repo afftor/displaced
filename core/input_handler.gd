@@ -481,7 +481,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 			result = combatant.has_status(req.status) == req.check
 		'is_boss':
 			#stub!!!!
-			result = req.check
+			result = !req.check
 	return result
 
 func calculate_number_from_string_array(arr, caster, target):

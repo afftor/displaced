@@ -324,7 +324,7 @@ var traitlist = {
 		cost = 0,
 		hidden = false, #is not displayed at all
 		non_editable = false, #displayed but can not be deactivated
-		effects = ['e_tr_necro']
+		effects = ['e_tr_rilu']
 	},
 	#monsters
 	el_heal = {
@@ -359,5 +359,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		non_editable = true, #displayed but can not be deactivated
 		effects = ['e_tr_treant_barrier']
+	},
+	unstable = {
+		code = 'unstable',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = ['monster'],
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = ['e_tr_unstable']
 	},
 };

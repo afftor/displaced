@@ -1,13 +1,42 @@
 extends Reference
-class_name ai_base
+#class_name ai_base
+#kept as a reference. and for switching availibilty 
 
 var app_obj  #applied character
 
+var ai_data = {}
 var skill_targets = {} #s_name:[targets]
 
 var current_state
 var next_state
 
+func _init():
+	current_state = 0
+	next_state = 0
+
+func _ready():
+	pass # Replace with function body.
+
+func set_single_state(data):
+	var state = {}
+	state['transmissions'] = []
+	state['choices'] = data.duplicate() 
+	ai_data[0] = state
+
+func set_simple_ai(profile):
+	ai_data = AI_data.get(profile).duplicate()
+
+func _set_next_state():
+	#next state set up by previous action
+	#only actual for inherited complex ais
+	if next_state != current_state:
+		current_state = next_state 
+		return
+	# controlled_object_state-based state change 
+	for line in ai_data[current_state].transmissions:
+		if app_obj.process_check(line.check):
+			current_state = line.next_state
+			return
 
 func calculate_target_list(hide_ignore = false): #utility checks and targets calculating 
 	#for most of the cases reimplementing this function in inherited classes is not reqired
@@ -95,15 +124,20 @@ func if_has_target(s_name, t_pos):
 	return false
 
 func _get_weight_for_skill(s_name):
-	var res = 1.0
+	var res = 0
 	var t_skill = Skillsdata.skilllist[s_name]
 	if !app_obj.can_use_skill(t_skill): return 0
 	#check if skill is in cooldown
-	if app_obj.cooldowns.has(s_name): return 0
+	if app_obj.cooldowns.has(s_name): return res
 	#no targets check
-	if skill_targets[s_name].size() == 0: return 0
+	if skill_targets[s_name].size() == 0: return res
+	#empty ai_data check
+	if ai_data[current_state].choices.size() == 0:
+		return 1.0
 	#calculate base weight for current state
-	if t_skill.has('ai_priority'): res = t_skill.ai_priority
+
+	for tag in ai_data[current_state].choices:
+		if t_skill.tags.has(tag): res += ai_data[current_state].choices[tag]
 	#correct weight for skills with only bad-quality targets
 	var tmp  = 0.0
 	for target in skill_targets[s_name]: tmp = max(target.quality, tmp)
@@ -116,7 +150,7 @@ func _get_weight_for_skill(s_name):
 
 func _get_action(hide_ignore = false):
 	calculate_target_list(hide_ignore)
-#	if !hide_ignore: _set_next_state()
+	if !hide_ignore: _set_next_state()
 	var actions = []
 	for s_n in app_obj.skills:
 		var tmp = _get_weight_for_skill(s_n)

@@ -29,6 +29,9 @@ var effects = []
 var process_value
 var tempdur
 
+var keep_target = variables.TARGET_KEEP
+var next_target = variables.NT_MELEE
+
 func _init():
 	caster = null
 	target = null
@@ -59,7 +62,8 @@ func get_from_template(attr, val_rel = false):
 		set(attr, tres)
 
 func createfromskill(s_code, i_caster):
-	template = Skillsdata.skilllist[s_code].dupliacte()
+#	template = Skillsdata.skilllist[s_code].duplicate()
+	template = Skillsdata.patch_skill(s_code, i_caster)
 	code = s_code
 	skilltype = template.skilltype
 	tags = template.tags.duplicate()
@@ -70,6 +74,7 @@ func createfromskill(s_code, i_caster):
 	if typeof(damagetype) == TYPE_ARRAY:
 		damagetype = input_handler.random_element(damagetype)
 	get_from_template('keep_target')
+	get_from_template('next_target')
 	
 	if typeof(template.value) == TYPE_ARRAY: 
 		if typeof(template.value[0]) == TYPE_ARRAY:
@@ -121,8 +126,8 @@ func process_check(check:Array):
 	var op2 = check[2]
 	if typeof(op1) == TYPE_STRING:
 		op1 = get(op1)
-	if typeof(op2) == TYPE_STRING && check[1] != 'has':
-		op2 = get(op2)
+#	if typeof(op2) == TYPE_STRING && check[1] != 'has':
+#		op2 = get(op2)
 	return input_handler.operate(check[1], op1, op2)
 	pass
 

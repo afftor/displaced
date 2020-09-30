@@ -272,15 +272,17 @@ func hpmod_set(value):
 	set('hp', (hppercent * hpmax()) / 100)
 
 func hp_set(value):
+#	var df = false
 	if has_status('soulprot') or (hppercent > 99 and base == 'bomber'):
 		hp = clamp(round(value), 1, hpmax())
 	else:
+#		if hp > 0 and value <= 0: df = true
 		hp = clamp(round(value), 0, hpmax())
 	if displaynode != null:
 		displaynode.update_hp()
-	if hp <= 0:
-	#trigger death triggers
-		process_event(variables.TR_DEATH)
+#	if df:
+#	#trigger death triggers
+#		process_event(variables.TR_DEATH)
 	hppercent = (hp*100)/hpmax()
 
 func hp_max_set(value):
@@ -358,7 +360,7 @@ func need_heal(): #stub. borderlines are subject to tuning
 	if rate < 0.8: return -0.5
 	return -1.0
 
-func fill_ai(data):
+func fill_ai(data):#obsolete
 	match variables.ai_setup:
 		'off':
 			ai.set_single_state({})
@@ -507,7 +509,8 @@ func apply_atomic(template):
 			process_event(variables.TR_RES)
 		'use_combat_skill':
 			if globals.combat_node == null: return
-			globals.combat_node.use_skill(template.skill, self, null)
+#			globals.combat_node.use_skill(template.skill, self, position)
+			globals.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = position})
 #		'add_counter':
 #			if counters.size() <= template.index + 1:
 #				counters.resize(template.index + 1)
@@ -559,7 +562,7 @@ func find_temp_effect(eff_code):
 
 func find_temp_effect_tag(eff_tag):
 	var res = []
-	for e in temp_effects:
+	for e in temp_effects + static_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		if eff.tags.has(eff_tag):
 			res.push_back(e)
@@ -655,7 +658,7 @@ func set_position(new_pos):
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static', 'c_static': 
+		'static', 'c_static', 'dynamic': 
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
@@ -732,6 +735,7 @@ func createfromenemy(enemy):
 	skills = template.skills
 	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
+	state.heroes[id] = self
 	for i in variables.resistlist:
 		resists[i] = 0
 		if template.resists.has(i):
@@ -739,20 +743,24 @@ func createfromenemy(enemy):
 	for i in ['damage','name','hitrate','evasion','armor','armorpenetration','mdef','speed','combaticon', 'aiposition', 'loottable', 'xpreward', 'bodyhitsound', 'flavor']:
 		#self[i] = template[i]
 		set(i, template[i])
+	for i in variables.resistlist:
+		resists[i] = 0
+		if !template.has('resists'): continue
+		if template.resists.has(i):
+			resists[i] = template.resists[i]
+	for i in variables.status_list:
+		status_resists[i] = 0
+		if !template.has('status_resists'): continue
+		if template.status_resists.has(i):
+			status_resists[i] = template.status_resists[i]
 	if template.keys().has('traits'):
 		for t in template.traits:
 			traits[t] = false;
 			activate_trait(t);
-	if !template.has('ai'): template.ai = {}
-	if template.ai is ai_base:
+	if template.has('ai'):
 		ai = template.ai
 	else:
 		ai = ai_base.new()
-		if template.has('full_ai'):
-			ai.set_simple_ai(template.ai)
-		else:
-			#need check for hard difficulty
-			fill_ai(template.ai)
 	ai.app_obj = self
 
 
@@ -760,6 +768,7 @@ func createfromclass(classid):
 	var classtemplate = combatantdata.classlist[classid].duplicate()
 	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
+	state.heroes[id] = self
 	base = classtemplate.code
 	hpmax = classtemplate.basehp
 	self.hp = hpmax
@@ -784,12 +793,9 @@ func createfromname(charname):
 	var nametemplate = combatantdata.charlist[charname]
 	var classid = nametemplate.subclass
 	var classtemplate = combatantdata.classlist[classid].duplicate()
-	if classtemplate.keys().has('basetraits'):
-		for i in classtemplate.basetraits:
-			traits[i] = false
-			activate_trait(i);
 	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
+	state.heroes[id] = self
 	base = nametemplate.code
 	combatclass = classtemplate.code
 	hpmax = classtemplate.basehp
@@ -806,11 +812,20 @@ func createfromname(charname):
 	name = tr(nametemplate.name)
 	namebase = nametemplate.name
 	flavor = nametemplate.flavor
+	if classtemplate.keys().has('basetraits'):
+		for i in classtemplate.basetraits:
+			traits[i] = false
+			activate_trait(i);
 	for i in variables.resistlist:
 		resists[i] = 0
+		if !classtemplate.has('resists'): continue
 		if classtemplate.resists.has(i):
 			resists[i] = classtemplate.resists[i]
-
+	for i in variables.status_list:
+		status_resists[i] = 0
+		if !classtemplate.has('status_resists'): continue
+		if classtemplate.status_resists.has(i):
+			status_resists[i] = classtemplate.status_resists[i]
 
 
 func equip(item):
@@ -1016,17 +1031,20 @@ func process_check(check):
 	else: return input_handler.requirementcombatantcheck(check, self)
 	pass
 
-func gear_check(slot, level, op):
+func gear_check(set, level, op):
 #	var tmp = gear[slot]
 	var tmp = gear.rhand
-	if  tmp == null: return false
+#	if  tmp == null: return false
+#	var lv = state.items[tmp].get_set_level(set)
+	#for test purpose
+	var lv = 4
 	match op:
-		'eq': return state.items[tmp].get_set_level(slot) == level
-		'neq': return state.items[tmp].get_set_level(slot) != level
-		'gt': return state.items[tmp].get_set_level(slot) > level
-		'gte': return state.items[tmp].get_set_level(slot) >= level
-		'lt': return state.items[tmp].get_set_level(slot) < level
-		'lte': return state.items[tmp].get_set_level(slot) <= level
+		'eq': return lv == level
+		'neq': return lv != level
+		'gt': return lv > level
+		'gte': return lv >= level
+		'lt': return lv < level
+		'lte': return lv <= level
 
 
 func get_all_buffs():
@@ -1073,3 +1091,6 @@ func skill_tooltip_text(skillcode):
 func play_sfx(code):
 	if displaynode != null:
 		displaynode.process_sfx(code)
+
+func rebuildbuffs():
+	if displaynode != null: displaynode.rebuildbuffs()

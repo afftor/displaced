@@ -93,7 +93,6 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="Panel" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 34.0
 margin_top = 41.0
 margin_right = 675.0
@@ -590,7 +589,6 @@ margin_bottom = 665.0
 bbcode_enabled = true
 
 [node name="Rewards" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 535.0
 margin_top = 17.0
@@ -715,3 +713,10 @@ custom_fonts/font = SubResource( 7 )
 text = "VICTORY"
 align = 1
 
+[node name="test" type="Button" parent="."]
+margin_right = 53.0
+margin_bottom = 203.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="test" to="." method="test_combat"]

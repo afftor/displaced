@@ -3,6 +3,30 @@ extends Node
 
 var skilllist = {
 	#new part
+	attack = {
+		code = 'attack',
+		name = "",
+		description = "",
+		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+		damagetype = "weapon",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		keep_target = variables.TARGET_KEEP,
+		reqs = [],
+		tags = ['damage', 'default'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 0,
+		casteffects = [],
+		repeat = 1,
+		hidden = false,
+		sfx = [],
+		sfxcaster = null,
+		sfxtarget = null,
+		patches = []
+	},
 	#to add data - names desc sfx sound icon
 	fencing = {
 		code = 'fencing',
@@ -27,7 +51,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
+		
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_fencing_1'},
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_fencing_2'},
@@ -59,7 +83,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
+		
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 3, op = 'gte'}], patch = 'p_lunge'},
 		]
@@ -87,7 +111,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
+		
 	},
 	swift_s = {
 		code = 'swift_s',
@@ -113,7 +137,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
+		
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'gte'}], patch = 'p_swift_1'}
 		]
@@ -142,7 +166,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
+		
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 2, op = 'gte'}], patch = 'p_parry_1'}
 		]
@@ -171,7 +195,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
+		
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 2, op = 'gte'}], patch = 'p_swm_1'}
 		]
@@ -199,7 +223,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'gte'}], patch = 'p_term_1'}
 		]
@@ -280,10 +303,9 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
-			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_flash_1'},
-			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_flash_2'},
+			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_fbolt_1'},
+			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_fbolt_2'},
 		]
 	},
 	flash = {#NEW, NEED FILLING DATA
@@ -310,8 +332,8 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'eq'}], patch = 'p_fbolt_1'},
-			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_fbolt_2'},
+			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'eq'}], patch = 'p_flash_1'},
+			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_flash_2'},
 		]
 	},
 	deluge = {#NEW, NEED FILLING DATA
@@ -510,7 +532,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'gte'}], patch = 'p_qshot_1'},
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 3, op = 'lte'}], patch = 'p_qshot_2'},
@@ -539,7 +560,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_aarrow_1'},
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_aarrow_2'},
@@ -561,17 +581,13 @@ var skilllist = {
 		value = ['caster.damage'],
 		cooldown = 0,
 		manacost = 0,
-		casteffects = ['e_s_eastrike'],
+		casteffects = ['e_t_eastrike'],
 		repeat = 1,
 		hidden = false,
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
-		patches = [
-			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_aarrow_1'},
-			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_aarrow_2'},
-		]
+		patches = []
 	},
 	frost_arrow = {
 		code = 'frost_arrow',
@@ -589,13 +605,12 @@ var skilllist = {
 		value = ['caster.damage', '*0.9'],
 		cooldown = 0,
 		manacost = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_freeeze', chance = 0.5})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_s_freeze', chance = 0.5})],
 		repeat = 1,
 		hidden = false,
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'lte'}], patch = 'p_farrow_1'},
 		]
@@ -705,7 +720,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'gte'}], patch = 'p_hearts'},
 		]
@@ -759,7 +773,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_combo_1'},
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_combo_2'},
@@ -789,7 +802,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_combo_1'},
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_combo_2'},
@@ -820,7 +832,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 2, op = 'gte'}], patch = 'p_punch_1'}
 		]
@@ -847,7 +858,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 2, op = 'gte'}], patch = 'p_shockwave'},
 		],
@@ -875,7 +885,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [],
 		not_final = true
 	},
@@ -901,7 +910,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	defend = {#NEW, NEED FILLING DATA
@@ -1047,6 +1055,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [],
+		not_final = true
 	},
 	dark_orb = {
 		code = 'dark_orb',
@@ -1070,7 +1079,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'lte'}], patch = 'p_orb_1'},
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'eq'}], patch = 'p_orb_2'},
@@ -1098,7 +1106,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 3, op = 'glte'}], patch = 'p_mist'},
 		]
@@ -1126,7 +1133,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 2, op = 'gte'}], patch = 'p_ava'}
 		]
@@ -1153,7 +1159,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 2, op = 'gte'}], patch = 'p_thorn'},
 		]
@@ -1210,7 +1215,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'gte'}], patch = 'p_resto'},
 		]
@@ -1237,7 +1241,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 4, op = 'gte'}], patch = 'p_beam'},
 		]
@@ -1265,7 +1268,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	holy_light = {
@@ -1290,7 +1292,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	gustofwind = {
@@ -1315,7 +1316,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 2, op = 'gte'}], patch = 'p_gust'},
 		]
@@ -1342,7 +1342,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
+
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 2, op = 'gte'}], patch = 'p_smash'},
 		]
@@ -1370,7 +1370,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'lhand', level = 3, op = 'gte'}], patch = 'p_clean_1'},
 			{conditions = [{type = 'gear_level', slot = 'rhand', level = 3, op = 'gte'}], patch = 'p_clean_2'},
@@ -1456,7 +1455,7 @@ var skilllist = {
 		manacost = 0,
 		chance = 100,
 		evade = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_sanct', trigger = variables.TR_SKILL_FINISH})],
+		casteffects = ['e_s_sanct'],
 		hidden = false,
 		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
@@ -1515,7 +1514,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	dk_strike = {
@@ -1540,7 +1538,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	dk_stun = {
@@ -1566,7 +1563,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	dk_dark = {
@@ -1592,7 +1588,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	dk_execute_charge = {
@@ -1617,7 +1612,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	dk_execute = {
@@ -1642,7 +1636,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	fq_summon1 = {
@@ -1717,7 +1710,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	fq_screech = {
@@ -1742,7 +1734,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	fq_flash = {
@@ -1767,7 +1758,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	fq_blast = {
@@ -1792,7 +1782,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	vic_fburst = {
@@ -1818,7 +1807,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	vic_culling = {
@@ -1843,7 +1831,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	en_enburst = {#victor & scientist
@@ -1862,13 +1849,12 @@ var skilllist = {
 		value = [['caster.damage', '*0.5']],
 		cooldown = 0,
 		manacost = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_vicen', trigger = variables.TR_CAST})],
+		casteffects = ['e_tr_vicen'],
 		repeat = 1,
 		hidden = false,
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	en_thrust = {#victor & scientist
@@ -1893,11 +1879,10 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	sc_summon1 = {
-		code = 'fq_summon1',
+		code = 'sc_summon1',
 		name = "Summon",
 		description = tr("SKILLSUMMONTREANTDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),
@@ -1922,7 +1907,7 @@ var skilllist = {
 		patches = []
 	},
 	sc_summon2 = {
-		code = 'fq_summon2',
+		code = 'sc_summon2',
 		name = "Summon",
 		description = tr("SKILLSUMMONTREANTDESCRIPT"),
 		icon = load("res://assets/images/iconsskills/cripple.png"),
@@ -1969,7 +1954,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	bomb_atk = {
@@ -1994,7 +1978,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = []
 	},
 	bomb_cond1 = {
@@ -2009,7 +1992,7 @@ var skilllist = {
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
 		reqs = [],
-		tags = ['damage'],
+		tags = ['damage', 'empty_target'],
 		value = ['caster.damage', '*2'],
 		cooldown = 0,
 		manacost = 0,
@@ -2019,7 +2002,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [],
 		not_final = true
 	},
@@ -2036,7 +2018,7 @@ var skilllist = {
 		keep_target = variables.TARGET_KEEP,
 		next_target = variables.NT_ANY,
 		reqs = [],
-		tags = ['damage'],
+		tags = ['damage', 'empty_target'],
 		value = ['caster.damage', '*3'],
 		damagestat = 'no_stat',
 		cooldown = 0,
@@ -2047,7 +2029,6 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {},
 		patches = [],
 		not_final = true
 	},
@@ -3273,7 +3254,7 @@ var patches = {
 		casteffects = {type = 'append', value = ['e_fen_debuf2']}
 	},
 	p_lunge = {
-		targetpattern = {type = 'set', value = 'column'}
+		targetpattern = {type = 'set', value = 'row'}
 	},
 	p_swift_1 = {
 		custom_duration = {type = 'set', value = 2}
@@ -3334,7 +3315,7 @@ var patches = {
 		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_aarrow2', trigger = variables.TR_HIT})]}
 	},
 	p_farrow_1 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_chiull', duration = 3})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_chill', duration = 3, push_value = true})]}
 	},
 	p_arrshower = {
 		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_arrshower'})]}
@@ -3396,7 +3377,7 @@ var patches = {
 	p_resto = {
 		value = {type = 'replace', value = ['caster.hpmax','*0.4'],},
 		casteffects = {type = 'append', value = ['e_pay_soul']},
-		reqs = {type = 'replace', value = [{type = 'stats', name = 'alt_mana', operant = 'gte', value = 1}],}
+		reqs = {type = 'replace', value = [{type = 'stats', name = 'alt_mana', operant = 'gte', value = 2}],}
 	},
 	p_beam = {
 		value = {type = 'replace', value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+1'],'*1.35'],},
@@ -3442,3 +3423,7 @@ func patch_skill(skill_id, unit):
 							for i in tmp[key].value:
 								template[key].push_back(i)
 	return template
+
+func _ready():#stub, to remove
+	for i in skilllist.values():
+		i.name = i.code

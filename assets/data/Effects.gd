@@ -108,8 +108,8 @@ var effect_table = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
-		self_args = [0.85],
-		args = [{type = 'self', param = 0}],
+		val = 0.85,
+		args = [{obj = 'template', param = 'val'}],
 		sub_effects = ['e_t_nodamagearg'],
 		atomic = [],
 		buffs = [],
@@ -119,8 +119,8 @@ var effect_table = {
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
-		self_args = [0.75],
-		args = [{type = 'self', param = 0}],
+		val = 0.75,
+		args = [{obj = 'template', param = 'val'}],
 		sub_effects = ['e_t_nodamagearg'],
 		atomic = [],
 		buffs = [],
@@ -136,11 +136,11 @@ var effect_table = {
 		stack = 1,
 		sub_effects = [],
 		args = [{obj = 'parent_args', param = 0}],
-		atomic = [{type = 'stat_mul', stat = 'evasion', value = ['parent_args', 0]}],
+		atomic = [{type = 'stat_mul', stat = 'damage', value = ['parent_args', 0]}],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png", 
-				description = "",
+				description = "damage decreased for %d turns",
 				args = [{obj = 'parent', param = 'remains', dynamic = true}],
 				t_name = 'fen'
 			}
@@ -193,7 +193,7 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'custom_duration'}],
+		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'tempdur'}],
 		sub_effects = ['e_t_protect_c', 'e_t_protect_t'],
 		buffs = []
 	},
@@ -317,7 +317,7 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'custom_duration'}],
+		args = [{obj = 'parent', param = 'tempdur'}],
 		sub_effects = ['e_s_swordmas_main', 'e_s_swordmas_timer'],
 		buffs = []
 	},
@@ -595,6 +595,7 @@ var effect_table = {
 		type = 'trigger',
 		target = 'target',
 		trigger = [variables.TR_DEF],
+		test = 'deluge',
 		conditions = [
 			{type = 'skill', value = ['damagetype','eq', 'air'] },
 			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
@@ -1081,7 +1082,7 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'custom_duration'}],
+		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'tempdur'}],
 		sub_effects = ['e_t_protect_c_er', 'e_t_protect_t_er'],
 		buffs = []
 	},
@@ -1142,7 +1143,7 @@ var effect_table = {
 		duration = 1,
 		stack = 1,
 		tags = ['bless'],
-		args = [{obj = 'parent_args', index = 0}],
+		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 0]},
@@ -1159,7 +1160,7 @@ var effect_table = {
 		duration = 1,
 		stack = 1,
 		tags = ['bless'],
-		args = [{obj = 'parent_args', index = 0}],
+		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_set_revert', stat = 'shield', value = [['parent_args', 0], '*', 2]},
@@ -1440,10 +1441,16 @@ var effect_table = {
 		buffs = ['b_natbless'],#or not
 	},
 	e_s_sanct = {
-		type = 'oneshot',
-		target = 'combat',
-		execute = 'resurrect_all',
-		value = 10
+		type = 'trigger',
+		trigger = [variables.TR_SKILL_FINISH],
+		conditions = [],
+		req_skill = false,
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'combat',
+			execute = 'resurrect_all',
+			value = 10
+			}]
 	},
 	e_s_viccull = {
 		type = 'temp_s',
@@ -1458,6 +1465,13 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
 		buffs = ['b_ava'],
+	},
+	e_tr_vicen = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [],
+		req_skill = true,
+		sub_effects = ['e_s_vicen']
 	},
 	e_s_vicen = {
 		type = 'temp_s',
@@ -1549,7 +1563,7 @@ var effect_table = {
 	},
 	e_s_souls = {
 		type = 'dynamic',
-		args = [{obj = 'parent_args', index = 0}],
+		args = [{obj = 'parent_args', param = 0}],
 		atomic = ['a_souls1', 'a_souls2'],
 		tags = ['recheck_stats'],
 		bufs = [],
@@ -1579,7 +1593,7 @@ var effect_table = {
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'owner',
+				target = 'caster',
 				atomic = ['a_souls_remove']
 			},
 		],
@@ -1593,7 +1607,7 @@ var effect_table = {
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'owner',
+				target = 'caster',
 				atomic = ['a_souls_clean']
 			},
 		],
@@ -1705,7 +1719,7 @@ var effect_table = {
 		type = 'oneshot',
 		target = 'target',
 		conditions = [
-			{type = 'stats', name = 'base', value = 'bomber', operant = 'eq' } 
+			{type = 'stats', name = 'base', value = 'bomber', operant = 'neq' } 
 		],
 		args = [{obj = 'parent_args', param = 0}],
 		atomic = ['a_burn']
@@ -2245,7 +2259,7 @@ var effect_table = {
 				name = 'treant_shield',
 				atomic = [
 					{type = 'stat_set_revert', stat = 'shield', value = 15},
-					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
+#					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
 					],
 				buffs = [
 					{
@@ -2533,7 +2547,7 @@ var effect_table = {
 				name = 'ward',
 				atomic = [
 					'a_ward_shield',
-					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL}
+#					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL}
 					],
 				args = [{obj = 'app_obj', param = 'shield', dynamic = true},{obj = 'parent_arg_get', index = 0, param = 'process_value'}],
 				buffs = [
@@ -2648,7 +2662,7 @@ var effect_table = {
 				type = 'trigger',
 				trigger = [variables.TR_DEF],
 				conditions = [
-					{type = 'skill', value = ['damagetype','eq',variables.S_AIR] },
+#					{type = 'skill', value = ['damagetype','eq',variables.S_AIR] },
 					{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
 				],
 				req_skill = true,
@@ -2687,7 +2701,7 @@ var effect_table = {
 				name = 'spirit_shield',
 				atomic = [
 					{type = 'stat_set_revert', stat = 'shield', value = 50},
-					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL}
+#					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL}
 					],
 				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 				buffs = [
@@ -3028,7 +3042,7 @@ var effect_table = {
 				name = 'phys_shield',
 				atomic = [
 					{type = 'stat_set_revert', stat = 'shield', value = 50},
-					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
+#					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
 					],
 				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 				buffs = [
@@ -3060,7 +3074,7 @@ var effect_table = {
 				name = 'mag_shield',
 				atomic = [
 					{type = 'stat_set_revert', stat = 'shield', value = 50},
-					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_MAG}
+#					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_MAG}
 					],
 				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 				buffs = [
@@ -3106,8 +3120,8 @@ var atomic = {
 	#new part
 	a_caster_heal = {type = 'heal', value = [['parent_arg_get', 0, 'process_value'], '*', 0.5]},
 	a_magecrit = {type = 'mana', value = ['parent_arg_get', 0, 'manacost']},
-	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},
-	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},
+#	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},
+#	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},
 	a_elvenwood_rod = {type = 'mana', value = [['parent_args', 0], '*', 0.1]},
 	#not used new part (allows to setup stat changing with effect's template)
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
@@ -3124,6 +3138,11 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Bleeding",
 		t_name = 'bleed'
+	},
+	b_poison = {
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		description = "poisoned",
+		t_name = 'poison'
 	},
 	b_silence = {
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
@@ -3219,7 +3238,7 @@ var buffs = {
 		description = "Has %d souls",
 		args = [{obj = 'parent_args', param = 0}],
 		t_name = 'souls',
-		limit = 0
+		limit = 1
 	},
 	b_soulprot = {
 		icon = "res://assets/images/traits/speedondamage.png", #to fix

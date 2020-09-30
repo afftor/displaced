@@ -52,9 +52,11 @@ func add_new_data(data):
 	else:
 		animations_queue[data.time][data.node].push_back([])
 		animations_queue[data.time][data.node].back().append(data)
+#	print(animations_queue)
 
 func check_start():
-	if is_busy: return
+	if is_busy: 
+		return
 	if animations_queue.empty(): return
 	is_busy = true
 	advance_timer()
