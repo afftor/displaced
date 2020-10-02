@@ -473,29 +473,49 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 							if input_handler.operate(req.operant, state.items[i].get(req.name), req.value) == false:
 								result = false
 								break
+		'gear_level':
+			result = combatant.gear_check(req.slot, req.level, req.op)
 		'race': 
 			result = (req.value == combatant.race);
+		'status':
+			result = combatant.has_status(req.status) == req.check
+		'is_boss':
+			#stub!!!!
+			result = !req.check
 	return result
 
-func calculate_number_from_string_array(array, caster, target):
+func calculate_number_from_string_array(arr, caster, target):
+	if typeof(arr) != TYPE_ARRAY:
+		return float(arr)
+	var array = arr.duplicate()
 	var endvalue = 0
+	var singleop = ''
 	var firstrun = true
 	for i in array:
+		if typeof(i) == TYPE_ARRAY:
+			i = str(calculate_number_from_string_array(i, caster, target))
+		if i in ['+','-','*','/']:
+			singleop = i
+			continue
 		var modvalue = i
 		if (i.find('caster') >= 0) or (i.find('target') >= 0):
 			i = i.split('.')
 			if i[0] == 'caster':
-				modvalue = str(caster.get(i[1]))
+				modvalue = str(caster.get_stat(i[1]))
 			elif i[0] == 'target':
-				modvalue = str(target.get(i[1]))
+				modvalue = str(target.get_stat(i[1]))
 		elif (i.find('random') >= 0):
 			i = i.split(' ')
 			modvalue = str(globals.rng.randi_range(0, int(i[1])))
+		if singleop != '':
+			endvalue = string_to_math(endvalue, singleop+modvalue)
+			singleop = ''
+			continue
 		if !modvalue[0].is_valid_float():
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
 			else:
-				endvalue = input_handler.string_to_math(endvalue, modvalue)
+				endvalue = string_to_math(endvalue, modvalue)
 		else:
 			endvalue += float(modvalue)
 		firstrun = false
@@ -528,6 +548,8 @@ func operate(operation, value1, value2):
 			result = value1 < value2
 		'has':
 			result = value1.has(value2)
+		'has_no':
+			result = !value1.has(value2)
 		'mask':
 			result = (int(value1) & int(value2)) != 0
 	return result
@@ -671,3 +693,8 @@ func get_spec_node(type, args = null, raise = true):
 		for param in args:
 			window.set(param, args[param])
 	return window
+
+func random_element(arr:Array):
+	if arr.size() == 0: return null
+	var pos = globals.rng.randi_range(0, arr.size() -1)
+	return arr[pos]

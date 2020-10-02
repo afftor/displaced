@@ -122,6 +122,23 @@ func process_critical():
 	var data = {node = self, time = globals.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
 	animation_node.add_new_data(data)
 
+func process_enable():
+	var data = {node = self, time = globals.combat_node.turns, type = 'enable', slot = 'full', params = {}}
+	animation_node.add_new_data(data)
+
+func process_disable():
+	disabled = true
+	var data = {node = self, time = globals.combat_node.turns, type = 'disable', slot = 'full', params = {}}
+	animation_node.add_new_data(data)
+
+func appear():#stub
+	var data = {node = self, time = globals.combat_node.turns, type = 'reappear', slot = 'full', params = {}}
+	animation_node.add_new_data(data)
+
+func disappear():#stub
+	var data = {node = self, time = globals.combat_node.turns, type = 'disappear', slot = 'full', params = {}}
+	animation_node.add_new_data(data)
+
 #control visuals
 func noq_rebuildbuffs(newbuffs):
 	var oldbuff = 0

@@ -1,5 +1,5 @@
 extends Node
-
+# req total remake
 var classlist = {
 	warrior = {
 		code = 'warrior',
@@ -10,7 +10,7 @@ var classlist = {
 		basemana = 50,
 		speed = 50,
 		damage = 10,
-		skills = ['attack','doubleattack'],
+		skills = ['attack','fencing', 'lunge', 'sideslash', 'swift_s', 'parry', 'sword_mastery', 'termination', 'smoke_s'],
 		learnableskills = {taunt = 2, slash = 4},
 		icon = null,
 	},
@@ -23,8 +23,8 @@ var classlist = {
 		basemana = 100,
 		speed = 30,
 		damage = 10,
-		skills = ['attack', 'firebolt', 'minorheal'],
-		basetraits = ['mage_trait'],
+		skills = ['attack', 'swipe', 'fire_bolt', 'flash', 'deluge', 'renew', 'dispel', 'explosion', 'protect', ],
+		basetraits = [],
 		learnableskills = {concentrate = 2, firestorm = 4},
 		icon = null,
 	},
@@ -37,8 +37,8 @@ var classlist = {
 		basemana = 50,
 		speed = 55,
 		damage = 15,
-		skills = ['attack', 'windarrow'],
-		basetraits = ['arch_trait'],
+		skills = ['attack','qshot', 'aarrow', 'eastrike', 'frost_arrow', 'arr_shower', 'nat_bless', 'heartseeker', 'charm'],
+		basetraits = [],
 		learnableskills = {heavyshot = 2, arrowshower = 4},
 		icon = null,
 	},
@@ -51,7 +51,34 @@ var classlist = {
 		basemana = 50,
 		speed = 40,
 		damage = 10,
-		skills = ['attack', 'tackle'],
+		skills = ['attack', 'combo', 'firepunch', 'shockwave', 'uppercut', 'defend', 'dragon_protection', 'aegis', 'earthquake'],
+		learnableskills = {cripple = 2, comboattack = 4},
+		icon = null,
+	},
+	necro = {
+		code = 'necro',
+		name = tr("BRAWLER"),
+		description = tr("BRAWLERDESCRIPT"),
+		gearsubtypes = ['sword', 'axe', 'pickaxe'],
+		basehp = 175,
+		basemana = 50,
+		speed = 40,
+		damage = 10,
+		skills = ['attack', 'dark_orb', 'pale_mist', 'avalanche', 'soulthorns', 'dark_echoes', 'restoration', 'soul_beam', 'soul_prot'],
+		learnableskills = {cripple = 2, comboattack = 4},
+		icon = null,
+		basetraits = ['necro_trait']
+	},
+	cleric = {
+		code = 'cleric',
+		name = tr("BRAWLER"),
+		description = tr("BRAWLERDESCRIPT"),
+		gearsubtypes = ['sword', 'axe', 'pickaxe'],
+		basehp = 175,
+		basemana = 50,
+		speed = 40,
+		damage = 10,
+		skills = ['attack', 'holy_light', 'gustofwind', 'smash', 'cleansing', 'barrier', 'bless', 'sanctuary', 'purge', ],
 		learnableskills = {cripple = 2, comboattack = 4},
 		icon = null,
 	}
@@ -62,13 +89,15 @@ var chardata = {
 	rose = {code = "Rose", gear = [{item = 'staff', parts = {ToolHandle = 'starting', Rod = 'starting'}}], details = []},
 	ember = {code = "Ember", gear = [{item = 'axe', parts = {ToolHandle = 'starting', Blade = 'starting'}}], details = []},
 	erika = {code = "Erika", gear = [{item = 'bow', parts = {ToolHandle = 'starting', BowBase = 'starting'}}], details = []},
+	rilu = {code = "Rilu", gear = [{item = 'sword', parts = {ToolHandle = 'starting', Blade = 'starting'}}], details = []},
+	iola = {code = "Iola", gear = [{item = 'sword', parts = {ToolHandle = 'starting', Blade = 'starting'}}], details = []},
 }
 
 func MakeCharacterFromData(code):
 	var data = chardata[code]
 	var character = combatant.new()
 	character.createfromname(data.code)
-	state.heroes[character.id] = character
+#	state.heroes[character.id] = character
 	for i in data.gear:
 		var newitem = globals.CreateGearItem(i.item, i.parts)
 		globals.AddItemToInventory(newitem)
@@ -110,6 +139,24 @@ var charlist = {
 		combaticon = 'ember',
 		image = 'emberhappy',
 		subclass = 'brawler',
+		flavor = 'A dragon gal',
+	},
+	Rilu = {
+		code = 'Rilu',
+		name = 'RILU',
+		icon = 'EmberFriendly',
+		combaticon = 'ember',
+		image = 'emberhappy',
+		subclass = 'necro',
+		flavor = 'A dragon gal',
+	},
+	Iola = {
+		code = 'Iola',
+		name = 'IOLA',
+		icon = 'EmberFriendly',
+		combaticon = 'ember',
+		image = 'emberhappy',
+		subclass = 'cleric',
 		flavor = 'A dragon gal',
 	},
 }

@@ -62,25 +62,26 @@ func apply():
 
 func upgrade():
 	remove()
-	createfromtemplate(template.next_level)
-	get_applied_obj().apply_effect(id)
+#	createfromtemplate(template.next_level)
+	var tmp = effects_pool.e_createfromtemplate(template.next_level, id)
+#	get_applied_obj().apply_effect(id)
+	get_applied_obj().apply_effect(tmp.id)
 	pass
+
+func tick_eff():
+	remains -= 1
+	for b in buffs:
+		b.calculate_args()
+	if remains == 0:
+		upgrade()
 
 func process_event(ev):
 	if !is_applied: return
-	var res = variables.TE_RES_NOACT
-	if ev == tick_event:
-		res = variables.TE_RES_TICK
-		remains -= 1
-		for b in buffs:
-			b.calculate_args()
-		if remains == 0:
-			upgrade()
-			res = variables.TE_RES_UPGRADE
-	if ev == rem_event:
+	if tick_event.has(ev):
+		tick_eff()
+	if rem_event.has(ev):
 		remove()
-		res = variables.TE_RES_REMOVE
-	return res
+
 
 func serialize():
 	var tmp = .serialize()

@@ -280,6 +280,18 @@ var traitlist = {
 		non_editable = false, #displayed but can not be deactivated
 		effects = ['e_tr_firefist']
 	},
+	#characters
+	rose = {
+		code = 'rose',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = ['auto'],
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = ['e_tr_rose']
+	},
 	#class passives
 	arch_trait = {
 		code = 'arch_trait',
@@ -312,7 +324,7 @@ var traitlist = {
 		cost = 0,
 		hidden = false, #is not displayed at all
 		non_editable = false, #displayed but can not be deactivated
-		effects = ['e_tr_necro']
+		effects = ['e_tr_rilu']
 	},
 	#monsters
 	el_heal = {
@@ -335,7 +347,7 @@ var traitlist = {
 		cost = 0,
 		hidden = false, #is not displayed at all
 		non_editable = true, #displayed but can not be deactivated
-		effects = ['e_tr_dwarwenbuf', 'e_tr_dwarwenclear']
+		effects = ['e_tr_dwarwenbuf']#, 'e_tr_dwarwenclear']
 	},
 	treant_barrier = {
 		code = 'treant_barrier',
@@ -347,5 +359,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		non_editable = true, #displayed but can not be deactivated
 		effects = ['e_tr_treant_barrier']
+	},
+	unstable = {
+		code = 'unstable',
+		name = '',
+		description = '',
+		icon = null,
+		req_class = ['monster'],
+		cost = 0,
+		hidden = false, #is not displayed at all
+		non_editable = true, #displayed but can not be deactivated
+		effects = ['e_tr_unstable']
 	},
 };

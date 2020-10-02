@@ -55,6 +55,11 @@ _global_script_classes=[ {
 "path": "res://files/classes/condition_effect.gd"
 }, {
 "base": "base_effect",
+"class": "dynamic_effect",
+"language": "GDScript",
+"path": "res://files/classes/dynamic_effect.gd"
+}, {
+"base": "base_effect",
 "class": "oneshot_effect",
 "language": "GDScript",
 "path": "res://files/classes/oneshot_effect.gd"
@@ -99,6 +104,7 @@ _global_script_class_icons={
 "base_effect": "",
 "combatant": "",
 "condition_effect": "",
+"dynamic_effect": "",
 "oneshot_effect": "",
 "static_effect": "",
 "temp_e_progress": "",
@@ -124,8 +130,8 @@ events="*res://assets/data/eventdata.gd"
 images="*res://assets/data/ResourceImages.gd"
 audio="*res://assets/data/ResourceAudio.gd"
 Enemydata="*res://assets/data/enemydata.gd"
-Skillsdata="*res://assets/data/Skills.gd"
 Effectdata="*res://assets/data/Effects.gd"
+Skillsdata="*res://assets/data/Skills.gd"
 Traitdata="*res://assets/data/Traits.gd"
 TownData="*res://assets/data/TownData.gd"
 combatantdata="*res://assets/data/CombatantData.gd"

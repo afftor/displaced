@@ -37,6 +37,7 @@ var weaponrange
 var multislots = []
 var availslots = []
 var hitsound
+var level = 0 #to add related mechanic
 
 func CreateUsable(ItemName = '', number = 1):
 	itembase = ItemName
@@ -151,6 +152,12 @@ func CreateGear(ItemName = '', dictparts = {}):
 	bonusstats.erase('damagemod')
 	durability = round(durability)
 	maxdurability = round(durability)
+
+func get_damagetype():#stub
+	return 'bludgeon'
+
+func get_set_level(setname): #stub
+	return 1
 
 func substractitemcost():
 	var itemtemplate = Items.Items[itembase]
