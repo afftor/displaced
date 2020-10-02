@@ -474,7 +474,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 								result = false
 								break
 		'gear_level':
-			result = combatant.gear_check(req.slot, req.level, req.op)
+			result = combatant.gear_check(req.set, req.level, req.op)
 		'race': 
 			result = (req.value == combatant.race);
 		'status':
