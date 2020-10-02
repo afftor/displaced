@@ -100,7 +100,7 @@ func test_combat():
 		combatantdata.MakeCharacterFromData(ch)
 	for i in range(state.heroes.keys().size()):
 		state.combatparty[i+1] = state.heroes.keys()[i]
-	start_combat([{1:'bomber'}, {2: 'bomber'}], 'cave')
+	start_combat([{1:'elvenrat'}, {2: 'bomber'}], 'cave')
 #	start_combat([{1:'elvenrat',2:'elvenrat',
 #	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}], 'cave')
 

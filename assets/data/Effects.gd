@@ -66,6 +66,90 @@ var effects = {
 }
 
 var effect_table = {
+	#statuses
+	e_s_burn = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'burn',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 2,
+		tags = ['burn'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [rebuild_dot('a_burn'), rebuild_remove(['damagetype','eq', 'water'])],
+		atomic = [],
+		buffs = ['b_burn'],
+	},
+	e_s_poison = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'poison',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 3,
+		tags = ['poison'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [rebuild_dot('a_poison')],
+		atomic = [],
+		buffs = ['b_poison'],
+	},
+	e_s_bleed = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'bleed',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 2,
+		tags = ['bleed'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [rebuild_dot('a_bleed'), rebuild_remove(['tags','has','heal'])],
+		atomic = [],
+		buffs = ['b_bleed'],
+	},
+	e_stun = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 1,
+		duration = 'parent',#while document states this to be 1, there also is a skill with stun 2 duratiuon, so here we are
+		rem_event = [variables.TR_COMBAT_F],
+		tick_event = [variables.TR_TURN_F],
+		name = 'stun',
+		tags = ['stun'],
+		disable = true,
+		sub_effects = [rebuild_remove(['tags','has','heal'])],
+		buffs = ['b_stun'],
+		atomic = [],
+	},
+	e_intimidate = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		duration = 2,
+		rem_event = [variables.TR_COMBAT_F],
+		name = 'intimidate',
+		tags = ['intimidate', 'negative'],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.5}],
+		buffs = ['b_intimidate']
+	},
+	e_silence = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 1,
+		duration = 'parent',
+		rem_event = [variables.TR_COMBAT_F],
+		tick_event = [variables.TR_TURN_F],
+		name = 'silence',
+		tags = ['afflict', 'silence'],
+		disable = true,
+		sub_effects = [],
+		buffs = ['b_silence'],
+		atomic = [],
+	},
 	#effects for new skils
 	e_fen_addrep = {
 		type = 'trigger',
@@ -129,7 +213,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'fen_debuf',
-		tags = ['debuf'],
+		tags = ['negative'],# or not? mb affliction?
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 2,
@@ -145,34 +229,6 @@ var effect_table = {
 				t_name = 'fen'
 			}
 		],
-	},
-	e_s_bleed = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'bleed',
-		stack = 1,
-		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F],
-		duration = 'parent',
-		tags = ['affliction'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = ['e_bleed'],
-		atomic = [],
-		buffs = ['b_bleed'],
-	},
-	e_bleed = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_GET],
-		req_skill = false,
-		conditions = [],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_bleed'],
-			}
-		]
 	},
 	e_s_swift = {
 		type = 'temp_s',
@@ -256,7 +312,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
-			{type = 'skill', value = ['tags', 'has', 'singletarget']},
+			{type = 'skill', value = ['tags', 'has_no', 'aoe']},
 			{type = 'skill', value = ['tags', 'has_no', 'ignore_taunt']}
 		],
 		trigger = [variables.TR_DEF],
@@ -276,7 +332,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']}, 
-			{type = 'skill', value = ['tags', 'has', 'singletarget']}, 
+			{type = 'skill', value = ['tags', 'has_no', 'aoe']}, 
 			{type = 'skill', value = ['hitres', 'mask', variables.RES_HITCRIT]},
 			{type = 'random', value = 0.5}
 		],
@@ -297,7 +353,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']}, 
-			{type = 'skill', value = ['tags', 'has', 'singletarget']}
+			{type = 'skill', value = ['tags', 'has_no', 'aoe']}
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
@@ -333,7 +389,7 @@ var effect_table = {
 		buffs = [],
 		atomic = [],
 		sub_effects = [],
-		tags = []
+		tags = ['timer']
 	},
 	e_s_swordmas_remove = {
 		type = 'oneshot',
@@ -485,69 +541,11 @@ var effect_table = {
 		}],
 		buffs = []
 	},
-	e_s_burn = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'burn',
-		stack = 1,
-		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F],
-		duration = 'parent',
-		tags = ['affliction', 'burn'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = ['e_burn'],
-		atomic = [],
-		buffs = ['b_burn'],
-	},
-	e_burn = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_GET],
-		req_skill = false,
-		conditions = [],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_burn'],
-			}
-		],
-		buffs = []
-	},
-	e_s_poison = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'burn',
-		stack = 1,
-		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F],
-		duration = 'parent',
-		tags = ['affliction', 'poison'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = ['e_poison'],
-		atomic = [],
-		buffs = ['b_poison'],
-	},
-	e_poison = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_S],
-		req_skill = false,
-		conditions = [],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_poison'],
-			}
-		],
-		buffs = []
-	},
 	e_s_flash = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'smoke',
-		tags = ['debuff'],
+		tags = ['negative'],
 		tick_event = variables.TR_TURN_F,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 1,
@@ -562,34 +560,6 @@ var effect_table = {
 				t_name = 'flash'
 			}
 		],
-	},
-	e_stun = {
-		type = 'temp_s',
-		target = 'target',
-		stack = 1,
-		duration = 'parent',
-		rem_event = [variables.TR_COMBAT_F],
-		tick_event = [variables.TR_TURN_F],
-		name = 'stun',
-		tags = ['afflict', 'stun'],
-		disable = true,
-		sub_effects = [],
-		buffs = ['b_stun'],
-		atomic = [],
-	},
-	e_silence = {
-		type = 'temp_s',
-		target = 'target',
-		stack = 1,
-		duration = 'parent',
-		rem_event = [variables.TR_COMBAT_F],
-		tick_event = [variables.TR_TURN_F],
-		name = 'silence',
-		tags = ['afflict', 'silence'],
-		disable = true,
-		sub_effects = [],
-		buffs = ['b_silence'],
-		atomic = [],
 	},
 	e_t_deluge = {
 		type = 'trigger',
@@ -687,7 +657,7 @@ var effect_table = {
 		}],
 		buffs = []
 	},
-	e_t_aarrow = {
+	e_t_aarrow = {#this effect is not dispellable and is not counted as dispellable by other effects. i can fix this if needed
 		type = 'trigger',
 		target = 'target',
 		trigger = [variables.TR_DEF],
@@ -717,7 +687,7 @@ var effect_table = {
 		name = 'aarrow',
 		stack = 1,
 		rem_event = [variables.TR_POST_TARG],
-		tags = [],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_mul', stat = 'resistair', value = 0.65}],
@@ -729,7 +699,7 @@ var effect_table = {
 		name = 'aarrow',
 		stack = 1,
 		rem_event = [variables.TR_POST_TARG],
-		tags = [],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_mul', stat = 'resistair', value = 0.3}],
@@ -758,7 +728,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['debuff'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = ['e_t_freeze'],
 		atomic = [],
@@ -794,7 +764,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent',
-		tags = ['affliction', 'chill'],
+		tags = ['negative', 'chill'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_chill'],
 		atomic = [],
@@ -823,7 +793,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 1,#not sure cause not declared
-		tags = ['affliction'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -15}],
@@ -874,7 +844,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 4,
-		tags = ['debuff'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -25}],
@@ -887,7 +857,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		sub_effects = [],
-		tags = ['debuff'],
+		tags = ['negative'],
 		name = 'charm',
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.5}],
@@ -959,7 +929,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['debuff'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = ['e_t_firepunch'],
 		atomic = [],
@@ -1008,23 +978,10 @@ var effect_table = {
 		],
 		args = [{obj = 'parent', param = 'process_value'}],
 		req_skill = true,
-		sub_effects = ['e_s_burn1'],
+		sub_effects = ['e_s_burn'],
 		buffs = []
 	},
-	e_s_burn1 = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'burn',
-		stack = 1,
-		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F],
-		duration = 2,
-		tags = ['affliction', 'burn'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = ['e_burn'],
-		atomic = [],
-		buffs = ['b_burn'],
-	},
+
 	e_s_shockwave = {
 		type = 'temp_s',
 		target = 'target',
@@ -1033,7 +990,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 1,#not sure cause not declared
-		tags = ['affliction'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -20}],
@@ -1052,7 +1009,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 1,
-		tags = ['affliction', 'uppercut'],
+		tags = ['negative', 'uppercut'],
 		args = [],
 		sub_effects = ['e_t_uppercut'],
 		atomic = [],
@@ -1200,7 +1157,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'orb',
-		tags = ['curse'],
+		tags = ['negative'],
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 2,
@@ -1261,7 +1218,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,#not sure cause not declared
-		tags = ['debuff'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -25}],
@@ -1280,7 +1237,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['affliction', 'mist'],
+		tags = ['negative', 'mist'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_mist'],
 		atomic = [],
@@ -1309,7 +1266,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 1,
-		tags = ['debuff'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
@@ -1355,7 +1312,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['affliction', 'taunt'],
+		tags = ['taunt'],
 		args = [{obj = 'parent_arg_get', index = 0, param = 'position'}],
 		sub_effects = [],
 		atomic = ['a_taunt'],
@@ -1388,7 +1345,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		sub_effects = [],
-		tags = ['debuff'],
+		tags = ['negative'],
 		name = 'gust',
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.85}],
@@ -1401,7 +1358,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		sub_effects = [],
-		tags = ['debuff'],
+		tags = ['negative'],
 		name = 'gust',
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.75}],
@@ -1420,7 +1377,7 @@ var effect_table = {
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
 		],
 		req_skill = true,
-		sub_effects = ['e_s_burn1'], #or any other burn effect cause they all are stack 1 and this won't be applied
+		sub_effects = ['e_s_burn'], #or any other burn effect cause they all are stack 1 and this won't be applied
 		buffs = []
 	},
 	e_s_bless = {
@@ -1460,7 +1417,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['debuff'],
+		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
@@ -1773,6 +1730,7 @@ var effect_table = {
 	
 	
 	#old part
+	#we need to clean this part from unused effects given that there are effects from monsters (reworked or not), traits (reworked or not), items (reworked or not), gear (same as previous) and removed skills
 	#traits
 	e_tr_dmgbeast = {
 		type = 'trigger',
@@ -2275,40 +2233,40 @@ var effect_table = {
 		buffs = []
 	},
 	#skills
-	e_s_stun05 = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'random', value = 0.5}
-		],
-		buffs = [],
-		sub_effects = ['e_stun']
-	},
-	e_s_stun = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
-		],
-		buffs = [],
-		sub_effects = ['e_stun']
-	},
-	e_stun_alternate = { #template that can reset duration, no difference for one-turn effects but is an example for longer effects 
-		type = 'temp_s',
-		target = 'target',
-		stack = 1,
-		tick_event = [variables.TR_TURN_GET],
-		duration = 2,
-		rem_event = [variables.TR_COMBAT_F],
-		name = 'stun',
-		disable = true,
-		sub_effects = [],
-		atomic = [],
-		buffs = ['b_stun']
-	},
+#	e_s_stun05 = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+#			{type = 'random', value = 0.5}
+#		],
+#		buffs = [],
+#		sub_effects = ['e_stun']
+#	},
+#	e_s_stun = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
+#		],
+#		buffs = [],
+#		sub_effects = ['e_stun']
+#	},
+#	e_stun_alternate = { #template that can reset duration, no difference for one-turn effects but is an example for longer effects 
+#		type = 'temp_s',
+#		target = 'target',
+#		stack = 1,
+#		tick_event = [variables.TR_TURN_GET],
+#		duration = 2,
+#		rem_event = [variables.TR_COMBAT_F],
+#		name = 'stun',
+#		disable = true,
+#		sub_effects = [],
+#		atomic = [],
+#		buffs = ['b_stun']
+#	},
 	e_s_cripple = {
 		type = 'trigger',
 		req_skill = true,
@@ -3107,7 +3065,7 @@ var effect_table = {
 var atomic = {
 	a_bleed = {type = 'damage', source = 'neutral', value = ['parent_args', 0]},
 	a_burn = {type = 'damage', source = 'fire', value = ['parent_args', 0]},
-	a_poison = {type = 'damage', source = 'earth', value = ['parent_args', 0]},
+	a_poison = {type = 'damage', source = 'neutral', value = ['parent_args', 0]},
 	a_chill = {type = 'damage', source = 'water', value = [['parent_args', 0], '/', 2.25]},
 	a_mist = {type = 'damage', source = 'water', value = [['parent_args', 0], '*', 2]},
 	a_renew = {type = 'heal', value = ['parent_args', 0]},
@@ -3134,6 +3092,12 @@ var atomic = {
 #needs filling
 var buffs = {
 	#new part
+	b_intimidate = {
+		icon = "res://assets/images/traits/speeddebuf.png", 
+		description = "Damage reduced for %d turns",
+		args = [{obj = 'parent', param = 'remains'}],
+		t_name = 'intimidate'
+	},
 	b_bleed = {
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Bleeding",
@@ -3270,6 +3234,12 @@ var buffs = {
 		limit = 1,
 		t_name = 'unstable'
 	},
+	b_ex_charge = {
+		icon = "res://assets/images/traits/experience.png", #to fix
+		description = "Charging execute",
+		limit = 1,
+		t_name = 'charge'
+	},
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_stun = {
 		icon = "res://assets/images/traits/experience.png", #?? mb to fix
@@ -3296,28 +3266,6 @@ var buffs = {
 		t_name = 'sanctuary'
 	},
 	
-	
-	#code = {icon, description}
-#	stun = {icon = load("res://assets/images/traits/experience.png"), description = "Stunned"},
-#	noevade = {icon = load("res://assets/images/traits/dodgedebuff.png"), description = "Evasion Reduced"},
-#	prot10 = {icon = null, description = null},
-#	area_prot = {icon = null, description = null}, #marks owner of area protection effect
-#	react = {icon = load("res://assets/images/traits/speedondamage.png"), description = "Speed Increased"},
-#	slowarrow = {icon = load("res://assets/images/traits/dodgedebuff.png"), description = "Speed and Evasion reduced"},
-#	killer = {icon = load("res://assets/images/traits/bowextradamage.png"), description = "Next skill damage increased"},
-#	speed = {icon = null, description = null},
-#	area_speed = {icon = null, description = null}, #marks owner of area speed effect
-#
-#	taunted = {icon = load("res://assets/images/iconsskills/taunt.png"), description = "This unit is taunted and must attack next turn"},
-#	speed_debuf = {icon = null, description = null},
-#
-#	noresist = {icon = load("res://assets/images/traits/resistdebuf.png"), description = "Resists Reduced"},
-#	shield1 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Every turn creates a barrier, absorbing 15 physical damage"},
-#	shield2 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Absorbs 50 physical damage for 2 turns"},
-#	shield3 = {icon = load('res://assets/images/traits/armor.png'), bonuseffect = 'barrier', description = "Absorbs 50 magic damage for 2 turns"},
-#	spider_noarmor = {icon = load("res://assets/images/traits/armorignore.png"), description = "Armor Reduced"},
-#	cripple = {icon = load("res://assets/images/traits/speeddebuf.png"), description = "Damage Reduced"},
-#	dwarwnbuf_icon = {icon = load("res://assets/images/traits/beastdamage.png"), description = "Damage increases when taking damage"},
 };
 
 func rebuild_template(args):
@@ -3332,8 +3280,10 @@ func rebuild_template(args):
 	if args.has('trigger'): res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
 	else: res.trigger.push_back(variables.TR_POSTDAMAGE)
 	
-	if args.has('res_condition'): res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
-	else: res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
+	if args.has('res_condition'): 
+		res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
+	elif res.trigger[0] in [variables.TR_HIT, variables.TR_POSTDAMAGE]: 
+		res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
 	
 	if args.has('chance'): res.conditions.push_back({type = 'random', value = args.chance})
 	
@@ -3344,4 +3294,48 @@ func rebuild_template(args):
 	
 	res.sub_effects.push_back(args.effect)
 	
+	return res
+
+const e_dot_template = {
+	type = 'trigger',
+	trigger = [variables.TR_TURN_F],
+	req_skill = false,
+	conditions = [],
+	args = [{obj = 'parent_args', param = 0}],
+	sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'parent_args', param = 0}],
+			atomic = [],
+		}
+	],
+	buffs = []
+}
+
+func rebuild_dot(at_e):
+	var res = e_dot_template.duplicate(true)
+	res.sub_effects[0].atomic.push_back(at_e)
+	return res
+
+const e_remove = {
+	type = 'trigger',
+	trigger = [variables.TR_DEF],
+	conditions = [
+#		{type = 'skill', value = ['damagetype','eq', 'water'] },
+		{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
+	],
+	req_skill = true,
+	sub_effects = [
+		{
+			type = 'oneshot',
+			target = 'self',
+			execute = 'remove_parent'
+		}
+	],
+	buffs = []
+}
+
+func rebuild_remove(skill_cond):
+	var res = e_remove.duplicate(true)
+	res.conditions.push_back({type = 'skill', value = skill_cond.duplicate()})
 	return res

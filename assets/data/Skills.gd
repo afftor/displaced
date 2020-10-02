@@ -25,7 +25,84 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
+	},
+	fire_attack = { #use as template
+		code = 'fire_attack',
+		name = "",
+		description = "",
+		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+		damagetype = "fire",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		keep_target = variables.TARGET_KEEP,
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 0,
+		casteffects = [],
+		repeat = 1,
+		hidden = false,
+		sfx = [],
+		sfxcaster = null,
+		sfxtarget = null,
+		patches = [],
+		ai_priority = 1
+	},
+	fire_aoe = { #use as template
+		code = 'fire_aoe',
+		name = "",
+		description = "",
+		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+		damagetype = "fire",
+		skilltype = 'skill',
+		userange = "any",
+		targetpattern = 'all',
+		allowedtargets = ['enemy'],
+		keep_target = variables.TARGET_KEEP,
+		reqs = [],
+		tags = ['damage', 'aoe'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 0,
+		casteffects = [],
+		repeat = 1,
+		hidden = false,
+		sfx = [],
+		sfxcaster = null,
+		sfxtarget = null,
+		patches = [],
+		ai_priority = 0.7
+	},
+	fire_2_rand = { #use as template
+		code = 'fire_aoe',
+		name = "",
+		description = "",
+		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+		damagetype = "fire",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		keep_target = variables.TARGET_NOKEEP,
+		next_target = variables.NT_ANY,
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		manacost = 0,
+		casteffects = [],
+		repeat = 2,
+		hidden = false,
+		sfx = [],
+		sfxcaster = null,
+		sfxtarget = null,
+		patches = [],
+		ai_priority = 0.7
 	},
 	#to add data - names desc sfx sound icon
 	fencing = {
@@ -297,7 +374,7 @@ var skilllist = {
 		damagestat = ['no_stat', '+damage_hp'],
 		cooldown = 0,
 		manacost = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_burn', duration = 2, push_value = true})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})],
 		repeat = 1,
 		hidden = false,
 		sfx = [],
@@ -1514,7 +1591,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	dk_strike = {
 		code = 'dk_strike',
@@ -1538,7 +1616,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	dk_stun = {
 		code = 'dk_stun',
@@ -1563,7 +1642,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	dk_dark = {
 		code = 'dk_dark',
@@ -1588,7 +1668,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	dk_execute_charge = {
 		code = 'dk_execute_charge',
@@ -1612,7 +1693,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	dk_execute = {
 		code = 'dk_execute',
@@ -1632,11 +1714,12 @@ var skilllist = {
 		manacost = 0,
 		casteffects = [],
 		repeat = 1,
-		hidden = false,
+		hidden = true,
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 100
 	},
 	fq_summon1 = {
 		code = 'fq_summon1',
@@ -1661,7 +1744,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	fq_summon2 = {
 		code = 'fq_summon2',
@@ -1686,7 +1770,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	fq_lance = {
 		code = 'fq_lance',
@@ -1710,7 +1795,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	fq_screech = {
 		code = 'fq_screech',
@@ -1734,7 +1820,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	fq_flash = {
 		code = 'fq_flash',
@@ -1758,7 +1845,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	fq_blast = {
 		code = 'fq_blast',
@@ -1782,7 +1870,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	vic_fburst = {
 		code = 'vic_fburst',
@@ -1801,13 +1890,14 @@ var skilllist = {
 		damagestat = ['no_stat', '+damage_hp'],
 		cooldown = 2,
 		manacost = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_burn1', push_value = true})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})],
 		repeat = 1,
 		hidden = false,
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	vic_culling = {
 		code = 'vic_culling',
@@ -1831,7 +1921,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	en_enburst = {#victor & scientist
 		code = 'en_enburst',
@@ -1855,7 +1946,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	en_thrust = {#victor & scientist
 		code = 'en_thrust',
@@ -1879,7 +1971,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	sc_summon1 = {
 		code = 'sc_summon1',
@@ -1904,7 +1997,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	sc_summon2 = {
 		code = 'sc_summon2',
@@ -1929,7 +2023,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = null, hit = null, hittype = 'absolute'},
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	sc_shatter = {
 		code = 'sc_shatter',
@@ -1954,7 +2049,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	bomb_atk = {
 		code = 'bomb_atk',
@@ -1968,7 +2064,7 @@ var skilllist = {
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
 		reqs = [],
-		tags = ['damage'],
+		tags = ['damage', 'default'],
 		value = ['caster.damage', '*0.8'],
 		cooldown = 0,
 		manacost = 0,
@@ -1978,7 +2074,8 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		ai_priority = 1
 	},
 	bomb_cond1 = {
 		code = 'bomb_cond1',
@@ -1992,13 +2089,13 @@ var skilllist = {
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
 		reqs = [],
-		tags = ['damage', 'empty_target'],
+		tags = ['damage', 'empty_target', 'aoe'],
 		value = ['caster.damage', '*2'],
 		cooldown = 0,
 		manacost = 0,
 		casteffects = [],
 		repeat = 1,
-		hidden = false,
+		hidden = true,
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
@@ -2018,14 +2115,14 @@ var skilllist = {
 		keep_target = variables.TARGET_KEEP,
 		next_target = variables.NT_ANY,
 		reqs = [],
-		tags = ['damage', 'empty_target'],
+		tags = ['damage', 'empty_target', 'aoe'],
 		value = ['caster.damage', '*3'],
 		damagestat = 'no_stat',
 		cooldown = 0,
 		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_suicide', push_value = true})],
 		repeat = 1,
-		hidden = false,
+		hidden = true,
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
@@ -3392,7 +3489,7 @@ var patches = {
 		targetpattern = {type = 'set', value = 'line'},
 	},
 	p_clean_2 = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleance'}), Effectdata.rebuild_template({effect = 'e_s_burn', duration = 2, push_value = true})]}
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleance'}), Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})]}
 	},
 	p_barrier = {
 		repeat = {type = 'add', value = 1}
