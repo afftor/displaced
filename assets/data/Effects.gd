@@ -1539,7 +1539,7 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_KILL],
 		conditions = [
-			{type = 'owner', value = [{type = 'gear_level', slot = 'rhand', level = 2, op = 'gte'}] },
+			{type = 'owner', value = [{type = 'gear_level', set = 'rhand', level = 2, op = 'gte'}] },
 		],
 		req_skill = false,
 		sub_effects = [
