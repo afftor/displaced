@@ -537,7 +537,7 @@ var effect_table = {
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'target',
-			atomic = [{type = 'remove_all_effects', value = 'debuff'}]
+			atomic = [{type = 'remove_all_effects', value = 'negative'}]
 		}],
 		buffs = []
 	},
@@ -1450,6 +1450,87 @@ var effect_table = {
 			}
 		],
 	},
+	e_s_def = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		args = [{obj = 'parent', param = 'caster'}],
+		sub_effects = ['e_t_def_c', 'e_t_def_t'],
+		buffs = []
+	},
+	e_t_def_c = {
+		type = 'temp_s',
+		target = 'caster',
+		name = 'protect_c',
+		tick_event = variables.TR_TURN_F,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 1, 
+		stack = 1,
+		tags = ['buff'],
+		sub_effects = ['e_t_def_ctr', 'e_t_def_ctr1'],
+		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 25}],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Knight.png", 
+				description = "",
+				limit = 1,
+				t_name = 'protect_c'
+			}
+		],
+	},
+	e_t_def_ctr = {
+		type = 'trigger',
+		conditions = [],
+		trigger = [variables.TR_DEATH],
+		req_skill = false,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'self',
+				execute = 'remove_siblings'
+			},
+		],
+		buffs = []
+	},
+	e_t_def_ctr1 = {
+		type = 'trigger',
+		conditions = [
+			{type = 'owner', value = {type = 'status', status = 'stun', check = true} },
+			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
+		],
+		trigger = [variables.TR_POST_TARG],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'self',
+				execute = 'remove_siblings'
+			},
+		],
+		buffs = []
+	},
+	e_t_def_t = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'protect_t',
+		tick_event = variables.TR_TURN_F,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 1, 
+		stack = 1,
+		tags = ['buff'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = ['e_t_protect_ttr'],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Knight.png", 
+				description = "Is protected",
+				limit = 1,
+				t_name = 'protect_t'
+			}
+		],
+	},
 	
 	
 	
@@ -1626,7 +1707,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.2}],
 		buffs = ['b_bloodlust'],#or not
 	},
-	e_dispel_rage = {
+	e_dispel_rage = { #for both dwarwenking and dwarves
 		type = 'trigger',
 		trigger = [variables.TR_POST_TARG],
 		conditions = [
@@ -1641,6 +1722,29 @@ var effect_table = {
 			atomic = [{type = 'remove_all_effects', value = 'rage'}]
 		}],
 		buffs = []
+	},
+	e_tr_rage_1 = {
+		type = 'trigger',
+		trigger = [variables.TR_POST_TARG],
+		conditions = [
+			{type = 'skill', value = ['tags','has', 'damage'] },
+			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
+		],
+		req_skill = true,
+		sub_effects = ['e_rage_1'],
+		buffs = []
+	},
+	e_rage_1 = {
+		type = 'temp_s',
+		target = 'owner',
+		name = 'rage',
+		stack = 0,
+		rem_event = [variables.TR_COMBAT_F],
+		tags = ['buff', 'rage'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.05}],
+		buffs = ['b_bloodlust'],#or not
 	},
 	e_s_execute_charge = {
 		type = 'temp_s',
