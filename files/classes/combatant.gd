@@ -239,6 +239,8 @@ func regen_calculate_threshhold():
 func set_shield(value):
 #	if shield != 0: 
 #		process_event(variables.TR_SHIELD_DOWN)
+	if globals.combat_node != null and globals.combat_node.rules.has('no_shield'): 
+		if value > shield: return
 	shield = value;
 	if displaynode != null:
 		displaynode.update_shield()
@@ -526,6 +528,12 @@ func apply_atomic(template):
 			play_sfx(template.value)
 		'tick_cd':
 			tick_cooldowns()
+		'add_rule':
+			if globals.combat_node == null: return
+			if !globals.combat_node.rules.has(template.value): globals.combat_node.rules.push_back(template.value)
+		'ai_call':
+			if ai == null: return
+			if ai.has_method(template.value): ai.call(template.value)
 
 
 func remove_atomic(template):
@@ -546,6 +554,9 @@ func remove_atomic(template):
 			cooldowns.erase(template.skill)
 		'remove_skill':
 			skills.push_back(template.skill)
+		'add_rule':
+			if globals.combat_node == null: return
+			globals.combat_node.rules.erase(template.value)
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -901,10 +912,12 @@ func deal_damage(value, source):
 	else:
 		self.hp = hp - value
 		process_event(variables.TR_DMG)
+		recheck_effect_tag('recheck_damage')
 	tmp = tmp - hp
 	return tmp
 
 func heal(value):
+	if globals.combat_node != null and globals.combat_node.rules.has('no_heal'): return 0
 	var tmp = hp
 	value = round(value)
 	self.hp += value

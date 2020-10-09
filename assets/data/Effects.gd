@@ -150,6 +150,20 @@ var effect_table = {
 		buffs = ['b_silence'],
 		atomic = [],
 	},
+	e_s_poison_water = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'poison_w',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 3,
+		tags = ['poison'],#or may be not
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [rebuild_dot('a_poison_w')],
+		atomic = [],
+		buffs = ['b_poison'],
+	},
 	#effects for new skils
 	e_fen_addrep = {
 		type = 'trigger',
@@ -1823,8 +1837,47 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	
-	
+	e_dim_hp_1 = {
+		type = 'c_static',
+		conditions = [{code = 'stat', stat = 'hp_p', operant = 'lt', value = 100}],
+		tags = ['recheck_damage'],
+		no_escape = true,
+		atomic = [{type = 'add_rule', value = 'no_barrier'}],
+		buffs = ['b_dim_1'],
+		sub_effects = [],
+	},
+	e_dim_hp_2 = {
+		type = 'c_static',
+		conditions = [{code = 'stat', stat = 'hp_p', operant = 'lt', value = 75}],
+		tags = ['recheck_damage'],
+		no_escape = true,
+		atomic = [{type = 'add_rule', value = 'no_heal'}],
+		buffs = ['b_dim_2'],
+		sub_effects = [],
+	},
+	e_dim_hp_3 = {
+		type = 'c_static',
+		conditions = [{code = 'stat', stat = 'hp_p', operant = 'lt', value = 40}],
+		tags = ['recheck_damage'],
+		no_escape = true,
+		atomic = [{type = 'add_rule', value = 'no_res'}],
+		buffs = ['b_dim_3'],
+		sub_effects = [],
+	},
+	e_dim_resists = {
+		type = 'trigger',
+		conditions = [],
+		trigger = [variables.TR_HIT],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'ai_call', value = 'shuffle_resists'}],
+			},
+		],
+		buffs = []
+	},
 	
 	
 	
@@ -3170,6 +3223,7 @@ var atomic = {
 	a_bleed = {type = 'damage', source = 'neutral', value = ['parent_args', 0]},
 	a_burn = {type = 'damage', source = 'fire', value = ['parent_args', 0]},
 	a_poison = {type = 'damage', source = 'neutral', value = ['parent_args', 0]},
+	a_poison_w = {type = 'damage', source = 'water', value = ['parent_args', 0]},
 	a_chill = {type = 'damage', source = 'water', value = [['parent_args', 0], '/', 2.25]},
 	a_mist = {type = 'damage', source = 'water', value = [['parent_args', 0], '*', 2]},
 	a_renew = {type = 'heal', value = ['parent_args', 0]},
@@ -3343,6 +3397,24 @@ var buffs = {
 		description = "Charging execute",
 		limit = 1,
 		t_name = 'charge'
+	},
+	b_dim_1 = {
+		icon = "res://assets/images/traits/experience.png", #to fix
+		description = "No barriers",
+		limit = 1,
+		t_name = 'rule1'
+	},
+	b_dim_2 = {
+		icon = "res://assets/images/traits/experience.png", #to fix
+		description = "No heals",
+		limit = 1,
+		t_name = 'rule2'
+	},
+	b_dim_3 = {
+		icon = "res://assets/images/traits/experience.png", #to fix
+		description = "No reanimation",
+		limit = 1,
+		t_name = 'rule3'
 	},
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_stun = {

@@ -29,6 +29,7 @@ var enemygroup = {}
 var currentactor
 
 var summons = []
+var rules = []
 
 var activeaction
 var activeitem
@@ -107,6 +108,7 @@ func test_combat():
 func start_combat(newenemygroup, background, music = 'combattheme'):
 	globals.combat_node = self
 	turns = 0
+	rules.clear()
 	$Background.texture = images.backgrounds[background]
 	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
@@ -625,7 +627,7 @@ func enemy_turn(pos):
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
-	use_skill(castskill, fighter, target)
+	yield(use_skill(castskill, fighter, target), 'completed')
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	#yield(self, "skill_use_finshed")
@@ -634,7 +636,7 @@ func enemy_turn(pos):
 		castskill = fighter.ai._get_action()
 		#target = battlefield[fighter.ai._get_target(castskill)]
 		target = fighter.ai._get_target(castskill)
-		use_skill(castskill, fighter, target)
+		yield(use_skill(castskill, fighter, target), 'completed')
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 
@@ -834,26 +836,28 @@ func buildplayergroup(group):
 		newgroup[i] = fighter
 	playergroup = newgroup
 
-func summon(montype, limit):
+func summon(montype, number):
 	# for now summoning is implemented only for opponents
 	# cause i don't know if ally summons must be player- or ai-controlled
 	# and don't know if it is possible to implement ai-controlled ally
-	if summons.size() >= limit: return
 	#find empty slot in enemy group
 	var group = [4,5,6,7,8,9];
 	var pos = [];
 	for p in group:
 		if battlefield[p] == null: pos.push_back(p);
-	if pos.size() == 0: return;
-	var sum_pos = pos[randi() % pos.size()];
-	summons.push_back(sum_pos);
-	enemygroup[sum_pos] = combatant.new();
-	enemygroup[sum_pos].createfromenemy(montype);
-	enemygroup[sum_pos].combatgroup = 'enemy'
-	battlefield[sum_pos] = enemygroup[sum_pos];
-	make_fighter_panel(battlefield[sum_pos], sum_pos);
-	state.combatparty[sum_pos] = enemygroup[sum_pos].id
-	state.heroes[enemygroup[sum_pos].id] = enemygroup[sum_pos]
+	if typeof(number) == TYPE_ARRAY:
+		number = globals.rng.randi_range(number[0], number[1])
+	for i in range(number):
+		if pos.size() == 0: return;
+		var sum_pos = pos[randi() % pos.size()];
+		pos.erase(sum_pos)
+		enemygroup[sum_pos] = combatant.new();
+		enemygroup[sum_pos].createfromenemy(montype);
+		enemygroup[sum_pos].combatgroup = 'enemy'
+		battlefield[sum_pos] = enemygroup[sum_pos];
+		make_fighter_panel(battlefield[sum_pos], sum_pos);
+		state.combatparty[sum_pos] = enemygroup[sum_pos].id
+		state.heroes[enemygroup[sum_pos].id] = enemygroup[sum_pos]
 
 
 func refine_target(skill, caster, target): #s_skill, caster, target_positin
@@ -1019,7 +1023,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			if skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			elif skill.damagetype == 'resurrect':
-				i.resurrect(skill.value[0]) #not sure
+				if !rules.has('no_res'): i.resurrect(skill.value[0]) #not sure
 			else: 
 				#default skill result
 				#execute_skill(s_skill1, caster, i)
