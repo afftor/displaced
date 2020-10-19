@@ -1,0 +1,11 @@
+[
+{"effect":"background","value":"market"},
+{"args":"flak","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Hey, big guy, there's some nasty news coming from Aeros."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Really? What about?"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Dunno, something like a war?"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":" There seem to be many refugees coming from that direction."},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Just thought you'd be interested to know about it."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Doesn't seem good. I guess we should check it out."},
+{"effect":"stop"}
+]

@@ -1,0 +1,13 @@
+[
+{"effect":"background","value":"forest"},
+{"args":"erika","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"This should be the place."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Seems like nobody is around."},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"They change their homes often."},
+{"effect":"text","portrait":"null","sound":null,"source":"narrator","value":"..."},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"This must be it."},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"Hmm..."},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"Got it. We can go now."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Good. I'm eager to shut her nasty mouth."},
+{"effect":"stop"}
+]

@@ -1,0 +1,20 @@
+[
+{"effect":"background","value":"hall"},
+{"args":"iola","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"IolaNeutral","sound":null,"source":"IOLA","value":"Arron, I've got good news."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"You've found a way to make Rose's boobs bigger?"},
+{"effect":"text","portrait":"IolaNeutral","sound":null,"source":"IOLA","value":"N-no... Rilu taught me how to use that pearl you got to summon its owner. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Oh... I'm already focused on the idea of giving Rose a huge rack."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Maybe at least temporarily."},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"I'm also here you know."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Jeez, fine. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"What about that mysterious guy?"},
+{"effect":"text","portrait":"IolaSad","sound":null,"source":"IOLA","value":"Well, I hope he can help me to understand what's going on with Father."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"And he might know how we can get back. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"How awfully convenient. "},
+{"effect":"text","portrait":"IolaNeutral","sound":null,"source":"IOLA","value":"There's a ritual which will allow us to summon him, but we would need a special place of power. "},
+{"effect":"text","portrait":"IolaNeutral","sound":null,"source":"IOLA","value":"Rilu said she's seen one where you found her. "},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Ugh, those caves..."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"I see. Well, might as well try it since there's not much else to do. "},
+{"effect":"stop"}
+]

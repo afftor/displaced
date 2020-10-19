@@ -1,0 +1,15 @@
+[
+{"effect":"background","value":"mountainsday"},
+{"args":"rose","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Hey, Rose, you know what?"},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Yes? "},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"I don't think I ever ate a dragon. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Can you cook it? "},
+{"effect":"text","portrait":"RoseTalk","sound":null,"source":"ROSE","value":"Do you think it's appropriate? I mean there's Ember..."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Oh, I've tasted her already, alright. "},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"..."},
+{"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"Ah, I wanna try it too!"},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"Please, let's not distract too much, it's dangerous here. "},
+{"effect":"text","portrait":"EmberTired","sound":null,"source":"EMBER","value":"Oh, sorry. "},
+{"effect":"stop"}
+]

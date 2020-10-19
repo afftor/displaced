@@ -17,6 +17,8 @@ var EndOfDialogue = false
 var Delay = 0
 var ReceiveInput = false
 
+var VideoBg = false
+
 var debug
 # var SceneData = load("res://files/DialoguesData.gd").new()
 
@@ -81,6 +83,7 @@ func _input(event):
 	
 
 func _ready():
+	VisualServer.set_default_clear_color(Color.black)
 	set_process(false)
 	globals.AddPanelOpenCloseAnimation($LogPanel)
 #warning-ignore:return_value_discarded
@@ -183,6 +186,17 @@ func AdvanceScene():
 				state.keyframes.push_back(CurrentLine)
 				ReceiveInput = false
 			'background':
+				if VideoBg:
+					$Tween.interpolate_property($Background, "modulate:a",
+						0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
+					$Tween.interpolate_property($VideoBunch, "modulate:a",
+						1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
+					$Tween.start()
+					VideoBg = false
+					yield(get_tree().create_timer(0.3), "timeout")
+					for i in $VideoBunch.get_children():
+						i.stop()
+						i.stream = null
 				if NewEffect.has('time'):
 					input_handler.SmoothTextureChange($Background, images.backgrounds[NewEffect.value], NewEffect.time)
 				else:
@@ -190,11 +204,26 @@ func AdvanceScene():
 				$Background.update()
 				state.keyframes.push_back(CurrentLine)
 				ReceiveInput = false
+			'anim_background':
+				if !VideoBg:
+					$Tween.interpolate_property($Background, "modulate:a",
+						1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
+					$Tween.interpolate_property($VideoBunch, "modulate:a",
+						0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
+					$Tween.start()
+					VideoBg = true
+				if NewEffect.has('trans'):
+					$VideoBunch.Change(images.anims[NewEffect.value],
+						images.anims[NewEffect.trans])
+				else:
+					$VideoBunch.Change(images.anims[NewEffect.value])
+				state.keyframes.push_back(CurrentLine)
+				ReceiveInput = false
 			'music':
 				input_handler.SetMusic(NewEffect.value)
 				ReceiveInput = false
 			'music_stop':
-				input_handler.StopMusic(NewEffect.value)
+				input_handler.StopMusic()
 				ReceiveInput = false
 			'sound':
 				input_handler.PlaySound(NewEffect.value)
@@ -226,7 +255,7 @@ func AdvanceScene():
 				TextField.bbcode_text = text
 				ReceiveInput = true
 			'sprite':
-				SpriteDo(ImageSprite, NewEffect.value, NewEffect.args)
+				SpriteDo(ImageSprite, NewEffect.value, NewEffect.args, NewEffect.get("delay", 0.0))
 				state.keyframes.push_back(CurrentLine)
 				ReceiveInput = false
 #			'nextevent':
@@ -265,14 +294,14 @@ func AdvanceScene():
 		
 		CurrentLine += 1
 
-func SpriteDo(node, value, args):
+func SpriteDo(node, value, args, delay = 0.0):
 	match value:
 		'set':
 			node.texture = images.sprites[args]
 		'unfade':
-			input_handler.UnfadeAnimation(node, args)
+			input_handler.UnfadeAnimation(node, args, delay)
 		'fade':
-			input_handler.FadeAnimation(node, args)
+			input_handler.FadeAnimation(node, args, delay)
 		'hide':
 			node.texture = null
 

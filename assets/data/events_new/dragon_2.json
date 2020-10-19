@@ -1,0 +1,15 @@
+[
+{"args":"dragon","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"Dragon","sound":null,"source":"DRAGON","value":"Foolish mortals! How dare you approach me?"},
+{"effect":"text","portrait":"RoseTalk","sound":null,"source":"ROSE","value":"Wow, this one can speak!"},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Damnit... Now we can't eat them."},
+{"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"Why?"},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"It's obvious, you can't eat sentient things. "},
+{"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"...Really?"},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Stop it. Look, we came here because our friend-"},
+{"effect":"text","portrait":"Dragon","sound":null,"source":"DRAGON","value":"For this offence you'll have to pay!"},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"I feel like he might not be listening... "},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"He looks quite old."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Darn, I guess there's no choice but to fight."},
+{"effect":"stop"}
+]

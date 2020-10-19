@@ -1,0 +1,19 @@
+[
+{"effect":"gui","value":"gui_normal"},
+{"effect":"background","value":"forest"},
+{"args":"rose","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"So, anyone has any ideas?"},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"I can stop her from getting away."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Oh? What do you need for that?"},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"We can take her close relative as a hostage."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"That's..."},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"I'm jesting. "},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"I can stop her with magic. "},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"I’m gonna need something of her personal belongings though. "},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"Like a brush or clothes."},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"We might find something at her nest then."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"You know where is it?"},
+{"effect":"text","portrait":"ErikaNormal","sound":null,"source":"ERIKA","value":"Yeah I know the old one. Faeries often change them but they also tend to leave some of their stuff behind."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Alright, let's check it."},
+{"effect":"stop"}
+]

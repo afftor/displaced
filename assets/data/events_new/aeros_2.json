@@ -1,0 +1,20 @@
+[
+{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenunfade"},
+{"effect":"background","value":"town_out"},
+{"effect":"music","value":"eventlight"},
+{"args":0.5,"delay":0.5,"effect":"sfx","value":"blackscreenfade"},
+{"effect":"gui","value":"gui_normal"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Hey, we dealt with that dwarf issue. "},
+{"effect":"text","portrait":"Guard","sound":null,"source":"GUARD","value":"Which dwarf issue? "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"The one you told us to take care of. Bloodthirsty dwarves and such, remember?"},
+{"effect":"text","portrait":"Guard","sound":null,"source":"GUARD","value":"No idea what you are talking about."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Carl, please, you are really getting on my nerves."},
+{"effect":"text","portrait":"Guard","sound":null,"source":"GUARD","value":"I'm not Carl. That guy was kicked out a few days ago."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Argh... Whatever. We've dealt with dwarves, now let us pass. We had an agreement."},
+{"effect":"text","portrait":"Guard","sound":null,"source":"GUARD","value":"Look, I don't know anything about the agreement. And I’m only seeing you for the first time."},
+{"effect":"text","portrait":"Guard","sound":null,"source":"GUARD","value":"You are free to pass through. No idea what that moron Carl said to you, but the entrance is free. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"......"},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"It's all good, we can enter the city now, right?"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"That bastard was really lucky his face was hidden by a helmet. "},
+{"effect":"stop","value":""}
+]

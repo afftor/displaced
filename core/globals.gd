@@ -15,8 +15,9 @@ var EventList = events.checks
 var scenedict = {
 	menu = "res://files/scenes/Menu.tscn",
 	town = "res://files/scenes/MainScreen.tscn"
-	
 }
+
+var events_path = "res://assets/data/events"
 
 #var items
 #var TownData
@@ -256,13 +257,15 @@ func SimpleEventCheck(event):
 
 func LoadEvent(name):
 	var dict
-	
-	if file.file_exists("res://assets/data/events/"+ name + '.json'):
-		file.open("res://assets/data/events/"+ name + '.json', File.READ)
+	if file.file_exists(events_path + '/' + name + '.json'):
+		file.open(events_path + '/' + name + '.json', File.READ)
 		dict = parse_json(file.get_as_text())
 		file.close()
 	else:
 		print('Event not found: ' + name)
+	
+	events_path = "res://assets/data/events"
+	
 	return dict
 
 func StartEventScene(name, debug = false, line = 0):
@@ -760,6 +763,9 @@ func datetime_comp(a, b):
 
 func get_last_save():
 	var dir = dir_contents(userfolder + 'saves')
+	
+	if dir == null: return
+	
 	var dated_dir = {}
 	var tmp = File.new()
 	for i in dir_contents(userfolder + 'saves'):

@@ -24,8 +24,13 @@ var sounds = {
 	crash = load("res://assets/sounds/sounds/crash.wav"),
 	punch = load("res://assets/sounds/sounds/punch.wav"),
 	
+	# TO ADD
+	footstep = load("res://assets/sounds/sounds/punch.wav"),
+	dooropen = load("res://assets/sounds/sounds/punch.wav"),
+	cling = load("res://assets/sounds/sounds/punch.wav"),
+	explosion = load("res://assets/sounds/sounds/punch.wav"),
+
 	morning = load("res://assets/sounds/sounds/morning_rooster.wav"),
-	
 	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
 	
 	blade = load("res://assets/sounds/sounds/dodge.wav"),#load("res://assets/sounds/sounds/fx knife hit solo.wav"),

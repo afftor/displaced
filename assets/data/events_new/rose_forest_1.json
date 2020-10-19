@@ -1,0 +1,22 @@
+[
+{"effect":"gui","value":"gui_normal"},
+{"effect":"background","value":"forest"},
+{"args":"faeryqueen","effect":"sprite","value":"set"},
+{"args":0.5,"effect":"sprite","value":"unfade"},
+{"effect":"text","portrait":"FaeryQueen","sound":null,"source":"FAERY_QUEEN","value":"Greetings, fuckwits."},
+{"effect":"text","portrait":"FaeryQueen","sound":null,"source":"FAERY_QUEEN","value":"What do you think you are doing coming here?"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Huh... I wonder if there's any point in trying to negotiate at all."},
+{"effect":"text","portrait":"FaeryQueen","sound":null,"source":"FAERY_QUEEN","value":"Huh? Whatcha gonna do, dumbass? Ride that dragon cunt like some damn hero?"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Whatever, we want the Saint's Pearl."},
+{"effect":"text","portrait":"FaeryQueen","sound":null,"source":"FAERY_QUEEN","value":"Yeah, and I want your ass roasted by an ogre. Do you think I'm gonna give it to you?"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"...Get this bitch."},
+{"effect":"text","portrait":"FaeryQueen","sound":null,"source":"FAERY_QUEEN","value":"Ha, suck it losers."},
+{"args":0.5,"effect":"sprite","value":"fade"},
+{"effect":"sound","value":"teleport"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Damn it, she got away."},
+{"effect":"text","portrait":"EmberFriendly","sound":null,"source":"EMBER","value":"Look, there's a portal left after her."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Ah, we could follow it."},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"I don't think this is a good idea. "},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"We don't know where we might end up."},
+{"effect":"stop"}
+]

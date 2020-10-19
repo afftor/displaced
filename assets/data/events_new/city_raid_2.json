@@ -1,0 +1,23 @@
+[
+{"effect":"background","value":"burning_city"},
+{"effect":"text","portrait":"null","sound":null,"source":"narrator","value":"The team has entered Aeros observing the surrounding disaster."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"This looks horrible..."},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"What are you doing here?!"},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"You should escape with everyone now!"},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"What exactly is going on?"},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"Monsters and demons attacked the city."},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"They have taken the city hall and now hunt every man in the vicinity."},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"Some guards still try to fight, but it's all meaningless."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Hmm.. What about the city hall?"},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"People say everyone there was killed. Monsters come from there as if there's a nest."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"I guess that's our target then."},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"Whatever, if you die it's not my problem."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Why don't you show some guts? It's your city after all."},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"You are a fool."},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"At times like these your only chance to survive is to watch out for yourself."},
+{"args":"demon","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"Demitrius","sound":null,"source":"DIMITRIUS","value":"Raaargh!"},
+{"effect":"text","portrait":null,"sound":null,"source":"SURVIVOR","value":"S-Screw you, I'm out of here!"},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"No wonder the city is in ruins with residents like these."},
+{"effect":"stop"}
+]

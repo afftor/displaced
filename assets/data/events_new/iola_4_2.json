@@ -1,0 +1,14 @@
+[
+{"effect":"background","value":"cave"},
+{"args":"iola","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"IolaNeutral","sound":null,"source":"IOLA","value":"Wow, these caves are quite dark. "},
+{"effect":"text","portrait":"IolaNeutral","sound":null,"source":"IOLA","value":"You say you were here all alone, Rilu? "},
+{"effect":"text","portrait":"IolaNeutral","sound":null,"source":"IOLA","value":"Seems like a scary place for a little girl."},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"Please, I'm older than you. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Plus you don't have to worry about actually dying."},
+{"effect":"text","portrait":"RiluNormal","sound":null,"source":"RILU","value":"I'd be in trouble if you die though."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Won't we all."},
+{"effect":"text","portrait":"IolaSad","sound":null,"source":"IOLA","value":"I don't really feel comfortable around here."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Me neither. Let's find what we need sooner rather than later."},
+{"effect":"stop"}
+]

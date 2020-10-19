@@ -1,0 +1,15 @@
+[
+{"effect":"background","value":"cult"},
+{"effect":"text","portrait":"null","sound":null,"source":"narrator","value":"The group has entered the Cult's temple grounds. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Huh... This organization seems rather abundant. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"So, do you think we'll be able to pass through without causing ruckus?"},
+{"effect":"text","portrait":"goblin","sound":null,"source":"GOBLIN","value":"Hey, stop right there!"},
+{"effect":"text","portrait":"goblin","sound":null,"source":"GOBLIN","value":"Hey, it's those guys we've been told about."},
+{"effect":"text","portrait":"goblin","sound":null,"source":"GOBLIN","value":"Shit, don't let them get away!"},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Looks like we are expected."},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"That's not a good thing."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Why are you so pessimistic? "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Maybe they just wanna show us around."},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"Yeah, judging on how they charge at us armed, it will be their prison they want us to see."},
+{"effect":"stop"}
+]

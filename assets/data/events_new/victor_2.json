@@ -1,0 +1,17 @@
+[
+{"effect":"background","value":"villageday"},
+{"args":"rose","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"I've got a letter. Looks like it's about Ember."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Hmm? That's unusual. "},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"It says \"I know you are hiding a dragon offspring. Give her away or your little village will be demolished.\""},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"\"This is the only warning. Bring it to the Aeros' Forest entrance.\""},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Hmm, I guess we have a new task on our hands."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"They make a threat against the village, and this looks like a trap."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Why would they need Ember? "},
+{"effect":"text","portrait":"ArronShock","sound":null,"source":"ARRON","value":"I don't care. My harem is mine and if they dare to threaten it, I won't give them any mercy."},
+{"effect":"text","portrait":"RoseSarcastic","sound":null,"source":"ROSE","value":"You really should stop seeing us as your property. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"You aren't property. "},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"I don't care about property. I care about cute girls."},
+{"effect":"text","portrait":"RoseNormal","sound":null,"source":"ROSE","value":"Well, I guess we will know it once we get there."},
+{"effect":"stop"}
+]

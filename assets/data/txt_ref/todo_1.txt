@@ -1,0 +1,2952 @@
+**rose_forest_2**
+=BG forest=
+=SPRITE erika=
+Er - This should be the place.
+Ar(neutral) - Seems like nobody is around.
+Er - They change their homes often.
+...
+Er - This must be it.
+Er - Hmm...
+Er - Got it. We can go now.
+Ar - Good. I'm eager to shut her nasty mouth.
+=STOP=
+
+**rose_forest_3**
+=BG forest=
+=SPRITE faeryqueen=
+Ar - There she is.
+FQ - Oh, look, it's you retards again.
+FQ - Have you not learned your lesson yet?
+Ar - Are you ready?
+Ri - Yes, give me the catalyst. 
+Er - Here's the stuff.
+Ri(talk) - Is that... her underwear?
+Er - Sure. Why?
+Ro(sarcastic) - Why would you pick exactly that out of all items?
+Er - How would you be sure it's actually hers otherwise?
+FQ - Haha, what are you even doing?
+FQ - You idiot perverts.
+FQ - Just go wank yourself to death
+FQ - See you, fools.
+Ri(cast) - ...
+{"args":0.2,"delay":0.2,"effect":"sprite","value":"fade"},
+{"args":0.2,"delay":0.1,"effect":"sprite","value":"unfade"},
+FQ - What the... I can't teleport?
+FQ - You'll pay for this, you bastards! 
+Ar(neutral) - Great, now get her.
+=STOP=
+
+**victor**
+=BG town_in=
+A moderate crowd is gathered around one of the city entrances as if there was a parade.
+Ar - Hmm? What's going on here?
+S - You don't know? 
+S - Sir Victor returns from his expedition. 
+=SPRITE victor=
+Ro(talk) - We aren't quite locals. Who's that?
+S - He's the strongest fighter around these lands. 
+Ar - Nonsense, I'm the strongest fighter around these lands.
+Ro(sarcastic) - No, you aren't. 
+S - He almost single-handedly won the conclusive battle of the trade wars 15 years ago. 
+S - And he has been defending the kingdom's peace all these years. 
+Ar - Well, isn't he popular.
+S - He sure is! Despite his age, he has no contenders in the arena or in training.
+Ar - Are you in his fan club or something?
+S - ... Maybe, what's it to you?
+Ar - Okay, this is getting silly.
+Ar - Let's go already, there's nothing to do here.
+Ar - .....
+Ar - Maybe I'll start my own fanclub eventually.
+Ro(sarcastic) - I don't think that's how it works.
+Em - Oh, you gonna have a fanclub? Can I join!?
+Ar - Sure, once we start our campaign for world domination we can use all the help we can get.
+Em - Eh? What's world domination? 
+Ro(sarcastic) - Ignore it Ember, it's not important.
+Ar - Hmph. Don't make me reconsider your second-in-command position, Rose.
+=STOP=
+
+**annet**
+=BG hall=
+The annual meeting is being held at the city hall. 
+The hall is filled with nobles and the richest people of the region. 
+CM - So, according to this claim, Mr. Nicolas has failed his contract agreement.
+CM - Do you acknowledge it? 
+N - Yes, but it wasn't my fault. 
+N - My storage was set on fire!
+=SPRITE annet=
+(?)An - You know this can't be used for your defense. 
+(?)An - You've broken the business agreement and now you have to pay the fine. 
+N - Gh... But I'll be going bankrupt because of this!
+(?)An - This isn't the city's issue. 
+(?)An - If you can't make your deals, you shouldn't accept them in the first place.
+CM - I agree with Ms. Annet. We will have to seize your property in the name of the city. 
+CM - Please provide an escort to Mr. Nicolas, the meeting is over. 
+N - Damnit, I've been set up!..
+=BLACKTRANS 0.5=
+An - Another hard issue resolved, friend?
+CM - Indeed, I must thank you for your cooperation.
+CM - I knew it was the right decision to introduce you to the committee.
+An - You scratch my back, and I'll scratch yours, right?
+CM - True, now if you excuse me, I have other business to take care of.
+=SOUND footstep=
+...
+An - Heh, humans are really easy.
+=STOP=
+
+**erika_annet**
+=BG town_in=
+=SPRITE erika=
+Taking a day off Erika walks through Aeros' market.
+M - Hey, elf girl. 
+M - Looking for something specific?
+Er - Nah, Just checking around.
+M - Oh right, you are from that desert village. 
+M - You don't have to dress that skimpy around here though. 
+Er - Don't worry, it's one of my favorite outfits.
+M - A-ha, alright then.
+Elf Child - No, please let us go!
+Erika turned to the noise from the other side of the market.
+A pair of captured children, no older than twelve, were sold to an obese rich man.
+RN - Shut it, you cur.
+RN - I've paid a good sum for you.
+EC - *sob* Please, I want to see my mom.
+RN - They are pretty unruly.
+RN - Don't worry, you'll work off your price in bed and become real ta-
+=SOUND punch=
+=SHAKE_SCREEN 0.5=
+Before the man could notice it, Erika punched him into the face, quickly freeing the children after that.
+Er - Run kids.
+Without a second thought they disappeared into the crowds.
+RN - You... Bitch! What do you think you are doing?!
+Er(angry) - The right thing.
+RN - You don't know who I am? I'm Hector Blackthrorn.
+Hearing that name made people around pay more attention as it was one of the city's strongest families.
+RN - Those slaves cost me 12 thousand gold.
+RN - You better pay up now.
+RN - Or should we turn you into the city guard.
+Er(angry) - ...
+Erika noticed how people were gathering around her, attracted by the ruckus.
+RN - Hah, there's no way you can carry this much money in your garment though.
+=SPRITE annet=
+An - What's going on here, Hector?
+Er - ...?
+RN - Ms. Annet? It's nothing requiring your attention. 
+RN - This elf just made me lose a pair of freshly bought slaves.
+An(angry) - Trying to get your filthy hands on the poor kids again, are you?
+An(angry) - That's disgusting, and it's only natural someone would want to save them.
+RN - This is not against the law, and I paid fair and square. 
+Rn - I demand my money back!
+An(angry) - Hmph, fine. You'll have your gold, make sure it will serve something better than your perverted hobbies.
+Hearing this, the previously distant crowd began cheering Annet.
+Str - Wow, Ms. Annet really is a respectable committee member.
+Str2 - This is what all rich and nobles should be like.
+RN - Hmph, fine.
+RN - Have it your way, this time. 
+After receiving the confirmation letter, Hector walked away.
+An - Now, that is taken care of...
+An - I would like to have a word with you...
+An - Your name is Erika, right?
+Erika went numb from hearing her name. 
+Her previous readiness to fight drains from her.
+=BLACKFADE 0.5=
+After a few minutes Erika was brought into Annet's mansion.
+=MUSIC erotheme=
+=ABG demon_erika_1=
+=BLACKUNFADE 0.5=
+In the middle of a dark cell Erika had Annet standing closely behind her.
+An - Surely, it's been a long time, Erika. 
+An - I wonder what have you been doing all this time.
+Er - ...What do you want?
+An - Well, aren't you uncharacteristically rude?
+An - I guess it's only natural you'd lose some manners.
+Er - .....
+An - This will make things more fun.
+=ABG demon_erika_2 demon_erika_3=
+Annet possessively grabbed Erika from behind. 
+Her hands moved over her breasts but Erika didn't stop her.
+Er - Ngh... 
+Against her will, Erika exhaled in a slightly excited manner.
+An - Mhmm... Your body is as good as it was back there. 
+An - Isn't it nice to be an elf?
+An - Your firm tits are so nice to touch. 
+An - Most elves are too bony.
+An - It seems your body still remembers me well, Erika.
+An - I can feel your nipples are very hard even through fabric. 
+Er - ...No...
+An - I had lots of fun playing with you.
+Er - Stop it!
+=ABG demon_erika_4 demon_erika_5=
+Finally Erika tried to stop Annet's actions.
+However Annet easily predicted it and Erika's hands were quickly cuffed above her.
+An - Your behavior, on other hand...
+An - I will have to train you back into a good obedient thing.
+An - Just like you were.
+Er - I don't want it...
+An - We will see about that. 
+Annet removed what little cloth was covering Erika's body, making her shiver.
+=ABG demon_erika_6 demon_erika_7=
+An - I'm betting my estate you will beg me to keep you around by tomorrow.
+An - Because in the end, you are nothing but a little elven whore.
+Er - ...You are wrong...
+*Slap*
+Annet's hand punished Erika with a hard slap on her butt, making her stop her protests.
+An - Let's not make this too rough, dear. 
+An - I want to save our reunion from needless cruelty. 
+An - After all, this is the only thing you are good for.
+Er - *sob*
+An - Don't be sad, that's exactly how I like you.
+An - And I can feel how this makes you horny.
+Er - Ah...
+Annet's hand reached between Erika's legs entering the damp walls of her pussy.
+=ABG demon_erika_8 demon_erika_9=
+An - So wet already.
+Er - Ah...
+An - Aren't you happy you get to play with your Mistress after so long?
+Despite her resistance, Erika's legs slowly spreaded, allowing Annet easier access to her slit.
+An - Ah-ha-ha, just look at this. 
+An - After all these words you willingly let yourself be molested even without my request.
+Er - I'm!.. No... Ah!! 
+Increasing her tempo, Annet brought Erika to climax.
+After that she lost any power to speak coherently.
+Her mind regressed back to the times when she was fully controlled by Annet.
+An - You are such a nice meat hole.
+An - Cumming like this from being raped. 
+Annet was gloating even without Erika fully recognizing what she said.
+That was what she really enjoyed in the whole ordeal.
+An - Time to give you the thing you've been waiting for.
+Er - ...
+=ABG demon_erika_10 demon_erika_11=
+After a few moments Erika felt something long and hard entering her pussy.
+Annet, wearing strap-on, grabbed the defenseless Erika from behind.
+Er - Aah!..
+An - Have you been missing this feeling, you whore?
+An - Your cunt squeezing me so hungrily.
+An - Ha-ha, and to think I was worried you'd actually become a decent person!
+=ABG demon_erika_12 demon_erika_13=
+Annet began thrusting into Erika's wet pussy.
+An - Take this!
+Er - Ohh... Yes... 
+Er - More... Fuck my cunt harder...
+An - Yes, you elf slut, I'll put you back in shape in no time.
+An - I've missed having good toys to play with.
+Er - Ngh... 
+Er - Ah... Mistress...
+An - Yes, shake your hips like that.
+Er - I'm... cumming...
+Er - The elf whore is...
+Er - Going to... cum again...
+An - Good, let's finish this.
+=ABG demon_erika_14 demon_erika_15=
+=WHITE=
+With these words Annet increased speed of her thrusts, forcing Erika and herself to orgasm.
+Er - AAAahhh!!!
+An - Yes... Ah... Hah...
+An - Like in the good old times...
+=MUSIC_STOP=
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ar - Hey Rose, what happened to Erika?
+Ro(talk) - She said she was going to the city market yesterday
+Ro - She hasn't returned since then.
+Ar - Hmm... That seems a bit unlike her. 
+Ro - Would you like to investigate?
+Ar(neutral) - Yeah, I've been bored from sitting around here all day.
+Ar - I hope she hasn't decided to live in a big city instead.
+=BLACKTRANS 0.5=
+=SPRITE_HIDE=
+=BG town_in=
+Str - The elven girl in skimpy clothes?
+Str - Yeah, she was here yesterday. 
+Str - Was causing some ruckus, then walked away with Annet.
+Ro(talk) - Annet?
+Str - Yeah, the city committee member, the one with horns.
+Ar - Oh, right, that one.
+Ar - What she's even about?
+Str - Don't know much, really. 
+Str - She was elected due to her business influence and money mostly.
+Str - I think she's from an aristocratic family, or that's what she looks like anyway. 
+Ar - Don't you find her weird though? 
+Ar - Those horns and tail I mean.
+Ar - She kinda looks like a succubus to me.
+Str - Hey man, not cool. We aren’t prejudiced.
+Str - Anyone can be a good person.
+Str - Especially when they have lots of money.
+Ar - Uh huh, I guess we should check her estate then. 
+Str - Yeah... Don't tell her I told you though.
+Str - And don't comment on those things. 
+Str - She does not seem to like it.
+Ar - ...Thanks.
+=BLACKFADE 0.5=
+After a half hour Arron and Rose have found Annet's estate.
+=BG estate=
+=SPRITE annet=
+=BLACKUNFADE 0.5
+=DELAY 0.5=
+=SPRITE_UNFADE 0.5=
+Ar - ...So we have been looking for her.
+An - I see. Mr. Arron, right?
+An - I do indeed know about Erika and where she is right now.
+An - But there might be some difficulties.
+Ar(neutral) - Such as?
+An - You see, she's an old friend of mine and we have just reunited.
+An - She wants to stay with me.
+Ro - Does she really?
+An - Of course she does, silly.
+An - You don't believe me?
+An - That's fine. Erika, please come in.
+=SOUND dooropen=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+Ro - *Huh, she looks quite disturbed*
+Ar - Hey, we were worried. How are you doing?
+Er(sad) - I'm sorry for my disappearance, Arron, Rose.
+Er(sad) - I will be staying with M-
+Er(sad) - With Annet from now.
+Er(sad) - You don't have to stay here.
+Ro(shock) - Huh?
+=SPRITE annet=
+An - As you see, she's perfectly fine and stays here by her will.
+Ar(neutral) - Hmm, this does look a bit fishy.
+Ro - ....
+An - You are a clever man, Mr. Arron. 
+An - You do look different from most people in this city. 
+An - I can tell you aren't of lowly heritage.
+Ar - Please, you are making me blush.
+An - I'm not flattering you. 
+An - I can see how others react to you, especially your companions. 
+An - Rose, correct? 
+Ro - ...
+An - You see, to me there are two kinds of people in this world.
+An - Those who rule and those who obey. 
+An - Erika is obeying me, just as Rose obeys you.
+An - That makes us alike, don't you think? 
+Ro(sarcastic) - This is absurd.
+Ar - Shush, don't make me bring your gag with us next time.
+Ro(shock) - .....!
+An - Ha, see! You get it.
+An - You have come to me so you do hold interest in Erika. 
+An - Since she has joined you before, you must be a responsible leader.
+An - So I'm not wholly against letting her go.
+An - But I do need someone around to help me with my... business.
+An - Your girl, Rose, looks quite capable of that. 
+An - What would you say if we switch for an uncertain period of time?
+Ro(shock) - ..!
+Rose noticed how Erika's eyes screamed "No", but did not say anything.
+She was terrified by the idea of being left alone with Annet.
+Ar(neutral) - This is a tempting offer...
+Ar - But I'll have to consider it first.
+Ar - If that's fine with you.
+Ro - *C-consider?*
+An - Of course not. 
+An - Once you decide, I'll be waiting. 
+An - I hope we can have a productive relationship in future.
+Ar - Likewise.
+=BLACKFADE 0.5=
+Later this evening.
+=BG estate=
+=SPRITE rose=
+An - Hello, Rose. 
+An - I'm glad that you've visited me.
+An - I hope you don't think of me badly because of what I said.
+An - In no way have I tried to degrade you.
+Ro(talk) - N-no, I understand. 
+Ro - I've come on my own here. Master, I mean, Arron would not let me go.
+Ro(talk) - But I want to help Erika. 
+An - I can assure you, Erika is in great condition.
+Ro - I'll stay with you, if you let her go.
+An - *Ho my, this is perfect*
+An - Sure, this is very nice of you. 
+An - If you become my subordinate, I'll let Erika leave.
+Ro - Okay, I will. But... 
+Ro - I want to see that she's fine. 
+An - Sure thing. 
+An - We can visit her right now.
+An - Please, follow me. 
+=BLACKTRANS 0.5=
+Annet and Rose went to the prison cells where Erika was held captive.
+An - You know, I quite adore reserved girls like you.
+An - *You are really fun to play with.*
+An - But what about Arron?
+An - Isn't he going to return for you?
+Ro(sarcastic) - H-He does not own me anymore. 
+Ro(talk) - I'm free to decide what to do.
+An - Ah, is that so. 
+An - You do have some unusual features, must catch quite a bit of attention.
+Ro - T-that's not true. 
+Ro - It's nice that you appreciate it, though.
+An - *Hah, she takes my attention as a benefit*
+An - *Maybe I should take her right here*
+An - *maybe even next to Erika...*
+An - We are here. As you can see, she's perfectly fine.
+Behind the cell bars a girl's silhouette rests in the shadows.
+Ro(talk) - Erika? Is that you?
+Annet has put Erika's in shackles just in case she might attempt to escape.
+Ro - C-can I see her closer?
+An - Alright, I have a key with me.
+An - Just let me unlock this...
+*click*
+*thud*
+*fall*
+Annet fell to the ground knocked out with Rose standing behind as she was unlocking the cell door. 
+Rose held a small blackjack in her hand, which just got intimately acquainted with Annet’s head
+Ro(talk) - *Gasp*
+Ro - Keys... Hold on, Erika.
+Er(sad) - ...?
+Ro - I'm getting you out.
+Er(sad) - Rose... 
+Er(sad) - How did you-
+Ro - Not now, we have to escape.
+...
+=BLACKFADE 0.5=
+=BG town_in=
+=BLACKUNFADE 0.5=
+Rose dragged Erika outside where Arron and others were waiting for her.
+Ro - We did it.
+Ar - Well done, Rose.
+Er(sad) - Arron? Girls?
+Em - We took care of the patrols.
+Er(sad) - I'm... not... 
+Ar(neutral) - We can talk later, you need some rest.
+=BLACKFADE 0.5=
+=BG villagenight=
+=SPRITE erika=
+=BLACKUNFADE 0.5=
+After some time they safely returned home.
+Ro(talk) - Thanks for the baton, Ember.
+Ro - I managed to hide it so she had no idea.
+Em - A-ha, it's nothing. 
+Em - I'm glad I could be useful.
+Er(sad) - I... was sure that I wouldn't see you again any time soon.
+Ar - It was Rose's plan. 
+Er(sad) - ...Rose? You risked yourself for me?
+Ar - You must've fooled her well acting like prey.
+Ro - It was rather scary.
+Ro - I felt like she could easily push me around, if I were any younger.
+Ro(sarcastic) - Or you haven't been pushing me around since childhood.
+Ar - Filthy lies.
+Er(sad) - I... I'm not sure I'll be able to ever repay you for this.
+Er(sad) - But now you might get into trouble with city government.
+Ar(neutral) - I don't think she's going to go that far.
+Ar - Not until she's ready to proclaim what she was doing to you anyway.
+Ar - And it's not like it's my first time getting into fights with local authorities.
+Ro(sarcastic) - Please, don't make me remember.
+Ar - We haven't even turned anything to cinders this time.
+Er - Thank you, Rose. 
+Er - I actually thought you would be happy with me gone too.
+Ro(talk) - Stop it. I wouldn't feel right leaving you like that.
+Ro(talk) - And I don't think bad of you, it's just... I'm...
+Ro - Umh... 
+Ri - She wants to say, she thinks of you as of a friend.
+Ro(talk) - That's not...
+Ro - Uh, well, maybe.
+Er - I appreciate it.
+=BLACKFADE 0.5=
+=STOP=
+
+**rilu_2_1**
+=BG villagenight=
+=SPRITE rilu=
+Late at the evening Rilu was going to Arron's office. 
+Ri - *Sigh*
+Ri - *To think I'd be doing this...*
+Ri - *Alright, Arron should be alone today.*
+=BLACKTRANS 0.5=
+=BG hall=
+Arron sat at the table with a huge stack of paper he was going through.
+Ar(neutral) - Complaint, complaint, complaint, credit application, complaint, credit...
+Ar(neutral) - A request to invade a neighbor village...
+Ar(neutral) - What the hell... It's like I'm still back at the kingdom, reading nobles' complaints. 
+Ar - I should've made Rose take care of those. 
+Ar - Who even taught goblins to write anyway?
+Arron rose up and left the table. 
+As he undressed preparing to sleep, an unexpected vision unveiled before him.
+=MUSIC erotheme=
+=ABG rilu_minet_1=
+Ri - Hey, you don't mind some company at this time, do you?
+Ar - Eh...? Rilu? 
+Before him a half-naked Rilu stands at his? knees, lustly reaching for his manhood.
+Ri - I'm in a bit of trouble here...
+Ar - I don't remember you having animal ears.
+Ri - Um, yes... 
+Ri - Well, this is embarrassing...
+Ar - More embarrassing than being naked? 
+Ri - I've got possessed by a cat spirit.
+Ri - And the poor thing was in heat.
+Ri - It's hard to control myself...
+Ar - Understood, you can rely on me.
+=ABG rilu_minet_2=
+Ri - Let me make you feel good.
+Rilu stack out her tongue and slowly licked over Arron's cock like it's candy.
+Ri - *slurp*
+Ar - Ouch.
+Ar - Slow down a bit, your tongue is rough.
+Ri - Sorry *slurp* I'm not thinking very straight.
+Ri - This smell... 
+Ri - Drives me crazy.
+=ABG rilu_minet_3 rilu_minet_4=
+As Rilu feverishly worked over Arron's cock, her other hand was rubbing her pussy.
+Ar - Mh.. It's unusual to see you being this proactive.
+Ri - *slurp* You don't like it? 
+Ar - Don't be silly. 
+Ar - Variety like this is never bad.
+Ri - I'm glad.
+Ri - Let me try this...
+=ABG rliu_minet_5 rilu_minet_6=
+After saying that, Rilu took the whole thing into her mouth.
+Ri - Mhm..
+Her moans grew more exciting as she awkwardly coiled on Arron's penis.
+Ar - Damn.
+Ri - Mhmmmm... Thu likh ith? 
+Ar - Oh... 
+Ar - If you continue like this...
+Ri - *slurp*
+Not hearing, or probably even ignoring him, Rilu blissfully sucked his cock.
+Ri - Come on.
+Ri - *slurp* I want your milk...
+Ar - Hah, won't make a girl wait.
+Ar - Since you asked for it.
+Ri - Mhmmm...
+=ABG rilu_minet_7 rilu_minet_8=
+=WHITE=
+Ar - Aah!... 
+Ri - Mh!...
+Rilu's mouth filled with seed but she didn't break her hold.
+Ri - *gulp* *gulp*
+Ri - He-he, you came a lot.
+Ar - That was mind blowing.
+Ri - Thanks.
+Ri - But I can't wait any longer.
+=BLACKTRANS 0.5=
+=ABG rilu_doggy_1=
+Rilu crawled on the floor before Arron, presenting her naked rear.
+Ri - Please...
+Ar - You don't have to ask me twice.
+=ABG rilu_doggy_2 rilu_doggy_3=
+Ar - Now it's a matter of honor to help you out.
+Ri - Just hurry.
+=ABG rilu_doggy_4 rilu_doggy_5=
+Without dragging it any longer Arron penetrated Rilu's pussy much to her joy. 
+Ri - Aaah!..
+Ar - Are you alright? 
+Ri - Y-yes, sorry...
+Ri - I've been waiting for this for too long.
+Ar - You never raised your voice like that.
+Ar - And your pussy is incredibly wet.
+Ri - Mmmhm...
+Ar - Jee, you are so impatient now you are moving on your own.
+Ri - ...Your thing inside...
+Ri - It's so hard.
+Ar - You turned into a really naughty kitten.
+Ri - Meow...
+Ri - Push it deeper...
+Ri - Yes, scrap my insides...
+Ar - Wow, your pussy is clamping quite hard on me.
+Ri - Ah... Faster...
+Ar - Ngh... Alright.
+=ABG rilu_doggy_6=
+Ri - Yes!
+Ar - You've asked for it.
+Ri - This feels amazing..
+Ri - I'm... I'm coming!..
+Ar - OOohhh!
+=ABG rilu_doggy_7 rilu_doggy_8=
+=WHITE=
+With his last movements Arron pushed as deep as he possibly could, holding Rilu by the waist.
+Ri - Nyahhh!
+Ri - *Pant*
+Ar - Hah..
+Ri - It's filling my insides...
+Ri - Your hot seed.
+Ar - Did it help?
+Ri - Absolutely.
+Ri - Feels amazing to be alive.
+=BLACKFADE 1.5=
+Arron allowed Rilu to stay at his room for this night.
+Ri - *I hope he didn't suspect anything?*
+Ri - ....
+=STOP=
+
+**rilu_2_2**
+=BG hall=
+=SPRITE rose=
+The girls and Arron are having dinner.
+Em - Wow, this tastes great, Rose! 
+Em(sad) - I wish I could cook like you.
+Ro(talk) - It's nothing special.
+Ro - I had to learn it as part of my training.
+Er - The meat is quite unusual, never tried anything like this before.
+Ro(talk) - Ah, it was Rilu's recipe. 
+Ro - She helped me out today.
+Ar - Ah, some ancient culinary? That's fancy.
+=SPRITE rilu=
+Ri - ...Yes, something like that.
+Ri(talk) - Thanks for the meal, I should go now.
+=SPRITE_FADE 0.5=
+Ro(sarcastic) - Master, have you offended her recently? 
+Ar - Can't imagine how.
+Ro(talk) - She looked displeased after you spoke to her.
+Ar(neutral) - Maybe it's my breath? 
+Ar - It would be your fault then.
+Em - Your breath smells fine.
+Ro(sarcastic) - Wait, why would it be my fault?
+Ar - It's your duty to make sure I don't embarrass myself.
+Ro(sarcastic) - No, it's not.
+Ar - Whatever. I'll go talk to her I guess.
+=BLACKTRANS 0.5=
+=BG villagenight=
+Arron went to Rilu's house.
+=SPRITE_UNFADE 0.5=
+Ar(neutral) - Hey. Is something wrong?
+Ar(neutral) - I should probably apologize for the last time.
+Ar(neutral) - You weren't yourself and I took advantage of it.
+Ri - No, it wasn't really like that...
+Ar - Oh, okay then.
+Ar - So there's no tension between us?
+Ri - That's...
+Ri - Actually, I must confess.
+Ar(shock) - You are pregnant!
+Ri(talk) - Wha...? 
+Ri - No, no, this isn't possible for me.
+Ar - Phew...
+Ar - What do you have on your mind then?
+Ri - Before we met, I never cared much for sex.
+Ri - Never was interested in it either.
+Ar(neutral) - You did it though.
+Ri - Not so much did it, as it was done to me.
+Ar(neutral) - Eh?
+Ri - Arron, not everyone out there was as nice to me as you.
+Ri - Most people usually ostracized and feared me. 
+Ri - Some because of my condition.
+Ri - Some because of my practices.
+Ri - And many did torture me, while some had experiments.
+Ar(neutral) - This sounds awful.
+Ar(neutral) - I'm sorry you had to deal with that.
+Ri - Don't be, I've gotten used to it after all.
+Ri - Probably because of it I never had much interest in intimacy.
+Ri - Or so I thought.
+Ri - Then there was that incident with the... Well...
+Ar - Potency restoration.
+Ri - i didn't expect it would be a very different experience to me. 
+Ri - So much, that I started to think about it.
+Ri - A... lot, actually. 
+Ri - But even though I was interested in it now, I had no idea how to talk about it.
+Ar - Hah, so you are kinda like Rose at that.
+Ri - What do you mean?
+Ar - Nevermind.
+Ar - So I take it, you used a cat spirit as an excuse.
+Ri - Yes. 
+Ri - It was a bit unbearable at the time. 
+Ri - I'm sorry about deceiving you.
+Ar - Don't worry, that was a pleasure for me.
+Ri - ... I'm glad you feel that way. 
+Ar - You don't have to hold back if you need it at any time.
+Ri - Can we do it today then?
+Ar - You don't beat around the bush.
+Ar - I think I have a fun idea.
+Ar - Come to the townhall in one hour.
+Ri - *Nod*
+=BLACKFADE 0.5=
+Some time later
+=SOUND knocking=
+=BG hall=
+=BLACKUNFADE 0.5=
+Ar - Hop in.
+Ar - Say, you aren't against some experiments?
+Ri - .....
+=MUSIC erotheme=
+=ABG rilu_anal_1=
+By Arron's instructions, Rilu laid on the side.
+Ri - This is somewhat embarrassing.
+Ar - Doesn't it make you excited? 
+Ri - ...
+Ar - Now let me show you...
+=ABG rilu_anal_2 rilu_anal_3=
+Arron pulled out a small wooden object.
+Ri - That's...
+Ar - A dildo.
+Ri - Why...?
+Ar - I want to play with you.
+Ar - It's actually shaped like my dick. 
+Ri - You really are a pervert.
+Ar - Guilty. 
+Ar - Now let's try to get it in...
+=ABG rilu_anal_4 rilu_anal_5=
+Arron slowly pushed a wooden dildo into Rilu's pussy.
+Ri - Ngh...
+Ar - Huh, you are quite wet already. 
+Ar - It penetrated you easily.
+Ri - It feels weird...
+Ri - Ah!..
+Ri - Why are you moving it...
+Ar - You can't have sex without moving.
+Ri - It feels good...
+Ar - Of course, I'm a master at pleasing girls.
+Ri - You can do it rougher.
+Ar - Roger.
+Ri - Ngh... Ah...
+Ri - This is...
+Ri - Feels similar to before...
+Ri - A bit deeper.
+Ar - You seem to really enjoy it.
+Ri - I'm... I'm going to cum...
+Ar - It's fine.
+Ri - Aah, ahhh...
+=WHITE=
+Ri - AAAahhh!...
+Ri - Hah... ah...
+Ar - You look quite happy.
+Ri - Stop teasing me.
+Ar - Hmph, let's do something new now.
+Ri - ...Huh?..
+=ABG rilu_anal_6 rilu_anal_7=
+Leaving dildo in Rilu's pussy, Arron pushed his cock into her butt.
+Ri - Ah! 
+Ri - Thats my ass!
+Ar - Yep, how does it feel?
+Ri - Aah... 
+Ri - It feels weird...
+Ri - Nh... Not entirely unpleasant.
+Ar - Thought you might like it.
+Ri - I can feel you throbbing.
+Ar - Soon you'll feel much more than that.
+Arron began moving inside of Rilu's butt.
+Ri - Aaah... My ass...
+Ar - Ngh...
+Ar - How does it feel?
+Ri - I... 
+Ri - I-Ah... Think I'll start to like it...
+Ar - Let's not forget about your pussy either.
+While fucking Rilu's ass Arron also began to move the dildo he left in her pussy.
+Ri - Ohhh-...
+Ri - This...
+Ri - This is too much...
+Ri - You gonna make me..
+Ri - Cum again..!
+Ar - Gotcha.
+Ar - Let's do it together.
+=ABG rilu_anal_8 rilu_anal_9=
+=WHITE=
+Ri - Aaah!!
+Ar - Ngh... Hah...
+Ar - Came inside your butt.
+Ri - Ah... 
+Ri - It feels so hot...
+Ar - Hah... And you called me a pervert. 
+=BLACKTRANS 0.5=
+=BG town_in=
+=SPRITE rilu=
+Ar(neutral) - Hope you aren't having second thoughts.
+Ri - .....
+Ri(talk) - No. 
+Ar - What's up with that pause?
+Ri - I wonder if I always was this lewd.
+Ar - Nothing wrong with having a bit of fun with someone you like.
+Ri - You might be right.
+Ri - ...Then I'll rely on you from now on. 
+Ar - Alright, as long as you act normally. 
+Ri - *Nod*
+Ri - I can... Get used to it.
+=STOP=
+
+**rilu_2_3**
+=BG villagenight=
+Arron went for a short walk when he noticed a familiar figure.
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar(neutral) - Hmm, Rilu?
+Ar(neutral) - I wonder where she's heading at this time. 
+Ar - ...Doesn't feel right to leave her as is.
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=BLACKTRANS 0.5=
+=BG forestnight=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar(neutral) - Huh... We've gotten pretty far away from the village already.
+=BLACKTRANS 0.5=
+=BG castle=
+=SPRITE_HIDE=
+Arron followed Rilu until she entered Summerhill Keep as she carefully avoided any stray undead.
+However, after a couple of rooms he lost a sight of her.
+Ar(neutral) - Shit, where did she go.
+Ar - Maybe coming like that into an undead ruin wasn't a good idea after all.
+Arron's thoughts were stopped by a loud noise from one of the halls.
+Ar(shock) - Damnit, what the...
+A couple of undeads appeared rushing to the direction of noise, but spotting Arron. 
+=SPRITE skeleton=
+=SPRITE_UNFADE 0.1=
+Ar - Not you too. 
+Ar - I don't have time for you, you know.
+=STOP=
+
+**rilu_2_4**
+=BG castle=
+=SPRITE rilu=
+In a large hall an unknown man laid defeated as Rilu was inspecting something in her hand.
+Ar - Rilu? What's been going on here?
+Ri - Arron.
+Ri - You've been following me?
+?(Z) - You should stop her... If you want to live.
+Ar - Hmm? Who's this guy?
+Ri - It's Zelroth. He used to be my student in the past.
+Ar - I think I've heard this name in town. 
+Ri - He used to be a gifted scientist and a doctor, but now he seems to prefer to raise the dead instead.
+Ar - ...And that thing in your hand?
+Ri - ........
+Rilu demonstrates a small black ring. 
+Ri - It's an ancient artifact - The Circle.
+=SPRITE zelroth=
+=SPRITE_UNFADE 0.1=
+Z - She plans to destroy the world with it.
+Ar - What?
+Ri(cast) - Stay down.
+=SPRITE_HIDE=
+Invisible force has pushed Zelroth back onto the floor.
+Z - Gh!..
+Despite that he continued to talk.
+Z - Long time ago an ancient race had this ring.
+Z - It's the ultimate doomsday device.
+Z - And it's capable of destroying our whole reality.
+Ar(neutral) - That's a bit hard to imagine.
+Z - Why don't you ask your "friend" then.
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar(neutral) - ...Rilu?
+Ri(talk) - I believe it to be true.
+Ri - The world is in perpetual motion. 
+Ri - People are born, live and die, their children are born to repeat the cycle. 
+Ri - The sun rises only to set and then repeats this cycle indefinitely
+Ri(talk) - That's the nature of existence, the one we are in, at least.
+Ri(talk) - The Circle supposedly can stop it once and for all.
+Ar(neutral) - You came here for this?
+Ri - Yes. This was my goal all along. 
+Ri - I was planning for it long before we met.
+Ri - I have deceived you so I could find the ring.
+Ar(neutral) - But why?
+Ri - I can explain, but I don't expect you to understand it.
+Ar(neutral) - No hurt in trying.
+Ri - ...
+Ri - I hate this world. 
+Ri - And I hate this life.  
+Ri(talk) - I have been evil all along.
+Ri(talk) - And I want it to be destroyed. 
+Ar(neutral) - But why would you kill yourself? 
+Ri(talk) - *Sigh*
+Ri - Because life to me is endless suffering.
+Ri - I've told you before, my existence is nothing but agony.
+Ri(talk) - I'm dead tired of being injured, tortured, left at the mercy of a mob or a toy for some maniac.
+Ar(neutral) - I don't get it. Aren't you fine now? Don't you have fri-
+Ri - I said, you won't understand it.
+Ri - This is only a glimpse of peace in my eternity.
+Ri - These never last long for me.
+Ri(talk) - You can live and die, but I'll keep existing.
+Ri - I'll be feared and hunted again in no time.
+Ri - This is the cycle of my life, and I hate it. 
+Ri - I hate people and nothing is better than ending it once for all.
+Ar(neutral) - ...Is that really so? 
+Ri(talk) - You won't stop me. 
+Ar(neutral) - I don't believe you. 
+Ri(talk) - Stop being stup-
+Ar(neutral) - You are right. I can't understand how terrible your suffering was. 
+Ar(neutral) - But I do understand that it's bad enough to make you wish to end the world.
+Ar(neutral) - It must be why you show so few emotions too.
+Ar(neutral) - Must really put off the bastards who tortured you for fun.
+Ri - .......
+Ar(neutral) - But you are also lying through your teeth.
+Ar(neutral) - You aren't evil, and you absolutely don't hate people. You hardly used us either.
+Ri - You are not making any sense.
+Ar(neutral) - Despite all hardships you don't blame others.
+Ar(neutral) - And you don't show any real grudge towards them.
+Ar(neutral) - You care for me and you cared enough to save Iola, even though you hardly knew her.
+Ar(neutral) - You pretend to be evil, because this way you hope to make me reject you.
+Ar(neutral) - So you would have an easier time doing what you've planned
+Ar - But I won't hate you. 
+Ar - And I'm sure the other villagers and girls like you as well.
+Ri(talk) - ...Shut up.
+Ar(neutral) - What happened to you is unfortunate... No, terrible. 
+Ar - But I can swear to you that nobody will abuse you as long as I live.
+Ar - This might be not much for you, but this much I can guarantee. 
+Ar - Don't you think that killing us all can wait for some time? 
+Ar - I can't stop you after I'm dead anyway.
+Ri - ...Y-You won't fool me.	
+Ar(neutral) - You know I'm being serious. 
+Ri - (What's this... Why am I trembling?)
+Ar(neutral) - So, what do you say? 
+Ar - The others might get worried if they find out we are missing. 
+Ar - And it looks like something got in your eyes.
+Ri - ......
+Rilu wiped her face with a sleeve.
+Ri(talk) - ...Fine, I'll trust you. 
+Ri - Let's go th-
+Before Rilu could finish her sentence a large monster broke into the hall.
+=SHAKE_SCREEN 0.5=
+=SPRITE caliban=
+=SPRITE_UNFADE 0.1=
+C - Master!
+C - I'm here. 
+Z - Caliban, get her!
+C - Raaargh!
+Before they managed to react, the monster charged into Rilu.
+Ar(shock) - Oh shit!
+Arron tackled Rilu out of the way and they both tumbled onto the floor as the monster missed them.
+=SOUND cling=
+More undead started pouring from all directions.
+=SPRITE skeleton=
+Ar(shock) - We are in trouble!
+Ri(cast) - .....
+Rilu casted a spell and the room went pitch dark. 
+=SPRITE_HIDE=
+Without wasting any time they snuck from the castle.
+=BLACKTRANS 0.5=
+=BG forestnight=
+=SPRITE rilu=
+Ar - Whew... That was a handy trick. Are you alright?
+Ri - Yes. 
+Ri - I didn't think I'd be returning though.
+Ar - At least you are not doing it alone. 
+Ar(neutral) - What happened to The Circle?
+Ri - I dropped it when you pushed me.
+Ar(neutral) - Oh... Sorry.
+Ri - It's fine. 
+Ri(talk) - I'm not gonna need it any time soon.
+Ar - Good to hear that.
+.....
+Ri(talk) - Thank you for coming, Arron.
+Ri - You've done for me more, than anyone before. 
+Ar - Come on, you’re gonna make me blush.
+=STOP=
+
+**iola_2_1**
+=BG villageday=
+=SPRITE iola=
+Ar - Oh, an unexpected visitor.
+I - Good day Sir Arron! 
+I - Are you doing well?
+Ar - Better than ever.
+Ro - What brings your here?
+I - I'm on the pilgrimage.
+I - Actually, I was supposed to do it at a different time, but the Cult ruled for me to do it now.
+I - I feel like it was father's initiative though. 
+I(sad) - He acts differently since the time he returned.
+Ar - What sort of pilgrimage?
+I - I was requested to get Spirit Essence for the cult. 
+I - So I thought maybe I could ask you to get it?
+Ar - But isn't that supposed to be a task you have to complete personally? 
+I - No, not really. Cult just uses initiates to gather it for future sellings.
+I - Many do just buy it or hire someone to get it.
+Ar - That's creative.
+Ar - But what do you even need that for?
+I - We make aphrodisiac out of it.
+Ar - Hooh. An important industry for sure.
+Ar(neutral) - It's fine if you are paying, but we might need some tips where to find it.
+I(sad) - I'm sorry, I don't really know about that.
+Ar - I guess we better ask our pocket sage then.
+=BLACKFADE 0.5=
+Arron and Iola went to find Rilu.
+=BLACKUNFADE 0.5=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+I - Who this? 
+I - She's so adorable!
+Ri - ...
+I - What's your name? 
+Ri(talk) - It's Rilu. 
+Ri - Pleased to meet you.
+I - Likewise. I'm Iola. 
+I - How come you have a lone little girl here?
+Ro(talk) - She's actually quite old.
+I - Oh, really?
+I - I'm sorry, I didn't mean to offend you.
+Ri - Don't worry, I'm used to it.
+Em - Yeah, she's really old, like granny.
+Ro(sarcastic) - Ember, please. 
+Ar - Rilu, Iola is looking for something called Spirit Essence.
+...
+=BLACKFADE 0.25=
+Ri - I see.
+Ri(talk) - Yes, I know where we can get it. 
+Ri - There's an abandoned castle nearby.
+Ri - It goes by the name Summerhill Keep.
+Ro - Oh, that's a nice name.
+Ri - According to the rumors it is brimming with stray undead.
+Ro(sarcastic) -  Of course.
+Ri - We are likely to find it there.
+Ar - A full house of zombies. Should be fun.
+Ro - Ugh...
+I - Thank you.
+I(sad) - I wish I could go with you, but I have to continue the sister training.
+I - Please be careful out there. 
+I - And thanks for your help, Rilu.
+Ri - *nod*
+=STOP=
+
+**iola_2_2**
+=BG castle=
+=SPRITE Rose=
+Ro - Phew.. It's dead.
+Em - There's an essence!
+Em - Ew, it's all gross and sticky...
+Er - Just image it's a semen.
+Ro(sarcastic) - you are really not making this better.
+Ar - It looks fancy. 
+Ar - I wonder what it tastes like...
+Ri - It doesn't really taste like anything. 
+Ri - But you might grow a pair of horns if you digest it.
+Em - Oh? But what if I already have one?
+Ro(sarcastic) - Let's not try it.
+Ro - Please let's return, I don't feel very good around here.
+Ar - These are just walking corpses, I don't get why are you so scared of them.
+Ro(sarcastic) - Don't make me recall how you reacted after going to family crypt for the first time.
+Ar - Alright, alright. Let's go then.
+As the whole team was leaving the room, Rilu slowed down behind.
+Ar - Rilu? You found something over there?
+Ri - ...
+Ri - Nevermind, let's go.
+=BLACKTRANS 0.5=
+=SPRITE zelroth=
+At the other side of the hall two figures were watching from the shadows.
+Z - Interesting... There's a familiar aura.
+M - What's aura?
+Z - Looks like these are the ones who Dimitrius told me about.
+Z - Bastards destroyed about a week of my work.
+M - oooh, that's bad.
+Z - No shit, dumbass. 
+Z - At least they've left.
+Z - Alright, get back to preparations.
+M - Preparations for dinner? I'm hungry...
+Z - No, you imbecile. Now get to work.
+=BLACKTRANS 0.5=
+=BG cult=
+=SPRITE iola=
+Meanwhile Iola had finished her routine and was preparing to go to Arron again.
+I - Phew, almost done here.
+I - I should warn father, that I'm leaving.
+She took a peek at her father's office before entering.
+I - Huh, he seems to receive guests...
+=BLACKTRANS 0.5=
+=SPRITE demitrius=
+D - So you got rid of that dwarf king?
+=SPRITE victor=
+V - Sort of, wasn't me, but I finished the bastard.
+D - Wasn't you?
+V - Yeah, it seems like that guy got to him first.
+D - I thought I ordered you to keep your eyes on him, idiot.
+V - Whatever, from this world or not, he's no match for me.
+V - I can kill him any time I want. 
+D - That's not what I ordered.
+D - Maybe we can use him to do our job.
+V - Your job.
+D - It will be your job if you fuck this up. 
+V - *grunt*
+D - Now get lost already, it's not good if we are seen here together here.
+V - Oh is it? You probably should take care of peeping toms next time. 
+D - Huh?
+Before Iola realized it, the door in front of her was forced in and she was dragged inside.
+I(shock) - What?! 
+I(shock) - Let me go now! 
+I(shock) - Father! What-
+*Thud*
+=SOUND punch=
+V - Hell, I hate women.
+V - Always so noisy.
+D - Don't dare kill her. 
+D - Shit, now I have to sort this out too...
+=BLACKFADE 0.5=
+=SPRITE_FADE 0.5=
+A few days later.
+=BG villageday=
+=BLACKUNFADE 0.5=
+Ar - This is weird. We got the essence, but Iola hasn't come back since that day.
+Ro - Maybe they let her pass without it?
+Ar(neutral) - That would suck.
+Ar - How do we get rewarded like this then?
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ri - She's actually in trouble. 
+Ro(talk) - Eh?
+Ar(neutral) - What do you mean?
+Ri - She was captured and kept imprisoned.
+Ar - But how do you know that?
+Ri - I've planted a small spirit on her.
+Ro(sarcastic) - Why?
+Ri - So I can know her condition and location.
+Ar - That's something new.
+Ar - Do you do this often?
+Ri - Don't worry, you won't notice it.
+Ro(sarcastic) - .....
+Ar(neutral) - Anyway, where's Iola? 
+Ri - I assume it's her cult grounds.
+Ri(talk) - We should go there to save her.
+Ar - Huh, you seem... Kinda worried? 
+Ar - What happened to the deadpan girl I knew?
+Ri(talk) - I'm not deadpan.
+Ro(talk) - You think we should go there? 
+Ro - This might be quite dangerous.
+Ar - Well, someone has to pay for the mission we've completed. 
+Ar - In the worst case we can loot something from there.
+Ro(sarcastic) - I sincerely hope you are joking this time.
+=STOP=
+
+**iola_2_3**
+=BG cult=
+The group has entered the Cult's temple grounds. 
+Ar - Huh... This organization seems rather abundant. 
+Ar - So, do you think we'll be able to pass through without causing ruckus?
+Guard1 - Hey, stop right there!
+Guard2 - Hey, it's those guys we've been told about.
+Guard1 - Shit, don't let them get away!
+Ar - Looks like we are expected.
+Ro(sarcastic) - That's not a good thing.
+Ar - Why are you so pessimistic? 
+Ar - Maybe they just wanna show us around.
+Ro(sarcastic) - Yeah, judging on how they charge at us armed, it will be their prison they want us to see.
+=STOP=
+
+**iola_2_4**
+=BG cult=
+=SPRITE rilu=
+The team ended up in a jail building near one of the cells.
+Ri - It's here.
+Ar - This is quite a sturdy door.
+Ar - Ember, could you?
+Em - Alright!
+=SOUND crash=
+=SPRITE iola=
+I - Sir Arron!?
+Ar - I prefer "Prince Charming" at times like this.
+Ro(sarcastic) - Ha-ha.
+Ar(neutral) - What have you been doing here?
+I(sad) - Father imprisoned me but I'm not sure why.
+I(sad) - He's been acting weird and I eavesdropped on his guest.
+Ar - Curious, but I think it would be better if we leave first.
+Ar - Your colleagues don't seem very friendly either.
+I(sad) - No, I can't.
+I - It's father's order so there should be some reason.
+Ar(neutral) - Look, your father locked you in a jail like this.
+Ar(neutral) - Even if he's not psycho, you won't make things better by staying here.
+Ro - Plus he ordered the guards to attack us. 
+Ro - It's not sane to stay here.
+I(sad) - No, this must be some mistake.
+I - I'm sure he can understand if I talk to him.
+However, the armed group gathered on the other side of the hall.
+Guard - We cornered them! 
+Guard - Archers, ready!
+Guard2 - But Lady Iola is there.
+Guard - Damnit, did these bastards plan this out?
+=SPRITE demitrius=
+D - Shoot. 
+Guard - Eh?! 
+Guard - But Father, there's your daughter in the cell.
+I - Please wait!
+D - She was brainwashed by the foul demons.
+D - There's no other choice. 
+I(shock) - Wha!...
+Guard - ...Yes, Sir.
+Guard - Shoot!
+Ro(shock) - No!
+Ar(anger) - !..
+=BG rilu_defend=
+*Splurt*
+Ri - Ugh...
+Before arrows hit their target, Rilu jumped in front of them, shielding others with her body.
+I - Rilu?!
+I - NO!
+Ar - Ember!
+Em - Yes? 
+Ar - Bust an opening so we can escape.
+Ar - Erika, take Rilu, I'll grab Iola.
+Er - Gotcha.
+D - What are you waiting for, idiots? Shoot again!
+Guard - Yes, si...
+=SHAKE_SCREEN 0.5=
+=SOUND explosion=
+=BG =
+=SPRITE embershock=
+A shockwave and further trembling threw soldiers of balance making them unable to continue that attack.
+Em - Oh.. I think it was a bearing wall.
+Ar(anger) - The building is unstable. Run!
+=SPRITE demitrius=
+D - Damnit.
+Guard - Your Highness, they are getting away. 
+D - Really observant, you idiot. 
+=BLACKTRANS 0.5=
+=BG forest=
+=SPRITE iola=
+I(sad) - Rilu, please do not die!
+I(sad) - You protected us... *sob*
+Ri - *cough* *cough*
+I(shocked) - Eh? She's alive!
+Ri - Pull the arrow from my... *cough* lung.
+Rilu stoically endured arrows being pulled out of her body.
+I - You look like you are really in pain. Let me help you.
+Ri - Don't worry, I'm used to it.
+Ar - Weirdly enough she's immortal.
+I - Oh... Thank goodness.
+I(sad) - I can't believe my father ordered them to kill me...
+I - I want to thank you all for my rescue.
+I(sad) - I don't know what I should do now, though.
+Ar - You are welcome to live with us. 
+Ar - It's not fancy but folk here is pretty friendly.
+Ar - I'm afraid your father won't be generous to us any time soon though. 
+I(sad) - I don't know, I don't wanna be a bother to you.
+Ar - Don't be stupid, we are glad to have more pretty gi... I mean companions around.
+Ro - *Sigh*
+Ar - Right, Rilu?
+Ri - ...Why are you asking me?
+Ar - Didn't you suggest the whole rescue thing in the first place?
+Ri - ...
+I - I'm not sure how I can ever repay you for this.
+Ri - That's fine.
+Ro - I'll see where we can let you stay. 
+=STOP=
+
+**iola_2_5**
+=BG hall=
+=SPRITE iola=
+Ar - Hey, how do you like your new home? 
+I - It's nice, thanks.
+I(sad) - I just don't know what I should do now. 
+I(sad) - Father has changed, he would never do something like this.
+Ro(talk) - Uh.. I think we should tell you about the time we went with him to the caves.
+=BLACKTRANS 0.5=
+I(sad) - That sounds really weird.
+Ar - Just for the note, we aren't demons or anything like that.
+Ro(sarcastic) - Not in a literal sense at least.
+I(sad) - I believe you.
+I - You've mentioned you are looking for some person? 
+Ar - Yeah, according to Rilu there's someone who has been living for a really long time and probably came from another world as well.
+Ar - And we also got this Saint Pearl from Faery Queen, which seems to be related to him.
+I - This reminded me of Sergius. 
+I - He's one of the Ancestors' saints. 
+I - I've been studying it during my initiation. 
+I - And you are planning to find him?
+Ar(neutral) - Don't see any better options.
+I(sad) - It's hard to believe he'd still be alive. 
+I - He was one of the former a long time ago, but it never said what happened to him.
+I - Please, let me help you. If he's actually the Sergius, he would know what's going on. 
+I(sad) - Although I don't know why he would just avoid us if he's still alive.
+Ro - Maybe he has lost his memory or something. 
+Ar - Or just got bored of the religious stuff.
+I(shock) - No way!
+Ar - What? Don't you ever feel bored by the repetitive rituals?
+Ar - It's like brushing your teeth but also everyone makes you feel guilty for not doing it.
+Ro(sarcastic) - Master is fooling around.
+Ro - I'm sure there must be some serious reason.
+I - ...Thanks, I hope we will find him.
+=STOP=
+
+**iola_3_1**
+=BG hall=
+=SPRITE iola=
+Ar - Hey, I was wondering how you are doing.
+Ar - After, you know, your dad's stuff.
+I - Thank you, Sir Arron. 
+I - I think I'm okay now.
+Ar - Just Arron is fine. 
+I - Okay, Arron.
+I - I could use your help with my religious training.
+Ar - Huh? Aren't you done with the cult?
+I - Even if I can't be a proper member, I'm not giving up on my faith.
+Ar - That's quite a devotion.
+Ar - You don't need that essence thing you asked us to get anymore?
+I - No. Now I can just continue with my training.
+Ar - I see. So what is it?
+I - I'll need you to come to my room at tomorrow's morning after breakfast.
+Ar - Understood. 
+Next morning.
+=BLACKTRANS 0.5=
+=SPRITE_HIDE=
+=BG villageday=
+=SOUND knocking=
+Ar - Iola? I'm here.
+I - One moment!
+Ar - She must be preparing for something.
+I - You can come in.
+I - Ah, and close the door.
+Ar - Okay.
+=BLACKTRANS 0.5=
+=MUSIC erotheme=
+As Arron made his way inside, he discovered fully naked Iola sitting in front of him.
+Ar - ...
+I - Is something wrong?
+Ar - I wonder if I'm still sleeping.
+I - Oh, it's a part of my training.
+Ar - Being naked?
+I - Yes! It makes the partner more excited, they say.
+I - But if you prefer it differently, I can put on my clothes.
+Ar - No, no, this is just fine.
+Ar - ...It might be a bit late, but how exactly is this your training?
+I - As a cult's Vestal I'm obliged to spread love and provide pleasure to those in need.
+Ar - That's the most convenient religion agitation I've ever heard.
+I - So to become a proper Vestal I need to train at it.
+I - So.. Um, we can start if you don't mind.
+Ioal casually freed Arron's penis from his pants.
+I - Oh... It's so big!
+I - Sorry, it's going to be my first time...
+I - We study a lot about human anatomy...
+I - But touching it personally feels completely different...
+I - Do I stroke it like this? 
+=ABG iola_minet_1=
+Iola begins to move her hand over Arron's dick.
+Ar - Y-yes.
+Ar - This would be correct.
+I - Aha, this feels kinda intuitive. 
+I - Do you like this?
+Ar - Yes.
+Ar - You can go a bit faster.
+I - Alright...
+=ABG iola_minet_2 iola_minet_3=
+Iola increased her speed while trying to stay gentle.
+I - Oh right.
+I - I'm also supposed to use my mouth.
+=ABG iola_minet_4 iola_minet_5=
+Ar - Ouch, watch the teeth.
+I - Oh, sorry.
+I - I'll lick it.
+I - Mmmhm...
+I - It tastes weird.
+I - ...Mmm...
+I - How doesh ith heel?
+Ar - For a first time I can't complain.
+=ABG iola_minet_6 iola_minet_7=
+I - (I'll try to do advanced thing)
+I - *slurp*
+I - (Wrapping my tongue around the tip)
+Ar - Hah...
+Ar - You put some real effort.
+I - (He praised me)
+I - Mmhm...
+I - (I wonder if I'm blushing now)
+Ar - Mh, Yes...
+Ar - Just a bit more...
+I - ....Mmhhm *slurp*
+Ar - Watch it, I'm coming.
+Iola nodded in confirmation.
+=ABG iola_minet_8 iola_minet_9=
+=WHITE=
+Ar - Ugh...
+I - ...!
+A hot stream of semen struck Iola's throat. 
+I - Mhm... *gulp*
+I - Ah...
+Pulling out the penis in the middle of ejaculation, a good part of it splashed over her face.
+I - Sorry, I couldn't swallow it all.
+Ar - Don't push yourself too hard.
+Ar - I'll rate it 9 out of 10 for a first time.
+I - Wow, that's a lot!
+I - Thanks Arron.
+Ar - It's been a pleasure.
+I - I hope we can practice together more in future.
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE iola=
+Ar - So, I was wondering one thing.
+Ar - Are you supposed to do it for anyone who asks?
+I - Well, actually there are options. 
+I - Some Vestals do it for everyone, others only serve only selected persons or just their loved ones.
+I - I haven't decided yet.
+I - But there's no point until I finish my training.
+I - And I still have to part with my virginity.
+Ar - Oh, huh. 
+Ar - Well, you know where to find me.
+=STOP=
+
+**iola_3_2**
+=BG hall=
+=SPRITE rose=
+Ro - So, to sum it up, you are wasting too much money on fancy food.
+Ar(neutral) - Rose, have you seen where we live at?
+Ar - I'm not a peasant, I need fresh food. 
+Ar - Tell her, Erika. 
+Er - Well, I am used to the forests, so I will have to support Arron.
+Ro(sarcastic) - Ugh... At least stop binging on the alcohol every second day...
+=SOUND dooropen=
+=SPRITE iola=
+I - Hey, Arron, Rose, Erika.
+I - Today is the Ancestor's Solidarity Day!
+I - So... I wish to ask you to participate in the celebration.
+Ro(talk) - Fine, as long as it doesn't cost us too much.
+I - It costs nothing really. It's more of a spiritual practice.
+I - You see, we are gonna need at least four people...
+Ro - Eh...?
+Ar - Oh, I haven't told you about her practices, right.
+Ar - You see...
+=BLACKTRANS 0.5=
+Er - Sounds fun. 
+I - Right? What about you, Rose?
+Ro(sarcastic) - No way. I absolutely refuse.
+I(sad) - Oh... That's a bummer. 
+Ar - Yeah, Rose, stop spoiling the fun.
+Ro(sarcastic) - That's not fun, this is basically an orgy. 
+I - Not exactly.
+I - This will be centered around Arron, since he's our only man in charge. 
+Ro(sarcastic) - I still refuse. 
+Ro - (If they need at least four people, that means if I refuse, they won't do it anyway)
+Er - Well, that's too bad. 
+Er - Do you think Ember will be willing to take her place?
+Ro(shocked) - Eh?!
+I - Oh, we can ask her out.
+Ro - (Wait)
+Ro - (Master will be doing it with three other girls at same time)
+Ro - (While I'll be left out)
+Ro - ...
+Ro(talk) - No, don't.
+Ro - ...I'll do it.
+Ar - Hmm? What's up Rose? I thought you're against it.
+Ro - I... Don't... 
+Ro - Uh... I can... 
+Ro - I can try it for once, I suppose.
+Ro - (Uh... why does nobody else around here have any problems with this?)
+I - That's nice, I'll make sure everyone is comfortable and happy.
+I - Give me half an hour or so.
+I - Arron, get out. 
+Ar - Gotcha.
+=BLACKFADE 0.5=
+Arron was waiting outside of the bedroom until he heard an invitation.
+I - Okay, we are ready, you can come in!
+=MUSIC erotheme=
+=ABG rose_erika_iola_1=
+=BLACKUNFADE 0.5=
+A three girls laid naked before Arron spreading their legs in lewd poses.
+Ar - Wow, now I know what I want for my birthdays.
+I - Remember, this is an important ritual.
+I - We satisfy our bodies and become closer.
+Er - Look how timid Rose is.
+Ro - I'm not timid! 
+Ro - I'm just not used to such things...
+Ar - You are doing good, Rose. 
+Ar - I appreciate your dedication.
+Ro - Shut up...
+I - Arron, you can proceed however you like.
+Er - Don't overexert yourself though.
+Ar - Don't worry, I've been blessed with endless virility.
+I - I've fed him with a stamina supplement, so it should be all good.
+Ar - Jeez, why did you tell them. What about my image?
+=ABG rose_erika_iola_2 rose_erika_iola_3=
+Er - Oo-oh... 
+Er - I'm getting it first.
+Ar - You are always ready, aren't you.
+Er - Ah... yes...
+Er - Screw me rougher... 
+Er - Like this...
+Er - You stirring my pussy... 
+Er - With your big dick...
+Erika kept enticing Arron while moving her body in response.
+I - I could learn a few things from Erika.
+I - Rose, I see you are getting excited too. 
+I - You can touch yourself too.
+I - Or do you want me to help you out?
+Ro - N-no, this is fine...
+Ro - Ah!
+=ABG rose_erika_iola_4=
+Unexpectedly Arron picked up their conversation and moved his hand to Rose's crotch.
+Ar - Don't be so uptight, here's your beloved master's caress.
+Ro - That's... 
+Ro - Ah... Good...
+I - Wow, nice multitasking. 
+I - You are really skilled, Arron.
+Ar - I'm getting close...
+Er - Great, my pussy is too...
+Er - Harder... 
+Er - Push as deep... 
+Er - As you can...
+Ar - Nghh!..
+Er - AAAhhh!..
+=ABG rose_erika_iola_5 rose_erika_iola_6=
+Ar - Hah...
+Er - It's filling me.
+Er - Your hot spunk...
+Ro - (She looks really happy...)
+Ar - Phew... Two more to go.
+=ABG rose_erika_iola_7 rose_erika_iola_8=
+I - Aah...
+I - It's inside.
+I - Ah... 
+I - You are reaching so deep.
+I - I... Ah...
+I - Haven't practiced enough.
+Ar - Mh, your pussy is as tight as the first time.
+I - T-thank you.
+Ro - Oh...
+Er - Hehe, it seems Rose feels lonely.
+Er - And you are all dripping down there too.
+Ro - Stop...
+Er - Don't be sad, I bet he left the best for the dessert. 
+=ABG rose_erika_iola_9=
+Meanwhile Iola and Arron focused solely on their intercourse.
+I - I'm sorry, I feel like..
+I - I'm...
+I - Ah, I'm getting close...
+Ar - Me too...
+I - Aahh... Ahh.
+I - I'm cumming!...
+=ABG rose_erika_iola_10 rose_erika_iola_11=
+Arron pumped Iola's pussy with his hot seed.
+I - AAaah...
+Ar - OOoh...
+Ar - Ha-h... This is pretty intense.
+I - This felt amazing.
+Ar - Likewise. 
+Pulling out of Iola, Arron finally moved to the girl who had been left waiting this whole time.
+Ar - You must be bouncing off the walls, Rose. 
+Ro - ...Just do it already.
+Ar - Come on, don't be so distant.
+Ar - You'd be spoiling the fun for others.
+Ro - ...Sorry, please make l-love to me.
+Er - Aww, how old-fashioned.
+Ar - Alright, here's your patience reward...
+=ABG rose_erika_iola_12 rose_erika_iola_13=
+Arron carefully pushed his cock inside of the already wet Rose.
+Ro - Ah... 
+RO - Master...
+Ar - Wow, don't remember you ever being this soaked.
+Ar - You've been fighting back so much, but this seems to really excite you.
+Ro - It's not like that... 
+Ro - Ah...
+Ar - Don't you enjoy it?
+Ro - Yes... 
+Ro - Faster...
+Ar - Just look at this.
+Ar - We are turning our meek Rose into a passionate whore.
+=ABG rose_erika_iola_14=
+Ro - Stop... Ah... 
+Er - Seeing her expression makes me jealous. 
+I - She looks like she's completely into it.
+Er - Well it's often more exciting when you aren't prepared for it.
+Ro - Ah... Master... 
+Ro - I love you...
+Ro - And your cock...
+Ar - Damn you Rose.
+Ar - Enjoying this more than even me.
+Ro - I'm almost... 
+Ro - I'm cumming!!
+=ABG rose_erika_iola_15 rose_erika_iola_16=
+Ar - Nghhh!
+Ro - AAaah!....
+Ro - Ah... Hah... Ahh... 
+I - You did great, Rose!
+Er - Hehe, looking at you, made me wish to go for a second round.
+Ro - Eh?... We aren't done?
+Ar - Why would we be? Today we feast.
+Ro - Uh...
+I - That's true. We can continue for at least until evening.
+Er - He-he, let me get on top of Rose this time.
+I - Ooh, I didn't think of that!
+Ro - (Uh oh...)
+=BLACKFADE 0.5=
+=STOP=
+
+**Ember's Quest Start**
+=SPRITE emberhappy=
+=BG hall=
+Em - Sir Arron! 
+Em - Look what I've found this morning near my bed.
+Ar(neutral) - Hmm? A note? 
+Ro - Let me see it... 
+Ro - "You must go the Dragon Mountains"?
+Ar - That's some atrocious writing. 
+Ar - Have you written it, Ember?
+Em - No, I can't write. 
+Ar - Huh... What are those Dragon Mountains anyway?
+Ro(sarcastic) - I wonder.
+Er - Its large mountains in the North of Aeros. 
+Er - People aren't very common around there, except as a meal.
+Em(tired) - I feel like this is important. 
+Em - Can we go there?
+Ar - If I say "No", are you going to do it anyway?
+Em - Yes!
+Ro(talk) - That doesn't seem like a very good idea.
+Ar - Welp, looks like we don't have a choice. 
+Ar - Ember is an important member of our community.
+Ar - And I can't be left without a blacksmith. 
+Ar - Suddenly it feels like I'm being blackmailed.
+Em - Hmm, what's blackmailed? 
+Ar - You can tell her, Rose.
+Ro(sarcastic) - What do you mean by that?
+Ar - Pretty sure that's what you've often been doing back at home.
+Ro(sarcastic) - That wasn't a blackmail. It was mutually beneficial coercion. 
+Ar - ....On other hand, maybe I shouldn't let you teach Ember.
+=STOP=
+
+**Dragon Mountain Intermission**
+=BG mountainsday=
+=SPRITE rose=
+Ar - Hey, Rose, you know what?
+Ro - Yes? 
+Ar(neutral) - I don't think I ever ate a dragon. 
+Ar - Can you cook it? 
+Ro(talk) - Do you think it's appropriate? I mean there's Ember...
+Ar - Oh, I've tasted her already, alright. 
+Ro(sarcastic) - ...
+Em - Ah, I wanna try it too!
+Ro(sarcastic) - Please, let's not distract too much, it's dangerous here. 
+Em(tired) - Oh, sorry. 
+=STOP=
+
+**Mountain Dragon Fight**
+=SPRITE dragon=
+Dr - Foolish mortals! How dare you approach me?
+Ro(talk) - Wow, this one can speak!
+Ar(neutral) - Damnit... Now we can't eat them.
+Em - Why?
+Ar(neutral) - It's obvious, you can't eat sentient things. 
+Em - ...Really?
+Ro - Stop it. Look, we came here because our friend-
+Dr - For this offence you'll have to pay!
+Er - I feel like he might not be listening... 
+Ri - He looks quite old.
+Ar - Darn, I guess there's no choice but to fight.
+=STOP=
+
+**Mountain Dragon Talk**
+=SPRITE dragon=
+The large dragon is held in place breathing heavily.
+Dr - Guh... Enough...
+Dr - You've proven your strength. What do you want?
+Ro - As we said-
+Dr - What?
+Dr - Speak Louder! 
+Em - WE HAVE COME BECAUSE OF ME!
+Dr - Hmm? What's this...
+The huge dragon brought his head closer to the ground and observed Ember.
+Dr - Ooh, why haven't you said so sooner. 
+Ar - Because of your senile deafness.
+Dr - Quiet. You'll be worse than me in mere decades.
+Ar - ...So now you can hear.
+Dr - You have a familiar scent.
+Dr - What's your name, child?
+Em - I'm Ember. Nice to meet you.
+Em - Even though we've fought already. 
+Dr - I see... You are the child of Ezet. 
+Dr - Truly a wonder to meet someone like you. 
+Em - Ezet? Is that the name of my mother?
+Dr - Yes. You have no knowledge of your ancestry? A pity.
+Dr - Ezet was one of our wyer. But it's from a time before we were facing today's crisis. 
+Ro - What crisis? 
+Dr - Hmm... I'll need time to explain.
+Dr - We dragons possess souls unlike normal mortals. Andh these souls grant us sentience. 
+Dr - When a dragon dies, his soul leaves his body and finds its way to a new one.
+Dr - Without a soul, we are but beasts. You've met many of those on your way here. 
+Dr - From some time ago something has changed. 
+Dr - Dead dragons have been reborn less and less. Somehow, their souls can't find a way back here.
+Em(tired) - No way.
+Dr - I haven't seen anyone here for the last few years. I fear that we might be hunted. 
+Dr - But it feels like... You might have Ezet's soul inside of you.
+Dr - Somehow she managed to conceal herself inside of you.
+Em - My mother inside of me? So I'm her?
+Dr - No. It would be more accurate to say that she lays dormant, perhaps occasionally influencing your actions. 
+Ro(talk) - Then that note was likely her doing.
+Em - So that means... My mother is dead? 
+Dr - Yes and no, her body is likely dead, but her soul is within you for now. 
+Dr - I hope she will eventually be reborn as we once were.
+Dr - Although I did not expect her to take a... Mortal partner. 
+Dr - At times like these I will not complain. 
+Dr - My name is Qothus.
+Dr - I welcome you as one of my kin. 
+Ar - Before you continue with the family reunion, there's one thing we need to ask for.
+Dr - Yes?
+Ro - We are currently looking for someone...
+=BLACKTRANS 0.5=
+Dr - Curious story, but my knowledge is not enough to help you here. 
+Dr - I don't know anything about that person or item you possess.
+Ar - Well damn. At least I've defeated a dragon today. What do you think father would say?
+Ro - Now that you say it, we actually did...
+Ar - Well, Ember, take your time, we will be waiting around the corner.
+Party leaves Ember alone with the Qothus.
+Em - I didn't expect this would turn out like this.
+Dr - Threads of destiny are often chaotic in nature.
+Dr - Your mate is strong, you've chosen wisely.
+Em - Wha-? Sir Arron is not my...
+Dr - Or was it Ezet's influence, I wonder.
+Em - Um, could you tell me about my mother?
+Dr - Oh, she was one nasty rascal.
+Dr - And a fool unlike others. 
+Dr - Always got into fights with others. One time she even scorched Elder's nest cave.
+Dr - ...
+Dr - Shame I won't see her again.
+Em - You were related?
+Dr - We are all siblings in a sense.
+Em - Ah, so I can call you an Uncle Qothus then?
+Dr - This is...
+Em - Please?
+Dr - *sigh* Alright.
+Em - But what should I do now?
+Dr - You look quite accustomed to mortals. 
+Dr - You should naturally stay with them now.
+Dr - In truth, I don't know if we will even continue to exist for much longer.
+Dr - I haven't seen or heard of anyone for a long time until you came.
+Dr - So go, glide proudly and remember what you are. 
+Dr - Don't shy away from returning here if you need help. 
+Dr - I may look old, but a few more centuries are nothing for me.
+Em - Thanks, Uncle Qothus I'm glad we met.
+Ember awkwardly hugged the big dragon.
+=BLACKTRANS 0.5=
+=SPRITE emberhappy=
+Em - Hey, I'm ready to go.
+Em - Hey, what are you doing to that whelp?
+=SPRITE dragonwhelp=
+Ar - Oh, don't worry about it. 
+Ar - We don't need it anymore.
+Er - It was supposed to substitute you in case you'd chose to stay here. 
+Em - Eh? Eeeeeeh?!
+=STOP=
+
+**Victor Kills Dragon**
+=BG mountainsday=
+=SPRITE victor=
+A few hours later
+V - Looks like a perfect timing for me.
+=SPRITE dragon=
+Dr - Who are you, human?
+Dr - You reek of death.
+V - Must admit finding you hiding here was quite a task.
+V - But I'm rather happy to finally be able to slay you.
+Dr - You are awfully arrogant for a mere mortal, coming here alone.
+V - *Sigh* Same thing every time.
+Dr - ...?
+*Slash*
+At inhumane speed Victor cut the big dragon across the neck and wing. 
+Dr - Y-you wretch...
+=SPRITE victor=
+V - Just die already.
+Wounded and exhausted from the previous fight, the dragon had no chance against him. 
+=BLACKTRANS 0.5=
+A nearly dead Qothus fell before Victor as life left his body.
+V - Hmph, too easy. 
+V - Well, can't blame you, after you've already been defeated today. 
+V - Now, let's finally finish this. 
+Victor raised his sword dealing a killing blow. 
+*Slash*
+V - Finally. This should be the last one...
+V - ...
+V - ...
+Contrary to Victor's expectations, nothing unusual happened.
+V - Fuck. So it's not over yet.
+=BLACKFADE 0.5=
+A few days later
+=BLACKUNFADE 0.5=
+=BG cult=
+=SPRITE victor=
+D - I think I ordered you to stop coming here as you please.
+V - Whatever. 
+D - In a bad mood, huh?
+D - Having trouble with your silly quest?
+V - Yeah.
+V - I killed the last of the winged pests, but somehow it's not complete.
+D - Maybe time to do some real jobs then?
+V - Hey, you've given me the pass on this hunt.
+D - Because dragons were dangerous to us.
+D - You've driven them to extinction by this point.
+V - I'm not doing it for fun, once I get all of their powers, we won't need to chase that fool.
+D - Hmph, that's just your assumptions.
+D - And you are out of luck now.
+D - .....
+D - Actually, I might have a lead for you.
+V - You aren't trying to make me your dirty work, do you?
+D - You make it sound like I'm some sort of scheming bastard. 
+D - You must remember the wretch, Arron? The one who I told you to keep your eyes on?
+V - You know I don't give a damn about weaklings.
+D - And if you did, you'd know he has one notable follower.
+V - ...
+=STOP=
+
+**Victor sends threat**
+=BG villageday=
+=SPRITE rose=
+Ro - I've got a letter. Looks like it's about Ember.
+Ar - Hmm? That's unusual. 
+Ro - It says "I know you are hiding a dragon offspring. Give her away or your little village will be demolished."
+Ro - "This is the only warning. Bring it to the Aeros' Forest entrance."
+Ar(neutral) - Hmm, I guess we have a new task on our hands.
+Ro - They make a threat against the village, and this looks like a trap.
+Ro - Why would they need Ember? 
+Ar(shock) - I don't care. My harem is mine and if they dare to threaten it, I won't give them any mercy.
+Ro(sarcastic) - You really should stop seeing us as your property. 
+Ar - You aren't property. 
+Ar - I don't care about property. I care about cute girls.
+Ro - Well, I guess we will know it once we get there.
+=STOP=
+
+**Victor Prepares to fight**
+Ar - This guy looks familiar.
+Ro - This is Victor. We've seen him in Aeros.
+I (shocked) - Ah, it's the man who was talking to the father at that time.
+V - You shouldn't have come, I only need the mongrel one. 
+V - But now you all will die. 
+V - Dimitrius will be happy I had to do his dirty work.
+Em - Why? What do you want from me?
+V - Nothing, you just seem to have something I need.
+V - Damn you look weak.
+Em - Eh? I don't understand. 
+V - You don't? Haven't you been visiting the dragon lately?
+Em - Uncle Qothus?..
+V - That's its name? 
+V - Sorry, I don't take note how my prey was called. 
+Em - What?..
+Em - You have...
+V - Yes, I slayed it. 
+Em(sad) - ...
+Em(sad) - Why?
+V - *Sigh* Why do men hunt? 
+V - To dominate. To feed. To feel joy.
+V - And also to test himself. 
+Em - You killed Uncle Qothus!
+Ro - Calm down, Ember!
+V - Yeah, save yourself some energy for the fight.
+Ar - So you test yourself by challenging some girl who looks weak and killing time-worn dragons?
+V - Hmph. You have a sharp tongue boy.
+V - But you are right, it's not much of a test.
+Ar(neutral) - So what's your deal?
+V - Do you know about dragon souls? 
+Ar(neutral) - More or less.
+V - I've been collecting them for long years. It seems one was hiding by your side.
+Ar(neutral) - And I presume you'd get something by getting them all. 
+V - Strength. Immortality. Power. You name it. 
+V - A reward worthy of a supreme warrior.
+V - And it all lies within my grasp now. 
+V - The only reason I'm telling you about this is  your death looms. 
+Ar(angry) - I'm sick of this psycho. He deserves some retribution.
+=STOP=
+
+**Victor Defeated**
+Defeated Victor fell on his knees not in any condition to continue the fight.
+V - Ghhh... How... Can I lose...
+V - After all... these years...
+V - Defeated... by a bunch of kids...
+Ar(neutral) - This is over, you bastard. 
+Ar(neutral) - Ember. 
+Em - ...*nod*
+Ember steadily advanced to crouching man.
+V - You think... I'm scared of you?... 
+*Crack*
+=SOUND hit=
+Em - ...
+Ember's fist struck into Victor's face.
+As Victor's skull cracked, the blade fell from his hand.
+Ar - That was an uninspired last line.
+Ro - Wha... What's going on?
+A blade from Victor's hand began shining as it was covered in cracks. 
+After a loud explosion streams of energy began dissipating in all directions.
+Ar - These are...
+Ri(talk) - Dragons souls are being freed. 
+Ri(talk) - He can't suppress them any longer inside of his sword.
+Em - Ah... 
+Er - Wow, that's quite a sight.
+Ro - Look, something happens to Ember!
+Being close to the streams, a shining essence has been drawn from Ember's hands.
+=BG ember_dragon=
+The essence near ember began to form into a dragon shape.
+Em - Is this...
+Em - M-mother?
+DrM - Yes. 
+DrM - This seems to be at an end.
+DrM - I'm proud of you, Ember. 
+DrM - Sorry, I was a terrible parent. 
+Em - No.
+Em - You were with me all this time. 
+Em - And you gave birth to me.
+DrM - You've grown well.
+Em - Thank you.
+Em - What happens now?
+DrM - You have freed their souls.
+DrM - Now they can be reborn into a new hatchling. 
+Em - So, we saved them?
+DrM - Yes, you've done a great deed.
+DrM - But it seems I'll have to go too. 
+Em - ...
+Em - Thanks for staying with me all this time. 
+DrM - Heh, I was sure you'd be crying here.
+Em - Maybe we can meet again?
+DrM - After rebirth we will not remember who we were in previous life.
+DrM - But I'm glad you have found your place and friends you can rely on. 
+DrM - Arron. You are still to face great dangers, but I trust you to take care of my daughter. 
+Ar - Hmm... I'm not sure I'm up to the responsibility yet. 
+DrM - Don't worry, I'm  sure you can make Ember some fine offspring with some practice.
+Em - Eh?!
+DrM - After all I've almost had first-hand experience.
+Ar - You had what?!
+DrM - Don't act so surprised now. My daughter is too innocent to take initiative, so I gave her a couple of hints.
+Ar - ...And took some liberty in the bedroom...?
+DrM - That was the best for all of us. 
+DrM - But it's time for me to go. 
+DrM - Good luck, children. 
+With last words vanishing in the air so did the image of Ezet.
+=BG villageday=
+Ar - ...Look, it wasn't as lewd as you imagine. 
+Ro - Disgusting.
+Em - Ah, so that's why I acted like that.
+Ri - ...
+Er - Kinky.
+I(sad) - Hmm I'm not sure how ancestors would feel about it.
+Ar - Okay, enough. 
+Ar - Let's get out of here, before someone sees us and blames us for murdering Aeros's hero. 
+=STOP=
+
+**Iola figures out how to find traveller**
+=BG hall=
+=SPRITE iola=
+I - Arron, I've got good news.
+Ar - You've found a way to make Rose's boobs bigger?
+I - N-no... Rilu taught me how to use that pearl you got to summon its owner. 
+Ar - Oh... I'm already focused on the idea of giving Rose a huge rack.
+Ar - Maybe at least temporarily.
+Ro(sarcastic) - I'm also here you know.
+Ar - Jeez, fine. 
+Ar - What about that mysterious guy?
+I(sad) - Well, I hope he can help me to understand what's going on with Father.
+Ro - And he might know how we can get back. 
+Ar - How awfully convenient. 
+I - There's a ritual which will allow us to summon him, but we would need a special place of power. 
+I - Rilu said she's seen one where you found her. 
+Ro - Ugh, those caves...
+Ar - I see. Well, might as well try it since there's not much else to do. 
+=STOP=
+
+**Iola cave exploration**
+=BG cave=
+=SPRITE iola=
+I - Wow, these caves are quite dark. 
+I - You say you were here all alone, Rilu? 
+I - Seems like a scary place for a little girl.
+Ri - Please, I'm older than you. 
+Ar - Plus you don't have to worry about actually dying.
+Ri - I'd be in trouble if you die though.
+Ar - Won't we all.
+I(sad) - I don't really feel comfortable around here.
+Ro - Me neither. Let's find what we need sooner rather than later.
+=STOP=
+
+**Iola summon traveller**
+=BG cave=
+=SPRITE iola=
+The party came to a small ruin circle.
+I - Alright, this must be the place.
+Ar - Great. What do we do now?
+I - I'll prepare the ritual. You can just wait.
+Ar(neutral) - Damn, I hate waiting. 
+Ri - I'll help.
+=BLACKTRANS 0.5=
+I - Alright, now...
+As Iola chanted the spell, ruins began glowing with blue light. After a couple of seconds a figure appeared in front of them.
+T - Wretches! What the fuck do you want?
+Ar(neutral) - ......
+Ro(shock) - ......
+I(shock) - .....
+T - ...Sorry, Let's try this again. 
+T - Hi. Who are you?
+Ar - None of your fuckin' business.
+Ro(shock) - Master!
+Ar - What? Maybe it's his way of saying 'hi'.
+Ar - Is this even the correct guy?
+Ri - *Nod*
+I - I can't believe my eyes, you really are a Saint Sergius from holy texts!
+T - ...You can call me that, if you must.
+I - I never thought I would meet someone like you.
+T - Hmmh? Well that was some time ago...
+Ar - I respect your religious insight, but we kinda have some business here. 
+I - Oh, I'm sorry. Let me explain...
+=BLACKTRANS 0.5=
+I(sad) - So I was hoping you could help me to figure out what's going on with my father and the cult...
+T - Did you say that the cult is searching for demons invading this world?
+I - Yes. 
+T - No, this is wrong. 
+I(shock) - Eh?
+T - Demons do not invade this world in physical form. 
+T - They can't leave their dimension at will and enter here.
+T - What they do instead is influence and corrupt other beings. In some cases to an extreme degree.
+T - Like local dwarves who turned into bloodthirsty maniacs, or faeries being massive bitches.
+Ar(neutral) - That explains quite a lot. 
+I(sad) - I had no idea. What are demons really then?
+T - They are entities from another dimension, who generally seek a life energy which they feed on. 
+T - Violence, negative emotions, things like this. They would gladly enter this world but most aren't powerful enough for that. 
+T - Once defeated they return to their realm, but strong light power can kill them entirely.
+T - From the sound of it, I'd guess your father isn't quite himself anymore. 
+T - But spare me from these worldly worries. Is there something else? 
+Ar - Actually yes, I wanna know who you really are.
+T - You don't take me for a God? 
+Ar - Hardly.
+T - Haha, well, let's say I'm sort of a traveller like you, except that I came here willingly. 
+Ar - Is that so?
+T - Well... I willingly escaped my pursuers a long time ago and chose this world. 
+Ar - So you are basically a fugitive. Got it.
+T - Shhh, don't tell anyone.
+Ro - You can move through dimensions on will?
+T - Yes, kind of, it's the power I possess. Envious? You can't have it.
+Ro(talk) - No, but we could use your help to go home.
+T - Hah. Hahahah. 
+Ro - Could you please do that? 
+T - Hmh... I could. For this you'd have to bring me something first.
+T - There are four elements. Earth, Water, Fire and Air.
+Ar - .....
+T - Their existence is focused in certain places, deep underground, vast oceans, skies and so on.
+T - Bring me one of-
+Before Segius could finish a sentence, a small bomb exploded, creating a blinding flash. 
+=SOUND slash=
+D - Enough of this bad joke.
+T - Wha...
+Sergius fell on the ground from a mortal wound.
+=SOUND fall=
+=SPRITE demitrius=
+I(shock) - NOOO!
+D - Sorry to interrupt your party, but I kinda needed his powers.
+D - And now I finally have them. Must thank you for finding him for me, haha. 
+Ar(angry) - You'll pay for this.
+Arron charged at Dimitrius from a few feet away.
+But as his sword was about to strike, Dimitrius disappeared and quickly reappeared on the other side of the cave.
+D - Watch out, it's dangerous to run with sharp things.
+Ar(angry) - What the hell...
+D - Hahaha, aren't these powers great?
+D - Okay, have fun worms, daughter...
+I(shock) - .....
+D - There's things that need to be set in motion.
+=SPRITE_HIDE=
+Dimitrius teleported out of the cave leaving everyone in shock.
+=SPRITE iola=
+I(shock) - Please, don't die, I... can heal you...
+T - You can't... 
+T - I've been running away long enough...
+T - This will... Get very bad...
+T - Listen... You must stop him...
+T - The cult... is his tool...
+The last words of Sergius escaped his mouth as life left his body.
+I(shock) - No, this can't be!
+Ar - .....We must go.
+Ar - Iola?
+I(sad) - .......
+After a few minutes they left the caves.
+=BG villageday=
+I(sad) - Sorry, I need some rest.
+Ro - Sure, let me help you.
+=SPRITE_HIDE=
+Em(tired) - I don't get it. Why is she so upset?
+Ri - Her father just killed the saint in front of her eyes. 
+Ri - She might not have truly known him, but it's too much to take for her beliefs. 
+Ar(neutral) - I haven't actually considered that.
+Em(tired) - Sorry, I still don't understand. 
+Ri - It's fine, we might have worse things to deal with soon.
+=STOP=
+
+**Flak about City Raid**
+=BG market=
+=SPRITE flak=
+F - Hey, big guy, there's some nasty news coming from Aeros.
+Ar - Really? What about?
+F - Dunno, something like a war?
+F -  There seem to be many refugees coming from that direction.
+F - Just thought you'd be interested to know about it.
+Ar(neutral) - Doesn't seem good. I guess we should check it out.
+=STOP=
+
+**City raid scene**
+=BG burning_city=
+The team has entered Aeros observing the surrounding disaster.
+Ro(Sad) - This looks horrible...
+Surv - What are you doing here?!
+Surv - You should escape with everyone now!
+Ar(neutral) - What exactly is going on?
+Surv - Monsters and demons attacked the city.
+Surv - They have taken the city hall and now hunt every man in the vicinity.
+Surv - Some guards still try to fight, but it's all meaningless.
+Ar(neutral) - Hmm.. What about the city hall?
+Surv - People say everyone there was killed. Monsters come from there as if there's a nest.
+Ar - I guess that's our target then.
+Surv - Whatever, if you die it's not my problem.
+Ar(neutral) - Why don't you show some guts? It's your city after all.
+Surv - You are a fool.
+Surv - At times like these your only chance to survive is to watch out for yourself.
+=SPRITE demon=
+Demon - Raaargh!
+Surv - S-Screw you, I'm out of here!
+Ar(neutral) - No wonder the city is in ruins with residents like these.
+=STOP=
+
+**Annet prefight scene**
+=BG hall=
+=SPRITE annet=
+The team has barged into the main city hall as Annet meets them there.
+An - Look what we have here.
+An - Can't say I expected to see you still alive.
+Ar(neutral) - I knew you were a one kind of a bitch after learning your history with Erika.
+Ar(neutral) - But must say, this is a whole different level. 
+An - I'm glad you appreciate my work.
+Ro(shock) - Your work? 
+Ro(shock) - You are slaughtering innocent people!
+An - People, cattle, who cares.
+An - I'm glad we are finally past the acting stage and I don't have to deal with their stupidity.
+An - Won't deny it, I did have my fun a couple of times though.
+An - But it was taking too much time.
+Ar(neutral) - Whatever, let's just beat the shit out of her.
+An - Tsk, you are throwing away the few minutes of life I am gifting you.
+An - And with such bad manners too.
+An - I'll take care of your friends, once you die, Arron.
+=STOP=
+
+**Annet win scene**
+=BG hall=
+=SPRITE annet=
+An - Gh, you degenerates...
+An - Demons, crush them!
+A horde of large demons swarmed the hall from all directions.
+Ar(shock) - Oh shit!
+Ar(shock) - Stay together.
+Ro - There's too many
+Em - Ngh...
+An - How does it feel to be outnumbered now?
+An - Ha-h, lets see how long you'll hold up.
+An - But while we are at it...
+I(sad) - This looks really bad, there's no end to them.
+An - *Chanting*
+An - Erika, return to my side!
+Er(sad) - .....
+Ro(talk) - Eh... Erika?
+Ar(shock) - Where are you going?
+Er(sad) - I'm... sorry.
+Ignoring the battle and enemies, Erika left the team and slowly walked into Annet's direction.
+Ro(shock) - No way...
+An - Hahah, you imbeciles!
+An - Did you seriously think I'd leave my toy with no security measures?
+Ro - You are the lowest.
+Ro(talk) - Stop, Erika!
+An - Don't waste your breath.
+An - She was hypnotized long time ago to obey my will on command. 
+Ri - We won't hold without her...
+An - You know how to secure victory?
+An - Never leave things to chance, a backup plan is mandatory.
+An - Isn't that nice, Eri...?
+=switch to cg1=
+Whole room froze in awe as Erika stabbed Annet's neck.
+An - Wha...t...
+An - Why...
+Er - You are right.
+Er - Never leave things to chance.
+Er - You really thought I would never learn about your hypnosis and find out how to resist it? 
+An - You... biiitch!.. 
+Er - I've learned from the best.
+An - Ghhh!..
+*Slash*
+=switch to cg2=
+An - Nnooo!..
+A red splash erupted from Annet's neck as the dagger sliced it through.
+Er - Go to hell, Mistress.
+=SOUND fall=
+=BG hall=
+=SPRITE erika=
+With Annet's defeat all demons in the hall quickly retreated from sight.
+Er - Phew... 
+Er - I'm shaking now.
+Er - But somehow feel great.
+Ar - Yeah, you've saved us.
+Er - Turns out, I'm a pretty good actress, huh?
+Ro - You really made us worried. 
+Er - I've realized she'd always treat me as her victim.
+Er - So I thought this would be a safer approach.
+Ar - Well, looks like we saved a city at least.
+=SPRITE demitrius=
+=SPRITE_UNFADE 0.5=
+=SHAKE_SPRITE 0.7=
+D - Nice work, insects. 
+Ar(anger) - Dimitrius!
+D - Now, don't look so mad.
+D - You've done me a great service today and I'll spare your lives for some time.
+Ar(neutral) - You talk highly for someone who'll be gutted by the end of this.
+D - Ahahah, nice one, Arron. 
+D - You actually have no idea how troublesome it is to kill another demon lord with a big reputation in this world. 
+D - But you actually did it.
+Ro - You wanted her dead? That's why you didn't help her?
+D - That's what I said. 
+D - I actually thought about giving you a hand on one occasion, but you managed anyway.
+Ri - You've left your kin here to die like that.
+Ro - They don't think of their own any higher than of normal people.
+Em - You really aren't afraid to lose?
+D - What, do you really  think I should be worried about you?
+D - You just don't understand, do you?
+D - You are not a threat. You killed Annet, but she was weak and stupid. 
+D - I can squash you all like bugs, but you never know when you might need a couple of resourceful mortals.
+I - We'll stop you and end this madness.
+D - Yeah, sure, struggle some more if you wish.
+D - Have your little celebration, for today.
+=SPRITE_HIDE=
+Ar(neutral) - ....He's gone.
+Ri - There seems to be a crowd outside.
+Ro - Those are probably the survivors. 
+=BG hall=
+Surv - It was you? You defeated the demons?
+Ar - No, we just were really persuasive.
+Surv - Eh? 
+Ar - Let's return to the village. 
+Ro - Agreed, this was a tough day.
+Surv - But what should we do? What if demons return?
+Ar - I'm afraid my charisma is too low to take you all.
+Ar - You will have to figure out how to defend yourself eventually.
+The team left puzzled civilians.
+I(sad) - I wonder if we should've left them like this.
+Ar(neutral) - It can't be helped.
+Er - After seeing what was happening in the city I don't feel like we should've helped them even if we could.
+=STOP=
+
+**Dimitrius kidnaps Rose**
+=BG hall=
+=SPRITE rose=
+Ro - Maybe we should've helped the survivors back in the city.
+Ar(neutral) - We have enough to deal with on our hands already.
+Ro - What are we gonna do about Dimitrius though?
+Ar(neutral) - Maybe we won't do anything. 
+Ar(neutral) - He seems to be quite dangerous, but isn't really hostile.
+Ro(talk) - What do you mean?
+Ro(talk) - Now since he got those powers we won't be able to go back too.
+Ar(neutral) - Rose, why do you think I want to go back? 
+Ar - To live the rest of my life in the shadow of my brother, who attempted to get rid of me?
+Ar - Not to mention being chained to the palace and deal with all the dumb people there. 
+Ro - But it was our home. 
+Ar(neutral) - Yes, except nobody is waiting for us there. 
+Ar(neutral) - I've never had the freedom to do anything useful in my life until we ended up here.
+Ro - But... What should I do?
+Ar(neutral) - You aren't my slave anymore. 
+Ar - You can choose what to do with your own life as well. 
+Ro(talk) - But I don't-
+Ro - ...I understand.
+Ro - I don't think we can ignore what's going on around anymore.
+Ro(talk) - Now, excuse me...
+=BLACKTRANS 0.5=
+=BG villagenight=
+=SPRITE rose=
+Ro - (Why do I feel so terrible now)
+Ro - (Maybe I really need a break)
+Ro(talk) - Hmm... Who's there? 
+=SPRITE iola=
+Ro - Iola?
+I - Evening, Rose. 
+I - I'll have to borrow you for a moment.
+Ro(talk) - Huh?
+*Thud* 
+With an uncharacteristic strike, Iola knocked Rose out and swiftly disappeared with her into the night.
+=BLACKTRANS 0.5=
+=BG cult2=
+=SPRITE rose=
+Ro - Ugh... what... Where am I?
+Rose found herself in an enclosed room in a place she hasn't seen before.
+The small room only had two other people besides her: Iola and Dimitrius.
+Ro - Iola? Why..?
+Iola acted as she couldn't hear or see Rose. 
+Ro(talk) - What have you done to her!?
+D - Why are you mortals so dense? 
+D - Who do you think she is? 
+Ro - Our friend. 
+D - Then you should choose better friends.
+D - She's a member of the cult, you idiot. 
+D - The cult, which was reestablished solely to help us invade this world.
+D - She was trained since her birth to succumb to our control and serve us however she might. 
+D - Naturally I've planted a few additional suggestions when she was imprisoned, just in case it could prove to be useful.
+Ro - This is disgusting. 
+D - Thanks. But I didn't ask your opinion on that.
+Ro - What do you want of me?
+D - I have a proposal for you.
+Ro(sarcastic) - ...What?
+D - To put it briefly, I offer you to take the place of Annet. 
+D - After her death there's some gap in ranks. 
+D - You could fit right in and have the same powers she had.
+D - In return you'll only have to pledge your loyalty to me.
+D - Given that it will save you from the eventual demise of your kind, I see it as an extremely nice offer. 
+Ro - ......
+D - You will have some time to think about it. 
+D - Take her to the jail cell.
+I - Okay. 
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE erika=
+Next day.
+Ar - Hey, Erika, have you seen Rose?
+Ar - I haven't seen her since yesterday. 
+Er - No, it seems Iola is gone as well.
+Ar - Okay, this is unusual. 
+Ar - I'll go see Rilu.
+=BLACKTRANS 0.5=
+=SPRITE rilu=
+Ri - Yes, it seems they are with Dimitrus.
+Ar(angry) - WHAT THE HELL!?
+Ri - We can only guess, but Rose is held hostage. 
+Ri - Don't think Iola is staying there willingly either.
+Ar(angry) - Fuck... How did this happen...
+Ar(neutral) - We must attack him.
+Ri(talk) - Don't be stupid. 
+Ri - Even if by some miracle we win, he can send them anywhere with his powers.
+Ri - Rather, help me out.
+Ar(neutral) - How? You have a plan?
+Ri - Yes, but we will need to visit the Summerhill Keep first.
+Ar(angry) - ... You expect me to leave them in this shithead's hands just like that?
+Ri(talk) - I expect you to not be reckless and weigh the odds.
+Ri - Acting on your emotions can only make things worse. 
+Ar(neutral) - .....
+Ri - Let's go then, it's better if we don't waste time. 
+=STOP=
+
+**Zelroth boss win**
+=BG castle=
+=SPRITE zelroth=
+Z - Gh... How... are you...
+Z - So strong.
+=SOUND fall=
+=SPRITE_HIDE=
+C - Master defeated! I run!
+Big monster quickly escapes in one of the halls leaving Zelroth laying on the floor.
+Ar(neutral) - Wait!
+=SPRITE rilu=
+Ri - Ignore it, we don't need him.
+Z - Even after you kill me... 
+Z -  Dimitrius will get you...
+Ri - Shut up, I'm not going to kill you.
+Rilu proceeded to inspect Zelroth's possessions.
+Ri - Found it.
+Ar(neutral) - Uh, are we really going to use this?
+Ri - I don't see any other options on hand.
+Ar - ...Fine, I'll trust this to you.
+Ri - Let's return then.
+=BLACKTRANS 0.5=
+Z - Fuck... I can barely move...
+=SPRITE caliban=
+C - ...Master.
+Z - Hey, you imbecile, come help me!
+Big monster walked over to the lying man.
+Z - Wait. What are you doing-
+Z - Stop!
+C - .....
+Z - What the fuck are you-
+=SOUND splatter=
+Z - Arrggh!!
+C - .......
+=BLACKTRANS 0.5=
+=BG jail=
+=SPRITE rose=
+Behind the iron bars of the jail, Rose sits out in the cold.
+Ro - ...
+Ro - How do I even get out of this?
+Ro - Life was so simple back then...
+=BLACKFADE 0.5=
+.....
+? - Poor thing... Losing her parents at such a young age.
+?? - You mean last week's fire? 
+?? - That was fierce.
+? - She’s been in shock since then and barely says anything. Only sobs.
+? - She has no relatives around here, we're gonna have to find her an orphanage.
+Woman - I'll be taking care of her.
+Woman - I knew her parents.
+? - You must have a really kind heart, miss.
+Woman - Hey, you are Rose, right? 
+Woman - Do you want to be friends with me?
+Rose - .....
+...
+...
+...
+Woman - Good morning, Rose. 
+Woman - How are you feeling today?
+Rose - I'm good, thanks.
+Rose smiled. 
+It's been a few months since the incident and she grew accustomed to her new life.
+Woman - Today we go for a walk. Make sure to clean your face. 
+Rose - *nod*
+...
+...
+Slave trader - She's just a child, and untrained one. 
+Slave trader - You will not get a lot of money from me for her.
+Slave trader - I'll have to smuggle her somewhere far away, so at least her breed will net some worth.
+Woman - It's fine. 
+Woman - She's an orphan and there's no other relatives.
+Woman - Plus I don't want to raise  her any further, I've wasted quite a sum ofmoney on her food already.
+Rose didn't realize what they were talking about, but since that day she never saw that woman again.
+...
+...
+Slave trader1 - What about this one? Looks pretty interesting at least.
+Slave trader2 - Yeah, but she's a failure. 
+Slave trader2 - After we tried to train her she just became like this.
+Slave trader2 - Barely reacts to anything, always has the eyes of a dead fish. 
+Slave trader1 - Won't even wag her tail, like they usually do, huh?
+Slave trader2 - Yeah, a shame. 
+Slave trader2 - It happens rarely, so we basically got unlucky.
+Slave trader2 - Don't think anyone would want to buy a slave like that. 
+Slave trader1 - We might have to dispose of her soon then.
+Rose - ...
+...
+...
+=BLACKUFADE 0.5=
+=switch to cg1=
+Rose sat on the floor of a small cage, placed in a deserted part of a building. 
+She had a visitor. A young, luxuriously clothed boy of her age.
+Boy - Hey.
+Boy - What's your name?
+Rose - .....
+Boy - Hey, you heard me. 
+Boy - What's your name?
+Boy - Why aren't you responding?
+Rose - ...What is it?
+Boy - I'm wondering what's your name.
+Rose - ...It's Rose. 
+Rose - Now leave me alone.
+Boy - No. 
+Rose - ....
+Boy - Why are you telling me to leave you alone?
+Rose - Are you stupid? I want to be left alone.
+Boy - You're rude. 
+Boy - So why do you want to be left alone?
+Rose - Shut up! 
+Ro - I just want to! Why are you so stupid?!
+Boy - I'm not stupid. 
+Boy - I have a name. 
+Rose - And what’s your name? 
+Boy - I won't tell you. 
+Rose - Darn it, what do you even want!? 
+Boy - Maybe I want you. 
+Rose - Are you stupid? You're a child.
+Boy - So are you.
+Rose - I don't care. I don't want it.
+Boy - Why?
+Rose - Because I want to be left alone!
+Boy - I don't believe you. 
+Boy - And I don't care what you want. 
+Rose - .....
+Rose - Why are you even talking to me?
+Boy - You are not like others. 
+Boy - I like you. 
+Rose - Wha..?
+Boy - You don't act like you're desperate to please me.
+Rose - You are weird. 
+Boy - Got to go, see you soon. 
+Rose - .....
+=BLACKFADE 0.5=
+...
+...
+=BLACKUNFADE 0.5=
+=switch to cg2=
+? - Young master wants this girl?
+? - I think it's better to pick someone who can be a better... caretaker? 
+Boy - No. 
+?? - You know that once Arron decides there's no turn back.
+?? - Plus he refused to take anyone for 3 times straight.
+Boy - It's your stupid rule how every royal member must have a personal servant.
+?? - It's not MY rule, it's your family's rule. 
+?? - This is how you get used to the-
+Boy - I don't care.
+? - Well, at least she's young so we can teach her literacy and penmanship. 
+Boy - Are you done yet? 
+=BLACKTRANS 0.5=
+=BG jail=
+=SPRITE rose=
+...
+Ro - *sigh*
+Ro - This is terrible...
+=STOP=
+
+**Complete cult location**
+=BG cult1=
+=SPRITE demitrius=
+The team barges into the main room with Dimitrius in it.
+=SOUND slam=
+D - Ah, I almost forgot about you, fools.
+Er(angry) - Stop screwing around. Give our friends back!
+D - How about "No"?
+Ar(neutral) - Figured asking nicely wouldn't work with you. 
+Ar - So how about a trade then?
+D - Hah, what can you possibly offer to me? Your lives?
+Ar - How about this? 
+Arron presents the previously acquired black ring.
+D - An interesting thing, but what good does it do to you? 
+D - You would never dare to use it anyway. 
+Ri - You are right. He wouldn't. 
+Ri - But I will.
+D(angry) - Hmph, is that so?
+Ar(neutral) - You know she would, if you don't want your existence completely erased, give us back Rose and Iola.
+D - Hahahah, Fine.
+D - You can take Iola, I'm already bored with her.
+D - Rose, on the other hand, has something to say about it first.
+=SPRITE rose=
+Ar(shock) - Rose!
+Ro - Thanks for coming, but you can go now.
+Em - Eh? 
+Ro - I'm not going back with you.
+Ro(talk) - I'm joining Dimitrius.
+Er(angry) - What? Why?
+Ro - This is for the best.
+Ro - I'm tired of all this.
+Ro(talk) - Deep inside, I hated every single one of you.
+Ro(talk) - Ember is stupid and gullible.
+Em(sad) - Eeeh?
+Ro(talk) - Erika is a shallow harlot.
+Ro(talk) - Rilu, you just creep me out. 
+Ri - You wouldn't be the first.
+Ro(talk) - And Master... You are the worst irresponsible womanizer I've ever met.
+Ro - It was me, who told your brother about your affair with his wife.
+Ro(talk) - You told me to choose what I wanna do with my life.
+Ro(talk) - I don't want to see any of you anymore from now on.
+Er(angry) - ...
+Em(sad) - ...
+Ar - Yeah, nice work Dimitrius, now let's return to the deal.
+Ro(shock) - Eh? You didn't hear what I said!?
+Ar - I don't care.
+Ro - ...
+D - Aahahah, really nice one Arron. I'm very impressed.
+D - Fine, you can have your girls. 
+Ro - N-no way! What was that?
+D - Sorry sweetie, Arron wins this round.
+D - I can't allow them to destroy my reign.
+D - They are yours.
+Iola and Rose mechanically are relocated to the Arron's side.
+D - *snap* 
+I - Uh... Oh... Where am I?
+Ro - ...
+D - Here, they aren't under my influence anymore. 
+D - Now give that to me.
+Rilu silently threw the ring in Dimitrius' direction. It vanished in a thin air.
+D - Good, you made me worry for a moment there. 
+D - That's quite an achievement for you pests.. 
+Er - You act all high and mighty, but we got our friends back from you. 
+Er - Your plan failed.
+D - What? 
+D - Aahahah, holy crap, you thought my plan was to steal your friends?
+D - You actually are an idiot.
+D - You only interested me because of your connection to the other dimension, and now I've achieved it anyway.
+Ro - N-no way!?
+D - Yeah, I never really cared if you join me or not, Rose, but it's always fun to make mortals hate each other.
+D - This was fun while it lasted, but it's time to finish with this world already.
+D - And once we are done here, it's your home's turn.
+=SHAKE_SCREEN 1=
+=SOUND rumble=
+Ar(shock) - Eh? What's going on?
+Ri(talk) - This is bad, we should stop him.
+Ar(anger) - Shit, no other choice!..
+D - Don't make me laugh you wimp.
+Unexpectedly to everyone, Dimitrius pulled an unknown metal object from his back.
+=switch to cg1=
+With loud explosive noises it spewed a rain of pellets in the direction of Arron.
+Ar - Agh!.. Guh...
+Ro - Master! 
+D - Ahahaha, humans can make really fun toys.
+Ar - Damn bastard...
+I - Stay still, you are bleeding!
+=BG cult1=
+=SPRITE demitrius=
+=SHAKE_SCREEN 1=
+D - But enough of that. 
+D - Be grateful, you get to see the birth of a new world.
+Ri - !?
+Ar(neutral) - What's... happening?
+D - Just making a few changes around here.
+Er(angry) - This place is going down.
+Ri(talk) - We must retreat.
+Ar - ...
+D - Run, weaklings, run.
+D - Use what little time you've left for your own good, hahaha.
+=STOP=
+
+**Rose scene**
+=BG hall=
+Arron laid in the bed, recuperating from wounds left by Dimitrius.
+=SOUND knock=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ro - Can I come in?
+Ar - Sorry, I'm not quite in the condition for a liaison. Can you postpone it?
+Ro - ...
+Ro - Iola said that you were very lucky to survive that.
+Ar - Yeah, felt like my organs became a paste. 
+Ar - Hurt like hell too.
+Ro(talk) - ...I did a terrible thing.
+Ar - Huh, so it's about you now? Really supportive there.
+Ro - Oh... Uh... Sorry...
+Ar - I'm kidding, you twit. 
+Ar(neutral) - Yeah, don't worry about it.
+Ar - I knew you'd not in your mind since Dimitrius is a demon and all that shit.
+Ro - ...That's not the entire truth. 
+Ro - Those things I said about everyone... 
+Ro(talk) - I really feel that way, at least sometimes.
+Ar - ...So what? 
+Ar - We all sometimes feel like we hate everything and everyone, especially about someone close.
+Ar - You remember how you supported Ember when we met for the first time?
+Ro - ...
+Ar - And how you volunteered to save Erika, when she was captured, despite the danger?
+Ro(sarcastic) - That was...
+Ar - And how you yelled at me right before we ended up here. 
+Ro(sad) - *sob* M-master...
+Ro(sad) - I'm so sorry... Waaah...
+Ar - Ouch, easy there...
+=BLACKTRANS 0.5=
+...
+Ar - Feeling better now?
+Ro - *nod*
+Ar - Jeez... I feel like I'm doing a therapist’s job a lot lately.
+Ro(talk) - I haven't thought about you being compassionate before.
+Ar - Tell anyone and I'll kill you. 
+Ro - I have to ask forgiveness from the others. 
+Ar - Yeah, you can do that.
+Ro - Thank you, Master. 
+Ro - I'll be off now. Get well soon.
+=SPRITE_HIDE=
+=SOUND slam=
+Ar - On a second thought... A liaison might not be a bad idea.
+Ar(neutral) - Rose, wait, you hear me?
+Ar - Darn it.
+=STOP=
+
+**Zelroth boss fight/rilu**
+=BG castle=
+=SPRITE zelroth=
+Z - So you've come again. 
+Ar - Why don't you give us what we need and we pretend we've never met.
+Z - Don't expect to take me by surprise with such cowardly tricks like last time. 
+Ri(talk) - You've been kidnapping people and turning them into undead to fight for you and you call me a coward?
+Z - Hah, those are just natural resources. 
+Z - What is their purpose if not serving us?
+Ri - We are wasting time talking to him.
+Z - Once your friends join my army, I'll have plenty of use for you in my experiments.
+=STOP=
+
+**Flak about future city**
+=BG market=
+=SPRITE flak=
+F - Hey, looks like you've made it.
+F - I wanted to see you, but your gals didn't let me in. 
+Ar - Fair, they didn't let me out either.
+Ar - So what's been going on?
+F - Not much, except for bloodthirsty monsters and demons roaming around.
+F - Good thing they don't seem to care much about our village though.
+F - And that huge dead town thing emerging on the east where you've come from last time.
+F - Kinda feels like the world is coming to an end.
+Ar - True... I should check this out before it's too late.
+=STOP=
+
+**Future city entrance**
+=BG future_city=
+Ro - This place looks so bizzare. 
+Ro - Everything is made out of stone, but it’s crumbling.
+Ri(talk) - Looks like it was a human city before it was brought here. 
+Er - I could never imagine a city like that.
+Ri - Probably built with some advanced magic or technologies.
+Ar - I'd be more worried about what we're gonna meet here. 
+Ar(neutral) - Wouldn't like to repeat my last encounter. 
+I - Yes, let's move with caution.
+=STOP=
+
+**future city dimitrius prefight**
+=BG future_city=
+=SPRITE demitrius=
+D - Hah, you finally came.
+D - How do you like my work? 
+Ro(talk) - This is terrible. Why would you do this?
+D - Don't be so boring.
+D - When else would you be able to see something so different to your insipid lives?
+Ar(neutral) - Pardon my insipidness, but we're going to stop you.
+D - Hahaha, that's a funny joke. 
+D - You fight for this world, but it's a lost cause.
+D - I really like your persistence, but look at yourself.
+D - You guys are the only ones who actually came. 
+Ar(neutral) - But it was you, who made locals indifferent to their future. 
+D - Bullshit. It's just your nature. 
+D - To be cattle for us. 
+Ar(anger) - Getting really sick of your arrogance.
+D - Great, entertain me little moths!
+=start dimitrius fight=
+=STOP=
+
+**future city dimitrius postfight**
+=BG future_city=
+=SPRITE demitrius=
+D - Hmph, enough of this little play.
+Ar - Getting cold feet now? 
+D - Don't make me laugh-
+Without hesitation Arron charged at Dimitrius
+=SPRITE_HIDE=
+But he teleported at the last moment a few feet into the air.
+Ar(neutral) - Tsk.
+D - Let me show something really cool.
+Ro - Huh? 
+A sound of distant explosions shook the air.
+As they turned the way it came from, they could see a small object flying through the air.
+Er - Look!
+Ar(Shock) - Shit, dodge!
+Before Arron noticed, Dimitrius had escaped, observing them from a safe distance.
+=SPRITE demitrius=
+=SOUND explosion=
+An explosion of insane power erupted on top of the square where he just fought.
+D - Hahaha! 
+D - These toys are really something.
+D - How did you like this tactical nuke, Arron?
+D - Ah, I guess you can't answer anymore.
+=BLACKTRANS 0.5=
+=city sewers underground bg=
+Ar - Shit... Everyone alright?
+Ro(talk) - Yes, we've got pushed underground by the blast.
+Ro - Iola shielded us in the last moment.
+I(sad) - Sorry, I...
+=Fall sound=
+Ar(shock) - Iola?
+Ri(talk) - She's fine, just exhausted.
+Ar(neutral) - Alright, we need some time to rest.
+Em(sad) - But what should we do now? 
+Em(sad) - We can't beat him like this.
+Ar(neutral) - Well, he must think we are dead.
+Ar(neutral) - Means we have some time to think about it.
+...
+...
+Er - Hey, I found the exit to the sewers.
+Ar - Phew, at least we aren't buried alive. Let's go.
+=STOP=
+
+**finish sewers sequence**
+=city sewers underground bg, rose sprite =
+Ro - I see an exit.
+Ar - Finally. Let's see what's there.
+...
+...
+The group entered a small building filled with books and unknown devices.
+=caliban sprite=
+Ro(shock) - Ah!
+C - Ah. 
+Ar(shock) - It's Zelroth's minion!
+C - Oh, it's you guys.
+Ri - He looks somewhat different.
+Ar(neutral) - You are not going to fight us?
+C - No, I'd rather not.
+Ar - You also talk differently.
+Ar - Where's Zelroth then?
+C - He's no more. I've absorbed his intelligence. 
+C - Must thank you for that opportunity. 
+Ro(talk) - But what are you doing here then? 
+C - Studying. I've been having an unusual thirst for knowledge recently. 
+C - Humans here had a really advanced understanding of the world and nature.
+Ar(neutral) - Well, if you aren't going to fight we should move on.
+C - ....Hold on. 
+C - Are you still planning to fight Dimitrius?
+Ar - Do we look like we have any other option?
+C - You hardly have any chances on your own at his current power.
+Ar - So what, do you suggest we  give up?
+C - No, I actually want to offer you some help.
+Ro - Why? How do we even trust you?
+C - I'm not one of them and it's only a matter of time after they finish you off that they get to me.
+C - And they are not going to like what I did.
+C - Between you and the demons I'd clearly prefer your dominance.
+Ar(neutral) - Fair enough, I don't mind letting you go free.
+Ar(neutral) - As long as you aren't going to repeat Zelroth's deeds. Caliban, was it?
+C - No, actually I've chosen a new name for me. Now I'm Cyrex.
+Ar - Alright, Cyrex, so what can you offer.
+C - I'm not going to help you personally, but there still might be a way to defeat Dimitrius.
+C - Although, it's not going to be simple at all.
+Ar - Something is better than nothing.
+C - Good. Then, you must be aware that demons are weak to light.
+=Black screen transition=
+The team has made preparations and moved to their new destination while Dimitrius still had no idea where they are.
+=STOP=
+
+**final fight**
+=future city building bg, Dimitrius sprite=
+D - So this is where you've been hiding. 
+Ar(neutral) - Shit, he found us.
+D - You really are tenacious to survive that. Just like little cockroaches. 
+D - But it's time to finish our little game. 
+Ar(anger) - For once I agree with you. 
+Ar(anger) - Let's do this.
+=start dimitrius final fight=
+=STOP=
+
+**dimitrius final fight win**
+=Future building bg, dimitrius sprite=
+D - Ghah, you idiots. 
+D - Still don't understand that you can't defeat me.
+Ar(shocked) - Damnit. You guys escape, I'll hold him back.
+D(anger) - ...Seriously?
+D - Fine, I'll play with you for the last time, Arron.
+*snap*
+A number of demon minions jumped from the outside into the building. 
+Ar(anger) - Gh...
+D - Go after them!
+D - Now I made you look like an idiot. Ahaha!
+Ar(neutral) - We'll see about that, asshole.
+Saying that, Arron turned his back and ran away.
+D(anger) - ...?
+D - This imbecile never learns. 
+=Footstep sound=
+=Black screen transition=
+Meanwhile Rose and Erika moved through the lab’s upper floors.
+Ro - Come on, come on.
+Ro(talk) - Erika, you sure you remember the map?
+Er - Of course, elves have an excellent photographic memory. 
+Er - Or so I was told anyway.
+Ro(talk) - Please, we are in a dire situation here. 
+Er - I'm kidding, it should be around this corner. 
+=Demon sprite=
+Demon - Arrgh!
+Ro(shock) - Oh no, they found us!
+Er(sad) - I guess we will have to fight through them.
+=start rose-erika-demons fight=
+=STOP=
+
+**finish rose-erika-demons-fight**
+=future building bg rose sprite=
+Ro - We made it...
+Er - Yes, come in, it's after this door.
+Ro(talk) - Great.
+Rose and Erika entered the room filled with glowing glass screens.
+Er - Alright, it's your turn.
+Ro - Uh... This might take some time.
+Er - You sure you can manage it?
+Ro(sarcasm) - No, it would help if you could help me out too.
+Er - You know I'm too stupid for this stuff.
+Ro - ...Just let Rilu know we got there. 
+=black screen transition=
+Meanwhile Arron kept escaping from Dimitrius.
+After making through another room he ended up in a small room connected to a giant curved structure.
+Without taking a pause he opened a small hatch and jumped inside, sealing it shut behind him.
+=Black screen transition, tunnel bg=
+=dimitrius sprite=
+Right as he finished, Dimitrius predictably appeared next to him. 
+=Slash sound=
+Arron attempted to land a surprise attack, but Dimitrius blocked it.
+Ar(anger) - Damn you.
+D - It seems your brilliance is finally overshadowed by your human nature.
+D - What a stupid thing to trap yourself in this place even though I can easily  teleport.
+Dimitrius was correct, they appeared to be inside of an isolated curving tunnel only spacious enough to allow one person running in it.
+Ar(anger) - ...
+=black screeen transition=
+=future building bg, rilu sprite=
+Meanwhile Ember, Rilu and Iola ran from the other side of the tunnel. 
+Ri - Ember, give it to me.
+Em - Sure.
+Ember passed Rilu a small piece of red cloth that she managed to rip off Dimitrius' outfit during the fight.
+Ri - Erika said they got to the control room as well.
+Ri - Iola, you can start making your preparations.
+I - Got it!
+=Demon sprite=
+Demon - Arghh!
+Em - Oh no, they found us!
+Ri - We have no time for this. 
+=start rilu-ember-iola-demons fight=
+=STOP=
+
+**finish rilu-ember-iola-demons fight**
+Em - Looks like it was the last of them.
+Ri - Good, now time to start the preparations.
+I - Understood. How's Arron doing?
+Ri - He's struggling, we should hurry.
+Em - What should I do?
+Ri - Stay on guard.
+Em - Okay!
+=Black screen transition=
+=tunnel bg, dimitrius sprite=
+D - Exhausted from running in circles? 
+D - Too bad you are only a weak human.
+=Slash sound=
+Arron threw another strike but Dimitirus blocked it.
+Ar(anger) - Gh, you are really starting  to get on my nerves.
+D - Ahaha, great, let's fool around for the last time!
+=start arron-dimitirus combat=
+=STOP=
+
+=arron-dimitrius combat win=
+=tunnel bg, dimitrius sprite=
+=Sword fall sound=
+After a few clashes Dimitrius has managed to strike Arron's sword from his hands.
+Ar(shock) - Ah!
+D - And it's over.
+Ar(anger) - Like hell it is!
+Taken by surprise, Dimitrius was attacked by barehanded Arron, throwing him on the ground.
+=tumble sound=
+What he didn't see is how Arron pulled the shock baton out of his clothes.
+D(anger) - What the-
+=shocker sound=
+Bzzzzt
+D(anger) - Arrggh... You bastard...
+As the baton was connected to Dimitrius body, electrical shock ran through his body completely immobilizing and depowering him to the point he couldn't speak easily.
+Ar - Hah, so it does work on you after all. 
+D(anger) - You... Will pay for this...
+Arron kept Dimitrius in one spot as electrical current continued to restrict him.
+Ar(neutral) - You know what really gets on my nerves? 
+D(anger) - You are... just postponing the inevitable...
+Ar(neutral) - It's your trash attitude towards us. 
+D(anger) - You still... can't kill me...
+Ar(neutral) - Humans aren't the animals you take us for.
+D(anger) - And once energy... runs out...
+Ar(neutral) - I actually believe we can achieve great things.
+D(anger) - You will... fucking die...
+Ar(neutral) - You aren't even listening. 
+Ar - Well, at least you won't tell it to others.
+=black screen transition=
+=future city building, rose sprite=
+Meanwhile Rose has finally grasped the controls of the reactor. 
+Ro(talk) - Alright, I'm starting it.
+Er - Roger, I'll let Rilu know.
+Ro - Master, please be safe.
+=black screen transition, Rilu sprite=
+Ri - ...It's starting.
+Ri(talk) - Iola, wait for my signal.
+I - O-okay!
+Rilu began to chant the spell, as lights around the structure began to work.
+=Black screen transition, tunnel bg, dimitrius sprite=
+As Arron kept Dimitrius disabled, he sensed how the mechanisms around him went into motion and small lights turned on.
+Ar(neutral) - It seems I don't have much time left. 
+D - ...Hah... starting to regret... your arrogance?
+Ar(neutral) - I've heard that demons hate light. 
+D(anger) - (Keep talking fool, I only need a bit more to break free)
+Ar - You might have no idea, but this weird place is called a fusion reactor. 
+D(anger) - Watcha... talking about...
+Ar - Amazingly, it is able to eminate the power of the Sun itself.
+Ar - Given your condition, it seems my shocker has nearly run out of power. 
+Ar - So, say, do you think you will be able to survive fifty millions degree heat?
+D - Enough!
+Dimitrius pushed Arron away with a slowly returning power, still oblivious to what was going on around him. 
+=fall sound=
+Ar(shock) - Behind!
+Realizing that Arron indeed saw something behind him, Dimitrius looked around to find a huge cloud of forming plasma spreading through the reactor's coil.
+In the same moment Arron disappeared from his previous place.
+D(anger) - ...Teleportation?
+D - You fool, did you forget who I am?
+D - ...
+D(anger) - Huh?
+D(anger) - Something stops me? 
+D(anger) - HOW!?
+D(anger) - ARR-
+=remove dimitrius sprite=
+As the reactor fully powered,  plasma erased his body without a trace.
+=future building bg, arron sprite=
+Ar - Thanks Iola, that was rather close.
+I - N-no problem, we were lucky.
+Ri(talk) - Yes, thankfully it worked. 
+Ri - His teleportation wasn't that different from the  faeries, only extremely powerf-
+=Explosion sound, shaking=
+Ar(neutral) - Oh-uh.
+Em - What's happening?
+Ri(talk) - Rose says the reactor had a leakage, we should run before the building collapses.
+Ar(neutral) - Will they be alright?
+Ri - Yes, let's go.
+=black screen transition, future city background, rose sprite=
+Ro(talk) - We made it!
+Ro - Look, demons are gone. 
+Ri - Yes, with Dimitrius dead the dimensions are no longer connected. 
+Ar - Nice work. Time to go home then. 
+Em - Huh... Is this place going to stay in our world though?
+Ar - Not my problem. 
+=black screen transition, village bg, flak sprite=
+Ar - Hey, we are back and alive.
+F - Nice to see you then, ex-mayor.
+Ar(neutral) - ...What do you mean, 'ex-mayor'?
+F - Oh, we have elected a new mayor since you were gone and we had no idea if you are even alive.
+Ar(shock) - WHAAAT?!
+F - There he is by the way.
+=Caliban sprite=
+Ar - ...Eh? How?
+F - Well, he said that he will stop the end of the world if we get him elected. 
+C - Oh, Hi Arron. How are you doing?
+Ar - ...I'll fucking murder you. 
+Ar(shock) - It was me who stopped the end of the world, not him!
+G - Yeah, sure, you weren't even around most of the time.
+Ar(shock) - I-
+Ro(talk) - Master, isn't it fine? We have to return home soon anyway.
+Ar(neutral) - ......
+Ar(neutral) - Whatever. But how do you plan to do it? Dimitrius is gone now.
+I - Umh, I think I've some of those powers, when he died I felt like they went into me. 
+I(sad) - Maybe because we were related.
+I - I think I'll be able to transfer you back to your world.
+F - Well now, don't be so rushy, we surely can celebrate your return before you go.
+Ar - ...Thanks.
+=black screen transition=
+=STOP=
+
+*Epilogue (to be made)
