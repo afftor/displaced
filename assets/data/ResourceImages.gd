@@ -100,8 +100,8 @@ var backgrounds = {
 
 var sprites = {
 	empty = null,
-	Arron = load("res://assets/images/sprites/Arron.png"),
-	Rose = load("res://assets/images/sprites/rose.png"),
+	arron = load("res://assets/images/sprites/Arron.png"),
+	rose = load("res://assets/images/sprites/rose.png"),
 	goblin = load("res://assets/images/sprites/goblin.png"),
 	goblincmerc = load("res://assets/images/sprites/goblinmerc.png"),
 	emberhappy = load("res://assets/images/sprites/EmberHappy.png"),
@@ -174,8 +174,8 @@ var combatportraits = {
 	}
 
 var combatfullpictures = {
-	arron = sprites.Arron,
-	rose = sprites.Rose,
+	arron = sprites.arron,
+	rose = sprites.rose,
 	erika = sprites.erika,
 	ember = sprites.emberhappy,
 	rat = load("res://assets/images/enemies/RatFull.png"),

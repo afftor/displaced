@@ -23,7 +23,6 @@ var caster
 var target
 var critchance
 var hit_res
-var armor_p
 
 var effects = []
 var process_value
@@ -135,7 +134,6 @@ func setup_caster(c):
 	caster = c
 	chance = caster.get_stat('hitrate')
 	critchance = caster.get_stat('critchance')
-	armor_p = caster.get_stat('armorpenetration')
 
 func setup_target(t):
 	target = t
@@ -148,8 +146,6 @@ func setup_final():
 		critchance = template.critchance
 	if template.keys().has('evade'):
 		evade = template.evade
-	if template.keys().has('armor_p'):
-		armor_p = template['armor_p']
 	if template.has('custom_duration'):
 		if typeof(template.custom_duration) == TYPE_ARRAY:
 			tempdur = input_handler.calculate_number_from_string_array(template.custom_duration, caster, target)
@@ -232,12 +228,7 @@ func resolve_value(check_m):
 			value[i] = endvalue
 			continue
 		var rangetype
-		if userange == 'weapon':
-			if caster.gear.rhand == null:
-				rangetype = 'melee'
-			else:
-				var weapon = state.items[caster.gear.rhand]
-				rangetype = weapon.weaponrange
+		if userange == 'weapon': userange = caster.get_weapon_range()
 		if rangetype == 'melee' && input_handler.FindFighterRow(caster) == 'backrow' && !check_m:
 			endvalue /= 2
 		value[i] = endvalue
@@ -246,33 +237,8 @@ func resolve_value(check_m):
 func calculate_dmg():
 	if damagetype == 'weapon':
 		damagetype = caster.get_weapon_damagetype()
-#	if typeof(damagetype) == TYPE_ARRAY:
-#		damagetype = input_handler.random_element(damagetype)
-#
-#		damagesrc = variables.S_PHYS
-#	elif damagetype == 'fire':
-#		damagesrc = variables.S_FIRE
-#	elif damagetype == 'water':
-#		damagesrc = variables.S_WATER
-#	elif damagetype == 'air':
-#		damagesrc = variables.S_AIR
-#	elif damagetype == 'earth':
-#		damagesrc = variables.S_EARTH
 	if hit_res == variables.RES_CRIT:
 		for i in range(value.size()): 
 			if damagestat[i] in variables.dmg_mod_list:
 				value[i] *= caster.get_stat('critmod')
-	var reduction = 0
-	if skilltype == 'skill':
-		reduction = max(0, target.armor - armor_p)
-	elif skilltype == 'spell':
-		reduction = max(0, target.mdef)
-	if !tags.has('noreduce'):#tag for all reduction-ignoring skills i.e heals and others
-		for i in range(value.size()): 
-			if damagestat[i] in variables.dmg_mod_list:
-				 value[i] *= (float(100 - reduction)/100.0)
-#	if damagetype in variables.resistlist:
-#		for i in range(value.size()): 
-#			if damagestat[i] in variables.dmg_mod_list:
-#				 value[i] *= ((100 - target.get_stat('resists')[damagetype])/100.0)
 	for v in value: v = round(v)

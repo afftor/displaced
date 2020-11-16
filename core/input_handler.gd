@@ -318,21 +318,24 @@ func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 
 #Item shading function
 
-func itemshadeimage(node, item):
+func itemshadeimage(node, item): #reworked to a new itemdata structure
 	var shader = load("res://files/scenes/ItemShader.tres").duplicate()
 	if node.get_class() == "TextureButton":
 		node.texture_normal = load(item.icon)
 	else:
 		node.texture = load(item.icon)
-	if node.material != shader:
-		node.material = shader
-	else:
-		shader = node.material
-	for i in item.parts:
-		var part = 'part' +  str(item.partcolororder[i]) + 'color'
-		var color = Items.Materials[item.parts[i]].color
-		node.material.set_shader_param(part, color)
-	
+#	if node.material != shader:
+#		node.material = shader
+#	else:
+#		shader = node.material
+#	for i in item.parts:
+#		var part = 'part' +  str(item.partcolororder[i]) + 'color'
+#		var color = Items.Materials[item.parts[i]].color
+#		node.material.set_shader_param(part, color)
+#	for i in range(item.colors.size()):
+#		var part = 'part' +  str(i) + 'color'
+#		var color = item.colors[i]
+#		node.material.set_shader_param(part, color)
 
 
 #Enlarge/fade out animation
@@ -447,42 +450,6 @@ func BlackScreenTransition(duration = 0.5):
 func DelayedText(node, text):
 	node.text = text
 
-func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stats
-	if req.size() == 0:
-		return true
-	var result
-	match req.type:
-		'chance':
-			result = (randf()*100 < req.value);
-		'stats':
-			result = input_handler.operate(req.operant, combatant.get(req.name), req.value)
-		'gear':
-			match req.slot:
-				'any':
-					var tempresult = false
-					for i in combatant.gear.values():
-						if i != null:
-							tempresult = input_handler.operate(req.operant, state.items[i].get(req.name), req.value)
-							if tempresult == true:
-								result = true
-								break
-				'all':
-					result = true
-					for i in combatant.gear.values():
-						if i != null:
-							if input_handler.operate(req.operant, state.items[i].get(req.name), req.value) == false:
-								result = false
-								break
-		'gear_level':
-			result = combatant.gear_check(req.set, req.level, req.op)
-		'race': 
-			result = (req.value == combatant.race);
-		'status':
-			result = combatant.has_status(req.status) == req.check
-		'is_boss':
-			#stub!!!!
-			result = !req.check
-	return result
 
 func calculate_number_from_string_array(arr, caster, target):
 	if typeof(arr) != TYPE_ARRAY:

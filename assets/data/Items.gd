@@ -1,7 +1,7 @@
 extends Node
 
 
-var partmaterials = {
+var partmaterials = { #obsolete
 	ToolHandle = {
 		starting = {},
 		wood = {hitrate = 5},
@@ -68,7 +68,7 @@ func _init():
 
 
 
-var Materials = {
+var Materials = { #obsolete
 	#Only for basic equipment
 	starting = {name = "Dummy Material", price = 0, icon = load("res://assets/images/iconsitems/Wood.png"), description = "",
 	adjective = tr("STARTINGADJ"),
@@ -173,20 +173,7 @@ var stats = {
 
 
 
-func applyeffect(effect, caster, target):
-	
-	var value = effect.value
-	
-	if effect.has('casterreq'):
-		if globals.evaluate(effect.casterreq) == false:
-			return
-	if effect.has('targetreq'):
-		if globals.evaluate(effect.targetreq) == false:
-			return
-	
-	
-
-var Parts = {
+var Parts = { #obsolete
 	ToolHandle = {name = tr("TOOLHANDLE"), code = 'ToolHandle'},
 	Blade = {name = tr("BLADE"), code = 'Blade'},
 	Blunt = {name = tr("BLUNT"), code = 'Blunt'},
@@ -197,12 +184,10 @@ var Parts = {
 	ArmorTrim = {name = tr("ARMORTRIM"), code = 'ArmorTrim'},
 	ArmorCloth = {name = tr("ARMORCLOTH"), code = 'ArmorCloth'},
 	JewelryGem = {name = tr("JEWELRYGEM"), code = 'JewelryGem'},
-	
-	
 }
 
 
-var Items = {
+var Items = { #partly obsolete
 	axe = {name = tr("WEAPONAXENAME"), code = 'axe', description = tr("WEAPONAXEDESCRIPT"),
 	icon = load("res://assets/images/iconsgear/AxeBasic.png"),
 	basedurability = 50.0,
@@ -421,5 +406,79 @@ func gainhealth(target, value):
 func itemtofood(item):
 	state.food += item.foodvalue
 
-var bonustatsarray = ['damage','damagemod','armor','evasion', 'hitrate','hp', 'hpmod','speed', 'armorpenetration','resistfire', 'resistearth', 'resistair', 'resistwater']
+var bonustatsarray = ['damage','evasion', 'hitrate','hp','speed','resistfire', 'resistearth', 'resistair', 'resistwater']
 
+var hero_items_data = {
+	arron_weapon1 = {#use as template
+		name = 'weapon1',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "1",
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "2",
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "3",
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "4",
+				},
+		}
+	},
+	arron_weapon2 = {#use as template
+		name = 'weapon2',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "5",
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "6",
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "7",
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "8",
+				},
+		}
+	},
+	arron_armor = {#use as template
+		name = 'armor',
+		description = 'descript',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "1",
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "2",
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "3",
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				lvldesc = "4",
+				},
+		}
+	},
+}

@@ -62,29 +62,35 @@ func _ready():
 #		state.materials.elvenwood = 20
 		#state.townupgrades.lumbermill = 1
 		state.decisions.append("blacksmith")
-		var hero = combatantdata.MakeCharacterFromData('arron')
-		hero = combatantdata.MakeCharacterFromData('rose')
-		combatantdata.MakeCharacterFromData('erika')
-		combatantdata.MakeCharacterFromData('ember')
+#		var hero = combatantdata.MakeCharacterFromData('arron')
+		state.unlock_char('arron')
+#		state.unlock_char('rose')
+#		state.unlock_char('erika')
+#		state.unlock_char('ember')
+#		state.unlock_char('rilu')
+#		state.unlock_char('iola')
+#		hero = combatantdata.MakeCharacterFromData('rose')
+#		combatantdata.MakeCharacterFromData('erika')
+#		combatantdata.MakeCharacterFromData('ember')
 		var x = 5
 		while x > 0:
 			x -= 1
 			for i in state.heroes.values():
 				i.levelup()
-		var _worker = worker.new()
-		_worker.create(TownData.workersdict.goblin)
+#		var _worker = worker.new()
+#		_worker.create(TownData.workersdict.goblin)
 		#_worker.energy = 0
 		#isn't this ^ requied?
-		_worker = worker.new()
-		_worker.create(TownData.workersdict.elf)
-		_worker.energy = 0
+#		_worker = worker.new()
+#		_worker.create(TownData.workersdict.elf)
+#		_worker.energy = 0
 		#globals.AddItemToInventory(globals.crea
-		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
 		#state.items[0].durability = floor(rand_range(1,5))
-		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
-		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
-		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'cloth', ArmorTrim = 'wood'}))
-		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'cloth', ArmorTrim = 'wood'}))
+#		globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
 		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
 		globals.AddItemToInventory(globals.CreateUsableItem('barricade', 2))
 		globals.AddItemToInventory(globals.CreateUsableItem('protectivecharm', 2))
@@ -209,15 +215,15 @@ func _process(delta):
 			i.regen_tick(delta*gamespeed)
 		
 		movesky()
-		for i in state.tasks:
-			i.time += delta*gamespeed
-			updatecounter(i)
-			
-			if i.time >= i.threshold:
-				i.time -= i.threshold
-				taskperiod(i)
-				#call(i.function, i)
-		
+#		for i in state.tasks:
+#			i.time += delta*gamespeed
+#			updatecounter(i)
+#
+#			if i.time >= i.threshold:
+#				i.time -= i.threshold
+#				taskperiod(i)
+#				#call(i.function, i)
+#
 		if daycolorchange == false:
 			
 			if floor(state.daytime) == 0.0:
@@ -378,80 +384,80 @@ func BuildingOptions(building = {}):
 	var pos = targetnode.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	node.set_global_position(pos)
-
-func assignworker(data):
-	buildcounter(data)
-	if data.instrument != null:
-		state.items[data.instrument].owner = data.worker
-	state.tasks.append(data)
-
-func stoptask(data):
-	deletecounter(data)
-	if data.instrument != null:
-		state.items[data.instrument].owner = null
-	state.tasks.erase(data)
-
-func taskperiod(data):
-	var taskdata = data.taskdata
-	var worker = state.workers[data.worker]
-	for i in taskdata.workerproducts[worker.type]:
-		#Calculate results and reward player
-		
-		#Check if requirements are met
-		if randf()*100 >= i.chance:
-			continue
-		
-		var taskresult = i.amount
-		
-		if randf()*100 <= i.critchance:
-			taskresult = i.critamount
-			#print('crit triggered')
-		
-		
-		
-		
-		#Check if need to access multiple subcategory  
-		if i.code.find('.') != -1:
-			var array = i.code.split('.')
-			if array[0] == 'materials':
-				state[array[0]][array[1]] += taskresult
-				while taskresult > 0:
-					flyingitemicon(data.counter, Items.Materials[array[1]].icon)
-					taskresult -= 1
-					yield(get_tree().create_timer(0.2),"timeout")
-			elif array[0] == 'usables':
-				globals.AddItemToInventory(globals.CreateUsableItem(array[1]))
-				flyingitemicon(data.counter, Items.Items[array[1]].icon)
-			yield(get_tree().create_timer(0.2),"timeout")
-		else:
-			state[i] += taskresult
-		
-		#targetvalue 
-#		if data.instrument != null:
-#			data.instrument.durability -= taskdata.tasktool.durabilityfactor
-#			if data.instrument.durability <= 0:
+#
+#func assignworker(data):
+#	buildcounter(data)
+#	if data.instrument != null:
+#		state.items[data.instrument].owner = data.worker
+#	state.tasks.append(data)
+#
+#func stoptask(data):
+#	deletecounter(data)
+#	if data.instrument != null:
+#		state.items[data.instrument].owner = null
+#	state.tasks.erase(data)
+#
+#func taskperiod(data):
+#	var taskdata = data.taskdata
+#	var worker = state.workers[data.worker]
+#	for i in taskdata.workerproducts[worker.type]:
+#		#Calculate results and reward player
+#
+#		#Check if requirements are met
+#		if randf()*100 >= i.chance:
+#			continue
+#
+#		var taskresult = i.amount
+#
+#		if randf()*100 <= i.critchance:
+#			taskresult = i.critamount
+#			#print('crit triggered')
+#
+#
+#
+#
+#		#Check if need to access multiple subcategory  
+#		if i.code.find('.') != -1:
+#			var array = i.code.split('.')
+#			if array[0] == 'materials':
+#				state[array[0]][array[1]] += taskresult
+#				while taskresult > 0:
+#					flyingitemicon(data.counter, Items.Materials[array[1]].icon)
+#					taskresult -= 1
+#					yield(get_tree().create_timer(0.2),"timeout")
+#			elif array[0] == 'usables':
+#				globals.AddItemToInventory(globals.CreateUsableItem(array[1]))
+#				flyingitemicon(data.counter, Items.Items[array[1]].icon)
+#			yield(get_tree().create_timer(0.2),"timeout")
+#		else:
+#			state[i] += taskresult
+#
+#		#targetvalue 
+##		if data.instrument != null:
+##			data.instrument.durability -= taskdata.tasktool.durabilityfactor
+##			if data.instrument.durability <= 0:
+##				stoptask(data)
+#				#globals.logupdate(data.instrument.name + tr("TOOLBROKEN"))
+#
+#	worker.energy -= taskdata.energycost
+#
+#	if data.iterations > 0:
+#		data.iterations -= 1
+#		if data.iterations == 0:
+#			stoptask(data)
+#
+#
+#	if worker.energy < taskdata.energycost:
+#		if data.autoconsume == true:
+#			var state = worker.restoreenergy()
+#			if state == false:
+#				input_handler.SystemMessage("SYSNOFOOD")
 #				stoptask(data)
-				#globals.logupdate(data.instrument.name + tr("TOOLBROKEN"))
-	
-	worker.energy -= taskdata.energycost
-	
-	if data.iterations > 0:
-		data.iterations -= 1
-		if data.iterations == 0:
-			stoptask(data)
-	
-	
-	if worker.energy < taskdata.energycost:
-		if data.autoconsume == true:
-			var state = worker.restoreenergy()
-			if state == false:
-				input_handler.SystemMessage("SYSNOFOOD")
-				stoptask(data)
-		else:
-			input_handler.SystemMessage("SYSNOWORKERENERGY")
-			stoptask(data)
-	elif data.instrument != null && state.items[data.instrument].durability <= 0 && taskdata.tasktool.required != false:
-		tasks.erase(data)
+#		else:
+#			input_handler.SystemMessage("SYSNOWORKERENERGY")
+#			stoptask(data)
+#	elif data.instrument != null && state.items[data.instrument].durability <= 0 && taskdata.tasktool.required != false:
+#		tasks.erase(data)
 
 var itemicon = preload("res://files/scenes/ItemIcon.tscn")
 

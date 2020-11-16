@@ -26,10 +26,10 @@ func showup(node, skillcode):
 	$cost.visible = skill.manacost != 0
 	$manaicon.visible = skill.manacost != 0
 	
-	if skill.skilltype == 'skill':
-		$type.set("custom_colors/font_color", Color(1,0,0))
-	elif skill.skilltype == 'spell':
-		$type.set("custom_colors/font_color", Color(0,0,1))
+#	if skill.skilltype == 'skill':
+#		$type.set("custom_colors/font_color", Color(1,0,0))
+#	elif skill.skilltype == 'spell':
+#		$type.set("custom_colors/font_color", Color(0,0,1))
 	$cooldown.text = str(skill.cooldown)
 	$type.text = skill.skilltype.capitalize()
 	$descript.bbcode_text = character.skill_tooltip_text(skillcode)

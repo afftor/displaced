@@ -1,70 +1,4 @@
 extends Node
-var effects = {
-	gobmetalhandle = {
-		descript = tr("GOBMETALHANDLEDESCRIPT"), 
-		code = 'gobmetalhandle', 
-		textcolor = 'yellow', 
-		effects = ['e_w_gobmet_h']
-	},
-	elfmetalhandle = {
-		descript = tr("ELFMETALHANDLEDESCRIPT"), 
-		code = 'elfmetalhandle', 
-		textcolor = 'yellow', 
-		effects = ['e_w_elfmet_h']
-	},
-	gobmetalblade = {
-		descript = tr("GOBMETALBLADEDESCRIPT"), 
-		code = 'gobmetalblade', 
-		textcolor = 'yellow', 
-		effects = ['e_w_gobmet_bl']
-	},
-	elfmetalblade = {
-		descript = tr("ELFMETALBLADEDESCRIPT"), 
-		code = 'elfmetalblade', 
-		textcolor = 'yellow', 
-		effects = ['e_w_elfmet_bl']
-	},
-	elfwoodrod = {
-		descript = tr("ELFWOODRODDESCRIPT"), 
-		code = 'elfwoodrod', 
-		textcolor = 'yellow', 
-		effects = ['e_w_elfw_r']
-	},
-	gobmetalrod = {
-		descript = tr("GOBMETALRODDESCRIPT"), 
-		code = 'gobmetalrod', 
-		textcolor = 'yellow', 
-		effects = ['e_tr_gobmet_r']
-	},
-	bonerod = {
-		descript = tr("BONERODDESCRIPT"), 
-		code = 'bonerod', 
-		textcolor = 'yellow', 
-		effects = ['e_w_bone_r'],
-	},
-	bonebow = {
-		descript = tr("BONEBOWDESCRIPT"), 
-		code = 'bonebow', 
-		textcolor = 'yellow', 
-		effects = ['e_w_bone_b']
-	},
-
-	axe = {#to complete??
-		name = tr("BRITTLE"), 
-		code = 'axe', 
-		descript = tr(""), 
-		textcolor = 'gray', 
-		effects = ['e_w_dmgtreant','e_w_dmgbigtreant']
-	},
-	pick = {#to complete??
-		name = tr("BRITTLE"), 
-		code = 'pick', 
-		descript = tr(""), 
-		textcolor = 'gray', 
-		effects = ['e_w_dmggolem','e_w_dmgbiggolem']
-	},
-}
-
 var effect_table = {
 	#statuses
 	e_s_burn = {
@@ -133,7 +67,7 @@ var effect_table = {
 		name = 'intimidate',
 		tags = ['intimidate', 'negative'],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.5}],
 		buffs = ['b_intimidate']
 	},
 	e_silence = {
@@ -831,7 +765,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'hitchance', value = 20},
-			{type = 'stat_add', stat = 'damagemod', value = 0.20},
+			{type = 'stat_add_p', stat = 'damage', value = 0.20},
 			],
 		buffs = ['b_natbless'],
 	},
@@ -846,7 +780,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'hitchance', value = 20},
-			{type = 'stat_add', stat = 'damagemod', value = 0.20},
+			{type = 'stat_add_p', stat = 'damage', value = 0.20},
 			],
 		buffs = ['b_natbless'],
 	},
@@ -1407,7 +1341,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'hitchance', value = 25},
-			{type = 'stat_add', stat = 'damagemod', value = 0.15},
+			{type = 'stat_add_p', stat = 'damage', value = 0.15},
 			],
 		buffs = ['b_natbless'],#or not
 	},
@@ -1970,7 +1904,7 @@ var effect_table = {
 	},
 	e_tr_armor = {#no icon for buff as this is the only effect of trait. can add if reqired
 		type = 'static',
-		atomic = [{type = 'stat_add', stat = 'armor', value = 5}],
+#		atomic = [{type = 'stat_add', stat = 'armor', value = 5}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -2046,7 +1980,7 @@ var effect_table = {
 	e_tr_areaprot = {
 		type = 'area',
 		area = 'back',
-		atomic = [{type = 'stat_add', stat = 'armor', value = 10}],
+#		atomic = [{type = 'stat_add', stat = 'armor', value = 10}],
 		buffs = [
 			{#for testing purpose
 				icon = "res://assets/images/traits/armorgroup.png", 
@@ -2176,28 +2110,28 @@ var effect_table = {
 			}
 		],
 	},
-	e_t_killer2 = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_HIT],
-		reset = [variables.TR_CAST],
-		ready = false,#for the reason not to trigger on the same area attack as initial kill
-		conditions = [{type = 'skill', value = ['skilltype', 'eq', 'skill']}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 2}],
-				buffs = [],
-				sub_effects = []
-			},
-			{
-				type = 'oneshot',
-				target = 'self',
-				execute = 'remove_parent'
-			}
-		]
-	},
+#	e_t_killer2 = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_HIT],
+#		reset = [variables.TR_CAST],
+#		ready = false,#for the reason not to trigger on the same area attack as initial kill
+#		conditions = [{type = 'skill', value = ['skilltype', 'eq', 'skill']}],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'skill',
+#				atomic = [{type = 'stat_mul', stat = 'value', value = 2}],
+#				buffs = [],
+#				sub_effects = []
+#			},
+#			{
+#				type = 'oneshot',
+#				target = 'self',
+#				execute = 'remove_parent'
+#			}
+#		]
+#	},
 	e_tr_rangecrit = {
 		type = 'trigger',
 		req_skill = true,
@@ -2207,7 +2141,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_set', stat = 'armor_p', value = 10000}],
+#				atomic = [{type = 'stat_set', stat = 'armor_p', value = 10000}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -2444,7 +2378,7 @@ var effect_table = {
 		name = 'cripple',
 		tags = ['afflict'],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.33}],
+		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.33}],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png", 
@@ -2474,7 +2408,7 @@ var effect_table = {
 		name = 'sp_noarm',
 		tags = ['natural_debuf'],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'armor', value = -10}],
+#		atomic = [{type = 'stat_add', stat = 'armor', value = -10}],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/armorignore.png", 
@@ -2501,7 +2435,7 @@ var effect_table = {
 		disable = true,
 		tags = ['afflict'],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.25}],
+		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.25}],
 		buffs = ['b_taunt']
 	},
 	e_s_quake = {
@@ -2616,7 +2550,7 @@ var effect_table = {
 		tags = ['bless'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'damagemod', value = 0.2}
+			{type = 'stat_add_p', stat = 'damage', value = 0.2}
 		],
 		buffs = [
 			{
@@ -2698,12 +2632,12 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'damade', value = 10},
-			{type = 'stat_add', stat = 'armor', value = 10},
-			{type = 'stat_add', stat = 'mdef', value = 10},
+#			{type = 'stat_add', stat = 'armor', value = 10},
+#			{type = 'stat_add', stat = 'mdef', value = 10},
 			{type = 'stat_add', stat = 'speed', value = 10},
 			{type = 'stat_add', stat = 'hitrate', value = 10},
 			{type = 'stat_add', stat = 'evasion', value = 10},
-			{type = 'stat_add', stat = 'armorpenetration', value = 10}
+#			{type = 'stat_add', stat = 'armorpenetration', value = 10}
 		],
 		buffs = [
 			{
@@ -2896,25 +2830,25 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_s_implosion = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [],
-		atomic = [],
-		buffs = [],
-		args = [{obj = 'parent', param = 'target'}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				args = [{obj = 'parent_arg_get', index = 0, param = 'armor'}],
-				atomic = [{type = 'stat_add', stat = 'value', value = ['parent_args', 0]}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
-	},
+#	e_s_implosion = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		req_skill = true,
+#		conditions = [],
+#		atomic = [],
+#		buffs = [],
+#		args = [{obj = 'parent', param = 'target'}],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'skill',
+#				args = [{obj = 'parent_arg_get', index = 0, param = 'armor'}],
+#				atomic = [{type = 'stat_add', stat = 'value', value = ['parent_args', 0]}],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		]
+#	},
 	e_s_explosion_old = {
 		type = 'trigger',
 		trigger = [variables.TR_CAST],
@@ -2934,211 +2868,211 @@ var effect_table = {
 			}
 		]
 	},
-	#weapon
-	e_w_gobmet_h = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [
-			{type = 'target', value = {type = 'stats', name = 'hppercent', operant = 'lte', value = 25} }
-		],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.15}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
-	},
-	e_w_elfmet_h = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'mana', value = 1}],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		buffs = []
-	},
-	e_w_bone_b = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'heal', value = 1}],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		buffs = []
-	},
-	e_w_gobmet_bl = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['skilltype', 'eq', 'skill']}# need to add this check to most of weapon effects
-		],
-		args = [{obj = 'app_obj', param = 'level', dynamic = true}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'target',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_gobmet_blade'],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		buffs = []
-	},
-	e_w_elfmet_bl = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'target', value = {type = 'stats', name = 'hppercent', operant = 'gte', value = 100} }],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_add', stat = 'value', value = 10}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
-	},
-	e_w_elfw_r = {
-		type = 'trigger',
-		req_skill = false,
-		trigger = [variables.TR_COMBAT_F],
-		conditions = [],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'app_obj',param = 'manamax'}],
-				atomic = ['a_elvenwood_rod'],
-				buffs = [],
-				sub_effects = []
-			}
-		]
-	},
-	e_w_gobmet_r = {
-		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		sub_effects = ['e_taunt'],
-		buffs = ['e_gobmet_rod']
-	},
-	e_gobmet_rod = {
-		type = 'temp_s',
-		target = 'target',
-		tick_event = [variables.TR_TURN_S],
-		rem_event = [variables.TR_COMBAT_F],
-		duration = 1,
-		stack = 1,
-		name = 'gobmet_rod',
-		tags = ['curse'],
-		atomic = [{type = 'stat_add', stat = 'speed', value = -10}],
-		buffs = [ #no icon
+#	#weapon
+#	e_w_gobmet_h = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		req_skill = true,
+#		conditions = [
+#			{type = 'target', value = {type = 'stats', name = 'hppercent', operant = 'lte', value = 25} }
+#		],
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = [
 #			{
-#				icon = load(""), 
-#				description = "Speed reduced",
-#				limit = 1,
-#				t_name = 'gobmet_rod'
+#				type = 'oneshot',
+#				target = 'skill',
+#				atomic = [{type = 'stat_mul', stat = 'value', value = 1.15}],
+#				buffs = [],
+#				sub_effects = []
 #			}
-		]
-	},
-	e_w_bone_r = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'stat_add', stat = 'hppercent', value = 3}],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		buffs = []
-	},
-	e_w_dmgtreant = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
-			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'treant' } }
-		],
-		buffs = [],
-		sub_effects = ['e_autocrit']
-	},
-	e_w_dmgbigtreant = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
-			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'bigtreant' } }
-		],
-		buffs = [],
-		sub_effects = ['e_autocrit']
-	},
-	e_w_dmggolem = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
-			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolem' } }
-		],
-		buffs = [],
-		sub_effects = ['e_autocrit']
-	},
-	e_w_dmgbiggolem = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [
-			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{target = 'skill', value = ['skilltype', 'eq', 'skill']},
-			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolemboss' } }
-		],
-		buffs = [],
-		sub_effects = ['e_autocrit']
-	},
-	e_autocrit = {
-		type = 'oneshot',
-		target = 'skill',
-		atomic = [{type = 'stat_set', stat = 'hit_res', value = variables.RES_CRIT}],
-		buffs = [],
-		sub_effects = []
-	},
+#		]
+#	},
+#	e_w_elfmet_h = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'caster',
+#				atomic = [{type = 'mana', value = 1}],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		],
+#		buffs = []
+#	},
+#	e_w_bone_b = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'caster',
+#				atomic = [{type = 'heal', value = 1}],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		],
+#		buffs = []
+#	},
+#	e_w_gobmet_bl = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+#			{type = 'skill', value = ['skilltype', 'eq', 'skill']}# need to add this check to most of weapon effects
+#		],
+#		args = [{obj = 'app_obj', param = 'level', dynamic = true}],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'target',
+#				args = [{obj = 'parent_args', param = 0}],
+#				atomic = ['a_gobmet_blade'],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		],
+#		buffs = []
+#	},
+#	e_w_elfmet_bl = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'target', value = {type = 'stats', name = 'hppercent', operant = 'gte', value = 100} }],
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'skill',
+#				atomic = [{type = 'stat_add', stat = 'value', value = 10}],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		]
+#	},
+#	e_w_elfw_r = {
+#		type = 'trigger',
+#		req_skill = false,
+#		trigger = [variables.TR_COMBAT_F],
+#		conditions = [],
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'owner',
+#				args = [{obj = 'app_obj',param = 'manamax'}],
+#				atomic = ['a_elvenwood_rod'],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		]
+#	},
+#	e_w_gobmet_r = {
+#		req_skill = true,
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		sub_effects = ['e_taunt'],
+#		buffs = ['e_gobmet_rod']
+#	},
+#	e_gobmet_rod = {
+#		type = 'temp_s',
+#		target = 'target',
+#		tick_event = [variables.TR_TURN_S],
+#		rem_event = [variables.TR_COMBAT_F],
+#		duration = 1,
+#		stack = 1,
+#		name = 'gobmet_rod',
+#		tags = ['curse'],
+#		atomic = [{type = 'stat_add', stat = 'speed', value = -10}],
+#		buffs = [ #no icon
+##			{
+##				icon = load(""), 
+##				description = "Speed reduced",
+##				limit = 1,
+##				t_name = 'gobmet_rod'
+##			}
+#		]
+#	},
+#	e_w_bone_r = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'caster',
+#				atomic = [{type = 'stat_add', stat = 'hppercent', value = 3}],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		],
+#		buffs = []
+#	},
+#	e_w_dmgtreant = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		req_skill = true,
+#		conditions = [
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+#			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
+#			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'treant' } }
+#		],
+#		buffs = [],
+#		sub_effects = ['e_autocrit']
+#	},
+#	e_w_dmgbigtreant = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		req_skill = true,
+#		conditions = [
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+#			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
+#			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'bigtreant' } }
+#		],
+#		buffs = [],
+#		sub_effects = ['e_autocrit']
+#	},
+#	e_w_dmggolem = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		req_skill = true,
+#		conditions = [
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+#			{type = 'skill', value = ['skilltype', 'eq', 'skill']},
+#			{type = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolem' } }
+#		],
+#		buffs = [],
+#		sub_effects = ['e_autocrit']
+#	},
+#	e_w_dmgbiggolem = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		req_skill = true,
+#		conditions = [
+#			{target = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+#			{target = 'skill', value = ['skilltype', 'eq', 'skill']},
+#			{target = 'target', value = {type = 'stats', name = 'base', operant = 'eq', value = 'earthgolemboss' } }
+#		],
+#		buffs = [],
+#		sub_effects = ['e_autocrit']
+#	},
+#	e_autocrit = {
+#		type = 'oneshot',
+#		target = 'skill',
+#		atomic = [{type = 'stat_set', stat = 'hit_res', value = variables.RES_CRIT}],
+#		buffs = [],
+#		sub_effects = []
+#	},
 	#item skills
 	#those two barrier effects need fixing cause they for some reason do not work correctly in case of applying to one target 
 	e_i_barrier2 = {

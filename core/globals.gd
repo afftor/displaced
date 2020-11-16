@@ -41,8 +41,8 @@ var explorationares
 
 var rng := RandomNumberGenerator.new()
 
-var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
-
+#var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
+var gearlist = ['weapon1', 'weapon2', 'armor']
 var file = File.new()
 var dir = Directory.new()
 
@@ -286,7 +286,7 @@ func CreateUsableItem(item, amount = 1):
 	return newitem
 
 func AddItemToInventory(item):
-	item.inventory = state.items
+#	item.inventory = state.items
 	if item.stackable == false:
 		item.id = "i" + str(state.itemidcounter)
 		state.items[item.id] = item
@@ -362,10 +362,33 @@ func disconnecttooltip(node):
 	if node.is_connected("mouse_entered",self,'showtooltip'):
 		node.disconnect("mouse_entered",self,'showtooltip')
 
+#func connectitemtooltip(node, item):
+#	if node.is_connected("mouse_entered",self,'showitemtooltip'):
+#		node.disconnect("mouse_entered",self,'showitemtooltip')
+#	node.connect("mouse_entered", self ,'showitemtooltip', [node, item])
+#
+#func showitemtooltip(targetnode, data):
+#	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
+#	node.showup(targetnode, data)
+
 func connectitemtooltip(node, item):
-	if node.is_connected("mouse_entered",item,'tooltip'):
-		node.disconnect("mouse_entered",item,'tooltip')
-	node.connect("mouse_entered",item,'tooltip', [node])
+	if node.is_connected("mouse_entered",self,'showitemtooltip'):
+		node.disconnect("mouse_entered",self,'showitemtooltip')
+	node.connect("mouse_entered", self ,'showitemtooltip', [node, item])
+
+func showitemtooltip(targetnode, data):
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
+	node.showup_usable(targetnode, data)
+
+func connectgeartooltip(node, item):
+	if node.is_connected("mouse_entered",self,'showgeartooltip'):
+		node.disconnect("mouse_entered",self,'showgeartooltip')
+	node.connect("mouse_entered", self ,'showgeartooltip', [node, item])
+
+func showgeartooltip(targetnode, data):
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
+	node.showup_gear(targetnode, data)
+
 
 func connectskilltooltip(node, skill, character):
 	if node.is_connected("mouse_entered",self,'showskilltooltip'):
@@ -380,9 +403,9 @@ func showskilltooltip(skill, node, character):
 	skilltooltip.character = character
 	skilltooltip.showup(node, skill)
 
-func disconnectitemtooltip(node, item):
-	if node.is_connected("mouse_entered",item,'tooltip'):
-		node.disconnect("mouse_entered",item,'tooltip')
+#func disconnectitemtooltip(node, item):
+#	if node.is_connected("mouse_entered",item,'tooltip'):
+#		node.disconnect("mouse_entered",item,'tooltip')
 
 func connectmaterialtooltip(node, material):
 	if node.is_connected("mouse_entered",self,'mattooltip'):
@@ -392,7 +415,7 @@ func connectmaterialtooltip(node, material):
 func mattooltip(targetnode, material):
 	var image
 	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
-	node.showup(targetnode, material)
+	node.showup_material(targetnode, material)
 
 
 func showtooltip(text, node):
@@ -516,8 +539,8 @@ func CharacterSelect(targetscript, type, function, requirements):
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 	
 	var array = []
-	if type == 'workers':
-		array = state.workers.values()
+#	if type == 'workers':
+#		array = state.workers.values()
 	
 	for i in array:
 		if requirements == 'notask' && i.task != null:
@@ -565,7 +588,7 @@ func HeroSelect(targetscript, type, function, requirements):
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
 
-func ItemSelect(targetscript, type, function, requirements = true):
+func ItemSelect(targetscript, type, function, requirements = true): #2fix obsolete types
 	var node 
 	if get_tree().get_root().has_node("ItemSelect"):
 		node = get_tree().get_root().get_node("ItemSelect")
@@ -666,16 +689,6 @@ func QuickSave():
 func SaveGame(name):
 	if state.CurEvent != '':
 		state.CurrentLine = input_handler.get_spec_node(input_handler.NODE_EVENT).CurrentLine
-#	approach 1, not compatrible with sigletones + still  need reworking
-#	var savedict = {state = null, heroes = [], items = [], workers = []}
-#	savedict.state = inst2dict(state)
-#	for i in state.heroes.values():
-#		savedict.heroes.append(inst2dict(i))
-#	for i in state.items.values():
-#		savedict.items.append(inst2dict(i))
-#	for i in state.workers.values():
-#		savedict.workers.append(inst2dict(i))
-	#approach 2
 	var savedict = state.serialize(); 
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
@@ -689,9 +702,6 @@ func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
-	#approach 1
-	#state = load("res://src/gamestate.gd").new()
-	#state._ready()
 	CurrentScene.queue_free()
 	ChangeScene('town');
 	yield(self, "scene_changed")
@@ -699,43 +709,7 @@ func LoadGame(filename):
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
-	
-	#state = dict2inst(savedict.state)
-	#state.heroes.clear()
-	#state.items.clear()
-	#state.workers.clear()
-#	for i in savedict.heroes:
-#		var t = combatant.new()
-#		t = dict2inst(i)
-#		state.heroes[t.id] = t
-#	for i in savedict.items:
-#		var t = Item.new()
-#		t = dict2inst(i)
-#		t.inventory = state.items #no other inventories currently exist
-#		state.items[t.id] = t
-#	for i in savedict.workers:
-#		var t = worker.new()
-#		t = dict2inst(i)
-#		state.workers[t.id] = t
-	
 	state.deserialize(savedict)
-	#converting floats to ints
-	
-#	var tempdict = {}
-#	for i in state.combatparty.keys():
-#		tempdict[int(i)] = state.combatparty[i]
-#	state.combatparty = tempdict.duplicate()
-#	tempdict.clear()
-	
-#	for i in state.areaprogress.keys():
-#		tempdict[i] = int(state.areaprogress[i])
-#	state.areaprogress = tempdict.duplicate()
-#	tempdict.clear()
-	
-#	for i in state.townupgrades.keys():
-#		tempdict[i] = int(state.townupgrades[i])
-#	state.townupgrades = tempdict.duplicate()
-#	tempdict.clear()
 	CurrentScene.buildscreen()
 	for i in state.tasks:
 		CurrentScene.buildcounter(i)
@@ -745,8 +719,6 @@ func LoadGame(filename):
 	#opentextscene
 	if state.CurEvent != "":
 		StartEventScene(state.CurEvent, false, state.CurrentLine);
-#	else:
-#		call_deferred('EventCheck');
 
 func datetime_comp(a, b):
 	if a.year > b.year: return true

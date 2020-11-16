@@ -279,16 +279,17 @@ func SpriteDo(node, value, args):
 func StateEffect(value, args):
 	match value:
 		'character_add':
-			combatantdata.MakeCharacterFromData(args)
+#			combatantdata.MakeCharacterFromData(args)
+			state.unlock_char(args)
 		'make_quest':
 			state.MakeQuest(args)
 		"advance_quest":
 			state.AdvanceQuest(args)
 		"finish_quest":
 			state.FinishQuest(args)
-		'worker_add':
-			var newworker = worker.new()
-			newworker.create(TownData.workersdict[args])
+#		'worker_add':
+#			var newworker = worker.new()
+#			newworker.create(TownData.workersdict[args])
 
 func QuestSet(value, args):
 	match value:
