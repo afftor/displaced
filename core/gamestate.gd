@@ -1,23 +1,23 @@
 extends Node
 
-
 var date := 1
 var daytime = 0  setget time_set
 
 var newgame = false
+var difficulty = 'normal'
 
 var votelinksseen = false
 
 #resources
 var itemidcounter := 0
 var heroidcounter := 0
-var workeridcounter := 0
+#var workeridcounter := 0
 var money = 0
 var food = 50
 var townupgrades := {}
 var town_save
-var workers := {}
-var workers_save
+#var workers := {}
+#var workers_save
 var heroes := {}
 var heroes_save
 var items := {}
@@ -28,16 +28,16 @@ var lognode
 var oldmaterials := {}
 var unlocks := []
 
-var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null, 7 : null, 8 : null, 9 : null} setget pos_set
-
+var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
+var characters = ['arron', 'rose', 'erika', 'ember', 'iola', 'rilu']
 var party_save
 
 var CurrentTextScene
 var CurrentScreen
 var CurrentLine := 0
 
-var heroguild := {}
-var guild_save
+#var heroguild := {}
+#var guild_save
 
 var OldEvents := {}
 var CurEvent := "" #event name
@@ -62,6 +62,9 @@ func time_set(value):
 		globals.check_signal('Midday')
 	daytime = value
 
+func get_difficulty():
+	return difficulty #or change this to settings record if diff to be session-relatad instead of party-related
+#	return globals.globalsettings.difficulty
 
 func revert():
 	date = 1
@@ -70,23 +73,23 @@ func revert():
 	votelinksseen = false
 	itemidcounter = 0
 	heroidcounter = 0
-	workeridcounter = 0
+#	workeridcounter = 0
 	money = 0
 	food = 50
 	townupgrades.clear()
-	workers.clear()
-	heroes.clear()
+#	workers.clear()
+	reset_heroes()
 	items.clear()
 	tasks.clear()
 	materials.clear()
 	lognode = null
 	oldmaterials.clear()
 	unlocks.clear()
-	combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} 
+	combatparty = {1 : null, 2 : null, 3 : null} 
 	CurrentTextScene = null
 	CurrentScreen = null
 	CurrentLine = 0
-	heroguild.clear()
+#	heroguild.clear()
 	OldEvents.clear()
 	CurEvent = "" #event name
 	CurBuild = ""
@@ -108,6 +111,7 @@ func pos_set(value):
 		heroes[combatparty[p]].position = p
 
 func _ready():
+	reset_heroes()
 	for i in Items.Materials:
 		materials[i] = 0
 	oldmaterials = materials.duplicate()
@@ -305,6 +309,10 @@ func if_has_upgrade(upgrade, level):
 	if !townupgrades.has(upgrade): return false
 	else: return townupgrades[upgrade] >= level
 
+func get_upgrade_level(upgrade):
+	if !townupgrades.has(upgrade): return 0
+	return townupgrades[upgrade]
+
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null
 	return heroes[combatparty[pos]]
@@ -330,18 +338,13 @@ func serialize():
 	party_save = combatparty
 	tmp['items_save'] = {}
 	for i in items.keys():
-		items[i].inventory = null
 		tmp['items_save'][i] = inst2dict(items[i])
-		items[i].inventory = items
 	tmp['heroes_save'] = {}
-	for i in heroes.keys():
-		tmp['heroes_save'][i] = inst2dict(heroes[i])
-	tmp['guild_save'] = {}
-	for i in heroguild.keys():
-		tmp['guild_save'][i] = inst2dict(heroguild[i])
+	for i in characters:
+		tmp['heroes_save'][i] = heroes[i].serialize()
 	tmp['workers_save'] = {}
-	for i in workers.keys():
-		tmp['workers_save'][i] = inst2dict(workers[i])
+#	for i in workers.keys():
+#		tmp['workers_save'][i] = inst2dict(workers[i])
 	
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
 	var arr2 = ['town_save', 'tasks', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save']
@@ -357,37 +360,21 @@ func deserialize(tmp:Dictionary):
 	tmp.erase('effects')
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
-	workers.clear()
-	for key in workers_save.keys():
-		var t := dict2inst(workers_save[key])
-		workers[key] = t
-	heroes.clear()
-	#for key in tmp['heroes'].keys():
+#	workers.clear()
+#	for key in workers_save.keys():
+#		var t := dict2inst(workers_save[key])
+#		workers[key] = t
+	cleanup()
 	for key in heroes_save.keys():
-		var t := dict2inst(heroes_save[key])
-		heroes[key] = t
-	heroguild.clear()
-	#for key in tmp['heroguild'].keys():
-	for key in guild_save.keys():
-		var t := dict2inst(guild_save[key])
-		heroguild[key] = t
+		heroes[key].deserialize(heroes_save[key])
 	items.clear()
-	#for key in tmp['items'].keys():
-	#with savefix for old broken add_item_to_inventory 
 	for key in items_save.keys():
 		var key1 = key 
 		if (typeof(key1) != TYPE_STRING) or (key1[0] != 'i'):
 			key1 = 'i' + str(key1)
 		var t := dict2inst(items_save[key])
-		t.inventory = items
 		t.id = key1
 		items[key1] = t
-	#date = int(date)
-	#CurrentLine = int(CurrentLine)
-	#itemidcounter = int(itemidcounter)
-	#heroidcounter = int(heroidcounter)
-	#workeridcounter = int(workeridcounter)
-	#combatparty = tmp.combatparty.duplicate()
 	combatparty.clear()
 	for k in party_save.keys() :
 		combatparty[int(k)] = party_save[k]
@@ -398,3 +385,20 @@ func deserialize(tmp:Dictionary):
 	for k in town_save.keys() :
 		townupgrades[k] = int(town_save[k])
 	oldmaterials = materials.duplicate()
+
+func cleanup():
+	for ch in heroes.keys().duplicate(): 
+		if !(ch in characters): heroes.erase(ch)
+
+func reset_heroes():
+	cleanup()
+	var tmp
+	h_arron.new()
+	h_ember.new()
+	h_erika.new()
+	h_iola.new()
+	h_rilu.new()
+	h_rose.new()
+
+func unlock_char(code):
+	heroes[code].unlocked = true

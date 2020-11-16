@@ -10,15 +10,15 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$ClassInfo.connect("pressed", self, 'ClassInfo')
 	globals.AddPanelOpenCloseAnimation($ClassPanel)
-	for i in globals.gearlist:
-		var node = get_node('Main/Panel/charandgear/' + i)
-		node.connect("pressed",self,'unequip', [i])
+#	for i in globals.gearlist:
+#		var node = get_node('Main/Panel/charandgear/' + i)
+#		node.connect("pressed",self,'unequip', [i])
 
 func open(hero):
 	input_handler.ShowGameTip('character')
 	for i in globals.gearlist:
 		var node = get_node('Main/Panel/charandgear/' + i)
-		if node.has_meta("item") && node.get_meta("item") != null:
+		if node.has_meta("item") && node.get_meta("item") != null: #obsolete
 			globals.disconnectitemtooltip(node, node.get_meta("item"))
 			node.set_meta("item", null)
 	if hero != character:
@@ -30,23 +30,28 @@ func open(hero):
 	show()
 	for i in globals.gearlist:
 		var node = get_node('Main/Panel/charandgear/' + i)
-		if character.gear[i] != null:
-			var gear = state.items[character.gear[i]]
-			node.set_meta("item", gear)
-			input_handler.itemshadeimage(node, gear)
-			globals.connectitemtooltip(node, gear)
+		var data = character.get_item_data(i)
+		if data != null:
+#		if character.gear[i] != null:
+#			var gear = state.items[character.gear[i]]
+#			node.set_meta("item", gear)
+			input_handler.itemshadeimage(node, data)
+			globals.connectgeartooltip(node, data)
 		else:
 			node.texture_normal = null
-	$Main/image.texture = images.sprites[character.image]
-	$Main/Panel/charandgear/hp.value = globals.calculatepercent(character.hp, character.hpmax())
-	$Main/Panel/charandgear/hp/Label.text = str(character.hp) + '/' + str(character.hpmax())
-	$Main/Panel/charandgear/mp.value = globals.calculatepercent(character.mana, character.manamax())
-	$Main/Panel/charandgear/mp/Label.text = str(character.mana) + '/' + str(character.manamax())
+#	$Main/image.texture = images.sprites[character.image]
+	$Main/image.texture = character.sprite()
+	var tmp = character.get_stat('hpmax')
+	$Main/Panel/charandgear/hp.value = globals.calculatepercent(character.hp, tmp)
+	$Main/Panel/charandgear/hp/Label.text = str(character.hp) + '/' + str(tmp)
+	tmp = character.get_stat('manamax')
+	$Main/Panel/charandgear/mp.value = globals.calculatepercent(character.mana, tmp)
+	$Main/Panel/charandgear/mp/Label.text = str(character.mana) + '/' + str(tmp)
 	$Main/Panel/charandgear/xp.value = character.baseexp
 	
 	$Name.text = character.name + ' Level: ' + str(character.level)
 	
-	for i in ['damage','armorpenetration','hitrate','speed','armor', 'mdef','evasion', ]:#'resistfire','resistearth','resistwater','resistair']:
+	for i in ['damage','hitrate','speed','evasion', ]:#'resistfire','resistearth','resistwater','resistair']:
 		var node = get_node("Main/stats&skills/" + i)
 		var text = Items.stats[i] + ": " + str(character[i])
 		node.text = text
@@ -62,7 +67,7 @@ func open(hero):
 		globals.connectskilltooltip(newbutton, i, hero)
 		newbutton.get_node("Icon").texture = skill.icon
 
-func unequip(slot):
+func unequip(slot):#obsolete
 	if character.gear[slot] != null:
 		var gear = state.items[character.gear[slot]]
 		character.unequip(gear)
@@ -71,6 +76,7 @@ func unequip(slot):
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		open(character)
 
+#obsolete
 var classinfo = {
 	warrior = 'WARRIORDESCRIPT',
 	mage = 'MAGEDESCRIPT',

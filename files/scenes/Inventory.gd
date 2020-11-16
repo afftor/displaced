@@ -50,12 +50,12 @@ func buildinventory():
 		newbutton.connect("pressed",self,'useitem', [i, 'material'])
 		itemarray.append(newbutton)
 	for i in state.items.values():
-		if i.owner != null:
-			continue
+#		if i.owner != null:
+#			continue
 		var newnode = globals.DuplicateContainerTemplate(itemcontainer)
-		if i.durability != null:
-			newnode.get_node("Number").show()
-			newnode.get_node("Number").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + '%'
+#		if i.durability != null:
+#			newnode.get_node("Number").show()
+#			newnode.get_node("Number").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + '%'
 		if i.amount != null && i.amount > 1:
 			newnode.get_node("Number").show()
 			newnode.get_node("Number").text = str(i.amount)

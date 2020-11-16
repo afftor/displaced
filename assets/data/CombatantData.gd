@@ -93,19 +93,20 @@ var chardata = {
 	iola = {code = "Iola", gear = [{item = 'sword', parts = {ToolHandle = 'starting', Blade = 'starting'}}], details = []},
 }
 
-func MakeCharacterFromData(code):
-	var data = chardata[code]
-	var character = combatant.new()
-	character.createfromname(data.code)
-#	state.heroes[character.id] = character
-	for i in data.gear:
-		var newitem = globals.CreateGearItem(i.item, i.parts)
-		globals.AddItemToInventory(newitem)
-		character.equip(newitem)
-	return character
+#func MakeCharacterFromData(code):
+#	var data = chardata[code]
+#	var character = combatant.new()
+#	character.createfromname(data.code)
+##	state.heroes[character.id] = character
+#	for i in data.gear:
+#		var newitem = globals.CreateGearItem(i.item, i.parts)
+#		globals.AddItemToInventory(newitem)
+#		character.equip(newitem)
+#	return character
+
 
 var charlist = {
-	Arron = {
+	arron = {
 		code = 'Arron',
 		name = 'ARRON',
 		icon = 'ArronSmile',
@@ -113,8 +114,16 @@ var charlist = {
 		image = 'Arron',
 		subclass = 'warrior',
 		flavor = 'The honorable me',
+		hpmax = 50,
+		hp_growth = 100,
+		manaax = 0,
+		evasion = 0,
+		hitrate = 100,
+		damage = 30,
+		unlocked = true,
+		bonusres = ['slash', 'light', 'fire', 'earth']
 	},
-	Rose = {
+	rose = {
 		code = 'Rose',
 		name = 'ROSE',
 		icon = 'RoseNormal',
@@ -122,8 +131,10 @@ var charlist = {
 		image = 'Rose',
 		subclass = 'mage',
 		flavor = 'My loyal pet',
+		hpmax = 10,
+		hp_growth = 10
 	},
-	Erika = {
+	erika = {
 		code = 'Erika',
 		name = 'ERIKA',
 		icon = 'ErikaNormal',
@@ -131,8 +142,10 @@ var charlist = {
 		image = 'erika',
 		subclass = 'archer',
 		flavor = 'An elven gal',
+		hpmax = 10,
+		hp_growth = 10
 	},
-	Ember = {
+	ember = {
 		code = 'Ember',
 		name = 'EMBER',
 		icon = 'EmberFriendly',
@@ -140,8 +153,10 @@ var charlist = {
 		image = 'emberhappy',
 		subclass = 'brawler',
 		flavor = 'A dragon gal',
+		hpmax = 10,
+		hp_growth = 10
 	},
-	Rilu = {
+	rilu = {
 		code = 'Rilu',
 		name = 'RILU',
 		icon = 'EmberFriendly',
@@ -149,8 +164,10 @@ var charlist = {
 		image = 'emberhappy',
 		subclass = 'necro',
 		flavor = 'A dragon gal',
+		hpmax = 10,
+		hp_growth = 10
 	},
-	Iola = {
+	iola = {
 		code = 'Iola',
 		name = 'IOLA',
 		icon = 'EmberFriendly',
@@ -158,6 +175,8 @@ var charlist = {
 		image = 'emberhappy',
 		subclass = 'cleric',
 		flavor = 'A dragon gal',
+		hpmax = 10,
+		hp_growth = 10
 	},
 }
 #

@@ -50,3 +50,14 @@ const lines = {
 	2 : [4,5,6],
 	3 : [7,8,9]
 }
+
+var curve = [1.0]
+
+func _ready():
+	fill_curve()
+	print(curve)
+
+func fill_curve():
+	for i in range(14): curve.push_back(curve.back() + 0.25)
+	for i in range(5): curve.push_back(curve.back() + 0.1)
+	for i in range(26): curve.push_back(curve.back() + 0.02)

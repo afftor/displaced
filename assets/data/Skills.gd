@@ -111,7 +111,7 @@ var skilllist = {
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
 		damagetype = "slash",
-		skilltype = 'skill',
+		skilltype = 'main',#set to reqired type
 		userange = "melee",
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
@@ -128,12 +128,12 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		
+		req_level = 1,#new addition, 2setup other heroes skills
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'lte'}], patch = 'p_fencing_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_fencing_2'},
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'lte'}], patch = 'p_fencing_3'},
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'eq'}], patch = 'p_fencing_4'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_fencing_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_fencing_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_fencing_3'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_fencing_4'},
 		]
 	},
 	lunge = {
@@ -162,7 +162,7 @@ var skilllist = {
 		sfxtarget = null,
 		
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'gte'}], patch = 'p_lunge'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_lunge'},
 		]
 	},
 	sideslash = {
@@ -216,7 +216,7 @@ var skilllist = {
 		sfxtarget = null,
 		
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'gte'}], patch = 'p_swift_1'}
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_swift_1'}
 		]
 	},
 	parry = {
@@ -245,7 +245,7 @@ var skilllist = {
 		sfxtarget = null,
 		
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 2, op = 'gte'}], patch = 'p_parry_1'}
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_parry_1'}
 		]
 	},
 	sword_mastery = {
@@ -274,7 +274,7 @@ var skilllist = {
 		sfxtarget = null,
 		
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 2, op = 'gte'}], patch = 'p_swm_1'}
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_swm_1'}
 		]
 	},
 	termination = {
@@ -301,7 +301,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'gte'}], patch = 'p_term_1'}
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_term_1'}
 		]
 	},
 	smoke_s = {#NEW, NEED FILLING DATA
@@ -381,8 +381,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'lte'}], patch = 'p_fbolt_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_fbolt_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_fbolt_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_fbolt_2'},
 		]
 	},
 	flash = {#NEW, NEED FILLING DATA
@@ -409,8 +409,8 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'eq'}], patch = 'p_flash_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_flash_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'eq'}], patch = 'p_flash_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_flash_2'},
 		]
 	},
 	deluge = {#NEW, NEED FILLING DATA
@@ -437,7 +437,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'gte'}], patch = 'p_deluge'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_deluge'},
 		]
 	},
 	renew = {#NEW, NEED FILLING DATA
@@ -467,8 +467,8 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'lte'}], patch = 'p_renew_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_renew_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_renew_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_renew_2'},
 		]
 	},
 	dispel = {#NEW, NEED FILLING DATA
@@ -497,7 +497,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 2, op = 'gte'}], patch = 'p_dispel'}
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_dispel'}
 		]
 	},
 	explosion = {
@@ -525,7 +525,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'gte'}], patch = 'p_explosion'}
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_explosion'}
 		]
 	},
 	protect = {#NEW, NEED FILLING DATA
@@ -555,7 +555,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'gte'}], patch = 'p_protect'}
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_protect'}
 		]
 	},
 	protect1 = {
@@ -610,9 +610,9 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'gte'}], patch = 'p_qshot_1'},
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'lte'}], patch = 'p_qshot_2'},
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'eq'}], patch = 'p_qshot_3'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_qshot_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_qshot_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_qshot_3'},
 		]
 	},
 	aarrow = {
@@ -638,8 +638,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'lte'}], patch = 'p_aarrow_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_aarrow_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_aarrow_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_aarrow_2'},
 		]
 	},
 	eastrike = {
@@ -689,7 +689,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'lte'}], patch = 'p_farrow_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'lte'}], patch = 'p_farrow_1'},
 		]
 	},
 	arr_shower = {
@@ -716,7 +716,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 2, op = 'gte'}], patch = 'p_arrshower'}
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_arrshower'}
 		]
 	},
 	nat_bless = {#NEW, NEED FILLING DATA
@@ -798,7 +798,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'gte'}], patch = 'p_hearts'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_hearts'},
 		]
 	},
 	charm = {#NEW, NEED FILLING DATA
@@ -825,7 +825,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'gte'}], patch = 'p_charm'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_charm'},
 		]
 	},
 	combo = {
@@ -851,8 +851,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
 		],
 		follow_up_cond = 'combo1'
 	},
@@ -880,8 +880,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
 		],
 		not_final = true
 	},
@@ -910,7 +910,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 2, op = 'gte'}], patch = 'p_punch_1'}
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_punch_1'}
 		]
 	},
 	shockwave = {
@@ -936,7 +936,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 2, op = 'gte'}], patch = 'p_shockwave'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_shockwave'},
 		],
 		follow_up = 'shockwave1'
 	},
@@ -1016,8 +1016,8 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'gte'}], patch = 'p_defend_1'},
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'eq'}], patch = 'p_defend_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_defend_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_defend_2'},
 		]
 	},
 	dragon_protection = {#NEW, NEED FILLING DATA
@@ -1047,7 +1047,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'gte'}], patch = 'p_dragonprot'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_dragonprot'},
 		]
 	},
 	aegis = {#NEW, NEED FILLING DATA
@@ -1077,7 +1077,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'gte'}], patch = 'p_aegis'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_aegis'},
 		]
 	},
 	earthquake = {#NEW, NEED FILLING DATA
@@ -1104,7 +1104,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'gte'}], patch = 'p_eq'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_eq'},
 		],
 		follow_up = 'eq1'
 	},
@@ -1157,8 +1157,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'lte'}], patch = 'p_orb_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_orb_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_orb_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_orb_2'},
 		]
 	},
 	pale_mist = {
@@ -1184,7 +1184,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'glte'}], patch = 'p_mist'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'glte'}], patch = 'p_mist'},
 		]
 	},
 	avalanche = {
@@ -1211,7 +1211,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 2, op = 'gte'}], patch = 'p_ava'}
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_ava'}
 		]
 	},
 	soulthorns = {
@@ -1237,7 +1237,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 2, op = 'gte'}], patch = 'p_thorn'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_thorn'},
 		]
 	},
 	dark_echoes = {
@@ -1265,8 +1265,8 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'lte'}], patch = 'p_echo_1'},
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'eq'}], patch = 'p_echo_2'}
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_echo_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_echo_2'}
 		]
 	},
 	restoration = {
@@ -1293,7 +1293,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'gte'}], patch = 'p_resto'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_resto'},
 		]
 	},
 	soul_beam = {
@@ -1319,7 +1319,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'gte'}], patch = 'p_beam'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_beam'},
 		]
 	},
 	soul_prot = {
@@ -1394,7 +1394,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 2, op = 'gte'}], patch = 'p_gust'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_gust'},
 		]
 	},
 	smash = {
@@ -1421,7 +1421,7 @@ var skilllist = {
 		sfxtarget = null,
 
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 2, op = 'gte'}], patch = 'p_smash'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_smash'},
 		]
 	},
 	cleansing = {
@@ -1448,8 +1448,8 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 3, op = 'gte'}], patch = 'p_clean_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'gte'}], patch = 'p_clean_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_clean_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_clean_2'},
 		]
 	},
 	barrier = {
@@ -1478,7 +1478,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 1, op = 'gte'}], patch = 'p_barrier'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 1, op = 'gte'}], patch = 'p_barrier'},
 		]
 	},
 	bless = {#NEW, NEED FILLING DATA
@@ -1508,8 +1508,8 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 3, op = 'gte'}], patch = 'p_defend_1'},
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'eq'}], patch = 'p_defend_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_defend_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_defend_2'},
 		]
 	},
 	sanctuary = {
@@ -1539,7 +1539,7 @@ var skilllist = {
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set1', level = 4, op = 'gte'}], patch = 'p_sanct'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_sanct'},
 		]
 	},
 	purge = {
@@ -1559,14 +1559,14 @@ var skilllist = {
 		value = ['0'],
 		cooldown = 10, 
 		manacost = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_s_silence', duration = 2})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_silence', duration = 2})],
 		hidden = false,
 		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
 		patches = [
-			{conditions = [{type = 'gear_level', set = 'set2', level = 4, op = 'gte'}], patch = 'p_purge'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_purge'},
 		]
 	},
 	dk_slash = {

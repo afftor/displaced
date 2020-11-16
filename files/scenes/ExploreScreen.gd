@@ -101,12 +101,12 @@ func StartCombat(data):
 	input_handler.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	$combat.encountercode = encountercode 
-	$combat.start_combat(enemies, area.category, music)
+	$combat.start_combat(enemies, area.level, area.category, music)
 	$combat.show()
 
 func makespecificgroup(group): #to remake
 	var enemies = Enemydata.predeterminatedgroups[group]
-	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+	var combatparty = {1 : null, 2 : null, 3 : null, 4:null, 5:null, 6:null}
 	for i in enemies.group:
 		combatparty[i] = enemies.group[i]
 	
@@ -134,7 +134,6 @@ func makerandomgroup(enemygroup):#to remake
 		var unit = Enemydata.enemylist[i.units]
 		while i.number > 0:
 			var temparray = []
-			
 			
 			if true:
 				#smart way
@@ -175,7 +174,7 @@ func UpdatePositions():
 	for i in positiondict.values():
 		get_node(i+'/Image').hide()
 	
-	for i in range(1, 6):
+	for i in range(1, 3):
 		if state.combatparty[i] != null:
 			get_node(positiondict[i] + "/Image").texture = state.heroes[state.combatparty[i]].portrait()
 			get_node(positiondict[i] + "/Image").show()
