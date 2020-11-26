@@ -44,18 +44,18 @@ func open(hero):
 	var tmp = character.get_stat('hpmax')
 	$Main/Panel/charandgear/hp.value = globals.calculatepercent(character.hp, tmp)
 	$Main/Panel/charandgear/hp/Label.text = str(character.hp) + '/' + str(tmp)
-	tmp = character.get_stat('manamax')
-	$Main/Panel/charandgear/mp.value = globals.calculatepercent(character.mana, tmp)
-	$Main/Panel/charandgear/mp/Label.text = str(character.mana) + '/' + str(tmp)
+#	tmp = character.get_stat('manamax')
+#	$Main/Panel/charandgear/mp.value = globals.calculatepercent(character.mana, tmp)
+#	$Main/Panel/charandgear/mp/Label.text = str(character.mana) + '/' + str(tmp)
 	$Main/Panel/charandgear/xp.value = character.baseexp
 	
 	$Name.text = character.name + ' Level: ' + str(character.level)
 	
-	for i in ['damage','hitrate','speed','evasion', ]:#'resistfire','resistearth','resistwater','resistair']:
+	for i in ['damage','hitrate','evasion', ]:#'resistfire','resistearth','resistwater','resistair']:
 		var node = get_node("Main/stats&skills/" + i)
-		var text = Items.stats[i] + ": " + str(character[i])
+		var text = Items.stats[i] + ": " + str(character.get_stat(i))
 		node.text = text
-	$"Main/stats&skills/crit".text = tr("CRITICAL") + ": "+str(character.critchance) + "%/" + str(character.critmod*100) + "%"
+	$"Main/stats&skills/crit".text = tr("CRITICAL") + ": "+str(character.get_stat('critchance')) + "%/" + str(character.get_stat('critmod') * 100) + "%"
 	
 	globals.ClearContainer($Main/skillcontainer)
 	for i in character.skills:

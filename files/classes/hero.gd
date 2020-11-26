@@ -16,7 +16,7 @@ var skillpoints = {support = 1, main = 1, ultimate = 0}
 
 
 #out of combat regen stats
-var regen_collected = {health = 0, mana = 0}
+var regen_collected = 0
 
 var bonusres = []
 
@@ -27,7 +27,7 @@ func createfromname(name):
 	var template = combatantdata.charlist[name]
 	base = template.code
 	self.name = tr(template.name)
-	for key in ['hpmax', 'hp_growth', 'manamax', 'evasion', 'hitrate', 'speed', 'race', 'bonusres', 'unlocked', 'icon','combaticon', 'bodyhitsound', 'flavor', 'damage']:
+	for key in ['hpmax', 'hp_growth', 'evasion', 'hitrate', 'race', 'bonusres', 'unlocked', 'icon','combaticon', 'bodyhitsound', 'flavor', 'damage']:
 		if template.has(key): set(key, template[key])
 	for i in variables.resistlist:
 		resists[i] = 0
@@ -48,21 +48,14 @@ func createfromname(name):
 
 func regen_tick(delta):
 	var regen_thresholds = regen_calculate_threshold()
-	for i in regen_collected:
-		regen_collected[i] += delta
-		if regen_collected[i] >= regen_thresholds[i]:
-			regen_collected[i] -= regen_thresholds[i]
-			match i:
-				'health':
-					self.hp += 1
-				"mana":
-					self.mana += 1
+	regen_collected += delta
+	if regen_collected >= regen_thresholds:
+		regen_collected -= regen_thresholds
+		self.hp += 1
+
 
 func regen_calculate_threshold():
-	var res = {}
-	res.health = variables.TimePerDay/max(get_stat('hpmax'),1)
-	res.mana = variables.TimePerDay/max(get_stat('manamax'),1)
-	return res
+	return variables.TimePerDay/max(get_stat('hpmax'),1)
 
 
 func exp_set(value):
@@ -154,7 +147,7 @@ func get_weapon_damagetype():
 	return res
 
 func get_weapon_range():
-	var res = base_dmg_type
+	var res = base_dmg_range
 	var template = Items.hero_items_data["%s_%s" % [id, curweapon]]
 	if template != null:
 		res = template.weaponrange
@@ -203,7 +196,7 @@ func serialize():
 	tmp.skillpoints = skillpoints.duplicate()
 	tmp.skills = skills.duplicate()
 	tmp.hp = hp
-	tmp.mana = mana
+#	tmp.mana = mana
 	tmp.defeated = defeated
 	tmp.position = position
 	tmp.static_effects = static_effects.duplicate()
@@ -224,7 +217,7 @@ func deserialize(savedir):
 	skillpoints = savedir.skillpoints.duplicate()
 	skills = savedir.skills.duplicate()
 	hp = savedir.hp
-	mana = savedir.mana
+#	mana = savedir.mana
 	defeated = savedir.defeated
 	position = int(savedir.position)
 	if position != null: state.combatparty[position] = id

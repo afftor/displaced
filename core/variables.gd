@@ -26,7 +26,7 @@ var TraitPointsPerLevel = 1
 var bonuses_stat_list = []
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'mana', 'alt_mana', 'taunt']
+var direct_access_stat_list = ['hp', 'alt_mana', 'taunt']
 var resistlist = ['damage', 'slash', 'pierce', 'bludgeon', 'light', 'dark', 'air', 'water', 'earth', 'fire']
 var status_list = ['burn', 'stun', 'chill', 'negative', 'poison', 'bleed']
 
@@ -34,7 +34,7 @@ var status_list = ['burn', 'stun', 'chill', 'negative', 'poison', 'bleed']
 var ai_setup = 'off' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is. obsolete
 var new_stat_bonuses_syntax = false
 #combat constants
-var dmg_mod_list = ['hp', 'mana', '+damage_hp', '-damage_hp']
+var dmg_mod_list = ['hp', '+damage_hp', '-damage_hp']
 const playerparty = [1, 2, 3]
 const enemyparty = [4, 5, 6, 7, 8, 9]
 const rows = {

@@ -32,38 +32,38 @@ var upgradelist = {
 			}
 		}
 	},
-	mine = {
-		code = 'mine',
-		name = tr("MINEUPGRADE"),
-		positionorder = 2,
-		descript = tr("UPGRADEMINEDESCRIPT"),
-		levels = {
-			1:{
-				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
-				icon = load("res://assets/images/buildings/upgrade_mine.png"),
-				bonusdescript = tr("UPGRADEMINEBONUS"),
-				townnode = "mine",
-				cost = {wood = 5, elvenwood = 5},
-				limitchange = 2
-			}
-		}
-	},
-	farm = {
-		code = 'farm',
-		name = tr("FARMUPGRADE"),
-		positionorder = 3,
-		descript = tr("UPGRADEFARMDESCRIPT"),
-		levels = {
-			1:{
-				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}],
-				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
-				bonusdescript = tr("UPGRADEFARMBONUS"),
-				townnode = "farm",
-				cost = {wood = 10},
-				limitchange = 2
-			}
-		}
-	},
+#	mine = {
+#		code = 'mine',
+#		name = tr("MINEUPGRADE"),
+#		positionorder = 2,
+#		descript = tr("UPGRADEMINEDESCRIPT"),
+#		levels = {
+#			1:{
+#				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
+#				icon = load("res://assets/images/buildings/upgrade_mine.png"),
+#				bonusdescript = tr("UPGRADEMINEBONUS"),
+#				townnode = "mine",
+#				cost = {wood = 5, elvenwood = 5},
+#				limitchange = 2
+#			}
+#		}
+#	},
+#	farm = {
+#		code = 'farm',
+#		name = tr("FARMUPGRADE"),
+#		positionorder = 3,
+#		descript = tr("UPGRADEFARMDESCRIPT"),
+#		levels = {
+#			1:{
+#				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}],
+#				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+#				bonusdescript = tr("UPGRADEFARMBONUS"),
+#				townnode = "farm",
+#				cost = {wood = 10},
+#				limitchange = 2
+#			}
+#		}
+#	},
 	houses = {
 		code = 'houses',
 		name = tr("HOUSESUPGRADE"),
@@ -110,4 +110,185 @@ var upgradelist = {
 		}
 	},
 	
+	#new ones
+	forge = {
+		code = 'forge',
+		name = tr(""),
+		positionorder = 1,
+		descript = tr(""),
+		levels = {
+			1:{
+				unlockreqs = [],#should be disabled
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},
+			},
+			2:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			3:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			4:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			}
+		}
+	},
+	tavern = {
+		code = 'tavern',
+		name = tr(""),
+		positionorder = 1,
+		descript = tr(""),
+		levels = {
+			1:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			2:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			3:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			4:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			}
+		}
+	},
+	mine = {
+		code = 'mine',
+		name = tr(""),
+		positionorder = 1,
+		descript = tr(""),
+		levels = {
+			1:{
+				unlockreqs = [],#should be disabled
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			2:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			3:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			4:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			}
+		}
+	},
+	farm = {
+		code = 'farm',
+		name = tr(""),
+		positionorder = 1,
+		descript = tr(""),
+		levels = {
+			1:{
+				unlockreqs = [],#should be disabled
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			2:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			3:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			4:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			}
+		}
+	},
+	mill = {
+		code = 'mill',
+		name = tr(""),
+		positionorder = 1,
+		descript = tr(""),
+		levels = {
+			1:{
+				unlockreqs = [],#should be disabled
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			2:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			3:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			},
+			4:{
+				unlockreqs = [],
+				icon = null,
+				bonusdescript = tr(""),
+				townnode = "",
+				cost = {},#do not fill till materials rework
+			}
+		}
+	},
 }

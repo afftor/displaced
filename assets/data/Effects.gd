@@ -98,6 +98,20 @@ var effect_table = {
 		atomic = [],
 		buffs = ['b_poison'],
 	},
+	e_s_wound = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'wound',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 2,
+		tags = ['negative'],#or may be not
+		args = [],
+		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
+		buffs = ['b_wound'],
+	},
+	e_tr_wound = rebuild_template({chance = 0.33, effect = 'e_s_wound'}),
 	#effects for new skils
 	e_fen_addrep = {
 		type = 'trigger',
@@ -2561,23 +2575,23 @@ var effect_table = {
 			},
 		],
 	},
-	e_s_execute = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_KILL],
-		conditions = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'caster',
-				args = [{obj = 'app_obj', param = 'hpmax', dynamic = true}, {obj = 'app_obj', param = 'manamax', dynamic = true}],
-				atomic = ['a_hp_restore_ex','a_mana_restore_ex'],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		buffs = []
-	},
+#	e_s_execute = {
+#		type = 'trigger',
+#		req_skill = true,
+#		trigger = [variables.TR_KILL],
+#		conditions = [],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'caster',
+#				args = [{obj = 'app_obj', param = 'hpmax', dynamic = true}, {obj = 'app_obj', param = 'manamax', dynamic = true}],
+#				atomic = ['a_hp_restore_ex','a_mana_restore_ex'],
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		],
+#		buffs = []
+#	},
 	#as like all shield effects this is not a final version
 	e_s_ward = {
 		type = 'trigger',
@@ -3349,6 +3363,12 @@ var buffs = {
 		description = "No reanimation",
 		limit = 1,
 		t_name = 'rule3'
+	},
+	b_wound = {
+		icon = "res://assets/images/iconsclasses/Knight.png", 
+		description = "Received damage increased",
+		limit = 1,
+		t_name = 'wound'
 	},
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_stun = {

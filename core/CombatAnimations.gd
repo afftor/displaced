@@ -276,16 +276,16 @@ func hp_update(node, args):
 	tween.start()
 	return delaytime + delay
 
-func mp_update(node, args):
-	var delaytime = 0.1
-	var tween = input_handler.GetTweenNode(node)
-	var mpnode = node.get_node("Mana")
-	#update mp bar
-	tween.interpolate_property(mpnode, 'value', mpnode.value, args.newmpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	#update mp label
-	node.update_mp_label(args.newmp, args.newmpp)
-	tween.start()
-	return delaytime
+#func mp_update(node, args):
+#	var delaytime = 0.1
+#	var tween = input_handler.GetTweenNode(node)
+#	var mpnode = node.get_node("Mana")
+#	#update mp bar
+#	tween.interpolate_property(mpnode, 'value', mpnode.value, args.newmpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	#update mp label
+#	node.update_mp_label(args.newmp, args.newmpp)
+#	tween.start()
+#	return delaytime
 
 func test_combat_start(node, args):
 	return 1.0

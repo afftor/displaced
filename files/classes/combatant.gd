@@ -16,18 +16,18 @@ var hp = 0 setget hp_set
 var hpmax = 0 setget , hpmax_get #base value
 var hp_growth
 var defeated = false
-var mana = 0 setget mana_set
-var manamax = 0
+#var mana = 0 setget mana_set
+#var manamax = 0
 var damage = 0 setget ,damage_get
 var evasion = 0 
-var hitrate = 0
-var speed = 0
+var hitrate = 80
 var critchance = 5
 var critmod = 1.5
 var resists = {} setget ,get_res
 var status_resists = {} setget ,get_s_res
 var shield = 0 setget set_shield;
 var base_dmg_type = 'bludgeon'
+var base_dmg_range = 'melee'
 
 var flavor
 
@@ -202,10 +202,10 @@ func hp_set(value):
 	if displaynode != null:
 		displaynode.update_hp()
 
-func mana_set(value):
-	mana = clamp(round(value), 0, get_stat('manamax'))
-	if displaynode != null:
-		displaynode.update_mana()
+#func mana_set(value):
+#	mana = clamp(round(value), 0, get_stat('manamax'))
+#	if displaynode != null:
+#		displaynode.update_mana()
 
 #some AI-related functions
 func need_heal(): #stub. borderlines are subject to tuning
@@ -219,7 +219,7 @@ func need_heal(): #stub. borderlines are subject to tuning
 
 #traits
 func can_acq_trait(tr_id):
-	if !traits.has(tr_id):
+	if traits.has(tr_id):
 		print("already has trait")
 		return false
 	return true
@@ -266,9 +266,9 @@ func apply_atomic(template):
 		'heal':
 			heal(template.value)
 			pass
-		'mana':
-			mana_update(template.value)
-			pass
+#		'mana':
+#			mana_update(template.value)
+#			pass
 		'stat_set', 'stat_set_revert': #use this on direct-accessed stats
 			template.buffer = get(template.stat)
 			set(template.stat, template.value)
@@ -489,6 +489,7 @@ func deal_damage(value, source):
 	value = round(value);
 	value *= 1 - res['damage']/100.0
 	if variables.resistlist.has(source): value *= 1 - res[source]/100.0
+	if value < 0: return -heal(-value)
 	if (shield > 0):
 		self.shield -= value
 		if shield < 0:
@@ -512,14 +513,14 @@ func heal(value):
 	process_event(variables.TR_HEAL)
 	return tmp
 
-func mana_update(value):
-	var tmp = mana
-	value = round(value)
-	self.mana += value
-	tmp = mana - tmp
-	#maybe better to rigger heal triggers on this
-	#process_event(variables.TR_HEAL)
-	return tmp
+#func mana_update(value):
+#	var tmp = mana
+#	value = round(value)
+#	self.mana += value
+#	tmp = mana - tmp
+#	#maybe better to rigger heal triggers on this
+#	#process_event(variables.TR_HEAL)
+#	return tmp
 
 func stat_update(stat, value):
 	var tmp = get(stat)
@@ -545,9 +546,9 @@ func can_act():
 	return res
 
 func can_use_skill(skill):
-	if mana < skill.manacost: return false
+#	if mana < skill.manacost: return false
 	if cooldowns.has(skill.code): return false
-	if has_status('silence') and skill.skilltype == 'skill' and !skill.tags.has('default'): return false #possible to change in caase of combat item system
+	if has_status('silence') and skill.skilltype != 'item' and !skill.tags.has('default'): return false #possible to change in caase of combat item system
 	return true
 
 func has_status(status):

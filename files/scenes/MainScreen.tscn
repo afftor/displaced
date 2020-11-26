@@ -177,6 +177,9 @@ margin_bottom = 752.0
 texture_normal = ExtResource( 14 )
 stretch_mode = 4
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 charname = "ember"
 inside_node_name = "blacksmith"
 is_char = false
@@ -390,7 +393,6 @@ mouse_filter = 2
 texture = ExtResource( 41 )
 
 [node name="TaskCounter" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 15.0
 margin_top = 182.0
 margin_right = 348.0
@@ -425,7 +427,6 @@ visible = false
 [node name="SlavePanel" type="TextureRect" parent="." groups=[
 "pauseprocess",
 ]]
-editor/display_folded = true
 visible = false
 margin_left = 40.0
 margin_top = 100.0
@@ -637,7 +638,6 @@ margin_right = 1306.0
 margin_bottom = 789.0
 
 [node name="LogPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 self_modulate = Color( 0.0234375, 1, 0.267578, 0.364627 )
 margin_left = 1332.0

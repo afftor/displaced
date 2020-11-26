@@ -103,12 +103,9 @@ func test_combat():
 	state.combatparty[1] = 'arron'
 #	state.combatparty[2] = 'ember'
 #	state.combatparty[3] = 'iola'
-#		combatantdata.MakeCharacterFromData(ch)
-#	for i in range(state.heroes.keys().size()):
-#		state.combatparty[i+1] = state.heroes.keys()[i]
-	start_combat([{1:'elvenrat'}, {2: 'bomber'}], 1, 'cave')
+	start_combat([{1:'elvenrat'}, {2: 'bomber'}], 10, 'cave')
 #	start_combat([{1:'elvenrat',2:'elvenrat',
-#	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}], 'cave')
+#	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}],20, 'cave')
 
 func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	globals.combat_node = self
@@ -680,7 +677,7 @@ func make_fighter_panel(fighter, spot, show = true):
 	panel.animation_node = CombatAnimations
 	panel.fighter = fighter
 	panel.hp = fighter.hp
-	panel.mp = fighter.mana
+#	panel.mp = fighter.mana
 	panel.connect("signal_RMB", self, "ShowFighterStats")
 	panel.connect("signal_RMB_release", self, 'HideFighterStats')
 	panel.connect("signal_LMB", self, 'FighterPress')
@@ -692,11 +689,11 @@ func make_fighter_panel(fighter, spot, show = true):
 	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.combat_portrait()
 	panel.get_node("HP").value = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
-	panel.get_node("Mana").value = globals.calculatepercent(fighter.mana, fighter.get_stat('manamax'))
+#	panel.get_node("Mana").value = globals.calculatepercent(fighter.mana, fighter.get_stat('manamax'))
 	panel.update_hp_label(fighter.hp, 100.0)
-	panel.update_mp_label(fighter.mana, 100.0)
-	if fighter.get_stat('manamax') == 0:
-		panel.get_node("Mana").value = 0
+#	panel.update_mp_label(fighter.mana, 100.0)
+#	if fighter.get_stat('manamax') == 0:
+#		panel.get_node("Mana").value = 0
 	panel.get_node("Label").text = fighter.name
 	container.add_child(panel)
 	panel.rect_position = Vector2(0,0)
@@ -752,16 +749,16 @@ func ShowFighterStats(fighter):
 	if fighter.combatgroup == 'ally':
 
 		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.get_stat('hpmax'))
-		if fighter.get_stat('manamax') > 0:
-			$StatsPanel/mana.text = "Mana: " + str(fighter.mana) + '/' + str(fighter.get_stat('manamax'))
-		else:
-			$StatsPanel/mana.text = ''
+#		if fighter.get_stat('manamax') > 0:
+#			$StatsPanel/mana.text = "Mana: " + str(fighter.mana) + '/' + str(fighter.get_stat('manamax'))
+#		else:
+#			$StatsPanel/mana.text = ''
 	else:
 		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')))) + "%"
-		if fighter.get_stat('manamax') > 0:
-			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.get_stat('manamax')))) + "%"
-		else:
-			$StatsPanel/mana.text = ''
+#		if fighter.get_stat('manamax') > 0:
+#			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.get_stat('manamax')))) + "%"
+#		else:
+#			$StatsPanel/mana.text = ''
 	$StatsPanel/damage.text = "Damage: " + str(round(fighter.get_stat('damage'))) 
 	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.get_stat('critchance')) + "%/" + str(fighter.get_stat('critmod')*100) + '%' 
 	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.get_stat('hitrate'))
@@ -770,7 +767,7 @@ func ShowFighterStats(fighter):
 #	$StatsPanel/armor.text = "Armor: " + str(fighter.get_stat('armor')) 
 #	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.get_stat('mdef'))
 	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.get_stat('evasion')) 
-	$StatsPanel/speed.text = "Speed: " + str(fighter.get_stat('speed'))
+#	$StatsPanel/speed.text = "Speed: " + str(fighter.get_stat('speed'))
 
 	for i in ['fire','water','earth','air']:
 		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter.get_stat('resists')[i]) + " "
@@ -983,7 +980,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
 #			combatlogadd("\n" + str(caster.position) + ' uses ' + skill.name + ". ")
 			print(str(caster.position) + ' uses ' + skill.name)
-		caster.mana -= skill.manacost
+#		caster.mana -= skill.manacost
 		
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown
@@ -1368,20 +1365,20 @@ func execute_skill(s_skill2):
 			else:
 				var rval = s_skill2.target.heal(s_skill2.value[i])
 				text += "%s is healed for %d health." %[s_skill2.target.name, rval]
-		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
-			if !s_skill2.tags.has('no log'):
-				var rval = s_skill2.target.mana_update(s_skill2.value[i])
-				text += "%s restored %d mana." %[s_skill2.target.name, rval] 
-			else:
-				s_skill2.target.mana_update(s_skill2.value[i])
-		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
-			var rval = s_skill2.target.mana_update(-s_skill2.value[i])
-			if s_skill2.is_drain:
-				var rval2 = s_skill2.caster.mana_update(rval)
-				if !s_skill2.tags.has('no log'):
-					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
-			if !s_skill2.tags.has('no log'):
-				text += "%s lost %d mana." %[s_skill2.target.name, rval] 
+#		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
+#			if !s_skill2.tags.has('no log'):
+#				var rval = s_skill2.target.mana_update(s_skill2.value[i])
+#				text += "%s restored %d mana." %[s_skill2.target.name, rval] 
+#			else:
+#				s_skill2.target.mana_update(s_skill2.value[i])
+#		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
+#			var rval = s_skill2.target.mana_update(-s_skill2.value[i])
+#			if s_skill2.is_drain:
+#				var rval2 = s_skill2.caster.mana_update(rval)
+#				if !s_skill2.tags.has('no log'):
+#					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
+#			if !s_skill2.tags.has('no log'):
+#				text += "%s lost %d mana." %[s_skill2.target.name, rval] 
 		else: 
 			var mod = s_skill2.damagestat[i][0]
 			var stat = s_skill2.damagestat[i].right(1) 
@@ -1505,9 +1502,9 @@ func RebuildSkillPanel():
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		var skill = Skillsdata.patch_skill(i, activecharacter)#Skillsdata.skilllist[i]
 		newbutton.get_node("Icon").texture = skill.icon
-		newbutton.get_node("manacost").text = str(skill.manacost)
-		if skill.manacost <= 0:
-			newbutton.get_node("manacost").hide()
+#		newbutton.get_node("manacost").text = str(skill.manacost)
+#		if skill.manacost <= 0:
+#			newbutton.get_node("manacost").hide()
 		if activecharacter.cooldowns.has(i):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -1518,10 +1515,10 @@ func RebuildSkillPanel():
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
-		if activecharacter.mana < skill.manacost:
-			newbutton.get_node("Icon").modulate = Color(0,0,1)
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+#		if activecharacter.mana < skill.manacost:
+#			newbutton.get_node("Icon").modulate = Color(0,0,1)
+#			newbutton.disabled = true
+#			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, i, activecharacter)
 
@@ -1529,7 +1526,7 @@ func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
 	#need to add daily restriction check
-	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code) :
+	if !activecharacter.can_use_skill(skill.code) :
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack')
 		return

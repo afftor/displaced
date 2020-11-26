@@ -12,7 +12,7 @@ var skilltype
 var tags
 var value = []
 var long_value = []
-var manacost
+#var manacost
 var userange
 var targetpattern
 var repeat
@@ -66,7 +66,7 @@ func createfromskill(s_code, i_caster):
 	code = s_code
 	skilltype = template.skilltype
 	tags = template.tags.duplicate()
-	manacost = template.manacost
+#	manacost = template.manacost
 	get_from_template('userange')
 	get_from_template('targetpattern')
 	get_from_template('damagetype')

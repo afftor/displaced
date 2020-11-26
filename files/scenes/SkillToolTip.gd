@@ -22,9 +22,9 @@ func showup(node, skillcode):
 	show()
 	set_process(true)
 	$name.text = skill.name
-	$cost.text = str(skill.manacost)
-	$cost.visible = skill.manacost != 0
-	$manaicon.visible = skill.manacost != 0
+#	$cost.text = str(skill.manacost)
+#	$cost.visible = skill.manacost != 0
+#	$manaicon.visible = skill.manacost != 0
 	
 #	if skill.skilltype == 'skill':
 #		$type.set("custom_colors/font_color", Color(1,0,0))

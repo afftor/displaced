@@ -79,15 +79,15 @@ func update_hp():
 		var data = {node = self, time = globals.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
 		animation_node.add_new_data(data)
 
-func update_mana():
-	if mp == null:
-		mp = fighter.mana
-	if mp != null && mp != fighter.mana:
-		var args = {newmp = fighter.mana, newmpp = globals.calculatepercent(fighter.mana, fighter.get_stat('manamax'))}
-		mp = fighter.mana
-		#damageeffectsarray.append(data)
-		var data = {node = self, time = globals.combat_node.turns,type = 'mp_update',slot = 'MP', params = args}
-		animation_node.add_new_data(data)
+#func update_mana():
+#	if mp == null:
+#		mp = fighter.mana
+#	if mp != null && mp != fighter.mana:
+#		var args = {newmp = fighter.mana, newmpp = globals.calculatepercent(fighter.mana, fighter.get_stat('manamax'))}
+#		mp = fighter.mana
+#		#damageeffectsarray.append(data)
+#		var data = {node = self, time = globals.combat_node.turns,type = 'mp_update',slot = 'MP', params = args}
+#		animation_node.add_new_data(data)
 
 func defeat():#not working correctly at all
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
@@ -185,9 +185,9 @@ func update_hp_label(newhp, newhpp):
 	else:
 		$hplabel.text = str(round(newhpp)) + '%%'
 
-func update_mp_label(newmp, newmpp):
-	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
-		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('manamax')))
-	else:
-		$mplabel.text = str(round(newmpp)) + '%%'
+#func update_mp_label(newmp, newmpp):
+#	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
+#		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('manamax')))
+#	else:
+#		$mplabel.text = str(round(newmpp)) + '%%'
 

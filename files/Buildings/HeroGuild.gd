@@ -25,7 +25,7 @@ func selecthero(hero):
 	globals.ClearContainer($HeroHire/traits)
 	
 	$HeroHire/hp.text = str(hero.hp) + '/' + str(hero.hpmax)
-	$HeroHire/mana.text = str(hero.mana) + '/' + str(hero.manamax)
+#	$HeroHire/mana.text = str(hero.mana) + '/' + str(hero.manamax)
 	
 	text += 'Name: ' + hero.name + '\nClass: ' + combatantdata.classlist[hero.base].name + '\nPrice: ' + str(hero.price)
 	$HeroHire/RichTextLabel.bbcode_text = text

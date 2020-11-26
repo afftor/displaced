@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/iconsgear/ArmorBasic.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/iconsgear_old/ArmorBasic.png" type="Texture" id=6]
 [ext_resource path="res://files/buttons/inventory/all0.png" type="Texture" id=7]
 [ext_resource path="res://files/buttons/inventory/all2.png" type="Texture" id=8]
 [ext_resource path="res://files/buttons/inventory/all1.png" type="Texture" id=9]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/images/gui/menu/menubuttonpressed.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/gui/menu/menubuttonhl.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=29]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )

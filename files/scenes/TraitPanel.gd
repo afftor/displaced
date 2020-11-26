@@ -1,5 +1,5 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd" 
-
+#obsolete
 var character
 
 

@@ -406,10 +406,10 @@ func gainhealth(target, value):
 func itemtofood(item):
 	state.food += item.foodvalue
 
-var bonustatsarray = ['damage','evasion', 'hitrate','hp','speed','resistfire', 'resistearth', 'resistair', 'resistwater']
+var bonustatsarray = ['damage','evasion', 'hitrate','hp','speed','resistfire', 'resistearth', 'resistair', 'resistwater'] #2fix, possibly obsolete
 
 var hero_items_data = {
-	arron_weapon1 = {#use as template
+	arron_weapon1 = {
 		name = 'weapon1',
 		description = 'descript',
 		weaponrange = 'melee',
@@ -417,67 +417,523 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			1:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon1_1.png",
 				lvldesc = "1",
+				cost = {},
 				},
 			2:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon1_2.png",
 				lvldesc = "2",
+				cost = {},
 				},
 			3:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon1_3.png",
 				lvldesc = "3",
+				cost = {},
 				},
 			4:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon1_4.png",
 				lvldesc = "4",
 				},
 		}
 	},
-	arron_weapon2 = {#use as template
+	arron_weapon2 = {
 		name = 'weapon2',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'pierce',
 		weaponsound = 'dodge',
 		leveldata = {
+			0:{ #for possible use later
+				icon = null,
+				lvldesc = "Not forged yet",
+				cost = {},
+				},
 			1:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon2_1.png",
 				lvldesc = "5",
+				cost = {},
 				},
 			2:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon2_2.png",
 				lvldesc = "6",
+				cost = {},
 				},
 			3:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon2_3.png",
 				lvldesc = "7",
+				cost = {},
 				},
 			4:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_weapon2_4.png",
 				lvldesc = "8",
+				cost = {},
 				},
 		}
 	},
-	arron_armor = {#use as template
+	arron_armor = {
 		name = 'armor',
 		description = 'descript',
 		leveldata = {
 			1:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_armor_1.png",
 				lvldesc = "1",
+				cost = {},
 				},
 			2:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_armor_2.png",
 				lvldesc = "2",
+				cost = {},
 				},
 			3:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_armor_3.png",
 				lvldesc = "3",
+				cost = {},
 				},
 			4:{
-				icon = "res://assets/images/iconsgear/SwordBasic.png",
+				icon = "res://assets/images/iconsgear/arron_armor_4.png",
 				lvldesc = "4",
+				cost = {},
+				},
+		}
+	},
+	rilu_weapon1 = {
+		name = 'weapon1',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/rilu_weapon1_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/rilu_weapon1_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/rilu_weapon1_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/rilu_weapon1_4.png",
+				lvldesc = "4",
+				},
+		}
+	},
+	rilu_weapon2 = {
+		name = 'weapon2',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			0:{ #for possible use later
+				icon = null,
+				lvldesc = "Not forged yet",
+				cost = {},
+				},
+			1:{
+				icon = "res://assets/images/iconsgear/rilu_weapon2_1.png",
+				lvldesc = "5",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/rilu_weapon2_2.png",
+				lvldesc = "6",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/rilu_weapon2_3.png",
+				lvldesc = "7",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/rilu_weapon2_4.png",
+				lvldesc = "8",
+				cost = {},
+				},
+		}
+	},
+	rilu_armor = {
+		name = 'armor',
+		description = 'descript',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/rilu_armor_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/rilu_armor_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/rilu_armor_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/rilu_armor_4.png",
+				lvldesc = "4",
+				cost = {},
+				},
+		}
+	},
+	iola_weapon1 = {
+		name = 'weapon1',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/iola_weapon1_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/iola_weapon1_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/iola_weapon1_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/iola_weapon1_4.png",
+				lvldesc = "4",
+				},
+		}
+	},
+	iola_weapon2 = {
+		name = 'weapon2',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			0:{ #for possible use later
+				icon = null,
+				lvldesc = "Not forged yet",
+				cost = {},
+				},
+			1:{
+				icon = "res://assets/images/iconsgear/iola_weapon2_1.png",
+				lvldesc = "5",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/iola_weapon2_2.png",
+				lvldesc = "6",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/iola_weapon2_3.png",
+				lvldesc = "7",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/iola_weapon2_4.png",
+				lvldesc = "8",
+				cost = {},
+				},
+		}
+	},
+	iola_armor = {
+		name = 'armor',
+		description = 'descript',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/iola_armor_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/iola_armor_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/iola_armor_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/iola_armor_4.png",
+				lvldesc = "4",
+				cost = {},
+				},
+		}
+	},
+	rose_weapon1 = {
+		name = 'weapon1',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/rose_weapon1_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/rose_weapon1_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/rose_weapon1_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/rose_weapon1_4.png",
+				lvldesc = "4",
+				},
+		}
+	},
+	rose_weapon2 = {
+		name = 'weapon2',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			0:{ #for possible use later
+				icon = null,
+				lvldesc = "Not forged yet",
+				cost = {},
+				},
+			1:{
+				icon = "res://assets/images/iconsgear/rose_weapon2_1.png",
+				lvldesc = "5",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/rose_weapon2_2.png",
+				lvldesc = "6",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/rose_weapon2_3.png",
+				lvldesc = "7",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/rose_weapon2_4.png",
+				lvldesc = "8",
+				cost = {},
+				},
+		}
+	},
+	rose_armor = {
+		name = 'armor',
+		description = 'descript',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/rose_armor_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/rose_armor_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/rose_armor_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/rose_armor_4.png",
+				lvldesc = "4",
+				cost = {},
+				},
+		}
+	},
+	ember_weapon1 = {
+		name = 'weapon1',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/ember_weapon1_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/ember_weapon1_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/ember_weapon1_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/ember_weapon1_4.png",
+				lvldesc = "4",
+				},
+		}
+	},
+	ember_weapon2 = {
+		name = 'weapon2',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			0:{ #for possible use later
+				icon = null,
+				lvldesc = "Not forged yet",
+				cost = {},
+				},
+			1:{
+				icon = "res://assets/images/iconsgear/ember_weapon2_1.png",
+				lvldesc = "5",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/ember_weapon2_2.png",
+				lvldesc = "6",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/ember_weapon2_3.png",
+				lvldesc = "7",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/ember_weapon2_4.png",
+				lvldesc = "8",
+				cost = {},
+				},
+		}
+	},
+	ember_armor = {
+		name = 'armor',
+		description = 'descript',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/ember_armor_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/ember_armor_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/ember_armor_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/ember_armor_4.png",
+				lvldesc = "4",
+				cost = {},
+				},
+		}
+	},
+	erika_weapon1 = {
+		name = 'weapon1',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/erika_weapon1_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/erika_weapon1_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/erika_weapon1_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/erika_weapon1_4.png",
+				lvldesc = "4",
+				},
+		}
+	},
+	erika_weapon2 = {
+		name = 'weapon2',
+		description = 'descript',
+		weaponrange = 'melee',
+		damagetype = 'pierce',
+		weaponsound = 'dodge',
+		leveldata = {
+			0:{ #for possible use later
+				icon = null,
+				lvldesc = "Not forged yet",
+				cost = {},
+				},
+			1:{
+				icon = "res://assets/images/iconsgear/erika_weapon2_1.png",
+				lvldesc = "5",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/erika_weapon2_2.png",
+				lvldesc = "6",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/erika_weapon2_3.png",
+				lvldesc = "7",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/erika_weapon2_4.png",
+				lvldesc = "8",
+				cost = {},
+				},
+		}
+	},
+	erika_armor = {
+		name = 'armor',
+		description = 'descript',
+		leveldata = {
+			1:{
+				icon = "res://assets/images/iconsgear/erika_armor_1.png",
+				lvldesc = "1",
+				cost = {},
+				},
+			2:{
+				icon = "res://assets/images/iconsgear/erika_armor_2.png",
+				lvldesc = "2",
+				cost = {},
+				},
+			3:{
+				icon = "res://assets/images/iconsgear/erika_armor_3.png",
+				lvldesc = "3",
+				cost = {},
+				},
+			4:{
+				icon = "res://assets/images/iconsgear/erika_armor_4.png",
+				lvldesc = "4",
+				cost = {},
 				},
 		}
 	},

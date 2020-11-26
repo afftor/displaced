@@ -9,7 +9,7 @@ func _process(delta):
 		if i.name != "Button":
 			var hero = i.get_meta('hero')
 			i.get_node("hpbar").value = globals.calculatepercent(hero.hp, hero.hpmax)
-			i.get_node("mpbar").value = globals.calculatepercent(hero.mana, hero.manamax)
+#			i.get_node("mpbar").value = globals.calculatepercent(hero.mana, hero.manamax)
 #	if heropanel.visible == false:
 #		equipopen = false
 #	if equipopen == false:

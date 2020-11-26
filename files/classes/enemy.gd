@@ -21,7 +21,7 @@ func get_weapon_damagetype():
 	return res
 
 func get_weapon_range():
-	return 'melee'
+	return base_dmg_range
 
 func apply_atomic(template):
 	match template.type:
@@ -38,9 +38,8 @@ func createfromtemplate(enemy, lvl):
 	hpmax = template.basehp #or not
 	hp_growth = template.basehp
 	self.hp = get_stat('hpmax')
-	manamax = template.basemana
-	speed = template.speed
-	self.mana = manamax
+#	manamax = template.basemana
+#	self.mana = manamax
 	skills = template.skills.duplicate()
 	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
@@ -49,7 +48,7 @@ func createfromtemplate(enemy, lvl):
 		resists[i] = 0
 		if template.resists.has(i):
 			resists[i] = template.resists[i]
-	for i in ['damage','name','hitrate','evasion','speed', 'icon','combaticon', 'loottable', 'xpreward', 'bodyhitsound', 'weaponsound', 'flavor', 'aiposition']:
+	for i in ['damage','name','hitrate','evasion','icon','combaticon', 'loottable', 'xpreward', 'bodyhitsound', 'weaponsound', 'flavor', 'aiposition', 'base_dmg_type', 'base_dmg_range']:
 		#self[i] = template[i]
 		if template.has(i): set(i, template[i])
 	for i in variables.resistlist:

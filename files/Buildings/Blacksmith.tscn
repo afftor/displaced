@@ -14,7 +14,7 @@
 [ext_resource path="res://files/scenes/ItemShader.tres" type="Material" id=12]
 [ext_resource path="res://assets/images/gui/buildings/itemcreationpanel.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/buildings/ui_framebackground.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/iconsgear/AxeBasic.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/iconsgear_old/AxeBasic.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=18]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/stone.jpg" type="Texture" id=27]
+
 
 
 
