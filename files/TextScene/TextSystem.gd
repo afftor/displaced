@@ -34,7 +34,8 @@ var ColorsByNames = {
 var choicedict = {
 	choiceexample = [{text = 'Choice 1', function = 'Close', reqs = null}]
 }
-
+# TODO WORKAROUND
+var images = {}
 
 func _process(delta):
 	if TextField.get_total_character_count() > TextField.visible_characters:

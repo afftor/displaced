@@ -1,0 +1,21 @@
+[
+{"effect":"background","value":"hall"},
+{"args":"annet","effect":"sprite","value":"set"},
+{"effect":"text","portrait":"null","sound":null,"source":"narrator","value":"The team has barged into the main city hall as Annet meets them there."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"Look what we have here."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"Can't say I expected to see you still alive."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"I knew you were a one kind of a bitch after learning your history with Erika."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"But must say, this is a whole different level. "},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"I'm glad you appreciate my work."},
+{"effect":"text","portrait":"RoseShock","sound":null,"source":"ROSE","value":"Your work? "},
+{"effect":"text","portrait":"RoseShock","sound":null,"source":"ROSE","value":"You are slaughtering innocent people!"},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"People, cattle, who cares."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"I'm glad we are finally past the acting stage and I don't have to deal with their stupidity."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"Won't deny it, I did have my fun a couple of times though."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"But it was taking too much time."},
+{"effect":"text","portrait":"ArronNeutral","sound":null,"source":"ARRON","value":"Whatever, let's just beat the shit out of her."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"Tsk, you are throwing away the few minutes of life I am gifting you."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"And with such bad manners too."},
+{"effect":"text","portrait":"Annet","sound":null,"source":"ANNET","value":"I'll take care of your friends, once you die, Arron."},
+{"effect":"stop"}
+]

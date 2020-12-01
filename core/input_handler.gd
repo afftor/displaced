@@ -238,13 +238,13 @@ func StopTweenRepeat(node):
 
 #Music
 
-func SetMusic(name, delay = 0):
+func SetMusic(res, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
-	if musicnode.stream == audio.music[name]:
+	if musicnode.stream == res:
 		return
-	musicnode.stream = audio.music[name]
+	musicnode.stream = res
 	musicnode.play(0)
 
 func StopMusic(instant = false):
@@ -264,12 +264,13 @@ func GetMusicNode():
 
 #Sounds
 
-func PlaySound(name, delay = 0):
+func PlaySound(res, delay = 0):
 	if name == null: 
 		return #STAB to fix some skills cause crashing
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
-	soundnode.stream = audio.sounds[name]
+	# TODO
+	soundnode.stream = res
 	soundnode.seek(0)
 	soundnode.play(0)
 	yield(soundnode, 'finished')
@@ -391,7 +392,8 @@ func SmoothValueAnimation(node, time, value1, value2):
 
 func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false):
 	var x = TextureRect.new()
-	x.texture = images.GFX[effect]
+	# TODO
+	#x.texture = images.GFX[effect]
 	x.expand = true
 	x.stretch_mode = 6
 	node.add_child(x)
@@ -399,7 +401,8 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	x.rect_size = node.rect_size
 	
 	if rotate == true:
-		x.rect_pivot_offset = images.GFX[effect].get_size()/2
+		# TODO
+		#x.rect_pivot_offset = images.GFX[effect].get_size()/2
 		x.rect_rotation = rand_range(0,360)
 	
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)

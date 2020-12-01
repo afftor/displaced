@@ -981,19 +981,23 @@ func has_status(status):
 
 func portrait():
 	if icon != null:
-		return images.portraits[icon]
+		# TODO
+		return resources.get_res(icon)
 
 func combat_portrait():
 	if combaticon != null:
-		return images.combatportraits[combaticon]
+		# TODO
+		return resources.get_res(combaticon)
 
 func combat_full_portrait():
 	if combaticon != null:
-		return images.combatfullpictures[combaticon]
+		# TODO
+		return resources.get_res(combaticon)
 
 func portrait_circle():
 	if combaticon != null:
-		return images.circleportraits[combaticon]
+		# TODO
+		return resources.get_res(combaticon)
 
 func createtrait(data, type = 'starter'):
 	var array = []

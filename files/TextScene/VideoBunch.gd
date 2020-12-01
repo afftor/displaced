@@ -3,9 +3,9 @@ extends Control
 var current_queue = []
 onready var current_plrs = [$"0", $"1"]
 
-func Change(idle: VideoStreamTheora, trans: VideoStreamTheora = null) -> void:
-	if trans: current_queue.append(trans)
-	current_queue.append(idle)
+func Change(first: VideoStreamTheora, sec: VideoStreamTheora = null) -> void:
+	current_queue.append(first)
+	if sec: current_queue.append(sec)
 	if current_plrs[0].stream == null:
 		current_plrs[0].stream = current_queue.pop_front()
 		current_plrs[0].play()

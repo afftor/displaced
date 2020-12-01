@@ -562,7 +562,8 @@ func HeroSelect(targetscript, type, function, requirements):
 		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 
-		newnode.get_node("Icon").texture = images.portraits[i.icon]
+		# TODO
+		newnode.get_node("Icon").texture = resources.get_res(i.icon)
 
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/firedamage.wav-4be3651b87a4b4a76522817b2c0c1a93.sample"
+
+[deps]
+
+source_file="res://assets/sound/firedamage.wav"
+dest_files=[ "res://.import/firedamage.wav-4be3651b87a4b4a76522817b2c0c1a93.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
