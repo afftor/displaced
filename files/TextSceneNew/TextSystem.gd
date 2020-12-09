@@ -4,14 +4,14 @@ const REF_PATH = "res://assets/data/txt_ref/main_ref.txt"
 const AVAIL_EFFECTS = [
 	"WHITE", "SPRITE_HIDE",
 	"MUSIC_STOP", "GUI_NORMAL",
-	"GUI_INSIDE", "GUI_HIDE",
-	"GUI_FULL", "BLACKON",
-	"BLACKOFF", "BLACKFADE",
-	"BLACKUNFADE", "BLACKTRANS",
-	"BG", "DELAY", "SPRITE",
-	"SPRITE_FADE", "SPRITE_UNFADE",
-	"SHAKE_SPRITE", "SHAKE_SCREEN",
-	"SOUND", "MUSIC", "ABG", "STOP"
+	"GUI_HIDE", "GUI_FULL",
+	"BLACKON", "BLACKOFF",
+	"BLACKFADE", "BLACKUNFADE",
+	"BLACKTRANS", "BG", "DELAY",
+	"SPRITE", "SPRITE_FADE",
+	"SPRITE_UNFADE", "SHAKE_SPRITE",
+	"SHAKE_SCREEN", "SOUND", "MUSIC",
+	"ABG", "STOP"
 	]
 
 onready var TextField = $Panel/DisplayText
@@ -106,20 +106,6 @@ func tag_gui_normal() -> void:
 	$Panel.visible = true
 	$Panel/Options.visible = true
 	$CharImage.visible = true
-	$Background.visible = true
-
-func tag_gui_inside() -> void:
-	$Panel.self_modulate.a = 1
-	$Panel/Panel.modulate.a = 0
-	$Panel.modulate.a = 1
-	$Panel/DisplayName.self_modulate.a = 1
-	$Panel/DisplayName/Label.set("custom_colors/font_color", Color('ffd204'))
-	$Panel/CharPortrait.visible = true
-	$Panel/CharPortrait.modulate.a = 0
-	$Panel.visible = true
-	$Panel/Options.visible = false
-	$CharImage.visible = false
-	$Background.visible = false
 
 func tag_gui_hide() -> void:
 	$Panel.hide()
@@ -133,7 +119,6 @@ func tag_gui_full() -> void:
 	$Panel.visible = true
 	$Panel/Options.visible = true
 	$CharImage.visible = false
-	$Background.visible = true
 
 func tag_blackon() -> void:
 	$BlackScreen.modulate.a = 1
@@ -179,7 +164,8 @@ func tag_bg(res_name: String, secs: String = "") -> void:
 	
 
 func tag_delay(secs: String) -> void:
-	delay = float(secs)
+	if skip: delay = 0.1
+	else: delay = float(secs)
 
 func tag_sprite_hide() -> void:
 	ImageSprite.texture = null
@@ -193,9 +179,9 @@ func tag_sprite_fade(secs: String = "0.5") -> void:
 func tag_sprite_unfade(secs: String = "0.5") -> void:
 	input_handler.UnfadeAnimation(ImageSprite, float(secs), delay)
 
-func tag_shake_sprite(secs: String) -> void:
+func tag_shake_sprite(secs: String = "0.2") -> void:
 	input_handler.emit_signal("ScreenChanged")
-	input_handler.UnfadeAnimation($BlackScreen, float(secs))
+	input_handler.ShakeAnimation(ImageSprite, float(secs))
 
 func tag_shake_screen(secs: String = "0.2") -> void:
 	input_handler.emit_signal("ScreenChanged")
@@ -239,6 +225,7 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 	$VideoBunch.Change(res, sec_res)
 
 func tag_stop() -> void:
+	input_handler.StopMusic()
 	set_process(false)
 	set_process_input(false)
 	globals.check_signal("EventFinished")
@@ -415,7 +402,7 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 							"BG",
 						]:
 							if line_dr.begins_with("%s " % res_type):
-								var res_name = line_dr.replace("%s " % res_type, "")
+								var res_name = line_dr.replace("%s " % res_type, "").split(" ")[0]
 								if res_name == "null": break
 								if !out[current_scene]["res"].has(res_type.to_lower()):
 									out[current_scene]["res"][res_type.to_lower()] = []

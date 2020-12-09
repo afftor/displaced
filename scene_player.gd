@@ -4,6 +4,7 @@ func _ready() -> void:
 	$Button.disabled = true
 	$Button.connect("pressed", self, "button_pressed")
 	
+	$ItemList.clear()
 	for i in $TextSystem.scenes_map.keys():
 		$ItemList.add_item(i)
 	

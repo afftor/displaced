@@ -18,6 +18,8 @@ const RES_EXT = {
 	"music" : "ogg",
 }
 
+const LOAD_TRIES = 16
+
 signal _loaded
 signal done_work
 onready var mutex = Mutex.new()
@@ -83,6 +85,11 @@ func preload_res(path: String) -> void:
 	queue.append(path)
 	thread.start(self, "_thread_load", [category, label, thread])
 	yield(self, "_loaded")
+	var j = res_pool.size()
+	for i in range(LOAD_TRIES):
+		if res_pool.size() != j:
+			break
+		yield(get_tree(), "idle_frame")
 	busy -= 1
 	if busy == 0:
 		emit_signal("done_work")

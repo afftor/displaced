@@ -1,7 +1,3 @@
-# * - required
-# color: #rrggbb
-# Short - Source* Portrait #rrggbb
-
 =CHARDEF_BEGIN=
 =COLOR #ffffff=
 Narrator - Narrator
@@ -43,7 +39,7 @@ D[Normal, Talk, Anger] - Demitrius
 CM - Committee_Member
 C - Caliban
 Boy - Boy
-Ar[Normal, Neutral, Shock] - Arron #c0c0c0
+Ar[Normal, Neutral, Shock, Anger] - Arron #c0c0c0
 An[Normal, Anger] - Annet
 ?? - ???
 ?(Z) - ??? Zelroth
@@ -171,9 +167,10 @@ Ar(shock) - Rose? What the...
 =DELAY 0.5=
 =SOUND teleport=
 Just as she enters the circle, the spell completes, the light fading, and revealing the empty space where once was two people.
-Nt - Huh... was that his slave? Well, one less witness to worry about. Clean it all up, I'll prepare to make a report for father. 
+Nt - Huh... was that his slave? Well, one less witness to worry about. Clean it all up, I'll prepare to make a report for father.
 =GUI_HIDE=
 =BLACKON=
+*Slam*
 =DELAY 0.5=
 =BG desert=
 =BLACKFADE 0.5=
@@ -182,7 +179,6 @@ Nt - Huh... was that his slave? Well, one less witness to worry about. Clean it 
 =SOUND crash=
 =SHAKE_SCREEN 0.5=
 =DELAY 0.5=
-*Slam*
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
 In the middle of an empty desert two bodies appear on the ground.
@@ -286,12 +282,8 @@ Ar(neutral) - You bring him here then.
 Ro(sarcastic) - I'm afraid he won't agree to follow me. We can't order them around just like that. 
 Ar(neutral) - ...
 Ar(neutral) - Democracy was a mistake.
-=GUI_HIDE=
-=BLACKTRANS 1=
-=DELAY 1=
 {"effect":"state","value":"character_add", "args":"arron"},
 {"effect":"state","value":"character_add", "args":"rose"},
-=BG null=
 =STOP=
 
 ** intro_3 **
@@ -354,9 +346,6 @@ Ro - I'm sure they wouldn't like it, and they probably live in much better condi
 Ar - Hmm... In that case, we should conquer them too!
 Ro - I'll pass. 
 Ar - As if you have a choice.
-=BLACKTRANS 1=
-=DELAY 1=
-=BG null=
 =STOP=
 
 ** forest_2 **
@@ -446,9 +435,6 @@ Ro(sarcastic) - ...Really?
 Er - Thanks for asking, but I don't like carrying around heavy stuff, so I've got all I need.
 Ar - Looks good to me, let's go. 
 Ro - (...)
-=BLACKTRANS 1=
-=DELAY 1=
-=BG null=
 {"effect":"state","value":"character_add", "args":"erika"},
 {"effect":"state","value":"advance_quest", "args":"elves"},
 =STOP=
@@ -553,9 +539,12 @@ Ember has joined the settlement. Forge is available now.
 
 ** ember_1_2 **
 =MUSIC eventlight=
-=BLACKTRANS 0.4=
-=DELAY 1=
-=GUI_INSIDE=
+=BLACKON=
+=DELAY 0.4=
+=BG forge=
+=BLACKFADE 0.4=
+=DELAY 0.4=
+=GUI_NORMAL=
 Em - I see you found some unusual wood up there. Please, let me have it!
 Ar - Hmh... sure. What's so unusual about it?
 Em - Oh, I can use it to make items with special properties. 
@@ -575,15 +564,18 @@ Ar(neutral) - Tsk... I've trusted you, Rose. Such a brutish move from you.
 Em(tired) - Uh... I still don't understand, but in either case, if you find any more rare materials, make sure to bring them to me!
 Ar - Aren't I'm one of a kind? 
 Ro - Please, stop. 
-=BLACKTRANS 0.4=
-=DELAY 1=
+=BLACKUNFADE 0.4=
+=DELAY 0.4=
 =STOP=
 
 ** ember_1_3 **
 =MUSIC eventgeneric=
-=BLACKTRANS 0.4=
-=DELAY 1=
-=GUI_INSIDE=
+=BLACKON=
+=DELAY 0.4=
+=BG forge=
+=BLACKFADE 0.4=
+=DELAY 0.4=
+=GUI_NORMAL=
 Em - Sir Arron, great to see you! What can I help you with?
 Ar - I'm good. Just curious how you are doing.
 Em - Oh, it's great here! And you visit me regularly too. 
@@ -604,6 +596,7 @@ Em - OOOOH, Sir Arron, you can do this for me!?
 Ar - Well if you request it, it's my job to make sure everyone here is happy. 
 Em - Okay, please! Let me just untie my apron.
 Ar - (Darn.. this was way too easy, maybe later I should give her a couple of lessons about dignity)
+=DELAY 0.4=
 =ABG ember_boobs_1=
 =GUI_FULL=
 Em - So, how is it?
@@ -646,17 +639,16 @@ Ar - What's up? Ember just asked me for help.
 Ro - (Ember made a move on the Master!? I never expected that...)
 Em - Oh Hey Rose. If you are in no hurry, give us a moment.
 Ro - Ah... I'm just... Sorry...
-=BG null=
 Rose quickly shuts the door.
+=BG forge=
 Ro - (No way... She never looked mature like that)
 Ar - Hmm, this is enough I believe. 
-=GUI_INSIDE=
 Em - So how is it?
 Ar - This seems passable to me. With some time and work you will surely be able to live with humans nicely.
 Em - Really!? This makes me so happy. Please, help me in the future too, Sir Arron!
 Ar - Gladly.
-=BLACKTRANS 0.4=
-=DELAY 1=
+=BLACKUNFADE 0.4=
+=DELAY 0.4=
 =STOP=
 
 ** ember_1_4 **
@@ -715,8 +707,8 @@ Arron quickly freed himself from clothes, revealing his manhood to the curious d
 Em - Woah, it's so big... That's called a penis, right?
 Ar - Hmh um, it is great, indeed.
 Ar - Now relax, this might be painful for your first time.
-Arron forcefully entered Ember's pussy.
 =ABG ember_miss_2 ember_miss_3=
+Arron forcefully entered Ember's pussy.
 Em - Oh... Ah!
 Em - It's in!
 Ar - Huh... It didn't hurt?
@@ -760,6 +752,8 @@ Ar - (Was it just my imagination?)
 Em - Can we do it one more time? Please!
 Ar - ... 
 Ar - Having it too easy like this will soon spoil me.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =STOP=
 
 ** rose_1 **
@@ -785,6 +779,7 @@ Ro - Master...
 In a few moments she disappears under the blanket.
 =GUI_FULL=
 =MUSIC erotheme=
+=DELAY 0.5=
 =ABG rose_minet_1=
 =BLACKFADE 0.5=
 =DELAY 0.5=
@@ -821,8 +816,12 @@ Ro - Ah... Jeez.
 Ar - Oh-ho... Still not comfortable with swallowing?
 Ro - Sorry, Master...
 Ar - It's okay. Are you ready to continue?
-Arron's penis still stood at attention despite just cuming, much to Rose's relief.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =ABG rose_sex_1=
+Arron's penis still stood at attention despite just cuming, much to Rose's relief.
+=BLACKFADE 0.5=
+=DELAY 0.5=
 Rose swiftly mounted him.
 Ar - Just look how wet you are from merely sucking my dick. 
 Ro - I-It's your fault, making me like this...
@@ -844,15 +843,15 @@ Ro - I'm almost there...
 Ro - Ah... Master, please, hug me!
 Not waiting for a reply, Rose embraced and kissed her Master, as his seed filled her womb. 
 =ABG rose_sex_5 rose_sex_6=
-Ro - Aaaaaaaaah!
-...
 =WHITE=
 =DELAY 0.5=
+Ro - Aaaaaaaaah!
+...
 Umh... 
 Ro - Ah... I did it again...
 Ar - Good girl. Alight, you can sleep together with me.
 Ro - ...
-=BLACKON=
+=BLACKUNFADE 0.5=
 =DELAY 0.5=
 Rose weakly nodded and buried her face into Arron's chest.
 =STOP=
@@ -917,9 +916,8 @@ G - Of course our mayor will gladly help you out, Father. He often skirmishes ou
 Ar - ... I guess we should've hurried with enacting those new laws.
 Ar - I mean, we gladly will help you out, Father Demitrius.
 D - I'm glad to know this village is so high spirited. Once you prepare, I'll be waiting for you at the exit.
-=BLACKTRANS 0.5=
+=BLACKUNFADE 0.5=
 =DELAY 0.5=
-=BG null=
 {"effect":"state","value":"make_quest", "args":"demitrus"},
 =STOP=
 
@@ -944,9 +942,8 @@ Ro(shock) - EH? You were listening all this time?
 Er(happy) - Don't worry, my lips are shut.
 Er - Unless you are interested in my oral skills.
 Ro - *Sigh* Let's just get this over with.
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
-=BG null=
 =STOP=
 
 ** dimitrius_1_3 **
@@ -990,7 +987,7 @@ D(talk) - It showed me your demonic nature!
 Ar - Uh... Let's calm down. How about we reasonably discuss it?
 D - You must take me for a fool if you think you can delude me with your lies.
 D(talk) - Surrender now, or face the Ancestor’s Wrath!
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
 {"effect":"state","value":"finish_quest", "args":"demitrus"},
 {"effect":"state","value":"make_quest", "args":"demofinish"},
@@ -1015,26 +1012,26 @@ Ar - Hmph. You are no fighter, you said so yourself.
 Ar - What are you going to do? Preach us to sleep?
 At those words, a round item came flying from Demitrius falling a few steps away from Arron.
 Ro(shock) - Ah!
-*Bam*
 =SHAKE_SCREEN 0.5=
 =DELAY 0.5=
+*Bam*
 The cave walls shook at the heavy explosion with dust falling to the ground.
 Ar(shock) - What the hell was that? A bomb?
 D(talk) - Do not underestimate the Ancestral Cult, you foul creatures.
-*Toss*
 =SHAKE_SCREEN 0.25=
 =DELAY 0.25=
+*Toss*
 Ar(shock) - You moron, You’re gonna kill us all!
 D - It was your choice to resist me. I'll do what I must.
-*Bam*
 =SHAKE_SCREEN 0.5=
 =DELAY 0.5=
+*Bam*
 Ro(shock) - Look, the ceiling is breaking!
 A large chunk of stone has broken off from the ceiling and fell onto Demitrius.
 D - Ah!
-*Splat*
 =SHAKE_SPRITE 0.25=
 =DELAY 0.25=
+*Splat*
 Demitrius died as a huge rock stuck his head.
 =SPRITE_FADE 0.3=
 =DELAY 0.3=
@@ -1089,6 +1086,8 @@ Ar(neutral) - (Darn... I can't even refuse her since we were the only people las
 Ar(neutral) - (But if anything happens to her, it's a gigantic red flag. The cult won't let 2 of its members disappear near us without serious investigation.)
 Ar - Of course, we will surely do our best. Just give us time to prepare.
 I - I'm glad to hear that, sir Arron, I'm sure the Ancestors will bless your helpfulness.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =STOP=
 
 ** iola_1_2 **
@@ -1386,8 +1385,8 @@ Er - Arron is one happy man to have someone like you always around.
 Ro - Oh, don’t flatter me, Erika... You have such a gorgeous figure...
 Er - No way. Your ears and tail are charming. I'm really jealous of Arron.
 Ro - Stop, you're making me blu...
-Cutting Rose's hints of embarrassment short, Erika firmly pressed her lips against Rose.
 =ABG erika_rose_sofa_2 erika_rose_sofa_3=
+Cutting Rose's hints of embarrassment short, Erika firmly pressed her lips against Rose.
 Ro - Mhh!
 Ro - Mmmm...
 Just when Arron would expect Rose to back off, she unexpectedly closed her eyes and took Erika's kiss with apparent joy.
@@ -1416,6 +1415,7 @@ Er - Now, let me show you something great.
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =ABG erika_rose_69_1=
+=DELAY 1=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Erika laid down, inviting a naked Rose on top of her.
@@ -1816,8 +1816,7 @@ Ar - That's actually something. Let's try to see what we can find then. And than
 Ri - ...Don't mention it.
 =STOP=
 
-=STOP=
-
+** rilu_1_6 **
 =MUSIC eventlight=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -2185,6 +2184,9 @@ Ar - Alright, let's check it.
 =STOP=
 
 ** faery_queen_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG forest=
 =SPRITE erika=
 Er - This should be the place.
@@ -2198,6 +2200,9 @@ Ar - Good. I'm eager to shut her nasty mouth.
 =STOP=
 
 ** faery_queen_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG forest=
 =SPRITE faeryqueen=
 Ar - There she is.
@@ -2225,6 +2230,9 @@ Ar(neutral) - Great, now get her.
 =STOP=
 
 ** victor_1_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG town_in=
 A moderate crowd is gathered around one of the city entrances as if there was a parade.
 Ar - Hmm? What's going on here?
@@ -2254,6 +2262,9 @@ Ar - Hmph. Don't make me reconsider your second-in-command position, Rose.
 =STOP=
 
 ** erika_annet_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 The annual meeting is being held at the city hall. 
 The hall is filled with nobles and the richest people of the region. 
@@ -2282,6 +2293,9 @@ An - Heh, humans are really easy.
 =STOP=
 
 ** erika_annet_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG town_in=
 =SPRITE erika=
 Taking a day off Erika walks through Aeros' market.
@@ -2634,6 +2648,9 @@ Er - I appreciate it.
 =STOP=
 
 ** rilu_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG villagenight=
 =SPRITE rilu=
 Late at the evening Rilu was going to Arron's office. 
@@ -2757,6 +2774,9 @@ Ri - ....
 =STOP=
 
 ** rilu_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 =SPRITE rose=
 The girls and Arron are having dinner.
@@ -2939,6 +2959,9 @@ Ri - I can... Get used to it.
 =STOP=
 
 ** rilu_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG villagenight=
 Arron went for a short walk when he noticed a familiar figure.
 =SPRITE rilu=
@@ -2970,6 +2993,9 @@ Ar - I don't have time for you, you know.
 =STOP=
 
 ** rilu_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG castle=
 =SPRITE rilu=
 In a large hall an unknown man laid defeated as Rilu was inspecting something in her hand.
@@ -3107,6 +3133,9 @@ Ar - Come on, you’re gonna make me blush.
 =STOP=
 
 ** iola_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG villageday=
 =SPRITE iola=
 Ar - Oh, an unexpected visitor.
@@ -3171,6 +3200,9 @@ Ri - *nod*
 =STOP=
 
 ** iola_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG castle=
 =SPRITE rose=
 Ro - Phew.. It's dead.
@@ -3278,6 +3310,9 @@ Ro(sarcastic) - I sincerely hope you are joking this time.
 =STOP=
 
 ** iola_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG cult=
 The group has entered the Cult's temple grounds. 
 Ar - Huh... This organization seems rather abundant. 
@@ -3293,6 +3328,9 @@ Ro(sarcastic) - Yeah, judging on how they charge at us armed, it will be their p
 =STOP=
 
 ** iola_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG cult=
 =SPRITE rilu=
 The team ended up in a jail building near one of the cells.
@@ -3391,6 +3429,9 @@ Ro - I'll see where we can let you stay.
 =STOP=
 
 ** iola_2_5 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 =SPRITE iola=
 Ar - Hey, how do you like your new home? 
@@ -3426,6 +3467,8 @@ I - ...Thanks, I hope we will find him.
 =STOP=
 
 ** iola_2_6 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
 =GUI_NORMAL=
 =BG hall=
 =SPRITE iola=
@@ -3543,6 +3586,9 @@ Ar - Well, you know where to find me.
 =STOP=
 
 ** iola_2_7 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 =SPRITE rose=
 Ro - So, to sum it up, you are wasting too much money on fancy food.
@@ -3728,6 +3774,9 @@ Ro - (Uh oh...)
 =STOP=
 
 ** ember_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =SPRITE emberhappy=
 =BG hall=
 Em - Sir Arron! 
@@ -3760,6 +3809,9 @@ Ar - ....On other hand, maybe I shouldn't let you teach Ember.
 =STOP=
 
 ** ember_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG mountainsday=
 =SPRITE rose=
 Ar - Hey, Rose, you know what?
@@ -3775,6 +3827,10 @@ Em(tired) - Oh, sorry.
 =STOP=
 
 ** ember_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
 =SPRITE dragon=
 Dr - Foolish mortals! How dare you approach me?
 Ro(talk) - Wow, this one can speak!
@@ -3790,6 +3846,10 @@ Ar - Darn, I guess there's no choice but to fight.
 =STOP=
 
 ** ember_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
 =SPRITE dragon=
 The large dragon is held in place breathing heavily.
 Dr - Guh... Enough...
@@ -3883,6 +3943,9 @@ Em - Eh? Eeeeeeh?!
 =STOP=
 
 ** victor_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG mountainsday=
 =SPRITE victor=
 A few hours later
@@ -3942,6 +4005,9 @@ V - ...
 =STOP=
 
 ** victor_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG villageday=
 =SPRITE rose=
 Ro - I've got a letter. Looks like it's about Ember.
@@ -3959,6 +4025,9 @@ Ro - Well, I guess we will know it once we get there.
 =STOP=
 
 ** victor_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 Ar - This guy looks familiar.
 Ro - This is Victor. We've seen him in Aeros.
 I(shock) - Ah, it's the man who was talking to the father at that time.
@@ -4000,6 +4069,9 @@ An(anger) - I'm sick of this psycho. He deserves some retribution.
 =STOP=
 
 ** victor_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 Defeated Victor fell on his knees not in any condition to continue the fight.
 V - Ghhh... How... Can I lose...
 V - After all... these years...
@@ -4074,6 +4146,9 @@ Ar - Let's get out of here, before someone sees us and blames us for murdering A
 =STOP=
 
 ** iola_3_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 =SPRITE iola=
 I - Arron, I've got good news.
@@ -4094,6 +4169,9 @@ Ar - I see. Well, might as well try it since there's not much else to do.
 =STOP=
 
 ** iola_3_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG cave=
 =SPRITE iola=
 I - Wow, these caves are quite dark. 
@@ -4108,6 +4186,9 @@ Ro - Me neither. Let's find what we need sooner rather than later.
 =STOP=
 
 ** iola_3_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG cave=
 =SPRITE iola=
 The party came to a small ruin circle.
@@ -4218,6 +4299,9 @@ Ri - It's fine, we might have worse things to deal with soon.
 =STOP=
 
 ** flak_city_raid **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG market=
 =SPRITE flak=
 F - Hey, big guy, there's some nasty news coming from Aeros.
@@ -4229,6 +4313,9 @@ Ar(neutral) - Doesn't seem good. I guess we should check it out.
 =STOP=
 
 ** city_raid_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG burning_city=
 The team has entered Aeros observing the surrounding disaster.
 Ro(sad) - This looks horrible...
@@ -4252,6 +4339,9 @@ Ar(neutral) - No wonder the city is in ruins with residents like these.
 =STOP=
 
 ** annet_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 =SPRITE annet=
 The team has barged into the main city hall as Annet meets them there.
@@ -4273,6 +4363,9 @@ An - I'll take care of your friends, once you die, Arron.
 =STOP=
 
 ** annet_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 =SPRITE annet=
 An - Gh, you degenerates...
@@ -4376,6 +4469,9 @@ Er - After seeing what was happening in the city I don't feel like we should've 
 =STOP=
 
 ** dimitrius_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 =SPRITE rose=
 Ro - Maybe we should've helped the survivors back in the city.
@@ -4472,6 +4568,9 @@ Ri - Let's go then, it's better if we don't waste time.
 =STOP=
 
 ** zelroth_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG castle=
 =SPRITE zelroth=
 Z - Gh... How... are you...
@@ -4626,6 +4725,9 @@ Ro - This is terrible...
 =STOP=
 
 ** dimitrius_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG cult1=
 =SPRITE demitrius=
 The team barges into the main room with Dimitrius in it.
@@ -4727,6 +4829,9 @@ D - Use what little time you've left for your own good, hahaha.
 =STOP=
 
 ** rose_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG hall=
 Arron laid in the bed, recuperating from wounds left by Dimitrius.
 =SOUND knocking=
@@ -4776,6 +4881,9 @@ Ar - Darn it.
 =STOP=
 
 ** zelroth_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG castle=
 =SPRITE zelroth=
 Z - So you've come again. 
@@ -4789,6 +4897,9 @@ Z - Once your friends join my army, I'll have plenty of use for you in my experi
 =STOP=
 
 ** flak_future_city **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG market=
 =SPRITE flak=
 F - Hey, looks like you've made it.
@@ -4803,6 +4914,9 @@ Ar - True... I should check this out before it's too late.
 =STOP=
 
 ** dimitrius_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city=
 Ro - This place looks so bizzare. 
 Ro - Everything is made out of stone, but it’s crumbling.
@@ -4815,6 +4929,9 @@ I - Yes, let's move with caution.
 =STOP=
 
 ** dimitrius_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city=
 =SPRITE demitrius=
 D - Hah, you finally came.
@@ -4835,6 +4952,9 @@ D - Great, entertain me little moths!
 =STOP=
 
 ** dimitrius_2_5 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city=
 =SPRITE demitrius=
 D - Hmph, enough of this little play.
@@ -4878,6 +4998,9 @@ Ar - Phew, at least we aren't buried alive. Let's go.
 =STOP=
 
 ** sewers_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city=
 =SPRITE rose=
 Ro - I see an exit.
@@ -4924,6 +5047,9 @@ The team has made preparations and moved to their new destination while Dimitriu
 =STOP=
 
 ** dimitrius_2_6 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city_reactor=
 =SPRITE demitrius=
 D - So this is where you've been hiding. 
@@ -4935,6 +5061,9 @@ Ar(anger) - Let's do this.
 =STOP=
 
 ** dimitrius_2_7 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city_reactor=
 =SPRITE demitrius=
 D - Ghah, you idiots. 
@@ -4967,6 +5096,9 @@ Er(sad) - I guess we will have to fight through them.
 =STOP=
 
 ** dimitrius_2_8 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city_reactor=
 =SPRITE rose=
 Ro - We made it...
@@ -5011,6 +5143,9 @@ Ri - We have no time for this.
 =STOP=
 
 ** dimitrius_2_9 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 Em - Looks like it was the last of them.
 Ri - Good, now time to start the preparations.
 I - Understood. How's Arron doing?
@@ -5030,6 +5165,9 @@ D - Ahaha, great, let's fool around for the last time!
 =STOP=
 
 ** dimitrius_2_10 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 =BG future_city_reactor_inside=
 =SPRITE demitrius=
 =SOUND sword_fall=
