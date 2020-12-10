@@ -8,6 +8,5 @@
 [ "$1" = "music" ] && ./tool.sh main_ref.txt "^=MUSIC .*=$" "=" && exit 0
 [ "$1" = "tags" ] && ./tool.sh main_ref.txt "^=.*=$" "=" && exit 0
 [ "$1" = "json" ] && ./tool.sh main_ref.txt "^{.*},$" "" && exit 0
-[ "$1" = "scenes" ] && grep "^\*\*\ .*\ \*\*" main_ref.txt | sed -E "s/\*\*//g" | tr -d ' ' > scenes && exit 0
 
 cat $1 | grep -o "$2" | sort -r | tr -d "$3" |uniq -c
