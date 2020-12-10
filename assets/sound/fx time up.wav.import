@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fx time up.wav-d273ed84a10cc983b3fdd55317a3ca39.sample"
+
+[deps]
+
+source_file="res://assets/sound/fx time up.wav"
+dest_files=[ "res://.import/fx time up.wav-d273ed84a10cc983b3fdd55317a3ca39.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

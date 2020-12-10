@@ -167,7 +167,7 @@ _global_script_class_icons={
 config/name="Displaced"
 run/main_scene="res://files/scenes/Menu.tscn"
 config/use_custom_user_dir=true
-boot_splash/image="res://assets/images/backgrounds/loading.png"
+boot_splash/image="res://assets/images/bg/loading.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://assets/images/gui/timesphere.png"
 
@@ -175,8 +175,7 @@ config/icon="res://assets/images/gui/timesphere.png"
 
 variables="*res://core/variables.gd"
 events="*res://assets/data/eventdata.gd"
-images="*res://assets/data/ResourceImages.gd"
-audio="*res://assets/data/ResourceAudio.gd"
+resources="*res://assets/data/ResourceLoader.gd"
 Enemydata="*res://assets/data/enemydata.gd"
 Effectdata="*res://assets/data/Effects.gd"
 Skillsdata="*res://assets/data/Skills.gd"

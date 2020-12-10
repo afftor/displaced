@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/sprites/rose.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/sprite/rose.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/UpgradeBorder.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/buildings/upgrade_bridge.png" type="Texture" id=11]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=13]
 [ext_resource path="res://FoodConvert.tscn" type="PackedScene" id=14]
 [ext_resource path="res://files/scenes/Questlog.tscn" type="PackedScene" id=15]
+
 
 
 

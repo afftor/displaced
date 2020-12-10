@@ -2,13 +2,13 @@
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextScene/TextSystem.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/backgrounds/villagenight.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/sprites/Arron.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/sprites/eyes/arron_eyes1.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/sprites/eyes/arron_eyes2.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/sprites/eyes/arron_eyes3.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/sprites/eyes/arron_eyes4.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/sprites/eyes/arron_eyes5.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/bg/villagenight.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/sprite/arron.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/sprite/eyes/arron_eyes1.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/sprite/eyes/arron_eyes2.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/sprite/eyes/arron_eyes3.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/sprite/eyes/arron_eyes4.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/sprite/eyes/arron_eyes5.png" type="Texture" id=9]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=10]
 [ext_resource path="res://files/SFX/white.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/text scene/textfieldpanel.png" type="Texture" id=12]
@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/text scene/namepanel.png" type="Texture" id=17]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=18]
-[ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/portrait/ArronNeutral.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/text scene/portraitpanel.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=22]
@@ -101,6 +101,9 @@ margin_bottom = 1080.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CharImage" type="TextureRect" parent="."]
 margin_left = 193.0
@@ -108,6 +111,9 @@ margin_right = 1727.0
 margin_bottom = 1080.0
 texture = ExtResource( 4 )
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CharImage"]
 position = Vector2( 767, 540 )
