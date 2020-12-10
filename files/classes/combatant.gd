@@ -569,23 +569,23 @@ func sprite():
 
 func portrait():
 	if icon != null:
-		return images.portraits[icon]
-	return null
+		# TODO
+		return resources.get_res(icon)
 
 func combat_portrait():
 	if combaticon != null:
-		return images.combatportraits[combaticon]
-	return null
+		# TODO
+		return resources.get_res(combaticon)
 
 func combat_full_portrait():
 	if combaticon != null:
-		return images.combatfullpictures[combaticon]
-	return null
+		# TODO
+		return resources.get_res(combaticon)
 
 func portrait_circle():
 	if combaticon != null:
-		return images.circleportraits[combaticon]
-	return null
+		# TODO
+		return resources.get_res(combaticon)
 
 #func createtrait(data, type = 'starter'):
 #	var array = []

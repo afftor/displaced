@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/erotheme.ogg-7500311061f0c72c6a45320ebf9dedf6.oggstr"
+
+[deps]
+
+source_file="res://assets/music/erotheme.ogg"
+dest_files=[ "res://.import/erotheme.ogg-7500311061f0c72c6a45320ebf9dedf6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

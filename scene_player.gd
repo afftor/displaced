@@ -1,11 +1,16 @@
 extends Control
 
-func _on_Button_pressed():
-	$FileDialog.popup();
-
-
-func _on_FileDialog_file_selected(path):
-	globals.events_path = path.get_base_dir()
-	var nm = path.get_file().get_basename();
+func _ready() -> void:
+	$Button.disabled = true
+	$Button.connect("pressed", self, "button_pressed")
 	
-	globals.StartEventScene(nm, true);
+	$ItemList.clear()
+	for i in $TextSystem.scenes_map.keys():
+		$ItemList.add_item(i)
+	
+	yield($ItemList, "item_selected")
+	$Button.disabled = false
+
+func button_pressed() -> void:
+	$TextSystem.show()
+	$TextSystem.play_scene($ItemList.get_item_text($ItemList.get_selected_items()[0]))
