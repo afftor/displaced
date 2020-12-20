@@ -23,9 +23,6 @@
 [ext_resource path="res://files/scenes/Inventory.tscn" type="PackedScene" id=21]
 [ext_resource path="res://files/scenes/combat.tscn" type="PackedScene" id=22]
 
-
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 382, 39 )
@@ -59,6 +56,9 @@ margin_top = 102.0
 margin_right = 584.0
 margin_bottom = 650.0
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="areaspanel/ScrollContainer"]
 
@@ -326,4 +326,3 @@ margin_bottom = 841.0
 "pauseprocess",
 ] instance=ExtResource( 22 )]
 visible = false
-

@@ -5,7 +5,7 @@ extends Node
 #warning-ignore-all:unused_signal
 var CloseableWindowsArray = []
 var ShakingNodes = []
-var CurrentScreen = 'Town'
+var CurrentScreen = 'Map'
 
 var BeingAnimated = []
 var SystemMessageNode
@@ -14,6 +14,7 @@ var SystemMessageNode
 
 signal ScreenChanged
 signal BuildingEntered
+signal LocationEntered
 signal ItemObtained
 signal MaterialObtained
 signal ExplorationStarted
@@ -27,6 +28,12 @@ signal QuestStarted
 signal QuestCompleted
 signal Midday
 
+var map_node
+var village_node
+var explore_node
+var combat_node
+var scene_node
+var menu_node
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :

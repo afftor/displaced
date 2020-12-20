@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform float outline_width = 2.0;
 uniform vec4 outline_color : hint_color;
 uniform float opacity = 1.0;
+uniform float highlight = 0.0;
 
 void fragment() {
 	vec4 col = texture(TEXTURE, UV);
@@ -43,6 +44,6 @@ void fragment() {
 	maxa = max(a, maxa);
 	mina = min(a, mina);
 	
-	
+	col.rgb = mix(col.rgb, vec3(1.0), highlight);
 	COLOR = mix(col, outline_color, (maxa - mina)*opacity);
 }

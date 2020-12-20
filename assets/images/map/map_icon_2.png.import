@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Karta_0001s_0000s_0002_Peshera.png-eec6d86302ff23d3da219e8deeed3c43.stex"
+path="res://.import/map_icon_2.png-1e7bf3a2dbae70ff62f51fcf9f734e46.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/Karta_0001s_0000s_0002_Peshera.png"
-dest_files=[ "res://.import/Karta_0001s_0000s_0002_Peshera.png-eec6d86302ff23d3da219e8deeed3c43.stex" ]
+source_file="res://assets/images/map/map_icon_2.png"
+dest_files=[ "res://.import/map_icon_2.png-1e7bf3a2dbae70ff62f51fcf9f734e46.stex" ]
 
 [params]
 

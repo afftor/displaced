@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Karta_0000s_0003_4.png-084638e34d1e064919bdf1b1e239c33b.stex"
+path="res://.import/cloud_3.png-5e4252bda38bdda5d052883c2ab09f70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/Karta_0000s_0003_4.png"
-dest_files=[ "res://.import/Karta_0000s_0003_4.png-084638e34d1e064919bdf1b1e239c33b.stex" ]
+source_file="res://assets/images/map/cloud_3.png"
+dest_files=[ "res://.import/cloud_3.png-5e4252bda38bdda5d052883c2ab09f70.stex" ]
 
 [params]
 

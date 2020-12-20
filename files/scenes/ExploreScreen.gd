@@ -37,8 +37,9 @@ func show():
 #	state.heroes[1].mana = 10
 	UpdatePositions()
 	showexplorelist()
-	if state.currentarea != null && globals.explorationares[state.currentarea].stages < state.areaprogress[state.currentarea]:
-		updateexplorepanel(globals.explorationares[state.currentarea])
+	#2rework
+	if state.currentarea != null && Explorationdata.areas[state.currentarea].stages < state.areaprogress[state.currentarea]:
+		updateexplorepanel(Explorationdata.areas[state.currentarea])
 	else:
 		$AreaProgress.hide()
 
@@ -48,8 +49,8 @@ func hide():
 	state.CurBuild = '';
 	.hide()
 
-var SelectingPosition
 
+var SelectingPosition
 
 
 func selectfighter(pos):
@@ -79,7 +80,9 @@ func HeroSelected(hero):
 	state.combatparty[SelectingPosition] = hero.id
 	UpdatePositions()
 
+
 var encountercode
+
 
 func StartCombat(data):
 	var enemygroup = {}
@@ -103,6 +106,7 @@ func StartCombat(data):
 	$combat.encountercode = encountercode 
 	$combat.start_combat(enemies, area.level, area.category, music)
 	$combat.show()
+
 
 func makespecificgroup(group): #to remake
 	var enemies = Enemydata.predeterminatedgroups[group]
@@ -137,23 +141,23 @@ func makerandomgroup(enemygroup):#to remake
 			
 			if true:
 				#smart way
-				for i in combatparty:
-					if combatparty[i] != null:
+				for ii in combatparty:
+					if combatparty[ii] != null:
 						continue
-					if unit.aiposition == 'melee' && i in [1,2,3]:
-						temparray.append(i)
-					if unit.aiposition == 'ranged' && i in [4,5,6]:
-						temparray.append(i)
+					if unit.aiposition == 'melee' && ii in [1,2,3]:
+						temparray.append(ii)
+					if unit.aiposition == 'ranged' && ii in [4,5,6]:
+						temparray.append(ii)
 				
 				if temparray.size() <= 0:
-					for i in combatparty:
-						if combatparty[i] == null:
-							temparray.append(i)
+					for ii in combatparty:
+						if combatparty[ii] == null:
+							temparray.append(ii)
 			else:
 				#stupid way
-				for i in combatparty:
-					if combatparty[i] != null:
-						temparray.append(i)
+				for ii in combatparty:
+					if combatparty[ii] != null:
+						temparray.append(ii)
 			
 			
 			
@@ -164,10 +168,15 @@ func makerandomgroup(enemygroup):#to remake
 	var res = [combatparty.duplicate()]
 	return res
 
+
 func ReturnToVillage():
 	hide()
 	input_handler.CurrentScreen = 'Town'
 
+
+func ReturnToMap():
+	hide()
+	input_handler.CurrentScreen = 'Map'
 
 
 func UpdatePositions():
@@ -192,7 +201,7 @@ func openinventory(hero):
 #	var container
 #	globals.ClearContainer(container)
 #	#what was this? and for what? did you forget to set container up?
-#	for i in globals.explorationares:
+#	for i in Explorationdata.areas:
 #		var check = true
 #		for k in i.requirements:
 #			if state.valuecheck(k) == false:
@@ -203,18 +212,27 @@ func openinventory(hero):
 #		newbutton.connect("pressed", self, "startexploration", [i])
 
 #exploration vars
+var location
 var area
 var stage
 var period
 
+func set_location(newloc):
+	location = newloc
+	if typeof(Explorationdata.locations[location].background) == TYPE_STRING:
+		$BackGround.texture = images.backgrounds[Explorationdata.locations[location].background]
+	else:
+		$BackGround.texture = Explorationdata.locations[location].background
+	
+
 func showexplorelist():
 	globals.ClearContainer($areaspanel/ScrollContainer/VBoxContainer)
-	for i in globals.explorationares.values():
-		if state.checkreqs(i.requirements) == false || (state.areaprogress.has(i.code) && state.areaprogress[i.code] >= i.stages && i.stages != 0):
-			continue
+	for i in Explorationdata.areas.values():
+		if i.category != location : continue
+		if !Explorationdata.check_area_avail(i): continue
 		var newbutton = globals.DuplicateContainerTemplate($areaspanel/ScrollContainer/VBoxContainer)
-		newbutton.get_node("Label").text = i.name
-		newbutton.connect("pressed",self,'updateexplorepanel', [i])
+		newbutton.get_node("Label").text = "%s - %d lv." % [i.name, i.level]
+		newbutton.connect("pressed", self, 'updateexplorepanel', [i])
 
 
 func updateexplorepanel(newarea = null):
@@ -222,8 +240,8 @@ func updateexplorepanel(newarea = null):
 	input_handler.ShowGameTip('explore')
 	if newarea != null:
 		area = newarea
-	else:
-		area = newarea
+#	else:
+#		area = newarea
 	if state.areaprogress.has(area.code):
 		stage = state.areaprogress[area.code]
 	else:
@@ -242,6 +260,7 @@ func updateexplorepanel(newarea = null):
 		text = tr("AREAISENDLESS")
 	$AreaProgress/Label2.text = text
 
+
 func startexploration():
 	period = 'fight'
 	stage += 1
@@ -249,6 +268,7 @@ func startexploration():
 		StartCombat(area.stagedenemies[stage])
 	else:
 		StartCombat(area.enemygroups)
+
 
 func wincontinue():
 	state.areaprogress[area.code] = stage
@@ -263,11 +283,13 @@ func wincontinue():
 	else:
 		updateexplorepanel(area)
 
+
 func levelupscheck():
 	for i in state.heroes.values():
 		if i.recentlevelups > 0:
 			levelupwindow(i)
 			return
+
 
 func levelupwindow(character):
 	$LevelupTrait.levelup(character)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/map/map_icon_2.png" type="Texture" id=1]
+[ext_resource path="res://files/scenes/map/location_template.gd" type="Script" id=3]
+
+[node name="loc_name" type="TextureButton"]
+margin_left = 678.094
+margin_top = 355.749
+margin_right = 907.094
+margin_bottom = 552.749
+texture_normal = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clouds" type="Control" parent="."]
+margin_left = -1.67023
+margin_right = 38.3298
+margin_bottom = 40.0

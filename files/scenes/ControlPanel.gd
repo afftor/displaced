@@ -1,0 +1,82 @@
+extends Control
+
+onready var BS = $BlackScreen;
+
+func _ready():
+	input_handler.SystemMessageNode = $SystemMessageLabel
+	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
+	$ControlPanel/Options.connect("pressed",self, 'openmenu')
+	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
+	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
+
+
+func _process(delta):
+	$ControlPanel/Gold.text = str(state.money)
+	$ControlPanel/Food.text = str(state.food)
+	
+	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
+
+
+func GameOverShow():
+	$GameOverPanel.show()
+	input_handler.UnfadeAnimation($GameOverPanel, 2)
+	input_handler.StopMusic(true)
+	input_handler.PlaySound("defeat")
+
+
+func GameOver():
+	globals.CurrentScene.queue_free()
+	globals.ChangeScene('menu')
+
+
+func openmenu():
+	if !$MenuPanel.visible:
+		$MenuPanel.show()
+	else:
+		$MenuPanel.hide()
+
+func openherolist():
+	if $HeroList.visible == false:
+		$HeroList.open()
+	else:
+		$HeroList.hide()
+
+
+func openinventory(hero = null):
+	$Inventory.open('hero', hero)
+
+
+func openinventorytrade():
+	$Inventory.open("shop")
+
+
+func FadeToBlackAnimation(time = 1):
+	input_handler.UnfadeAnimation($BlackScreen, time)
+	input_handler.emit_signal("ScreenChanged")
+	input_handler.FadeAnimation($BlackScreen, time, time)
+
+
+var itemicon = preload("res://files/scenes/ItemIcon.tscn")
+
+func flyingitemicon(taskbar, icon):
+	var x = itemicon.instance()
+	add_child(x)
+	x.texture = icon
+	x.rect_global_position = taskbar.rect_global_position
+	input_handler.PlaySound("itemget")
+	input_handler.ResourceGetAnimation(x, taskbar.rect_global_position, $ControlPanel/Inventory.rect_global_position)
+	yield(get_tree().create_timer(0.7), 'timeout')
+	x.queue_free()
+
+
+func _on_Herolist_pressed():
+	globals.ClearContainer($HeroList/VBoxContainer)
+	for i in state.characters:
+		var tmp = state.heroes[i]
+		if !tmp.unlocked: continue
+		var newbutton = globals.DuplicateContainerTemplate($HeroList/VBoxContainer)
+		newbutton.text = tmp.name
+		newbutton.connect("pressed",self,'OpenHeroTab', [tmp])
+
+func OpenHeroTab(hero):
+	$HeroPanel.open(hero)

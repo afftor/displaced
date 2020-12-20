@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Karta_0001s_0000s_0008_Hram.png-606bf660e03774be4c24f9034d7284c6.stex"
+path="res://.import/map_full.png-686910b6fb5652774fcd81176c715371.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/Karta_0001s_0000s_0008_Hram.png"
-dest_files=[ "res://.import/Karta_0001s_0000s_0008_Hram.png-606bf660e03774be4c24f9034d7284c6.stex" ]
+source_file="res://assets/images/map/map_full.png"
+dest_files=[ "res://.import/map_full.png-686910b6fb5652774fcd81176c715371.stex" ]
 
 [params]
 

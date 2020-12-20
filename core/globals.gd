@@ -14,7 +14,8 @@ var EventList = events.checks
 
 var scenedict = {
 	menu = "res://files/scenes/Menu.tscn",
-	town = "res://files/scenes/MainScreen.tscn"
+	town = "res://files/scenes/MainScreen.tscn",
+	map = "res://files/scenes/map/map.tscn"
 }
 
 var events_path = "res://assets/data/events"
@@ -100,7 +101,6 @@ func settings_load():
 	var settings = config.get_section_keys("settings") 
 	for i in settings:
 		globalsettings[i] = config.get_value("settings", i, null)
-	
 	#updatevolume
 	var counter = 0
 	for i in ['master','music','sound']:
@@ -151,9 +151,12 @@ func _ready():
 #	OS.window_size = Vector2(1280,720)
 #	OS.window_position = Vector2(300,0)
 	randomize()
-	rng.randomize()				
+	rng.randomize()
 	#Settings and folders
 	settings_load()
+	OS.window_size = globalsettings.window_size
+	OS.window_position = globalsettings.window_pos
+
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true
@@ -247,6 +250,23 @@ func check_signal(sg_name, arg = null):
 			StartEventScene(e)
 			return
 
+func check_signal_test(sg_name, arg = null):
+	var events_to_check := []
+	if arg != null:
+		if typeof(events.signals[sg_name]) == TYPE_ARRAY:
+			events_to_check = events.signals[sg_name]
+		elif events.signals[sg_name].has(arg):
+			events_to_check = events.signals[sg_name][arg]
+		else: 
+			events_to_check = []
+	else:
+		events_to_check = events.signals[sg_name]
+	
+	for e in events_to_check:
+		if SimpleEventCheck(e): #mb add priority sorting
+			return e
+	return null
+
 func SimpleEventCheck(event):
 	if state.OldEvents.has(event):
 		return false
@@ -271,7 +291,7 @@ func LoadEvent(name):
 func StartEventScene(name, debug = false, line = 0):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
-	var scene = input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
+	var scene = input_handler.scene_node #input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
@@ -707,7 +727,7 @@ func LoadGame(filename):
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
 	CurrentScene.queue_free()
-	ChangeScene('town');
+	ChangeScene('map');
 	yield(self, "scene_changed")
 	
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
@@ -715,8 +735,6 @@ func LoadGame(filename):
 	file.close()
 	state.deserialize(savedict)
 	CurrentScene.buildscreen()
-	for i in state.tasks:
-		CurrentScene.buildcounter(i)
 	
 	if state.CurBuild != '' and state.CurBuild != null:
 		CurrentScene.get_node(state.CurBuild).show()
