@@ -6,8 +6,8 @@
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/backgrounds/forge.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/sprites/EmberHappy.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/bg/forge.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/portrait/EmberHappy.png" type="Texture" id=8]
 [ext_resource path="res://files/scenes/Clickable_Sprite.gd" type="Script" id=9]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=11]
@@ -27,6 +27,8 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/stone.jpg" type="Texture" id=27]
+
+
 
 
 

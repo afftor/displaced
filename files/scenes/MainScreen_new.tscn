@@ -2,9 +2,9 @@
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/scenes/MainScreen_new.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/backgrounds/sky.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/backgrounds/sky_night.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/backgrounds/town.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/bg/unused/sky.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/bg/unused/sky_night.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/bg/unused/town.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/buildings/mine.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/buildings/bridge.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/buildings/house.png" type="Texture" id=8]
@@ -31,6 +31,9 @@
 [ext_resource path="res://assets/images/gui/timesphere.png" type="Texture" id=41]
 [ext_resource path="res://files/Buildings/Blacksmith.tscn" type="PackedScene" id=63]
 [ext_resource path="res://files/Buildings/TownHall.tscn" type="PackedScene" id=64]
+
+
+
 
 [node name="MainScreen" type="Control"]
 theme = ExtResource( 1 )
