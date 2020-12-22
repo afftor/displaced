@@ -1,23 +1,20 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/scenes/MainScreen_new.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/bg/unused/sky.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/bg/unused/sky_night.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/bg/unused/town.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/buildings/mine.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/buildings/bridge.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/buildings/house.png" type="Texture" id=8]
+[ext_resource path="res://files/scenes/building_template.gd" type="Script" id=6]
+[ext_resource path="res://assets/images/buildings/mine.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/buildings/farm.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/buildings/sawmill.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/buildings/city_hall.png" type="Texture" id=11]
-[ext_resource path="res://files/scenes/Clickable_Sprite.gd" type="Script" id=12]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/buildings/forge_2.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/buildings/tavern.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/buildings/market.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/buildings/gate.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/buildings/gate_hl.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/timepanel.png" type="Texture" id=31]
 [ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=32]
 [ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=33]
@@ -31,9 +28,6 @@
 [ext_resource path="res://assets/images/gui/timesphere.png" type="Texture" id=41]
 [ext_resource path="res://files/Buildings/Blacksmith.tscn" type="PackedScene" id=63]
 [ext_resource path="res://files/Buildings/TownHall.tscn" type="PackedScene" id=64]
-
-
-
 
 [node name="MainScreen" type="Control"]
 theme = ExtResource( 1 )
@@ -65,131 +59,164 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mine" type="TextureRect" parent="Background"]
-margin_left = 90.0
-margin_top = 405.0
-margin_right = 348.0
-margin_bottom = 663.0
-texture = ExtResource( 6 )
-
-[node name="bridge" type="TextureRect" parent="Background"]
-margin_left = 1670.0
-margin_top = 386.0
-margin_right = 1923.0
-margin_bottom = 604.0
-texture = ExtResource( 7 )
-
-[node name="house" type="TextureRect" parent="Background"]
-margin_left = 1041.0
-margin_top = 391.0
-margin_right = 1203.0
-margin_bottom = 499.0
-texture = ExtResource( 8 )
-
-[node name="farm" type="TextureRect" parent="Background"]
-margin_left = 1119.0
-margin_top = 455.0
-margin_right = 1554.0
-margin_bottom = 658.0
-texture = ExtResource( 9 )
-
-[node name="lumbermill" type="TextureRect" parent="Background"]
-margin_left = 451.0
-margin_top = 769.0
-margin_right = 938.0
-margin_bottom = 1079.0
-texture = ExtResource( 10 )
-
-[node name="TownHallNode" type="TextureButton" parent="."]
-margin_left = 638.0
-margin_top = 216.0
-margin_right = 1090.0
-margin_bottom = 573.0
+[node name="townhall" type="TextureButton" parent="."]
+margin_left = 636.102
+margin_top = 213.816
+margin_right = 1088.1
+margin_bottom = 570.816
 texture_normal = ExtResource( 11 )
-stretch_mode = 4
-script = ExtResource( 12 )
-charname = "erika"
-inside_node_name = "TownHall"
-is_char = false
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="QuestActive" type="TextureRect" parent="TownHallNode"]
+[node name="QuestActive" type="TextureRect" parent="townhall"]
+margin_left = 339.708
+margin_top = -31.8903
+margin_right = 473.708
+margin_bottom = 91.1097
+texture = ExtResource( 13 )
+
+[node name="market" type="TextureButton" parent="."]
+margin_left = 222.685
+margin_top = 495.09
+margin_right = 674.685
+margin_bottom = 918.09
+texture_normal = ExtResource( 16 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestActive" type="TextureRect" parent="market"]
+margin_left = 222.668
+margin_top = -77.1963
+margin_right = 356.668
+margin_bottom = 45.8037
+texture = ExtResource( 13 )
+
+[node name="bridge" type="TextureButton" parent="."]
+margin_left = 1569.76
+margin_top = 518.503
+margin_right = 1888.76
+margin_bottom = 868.503
+texture_normal = ExtResource( 18 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestActive" type="TextureRect" parent="bridge"]
+margin_left = 125.893
+margin_top = -92.4714
+margin_right = 259.893
+margin_bottom = 30.5286
+texture = ExtResource( 13 )
+
+[node name="mine" type="TextureButton" parent="."]
+margin_left = 90.6535
+margin_top = 402.904
+margin_right = 409.653
+margin_bottom = 752.904
+texture_normal = ExtResource( 7 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestActive" type="TextureRect" parent="mine"]
+margin_left = 200.728
+margin_top = -37.2357
+margin_right = 334.728
+margin_bottom = 85.7643
+texture = ExtResource( 13 )
+
+[node name="farm" type="TextureButton" parent="."]
+margin_left = 1119.19
+margin_top = 455.14
+margin_right = 1554.19
+margin_bottom = 805.14
+texture_normal = ExtResource( 9 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestActive" type="TextureRect" parent="farm"]
+margin_left = 182.102
+margin_top = -59.912
+margin_right = 316.102
+margin_bottom = 63.088
+texture = ExtResource( 13 )
+
+[node name="forge" type="TextureButton" parent="."]
+margin_left = 557.702
+margin_top = 399.123
+margin_right = 876.702
+margin_bottom = 749.123
+texture_normal = ExtResource( 14 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestActive" type="TextureRect" parent="forge"]
+margin_left = 274.0
+margin_top = 18.0
+margin_right = 408.0
+margin_bottom = 141.0
+texture = ExtResource( 13 )
+
+[node name="tavern" type="TextureButton" parent="."]
+margin_left = 1406.62
+margin_top = 642.665
+margin_right = 1857.62
+margin_bottom = 992.665
+texture_normal = ExtResource( 15 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestActive" type="TextureRect" parent="tavern"]
+margin_left = 396.726
+margin_top = 19.7818
+margin_right = 530.726
+margin_bottom = 142.782
+texture = ExtResource( 13 )
+
+[node name="mill" type="TextureButton" parent="."]
+margin_left = 778.66
+margin_top = 776.495
+margin_right = 1265.66
+margin_bottom = 1126.5
+texture_normal = ExtResource( 10 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestActive" type="TextureRect" parent="mill"]
 margin_left = 272.0
 margin_top = 18.0
 margin_right = 406.0
 margin_bottom = 141.0
 texture = ExtResource( 13 )
 
-[node name="BlacksmithNode" type="TextureButton" parent="."]
-margin_left = 562.0
-margin_top = 406.0
-margin_right = 875.0
-margin_bottom = 752.0
-texture_normal = ExtResource( 14 )
-stretch_mode = 4
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-charname = "ember"
-inside_node_name = "blacksmith"
-is_char = false
+[node name="TownHall" parent="." instance=ExtResource( 64 )]
+visible = false
 
-[node name="QuestActive" type="TextureRect" parent="BlacksmithNode"]
-margin_left = 201.0
-margin_top = 43.0
-margin_right = 326.0
-margin_bottom = 165.0
-mouse_filter = 2
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 6
-
-[node name="TavernNode" type="TextureButton" parent="."]
-margin_left = 1407.0
-margin_top = 642.0
-margin_right = 1858.0
-margin_bottom = 963.0
-texture_normal = ExtResource( 15 )
-stretch_mode = 4
-
-[node name="WorkBuildNode" type="TextureButton" parent="."]
-margin_left = 225.0
-margin_top = 493.0
-margin_right = 540.0
-margin_bottom = 916.0
-texture_normal = ExtResource( 16 )
-stretch_mode = 4
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-charname = "flak"
-inside_node_name = "SlaveMarket"
-is_char = false
-
-[node name="QuestActive" type="TextureRect" parent="WorkBuildNode"]
-margin_left = 174.0
-margin_top = -42.0
-margin_right = 299.0
-margin_bottom = 80.0
-mouse_filter = 2
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 6
-
-[node name="Gate" type="TextureButton" parent="."]
-margin_left = 1570.0
-margin_top = 519.0
-margin_right = 1764.0
-margin_bottom = 682.0
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 19 )
+[node name="Blacksmith" parent="." instance=ExtResource( 63 )]
+visible = false
 
 [node name="TimeNode" type="TextureRect" parent="."]
+visible = false
 margin_right = 234.0
 margin_bottom = 125.0
 texture = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Date" type="Label" parent="TimeNode"]
 margin_left = 11.0
@@ -263,16 +290,6 @@ margin_right = 566.0
 margin_bottom = 410.0
 bbcode_enabled = true
 scroll_following = true
-
-[node name="blacksmith" parent="." groups=[
-"pauseprocess",
-] instance=ExtResource( 63 )]
-visible = false
-
-[node name="TownHall" parent="." groups=[
-"pauseprocess",
-] instance=ExtResource( 64 )]
-visible = false
 
 [node name="VotePanel" type="Panel" parent="."]
 visible = false

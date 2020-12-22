@@ -220,7 +220,7 @@ var period
 func set_location(newloc):
 	location = newloc
 	if typeof(Explorationdata.locations[location].background) == TYPE_STRING:
-		$BackGround.texture = images.backgrounds[Explorationdata.locations[location].background]
+		$BackGround.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)#images.backgrounds[Explorationdata.locations[location].background]
 	else:
 		$BackGround.texture = Explorationdata.locations[location].background
 	
@@ -250,7 +250,7 @@ func updateexplorepanel(newarea = null):
 	state.currentarea = area.code
 	period = 'prefight'
 	$AreaProgress/Label.text = area.name
-	$AreaProgress/TextureRect.texture = images.backgrounds[area.category]
+	$AreaProgress/TextureRect.texture = resources.get_res("bg/%s" % area.category)#images.backgrounds[area.category]
 	var text = ''
 	if area.stages > 0:
 		$AreaProgress/ProgressBar.value = globals.calculatepercent(stage, area.stages)

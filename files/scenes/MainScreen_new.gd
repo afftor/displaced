@@ -10,7 +10,16 @@ var previouspeed
 var daycolorchange = false
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 
-
+var binded_events = {
+	bridge = null,
+	forge = null,
+	tavern = null,
+	mine = null,
+	farm = null,
+	mill = null,
+	townhall = null,
+	market = null,
+}
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
@@ -25,7 +34,6 @@ func _ready():
 		i.connect("pressed",self,'changespeed',[i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
-	$Gate.connect("pressed",self,'ReturnToMap')
 	
 	######Vote stuff
 	
@@ -36,11 +44,11 @@ func _ready():
 	####
 	
 	if debug == true:
-		$ExploreScreen/combat/ItemPanel/debugvictory.show()
-		state.OldEvents['Market'] = 0
-		state.townupgrades['bridge'] = 1
-		state.townupgrades.blacksmith = 0
-		state.OldEvents['bridge'] = 0
+#		$ExploreScreen/combat/ItemPanel/debugvictory.show()
+#		state.OldEvents['Market'] = 0
+#		state.townupgrades['bridge'] = 1
+#		state.townupgrades.blacksmith = 0
+#		state.OldEvents['bridge'] = 0
 		state.MakeQuest("demofinish")
 		state.completedquests.append('elves')
 		#state.FinishQuest('elves')
@@ -88,31 +96,34 @@ func _ready():
 	
 	
 #	globals.call_deferred('EventCheck');
-	changespeed($"TimeNode/0speed", false)
+#	changespeed($"TimeNode/0speed", false)
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
 	input_handler.connect("EventFinished", self, "buildscreen")
 	#$TutorialNode.activatetutorial(state.currenttutorial)
 	buildscreen()
 	yield(get_tree(),'idle_frame')
-	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
-		EnvironmentColor('morning', true)
-	elif floor(state.daytime) >= floor(variables.TimePerDay/4) && floor(state.daytime) < floor(variables.TimePerDay/4*2):
-		EnvironmentColor('day', true)
-	elif floor(state.daytime) >= floor(variables.TimePerDay/4*2) && floor(state.daytime) < floor(variables.TimePerDay/4*3):
-		EnvironmentColor('evening', true)
-	elif floor(state.daytime) >= floor(variables.TimePerDay/4*3) && floor(state.daytime) < floor(variables.TimePerDay):
-		EnvironmentColor('night',true)
+#	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
+#		EnvironmentColor('morning', true)
+#	elif floor(state.daytime) >= floor(variables.TimePerDay/4) && floor(state.daytime) < floor(variables.TimePerDay/4*2):
+#		EnvironmentColor('day', true)
+#	elif floor(state.daytime) >= floor(variables.TimePerDay/4*2) && floor(state.daytime) < floor(variables.TimePerDay/4*3):
+#		EnvironmentColor('evening', true)
+#	elif floor(state.daytime) >= floor(variables.TimePerDay/4*3) && floor(state.daytime) < floor(variables.TimePerDay):
+#		EnvironmentColor('night',true)
 	#EnvironmentColor('night', true)
 	set_process(true)
+
 
 func VotePanelShow(quest):
 	if quest == 'demofinish' && state.votelinksseen == false && debug == false:
 		$VotePanel.show()
 		state.votelinksseen = true
 
+
 func VoteLinkOpen():
 	OS.shell_open("https://forms.gle/fADzTnSbg94HauBP8")
 	OS.shell_open("https://forms.gle/5qHPJ57ngB61LuBq6")
+
 
 func VotePanelClose():
 	$VotePanel.hide()
@@ -123,148 +134,158 @@ func buildscreen(empty = null):
 	for build in globals.upgradelist:
 		var node = get_node(build)
 		if node != null: node.build_icon()
+		
+		binded_events[build] = globals.check_signal_test('BuildingEntered', build)
+		
+		if binded_events[build] != null:
+			node.set_active()
+		else:
+			node.set_inactive()
 
 
 func _process(delta):
 	if self.visible == false:
 		return
-	$TimeNode/HidePanel.visible = gamepaused_nonplayer
-	settime()
-	
-	#buildscreen()
-	
-	if gamepaused == false:
-		for i in get_tree().get_nodes_in_group("pauseprocess"):
-			if i.visible == true:
-				previouspeed = gamespeed
-				changespeed(timebuttons[0], false)
-				gamepaused = true
-				gamepaused_nonplayer = true
+#	$TimeNode/HidePanel.visible = gamepaused_nonplayer
+#	settime()
+#
+#	#buildscreen()
+#
+#	if gamepaused == false:
+#		for i in get_tree().get_nodes_in_group("pauseprocess"):
+#			if i.visible == true:
+#				previouspeed = gamespeed
+#				changespeed(timebuttons[0], false)
+#				gamepaused = true
+#				gamepaused_nonplayer = true
+#	else:
+#		var allnodeshidden = true
+#		for i in get_tree().get_nodes_in_group("pauseprocess"):
+#			if i.visible == true:
+#				allnodeshidden = false
+#				break
+#
+#
+#
+#		if allnodeshidden == true && gamepaused_nonplayer == true:
+#			restoreoldspeed(previouspeed)
+#			gamepaused_nonplayer = false
+#			gamepaused = false
+#
+#	if gamespeed != 0:
+#		state.daytime += delta * gamespeed
+#
+#		for i in state.heroes.values():
+#			i.regen_tick(delta*gamespeed)
+#
+#		movesky()
+#		if daycolorchange == false:
+#
+#			if floor(state.daytime) == 0.0:
+#				EnvironmentColor('morning')
+#				yield(get_tree().create_timer(1), "timeout")
+#				input_handler.PlaySoundIsolated("morning", 1) #prevents multiple sounds stacking
+#
+#			elif floor(state.daytime) == floor(variables.TimePerDay/4):
+#				EnvironmentColor('day')
+#			elif floor(state.daytime) == floor(variables.TimePerDay/4*2):
+#				EnvironmentColor('evening')
+#			elif floor(state.daytime) == floor(variables.TimePerDay/4*3):
+#				EnvironmentColor('night')
+
+
+#func movesky():
+#	$Sky.region_rect.position.x += gamespeed
+#	if $Sky.region_rect.position.x > 3500:
+#		$Sky.region_rect.position.x = -500
+#
+#var currenttime
+
+#
+#func changespeed(button, playsound = true):
+#	var oldvalue = gamespeed
+#	var newvalue = button.get_meta('value')
+#	for i in timebuttons:
+#		i.pressed = i == button
+#	gamespeed = newvalue
+#	var soundarray = ['time_stop', 'time_start', 'time_up']
+#	if oldvalue != newvalue && playsound:
+#		input_handler.PlaySound(soundarray[int(button.name[0])])
+#
+#	gamepaused = newvalue == 0
+#	input_handler.emit_signal("SpeedChanged", gamespeed)
+#
+#
+#func restoreoldspeed(value):
+#	for i in timebuttons:
+#		if i.get_meta("value") == value:
+#			changespeed(i, false)
+
+#
+#func settime():
+#	if state.daytime > variables.TimePerDay:
+#		state.date += 1
+#		state.daytime = 0
+#	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
+#	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
+#
+#func EnvironmentColor(time, instant = false):
+#	var morning = Color8(229,226,174)
+#	var day = Color8(255,255,255)
+#	var night = Color8(73,73,91)
+#	var evening = Color8(120, 96, 96)
+#	var tween = input_handler.GetTweenNode(self)
+#	var array = [$Background, $Sky, $WorkBuildNode, $TavernNode, $BlacksmithNode, $Gate, $TownHallNode]
+#
+#	var currentcolor
+#	var nextcolor
+#
+#	var changetime = 2
+#
+#	if instant == true:
+#		changetime = 0.01
+#
+#	if currenttime != time:
+#		daycolorchange = true
+#		match time:
+#			'morning':
+#				currentcolor = night
+#				nextcolor = morning
+#				#tween.inte
+#				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,1), Color(1,1,1,0), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#			'day':
+#				currentcolor = morning
+#				nextcolor = day
+#			'evening':
+#				currentcolor = day
+#				nextcolor = evening
+#				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,0), Color(1,1,1,0.5), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#			'night':
+#				currentcolor = evening
+#				nextcolor = night
+#				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,0.5), Color(1,1,1,1), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#		currenttime = time
+#		for i in array:
+#			tween.interpolate_property(i, 'modulate', currentcolor, nextcolor, changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#			tween.start()
+#		tween.interpolate_callback(self, changetime, 'finishcolorchange')
+#
+#
+#func finishcolorchange():
+#	daycolorchange = false
+
+
+func building_entered(b_name):
+	if binded_events[b_name] != null:
+		globals.StartEventScene(binded_events[b_name])
+		yield(input_handler, "EventFinished")
+		buildscreen()
 	else:
-		var allnodeshidden = true
-		for i in get_tree().get_nodes_in_group("pauseprocess"):
-			if i.visible == true:
-				allnodeshidden = false
-				break
-		
-		
-		
-		if allnodeshidden == true && gamepaused_nonplayer == true:
-			restoreoldspeed(previouspeed)
-			gamepaused_nonplayer = false
-			gamepaused = false
-	
-	if gamespeed != 0:
-		state.daytime += delta * gamespeed
-		
-		for i in state.heroes.values():
-			i.regen_tick(delta*gamespeed)
-		
-		movesky()
-#		for i in state.tasks:
-#			i.time += delta*gamespeed
-#			updatecounter(i)
-#
-#			if i.time >= i.threshold:
-#				i.time -= i.threshold
-#				taskperiod(i)
-#				#call(i.function, i)
-#
-		if daycolorchange == false:
-			
-			if floor(state.daytime) == 0.0:
-				EnvironmentColor('morning')
-				yield(get_tree().create_timer(1), "timeout")
-				input_handler.PlaySoundIsolated("morning", 1) #prevents multiple sounds stacking
-				
-			elif floor(state.daytime) == floor(variables.TimePerDay/4):
-				EnvironmentColor('day')
-			elif floor(state.daytime) == floor(variables.TimePerDay/4*2):
-				EnvironmentColor('evening')
-			elif floor(state.daytime) == floor(variables.TimePerDay/4*3):
-				EnvironmentColor('night')
-
-
-func movesky():
-	$Sky.region_rect.position.x += gamespeed
-	if $Sky.region_rect.position.x > 3500:
-		$Sky.region_rect.position.x = -500
-
-var currenttime
-
-
-func changespeed(button, playsound = true):
-	var oldvalue = gamespeed
-	var newvalue = button.get_meta('value')
-	for i in timebuttons:
-		i.pressed = i == button
-	gamespeed = newvalue
-	var soundarray = ['time_stop', 'time_start', 'time_up']
-	if oldvalue != newvalue && playsound:
-		input_handler.PlaySound(soundarray[int(button.name[0])])
-	
-	gamepaused = newvalue == 0
-	input_handler.emit_signal("SpeedChanged", gamespeed)
-
-
-func restoreoldspeed(value):
-	for i in timebuttons:
-		if i.get_meta("value") == value:
-			changespeed(i, false)
-
-
-func settime():
-	if state.daytime > variables.TimePerDay:
-		state.date += 1
-		state.daytime = 0
-	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
-	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
-
-func EnvironmentColor(time, instant = false):
-	var morning = Color8(229,226,174)
-	var day = Color8(255,255,255)
-	var night = Color8(73,73,91)
-	var evening = Color8(120, 96, 96)
-	var tween = input_handler.GetTweenNode(self)
-	var array = [$Background, $Sky, $WorkBuildNode, $TavernNode, $BlacksmithNode, $Gate, $TownHallNode]
-	
-	var currentcolor
-	var nextcolor
-	
-	var changetime = 2
-	
-	if instant == true:
-		changetime = 0.01
-	
-	if currenttime != time:
-		daycolorchange = true
-		match time:
-			'morning':
-				currentcolor = night
-				nextcolor = morning
-				#tween.inte
-				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,1), Color(1,1,1,0), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			'day':
-				currentcolor = morning
-				nextcolor = day
-			'evening':
-				currentcolor = day
-				nextcolor = evening
-				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,0), Color(1,1,1,0.5), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			'night':
-				currentcolor = evening
-				nextcolor = night
-				tween.interpolate_property($NightSky, 'modulate', Color(1,1,1,0.5), Color(1,1,1,1), changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		currenttime = time
-		for i in array:
-			tween.interpolate_property(i, 'modulate', currentcolor, nextcolor, changetime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween.start()
-		tween.interpolate_callback(self, changetime, 'finishcolorchange')
-
-
-func finishcolorchange():
-	daycolorchange = false
-
+		match b_name:
+			'townhall': OpenTownhall()
+			'forge': openblacksmith()
+			'market': openmarket()
+			_: pass #todo
 
 
 func OpenTownhall():
@@ -282,17 +303,8 @@ func openblacksmith():
 func openherohiretab():
 	$herohire.show()
 
-
-#func BuildingOptions(building = {}):
-#	var node = $BuildingOptions
-#	var targetnode = building.node
-#	globals.ClearContainer($BuildingOptions/VBoxContainer)
-#	node.popup()
-#	var pos = targetnode.get_global_rect()
-#	pos = Vector2(pos.position.x, pos.end.y + 10)
-#	node.set_global_position(pos)
-
-
+func openmarket():
+	pass
 
 func ReturnToMap():
 	hide()

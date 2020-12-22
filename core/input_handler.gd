@@ -246,28 +246,20 @@ func StopTweenRepeat(node):
 #Music
 
 func SetMusic(res, delay = 0):
-	yield(get_tree().create_timer(delay), 'timeout')
-	musicraising = true
-	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
-	if musicnode.stream == res:
-		return
-	musicnode.stream = res
-	musicnode.play(0)
+	pass
+	# NOT WORKING
+#	yield(get_tree().create_timer(delay), 'timeout')
+#	musicraising = true
+#	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
+#	if musicnode.stream == res:
+#		return
+#	musicnode.stream = res
+#	musicnode.play(0)
+
 
 func StopMusic(instant = false):
 	musicfading = true
 
-func GetMusicNode():
-	var node = get_tree().get_root()
-	var musicnode
-	if node.has_node('music'):
-		musicnode = node.get_node('music')
-	else:
-		musicnode = AudioStreamPlayer.new()
-		musicnode.name = 'music'
-		musicnode.bus = 'Music'
-		node.call_deferred('add_child', musicnode)
-	return musicnode
 
 #Sounds
 

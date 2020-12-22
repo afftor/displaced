@@ -13,7 +13,11 @@ var itemidcounter := 0
 var heroidcounter := 0
 var money = 0
 var food = 50
-var townupgrades := {}
+var townupgrades := {
+	bridge = 1,
+	townhall = 1,
+	market = 1,
+}
 var town_save
 var heroes := {}
 var heroes_save
@@ -53,7 +57,7 @@ var location_unlock = {
 	cave = true,
 	forest = true,
 	village = true,
-	temple = true
+	temple = true,
 }
 var area_save
 var currentarea

@@ -2,11 +2,13 @@ extends TextureButton
 
 
 func _ready():
-	connect("mouse_entererd", self, 'hightlight', [true])
+	connect("mouse_entered", self, 'hightlight', [true])
 	connect("mouse_exited", self, 'hightlight', [false])
+	connect('pressed', self, 'onclick')
 	material = load("res://files/scenes/portret_shader.tres").duplicate();
-	material.set_shader_param('outline_width', 3.0)
+	material.set_shader_param('outline_width', 2.0)
 	hightlight(false)
+	$QuestActive.visible = false
 	build_icon()
 
 
@@ -19,17 +21,33 @@ func regenerate_click_mask():
 func build_icon():
 	if !state.townupgrades.has(name): 
 		visible = false
+#		regenerate_click_mask()
 		return
 	var data = globals.upgradelist[name]
-	var lvl_data = data[state.townupgrades[name]]
-	texture_normal = lvl_data.icon
+	var lvl_data = data.levels[state.townupgrades[name]]
+	texture_normal = lvl_data.node
 	regenerate_click_mask()
 	visible = true
+	#todo filling hint
 
+
+func play_upgrade_animation():
+	if !visible:
+		if !state.townupgrades.has(name):
+			print('error in upgrade data')
+	else:
+		input_handler.FadeAnimation(self, 1.0, 0)
+	var data = globals.upgradelist[name]
+	var lvl_data = data.levels[state.townupgrades[name]]
+	texture_normal = lvl_data.node
+	input_handler.UnfadeAnimation(self, 1.5, 1.0)
+	yield(get_tree().create_timer(2.5), 'timeout')
+	regenerate_click_mask()
 
 func set_active():
 #	is_active = true
 	visible = true
+	$QuestActive.visible = true
 #	set_process(true)
 #	material.set_shader_param('opacity', 0.8);
 
@@ -37,12 +55,15 @@ func set_active():
 func set_inactive():
 #	is_active = false
 #	set_process(false)
-	visible = false
+	$QuestActive.visible = false
 
 func hightlight(flag):
 	if flag:
 		material.set_shader_param('opacity', 0.9)
-		material.set_shader_param('highlight', 0.2)
+		material.set_shader_param('highlight', 0.1)
 	else:
 		material.set_shader_param('opacity', 0.0);
 		material.set_shader_param('highlight', 0.0)
+
+func onclick():
+	get_parent().building_entered(name)
