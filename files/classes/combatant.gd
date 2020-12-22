@@ -564,7 +564,7 @@ func has_status(status):
 #2fix next functions due to errors
 func sprite():
 #	if icon != null:
-	return images.sprites[id]
+	return resources.get_res(id)
 	return null
 
 func portrait():

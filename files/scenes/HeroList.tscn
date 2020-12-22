@@ -3,10 +3,11 @@
 [ext_resource path="res://assets/images/gui/universal/heroline.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/HeroList.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/universal/herolinesprite.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/portrait/ArronNeutral.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/charpanel/healthbar.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/charpanel/manabar.png" type="Texture" id=6]
 [ext_resource path="res://files/scenes/CharacterMenu.tscn" type="PackedScene" id=7]
+
 
 
 

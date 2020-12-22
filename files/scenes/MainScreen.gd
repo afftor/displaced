@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 var debug = true
 
@@ -32,7 +32,7 @@ func _ready():
 	$ControlPanel/Slavelist.connect('pressed',self,'SlavePanelShow')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
-	$Gate.connect("pressed",self,'explorescreen')
+	$Gate.connect("pressed",self,'ReturnToMap')
 	
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 	
@@ -496,9 +496,13 @@ func OpenHeroTab(hero):
 func openheroguild():
 	$HeroGuild.open()
 
-func explorescreen():
-	if state.townupgrades.has('bridge'):
-		$ExploreScreen.show()
-#		globals.call_deferred('EventCheck');
-	else:
-		input_handler.SystemMessage("Purchase 'Bridge' Upgrade first")
+#func explorescreen():
+#	if state.townupgrades.has('bridge'):
+#		$ExploreScreen.show()
+##		globals.call_deferred('EventCheck');
+#	else:
+#		input_handler.SystemMessage("Purchase 'Bridge' Upgrade first")
+
+func ReturnToMap():
+	hide()
+	input_handler.CurrentScreen = 'Map'

@@ -11,18 +11,18 @@ var votelinksseen = false
 #resources
 var itemidcounter := 0
 var heroidcounter := 0
-#var workeridcounter := 0
 var money = 0
 var food = 50
-var townupgrades := {}
+var townupgrades := {
+	bridge = 1,
+	townhall = 1,
+	market = 1,
+}
 var town_save
-#var workers := {}
-#var workers_save
 var heroes := {}
 var heroes_save
 var items := {}
 var items_save
-var tasks := []
 var materials := {} setget materials_set
 var lognode 
 var oldmaterials := {}
@@ -50,6 +50,15 @@ var decisions := []
 var activequests := []
 var completedquests := []
 var areaprogress := {}
+var location_unlock = {
+	dragon_mountains = true,
+	castle = true,
+	town = true,
+	cave = true,
+	forest = true,
+	village = true,
+	temple = true,
+}
 var area_save
 var currentarea
 var currenttutorial = 'tutorial1'
@@ -73,14 +82,11 @@ func revert():
 	votelinksseen = false
 	itemidcounter = 0
 	heroidcounter = 0
-#	workeridcounter = 0
 	money = 0
 	food = 50
 	townupgrades.clear()
-#	workers.clear()
 	reset_heroes()
 	items.clear()
-	tasks.clear()
 	materials.clear()
 	lognode = null
 	oldmaterials.clear()
@@ -89,7 +95,6 @@ func revert():
 	CurrentTextScene = null
 	CurrentScreen = null
 	CurrentLine = 0
-#	heroguild.clear()
 	OldEvents.clear()
 	CurEvent = "" #event name
 	CurBuild = ""
@@ -102,6 +107,15 @@ func revert():
 	currentarea = null
 	currenttutorial = 'tutorial1'
 	viewed_tips.clear()
+	location_unlock = {
+		dragon_mountains = false,
+		castle = false,
+		town = false,
+		cave = false,
+		forest = false,
+		village = false,
+		temple = false
+	}
 
 
 func pos_set(value):
@@ -142,35 +156,6 @@ func logupdate(text):
 	#lognode.bbcode_text += '\n' + 
 	lognode.bbcode_text = globals.TextEncoder(text)
 
-func assignworker(data):
-	data.worker.task = data
-	if data.instrument != null:
-		data.instrument.task = data
-	tasks.append(data)
-
-func stoptask(data):
-	data.worker.task = null
-	data.instrument.task = null
-	tasks.erase(data)
-
-func stopworkertask(worker):
-	var data = gettaskfromworker(worker)
-	if data != false:
-		stoptask(data)
-
-func gettaskfromworker(worker):
-	for i in tasks:
-		if i.worker == worker:
-			return i
-	return false
-
-func GetWorkerLimit():
-	var value
-	if townupgrades.has("houses") == false:
-		value = 3
-	else:
-		value = globals.upgradelist.houses.levels[townupgrades.houses].limitchange
-	return value
 
 func ProgressMainStage(stage = null):
 	if stage == null:
@@ -209,6 +194,7 @@ func StoreEvent(nm):
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
+	input_handler.map_node.update_map()
 	CurEvent = ""
 	keyframes.clear()
 
@@ -224,9 +210,10 @@ func if_has_property(prop, value):
 	return (tmp >= value)
 
 func if_has_hero(name):
-	for h in heroes.values():
-		if h.base == name: return true
-	return false
+	if !heroes.has(name) or !characters.has(name):
+		print("warning - error in data: wrong hero name %s" % name)
+		return false
+	return heroes[name].unlocked
 
 func if_has_material(mat, operant, val):
 	if !materials.has(mat): return false
@@ -342,12 +329,9 @@ func serialize():
 	tmp['heroes_save'] = {}
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
-	tmp['workers_save'] = {}
-#	for i in workers.keys():
-#		tmp['workers_save'][i] = inst2dict(workers[i])
 	
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'workeridcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
-	var arr2 = ['town_save', 'tasks', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
+	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
@@ -360,10 +344,6 @@ func deserialize(tmp:Dictionary):
 	tmp.erase('effects')
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
-#	workers.clear()
-#	for key in workers_save.keys():
-#		var t := dict2inst(workers_save[key])
-#		workers[key] = t
 	cleanup()
 	for key in heroes_save.keys():
 		heroes[key].deserialize(heroes_save[key])

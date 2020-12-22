@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Karta_0001s_0000s_0004_Derevnya.png-0c8f85ffcc2db16e5d58b5950947f667.stex"
+path="res://.import/map_icon_3.png-f4a805d016e6bb17cd801cf8b11bb325.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/Karta_0001s_0000s_0004_Derevnya.png"
-dest_files=[ "res://.import/Karta_0001s_0000s_0004_Derevnya.png-0c8f85ffcc2db16e5d58b5950947f667.stex" ]
+source_file="res://assets/images/map/map_icon_3.png"
+dest_files=[ "res://.import/map_icon_3.png-f4a805d016e6bb17cd801cf8b11bb325.stex" ]
 
 [params]
 

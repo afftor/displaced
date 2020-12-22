@@ -112,7 +112,8 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	turns = 0
 	en_level = level
 	rules.clear()
-	$Background.texture = images.backgrounds[background]
+#	$Background.texture = images.backgrounds[background]
+	$Background.texture = resources.get_res("bg/%s" % background)
 	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
 	playergroup.clear()

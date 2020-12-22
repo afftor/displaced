@@ -2,13 +2,9 @@
 
 [ext_resource path="res://files/scenes/glow_shader.shader" type="Shader" id=1]
 
-
 [resource]
-
-render_priority = 0
 shader = ExtResource( 1 )
 shader_param/outline_width = 2.0
-shader_param/outline_color = Color( 0.922986, 0.996094, 0.27626, 1 )
+shader_param/outline_color = Color( 0.921569, 0.996078, 0.27451, 1 )
 shader_param/opacity = 1.0
-_sections_unfolded = [ "shader_param" ]
-
+shader_param/highlight = 0.0

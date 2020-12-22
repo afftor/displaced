@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://files/scenes/ExploreScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/backgrounds/forest.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/bg/forest.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/gui/taskmenu/workerpanelalt.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=5]
@@ -22,8 +22,6 @@
 [ext_resource path="res://files/scenes/HeroList.tscn" type="PackedScene" id=20]
 [ext_resource path="res://files/scenes/Inventory.tscn" type="PackedScene" id=21]
 [ext_resource path="res://files/scenes/combat.tscn" type="PackedScene" id=22]
-
-
 
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -59,6 +57,9 @@ margin_top = 102.0
 margin_right = 584.0
 margin_bottom = 650.0
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="areaspanel/ScrollContainer"]
 
@@ -326,4 +327,3 @@ margin_bottom = 841.0
 "pauseprocess",
 ] instance=ExtResource( 22 )]
 visible = false
-

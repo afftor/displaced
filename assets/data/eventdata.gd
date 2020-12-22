@@ -7,7 +7,7 @@ var checks = {
 	],
 	"Intro 2":
 	[
-		{type = "event_finished", name = "Intro"}
+#		{type = "event_finished", name = "Intro"}
 	],
 	"Intro 3":[
 		{type = "date", date = 3}
@@ -105,6 +105,9 @@ var signals = {
 		HeroGuild = [],
 		blacksmith = [],
 		
+	},
+	LocationEntered = {
+		village = ['Intro 2']
 	},
 	ItemObtained = [],
 	MaterialObtained  = [],
