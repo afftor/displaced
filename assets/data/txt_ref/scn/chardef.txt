@@ -1,0 +1,48 @@
+=CHARDEF_BEGIN=
+=COLOR #ffffff=
+Narrator - Narrator
+Z - Zelroth
+Woman - Woman
+V - Victor
+T - Traveler
+Surv - Survivor
+Str2 - Survivor_2
+Str - Stranger
+Slavetrader2 - Slave_Trader
+Slavetrader - Slave_Trader_2
+S - Soldier
+Ro[Normal, Talk, Shock, Sad, Sarcastic] - Rose #ff8c00
+Ri[Normal, Blush, Spell, Talk] - Rilu
+RN - Rich_Noble
+Nt[Normal, Anger] - Norbert
+N - Nicolas
+M - Merchant
+Lr - Lyra
+KD - King_Dwarf
+I[Neutral, Sad, Shock] - Iola
+Guard3 - Guard_3 Guard
+Guard2 - Guard_2 Guard
+Guard - Guard
+G - Goblin
+FQ - Fairy_Queen
+FB - Fairy_B
+FA - Fairy_A
+F - Flak
+Et - Ent
+Er[Normal, Happy, Anger, Sad] - Erika #228b22
+Em[Normal, Happy, Tired] - Ember #b22156
+EC - Elf_Child
+DrJr - Dragon_Whelp DragonJr
+Dr - Dragon
+Demon - Demon
+D[Normal, Talk, Anger] - Demitrius
+CM - Committee_Member
+C - Caliban
+Boy - Boy
+Ar[Normal, Neutral, Shock, Anger] - Arron #c0c0c0
+An[Normal, Anger] - Annet
+?? - ???
+?(Z) - ??? Zelroth
+?(An) - ??? Annet
+? - ??
+=CHARDEF_END=

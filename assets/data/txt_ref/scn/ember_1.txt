@@ -1,0 +1,316 @@
+** ember_1_1 **
+=MUSIC eventgeneric=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ro - There's a new visitor who wants to meet you. Her name is Ember.
+Ar - Oho, a new lady? Finally, this position begins to pay off. Come on in!
+=SHAKE_SCREEN 0.5=
+=SOUND doorsmash=
+*Slam*
+=SPRITE emberhappy=
+Dragon girl appears in room
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Em - Hey!
+Em - You are the mayor, right?!
+Em - My name is Ember.
+Ar - Shit, Rose, there's a dragon on the loose!
+Ro(sarcastic) - Uhm... this is the visitor. 
+Ar - Huh... well, at least you’re not a goblin.
+Ar - (She's certainly the hottest dragon I've ever seen. Although, for others, it was generally their biology. )
+Ember seemingly pays no attention to the commentary.
+Em - I'm sorry, am I being too blunt again? Ah-ha, Sorry...
+Em - Wow, this place is really great! And you look very representative as well!
+Ar - It is, indeed. My skills were recognized by the folk so I was found to be the most suitable ruler.
+Ro(sarcastic) - Indeed, given you were the only candidate.
+Ar - I'll have to penalize you for spilling my trade secrets.
+Ar - Anyway, what brought you here? 
+Em - Ah, You see, I'm a blacksmith's...
+Em - ...apprentice.
+Em - It might not sound great, but I was one for a really long time!
+Em - Since this town has a ruler now, you do need a blacksmith, right?
+Em - Someone to take care of tools, weapons and armor. Please, let me start a forge here!
+Em - I'm a bit short on money as of now, but...
+Em - If you allow me to open my personal shop, I will craft whatever you need as a payment. That's a great deal, right? 
+Ro(sarcastic) - Does anyone even need a smith shop around here..?
+Ar - A valid point, why here of all places?
+Em - I'll tell you, but it's a secret, so don't tell anyone, alright? 
+Ar - Sure, I'll just force Rose to wear a gag whenever she goes out, to make sure she stays quiet. So?
+Ro(sarcastic) - *Frown*
+Em - Have you seen the competition?
+Em - Do you realize how much profit I'll be making with no other blacksmiths around? This is a perfect opportunity to start my own shop!
+Em - I might not look like it, but I have studied my craft.
+Em - This is a perfect opportunity to start my own shop!
+Ro - ...
+Ar - ...
+Ar - ...
+{"index":1,"text":"Refuse"}]},
+{"effect":"skip","log":"ALLOW","value":26},
+{"effect":"skip","log":"REFUSE","value":0},
+Ar(neutral) - This is an impossible request.
+Em(tired) - What? But I went such a long way...
+=SPRITE embershock=
+Ember's eyes began filling with tears.
+Ar - No, we can't allow a half-dragon into our town, this would go against safety reg...
+Em(tired) - *Sob*
+Ar - (God, you are not serious now? )
+Ar - (God, you are not serious now? )
+{"index":1,"text":"Still refuse"}]},
+{"effect":"skip","log":"ALLOW","value":13},
+{"effect":"skip","log":"REFUSE","value":0},
+Ro(sarcastic) - What? I can't believe you are so cruel to her. Look, she's crying.
+Ar - We can't be driven by woman's emotions in hefty decisions.
+Ro - Hmph, I'm leaving then.
+Ar - You can't leave. You were mine to start with!
+Ro - That was in Avior, here I'm free to do what I want. 
+Ro - Now, let's go Ember, I'm sure we will find a more friendly place than this.
+Ar - Is that so? You'll regret this!
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+...
+......
+Being left alone, Arron failed as Mayor and has been exiled by the goblins.
+{"effect":"game","value":"lose_w_choice"},
+Ar - Fine, I'll allow it. You will have to sign a number of contracts first, though.
+Ember's face quickly changes into an image of pure relief.
+{"effect":"skip","log":"","value":3},
+Ro - You might be wro...
+Ar - That's a great idea! Just sign a couple of contracts and you can start right away.
+Embers eyes shine with happiness
+Em(happy) - Wow, thank you, Arron! I'm so indebted to you for this.
+Ro(sarcastic) - (What a coincidental use of words.)
+Em - You won't regret it!
+Ar - So, you gonna need a house for a forge? We might be able to assemble something...
+Em - Oh, there's no need. I brought my house with me! It's on the hill right outside of town.
+Ro(talk) - Huh, really. Did you carry it all by yourself? Half-dragons can do stuff like that? 
+Em - Ha-ha, I've always been carrying stuff around the forge, so I wouldn't get in the way of Master's work. 
+Ar - Well, that's all the better for us, but I'll have to tax you for taking town's space. 
+Em - Okay!
+Ember has joined the settlement. Forge is available now.
+{"effect":"state","value":"character_add", "args":"ember"},
+{"effect":"decision","value":"blacksmith"},
+{"effect":"state","value":"make_quest", "args":"forge"},
+=STOP=
+
+** ember_1_2 **
+=MUSIC eventlight=
+=BLACKON=
+=DELAY 0.4=
+=BG forge=
+=BLACKFADE 0.4=
+=DELAY 0.4=
+=GUI_NORMAL=
+Em - I see you found some unusual wood up there. Please, let me have it!
+Ar - Hmh... sure. What's so unusual about it?
+Em - Oh, I can use it to make items with special properties. 
+Ar - You can do that? You are pretty useful after all.
+Em - Ha-ha, You are so kind, Sir Arron! I can also cook scrambled eggs! 
+Ar - That's amazing. What are those properties anyway?
+Em - Depends on the material used, it can make you stronger, faster... stuff like that.
+Ar - Ho-oh. Can it make my wood stronger? 
+Em - Huh? Your wood? You are not a human?
+Ar - Nah, I'm actually a half-ent. 
+Em(happy) - REALLY?!
+Ro(sarcastic) - Please, don't trust everything people say.
+Ar - But I do have wood, occasionally, maybe you could help with it.
+Em - I don't quite understand, but sure!
+Ro(sarcastic) - He lies to you, he has no lumber. 
+Ar(neutral) - Tsk... I've trusted you, Rose. Such a brutish move from you. 
+Em(tired) - Uh... I still don't understand, but in either case, if you find any more rare materials, make sure to bring them to me!
+Ar - Aren't I'm one of a kind? 
+Ro - Please, stop. 
+=BLACKUNFADE 0.4=
+=DELAY 0.4=
+=STOP=
+
+** ember_1_3 **
+=MUSIC eventgeneric=
+=BLACKON=
+=DELAY 0.4=
+=BG forge=
+=BLACKFADE 0.4=
+=DELAY 0.4=
+=GUI_NORMAL=
+Em - Sir Arron, great to see you! What can I help you with?
+Ar - I'm good. Just curious how you are doing.
+Em - Oh, it's great here! And you visit me regularly too. 
+Em - In the past people didn't seem to like having me around the village, but you seem so relaxed about it.
+Ar - I'm a dragon's descendant just like you.
+Em(happy) - What?! REALLY?
+Ar - Maybe. 
+Em - Oh... that might be true because you are not afraid of me.
+Em - My appearance must be what repulses other people... Do you think I'll be able to find some place where I would be accepted?
+Ar - Hmmm. True, people want to see something similar to them, rather than different. 
+Em(tired) - Oh... this makes me sad. 
+Ar - But you know what? You might still eventually pass for a human. 
+Em - Oooh? I can? 
+Ar - Naturally, you have some human characteristics, after all, I'm just not entirely sure how authentic they are.
+Em(tired) - Uh... Sorry, I don't understand.
+Ar - I'm saying that I'll need to investigate your body to see if you can pass for a human.
+Em - OOOOH, Sir Arron, you can do this for me!? 
+Ar - Well if you request it, it's my job to make sure everyone here is happy. 
+Em - Okay, please! Let me just untie my apron.
+Ar - (Darn.. this was way too easy, maybe later I should give her a couple of lessons about dignity)
+=DELAY 0.4=
+=ABG ember_boobs_1=
+=GUI_FULL=
+Em - So, how is it?
+Ar - Hmmm... Let's see.
+Arron slowly circles around Ember.
+Ar - You look rather healthy to me.
+Em - I do? Master always said I heal very fast. 
+Em - He did hit me a lot too, but I didn't feel much. It was kinda funny, ha-ha.
+Ar - Is that so...
+Arron grabbed one of Ember's tits and forcefully rubbed it.
+=ABG ember_boobs_2 ember_boobs_3=
+Em - Ah!
+Ar - Did it hurt?
+Em - N-no, it was just so sudden...
+Ar - I see, softness seems to be rather good. 
+*Pinch*
+Em - A-ah!...
+Ar - Hmm sensitivity seems to be good as well...
+Ar - (Darn... I might be enjoying it too much)
+Em - ...Sir Arron? 
+Ar - Oh by the way, You don't really need to add 'Sir' for me.
+Em - I don't?.. Ah!
+Ar - Sorry, was it too rough? 
+Em - No, it just... feels weird.
+Ar - Mh-hm, this is a good sign. Very nice...
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ro - (Did Master go to Ember’s again? Jeez, he always skips all the boring work...)
+=BLACKFADE 0.5=
+=ABG ember_boobs_4 ember_boobs_5=
+=GUI_FULL=
+Ro - Hey, Ember, have you seen Ar...
+Ro - ...
+Ar - ...
+Ro - (What's even going on? They are doing it right here?)
+Ro - (...Wow, Ember's are twice as big as mine!)
+Ro - Master, what are you doing?!
+Ar - What's up? Ember just asked me for help.
+Ro - (Ember made a move on the Master!? I never expected that...)
+Em - Oh Hey Rose. If you are in no hurry, give us a moment.
+Ro - Ah... I'm just... Sorry...
+Rose quickly shuts the door.
+=BG forge=
+Ro - (No way... She never looked mature like that)
+Ar - Hmm, this is enough I believe. 
+Em - So how is it?
+Ar - This seems passable to me. With some time and work you will surely be able to live with humans nicely.
+Em - Really!? This makes me so happy. Please, help me in the future too, Sir Arron!
+Ar - Gladly.
+=BLACKUNFADE 0.4=
+=DELAY 0.4=
+=STOP=
+
+** ember_1_4 **
+=MUSIC eventlight=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE emberhappy=
+=SPRITE_UNFADE 0.3=
+=GUI_NORMAL=
+(Townhall, Ember in the center)
+Em - Sir Arron!
+Ar - What’s up, Ember? You look excited. 
+Em - Can we have sex?
+Ar - ...Sure, but why? 
+Em - It feels really good and it's about time for me.
+Em - And you already said I'm pretty.
+Ar - This doesn't sound like you came up with this yourself.
+Ar - Who told you that?
+Em - My dragon instincts.
+Ar - ...
+Ar - (Is this a trap?)
+Ar - (Nah, It's definitely a trap.)
+Ar - Sure, the bedroom is over there.
+Em - Ahaha... Okay, sorry that I’m not really sure what to do.
+Ar - Uh... before that, are you sure that you want to do it with me for your first time? 
+Em - Yep. Why?
+Ar - Well, people usually do it with someone they really like. 
+Em - I really like Sir Arron!
+Ar - Welp, my conscience is satisfied.
+Arron pushed Ember down while removing her apron.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=GUI_FULL=
+=MUSIC erotheme=
+=ABG ember_miss_1=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Em - Ah... What are we gonna do on the bed?
+Em - Ah!... Sir, Arron?
+Without replying Arron starts massaging Ember's virgin mound.
+Em - This is how we have sex? I feel a bit weird.
+Ar - This is just the start. Looks like it really is your first time.
+Em - Is that bad?
+Ar - Nah, I actually feel a bit honored.
+Saying that Arron pushed his lips into Ember's while massaging her chest and pussy.
+Em - Mmmhmmn... You kissed me...
+Ar - You didn't like that?
+Em - I did! Sex feels really good.
+Ar - This isn't sex yet, though.
+Em - Eh? It's not? 
+Ar - Yep, this is just a foreplay. 
+Arron quickly freed himself from clothes, revealing his manhood to the curious dragon girl.
+Em - Woah, it's so big... That's called a penis, right?
+Ar - Hmh um, it is great, indeed.
+Ar - Now relax, this might be painful for your first time.
+=ABG ember_miss_2 ember_miss_3=
+Arron forcefully entered Ember's pussy.
+Em - Oh... Ah!
+Em - It's in!
+Ar - Huh... It didn't hurt?
+Em - No, it only stung a bit, but it feels really good.
+Ar - Darn, it must be good to be a dragon's descendant. Oh well.
+Em - What are you...
+Meeting no resistance from Ember, Arron begins to slowly grind her wet pussy.
+Em - Mmh... I feel... Tingly inside...
+Ar - Yep, this is what sex is. 
+Ar - Do you like it, Ember?
+Em - Ahhh... I don't... know...
+Em - Don't stop, Arron.
+Arron felt like something in Ember's tone changed, having a mature hint not being present previously.
+Em - Yes... This feels great...
+Em - I can feel you inside my body.
+Ar - Ember...?
+Em - Please, keep moving...
+=ABG ember_miss_4=
+Ember acted unlike her usual self, but at this point, Arron has lost any will to question anything.
+Em - Ah... I'm feeling it coming...
+Em - Closer, Arron...
+Without giving him any time to react, Ember strongly embraced him to her chest.
+Em - Yess... Just a bit... 
+Em - You’re cumming... as well... right?
+Just when Arron considered pulling out, Ember's legs coiled around his waist, pushing him deeper inside her.
+=ABG ember_miss_5 ember_miss_6=
+=WHITE=
+=DELAY 0.5=
+Em - Ahhhhhhhh...
+Em - Something's... filling me...
+=ABG ember_miss_7 ember_miss_8=
+Ember seems to have returned to her usual self as hot seed gushed into her womb.
+Em - Oh, I'm sorry! I've grabbed you without thinking.
+Em - Sir Arron, are you alright?
+Ar - It's been worse.
+Em - Oh.. I'm sorry.
+Ar - Don't worry, it felt great.
+Em - Really? It was super great for me as well!
+Ar - (Hmm I could've sworn something was different just a moment ago.)
+Ar - (Was it just my imagination?)
+Em - Can we do it one more time? Please!
+Ar - ... 
+Ar - Having it too easy like this will soon spoil me.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=STOP=

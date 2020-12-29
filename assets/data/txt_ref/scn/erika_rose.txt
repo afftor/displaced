@@ -1,0 +1,211 @@
+** erika_rose_1 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+Er - Arron.
+Ar - Erika. What's up?
+Ar - Another irresistible itch demanding a good scratching? 
+Er - No. I mean, yes, but not exactly what you think.
+Er - Remember how you gave me your approval on Rose?
+Ar - Uh-huh.
+Er - She's a tough nut to crack, so I could use your help. 
+Ar - I don't think ordering her around will work. 
+Er(anger) - I beg you, I'm never going to force anyone like that.
+Er - What I need is a rare herb we elves often use for relaxation. 
+Er - So can you help me get some of that? 
+Ar - I suppose. But is it safe for non-elves? 
+Er(happy) - Of course it is. It's just rather hard to come by since elves cultivate it secretly.
+Ar - Fine, you got my interest. So where are we going?
+Er - Oh, it's not far in the woods. I'll lead the way.
+=STOP=
+
+** erika_rose_2 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG forest=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+Er(happy) - That's a perfect one. 
+Er - Now I'll be preparing it. Bring Rose with you this evening to my room.
+=BLACKUNFADE 0.5=
+=DELAY 1.5=
+=SPRITE rose=
+=BG villagenight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Ro - This seems a bit unlike Erika to invite us both at the same time.
+Ar - She's probably just trying to be friendly.
+Ar - It might be a good experience to get closer with our teammates. 
+Ro - True. I still can't say I understand how she thinks.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=SPRITE erika=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Er(happy) - Arron, Rose! Please make yourself comfortable.
+Er - I've just brewed a bit of rare elven tea and wanted to share it with you.
+Er - Hold on, I'll get the cups. 
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Ro - *Sniff* Hmm, this smells pretty nice. 
+Ro - *Sip* Wow, this is really good.
+Er(happy) - I know, right? I've been missing it since coming here so once I got it, I decided to share it with you.
+Er - Let me tell you some of our stories.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Ro - (Uh.. why are most of her stories so lewd... Are local elves really that perverted?)
+Er - Rose you seem a bit red. Come sit on the sofa, it's more comfortable and the air is clearer next to me.
+Ro - ...Okay, maybe I should sit over there. Can I please have another cup? 
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=MUSIC_STOP=
+=GUI_FULL=
+=MUSIC erotheme=
+=ABG erika_rose_sofa_1=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Er - ...And then he made her suck on his fingers.
+Ro - Oh... How indecent.
+Arron observed, bewildered, as Erika smoothly pulled Rose into her arms.
+Unlike what normally happens, Rose shows no sign of resistance, even while aware her master is only a few feet away.
+Ar - (This elven tea is pretty dangerous. Unlike alcohol, Rose does not appear to be intoxicated at all)
+Er - Rose, I must say you are so beautiful.
+Er - Arron is one happy man to have someone like you always around.
+Ro - Oh, don’t flatter me, Erika... You have such a gorgeous figure...
+Er - No way. Your ears and tail are charming. I'm really jealous of Arron.
+Ro - Stop, you're making me blu...
+=ABG erika_rose_sofa_2 erika_rose_sofa_3=
+Cutting Rose's hints of embarrassment short, Erika firmly pressed her lips against Rose.
+Ro - Mhh!
+Ro - Mmmm...
+Just when Arron would expect Rose to back off, she unexpectedly closed her eyes and took Erika's kiss with apparent joy.
+=ABG erika_rose_sofa_4 erika_rose_sofa_5=
+Ro - Erika, you are a really good kisser.
+Er - Fufu, I'm glad you approve.
+Touching lips again, Erika's hand slowly went over Rose's tunic, revealing her modest chest.
+=ABG erika_rose_sofa_6 erika_rose_sofa_7=
+Ro - Mmhm...
+Despite the exposure, Rose shows no worry. 
+Which surprised Arron, as he expected her to show some resistance. 
+After playing a bit with her nipples, Erika's hand moved to Rose's panties.
+=ABG erika_rose_sofa_8 erika_rose_sofa_9=
+Ro - Erika... I would never imagine doing something like this with another girl.
+Er - Don't worry, I promise you won't be disappointed. 
+Rose bit her lip, as Erika skillfully played with her body. 
+Ro - Ahh... You make me so horny...
+Ar - Not just you. 
+Er - (Fufu, enjoying the show?)
+Er - Rose, you are so sensitive. I feel excited just playing with you.
+Ar - (But what's actually going on? She’s  unlike like her usual self.)
+Er - (The herb blocked her sense of shame. It's commonly used by young elves to overcome their shyness.)
+Ro - Master, Erika, what are you whispering about? 
+Er - Nothing important, dear.
+Er - Now, let me show you something great. 
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=ABG erika_rose_69_1=
+=DELAY 1=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Erika laid down, inviting a naked Rose on top of her.
+Without any warning, Erika grabbed Rose's ass and stuck her tongue deep in her pussy.
+Rose let out a surprised yelp, but quickly her face changed to that of bliss.
+Er - What a sweet pussy you have. 
+Erika continued working her way over Rose's crotch, as she bathed in pleasure.
+Ro - Mmmh...
+Er - Don't forget about your side of the bed, Rose.
+Blinking in confusion, Rose realized she has to repay Erika for her pleasure and timidly slurped on the elven girl's pussy.
+=ABG erika_rose_69_2 erika_rose_69_3=
+Er - Yes... Keep going.
+Er - Your mouth feels great, Rose. 
+For the next few minutes, Arron observed two naked girls moan as they eat each other out to orgasm.
+Ro - Ahhh... Erika!!
+Er - Mmhmm!
+=ABG erika_rose_69_4 erika_rose_69_5=
+Despite it, they didn't seem to be satisfied with it and continued their activity. 
+=ABG erika_rose_69_6 erika_rose_69_7=
+Er - Hehe, it seems like Rose is not easily satisfiable.
+Er - Say, Arron, have you tried Rose's ass? 
+Hearing those words, Arron spots how Erika gently sticks her wet finger up Rose's ass, while holding her by the base of the tail.
+Ar - Nah, she acted really unhappy whenever I tried.
+Er - That's a shame, Rose. You have such a pretty butt, but you won't let your master use it.
+Rose seemingly drunk from recent orgasm took some time to gather her thoughts on the subject.
+Ro - It's... Indecent...
+Er - It's not, you should let Arron do it to you. 
+Ro - ...Fine...
+Er - Is that how you address your master? 
+Er - Say, 'Master, please fuck my rosy virgin butthole'.
+Ro - ...
+Er - Say it or I'll stop. 
+Ro - Master... Please fuck my virgin rosy butthole.
+Er - See? Wasn't hard at all.
+Erika wrapped her lips around Rose's clit as a reward. 
+Ro - Ah! Master...
+Arron finally released from his clothes, positioned himself against Rose's ass with Erika's face below it.
+=ABG erika_rose_69_8 erika_rose_69_9=
+Rose's butt quickly surrendered to him, wet from Erika's saliva and her own juices. 
+Er - Hehe, what a happy sight. Your pussy twitches a lot too.
+Erika watched in awe, as Arron gradually increased his speed penetrating his slave's ass for the first time.
+=ABG erika_rose_69_10 erika_rose_69_11=
+Er - Yeah, fuck this bitch's asshole!
+Er - You are such a dirty slut, Rose, just look at how much your cunt is dripping.
+Er - Having your ass fucked like this, while eating out another girl.
+Rose barely recognized what Erika said, as her mind was lost in the pleasure of approaching orgasm.
+Er - Do it, you fucker, impregnate her asshole.
+=ABG erika_rose_69_12 erika_rose_69_13=
+=WHITE=
+=DELAY 0.5=
+Er - Or spill it all over me. If you wish, I'll obediently lick it all.
+Ro - Aaahh, Master..!
+Ar - Rose...
+After going for some more, they finally fell asleep hugging each other.
+=BLACKUNFADE 0.5=
+=DELAY 1.5=
+=MUSIC_STOP=
+=GUI_NORMAL=
+=MUSIC eventlight=
+=BG hall=
+=SPRITE_FADE 0.1=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Morning
+Ro - Mhmh... It's so bright...
+Ro - ...
+Ro - Oh god...
+=SPRITE erika_n=
+=SPRITE_UNFADE 0.5=
+Er(happy) - Morning, Rose, how do you feel? 
+Ro - Pretty good... Wait, that's not the issue. 
+Ro - How the hell did this happen!?
+Ar - Well, it seems Erika was very persuasive.
+Ro - You... Master, you've set me up!
+Er - Now, you don't have to be so condemning. I remember you were very satisfied last night.
+Ro - That's... 
+Ro(sarcastic) - True, I suppose.
+Er(happy) - See? You had lots of fun, so why complain now?
+Ro - (Ugh, I can't deny it certainly felt great.)
+Ro - (And Master seems very pleased though I did it with another person right in front of him...)
+Ro - Screw you! I'm never drinking anything with you again.
+Er - Fiiine. But let's try something different next time.
+Ro - I'll nev...
+Rose was prepared to say something, but it stuck in her throat. 
+Without finishing her sentence she darted out the door and left Erika's room. 
+Er - Fufu, she didn't outright reject it.
+Er(happy) - Mission success!
+Ar - Not sure about that. But I'm not complaining.
+=STOP=

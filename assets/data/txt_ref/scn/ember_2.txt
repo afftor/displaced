@@ -1,0 +1,168 @@
+** ember_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE emberhappy=
+=BG hall=
+Em - Sir Arron! 
+Em - Look what I've found this morning near my bed.
+Ar(neutral) - Hmm? A note? 
+Ro - Let me see it... 
+Ro - "You must go the Dragon Mountains"?
+Ar - That's some atrocious writing. 
+Ar - Have you written it, Ember?
+Em - No, I can't write. 
+Ar - Huh... What are those Dragon Mountains anyway?
+Ro(sarcastic) - I wonder.
+Er - Its large mountains in the North of Aeros. 
+Er - People aren't very common around there, except as a meal.
+Em(tired) - I feel like this is important. 
+Em - Can we go there?
+Ar - If I say "No", are you going to do it anyway?
+Em - Yes!
+Ro(talk) - That doesn't seem like a very good idea.
+Ar - Welp, looks like we don't have a choice. 
+Ar - Ember is an important member of our community.
+Ar - And I can't be left without a blacksmith. 
+Ar - Suddenly it feels like I'm being blackmailed.
+Em - Hmm, what's blackmailed? 
+Ar - You can tell her, Rose.
+Ro(sarcastic) - What do you mean by that?
+Ar - Pretty sure that's what you've often been doing back at home.
+Ro(sarcastic) - That wasn't a blackmail. It was mutually beneficial coercion. 
+Ar - ....On other hand, maybe I shouldn't let you teach Ember.
+=STOP=
+
+** ember_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
+=SPRITE rose=
+Ar - Hey, Rose, you know what?
+Ro - Yes? 
+Ar(neutral) - I don't think I ever ate a dragon. 
+Ar - Can you cook it? 
+Ro(talk) - Do you think it's appropriate? I mean there's Ember...
+Ar - Oh, I've tasted her already, alright. 
+Ro(sarcastic) - ...
+Em - Ah, I wanna try it too!
+Ro(sarcastic) - Please, let's not distract too much, it's dangerous here. 
+Em(tired) - Oh, sorry. 
+=STOP=
+
+** ember_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
+=SPRITE dragon=
+Dr - Foolish mortals! How dare you approach me?
+Ro(talk) - Wow, this one can speak!
+Ar(neutral) - Damnit... Now we can't eat them.
+Em - Why?
+Ar(neutral) - It's obvious, you can't eat sentient things. 
+Em - ...Really?
+Ro - Stop it. Look, we came here because our friend-
+Dr - For this offence you'll have to pay!
+Er - I feel like he might not be listening... 
+Ri - He looks quite old.
+Ar - Darn, I guess there's no choice but to fight.
+=STOP=
+
+** ember_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
+=SPRITE dragon=
+The large dragon is held in place breathing heavily.
+Dr - Guh... Enough...
+Dr - You've proven your strength. What do you want?
+Ro - As we said-
+Dr - What?
+Dr - Speak Louder! 
+Em - WE HAVE COME BECAUSE OF ME!
+Dr - Hmm? What's this...
+The huge dragon brought his head closer to the ground and observed Ember.
+Dr - Ooh, why haven't you said so sooner. 
+Ar - Because of your senile deafness.
+Dr - Quiet. You'll be worse than me in mere decades.
+Ar - ...So now you can hear.
+Dr - You have a familiar scent.
+Dr - What's your name, child?
+Em - I'm Ember. Nice to meet you.
+Em - Even though we've fought already. 
+Dr - I see... You are the child of Ezet. 
+Dr - Truly a wonder to meet someone like you. 
+Em - Ezet? Is that the name of my mother?
+Dr - Yes. You have no knowledge of your ancestry? A pity.
+Dr - Ezet was one of our wyer. But it's from a time before we were facing today's crisis. 
+Ro - What crisis? 
+Dr - Hmm... I'll need time to explain.
+Dr - We dragons possess souls unlike normal mortals. Andh these souls grant us sentience. 
+Dr - When a dragon dies, his soul leaves his body and finds its way to a new one.
+Dr - Without a soul, we are but beasts. You've met many of those on your way here. 
+Dr - From some time ago something has changed. 
+Dr - Dead dragons have been reborn less and less. Somehow, their souls can't find a way back here.
+Em(tired) - No way.
+Dr - I haven't seen anyone here for the last few years. I fear that we might be hunted. 
+Dr - But it feels like... You might have Ezet's soul inside of you.
+Dr - Somehow she managed to conceal herself inside of you.
+Em - My mother inside of me? So I'm her?
+Dr - No. It would be more accurate to say that she lays dormant, perhaps occasionally influencing your actions. 
+Ro(talk) - Then that note was likely her doing.
+Em - So that means... My mother is dead? 
+Dr - Yes and no, her body is likely dead, but her soul is within you for now. 
+Dr - I hope she will eventually be reborn as we once were.
+Dr - Although I did not expect her to take a... Mortal partner. 
+Dr - At times like these I will not complain. 
+Dr - My name is Qothus.
+Dr - I welcome you as one of my kin. 
+Ar - Before you continue with the family reunion, there's one thing we need to ask for.
+Dr - Yes?
+Ro - We are currently looking for someone...
+=BLACKTRANS 0.5=
+Dr - Curious story, but my knowledge is not enough to help you here. 
+Dr - I don't know anything about that person or item you possess.
+Ar - Well damn. At least I've defeated a dragon today. What do you think father would say?
+Ro - Now that you say it, we actually did...
+Ar - Well, Ember, take your time, we will be waiting around the corner.
+Party leaves Ember alone with the Qothus.
+Em - I didn't expect this would turn out like this.
+Dr - Threads of destiny are often chaotic in nature.
+Dr - Your mate is strong, you've chosen wisely.
+Em - Wha-? Sir Arron is not my...
+Dr - Or was it Ezet's influence, I wonder.
+Em - Um, could you tell me about my mother?
+Dr - Oh, she was one nasty rascal.
+Dr - And a fool unlike others. 
+Dr - Always got into fights with others. One time she even scorched Elder's nest cave.
+Dr - ...
+Dr - Shame I won't see her again.
+Em - You were related?
+Dr - We are all siblings in a sense.
+Em - Ah, so I can call you an Uncle Qothus then?
+Dr - This is...
+Em - Please?
+Dr - *sigh* Alright.
+Em - But what should I do now?
+Dr - You look quite accustomed to mortals. 
+Dr - You should naturally stay with them now.
+Dr - In truth, I don't know if we will even continue to exist for much longer.
+Dr - I haven't seen or heard of anyone for a long time until you came.
+Dr - So go, glide proudly and remember what you are. 
+Dr - Don't shy away from returning here if you need help. 
+Dr - I may look old, but a few more centuries are nothing for me.
+Em - Thanks, Uncle Qothus I'm glad we met.
+Ember awkwardly hugged the big dragon.
+=BLACKTRANS 0.5=
+=SPRITE emberhappy=
+Em - Hey, I'm ready to go.
+Em - Hey, what are you doing to that whelp?
+=SPRITE dragonwhelp=
+Ar - Oh, don't worry about it. 
+Ar - We don't need it anymore.
+Er - It was supposed to substitute you in case you'd chose to stay here. 
+Em - Eh? Eeeeeeh?!
+=STOP=

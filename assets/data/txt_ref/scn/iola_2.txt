@@ -1,0 +1,640 @@
+** iola_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG villageday=
+=SPRITE iola=
+Ar - Oh, an unexpected visitor.
+I - Good day Sir Arron! 
+I - Are you doing well?
+Ar - Better than ever.
+Ro - What brings your here?
+I - I'm on the pilgrimage.
+I - Actually, I was supposed to do it at a different time, but the Cult ruled for me to do it now.
+I - I feel like it was father's initiative though. 
+I(sad) - He acts differently since the time he returned.
+Ar - What sort of pilgrimage?
+I - I was requested to get Spirit Essence for the cult. 
+I - So I thought maybe I could ask you to get it?
+Ar - But isn't that supposed to be a task you have to complete personally? 
+I - No, not really. Cult just uses initiates to gather it for future sellings.
+I - Many do just buy it or hire someone to get it.
+Ar - That's creative.
+Ar - But what do you even need that for?
+I - We make aphrodisiac out of it.
+Ar - Hooh. An important industry for sure.
+Ar(neutral) - It's fine if you are paying, but we might need some tips where to find it.
+I(sad) - I'm sorry, I don't really know about that.
+Ar - I guess we better ask our pocket sage then.
+=BLACKFADE 0.5=
+Arron and Iola went to find Rilu.
+=BLACKUNFADE 0.5=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+I - Who this? 
+I - She's so adorable!
+Ri - ...
+I - What's your name? 
+Ri(talk) - It's Rilu. 
+Ri - Pleased to meet you.
+I - Likewise. I'm Iola. 
+I - How come you have a lone little girl here?
+Ro(talk) - She's actually quite old.
+I - Oh, really?
+I - I'm sorry, I didn't mean to offend you.
+Ri - Don't worry, I'm used to it.
+Em - Yeah, she's really old, like granny.
+Ro(sarcastic) - Ember, please. 
+Ar - Rilu, Iola is looking for something called Spirit Essence.
+...
+=BLACKFADE 0.25=
+Ri - I see.
+Ri(talk) - Yes, I know where we can get it. 
+Ri - There's an abandoned castle nearby.
+Ri - It goes by the name Summerhill Keep.
+Ro - Oh, that's a nice name.
+Ri - According to the rumors it is brimming with stray undead.
+Ro(sarcastic) -  Of course.
+Ri - We are likely to find it there.
+Ar - A full house of zombies. Should be fun.
+Ro - Ugh...
+I - Thank you.
+I(sad) - I wish I could go with you, but I have to continue the sister training.
+I - Please be careful out there. 
+I - And thanks for your help, Rilu.
+Ri - *nod*
+=STOP=
+
+** iola_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG castle=
+=SPRITE rose=
+Ro - Phew.. It's dead.
+Em - There's an essence!
+Em - Ew, it's all gross and sticky...
+Er - Just image it's a semen.
+Ro(sarcastic) - you are really not making this better.
+Ar - It looks fancy. 
+Ar - I wonder what it tastes like...
+Ri - It doesn't really taste like anything. 
+Ri - But you might grow a pair of horns if you digest it.
+Em - Oh? But what if I already have one?
+Ro(sarcastic) - Let's not try it.
+Ro - Please let's return, I don't feel very good around here.
+Ar - These are just walking corpses, I don't get why are you so scared of them.
+Ro(sarcastic) - Don't make me recall how you reacted after going to family crypt for the first time.
+Ar - Alright, alright. Let's go then.
+As the whole team was leaving the room, Rilu slowed down behind.
+Ar - Rilu? You found something over there?
+Ri - ...
+Ri - Nevermind, let's go.
+=BLACKTRANS 0.5=
+=SPRITE zelroth=
+At the other side of the hall two figures were watching from the shadows.
+Z - Interesting... There's a familiar aura.
+M - What's aura?
+Z - Looks like these are the ones who Dimitrius told me about.
+Z - Bastards destroyed about a week of my work.
+M - oooh, that's bad.
+Z - No shit, dumbass. 
+Z - At least they've left.
+Z - Alright, get back to preparations.
+M - Preparations for dinner? I'm hungry...
+Z - No, you imbecile. Now get to work.
+=BLACKTRANS 0.5=
+=BG cult=
+=SPRITE iola=
+Meanwhile Iola had finished her routine and was preparing to go to Arron again.
+I - Phew, almost done here.
+I - I should warn father, that I'm leaving.
+She took a peek at her father's office before entering.
+I - Huh, he seems to receive guests...
+=BLACKTRANS 0.5=
+=SPRITE demitrius=
+D - So you got rid of that dwarf king?
+=SPRITE victor=
+V - Sort of, wasn't me, but I finished the bastard.
+D - Wasn't you?
+V - Yeah, it seems like that guy got to him first.
+D - I thought I ordered you to keep your eyes on him, idiot.
+V - Whatever, from this world or not, he's no match for me.
+V - I can kill him any time I want. 
+D - That's not what I ordered.
+D - Maybe we can use him to do our job.
+V - Your job.
+D - It will be your job if you fuck this up. 
+V - *grunt*
+D - Now get lost already, it's not good if we are seen here together here.
+V - Oh is it? You probably should take care of peeping toms next time. 
+D - Huh?
+Before Iola realized it, the door in front of her was forced in and she was dragged inside.
+I(shock) - What?! 
+I(shock) - Let me go now! 
+I(shock) - Father! What-
+*Thud*
+=SOUND punch=
+V - Hell, I hate women.
+V - Always so noisy.
+D - Don't dare kill her. 
+D - Shit, now I have to sort this out too...
+=BLACKFADE 0.5=
+=SPRITE_FADE 0.5=
+A few days later.
+=BG villageday=
+=BLACKUNFADE 0.5=
+Ar - This is weird. We got the essence, but Iola hasn't come back since that day.
+Ro - Maybe they let her pass without it?
+Ar(neutral) - That would suck.
+Ar - How do we get rewarded like this then?
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ri - She's actually in trouble. 
+Ro(talk) - Eh?
+Ar(neutral) - What do you mean?
+Ri - She was captured and kept imprisoned.
+Ar - But how do you know that?
+Ri - I've planted a small spirit on her.
+Ro(sarcastic) - Why?
+Ri - So I can know her condition and location.
+Ar - That's something new.
+Ar - Do you do this often?
+Ri - Don't worry, you won't notice it.
+Ro(sarcastic) - .....
+Ar(neutral) - Anyway, where's Iola? 
+Ri - I assume it's her cult grounds.
+Ri(talk) - We should go there to save her.
+Ar - Huh, you seem... Kinda worried? 
+Ar - What happened to the deadpan girl I knew?
+Ri(talk) - I'm not deadpan.
+Ro(talk) - You think we should go there? 
+Ro - This might be quite dangerous.
+Ar - Well, someone has to pay for the mission we've completed. 
+Ar - In the worst case we can loot something from there.
+Ro(sarcastic) - I sincerely hope you are joking this time.
+=STOP=
+
+** iola_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG cult=
+The group has entered the Cult's temple grounds. 
+Ar - Huh... This organization seems rather abundant. 
+Ar - So, do you think we'll be able to pass through without causing ruckus?
+Guard - Hey, stop right there!
+Guard2 - Hey, it's those guys we've been told about.
+Guard - Shit, don't let them get away!
+Ar - Looks like we are expected.
+Ro(sarcastic) - That's not a good thing.
+Ar - Why are you so pessimistic? 
+Ar - Maybe they just wanna show us around.
+Ro(sarcastic) - Yeah, judging on how they charge at us armed, it will be their prison they want us to see.
+=STOP=
+
+** iola_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG cult=
+=SPRITE rilu=
+The team ended up in a jail building near one of the cells.
+Ri - It's here.
+Ar - This is quite a sturdy door.
+Ar - Ember, could you?
+Em - Alright!
+=SOUND crash=
+=SPRITE iola=
+I - Sir Arron!?
+Ar - I prefer "Prince Charming" at times like this.
+Ro(sarcastic) - Ha-ha.
+Ar(neutral) - What have you been doing here?
+I(sad) - Father imprisoned me but I'm not sure why.
+I(sad) - He's been acting weird and I eavesdropped on his guest.
+Ar - Curious, but I think it would be better if we leave first.
+Ar - Your colleagues don't seem very friendly either.
+I(sad) - No, I can't.
+I - It's father's order so there should be some reason.
+Ar(neutral) - Look, your father locked you in a jail like this.
+Ar(neutral) - Even if he's not psycho, you won't make things better by staying here.
+Ro - Plus he ordered the guards to attack us. 
+Ro - It's not sane to stay here.
+I(sad) - No, this must be some mistake.
+I - I'm sure he can understand if I talk to him.
+However, the armed group gathered on the other side of the hall.
+Guard - We cornered them! 
+Guard - Archers, ready!
+Guard2 - But Lady Iola is there.
+Guard - Damnit, did these bastards plan this out?
+=SPRITE demitrius=
+D - Shoot. 
+Guard - Eh?! 
+Guard - But Father, there's your daughter in the cell.
+I - Please wait!
+D - She was brainwashed by the foul demons.
+D - There's no other choice. 
+I(shock) - Wha!...
+Guard - ...Yes, Sir.
+Guard - Shoot!
+Ro(shock) - No!
+Ar(anger) - !..
+=BG scenes/rilu_defend=
+*Splurt*
+Ri - Ugh...
+Before arrows hit their target, Rilu jumped in front of them, shielding others with her body.
+I - Rilu?!
+I - NO!
+Ar - Ember!
+Em - Yes? 
+Ar - Bust an opening so we can escape.
+Ar - Erika, take Rilu, I'll grab Iola.
+Er - Gotcha.
+D - What are you waiting for, idiots? Shoot again!
+Guard - Yes, si...
+=SHAKE_SCREEN 0.5=
+=SOUND explosion=
+=BG prison=
+=SPRITE embershock=
+A shockwave and further trembling threw soldiers of balance making them unable to continue that attack.
+Em - Oh.. I think it was a bearing wall.
+Ar(anger) - The building is unstable. Run!
+=SPRITE demitrius=
+D - Damnit.
+Guard - Your Highness, they are getting away. 
+D - Really observant, you idiot. 
+=BLACKTRANS 0.5=
+=BG forest=
+=SPRITE iola=
+I(sad) - Rilu, please do not die!
+I(sad) - You protected us... *sob*
+Ri - *cough* *cough*
+I(shock) - Eh? She's alive!
+Ri - Pull the arrow from my... *cough* lung.
+Rilu stoically endured arrows being pulled out of her body.
+I - You look like you are really in pain. Let me help you.
+Ri - Don't worry, I'm used to it.
+Ar - Weirdly enough she's immortal.
+I - Oh... Thank goodness.
+I(sad) - I can't believe my father ordered them to kill me...
+I - I want to thank you all for my rescue.
+I(sad) - I don't know what I should do now, though.
+Ar - You are welcome to live with us. 
+Ar - It's not fancy but folk here is pretty friendly.
+Ar - I'm afraid your father won't be generous to us any time soon though. 
+I(sad) - I don't know, I don't wanna be a bother to you.
+Ar - Don't be stupid, we are glad to have more pretty gi... I mean companions around.
+Ro - *Sigh*
+Ar - Right, Rilu?
+Ri - ...Why are you asking me?
+Ar - Didn't you suggest the whole rescue thing in the first place?
+Ri - ...
+I - I'm not sure how I can ever repay you for this.
+Ri - That's fine.
+Ro - I'll see where we can let you stay. 
+=STOP=
+
+** iola_2_5 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE iola=
+Ar - Hey, how do you like your new home? 
+I - It's nice, thanks.
+I(sad) - I just don't know what I should do now. 
+I(sad) - Father has changed, he would never do something like this.
+Ro(talk) - Uh.. I think we should tell you about the time we went with him to the caves.
+=BLACKTRANS 0.5=
+I(sad) - That sounds really weird.
+Ar - Just for the note, we aren't demons or anything like that.
+Ro(sarcastic) - Not in a literal sense at least.
+I(sad) - I believe you.
+I - You've mentioned you are looking for some person? 
+Ar - Yeah, according to Rilu there's someone who has been living for a really long time and probably came from another world as well.
+Ar - And we also got this Saint Pearl from Faery Queen, which seems to be related to him.
+I - This reminded me of Sergius. 
+I - He's one of the Ancestors' saints. 
+I - I've been studying it during my initiation. 
+I - And you are planning to find him?
+Ar(neutral) - Don't see any better options.
+I(sad) - It's hard to believe he'd still be alive. 
+I - He was one of the former a long time ago, but it never said what happened to him.
+I - Please, let me help you. If he's actually the Sergius, he would know what's going on. 
+I(sad) - Although I don't know why he would just avoid us if he's still alive.
+Ro - Maybe he has lost his memory or something. 
+Ar - Or just got bored of the religious stuff.
+I(shock) - No way!
+Ar - What? Don't you ever feel bored by the repetitive rituals?
+Ar - It's like brushing your teeth but also everyone makes you feel guilty for not doing it.
+Ro(sarcastic) - Master is fooling around.
+Ro - I'm sure there must be some serious reason.
+I - ...Thanks, I hope we will find him.
+=STOP=
+
+** iola_2_6 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE iola=
+Ar - Hey, I was wondering how you are doing.
+Ar - After, you know, your dad's stuff.
+I - Thank you, Sir Arron. 
+I - I think I'm okay now.
+Ar - Just Arron is fine. 
+I - Okay, Arron.
+I - I could use your help with my religious training.
+Ar - Huh? Aren't you done with the cult?
+I - Even if I can't be a proper member, I'm not giving up on my faith.
+Ar - That's quite a devotion.
+Ar - You don't need that essence thing you asked us to get anymore?
+I - No. Now I can just continue with my training.
+Ar - I see. So what is it?
+I - I'll need you to come to my room at tomorrow's morning after breakfast.
+Ar - Understood. 
+Next morning.
+=BLACKTRANS 0.5=
+=SPRITE_HIDE=
+=BG villageday=
+=SOUND knocking=
+Ar - Iola? I'm here.
+I - One moment!
+Ar - She must be preparing for something.
+I - You can come in.
+I - Ah, and close the door.
+Ar - Okay.
+=BLACKTRANS 0.5=
+=MUSIC erotheme=
+As Arron made his way inside, he discovered fully naked Iola sitting in front of him.
+Ar - ...
+I - Is something wrong?
+Ar - I wonder if I'm still sleeping.
+I - Oh, it's a part of my training.
+Ar - Being naked?
+I - Yes! It makes the partner more excited, they say.
+I - But if you prefer it differently, I can put on my clothes.
+Ar - No, no, this is just fine.
+Ar - ...It might be a bit late, but how exactly is this your training?
+I - As a cult's Vestal I'm obliged to spread love and provide pleasure to those in need.
+Ar - That's the most convenient religion agitation I've ever heard.
+I - So to become a proper Vestal I need to train at it.
+I - So.. Um, we can start if you don't mind.
+Ioal casually freed Arron's penis from his pants.
+I - Oh... It's so big!
+I - Sorry, it's going to be my first time...
+I - We study a lot about human anatomy...
+I - But touching it personally feels completely different...
+I - Do I stroke it like this? 
+=ABG iola_minet_1=
+Iola begins to move her hand over Arron's dick.
+Ar - Y-yes.
+Ar - This would be correct.
+I - Aha, this feels kinda intuitive. 
+I - Do you like this?
+Ar - Yes.
+Ar - You can go a bit faster.
+I - Alright...
+=ABG iola_minet_2 iola_minet_3=
+Iola increased her speed while trying to stay gentle.
+I - Oh right.
+I - I'm also supposed to use my mouth.
+=ABG iola_minet_4 iola_minet_5=
+Ar - Ouch, watch the teeth.
+I - Oh, sorry.
+I - I'll lick it.
+I - Mmmhm...
+I - It tastes weird.
+I - ...Mmm...
+I - How doesh ith heel?
+Ar - For a first time I can't complain.
+=ABG iola_minet_6 iola_minet_7=
+I - (I'll try to do advanced thing)
+I - *slurp*
+I - (Wrapping my tongue around the tip)
+Ar - Hah...
+Ar - You put some real effort.
+I - (He praised me)
+I - Mmhm...
+I - (I wonder if I'm blushing now)
+Ar - Mh, Yes...
+Ar - Just a bit more...
+I - ....Mmhhm *slurp*
+Ar - Watch it, I'm coming.
+Iola nodded in confirmation.
+=ABG iola_minet_8 iola_minet_9=
+=WHITE=
+Ar - Ugh...
+I - ...!
+A hot stream of semen struck Iola's throat. 
+I - Mhm... *gulp*
+I - Ah...
+Pulling out the penis in the middle of ejaculation, a good part of it splashed over her face.
+I - Sorry, I couldn't swallow it all.
+Ar - Don't push yourself too hard.
+Ar - I'll rate it 9 out of 10 for a first time.
+I - Wow, that's a lot!
+I - Thanks Arron.
+Ar - It's been a pleasure.
+I - I hope we can practice together more in future.
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE iola=
+Ar - So, I was wondering one thing.
+Ar - Are you supposed to do it for anyone who asks?
+I - Well, actually there are options. 
+I - Some Vestals do it for everyone, others only serve only selected persons or just their loved ones.
+I - I haven't decided yet.
+I - But there's no point until I finish my training.
+I - And I still have to part with my virginity.
+Ar - Oh, huh. 
+Ar - Well, you know where to find me.
+=STOP=
+
+** iola_2_7 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE rose=
+Ro - So, to sum it up, you are wasting too much money on fancy food.
+Ar(neutral) - Rose, have you seen where we live at?
+Ar - I'm not a peasant, I need fresh food. 
+Ar - Tell her, Erika. 
+Er - Well, I am used to the forests, so I will have to support Arron.
+Ro(sarcastic) - Ugh... At least stop binging on the alcohol every second day...
+=SOUND dooropen=
+=SPRITE iola=
+I - Hey, Arron, Rose, Erika.
+I - Today is the Ancestor's Solidarity Day!
+I - So... I wish to ask you to participate in the celebration.
+Ro(talk) - Fine, as long as it doesn't cost us too much.
+I - It costs nothing really. It's more of a spiritual practice.
+I - You see, we are gonna need at least four people...
+Ro - Eh...?
+Ar - Oh, I haven't told you about her practices, right.
+Ar - You see...
+=BLACKTRANS 0.5=
+Er - Sounds fun. 
+I - Right? What about you, Rose?
+Ro(sarcastic) - No way. I absolutely refuse.
+I(sad) - Oh... That's a bummer. 
+Ar - Yeah, Rose, stop spoiling the fun.
+Ro(sarcastic) - That's not fun, this is basically an orgy. 
+I - Not exactly.
+I - This will be centered around Arron, since he's our only man in charge. 
+Ro(sarcastic) - I still refuse. 
+Ro - (If they need at least four people, that means if I refuse, they won't do it anyway)
+Er - Well, that's too bad. 
+Er - Do you think Ember will be willing to take her place?
+Ro(shock) - Eh?!
+I - Oh, we can ask her out.
+Ro - (Wait)
+Ro - (Master will be doing it with three other girls at same time)
+Ro - (While I'll be left out)
+Ro - ...
+Ro(talk) - No, don't.
+Ro - ...I'll do it.
+Ar - Hmm? What's up Rose? I thought you're against it.
+Ro - I... Don't... 
+Ro - Uh... I can... 
+Ro - I can try it for once, I suppose.
+Ro - (Uh... why does nobody else around here have any problems with this?)
+I - That's nice, I'll make sure everyone is comfortable and happy.
+I - Give me half an hour or so.
+I - Arron, get out. 
+Ar - Gotcha.
+=BLACKFADE 0.5=
+Arron was waiting outside of the bedroom until he heard an invitation.
+I - Okay, we are ready, you can come in!
+=MUSIC erotheme=
+=ABG rose_erika_iola_1=
+=BLACKUNFADE 0.5=
+A three girls laid naked before Arron spreading their legs in lewd poses.
+Ar - Wow, now I know what I want for my birthdays.
+I - Remember, this is an important ritual.
+I - We satisfy our bodies and become closer.
+Er - Look how timid Rose is.
+Ro - I'm not timid! 
+Ro - I'm just not used to such things...
+Ar - You are doing good, Rose. 
+Ar - I appreciate your dedication.
+Ro - Shut up...
+I - Arron, you can proceed however you like.
+Er - Don't overexert yourself though.
+Ar - Don't worry, I've been blessed with endless virility.
+I - I've fed him with a stamina supplement, so it should be all good.
+Ar - Jeez, why did you tell them. What about my image?
+=ABG rose_erika_iola_2 rose_erika_iola_3=
+Er - Oo-oh... 
+Er - I'm getting it first.
+Ar - You are always ready, aren't you.
+Er - Ah... yes...
+Er - Screw me rougher... 
+Er - Like this...
+Er - You stirring my pussy... 
+Er - With your big dick...
+Erika kept enticing Arron while moving her body in response.
+I - I could learn a few things from Erika.
+I - Rose, I see you are getting excited too. 
+I - You can touch yourself too.
+I - Or do you want me to help you out?
+Ro - N-no, this is fine...
+Ro - Ah!
+=ABG rose_erika_iola_4=
+Unexpectedly Arron picked up their conversation and moved his hand to Rose's crotch.
+Ar - Don't be so uptight, here's your beloved master's caress.
+Ro - That's... 
+Ro - Ah... Good...
+I - Wow, nice multitasking. 
+I - You are really skilled, Arron.
+Ar - I'm getting close...
+Er - Great, my pussy is too...
+Er - Harder... 
+Er - Push as deep... 
+Er - As you can...
+Ar - Nghh!..
+Er - AAAhhh!..
+=ABG rose_erika_iola_5 rose_erika_iola_6=
+Ar - Hah...
+Er - It's filling me.
+Er - Your hot spunk...
+Ro - (She looks really happy...)
+Ar - Phew... Two more to go.
+=ABG rose_erika_iola_7 rose_erika_iola_8=
+I - Aah...
+I - It's inside.
+I - Ah... 
+I - You are reaching so deep.
+I - I... Ah...
+I - Haven't practiced enough.
+Ar - Mh, your pussy is as tight as the first time.
+I - T-thank you.
+Ro - Oh...
+Er - Hehe, it seems Rose feels lonely.
+Er - And you are all dripping down there too.
+Ro - Stop...
+Er - Don't be sad, I bet he left the best for the dessert. 
+=ABG rose_erika_iola_9=
+Meanwhile Iola and Arron focused solely on their intercourse.
+I - I'm sorry, I feel like..
+I - I'm...
+I - Ah, I'm getting close...
+Ar - Me too...
+I - Aahh... Ahh.
+I - I'm cumming!...
+=ABG rose_erika_iola_10 rose_erika_iola_11=
+Arron pumped Iola's pussy with his hot seed.
+I - AAaah...
+Ar - OOoh...
+Ar - Ha-h... This is pretty intense.
+I - This felt amazing.
+Ar - Likewise. 
+Pulling out of Iola, Arron finally moved to the girl who had been left waiting this whole time.
+Ar - You must be bouncing off the walls, Rose. 
+Ro - ...Just do it already.
+Ar - Come on, don't be so distant.
+Ar - You'd be spoiling the fun for others.
+Ro - ...Sorry, please make l-love to me.
+Er - Aww, how old-fashioned.
+Ar - Alright, here's your patience reward...
+=ABG rose_erika_iola_12 rose_erika_iola_13=
+Arron carefully pushed his cock inside of the already wet Rose.
+Ro - Ah... 
+Ro - Master...
+Ar - Wow, don't remember you ever being this soaked.
+Ar - You've been fighting back so much, but this seems to really excite you.
+Ro - It's not like that... 
+Ro - Ah...
+Ar - Don't you enjoy it?
+Ro - Yes... 
+Ro - Faster...
+Ar - Just look at this.
+Ar - We are turning our meek Rose into a passionate whore.
+=ABG rose_erika_iola_14=
+Ro - Stop... Ah... 
+Er - Seeing her expression makes me jealous. 
+I - She looks like she's completely into it.
+Er - Well it's often more exciting when you aren't prepared for it.
+Ro - Ah... Master... 
+Ro - I love you...
+Ro - And your cock...
+Ar - Damn you Rose.
+Ar - Enjoying this more than even me.
+Ro - I'm almost... 
+Ro - I'm cumming!!
+=ABG rose_erika_iola_15 rose_erika_iola_16=
+Ar - Nghhh!
+Ro - AAaah!....
+Ro - Ah... Hah... Ahh... 
+I - You did great, Rose!
+Er - Hehe, looking at you, made me wish to go for a second round.
+Ro - Eh?... We aren't done?
+Ar - Why would we be? Today we feast.
+Ro - Uh...
+I - That's true. We can continue for at least until evening.
+Er - He-he, let me get on top of Rose this time.
+I - Ooh, I didn't think of that!
+Ro - (Uh oh...)
+=BLACKFADE 0.5=
+=STOP=

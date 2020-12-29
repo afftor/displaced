@@ -1,6 +1,35 @@
 extends Control
 
-const REF_PATH = "res://assets/data/txt_ref/main_ref.txt"
+signal scene_end
+
+const REF_PATH = [
+	"res://assets/data/txt_ref/scn/chardef.txt",
+	"res://assets/data/txt_ref/scn/intro.txt",
+	"res://assets/data/txt_ref/scn/forest.txt",
+	"res://assets/data/txt_ref/scn/ember_1.txt",
+	"res://assets/data/txt_ref/scn/rose.txt",
+	"res://assets/data/txt_ref/scn/dimitrius_1.txt",
+	"res://assets/data/txt_ref/scn/iola_1.txt",
+	"res://assets/data/txt_ref/scn/erika.txt",
+	"res://assets/data/txt_ref/scn/erika_rose.txt",
+	"res://assets/data/txt_ref/scn/aeros.txt",
+	"res://assets/data/txt_ref/scn/rilu_1.txt",
+	"res://assets/data/txt_ref/scn/faery_queen.txt",
+	"res://assets/data/txt_ref/scn/victor_1.txt",
+	"res://assets/data/txt_ref/scn/erika_annet.txt",
+	"res://assets/data/txt_ref/scn/rilu_2.txt",
+	"res://assets/data/txt_ref/scn/iola_2.txt",
+	"res://assets/data/txt_ref/scn/ember_2.txt",
+	"res://assets/data/txt_ref/scn/victor_2.txt",
+	"res://assets/data/txt_ref/scn/iola_3.txt",
+	"res://assets/data/txt_ref/scn/city_raid.txt",
+	"res://assets/data/txt_ref/scn/annet.txt",
+	"res://assets/data/txt_ref/scn/dimitrius_2.txt",
+	"res://assets/data/txt_ref/scn/zelroth.txt",
+	"res://assets/data/txt_ref/scn/future_city.txt",
+	"res://assets/data/txt_ref/scn/dimitrius_ending.txt",
+	]
+
 const AVAIL_EFFECTS = [
 	"WHITE", "SPRITE_HIDE",
 	"MUSIC_STOP", "GUI_NORMAL",
@@ -11,14 +40,15 @@ const AVAIL_EFFECTS = [
 	"SPRITE", "SPRITE_FADE",
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
-	"ABG", "STOP"
+	"ABG", "STOP", "CHOICE", "SKIP",
+	"DECISION"
 	]
 
 onready var TextField = $Panel/DisplayText
 onready var ImageSprite = $CharImage
 var ShownCharacters = 0.0
 
-var ref_src = []
+var ref_src = PoolStringArray()
 
 var current_scene = ""
 var scene_map = {}
@@ -35,14 +65,17 @@ var delay = 0
 var receive_input = false
 
 var is_video_bg = false
+var decisions = PoolStringArray()
+var last_choice = -1
 
 func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
-	f.open(REF_PATH, File.READ)
-	ref_src = f.get_as_text().split("\n")
-	f.close()
+	for i in REF_PATH:
+		f.open(i, File.READ)
+		ref_src.append_array(f.get_as_text().split("\n"))
+		f.close()
 	
 	scenes_map = build_scenes_map(ref_src)
 
@@ -63,6 +96,8 @@ func _process(delta: float) -> void:
 		advance_scene()
 
 func _input(event: InputEvent) -> void:
+	
+	if $ChoicePanel.visible: return
 	
 	if event.is_action("ctrl"):
 		if event.is_pressed():
@@ -167,6 +202,34 @@ func tag_delay(secs: String) -> void:
 	if skip: delay = 0.1
 	else: delay = float(secs)
 
+func get_choice(i: int):
+	last_choice = i
+	$ChoicePanel.visible = false
+	advance_scene()
+
+func tag_choice(chstring: String) -> void:
+	var chsplit = chstring.split("|")
+	skip = false
+	
+	for i in $ChoicePanel/VBoxContainer.get_children():
+		if i.name != 'Button':
+			i.queue_free()
+	
+	$ChoicePanel.visible = true
+	
+	var c = 0
+	for ch in chsplit:
+		var newbutton = $ChoicePanel/VBoxContainer.get_node("Button").duplicate()
+		$ChoicePanel/VBoxContainer.add_child(newbutton)
+		newbutton.show()
+		newbutton.get_node("Label").text = tr(ch)
+		newbutton.index = c
+		newbutton.connect('i_pressed', self, 'get_choice')
+		c += 1
+
+func tag_decision(dec_name: String) -> void:
+	decisions.append(dec_name)
+
 func tag_sprite_hide() -> void:
 	ImageSprite.texture = null
 
@@ -186,6 +249,13 @@ func tag_shake_sprite(secs: String = "0.2") -> void:
 func tag_shake_screen(secs: String = "0.2") -> void:
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.ShakeAnimation(self, float(secs))
+
+func tag_skip(ifindex_s: String, lcount_s: String) -> void:
+	var ifindex = int(ifindex_s)
+	var lcount = int(lcount_s)
+	
+	if ifindex == last_choice:
+		line_nr += lcount
 
 func tag_sound(res_name: String) -> void:
 	input_handler.PlaySound(resources.get_res("sound/%s" % res_name))
@@ -228,8 +298,9 @@ func tag_stop() -> void:
 	input_handler.StopMusic()
 	set_process(false)
 	set_process_input(false)
-	globals.check_signal("EventFinished")
+	#globals.check_signal("EventFinished")
 	hide()
+	emit_signal("scene_end")
 
 
 func advance_scene() -> void:
@@ -308,6 +379,8 @@ func play_scene(scene: String) -> void:
 	skip = false
 	delay = 0
 	receive_input = false
+	decisions = PoolStringArray()
+	last_choice = -1
 	
 	$Background.texture = null
 	$Background.visible = true

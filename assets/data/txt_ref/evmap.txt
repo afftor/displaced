@@ -1,0 +1,135 @@
+none						-> scn intro_1, intro_2, intro_3, bat forest_1_1
+
+bat forest_1_1				-> scn forest_1, bat forest_1_2
+bat forest_1_2				-> scn forest_2, sel townhall
+
+req bat forest_1_2
+sel townhall				-> scn erika_1
+scn erika_1					-> char erika
+
+req bat forest_1_2
+sel townhall				-> scn ember_1_1
+scn ember_1_1				-> sel smith
+
+sel smith					-> scn ember_1_3
+scn ember_1_3				-> char ember
+
+req char ember, erika
+none						-> scn dimitrius_1_1, bat caves_1_1
+bat caves_1_1				-> scn dimitrius_1_2, bat caves_1_2
+bat caves_1_2				-> scn dimitrius_1_3, dimitrius_1_4
+
+req bat caves_1_2
+sel townhall				-> scn iola_1_1, bat caves_2_1
+bat caves_2_1				-> scn iola_1_2, bat caves_2_2
+bat caves_2_2				-> scn iola_1_3, erika_2, sel steppe
+
+dec erika_2_true			-> scn erika_rose_1, bat forest_erika_1
+bat forest_erika_1			-> scn erika_rose_2
+
+sel steppe					-> bat steppe_1
+bat steppe_1				-> sel town
+
+sel town					-> scn aeros_1, bat caves_dwarf_1_1
+bat caves_dwarf_1_1			-> scn rilu_1_1, bat caves_dwarf_1_2
+bat caves_dwarf_1_2			-> scn rilu_1_2, bat caves_dwarf_1_3
+bat caves_dwarf_1_3			-> scn rilu_1_3, bat caves_dwarf_1_4
+bat caves_dwarf_1_4			-> scn rilu_1_4
+
+req scn rilu_1_4
+sel townhall				-> scn rilu_1_5, char rilu
+
+req scn rilu_1_5
+sel town					-> scn aeros_2, aeros_3, bat forest_fairy_1_1
+
+bat forest_fairy_1_1		-> scn faery_queen_1
+dec faery_queen_1_true		-> scn faery_queen_1_a, bat forest_fairy_1_2
+dec faery_queen_1_false		-> scn faery_queen_1_b, bat forest_fairy_1_2
+bat forest_fairy_1_2		-> bat forest_fairy_1_3
+
+req scn forest_fairy_1_2
+sel town					-> scn victor_1_1
+
+req scn victor_1_1
+sel town					-> scn erika_annet_1
+
+req scn erika_annet_1
+sel town					-> scn erika_annet_2
+
+bat forest_fairy_1_3		-> scn faery_queen_2, bat forest_fairy_1_3
+bat forest_fairy_1_4		-> scn faery_queen_3
+
+req scn faery_queen_3
+sel townhall				-> scn iola_2_1, bat castle_iola_1, sel cult
+bat castle_iola_1			-> scn iola_2_2, bat iola_rescue_1_1
+
+req bat castle_iola_1
+sel townhall				-> scn rilu_2_3, sel castle lock
+
+req scn rilu_2_3
+sel castle					-> scn rilu_2_4, sel unlock
+
+bat iola_rescue_1_1			-> scn iola_2_3, bat iola_rescue_1_2
+bat iola_rescue_1_2			-> scn iola_2_4
+
+req scn iola_2_4
+sel townhall				-> scn iola_2_5, char iola
+
+req scn ember_1_4, char iola
+sel townhall				-> scn ember_2_1, bat mountains_1_1
+bat mountains_1_1			-> scn ember_2_2, bat mountains_1_2
+bat mountains_1_2			-> scn ember_2_3, bat dragon_boss
+
+bat dragon_boss				-> scn ember_2_4
+
+req scn ember_2_4
+sel townhall				-> scn victor_2_1, victor_2_2
+
+req scn victor_2_2
+sel town					-> scn victor_2_3, bat victor_boss
+bat victor_boss				-> scn victor_2_4
+
+req bat victor_boss
+sel townhall				-> scn iola_3_1, bat caves_traveller_1_1
+bat caves_traveller_1_1		-> scn iola_3_2, bat caves_traveller_1_2
+bat caves_traveller_1_2		-> scn iola_3_3
+
+req scn iola_3_3
+sel townhall				-> scn flak_city_raid
+
+req scn flak_city_raid
+sel town					-> scn city_raid, bat city_combat
+bat city_combat				-> scn annet_1, bat annet_boss_1
+
+bat annet_boss_1			-> scn annet_2
+req scn annet_2
+sel townhall				-> scn dimitrius_2_1, bat castle_2
+
+bat castle_2				-> scn zelroth_2, bat zelroth_boss
+bat zelroth_boss			-> scn zelroth_1, bat cult_grounds_1
+bat cult_grounds_1			-> scn dimitrius_2_2, rose_2
+
+req scn rose_2
+sel townhall				-> scn flak_future_city, sel future_city
+
+sel future_city				-> scn dimitrius_ending_1, bat future_city
+bat future_city				-> scn dimitrius_ending_2, bat dimitrius_boss_1
+bat dimitrius_boss_1		-> scn dimitrius_ending_3, bat sewers_battles
+
+bat sewers_battles			-> scn dimitrius_ending_4, bat reactor_battles
+bat reactor_battles			-> scn dimitrius_ending_5, bat arron_vs_dimitrius_1
+
+bat arron_vs_dimitrius_1	-> scn dimitrius_ending_6, bat ro_er_vs_demons_1
+bat ro_er_vs_demons_1		-> scn dimitrius_ending_7, bat em_ri_vs_demons_1
+bat em_ri_vs_demons_1		-> scn dimitrius_ending_8, bat arron_vs_dimitrius_2
+
+bat arron_vs_dimitrius_2	-> scn dimitrius_ending_9
+
+
+buy 100						-> scn ember_1_4
+req bat caves_2_2
+buy 100						-> scn erika_2
+req char erika, scn ember_1_3
+buy 100						-> scn rose_1
+req scn rilu_1_5
+buy 100

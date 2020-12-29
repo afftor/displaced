@@ -1,0 +1,373 @@
+** dimitrius_ending_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city=
+Ro - This place looks so bizzare. 
+Ro - Everything is made out of stone, but it’s crumbling.
+Ri(talk) - Looks like it was a human city before it was brought here. 
+Er - I could never imagine a city like that.
+Ri - Probably built with some advanced magic or technologies.
+Ar - I'd be more worried about what we're gonna meet here. 
+Ar(neutral) - Wouldn't like to repeat my last encounter. 
+I - Yes, let's move with caution.
+=STOP=
+
+** dimitrius_ending_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city=
+=SPRITE demitrius=
+D - Hah, you finally came.
+D - How do you like my work? 
+Ro(talk) - This is terrible. Why would you do this?
+D - Don't be so boring.
+D - When else would you be able to see something so different to your insipid lives?
+Ar(neutral) - Pardon my insipidness, but we're going to stop you.
+D - Hahaha, that's a funny joke. 
+D - You fight for this world, but it's a lost cause.
+D - I really like your persistence, but look at yourself.
+D - You guys are the only ones who actually came. 
+Ar(neutral) - But it was you, who made locals indifferent to their future. 
+D - Bullshit. It's just your nature. 
+D - To be cattle for us. 
+Ar(anger) - Getting really sick of your arrogance.
+D - Great, entertain me little moths!
+=STOP=
+
+** dimitrius_ending_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city=
+=SPRITE demitrius=
+D - Hmph, enough of this little play.
+Ar - Getting cold feet now? 
+D - Don't make me laugh-
+Without hesitation Arron charged at Dimitrius
+=SPRITE_HIDE=
+But he teleported at the last moment a few feet into the air.
+Ar(neutral) - Tsk.
+D - Let me show something really cool.
+Ro - Huh? 
+A sound of distant explosions shook the air.
+As they turned the way it came from, they could see a small object flying through the air.
+Er - Look!
+Ar(shock) - Shit, dodge!
+Before Arron noticed, Dimitrius had escaped, observing them from a safe distance.
+=SPRITE demitrius=
+=SOUND explosion=
+An explosion of insane power erupted on top of the square where he just fought.
+D - Hahaha! 
+D - These toys are really something.
+D - How did you like this tactical nuke, Arron?
+D - Ah, I guess you can't answer anymore.
+=BLACKTRANS 0.5=
+Ar - Shit... Everyone alright?
+Ro(talk) - Yes, we've got pushed underground by the blast.
+Ro - Iola shielded us in the last moment.
+I(sad) - Sorry, I...
+=SOUND fall=
+Ar(shock) - Iola?
+Ri(talk) - She's fine, just exhausted.
+Ar(neutral) - Alright, we need some time to rest.
+Em(tired) - But what should we do now? 
+Em(tired) - We can't beat him like this.
+Ar(neutral) - Well, he must think we are dead.
+Ar(neutral) - Means we have some time to think about it.
+...
+...
+Er - Hey, I found the exit to the sewers.
+Ar - Phew, at least we aren't buried alive. Let's go.
+=STOP=
+
+** dimitrius_ending_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city=
+=SPRITE rose=
+Ro - I see an exit.
+Ar - Finally. Let's see what's there.
+...
+...
+The group entered a small building filled with books and unknown devices.
+=SPRITE caliban=
+Ro(shock) - Ah!
+C - Ah. 
+Ar(shock) - It's Zelroth's minion!
+C - Oh, it's you guys.
+Ri - He looks somewhat different.
+Ar(neutral) - You are not going to fight us?
+C - No, I'd rather not.
+Ar - You also talk differently.
+Ar - Where's Zelroth then?
+C - He's no more. I've absorbed his intelligence. 
+C - Must thank you for that opportunity. 
+Ro(talk) - But what are you doing here then? 
+C - Studying. I've been having an unusual thirst for knowledge recently. 
+C - Humans here had a really advanced understanding of the world and nature.
+Ar(neutral) - Well, if you aren't going to fight we should move on.
+C - ....Hold on. 
+C - Are you still planning to fight Dimitrius?
+Ar - Do we look like we have any other option?
+C - You hardly have any chances on your own at his current power.
+Ar - So what, do you suggest we  give up?
+C - No, I actually want to offer you some help.
+Ro - Why? How do we even trust you?
+C - I'm not one of them and it's only a matter of time after they finish you off that they get to me.
+C - And they are not going to like what I did.
+C - Between you and the demons I'd clearly prefer your dominance.
+Ar(neutral) - Fair enough, I don't mind letting you go free.
+Ar(neutral) - As long as you aren't going to repeat Zelroth's deeds. Caliban, was it?
+C - No, actually I've chosen a new name for me. Now I'm Cyrex.
+Ar - Alright, Cyrex, so what can you offer.
+C - I'm not going to help you personally, but there still might be a way to defeat Dimitrius.
+C - Although, it's not going to be simple at all.
+Ar - Something is better than nothing.
+C - Good. Then, you must be aware that demons are weak to light.
+=BLACKTRANS 0.5=
+The team has made preparations and moved to their new destination while Dimitrius still had no idea where they are.
+=STOP=
+
+** dimitrius_ending_5 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city_reactor=
+=SPRITE demitrius=
+D - So this is where you've been hiding. 
+Ar(neutral) - Shit, he found us.
+D - You really are tenacious to survive that. Just like little cockroaches. 
+D - But it's time to finish our little game. 
+Ar(anger) - For once I agree with you. 
+Ar(anger) - Let's do this.
+=STOP=
+
+** dimitrius_ending_6 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city_reactor=
+=SPRITE demitrius=
+D - Ghah, you idiots. 
+D - Still don't understand that you can't defeat me.
+Ar(shock) - Damnit. You guys escape, I'll hold him back.
+D(anger) - ...Seriously?
+D - Fine, I'll play with you for the last time, Arron.
+*snap*
+A number of demon minions jumped from the outside into the building. 
+Ar(anger) - Gh...
+D - Go after them!
+D - Now I made you look like an idiot. Ahaha!
+Ar(neutral) - We'll see about that, asshole.
+Saying that, Arron turned his back and ran away.
+D(anger) - ...?
+D - This imbecile never learns. 
+=SOUND footstep=
+=BLACKTRANS 0.5=
+Meanwhile Rose and Erika moved through the lab’s upper floors.
+Ro - Come on, come on.
+Ro(talk) - Erika, you sure you remember the map?
+Er - Of course, elves have an excellent photographic memory. 
+Er - Or so I was told anyway.
+Ro(talk) - Please, we are in a dire situation here. 
+Er - I'm kidding, it should be around this corner. 
+=SPRITE demon=
+Demon - Arrgh!
+Ro(shock) - Oh no, they found us!
+Er(sad) - I guess we will have to fight through them.
+=STOP=
+
+** dimitrius_ending_7 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city_reactor=
+=SPRITE rose=
+Ro - We made it...
+Er - Yes, come in, it's after this door.
+Ro(talk) - Great.
+Rose and Erika entered the room filled with glowing glass screens.
+Er - Alright, it's your turn.
+Ro - Uh... This might take some time.
+Er - You sure you can manage it?
+Ro(sarcastic) - No, it would help if you could help me out too.
+Er - You know I'm too stupid for this stuff.
+Ro - ...Just let Rilu know we got there. 
+=BLACKTRANS 0.5=
+Meanwhile Arron kept escaping from Dimitrius.
+After making through another room he ended up in a small room connected to a giant curved structure.
+Without taking a pause he opened a small hatch and jumped inside, sealing it shut behind him.
+=BLACKTRANS 0.5=
+=BG future_city_reactor_inside=
+=SPRITE demitrius=
+Right as he finished, Dimitrius predictably appeared next to him. 
+=SOUND slash=
+Arron attempted to land a surprise attack, but Dimitrius blocked it.
+Ar(anger) - Damn you.
+D - It seems your brilliance is finally overshadowed by your human nature.
+D - What a stupid thing to trap yourself in this place even though I can easily  teleport.
+Dimitrius was correct, they appeared to be inside of an isolated curving tunnel only spacious enough to allow one person running in it.
+Ar(anger) - ...
+=BLACKTRANS 0.5=
+=BG future_city_reactor=
+=SPRITE rilu=
+Meanwhile Ember, Rilu and Iola ran from the other side of the tunnel. 
+Ri - Ember, give it to me.
+Em - Sure.
+Ember passed Rilu a small piece of red cloth that she managed to rip off Dimitrius' outfit during the fight.
+Ri - Erika said they got to the control room as well.
+Ri - Iola, you can start making your preparations.
+I - Got it!
+=SPRITE demon=
+Demon - Arghh!
+Em - Oh no, they found us!
+Ri - We have no time for this. 
+=STOP=
+
+** dimitrius_ending_8 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Em - Looks like it was the last of them.
+Ri - Good, now time to start the preparations.
+I - Understood. How's Arron doing?
+Ri - He's struggling, we should hurry.
+Em - What should I do?
+Ri - Stay on guard.
+Em - Okay!
+=BLACKTRANS 0.5=
+=BG future_city_reactor_inside=
+=SPRITE demitrius=
+D - Exhausted from running in circles? 
+D - Too bad you are only a weak human.
+=SOUND slash=
+Arron threw another strike but Dimitirus blocked it.
+Ar(anger) - Gh, you are really starting  to get on my nerves.
+D - Ahaha, great, let's fool around for the last time!
+=STOP=
+
+** dimitrius_ending_9 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city_reactor_inside=
+=SPRITE demitrius=
+=SOUND sword_fall=
+After a few clashes Dimitrius has managed to strike Arron's sword from his hands.
+Ar(shock) - Ah!
+D - And it's over.
+Ar(anger) - Like hell it is!
+Taken by surprise, Dimitrius was attacked by barehanded Arron, throwing him on the ground.
+=SOUND tumble=
+What he didn't see is how Arron pulled the shock baton out of his clothes.
+D(anger) - What the-
+=SOUND shocker=
+Bzzzzt
+D(anger) - Arrggh... You bastard...
+As the baton was connected to Dimitrius body, electrical shock ran through his body completely immobilizing and depowering him to the point he couldn't speak easily.
+Ar - Hah, so it does work on you after all. 
+D(anger) - You... Will pay for this...
+Arron kept Dimitrius in one spot as electrical current continued to restrict him.
+Ar(neutral) - You know what really gets on my nerves? 
+D(anger) - You are... just postponing the inevitable...
+Ar(neutral) - It's your trash attitude towards us. 
+D(anger) - You still... can't kill me...
+Ar(neutral) - Humans aren't the animals you take us for.
+D(anger) - And once energy... runs out...
+Ar(neutral) - I actually believe we can achieve great things.
+D(anger) - You will... fucking die...
+Ar(neutral) - You aren't even listening. 
+Ar - Well, at least you won't tell it to others.
+=BLACKTRANS 0.5=
+=BG future_city_reactor=
+=SPRITE rose=
+Meanwhile Rose has finally grasped the controls of the reactor. 
+Ro(talk) - Alright, I'm starting it.
+Er - Roger, I'll let Rilu know.
+Ro - Master, please be safe.
+=BLACKTRANS 0.5=
+=SPRITE rilu=
+Ri - ...It's starting.
+Ri(talk) - Iola, wait for my signal.
+I - O-okay!
+Rilu began to chant the spell, as lights around the structure began to work.
+=BLACKTRANS 0.5=
+=BG future_city_reactor_inside_red=
+=SPRITE demitrius=
+As Arron kept Dimitrius disabled, he sensed how the mechanisms around him went into motion and small lights turned on.
+Ar(neutral) - It seems I don't have much time left. 
+D - ...Hah... starting to regret... your arrogance?
+Ar(neutral) - I've heard that demons hate light. 
+D(anger) - (Keep talking fool, I only need a bit more to break free)
+Ar - You might have no idea, but this weird place is called a fusion reactor. 
+D(anger) - Watcha... talking about...
+Ar - Amazingly, it is able to eminate the power of the Sun itself.
+Ar - Given your condition, it seems my shocker has nearly run out of power. 
+Ar - So, say, do you think you will be able to survive fifty millions degree heat?
+D - Enough!
+Dimitrius pushed Arron away with a slowly returning power, still oblivious to what was going on around him. 
+=SOUND fall=
+Ar(shock) - Behind!
+Realizing that Arron indeed saw something behind him, Dimitrius looked around to find a huge cloud of forming plasma spreading through the reactor's coil.
+In the same moment Arron disappeared from his previous place.
+D(anger) - ...Teleportation?
+D - You fool, did you forget who I am?
+D - ...
+D(anger) - Huh?
+D(anger) - Something stops me? 
+D(anger) - HOW!?
+D(anger) - ARR-
+=SPRITE_HIDE=
+As the reactor fully powered, plasma erased his body without a trace.
+=BG future_city_reactor=
+=SPRITE arron=
+Ar - Thanks Iola, that was rather close.
+I - N-no problem, we were lucky.
+Ri(talk) - Yes, thankfully it worked. 
+Ri - His teleportation wasn't that different from the  faeries, only extremely powerf-
+=SOUND explosion=
+=SHAKE_SCREEN 1=
+Ar(neutral) - Oh-uh.
+Em - What's happening?
+Ri(talk) - Rose says the reactor had a leakage, we should run before the building collapses.
+Ar(neutral) - Will they be alright?
+Ri - Yes, let's go.
+=BLACKTRANS 0.5=
+=BG future_city=
+=SPRITE rose=
+Ro(talk) - We made it!
+Ro - Look, demons are gone. 
+Ri - Yes, with Dimitrius dead the dimensions are no longer connected. 
+Ar - Nice work. Time to go home then. 
+Em - Huh... Is this place going to stay in our world though?
+Ar - Not my problem. 
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE flak=
+Ar - Hey, we are back and alive.
+F - Nice to see you then, ex-mayor.
+Ar(neutral) - ...What do you mean, 'ex-mayor'?
+F - Oh, we have elected a new mayor since you were gone and we had no idea if you are even alive.
+Ar(shock) - WHAAAT?!
+F - There he is by the way.
+=SPRITE caliban=
+Ar - ...Eh? How?
+F - Well, he said that he will stop the end of the world if we get him elected. 
+C - Oh, Hi Arron. How are you doing?
+Ar - ...I'll fucking murder you. 
+Ar(shock) - It was me who stopped the end of the world, not him!
+G - Yeah, sure, you weren't even around most of the time.
+Ar(shock) - I-
+Ro(talk) - Master, isn't it fine? We have to return home soon anyway.
+Ar(neutral) - ......
+Ar(neutral) - Whatever. But how do you plan to do it? Dimitrius is gone now.
+I - Umh, I think I've some of those powers, when he died I felt like they went into me. 
+I(sad) - Maybe because we were related.
+I - I think I'll be able to transfer you back to your world.
+F - Well now, don't be so rushy, we surely can celebrate your return before you go.
+Ar - ...Thanks.
+=BLACKFADE 0.5=
+=STOP=

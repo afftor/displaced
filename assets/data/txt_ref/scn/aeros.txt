@@ -1,0 +1,106 @@
+** aeros_1 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_out=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ar - Oh jeez, not the guards...
+Em - Hey, Rose, why doesn’t sir Arron like the guards?
+Ro - It's probably since they mostly had to keep him in place.
+Ar - Far from it, but you can also count that.
+Guard - Halt. Where are you going?
+Ar - Can we go in?
+Guard - Hmmm... Are you a citizen?
+Ar - No. We are sorta on a delivery here?
+Guard - I don't trust you. The city is off-limits if you aren’t a citizen. 
+Guard - We don't need a new group of beggars on the streets.
+Ar(neutral) - You gotta be shitting me. Do I look like a beggar?
+Guard - no pass.
+Ar - Listen, guard...
+Guard - I have a name, and it's Carl.
+Ar - ......
+Ar - Listen, Carl, we really need to go in, how can we prove we aren't beggars?
+Guard - Hmph. Perhaps a small payment of 10,000 gold will prove it. For each person.
+Ar(anger) - YOU FU...
+Ro - Wait, Sir Carl, we really need to get inside. Could you please consider some other way? We are willing to do anything!
+Guard - Heh... Anything you say? 
+Ro(sarcastic) - .....Except that.
+Guard - Hmph. 
+Guard - ...
+Guard - Fine, there's been a lot of reports about bloodthirsty dwarves coming out from nearby caves. 
+Guard - If you take care of them, I will consider allowing you to pass.
+Ar - Sigh.. let's just get on with it.
+Ar - Now you see why I hate guards, Ember.
+Ro - Now that you mention it, I can relate.
+Ro - Maybe we could let Erika please him though.
+Er - Boo. Like I would cheat on Arron like that.
+=STOP=
+
+** aeros_2 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_out=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ar - Hey, we dealt with that dwarf issue. 
+Guard - Which dwarf issue? 
+Ar - The one you told us to take care of. Bloodthirsty dwarves and such, remember?
+Guard - No idea what you are talking about.
+Ar - Carl, please, you are really getting on my nerves.
+Guard2 - I'm not Carl. That guy was kicked out a few days ago.
+Ar - Argh... Whatever. We've dealt with dwarves, now let us pass. We had an agreement.
+Guard - Look, I don't know anything about the agreement. And I’m only seeing you for the first time.
+Guard - You are free to pass through. No idea what that moron Carl said to you, but the entrance is free. 
+Ar - ......
+Ro - It's all good, we can enter the city now, right?
+Ar - That bastard was really lucky his face was hidden by a helmet. 
+=STOP=
+
+** aeros_3 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_in=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ro - Okay, we've searched through the central library. 
+Ar - So what have you found?
+Ro - We've gone through Rilu's description and only found very scarce mentions to someone matching it. 
+Ro - The person is referred to as the Traveler. They are thought to be some sort of powerful mage or even a mysterious entity.
+Ar - Interesting. So you say there's a chance that Traveler is a cute girl? 
+Ro(sarcastic) - Sure, if that makes you motivated. 
+Ro - The only issue is we don't really have any leads. There's one book with a quite detailed description, though.
+Ro - An artifact named "Saint’s Pearl". It's rumored to have great power and is associated with the Traveler somehow. 
+Ro - Perhaps we should investigate it at least.
+Er - Oh, I know where we can find it. 
+Ro(shock) - You do? Tell us then!
+Er - Hmmm... But what would I get from it?
+Ro - *Sigh* What do you want?
+Er - A night together?
+Ro - No.
+Er - A kiss?
+Ro - No. 
+Er - Can I touch your fluffy tail at least, then? 
+Ro - ... 
+Ro - Fine, just do it and tell us already.
+Er - He-he, sure. 
+Er - Don't worry, I'll be gentle...
+Ro - ... Ah!
+Er - Oh, sorry, I didn't expect you to be this sensitive.
+Er - Mhmm it's really soft and nice to touch.
+Ro - Enough, just tell us. 
+Er - Okay... the Faery Queen has it in her possessions.
+Ar - Faeries? Do you mean those small things in the forest?
+Er - Yep. They are nasty little bastards.
+Er - I'd not feel remorse tearing a few of their wings on the way there.
+Ro - That seems a bit harsh for you.
+Er - They mostly manage to earn it. And they grow back with time after all.
+Ar - You know how we can find her?
+Er - Sure, but cornering her might be pretty hard.
+Ar - We'll figure something out once we get there.
+=STOP=

@@ -1,0 +1,94 @@
+** iola_1_1 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ro - There seems to be a new traveler in the village. She's looking for an audience.
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=SPRITE iola=
+=SPRITE_UNFADE 0.5=
+I - Hello, Sir Arron. I'm Iola from Ancestral Cult. 
+Ar - (Wow, she seems pretty hot. Maybe we'll be able to settle Demitrius disappearance without causing too much of a commotion.)
+Ar - Pleased to meet you. The Ancestral cult is quite popular among the villagers. 
+Ar - What brings you here?
+I - You see, it's about my father...
+Ro - ...
+Ar - ...
+I - He seems to have visited your village a few days ago but hasn't returned after that.
+Ar - Oh, so you are Demitrius' daughter? Yes, we indeed had him visit us, but...
+Ar - (Ugh... What do I say to her now...)
+Ro - We escorted him to his target, but haven't seen him since then.
+Ar - Yes, he made us leave. We had no idea no one had seen him since then.
+Ar - The roads around are rather dangerous, but I hope he's fine.
+I - I see, this is not like my father to go missing without telling me first.
+I - I have a favor to ask, sir Arron, can you please show me where you left him?
+Ar(neutral) - (Darn... I can't even refuse her since we were the only people last seen him.)
+Ar(neutral) - (But if anything happens to her, it's a gigantic red flag. The cult won't let 2 of its members disappear near us without serious investigation.)
+Ar - Of course, we will surely do our best. Just give us time to prepare.
+I - I'm glad to hear that, sir Arron, I'm sure the Ancestors will bless your helpfulness.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=STOP=
+
+** iola_1_2 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ro - Are we really doing this? You are going to show her her father's corpse?
+Ar - If you have nothing better to complain about, shut up and practice your shocked reaction.
+Ar - Darn... and she's a beauty, what a chance slipping by because of her dumbass father. 
+Ro - ...That's all you can think about?
+Ar - Well excuse me, thinking about dead old men is a worse alternative here.
+=STOP=
+
+** iola_1_3 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ar - Well, last time it was somewhere around here.
+Ar - It must have been some terrible acci...
+I - Father!
+=SPRITE demitrius=
+=SPRITE_UNFADE 0.5=
+The tall familiar figure appears from the far corner of the cave room. 
+Iola rushes and hugs her father.
+Ar - ...
+Ro(shock) - Holy!...
+Ar - Huh... I guess practicing your shock reaction wasn't really necessary. 
+D - Iola, what are you doing here?
+I - I've come searching for you! What were you doing here for so long?
+D - Hm... I must have lost in thoughts and time flew by without me noticing. 
+D - I'm sorry about that. Let's go home.
+Without raising any suspicion Demitrius moved to the room's exit.
+=BLACKUNFADE 0.2=
+=SPRITE_FADE 0.2=
+=DELAY 0.8=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+After leaving the caves Demitrius gives no apparent interest to Arron's party and left them with his daughter.
+Ro - But how can this be? Maybe he actually did survive?
+Ar - I don't think anyone survives having half of his head smashed to pieces.
+Ro - ...
+Em - But isn't it great this all ended well? It doesn't seem like he remembers what happened. 
+Ar - That's true. See Rose, you should be more optimistic like Ember. 
+Ro - No-no, this is certainly not right.
+Er - Maybe it was just an illusion or a dream? 
+Ar - I don't really care at this point. I've missed my opportunity of getting closer with Iola so let's go back.
+Er(happy) - Arron is on point as ever.
+=STOP=

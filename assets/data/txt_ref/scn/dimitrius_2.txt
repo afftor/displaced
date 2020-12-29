@@ -1,0 +1,202 @@
+** dimitrius_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE rose=
+Ro - Maybe we should've helped the survivors back in the city.
+Ar(neutral) - We have enough to deal with on our hands already.
+Ro - What are we gonna do about Dimitrius though?
+Ar(neutral) - Maybe we won't do anything. 
+Ar(neutral) - He seems to be quite dangerous, but isn't really hostile.
+Ro(talk) - What do you mean?
+Ro(talk) - Now since he got those powers we won't be able to go back too.
+Ar(neutral) - Rose, why do you think I want to go back? 
+Ar - To live the rest of my life in the shadow of my brother, who attempted to get rid of me?
+Ar - Not to mention being chained to the palace and deal with all the dumb people there. 
+Ro - But it was our home. 
+Ar(neutral) - Yes, except nobody is waiting for us there. 
+Ar(neutral) - I've never had the freedom to do anything useful in my life until we ended up here.
+Ro - But... What should I do?
+Ar(neutral) - You aren't my slave anymore. 
+Ar - You can choose what to do with your own life as well. 
+Ro(talk) - But I don't-
+Ro - ...I understand.
+Ro - I don't think we can ignore what's going on around anymore.
+Ro(talk) - Now, excuse me...
+=BLACKTRANS 0.5=
+=BG villagenight=
+=SPRITE rose=
+Ro - (Why do I feel so terrible now)
+Ro - (Maybe I really need a break)
+Ro(talk) - Hmm... Who's there? 
+=SPRITE iola=
+Ro - Iola?
+I - Evening, Rose. 
+I - I'll have to borrow you for a moment.
+Ro(talk) - Huh?
+*Thud* 
+With an uncharacteristic strike, Iola knocked Rose out and swiftly disappeared with her into the night.
+=BLACKTRANS 0.5=
+=BG cult2=
+=SPRITE rose=
+Ro - Ugh... what... Where am I?
+Rose found herself in an enclosed room in a place she hasn't seen before.
+The small room only had two other people besides her: Iola and Dimitrius.
+Ro - Iola? Why..?
+Iola acted as she couldn't hear or see Rose. 
+Ro(talk) - What have you done to her!?
+D - Why are you mortals so dense? 
+D - Who do you think she is? 
+Ro - Our friend. 
+D - Then you should choose better friends.
+D - She's a member of the cult, you idiot. 
+D - The cult, which was reestablished solely to help us invade this world.
+D - She was trained since her birth to succumb to our control and serve us however she might. 
+D - Naturally I've planted a few additional suggestions when she was imprisoned, just in case it could prove to be useful.
+Ro - This is disgusting. 
+D - Thanks. But I didn't ask your opinion on that.
+Ro - What do you want of me?
+D - I have a proposal for you.
+Ro(sarcastic) - ...What?
+D - To put it briefly, I offer you to take the place of Annet. 
+D - After her death there's some gap in ranks. 
+D - You could fit right in and have the same powers she had.
+D - In return you'll only have to pledge your loyalty to me.
+D - Given that it will save you from the eventual demise of your kind, I see it as an extremely nice offer. 
+Ro - ......
+D - You will have some time to think about it. 
+D - Take her to the jail cell.
+I - Okay. 
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE erika=
+Next day.
+Ar - Hey, Erika, have you seen Rose?
+Ar - I haven't seen her since yesterday. 
+Er - No, it seems Iola is gone as well.
+Ar - Okay, this is unusual. 
+Ar - I'll go see Rilu.
+=BLACKTRANS 0.5=
+=SPRITE rilu=
+Ri - Yes, it seems they are with Dimitrus.
+An(anger) - WHAT THE HELL!?
+Ri - We can only guess, but Rose is held hostage. 
+Ri - Don't think Iola is staying there willingly either.
+An(anger) - Fuck... How did this happen...
+Ar(neutral) - We must attack him.
+Ri(talk) - Don't be stupid. 
+Ri - Even if by some miracle we win, he can send them anywhere with his powers.
+Ri - Rather, help me out.
+Ar(neutral) - How? You have a plan?
+Ri - Yes, but we will need to visit the Summerhill Keep first.
+An(anger) - ... You expect me to leave them in this shithead's hands just like that?
+Ri(talk) - I expect you to not be reckless and weigh the odds.
+Ri - Acting on your emotions can only make things worse. 
+Ar(neutral) - .....
+Ri - Let's go then, it's better if we don't waste time. 
+=STOP=
+
+** dimitrius_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG cult1=
+=SPRITE demitrius=
+The team barges into the main room with Dimitrius in it.
+=SOUND slam=
+D - Ah, I almost forgot about you, fools.
+Er(anger) - Stop screwing around. Give our friends back!
+D - How about "No"?
+Ar(neutral) - Figured asking nicely wouldn't work with you. 
+Ar - So how about a trade then?
+D - Hah, what can you possibly offer to me? Your lives?
+Ar - How about this? 
+Arron presents the previously acquired black ring.
+D - An interesting thing, but what good does it do to you? 
+D - You would never dare to use it anyway. 
+Ri - You are right. He wouldn't. 
+Ri - But I will.
+D(anger) - Hmph, is that so?
+Ar(neutral) - You know she would, if you don't want your existence completely erased, give us back Rose and Iola.
+D - Hahahah, Fine.
+D - You can take Iola, I'm already bored with her.
+D - Rose, on the other hand, has something to say about it first.
+=SPRITE rose=
+Ar(shock) - Rose!
+Ro - Thanks for coming, but you can go now.
+Em - Eh? 
+Ro - I'm not going back with you.
+Ro(talk) - I'm joining Dimitrius.
+Er(anger) - What? Why?
+Ro - This is for the best.
+Ro - I'm tired of all this.
+Ro(talk) - Deep inside, I hated every single one of you.
+Ro(talk) - Ember is stupid and gullible.
+Em(tired) - Eeeh?
+Ro(talk) - Erika is a shallow harlot.
+Ro(talk) - Rilu, you just creep me out. 
+Ri - You wouldn't be the first.
+Ro(talk) - And Master... You are the worst irresponsible womanizer I've ever met.
+Ro - It was me, who told your brother about your affair with his wife.
+Ro(talk) - You told me to choose what I wanna do with my life.
+Ro(talk) - I don't want to see any of you anymore from now on.
+Er(anger) - ...
+Em(tired) - ...
+Ar - Yeah, nice work Dimitrius, now let's return to the deal.
+Ro(shock) - Eh? You didn't hear what I said!?
+Ar - I don't care.
+Ro - ...
+D - Aahahah, really nice one Arron. I'm very impressed.
+D - Fine, you can have your girls. 
+Ro - N-no way! What was that?
+D - Sorry sweetie, Arron wins this round.
+D - I can't allow them to destroy my reign.
+D - They are yours.
+Iola and Rose mechanically are relocated to the Arron's side.
+D - *snap* 
+I - Uh... Oh... Where am I?
+Ro - ...
+D - Here, they aren't under my influence anymore. 
+D - Now give that to me.
+Rilu silently threw the ring in Dimitrius' direction. It vanished in a thin air.
+D - Good, you made me worry for a moment there. 
+D - That's quite an achievement for you pests.. 
+Er - You act all high and mighty, but we got our friends back from you. 
+Er - Your plan failed.
+D - What? 
+D - Aahahah, holy crap, you thought my plan was to steal your friends?
+D - You actually are an idiot.
+D - You only interested me because of your connection to the other dimension, and now I've achieved it anyway.
+Ro - N-no way!?
+D - Yeah, I never really cared if you join me or not, Rose, but it's always fun to make mortals hate each other.
+D - This was fun while it lasted, but it's time to finish with this world already.
+D - And once we are done here, it's your home's turn.
+=SHAKE_SCREEN 1=
+=SOUND rumble=
+Ar(shock) - Eh? What's going on?
+Ri(talk) - This is bad, we should stop him.
+Ar(anger) - Shit, no other choice!..
+D - Don't make me laugh you wimp.
+Unexpectedly to everyone, Dimitrius pulled an unknown metal object from his back.
+=BG scenes/demitrius_arron=
+With loud explosive noises it spewed a rain of pellets in the direction of Arron.
+Ar - Agh!.. Guh...
+Ro - Master! 
+D - Ahahaha, humans can make really fun toys.
+Ar - Damn bastard...
+I - Stay still, you are bleeding!
+=BG cult1=
+=SPRITE demitrius=
+=SHAKE_SCREEN 1=
+D - But enough of that. 
+D - Be grateful, you get to see the birth of a new world.
+Ri - !?
+Ar(neutral) - What's... happening?
+D - Just making a few changes around here.
+Er(anger) - This place is going down.
+Ri(talk) - We must retreat.
+Ar - ...
+D - Run, weaklings, run.
+D - Use what little time you've left for your own good, hahaha.
+=STOP=

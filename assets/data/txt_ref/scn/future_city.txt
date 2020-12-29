@@ -1,0 +1,16 @@
+** flak_future_city **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG market=
+=SPRITE flak=
+F - Hey, looks like you've made it.
+F - I wanted to see you, but your gals didn't let me in. 
+Ar - Fair, they didn't let me out either.
+Ar - So what's been going on?
+F - Not much, except for bloodthirsty monsters and demons roaming around.
+F - Good thing they don't seem to care much about our village though.
+F - And that huge dead town thing emerging on the east where you've come from last time.
+F - Kinda feels like the world is coming to an end.
+Ar - True... I should check this out before it's too late.
+=STOP=

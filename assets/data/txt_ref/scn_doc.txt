@@ -1,6 +1,3 @@
-Путь к файлу с репликами пока что
-res://assets/data/txt_ref/main_ref.txt
-
 Строка, обособленная символами '=' обозначает директиву
 Аргументы после названия директивы разделяются пробелами
 Строка, начинающаяся с '#' является комментарием и скипается
@@ -90,6 +87,16 @@ res://assets/images/bg/bg_res_name.png
 =BLACKTRANS secs(optional)=
 Переход черного экрана длительностью в secs при наличии, либо в 0.5
 
+=CHOICE chstring=
+Создание выбора из строки chstring, варианты в которой нужно разделить символом "|"
+Например, Allow|Refuse|Test создаст три варианта, после которых last_choice
+будет равен 0, 1 и 2 соответственно (это нужно использовать в связке с SKIP)
+
+=DECISION dec_name=
+Добавлени dec_name в список принятых решений для EventSystem.
+dec_name играет роль тэга с любым названием, который в EventSystem
+может являться триггером в директиве dec
+
 =DELAY secs=
 Выставление задержи в secs
 
@@ -108,6 +115,10 @@ res://assets/images/bg/bg_res_name.png
 =SHAKE_SCREEN secs(optional)=
 =SHAKE_SPRITE secs(optional)=
 Тряска экрана/спрайта длительностью в secs при наличии, либо в 0.2
+
+=SKIP ifindex lcount=
+Скип lcount линий при last_choice == ifindex
+(last_choice по умолчанию равен -1)
 
 =SOUND sound_res_name=
 Проигрывание звука из ресурса sound_resname

@@ -1,0 +1,406 @@
+** rilu_1_1 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+After meticulously inspecting the caves, the party concluded there are no visible exits with the only one being blocked by an energy wall.
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ro - Master, I've found an old stone coffin in the other room. But it was too heavy to open for me.
+Ar - An old coffin? Alright, in the worst case we can settle down here as well. Let's see it.
+=BLACKUNFADE 0.2=
+=SPRITE_FADE 0.2=
+=DELAY 0.2=
+=BLACKFADE 0.2=
+=DELAY 0.2=
+Ar - Looks pretty ancient. What are these letters?
+Ro - I can't tell, does not look like anything I've seen back in our world or here.
+Er - It says... 'Beware... the absolute evil... within... should not be released'
+Er - And something about radish?
+Ro - Radish? What does that have to do with radish?
+Er - I dunno. The letters are hard to make out.
+Ar - You know this language?
+Er - Nah, not really. It just looks familiar. 
+Ar - What? How do you read it then?
+Er - I might have accidentally learned it sometime in the past. Who really cares?
+Ar - Right. Let's open it.
+Ro(shock) - Master! You've heard what it says, we can't just randomly open it. 
+Ar - Whatever, it also says some nonsense we can't reliably decipher. 
+Ar - Plus there's nothing else to do. Don't be a scaredy-cat.
+Er(happy) - I agree. This is like a lottery. Who knows what might be inside?
+Ro - ... I can't believe we actually made it this far.
+Ar - Alright, Ember help me out.
+Em - Alright!
+As the heavy lid is removed it reveals a young girl lying inside.
+=BG scenes/rilu_1=
+Ro - Eh?
+Er - ...
+Ar - ...
+The party held a briefing, unsure what to do with their discovery.
+Em - Oh... Emergency ration? 
+Ro - Ember, you eat humans!?
+Em - Ah-hah... No, I just wanted to break the silence. 
+Ar - Hmm she's kinda cute. 
+Ro(sarcastic) - ...Really?
+Arron extended his arm and poked the lying girl's face. 
+Ro(shock) - Master!
+Ar - Oh, she's actually warm.
+Ro(shock) - Remember what the letters said!
+Ar - That was obviously nonsense. You know, cute makes right.
+Ar - She's cute so she can't be evil.
+Ro - No, no, that's certainly a possibility here.
+Ar - Rose, don't be so prejudiced. We might end up in a similar coffin one day.
+Ar - It would be pretty sad if you were treated evil just because of that, wouldn't it?
+Ar - Also, isn't it like a Snow White story?
+Ar - I admit, the dwarves are not quite what I imagined, but I'll take it as an unusual twist.
+=BG scenes/rilu_2=
+Ri - Muh...
+Unexpectedly, the girl in the coffin woke up, opened her eyes and exhaled a sleepy mumble. 
+=BG cave=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar - Hello there. 
+Ri - Who are th...
+The girl's face shows a sign of pain and irritation.
+Ri - Darn...
+Er - She bit her tongue...
+Ro - She seems pretty clumsy. Is it because of sleep?
+Ar - Anyway, we were passing by and found this place by chance. I'm Arron, this is Rose, Erika, and Ember. 
+Ar - What about you? 
+Ri - Me?
+Ar - Yeah, your name.
+Ri - ...
+Ri - Riluth'sierhn.
+Em - Rilusiah?
+Ro - Rilutseyn?
+Er - Rilyseya?
+Ar - Not even gonna try. How about just Rilu?
+Rilu showed no objection, and everyone settled with calling her so. 
+Ar - So we seem to be a bit stuck here. Do you wanna join us?
+Ri - ...
+Ri - Were you the one calling me cute?
+Ar - Guilty. 
+Ri - Nonsense. Are you fooling me?
+Ar - Why would I be?
+Arron said it sincerely, but after taking a glance at his friends, he spotted their uneasiness.
+Ri - Huh... a weird man.
+Ri - Fine. I'll accompany you.
+Ro - But before that, Rilu, could you tell us what were you doing in that coffin? 
+Ri - ...
+Ri - I fell in there a long time ago. I think it was cursed and the lid closed on its own.
+Ro - Really? This is... something I can probably imagine.
+Ar - That makes sense. Alright, let's move to the exit.
+=STOP=
+
+** rilu_1_2 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar - This annoying thing is the reason we are stuck here.
+Ri - Shall I take it down?
+Ro(shock) - You can do it? It repelled all our attacks.
+Ri - *Nod*
+Ri(spell) - Step back.
+=SPRITE rilu_m=
+Rilu faced the wall and began chanting a spell. The barely visible spirits began to gather around her, lighting her up in the dark of the caves.
+=SPRITE_FADE 0.5=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+S - The surface dwellers we have trapped on the other side seems to have found a way to disable the spirit wall.
+KD - Finally. I feared I wouldn’t be able to finish them personally. Arm the cannon. 
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=SPRITE_UNFADE 0.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+A sphere of spirit energy has shot from Rilu and dispelled the wall revealing the ambush behind it. 
+Ri - ...
+S - SHOOT!
+A loud explosion shook the whole cave as a steel ball flew from the cannon at great speed.
+With no time to react, Arron and the rest could only shout as it struck Rilu creating a blood-filled smoke. 
+=SPRITE_FADE 0.5=
+=DELAY 0.3=
+Ro(shock) - No way!
+Ar(shock) - ...
+KD - You could only score one target, you damn imbeciles. 
+KD - Fine, my ax hasn't bathed in surfacer blood for long.
+Ar(neutral) - ...Kill these bastards.
+=STOP=
+
+** rilu_1_3 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE kingdwarf=
+=SPRITE_UNFADE 0.5=
+KD - Haha, these surfacers are quite feisty. 
+Ro - Master, we can't fight them for much longer. 
+Em(tired) - I'm sorry, they are numerous and really tough.
+Ar - Shit, the king is coming at us now!
+KD - You have fought well kid, but you've messed with the wrong warriors.
+KD - My ax demands its nourishment!
+Ar - You crazy midget fucker...
+Ar - (This is not good, maybe we should try to escape at this point...)
+Er - Arron, look!
+Arron turned to the side Erika pointed at, broadening his eyes in disbelief.
+Rilu slowly stood up on her knees. 
+Ro(shock) - Rilu! How are you...
+Ri - Ugh... I really hate when this happens.
+The dwarven king shows no sign of hesitation being completely overwhelmed by combat haze. 
+KD - What an interesting girl! Look like an ideal practice target, Hahaha.
+Previously expressionless Rilu's face now lit with magic glow displayed an angry look mixed with determination.
+Ri(spell) - Arron, allow me to give you a hand in this matter.
+Ar - Sure, we could use more than just a hand right now.
+=STOP=
+
+** rilu_1_4 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+KD - No way... You damn freaks...
+Having his forces defeated, the mortally wounded dwarven king fell to the floor. 
+Ar - Phew... finally. 
+Ar - Thanks Rilu, you were a great help. 
+Ro - Indeed, we wouldn't make it without you. 
+Ro - But how did you... Well...
+Ri - It's okay. I can't die. 
+Em - You do bleed a lot though. 
+Er - Ember, that was a bit too rude.
+Em(tired) - Oh... Sorry...
+Ri - Don't worry about it. I have a habit of such.
+Ar - But what was that magic you used? I don't think I've seen it before.
+Ri - I'm a necromancer. It's a power of both the dead and spirits. 
+Ro - (S-spirits? I knew it must be something creepy, but this is even worse...) 
+Ar - Awesome! You can do something like that? 
+Ar - I swear, the dead are so useless on their own. Can you also make skeletons and zombies?
+Ri - W-well...
+Er(happy) - Sir Arron is really into weird things.
+Ar - Hey Rose, why are you so pale all of a sudden? 
+Ar - Wait, you are still afraid of ghosts and stuff? Come on, you are an adult now.
+Ro - I-I'm not, I'm just tired from the fight. Anyway, let's leave this place already.
+=STOP=
+
+** rilu_1_5 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ro - So there's no place or friends you can return to? How sad. 
+Ri - Don't worry about it.
+Ri - I've gotten used to it.
+Ar - Make yourself at home, we still have some unoccupied rooms.
+Ro - Your help was immeasurable, but I'm actually curious.
+Ro - How come someone like you became a necromancer? 
+Ri - .....
+Ro - I mean in the tales necromancers are usually creepy evil old folk.
+Ri - I've been studying my condition. 
+Ar - Your immortality? 
+Ri - Yes. 
+Ri - Unfortunately I've only managed to kill myself another couple dozens of times.
+Ar - But your skills are rather useful. 
+Ar - And more importantly, awesome.
+Ro - Rilu... How old are you?
+Ri - Hmm... I'm not sure. What year is it? 
+Er - 3485.
+Ri - ...
+Ri - 600-ish something. 
+Ri - I think I've had at least a few hundred combined in isolation though. 
+Everyone in the room aside from Rilu went into a silent state.
+Ar - I bet you all wish you’d stay this young for so long.
+Ro(sarcastic) - I dunno about that.
+Er - Nah, I'm good.
+Ri - I heavily advise against it.
+Ri - So, I can really stay with you?
+Ar - No, you must stay with us. 
+Ar - I'm not going to let a live friendly necromancer not join us.
+Ro - If Master has set his mind on something, he'll always stick to it.
+Er(happy) - This harem seems to get weirder and weirder. 
+Ar - Plus, there's a thing you might be able to help us out with.
+Ri - Ah?
+Ar - You see...
+=BLACKUNFADE 0.5=
+=DELAY 1.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+As they finished explaining their problem, Rilu has harshly broken their hope.
+Ri - I've never heard about such means of transportation.
+Ri - However, there might be one person I know who might know something.
+Ar - Huh? Wouldn't all people you know be feeding the worms?
+Ri - Normally. That isn't as big of a deal as I could summon their spirits, but I'm not actually sure if he's dead. 
+Ri - A few centuries ago there was a small religious group worshipping the deity. 
+Ri - According to them, he was the creator of this world, which was born from his dandruff.
+Ro - Ew.
+Ri - Yes. They did seem like just a bunch of lunatics, but I've actually met them before I met the group.
+Ar - Did you get any of his dandruff by chance? 
+Ar - I mean you could sell it to those guys...
+Ri(blush) - No, but I've realized he's been living for much longer than me.
+Ri - So I began to pursue him, to see if he knows something about my problem.
+Ri - But he wasn't weak like me. And he knew nothing about it either. He didn't reveal his secrets either. 
+Ri - I've seen him teleport like you are speaking about as if it were as simple as walking.
+Ri - He also insisted that he wouldn't interfere with this world's business.
+Ar - So you think he's not of this world as well?
+Ri - Back then I thought it was the case. 
+Ar - That's actually something. Let's try to see what we can find then. And thanks, Rilu.
+Ri - ...Don't mention it.
+=STOP=
+
+** rilu_1_6 **
+=MUSIC eventlight=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG villageday=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.3=
+=GUI_NORMAL=
+Ri - Now for this thing...
+Ar - Hey there. Whatcha doing?
+Ar - What's with this weird statue.
+Ri - It's a request from one of the villagers. Seems like this thing is cursed.
+Ar - A request? Do you take things like that?
+Ri - Yes. This is crucial for sustaining this miserable existence.
+Ar - Don't be like that, I'm sure this must be better than being buried alive. 
+Ri - Yeah. I was talking about everyone else though. 
+Ar - ...
+Ar - Can I see it?
+Ri - Do as you wish. 
+Ri - ...
+Ri - There really is a malicious spirit in it. 
+Ar - Woah, can you deal with it?
+Ri - Hmph, who do you think I am?
+Ri - Let's see...
+Rilu chanted a spell and a small puff of smoke erupted from the statue in her hands.
+To her surprise though, it swiftly dashed towards Arron quickly diving into him.
+Ri - Oh...
+Ar(shock) - What the hell? What just happened?
+Ri - I think it invaded you.
+Ri - It must be stronger than I anticipated.
+Ar(shock) - Can't you do something?
+Ri - I... can take a look, but let's go someplace else so it won't go after other people.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Ri - Alright. Let me see.
+Ri - ...
+Ri - It seems the spirit has brought disease upon you.
+Ar(shock) - Eh? What is it?
+Ri - Erectile dysfunction.
+Ar(shock) - No no no no no no no no no no no.......
+Ar(neutral) - Can you help with this? You surely can, right?
+Ar(shock) - It's your fault I was cursed in the first place!
+Ri - I can, but it would be better if you also ask Rose or someone else for assistance.
+Ar(neutral) - No way. I can't let anyone else know about it.
+Ri - ... 
+Ri - I see. I'll do it then. 
+Ri - Excuse my inexperience.
+Freeing Arron from his pants, Rilu began to clumsy feel up his penis with her hands.
+Ri - ...
+Ri - It seems to twitch a bit.
+Ar - This is a good sign, right?
+Ri - Perhaps.
+After another half minute, Rilu backed off dropping her cloak on the floor.
+Ri - Lay down.
+With a feeling of uneasiness, Arron landed on the bed.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=GUI_FULL=
+=MUSIC erotheme=
+=ABG rilu_cowgirl_1=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Rilu awkwardly positioned herself on top of him facing away. 
+Letting out a small gasp she pressed her naked rear against his flaccid cock.
+Ar - What are you doing...?
+Ri - Quiet. You should concentrate now.
+Ri - It blocks out your sexual energy, so to dampen it you need to have someone else's energy until it breaks.
+Ri - This is why I said you should ask someone else.
+Ri - This is the first time I've done something like this...
+Rilu began to grind her bare crotch against Arron.
+Ar - ...
+Ar - (Maybe I should have. She's pretty clumsy.)
+Ar - (Although, she doesn't seem to mind too much.)
+Ri - Mh... Like this?
+Ar - (Oh, I can feel her getting wetter.)
+Ar - (This actually isn't too bad.)
+Ri - Nhhh… this feels weird...
+Even without seeing Rilu's face Arron still could tell her voice was showing more feeling.
+His cock gets warmer with every brush of her pussy over it.
+Rilu’s breath grew more ragged as her juices covered Arron's penis.
+Ar - Oooh!
+=ABG rilu_cowgirl_2 rilu_cowgirl_3=
+With a flash through his mind, he felt the evil energy leave his body instantly making his cock rock hard and suddenly enter Rilu.
+Ri - Ahhh!
+Ar - Woah, You did it Rilu! I feel like its gone.
+Ri - Nhhh... It went inside...
+Being full of Arron's cock Rilu weakly twitched, unsure what to do.
+Arron spotted her confusion and decided to take initiative.
+Ar - But we better make sure it's fully functional, right?
+Ri - What are you...
+Arron helped Rilu by supporting her body from the back and slowly moving in turn.
+Ar - It won't feel right leaving you excited like this.
+Ri - Nnh? Ah...
+Ar - I should also make you feel good as thanks for your work.
+Ri - Arron... 
+Ri - Ahh!
+Arron slowly pushed himself in and out of Rilu.
+Ar - No surprise, you are pretty tight.
+Ri - You’re stirring up my insides... Nhhh...
+Ri - I feel so weird...
+Ar - You really don't have any experience do you? Well then I’ll have to make this a night you’ll always remember.
+Ar - Yet, you have such a sexy moan.
+Ri - You dare to.. Ah... Ridicule me?
+Ar - Of course not. I like you this way.
+=ABG rilu_cowgirl_4 rilu_cowgirl_5=
+Ri - Nnnnh... Something... I feel something...
+Ar - Alright... Let's cum together. 
+Ri - Wha..? Nh... Don't move.
+=ABG rilu_cowgirl_6 rilu_cowgirl_7=
+=WHITE=
+=DELAY 0.5=
+Ri - Ahhh!
+As Arron shoots his seed inside of Rilu, she jerks violently before going limp on top of him.
+Ri - ......
+=BLACKUNFADE 0.5=
+=DELAY 1.5=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.3=
+=GUI_NORMAL=
+Ar - You’ve really never done it before? That's surprising.
+Ri - I've never felt quite like this. 
+Ri - ...That was pleasant. 
+Ar - That's a relief to hear, glad we both got cured by it.
+Ri - You are a weird man, Arron. I'm not used to being taken care of.
+Ri - I know I creep most people out.
+Ar - I like having you around.  You don’t have to worry about that with me.
+Ri - I see. 
+=STOP=

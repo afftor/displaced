@@ -1,0 +1,385 @@
+** erika_annet_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+The annual meeting is being held at the city hall. 
+The hall is filled with nobles and the richest people of the region. 
+CM - So, according to this claim, Mr. Nicolas has failed his contract agreement.
+CM - Do you acknowledge it? 
+N - Yes, but it wasn't my fault. 
+N - My storage was set on fire!
+=SPRITE annet=
+?(An) - You know this can't be used for your defense. 
+?(An) - You've broken the business agreement and now you have to pay the fine. 
+N - Gh... But I'll be going bankrupt because of this!
+?(An) - This isn't the city's issue. 
+?(An) - If you can't make your deals, you shouldn't accept them in the first place.
+CM - I agree with Ms. Annet. We will have to seize your property in the name of the city. 
+CM - Please provide an escort to Mr. Nicolas, the meeting is over. 
+N - Damnit, I've been set up!..
+=BLACKTRANS 0.5=
+An - Another hard issue resolved, friend?
+CM - Indeed, I must thank you for your cooperation.
+CM - I knew it was the right decision to introduce you to the committee.
+An - You scratch my back, and I'll scratch yours, right?
+CM - True, now if you excuse me, I have other business to take care of.
+=SOUND footstep=
+...
+An - Heh, humans are really easy.
+=STOP=
+
+** erika_annet_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG town_in=
+=SPRITE erika=
+Taking a day off Erika walks through Aeros' market.
+M - Hey, elf girl. 
+M - Looking for something specific?
+Er - Nah, Just checking around.
+M - Oh right, you are from that desert village. 
+M - You don't have to dress that skimpy around here though. 
+Er - Don't worry, it's one of my favorite outfits.
+M - A-ha, alright then.
+EC - No, please let us go!
+Erika turned to the noise from the other side of the market.
+A pair of captured children, no older than twelve, were sold to an obese rich man.
+RN - Shut it, you cur.
+RN - I've paid a good sum for you.
+EC - *sob* Please, I want to see my mom.
+RN - They are pretty unruly.
+RN - Don't worry, you'll work off your price in bed and become real ta-
+=SOUND punch=
+=SHAKE_SCREEN 0.5=
+Before the man could notice it, Erika punched him into the face, quickly freeing the children after that.
+Er - Run kids.
+Without a second thought they disappeared into the crowds.
+RN - You... Bitch! What do you think you are doing?!
+Er(anger) - The right thing.
+RN - You don't know who I am? I'm Hector Blackthrorn.
+Hearing that name made people around pay more attention as it was one of the city's strongest families.
+RN - Those slaves cost me 12 thousand gold.
+RN - You better pay up now.
+RN - Or should we turn you into the city guard.
+Er(anger) - ...
+Erika noticed how people were gathering around her, attracted by the ruckus.
+RN - Hah, there's no way you can carry this much money in your garment though.
+=SPRITE annet=
+An - What's going on here, Hector?
+Er - ...?
+RN - Ms. Annet? It's nothing requiring your attention. 
+RN - This elf just made me lose a pair of freshly bought slaves.
+An(anger) - Trying to get your filthy hands on the poor kids again, are you?
+An(anger) - That's disgusting, and it's only natural someone would want to save them.
+RN - This is not against the law, and I paid fair and square. 
+RN - I demand my money back!
+An(anger) - Hmph, fine. You'll have your gold, make sure it will serve something better than your perverted hobbies.
+Hearing this, the previously distant crowd began cheering Annet.
+Str - Wow, Ms. Annet really is a respectable committee member.
+Str2 - This is what all rich and nobles should be like.
+RN - Hmph, fine.
+RN - Have it your way, this time. 
+After receiving the confirmation letter, Hector walked away.
+An - Now, that is taken care of...
+An - I would like to have a word with you...
+An - Your name is Erika, right?
+Erika went numb from hearing her name. 
+Her previous readiness to fight drains from her.
+=BLACKFADE 0.5=
+After a few minutes Erika was brought into Annet's mansion.
+=MUSIC erotheme=
+=ABG annet_erika_1=
+=BLACKUNFADE 0.5=
+In the middle of a dark cell Erika had Annet standing closely behind her.
+An - Surely, it's been a long time, Erika. 
+An - I wonder what have you been doing all this time.
+Er - ...What do you want?
+An - Well, aren't you uncharacteristically rude?
+An - I guess it's only natural you'd lose some manners.
+Er - .....
+An - This will make things more fun.
+=ABG annet_erika_2 annet_erika_3=
+Annet possessively grabbed Erika from behind. 
+Her hands moved over her breasts but Erika didn't stop her.
+Er - Ngh... 
+Against her will, Erika exhaled in a slightly excited manner.
+An - Mhmm... Your body is as good as it was back there. 
+An - Isn't it nice to be an elf?
+An - Your firm tits are so nice to touch. 
+An - Most elves are too bony.
+An - It seems your body still remembers me well, Erika.
+An - I can feel your nipples are very hard even through fabric. 
+Er - ...No...
+An - I had lots of fun playing with you.
+Er - Stop it!
+=ABG annet_erika_4 annet_erika_5=
+Finally Erika tried to stop Annet's actions.
+However Annet easily predicted it and Erika's hands were quickly cuffed above her.
+An - Your behavior, on other hand...
+An - I will have to train you back into a good obedient thing.
+An - Just like you were.
+Er - I don't want it...
+An - We will see about that. 
+Annet removed what little cloth was covering Erika's body, making her shiver.
+=ABG annet_erika_6 annet_erika_7=
+An - I'm betting my estate you will beg me to keep you around by tomorrow.
+An - Because in the end, you are nothing but a little elven whore.
+Er - ...You are wrong...
+*Slap*
+Annet's hand punished Erika with a hard slap on her butt, making her stop her protests.
+An - Let's not make this too rough, dear. 
+An - I want to save our reunion from needless cruelty. 
+An - After all, this is the only thing you are good for.
+Er - *sob*
+An - Don't be sad, that's exactly how I like you.
+An - And I can feel how this makes you horny.
+Er - Ah...
+Annet's hand reached between Erika's legs entering the damp walls of her pussy.
+=ABG annet_erika_8 annet_erika_9=
+An - So wet already.
+Er - Ah...
+An - Aren't you happy you get to play with your Mistress after so long?
+Despite her resistance, Erika's legs slowly spreaded, allowing Annet easier access to her slit.
+An - Ah-ha-ha, just look at this. 
+An - After all these words you willingly let yourself be molested even without my request.
+Er - I'm!.. No... Ah!! 
+Increasing her tempo, Annet brought Erika to climax.
+After that she lost any power to speak coherently.
+Her mind regressed back to the times when she was fully controlled by Annet.
+An - You are such a nice meat hole.
+An - Cumming like this from being raped. 
+Annet was gloating even without Erika fully recognizing what she said.
+That was what she really enjoyed in the whole ordeal.
+An - Time to give you the thing you've been waiting for.
+Er - ...
+=ABG annet_erika_10 annet_erika_11=
+After a few moments Erika felt something long and hard entering her pussy.
+Annet, wearing strap-on, grabbed the defenseless Erika from behind.
+Er - Aah!..
+An - Have you been missing this feeling, you whore?
+An - Your cunt squeezing me so hungrily.
+An - Ha-ha, and to think I was worried you'd actually become a decent person!
+=ABG annet_erika_12 annet_erika_13=
+Annet began thrusting into Erika's wet pussy.
+An - Take this!
+Er - Ohh... Yes... 
+Er - More... Fuck my cunt harder...
+An - Yes, you elf slut, I'll put you back in shape in no time.
+An - I've missed having good toys to play with.
+Er - Ngh... 
+Er - Ah... Mistress...
+An - Yes, shake your hips like that.
+Er - I'm... cumming...
+Er - The elf whore is...
+Er - Going to... cum again...
+An - Good, let's finish this.
+=ABG annet_erika_14 annet_erika_15=
+=WHITE=
+With these words Annet increased speed of her thrusts, forcing Erika and herself to orgasm.
+Er - AAAahhh!!!
+An - Yes... Ah... Hah...
+An - Like in the good old times...
+=MUSIC_STOP=
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ar - Hey Rose, what happened to Erika?
+Ro(talk) - She said she was going to the city market yesterday
+Ro - She hasn't returned since then.
+Ar - Hmm... That seems a bit unlike her. 
+Ro - Would you like to investigate?
+Ar(neutral) - Yeah, I've been bored from sitting around here all day.
+Ar - I hope she hasn't decided to live in a big city instead.
+=BLACKTRANS 0.5=
+=SPRITE_HIDE=
+=BG town_in=
+Str - The elven girl in skimpy clothes?
+Str - Yeah, she was here yesterday. 
+Str - Was causing some ruckus, then walked away with Annet.
+Ro(talk) - Annet?
+Str - Yeah, the city committee member, the one with horns.
+Ar - Oh, right, that one.
+Ar - What she's even about?
+Str - Don't know much, really. 
+Str - She was elected due to her business influence and money mostly.
+Str - I think she's from an aristocratic family, or that's what she looks like anyway. 
+Ar - Don't you find her weird though? 
+Ar - Those horns and tail I mean.
+Ar - She kinda looks like a succubus to me.
+Str - Hey man, not cool. We aren’t prejudiced.
+Str - Anyone can be a good person.
+Str - Especially when they have lots of money.
+Ar - Uh huh, I guess we should check her estate then. 
+Str - Yeah... Don't tell her I told you though.
+Str - And don't comment on those things. 
+Str - She does not seem to like it.
+Ar - ...Thanks.
+=BLACKFADE 0.5=
+After a half hour Arron and Rose have found Annet's estate.
+=BG annet_quarters=
+=SPRITE annet=
+=BLACKUNFADE 0.5
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Ar - ...So we have been looking for her.
+An - I see. Mr. Arron, right?
+An - I do indeed know about Erika and where she is right now.
+An - But there might be some difficulties.
+Ar(neutral) - Such as?
+An - You see, she's an old friend of mine and we have just reunited.
+An - She wants to stay with me.
+Ro - Does she really?
+An - Of course she does, silly.
+An - You don't believe me?
+An - That's fine. Erika, please come in.
+=SOUND dooropen=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+Ro - *Huh, she looks quite disturbed*
+Ar - Hey, we were worried. How are you doing?
+Er(sad) - I'm sorry for my disappearance, Arron, Rose.
+Er(sad) - I will be staying with M-
+Er(sad) - With Annet from now.
+Er(sad) - You don't have to stay here.
+Ro(shock) - Huh?
+=SPRITE annet=
+An - As you see, she's perfectly fine and stays here by her will.
+Ar(neutral) - Hmm, this does look a bit fishy.
+Ro - ....
+An - You are a clever man, Mr. Arron. 
+An - You do look different from most people in this city. 
+An - I can tell you aren't of lowly heritage.
+Ar - Please, you are making me blush.
+An - I'm not flattering you. 
+An - I can see how others react to you, especially your companions. 
+An - Rose, correct? 
+Ro - ...
+An - You see, to me there are two kinds of people in this world.
+An - Those who rule and those who obey. 
+An - Erika is obeying me, just as Rose obeys you.
+An - That makes us alike, don't you think? 
+Ro(sarcastic) - This is absurd.
+Ar - Shush, don't make me bring your gag with us next time.
+Ro(shock) - .....!
+An - Ha, see! You get it.
+An - You have come to me so you do hold interest in Erika. 
+An - Since she has joined you before, you must be a responsible leader.
+An - So I'm not wholly against letting her go.
+An - But I do need someone around to help me with my... business.
+An - Your girl, Rose, looks quite capable of that. 
+An - What would you say if we switch for an uncertain period of time?
+Ro(shock) - ..!
+Rose noticed how Erika's eyes screamed "No", but did not say anything.
+She was terrified by the idea of being left alone with Annet.
+Ar(neutral) - This is a tempting offer...
+Ar - But I'll have to consider it first.
+Ar - If that's fine with you.
+Ro - *C-consider?*
+An - Of course not. 
+An - Once you decide, I'll be waiting. 
+An - I hope we can have a productive relationship in future.
+Ar - Likewise.
+=BLACKFADE 0.5=
+Later this evening.
+=BG annet_quarters=
+=SPRITE rose=
+An - Hello, Rose. 
+An - I'm glad that you've visited me.
+An - I hope you don't think of me badly because of what I said.
+An - In no way have I tried to degrade you.
+Ro(talk) - N-no, I understand. 
+Ro - I've come on my own here. Master, I mean, Arron would not let me go.
+Ro(talk) - But I want to help Erika. 
+An - I can assure you, Erika is in great condition.
+Ro - I'll stay with you, if you let her go.
+An - *Ho my, this is perfect*
+An - Sure, this is very nice of you. 
+An - If you become my subordinate, I'll let Erika leave.
+Ro - Okay, I will. But... 
+Ro - I want to see that she's fine. 
+An - Sure thing. 
+An - We can visit her right now.
+An - Please, follow me. 
+=BLACKTRANS 0.5=
+Annet and Rose went to the prison cells where Erika was held captive.
+An - You know, I quite adore reserved girls like you.
+An - *You are really fun to play with.*
+An - But what about Arron?
+An - Isn't he going to return for you?
+Ro(sarcastic) - H-He does not own me anymore. 
+Ro(talk) - I'm free to decide what to do.
+An - Ah, is that so. 
+An - You do have some unusual features, must catch quite a bit of attention.
+Ro - T-that's not true. 
+Ro - It's nice that you appreciate it, though.
+An - *Hah, she takes my attention as a benefit*
+An - *Maybe I should take her right here*
+An - *maybe even next to Erika...*
+An - We are here. As you can see, she's perfectly fine.
+Behind the cell bars a girl's silhouette rests in the shadows.
+Ro(talk) - Erika? Is that you?
+Annet has put Erika's in shackles just in case she might attempt to escape.
+Ro - C-can I see her closer?
+An - Alright, I have a key with me.
+An - Just let me unlock this...
+*click*
+*thud*
+*fall*
+Annet fell to the ground knocked out with Rose standing behind as she was unlocking the cell door. 
+Rose held a small blackjack in her hand, which just got intimately acquainted with Annet’s head
+Ro(talk) - *Gasp*
+Ro - Keys... Hold on, Erika.
+Er(sad) - ...?
+Ro - I'm getting you out.
+Er(sad) - Rose... 
+Er(sad) - How did you-
+Ro - Not now, we have to escape.
+...
+=BLACKFADE 0.5=
+=BG town_in=
+=BLACKUNFADE 0.5=
+Rose dragged Erika outside where Arron and others were waiting for her.
+Ro - We did it.
+Ar - Well done, Rose.
+Er(sad) - Arron? Girls?
+Em - We took care of the patrols.
+Er(sad) - I'm... not... 
+Ar(neutral) - We can talk later, you need some rest.
+=BLACKFADE 0.5=
+=BG villagenight=
+=SPRITE erika=
+=BLACKUNFADE 0.5=
+After some time they safely returned home.
+Ro(talk) - Thanks for the baton, Ember.
+Ro - I managed to hide it so she had no idea.
+Em - A-ha, it's nothing. 
+Em - I'm glad I could be useful.
+Er(sad) - I... was sure that I wouldn't see you again any time soon.
+Ar - It was Rose's plan. 
+Er(sad) - ...Rose? You risked yourself for me?
+Ar - You must've fooled her well acting like prey.
+Ro - It was rather scary.
+Ro - I felt like she could easily push me around, if I were any younger.
+Ro(sarcastic) - Or you haven't been pushing me around since childhood.
+Ar - Filthy lies.
+Er(sad) - I... I'm not sure I'll be able to ever repay you for this.
+Er(sad) - But now you might get into trouble with city government.
+Ar(neutral) - I don't think she's going to go that far.
+Ar - Not until she's ready to proclaim what she was doing to you anyway.
+Ar - And it's not like it's my first time getting into fights with local authorities.
+Ro(sarcastic) - Please, don't make me remember.
+Ar - We haven't even turned anything to cinders this time.
+Er - Thank you, Rose. 
+Er - I actually thought you would be happy with me gone too.
+Ro(talk) - Stop it. I wouldn't feel right leaving you like that.
+Ro(talk) - And I don't think bad of you, it's just... I'm...
+Ro - Umh... 
+Ri - She wants to say, she thinks of you as of a friend.
+Ro(talk) - That's not...
+Ro - Uh, well, maybe.
+Er - I appreciate it.
+=BLACKFADE 0.5=
+=STOP=
