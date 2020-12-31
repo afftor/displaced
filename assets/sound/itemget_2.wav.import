@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/fx stop time.wav-2561e394c5828db178ac342367a7a8bd.sample"
+path="res://.import/itemget_2.wav-3f23653d2d4e65a2640a418b030f5f75.sample"
 
 [deps]
 
-source_file="res://assets/sound/fx stop time.wav"
-dest_files=[ "res://.import/fx stop time.wav-2561e394c5828db178ac342367a7a8bd.sample" ]
+source_file="res://assets/sound/itemget_2.wav"
+dest_files=[ "res://.import/itemget_2.wav-3f23653d2d4e65a2640a418b030f5f75.sample" ]
 
 [params]
 

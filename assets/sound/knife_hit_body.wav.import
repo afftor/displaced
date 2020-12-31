@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knife_hit_body.wav-7a465b293c74e21adac95a933bf63a54.sample"
+
+[deps]
+
+source_file="res://assets/sound/knife_hit_body.wav"
+dest_files=[ "res://.import/knife_hit_body.wav-7a465b293c74e21adac95a933bf63a54.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

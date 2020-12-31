@@ -4,9 +4,13 @@ var chosenpartbutton
 var itemparts = {}
 var itemtemplate
 var repairitemlist = []
+var craft_sound = "sound/itemcraft"
 
 
 func _ready():
+	resources.preload_res(craft_sound)
+	yield(resources, "done_work")
+	
 	for i in [$ItemCreationWindow/Part1, $ItemCreationWindow/Part2, $ItemCreationWindow/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])
 	$ItemCreationWindow.hide()
@@ -180,7 +184,7 @@ func checkcreatingitem(item):
 
 
 func CreateItem():
-	input_handler.PlaySound("itemcreate")
+	input_handler.PlaySound(craft_sound)
 	$ItemCreationWindow/CreateItem.disabled = true
 	enditem.substractitemcost()
 	var time = 1.5

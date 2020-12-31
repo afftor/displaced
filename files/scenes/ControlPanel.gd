@@ -1,8 +1,16 @@
 extends Control
 
 onready var BS = $BlackScreen;
+var sounds = {
+	"defeat" : "sound/defeat",
+	"itemget" : "sound/itemget"
+}
 
 func _ready():
+	for i in sounds.values():
+		resources.preload_res(i)
+	yield(resources, "done_work")
+	
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
@@ -21,7 +29,7 @@ func GameOverShow():
 	$GameOverPanel.show()
 	input_handler.UnfadeAnimation($GameOverPanel, 2)
 	input_handler.StopMusic(true)
-	input_handler.PlaySound("defeat")
+	input_handler.PlaySound(sounds["defeat"])
 
 
 func GameOver():
@@ -63,7 +71,7 @@ func flyingitemicon(taskbar, icon):
 	add_child(x)
 	x.texture = icon
 	x.rect_global_position = taskbar.rect_global_position
-	input_handler.PlaySound("itemget")
+	input_handler.PlaySound(sounds["itemget"])
 	input_handler.ResourceGetAnimation(x, taskbar.rect_global_position, $ControlPanel/Inventory.rect_global_position)
 	yield(get_tree().create_timer(0.7), 'timeout')
 	x.queue_free()

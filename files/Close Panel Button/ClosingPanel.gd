@@ -2,11 +2,16 @@ extends Control
 
 var closebuttonoffset = [14,5]
 var closebutton
-var open_sound = 'menu_open'
-var close_sound = 'menu_close'
+var open_sound = 'sound/menu_open'
+var close_sound = 'sound/menu_close'
 var close_played = false
 
 func _ready():
+	
+	for i in [open_sound, close_sound]:
+		resources.preload_res(i)
+	yield(resources, "done_work")
+	
 	rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
 	closebutton = load("res://files/Close Panel Button/CloseButton.tscn").instance()
 	add_child(closebutton)

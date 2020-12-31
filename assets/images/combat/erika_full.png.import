@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/erikacircle.png-9b7a8c68ec987dfd565319ff7220cff2.stex"
+path="res://.import/erika_full.png-f53bd68caf9b1f07d27b0ad10936f3f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/combatportraits/erikacircle.png"
-dest_files=[ "res://.import/erikacircle.png-9b7a8c68ec987dfd565319ff7220cff2.stex" ]
+source_file="res://assets/images/combat/erika_full.png"
+dest_files=[ "res://.import/erika_full.png-f53bd68caf9b1f07d27b0ad10936f3f0.stex" ]
 
 [params]
 

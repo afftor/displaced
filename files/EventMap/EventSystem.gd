@@ -2,7 +2,7 @@ extends Node
 
 signal state_update(cstate)
 
-const EV_PATH = "res://assets/data/txt_ref/evmap.txt"
+const EV_PATH = "res://assets/data/txt_ref/evmap.json"
 const KEYWORDS = [
 	"bat", "none",
 	"scn", "sel",
@@ -47,9 +47,12 @@ var wallet = 0
 func _ready() -> void:
 	var f = File.new()
 	f.open(EV_PATH, File.READ)
-	ev_src = f.get_as_text().split("\n")
+	if validate_json(f.get_as_text()): # not a json
+		ev_src = f.get_as_text().split("\n")
+		events_map = build_events_map(ev_src)
+	else:
+		events_map = parse_json(f.get_as_text())
 	f.close()
-	events_map = build_events_map(ev_src)
 	yield(get_tree(), "idle_frame")
 	make_a_step()
 

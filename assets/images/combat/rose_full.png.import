@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arronfull.png-e69123ac3c655c9ab3b47db03d31211d.stex"
+path="res://.import/rose_full.png-e8808e0f9fd8f1259cc4ddf31af6d5f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/combatportraits/arronfull.png"
-dest_files=[ "res://.import/arronfull.png-e69123ac3c655c9ab3b47db03d31211d.stex" ]
+source_file="res://assets/images/combat/rose_full.png"
+dest_files=[ "res://.import/rose_full.png-e8808e0f9fd8f1259cc4ddf31af6d5f8.stex" ]
 
 [params]
 

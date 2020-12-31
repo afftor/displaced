@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/GameOver.wav-c63b088efff4bcba55fa759d9de4fcd3.sample"
+path="res://.import/time_stop.wav-f664b258ebfcc25652dd9c19de8395be.sample"
 
 [deps]
 
-source_file="res://assets/sound/GameOver.wav"
-dest_files=[ "res://.import/GameOver.wav-c63b088efff4bcba55fa759d9de4fcd3.sample" ]
+source_file="res://assets/sound/time_stop.wav"
+dest_files=[ "res://.import/time_stop.wav-f664b258ebfcc25652dd9c19de8395be.sample" ]
 
 [params]
 

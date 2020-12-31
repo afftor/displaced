@@ -77,7 +77,17 @@ var q_skills = []
 
 enum {FIN_NO, FIN_STAGE, FIN_VIC, FIN_LOOSE}
 
+var sounds = {
+	"victory" : "sound/victory",
+	"itemget" : "sound/itemget_1",
+	"levelup" : "sound/levelup"
+}
+
 func _ready():
+	for i in sounds.values():
+		resources.preload_res(i)
+	yield(resources, "done_work")
+	
 	for i in range(1,10):
 		battlefield[i] = null
 #	for i in range(7,13):
@@ -338,7 +348,7 @@ func victory():
 	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	
-	input_handler.PlaySound("victory")
+	input_handler.PlaySound(sounds["victory"])
 	
 	rewardsdict = {materials = {}, items = [], xp = 0}
 	for i in defeated:
@@ -378,7 +388,7 @@ func victory():
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
-			subtween.interpolate_callback(input_handler, 1, 'PlaySound', "levelup")
+			subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
 		elif i.level == level && i.baseexp == 100 :
 			newbutton.get_node("xpbar").value = 100
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
@@ -417,7 +427,7 @@ func victory():
 		tween = input_handler.GetTweenNode(i)
 		yield(get_tree().create_timer(1), 'timeout')
 		i.show()
-		input_handler.PlaySound("itemget")
+		input_handler.PlaySound(sounds["itemget"])
 		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()
 	

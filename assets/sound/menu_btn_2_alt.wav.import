@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/menu_btn_2_alt.wav-129a08e8466007127889f3cf71e719fe.sample"
+
+[deps]
+
+source_file="res://assets/sound/menu_btn_2_alt.wav"
+dest_files=[ "res://.import/menu_btn_2_alt.wav-129a08e8466007127889f3cf71e719fe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -68,7 +68,6 @@ var bonuses = {}
 var taunt = null
 
 
-
 func get_stat(statname):
 	var res = get(statname)
 	if variables.bonuses_stat_list.has(statname):
@@ -569,22 +568,18 @@ func sprite():
 
 func portrait():
 	if icon != null:
-		# TODO
 		return resources.get_res(icon)
 
 func combat_portrait():
 	if combaticon != null:
-		# TODO
 		return resources.get_res(combaticon)
 
 func combat_full_portrait():
 	if combaticon != null:
-		# TODO
 		return resources.get_res(combaticon)
 
 func portrait_circle():
 	if combaticon != null:
-		# TODO
 		return resources.get_res(combaticon)
 
 #func createtrait(data, type = 'starter'):

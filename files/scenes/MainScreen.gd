@@ -12,8 +12,19 @@ var tasks #Task Data Dict var data = {function = selectedtask.triggerfunction, t
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 onready var BS = $BlackScreen;
 
+var sounds = {
+	"defeat" : "sound/defeat",
+	"morning" : "sound/morning_rooster",
+	"time_stop" : "sound/time_stop",
+	"time_start" : "sound/time_start",
+	"time_up" : "sound/time_up"
+}
 
 func _ready():
+	for i in sounds.values():
+		resources.preload_res(i)
+	yield(resources, "done_work")
+	
 	get_tree().set_auto_accept_quit(false)
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	globals.CurrentScene = self
@@ -142,7 +153,7 @@ func GameOverShow():
 	$GameOverPanel.show()
 	input_handler.UnfadeAnimation($GameOverPanel, 2)
 	input_handler.StopMusic(true)
-	input_handler.PlaySound("defeat")
+	input_handler.PlaySound(sounds["defeat"])
 
 
 func GameOver():
@@ -229,7 +240,7 @@ func _process(delta):
 			if floor(state.daytime) == 0.0:
 				EnvironmentColor('morning')
 				yield(get_tree().create_timer(1), "timeout")
-				input_handler.PlaySoundIsolated("morning", 1) #prevents multiple sounds stacking
+				input_handler.PlaySoundIsolated(sounds["morning"], 1) #prevents multiple sounds stacking
 				
 			elif floor(state.daytime) == floor(variables.TimePerDay/4):
 				EnvironmentColor('day')
@@ -337,7 +348,11 @@ func changespeed(button, playsound = true):
 	for i in timebuttons:
 		i.pressed = i == button
 	gamespeed = newvalue
-	var soundarray = ['time_stop', 'time_start', 'time_up']
+	var soundarray = [
+		sounds['time_stop'],
+		sounds['time_start'],
+		sounds['time_up']
+	]
 	if oldvalue != newvalue && playsound:
 		input_handler.PlaySound(soundarray[int(button.name[0])])
 	

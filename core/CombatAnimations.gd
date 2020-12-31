@@ -28,6 +28,10 @@ var animation_delays = {}
 
 var is_busy = false
 
+var miss_sound = "sound/dodge"
+
+func _ready() -> void:
+	resources.preload_res(miss_sound)
 
 func _process(delta):
 	for node in animation_delays:
@@ -121,6 +125,7 @@ func allanimationsfinished():
 
 # ALL FUNCTIONS BELOW ARE SETUPPING ANIMATIONS AND THOUGH MUST RETURN THEIR ESTIMATING 'LOCK' TIME  
 func sound(node, args):
+	# need to preload somehow
 	input_handler.PlaySound(args.sound)
 	return 0.1
 
@@ -195,7 +200,7 @@ func targetfire(node, args = null):
 	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.1)
 	buffs_update_delays[node] = 0.2
-	input_handler.gfx(node, 'fire')
+	input_handler.gfx(node, 'gfx/fire')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	
@@ -218,7 +223,7 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.4
-	input_handler.PlaySound("combatmiss")
+	input_handler.PlaySound(miss_sound)
 	input_handler.FloatText(node, tr("MISS"), 'miss', 75, Color(1,1,1), 1, 0.2)#, node.get_node('Icon').rect_size/2-Vector2(80,20))
 	tween.interpolate_property(node, 'modulate', Color(1,1,1), Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)

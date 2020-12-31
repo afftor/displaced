@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rosecircle.png-f5867fc90a43d0e47e67cc57de92f9f9.stex"
+path="res://.import/ember_full.png-5816832fda93310dc60ca0afeeaaf32f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/combatportraits/rosecircle.png"
-dest_files=[ "res://.import/rosecircle.png-f5867fc90a43d0e47e67cc57de92f9f9.stex" ]
+source_file="res://assets/images/combat/ember_full.png"
+dest_files=[ "res://.import/ember_full.png-5816832fda93310dc60ca0afeeaaf32f.stex" ]
 
 [params]
 

@@ -1,0 +1,979 @@
+[
+	{
+		"actions": [
+			"scn intro_1",
+			"intro_2",
+			"intro_3",
+			"bat forest_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 0,
+		"reqs": [],
+		"trigger_arg": "",
+		"trigger_type": "none"
+	},
+	{
+		"actions": [
+			"scn forest_1",
+			"bat forest_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 2,
+		"reqs": [],
+		"trigger_arg": "forest_1_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn forest_2",
+			"sel townhall"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 3,
+		"reqs": [],
+		"trigger_arg": "forest_1_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn erika_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 6,
+		"reqs": [
+			"bat forest_1_2"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"char erika"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 7,
+		"reqs": [],
+		"trigger_arg": "erika_1",
+		"trigger_type": "scn"
+	},
+	{
+		"actions": [
+			"scn ember_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 10,
+		"reqs": [
+			"bat forest_1_2"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"sel smith"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 11,
+		"reqs": [],
+		"trigger_arg": "ember_1_1",
+		"trigger_type": "scn"
+	},
+	{
+		"actions": [
+			"scn ember_1_3"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 13,
+		"reqs": [],
+		"trigger_arg": "smith",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"char ember"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 14,
+		"reqs": [],
+		"trigger_arg": "ember_1_3",
+		"trigger_type": "scn"
+	},
+	{
+		"actions": [
+			"scn dimitrius_1_1",
+			"bat caves_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 17,
+		"reqs": [
+			"char ember",
+			"erika"
+		],
+		"trigger_arg": "",
+		"trigger_type": "none"
+	},
+	{
+		"actions": [
+			"scn dimitrius_1_2",
+			"bat caves_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 18,
+		"reqs": [],
+		"trigger_arg": "caves_1_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_1_3",
+			"dimitrius_1_4"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 19,
+		"reqs": [],
+		"trigger_arg": "caves_1_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn iola_1_1",
+			"bat caves_2_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 22,
+		"reqs": [
+			"bat caves_1_2"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn iola_1_2",
+			"bat caves_2_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 23,
+		"reqs": [],
+		"trigger_arg": "caves_2_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn iola_1_3",
+			"erika_2",
+			"sel steppe"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 24,
+		"reqs": [],
+		"trigger_arg": "caves_2_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn erika_rose_1",
+			"bat forest_erika_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 26,
+		"reqs": [],
+		"trigger_arg": "erika_2_true",
+		"trigger_type": "dec"
+	},
+	{
+		"actions": [
+			"scn erika_rose_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 27,
+		"reqs": [],
+		"trigger_arg": "forest_erika_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"bat steppe_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 29,
+		"reqs": [],
+		"trigger_arg": "steppe",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"sel town"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 30,
+		"reqs": [],
+		"trigger_arg": "steppe_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn aeros_1",
+			"bat caves_dwarf_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 32,
+		"reqs": [],
+		"trigger_arg": "town",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn rilu_1_1",
+			"bat caves_dwarf_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 33,
+		"reqs": [],
+		"trigger_arg": "caves_dwarf_1_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn rilu_1_2",
+			"bat caves_dwarf_1_3"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 34,
+		"reqs": [],
+		"trigger_arg": "caves_dwarf_1_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn rilu_1_3",
+			"bat caves_dwarf_1_4"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 35,
+		"reqs": [],
+		"trigger_arg": "caves_dwarf_1_3",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn rilu_1_4"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 36,
+		"reqs": [],
+		"trigger_arg": "caves_dwarf_1_4",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn rilu_1_5",
+			"char rilu"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 39,
+		"reqs": [
+			"scn rilu_1_4"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn aeros_2",
+			"aeros_3",
+			"bat forest_fairy_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 42,
+		"reqs": [
+			"scn rilu_1_5"
+		],
+		"trigger_arg": "town",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn faery_queen_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 44,
+		"reqs": [],
+		"trigger_arg": "forest_fairy_1_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn faery_queen_1_a",
+			"bat forest_fairy_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 45,
+		"reqs": [],
+		"trigger_arg": "faery_queen_1_true",
+		"trigger_type": "dec"
+	},
+	{
+		"actions": [
+			"scn faery_queen_1_b",
+			"bat forest_fairy_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 46,
+		"reqs": [],
+		"trigger_arg": "faery_queen_1_false",
+		"trigger_type": "dec"
+	},
+	{
+		"actions": [
+			"bat forest_fairy_1_3"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 47,
+		"reqs": [],
+		"trigger_arg": "forest_fairy_1_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn victor_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 50,
+		"reqs": [
+			"scn forest_fairy_1_2"
+		],
+		"trigger_arg": "town",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn erika_annet_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 53,
+		"reqs": [
+			"scn victor_1_1"
+		],
+		"trigger_arg": "town",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn erika_annet_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 56,
+		"reqs": [
+			"scn erika_annet_1"
+		],
+		"trigger_arg": "town",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn faery_queen_2",
+			"bat forest_fairy_1_3"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 58,
+		"reqs": [],
+		"trigger_arg": "forest_fairy_1_3",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn faery_queen_3"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 59,
+		"reqs": [],
+		"trigger_arg": "forest_fairy_1_4",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn iola_2_1",
+			"bat castle_iola_1",
+			"sel cult"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 62,
+		"reqs": [
+			"scn faery_queen_3"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn iola_2_2",
+			"bat iola_rescue_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 63,
+		"reqs": [],
+		"trigger_arg": "castle_iola_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn rilu_2_3",
+			"sel castle lock"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 66,
+		"reqs": [
+			"bat castle_iola_1"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn rilu_2_4",
+			"sel unlock"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 69,
+		"reqs": [
+			"scn rilu_2_3"
+		],
+		"trigger_arg": "castle",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn iola_2_3",
+			"bat iola_rescue_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 71,
+		"reqs": [],
+		"trigger_arg": "iola_rescue_1_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn iola_2_4"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 72,
+		"reqs": [],
+		"trigger_arg": "iola_rescue_1_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn iola_2_5",
+			"char iola"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 75,
+		"reqs": [
+			"scn iola_2_4"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn ember_2_1",
+			"bat mountains_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 78,
+		"reqs": [
+			"scn ember_1_4",
+			"char iola"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn ember_2_2",
+			"bat mountains_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 79,
+		"reqs": [],
+		"trigger_arg": "mountains_1_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn ember_2_3",
+			"bat dragon_boss"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 80,
+		"reqs": [],
+		"trigger_arg": "mountains_1_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn ember_2_4"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 82,
+		"reqs": [],
+		"trigger_arg": "dragon_boss",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn victor_2_1",
+			"victor_2_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 85,
+		"reqs": [
+			"scn ember_2_4"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn victor_2_3",
+			"bat victor_boss"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 88,
+		"reqs": [
+			"scn victor_2_2"
+		],
+		"trigger_arg": "town",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn victor_2_4"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 89,
+		"reqs": [],
+		"trigger_arg": "victor_boss",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn iola_3_1",
+			"bat caves_traveller_1_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 92,
+		"reqs": [
+			"bat victor_boss"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn iola_3_2",
+			"bat caves_traveller_1_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 93,
+		"reqs": [],
+		"trigger_arg": "caves_traveller_1_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn iola_3_3"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 94,
+		"reqs": [],
+		"trigger_arg": "caves_traveller_1_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn flak_city_raid"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 97,
+		"reqs": [
+			"scn iola_3_3"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn city_raid",
+			"bat city_combat"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 100,
+		"reqs": [
+			"scn flak_city_raid"
+		],
+		"trigger_arg": "town",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn annet_1",
+			"bat annet_boss_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 101,
+		"reqs": [],
+		"trigger_arg": "city_combat",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn annet_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 103,
+		"reqs": [],
+		"trigger_arg": "annet_boss_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_2_1",
+			"bat castle_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 105,
+		"reqs": [
+			"scn annet_2"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn zelroth_2",
+			"bat zelroth_boss"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 107,
+		"reqs": [],
+		"trigger_arg": "castle_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn zelroth_1",
+			"bat cult_grounds_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 108,
+		"reqs": [],
+		"trigger_arg": "zelroth_boss",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_2_2",
+			"rose_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 109,
+		"reqs": [],
+		"trigger_arg": "cult_grounds_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn flak_future_city",
+			"sel future_city"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 112,
+		"reqs": [
+			"scn rose_2"
+		],
+		"trigger_arg": "townhall",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_1",
+			"bat future_city"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 114,
+		"reqs": [],
+		"trigger_arg": "future_city",
+		"trigger_type": "sel"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_2",
+			"bat dimitrius_boss_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 115,
+		"reqs": [],
+		"trigger_arg": "future_city",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_3",
+			"bat sewers_battles"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 116,
+		"reqs": [],
+		"trigger_arg": "dimitrius_boss_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_4",
+			"bat reactor_battles"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 118,
+		"reqs": [],
+		"trigger_arg": "sewers_battles",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_5",
+			"bat arron_vs_dimitrius_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 119,
+		"reqs": [],
+		"trigger_arg": "reactor_battles",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_6",
+			"bat ro_er_vs_demons_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 121,
+		"reqs": [],
+		"trigger_arg": "arron_vs_dimitrius_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_7",
+			"bat em_ri_vs_demons_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 122,
+		"reqs": [],
+		"trigger_arg": "ro_er_vs_demons_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_8",
+			"bat arron_vs_dimitrius_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 123,
+		"reqs": [],
+		"trigger_arg": "em_ri_vs_demons_1",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn dimitrius_ending_9"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 125,
+		"reqs": [],
+		"trigger_arg": "arron_vs_dimitrius_2",
+		"trigger_type": "bat"
+	},
+	{
+		"actions": [
+			"scn ember_1_4"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 128,
+		"reqs": [],
+		"trigger_arg": "100",
+		"trigger_type": "buy"
+	},
+	{
+		"actions": [
+			"scn erika_2"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 130,
+		"reqs": [
+			"bat caves_2_2"
+		],
+		"trigger_arg": "100",
+		"trigger_type": "buy"
+	},
+	{
+		"actions": [
+			"scn rose_1"
+		],
+		"flags": {
+			"regular": false
+		},
+		"id": 132,
+		"reqs": [
+			"char erika",
+			"scn ember_1_3"
+		],
+		"trigger_arg": "100",
+		"trigger_type": "buy"
+	}
+]

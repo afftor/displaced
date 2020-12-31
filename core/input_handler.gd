@@ -268,8 +268,7 @@ func PlaySound(res, delay = 0):
 		return #STAB to fix some skills cause crashing
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
-	# TODO
-	soundnode.stream = res
+	soundnode.stream = resources.get_res(res)
 	soundnode.seek(0)
 	soundnode.play(0)
 	yield(soundnode, 'finished')
@@ -394,8 +393,7 @@ func SmoothValueAnimation(node, time, value1, value2):
 
 func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false):
 	var x = TextureRect.new()
-	# TODO
-	#x.texture = images.GFX[effect]
+	x.texture = resources.get_res(effect)
 	x.expand = true
 	x.stretch_mode = 6
 	node.add_child(x)
@@ -403,8 +401,7 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	x.rect_size = node.rect_size
 	
 	if rotate == true:
-		# TODO
-		#x.rect_pivot_offset = images.GFX[effect].get_size()/2
+		x.rect_pivot_offset = x.texture.get_size()/2
 		x.rect_rotation = rand_range(0,360)
 	
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)

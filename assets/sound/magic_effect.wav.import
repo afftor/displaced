@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/fx time up.wav-d273ed84a10cc983b3fdd55317a3ca39.sample"
+path="res://.import/magic_effect.wav-ce706fd7b4d682bac2ec684fa74b07dc.sample"
 
 [deps]
 
-source_file="res://assets/sound/fx time up.wav"
-dest_files=[ "res://.import/fx time up.wav-d273ed84a10cc983b3fdd55317a3ca39.sample" ]
+source_file="res://assets/sound/magic_effect.wav"
+dest_files=[ "res://.import/magic_effect.wav-ce706fd7b4d682bac2ec684fa74b07dc.sample" ]
 
 [params]
 

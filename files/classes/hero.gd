@@ -24,6 +24,12 @@ func _init():
 	combatgroup = 'ally'
 
 func createfromname(name):
+	# need to preload all resources
+	# resources.preload_res(template.combaticon)
+	# ...
+	# yield(resources, "done_work")
+	# e.t.c.
+	#
 	var template = combatantdata.charlist[name]
 	base = template.code
 	self.name = tr(template.name)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/embercircle.png-9e3deb24ec9ef53807c7bd9379c16bf0.stex"
+path="res://.import/rilu_circle.png-f3c5cecc544f9563ca910236c548327b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/combatportraits/embercircle.png"
-dest_files=[ "res://.import/embercircle.png-9e3deb24ec9ef53807c7bd9379c16bf0.stex" ]
+source_file="res://assets/images/combat/rilu_circle.png"
+dest_files=[ "res://.import/rilu_circle.png-f3c5cecc544f9563ca910236c548327b.stex" ]
 
 [params]
 

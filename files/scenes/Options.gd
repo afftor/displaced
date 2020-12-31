@@ -1,8 +1,12 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var tabnames = {Audio = "AUDIO", Graphics = "GRAPHICS", Text = "TEXT"}
+var menu_open_sound = "sound/menu_open"
 
 func _ready():
+	resources.preload_res(menu_open_sound)
+	yield(resources, "done_work")
+	
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
@@ -36,7 +40,7 @@ func soundsliderchange(value,name):
 		value = -80
 	globals.globalsettings[name+'vol'] = value
 	if name == 'sound':
-		input_handler.PlaySound("menu_open")
+		input_handler.PlaySound(menu_open_sound)
 	updatesounds()
 
 func mutepressed(node):

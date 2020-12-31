@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/itemget.wav-6da34760d1a37731a8a4bf9b5069f8f2.sample"
+path="res://.import/time_up.wav-b12e8267a591b6f0458be7d39dc5b03e.sample"
 
 [deps]
 
-source_file="res://assets/sound/itemget.wav"
-dest_files=[ "res://.import/itemget.wav-6da34760d1a37731a8a4bf9b5069f8f2.sample" ]
+source_file="res://assets/sound/time_up.wav"
+dest_files=[ "res://.import/time_up.wav-b12e8267a591b6f0458be7d39dc5b03e.sample" ]
 
 [params]
 

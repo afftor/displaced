@@ -1,7 +1,9 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
-
+var click_sound = "sound/menu_btn"
 
 func _ready():
+	resources.preload_res(click_sound)
+	yield(resources, "done_work")
 #warning-ignore:return_value_discarded
 	$VBoxContainer/Save.connect('pressed', $saveloadpanel, 'SavePanelOpen')
 #warning-ignore:return_value_discarded
@@ -25,7 +27,7 @@ func OptionsOpen():
 	$Options.open()
 
 func PlayClickSound():
-	input_handler.PlaySound("button_click")
+	input_handler.PlaySound(click_sound)
 
 
 func Exit():

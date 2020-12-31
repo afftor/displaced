@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/emberfull.png-41c2dd64b8ab6949fa6e48e88ec59571.stex"
+path="res://.import/arron_full.png-438b74e304c5dc2953d3258afa417839.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/combatportraits/emberfull.png"
-dest_files=[ "res://.import/emberfull.png-41c2dd64b8ab6949fa6e48e88ec59571.stex" ]
+source_file="res://assets/images/combat/arron_full.png"
+dest_files=[ "res://.import/arron_full.png-438b74e304c5dc2953d3258afa417839.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/magiceffect.wav-9e06c72794fc8d39ecfeb1e149490476.sample"
+path="res://.import/location_out.wav-dd717c9d2b765468f601c7b955be0d09.sample"
 
 [deps]
 
-source_file="res://assets/sound/magiceffect.wav"
-dest_files=[ "res://.import/magiceffect.wav-9e06c72794fc8d39ecfeb1e149490476.sample" ]
+source_file="res://assets/sound/location_out.wav"
+dest_files=[ "res://.import/location_out.wav-dd717c9d2b765468f601c7b955be0d09.sample" ]
 
 [params]
 

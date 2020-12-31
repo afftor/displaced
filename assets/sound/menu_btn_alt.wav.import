@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/fx knife hit.wav-da4db9db605cd4844938915d53be5c99.sample"
+path="res://.import/menu_btn_alt.wav-dd829736d39d9a074827e4f9942453a8.sample"
 
 [deps]
 
-source_file="res://assets/sound/fx knife hit.wav"
-dest_files=[ "res://.import/fx knife hit.wav-da4db9db605cd4844938915d53be5c99.sample" ]
+source_file="res://assets/sound/menu_btn_alt.wav"
+dest_files=[ "res://.import/menu_btn_alt.wav-dd829736d39d9a074827e4f9942453a8.sample" ]
 
 [params]
 

@@ -5,6 +5,7 @@ const RES_ROOT = {
 	"bg" : "res://assets/images",
 	"sprite" : "res://assets/images",
 	"portrait" : "res://assets/images",
+	"combat" : "res://assets/images",
 	"sound" : "res://assets",
 	"music" : "res://assets",
 }
@@ -14,6 +15,7 @@ const RES_EXT = {
 	"bg" : "png",
 	"sprite" : "png",
 	"portrait" : "png",
+	"combat" : "png",
 	"sound" : "wav",
 	"music" : "ogg",
 }
