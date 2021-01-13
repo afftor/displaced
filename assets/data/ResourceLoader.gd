@@ -1,5 +1,11 @@
 extends Node
 
+enum {
+	SUCCESS,
+	ALREADY_EXISTS,
+	IN_PROGRESS
+}
+
 const RES_ROOT = {
 	"abg" : "res://assets",
 	"bg" : "res://assets/images",
@@ -70,18 +76,16 @@ func _thread_load(args: Array) -> Resource:
 	mutex.unlock()
 	return res
 
-func preload_res(path: String) -> void:
+func preload_res(path: String) -> int:
 	var psplit = path.split("/")
 	if psplit.size() < 2:
 		print("wrong preload res path %s" % path)
 		return
 	var category = psplit[0]
 	var label = path.replace(category + "/", "")
-	
-	if res_pool.has(category) && res_pool[category].has(label):
-		return
+
 	if path in queue:
-		return
+		return ALREADY_EXISTS
 	var thread = Thread.new()
 	busy += 1
 	queue.append(path)
@@ -100,3 +104,5 @@ func preload_res(path: String) -> void:
 	busy -= 1
 	if busy == 0:
 		emit_signal("done_work")
+	
+	return SUCCESS

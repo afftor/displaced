@@ -268,7 +268,10 @@ func PlaySound(res, delay = 0):
 		return #STAB to fix some skills cause crashing
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
-	soundnode.stream = resources.get_res(res)
+	if res is String:
+		soundnode.stream = resources.get_res(res)
+	else:
+		soundnode.stream = res
 	soundnode.seek(0)
 	soundnode.play(0)
 	yield(soundnode, 'finished')
