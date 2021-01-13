@@ -3,7 +3,6 @@ extends Node
 enum {
 	SUCCESS,
 	ALREADY_EXISTS,
-	IN_PROGRESS
 }
 
 const RES_ROOT = {
@@ -26,18 +25,41 @@ const RES_EXT = {
 	"music" : "ogg",
 }
 
-const LOAD_TRIES = 16
+const LOAD_TRIES = 1000
 
 signal _loaded
 signal done_work
+signal resource_loaded
 onready var mutex = Mutex.new()
 
 var res_pool = {
 }
+var last_res = ""
+var current_loaded = 0
+var max_loaded = 0
 
 var queue = []
+var path_to_delete = []
 
 var busy = 0
+
+func resource_loaded() -> void:
+	if last_res in path_to_delete:
+		path_to_delete.erase(last_res)
+		print(last_res, " (invalid) ", current_loaded, "/", max_loaded)
+	else:
+		print(last_res, " ", current_loaded, "/", max_loaded)
+
+func _ready() -> void:
+	connect("resource_loaded", self, "resource_loaded")
+	
+#	var path = resources.RES_ROOT.bg + '/bg'
+#	var dir = globals.dir_contents(path)
+#	if dir != null:
+#		for fl in dir:
+#			if fl.ends_with('.import'): continue
+#			resources.preload_res(fl.trim_prefix(resources.RES_ROOT.bg + '/').trim_suffix('.' + resources.RES_EXT.bg))
+#	yield(resources, "done_work")
 
 func get_res(path: String) -> Resource:
 	var psplit = path.split("/")
@@ -60,6 +82,7 @@ func _loaded(category: String, label: String, path: String, thread: Thread) -> v
 		res_pool[category][label] = res
 	else:
 		print("%s not found!" % path)
+		path_to_delete.append(category + "/" + label)
 	emit_signal("_loaded")
 
 func _thread_load(args: Array) -> Resource:
@@ -89,20 +112,23 @@ func preload_res(path: String) -> int:
 	var thread = Thread.new()
 	busy += 1
 	queue.append(path)
+	max_loaded += 1
 	thread.start(self, "_thread_load", [category, label, thread])
 	yield(self, "_loaded")
-	for i in range(LOAD_TRIES):
+	while true:
 		if res_pool.has(category):
+			if res_pool[category].has(label):
+				break
+		if path_to_delete.has(path):
 			break
 		yield(get_tree(), "idle_frame")
-	if res_pool.has(category):
-		var j = res_pool[category].size()
-		for i in range(LOAD_TRIES):
-			if res_pool[category].size() != j:
-				break
-			yield(get_tree(), "idle_frame")
+	current_loaded += 1
+	last_res = path
+	emit_signal("resource_loaded")
 	busy -= 1
 	if busy == 0:
 		emit_signal("done_work")
+		max_loaded = 0
+		current_loaded = 0
 	
 	return SUCCESS
