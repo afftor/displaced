@@ -25,8 +25,6 @@ const RES_EXT = {
 	"music" : "ogg",
 }
 
-const LOAD_TRIES = 1000
-
 signal _loaded
 signal done_work
 signal resource_loaded
