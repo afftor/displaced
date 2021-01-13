@@ -23,6 +23,7 @@ const RES_EXT = {
 
 signal done_work
 signal resource_loaded(path)
+signal test_done
 onready var mutex = Mutex.new()
 
 var res_pool = {
@@ -46,15 +47,39 @@ func resource_loaded(path) -> void:
 
 func _ready() -> void:
 	connect("resource_loaded", self, "resource_loaded")
+#	for i in RES_ROOT.keys():
+#		freetest(10, i)
+#		yield(self, "test_done")
+
+func freetest(times: int = 10, type: String = 'bg') -> void:
+	print("STARTING FREE TEST FOR " + type)
+	var test_loaded = []
 	
-#	var path = resources.RES_ROOT.bg + '/bg'
-#	var dir = globals.dir_contents(path)
-#	if dir != null:
-#		for fl in dir:
-#			if fl.ends_with('.import'): continue
-#			resources.preload_res(fl.trim_prefix(resources.RES_ROOT.bg + '/').trim_suffix('.' + resources.RES_EXT.bg))
-#	yield(resources, "done_work")
-#	print('debug')
+	var path = resources.RES_ROOT[type] + '/' + type
+	var dir = globals.dir_contents(path)
+	if dir != null:
+		for fl in dir:
+			if fl.ends_with('.import'): continue
+			test_loaded.append(fl.trim_prefix(
+				resources.RES_ROOT[type] + '/').trim_suffix(
+				'.' + resources.RES_EXT[type]))
+	
+	for q in range(times):
+		print("START")
+		
+		for i in test_loaded:
+			resources.preload_res(i)
+		yield(resources, "done_work")
+		print('DONE WORK')
+		
+		for i in test_loaded:
+			resources.free_res(i)
+		
+		print('FREED')
+		
+		yield(get_tree(), "idle_frame")
+	
+	emit_signal("test_done")
 
 
 func get_res(path: String) -> Resource:
@@ -102,6 +127,20 @@ func _thread_load(args: Array) -> Resource:
 	call_deferred("_loaded", category, label, path, thread)
 	mutex.unlock()
 	return res
+
+
+func free_res(path: String) -> void:
+	if queue.has(path):
+		queue.erase(path)
+		var psplit = path.split("/")
+		var category = psplit[0]
+		var label = path.trim_prefix(category + "/")
+		
+		res_pool[category].erase(label)
+		if res_pool[category].size() == 0:
+			res_pool.erase(category)
+	else:
+		print("Can't free res " + path + "!")
 
 
 func preload_res(path: String) -> void:
