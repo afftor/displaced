@@ -1,9 +1,5 @@
 extends Node
 
-enum {
-	SUCCESS,
-	ALREADY_EXISTS,
-}
 
 const RES_ROOT = {
 	"abg" : "res://assets",
@@ -25,14 +21,13 @@ const RES_EXT = {
 	"music" : "ogg",
 }
 
-signal _loaded
 signal done_work
-signal resource_loaded
+signal resource_loaded(path)
 onready var mutex = Mutex.new()
 
 var res_pool = {
 }
-var last_res = ""
+
 var current_loaded = 0
 var max_loaded = 0
 
@@ -41,12 +36,13 @@ var path_to_delete = []
 
 var busy = 0
 
-func resource_loaded() -> void:
-	if last_res in path_to_delete:
-		path_to_delete.erase(last_res)
-		print(last_res, " (invalid) ", current_loaded, "/", max_loaded)
+func resource_loaded(path) -> void:
+	if path in path_to_delete:
+		path_to_delete.erase(path)
+		print(path, " (invalid) ", current_loaded, "/", max_loaded)
 	else:
-		print(last_res, " ", current_loaded, "/", max_loaded)
+		print(path, " ", current_loaded, "/", max_loaded)
+
 
 func _ready() -> void:
 	connect("resource_loaded", self, "resource_loaded")
@@ -58,6 +54,8 @@ func _ready() -> void:
 #			if fl.ends_with('.import'): continue
 #			resources.preload_res(fl.trim_prefix(resources.RES_ROOT.bg + '/').trim_suffix('.' + resources.RES_EXT.bg))
 #	yield(resources, "done_work")
+#	print('debug')
+
 
 func get_res(path: String) -> Resource:
 	var psplit = path.split("/")
@@ -72,8 +70,11 @@ func get_res(path: String) -> Resource:
 	else:
 		return null
 
+
 func _loaded(category: String, label: String, path: String, thread: Thread) -> void:
 	var res = thread.wait_to_finish()
+	current_loaded += 1
+	emit_signal("resource_loaded", path)
 	if res:
 		if !res_pool.has(category):
 			res_pool[category] = {}
@@ -81,7 +82,12 @@ func _loaded(category: String, label: String, path: String, thread: Thread) -> v
 	else:
 		print("%s not found!" % path)
 		path_to_delete.append(category + "/" + label)
-	emit_signal("_loaded")
+	busy -= 1
+	if busy == 0:
+		emit_signal("done_work")
+		max_loaded = 0
+		current_loaded = 0
+
 
 func _thread_load(args: Array) -> Resource:
 	mutex.lock()
@@ -97,36 +103,21 @@ func _thread_load(args: Array) -> Resource:
 	mutex.unlock()
 	return res
 
-func preload_res(path: String) -> int:
+
+func preload_res(path: String) -> void:
 	var psplit = path.split("/")
 	if psplit.size() < 2:
 		print("wrong preload res path %s" % path)
 		return
 	var category = psplit[0]
-	var label = path.replace(category + "/", "")
-
+	var label = path.trim_prefix(category + "/")
+	
 	if path in queue:
-		return ALREADY_EXISTS
+		return
+	
 	var thread = Thread.new()
 	busy += 1
 	queue.append(path)
 	max_loaded += 1
 	thread.start(self, "_thread_load", [category, label, thread])
-	yield(self, "_loaded")
-	while true:
-		if res_pool.has(category):
-			if res_pool[category].has(label):
-				break
-		if path_to_delete.has(path):
-			break
-		yield(get_tree(), "idle_frame")
-	current_loaded += 1
-	last_res = path
-	emit_signal("resource_loaded")
-	busy -= 1
-	if busy == 0:
-		emit_signal("done_work")
-		max_loaded = 0
-		current_loaded = 0
-	
-	return SUCCESS
+
