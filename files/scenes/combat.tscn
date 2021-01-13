@@ -27,7 +27,7 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/combat/combatwincharacter.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/combat/arron_circle.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
 
 [sub_resource type="StyleBoxTexture" id=1]

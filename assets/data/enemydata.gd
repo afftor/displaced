@@ -698,3 +698,18 @@ var loottables = {
 		usables = [{code = 'protectivecharm', min = 1, max = 1, chance = 100}],
 	},
 }
+
+
+func _ready():
+	yield(preload_icons(), 'completed')
+	print("Enemies icons preloaded")
+
+
+func preload_icons():
+	for ch in enemylist.values():
+#		if b.icon.begins_with("res:"): continue
+		if ch.combaticon != null:
+			resources.preload_res(ch.combaticon)
+		if ch.bodyimage != null:
+			resources.preload_res(ch.bodyimage)
+	yield(resources, "done_work")

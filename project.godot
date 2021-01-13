@@ -174,8 +174,8 @@ config/icon="res://assets/images/gui/timesphere.png"
 [autoload]
 
 variables="*res://core/variables.gd"
+resources="*res://core/ResourceLoader.gd"
 events="*res://assets/data/eventdata.gd"
-resources="*res://assets/data/ResourceLoader.gd"
 Enemydata="*res://assets/data/enemydata.gd"
 Effectdata="*res://assets/data/Effects.gd"
 Explorationdata="*res://assets/data/explorationareasdata.gd"

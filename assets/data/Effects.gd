@@ -1,4 +1,6 @@
 extends Node
+#warning! only short pathes in buffs section will be preloaded 
+
 var effect_table = {
 	#statuses
 	e_s_burn = {
@@ -3465,7 +3467,20 @@ const e_remove = {
 	buffs = []
 }
 
+
 func rebuild_remove(skill_cond):
 	var res = e_remove.duplicate(true)
 	res.conditions.push_back({type = 'skill', value = skill_cond.duplicate()})
 	return res
+
+
+func _ready():
+	yield(preload_icons(), 'completed')
+	print("Buff icons preloaded")
+
+
+func preload_icons():
+	for b in buffs.values():
+		if b.icon.begins_with("res:"): continue
+		resources.preload_res(b.icon)
+	yield(resources, "done_work")
