@@ -87,11 +87,16 @@ func preload_res(path: String) -> void:
 	queue.append(path)
 	thread.start(self, "_thread_load", [category, label, thread])
 	yield(self, "_loaded")
-	var j = res_pool.size()
 	for i in range(LOAD_TRIES):
-		if res_pool.size() != j:
+		if res_pool.has(category):
 			break
 		yield(get_tree(), "idle_frame")
+	if res_pool.has(category):
+		var j = res_pool[category].size()
+		for i in range(LOAD_TRIES):
+			if res_pool[category].size() != j:
+				break
+			yield(get_tree(), "idle_frame")
 	busy -= 1
 	if busy == 0:
 		emit_signal("done_work")
