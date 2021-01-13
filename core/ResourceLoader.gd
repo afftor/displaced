@@ -121,3 +121,5 @@ func preload_res(path: String) -> void:
 	max_loaded += 1
 	thread.start(self, "_thread_load", [category, label, thread])
 
+func is_busy() -> bool:
+	return busy != 0
