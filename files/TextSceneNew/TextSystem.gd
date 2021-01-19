@@ -300,6 +300,7 @@ func tag_stop() -> void:
 	set_process_input(false)
 	#globals.check_signal("EventFinished")
 	hide()
+	state.FinishEvent()
 	emit_signal("scene_end")
 
 

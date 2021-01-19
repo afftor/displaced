@@ -8,6 +8,11 @@ var charlist = {
 		icon = 'portrait/ArronNormal',
 		combaticon = 'combat/arron_circle',
 		image = 'Arron',
+		animations = {
+			idle = load("res://assets/images/Fight/Heroes/Arron/Arron_idle/Arron.tres"),
+			hit = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0000_Arron_hit",
+			attack = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0001_Arron_at"
+		},
 		flavor = 'The honorable me',
 		hpmax = 50,
 		hp_growth = 100,
@@ -24,6 +29,11 @@ var charlist = {
 		icon = 'portrait/RoseNormal',
 		combaticon = 'rose',
 		image = 'Rose',
+		animations = {
+			idle = load("res://assets/images/Fight/Heroes/Rose/Rose_idle/Rose.tres"),
+			hit = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0001_Rose_hit",
+			attack = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0000_Rose_at"
+		},
 		flavor = 'My loyal pet',
 		hpmax = 40,
 		hp_growth = 80,
@@ -40,6 +50,11 @@ var charlist = {
 		icon = 'portrait/ErikaNormal',
 		combaticon = 'erika',
 		image = 'erika',
+		animations = {
+			idle = load("res://assets/images/Fight/Heroes/Erika/Erika_idle/Erika.tres"),
+			hit = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0002_Erika_hit",
+			attack = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0000_Erika_at"
+		},
 		flavor = 'An elven gal',
 		hpmax = 45,
 		hp_growth = 90,
@@ -56,6 +71,11 @@ var charlist = {
 		icon = 'portrait/EmberNormal',
 		combaticon = 'combat/ember_circle',
 		image = 'emberhappy',
+		animations = {
+			idle = load("res://assets/images/Fight/Heroes/Ember/Ember_idle/Ember.tres"),
+			hit = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0001_Ember_hit",
+			attack = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0000_Ember_idle"
+		},
 		flavor = 'A dragon gal',
 		hpmax = 80,
 		hp_growth = 120,
@@ -72,6 +92,11 @@ var charlist = {
 		icon = 'portrait/RiluNormal',
 		combaticon = 'combat/rilu_circle',
 		image = 'emberhappy',
+		animations = {
+			idle = load("res://assets/images/Fight/Heroes/Rilu/Rilu_idle/Rilu.tres"),
+			hit = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0000_Rilu_hit",
+			attack = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0002_Rilu_at"
+		},
 		flavor = 'A dragon gal',
 		hpmax = 55,
 		hp_growth = 110,
@@ -88,6 +113,11 @@ var charlist = {
 		icon = 'portrait/IolaNormal',
 		combaticon = 'combat/iola_circle',
 		image = 'emberhappy',
+		animations = {
+			idle = load("res://assets/images/Fight/Heroes/Iola/Iola_idle/Iola.tres"),
+			hit = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0000_Iola_hit",
+			attack = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0001_Iola_at"
+		},
 		flavor = 'A dragon gal',
 		hpmax = 40,
 		hp_growth = 85,
@@ -101,7 +131,7 @@ var charlist = {
 }
 
 func _ready():
-#	yield(preload_icons(), 'completed')
+	yield(preload_icons(), 'completed')
 	print("Character icons preloaded")
 
 
@@ -111,4 +141,9 @@ func preload_icons():
 		resources.preload_res(ch.icon)
 		resources.preload_res(ch.combaticon)
 		resources.preload_res(ch.image)
+		for an in ch.animations.values():
+			if an is AnimatedTexAutofill:
+				an.fill_frames()
+			elif an is String:
+				resources.preload_res(an)
 	yield(resources, "done_work")

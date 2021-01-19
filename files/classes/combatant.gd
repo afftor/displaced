@@ -7,6 +7,7 @@ var base
 
 var icon
 var combaticon
+var animations
 
 var race
 

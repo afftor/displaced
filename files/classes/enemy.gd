@@ -70,4 +70,5 @@ func createfromtemplate(enemy, lvl):
 	else:
 		ai = ai_base.new()
 	ai.app_obj = self
+	animations = template.animations.duplicate()
 

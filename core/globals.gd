@@ -190,8 +190,8 @@ func _ready():
 
 	#====================================
 	
-	yield(preload_backgrounds(), 'completed')
-	print("Backgrounds preloaded")
+#	yield(preload_backgrounds(), 'completed')
+#	print("Backgrounds preloaded")
 
 	
 	#randomgroups = Enemydata.randomgroups
@@ -309,9 +309,14 @@ func LoadEvent(name):
 func StartEventScene(name, debug = false, line = 0):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
-	var scene = input_handler.scene_node #input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
-	scene.visible = true
-	scene.Start(scenes[name], debug, line)
+#	var scene = input_handler.scene_node #input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
+	input_handler.menu_node.visible = false
+#	scene.visible = true
+#	scene.Start(scenes[name], debug, line)
+	input_handler.scene_node.show()
+	input_handler.scene_node.play_scene(name)
+	yield(input_handler.scene_node, "scene_end")
+	input_handler.menu_node.visible = true
 
 func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()

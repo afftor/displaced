@@ -49,6 +49,12 @@ func _input(event):
 		RMBpressed = false
 
 
+func setup_character(ch):
+	fighter = ch
+	ch.displaynode = self
+	$sprite.texture = fighter.animations.idle
+
+
 func get_attack_vector():
 	if fighter.combatgroup == 'ally': return Vector2(100, 0)
 	elif fighter.combatgroup == 'enemy': return Vector2(-100, 0)

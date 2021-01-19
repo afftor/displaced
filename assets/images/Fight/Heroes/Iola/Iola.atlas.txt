@@ -1,0 +1,76 @@
+
+Iola.png
+size: 236,528
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Слой 1
+  rotate: false
+  xy: 155, 55
+  size: 71, 56
+  orig: 71, 56
+  offset: 0, 0
+  index: -1
+Слой 10
+  rotate: false
+  xy: 2, 104
+  size: 53, 190
+  orig: 53, 190
+  offset: 0, 0
+  index: -1
+Слой 11
+  rotate: false
+  xy: 57, 113
+  size: 49, 181
+  orig: 49, 181
+  offset: 0, 0
+  index: -1
+Слой 3
+  rotate: false
+  xy: 66, 33
+  size: 87, 78
+  orig: 87, 78
+  offset: 0, 0
+  index: -1
+Слой 4
+  rotate: true
+  xy: 108, 113
+  size: 80, 119
+  orig: 81, 119
+  offset: 0, 0
+  index: -1
+Слой 5
+  rotate: true
+  xy: 66, 4
+  size: 27, 127
+  orig: 27, 128
+  offset: 0, 0
+  index: -1
+Слой 6
+  rotate: false
+  xy: 2, 296
+  size: 214, 229
+  orig: 214, 229
+  offset: 0, 0
+  index: -1
+Слой 7
+  rotate: false
+  xy: 195, 5
+  size: 37, 48
+  orig: 37, 48
+  offset: 0, 0
+  index: -1
+Слой 8
+  rotate: false
+  xy: 2, 2
+  size: 62, 100
+  orig: 62, 100
+  offset: 0, 0
+  index: -1
+Слой 9
+  rotate: false
+  xy: 108, 195
+  size: 102, 99
+  orig: 103, 99
+  offset: 0, 0
+  index: -1

@@ -53,6 +53,7 @@ func createfromname(name):
 		for t in template.traits:
 			traits[t] = false;
 			add_trait(t);
+	animations = template.animations.duplicate()
 	hp = get_stat('hpmax')
 
 
