@@ -190,8 +190,8 @@ func _ready():
 
 	#====================================
 	
-#	yield(preload_backgrounds(), 'completed')
-#	print("Backgrounds preloaded")
+	yield(preload_backgrounds(), 'completed')
+	print("Backgrounds preloaded")
 
 	
 	#randomgroups = Enemydata.randomgroups

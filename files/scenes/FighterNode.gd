@@ -11,7 +11,10 @@ var position = 0
 var fighter
 var RMBpressed = false
 
-
+var anim_up = true
+var hightlight = false
+var highlight_animated = false
+var speed = 1.33
 #var damageeffectsarray = []
 
 var hp
@@ -20,24 +23,30 @@ var buffs = []
 
 #data format: node, time, type, slot, params
 
-#func _process(delta):
-#	if $hplabel.visible:
-#		update_hp_label()
-#	if $mplabel.visible:
-#		update_mp_label()
-#	for i in damageeffectsarray:
-#		if i.played == false:
-#			textdamageeffect(i)
-#			i.played = true
-#		yield(get_tree().create_timer(0.5), "timeout")
-#	for i in damageeffectsarray:
-#		if i.played == true:
-#			damageeffectsarray.erase(i)
-#			break
+
+func _process(delta):
+	if !hightlight or !highlight_animated: return
+	var tmp = $sprite.material.get_shader_param('opacity')
+	if anim_up: 
+		tmp += delta * speed
+		if tmp >= 1.0:
+			anim_up = false
+			tmp = 1.0
+	else:
+		tmp -= delta * speed
+		if tmp <= 0.0:
+			anim_up = true
+			tmp = 0.0
+	$sprite.material.set_shader_param('opacity', tmp)
+
+
+func _ready():
+	$sprite.material = load("res://files/scenes/portret_shader.tres").duplicate();
+	$sprite.material.set_shader_param('outline_width', 1.0)
 
 
 func _input(event):
-	if get_global_rect().has_point(get_global_mouse_position()):
+	if input_handler.if_mouse_inside($sprite) or input_handler.if_mouse_inside($sprite2):
 		if event.is_pressed():
 			if event.is_action("RMB"):
 				emit_signal("signal_RMB", fighter)
@@ -52,12 +61,54 @@ func _input(event):
 func setup_character(ch):
 	fighter = ch
 	ch.displaynode = self
+	position = fighter.position
 	$sprite.texture = fighter.animations.idle
+	$sprite.rect_size = fighter.animations.idle.get_size()
+#	texture_normal = fighter.animations.hit
+	$Label.text = fighter.name
+	$HP.value = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
+	hp = fighter.hp
+	update_hp_label(fighter.hp, 100.0)
+	regenerate_click_mask() # some cheating with not doing this every frame
+	reset_shield()
+	stop_highlight()
+	set_process_input(true)
+	connect("signal_RMB", globals.combat_node, "ShowFighterStats")
+	connect("signal_RMB_release", globals.combat_node, 'HideFighterStats')
+	connect("signal_LMB", globals.combat_node, 'FighterPress')
+	connect("mouse_entered", globals.combat_node, 'FighterMouseOver', [position])
+	connect("mouse_exited", globals.combat_node, 'FighterMouseOverFinish', [position])
 
 
-func get_attack_vector():
-	if fighter.combatgroup == 'ally': return Vector2(100, 0)
-	elif fighter.combatgroup == 'enemy': return Vector2(-100, 0)
+func reset_shield():
+	$shield.rect_size = $sprite.rect_size * 1.5
+	$shield.rect_position = - $shield.rect_size / 6.0
+	$shield.visible = false
+
+
+func regenerate_click_mask():
+	var t = $sprite.texture.get_data()
+#	var t = texture_normal.get_data()
+	var tt = t.duplicate()
+	tt.lock()
+	var tm = Image.new()
+	tm.create(rect_size.x, rect_size.y, false, 5)
+	tm.fill(Color8(0, 0, 0, 0))
+	tm.blend_rect(tt, Rect2(Vector2(0, 0), tt.get_size()), $sprite.rect_position)
+	
+#	var temp = ImageTexture.new()
+#	temp.create_from_image(tm)
+#	texture_normal = temp
+#	$sprite.visible = false
+	
+	texture_click_mask = BitMap.new()
+#	texture_click_mask.create_from_image_alpha(tt, 0.9)
+	texture_click_mask.create_from_image_alpha(tm, 0.9)
+	
+
+#func get_attack_vector():
+#	if fighter.combatgroup == 'ally': return Vector2(100, 0)
+#	elif fighter.combatgroup == 'enemy': return Vector2(-100, 0)
 
 
 func update_hp():
@@ -85,35 +136,27 @@ func update_hp():
 		var data = {node = self, time = globals.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
 		animation_node.add_new_data(data)
 
-#func update_mana():
-#	if mp == null:
-#		mp = fighter.mana
-#	if mp != null && mp != fighter.mana:
-#		var args = {newmp = fighter.mana, newmpp = globals.calculatepercent(fighter.mana, fighter.get_stat('manamax'))}
-#		mp = fighter.mana
-#		#damageeffectsarray.append(data)
-#		var data = {node = self, time = globals.combat_node.turns,type = 'mp_update',slot = 'MP', params = args}
-#		animation_node.add_new_data(data)
-
-func defeat():#not working correctly at all
-	$Icon.material = load("res://assets/sfx/bw_shader.tres")
-	#input_handler.FadeAnimation(self, 0.5, 0.3)
-	set_process_input(false)
 
 func update_shield(): 
 	var args = {}
 	if fighter.shield <= 0: 
-		args.color = Color(0.9, 0.9, 0.9, 0.0)
+		args.value = false
+		#args.color = Color(0.9, 0.9, 0.9, 0.0)
 		#self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 0.0))
 		#return
 	else:
-		args.color = Color(0.8, 0.8, 0.8, 1.0)
+		args.value = false
+		#args.color = Color(0.8, 0.8, 0.8, 1.0)
 		#self.material.set_shader_param('modulate', Color(0.8, 0.8, 0.8, 1.0)); #example
 	var data = {node = self, time = globals.combat_node.turns, type = 'shield_update',slot = 'SHIELD', params = args}
 	animation_node.add_new_data(data)
 
 func process_sfx(code):
-	var data = {node = self, time = globals.combat_node.turns,type = code, slot = 'SFX', params = {}}
+	var data 
+	if code.begins_with('anim_'):
+		data = {node = self, time = globals.combat_node.turns,type = 'default_animation', slot = 'sprite2', params = {animation = code.trim_prefix('anim_')}}
+	else:
+		data = {node = self, time = globals.combat_node.turns,type = code, slot = 'SFX', params = {}}
 	animation_node.add_new_data(data)
 
 func process_sound(sound):
@@ -186,14 +229,81 @@ func update_buff(i):
 	newbuff.hint_tooltip = text
 
 func update_hp_label(newhp, newhpp):
+	print("++")
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
 		$hplabel.text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
 	else:
 		$hplabel.text = str(round(newhpp)) + '%%'
 
-#func update_mp_label(newmp, newmpp):
-#	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
-#		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('manamax')))
-#	else:
-#		$mplabel.text = str(round(newmpp)) + '%%'
+#highlight modes
+func stop_highlight():
+	$sprite.material.set_shader_param('opacity', 0.0)
+	hightlight = false
 
+func highlight_active():
+	hightlight = true
+	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
+
+func highlight_hover():
+	hightlight = true
+	highlight_animated = false
+	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
+
+func highlight_target_ally():
+	hightlight = true
+	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+
+func highlight_target_ally_final():
+	hightlight = true
+	highlight_animated = false
+	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+
+func highlight_target_enemy():
+	hightlight = true
+	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
+
+func highlight_target_enemy_final():
+	hightlight = true
+	highlight_animated = false
+	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
+
+#disable-enable
+func disable():
+	$sprite.texture = fighter.animations.idle_1
+	$sprite.rect_size = fighter.animations.idle_1.get_size()
+	regenerate_click_mask()
+
+func enable():
+	$sprite.texture = fighter.animations.idle
+	$sprite.rect_size = fighter.animations.idle.get_size()
+	regenerate_click_mask()
+
+func defeat():
+	if fighter is hero:
+		$sprite.texture = fighter.animations.dead
+		$sprite.rect_size = fighter.animations.dead.get_size()
+		$sprite.visible = false
+		$sprite2.texture = fighter.animations.dead
+		$sprite2.rect_size = fighter.animations.dead.get_size()
+		$sprite2.visible = true
+		regenerate_click_mask()
+	else:
+		set_process_input(false)
+		input_handler.FadeAnimation(self, 0.5, 0.3)
+
+func resurrect():
+	$sprite.texture = fighter.animations.idle
+	$sprite.rect_size = fighter.animations.idle.get_size()
+	regenerate_click_mask()
+	input_handler.FadeAnimation($sprite2, 0.3)
+	input_handler.UnfadeAnimation($sprite, 0.3)
+	

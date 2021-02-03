@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=3]
+[ext_resource path="res://files/scenes/FighterNode.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=11]
-[ext_resource path="res://assets/images/gui/combat/combatpanelright.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/combat/skillmenu.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=15]
@@ -43,133 +42,135 @@ __meta__ = {
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Panel" type="TextureRect" parent="."]
-margin_left = 34.0
+[node name="battlefield" type="Control" parent="."]
+margin_left = 40.0
 margin_top = 41.0
-margin_right = 675.0
-margin_bottom = 1052.0
-texture = ExtResource( 3 )
+margin_right = 1872.0
+margin_bottom = 1058.0
 
-[node name="PlayerGroup" type="HBoxContainer" parent="Panel"]
-margin_left = 65.0
-margin_top = 14.0
-margin_right = 604.0
-margin_bottom = 974.0
-custom_constants/separation = 38
+[node name="PlayerGroup" type="Control" parent="battlefield"]
+margin_left = -13.1227
+margin_top = 417.119
+margin_right = 810.877
+margin_bottom = 1006.12
 
-[node name="Back" type="VBoxContainer" parent="Panel/PlayerGroup"]
-margin_right = 249.0
-margin_bottom = 975.0
-custom_constants/separation = 21
+[node name="Front" type="Control" parent="battlefield/PlayerGroup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="left" type="Container" parent="Panel/PlayerGroup/Back"]
-margin_right = 249.0
-margin_bottom = 311.0
-rect_min_size = Vector2( 249, 311 )
+[node name="left" parent="battlefield/PlayerGroup/Front" instance=ExtResource( 4 )]
+visible = false
+margin_left = 476.758
+margin_top = 194.941
+margin_right = 882.758
+margin_bottom = 535.941
 
-[node name="mid" type="Container" parent="Panel/PlayerGroup/Back"]
-margin_top = 332.0
-margin_right = 249.0
-margin_bottom = 643.0
-rect_min_size = Vector2( 249, 311 )
+[node name="mid" parent="battlefield/PlayerGroup/Front" instance=ExtResource( 4 )]
+visible = false
+margin_left = 290.293
+margin_top = 245.795
+margin_right = 768.293
+margin_bottom = 673.795
 
-[node name="right" type="Container" parent="Panel/PlayerGroup/Back"]
-margin_top = 664.0
-margin_right = 249.0
-margin_bottom = 975.0
-rect_min_size = Vector2( 249, 311 )
+[node name="right" parent="battlefield/PlayerGroup/Front" instance=ExtResource( 4 )]
+visible = false
+margin_left = 93.2328
+margin_top = 288.174
+margin_right = 571.233
+margin_bottom = 716.174
 
-[node name="Front" type="VBoxContainer" parent="Panel/PlayerGroup"]
-margin_left = 287.0
-margin_right = 536.0
-margin_bottom = 975.0
-custom_constants/separation = 21
+[node name="EnemyGroup" type="Control" parent="battlefield"]
+margin_left = 754.0
+margin_top = 423.0
+margin_right = 1847.0
+margin_bottom = 1012.0
 
-[node name="left" type="Container" parent="Panel/PlayerGroup/Front"]
-margin_right = 249.0
-margin_bottom = 311.0
-rect_min_size = Vector2( 249, 311 )
+[node name="Back" type="Control" parent="battlefield/EnemyGroup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 321.482
+margin_top = -11.1893
+margin_right = -3.51782
+margin_bottom = -31.1893
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="mid" type="Container" parent="Panel/PlayerGroup/Front"]
-margin_top = 332.0
-margin_right = 249.0
-margin_bottom = 643.0
-rect_min_size = Vector2( 249, 311 )
+[node name="left" parent="battlefield/EnemyGroup/Back" instance=ExtResource( 4 )]
+visible = false
+margin_left = 95.3516
+margin_top = 197.06
+margin_right = 501.352
+margin_bottom = 538.06
 
-[node name="right" type="Container" parent="Panel/PlayerGroup/Front"]
-margin_top = 664.0
-margin_right = 249.0
-margin_bottom = 975.0
-rect_min_size = Vector2( 249, 311 )
+[node name="mid" parent="battlefield/EnemyGroup/Back" instance=ExtResource( 4 )]
+visible = false
+margin_left = 290.293
+margin_top = 245.795
+margin_right = 768.293
+margin_bottom = 673.795
 
-[node name="Panel2" type="TextureRect" parent="."]
-margin_left = 1245.0
-margin_top = 41.0
-margin_right = 1886.0
-margin_bottom = 1052.0
-texture = ExtResource( 12 )
+[node name="right" parent="battlefield/EnemyGroup/Back" instance=ExtResource( 4 )]
+visible = false
+margin_left = 485.234
+margin_top = 288.174
+margin_right = 963.234
+margin_bottom = 716.174
 
-[node name="EnemyGroup" type="HBoxContainer" parent="Panel2"]
-margin_left = 43.0
-margin_top = 14.0
-margin_right = 582.0
-margin_bottom = 989.0
-custom_constants/separation = 31
+[node name="Front" type="Control" parent="battlefield/EnemyGroup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -334.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Front" type="VBoxContainer" parent="Panel2/EnemyGroup"]
-margin_right = 249.0
-margin_bottom = 975.0
-custom_constants/separation = 21
+[node name="left" parent="battlefield/EnemyGroup/Front" instance=ExtResource( 4 )]
+visible = false
+margin_left = 95.3516
+margin_top = 197.06
+margin_right = 501.352
+margin_bottom = 538.06
 
-[node name="left" type="Container" parent="Panel2/EnemyGroup/Front"]
-margin_right = 249.0
-margin_bottom = 311.0
-rect_min_size = Vector2( 249, 311 )
+[node name="mid" parent="battlefield/EnemyGroup/Front" instance=ExtResource( 4 )]
+visible = false
+margin_left = 290.293
+margin_top = 245.795
+margin_right = 768.293
+margin_bottom = 673.795
 
-[node name="mid" type="Container" parent="Panel2/EnemyGroup/Front"]
-margin_top = 332.0
-margin_right = 249.0
-margin_bottom = 643.0
-rect_min_size = Vector2( 249, 311 )
-
-[node name="right" type="Container" parent="Panel2/EnemyGroup/Front"]
-margin_top = 664.0
-margin_right = 249.0
-margin_bottom = 975.0
-rect_min_size = Vector2( 249, 311 )
-
-[node name="Back" type="VBoxContainer" parent="Panel2/EnemyGroup"]
-margin_left = 280.0
-margin_right = 529.0
-margin_bottom = 975.0
-custom_constants/separation = 21
-
-[node name="left" type="Container" parent="Panel2/EnemyGroup/Back"]
-margin_right = 249.0
-margin_bottom = 311.0
-rect_min_size = Vector2( 249, 311 )
-
-[node name="mid" type="Container" parent="Panel2/EnemyGroup/Back"]
-margin_top = 332.0
-margin_right = 249.0
-margin_bottom = 643.0
-rect_min_size = Vector2( 249, 311 )
-
-[node name="right" type="Container" parent="Panel2/EnemyGroup/Back"]
-margin_top = 664.0
-margin_right = 249.0
-margin_bottom = 975.0
-rect_min_size = Vector2( 249, 311 )
+[node name="right" parent="battlefield/EnemyGroup/Front" instance=ExtResource( 4 )]
+visible = false
+margin_left = 485.234
+margin_top = 288.174
+margin_right = 963.234
+margin_bottom = 716.174
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SkillPanel" type="TextureRect" parent="."]
-margin_left = 743.0
-margin_top = 678.0
-margin_right = 1167.0
-margin_bottom = 1060.0
+margin_left = 98.8464
+margin_top = 38.0844
+margin_right = 522.846
+margin_bottom = 420.084
 texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SkillPanel"]
 margin_left = 27.0
@@ -215,9 +216,9 @@ expand = true
 stretch_mode = 6
 
 [node name="ItemPanel" type="TextureRect" parent="."]
-margin_left = 743.0
+margin_left = 723.93
 margin_top = 38.0
-margin_right = 1167.0
+margin_right = 1147.93
 margin_bottom = 420.0
 texture = ExtResource( 13 )
 
@@ -271,10 +272,10 @@ text = "Victory"
 
 [node name="Combatlog" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0.674039 )
-margin_left = 748.0
-margin_top = 455.0
-margin_right = 1160.0
-margin_bottom = 640.0
+margin_left = 1201.0
+margin_top = 50.0
+margin_right = 1869.0
+margin_bottom = 394.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Combatlog"]
 margin_left = 10.0

@@ -129,6 +129,26 @@ func sound(node, args):
 	input_handler.PlaySound(args.sound)
 	return 0.1
 
+func default_animation(node, args):
+	var id = args.animation
+	var playtime = variables.default_animations_duration[id]
+	var transition_time = variables.default_animations_transition[id]
+	var delaytime = variables.default_animations_delay[id]
+	var tex = node.fighter.animations[id]
+	var sp = node.get_node('sprite')
+	var sp2 = node.get_node('sprite2')
+	sp2.texture = tex
+	sp2.visible = true
+	if tex is AnimatedTexAutofill:
+		playtime += tex.frames / tex.fps
+	else:
+		pass
+	input_handler.FadeAnimation(sp, transition_time, delaytime)
+	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
+	input_handler.FadeAnimation(sp2, transition_time, playtime + delaytime - transition_time)
+	input_handler.UnfadeAnimation(sp, transition_time, playtime + delaytime - transition_time)
+	return playtime + delaytime
+
 func casterattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.2
@@ -277,40 +297,33 @@ func hp_update(node, args):
 	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	#update hp label
 	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp, args.newhpp)
-	#node.update_hp_label(args.newhp, args.newhpp)
 	tween.start()
 	return delaytime + delay
 
-#func mp_update(node, args):
-#	var delaytime = 0.1
-#	var tween = input_handler.GetTweenNode(node)
-#	var mpnode = node.get_node("Mana")
-#	#update mp bar
-#	tween.interpolate_property(mpnode, 'value', mpnode.value, args.newmpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#	#update mp label
-#	node.update_mp_label(args.newmp, args.newmpp)
-#	tween.start()
-#	return delaytime
 
 func test_combat_start(node, args):
 	return 1.0
 
 func shield_update(node, args):
-	node.material.set_shader_param('modulate', args.color)
+#	node.material.set_shader_param('modulate', args.color)
+	node.get_node('shield').visible = args.value
 	return 0.1
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode
-	node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
-	input_handler.FadeAnimation(node, 0.5, 0.3)
+#	node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
+#	input_handler.FadeAnimation(node, 0.5, 0.3)
+	node.defeat()
 	return 0.1
 
 func disable(node, args = null):
-	node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
+#	node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
+	node.disable()
 	return 0.1
 
 func enable(node, args = null):
-	if node.get_node('Icon').material != null: node.get_node('Icon').material = null
-	node.disabled = false
+#	if node.get_node('Icon').material != null: node.get_node('Icon').material = null
+#	node.disabled = false
+	node.enable()
 	return 0.1
 
 func disappear(node, args = null):

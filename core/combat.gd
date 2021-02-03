@@ -1537,7 +1537,7 @@ func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
 	#need to add daily restriction check
-	if !activecharacter.can_use_skill(skill.code) :
+	if !activecharacter.can_use_skill(skill) :
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack')
 		return

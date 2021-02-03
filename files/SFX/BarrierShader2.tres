@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 modulate:hint_color;
+
+float edge_dist (vec2 r){
+	float res = 1.0;
+	res = min(res, r.x);
+	res = min(res, r.y);
+	res = min(res, 1.0 - r.x);
+	res = min(res, 1.0 - r.y);
+	return res;
+}
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	float tmp = edge_dist(UV);
+	tmp = 0.5 + sin((tmp - 0.25) * 3.14);
+	col.a = tmp;
+	COLOR = col;
+	}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/modulate = Color( 1, 1, 1, 1 )

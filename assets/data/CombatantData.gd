@@ -11,7 +11,8 @@ var charlist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Arron/Arron_idle/Arron.tres"),
 			hit = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0000_Arron_hit",
-			attack = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0001_Arron_at"
+			attack = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0001_Arron_at",
+			idle_1 = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0002_Arron_idle",
 		},
 		flavor = 'The honorable me',
 		hpmax = 50,
@@ -32,7 +33,8 @@ var charlist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Rose/Rose_idle/Rose.tres"),
 			hit = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0001_Rose_hit",
-			attack = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0000_Rose_at"
+			attack = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0000_Rose_at",
+			idle_1 = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0002_Rouz_idle"
 		},
 		flavor = 'My loyal pet',
 		hpmax = 40,
@@ -53,7 +55,8 @@ var charlist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Erika/Erika_idle/Erika.tres"),
 			hit = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0002_Erika_hit",
-			attack = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0000_Erika_at"
+			attack = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0000_Erika_at",
+			idle_1 = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0001_Erika_idle"
 		},
 		flavor = 'An elven gal',
 		hpmax = 45,
@@ -74,7 +77,8 @@ var charlist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Ember/Ember_idle/Ember.tres"),
 			hit = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0001_Ember_hit",
-			attack = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0000_Ember_idle"
+			attack = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0000_Ember_idle",
+			idle_1 = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0002_Ember_idle"
 		},
 		flavor = 'A dragon gal',
 		hpmax = 80,
@@ -95,7 +99,8 @@ var charlist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Rilu/Rilu_idle/Rilu.tres"),
 			hit = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0000_Rilu_hit",
-			attack = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0002_Rilu_at"
+			attack = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0002_Rilu_at",
+			idle_1 = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0001_Rilu_idle"
 		},
 		flavor = 'A dragon gal',
 		hpmax = 55,
@@ -116,7 +121,8 @@ var charlist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Iola/Iola_idle/Iola.tres"),
 			hit = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0000_Iola_hit",
-			attack = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0001_Iola_at"
+			attack = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0001_Iola_at",
+			idle_1 = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0002_Iola_idle"
 		},
 		flavor = 'A dragon gal',
 		hpmax = 40,

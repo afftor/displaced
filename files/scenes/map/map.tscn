@@ -15,7 +15,7 @@
 [ext_resource path="res://files/scenes/map/map.gd" type="Script" id=13]
 [ext_resource path="res://files/TextSceneNew/TextSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://files/scenes/ControlPanel.tscn" type="PackedScene" id=15]
-[ext_resource path="res://files/scenes/combat.tscn" type="PackedScene" id=16]
+[ext_resource path="res://files/scenes/combat_new.tscn" type="PackedScene" id=16]
 [ext_resource path="res://files/scenes/ExploreScreen.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/scenes/MainScreen_new.tscn" type="PackedScene" id=18]
 

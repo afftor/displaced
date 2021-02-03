@@ -53,7 +53,7 @@ func set_active():
 	set_process(true)
 	visible = true
 #	set_process_input(true)
-#	material.set_shader_param('opacity', 0.8);
+	material.set_shader_param('opacity', 0.8);
 
 
 func set_inactive():

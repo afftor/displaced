@@ -46,7 +46,12 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0000s_0001_Rat_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0000s_0000_Rat_at",
+#			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
+		},
 	},
 	treant = {
 		code = 'treant',
