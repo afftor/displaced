@@ -30,6 +30,10 @@ func createfromname(name):
 	# yield(resources, "done_work")
 	# e.t.c.
 	#
+	## no. cause these classes are pure logical they should not handle resourse-loading due to func yield nature
+	## or we will be forced to wrap all logical callbacks into yield(callback, 'completed') or while-yield cycles
+	## all preloading should preferably be handled by data singletones
+	
 	var template = combatantdata.charlist[name]
 	base = template.code
 	self.name = tr(template.name)
@@ -49,6 +53,7 @@ func createfromname(name):
 		for t in template.traits:
 			traits[t] = false;
 			add_trait(t);
+	animations = template.animations.duplicate()
 	hp = get_stat('hpmax')
 
 

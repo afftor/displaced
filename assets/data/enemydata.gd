@@ -46,6 +46,12 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0000s_0001_Rat_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0000s_0000_Rat_at",
+#			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
+		},
 	},
 	treant = {
 		code = 'treant',
@@ -64,6 +70,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	faerie = {
 		code = 'faerie',
@@ -82,6 +89,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	spider = {
 		code = 'spider',
@@ -100,6 +108,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	earthgolem = {
 		code = 'earthgolem',
@@ -118,6 +127,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	angrydwarf = {
 		code = 'angrydwarf',
@@ -136,6 +146,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	dwarf = {
 		code = 'dwarf',
@@ -154,6 +165,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	zombie = {
 		code = 'zombie',
@@ -172,6 +184,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	skeleton_warrior = {
 		code = 'skeleton_warrior',
@@ -190,6 +203,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	skeleton_archer = {
 		code = 'skeleton_archer',
@@ -209,6 +223,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = '',
+		animations = {}
 	},
 	wraith = {
 		code = 'wraith',
@@ -227,6 +242,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	cult_soldier = {
 		code = 'cult_soldier',
@@ -245,6 +261,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	cult_mage = {
 		code = 'cult_mage',
@@ -264,6 +281,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = '',
+		animations = {}
 	},
 	cult_archer = {
 		code = 'cult_archer',
@@ -283,6 +301,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = '',
+		animations = {}
 	},
 	hatchling = {
 		code = 'hatchling',
@@ -301,6 +320,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	wyvern = {
 		code = 'wyvern',
@@ -319,6 +339,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	armored_beast = {
 		code = 'armored_beast',
@@ -337,6 +358,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	giant_toad = {
 		code = 'giant_toad',
@@ -355,6 +377,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	demon1 = {
 		code = 'demon1',
@@ -373,6 +396,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	demon2 = {
 		code = 'demon2',
@@ -391,6 +415,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	soldier = {
 		code = 'soldier',
@@ -409,6 +434,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		animations = {}
 	},
 	
 	
@@ -438,6 +464,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
+		animations = {}
 	},
 	scientist = {
 		code = 'scientist',
@@ -465,6 +492,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
+		animations = {}
 	},
 	
 	
@@ -521,6 +549,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = 'bigtreantloot',
+		animations = {}
 	},
 #	earthgolem = {
 #		code = 'earthgolem',
@@ -575,6 +604,7 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'earthgolembossloot',
+		animations = {}
 	},
 	
 #	spider = {
@@ -698,3 +728,23 @@ var loottables = {
 		usables = [{code = 'protectivecharm', min = 1, max = 1, chance = 100}],
 	},
 }
+
+
+func _ready():
+	yield(preload_icons(), 'completed')
+	print("Enemies icons preloaded")
+
+
+func preload_icons():
+	for ch in enemylist.values():
+#		if b.icon.begins_with("res:"): continue
+		if ch.combaticon != null:
+			resources.preload_res(ch.combaticon)
+		if ch.bodyimage != null:
+			resources.preload_res(ch.bodyimage)
+		for an in ch.animations.values():
+			if an is AnimatedTexAutofill:
+				an.fill_frames()
+			else:
+				resources.preload_res(an)
+	yield(resources, "done_work")

@@ -147,6 +147,21 @@ func _init():
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
 
+func preload_backgrounds():
+	var path = resources.RES_ROOT.bg + '/bg'
+	var dir = dir_contents(path)
+	if dir != null:
+		for fl in dir:
+			if fl.ends_with('.import'): continue
+			resources.preload_res(fl.trim_prefix(resources.RES_ROOT.bg + '/').trim_suffix('.' + resources.RES_EXT.bg))
+	path = resources.RES_ROOT.bg + '/abg'
+	dir = dir_contents(path)
+	if dir != null:
+		for fl in dir:
+			if fl.ends_with('.import'): continue
+			resources.preload_res(fl.trim_prefix(resources.RES_ROOT.abg + '/').trim_suffix('.' + resources.RES_EXT.abg))
+	yield(resources, "done_work") #not absolutely correct due to chance of no pathes processed to preloading
+
 func _ready():
 #	OS.window_size = Vector2(1280,720)
 #	OS.window_position = Vector2(300,0)
@@ -175,6 +190,9 @@ func _ready():
 
 	#====================================
 	
+	yield(preload_backgrounds(), 'completed')
+	print("Backgrounds preloaded")
+
 	
 	#randomgroups = Enemydata.randomgroups
 	#enemylist = Enemydata.enemylist
@@ -291,9 +309,14 @@ func LoadEvent(name):
 func StartEventScene(name, debug = false, line = 0):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
-	var scene = input_handler.scene_node #input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
-	scene.visible = true
-	scene.Start(scenes[name], debug, line)
+#	var scene = input_handler.scene_node #input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
+	input_handler.menu_node.visible = false
+#	scene.visible = true
+#	scene.Start(scenes[name], debug, line)
+	input_handler.scene_node.show()
+	input_handler.scene_node.play_scene(name)
+	yield(input_handler.scene_node, "scene_end")
+	input_handler.menu_node.visible = true
 
 func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()

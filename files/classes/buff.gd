@@ -30,10 +30,9 @@ func get_tooltip():
 	return description % args
 
 func get_icon():
-	if icon.is_rel_path() or icon.is_abs_path():
+	if icon.begins_with("res:"):
 		return load(icon)
 	else:
-		# if using this, it needed to use path 'traits/iconname', but preload it first
 		return resources.get_res(icon)
 
 func get_name():

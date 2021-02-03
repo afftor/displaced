@@ -22,7 +22,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [], #while it is completely functional 'as is', we should either clone this skill or make a complex patches system to reflect element and range changes in sound and sfx data (or change current sfx code to use 'weapon_sfx' or 'element_sfx' placeholder)

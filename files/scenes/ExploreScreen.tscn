@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://files/scenes/ExploreScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/forest.png" type="Texture" id=2]
@@ -18,11 +18,9 @@
 [ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=18]
-[ext_resource path="res://files/scenes/TraitSelectionLevelup.tscn" type="PackedScene" id=19]
 [ext_resource path="res://files/scenes/HeroList.tscn" type="PackedScene" id=20]
 [ext_resource path="res://files/scenes/Inventory.tscn" type="PackedScene" id=21]
 [ext_resource path="res://files/scenes/combat.tscn" type="PackedScene" id=22]
-
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 10 )
@@ -309,9 +307,6 @@ mouse_filter = 2
 texture = ExtResource( 18 )
 expand = true
 stretch_mode = 5
-
-[node name="LevelupTrait" parent="." instance=ExtResource( 19 )]
-visible = false
 
 [node name="HeroList" parent="." instance=ExtResource( 20 )]
 visible = false

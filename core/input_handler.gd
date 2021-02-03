@@ -378,6 +378,7 @@ func FadeAnimation(node, time = 0.3, delay = 0):
 func UnfadeAnimation(node, time = 0.3, delay = 0):
 	var tweennode = GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+	node.visible = true
 	tweennode.start()
 
 func ShakeAnimation(node, time = 0.5, magnitude = 5):
@@ -402,7 +403,6 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	node.add_child(x)
 	
 	x.rect_size = node.rect_size
-	
 	if rotate == true:
 		x.rect_pivot_offset = x.texture.get_size()/2
 		x.rect_rotation = rand_range(0,360)
@@ -622,7 +622,7 @@ var node_data = {
 	NODE_CONFIRMPANEL : {name = 'ConfirmPanel', mode = 'scene', scene = preload("res://files/scenes/ConfirmPanel.tscn"), calls = 'Show'},
 #	NODE_SLAVESELECT : {name = 'SlaveSelectMenu', mode = 'scene', scene = preload("res://src/SlaveSelectMenu.tscn")},
 #	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
-	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextScene/TextSystem.tscn")},
+	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextSceneNew/TextSystem.tscn")},
 	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
 	NODE_SOUND : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
 	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},
@@ -667,3 +667,17 @@ func random_element(arr:Array):
 	if arr.size() == 0: return null
 	var pos = globals.rng.randi_range(0, arr.size() -1)
 	return arr[pos]
+
+
+func if_mouse_inside(node):
+	if !node.visible or node.modulate.a == 0.0: return false
+	if !node.get_global_rect().has_point(node.get_global_mouse_position()): return false
+	var pos = node.get_local_mouse_position()
+	var tt = node.texture.get_data()
+	var t = Image.new()
+	t.copy_from(tt)
+	pos.x *= (t.get_width()/node.rect_size.x)
+	pos.y *= (t.get_height()/node.rect_size.y)
+	t.lock()
+	var col = t.get_pixelv(pos)
+	return (col.a > 0.0)

@@ -292,5 +292,6 @@ func levelupscheck():
 
 
 func levelupwindow(character):
-	$LevelupTrait.levelup(character)
-	character.recentlevelups -= 1
+	pass
+#	$LevelupTrait.levelup(character)
+#	character.recentlevelups -= 1

@@ -7,6 +7,7 @@ var base
 
 var icon
 var combaticon
+var animations setget ,get_animations
 
 var race
 
@@ -66,6 +67,22 @@ var bonuses = {}
 
 #ai
 var taunt = null
+
+
+func get_animations():
+	var res = {}
+	for key in animations:
+		if animations[key] is AnimatedTexAutofill:
+			res[key] = animations[key]
+		elif typeof(animations[key]) == TYPE_OBJECT:
+			res[key] = animations[key]
+		else:
+			res[key] = resources.get_res(animations[key])
+	if !animations.has('idle_1'):
+		res.idle_1 = res.idle.duplicate()
+#	if !animations.has('dead'):
+#		res.dead = resources.get_res('Fight/dead')
+	return res
 
 
 func get_stat(statname):

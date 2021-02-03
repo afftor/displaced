@@ -53,6 +53,19 @@ const lines = {
 
 var curve = [1.0]
 
+var default_animations_duration = {
+	attack = 0.6,
+	hit = 0.6,
+}
+var default_animations_transition = {
+	attack = 0.2,
+	hit = 0.2,
+}
+var default_animations_delay = {
+	attack = 0.0,
+	hit = 0.3,
+}
+
 func _ready():
 	fill_curve()
 	print(curve)
