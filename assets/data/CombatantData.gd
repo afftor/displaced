@@ -32,8 +32,8 @@ var charlist = {
 		image = 'Rose',
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Rose/Rose_idle/Rose.tres"),
-			hit = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0001_Rose_hit",
-			attack = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0000_Rose_at",
+			hit = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0001_Rouz_hit",
+			attack = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0000_Rouz_at",
 			idle_1 = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0002_Rouz_idle"
 		},
 		flavor = 'My loyal pet',
