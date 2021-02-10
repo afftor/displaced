@@ -70,7 +70,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0003s_0002_Ent_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0003s_0001_Ent_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0003s_0000_Ent_at",
+		},
 	},
 	faerie = {
 		code = 'faerie',
@@ -89,7 +93,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0001s_0002_Fairy_idle",
+			hit = "Fight/Fight_spritesFHD_0001s_0001_Fairy_hit",
+			attack = "Fight/Fight_spritesFHD_0001s_0000_Fairy_at",
+		},
 	},
 	spider = {
 		code = 'spider',
@@ -108,7 +116,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0002s_0002_Spider_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0002s_0000_Spider_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0002s_0001_Spider_at",
+		},
 	},
 	earthgolem = {
 		code = 'earthgolem',
@@ -127,7 +139,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0001s_0002_Golem_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0001s_0001_Golem_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0001s_0000_Golem_at",
+		},
 	},
 	angrydwarf = {
 		code = 'angrydwarf',
@@ -146,7 +162,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0003s_0002_Dwarf2_idle",
+			hit = "Fight/Fight_spritesFHD_0003s_0000_Dwarf2_hit",
+			attack = "Fight/Fight_spritesFHD_0003s_0001_Dwarf2_at",
+		},
 	},
 	dwarf = {
 		code = 'dwarf',
@@ -165,7 +185,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
+			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
+			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+		},
 	},
 	zombie = {
 		code = 'zombie',
@@ -184,7 +208,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle ="Fight/Fight_spritesFHD_0002s_0002_Zombieidle" ,
+			hit = "Fight/Fight_spritesFHD_0002s_0000_Zombie_hit",
+			attack = "Fight/Fight_spritesFHD_0002s_0001_Zombie_at",
+		},
 	},
 	skeleton_warrior = {
 		code = 'skeleton_warrior',
@@ -203,7 +231,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0002_Skelet_warrior_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0000_Skelet_warrior_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0001_Skelet_warrior_at",
+		},
 	},
 	skeleton_archer = {
 		code = 'skeleton_archer',
@@ -223,7 +255,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0005s_0002_Archer_idle",
+			hit = "Fight/Fight_spritesFHD_0005s_0000_Archer_hit",
+			attack = "Fight/Fight_spritesFHD_0005s_0001_Archer_at",
+		},
 	},
 	wraith = {
 		code = 'wraith',
@@ -320,7 +356,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0004s_0002_Dragon_idle",
+			hit ="Fight/Fight_spritesFHD_0000s_0004s_0000_Dragon_hit" ,
+			attack = "Fight/Fight_spritesFHD_0000s_0004s_0001_Dragon_at",
+		},
 	},
 	wyvern = {
 		code = 'wyvern',
@@ -339,7 +379,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0007s_0002_Viverna_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0007s_0000_Viverna_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0007s_0001_Viverna_at",
+		},
 	},
 	armored_beast = {
 		code = 'armored_beast',
@@ -357,8 +401,11 @@ var enemylist = {
 		combaticon = '',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0005s_0002_Tortle_idle",
+			hit = "rFight/Fight_spritesFHD_0000s_0005s_0001_Tortle_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0005s_0000_Tortle_at",
+		},
 	},
 	giant_toad = {
 		code = 'giant_toad',
@@ -377,7 +424,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0006s_0002_Toad_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0006s_0001_Toad_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0006s_0000_Toad_at",
+		},
 	},
 	demon1 = {
 		code = 'demon1',
@@ -396,7 +447,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Demon_idle",
+			hit = "Fight/Demon_hit",
+			attack = "Fight/Demon_at",
+		},
 	},
 	demon2 = {
 		code = 'demon2',
@@ -421,7 +476,7 @@ var enemylist = {
 		code = 'soldier',
 		name = tr(""),
 		flavor = tr(""),
-		race = 'demon',
+		race = 'humanoid',
 		skills = ['attack', 'light_attack'],
 		basehp = 180,
 		damage = 70,
@@ -434,7 +489,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0004s_0002_Specnaz_idle (1)",
+			hit = "Fight/Fight_spritesFHD_0004s_0000_Specnaz_hit (1)",
+			attack = "Fight/Fight_spritesFHD_0004s_0001_Specnaz_at (1)",
+		},
 	},
 	
 	
@@ -464,7 +523,12 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
-		animations = {}
+		animations = {
+			idle = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0002_Zombie_boom_idle",
+			hit = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0001_Zombie_boom_hit",
+			attack = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0000_Zombie_boom_at",
+			explode = load("res://assets/images/Fight/Bosses/Zombie/Zombie_boom_sq/Zombie_explode.tres")
+		},
 	},
 	scientist = {
 		code = 'scientist',

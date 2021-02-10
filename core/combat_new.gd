@@ -1640,3 +1640,60 @@ func res_all(hpval):
 func miss(fighter):
 	CombatAnimations.miss(fighter.displaynode)
 
+#part for missing swap char panel
+#pathes may be subject of changing
+#mb need all this part to move to apopriate (non-existing now) scene
+func UpdateCharPanel():
+	var pan = get_node("CharSwitchPanel")
+	var chpool = []
+	for nm in state.characters:
+		var ch = state.heroes[nm]
+		if !ch.unlocked:
+			continue 
+		if ch.position != null:
+			continue
+		if ch.hp <= 0:
+			continue
+		chpool.push_back(ch)
+	if chpool.size() == 0:
+		pan.get_node("no_chars").visible = true
+		pan.get_node("char1").visible = false
+		pan.get_node("char2").visible = false
+		pan.get_node("char3").visible = false
+	else:
+		pan.get_node("no_chars").visible = false
+#		pan.get_node("char1").visible = false
+#		pan.get_node("char2").visible = false
+#		pan.get_node("char3").visible = false
+		if chpool.size() == 1:
+			pan.get_node("char1").visible = false
+			pan.get_node("char2").visible = true
+			setup_swap_portrait(pan.get_node("char2"), chpool[0])
+			pan.get_node("char3").visible = false
+		if chpool.size() == 2:
+			pan.get_node("char1").visible = true
+			setup_swap_portrait(pan.get_node("char1"), chpool[0])
+			pan.get_node("char2").visible = false
+			pan.get_node("char3").visible = true
+			setup_swap_portrait(pan.get_node("char3"), chpool[1])
+		if chpool.size() == 3:
+			pan.get_node("char1").visible = true
+			setup_swap_portrait(pan.get_node("char1"), chpool[0])
+			pan.get_node("char2").visible = true
+			setup_swap_portrait(pan.get_node("char2"), chpool[1])
+			pan.get_node("char3").visible = true
+			setup_swap_portrait(pan.get_node("char3"), chpool[2])
+	pan.visible = true
+
+
+func setup_swap_portrait(node, ch):
+	node.get_node('icon').texture = ch.combaticon
+	node.get_node('name').text = ch.name
+	node.hint_tooltip = ch.flavor
+	node.connect('pressed', self, 'swap_hero', [ch.id])
+	#possibly add more info
+
+
+func hide_swap_panel():
+	var pan = get_node("CharSwitchPanel")
+	pan.visible = false
