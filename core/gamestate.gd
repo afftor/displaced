@@ -12,7 +12,7 @@ var votelinksseen = false
 var itemidcounter := 0
 var heroidcounter := 0
 var money = 0
-var food = 50
+#var food = 50
 var townupgrades := {
 	bridge = 1,
 	townhall = 1,
@@ -23,9 +23,8 @@ var heroes := {}
 var heroes_save
 var items := {}
 var items_save
-var materials := {} setget materials_set
+var materials := {}
 var lognode 
-var oldmaterials := {}
 var unlocks := []
 
 var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
@@ -83,13 +82,12 @@ func revert():
 	itemidcounter = 0
 	heroidcounter = 0
 	money = 0
-	food = 50
+#	food = 50
 	townupgrades.clear()
 	reset_heroes()
 	items.clear()
 	materials.clear()
 	lognode = null
-	oldmaterials.clear()
 	unlocks.clear()
 	combatparty = {1 : null, 2 : null, 3 : null} 
 	CurrentTextScene = null
@@ -128,65 +126,8 @@ func _ready():
 	reset_heroes()
 	for i in Items.Materials:
 		materials[i] = 0
-	oldmaterials = materials.duplicate()
-
-func materials_set(value):
-	var text = ''
-	for i in value:
-		if oldmaterials.has(i) == false || oldmaterials[i] != value[i]:
-			if oldmaterials.has(i) == false:
-				oldmaterials[i] = 0
-			else:
-				if oldmaterials[i] - value[i] < 0:
-					text += 'Gained '
-					globals.check_signal("MaterialObtained", i)
-				else:
-					text += "Lost "
-				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + Items.Materials[i].name + '}'
-				logupdate(text)
-	materials = value
-	oldmaterials = materials.duplicate()
-
-func logupdate(text):
-	if globals.get_tree().get_root().has_node("LogPanel/RichTextLabel") == false:
-		return
-	lognode = globals.get_tree().get_root().get_node("LogPanel/RichTextLabel")
-	text = lognode.bbcode_text + '\n' + text
-	
-	#lognode.bbcode_text += '\n' + 
-	lognode.bbcode_text = globals.TextEncoder(text)
 
 
-func ProgressMainStage(stage = null):
-	if stage == null:
-		mainprogress += 1
-	else:
-		mainprogress = stage
-
-func MakeQuest(code):
-	activequests.append({code = code, stage = 1})
-	globals.check_signal("QuestStarted", code)
-
-func GetQuest(code):
-	for i in activequests:
-		if i.code == code:
-			return i.stage
-	return null
-
-func AdvanceQuest(code):
-	for i in activequests:
-		if i.code == code:
-			i.stage += 1
-
-func FinishQuest(code):
-	var tempquest
-	for i in activequests:
-		if i.code == code:
-			tempquest = i
-	
-	activequests.erase(tempquest)
-	completedquests.append(tempquest.code)
-	globals.check_signal("QuestCompleted", code)
 
 func StoreEvent(nm):
 	OldEvents[nm] = date
@@ -364,7 +305,6 @@ func deserialize(tmp:Dictionary):
 	townupgrades.clear()
 	for k in town_save.keys() :
 		townupgrades[k] = int(town_save[k])
-	oldmaterials = materials.duplicate()
 
 func cleanup():
 	for ch in heroes.keys().duplicate(): 
@@ -380,5 +320,112 @@ func reset_heroes():
 	h_rilu.new()
 	h_rose.new()
 
-func unlock_char(code):
-	heroes[code].unlocked = true
+
+#simple action wrappers
+func unlock_char(code, value = true):
+	heroes[code].unlocked = value
+
+
+func unlock_loc(loc_id, value = true):
+	location_unlock[loc_id] = value
+
+
+func make_upgrade(id, lvl):
+	#stub
+	#add checks, logging and signals
+	townupgrades[id] = lvl
+
+func logupdate(text):
+	if globals.get_tree().get_root().has_node("LogPanel/RichTextLabel") == false:
+		return
+	lognode = globals.get_tree().get_root().get_node("LogPanel/RichTextLabel")
+	text = lognode.bbcode_text + '\n' + text
+	
+	#lognode.bbcode_text += '\n' + 
+	lognode.bbcode_text = globals.TextEncoder(text)
+
+
+func ProgressMainStage(stage = null):
+	if stage == null:
+		mainprogress += 1
+	else:
+		mainprogress = stage
+
+
+func MakeQuest(code):
+	activequests.append({code = code, stage = 1})
+	globals.check_signal("QuestStarted", code)
+
+
+func GetQuest(code):
+	for i in activequests:
+		if i.code == code:
+			return i.stage
+	return null
+
+
+func AdvanceQuest(code):
+	for i in activequests:
+		if i.code == code:
+			i.stage += 1
+
+
+func FinishQuest(code):
+	var tempquest
+	for i in activequests:
+		if i.code == code:
+			tempquest = i
+	activequests.erase(tempquest)
+	completedquests.append(tempquest.code)
+	globals.check_signal("QuestCompleted", code)
+
+
+func add_materials(res, value):
+	if !materials.has(res):
+		materials[res] = 0
+	var tmp = materials[res]
+	materials[res] += value
+	if materials[res] < 0: materials[res] = 0
+	tmp = materials[res] - tmp
+	if tmp > 0:
+		var text = "Gained "
+		text += str(tmp) + ' {color=yellow|' + Items.Materials[res].name + '}'
+		logupdate(text)
+	elif tmp < 0:
+		var text = "Lost "
+		text += str(-tmp) + ' {color=yellow|' + Items.Materials[res].name + '}'
+		logupdate(text)
+
+
+func add_money(value):
+	var tmp = money
+	money += value
+	if money < 0: money = 0
+	tmp = money - tmp
+	if tmp > 0:
+		var text = "Gained "
+		text += str(tmp) + ' {color=yellow|' + 'Gold' + '}'
+		logupdate(text)
+	elif tmp < 0:
+		var text = "Lost "
+		text += str(-tmp) + ' {color=yellow|' + 'Gold' + '}'
+		logupdate(text)
+
+
+#obsolete setter
+#func materials_set(value):
+#	var text = ''
+#	for i in value:
+#		if oldmaterials.has(i) == false || oldmaterials[i] != value[i]:
+#			if oldmaterials.has(i) == false:
+#				oldmaterials[i] = 0
+#			else:
+#				if oldmaterials[i] - value[i] < 0:
+#					text += 'Gained '
+#					globals.check_signal("MaterialObtained", i)
+#				else:
+#					text += "Lost "
+#				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + Items.Materials[i].name + '}'
+#				logupdate(text)
+#	materials = value
+#	oldmaterials = materials.duplicate()
