@@ -132,12 +132,40 @@ func _ready():
 func StoreEvent(nm):
 	OldEvents[nm] = date
 
+
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
-	input_handler.map_node.update_map()
+	if input_handler.map_node!= null: input_handler.map_node.update_map()
 	CurEvent = ""
 	keyframes.clear()
+
+
+func store_choice(choice, option):
+	if CurEvent == "" or CurEvent == null:
+		print("warning - no active event")
+		return
+	var line = "%s_%d" % [CurEvent, choice]
+	if if_has_choice(line):
+		print ("warning - choice already stored")
+		return
+	OldEvents[line] = option
+	print("choice stored - %s %d" %[line, option])
+
+
+func get_choice(choice):
+	if CurEvent == "" or CurEvent == null:
+		print("warning - no active event")
+		return null
+	var line = "%s_%d" % [CurEvent, choice]
+	if if_has_choice(line): return OldEvents[line]
+	else:
+		print("warning - no stored choice %s " % line)
+		return null
+
+
+func if_has_choice(line):
+	return OldEvents.has(line)
 
 
 func if_has_money(value):

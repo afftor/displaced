@@ -152,4 +152,4 @@ func preload_icons():
 				an.fill_frames()
 			elif an is String:
 				resources.preload_res(an)
-	yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")

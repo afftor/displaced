@@ -403,7 +403,7 @@ var enemylist = {
 		aiposition = 'melee',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0005s_0002_Tortle_idle",
-			hit = "rFight/Fight_spritesFHD_0000s_0005s_0001_Tortle_hit",
+			hit = "Fight/Fight_spritesFHD_0000s_0005s_0001_Tortle_hit",
 			attack = "Fight/Fight_spritesFHD_0000s_0005s_0000_Tortle_at",
 		},
 	},
@@ -811,4 +811,4 @@ func preload_icons():
 				an.fill_frames()
 			else:
 				resources.preload_res(an)
-	yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")

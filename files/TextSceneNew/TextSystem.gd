@@ -41,7 +41,7 @@ const AVAIL_EFFECTS = [
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
 	"ABG", "STOP", "CHOICE", "SKIP",
-	"DECISION"
+	"DECISION", "STATE"
 	]
 
 onready var TextField = $Panel/DisplayText
@@ -67,6 +67,8 @@ var receive_input = false
 var is_video_bg = false
 var decisions = PoolStringArray()
 var last_choice = -1
+
+var replay_mode = false
 
 func _ready() -> void:
 	set_process(false)
@@ -204,9 +206,13 @@ func tag_delay(secs: String) -> void:
 
 func get_choice(i: int):
 	last_choice = i
+	if !replay_mode:
+		state.store_choice(choice_line, i)
 	$ChoicePanel.visible = false
 	advance_scene()
 
+
+var choice_line = 0
 func tag_choice(chstring: String) -> void:
 	var chsplit = chstring.split("|")
 	skip = false
@@ -218,6 +224,7 @@ func tag_choice(chstring: String) -> void:
 	$ChoicePanel.visible = true
 	
 	var c = 0
+	choice_line = line_nr
 	for ch in chsplit:
 		var newbutton = $ChoicePanel/VBoxContainer.get_node("Button").duplicate()
 		$ChoicePanel/VBoxContainer.add_child(newbutton)
@@ -225,10 +232,40 @@ func tag_choice(chstring: String) -> void:
 		newbutton.get_node("Label").text = tr(ch)
 		newbutton.index = c
 		newbutton.connect('i_pressed', self, 'get_choice')
+		if replay_mode:
+			var stored_choice = state.get_choice(line_nr)
+			if stored_choice == null:
+				print("warning - no stored choice")
+			else:
+				if c != stored_choice:
+					newbutton.disabled = true
 		c += 1
 
 func tag_decision(dec_name: String) -> void:
 	decisions.append(dec_name)
+	if !replay_mode:
+		state.decisions.append(dec_name)
+
+
+func tag_state(method:String, arg):
+	if replay_mode: return
+	match method:
+		'char_unlock':
+			state.unlock_char(arg)
+		'location_unlock':
+			state.unlock_loc(arg)
+		'upgrade':
+			state.make_upgrade(arg[0], int(arg[1]))
+		'add_money':
+			state.add_money(int(arg))
+		'add_material':
+			state.add_materials(arg[0], int(arg[1]))
+		'make_quest':
+			state.MakeQuest(arg)
+		'advance_quest':
+			state.AdvanceQuest(arg)
+		
+		_: print("Unknown state command: %s" % method)
 
 func tag_sprite_hide() -> void:
 	ImageSprite.texture = null
@@ -300,7 +337,9 @@ func tag_stop() -> void:
 	set_process_input(false)
 	#globals.check_signal("EventFinished")
 	hide()
-	state.FinishEvent()
+	if !replay_mode:
+		state.FinishEvent()
+	replay_mode = false
 	emit_signal("scene_end")
 
 
@@ -382,6 +421,7 @@ func play_scene(scene: String) -> void:
 	receive_input = false
 	decisions = PoolStringArray()
 	last_choice = -1
+	state.CurEvent = scene
 	
 	$Background.texture = null
 	$Background.visible = true
@@ -411,7 +451,7 @@ func play_scene(scene: String) -> void:
 	if !has_res:
 		print("force loading %s..." % scene)
 		preload_scene(scene)
-		yield(resources, "done_work")
+		if resources.is_busy(): yield(resources, "done_work")
 	
 	yield(get_tree(), "idle_frame")
 	set_process(true)

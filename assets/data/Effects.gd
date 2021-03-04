@@ -3483,4 +3483,4 @@ func preload_icons():
 	for b in buffs.values():
 		if b.icon.begins_with("res:"): continue
 		resources.preload_res(b.icon)
-	yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")

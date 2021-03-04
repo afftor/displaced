@@ -3,7 +3,7 @@ var click_sound = "sound/menu_btn"
 
 func _ready():
 	resources.preload_res(click_sound)
-	yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")
 #warning-ignore:return_value_discarded
 	$VBoxContainer/Save.connect('pressed', $saveloadpanel, 'SavePanelOpen')
 #warning-ignore:return_value_discarded

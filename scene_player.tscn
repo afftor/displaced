@@ -43,6 +43,22 @@ margin_left = -200.0
 margin_top = -40.0
 margin_right = 200.0
 text = "Load and run"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="scene_player"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 222.856
+margin_top = -40.0
+margin_right = 622.856
+text = "Load and run replay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextSystem" parent="scene_player" instance=ExtResource( 2 )]
 visible = false
@@ -174,8 +190,8 @@ text = "auto play scenes"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="scene_player/Button" to="scene_player" method="_on_Button_pressed"]
+[connection signal="pressed" from="scene_player/Button2" to="scene_player" method="_on_Button_pressed_1"]
 [connection signal="item_activated" from="event_sym/Map" to="event_sym" method="_on_Map_item_activated"]
 [connection signal="item_activated" from="event_sym/AvailScenes" to="event_sym" method="_on_AvailScenes_item_activated"]
 [connection signal="item_activated" from="event_sym/AvailActions" to="event_sym" method="_on_AvailActions_item_activated"]

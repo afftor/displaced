@@ -160,7 +160,7 @@ func preload_backgrounds():
 		for fl in dir:
 			if fl.ends_with('.import'): continue
 			resources.preload_res(fl.trim_prefix(resources.RES_ROOT.abg + '/').trim_suffix('.' + resources.RES_EXT.abg))
-	yield(resources, "done_work") #not absolutely correct due to chance of no pathes processed to preloading
+	if resources.is_busy(): yield(resources, "done_work") #not absolutely correct due to chance of no pathes processed to preloading
 
 func _ready():
 #	OS.window_size = Vector2(1280,720)
@@ -190,8 +190,10 @@ func _ready():
 
 	#====================================
 	
-	yield(preload_backgrounds(), 'completed')
-	print("Backgrounds preloaded")
+#	yield(preload_backgrounds(), 'completed')
+#	print("Backgrounds preloaded")
+	if resources.is_busy(): yield(resources, "done_work")
+	print("preload finished")
 
 	
 	#randomgroups = Enemydata.randomgroups

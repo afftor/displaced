@@ -9,7 +9,7 @@ var sounds = {
 func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
-	yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")
 	
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	$ControlPanel/Inventory.connect('pressed',self,'openinventory')

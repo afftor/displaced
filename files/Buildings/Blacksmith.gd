@@ -9,7 +9,7 @@ var craft_sound = "sound/itemcraft"
 
 func _ready():
 	resources.preload_res(craft_sound)
-	yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")
 	
 	for i in [$ItemCreationWindow/Part1, $ItemCreationWindow/Part2, $ItemCreationWindow/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])

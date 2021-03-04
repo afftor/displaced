@@ -86,7 +86,7 @@ var sounds = {
 func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
-	yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")
 	
 	for i in range(1,10):
 		battlefield[i] = null
