@@ -44,6 +44,7 @@ func resource_loaded(path) -> void:
 		print(path, " (invalid) ", current_loaded, "/", max_loaded)
 	else:
 		print(path, " ", current_loaded, "/", max_loaded)
+		pass
 
 
 func _ready() -> void:

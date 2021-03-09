@@ -47,21 +47,24 @@ Em - I might not look like it, but I have studied my craft.
 Em - This is a perfect opportunity to start my own shop!
 Ro - ...
 Ar - ...
+=CHOICE Allow|Refuse=
 Ar - ...
-{"index":1,"text":"Refuse"}]},
-{"effect":"skip","log":"ALLOW","value":26},
-{"effect":"skip","log":"REFUSE","value":0},
+#{"index":1,"text":"Refuse"}]},
+#{"effect":"skip","log":"ALLOW","value":26},
+#{"effect":"skip","log":"REFUSE","value":0},
+=SKIP 0 30=
 Ar(neutral) - This is an impossible request.
 Em(tired) - What? But I went such a long way...
 =SPRITE embershock=
 Ember's eyes began filling with tears.
 Ar - No, we can't allow a half-dragon into our town, this would go against safety reg...
 Em(tired) - *Sob*
+=CHOICE Allow|Still_refuse=
 Ar - (God, you are not serious now? )
-Ar - (God, you are not serious now? )
-{"index":1,"text":"Still refuse"}]},
-{"effect":"skip","log":"ALLOW","value":13},
-{"effect":"skip","log":"REFUSE","value":0},
+#{"index":1,"text":"Still refuse"}]},
+#{"effect":"skip","log":"ALLOW","value":13},
+#{"effect":"skip","log":"REFUSE","value":0},
+=SKIP 0 14=
 Ro(sarcastic) - What? I can't believe you are so cruel to her. Look, she's crying.
 Ar - We can't be driven by woman's emotions in hefty decisions.
 Ro - Hmph, I'm leaving then.
@@ -74,10 +77,12 @@ Ar - Is that so? You'll regret this!
 ...
 ......
 Being left alone, Arron failed as Mayor and has been exiled by the goblins.
-{"effect":"game","value":"lose_w_choice"},
+=LOOSE=
+#{"effect":"game","value":"lose_w_choice"},
 Ar - Fine, I'll allow it. You will have to sign a number of contracts first, though.
 Ember's face quickly changes into an image of pure relief.
-{"effect":"skip","log":"","value":3},
+#{"effect":"skip","log":"","value":3},
+=SKIP -1 3=
 Ro - You might be wro...
 Ar - That's a great idea! Just sign a couple of contracts and you can start right away.
 Embers eyes shine with happiness
@@ -91,9 +96,12 @@ Em - Ha-ha, I've always been carrying stuff around the forge, so I wouldn't get 
 Ar - Well, that's all the better for us, but I'll have to tax you for taking town's space. 
 Em - Okay!
 Ember has joined the settlement. Forge is available now.
-{"effect":"state","value":"character_add", "args":"ember"},
-{"effect":"decision","value":"blacksmith"},
-{"effect":"state","value":"make_quest", "args":"forge"},
+#{"effect":"state","value":"character_add", "args":"ember"},
+=STATE char_unlock ember=
+#{"effect":"decision","value":"blacksmith"},
+=DECISION blacksmith=
+#{"effect":"state","value":"make_quest", "args":"forge"},
+=STATE make_quest forge=
 =STOP=
 
 ** ember_1_2 **

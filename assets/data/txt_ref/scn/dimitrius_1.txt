@@ -34,10 +34,11 @@ D - Hmm? You must be the new ruler of this village. My name is Demitrius. Please
 Ro - This is the Mayor, Sir Arron. And my name is Rose. We are pleased to meet you as well.
 Ar - Hmm? What were you talking about just now?
 D - This is my mission, to explain to everyone the danger of Demons.
+=CHOICE Listen_obediently|Listen_disinterestedly=
 D - But since you had no idea, allow me to repeat myself for you.
-{"effect":"choice","value":[{"index":0,"text":"Listen obediently"},{"index":1,"text":"Listen disinterestedly"}]},
-{"effect":"skip","log":"LISTEN OBEDIENTLY","value":1},
-{"effect":"skip","log":"LISTEN DISINTERESTEDLY","value":0},
+#{"effect":"choice","value":[{"index":0,"text":"Listen obediently"},{"index":1,"text":"Listen disinterestedly"}]},
+#{"effect":"skip","log":"LISTEN OBEDIENTLY","value":1},
+#{"effect":"skip","log":"LISTEN DISINTERESTEDLY","value":0},
 D - Despite how peaceful this world might look to you, there are evil beings we call Demons, who always aim to invade and destroy all that is good for us.
 Ar - Seems nasty. Why would they do this?
 D - They feed on the world's life energy and since their world has become a barren wasteland, they have been attempting to come here for centuries.
@@ -60,7 +61,8 @@ Ar - I mean, we gladly will help you out, Father Demitrius.
 D - I'm glad to know this village is so high spirited. Once you prepare, I'll be waiting for you at the exit.
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-{"effect":"state","value":"make_quest", "args":"demitrus"},
+#{"effect":"state","value":"make_quest", "args":"demitrus"},
+=STATE make_quest demitrus=
 =STOP=
 
 ** dimitrius_1_2 **
@@ -131,8 +133,10 @@ D - You must take me for a fool if you think you can delude me with your lies.
 D(talk) - Surrender now, or face the Ancestor’s Wrath!
 =BLACKUNFADE 1=
 =DELAY 1=
-{"effect":"state","value":"finish_quest", "args":"demitrus"},
-{"effect":"state","value":"make_quest", "args":"demofinish"},
+#{"effect":"state","value":"finish_quest", "args":"demitrus"},
+=STATE finish_quest demitrus=
+#{"effect":"state","value":"make_quest", "args":"demofinish"},
+=STATE make_quest demofinish=
 =STOP=
 
 ** dimitrius_1_4 **

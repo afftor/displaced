@@ -233,8 +233,10 @@ Ar(neutral) - You bring him here then.
 Ro(sarcastic) - I'm afraid he won't agree to follow me. We can't order them around just like that. 
 Ar(neutral) - ...
 Ar(neutral) - Democracy was a mistake.
-{"effect":"state","value":"character_add", "args":"arron"},
-{"effect":"state","value":"character_add", "args":"rose"},
+#{"effect":"state","value":"character_add", "args":"arron"},
+=STATE char_unlock arron=
+#{"effect":"state","value":"character_add", "args":"rose"},
+=STATE char_unlock rose=
 =STOP=
 
 ** intro_3 **

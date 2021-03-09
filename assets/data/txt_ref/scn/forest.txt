@@ -109,6 +109,8 @@ Ro(sarcastic) - ...Really?
 Er - Thanks for asking, but I don't like carrying around heavy stuff, so I've got all I need.
 Ar - Looks good to me, let's go. 
 Ro - (...)
-{"effect":"state","value":"character_add", "args":"erika"},
-{"effect":"state","value":"advance_quest", "args":"elves"},
+#{"effect":"state","value":"character_add", "args":"erika"},
+=STATE char_unlock erika=
+#{"effect":"state","value":"advance_quest", "args":"elves"},
+=STATE advance_quest elves=
 =STOP=

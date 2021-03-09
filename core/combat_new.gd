@@ -729,7 +729,7 @@ func victory():
 func defeat():
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	globals.CurrentScene.GameOverShow()
+	input_handler.menu_node.GameOverShow()
 	set_process(false)
 	set_process_input(false)
 

@@ -41,7 +41,7 @@ const AVAIL_EFFECTS = [
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
 	"ABG", "STOP", "CHOICE", "SKIP",
-	"DECISION", "STATE"
+	"DECISION", "STATE", "LOOSE"
 	]
 
 onready var TextField = $Panel/DisplayText
@@ -229,7 +229,7 @@ func tag_choice(chstring: String) -> void:
 		var newbutton = $ChoicePanel/VBoxContainer.get_node("Button").duplicate()
 		$ChoicePanel/VBoxContainer.add_child(newbutton)
 		newbutton.show()
-		newbutton.get_node("Label").text = tr(ch)
+		newbutton.get_node("Label").text = tr(ch.replace('_', ' '))
 		newbutton.index = c
 		newbutton.connect('i_pressed', self, 'get_choice')
 		if replay_mode:
@@ -264,6 +264,8 @@ func tag_state(method:String, arg):
 			state.MakeQuest(arg)
 		'advance_quest':
 			state.AdvanceQuest(arg)
+		'finish_quest':
+			state.FinishQuest(arg)
 		
 		_: print("Unknown state command: %s" % method)
 
@@ -291,7 +293,7 @@ func tag_skip(ifindex_s: String, lcount_s: String) -> void:
 	var ifindex = int(ifindex_s)
 	var lcount = int(lcount_s)
 	
-	if ifindex == last_choice:
+	if ifindex == last_choice or ifindex == -1:
 		line_nr += lcount
 
 func tag_sound(res_name: String) -> void:
@@ -341,6 +343,12 @@ func tag_stop() -> void:
 		state.FinishEvent()
 	replay_mode = false
 	emit_signal("scene_end")
+
+
+func tag_loose() -> void:
+	tag_stop()
+	if !replay_mode and input_handler.menu_node != null:
+		input_handler.menu_node.GameOverShow()
 
 
 func advance_scene() -> void:

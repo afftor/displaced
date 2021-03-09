@@ -149,16 +149,6 @@ var forgeimage = {
 	
 }
 
-func GameOverShow():
-	$GameOverPanel.show()
-	input_handler.UnfadeAnimation($GameOverPanel, 2)
-	input_handler.StopMusic(true)
-	input_handler.PlaySound(sounds["defeat"])
-
-
-func GameOver():
-	globals.CurrentScene.queue_free()
-	globals.ChangeScene('menu')
 
 func buildscreen(empty = null):
 	$Background/bridge.visible = state.townupgrades.has('bridge')
