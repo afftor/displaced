@@ -74,3 +74,9 @@ func fill_curve():
 	for i in range(14): curve.push_back(curve.back() + 0.25)
 	for i in range(5): curve.push_back(curve.back() + 0.1)
 	for i in range(26): curve.push_back(curve.back() + 0.02)
+
+
+var gallery_singles_list = [
+	{path = "rose_sex_1", type = 'abg'},
+	{path = "villagenight", type = 'bg'},
+	]

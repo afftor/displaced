@@ -79,7 +79,30 @@ func _ready() -> void:
 		ref_src.append_array(f.get_as_text().split("\n"))
 		f.close()
 	
+	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
+
+
+func process_gallery_singles() -> PoolStringArray:
+	var res = PoolStringArray()
+	for i in range(variables.gallery_singles_list.size()):
+		res.append_array(process_gallery_item(i, variables.gallery_singles_list[i]))
+	return res
+
+func process_gallery_item(index: int, item: Dictionary) -> PoolStringArray:
+	var res = PoolStringArray()
+	res.append("** gallery_%d **" % index)
+	res.append("=GUI_HIDE=")
+	match item.type:
+		'bg':
+			res.append("=BG %s=" % item.path)
+		'abg':
+			res.append("=ABG %s=" % item.path)
+	res.append("...")
+	res.append("=STOP=")
+	
+	return res
+
 
 func _process(delta: float) -> void:
 	if TextField.get_total_character_count() > TextField.visible_characters:
@@ -96,6 +119,8 @@ func _process(delta: float) -> void:
 		
 	if (!receive_input && delay == 0) || (receive_input && skip):
 		advance_scene()
+
+
 
 func _input(event: InputEvent) -> void:
 	
@@ -192,6 +217,8 @@ func tag_bg(res_name: String, secs: String = "") -> void:
 		for i in $VideoBunch.get_children():
 			i.stop()
 			i.stream = null
+	if !replay_mode:
+		state.unlock_path(res_name, false)
 	var res = resources.get_res("bg/%s" % res_name)
 	if secs != "":
 		input_handler.SmoothTextureChange($Background, res, float(secs))
@@ -310,6 +337,9 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 			0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
 		$Tween.start()
 		is_video_bg = true
+	
+	if !replay_mode:
+		state.unlock_path(res_name, true)
 	
 	var vsplit = res_name.split("_")
 	vsplit.remove(vsplit.size() - 1)

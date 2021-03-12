@@ -39,6 +39,7 @@ var CurrentLine := 0
 #var guild_save
 
 var OldEvents := {}
+var gallery_unlocks = []
 var CurEvent := "" #event name
 var CurBuild := ""
 var keyframes := []
@@ -114,6 +115,9 @@ func revert():
 		village = false,
 		temple = false
 	}
+	gallery_unlocks.clear()
+	for i in variables.gallery_singles_list:
+		gallery_unlocks.push_back(false)
 
 
 func pos_set(value):
@@ -126,6 +130,8 @@ func _ready():
 	reset_heroes()
 	for i in Items.Materials:
 		materials[i] = 0
+	for i in variables.gallery_singles_list:
+		gallery_unlocks.push_back(false)
 
 
 
@@ -151,6 +157,16 @@ func store_choice(choice, option):
 		return
 	OldEvents[line] = option
 	print("choice stored - %s %d" %[line, option])
+
+
+func unlock_path(path, is_abg):
+	print("unlocking path %s" % path)
+	for i in range(variables.gallery_singles_list.size()):
+		var item = variables.gallery_singles_list[i]
+		if item.path != path: continue
+		if item.type == 'abg' and !is_abg: continue
+		if item.type == 'bg' and is_abg: continue
+		gallery_unlocks[i] = true
 
 
 func get_choice(choice):
@@ -300,7 +316,7 @@ func serialize():
 		tmp['heroes_save'][i] = heroes[i].serialize()
 	
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
-	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock']
+	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
