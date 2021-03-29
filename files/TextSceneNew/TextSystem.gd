@@ -44,6 +44,12 @@ const AVAIL_EFFECTS = [
 	"DECISION", "STATE", "LOOSE"
 	]
 
+const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth']
+#rilu has no eyes frames
+#demitrius has eyes not matching sprite at all
+#others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
+
+
 onready var TextField = $Panel/DisplayText
 onready var ImageSprite = $CharImage
 var ShownCharacters = 0.0
@@ -300,7 +306,15 @@ func tag_sprite_hide() -> void:
 	ImageSprite.texture = null
 
 func tag_sprite(res_name: String) -> void:
-	ImageSprite.texture = resources.get_res("sprite/%s" % res_name)
+	var tspr = ImageSprite.get_node_or_null('sprite')
+	if tspr != null:
+		tspr.free()#to testing
+	if !res_name in animated_sprites:
+		ImageSprite.texture = resources.get_res("sprite/%s" % res_name)
+	else:
+		ImageSprite.texture = null
+		var spr = resources.get_res("animated_sprite/%s" % res_name)
+		ImageSprite.add_child(spr.instance())
 
 func tag_sprite_fade(secs: String = "0.5") -> void:
 	input_handler.FadeAnimation(ImageSprite, float(secs), delay)
@@ -556,6 +570,8 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 							if line_dr.begins_with("%s " % res_type):
 								var res_name = line_dr.replace("%s " % res_type, "").split(" ")[0]
 								if res_name == "null": break
+								if res_type == 'SPRITE' and animated_sprites.has(res_name):
+									res_type = 'animated_sprite'
 								if !out[current_scene]["res"].has(res_type.to_lower()):
 									out[current_scene]["res"][res_type.to_lower()] = []
 								if !out[current_scene]["res"][res_type.to_lower()].has(res_name):

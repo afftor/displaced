@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "AnimatedSprite",
+"class": "AnimatedSpriteDelay",
+"language": "GDScript",
+"path": "res://files/classes/animated_sprite_delay.gd"
+}, {
 "base": "AnimatedTexture",
 "class": "AnimatedTexAutofill",
 "language": "GDScript",
@@ -140,6 +145,7 @@ _global_script_classes=[ {
 "path": "res://files/classes/worker.gd"
 } ]
 _global_script_class_icons={
+"AnimatedSpriteDelay": "",
 "AnimatedTexAutofill": "",
 "Buff": "",
 "Item": "",

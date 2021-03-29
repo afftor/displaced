@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/images/animated_sprite/Knight/final-0005.png" type="Texture" id=1]
+[ext_resource path="res://files/classes/animated_sprite_delay.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/animated_sprite/Knight/final-0003.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/animated_sprite/Knight/final-0002.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/animated_sprite/Knight/final-0004.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/sprite/victor.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/animated_sprite/Knight/final-0001.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="sprite" type="TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSpriteDelay" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+centered = false
+script = ExtResource( 2 )
+MinDelay = 1.0
+MaxDelay = 2.0
