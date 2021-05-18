@@ -1,14 +1,9 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextScene/TextSystem.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/bg/villagenight.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/sprite/arron.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/sprite/eyes/arron_eyes1.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/sprite/eyes/arron_eyes2.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/sprite/eyes/arron_eyes3.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/sprite/eyes/arron_eyes4.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/sprite/eyes/arron_eyes5.png" type="Texture" id=9]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=10]
 [ext_resource path="res://files/SFX/white.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/text scene/textfieldpanel.png" type="Texture" id=12]
@@ -30,7 +25,7 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ null, null, null, null, null ],
 "loop": false,
 "name": "default",
 "speed": 30.0
