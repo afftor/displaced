@@ -51,13 +51,13 @@ var activequests := []
 var completedquests := []
 var areaprogress := {}
 var location_unlock = {
-	dragon_mountains = true,
-	castle = true,
-	town = true,
-	cave = true,
-	forest = true,
-	village = true,
-	temple = true,
+	dragon_mountains = false,
+	castle = false,
+	town = false,
+	cave = false,
+	forest = false,
+	village = false,
+	temple = false,
 }
 var area_save
 var currentarea

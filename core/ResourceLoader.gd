@@ -45,7 +45,7 @@ func resource_loaded(path) -> void:
 		path_to_delete.erase(path)
 		print(path, " (invalid) ", current_loaded, "/", max_loaded)
 	else:
-		print(path, " ", current_loaded, "/", max_loaded)
+#		print(path, " ", current_loaded, "/", max_loaded)
 		pass
 
 

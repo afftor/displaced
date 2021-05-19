@@ -40,11 +40,13 @@ func _onclick():
 	get_parent().location_pressed(name)
 
 
-func hide():
+func m_hide():
+	visible = true
 	$clouds.visible = true
 
 
-func show():
+func m_show():
+	visible = true
 	$clouds.visible = false
 
 
@@ -59,7 +61,7 @@ func set_active():
 func set_inactive():
 #	is_active = false
 	set_process(false)
-	visible = false
+#	visible = false
 #	set_process_input(false)
 	material.set_shader_param('opacity', 0.0);
 

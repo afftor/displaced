@@ -46,7 +46,7 @@ func newgame():
 	state.newgame = true
 	state._ready()
 	get_node("/root").remove_child(self)
-	globals.ChangeScene('town')
+	globals.ChangeScene('map')
 	yield(globals, 'scene_changed')
 	input_handler.ActivateTutorial()
 	#globals.StartEventScene("Intro")

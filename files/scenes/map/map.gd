@@ -35,7 +35,7 @@ func buildscreen(empty = null):
 
 func unlock_area(area):
 	var area_node = get_node(area)
-	area_node.show()
+	area_node.m_show()
 	area_node.set_active()
 	area_node.set_border_type('safe')
 
@@ -58,9 +58,9 @@ func update_map():
 		var area_node = get_node(loc)
 		
 		if state.location_unlock[loc]:
-			area_node.show()
+			area_node.m_show()
 		else:
-			area_node.hide()
+			area_node.m_hide()
 		
 		if binded_events[loc] != null:
 			area_node.set_border_type('event')

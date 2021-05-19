@@ -20,7 +20,7 @@ func _ready():
 
 func _process(delta):
 	$ControlPanel/Gold.text = str(state.money)
-	$ControlPanel/Food.text = str(state.food)
+#	$ControlPanel/Food.text = str(state.food)
 	
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 
