@@ -26,7 +26,7 @@ func open(hero):
 		$ClassPanel.hide()
 	
 	character = hero
-	globals.CurrentScene.openinventory(character)
+#	globals.CurrentScene.openinventory(character)
 	show()
 	for i in globals.gearlist:
 		var node = get_node('Main/Panel/charandgear/' + i)

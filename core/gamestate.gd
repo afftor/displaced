@@ -54,9 +54,9 @@ var location_unlock = {
 	dragon_mountains = false,
 	castle = false,
 	town = false,
-	cave = false,
-	forest = false,
-	village = false,
+	cave = true,
+	forest = true,
+	village = true,
 	temple = false,
 }
 var area_save

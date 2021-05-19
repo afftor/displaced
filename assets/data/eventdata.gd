@@ -101,7 +101,7 @@ var signals = {
 	ScreenChanged = [],
 	BuildingEntered = {
 		TownHall = ['erika_1'],
-		market = ['Market'],
+		market = [],#'Market'],
 		HeroGuild = [],
 		blacksmith = [],
 		

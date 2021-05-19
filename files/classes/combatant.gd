@@ -80,8 +80,8 @@ func get_animations():
 			res[key] = resources.get_res(animations[key])
 	if !animations.has('idle_1'):
 		res.idle_1 = res.idle.duplicate()
-#	if !animations.has('dead'):
-#		res.dead = resources.get_res('Fight/dead')
+	if !animations.has('dead'):
+		res.dead = resources.get_res('Fight/dead')
 	return res
 
 

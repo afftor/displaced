@@ -103,9 +103,9 @@ func StartCombat(data):
 	input_handler.emit_signal("CombatStarted", encountercode)
 	input_handler.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
-	$combat.encountercode = encountercode 
-	$combat.start_combat(enemies, area.level, area.category, music)
-	$combat.show()
+	input_handler.combat_node.encountercode = encountercode 
+	input_handler.combat_node.start_combat(enemies, area.level, area.category, music)
+	input_handler.combat_node.show()
 
 
 func makespecificgroup(group): #to remake

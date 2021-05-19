@@ -174,7 +174,7 @@ var skilllist = {
 		patches = [],
 		ai_priority = 0.7
 	},
-	eart_aoe = {
+	earth_aoe = {
 		code = 'earth_aoe',
 		name = "",
 		description = "",

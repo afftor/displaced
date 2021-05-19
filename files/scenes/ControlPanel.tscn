@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/universal/msstash2.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/images/gui/universal/msoptions2.png" type="Texture" id=11]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=12]
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=13]
+[ext_resource path="res://files/scenes/CharacterMenu.tscn" type="PackedScene" id=14]
 [ext_resource path="res://files/scenes/MenuPanel.tscn" type="PackedScene" id=15]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=18]
@@ -100,6 +101,7 @@ text = "Gold"
 align = 2
 
 [node name="Food" type="Label" parent="ControlPanel"]
+visible = false
 margin_left = 1655.0
 margin_top = -882.0
 margin_right = 1714.0
@@ -112,6 +114,7 @@ __meta__ = {
 }
 
 [node name="foodicon" type="TextureRect" parent="."]
+visible = false
 margin_left = 1835.0
 margin_top = 61.0
 margin_right = 1909.0
@@ -172,6 +175,13 @@ margin_left = -1188.0
 margin_top = -154.0
 custom_styles/panel = SubResource( 2 )
 
+[node name="HeroPanel" parent="." instance=ExtResource( 14 )]
+visible = false
+margin_left = 454.182
+margin_top = 53.1943
+margin_right = 1402.18
+margin_bottom = 841.194
+
 [node name="SystemMessageLabel" type="RichTextLabel" parent="."]
 margin_left = 29.0
 margin_top = 919.0
@@ -224,4 +234,5 @@ margin_top = 23.0
 margin_right = 265.0
 margin_bottom = 47.0
 text = "Return to Main Menu"
+
 [connection signal="pressed" from="ControlPanel/Herolist" to="." method="_on_Herolist_pressed"]
