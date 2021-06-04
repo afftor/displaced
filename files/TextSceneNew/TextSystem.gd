@@ -44,9 +44,8 @@ const AVAIL_EFFECTS = [
 	"DECISION", "STATE", "LOOSE"
 	]
 
-const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth']
-#rilu has no eyes frames
-#demitrius has eyes not matching sprite at all
+const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth', 'rilu', 'demitrius', 'demitrius_alter']
+#demitrius sprites are from 'unused folder' - so don't remove them accidentally
 #others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
 
 
