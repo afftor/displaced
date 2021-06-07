@@ -110,6 +110,7 @@ func _process(delta):
 	pass
 
 func test_combat():
+	if resources.is_busy(): yield(resources, "done_work")
 	for ch in ['rilu', 'ember', 'iola']:
 		state.unlock_char(ch)
 	state.combatparty[1] = 'arron'

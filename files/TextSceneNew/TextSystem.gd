@@ -313,7 +313,9 @@ func tag_sprite(res_name: String) -> void:
 	else:
 		ImageSprite.texture = null
 		var spr = resources.get_res("animated_sprite/%s" % res_name)
-		ImageSprite.add_child(spr.instance())
+		var tmp = spr.instance()
+		tmp.set_anchors_preset(PRESET_CENTER)
+		ImageSprite.add_child(tmp)
 
 func tag_sprite_fade(secs: String = "0.5") -> void:
 	input_handler.FadeAnimation(ImageSprite, float(secs), delay)

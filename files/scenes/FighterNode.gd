@@ -229,7 +229,6 @@ func update_buff(i):
 	newbuff.hint_tooltip = text
 
 func update_hp_label(newhp, newhpp):
-	print("++")
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
 		$hplabel.text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
 	else:
