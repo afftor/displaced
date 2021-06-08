@@ -1057,12 +1057,12 @@ func get_random_target():
 
 func FighterShowStats(position):
 	var panel = battlefieldpositions[position]
-	panel.get_node("hplabel").show()
+	panel.get_node("HP/hplabel").show()
 
 
 func FighterHideStats(position):
 	var panel = battlefieldpositions[position]
-	panel.get_node("hplabel").hide()
+	panel.get_node("HP/hplabel").hide()
 	
 
 func FighterMouseOver(position):
