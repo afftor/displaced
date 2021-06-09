@@ -59,17 +59,17 @@ func _input(event):
 
 
 func setup_character(ch):
-	print(ch.name)
+#	print(ch.name)
 	fighter = ch
 	ch.displaynode = self
 	position = fighter.position
 	$sprite.texture = null
-	print($sprite.margin_bottom)
+#	print($sprite.margin_bottom)
 	$sprite.rect_min_size = fighter.animations.idle.get_size()
-	print($sprite.margin_bottom)
+#	print($sprite.margin_bottom)
 	$sprite.texture = fighter.animations.idle
-	print($sprite.margin_bottom)
-#	texture_normal = fighter.animations.hit
+#	print($sprite.margin_bottom)
+	texture_normal = fighter.animations.hit
 	$Label.text = fighter.name
 	$HP.value = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
 	hp = fighter.hp

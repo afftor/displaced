@@ -554,7 +554,7 @@ func death():
 		displaynode.defeat()
 
 func can_act():
-	var res = true
+	var res = !acted
 	for e in static_effects + temp_effects:
 		var obj = effects_pool.get_effect_by_id(e)
 		if obj.template.has('disable'):

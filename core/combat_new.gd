@@ -259,7 +259,7 @@ func player_turn(pos):
 	turns += 1
 	currentactor = pos
 	var selected_character = playergroup[pos]
-	selected_character.acted = true
+#	selected_character.acted = true
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
 	selected_character.rebuildbuffs()
@@ -369,10 +369,20 @@ func get_avail_char_number(group):
 	for i in rg:
 		if battlefield[i] == null: continue
 		if battlefield[i].defeated: continue
-		if battlefield[i].acted: continue
+#		if battlefield[i].acted: continue
+		if !battlefield[i].can_act(): continue
 		res += 1
 	return res 
 
+
+func get_first_avail_hero():
+	for i in [1, 2 ,3]:
+		if battlefield[i] == null: continue
+		if battlefield[i].defeated: continue
+#		if battlefield[i].acted: continue
+		if !battlefield[i].can_act(): continue
+		return battlefield[i]
+	return null
 
 func checkreqs(passive, caster, target): #not used?
 	var rval = true
@@ -575,8 +585,9 @@ func advance_backrow():#not used for now
 #	turns += 1
 
 
-func swap_hero(newhero):
+func swap_active_hero(newhero):
 	#remove current char
+	activecharacter.acted = true
 	activecharacter.displaynode.disappear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -585,12 +596,36 @@ func swap_hero(newhero):
 	activecharacter.displaynode.queue_free()
 	#add new char
 	activecharacter = state.heroes[newhero]
-	activecharacter.acted = true
+#	activecharacter.acted = true
 	activecharacter.position = currentactor
 	playergroup[currentactor] = activecharacter
 	battlefield[currentactor] = activecharacter
 	make_fighter_panel(activecharacter, currentactor, false)
 	activecharacter.displaynode.appear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	
+	call_deferred('select_actor')
+
+
+func swap_heroes(pos, newhero):
+	#remove current char
+	var targetchar = battlefield[pos]
+	targetchar.displaynode.disappear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	targetchar.position = null
+	targetchar.displaynode.queue_free()
+	#add new char
+	var newchar = state.heroes[newhero]
+#	activecharacter.acted = true
+	newchar.position = pos
+	playergroup[pos] = newchar
+	battlefield[pos] = newchar
+	make_fighter_panel(newchar, pos, false)
+	newchar.displaynode.appear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
@@ -1242,6 +1277,7 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
+	caster.acted = true
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
 	turns += 1
@@ -1635,7 +1671,7 @@ func res_all(hpval):
 		if ch.defeated: 
 			ch.defeated = false
 			ch.hppercent = hpval
-			ch.acted = false # or not
+			ch.acted = false 
 
 
 func miss(fighter):
