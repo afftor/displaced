@@ -69,7 +69,7 @@ func setup_character(ch):
 #	print($sprite.margin_bottom)
 	$sprite.texture = fighter.animations.idle
 #	print($sprite.margin_bottom)
-	texture_normal = fighter.animations.hit
+#	texture_normal = fighter.animations.hit
 	$Label.text = fighter.name
 	$HP.value = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
 	hp = fighter.hp

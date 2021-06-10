@@ -276,7 +276,7 @@ func player_turn(pos):
 	activecharacter = selected_character
 	RebuildSkillPanel()
 	RebuildItemPanel()
-	SelectSkill(selected_character.selectedskill)
+	SelectSkill(selected_character.get_autoselected_skill())
 
 
 func enemy_turn(pos):
@@ -288,8 +288,8 @@ func enemy_turn(pos):
 	fighter.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	fighter.acted = true
 	if !fighter.can_act():
+		fighter.acted = true
 		#combatlogadd("%s cannot act" % fighter.name)
 		fighter.process_event(variables.TR_TURN_F)
 		fighter.rebuildbuffs()
@@ -298,7 +298,7 @@ func enemy_turn(pos):
 	#Selecting active skill
 	
 #	Highlight(pos, 'enemy')
-	
+	fighter.acted = true
 	turns += 1
 	var castskill = fighter.ai._get_action()
 	var target = fighter.ai._get_target(castskill)
@@ -345,7 +345,7 @@ func SelectSkill(skill):
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack')
 		return
-	activecharacter.selectedskill = skill.code
+#	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter)
 	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
@@ -356,7 +356,7 @@ func SelectSkill(skill):
 			return
 	if skill.allowedtargets.has('self') and skill.allowedtargets.size() == 1 :
 		globals.closeskilltooltip()
-		activecharacter.selectedskill = 'attack'
+#		activecharacter.selectedskill = 'attack'
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter.position)
 
 
@@ -1234,15 +1234,20 @@ func FighterPress(position):
 			if battlefield[position].defeated: return
 			cur_state = T_AUTO
 			player_turn(position)
+			return
 		T_TARGETOVER:
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				cur_state = T_AUTO
+				if allowedtargets.enemy.has(position):
+					activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
-				return
+			return
 		T_SKILLSELECTED: 
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
+				if allowedtargets.enemy.has(position):
+					activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
 			return
 #	if charselect:
@@ -1353,7 +1358,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			if activeitem != null:
 				activeitem.amount -= 1
 				activeitem = null
-				SelectSkill(caster.get_skill_by_tag('default'))
+				SelectSkill(caster.get_autoselected_skill())
 			
 			caster.rebuildbuffs()
 #			if fighterhighlighted == true:
@@ -1495,7 +1500,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
-		SelectSkill(caster.get_skill_by_tag('default'))
+		SelectSkill(caster.get_autoselected_skill())
 	
 	caster.rebuildbuffs()
 #	if fighterhighlighted == true:

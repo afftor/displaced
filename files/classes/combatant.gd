@@ -51,7 +51,7 @@ var triggered_effects = []
 
 var position 
 var combatgroup = 'ally'
-var selectedskill = 'attack'
+#var selectedskill = 'attack'
 
 var acted = false
 #mods. obsolete imho
