@@ -13,6 +13,7 @@ animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
+"speed": 20.0
 } ]
 
 [node name="sprite" type="TextureRect"]
