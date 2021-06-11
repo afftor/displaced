@@ -24,7 +24,7 @@ var heroes_save
 var items := {}
 var items_save
 var materials := {}
-var lognode 
+var lognode
 var unlocks := []
 
 var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
@@ -90,7 +90,7 @@ func revert():
 	materials.clear()
 	lognode = null
 	unlocks.clear()
-	combatparty = {1 : null, 2 : null, 3 : null} 
+	combatparty = {1 : null, 2 : null, 3 : null}
 	CurrentTextScene = null
 	CurrentScreen = null
 	CurrentLine = 0
@@ -189,7 +189,7 @@ func if_has_money(value):
 
 func if_has_property(prop, value):
 	var tmp = get(prop)
-	if tmp == null: 
+	if tmp == null:
 		print ("ERROR: NO PROPERTY IN GAMESTATE %s\n", prop)
 		return false
 	return (tmp >= value)
@@ -267,7 +267,7 @@ func if_quest_stage(name, value, operant):
 	questprogress = GetQuest(name)
 	if questprogress == null:
 		questprogress = 0
-	
+
 	return input_handler.operate(operant, questprogress, value)
 
 func if_has_area_progress(value, operant, area):
@@ -314,7 +314,7 @@ func serialize():
 	tmp['heroes_save'] = {}
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
-	
+
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
 	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks']
 	for prop in arr:
@@ -334,7 +334,7 @@ func deserialize(tmp:Dictionary):
 		heroes[key].deserialize(heroes_save[key])
 	items.clear()
 	for key in items_save.keys():
-		var key1 = key 
+		var key1 = key
 		if (typeof(key1) != TYPE_STRING) or (key1[0] != 'i'):
 			key1 = 'i' + str(key1)
 		var t := dict2inst(items_save[key])
@@ -351,7 +351,7 @@ func deserialize(tmp:Dictionary):
 		townupgrades[k] = int(town_save[k])
 
 func cleanup():
-	for ch in heroes.keys().duplicate(): 
+	for ch in heroes.keys().duplicate():
 		if !(ch in characters): heroes.erase(ch)
 
 func reset_heroes():
@@ -384,8 +384,8 @@ func logupdate(text):
 		return
 	lognode = globals.get_tree().get_root().get_node("LogPanel/RichTextLabel")
 	text = lognode.bbcode_text + '\n' + text
-	
-	#lognode.bbcode_text += '\n' + 
+
+	#lognode.bbcode_text += '\n' +
 	lognode.bbcode_text = globals.TextEncoder(text)
 
 

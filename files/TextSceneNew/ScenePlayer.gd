@@ -4,7 +4,7 @@ func _ready() -> void:
 	$ItemList.clear()
 	for i in $TextSystem.scenes_map.keys():
 		$ItemList.add_item(i)
-	
+
 	yield($ItemList, "item_selected")
 	$Button.disabled = false
 

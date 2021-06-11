@@ -6,14 +6,14 @@ var menu_open_sound = "sound/menu_open"
 func _ready():
 	resources.preload_res(menu_open_sound)
 	if resources.is_busy(): yield(resources, "done_work")
-	
+
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
 #warning-ignore:return_value_discarded
-	$TabContainer/Text/textspeed.connect("value_changed", self, 'textspeed') 
+	$TabContainer/Text/textspeed.connect("value_changed", self, 'textspeed')
 #warning-ignore:return_value_discarded
-	$TabContainer/Text/skipread.connect("pressed", self, 'pressedskipread') 
+	$TabContainer/Text/skipread.connect("pressed", self, 'pressedskipread')
 #warning-ignore:return_value_discarded
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 #warning-ignore:return_value_discarded

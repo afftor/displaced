@@ -10,10 +10,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
 } ]
 
 [node name="sprite" type="TextureRect"]
@@ -25,14 +24,18 @@ margin_left = -353.5
 margin_top = -540.0
 margin_right = 353.5
 margin_bottom = 540.0
+[node name="sprite2" type="TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSpriteDelay" type="AnimatedSprite" parent="."]
-position = Vector2( 356.136, 543.227 )
+visible = false
+position = Vector2( 353.136, 541.227 )
 frames = SubResource( 1 )
 script = ExtResource( 2 )
-MinDelay = 1.5
-MaxDelay = 3.0
+MinDelay = 2.0
+MaxDelay = 4.0

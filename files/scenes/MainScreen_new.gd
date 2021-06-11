@@ -25,7 +25,7 @@ func _ready():
 	get_tree().set_auto_accept_quit(false)
 	globals.CurrentScene = self
 	input_handler.SetMusic("towntheme")
-	
+
 	var speedvalues = [0,1,10]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
@@ -34,15 +34,15 @@ func _ready():
 		i.connect("pressed",self,'changespeed',[i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
-	
+
 	######Vote stuff
-	
+
 	input_handler.connect("QuestStarted", self, "VotePanelShow")
 	$VotePanel/Links.connect("pressed", self, "VoteLinkOpen")
 	$VotePanel/Close.connect("pressed", self, "VotePanelClose")
-	
+
 	####
-	
+
 	if debug == true:
 #		$ExploreScreen/combat/ItemPanel/debugvictory.show()
 #		state.OldEvents['Market'] = 0
@@ -93,8 +93,8 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
 		globals.AddItemToInventory(globals.CreateUsableItem('barricade', 2))
 		globals.AddItemToInventory(globals.CreateUsableItem('protectivecharm', 2))
-	
-	
+
+
 #	globals.call_deferred('EventCheck');
 #	changespeed($"TimeNode/0speed", false)
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
@@ -134,9 +134,9 @@ func buildscreen(empty = null):
 	for build in globals.upgradelist:
 		var node = get_node(build)
 		if node != null: node.build_icon()
-		
+
 		binded_events[build] = globals.check_signal_test('BuildingEntered', build)
-		
+
 		if binded_events[build] != null:
 			node.set_active()
 		else:

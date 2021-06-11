@@ -28,7 +28,7 @@ var ColorsByNames = {
 	ROSE = "FF8C00",
 	EMBER = "b22156",
 	ERIKA = "228B22",
-	
+
 }
 
 var choicedict = {
@@ -52,7 +52,7 @@ func _process(delta):
 		AdvanceScene()
 
 func _input(event):
-	
+
 	if event.is_action("ctrl"):
 		if event.is_pressed():
 			enableskip = true
@@ -60,13 +60,13 @@ func _input(event):
 			enableskip = false
 	if event.is_echo() == true || event.is_pressed() == false || !ReceiveInput || $MenuPanel.visible :
 		return
-	
+
 	if $LogPanel.visible == true:
 		if event.is_action("MouseDown") && ($LogPanel/RichTextLabel.get_v_scroll().value + $LogPanel/RichTextLabel.get_v_scroll().page == $LogPanel/RichTextLabel.get_v_scroll().max_value || !$LogPanel/RichTextLabel.get_v_scroll().visible):
 			$LogPanel.hide()
 		return
-	
-	
+
+
 	if (event.is_action("LMB") || event.is_action("MouseDown")) && event.is_pressed() && $Panel.visible:
 		if $ChoicePanel.visible: return
 		if $Panel/Log.get_global_rect().has_point(get_global_mouse_position()) || $Panel/Options.get_global_rect().has_point(get_global_mouse_position()):
@@ -81,7 +81,7 @@ func _input(event):
 		$Panel.visible = !$Panel.visible
 	if event.is_action("MouseUp"):
 		OpenLog()
-	
+
 
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
@@ -105,7 +105,7 @@ func OpenOptions():
 	$MenuPanel.show()
 
 func Start(dict, f = false, line = 0):
-	if dict == null or (variables.NoScenes and !f):  
+	if dict == null or (variables.NoScenes and !f):
 		call_deferred('StopEvent')
 		return
 	debug = f
@@ -182,7 +182,7 @@ func AdvanceScene():
 		#print ("next line: %d \n" % OS.get_ticks_msec ())
 		var NewEffect = CurrentScene[CurrentLine]
 		match NewEffect.effect:
-			'gui': #надо пофиксить некорректное скрытие-раскрытие 
+			'gui': #надо пофиксить некорректное скрытие-раскрытие
 				GuiDo(NewEffect.value)
 				state.keyframes.push_back(CurrentLine)
 				ReceiveInput = false
@@ -292,7 +292,7 @@ func AdvanceScene():
 				if !debug:StateEffect(NewEffect.value, NewEffect.args)
 		if NewEffect.has('delay'):
 			Delay = NewEffect.delay
-		
+
 		CurrentLine += 1
 
 func SpriteDo(node, value, args, delay = 0.0):
@@ -334,13 +334,13 @@ func Choice(array):
 	set_process_input(false)
 	enableskip = false
 	if !debug: globals.QuickSave()
-	
+
 	for i in ChoiceContainer.get_children():
 		if i.name != 'Button':
 			i.queue_free()
-	
+
 	$ChoicePanel.visible = true
-	
+
 	for dict in array:
 		if dict.has('reqs') and dict.reqs != null:
 			continue #запас на будущее, пока не нужно
@@ -454,8 +454,8 @@ func WhiteScreenGFX(mode = 'default'):
 	yield(get_tree().create_timer(0.3), 'timeout')
 	tween.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,0.9), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.7)
-	
-	
+
+
 	node.visible = true
 
 func TownDo(value):

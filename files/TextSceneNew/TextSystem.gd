@@ -83,7 +83,7 @@ func _ready() -> void:
 		f.open(i, File.READ)
 		ref_src.append_array(f.get_as_text().split("\n"))
 		f.close()
-	
+
 	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
 
@@ -105,7 +105,7 @@ func process_gallery_item(index: int, item: Dictionary) -> PoolStringArray:
 			res.append("=ABG %s=" % item.path)
 	res.append("...")
 	res.append("=STOP=")
-	
+
 	return res
 
 
@@ -116,21 +116,21 @@ func _process(delta: float) -> void:
 		else:
 			ShownCharacters += delta*globals.globalsettings.textspeed
 		TextField.visible_characters = ShownCharacters
-		
+
 	if delay > 0:
 		delay -= delta
 		if delay < 0:
 			delay = 0
-		
+
 	if (!receive_input && delay == 0) || (receive_input && skip):
 		advance_scene()
 
 
 
 func _input(event: InputEvent) -> void:
-	
+
 	if $ChoicePanel.visible: return
-	
+
 	if event.is_action("ctrl"):
 		if event.is_pressed():
 			skip = true
@@ -138,8 +138,8 @@ func _input(event: InputEvent) -> void:
 			skip = false
 	if event.is_echo() == true || event.is_pressed() == false:
 		return
-	
-	
+
+
 	if event.is_action("LMB") || event.is_action("MouseDown"):
 		if TextField.get_visible_characters() < TextField.get_total_character_count():
 			TextField.set_visible_characters(TextField.get_total_character_count())
@@ -230,7 +230,7 @@ func tag_bg(res_name: String, secs: String = "") -> void:
 	else:
 		$Background.texture = res
 	$Background.update()
-	
+
 
 func tag_delay(secs: String) -> void:
 	if skip: delay = 0.1
@@ -248,13 +248,13 @@ var choice_line = 0
 func tag_choice(chstring: String) -> void:
 	var chsplit = chstring.split("|")
 	skip = false
-	
+
 	for i in $ChoicePanel/VBoxContainer.get_children():
 		if i.name != 'Button':
 			i.queue_free()
-	
+
 	$ChoicePanel.visible = true
-	
+
 	var c = 0
 	choice_line = line_nr
 	for ch in chsplit:
@@ -298,7 +298,7 @@ func tag_state(method:String, arg):
 			state.AdvanceQuest(arg)
 		'finish_quest':
 			state.FinishQuest(arg)
-		
+
 		_: print("Unknown state command: %s" % method)
 
 func tag_sprite_hide() -> void:
@@ -334,7 +334,7 @@ func tag_shake_screen(secs: String = "0.2") -> void:
 func tag_skip(ifindex_s: String, lcount_s: String) -> void:
 	var ifindex = int(ifindex_s)
 	var lcount = int(lcount_s)
-	
+
 	if ifindex == last_choice or ifindex == -1:
 		line_nr += lcount
 
@@ -352,10 +352,10 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 			0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
 		$Tween.start()
 		is_video_bg = true
-	
+
 	if !replay_mode:
 		state.unlock_path(res_name, true)
-	
+
 	var vsplit = res_name.split("_")
 	vsplit.remove(vsplit.size() - 1)
 	var vfin = ""
@@ -363,7 +363,7 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 		vfin += w + "_"
 	vfin = vfin.left(vfin.length() - 1)
 	res_name = vfin + "/" + res_name
-	
+
 	vsplit = sec_res_name.split("_")
 	vsplit.remove(vsplit.size() - 1)
 	if vsplit.size() > 0:
@@ -372,7 +372,7 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 			vfin += w + "_"
 		vfin = vfin.left(vfin.length() - 1)
 		sec_res_name = vfin + "/" + sec_res_name
-	
+
 	var res = resources.get_res("abg/%s" % res_name)
 	var sec_res = resources.get_res("abg/%s" % sec_res_name)
 
@@ -399,11 +399,11 @@ func tag_loose() -> void:
 func advance_scene() -> void:
 	line_dr = ref_src[line_nr]
 	receive_input = false
-	
+
 	if line_dr.begins_with("#"):
 		line_nr += 1
 		return
-	
+
 	if line_dr.begins_with("=") && line_dr.ends_with("="):
 		line_dr = line_dr.replace("=", "")
 		line_dr = line_dr.split(" ")
@@ -416,44 +416,44 @@ func advance_scene() -> void:
 			print("Unknown tag: ", line_dr)
 			line_nr += 1
 			return
-		
+
 		var method_name = "tag_%s" % line_dr[0].to_lower()
 		if !has_method(method_name):
 			print("Tag method %s not implemented yet!" % method_name)
 			line_nr += 1
 			return
-		
+
 		line_dr.remove(0)
 		callv(method_name, line_dr)
-		
+
 	else:
 		var splitted = line_dr.split(" - ")
-		
+
 		var is_narrator = true
 		var character = char_map[char_map.keys()[0]]
 		var replica = line_dr
-		
+
 		if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
 			character = char_map[splitted[0]]
 			replica = splitted[1]
 			is_narrator = false
-		
+
 		ShownCharacters = 0
 		replica = tr(replica)
 		TextField.visible_characters = ShownCharacters
 		TextField.bbcode_text = "[color=#%s]%s[/color]" % [character.color.to_html(), replica]
-		
+
 		var portrait_res = resources.get_res("portrait/%s" % character.portrait)
-		
+
 		$Panel/DisplayName.modulate.a = 1 if !is_narrator else 0
 		$Panel/CharPortrait.modulate.a = 1 if !is_narrator && portrait_res != null else 0
 		$Panel/DisplayName/Label.text = tr(character.source)
 		if ($Panel/CharPortrait.visible || $Panel/CharPortrait.modulate.a == 1) \
 													&& portrait_res != null:
 			$Panel/CharPortrait.texture = portrait_res
-		
+
 		receive_input = true
-	
+
 	line_nr += 1
 
 func preload_scene(scene: String) -> void:
@@ -465,9 +465,9 @@ func preload_scene(scene: String) -> void:
 func play_scene(scene: String) -> void:
 	set_process(false)
 	set_process_input(false)
-	
+
 	scene_map = scenes_map[scene]
-	
+
 	line_nr = scene_map["start"]
 	skip = false
 	delay = 0
@@ -475,7 +475,7 @@ func play_scene(scene: String) -> void:
 	decisions = PoolStringArray()
 	last_choice = -1
 	state.CurEvent = scene
-	
+
 	$Background.texture = null
 	$Background.visible = true
 	$CharImage.texture = null
@@ -492,7 +492,7 @@ func play_scene(scene: String) -> void:
 		i.stream = null
 	$VideoBunch.current_queue.clear()
 	$VideoBunch.current_plrs = [$"VideoBunch/0", $"VideoBunch/1"]
-	
+
 	var has_res = true
 	for i in scene_map["res"].keys():
 		for j in scene_map["res"][i]:
@@ -505,7 +505,7 @@ func play_scene(scene: String) -> void:
 		print("force loading %s..." % scene)
 		preload_scene(scene)
 		if resources.is_busy(): yield(resources, "done_work")
-	
+
 	yield(get_tree(), "idle_frame")
 	set_process(true)
 	set_process_input(true)
@@ -513,39 +513,39 @@ func play_scene(scene: String) -> void:
 func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	var out = {}
 	var c = 0
-	
+
 	var chardef = false
 	var chardef_color = Color.black
-	
+
 	for i in lines:
 		if i.begins_with("#"):
 			c+=1
 			continue
-		
+
 		if i.begins_with("**") && i.ends_with("**"):
 			current_scene = i.replace("**", "").replace(" ", "")
 			out[current_scene] = {
 				"start" : c + 1,
 				"res" : {}
 			}
-		
+
 		if i.begins_with("=") && i.ends_with("="):
 			line_dr = i.replace("=", "")
 			match line_dr:
 				"STOP":
 					out[current_scene]["stop"] = c
-				
+
 				"CHARDEF_BEGIN":
 					chardef = true
-				
+
 				"CHARDEF_END":
 					chardef = false
-				
+
 				_:
 					if chardef:
 						if line_dr.begins_with("COLOR #"):
 							chardef_color = Color(line_dr.replace("COLOR #", ""))
-					
+
 					if line_dr.begins_with("ABG "):
 						var vids = line_dr.replace("ABG ", "")
 						vids = vids.split(" ")
@@ -577,9 +577,9 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 									out[current_scene]["res"][res_type.to_lower()] = []
 								if !out[current_scene]["res"][res_type.to_lower()].has(res_name):
 									out[current_scene]["res"][res_type.to_lower()].append(res_name)
-								
+
 								break
-		
+
 		else:
 			if chardef:
 				if i.split(" - ").size() == 2:
@@ -601,25 +601,25 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 							left.append(raw_root + "(" + j.to_lower() + ")")
 					else:
 						left.append(raw)
-					
+
 					var cooked = parsed[1].split(" ")
 					var source = cooked[0]
 					var portrait = [cooked[0]]
 					var color = chardef_color
-					
+
 					if cooked.size() > 1:
 						for j in cooked:
 							if j.begins_with("#"):
 								color = Color(j.replace("#", ""))
 							else:
 								portrait = [j]
-					
+
 					if raw_vars.size() > 0:
 						var portrait_root = portrait[0]
 						portrait = []
 						for j in raw_vars:
 							portrait.append(portrait_root + j)
-					
+
 					for j in range(left.size()):
 						char_map[left[j]] = {
 							"source" : source.replace("_", " "),
@@ -630,18 +630,18 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 							char_max = left[j].length()
 			else:
 				var splitted = i.split(" - ")
-				
+
 				if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
 					var character = char_map[splitted[0]]
-					
+
 					var res_name = character.portrait
 					if !out[current_scene]["res"].has("portrait"):
 						out[current_scene]["res"]["portrait"] = []
 					if !out[current_scene]["res"]["portrait"].has(res_name):
 						out[current_scene]["res"]["portrait"].append(res_name)
-		
+
 		c += 1
-	
+
 	current_scene = ""
 	line_dr = ""
 	return out.duplicate(true)

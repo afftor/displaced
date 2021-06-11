@@ -3,9 +3,9 @@ extends Node
 var lastsave = null
 
 func _ready():
-	
+
 	get_tree().set_auto_accept_quit(false)
-	
+
 	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
@@ -15,24 +15,24 @@ func _ready():
 #warning-ignore:return_value_discarded
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
-	
+
 #warning-ignore:return_value_discarded
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
-	
+
 	if globals.globalsettings.warnseen == true:
 		$DemoPanel.hide()
-	
+
 	OS.window_fullscreen = globals.globalsettings.fullscreen
 	if OS.window_fullscreen == false:
 		OS.window_size = globals.globalsettings.window_size
 		OS.window_position = globals.globalsettings.window_pos
-	
+
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 
 func check_last_save():
 	lastsave = globals.get_last_save();
-	if lastsave == null: 
+	if lastsave == null:
 		$VBoxContainer/continuebutton.visible = false
 	else:
 		$VBoxContainer/continuebutton.visible = true

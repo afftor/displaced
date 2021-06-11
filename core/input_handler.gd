@@ -49,7 +49,7 @@ func _input(event):
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
-	
+
 	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0:
 		if str(int(event.as_text())) in str(range(1,4)):
 			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
@@ -71,7 +71,7 @@ func _process(delta):
 			i.node.rect_position = i.originpos
 			ShakingNodes.erase(i)
 	soundcooldown -= delta
-	
+
 	if musicfading:
 		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
 		if AudioServer.get_bus_volume_db(1) <= -80:
@@ -81,7 +81,7 @@ func _process(delta):
 		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
 			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
 			musicraising = false
-	
+
 
 
 
@@ -95,7 +95,7 @@ func CloseTopWindow():
 
 func LockOpenWindow():
 	CloseableWindowsArray.append('lock')
- 
+
 func UnlockOpenWindow():
 	var node = CloseableWindowsArray.back()
 	if typeof(node) == TYPE_STRING:
@@ -264,7 +264,7 @@ func StopMusic(instant = false):
 #Sounds
 
 func PlaySound(res, delay = 0):
-	if name == null: 
+	if name == null:
 		return #STAB to fix some skills cause crashing
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
@@ -316,7 +316,7 @@ func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 		get_tree().get_root().remove_child(node)
 		get_tree().get_root().add_child(node)
 	node.Show(TargetNode, TargetFunction, Text)
-	
+
 
 #Item shading function
 
@@ -401,16 +401,16 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	x.expand = true
 	x.stretch_mode = 6
 	node.add_child(x)
-	
+
 	x.rect_size = node.rect_size
 	if rotate == true:
 		x.rect_pivot_offset = x.texture.get_size()/2
 		x.rect_rotation = rand_range(0,360)
-	
+
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
-	
+
 	if wr.get_ref(): x.queue_free()
 
 var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'}
@@ -419,7 +419,7 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	var x = load(sprites[effect]).instance()
 	node.add_child(x)
 	x.play()
-	
+
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
@@ -501,7 +501,7 @@ func FindFighterRow(fighter):
 
 func operate(operation, value1, value2):
 	var result
-	
+
 	match operation:
 		'eq':
 			result = value1 == value2
@@ -526,14 +526,14 @@ func operate(operation, value1, value2):
 func string_to_math(value = 0, string = ''):
 	var modvalue = float(string.substr(1, string.length()))
 	var operator = string[0]
-	
+
 	match operator:
 		'+':value += modvalue
 		'-':value -= modvalue
 		'*':value *= modvalue
 		'/':value /= modvalue
 	return value
-	
+
 func weightedrandom(array): #array must be made out of dictionaries with {value = name, weight = number} Number is relative to other elements which may appear
 	var total = 0
 	var counter = 0
@@ -652,13 +652,13 @@ func get_spec_node(type, args = null, raise = true):
 		window.name = node_data[type].name
 		node.add_child(window)
 	if raise: window.raise()
-	if node_data[type].has('args'): 
+	if node_data[type].has('args'):
 		for param in node_data[type].args:
 			window.set(param, node_data[type].args[param])
-	if node_data[type].has('calls'): 
+	if node_data[type].has('calls'):
 		if args == null: args = []
 		window.callv(node_data[type].calls, args)
-	elif args != null: 
+	elif args != null:
 		for param in args:
 			window.set(param, args[param])
 	return window
