@@ -82,7 +82,13 @@ var sounds = {
 	"levelup" : "sound/levelup"
 }
 
-enum {T_CHARSELECT, T_SKILLSELECTED, T_TARGETOVER, T_AUTO}
+enum {T_CHARSELECT,
+ T_SKILLSELECTED, #support skill selected - only targeting mode
+ T_SKILLCHAR, #attacking skill selected - T_CHARSELECT + T_SKILLSELECTED
+ T_TARGETOVER, #over possible target
+ T_SKILLCHAROVER, #over friendly char while having attacking skill selected
+ T_AUTO #animations active
+}
 var cur_state = T_AUTO
 
 func _ready():
@@ -249,10 +255,23 @@ func select_actor():
 		if CombatAnimations.is_busy: 
 			yield(CombatAnimations, 'alleffectsfinished')
 		allowaction = true
-		cur_state = T_CHARSELECT
+		autoselect_player_char()
+		cur_state = T_AUTO
+#		cur_state = T_CHARSELECT
 #		self.charselect = true
 	else:
 		enemy_turn(nextenemy)
+
+
+func autoselect_player_char():
+	for i in variables.playerparty:
+		var ch = battlefield[i]
+		if ch == null : continue
+		if ch.acted: continue
+		if ch.defeated: continue
+		player_turn(i)
+		return
+	print ("error - no possible chars while hgaving them when counting")
 
 
 func player_turn(pos): 
@@ -336,7 +355,6 @@ func ActivateItem(item):
 
 
 func SelectSkill(skill):
-	cur_state = T_SKILLSELECTED
 	activecharacter.displaynode.highlight_active()
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
@@ -348,7 +366,7 @@ func SelectSkill(skill):
 #	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter)
-	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
+	if allowedtargets.ally.empty() and allowedtargets.enemy.empty():
 		if checkwinlose() == FIN_NO:
 			print ('no legal targets')
 			combatlogadd('No legal targets')
@@ -358,7 +376,10 @@ func SelectSkill(skill):
 		globals.closeskilltooltip()
 #		activecharacter.selectedskill = 'attack'
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter.position)
-
+	if !allowedtargets.ally.empty():
+		cur_state = T_SKILLSELECTED
+	else:
+		cur_state = T_SKILLCHAR
 
 #helpers
 func get_avail_char_number(group):
@@ -881,7 +902,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	for pos in allowedtargets.ally:
 		battlefieldpositions[pos].highlight_target_ally()
 	activecharacter.displaynode.highlight_active()
-	cur_state = T_SKILLSELECTED
 
 
 func ClearSkillTargets():
@@ -1133,7 +1153,26 @@ func FighterMouseOver(position):
 					ch.displaynode.highlight_target_enemy_final()
 				cur_state = T_TARGETOVER
 				return
-		T_TARGETOVER: 
+		T_SKILLCHAR:
+			if position in allowedtargets.ally:
+				for pos in allowedtargets.ally + allowedtargets.enemy:
+					battlefieldpositions[pos].stop_highlight()
+				if fighter.defeated : return
+				if fighter.acted: return
+				node.highlight_hover()
+				cur_state = T_SKILLCHAROVER
+				return
+			if position in allowedtargets.enemy:
+				Input.set_custom_mouse_cursor(cursors.attack)
+				for pos in allowedtargets.ally + allowedtargets.enemy:
+					battlefieldpositions[pos].stop_highlight()
+				var cur_targets = []
+				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, fighter)
+				for ch in cur_targets:
+					ch.displaynode.highlight_target_enemy_final()
+				cur_state = T_TARGETOVER
+				return
+		T_TARGETOVER, T_SKILLCHAROVER: 
 			print("warning - mouseover while targets highlighted")
 #	if (allowaction == true && charselect == false) && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
 #		if fighter.combatgroup == 'enemy':
@@ -1170,7 +1209,17 @@ func FighterMouseOverFinish(position):
 			cur_state = T_SKILLSELECTED
 			activecharacter.displaynode.highlight_active()
 			return
-		T_SKILLSELECTED: 
+		T_SKILLCHAROVER:
+			for nd in battlefieldpositions.values():
+				nd.stop_highlight()
+			for pos in allowedtargets.enemy:
+				battlefieldpositions[pos].highlight_target_enemy()
+#			for pos in allowedtargets.ally:
+#				battlefieldpositions[pos].highlight_target_ally()
+			cur_state = T_SKILLCHAR
+			activecharacter.displaynode.highlight_active()
+			return
+		T_SKILLSELECTED, T_SKILLCHAR: 
 			if !(position in allowedtargets.ally + allowedtargets.enemy):
 				return
 			print("warning - mouseover finish while targets not highlighted")
@@ -1238,17 +1287,38 @@ func FighterPress(position):
 		T_TARGETOVER:
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				cur_state = T_AUTO
-				if allowedtargets.enemy.has(position):
-					activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
+			return
+		T_SKILLCHAROVER:
+			if allowedtargets.enemy.has(position):
+				cur_state = T_AUTO
+				activecharacter.skills_autoselect.push_back(activeaction)
+				use_skill(activeaction, activecharacter, position)
+			elif position in variables.playerparty:
+				if battlefield[position] == null: return
+				if battlefield[position].acted: return
+				if battlefield[position].defeated: return
+				cur_state = T_AUTO
+				player_turn(position)
 			return
 		T_SKILLSELECTED: 
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
-				if allowedtargets.enemy.has(position):
-					activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
+			return
+		T_SKILLCHAR:
+			if allowedtargets.enemy.has(position):
+				print("warning - allowed target not highlighted properly")
+				cur_state = T_AUTO
+				activecharacter.skills_autoselect.push_back(activeaction)
+				use_skill(activeaction, activecharacter, position)
+			elif position in variables.playerparty:
+				if battlefield[position] == null: return
+				if battlefield[position].acted: return
+				if battlefield[position].defeated: return
+				cur_state = T_AUTO
+				player_turn(position)
 			return
 #	if charselect:
 #		if pos > 3: return
