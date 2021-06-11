@@ -1,6 +1,6 @@
 extends TextureButton
 
-export var index = 0;
+export var index = -1;
 signal i_pressed(i);
 
 func press():

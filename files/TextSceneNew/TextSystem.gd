@@ -86,6 +86,20 @@ func _ready() -> void:
 	
 	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
+	
+	globals.AddPanelOpenCloseAnimation($LogPanel)
+	$Panel/Log.connect("pressed",self,'OpenLog')
+	$Panel/Options.connect('pressed', self, 'OpenOptions')
+
+var text_log = ""
+func OpenLog():
+	$LogPanel/RichTextLabel.bbcode_text = text_log
+	$LogPanel.show()
+	yield(get_tree().create_timer(0.2), 'timeout')
+	$LogPanel/RichTextLabel.scroll_to_line($LogPanel/RichTextLabel.get_line_count()-1)
+
+func OpenOptions():
+	$MenuPanel.show()
 
 
 func process_gallery_singles() -> PoolStringArray:
@@ -130,6 +144,11 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	
 	if $ChoicePanel.visible: return
+	
+	if $LogPanel.visible == true:
+		if event.is_action("MouseDown") && ($LogPanel/RichTextLabel.get_v_scroll().value + $LogPanel/RichTextLabel.get_v_scroll().page == $LogPanel/RichTextLabel.get_v_scroll().max_value || !$LogPanel/RichTextLabel.get_v_scroll().visible):
+			$LogPanel.hide()
+		return
 	
 	if event.is_action("ctrl"):
 		if event.is_pressed():
@@ -240,6 +259,11 @@ func get_choice(i: int):
 	last_choice = i
 	if !replay_mode:
 		state.store_choice(choice_line, i)
+	for ch_button in $ChoicePanel/VBoxContainer.get_children():
+		if ch_button.index == i:
+			print("%d %s" % [i, ch_button.get_node("Label").text])
+			text_log += "\n\n" + ch_button.get_node("Label").text
+			break
 	$ChoicePanel.visible = false
 	advance_scene()
 
@@ -261,6 +285,7 @@ func tag_choice(chstring: String) -> void:
 		var newbutton = $ChoicePanel/VBoxContainer.get_node("Button").duplicate()
 		$ChoicePanel/VBoxContainer.add_child(newbutton)
 		newbutton.show()
+		print("%d %s" % [c, tr(ch.replace('_', ' '))])
 		newbutton.get_node("Label").text = tr(ch.replace('_', ' '))
 		newbutton.index = c
 		newbutton.connect('i_pressed', self, 'get_choice')
@@ -440,6 +465,11 @@ func advance_scene() -> void:
 		
 		ShownCharacters = 0
 		replica = tr(replica)
+		if is_narrator:
+			text_log += '\n\n' + replica
+		else:
+			text_log += '\n\n' + '[' + tr(character.source) + ']\n' + replica
+		
 		TextField.visible_characters = ShownCharacters
 		TextField.bbcode_text = "[color=#%s]%s[/color]" % [character.color.to_html(), replica]
 		
