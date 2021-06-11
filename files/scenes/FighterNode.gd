@@ -59,11 +59,16 @@ func _input(event):
 
 
 func setup_character(ch):
+#	print(ch.name)
 	fighter = ch
 	ch.displaynode = self
 	position = fighter.position
+	$sprite.texture = null
+#	print($sprite.margin_bottom)
+	$sprite.rect_min_size = fighter.animations.idle.get_size()
+#	print($sprite.margin_bottom)
 	$sprite.texture = fighter.animations.idle
-	$sprite.rect_size = fighter.animations.idle.get_size()
+#	print($sprite.margin_bottom)
 #	texture_normal = fighter.animations.hit
 	$Label.text = fighter.name
 	$HP.value = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
@@ -230,9 +235,9 @@ func update_buff(i):
 
 func update_hp_label(newhp, newhpp):
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
-		$hplabel.text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
+		$HP/hplabel.text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
 	else:
-		$hplabel.text = str(round(newhpp)) + '%%'
+		$HP/hplabel.text = str(round(newhpp)) + '%%'
 
 #highlight modes
 func stop_highlight():

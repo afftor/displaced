@@ -24,16 +24,6 @@ func _init():
 	combatgroup = 'ally'
 
 func createfromname(name):
-	# need to preload all resources
-	# resources.preload_res(template.combaticon)
-	# ...
-	# yield(resources, "done_work")
-	# e.t.c.
-	#
-	## no. cause these classes are pure logical they should not handle resourse-loading due to func yield nature
-	## or we will be forced to wrap all logical callbacks into yield(callback, 'completed') or while-yield cycles
-	## all preloading should preferably be handled by data singletones
-	
 	var template = combatantdata.charlist[name]
 	base = template.code
 	self.name = tr(template.name)
@@ -236,3 +226,12 @@ func deserialize(savedir):
 	temp_effects = savedir.temp_effects.duplicate()
 	triggered_effects = savedir.triggered_effects.duplicate()
 	bonuses = savedir.bonuses.duplicate()
+
+
+var skills_autoselect = ["attack"]
+func get_autoselected_skill():
+	var skilldata = Skillsdata.patch_skill( skills_autoselect.back(), self)
+	while !can_use_skill(skilldata):
+		skills_autoselect.pop_back()
+		skilldata = Skillsdata.patch_skill( skills_autoselect.back(), self)
+	return skills_autoselect.back()

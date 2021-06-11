@@ -51,7 +51,7 @@ var triggered_effects = []
 
 var position 
 var combatgroup = 'ally'
-var selectedskill = 'attack'
+#var selectedskill = 'attack'
 
 var acted = false
 #mods. obsolete imho
@@ -554,7 +554,7 @@ func death():
 		displaynode.defeat()
 
 func can_act():
-	var res = true
+	var res = !acted
 	for e in static_effects + temp_effects:
 		var obj = effects_pool.get_effect_by_id(e)
 		if obj.template.has('disable'):
