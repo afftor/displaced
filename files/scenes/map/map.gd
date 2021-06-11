@@ -22,7 +22,7 @@ func _ready():
 	input_handler.combat_node = $combat
 	input_handler.scene_node = $TextSystem
 	input_handler.menu_node = $menu_node
-	
+
 	update_map()
 # test functions
 #	unlock_area('village')
@@ -56,24 +56,24 @@ func update_map():
 	for loc in binded_events:
 		binded_events[loc] = globals.check_signal_test('LocationEntered', loc)
 		var area_node = get_node(loc)
-		
+
 		if state.location_unlock[loc]:
 			area_node.m_show()
 		else:
 			area_node.m_hide()
-		
+
 		if binded_events[loc] != null:
 			area_node.set_border_type('event')
 			area_node.set_active()
 		elif loc == 'village':
 			area_node.set_border_type('safe')
 			area_node.set_active()
-		elif loc == 'town': 
+		elif loc == 'town':
 			area_node.set_inactive()
 		else:
 			area_node.set_border_type('combat')
-			
+
 			if Explorationdata.check_location_activity(loc):
 				area_node.set_active()
-			else: 
+			else:
 				area_node.set_inactive()

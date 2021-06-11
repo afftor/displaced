@@ -6,7 +6,7 @@ export var MaxDelay = 1.0
 export var RndDelay = true
 
 func _ready():
-	connect("animation_finished", self, 'make_random_pause') 
+	connect("animation_finished", self, 'make_random_pause')
 	playing = true
 
 

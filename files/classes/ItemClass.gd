@@ -181,7 +181,7 @@ func amount_set(value):
 
 func tooltiptext():
 	var text = ''
-	text += '[center]' + name + '[/center]\n' 
+	text += '[center]' + name + '[/center]\n'
 #	if itemtype in ['armor','weapon']:
 #		text += 'Durability: ' + str(durability) + '/' + str(maxdurability)
 #		text += "\n\n"
@@ -204,7 +204,7 @@ func tooltiptext():
 #		text += tooltipeffects()
 #	elif itemtype == 'usable':
 	text += descirption + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
-	
+
 	text = globals.TextEncoder(text)
 	return text
 
@@ -259,7 +259,7 @@ func tooltip(targetnode):
 #
 #func counterepairmaterials():
 #	var requiredmaterialsdict = calculatematerials()
-#	var itemtemplate = Items.Items[itembase] 
+#	var itemtemplate = Items.Items[itembase]
 #
 #	#calculating total resource needs
 #	var multiplier = 0

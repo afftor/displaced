@@ -36,7 +36,7 @@ var rules = []
 var activeaction
 var activeitem
 var activecharacter
-var charselect = true 
+var charselect = true
 
 
 var follow_up_skill = null
@@ -46,7 +46,7 @@ var cursors = {
 	default = load("res://assets/images/gui/universal/cursordefault.png"),
 	attack = load("res://assets/images/gui/universal/cursorfight.png"),
 	support = load("res://assets/images/gui/universal/cursorsupport.png"),
-	
+
 }
 
 var enemypaneltextures = {
@@ -87,7 +87,7 @@ func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
-	
+
 	for i in range(1,10):
 		battlefield[i] = null
 #	for i in range(7,13):
@@ -184,9 +184,9 @@ func select_actor():
 		combatlogadd("\n" + "New wave!")
 		buildenemygroup(enemygroup_full[curstage])
 		newturn()
-	elif get_avail_char_number('enemy') == 0: 
+	elif get_avail_char_number('enemy') == 0:
 		newturn()
-	
+
 	if get_avail_char_number('ally') > 0:
 		allowaction = true
 		turns += 1
@@ -206,7 +206,7 @@ func get_avail_char_number(group):
 		if battlefield[i].defeated: continue
 		if battlefield[i].acted: continue
 		res += 1
-	return res 
+	return res
 
 func newturn():
 	nextenemy = 4
@@ -343,13 +343,13 @@ func victory():
 	#on combat ends triggers
 	for p in state.heroes.values():
 		p.process_event(variables.TR_COMBAT_F)
-	
+
 	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
 	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
-	
+
 	input_handler.PlaySound(sounds["victory"])
-	
+
 	rewardsdict = {materials = {}, items = [], xp = 0}
 	for i in defeated:
 		rewardsdict.xp += i.xpreward
@@ -366,7 +366,7 @@ func victory():
 					rewardsdict.items.append(newitem)
 		state.heroes.erase(i.id)
 	defeated.clear()
-	
+
 	globals.ClearContainerForced($Rewards/HBoxContainer/first)
 	globals.ClearContainerForced($Rewards/HBoxContainer/second)
 	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
@@ -418,9 +418,9 @@ func victory():
 			newnode.get_node("Label").visible = false
 		else:
 			newnode.get_node("Label").text = str(i.amount)
-	
+
 	yield(get_tree().create_timer(1.7), 'timeout')
-	
+
 	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
 		if i.name == 'Button':
 			continue
@@ -430,10 +430,10 @@ func victory():
 		input_handler.PlaySound(sounds["itemget"])
 		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()
-	
+
 	#yield(get_tree().create_timer(1), 'timeout')
 	$Rewards/CloseButton.disabled = false
-	
+
 
 func defeat():
 	CombatAnimations.check_start()
@@ -442,7 +442,7 @@ func defeat():
 	set_process(false)
 	set_process_input(false)
 
-func player_turn(pos): 
+func player_turn(pos):
 	turns += 1
 	currentactor = pos
 	var selected_character = playergroup[pos]
@@ -453,7 +453,7 @@ func player_turn(pos):
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
-	
+
 	if !selected_character.can_act():
 		selected_character.process_event(variables.TR_TURN_F)
 		selected_character.rebuildbuffs()
@@ -514,18 +514,18 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	var targetpattern = skill.targetpattern
 	var rangetype = skill.userange
 	ClearSkillTargets()
-	
+
 	for i in $SkillPanel/ScrollContainer/GridContainer.get_children() + $ItemPanel/ScrollContainer/GridContainer.get_children():
 		if i.has_meta('skill'):
 			i.pressed = i.get_meta('skill') == skill.code
-	
+
 	if rangetype == 'weapon':
 		rangetype = fighter.get_weapon_range()
-	
+
 	highlightargets = true
 	allowedtargets.clear()
 	allowedtargets = {ally = [], enemy = []}
-	
+
 	if targetgroups.has('enemy'):
 		var t_targets
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
@@ -545,7 +545,7 @@ func UpdateSkillTargets(caster, glow_skip = false):
 			allowedtargets.ally.push_back(t.position)
 	if targetgroups.has('self'):
 		allowedtargets.ally.append(int(fighter.position))
-	
+
 	if glow_skip: return
 	Highlight(currentactor,'selected')
 	Off_Target_Glow();
@@ -610,9 +610,9 @@ func enemy_turn(pos):
 		call_deferred('select_actor')
 		return
 	#Selecting active skill
-	
+
 	Highlight(pos, 'enemy')
-	
+
 	turns += 1
 	var castskill = fighter.ai._get_action()
 	var target = fighter.ai._get_target(castskill)
@@ -620,11 +620,11 @@ func enemy_turn(pos):
 		castskill = fighter.ai._get_action(true)
 		target = fighter.ai._get_target(castskill)
 	if target == null:
-		if checkwinlose() == FIN_NO: 
+		if checkwinlose() == FIN_NO:
 			print ('error getting targets')
 		return
 	#target = battlefield[target]
-	
+
 #	if fighter.has_status('confuse'):
 #		castskill = fighter.get_skill_by_tag('default')
 #		activeaction = castskill
@@ -733,7 +733,7 @@ func FighterMouseOver(fighter):
 		else:
 			Input.set_custom_mouse_cursor(cursors.support)
 		var cur_targets = [];
-		cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, fighter); 
+		cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, fighter);
 		Stop_Target_Glow();
 		for c in cur_targets:
 			Target_eff_Glow(c.position);
@@ -770,14 +770,14 @@ func ShowFighterStats(fighter):
 #			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.get_stat('manamax')))) + "%"
 #		else:
 #			$StatsPanel/mana.text = ''
-	$StatsPanel/damage.text = "Damage: " + str(round(fighter.get_stat('damage'))) 
-	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.get_stat('critchance')) + "%/" + str(fighter.get_stat('critmod')*100) + '%' 
+	$StatsPanel/damage.text = "Damage: " + str(round(fighter.get_stat('damage')))
+	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.get_stat('critchance')) + "%/" + str(fighter.get_stat('critmod')*100) + '%'
 	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.get_stat('hitrate'))
 #	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.get_stat('armorpenetration'))
 #
-#	$StatsPanel/armor.text = "Armor: " + str(fighter.get_stat('armor')) 
+#	$StatsPanel/armor.text = "Armor: " + str(fighter.get_stat('armor'))
 #	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.get_stat('mdef'))
-	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.get_stat('evasion')) 
+	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.get_stat('evasion'))
 #	$StatsPanel/speed.text = "Speed: " + str(fighter.get_stat('speed'))
 
 	for i in ['fire','water','earth','air']:
@@ -830,10 +830,10 @@ func buildenemygroup(group):
 		enemygroup[i].createfromtemplate(tempname, en_level)
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)
-		#new part for gamestate 
+		#new part for gamestate
 #		state.heroes[enemygroup[i].id] = enemygroup[i]
 #		state.combatparty[i] = enemygroup[i].id
-		
+
 
 func buildplayergroup(group):
 	var newgroup = {}
@@ -896,7 +896,7 @@ func swap_hero(newhero):
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
-	
+
 	call_deferred('select_actor')
 
 func summon(montype, number):
@@ -930,16 +930,16 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 #	elif target.defeated or target.hp <= 0: change = true #forced change. or not. nvn error
 	elif skill.keep_target == variables.TARGET_NOKEEP: change = true #intentional change
 	elif skill.keep_target == variables.TARGET_KEEPFIRST: skill.keep_target = variables.TARGET_NOKEEP
-	elif skill.keep_target == variables.TARGET_MOVEFIRST: 
+	elif skill.keep_target == variables.TARGET_MOVEFIRST:
 		skill.keep_target = variables.TARGET_KEEP
 		change = true
 	if !change: return target
 	#fing new target
 	match skill.next_target:
-		variables.NT_ANY: 
+		variables.NT_ANY:
 			var avtargets = get_enemy_targets_all(caster)
 			return input_handler.random_element(avtargets).position
-		variables.NT_ANY_NOREPEAT: 
+		variables.NT_ANY_NOREPEAT:
 			var avtargets = get_enemy_targets_all(caster)
 			avtargets.erase(target)
 			return input_handler.random_element(avtargets).position
@@ -971,7 +971,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	var target = battlefield[target_pos]
 	if activeaction != skill_code: activeaction = skill_code
 	allowaction = false
-	
+
 	var skill = Skillsdata.patch_skill(skill_code, caster)#Skillsdata.skilllist[skill_code]
 	if skill.has('follow_up'):
 		follow_up_skill = skill.follow_up
@@ -982,7 +982,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	else:
 		follow_up_skill = null
 		follow_up_flag = false
-	
+
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
@@ -992,18 +992,18 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 #			combatlogadd("\n" + str(caster.position) + ' uses ' + skill.name + ". ")
 			print(str(caster.position) + ' uses ' + skill.name)
 #		caster.mana -= skill.manacost
-		
+
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown
-	
+
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
 	s_skill1.createfromskill(skill_code, caster)
 	#s_skill1.setup_caster(caster)
 	s_skill1.process_event(variables.TR_CAST)
-	
+
 	caster.process_event(variables.TR_CAST, s_skill1)
-	
+
 	turns += 1
 	#preparing animations
 	var animations = skill.sfx
@@ -1041,7 +1041,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				activeitem.amount -= 1
 				activeitem = null
 				SelectSkill(caster.get_skill_by_tag('default'))
-			
+
 			caster.rebuildbuffs()
 			if fighterhighlighted == true:
 				FighterMouseOver(target)
@@ -1049,7 +1049,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			if caster.combatgroup == 'ally':
 				var temp = 0
 				for pos in range(4, 7): if  battlefield[pos] == null: temp += 1
-				if temp == 3: 
+				if temp == 3:
 					yield(advance_frontrow(), 'completed')
 			if endturn or caster.hp <= 0 or !caster.can_act():
 				#on end turn triggers
@@ -1070,7 +1070,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		target_pos = newtarget
 		target = battlefield[newtarget]
 		if target == null and !skill.tags.has('empty_target'): continue
-		targets = CalculateTargets(skill, caster, target, true) 
+		targets = CalculateTargets(skill, caster, target, true)
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:
@@ -1087,7 +1087,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				summon(skill.value[0], skill.value[1]);
 			elif skill.damagetype == 'resurrect':
 				if !rules.has('no_res'): i.resurrect(skill.value[0]) #not sure
-			else: 
+			else:
 				#default skill result
 				#execute_skill(s_skill1, caster, i)
 				var s_skill2:S_Skill = s_skill1.clone()
@@ -1151,36 +1151,36 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 	s_skill1.remove_effects()
-	
+
 	var f = checkwinlose()
 	if f != FIN_NO:
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		q_skills.clear()
-		if f == FIN_STAGE: 
+		if f == FIN_STAGE:
 			call_deferred('select_actor')
 		return
 	#follow-up
 	if follow_up_flag and (follow_up_skill != null):
 		yield(use_skill(follow_up_skill, caster, target_pos), 'completed')
-	if skill.has('not_final'): 
+	if skill.has('not_final'):
 		print(str(caster.position) + ' ended pretime ' + skill.name)
 		return
-	
+
 	print(str(caster.position) + ' almost ended ' + skill.name)
-	
+
 	#use queued skills
 	while !q_skills.empty():
 		var tdata = q_skills.pop_front()
 		yield(use_skill(tdata.skill, tdata.caster, tdata.target), 'completed')
-	
+
 	#final
 	turns += 1
 	if activeitem != null:
 		activeitem.amount -= 1
 		activeitem = null
 		SelectSkill(caster.get_skill_by_tag('default'))
-	
+
 	caster.rebuildbuffs()
 	if fighterhighlighted == true:
 		FighterMouseOver(target)
@@ -1189,7 +1189,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if caster.combatgroup == 'ally' and checkwinlose() == FIN_NO:
 		var temp = 0
 		for pos in range(4, 7): if  battlefield[pos] == null: temp += 1
-		if temp == 3: 
+		if temp == 3:
 			yield(advance_frontrow(), 'completed')
 	turns +=1
 	if endturn or caster.hp <= 0 or !caster.can_act():
@@ -1226,7 +1226,7 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 #	4:[7,10],
 #	5:[8,11],
 #	6:[9,12],
-#} 
+#}
 #var lines = {
 #	1 : [1,2,3],
 #	2 : [4,5,6],
@@ -1236,11 +1236,11 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 
 func CalculateTargets(skill, caster, target, finale = false):
-	#if target == null: return 
+	#if target == null: return
 	var array = []
-	
+
 	var targetgroup
-	
+
 #	if target == null:
 	if skill.allowedtargets.has('enemy'):
 		if caster.combatgroup == 'ally': targetgroup = 'enemy'
@@ -1306,7 +1306,7 @@ func CalculateTargets(skill, caster, target, finale = false):
 			var tpos = [target.position]
 			if target.position in [1, 4, 7]: tpos.push_back(target.position + 1)
 			elif target.position in [3, 6, 9]: tpos.push_back(target.position - 1)
-			else: 
+			else:
 				tpos.push_back(target.position + 1)
 				tpos.push_back(target.position - 1)
 			var tpos2 = []
@@ -1325,7 +1325,7 @@ func CalculateTargets(skill, caster, target, finale = false):
 			var tpos = []
 			if target.position in [1, 4, 7]: tpos.push_back(target.position + 1)
 			elif target.position in [3, 6, 9]: tpos.push_back(target.position - 1)
-			else: 
+			else:
 				tpos.push_back(target.position + 1)
 				tpos.push_back(target.position - 1)
 			if target.position in [4, 5, 6]:#not sure about this
@@ -1369,7 +1369,7 @@ func execute_skill(s_skill2):
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
 			else:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
-				text += "%s is hit for %d damage. " %[s_skill2.target.name, rval]#, s_skill2.value[i]] 
+				text += "%s is hit for %d damage. " %[s_skill2.target.name, rval]#, s_skill2.value[i]]
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(s_skill2.value[i])
@@ -1379,7 +1379,7 @@ func execute_skill(s_skill2):
 #		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
 #			if !s_skill2.tags.has('no log'):
 #				var rval = s_skill2.target.mana_update(s_skill2.value[i])
-#				text += "%s restored %d mana." %[s_skill2.target.name, rval] 
+#				text += "%s restored %d mana." %[s_skill2.target.name, rval]
 #			else:
 #				s_skill2.target.mana_update(s_skill2.value[i])
 #		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
@@ -1389,14 +1389,14 @@ func execute_skill(s_skill2):
 #				if !s_skill2.tags.has('no log'):
 #					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
 #			if !s_skill2.tags.has('no log'):
-#				text += "%s lost %d mana." %[s_skill2.target.name, rval] 
-		else: 
+#				text += "%s lost %d mana." %[s_skill2.target.name, rval]
+		else:
 			var mod = s_skill2.damagestat[i][0]
-			var stat = s_skill2.damagestat[i].right(1) 
+			var stat = s_skill2.damagestat[i].right(1)
 			if mod == '+':
 				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i])
 				if !s_skill2.tags.has('no log'):
-					text += "%s restored %d %s." %[s_skill2.target.name, rval, tr(stat)] 
+					text += "%s restored %d %s." %[s_skill2.target.name, rval, tr(stat)]
 			elif mod == '-':
 				var rval = s_skill2.target.stat_update(stat, -s_skill2.value[i])
 				if s_skill2.is_drain:
@@ -1412,7 +1412,7 @@ func execute_skill(s_skill2):
 					if !s_skill2.tags.has('no log'):
 						text += "%s drained %d %s from %s." %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
 				elif !s_skill2.tags.has('no log'):
-					text += "%s's %s is now %d." %[s_skill2.target.name, tr(stat), s_skill2.value[i]] 
+					text += "%s's %s is now %d." %[s_skill2.target.name, tr(stat), s_skill2.value[i]]
 			else: print('error in damagestat %s' % s_skill2.damagestat[i])
 	combatlogadd(text)
 
@@ -1434,14 +1434,14 @@ func miss(fighter):
 
 func checkreqs(passive, caster, target): #not used?
 	var rval = true
-	
+
 	if passive.has('casterreq'):
 		if !caster.requirementcombatantcheck(passive.casterreq):
 			return false
 	if passive.has('targetreq'):
 		if !target.requirementcombatantcheck(passive.targetreq):
 			return false
-	
+
 	return rval
 
 func Highlight(pos, type):
@@ -1462,7 +1462,7 @@ func StopHighlight(pos):
 
 func Target_eff_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
-	if node == null: 
+	if node == null:
 		return;
 	var temp
 	temp = Color(1.0,0.0,1.0,1.0);
@@ -1554,17 +1554,17 @@ func SelectSkill(skill):
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = 'attack'
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter.position)
-	
+
 
 func RebuildItemPanel():
 	var array = []
-	
+
 	ClearItemPanel()
-	
+
 	for i in state.items.values():
 		if i.itemtype == 'usable':
 			array.append(i)
-	
+
 	for i in array:
 		var newbutton = globals.DuplicateContainerTemplate($ItemPanel/ScrollContainer/GridContainer)
 		newbutton.get_node("Icon").texture = load(i.icon)
@@ -1592,7 +1592,7 @@ func calculate_hit_sound(skill, caster, target):
 		hitsound = get_weapon_sound(caster)
 	else:
 		hitsound = skill.sounddata.strike
-	
+
 	match hitsound:
 		'dodge':
 			match target.bodyhitsound:
@@ -1605,7 +1605,7 @@ func calculate_hit_sound(skill, caster, target):
 				'wood':pass
 				'stone':pass
 	rval = 'fleshhit'
-	
+
 	return rval
 
 func combatlogadd(text):
@@ -1636,7 +1636,7 @@ func res_all(hpval):
 #	if party == 'enemy':
 #		p = enemygroup
 	for ch in p.values():
-		if ch.defeated: 
+		if ch.defeated:
 			ch.defeated = false
 			ch.hppercent = hpval
 			ch.acted = false # or not

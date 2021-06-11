@@ -190,6 +190,7 @@ text = "auto play scenes"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="scene_player/Button" to="scene_player" method="_on_Button_pressed"]
 [connection signal="pressed" from="scene_player/Button2" to="scene_player" method="_on_Button_pressed_1"]
 [connection signal="item_activated" from="event_sym/Map" to="event_sym" method="_on_Map_item_activated"]

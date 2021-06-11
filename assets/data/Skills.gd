@@ -53,7 +53,7 @@ var skilllist = {
 		patches = [],
 		ai_priority = 1
 	},
-	earth_attack = { 
+	earth_attack = {
 		code = 'earth_attack',
 		name = "",
 		description = "",
@@ -77,7 +77,7 @@ var skilllist = {
 		patches = [],
 		ai_priority = 1
 	},
-	air_attack = { 
+	air_attack = {
 		code = 'air_attack',
 		name = "",
 		description = "",
@@ -101,7 +101,7 @@ var skilllist = {
 		patches = [],
 		ai_priority = 1
 	},
-	dark_attack = { 
+	dark_attack = {
 		code = 'dark_attack',
 		name = "",
 		description = "",
@@ -125,7 +125,7 @@ var skilllist = {
 		patches = [],
 		ai_priority = 1
 	},
-	light_attack = { 
+	light_attack = {
 		code = 'light_attack',
 		name = "",
 		description = "",
@@ -280,7 +280,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		
+
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_lunge'},
 		]
@@ -308,7 +308,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		
+
 	},
 	swift_s = {
 		code = 'swift_s',
@@ -334,7 +334,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		
+
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_swift_1'}
 		]
@@ -363,7 +363,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		
+
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_parry_1'}
 		]
@@ -392,7 +392,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		
+
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_swm_1'}
 		]
@@ -625,7 +625,7 @@ var skilllist = {
 		name = tr(""),
 		description = tr(""),
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),#
-		
+
 		damagetype = "fire",
 		skilltype = 'skill',
 		userange = "any",
@@ -1589,7 +1589,7 @@ var skilllist = {
 		tags = ['buff', 'shield'],
 		value = ['target.hpmax', '*0.5'],
 		damagestat = ['+shield'],
-		cooldown = 1, 
+		cooldown = 1,
 #		manacost = 0,
 		casteffects = [],
 		hidden = false,
@@ -1648,7 +1648,7 @@ var skilllist = {
 		tags = ['heal', 'resurrect'],
 		value = ['caster.hpmax', '*0.35'],
 		damagestat = ['-damage_hp'],
-		cooldown = 10, 
+		cooldown = 10,
 #		manacost = 0,
 		chance = 100,
 		evade = 0,
@@ -1677,7 +1677,7 @@ var skilllist = {
 		reqs = [],
 		tags = ['damage', 'debuff', 'dispel'],
 		value = ['0'],
-		cooldown = 10, 
+		cooldown = 10,
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_silence', duration = 2})],
 		hidden = false,
@@ -2340,8 +2340,8 @@ var skilllist = {
 		keep_target = variables.TARGET_KEEP,
 		reqs = [],
 		tags = ['damage', 'aoe'],
-		value = [['caster.damage', '*0.5']], 
-		cooldown = 2, 
+		value = [['caster.damage', '*0.5']],
+		cooldown = 2,
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_intimidate', chance = 0.5})],
 		repeat = 1,
@@ -2572,7 +2572,7 @@ var skilllist = {
 		keep_target = variables.TARGET_KEEP,
 		reqs = [],
 		tags = ['damage', 'poison', 'aoe'],
-		value = [['caster.damage', '*0.4'], ['caster.damage', '*0.5']], 
+		value = [['caster.damage', '*0.4'], ['caster.damage', '*0.5']],
 		damagestat = ['no_stat', '+damage_hp'],
 		cooldown = 1,
 #		manacost = 0,
@@ -2685,7 +2685,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
-		ai_priority = 1 
+		ai_priority = 1
 	},
 	dm_poison_spike = {
 		code = 'dm_poison_spike',
@@ -2791,7 +2791,7 @@ var skilllist = {
 
 	},
 	#old part
-	#to remove all obsolete 
+	#to remove all obsolete
 	#not guaranteed to work after template change
 #	attack = {
 #		code = 'attack',
@@ -3008,7 +3008,7 @@ var skilllist = {
 #		aitargetcond = 'any',
 #		aipriority = 2,
 #	},
-#	heavyshot = { 
+#	heavyshot = {
 #		code = 'heavyshot',
 #		name = tr("SKILLSTRONGSHOT"),
 #		description = tr("SKILLSTRONGSHOTDESCRIPT"),
@@ -3134,7 +3134,7 @@ var skilllist = {
 #	},
 #
 #	#brawler
-#	tackle = { 
+#	tackle = {
 #		code = 'tackle',
 #		name = tr("SKILLTACKLE"),
 #		description = tr("SKILLTACKLEDESCRIPT"),
@@ -3416,7 +3416,7 @@ var skilllist = {
 #		aitargetcond = 'any',
 #		aipriority = 2,
 #	},
-#	execute = { 
+#	execute = {
 #		code = 'execute',
 #		name = tr(""),
 #		description = tr(""),

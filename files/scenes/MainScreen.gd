@@ -24,13 +24,13 @@ func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
-	
+
 	get_tree().set_auto_accept_quit(false)
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	globals.CurrentScene = self
 	tasks = state.tasks
 	input_handler.SetMusic("towntheme")
-	
+
 	var speedvalues = [0,1,10]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
@@ -44,17 +44,17 @@ func _ready():
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
 	$Gate.connect("pressed",self,'ReturnToMap')
-	
+
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
-	
+
 	######Vote stuff
-	
+
 	input_handler.connect("QuestStarted", self, "VotePanelShow")
 	$VotePanel/Links.connect("pressed", self, "VoteLinkOpen")
 	$VotePanel/Close.connect("pressed", self, "VotePanelClose")
-	
+
 	####
-	
+
 	if debug == true:
 		$ExploreScreen/combat/ItemPanel/debugvictory.show()
 		state.OldEvents['Market'] = 0
@@ -105,12 +105,12 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
 		globals.AddItemToInventory(globals.CreateUsableItem('barricade', 2))
 		globals.AddItemToInventory(globals.CreateUsableItem('protectivecharm', 2))
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 #	globals.call_deferred('EventCheck');
 	$testbutton.connect("pressed", self, "testfunction")
 	changespeed($"TimeNode/0speed", false)
@@ -146,7 +146,7 @@ var forgeimage = {
 	base = {normal = load("res://assets/images/buildings/forge.png"), hl = load("res://assets/images/buildings/forge_hl.png")},
 	first = {normal = load("res://assets/images/buildings/forge_1.png"), hl = load("res://assets/images/buildings/forge1_hl.png")},
 	second = {normal = load("res://assets/images/buildings/forge_2.png"), hl = load("res://assets/images/buildings/forge2_hl.png")},
-	
+
 }
 
 
@@ -181,9 +181,9 @@ func _process(delta):
 		return
 	$TimeNode/HidePanel.visible = gamepaused_nonplayer
 	settime()
-	
+
 	#buildscreen()
-	
+
 	if gamepaused == false:
 		for i in get_tree().get_nodes_in_group("pauseprocess"):
 			if i.visible == true:
@@ -197,24 +197,24 @@ func _process(delta):
 			if i.visible == true:
 				allnodeshidden = false
 				break
-		
-		
-		
+
+
+
 		if allnodeshidden == true && gamepaused_nonplayer == true:
 			restoreoldspeed(previouspeed)
 			gamepaused_nonplayer = false
 			gamepaused = false
-	
+
 	$ControlPanel/Gold.text = str(state.money)
 	$ControlPanel/Food.text = str(state.food)
-	
+
 	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
 		state.daytime += delta * gamespeed
-		
+
 		for i in state.heroes.values():
 			i.regen_tick(delta*gamespeed)
-		
+
 		movesky()
 #		for i in state.tasks:
 #			i.time += delta*gamespeed
@@ -226,12 +226,12 @@ func _process(delta):
 #				#call(i.function, i)
 #
 		if daycolorchange == false:
-			
+
 			if floor(state.daytime) == 0.0:
 				EnvironmentColor('morning')
 				yield(get_tree().create_timer(1), "timeout")
 				input_handler.PlaySoundIsolated(sounds["morning"], 1) #prevents multiple sounds stacking
-				
+
 			elif floor(state.daytime) == floor(variables.TimePerDay/4):
 				EnvironmentColor('day')
 			elif floor(state.daytime) == floor(variables.TimePerDay/4*2):
@@ -254,15 +254,15 @@ func EnvironmentColor(time, instant = false):
 	var evening = Color8(120, 96, 96)
 	var tween = input_handler.GetTweenNode(self)
 	var array = [$Background, $Sky, $WorkBuildNode, $TavernNode, $BlacksmithNode, $Gate, $TownHallNode]
-	
+
 	var currentcolor
 	var nextcolor
-	
+
 	var changetime = 2
-	
+
 	if instant == true:
 		changetime = 0.01
-	
+
 	if currenttime != time:
 		daycolorchange = true
 		match time:
@@ -345,7 +345,7 @@ func changespeed(button, playsound = true):
 	]
 	if oldvalue != newvalue && playsound:
 		input_handler.PlaySound(soundarray[int(button.name[0])])
-	
+
 	gamepaused = newvalue == 0
 	input_handler.emit_signal("SpeedChanged", gamespeed)
 
@@ -421,7 +421,7 @@ func BuildingOptions(building = {}):
 #
 #
 #
-#		#Check if need to access multiple subcategory  
+#		#Check if need to access multiple subcategory
 #		if i.code.find('.') != -1:
 #			var array = i.code.split('.')
 #			if array[0] == 'materials':
@@ -437,7 +437,7 @@ func BuildingOptions(building = {}):
 #		else:
 #			state[i] += taskresult
 #
-#		#targetvalue 
+#		#targetvalue
 ##		if data.instrument != null:
 ##			data.instrument.durability -= taskdata.tasktool.durabilityfactor
 ##			if data.instrument.durability <= 0:

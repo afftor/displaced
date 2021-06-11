@@ -39,7 +39,7 @@ var upgradelist
 var skills
 var effects
 var combateffects
-var explorationares 
+var explorationares
 
 var rng := RandomNumberGenerator.new()
 
@@ -72,7 +72,7 @@ var textcodedict = {
 }
 
 
-var globalsettings = { 
+var globalsettings = {
 	ActiveLocalization = 'en',
 	mastervol = -15,
 	mastermute = false,
@@ -80,12 +80,12 @@ var globalsettings = {
 	musicmute = false,
 	soundvol = -15,
 	soundmute = false,
-	
+
 	#Window settings
 	fullscreen = true,
 	window_size = Vector2(1366,768),
 	window_pos = Vector2(0,0),
-	
+
 	textspeed = 60,
 	skipread = false,
 	textmonocolor = false,
@@ -98,7 +98,7 @@ func settings_load():
 	if file.file_exists(userfolder + "Settings.ini") == false:
 		settings_save(globalsettings)
 	config.load(userfolder + "Settings.ini")
-	var settings = config.get_section_keys("settings") 
+	var settings = config.get_section_keys("settings")
 	for i in settings:
 		globalsettings[i] = config.get_value("settings", i, null)
 	#updatevolume
@@ -107,7 +107,7 @@ func settings_load():
 		AudioServer.set_bus_mute(counter, globalsettings[i+'mute'])
 		AudioServer.set_bus_volume_db(counter, globalsettings[i+'vol'])
 		counter += 1
-	
+
 
 func settings_save(value):
 	globalsettings = value
@@ -127,8 +127,8 @@ func _notification(what):
 func _init():
 	if dir.dir_exists(userfolder + 'saves') == false:
 		dir.make_dir(userfolder + 'saves')
-	
-	
+
+
 	#Storing available translations
 	for i in scanfolder(LocalizationFolder):
 		for ifile in dir_contents(i):
@@ -137,8 +137,8 @@ func _init():
 #			var data = file.get_as_text()
 #	for i in dir_contents(LocalizationFolder):
 #		TranslationData[i.replace(LocalizationFolder + '/', '').replace('.gd','')] = i
-	
-	
+
+
 	#Applying active translation
 	var activetranslation = Translation.new()
 	var translationscript = load(TranslationData[globalsettings.ActiveLocalization]).new()
@@ -189,22 +189,22 @@ func _ready():
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 
 	#====================================
-	
+
 	yield(preload_backgrounds(), 'completed')
 	print("Backgrounds preloaded")
 	if resources.is_busy(): yield(resources, "done_work")
 	print("preload finished")
 
-	
+
 	#randomgroups = Enemydata.randomgroups
 	#enemylist = Enemydata.enemylist
 	#effects = Effectdata.effects
 	#combateffects = Effectdata.combateffects
 	#skills = Skillsdata.skilllist
-	
+
 	#workersdict = TownData.workersdict
-	
-	
+
+
 #	state.materials.wood = 10
 #	state.materials.elvenwood = 10
 #	state.materials.elvenmetal = 10
@@ -212,7 +212,7 @@ func _ready():
 #	state.materials.bone = 10
 #	state.materials.cloth = 10
 #	state.money = 500
-	
+
 
 func logupdate(text):
 	state.logupdate(text)
@@ -230,7 +230,7 @@ func ChangeScene(name):
 	loadscreen.goto_scene(scenedict[name])
 
 
-#old version 
+#old version
 #func EventCheck():
 #	if state.CurEvent != "" || CurrentScene.debug == true: return;
 #	for s in get_tree().get_nodes_in_group('char_sprite'):
@@ -250,7 +250,7 @@ func ChangeScene(name):
 #				continue
 #			else:
 #				return false
-#		if !state.valuecheck(check): 
+#		if !state.valuecheck(check):
 #			return false
 #	return true
 
@@ -277,11 +277,11 @@ func check_signal_test(sg_name, arg = null):
 			events_to_check = events.signals[sg_name]
 		elif events.signals[sg_name].has(arg):
 			events_to_check = events.signals[sg_name][arg]
-		else: 
+		else:
 			events_to_check = []
 	else:
 		events_to_check = events.signals[sg_name]
-	
+
 	for e in events_to_check:
 		if SimpleEventCheck(e): #mb add priority sorting
 			return e
@@ -291,7 +291,7 @@ func SimpleEventCheck(event):
 	if state.OldEvents.has(event):
 		return false
 	for check in EventList[event]:
-		if !state.valuecheck(check): 
+		if !state.valuecheck(check):
 			return false
 	return true
 
@@ -303,9 +303,9 @@ func LoadEvent(name):
 		file.close()
 	else:
 		print('Event not found: ' + name)
-	
+
 	events_path = "res://assets/data/events"
-	
+
 	return dict
 
 func StartEventScene(name, debug = false, line = 0):
@@ -325,7 +325,7 @@ func CreateGearItem(item, parts, newname = null):
 	newitem.CreateGear(item, parts)
 	if newname != null:
 		newitem.name = newname
-	
+
 	return newitem
 
 func CreateUsableItem(item, amount = 1):
@@ -347,13 +347,13 @@ func AddItemToInventory(item):
 			item.id = "i" + str(state.itemidcounter)
 			state.items[item.id] = item
 			state.itemidcounter += 1
-		
+
 
 func get_item_id_by_code(itembase):
 	for item in state.items.values():
 		if item.itembase == itembase:
 			return item.id
-	
+
 	return null
 
 func dir_contents(target):
@@ -468,7 +468,7 @@ func mattooltip(targetnode, material):
 
 func showtooltip(text, node):
 	var screen = get_viewport().get_visible_rect()
-	var tooltip 
+	var tooltip
 	if get_tree().get_root().has_node("tooltip") == false:
 		tooltip = load("res://files/Simple Tooltip/SimpleTooltip.tscn").instance()
 		get_tree().get_root().add_child(tooltip)
@@ -513,7 +513,7 @@ func RomanNumberConvert(value):
 		7:
 			rval = 'VII'
 		8:
-			rval = 'VIII' 
+			rval = 'VIII'
 		9:
 			rval = 'IX'
 		10:
@@ -543,7 +543,7 @@ func TextEncoder(text, node = null):
 		var endcode = ''
 		for data in newtextarray:
 			data = data.replace('{','').split("=")
-			
+
 			match data[0]:
 				'color':
 					startcode += '[color=' + hexcolordict[data[1]] + ']'
@@ -553,8 +553,8 @@ func TextEncoder(text, node = null):
 					startcode += '[url=' + str(counter) + ']'
 					endcode = '[/url]' + endcode
 					counter += 1
-		
-		
+
+
 		text = text.replace(newtext, startcode + originaltext + endcode)
 	if node != null:
 		node.bbcode_text = text
@@ -571,7 +571,7 @@ func BBCodeTooltip(meta, node):
 	showtooltip(text, node)
 
 func CharacterSelect(targetscript, type, function, requirements):
-	var node 
+	var node
 	if get_tree().get_root().has_node("CharacterSelect"):
 		node = get_tree().get_root().get_node("CharacterSelect")
 		get_tree().get_root().remove_child(node)
@@ -581,15 +581,15 @@ func CharacterSelect(targetscript, type, function, requirements):
 		node.name = 'CharacterSelect'
 		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
-	
+
 	node.show()
 	#node.set_as_toplevel(true)
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
-	
+
 	var array = []
 #	if type == 'workers':
 #		array = state.workers.values()
-	
+
 	for i in array:
 		if requirements == 'notask' && i.task != null:
 			continue
@@ -601,22 +601,22 @@ func CharacterSelect(targetscript, type, function, requirements):
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
 func HeroSelect(targetscript, type, function, requirements):
-	var node 
+	var node
 	if get_tree().get_root().has_node("HeroSelect"):
 		node = get_tree().get_root().get_node("HeroSelect")
 		get_tree().get_root().remove_child(node)
 		get_tree().get_root().add_child(node)
-		
+
 	else:
 		node = load("res://HeroSelect.tscn").instance()
 		node.name = 'HeroSelect'
 		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
-	
+
 	node.show()
 	#node.set_as_toplevel(true)
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
-	
+
 	var array = []
 	var newnode
 	if type == 'heroposition':
@@ -625,7 +625,7 @@ func HeroSelect(targetscript, type, function, requirements):
 		newnode.get_node("Label").text = tr("REMOVE")
 		newnode.connect('pressed', targetscript, function, [null])
 		newnode.connect('pressed',self,'CloseSelection', [node])
-	
+
 	for i in array:
 		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
@@ -638,7 +638,7 @@ func HeroSelect(targetscript, type, function, requirements):
 
 
 func ItemSelect(targetscript, type, function, requirements = true): #2fix obsolete types
-	var node 
+	var node
 	if get_tree().get_root().has_node("ItemSelect"):
 		node = get_tree().get_root().get_node("ItemSelect")
 		get_tree().get_root().remove_child(node)
@@ -648,12 +648,12 @@ func ItemSelect(targetscript, type, function, requirements = true): #2fix obsole
 		get_tree().get_root().add_child(node)
 		AddPanelOpenCloseAnimation(node)
 		node.name = 'ItemSelect'
-	
-	
+
+
 	node.show()
-	
+
 	ClearContainer(node.get_node("ScrollContainer/GridContainer"))
-	
+
 	var array = []
 	if type == 'gear':
 		for i in state.items.values():
@@ -667,7 +667,7 @@ func ItemSelect(targetscript, type, function, requirements = true): #2fix obsole
 		for i in state.items.values():
 			if i.foodvalue > 0:
 				array.append(i)
-	
+
 	for i in array:
 		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
 		match type:
@@ -688,7 +688,7 @@ func CloseSelection(panel):
 	panel.hide()
 
 func closeskilltooltip():
-	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) 
+	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
 	skilltooltip.set_process(false)
 	skilltooltip.hide()
@@ -710,7 +710,7 @@ func MergeDicts(dict1, dict2, overwrite = false):
 			returndict[i] += dict2[i]
 		else:
 			returndict[i] = dict2[i]
-	
+
 	return returndict
 
 func scanfolder(path): #makes an array of all folders in modfolder
@@ -720,7 +720,7 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		dir.make_dir(path)
 	if dir.open(path) == OK:
 		dir.list_dir_begin()
-		
+
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir() && !file_name in ['.','..',null]:
@@ -738,7 +738,7 @@ func QuickSave():
 func SaveGame(name):
 	if state.CurEvent != '':
 		state.CurrentLine = input_handler.get_spec_node(input_handler.NODE_EVENT).CurrentLine
-	var savedict = state.serialize(); 
+	var savedict = state.serialize();
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
@@ -747,20 +747,20 @@ func LoadGame(filename):
 	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
 		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
 		return
-	
+
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
 	CurrentScene.queue_free()
 	ChangeScene('map');
 	yield(self, "scene_changed")
-	
+
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
 	state.deserialize(savedict)
 	CurrentScene.buildscreen()
-	
+
 	if state.CurBuild != '' and state.CurBuild != null:
 		CurrentScene.get_node(state.CurBuild).show()
 	#opentextscene
@@ -779,9 +779,9 @@ func datetime_comp(a, b):
 
 func get_last_save():
 	var dir = dir_contents(userfolder + 'saves')
-	
+
 	if dir == null: return
-	
+
 	var dated_dir = {}
 	var tmp = File.new()
 	for i in dir_contents(userfolder + 'saves'):

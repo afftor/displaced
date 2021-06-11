@@ -13,11 +13,10 @@ var TranslationDict = {
 	HARVESTPLANT = "Harvest Plants",
 	GOBLINWORKER = "Goblin Worker",
 	ELFWORKER = "Elven Worker",
-	
-	
+
 	#Materials
 	STARTINGADJ = "Starting",
-	
+
 	MATERIALWOOD = "Wood",
 	MATERIALWOODDESCRIPT = "Sturdy wood for general building and furnishing purposes.",
 	WOODADJ = "wooden",
@@ -42,22 +41,22 @@ var TranslationDict = {
 	MATERIALCLOTH = "Cloth",
 	MATERIALCLOTHDESCRIPT = "A simple cotton fibre for simple clothes. Can be used for cloth armor. ",
 	CLOTHADJ = "Cotton",
-	
-	
+
+
 	#Items
 	WEAPONAXENAME = "Axe",
 	WEAPONPICKAXENAME = "Pickaxe",
 	WEAPONSWORDNAME = 'Sword',
 	WEAPONBOWNAME = "Bow",
 	WEAPONSTAFFNAME = "Staff",
-	
-	
+
+
 	WEAPONAXEDESCRIPT = 'Axe can be used for cutting wood and combat.',
 	WEAPONSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	WEAPONPICKAXEDESCRIPT = "Allows workers to harvest ore, but also can be use in combat.",
 	WEAPONBOWDESCRIPT = "Simple weapon for ranged fighters.",
 	WEAPONSTAFFDESCRIPT = "A simple tool for magic users.",
-	
+
 	ARMORBASICCHEST = "Chestplate",
 	ARMORROBE = "Robe",
 	ARMORHOOD = "Hood",
@@ -69,7 +68,7 @@ var TranslationDict = {
 	ARMORBASICBOOTSDESCRIPT = "Offers basic foot protection",
 	ARMORBASICGLOVES = "Gloves",
 	ARMORBASICGLOVESDESCRIPT = "Offers basic hand protection",
-	
+
 	USABLEMORSEL = "Morsel",
 	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted into Food.",
 	USABLEMANAGRASS = "Blue Grass",
@@ -80,8 +79,8 @@ var TranslationDict = {
 	USABLEPROTECTIVECHARMDESCRIPT = "An enchanted piece of paper. Shields target from 50 magic damage for 2 turns",
 	USABLEELIXIR = "Elixir",
 	USABLEELIXIRDESCRIPT = "A rejuvinating potion. Restores 75 health and 40 mana.",
-	
-	
+
+
 	#enemies
 	MONSTERELVENRAT = "Elven Rat",
 	MONSTERELVENRATFLAVOR = "These animals are fairly common in most areas. Distinct ears make them accumulate all sorts of moniker, but goblins seem to label them this way...",
@@ -105,7 +104,7 @@ var TranslationDict = {
 	GEARSTAFF = "Staves",
 	GEARBOW = "Bows",
 	GEARPICKAXE = "Pickaxes",
-	
+
 	#Stats
 	DAMAGE = 'Damage',
 	DAMAGEMOD = "Damage Mult.",
@@ -129,7 +128,7 @@ var TranslationDict = {
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
-	
+
 	#stat tooltips
 	TOOLTIPDAMAGE = "Defines damage output of skills and spells",
 	TOOLTIPARMOR = "Reduces skill damage taken by this percent",
@@ -140,9 +139,9 @@ var TranslationDict = {
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
-	
-	
-	
+
+
+
 	#Item Parts
 	TOOLHANDLE = 'Handle',
 	BLADE = 'Blade',
@@ -153,8 +152,8 @@ var TranslationDict = {
 	ARMORPLATE = 'Plate',
 	ARMORTRIM = 'Trim',
 	JEWELRYGEM = 'Gem',
-	
-	
+
+
 	#Material Effects
 	GOBMETALHANDLEDESCRIPT = "Deals 15% more damage when enemy's health below 30%",
 	ELFMETALHANDLEDESCRIPT = "Gain +1 Mana on skill hit",
@@ -164,8 +163,8 @@ var TranslationDict = {
 	GOBMETALRODDESCRIPT = "For 1 turn reduces target's speed by 10 on spell hit",
 	BONERODDESCRIPT = "Restores 3% health on spell hit",
 	BONEBOWDESCRIPT = "+1 health on hit",
-	
-	
+
+
 	#Menu
 	NEWGAME = "New Game",
 	LOAD = 'Load',
@@ -179,14 +178,14 @@ var TranslationDict = {
 	MASTERSOUND = "Master Volume",
 	MUTE = "Mute",
 	AUDIO = "Audio",
-	
+
 	TEXTSPEED = "Text Speed",
 	SKIPREAD = "Skip Read",
-	
+
 	CURRENTFOOD = "Current Food",
 	GAINFOOD = "Food Value",
 	FOODCONVERT = "Convert Food",
-	
+
 	#System
 	CONFIRM = "Confirm",
 	FRONT = "Front",
@@ -228,27 +227,27 @@ var TranslationDict = {
 	TRAITPOINTSCOST = "Trait Points",
 	TRAITPOINTS = "Trait Points used",
 	GOLDPRICE = "Gold Cost",
-	
+
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
-	
-	
+
+
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
 	SELECTITEM = "Select Item",
 	WORKERLIMITREACHER = "Worker Limit Reached: Upgrade Houses to increase",
 	TOTALWORKERS = "Total Workers",
-	
+
 	TUTORIAL = "Tutorial",
 	TRAITS = "Traits",
 	CLASSINFO = "Class Details",
-	
+
 	INVENTORY = "Inventory",
 	WORKERLIST = "Worker List",
 	HEROLIST = "Hero List",
 	OPTIONMENU = "Options",
-	
+
 	INVENTORYALL = "All items",
 	INVENTORYWEAPON = "Weapons",
 	INVENTORYARMOR = "Armor",
@@ -259,33 +258,33 @@ var TranslationDict = {
 	RAWPRICE = "Raw Price",
 	FOODDESCRIPT = "Food is used to feed workers. ",
 	MONEYDESCRIPT = "Money is used to purchase goods and workers.",
-	
+
 	AREAISENDLESS = "This area has no progression",
 	TOWNRETURN = "Return",
-	
+
 	#Confirms
-	
+
 	LEAVECONFIRM = "Leave to Main Menu? Unsaved progress will be lost. ",
 	LOADCONFIRM = "Load this save file?",
 	OVERWRITECONFIRM = "Overwrite this save file?",
 	DELETECONFIRM = "Delete this save file?",
 	STOPTASKCONFIRM = "Stop this job?",
 	SLAVEREMOVECONFIRM = "Expel this worker?",
-	
-	
+
+
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
 	NORMALBUTTONTOOLTIP = 'Normal Speed\nHotkey: 2',
 	FASTBUTTONTOOLTIP = 'Fast Speed\nHotkey: 3',
-	
-	
+
+
 	#Tasks
 	HARVESTWOOD = "Harvest Lumber",
 	WOODCUTTINGTASKDESCRIPTION = "Harvest lumber from nearest vegetation.",
 	HARVESTMETALDESCRIPTION = "Harvest metal ores from the mine. \n[color=red]Requires a pickaxe.[/color]",
 	HARVESTPLANTDESCRIPTION = "Produce plants from the farm.",
-	
-	
+
+
 	#Classes
 	CLASSDESCRIPT = "Class defines character's basic characteristics, abilities, specific traits and allowed gear. More abilities are unlocked as you level up. After certain level you can advance into one of the new classes.",
 	WARRIOR = "Warrior",
@@ -300,7 +299,7 @@ var TranslationDict = {
 	ARCHERTRAITDESCRIPT = "Gain 1 bonus Hit Rate for every 1 bonus Evasion.",
 	CLASSALLOWEDWEAPONS = "Allowed gear",
 	CLASSTRAIT = "Class bonus",
-	
+
 	#Names
 	ARRON = 'Arron',
 	ROSE = 'Rose',
@@ -314,7 +313,7 @@ var TranslationDict = {
 	DEMITRIUS = "Demitrius",
 	LYRA = "Lyra",
 	FLAK = "Flak",
-	
+
 	#Skills
 	SKILLATTACK = "Attack",
 	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon for %d damage. ",
@@ -344,8 +343,8 @@ var TranslationDict = {
 	SKILLCOMBOATTACKDESCRIPT = "Deals 3 consecutive hits for %d Weapon damage to target. ",
 	SKILLDOUBLEATTACK = "Double Attack",
 	SKILLDOUBLEATTACKDESCRIPT= "Attacks for %d damage twice.",
-	
-	
+
+
 	#Upgrades
 	UPGRADEPREVBONUS = "Current bonus",
 	UPGRADENEXTBONUS = "Unlock bonus",
@@ -369,7 +368,7 @@ var TranslationDict = {
 	LUMBERMILLUPGRADE = "Lumber mill",
 	UPGRADELUMBERMILLDESCRIPT = "Provides a room for more Lumber Harvesters.",
 	UPGRADELUMBERMILLBONUS = "Increases the number of workers allowed in same time to 4. ",
-	
+
 	#traitdescriptions
 	TRAITBEASTBONUSDAMAGE = "Deals 20% more damage to animals",
 	TRAITBEASTBONUSRESIST = "Takes 20% less damage from animals",
@@ -394,7 +393,7 @@ var TranslationDict = {
 	TRAITDODGEGROUP = "+10 Speed to all characters on the same column",
 	TRAITRESISTDEBUFF = "On hit reduces all target resists for 15 for 1 turn",
 	TRAITFIREDAMAGEBONUS = "20% Extra Fire damage to skills",
-	
+
 	TAKEGOLDBUTTON = "Take 100 Gold",
 	TAKEGOLDBUTTONTOOLTIP = "Refuse all traits and receive 100 gold"
 }

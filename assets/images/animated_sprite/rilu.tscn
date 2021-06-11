@@ -13,7 +13,7 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 20.0
 } ]
 
 [node name="sprite" type="TextureRect"]
@@ -31,9 +31,10 @@ __meta__ = {
 }
 
 [node name="AnimatedSpriteDelay" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 376.381, 641.622 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 1 )
 script = ExtResource( 2 )
-MinDelay = 1.5
-MaxDelay = 3.0
+MinDelay = 2.0
+MaxDelay = 4.0

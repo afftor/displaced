@@ -12,7 +12,7 @@ func _ready():
 	$ScrollContainer/GridContainer/Button.set_meta('type', 'none')
 	for i in $HBoxContainer.get_children():
 		i.connect('pressed',self,'selectcategory', [i])
-	
+
 	#number select panel
 #warning-ignore:return_value_discarded
 	$NumberSelectPanel/ConfirmButton.connect("pressed", self, "NumberConfirm")
@@ -22,7 +22,7 @@ func _ready():
 	$NumberSelectPanel/SpinBox.connect('value_changed', self, 'NumberChanged')
 #warning-ignore:return_value_discarded
 	$NumberSelectPanel/MaxButton.connect("pressed",self, "NumberMax")
-	
+
 
 func open(newmode = null, args = null):
 	if newmode == 'hero':
@@ -36,7 +36,7 @@ func buildinventory():
 	globals.ClearContainer(itemcontainer)
 	globals.ClearContainer($HiddenContainer/GridContainer)
 	itemarray.clear()
-	
+
 	for i in state.materials:
 		if state.materials[i] <= 0:
 			continue
@@ -80,10 +80,10 @@ func selectcategory(button):
 	for i in $HBoxContainer.get_children():
 		i.pressed = i == button
 	category = type
-	
+
 	rebuildinventory()
-	
-	
+
+
 #	for i in itemcontainer.get_children():
 #		i.visible = i.get_meta('type') == type || type == 'all'
 #		if i.get_meta('type') == 'none':
@@ -124,12 +124,12 @@ func sellwindow(item, type):
 		maxamount = state.materials[item]
 		itemprice = material.price
 		amount = 1
-		text = tr("SELLCONFIRM") + " " + material.name + "?" 
+		text = tr("SELLCONFIRM") + " " + material.name + "?"
 	else:
 		itemprice = item.calculateprice()
 		amount = 1
 		maxamount = item.amount
-		text = tr("SELLCONFIRM") + " " + item.name + "?" 
+		text = tr("SELLCONFIRM") + " " + item.name + "?"
 	$NumberSelectPanel/RichTextLabel.bbcode_text = text
 	updateprice()
 

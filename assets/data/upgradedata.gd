@@ -53,7 +53,7 @@ var upgradelist = {#2 fix data
 #		descript = tr("UPGRADELUMBERMILLDESCRIPT"),
 #		levels = {
 #			1:{
-#				unlockreqs = [], 
+#				unlockreqs = [],
 #				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 #				bonusdescript = tr("UPGRADELUMBERMILLBONUS"),
 #				townnode = "lumbermill",
@@ -69,7 +69,7 @@ var upgradelist = {#2 fix data
 #		descript = tr("UPGRADEMINEDESCRIPT"),
 #		levels = {
 #			1:{
-#				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}], 
+#				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}],
 #				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 #				bonusdescript = tr("UPGRADEMINEBONUS"),
 #				townnode = "mine",
@@ -86,7 +86,7 @@ var upgradelist = {#2 fix data
 #		levels = {
 #			1:{
 #				unlockreqs = [{type = "has_upgrade", name = "bridge", value = 1}],
-#				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+#				icon = load('res://assets/images/buildings/upgrade_farm.png'),
 #				bonusdescript = tr("UPGRADEFARMBONUS"),
 #				townnode = "farm",
 #				cost = {wood = 10},
@@ -109,7 +109,7 @@ var upgradelist = {#2 fix data
 #				limitchange = 4,
 #			},
 #			2:{
-#				unlockreqs = [], 
+#				unlockreqs = [],
 #				icon = load("res://assets/images/buildings/upgrade_house.png"),
 #				bonusdescript = tr("UPGRADHOUSEBONUS2"),
 #				cost = {wood = 10, elvenwood = 5},
@@ -124,7 +124,7 @@ var upgradelist = {#2 fix data
 #		descript = tr("UPGRADEBLACKSMITHDESCRIPT"),
 #		levels = {
 #			1:{
-#				unlockreqs = [{type = "has_hero", name = "Ember"}], 
+#				unlockreqs = [{type = "has_hero", name = "Ember"}],
 #				icon = load('res://assets/images/buildings/upgrade_forge.png'),
 #				bonusdescript = tr("UPGRADEBLACKSMITHBONUS1"),
 #				townnode = "BlacksmithNode",
@@ -139,7 +139,7 @@ var upgradelist = {#2 fix data
 #			},
 #		}
 #	},
-	
+
 	#new ones
 	forge = {
 		code = 'forge',
@@ -152,28 +152,28 @@ var upgradelist = {#2 fix data
 				icon = null,
 				node = load("res://assets/images/buildings/forge_1.png"),
 				bonusdescript = tr(""),
-				cost = {},
+				cost = {wood = 5},
 			},
 			2:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/forge_1.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/forge_1.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			4:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/forge_1.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			}
 		}
 	},
@@ -188,28 +188,28 @@ var upgradelist = {#2 fix data
 				icon = null,
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			2:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			4:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			}
 		}
 	},
@@ -224,28 +224,28 @@ var upgradelist = {#2 fix data
 				icon = null,
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			2:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			4:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			}
 		}
 	},
@@ -260,28 +260,28 @@ var upgradelist = {#2 fix data
 				icon = null,
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			2:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			4:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			}
 		}
 	},
@@ -296,28 +296,28 @@ var upgradelist = {#2 fix data
 				icon = null,
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			2:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			},
 			4:{
 				unlockreqs = [],
 				icon = null,
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
-				cost = {},#do not fill till materials rework
+				cost = {wood = 5},#do not fill till materials rework
 			}
 		}
 	},

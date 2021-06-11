@@ -7,11 +7,11 @@ var close_sound = 'sound/menu_close'
 var close_played = false
 
 func _ready():
-	
+
 	for i in [open_sound, close_sound]:
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
-	
+
 	rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
 	closebutton = load("res://files/Close Panel Button/CloseButton.tscn").instance()
 	add_child(closebutton)
