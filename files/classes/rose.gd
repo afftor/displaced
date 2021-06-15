@@ -6,7 +6,7 @@ func _init():
 	state.heroes[id] = self
 	createfromname('rose')
 
-func get_res():
+func get_resists():
 	var res = resists.duplicate()
 	for r in variables.resistlist:
 		if r in bonusres:

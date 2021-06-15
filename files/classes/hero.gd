@@ -114,6 +114,13 @@ func switch_weapon():
 	if curweapon == 'weapon1': curweapon = 'weapon2'
 	else: curweapon = 'weapon1'
 
+
+func set_weapon(slot):
+	if !(slot in ["weapon1", "weapon2"]): 
+		return
+	curweapon = slot
+
+
 func gear_check(slot, level, op):
 	var lv = gear_level[slot]
 	if slot != 'armor': 
@@ -131,14 +138,22 @@ func upgrade_gear(slot):
 	gear_level[slot] += 1
 	return true
 
-func get_item_data(slot):
-	var res = {icon = null, name = null, description = null, colors = [], type = slot}
+func get_item_data_level(slot, level):
+	var res = {icon = null, name = null, description = null, colors = [], type = slot, cost = {}}
 	var template = Items.hero_items_data["%s_%s" % [id, slot]]
-	var lvl = gear_level[slot]
-	res.icon = template.leveldata[lvl].icon
+	res.icon = template.leveldata[level].icon
 	res.name = tr(template.name)
-	res.description = tr(template.description) + tr(template.leveldata[lvl].lvldesc)
+	res.description = tr(template.description) + tr(template.leveldata[level].lvldesc)
+	res.cost = template.cost.duplicate()
 	return res
+
+func get_item_data(slot):
+	return get_item_data_level(slot, gear_level[slot])
+
+func get_item_upgrade_data(slot):
+	if gear_level[slot] >= 4: return null
+	return get_item_data_level(slot, gear_level[slot] + 1)
+
 
 func get_weapon_damagetype():
 	var res = base_dmg_type
@@ -162,8 +177,8 @@ func get_weapon_sound():
 	return res
 
 
-#this function is broken and needs revision (but for now skill tooltips are broken as well due to translation issues so i did't fix this)
-#slill need fixing
+#this function is broken and needs revision (but for now skill tooltips are broken as well due to translation issues so i didn't fix this)
+#still need fixing
 func skill_tooltip_text(skillcode):
 	var skill = Skillsdata.skilllist[skillcode]
 	var text = ''
@@ -226,6 +241,8 @@ func deserialize(savedir):
 	temp_effects = savedir.temp_effects.duplicate()
 	triggered_effects = savedir.triggered_effects.duplicate()
 	bonuses = savedir.bonuses.duplicate()
+	for slot in gear_level:
+		gear_level[slot] = int(gear_level[slot])
 
 
 var skills_autoselect = ["attack"]

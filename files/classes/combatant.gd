@@ -24,8 +24,8 @@ var evasion = 0
 var hitrate = 80
 var critchance = 5
 var critmod = 1.5
-var resists = {} setget ,get_res
-var status_resists = {} setget ,get_s_res
+var resists = {} setget ,get_resists
+var status_resists = {} setget ,get_s_resists
 var shield = 0 setget set_shield;
 var base_dmg_type = 'bludgeon'
 var base_dmg_range = 'melee'
@@ -177,14 +177,14 @@ func add_part_stat(statname, value, revert = false):
 	recheck_effect_tag('recheck_stats')
 
 #confirmed getters
-func get_res():
+func get_resists():
 	var res = resists.duplicate()
 	for r in variables.resistlist:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
 		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
 	return res
 
-func get_s_res():
+func get_s_resists():
 	var res = status_resists.duplicate()
 	for r in variables.status_list:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
@@ -679,14 +679,14 @@ func get_all_buffs():
 	return tmp
 
 #this function is broken and needs revision (but for now skill tooltips are broken as well due to translation issues so i did't fix this)
-func skill_tooltip_text(skillcode):
-	var skill = Skillsdata.skilllist[skillcode]
-	var text = ''
-	if skill.description.find("%d") >= 0:
-		text += skill.description % calculate_number_from_string_array(skill.value)
-	else:
-		text += skill.description
-	return text
+#func skill_tooltip_text(skillcode):
+#	var skill = Skillsdata.skilllist[skillcode]
+#	var text = ''
+#	if skill.description.find("%d") >= 0:
+#		text += skill.description % calculate_number_from_string_array(skill.value)
+#	else:
+#		text += skill.description
+#	return text
 
 func play_sfx(code):
 	if displaynode != null:
