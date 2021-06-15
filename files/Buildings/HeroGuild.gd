@@ -23,19 +23,19 @@ func selecthero(hero):
 	$HeroHire.show()
 	selectedhero = hero
 	globals.ClearContainer($HeroHire/traits)
-	
+
 	$HeroHire/hp.text = str(hero.hp) + '/' + str(hero.hpmax)
 #	$HeroHire/mana.text = str(hero.mana) + '/' + str(hero.manamax)
-	
+
 	text += 'Name: ' + hero.name + '\nClass: ' + combatantdata.classlist[hero.base].name + '\nPrice: ' + str(hero.price)
 	$HeroHire/RichTextLabel.bbcode_text = text
-	
+
 	for i in hero.traits:
 		var trait = Traitdata.traitlist[i]
 		var newlabel = globals.DuplicateContainerTemplate($HeroHire/traits)
 		newlabel.text = trait.name
 		globals.connecttooltip(newlabel,trait.description)
-	
+
 	$HeroHire/Button.disabled = state.money < hero.price
 
 func hirehero():

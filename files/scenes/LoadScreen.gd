@@ -20,10 +20,10 @@ func goto_scene(path): # game requests to switch to this scene
 	#print(true)
 	set_process(true)
 	#current_scene.queue_free() # get rid of the old scene
-	
+
 	# start your "loading..." animation
 	get_node("animation").play("loading")
-	
+
 	wait_frames = 1
 
 
@@ -55,10 +55,10 @@ func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
 	# update your progress bar?
 	get_node("progress").value = progress*100
-	
+
 	# or update a progress animation?
 	var length = get_node("animation").get_current_animation_length()
-	
+
 	# call this on a paused animation. use "true" as the second parameter to force the animation to update
 	get_node("animation").seek(progress * length, true)
 

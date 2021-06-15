@@ -123,7 +123,7 @@ func set_weapon(slot):
 
 func gear_check(slot, level, op):
 	var lv = gear_level[slot]
-	if slot != 'armor': 
+	if slot != 'armor':
 		if slot != curweapon: lv = 0 #possibly not
 	match op:
 		'eq': return lv == level

@@ -5,18 +5,12 @@ var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 var show_enemy_hp = false
 
-enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6}; 
+enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6};
 enum {TR_CAST,TR_CAST_TARGET, TR_HIT, TR_DEF, TR_TURN_S, TR_TURN_GET, TR_TURN_F, TR_DEATH, TR_KILL, TR_DMG, TR_POSTDAMAGE, TR_POST_TARG, TR_SKILL_FINISH, TR_HEAL, TR_COMBAT_S, TR_COMBAT_F, TR_SHIELD_DOWN, TR_DAY};
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_REMOVE};
 enum {TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
 enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER};
-#Items
-var RepairCostMultiplierEasy = 0.5
-var RepairCostMultiplierMedium = 0.65
-var RepairCostMultiplierHard = 0.8
-var ItemEffectNaturalMultiplier = 0.15
 #Heroes
-var BaseHeroPrice = 100
 var MaxLevel = 5
 var StartTraitPoints = 0
 var TraitPointsPerLevel = 1
@@ -44,7 +38,7 @@ const rows = {
 	4:[4,7],
 	5:[5,8],
 	6:[6,9],
-} 
+}
 const lines = {
 	1 : [1,2,3],
 	2 : [4,5,6],

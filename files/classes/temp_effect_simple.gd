@@ -17,13 +17,13 @@ func _init(caller).(caller):
 
 func createfromtemplate(tmp):
 	.createfromtemplate(tmp)
-	if template.has('tick_event'): 
+	if template.has('tick_event'):
 		if typeof(template.tick_event) == TYPE_ARRAY:
 			tick_event = template.tick_event.duplicate()
 		else:
 			tick_event.clear()
 			tick_event.push_back(template.tick_event)
-	if template.has('rem_event'): 
+	if template.has('rem_event'):
 		if typeof(template.rem_event) == TYPE_ARRAY:
 			rem_event = template.rem_event.duplicate()
 		else:
@@ -33,7 +33,7 @@ func createfromtemplate(tmp):
 
 func apply():
 	.apply()
-	if template.has('duration'): 
+	if template.has('duration'):
 		if typeof(template.duration) == TYPE_STRING:
 			match template.duration:
 				'parent':
@@ -102,14 +102,14 @@ func serialize():
 func deserialize(tmp):
 	.deserialize(tmp)
 	tick_event.clear()
-	if template.has('tick_event'): 
+	if template.has('tick_event'):
 		if typeof(template.tick_event) == TYPE_ARRAY:
 			for tr in template.tick_event:
 				tick_event.push_back(int(tr))
 		else:
 			tick_event.push_back(int(template.tick_event))
 	rem_event.clear()
-	if template.has('rem_event'): 
+	if template.has('rem_event'):
 		if typeof(template.rem_event) == TYPE_ARRAY:
 			for tr in template.rem_event:
 				rem_event.push_back(int(tr))
@@ -123,7 +123,7 @@ func soft_remove(): #remove without calling app_obj.remove_effect(), useful for 
 	is_applied = false
 	var obj = get_applied_obj()
 	for a in atomic:
-		if obj != null: 
+		if obj != null:
 			#tmp.remove_template(obj)
 			obj.remove_atomic(a)
 	atomic.clear()

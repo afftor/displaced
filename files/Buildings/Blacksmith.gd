@@ -10,12 +10,12 @@ var craft_sound = "sound/itemcraft"
 func _ready():
 	resources.preload_res(craft_sound)
 	if resources.is_busy(): yield(resources, "done_work")
-	
+
 	for i in [$ItemCreationWindow/Part1, $ItemCreationWindow/Part2, $ItemCreationWindow/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])
 	$ItemCreationWindow.hide()
 	$ItemCreationWindow/MaterialSelect.hide()
-	
+
 #warning-ignore:return_value_discarded
 	$ButtonPanel/CraftButton.connect("pressed", self, 'chooseitem')
 #warning-ignore:return_value_discarded
@@ -40,7 +40,7 @@ func chooseitem():
 	$RepairPanel.hide()
 	$ItemSelection.show()
 	globals.ClearContainer($ItemSelection/ScrollContainer/GridContainer)
-	
+
 	for i in Items.Items.values():
 		if i.tags.has('recipe'):
 			var check = true
@@ -63,13 +63,13 @@ func selectcraftitem(item):
 		array.append(i)
 	array.sort()
 	itemparts.clear()
-	
+
 	for i in ['Part1','Part2','Part3']:
 		get_node("ItemCreationWindow/" + i).texture_normal = null
 		get_node("ItemCreationWindow/" + i + '/number').hide()
 		get_node("ItemCreationWindow/" + i + 'Descript').bbcode_text = ''
 	$ItemCreationWindow/EndItem.texture = null
-	
+
 	$ItemCreationWindow/Part1.set_meta('part',array[0])
 	$ItemCreationWindow/Part1.set_meta('cost',item.parts[array[0]])
 	$ItemCreationWindow/Part2.set_meta('part',array[1])
@@ -88,10 +88,10 @@ func choosematerial(button):
 	chosenpartbutton = button
 	var part = button.get_meta('part')
 	var cost = button.get_meta('cost')
-	
+
 	var text = Items.Parts[part].name + ' - ' + tr('REQUIREDMATERIAL') + ': ' + str(cost)
 	$ItemCreationWindow/MaterialSelect/PartLabel.text = text
-	
+
 	for i in Items.Materials.values():
 		var tempmaterial = state.materials[i.code]
 		if tempmaterial <= 0:
@@ -113,7 +113,7 @@ func choosematerial(button):
 				newbutton.get_node("Label").text += '\nNot Enough Materials'
 			globals.connecttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.description)
 			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
-			
+
 
 func cleartemplate():
 	$ItemCreationWindow/CreateItem.disabled = true
@@ -126,7 +126,7 @@ func selectmaterial(material, part, cost):
 	chosenpartbutton.texture_normal = material.icon
 	chosenpartbutton.get_node("number").text = str(cost)
 	chosenpartbutton.get_node("number").show()
-	var text = Items.Parts[part].name + "\n" 
+	var text = Items.Parts[part].name + "\n"
 	$ItemCreationWindow/MaterialSelect.hide()
 	checkcreatingitem(itemtemplate)
 	for i in material.parts[part]:
@@ -155,17 +155,17 @@ func checkcreatingitem(item):
 			resourcedict[i.material] = i.price
 	for i in resourcedict:
 		text += "\n" + i.capitalize() + ' - ' + str(resourcedict[i])
-	
-	
-	
+
+
+
 	var fullrecipe = true
 	for i in baseitem.parts:
 		if !itemparts.has(i):
 			fullrecipe = false
-	
+
 	$ItemCreationWindow/CreateItem.disabled = !fullrecipe
-	
-	
+
+
 	var partdict = {}
 	for i in itemparts:
 		partdict[i] = itemparts[i].material
@@ -176,7 +176,7 @@ func checkcreatingitem(item):
 		text += '\n\n[color=red]' + tr('SELECTMATERIAL') + '[/color]\n\n'
 	else:
 		text += '\n\n'
-	
+
 	globals.TextEncoder(text, $ItemCreationWindow/EndItemDescript)
 	#globals.connecttooltip($ItemCreationWindow/EndItem, text)
 	$ItemCreationWindow/EndItem.set_texture(baseitem.icon)
@@ -195,7 +195,7 @@ func CreateItem():
 	globals.AddItemToInventory(enditem)
 	selectcraftitem(Items.Items[itemtemplate])
 	#$ItemCreationWindow.hide()
-	
+
 
 func selectallrepair():
 	for i in $RepairPanel/ScrollContainer/GridContainer.get_children():
@@ -223,12 +223,12 @@ func repairitems():
 func updaterepairlist():
 	var canexecute = true
 	globals.ClearContainer($RepairPanel/MatScrollContainer/HBoxContainer)
-	
+
 	var resourcedict = {}
-	
+
 	for i in repairitemlist:
 		globals.MergeDicts(resourcedict,i.counterepairmaterials())
-	
+
 	for i in resourcedict:
 		var material = Items.Materials[i]
 		var newicon = globals.DuplicateContainerTemplate($RepairPanel/MatScrollContainer/HBoxContainer)
@@ -286,7 +286,7 @@ func hide():
 #		var newimage = globals.DuplicateContainerTemplate($RepairItem/Panel/RepairMaterials/Button)
 #		var material = Items.Materials[i]
 #		newimage.texture = material.icon
-#		newimage.get_node('amount').text = str(repairmaterials[i]) +'/'+ str(state.materials[i]) 
+#		newimage.get_node('amount').text = str(repairmaterials[i]) +'/'+ str(state.materials[i])
 #		if state.materials[i] < repairmaterials[i]:
 #			newimage.get_node('amount').set("custom_colors/font_color", Color(1,0,0))
 

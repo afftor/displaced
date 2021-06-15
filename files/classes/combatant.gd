@@ -11,7 +11,7 @@ var animations setget ,get_animations
 
 var race
 
-var level = 1 
+var level = 1
 
 var hp = 0 setget hp_set
 var hpmax = 0 setget , hpmax_get #base value
@@ -20,7 +20,7 @@ var defeated = false
 #var mana = 0 setget mana_set
 #var manamax = 0
 var damage = 0 setget ,damage_get
-var evasion = 0 
+var evasion = 0
 var hitrate = 80
 var critchance = 5
 var critmod = 1.5
@@ -45,18 +45,18 @@ var weaponsound = 'dodge'
 
 #effects new part
 var static_effects = []
-var temp_effects = []  
+var temp_effects = []
 var triggered_effects = []
 
 
-var position 
+var position
 var combatgroup = 'ally'
 #var selectedskill = 'attack'
 
 var acted = false
 #mods. obsolete imho
 #var damagemod = 1
-#var hpmod = 1 
+#var hpmod = 1
 #var manamod = 1
 var xpmod = 1
 
@@ -142,7 +142,7 @@ func add_bonus(b_rec:String, value, revert = false):
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
-	
+
 
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -192,9 +192,9 @@ func get_s_resists():
 	return res
 
 func set_shield(value):
-#	if shield != 0: 
+#	if shield != 0:
 #		process_event(variables.TR_SHIELD_DOWN)
-	if globals.combat_node != null and globals.combat_node.rules.has('no_shield'): 
+	if globals.combat_node != null and globals.combat_node.rules.has('no_shield'):
 		if value > shield: return
 	shield = value;
 	if displaynode != null:
@@ -367,7 +367,7 @@ func find_temp_effect(eff_code):
 		var eff = effects_pool.get_effect_by_id(temp_effects[i])
 		if eff.template.name != eff_code:continue
 		nm += 1
-		if eff.remains < tres: 
+		if eff.remains < tres:
 			tres = eff.remains
 			res = i
 	return {num = nm, index = res}
@@ -408,13 +408,13 @@ func check_status_resist(eff):
 
 func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
-	if check_status_resist(eff): 
+	if check_status_resist(eff):
 		if globals.combat_node != null:
-			globals.combat_node.combatlogadd("\n%s resists %s." % [get_stat('name'), eff.template.name]) 
+			globals.combat_node.combatlogadd("\n%s resists %s." % [get_stat('name'), eff.template.name])
 			play_sfx('resist')
 		return
 	if globals.combat_node != null:
-		globals.combat_node.combatlogadd("\n%s is afflicted by %s." % [get_stat('name'), eff.template.name]) 
+		globals.combat_node.combatlogadd("\n%s is afflicted by %s." % [get_stat('name'), eff.template.name])
 
 	var eff_n = eff.template.name
 	var tmp = find_temp_effect(eff_n)
@@ -436,18 +436,18 @@ func apply_temp_effect(eff_id):
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static', 'c_static', 'dynamic': 
+		'static', 'c_static', 'dynamic':
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
-		'trigger': 
+		'trigger':
 			triggered_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
 		'temp_s','temp_p','temp_u': apply_temp_effect(eff_id)
-		'oneshot': 
+		'oneshot':
 			obj.applied_obj = self
 			obj.apply()
 
@@ -704,7 +704,7 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 			result = (randf()*100 < req.value);
 		'stats':
 			result = input_handler.operate(req.operant, get_stat(req.name), req.value)
-		'race': 
+		'race':
 			result = (req.value == race);
 		'status':
 			result = has_status(req.status) == req.check

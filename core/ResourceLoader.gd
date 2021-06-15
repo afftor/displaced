@@ -51,7 +51,7 @@ func resource_loaded(path) -> void:
 
 func _ready() -> void:
 	connect("resource_loaded", self, "resource_loaded")
-	
+
 #	var path = resources.RES_ROOT.bg + '/bg'
 #	var dir = globals.dir_contents(path)
 #	if dir != null:
@@ -69,7 +69,7 @@ func get_res(path: String) -> Resource:
 		return null
 	var category = psplit[0]
 	var label = path.replace(category + "/", "")
-	
+
 	if (res_pool.has(category) && res_pool[category].has(label)):
 		return res_pool[category][label]
 	else:
@@ -116,10 +116,10 @@ func preload_res(path: String) -> void:
 		return
 	var category = psplit[0]
 	var label = path.trim_prefix(category + "/")
-	
+
 	if path in queue:
 		return
-	
+
 	var thread = Thread.new()
 	busy += 1
 	queue.append(path)

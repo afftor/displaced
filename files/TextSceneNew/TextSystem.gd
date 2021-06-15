@@ -86,7 +86,7 @@ func _ready() -> void:
 
 	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
-	
+
 	globals.AddPanelOpenCloseAnimation($LogPanel)
 	$Panel/Log.connect("pressed",self,'OpenLog')
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
@@ -144,12 +144,12 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 
 	if $ChoicePanel.visible: return
-	
+
 	if $LogPanel.visible == true:
 		if event.is_action("MouseDown") && ($LogPanel/RichTextLabel.get_v_scroll().value + $LogPanel/RichTextLabel.get_v_scroll().page == $LogPanel/RichTextLabel.get_v_scroll().max_value || !$LogPanel/RichTextLabel.get_v_scroll().visible):
 			$LogPanel.hide()
 		return
-	
+
 	if event.is_action("ctrl"):
 		if event.is_pressed():
 			skip = true
@@ -469,7 +469,7 @@ func advance_scene() -> void:
 			text_log += '\n\n' + replica
 		else:
 			text_log += '\n\n' + '[' + tr(character.source) + ']\n' + replica
-		
+
 		TextField.visible_characters = ShownCharacters
 		TextField.bbcode_text = "[color=#%s]%s[/color]" % [character.color.to_html(), replica]
 

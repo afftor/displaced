@@ -128,8 +128,8 @@ func pos_set(value):
 
 func _ready():
 	reset_heroes()
-	for i in Items.Materials:
-		materials[i] = 0
+#	for i in Items.Materials:
+#		materials[i] = 0
 	for i in variables.gallery_singles_list:
 		gallery_unlocks.push_back(false)
 
