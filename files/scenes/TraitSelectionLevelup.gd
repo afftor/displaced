@@ -13,7 +13,7 @@ func levelup(arg):
 	character = arg
 	show()
 	$Portrait.texture = character.portrait_circle()
-	globals.ClearContainer($HBoxContainer)
+	input_handler.ClearContainer($HBoxContainer)
 	var text = tr(character.namebase) + tr("LEVEUPTEXT")
 	for i in combatantdata.classlist[character.combatclass].learnableskills:
 		if combatantdata.classlist[character.combatclass].learnableskills[i] == character.level:
@@ -23,7 +23,7 @@ func levelup(arg):
 	var array = character.get_lvup_traits()
 	for i in array:
 		var newtrait = Traitdata.traitlist[i]
-		var newbutton = globals.DuplicateContainerTemplate($HBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($HBoxContainer)
 		newbutton.get_node("Icon").texture = newtrait.icon
 		newbutton.get_node("RichTextLabel").bbcode_text = newtrait.description
 		newbutton.get_node("Button").connect("pressed", self, "selecttrait", [i])

@@ -36,7 +36,7 @@ func hide():
 func upgradelist():
 	$UpgradeList.show()
 	$UpgradeDescript.hide()
-	globals.ClearContainer($UpgradeList/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($UpgradeList/ScrollContainer/VBoxContainer)
 	var array = []
 	for i in globals.upgradelist.values():
 		array.append(i)
@@ -60,7 +60,7 @@ func upgradelist():
 			text += ": " + str(currentupgradelevel)
 
 
-		var newbutton = globals.DuplicateContainerTemplate($UpgradeList/ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($UpgradeList/ScrollContainer/VBoxContainer)
 		if i.levels.has(currentupgradelevel) == false:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
 			text += ' Unlocked'
@@ -89,7 +89,7 @@ func selectupgrade(upgrade):
 
 
 
-	globals.ClearContainer($UpgradeDescript/HBoxContainer)
+	input_handler.ClearContainer($UpgradeDescript/HBoxContainer)
 
 	var currentupgradelevel = findupgradelevel(upgrade)
 
@@ -104,7 +104,7 @@ func selectupgrade(upgrade):
 
 		for i in upgrade.levels[currentupgradelevel].cost:
 			var item = Items.Materials[i]
-			var newnode = globals.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
+			var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
 			newnode.get_node("icon").texture = item.icon
 			newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(upgrade.levels[currentupgradelevel].cost[i])
 			globals.connectmaterialtooltip(newnode, item)

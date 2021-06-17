@@ -9,10 +9,10 @@ func _ready():
 
 func open():
 	show()
-	globals.ClearContainer($Panel/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($Panel/ScrollContainer/VBoxContainer)
 	selectedhero = null
 	for i in state.heroguild:
-		var newhero = globals.DuplicateContainerTemplate($Panel/ScrollContainer/VBoxContainer)
+		var newhero = input_handler.DuplicateContainerTemplate($Panel/ScrollContainer/VBoxContainer)
 		newhero.get_node('Icon').texture = i.icon
 		newhero.get_node('Label').text = i.name
 		newhero.get_node('Price').text = str(i.price)
@@ -22,7 +22,7 @@ func selecthero(hero):
 	var text = ''
 	$HeroHire.show()
 	selectedhero = hero
-	globals.ClearContainer($HeroHire/traits)
+	input_handler.ClearContainer($HeroHire/traits)
 
 	$HeroHire/hp.text = str(hero.hp) + '/' + str(hero.hpmax)
 #	$HeroHire/mana.text = str(hero.mana) + '/' + str(hero.manamax)
@@ -32,7 +32,7 @@ func selecthero(hero):
 
 	for i in hero.traits:
 		var trait = Traitdata.traitlist[i]
-		var newlabel = globals.DuplicateContainerTemplate($HeroHire/traits)
+		var newlabel = input_handler.DuplicateContainerTemplate($HeroHire/traits)
 		newlabel.text = trait.name
 		globals.connecttooltip(newlabel,trait.description)
 

@@ -33,14 +33,14 @@ func open(newmode = null, args = null):
 	#selectcategory($HBoxContainer/all)
 
 func buildinventory():
-	globals.ClearContainer(itemcontainer)
-	globals.ClearContainer($HiddenContainer/GridContainer)
+	input_handler.ClearContainer(itemcontainer)
+	input_handler.ClearContainer($HiddenContainer/GridContainer)
 	itemarray.clear()
 
 	for i in state.materials:
 		if state.materials[i] <= 0:
 			continue
-		var newbutton = globals.DuplicateContainerTemplate(itemcontainer)
+		var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
 		var material = Items.Materials[i]
 		newbutton.get_node('Image').texture = material.icon
 		newbutton.get_node('Number').text = str(state.materials[i])
@@ -52,7 +52,7 @@ func buildinventory():
 	for i in state.items.values():
 #		if i.owner != null:
 #			continue
-		var newnode = globals.DuplicateContainerTemplate(itemcontainer)
+		var newnode = input_handler.DuplicateContainerTemplate(itemcontainer)
 #		if i.durability != null:
 #			newnode.get_node("Number").show()
 #			newnode.get_node("Number").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + '%'

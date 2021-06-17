@@ -659,15 +659,15 @@ func victory():
 		state.heroes.erase(i.id)
 	defeated.clear()
 
-	globals.ClearContainerForced($Rewards/HBoxContainer/first)
-	globals.ClearContainerForced($Rewards/HBoxContainer/second)
-	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
+	input_handler.ClearContainerForced($Rewards/HBoxContainer/first)
+	input_handler.ClearContainerForced($Rewards/HBoxContainer/second)
+	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in state.heroes.values():
 		if i.combatgroup != 'ally': continue
 		if !i.unlocked:
 			i.baseexp += ceil(rewardsdict.xp)
 			continue
-		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 			$Rewards/HBoxContainer/first.remove_child(newbutton)
 			$Rewards/HBoxContainer/second.add_child(newbutton)
@@ -694,14 +694,14 @@ func victory():
 	$Rewards.set_meta("result", 'victory')
 	for i in rewardsdict.materials:
 		var item = Items.Materials[i]
-		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		newbutton.hide()
 		newbutton.texture = item.icon
 		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
 		state.materials[i] += rewardsdict.materials[i]
 		globals.connectmaterialtooltip(newbutton, item)
 	for i in rewardsdict.items:
-		var newnode = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		newnode.hide()
 		newnode.texture = load(i.icon)
 		globals.AddItemToInventory(i)
@@ -1563,13 +1563,13 @@ func execute_skill(s_skill2):
 
 #panels
 func ClearSkillPanel():
-	globals.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
+	input_handler.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
 
 
 func RebuildSkillPanel():
 	ClearSkillPanel()
 	for i in activecharacter.skills:
-		var newbutton = globals.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		var skill = Skillsdata.patch_skill(i, activecharacter)#Skillsdata.skilllist[i]
 		newbutton.get_node("Icon").texture = skill.icon
 #		newbutton.get_node("manacost").text = str(skill.manacost)
@@ -1603,7 +1603,7 @@ func RebuildItemPanel():
 			array.append(i)
 
 	for i in array:
-		var newbutton = globals.DuplicateContainerTemplate($ItemPanel/ScrollContainer/GridContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($ItemPanel/ScrollContainer/GridContainer)
 		newbutton.get_node("Icon").texture = load(i.icon)
 		newbutton.get_node("Label").text = str(i.amount)
 		newbutton.set_meta('skill', i.useskill)
@@ -1612,7 +1612,7 @@ func RebuildItemPanel():
 
 
 func ClearItemPanel():
-	globals.ClearContainer($ItemPanel/ScrollContainer/GridContainer)
+	input_handler.ClearContainer($ItemPanel/ScrollContainer/GridContainer)
 
 
 #simple actions

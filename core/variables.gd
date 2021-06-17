@@ -74,3 +74,29 @@ var gallery_singles_list = [
 	{path = "rose_sex_1", type = 'abg'},
 	{path = "villagenight", type = 'bg'},
 	]
+
+
+var hexcolordict = {
+	red = '#ff5e5e',
+	yellow = "#ffff00",
+	brown = "#8B572A",
+	gray = "#4B4B4B",
+	gray_text_dialogue = "#90d4aa",
+	green = '#00b700',
+	white = '#ffffff',
+	aqua = '#24ffdb',
+	pink = '#f824ff',
+	factor1 = '#ff5e5e',
+	factor2 = '#f6922a',
+	factor3 = '#4dff83',
+	factor4 = '#13a40d',
+	factor5 = '#25b8ff',
+	factor6 = '#bc53ff',
+	levelup_text_color = "#10ff10",
+	k_yellow = "#f9e181",
+	k_yellow_dark = "#99836f",
+	k_gray = "#e0e0e0",
+	k_green = "#51fe84",
+	k_red = "#fe515d",
+	magenta = "#ff84ff",
+}

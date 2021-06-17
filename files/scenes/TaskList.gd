@@ -20,7 +20,7 @@ func _ready():
 func tasklist():
 	show()
 	$SelectWorker.hide()
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in TownData.tasksdict.values():
 		var check = true
 		for k in i.unlockreqs:
@@ -30,7 +30,7 @@ func tasklist():
 			continue
 		
 		
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = i.name + " " + calculateworkers(i, 'string')
 		if calculateworkers(i) == false:
 			newbutton.disabled = true
@@ -125,11 +125,11 @@ func UpdateButtons():
 	
 	$SelectWorker/ConfirmButton.disabled = !conditioncheck
 	$SelectWorker/CounterSlider/Label.text = "Repeat " + displayediteration + " times"
-	globals.ClearContainer($SelectWorker/HBoxContainer)
+	input_handler.ClearContainer($SelectWorker/HBoxContainer)
 	var worker = state.workers[selectedworker]
 	var task = selectedtask
 	for i in task.workerproducts[worker.type]:
-		var newresource = globals.DuplicateContainerTemplate($SelectWorker/HBoxContainer)
+		var newresource = input_handler.DuplicateContainerTemplate($SelectWorker/HBoxContainer)
 		var item = i.code.split('.')
 		
 		if item[0] == 'materials':

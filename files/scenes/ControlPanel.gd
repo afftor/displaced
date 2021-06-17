@@ -78,11 +78,11 @@ func flyingitemicon(taskbar, icon):
 
 
 func _on_Herolist_pressed():
-	globals.ClearContainer($HeroList/HBoxContainer)
+	input_handler.ClearContainer($HeroList/HBoxContainer)
 	for i in state.characters:
 		var tmp = state.heroes[i]
 		if !tmp.unlocked: continue
-		var newbutton = globals.DuplicateContainerTemplate($HeroList/HBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($HeroList/HBoxContainer)
 		newbutton.set_meta("hero", tmp)
 		newbutton.get_node("Label").text = tmp.name
 		newbutton.connect("pressed",self,'OpenHeroTab', [tmp])

@@ -122,16 +122,17 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_2.png",
 				lvldesc = "2",
-				cost = {},
+				cost = {wood = 10},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_3.png",
 				lvldesc = "3",
-				cost = {},
+				cost = {wood = 10},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_4.png",
 				lvldesc = "4",
+				cost = {wood = 10},
 				},
 		}
 	},
@@ -143,29 +144,29 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,
+				icon = null, #add path to uncarfted weapon asset
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
 			1:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_1.png",
 				lvldesc = "5",
-				cost = {},
+				cost = {wood = 10},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_2.png",
 				lvldesc = "6",
-				cost = {},
+				cost = {wood = 10},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_3.png",
 				lvldesc = "7",
-				cost = {},
+				cost = {wood = 10},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_4.png",
 				lvldesc = "8",
-				cost = {},
+				cost = {wood = 10},
 				},
 		}
 	},
@@ -231,7 +232,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,
+				icon = null,#add path to uncarfted weapon asset
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -308,6 +309,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_4.png",
 				lvldesc = "4",
+				cost = {},
 				},
 		}
 	},
@@ -319,7 +321,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,
+				icon = null,#add path to uncarfted weapon asset
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -396,6 +398,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_4.png",
 				lvldesc = "4",
+				cost = {},
 				},
 		}
 	},
@@ -407,7 +410,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,
+				icon = null,#add path to uncarfted weapon asset
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -484,6 +487,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_4.png",
 				lvldesc = "4",
+				cost = {},
 				},
 		}
 	},
@@ -495,7 +499,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,
+				icon = null,#add path to uncarfted weapon asset
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -572,6 +576,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_4.png",
 				lvldesc = "4",
+				cost = {},
 				},
 		}
 	},
@@ -583,7 +588,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,
+				icon = null,#add path to uncarfted weapon asset
 				lvldesc = "Not forged yet",
 				cost = {},
 				},

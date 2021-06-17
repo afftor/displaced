@@ -39,7 +39,7 @@ func _ready():
 func chooseitem():
 	$RepairPanel.hide()
 	$ItemSelection.show()
-	globals.ClearContainer($ItemSelection/ScrollContainer/GridContainer)
+	input_handler.ClearContainer($ItemSelection/ScrollContainer/GridContainer)
 
 	for i in Items.Items.values():
 		if i.tags.has('recipe'):
@@ -48,7 +48,7 @@ func chooseitem():
 				if state.valuecheck(k) == false:
 					check = false
 			if check == false:continue
-			var newbutton = globals.DuplicateContainerTemplate($ItemSelection/ScrollContainer/GridContainer)
+			var newbutton = input_handler.DuplicateContainerTemplate($ItemSelection/ScrollContainer/GridContainer)
 			newbutton.texture_normal = i.icon
 			globals.connecttooltip(newbutton, '[center]' + i.name + "[/center]\n"+ i.description)
 			newbutton.connect('pressed', self, 'selectcraftitem', [i])
@@ -83,7 +83,7 @@ func selectcraftitem(item):
 
 
 func choosematerial(button):
-	globals.ClearContainer($ItemCreationWindow/MaterialSelect/Container/VBoxContainer)
+	input_handler.ClearContainer($ItemCreationWindow/MaterialSelect/Container/VBoxContainer)
 	$ItemCreationWindow/MaterialSelect.show()
 	chosenpartbutton = button
 	var part = button.get_meta('part')
@@ -208,11 +208,11 @@ func repairitems():
 	$ItemSelection.hide()
 	$RepairPanel.show()
 	repairitemlist.clear()
-	globals.ClearContainer($RepairPanel/ScrollContainer/GridContainer)
+	input_handler.ClearContainer($RepairPanel/ScrollContainer/GridContainer)
 	for i in state.items.values():
 		if i.itemtype != 'gear' || i.durability >= i.maxdurability:
 			continue
-		var newbutton = globals.DuplicateContainerTemplate($RepairPanel/ScrollContainer/GridContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($RepairPanel/ScrollContainer/GridContainer)
 		input_handler.itemshadeimage(newbutton.get_node("Icon"), i)
 		newbutton.get_node("Label").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + "%"
 		globals.connecttooltip(newbutton, geartooltip(i))
@@ -222,7 +222,7 @@ func repairitems():
 
 func updaterepairlist():
 	var canexecute = true
-	globals.ClearContainer($RepairPanel/MatScrollContainer/HBoxContainer)
+	input_handler.ClearContainer($RepairPanel/MatScrollContainer/HBoxContainer)
 
 	var resourcedict = {}
 
@@ -231,7 +231,7 @@ func updaterepairlist():
 
 	for i in resourcedict:
 		var material = Items.Materials[i]
-		var newicon = globals.DuplicateContainerTemplate($RepairPanel/MatScrollContainer/HBoxContainer)
+		var newicon = input_handler.DuplicateContainerTemplate($RepairPanel/MatScrollContainer/HBoxContainer)
 		newicon.texture = material.icon
 		newicon.get_node("Label").text = str(resourcedict[i]) + '/' + str(state.materials[i])
 		if resourcedict[i] > state.materials[i]:
@@ -280,10 +280,10 @@ func hide():
 #func repairingitemselected(item):
 #	var repairmaterials = item.counterepairmaterials()
 #	input_handler.itemshadeimage($RepairItem/Panel/ItemRepairIcon, item)
-#	globals.ClearContainer($RepairItem/Panel/RepairMaterials)
+#	input_handler.ClearContainer($RepairItem/Panel/RepairMaterials)
 #
 #	for i in repairmaterials:
-#		var newimage = globals.DuplicateContainerTemplate($RepairItem/Panel/RepairMaterials/Button)
+#		var newimage = input_handler.DuplicateContainerTemplate($RepairItem/Panel/RepairMaterials/Button)
 #		var material = Items.Materials[i]
 #		newimage.texture = material.icon
 #		newimage.get_node('amount').text = str(repairmaterials[i]) +'/'+ str(state.materials[i])

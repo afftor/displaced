@@ -382,25 +382,6 @@ func evaluate(input): #used to read strings as conditions when needed
 
 
 
-func ClearContainer(container):
-	for i in container.get_children():
-		if i.name != 'Button':
-			i.hide()
-			i.queue_free()
-
-func ClearContainerForced(container):
-	for i in container.get_children():
-		if i.name != 'Button':
-			i.hide()
-			i.free()
-
-func DuplicateContainerTemplate(container):
-	var newbutton = container.get_node('Button').duplicate()
-	newbutton.show()
-	container.add_child(newbutton)
-	container.move_child(container.get_node('Button'), newbutton.get_position_in_parent())
-	return newbutton
-
 func connecttooltip(node, text):
 	if node.is_connected("mouse_entered",self,'showtooltip'):
 		node.disconnect("mouse_entered",self,'showtooltip')
@@ -584,7 +565,7 @@ func CharacterSelect(targetscript, type, function, requirements):
 
 	node.show()
 	#node.set_as_toplevel(true)
-	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
+	input_handler.ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 
 	var array = []
 #	if type == 'workers':
@@ -593,7 +574,7 @@ func CharacterSelect(targetscript, type, function, requirements):
 	for i in array:
 		if requirements == 'notask' && i.task != null:
 			continue
-		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 		newnode.get_node("Icon").texture = load(i.icon)
 		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
@@ -615,19 +596,19 @@ func HeroSelect(targetscript, type, function, requirements):
 
 	node.show()
 	#node.set_as_toplevel(true)
-	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
+	input_handler.ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 
 	var array = []
 	var newnode
 	if type == 'heroposition':
 		array = state.heroes.values()
-		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = tr("REMOVE")
 		newnode.connect('pressed', targetscript, function, [null])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
 	for i in array:
-		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 
 		# TODO
@@ -652,7 +633,7 @@ func ItemSelect(targetscript, type, function, requirements = true): #2fix obsole
 
 	node.show()
 
-	ClearContainer(node.get_node("ScrollContainer/GridContainer"))
+	input_handler.ClearContainer(node.get_node("ScrollContainer/GridContainer"))
 
 	var array = []
 	if type == 'gear':
@@ -669,7 +650,7 @@ func ItemSelect(targetscript, type, function, requirements = true): #2fix obsole
 				array.append(i)
 
 	for i in array:
-		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
+		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
 		match type:
 			'gear':
 				input_handler.itemshadeimage(newnode, i)

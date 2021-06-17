@@ -20,11 +20,11 @@ func shop():
 #func purchase():
 #	$PurchaseMenu.show()
 #	$PurchaseMenu/Label.text = tr("TOTALWORKERS") + ": " + str(state.workers.size()) + '/' + str(state.GetWorkerLimit())
-#	globals.ClearContainer($PurchaseMenu/ScrollContainer/VBoxContainer)
+#	input_handler.ClearContainer($PurchaseMenu/ScrollContainer/VBoxContainer)
 #	for i in TownData.workersdict.values():
 #		if state.checkreqs(i.unlockreqs) == false:
 #			continue
-#		var newbutton = globals.DuplicateContainerTemplate($PurchaseMenu/ScrollContainer/VBoxContainer)
+#		var newbutton = input_handler.DuplicateContainerTemplate($PurchaseMenu/ScrollContainer/VBoxContainer)
 #		newbutton.get_node("Icon").texture = i.icon
 #		newbutton.get_node("Label").text = i.name
 #		newbutton.get_node("Cost").text = str(i.price)

@@ -19,7 +19,7 @@ func OpenSelectTab(task, worker):
 	selectedtask = task
 	selectedtool = null
 	selectedworker = worker.id
-	globals.ClearContainer($HBoxContainer)
+	input_handler.ClearContainer($HBoxContainer)
 	
 	$RichTextLabel.bbcode_text = task.description
 	$Time.text = str(task.basetimer)

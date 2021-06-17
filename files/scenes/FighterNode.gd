@@ -203,13 +203,13 @@ func noq_rebuildbuffs(newbuffs):
 			if buffs.has(i.template_name): update_buff(i)
 			else: add_buff(i)
 	else:
-		globals.ClearContainer($Buffs)
+		input_handler.ClearContainer($Buffs)
 		buffs.clear()
 		for i in newbuffs:
 			add_buff(i)
 
 func add_buff(i):
-	var newbuff = globals.DuplicateContainerTemplate($Buffs)
+	var newbuff = input_handler.DuplicateContainerTemplate($Buffs)
 	var text = i.description
 	newbuff.texture = i.icon
 	buffs.push_back(i.template_name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/iconsgear/arron_armor_1.png" type="Texture" id=2]
@@ -10,13 +10,16 @@
 [ext_resource path="res://assets/images/portrait/ErikaNormal.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/iconsgear/arron_weapon2_1.png" type="Texture" id=10]
+[ext_resource path="res://files/scenes/CraftPanel.gd" type="Script" id=11]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+test_mode = true
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 34.0454
@@ -254,7 +257,7 @@ __meta__ = {
 [node name="weapon1" type="Control" parent="Panel/Panel/HBoxContainer"]
 margin_left = 28.0
 margin_right = 278.0
-margin_bottom = 692.0
+margin_bottom = 691.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 
@@ -301,7 +304,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Panel/Panel/HBoxContainer/weapon1/VBoxContainer"]
+[node name="Button" type="TextureRect" parent="Panel/Panel/HBoxContainer/weapon1/VBoxContainer"]
+visible = false
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -310,7 +314,7 @@ texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer/weapon1/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer/weapon1/VBoxContainer/Button"]
 margin_left = 82.0
 margin_top = 21.449
 margin_right = 258.0
@@ -323,7 +327,7 @@ __meta__ = {
 [node name="weapon2" type="Control" parent="Panel/Panel/HBoxContainer"]
 margin_left = 434.0
 margin_right = 684.0
-margin_bottom = 692.0
+margin_bottom = 691.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 
@@ -370,7 +374,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Panel/Panel/HBoxContainer/weapon2/VBoxContainer"]
+[node name="Button" type="TextureRect" parent="Panel/Panel/HBoxContainer/weapon2/VBoxContainer"]
+visible = false
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -379,7 +384,7 @@ texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer/weapon2/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer/weapon2/VBoxContainer/Button"]
 margin_left = 82.0
 margin_top = 21.449
 margin_right = 258.0
@@ -390,9 +395,9 @@ __meta__ = {
 }
 
 [node name="weapon3" type="Control" parent="Panel/Panel/HBoxContainer"]
-margin_left = 841.0
-margin_right = 1091.0
-margin_bottom = 692.0
+margin_left = 840.0
+margin_right = 1090.0
+margin_bottom = 691.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 
@@ -439,7 +444,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Panel/Panel/HBoxContainer/weapon3/VBoxContainer"]
+[node name="Button" type="TextureRect" parent="Panel/Panel/HBoxContainer/weapon3/VBoxContainer"]
+visible = false
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -448,7 +454,7 @@ texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer/weapon3/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer/weapon3/VBoxContainer/Button"]
 margin_left = 82.0
 margin_top = 21.449
 margin_right = 258.0
@@ -502,3 +508,6 @@ Fencing gain +2 attacks if target is killed
 Sword Mastery Apply to 2 attacks instead of 1
 Swift Strike buff lasts 2 turns
 Termination buff increased to 50%"
+__meta__ = {
+"_edit_use_anchors_": false
+}

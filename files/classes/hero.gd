@@ -139,12 +139,14 @@ func upgrade_gear(slot):
 	return true
 
 func get_item_data_level(slot, level):
-	var res = {icon = null, name = null, description = null, colors = [], type = slot, cost = {}}
+	var res = {icon = null, name = null, description = null, colors = [], type = slot, cost = {}, level = level}
 	var template = Items.hero_items_data["%s_%s" % [id, slot]]
 	res.icon = template.leveldata[level].icon
+	if typeof(res.icon) == TYPE_STRING:
+		res.icon = load(res.icon)
 	res.name = tr(template.name)
 	res.description = tr(template.description) + tr(template.leveldata[level].lvldesc)
-	res.cost = template.cost.duplicate()
+	res.cost = template.leveldata[level].cost.duplicate()
 	return res
 
 func get_item_data(slot):

@@ -19,9 +19,9 @@ func update():
 func BuildSlaveList():
 	ClearScene()
 	show()
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.workers.values():
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("Icon").texture = load(i.icon)
 		newbutton.get_node("Name").text = i.name
 		newbutton.get_node("Task").visible = i.get_task() != null

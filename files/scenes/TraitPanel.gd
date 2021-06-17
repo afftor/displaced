@@ -20,11 +20,11 @@ func open():
 	
 	$Label.text = text
 	
-	globals.ClearContainer($ScrollContainer/GridContainer)
+	input_handler.ClearContainer($ScrollContainer/GridContainer)
 	for i in Traitdata.traitlist.values():
 		if !i.req_class.has("all") && !i.req_class.has(character.base) && !i.req_class.has(character.combatclass):
 			continue
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/GridContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		newbutton.connect("pressed",self,"activatetrait", [i])
 		if character.traits.has(i.code):
 			newbutton.material = null

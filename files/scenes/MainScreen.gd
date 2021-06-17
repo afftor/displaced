@@ -292,7 +292,7 @@ func finishcolorchange():
 	daycolorchange = false
 
 func buildcounter(task):
-	var newnode = globals.DuplicateContainerTemplate($TaskCounter)
+	var newnode = input_handler.DuplicateContainerTemplate($TaskCounter)
 	newnode.get_node('Icon').texture = load(state.workers[task.worker].icon)
 	newnode.get_node("Progress").value = globals.calculatepercent(task.time, task.threshold)
 	newnode.connect("pressed", self, "OpenWorkerTask", [task])
@@ -384,7 +384,7 @@ func openherohiretab():
 func BuildingOptions(building = {}):
 	var node = $BuildingOptions
 	var targetnode = building.node
-	globals.ClearContainer($BuildingOptions/VBoxContainer)
+	input_handler.ClearContainer($BuildingOptions/VBoxContainer)
 	node.popup()
 	var pos = targetnode.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
@@ -489,9 +489,9 @@ func SlavePanelShow():
 
 
 func _on_Herolist_pressed():
-	globals.ClearContainer($HeroList/VBoxContainer)
+	input_handler.ClearContainer($HeroList/VBoxContainer)
 	for i in state.heroes.values():
-		var newbutton = globals.DuplicateContainerTemplate($HeroList/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($HeroList/VBoxContainer)
 		newbutton.text = i.name
 		newbutton.connect("pressed",self,'OpenHeroTab', [i])
 

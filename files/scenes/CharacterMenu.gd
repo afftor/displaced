@@ -57,10 +57,10 @@ func open(hero):
 		node.text = text
 	$"Main/stats&skills/crit".text = tr("CRITICAL") + ": "+str(character.get_stat('critchance')) + "%/" + str(character.get_stat('critmod') * 100) + "%"
 
-	globals.ClearContainer($Main/skillcontainer)
+	input_handler.ClearContainer($Main/skillcontainer)
 	for i in character.skills:
 		var skill = Skillsdata.skilllist[i]
-		var newbutton = globals.DuplicateContainerTemplate($Main/skillcontainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($Main/skillcontainer)
 		#newbutton.get_node("Label").text = skill.name
 		#newbutton.connect("pressed", self, "SkillTooltip", [skill])
 		#globals.connecttooltip(newbutton, character.skill_tooltip_text(i))

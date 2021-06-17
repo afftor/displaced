@@ -681,3 +681,23 @@ func if_mouse_inside(node):
 	t.lock()
 	var col = t.get_pixelv(pos)
 	return (col.a > 0.0)
+
+
+func ClearContainer(container):
+	for i in container.get_children():
+		if i.name != 'Button':
+			i.hide()
+			i.queue_free()
+
+func ClearContainerForced(container):
+	for i in container.get_children():
+		if i.name != 'Button':
+			i.hide()
+			i.free()
+
+func DuplicateContainerTemplate(container):
+	var newbutton = container.get_node('Button').duplicate()
+	newbutton.show()
+	container.add_child(newbutton)
+	container.move_child(container.get_node('Button'), newbutton.get_position_in_parent())
+	return newbutton

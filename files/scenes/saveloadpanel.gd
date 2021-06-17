@@ -17,12 +17,12 @@ func ResetSavePanel():
 func SavePanelOpen():
 	show()
 	saveloadmode = 'save'
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = true
 	for i in globals.dir_contents(globals.userfolder + 'saves'):
 		if i.ends_with('.sav') == false:
 			continue
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		var savename = SaveNameTransform(i)
 		newbutton.get_node("Delete").connect("pressed", self, 'DeleteSaveGame', [savename])
 		newbutton.get_node("Label").text = savename
@@ -31,13 +31,13 @@ func SavePanelOpen():
 func LoadPanelOpen():
 	show()
 	saveloadmode = 'load'
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = false
 	$LineEdit.text = ''
 	for i in globals.dir_contents(globals.userfolder + 'saves'):
 		if i.ends_with('.sav') == false:
 			continue
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		var savename = SaveNameTransform(i)
 		newbutton.get_node("Delete").connect("pressed", self, 'DeleteSaveGame', [savename])
 		newbutton.get_node("Label").text = savename

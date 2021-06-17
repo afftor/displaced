@@ -86,6 +86,7 @@ func revert():
 #	food = 50
 	townupgrades.clear()
 	reset_heroes()
+	reset_inventory()
 	items.clear()
 	materials.clear()
 	lognode = null
@@ -128,8 +129,7 @@ func pos_set(value):
 
 func _ready():
 	reset_heroes()
-#	for i in Items.Materials:
-#		materials[i] = 0
+	reset_inventory()
 	for i in variables.gallery_singles_list:
 		gallery_unlocks.push_back(false)
 
@@ -363,6 +363,12 @@ func reset_heroes():
 	h_iola.new()
 	h_rilu.new()
 	h_rose.new()
+
+func reset_inventory():
+	#temporal version
+	materials.clear()
+	for i in Items.Items:
+		materials[i] = 0
 
 
 #simple action wrappers

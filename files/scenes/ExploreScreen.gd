@@ -199,7 +199,7 @@ func openinventory(hero):
 #
 #func showareas():
 #	var container
-#	globals.ClearContainer(container)
+#	input_handler.ClearContainer(container)
 #	#what was this? and for what? did you forget to set container up?
 #	for i in Explorationdata.areas:
 #		var check = true
@@ -207,7 +207,7 @@ func openinventory(hero):
 #			if state.valuecheck(k) == false:
 #				check = false
 #		if check == false: continue
-#		var newbutton = globals.DuplicateContainerTemplate(container)
+#		var newbutton = input_handler.DuplicateContainerTemplate(container)
 #		newbutton.text = i.name
 #		newbutton.connect("pressed", self, "startexploration", [i])
 
@@ -226,11 +226,11 @@ func set_location(newloc):
 	
 
 func showexplorelist():
-	globals.ClearContainer($areaspanel/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($areaspanel/ScrollContainer/VBoxContainer)
 	for i in Explorationdata.areas.values():
 		if i.category != location : continue
 		if !Explorationdata.check_area_avail(i): continue
-		var newbutton = globals.DuplicateContainerTemplate($areaspanel/ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($areaspanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = "%s - %d lv." % [i.name, i.level]
 		newbutton.connect("pressed", self, 'updateexplorepanel', [i])
 

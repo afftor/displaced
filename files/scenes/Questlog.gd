@@ -20,10 +20,10 @@ var queststext = {
 
 func open():
 	show()
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.activequests: #{code = name, stage = value}
-		var newquest = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newquest = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newquest.get_node("RichTextLabel").bbcode_text = queststext[i.code][int(i.stage)]
 	if state.activequests.size() == 0:
-		var newquest = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newquest = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newquest.get_node("RichTextLabel").bbcode_text = tr("NOACTIVEQUESTS")
