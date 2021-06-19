@@ -18,10 +18,11 @@ func _ready():
 		ch.set_meta('hero', cid)
 		ch.connect('pressed', self, 'select_hero', [cid])
 	if test_mode:
-		test_mode()
+		testmode()
+		if resources.is_busy(): yield(resources, "done_work")
 		open()
 
-func test_mode():
+func testmode():
 	for cid in state.characters:
 		state.unlock_char(cid)
 #	state.unlock_char('rose', false)
