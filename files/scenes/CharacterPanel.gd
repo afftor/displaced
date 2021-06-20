@@ -78,7 +78,9 @@ func build_gear():
 	$Panel/Armor.texture = data.icon
 	$Panel/Armor/Label.text = "{name} level {level}".format(data)
 	$Panel/Armor/Label2.text = data.description
-	#2add tooltips
+	#2fix tooltip positions
+	globals.connectslottooltip($Panel/Weapon, character.id, data.type, Vector2(1300, 210) + get_global_position())
+	globals.connectslottooltip($Panel/Armor, character.id, data.type, Vector2(1300, 210) + get_global_position())
 
 func build_skills():
 	var chardata = combatantdata.charlist[character.id]
@@ -90,7 +92,7 @@ func build_skills():
 		panel.get_node("Label").text = skilldata.name
 		#2add icon node and set icon data to it!
 #		panel.texture = skilldata.icon
-		#2make connect skill tooltip
+		globals.connectskilltooltip(panel, character.id, skill_id)
 
 
 func build_stats():

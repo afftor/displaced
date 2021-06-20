@@ -28,7 +28,7 @@ func build_skills():
 		panel.get_node("Label").text = skilldata.name
 		#2add icon node and set icon data to it!
 #		panel.texture_normal = skilldata.icon
-		#2make connect skill tooltip
+		globals.connectskilltooltip(panel, character.id, skill_id)
 		if character.skills.has(skill_id):
 			panel.pressed = true
 			panel.connect("pressed", self, "unlearn_skill", [skill_id])

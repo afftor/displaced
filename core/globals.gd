@@ -418,19 +418,40 @@ func showgeartooltip(targetnode, data):
 	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
 	node.showup_gear(targetnode, data)
 
+func connectslottooltip(node, hero_id, slot, position = Vector2(0, 0)):
+	if node.is_connected("mouse_entered",self,'showslottooltip'):
+		node.disconnect("mouse_entered",self,'showslottooltip')
+	node.connect("mouse_entered", self ,'showslottooltip', [node, hero_id, slot, position])
+	if !node.is_connected("mouse_exited", self ,'hideslottooltip'):
+		node.connect("mouse_exited", self ,'hideslottooltip')
 
-func connectskilltooltip(node, skill, character):
+func showslottooltip(targtenode, hero_id, slot, position):
+	var node = input_handler.get_spec_node(input_handler.NODE_GEARTOOLTIP)
+	node.showup(hero_id, slot, position)
+
+func hideslottooltip():
+	var node = input_handler.get_spec_node(input_handler.NODE_GEARTOOLTIP)
+	node.hide()
+
+
+func connectskilltooltip(node, character_id, skill):
 	if node.is_connected("mouse_entered",self,'showskilltooltip'):
 		node.disconnect("mouse_entered",self,'showskilltooltip')
-	node.connect("mouse_entered",self,'showskilltooltip', [skill,node,character])
+	node.connect("mouse_entered",self,'showskilltooltip', [skill, node, character_id])
+	if !node.is_connected("mouse_exited", self ,'hideskilltooltip'):
+		node.connect("mouse_exited", self ,'hideskilltooltip')
 
-func showskilltooltip(skill, node, character):
-	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
+func showskilltooltip(skill, node, character_id):
+	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
 	var pos = node.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	skilltooltip.set_global_position(pos)
-	skilltooltip.character = character
-	skilltooltip.showup(node, skill)
+	skilltooltip.showup(node, character_id, skill)
+
+
+func hideskilltooltip():
+	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
+	skilltooltip.hide()
 
 #func disconnectitemtooltip(node, item):
 #	if node.is_connected("mouse_entered",item,'tooltip'):

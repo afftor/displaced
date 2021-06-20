@@ -1,26 +1,10 @@
 extends Panel
 
-var parentnode
-var shutoff = false
-var prevnode
 
-var character = Reference
-
-func _process(delta):
-	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
-		set_process(false)
-		hide()
-
-func _init():
-	set_process(false)
-
-func showup(node, skillcode):
-	var skill = Skillsdata.skilllist[skillcode]
-	parentnode = node
-	if shutoff == true && prevnode == parentnode:
-		return
+func showup(node, character_id, skillcode):
+	var character = state.heroes[character_id]
+	var skill = Skillsdata.patch_skill(skillcode, character)
 	show()
-	set_process(true)
 	$name.text = skill.name
 #	$cost.text = str(skill.manacost)
 #	$cost.visible = skill.manacost != 0
@@ -32,7 +16,8 @@ func showup(node, skillcode):
 #		$type.set("custom_colors/font_color", Color(0,0,1))
 	$cooldown.text = str(skill.cooldown)
 	$type.text = skill.skilltype.capitalize()
-	$descript.bbcode_text = character.skill_tooltip_text(skillcode)
+#	$descript.bbcode_text = character.skill_tooltip_text(skillcode)
+	$descript.bbcode_text = skill.description
 	#$RichTextLabel.bbcode_text = text
 	
 	var screen = get_viewport().get_visible_rect()
@@ -41,5 +26,4 @@ func showup(node, skillcode):
 	if get_rect().end.y >= screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
-	prevnode = parentnode
 

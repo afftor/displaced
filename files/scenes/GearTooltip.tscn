@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://files/scenes/GearTooltip.gd" type="Script" id=1]
+
+[node name="Tooltip" type="Panel"]
+margin_left = 1295.34
+margin_top = 208.108
+margin_right = 1774.34
+margin_bottom = 789.108
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "The text has to color all text up to current upgrade level "
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 31.0
+margin_top = 22.0
+margin_right = 448.0
+margin_bottom = 568.0
+bbcode_enabled = true
+bbcode_text = "[center]Level 1
+Fencing gain +1 attack if target is killed
+Level 2
+Fencing gain +1 attack if target is killed
+Sword Mastery Apply to 2 attacks instead of 1
+Level 3
+Fencing gain +1 attack if target is killed
+Sword Mastery Apply to 2 attacks instead of 1
+Swift Strike buff lasts 2 turns
+Level 4
+Fencing gain +2 attacks if target is killed
+Sword Mastery Apply to 2 attacks instead of 1
+Swift Strike buff lasts 2 turns
+Termination buff increased to 50%[/center]"
+text = "Level 1
+Fencing gain +1 attack if target is killed
+Level 2
+Fencing gain +1 attack if target is killed
+Sword Mastery Apply to 2 attacks instead of 1
+Level 3
+Fencing gain +1 attack if target is killed
+Sword Mastery Apply to 2 attacks instead of 1
+Swift Strike buff lasts 2 turns
+Level 4
+Fencing gain +2 attacks if target is killed
+Sword Mastery Apply to 2 attacks instead of 1
+Swift Strike buff lasts 2 turns
+Termination buff increased to 50%"
+__meta__ = {
+"_edit_use_anchors_": false
+}

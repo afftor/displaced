@@ -16,7 +16,8 @@ func open(hero):
 		panel.get_node("Label").text = data.name
 		panel.get_node("TextureRect").texture = data.icon
 		panel.connect('pressed', self, 'set_weapon', [slot])
-		#2add weapon tooltip
+		#2fix tooltip positions
+		globals.connectslottooltip(panel.get_node("TextureRect"), character.id, slot, Vector2(300, 210) + get_global_position())
 	show()
 
 func set_weapon(slot):
