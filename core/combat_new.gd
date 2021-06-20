@@ -38,9 +38,6 @@ var activeitem
 var activecharacter
 
 
-var follow_up_skill = null
-var follow_up_flag = false
-
 var cursors = {
 	default = load("res://assets/images/gui/universal/cursordefault.png"),
 	attack = load("res://assets/images/gui/universal/cursorfight.png"),
@@ -117,8 +114,9 @@ func _process(delta):
 
 func test_combat():
 	if resources.is_busy(): yield(resources, "done_work")
-	for ch in ['rilu', 'ember', 'iola']:
+	for ch in state.characters:
 		state.unlock_char(ch)
+		state.heroes[ch].unlock_all_skills()
 	state.combatparty[1] = 'arron'
 	state.combatparty[2] = 'ember'
 #	state.combatparty[3] = 'iola'
@@ -1353,6 +1351,10 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	caster.acted = true
+	
+	var follow_up_skill = null
+	var follow_up_flag = false
+	
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
 	turns += 1

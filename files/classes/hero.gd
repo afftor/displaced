@@ -108,6 +108,13 @@ func forget_skill(skill_code):
 	skillpoints[template.skilltype] += 1
 
 
+#cheat
+func unlock_all_skills():
+	var template = combatantdata.charlist[id]
+	for s in template.skilllist:
+		if !skills.has(s):
+			skills.push_back(s)
+
 
 
 func switch_weapon():
