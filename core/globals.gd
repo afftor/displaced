@@ -661,14 +661,14 @@ func ItemSelect(targetscript, type, function, requirements = true): #2fix obsole
 		for i in state.items.values():
 			if i.geartype == requirements && i.task == null && i.owner == null && i.durability > 0:
 				array.append(i)
-	elif type == 'repairable':
-		for i in state.items.values():
-			if i.durability < i.maxdurability:
-				array.append(i)
-	elif type == 'edible':
-		for i in state.items.values():
-			if i.foodvalue > 0:
-				array.append(i)
+#	elif type == 'repairable':
+#		for i in state.items.values():
+#			if i.durability < i.maxdurability:
+#				array.append(i)
+#	elif type == 'edible':
+#		for i in state.items.values():
+#			if i.foodvalue > 0:
+#				array.append(i)
 
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
@@ -678,11 +678,11 @@ func ItemSelect(targetscript, type, function, requirements = true): #2fix obsole
 				newnode.get_node("Percent").show()
 				newnode.get_node("Percent").text = str(calculatepercent(i.durability, i.maxdurability)) + '%'
 				connectitemtooltip(newnode, i)
-			"edible":
-				newnode.texture_normal = load(i.icon)
-				newnode.get_node("Percent").show()
-				newnode.get_node("Percent").text = str(i.foodvalue)
-				connectitemtooltip(newnode, i)
+#			"edible":
+#				newnode.texture_normal = load(i.icon)
+#				newnode.get_node("Percent").show()
+#				newnode.get_node("Percent").text = str(i.foodvalue)
+#				connectitemtooltip(newnode, i)
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 

@@ -315,7 +315,7 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'food', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
 	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks']
 	for prop in arr:
 		tmp[prop] = get(prop)

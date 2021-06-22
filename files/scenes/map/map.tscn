@@ -17,7 +17,7 @@
 [ext_resource path="res://files/scenes/ControlPanel.tscn" type="PackedScene" id=15]
 [ext_resource path="res://files/scenes/combat_new.tscn" type="PackedScene" id=16]
 [ext_resource path="res://files/scenes/ExploreScreen.tscn" type="PackedScene" id=17]
-[ext_resource path="res://files/scenes/MainScreen_new.tscn" type="PackedScene" id=18]
+[ext_resource path="res://files/scenes/village/MainScreen_new.tscn" type="PackedScene" id=18]
 
 [node name="map" type="TextureRect"]
 margin_left = -0.233521

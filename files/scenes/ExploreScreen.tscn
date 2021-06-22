@@ -20,7 +20,8 @@
 [ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=18]
 [ext_resource path="res://files/scenes/HeroList.tscn" type="PackedScene" id=20]
 [ext_resource path="res://files/scenes/Inventory.tscn" type="PackedScene" id=21]
-[ext_resource path="res://files/scenes/combat.tscn" type="PackedScene" id=22]
+[ext_resource path="res://unused/combat.tscn" type="PackedScene" id=22]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 10 )

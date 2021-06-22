@@ -14,7 +14,7 @@ var stackable = true
 var amount = 1 setget amount_set
 var useeffects
 var useskill
-var foodvalue = 0
+#var foodvalue = 0
 
 #Gear Data
 #var type
@@ -48,7 +48,7 @@ func CreateUsable(ItemName = '', number = 1):
 	if itemtemplate.icon != null:
 		icon = itemtemplate.icon.get_path()
 	name = itemtemplate.name
-	foodvalue = itemtemplate.foodvalue
+#	foodvalue = itemtemplate.foodvalue
 	itemtype = itemtemplate.itemtype
 	useeffects = itemtemplate.useeffects
 	useskill = itemtemplate.useskill
@@ -294,7 +294,7 @@ func calculateprice():
 
 func serialize():
 	var tmp = {};
-	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'amount', 'useeffects', 'useskill', 'foodvalue', 'price'];
+	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'amount', 'useeffects', 'useskill', 'price'];
 	var atr2 = ['tags'];
 	for a in atr:
 		tmp[a] = get(a)
@@ -303,7 +303,7 @@ func serialize():
 	return tmp;
 
 func deserialize(tmp):
-	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'useeffects', 'useskill', 'foodvalue', 'itemtype', 'price'];
+	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'useeffects', 'useskill', 'itemtype', 'price'];
 	var atr2 = ['tags'];
 	for a in atr:
 		set(a, tmp[a])
