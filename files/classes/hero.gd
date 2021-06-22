@@ -123,7 +123,7 @@ func switch_weapon():
 
 
 func set_weapon(slot):
-	if !(slot in ["weapon1", "weapon2"]): 
+	if !(slot in ["weapon1", "weapon2"]):
 		return
 	curweapon = slot
 

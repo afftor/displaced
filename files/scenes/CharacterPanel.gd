@@ -15,7 +15,7 @@ func _ready():
 	$Panel/PrevCharButton.connect("pressed", self, "select_next_hero", [-1])
 	$Panel/NextCharButton.connect("pressed", self, "select_next_hero", [1])
 	hide()
-	if test_mode: 
+	if test_mode:
 		testmode()
 		if resources.is_busy(): yield(resources, "done_work")
 		open(state.heroes['arron'])
@@ -27,12 +27,12 @@ func testmode():
 
 func open(hero): #renamed arg due to being a hero class object and not dir from chardata
 	character = hero
-	$Panel/Portrait.texture = resources.get_res(character.icon) 
+	$Panel/Portrait.texture = resources.get_res(character.icon)
 	$Panel/NameLabel.text = character.name
 	build_gear()
 	build_skills()
 	build_stats()
-	
+
 	show()
 
 
@@ -64,7 +64,7 @@ func select_next_hero(offset):
 	if !nhero.unlocked:
 		select_next_hero(offset)
 		return
-	
+
 	open(nhero)
 
 
@@ -85,7 +85,7 @@ func build_gear():
 func build_skills():
 	var chardata = combatantdata.charlist[character.id]
 	input_handler.ClearContainer(skill_list)
-	for skill_id in ['attack'] + chardata.skilllist: 
+	for skill_id in ['attack'] + chardata.skilllist:
 		if !character.skills.has(skill_id): continue
 		var skilldata = Skillsdata.patch_skill(skill_id, character)
 		var panel = input_handler.DuplicateContainerTemplate(skill_list)
@@ -105,5 +105,5 @@ func build_stats():
 		text += "%s: %d/%d\n" % [stat, character.get_stat(stat), character.get_stat(stat + 'max')]
 	for stat in ["damage", "base_dmg_type"]:
 		text += "%s: %s\n" % [stat, str(character.get_stat(stat))]
-	
+
 	stats_list.text = text
