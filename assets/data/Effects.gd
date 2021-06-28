@@ -692,7 +692,8 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['negative'],
+		disable = true,
+		tags = ['negative', 'stun'],
 		args = [],
 		sub_effects = ['e_t_freeze'],
 		atomic = [],
@@ -1546,7 +1547,7 @@ var effect_table = {
 		type = 'static',
 		args = [{obj = 'app_obj', param = 'alt_mana', dynamic = true}],
 		buffs = ['b_souls'],
-		sub_effects = ['e_t_souls', 'e_s_souls', 'e_at_souls'],
+		sub_effects = ['e_t_souls', 'e_s_souls', 'e_at_souls', 'e_sc_souls'],
 		atomic = []
 	},
 	e_t_souls = {
@@ -1575,10 +1576,19 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
-			{type = 'skill', value = ['code', 'eq', 'attack']},
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
+			{type = 'skill', value = ['code', 'eq', 'attack']},#mb not and there should be skill damage check 
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'random', value = 0.5}
 			],
 		req_skill = true,
+		sub_effects = ['e_add_s'],
+		buffs = []
+	},
+	e_sc_souls = {
+		type = 'trigger',
+		trigger = [variables.TR_COMBAT_S],
+		conditions = [],
+		req_skill = false,
 		sub_effects = ['e_add_s'],
 		buffs = []
 	},
