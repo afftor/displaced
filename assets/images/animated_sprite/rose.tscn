@@ -25,9 +25,6 @@ margin_left = -353.5
 margin_top = -540.0
 margin_right = 353.5
 margin_bottom = 540.0
-[node name="sprite2" type="TextureRect"]
-margin_right = 40.0
-margin_bottom = 40.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
