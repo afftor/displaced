@@ -1,7 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextSceneNew/TextSystem.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=6]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=10]
 [ext_resource path="res://files/SFX/white.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/text scene/textfieldpanel.png" type="Texture" id=12]
@@ -19,7 +23,6 @@
 [ext_resource path="res://assets/images/gui/text scene/logpanel.png" type="Texture" id=25]
 [ext_resource path="res://files/scenes/MenuPanel.tscn" type="PackedScene" id=26]
 [ext_resource path="res://unused/TextScene/VideoBunch.gd" type="Script" id=27]
-
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 14 )
@@ -264,3 +267,64 @@ margin_left = 740.0
 margin_top = 160.0
 margin_right = 1106.0
 margin_bottom = 602.0
+
+[node name="ClosePanel" type="Panel" parent="."]
+visible = false
+margin_left = 721.0
+margin_top = 331.0
+margin_right = 1193.0
+margin_bottom = 570.0
+
+[node name="TextureRect" type="TextureRect" parent="ClosePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClosePanel"]
+margin_left = 49.0
+margin_top = 58.0
+margin_right = 416.0
+margin_bottom = 162.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_text = "Skip this scene?"
+text = "Skip this scene?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="TextureButton" parent="ClosePanel"]
+margin_left = 30.0
+margin_top = 164.0
+margin_right = 192.0
+margin_bottom = 211.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="ClosePanel/Confirm"]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 136.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CONFIRM"
+align = 1
+
+[node name="Cancel" type="TextureButton" parent="ClosePanel"]
+margin_left = 277.0
+margin_top = 164.0
+margin_right = 439.0
+margin_bottom = 211.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="ClosePanel/Cancel"]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 136.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CANCEL"
+align = 1

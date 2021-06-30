@@ -44,7 +44,9 @@ const AVAIL_EFFECTS = [
 	"DECISION", "STATE", "LOOSE"
 	]
 
-const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth', 'rilu', 'demitrius', 'demitrius_alter']
+const animated_sprites = ['arron',
+ 'rose',
+ 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth', 'rilu', 'demitrius', 'demitrius_alter']
 #demitrius sprites are from 'unused folder' - so don't remove them accidentally
 #others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
 
@@ -76,6 +78,7 @@ var last_choice = -1
 var replay_mode = false
 
 func _ready() -> void:
+	input_handler.scene_node = self
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
@@ -90,6 +93,9 @@ func _ready() -> void:
 	globals.AddPanelOpenCloseAnimation($LogPanel)
 	$Panel/Log.connect("pressed",self,'OpenLog')
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
+	
+	$ClosePanel/Cancel.connect("pressed", $ClosePanel, "hide")
+	$ClosePanel/Confirm.connect("pressed", self, "tag_stop")
 
 var text_log = ""
 func OpenLog():
@@ -143,7 +149,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 
-	if $ChoicePanel.visible: return
+	if $ChoicePanel.visible or $ClosePanel.visible: return
 
 	if $LogPanel.visible == true:
 		if event.is_action("MouseDown") && ($LogPanel/RichTextLabel.get_v_scroll().value + $LogPanel/RichTextLabel.get_v_scroll().page == $LogPanel/RichTextLabel.get_v_scroll().max_value || !$LogPanel/RichTextLabel.get_v_scroll().visible):
@@ -158,12 +164,15 @@ func _input(event: InputEvent) -> void:
 	if event.is_echo() == true || event.is_pressed() == false:
 		return
 
-
 	if event.is_action("LMB") || event.is_action("MouseDown"):
 		if TextField.get_visible_characters() < TextField.get_total_character_count():
 			TextField.set_visible_characters(TextField.get_total_character_count())
 		else:
 			advance_scene()
+	
+	if event.is_action("ESC") and event.is_pressed():
+		if replay_mode: #only avail in replay mode due to ability to miss critical choices and unlocks otherwise
+			prompt_close()
 
 func tag_white() -> void:
 	var tween = input_handler.GetTweenNode($WhiteScreenGFX)
@@ -241,8 +250,8 @@ func tag_bg(res_name: String, secs: String = "") -> void:
 		for i in $VideoBunch.get_children():
 			i.stop()
 			i.stream = null
-	if !replay_mode:
-		state.unlock_path(res_name, false)
+#	if !replay_mode:
+	state.unlock_path(res_name, false)
 	var res = resources.get_res("bg/%s" % res_name)
 	if secs != "":
 		input_handler.SmoothTextureChange($Background, res, float(secs))
@@ -378,8 +387,8 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 		$Tween.start()
 		is_video_bg = true
 
-	if !replay_mode:
-		state.unlock_path(res_name, true)
+#	if !replay_mode:
+	state.unlock_path(res_name, true)
 
 	var vsplit = res_name.split("_")
 	vsplit.remove(vsplit.size() - 1)
@@ -402,6 +411,12 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 	var sec_res = resources.get_res("abg/%s" % sec_res_name)
 
 	$VideoBunch.Change(res, sec_res)
+
+
+func prompt_close():
+	$ClosePanel.show()
+	print_tree_pretty()
+
 
 func tag_stop() -> void:
 	input_handler.StopMusic()

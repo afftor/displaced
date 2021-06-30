@@ -2,6 +2,7 @@ extends combatant
 class_name hero
 
 var unlocked = false
+var friend_points = 0
 
 var recentlevelups = 0
 var baseexp = 0 setget exp_set
@@ -228,6 +229,7 @@ func serialize():
 	tmp.temp_effects = temp_effects.duplicate()
 	tmp.triggered_effects = triggered_effects.duplicate()
 	tmp.bonuses = bonuses.duplicate()
+	tmp.fr_p = friend_points
 	return tmp
 
 func deserialize(savedir):
@@ -252,6 +254,7 @@ func deserialize(savedir):
 	bonuses = savedir.bonuses.duplicate()
 	for slot in gear_level:
 		gear_level[slot] = int(gear_level[slot])
+	friend_points = int(savedir.fr_p)
 
 
 var skills_autoselect = ["attack"]

@@ -1,5 +1,6 @@
 extends Node
-
+#old conditions
+#2move to new format
 var checks = {
 	"intro": #need to link this event with input_handler signal
 	[
@@ -84,6 +85,23 @@ var checks = {
 	],
 };
 
+#new format
+var events = {
+	#sample
+	#obviously - for arron cant be unlocking character
+	'eventname':{
+		name = "Somename",
+		description = "somedescription",
+		conditions = [], 
+		unlock_conditions = [], #not reqired if not unlock_before_seen
+		cost = {'arron':10},
+		icon = "bg/villagenight",
+		unlock_before_seen = false,
+		auto_unlocks = false
+	},
+} setget , get_localized_events
+
+#start event triggers
 var characters = {
 	'flak':
 	["Market_2", "Market_3"],
@@ -119,8 +137,16 @@ var signals = {
 	QuestCompleted = [],
 	Midday = ['intro_3', 'ember_1', 'rose_1', 'demitrius_1'] #not sure about rose1
 }
+
+#something, idk what it is
 var progressdata = {
 	0 : "Search for clues for "
 	
 }
 
+func get_localized_events():
+	var res = events.duplicate(true)
+	for ev in res.values():
+		ev.name = tr(ev.name)
+		ev.description = tr(ev.description)
+	return res

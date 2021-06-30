@@ -11,7 +11,8 @@ func _ready() -> void:
 
 func play_scene(scn_name: String, replay_mode: bool) -> void:
 	$"..".current_tab = 0
-	$TextSystem.show()
+#	$TextSystem.show()
+	input_handler.OpenClose($TextSystem)
 	$TextSystem.replay_mode = replay_mode
 	$TextSystem.play_scene(scn_name)
 	yield($TextSystem, "scene_end")

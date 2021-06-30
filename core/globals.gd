@@ -10,7 +10,7 @@ var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var EventList = events.checks
+#var EventList = events.checks
 
 var scenedict = {
 	menu = "res://files/scenes/Menu.tscn",
@@ -290,7 +290,8 @@ func check_signal_test(sg_name, arg = null):
 func SimpleEventCheck(event):
 	if state.OldEvents.has(event):
 		return false
-	for check in EventList[event]:
+	if !events.events.has(event): return false #stub for testing
+	for check in events.events[event].conditions:
 		if !state.valuecheck(check):
 			return false
 	return true

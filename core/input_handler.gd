@@ -38,7 +38,7 @@ var menu_node
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
 		return
-	if event.is_action("ESC") && event.is_pressed():
+	if event.is_action("ESC") && event.is_pressed() && CloseableWindowsArray.back() != scene_node:
 		if CloseableWindowsArray.size() != 0:
 			CloseTopWindow()
 		else:
@@ -684,21 +684,21 @@ func if_mouse_inside(node):
 	return (col.a > 0.0)
 
 
-func ClearContainer(container):
+func ClearContainer(container, templates = ['Button']):
 	for i in container.get_children():
-		if i.name != 'Button':
+		if !(i.name in templates):
 			i.hide()
 			i.queue_free()
 
-func ClearContainerForced(container):
+func ClearContainerForced(container, templates = ['Button']):
 	for i in container.get_children():
-		if i.name != 'Button':
+		if !(i.name in templates):
 			i.hide()
 			i.free()
 
-func DuplicateContainerTemplate(container):
-	var newbutton = container.get_node('Button').duplicate()
+func DuplicateContainerTemplate(container, template = 'Button'):
+	var newbutton = container.get_node(template).duplicate()
 	newbutton.show()
 	container.add_child(newbutton)
-	container.move_child(container.get_node('Button'), newbutton.get_position_in_parent())
+	container.move_child(container.get_node(template), newbutton.get_position_in_parent())
 	return newbutton

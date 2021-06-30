@@ -40,6 +40,7 @@ var CurrentLine := 0
 
 var OldEvents := {}
 var gallery_unlocks = []
+var gallery_event_unlocks = []
 var CurEvent := "" #event name
 var CurBuild := ""
 var keyframes := []
@@ -119,6 +120,7 @@ func revert():
 	gallery_unlocks.clear()
 	for i in variables.gallery_singles_list:
 		gallery_unlocks.push_back(false)
+	gallery_event_unlocks.clear()
 
 
 func pos_set(value):
@@ -316,7 +318,7 @@ func serialize():
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
-	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks']
+	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'gallery_event_unlocks']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:

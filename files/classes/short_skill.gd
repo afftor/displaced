@@ -229,7 +229,7 @@ func resolve_value(check_m):
 			continue
 		var rangetype
 		if userange == 'weapon': userange = caster.get_weapon_range()
-		if rangetype == 'melee' && input_handler.FindFighterRow(caster) == 'backrow' && !check_m:
+		if userange == 'melee' && input_handler.FindFighterRow(caster) == 'backrow' && !check_m:
 			endvalue /= 2
 		value[i] = endvalue
 	process_value = value[0]
