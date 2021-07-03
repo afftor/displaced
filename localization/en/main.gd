@@ -426,7 +426,7 @@ var TranslationDict = {
 	WEAPON_ARRON2_EFFECT4 = "Fencing: reduce Target's damage by 25% for 2 turns\n\nParry: lasts one additional turn\n\nLunge: also hits target behind\n\nSmoke Screen: also reduce all received damage by 50% for 2 turns",
 	
 	WEAPON_ROSE1 = "Wand of Fire",
-	WEAPON_ROSE2 = "",
+	WEAPON_ROSE2 = "Crystal Staff",
 	WEAPON_ROSE1_EFFECT1 = "Fire Bolt: Burn damage +100%",
 	WEAPON_ROSE1_EFFECT2 = "Fire Bolt: Burn damage +100%\n\nReduce all cooldowns by 1 when last hitting an enemy",
 	WEAPON_ROSE1_EFFECT3 = "Fire Bolt: Burn damage +100%\n\nReduce all cooldowns by 1 when last hitting an enemy\n\nFlash: has 10% chance to stun enemy",
@@ -436,8 +436,8 @@ var TranslationDict = {
 	WEAPON_ROSE2_EFFECT3 = "Renew: provides 20% damage resist for 2 turns\n\nDispel: applies to all allies\n\nDeluge: hit chance is 100%, and affect all enemies",
 	WEAPON_ROSE2_EFFECT4 = "Renew: provides 30% damage resist for 2 turns\n\nDispel: applies to all allies\n\nDeluge: hit chance is 100%, and affect all enemies\n\nProtection: gives all other allies barrier with 1/3 of strength",
 	
-	WEAPON_ERIKA1 = "",
-	WEAPON_ERIKA2 = "",
+	WEAPON_ERIKA1 = "Windbreaker",
+	WEAPON_ERIKA2 = "The Hawk",
 	WEAPON_ERIKA1_EFFECT1 = "Air Arrow: Ignore 35% of target's Air Resist",
 	WEAPON_ERIKA1_EFFECT2 = "Air Arrow: Ignore 35% of target's Air Resist\n\nFrozen Arrow: Apply Chill effect: DoT for 0.4 damage for 3 Turns",
 	WEAPON_ERIKA1_EFFECT3 = "Air Arrow: Ignore 35% of target's Air Resist\n\nFrozen Arrow: Apply Chill effect: DoT for 0.4 damage for 3 Turns\n\nQuick Shot: Always hit same target",
@@ -447,8 +447,8 @@ var TranslationDict = {
 	WEAPON_ERIKA2_EFFECT3 = "Quick Shot: Deals 1 more attack\n\nArrow Shower: Reduce enemy hit chance by 15\n\nNature's Blessing: is passive and applied at the start of combat",
 	WEAPON_ERIKA2_EFFECT4 = "Quick Shot: Deals 2 more attacks\n\nArrow Shower: Reduce enemy hit chance by 15\n\nNature's Blessing: is passive and applied at the start of combat\n\nCharm: all non-boss enemies leave the battlefield",
 	
-	WEAPON_EMBER1 = "",
-	WEAPON_EMBER2 = "",
+	WEAPON_EMBER1 = "Punching Gloves",
+	WEAPON_EMBER2 = "Gauntlets of Endurance",
 	WEAPON_EMBER1_EFFECT1 = "Combo Attack: deal 25% more damage if target is stunned",
 	WEAPON_EMBER1_EFFECT2 = "Combo Attack: deal 25% more damage if target is stunned\n\nFire Punch: enemy takes 20% more damage for 2 turns",
 	WEAPON_EMBER1_EFFECT3 = "Combo Attack: deal 25% more damage if target is stunned\n\nFire Punch: enemy takes 20% more damage for 2 turns\n\nDeal 20% more damage with all attacks",
@@ -459,8 +459,8 @@ var TranslationDict = {
 	WEAPON_EMBER2_EFFECT4 = "Defend: Reduce cooldown by 2\n\nShockwave: Reduce target's hit chance by 20 for 1 turn\n\nDragon's Protection: Increase barrier strength to 50%\n\nAegis: Apply buff: +25% max hp for 3 tuns",
 	
 	
-	WEAPON_RILU1 = "",
-	WEAPON_RILU2 = "",
+	WEAPON_RILU1 = "Spirit Orb",
+	WEAPON_RILU2 = "Sun Sphere",
 	WEAPON_RILU1_EFFECT1 = "Dark Orb: 20% chance to cast twice",
 	WEAPON_RILU1_EFFECT2 = "Dark Orb: 20% chance to cast twice\n\nSpirit Thorns: Generate 1 spirit",
 	WEAPON_RILU1_EFFECT3 = "Dark Orb: 20% chance to cast twice\n\nSpirit Thorns: Generate 1 spirit\n\nRestore: Doubles effect and spirit consumed",
@@ -470,8 +470,8 @@ var TranslationDict = {
 	WEAPON_RILU2_EFFECT3 = "Dark Echoes: Increase barrier value to 50%\n\nAvalanche: Debuff: Increase taken damage by 20% for 1 turn\n\nPale Mist: Also reduce target's hit rate by 25",
 	WEAPON_RILU2_EFFECT4 = "Dark Echoes: Increase barrier value to 75%\n\nAvalanche: Debuff: Increase taken damage by 20% for 1 turn\n\nPale Mist: Also reduce target's hit rate by 25\n\nSoul Protection: 25% chance to reduce active cooldown by 1 when Spirit is generated",
 	
-	WEAPON_IOLA1 = "",
-	WEAPON_IOLA2 = "",
+	WEAPON_IOLA1 = "Staff of Ancients",
+	WEAPON_IOLA2 = "Depths Wand",
 	WEAPON_IOLA1_EFFECT1 = "Blessing: Reduce cooldown by 1",
 	WEAPON_IOLA1_EFFECT2 = "Blessing: Reduce cooldown by 1\n\nSmash: Stun chance is 100%",
 	WEAPON_IOLA1_EFFECT3 = "Blessing: Reduce cooldown by 1\n\nSmash: Stun chance is 100%\nCleansing: Applies burn",
