@@ -194,7 +194,7 @@ func get_s_resists():
 func set_shield(value):
 #	if shield != 0:
 #		process_event(variables.TR_SHIELD_DOWN)
-	if globals.combat_node != null and globals.combat_node.rules.has('no_shield'):
+	if input_handler.combat_node != null and input_handler.combat_node.rules.has('no_shield'):
 		if value > shield: return
 	shield = value;
 	if displaynode != null:
@@ -314,9 +314,9 @@ func apply_atomic(template):
 			defeated = false
 			process_event(variables.TR_RES)
 		'use_combat_skill':
-			if globals.combat_node == null: return
-#			globals.combat_node.use_skill(template.skill, self, position)
-			globals.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = position})
+			if input_handler.combat_node == null: return
+#			input_handler.combat_node.use_skill(template.skill, self, position)
+			input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = position})
 #		'add_counter':
 #			if counters.size() <= template.index + 1:
 #				counters.resize(template.index + 1)
@@ -333,8 +333,8 @@ func apply_atomic(template):
 		'tick_cd':
 			tick_cooldowns()
 		'add_rule':
-			if globals.combat_node == null: return
-			if !globals.combat_node.rules.has(template.value): globals.combat_node.rules.push_back(template.value)
+			if input_handler.combat_node == null: return
+			if !input_handler.combat_node.rules.has(template.value): input_handler.combat_node.rules.push_back(template.value)
 
 
 func remove_atomic(template):
@@ -356,8 +356,8 @@ func remove_atomic(template):
 		'remove_skill':
 			skills.push_back(template.skill)
 		'add_rule':
-			if globals.combat_node == null: return
-			globals.combat_node.rules.erase(template.value)
+			if input_handler.combat_node == null: return
+			input_handler.combat_node.rules.erase(template.value)
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -409,12 +409,12 @@ func check_status_resist(eff):
 func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
 	if check_status_resist(eff):
-		if globals.combat_node != null:
-			globals.combat_node.combatlogadd("\n%s resists %s." % [get_stat('name'), eff.template.name])
+		if input_handler.combat_node != null:
+			input_handler.combat_node.combatlogadd("\n%s resists %s." % [get_stat('name'), eff.template.name])
 			play_sfx('resist')
 		return
-	if globals.combat_node != null:
-		globals.combat_node.combatlogadd("\n%s is afflicted by %s." % [get_stat('name'), eff.template.name])
+	if input_handler.combat_node != null:
+		input_handler.combat_node.combatlogadd("\n%s is afflicted by %s." % [get_stat('name'), eff.template.name])
 
 	var eff_n = eff.template.name
 	var tmp = find_temp_effect(eff_n)
@@ -521,7 +521,7 @@ func deal_damage(value, source):
 	return tmp
 
 func heal(value):
-	if globals.combat_node != null and globals.combat_node.rules.has('no_heal'): return 0
+	if input_handler.combat_node != null and input_handler.combat_node.rules.has('no_heal'): return 0
 	var tmp = hp
 	value = round(value)
 	self.hp += value

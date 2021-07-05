@@ -50,7 +50,8 @@ var mainprogress = 0
 var decisions := []
 var activequests := []
 var completedquests := []
-var areaprogress := {}
+var areaprogress := {} #{level, stage, completed}
+var activearea = null
 var location_unlock = {
 	dragon_mountains = false,
 	castle = false,
@@ -104,7 +105,8 @@ func revert():
 	decisions.clear()
 	activequests.clear()
 	completedquests.clear()
-	areaprogress.clear()
+#	areaprogress.clear()
+	reset_areaprogress()
 	currentarea = null
 	currenttutorial = 'tutorial1'
 	viewed_tips.clear()
@@ -123,6 +125,39 @@ func revert():
 	gallery_event_unlocks.clear()
 
 
+func reset_areaprogress():
+	areaprogress.clear()
+	var tmp = {
+		level = 0,
+		stage = 0,
+		completed = false
+	}
+	for area in Explorationdata.areas:
+		areaprogress[area] = tmp.duplicate()
+
+
+func start_area(area_code, autolevel = false):
+	activearea = area_code
+	areaprogress[area_code].stage = 1 
+	if autolevel:
+		areaprogress[area_code].level = heroes['arron'].level
+	else:
+		areaprogress[area_code].level = Explorationdata.areas[area_code].level
+
+
+func abandon_area(area_code = activearea):
+	areaprogress[area_code].stage = 0
+	if area_code == activearea:
+		activearea = null
+
+
+func complete_area(area_code = activearea):
+	areaprogress[area_code].completed = true
+	areaprogress[area_code].stage = 0
+	if area_code == activearea:
+		activearea = null
+
+
 func pos_set(value):
 	combatparty = value
 	for p in combatparty:
@@ -132,6 +167,7 @@ func pos_set(value):
 func _ready():
 	reset_heroes()
 	reset_inventory()
+	reset_areaprogress()
 	for i in variables.gallery_singles_list:
 		gallery_unlocks.push_back(false)
 
@@ -274,7 +310,7 @@ func if_quest_stage(name, value, operant):
 
 func if_has_area_progress(value, operant, area):
 	if !areaprogress.has(area):return false
-	return input_handler.operate(operant, areaprogress[area], value)
+	return input_handler.operate(operant, areaprogress[area].stage, value)
 
 func if_has_progress(value, operant):
 	return input_handler.operate(operant, mainprogress, value)
@@ -317,7 +353,7 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen', 'activearea']
 	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'gallery_event_unlocks']
 	for prop in arr:
 		tmp[prop] = get(prop)
@@ -345,9 +381,13 @@ func deserialize(tmp:Dictionary):
 	combatparty.clear()
 	for k in party_save.keys() :
 		combatparty[int(k)] = party_save[k]
-	areaprogress.clear()
+	reset_areaprogress()
 	for k in area_save.keys() :
-		areaprogress[k] = int(area_save[k])
+#		areaprogress[k] = area_save[k].duplicate()
+		areaprogress[k].level = int(area_save[k].level)
+		areaprogress[k].stage = int(area_save[k].stage)
+		areaprogress[k].active = area_save[k].active
+		areaprogress[k].compleated = area_save[k].compleated
 	townupgrades.clear()
 	for k in town_save.keys() :
 		townupgrades[k] = int(town_save[k])

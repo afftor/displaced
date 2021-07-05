@@ -65,7 +65,7 @@ func process_event(ev):
 						var obj = get_applied_obj()
 						res = res and obj.process_check(cond.value)
 					'combat':
-						res = res and globals.combat_node.process_check(cond.value)
+						res = res and input_handler.combat_node.process_check(cond.value)
 			if res:
 				ready = false
 				.clear_buffs()
@@ -129,7 +129,7 @@ func e_apply():
 				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
 				obj.apply_effect(e)
 			'combat':
-				var obj = globals.combat_node
+				var obj = input_handler.combat_node
 				if obj != null:
 					match eff.template.execute:
 						'enable_followup':

@@ -57,7 +57,7 @@ var userfolder = 'user://'
 #var audio = load("res://files/scripts/ResourceAudio.gd").new()
 var scenes = {}
 
-var combat_node
+#var combat_node
 
 var hexcolordict = {
 	red = '#ff0000',

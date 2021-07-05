@@ -53,7 +53,7 @@ func _ready():
 		state.completedquests.append('elves')
 		#state.FinishQuest('elves')
 		state.MakeQuest("demitrus")
-		state.areaprogress.cavedemitrius = 9
+#		state.areaprogress.cavedemitrius = 9
 		for i in state.materials:
 			state.materials[i] = 20
 #		state.materials.goblinmetal = 20

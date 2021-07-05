@@ -127,7 +127,7 @@ func test_combat():
 #battlefield setup
 func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	$test.visible = false
-	globals.combat_node = self
+	input_handler.combat_node = self
 	turns = 0
 	en_level = level
 	rules.clear()

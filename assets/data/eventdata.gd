@@ -97,7 +97,8 @@ var events = {
 		cost = {'arron':10},
 		icon = "bg/villagenight",
 		unlock_before_seen = false,
-		auto_unlocks = false
+		auto_unlocks = false,
+		onetime = false #for scenes to not be replayed in exploration missions replays
 	},
 } setget , get_localized_events
 

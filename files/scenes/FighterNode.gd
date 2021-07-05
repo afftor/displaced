@@ -78,11 +78,11 @@ func setup_character(ch):
 	reset_shield()
 	stop_highlight()
 	set_process_input(true)
-	connect("signal_RMB", globals.combat_node, "ShowFighterStats")
-	connect("signal_RMB_release", globals.combat_node, 'HideFighterStats')
-	connect("signal_LMB", globals.combat_node, 'FighterPress')
-	connect("mouse_entered", globals.combat_node, 'FighterMouseOver', [position])
-	connect("mouse_exited", globals.combat_node, 'FighterMouseOverFinish', [position])
+	connect("signal_RMB", input_handler.combat_node, "ShowFighterStats")
+	connect("signal_RMB_release", input_handler.combat_node, 'HideFighterStats')
+	connect("signal_LMB", input_handler.combat_node, 'FighterPress')
+	connect("mouse_entered", input_handler.combat_node, 'FighterMouseOver', [position])
+	connect("mouse_exited", input_handler.combat_node, 'FighterMouseOverFinish', [position])
 
 
 func reset_shield():
@@ -138,7 +138,7 @@ func update_hp():
 			args.newhpp = 0
 			hp = 0
 		#damageeffectsarray.append(data)
-		var data = {node = self, time = globals.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
+		var data = {node = self, time = input_handler.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
 		animation_node.add_new_data(data)
 
 
@@ -153,44 +153,44 @@ func update_shield():
 		args.value = false
 		#args.color = Color(0.8, 0.8, 0.8, 1.0)
 		#self.material.set_shader_param('modulate', Color(0.8, 0.8, 0.8, 1.0)); #example
-	var data = {node = self, time = globals.combat_node.turns, type = 'shield_update',slot = 'SHIELD', params = args}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'shield_update',slot = 'SHIELD', params = args}
 	animation_node.add_new_data(data)
 
 func process_sfx(code):
 	var data 
 	if code.begins_with('anim_'):
-		data = {node = self, time = globals.combat_node.turns,type = 'default_animation', slot = 'sprite2', params = {animation = code.trim_prefix('anim_')}}
+		data = {node = self, time = input_handler.combat_node.turns,type = 'default_animation', slot = 'sprite2', params = {animation = code.trim_prefix('anim_')}}
 	else:
-		data = {node = self, time = globals.combat_node.turns,type = code, slot = 'SFX', params = {}}
+		data = {node = self, time = input_handler.combat_node.turns,type = code, slot = 'SFX', params = {}}
 	animation_node.add_new_data(data)
 
 func process_sound(sound):
-	var data = {node = self, time = globals.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
 	animation_node.add_new_data(data)
 
 func rebuildbuffs():
-	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_all_buffs()}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_all_buffs()}
 	animation_node.add_new_data(data)
 
 func process_critical():
-	var data = {node = self, time = globals.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
 	animation_node.add_new_data(data)
 
 func process_enable():
-	var data = {node = self, time = globals.combat_node.turns, type = 'enable', slot = 'full', params = {}}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'enable', slot = 'full', params = {}}
 	animation_node.add_new_data(data)
 
 func process_disable():
 	disabled = true
-	var data = {node = self, time = globals.combat_node.turns, type = 'disable', slot = 'full', params = {}}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'disable', slot = 'full', params = {}}
 	animation_node.add_new_data(data)
 
 func appear():#stub
-	var data = {node = self, time = globals.combat_node.turns, type = 'reappear', slot = 'full', params = {}}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'reappear', slot = 'full', params = {}}
 	animation_node.add_new_data(data)
 
 func disappear():#stub
-	var data = {node = self, time = globals.combat_node.turns, type = 'disappear', slot = 'full', params = {}}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'disappear', slot = 'full', params = {}}
 	animation_node.add_new_data(data)
 
 #control visuals

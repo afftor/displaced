@@ -634,7 +634,7 @@ var node_data = {
 	NODE_GEARTOOLTIP : {name = 'slottooltip', mode = 'scene', scene = preload("res://files/scenes/GearTooltip.tscn")},
 #	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
 #	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
-#	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
+	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://files/scenes/CharacterPanel.tscn")},
 #	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
 }
 

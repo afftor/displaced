@@ -1,7 +1,7 @@
 extends Node
 
-var areas = {
-	forestexplore = {
+var areas = { #missions in new terminology
+	forestexplore = { #mb obsolete templating for infinite misions
 		code = 'forestexplore',
 		name = 'Roam at Forest', 
 		category = 'forest',
@@ -21,7 +21,7 @@ var areas = {
 		enemygroups = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard'], 
 		requirements = [{type = "quest_stage", name = 'elves', operant = "eq", value = 1}], 
 		level = 1,
-		stagedenemies = {8 : "forestboss"}
+		stagedenemies = {8 : {enemy = 'forestboss', level = 1}} #{8 : "forestboss"}, level indikates that bossfight is +1 to area level
 		},
 	caveexplore = {
 		code = 'caveexplore',
@@ -46,6 +46,7 @@ var areas = {
 		stagedenemies = {10 : "caveboss"}
 		},
 }
+
 
 var locations = {
 	dragon_mountains = {
@@ -86,10 +87,9 @@ var locations = {
 }
 
 
-
 func check_area_avail(area):
 	if !state.checkreqs(area.requirements): return false
-	if state.areaprogress.has(area.code) and state.areaprogress[area.code] >= area.stages and area.stages != 0: return false
+#	if state.areaprogress.has(area.code) and state.areaprogress[area.code] >= area.stages and area.stages != 0: return false
 	return true
 
 

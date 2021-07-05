@@ -82,3 +82,7 @@ func set_border_type(val):
 			material.set_shader_param('outline_color', Color(1.0, 0.0, 0.0))
 		'safe':
 			material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+
+
+func set_current(val):
+	$active.visible = val

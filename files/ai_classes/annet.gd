@@ -10,5 +10,5 @@ extends ai_base
 #	}
 
 func get_spec_data():
-	var batt = globals.combat_node.enemygroup
+	var batt = input_handler.combat_node.enemygroup
 	return batt.size()

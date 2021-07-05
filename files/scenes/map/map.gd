@@ -72,8 +72,10 @@ func update_map():
 			area_node.set_inactive()
 		else:
 			area_node.set_border_type('combat')
-
+			
 			if Explorationdata.check_location_activity(loc):
 				area_node.set_active()
+				if state.activearea != null:
+					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
 			else:
 				area_node.set_inactive()

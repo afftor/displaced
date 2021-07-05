@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/images/map/map_icon_2.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=2]
 [ext_resource path="res://files/scenes/map/location_template.gd" type="Script" id=3]
 
 [node name="loc_name" type="TextureButton"]
@@ -18,3 +19,14 @@ __meta__ = {
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+
+[node name="active" type="TextureRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 2 )
+expand = true
