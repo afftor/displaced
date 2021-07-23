@@ -1,9 +1,9 @@
 extends TextureRect
 
+export var test_mode = false
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+
 var binded_events = {
 	dragon_mountains = null,
 	castle = null,
@@ -18,14 +18,23 @@ var binded_events = {
 func _ready():
 	input_handler.map_node = self
 	input_handler.village_node = $MainScreen
-	input_handler.explore_node = $ExploreScreen
-	input_handler.combat_node = $combat
+	input_handler.explore_node = $explore
+#	input_handler.combat_node = $combat
 	input_handler.scene_node = $TextSystem
 	input_handler.menu_node = $menu_node
-
+	
+	if test_mode:
+		test()
+	
 	update_map()
 # test functions
 #	unlock_area('village')
+
+func test():
+	for ch in state.characters:
+		state.unlock_char(ch)
+		state.heroes[ch].unlock_all_skills()
+	unlock_area('forest')
 
 
 func buildscreen(empty = null):

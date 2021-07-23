@@ -370,6 +370,12 @@ func OpenAnimation(node):
 	BeingAnimated.erase(node)
 	#globals.call_deferred('EventCheck');
 
+
+func DelayedCallback(node, delay, method, args = []):
+	var tweennode = GetTweenNode(node)
+	tweennode.interpolate_callback(node, delay, method)#, args)
+	tweennode.start()
+
 func FadeAnimation(node, time = 0.3, delay = 0):
 	var tweennode = GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)

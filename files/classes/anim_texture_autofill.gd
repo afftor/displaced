@@ -19,3 +19,4 @@ func fill_frames():
 
 func get_size():
 	return get_frame_texture(0).get_size()
+

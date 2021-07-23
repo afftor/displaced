@@ -6,6 +6,7 @@ onready var skill_list = $Panel/SkillContainer/GridContainer
 onready var stats_list = $Panel/StatsLabel
 
 export var test_mode = false
+var lock
 
 func _ready():
 	$Panel/SkillsButton.connect("pressed", self, "open_skills")
@@ -14,6 +15,7 @@ func _ready():
 	$WeaponPanel/CloseButton.connect("pressed",self,"close_weapon")
 	$Panel/PrevCharButton.connect("pressed", self, "select_next_hero", [-1])
 	$Panel/NextCharButton.connect("pressed", self, "select_next_hero", [1])
+	$Panel/close.connect("pressed", self, "hide")
 	hide()
 	if test_mode:
 		testmode()
@@ -25,8 +27,9 @@ func testmode():
 		state.unlock_char(cid)
 
 
-func open(hero): #renamed arg due to being a hero class object and not dir from chardata
+func open(hero, locked = false): #renamed arg due to being a hero class object and not dir from chardata
 	character = hero
+	lock = locked
 	$Panel/Portrait.texture = resources.get_res(character.icon)
 	$Panel/NameLabel.text = character.name
 	build_gear()
@@ -37,9 +40,11 @@ func open(hero): #renamed arg due to being a hero class object and not dir from 
 
 
 func open_skills():
+	if lock: return
 	$SkillPanel.open(character)
 
 func open_weapon():
+	if lock: return
 	$WeaponPanel.open(character)
 
 func close_skills():
@@ -65,7 +70,7 @@ func select_next_hero(offset):
 		select_next_hero(offset)
 		return
 
-	open(nhero)
+	open(nhero, lock)
 
 
 func build_gear():

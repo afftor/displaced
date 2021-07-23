@@ -11,7 +11,7 @@ onready var areadesc = $ExplorationSelect/Panel/RichTextLabel
 onready var partylist = $ExplorationOngoing/VBoxContainer
 onready var reservelist = $ExplorationOngoing/HBoxContainer
 
-
+onready var combat_node = get_parent().get_node("combat")
 
 func _ready():
 	$ExplorationSelect/Panel/Button.connect("pressed", self, "start_area")
@@ -19,6 +19,11 @@ func _ready():
 	$ExplorationOngoing/CancelButton.connect("pressed", self, "abandon_area")
 	$ExplorationOngoing/CloseButton.connect('pressed', self, 'hide')
 	$ExplorationSelect/CloseButton.connect('pressed', self, 'hide')
+	
+	$AdvConfirm/screen.rect_size = rect_size
+	$AdvConfirm/screen.rect_global_position = Vector2(0, 0)
+	$AdvConfirm/ok.connect("pressed", self, 'adv_confirm')
+	$AdvConfirm/no.connect("pressed", self, 'adv_decline')
 	if test_mode: 
 		if resources.is_busy(): yield(resources, "done_work")
 		test()
@@ -193,19 +198,24 @@ func advance_area():
 				if areadata.has('image') and areadata.image != null and areadata.image != "":
 					bg = areadata.image
 				#2add set sound
-				input_handler.combat_node.show()
-				input_handler.combat_node.start_combat(party, level, bg)
+				combat_node.show()
+				combat_node.start_combat(party, level, bg)
 				
 			elif stagedata.has('scene'):
 				#fixed scene
-				#2move to globals method
-				input_handler.OpenClose(input_handler.scene_node)
-				input_handler.scene_node.replay_mode = state.OldEvents.has(stagedata.scene)
-				input_handler.scene_node.play_scene(stagedata.scene)
-				
-				yield(input_handler.scene_node, "scene_end")
-				areastate.stage += 1
-				advance_area()
+				if state.OldEvents.has(stagedata.scene) and events.events[stagedata.scene].onetime:
+					areastate.stage += 1
+					advance_area()
+				else:
+					#2move to globals method
+					input_handler.OpenClose(input_handler.scene_node)
+					input_handler.scene_node.replay_mode = state.OldEvents.has(stagedata.scene)
+					input_handler.scene_node.play_scene(stagedata.scene)
+					
+					yield(input_handler.scene_node, "scene_end")
+					advance_check()
+#					areastate.stage += 1
+#					advance_area()
 		else:
 			#random combat
 			var tmp
@@ -215,30 +225,108 @@ func advance_area():
 				if !state.checkreqs(groupdata.reqs):  continue
 				arr.push_back({value = group, weight = groupdata.weight})
 			tmp = input_handler.weightedrandom(arr).value
-			var party = Enemydata.randomgroups[tmp].units #not forget to change format of those groups from battlefield dirs to arrays of battlefield dirs due to waves implementation
+			var party = create_random_group(Enemydata.randomgroups[tmp].units) #not forget to change format of those groups from battlefield dirs to arrays of battlefield dirs due to waves implementation
 			var level = areastate.level
 			var bg = Explorationdata.locations[location].background
 			if areadata.has('image') and areadata.image != null and areadata.image != "":
 				bg = areadata.image
 			#2add set sound
-			input_handler.combat_node.show()
-			input_handler.combat_node.start_combat(party, level, bg)
+			combat_node.show()
+			combat_node.start_combat(party, level, bg)
 
+
+func create_random_group(data):
+	if typeof(data) == TYPE_DICTIONARY:
+		#old (current) format. generates unit pool then form waves from them
+		var res = []
+		var pool = generate_unit_pool(data)
+		var nw = 1
+		if pool.melee.size() > 3 * nw: nw = (pool.melee.size() - 1)/3 + 1
+		if pool.ranged.size() > 3 * nw: nw = (pool.ranged.size() - 1)/3 + 1
+		
+		for i in range(3 * nw - pool.melee.size()): 
+			pool.melee.push_back("")
+		for i in range(3 * nw - pool.ranged.size()): 
+			pool.ranged.push_back("")
+		
+		pool.melee.shuffle()
+		pool.ranged.shuffle()
+		
+		for i in range(nw):
+			var res_w = {}
+			for pos in range(1, 4):
+				if pool.melee[pos - 1 + 3 * i] != "":
+					res_w[pos] = pool.melee[pos - 1 + 3 * i] 
+			for pos in range(4, 7):
+				if pool.ranged[pos - 4 + 3 * i] != "":
+					res_w[pos] = pool.ranged[pos - 4 + 3 * i] 
+			res.push_back(res_w)
+		return res
+	elif typeof(data) == TYPE_ARRAY:
+		#normal format. has data for separate waves
+		var res = []
+		for w_data in data:
+			var res_w = {}
+			var pool = generate_unit_pool(w_data)
+			
+#			pool.melee.shuffle()
+			pool.ranged.shuffle()
+			for i in range(pool.ranged.size() - 3):
+				pool.melee.push_back(pool.ranged.pop_back())
+			
+			pool.melee.shuffle()
+			for i in range(pool.melee.size() - 3):
+				pool.ranged.push_back(pool.melee.pop_back())
+			
+			for i in range(3 - pool.melee.size()):
+				pool.melee.push_back("")
+			for i in range(3 - pool.ranged.size()):
+				pool.ranged.push_back("")
+			
+			pool.melee.shuffle()
+			pool.ranged.shuffle()
+			
+			for pos in range(1, 4):
+				if pool.melee[pos - 1] != "":
+					res_w[pos] = pool.melee[pos - 1] 
+			for pos in range(4, 7):
+				if pool.melee[pos - 4] != "":
+					res_w[pos] = pool.ranged[pos - 4] 
+			
+			res.push_back(res_w) 
+		return res
+	elif typeof(data) == TYPE_STRING:
+		return Enemydata.predeterminatedgroups[data].group
+	else:
+		print ("error in random party data")
+		return [{1: 'elvenrat'}]
+
+
+func generate_unit_pool(data):
+	var res = {melee = [], ranged = []}
+	for unit in data:
+		var edata = Enemydata.enemylist[unit]
+		var pos = res.melee
+		if edata.has('aiposition') and edata.aiposition == 'ranged':
+			pos = res.ranged
+		var n = globals.rng.randi_range(data[unit][0], data[unit][1])
+		for i in range(n):
+			pos.push_back(unit)
+	return res
 
 func finish_area():
 	state.complete_area()
 	open_explore()
 
 
-func combat_win():
-	var areadata = Explorationdata.areas[area]
-	var areastate = state.areaprogress[area]
-	#2add generic scene check
-	areastate.stage += 1
-	if areastate.stage > areadata.stages:
-		finish_area()
+func combat_finished(value):
+	if value:
+		combat_win()
 	else:
-		build_area_info()
+		combat_loose()
+
+func combat_win():
+	advance_check()
 
 
 func combat_loose():
@@ -253,3 +341,25 @@ func combat_loose():
 func hide():
 	input_handler.map_node.update_map()
 	.hide()
+
+
+func advance_check():
+	var areadata = Explorationdata.areas[area]
+	var areastate = state.areaprogress[area]
+	#2add generic scene check
+	areastate.stage += 1
+	if areastate.stage > areadata.stages:
+		finish_area()
+	else:
+		build_area_info()
+		if areadata.stagedenemies.has(areastate.stage) and areadata.stagedenemies[areastate.stage].has('scene'):
+			advance_area()
+		else:
+			$AdvConfirm.visible = true
+
+func adv_confirm():
+	$AdvConfirm.visible = false
+	advance_area()
+
+func adv_decline():
+	$AdvConfirm.visible = false

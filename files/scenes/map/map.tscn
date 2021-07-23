@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/images/map/map_full.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/map/map_icon_1.png" type="Texture" id=2]
@@ -15,9 +15,10 @@
 [ext_resource path="res://files/scenes/map/map.gd" type="Script" id=13]
 [ext_resource path="res://files/TextSceneNew/TextSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://files/scenes/ControlPanel.tscn" type="PackedScene" id=15]
-[ext_resource path="res://files/scenes/combat_new.tscn" type="PackedScene" id=16]
-[ext_resource path="res://files/scenes/ExploreScreen.tscn" type="PackedScene" id=17]
+[ext_resource path="res://files/scenes/combat/combat_new.tscn" type="PackedScene" id=16]
+[ext_resource path="res://files/scenes/ExplorationMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/scenes/village/MainScreen_new.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=19]
 
 [node name="map" type="TextureRect"]
 margin_left = -0.233521
@@ -29,6 +30,7 @@ script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+test_mode = true
 
 [node name="outer" type="TextureButton" parent="."]
 margin_left = 656.0
@@ -296,6 +298,17 @@ margin_top = 62.3605
 margin_right = -235.323
 margin_bottom = 112.361
 
+[node name="active" type="TextureRect" parent="dragon_mountains"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
+
 [node name="castle" type="TextureButton" parent="."]
 margin_left = 301.0
 margin_top = 153.0
@@ -402,6 +415,17 @@ margin_left = -345.888
 margin_top = 125.248
 margin_right = -88.8878
 margin_bottom = 209.248
+
+[node name="active" type="TextureRect" parent="castle"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="town" type="TextureButton" parent="."]
 margin_left = 1126.0
@@ -510,6 +534,17 @@ margin_top = 142.248
 margin_right = 210.296
 margin_bottom = 225.248
 
+[node name="active" type="TextureRect" parent="town"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
+
 [node name="cave" type="TextureButton" parent="."]
 margin_left = 819.0
 margin_top = 387.0
@@ -590,6 +625,17 @@ margin_top = 132.0
 margin_right = 239.0
 margin_bottom = 162.0
 
+[node name="active" type="TextureRect" parent="cave"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
+
 [node name="forest" type="TextureButton" parent="."]
 margin_left = 342.0
 margin_top = 389.0
@@ -666,6 +712,17 @@ margin_left = -406.233
 margin_top = 193.508
 margin_right = -98.2329
 margin_bottom = 328.508
+
+[node name="active" type="TextureRect" parent="forest"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="village" type="TextureButton" parent="."]
 margin_left = 493.0
@@ -761,6 +818,17 @@ margin_left = 507.581
 margin_top = 370.493
 margin_right = 861.581
 margin_bottom = 481.493
+
+[node name="active" type="TextureRect" parent="village"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="temple" type="TextureButton" parent="."]
 margin_left = 1434.0
@@ -893,6 +961,17 @@ margin_top = 190.0
 margin_right = 141.0
 margin_bottom = 269.0
 
+[node name="active" type="TextureRect" parent="temple"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
+
 [node name="inner" type="TextureButton" parent="."]
 margin_left = 1424.0
 margin_top = 947.0
@@ -965,7 +1044,7 @@ margin_bottom = -90.0
 [node name="MainScreen" parent="." instance=ExtResource( 18 )]
 visible = false
 
-[node name="ExploreScreen" parent="." instance=ExtResource( 17 )]
+[node name="explore" parent="." instance=ExtResource( 17 )]
 visible = false
 
 [node name="combat" parent="." instance=ExtResource( 16 )]
@@ -975,3 +1054,14 @@ visible = false
 visible = false
 
 [node name="menu_node" parent="." instance=ExtResource( 15 )]
+
+[node name="active" type="TextureRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true

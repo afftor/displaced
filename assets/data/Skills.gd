@@ -28,6 +28,31 @@ var skilllist = {
 		patches = [], #while it is completely functional 'as is', we should either clone this skill or make a complex patches system to reflect element and range changes in sound and sfx data (or change current sfx code to use 'weapon_sfx' or 'element_sfx' placeholder)
 		ai_priority = 1
 	},
+	defence = {#2add
+		code = 'defence',
+		name = "",
+		description = "",
+		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+		damagetype = "weapon",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		keep_target = variables.TARGET_KEEP,
+		reqs = [],
+		tags = ['damage', 'default'],
+		value = ['caster.damage'],
+		cooldown = 0,
+#		manacost = 0,
+		casteffects = [],
+		repeat = 1,
+		hidden = false,
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfxcaster = null,
+		sfxtarget = null,
+		patches = [], #while it is completely functional 'as is', we should either clone this skill or make a complex patches system to reflect element and range changes in sound and sfx data (or change current sfx code to use 'weapon_sfx' or 'element_sfx' placeholder)
+		ai_priority = 1
+	},
 	fire_attack = { #use as template
 		code = 'fire_attack',
 		name = "",
@@ -1654,7 +1679,7 @@ var skilllist = {
 		evade = 0,
 		casteffects = ['e_s_sanct'],
 		hidden = false,
-		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},

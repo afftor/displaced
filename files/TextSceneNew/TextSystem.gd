@@ -46,7 +46,8 @@ const AVAIL_EFFECTS = [
 
 const animated_sprites = ['arron',
  'rose',
- 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth', 'rilu', 'demitrius', 'demitrius_alter']
+ 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth', 'rilu', 'demitrius', 'demitrius_alter', 
+'goblin', 'goblin2'] #idk if they are named this way in scenes
 #demitrius sprites are from 'unused folder' - so don't remove them accidentally
 #others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
 

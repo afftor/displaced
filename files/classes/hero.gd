@@ -83,6 +83,13 @@ func levelup():
 	if level in [8, 28]:
 		skillpoints.ultimate += 1
 
+
+func see_enemy_killed():
+	#stub
+	friend_points += 1 #can adjust it here, arron still get fp
+
+
+
 func can_unlock_skill(skill_code):
 	var template = Skillsdata.skilllist[skill_code]
 	if template.has('req_level') and level < template.req_level: return false
@@ -223,7 +230,7 @@ func serialize():
 	tmp.skills = skills.duplicate()
 	tmp.hp = hp
 #	tmp.mana = mana
-	tmp.defeated = defeated
+#	tmp.defeated = defeated
 	tmp.position = position
 	tmp.static_effects = static_effects.duplicate()
 	tmp.temp_effects = temp_effects.duplicate()
@@ -245,7 +252,7 @@ func deserialize(savedir):
 	skills = savedir.skills.duplicate()
 	hp = savedir.hp
 #	mana = savedir.mana
-	defeated = savedir.defeated
+#	defeated = savedir.defeated
 	position = int(savedir.position)
 	if position != null: state.combatparty[position] = id
 	static_effects = savedir.static_effects.duplicate()

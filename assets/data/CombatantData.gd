@@ -13,6 +13,8 @@ var charlist = {
 			hit = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0000_Arron_hit",
 			attack = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0001_Arron_at",
 			idle_1 = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0002_Arron_idle",
+			dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres"),
+			dead_1 = load("res://assets/images/Fight/Heroes/Arron/arron_death/Arron-5_only death_10.png"),
 		},
 		flavor = 'The honorable me',
 		hpmax = 50,
@@ -23,6 +25,7 @@ var charlist = {
 		unlocked = true,
 		bonusres = ['slash', 'light', 'fire', 'earth'],
 		skilllist = ['fencing', 'lunge', 'sideslash', 'swift_s', 'parry', 'sword_mastery', 'termination', 'smoke_s'],
+		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")
 	},
 	rose = {
 		code = 'Rose',
@@ -34,7 +37,9 @@ var charlist = {
 			idle = load("res://assets/images/Fight/Heroes/Rose/Rose_idle/Rose.tres"),
 			hit = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0001_Rouz_hit",
 			attack = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0000_Rouz_at",
-			idle_1 = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0002_Rouz_idle"
+			idle_1 = "Fight/Heroes/Rose/Fight_spritesFHD_0002s_0002_Rouz_idle",
+			dead = load("res://assets/images/Fight/Heroes/Rose/rose_death/rose_d.tres"),
+			dead_1 = load("res://assets/images/Fight/Heroes/Rose/Rose_death/rouz_death_20.png"),
 		},
 		flavor = 'My loyal pet',
 		hpmax = 40,
@@ -56,7 +61,9 @@ var charlist = {
 			idle = load("res://assets/images/Fight/Heroes/Erika/Erika_idle/Erika.tres"),
 			hit = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0002_Erika_hit",
 			attack = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0000_Erika_at",
-			idle_1 = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0001_Erika_idle"
+			idle_1 = "Fight/Heroes/Erika/Fight_spritesFHD_0003s_0001_Erika_idle",
+			dead = load("res://assets/images/Fight/Heroes/Erika/erika_death/erika_d.tres"),
+			dead_1 = load("res://assets/images/Fight/Heroes/Erika/Erika_death/Erika_death_16.png"),
 		},
 		flavor = 'An elven gal',
 		hpmax = 45,
@@ -78,7 +85,9 @@ var charlist = {
 			idle = load("res://assets/images/Fight/Heroes/Ember/Ember_idle/Ember.tres"),
 			hit = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0001_Ember_hit",
 			attack = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0000_Ember_idle",
-			idle_1 = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0002_Ember_idle"
+			idle_1 = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0002_Ember_idle",
+			dead = load("res://assets/images/Fight/Heroes/Ember/ember_death/ember_d.tres"),
+			dead_1 = load("res://assets/images/Fight/Heroes/Ember/Ember_death/Ember_death_24.png"),
 		},
 		flavor = 'A dragon gal',
 		hpmax = 80,
@@ -100,7 +109,9 @@ var charlist = {
 			idle = load("res://assets/images/Fight/Heroes/Rilu/Rilu_idle/Rilu.tres"),
 			hit = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0000_Rilu_hit",
 			attack = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0002_Rilu_at",
-			idle_1 = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0001_Rilu_idle"
+			idle_1 = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0001_Rilu_idle",
+			dead = load("res://assets/images/Fight/Heroes/Rilu/Rilu_death/rilu_d.tres"),
+			dead_1 = load("res://assets/images/Fight/Heroes/Rilu/rilu_death/rilu_d.tres"),
 		},
 		flavor = 'A dragon gal',
 		hpmax = 55,
@@ -122,7 +133,9 @@ var charlist = {
 			idle = load("res://assets/images/Fight/Heroes/Iola/Iola_idle/Iola.tres"),
 			hit = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0000_Iola_hit",
 			attack = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0001_Iola_at",
-			idle_1 = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0002_Iola_idle"
+			idle_1 = "Fight/Heroes/Iola/Fight_spritesFHD_0001s_0002_Iola_idle",
+			dead = load("res://assets/images/Fight/Heroes/Iola/iola_death/iola_d.tres"),
+			dead_1 = load("res://assets/images/Fight/Heroes/Iola/iola_death/iola_death_19.png"),
 		},
 		flavor = 'A dragon gal',
 		hpmax = 40,

@@ -33,11 +33,23 @@ var miss_sound = "sound/dodge"
 func _ready() -> void:
 	resources.preload_res(miss_sound)
 
+
 func _process(delta):
 	for node in animation_delays:
 		animation_delays[node] -= delta
 		if animation_delays[node] <= 0:
 			finish_animation(node)
+
+
+func force_end():
+	animation_delays.clear()
+	animations_queue.clear()
+	hp_update_delays.clear()
+	buffs_update_delays.clear()
+	crit_display.clear()
+	log_update_delay = 0
+	is_busy = false
+
 
 func can_add_data(data):
 	if animations_queue[data.time][data.node].empty(): return false
@@ -52,10 +64,10 @@ func add_new_data(data):
 	if !animations_queue[data.time].has(data.node): 
 		animations_queue[data.time][data.node] = []
 	if can_add_data(data): 
-		animations_queue[data.time][data.node].back().append(data)
+		animations_queue[data.time][data.node].back().push_back(data)
 	else:
 		animations_queue[data.time][data.node].push_back([])
-		animations_queue[data.time][data.node].back().append(data)
+		animations_queue[data.time][data.node].back().push_back(data)
 #	print(animations_queue)
 
 func check_start():
@@ -131,22 +143,26 @@ func sound(node, args):
 
 func default_animation(node, args):
 	var id = args.animation
-	var playtime = variables.default_animations_duration[id]
+	var playtime
 	var transition_time = variables.default_animations_transition[id]
 	var delaytime = variables.default_animations_delay[id]
-	var tex = node.fighter.animations[id]
+	var tex = null
+	if node.fighter.animations.has(id):
+		tex = node.fighter.animations[id]
 	var sp = node.get_node('sprite')
 	var sp2 = node.get_node('sprite2')
 	sp2.texture = tex
 	sp2.visible = true
 	if tex is AnimatedTexAutofill:
-		playtime += tex.frames / tex.fps
+		playtime = tex.frames / tex.fps
 	else:
-		pass
+		playtime = variables.default_animations_duration[id]
 	input_handler.FadeAnimation(sp, transition_time, delaytime)
 	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
 	input_handler.FadeAnimation(sp2, transition_time, playtime + delaytime - transition_time)
 	input_handler.UnfadeAnimation(sp, transition_time, playtime + delaytime - transition_time)
+	if args.has('callback'):
+		input_handler.DelayedCallback(node, playtime + delaytime - transition_time, args.callback)
 	return playtime + delaytime
 
 func casterattack(node, args = null):
@@ -284,7 +300,7 @@ func hp_update(node, args):
 	
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	var hpnode = node.get_node("HP")
+	var hpnode = node.panel_node.get_node("ProgressBar")
 	#float damage
 	if args.damage_float:
 		if crit_display.has(node):
@@ -294,9 +310,9 @@ func hp_update(node, args):
 		else: tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
-	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	#update hp label
-	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp, args.newhpp)
+	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp)
 	tween.start()
 	return delaytime + delay
 

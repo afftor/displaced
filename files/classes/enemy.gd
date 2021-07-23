@@ -6,7 +6,6 @@ var loottable
 
 var ai
 var ai_spec setget ,get_spec_data
-var aiposition = 'melee'
 
 func _init():
 	combatgroup = 'enemy'
@@ -48,7 +47,7 @@ func createfromtemplate(enemy, lvl):
 		resists[i] = 0
 		if template.resists.has(i):
 			resists[i] = template.resists[i]
-	for i in ['damage','name','hitrate','evasion','icon','combaticon', 'loottable', 'xpreward', 'bodyhitsound', 'weaponsound', 'flavor', 'aiposition', 'base_dmg_type', 'base_dmg_range']:
+	for i in ['damage','name','hitrate','evasion','icon','combaticon', 'loottable', 'xpreward', 'bodyhitsound', 'weaponsound', 'flavor', 'base_dmg_type', 'base_dmg_range']:
 		#self[i] = template[i]
 		if template.has(i): set(i, template[i])
 	for i in variables.resistlist:

@@ -7,7 +7,7 @@ var base
 
 var icon
 var combaticon
-var animations setget ,get_animations
+var animations = {} setget ,get_animations
 
 var race
 
@@ -68,6 +68,8 @@ var bonuses = {}
 #ai
 var taunt = null
 
+func _init():
+	animations = {}
 
 func get_animations():
 	var res = {}
@@ -551,7 +553,7 @@ func death():
 	defeated = true
 	hp = 0
 	if displaynode != null:
-		displaynode.defeat()
+		displaynode.process_defeat()
 
 func can_act():
 	var res = !acted
