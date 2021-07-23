@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 105.0
+margin_top = 45.0
+margin_right = 799.0
+margin_bottom = 1041.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+margin_left = 67.0
+margin_top = 101.0
+margin_right = 633.0
+margin_bottom = 960.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+margin_right = 566.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_right = 566.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 0, 75 )
+
+[node name="Icon" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 8.97971
+margin_top = 6.73477
+margin_right = 73.9797
+margin_bottom = 71.7348
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 94.0
+margin_top = 26.0
+margin_right = 281.0
+margin_bottom = 50.0
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 492.0
+margin_top = 24.0
+margin_right = 560.0
+margin_bottom = 48.0
+text = "150g"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 98.9949
+margin_top = 12.7279
+margin_right = 280.995
+margin_bottom = 67.7279
+text = "Buy "
+
+[node name="Button2" type="Button" parent="Panel"]
+margin_left = 370.524
+margin_top = 12.7279
+margin_right = 552.524
+margin_bottom = 67.7279
+text = "Sell"
+
+[node name="SelectAmountPanel" type="Panel" parent="."]
+margin_left = 955.615
+margin_top = 494.856
+margin_right = 1287.62
+margin_bottom = 813.856
+
+[node name="Label" type="Label" parent="SelectAmountPanel"]
+margin_left = 21.7869
+margin_top = 77.8284
+margin_right = 117.787
+margin_bottom = 101.828
+text = "Buy/Sell"
+align = 1
+
+[node name="Label2" type="Label" parent="SelectAmountPanel"]
+margin_left = 228.409
+margin_top = 78.0
+margin_right = 265.409
+margin_bottom = 102.0
+text = "?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SelectAmountPanel"]
+margin_left = 124.491
+margin_top = 56.748
+margin_right = 202.491
+margin_bottom = 116.748
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Button" type="Button" parent="SelectAmountPanel"]
+margin_left = 21.1892
+margin_top = 232.022
+margin_right = 154.189
+margin_bottom = 281.022
+text = "Confirm "
+
+[node name="Button2" type="Button" parent="SelectAmountPanel"]
+margin_left = 175.871
+margin_top = 233.082
+margin_right = 308.871
+margin_bottom = 282.082
+text = "Cancel"
+
+[node name="SpinBox" type="SpinBox" parent="SelectAmountPanel"]
+margin_left = 116.541
+margin_top = 150.444
+margin_right = 202.541
+margin_bottom = 184.444

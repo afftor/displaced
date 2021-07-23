@@ -1,38 +1,15 @@
 extends Node
 
 var areas = { #missions in new terminology
-	forestexplore = { #mb obsolete templating for infinite misions
-		code = 'forestexplore',
-		name = 'Roam at Forest', 
-		category = 'forest',
-		image = '',
-		stages = 0, 
-		enemygroups = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard','foresthard2','foresthard3','forestextraboss'], 
-		requirements = [], 
-		level = 1,
-		stagedenemies = {}
-		},
-	forestelves = {
+	forest_erika = {
 		code = 'forestelves',
 		name = 'Search for Elves',
-		category = 'forest',
 		image = '',
 		stages = 8, 
 		enemygroups = ['foresteasy', 'foresteasymed', 'forestmedium', 'forestmedium2', 'foresthard'], 
-		requirements = [{type = "quest_stage", name = 'elves', operant = "eq", value = 1}], 
+		requirements = [{type = "quest_stage", name = 'erika', operant = "eq", value = 1}], 
 		level = 1,
 		stagedenemies = {8 : {enemy = 'forestboss', level = 1}} #{8 : "forestboss"}, level indikates that bossfight is +1 to area level
-		},
-	caveexplore = {
-		code = 'caveexplore',
-		name = 'Roam at Caves', 
-		category = 'cave',
-		image = '',
-		stages = 0, 
-		enemygroups = ['caveeasy','cavemedium','cavemedium2','cavemedium3'], 
-		requirements = [{type = "quest_completed", name = 'elves'}], 
-		level = 1,
-		stagedenemies = {}
 		},
 	cavedemitrius = {
 		code = 'cavedemitrius',
@@ -41,48 +18,63 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 10, 
 		enemygroups = ['caveeasy','cavemedium','cavemedium2','cavemedium3'], 
-		requirements = [{type = "quest_stage", name = 'demitrus', operant = 'eq', value = 1}], 
+		requirements = [{type = "quest_stage", name = 'demitrius_arrival', operant = 'eq', value = 1}], 
 		level = 1,
 		stagedenemies = {10 : "caveboss"}
 		},
+		
 }
 
 
-var locations = {
-	dragon_mountains = {
-		code = 'dragon_mountains',
-		background = 'mountainsday',
-		combat = true
-	},
-	castle =  {
-		code = 'castle',
-		background = 'mountainsday',
-		combat = true
-	},
-	cave =  {
-		code = 'cave',
-		background = 'cave',
-		combat = true
+
+var locations = { #suggestion: track unlocked locations in game sate
+	village =  {
+		code = 'village',
+		initial_event = '',
+		missions = [], #no missions at village
+		function = '', #suggestion: launch custom function i.e. open village screen if applicable. Initial event launches first
 	},
 	forest =  {
 		code = 'forest',
-		background = 'forest',
-		combat = true
+		initial_event = '',
+		missions = ['forest_erika','forest_faeries'],
+		function = '',
+	},
+	cave =  {
+		code = 'cave',
+		initial_event = '',
+		missions = ['cave_demitrius','cave_iola','caves_dwarves','caves_wandererr'],
+		function = '',
+	},
+	town =  { #town could be visited at certain points in game and will only launch events
+		code = 'town',
+		initial_event = '',
+		missions = ['erika_annet','ember_viktor','town_siege'],
+		function = '',
+	},
+	castle =  {
+		code = 'castle',
+		initial_event = '',
+		missions = ['castle_rilu','castle_rilu_return'],
+		function = '',
+	},
+	dragon_mountains = {
+		code = 'dragon_mountains',
+		initial_event = '',
+		missions = ['mountains_ember'],
+		function = '',
 	},
 	temple =  {
 		code = 'temple',
-		background = 'mountainsday',
-		combat = true
+		initial_event = '',
+		missions = ['temple_iola','temple_rose'],
+		function = '',
 	},
-	village =  {
-		code = 'village',
-		background = 'mountainsday',
-		combat = false
-	},
-	town =  {
-		code = 'town',
-		background = 'mountainsday',
-		combat = false
+	modern_city =  {
+		code = 'modern_city',
+		initial_event = '',
+		missions = ['dimitrius_finale'],
+		function = '',
 	},
 }
 
