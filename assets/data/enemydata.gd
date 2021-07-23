@@ -765,31 +765,18 @@ var loottables = {
 		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
 	},
 	treantloot = {
-		materials = [{code = 'wood', min = 1, max = 1, chance = 25}],
-		usables = [{code = 'managrass', min = 1, max = 1, chance = 15}],
 	},
 	bigtreantloot = {
-		materials = [{code = 'wood', min = 3, max = 7, chance = 100}, {code = 'elvenwood', min = 3, max = 5, chance = 100}],
-		usables = [{code = 'managrass', min = 1, max = 3, chance = 100}],
 	},
 	spiderloot = {
-		materials = [{code = 'cloth', min = 1, max = 1, chance = 35}],
-		usables = [{code = 'morsel', min = 1, max = 1, chance = 35}],
 	},
 	earthgolemloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 2, chance = 35},{code = 'elvenmetal', min = 1, max = 1, chance = 15}],
-		usables = [{code = 'protectivecharm', min = 1, max = 1, chance = 10}],
 	},
 	fairiesloot = {
-		usables = [{code = 'managrass', min = 1, max = 2, chance = 25},{code = 'lesserpotion', min = 1, max = 1, chance = 15},{code = 'protectivecharm', min = 1, max = 1, chance = 10}],
 	},
 	angrydwarfloot = {
-		materials = [{code = 'goblinmetal', min = 1, max = 1, chance = 35}],
-		usables = [{code = 'morsel', min = 1, max = 1, chance = 15}],
 	},
 	earthgolembossloot = {
-		materials = [{code = 'goblinmetal', min = 4, max = 7, chance = 100},{code = 'elvenmetal', min = 3, max = 5, chance = 100}],
-		usables = [{code = 'protectivecharm', min = 1, max = 1, chance = 100}],
 	},
 }
 
