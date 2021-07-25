@@ -210,10 +210,9 @@ func buildenemygroup(group):
 			for n in panel.get_children():
 				n.visible = false
 			continue
-		var tempname = group[i]
-		print(tempname)
+		var tempname = group[i].unit
 		enemygroup[i] = enemy.new()
-		enemygroup[i].createfromtemplate(tempname, en_level)
+		enemygroup[i].createfromtemplate(tempname, group[i].level)
 		enemygroup[i].position = i
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)

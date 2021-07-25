@@ -193,7 +193,9 @@ func advance_area():
 				var party = Enemydata.predeterminatedgroups[stagedata.enemy].group #not forget to change format of those groups from battlefield dirs to arrays of battlefield dirs due to waves implementation
 				var level = areastate.level
 				if stagedata.has('level'):
-					level += stagedata.level
+					level = stagedata.level - areadata.level + areastate.level
+#					level += stagedata.level
+				set_party_level_data(party, areadata.level, level)
 				var bg = Explorationdata.locations[location].background
 				if areadata.has('image') and areadata.image != null and areadata.image != "":
 					bg = areadata.image
@@ -225,8 +227,9 @@ func advance_area():
 				if !state.checkreqs(groupdata.reqs):  continue
 				arr.push_back({value = group, weight = groupdata.weight})
 			tmp = input_handler.weightedrandom(arr).value
-			var party = create_random_group(Enemydata.randomgroups[tmp].units) #not forget to change format of those groups from battlefield dirs to arrays of battlefield dirs due to waves implementation
+			var party = create_random_group(Enemydata.randomgroups[tmp].units) 
 			var level = areastate.level
+			set_party_level_data(party, areadata.level, level)
 			var bg = Explorationdata.locations[location].background
 			if areadata.has('image') and areadata.image != null and areadata.image != "":
 				bg = areadata.image
@@ -236,9 +239,9 @@ func advance_area():
 
 
 func create_random_group(data):
+	var res = []
 	if typeof(data) == TYPE_DICTIONARY:
 		#old (current) format. generates unit pool then form waves from them
-		var res = []
 		var pool = generate_unit_pool(data)
 		var nw = 1
 		if pool.melee.size() > 3 * nw: nw = (pool.melee.size() - 1)/3 + 1
@@ -261,10 +264,9 @@ func create_random_group(data):
 				if pool.ranged[pos - 4 + 3 * i] != "":
 					res_w[pos] = pool.ranged[pos - 4 + 3 * i] 
 			res.push_back(res_w)
-		return res
+#		return res
 	elif typeof(data) == TYPE_ARRAY:
 		#normal format. has data for separate waves
-		var res = []
 		for w_data in data:
 			var res_w = {}
 			var pool = generate_unit_pool(w_data)
@@ -294,12 +296,14 @@ func create_random_group(data):
 					res_w[pos] = pool.ranged[pos - 4] 
 			
 			res.push_back(res_w) 
-		return res
+#		return res
 	elif typeof(data) == TYPE_STRING:
-		return Enemydata.predeterminatedgroups[data].group
+		res = Enemydata.predeterminatedgroups[data].group.duplicate()
+#		return Enemydata.predeterminatedgroups[data].group
 	else:
 		print ("error in random party data")
-		return [{1: 'elvenrat'}]
+		res = [{1: 'elvenrat'}]
+	return res
 
 
 func generate_unit_pool(data):
@@ -313,6 +317,24 @@ func generate_unit_pool(data):
 		for i in range(n):
 			pos.push_back(unit)
 	return res
+
+
+func set_party_level_data(party, def_lvl, cur_lvl):
+	#cause party is array we can modify it without returning
+	for wave in party:
+		for pos in wave:
+			if typeof(wave[pos]) == TYPE_STRING:
+				var temp = {unit = wave[pos], level = cur_lvl}
+				wave[pos] = temp
+			elif typeof(wave[pos]) == TYPE_DICTIONARY:
+				if wave[pos].has('level'):
+					print("monster %s upscailed" % wave[pos].unit)
+					wave[pos].level += cur_lvl - def_lvl
+				else:
+					wave[pos].level = cur_lvl
+			else:
+				print("warning: wrong party format")
+				print(party)
 
 func finish_area():
 	state.complete_area()
