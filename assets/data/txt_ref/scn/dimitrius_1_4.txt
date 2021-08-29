@@ -1,0 +1,58 @@
+** dimitrius_1_4 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE demitrius=
+=SPRITE_UNFADE 0.5=
+Ar - Hmmm... Can't we talk this over? 
+Em(tired) - We are not demons. And sir Arron is a good person!
+D - Foolish. Even if you are not a demon, you are still being controlled by them.
+D - You can't be trusted.
+D - This is your last chance, surrender immediately!
+Ar - Hmph. You are no fighter, you said so yourself.
+Ar - What are you going to do? Preach us to sleep?
+At those words, a round item came flying from Demitrius falling a few steps away from Arron.
+Ro(shock) - Ah!
+=SHAKE_SCREEN 0.5=
+=DELAY 0.5=
+*Bam*
+The cave walls shook at the heavy explosion with dust falling to the ground.
+Ar(shock) - What the hell was that? A bomb?
+D(talk) - Do not underestimate the Ancestral Cult, you foul creatures.
+=SHAKE_SCREEN 0.25=
+=DELAY 0.25=
+*Toss*
+Ar(shock) - You moron, You’re gonna kill us all!
+D - It was your choice to resist me. I'll do what I must.
+=SHAKE_SCREEN 0.5=
+=DELAY 0.5=
+*Bam*
+Ro(shock) - Look, the ceiling is breaking!
+A large chunk of stone has broken off from the ceiling and fell onto Demitrius.
+D - Ah!
+=SHAKE_SPRITE 0.25=
+=DELAY 0.25=
+*Splat*
+Demitrius died as a huge rock stuck his head.
+=SPRITE_FADE 0.3=
+=DELAY 0.3=
+Em(tired) - Ah... He should've listened.
+Ro - *Gulp*
+Ar - What the hell... He's dead now.
+Er - That's unfortunate, but you can't blame yourself for that. What are we gonna do now?
+Ro - We probably should take care of his body...
+Em - Sir Arron, there's like a dozen golems coming!
+Ar - Shit, they must have been agitated by the explosions.
+Ar - There's no choice, let's retreat.
+=BLACKON=
+=DELAY 1=
+=BLACKFADE 1=
+=DELAY 1=
+Ar - This isn't good, but we can't tell anyone about this.
+Ro - But won't he be missed though?
+The party agreed to not bring up this incident around the settlement and if anyone would ask, they brought him to the caves and left him alone.
+=STOP=

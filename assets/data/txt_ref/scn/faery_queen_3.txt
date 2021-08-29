@@ -1,0 +1,29 @@
+** faery_queen_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG forest=
+=SPRITE faeryqueen=
+Ar - There she is.
+FQ - Oh, look, it's you retards again.
+FQ - Have you not learned your lesson yet?
+Ar - Are you ready?
+Ri - Yes, give me the catalyst. 
+Er - Here's the stuff.
+Ri(talk) - Is that... her underwear?
+Er - Sure. Why?
+Ro(sarcastic) - Why would you pick exactly that out of all items?
+Er - How would you be sure it's actually hers otherwise?
+FQ - Haha, what are you even doing?
+FQ - You idiot perverts.
+FQ - Just go wank yourself to death
+FQ - See you, fools.
+Ri(spell) - ...
+=SPRITE_FADE 0.2=
+=DELAY 0.2=
+=SPRITE_UNFADE 0.2=
+=DELAY 0.1=
+FQ - What the... I can't teleport?
+FQ - You'll pay for this, you bastards! 
+Ar(neutral) - Great, now get her.
+=STOP=

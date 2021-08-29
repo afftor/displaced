@@ -9,6 +9,9 @@ var areas = { #missions in new terminology
 		stages = 2, 
 		enemygroups = [], 
 		level = 1,
+		events = {
+			on_complete = 'intro2'
+		},
 		enemies = {
 			1 : [
 				{1 : ['elvenrat'], 3 : ['elvenrat']},
@@ -28,6 +31,10 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 5, 
 		level = 2,
+		events = {
+			after_fight_3 = 'forest1',
+			on_complete = "forest2",
+		},
 		enemies = {
 			1 : [
 				{1 : ['elvenrat'], 2 : ['treant']},
@@ -55,6 +62,10 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 6, 
 		level = 4,
+		events = {
+			after_fight_3 = 'dimitrius2',
+			on_complete = "dimitrius3",
+		},
 		enemies = {
 			1 : [
 				{1 : ['elvenrat'], 2 : ['elvenrat'], 3 : ['elvenrat']},
@@ -90,6 +101,10 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 6, 
 		level = 6,
+		events = {
+			after_fight_3 = 'iola2',
+			on_complete = "iola3",
+		},
 		enemies = {
 			1 : [
 				{1 : ['elvenrat'], 2 : ['mole'], 3 : ['elvenrat']},
@@ -118,6 +133,9 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 4, 
 		level = 8,
+		events = {
+			on_complete = "aeros1",
+		},
 		enemies = {
 			1 : [
 				{ 1 : ['spider'], 2 : ['spider'],  5 : ['spider'], 6 : ['spider']},
@@ -140,6 +158,10 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 8, 
 		level = 11,
+		events = {
+			after_fight_5 = 'rilu1',#heal team
+			on_complete = "rilu4",
+		},
 		enemies = {
 			1 : [
 				{ 1 : ['spider'], 2 : ['angrydwarf'], 3 : ['spider']},
@@ -161,7 +183,7 @@ var areas = { #missions in new terminology
 			6 : [
 				{1 : ['angrydwarf'], 2: ['angrydwarf'], 3: ['angrydwarf'], 4: ['dwarfwarrior'], 6: ['dwarfwarrior']},
 				{1 : ['dwarfwarrior'], 2: ['dwarfwarrior'], 3: ['dwarfwarrior']},
-				],#show scene and heal team here
+				],
 			7 : [
 				{1 : ['dwarfwarrior'], 5: ['dwarfking'], 3: ['dwarfwarrior']},
 				],
@@ -174,6 +196,9 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 6, 
 		level = 14,
+		events = {
+			on_complete = "faeryqueen1",
+		},
 		enemies = {
 			1 : [
 				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},
@@ -515,9 +540,19 @@ var areas = { #missions in new terminology
 
 
 var locations = { #suggestion: track unlocked locations in game sate
+	init = {
+		code = 'init',
+		initial_event = 'intro', #followed by intro2, intro3. After intro2 starts road_to_village
+		missions = [],
+		function = '',
+	},
+	
 	village =  {
 		code = 'village',
 		initial_event = '',
+		events = {
+			erika1 = {conditions = []},
+		},
 		missions = [], #no missions at village
 		function = '', #suggestion: launch custom function i.e. open village screen if applicable. Initial event launches first
 	},

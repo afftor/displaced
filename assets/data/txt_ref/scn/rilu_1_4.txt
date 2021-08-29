@@ -1,0 +1,30 @@
+** rilu_1_4 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+KD - No way... You damn freaks...
+Having his forces defeated, the mortally wounded dwarven king fell to the floor. 
+Ar - Phew... finally. 
+Ar - Thanks Rilu, you were a great help. 
+Ro - Indeed, we wouldn't make it without you. 
+Ro - But how did you... Well...
+Ri - It's okay. I can't die. 
+Em - You do bleed a lot though. 
+Er - Ember, that was a bit too rude.
+Em(tired) - Oh... Sorry...
+Ri - Don't worry about it. I have a habit of such.
+Ar - But what was that magic you used? I don't think I've seen it before.
+Ri - I'm a necromancer. It's a power of both the dead and spirits. 
+Ro - (S-spirits? I knew it must be something creepy, but this is even worse...) 
+Ar - Awesome! You can do something like that? 
+Ar - I swear, the dead are so useless on their own. Can you also make skeletons and zombies?
+Ri - W-well...
+Er(happy) - Sir Arron is really into weird things.
+Ar - Hey Rose, why are you so pale all of a sudden? 
+Ar - Wait, you are still afraid of ghosts and stuff? Come on, you are an adult now.
+Ro - I-I'm not, I'm just tired from the fight. Anyway, let's leave this place already.
+=STOP=

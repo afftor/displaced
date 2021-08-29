@@ -1,0 +1,139 @@
+** rilu_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG castle=
+=SPRITE rilu=
+In a large hall an unknown man laid defeated as Rilu was inspecting something in her hand.
+Ar - Rilu? What's been going on here?
+Ri - Arron.
+Ri - You've been following me?
+?(Z) - You should stop her... If you want to live.
+Ar - Hmm? Who's this guy?
+Ri - It's Zelroth. He used to be my student in the past.
+Ar - I think I've heard this name in town. 
+Ri - He used to be a gifted scientist and a doctor, but now he seems to prefer to raise the dead instead.
+Ar - ...And that thing in your hand?
+Ri - ........
+Rilu demonstrates a small black ring. 
+Ri - It's an ancient artifact - The Circle.
+=SPRITE zelroth=
+=SPRITE_UNFADE 0.1=
+Z - She plans to destroy the world with it.
+Ar - What?
+Ri(spell) - Stay down.
+=SPRITE_HIDE=
+Invisible force has pushed Zelroth back onto the floor.
+Z - Gh!..
+Despite that he continued to talk.
+Z - Long time ago an ancient race had this ring.
+Z - It's the ultimate doomsday device.
+Z - And it's capable of destroying our whole reality.
+Ar(neutral) - That's a bit hard to imagine.
+Z - Why don't you ask your "friend" then.
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar(neutral) - ...Rilu?
+Ri(talk) - I believe it to be true.
+Ri - The world is in perpetual motion. 
+Ri - People are born, live and die, their children are born to repeat the cycle. 
+Ri - The sun rises only to set and then repeats this cycle indefinitely
+Ri(talk) - That's the nature of existence, the one we are in, at least.
+Ri(talk) - The Circle supposedly can stop it once and for all.
+Ar(neutral) - You came here for this?
+Ri - Yes. This was my goal all along. 
+Ri - I was planning for it long before we met.
+Ri - I have deceived you so I could find the ring.
+Ar(neutral) - But why?
+Ri - I can explain, but I don't expect you to understand it.
+Ar(neutral) - No hurt in trying.
+Ri - ...
+Ri - I hate this world. 
+Ri - And I hate this life.  
+Ri(talk) - I have been evil all along.
+Ri(talk) - And I want it to be destroyed. 
+Ar(neutral) - But why would you kill yourself? 
+Ri(talk) - *Sigh*
+Ri - Because life to me is endless suffering.
+Ri - I've told you before, my existence is nothing but agony.
+Ri(talk) - I'm dead tired of being injured, tortured, left at the mercy of a mob or a toy for some maniac.
+Ar(neutral) - I don't get it. Aren't you fine now? Don't you have fri-
+Ri - I said, you won't understand it.
+Ri - This is only a glimpse of peace in my eternity.
+Ri - These never last long for me.
+Ri(talk) - You can live and die, but I'll keep existing.
+Ri - I'll be feared and hunted again in no time.
+Ri - This is the cycle of my life, and I hate it. 
+Ri - I hate people and nothing is better than ending it once for all.
+Ar(neutral) - ...Is that really so? 
+Ri(talk) - You won't stop me. 
+Ar(neutral) - I don't believe you. 
+Ri(talk) - Stop being stup-
+Ar(neutral) - You are right. I can't understand how terrible your suffering was. 
+Ar(neutral) - But I do understand that it's bad enough to make you wish to end the world.
+Ar(neutral) - It must be why you show so few emotions too.
+Ar(neutral) - Must really put off the bastards who tortured you for fun.
+Ri - .......
+Ar(neutral) - But you are also lying through your teeth.
+Ar(neutral) - You aren't evil, and you absolutely don't hate people. You hardly used us either.
+Ri - You are not making any sense.
+Ar(neutral) - Despite all hardships you don't blame others.
+Ar(neutral) - And you don't show any real grudge towards them.
+Ar(neutral) - You care for me and you cared enough to save Iola, even though you hardly knew her.
+Ar(neutral) - You pretend to be evil, because this way you hope to make me reject you.
+Ar(neutral) - So you would have an easier time doing what you've planned
+Ar - But I won't hate you. 
+Ar - And I'm sure the other villagers and girls like you as well.
+Ri(talk) - ...Shut up.
+Ar(neutral) - What happened to you is unfortunate... No, terrible. 
+Ar - But I can swear to you that nobody will abuse you as long as I live.
+Ar - This might be not much for you, but this much I can guarantee. 
+Ar - Don't you think that killing us all can wait for some time? 
+Ar - I can't stop you after I'm dead anyway.
+Ri - ...Y-You won't fool me.	
+Ar(neutral) - You know I'm being serious. 
+Ri - (What's this... Why am I trembling?)
+Ar(neutral) - So, what do you say? 
+Ar - The others might get worried if they find out we are missing. 
+Ar - And it looks like something got in your eyes.
+Ri - ......
+Rilu wiped her face with a sleeve.
+Ri(talk) - ...Fine, I'll trust you. 
+Ri - Let's go th-
+Before Rilu could finish her sentence a large monster broke into the hall.
+=SHAKE_SCREEN 0.5=
+=SPRITE caliban=
+=SPRITE_UNFADE 0.1=
+C - Master!
+C - I'm here. 
+Z - Caliban, get her!
+C - Raaargh!
+Before they managed to react, the monster charged into Rilu.
+Ar(shock) - Oh shit!
+Arron tackled Rilu out of the way and they both tumbled onto the floor as the monster missed them.
+=SOUND cling=
+More undead started pouring from all directions.
+=SPRITE skeleton=
+Ar(shock) - We are in trouble!
+Ri(spell) - .....
+Rilu casted a spell and the room went pitch dark. 
+=SPRITE_HIDE=
+Without wasting any time they snuck from the castle.
+=BLACKTRANS 0.5=
+=BG forest=
+=SPRITE rilu=
+Ar - Whew... That was a handy trick. Are you alright?
+Ri - Yes. 
+Ri - I didn't think I'd be returning though.
+Ar - At least you are not doing it alone. 
+Ar(neutral) - What happened to The Circle?
+Ri - I dropped it when you pushed me.
+Ar(neutral) - Oh... Sorry.
+Ri - It's fine. 
+Ri(talk) - I'm not gonna need it any time soon.
+Ar - Good to hear that.
+.....
+Ri(talk) - Thank you for coming, Arron.
+Ri - You've done for me more, than anyone before. 
+Ar - Come on, you’re gonna make me blush.
+=STOP=

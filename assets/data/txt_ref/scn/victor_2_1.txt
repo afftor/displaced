@@ -1,0 +1,61 @@
+** victor_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
+=SPRITE victor=
+A few hours later
+V - Looks like a perfect timing for me.
+=SPRITE dragon=
+Dr - Who are you, human?
+Dr - You reek of death.
+V - Must admit finding you hiding here was quite a task.
+V - But I'm rather happy to finally be able to slay you.
+Dr - You are awfully arrogant for a mere mortal, coming here alone.
+V - *Sigh* Same thing every time.
+Dr - ...?
+*Slash*
+At inhumane speed Victor cut the big dragon across the neck and wing. 
+Dr - Y-you wretch...
+=SPRITE victor=
+V - Just die already.
+Wounded and exhausted from the previous fight, the dragon had no chance against him. 
+=BLACKTRANS 0.5=
+A nearly dead Qothus fell before Victor as life left his body.
+V - Hmph, too easy. 
+V - Well, can't blame you, after you've already been defeated today. 
+V - Now, let's finally finish this. 
+Victor raised his sword dealing a killing blow. 
+*Slash*
+V - Finally. This should be the last one...
+V - ...
+V - ...
+Contrary to Victor's expectations, nothing unusual happened.
+V - Fuck. So it's not over yet.
+=BLACKFADE 0.5=
+A few days later
+=BLACKUNFADE 0.5=
+=BG cult=
+=SPRITE victor=
+D - I think I ordered you to stop coming here as you please.
+V - Whatever. 
+D - In a bad mood, huh?
+D - Having trouble with your silly quest?
+V - Yeah.
+V - I killed the last of the winged pests, but somehow it's not complete.
+D - Maybe time to do some real jobs then?
+V - Hey, you've given me the pass on this hunt.
+D - Because dragons were dangerous to us.
+D - You've driven them to extinction by this point.
+V - I'm not doing it for fun, once I get all of their powers, we won't need to chase that fool.
+D - Hmph, that's just your assumptions.
+D - And you are out of luck now.
+D - .....
+D - Actually, I might have a lead for you.
+V - You aren't trying to make me your dirty work, do you?
+D - You make it sound like I'm some sort of scheming bastard. 
+D - You must remember the wretch, Arron? The one who I told you to keep your eyes on?
+V - You know I don't give a damn about weaklings.
+D - And if you did, you'd know he has one notable follower.
+V - ...
+=STOP=

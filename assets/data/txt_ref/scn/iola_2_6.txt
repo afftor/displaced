@@ -1,0 +1,118 @@
+** iola_2_6 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE iola=
+Ar - Hey, I was wondering how you are doing.
+Ar - After, you know, your dad's stuff.
+I - Thank you, Sir Arron. 
+I - I think I'm okay now.
+Ar - Just Arron is fine. 
+I - Okay, Arron.
+I - I could use your help with my religious training.
+Ar - Huh? Aren't you done with the cult?
+I - Even if I can't be a proper member, I'm not giving up on my faith.
+Ar - That's quite a devotion.
+Ar - You don't need that essence thing you asked us to get anymore?
+I - No. Now I can just continue with my training.
+Ar - I see. So what is it?
+I - I'll need you to come to my room at tomorrow's morning after breakfast.
+Ar - Understood. 
+Next morning.
+=BLACKTRANS 0.5=
+=SPRITE_HIDE=
+=BG villageday=
+=SOUND knocking=
+Ar - Iola? I'm here.
+I - One moment!
+Ar - She must be preparing for something.
+I - You can come in.
+I - Ah, and close the door.
+Ar - Okay.
+=BLACKTRANS 0.5=
+=MUSIC erotheme=
+As Arron made his way inside, he discovered fully naked Iola sitting in front of him.
+Ar - ...
+I - Is something wrong?
+Ar - I wonder if I'm still sleeping.
+I - Oh, it's a part of my training.
+Ar - Being naked?
+I - Yes! It makes the partner more excited, they say.
+I - But if you prefer it differently, I can put on my clothes.
+Ar - No, no, this is just fine.
+Ar - ...It might be a bit late, but how exactly is this your training?
+I - As a cult's Vestal I'm obliged to spread love and provide pleasure to those in need.
+Ar - That's the most convenient religion agitation I've ever heard.
+I - So to become a proper Vestal I need to train at it.
+I - So.. Um, we can start if you don't mind.
+Ioal casually freed Arron's penis from his pants.
+I - Oh... It's so big!
+I - Sorry, it's going to be my first time...
+I - We study a lot about human anatomy...
+I - But touching it personally feels completely different...
+I - Do I stroke it like this? 
+=ABG iola_minet_1=
+Iola begins to move her hand over Arron's dick.
+Ar - Y-yes.
+Ar - This would be correct.
+I - Aha, this feels kinda intuitive. 
+I - Do you like this?
+Ar - Yes.
+Ar - You can go a bit faster.
+I - Alright...
+=ABG iola_minet_2 iola_minet_3=
+Iola increased her speed while trying to stay gentle.
+I - Oh right.
+I - I'm also supposed to use my mouth.
+=ABG iola_minet_4 iola_minet_5=
+Ar - Ouch, watch the teeth.
+I - Oh, sorry.
+I - I'll lick it.
+I - Mmmhm...
+I - It tastes weird.
+I - ...Mmm...
+I - How doesh ith heel?
+Ar - For a first time I can't complain.
+=ABG iola_minet_6 iola_minet_7=
+I - (I'll try to do advanced thing)
+I - *slurp*
+I - (Wrapping my tongue around the tip)
+Ar - Hah...
+Ar - You put some real effort.
+I - (He praised me)
+I - Mmhm...
+I - (I wonder if I'm blushing now)
+Ar - Mh, Yes...
+Ar - Just a bit more...
+I - ....Mmhhm *slurp*
+Ar - Watch it, I'm coming.
+Iola nodded in confirmation.
+=ABG iola_minet_8 iola_minet_9=
+=WHITE=
+Ar - Ugh...
+I - ...!
+A hot stream of semen struck Iola's throat. 
+I - Mhm... *gulp*
+I - Ah...
+Pulling out the penis in the middle of ejaculation, a good part of it splashed over her face.
+I - Sorry, I couldn't swallow it all.
+Ar - Don't push yourself too hard.
+Ar - I'll rate it 9 out of 10 for a first time.
+I - Wow, that's a lot!
+I - Thanks Arron.
+Ar - It's been a pleasure.
+I - I hope we can practice together more in future.
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE iola=
+Ar - So, I was wondering one thing.
+Ar - Are you supposed to do it for anyone who asks?
+I - Well, actually there are options. 
+I - Some Vestals do it for everyone, others only serve only selected persons or just their loved ones.
+I - I haven't decided yet.
+I - But there's no point until I finish my training.
+I - And I still have to part with my virginity.
+Ar - Oh, huh. 
+Ar - Well, you know where to find me.
+=STOP=

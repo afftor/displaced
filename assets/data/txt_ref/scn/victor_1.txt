@@ -1,4 +1,4 @@
-** victor_1_1 **
+** victor_1 **
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=

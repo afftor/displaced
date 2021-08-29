@@ -1,0 +1,22 @@
+** dimitrius_ending_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city=
+=SPRITE demitrius=
+D - Hah, you finally came.
+D - How do you like my work? 
+Ro(talk) - This is terrible. Why would you do this?
+D - Don't be so boring.
+D - When else would you be able to see something so different to your insipid lives?
+Ar(neutral) - Pardon my insipidness, but we're going to stop you.
+D - Hahaha, that's a funny joke. 
+D - You fight for this world, but it's a lost cause.
+D - I really like your persistence, but look at yourself.
+D - You guys are the only ones who actually came. 
+Ar(neutral) - But it was you, who made locals indifferent to their future. 
+D - Bullshit. It's just your nature. 
+D - To be cattle for us. 
+Ar(anger) - Getting really sick of your arrogance.
+D - Great, entertain me little moths!
+=STOP=

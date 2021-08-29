@@ -1,0 +1,103 @@
+** dimitrius_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG cult1=
+=SPRITE demitrius=
+The team barges into the main room with Dimitrius in it.
+=SOUND slam=
+D - Ah, I almost forgot about you, fools.
+Er(anger) - Stop screwing around. Give our friends back!
+D - How about "No"?
+Ar(neutral) - Figured asking nicely wouldn't work with you. 
+Ar - So how about a trade then?
+D - Hah, what can you possibly offer to me? Your lives?
+Ar - How about this? 
+Arron presents the previously acquired black ring.
+D - An interesting thing, but what good does it do to you? 
+D - You would never dare to use it anyway. 
+Ri - You are right. He wouldn't. 
+Ri - But I will.
+D(anger) - Hmph, is that so?
+Ar(neutral) - You know she would, if you don't want your existence completely erased, give us back Rose and Iola.
+D - Hahahah, Fine.
+D - You can take Iola, I'm already bored with her.
+D - Rose, on the other hand, has something to say about it first.
+=SPRITE rose=
+Ar(shock) - Rose!
+Ro - Thanks for coming, but you can go now.
+Em - Eh? 
+Ro - I'm not going back with you.
+Ro(talk) - I'm joining Dimitrius.
+Er(anger) - What? Why?
+Ro - This is for the best.
+Ro - I'm tired of all this.
+Ro(talk) - Deep inside, I hated every single one of you.
+Ro(talk) - Ember is stupid and gullible.
+Em(tired) - Eeeh?
+Ro(talk) - Erika is a shallow harlot.
+Ro(talk) - Rilu, you just creep me out. 
+Ri - You wouldn't be the first.
+Ro(talk) - And Master... You are the worst irresponsible womanizer I've ever met.
+Ro - It was me, who told your brother about your affair with his wife.
+Ro(talk) - You told me to choose what I wanna do with my life.
+Ro(talk) - I don't want to see any of you anymore from now on.
+Er(anger) - ...
+Em(tired) - ...
+Ar - Yeah, nice work Dimitrius, now let's return to the deal.
+Ro(shock) - Eh? You didn't hear what I said!?
+Ar - I don't care.
+Ro - ...
+D - Aahahah, really nice one Arron. I'm very impressed.
+D - Fine, you can have your girls. 
+Ro - N-no way! What was that?
+D - Sorry sweetie, Arron wins this round.
+D - I can't allow them to destroy my reign.
+D - They are yours.
+Iola and Rose mechanically are relocated to the Arron's side.
+D - *snap* 
+I - Uh... Oh... Where am I?
+Ro - ...
+D - Here, they aren't under my influence anymore. 
+D - Now give that to me.
+Rilu silently threw the ring in Dimitrius' direction. It vanished in a thin air.
+D - Good, you made me worry for a moment there. 
+D - That's quite an achievement for you pests.. 
+Er - You act all high and mighty, but we got our friends back from you. 
+Er - Your plan failed.
+D - What? 
+D - Aahahah, holy crap, you thought my plan was to steal your friends?
+D - You actually are an idiot.
+D - You only interested me because of your connection to the other dimension, and now I've achieved it anyway.
+Ro - N-no way!?
+D - Yeah, I never really cared if you join me or not, Rose, but it's always fun to make mortals hate each other.
+D - This was fun while it lasted, but it's time to finish with this world already.
+D - And once we are done here, it's your home's turn.
+=SHAKE_SCREEN 1=
+=SOUND rumble=
+Ar(shock) - Eh? What's going on?
+Ri(talk) - This is bad, we should stop him.
+Ar(anger) - Shit, no other choice!..
+D - Don't make me laugh you wimp.
+Unexpectedly to everyone, Dimitrius pulled an unknown metal object from his back.
+=BG scenes/demitrius_arron=
+With loud explosive noises it spewed a rain of pellets in the direction of Arron.
+Ar - Agh!.. Guh...
+Ro - Master! 
+D - Ahahaha, humans can make really fun toys.
+Ar - Damn bastard...
+I - Stay still, you are bleeding!
+=BG cult1=
+=SPRITE demitrius=
+=SHAKE_SCREEN 1=
+D - But enough of that. 
+D - Be grateful, you get to see the birth of a new world.
+Ri - !?
+Ar(neutral) - What's... happening?
+D - Just making a few changes around here.
+Er(anger) - This place is going down.
+Ri(talk) - We must retreat.
+Ar - ...
+D - Run, weaklings, run.
+D - Use what little time you've left for your own good, hahaha.
+=STOP=

@@ -1,0 +1,37 @@
+** iola_2_5 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE iola=
+Ar - Hey, how do you like your new home? 
+I - It's nice, thanks.
+I(sad) - I just don't know what I should do now. 
+I(sad) - Father has changed, he would never do something like this.
+Ro(talk) - Uh.. I think we should tell you about the time we went with him to the caves.
+=BLACKTRANS 0.5=
+I(sad) - That sounds really weird.
+Ar - Just for the note, we aren't demons or anything like that.
+Ro(sarcastic) - Not in a literal sense at least.
+I(sad) - I believe you.
+I - You've mentioned you are looking for some person? 
+Ar - Yeah, according to Rilu there's someone who has been living for a really long time and probably came from another world as well.
+Ar - And we also got this Saint Pearl from Faery Queen, which seems to be related to him.
+I - This reminded me of Sergius. 
+I - He's one of the Ancestors' saints. 
+I - I've been studying it during my initiation. 
+I - And you are planning to find him?
+Ar(neutral) - Don't see any better options.
+I(sad) - It's hard to believe he'd still be alive. 
+I - He was one of the former a long time ago, but it never said what happened to him.
+I - Please, let me help you. If he's actually the Sergius, he would know what's going on. 
+I(sad) - Although I don't know why he would just avoid us if he's still alive.
+Ro - Maybe he has lost his memory or something. 
+Ar - Or just got bored of the religious stuff.
+I(shock) - No way!
+Ar - What? Don't you ever feel bored by the repetitive rituals?
+Ar - It's like brushing your teeth but also everyone makes you feel guilty for not doing it.
+Ro(sarcastic) - Master is fooling around.
+Ro - I'm sure there must be some serious reason.
+I - ...Thanks, I hope we will find him.
+=STOP=

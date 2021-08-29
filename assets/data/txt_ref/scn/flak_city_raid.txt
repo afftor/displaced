@@ -1,0 +1,13 @@
+** flak_city_raid **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG market=
+=SPRITE flak=
+F - Hey, big guy, there's some nasty news coming from Aeros.
+Ar - Really? What about?
+F - Dunno, something like a war?
+F -  There seem to be many refugees coming from that direction.
+F - Just thought you'd be interested to know about it.
+Ar(neutral) - Doesn't seem good. I guess we should check it out.
+=STOP=

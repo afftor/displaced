@@ -1,0 +1,21 @@
+** aeros_2 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_out=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ar - Hey, we dealt with that dwarf issue. 
+Guard - Which dwarf issue? 
+Ar - The one you told us to take care of. Bloodthirsty dwarves and such, remember?
+Guard - No idea what you are talking about.
+Ar - Carl, please, you are really getting on my nerves.
+Guard2 - I'm not Carl. That guy was kicked out a few days ago.
+Ar - Argh... Whatever. We've dealt with dwarves, now let us pass. We had an agreement.
+Guard - Look, I don't know anything about the agreement. And I’m only seeing you for the first time.
+Guard - You are free to pass through. No idea what that moron Carl said to you, but the entrance is free. 
+Ar - ......
+Ro - It's all good, we can enter the city now, right?
+Ar - That bastard was really lucky his face was hidden by a helmet. 
+=STOP=

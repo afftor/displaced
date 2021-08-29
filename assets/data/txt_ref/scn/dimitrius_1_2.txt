@@ -1,0 +1,24 @@
+** dimitrius_1_2 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+As Dimitrus goes slightly behind the group, Rose talks to the Arron.
+Ro - We are in a tight spot here. 
+Ro - If our origin goes public, they will certainly proclaim us to be demons.
+Ar - Relax, he does not seem to suspect anything.
+Ar - Once we are done with his task, he's going to leave and it will be all good.
+Ro - I suppose...
+Ro - The villagers do seem to pay him great respect though.
+Ro - Thankfully, it does not seem like they actually believe in this whole demon idea.
+Er - Of course it's all nonsense.
+Ro(shock) - EH? You were listening all this time?
+Er(happy) - Don't worry, my lips are shut.
+Er - Unless you are interested in my oral skills.
+Ro - *Sigh* Let's just get this over with.
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

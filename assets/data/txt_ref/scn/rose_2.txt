@@ -1,0 +1,51 @@
+** rose_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+Arron laid in the bed, recuperating from wounds left by Dimitrius.
+=SOUND knocking=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ro - Can I come in?
+Ar - Sorry, I'm not quite in the condition for a liaison. Can you postpone it?
+Ro - ...
+Ro - Iola said that you were very lucky to survive that.
+Ar - Yeah, felt like my organs became a paste. 
+Ar - Hurt like hell too.
+Ro(talk) - ...I did a terrible thing.
+Ar - Huh, so it's about you now? Really supportive there.
+Ro - Oh... Uh... Sorry...
+Ar - I'm kidding, you twit. 
+Ar(neutral) - Yeah, don't worry about it.
+Ar - I knew you'd not in your mind since Dimitrius is a demon and all that shit.
+Ro - ...That's not the entire truth. 
+Ro - Those things I said about everyone... 
+Ro(talk) - I really feel that way, at least sometimes.
+Ar - ...So what? 
+Ar - We all sometimes feel like we hate everything and everyone, especially about someone close.
+Ar - You remember how you supported Ember when we met for the first time?
+Ro - ...
+Ar - And how you volunteered to save Erika, when she was captured, despite the danger?
+Ro(sarcastic) - That was...
+Ar - And how you yelled at me right before we ended up here. 
+Ro(sad) - *sob* M-master...
+Ro(sad) - I'm so sorry... Waaah...
+Ar - Ouch, easy there...
+=BLACKTRANS 0.5=
+...
+Ar - Feeling better now?
+Ro - *nod*
+Ar - Jeez... I feel like I'm doing a therapist’s job a lot lately.
+Ro(talk) - I haven't thought about you being compassionate before.
+Ar - Tell anyone and I'll kill you. 
+Ro - I have to ask forgiveness from the others. 
+Ar - Yeah, you can do that.
+Ro - Thank you, Master. 
+Ro - I'll be off now. Get well soon.
+=SPRITE_HIDE=
+=SOUND slam=
+Ar - On a second thought... A liaison might not be a bad idea.
+Ar(neutral) - Rose, wait, you hear me?
+Ar - Darn it.
+=STOP=

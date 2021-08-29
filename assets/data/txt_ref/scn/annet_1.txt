@@ -1,0 +1,23 @@
+** annet_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE annet=
+The team has barged into the main city hall as Annet meets them there.
+An - Look what we have here.
+An - Can't say I expected to see you still alive.
+Ar(neutral) - I knew you were a one kind of a bitch after learning your history with Erika.
+Ar(neutral) - But must say, this is a whole different level. 
+An - I'm glad you appreciate my work.
+Ro(shock) - Your work? 
+Ro(shock) - You are slaughtering innocent people!
+An - People, cattle, who cares.
+An - I'm glad we are finally past the acting stage and I don't have to deal with their stupidity.
+An - Won't deny it, I did have my fun a couple of times though.
+An - But it was taking too much time.
+Ar(neutral) - Whatever, let's just beat the shit out of her.
+An - Tsk, you are throwing away the few minutes of life I am gifting you.
+An - And with such bad manners too.
+An - I'll take care of your friends, once you die, Arron.
+=STOP=

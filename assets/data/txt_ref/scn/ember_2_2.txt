@@ -1,0 +1,17 @@
+** ember_2_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
+=SPRITE rose=
+Ar - Hey, Rose, you know what?
+Ro - Yes? 
+Ar(neutral) - I don't think I ever ate a dragon. 
+Ar - Can you cook it? 
+Ro(talk) - Do you think it's appropriate? I mean there's Ember...
+Ar - Oh, I've tasted her already, alright. 
+Ro(sarcastic) - ...
+Em - Ah, I wanna try it too!
+Ro(sarcastic) - Please, let's not distract too much, it's dangerous here. 
+Em(tired) - Oh, sorry. 
+=STOP=

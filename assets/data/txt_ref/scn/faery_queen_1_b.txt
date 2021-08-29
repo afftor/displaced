@@ -1,0 +1,18 @@
+** faery_queen_1_b **
+=GUI_NORMAL=
+=BG forest=
+=SPRITE rose=
+Ar - So, anyone has any ideas?
+Ri - I can stop her from getting away.
+Ar - Oh? What do you need for that?
+Ri - We can take her close relative as a hostage.
+Ro - That's...
+Ri - I'm jesting. 
+Ri - I can stop her with magic. 
+Ri - I’m gonna need something of her personal belongings though. 
+Ri - Like a brush or clothes.
+Er - We might find something at her nest then.
+Ar - You know where is it?
+Er - Yeah I know the old one. Faeries often change them but they also tend to leave some of their stuff behind.
+Ar - Alright, let's check it.
+=STOP=

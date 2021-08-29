@@ -1,0 +1,100 @@
+** iola_2_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG cult=
+=SPRITE rilu=
+The team ended up in a jail building near one of the cells.
+Ri - It's here.
+Ar - This is quite a sturdy door.
+Ar - Ember, could you?
+Em - Alright!
+=SOUND crash=
+=SPRITE iola=
+I - Sir Arron!?
+Ar - I prefer "Prince Charming" at times like this.
+Ro(sarcastic) - Ha-ha.
+Ar(neutral) - What have you been doing here?
+I(sad) - Father imprisoned me but I'm not sure why.
+I(sad) - He's been acting weird and I eavesdropped on his guest.
+Ar - Curious, but I think it would be better if we leave first.
+Ar - Your colleagues don't seem very friendly either.
+I(sad) - No, I can't.
+I - It's father's order so there should be some reason.
+Ar(neutral) - Look, your father locked you in a jail like this.
+Ar(neutral) - Even if he's not psycho, you won't make things better by staying here.
+Ro - Plus he ordered the guards to attack us. 
+Ro - It's not sane to stay here.
+I(sad) - No, this must be some mistake.
+I - I'm sure he can understand if I talk to him.
+However, the armed group gathered on the other side of the hall.
+Guard - We cornered them! 
+Guard - Archers, ready!
+Guard2 - But Lady Iola is there.
+Guard - Damnit, did these bastards plan this out?
+=SPRITE demitrius=
+D - Shoot. 
+Guard - Eh?! 
+Guard - But Father, there's your daughter in the cell.
+I - Please wait!
+D - She was brainwashed by the foul demons.
+D - There's no other choice. 
+I(shock) - Wha!...
+Guard - ...Yes, Sir.
+Guard - Shoot!
+Ro(shock) - No!
+Ar(anger) - !..
+=BG scenes/rilu_defend=
+*Splurt*
+Ri - Ugh...
+Before arrows hit their target, Rilu jumped in front of them, shielding others with her body.
+I - Rilu?!
+I - NO!
+Ar - Ember!
+Em - Yes? 
+Ar - Bust an opening so we can escape.
+Ar - Erika, take Rilu, I'll grab Iola.
+Er - Gotcha.
+D - What are you waiting for, idiots? Shoot again!
+Guard - Yes, si...
+=SHAKE_SCREEN 0.5=
+=SOUND explosion=
+=BG prison=
+=SPRITE embershock=
+A shockwave and further trembling threw soldiers of balance making them unable to continue that attack.
+Em - Oh.. I think it was a bearing wall.
+Ar(anger) - The building is unstable. Run!
+=SPRITE demitrius=
+D - Damnit.
+Guard - Your Highness, they are getting away. 
+D - Really observant, you idiot. 
+=BLACKTRANS 0.5=
+=BG forest=
+=SPRITE iola=
+I(sad) - Rilu, please do not die!
+I(sad) - You protected us... *sob*
+Ri - *cough* *cough*
+I(shock) - Eh? She's alive!
+Ri - Pull the arrow from my... *cough* lung.
+Rilu stoically endured arrows being pulled out of her body.
+I - You look like you are really in pain. Let me help you.
+Ri - Don't worry, I'm used to it.
+Ar - Weirdly enough she's immortal.
+I - Oh... Thank goodness.
+I(sad) - I can't believe my father ordered them to kill me...
+I - I want to thank you all for my rescue.
+I(sad) - I don't know what I should do now, though.
+Ar - You are welcome to live with us. 
+Ar - It's not fancy but folk here is pretty friendly.
+Ar - I'm afraid your father won't be generous to us any time soon though. 
+I(sad) - I don't know, I don't wanna be a bother to you.
+Ar - Don't be stupid, we are glad to have more pretty gi... I mean companions around.
+Ro - *Sigh*
+Ar - Right, Rilu?
+Ri - ...Why are you asking me?
+Ar - Didn't you suggest the whole rescue thing in the first place?
+Ri - ...
+I - I'm not sure how I can ever repay you for this.
+Ri - That's fine.
+Ro - I'll see where we can let you stay. 
+=STOP=

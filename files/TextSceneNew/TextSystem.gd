@@ -3,7 +3,7 @@ extends Control
 signal scene_end
 
 const REF_PATH = [
-	"res://assets/data/txt_ref/scn/chardef.txt",
+	"res://assets/data/txt_ref/chardef.txt",
 	"res://assets/data/txt_ref/scn/intro.txt",
 	"res://assets/data/txt_ref/scn/forest.txt",
 	"res://assets/data/txt_ref/scn/ember_1.txt",

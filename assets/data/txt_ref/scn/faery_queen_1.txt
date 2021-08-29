@@ -1,0 +1,22 @@
+** faery_queen_1 **
+=GUI_NORMAL=
+=BG forest=
+=SPRITE faeryqueen=
+=SPRITE_UNFADE 0.5=
+FQ - Greetings, fuckwits.
+FQ - What do you think you are doing coming here?
+Ar - Huh... I wonder if there's any point in trying to negotiate at all.
+FQ - Huh? Whatcha gonna do, dumbass? Ride that dragon cunt like some damn hero?
+Ar - Whatever, we want the Saint's Pearl.
+FQ - Yeah, and I want your ass roasted by an ogre. Do you think I'm gonna give it to you?
+Ar - ...Get this bitch.
+FQ - Ha, suck it losers.
+=SPRITE_FADE 0.5=
+=SOUND teleport=
+Ar - Damn it, she got away.
+Em - Look, there's a portal left after her.
+Ar - Ah, we could follow it.
+Ro(sarcastic) - I don't think this is a good idea. 
+Ro(sarcastic) - We don't know where we might end up.
+{"effect":"choice","value":[{"index":0,"text":"Go through it"},{"index":1,"text":"Agree with Rose"}]},
+=STOP=

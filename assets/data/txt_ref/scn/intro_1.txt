@@ -1,0 +1,172 @@
+** intro_1 **
+=BLACKON=
+=MUSIC eventlight=
+=DELAY 2=
+=BG castle=
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+The Kingdom of Avior has been at peace for the last few centuries. Political stability felt almost taken for granted not only by the citizens, but even by royalty. 
+Military successes of the previous king, Mizar, provided his family with a big and strong country, which rightfully ruled to this day.
+His son and successor, Alcor, reinforced his father's achievements and continued his rulership.
+As it happens in a monarchy, his first son, Norbert, prepared to take his place, given his father’s old age.
+However, in his twenties, the second prince Arron is nothing but trouble to his family...
+=BG castleroom=
+=SPRITE arron=
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+First prince's bedroom
+Ar - My Lady, it's a great honor for me to be invited into your bedroom.
+Lr - Huhu, enough Arron, just come inside already. 
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Ro - (Jeez, what is master even thinking to go at it again...) 
+Ro - (Oh, they went in. I better take my position. Sigh...) 
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+Ar - I've been dreaming of this day since our last meeting, and my heart skipped once I'd noticed your beautiful lustful eyes on me this morning...
+Lr - You and your flattering again... Gosh, why are you already naked?
+Ar - And why aren't you? 
+Lr - Oh my...
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+Few moments later...
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Ro - (Someone is coming... )
+Ro - (It's Prince Norbert!)
+=SOUND knocking=
+*Knock Knock Knock*
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+Arron recognized the signal his servant, Rose, was instructed to give. 
+Ar(neutral) - (Uh-oh... This is bad.)
+Ar - My sincerest apologies, my lady.
+=SOUND doorlocked=
+Ar(neutral) - ... Huh?
+Ar(shock) - The balcony door is stuck? 
+Lr - Oh, it completely slipped my mind.
+Lr - Norbert had jammed the door after last time.
+Ar(neutral) - ......... Shit.
+=BLACKTRANS 0.5=
+=DELAY 0.5=
+=SOUND doorsmash=
+Norbert and a few guards barge into the room. As he sees his naked wife, rage quickly engulfs his face.
+Nt(anger) - Where is he?! 
+Lr - Dear, what are you doing? I had been taking a nap so nicely. Why have you brought these people into our love nest?
+Nt(anger) - Check all the cabinets, and look under the bed!
+Guard - There's nothing under the bed, m'lord. 
+Guard2 - Cabinets are empty as well.
+Guard3 - Balcony is not opening.
+Nt(anger) - No way! He couldn't have gotten away again, keep looking.
+Lr - Hmph, if only you were as zealous at night as you are right now. 
+*chuckle*
+Nt(anger) - What the... 
+Guard - Behind the door!
+Ar - There's nobody here!
+Nt(anger) - ARRON!!
+Ar(neutral) - ...
+Ar - I know how it looks, but it wasn't me.
+Ar(shock) - Ouch, stop dragging me, I can walk on my own!
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Ro(shock) - (Uh-oh.. this didn't go well. I better follow them...)
+=GUI_HIDE=
+=BLACKTRANS 0.5=
+=DELAY 0.5=
+=BG scenes/dungeon_1=
+=SPRITE arron=
+=GUI_NORMAL=
+Arron, with his hands tied behind his back sits on the floor of a large cell. Norbert observes him, while his subordinates prepare for a ritual.
+Rose hides among the shadows of a far corner, unnoticed.
+Nt - You know, it was funny when you convinced the Pope that Aunt Mary had been possessed by the devil so he performed a whole ceremony for her. 
+Ar - Everyone knows old people are evil. That's why they are still with us and not with God.
+Nt - ...it also was rather amusing when you brought a bunch of homeless people to our dining hall during the negotiations with Reines and insisted that you will become their king in a new nation.
+Ar - Bob could also replace me as a King. 
+Nt - You are not taking this seriously, are you? Tell me, were you really not satisfied with all those palace maids and feudal daughters? Why go after my wife? 
+Ar - Dunno, you went for her for some reason. You don't know either?
+Nt(anger) - THAT WAS THE ONLY REASON!? Because she's MY wife?
+Ar - Nah, she also seemed quite delighted with my company. I mean, how can you ignore someone who eagerly woos you?
+Nt(anger) - Shut the hell up, I'm not going to hear from you that my wife is unfaithful. 
+Ar(neutral) - Sure, it's all my fault.
+Nt - Your wildness had been ignored by father way too many times.
+Ar - Hah. So what you gonna do? You can't kill or imprison me. Everyone will realize you did it, and the people won't like it. 
+Nt - True. Even though many nobles find your behavior displeasing, killing you isn’t really worth it. You have to disappear.
+Ar(neutral) - ... What? This is what you are preparing?
+=BG scenes/dungeon_2 0.5=
+As they kept talking, a number of magical runes across the floor began to glow. 
+Nt - Yes and we are about to finish. This portal spell will send you where you won't be causing us any more troubles ever again. 
+Arron's eyes widened with surprise and disbelief.
+Ar(neutral) - (Uh, shit, he seems to actually be serious this time.)
+Ar(shock) - Hey, stop it, Norb, father will know! 
+Nt - Nobody will know, and the nobles will confirm that you just disappeared during the night. Everyone will be happier without you around.
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Ro(shock) - (Oh, no, I have to do something!)
+Nt - Farewell, Arron, you were a huge pain in the ass all these years. 
+Portal runes shine with incredible brightness when Rose runs out of hiding, trying to push Arron away from it.
+Ar(shock) - Rose? What the... 
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=SOUND teleport=
+Just as she enters the circle, the spell completes, the light fading, and revealing the empty space where once was two people.
+Nt - Huh... was that his slave? Well, one less witness to worry about. Clean it all up, I'll prepare to make a report for father.
+=GUI_HIDE=
+=BLACKON=
+*Slam*
+=DELAY 0.5=
+=BG desert=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SOUND crash=
+=SHAKE_SCREEN 0.5=
+=DELAY 0.5=
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+In the middle of an empty desert two bodies appear on the ground.
+Ar(neutral) - Ouch... Damn it, Rose you are an idiot! 
+Ro(sad) - Ugh. What is this place? Where are we? 
+Ar(neutral) - Hell if I know. Untie me already.
+Arron barely managed to get up with his hands still tied behind his back.
+Rose frees Arron from the ropes. 
+=SOUND punch=
+=SHAKE_SPRITE 0.3=
+=DELAY 0.3=
+*Slam* 
+Ro(sad) - Owie... Why!?
+Ar(neutral) - Why? Why jump in, you moron? In what universe does that seem like a good idea?
+Ro(sad) - I'm sorry, Master... I just... couldn't hold back.
+Ar(neutral) - Forget it. Now, what is this place?
+The pairtakes a long look at their surroundings, finding only desert and rocks. 
+Ar(neutral) - Shit, I really shouldn't have slept during those geography lessons.
+Ar(neutral) - Norb will really pay for this once I get back.
+Ar - First I'll have to take care of those suspicious guys with him...
+Ro - I think it will be better if we start moving.
+Ar - Yeah, it doesn’t seem like anyone will be coming to help us any time soon. Let's go.
+Ro - Where to? 
+Ar(neutral) - Hrm...
+Ar - Anywhere! I'm free now, so I can go anywhere I want, Mwahaha!
+Ro - (Despite the situation, looks like Master has returned to his normal mood pretty quick. That's a relief...)
+=BLACKTRANS 0.5=
+=DELAY 0.5=
+Ro - Hmmm... It was midnight when we were at the castle, but it’s noon here, that must mean...
+Ar - Time travel! 
+Ro(sarcastic) - No, we must be very far away from the kingdom.
+Ar(neutral) - Bullshit, you’re telling me time travel isn't real now?
+Ro - It never was...
+Ar(shock) - So I’ll never be able to become my own grandfather? 
+Ro(sarcastic) - ...Thankfully.
+=SPRITE_FADE 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

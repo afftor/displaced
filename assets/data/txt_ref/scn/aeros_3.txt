@@ -1,0 +1,44 @@
+** aeros_3 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_in=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ro - Okay, we've searched through the central library. 
+Ar - So what have you found?
+Ro - We've gone through Rilu's description and only found very scarce mentions to someone matching it. 
+Ro - The person is referred to as the Traveler. They are thought to be some sort of powerful mage or even a mysterious entity.
+Ar - Interesting. So you say there's a chance that Traveler is a cute girl? 
+Ro(sarcastic) - Sure, if that makes you motivated. 
+Ro - The only issue is we don't really have any leads. There's one book with a quite detailed description, though.
+Ro - An artifact named "Saint’s Pearl". It's rumored to have great power and is associated with the Traveler somehow. 
+Ro - Perhaps we should investigate it at least.
+Er - Oh, I know where we can find it. 
+Ro(shock) - You do? Tell us then!
+Er - Hmmm... But what would I get from it?
+Ro - *Sigh* What do you want?
+Er - A night together?
+Ro - No.
+Er - A kiss?
+Ro - No. 
+Er - Can I touch your fluffy tail at least, then? 
+Ro - ... 
+Ro - Fine, just do it and tell us already.
+Er - He-he, sure. 
+Er - Don't worry, I'll be gentle...
+Ro - ... Ah!
+Er - Oh, sorry, I didn't expect you to be this sensitive.
+Er - Mhmm it's really soft and nice to touch.
+Ro - Enough, just tell us. 
+Er - Okay... the Faery Queen has it in her possessions.
+Ar - Faeries? Do you mean those small things in the forest?
+Er - Yep. They are nasty little bastards.
+Er - I'd not feel remorse tearing a few of their wings on the way there.
+Ro - That seems a bit harsh for you.
+Er - They mostly manage to earn it. And they grow back with time after all.
+Ar - You know how we can find her?
+Er - Sure, but cornering her might be pretty hard.
+Ar - We'll figure something out once we get there.
+=STOP=

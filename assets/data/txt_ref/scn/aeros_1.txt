@@ -1,0 +1,39 @@
+** aeros_1 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_out=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ar - Oh jeez, not the guards...
+Em - Hey, Rose, why doesn’t sir Arron like the guards?
+Ro - It's probably since they mostly had to keep him in place.
+Ar - Far from it, but you can also count that.
+Guard - Halt. Where are you going?
+Ar - Can we go in?
+Guard - Hmmm... Are you a citizen?
+Ar - No. We are sorta on a delivery here?
+Guard - I don't trust you. The city is off-limits if you aren’t a citizen. 
+Guard - We don't need a new group of beggars on the streets.
+Ar(neutral) - You gotta be shitting me. Do I look like a beggar?
+Guard - no pass.
+Ar - Listen, guard...
+Guard - I have a name, and it's Carl.
+Ar - ......
+Ar - Listen, Carl, we really need to go in, how can we prove we aren't beggars?
+Guard - Hmph. Perhaps a small payment of 10,000 gold will prove it. For each person.
+Ar(anger) - YOU FU...
+Ro - Wait, Sir Carl, we really need to get inside. Could you please consider some other way? We are willing to do anything!
+Guard - Heh... Anything you say? 
+Ro(sarcastic) - .....Except that.
+Guard - Hmph. 
+Guard - ...
+Guard - Fine, there's been a lot of reports about bloodthirsty dwarves coming out from nearby caves. 
+Guard - If you take care of them, I will consider allowing you to pass.
+Ar - Sigh.. let's just get on with it.
+Ar - Now you see why I hate guards, Ember.
+Ro - Now that you mention it, I can relate.
+Ro - Maybe we could let Erika please him though.
+Er - Boo. Like I would cheat on Arron like that.
+=STOP=

@@ -1,0 +1,98 @@
+** dimitrius_2_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE rose=
+Ro - Maybe we should've helped the survivors back in the city.
+Ar(neutral) - We have enough to deal with on our hands already.
+Ro - What are we gonna do about Dimitrius though?
+Ar(neutral) - Maybe we won't do anything. 
+Ar(neutral) - He seems to be quite dangerous, but isn't really hostile.
+Ro(talk) - What do you mean?
+Ro(talk) - Now since he got those powers we won't be able to go back too.
+Ar(neutral) - Rose, why do you think I want to go back? 
+Ar - To live the rest of my life in the shadow of my brother, who attempted to get rid of me?
+Ar - Not to mention being chained to the palace and deal with all the dumb people there. 
+Ro - But it was our home. 
+Ar(neutral) - Yes, except nobody is waiting for us there. 
+Ar(neutral) - I've never had the freedom to do anything useful in my life until we ended up here.
+Ro - But... What should I do?
+Ar(neutral) - You aren't my slave anymore. 
+Ar - You can choose what to do with your own life as well. 
+Ro(talk) - But I don't-
+Ro - ...I understand.
+Ro - I don't think we can ignore what's going on around anymore.
+Ro(talk) - Now, excuse me...
+=BLACKTRANS 0.5=
+=BG villagenight=
+=SPRITE rose=
+Ro - (Why do I feel so terrible now)
+Ro - (Maybe I really need a break)
+Ro(talk) - Hmm... Who's there? 
+=SPRITE iola=
+Ro - Iola?
+I - Evening, Rose. 
+I - I'll have to borrow you for a moment.
+Ro(talk) - Huh?
+*Thud* 
+With an uncharacteristic strike, Iola knocked Rose out and swiftly disappeared with her into the night.
+=BLACKTRANS 0.5=
+=BG cult2=
+=SPRITE rose=
+Ro - Ugh... what... Where am I?
+Rose found herself in an enclosed room in a place she hasn't seen before.
+The small room only had two other people besides her: Iola and Dimitrius.
+Ro - Iola? Why..?
+Iola acted as she couldn't hear or see Rose. 
+Ro(talk) - What have you done to her!?
+D - Why are you mortals so dense? 
+D - Who do you think she is? 
+Ro - Our friend. 
+D - Then you should choose better friends.
+D - She's a member of the cult, you idiot. 
+D - The cult, which was reestablished solely to help us invade this world.
+D - She was trained since her birth to succumb to our control and serve us however she might. 
+D - Naturally I've planted a few additional suggestions when she was imprisoned, just in case it could prove to be useful.
+Ro - This is disgusting. 
+D - Thanks. But I didn't ask your opinion on that.
+Ro - What do you want of me?
+D - I have a proposal for you.
+Ro(sarcastic) - ...What?
+D - To put it briefly, I offer you to take the place of Annet. 
+D - After her death there's some gap in ranks. 
+D - You could fit right in and have the same powers she had.
+D - In return you'll only have to pledge your loyalty to me.
+D - Given that it will save you from the eventual demise of your kind, I see it as an extremely nice offer. 
+Ro - ......
+D - You will have some time to think about it. 
+D - Take her to the jail cell.
+I - Okay. 
+=BLACKTRANS 0.5=
+=BG villageday=
+=SPRITE erika=
+Next day.
+Ar - Hey, Erika, have you seen Rose?
+Ar - I haven't seen her since yesterday. 
+Er - No, it seems Iola is gone as well.
+Ar - Okay, this is unusual. 
+Ar - I'll go see Rilu.
+=BLACKTRANS 0.5=
+=SPRITE rilu=
+Ri - Yes, it seems they are with Dimitrus.
+An(anger) - WHAT THE HELL!?
+Ri - We can only guess, but Rose is held hostage. 
+Ri - Don't think Iola is staying there willingly either.
+An(anger) - Fuck... How did this happen...
+Ar(neutral) - We must attack him.
+Ri(talk) - Don't be stupid. 
+Ri - Even if by some miracle we win, he can send them anywhere with his powers.
+Ri - Rather, help me out.
+Ar(neutral) - How? You have a plan?
+Ri - Yes, but we will need to visit the Summerhill Keep first.
+An(anger) - ... You expect me to leave them in this shithead's hands just like that?
+Ri(talk) - I expect you to not be reckless and weigh the odds.
+Ri - Acting on your emotions can only make things worse. 
+Ar(neutral) - .....
+Ri - Let's go then, it's better if we don't waste time. 
+=STOP=

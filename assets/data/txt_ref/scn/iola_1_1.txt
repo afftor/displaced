@@ -1,0 +1,37 @@
+** iola_1_1 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ro - There seems to be a new traveler in the village. She's looking for an audience.
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=SPRITE iola=
+=SPRITE_UNFADE 0.5=
+I - Hello, Sir Arron. I'm Iola from Ancestral Cult. 
+Ar - (Wow, she seems pretty hot. Maybe we'll be able to settle Demitrius disappearance without causing too much of a commotion.)
+Ar - Pleased to meet you. The Ancestral cult is quite popular among the villagers. 
+Ar - What brings you here?
+I - You see, it's about my father...
+Ro - ...
+Ar - ...
+I - He seems to have visited your village a few days ago but hasn't returned after that.
+Ar - Oh, so you are Demitrius' daughter? Yes, we indeed had him visit us, but...
+Ar - (Ugh... What do I say to her now...)
+Ro - We escorted him to his target, but haven't seen him since then.
+Ar - Yes, he made us leave. We had no idea no one had seen him since then.
+Ar - The roads around are rather dangerous, but I hope he's fine.
+I - I see, this is not like my father to go missing without telling me first.
+I - I have a favor to ask, sir Arron, can you please show me where you left him?
+Ar(neutral) - (Darn... I can't even refuse her since we were the only people last seen him.)
+Ar(neutral) - (But if anything happens to her, it's a gigantic red flag. The cult won't let 2 of its members disappear near us without serious investigation.)
+Ar - Of course, we will surely do our best. Just give us time to prepare.
+I - I'm glad to hear that, sir Arron, I'm sure the Ancestors will bless your helpfulness.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=STOP=

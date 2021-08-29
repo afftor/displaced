@@ -1,0 +1,17 @@
+** iola_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG cult=
+The group has entered the Cult's temple grounds. 
+Ar - Huh... This organization seems rather abundant. 
+Ar - So, do you think we'll be able to pass through without causing ruckus?
+Guard - Hey, stop right there!
+Guard2 - Hey, it's those guys we've been told about.
+Guard - Shit, don't let them get away!
+Ar - Looks like we are expected.
+Ro(sarcastic) - That's not a good thing.
+Ar - Why are you so pessimistic? 
+Ar - Maybe they just wanna show us around.
+Ro(sarcastic) - Yeah, judging on how they charge at us armed, it will be their prison they want us to see.
+=STOP=

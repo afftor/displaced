@@ -1,0 +1,18 @@
+** ember_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG mountainsday=
+=SPRITE dragon=
+Dr - Foolish mortals! How dare you approach me?
+Ro(talk) - Wow, this one can speak!
+Ar(neutral) - Damnit... Now we can't eat them.
+Em - Why?
+Ar(neutral) - It's obvious, you can't eat sentient things. 
+Em - ...Really?
+Ro - Stop it. Look, we came here because our friend-
+Dr - For this offence you'll have to pay!
+Er - I feel like he might not be listening... 
+Ri - He looks quite old.
+Ar - Darn, I guess there's no choice but to fight.
+=STOP=

@@ -1,0 +1,113 @@
+** erika_2 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+Er - Hey, Arron.
+Ar - What's up?
+Er(happy) - Let's have sex!
+Ar - ...I thought it was usually guys who take initiative here.
+Er - But you haven't made any attempts all this time and I got really lonely.
+Er(happy) - And look, you’re already hard!
+With little concern, Erika moved her hand under Arron's clothes.
+Er - After all, I came here because I've taken a liking of you.
+Er - Why haven't you approached me for so long?
+Ar - I imagined you would wish to leave right after this...
+Ar - Ow, slow down a bit!
+Er(happy) - Silly. I'm not like that. 
+Er - Don't you know elves stay with one partner for life?
+Ar - ...Really? 
+Er(happy) - Nah, that's just a superstition.
+Er - But if I stayed around for so long, I'd be willing to continue doing so.
+Er - If you accept my feelings, that is.
+Ar - Looks like there's no other option here... 
+Ar - (Damn, I'm not used to a girl being so aggressive)
+Er - Look, my pussy is drenched.
+Smiling, Erika took Arron's hand and led it down her waist as her other hand kept stroking his dick.
+Ar - (Since when have I taken the role of sub? Screw it!)
+With determination Arron grabbed Erika's head bringing her lips close to him.
+Er - MMH! Mmmm...
+Meanwhile, his hand moved into Erika's panties.
+=SPRITE erika_n=
+Er - Oh, Arron I didn't misjudge you.
+Ar - You've been pushing me way too much.
+Er - Yes, I've been a bad girl.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=MUSIC_STOP=
+Erika turned around, leaning against the wall.
+=GUI_FULL=
+=MUSIC erotheme=
+=ABG erika_sex_1=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Er - Say, you must be eager to punish this lewd elf as well?
+Arron took a bit of time to contemplate Erika's round ass and her glittering wet pussy.
+Er - Ooh... I haven't been looked at like this for quite a long time.
+Er - Perhaps you wish for a look at the finer details? Here you go...
+=ABG erika_sex_2 erika_sex_3=
+Erika invitingly spread her pussy lips, presenting Arron her narrow slit.
+Ar - I think this is the first time I've seen someone this lewd.
+Er - Fufu... You don't have to flatter me anymore, you know.
+Ar - Have it your way. 
+With no delay, Arron penetrated Erika from behind.
+=ABG erika_sex_4 erika_sex_5=
+Er - AH! That's the spot...
+Ar - Ooh, despite the wetness you are pretty tight.
+Er - Mmmh, you seem to appreciate the greatness of a perfect elven pussy. 
+Er - Ahhh... So rough...
+Arron gradually increased his speed, until Erika's words consisted more of moans than anything else.
+=ABG erika_sex_6 erika_sex_7=
+Er - Yes, Arron, your dick feels amaaaazing...
+Er - Fuck me harder, fuck this elven cunt!...
+Er - Fuck my lewd brains out, I want more of it.
+Ar - (Wow... I think even port whores would be less vulgar than this.)
+Er - Ah... You are fucking this naughty elf like a dog in heat...
+Er - And this turns me on... so much...
+Ar - (Jeez, I hope at least there's nobody outside to hear her screams)
+Er - Are you going to cum? Fill me up.
+Er - I want you to fill up my womb with your hot cum!
+Er - Please, I beg you...
+Ar - You don't have to tell me...
+=ABG erika_sex_8 erika_sex_9=
+=WHITE=
+=DELAY 0.5=
+Er - Ah... Aaah... I'm cumming as you fill my pussy with your spunk!
+=BLACKUNFADE 0.5=
+=DELAY 1.5=
+=MUSIC_STOP=
+=GUI_NORMAL=
+=MUSIC eventlight=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Er(happy) - You made one elven girl very happy today.
+Ar - ...It's been a pleasure.
+Ar - Must say, you have quite a temper. It was unlike anything I've seen before.
+Er - You don't like it?
+Ar - No, it was just a bit unexpected but certainly very arousing. Maybe I should make Rose act like this sometimes as well.
+Er - Fufu, Rose is a cutie. That might not suit her as well. 
+Er - It would be nice to have fun with her someday.
+Ar - I don't think she swings that way. 
+Er(happy) - Well if you give me permission, we can make her try out something new.
+=CHOICE Allow|Refuse=
+Er - I'm sure I can try to make her at least consider it. 
+=SKIP 0 7=
+Ar - I'd rather not. 
+Er(happy) - Afraid I'm gonna steal her from you?
+Ar - Yep, pretty sure you are capable of that.
+Er - I might be, but I would never turn against you like that.
+Er - Alright, I'll not do anything to Rose, but please keep my affection in mind.
+=STOP=
+
+=DECISION erika_2_true=
+Ar - Well, that's true, she might like it after trying it out. 
+Er - Don't worry, you will be there with her, so she'll be alright. 
+Ar - Okay, just don't overdo it. She's quite sturdy, but I wouldn't want her having a grudge on us.
+Er - Roger. I'll let you know once there's some progress. 
+=STOP=

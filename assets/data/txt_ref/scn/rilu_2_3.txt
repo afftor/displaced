@@ -1,0 +1,33 @@
+** rilu_2_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG villagenight=
+Arron went for a short walk when he noticed a familiar figure.
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar(neutral) - Hmm, Rilu?
+Ar(neutral) - I wonder where she's heading at this time. 
+Ar - ...Doesn't feel right to leave her as is.
+=SPRITE_FADE 0.5=
+=BLACKTRANS 0.5=
+=DELAY 0.5=
+=BG forest=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ar(neutral) - Huh... We've gotten pretty far away from the village already.
+=BLACKTRANS 0.5=
+=BG castle=
+=SPRITE_HIDE=
+Arron followed Rilu until she entered Summerhill Keep as she carefully avoided any stray undead.
+However, after a couple of rooms he lost a sight of her.
+Ar(neutral) - Shit, where did she go.
+Ar - Maybe coming like that into an undead ruin wasn't a good idea after all.
+Arron's thoughts were stopped by a loud noise from one of the halls.
+Ar(shock) - Damnit, what the...
+A couple of undeads appeared rushing to the direction of noise, but spotting Arron. 
+=SPRITE skeleton=
+=SPRITE_UNFADE 0.1=
+Ar - Not you too. 
+Ar - I don't have time for you, you know.
+=STOP=

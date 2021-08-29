@@ -1,0 +1,48 @@
+** dimitrius_ending_4 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG future_city=
+=SPRITE rose=
+Ro - I see an exit.
+Ar - Finally. Let's see what's there.
+...
+...
+The group entered a small building filled with books and unknown devices.
+=SPRITE caliban=
+Ro(shock) - Ah!
+C - Ah. 
+Ar(shock) - It's Zelroth's minion!
+C - Oh, it's you guys.
+Ri - He looks somewhat different.
+Ar(neutral) - You are not going to fight us?
+C - No, I'd rather not.
+Ar - You also talk differently.
+Ar - Where's Zelroth then?
+C - He's no more. I've absorbed his intelligence. 
+C - Must thank you for that opportunity. 
+Ro(talk) - But what are you doing here then? 
+C - Studying. I've been having an unusual thirst for knowledge recently. 
+C - Humans here had a really advanced understanding of the world and nature.
+Ar(neutral) - Well, if you aren't going to fight we should move on.
+C - ....Hold on. 
+C - Are you still planning to fight Dimitrius?
+Ar - Do we look like we have any other option?
+C - You hardly have any chances on your own at his current power.
+Ar - So what, do you suggest we  give up?
+C - No, I actually want to offer you some help.
+Ro - Why? How do we even trust you?
+C - I'm not one of them and it's only a matter of time after they finish you off that they get to me.
+C - And they are not going to like what I did.
+C - Between you and the demons I'd clearly prefer your dominance.
+Ar(neutral) - Fair enough, I don't mind letting you go free.
+Ar(neutral) - As long as you aren't going to repeat Zelroth's deeds. Caliban, was it?
+C - No, actually I've chosen a new name for me. Now I'm Cyrex.
+Ar - Alright, Cyrex, so what can you offer.
+C - I'm not going to help you personally, but there still might be a way to defeat Dimitrius.
+C - Although, it's not going to be simple at all.
+Ar - Something is better than nothing.
+C - Good. Then, you must be aware that demons are weak to light.
+=BLACKTRANS 0.5=
+The team has made preparations and moved to their new destination while Dimitrius still had no idea where they are.
+=STOP=

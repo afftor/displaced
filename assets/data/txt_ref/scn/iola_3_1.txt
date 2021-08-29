@@ -1,0 +1,22 @@
+** iola_3_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE iola=
+I - Arron, I've got good news.
+Ar - You've found a way to make Rose's boobs bigger?
+I - N-no... Rilu taught me how to use that pearl you got to summon its owner. 
+Ar - Oh... I'm already focused on the idea of giving Rose a huge rack.
+Ar - Maybe at least temporarily.
+Ro(sarcastic) - I'm also here you know.
+Ar - Jeez, fine. 
+Ar - What about that mysterious guy?
+I(sad) - Well, I hope he can help me to understand what's going on with Father.
+Ro - And he might know how we can get back. 
+Ar - How awfully convenient. 
+I - There's a ritual which will allow us to summon him, but we would need a special place of power. 
+I - Rilu said she's seen one where you found her. 
+Ro - Ugh, those caves...
+Ar - I see. Well, might as well try it since there's not much else to do. 
+=STOP=

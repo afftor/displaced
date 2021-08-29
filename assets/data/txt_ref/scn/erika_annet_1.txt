@@ -1,0 +1,30 @@
+** erika_annet_1 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG hall=
+The annual meeting is being held at the city hall. 
+The hall is filled with nobles and the richest people of the region. 
+CM - So, according to this claim, Mr. Nicolas has failed his contract agreement.
+CM - Do you acknowledge it? 
+N - Yes, but it wasn't my fault. 
+N - My storage was set on fire!
+=SPRITE annet=
+?(An) - You know this can't be used for your defense. 
+?(An) - You've broken the business agreement and now you have to pay the fine. 
+N - Gh... But I'll be going bankrupt because of this!
+?(An) - This isn't the city's issue. 
+?(An) - If you can't make your deals, you shouldn't accept them in the first place.
+CM - I agree with Ms. Annet. We will have to seize your property in the name of the city. 
+CM - Please provide an escort to Mr. Nicolas, the meeting is over. 
+N - Damnit, I've been set up!..
+=BLACKTRANS 0.5=
+An - Another hard issue resolved, friend?
+CM - Indeed, I must thank you for your cooperation.
+CM - I knew it was the right decision to introduce you to the committee.
+An - You scratch my back, and I'll scratch yours, right?
+CM - True, now if you excuse me, I have other business to take care of.
+=SOUND footstep=
+...
+An - Heh, humans are really easy.
+=STOP=
