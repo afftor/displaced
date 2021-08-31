@@ -5,7 +5,6 @@ func _init():
 	id = 'arron'
 	state.heroes[id] = self
 	createfromname('arron')
-	add_trait('test')
 
 func get_resists():
 	var res = resists.duplicate()
