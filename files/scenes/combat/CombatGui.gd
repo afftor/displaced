@@ -122,6 +122,9 @@ func RebuildSkillPanel():
 		newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
 		newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
+	$SkillPanel/SkillContainer.visible = true
+	$SkillPanel/DefaultSkillContainer.visible = true
+	$SkillPanel/ItemContainer.visible = false
 
 
 #item panel
@@ -133,15 +136,18 @@ func RebuildItemPanel():
 	var array = []
 	ClearItemPanel()
 	for i in state.items.values():
-		if i.itemtype == 'usable':
+		if i.itemtype == 'usable_combat':
 			array.append(i)
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel/ItemContainer)
 		newbutton.get_node("Icon").texture = load(i.icon)
-		newbutton.get_node("Label").text = str(i.amount)
+		newbutton.get_node("Icon/Label").text = str(i.amount)
 		newbutton.set_meta('skill', i.useskill)
 		newbutton.connect('pressed', combat, 'ActivateItem', [i])
 		globals.connectitemtooltip(newbutton, i)
+	$SkillPanel/SkillContainer.visible = false
+	$SkillPanel/DefaultSkillContainer.visible = false
+	$SkillPanel/ItemContainer.visible = true
 
 
 #utility & default
@@ -189,7 +195,7 @@ func build_selected_skill(skill): #not skill_id
 
 func build_selected_item(item): 
 	active_panel.visible = true
-	active_panel.get_node("TextureRect").texture = item.icon
+	active_panel.get_node("TextureRect").texture = load(item.icon)
 	active_panel.get_node("Label").text = item.name
 
 

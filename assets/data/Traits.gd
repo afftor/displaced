@@ -345,4 +345,13 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_wound']
 	},
+	test = {
+		code = 'test',
+		name = '',
+		description = '',
+		icon = null,
+		cost = 0,
+		hidden = false, #is not displayed at all
+		effects = ['e_test_trigger']
+	},
 };

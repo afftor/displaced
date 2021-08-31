@@ -11,7 +11,6 @@ var tags := []
 var buffs := []
 var atomic := []
 var is_applied
-var applied_pos = null
 var applied_char = null
 
 func _init(caller):
@@ -89,17 +88,10 @@ func remove():
 
 func get_applied_obj():
 	if applied_char == null:
-		if applied_pos == null: return null
-		applied_char = state.combatparty[applied_pos] 
+		return null
 	return state.heroes[applied_char]
 
-#func createfromtemplate(buff_t):
-#	if typeof(buff_t) == TYPE_STRING:
-#		template = Effectdata.effect_table[buff_t]
-#	else:
-#		template = buff_t.duplicate()
-#	if template.has('tags'):
-#		tags = template.tags.duplicate()
+
 func createfromtemplate(buff_t):
 	if typeof(buff_t) == TYPE_STRING:
 		template = Effectdata.effect_table[buff_t].duplicate()
@@ -208,7 +200,6 @@ func serialize():
 	tmp['type'] = 'base'
 	tmp['atomic'] = atomic
 	tmp['buffs'] = []
-	tmp['app_pos'] = applied_pos
 	#tmp['app_char'] = applied_char
 	for b in buffs:
 		tmp['buffs'].push_back(b.serialize())
@@ -223,7 +214,6 @@ func deserialize(tmp):
 	sub_effects = tmp['sub_effects'].duplicate()
 	atomic = tmp['atomic'].duplicate()
 #warning-ignore:incompatible_ternary
-	applied_pos = null if (tmp['app_pos'] == null) else int(tmp['app_pos'])
 	applied_char = tmp['app_char']
 	buffs.clear()
 	calculate_args()

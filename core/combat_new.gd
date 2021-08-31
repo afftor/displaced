@@ -34,6 +34,8 @@ var currentactor
 
 var summons = []
 var rules = []
+var aura_effects = {ally = [], enemy = []}
+var aura_bonuses = {ally = {}, enemy = {}}
 
 var activeaction
 var activeitem
@@ -75,8 +77,8 @@ onready var battlefieldpositions = {
 #player party should be placed onto 1-3 positions
 var positions = {
 	1: Vector2(380, 55),
-	2: Vector2(260, 325),
-	3: Vector2(240, 595),
+	2: Vector2(240, 325),
+	3: Vector2(100, 595),
 	4: Vector2(1085, 55),
 	5: Vector2(1170, 325),
 	6: Vector2(1255, 595),
@@ -135,12 +137,17 @@ func _process(delta):
 
 func test_combat():
 	if resources.is_busy(): yield(resources, "done_work")
+	
+	globals.AddItemToInventory(globals.CreateUsableItem('item_6_1', 1))
+	
 	for ch in state.characters:
 		state.unlock_char(ch)
 		state.heroes[ch].unlock_all_skills()
 	state.heroes.arron.position = 1
 	state.heroes.ember.position = 2
 	state.heroes.rose.position = 3
+	
+	
 	start_combat([{1:'elvenrat', 4: 'elvenrat'}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'cave')
 #	start_combat([{1:'elvenrat',2:'elvenrat',
 #	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}],20, 'cave')
@@ -151,7 +158,13 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	input_handler.combat_node = self
 	turns = 0
 	en_level = level
+	
 	rules.clear()
+	aura_effects.ally.clear()
+	aura_effects.enemy.clear()
+	aura_bonuses.ally.clear()
+	aura_bonuses.enemy.clear()
+	
 #	$Background.texture = images.backgrounds[background]
 	var tmp = resources.get_res("bg/%s" % background)
 	$Background.texture = tmp
@@ -210,9 +223,14 @@ func buildenemygroup(group):
 			for n in panel.get_children():
 				n.visible = false
 			continue
-		var tempname = group[i].unit
-		enemygroup[i] = enemy.new()
-		enemygroup[i].createfromtemplate(tempname, group[i].level)
+		if typeof(group[i]) == TYPE_DICTIONARY:
+			var tempname = group[i].unit
+			enemygroup[i] = enemy.new()
+			enemygroup[i].createfromtemplate(tempname, group[i].level)
+		else:
+			var tempname = group[i]
+			enemygroup[i] = enemy.new()
+			enemygroup[i].createfromtemplate(tempname, en_level)
 		enemygroup[i].position = i
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)
@@ -256,6 +274,7 @@ func make_hero_panel(fighter, show = true):
 	panel.setup_character(fighter)
 	if spot != null:
 		panel.set_global_position(positions[spot])
+		print(panel.rect_global_position)
 	else:
 		panel.set_global_position(Vector2(0,0))
 	if !show: panel.visible = false
@@ -347,9 +366,10 @@ func player_turn(pos):
 		return
 	allowaction = true
 	activecharacter = selected_character
-	gui_node.RebuildSkillPanel()
+
 	gui_node.RebuildItemPanel()
 	gui_node.RebuildDefaultsPanel()
+	gui_node.RebuildSkillPanel()
 	SelectSkill(selected_character.get_autoselected_skill())
 
 
@@ -618,6 +638,7 @@ func advance_frontrow():
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
+	recheck_auras()
 
 
 func advance_backrow():#not used for now
@@ -637,6 +658,8 @@ func advance_backrow():#not used for now
 	turns += 1
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	recheck_auras()
 
 
 func swap_active_hero():#not used
@@ -661,6 +684,7 @@ func swap_active_hero():#not used
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	
+	recheck_auras()
 	gui_node.RebuildReserve()
 	call_deferred('select_actor')
 	
@@ -689,6 +713,7 @@ func swap_heroes(pos):
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	
+	recheck_auras()
 	gui_node.RebuildReserve()
 	gui_node.build_hero_panels()
 	call_deferred('select_actor')
@@ -833,6 +858,7 @@ func FinishCombat(value):
 		battlefield.dispaynode = null
 		enemygroup.erase(pos)
 	
+	clear_auras()
 	CombatAnimations.force_end()
 	input_handler.combat_node = null
 	hide()
@@ -1629,3 +1655,37 @@ func res_all(hpval):
 
 func miss(fighter):
 	CombatAnimations.miss(fighter.displaynode)
+
+#auras
+func clear_auras():
+	for id in aura_effects.ally + aura_effects.enemy:
+		var obj = effects_pool.get_effect_by_id(id)
+		obj.remove()
+
+
+func recheck_auras():
+	for id in aura_effects.ally + aura_effects.enemy:
+		var obj = effects_pool.get_effect_by_id(id)
+		obj.recheck()
+
+
+func update_buffs():
+	for i in state.heroes.values():
+		i.rebuildbuffs()
+		i.recheck_effect_tag('recheck_stats')
+
+
+func add_bonus(party, b_rec:String, value, revert = false):
+	if value == 0: return
+	if aura_bonuses[party].has(b_rec):
+		if revert:
+			aura_bonuses[party][b_rec] -= value
+			if b_rec.ends_with('_add') and aura_bonuses[party][b_rec] == 0.0: aura_bonuses[party].erase(b_rec)
+			if b_rec.ends_with('_mul') and aura_bonuses[party][b_rec] == 1.0: aura_bonuses[party].erase(b_rec)
+		else: aura_bonuses[party][b_rec] += value
+	else:
+		if revert: print('error bonus not found')
+		else:
+			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
+			if b_rec.ends_with('_mul'): aura_bonuses[party][b_rec] = 1.0 + value
+			else: aura_bonuses[party][b_rec] = value

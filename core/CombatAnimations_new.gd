@@ -322,7 +322,7 @@ func test_combat_start(node, args):
 
 func shield_update(node, args):
 #	node.material.set_shader_param('modulate', args.color)
-	node.get_node('shield').visible = args.value
+	node.get_node('sprite/shield').visible = args.value
 	return 0.1
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode

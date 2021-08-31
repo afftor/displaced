@@ -84,9 +84,9 @@ func setup_character(ch):
 		$sprite.rect_min_size = fighter.animations.idle.get_size()
 		$sprite.texture = fighter.animations.idle
 		panel_node.modulate = Color(1,1,1,1)
+		reset_shield()
 	$Label.text = fighter.name
 	regenerate_click_mask() # some cheating with not doing this every frame
-	reset_shield()
 	stop_highlight()
 	set_process_input(true)
 	
@@ -106,9 +106,9 @@ func setup_character(ch):
 	
 
 func reset_shield():
-	$shield.rect_size = $sprite.rect_size * 1.5
-	$shield.rect_position = - $shield.rect_size / 6.0
-	$shield.visible = false
+	$sprite/shield.rect_size = $sprite.rect_min_size * 1.5
+	$sprite/shield.rect_position = - $sprite/shield.rect_size / 6.0
+	$sprite/shield.visible = (fighter.shield > 0)
 
 
 func regenerate_click_mask(spr1 = true):
@@ -176,7 +176,7 @@ func update_shield():
 		#self.material.set_shader_param('modulate', Color(0.9, 0.9, 0.9, 0.0))
 		#return
 	else:
-		args.value = false
+		args.value = true
 		#args.color = Color(0.8, 0.8, 0.8, 1.0)
 		#self.material.set_shader_param('modulate', Color(0.8, 0.8, 0.8, 1.0)); #example
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'shield_update',slot = 'SHIELD', params = args}
@@ -196,7 +196,7 @@ func process_sound(sound):
 
 func rebuildbuffs():
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_all_buffs()}
-#	animation_node.add_new_data(data)
+	animation_node.add_new_data(data)
 
 func process_critical():
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'critical', slot = 'crit', params = {}}

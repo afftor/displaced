@@ -47,6 +47,7 @@ var weaponsound = 'dodge'
 var static_effects = []
 var temp_effects = []
 var triggered_effects = []
+var aura_effects = []
 
 
 var position
@@ -88,10 +89,16 @@ func get_animations():
 
 
 func get_stat(statname):
+	if statname == 'damage':
+		print("+")
 	var res = get(statname)
+	var combat = input_handler.combat_node
+#	if !variables.direct_access_stat_list.has(statname):
 	if variables.bonuses_stat_list.has(statname):
 		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
+		if combat != null and combat.aura_bonuses[combatgroup].has(statname + '_add'): res += combat.aura_bonuses[combatgroup][statname + '_add']
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
+		if combat != null and combat.aura_bonuses[combatgroup].has(statname + '_mul'): res *= combat.aura_bonuses[combatgroup][statname + '_mul']
 	return res
 
 
@@ -312,7 +319,11 @@ func apply_atomic(template):
 			process_event(template.value)
 		'resurrect':
 			if !defeated: return
-			self.hp = template.value
+			if template.has('value'):
+				self.hp = template.value
+			elif template.has('value_p'):
+				self.hp = template.value_p * get_stat('hpmax')
+			else: return
 			defeated = false
 			process_event(variables.TR_RES)
 		'use_combat_skill':
@@ -360,6 +371,33 @@ func remove_atomic(template):
 		'add_rule':
 			if input_handler.combat_node == null: return
 			input_handler.combat_node.rules.erase(template.value)
+
+
+func apply_aura_atomic(template):
+	if input_handler.combat_node == null: return
+	match template.type:
+		'stat_add':
+			input_handler.combat_node.add_bonus(combatgroup, template.stat + '_add', template.value)
+#		'stat_mul':
+#			input_handler.combat_node.add_bonus(combatgroup, template.stat + '_mul', template.value)
+		'stat_add_p':
+			input_handler.combat_node.add_bonus(combatgroup, template.stat + '_mul', template.value)
+		'bonus':
+			input_handler.combat_node.add_bonus(combatgroup, template.bonusname, template.value)
+
+
+func remove_aura_atomic(template):
+	if input_handler.combat_node == null: return
+	match template.type:
+		'stat_add':
+			input_handler.combat_node.add_bonus(combatgroup, template.stat + '_add', template.value, true)
+#		'stat_mul':
+#			input_handler.combat_node.add_bonus(combatgroup, template.stat + '_mul', template.value, true)
+		'stat_add_p':
+			input_handler.combat_node.add_bonus(combatgroup, template.stat + '_mul', template.value, true)
+		'bonus':
+			input_handler.combat_node.add_bonus(combatgroup, template.bonusname, template.value, true)
+
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -422,7 +460,6 @@ func apply_temp_effect(eff_id):
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
 		temp_effects.push_back(eff_id)
-		eff.applied_pos = position
 		eff.applied_char = id
 		eff.apply()
 	else:
@@ -440,18 +477,22 @@ func apply_effect(eff_id):
 	match obj.template.type:
 		'static', 'c_static', 'dynamic':
 			static_effects.push_back(eff_id)
-			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
 		'trigger':
 			triggered_effects.push_back(eff_id)
-			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
 		'temp_s','temp_p','temp_u': apply_temp_effect(eff_id)
 		'oneshot':
 			obj.applied_obj = self
 			obj.apply()
+		'aura':
+			if input_handler.combat_node != null: 
+				aura_effects.push_back(eff_id)
+				input_handler.combat_node.aura_effects[combatgroup].push_back(eff_id)
+				obj.applied_char = id
+				obj.apply()
 
 
 func remove_effect(eff_id):
@@ -460,7 +501,11 @@ func remove_effect(eff_id):
 		'static', 'c_static': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
 		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
-	pass
+		'aura': 
+			aura_effects.erase(eff_id)
+			if input_handler.combat_node != null:
+				input_handler.combat_node.aura_effects[combatgroup].erase(eff_id)
+
 
 func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
 	var eff = effects_pool.get_effect_by_id(eff_id)
@@ -484,7 +529,7 @@ func remove_all_effect_tag(eff_tag):#function for nonn-direct temps removing, li
 		remove_temp_effect(eff)
 
 func clean_effects():#clean effects before deleting character
-	for e in temp_effects + static_effects + triggered_effects:
+	for e in temp_effects + static_effects + triggered_effects + aura_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 
@@ -554,6 +599,8 @@ func death():
 	hp = 0
 	if displaynode != null:
 		displaynode.process_defeat()
+		if !aura_effects.empty():
+			input_handler.combat_node.recheck_auras()
 
 func can_act():
 	var res = !acted
@@ -566,6 +613,7 @@ func can_act():
 func can_use_skill(skill):
 #	if mana < skill.manacost: return false
 	if cooldowns.has(skill.code): return false
+	if skill.tags.has('disabled'): return false
 	if has_status('silence') and skill.skilltype != 'item' and !skill.tags.has('default'): return false #possible to change in caase of combat item system
 	return true
 
@@ -662,19 +710,18 @@ func get_all_buffs():
 					res[b.template_name].push_back(b)
 			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
 				res[b.template_name].push_back(b)
-#	for e in area_effects:
-#		var eff:area_effect = effects_pool.get_effect_by_id(e)
-#		if !eff.is_applied_to_pos(position) :
-#			continue
-#		#eff.calculate_args()
-#		for b in eff.buffs:
-#			b.calculate_args()
-#			if !res.has(b.template_name):
-#				if !(b.template.has('limit') and b.template.limit == 0):
-#					res[b.template_name] = []
-#					res[b.template_name].push_back(b)
-#			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
-#				res[b.template_name].push_back(b)
+	if input_handler.combat_node != null:
+		for e in input_handler.combat_node.aura_effects[combatgroup]:
+			var eff = effects_pool.get_effect_by_id(e)
+			#eff.calculate_args()
+			for b in eff.buffs:
+				b.calculate_args()
+				if !res.has(b.template_name):
+					if !(b.template.has('limit') and b.template.limit == 0):
+						res[b.template_name] = []
+						res[b.template_name].push_back(b)
+				elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
+					res[b.template_name].push_back(b)
 	var tmp = []
 	for b_a in res.values():
 		for b in b_a: tmp.push_back(b)
@@ -705,7 +752,7 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 		'chance':
 			result = (randf()*100 < req.value);
 		'stats':
-			result = input_handler.operate(req.operant, get_stat(req.name), req.value)
+			result = input_handler.operate(req.operant, get_stat(req.stat), req.value)
 		'race':
 			result = (req.value == race);
 		'status':
@@ -713,4 +760,13 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 		'is_boss':
 			#stub!!!!
 			result = !req.check
+		'skill':
+			if skills.has(req.skill):
+				var skilldata = Skillsdata.patch_skill(req.skill, self)
+				match req.check:
+					'avail': result = can_use_skill(skilldata)
+					'not_avail': result = !can_use_skill(skilldata)
+					'disabled': result = skilldata.tags.has('disabled')
+			else:
+				result = false
 	return result

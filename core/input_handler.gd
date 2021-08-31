@@ -692,14 +692,14 @@ func if_mouse_inside(node):
 
 func ClearContainer(container, templates = ['Button']):
 	for i in container.get_children():
+		i.hide()
 		if !(i.name in templates):
-			i.hide()
 			i.queue_free()
 
 func ClearContainerForced(container, templates = ['Button']):
 	for i in container.get_children():
+		i.hide()
 		if !(i.name in templates):
-			i.hide()
 			i.free()
 
 func DuplicateContainerTemplate(container, template = 'Button'):

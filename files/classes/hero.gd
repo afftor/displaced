@@ -267,7 +267,7 @@ func deserialize(savedir):
 var skills_autoselect = ["attack"]
 func get_autoselected_skill():
 	var skilldata = Skillsdata.patch_skill( skills_autoselect.back(), self)
-	while !can_use_skill(skilldata):
+	while !can_use_skill(skilldata) or skilldata.skilltype == 'item':
 		skills_autoselect.pop_back()
 		skilldata = Skillsdata.patch_skill( skills_autoselect.back(), self)
 	return skills_autoselect.back()
