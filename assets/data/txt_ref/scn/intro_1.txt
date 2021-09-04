@@ -85,10 +85,11 @@ Ro(shock) - (Uh-oh.. this didn't go well. I better follow them...)
 Arron, with his hands tied behind his back sits on the floor of a large cell. Norbert observes him, while his subordinates prepare for a ritual.
 Rose hides among the shadows of a far corner, unnoticed.
 Nt - You know, it was funny when you convinced the Pope that Aunt Mary had been possessed by the devil so he performed a whole ceremony for her. 
-Ar - Everyone knows old people are evil. That's why they are still with us and not with God.
+Ar - Everyone knows old people are evil. That's why they are still with us and not with the God.
 Nt - ...it also was rather amusing when you brought a bunch of homeless people to our dining hall during the negotiations with Reines and insisted that you will become their king in a new nation.
-Ar - Bob could also replace me as a King. 
-Nt - You are not taking this seriously, are you? Tell me, were you really not satisfied with all those palace maids and feudal daughters? Why go after my wife? 
+Ar - Bob could also replace me as a King.
+Nt - Your luck it was a friendly meeting and many were almost dying of boredom...
+Nt - But you are not taking this seriously, are you? Tell me, were you really not satisfied with all those palace maids and feudal daughters? Why go after my wife? 
 Ar - Dunno, you went for her for some reason. You don't know either?
 Nt(anger) - THAT WAS THE ONLY REASON!? Because she's MY wife?
 Ar - Nah, she also seemed quite delighted with my company. I mean, how can you ignore someone who eagerly woos you?
@@ -165,6 +166,14 @@ Ar(neutral) - Bullshit, you’re telling me time travel isn't real now?
 Ro - It never was...
 Ar(shock) - So I’ll never be able to become my own grandfather? 
 Ro(sarcastic) - ...Thankfully.
+=BLACKTRANS 0.5=
+=DELAY 0.5=
+Ro - Master, look, there's something moving.
+Ar - Oh, locals? Great, we could get some food, I haven't had a dinner today.
+Ro(shock) - No, I think it's monsters. They've spotted us.
+Ar - So, instead of a food servers we got the food itself coming for us?
+Ro - I can't believe you are so casual about it.
+Ar - It's fine, just stay behind and watch my moves. 
 =SPRITE_FADE 0.5=
 =GUI_HIDE=
 =BLACKUNFADE 1=

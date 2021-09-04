@@ -1,0 +1,101 @@
+** erika_annet_2_4 **
+Later this evening Rose visited Annet's mansion on her own.
+=BG annet_quarters=
+=SPRITE rose=
+An - Hello, Rose. 
+An - I'm glad that you've visited me.
+An - I hope you don't think of me badly because of what I said.
+An - In no way have I tried to degrade you.
+Ro(talk) - N-no, I understand. 
+Ro - I've come on my own here. Master, I mean, Arron would not let me go.
+Ro(talk) - But I want to help Erika. 
+An - I can assure you, Erika is in great condition.
+Ro - I'll stay with you, if you let her go.
+An - *Ho my, this is perfect*
+An - Sure, this is very nice of you. 
+An - If you become my subordinate, I'll let Erika leave.
+Ro - Okay, I will. But... 
+Ro - I want to see that she's fine. 
+An - Sure thing. 
+An - We can visit her right now.
+An - Please, follow me. 
+=BLACKTRANS 0.5=
+Annet and Rose went to the prison cells where Erika was held captive.
+An - You know, I quite adore reserved girls like you.
+An - *You are really fun to play with.*
+An - But what about Arron?
+An - Isn't he going to return for you?
+Ro(sarcastic) - H-He does not own me anymore. 
+Ro(talk) - I'm free to decide what to do.
+An - Ah, is that so. 
+An - You do have some unusual features, must catch quite a bit of attention.
+Ro - T-that's not true. 
+Ro - It's nice that you appreciate it, though.
+An - *Hah, she takes my attention as a benefit*
+An - *Maybe I should take her right here*
+An - *maybe even next to Erika...*
+An - We are here. As you can see, she's perfectly fine.
+Behind the cell bars a girl's silhouette rests in the shadows.
+Ro(talk) - Erika? Is that you?
+Annet has put Erika's in shackles just in case she might attempt to escape.
+Ro - C-can I see her closer?
+An - Alright, I have a key with me.
+An - Just let me unlock this...
+*click*
+*thud*
+*fall*
+Annet fell to the ground knocked out with Rose standing behind as she was unlocking the cell door. 
+Rose held a small blackjack in her hand, which just got intimately acquainted with Annet’s head
+Ro(talk) - *Gasp*
+Ro - Keys... Hold on, Erika.
+Er(sad) - ...?
+Ro - I'm getting you out.
+Er(sad) - Rose... 
+Er(sad) - How did you-
+Ro - Not now, we have to escape.
+...
+=BLACKFADE 0.5=
+=BG town_in=
+=BLACKUNFADE 0.5=
+Rose dragged Erika outside where Arron and others were waiting for her.
+Ro - We did it.
+Ar - Well done, Rose.
+Er(sad) - Arron? Girls?
+Em - We took care of the patrols.
+Er(sad) - I'm... not... 
+Ar(neutral) - We can talk later, you need some rest.
+=BLACKFADE 0.5=
+=BG villagenight=
+=SPRITE erika=
+=BLACKUNFADE 0.5=
+After some time they safely returned home.
+Ro(talk) - Thanks for the baton, Ember.
+Ro - I managed to hide it so she had no idea.
+Em - A-ha, it's nothing. 
+Em - I'm glad I could be useful.
+Er(sad) - I... was sure that I wouldn't see you again any time soon.
+Ar - It was Rose's plan. 
+Er(sad) - ...Rose? You risked yourself for me?
+Ar - You must've fooled her well acting like prey.
+Ro - It was rather scary.
+Ro - I felt like she could easily push me around, if I were any younger.
+Ro(sarcastic) - Or you haven't been pushing me around since childhood.
+Ar - Filthy lies.
+Er(sad) - I... I'm not sure I'll be able to ever repay you for this.
+Er(sad) - But now you might get into trouble with city government.
+Ar(neutral) - I don't think she's going to go that far.
+Ar - Not until she's ready to proclaim what she was doing to you anyway.
+Ar - And it's not like it's my first time getting into fights with local authorities.
+Ro(sarcastic) - Please, don't make me remember.
+Ar - We haven't even turned anything to cinders this time.
+Er - Thank you, Rose. 
+Er - I actually thought you would be happy with me gone too.
+Ro(talk) - Stop it. I wouldn't feel right leaving you like that.
+Ro(talk) - And I don't think bad of you, it's just... I'm...
+Ro - Umh... 
+Ri - She wants to say, she thinks of you as of a friend.
+Ro(talk) - That's not...
+Ro - Uh, well, maybe.
+Er - I appreciate it.
+=BLACKFADE 0.5=
+=STOP=

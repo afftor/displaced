@@ -1,0 +1,33 @@
+** iola_2_2_3 **
+=BG villageday=
+=BLACKUNFADE 0.5=
+Ar - This is weird. We got the essence, but Iola hasn't come back since that day.
+Ro - Maybe they let her pass without it?
+Ar(neutral) - That would suck.
+Ar - How do we get rewarded like this then?
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ri - She's actually in trouble. 
+Ro(talk) - Eh?
+Ar(neutral) - What do you mean?
+Ri - She was captured and kept imprisoned.
+Ar - But how do you know that?
+Ri - I've planted a small spirit on her.
+Ro(sarcastic) - Why?
+Ri - So I can know her condition and location.
+Ar - That's something new.
+Ar - Do you do this often?
+Ri - Don't worry, you won't notice it.
+Ro(sarcastic) - .....
+Ar(neutral) - Anyway, where's Iola? 
+Ri - I assume it's her cult grounds.
+Ri(talk) - We should go there to save her.
+Ar - Huh, you seem... Kinda worried? 
+Ar - What happened to the deadpan girl I knew?
+Ri(talk) - I'm not deadpan.
+Ro(talk) - You think we should go there? 
+Ro - This might be quite dangerous.
+Ar - Well, someone has to pay for the mission we've completed. 
+Ar - In the worst case we can loot something from there.
+Ro(sarcastic) - I sincerely hope you are joking this time.
+=STOP=

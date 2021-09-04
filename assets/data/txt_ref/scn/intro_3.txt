@@ -22,7 +22,7 @@ Ar - So... that means we can stay here safely?
 Ro - That also means we have no idea how to get back.
 Ro(sarcastic) - Wait, master, are you actually planning to return? 
 Ar - Hm... Maybe.
-Ro(talk) - What!? We can't stay here for the rest of our lives. 
+Ro(shock) - What!? We can't stay here for the rest of our lives. 
 Ar - Why not?
 Ro(sarcastic) - Aren’t you going to miss your family? Your royal life?
 Ar - Well, I have to get revenge on Norb, don't I.
@@ -30,6 +30,14 @@ Ar - Relax, I'm just kidding. I guess our only option to get back is how we got 
 Ro - That already might prove to be a challenge. From what passing adventurers said, teleportation magic doesn’t seem to be common around here.
 Ar - Well, all the more reason to make sure our position here is nice and stable.
 Ar - Plus when else am I going to get the chance to rule anyone but mere servants?
+Ro - Master, you can't just accept this, can you? This is too mediocre for your caliber.
+Ar(neutral) - Mhmm...
+Ro - Okay, look here, I found some information about the elves living in a forest not far from here.
+Ro(talk) - They should know more about magic and could help us return home.
+Ar - Elven girls are quite cute, aren't they?
+Ro(sarcastic) - ...How would I know?
+Ar - Alright, I'll grant your wish, we'll go see what those elves have to offer.
+Ro - (Sigh. Better this than nothing)
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

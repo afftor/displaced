@@ -1,17 +1,4 @@
-** rilu_2_3 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
-=GUI_NORMAL=
-=BG villagenight=
-Arron went for a short walk when he noticed a familiar figure.
-=SPRITE rilu=
-=SPRITE_UNFADE 0.5=
-Ar(neutral) - Hmm, Rilu?
-Ar(neutral) - I wonder where she's heading at this time. 
-Ar - ...Doesn't feel right to leave her as is.
-=SPRITE_FADE 0.5=
-=BLACKTRANS 0.5=
-=DELAY 0.5=
+** rilu_2_3_2 **
 =BG forest=
 =SPRITE rilu=
 =SPRITE_UNFADE 0.5=
