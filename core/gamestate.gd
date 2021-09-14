@@ -38,12 +38,12 @@ var CurrentLine := 0
 #var heroguild := {}
 #var guild_save
 
+var OldSeqs = []
 var OldEvents := {}
 var gallery_unlocks = []
 var gallery_event_unlocks = []
 var CurEvent := "" #event name
 var CurBuild := ""
-var keyframes := []
 
 #Progress
 var mainprogress = 0
@@ -59,10 +59,11 @@ var location_unlock = {
 	cave = true,
 	forest = true,
 	village = true,
-	temple = false,
+	cult = false,
+	modern_city = false
 }
 var area_save
-var currentarea
+var stashedarea
 var currenttutorial = 'tutorial1'
 var viewed_tips := []
 
@@ -97,17 +98,18 @@ func revert():
 	CurrentTextScene = null
 	CurrentScreen = null
 	CurrentLine = 0
+	OldSeqs.clear()
 	OldEvents.clear()
 	CurEvent = "" #event name
 	CurBuild = ""
-	keyframes.clear()
 	mainprogress = 0
 	decisions.clear()
 	activequests.clear()
 	completedquests.clear()
 #	areaprogress.clear()
 	reset_areaprogress()
-	currentarea = null
+	activearea = null
+	stashedarea = null
 	currenttutorial = 'tutorial1'
 	viewed_tips.clear()
 	location_unlock = {
@@ -117,7 +119,8 @@ func revert():
 		cave = false,
 		forest = false,
 		village = false,
-		temple = false
+		cult = false,
+		modern_city = false
 	}
 	gallery_unlocks.clear()
 	for i in variables.gallery_singles_list:
@@ -128,6 +131,7 @@ func revert():
 func reset_areaprogress():
 	areaprogress.clear()
 	var tmp = {
+		unlocked = false,
 		level = 0,
 		stage = 0,
 		completed = false
@@ -136,8 +140,15 @@ func reset_areaprogress():
 		areaprogress[area] = tmp.duplicate()
 
 
+func unlock_area(area_code):
+	areaprogress[area_code].unlocked = true
+	input_handler.map_node.unlock_area(area_code)
+
 func start_area(area_code, autolevel = false):
 	activearea = area_code
+	if !areaprogress[area_code].unlocked:
+		print("force start locked mission %s" % area_code)
+		areaprogress[area_code].unlocked = true
 	areaprogress[area_code].stage = 1 
 	if autolevel:
 		areaprogress[area_code].level = heroes['arron'].level
@@ -155,7 +166,9 @@ func complete_area(area_code = activearea):
 	areaprogress[area_code].completed = true
 	areaprogress[area_code].stage = 0
 	if area_code == activearea:
-		activearea = null
+		activearea = stashedarea
+		if stashedarea != null:
+			stashedarea = null
 
 
 func pos_set(value):
@@ -173,6 +186,20 @@ func _ready():
 
 
 
+func check_sequence(id):
+	if OldSeqs.has(id): return false
+	if !Explorationdata.scene_sequences.has(id):
+		print("event seq %s not found" % id)
+		return false
+	var seqdata = Explorationdata.scene_sequences[id]
+	return checkreqs(seqdata.initiate_reqs)
+
+
+func store_sequence(id):
+	if OldSeqs.has(id): return
+	OldSeqs.push_back(id)
+
+
 func StoreEvent(nm):
 	OldEvents[nm] = date
 
@@ -181,8 +208,13 @@ func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
 	if input_handler.map_node!= null: input_handler.map_node.update_map()
-	CurEvent = ""
-	keyframes.clear()
+	if Explorationdata.event_triggers.has(CurEvent):
+		var nseqdata = Explorationdata.event_triggers[CurEvent]
+		CurEvent = ""
+		globals.run_actions_list(nseqdata)
+	else:
+		CurEvent = ""
+	
 
 
 func store_choice(choice, option):
@@ -218,35 +250,6 @@ func get_choice(choice):
 		return null
 
 
-func if_has_choice(line):
-	return OldEvents.has(line)
-
-
-func if_has_money(value):
-	return (money >= value)
-
-func if_has_property(prop, value):
-	var tmp = get(prop)
-	if tmp == null:
-		print ("ERROR: NO PROPERTY IN GAMESTATE %s\n", prop)
-		return false
-	return (tmp >= value)
-
-func if_has_hero(name):
-	if !heroes.has(name) or !characters.has(name):
-		print("warning - error in data: wrong hero name %s" % name)
-		return false
-	return heroes[name].unlocked
-
-func if_has_material(mat, operant, val):
-	if !materials.has(mat): return false
-	return input_handler.operate(operant, materials[mat], val)
-
-func if_has_item(name):
-	for i in items.values():
-		if i.name == name: return true
-	return false
-
 func checkreqs(array):
 	var check = true
 	for i in array:
@@ -254,11 +257,20 @@ func checkreqs(array):
 			check = false
 	return check
 
+
 func valuecheck(dict):
 	if !dict.has('type'): return true
 	match dict['type']:
 		"no_check":
 			return true
+		#new ones
+		"mission_complete":
+			return areaprogress[dict.value].completed
+		"seq_seen":
+			return OldSeqs.has(dict.value)
+		"scene_seen":
+			return OldEvents.has(dict.value)
+		#old ones, possibly obsolete
 		"has_money":
 			return if_has_money(dict['value'])
 		"has_property":
@@ -340,6 +352,35 @@ func if_hero_level(name, operant, value):
 		if h.name == name: hero = h
 	return input_handler.operate(operant, hero.level, value)
 
+func if_has_choice(line):
+	return OldEvents.has(line)
+
+
+func if_has_money(value):
+	return (money >= value)
+
+func if_has_property(prop, value):
+	var tmp = get(prop)
+	if tmp == null:
+		print ("ERROR: NO PROPERTY IN GAMESTATE %s\n", prop)
+		return false
+	return (tmp >= value)
+
+func if_has_hero(name):
+	if !heroes.has(name) or !characters.has(name):
+		print("warning - error in data: wrong hero name %s" % name)
+		return false
+	return heroes[name].unlocked
+
+func if_has_material(mat, operant, val):
+	if !materials.has(mat): return false
+	return input_handler.operate(operant, materials[mat], val)
+
+func if_has_item(name):
+	for i in items.values():
+		if i.name == name: return true
+	return false
+
 
 func serialize():
 	var tmp = {}
@@ -353,8 +394,8 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine','currentutorial', 'newgame', 'votelinksseen', 'activearea']
-	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldEvents', 'keyframes', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'gallery_event_unlocks']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea']
+	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'gallery_event_unlocks']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
@@ -384,6 +425,7 @@ func deserialize(tmp:Dictionary):
 	reset_areaprogress()
 	for k in area_save.keys() :
 #		areaprogress[k] = area_save[k].duplicate()
+		areaprogress[k].unlocked = area_save[k].unlocked
 		areaprogress[k].level = int(area_save[k].level)
 		areaprogress[k].stage = int(area_save[k].stage)
 		areaprogress[k].active = area_save[k].active
@@ -413,6 +455,23 @@ func reset_inventory():
 		materials[i] = 0
 
 
+func system_action(action):
+	match action.value:
+		'unlock_area':
+			unlock_loc(action.arg)
+		'unlock_mission':
+			unlock_area(action.arg)
+		'enable_character':
+			unlock_char(action.arg[0], action.arg[1])
+		'unlock_character':
+			unlock_char(action.arg)
+		'game_stage':
+			ProgressMainStage(action.arg)
+		'unlock_building':
+			make_upgrade(action.value, 1)
+		'show_screen':
+			pass
+
 #simple action wrappers
 func unlock_char(code, value = true):
 	heroes[code].unlocked = value
@@ -437,7 +496,7 @@ func logupdate(text):
 	lognode.bbcode_text = globals.TextEncoder(text)
 
 
-func ProgressMainStage(stage = null):
+func ProgressMainStage(stage = null):#2remake
 	if stage == null:
 		mainprogress += 1
 	else:

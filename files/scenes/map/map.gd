@@ -11,7 +11,8 @@ var binded_events = {
 	cave = null,
 	forest = null,
 	village = null,
-	temple = null
+	cult = null,
+	modern_city = null
 }
 
 
@@ -41,9 +42,9 @@ func buildscreen(empty = null):
 	update_map()
 
 
-
 func unlock_area(area):
 	var area_node = get_node(area)
+	area_node.visible = true
 	area_node.m_show()
 	area_node.set_active()
 	area_node.set_border_type('safe')
@@ -63,7 +64,8 @@ func location_pressed(locname):
 
 func update_map():
 	for loc in binded_events:
-		binded_events[loc] = globals.check_signal_test('LocationEntered', loc)
+		check_location(loc)
+#		binded_events[loc] = globals.check_signal_test('LocationEntered', loc)
 		var area_node = get_node(loc)
 
 		if state.location_unlock[loc]:
@@ -88,3 +90,16 @@ func update_map():
 					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
 			else:
 				area_node.set_inactive()
+
+
+
+func check_location(loc_id):
+	binded_events[loc_id] = null
+	if !Explorationdata.locations.has(loc_id):
+		return
+	if !Explorationdata.locations[loc_id].has('events'):
+		return
+	for seq in Explorationdata.locations[loc_id].events:
+		if state.check_sequence(seq):
+			binded_events[loc_id] = seq
+			break

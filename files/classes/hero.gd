@@ -1,7 +1,7 @@
 extends combatant
 class_name hero
 
-var unlocked = false
+var unlocked = false setget set_unlocked
 var friend_points = 0
 
 var recentlevelups = 0
@@ -23,6 +23,13 @@ var bonusres = []
 
 func _init():
 	combatgroup = 'ally'
+
+func set_unlocked(value):
+	unlocked = value
+	if !value:
+		position = null
+		input_handler.emit_signal("PositionChanged")
+
 
 func createfromname(name):
 	var template = combatantdata.charlist[name]

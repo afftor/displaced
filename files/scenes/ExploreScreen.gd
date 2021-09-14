@@ -38,8 +38,8 @@ func show():
 	UpdatePositions()
 	showexplorelist()
 	#2rework
-	if state.currentarea != null && Explorationdata.areas[state.currentarea].stages < state.areaprogress[state.currentarea]:
-		updateexplorepanel(Explorationdata.areas[state.currentarea])
+	if state.activearea != null && Explorationdata.areas[state.activearea].stages < state.areaprogress[state.activearea]:
+		updateexplorepanel(Explorationdata.areas[state.activearea])
 	else:
 		$AreaProgress.hide()
 
@@ -247,7 +247,7 @@ func updateexplorepanel(newarea = null):
 	else:
 		stage = 0
 		state.areaprogress[area.code] = stage
-	state.currentarea = area.code
+	state.activearea = area.code
 	period = 'prefight'
 	$AreaProgress/Label.text = area.name
 	$AreaProgress/TextureRect.texture = resources.get_res("bg/%s" % area.category)#images.backgrounds[area.category]

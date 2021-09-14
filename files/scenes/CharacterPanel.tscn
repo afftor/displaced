@@ -15,7 +15,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-test_mode = true
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 326.591

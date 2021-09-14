@@ -1,74 +1,117 @@
 extends Node
 
 
-var event_triggers = {
-	
+var event_triggers = {#reworked to same syntax as seqs
+	intro_1 = [
+		{type = 'mission', value = 'road_to_village'},
+	],
+	intro_2 = [
+		{type = 'scene', value = 'intro_3'},
+	],
 	forest2 = [
-		{code = 'system', value = 'unlock_character', args = 'erika'},
-		{code = 'system', value = 'show_screen', args = 'exploration'},
+		{type = 'system', value = 'unlock_character', arg = 'erika'},
+#		{code = 'system', value = 'show_screen', args = 'exploration'},
+		{type = 'show_screen', value = 'exploration'},
 	],
 	dimitrius_1_3 = [
-		{code = 'system', value = 'start_next_scene', args = 'dimitrius_1_4'},
+#		{code = 'system', value = 'start_next_scene', args = 'dimitrius_1_4'},
+		{type = 'scene', value = 'dimitrius_1_4'},
 	],
 	dimitrius_1_4 = [
-		{code = 'system', value = 'show_screen', args = 'exploration'},
+#		{code = 'system', value = 'show_screen', args = 'exploration'},
+		{type = 'show_screen', value = 'exploration'},
 	],
 	iola_2_2_1 = [
 		{type = 'system', value = 'unlock_area', arg = 'cult'},
-		{code = 'system', value = 'show_screen', args = 'exploration'},
+#		{code = 'system', value = 'show_screen', args = 'exploration'},
+		{type = 'show_screen', value = 'exploration'},
 	],
 	ember_2_4 = [
-		{code = 'system', value = 'start_next_scene', args = 'viktor_2_1'},
+#		{code = 'system', value = 'start_next_scene', args = 'viktor_2_1'},
+		{type = 'scene', value = 'viktor_2_1'},
 	],
 	viktor_2_1 = [
-		{code = 'system', value = 'show_screen', args = 'exploration'},
+#		{code = 'system', value = 'show_screen', args = 'exploration'},
+		{type = 'show_screen', value = 'exploration'},
 	],
 	iola_2_4 = [
-		{code = 'system', value = 'show_screen', args = 'village'},
+#		{code = 'system', value = 'show_screen', args = 'village'},
+		{type = 'show_screen', value = 'village'},
 	],
 	zelroth_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
 	],
 }
 
-var locations = {
+var locations = { #added seqs bindings and other fields
 	village =  {
 		code = 'village',
+		background = null, 
 		missions = [],
+		events = []
 	},
 	forest =  {
 		code = 'forest',
+		background = null, #2fill
 		missions = ['forest_erika','forest_faeries_1','forest_faeries_2','forest_faeries_2','forest_erika_sidequest'],
+		events = []
 	},
 	cave =  {
 		code = 'cave',
+		background = null, #2fill
 		missions = ['caves_demitrius','caves_iola','caves_dwarf','caves_wanderer'],
+		events = []
 	},
-	road_to_town =  {
+	road_to_town =  { #needs rebinding or adding a dedicated map location
 		code = 'road_to_town',
+		background = null, #2fill
 		missions = ['road_to_town'],
 	},
 	town =  { #should have differnet custom handling
+		#idk for what reason
 		code = 'town',
-		missions = ['town_viktor_fight','town_siege'],
+		background = null, #2fill
+#		missions = ['town_viktor_fight','town_siege'],
+		missions = [],
 		function = '',
+		events = []
 	},
 	castle =  {
 		code = 'castle',
+		background = null, #2fill
 		missions = ['castle_rilu','castle_rilu_return'],
+		events = []
 	},
 	dragon_mountains = {
 		code = 'dragon_mountains',
+		background = null, #2fill
 		missions = ['mountains_ember'],
+		events = []
 	},
 	cult =  {
 		code = 'cult',
+		background = null, #2fill
 		missions = ['cult_iola_rescue','cult_rose_rescue'],
+		events = []
 	},
 	modern_city =  {
 		code = 'modern_city',
+		background = null, #2fill
 		missions = ['dimitrius_finale'],
+		events = []
 	},
+}
+
+
+var buildings = { #for binding village buidings events
+	town_hall = {
+		events = []
+	},
+}
+
+
+var characters = { #for binding village characters events
+	
 }
 
 
@@ -78,13 +121,21 @@ var scene_sequences = {
 		initiate_signal = 'game_start', #can be signals like 'click specific location'
 		initiate_reqs = [], #all sequences only playable once, unless specified
 		actions = [
-		{type = 'scene', value = 'intro1'},
-		{type = 'mission', value = 'road_to_village'},
-		{type = 'scene', value = 'intro2'},
-		{type = 'scene', value = 'intro3'},
-		{type = 'system', value = 'start_game'},
-		{type = 'system', value = 'unlock_character', arg = 'arron'},
-		{type = 'system', value = 'unlock_location', arg = 'village'} #Suggestion: hardcode similar unlocks into single function i.e. start_game one
+		{type = 'scene', value = 'intro_1'},
+		{type = 'mission', value = 'road_to_village'}, #actually stops here
+		{type = 'scene', value = 'intro_2'},
+		{type = 'scene', value = 'intro_3'},
+#		{type = 'system', value = 'start_game'},
+		{type = 'system', value = 'unlock_character', arg = 'arron'}, #there should be rose for sure
+		{type = 'system', value = 'unlock_area', arg = 'village'} #Suggestion: hardcode similar unlocks into single function i.e. start_game one
+		]
+	},
+	intro_finish = {
+		initiate_reqs = [],
+		actions = [
+			{type = 'scene', value = 'intro_2'},
+			{type = 'system', value = 'unlock_character', arg = 'rose'},
+			{type = 'system', value = 'unlock_area', arg = 'village'}
 		]
 	},
 	erika_at_village = {
@@ -92,7 +143,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_completed', value = 'forest_erika'}],
 		actions = [
 		{type = 'scene', value = 'erika_1'},
-		{type = 'system', value = 'unlock_character', arg = 'erika'},
+		{type = 'system', value = 'unlock_character', arg = 'erika'},#duplicate of postscene action
 		]
 	},
 	
@@ -450,11 +501,13 @@ var areas = { #missions in new terminology
 		code = 'road_to_village',
 		name = 'Init mission',
 		descript = "",
-		image = '',
+		image = 'desert',
 		stages = 2, 
 		enemygroups = [], 
 		level = 1,
+		no_escape = true,
 		events = {
+			on_complete_seq = 'intro_finish'
 		},
 		enemies = {
 			1 : [
@@ -1039,16 +1092,17 @@ var areas = { #missions in new terminology
 
 
 func check_area_avail(area):
-	if !state.checkreqs(area.requirements): return false
+	if !state.areaprogress.has(area): return false #for not implemented missions
+	return state.areaprogress[area].unlocked
+#	if !state.checkreqs(area.requirements): return false
 #	if state.areaprogress.has(area.code) and state.areaprogress[area.code] >= area.stages and area.stages != 0: return false
-	return true
+#	return true
 
 
-func check_location_activity(loc):
-	if !locations[loc].combat:
+func check_location_activity(loc): #if there is mission avail
+	if locations[loc].missions.empty():
 		return true
-	for i in areas.values():
-		if i.category != loc : continue
+	for i in locations[loc].missions:
 		if !check_area_avail(i): continue
 		return true
 	return false

@@ -84,21 +84,21 @@ func set_active_val():#temporal contruction, until event starting reworking
 	if state.CurEvent != "": return
 	active = false;
 	var f = false;
-	for e in events.characters[charname]:
-		var res = globals.SimpleEventCheck(e)
-		if res:
-			f = true
-			if has_node('QuestActive'):
-				$QuestActive.visible = true;
-			if is_char:
-				active = true;
-				next_scene = e
-				#material = load("res://files/portret_shader.tres")
-				#set_process(true)
-				#.update()
-				return
-			else:
-				break
+#	for e in events.characters[charname]:
+#		var res = globals.SimpleEventCheck(e)
+#		if res:
+#			f = true
+#			if has_node('QuestActive'):
+#				$QuestActive.visible = true;
+#			if is_char:
+#				active = true;
+#				next_scene = e
+#				#material = load("res://files/portret_shader.tres")
+#				#set_process(true)
+#				#.update()
+#				return
+#			else:
+#				break
 #	if !is_char:
 #		for e in events.buildings[charname]:
 #			var res = globals.SimpleEventCheck(e);

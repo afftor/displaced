@@ -20,6 +20,9 @@ func _ready():
 	$ExplorationOngoing/CloseButton.connect('pressed', self, 'hide')
 	$ExplorationSelect/CloseButton.connect('pressed', self, 'hide')
 	
+	input_handler.connect("PositionChanged", self, 'build_party')
+	input_handler.explore_node = self
+	
 	$AdvConfirm/screen.rect_size = rect_size
 	$AdvConfirm/screen.rect_global_position = Vector2(0, 0)
 	$AdvConfirm/ok.connect("pressed", self, 'adv_confirm')
@@ -47,8 +50,10 @@ func set_location(loc_code):
 
 func show():
 	.show()
-	input_handler.explore_node = self
-	if state.activearea != null and Explorationdata.areas[state.activearea].category == location:
+#	input_handler.explore_node = self
+#	if state.activearea != null and Explorationdata.areas[state.activearea].category == location:
+	input_handler.menu_node.visible = false
+	if state.activearea != null and (location == 'mission' or Explorationdata.locations[location].missions.has(state.activearea)):
 		area = state.activearea
 		open_mission()
 	else:
@@ -58,28 +63,36 @@ func show():
 func open_explore():
 	$ExplorationOngoing.visible = false
 	$ExplorationSelect.visible = true
+	$ExplorationSelect/Panel/Button.disabled = true
 	areapanel.visible = false
 	$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	
 	input_handler.ClearContainer(arealist)
-	for a in Explorationdata.areas:
+	var num_missions = 0
+	for a in Explorationdata.locations[location].missions:
 		var areadata = Explorationdata.areas[a]
-		if areadata.category != location: continue
-		if !state.checkreqs(areadata.requirements): continue
+#		if areadata.category != location: continue
+#		if !state.checkreqs(areadata.requirements): continue
+		if !state.areaprogress[a].unlocked: continue
 		if state.areaprogress[a].completed: continue
 		var panel = input_handler.DuplicateContainerTemplate(arealist)
 		panel.text = areadata.name
 		panel.set_meta('area', a)
 		panel.connect('pressed', self, 'select_area', [a])
-	for a in Explorationdata.areas:
+		num_missions += 1
+	for a in Explorationdata.locations[location].missions:
 		var areadata = Explorationdata.areas[a]
-		if areadata.category != location: continue
-		if !state.checkreqs(areadata.requirements): continue
+#		if areadata.category != location: continue
+#		if !state.checkreqs(areadata.requirements): continue
+		if !state.areaprogress[a].unlocked: continue
 		if !state.areaprogress[a].completed: continue
 		var panel = input_handler.DuplicateContainerTemplate(arealist)
 		panel.text = areadata.name + " âœ“í ½í·¸"
 		panel.set_meta('area', a)
 		panel.connect('pressed', self, 'select_area', [a])
+		num_missions += 1
+	if num_missions == 0:
+		hide()
 
 
 func select_area(area_code):
@@ -87,6 +100,7 @@ func select_area(area_code):
 	for node in arealist.get_children():
 		node.pressed = (area == node.get_meta('area'))
 	build_area_description()
+	$ExplorationSelect/Panel/Button.disabled = (state.activearea != null)
 
 
 func build_area_description():
@@ -166,6 +180,12 @@ func build_area_info():
 	text += "Level: %d \n" % areastate.level
 	text += "Stage: %d/%d" % [areastate.stage, areadata.stages]
 	$ExplorationOngoing/RichTextLabel.bbcode_text = text
+	if areadata.has('no_escape') and areadata.no_escape:
+		$ExplorationOngoing/CancelButton.visible = false
+		$ExplorationOngoing/CloseButton.visible = false
+	else:
+		$ExplorationOngoing/CancelButton.visible = true
+		$ExplorationOngoing/CloseButton.visible = true
 
 
 func abandon_area():
@@ -186,38 +206,39 @@ func advance_area():
 		finish_area()
 	else:
 		var stagedata
-		if areadata.stagedenemies.has(areastate.stage):
-			stagedata = areadata.stagedenemies[areastate.stage]
-			if stagedata.has('enemy'):
-				#predescribed combat
-				var party = Enemydata.predeterminatedgroups[stagedata.enemy].group #not forget to change format of those groups from battlefield dirs to arrays of battlefield dirs due to waves implementation
-				var level = areastate.level
-				if stagedata.has('level'):
-					level = stagedata.level - areadata.level + areastate.level
-#					level += stagedata.level
-				set_party_level_data(party, areadata.level, level)
-				var bg = Explorationdata.locations[location].background
-				if areadata.has('image') and areadata.image != null and areadata.image != "":
-					bg = areadata.image
-				#2add set sound
-				combat_node.show()
-				combat_node.start_combat(party, level, bg)
-				
-			elif stagedata.has('scene'):
-				#fixed scene
-				if state.OldEvents.has(stagedata.scene) and events.events[stagedata.scene].onetime:
-					areastate.stage += 1
-					advance_area()
-				else:
-					#2move to globals method
-					input_handler.OpenClose(input_handler.scene_node)
-					input_handler.scene_node.replay_mode = state.OldEvents.has(stagedata.scene)
-					input_handler.scene_node.play_scene(stagedata.scene)
-					
-					yield(input_handler.scene_node, "scene_end")
-					advance_check()
+		if areadata.enemies.has(areastate.stage):
+			stagedata = areadata.enemies[areastate.stage]
+			#predescribed combat
+			var party
+			if typeof(stagedata) == TYPE_STRING:
+				party = Enemydata.predeterminatedgroups[stagedata].group
+			else:
+				party = stagedata.duplicate(true) 
+			var level = areastate.level
+			if stagedata.has('level'):
+				level = stagedata.level - areadata.level + areastate.level
+			set_party_level_data(party, areadata.level, level)
+			var bg
+			if Explorationdata.locations.has(location): 
+				bg = Explorationdata.locations[location].background
+			if areadata.has('image') and areadata.image != null and areadata.image != "":
+				bg = areadata.image
+			#2add set sound
+			combat_node.show()
+			combat_node.start_combat(party, level, bg)
+#			elif stagedata.has('scene'):
+#				#fixed scene
+#				if state.OldEvents.has(stagedata.scene) and events.events[stagedata.scene].onetime:
 #					areastate.stage += 1
 #					advance_area()
+#				else:
+#					#2move to globals method
+#					input_handler.OpenClose(input_handler.scene_node)
+#					input_handler.scene_node.replay_mode = state.OldEvents.has(stagedata.scene)
+#					input_handler.scene_node.play_scene(stagedata.scene)
+#
+#					yield(input_handler.scene_node, "scene_end")
+#					advance_check()
 		else:
 			#random combat
 			var tmp
@@ -326,9 +347,15 @@ func set_party_level_data(party, def_lvl, cur_lvl):
 			if typeof(wave[pos]) == TYPE_STRING:
 				var temp = {unit = wave[pos], level = cur_lvl}
 				wave[pos] = temp
+			elif typeof(wave[pos]) == TYPE_ARRAY: #currently main case 
+				if wave[pos].size() == 1:
+					wave[pos].push_back(cur_lvl)
+				else:
+					wave[pos][1] += cur_lvl - def_lvl
+				var tres = {}
 			elif typeof(wave[pos]) == TYPE_DICTIONARY:
 				if wave[pos].has('level'):
-					print("monster %s upscailed" % wave[pos].unit)
+					print("monster %s upscaled" % wave[pos].unit)
 					wave[pos].level += cur_lvl - def_lvl
 				else:
 					wave[pos].level = cur_lvl
@@ -337,8 +364,19 @@ func set_party_level_data(party, def_lvl, cur_lvl):
 				print(party)
 
 func finish_area():
+	var areadata = Explorationdata.areas[area]
+	if areadata.events.has("on_complete"):
+		var scene = areadata.events.on_complete
+		if not(state.OldEvents.has(scene) and events.events[scene].onetime):
+			if globals.play_scene(scene):
+				yield(input_handler.scene_node, "scene_end")
 	state.complete_area()
-	open_explore()
+	if location != 'mission': open_explore()
+	else: hide()
+	if areadata.events.has("on_complete_seq"):
+		var seq_id = areadata.events.on_complete_seq
+		if state.check_sequence(seq_id):
+			globals.run_seq(seq_id)
 
 
 func combat_finished(value):
@@ -346,6 +384,7 @@ func combat_finished(value):
 		combat_win()
 	else:
 		combat_loose()
+
 
 func combat_win():
 	advance_check()
@@ -357,10 +396,12 @@ func combat_loose():
 		state.abandon_area()
 	else:
 		pass
-	hide()
+	if $ExplorationOngoing/CloseButton.visible:
+		hide()
 
 
 func hide():
+	input_handler.menu_node.visible = false
 	input_handler.map_node.update_map()
 	.hide()
 
@@ -374,8 +415,22 @@ func advance_check():
 		finish_area()
 	else:
 		build_area_info()
-		if areadata.stagedenemies.has(areastate.stage) and areadata.stagedenemies[areastate.stage].has('scene'):
-			advance_area()
+#		if areadata.stagedenemies.has(areastate.stage) and areadata.stagedenemies[areastate.stage].has('scene'):
+#			advance_area()
+		if areadata.events.has("after_fight_%d" % (areastate.stage - 1)):
+			var scene = areadata.events["after_fight_%d" % (areastate.stage - 1)]
+			if state.OldEvents.has(scene) and events.events[scene].onetime:
+				$AdvConfirm.visible = true
+#				areastate.stage += 1
+#				advance_area()
+			else:
+				if globals.play_scene(scene):
+					pass
+				else:
+					$AdvConfirm.visible = true
+				
+#				yield(input_handler.scene_node, "scene_end")
+#				advance_check()
 		else:
 			$AdvConfirm.visible = true
 

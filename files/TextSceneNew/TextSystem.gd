@@ -3,31 +3,32 @@ extends Control
 signal scene_end
 
 const REF_PATH = [
-	"res://assets/data/txt_ref/chardef.txt",
-	"res://assets/data/txt_ref/scn/intro.txt",
-	"res://assets/data/txt_ref/scn/forest.txt",
-	"res://assets/data/txt_ref/scn/ember_1.txt",
-	"res://assets/data/txt_ref/scn/rose.txt",
-	"res://assets/data/txt_ref/scn/dimitrius_1.txt",
-	"res://assets/data/txt_ref/scn/iola_1.txt",
-	"res://assets/data/txt_ref/scn/erika.txt",
-	"res://assets/data/txt_ref/scn/erika_rose.txt",
-	"res://assets/data/txt_ref/scn/aeros.txt",
-	"res://assets/data/txt_ref/scn/rilu_1.txt",
-	"res://assets/data/txt_ref/scn/faery_queen.txt",
-	"res://assets/data/txt_ref/scn/victor_1.txt",
-	"res://assets/data/txt_ref/scn/erika_annet.txt",
-	"res://assets/data/txt_ref/scn/rilu_2.txt",
-	"res://assets/data/txt_ref/scn/iola_2.txt",
-	"res://assets/data/txt_ref/scn/ember_2.txt",
-	"res://assets/data/txt_ref/scn/victor_2.txt",
-	"res://assets/data/txt_ref/scn/iola_3.txt",
-	"res://assets/data/txt_ref/scn/city_raid.txt",
-	"res://assets/data/txt_ref/scn/annet.txt",
-	"res://assets/data/txt_ref/scn/dimitrius_2.txt",
-	"res://assets/data/txt_ref/scn/zelroth.txt",
-	"res://assets/data/txt_ref/scn/future_city.txt",
-	"res://assets/data/txt_ref/scn/dimitrius_ending.txt",
+	"res://assets/data/txt_ref",
+#	"res://assets/data/txt_ref/chardef.txt",
+#	"res://assets/data/txt_ref/scn/intro.txt",
+#	"res://assets/data/txt_ref/scn/forest.txt",
+#	"res://assets/data/txt_ref/scn/ember_1.txt",
+#	"res://assets/data/txt_ref/scn/rose.txt",
+#	"res://assets/data/txt_ref/scn/dimitrius_1.txt",
+#	"res://assets/data/txt_ref/scn/iola_1.txt",
+#	"res://assets/data/txt_ref/scn/erika.txt",
+#	"res://assets/data/txt_ref/scn/erika_rose.txt",
+#	"res://assets/data/txt_ref/scn/aeros.txt",
+#	"res://assets/data/txt_ref/scn/rilu_1.txt",
+#	"res://assets/data/txt_ref/scn/faery_queen.txt",
+#	"res://assets/data/txt_ref/scn/victor_1.txt",
+#	"res://assets/data/txt_ref/scn/erika_annet.txt",
+#	"res://assets/data/txt_ref/scn/rilu_2.txt",
+#	"res://assets/data/txt_ref/scn/iola_2.txt",
+#	"res://assets/data/txt_ref/scn/ember_2.txt",
+#	"res://assets/data/txt_ref/scn/victor_2.txt",
+#	"res://assets/data/txt_ref/scn/iola_3.txt",
+#	"res://assets/data/txt_ref/scn/city_raid.txt",
+#	"res://assets/data/txt_ref/scn/annet.txt",
+#	"res://assets/data/txt_ref/scn/dimitrius_2.txt",
+#	"res://assets/data/txt_ref/scn/zelroth.txt",
+#	"res://assets/data/txt_ref/scn/future_city.txt",
+#	"res://assets/data/txt_ref/scn/dimitrius_ending.txt",
 	]
 
 const AVAIL_EFFECTS = [
@@ -83,10 +84,11 @@ func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
-	for i in REF_PATH:
-		f.open(i, File.READ)
-		ref_src.append_array(f.get_as_text().split("\n"))
-		f.close()
+	for pth in REF_PATH:
+		for i in process_path_dir(pth):
+			f.open(i, File.READ)
+			ref_src.append_array(f.get_as_text().split("\n"))
+			f.close()
 
 	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
@@ -97,6 +99,16 @@ func _ready() -> void:
 	
 	$ClosePanel/Cancel.connect("pressed", $ClosePanel, "hide")
 	$ClosePanel/Confirm.connect("pressed", self, "tag_stop")
+
+
+func process_path_dir(path):
+	var res = []
+	for i in globals.dir_contents(path):
+		if i.ends_with('.txt') == false:
+			continue
+		res.push_back(i)
+	return res
+
 
 var text_log = ""
 func OpenLog():

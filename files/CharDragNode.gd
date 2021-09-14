@@ -32,4 +32,5 @@ func drop_data(position, data):
 		var pos2 = hero1.position
 		hero1.position = pos1
 		hero2.position = pos2
-	parent_node.build_party()
+	input_handler.emit_signal("PositionChanged")
+#	parent_node.build_party()

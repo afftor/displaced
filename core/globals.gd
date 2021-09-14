@@ -254,72 +254,141 @@ func ChangeScene(name):
 #			return false
 #	return true
 
-func check_signal(sg_name, arg = null):
-	var events_to_check := []
-	if arg != null:
-		input_handler.emit_signal(sg_name, arg)
-		if typeof(events.signals[sg_name]) == TYPE_ARRAY:
-			events_to_check = events.signals[sg_name]
-		else:
-			events_to_check = events.signals[sg_name][arg]
-	else:
-		input_handler.emit_signal(sg_name)
-		events_to_check = events.signals[sg_name]
-	for e in events_to_check:
-		if SimpleEventCheck(e):
-			StartEventScene(e)
-			return
+#func check_signal(sg_name, arg = null):
+#	var events_to_check := []
+#	if arg != null:
+#		input_handler.emit_signal(sg_name, arg)
+#		if typeof(events.signals[sg_name]) == TYPE_ARRAY:
+#			events_to_check = events.signals[sg_name]
+#		else:
+#			events_to_check = events.signals[sg_name][arg]
+#	else:
+#		input_handler.emit_signal(sg_name)
+#		events_to_check = events.signals[sg_name]
+#	for e in events_to_check:
+#		if SimpleEventCheck(e):
+#			StartEventScene(e)
+#			return
+#
+#func check_signal_test(sg_name, arg = null):
+#	var events_to_check := []
+#	if arg != null:
+#		if typeof(events.signals[sg_name]) == TYPE_ARRAY:
+#			events_to_check = events.signals[sg_name]
+#		elif events.signals[sg_name].has(arg):
+#			events_to_check = events.signals[sg_name][arg]
+#		else:
+#			events_to_check = []
+#	else:
+#		events_to_check = events.signals[sg_name]
+#
+#	for e in events_to_check:
+#		if SimpleEventCheck(e): #mb add priority sorting
+#			return e
+#	return null
 
-func check_signal_test(sg_name, arg = null):
-	var events_to_check := []
-	if arg != null:
-		if typeof(events.signals[sg_name]) == TYPE_ARRAY:
-			events_to_check = events.signals[sg_name]
-		elif events.signals[sg_name].has(arg):
-			events_to_check = events.signals[sg_name][arg]
-		else:
-			events_to_check = []
-	else:
-		events_to_check = events.signals[sg_name]
+#func SimpleEventCheck(event):
+#	if state.OldEvents.has(event):
+#		return false
+#	if !events.events.has(event): return false #stub for testing
+#	for check in events.events[event].conditions:
+#		if !state.valuecheck(check):
+#			return false
+#	return true
+#
+#func LoadEvent(name):
+#	var dict
+#	if file.file_exists(events_path + '/' + name + '.json'):
+#		file.open(events_path + '/' + name + '.json', File.READ)
+#		dict = parse_json(file.get_as_text())
+#		file.close()
+#	else:
+#		print('Event not found: ' + name)
+#
+#	events_path = "res://assets/data/events"
+#
+#	return dict
+#
+#func StartEventScene(name, debug = false, line = 0):
+#	state.CurEvent = name;
+#	scenes[name] = LoadEvent(name)
+##	var scene = input_handler.scene_node #input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
+#	input_handler.menu_node.visible = false
+##	scene.visible = true
+##	scene.Start(scenes[name], debug, line)
+#	input_handler.scene_node.show()
+#	input_handler.scene_node.play_scene(name)
+#	yield(input_handler.scene_node, "scene_end")
+#	input_handler.menu_node.visible = true
 
-	for e in events_to_check:
-		if SimpleEventCheck(e): #mb add priority sorting
-			return e
-	return null
+func StartGame():
+	change_screen('map')
+	run_seq('intro')
 
-func SimpleEventCheck(event):
-	if state.OldEvents.has(event):
+
+func run_seq(id):
+	if !state.check_sequence(id): return
+	run_actions_list(Explorationdata.scene_sequences[id].actions)
+	state.store_sequence(id)
+
+
+func run_actions_list(list):
+	var stop_syncronous = false
+	for action in list:
+		match action.type:
+			'scene':
+				if stop_syncronous: break
+				stop_syncronous = play_scene(action.value)
+			'system':
+				state.system_action(action)
+			'show_screen':
+				change_screen(action.value)
+			'mission':
+				if stop_syncronous: break
+				stop_syncronous = true
+				force_start_mission(action.value)
+
+func change_screen(screen):
+	match screen:
+		'map', 'exploration':
+			if input_handler.explore_node != null: input_handler.explore_node.hide()
+			if input_handler.village_node != null: input_handler.village_node.hide()
+			if input_handler.combat_node != null: 
+				input_handler.combat_node.hide()
+		'mission':
+			if state.activearea == null: return
+			if input_handler.village_node != null: input_handler.village_node.hide()
+			
+#			input_handler.explore_node.area = state.activearea
+			input_handler.explore_node.location = 'mission'
+			input_handler.explore_node.show()
+#			input_handler.explore_node.open_mission()
+		'village':
+			pass
+
+
+func force_start_mission(mission_id):
+	var missiondata = Explorationdata.areas[mission_id]
+	if state.stashedarea != null:
+		print("error - script missions interrupting")
+	if state.activearea != null:
+		state.stashedarea = state.activearea
+	state.start_area(mission_id)
+	change_screen('mission')
+
+
+func play_scene(scene_id, enforce_replay = false):
+	if input_handler.scene_node == null:
+		print("scene node not open")
 		return false
-	if !events.events.has(event): return false #stub for testing
-	for check in events.events[event].conditions:
-		if !state.valuecheck(check):
-			return false
+	if !enforce_replay and state.OldEvents.has(scene_id):
+		return false
+	state.CurEvent = scene_id
+	input_handler.OpenClose(input_handler.scene_node)
+	input_handler.scene_node.replay_mode = state.OldEvents.has(scene_id)
+	input_handler.scene_node.play_scene(scene_id)
 	return true
 
-func LoadEvent(name):
-	var dict
-	if file.file_exists(events_path + '/' + name + '.json'):
-		file.open(events_path + '/' + name + '.json', File.READ)
-		dict = parse_json(file.get_as_text())
-		file.close()
-	else:
-		print('Event not found: ' + name)
-
-	events_path = "res://assets/data/events"
-
-	return dict
-
-func StartEventScene(name, debug = false, line = 0):
-	state.CurEvent = name;
-	scenes[name] = LoadEvent(name)
-#	var scene = input_handler.scene_node #input_handler.get_spec_node(input_handler.NODE_EVENT)#GetEventNode()
-	input_handler.menu_node.visible = false
-#	scene.visible = true
-#	scene.Start(scenes[name], debug, line)
-	input_handler.scene_node.show()
-	input_handler.scene_node.play_scene(name)
-	yield(input_handler.scene_node, "scene_end")
-	input_handler.menu_node.visible = true
 
 func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()
@@ -603,6 +672,7 @@ func CharacterSelect(targetscript, type, function, requirements):
 		newnode.connect('pressed', targetscript, function, [i.id])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 
+
 func HeroSelect(targetscript, type, function, requirements):
 	var node
 	if get_tree().get_root().has_node("HeroSelect"):
@@ -746,6 +816,7 @@ func SaveGame(name):
 	file.store_line(to_json(savedict))
 	file.close()
 
+
 func LoadGame(filename):
 	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
 		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
@@ -767,8 +838,9 @@ func LoadGame(filename):
 	if state.CurBuild != '' and state.CurBuild != null:
 		CurrentScene.get_node(state.CurBuild).show()
 	#opentextscene
-	if state.CurEvent != "":
-		StartEventScene(state.CurEvent, false, state.CurrentLine);
+#	if state.CurEvent != "":
+#		StartEventScene(state.CurEvent, false, state.CurrentLine);
+
 
 func datetime_comp(a, b):
 	if a.year > b.year: return true
@@ -779,6 +851,7 @@ func datetime_comp(a, b):
 	if a.second > b.second: return true
 	return false
 	pass
+
 
 func get_last_save():
 	var dir = dir_contents(userfolder + 'saves')

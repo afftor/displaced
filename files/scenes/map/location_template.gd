@@ -41,7 +41,7 @@ func _onclick():
 
 
 func m_hide():
-	visible = true
+#	visible = true
 	$clouds.visible = true
 
 

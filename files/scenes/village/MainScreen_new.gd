@@ -1,6 +1,6 @@
 extends Control
 
-var debug = true
+export var debug = false
 
 #warning-ignore-all:return_value_discarded
 var gamespeed = 1
@@ -134,9 +134,9 @@ func buildscreen(empty = null):
 	for build in globals.upgradelist:
 		var node = get_node(build)
 		if node != null: node.build_icon()
-
-		binded_events[build] = globals.check_signal_test('BuildingEntered', build)
-
+		
+#		binded_events[build] = globals.check_signal_test('BuildingEntered', build)
+		
 		if binded_events[build] != null:
 			node.set_active()
 		else:

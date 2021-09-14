@@ -227,6 +227,10 @@ func buildenemygroup(group):
 			var tempname = group[i].unit
 			enemygroup[i] = enemy.new()
 			enemygroup[i].createfromtemplate(tempname, group[i].level)
+		elif typeof(group[i]) == TYPE_ARRAY:
+			var tempname = group[i][0]
+			enemygroup[i] = enemy.new()
+			enemygroup[i].createfromtemplate(tempname, group[i][1])
 		else:
 			var tempname = group[i]
 			enemygroup[i] = enemy.new()

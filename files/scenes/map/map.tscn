@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/images/map/map_full.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/map/map_icon_1.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://files/scenes/ExplorationMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/scenes/village/MainScreen_new.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/map/map_icon_8.png" type="Texture" id=20]
 
 [node name="map" type="TextureRect"]
 margin_left = -0.233521
@@ -30,7 +31,6 @@ script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-test_mode = true
 
 [node name="outer" type="TextureButton" parent="."]
 margin_left = 656.0
@@ -830,7 +830,7 @@ margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="temple" type="TextureButton" parent="."]
+[node name="cult" type="TextureButton" parent="."]
 margin_left = 1434.0
 margin_top = 742.0
 margin_right = 1808.0
@@ -842,126 +842,155 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="clouds" type="Control" parent="temple"]
+[node name="clouds" type="Control" parent="cult"]
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
 
-[node name="cloud" parent="temple/clouds" instance=ExtResource( 10 )]
+[node name="cloud" parent="cult/clouds" instance=ExtResource( 10 )]
 margin_left = -332.0
 margin_top = -199.0
 margin_right = -50.0
 margin_bottom = -149.0
 
-[node name="cloud2" parent="temple/clouds" instance=ExtResource( 12 )]
+[node name="cloud2" parent="cult/clouds" instance=ExtResource( 12 )]
 margin_left = -56.1869
 margin_top = -227.334
 margin_right = 255.813
 margin_bottom = -159.334
 
-[node name="cloud3" parent="temple/clouds" instance=ExtResource( 12 )]
+[node name="cloud3" parent="cult/clouds" instance=ExtResource( 12 )]
 margin_left = 118.347
 margin_top = -205.121
 margin_right = 430.347
 margin_bottom = -137.121
 
-[node name="cloud4" parent="temple/clouds" instance=ExtResource( 12 )]
+[node name="cloud4" parent="cult/clouds" instance=ExtResource( 12 )]
 margin_left = -205.334
 margin_top = -167.041
 margin_right = 106.666
 margin_bottom = -99.0406
 
-[node name="cloud5" parent="temple/clouds" instance=ExtResource( 12 )]
+[node name="cloud5" parent="cult/clouds" instance=ExtResource( 12 )]
 margin_left = -271.975
 margin_top = -124.2
 margin_right = 40.0254
 margin_bottom = -56.2004
 
-[node name="cloud6" parent="temple/clouds" instance=ExtResource( 12 )]
+[node name="cloud6" parent="cult/clouds" instance=ExtResource( 12 )]
 margin_left = 138.974
 margin_top = -152.76
 margin_right = 450.974
 margin_bottom = -84.7605
 
-[node name="cloud7" parent="temple/clouds" instance=ExtResource( 12 )]
+[node name="cloud7" parent="cult/clouds" instance=ExtResource( 12 )]
 margin_left = 150.08
 margin_top = -238.441
 margin_right = 462.08
 margin_bottom = -170.441
 
-[node name="cloud8" parent="temple/clouds" instance=ExtResource( 10 )]
+[node name="cloud8" parent="cult/clouds" instance=ExtResource( 10 )]
 margin_left = 6.07971
 margin_top = -222.641
 margin_right = 297.08
 margin_bottom = -147.641
 
-[node name="cloud9" parent="temple/clouds" instance=ExtResource( 10 )]
+[node name="cloud9" parent="cult/clouds" instance=ExtResource( 10 )]
 margin_left = 148.747
 margin_top = -189.28
 margin_right = 545.747
 margin_bottom = -73.2801
 
-[node name="cloud10" parent="temple/clouds" instance=ExtResource( 10 )]
+[node name="cloud10" parent="cult/clouds" instance=ExtResource( 10 )]
 margin_left = -226.0
 margin_top = -124.214
 margin_right = -23.0
 margin_bottom = -84.2139
 
-[node name="cloud11" parent="temple/clouds" instance=ExtResource( 11 )]
+[node name="cloud11" parent="cult/clouds" instance=ExtResource( 11 )]
 margin_left = -66.9073
 margin_top = -135.574
 margin_right = 230.093
 margin_bottom = -36.5736
 
-[node name="cloud12" parent="temple/clouds" instance=ExtResource( 11 )]
+[node name="cloud12" parent="cult/clouds" instance=ExtResource( 11 )]
 margin_left = -383.08
 margin_top = -101.04
 margin_right = -7.08023
 margin_bottom = 51.96
 
-[node name="cloud13" parent="temple/clouds" instance=ExtResource( 10 )]
+[node name="cloud13" parent="cult/clouds" instance=ExtResource( 10 )]
 margin_left = 103.053
 margin_top = -85.6934
 margin_right = 464.053
 margin_bottom = 56.3066
 
-[node name="cloud14" parent="temple/clouds" instance=ExtResource( 10 )]
+[node name="cloud14" parent="cult/clouds" instance=ExtResource( 10 )]
 margin_left = -117.827
 margin_top = -10.8267
 margin_right = 183.173
 margin_bottom = 77.1733
 
-[node name="cloud15" parent="temple/clouds" instance=ExtResource( 11 )]
+[node name="cloud15" parent="cult/clouds" instance=ExtResource( 11 )]
 margin_left = 153.64
 margin_top = 26.2665
 margin_right = 388.64
 margin_bottom = 115.267
 
-[node name="cloud16" parent="temple/clouds" instance=ExtResource( 11 )]
+[node name="cloud16" parent="cult/clouds" instance=ExtResource( 11 )]
 margin_left = -251.0
 margin_top = 60.0
 margin_right = 100.0
 margin_bottom = 171.0
 
-[node name="cloud17" parent="temple/clouds" instance=ExtResource( 11 )]
+[node name="cloud17" parent="cult/clouds" instance=ExtResource( 11 )]
 margin_left = -48.0
 margin_top = 101.0
 margin_right = 233.0
 margin_bottom = 182.0
 
-[node name="cloud18" parent="temple/clouds" instance=ExtResource( 11 )]
+[node name="cloud18" parent="cult/clouds" instance=ExtResource( 11 )]
 margin_left = 163.067
 margin_top = 102.693
 margin_right = 511.066
 margin_bottom = 210.693
 
-[node name="cloud19" parent="temple/clouds" instance=ExtResource( 11 )]
+[node name="cloud19" parent="cult/clouds" instance=ExtResource( 11 )]
 margin_left = -123.0
 margin_top = 190.0
 margin_right = 141.0
 margin_bottom = 269.0
 
-[node name="active" type="TextureRect" parent="temple"]
+[node name="active" type="TextureRect" parent="cult"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
+
+[node name="modern_city" type="TextureButton" parent="."]
+visible = false
+margin_left = 1215.09
+margin_top = 656.905
+margin_right = 1917.09
+margin_bottom = 1008.91
+texture_normal = ExtResource( 20 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clouds" type="Control" parent="modern_city"]
+margin_left = -1.67023
+margin_right = 38.3298
+margin_bottom = 40.0
+
+[node name="active" type="TextureRect" parent="modern_city"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0

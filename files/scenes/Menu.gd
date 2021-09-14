@@ -48,7 +48,9 @@ func newgame():
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('map')
 	yield(globals, 'scene_changed')
-	input_handler.ActivateTutorial()
+	#temporaly removed until tutorials reworked
+#	input_handler.ActivateTutorial()
+	globals.StartGame()
 	#globals.StartEventScene("Intro")
 	self.queue_free()
 

@@ -28,6 +28,8 @@ signal QuestStarted
 signal QuestCompleted
 signal Midday
 
+signal PositionChanged
+
 var map_node
 var village_node
 var explore_node
@@ -677,7 +679,7 @@ func random_element(arr:Array):
 
 
 func if_mouse_inside(node):
-	if !node.visible or node.modulate.a == 0.0: return false
+	if !node.visible or node.modulate.a == 0.0 or node.texture == null: return false
 	if !node.get_global_rect().has_point(node.get_global_mouse_position()): return false
 	var pos = node.get_local_mouse_position()
 	var tt = node.texture.get_data()
