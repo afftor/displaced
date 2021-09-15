@@ -365,7 +365,7 @@ func set_party_level_data(party, def_lvl, cur_lvl):
 
 func finish_area():
 	var areadata = Explorationdata.areas[area]
-	if areadata.events.has("on_complete"):
+	if areadata.has('events') and areadata.events.has("on_complete"):
 		var scene = areadata.events.on_complete
 		if not(state.OldEvents.has(scene) and events.events[scene].onetime):
 			if globals.play_scene(scene):
@@ -373,7 +373,7 @@ func finish_area():
 	state.complete_area()
 	if location != 'mission': open_explore()
 	else: hide()
-	if areadata.events.has("on_complete_seq"):
+	if areadata.has('events') and areadata.events.has("on_complete_seq"):
 		var seq_id = areadata.events.on_complete_seq
 		if state.check_sequence(seq_id):
 			globals.run_seq(seq_id)
