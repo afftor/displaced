@@ -10,7 +10,7 @@
 =GUI_NORMAL=
 Ri - Now for this thing...
 Ar - Hey there. Whatcha doing?
-Ar - What's with this weird statue.
+Ar - What's with this weird figurine.
 Ri - It's a request from one of the villagers. Seems like this thing is cursed.
 Ar - A request? Do you take things like that?
 Ri - Yes. This is crucial for sustaining this miserable existence.
@@ -24,7 +24,7 @@ Ri - There really is a malicious spirit in it.
 Ar - Woah, can you deal with it?
 Ri - Hmph, who do you think I am?
 Ri - Let's see...
-Rilu chanted a spell and a small puff of smoke erupted from the statue in her hands.
+Rilu chanted a spell and a small puff of smoke erupted from the figurine in her hands.
 To her surprise though, it swiftly dashed towards Arron quickly diving into him.
 Ri - Oh...
 Ar(shock) - What the hell? What just happened?

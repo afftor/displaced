@@ -26,6 +26,29 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{code = 'system', value = 'show_screen', args = 'exploration'},
 		{type = 'show_screen', value = 'exploration'},
 	],
+	rilu_1_2 = [
+		{type = 'system', value = 'heal_team'},
+	],
+	rilu_1_3 = [
+		{code = 'system', value = 'unlock_character', args = 'rilu'},
+		{type = 'system', value = 'add_member_to_active_party', slot = 3, member = 'rilu'},
+		{type = 'system', value = 'heal_team'},
+	],
+	faeryqueen_1 = [
+		{code = 'system', value = 'start_next_scene', args = 'faeryqueen_1_a'}, #needs check for previous option selected
+		{code = 'system', value = 'start_next_scene', args = 'faeryqueen_1_b'},
+		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
+		{code = 'system', value = 'show_screen', args = 'exploration'},
+	],
+	faeryqueen_2 = [
+		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_3'},
+		{code = 'system', value = 'show_screen', args = 'exploration'},
+	],
+	
+	faeryqueen_4 = [
+		{code = 'system', value = 'show_screen', args = 'exploration'},
+	],
+	
 	ember_2_4 = [
 #		{code = 'system', value = 'start_next_scene', args = 'viktor_2_1'},
 		{type = 'scene', value = 'viktor_2_1'},
@@ -656,8 +679,10 @@ var areas = { #missions in new terminology
 		stages = 8, 
 		level = 11,
 		events = {
-			after_fight_5 = 'rilu1',#heal team
-			on_complete = "rilu4",
+			after_fight_5 = 'rilu_1_1',
+			after_fight_6 = 'rilu_1_2',
+			after_fight_7 = 'rilu_1_3',
+			on_complete = "rilu1_4",
 		},
 		enemies = {
 			1 : [
@@ -678,10 +703,14 @@ var areas = { #missions in new terminology
 				{2 : ['spider', 15]},
 				],
 			6 : [
+				{ 1 : ['spider'], 2 : ['spider'], 3 : ['spider'], 4 : ['earthgolem'], 6: ['earthgolem']},
+				
+			],
+			7 : [
 				{1 : ['angrydwarf'], 2: ['angrydwarf'], 3: ['angrydwarf'], 4: ['dwarfwarrior'], 6: ['dwarfwarrior']},
 				{1 : ['dwarfwarrior'], 2: ['dwarfwarrior'], 3: ['dwarfwarrior']},
 				],
-			7 : [
+			8 : [
 				{1 : ['dwarfwarrior'], 5: ['dwarfking'], 3: ['dwarfwarrior']},
 				],
 			},
@@ -742,7 +771,7 @@ var areas = { #missions in new terminology
 				],
 			6 : [
 				{1 : ['faery'], 3 : ['faery'], 4: ['faery'], 6:['faery']},
-				{1 : ['faery'], 5 : ['faerqueen'], 3: ['faery']},
+				{4 : ['faery'], 5 : ['faery'], 6 : ['faery']}
 				],
 			},
 		},
@@ -753,6 +782,9 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 5, 
 		level = 14,
+		events = {
+			on_complete = "faeryqueen_2",
+		},
 		enemies = {
 			1 : [
 				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},
@@ -778,6 +810,10 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 3, 
 		level = 14,
+		events = {
+			after_fight_2 = "faeryqueen_3",
+			on_complete = "faeryqueen_4",
+		},
 		enemies = {
 			1 : [
 				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},

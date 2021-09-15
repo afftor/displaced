@@ -1,0 +1,15 @@
+** town_siege_intermission **
+=BG town_on_fire=
+As team moved through the ruins of the former town they have spotted a few survivors.
+Surv - Quick, this was a merchant's house, it must have something valuable!
+Ro - What's going on? It seems they are also citizens.
+Ri - Looters.
+Ar(neutral) - Hey you, what are you doing at a time like this? Are you playing thieves at a time like this?
+Surv - What's this to you? It will either burn down, demons get it, or we can salvage it.
+Ro - Why won't fight against demons among the soldiers? 
+Surv - Are you an idiot? This is guards' duty, they can die now. The city is finished anyway. 
+Ar(neutral) - Who knew there would be a time I'd prefer to side with the guards. 
+Surv - Yeah, go and do that then, I don't have a time chatting with you.
+Ro - Despicable.
+Ri - We shouldn't waste time, let's ignore it.
+Ar(neutral) - ...Right.

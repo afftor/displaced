@@ -9,21 +9,21 @@
 =SPRITE kingdwarf=
 =SPRITE_UNFADE 0.5=
 KD - Haha, these surfacers are quite feisty. 
-Ro - Master, we can't fight them for much longer. 
-Em(tired) - I'm sorry, they are numerous and really tough.
+Ro(shock) - Master, we can't fight them for much longer. 
+Em(tired) - Sorry, they are numerous and really tough.
 Ar - Shit, the king is coming at us now!
-KD - You have fought well kid, but you've messed with the wrong warriors.
+KD - You have fought well kid, but you've messed with the wrong dwarves.
 KD - My ax demands its nourishment!
-Ar - You crazy midget fucker...
-Ar - (This is not good, maybe we should try to escape at this point...)
+Ar(anger) - You crazy midget fucker...
+Ar(anger) - (This is not good, maybe we should try to escape at this point...)
 Er - Arron, look!
 Arron turned to the side Erika pointed at, broadening his eyes in disbelief.
-Rilu slowly stood up on her knees. 
-Ro(shock) - Rilu! How are you...
-Ri - Ugh... I really hate when this happens.
+Blood covered Rilu slowly stood up on her knees. 
+Ro(shock) - She's alive!
+Ri - Ugh... Not this again.
 The dwarven king shows no sign of hesitation being completely overwhelmed by combat haze. 
 KD - What an interesting girl! Look like an ideal practice target, Hahaha.
 Previously expressionless Rilu's face now lit with magic glow displayed an angry look mixed with determination.
-Ri(spell) - Arron, allow me to give you a hand in this matter.
-Ar - Sure, we could use more than just a hand right now.
+Ri(spell) - Arron, I'll join if you don't mind.
+Ar - Not gonna stop you.
 =STOP=

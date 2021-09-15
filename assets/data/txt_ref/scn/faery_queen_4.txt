@@ -1,0 +1,41 @@
+** faery_queen_3 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG forest=
+=SPRITE faeryqueen=
+FA - Oh shit, the queen fell!
+FB - Run!
+The other faeries quickly scattered away.
+FQ - Ggh, you fuckers... 
+Ar - You have one nasty mouth. We need something of yours.
+Ro - Saint's Pearl. Ring's a bell?
+FQ - Hah, what makes you think I'll hand you over anything at all?
+Em - Because we are the good guys?
+FQ - Even less of a reason for me.
+Er - She won't bend, let's just strip her.
+FQ - What the hell are you thinking, you crazy bimbo?!
+Ar - That seems a bit extreme...
+(if seens Rose scene faery_queen_1_a) {
+Ro(sarcastic) - Yeah, go for it, Erika. 
+Ro(sarcastic) - Make her pay for what I went through.
+Ar(neutral) - Huh? Has something happened?
+Ro - N-no, it's nothing.
+}
+Er - No, if we humiliate her in front of others she will lose her authority.
+Em(normal) - Ho-oh, so that's why people wear clothes? 
+Ar - Still seems a bit dirty, but if there's nothing else we can do...
+FQ - No, stay away you imbicile perverts!
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+...
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE erika=
+Er - There it is. 
+Erika demonstrated a small white gem acquired from Faery Queen.
+Ri - Let me see it... I can't sense any magic from it.
+Ro(shock) - No way, all this for nothing? 
+Ar(neutral) - Well, we might find some use for it in future. Let's go home for now.
+Er - Good call, I'm already sick of this forest. 
+=STOP=
