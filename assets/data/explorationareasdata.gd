@@ -21,6 +21,12 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{code = 'system', value = 'show_screen', args = 'exploration'},
 		{type = 'show_screen', value = 'exploration'},
 	],
+	aeros_2 = [
+		{type = 'scene', value = 'aeros_3'},
+	],
+	erika_annet_2_1 = [
+		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
+	],
 	iola_2_2_1 = [
 		{type = 'system', value = 'unlock_area', arg = 'cult'},
 #		{code = 'system', value = 'show_screen', args = 'exploration'},
@@ -49,6 +55,12 @@ var event_triggers = {#reworked to same syntax as seqs
 		{code = 'system', value = 'show_screen', args = 'exploration'},
 	],
 	
+	viktor_2_3 = [
+		{type = 'mission', value = 'town_viktor_fight'},
+	],
+	rilu_2_3_2 = [
+		{type = 'mission', value = 'castle_rilu'},
+	],
 	ember_2_4 = [
 #		{code = 'system', value = 'start_next_scene', args = 'viktor_2_1'},
 		{type = 'scene', value = 'viktor_2_1'},
@@ -71,7 +83,7 @@ var locations = { #added seqs bindings and other fields
 		code = 'village',
 		background = null, 
 		missions = [],
-		events = []
+		events = ['erika_at_village',]
 	},
 	forest =  {
 		code = 'forest',
@@ -97,13 +109,13 @@ var locations = { #added seqs bindings and other fields
 #		missions = ['town_viktor_fight','town_siege'],
 		missions = [],
 		function = '',
-		events = []
+		events = ['town_gates', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', ]
 	},
 	castle =  {
 		code = 'castle',
 		background = null, #2fill
-		missions = ['castle_rilu','castle_rilu_return'],
-		events = []
+		missions = ['castle_rilu_return'],
+		events = ['rilu_castle', ]
 	},
 	dragon_mountains = {
 		code = 'dragon_mountains',
@@ -115,7 +127,7 @@ var locations = { #added seqs bindings and other fields
 		code = 'cult',
 		background = null, #2fill
 		missions = ['cult_iola_rescue','cult_rose_rescue'],
-		events = []
+		events = ['iola_gets_caught', 'iola_rescue_start', ]
 	},
 	modern_city =  {
 		code = 'modern_city',
@@ -128,7 +140,10 @@ var locations = { #added seqs bindings and other fields
 
 var buildings = { #for binding village buidings events
 	town_hall = {
-		events = []
+		events = ['rose_reunion']
+	},
+	smith = {
+		events = ['ember_smith']
 	},
 }
 
@@ -222,9 +237,9 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_completed', value = 'road_to_town'}],
 		actions = [
 		{type = 'scene', value = 'aeros_2'},
+#		{type = 'system', value = 'unlock_area', arg = 'faery_forest'}, 
+		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_1'},
 		{type = 'scene', value = 'aeros_3'},
-		{type = 'system', value = 'unlock_area', arg = 'faery_forest'},
-		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_1'}
 		]
 	},
 	
@@ -255,8 +270,9 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_faeries_3'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_1'}, 
-		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
 		{type = 'system', value = 'enable_character', arg = ['erika',false] },
+		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
+		
 		]
 	},
 	arron_meet_annet = {
@@ -287,7 +303,7 @@ var scene_sequences = {
 		]
 	},
 	iola_gets_caught = {
-		initiate_signal = 'cult_grounds', 
+		initiate_signal = 'cult_grounds', #?
 		initiate_reqs = [{type = 'mission_complete', value = 'castle_iola'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_2_2'},
@@ -339,7 +355,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'scene_seen', value = 'viktor_2_1'}],
 		actions = [
 		{type = 'scene', value = 'viktor_2_2'},
-		{type = 'system', value = 'unlock_mission', arg = 'town_viktor_fight'}
+#		{type = 'system', value = 'unlock_mission', arg = 'town_viktor_fight'}
 		]
 	},
 	viktor_duel = {
@@ -937,6 +953,7 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 1, 
 		level = 23,
+		events = {on_complete = 'viktor_2_4'},
 		enemies = {
 			1 : [
 				{2 : ['viktor_boss']},
@@ -1018,6 +1035,9 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 4, 
 		level = 25,
+		events = {
+			on_complete = 'rilu_2_4'
+		},
 		enemies = {
 			
 			1 : [

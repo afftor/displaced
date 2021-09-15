@@ -338,6 +338,8 @@ func run_actions_list(list):
 		match action.type:
 			'scene':
 				if stop_syncronous: break
+				if action.has('reqs') and !state.checkreqs(action.reqs):
+					continue #stub, for this can lead to missing unlock opportunity, cant simply unlock either
 				stop_syncronous = play_scene(action.value)
 			'system':
 				state.system_action(action)
