@@ -442,32 +442,55 @@ var scene_sequences = {
 	#Gallery scenes
 	
 	
-	ember_boobs = { #should be free to unlock
-		initiate_signal = 'village_townhall_ember_unlock', 
+	ember_boobs = {
+		name = "",
+		descript = "",
+		category  = 'ember',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
+		unlock_price = {ember = 100},
 		actions = [
 		{type = 'scene', value = 'ember_1_3'},
 		{type = 'unlock_scene', value = 'ember_boobs'},#for gallery
 		]
 	},
-	rose_night = { #should be free to unlock
-		initiate_signal = 'village_townhall_ember_unlock', 
+	rose_night = {
+		name = "",
+		descript = "",
+		category  = 'rose',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_boobs'}],
+		unlock_price = {rose = 100},
+		actions = [
+		{type = 'scene', value = 'rose_1'},
+		{type = 'unlock_scene', value = 'rose_night'},
+		]
+	},
+	rose_public = {
+		name = "",
+		descript = "",
+		category  = 'rose',
+		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
+		unlock_price = {rose = 500},
 		actions = [
 		{type = 'scene', value = 'rose_1'},
 		{type = 'unlock_scene', value = 'rose_night'},
 		]
 	},
 	erika_doggy = {
-		initiate_signal = 'village_townhall_erika_unlock', 
+		name = "",
+		descript = "",
+		category  = 'erika',
 		initiate_reqs = [],
+		unlock_price = {erika = 100},
 		actions = [
 		{type = 'scene', value = 'erika_2'},
 		{type = 'unlock_scene', value = 'erika_doggy'},
 		]
 	},
 	erika_rose_three = {
-		initiate_signal = 'village_townhall_erika_unlock', 
+		name = "",
+		descript = "",
+		category  = 'group',
+		unlock_price = {rose = 200, erika = 200},
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika_sidequest'}],
 		actions = [
 		{type = 'scene', value = 'erika_rose_2'},
@@ -475,17 +498,47 @@ var scene_sequences = {
 		]
 		
 	},
-	ember_misisonary = {
-		initiate_signal = 'village_townhall_ember_unlock', 
+	ember_missionary = {
+		name = "",
+		descript = "",
+		category  = 'ember',
+		unlock_price = {ember = 200},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_4'},
-		{type = 'unlock_scene', value = 'ember_misisonary'},
+		{type = 'unlock_scene', value = 'ember_missionary'},
+		]
+		
+	},
+	ember_titjob = {
+		name = "",
+		descript = "",
+		category  = 'ember',
+		unlock_price = {ember = 500},
+		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_missionary'}],
+		actions = [
+		{type = 'scene', value = ''},
+		{type = 'unlock_scene', value = 'ember_titjob'},
+		]
+		
+	},
+	ember_doggy = {
+		name = "",
+		descript = "",
+		category  = 'ember',
+		unlock_price = {ember = 1000},
+		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_titjob'}],
+		actions = [
+		{type = 'scene', value = ''},
+		{type = 'unlock_scene', value = 'ember_doggy'},
 		]
 		
 	},
 	rilu_cowgirl = {
-		initiate_signal = 'village_townhall_rilu_unlock', 
+		name = "",
+		descript = "",
+		category  = 'rilu',
+		unlock_price = {rilu = 200},
 		initiate_reqs = [],
 		actions = [
 		{type = 'scene', value = 'rilu_1_6'},
@@ -493,16 +546,22 @@ var scene_sequences = {
 		]
 	},
 	rilu_doggy = {
-		initiate_signal = 'village_townhall_rilu_unlock', 
+		name = "",
+		descript = "",
+		category  = 'rilu',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_cowgirl'}],
+		unlock_price = {rilu = 500},
 		actions = [
 		{type = 'scene', value = 'rilu_2_1'},
 		{type = 'unlock_scene', value = 'rilu_doggy'},
 		]
 	},
 	rilu_anal = {
-		initiate_signal = 'village_townhall_rilu_unlock', 
+		name = "",
+		descript = "",
+		category  = 'rilu',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_doggy'}],
+		unlock_price = {rilu = 1000},
 		actions = [
 		{type = 'scene', value = 'rilu_2_2'},
 		{type = 'unlock_scene', value = 'rilu_anal'},
@@ -510,24 +569,33 @@ var scene_sequences = {
 	},
 	
 	iola_blowjob = {
-		initiate_signal = 'village_townhall_iola_unlock', 
+		name = "",
+		descript = "",
+		category  = 'iola',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_recruited' }],
+		unlock_price = {iola = 200},
 		actions = [
 		{type = 'scene', value = 'iola_2_6'},
 		{type = 'unlock_scene', value = 'iola_blowjob'},
 		]
 	},
-	iola_missionary = {
-		initiate_signal = 'village_townhall_iola_unlock', 
+	iola_riding = {
+		name = "",
+		descript = "",
+		category  = 'iola',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_blowjob' }],
+		unlock_price = {iola = 500},
 		actions = [
 		{type = 'scene', value = 'iola_2_7'},
-		{type = 'unlock_scene', value = 'iola_missionary'},
+		{type = 'unlock_scene', value = 'iola_riding'},
 		]
 	},
 	iola_foursome = {
-		initiate_signal = 'village_townhall_iola_unlock', 
+		name = "",
+		descript = "",
+		category  = 'group',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_missionary' }],
+		unlock_price = {iola = 500, erika = 500, rose = 500},
 		actions = [
 		{type = 'scene', value = 'iola_2_8'},
 		{type = 'unlock_scene', value = 'iola_foursome'},
