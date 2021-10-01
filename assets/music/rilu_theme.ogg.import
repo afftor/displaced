@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rilu_theme.ogg-01034295f9b4d96547531bb6799fc205.oggstr"
+
+[deps]
+
+source_file="res://assets/music/rilu_theme.ogg"
+dest_files=[ "res://.import/rilu_theme.ogg-01034295f9b4d96547531bb6799fc205.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

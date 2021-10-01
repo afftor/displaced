@@ -1,0 +1,92 @@
+** ember_1_5 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE emberhappy=
+=SPRITE_UNFADE 0.3=
+Em - Mornin', Sir Arron!
+Ar - What's up?
+Em - I wanted to thank you for all the good you've done for me!
+Em - You've allowed me to move in and helped with improving my home.
+Ro - That's true, you've been very generous to Ember, Master.
+Em(sad) - It's a first time someone done so much for me.
+Ar - (Heh, from the look of it, it seems like I'll be able to ask for something nice in return)
+Ro - That's very admirable you did it out of pure heart.
+Ar - ......
+Em - But I'd like to repay you, Sir Arron.
+Em - If there's anything I could do for you, please ask away!
+Ro - You've been helping us a lot with our needs already, Ember. 
+Ar - ....Exactly.
+Em(sad) - Is it really enough?
+Ar - ..........................
+Ar - Virtue is its own reward.
+Em - Okay, if you say so.
+Ember carelessly left the room.
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=SPRITE rose=
+=SPRITE_UNFADE 0.3=
+Ro - Hmm? Did something happen, Master?
+Ro - You have this unnerving vacant look all of sudden.
+Ar(neutral) - I wonder if there's any benefit in being good.
+Ro(sarcastic) - Huh?
+=BLACKUNFADE 1.5=
+=DELAY 1.5=
+Next Day.
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_FULL=
+=MUSIC erotheme=
+=ABG ember_titjob_01=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Em - Good morning, Sir Arron!
+Ar - Hmmh, this pleasant softness...
+Ar - What are you doing on my bed, Ember?
+Em - I wanted to give my thanks anyway.
+Ar - That's not quite what I expectedEm - Erika said you were gonna like it.
+Ar - Who could've guessed. 
+Em - Here!
+=ABG ember_titjob_02 ember_titjob_03=
+Ar - Oh...
+Em - Hehe, it feels funny between my breasts.
+Em - They say men like breasts a lot, do you like them, Sir Arron?
+Ar - Ghh.. For sure.
+Em - Mmhmm.
+Em - This male thing of yours has such a strong smell.
+Ar - Sounds from your voice like it's turning you on.
+Em - I have to take this in my mouth, right? 
+=ABG ember_titjob_05 ember_titjob_06=
+=DELAY 2=
+Em - Mhmmm.
+Ar - Ghh, darn...
+Em - *Slurp*
+Em - Is this how you do it?
+Ar - Aah... Yeah, pretty much.
+Ar - Go a bit easier, Ember.
+Em - *nod*
+Ar - Crap... Your combo is really strong.
+Em - Mhmmm... Mmm
+Ar - Ghh.. 
+Em - *slurp* *slurp*
+Ar - I'm almost there... 
+Ember raised the pace and freed Arron's cock from her mouth at the last moment.
+=ABG ember_titjob_07 ember_titjob_08=
+=WHITE=
+=DELAY 0.5=
+Ar - Nghhh!
+Em - Wow, so much seed... 
+Em - Did I make you feel good, Sir Arron?
+Ar - Ha-ah...
+Ar - For your first time that was quite a feat.
+Em - Yay! That was fun.
+Ar - Indeed, you should do it again some day.
+Em - Gotcha! But I better get to work now...
+Ar - Don't forget to clean your face before you leave though. 
+Em - Ah! Right... 
+Em - I don't really wanna remove Sir Arron's smell though.
+=STOP=

@@ -250,13 +250,13 @@ func StopTweenRepeat(node):
 func SetMusic(res, delay = 0):
 	pass
 	# NOT WORKING
-#	yield(get_tree().create_timer(delay), 'timeout')
-#	musicraising = true
-#	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
-#	if musicnode.stream == res:
-#		return
-#	musicnode.stream = res
-#	musicnode.play(0)
+	yield(get_tree().create_timer(delay), 'timeout')
+	musicraising = true
+	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
+	if musicnode.stream == res:
+		return
+	musicnode.stream = res
+	musicnode.play(0)
 
 
 func StopMusic(instant = false):

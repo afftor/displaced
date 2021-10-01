@@ -1,5 +1,5 @@
 extends Control
-
+# warning-ignore-all:warning-id
 signal scene_end
 
 const REF_PATH = [
@@ -161,7 +161,7 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-
+	if delay > 0: return
 	if $ChoicePanel.visible or $ClosePanel.visible: return
 
 	if $LogPanel.visible == true:

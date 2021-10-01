@@ -211,8 +211,15 @@ AI_data="*res://assets/data/ai_data.gd"
 [debug]
 
 settings/fps/force_fps=60
+gdscript/warnings/enable=false
+gdscript/warnings/unassigned_variable=false
 gdscript/warnings/unused_variable=false
+gdscript/warnings/shadowed_variable=false
 gdscript/warnings/unused_argument=false
+gdscript/warnings/unreachable_code=false
+gdscript/warnings/standalone_expression=false
+gdscript/warnings/void_assignment=false
+gdscript/warnings/narrowing_conversion=false
 
 [display]
 

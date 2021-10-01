@@ -471,7 +471,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
 		unlock_price = {rose = 500},
 		actions = [
-		{type = 'scene', value = 'rose_1'},
+		{type = 'scene', value = 'rose_3'},
 		{type = 'unlock_scene', value = 'rose_night'},
 		]
 	},
@@ -496,7 +496,6 @@ var scene_sequences = {
 		{type = 'scene', value = 'erika_rose_2'},
 		{type = 'unlock_scene', value = 'erika_rose_three'},
 		]
-		
 	},
 	ember_missionary = {
 		name = "",
@@ -508,7 +507,6 @@ var scene_sequences = {
 		{type = 'scene', value = 'ember_1_4'},
 		{type = 'unlock_scene', value = 'ember_missionary'},
 		]
-		
 	},
 	ember_titjob = {
 		name = "",
@@ -517,10 +515,9 @@ var scene_sequences = {
 		unlock_price = {ember = 500},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_missionary'}],
 		actions = [
-		{type = 'scene', value = ''},
+		{type = 'scene', value = 'ember_1_5'},
 		{type = 'unlock_scene', value = 'ember_titjob'},
 		]
-		
 	},
 	ember_doggy = {
 		name = "",
@@ -529,10 +526,9 @@ var scene_sequences = {
 		unlock_price = {ember = 1000},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_titjob'}],
 		actions = [
-		{type = 'scene', value = ''},
+		{type = 'scene', value = 'ember_1_6'},
 		{type = 'unlock_scene', value = 'ember_doggy'},
 		]
-		
 	},
 	rilu_cowgirl = {
 		name = "",

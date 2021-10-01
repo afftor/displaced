@@ -1,6 +1,6 @@
 ** aeros_1 **
-=BLACKUNFADE 0.5=
-=DELAY 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
 =BG town_out=
 =MUSIC eventlight=
 =BLACKFADE 0.5=
@@ -17,7 +17,7 @@ Ar - No. We are sorta on a delivery here?
 Guard - I don't trust you. The city is off-limits if you aren’t a citizen. 
 Guard - We don't need a new group of beggars on the streets.
 Ar(neutral) - You gotta be shitting me. Do I look like a beggar?
-Guard - no pass.
+Guard - No pass.
 Ar - Listen, guard...
 Guard - I have a name, and it's Carl.
 Ar - ......
@@ -36,4 +36,7 @@ Ar - Now you see why I hate guards, Ember.
 Ro - Now that you mention it, I can relate.
 Ro - Maybe we could let Erika please him though.
 Er - Boo. Like I would cheat on Arron like that.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=

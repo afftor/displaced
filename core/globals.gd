@@ -1,5 +1,7 @@
 extends Node
 
+# warning-ignore-all:warning-id
+
 const gameversion = '0.1.3'
 
 #const worker = preload("res://files/scripts/worker.gd");

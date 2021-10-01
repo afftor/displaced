@@ -1,4 +1,4 @@
-** faery_queen_3 **
+** faery_queen_4 **
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
@@ -9,8 +9,8 @@ FB - Run!
 The other faeries quickly scattered away.
 FQ - Ggh, you fuckers... 
 Ar - You have one nasty mouth. We need something of yours.
-Ro - Saint's Pearl. Ring's a bell?
-FQ - Hah, what makes you think I'll hand you over anything at all?
+Ro - Saint's Pearl. Ring a bell?
+FQ - Hah, what makes you think I'll hand over anything at all to you?
 Em - Because we are the good guys?
 FQ - Even less of a reason for me.
 Er - She won't bend, let's just strip her.
@@ -25,7 +25,7 @@ Ro - N-no, it's nothing.
 Er - No, if we humiliate her in front of others she will lose her authority.
 Em(normal) - Ho-oh, so that's why people wear clothes? 
 Ar - Still seems a bit dirty, but if there's nothing else we can do...
-FQ - No, stay away you imbicile perverts!
+FQ - No, stay away you imbecile perverts!
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 ...
@@ -33,7 +33,7 @@ FQ - No, stay away you imbicile perverts!
 =DELAY 0.5=
 =SPRITE erika=
 Er - There it is. 
-Erika demonstrated a small white gem acquired from Faery Queen.
+Erika held up a small white gem acquired from Faery Queen.
 Ri - Let me see it... I can't sense any magic from it.
 Ro(shock) - No way, all this for nothing? 
 Ar(neutral) - Well, we might find some use for it in future. Let's go home for now.

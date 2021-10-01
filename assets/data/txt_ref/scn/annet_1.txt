@@ -1,10 +1,14 @@
 ** annet_1 **
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG burning_city=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-=BG hall=
-=SPRITE annet=
+=MUSIC combattheme=
 The team has barged into the main city hall as Annet meets them there.
+=SPRITE Annet=
+=SPRITE_UNFADE 0.3=
 An - Look what we have here.
 An - Can't say I expected to see you still alive.
 Ar(neutral) - I knew you were a one kind of a bitch after learning your history with Erika.
@@ -20,4 +24,7 @@ Ar(neutral) - Whatever, let's just beat the shit out of her.
 An - Tsk, you are throwing away the few minutes of life I am gifting you.
 An - And with such bad manners too.
 An - I'll take care of your friends, once you die, Arron.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=

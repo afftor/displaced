@@ -30,7 +30,7 @@ FA - Fairy_A
 F - Flak
 Et - Ent
 Er[Normal, Happy, Anger, Sad] - Erika #228b22
-Em[Normal, Happy, Tired] - Ember #b22156
+Em[Normal, Happy, Sad] - Ember #b22156
 EC - Elf_Child
 DrJr - Dragon_Whelp DragonJr
 Dr - Dragon

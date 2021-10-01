@@ -1,0 +1,13 @@
+*town bg*
+Stranger - That goblin girl.. I remember.
+Stranger - She left a few months ago.
+Ar(neutral) - Where did she go?
+Stranger - No idea, we don't care where outsiders go when they leave.
+Ro - I see, thank you for the help.
+*rose sprite*
+Ro - Seems like we were too late.
+Ar - Let's read the letter at least then.
+Ro(shock) - No, you can't read someone else's message!
+Ar - Oh, come on. 
+Ro - No, Master, please respect other people's privacy.
+Ar(neutral) - ...Fine, whatever, let's go back.

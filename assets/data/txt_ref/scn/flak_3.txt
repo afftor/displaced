@@ -1,0 +1,14 @@
+*marketbg*
+*flak sprite*
+F - So she already left, huh.
+F - It can't be helped I guess.
+Ro - We are sorry it was for nothing.
+F - Hardly ya fault, I shouldn't have waited so long.
+Ar - What about the reward?
+F - I said nothing about any reward. 
+Ar(shock) - What?!
+F - And even if I had, you didn't complete the task anyway.
+Ro - That's true.
+Ar - ...
+F - Now go, I still have business to do.
+Ar(shock) - I swear, I’ll never do deliveries for you again.
