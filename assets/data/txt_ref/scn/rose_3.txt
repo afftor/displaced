@@ -1,3 +1,4 @@
+** rose_3 **
 town bg
 *rose sprite*
 Ar(neutral) - This is one of the saddest festivals I've ever seen.

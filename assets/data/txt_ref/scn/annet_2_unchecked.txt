@@ -1,25 +1,33 @@
 ** annet_2 **
+=BLACKUNFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+=BG burning_city=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-=GUI_NORMAL=
-=BG hall=
 =SPRITE annet=
+=SPRITE_UNFADE 0.3=
+=MUSIC combattheme=
 An - Gh, you degenerates...
 An - Demons, crush them!
+=SPRITE demon=
+=SPRITE_UNFADE 0.3=
 A horde of large demons swarmed the hall from all directions.
 Ar(shock) - Oh shit!
 Ar(shock) - Stay together.
-Ro - There's too many
-Em - Ngh...
+Ro(shock) - There's too many!
+Em(sad) - Ngh...
 An - How does it feel to be outnumbered now?
 An - Ha-h, lets see how long you'll hold up.
 An - But while we are at it...
 I(sad) - This looks really bad, there's no end to them.
 An - *Chanting*
-An - Erika, return to my side!
+An - (italic)Erika, return to my side.
+=SPRITE erika=
+=SPRITE_UNFADE 0.3=
 Er(sad) - .....
 Ro(talk) - Eh... Erika?
-Ar(shock) - Where are you going?
+Ar(shock) - What are you doing?!
 Er(sad) - I'm... sorry.
 Ignoring the battle and enemies, Erika left the team and slowly walked into Annet's direction.
 Ro(shock) - No way...
@@ -30,30 +38,37 @@ Ro(talk) - Stop, Erika!
 An - Don't waste your breath.
 An - She was hypnotized long time ago to obey my will on command. 
 Ri - We won't hold without her...
-An - You know how to secure victory?
-An - Never leave things to chance, a backup plan is mandatory.
+An - Your really don't know how to secure victory, Arron.
+An - Never leave things to chance.
+=SPRITE hide=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 An - Isn't that nice, Eri...?
 =BG scenes/annet_erika_1=
+=SOUND knife_hit=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 Whole room froze in awe as Erika stabbed Annet's neck.
-An - Wha...t...
-An - Why...
-Er - You are right.
-Er - Never leave things to chance.
-Er - You really thought I would never learn about your hypnosis and find out how to resist it? 
-An - You... biiitch!.. 
-Er - I've learned from the best.
-An - Ghhh!..
+An(anger) - Wha...t...
+An(anger) - Why...
+Er(anger) - You are right.
+Er(anger) - Never leave things to chance.
+Er(anger) - You really thought I would never find a way to resist your hypnosis? 
+An(anger) - You... biiitch!.. 
+Er(anger) - I've learned from the best.
+An(anger) - Ghhh!..
 *Slash*
 =BG scenes/annet_erika_2=
-An - Nnooo!..
+An(anger) - Nnooo!..
 A red splash erupted from Annet's neck as the dagger sliced it through.
-Er - Go to hell, Mistress.
-=SOUND fall=
-=BG hall=
+Er(anger) - Go to hell, Mistress.
+=SOUND crash=
+=BG burning_city=
 =SPRITE erika=
+=SPRITE_UNFADE 0.3=
 With Annet's defeat all demons in the hall quickly retreated from sight.
-Er - Phew... 
-Er - I'm shaking now.
+Er(anger) - Phew... 
+Er(sad) - I'm shaking now.
 Er - But somehow feel great.
 Ar - Yeah, you've saved us.
 Er - Turns out, I'm a pretty good actress, huh?
@@ -61,45 +76,49 @@ Ro - You really made us worried.
 Er - I've realized she'd always treat me as her victim.
 Er - So I thought this would be a safer approach.
 Ar - Well, looks like we saved a city at least.
-=SPRITE demitrius=
+=SPRITE demitrius_demon=
 =SPRITE_UNFADE 0.5=
 =SHAKE_SPRITE 0.7=
-D - Nice work, insects. 
+De - Nice work, insects. 
 Ar(anger) - Dimitrius!
-D - Now, don't look so mad.
-D - You've done me a great service today and I'll spare your lives for some time.
+De - Now, don't look so mad.
+De - You've done me a great service today and I'll spare your lives for some time.
 Ar(neutral) - You talk highly for someone who'll be gutted by the end of this.
-D - Ahahah, nice one, Arron. 
-D - You actually have no idea how troublesome it is to kill another demon lord with a big reputation in this world. 
-D - But you actually did it.
+De - Ahahah, nice one, Arron. 
+De - You actually have no idea how troublesome it is to kill another demon lord with a big reputation in this world. 
+De - But you actually did it.
 Ro - You wanted her dead? That's why you didn't help her?
-D - That's what I said. 
-D - I actually thought about giving you a hand on one occasion, but you managed anyway.
+De - That's what I said. 
+De - I actually thought about giving you a hand on one occasion, but you managed anyway.
 Ri - You've left your kin here to die like that.
 Ro - They don't think of their own any higher than of normal people.
-Em - You really aren't afraid to lose?
-D - What, do you really  think I should be worried about you?
-D - You just don't understand, do you?
-D - You are not a threat. You killed Annet, but she was weak and stupid. 
-D - I can squash you all like bugs, but you never know when you might need a couple of resourceful mortals.
+Em(sad) - You really aren't afraid to lose?
+De - What, do you really  think I should be worried about you?
+De - You just don't understand, do you?
+De - You are not a threat. You killed Annet, but she was weak and stupid. 
+De - I can squash you all like bugs, but you never know when you might need a couple of resourceful mortals.
 I - We'll stop you and end this madness.
-D - Yeah, sure, struggle some more if you wish.
-D - Have your little celebration, for today.
+De - Yeah, sure, struggle some more if you wish.
+De - Have your little celebration, for today.
 =SPRITE_HIDE=
 Ar(neutral) - ....He's gone.
 Ri - There seems to be a crowd outside.
 Ro - Those are probably the survivors. 
-=BG hall=
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BLACKFADE 0.5=
+=GUI_NORMAL=
 Surv - It was you? You defeated the demons?
-Ar - No, we just were really persuasive.
+Ar(neutral) - No, we just were really persuasive.
 Surv - Eh? 
-Ar - Let's return to the village. 
-Ro - Agreed, this was a tough day.
+Ar(neutral) - Let's return to the village. 
+Ro - Indeed, this was a tough day.
 Surv - But what should we do? What if demons return?
-Ar - I'm afraid my charisma is too low to take you all.
+Ar(neutral) - I'm afraid my charisma is too low to take you all.
 Ar - You will have to figure out how to defend yourself eventually.
 The team left puzzled civilians.
 I(sad) - I wonder if we should've left them like this.
 Ar(neutral) - It can't be helped.
-Er - After seeing what was happening in the city I don't feel like we should've helped them even if we could.
+Er(sad) - After seeing what was happening in the city I don't feel like we should've helped them even if we could.
 =STOP=
