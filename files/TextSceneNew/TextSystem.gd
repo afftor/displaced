@@ -3,7 +3,7 @@ extends Control
 signal scene_end
 
 const REF_PATH = [
-	"res://assets/data/txt_ref",
+	"res://assets/data/txt_ref/scn",
 #	"res://assets/data/txt_ref/chardef.txt",
 #	"res://assets/data/txt_ref/scn/intro.txt",
 #	"res://assets/data/txt_ref/scn/forest.txt",
@@ -51,6 +51,427 @@ const animated_sprites = ['arron',
 'goblin', 'goblin2'] #idk if they are named this way in scenes
 #demitrius sprites are from 'unused folder' - so don't remove them accidentally
 #others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
+var char_map = {
+	Narrator = {
+		source = 'Narrator',
+		portrait = null,
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones, useless now
+#		sprite = null, #useless for now due to SPRITE format currntly used
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Z = {
+		source = 'Zelroth',
+		portrait = 'Zelroth',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'zelroth',
+#		animated = true,
+		color = Color('ffffff'),
+	},
+	Woman = {
+		source = 'Woman',
+		portrait = 'Woman', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	V = {
+		source = 'Victor',
+		portrait = 'Victor', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'victor',
+#		animated = true,
+		color = Color('ffffff'),
+	},
+	T = {
+		source = 'Traveler',
+		portrait = 'Traveler', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Surv = {
+		source = 'Survivor',
+		portrait = 'Survivor', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Str2 = {
+		source = 'Survivor 2',
+		portrait = 'Survivor_2', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Str = {
+		source = 'Stranger',
+		portrait = 'Stranger', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	SlaveTrader2 = {
+		source = 'Slave Trader',
+		portrait = 'Slave_Trader', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	SlaveTrader = {
+		source = 'Slave Trader 2',
+		portrait = 'Slave_Trader_2', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	S = {
+		source = 'Soldier',
+		portrait = 'Soldier', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Ro = {
+		source = 'Rose',
+		portrait = 'Rose',
+		base_variants = ['Normal', 'Talk', 'Shock', 'Sad', 'Sarcastic'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'rose',
+#		animated = true,
+		color = Color('ff8c00'),
+	},
+	Ri = {
+		source = 'Rilu',
+		portrait = 'Rilu',
+		base_variants = ['Normal', 'Blush', 'Spell', 'Talk'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'rilu',
+#		animated = true,
+		color = Color('ffffff'),#?
+	},
+	RN = {
+		source = 'Rich Noble',
+		portrait = 'Rich_Noble', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Nt = {
+		source = 'Norbert',
+		portrait = 'Norbert',
+		base_variants = ['Normal', 'Anger'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	N = {
+		source = 'Nicolas',
+		portrait = 'Nicolas', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	M = {
+		source = 'Merchant',
+		portrait = 'Merchant', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Lr = {
+		source = 'Lyra',
+		portrait = 'Lyra',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	KD = {
+		source = 'King Dwarf',
+		portrait = 'King_Dwarf',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'kingdwarf',
+#		animated = true,
+		color = Color('ffffff'),
+	},
+	I = {
+		source = 'Iola',
+		portrait = 'Iola',
+		base_variants = ['Neutral', 'Sad', 'Shock'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'iola',
+#		animated = true,
+		color = Color('ffffff'),#?
+	},
+	Guard = {
+		source = 'Guard',
+		portrait = 'Guard',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Guard_2 = {
+		source = 'Guard 2',
+		portrait = 'Guard',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Guard_3 = {
+		source = 'Guard 3',
+		portrait = 'Guard',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	G = {
+		source = 'Goblin',
+		portrait = 'Goblin',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'goblin',
+#		animated = true,
+		color = Color('ffffff'),
+	},
+	FQ = {
+		source = 'Fairy Queen',
+		portrait = 'Fairy_Queen',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'faeryqueen',
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	FA = {
+		source = 'Fairy A',
+		portrait = 'Fairy_A', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	FB = {
+		source = 'Fairy B',
+		portrait = 'Fairy_B', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	F = {
+		source = 'Flak',
+		portrait = 'Flak',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'goblin2',
+#		animated = true,
+		color = Color('ffffff'),
+	},
+	Et = {
+		source = 'Ent',
+		portrait = 'Ent', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'ent',
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Er = {
+		source = 'Erika',
+		portrait = 'Erika',
+		base_variants = ['Normal', 'Happy', 'Anger', 'Sad'], #for normal filenamaes with suffixes
+#		custom_variants = [
+#			'_n':{sprite = 'erika_n},
+#		], #for specific ones
+#		sprite = 'erika',
+#		animated = true,
+		color = Color('228b22'),
+	},
+	Em = {
+		source = 'Ember',
+		portrait = 'Ember',
+		base_variants = ['Normal', 'Happy', 'Sad'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'ember',
+#		animated = true,
+		color = Color('b22156'),
+	},
+	EC = {
+		source = 'Elf Child',
+		portrait = 'Elf_Child', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	DrJr = {
+		source = 'Dragon Whelp',
+		portrait = 'DragonJr',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Dr = {
+		source = 'Dragon',
+		portrait = 'Dragon',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'dragon',
+#		animated = true,
+		color = Color('ffffff'),
+	},
+	Demon = {
+		source = 'Demon',
+		portrait = 'Demon', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'demon',
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	D = {
+		source = 'Demitrius',
+		portrait = 'Demitrius',
+		base_variants = ['Normal', 'Talk', 'Anger'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'demitrius',
+#		animated = true,
+		color = Color('ffffff'),#?
+	},
+	De = {
+		source = 'Demitrius Demon',
+		portrait = 'Demitrius_Demon',
+		base_variants = ['Normal', 'Anger'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'demitrius_demon',
+#		animated = true,
+		color = Color('ffffff'), #?
+	},
+	CM = {
+		source = 'Committee Member',
+		portrait = 'Committee_Member', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	C = {
+		source = 'Caliban',
+		portrait = 'Caliban',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'caliban',
+#		animated = true,
+		color = Color('ffffff'),
+	},
+	Boy = {
+		source = 'Boy',
+		portrait = 'Boy', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Ar = {
+		source = 'Arron',
+		portrait = 'Arron',
+		base_variants = ['Normal', 'Neutral', 'Shock', 'Anger'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'arron',
+#		animated = true,
+		color = Color('c0c0c0'),
+	},
+	An = {
+		source = 'Annet',
+		portrait = 'Annet',
+		base_variants = ['Normal', 'Anger'], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = 'annet',
+#		animated = true,
+		color = Color('ffffff'),#?
+	},
+	'?':{
+		source = '??',
+		portrait = '??', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	'??': {
+		source = '???',
+		portrait = '???', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	'?(Z)': {
+		source = '???',
+		portrait = 'Zelroth', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	'?(An)': {
+		source = '???',
+		portrait = 'Annet', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+}
+
+
+
 
 
 onready var TextField = $Panel/DisplayText
@@ -65,7 +486,7 @@ var line_nr = 0
 var line_dr = ""
 
 var scenes_map = {}
-var char_map = {}
+
 
 var char_max = 0
 
@@ -81,6 +502,7 @@ var replay_mode = false
 
 func _ready() -> void:
 	input_handler.scene_node = self
+	extend_char_map()
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
@@ -89,7 +511,7 @@ func _ready() -> void:
 			f.open(i, File.READ)
 			ref_src.append_array(f.get_as_text().split("\n"))
 			f.close()
-
+	
 	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
 
@@ -108,6 +530,33 @@ func process_path_dir(path):
 			continue
 		res.push_back(i)
 	return res
+
+
+func extend_char_map():
+	for key in char_map.keys().duplicate():
+		if key.length() > char_max:
+			char_max = key.length()
+		var mapdata = char_map[key]
+		if mapdata.has('custom_variants'):#currently not used
+			for variant in mapdata.custom_variants:
+				var newkey = key + variant
+				var newdata = mapdata.duplicate(true)
+				var patchdata = mapdata.custom_variants[variant]
+				if newkey.length() > char_max:
+					char_max = newkey.length()
+				for arg in patchdata:
+					newdata[arg] = patchdata[arg]
+				char_map[newkey] = newdata
+		if mapdata.has('base_variants'):
+			for variant in mapdata.base_variants:
+				var newkey = "%s(%s)"  % [key, variant.to_lower()]
+				var newdata = mapdata.duplicate(true)
+				if newkey.length() > char_max:
+					char_max = newkey.length()
+				newdata.portrait = newdata.portrait + variant
+				char_map[newkey] = newdata
+			if mapdata.base_variants.has('Normal'):
+				char_map[key].portrait = char_map[key].portrait + 'Normal'
 
 
 var text_log = ""
@@ -177,10 +626,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_echo() == true || event.is_pressed() == false:
 		return
 
-	if event.is_action("LMB") || event.is_action("MouseDown"):
+	if (event.is_action("LMB") or event.is_action("MouseDown")) and !(input_handler.if_mouse_inside($Panel/Log) or input_handler.if_mouse_inside($Panel/Options)):
 		if TextField.get_visible_characters() < TextField.get_total_character_count():
 			TextField.set_visible_characters(TextField.get_total_character_count())
 		else:
+#			print("+")
 			advance_scene()
 	
 	if event.is_action("ESC") and event.is_pressed():
@@ -483,7 +933,7 @@ func advance_scene() -> void:
 		var splitted = line_dr.split(" - ")
 
 		var is_narrator = true
-		var character = char_map[char_map.keys()[0]]
+		var character = char_map['Narrator']
 		var replica = line_dr
 
 		if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
@@ -639,7 +1089,7 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 								break
 
 		else:
-			if chardef:
+			if chardef: #obsolete, but hard to clean out fast
 				if i.split(" - ").size() == 2:
 					var parsed = i.split(" - ")
 					var raw = parsed[0]
