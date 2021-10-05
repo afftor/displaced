@@ -679,17 +679,21 @@ func random_element(arr:Array):
 
 
 func if_mouse_inside(node):
-	if !node.visible or node.modulate.a == 0.0 or node.texture == null: return false
-	if !node.get_global_rect().has_point(node.get_global_mouse_position()): return false
-	var pos = node.get_local_mouse_position()
-	var tt = node.texture.get_data()
-	var t = Image.new()
-	t.copy_from(tt)
-	pos.x *= (t.get_width()/node.rect_size.x)
-	pos.y *= (t.get_height()/node.rect_size.y)
-	t.lock()
-	var col = t.get_pixelv(pos)
-	return (col.a > 0.0)
+	if node is BaseButton:
+		if !node.visible or node.modulate.a == 0.0: return false
+		return node.get_global_rect().has_point(node.get_global_mouse_position())
+	else:
+		if !node.visible or node.modulate.a == 0.0 or node.texture == null: return false
+		if !node.get_global_rect().has_point(node.get_global_mouse_position()): return false
+		var pos = node.get_local_mouse_position()
+		var tt = node.texture.get_data()
+		var t = Image.new()
+		t.copy_from(tt)
+		pos.x *= (t.get_width()/node.rect_size.x)
+		pos.y *= (t.get_height()/node.rect_size.y)
+		t.lock()
+		var col = t.get_pixelv(pos)
+		return (col.a > 0.0)
 
 
 func ClearContainer(container, templates = ['Button']):
