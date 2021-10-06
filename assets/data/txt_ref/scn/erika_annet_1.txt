@@ -1,8 +1,11 @@
 ** erika_annet_1 **
+=MUSIC eventgeneric=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_in=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-=BG hall=
 The annual meeting is being held at the city hall. 
 The hall is filled with nobles and the richest people of the region. 
 CM - So, according to this claim, Mr. Nicolas has failed his contract agreement.
@@ -10,6 +13,7 @@ CM - Do you acknowledge it?
 N - Yes, but it wasn't my fault. 
 N - My storage was set on fire!
 =SPRITE annet=
+=SPRITE_UNFADE 0.3=
 ?(An) - You know this can't be used for your defense. 
 ?(An) - You've broken the business agreement and now you have to pay the fine. 
 N - Gh... But I'll be going bankrupt because of this!
@@ -27,4 +31,7 @@ CM - True, now if you excuse me, I have other business to take care of.
 =SOUND footstep=
 ...
 An - Heh, humans are really easy.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=

@@ -36,7 +36,7 @@ DrJr - Dragon_Whelp DragonJr
 Dr - Dragon
 Demon - Demon
 D[Normal, Talk, Anger] - Demitrius
-De[Normal, Anger] - Dimitrius Demon
+De - Demitrius_Demon
 CM - Committee_Member
 C - Caliban
 Boy - Boy

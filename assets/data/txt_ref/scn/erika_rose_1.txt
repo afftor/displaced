@@ -1,13 +1,13 @@
 ** erika_rose_1 **
+=MUSIC eventlight=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG hall=
-=MUSIC eventlight=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-=GUI_NORMAL=
 =SPRITE erika=
 =SPRITE_UNFADE 0.5=
+=GUI_NORMAL=
 Er - Arron.
 Ar - Erika. What's up?
 Ar - Another irresistible itch demanding a good scratching? 
@@ -15,12 +15,15 @@ Er - No. I mean, yes, but not exactly what you think.
 Er - Remember how you gave me your approval on Rose?
 Ar - Uh-huh.
 Er - She's a tough nut to crack, so I could use your help. 
-Ar - I don't think ordering her around will work. 
+Ar(neutral) - I don't think ordering her around will work. 
 Er(anger) - I beg you, I'm never going to force anyone like that.
 Er - What I need is a rare herb we elves often use for relaxation. 
 Er - So can you help me get some of that? 
-Ar - I suppose. But is it safe for non-elves? 
+Ar(neutral) - I suppose. But is it safe for non-elves? 
 Er(happy) - Of course it is. It's just rather hard to come by since elves cultivate it secretly.
 Ar - Fine, you got my interest. So where are we going?
 Er - Oh, it's not far in the woods. I'll lead the way.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

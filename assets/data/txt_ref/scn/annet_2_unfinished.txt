@@ -100,7 +100,7 @@ De - I can squash you all like bugs, but you never know when you might need a co
 I - We'll stop you and end this madness.
 De - Yeah, sure, struggle some more if you wish.
 De - Have your little celebration, for today.
-=SPRITE_HIDE=
+=SPRITE_FADE 0.5=
 Ar(neutral) - ....He's gone.
 Ri - There seems to be a crowd outside.
 Ro - Those are probably the survivors. 
@@ -121,4 +121,7 @@ The team left puzzled civilians.
 I(sad) - I wonder if we should've left them like this.
 Ar(neutral) - It can't be helped.
 Er(sad) - After seeing what was happening in the city I don't feel like we should've helped them even if we could.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=

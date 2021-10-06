@@ -4,11 +4,14 @@
 =GUI_NORMAL=
 =BG future_city=
 Ro - This place looks so bizzare. 
-Ro - Everything is made out of stone, but it’s crumbling.
+Ro(talk) - Everything is made out of stone, but it’s crumbling.
 Ri(talk) - Looks like it was a human city before it was brought here. 
 Er - I could never imagine a city like that.
 Ri - Probably built with some advanced magic or technologies.
-Ar - I'd be more worried about what we're gonna meet here. 
-Ar(neutral) - Wouldn't like to repeat my last encounter. 
+Ar(neutral) - I'd be more worried about what we're gonna meet here. 
+Ar - Wouldn't like to repeat my last encounter. 
 I - Yes, let's move with caution.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=

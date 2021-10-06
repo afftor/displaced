@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DemitriusAnger.png-640e3ed759e69d666b763e767f33313b.stex"
+path="res://.import/Demitrius_Demon.png-01f06410a87d189e57a07b744196b5cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portrait/DemitriusAnger.png"
-dest_files=[ "res://.import/DemitriusAnger.png-640e3ed759e69d666b763e767f33313b.stex" ]
+source_file="res://assets/images/portrait/Demitrius_Demon.png"
+dest_files=[ "res://.import/Demitrius_Demon.png-01f06410a87d189e57a07b744196b5cd.stex" ]
 
 [params]
 

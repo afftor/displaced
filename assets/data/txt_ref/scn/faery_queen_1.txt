@@ -18,5 +18,4 @@ Em - Look, there's a portal left after her.
 Ar - Ah, we could follow it.
 Ro(sarcastic) - I don't think this is a good idea. 
 Ro(sarcastic) - We don't know where we might end up.
-{"effect":"choice","value":[{"index":0,"text":"Go through it"},{"index":1,"text":"Agree with Rose"}]},
 =STOP=

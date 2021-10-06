@@ -18,14 +18,15 @@ Er - Isn't it a Mayor's responsibility to provide guests with a sleeping place?
 Er(happy) - I would love to know you better while you are short on rooms for guests.
 Ro(shock) - NO!
 Er - Hm? Why are you against it? 
-Ro - Because... Guests shouldn't be bothered by others as they sleep. I can sleep in Master's bed and you take mine.
+Ro - Because... Guests shouldn't be bothered by others as they sleep.
+Ro - I can sleep in Master's bed and you take mine.
 Er - Eeeh? But I don't wanna sleep alone.
 Er(happy) - Well, if you don't want to get separated from Arron, why don't we all sleep together?
 Ar - (As appealing as it may sound, I'm afraid this might end up in a disaster. Rose seems quite serious about this. )
 Ar - Alright, calm down you two, I believe we have some additional space in the attic.
 Er - Hmm... Fine, but leave your door unlocked. I might want to visit if I get bored.
 Ro - Sigh. You are still going at it?
+=GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
-=BG null=
 =STOP=

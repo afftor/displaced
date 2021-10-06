@@ -1,9 +1,11 @@
 ** erika_annet_2_1 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG town_in=
 =SPRITE erika=
+=SPRITE_UNFADE 0.3=
+=MUSIC eventgeneric=
 Taking a day off Erika walks through Aeros' market.
 M - Hey, elf girl. 
 M - Looking for something specific?
@@ -14,6 +16,7 @@ Er - Don't worry, it's one of my favorite outfits.
 M - A-ha, alright then.
 EC - No, please let us go!
 Erika turned to the noise from the other side of the market.
+=MUSIC STOP=
 A pair of captured children, no older than twelve, were sold to an obese rich man.
 RN - Shut it, you cur.
 RN - I've paid a good sum for you.
@@ -36,6 +39,7 @@ Er(anger) - ...
 Erika noticed how people were gathering around her, attracted by the ruckus.
 RN - Hah, there's no way you can carry this much money in your garment though.
 =SPRITE annet=
+=SPRITE_UNFADE 0.3=
 An - What's going on here, Hector?
 Er - ...?
 RN - Ms. Annet? It's nothing requiring your attention. 
@@ -56,5 +60,7 @@ An - I would like to have a word with you...
 An - Your name is Erika, right?
 Erika went numb from hearing her name. 
 Her previous readiness to fight drains from her.
-=BLACKFADE 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

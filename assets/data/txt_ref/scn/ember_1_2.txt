@@ -6,6 +6,8 @@
 =BLACKFADE 0.4=
 =DELAY 0.4=
 =GUI_NORMAL=
+=SPRITE ember=
+=SPRITE_UNFADE 0.3=
 Em - I see you found some unusual wood up there. Please, let me have it!
 Ar - Hmh... sure. What's so unusual about it?
 Em - Oh, I can use it to make items with special properties. 
@@ -22,9 +24,10 @@ Ar - But I do have wood, occasionally, maybe you could help with it.
 Em - I don't quite understand, but sure!
 Ro(sarcastic) - He lies to you, he has no lumber. 
 Ar(neutral) - Tsk... I've trusted you, Rose. Such a brutish move from you. 
-Em(tired) - Uh... I still don't understand, but in either case, if you find any more rare materials, make sure to bring them to me!
+Em(sad) - Uh... I still don't understand, but in either case, if you find any more rare materials, make sure to bring them to me!
 Ar - Aren't I'm one of a kind? 
 Ro - Please, stop. 
-=BLACKUNFADE 0.4=
-=DELAY 0.4=
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=

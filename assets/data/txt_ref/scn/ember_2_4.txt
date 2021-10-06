@@ -1,9 +1,13 @@
 ** ember_2_4 **
+=MUSIC eventgeneric=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG mountainsday=
 =SPRITE dragon=
+=SPRITE_UNFADE 0.3=
 The large dragon is held in place breathing heavily.
 Dr - Guh... Enough...
 Dr - You've proven your strength. What do you want?
@@ -33,7 +37,7 @@ Dr - When a dragon dies, his soul leaves his body and finds its way to a new one
 Dr - Without a soul, we are but beasts. You've met many of those on your way here. 
 Dr - From some time ago something has changed. 
 Dr - Dead dragons have been reborn less and less. Somehow, their souls can't find a way back here.
-Em(tired) - No way.
+Em(sad) - No way.
 Dr - I haven't seen anyone here for the last few years. I fear that we might be hunted. 
 Dr - But it feels like... You might have Ezet's soul inside of you.
 Dr - Somehow she managed to conceal herself inside of you.
@@ -50,7 +54,10 @@ Dr - I welcome you as one of my kin.
 Ar - Before you continue with the family reunion, there's one thing we need to ask for.
 Dr - Yes?
 Ro - We are currently looking for someone...
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
 Dr - Curious story, but my knowledge is not enough to help you here. 
 Dr - I don't know anything about that person or item you possess.
 Ar - Well damn. At least I've defeated a dragon today. What do you think father would say?
@@ -84,13 +91,21 @@ Dr - Don't shy away from returning here if you need help.
 Dr - I may look old, but a few more centuries are nothing for me.
 Em - Thanks, Uncle Qothus I'm glad we met.
 Ember awkwardly hugged the big dragon.
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
 =SPRITE emberhappy=
+=SPRITE_UNFADE 0.5=
 Em - Hey, I'm ready to go.
 Em - Hey, what are you doing to that whelp?
 =SPRITE dragonwhelp=
+=SPRITE_UNFADE 0.5=
 Ar - Oh, don't worry about it. 
 Ar - We don't need it anymore.
 Er - It was supposed to substitute you in case you'd chose to stay here. 
 Em - Eh? Eeeeeeh?!
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=
