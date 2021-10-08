@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/images/gui/buildings/panel.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/village/Townhall.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/portrait/EmberNormal.png" type="Texture" id=14]
 [ext_resource path="res://files/scenes/Questlog.tscn" type="PackedScene" id=15]
+[ext_resource path="res://files/scenes/village/SceneUnlockPanel.tscn" type="PackedScene" id=16]
 
 [node name="TownHall" type="TextureRect"]
 margin_left = 35.0
@@ -268,7 +269,7 @@ margin_top = 72.0
 margin_right = 1445.0
 margin_bottom = 782.0
 
-[node name="Upcoming Events" type="Panel" parent="."]
+[node name="UpcomingEvents" type="Panel" parent="."]
 margin_left = 1096.89
 margin_top = 673.058
 margin_right = 1655.89
@@ -277,7 +278,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Upcoming Events"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UpcomingEvents"]
 margin_left = 7.93701
 margin_top = 7.93701
 margin_right = 544.937
@@ -287,17 +288,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Upcoming Events/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpcomingEvents/ScrollContainer"]
 margin_right = 200.0
 margin_bottom = 200.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureButton" parent="Upcoming Events/ScrollContainer/HBoxContainer"]
+[node name="portrait" type="TextureButton" parent="UpcomingEvents/ScrollContainer/HBoxContainer"]
 margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 texture_normal = ExtResource( 14 )
 expand = true
 stretch_mode = 5
+
+[node name="scenes" parent="." instance=ExtResource( 16 )]
+visible = false
+margin_left = 25.4271
+margin_top = -55.092
+margin_right = 25.4271
+margin_bottom = -55.092

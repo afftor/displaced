@@ -18,4 +18,8 @@ Em - Look, there's a portal left after her.
 Ar - Ah, we could follow it.
 Ro(sarcastic) - I don't think this is a good idea. 
 Ro(sarcastic) - We don't know where we might end up.
+=CHOICE A|B=
+Ar - ...
+=SKIP 1 1=
+=DECISION portal=
 =STOP=

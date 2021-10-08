@@ -269,7 +269,7 @@ func geartooltip(item):
 func open():
 	state.CurBuild = "blacksmith"
 	input_handler.ShowGameTip('blacksmith')
-	globals.check_signal("BuildingEntered", 'blacksmith')
+#	globals.check_signal("BuildingEntered", 'blacksmith')
 	.show()
 
 func hide():

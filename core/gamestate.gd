@@ -41,7 +41,7 @@ var CurrentLine := 0
 var OldSeqs = []
 var OldEvents := {}
 var gallery_unlocks = []
-var gallery_event_unlocks = []
+#var gallery_event_unlocks = []
 var CurEvent := "" #event name
 var CurBuild := ""
 
@@ -71,7 +71,8 @@ func time_set(value):
 	#here may be placed day changing code from main screen
 	#but for now i place here only new code for rising midday event
 	if (daytime < variables.TimePerDay / 2) and (value >= variables.TimePerDay / 2):
-		globals.check_signal('Midday')
+		pass
+#		globals.check_signal('Midday')
 	daytime = value
 
 func get_difficulty():
@@ -125,7 +126,7 @@ func revert():
 	gallery_unlocks.clear()
 	for i in variables.gallery_singles_list:
 		gallery_unlocks.push_back(false)
-	gallery_event_unlocks.clear()
+#	gallery_event_unlocks.clear()
 
 
 func reset_areaprogress():
@@ -186,8 +187,8 @@ func _ready():
 
 
 
-func check_sequence(id):
-	if OldSeqs.has(id): return false
+func check_sequence(id, forced = false):
+	if OldSeqs.has(id) and !forced: return false
 	if !Explorationdata.scene_sequences.has(id):
 		print("event seq %s not found" % id)
 		return false
@@ -207,7 +208,8 @@ func StoreEvent(nm):
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
-	if input_handler.map_node!= null: input_handler.map_node.update_map()
+#	if input_handler.map_node!= null: input_handler.map_node.update_map()
+#	input_handler.emit_signal("EventFinished")
 	if Explorationdata.event_triggers.has(CurEvent):
 		var nseqdata = Explorationdata.event_triggers[CurEvent]
 		CurEvent = ""
@@ -397,7 +399,7 @@ func serialize():
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea']
-	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'gallery_event_unlocks']
+	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
@@ -470,7 +472,7 @@ func system_action(action):
 		'game_stage':
 			ProgressMainStage(action.arg)
 		'unlock_building':
-			make_upgrade(action.value, 1)
+			make_upgrade(action.arg, 1)
 		'show_screen':
 			pass
 
@@ -487,6 +489,7 @@ func make_upgrade(id, lvl):
 	#stub
 	#add checks, logging and signals
 	townupgrades[id] = lvl
+	input_handler.emit_signal("UpgradeUnlocked")
 
 func logupdate(text):
 	if globals.get_tree().get_root().has_node("LogPanel/RichTextLabel") == false:
@@ -507,7 +510,7 @@ func ProgressMainStage(stage = null):#2remake
 
 func MakeQuest(code):
 	activequests.append({code = code, stage = 1})
-	globals.check_signal("QuestStarted", code)
+#	globals.check_signal("QuestStarted", code)
 
 
 func GetQuest(code):
@@ -530,7 +533,7 @@ func FinishQuest(code):
 			tempquest = i
 	activequests.erase(tempquest)
 	completedquests.append(tempquest.code)
-	globals.check_signal("QuestCompleted", code)
+#	globals.check_signal("QuestCompleted", code)
 
 
 func add_materials(res, value):

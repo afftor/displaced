@@ -248,8 +248,8 @@ func StopTweenRepeat(node):
 #Music
 
 func SetMusic(res, delay = 0):
-	pass
-	# NOT WORKING
+	if typeof(res) == TYPE_STRING:
+		res = resources.get_res("music/%s" % res)
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
@@ -671,6 +671,15 @@ func get_spec_node(type, args = null, raise = true):
 		for param in args:
 			window.set(param, args[param])
 	return window
+
+func initiate_scennode(node):
+	var tscene = load("res://files/TextSceneNew/TextSystem.tscn")
+	var tnode = tscene.instance()
+#	input_handler.scene_node = tnode #will be set on add_child anyway
+	tnode.hide()
+	node.add_child(tnode)
+
+
 
 func random_element(arr:Array):
 	if arr.size() == 0: return null

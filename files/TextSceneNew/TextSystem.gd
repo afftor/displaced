@@ -220,7 +220,7 @@ var char_map = {
 #		animated = true,
 		color = Color('ffffff'),
 	},
-	I = {
+	I = { #it's bad for her to not having default(normal) variation
 		source = 'Iola',
 		portrait = 'Iola',
 		base_variants = ['Neutral', 'Sad', 'Shock'], #for normal filenamaes with suffixes
@@ -267,7 +267,7 @@ var char_map = {
 	},
 	FQ = {
 		source = 'Fairy Queen',
-		portrait = 'Fairy_Queen',
+		portrait = 'FairyQueen',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'faeryqueen',
@@ -500,6 +500,7 @@ var replay_mode = false
 func _ready() -> void:
 	input_handler.scene_node = self
 	extend_char_map()
+	preload_portraits()
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
@@ -555,6 +556,11 @@ func extend_char_map():
 			if mapdata.base_variants.has('Normal'):
 				char_map[key].portrait = char_map[key].portrait + 'Normal'
 
+
+func preload_portraits():
+	for chardata in char_map.values():
+		if chardata.has('portrait') and chardata.portrait != null:
+			resources.preload_res("portrait/%s" % chardata.portrait)
 
 var text_log = ""
 func OpenLog():
@@ -810,6 +816,8 @@ func tag_sprite(res_name: String) -> void:
 		var tmp = spr.instance()
 		tmp.set_anchors_preset(PRESET_CENTER)
 		ImageSprite.add_child(tmp)
+	#autounfade
+	input_handler.UnfadeAnimation(ImageSprite, 0.3 , delay)
 
 func tag_sprite_fade(secs: String = "0.5") -> void:
 	input_handler.FadeAnimation(ImageSprite, float(secs), delay)
@@ -846,6 +854,7 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 			0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
 		$Tween.start()
 		is_video_bg = true
+		
 
 #	if !replay_mode:
 	state.unlock_path(res_name, true)
@@ -871,6 +880,7 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 	var sec_res = resources.get_res("abg/%s" % sec_res_name)
 
 	$VideoBunch.Change(res, sec_res)
+	delay = max(delay, 0.3) #not sure, but should be enough to fix asynchonisation of abg changing 
 
 
 func prompt_close():
@@ -887,7 +897,8 @@ func tag_stop() -> void:
 	if !replay_mode:
 		state.FinishEvent()
 	replay_mode = false
-	emit_signal("scene_end")
+#	emit_signal("scene_end")
+	input_handler.emit_signal("EventFinished")
 
 
 func tag_loose() -> void:

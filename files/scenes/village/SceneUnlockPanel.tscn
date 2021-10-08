@@ -16,7 +16,6 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-test_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 1210.0
@@ -38,10 +37,10 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-margin_left = 132.69
-margin_top = 41.81
-margin_right = 1052.69
-margin_bottom = 191.81
+margin_left = 73.8273
+margin_top = 43.4918
+margin_right = 1147.83
+margin_bottom = 193.492
 scroll_horizontal_enabled = false
 scroll_vertical_enabled = false
 __meta__ = {
@@ -49,7 +48,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 920.0
+margin_right = 1074.0
 margin_bottom = 150.0
 size_flags_horizontal = 6
 
@@ -81,9 +80,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Rose" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="group" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
 margin_left = 154.0
 margin_right = 304.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+toggle_mode = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/group"]
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 142.0
+margin_bottom = 142.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/group"]
+margin_left = 10.2202
+margin_top = 6.60709
+margin_right = 132.22
+margin_bottom = 30.6071
+text = "Group"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rose" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+margin_left = 308.0
+margin_right = 458.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
@@ -124,8 +152,8 @@ __meta__ = {
 }
 
 [node name="Ember" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
-margin_left = 308.0
-margin_right = 458.0
+margin_left = 462.0
+margin_right = 612.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
@@ -167,8 +195,8 @@ __meta__ = {
 }
 
 [node name="Erika" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
-margin_left = 462.0
-margin_right = 612.0
+margin_left = 616.0
+margin_right = 766.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
@@ -210,8 +238,8 @@ __meta__ = {
 }
 
 [node name="Iola" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
-margin_left = 616.0
-margin_right = 766.0
+margin_left = 770.0
+margin_right = 920.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
@@ -253,8 +281,8 @@ __meta__ = {
 }
 
 [node name="Rilu" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
-margin_left = 770.0
-margin_right = 920.0
+margin_left = 924.0
+margin_right = 1074.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
@@ -306,10 +334,10 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/Panel"]
-margin_left = 70.3636
+margin_left = 70.0
 margin_top = 20.0
-margin_right = 1140.36
-margin_bottom = 725.0
+margin_right = 1140.0
+margin_bottom = 646.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -471,3 +499,10 @@ text = "Unknown"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="close" type="Button" parent="Panel/Panel"]
+margin_left = 536.492
+margin_top = 674.398
+margin_right = 664.492
+margin_bottom = 724.398
+text = "close"

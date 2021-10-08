@@ -21,6 +21,7 @@ func _ready():
 	$ExplorationSelect/CloseButton.connect('pressed', self, 'hide')
 	
 	input_handler.connect("PositionChanged", self, 'build_party')
+	input_handler.connect("EventFinished", self, 'build_party')
 	input_handler.explore_node = self
 	
 	$AdvConfirm/screen.rect_size = rect_size
@@ -369,7 +370,8 @@ func finish_area():
 		var scene = areadata.events.on_complete
 		if not(state.OldEvents.has(scene) and events.events[scene].onetime):
 			if globals.play_scene(scene):
-				yield(input_handler.scene_node, "scene_end")
+#				yield(input_handler.scene_node, "scene_end")
+				yield(input_handler, "EventFinished")
 	state.complete_area()
 	if location != 'mission': open_explore()
 	else: hide()

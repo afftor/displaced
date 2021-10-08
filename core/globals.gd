@@ -328,13 +328,14 @@ func StartGame():
 	run_seq('intro')
 
 
-func run_seq(id):
-	if !state.check_sequence(id): return
-	run_actions_list(Explorationdata.scene_sequences[id].actions)
+func run_seq(id, forced = false):
+	if !state.check_sequence(id, forced): return
+	if !state.OldSeqs.has(id): forced = false
+	run_actions_list(Explorationdata.scene_sequences[id].actions, forced)
 	state.store_sequence(id)
 
 
-func run_actions_list(list):
+func run_actions_list(list, replay = false):
 	var stop_syncronous = false
 	for action in list:
 		match action.type:
@@ -342,12 +343,13 @@ func run_actions_list(list):
 				if stop_syncronous: break
 				if action.has('reqs') and !state.checkreqs(action.reqs):
 					continue #stub, for this can lead to missing unlock opportunity, cant simply unlock either
-				stop_syncronous = play_scene(action.value)
+				stop_syncronous = play_scene(action.value, replay)
 			'system':
-				state.system_action(action)
+				if !replay: state.system_action(action)
 			'show_screen':
-				change_screen(action.value)
+				if !replay: change_screen(action.value)
 			'mission':
+				if replay: continue
 				if stop_syncronous: break
 				stop_syncronous = true
 				force_start_mission(action.value)

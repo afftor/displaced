@@ -17,12 +17,15 @@ var binded_events = {
 
 
 func _ready():
+	input_handler.connect("EventFinished", self, "buildscreen")
+	
 	input_handler.map_node = self
 	input_handler.village_node = $MainScreen
 	input_handler.explore_node = $explore
 #	input_handler.combat_node = $combat
 	input_handler.scene_node = $TextSystem
 	input_handler.menu_node = $menu_node
+	
 	
 	if test_mode:
 		test()

@@ -41,18 +41,24 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'heal_team'},
 	],
 	faeryqueen_1 = [
-		{code = 'system', value = 'start_next_scene', args = 'faeryqueen_1_a'}, #needs check for previous option selected
-		{code = 'system', value = 'start_next_scene', args = 'faeryqueen_1_b'},
+		{type = 'scene', value = 'faeryqueen_1_a', reqs = [{type = 'decision', name = 'portal'}]},
+		{type = 'scene', value = 'faeryqueen_1_b'},
+	],
+	faeryqueen_1_a = [
+		{type = 'scene', value = 'faeryqueen_1_b'},
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
-		{code = 'system', value = 'show_screen', args = 'exploration'},
+	],
+	faeryqueen_1_b = [
+		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
+		{type = 'show_screen', value = 'exploration'},
 	],
 	faeryqueen_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_3'},
-		{code = 'system', value = 'show_screen', args = 'exploration'},
+		{type = 'show_screen', value = 'exploration'},
 	],
 	
 	faeryqueen_4 = [
-		{code = 'system', value = 'show_screen', args = 'exploration'},
+		{type = 'show_screen', value = 'exploration'},
 	],
 	
 	viktor_2_3 = [
@@ -149,7 +155,14 @@ var buildings = { #for binding village buidings events
 
 
 var characters = { #for binding village characters events
-	
+	#i was forced to use scendata keys due to having characters that are not heroes here and reqirement to get their portarits
+	Em = ['ember_arrival', 'ember_arc_initiate', 'viktor_sends_threat'],
+	I = ['iola_arrival', 'iola_second_visit', 'iola_recruited', 'iola_wanderer'],
+	D = ['dimitrius_arrival'], #there is a problem in this - it appears directly after closing ember arrival scene, that is not good
+	F = ['flak_task', 'flak_task_return', 'flak_town_raid', 'flak_modern_city'],
+	Ri = ['rilu_reports_iola', 'rilu_disappear'],
+	Ro = ['rose_kidnap'],
+	Er = ['erika_rose_init'],
 }
 
 
@@ -191,7 +204,7 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'ember_1_1'},
 		{type = 'system', value = 'unlock_character', arg = 'ember'},
-		{type = 'system', value = 'unlock_building', arg = 'smith'},
+		{type = 'system', value = 'unlock_building', arg = 'forge'},
 		]
 	},
 	
@@ -472,7 +485,7 @@ var scene_sequences = {
 		unlock_price = {rose = 500},
 		actions = [
 		{type = 'scene', value = 'rose_3'},
-		{type = 'unlock_scene', value = 'rose_night'},
+		{type = 'unlock_scene', value = 'rose_night'},#rly?
 		]
 	},
 	erika_doggy = {

@@ -3,7 +3,11 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var selectedworker
 var selectedupgrade
 
+var binded_events = {}
+onready var charpanel = $UpcomingEvents/ScrollContainer/HBoxContainer
+
 func _ready():
+	input_handler.connect("EventFinished", self, "build_events")
 	#$ButtonPanel/VBoxContainer/Tasks.connect("pressed",self,'tasklist')
 #warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Upgrades.connect('pressed', self, 'upgradelist')
@@ -13,9 +17,12 @@ func _ready():
 #	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
 #warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Quests.connect("pressed", $Questlog, 'open')
+	$ButtonPanel/VBoxContainer/Scenes.connect("pressed", $scenes, "open")
 	#globals.AddPanelOpenCloseAnimation($TaskList)
 	globals.AddPanelOpenCloseAnimation($UpgradeList)
 	globals.AddPanelOpenCloseAnimation($UpgradeDescript)
+	
+	binded_events.clear()
 
 
 func open():
@@ -23,7 +30,7 @@ func open():
 
 func show():
 	state.CurBuild = 'TownHall';
-	globals.check_signal("BuildingEntered", 'TownHall')
+#	globals.check_signal("BuildingEntered", 'TownHall')
 	.show();
 
 func hide():
@@ -154,7 +161,28 @@ func unlockupgrade():
 #			yield(get_tree().create_timer(2.5), 'timeout')
 #			self.modulate.a = 1
 #			input_handler.HideOutline(animnode)
-	globals.check_signal("UpgradeUnlocked", upgrade)
+#	globals.check_signal("UpgradeUnlocked", upgrade)
 #	globals.EventCheck()
 	#state.townupgrades[upgrade.code] = true
+
+
+func build_events():
+	var res = false
+	binded_events.clear()
+	for ch in Explorationdata.characters:
+		for seq in Explorationdata.characters[ch]:
+			if state.check_sequence(seq):
+				binded_events[ch] = seq
+				res = true
+				break
+	
+	input_handler.ClearContainer(charpanel, ['portrait'])
+	for ch in binded_events:
+		if binded_events[ch] == null: continue
+		var panel = input_handler.DuplicateContainerTemplate(charpanel, 'portrait')
+		panel.connect("pressed", globals, "run_seq", [binded_events[ch]])
+		var tex = resources.get_res("portrait/%s" % input_handler.scene_node.char_map[ch].portrait)
+		panel.texture_normal = tex
+	
+	return res
 
