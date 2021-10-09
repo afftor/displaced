@@ -30,6 +30,9 @@ signal Midday
 
 signal PositionChanged
 
+signal RMB_pressed
+signal RMB_released
+
 var map_node
 var village_node
 var explore_node
@@ -37,7 +40,15 @@ var combat_node
 var scene_node
 var menu_node
 
+var rmb_state = false
+
 func _input(event):
+	if event.is_action_pressed("RMB") and !rmb_state:
+		emit_signal("RMB_pressed")
+		rmb_state = true
+	if event.is_action_released("RMB"):# and rmb_state:
+		emit_signal("RMB_released")
+		rmb_state = false
 	if event.is_echo() == true || event.is_pressed() == false :
 		return
 	if event.is_action("ESC") && event.is_pressed() && CloseableWindowsArray.back() != scene_node:
@@ -51,7 +62,8 @@ func _input(event):
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
-
+	
+	
 	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0:
 		if str(int(event.as_text())) in str(range(1,4)):
 			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])

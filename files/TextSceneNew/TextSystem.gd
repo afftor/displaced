@@ -514,11 +514,19 @@ func _ready() -> void:
 	scenes_map = build_scenes_map(ref_src)
 
 	globals.AddPanelOpenCloseAnimation($LogPanel)
+	input_handler.connect("RMB_pressed", self, "toggle_panel")
 	$Panel/Log.connect("pressed",self,'OpenLog')
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
 	
 	$ClosePanel/Cancel.connect("pressed", $ClosePanel, "hide")
 	$ClosePanel/Confirm.connect("pressed", self, "tag_stop")
+
+
+var panel_vis = true
+func toggle_panel():
+	if !panel_vis: return
+	$Panel.visible = !$Panel.visible
+
 
 
 func process_path_dir(path):
@@ -667,9 +675,11 @@ func tag_gui_normal() -> void:
 	$Panel.visible = true
 	$Panel/Options.visible = true
 	$CharImage.visible = true
+	panel_vis = true
 
 func tag_gui_hide() -> void:
 	$Panel.hide()
+	panel_vis = false
 
 func tag_gui_full() -> void:
 	$Panel.self_modulate.a = 0
@@ -680,6 +690,7 @@ func tag_gui_full() -> void:
 	$Panel.visible = true
 	$Panel/Options.visible = true
 	$CharImage.visible = false
+	panel_vis = true
 
 func tag_blackon() -> void:
 	$BlackScreen.modulate.a = 1
@@ -1001,6 +1012,7 @@ func play_scene(scene: String) -> void:
 	$Panel/DisplayName.visible = true
 	$Panel/CharPortrait.visible = false
 	$Panel.visible = false
+	panel_vis = false
 	$CharImage.modulate.a = 0
 	$BlackScreen.modulate.a = 0
 	for i in $VideoBunch.get_children():
