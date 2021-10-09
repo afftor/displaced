@@ -45,7 +45,7 @@ const AVAIL_EFFECTS = [
 	"DECISION", "STATE", "LOOSE"
 	]
 
-const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth', 'rilu', 'demitrius', 'demitrius_demon', 'goblin', 'goblin2'] #idk if they are named this way in scenes
+const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth','zelrothcaliban', 'rilu', 'demitrius', 'demitrius_demon', 'goblin', 'goblin2'] #idk if they are named this way in scenes
 #demitrius sprites are from 'unused folder' - so don't remove them accidentally
 #others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
 var char_map = {
@@ -77,7 +77,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	V = {
-		source = 'Victor',
+		source = 'Viktor',
 		portrait = 'Victor', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -87,7 +87,7 @@ var char_map = {
 	},
 	T = {
 		source = 'Traveler',
-		portrait = 'Traveler', #not exist
+		portrait = 'traveller', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -164,7 +164,7 @@ var char_map = {
 #		custom_variants = [], #for specific ones
 #		sprite = 'rilu',
 #		animated = true,
-		color = Color('ffffff'),#?
+		color = Color('C53BFF'),#?
 	},
 	RN = {
 		source = 'Rich Noble',
@@ -220,14 +220,14 @@ var char_map = {
 #		animated = true,
 		color = Color('ffffff'),
 	},
-	I = { #it's bad for her to not having default(normal) variation
+	I = {
 		source = 'Iola',
 		portrait = 'Iola',
 		base_variants = ['Neutral', 'Sad', 'Shock'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'iola',
 #		animated = true,
-		color = Color('ffffff'),#?
+		color = Color('2A97CB'),#?
 	},
 	Guard = {
 		source = 'Guard',
@@ -450,6 +450,15 @@ var char_map = {
 	'?(Z)': {
 		source = '???',
 		portrait = 'Zelroth', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	'?(C)': {
+		source = '???',
+		portrait = 'Caliban', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,

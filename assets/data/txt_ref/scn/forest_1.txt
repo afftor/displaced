@@ -15,9 +15,12 @@ Ro(sarcastic) - Please, don't.
 Ro - I'm curious how they are doing here. I've never seen them in life, but back there people said they act very noble and proud.
 Ar - I've seen a couple in the rare meeting. They indeed appear to be snobbish.
 Ro - ... 
-Ro(talk) - Master, please, don't tell them that to their  face.
+Ro(talk) - Master, please, don't tell them that to their face.
 Ro - I'm sure they wouldn't like it, and they probably live in much better conditions than we currently do.
 Ar - Hmm... In that case, we should conquer them too!
 Ro - I'll pass. 
 Ar - As if you have a choice.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

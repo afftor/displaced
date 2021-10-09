@@ -1,21 +1,20 @@
 ** rilu_1_1 **
-=BLACKUNFADE 0.5=
-=DELAY 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
 =BG cave=
-=MUSIC eventlight=
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=MUSIC eventgeneric=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 After meticulously inspecting the caves, the party concluded there are no visible exits with the only one being blocked by an energy wall.
 =SPRITE rose=
-=SPRITE_UNFADE 0.5=
+=SPRITE_UNFADE 0.3=
 Ro - Master, I've found an old stone coffin in the other room. But it was too heavy to open for me.
 Ar - An old coffin? Alright, in the worst case we can settle down here as well. Let's see it.
-=BLACKUNFADE 0.2=
-=SPRITE_FADE 0.2=
-=DELAY 0.2=
-=BLACKFADE 0.2=
-=DELAY 0.2=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
 Ar - Looks pretty ancient. What are these letters?
 Ro - I can't tell, does not look like anything I've seen back in our world or here.
 Er - It says... 'Beware... the absolute evil... within... should not be released'
@@ -34,7 +33,14 @@ Er(happy) - I agree. This is like a lottery. Who knows what might be inside?
 Ro - ... I can't believe we actually made it this far.
 Ar - Alright, Ember help me out.
 Em - Alright!
+=SOUND lid=
 As the heavy lid is removed it reveals a young girl lying inside.
+=MUSIC rilu_theme=
+=GUI_HIDE=
+=SPRITE_FADE 0.2=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
 =BG scenes/rilu_1=
 Ro - Eh?
 Er - ...
@@ -65,6 +71,7 @@ Unexpectedly, the girl in the coffin woke up, opened her eyes and exhaled a slee
 Ar - Hello there. 
 Ri - Who are th...
 The girl's face shows a sign of pain and irritation.
+=MUSIC eventgeneric=
 Ri - Darn...
 Er - She bit her tongue...
 Ro - She seems pretty clumsy. Is it because of sleep?
@@ -90,7 +97,11 @@ Ri - Huh... a weird man.
 Ri - Fine. I'll accompany you.
 Ro - But before that, Rilu, could you tell us what were you doing in that coffin? 
 Ri - ...
-Ri - I fell in there a long time ago. I think it was cursed and the lid closed on its own.
+Ri - I fell in there a long time ago. 
+Ri - I think it was cursed and the lid closed on its own.
 Ro - Really? This is... something I can probably imagine.
 Ar - That makes sense. Alright, let's move to the exit.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

@@ -1,40 +1,48 @@
 ** iola_2_2_1 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
-=BG castle=
+=BG castle_interior=
+=MUSIC eventgeneric=
 =SPRITE rose=
+=SPRITE_UNFADE 0.3=
 Ro - Phew.. It's dead.
 Em - There's an essence!
-Em - Ew, it's all gross and sticky...
-Er - Just image it's a semen.
-Ro(sarcastic) - you are really not making this better.
 Ar - It looks fancy. 
-Ar - I wonder what it tastes like...
+Ar(neutral) - I wonder what it tastes like...
 Ri - It doesn't really taste like anything. 
 Ri - But you might grow a pair of horns if you digest it.
 Em - Oh? But what if I already have one?
 Ro(sarcastic) - Let's not try it.
+Em(sad) - Ew, it's all gross and sticky...
+Er - Just think of it as of a semen.
+Ro(sarcastic) - you are really not making this better.
 Ro - Please let's return, I don't feel very good around here.
-Ar - These are just walking corpses, I don't get why are you so scared of them.
+Ar - These are just walking corpses, I don't get why are you bothered by them.
 Ro(sarcastic) - Don't make me recall how you reacted after going to family crypt for the first time.
 Ar - Alright, alright. Let's go then.
 As the whole team was leaving the room, Rilu slowed down behind.
-Ar - Rilu? You found something over there?
+=SPRITE rilu=
+=SPRITE_UNFADE 0.3=
+Ar(neutral) - Rilu? You found something over there?
 Ri - ...
 Ri - Nevermind, let's go.
-=BLACKTRANS 0.5=
-=SPRITE zelroth=
+=BLACKTRANS 1=
+=DELAY 1=
+=SPRITE zelrothcaliban=
+=SPRITE_UNFADE 0.3=
 At the other side of the hall two figures were watching from the shadows.
-Z - Interesting... There's a familiar aura.
-M - What's aura?
-Z - Looks like these are the ones who Dimitrius told me about.
-Z - Bastards destroyed about a week of my work.
-M - oooh, that's bad.
-Z - No shit, dumbass. 
-Z - At least they've left.
-Z - Alright, get back to preparations.
-M - Preparations for dinner? I'm hungry...
-Z - No, you imbecile. Now get to work.
-=BLACKTRANS 0.5=
+?(Z) - Interesting... There's a familiar aura.
+?(C) - What's aura?
+?(Z) - Looks like they are the ones who Dimitrius told me about.
+?(Z) - Bastards destroyed about a week of my work.
+?(C) - oooh, that's bad.
+?(Z) - No shit, dumbass.
+?(Z) - At least they've left.
+?(Z) - Alright, get back to preparations.
+?(C) - Preparations for dinner? I'm hungry...
+?(Z) - No, you imbecile. Now get to work.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

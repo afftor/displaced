@@ -1,19 +1,27 @@
 ** iola_3_3 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
+=MUSIC eventgeneric=
 =BG cave=
 =SPRITE iola=
+=SPRITE_UNFADE 0.3=
 The party came to a small ruin circle.
 I - Alright, this must be the place.
 Ar - Great. What do we do now?
 I - I'll prepare the ritual. You can just wait.
 Ar(neutral) - Damn, I hate waiting. 
 Ri - I'll help.
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
 I - Alright, now...
 As Iola chanted the spell, ruins began glowing with blue light. After a couple of seconds a figure appeared in front of them.
-T - Wretches! What the fuck do you want?
+=SPRITE traveller=
+=SPRITE_UNFADE=
+=SOUND teleport=
+T - Wretches! What the hell do you want?
 Ar(neutral) - ......
 Ro(shock) - ......
 I(shock) - .....
@@ -21,7 +29,7 @@ T - ...Sorry, Let's try this again.
 T - Hi. Who are you?
 Ar - None of your fuckin' business.
 Ro(shock) - Master!
-Ar - What? Maybe it's his way of saying 'hi'.
+Ar - What? Isn't it his way of saying 'hi'.
 Ar - Is this even the correct guy?
 Ri - *Nod*
 I - I can't believe my eyes, you really are a Saint Sergius from holy texts!
@@ -30,7 +38,10 @@ I - I never thought I would meet someone like you.
 T - Hmmh? Well that was some time ago...
 Ar - I respect your religious insight, but we kinda have some business here. 
 I - Oh, I'm sorry. Let me explain...
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
 I(sad) - So I was hoping you could help me to figure out what's going on with my father and the cult...
 T - Did you say that the cult is searching for demons invading this world?
 I - Yes. 
@@ -68,22 +79,23 @@ T - Bring me one of-
 Before Segius could finish a sentence, a small bomb exploded, creating a blinding flash. 
 =SOUND slash=
 D - Enough of this bad joke.
+=MUSIC bosstheme=
 T - Wha...
 Sergius fell on the ground from a mortal wound.
 =SOUND fall=
-=SPRITE demitrius=
+=SPRITE demitrius_demon=
 I(shock) - NOOO!
-D - Sorry to interrupt your party, but I kinda needed his powers.
-D - And now I finally have them. Must thank you for finding him for me, haha. 
-An(anger) - You'll pay for this.
+De - Sorry to interrupt your party, but I kinda needed his powers.
+De - And now I finally have them. Must thank you for finding him for me, haha. 
+Ar(anger) - You'll pay for this.
 Arron charged at Dimitrius from a few feet away.
 But as his sword was about to strike, Dimitrius disappeared and quickly reappeared on the other side of the cave.
-D - Watch out, it's dangerous to run with sharp things.
-An(anger) - What the hell...
-D - Hahaha, aren't these powers great?
-D - Okay, have fun worms, daughter...
+De - Watch out, it's dangerous to run with sharp things.
+Ar(anger) - What the hell...
+De - Hahaha, aren't these powers great?
+De - Okay, have fun worms, daughter...
 I(shock) - .....
-D - There's things that need to be set in motion.
+De - There's things that need to be set in motion.
 =SPRITE_HIDE=
 Dimitrius teleported out of the cave leaving everyone in shock.
 =SPRITE iola=
@@ -99,14 +111,22 @@ Ar - .....We must go.
 Ar - Iola?
 I(sad) - .......
 After a few minutes they left the caves.
+=GUI_HIDE=
+=MUSIC eventgeneric=
+=BLACKTRANS 1=
+=DELAY 1=
 =BG villageday=
+=GUI_NORMAL=
 I(sad) - Sorry, I need some rest.
 Ro - Sure, let me help you.
-=SPRITE_HIDE=
-Em(tired) - I don't get it. Why is she so upset?
+=SPRITE_FADE 0.3=
+Em(sad) - I don't get it. Why is she so upset?
 Ri - Her father just killed the saint in front of her eyes. 
 Ri - She might not have truly known him, but it's too much to take for her beliefs. 
 Ar(neutral) - I haven't actually considered that.
-Em(tired) - Sorry, I still don't understand. 
+Em(sad) - Sorry, I still don't understand. 
 Ri - It's fine, we might have worse things to deal with soon.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

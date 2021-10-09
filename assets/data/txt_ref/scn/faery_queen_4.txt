@@ -1,14 +1,20 @@
 ** faery_queen_4 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
-=GUI_NORMAL=
-=BG forest=
+=MUSIC eventlight=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG forest_fairy=
+=BLACKFADE 1=
+=DELAY 1=
 =SPRITE faeryqueen=
+=SPRITE_UNFADE 0.5=
+=GUI_NORMAL=
 FA - Oh shit, the queen fell!
 FB - Run!
 The other faeries quickly scattered away.
 FQ - Ggh, you fuckers... 
-Ar - You have one nasty mouth. We need something of yours.
+Ar - You have one nasty mouth. 
+Ar - But we need something of yours.
+FQ - Like I give a fuck!
 Ro - Saint's Pearl. Ring a bell?
 FQ - Hah, what makes you think I'll hand over anything at all to you?
 Em - Because we are the good guys?
@@ -19,23 +25,30 @@ Ar - That seems a bit extreme...
 (if seens Rose scene faery_queen_1_a) {
 Ro(sarcastic) - Yeah, go for it, Erika. 
 Ro(sarcastic) - Make her pay for what I went through.
-Ar(neutral) - Huh? Has something happened?
+Ar(neutral) - Huh? What do you mean?
 Ro - N-no, it's nothing.
 }
 Er - No, if we humiliate her in front of others she will lose her authority.
 Em(normal) - Ho-oh, so that's why people wear clothes? 
-Ar - Still seems a bit dirty, but if there's nothing else we can do...
+Ar(neutral) - Still seems a bit dirty, but if there's nothing else we can do...
 FQ - No, stay away you imbecile perverts!
-=BLACKUNFADE 0.5=
-=DELAY 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
 ...
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =SPRITE erika=
+=SPRITE_UNFADE 0.3=
 Er - There it is. 
 Erika held up a small white gem acquired from Faery Queen.
-Ri - Let me see it... I can't sense any magic from it.
+Ri - Let me see it... 
+Ri - I can't sense any magic from it.
 Ro(shock) - No way, all this for nothing? 
-Ar(neutral) - Well, we might find some use for it in future. Let's go home for now.
+Ar(neutral) - Well, we might find some use for it in future. 
+Ar - Let's go home for now.
 Er - Good call, I'm already sick of this forest. 
+Ro(sad) - Haaah... What are we gonna do now, though.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

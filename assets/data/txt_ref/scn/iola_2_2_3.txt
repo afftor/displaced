@@ -1,12 +1,19 @@
 ** iola_2_2_3 **
+=MUSIC eventlight=
+=BLACKUNFADE 1=
+=DELAY 1=
 =BG villageday=
-=BLACKUNFADE 0.5=
+=BLACKFADE 1=
+=DELAY 1=
+=SPRITE rose=
+=SPRITE_UNFADE 0.3=
+=GUI_NORMAL=
 Ar - This is weird. We got the essence, but Iola hasn't come back since that day.
 Ro - Maybe they let her pass without it?
 Ar(neutral) - That would suck.
 Ar - How do we get rewarded like this then?
 =SPRITE rilu=
-=SPRITE_UNFADE 0.5=
+=SPRITE_UNFADE 0.3=
 Ri - She's actually in trouble. 
 Ro(talk) - Eh?
 Ar(neutral) - What do you mean?
@@ -29,5 +36,9 @@ Ro(talk) - You think we should go there?
 Ro - This might be quite dangerous.
 Ar - Well, someone has to pay for the mission we've completed. 
 Ar - In the worst case we can loot something from there.
-Ro(sarcastic) - I sincerely hope you are joking this time.
+Ro(sarcastic) - Please, don't.
+Ro(sarcastic) - We have enough problems without being accused of theft.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

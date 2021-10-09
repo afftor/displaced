@@ -1,8 +1,13 @@
 ** faery_queen_1 **
-=GUI_NORMAL=
-=BG forest=
+=MUSIC eventlight=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG forest_fairy=
+=BLACKFADE 1=
+=DELAY 1=
 =SPRITE faeryqueen=
 =SPRITE_UNFADE 0.5=
+=GUI_NORMAL=
 FQ - Greetings, fuckwits.
 FQ - What do you think you are doing coming here?
 Ar - Huh... I wonder if there's any point in trying to negotiate at all.
@@ -22,4 +27,7 @@ Ro(sarcastic) - We don't know where we might end up.
 Ar - ...
 =SKIP 1 1=
 =DECISION portal=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

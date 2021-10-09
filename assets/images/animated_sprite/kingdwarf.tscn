@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/images/sprite/KingDwarf1.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/animated_sprite/dwarf/final-0007.png" type="Texture" id=7]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 7 ) ],
@@ -18,8 +17,8 @@ animations = [ {
 } ]
 
 [node name="sprite" type="TextureRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 2560.0
+margin_bottom = 1440.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false

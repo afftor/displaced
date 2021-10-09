@@ -4,7 +4,7 @@
 =GUI_NORMAL=
 =BG cult=
 The group has entered the Cult's temple grounds. 
-Ar - Huh... This organization seems rather abundant. 
+Ar(neutral) - Huh... This organization seems rather abundant. 
 Ar - So, do you think we'll be able to pass through without causing ruckus?
 Guard - Hey, stop right there!
 Guard2 - Hey, it's those guys we've been told about.
@@ -13,5 +13,8 @@ Ar - Looks like we are expected.
 Ro(sarcastic) - That's not a good thing.
 Ar - Why are you so pessimistic? 
 Ar - Maybe they just wanna show us around.
-Ro(sarcastic) - Yeah, judging on how they charge at us armed, it will be their prison they want us to see.
+Ro(sarcastic) - I'm willing to bet it will be their prison they want us to see.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

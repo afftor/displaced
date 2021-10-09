@@ -117,4 +117,7 @@ Ar - Sorry, that wasn't a good idea.
 Ro(talk) - ...It's nothing, let's finish with this.
 Ar - You sure? You look a bit shabby.
 Ro - Yes... I was just a bit worried.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

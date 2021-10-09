@@ -1,9 +1,11 @@
 ** iola_3_1 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG hall=
+=MUSIC eventgeneric=
 =SPRITE iola=
+=SPRITE_UNFADE 0.3=
 I - Arron, I've got good news.
 Ar - You've found a way to make Rose's boobs bigger?
 I - N-no... Rilu taught me how to use that pearl you got to summon its owner. 
@@ -19,4 +21,7 @@ I - There's a ritual which will allow us to summon him, but we would need a spec
 I - Rilu said she's seen one where you found her. 
 Ro - Ugh, those caves...
 Ar - I see. Well, might as well try it since there's not much else to do. 
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

@@ -1,14 +1,13 @@
 ** forest_2 **
 =MUSIC eventgeneric=
-=BLACKUNFADE 0.5=
-=DELAY 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
 =BG forest=
-=BLACKFADE 0.5=
-=DELAY 0.5=
-=GUI_NORMAL=
+=BLACKFADE 1=
 =SPRITE ent=
-=SPRITE_UNFADE 0.5=
-=DELAY 0.5=
+=SPRITE_UNFADE 0.3=
+=DELAY 1=
+=GUI_NORMAL=
 Et - Enough slaughtering of my brethren! What do thou want, fleshling? 
 Ro(shock) - Wow, it can talk.
 Et - Hey, I demand thou doth not disrespect me! Addressing me as 'it' assumes thou doth not recognize my sentience. 
@@ -22,7 +21,9 @@ Ar - Huh... taken into custody by trees? How sad.  Whatever, we want them as wel
 Et - Thou propose a trade agreement? Of course, we have elves to spare for you and others. Art thou willing to see them?
 Ar - Sure, why not.
 Et - *Groan*
-Another huge treant slowly comes close. Its trunk bark bends to the sides, revealing a semi-conscious naked figure of an elven girl restricted inside of it. 
+Another huge treant slowly comes close. Its trunk bark bends to the sides, revealing a semi-conscious naked figure of an elven girl restricted inside of it.
+=BLACKTRANS 1=
+=DELAY 1=
 =ABG erika_vine_1=
 =GUI_FULL=
 =SPRITE_HIDE=
@@ -37,6 +38,8 @@ Ar - That's enough, you should release her.
 Et - What? No. This is not correct...
 Ar - Rose, pass me the torch.
 Et - Alright, alright...
+=BLACKTRANS 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG forest=
 =SPRITE_UNFADE 0.5=
@@ -73,20 +76,21 @@ Er(happy) - Ha-ha-ha, you’re so modest. That's cute!
 Ar - Alright, we can continue this on the way back, would you mind dressing up before we leave? 
 Er - Sure thing honey, give me a moment!
 Ar - Meanwhile, let's settle what we came here for. Hey, willow guy...
+=GUI_HIDE=
 =SPRITE_FADE 0.2=
 =DELAY 0.2=
-=BLACKTRANS 0.5=
-=DELAY 0.5=
+=BLACKTRANS 1=
+=DELAY 1=
 =SPRITE erika=
 =SPRITE_UNFADE 0.2=
 =DELAY 0.2=
+=GUI_NORMAL=
 Er(happy) - Ready!
 Ro(sarcastic) - ...Really?
 Er - Thanks for asking, but I don't like carrying around heavy stuff, so I've got all I need.
 Ar - Looks good to me, let's go. 
 Ro - (...)
-#{"effect":"state","value":"character_add", "args":"erika"},
-=STATE char_unlock erika=
-#{"effect":"state","value":"advance_quest", "args":"elves"},
-=STATE advance_quest elves=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

@@ -1,12 +1,12 @@
 ** erika_rose_1 **
 =MUSIC eventlight=
-=BLACKUNFADE 0.5=
-=DELAY 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
 =BG hall=
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =SPRITE erika=
-=SPRITE_UNFADE 0.5=
+=SPRITE_UNFADE 1=
 =GUI_NORMAL=
 Er - Arron.
 Ar - Erika. What's up?

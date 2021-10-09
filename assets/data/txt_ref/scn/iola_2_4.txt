@@ -1,9 +1,11 @@
 ** iola_2_4 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG cult=
+=MUSIC eventgeneric=
 =SPRITE rilu=
+=SPRITE_UNFADE 0.3=
 The team ended up in a jail building near one of the cells.
 Ri - It's here.
 Ar - This is quite a sturdy door.
@@ -30,7 +32,7 @@ I - I'm sure he can understand if I talk to him.
 However, the armed group gathered on the other side of the hall.
 Guard - We cornered them! 
 Guard - Archers, ready!
-Guard2 - But Lady Iola is there.
+Guard_2 - But Lady Iola is there.
 Guard - Damnit, did these bastards plan this out?
 =SPRITE demitrius=
 D - Shoot. 
@@ -44,6 +46,9 @@ Guard - ...Yes, Sir.
 Guard - Shoot!
 Ro(shock) - No!
 Ar(anger) - !..
+=SPRITE_FADE 0.3=
+=BLACKTRANS 1=
+=DELAY 1=
 =BG scenes/rilu_defend=
 *Splurt*
 Ri - Ugh...
@@ -65,6 +70,7 @@ A shockwave and further trembling threw soldiers of balance making them unable t
 Em - Oh.. I think it was a bearing wall.
 Ar(anger) - The building is unstable. Run!
 =SPRITE demitrius=
+=SPRITE_UNFADE 0.3=
 D - Damnit.
 Guard - Your Highness, they are getting away. 
 D - Really observant, you idiot. 
@@ -97,4 +103,7 @@ Ri - ...
 I - I'm not sure how I can ever repay you for this.
 Ri - That's fine.
 Ro - I'll see where we can let you stay. 
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

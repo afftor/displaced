@@ -1,15 +1,19 @@
 ** iola_2_5 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG hall=
 =SPRITE iola=
+=SPRITE_UNFADE 0.3=
 Ar - Hey, how do you like your new home? 
 I - It's nice, thanks.
 I(sad) - I just don't know what I should do now. 
 I(sad) - Father has changed, he would never do something like this.
 Ro(talk) - Uh.. I think we should tell you about the time we went with him to the caves.
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
 I(sad) - That sounds really weird.
 Ar - Just for the note, we aren't demons or anything like that.
 Ro(sarcastic) - Not in a literal sense at least.
@@ -34,4 +38,7 @@ Ar - It's like brushing your teeth but also everyone makes you feel guilty for n
 Ro(sarcastic) - Master is fooling around.
 Ro - I'm sure there must be some serious reason.
 I - ...Thanks, I hope we will find him.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=
