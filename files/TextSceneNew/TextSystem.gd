@@ -828,6 +828,7 @@ func tag_sprite(res_name: String) -> void:
 	var tspr = ImageSprite.get_node_or_null('sprite')
 	if tspr != null:
 		tspr.free()#to testing
+#	yield(get_tree(), "idle_frame")
 	if !res_name in animated_sprites:
 		ImageSprite.texture = resources.get_res("sprite/%s" % res_name)
 	else:

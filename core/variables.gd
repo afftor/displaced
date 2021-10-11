@@ -77,8 +77,8 @@ func fill_curve():
 
 
 var gallery_singles_list = [
-	{path = "rose_sex_1", type = 'abg'},
-	{path = "villagenight", type = 'bg'},
+#	{path = "rose_sex_1", type = 'abg'},
+#	{path = "villagenight", type = 'bg'},
 	]
 
 
