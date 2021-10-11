@@ -1,6 +1,7 @@
 ** victor_2_4 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
+=BG forest=
 =GUI_NORMAL=
 Defeated Victor fell on his knees not in any condition to continue the fight.
 V - Ghhh... How... Can I lose...
@@ -58,13 +59,14 @@ DrJr - Don't worry, I'm  sure you can make Ember some fine offspring with some p
 Em - Eh?!
 DrJr - After all I've almost had first-hand experience.
 Ar - You had what?!
-DrJr - Don't act so surprised now. My daughter is too innocent to take initiative, so I gave her a couple of hints.
+DrJr - Don't act so surprised now. 
+DrJr - My daughter is too innocent to take initiative, so I gave her a couple of hints.
 Ar - ...And took some liberty in the bedroom...?
 DrJr - That was the best for all of us. 
 DrJr - But it's time for me to go. 
 DrJr - Good luck, children. 
 With last words vanishing in the air so did the image of Ezet.
-=BG villageday=
+=BG forest=
 Ar - ...Look, it wasn't as lewd as you imagine. 
 Ro - Disgusting.
 Em - Ah, so that's why I acted like that.
@@ -73,4 +75,7 @@ Er - Kinky.
 I(sad) - Hmm I'm not sure how ancestors would feel about it.
 Ar - Okay, enough. 
 Ar - Let's get out of here, before someone sees us and blames us for murdering Aeros's hero. 
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

@@ -78,7 +78,7 @@ var char_map = {
 	},
 	V = {
 		source = 'Viktor',
-		portrait = 'Victor', #not exist
+		portrait = 'Viktor',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'victor',
@@ -141,7 +141,7 @@ var char_map = {
 	},
 	S = {
 		source = 'Soldier',
-		portrait = 'Soldier', #not exist
+		portrait = 'Guard', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,

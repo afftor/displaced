@@ -1,17 +1,18 @@
 ** rilu_2_4 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
-=BG castle=
+=BG castle_interior=
 =SPRITE rilu=
+=MUSIC rilu_theme=
 In a large hall an unknown man laid defeated as Rilu was inspecting something in her hand.
-Ar - Rilu? What's been going on here?
+Ar(neutral) - Rilu? What's been going on here?
 Ri - Arron.
 Ri - You've been following me?
 ?(Z) - You should stop her... If you want to live.
-Ar - Hmm? Who's this guy?
+Ar(neutral) - Hmm? Who's this guy?
 Ri - It's Zelroth. He used to be my student in the past.
-Ar - I think I've heard this name in town. 
+Ar(neutral) - I think I've heard this name in town. 
 Ri - He used to be a gifted scientist and a doctor, but now he seems to prefer to raise the dead instead.
 Ar - ...And that thing in your hand?
 Ri - ........
@@ -117,10 +118,13 @@ More undead started pouring from all directions.
 Ar(shock) - We are in trouble!
 Ri(spell) - .....
 Rilu casted a spell and the room went pitch dark. 
-=SPRITE_HIDE=
+=SPRITE_FADE 0.2=
 Without wasting any time they snuck from the castle.
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =BG forest=
+=GUI_NORMAL=
 =SPRITE rilu=
 Ar - Whew... That was a handy trick. Are you alright?
 Ri - Yes. 
@@ -136,4 +140,7 @@ Ar - Good to hear that.
 Ri(talk) - Thank you for coming, Arron.
 Ri - You've done for me more, than anyone before. 
 Ar - Come on, you’re gonna make me blush.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

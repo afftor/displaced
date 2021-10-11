@@ -1,5 +1,11 @@
 ** town_siege_intermission **
-=BG town_on_fire=
+=MUSIC eventgeneric=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG burning_city =
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
 As team moved through the ruins of the former town they have spotted a few survivors.
 Surv - Quick, this was a merchant's house, it must have something valuable!
 Ro - What's going on? It seems they are also citizens.
@@ -13,3 +19,7 @@ Surv - Yeah, go and do that then, I don't have a time chatting with you.
 Ro - Despicable.
 Ri - We shouldn't waste time, let's ignore it.
 Ar(neutral) - ...Right.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

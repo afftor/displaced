@@ -2,8 +2,11 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
+=BG =
+=MUSIC eventgeneric=
+=SPRITE viktor=
 Ar - This guy looks familiar.
-Ro - This is Victor. We've seen him in Aeros.
+Ro - This is Viktor. We've seen him in Aeros.
 I(shock) - Ah, it's the man who was talking to the father at that time.
 V - You shouldn't have come, I only need the mongrel one. 
 V - But now you all will die. 
@@ -18,9 +21,9 @@ V - That's its name?
 V - Sorry, I don't take note how my prey was called. 
 Em - What?..
 Em - You have...
-V - Yes, I slayed it. 
-Em(tired) - ...
-Em(tired) - Why?
+V - Yeah, I've slayed it. 
+Em(sad) - ...
+Em(sad) - Why?
 V - *Sigh* Why do men hunt? 
 V - To dominate. To feed. To feel joy.
 V - And also to test himself. 
@@ -40,4 +43,7 @@ V - A reward worthy of a supreme warrior.
 V - And it all lies within my grasp now. 
 V - The only reason I'm telling you about this is  your death looms. 
 An(anger) - I'm sick of this psycho. He deserves some retribution.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

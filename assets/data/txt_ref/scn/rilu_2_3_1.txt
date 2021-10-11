@@ -1,9 +1,10 @@
 ** rilu_2_3_1 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG villagenight=
 =SPRITE arron=
+=MUSIC eventgeneric=
 Ar - Rose is busy with the chores, and Erika left to visit her friends.
 Ar(neutral) - So boring.
 Ar - I guess I'll have to find something interesting to do on myself. It's just another fine day to save the world.
@@ -11,10 +12,11 @@ Ar - ...
 As Arron was strolling through the night village, he spotted a familiar figure moving discreetly.
 =SPRITE rilu=
 =SPRITE_UNFADE 0.5=
+=MUSIC rilu_theme=
 Ar(neutral) - Hmm, Rilu?
 Ar(neutral) - I wonder where she's heading at this time. 
 Ar - I know stalking is bad, but it's not stalking, if she doesn't notice.
-=SPRITE_FADE 0.5=
-=BLACKTRANS 0.5=
-=DELAY 0.5=
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

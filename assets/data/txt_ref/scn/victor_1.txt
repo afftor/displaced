@@ -1,8 +1,9 @@
 ** victor_1 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG town_in=
+=MUSIC eventlight=
 A moderate crowd is gathered around one of the city entrances as if there was a parade.
 Ar - Hmm? What's going on here?
 S - You don't know? 
@@ -28,4 +29,7 @@ Ar - Sure, once we start our campaign for world domination we can use all the he
 Em - Eh? What's world domination? 
 Ro(sarcastic) - Ignore it Ember, it's not important.
 Ar - Hmph. Don't make me reconsider your second-in-command position, Rose.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
 =STOP=

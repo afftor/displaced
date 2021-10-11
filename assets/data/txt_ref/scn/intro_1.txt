@@ -61,8 +61,8 @@ Nt(anger) - Where is he?!
 Lr - Dear, what are you doing? I had been taking a nap so nicely. Why have you brought these people into our love nest?
 Nt(anger) - Check all the cabinets, and look under the bed!
 Guard - There's nothing under the bed, m'lord. 
-Guard2 - Cabinets are empty as well.
-Guard3 - Balcony is not opening.
+Guard_2 - Cabinets are empty as well.
+Guard_3 - Balcony is not opening.
 Nt(anger) - No way! He couldn't have gotten away again, keep looking.
 Lr - Hmph, if only you were as zealous at night as you are right now. 
 *chuckle*
