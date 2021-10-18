@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/combatskills.png-92cfe78feebb51f5a9abc013fb3adb97.stex"
+path="res://.import/hpbar_battlebig_filler.png-88af5a76f2cd02927eb824d41f19380c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/combat/combatskills.png"
-dest_files=[ "res://.import/combatskills.png-92cfe78feebb51f5a9abc013fb3adb97.stex" ]
+source_file="res://assets/images/buttons/combat/hpbar_battlebig_filler.png"
+dest_files=[ "res://.import/hpbar_battlebig_filler.png-88af5a76f2cd02927eb824d41f19380c.stex" ]
 
 [params]
 

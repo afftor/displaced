@@ -2,6 +2,7 @@ extends TextureButton
 
 var animation_node
 var panel_node
+var panel_node2
 
 
 signal signal_RMB
@@ -73,6 +74,12 @@ func setup_character(ch):
 		n.visible = true
 	if fighter is hero:
 		panel_node.get_node('TextureRect').texture = fighter.portrait()
+		panel_node2.get_node('ProgressBar').max_value = fighter.get_stat('hpmax')
+		panel_node2.get_node('ProgressBar').value = hp
+		panel_node2.get_node('Label').text = fighter.get_stat('name')
+		panel_node2.disabled = false
+	else:
+		panel_node2 = panel_node
 	update_hp_label(fighter.hp)
 	
 	$sprite.texture = null
@@ -80,10 +87,12 @@ func setup_character(ch):
 		$sprite.rect_min_size = fighter.animations.dead_1.get_size()
 		$sprite.texture = fighter.animations.dead_1
 		panel_node.modulate = Color(1,1,1,0.4)
+		panel_node2.modulate = Color(1,1,1,0.4)
 	else:
 		$sprite.rect_min_size = fighter.animations.idle.get_size()
 		$sprite.texture = fighter.animations.idle
 		panel_node.modulate = Color(1,1,1,1)
+		panel_node2.modulate = Color(1,1,1,1)
 		reset_shield()
 	$Label.text = fighter.name
 	regenerate_click_mask() # some cheating with not doing this every frame
@@ -274,6 +283,7 @@ func update_buff(i):
 
 func update_hp_label(newhp): 
 	panel_node.get_node('hp').text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
+	panel_node2.get_node('hp').text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
 #	panel_node.get_node('ProgressBar').value = newhp
 
 #highlight modes
@@ -351,6 +361,7 @@ func defeat():
 #		$sprite2.visible = true
 		regenerate_click_mask()
 		panel_node.modulate = Color(1,1,1,0.4)
+		panel_node2.modulate = Color(1,1,1,0.4)
 	else:
 		set_process_input(false)
 #		input_handler.FadeAnimation(self, 0.5, 0.3)
@@ -367,6 +378,7 @@ func resurrect():
 #	input_handler.FadeAnimation($sprite2, 0.3)
 #	input_handler.UnfadeAnimation($sprite, 0.3)
 	panel_node.modulate = Color(1,1,1,1)
+	panel_node2.modulate = Color(1,1,1,1)
 
 
 

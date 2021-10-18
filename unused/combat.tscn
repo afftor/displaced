@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/images/gui/charpanel/manabar.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/combat/skillmenu.png" type="Texture" id=14]
+[ext_resource path="res://unused/skillmenu.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/portrait/ArronNeutral.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/sprite/emberhappy.png" type="Texture" id=17]
@@ -26,9 +26,9 @@
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gui/combat/combatwinpanel.png" type="Texture" id=25]
 [ext_resource path="res://files/SFX/BarrierShader.tres" type="Material" id=26]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/gui/combat/combatpanel.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/gui/combat/combatpanelright.png" type="Texture" id=29]
+[ext_resource path="res://unused/combatpanelleft.png" type="Texture" id=27]
+[ext_resource path="res://unused/combatpanel.png" type="Texture" id=28]
+[ext_resource path="res://unused/combatpanelright.png" type="Texture" id=29]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )

@@ -301,16 +301,24 @@ func hp_update(node, args):
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.panel_node.get_node("ProgressBar")
+	var hpnode2 = node.panel_node2.get_node("ProgressBar")
 	#float damage
 	if args.damage_float:
 		if crit_display.has(node):
 			args.color = Color(1,0.8,0)
 			crit_display.erase(node)
 			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)) + '!', type = args.type, size = 120, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
-		else: tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+		else: 
+			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
-	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+	if !hpnode2.is_visible_in_tree():
+		tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+		hpnode2.value = args.newhp
+	else:
+		tween.interpolate_property(hpnode2, 'value', hpnode2.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+		if hpnode != hpnode2:
+			hpnode.value = args.newhp
 	#update hp label
 	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp)
 	tween.start()

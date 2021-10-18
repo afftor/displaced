@@ -145,7 +145,7 @@ func test_combat():
 		state.heroes[ch].unlock_all_skills()
 	state.heroes.arron.position = 1
 	state.heroes.ember.position = 2
-	state.heroes.rose.position = 3
+#	state.heroes.rose.position = 3
 	
 	
 	start_combat([{1:'elvenrat', 4: 'elvenrat'}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'cave')
@@ -191,6 +191,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 #		if battlefield[i] == null: continue
 #		battlefield[i].process_event(variables.TR_COMBAT_S)
 #		battlefield[i].rebuildbuffs()
+	gui_node.combat_start()
 	input_handler.ShowGameTip('aftercombat')
 	gui_node.build_enemy_head()
 	newturn()
@@ -275,10 +276,11 @@ func make_hero_panel(fighter, show = true):
 	var spot = fighter.position
 	var panel = battlefieldpositions[fighter.id]
 	panel.panel_node = gui_node.get_hero_panel(fighter.id)
+	panel.panel_node2 = gui_node.get_hero_reserve(fighter.id)
 	panel.setup_character(fighter)
 	if spot != null:
 		panel.set_global_position(positions[spot])
-		print(panel.rect_global_position)
+#		print(panel.rect_global_position)
 	else:
 		panel.set_global_position(Vector2(0,0))
 	if !show: panel.visible = false
@@ -309,6 +311,7 @@ func select_actor():
 	gui_node.ClearSkillPanel()
 	gui_node.ClearItemPanel()
 	gui_node.active_panel.visible = false
+	gui_node.active_panel2.visible = false
 	checkdeaths()
 	
 	var f = checkwinlose()
@@ -721,7 +724,45 @@ func swap_heroes(pos):
 	gui_node.RebuildReserve()
 	gui_node.build_hero_panels()
 	call_deferred('select_actor')
+
+
+func move_hero(chid, pos):
+	gui_node.activate_shades([])
+	gui_node.hide_screen()
+	var newchar = state.heroes[chid]
+	if battlefield[pos] != null:
+		var targetchar = battlefield[pos]
+		targetchar.displaynode.disappear()
+		CombatAnimations.check_start()
+		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+		turns += 1
+		targetchar.position = null
+		make_hero_panel(targetchar)
+		#add new char
+	#	activecharacter.acted = true
+	newchar.position = pos
+	playergroup[pos] = newchar
+	battlefield[pos] = newchar
+	make_hero_panel(newchar, false)
+	newchar.displaynode.appear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
 	
+	recheck_auras()
+	gui_node.RebuildReserve()
+	gui_node.build_hero_panels()
+	call_deferred('select_actor')
+
+
+func activate_swap():
+	var res = []
+	for pos in [1, 2, 3]:
+		if battlefield[pos] == null: res.push_back(pos)
+		else:
+			var tchar = battlefield[pos]
+			if !tchar.acted: res.push_back(pos)
+	gui_node.activate_shades(res)
 
 
 func summon(montype, number):
@@ -1161,7 +1202,7 @@ func get_random_target():
 
 #visuals
 func FighterMouseOver(position):
-	print(position)
+#	print(position)
 	if position == null: return
 	var fighter = battlefield[position]
 	var node = fighter.displaynode

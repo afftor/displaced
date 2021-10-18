@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/combatpanelright.png-499b66693e0651e83bd20b36e947baab.stex"
+path="res://.import/combatpanel.png-01e8bc208502ccc586aa7691a1385450.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/combat/combatpanelright.png"
-dest_files=[ "res://.import/combatpanelright.png-499b66693e0651e83bd20b36e947baab.stex" ]
+source_file="res://unused/combatpanel.png"
+dest_files=[ "res://.import/combatpanel.png-01e8bc208502ccc586aa7691a1385450.stex" ]
 
 [params]
 

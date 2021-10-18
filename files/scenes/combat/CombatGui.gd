@@ -4,25 +4,31 @@ onready var combat = get_parent()
 
 onready var utility_bar = $SkillPanel/UtilityContainer
 onready var active_panel = $ActiveActionPanel
+onready var active_panel2 = $ActiveActionPanel2
 
-var show_log = false
+var hpanel1 = load("res://files/scenes/combat/char_stat_party.tscn")
+var hpanel2 = load("res://files/scenes/combat/char_stat_reserve.tscn")
 
 func _ready():
-	utility_bar.get_node("Escape").connect("pressed", combat, "run")
+	$SkillPanel/Escape.connect("pressed", combat, "run")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
 	$SkillPanel/CategoriesContainer/ItemsButton.connect('pressed', self, "RebuildItemPanel")
-	$Combatlog.connect("pressed", self, 'set_log')
-	set_log(false)
+	$Combatlog2.connect("pressed", self, 'set_log')
 	bind_hero_panels()
+	hide_screen()
 
 func combat_start():
 	clear_log()
-	set_log(false)
+	prepare_shades()
+	hide_screen()
+	$Combatlog.visible = false
 
 #panels
 func get_hero_panel(hero_id):
 	return get_node("PlayerStats/VBoxContainer/%s" % hero_id)
 
+func get_hero_reserve(hero_id):
+	return get_node("PlayerStats/VBoxContainer/%s_reserve" % hero_id)
 
 func get_enemy_panel(pos):
 	pos -= 4
@@ -32,12 +38,20 @@ func get_enemy_panel(pos):
 
 
 func bind_hero_panels():
+	input_handler.ClearContainerForced($PlayerStats/VBoxContainer)
 	for ch in state.characters:
-		var node = get_hero_panel(ch)
-		node.connect('pressed', self, 'ShowFighterStats', [ch])
+		var node = hpanel1.instance()
+		node.name = ch
+		node.connect('pressed', self, 'ShowHeroTooltip', [ch])
+		$PlayerStats/VBoxContainer.add_child(node)
+	for ch in state.characters:
+		var node = hpanel2.instance()
+		node.name = ch + '_reserve'
+		node.connect('pressed', self, 'ShowHeroTooltip', [ch])
+		$PlayerStats/VBoxContainer.add_child(node)
 
 
-func ShowFighterStats(fighter):
+func ShowFighterStats(fighter): #obsolete
 	var node = input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL)
 	node.open(state.heroes[fighter], true)
 
@@ -48,48 +62,90 @@ func build_hero_panels():
 		var ch = combat.battlefield[pos]
 		if ch == null: continue
 		ch_order.push_back(ch.id)
-	for ch in state.characters:
-		if ch_order.has(ch): continue
-		ch_order.push_back(ch)
+#	for ch in state.characters:
+#		if ch_order.has(ch): continue
+#		ch_order.push_back(ch)
 	for i in range(ch_order.size()):
 		var ch = ch_order[i]
 		var node = get_hero_panel(ch)
 		$PlayerStats/VBoxContainer.move_child(node, i)
+	for ch in state.characters:
 		var hero = state.heroes[ch]
-		node.visible = hero.unlocked
+		var node1 = get_hero_panel(ch)
+		var node2 = get_hero_reserve(ch)
+		node1.visible = hero.unlocked
+		node2.visible = hero.unlocked
 		if hero.position != null:
-			node.modulate = Color(1,1,1,1)
+			node2.visible = false
 		else:
-			node.modulate = Color(1,1,1,0.4)
+			node1.visible = false
 
 
 func build_enemy_panels():
 	for pos in range(4, 10):
 		var node = get_enemy_panel(pos)
-		node.connect("mouse_exited", self, "HideEnemyTooltip")
+#		node.connect("mouse_exited", self, "HideEnemyTooltip")
 		var ch = combat.battlefield[pos]
 		if ch == null:
 			node.modulate = Color(1,1,1,0.4)
 			node.disabled = true
 			for n in node.get_children():
 				n.visible = false
-			if node.is_connected("mouse_entered", self, "ShowEnemyTooltip"):
-				node.disconnect("mouse_entered", self, "ShowEnemyTooltip")
+			if node.is_connected("pressed", self, "ShowEnemyTooltip"):
+				node.disconnect("pressed", self, "ShowEnemyTooltip")
 		else:
 			node.disabled = false
 			node.modulate = Color(1,1,1,1)
 			for n in node.get_children():
 				n.visible = true
-			if node.is_connected("mouse_entered", self, "ShowEnemyTooltip"):
-				node.disconnect("mouse_entered", self, "ShowEnemyTooltip")
-			node.connect("mouse_entered", self, "ShowEnemyTooltip", [ch, node])
+			if node.is_connected("pressed", self, "ShowEnemyTooltip"):
+				node.disconnect("pressed", self, "ShowEnemyTooltip")
+			node.connect("pressed", self, "ShowEnemyTooltip", [ch.id])
 
-#2do, 
-func ShowEnemyTooltip(fighter, node):
-	pass
+
+func ShowEnemyTooltip(fighter):
+	if $enemypanel.ch_id == fighter and $enemypanel.visible:
+		HideEnemyTooltip()
+		return 
+	$enemypanel.build_for_fighter(fighter)
+	$enemypanel.show()
+
 
 func HideEnemyTooltip():
-	pass
+	$enemypanel.hide()
+
+
+func ShowHeroTooltip(fighter):
+	if $heropanel.ch_id == fighter and $heropanel.visible:
+		HideHeroTooltip()
+		return 
+	$heropanel.build_for_fighter(fighter)
+	$heropanel.show()
+
+func HideHeroTooltip():
+	$heropanel.hide()
+
+#shades
+func prepare_shades():
+	for shade in $CharShades.get_children():
+		shade.set_inactive()
+		shade.rect_position = combat.positions[shade.pos]
+		shade.rect_position.x += 100
+		shade.rect_position.y += 40
+
+
+func activate_shades(positions = []):
+	$dropscreen.visible = true
+	for shade in $CharShades.get_children():
+		if shade.pos in positions:
+			shade.set_active()
+		else:
+			shade.set_inactive()
+
+
+func hide_screen():
+	$dropscreen.visible = false
+
 
 #skill panel
 func ClearSkillPanel():
@@ -165,18 +221,17 @@ func RebuildDefaultsPanel():
 
 func RebuildReserve(forced = false):
 	if !combat.allowaction and !forced: return
-	input_handler.ClearContainer(utility_bar, ['Escape', 'Button'])
-	utility_bar.get_node("Escape").visible = true
-	for ch in state.characters:
-		var hero = state.heroes[ch]
-		if !hero.unlocked: continue
-		if hero.position != null: continue
-		var button = input_handler.DuplicateContainerTemplate(utility_bar, 'Button')
-		button.get_node('TextureRect').texture = hero.portrait_circle()
-		if hero.acted:
-			button.disabled = true
-		else:
-			button.connect('pressed', combat, 'SelectExchange', [ch])
+	$SkillPanel/Escape.visible = true
+#	for ch in state.characters:
+#		var hero = state.heroes[ch]
+#		if !hero.unlocked: continue
+#		if hero.position != null: continue
+#		var button = input_handler.DuplicateContainerTemplate(utility_bar, 'Button')
+#		button.get_node('TextureRect').texture = hero.portrait_circle()
+#		if hero.acted:
+#			button.disabled = true
+#		else:
+#			button.connect('pressed', combat, 'SelectExchange', [ch])
 
 
 #global info
@@ -189,20 +244,23 @@ func build_enemy_head():
 #this panel not helps in re-selecting heroes 
 func build_selected_skill(skill): #not skill_id
 	active_panel.visible = true
-	active_panel.get_node("TextureRect").texture = skill.icon
-	active_panel.get_node("Label").text = skill.name
+	active_panel2.visible = true
+	active_panel2.get_node("TextureRect").texture = skill.icon
+	active_panel2.get_node("Label").text = skill.name
 
 
 func build_selected_item(item): 
 	active_panel.visible = true
-	active_panel.get_node("TextureRect").texture = load(item.icon)
-	active_panel.get_node("Label").text = item.name
+	active_panel2.visible = true
+	active_panel2.get_node("TextureRect").texture = load(item.icon)
+	active_panel2.get_node("Label").text = item.name
 
 
 func build_selected_char(hero):
 	active_panel.visible = true
-	active_panel.get_node("TextureRect").texture = hero.portrait_circle()
-	active_panel.get_node("Label").text = hero.name
+	active_panel2.visible = true
+	active_panel2.get_node("TextureRect").texture = hero.portrait_circle()
+	active_panel2.get_node("Label").text = hero.name
 
 
 
@@ -215,12 +273,5 @@ func combatlogadd_q(text):
 	$Combatlog/RichTextLabel.append_bbcode(text)
 
 
-func set_log(value = !show_log):
-	show_log = value
-	if show_log:
-		$Combatlog.rect_size.y += 700
-		$Combatlog.rect_position.y -= 700
-	else:
-#		$Combatlog.rect_min_size.y -= 200
-		$Combatlog.rect_size.y -= 700
-		$Combatlog.rect_position.y += 700
+func set_log():
+	$Combatlog.visible = !$Combatlog.visible

@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=43 format=2]
 
-[ext_resource path="res://assets/images/traits/dodge.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/icons/icon_flag.png" type="Texture" id=1]
+[ext_resource path="res://files/scenes/combat/drop_slot.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/combat/rilu_circle.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/Fight/Heroes/Arron/Fight_spritesFHD_0005s_0002_Arron_idle.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/combat/rose_circle.png" type="Texture" id=5]
@@ -13,6 +13,50 @@
 [ext_resource path="res://assets/images/iconsitems/Charm.png" type="Texture" id=11]
 [ext_resource path="res://assets/sfx/fire_effect.png" type="Texture" id=12]
 [ext_resource path="res://files/scenes/combat/CombatGui.gd" type="Script" id=13]
+[ext_resource path="res://files/scenes/combat/charpanel.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/images/gui/combat/panel_battle_log.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/combat/footer_battle.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/icons/icon_log.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/combat/header_battle_bottom.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/combat/header_battle_top.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/combat/panel_battle_allies.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/combat/panel_battle_enemies.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/icons/icon_skills.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/icons/icon_items.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/buttons/combat/small_button.tres" type="Theme" id=24]
+[ext_resource path="res://assets/images/buttons/combat/skill_button.tres" type="Theme" id=25]
+[ext_resource path="res://assets/images/buttons/combat/button_enemylistbattle_pressed.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/buttons/combat/button_enemylistbattle.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/buttons/combat/button_enemylistbattle_hover.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/buttons/combat/hpbar_battlesmall_filler.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/buttons/combat/hpbar_battlesmall_frame.png" type="Texture" id=30]
+[ext_resource path="res://assets/fonts/pt_36_boldshad.tres" type="DynamicFont" id=31]
+[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=32]
+[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=33]
+[ext_resource path="res://assets/images/buttons/combat/round_button.tres" type="Theme" id=34]
+[ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=35]
+[ext_resource path="res://assets/images/gui/combat/char_placeholder_battle.png" type="Texture" id=36]
+[ext_resource path="res://files/scenes/combat/dropscreen.gd" type="Script" id=37]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 294, 419 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 361, 300 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 1920, 225 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 340, 42 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 300, 92 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -133,555 +177,306 @@ __meta__ = {
 }
 
 [node name="PlayerStats" type="Panel" parent="."]
-margin_left = 3.0
-margin_top = 7.0
-margin_right = 278.0
-margin_bottom = 464.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 324.0
+margin_bottom = 449.0
+rect_min_size = Vector2( 294, 419 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerStats"]
-margin_left = 20.1815
-margin_top = 18.4997
-margin_right = 242.182
-margin_bottom = 282.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="arron" type="Button" parent="PlayerStats/VBoxContainer"]
-margin_right = 222.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 0, 65 )
-
-[node name="Label" type="Label" parent="PlayerStats/VBoxContainer/arron"]
-margin_left = 98.5768
-margin_top = 7.2682
-margin_right = 208.577
-margin_bottom = 31.2682
-text = "Arron"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/VBoxContainer/arron"]
-margin_left = 63.0
-margin_top = 37.0
-margin_right = 207.0
-margin_bottom = 61.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/VBoxContainer/arron"]
-margin_right = 60.0
-margin_bottom = 63.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hp" type="Label" parent="PlayerStats/VBoxContainer/arron"]
-margin_left = 75.7637
-margin_top = 39.0
-margin_right = 201.764
-margin_bottom = 63.0
-text = "350/1500"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="rose" type="Button" parent="PlayerStats/VBoxContainer"]
-margin_top = 69.0
-margin_right = 222.0
-margin_bottom = 134.0
-rect_min_size = Vector2( 0, 65 )
-
-[node name="Label" type="Label" parent="PlayerStats/VBoxContainer/rose"]
-margin_left = 98.5768
-margin_top = 7.2682
-margin_right = 208.577
-margin_bottom = 31.2682
-text = "Arron"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/VBoxContainer/rose"]
-margin_left = 63.0
-margin_top = 37.0
-margin_right = 207.0
-margin_bottom = 61.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/VBoxContainer/rose"]
-margin_right = 60.0
-margin_bottom = 63.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hp" type="Label" parent="PlayerStats/VBoxContainer/rose"]
-margin_left = 75.7637
-margin_top = 39.0
-margin_right = 201.764
-margin_bottom = 63.0
-text = "350/1500"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="erika" type="Button" parent="PlayerStats/VBoxContainer"]
-margin_top = 138.0
-margin_right = 222.0
-margin_bottom = 203.0
-rect_min_size = Vector2( 0, 65 )
-
-[node name="Label" type="Label" parent="PlayerStats/VBoxContainer/erika"]
-margin_left = 98.5768
-margin_top = 7.2682
-margin_right = 208.577
-margin_bottom = 31.2682
-text = "Arron"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/VBoxContainer/erika"]
-margin_left = 63.0
-margin_top = 37.0
-margin_right = 207.0
-margin_bottom = 61.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/VBoxContainer/erika"]
-margin_right = 60.0
-margin_bottom = 63.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hp" type="Label" parent="PlayerStats/VBoxContainer/erika"]
-margin_left = 75.7637
-margin_top = 39.0
-margin_right = 201.764
-margin_bottom = 63.0
-text = "350/1500"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ember" type="Button" parent="PlayerStats/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0.403922 )
-margin_top = 207.0
-margin_right = 222.0
-margin_bottom = 272.0
-rect_min_size = Vector2( 0, 65 )
-
-[node name="Label" type="Label" parent="PlayerStats/VBoxContainer/ember"]
-margin_left = 98.5768
-margin_top = 7.2682
-margin_right = 208.577
-margin_bottom = 31.2682
-text = "Arron"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/VBoxContainer/ember"]
-margin_left = 63.0
-margin_top = 37.0
-margin_right = 207.0
-margin_bottom = 61.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/VBoxContainer/ember"]
-margin_right = 60.0
-margin_bottom = 63.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hp" type="Label" parent="PlayerStats/VBoxContainer/ember"]
-margin_left = 75.7637
-margin_top = 39.0
-margin_right = 201.764
-margin_bottom = 63.0
-text = "350/1500"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="rilu" type="Button" parent="PlayerStats/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0.403922 )
-margin_top = 276.0
-margin_right = 222.0
-margin_bottom = 341.0
-rect_min_size = Vector2( 0, 65 )
-
-[node name="Label" type="Label" parent="PlayerStats/VBoxContainer/rilu"]
-margin_left = 98.5768
-margin_top = 7.2682
-margin_right = 208.577
-margin_bottom = 31.2682
-text = "Arron"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/VBoxContainer/rilu"]
-margin_left = 63.0
-margin_top = 37.0
-margin_right = 207.0
-margin_bottom = 61.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/VBoxContainer/rilu"]
-margin_right = 60.0
-margin_bottom = 63.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hp" type="Label" parent="PlayerStats/VBoxContainer/rilu"]
-margin_left = 75.7637
-margin_top = 39.0
-margin_right = 201.764
-margin_bottom = 63.0
-text = "350/1500"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="iola" type="Button" parent="PlayerStats/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0.403922 )
-margin_top = 345.0
-margin_right = 222.0
-margin_bottom = 410.0
-rect_min_size = Vector2( 0, 65 )
-
-[node name="Label" type="Label" parent="PlayerStats/VBoxContainer/iola"]
-margin_left = 98.5768
-margin_top = 7.2682
-margin_right = 208.577
-margin_bottom = 31.2682
-text = "Arron"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/VBoxContainer/iola"]
-margin_left = 63.0
-margin_top = 37.0
-margin_right = 207.0
-margin_bottom = 61.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/VBoxContainer/iola"]
-margin_right = 60.0
-margin_bottom = 63.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hp" type="Label" parent="PlayerStats/VBoxContainer/iola"]
-margin_left = 75.7637
-margin_top = 39.0
-margin_right = 201.764
-margin_bottom = 63.0
-text = "350/1500"
-align = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EmemyStats" type="Panel" parent="."]
-margin_left = 1547.0
-margin_top = 22.0
-margin_right = 1894.0
-margin_bottom = 298.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -361.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 300.0
+grow_horizontal = 0
+rect_min_size = Vector2( 361, 300 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="GridContainer" parent="EmemyStats"]
 margin_left = 12.0
-margin_top = 53.0
-margin_right = 329.0
+margin_top = 61.0
+margin_right = 351.0
 margin_bottom = 287.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="EmemyStats/VBoxContainer"]
-margin_right = 150.0
-margin_bottom = 65.0
+[node name="Button" type="TextureButton" parent="EmemyStats/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 150, 65 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 28 )
 
 [node name="Label" type="Label" parent="EmemyStats/VBoxContainer/Button"]
-margin_left = 5.26538
-margin_top = 4.87753
-margin_right = 153.265
-margin_bottom = 28.8775
+margin_left = 6.05945
+margin_top = 3.94054
+margin_right = 154.059
+margin_bottom = 30.9405
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "EnemyName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="EmemyStats/VBoxContainer/Button"]
-margin_left = 8.0
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 60.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ProgressBar" type="TextureProgress" parent="EmemyStats/VBoxContainer/Button"]
+margin_left = 27.2139
+margin_top = 32.5352
+margin_right = 135.214
+margin_bottom = 60.5352
+value = 50.0
+texture_over = ExtResource( 30 )
+texture_progress = ExtResource( 29 )
 
 [node name="hp" type="Label" parent="EmemyStats/VBoxContainer/Button"]
-margin_left = 18.0
-margin_top = 33.0
-margin_right = 143.0
-margin_bottom = 57.0
+margin_left = 28.5298
+margin_top = 30.0
+margin_right = 135.53
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "10/100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="EmemyStats/VBoxContainer"]
-margin_left = 154.0
-margin_right = 304.0
-margin_bottom = 65.0
+[node name="Button2" type="TextureButton" parent="EmemyStats/VBoxContainer"]
+margin_left = 170.0
+margin_right = 330.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 150, 65 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 28 )
 
 [node name="Label" type="Label" parent="EmemyStats/VBoxContainer/Button2"]
-margin_left = 5.26538
-margin_top = 4.87753
-margin_right = 153.265
-margin_bottom = 28.8775
+margin_left = 6.05945
+margin_top = 3.94054
+margin_right = 154.059
+margin_bottom = 30.9405
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "EnemyName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="EmemyStats/VBoxContainer/Button2"]
-margin_left = 8.0
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 60.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ProgressBar" type="TextureProgress" parent="EmemyStats/VBoxContainer/Button2"]
+margin_left = 27.2139
+margin_top = 32.5352
+margin_right = 135.214
+margin_bottom = 60.5352
+value = 50.0
+texture_over = ExtResource( 30 )
+texture_progress = ExtResource( 29 )
 
 [node name="hp" type="Label" parent="EmemyStats/VBoxContainer/Button2"]
-margin_left = 18.0
-margin_top = 33.0
-margin_right = 143.0
-margin_bottom = 57.0
+margin_left = 28.5298
+margin_top = 30.0
+margin_right = 135.53
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "10/100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button3" type="Button" parent="EmemyStats/VBoxContainer"]
-margin_top = 69.0
-margin_right = 150.0
-margin_bottom = 134.0
+[node name="Button3" type="TextureButton" parent="EmemyStats/VBoxContainer"]
+margin_top = 78.0
+margin_right = 160.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 150, 65 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 28 )
 
 [node name="Label" type="Label" parent="EmemyStats/VBoxContainer/Button3"]
-margin_left = 5.26538
-margin_top = 4.87753
-margin_right = 153.265
-margin_bottom = 28.8775
+margin_left = 6.05945
+margin_top = 3.94054
+margin_right = 154.059
+margin_bottom = 30.9405
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "EnemyName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="EmemyStats/VBoxContainer/Button3"]
-margin_left = 8.0
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 60.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ProgressBar" type="TextureProgress" parent="EmemyStats/VBoxContainer/Button3"]
+margin_left = 27.2139
+margin_top = 32.5352
+margin_right = 135.214
+margin_bottom = 60.5352
+value = 50.0
+texture_over = ExtResource( 30 )
+texture_progress = ExtResource( 29 )
 
 [node name="hp" type="Label" parent="EmemyStats/VBoxContainer/Button3"]
-margin_left = 18.0
-margin_top = 33.0
-margin_right = 143.0
-margin_bottom = 57.0
+margin_left = 28.5298
+margin_top = 30.0
+margin_right = 135.53
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "10/100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button4" type="Button" parent="EmemyStats/VBoxContainer"]
-margin_left = 154.0
-margin_top = 69.0
-margin_right = 304.0
-margin_bottom = 134.0
+[node name="Button4" type="TextureButton" parent="EmemyStats/VBoxContainer"]
+margin_left = 170.0
+margin_top = 78.0
+margin_right = 330.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 150, 65 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 28 )
 
 [node name="Label" type="Label" parent="EmemyStats/VBoxContainer/Button4"]
-margin_left = 5.26538
-margin_top = 4.87753
-margin_right = 153.265
-margin_bottom = 28.8775
+margin_left = 6.05945
+margin_top = 3.94054
+margin_right = 154.059
+margin_bottom = 30.9405
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "EnemyName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="EmemyStats/VBoxContainer/Button4"]
-margin_left = 8.0
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 60.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ProgressBar" type="TextureProgress" parent="EmemyStats/VBoxContainer/Button4"]
+margin_left = 27.2139
+margin_top = 32.5352
+margin_right = 135.214
+margin_bottom = 60.5352
+value = 50.0
+texture_over = ExtResource( 30 )
+texture_progress = ExtResource( 29 )
 
 [node name="hp" type="Label" parent="EmemyStats/VBoxContainer/Button4"]
-margin_left = 18.0
-margin_top = 33.0
-margin_right = 143.0
-margin_bottom = 57.0
+margin_left = 28.5298
+margin_top = 30.0
+margin_right = 135.53
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "10/100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button5" type="Button" parent="EmemyStats/VBoxContainer"]
-margin_top = 138.0
-margin_right = 150.0
-margin_bottom = 203.0
+[node name="Button5" type="TextureButton" parent="EmemyStats/VBoxContainer"]
+margin_top = 156.0
+margin_right = 160.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 150, 65 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 28 )
 
 [node name="Label" type="Label" parent="EmemyStats/VBoxContainer/Button5"]
-margin_left = 5.26538
-margin_top = 4.87753
-margin_right = 153.265
-margin_bottom = 28.8775
+margin_left = 6.05945
+margin_top = 3.94054
+margin_right = 154.059
+margin_bottom = 30.9405
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "EnemyName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="EmemyStats/VBoxContainer/Button5"]
-margin_left = 8.0
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 60.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ProgressBar" type="TextureProgress" parent="EmemyStats/VBoxContainer/Button5"]
+margin_left = 27.2139
+margin_top = 32.5352
+margin_right = 135.214
+margin_bottom = 60.5352
+value = 50.0
+texture_over = ExtResource( 30 )
+texture_progress = ExtResource( 29 )
 
 [node name="hp" type="Label" parent="EmemyStats/VBoxContainer/Button5"]
-margin_left = 18.0
-margin_top = 33.0
-margin_right = 143.0
-margin_bottom = 57.0
+margin_left = 28.5298
+margin_top = 30.0
+margin_right = 135.53
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "10/100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button6" type="Button" parent="EmemyStats/VBoxContainer"]
-margin_left = 154.0
-margin_top = 138.0
-margin_right = 304.0
-margin_bottom = 203.0
+[node name="Button6" type="TextureButton" parent="EmemyStats/VBoxContainer"]
+margin_left = 170.0
+margin_top = 156.0
+margin_right = 330.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 150, 65 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 28 )
 
 [node name="Label" type="Label" parent="EmemyStats/VBoxContainer/Button6"]
-margin_left = 5.26538
-margin_top = 4.87753
-margin_right = 153.265
-margin_bottom = 28.8775
+margin_left = 6.05945
+margin_top = 3.94054
+margin_right = 154.059
+margin_bottom = 30.9405
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "EnemyName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="EmemyStats/VBoxContainer/Button6"]
-margin_left = 8.0
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 60.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ProgressBar" type="TextureProgress" parent="EmemyStats/VBoxContainer/Button6"]
+margin_left = 27.2139
+margin_top = 32.5352
+margin_right = 135.214
+margin_bottom = 60.5352
+value = 50.0
+texture_over = ExtResource( 30 )
+texture_progress = ExtResource( 29 )
 
 [node name="hp" type="Label" parent="EmemyStats/VBoxContainer/Button6"]
-margin_left = 18.0
-margin_top = 33.0
-margin_right = 143.0
-margin_bottom = 57.0
+margin_left = 28.5298
+margin_top = 30.0
+margin_right = 135.53
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "10/100"
 align = 1
 __meta__ = {
@@ -689,65 +484,85 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="EmemyStats"]
-margin_left = 7.07117
-margin_top = 7.77817
-margin_right = 330.071
-margin_bottom = 31.7782
+margin_top = 2.0
+margin_right = 360.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 31 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 text = "Wave 1/3"
 align = 1
 
 [node name="SkillPanel" type="Panel" parent="."]
-margin_left = 378.0
-margin_top = 883.0
-margin_right = 985.0
-margin_bottom = 1071.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -225.0
+rect_min_size = Vector2( 1920, 225 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CategoriesContainer" type="VBoxContainer" parent="SkillPanel"]
-margin_left = 15.1892
-margin_top = 46.2432
-margin_right = 115.189
-margin_bottom = 144.243
-custom_constants/separation = 14
+margin_left = 265.0
+margin_top = 40.0
+margin_right = 325.0
+margin_bottom = 174.0
+theme = ExtResource( 24 )
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SkillsButton" type="Button" parent="SkillPanel/CategoriesContainer"]
-margin_right = 99.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/CategoriesContainer/SkillsButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 30.0
 margin_bottom = 30.0
-text = "Skills"
-
-[node name="ItemsButton" type="Button" parent="SkillPanel/CategoriesContainer"]
-margin_top = 44.0
-margin_right = 99.0
-margin_bottom = 74.0
-text = "Items"
-
-[node name="UtilityContainer" type="VBoxContainer" parent="SkillPanel"]
-margin_left = -360.0
-margin_top = -134.0
-margin_right = -285.0
-margin_bottom = 178.0
-grow_vertical = 0
+texture = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Escape" type="Button" parent="SkillPanel/UtilityContainer"]
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
+[node name="ItemsButton" type="Button" parent="SkillPanel/CategoriesContainer"]
+margin_top = 70.0
+margin_right = 60.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 60, 60 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/UtilityContainer/Escape"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 6
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/CategoriesContainer/ItemsButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 30.0
+margin_bottom = 30.0
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UtilityContainer" type="VBoxContainer" parent="SkillPanel"]
+visible = false
+margin_left = 29.8824
+margin_top = -290.801
+margin_right = 104.882
+margin_bottom = 21.1995
+grow_vertical = 0
+theme = ExtResource( 34 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -807,24 +622,29 @@ __meta__ = {
 }
 
 [node name="SkillContainer" type="GridContainer" parent="SkillPanel"]
-margin_left = 240.0
-margin_top = 16.0
-margin_right = 552.0
-margin_bottom = 170.0
+margin_left = 440.0
+margin_top = 20.0
+margin_right = 790.0
+margin_bottom = 190.0
+theme = ExtResource( 25 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 5
 columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="SkillPanel/SkillContainer"]
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -845,15 +665,17 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="SkillPanel/SkillContainer"]
-margin_left = 79.0
-margin_right = 154.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 85.0
+margin_right = 165.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button2"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -874,15 +696,17 @@ __meta__ = {
 }
 
 [node name="Button3" type="Button" parent="SkillPanel/SkillContainer"]
-margin_left = 158.0
-margin_right = 233.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 170.0
+margin_right = 250.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button3"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -903,15 +727,17 @@ __meta__ = {
 }
 
 [node name="Button4" type="Button" parent="SkillPanel/SkillContainer"]
-margin_left = 237.0
-margin_right = 312.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 255.0
+margin_right = 335.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button4"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -932,15 +758,17 @@ __meta__ = {
 }
 
 [node name="Button5" type="Button" parent="SkillPanel/SkillContainer"]
-margin_top = 79.0
-margin_right = 75.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 75, 75 )
+margin_top = 90.0
+margin_right = 80.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button5"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -961,16 +789,18 @@ __meta__ = {
 }
 
 [node name="Button6" type="Button" parent="SkillPanel/SkillContainer"]
-margin_left = 79.0
-margin_top = 79.0
-margin_right = 154.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 85.0
+margin_top = 90.0
+margin_right = 165.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button6"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -991,16 +821,18 @@ __meta__ = {
 }
 
 [node name="Button7" type="Button" parent="SkillPanel/SkillContainer"]
-margin_left = 158.0
-margin_top = 79.0
-margin_right = 233.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 170.0
+margin_top = 90.0
+margin_right = 250.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button7"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1021,16 +853,18 @@ __meta__ = {
 }
 
 [node name="Button8" type="Button" parent="SkillPanel/SkillContainer"]
-margin_left = 237.0
-margin_top = 79.0
-margin_right = 312.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 255.0
+margin_top = 90.0
+margin_right = 335.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button8"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1051,20 +885,27 @@ __meta__ = {
 }
 
 [node name="DefaultSkillContainer" type="VBoxContainer" parent="SkillPanel"]
-margin_left = 147.0
-margin_top = 17.0
-margin_right = 222.0
-margin_bottom = 171.0
+margin_left = 345.0
+margin_top = 20.0
+margin_right = 425.0
+margin_bottom = 190.0
+theme = ExtResource( 25 )
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="attack" type="Button" parent="SkillPanel/DefaultSkillContainer"]
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/DefaultSkillContainer/attack"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
@@ -1073,15 +914,17 @@ __meta__ = {
 }
 
 [node name="defence" type="Button" parent="SkillPanel/DefaultSkillContainer"]
-margin_top = 79.0
-margin_right = 75.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 75, 75 )
+margin_top = 90.0
+margin_right = 80.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/DefaultSkillContainer/defence"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
@@ -1451,56 +1294,177 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Escape" type="Button" parent="SkillPanel"]
+margin_left = 46.5313
+margin_top = 99.2594
+margin_right = 121.531
+margin_bottom = 174.259
+rect_min_size = Vector2( 75, 75 )
+theme = ExtResource( 34 )
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Escape"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ActiveActionPanel" type="Panel" parent="."]
-margin_left = 711.681
-margin_top = 22.653
-margin_right = 1059.68
-margin_bottom = 160.653
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -170.0
+margin_top = 30.0
+margin_right = 170.0
+margin_bottom = 72.0
+custom_styles/panel = SubResource( 2 )
 
 [node name="Label" type="Label" parent="ActiveActionPanel"]
-margin_left = 37.8381
-margin_top = 9.43237
-margin_right = 334.838
-margin_bottom = 33.4324
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 35 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 text = "Active Action"
 align = 1
 
-[node name="TextureRect" type="TextureRect" parent="ActiveActionPanel"]
-margin_left = 19.0273
-margin_top = 20.2165
-margin_right = 127.027
-margin_bottom = 116.217
+[node name="ActiveActionPanel2" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -150.0
+margin_top = 72.0
+margin_right = 150.0
+margin_bottom = 164.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ActiveActionPanel2"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 82.0
+margin_bottom = 82.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
-[node name="Label2" type="Label" parent="ActiveActionPanel"]
-margin_left = 141.0
-margin_top = 59.0
-margin_right = 314.0
-margin_bottom = 83.0
+[node name="Label" type="Label" parent="ActiveActionPanel2"]
+margin_left = 115.146
+margin_top = 30.4118
+margin_right = 288.146
+margin_bottom = 62.4118
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.129412, 0.0156863, 0, 1 )
 text = "Select Target"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Combatlog" type="Button" parent="."]
-self_modulate = Color( 1, 1, 1, 0.392157 )
+[node name="Combatlog" type="TextureRect" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -692.036
-margin_top = -756.6
-margin_right = -15.0
-margin_bottom = -15.0
+margin_left = -360.0
+margin_top = -664.0
+margin_right = -30.0
+margin_bottom = -57.0
+grow_horizontal = 0
 grow_vertical = 0
+texture = ExtResource( 15 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Combatlog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
 mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 33 )
+custom_colors/default_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 bbcode_enabled = true
 bbcode_text = "This is a test text"
 text = "This is a test text"
 scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Combatlog2" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -90.0
+margin_top = -117.0
+margin_right = -30.0
+margin_bottom = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource( 17 )
+
+[node name="dropscreen" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 37 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharShades" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1920.0
+margin_bottom = -1080.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pos1" type="TextureRect" parent="CharShades"]
+margin_left = 390.0
+margin_top = 54.0
+margin_right = 586.0
+margin_bottom = 350.0
+texture = ExtResource( 36 )
+script = ExtResource( 2 )
+pos = 1
+
+[node name="pos2" type="TextureRect" parent="CharShades"]
+margin_left = 290.0
+margin_top = 320.0
+margin_right = 486.0
+margin_bottom = 616.0
+texture = ExtResource( 36 )
+script = ExtResource( 2 )
+pos = 2
+
+[node name="pos3" type="TextureRect" parent="CharShades"]
+margin_left = 190.0
+margin_top = 590.0
+margin_right = 386.0
+margin_bottom = 886.0
+texture = ExtResource( 36 )
+script = ExtResource( 2 )
+pos = 3
+
+[node name="heropanel" parent="." instance=ExtResource( 14 )]
+visible = false
+margin_left = 320.0
+margin_top = 45.0
+margin_right = 620.0
+margin_bottom = 435.0
+
+[node name="enemypanel" parent="." instance=ExtResource( 14 )]
+visible = false
+margin_left = 1225.68
+margin_top = 45.0
+margin_right = 1525.68
+margin_bottom = 435.0

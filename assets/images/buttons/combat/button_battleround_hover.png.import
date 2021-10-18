@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/skillmenu.png-6765fbab7faccb79a61253465890b109.stex"
+path="res://.import/button_battleround_hover.png-6ba421c7b55fdbe16b94923691943cb5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/combat/skillmenu.png"
-dest_files=[ "res://.import/skillmenu.png-6765fbab7faccb79a61253465890b109.stex" ]
+source_file="res://assets/images/buttons/combat/button_battleround_hover.png"
+dest_files=[ "res://.import/button_battleround_hover.png-6ba421c7b55fdbe16b94923691943cb5.stex" ]
 
 [params]
 
