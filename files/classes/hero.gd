@@ -10,7 +10,7 @@ var baseexp = 0 setget exp_set
 var alt_mana = 0 setget a_mana_set
 
 
-var gear_level = {weapon1 = 1, weapon2 = 1, armor = 1}
+var gear_level = {weapon1 = 1, weapon2 = 0, armor = 1}
 var curweapon = 'weapon1'
 
 var skillpoints = {support = 1, main = 1, ultimate = 0}

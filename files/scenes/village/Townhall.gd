@@ -23,6 +23,9 @@ func _ready():
 	globals.AddPanelOpenCloseAnimation($UpgradeDescript)
 	
 	binded_events.clear()
+#	visible = false
+#	if resources.is_busy(): yield(resources, "done_work")
+#	open()
 
 
 func open():

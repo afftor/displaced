@@ -1,52 +1,68 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://files/scenes/GearTooltip.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/gui/forge/divider_forge_tooltip.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/forge/tooltip_forge.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=5]
 
-[node name="Tooltip" type="Panel"]
-margin_left = 1295.34
-margin_top = 208.108
-margin_right = 1774.34
-margin_bottom = 789.108
+[node name="Tooltip" type="TextureRect"]
+margin_left = 1295.0
+margin_top = 208.0
+margin_right = 1745.0
+margin_bottom = 758.0
+texture = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "The text has to color all text up to current upgrade level "
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 31.0
-margin_top = 22.0
-margin_right = 448.0
-margin_bottom = 568.0
-bbcode_enabled = true
-bbcode_text = "[center]Level 1
-Fencing gain +1 attack if target is killed
-Level 2
-Fencing gain +1 attack if target is killed
-Sword Mastery Apply to 2 attacks instead of 1
-Level 3
-Fencing gain +1 attack if target is killed
-Sword Mastery Apply to 2 attacks instead of 1
-Swift Strike buff lasts 2 turns
-Level 4
-Fencing gain +2 attacks if target is killed
-Sword Mastery Apply to 2 attacks instead of 1
-Swift Strike buff lasts 2 turns
-Termination buff increased to 50%[/center]"
-text = "Level 1
-Fencing gain +1 attack if target is killed
-Level 2
-Fencing gain +1 attack if target is killed
-Sword Mastery Apply to 2 attacks instead of 1
-Level 3
-Fencing gain +1 attack if target is killed
-Sword Mastery Apply to 2 attacks instead of 1
-Swift Strike buff lasts 2 turns
-Level 4
-Fencing gain +2 attacks if target is killed
-Sword Mastery Apply to 2 attacks instead of 1
-Swift Strike buff lasts 2 turns
-Termination buff increased to 50%"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="VBoxContainer"]
+visible = false
+margin_right = 440.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "level 1"
+align = 1
+valign = 1
+
+[node name="desc" type="Label" parent="VBoxContainer"]
+visible = false
+margin_right = 440.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "description"
+align = 1
+
+[node name="separator" type="Control" parent="VBoxContainer"]
+visible = false
+margin_right = 440.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/separator"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -1.0
+margin_right = 60.0
+margin_bottom = 1.0
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

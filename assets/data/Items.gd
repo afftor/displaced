@@ -30,7 +30,9 @@ var stats = {
 var Items = {
 
 	#materials
-	wood = {name = tr("MATERIAL_WOOD"), code = 'wood', description = tr("USABLEELIXIRDESCRIPT"),
+	wood = {name = tr("MATERIAL_WOOD"),
+	code = 'wood',
+	description = tr("USABLEELIXIRDESCRIPT"),
 	icon = load("res://assets/images/iconsitems/PotionLesser.png"),
 	itemtype = 'mareial',
 	unlockreqs = [],
@@ -39,7 +41,9 @@ var Items = {
 	tags = [],
 	price = 50,
 	},
-	stone = {name = tr("MATERIAL_STONE"), code = 'stone', description = tr("USABLEELIXIRDESCRIPT"),
+	stone = {name = tr("MATERIAL_STONE"),
+	code = 'stone', 
+	description = tr("USABLEELIXIRDESCRIPT"),
 	icon = load("res://assets/images/iconsitems/PotionLesser.png"),
 	itemtype = 'mareial',
 	unlockreqs = [],
@@ -350,7 +354,7 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_2.png",
 				lvldesc = "2",
-				cost = {wood = 10},
+				cost = {wood = 10, stone = 10},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_3.png",
@@ -372,7 +376,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null, #add path to uncarfted weapon asset
+				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -460,7 +464,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,#add path to uncarfted weapon asset
+				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -549,7 +553,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,#add path to uncarfted weapon asset
+				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -638,7 +642,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,#add path to uncarfted weapon asset
+				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -727,7 +731,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,#add path to uncarfted weapon asset
+				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = "Not forged yet",
 				cost = {},
 				},
@@ -816,7 +820,7 @@ var hero_items_data = {
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
-				icon = null,#add path to uncarfted weapon asset
+				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = "Not forged yet",
 				cost = {},
 				},

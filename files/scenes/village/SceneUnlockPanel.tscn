@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/images/sprite/rose.png" type="Texture" id=2]
 [ext_resource path="res://files/scenes/village/SceneUnlockPanel.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/portrait/EmberNormal.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/portrait/IolaNeutral.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/portrait/Iola.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/portrait/RoseNormal.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/portrait/RiluNormal.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/portrait/ErikaNormal.png" type="Texture" id=8]
@@ -48,7 +48,8 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 1074.0
+margin_left = 6.0
+margin_right = 1080.0
 margin_bottom = 150.0
 size_flags_horizontal = 6
 
