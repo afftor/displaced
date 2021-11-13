@@ -372,7 +372,7 @@ var hero_items_data = {
 		name = 'weapon2',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'slash',
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later

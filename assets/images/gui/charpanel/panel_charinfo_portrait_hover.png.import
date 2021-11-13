@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chargui.png-26e70649ff74f17b076520a5e4817933.stex"
+path="res://.import/panel_charinfo_portrait_hover.png-adc117b5b092b53ee602233644a788bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/chargui.png"
-dest_files=[ "res://.import/chargui.png-26e70649ff74f17b076520a5e4817933.stex" ]
+source_file="res://assets/images/gui/charpanel/panel_charinfo_portrait_hover.png"
+dest_files=[ "res://.import/panel_charinfo_portrait_hover.png-adc117b5b092b53ee602233644a788bd.stex" ]
 
 [params]
 

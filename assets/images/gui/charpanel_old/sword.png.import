@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rightbutton.png-63fcc3927d5133c024398d69784b043c.stex"
+path="res://.import/sword.png-df03f4802bbd3025b36ff6e02e436547.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/rightbutton.png"
-dest_files=[ "res://.import/rightbutton.png-63fcc3927d5133c024398d69784b043c.stex" ]
+source_file="res://assets/images/gui/charpanel_old/sword.png"
+dest_files=[ "res://.import/sword.png-df03f4802bbd3025b36ff6e02e436547.stex" ]
 
 [params]
 

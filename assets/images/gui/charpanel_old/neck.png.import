@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rightbuttonpress.png-7e11dd0b0360a11d39887dd361204c8f.stex"
+path="res://.import/neck.png-d9faa1e5e66bb6e687560163d85b0fc0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/rightbuttonpress.png"
-dest_files=[ "res://.import/rightbuttonpress.png-7e11dd0b0360a11d39887dd361204c8f.stex" ]
+source_file="res://assets/images/gui/charpanel_old/neck.png"
+dest_files=[ "res://.import/neck.png-d9faa1e5e66bb6e687560163d85b0fc0.stex" ]
 
 [params]
 

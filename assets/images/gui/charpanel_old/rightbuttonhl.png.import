@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chargui_1.png-ccb179d74f5d7207e212224ad15b4704.stex"
+path="res://.import/rightbuttonhl.png-6e49575a6360a5ffc643a499e72a4c3b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/chargui_1.png"
-dest_files=[ "res://.import/chargui_1.png-ccb179d74f5d7207e212224ad15b4704.stex" ]
+source_file="res://assets/images/gui/charpanel_old/rightbuttonhl.png"
+dest_files=[ "res://.import/rightbuttonhl.png-6e49575a6360a5ffc643a499e72a4c3b.stex" ]
 
 [params]
 

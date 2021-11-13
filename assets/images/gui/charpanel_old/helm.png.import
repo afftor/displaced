@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/neck.png-e30c387b78ab3ec1248dda71d4fdcfc2.stex"
+path="res://.import/helm.png-8740c371a5c4a80b3858e8546f447a44.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/neck.png"
-dest_files=[ "res://.import/neck.png-e30c387b78ab3ec1248dda71d4fdcfc2.stex" ]
+source_file="res://assets/images/gui/charpanel_old/helm.png"
+dest_files=[ "res://.import/helm.png-8740c371a5c4a80b3858e8546f447a44.stex" ]
 
 [params]
 

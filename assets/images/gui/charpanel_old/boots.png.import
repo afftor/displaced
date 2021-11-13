@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bar.png-13b8acfc22155684b5c394464957517e.stex"
+path="res://.import/boots.png-655008c91b86cf803213acec317891f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/bar.png"
-dest_files=[ "res://.import/bar.png-13b8acfc22155684b5c394464957517e.stex" ]
+source_file="res://assets/images/gui/charpanel_old/boots.png"
+dest_files=[ "res://.import/boots.png-655008c91b86cf803213acec317891f3.stex" ]
 
 [params]
 

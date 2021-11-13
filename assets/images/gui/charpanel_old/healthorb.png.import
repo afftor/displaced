@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/manaorb.png-1bb4fdd1a2458f6a715699f103b8e9f9.stex"
+path="res://.import/healthorb.png-a95dbe5a0caa20ccc78430cab91f594e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/manaorb.png"
-dest_files=[ "res://.import/manaorb.png-1bb4fdd1a2458f6a715699f103b8e9f9.stex" ]
+source_file="res://assets/images/gui/charpanel_old/healthorb.png"
+dest_files=[ "res://.import/healthorb.png-a95dbe5a0caa20ccc78430cab91f594e.stex" ]
 
 [params]
 

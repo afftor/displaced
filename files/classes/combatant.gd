@@ -27,7 +27,7 @@ var critmod = 1.5
 var resists = {} setget ,get_resists
 var status_resists = {} setget ,get_s_resists
 var shield = 0 setget set_shield;
-var base_dmg_type = 'bludgeon'
+#var base_dmg_type = 'bludgeon'
 var base_dmg_range = 'melee'
 
 var flavor

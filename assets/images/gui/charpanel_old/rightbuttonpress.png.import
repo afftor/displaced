@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/manabar.png-fa2e29ec67aed6b3ae27bd034a64e7da.stex"
+path="res://.import/rightbuttonpress.png-1786e6e7ecf0ffb57d2aadf96c48e00b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/manabar.png"
-dest_files=[ "res://.import/manabar.png-fa2e29ec67aed6b3ae27bd034a64e7da.stex" ]
+source_file="res://assets/images/gui/charpanel_old/rightbuttonpress.png"
+dest_files=[ "res://.import/rightbuttonpress.png-1786e6e7ecf0ffb57d2aadf96c48e00b.stex" ]
 
 [params]
 

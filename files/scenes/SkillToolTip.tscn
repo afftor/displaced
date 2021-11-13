@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/images/gui/text scene/tooltippanel.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/SkillToolTip.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/gui/charpanel/manaorb.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/charpanel_old/manaorb.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/taskmenu/timeicon.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]

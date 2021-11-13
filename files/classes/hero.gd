@@ -6,12 +6,14 @@ var friend_points = 0
 
 var recentlevelups = 0
 var baseexp = 0 setget exp_set
+var exp_cap = 100 setget ,get_exp_cap
 
 var alt_mana = 0 setget a_mana_set
 
 
 var gear_level = {weapon1 = 1, weapon2 = 0, armor = 1}
 var curweapon = 'weapon1'
+var base_dmg_type = 'bludgeon' setget , get_weapon_damagetype
 
 var skillpoints = {support = 1, main = 1, ultimate = 0}
 
@@ -69,13 +71,16 @@ func regen_calculate_threshold():
 
 func exp_set(value):
 	if level >= variables.MaxLevel:
-		baseexp = 100
+		baseexp = get_exp_cap()
 	else:
 		baseexp = value
-		while baseexp > 100:
-			baseexp -= 100
+		while baseexp > get_exp_cap():
+			baseexp -= get_exp_cap()
 			levelup()
 
+
+func get_exp_cap():
+	return int(100 * variables.curve[level - 1])
 
 func a_mana_set(value):
 	pass

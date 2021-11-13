@@ -3,7 +3,7 @@
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=2]
 [ext_resource path="res://files/SFX/BarrierShader2.tres" type="Material" id=3]
-[ext_resource path="res://assets/images/gui/charpanel/healthbar.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/charpanel_old/healthbar.png" type="Texture" id=4]
 [ext_resource path="res://files/scenes/combat/FighterNode.gd" type="Script" id=5]
 [ext_resource path="res://assets/images/gui/combat/cloud.png" type="Texture" id=6]
 

@@ -4,6 +4,8 @@ class_name enemy
 var xpreward #for enemies
 var loottable
 
+var base_dmg_type = 'bludgeon'
+
 var ai
 var ai_spec setget ,get_spec_data
 

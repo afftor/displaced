@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leftbuttonhl.png-70858491042cd3ebf740b726d8c39c2c.stex"
+path="res://.import/chest.png-c9a8185ebecba863c899d4a7066e02bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/leftbuttonhl.png"
-dest_files=[ "res://.import/leftbuttonhl.png-70858491042cd3ebf740b726d8c39c2c.stex" ]
+source_file="res://assets/images/gui/charpanel_old/chest.png"
+dest_files=[ "res://.import/chest.png-c9a8185ebecba863c899d4a7066e02bf.stex" ]
 
 [params]
 

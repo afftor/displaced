@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/healthbar.png-5291ee7348eff58c101ebcf2e06d5c56.stex"
+path="res://.import/leftbutton.png-635f2208e529a15a7601da7595238431.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/healthbar.png"
-dest_files=[ "res://.import/healthbar.png-5291ee7348eff58c101ebcf2e06d5c56.stex" ]
+source_file="res://assets/images/gui/charpanel_old/leftbutton.png"
+dest_files=[ "res://.import/leftbutton.png-635f2208e529a15a7601da7595238431.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boots.png-ee6afe6234c848cf2ffbe612707487bb.stex"
+path="res://.import/manabar.png-a153ecef52c036bc81134df72c7c06a8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/boots.png"
-dest_files=[ "res://.import/boots.png-ee6afe6234c848cf2ffbe612707487bb.stex" ]
+source_file="res://assets/images/gui/charpanel_old/manabar.png"
+dest_files=[ "res://.import/manabar.png-a153ecef52c036bc81134df72c7c06a8.stex" ]
 
 [params]
 

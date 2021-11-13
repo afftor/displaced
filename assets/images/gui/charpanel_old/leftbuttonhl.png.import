@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shield.png-ec3cdfb8aca3945bf5592dd9f3e4baea.stex"
+path="res://.import/leftbuttonhl.png-7e085c2139e93b2851c82612e53809c4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/charpanel/shield.png"
-dest_files=[ "res://.import/shield.png-ec3cdfb8aca3945bf5592dd9f3e4baea.stex" ]
+source_file="res://assets/images/gui/charpanel_old/leftbuttonhl.png"
+dest_files=[ "res://.import/leftbuttonhl.png-7e085c2139e93b2851c82612e53809c4.stex" ]
 
 [params]
 
