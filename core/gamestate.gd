@@ -143,7 +143,7 @@ func reset_areaprogress():
 
 func unlock_area(area_code):
 	areaprogress[area_code].unlocked = true
-	input_handler.map_node.unlock_area(area_code)
+#	input_handler.map_node.unlock_area(area_code)
 
 func start_area(area_code, autolevel = false):
 	activearea = area_code

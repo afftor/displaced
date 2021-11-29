@@ -1,15 +1,30 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://assets/images/portrait/ErikaNormal.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/portrait/EmberNormal.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/portrait/IolaNeutral.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/portrait/RiluNormal.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig_back.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig_pressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/bg/forest.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/portrait/RoseNormal.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall.png" type="Texture" id=7]
 [ext_resource path="res://files/scenes/ExplorationMenu.gd" type="Script" id=8]
 [ext_resource path="res://files/CharDragNode.gd" type="Script" id=9]
-[ext_resource path="res://files/Close Panel Button/CloseButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/images/buttons/explore/tick_active.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_big_l.png" type="Texture" id=11]
+[ext_resource path="res://assets/themes/scroll_explore.tres" type="Theme" id=12]
+[ext_resource path="res://assets/themes/button_location.tres" type="Theme" id=13]
+[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/themes/button_forge.tres" type="Theme" id=15]
+[ext_resource path="res://assets/fonts/pt_18.tres" type="DynamicFont" id=16]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_big_r.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/buttons/explore/bar_dungeon_filler.png" type="Texture" id=18]
+[ext_resource path="res://assets/fonts/pt_14.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=20]
+[ext_resource path="res://files/scenes/FullStateCheck.gd" type="Script" id=21]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_back.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_hover.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_pressed.png" type="Texture" id=25]
+[ext_resource path="res://files/scenes/ExploreDropScreen.gd" type="Script" id=26]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -19,292 +34,507 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExplorationSelect" type="Panel" parent="."]
-visible = false
-margin_left = 108.817
-margin_top = 57.6837
-margin_right = 944.817
-margin_bottom = 1019.68
+[node name="ExplorationSelect" type="TextureRect" parent="."]
+margin_left = 62.2006
+margin_top = 51.327
+margin_right = 948.201
+margin_bottom = 1031.33
+texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Image" type="TextureRect" parent="ExplorationSelect"]
-margin_left = 120.313
-margin_top = 85.6432
-margin_right = 714.313
-margin_bottom = 411.643
+margin_left = 126.0
+margin_top = 136.0
+margin_right = 761.0
+margin_bottom = 473.0
 texture = ExtResource( 5 )
 expand = true
-stretch_mode = 6
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="desc" type="RichTextLabel" parent="ExplorationSelect"]
+margin_left = 126.0
+margin_top = 510.0
+margin_right = 761.0
+margin_bottom = 602.0
+text = "text"
+
+[node name="head" type="Label" parent="ExplorationSelect"]
+margin_left = 316.0
+margin_top = 14.0
+margin_right = 569.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
+text = "Location name"
+align = 1
+valign = 1
+
+[node name="level" type="Label" parent="ExplorationSelect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -85.0
+margin_top = 85.0
+margin_right = 85.0
+margin_bottom = 124.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "Level 10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="TextureProgress" parent="ExplorationSelect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -319.0
+margin_top = 475.0
+margin_right = 320.0
+margin_bottom = 493.0
+value = 50.0
+texture_progress = ExtResource( 18 )
+
+[node name="Label" type="Label" parent="ExplorationSelect/progress"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -12.0
+margin_right = 22.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 19 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 1
+text = "1/10"
+align = 1
+valign = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ExplorationSelect"]
-margin_left = 120.0
-margin_top = 557.0
-margin_right = 714.0
-margin_bottom = 883.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -296.0
+margin_top = -312.0
+margin_right = 309.0
+margin_bottom = -128.0
+theme = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ExplorationSelect/ScrollContainer"]
-margin_right = 594.0
-margin_bottom = 60.0
+[node name="MarginContainer" type="MarginContainer" parent="ExplorationSelect/ScrollContainer"]
+margin_right = 605.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_constants/margin_right = 20
 
-[node name="Button" type="Button" parent="ExplorationSelect/ScrollContainer/VBoxContainer"]
-margin_right = 594.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 0, 60 )
+[node name="VBoxContainer" type="VBoxContainer" parent="ExplorationSelect/ScrollContainer/MarginContainer"]
+margin_right = 585.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Button" type="Button" parent="ExplorationSelect/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_right = 585.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 54 )
+theme = ExtResource( 13 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 toggle_mode = true
 text = "Quest Name"
 
-[node name="Panel" type="Panel" parent="ExplorationSelect"]
-margin_left = 889.0
-margin_right = 1720.0
-margin_bottom = 962.0
+[node name="Completed" type="TextureRect" parent="ExplorationSelect/ScrollContainer/MarginContainer/VBoxContainer/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -47.0
+margin_top = -20.0
+margin_right = -20.0
+margin_bottom = 20.0
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckBox" type="CheckBox" parent="ExplorationSelect/Panel"]
-margin_left = 257.522
-margin_top = 747.302
-margin_right = 631.522
-margin_bottom = 779.302
-pressed = true
-text = "Scale Level"
+[node name="Close" type="Button" parent="ExplorationSelect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -114.0
+margin_top = -114.0
+margin_right = 118.0
+margin_bottom = -60.0
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="TextureRect" parent="ExplorationSelect"]
+margin_left = 933.497
+margin_right = 1819.5
+margin_bottom = 980.0
+texture = ExtResource( 17 )
+
+[node name="Label" type="Label" parent="ExplorationSelect/Panel"]
+margin_left = 304.0
+margin_top = 17.0
+margin_right = 571.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
+text = "Battle group"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ExplorationSelect/Panel"]
-margin_left = 114.694
-margin_top = 241.398
-margin_right = 718.694
-margin_bottom = 544.398
+margin_left = 115.0
+margin_top = 672.0
+margin_right = 719.0
+margin_bottom = 764.0
+custom_fonts/normal_font = ExtResource( 14 )
+custom_colors/default_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 text = "Area Info"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="ExplorationSelect/Panel"]
-margin_left = 279.387
-margin_top = 821.171
-margin_right = 595.387
-margin_bottom = 885.171
+[node name="Label2" type="Label" parent="ExplorationSelect/Panel"]
+margin_left = 185.0
+margin_top = 785.0
+margin_right = 640.0
+margin_bottom = 860.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "Scale level"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScaleCheck" type="Button" parent="ExplorationSelect/Panel"]
+margin_left = 490.673
+margin_top = 805.616
+margin_right = 530.673
+margin_bottom = 845.616
+script = ExtResource( 21 )
+
+[node name="start" type="Button" parent="ExplorationSelect/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -158.0
+margin_top = -114.0
+margin_right = 158.0
+margin_bottom = -60.0
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Start"
 
-[node name="CloseButton" parent="ExplorationSelect" instance=ExtResource( 10 )]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -49.0
-margin_right = 0.0
-margin_bottom = 49.0
+[node name="advance" type="Button" parent="ExplorationSelect/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -238.0
+margin_top = -114.0
+margin_right = -8.0
+margin_bottom = -60.0
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "Advance"
 
-[node name="ExplorationOngoing" type="Panel" parent="."]
+[node name="abandon" type="Button" parent="ExplorationSelect/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -114.0
+margin_right = 238.0
+margin_bottom = -60.0
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "Abandon"
+
+[node name="screen" type="TextureRect" parent="ExplorationSelect/Panel"]
 visible = false
-margin_left = 314.703
-margin_top = 55.3182
-margin_right = 1514.7
-margin_bottom = 1022.32
+margin_left = -992.0
+margin_top = -70.0
+margin_right = 964.0
+margin_bottom = 1050.0
+mouse_filter = 0
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ExplorationOngoing"]
-margin_left = 46.4095
-margin_top = 42.1619
-margin_right = 492.41
-margin_bottom = 702.162
-custom_constants/separation = 30
+[node name="party" type="HBoxContainer" parent="ExplorationSelect/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 137.661
+margin_top = 310.0
+margin_right = -128.339
+margin_bottom = -392.335
+custom_constants/separation = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="ExplorationOngoing/VBoxContainer"]
-margin_right = 446.0
-margin_bottom = 200.0
+[node name="Button1" type="TextureButton" parent="ExplorationSelect/Panel/party"]
+margin_right = 180.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 0, 200 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 9 )
+pos = 1
 
-[node name="TextureRect" type="TextureRect" parent="ExplorationOngoing/VBoxContainer/Button"]
-margin_left = -14.0
-margin_top = 5.0
-margin_right = 166.0
-margin_bottom = 185.0
+[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/party/Button1"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/party/Button1"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 180, 180 )
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
-script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-pos = 1
 
-[node name="Button2" type="Button" parent="ExplorationOngoing/VBoxContainer"]
-margin_top = 230.0
-margin_right = 446.0
-margin_bottom = 430.0
+[node name="name" type="Label" parent="ExplorationSelect/Panel/party/Button1"]
+margin_right = 177.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 14 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="ExplorationSelect/Panel/party/Button1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.0
+custom_fonts/font = ExtResource( 14 )
+text = "Lv 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="TextureButton" parent="ExplorationSelect/Panel/party"]
+margin_left = 220.0
+margin_right = 400.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 0, 200 )
-
-[node name="TextureRect" type="TextureRect" parent="ExplorationOngoing/VBoxContainer/Button2"]
-margin_left = -14.0
-margin_top = 5.0
-margin_right = 166.0
-margin_bottom = 185.0
-rect_min_size = Vector2( 180, 180 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 pos = 2
 
-[node name="Button3" type="Button" parent="ExplorationOngoing/VBoxContainer"]
-margin_top = 460.0
-margin_right = 446.0
-margin_bottom = 660.0
-rect_min_size = Vector2( 0, 200 )
-
-[node name="TextureRect" type="TextureRect" parent="ExplorationOngoing/VBoxContainer/Button3"]
-margin_left = -14.0
-margin_top = 5.0
-margin_right = 166.0
-margin_bottom = 185.0
-rect_min_size = Vector2( 180, 180 )
+[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/party/Button2"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
 texture = ExtResource( 1 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/party/Button2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 180, 180 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="ExplorationSelect/Panel/party/Button2"]
+margin_right = 177.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 14 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="ExplorationSelect/Panel/party/Button2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.0
+custom_fonts/font = ExtResource( 14 )
+text = "Lv 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="TextureButton" parent="ExplorationSelect/Panel/party"]
+margin_left = 440.0
+margin_right = 620.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 0, 200 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 9 )
 pos = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ExplorationOngoing"]
-margin_left = 115.0
-margin_top = 800.0
-margin_right = 423.0
-margin_bottom = 900.0
+[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/party/Button3"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="ExplorationOngoing/HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
-
-[node name="TextureRect2" type="TextureRect" parent="ExplorationOngoing/HBoxContainer"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
-
-[node name="TextureRect3" type="TextureRect" parent="ExplorationOngoing/HBoxContainer"]
-margin_left = 208.0
-margin_right = 308.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
-
-[node name="TextureRect4" type="TextureRect" parent="ExplorationOngoing/HBoxContainer"]
-margin_left = 312.0
-margin_right = 412.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
-
-[node name="TextureRect5" type="TextureRect" parent="ExplorationOngoing/HBoxContainer"]
-margin_left = 416.0
-margin_right = 516.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
-
-[node name="TextureRect6" type="TextureRect" parent="ExplorationOngoing/HBoxContainer"]
-margin_left = 520.0
-margin_right = 620.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
-
-[node name="Label" type="Label" parent="ExplorationOngoing"]
-margin_left = 49.0
-margin_top = 8.0
-margin_right = 492.0
-margin_bottom = 32.0
-text = "Combat Group"
-align = 1
-
-[node name="Label2" type="Label" parent="ExplorationOngoing"]
-margin_left = 47.6652
-margin_top = 736.823
-margin_right = 490.665
-margin_bottom = 760.823
-text = "Backup"
-align = 1
-
-[node name="StartButton" type="Button" parent="ExplorationOngoing"]
-margin_left = 729.822
-margin_top = 743.102
-margin_right = 1031.82
-margin_bottom = 817.102
-text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CancelButton" type="Button" parent="ExplorationOngoing"]
-margin_left = 729.822
-margin_top = 854.866
-margin_right = 1031.82
-margin_bottom = 928.866
-text = "Abandon"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ExplorationOngoing"]
-margin_left = 630.672
-margin_top = 84.0896
-margin_right = 1143.67
-margin_bottom = 423.09
-text = "Current Quest
-
-Expected level: 10
-
-Stage: 1/10"
-
-[node name="CloseButton" parent="ExplorationOngoing" instance=ExtResource( 10 )]
-anchor_left = 1.0
+[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/party/Button3"]
+show_behind_parent = true
 anchor_right = 1.0
-margin_left = -49.0
-margin_right = 0.0
-margin_bottom = 49.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 180, 180 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="ExplorationSelect/Panel/party/Button3"]
+margin_right = 177.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 14 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="ExplorationSelect/Panel/party/Button3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.0
+custom_fonts/font = ExtResource( 14 )
+text = "Lv 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="roster" type="HBoxContainer" parent="ExplorationSelect/Panel"]
+margin_left = 62.0
+margin_top = 95.0
+margin_right = 822.0
+margin_bottom = 265.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="ExplorationSelect/Panel/roster"]
+margin_right = 110.0
+margin_bottom = 175.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 24 )
+script = ExtResource( 9 )
+
+[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/roster/Button"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/roster/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="ExplorationSelect/Panel/roster/Button"]
+anchor_right = 1.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 16 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="ExplorationSelect/Panel/roster/Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 16 )
+text = "Lv 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AdvConfirm" type="Panel" parent="."]
 visible = false

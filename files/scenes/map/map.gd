@@ -55,7 +55,7 @@ func unlock_area(area):
 #real functions
 func location_pressed(locname):
 	if binded_events[locname] != null:
-		globals.StartEventScene(binded_events[locname])
+		globals.run_seq(binded_events[locname])
 	else:
 		if locname == 'village':
 			input_handler.village_node.show()

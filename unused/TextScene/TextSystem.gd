@@ -362,7 +362,7 @@ func get_choice(i):
 func StopEvent():
 	set_process(false)
 	set_process_input(false)
-	globals.check_signal("EventFinished")
+#	globals.check_signal("EventFinished")
 	hide()
 	input_handler.UnlockOpenWindow()
 	input_handler.SetMusic("towntheme")

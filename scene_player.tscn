@@ -5,7 +5,7 @@
 [ext_resource path="res://files/EventMap/SampleEventMonitor.gd" type="Script" id=4]
 [ext_resource path="res://files/TextSceneNew/ScenePlayer.gd" type="Script" id=5]
 
-[node name="Control" type="TabContainer"]
+[node name="Control2" type="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

@@ -5,29 +5,34 @@ var location = 'village'
 var area = null
 
 
-onready var arealist = $ExplorationSelect/ScrollContainer/VBoxContainer
+onready var arealist = $ExplorationSelect/ScrollContainer/MarginContainer/VBoxContainer
 onready var areapanel = $ExplorationSelect/Panel
-onready var areadesc = $ExplorationSelect/Panel/RichTextLabel
-onready var partylist = $ExplorationOngoing/VBoxContainer
-onready var reservelist = $ExplorationOngoing/HBoxContainer
+onready var areadesc = $ExplorationSelect/desc
+onready var partylist = $ExplorationSelect/Panel/party
+onready var reservelist = $ExplorationSelect/Panel/roster
+onready var locdesc = $ExplorationSelect/Panel/RichTextLabel
+onready var scalecheck = $ExplorationSelect/Panel/ScaleCheck
 
 onready var combat_node = get_parent().get_node("combat")
 
 func _ready():
-	$ExplorationSelect/Panel/Button.connect("pressed", self, "start_area")
-	$ExplorationOngoing/StartButton.connect("pressed", self, "advance_area")
-	$ExplorationOngoing/CancelButton.connect("pressed", self, "abandon_area")
-	$ExplorationOngoing/CloseButton.connect('pressed', self, 'hide')
-	$ExplorationSelect/CloseButton.connect('pressed', self, 'hide')
+	$ExplorationSelect/Panel/start.connect("pressed", self, "start_area")
+	$ExplorationSelect/Panel/advance.connect("pressed", self, "advance_area")
+	$ExplorationSelect/Panel/abandon.connect("pressed", self, "abandon_area")
+	$ExplorationSelect/Close.connect('pressed', self, 'hide')
 	
+	build_party()
 	input_handler.connect("PositionChanged", self, 'build_party')
 	input_handler.connect("EventFinished", self, 'build_party')
 	input_handler.explore_node = self
+	
+	$ExplorationSelect/Panel/screen.parent_node = self
 	
 	$AdvConfirm/screen.rect_size = rect_size
 	$AdvConfirm/screen.rect_global_position = Vector2(0, 0)
 	$AdvConfirm/ok.connect("pressed", self, 'adv_confirm')
 	$AdvConfirm/no.connect("pressed", self, 'adv_decline')
+	scalecheck.connect('pressed', self, 'reset_level')
 	if test_mode: 
 		if resources.is_busy(): yield(resources, "done_work")
 		test()
@@ -36,10 +41,11 @@ func _ready():
 func test():
 	for cid in state.characters:
 		state.unlock_char(cid)
-	location = 'forest'
+	set_location('forest')
 	area = 'forestelves'
 #	show()
 	open_mission()
+
 
 func set_location(loc_code):
 	location = loc_code
@@ -47,6 +53,7 @@ func set_location(loc_code):
 		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	else:
 		$ExplorationSelect/Image.texture = Explorationdata.locations[location].background
+	areadesc.bbcode_text = ""
 
 
 func show():
@@ -62,131 +69,172 @@ func show():
 
 
 func open_explore():
-	$ExplorationOngoing.visible = false
-	$ExplorationSelect.visible = true
-	$ExplorationSelect/Panel/Button.disabled = true
 	areapanel.visible = false
-	$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
-	
-	input_handler.ClearContainer(arealist)
+	$ExplorationSelect/Close.disabled = false
+	$ExplorationSelect/level.text = ""
+	$ExplorationSelect/progress.visible = false
+	input_handler.ClearContainer(arealist, ['Button'])
 	var num_missions = 0
-	for a in Explorationdata.locations[location].missions:
-		var areadata = Explorationdata.areas[a]
-#		if areadata.category != location: continue
-#		if !state.checkreqs(areadata.requirements): continue
-		if !state.areaprogress[a].unlocked: continue
-		if state.areaprogress[a].completed: continue
-		var panel = input_handler.DuplicateContainerTemplate(arealist)
+	if !Explorationdata.locations.has(location):
+		var areadata = Explorationdata.areas[area]
+		var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 		panel.text = areadata.name
-		panel.set_meta('area', a)
-		panel.connect('pressed', self, 'select_area', [a])
+		panel.set_meta('area', area)
+		panel.connect('pressed', self, 'select_area', [area])
+		panel.get_node('Completed').visible = false
 		num_missions += 1
-	for a in Explorationdata.locations[location].missions:
-		var areadata = Explorationdata.areas[a]
-#		if areadata.category != location: continue
-#		if !state.checkreqs(areadata.requirements): continue
-		if !state.areaprogress[a].unlocked: continue
-		if !state.areaprogress[a].completed: continue
-		var panel = input_handler.DuplicateContainerTemplate(arealist)
-		panel.text = areadata.name + " âœ“í ½í·¸"
-		panel.set_meta('area', a)
-		panel.connect('pressed', self, 'select_area', [a])
-		num_missions += 1
+	else:
+		for a in Explorationdata.locations[location].missions:
+			var areadata = Explorationdata.areas[a]
+			if !state.areaprogress[a].unlocked: continue
+			if state.areaprogress[a].completed: continue
+			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
+			panel.text = areadata.name
+			panel.set_meta('area', a)
+			panel.connect('pressed', self, 'select_area', [a])
+			panel.get_node('Completed').visible = false
+			num_missions += 1
+		for a in Explorationdata.locations[location].missions:
+			var areadata = Explorationdata.areas[a]
+			if !state.areaprogress[a].unlocked: continue
+			if !state.areaprogress[a].completed: continue
+			var panel = input_handler.DuplicateContainerTemplate(arealist)
+			panel.text = areadata.name
+			panel.set_meta('area', a)
+			panel.connect('pressed', self, 'select_area', [a])
+			panel.get_node('Completed').visible = true
+			num_missions += 1
 	if num_missions == 0:
 		hide()
 
 
 func select_area(area_code):
 	area = area_code
+	areapanel.visible = true
 	for node in arealist.get_children():
 		node.pressed = (area == node.get_meta('area'))
-	build_area_description()
-	$ExplorationSelect/Panel/Button.disabled = (state.activearea != null)
+	if state.activearea == null:
+		$ExplorationSelect/Panel/start.visible = true
+		$ExplorationSelect/Panel/start.disabled = false
+		$ExplorationSelect/Panel/advance.visible = false
+		$ExplorationSelect/Panel/abandon.visible = false
+		scalecheck.set_state(false)
+		scalecheck.disabled = !state.areaprogress[area].completed
+	elif state.activearea != area:
+		$ExplorationSelect/Panel/start.visible = true
+		$ExplorationSelect/Panel/start.disabled = true
+		$ExplorationSelect/Panel/advance.visible = false
+		$ExplorationSelect/Panel/abandon.visible = false
+		scalecheck.set_state(false)
+		scalecheck.disabled = true
+	else:
+		$ExplorationSelect/Panel/start.visible = false
+		$ExplorationSelect/Panel/advance.visible = true
+		$ExplorationSelect/Panel/abandon.visible = true
+		scalecheck.set_state(Explorationdata.areas[area].level != state.areaprogress[area].level)
+		scalecheck.disabled = true
+	
+	build_area_description() #+build_area_info
+
+
+func reset_level():
+	if area == null : return
+	if scalecheck.checked:
+		$ExplorationSelect/level.text = "Level %d" % state.heroes['arron'].level
+	else:
+		$ExplorationSelect/level.text = "Level %d" % Explorationdata.areas[area].level
+
+
+func reset_progress():
+	var areastate = state.areaprogress[area]
+	var areadata = Explorationdata.areas[area]
+	$ExplorationSelect/progress.visible = true
+	$ExplorationSelect/progress.value = areastate.stage
+	$ExplorationSelect/progress.max_value = areadata.stages
+	$ExplorationSelect/progress/Label.text = "%d/%d" % [areastate.stage, areadata.stages]
 
 
 func build_area_description():
 	var areadata = Explorationdata.areas[area]
-	areapanel.visible = true
 	if areadata.has('description'):
-#		areadesc.visible = true
-		areadesc.bbcode_text = areadata.description + "\nRecommended level: %d" % areadata.level
+		areadesc.bbcode_text = areadata.description
 	else:
-		areadesc.bbcode_text = "Recommended level: %d" % areadata.level
-#		areadesc.visible = false
-	areapanel.get_node("CheckBox").pressed = false
-	areapanel.get_node("CheckBox").visible = state.areaprogress[area].completed
+		areadesc.bbcode_text = ""
+	reset_level()
+	
+	if state.activearea != null and state.activearea == area:
+		reset_progress()
+		if areadata.has('no_escape') and areadata.no_escape:
+			$ExplorationSelect/Panel/abandon.disabled = true
+			$ExplorationSelect/Close.disabled = true
+		else:
+			$ExplorationSelect/Panel/abandon.disabled = false
+			$ExplorationSelect/Close.disabled = false
+	else:
+		$ExplorationSelect/progress.visible = false
 
 
 func start_area():
-	state.start_area(area, areapanel.get_node("CheckBox").pressed)
+	state.start_area(area, scalecheck.checked)
+	for node in arealist.get_children():
+		node.disabled = (area != node.get_meta('area'))
 	open_mission()
 
 
 func open_mission():
-	$ExplorationOngoing.visible = true
-	$ExplorationSelect.visible = false
-	build_party()
-	build_area_info()
 	if area != state.activearea:
 		print("warning - opened not active area")
+	open_explore()
+	select_area(area)
 
+
+func show_screen():
+	$ExplorationSelect/Panel/screen.visible = true
 
 func build_party():
+	$ExplorationSelect/Panel/screen.visible = false
 	var party_count = 0
-	var reserve_count = 0
 	for i in range(3):
-		partylist.get_child(i).disabled = true
-		var node = partylist.get_child(i).get_node('TextureRect')
-		node.texture = null
+#		partylist.get_child(i).disabled = true
+		var node = partylist.get_child(i)
+		node.get_node('icon').texture = null
+		node.get_node('level').text = ""
+		node.get_node('name').text = ""
 		node.parent_node = self
 		node.dragdata = null
-	for i in range(6):
-		var node = reservelist.get_child(i)
-		node.texture = null
-		node.parent_node = self
-		node.dragdata = null
+		node.unpress()
+		
+#	for i in range(6):
+#		var node = reservelist.get_child(i)
+#		node.texture = null
+#		node.parent_node = self
+#		node.dragdata = null
 	
+	input_handler.ClearContainer(reservelist, ['Button'])
 	for ch in state.characters:
 		var hero = state.heroes[ch]
 		if !hero.unlocked: continue
 		if hero.position != null:
 			var node = partylist.get_child(hero.position - 1)
-			node.disabled = false
-			if node.is_connected('pressed', self, 'show_info'):
-				node.disconnect('pressed', self, 'show_info')
-			node.connect('pressed', self, 'show_info', [ch])
-			node.get_node('TextureRect').texture = hero.portrait()
-			node.get_node('TextureRect').dragdata = ch
-			party_count += 1
-		else:
-			var node = reservelist.get_child(reserve_count)
-			node.texture = hero.portrait()
+			node.get_node('icon').texture = hero.portrait()
+			node.get_node('level').text = "Level %d" % hero.level
+			node.get_node('name').text = hero.name
 			node.dragdata = ch
-			reserve_count += 1
+			party_count += 1
+		var node = input_handler.DuplicateContainerTemplate(reservelist, 'Button')
+		node.get_node('icon').texture = hero.portrait()
+		node.get_node('level').text = "Level %d" % hero.level
+		node.get_node('name').text = hero.name
+		node.dragdata = ch
+		node.parent_node = self
 	
-	$ExplorationOngoing/StartButton.disabled = (party_count == 0)
+	$ExplorationSelect/Panel/advance.disabled = (party_count == 0)
 
 
 func show_info(ch_id):
 	var node = input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL)
 	node.open(state.heroes[ch_id])
 
-
-func build_area_info():
-	var areadata = Explorationdata.areas[area]
-	var areastate = state.areaprogress[area]
-	var text = areadata.name + '\n'
-	if areadata.has('description'):
-		text += areadata.description + '\n'
-	text += "Level: %d \n" % areastate.level
-	text += "Stage: %d/%d" % [areastate.stage, areadata.stages]
-	$ExplorationOngoing/RichTextLabel.bbcode_text = text
-	if areadata.has('no_escape') and areadata.no_escape:
-		$ExplorationOngoing/CancelButton.visible = false
-		$ExplorationOngoing/CloseButton.visible = false
-	else:
-		$ExplorationOngoing/CancelButton.visible = true
-		$ExplorationOngoing/CloseButton.visible = true
 
 
 func abandon_area():
@@ -398,12 +446,12 @@ func combat_loose():
 		state.abandon_area()
 	else:
 		pass
-	if $ExplorationOngoing/CloseButton.visible:
+	if $ExplorationSelect/Close.visible:
 		hide()
 
 
 func hide():
-	input_handler.menu_node.visible = false
+	input_handler.menu_node.visible = true
 	input_handler.map_node.update_map()
 	.hide()
 
@@ -416,7 +464,7 @@ func advance_check():
 	if areastate.stage > areadata.stages:
 		finish_area()
 	else:
-		build_area_info()
+		build_area_description()
 #		if areadata.stagedenemies.has(areastate.stage) and areadata.stagedenemies[areastate.stage].has('scene'):
 #			advance_area()
 		if areadata.events.has("after_fight_%d" % (areastate.stage - 1)):

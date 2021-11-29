@@ -38,23 +38,23 @@
 [ext_resource path="res://assets/images/gui/combat/char_placeholder_battle.png" type="Texture" id=36]
 [ext_resource path="res://files/scenes/combat/dropscreen.gd" type="Script" id=37]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 20 )
 region_rect = Rect2( 0, 0, 294, 419 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 21 )
 region_rect = Rect2( 0, 0, 361, 300 )
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 1920, 225 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 19 )
 region_rect = Rect2( 0, 0, 340, 42 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 300, 92 )
 
@@ -182,7 +182,7 @@ margin_top = 30.0
 margin_right = 324.0
 margin_bottom = 449.0
 rect_min_size = Vector2( 294, 419 )
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -207,7 +207,7 @@ margin_right = -30.0
 margin_bottom = 300.0
 grow_horizontal = 0
 rect_min_size = Vector2( 361, 300 )
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -500,7 +500,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -225.0
 rect_min_size = Vector2( 1920, 225 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1320,7 +1320,7 @@ margin_left = -170.0
 margin_top = 30.0
 margin_right = 170.0
 margin_bottom = 72.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="Label" type="Label" parent="ActiveActionPanel"]
 anchor_right = 1.0
@@ -1339,7 +1339,7 @@ margin_left = -150.0
 margin_top = 72.0
 margin_right = 150.0
 margin_bottom = 164.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
