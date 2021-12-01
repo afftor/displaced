@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://files/scenes/CharacterPanel.gd" type="Script" id=1]
 [ext_resource path="res://files/scenes/charinfo_portrait.gd" type="Script" id=2]
@@ -20,6 +20,11 @@
 [ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/themes/button_forge.tres" type="Theme" id=19]
 [ext_resource path="res://assets/themes/statlist.tres" type="Theme" id=20]
+[ext_resource path="res://assets/images/iconsskills/shield.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/buttons/charpanel/expbar_charinfo_filler.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/buttons/charpanel/expbar_charinfo_frame.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/iconsskills/rose_8.png" type="Texture" id=24]
+[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=25]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -134,10 +139,10 @@ __meta__ = {
 }
 
 [node name="StatsPanel" type="Control" parent="Panel"]
-margin_left = 50.0
-margin_top = 520.0
-margin_right = 400.0
-margin_bottom = 822.0
+margin_left = 27.0
+margin_top = 503.0
+margin_right = 421.0
+margin_bottom = 606.0
 theme = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -145,50 +150,139 @@ __meta__ = {
 
 [node name="name" type="Label" parent="Panel/StatsPanel"]
 anchor_right = 1.0
-margin_bottom = 32.0
+margin_top = -1.0
+margin_right = -2.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Name"
 align = 1
 
-[node name="stats" type="HBoxContainer" parent="Panel/StatsPanel"]
+[node name="exp" type="TextureProgress" parent="Panel/StatsPanel"]
+margin_left = 102.054
+margin_top = 30.2382
+margin_right = 302.054
+margin_bottom = 58.2382
+value = 50.0
+texture_over = ExtResource( 23 )
+texture_progress = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="Panel/StatsPanel/exp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 42.0
+custom_fonts/font = ExtResource( 25 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "50/100"
+align = 1
+valign = 1
 
-[node name="icons" type="VBoxContainer" parent="Panel/StatsPanel/stats"]
-visible = false
-margin_bottom = 260.0
+[node name="stats" type="HBoxContainer" parent="Panel/StatsPanel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 45.0
+margin_top = -40.0
+margin_right = -45.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="panel" type="TextureRect" parent="Panel/StatsPanel/stats/icons"]
-margin_right = 40.0
+[node name="panel" type="HBoxContainer" parent="Panel/StatsPanel/stats"]
+margin_right = 304.0
 margin_bottom = 40.0
-
-[node name="statnames" type="VBoxContainer" parent="Panel/StatsPanel/stats"]
-margin_right = 53.0
-margin_bottom = 260.0
-
-[node name="panel" type="Label" parent="Panel/StatsPanel/stats/statnames"]
-margin_right = 53.0
-margin_bottom = 32.0
-text = "STAT"
-
-[node name="values" type="VBoxContainer" parent="Panel/StatsPanel/stats"]
-margin_left = 57.0
-margin_right = 350.0
-margin_bottom = 260.0
 size_flags_horizontal = 3
 
-[node name="panel" type="Label" parent="Panel/StatsPanel/stats/values"]
-margin_right = 293.0
-margin_bottom = 32.0
-text = "100/100"
+[node name="icon" type="TextureRect" parent="Panel/StatsPanel/stats/panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 24 )
+expand = true
+
+[node name="stat" type="Label" parent="Panel/StatsPanel/stats/panel"]
+margin_left = 44.0
+margin_top = 4.0
+margin_right = 88.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "stat "
 align = 1
 
+[node name="value" type="Label" parent="Panel/StatsPanel/stats/panel"]
+margin_left = 92.0
+margin_top = 4.0
+margin_right = 144.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "4000"
+align = 1
+
+[node name="ResPanel" type="Control" parent="Panel"]
+margin_left = 27.0
+margin_top = 612.0
+margin_right = 421.0
+margin_bottom = 822.0
+theme = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Panel/ResPanel"]
+anchor_right = 1.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+text = "Resistances"
+align = 1
+
+[node name="res" type="GridContainer" parent="Panel/ResPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 42.0
+margin_right = -48.0
+columns = 3
+
+[node name="panel" type="HBoxContainer" parent="Panel/ResPanel/res"]
+margin_right = 104.0
+margin_bottom = 50.0
+
+[node name="icon" type="TextureRect" parent="Panel/ResPanel/res/panel"]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = ExtResource( 21 )
+
+[node name="src" type="TextureRect" parent="Panel/ResPanel/res/panel/icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ResPanel/res/panel"]
+margin_left = 54.0
+margin_top = 9.0
+margin_right = 104.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 50, 0 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+text = ": 100"
+
 [node name="SkillsButton" type="Button" parent="Panel"]
-margin_left = 100.337
-margin_top = 835.584
-margin_right = 351.337
-margin_bottom = 885.584
+margin_left = 100.0
+margin_top = 836.0
+margin_right = 347.0
+margin_bottom = 886.0
 theme = ExtResource( 19 )
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color_disabled = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_color_hover = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_color_pressed = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Skills"
 __meta__ = {
 "_edit_use_anchors_": false

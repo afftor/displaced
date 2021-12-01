@@ -89,8 +89,6 @@ func get_animations():
 
 
 func get_stat(statname):
-	if statname == 'damage':
-		print("+")
 	var res = get(statname)
 	var combat = input_handler.combat_node
 #	if !variables.direct_access_stat_list.has(statname):

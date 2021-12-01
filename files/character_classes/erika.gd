@@ -32,7 +32,7 @@ func hpmax_get():
 		2: res *= 1.3
 		3: res *= 1.45
 		4: res *= 1.6
-	return res
+	return int(res)
 
 func damage_get():
 	var res = .damage_get()
@@ -41,4 +41,4 @@ func damage_get():
 		2: res *= 1.3
 		3: res *= 1.45
 		4: res *= 1.6
-	return res
+	return int(res)

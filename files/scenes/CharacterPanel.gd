@@ -5,6 +5,7 @@ var character
 onready var charlist = $Panel/ScrollContainer/HBoxContainer
 #onready var skill_list = $Panel/SkillContainer/GridContainer
 onready var stats_list = $Panel/StatsPanel
+onready var res_list = $Panel/ResPanel/res
 
 export var test_mode = false
 var lock
@@ -133,23 +134,64 @@ func build_gear():
 
 
 var statlist = {
-	'EXP': ['get_baseexp', '/', 'get_exp_cap'],
-	'HP': ['get_hp', '/', 'get_hpmax'],
-	'DMG': ['get_damage', ' (', 'get_base_dmg_type', ')']
+#	'EXP': {
+#		text = ['get_baseexp', '/', 'get_exp_cap'],
+#		icon = null
+#		},
+	'HP': {
+		text = ['get_hp', '/', 'get_hpmax'],
+		icon = "res://assets/images/iconsskills/rose_8.png"
+		},
+	'DMG': {
+#		text = ['get_damage', ' (', 'get_base_dmg_type', ')'],
+		text = ['get_damage'],
+		icon = ["res://assets/images/iconsskills/source_%s.png", 'get_base_dmg_type']
+		}
 }
 func build_stats():
 	stats_list.get_node('name').text = character.name
-	input_handler.ClearContainer(stats_list.get_node('stats/statnames'), ['panel'])
-	input_handler.ClearContainer(stats_list.get_node('stats/values'), ['panel'])
+	var v1 = character.get_stat('baseexp')
+	var v2 = character.get_stat('exp_cap')
+	stats_list.get_node("exp").max_value = v2
+	stats_list.get_node("exp").value = v1
+	stats_list.get_node("exp/Label").text = "%d/%d" % [v1, v2]
+#	input_handler.ClearContainer(stats_list.get_node('stats/statnames'), ['panel'])
+#	input_handler.ClearContainer(stats_list.get_node('stats/values'), ['panel'])
+#	input_handler.ClearContainer(stats_list.get_node('stats/icons'), ['panel'])
+	input_handler.ClearContainer(stats_list.get_node('stats'), ['panel'])
 	for st in statlist:
-		var p1 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/statnames'), 'panel')
-		var p2 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/values'), 'panel')
-		p1.text = st
+#		var p1 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/statnames'), 'panel')
+#		var p2 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/values'), 'panel')
+#		var p3 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/icons'), 'panel')
+		var panel = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats'), 'panel')
+		panel.get_node('stat').text = st
 		var tval = ""
-		for line in statlist[st]:
+		for line in statlist[st].text:
 			if line.begins_with("get_"):
 				tval += str(character.get_stat(line.trim_prefix("get_")))
 			else:
 				tval += line
-		p2.text = tval
+		panel.get_node('value').text = tval
+		if typeof(statlist[st].icon) == TYPE_STRING:
+			panel.get_node('icon').texture = load(statlist[st].icon)
+		elif typeof(statlist[st].icon) == TYPE_ARRAY:
+			var tname = statlist[st].icon[0]
+			var tstat = statlist[st].icon[1]
+			if tstat.begins_with("get_"):
+				tstat = character.get_stat(tstat.trim_prefix("get_"))
+			panel.get_node('icon').texture = load(tname % tstat)
+		else:
+			panel.get_node('icon').texture = statlist[st].icon
+	build_res()
+
+
+func build_res():
+	input_handler.ClearContainer(res_list, ['panel'])
+	var resists = character.get_stat('resists')
+	for src in variables.resistlist:
+		if src == 'damage' : continue
+		var panel = input_handler.DuplicateContainerTemplate(res_list, 'panel')
+		panel.get_node('Label').text = ": %d" % resists[src]
+		panel.get_node('icon/src').texture = load("res://assets/images/iconsskills/source_%s.png" % src)
 		
+ 
