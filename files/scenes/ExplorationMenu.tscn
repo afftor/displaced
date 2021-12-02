@@ -45,9 +45,9 @@ __meta__ = {
 }
 
 [node name="Image" type="TextureRect" parent="ExplorationSelect"]
-margin_left = 126.0
-margin_top = 136.0
-margin_right = 761.0
+margin_left = 123.0
+margin_top = 133.0
+margin_right = 762.0
 margin_bottom = 473.0
 texture = ExtResource( 5 )
 expand = true

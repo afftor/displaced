@@ -192,8 +192,8 @@ func _ready():
 
 	#====================================
 
-	yield(preload_backgrounds(), 'completed')
-	print("Backgrounds preloaded")
+#	yield(preload_backgrounds(), 'completed')
+#	print("Backgrounds preloaded")
 	if resources.is_busy(): yield(resources, "done_work")
 	print("preload finished")
 
@@ -325,6 +325,8 @@ func ChangeScene(name):
 
 func StartGame():
 	change_screen('map')
+	if resources.is_busy(): yield(resources, "done_work")
+	print('start')
 	run_seq('intro')
 
 

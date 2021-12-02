@@ -16,6 +16,7 @@ onready var scalecheck = $ExplorationSelect/Panel/ScaleCheck
 onready var combat_node = get_parent().get_node("combat")
 
 func _ready():
+	Explorationdata.preload_resources()
 	$ExplorationSelect/Panel/start.connect("pressed", self, "start_area")
 	$ExplorationSelect/Panel/advance.connect("pressed", self, "advance_area")
 	$ExplorationSelect/Panel/abandon.connect("pressed", self, "abandon_area")
@@ -52,7 +53,7 @@ func set_location(loc_code):
 	if typeof(Explorationdata.locations[location].background) == TYPE_STRING:
 		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	else:
-		$ExplorationSelect/Image.texture = Explorationdata.locations[location].background
+		$ExplorationSelect/Image.texture = Explorationdata.locations[location].background #obsolete, for testing
 	areadesc.bbcode_text = ""
 
 
@@ -149,7 +150,7 @@ func reset_progress():
 	var areastate = state.areaprogress[area]
 	var areadata = Explorationdata.areas[area]
 	$ExplorationSelect/progress.visible = true
-	$ExplorationSelect/progress.value = areastate.stage
+	$ExplorationSelect/progress.value = areastate.stage - 1
 	$ExplorationSelect/progress.max_value = areadata.stages
 	$ExplorationSelect/progress/Label.text = "%d/%d" % [areastate.stage, areadata.stages]
 
@@ -160,6 +161,10 @@ func build_area_description():
 		areadesc.bbcode_text = areadata.description
 	else:
 		areadesc.bbcode_text = ""
+	if areadata.has('image') and areadata.image != null and areadata.image!= '':
+		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.image)
+	else:
+		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	reset_level()
 	
 	if state.activearea != null and state.activearea == area:

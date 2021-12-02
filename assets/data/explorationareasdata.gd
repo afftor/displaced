@@ -617,7 +617,7 @@ var areas = { #missions in new terminology
 		code = 'road_to_village',
 		name = 'Init mission',
 		descript = "",
-		image = 'desert',
+		image = 'combat_desert',
 		stages = 2, 
 		enemygroups = [], 
 		level = 1,
@@ -1239,3 +1239,14 @@ func check_location_activity(loc): #if there is mission avail
 		if !check_area_avail(i): continue
 		return true
 	return false
+
+
+func preload_resources():
+	for rec in locations.values():
+		print("bg/%s" % rec.background) 
+		resources.preload_res("bg/%s" % rec.background)
+	for rec in areas.values():
+		if rec.has('image') and rec.image != null and rec.image != '':
+			print("bg/%s" % rec.image)
+			resources.preload_res("bg/%s" % rec.image)
+		
