@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://files/scenes/CharacterPanel.gd" type="Script" id=1]
 [ext_resource path="res://files/scenes/charinfo_portrait.gd" type="Script" id=2]
@@ -25,6 +25,12 @@
 [ext_resource path="res://assets/images/buttons/charpanel/expbar_charinfo_frame.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/iconsskills/rose_8.png" type="Texture" id=24]
 [ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=25]
+[ext_resource path="res://files/scenes/desaturate.shader" type="Shader" id=26]
+[ext_resource path="res://assets/images/iconsskills/iola_5.png" type="Texture" id=27]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 26 )
+shader_param/percent = 0.5
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -486,10 +492,21 @@ rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 
 [node name="Label" type="Label" parent="SkillPanel/ScrollContainer/GridContainer/Button"]
+visible = false
 margin_right = 91.0
 margin_bottom = 24.0
 text = "Skill 1"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ScrollContainer/GridContainer/Button"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 27 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

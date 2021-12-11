@@ -26,6 +26,8 @@ func build_skills():
 		var skilldata = Skillsdata.patch_skill(skill_id, character)
 		var panel = input_handler.DuplicateContainerTemplate(skill_list)
 		panel.get_node("Label").text = skilldata.name
+		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
+		panel.get_node('icon').texture = skilldata.icon
 		#2add icon node and set icon data to it!
 #		panel.texture_normal = skilldata.icon
 		globals.connectskilltooltip(panel, character.id, skill_id)
@@ -34,11 +36,17 @@ func build_skills():
 			panel.connect("pressed", self, "unlearn_skill", [skill_id])
 			if !character.can_forget_skill(skill_id):
 				panel.disabled = true
+				panel.get_node('icon').material.set_shader_param('percent', 1.0)
+			else:
+				panel.get_node('icon').material.set_shader_param('percent', 0.0)
 		else:
 			panel.pressed = false
 			panel.connect("pressed", self, "learn_skill", [skill_id])
 			if !character.can_unlock_skill(skill_id):
 				panel.disabled = true
+				panel.get_node('icon').material.set_shader_param('percent', 1.0)
+			else:
+				panel.get_node('icon').material.set_shader_param('percent', 0.5)
 
 
 func unlearn_skill(skill_id):
