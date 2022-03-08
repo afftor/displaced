@@ -605,7 +605,7 @@ func AddPanelOpenCloseAnimation(node):
 	node._ready()
 
 func MaterialTooltip(value):
-	var text = '[center][color=yellow]' + Items.Materials[value].name + '[/color][/center]\n' + Items.Materials[value].description + '\n\n' + tr("INPOSESSION") + ': ' + str(state.materials[value])
+	var text = '[center][color=yellow]' + Items.Items[value].name + '[/color][/center]\n' + Items.Items[value].description + '\n\n' + tr("INPOSESSION") + ': ' + str(state.materials[value])
 	return text
 
 

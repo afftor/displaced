@@ -90,7 +90,8 @@ func update_map():
 			if Explorationdata.check_location_activity(loc):
 				area_node.set_active()
 				if state.activearea != null:
-					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
+#					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
+					area_node.set_current(Explorationdata.locations[loc].missions.has(state.activearea))
 			else:
 				area_node.set_inactive()
 
@@ -103,6 +104,8 @@ func check_location(loc_id):
 	if !Explorationdata.locations[loc_id].has('events'):
 		return
 	for seq in Explorationdata.locations[loc_id].events:
+		if seq == 'erika_at_village':
+			print('+')
 		if state.check_sequence(seq):
 			binded_events[loc_id] = seq
 			break

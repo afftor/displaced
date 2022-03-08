@@ -22,10 +22,8 @@
 [ext_resource path="res://assets/images/map/map_icon_8.png" type="Texture" id=20]
 
 [node name="map" type="TextureRect"]
-margin_left = -0.233521
-margin_top = 3.22867
-margin_right = 1919.77
-margin_bottom = 1083.23
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 1 )
 script = ExtResource( 13 )
 __meta__ = {
@@ -1072,17 +1070,19 @@ margin_bottom = -90.0
 
 [node name="MainScreen" parent="." instance=ExtResource( 18 )]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="explore" parent="." instance=ExtResource( 17 )]
 visible = false
+
+[node name="menu_node" parent="." instance=ExtResource( 15 )]
 
 [node name="combat" parent="." instance=ExtResource( 16 )]
 visible = false
 
 [node name="TextSystem" parent="." instance=ExtResource( 14 )]
 visible = false
-
-[node name="menu_node" parent="." instance=ExtResource( 15 )]
 
 [node name="active" type="TextureRect" parent="."]
 visible = false

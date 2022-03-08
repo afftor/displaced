@@ -261,7 +261,8 @@ func checkreqs(array):
 
 
 func valuecheck(dict):
-	if !dict.has('type'): return true
+	if !dict.has('type'):
+		 return true
 	match dict['type']:
 		"no_check":
 			return true
@@ -545,11 +546,11 @@ func add_materials(res, value):
 	tmp = materials[res] - tmp
 	if tmp > 0:
 		var text = "Gained "
-		text += str(tmp) + ' {color=yellow|' + Items.Materials[res].name + '}'
+		text += str(tmp) + ' {color=yellow|' + Items.Items[res].name + '}'
 		logupdate(text)
 	elif tmp < 0:
 		var text = "Lost "
-		text += str(-tmp) + ' {color=yellow|' + Items.Materials[res].name + '}'
+		text += str(-tmp) + ' {color=yellow|' + Items.Items[res].name + '}'
 		logupdate(text)
 
 

@@ -23,6 +23,7 @@ func _ready():
 		ch.get_node('Label2').text = "Level %d" % hero.level
 		ch.get_node('TextureRect').texture = hero.portrait()
 		ch.connect('pressed', self, 'select_hero', [cid])
+		ch.visible = hero.unlocked
 	
 	$Panel/SkillsButton.connect("pressed", self, "open_skills")
 #	$Panel/Weapon.connect("pressed", self, "open_weapon")

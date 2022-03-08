@@ -79,6 +79,7 @@ margin_top = 24.0
 margin_right = 346.0
 margin_bottom = 101.0
 hint_tooltip = "HEROLIST"
+toggle_mode = true
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 
@@ -234,5 +235,3 @@ margin_top = 23.0
 margin_right = 265.0
 margin_bottom = 47.0
 text = "Return to Main Menu"
-
-[connection signal="pressed" from="ControlPanel/Herolist" to="." method="_on_Herolist_pressed"]

@@ -120,7 +120,7 @@ func buildscreen(empty = null):
 					binded_events[build] = seq
 					break
 		
-		if binded_events[build] != null:
+		if binded_events[build] != null or build == 'bridge':
 			node.set_active()
 		else:
 			node.set_inactive()

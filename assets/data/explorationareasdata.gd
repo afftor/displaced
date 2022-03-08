@@ -7,6 +7,10 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	intro_2 = [
 		{type = 'scene', value = 'intro_3'},
+		{type = 'system', value = 'unlock_area', arg = 'forest'},
+		{type = 'system', value = 'unlock_mission', arg = 'forest_erika'},
+		{type = 'show_screen', value = 'village'},
+		{type = 'system', value = 'unlock_building', arg = 'bridge'}
 	],
 	forest2 = [
 		{type = 'system', value = 'unlock_character', arg = 'erika'},
@@ -191,7 +195,7 @@ var scene_sequences = {
 	},
 	erika_at_village = {
 		initiate_signal = 'village_activate', 
-		initiate_reqs = [{type = 'mission_completed', value = 'forest_erika'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika'}],
 		actions = [
 		{type = 'scene', value = 'erika_1'},
 		{type = 'system', value = 'unlock_character', arg = 'erika'},#duplicate of postscene action
@@ -200,7 +204,7 @@ var scene_sequences = {
 	
 	ember_arrival = {
 		initiate_signal = 'village_townhall_ember', 
-		initiate_reqs = [{type = 'mission_completed', value = 'forest_erika'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_1'},
 		{type = 'system', value = 'unlock_character', arg = 'ember'},
@@ -228,7 +232,7 @@ var scene_sequences = {
 	
 	iola_arrival = {
 		initiate_signal = 'village_townhall_iola', 
-		initiate_reqs = [{type = 'mission_completed', value = 'caves_demitrius'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'caves_demitrius'}],
 		actions = [
 		{type = 'scene', value = 'iola_1_1'},
 		{type = 'system', value = 'unlock_mission', arg = 'caves_iola'}
@@ -237,7 +241,7 @@ var scene_sequences = {
 	
 	flak_task = {
 		initiate_signal = 'village_townhall_fask', 
-		initiate_reqs = [{type = 'mission_completed', value = 'caves_iola'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'caves_iola'}],
 		actions = [
 		{type = 'scene', value = 'flak_1'}, #not currently existing,
 		{type = 'system', value = 'unlock_area', arg = 'town'},
@@ -247,7 +251,7 @@ var scene_sequences = {
 	
 	town_gates = {
 		initiate_signal = 'town', 
-		initiate_reqs = [{type = 'mission_completed', value = 'road_to_town'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
 		actions = [
 		{type = 'scene', value = 'aeros_2'},
 #		{type = 'system', value = 'unlock_area', arg = 'faery_forest'}, 
@@ -641,7 +645,7 @@ var areas = { #missions in new terminology
 		code = 'forestelves',
 		name = 'Search for Elves',
 		descript = "You've learned that the elves live at the ancient forest and might be able to help you ",
-		image = '',
+		image = 'combat_forest', #or not
 		stages = 5, 
 		level = 2,
 		events = {

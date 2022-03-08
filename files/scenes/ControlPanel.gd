@@ -14,7 +14,7 @@ func _ready():
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
-	$ControlPanel/Herolist.connect('pressed',self, 'openherolist')
+	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 
 
@@ -43,11 +43,13 @@ func openmenu():
 	else:
 		$MenuPanel.hide()
 
-func openherolist():
+func openherolist(toggled):
 	if $HeroList.visible == false:
 		$HeroList.open()
+		$ControlPanel/Herolist.pressed = true
 	else:
 		$HeroList.hide()
+		$ControlPanel/Herolist.pressed = false
 
 
 func openinventory(hero = null):
@@ -77,15 +79,3 @@ func flyingitemicon(taskbar, icon):
 	x.queue_free()
 
 
-func _on_Herolist_pressed():
-	input_handler.ClearContainer($HeroList/HBoxContainer)
-	for i in state.characters:
-		var tmp = state.heroes[i]
-		if !tmp.unlocked: continue
-		var newbutton = input_handler.DuplicateContainerTemplate($HeroList/HBoxContainer)
-		newbutton.set_meta("hero", tmp)
-		newbutton.get_node("Label").text = tmp.name
-		newbutton.connect("pressed",self,'OpenHeroTab', [tmp])
-
-func OpenHeroTab(hero):
-	$HeroPanel.open(hero)

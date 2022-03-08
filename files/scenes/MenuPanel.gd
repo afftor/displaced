@@ -15,6 +15,8 @@ func _ready():
 	move_child($InputBlock, 0)
 	for i in $VBoxContainer.get_children():
 		i.connect("pressed", self, "PlayClickSound")
+	$saveloadpanel.raise()
+	$Options.raise()
 
 func show():
 	.show()

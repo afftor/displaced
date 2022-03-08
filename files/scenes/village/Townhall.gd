@@ -113,7 +113,7 @@ func selectupgrade(upgrade):
 		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + upgrade.levels[currentupgradelevel].bonusdescript
 
 		for i in upgrade.levels[currentupgradelevel].cost:
-			var item = Items.Materials[i]
+			var item = Items.Items[i]
 			var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
 			newnode.get_node("icon").texture = item.icon
 			newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(upgrade.levels[currentupgradelevel].cost[i])
