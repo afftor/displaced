@@ -113,7 +113,7 @@ func select_area(area_code):
 	area = area_code
 	areapanel.visible = true
 	for node in arealist.get_children():
-		node.pressed = (area == node.get_meta('area'))
+		node.pressed = (node.has_meta('area') and area == node.get_meta('area'))
 	if state.activearea == null:
 		$ExplorationSelect/Panel/start.visible = true
 		$ExplorationSelect/Panel/start.disabled = false
@@ -252,6 +252,7 @@ func abandon_area_confirm():
 
 
 func advance_area():
+	$AdvConfirm.visible = false
 	var areadata = Explorationdata.areas[area]
 	var areastate = state.areaprogress[area]
 	#2add generic scene check
@@ -418,6 +419,7 @@ func set_party_level_data(party, def_lvl, cur_lvl):
 				print(party)
 
 func finish_area():
+	state.complete_area()
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('events') and areadata.events.has("on_complete"):
 		var scene = areadata.events.on_complete
@@ -425,7 +427,6 @@ func finish_area():
 			if globals.play_scene(scene):
 #				yield(input_handler.scene_node, "scene_end")
 				yield(input_handler, "EventFinished")
-	state.complete_area()
 	if location != 'mission': open_explore()
 	else: hide()
 	if areadata.has('events') and areadata.events.has("on_complete_seq"):
@@ -490,7 +491,6 @@ func advance_check():
 			$AdvConfirm.visible = true
 
 func adv_confirm():
-	$AdvConfirm.visible = false
 	advance_area()
 
 func adv_decline():

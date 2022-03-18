@@ -147,6 +147,14 @@ func hide_screen():
 	$dropscreen.visible = false
 
 
+func skill_button_pressed(mode, arg):
+	if !combat.allowaction: return
+	match mode:
+		'skill':
+			combat.SelectSkill(arg)
+		'item':
+			combat.ActivateItem(arg)
+
 #skill panel
 func ClearSkillPanel():
 	input_handler.ClearContainer($SkillPanel/SkillContainer)
@@ -175,7 +183,8 @@ func RebuildSkillPanel():
 		if !activecharacter.can_use_skill(skill):
 			newbutton.disabled = true
 			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
-		newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
+#		newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
+		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
 	$SkillPanel/SkillContainer.visible = true
@@ -199,7 +208,7 @@ func RebuildItemPanel():
 		newbutton.get_node("Icon").texture = load(i.icon)
 		newbutton.get_node("Icon/Label").text = str(i.amount)
 		newbutton.set_meta('skill', i.useskill)
-		newbutton.connect('pressed', combat, 'ActivateItem', [i])
+		newbutton.connect('pressed', self, 'skill_button_pressed', ['item', i])
 		globals.connectitemtooltip(newbutton, i)
 	$SkillPanel/SkillContainer.visible = false
 	$SkillPanel/DefaultSkillContainer.visible = false

@@ -336,7 +336,7 @@ func select_actor():
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy:
 			yield(CombatAnimations, 'alleffectsfinished')
-		allowaction = true
+#		allowaction = true
 		cur_state = T_AUTO
 		autoselect_player_char()
 #		cur_state = T_CHARSELECT
@@ -809,17 +809,18 @@ func victory():#2remake for it is broken for now
 	rewardsdict = {materials = {}, items = [], xp = 0}
 	for i in defeated:
 		rewardsdict.xp += i.xpreward
-		var loot = {}
-		if Enemydata.loottables[i.loottable].has('materials'):
-			for j in Enemydata.loottables[i.loottable].materials:
-				if randf()*100 <= j.chance:
-					loot[j.code] = round(rand_range(j.min, j.max))
-			globals.AddOrIncrementDict(rewardsdict.materials, loot)
-		if Enemydata.loottables[i.loottable].has('usables'):
-			for j in Enemydata.loottables[i.loottable].usables:
-				if randf()*100 <= j.chance:
-					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
-					rewardsdict.items.append(newitem)
+		if Enemydata.loottables.has(i.loottable):
+			var loot = {}
+			if Enemydata.loottables[i.loottable].has('materials'):
+				for j in Enemydata.loottables[i.loottable].materials:
+					if randf()*100 <= j.chance:
+						loot[j.code] = round(rand_range(j.min, j.max))
+				globals.AddOrIncrementDict(rewardsdict.materials, loot)
+			if Enemydata.loottables[i.loottable].has('usables'):
+				for j in Enemydata.loottables[i.loottable].usables:
+					if randf()*100 <= j.chance:
+						var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
+						rewardsdict.items.append(newitem)
 		state.heroes.erase(i.id)
 	defeated.clear()
 	
