@@ -38,7 +38,7 @@ const AVAIL_EFFECTS = [
 	"BLACKON", "BLACKOFF",
 	"BLACKFADE", "BLACKUNFADE",
 	"BLACKTRANS", "BG", "DELAY",
-	"SPRITE", "SPRITE_FADE",
+	"SPRITE", "SPRITE_FADE", "SPRITE_HIDE",
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
 	"ABG", "STOP", "CHOICE", "SKIP",
@@ -630,6 +630,11 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action("ctrl"):
+		if event.is_pressed():
+			skip = true
+		else:
+			skip = false
 	if delay > 0: return
 	if $ChoicePanel.visible or $ClosePanel.visible: return
 
@@ -637,12 +642,6 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("MouseDown") && ($LogPanel/RichTextLabel.get_v_scroll().value + $LogPanel/RichTextLabel.get_v_scroll().page == $LogPanel/RichTextLabel.get_v_scroll().max_value || !$LogPanel/RichTextLabel.get_v_scroll().visible):
 			$LogPanel.hide()
 		return
-
-	if event.is_action("ctrl"):
-		if event.is_pressed():
-			skip = true
-		else:
-			skip = false
 	if event.is_echo() == true || event.is_pressed() == false:
 		return
 
@@ -822,7 +821,7 @@ func tag_state(method:String, arg):
 		_: print("Unknown state command: %s" % method)
 
 func tag_sprite_hide() -> void:
-	ImageSprite.texture = null
+	ImageSprite.modulate = Color(1,1,1,0)
 
 func tag_sprite(res_name: String) -> void:
 	var tspr = ImageSprite.get_node_or_null('sprite')

@@ -13,9 +13,9 @@ Ro - (Even though I feel lonely, he ignores me, and even ridicules me.)
 Ro - (Of course he's from a royal family and is used to having many women serve him.)
 Ro - (But I can't lose him to them now after all we have been through.)
 ...
-=MUSIC_STOP=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
+=MUSIC_STOP=
 Rose enters Arron's room. He seems to be asleep already.
 Ro - Master..?
 Rose stands in the corner of the darkened chamber for a minute, breathing quickly.
@@ -80,8 +80,8 @@ Ro - Gross.
 Rose wiped her face and eagerly looked up at Arron from between his legs.
 Ar - Good. Are you ready for the main event now?
 =BLACKUNFADE 0.5=
+=DELAY 0.5=
 =ABG rose_sex_1=
-=DELAY 2=
 Arron's penis still stood firmly at attention despite just cumming, much to Rose's relief.
 =BLACKFADE 0.5=
 =DELAY 0.5=
@@ -110,14 +110,11 @@ Ro - Oh yes, ah! Master, please, ah! Master, it feels ah! so good.
 She moved faster, one hand teasing a nipple as her small firm breasts quivered each time her pussy filled with Arron’s shaft.
 Ro - Ah ah ah ah aah!
 Ar - Nnnh, well, well, you’re a horny little vixen tonight, aren’t you?
-Ro - Aaahh... Aah...
-Ro - Y-yes Master, I can’t help myself... 
+Ro - Y-yes Master, I can’t help myself.. 
 Ro - I want to be filled with you.
 =ABG rose_sex_4=
 Rose was surprising herself, in how differently desire could make her feel and behave.
-Ro - Oh god! 
-Ro - Ahhh...
-Ro - I feel so full...
+Ro - Oh god! *gasp* I feel so full...
 Arron’s penis thrust deep into her tight pussy as she bounced on top of him. Rose's gasps grew louder and more urgent.
 Ro - Please! I’m going to cum! Fill me up with your seed. I want to feel you cum inside me.
 Ro - Aaah, yes, yes, yes!
@@ -130,7 +127,7 @@ Ro - Ah... Master, please, hold me!
 Rose fell forward, embracing Arron, her mouth opening for his tongue as his seed pumped into her womb. 
 =ABG rose_sex_5 rose_sex_6=
 =WHITE=
-=DELAY 1.5=
+=DELAY 0.5=
 Rose’s slim body shuddered and trembled as a massive orgasm overwhelmed her, toes and tail curling tightly as she shook.  
 Ro - Aaaaaaaah!
 Arron held Rose close as her pussy continued to convulse around his shaft, his cum squeezing out onto her sleek thighs..
@@ -146,7 +143,4 @@ He spanked her ass once, lightly, as she curled against him.
 =DELAY 0.5=
 Rose weakly buried her face in Arron's chest.
 Ro - Mmmm...
-=GUI_HIDE=
-=BLACKUNFADE 1=
-=DELAY 1=
 =STOP=
