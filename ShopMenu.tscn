@@ -5,40 +5,49 @@
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 3.1748
+margin_bottom = 3.1748
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 105.0
-margin_top = 45.0
-margin_right = 799.0
-margin_bottom = 1041.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-margin_left = 67.0
-margin_top = 101.0
-margin_right = 633.0
-margin_bottom = 960.0
+margin_left = 356.432
+margin_top = 6.8363
+margin_right = 1593.43
+margin_bottom = 1002.84
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 566.0
-margin_bottom = 75.0
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+margin_left = 204.657
+margin_top = 126.287
+margin_right = 1034.66
+margin_bottom = 715.287
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="GridContainer" parent="Panel/ScrollContainer"]
+margin_right = 830.0
+margin_bottom = 510.0
 size_flags_horizontal = 3
+custom_constants/vseparation = 30
+custom_constants/hseparation = 30
+columns = 2
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_right = 566.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 0, 75 )
+margin_right = 400.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 400, 150 )
 
 [node name="Icon" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button"]
-margin_left = 8.97971
-margin_top = 6.73477
-margin_right = 73.9797
-margin_bottom = 71.7348
+margin_left = 14.7097
+margin_top = 14.2571
+margin_right = 114.71
+margin_bottom = 114.257
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
@@ -47,41 +56,289 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button"]
-margin_left = 94.0
-margin_top = 26.0
-margin_right = 281.0
-margin_bottom = 50.0
+margin_left = 178.573
+margin_top = 13.063
+margin_right = 314.573
+margin_bottom = 37.063
 text = "ItemName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Price" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button"]
-margin_left = 492.0
-margin_top = 24.0
-margin_right = 560.0
-margin_bottom = 48.0
-text = "150g"
-align = 1
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 145.063
+margin_top = 48.8252
+margin_right = 390.063
+margin_bottom = 129.825
+text = "Short description
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_left = 430.0
+margin_right = 830.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 400, 150 )
+
+[node name="Icon" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button2"]
+margin_left = 14.7097
+margin_top = 14.2571
+margin_right = 114.71
+margin_bottom = 114.257
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button2"]
+margin_left = 178.573
+margin_top = 13.063
+margin_right = 314.573
+margin_bottom = 37.063
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer/Button2"]
+margin_left = 145.063
+margin_top = 48.8252
+margin_right = 390.063
+margin_bottom = 129.825
+text = "Short description
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 180.0
+margin_right = 400.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 400, 150 )
+
+[node name="Icon" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button3"]
+margin_left = 14.7097
+margin_top = 14.2571
+margin_right = 114.71
+margin_bottom = 114.257
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button3"]
+margin_left = 178.573
+margin_top = 13.063
+margin_right = 314.573
+margin_bottom = 37.063
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer/Button3"]
+margin_left = 145.063
+margin_top = 48.8252
+margin_right = 390.063
+margin_bottom = 129.825
+text = "Short description
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_left = 430.0
+margin_top = 180.0
+margin_right = 830.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 400, 150 )
+
+[node name="Icon" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button4"]
+margin_left = 14.7097
+margin_top = 14.2571
+margin_right = 114.71
+margin_bottom = 114.257
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button4"]
+margin_left = 178.573
+margin_top = 13.063
+margin_right = 314.573
+margin_bottom = 37.063
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer/Button4"]
+margin_left = 145.063
+margin_top = 48.8252
+margin_right = 390.063
+margin_bottom = 129.825
+text = "Short description
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 360.0
+margin_right = 400.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 400, 150 )
+
+[node name="Icon" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button5"]
+margin_left = 14.7097
+margin_top = 14.2571
+margin_right = 114.71
+margin_bottom = 114.257
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button5"]
+margin_left = 178.573
+margin_top = 13.063
+margin_right = 314.573
+margin_bottom = 37.063
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer/Button5"]
+margin_left = 145.063
+margin_top = 48.8252
+margin_right = 390.063
+margin_bottom = 129.825
+text = "Short description
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_left = 430.0
+margin_top = 360.0
+margin_right = 830.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 400, 150 )
+
+[node name="Icon" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button6"]
+margin_left = 14.7097
+margin_top = 14.2571
+margin_right = 114.71
+margin_bottom = 114.257
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button6"]
+margin_left = 178.573
+margin_top = 13.063
+margin_right = 314.573
+margin_bottom = 37.063
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer/Button6"]
+margin_left = 145.063
+margin_top = 48.8252
+margin_right = 390.063
+margin_bottom = 129.825
+text = "Short description
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="Panel"]
-margin_left = 98.9949
-margin_top = 12.7279
-margin_right = 280.995
-margin_bottom = 67.7279
+margin_left = 401.653
+margin_top = 18.7211
+margin_right = 583.653
+margin_bottom = 73.7211
 text = "Buy "
 
 [node name="Button2" type="Button" parent="Panel"]
-margin_left = 370.524
-margin_top = 12.7279
-margin_right = 552.524
-margin_bottom = 67.7279
+margin_left = 673.182
+margin_top = 18.7211
+margin_right = 855.182
+margin_bottom = 73.7211
 text = "Sell"
 
+[node name="Panel" type="Panel" parent="Panel"]
+self_modulate = Color( 1, 0.0117647, 0.0117647, 1 )
+margin_left = 155.532
+margin_top = 744.413
+margin_right = 1068.53
+margin_bottom = 973.413
+
+[node name="SpinBox" type="SpinBox" parent="Panel/Panel"]
+margin_left = 700.044
+margin_top = 46.0347
+margin_right = 786.044
+margin_bottom = 80.0347
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel"]
+margin_left = 39.0
+margin_top = 22.0
+margin_right = 538.0
+margin_bottom = 111.0
+text = "Item description"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Panel"]
+margin_left = 369.864
+margin_top = 153.978
+margin_right = 504.864
+margin_bottom = 177.978
+text = "Price"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Panel/Panel"]
+margin_left = 49.2094
+margin_top = 153.978
+margin_right = 184.209
+margin_bottom = 177.978
+text = "In possession: 5"
+
+[node name="Button" type="Button" parent="Panel/Panel"]
+margin_left = 614.224
+margin_top = 137.0
+margin_right = 870.224
+margin_bottom = 204.0
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SelectAmountPanel" type="Panel" parent="."]
+visible = false
 margin_left = 955.615
 margin_top = 494.856
 margin_right = 1287.62
