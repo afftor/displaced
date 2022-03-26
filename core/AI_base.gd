@@ -54,7 +54,7 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 						if t_skill.tags.has('buff'): 
 							target_dir.quality = max(target_dir.quality, 1.0)
 						#aoe skills are more desired if there are more targets in area
-						match t_skill.target_number:
+						match t_skill.targetpattern:
 							'all':
 								if act_targets.size() < 4: target_dir.quality *= 0.5
 								if act_targets.size() < 2: target_dir.quality *= 0.5

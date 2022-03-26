@@ -76,8 +76,8 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0000s_0003s_0000_Ent_at",
 		},
 	},
-	faerie = {
-		code = 'faerie',
+	faery = {
+		code = 'faery',
 		name = tr(""),
 		flavor = tr(""),
 		race = 'humanoid',
@@ -782,6 +782,8 @@ var loottables = {
 
 
 func _ready():
+#	for e in enemylist.values():
+#		e.basehp = 1
 	yield(preload_icons(), 'completed')
 	print("Enemies icons preloaded")
 

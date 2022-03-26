@@ -1882,7 +1882,7 @@ var skilllist = {
 		keep_target = variables.TARGET_KEEP,
 		reqs = [{type = 'stats', name = 'ai_spec', operant = 'lt', value = 3}],
 		tags = ['summon'],
-		value = ['faerie', [1, 2]],
+		value = ['faery', [1, 2]],
 		repeat = 1,
 		cooldown = 1,
 #		manacost = 30,

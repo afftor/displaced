@@ -61,7 +61,8 @@ func _input(event):
 
 
 func setup_character(ch):
-#	print(ch.name)
+#	print("%s - %s" % [str(modulate), str(ch.position)])
+	modulate = Color(1,1,1,1)
 	fighter = ch
 	ch.displaynode = self
 	position = fighter.position
@@ -103,6 +104,8 @@ func setup_character(ch):
 	
 #		connect("signal_RMB", input_handler.combat_node.gui, "ShowFighterStats")
 #		connect("signal_RMB_release", input_handler.combat_node, 'HideFighterStats')
+	if is_connected("signal_LMB",input_handler.combat_node, 'FighterPress'):
+		disconnect('signal_LMB', input_handler.combat_node, 'FighterPress')
 	connect("signal_LMB", input_handler.combat_node, 'FighterPress')
 	if is_connected('mouse_entered', input_handler.combat_node, 'FighterMouseOver'):
 		disconnect('mouse_entered', input_handler.combat_node, 'FighterMouseOver')

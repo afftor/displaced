@@ -31,9 +31,9 @@ func apply_atomic(template):
 			if ai.has_method(template.value): ai.call(template.value)
 		_: .apply_atomic(template)
 
-func createfromtemplate(enemy, lvl):
-	var template = Enemydata.enemylist[enemy].duplicate()
-	base = enemy
+func createfromtemplate(enemy_id, lvl):
+	var template = Enemydata.enemylist[enemy_id].duplicate()
+	base = enemy_id
 	level = lvl
 	race = template.race
 	hpmax = template.basehp #or not

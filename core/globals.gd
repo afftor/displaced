@@ -16,7 +16,7 @@ var CurrentScene #holds reference to instanced scene
 
 var scenedict = {
 	menu = "res://files/scenes/Menu.tscn",
-	town = "res://files/scenes/MainScreen.tscn",
+	town = "res://files/scenes/village/MainScreen_new.tscn",
 	map = "res://files/scenes/map/map.tscn"
 }
 
