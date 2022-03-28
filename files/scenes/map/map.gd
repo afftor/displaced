@@ -104,8 +104,6 @@ func check_location(loc_id):
 	if !Explorationdata.locations[loc_id].has('events'):
 		return
 	for seq in Explorationdata.locations[loc_id].events:
-		if seq == 'erika_at_village':
-			print('+')
 		if state.check_sequence(seq):
 			binded_events[loc_id] = seq
 			break

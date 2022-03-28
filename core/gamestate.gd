@@ -170,6 +170,7 @@ func complete_area(area_code = activearea):
 		activearea = stashedarea
 		if stashedarea != null:
 			stashedarea = null
+	input_handler.map_node.update_map()
 
 
 func pos_set(value):

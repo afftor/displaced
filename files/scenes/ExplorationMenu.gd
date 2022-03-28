@@ -99,7 +99,7 @@ func open_explore():
 			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
 			if !state.areaprogress[a].completed: continue
-			var panel = input_handler.DuplicateContainerTemplate(arealist)
+			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 			panel.text = areadata.name
 			panel.set_meta('area', a)
 			panel.connect('pressed', self, 'select_area', [a])
@@ -182,6 +182,7 @@ func build_area_description():
 func start_area():
 	state.start_area(area, scalecheck.checked)
 	for node in arealist.get_children():
+		if !node.visible: continue
 		node.disabled = (area != node.get_meta('area'))
 	open_mission()
 

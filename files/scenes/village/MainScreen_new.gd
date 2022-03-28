@@ -162,6 +162,7 @@ func openmarket():
 
 
 func ReturnToMap():
+	input_handler.map_node.update_map()
 	hide()
 	input_handler.CurrentScreen = 'Map'
 
