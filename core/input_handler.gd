@@ -64,9 +64,9 @@ func _input(event):
 			OS.window_position = Vector2(0,0)
 	
 	
-	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0:
-		if str(int(event.as_text())) in str(range(1,4)):
-			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
+#	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0:
+#		if str(int(event.as_text())) in str(range(1,4)):
+#			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 
 var musicfading = false
 var musicraising = false

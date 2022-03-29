@@ -109,6 +109,11 @@ func _ready():
 #	set_process(true)
 
 
+func show():
+	buildscreen()
+	input_handler.CurrentScreen = 'Village'
+	.show()
+
 func buildscreen(empty = null):
 	for build in globals.upgradelist:
 		var node = get_node(build)

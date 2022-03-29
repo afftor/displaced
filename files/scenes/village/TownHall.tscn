@@ -34,6 +34,9 @@ margin_top = 23.0
 margin_right = 542.0
 margin_bottom = 689.0
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="ButtonPanel"]
 margin_left = 78.0
@@ -147,6 +150,40 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UpcomingEvents" type="Panel" parent="."]
+margin_left = 1096.89
+margin_top = 673.058
+margin_right = 1655.89
+margin_bottom = 888.058
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpcomingEvents"]
+margin_left = 7.93701
+margin_top = 7.93701
+margin_right = 544.937
+margin_bottom = 213.937
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpcomingEvents/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portrait" type="TextureButton" parent="UpcomingEvents/ScrollContainer/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+texture_normal = ExtResource( 14 )
+expand = true
+stretch_mode = 5
 
 [node name="UpgradeList" type="TextureRect" parent="."]
 visible = false
@@ -268,40 +305,6 @@ margin_left = 588.0
 margin_top = 72.0
 margin_right = 1445.0
 margin_bottom = 782.0
-
-[node name="UpcomingEvents" type="Panel" parent="."]
-margin_left = 1096.89
-margin_top = 673.058
-margin_right = 1655.89
-margin_bottom = 888.058
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UpcomingEvents"]
-margin_left = 7.93701
-margin_top = 7.93701
-margin_right = 544.937
-margin_bottom = 213.937
-scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UpcomingEvents/ScrollContainer"]
-margin_right = 200.0
-margin_bottom = 200.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="portrait" type="TextureButton" parent="UpcomingEvents/ScrollContainer/HBoxContainer"]
-margin_right = 200.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-texture_normal = ExtResource( 14 )
-expand = true
-stretch_mode = 5
 
 [node name="scenes" parent="." instance=ExtResource( 16 )]
 visible = false

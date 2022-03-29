@@ -499,6 +499,7 @@ var char_max = 0
 var skip = false
 var delay = 0
 var receive_input = false
+var force_stop
 
 var is_video_bg = false
 var decisions = PoolStringArray()
@@ -623,7 +624,8 @@ func _process(delta: float) -> void:
 		delay -= delta
 		if delay < 0:
 			delay = 0
-
+	
+	if force_stop: skip = false
 	if (!receive_input && delay == 0) || (receive_input && skip):
 		advance_scene()
 
@@ -759,6 +761,7 @@ func get_choice(i: int):
 			text_log += "\n\n" + ch_button.get_node("Label").text
 			break
 	$ChoicePanel.visible = false
+	force_stop = false
 	advance_scene()
 
 
@@ -766,13 +769,14 @@ var choice_line = 0
 func tag_choice(chstring: String) -> void:
 	var chsplit = chstring.split("|")
 	skip = false
-
+	force_stop = true
+	
 	for i in $ChoicePanel/VBoxContainer.get_children():
 		if i.name != 'Button':
 			i.queue_free()
-
+	
 	$ChoicePanel.visible = true
-
+	
 	var c = 0
 	choice_line = line_nr
 	for ch in chsplit:
@@ -947,49 +951,49 @@ func advance_scene() -> void:
 			print("Unknown tag: ", line_dr)
 			line_nr += 1
 			return
-
+		
 		var method_name = "tag_%s" % line_dr[0].to_lower()
 		if !has_method(method_name):
 			print("Tag method %s not implemented yet!" % method_name)
 			line_nr += 1
 			return
-
+		
 		line_dr.remove(0)
 		callv(method_name, line_dr)
-
+		
 	else:
 		var splitted = line_dr.split(" - ")
-
+		
 		var is_narrator = true
 		var character = char_map['Narrator']
 		var replica = line_dr
-
+		
 		if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
 			character = char_map[splitted[0]]
 			replica = splitted[1]
 			is_narrator = false
-
+		
 		ShownCharacters = 0
 		replica = tr(replica)
 		if is_narrator:
 			text_log += '\n\n' + replica
 		else:
 			text_log += '\n\n' + '[' + tr(character.source) + ']\n' + replica
-
+		
 		TextField.visible_characters = ShownCharacters
 		TextField.bbcode_text = "[color=#%s]%s[/color]" % [character.color.to_html(), replica]
-
+		
 		var portrait_res = resources.get_res("portrait/%s" % character.portrait)
-
+		
 		$Panel/DisplayName.modulate.a = 1 if !is_narrator else 0
 		$Panel/CharPortrait.modulate.a = 1 if !is_narrator && portrait_res != null else 0
 		$Panel/DisplayName/Label.text = tr(character.source)
 		if ($Panel/CharPortrait.visible || $Panel/CharPortrait.modulate.a == 1) \
 													&& portrait_res != null:
 			$Panel/CharPortrait.texture = portrait_res
-
+		
 		receive_input = true
-
+	
 	line_nr += 1
 
 func preload_scene(scene: String) -> void:

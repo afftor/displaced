@@ -29,6 +29,8 @@ func _ready():
 
 
 func open():
+	$UpgradeList.hide()
+	$UpgradeDescript.hide()
 	show()
 
 func show():
