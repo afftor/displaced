@@ -783,6 +783,7 @@ func summon(montype, number):
 		enemygroup[sum_pos].createfromtemplate(montype, en_level);
 		battlefield[sum_pos] = enemygroup[sum_pos];
 		enemygroup[sum_pos].acted = true
+		enemygroup[sum_pos].position = sum_pos
 		make_fighter_panel(battlefield[sum_pos], sum_pos);
 #		state.combatparty[sum_pos] = enemygroup[sum_pos].id
 		state.heroes[enemygroup[sum_pos].id] = enemygroup[sum_pos]
