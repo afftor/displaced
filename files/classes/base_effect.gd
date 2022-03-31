@@ -200,7 +200,7 @@ func serialize():
 	tmp['type'] = 'base'
 	tmp['atomic'] = atomic
 	tmp['buffs'] = []
-	#tmp['app_char'] = applied_char
+#	tmp['app_char'] = applied_char
 	for b in buffs:
 		tmp['buffs'].push_back(b.serialize())
 	return tmp
@@ -214,7 +214,8 @@ func deserialize(tmp):
 	sub_effects = tmp['sub_effects'].duplicate()
 	atomic = tmp['atomic'].duplicate()
 #warning-ignore:incompatible_ternary
-	applied_char = tmp['app_char']
+#	applied_char = tmp['app_char']
+	applied_char = null
 	buffs.clear()
 	calculate_args()
 	for b in tmp['buffs']:

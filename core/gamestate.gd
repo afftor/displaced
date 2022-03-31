@@ -415,8 +415,10 @@ func deserialize(tmp:Dictionary):
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
 	cleanup()
+	combatparty.clear()
 	for key in heroes_save.keys():
 		heroes[key].deserialize(heroes_save[key])
+	effects_pool.cleanup()
 	items.clear()
 	for key in items_save.keys():
 		var key1 = key
@@ -425,9 +427,9 @@ func deserialize(tmp:Dictionary):
 		var t := dict2inst(items_save[key])
 		t.id = key1
 		items[key1] = t
-	combatparty.clear()
-	for k in party_save.keys() :
-		combatparty[int(k)] = party_save[k]
+	
+#	for k in party_save.keys() :
+#		combatparty[int(k)] = party_save[k]
 	reset_areaprogress()
 	for k in area_save.keys() :
 #		areaprogress[k] = area_save[k].duplicate()
