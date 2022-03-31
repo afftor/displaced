@@ -25,14 +25,14 @@ func get_effect_by_id(id):
 	return effects[id]
 
 func cleanup():
-	for id in effects:
+	for id in effects.keys().duplicate():
 		if !effects[id].is_applied:
 			remove_id(id)
 	pass
 
 func remove_id(id):
 	for eff in effects.values():
-		if eff.parent == id:
+		if typeof(eff.parent) == TYPE_STRING and eff.parent == id:
 			eff.parent = null
 		if eff.sub_effects.has(id):
 			eff.sub_effects.erase(id)
