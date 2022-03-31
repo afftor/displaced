@@ -67,7 +67,6 @@ func _ready():
 	get_tree().set_auto_accept_quit(false)
 	if input_handler.scene_node == null:
 		input_handler.initiate_scennode(self)
-	globals.CurrentScene = self
 	input_handler.SetMusic("towntheme")
 	
 #	var speedvalues = [0,1,10]
@@ -112,6 +111,7 @@ func _ready():
 func show():
 	buildscreen()
 	input_handler.CurrentScreen = 'Village'
+#	globals.CurrentScene = self
 	.show()
 
 func buildscreen(empty = null):

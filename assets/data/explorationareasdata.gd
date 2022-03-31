@@ -214,7 +214,7 @@ var scene_sequences = {
 	
 	ember_smith = {
 		initiate_signal = 'village_smith', 
-		initiate_reqs = [{type = 'seq_seen', value = 'ember_recruited'}],
+		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_2'},
 		]
@@ -225,7 +225,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 		actions = [
 		{type = 'scene', value = 'dimitrius_1_1'},
-		{type = 'system', value = 'unlock_area', arg = 'caves'},
+		{type = 'system', value = 'unlock_area', arg = 'cave'},
 		{type = 'system', value = 'unlock_mission', arg = 'caves_demitrius'}
 		]
 	},

@@ -817,8 +817,8 @@ func QuickSave():
 
 
 func SaveGame(name):
-	if state.CurEvent != '':
-		state.CurrentLine = input_handler.get_spec_node(input_handler.NODE_EVENT).CurrentLine
+#	if state.CurEvent != '':
+#		state.CurrentLine = input_handler.get_spec_node(input_handler.NODE_EVENT).CurrentLine
 	var savedict = state.serialize();
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))

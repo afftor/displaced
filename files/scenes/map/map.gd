@@ -92,6 +92,8 @@ func update_map():
 				if state.activearea != null:
 #					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
 					area_node.set_current(Explorationdata.locations[loc].missions.has(state.activearea))
+				else:
+					area_node.set_current(false)
 			else:
 				area_node.set_inactive()
 

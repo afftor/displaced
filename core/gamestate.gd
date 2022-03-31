@@ -434,8 +434,8 @@ func deserialize(tmp:Dictionary):
 		areaprogress[k].unlocked = area_save[k].unlocked
 		areaprogress[k].level = int(area_save[k].level)
 		areaprogress[k].stage = int(area_save[k].stage)
-		areaprogress[k].active = area_save[k].active
-		areaprogress[k].compleated = area_save[k].compleated
+#		areaprogress[k].active = area_save[k].active
+		areaprogress[k].completed = area_save[k].completed
 	townupgrades.clear()
 	for k in town_save.keys() :
 		townupgrades[k] = int(town_save[k])

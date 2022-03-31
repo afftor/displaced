@@ -265,7 +265,10 @@ func deserialize(savedir):
 	hp = savedir.hp
 #	mana = savedir.mana
 #	defeated = savedir.defeated
-	position = int(savedir.position)
+	if savedir.position != null:
+		position = int(savedir.position)
+	else:
+		position = null
 	if position != null: state.combatparty[position] = id
 	static_effects = savedir.static_effects.duplicate()
 	temp_effects = savedir.temp_effects.duplicate()
