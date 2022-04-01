@@ -156,6 +156,7 @@ func reset_progress():
 
 
 func build_area_description():
+	build_party()
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('description'):
 		areadesc.bbcode_text = areadata.description
