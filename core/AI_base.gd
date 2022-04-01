@@ -8,11 +8,14 @@ var skill_targets = {} #s_name:[targets]
 var current_state
 var next_state
 
+func get_skill_list():
+	return app_obj.skills
+
 
 func calculate_target_list(hide_ignore = false): #utility checks and targets calculating 
 	#for most of the cases reimplementing this function in inherited classes is not reqired
 	#works worser for skills with repeat and random targets
-	for s_n in app_obj.skills:
+	for s_n in get_skill_list():
 		var t_skill = Skillsdata.skilllist[s_n]
 		var target_array = []
 		var starget
@@ -118,7 +121,7 @@ func _get_action(hide_ignore = false):
 	calculate_target_list(hide_ignore)
 #	if !hide_ignore: _set_next_state()
 	var actions = []
-	for s_n in app_obj.skills:
+	for s_n in get_skill_list():
 		var tmp = _get_weight_for_skill(s_n)
 		if tmp > 0: actions.push_back([s_n, tmp])
 	if actions.size() == 0:

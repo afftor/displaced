@@ -82,13 +82,17 @@ func update_map():
 		elif loc == 'village':
 			area_node.set_border_type('safe')
 			area_node.set_active()
-		elif loc == 'town':
-			area_node.set_inactive()
+#		elif loc == 'town':
+#			area_node.set_inactive()
 		else:
-			area_node.set_border_type('combat')
+#			area_node.set_border_type('combat')
 			
 			if Explorationdata.check_location_activity(loc):
 				area_node.set_active()
+				if Explorationdata.check_new_location_activity(loc):
+					area_node.set_border_type('combat')
+				else:
+					area_node.set_border_type('combat_replays')
 				if state.activearea != null:
 #					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
 					area_node.set_current(Explorationdata.locations[loc].missions.has(state.activearea))

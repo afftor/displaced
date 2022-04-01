@@ -25,6 +25,10 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{code = 'system', value = 'show_screen', args = 'exploration'},
 		{type = 'show_screen', value = 'exploration'},
 	],
+	aeros_1 = [
+		{type = 'system', value = 'unlock_mission', arg = 'caves_dwarf'},
+		{type = 'show_screen', value = 'exploration'},
+	],
 	aeros_2 = [
 		{type = 'scene', value = 'aeros_3'},
 	],
@@ -117,7 +121,7 @@ var locations = { #added seqs bindings and other fields
 		code = 'town',
 		background = null, #2fill
 #		missions = ['town_viktor_fight','town_siege'],
-		missions = [],
+		missions = ['road_to_town'],
 		function = '',
 		events = ['town_gates', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', ]
 	},
@@ -251,7 +255,7 @@ var scene_sequences = {
 	
 	town_gates = {
 		initiate_signal = 'town', 
-		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'caves_dwarf'}],
 		actions = [
 		{type = 'scene', value = 'aeros_2'},
 #		{type = 'system', value = 'unlock_area', arg = 'faery_forest'}, 
@@ -676,7 +680,7 @@ var areas = { #missions in new terminology
 		code = 'caves_demitrius',
 		name = 'Escort Demitrius', 
 		descript = "",
-		image = '',
+		image = 'combat_cave',
 		stages = 6, 
 		level = 4,
 		events = {
@@ -715,7 +719,7 @@ var areas = { #missions in new terminology
 		code = 'caves_iola',
 		name = "Demitrius' Daughter", 
 		descript = "",
-		image = '',
+		image = 'combat_cave',
 		stages = 6, 
 		level = 6,
 		events = {
@@ -747,7 +751,7 @@ var areas = { #missions in new terminology
 		code = 'road_to_town',
 		name = 'Road to Aeros', 
 		descript = "",
-		image = '',
+		image = 'combat_desert',
 		stages = 4, 
 		level = 8,
 		events = {
@@ -772,7 +776,7 @@ var areas = { #missions in new terminology
 		code = 'caves_dwarf',
 		name = 'Dwarfing Problems', 
 		descript = "",
-		image = '',
+		image = 'combat_cave2',
 		stages = 8, 
 		level = 11,
 		events = {
@@ -808,7 +812,7 @@ var areas = { #missions in new terminology
 				{1 : ['dwarfwarrior'], 2: ['dwarfwarrior'], 3: ['dwarfwarrior']},
 				],
 			8 : [
-				{1 : ['dwarfwarrior'], 5: ['dwarfking'], 3: ['dwarfwarrior']},
+				{1 : ['dwarfwarrior'], 5: ['dwarvenking'], 3: ['dwarfwarrior']},
 				],
 			},
 		},
@@ -817,7 +821,7 @@ var areas = { #missions in new terminology
 		code = 'forest_erika_sidequest',
 		name = 'Elven Medicine', 
 		descript = "",
-		image = '',
+		image = 'combat_forest1',
 		stages = 4, 
 		level = 12,
 		events = {
@@ -843,7 +847,7 @@ var areas = { #missions in new terminology
 		code = 'forest_faeries_1',
 		name = 'Faery Queen', 
 		descript = "",
-		image = '',
+		image = 'combat_forest1',
 		stages = 6, 
 		level = 14,
 		events = {
@@ -876,7 +880,7 @@ var areas = { #missions in new terminology
 		code = 'forest_faeries_2',
 		name = 'Faering Dirty Laundry', 
 		descript = "",
-		image = '',
+		image = 'combat_forest1',
 		stages = 5, 
 		level = 14,
 		events = {
@@ -904,7 +908,7 @@ var areas = { #missions in new terminology
 		code = 'forest_faeries_3',
 		name = 'Trapping the Royalty', 
 		descript = "",
-		image = '',
+		image = 'combat_forest1',
 		stages = 3, 
 		level = 14,
 		events = {
@@ -1241,6 +1245,21 @@ func check_location_activity(loc): #if there is mission avail
 		return true
 	for i in locations[loc].missions:
 		if !check_area_avail(i): continue
+		return true
+	return false
+
+
+func check_area_new_avail(area):
+	if !state.areaprogress.has(area): return false #for not implemented missions
+	if !state.areaprogress[area].unlocked: return false
+	return !state.areaprogress[area].completed
+
+
+func check_new_location_activity(loc): #if there is non-completed mission avail
+	if locations[loc].missions.empty():
+		return true
+	for i in locations[loc].missions:
+		if !check_area_new_avail(i): continue
 		return true
 	return false
 

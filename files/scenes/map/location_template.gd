@@ -80,6 +80,8 @@ func set_border_type(val):
 			material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
 		'combat':
 			material.set_shader_param('outline_color', Color(1.0, 0.0, 0.0))
+		'combat_replays':
+			material.set_shader_param('outline_color', Color(0.9, 0.6, 0.3))
 		'safe':
 			material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 

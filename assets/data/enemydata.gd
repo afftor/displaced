@@ -670,6 +670,38 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0000s_0001s_0000_Golem_at",
 		}
 	},
+	dwarvenking = { #stats copied from above!!! animation copied from regular warrior!!!! passives not set up
+		code = 'dwarvenking',
+		name = tr("MONSTERDWARVENKING"),
+		flavor = tr("MONSTERDWARVENKINGFLAVOR"),
+		race = 'rock',
+		skills = [],
+		passives = [],
+		traits = [],
+		basehp = 450,
+		basemana = 0,
+		armor = 35,
+		armorpenetration = 0,
+		mdef = 15,
+		evasion = 0,
+		hitrate = 95,
+		damage = 100,
+		speed = 30,
+		resists = {earth = 50, air = 25},
+		xpreward = 50,
+		ai = load('res://files/ai_classes/dk.gd').new(),
+		bodyhitsound = 'stone',
+		
+		combaticon = 'golemalt',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'earthgolembossloot',
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
+			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
+			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+		},
+	},
 
 }
 
