@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://files/scenes/ExploreScreen.gd" type="Script" id=1]
+[ext_resource path="res://unused/ExploreScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/forest.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/gui/taskmenu/workerpanelalt.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=4]
@@ -21,6 +21,7 @@
 [ext_resource path="res://files/scenes/HeroList.tscn" type="PackedScene" id=20]
 [ext_resource path="res://files/scenes/Inventory.tscn" type="PackedScene" id=21]
 [ext_resource path="res://unused/combat.tscn" type="PackedScene" id=22]
+
 
 
 [sub_resource type="StyleBoxTexture" id=1]

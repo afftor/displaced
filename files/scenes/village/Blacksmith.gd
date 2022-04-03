@@ -17,7 +17,8 @@ func _ready():
 	$ItemCreationWindow/MaterialSelect.hide()
 
 #warning-ignore:return_value_discarded
-	$ButtonPanel/CraftButton.connect("pressed", self, 'chooseitem')
+	$ButtonPanel/CraftButton.connect("pressed", self, 'opencraft')
+#	$ButtonPanel/CraftButton.connect("pressed", self, 'chooseitem')
 #warning-ignore:return_value_discarded
 #	$ButtonPanel/RepairButton.connect('pressed', self, 'repairitems')
 #warning-ignore:return_value_discarded
@@ -37,7 +38,7 @@ func _ready():
 
 
 func chooseitem():
-	$RepairPanel.hide()
+#	$RepairPanel.hide()
 	$ItemSelection.show()
 	input_handler.ClearContainer($ItemSelection/ScrollContainer/GridContainer)
 
@@ -269,12 +270,14 @@ func geartooltip(item):
 func open():
 	state.CurBuild = "blacksmith"
 	input_handler.ShowGameTip('blacksmith')
+	input_handler.menu_node.visible = false
 #	globals.check_signal("BuildingEntered", 'blacksmith')
 	.show()
 
 func hide():
-		state.CurBuild = "";
-		.hide();
+	input_handler.menu_node.visible = true
+	state.CurBuild = "";
+	.hide();
 #var selectedrepairingitem
 #
 #func repairingitemselected(item):
@@ -290,3 +293,5 @@ func hide():
 #		if state.materials[i] < repairmaterials[i]:
 #			newimage.get_node('amount').set("custom_colors/font_color", Color(1,0,0))
 
+func opencraft():
+	$craft.open()

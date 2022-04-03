@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/images/gui/buildings/panel.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/village/Blacksmith.gd" type="Script" id=2]
@@ -22,7 +22,7 @@
 [ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=20]
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=21]
 [ext_resource path="res://assets/images/gui/buildings/itemcreationpanel2.png" type="Texture" id=22]
-
+[ext_resource path="res://files/scenes/village/CraftPanel.tscn" type="PackedScene" id=23]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -353,3 +353,10 @@ margin_top = 99.0
 margin_right = 1047.0
 margin_bottom = 296.0
 texture_progress = ExtResource( 22 )
+
+[node name="craft" parent="." instance=ExtResource( 23 )]
+visible = false
+margin_left = -35.0
+margin_top = -52.0
+margin_right = 95.0
+margin_bottom = 93.0
