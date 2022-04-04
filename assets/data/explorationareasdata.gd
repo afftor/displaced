@@ -44,7 +44,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'heal_team'},
 	],
 	rilu_1_3 = [
-		{type = 'system', value = 'unlock_character', args = 'rilu'},
+		{type = 'system', value = 'unlock_character', arg = 'rilu'},
 		{type = 'system', value = 'add_member_to_active_party', slot = 3, member = 'rilu'},
 		{type = 'system', value = 'heal_team'},
 	],
@@ -783,7 +783,7 @@ var areas = { #missions in new terminology
 			after_fight_5 = 'rilu_1_1',
 			after_fight_6 = 'rilu_1_2',
 			after_fight_7 = 'rilu_1_3',
-			on_complete = "rilu1_4",
+			on_complete = "rilu_1_4",
 		},
 		enemies = {
 			1 : [
