@@ -48,9 +48,9 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'add_member_to_active_party', slot = 3, member = 'rilu'},
 		{type = 'system', value = 'heal_team'},
 	],
-	faeryqueen_1 = [
-		{type = 'scene', value = 'faeryqueen_1_a', reqs = [{type = 'decision', name = 'portal'}]},
-		{type = 'scene', value = 'faeryqueen_1_b'},
+	faery_queen_1 = [
+		{type = 'scene', value = 'faery_queen_1_a', reqs = [{type = 'decision', name = 'portal'}]},
+		{type = 'scene', value = 'faery_queen_1_b'},
 	],
 	faeryqueen_1_a = [
 		{type = 'scene', value = 'faeryqueen_1_b'},
@@ -851,7 +851,7 @@ var areas = { #missions in new terminology
 		stages = 6, 
 		level = 14,
 		events = {
-			on_complete = "faeryqueen_1",
+			on_complete = "faery_queen_1",
 		},
 		enemies = {
 			1 : [
@@ -884,7 +884,7 @@ var areas = { #missions in new terminology
 		stages = 5, 
 		level = 14,
 		events = {
-			on_complete = "faeryqueen_2",
+			on_complete = "faery_queen_2",
 		},
 		enemies = {
 			1 : [
@@ -912,8 +912,8 @@ var areas = { #missions in new terminology
 		stages = 3, 
 		level = 14,
 		events = {
-			after_fight_2 = "faeryqueen_3",
-			on_complete = "faeryqueen_4",
+			after_fight_2 = "faery_queen_3",
+			on_complete = "faery_queen_4",
 		},
 		enemies = {
 			1 : [
