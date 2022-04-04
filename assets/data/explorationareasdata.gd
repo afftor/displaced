@@ -52,11 +52,11 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'scene', value = 'faery_queen_1_a', reqs = [{type = 'decision', name = 'portal'}]},
 		{type = 'scene', value = 'faery_queen_1_b'},
 	],
-	faeryqueen_1_a = [
+	faery_queen_1_a = [
 		{type = 'scene', value = 'faeryqueen_1_b'},
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
 	],
-	faeryqueen_1_b = [
+	faery_queen_1_b = [
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
 		{type = 'show_screen', value = 'exploration'},
 	],
