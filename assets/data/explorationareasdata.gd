@@ -102,7 +102,7 @@ var locations = { #added seqs bindings and other fields
 	forest =  {
 		code = 'forest',
 		background = null, #2fill
-		missions = ['forest_erika','forest_faeries_1','forest_faeries_2','forest_erika_sidequest'],
+		missions = ['forest_erika','forest_faeries_1','forest_faeries_2','forest_faeries_3','forest_erika_sidequest'],
 		events = []
 	},
 	cave =  {
