@@ -60,12 +60,12 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
 		{type = 'show_screen', value = 'exploration'},
 	],
-	faeryqueen_2 = [
+	faery_queen_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_3'},
 		{type = 'show_screen', value = 'exploration'},
 	],
 	
-	faeryqueen_4 = [
+	faery_queen_4 = [
 		{type = 'show_screen', value = 'exploration'},
 	],
 	
@@ -102,7 +102,7 @@ var locations = { #added seqs bindings and other fields
 	forest =  {
 		code = 'forest',
 		background = null, #2fill
-		missions = ['forest_erika','forest_faeries_1','forest_faeries_2','forest_faeries_2','forest_erika_sidequest'],
+		missions = ['forest_erika','forest_faeries_1','forest_faeries_2','forest_erika_sidequest'],
 		events = []
 	},
 	cave =  {
