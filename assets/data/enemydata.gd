@@ -309,7 +309,7 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0005s_0001_Archer_at",
 		},
 	},
-	wraith = {
+	wraith = { #animations copied
 		code = 'wraith',
 		name = tr(""),
 		flavor = tr(""),
@@ -326,7 +326,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
+			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
+			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+		},
 	},
 	cult_soldier = {
 		code = 'cult_soldier',

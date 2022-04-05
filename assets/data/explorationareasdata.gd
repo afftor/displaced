@@ -128,7 +128,7 @@ var locations = { #added seqs bindings and other fields
 	castle =  {
 		code = 'castle',
 		background = null, #2fill
-		missions = ['castle_rilu_return'],
+		missions = ['castle_iola','castle_rilu_return'],
 		events = ['rilu_castle', ]
 	},
 	dragon_mountains = {
