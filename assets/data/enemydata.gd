@@ -750,6 +750,38 @@ var enemylist = {
 			attack ="Fight/Bosses/Queen_fairy_cast" ,
 		},
 	},
+	dragon_boss = { #stats copied from above!!!  skills copied from wyvern
+		code = 'dragon_boss',
+		name = tr("MONSTERDWARVENKING"),
+		flavor = tr("MONSTERDWARVENKINGFLAVOR"),
+		race = 'rock',
+		skills = ['attack', 'fire_breath', 'tail_swipe'],
+		passives = [],
+		traits = [],
+		basehp = 450,
+		basemana = 0,
+		armor = 35,
+		armorpenetration = 0,
+		mdef = 15,
+		evasion = 0,
+		hitrate = 95,
+		damage = 100,
+		speed = 30,
+		resists = {earth = 50, air = 25},
+		xpreward = 50,
+		bodyhitsound = 'stone',
+
+		combaticon = 'golemalt',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'earthgolembossloot',
+		animations = {
+			idle = load("res://assets/images/Fight/Bosses/Dragon_idle_sq/Dragon.tres"),
+			hit = "Fight/Bosses/Dragon_hit",
+			attack ="Fight/Bosses/Dragon_at" ,
+			cast ="Fight/Bosses/Dragon_cast" ,
+		},
+	},
 
 }
 

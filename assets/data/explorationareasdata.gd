@@ -134,7 +134,7 @@ var locations = { #added seqs bindings and other fields
 	dragon_mountains = {
 		code = 'dragon_mountains',
 		background = null, #2fill
-		missions = ['mountains_ember'],
+		missions = ['dragon_mountains'],
 		events = []
 	},
 	cult =  {
@@ -360,7 +360,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_recruited'}],
 		actions = [
 		{type = 'scene', value = 'ember_2_1'},
-		{type = 'system', value = 'unlock_area', arg = 'mountains'},
+		{type = 'system', value = 'unlock_area', arg = 'dragon_mountains'},
 		{type = 'system', value = 'unlock_mission', arg = 'dragon_mountains'}
 		]
 	},
@@ -989,8 +989,8 @@ var areas = { #missions in new terminology
 			},
 		},
 		
-	mountains_ember = {
-		code = 'mountains_ember',
+	dragon_mountains = {
+		code = 'dragon_mountains',
 		name = 'Dragon Climbing', 
 		descript = "",
 		image = '',
@@ -998,7 +998,7 @@ var areas = { #missions in new terminology
 		level = 21,
 		events = {
 			after_fight_4 = 'ember_2_2',
-			pre_boss_fight = "ember_2_3",
+			after_fight_7 = "ember_2_3",
 			on_complete = "ember_2_4",
 		},
 		enemies = {
