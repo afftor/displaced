@@ -69,7 +69,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'show_screen', value = 'exploration'},
 	],
 	
-	viktor_2_3 = [
+	victor_2_3 = [
 		{type = 'mission', value = 'town_viktor_fight'},
 	],
 	rilu_2_3_2 = [
@@ -77,9 +77,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	ember_2_4 = [
 #		{code = 'system', value = 'start_next_scene', args = 'viktor_2_1'},
-		{type = 'scene', value = 'viktor_2_1'},
+		{type = 'scene', value = 'victor_2_1'},
 	],
-	viktor_2_1 = [
+	victor_2_1 = [
 #		{code = 'system', value = 'show_screen', args = 'exploration'},
 		{type = 'show_screen', value = 'exploration'},
 	],
@@ -276,7 +276,7 @@ var scene_sequences = {
 		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'}],
 		actions = [
-		{type = 'scene', value = 'viktor_1'},
+		{type = 'scene', value = 'victor_1'},
 		]
 	},
 	annet_introduction = {
@@ -373,9 +373,9 @@ var scene_sequences = {
 #	},
 	viktor_sends_threat = {
 		initiate_signal = 'village_townhall_ember', 
-		initiate_reqs = [{type = 'scene_seen', value = 'viktor_2_1'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'victor_2_1'}],
 		actions = [
-		{type = 'scene', value = 'viktor_2_2'},
+		{type = 'scene', value = 'victor_2_2'},
 #		{type = 'system', value = 'unlock_mission', arg = 'town_viktor_fight'}
 		]
 	},
@@ -383,9 +383,9 @@ var scene_sequences = {
 		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'seq_seen', value = 'viktor_sends_threat'}],
 		actions = [
-		{type = 'scene', value = 'viktor_2_3'}, 
+		{type = 'scene', value = 'victor_2_3'}, 
 		{type = 'mission', value = 'town_viktor_fight'},
-		{type = 'scene', value = 'viktor_2_4'}
+		{type = 'scene', value = 'victor_2_4'}
 		]
 	},
 	rilu_disappear =  {
@@ -1038,7 +1038,7 @@ var areas = { #missions in new terminology
 		image = '',
 		stages = 1, 
 		level = 23,
-		events = {on_complete = 'viktor_2_4'},
+		events = {on_complete = 'victor_2_4'},
 		enemies = {
 			1 : [
 				{2 : ['viktor_boss']},
