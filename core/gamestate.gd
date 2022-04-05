@@ -436,6 +436,7 @@ func deserialize(tmp:Dictionary):
 #		combatparty[int(k)] = party_save[k]
 	reset_areaprogress()
 	for k in area_save.keys() :
+		if !areaprogress.has(k): continue
 #		areaprogress[k] = area_save[k].duplicate()
 		areaprogress[k].unlocked = area_save[k].unlocked
 		areaprogress[k].level = int(area_save[k].level)
