@@ -332,7 +332,7 @@ var enemylist = {
 			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
 		},
 	},
-	cult_soldier = {
+	cult_soldier = { #sprites copied
 		code = 'cult_soldier',
 		name = tr(""),
 		flavor = tr(""),
@@ -349,9 +349,13 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0002_Skelet_warrior_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0000_Skelet_warrior_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0001_Skelet_warrior_at",
+		},
 	},
-	cult_mage = {
+	cult_mage = { #sprites copied
 		code = 'cult_mage',
 		name = tr(""),
 		flavor = tr(""),
@@ -369,9 +373,13 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
+			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
+			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+		},
 	},
-	cult_archer = {
+	cult_archer = { #sprites copied
 		code = 'cult_archer',
 		name = tr(""),
 		flavor = tr(""),
@@ -389,7 +397,11 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0005s_0002_Archer_idle",
+			hit = "Fight/Fight_spritesFHD_0005s_0000_Archer_hit",
+			attack = "Fight/Fight_spritesFHD_0005s_0001_Archer_at",
+		},
 	},
 	hatchling = {
 		code = 'hatchling',
