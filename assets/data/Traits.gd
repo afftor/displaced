@@ -345,4 +345,13 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_wound']
 	},
+	fq_armor = {
+		code = 'fq_armor',
+		name = '',
+		description = '',
+		icon = null,
+		cost = 0,
+		hidden = false, #is not displayed at all
+		effects = ['e_tr_fq']
+	},
 };

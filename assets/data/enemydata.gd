@@ -702,6 +702,38 @@ var enemylist = {
 			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
 		},
 	},
+	fearyqueen = { #stats copied from above!!!  
+		code = 'fearyqueen',
+		name = tr("MONSTERDWARVENKING"),
+		flavor = tr("MONSTERDWARVENKINGFLAVOR"),
+		race = 'rock',
+		skills = [],
+		passives = [],
+		traits = ['fq_armor'],
+		basehp = 450,
+		basemana = 0,
+		armor = 35,
+		armorpenetration = 0,
+		mdef = 15,
+		evasion = 0,
+		hitrate = 95,
+		damage = 100,
+		speed = 30,
+		resists = {earth = 50, air = 25},
+		xpreward = 50,
+		ai = load('res://files/ai_classes/faery_queen.gd').new(),
+		bodyhitsound = 'stone',
+
+		combaticon = 'golemalt',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'earthgolembossloot',
+		animations = {
+			idle = load("res://assets/images/Fight/Bosses/Fairy_sq/FairyQueen.tres"),
+			hit = "Fight/Bosses/Queen_fairy_hit",
+			attack ="Fight/Bosses/Queen_fairy_cast" ,
+		},
+	},
 
 }
 

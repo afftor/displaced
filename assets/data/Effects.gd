@@ -1893,7 +1893,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				args = [{obj = 'app_obj', param = 'ai_spec'}],
-				atomic = [{type = 'stat_add', stat = 'shield', value = [['parent_arg', 0], '*', 25]}],
+				atomic = [{type = 'stat_add', stat = 'shield', value = [['parent_args', 0], '*', 25]}],
 				sub_effects = []
 			},
 		],

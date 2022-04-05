@@ -839,15 +839,16 @@ func victory():#2remake for it is broken for now
 			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
+		newbutton.get_node("xpbar").max_value = i.get_exp_cap()
 		var level = i.level
 		i.baseexp += ceil(rewardsdict.xp)
 		var subtween = input_handler.GetTweenNode(newbutton)
 		if i.level > level:
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, newbutton.get_node("xpbar").max_value, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
 			subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
-		elif i.level == level && i.baseexp == 100 :
+		elif i.level == level && i.baseexp >= i.get_exp_cap() :
 			newbutton.get_node("xpbar").value = 100
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
 			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))

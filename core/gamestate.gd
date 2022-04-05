@@ -88,7 +88,11 @@ func revert():
 	heroidcounter = 0
 	money = 0
 #	food = 50
-	townupgrades.clear()
+	townupgrades = {
+		bridge = 1,
+		townhall = 1,
+		market = 1,
+	}
 	reset_heroes()
 	reset_inventory()
 	items.clear()
@@ -438,7 +442,11 @@ func deserialize(tmp:Dictionary):
 		areaprogress[k].stage = int(area_save[k].stage)
 #		areaprogress[k].active = area_save[k].active
 		areaprogress[k].completed = area_save[k].completed
-	townupgrades.clear()
+	townupgrades = {
+		bridge = 1,
+		townhall = 1,
+		market = 1,
+	}
 	for k in town_save.keys() :
 		townupgrades[k] = int(town_save[k])
 

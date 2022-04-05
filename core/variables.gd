@@ -11,7 +11,7 @@ enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_REMOVE};
 enum {TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
 enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER};
 #Heroes
-var MaxLevel = 5
+var MaxLevel = 40
 var StartTraitPoints = 0
 var TraitPointsPerLevel = 1
 
@@ -20,7 +20,7 @@ var TraitPointsPerLevel = 1
 var bonuses_stat_list = ['damage']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'alt_mana', 'taunt']
+var direct_access_stat_list = ['hp', 'alt_mana', 'taunt', 'shield']
 var resistlist = ['damage', 'slash', 'pierce', 'bludgeon', 'light', 'dark', 'air', 'water', 'earth', 'fire']
 var status_list = ['burn', 'stun', 'chill', 'negative', 'poison', 'bleed']
 

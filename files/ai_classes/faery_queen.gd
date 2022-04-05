@@ -6,3 +6,10 @@ func get_spec_data():
 	for ch in batt.values():
 		if ch.base == 'faery': res += 1
 	return res
+
+
+func get_skill_list():
+	if app_obj.hp > 200: #first stage
+		return ['attack', 'fq_summon', 'fq_lance', 'fq_screech']
+	else: #second stage
+		return ['attack', 'fq_summon', 'fq_lance', 'fq_screech', 'fq_flash', 'fq_blast']
