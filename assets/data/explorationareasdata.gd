@@ -1111,6 +1111,9 @@ var areas = { #missions in new terminology
 			6 : [
 				{ 1 : ['earthgolemboss'], 3: ['earthgolemboss']},
 				],
+			7: [
+				{2: ['annet']}
+			]
 			},
 		},
 	castle_rilu = {
