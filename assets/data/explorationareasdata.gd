@@ -121,7 +121,7 @@ var locations = { #added seqs bindings and other fields
 		code = 'town',
 		background = null, #2fill
 #		missions = ['town_viktor_fight','town_siege'],
-		missions = ['road_to_town'],
+		missions = ['road_to_town', 'town_siege'],
 		function = '',
 		events = ['town_gates', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', ]
 	},
