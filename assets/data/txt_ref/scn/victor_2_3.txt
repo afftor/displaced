@@ -2,7 +2,7 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-=BG =
+=BG forest=
 =MUSIC eventgeneric=
 =SPRITE viktor=
 Ar - This guy looks familiar.
