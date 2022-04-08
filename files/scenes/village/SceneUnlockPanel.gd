@@ -75,7 +75,8 @@ func rebuild_scene_list():
 #			continue
 		if state.OldSeqs.has(event):
 			var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
-			panel.get_node('Image').texture = resources.get_res(eventdata.icon)
+			if eventdata.has('icon'):
+				panel.get_node('Image').texture = resources.get_res(eventdata.icon)
 			panel.get_node('Label').text = "{name}\n{descript}".format(eventdata)
 			panel.connect('pressed', self, 'show_event', [event])
 			continue

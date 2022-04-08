@@ -17,7 +17,8 @@ func showup(node, character_id, skillcode):
 	$cooldown.text = str(skill.cooldown)
 	$type.text = skill.skilltype.capitalize()
 #	$descript.bbcode_text = character.skill_tooltip_text(skillcode)
-	$descript.bbcode_text = skill.description
+#	$descript.bbcode_text = skill.description
+	$descript.bbcode_text = tr("SKILL" + skill.code.to_upper()) #temporal
 	#$RichTextLabel.bbcode_text = text
 	
 	var screen = get_viewport().get_visible_rect()
