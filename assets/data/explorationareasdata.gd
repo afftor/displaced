@@ -1146,11 +1146,12 @@ var areas = { #missions in new terminology
 		code = 'castle_rilu_return',
 		name = 'Escort Demitrius', 
 		descript = "",
-		image = '',
+		image = 'combat_palace',
 		stages = 7, 
 		level = 27,
 		events = {
-			pre_boss = 'zelroth_1',
+#			pre_boss = 'zelroth_1',
+			after_fight_6 = 'zelroth_1',
 			on_complete = "zelroth_2",
 		},
 		enemies = {

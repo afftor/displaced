@@ -19,6 +19,6 @@ func get_spec_data():
 
 func get_skill_list():
 	if app_obj.hp > 250: #first stage
-		return ['attack', 'sc_summon1', 'sc_shatter', 'en_enburst']
+		return ['attack', 'sc_summon', 'sc_shatter', 'en_enburst']
 	else: #second stage
-		return ['attack', 'sc_summon1', 'en_enburst', 'en_thrust']
+		return ['attack', 'sc_summon', 'en_enburst', 'en_thrust']
