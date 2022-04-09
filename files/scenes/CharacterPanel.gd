@@ -73,6 +73,7 @@ func select_hero(cid, rebuild = false):
 	for slot in ['weapon1', 'weapon2', 'armor']:
 		build_slot(slot)
 	build_stats()
+	$SkillPanel.hide()
 	select_slot(character.curweapon)
 #	build_gear()
 
@@ -91,6 +92,8 @@ func build_slot(slot):
 	panel.get_node("Icon").texture = data.icon
 	if slot != 'armor':
 		panel.pressed = (character.curweapon == slot)
+		if panel.is_connected("pressed", self, 'select_slot'):
+			panel.disconnect("pressed", self, 'select_slot')
 		panel.connect('pressed', self, 'select_slot', [slot])
 	globals.connectslottooltip(panel, character.id, slot, Vector2(300, 210) + get_global_position())
 
@@ -111,7 +114,10 @@ func select_slot(sel):
 
 func open_skills():
 	if lock: return
-	$SkillPanel.open(character)
+	if $SkillPanel.is_visible_in_tree() == true:
+		$SkillPanel.hide()
+	else:
+		$SkillPanel.open(character)
 
 
 func close_skills():
@@ -194,7 +200,7 @@ func build_res():
 	for src in variables.resistlist:
 		if src == 'damage' : continue
 		var panel = input_handler.DuplicateContainerTemplate(res_list, 'panel')
-		panel.get_node('Label').text = ": %d" % resists[src]
+		panel.get_node('Label').text = ": %d" % resists[src] + "%"
 		panel.get_node('icon/src').texture = load("res://assets/images/iconsskills/source_%s.png" % src)
-		
+		panel.get_node("icon").hint_tooltip = "Resist: " + src.capitalize() #TODO: change to actual tooltip later
  

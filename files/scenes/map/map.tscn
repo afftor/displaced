@@ -44,6 +44,9 @@ __meta__ = {
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="cloud11" parent="outer/clouds" instance=ExtResource( 12 )]
 margin_left = -483.907
@@ -536,9 +539,9 @@ margin_bottom = 225.248
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -33.0
+margin_left = -133.0
 margin_top = -32.0
-margin_right = 31.0
+margin_right = -69.0
 margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
@@ -1077,6 +1080,8 @@ anchor_bottom = 1.0
 visible = false
 
 [node name="menu_node" parent="." instance=ExtResource( 15 )]
+margin_top = -0.943878
+margin_bottom = -0.943848
 
 [node name="combat" parent="." instance=ExtResource( 16 )]
 visible = false
