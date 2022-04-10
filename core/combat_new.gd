@@ -328,7 +328,8 @@ func select_actor():
 		buildenemygroup(enemygroup_full[curstage])
 		gui_node.build_enemy_head()
 		newturn()
-	elif get_avail_char_number('enemy') == 0:
+#	elif get_avail_char_number('enemy') == 0:
+	elif nextenemy == 10:
 		newturn()
 	
 	if get_avail_char_number('ally') > 0:
