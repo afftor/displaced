@@ -51,7 +51,7 @@ func createfromname(name):
 			status_resists[i] = template.status_resists[i]
 	if template.keys().has('traits'):
 		for t in template.traits:
-			traits[t] = false;
+#			traits[t] = false;
 			add_trait(t);
 	animations = template.animations.duplicate()
 	hp = get_stat('hpmax')

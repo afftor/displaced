@@ -1344,7 +1344,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', name = 'alt_mana', operant = 'gte', value = 1}],
+		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],
 		tags = ['damage', 'debuff', 'souls'],
 		value = [['caster.damage', '*0.2']],
 		cooldown = 0,
@@ -1452,7 +1452,7 @@ var skilllist = {
 		targetpattern = 'all',
 		allowedtargets = ['ally', 'self'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', name = 'alt_mana', operant = 'gte', value = 1}],
+		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],
 		tags = ['heal', 'souls'],
 		value = ['target.hpmax', '*0.2'],
 		damagestat = '-damage_hp',
@@ -1479,7 +1479,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', name = 'alt_mana', operant = 'gte', value = 1}],#or not
+		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],#or not
 		tags = ['damage', 'debuff', 'souls'],
 		value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+1'], '*0.9'],
 		cooldown = 10,
@@ -1505,7 +1505,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['ally', 'self'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', name = 'alt_mana', operant = 'gte', value = 1}],#or not
+		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],#or not
 		tags = ['heal', 'buff', 'souls'],
 		value = ['target.hpmax', '*', ['caster.alt_mana', '*0.1']],
 		damagestat = '-damage_hp',
@@ -1930,7 +1930,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['self'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', name = 'ai_spec', operant = 'lt', value = 3}],
+		reqs = [{type = 'stats', stat = 'ai_spec', operant = 'lt', value = 3}],
 		tags = ['summon'],
 		value = ['faery', [1, 2]],
 		repeat = 1,
@@ -2157,7 +2157,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['self'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', name = 'ai_spec', operant = 'lt', value = 3}],
+		reqs = [{type = 'stats', stat = 'ai_spec', operant = 'lt', value = 3}],
 		tags = ['summon'],
 		value = ['bomber', [1, 2]],
 		repeat = 1,
@@ -2622,7 +2622,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['self'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', name = 'ai_spec', operant = 'lt', value = 4}],
+		reqs = [{type = 'stats', stat = 'ai_spec', operant = 'lt', value = 4}],
 		tags = ['summon'],
 		value = ['demon', [2, 3]],
 		repeat = 2,
@@ -4698,7 +4698,7 @@ var patches = {
 	p_resto = {
 		value = {type = 'replace', value = ['caster.hpmax','*0.4'],},
 		casteffects = {type = 'append', value = ['e_pay_soul']},
-		reqs = {type = 'replace', value = [{type = 'stats', name = 'alt_mana', operant = 'gte', value = 2}],}
+		reqs = {type = 'replace', value = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 2}],}
 	},
 	p_beam = {
 		value = {type = 'replace', value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+1'],'*1.35'],},

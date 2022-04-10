@@ -1743,7 +1743,7 @@ var effect_table = {
 	},
 	e_add_s = {
 		type = 'oneshot',
-		target = 'caster',
+		target = 'owner',
 		atomic = ['a_souls_add']
 	},
 	e_pay_soul = {

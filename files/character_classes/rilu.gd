@@ -5,6 +5,15 @@ func _init():
 	id = 'rilu'
 	state.heroes[id] = self
 	createfromname('rilu')
+	add_trait('necro_trait')
+
+func deserialize(savedir): 
+	.deserialize(savedir)
+	if !traits.has('necro_trait'):
+		traits.push_back('necro_trait')
+	remove_trait('necro_trait')
+	add_trait('necro_trait')
+
 
 func get_resists():
 	var res = resists.duplicate()
