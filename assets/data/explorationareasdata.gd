@@ -153,7 +153,7 @@ var locations = { #added seqs bindings and other fields
 
 
 var buildings = { #for binding village buidings events
-	town_hall = {
+	townhall = {
 		events = ['rose_reunion']
 	},
 	smith = {
