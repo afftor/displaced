@@ -903,7 +903,7 @@ margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 75.0
@@ -916,7 +916,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button"]
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button"]
 margin_left = 7.0
 margin_top = 28.4126
 margin_right = 72.0

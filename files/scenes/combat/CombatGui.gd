@@ -205,8 +205,8 @@ func RebuildItemPanel():
 			array.append(i)
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel/ItemContainer)
-		newbutton.get_node("Icon").texture = load(i.icon)
-		newbutton.get_node("Icon/Label").text = str(i.amount)
+		newbutton.get_node("icon").texture = load(i.icon)
+		newbutton.get_node("count").text = str(i.amount)
 		newbutton.set_meta('skill', i.useskill)
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['item', i])
 		globals.connectitemtooltip(newbutton, i)

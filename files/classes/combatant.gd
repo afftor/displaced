@@ -700,6 +700,7 @@ func get_all_buffs():
 	for e in temp_effects + static_effects + triggered_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		#eff.calculate_args()
+		if eff == null: continue
 		for b in eff.buffs:
 			b.calculate_args()
 			if !res.has(b.template_name):
@@ -711,6 +712,7 @@ func get_all_buffs():
 	if input_handler.combat_node != null:
 		for e in input_handler.combat_node.aura_effects[combatgroup]:
 			var eff = effects_pool.get_effect_by_id(e)
+			if eff == null: continue
 			#eff.calculate_args()
 			for b in eff.buffs:
 				b.calculate_args()

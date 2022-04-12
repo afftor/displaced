@@ -273,9 +273,27 @@ func deserialize(savedir):
 	static_effects = savedir.static_effects.duplicate()
 	temp_effects = savedir.temp_effects.duplicate()
 	triggered_effects = savedir.triggered_effects.duplicate()
-	for eff in static_effects + temp_effects + triggered_effects:
+	for eff in static_effects.duplicate():
 		var tmp = effects_pool.get_effect_by_id(eff)
-		tmp.applied_char = id 
+		if tmp == null: 
+			static_effects.erase(eff)
+			continue
+		tmp.applied_char = id
+		tmp.calculate_args() 
+	for eff in temp_effects.duplicate():
+		var tmp = effects_pool.get_effect_by_id(eff)
+		if tmp == null: 
+			temp_effects.erase(eff)
+			continue
+		tmp.applied_char = id
+		tmp.calculate_args() 
+	for eff in triggered_effects.duplicate():
+		var tmp = effects_pool.get_effect_by_id(eff)
+		if tmp == null: 
+			triggered_effects.erase(eff)
+			continue
+		tmp.applied_char = id
+		tmp.calculate_args() 
 	bonuses = savedir.bonuses.duplicate()
 	for slot in gear_level:
 		gear_level[slot] = int(gear_level[slot])

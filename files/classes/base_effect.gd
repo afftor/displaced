@@ -217,7 +217,7 @@ func deserialize(tmp):
 #	applied_char = tmp['app_char']
 	applied_char = null
 	buffs.clear()
-	calculate_args()
+#	calculate_args()
 	for b in tmp['buffs']:
 		var t = Buff.new(id)
 		t.deserialize(b)

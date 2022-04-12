@@ -22,7 +22,9 @@ func add_stored_effect(id, eff):
 	effects[id] = eff
 
 func get_effect_by_id(id):
-	return effects[id]
+	if effects.has(id):
+		return effects[id]
+	return null
 
 func cleanup():
 	for id in effects.keys().duplicate():
