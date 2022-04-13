@@ -119,6 +119,7 @@ func buildscreen(empty = null):
 		var node = get_node(build)
 		if node != null: node.build_icon()
 		
+		binded_events[build] = null
 		if Explorationdata.buildings.has(build) and Explorationdata.buildings[build].has('events'):
 			for seq in Explorationdata.buildings[build].events:
 				if state.check_sequence(seq):
