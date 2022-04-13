@@ -141,7 +141,7 @@ func check_townhall_events():
 
 func building_entered(b_name):
 	if binded_events[b_name] != null:
-		globals.StartEventScene(binded_events[b_name])
+		globals.run_seq(binded_events[b_name])
 #		yield(input_handler, "EventFinished")
 #		buildscreen()
 	else:
