@@ -143,12 +143,13 @@ func test_combat():
 	for ch in state.characters:
 		state.unlock_char(ch)
 		state.heroes[ch].unlock_all_skills()
+		state.heroes[ch].level = 39
 	state.heroes.arron.position = 1
 	state.heroes.ember.position = 2
 #	state.heroes.rose.position = 3
 	
 	
-	start_combat([{1:'elvenrat', 4: 'elvenrat'}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'combat_cave')
+	start_combat([{1:'elvenrat', 4: ['elvenrat', 10]}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'combat_cave')
 #	start_combat([{1:'elvenrat',2:'elvenrat',
 #	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}],20, 'cave')
 
