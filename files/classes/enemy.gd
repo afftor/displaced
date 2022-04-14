@@ -36,7 +36,7 @@ func createfromtemplate(enemy_id, lvl):
 	base = enemy_id
 	level = lvl
 	race = template.race
-	hpmax = template.basehp #or not
+	hpmax = 0 #template.basehp #or not
 	hp_growth = template.basehp
 	self.hp = get_stat('hpmax')
 #	manamax = template.basemana

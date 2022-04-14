@@ -1,0 +1,1677 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://files/scenes/combat/combat_new.tscn" type="PackedScene" id=1]
+[ext_resource path="res://test_combat.gd" type="Script" id=2]
+
+[node name="Panel" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 30.0
+margin_top = 59.0
+margin_right = 416.0
+margin_bottom = 965.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arron" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 386.0
+margin_bottom = 138.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/arron"]
+margin_right = 386.0
+margin_bottom = 24.0
+text = "arron"
+
+[node name="weapon" type="HBoxContainer" parent="VBoxContainer/arron"]
+margin_top = 28.0
+margin_right = 386.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="VBoxContainer/arron/weapon"]
+margin_top = 5.0
+margin_right = 140.0
+margin_bottom = 29.0
+text = "weapon slot"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/arron/weapon"]
+margin_left = 144.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "weapon1"
+expand_to_text_length = true
+
+[node name="weaponlv" type="HBoxContainer" parent="VBoxContainer/arron"]
+margin_top = 66.0
+margin_right = 386.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/arron/weaponlv"]
+margin_top = 5.0
+margin_right = 150.0
+margin_bottom = 29.0
+text = "weapon level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/arron/weaponlv"]
+margin_left = 154.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="armorlv" type="HBoxContainer" parent="VBoxContainer/arron"]
+margin_top = 104.0
+margin_right = 386.0
+margin_bottom = 138.0
+
+[node name="Label" type="Label" parent="VBoxContainer/arron/armorlv"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 29.0
+text = "armor level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/arron/armorlv"]
+margin_left = 133.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="rose" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 153.0
+margin_right = 386.0
+margin_bottom = 291.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/rose"]
+margin_right = 386.0
+margin_bottom = 24.0
+text = "arron"
+
+[node name="weapon" type="HBoxContainer" parent="VBoxContainer/rose"]
+margin_top = 28.0
+margin_right = 386.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="VBoxContainer/rose/weapon"]
+margin_top = 5.0
+margin_right = 140.0
+margin_bottom = 29.0
+text = "weapon slot"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/rose/weapon"]
+margin_left = 144.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "weapon1"
+expand_to_text_length = true
+
+[node name="weaponlv" type="HBoxContainer" parent="VBoxContainer/rose"]
+margin_top = 66.0
+margin_right = 386.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/rose/weaponlv"]
+margin_top = 5.0
+margin_right = 150.0
+margin_bottom = 29.0
+text = "weapon level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/rose/weaponlv"]
+margin_left = 154.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="armorlv" type="HBoxContainer" parent="VBoxContainer/rose"]
+margin_top = 104.0
+margin_right = 386.0
+margin_bottom = 138.0
+
+[node name="Label" type="Label" parent="VBoxContainer/rose/armorlv"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 29.0
+text = "armor level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/rose/armorlv"]
+margin_left = 133.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="erika" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 306.0
+margin_right = 386.0
+margin_bottom = 444.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/erika"]
+margin_right = 386.0
+margin_bottom = 24.0
+text = "arron"
+
+[node name="weapon" type="HBoxContainer" parent="VBoxContainer/erika"]
+margin_top = 28.0
+margin_right = 386.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="VBoxContainer/erika/weapon"]
+margin_top = 5.0
+margin_right = 140.0
+margin_bottom = 29.0
+text = "weapon slot"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/erika/weapon"]
+margin_left = 144.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "weapon1"
+expand_to_text_length = true
+
+[node name="weaponlv" type="HBoxContainer" parent="VBoxContainer/erika"]
+margin_top = 66.0
+margin_right = 386.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/erika/weaponlv"]
+margin_top = 5.0
+margin_right = 150.0
+margin_bottom = 29.0
+text = "weapon level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/erika/weaponlv"]
+margin_left = 154.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="armorlv" type="HBoxContainer" parent="VBoxContainer/erika"]
+margin_top = 104.0
+margin_right = 386.0
+margin_bottom = 138.0
+
+[node name="Label" type="Label" parent="VBoxContainer/erika/armorlv"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 29.0
+text = "armor level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/erika/armorlv"]
+margin_left = 133.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="ember" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 459.0
+margin_right = 386.0
+margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/ember"]
+margin_right = 386.0
+margin_bottom = 24.0
+text = "arron"
+
+[node name="weapon" type="HBoxContainer" parent="VBoxContainer/ember"]
+margin_top = 28.0
+margin_right = 386.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ember/weapon"]
+margin_top = 5.0
+margin_right = 140.0
+margin_bottom = 29.0
+text = "weapon slot"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/ember/weapon"]
+margin_left = 144.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "weapon1"
+expand_to_text_length = true
+
+[node name="weaponlv" type="HBoxContainer" parent="VBoxContainer/ember"]
+margin_top = 66.0
+margin_right = 386.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ember/weaponlv"]
+margin_top = 5.0
+margin_right = 150.0
+margin_bottom = 29.0
+text = "weapon level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/ember/weaponlv"]
+margin_left = 154.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="armorlv" type="HBoxContainer" parent="VBoxContainer/ember"]
+margin_top = 104.0
+margin_right = 386.0
+margin_bottom = 138.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ember/armorlv"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 29.0
+text = "armor level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/ember/armorlv"]
+margin_left = 133.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="rilu" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 612.0
+margin_right = 386.0
+margin_bottom = 750.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/rilu"]
+margin_right = 386.0
+margin_bottom = 24.0
+text = "arron"
+
+[node name="weapon" type="HBoxContainer" parent="VBoxContainer/rilu"]
+margin_top = 28.0
+margin_right = 386.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="VBoxContainer/rilu/weapon"]
+margin_top = 5.0
+margin_right = 140.0
+margin_bottom = 29.0
+text = "weapon slot"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/rilu/weapon"]
+margin_left = 144.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "weapon1"
+expand_to_text_length = true
+
+[node name="weaponlv" type="HBoxContainer" parent="VBoxContainer/rilu"]
+margin_top = 66.0
+margin_right = 386.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/rilu/weaponlv"]
+margin_top = 5.0
+margin_right = 150.0
+margin_bottom = 29.0
+text = "weapon level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/rilu/weaponlv"]
+margin_left = 154.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="armorlv" type="HBoxContainer" parent="VBoxContainer/rilu"]
+margin_top = 104.0
+margin_right = 386.0
+margin_bottom = 138.0
+
+[node name="Label" type="Label" parent="VBoxContainer/rilu/armorlv"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 29.0
+text = "armor level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/rilu/armorlv"]
+margin_left = 133.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="iola" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 765.0
+margin_right = 386.0
+margin_bottom = 903.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/iola"]
+margin_right = 386.0
+margin_bottom = 24.0
+text = "arron"
+
+[node name="weapon" type="HBoxContainer" parent="VBoxContainer/iola"]
+margin_top = 28.0
+margin_right = 386.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="VBoxContainer/iola/weapon"]
+margin_top = 5.0
+margin_right = 140.0
+margin_bottom = 29.0
+text = "weapon slot"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/iola/weapon"]
+margin_left = 144.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "weapon1"
+expand_to_text_length = true
+
+[node name="weaponlv" type="HBoxContainer" parent="VBoxContainer/iola"]
+margin_top = 66.0
+margin_right = 386.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/iola/weaponlv"]
+margin_top = 5.0
+margin_right = 150.0
+margin_bottom = 29.0
+text = "weapon level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/iola/weaponlv"]
+margin_left = 154.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="armorlv" type="HBoxContainer" parent="VBoxContainer/iola"]
+margin_top = 104.0
+margin_right = 386.0
+margin_bottom = 138.0
+
+[node name="Label" type="Label" parent="VBoxContainer/iola/armorlv"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 29.0
+text = "armor level"
+
+[node name="value" type="LineEdit" parent="VBoxContainer/iola/armorlv"]
+margin_left = 133.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="partylv" type="HBoxContainer" parent="."]
+margin_left = 475.917
+margin_top = 742.88
+margin_right = 861.917
+margin_bottom = 776.88
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="partylv"]
+margin_top = 5.0
+margin_right = 119.0
+margin_bottom = 29.0
+text = "party level"
+
+[node name="value" type="LineEdit" parent="partylv"]
+margin_left = 123.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="enlv" type="HBoxContainer" parent="."]
+margin_left = 950.88
+margin_top = 741.382
+margin_right = 1336.88
+margin_bottom = 775.382
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="enlv"]
+margin_top = 5.0
+margin_right = 138.0
+margin_bottom = 29.0
+text = "enemy level"
+
+[node name="value" type="LineEdit" parent="enlv"]
+margin_left = 142.0
+margin_right = 386.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "1"
+expand_to_text_length = true
+
+[node name="waves" type="HBoxContainer" parent="."]
+margin_left = 460.0
+margin_top = 72.0
+margin_right = 1864.0
+margin_bottom = 689.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="w1" type="VBoxContainer" parent="waves"]
+margin_right = 303.0
+margin_bottom = 617.0
+
+[node name="s1" type="VBoxContainer" parent="waves/w1"]
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w1/s1"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w1/s1"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w1/s1/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w1/s1/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+text = "1"
+
+[node name="lv" type="HBoxContainer" parent="waves/w1/s1"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w1/s1/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w1/s1/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s2" type="VBoxContainer" parent="waves/w1"]
+margin_top = 100.0
+margin_right = 303.0
+margin_bottom = 196.0
+
+[node name="Label" type="Label" parent="waves/w1/s2"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w1/s2"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w1/s2/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w1/s2/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w1/s2"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w1/s2/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w1/s2/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s3" type="VBoxContainer" parent="waves/w1"]
+margin_top = 200.0
+margin_right = 303.0
+margin_bottom = 296.0
+
+[node name="Label" type="Label" parent="waves/w1/s3"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w1/s3"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w1/s3/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w1/s3/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w1/s3"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w1/s3/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w1/s3/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s4" type="VBoxContainer" parent="waves/w1"]
+margin_top = 300.0
+margin_right = 303.0
+margin_bottom = 396.0
+
+[node name="Label" type="Label" parent="waves/w1/s4"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w1/s4"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w1/s4/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w1/s4/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w1/s4"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w1/s4/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w1/s4/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s5" type="VBoxContainer" parent="waves/w1"]
+margin_top = 400.0
+margin_right = 303.0
+margin_bottom = 496.0
+
+[node name="Label" type="Label" parent="waves/w1/s5"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w1/s5"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w1/s5/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w1/s5/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w1/s5"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w1/s5/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w1/s5/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s6" type="VBoxContainer" parent="waves/w1"]
+margin_top = 500.0
+margin_right = 303.0
+margin_bottom = 596.0
+
+[node name="Label" type="Label" parent="waves/w1/s6"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w1/s6"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w1/s6/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w1/s6/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w1/s6"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w1/s6/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w1/s6/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="w2" type="VBoxContainer" parent="waves"]
+margin_left = 307.0
+margin_right = 610.0
+margin_bottom = 617.0
+
+[node name="s1" type="VBoxContainer" parent="waves/w2"]
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w2/s1"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w2/s1"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w2/s1/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w2/s1/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w2/s1"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w2/s1/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w2/s1/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s2" type="VBoxContainer" parent="waves/w2"]
+margin_top = 100.0
+margin_right = 303.0
+margin_bottom = 196.0
+
+[node name="Label" type="Label" parent="waves/w2/s2"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w2/s2"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w2/s2/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w2/s2/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w2/s2"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w2/s2/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w2/s2/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s3" type="VBoxContainer" parent="waves/w2"]
+margin_top = 200.0
+margin_right = 303.0
+margin_bottom = 296.0
+
+[node name="Label" type="Label" parent="waves/w2/s3"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w2/s3"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w2/s3/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w2/s3/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w2/s3"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w2/s3/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w2/s3/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s4" type="VBoxContainer" parent="waves/w2"]
+margin_top = 300.0
+margin_right = 303.0
+margin_bottom = 396.0
+
+[node name="Label" type="Label" parent="waves/w2/s4"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w2/s4"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w2/s4/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w2/s4/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w2/s4"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w2/s4/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w2/s4/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s5" type="VBoxContainer" parent="waves/w2"]
+margin_top = 400.0
+margin_right = 303.0
+margin_bottom = 496.0
+
+[node name="Label" type="Label" parent="waves/w2/s5"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w2/s5"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w2/s5/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w2/s5/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w2/s5"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w2/s5/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w2/s5/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s6" type="VBoxContainer" parent="waves/w2"]
+margin_top = 500.0
+margin_right = 303.0
+margin_bottom = 596.0
+
+[node name="Label" type="Label" parent="waves/w2/s6"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w2/s6"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w2/s6/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w2/s6/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w2/s6"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w2/s6/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w2/s6/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="w3" type="VBoxContainer" parent="waves"]
+margin_left = 614.0
+margin_right = 917.0
+margin_bottom = 617.0
+
+[node name="s1" type="VBoxContainer" parent="waves/w3"]
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w3/s1"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w3/s1"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w3/s1/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w3/s1/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w3/s1"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w3/s1/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w3/s1/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s2" type="VBoxContainer" parent="waves/w3"]
+margin_top = 100.0
+margin_right = 303.0
+margin_bottom = 196.0
+
+[node name="Label" type="Label" parent="waves/w3/s2"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w3/s2"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w3/s2/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w3/s2/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w3/s2"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w3/s2/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w3/s2/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s3" type="VBoxContainer" parent="waves/w3"]
+margin_top = 200.0
+margin_right = 303.0
+margin_bottom = 296.0
+
+[node name="Label" type="Label" parent="waves/w3/s3"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w3/s3"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w3/s3/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w3/s3/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w3/s3"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w3/s3/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w3/s3/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s4" type="VBoxContainer" parent="waves/w3"]
+margin_top = 300.0
+margin_right = 303.0
+margin_bottom = 396.0
+
+[node name="Label" type="Label" parent="waves/w3/s4"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w3/s4"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w3/s4/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w3/s4/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w3/s4"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w3/s4/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w3/s4/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s5" type="VBoxContainer" parent="waves/w3"]
+margin_top = 400.0
+margin_right = 303.0
+margin_bottom = 496.0
+
+[node name="Label" type="Label" parent="waves/w3/s5"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w3/s5"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w3/s5/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w3/s5/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w3/s5"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w3/s5/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w3/s5/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s6" type="VBoxContainer" parent="waves/w3"]
+margin_top = 500.0
+margin_right = 303.0
+margin_bottom = 596.0
+
+[node name="Label" type="Label" parent="waves/w3/s6"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w3/s6"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w3/s6/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w3/s6/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w3/s6"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w3/s6/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w3/s6/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="w4" type="VBoxContainer" parent="waves"]
+margin_left = 921.0
+margin_right = 1224.0
+margin_bottom = 617.0
+
+[node name="s1" type="VBoxContainer" parent="waves/w4"]
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w4/s1"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w4/s1"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w4/s1/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w4/s1/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w4/s1"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w4/s1/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w4/s1/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s2" type="VBoxContainer" parent="waves/w4"]
+margin_top = 100.0
+margin_right = 303.0
+margin_bottom = 196.0
+
+[node name="Label" type="Label" parent="waves/w4/s2"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w4/s2"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w4/s2/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w4/s2/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w4/s2"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w4/s2/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w4/s2/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s3" type="VBoxContainer" parent="waves/w4"]
+margin_top = 200.0
+margin_right = 303.0
+margin_bottom = 296.0
+
+[node name="Label" type="Label" parent="waves/w4/s3"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w4/s3"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w4/s3/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w4/s3/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w4/s3"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w4/s3/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w4/s3/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s4" type="VBoxContainer" parent="waves/w4"]
+margin_top = 300.0
+margin_right = 303.0
+margin_bottom = 396.0
+
+[node name="Label" type="Label" parent="waves/w4/s4"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w4/s4"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w4/s4/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w4/s4/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w4/s4"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w4/s4/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w4/s4/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s5" type="VBoxContainer" parent="waves/w4"]
+margin_top = 400.0
+margin_right = 303.0
+margin_bottom = 496.0
+
+[node name="Label" type="Label" parent="waves/w4/s5"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w4/s5"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w4/s5/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w4/s5/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w4/s5"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w4/s5/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w4/s5/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="s6" type="VBoxContainer" parent="waves/w4"]
+margin_top = 500.0
+margin_right = 303.0
+margin_bottom = 596.0
+
+[node name="Label" type="Label" parent="waves/w4/s6"]
+margin_right = 303.0
+margin_bottom = 24.0
+text = "1:"
+
+[node name="monster" type="HBoxContainer" parent="waves/w4/s6"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="waves/w4/s6/monster"]
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 27.0
+text = "monster"
+
+[node name="value" type="OptionButton" parent="waves/w4/s6/monster" groups=[
+"mongroup",
+]]
+margin_left = 103.0
+margin_right = 303.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+
+[node name="lv" type="HBoxContainer" parent="waves/w4/s6"]
+margin_top = 62.0
+margin_right = 303.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="waves/w4/s6/lv"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 29.0
+text = "custom level"
+
+[node name="value" type="LineEdit" parent="waves/w4/s6/lv"]
+margin_left = 150.0
+margin_right = 303.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="run" type="Button" parent="."]
+margin_left = 660.199
+margin_top = 934.861
+margin_right = 861.199
+margin_bottom = 982.861
+text = "run test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="combat" parent="." instance=ExtResource( 1 )]
+visible = false

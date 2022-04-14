@@ -148,7 +148,7 @@ func test_combat():
 	state.heroes.ember.position = 2
 #	state.heroes.rose.position = 3
 	
-	
+	show()
 	start_combat([{1:'elvenrat', 4: ['elvenrat', 10]}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'combat_cave')
 #	start_combat([{1:'elvenrat',2:'elvenrat',
 #	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}],20, 'cave')
