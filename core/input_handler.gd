@@ -390,12 +390,16 @@ func DelayedCallback(node, delay, method, args = []):
 	tweennode.interpolate_callback(node, delay, method)#, args)
 	tweennode.start()
 
-func FadeAnimation(node, time = 0.3, delay = 0):
+func FadeAnimation(node, time = 0.3, delay = 0, chain = false):
+	if !chain:
+		node.modulate = Color(1,1,1,1)
 	var tweennode = GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tweennode.start()
 
-func UnfadeAnimation(node, time = 0.3, delay = 0):
+func UnfadeAnimation(node, time = 0.3, delay = 0, chain = false):
+	if !chain:
+		node.modulate = Color(1,1,1,0)
 	var tweennode = GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	node.visible = true

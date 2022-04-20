@@ -159,8 +159,8 @@ func default_animation(node, args):
 		playtime = variables.default_animations_duration[id]
 	input_handler.FadeAnimation(sp, transition_time, delaytime)
 	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
-	input_handler.FadeAnimation(sp2, transition_time, playtime + delaytime - transition_time)
-	input_handler.UnfadeAnimation(sp, transition_time, playtime + delaytime - transition_time)
+	input_handler.FadeAnimation(sp2, transition_time, playtime + delaytime - transition_time, true)
+	input_handler.UnfadeAnimation(sp, transition_time, playtime + delaytime - transition_time, true)
 	if args.has('callback'):
 		input_handler.DelayedCallback(node, playtime + delaytime - transition_time, args.callback)
 	return playtime + delaytime
