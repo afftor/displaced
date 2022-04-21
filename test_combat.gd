@@ -27,6 +27,7 @@ func run_test():
 		state.unlock_char(ch)
 		state.heroes[ch].unlock_all_skills()
 		state.heroes[ch].level = int($partylv/value.text)
+		state.heroes[ch].hp = state.heroes[ch].hpmax
 		state.heroes[ch].curweapon = get_node("VBoxContainer/%s/weapon/value" % ch).text
 		state.heroes[ch].gear_level[state.heroes[ch].curweapon] = int(get_node("VBoxContainer/%s/weaponlv/value" % ch).text)
 		state.heroes[ch].gear_level.armor = int(get_node("VBoxContainer/%s/armorlv/value" % ch).text)
