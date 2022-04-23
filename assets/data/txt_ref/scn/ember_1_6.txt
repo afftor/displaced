@@ -42,7 +42,6 @@ Em - Ah?
 Ar - Come here.
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-=MUSIC_STOP=
 =GUI_FULL=
 =MUSIC erotheme=
 =ABG ember_doggy_03=
@@ -53,12 +52,12 @@ Ar - Yep, this is the contest. Now bend over. Put your hands on that tree
 Em - Eeeh? I've never heard about a contest like this.
 Ar - It's more fun than running and we can find out who lasts longer. 
 Em - Oooh, I'm not going to lose then!
-Ar - . We’ll see. And so we begin.
+Ar - We'll see. And so we begin.
 =ABG ember_doggy_04 ember_doggy_05=
 Arron unceremoniously enters Ember, shoving his cock into her up to the hilt.
 Em - Aaah! Don't put it all the way in so suddenly!
 Ar - Sorry.
-Em - Nh-aah… It’s’ so big...
+Em - Nh-aah… It's' so big...
 Em - We are doing it again, he-he.
 Ar - Hey, stay focused, don’t forget this is a contest.
 Em - Aaah!..
@@ -110,9 +109,9 @@ Em - For all the good it did me...
 Em(sad) - Aww, I can't believe that I lost.
 Em - You really are strong, Sir Arron. 
 Ar - Certainly, but that might've been more skill than pure strength on my part.
-Em(shock) - Ooh? What do you mean?
+Em(sad) - Ooh? What do you mean?
 Ar - I'm sure you can learn to last longer. 
-Ar = We just need to practice more often.
+Ar - We just need to practice more often.
 Em(happy) - We'll train more in future then?
 Ar - More and harder. You can bet on it.
 =BLACKUNFADE 0.5=

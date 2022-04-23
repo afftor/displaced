@@ -44,8 +44,8 @@ An - Never leave things to chance.
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 An - Isn't that nice, Eri...?
-=BG scenes/annet_erika_1=
-=SOUND knife_hit=
+=BG scenes/annet_erika_2=
+=SOUND sound_stab=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Whole room froze in awe as Erika stabbed Annet's neck.
@@ -58,11 +58,12 @@ An(anger) - You... biiitch!..
 Er(anger) - I've learned from the best.
 An(anger) - Ghhh!..
 *Slash*
-=BG scenes/annet_erika_2=
+=SOUND sound_stab=
+=BG scenes/annet_erika_1=
 An(anger) - Nnooo!..
 A red splash erupted from Annet's neck as the dagger sliced it through.
 Er(anger) - Go to hell, Mistress.
-=SOUND crash=
+=SOUND sound_fall=
 =BG burning_city=
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
@@ -77,6 +78,7 @@ Er - I've realized she'd always treat me as her victim.
 Er - So I thought this would be a safer approach.
 Ar - Well, looks like we saved a city at least.
 =SPRITE demitrius_demon=
+=SOUND sound_teleport=
 =SPRITE_UNFADE 0.5=
 =SHAKE_SPRITE 0.7=
 De - Nice work, insects. 

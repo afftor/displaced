@@ -101,25 +101,25 @@ var locations = { #added seqs bindings and other fields
 	},
 	forest =  {
 		code = 'forest',
-		background = null, #2fill
+		background = 'forest',
 		missions = ['forest_erika','forest_faeries_1','forest_faeries_2','forest_faeries_3','forest_erika_sidequest'],
 		events = []
 	},
 	cave =  {
 		code = 'cave',
-		background = null, #2fill
+		background = 'cave', 
 		missions = ['caves_demitrius','caves_iola','caves_dwarf','caves_wanderer'],
 		events = []
 	},
 	road_to_town =  { #needs rebinding or adding a dedicated map location
-		code = 'road_to_town',
-		background = null, #2fill
+		code = 'desert',
+		background = '',
 		missions = ['road_to_town'],
 	},
 	town =  { #should have differnet custom handling
 		#idk for what reason
 		code = 'town',
-		background = null, #2fill
+		background = 'town_in',
 #		missions = ['town_viktor_fight','town_siege'],
 		missions = ['road_to_town', 'town_siege'],
 		function = '',
@@ -127,25 +127,25 @@ var locations = { #added seqs bindings and other fields
 	},
 	castle =  {
 		code = 'castle',
-		background = null, #2fill
+		background = 'castle_interior', 
 		missions = ['castle_iola','castle_rilu_return'],
 		events = ['rilu_castle', ]
 	},
 	dragon_mountains = {
 		code = 'dragon_mountains',
-		background = null, #2fill
+		background = 'mountainsday',
 		missions = ['dragon_mountains'],
 		events = []
 	},
 	cult =  {
 		code = 'cult',
-		background = null, #2fill
+		background = 'cult',
 		missions = ['cult_iola_rescue','cult_rose_rescue'],
 		events = ['iola_gets_caught', 'iola_rescue_start', ]
 	},
 	modern_city =  {
 		code = 'modern_city',
-		background = null, #2fill
+		background = 'future_city',
 		missions = ['dimitrius_finale'],
 		events = []
 	},
@@ -931,7 +931,7 @@ var areas = { #missions in new terminology
 		code = 'castle_iola',
 		name = 'Fetch Quest', 
 		descript = "",
-		image = '',
+		image = 'combat_palace',
 		stages = 6, 
 		level = 16,
 		events = {
@@ -964,7 +964,7 @@ var areas = { #missions in new terminology
 		code = 'cult_iola_rescue',
 		name = "Iola's Rescue", 
 		descript = "",
-		image = '',
+		image = 'combat_temple',
 		stages = 4, 
 		level = 18,
 		events = {
@@ -1035,7 +1035,7 @@ var areas = { #missions in new terminology
 		code = 'town_viktor_fight',
 		name = 'Vengence', 
 		descript = "",
-		image = '',
+		image = 'combat_forest',
 		stages = 1, 
 		level = 23,
 		events = {on_complete = 'victor_2_4'},
@@ -1048,7 +1048,7 @@ var areas = { #missions in new terminology
 	caves_wanderer = {
 		code = 'caves_iola',
 		name = '', 
-		descript = "",
+		descript = "combat_cave",
 		image = '',
 		stages = 6, 
 		level = 24,
@@ -1083,7 +1083,7 @@ var areas = { #missions in new terminology
 		code = 'town_siege',
 		name = 'Pandemonium', 
 		descript = "",
-		image = '',
+		image = 'combat_city',
 		stages = 7, 
 		level = 25,
 		events = {
@@ -1118,7 +1118,7 @@ var areas = { #missions in new terminology
 		},
 	castle_rilu = {
 		code = 'castle_rilu',
-		name = 'Escort Demitrius', 
+		name = 'combat_palace', 
 		descript = "",
 		image = '',
 		stages = 4, 
@@ -1189,7 +1189,7 @@ var areas = { #missions in new terminology
 	cult_rose_rescue = {
 		code = 'cult_rose_rescue',
 		name = 'Escort Demitrius', 
-		descript = "",
+		descript = "combat_temple",
 		image = '',
 		stages = 4,#9 
 		level = 28,
@@ -1218,7 +1218,7 @@ var areas = { #missions in new terminology
 		code = 'modern_city_stage1',
 		name = 'Escort Demitrius', 
 		descript = "",
-		image = '',
+		image = 'combat_futurecity',
 		stages = 10, 
 		level = 30,
 		},
@@ -1227,7 +1227,7 @@ var areas = { #missions in new terminology
 		code = 'forest_erika_rose_mission',
 		name = 'Search for Elves',
 		descript = "",
-		image = '',
+		image = 'combat_forest1',
 		stages = 6, 
 		level = 20,
 		},

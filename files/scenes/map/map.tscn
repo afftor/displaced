@@ -1080,7 +1080,9 @@ anchor_bottom = 1.0
 visible = false
 
 [node name="menu_node" parent="." instance=ExtResource( 15 )]
+margin_left = 2.1189
 margin_top = -0.943878
+margin_right = 2.1189
 margin_bottom = -0.943848
 
 [node name="combat" parent="." instance=ExtResource( 16 )]
@@ -1099,3 +1101,54 @@ margin_right = 31.0
 margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+margin_left = 1224.38
+margin_top = 889.527
+margin_right = 1905.38
+margin_bottom = 1086.53
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 490.601
+margin_top = 35.1173
+margin_right = 617.601
+margin_bottom = 119.117
+text = "Options"
+
+[node name="Button2" type="Button" parent="Panel"]
+margin_left = 332.248
+margin_top = 33.7824
+margin_right = 470.248
+margin_bottom = 117.782
+text = "Characters"
+
+[node name="Button3" type="Button" parent="Panel"]
+margin_left = 16.4904
+margin_top = 35.4085
+margin_right = 154.49
+margin_bottom = 119.408
+text = "Home"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="Panel"]
+margin_left = 176.366
+margin_top = 33.7824
+margin_right = 314.366
+margin_bottom = 117.782
+text = "Locations"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 29.9205
+margin_top = 146.9
+margin_right = 129.921
+margin_bottom = 170.9
+text = "Gold: 5000"

@@ -43,7 +43,7 @@ Ro(talk) - T-that's not true.
 Ro - But thank you for complementing it...
 An - (Hah, she takes my attention as a benefit)
 An - (Maybe I should take her right here)
-An - (maybe even next to Erika...)
+An - (Maybe even next to Erika...)
 An - We are here. As you can see, she's perfectly fine.
 Behind the cell bars a girl's silhouette rests in the shadows.
 Ro(talk) - Erika? Is that you?
@@ -51,11 +51,12 @@ Annet has put Erika's in shackles just in case she might attempt to escape.
 Ro - C-can I see her closer?
 An - Alright, I have a key with me.
 An - Just let me unlock this...
-*click*
 =SOUND doorlocked=
+*click*
+=SOUND sound_hit=
 *thud*
-=SOUND crush=
 =SPRITE_FADE 0.3=
+=SOUND sound_fall=
 *fall*
 Annet fell to the ground knocked out with Rose standing behind as she was unlocking the cell door. 
 Rose held a small blackjack in her hand, which just got intimately acquainted with Annet’s head
@@ -89,7 +90,7 @@ Ar(neutral) - We can talk later, you need some rest.
 =SPRITE erika=
 =BLACKFADE 1=
 =GUI_NORMAL=
-After some time they safely returned home.
+By the evening they safely returned home.
 Ro(talk) - Thanks for the baton, Ember.
 Ro - I managed to hide it so she had no idea.
 Em - A-ha, it's nothing. 

@@ -14,7 +14,7 @@ D - You have my deep gratitude, Arron.
 Ar(neutral) - 
 Demitrius approaches and closely inspects the box.
 As he removes the lid, a thick fog bursts out and fills the room.
-=MUSIC STOP=
+=MUSIC_STOP=
 =SOUND smoke=
 Em - Ah!
 Ar(shock) - What the...
