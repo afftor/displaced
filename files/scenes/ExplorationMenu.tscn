@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig_back.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/fonts/pt_14.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=20]
 [ext_resource path="res://files/scenes/FullStateCheck.gd" type="Script" id=21]
+[ext_resource path="res://assets/themes/button_location_small.tres" type="Theme" id=22]
 [ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_back.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_hover.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_pressed.png" type="Texture" id=25]
@@ -134,20 +135,20 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="ExplorationSelect/ScrollContainer"]
 margin_right = 605.0
-margin_bottom = 54.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 custom_constants/margin_right = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ExplorationSelect/ScrollContainer/MarginContainer"]
 margin_right = 585.0
-margin_bottom = 54.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="Button" type="Button" parent="ExplorationSelect/ScrollContainer/MarginContainer/VBoxContainer"]
 margin_right = 585.0
-margin_bottom = 54.0
+margin_bottom = 56.0
 rect_min_size = Vector2( 0, 54 )
 theme = ExtResource( 13 )
 custom_fonts/font = ExtResource( 14 )
@@ -250,7 +251,7 @@ margin_left = -158.0
 margin_top = -114.0
 margin_right = 158.0
 margin_bottom = -60.0
-theme = ExtResource( 15 )
+theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Start"
@@ -264,10 +265,13 @@ margin_left = -238.0
 margin_top = -114.0
 margin_right = -8.0
 margin_bottom = -60.0
-theme = ExtResource( 15 )
+theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Advance"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="abandon" type="Button" parent="ExplorationSelect/Panel"]
 anchor_left = 0.5
@@ -278,7 +282,7 @@ margin_left = 8.0
 margin_top = -114.0
 margin_right = 238.0
 margin_bottom = -60.0
-theme = ExtResource( 15 )
+theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Abandon"
