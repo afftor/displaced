@@ -7,7 +7,7 @@
 =SPRITE_UNFADE 0.3=
 =MUSIC combattheme=
 The team barges into the main room with Dimitrius in it.
-=SOUND slam=
+=SOUND doorsmash=
 De - Ah, I almost forgot about you, fools.
 Er(anger) - Stop screwing around. Give our friends back!
 De - How about "No"?
@@ -76,7 +76,7 @@ De - Yeah, I never really cared if you join me or not, Rose, but it's always fun
 De - This was fun while it lasted, but it's time to finish with this world already.
 De - And once we are done here, it's your home's turn.
 =SHAKE_SCREEN 1=
-=SOUND rumble=
+=SOUND sound_crack=
 Ar(shock) - Eh? What's going on?
 Ri(talk) - This is bad, we should stop him.
 Ar(anger) - Shit, no other choice!..
@@ -88,7 +88,9 @@ Unexpectedly to everyone, Dimitrius pulled an unknown metal object from his back
 =DELAY 1=
 =BG scenes/demitrius_arron=
 =GUI_NORMAL=
+=SOUND gunshot=
 With loud explosive noises it spewed a rain of pellets in the direction of Arron.
+=SOUND sound_splatter=
 Ar - Agh!.. Guh...
 Ro - Master! 
 De - Ahahaha, humans can make some really fun toys.
@@ -97,6 +99,7 @@ I - Stay still, you are bleeding!
 =BG cult1=
 =SPRITE demitrius_demon=
 =SHAKE_SCREEN 1=
+=SOUND sound_crack=
 De - But enough of that. 
 De - Be grateful, you get to see the birth of a new world.
 Ri - !?

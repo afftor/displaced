@@ -17,13 +17,13 @@ FQ - Yeah, and I want your ass roasted by an ogre. Do you think I'm gonna give i
 Ar - ...Get this bitch.
 FQ - Ha, suck it losers.
 =SPRITE_FADE 0.5=
-=SOUND teleport=
+=SOUND sound_teleport=
 Ar - Damn it, she got away.
 Em - Look, there's a portal left after her.
 Ar - Ah, we could follow it.
 Ro(sarcastic) - I don't think this is a good idea. 
 Ro(sarcastic) - We don't know where we might end up.
-=CHOICE A|B=
+=CHOICE Go_after_her|Better_not_to=
 Ar - ...
 =SKIP 1 1=
 =DECISION portal=

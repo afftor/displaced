@@ -24,22 +24,24 @@ Ro(shock) - Ah!
 The cave walls shook at the heavy explosion with dust falling to the ground.
 Ar(shock) - What the hell was that? A bomb?
 D(talk) - Do not underestimate the Ancestral Cult, you foul creatures.
+=SOUND explosion=
 =SHAKE_SCREEN 0.25=
 =DELAY 0.25=
 *Toss*
 Ar(shock) - You moron, You’re gonna kill us all!
 D - It was your choice to resist me. I'll do what I must.
+=SOUND explosion=
 =SHAKE_SCREEN 0.5=
 =DELAY 0.5=
-=SOUND crack=
+=SOUND sound_crack=
 *Bam*
 Ro(shock) - Look, the ceiling is breaking!
 A large chunk of stone has broken off from the ceiling and fell onto Demitrius.
 D - Ah!
 =SHAKE_SPRITE 0.25=
 =DELAY 0.25=
-=SOUND splat=
-=MUSIC STOP=
+=SOUND sound_splat=
+=MUSIC_STOP=
 *Splat*
 =SPRITE_FADE 0.3=
 =DELAY 0.3=
@@ -58,10 +60,11 @@ Ar(neutral) - There's no choice, let's retreat.
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
+=MUSIC eventgeneric=
+=BG forest=
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-=MUSIC eventgeneric=
 Ar(neutral) - This isn't good, but we can't tell anyone about this.
 Ro - But won't he be missed...?
 The party agreed to not bring up this incident around the settlement and if anyone would ask, they brought him to the caves and left him alone.

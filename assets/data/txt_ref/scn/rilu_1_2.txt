@@ -38,7 +38,7 @@ A sphere of spirit energy has shot from Rilu and dispelled the wall revealing th
 Ri - ...
 S - SHOOT!
 =SOUND explosion=
-=MUSIC stop=
+=MUSIC_stop=
 A loud explosion shook the whole cave as a steel ball flew from the cannon at great speed.
 With no time to react, Arron and the rest could only shout as it struck Rilu creating a blood-filled smoke. 
 =SOUND splatter=

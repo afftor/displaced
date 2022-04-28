@@ -4,9 +4,9 @@
 [ext_resource path="res://files/scenes/charinfo_portrait.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/iconsgear/arron_weapon1_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/iconsgear/arron_weapon2_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/Fight/Heroes/Arron/Arron_idle/Arron_idle_00.png" type="Texture" id=5]
 [ext_resource path="res://files/scenes/SkillPanel.gd" type="Script" id=6]
-[ext_resource path="res://files/scenes/WeaponPanel.gd" type="Script" id=7]
+[ext_resource path="res://assets/images/iconsskills/arron_1.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/charpanel/panel_charinfo_big.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/charpanel/panel_charinfo_portrait_back.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/charpanel/panel_charinfo_portrait_pressed.png" type="Texture" id=10]
@@ -295,9 +295,9 @@ __meta__ = {
 
 [node name="weapon1" type="TextureButton" parent="Panel"]
 margin_left = 510.0
-margin_top = 530.0
-margin_right = 760.0
-margin_bottom = 870.0
+margin_top = 560.0
+margin_right = 770.0
+margin_bottom = 900.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 toggle_mode = true
@@ -346,9 +346,9 @@ __meta__ = {
 
 [node name="weapon2" type="TextureButton" parent="Panel"]
 margin_left = 830.0
-margin_top = 530.0
-margin_right = 1080.0
-margin_bottom = 866.0
+margin_top = 560.0
+margin_right = 1090.0
+margin_bottom = 900.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 toggle_mode = true
@@ -397,9 +397,9 @@ __meta__ = {
 
 [node name="armor" type="TextureButton" parent="Panel"]
 margin_left = 1250.0
-margin_top = 530.0
+margin_top = 560.0
 margin_right = 1510.0
-margin_bottom = 870.0
+margin_bottom = 900.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 texture_normal = ExtResource( 17 )
@@ -447,23 +447,294 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="Panel"]
+margin_left = 1259.56
+margin_top = 517.671
+margin_right = 1497.56
+margin_bottom = 553.671
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Armor"
+align = 1
+
+[node name="Label3" type="Label" parent="Panel"]
+margin_left = 668.921
+margin_top = 518.794
+margin_right = 906.921
+margin_bottom = 554.794
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SkillPanel" type="Panel" parent="."]
 visible = false
 self_modulate = Color( 1, 0, 0, 0.741176 )
-margin_left = 721.607
-margin_top = 55.1593
-margin_right = 1278.61
-margin_bottom = 935.159
+margin_left = 88.0
+margin_top = 77.2182
+margin_right = 1797.0
+margin_bottom = 1089.22
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="SkillPanel"]
+margin_left = 53.4003
+margin_top = 41.0
+margin_right = 820.4
+margin_bottom = 958.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="SkillPanel/Panel"]
+modulate = Color( 1, 0.223529, 0.223529, 1 )
+margin_left = 15.7095
+margin_top = 461.273
+margin_right = 719.709
+margin_bottom = 804.273
+
+[node name="Panel2" type="Panel" parent="SkillPanel"]
+margin_left = 903.4
+margin_top = 27.2182
+margin_right = 1670.4
+margin_bottom = 944.218
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SkillPanel/Panel2"]
+margin_left = 40.2596
+margin_top = 59.33
+margin_right = 750.26
+margin_bottom = 559.33
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_right = 710.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 104.0
+margin_right = 710.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel2"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel2"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 208.0
+margin_right = 710.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel3"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel3"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel4" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 312.0
+margin_right = 710.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel4"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel4"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel5" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 416.0
+margin_right = 710.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel5"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel5"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel6" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 520.0
+margin_right = 710.0
+margin_bottom = 620.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel6"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel6"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel7" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 624.0
+margin_right = 710.0
+margin_bottom = 724.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel7"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel7"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel8" type="Panel" parent="SkillPanel/Panel2/VBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 728.0
+margin_right = 710.0
+margin_bottom = 828.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="SkillPanel/Panel2/VBoxContainer/Panel8"]
+margin_left = 199.179
+margin_top = 8.47571
+margin_right = 493.179
+margin_bottom = 76.4757
+text = "Skill Descrpit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SkillPanel/Panel2/VBoxContainer/Panel8"]
+margin_right = 89.0
+margin_bottom = 101.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="SkillPanel"]
-margin_left = 20.4508
-margin_top = 46.4142
-margin_right = 531.451
-margin_bottom = 80.4142
+visible = false
+margin_left = 1042.52
+margin_top = 870.477
+margin_right = 1553.52
+margin_bottom = 904.477
 text = "Attack SP 5 | Support SP 5 | Ultimate SP 5"
 align = 1
 __meta__ = {
@@ -471,20 +742,22 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SkillPanel"]
-margin_left = 127.9
-margin_top = 108.0
-margin_right = 435.9
-margin_bottom = 728.0
+visible = false
+margin_left = 1041.12
+margin_top = 128.762
+margin_right = 1622.12
+margin_bottom = 748.762
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="SkillPanel/ScrollContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
 columns = 3
 
 [node name="Button" type="Button" parent="SkillPanel/ScrollContainer/GridContainer"]
-visible = false
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
@@ -511,114 +784,39 @@ __meta__ = {
 }
 
 [node name="CloseButton" type="Button" parent="SkillPanel"]
+visible = false
 margin_left = 110.309
 margin_top = 763.675
 margin_right = 461.309
 margin_bottom = 816.675
 text = "Confirm"
 
-[node name="WeaponPanel" type="Panel" parent="."]
-visible = false
-self_modulate = Color( 1, 0, 0, 0.741176 )
-margin_left = 722.0
-margin_top = 186.225
-margin_right = 1279.0
-margin_bottom = 819.225
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="WeaponPanel"]
-margin_left = 20.4508
-margin_top = 46.4142
-margin_right = 531.451
-margin_bottom = 80.4142
-text = "Weapons"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="WeaponPanel"]
-margin_left = 129.487
-margin_top = 108.0
-margin_right = 437.487
-margin_bottom = 728.0
-scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GridContainer" type="VBoxContainer" parent="WeaponPanel/ScrollContainer"]
-margin_right = 300.0
-margin_bottom = 404.0
-
-[node name="weapon1" type="Button" parent="WeaponPanel/ScrollContainer/GridContainer"]
-margin_right = 300.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 300, 200 )
-toggle_mode = true
-
-[node name="Label" type="Label" parent="WeaponPanel/ScrollContainer/GridContainer/weapon1"]
-margin_left = 172.941
-margin_top = 13.9314
-margin_right = 277.941
-margin_bottom = 37.9314
-text = "weapon 1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="WeaponPanel/ScrollContainer/GridContainer/weapon1"]
-margin_left = 11.8921
-margin_top = 23.7841
-margin_right = 161.892
-margin_bottom = 173.784
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="weapon2" type="Button" parent="WeaponPanel/ScrollContainer/GridContainer"]
-margin_top = 204.0
-margin_right = 300.0
-margin_bottom = 404.0
-rect_min_size = Vector2( 300, 200 )
-toggle_mode = true
-
-[node name="Label" type="Label" parent="WeaponPanel/ScrollContainer/GridContainer/weapon2"]
-margin_left = 172.941
-margin_top = 13.9314
-margin_right = 277.941
-margin_bottom = 37.9314
-text = "weapon 2"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="WeaponPanel/ScrollContainer/GridContainer/weapon2"]
-margin_left = 11.8921
-margin_top = 23.7841
-margin_right = 161.892
-margin_bottom = 173.784
+[node name="TextureRect" type="TextureRect" parent="SkillPanel"]
+margin_left = 157.067
+margin_top = 144.01
+margin_right = 300.067
+margin_bottom = 397.01
 texture = ExtResource( 5 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="CloseButton" type="Button" parent="WeaponPanel"]
-margin_left = 98.9822
-margin_top = 548.472
-margin_right = 449.982
-margin_bottom = 601.472
-text = "Confirm"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="RichTextLabel" type="RichTextLabel" parent="SkillPanel"]
+margin_left = 457.655
+margin_top = 95.5636
+margin_right = 791.655
+margin_bottom = 437.564
+text = "Stat A
+Stat B
+Stat c"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SkillPanel"]
+margin_left = 122.436
+margin_top = 559.127
+margin_right = 737.436
+margin_bottom = 792.127
+text = "Character Descript with scroll"
+
+[node name="Button" type="Button" parent="SkillPanel"]
+margin_left = 279.982
+margin_top = 873.473
+margin_right = 582.982
+margin_bottom = 932.473
+text = "Close"

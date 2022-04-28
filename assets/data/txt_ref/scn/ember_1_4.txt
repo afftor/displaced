@@ -8,7 +8,6 @@
 =SPRITE emberhappy=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-(Townhall, Ember in the center)
 Em - Sir Arron!
 Ar - What’s up, Ember? You look excited. 
 Em - Can we have sex?

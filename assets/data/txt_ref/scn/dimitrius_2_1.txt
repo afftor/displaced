@@ -42,9 +42,10 @@ Ro - Iola?
 I - Evening, Rose. 
 I - I'll have to borrow you for a moment.
 Ro(talk) - Huh?
-=SOUND hit=
-*Thud* 
+=SOUND sound_hit=
+*Thud*
 With an uncharacteristic strike, Iola knocked Rose out and swiftly disappeared with her into the night.
+=SOUND sound_fall=
 =BLACKTRANS 1=
 =DELAY 1=
 =BG cult2=
