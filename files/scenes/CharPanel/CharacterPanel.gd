@@ -6,6 +6,7 @@ onready var charlist = $Panel/ScrollContainer/HBoxContainer
 #onready var skill_list = $Panel/SkillContainer/GridContainer
 onready var stats_list = $Panel/StatsPanel
 onready var res_list = $Panel/ResPanel/res
+onready var skill_list = $Panel/HBoxContainer
 
 export var test_mode = false
 var lock
@@ -26,7 +27,7 @@ func _ready():
 	
 	$Panel/SkillsButton.connect("pressed", self, "open_skills")
 #	$Panel/Weapon.connect("pressed", self, "open_weapon")
-	$SkillPanel/CloseButton.connect("pressed",self,"close_skills")
+#	$SkillPanel/CloseButton.connect("pressed",self,"close_skills")
 #	$WeaponPanel/CloseButton.connect("pressed",self,"close_weapon")
 #	$Panel/PrevCharButton.connect("pressed", self, "select_next_hero", [-1])
 #	$Panel/NextCharButton.connect("pressed", self, "select_next_hero", [1])
@@ -48,6 +49,7 @@ func RepositionCloseButton():
 	var rect = $Panel.get_global_rect()
 	var pos = Vector2(rect.end.x + 6 - closebutton.rect_size.x - closebuttonoffset[0], rect.position.y + closebuttonoffset[1])
 	closebutton.set_global_position(pos)
+	$SkillPanel.raise()
 
 
 func open(hero, locked = false): 
@@ -95,12 +97,19 @@ func build_slot(slot):
 		if panel.is_connected("pressed", self, 'select_slot'):
 			panel.disconnect("pressed", self, 'select_slot')
 		panel.connect('pressed', self, 'select_slot', [slot])
-	globals.connectslottooltip(panel, character.id, slot, Vector2(300, 210) + get_global_position())
+		var pos = panel.get_global_rect()
+		pos = Vector2(pos.end.x, pos.position.y - 150)
+		globals.connectslottooltip(panel, character.id, slot, pos)
+	else:
+		var pos = panel.get_global_position()
+		pos = Vector2(pos.x - 450, pos.y - 150)
+		globals.connectslottooltip(panel, character.id, slot, pos)
 
 
 func select_slot(sel):
 	character.set_weapon(sel)
 	build_stats()
+	
 	for slot in ['weapon1', 'weapon2']:
 		var panel = $Panel.get_node(slot)
 		if sel == slot:
@@ -111,6 +120,7 @@ func select_slot(sel):
 			panel.pressed = false
 			panel.get_node('Label').set("custom_colors/font_color", variables.hexcolordict.light_grey)
 			panel.get_node('Label2').set("custom_colors/font_color", variables.hexcolordict.light_grey)
+
 
 func open_skills():
 	if lock: return
@@ -126,72 +136,65 @@ func close_skills():
 #	open(character)
 
 
-
-func build_gear():
-	var data = character.get_item_data(character.curweapon)
-	$Panel/Weapon.texture_normal = data.icon
-	$Panel/Weapon/Label.text = "{name} level {level}".format(data)
-#	$Panel/Weapon/Label.text = "%s level %d" % [data.name, data.level]
-	$Panel/Weapon/Label2.text = data.description
-	data = character.get_item_data('armor')
-	$Panel/Armor.texture = data.icon
-	$Panel/Armor/Label.text = "{name} level {level}".format(data)
-	$Panel/Armor/Label2.text = data.description
-	#2fix tooltip positions
-	globals.connectslottooltip($Panel/Weapon, character.id, data.type, Vector2(1300, 210) + get_global_position())
-	globals.connectslottooltip($Panel/Armor, character.id, data.type, Vector2(1300, 210) + get_global_position())
-
-
-var statlist = {
-#	'EXP': {
-#		text = ['get_baseexp', '/', 'get_exp_cap'],
-#		icon = null
-#		},
-	'HP': {
-		text = ['get_hp', '/', 'get_hpmax'],
-		icon = "res://assets/images/iconsskills/rose_8.png"
-		},
-	'DMG': {
-#		text = ['get_damage', ' (', 'get_base_dmg_type', ')'],
-		text = ['get_damage'],
-		icon = ["res://assets/images/iconsskills/source_%s.png", 'get_base_dmg_type']
-		}
-}
+#var statlist = {
+##	'EXP': {
+##		text = ['get_baseexp', '/', 'get_exp_cap'],
+##		icon = null
+##		},
+##	'HP': {
+##		text = ['get_hp', '/', 'get_hpmax'],
+##		icon = "res://assets/images/iconsskills/rose_8.png"
+##		},
+#	'DMG': {
+##		text = ['get_damage', ' (', 'get_base_dmg_type', ')'],
+#		text = ['get_damage'],
+#		icon = ["res://assets/images/iconsskills/source_%s.png", 'get_base_dmg_type']
+#		}
+#}
 func build_stats():
 	stats_list.get_node('name').text = character.name
+	stats_list.get_node("portrait").texture = character.portrait()
 	var v1 = character.get_stat('baseexp')
 	var v2 = character.get_stat('exp_cap')
 	stats_list.get_node("exp").max_value = v2
 	stats_list.get_node("exp").value = v1
 	stats_list.get_node("exp/Label").text = "%d/%d" % [v1, v2]
+	v1 = character.hp
+	v2 = character.get_stat('hpmax')
+	stats_list.get_node("hp").max_value = v2
+	stats_list.get_node("hp").value = v1
+	stats_list.get_node("hp/Label").text = "%d/%d" % [v1, v2]
 #	input_handler.ClearContainer(stats_list.get_node('stats/statnames'), ['panel'])
 #	input_handler.ClearContainer(stats_list.get_node('stats/values'), ['panel'])
 #	input_handler.ClearContainer(stats_list.get_node('stats/icons'), ['panel'])
-	input_handler.ClearContainer(stats_list.get_node('stats'), ['panel'])
-	for st in statlist:
-#		var p1 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/statnames'), 'panel')
-#		var p2 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/values'), 'panel')
-#		var p3 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/icons'), 'panel')
-		var panel = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats'), 'panel')
-		panel.get_node('stat').text = st
-		var tval = ""
-		for line in statlist[st].text:
-			if line.begins_with("get_"):
-				tval += str(character.get_stat(line.trim_prefix("get_")))
-			else:
-				tval += line
-		panel.get_node('value').text = tval
-		if typeof(statlist[st].icon) == TYPE_STRING:
-			panel.get_node('icon').texture = load(statlist[st].icon)
-		elif typeof(statlist[st].icon) == TYPE_ARRAY:
-			var tname = statlist[st].icon[0]
-			var tstat = statlist[st].icon[1]
-			if tstat.begins_with("get_"):
-				tstat = character.get_stat(tstat.trim_prefix("get_"))
-			panel.get_node('icon').texture = load(tname % tstat)
-		else:
-			panel.get_node('icon').texture = statlist[st].icon
-	build_res()
+	stats_list.get_node("dmg/value").text = str(character.get_stat('damage'))
+	stats_list.get_node("dmg/icon").texture = load("res://assets/images/iconsskills/source_%s.png" % character.get_stat('base_dmg_type'))
+	build_skills()
+	
+#	for st in statlist:
+##		var p1 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/statnames'), 'panel')
+##		var p2 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/values'), 'panel')
+##		var p3 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/icons'), 'panel')
+#		var panel = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats'), 'panel')
+#		panel.get_node('stat').text = st
+#		var tval = ""
+#		for line in statlist[st].text:
+#			if line.begins_with("get_"):
+#				tval += str(character.get_stat(line.trim_prefix("get_")))
+#			else:
+#				tval += line
+#		panel.get_node('value').text = tval
+#		if typeof(statlist[st].icon) == TYPE_STRING:
+#			panel.get_node('icon').texture = load(statlist[st].icon)
+#		elif typeof(statlist[st].icon) == TYPE_ARRAY:
+#			var tname = statlist[st].icon[0]
+#			var tstat = statlist[st].icon[1]
+#			if tstat.begins_with("get_"):
+#				tstat = character.get_stat(tstat.trim_prefix("get_"))
+#			panel.get_node('icon').texture = load(tname % tstat)
+#		else:
+#			panel.get_node('icon').texture = statlist[st].icon
+#	build_res()
 
 
 func build_res():
@@ -204,3 +207,49 @@ func build_res():
 		panel.get_node('icon/src').texture = load("res://assets/images/iconsskills/source_%s.png" % src)
 		panel.get_node("icon").hint_tooltip = "Resist: " + src.capitalize() #TODO: change to actual tooltip later
  
+#
+#func build_sp():
+#	$Label.text = "Attack SP %d | Support SP %d | Ultimate SP %d" % [character.skillpoints.main, character.skillpoints.support, character.skillpoints.ultimate]
+	
+#
+#
+func build_skills():
+	var chardata = combatantdata.charlist[character.id]
+	var splimit = character.skillpoints.duplicate()
+	input_handler.ClearContainer(skill_list)
+	for skill_id in chardata.skilllist: #attack not showing due to being always learned
+		var skilldata = Skillsdata.patch_skill(skill_id, character)
+		var panel = input_handler.DuplicateContainerTemplate(skill_list)
+#		panel.get_node("Label").text = skilldata.name
+		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
+		panel.get_node('icon').texture = skilldata.icon
+		globals.connectskilltooltip(panel, character.id, skill_id)
+		if character.skills.has(skill_id):
+			splimit[skilldata.skilltype] += 1
+			panel.pressed = true
+			panel.connect("pressed", self, "unlearn_skill", [skill_id])
+			if !character.can_forget_skill(skill_id):
+				panel.disabled = true
+				panel.get_node('icon').material.set_shader_param('percent', 1.0)
+			else:
+				panel.get_node('icon').material.set_shader_param('percent', 0.0)
+		else:
+			panel.pressed = false
+			panel.connect("pressed", self, "learn_skill", [skill_id])
+			if !character.can_unlock_skill(skill_id):
+				panel.disabled = true
+				panel.get_node('icon').material.set_shader_param('percent', 1.0)
+			else:
+				panel.get_node('icon').material.set_shader_param('percent', 0.5)
+	$Panel/sp_label.text = "A %d/%d \n S %d/%d \n U %d/%d" % [character.skillpoints.main, splimit.main, character.skillpoints.support,splimit.support, character.skillpoints.ultimate, splimit.ultimate]
+
+
+
+func unlearn_skill(skill_id):
+	character.forget_skill(skill_id)
+	build_skills()
+
+
+func learn_skill(skill_id):
+	character.unlock_skill(skill_id)
+	build_skills()

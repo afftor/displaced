@@ -1,4 +1,4 @@
-extends Control
+extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 export var test_mode = false
 var location = 'village'
@@ -34,6 +34,9 @@ func _ready():
 	$AdvConfirm/ok.connect("pressed", self, 'adv_confirm')
 	$AdvConfirm/no.connect("pressed", self, 'adv_decline')
 	scalecheck.connect('pressed', self, 'reset_level')
+	
+	closebutton.visible = false
+	
 	if test_mode: 
 		if resources.is_busy(): yield(resources, "done_work")
 		test()

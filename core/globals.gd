@@ -521,10 +521,11 @@ func connectskilltooltip(node, character_id, skill):
 
 func showskilltooltip(skill, node, character_id):
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
-	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
-	skilltooltip.set_global_position(pos)
 	skilltooltip.showup(node, character_id, skill)
+	var pos = node.get_global_rect()
+	var pos2 = skilltooltip.rect_size
+	pos = Vector2(pos.end.x - pos2.x, pos.position.y - pos2.y)
+	skilltooltip.set_global_position(pos)
 
 
 func hideskilltooltip():
