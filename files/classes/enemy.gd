@@ -11,6 +11,7 @@ var ai_spec setget ,get_spec_data
 
 func _init():
 	combatgroup = 'enemy'
+	critchance = 0
 
 func get_spec_data():
 	if ai == null: return null
