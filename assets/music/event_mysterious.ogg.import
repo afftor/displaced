@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/event_mysterious.ogg-6538c0ffeb53bc23f4cbc71d95a25c9b.oggstr"
+
+[deps]
+
+source_file="res://assets/music/event_mysterious.ogg"
+dest_files=[ "res://.import/event_mysterious.ogg-6538c0ffeb53bc23f4cbc71d95a25c9b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

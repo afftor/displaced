@@ -71,9 +71,9 @@ var enemylist = {
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle",
-			hit = "Fight/Fight_spritesFHD_0000s_0000s_0001_Rat_hit",
-			attack = "Fight/Fight_spritesFHD_0000s_0000s_0000_Rat_at",
+			idle = "Fight/Fight_spritesFHD_0007s_0000_mole_idle.png",
+			hit = "Fight/Fight_spritesFHD_0007s_0000_mole_hit.png",
+			attack = "Fight/Fight_spritesFHD_0007s_0001_mole_at.png",
 #			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
 		},
 	},
@@ -95,9 +95,9 @@ var enemylist = {
 		aiposition = 'melee',
 		loottable = 'elvenratloot',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle",
-			hit = "Fight/Fight_spritesFHD_0000s_0000s_0001_Rat_hit",
-			attack = "Fight/Fight_spritesFHD_0000s_0000s_0000_Rat_at",
+			idle = "Fight/Fight_spritesFHD_0005s_0000_vulture_idle",
+			hit = "Fight/Fight_spritesFHD_0005s_0000_vulture_hit",
+			attack = "Fight/Fight_spritesFHD_0005s_0000_vulture_at",
 #			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
 		},
 	},
@@ -327,9 +327,9 @@ var enemylist = {
 		aiposition = 'melee',
 		loottable = '',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
-			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
-			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+			idle = "Fight/Fight_spritesFHD_0006s_0000_wraith_idle",
+			hit = "Fight/Fight_spritesFHD_0006s_0000_wraith_hit",
+			attack ="Fight/Fight_spritesFHD_0006s_0000_wraith_at" ,
 		},
 	},
 	cult_soldier = { #sprites copied
@@ -350,9 +350,9 @@ var enemylist = {
 		aiposition = 'melee',
 		loottable = '',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0000s_0002_Skelet_warrior_idle",
-			hit = "Fight/Fight_spritesFHD_0000s_0000_Skelet_warrior_hit",
-			attack = "Fight/Fight_spritesFHD_0000s_0001_Skelet_warrior_at",
+			idle = "Fight/Fight_spritesFHD_0008s_0000_cultsoldier_idle",
+			hit = "Fight/Fight_spritesFHD_0008s_0000_cultsoldier_hit",
+			attack = "Fight/Fight_spritesFHD_0008s_0000_cultsoldier_at",
 		},
 	},
 	cult_mage = { #sprites copied
@@ -374,9 +374,9 @@ var enemylist = {
 		aiposition = 'ranged',
 		loottable = '',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
-			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
-			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+			idle = "Fight/Fight_spritesFHD_0003s_0000_culthealer_idle",
+			hit = "Fight/Fight_spritesFHD_0003s_0000_culthealer_hit",
+			attack ="Fight/Fight_spritesFHD_0003s_0000_culthealer_at" ,
 		},
 	},
 	cult_archer = { #sprites copied
@@ -398,9 +398,9 @@ var enemylist = {
 		aiposition = 'ranged',
 		loottable = '',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0005s_0002_Archer_idle",
-			hit = "Fight/Fight_spritesFHD_0005s_0000_Archer_hit",
-			attack = "Fight/Fight_spritesFHD_0005s_0001_Archer_at",
+			idle = "Fight/Fight_spritesFHD_0004s_0000_cultarcher_idle",
+			hit = "Fight/Fight_spritesFHD_0004s_0000_cultarcher_hit",
+			attack = "Fight/Fight_spritesFHD_0004s_0000_cultarcher_at",
 		},
 	},
 	hatchling = {
@@ -534,7 +534,10 @@ var enemylist = {
 		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
-		animations = {}
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_idle",
+			hit = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_hit",
+			attack = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_at",}
 	},
 	soldier = {
 		code = 'soldier',
