@@ -586,7 +586,10 @@ func heal(value):
 func stat_update(stat, value):
 	var tmp = get(stat)
 	value = round(value)
-	set(stat, value)
+	if tmp:
+		set(stat, tmp + value)
+	else:
+		set(stat, value)
 	if tmp != null: tmp = get(stat) - tmp
 	else:  tmp = get(stat)
 	recheck_effect_tag('recheck_stats')
