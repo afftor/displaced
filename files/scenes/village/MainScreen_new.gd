@@ -23,17 +23,7 @@ var binded_events = {
 
 
 func debug():
-#	$ExploreScreen/combat/ItemPanel/debugvictory.show()
-#	state.OldEvents['Market'] = 0
-#	state.townupgrades['bridge'] = 1
-#	state.townupgrades.blacksmith = 0
-#	state.OldEvents['bridge'] = 0
-#	state.MakeQuest("demofinish")
-#	state.completedquests.append('forest_erika')
-	#state.FinishQuest('elves')
-#	state.MakeQuest("demitrus")
-#	state.areaprogress.cavedemitrius = 9
-	state.complete_area('forest_erika')
+#	state.complete_area('forest_erika')
 	for i in state.materials:
 		state.materials[i] = 20
 #	state.materials.goblinmetal = 20
@@ -51,16 +41,7 @@ func debug():
 	for x in range(5):
 		for i in state.heroes.values():
 			i.levelup()
-	#globals.AddItemToInventory(globals.crea
-#	globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'wood'}))
-	#state.items[0].durability = floor(rand_range(1,5))
-#	globals.AddItemToInventory(globals.CreateGearItem('axe', {ToolHandle = 'wood', Blade = 'elvenwood'}))
-#	globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'goblinmetal', ArmorTrim = 'wood'}))
-#	globals.AddItemToInventory(globals.CreateGearItem('basicchest', {ArmorBase = 'cloth', ArmorTrim = 'wood'}))
-#	globals.AddItemToInventory(globals.CreateGearItem('sword', {ToolHandle = 'elvenwood', Blade = 'goblinmetal'}))
-#	globals.AddItemToInventory(globals.CreateUsableItem('morsel', 2))
-#	globals.AddItemToInventory(globals.CreateUsableItem('barricade', 2))
-#	globals.AddItemToInventory(globals.CreateUsableItem('protectivecharm', 2))
+
 
 
 func _ready():
@@ -164,7 +145,7 @@ func openblacksmith():
 
 
 func openmarket():
-	pass
+	$shop.open()
 
 
 func ReturnToMap():

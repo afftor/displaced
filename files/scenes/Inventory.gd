@@ -1,3 +1,4 @@
+#needs remake or remove
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 onready var itemcontainer = $ScrollContainer/GridContainer
@@ -49,31 +50,32 @@ func buildinventory():
 		globals.connectmaterialtooltip(newbutton, material)
 		newbutton.connect("pressed",self,'useitem', [i, 'material'])
 		itemarray.append(newbutton)
-	for i in state.items.values():
-#		if i.owner != null:
-#			continue
-		var newnode = input_handler.DuplicateContainerTemplate(itemcontainer)
-#		if i.durability != null:
+#	for i in state.items.values():
+##		if i.owner != null:
+##			continue
+#		var newnode = input_handler.DuplicateContainerTemplate(itemcontainer)
+##		if i.durability != null:
+##			newnode.get_node("Number").show()
+##			newnode.get_node("Number").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + '%'
+#		if i.amount != null && i.amount > 1:
 #			newnode.get_node("Number").show()
-#			newnode.get_node("Number").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + '%'
-		if i.amount != null && i.amount > 1:
-			newnode.get_node("Number").show()
-			newnode.get_node("Number").text = str(i.amount)
-		input_handler.itemshadeimage(newnode.get_node('Image'), i)
-		globals.connectitemtooltip(newnode, i)
-		newnode.set_meta('type', i.itemtype)
-		newnode.connect("pressed",self,'useitem', [i, i.itemtype])
-		itemarray.append(newnode)
+#			newnode.get_node("Number").text = str(i.amount)
+#		input_handler.itemshadeimage(newnode.get_node('Image'), i)
+#		globals.connectitemtooltip(newnode, i)
+#		newnode.set_meta('type', i.itemtype)
+#		newnode.connect("pressed",self,'useitem', [i, i.itemtype])
+#		itemarray.append(newnode)
 	rebuildinventory()
 
-func rebuildinventory():
-	for i in itemarray:
-		i.get_parent().remove_child(i)
-		if (category == 'all' || i.get_meta('type') == category):
-			itemcontainer.add_child(i)
-		else:
-			$HiddenContainer/GridContainer.add_child(i)
-	itemcontainer.move_child(itemcontainer.get_node("Button"), itemcontainer.get_children().size())
+func rebuildinventory(): #2remake 
+	pass
+#	for i in itemarray:
+#		i.get_parent().remove_child(i)
+#		if (category == 'all' || i.get_meta('type') == category):
+#			itemcontainer.add_child(i)
+#		else:
+#			$HiddenContainer/GridContainer.add_child(i)
+#	itemcontainer.move_child(itemcontainer.get_node("Button"), itemcontainer.get_children().size())
 
 func selectcategory(button):
 	var type = button.name

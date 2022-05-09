@@ -21,8 +21,8 @@ var townupgrades := {
 var town_save
 var heroes := {}
 var heroes_save
-var items := {}
-var items_save
+#var items := {}
+#var items_save
 var materials := {}
 var lognode
 var unlocks := []
@@ -95,7 +95,7 @@ func revert():
 	}
 	reset_heroes()
 	reset_inventory()
-	items.clear()
+#	items.clear()
 	materials.clear()
 	lognode = null
 	unlocks.clear()
@@ -296,8 +296,8 @@ func valuecheck(dict):
 			return if_has_material(dict['material'], dict.operant, dict['value'])
 		"date":
 			return date >= dict['date']
-		"item":
-			return if_has_item(dict['name'])
+#		"item":
+#			return if_has_item(dict['name'])
 		"building":
 			return CurBuild == dict['value']
 		"gamestart":
@@ -386,10 +386,10 @@ func if_has_material(mat, operant, val):
 	if !materials.has(mat): return false
 	return input_handler.operate(operant, materials[mat], val)
 
-func if_has_item(name):
-	for i in items.values():
-		if i.name == name: return true
-	return false
+#func if_has_item(name):
+#	for i in items.values():
+#		if i.name == name: return true
+#	return false
 
 
 func serialize():
@@ -397,9 +397,9 @@ func serialize():
 	area_save = areaprogress
 	town_save = townupgrades
 	party_save = combatparty
-	tmp['items_save'] = {}
-	for i in items.keys():
-		tmp['items_save'][i] = inst2dict(items[i])
+#	tmp['items_save'] = {}
+#	for i in items.keys():
+#		tmp['items_save'][i] = inst2dict(items[i])
 	tmp['heroes_save'] = {}
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
@@ -418,19 +418,22 @@ func deserialize(tmp:Dictionary):
 	tmp.erase('effects')
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
+	for id in materials:
+		materials[id] = int(materials[id])
+	refill_materials()
 	cleanup()
 	combatparty.clear()
 	for key in heroes_save.keys():
 		heroes[key].deserialize(heroes_save[key])
 	effects_pool.cleanup()
-	items.clear()
-	for key in items_save.keys():
-		var key1 = key
-		if (typeof(key1) != TYPE_STRING) or (key1[0] != 'i'):
-			key1 = 'i' + str(key1)
-		var t := dict2inst(items_save[key])
-		t.id = key1
-		items[key1] = t
+#	items.clear()
+#	for key in items_save.keys():
+#		var key1 = key
+#		if (typeof(key1) != TYPE_STRING) or (key1[0] != 'i'):
+#			key1 = 'i' + str(key1)
+#		var t := dict2inst(items_save[key])
+#		t.id = key1
+#		items[key1] = t
 	
 #	for k in party_save.keys() :
 #		combatparty[int(k)] = party_save[k]
@@ -465,11 +468,16 @@ func reset_heroes():
 	h_rilu.new()
 	h_rose.new()
 
+
 func reset_inventory():
 	#temporal version
 	materials.clear()
-	for i in Items.Items:
-		materials[i] = 0
+	refill_materials()
+
+
+func refill_materials():
+	for id in Items.Items:
+		if !materials.has(id): materials[id] = 0
 
 
 func system_action(action):
@@ -549,12 +557,13 @@ func FinishQuest(code):
 #	globals.check_signal("QuestCompleted", code)
 
 
-func add_materials(res, value):
+func add_materials(res, value, log_f = true):
 	if !materials.has(res):
 		materials[res] = 0
 	var tmp = materials[res]
 	materials[res] += value
 	if materials[res] < 0: materials[res] = 0
+	if !log_f: return
 	tmp = materials[res] - tmp
 	if tmp > 0:
 		var text = "Gained "
@@ -566,10 +575,11 @@ func add_materials(res, value):
 		logupdate(text)
 
 
-func add_money(value):
+func add_money(value, log_f = true):
 	var tmp = money
 	money += value
 	if money < 0: money = 0
+	if !log_f: return
 	tmp = money - tmp
 	if tmp > 0:
 		var text = "Gained "

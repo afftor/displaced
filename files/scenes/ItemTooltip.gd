@@ -32,7 +32,8 @@ func showup_material(node, item):
 	textnode.bbcode_text = text
 	iconnode.texture = item.icon
 	iconnode.material = null
-	$Cost/Label.text = str(Items.Materials[item.code].price)
+#	$Cost/Label.text = str(Items.Items[item.code].price)
+	$Cost/Label.text = str(item.price)
 	showup(node)
 
 func showup_gear(node, item):

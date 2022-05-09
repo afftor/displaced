@@ -1,0 +1,373 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/pt_36.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=3]
+[ext_resource path="res://assets/themes/scroll_shop.tres" type="Theme" id=4]
+[ext_resource path="res://assets/images/buttons/shop/button_shopitem_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/buttons/shop/button_shopitem_pressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/buttons/shop/button_shopitem.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/shop/panel_shop_big.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/themes/button_location_small.tres" type="Theme" id=12]
+[ext_resource path="res://assets/images/gui/shop/panel_shop_1.png" type="Texture" id=13]
+[ext_resource path="res://assets/fonts/pt_36_boldshad.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/images/gui/shop/panel_shop_2.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/buttons/shop/arrow_tiny_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/buttons/shop/arrow_tiny.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/buttons/shop/arrow_tiny_hover.png" type="Texture" id=18]
+[ext_resource path="res://files/scenes/village/SelectAmountPanel.gd" type="Script" id=19]
+[ext_resource path="res://files/scenes/village/ShopMenu.gd" type="Script" id=20]
+[ext_resource path="res://files/scenes/village/modeselect.gd" type="Script" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Panel" type="TextureRect"]
+margin_left = 356.0
+margin_top = 69.0
+margin_right = 1618.0
+margin_bottom = 1003.0
+texture = ExtResource( 8 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="screen" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -356.0
+margin_top = -70.0
+margin_right = 301.0
+margin_bottom = 76.0
+mouse_filter = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 529.0
+margin_top = 18.0
+margin_right = 735.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.996078, 0.996078, 0.996078, 1 )
+text = "Shop"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 100.0
+margin_top = 126.0
+margin_right = 1192.0
+margin_bottom = 715.0
+theme = ExtResource( 4 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="GridContainer" parent="ScrollContainer"]
+margin_right = 1092.0
+margin_bottom = 152.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 22
+custom_constants/hseparation = 60
+columns = 2
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 400, 150 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 21.0
+margin_top = 14.0
+margin_right = 146.0
+margin_bottom = 139.0
+rect_min_size = Vector2( 125, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 150.0
+margin_top = 14.0
+margin_right = 490.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_right = 261.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 265.0
+margin_right = 297.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="cost" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 301.0
+margin_right = 340.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 9 )
+text = "100"
+
+[node name="desc" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 150.0
+margin_top = 50.0
+margin_right = 490.0
+margin_bottom = 108.0
+mouse_filter = 2
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 10 )
+text = "Short description
+45646"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 150.0
+margin_top = 112.0
+margin_right = 490.0
+margin_bottom = 139.0
+custom_fonts/font = ExtResource( 10 )
+text = "in posession: 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 515.0
+margin_top = 807.0
+margin_right = 745.0
+margin_bottom = 854.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="money" type="Label" parent="HBoxContainer"]
+margin_left = 54.0
+margin_top = 1.0
+margin_right = 154.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 2 )
+text = "90000"
+
+[node name="modeselect" type="TextureRect" parent="."]
+visible = false
+margin_left = 390.43
+margin_top = 357.923
+margin_right = 890.43
+margin_bottom = 545.923
+theme = ExtResource( 12 )
+texture = ExtResource( 13 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="modeselect"]
+margin_left = 27.0
+margin_top = 36.0
+margin_right = 449.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 11 )
+text = "You want to:"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="modeselect"]
+margin_left = 62.0
+margin_top = 93.0
+margin_right = 214.0
+margin_bottom = 157.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 11 )
+text = "Sell"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="modeselect"]
+margin_left = 274.0
+margin_top = 93.0
+margin_right = 427.0
+margin_bottom = 157.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 11 )
+text = "Buy"
+
+[node name="SelectAmountPanel" type="TextureRect" parent="."]
+visible = false
+margin_left = 286.0
+margin_top = 330.0
+margin_right = 1026.0
+margin_bottom = 616.0
+texture = ExtResource( 15 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="SelectAmountPanel"]
+margin_left = 66.9587
+margin_top = 59.9817
+margin_right = 191.959
+margin_bottom = 184.982
+rect_min_size = Vector2( 125, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SelectAmountPanel"]
+margin_left = 196.0
+margin_top = 60.0
+margin_right = 662.0
+margin_bottom = 92.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="SelectAmountPanel/HBoxContainer"]
+margin_right = 387.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "ItemName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SelectAmountPanel/HBoxContainer"]
+margin_left = 391.0
+margin_right = 423.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 0 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="cost" type="Label" parent="SelectAmountPanel/HBoxContainer"]
+margin_left = 427.0
+margin_right = 466.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 9 )
+text = "100"
+
+[node name="desc" type="RichTextLabel" parent="SelectAmountPanel"]
+margin_left = 196.0
+margin_top = 96.0
+margin_right = 662.0
+margin_bottom = 154.0
+mouse_filter = 1
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 10 )
+text = "Short description
+45646"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount1" type="Label" parent="SelectAmountPanel"]
+margin_left = 196.0
+margin_top = 158.0
+margin_right = 665.0
+margin_bottom = 185.0
+custom_fonts/font = ExtResource( 10 )
+text = "in posession: 0"
+
+[node name="LineEdit" type="LineEdit" parent="SelectAmountPanel"]
+margin_left = 78.1683
+margin_top = 204.0
+margin_right = 150.168
+margin_bottom = 236.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "10000"
+max_length = 5
+
+[node name="down" type="TextureButton" parent="SelectAmountPanel"]
+margin_left = 69.2142
+margin_top = 206.191
+margin_right = 94.2142
+margin_bottom = 235.191
+rect_scale = Vector2( -1, 1 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+
+[node name="up" type="TextureButton" parent="SelectAmountPanel"]
+margin_left = 153.214
+margin_top = 206.191
+margin_right = 178.214
+margin_bottom = 235.191
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SelectAmountPanel"]
+margin_left = 268.0
+margin_top = 207.0
+margin_right = 449.0
+margin_bottom = 239.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SelectAmountPanel/HBoxContainer2"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="money" type="Label" parent="SelectAmountPanel/HBoxContainer2"]
+margin_left = 36.0
+margin_right = 101.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 9 )
+text = "90000"
+
+[node name="Button" type="Button" parent="SelectAmountPanel"]
+margin_left = 485.0
+margin_top = 189.0
+margin_right = 704.0
+margin_bottom = 253.0
+size_flags_horizontal = 3
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 11 )
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -20,7 +20,7 @@ var speed = 1.33
 #var damageeffectsarray = []
 
 var hp
-var mp
+#var mp
 var buffs = []
 
 #data format: node, time, type, slot, params

@@ -138,7 +138,9 @@ func _process(delta):
 func test_combat():
 	if resources.is_busy(): yield(resources, "done_work")
 	
-	globals.AddItemToInventory(globals.CreateUsableItem('item_6_1', 1))
+#	globals.AddItemToInventory(
+	globals.CreateUsableItem('item_6_1', 1)
+#	)
 	
 	for ch in state.characters:
 		state.unlock_char(ch)
@@ -1464,7 +1466,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			#final
 			turns += 1
 			if activeitem != null:
-				activeitem.amount -= 1
+				state.add_materials(activeitem.code, -1, false)
+#				activeitem.amount -= 1
 				activeitem = null
 				SelectSkill(caster.get_autoselected_skill())
 
@@ -1605,7 +1608,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	#final
 	turns += 1
 	if activeitem != null:
-		activeitem.amount -= 1
+		state.add_materials(activeitem.code, -1, false)
+#		activeitem.amount -= 1
 		activeitem = null
 		SelectSkill(caster.get_autoselected_skill())
 
