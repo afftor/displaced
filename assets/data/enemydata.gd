@@ -893,10 +893,15 @@ var enemylist = {
 
 
 
-var loottables = {
+var loottables = { # no need to separate materials from usables now
+	# added option to put xpreward into lootable
+#	elvenratloot = {
+#		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
+#		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
+#	},
 	elvenratloot = {
-		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
-		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
+		items = [{code = 'morsel', min = 1, max = 1, chance = 25}],
+		gold = [10, 50]
 	},
 	treantloot = {
 	},

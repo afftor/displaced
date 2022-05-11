@@ -812,21 +812,23 @@ func victory():#2remake for it is broken for now
 	
 	input_handler.PlaySound(sounds["victory"])
 	
-	rewardsdict = {materials = {}, items = [], xp = 0}
+	rewardsdict = {items = {}, xp = 0, gold = 0}
 	for i in defeated:
 		rewardsdict.xp += i.xpreward
 		if Enemydata.loottables.has(i.loottable):
 			var loot = {}
-			if Enemydata.loottables[i.loottable].has('materials'):
-				for j in Enemydata.loottables[i.loottable].materials:
+			if Enemydata.loottables[i.loottable].has('items'):
+				for j in Enemydata.loottables[i.loottable].items:
 					if randf()*100 <= j.chance:
 						loot[j.code] = round(rand_range(j.min, j.max))
-				globals.AddOrIncrementDict(rewardsdict.materials, loot)
-			if Enemydata.loottables[i.loottable].has('usables'):
-				for j in Enemydata.loottables[i.loottable].usables:
-					if randf()*100 <= j.chance:
-						var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
-						rewardsdict.items.append(newitem)
+				globals.AddOrIncrementDict(rewardsdict.items, loot)
+			if Enemydata.loottables[i.loottable].has('gold'):
+				if typeof(Enemydata.loottables[i.loottable].gold) == TYPE_ARRAY:
+					rewardsdict.gold += globals.rng.randi_range(Enemydata.loottables[i.loottable].gold[0], Enemydata.loottables[i.loottable].gold[1])
+				else:
+					rewardsdict.gold += Enemydata.loottables[i.loottable].gold
+			if Enemydata.loottables[i.loottable].has('xp'):
+				rewardsdict.xp += Enemydata.loottables[i.loottable].xp
 		state.heroes.erase(i.id)
 	defeated.clear()
 	
@@ -864,6 +866,21 @@ func victory():#2remake for it is broken for now
 	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
+	
+	if rewardsdict.gold > 0:
+		state.money += rewardsdict.gold
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.texture = load("res://assets/images/iconsitems/gold.png")
+		newbutton.get_node("Label").text = str(rewardsdict.gold)
+	for id in rewardsdict.items:
+		var item = Items.Items[id]
+		state.materials[id] += rewardsdict.items[id]
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.texture = item.icon
+		newbutton.get_node("Label").text = str(rewardsdict.items[id])
+		globals.connectmaterialtooltip(newbutton, item)
 #	for i in rewardsdict.materials:
 #		var item = Items.Materials[i]
 #		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
@@ -1435,7 +1452,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	turns += 1
 	#preparing animations
 	var animations = skill.sfx
-	var animationdict = {windup = [], predamage = [], postdamage = []}
+	var animationdict = {windup = [], prehit = [], predamage = [], postdamage = []}
 	#sort animations
 	for i in animations:
 		animationdict[i.period].append(i)
@@ -1497,6 +1514,10 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				SelectSkill(activeaction)
 				eot = true
 			return
+		for i in animationdict.prehit:
+			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
+			sfxtarget.process_sfx(i.code)
+		turns += 1
 		target_pos = newtarget
 		target = battlefield[newtarget]
 		if target == null and !skill.tags.has('empty_target'): continue
