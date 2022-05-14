@@ -19,8 +19,8 @@ var animations_queue = {}
 
 #delays for playing animations in zones
 var hp_update_delays = {}
+var hp_float_delays = {}
 var buffs_update_delays = {}
-var crit_display = []
 var log_update_delay = 0
 
 #main timer
@@ -46,7 +46,6 @@ func force_end():
 	animations_queue.clear()
 	hp_update_delays.clear()
 	buffs_update_delays.clear()
-	crit_display.clear()
 	log_update_delay = 0
 	is_busy = false
 
@@ -165,7 +164,7 @@ func default_animation(node, args):
 		input_handler.DelayedCallback(node, playtime + delaytime - transition_time, args.callback)
 	return playtime + delaytime
 
-func casterattack(node, args = null):
+func casterattack(node, args = null):#obsolete
 	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.2
 	var delaytime = 0
@@ -188,6 +187,7 @@ func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.4
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
 	input_handler.gfx_sprite(node, 'slash', 0.3, 0.1) #strike
@@ -199,6 +199,7 @@ func firebolt(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.2
 	input_handler.gfx_sprite(node, 'firebolt', 0.3, 0.4)
@@ -210,6 +211,7 @@ func flame(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.4
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
 	input_handler.gfx_sprite(node, 'flame', 0.3, 0.5)
@@ -221,6 +223,7 @@ func earth_spike(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.8
 	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
+	hp_float_delays[node] = 0.5 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
 	input_handler.gfx_sprite(node, 'earth_spike', 0.7, 1)
@@ -234,6 +237,7 @@ func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
 	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
+	hp_float_delays[node] = 0.1 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.1)
 	buffs_update_delays[node] = 0.2
 	input_handler.gfx(node, 'gfx/fire')
@@ -247,6 +251,7 @@ func heal(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.5
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
+	hp_float_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
 	input_handler.gfx_particles(node, 'heal', 1, 1)
@@ -287,11 +292,11 @@ func c_log(node, args):
 	tween.start()
 	return delaytime + delay
 
-func critical(node, args = null):
-	var delay = 0.01
-	if !crit_display.has(node):
-		crit_display.push_back(node)
-	return delay
+#func critical(node, args = null):
+#	var delay = 0.01
+#	if !crit_display.has(node):
+#		crit_display.push_back(node)
+#	return delay
 
 func hp_update(node, args):
 	var delay = 0
@@ -303,13 +308,13 @@ func hp_update(node, args):
 	var hpnode = node.panel_node.get_node("ProgressBar")
 	var hpnode2 = node.panel_node2.get_node("ProgressBar")
 	#float damage
-	if args.damage_float:
-		if crit_display.has(node):
-			args.color = Color(1,0.8,0)
-			crit_display.erase(node)
-			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)) + '!', type = args.type, size = 120, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
-		else: 
-			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+#	if args.damage_float:
+#		if crit_display.has(node):
+#			args.color = Color(1,0.8,0)
+#			crit_display.erase(node)
+#			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)) + '!', type = args.type, size = 120, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+#		else: 
+#			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
 	if !hpnode2.is_visible_in_tree():
@@ -322,6 +327,28 @@ func hp_update(node, args):
 	#update hp label
 	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp)
 	tween.start()
+	return delaytime + delay
+
+
+func damage_float(node, args):
+	var delay = 0
+	if hp_float_delays.has(node): delay = hp_float_delays[node]
+	hp_float_delays.erase(node)
+	
+	var delaytime = 0.1
+	var tween = input_handler.GetTweenNode(node)
+	tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+	return delaytime + delay
+
+
+func heal_float(node, args):
+	var delay = 0
+	if hp_float_delays.has(node): delay = hp_float_delays[node]
+	hp_float_delays.erase(node)
+	
+	var delaytime = 0.1
+	var tween = input_handler.GetTweenNode(node)
+	tween.interpolate_callback(input_handler, delay, 'FloatHealArgs', {node = node, args = args, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	return delaytime + delay
 
 

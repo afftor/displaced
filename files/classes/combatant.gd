@@ -546,14 +546,19 @@ func process_event(ev, skill = null):
 
 func deal_damage(value, source):
 	var tmp = hp
+	var out = {hp = 0, shield = 0}
 	var res = get_stat('resists')
 	value = round(value);
 	value *= 1 - res['damage']/100.0
 	if variables.resistlist.has(source): value *= 1 - res[source]/100.0
-	if value < 0: return -heal(-value)
-	if (shield > 0):
+	if value < 0: 
+		out.hp = -heal(-value)
+		return out
+	if (shield > 0) and (source != 'pure'):
+		out.shield = value
 		self.shield -= value
 		if shield < 0:
+			out.shield += shield
 			self.hp = hp + shield
 			process_event(variables.TR_DMG)
 			self.shield = 0
@@ -563,7 +568,8 @@ func deal_damage(value, source):
 		process_event(variables.TR_DMG)
 		recheck_effect_tag('recheck_damage')
 	tmp = tmp - hp
-	return tmp
+	out.hp = tmp
+	return out
 
 func heal(value):
 	if input_handler.combat_node != null and input_handler.combat_node.rules.has('no_heal'): return 0

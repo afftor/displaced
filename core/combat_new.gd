@@ -1664,32 +1664,38 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 
 func execute_skill(s_skill2):
 	var text = ''
+	var args = {critical = false, group = s_skill2.target.combatgroup}
+#	var data = {node = self, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
+#	CombatAnimations.add_new_data(data)
 	if s_skill2.hit_res == variables.RES_CRIT:
 		text += "[color=yellow]Critical!![/color] "
-		s_skill2.target.displaynode.process_critical()
+		args.critical = true
 	#new section applying conception of multi-value skills
 	#TO POLISH & REMAKE
 	for i in range(s_skill2.value.size()):
 		if s_skill2.damagestat[i] == 'no_stat': continue #for skill values that directly process into effects
-		if s_skill2.damagestat[i] == '+damage_hp': #drain, damage, damage no log, drain no log
-			if s_skill2.is_drain && s_skill2.tags.has('no_log'):
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
-				var rval2 = s_skill2.caster.heal(rval)
-			elif s_skill2.is_drain:
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
-				var rval2 = s_skill2.caster.heal(rval)
-				text += "%s drained %d health from %s and gained %d health." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
-			elif s_skill2.tags.has('no_log') && !s_skill2.is_drain:
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
+		var data = {}
+		if s_skill2.damagestat[i] == '+damage_hp': #damage, damage no log, negative damage
+			var tmp = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
+			if tmp.hp >= 0:
+				args.type = s_skill2.damagetype
+				args.damage = tmp
+				if !s_skill2.tags.has('no_log'):
+					text += "%s is hit for %d damage. " %[s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
+				data = {node = s_skill2.target.displaynode, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
 			else:
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
-				text += "%s is hit for %d damage. " %[s_skill2.target.name, rval]#, s_skill2.value[i]]
+				args.heal = -tmp.hp
+				if !s_skill2.tags.has('no_log'):
+					text += "%s is healed for %d health." % [s_skill2.target.name, -tmp.hp]
+				data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
+			CombatAnimations.add_new_data(data)
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
-			if s_skill2.tags.has('no_log'):
-				var rval = s_skill2.target.heal(s_skill2.value[i])
-			else:
-				var rval = s_skill2.target.heal(s_skill2.value[i])
-				text += "%s is healed for %d health." %[s_skill2.target.name, rval]
+			var tmp = s_skill2.target.heal(s_skill2.value[i])
+			args.heal = tmp
+			if !s_skill2.tags.has('no_log'):
+				text += "%s is healed for %d health." %[s_skill2.target.name, tmp]
+			data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
+			CombatAnimations.add_new_data(data)
 		else:
 			var mod = s_skill2.damagestat[i][0]
 			var stat = s_skill2.damagestat[i].right(1)

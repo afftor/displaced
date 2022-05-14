@@ -156,19 +156,19 @@ func update_hp():
 	if hp == null:
 		hp = fighter.hp
 	if hp != null && hp != fighter.hp:
-		var args = {damage = 0, type = '', color = Color(), newhp = fighter.hp, damage_float = true}
+		var args = {damage = 0, newhp = fighter.hp}
 		args.damage = fighter.hp - hp
-		if args.damage < 0:
-			args.color = Color(0.8,0.2,0.2)
-			if fighter.combatgroup == 'ally':
-				args.type = 'damageally'
-			else:
-				args.type = 'damageenemy' 
-		else:
-			args.type = 'heal'
-			args.color = Color(0.2,0.8,0.2)
+#		if args.damage < 0:
+#			args.color = Color(0.8,0.2,0.2)
+#			if fighter.combatgroup == 'ally':
+#				args.type = 'damageally'
+#			else:
+#				args.type = 'damageenemy' 
+#		else:
+#			args.type = 'heal'
+#			args.color = Color(0.2,0.8,0.2)
 		if hp <= 0: 
-			args.damage_float = false
+#			args.damage_float = false
 			if fighter.hp > 0:
 				process_resurrect()
 		hp = fighter.hp
@@ -210,9 +210,9 @@ func rebuildbuffs():
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_all_buffs()}
 	animation_node.add_new_data(data)
 
-func process_critical():
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
-	animation_node.add_new_data(data)
+#func process_critical():
+#	var data = {node = self, time = input_handler.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
+#	animation_node.add_new_data(data)
 
 func process_enable():
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'enable', slot = 'full', params = {}}

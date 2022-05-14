@@ -208,6 +208,13 @@ func FloatTextArgs(args):
 	#print('ftchecked')
 	FloatText(args.node, args.text, args.type, args.size, args.color, args.time, args.fadetime, args.offset)
 
+func FloatDmgArgs(args):
+	FloatDmg(args.node, args.args, args.time, args.fadetime, args.offset)
+
+
+func FloatHealArgs(args):
+	FloatHeal(args.node, args.args, args.time, args.fadetime, args.offset)
+
 func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
 	var textnode = Label.new()
 	get_tree().get_root().add_child(textnode)
@@ -230,6 +237,116 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 	var wr = weakref(textnode)
 	yield(get_tree().create_timer(time+1), 'timeout')
 	if wr.get_ref(): textnode.queue_free()
+
+
+func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)): #critical, group, type, damage = {}
+	if args.type == 'pure':
+		args.type = 'pierce'
+	var floatnode = HBoxContainer.new()
+	var size = 50
+	var color1 = Color(0.8,0.2,0.2)
+	var color2 = Color(0.6,0.6,0.6)
+	var color3 = Color(1, 0.8, 0)
+	
+	var textnode = Label.new()
+	textnode.set("custom_colors/font_color", color1)
+	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
+	floatfont.size = size
+	textnode.set("custom_fonts/font", floatfont)
+	
+	var textnode2 = textnode.duplicate()
+	textnode2.set("custom_colors/font_color", color2)
+	
+	var heigh = 48 #2test
+	
+	if args.damage.hp > 0:
+		var text = str(ceil(args.damage.hp))
+		if args.critical: 
+			text += "!"
+			textnode.set("custom_colors/font_color", color3)
+		textnode.text = text
+		var iconnode = TextureRect.new()
+		iconnode.rect_size.x = heigh
+		iconnode.rect_size.y = heigh
+		iconnode.rect_min_size = iconnode.rect_size
+		iconnode.expand = true
+		iconnode.texture = load("res://assets/images/iconsskills/source_%s.png" % args.type)
+		floatnode.add_child(iconnode)
+		floatnode.add_child(textnode)
+		if args.damage.shield > 0:
+			var text2 = str(ceil(args.damage.shield))
+			if args.critical: 
+				text2 += "!"
+			textnode2.text = text2
+			var iconnode2 = TextureRect.new()
+			iconnode2.rect_size.x = heigh
+			iconnode2.rect_size.y = heigh
+			iconnode2.rect_min_size = iconnode2.rect_size
+			iconnode2.expand = true
+			iconnode2.texture = load("res://assets/images/iconsskills/shield.png")
+			floatnode.add_child(iconnode2)
+			floatnode.add_child(textnode2)
+	elif args.damage.shield > 0:
+		var text2 = str(ceil(args.damage.shield))
+		if args.critical: 
+			text2 += "!"
+		textnode2.text = text2
+		var iconnode2 = TextureRect.new()
+		iconnode2.rect_size.x = heigh
+		iconnode2.rect_size.y = heigh
+		iconnode2.rect_min_size = iconnode2.rect_size
+		iconnode2.expand = true
+		iconnode2.texture = load("res://assets/images/iconsskills/shield.png")
+		floatnode.add_child(iconnode2)
+		floatnode.add_child(textnode2)
+	else:
+		var text = "0"
+		if args.critical: 
+			text += "!"
+			textnode.set("custom_colors/font_color", color3)
+		textnode.text = text
+		var iconnode = TextureRect.new()
+		iconnode.rect_size.x = heigh
+		iconnode.rect_size.y = heigh
+		iconnode.rect_min_size = iconnode.rect_size
+		iconnode.expand = true
+		iconnode.texture = load("res://assets/images/iconsskills/source_%s.png" % args.type)
+		floatnode.add_child(iconnode)
+		floatnode.add_child(textnode)
+	
+	get_tree().get_root().add_child(floatnode)
+	floatnode.rect_global_position = node.rect_global_position + positionoffset
+	if args.group == 'ally':
+		DamageTextFly(floatnode, false)
+	elif args.group == 'enemy':
+		DamageTextFly(floatnode, true)
+	var wr = weakref(floatnode)
+	yield(get_tree().create_timer(time + 1), 'timeout')
+	if wr.get_ref(): floatnode.queue_free()
+
+
+func FloatHeal(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)): #critical, group, heal
+	#heal spells can't crit, but negeative damage still can
+	#group arg is not required here
+	var text = str(ceil(args.heal))
+	var size = 50
+	var color = Color(0.2,0.8,0.2)
+	if args.critical: 
+		text += "!"
+		#add size and color change if required
+	var textnode = Label.new()
+	get_tree().get_root().add_child(textnode)
+	textnode.text = text
+	textnode.rect_global_position = node.rect_global_position + positionoffset
+	textnode.set("custom_colors/font_color", color)
+	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
+	floatfont.size = size
+	textnode.set("custom_fonts/font", floatfont)
+	HealTextFly(textnode)
+	var wr = weakref(textnode)
+	yield(get_tree().create_timer(time + 1), 'timeout')
+	if wr.get_ref(): textnode.queue_free()
+
 
 func DamageTextFly(node, reverse = false):
 	var tween = GetTweenNode(node)
