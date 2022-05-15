@@ -1071,10 +1071,11 @@ func can_be_taunted(caster, target):
 
 
 func refine_target(skill, caster, target): #s_skill, caster, target_positin
+	var ttarget = battlefield[target]
 	var change = false
 	#var skill = Skillsdata.skilllist[s_code]
 	if target == null: change = true #forced change
-#	elif target.defeated or target.hp <= 0: change = true #forced change. or not. nvn error
+	elif ttarget.defeated or ttarget.hp <= 0: change = true #forced change. or not. nvn error
 	elif skill.keep_target == variables.TARGET_NOKEEP: change = true #intentional change
 	elif skill.keep_target == variables.TARGET_KEEPFIRST: skill.keep_target = variables.TARGET_NOKEEP
 	elif skill.keep_target == variables.TARGET_MOVEFIRST:
