@@ -4,7 +4,7 @@
 =GUI_NORMAL=
 =BG mountainsday=
 =SPRITE victor=
-=MUSIC eventgeneric=
+=MUSIC event_mysterious=
 A few hours later
 V - Looks like a perfect timing for me.
 Dr - Who are you, human?

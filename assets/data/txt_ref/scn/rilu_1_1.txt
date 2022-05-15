@@ -2,7 +2,7 @@
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG cave=
-=MUSIC eventgeneric=
+=MUSIC event_mysterious=
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=

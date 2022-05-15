@@ -2869,8 +2869,8 @@ var skilllist = {
 
 	},
 	#items
-	item_1_1 = {
-		code = 'item_1_1',
+	item_heal_1_effect = {
+		code = 'item_heal_1_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -2893,8 +2893,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_1_2 = {
-		code = 'item_1_2',
+	item_heal_2_effect = {
+		code = 'item_heal_2_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -2917,8 +2917,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_1_3 = {
-		code = 'item_1_3',
+	item_heal_3_effect = {
+		code = 'item_heal_3_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -2941,8 +2941,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_2_1 = {
-		code = 'item_1_1',
+	item_heal_aoe_1_effect = {
+		code = 'item_heal_aoe_1_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -2965,8 +2965,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_2_2 = {
-		code = 'item_1_1',
+	item_heal_aoe_2_effect = {
+		code = 'item_heal_aoe_2_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -2989,8 +2989,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_2_3 = {
-		code = 'item_1_1',
+	item_heal_aoe_3_effect = {
+		code = 'item_heal_aoe_3_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3013,8 +3013,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_3_1 = {
-		code = 'item_1_3',
+	item_dispel_1_effect = {
+		code = 'item_dispel_1_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3037,8 +3037,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_3_2 = {
-		code = 'item_1_3',
+	item_dispel_2_effect = {
+		code = 'item_dispel_2_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3061,8 +3061,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_4_1 = {
-		code = 'item_1_3',
+	item_res_1_effect = {
+		code = 'item_res_1_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3085,8 +3085,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_4_3 = {
-		code = 'item_1_3',
+	item_res_2_effect = {
+		code = 'item_res_2_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3109,8 +3109,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_4_2 = {
-		code = 'item_1_3',
+	item_res_3_effect = {
+		code = 'item_res_3_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3133,8 +3133,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = []
 	},
-	item_4_4 = {
-		code = 'item_1_3',
+	item_res_4_effect = {
+		code = 'item_res_4_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3156,10 +3156,10 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
-		follow_up = 'item_4_4fa'
+		follow_up = 'item_res_4_effectFA'
 	},
-	item_4_4fa = {
-		code = 'item_1_3',
+	item_res_4_effectFA = {
+		code = 'item_res_4_effectFA',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3183,8 +3183,8 @@ var skilllist = {
 		patches = [],
 		not_final = true
 	},
-	item_5_1 = {
-		code = 'item_1_3',
+	item_barrier_1_effect = {
+		code = 'item_barrier_1_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3207,8 +3207,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = [],
 	},
-	item_5_2 = {
-		code = 'item_1_3',
+	item_barrier_2_effect = {
+		code = 'item_barrier_2_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3231,8 +3231,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = [],
 	},
-	item_5_3 = {
-		code = 'item_1_3',
+	item_barrier_3_effect = {
+		code = 'item_barrier_3_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3255,8 +3255,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = [],
 	},
-	item_6_1 = {
-		code = 'attack',
+	item_damage_1_effect = {
+		code = 'item_damage_1_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3280,8 +3280,8 @@ var skilllist = {
 		patches = [], 
 		ai_priority = 1
 	},
-	item_6_2 = {
-		code = 'attack',
+	item_damage_2_effect = {
+		code = 'item_damage_2_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3305,8 +3305,8 @@ var skilllist = {
 		patches = [], 
 		ai_priority = 1
 	},
-	item_7_1 = {
-		code = 'item_1_3',
+	item_buff_atk_effect = {
+		code = 'item_buff_atk_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -3329,8 +3329,8 @@ var skilllist = {
 		sfxtarget = null,
 		patches = [],
 	},
-	item_7_2 = {
-		code = 'item_1_3',
+	item_buff_def_effect = {
+		code = 'item_buff_def_effect',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),

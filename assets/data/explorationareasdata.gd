@@ -53,7 +53,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'scene', value = 'faery_queen_1_b'},
 	],
 	faery_queen_1_a = [
-		{type = 'scene', value = 'faeryqueen_1_b'},
+		{type = 'scene', value = 'faery_queen_1_b'},
 #		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
 	],
 	faery_queen_1_b = [

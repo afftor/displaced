@@ -1,5 +1,5 @@
 ** erika_annet_1 **
-=MUSIC eventgeneric=
+=MUSIC event_mysterious=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG town_in=
@@ -22,7 +22,8 @@ N - Gh... But I'll be going bankrupt because of this!
 CM - I agree with Ms. Annet. We will have to seize your property in the name of the city. 
 CM - Please provide an escort to Mr. Nicolas, the meeting is over. 
 N - Damnit, I've been set up!..
-=BLACKTRANS 0.5=
+=BLACKTRANS 1=
+=DELAY 1=
 An - Another hard issue resolved, friend?
 CM - Indeed, I must thank you for your cooperation.
 CM - I knew it was the right decision to introduce you to the committee.

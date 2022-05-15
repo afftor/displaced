@@ -7,7 +7,7 @@
 =DELAY 0.5=
 =SPRITE annet=
 =SPRITE_UNFADE 0.3=
-=MUSIC combattheme=
+=MUSIC event_mysterious=
 An - Gh, you degenerates...
 An - Demons, crush them!
 =SPRITE demon=
@@ -40,6 +40,7 @@ An - She was hypnotized long time ago to obey my will on command.
 Ri - We won't hold without her...
 An - Your really don't know how to secure victory, Arron.
 An - Never leave things to chance.
+=MUSIC_STOP=
 =SPRITE hide=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -58,8 +59,9 @@ An(anger) - You... biiitch!..
 Er(anger) - I've learned from the best.
 An(anger) - Ghhh!..
 *Slash*
-=SOUND sound_stab=
+=SOUND sound_splatter=
 =BG scenes/annet_erika_1=
+=MUSIC event_combat=
 An(anger) - Nnooo!..
 A red splash erupted from Annet's neck as the dagger sliced it through.
 Er(anger) - Go to hell, Mistress.

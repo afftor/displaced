@@ -4,7 +4,7 @@
 =BG hall=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-=MUSIC eventgeneric=
+=MUSIC event_tragic=
 =GUI_NORMAL=
 Ro - Maybe we should've helped the survivors back in the city.
 Ar(neutral) - We have enough to deal with on our hands already.
@@ -31,6 +31,7 @@ Ro - Excuse me...
 =DELAY 1=
 =BG villagenight=
 =GUI_NORMAL=
+=MUSIC event_mysterious=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
 Ro - (Why do I feel so terrible now)
@@ -46,8 +47,8 @@ Ro(talk) - Huh?
 *Thud*
 With an uncharacteristic strike, Iola knocked Rose out and swiftly disappeared with her into the night.
 =SOUND sound_fall=
-=BLACKTRANS 1=
-=DELAY 1=
+=BLACKTRANS 2=
+=DELAY 2=
 =BG cult2=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
@@ -83,9 +84,10 @@ De - Take her to the jail cell.
 I - Okay. 
 =SPRITE_FADE 0.3=
 =GUI_HIDE=
-=BLACKTRANS 1=
-=DELAY 1=
+=BLACKTRANS 2=
+=DELAY 2=
 =BG villageday=
+=MUSIC eventgeneric=
 =GUI_NORMAL=
 Next day.
 =SPRITE erika=

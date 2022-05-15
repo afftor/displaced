@@ -2,11 +2,11 @@
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG cave=
-=MUSIC eventlight=
+=MUSIC event_mysterious=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-=SPRITE kingdwarf=
+=SPRITE kingdwarf1=
 =SPRITE_UNFADE 0.5=
 KD - Haha, these surfacers are quite feisty. 
 Ro(shock) - Master, we can't fight them for much longer. 
@@ -21,11 +21,12 @@ Arron turned to the side Erika pointed at, broadening his eyes in disbelief.
 Blood covered Rilu slowly stood up on her knees. 
 =SPRITE rilu=
 Ro(shock) - She's alive!
-Ri - Ugh... Not this again.
+Ri - Ugh, This didn't take long to happen again.
+Ri - Can't I get a break...
 The dwarven king shows no sign of hesitation being completely overwhelmed by combat haze. 
 KD - What an interesting girl! Look like an ideal practice target, Hahaha.
 Previously expressionless Rilu's face now lit with magic glow displayed an angry look mixed with determination.
-Ri(spell) - Arron, I'll join if you don't mind.
+Ri(spell) - Arron, was it? I'll join if you don't mind.
 Ar - Not gonna stop you.
 =GUI_HIDE=
 =BLACKTRANS 1=
