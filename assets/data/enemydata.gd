@@ -377,6 +377,7 @@ var enemylist = {
 			idle = "Fight/Fight_spritesFHD_0003s_0000_culthealer_idle",
 			hit = "Fight/Fight_spritesFHD_0003s_0000_culthealer_hit",
 			attack ="Fight/Fight_spritesFHD_0003s_0000_culthealer_at" ,
+			cast ="Fight/Fight_spritesFHD_0003s_0000_culthealer_cast" ,
 		},
 	},
 	cult_archer = { #sprites copied

@@ -2321,7 +2321,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_cast', target = 'caster', period = 'windup'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
