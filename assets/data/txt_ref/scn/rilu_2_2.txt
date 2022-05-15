@@ -4,9 +4,10 @@
 =GUI_NORMAL=
 =BG hall=
 =SPRITE rose=
+=MUSIC eventgeneric=
 The girls and Arron are having dinner.
 Em - Wow, this tastes great, Rose! 
-Em(tired) - I wish I could cook like you.
+Em(sad) - I wish I could cook like you.
 Ro(talk) - It's nothing special.
 Ro - I had to learn it as part of my training.
 Er - The meat is quite unusual, never tried anything like this before.
@@ -16,7 +17,7 @@ Ar - Ah, some ancient culinary? That's fancy.
 =SPRITE rilu=
 Ri - ...Yes, something like that.
 Ri(talk) - Thanks for the meal, I should go now.
-=SPRITE_FADE 0.5=
+=SPRITE_FADE 0.3=
 Ro(sarcastic) - Master, have you offended her recently? 
 Ar - Can't imagine how.
 Ro(talk) - She looked displeased after you spoke to her.
@@ -27,10 +28,11 @@ Ro(sarcastic) - Wait, why would it be my fault?
 Ar - It's your duty to make sure I don't embarrass myself.
 Ro(sarcastic) - No, it's not.
 Ar - Whatever. I'll go talk to her I guess.
-=BLACKTRANS 0.5=
+=BLACKTRANS 1=
+=DELAY 1=
 =BG villagenight=
 Arron went to Rilu's house.
-=SPRITE_UNFADE 0.5=
+=SPRITE_UNFADE 0.3=
 Ar(neutral) - Hey. Is something wrong?
 Ar(neutral) - I should probably apologize for the last time.
 Ar(neutral) - You weren't yourself and I took advantage of it.
@@ -80,15 +82,18 @@ Ar - You don't beat around the bush.
 Ar - I think I have a fun idea.
 Ar - Come to the townhall in one hour.
 Ri - *Nod*
-=BLACKFADE 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
 Some time later
 =SOUND knocking=
 =BG hall=
-=BLACKUNFADE 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 Ar - Hop in.
 Ar - Say, you aren't against some experiments?
 Ri - .....
 =MUSIC erotheme=
+=GUI_FULL=
 =ABG rilu_anal_1=
 By Arron's instructions, Rilu laid on the side.
 Ri - This is somewhat embarrassing.
@@ -167,7 +172,9 @@ Ar - Came inside your butt.
 Ri - Ah... 
 Ri - It feels so hot...
 Ar - Hah... And you called me a pervert. 
-=BLACKTRANS 0.5=
+=GUI_NORMAL=
+=BLACKTRANS 1=
+=DELAY 1=
 =BG town_in=
 =SPRITE rilu=
 Ar(neutral) - Hope you aren't having second thoughts.

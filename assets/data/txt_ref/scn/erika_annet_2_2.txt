@@ -1,5 +1,5 @@
 ** erika_annet_2_2 **
-=MUSIC erotheme=
+=MUSIC event_mysterious=
 =GUI_FULL=
 =ABG annet_erika_1=
 =BLACKFADE 0.5=

@@ -1,5 +1,5 @@
 ** erika_annet_2_4 **
-=MUSIC eventlight=
+=MUSIC event_mysterious=
 =BLACKUNFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
@@ -58,6 +58,7 @@ An - Just let me unlock this...
 =SPRITE_FADE 0.3=
 =SOUND sound_fall=
 *fall*
+=MUSIC event_combat=
 Annet fell to the ground knocked out with Rose standing behind as she was unlocking the cell door. 
 Rose held a small blackjack in her hand, which just got intimately acquainted with Annet’s head
 Ro(talk) - *Gasp*
@@ -90,6 +91,7 @@ Ar(neutral) - We can talk later, you need some rest.
 =SPRITE erika=
 =BLACKFADE 1=
 =GUI_NORMAL=
+=MUSIC eventlight=
 By the evening they safely returned home.
 Ro(talk) - Thanks for the baton, Ember.
 Ro - I managed to hide it so she had no idea.

@@ -57,6 +57,7 @@ Ro - We are currently looking for someone...
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
+=MUSIC event_mysterious=
 =GUI_NORMAL=
 Dr - Curious story, but my knowledge is not enough to help you here. 
 Dr - I don't know anything about that person or item you possess.
@@ -95,6 +96,7 @@ Ember awkwardly hugged the big dragon.
 =BLACKTRANS 1=
 =DELAY 1=
 =GUI_NORMAL=
+=MUSIC eventgeneric=
 =SPRITE emberhappy=
 =SPRITE_UNFADE 0.5=
 Em - Hey, I'm ready to go.

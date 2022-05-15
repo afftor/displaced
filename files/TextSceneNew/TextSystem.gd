@@ -122,7 +122,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	SlaveTrader2 = {
-		source = 'Slave Trader',
+		source = 'Slave Trader A',
 		portrait = 'Slave_Trader', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -131,7 +131,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	SlaveTrader = {
-		source = 'Slave Trader 2',
+		source = 'Slave Trader B',
 		portrait = 'Slave_Trader_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -266,7 +266,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	FQ = {
-		source = 'Fairy Queen',
+		source = 'Faery Queen',
 		portrait = 'FairyQueen',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -275,7 +275,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	FA = {
-		source = 'Fairy A',
+		source = 'Faery A',
 		portrait = 'Fairy_A', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -284,7 +284,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	FB = {
-		source = 'Fairy B',
+		source = 'Faery B',
 		portrait = 'Fairy_B', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -472,6 +472,18 @@ var char_map = {
 #		custom_variants = [], #for specific ones
 #		sprite = null,
 #		animated = false,
+		color = Color('ffffff'),
+	},
+	slavetrader = {
+		source = 'Slave Trader 1',
+		portrait = 'Boy',
+		base_variants = [],
+		color = Color('ffffff'),
+	},
+	slavetrader2 = {
+		source = 'Slave Trader 2',
+		portrait = 'Boy',
+		base_variants = [],
 		color = Color('ffffff'),
 	},
 }

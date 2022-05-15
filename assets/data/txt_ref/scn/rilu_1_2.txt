@@ -2,7 +2,7 @@
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG cave=
-=MUSIC eventlight=
+=MUSIC event_mysterious=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
@@ -21,7 +21,7 @@ Rilu faced the wall and began chanting a spell. The barely visible spirits began
 =DELAY 0.5=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-=SPRITE kingdwarf=
+=SPRITE kingdwarf1=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
 S - The surface dwellers we have trapped on the other side seems to have found a way to disable the spirit wall.

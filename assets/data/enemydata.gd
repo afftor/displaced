@@ -72,7 +72,7 @@ var enemylist = {
 		loottable = 'elvenratloot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0007s_0000_mole_idle",
-			hit = "Fight/Fight_spritesFHD_0007s_0000_mole_hit",
+			hit = "Fight/Fight_spritesFHD_0007s_0002_mole_hit",
 			attack = "Fight/Fight_spritesFHD_0007s_0001_mole_at",
 #			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
 		},
@@ -535,9 +535,9 @@ var enemylist = {
 		aiposition = 'melee',
 		loottable = '',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_idle",
+			idle = "Fight/Fight_spritesFHD_0000s_0002_Demonalt_idle",
 			hit = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_hit",
-			attack = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_at",}
+			attack = "Fight/Fight_spritesFHD_0000s_0001_Demonalt_at",}
 	},
 	soldier = {
 		code = 'soldier',

@@ -16,7 +16,7 @@ Er - Don't worry, it's one of my favorite outfits.
 M - A-ha, alright then.
 EC - No, please let us go!
 Erika turned to the noise from the other side of the market.
-=MUSIC_STOP=
+=MUSIC event_mysterious=
 A pair of captured children, no older than twelve, were sold to an obese rich man.
 RN - Shut it, you cur.
 RN - I've paid a good sum for you.

@@ -2,7 +2,9 @@
 =GUI_NORMAL=
 =BG forest=
 =SPRITE_HIDE=
-=BLACKTRANS 0.5=
+=BLACKTRANS 1=
+=MUSIC eventgeneric=
+=DELAY 1=
 After going through the portal, Arron finds himself wandering alone in an unknown part of the forest.
 Ar - Huh... Anyone else around?
 Er - I'm over here.
@@ -10,7 +12,8 @@ Ar - Good, where's everyone else?
 Er - Looks like we walked into a trap.
 Em - Oi, Sir Arron!
 Ar(neutral) - Looks like Ember is over there.
-=BLACKTRANS 0.5=
+=BLACKTRANS 1=
+=DELAY 1=
 =SPRITE rose=
 Separated from the rest of the group, Rose finds herself all alone in the depths of the forest.
 Ro - I wasn’t expecting this to happen...
@@ -140,6 +143,7 @@ Ar - Sorry, that wasn't a good idea.
 Ro(talk) - ...It's nothing, let's finish with this.
 Ar - You sure? You look a bit shabby.
 Ro - Yes... I was just a bit worried.
+Ro(sarcastic) - (Idiot Master, if it wasn't for your reckless decision...)
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

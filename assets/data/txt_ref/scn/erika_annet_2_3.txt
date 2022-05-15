@@ -2,7 +2,7 @@
 =BLACKFADE 1=
 =DELAY 1=
 =BG villageday=
-=MUSIC eventgeneric=
+=MUSIC eventlight=
 =GUI_NORMAL=
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
@@ -54,6 +54,7 @@ After a half hour Arron and Rose have found Annet's estate.
 =DELAY 1=
 =GUI_NORMAL=
 =BLACKFADE 1=
+=MUSIC event_mysterious=
 Ar - ...So we have been looking for her.
 An - I see. Mr. Arron, right?
 An - I do indeed know about Erika and where she is right now.
