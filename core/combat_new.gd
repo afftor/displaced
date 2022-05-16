@@ -138,9 +138,7 @@ func _process(delta):
 func test_combat():
 	if resources.is_busy(): yield(resources, "done_work")
 	
-#	globals.AddItemToInventory(
-	globals.CreateUsableItem('item_6_1', 1)
-#	)
+	state.add_test_resources()
 	
 	for ch in state.characters:
 		state.unlock_char(ch)

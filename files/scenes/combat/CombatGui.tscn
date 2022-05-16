@@ -886,29 +886,30 @@ __meta__ = {
 
 [node name="ItemContainer" type="GridContainer" parent="SkillPanel"]
 visible = false
-margin_left = 440.0
+margin_left = 345.0
 margin_top = 20.0
 margin_right = 790.0
 margin_bottom = 190.0
 theme = ExtResource( 25 )
 custom_constants/vseparation = 10
 custom_constants/hseparation = 5
-columns = 4
+columns = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="SkillPanel/ItemContainer"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -917,10 +918,11 @@ __meta__ = {
 }
 
 [node name="count" type="Label" parent="SkillPanel/ItemContainer/Button"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
@@ -929,17 +931,18 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="SkillPanel/ItemContainer"]
-margin_left = 85.0
-margin_right = 165.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = 55.0
+margin_right = 105.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button2"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -947,11 +950,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button2"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
@@ -960,17 +964,18 @@ __meta__ = {
 }
 
 [node name="Button3" type="Button" parent="SkillPanel/ItemContainer"]
-margin_left = 170.0
-margin_right = 250.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = 110.0
+margin_right = 160.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button3"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -978,11 +983,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button3"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
@@ -991,17 +997,18 @@ __meta__ = {
 }
 
 [node name="Button4" type="Button" parent="SkillPanel/ItemContainer"]
-margin_left = 255.0
-margin_right = 335.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = 165.0
+margin_right = 215.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button4"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1009,11 +1016,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button4"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button4"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
@@ -1022,17 +1030,18 @@ __meta__ = {
 }
 
 [node name="Button5" type="Button" parent="SkillPanel/ItemContainer"]
-margin_top = 90.0
-margin_right = 80.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = 220.0
+margin_right = 270.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button5"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1040,11 +1049,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button5"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button5"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
@@ -1053,18 +1063,18 @@ __meta__ = {
 }
 
 [node name="Button6" type="Button" parent="SkillPanel/ItemContainer"]
-margin_left = 85.0
-margin_top = 90.0
-margin_right = 165.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = 275.0
+margin_right = 325.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button6"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1072,11 +1082,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button6"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button6"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
@@ -1085,18 +1096,18 @@ __meta__ = {
 }
 
 [node name="Button7" type="Button" parent="SkillPanel/ItemContainer"]
-margin_left = 170.0
-margin_top = 90.0
-margin_right = 250.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = 330.0
+margin_right = 380.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button7"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1104,11 +1115,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button7"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button7"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
@@ -1117,18 +1129,18 @@ __meta__ = {
 }
 
 [node name="Button8" type="Button" parent="SkillPanel/ItemContainer"]
-margin_left = 255.0
-margin_top = 90.0
-margin_right = 335.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 80, 80 )
+margin_left = 385.0
+margin_right = 435.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 
-[node name="TextureRect" type="TextureRect" parent="SkillPanel/ItemContainer/Button8"]
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 70, 70 )
+margin_right = -5.0
+margin_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1136,11 +1148,554 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cooldown" type="Label" parent="SkillPanel/ItemContainer/Button8"]
-margin_left = 7.0
-margin_top = 28.4126
-margin_right = 72.0
-margin_bottom = 52.4126
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button8"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="SkillPanel/ItemContainer"]
+margin_top = 60.0
+margin_right = 50.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button9"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button10" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 55.0
+margin_top = 60.0
+margin_right = 105.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button10"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button11" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 110.0
+margin_top = 60.0
+margin_right = 160.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button11"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button11"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button12" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 165.0
+margin_top = 60.0
+margin_right = 215.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button12"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button12"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button13" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 220.0
+margin_top = 60.0
+margin_right = 270.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button13"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button13"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button14" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 275.0
+margin_top = 60.0
+margin_right = 325.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button14"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button14"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button15" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 330.0
+margin_top = 60.0
+margin_right = 380.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button15"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button15"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button16" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 385.0
+margin_top = 60.0
+margin_right = 435.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button16"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button16"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button17" type="Button" parent="SkillPanel/ItemContainer"]
+margin_top = 120.0
+margin_right = 50.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button17"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button17"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button18" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 55.0
+margin_top = 120.0
+margin_right = 105.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button18"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button18"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button19" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 110.0
+margin_top = 120.0
+margin_right = 160.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button19"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button19"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button20" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 165.0
+margin_top = 120.0
+margin_right = 215.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button20"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button20"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button21" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 220.0
+margin_top = 120.0
+margin_right = 270.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button21"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button21"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button22" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 275.0
+margin_top = 120.0
+margin_right = 325.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button22"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button22"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button23" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 330.0
+margin_top = 120.0
+margin_right = 380.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button23"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button23"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button24" type="Button" parent="SkillPanel/ItemContainer"]
+margin_left = 385.0
+margin_top = 120.0
+margin_right = 435.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button24"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="SkillPanel/ItemContainer/Button24"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 33 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1

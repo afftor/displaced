@@ -49,18 +49,24 @@ var curve = [1.0]
 
 var default_animations_duration = {
 	attack = 0.6,
+	cast = 0.6,
+	special = 0.6,
 	hit = 0.6,
 	dead = 0.5,#for npc only
 	null: 0.5,
 }
 var default_animations_transition = {
 	attack = 0.2,
+	cast = 0.2,
+	special = 0.2,
 	hit = 0.2,
 	dead = 0.1,
 	null: 0.5,
 }
 var default_animations_delay = {
 	attack = 0.0,
+	cast = 0.0,
+	special = 0.0,
 	hit = 0.3,
 	dead = 0,
 	null: 0.5,

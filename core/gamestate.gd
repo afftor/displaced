@@ -557,6 +557,11 @@ func FinishQuest(code):
 #	globals.check_signal("QuestCompleted", code)
 
 
+func add_test_resources():
+	for i in materials:
+		materials[i] = 100
+
+
 func add_materials(res, value, log_f = true):
 	if !materials.has(res):
 		materials[res] = 0

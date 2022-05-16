@@ -23,6 +23,7 @@ func test_combat():
 func run_test():
 	if resources.is_busy(): yield(resources, "done_work")
 	
+	state.add_test_resources()
 	for ch in state.characters:
 		state.unlock_char(ch)
 		state.heroes[ch].unlock_all_skills()

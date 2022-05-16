@@ -24,8 +24,7 @@ var binded_events = {
 
 func debug():
 #	state.complete_area('forest_erika')
-	for i in state.materials:
-		state.materials[i] = 20
+	state.add_test_resources()
 #	state.materials.goblinmetal = 20
 #	state.materials.wood = 20
 #	state.materials.elvenwood = 20
