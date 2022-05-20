@@ -812,7 +812,12 @@ func victory():#2remake for it is broken for now
 	
 	rewardsdict = {items = {}, xp = 0, gold = 0}
 	for i in defeated:
-		rewardsdict.xp += i.xpreward
+		var tmp = i.xpreward
+		if state.heroes.arron.level > en_level:
+			tmp /= 5
+		elif state.heroes.arron.level < en_level:
+			tmp *= 2
+		rewardsdict.xp += tmp
 		if Enemydata.loottables.has(i.loottable):
 			var loot = {}
 			if Enemydata.loottables[i.loottable].has('items'):
@@ -826,7 +831,12 @@ func victory():#2remake for it is broken for now
 				else:
 					rewardsdict.gold += Enemydata.loottables[i.loottable].gold
 			if Enemydata.loottables[i.loottable].has('xp'):
-				rewardsdict.xp += Enemydata.loottables[i.loottable].xp
+				tmp = Enemydata.loottables[i.loottable].xp
+				if state.heroes.arron.level > en_level:
+					tmp /= 5
+				elif state.heroes.arron.level < en_level:
+					tmp *= 2
+				rewardsdict.xp += tmp
 		state.heroes.erase(i.id)
 	defeated.clear()
 	

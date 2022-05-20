@@ -1,7 +1,7 @@
 extends combatant
 class_name enemy
 
-var xpreward #for enemies
+var xpreward setget ,get_reward #for enemies 
 var loottable
 
 var base_dmg_type = 'bludgeon'
@@ -16,6 +16,10 @@ func _init():
 func get_spec_data():
 	if ai == null: return null
 	return ai.get_spec_data()
+
+
+func get_reward():
+	return  int(xpreward * variables.curve[level - 1])
 
 #confirmed getters
 func get_weapon_damagetype():
