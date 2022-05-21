@@ -15,6 +15,9 @@ var MaxLevel = 40
 var StartTraitPoints = 0
 var TraitPointsPerLevel = 1
 
+#enemies
+var EasyDiffMul = 0.7
+
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
 var bonuses_stat_list = ['damage']

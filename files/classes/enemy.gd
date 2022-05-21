@@ -21,6 +21,20 @@ func get_spec_data():
 func get_reward():
 	return  int(xpreward * variables.curve[level - 1])
 
+
+func hpmax_get():
+	var res = .hpmax_get()
+	if state.get_difficulty() == 'easy':
+		res *= variables.EasyDiffMul
+	return res
+
+
+func damage_get():
+	var res = .damage_get()
+	if state.get_difficulty() == 'easy':
+		res *= variables.EasyDiffMul
+	return res
+
 #confirmed getters
 func get_weapon_damagetype():
 	var res = base_dmg_type
