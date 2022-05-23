@@ -1511,8 +1511,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 				if endturn or caster.hp <= 0 or !caster.can_act():
 					#on end turn triggers
-					caster.process_event(variables.TR_TURN_F)
-					caster.displaynode.process_disable()
+					if caster.hp > 0:
+						caster.process_event(variables.TR_TURN_F)
+						caster.displaynode.process_disable()
 					call_deferred('select_actor')
 					eot = false
 				else:
@@ -1658,8 +1659,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
-		caster.process_event(variables.TR_TURN_F)
-		caster.displaynode.process_disable()
+		if caster.hp > 0:
+			caster.process_event(variables.TR_TURN_F)
+			caster.displaynode.process_disable()
 		call_deferred('select_actor')
 		eot = false
 	else:
