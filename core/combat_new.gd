@@ -1082,7 +1082,7 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 	var ttarget = battlefield[target]
 	var change = false
 	#var skill = Skillsdata.skilllist[s_code]
-	if target == null: change = true #forced change
+	if ttarget == null: change = true #forced change
 	elif ttarget.defeated or ttarget.hp <= 0: change = true #forced change. or not. nvn error
 	elif skill.keep_target == variables.TARGET_NOKEEP: change = true #intentional change
 	elif skill.keep_target == variables.TARGET_KEEPFIRST: skill.keep_target = variables.TARGET_NOKEEP
@@ -1126,8 +1126,9 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 			return caster.position
 
 
-func CalculateTargets(skill, caster, target, finale = false):
+func CalculateTargets(skill, caster, target_pos, finale = false):
 	#if target == null: return
+	var target = battlefield[target_pos]
 	var array = []
 	
 	var targetgroup
@@ -1144,7 +1145,7 @@ func CalculateTargets(skill, caster, target, finale = false):
 			array = [target]
 		'row':
 			for i in variables.rows:
-				if variables.rows[i].has(target.position):
+				if variables.rows[i].has(target_pos):
 					for j in variables.rows[i]:
 						if battlefield[j] == null : continue
 						var tchar = battlefield[j]
@@ -1153,7 +1154,7 @@ func CalculateTargets(skill, caster, target, finale = false):
 						array.append(tchar)
 		'line':
 			for i in variables.lines:
-				if variables.lines[i].has(target.position):
+				if variables.lines[i].has(target_pos):
 					for j in variables.lines[i]:
 						if battlefield[j] == null : continue
 						var tchar = battlefield[j]
@@ -1176,7 +1177,7 @@ func CalculateTargets(skill, caster, target, finale = false):
 					array.append(tchar)
 		'no_target':
 			for j in range(1, 10):
-				if j == target.position: continue
+				if j == target_pos: continue
 				if j in range(1,4) && targetgroup == 'ally':
 					if battlefield[j] == null : continue
 					var tchar = battlefield[j]
@@ -1190,18 +1191,18 @@ func CalculateTargets(skill, caster, target, finale = false):
 					#if !tchar.can_be_damaged(skill.code) and !finale: continue
 					array.append(tchar)
 		'sideslash':
-			var tpos = [target.position]
-			if target.position in [1, 4, 7]: tpos.push_back(target.position + 1)
-			elif target.position in [3, 6, 9]: tpos.push_back(target.position - 1)
+			var tpos = [target_pos]
+			if target_pos in [1, 4, 7]: tpos.push_back(target_pos + 1)
+			elif target_pos in [3, 6, 9]: tpos.push_back(target_pos - 1)
 			else:
-				tpos.push_back(target.position + 1)
-				tpos.push_back(target.position - 1)
+				tpos.push_back(target_pos + 1)
+				tpos.push_back(target_pos - 1)
 			var tpos2 = []
 			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
 			if tpos2.size() == 3: tpos2.pop_back()
 			array = tpos2
 		'2random':
-			var tpos = get_allied_targets(target)
+			var tpos = get_allied_targets(target) #possible cause error if no target
 			while tpos.size() > 2:
 				var r = globals.rng.randi_range(0, tpos.size() - 1)
 				tpos.remove(r)
@@ -1210,13 +1211,13 @@ func CalculateTargets(skill, caster, target, finale = false):
 			array = tpos2
 		'neighbours':
 			var tpos = []
-			if target.position in [1, 4, 7]: tpos.push_back(target.position + 1)
-			elif target.position in [3, 6, 9]: tpos.push_back(target.position - 1)
+			if target_pos in [1, 4, 7]: tpos.push_back(target_pos + 1)
+			elif target_pos in [3, 6, 9]: tpos.push_back(target_pos - 1)
 			else:
-				tpos.push_back(target.position + 1)
-				tpos.push_back(target.position - 1)
-			if target.position in [4, 5, 6]:#not sure about this
-				tpos.push_back(target.position + 3)
+				tpos.push_back(target_pos + 1)
+				tpos.push_back(target_pos - 1)
+			if target_pos in [4, 5, 6]:#not sure about this
+				tpos.push_back(target_pos + 3)
 			var tpos2 = []
 			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
 			array = tpos2
@@ -1260,7 +1261,7 @@ func FighterMouseOver(position):
 				if swapchar != null:
 					cur_targets = [fighter]
 				else:
-					cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, fighter)
+					cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_ally_final()
 				cur_state = T_TARGETOVER
@@ -1270,7 +1271,7 @@ func FighterMouseOver(position):
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
 				var cur_targets = []
-				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, fighter)
+				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_enemy_final()
 				cur_state = T_TARGETOVER
@@ -1289,7 +1290,7 @@ func FighterMouseOver(position):
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
 				var cur_targets = []
-				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, fighter)
+				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_enemy_final()
 				cur_state = T_TARGETOVER
@@ -1479,58 +1480,60 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	while n < s_skill1.repeat:
 		n += 1
 		#get all affected targets
-		var newtarget = refine_target(s_skill1, caster, target_pos)
-		if newtarget == null: #finish skill usage
-			turns += 1
-			s_skill1.process_event(variables.TR_SKILL_FINISH)
-			caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
-			s_skill1.remove_effects()
-			#follow-up
-			if skill.has('follow_up'):
-				yield(use_skill(skill.follow_up, caster, target_pos), 'completed')
-			if skill.has('not_final'): return
-			#final
-			turns += 1
-			if activeitem != null:
-				state.add_materials(activeitem.code, -1, false)
-#				activeitem.amount -= 1
-				activeitem = null
-				SelectSkill(caster.get_autoselected_skill())
+		if !s_skill1.tags.has('no_refine'):
+			var newtarget = refine_target(s_skill1, caster, target_pos)
+			if newtarget == null: #finish skill usage
+				turns += 1
+				s_skill1.process_event(variables.TR_SKILL_FINISH)
+				caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
+				s_skill1.remove_effects()
+				#follow-up
+				if skill.has('follow_up'):
+					yield(use_skill(skill.follow_up, caster, target_pos), 'completed')
+				if skill.has('not_final'): return
+				#final
+				turns += 1
+				if activeitem != null:
+					state.add_materials(activeitem.code, -1, false)
+	#				activeitem.amount -= 1
+					activeitem = null
+					SelectSkill(caster.get_autoselected_skill())
 
-			caster.rebuildbuffs()
-			#print(caster.name + ' finished attacking')
-			if caster.combatgroup == 'ally':
-				var temp = 0
-				for pos in range(4, 7): if  battlefield[pos] == null: temp += 1
-				if temp == 3:
-					yield(advance_frontrow(), 'completed')
-			turns += 1
-			CombatAnimations.check_start()
-			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-			if endturn or caster.hp <= 0 or !caster.can_act():
-				#on end turn triggers
-				caster.process_event(variables.TR_TURN_F)
-				caster.displaynode.process_disable()
-				call_deferred('select_actor')
-				eot = false
-			else:
+				caster.rebuildbuffs()
+				#print(caster.name + ' finished attacking')
 				if caster.combatgroup == 'ally':
-					CombatAnimations.check_start()
-					if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-				allowaction = true
-				gui_node.RebuildSkillPanel()
-				gui_node.RebuildItemPanel()
-				SelectSkill(activeaction)
-				eot = true
-			return
+					var temp = 0
+					for pos in range(4, 7): if  battlefield[pos] == null: temp += 1
+					if temp == 3:
+						yield(advance_frontrow(), 'completed')
+				turns += 1
+				CombatAnimations.check_start()
+				if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+				if endturn or caster.hp <= 0 or !caster.can_act():
+					#on end turn triggers
+					caster.process_event(variables.TR_TURN_F)
+					caster.displaynode.process_disable()
+					call_deferred('select_actor')
+					eot = false
+				else:
+					if caster.combatgroup == 'ally':
+						CombatAnimations.check_start()
+						if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+					allowaction = true
+					gui_node.RebuildSkillPanel()
+					gui_node.RebuildItemPanel()
+					SelectSkill(activeaction)
+					eot = true
+				return
+			target_pos = newtarget
 		for i in animationdict.prehit:
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 			sfxtarget.process_sfx(i.code)
+		
 		turns += 1
-		target_pos = newtarget
-		target = battlefield[newtarget]
+		target = battlefield[target_pos]
 		if target == null and !skill.tags.has('empty_target'): continue
-		targets = CalculateTargets(skill, caster, target, true)
+		targets = CalculateTargets(skill, caster, target_pos, true)
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:
