@@ -1343,7 +1343,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.75}],
 		buffs = ['b_gust'],
 	},
-	e_s_cleance = {
+	e_s_cleanse = {
 		type = 'oneshot',
 		target = 'target',
 		atomic = [{type = 'remove_all_effects', value = 'buff'}]
