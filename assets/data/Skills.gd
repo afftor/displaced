@@ -2624,7 +2624,7 @@ var skilllist = {
 		keep_target = variables.TARGET_KEEP,
 		reqs = [{type = 'stats', stat = 'ai_spec', operant = 'lt', value = 4}],
 		tags = ['summon'],
-		value = ['demon', [2, 3]],
+		value = ['demon1', [2, 3]],
 		repeat = 2,
 		cooldown = 4,
 #		manacost = 0,
