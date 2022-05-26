@@ -650,7 +650,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			skip = false
 	if delay > 0: return
-	if $ChoicePanel.visible or $ClosePanel.visible: return
+	if $ChoicePanel.visible or $ClosePanel.visible or $MenuPanel.visible: return
 
 	if $LogPanel.visible == true:
 		if event.is_action("MouseDown") && ($LogPanel/RichTextLabel.get_v_scroll().value + $LogPanel/RichTextLabel.get_v_scroll().page == $LogPanel/RichTextLabel.get_v_scroll().max_value || !$LogPanel/RichTextLabel.get_v_scroll().visible):
