@@ -1513,7 +1513,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					#on end turn triggers
 					if caster.hp > 0:
 						caster.process_event(variables.TR_TURN_F)
-						caster.displaynode.process_disable()
+						if caster.displaynode:
+							caster.displaynode.process_disable()
 					call_deferred('select_actor')
 					eot = false
 				else:
@@ -1661,7 +1662,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		#on end turn triggers
 		if caster.hp > 0:
 			caster.process_event(variables.TR_TURN_F)
-			caster.displaynode.process_disable()
+			if caster.displaynode:
+				caster.displaynode.process_disable()
 		call_deferred('select_actor')
 		eot = false
 	else:
