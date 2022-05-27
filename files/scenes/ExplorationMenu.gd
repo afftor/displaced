@@ -11,6 +11,7 @@ onready var areadesc = $ExplorationSelect/desc
 onready var partylist = $ExplorationSelect/Panel/party
 onready var reservelist = $ExplorationSelect/Panel/roster
 onready var locdesc = $ExplorationSelect/Panel/RichTextLabel
+onready var locname = $ExplorationSelect/head
 onready var scalecheck = $ExplorationSelect/Panel/ScaleCheck
 
 onready var combat_node = get_parent().get_node("combat")
@@ -83,11 +84,13 @@ func open_explore():
 		var areadata = Explorationdata.areas[area]
 		var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 		panel.text = areadata.name
+		locname.text = areadata.name
 		panel.set_meta('area', area)
 		panel.connect('pressed', self, 'select_area', [area])
 		panel.get_node('Completed').visible = false
 		num_missions += 1
 	else:
+		locname.text = Explorationdata.locations[location].code #need to change to .name, but there are no names for locations in data
 		for a in Explorationdata.locations[location].missions:
 			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
@@ -165,8 +168,10 @@ func build_area_description():
 		areadesc.bbcode_text = areadata.description
 	else:
 		areadesc.bbcode_text = ""
-	if areadata.has('image') and areadata.image != null and areadata.image!= '':
+	if areadata.has('explore_image') and areadata.explore_image != null and areadata.explore_image!= '':
 		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.image)
+#	elif areadata.has('image') and areadata.image != null and areadata.image!= '':
+#		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.image)
 	else:
 		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	reset_level()
