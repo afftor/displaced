@@ -453,6 +453,11 @@ func combat_win():
 
 func combat_loose():
 	var areastate = state.areaprogress[area]
+	var areadata = Explorationdata.areas[area]
+	if areadata.has('no_escape') and areadata.no_escape:
+#		hide()
+		input_handler.menu_node.GameOverShow()
+		return
 	if areastate.stage == 1:
 		state.abandon_area()
 	else:

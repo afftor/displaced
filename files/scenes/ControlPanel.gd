@@ -26,10 +26,12 @@ func _process(delta):
 
 
 func GameOverShow():
+	if !visible: visible = true
 	$GameOverPanel.show()
 	input_handler.UnfadeAnimation($GameOverPanel, 2)
 	input_handler.StopMusic(true)
 	input_handler.PlaySound(sounds["defeat"])
+#	GameOver()
 
 
 func GameOver():
