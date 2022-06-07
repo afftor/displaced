@@ -818,20 +818,25 @@ func victory():#2remake for it is broken for now
 		elif state.heroes.arron.level < en_level:
 			tmp *= 2
 		rewardsdict.xp += tmp
-		if Enemydata.loottables.has(i.loottable):
+		var table = null
+		if typeof(i.loottable) ==  TYPE_DICTIONARY:
+			table = i.loottable
+		elif Enemydata.loottables.has(i.loottable):
+			table = Enemydata.loottables[i.loottable]
+		if table != null:
 			var loot = {}
-			if Enemydata.loottables[i.loottable].has('items'):
-				for j in Enemydata.loottables[i.loottable].items:
+			if table.has('items'):
+				for j in table.items:
 					if randf()*100 <= j.chance:
-						loot[j.code] = round(rand_range(j.min, j.max))
+						loot[j.code] = 1 # round(rand_range(j.min, j.max))
 				globals.AddOrIncrementDict(rewardsdict.items, loot)
-			if Enemydata.loottables[i.loottable].has('gold'):
-				if typeof(Enemydata.loottables[i.loottable].gold) == TYPE_ARRAY:
-					rewardsdict.gold += globals.rng.randi_range(Enemydata.loottables[i.loottable].gold[0], Enemydata.loottables[i.loottable].gold[1])
+			if table.has('gold'):
+				if typeof(table.gold) == TYPE_ARRAY:
+					rewardsdict.gold += globals.rng.randi_range(table.gold[0], table.gold[1])
 				else:
-					rewardsdict.gold += Enemydata.loottables[i.loottable].gold
-			if Enemydata.loottables[i.loottable].has('xp'):
-				tmp = Enemydata.loottables[i.loottable].xp
+					rewardsdict.gold += table.gold
+			if table.has('xp'):
+				tmp = table.xp
 				if state.heroes.arron.level > en_level:
 					tmp /= 5
 				elif state.heroes.arron.level < en_level:
