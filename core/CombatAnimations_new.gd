@@ -164,6 +164,18 @@ func default_animation(node, args):
 		input_handler.DelayedCallback(node, playtime + delaytime - transition_time, args.callback)
 	return playtime + delaytime
 
+
+func default_sfx(node, args):
+	var id = args.animation
+	var playtime = 0.4
+	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.3)
+	buffs_update_delays[node] = 0.4
+	input_handler.gfx_sprite(node, id, 0.3, null)
+	return playtime + aftereffectdelay
+
+
 func casterattack(node, args = null):#obsolete
 	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.2
@@ -183,6 +195,7 @@ func casterattack(node, args = null):#obsolete
 #
 #	cast_timer = effectdelay
 
+
 func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.4
@@ -195,69 +208,69 @@ func targetattack(node, args = null):
 	
 	return nextanimationtime + aftereffectdelay
 
-func firebolt(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.2
-	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
-	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.3)
-	buffs_update_delays[node] = 0.2
-	input_handler.gfx_sprite(node, 'firebolt', 0.3, 0.4)
-	tween.start()
-	
-	return nextanimationtime + aftereffectdelay
+#func firebolt(node, args = null):
+#	var tween = input_handler.GetTweenNode(node)
+#	var nextanimationtime = 0.2
+#	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0.3)
+#	buffs_update_delays[node] = 0.2
+#	input_handler.gfx_sprite(node, 'firebolt', 0.3, 0.4)
+#	tween.start()
+#
+#	return nextanimationtime + aftereffectdelay
+#
+#func flame(node, args = null):
+#	var tween = input_handler.GetTweenNode(node)
+#	var nextanimationtime = 0.4
+#	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0.3)
+#	buffs_update_delays[node] = 0.4
+#	input_handler.gfx_sprite(node, 'flame', 0.3, 0.5)
+#	tween.start()
+#
+#	return nextanimationtime + aftereffectdelay
+#
+#func earth_spike(node, args = null):
+#	var tween = input_handler.GetTweenNode(node)
+#	var nextanimationtime = 0.8
+#	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0.5 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0.5)
+#	buffs_update_delays[node] = 0.5
+#	input_handler.gfx_sprite(node, 'earth_spike', 0.7, 1)
+#	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
+#	tween.start()
+#
+#	return nextanimationtime + aftereffectdelay
+#	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
-func flame(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.4
-	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
-	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.3)
-	buffs_update_delays[node] = 0.4
-	input_handler.gfx_sprite(node, 'flame', 0.3, 0.5)
-	tween.start()
-	
-	return nextanimationtime + aftereffectdelay
+#func targetfire(node, args = null):
+#	var tween = input_handler.GetTweenNode(node)
+#	var nextanimationtime = 0.2
+#	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0.1 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0.1)
+#	buffs_update_delays[node] = 0.2
+#	input_handler.gfx(node, 'gfx/fire')
+#	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
+#	tween.start()
+#
+#	return nextanimationtime + aftereffectdelay
+#	#postdamagetimer = nextanimationtime + aftereffectdelay
 
-func earth_spike(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.8
-	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
-	hp_float_delays[node] = 0.5 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.5)
-	buffs_update_delays[node] = 0.5
-	input_handler.gfx_sprite(node, 'earth_spike', 0.7, 1)
-	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
-	tween.start()
-	
-	return nextanimationtime + aftereffectdelay
-	#aftereffecttimer = nextanimationtime + aftereffectdelay
-
-func targetfire(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.2
-	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
-	hp_float_delays[node] = 0.1 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.1)
-	buffs_update_delays[node] = 0.2
-	input_handler.gfx(node, 'gfx/fire')
-	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
-	tween.start()
-	
-	return nextanimationtime + aftereffectdelay
-	#postdamagetimer = nextanimationtime + aftereffectdelay
-
-func heal(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.5
-	hp_update_delays[node] = 0 #delay for hp updating during this animation
-	hp_float_delays[node] = 0 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0)
-	buffs_update_delays[node] = 0.5
-	input_handler.gfx_particles(node, 'heal', 1, 1)
-	tween.start()
-	
-	return nextanimationtime + aftereffectdelay
+#func heal(node, args = null):
+#	var tween = input_handler.GetTweenNode(node)
+#	var nextanimationtime = 0.5
+#	hp_update_delays[node] = 0 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0)
+#	buffs_update_delays[node] = 0.5
+#	input_handler.gfx_particles(node, 'heal', 1, 1)
+#	tween.start()
+#
+#	return nextanimationtime + aftereffectdelay
 
 func miss(node, args = null):#conflicting usage of tween node!!
 	var tween = input_handler.GetTweenNode(node)

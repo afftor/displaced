@@ -1,0 +1,25 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_7.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_5.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_6.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_3.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_4.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_0.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gfx/rose_swipe/fight_kogti_sq_8.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="HitAnimation" type="AnimatedSprite"]
+position = Vector2( 124.439, 124.301 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+speed_scale = 2.0

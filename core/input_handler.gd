@@ -557,14 +557,23 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'}
 
 func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
-	var x = load(sprites[effect]).instance()
+	var scene
+	if sprites.has(effect):
+		scene = load(sprites[effect])
+	else:
+		scene = load("res://assets/images/gfx/%s/scene_animation.tscn" % effect)
+	if scene == null:
+		return
+	var x = scene.instance()
 	node.add_child(x)
 	x.play()
-
-	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+#	if delayuntilfade == null:
+#		delayuntilfade = x.frames.get_frame_count(x.animation) / x.frames.get_animation_speed(x.animation)
+	if delayuntilfade != null:
+		input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
-
+	
 	if wr.get_ref(): x.queue_free()
 
 

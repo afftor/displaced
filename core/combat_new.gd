@@ -121,6 +121,9 @@ func _ready():
 #	for i in range(7,13):
 #		enemygroup[i] = null
 	add_child(CombatAnimations)
+	for nd in get_tree().get_nodes_in_group('sfx_a'):
+		nd.set_script(load("res://files/scenes/combat/combat_sfx_anchor.gd"))
+		nd.animation_node = CombatAnimations
 #warning-ignore:return_value_discarded
 #	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 #warning-ignore:return_value_discarded

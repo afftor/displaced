@@ -760,6 +760,8 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 	match req.type:
 		'chance':
 			result = (randf()*100 < req.value);
+		'id':
+			result = (id == req.value) == req.check
 		'stats':
 			result = input_handler.operate(req.operant, get_stat(req.stat), req.value)
 		'race':

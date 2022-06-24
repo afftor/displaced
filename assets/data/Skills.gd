@@ -1,6 +1,6 @@
 extends Node
 #var S_Skill = preload("res://files/scripts/short_skill.gd");
-
+# {code = 'sfx_aegis', target = 'target', period = 'predamage'}
 var skilllist = {
 	#new part
 	attack = {
@@ -25,7 +25,10 @@ var skilllist = {
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'targetattack', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = [], #while it is completely functional 'as is', we should either clone this skill or make a complex patches system to reflect element and range changes in sound and sfx data (or change current sfx code to use 'weapon_sfx' or 'element_sfx' placeholder)
+		patches = [
+			{conditions = [{type = 'id', value = 'rose', check = true}], patch = 'p_base_rose'},
+			{conditions = [{type = 'id', value = 'erika', check = true}], patch = 'p_base_erika'},
+		], #while it is completely functional 'as is', we should either clone this skill or make a complex patches system to reflect element and range changes in sound and sfx data (or change current sfx code to use 'weapon_sfx' or 'element_sfx' placeholder)
 		ai_priority = 1
 	},
 	defence = {
@@ -295,7 +298,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 3,
 		hidden = false,
-		sfx = [],
+		sfx = [], #fencing sfx clearly not match skill effect
 		sfxcaster = null,
 		sfxtarget = null,
 		req_level = 1,#new addition, 2setup other heroes skills
@@ -327,7 +330,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_bleed', duration = 3, push_value = true})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_lunge', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 
@@ -410,7 +413,7 @@ var skilllist = {
 		custom_duration = 1,
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_parry', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 
@@ -439,7 +442,7 @@ var skilllist = {
 		custom_duration = 1,
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_fencing', target = 'target', period = 'predamage'}], #or not. put this animation here
 		sfxcaster = null,
 		sfxtarget = null,
 
@@ -467,7 +470,7 @@ var skilllist = {
 		casteffects = ['e_s_termination'],
 		repeat = 4,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_termination', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -495,7 +498,7 @@ var skilllist = {
 		evade = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_smoke'})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_smoke_screen', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -521,7 +524,7 @@ var skilllist = {
 		evade = 0,
 		casteffects = ['e_s_swipe'],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_rose_swipe', target = 'target', period = 'predamage'}], #still think it not match her weapon
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -574,7 +577,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_flash'})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_flash', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -602,7 +605,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_t_deluge'})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_deluge', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -690,7 +693,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [],
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'sfx_explosion', target = 'target_group', period = 'prehit'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
@@ -720,7 +723,7 @@ var skilllist = {
 		evade = 0,
 		casteffects = ['e_s_dispel'],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_rose_protection', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -750,7 +753,7 @@ var skilllist = {
 		evade = 0,
 		casteffects = [],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_rose_protection', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -776,7 +779,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 3,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_arrow_shot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -804,7 +807,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_t_aarrow'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_arrow_air', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -831,7 +834,7 @@ var skilllist = {
 		casteffects = ['e_t_eastrike'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_earth_strike', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = []
@@ -855,7 +858,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_freeze', chance = 0.5})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_arrow_frost', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -881,7 +884,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [],
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'sfx_arrow_rain', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
@@ -910,7 +913,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_nat_bless'})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_nat_bless', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -966,7 +969,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', duration = 2})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_heartseeker', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -992,7 +995,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_charm'})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_charm', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -1019,7 +1022,7 @@ var skilllist = {
 		casteffects = ['e_tr_enable_fa'],
 		repeat = 3,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_combo', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1048,7 +1051,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 3,
 		hidden = true,
-		sfx = [],
+		sfx = [{code = 'sfx_combo', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1078,7 +1081,7 @@ var skilllist = {
 		casteffects = ['e_t_punch1', 'e_t_punch1'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_firepunch', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1104,7 +1107,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_shockwave', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1156,7 +1159,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_uppercut'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_uppercut', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = []
@@ -1183,7 +1186,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_defend', trigger = variables.TR_CAST}), 'e_s_protect_er'
 		],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_shield_up', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -1244,7 +1247,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_aegis'})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_deluge', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -1271,7 +1274,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_earthquake', target = 'target_group', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -1299,7 +1302,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_earthquake', target = 'target_group', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -1325,7 +1328,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_t_orb'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_dark_orb', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1352,7 +1355,7 @@ var skilllist = {
 		casteffects = ['e_pay_soul', Effectdata.rebuild_template({effect = 'e_t_mist', push_value = true})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_pale_mist', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1379,7 +1382,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1, cahnce = 0.2})],
 		repeat = 5,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_avalanche', target = 'target', period = 'windup'}], #the only period, that do not clone for each repeat 
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1405,7 +1408,7 @@ var skilllist = {
 		casteffects = ['e_t_thorns'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_thorn', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1432,7 +1435,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = ['e_s_echo', Effectdata.rebuild_template({effect = 'e_echo_shield', push_value = true})],
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'sfx_dark_echoes', target = 'target', period = 'predamage'}, {code = 'sfx_dark_echoes_1', target = 'caster', period = 'postdamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
@@ -1461,7 +1464,7 @@ var skilllist = {
 		casteffects = ['e_pay_soul'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_resto', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1487,7 +1490,7 @@ var skilllist = {
 		casteffects = ['e_pay_all_souls', Effectdata.rebuild_template({effect = 'e_t_beam', trigger = variables.TR_HIT})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_beam', target = 'full', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1514,7 +1517,7 @@ var skilllist = {
 		casteffects = ['e_pay_all_souls', Effectdata.rebuild_template({effect = 'e_t_soulprot'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = []
@@ -1538,7 +1541,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_holy_light', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = []
@@ -1562,7 +1565,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_gust1', chance = 0.4})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_gustofwind', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1588,7 +1591,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.5, duration = 1})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_iola_swipe', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 
@@ -1616,7 +1619,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleance'}), 'e_s_resetfire'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_cleansing', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [
@@ -1645,7 +1648,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [],
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'sfx_barrier', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
@@ -1675,7 +1678,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_bless'})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'sfx_bless', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
@@ -1706,7 +1709,7 @@ var skilllist = {
 		evade = 0,
 		casteffects = ['e_s_sanct'],
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'sfx_sanctuary', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
@@ -1733,7 +1736,7 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_silence', duration = 2})],
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'sfx_purge', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
@@ -4562,6 +4565,12 @@ var skilllist = {
 
 
 var patches = {
+	p_base_erika = {
+		sfx = {type = 'replace', value = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'sfx_arrow_shot', target = 'target', period = 'predamage'}]}
+	},
+	p_base_rose = {
+		sfx = {type = 'replace', value = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'sfx_iola_swipe', target = 'target', period = 'predamage'}]}
+	},
 	p_fencing_1 = {
 		casteffects = {type = 'append', value = ['e_fen_addrep']}
 	},
