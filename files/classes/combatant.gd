@@ -89,6 +89,8 @@ func get_animations():
 
 
 func get_stat(statname):
+	if statname == 'hp_p':
+		return 100.0 * hp / hpmax_get()
 	var res = get(statname)
 	var combat = input_handler.combat_node
 #	if !variables.direct_access_stat_list.has(statname):

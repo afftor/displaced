@@ -2860,6 +2860,7 @@ var skilllist = {
 		tags = ['instant'],
 		value = ['0'],
 		cooldown = 2,
+		damagestat = 'no_stat',
 #		manacost = 0,
 		casteffects = ['e_dim_resists'],
 
@@ -2868,8 +2869,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},
-		ai_priority = 1,
-
+		ai_priority = 10,
 	},
 	#items
 	item_heal_1_effect = {

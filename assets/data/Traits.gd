@@ -354,4 +354,13 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_fq']
 	},
+	dem_rules = {
+		code = 'dem_rules',
+		name = '',
+		description = '',
+		icon = null,
+		cost = 0,
+		hidden = true, #is not displayed at all
+		effects = ['e_dim_hp_1', 'e_dim_hp_2', 'e_dim_hp_3']
+	},
 };

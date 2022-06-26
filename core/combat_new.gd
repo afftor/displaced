@@ -425,6 +425,7 @@ func enemy_turn(pos):
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	#yield(self, "skill_use_finshed")
+	
 	while eot:
 		turns += 1
 		castskill = fighter.ai._get_action()
@@ -1484,6 +1485,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	#skill's repeat cycle of predamage-damage-postdamage
 	var targets
 	var endturn = !s_skill1.tags.has('instant');
+	if !endturn:
+		caster.acted = false
 	var n = 0
 	while n < s_skill1.repeat:
 		n += 1
@@ -1556,9 +1559,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 				sfxtarget.process_sfx(j.code)
 			#special results
-			if skill.damagetype == 'summon':
+			if skill.damagetype is String and skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
-			elif skill.damagetype == 'resurrect':
+			elif skill.damagetype is String and skill.damagetype == 'resurrect':
 				if !rules.has('no_res'): i.resurrect(skill.value[0]) #not sure
 			else:
 				#default skill result
@@ -1678,10 +1681,10 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		if caster.combatgroup == 'ally':
 			CombatAnimations.check_start()
 			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		allowaction = true
-		gui_node.RebuildSkillPanel()
-		gui_node.RebuildItemPanel()
-		SelectSkill(activeaction)
+			allowaction = true
+			gui_node.RebuildSkillPanel()
+			gui_node.RebuildItemPanel()
+			SelectSkill(activeaction)
 		eot = true
 	print(str(caster.position) + ' ended ' + skill.name)
 
