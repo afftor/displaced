@@ -246,19 +246,19 @@ func targetattack(node, args = null):
 #	return nextanimationtime + aftereffectdelay
 #	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
-#func targetfire(node, args = null):
-#	var tween = input_handler.GetTweenNode(node)
-#	var nextanimationtime = 0.2
-#	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
-#	hp_float_delays[node] = 0.1 #delay for hp updating during this animation
-#	log_update_delay = max(log_update_delay, 0.1)
-#	buffs_update_delays[node] = 0.2
-#	input_handler.gfx(node, 'gfx/fire')
-#	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
-#	tween.start()
-#
-#	return nextanimationtime + aftereffectdelay
-#	#postdamagetimer = nextanimationtime + aftereffectdelay
+func targetfire(node, args = null):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.2
+	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
+	hp_float_delays[node] = 0.1 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.1)
+	buffs_update_delays[node] = 0.2
+	input_handler.gfx(node, 'gfx/fire')
+	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
+	tween.start()
+
+	return nextanimationtime + aftereffectdelay
+	#postdamagetimer = nextanimationtime + aftereffectdelay
 
 #func heal(node, args = null):
 #	var tween = input_handler.GetTweenNode(node)
