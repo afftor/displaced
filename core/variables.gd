@@ -80,9 +80,12 @@ func _ready():
 	print(curve)
 
 func fill_curve():
-	for i in range(14): curve.push_back(curve.back() + 0.25)
-	for i in range(5): curve.push_back(curve.back() + 0.1)
-	for i in range(26): curve.push_back(curve.back() + 0.02)
+	for i in range(14): 
+		curve.push_back(curve.back() * 1.25)
+	for i in range(5): 
+		curve.push_back(curve.back() * 1.1)
+	for i in range(26): 
+		curve.push_back(curve.back() * 1.02)
 
 
 var gallery_singles_list = [
