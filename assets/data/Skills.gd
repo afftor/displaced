@@ -2865,7 +2865,7 @@ var skilllist = {
 		casteffects = ['e_dim_resists'],
 
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_special', target = 'caster', period = 'windup'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},
