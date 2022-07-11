@@ -19,17 +19,19 @@ Em - You do bleed a lot though.
 Er - Ember, that was a bit too rude.
 Em(sad) - Oh... Sorry...
 Ri - Don't worry about it. I have a habit of such.
-Ar(neutral) - What was that magic you used? I don't think I've seen it before.
-Ri - I'm a necromancer. It's a power of the dead and spirits. 
+Ro - So, you are the necromancer we've heard about after all?
+Ri - Can't say I am. I do know spirit magic and can communicate with spirits, though.
 Ro - (S-spirits? I knew it must be something creepy, but this is even worse...) 
-Ar - Awesome! You can do something like that? 
-Ar - I swear, the dead are so useless on their own. Can you also make skeletons and zombies?
+Ar - Cool. You can do something like that? 
+Ar(neutral) - It's quite a waste when people die for no reason.
+Ar - Can you make stuff like skeletons and zombies?
 Ri - W-well...
 Er(happy) - Sir Arron is into some really weird things.
-Ar - Hey Rose, why are you so pale all of a sudden? 
-Ar - Wait, you are still afraid of ghosts and stuff? Come on, you are an adult now.
+Em - Hey Rose, why are you so pale all of a sudden? 
+Ar - You must be still afraid of ghosts and stuff? Come on, you are an adult now.
 Ro - I-I'm not, I'm just tired from the fight. 
-Ro - Anyway, let's leave this place already.
+Ro(sarcastic) - Anyway, let's leave this place already.
+Ri - *Nod*
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

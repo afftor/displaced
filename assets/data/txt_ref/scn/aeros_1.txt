@@ -31,10 +31,14 @@ Guard - Hmph.
 Guard - ...
 Guard - Fine, there's been a lot of reports about bloodthirsty dwarves coming out from nearby caves. 
 Guard - If you take care of them, I will consider allowing you to pass.
-Ar - Sigh.. let's just get on with it.
+Ar(neutral) - Sigh.. let's just get on with it.
+Traveler - Is it those caves they say have necromancer lair?
+Ro - N-necromancer?
+Traveler - Yeah, nobody goes there because of the dwarves, but the folk rumor..
+Guard - Enough chit chat, move the line!
 Ar - Now you see why I hate guards, Ember.
 Ro - Now that you mention it, I can relate.
-Ro - Maybe we could let Erika please him though.
+Ro(sarcastic) - Maybe we could let Erika please him to let us in though.
 Er - Boo. Like I would cheat on Arron like that.
 =GUI_HIDE=
 =BLACKUNFADE 1=
