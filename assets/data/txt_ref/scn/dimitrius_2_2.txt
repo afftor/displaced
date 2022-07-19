@@ -21,42 +21,27 @@ De - You would never dare to use it anyway.
 Ri - You are right. He wouldn't. 
 Ri - But I will.
 D(anger) - Hmph, is that so?
-Ar(neutral) - You know she would, if you don't want your existence completely erased, give us back Rose and Iola.
+Ar(neutral) - You know she would, if you don't want your existence completely erased, return our friends.
 De - Hahahah, Fine.
-De - You can take Iola, I'm already bored with her.
-De - Rose, on the other hand, has something to say about it first.
+De - Rose, come over here.
 =SPRITE rose=
-Ar(shock) - Rose!
-Ro - Thanks for coming, but you can go now.
-Em - Eh? 
-Ro - I'm not going back with you.
-Ro(talk) - I'm joining Dimitrius.
-Er(anger) - What? Why?
-Ro - This is for the best.
-Ro - I'm tired of all this.
-Ro(talk) - Deep inside, I hated every single one of you.
-Ro(talk) - Ember is stupid and gullible.
-Em(sad) - Eeeh?
-Ro(talk) - Erika is a shallow harlot.
-Ro(talk) - Rilu, you just creep me out. 
-Ri - You wouldn't be the first.
-Ro(talk) - And Master... You are the worst irresponsible womanizer I've ever met.
-Ro - It was me, who told your brother about your affair with his wife.
-Ro(talk) - You told me to choose what I wanna do with my life.
-Ro(talk) - I don't want to see any of you anymore from now on.
-Er(anger) - ...
-Em(sad) - ...
-Ar - Yeah, nice work Dimitrius, now let's return to the deal.
-Ro(shock) - Eh? You didn't hear what I said!?
-Ar - I don't care.
-Ro - ...
-De - Aahahah, really nice one Arron. I'm very impressed.
+Ro(shock) - What are you doing here!? I've told you to leave me!
+Ar(neutral) - So, you want me to leave?
+Ro - .....
+Ro(sad) - Why are you so stupid.
+Ro(sad) - After all those terrible things I've said...
+Ar(neutral) - Who cares about that.
+Em - Yeah, we still think of you as friend, Rose.
+Er - And more.
+Ro(sad) - ...I don't deserve this.
+Ar(neutral) - Oh, enough of your whining already.
+Rose hesitatingly makes a step towards the group.
+De - Aahahah, really nice one Arron. I'm quite impressed.
 De - Fine, you can have your girls. 
-Ro - N-no way! What was that?
-De - Sorry sweetie, Arron wins this round.
+Ro(shock) - But you've said to me...
+De - Too bad, sweetie, Arron wins this round.
 De - I can't allow them to destroy my reign.
-De - They are yours.
-Iola and Rose mechanically are relocated to the Arron's side.
+Iola also appears by Arron's side.
 De - *snap* 
 I - Uh... Oh... Where am I?
 Ro - ...
@@ -87,27 +72,30 @@ Unexpectedly to everyone, Dimitrius pulled an unknown metal object from his back
 =BLACKTRANS 1=
 =DELAY 1=
 =BG scenes/demitrius_arron=
-=GUI_NORMAL=
+=GUI_FULL=
 =SOUND gunshot=
 With loud explosive noises it spewed a rain of pellets in the direction of Arron.
 =SOUND sound_splatter=
 Ar - Agh!.. Guh...
 Ro - Master! 
 De - Ahahaha, humans can make some really fun toys.
-Ar - Damn bastard...
-I - Stay still, you are bleeding!
+=BLACKTRANS 1=
+=DELAY 1=
 =BG cult1=
+=GUI_NORMAL=
 =SPRITE demitrius_demon=
 =SHAKE_SCREEN 1=
 =SOUND sound_crack=
+Ar(anger) - Damn bastard...
+I - Stay still, you are bleeding!
 De - But enough of that. 
 De - Be grateful, you get to see the birth of a new world.
 Ri - !?
-Ar(neutral) - What's... happening?
+Ar(anger) - What's... happening?
 De - Just making a few changes around here.
 Er(anger) - This place is going down.
 Ri(talk) - We must retreat.
-Ar - ...
+Ar(anger) - ...
 De - Run, weaklings, run.
 De - Use what little time you've left for your own good, hahaha.
 =GUI_HIDE=

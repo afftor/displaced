@@ -172,4 +172,7 @@ Boy - Are you done yet?
 ...
 Ro - *sigh*
 Ro - This is terrible...
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=
