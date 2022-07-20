@@ -37,7 +37,7 @@ var enemylist = {
 		skills = ['attack'],
 		basehp = 100,
 		damage = 20,
-		resists = {slash = -50, bludgeon = 50, earth = 50, water = -100, light = -100, dark = 50},
+		resists = {slash = 100, bludgeon = 100, piercing = 100, fire = 100, earth = 100, water = 100, air = 100, light = 100, dark = 100},#{slash = -50, bludgeon = 50, earth = 50, water = -100, light = -100, dark = 50},
 		xpreward = 10,
 		bodyhitsound = 'flesh',
 		base_dmg_type = 'pierce',

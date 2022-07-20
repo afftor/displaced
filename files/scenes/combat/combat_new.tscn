@@ -403,6 +403,9 @@ margin_top = 579.0
 margin_right = 581.0
 margin_bottom = 750.0
 scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Rewards/ScrollContainer"]
 custom_constants/separation = 6
@@ -426,24 +429,26 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Rewards"]
+[node name="HBoxContainer" type="GridContainer" parent="Rewards"]
 margin_left = 55.0
 margin_top = 182.0
 margin_right = 635.0
 margin_bottom = 551.0
-custom_constants/separation = 13
+custom_constants/vseparation = 5
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="first" type="VBoxContainer" parent="Rewards/HBoxContainer"]
-margin_bottom = 369.0
-
-[node name="Button" type="TextureRect" parent="Rewards/HBoxContainer/first"]
+[node name="Button" type="TextureRect" parent="Rewards/HBoxContainer"]
 visible = false
 margin_right = 278.0
 margin_bottom = 119.0
 rect_pivot_offset = Vector2( 139, 59.5 )
 texture = ExtResource( 26 )
 
-[node name="xpbar" type="TextureProgress" parent="Rewards/HBoxContainer/first/Button"]
+[node name="xpbar" type="TextureProgress" parent="Rewards/HBoxContainer/Button"]
 margin_left = 121.0
 margin_top = 52.0
 margin_right = 263.0
@@ -451,25 +456,27 @@ margin_bottom = 66.0
 value = 50.0
 exp_edit = true
 texture_progress = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Rewards/HBoxContainer/first/Button/xpbar"]
+[node name="Label" type="Label" parent="Rewards/HBoxContainer/Button/xpbar"]
 margin_left = -15.0
 margin_top = -24.0
 margin_right = 148.0
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="icon" type="TextureRect" parent="Rewards/HBoxContainer/first/Button"]
-margin_left = 10.0
-margin_right = 117.0
-margin_bottom = 117.0
+[node name="icon" type="TextureRect" parent="Rewards/HBoxContainer/Button"]
+margin_left = 16.5969
+margin_top = 13.4031
+margin_right = 101.597
+margin_bottom = 102.403
 texture = ExtResource( 28 )
 expand = true
-stretch_mode = 5
-
-[node name="second" type="VBoxContainer" parent="Rewards/HBoxContainer"]
-margin_left = 13.0
-margin_right = 13.0
-margin_bottom = 369.0
+stretch_mode = 6
 
 [node name="victorylabel" type="TextureRect" parent="Rewards"]
 margin_left = -146.0

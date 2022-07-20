@@ -508,7 +508,7 @@ var skilllist = {
 		name = tr(""),
 		description = tr(""),
 		icon = load("res://assets/images/iconsskills/rose_1.png"),
-		damagetype = "magic",
+		damagetype = "slash",
 		skilltype = 'main',
 		userange = "melee",
 		targetpattern = 'single',
@@ -1051,7 +1051,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 3,
 		hidden = true,
-		sfx = [{code = 'sfx_combo', target = 'target', period = 'predamage'}],
+		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [

@@ -5,7 +5,7 @@ func showup(node, character_id, skillcode):
 	var character = state.heroes[character_id]
 	var skill = Skillsdata.patch_skill(skillcode, character)
 	show()
-	$name.text = skill.name
+	$name.text = tr("SKILL"+skill.name.to_upper())
 #	$cost.text = str(skill.manacost)
 #	$cost.visible = skill.manacost != 0
 #	$manaicon.visible = skill.manacost != 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/images/icons/icon_flag.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/combat/drop_slot.gd" type="Script" id=2]
@@ -7,9 +7,10 @@
 [ext_resource path="res://assets/images/combat/rose_circle.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/combat/ember_circle.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/Fight/Heroes/Erika/Erika_idle/Erika-animation_00.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/Fight/Heroes/Iola/Iola_idle/Iola_idle_00.png" type="Texture" id=8]
+[ext_resource path="res://unused/Rouz/Rouz_idle/Rouz_idle_00.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/iconsskills/action_1.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/iconsskills/action_2.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/bg/combat_cave2.png" type="Texture" id=11]
 [ext_resource path="res://assets/sfx/fire_effect.png" type="Texture" id=12]
 [ext_resource path="res://files/scenes/combat/CombatGui.gd" type="Script" id=13]
 [ext_resource path="res://files/scenes/combat/charpanel.tscn" type="PackedScene" id=14]
@@ -68,6 +69,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Characters(for reference)" type="Control" parent="."]
 visible = false
 margin_right = 40.0
@@ -77,10 +87,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Characters(for reference)"]
-margin_left = 388.586
-margin_top = 54.052
-margin_right = 625.586
-margin_bottom = 394.052
+margin_left = 403.722
+margin_top = 124.687
+margin_right = 640.722
+margin_bottom = 464.687
 texture = ExtResource( 4 )
 stretch_mode = 4
 __meta__ = {
@@ -88,10 +98,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="Characters(for reference)"]
-margin_left = 259.381
-margin_top = 323.381
-margin_right = 530.381
-margin_bottom = 665.381
+margin_left = 185.964
+margin_top = 380.317
+margin_right = 456.964
+margin_bottom = 722.317
 texture = ExtResource( 7 )
 stretch_mode = 4
 __meta__ = {
@@ -99,10 +109,10 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="Characters(for reference)"]
-margin_left = 247.526
-margin_top = 604.477
-margin_right = 462.526
-margin_bottom = 950.477
+margin_left = 41.4852
+margin_top = 592.462
+margin_right = 256.485
+margin_bottom = 938.462
 texture = ExtResource( 8 )
 stretch_mode = 4
 __meta__ = {
@@ -176,10 +186,10 @@ __meta__ = {
 }
 
 [node name="PlayerStats" type="Panel" parent="."]
-margin_left = 30.0
-margin_top = 30.0
-margin_right = 324.0
-margin_bottom = 449.0
+margin_left = 6.0271
+margin_top = 9.02371
+margin_right = 300.027
+margin_bottom = 428.024
 rect_min_size = Vector2( 294, 419 )
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
@@ -190,9 +200,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
-margin_top = 15.0
+margin_top = 12.0034
 margin_right = -15.0
-margin_bottom = -15.0
+margin_bottom = -17.9966
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -200,10 +210,10 @@ __meta__ = {
 [node name="EmemyStats" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -361.0
-margin_top = 30.0
-margin_right = -30.0
-margin_bottom = 300.0
+margin_left = -366.0
+margin_top = 6.0
+margin_right = -5.0
+margin_bottom = 306.0
 grow_horizontal = 0
 rect_min_size = Vector2( 361, 300 )
 custom_styles/panel = SubResource( 2 )
@@ -1774,9 +1784,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -170.0
-margin_top = 30.0
+margin_top = 16.0
 margin_right = 170.0
-margin_bottom = 72.0
+margin_bottom = 58.0
 custom_styles/panel = SubResource( 4 )
 
 [node name="Label" type="Label" parent="ActiveActionPanel"]
@@ -1793,9 +1803,9 @@ align = 1
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -150.0
-margin_top = 72.0
+margin_top = 58.0
 margin_right = 150.0
-margin_bottom = 164.0
+margin_bottom = 150.0
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1827,10 +1837,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -360.0
-margin_top = -664.0
-margin_right = -30.0
-margin_bottom = -57.0
+margin_left = -370.0
+margin_top = -691.0
+margin_right = -10.0
+margin_bottom = -27.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource( 15 )
@@ -1839,9 +1849,9 @@ texture = ExtResource( 15 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 5.0
+margin_top = 0.505066
 margin_right = -5.0
-margin_bottom = -5.0
+margin_bottom = -9.49493
 mouse_filter = 1
 custom_fonts/normal_font = ExtResource( 33 )
 custom_colors/default_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -1858,10 +1868,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -90.0
-margin_top = -117.0
-margin_right = -30.0
-margin_bottom = -57.0
+margin_left = -79.5117
+margin_top = -94.5254
+margin_right = -19.5117
+margin_bottom = -34.5254
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource( 17 )
@@ -1886,28 +1896,28 @@ __meta__ = {
 }
 
 [node name="pos1" type="TextureRect" parent="CharShades"]
-margin_left = 390.0
-margin_top = 54.0
-margin_right = 586.0
-margin_bottom = 350.0
+margin_left = 411.213
+margin_top = 137.439
+margin_right = 607.213
+margin_bottom = 433.439
 texture = ExtResource( 36 )
 script = ExtResource( 2 )
 pos = 1
 
 [node name="pos2" type="TextureRect" parent="CharShades"]
-margin_left = 290.0
-margin_top = 320.0
-margin_right = 486.0
-margin_bottom = 616.0
+margin_left = 246.954
+margin_top = 389.816
+margin_right = 442.954
+margin_bottom = 685.816
 texture = ExtResource( 36 )
 script = ExtResource( 2 )
 pos = 2
 
 [node name="pos3" type="TextureRect" parent="CharShades"]
-margin_left = 190.0
-margin_top = 590.0
-margin_right = 386.0
-margin_bottom = 886.0
+margin_left = 54.9842
+margin_top = 616.48
+margin_right = 250.984
+margin_bottom = 912.48
 texture = ExtResource( 36 )
 script = ExtResource( 2 )
 pos = 3

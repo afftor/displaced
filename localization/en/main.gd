@@ -315,7 +315,11 @@ var TranslationDict = {
 	DEMITRIUS = "Demitrius",
 	LYRA = "Lyra",
 	FLAK = "Flak",
-
+	
+	SKILLATTACK = "Base Attack",
+	SKILLATTACKDESCRIPT = "The most generic attack with no strengths or weaknesses.",
+	SKILLDEFENCE = "Defence",
+	SKILLDEFENCEDESCRIPT = "Reduces incoming damage by 50% until next turn.",
 	SKILLFENCING = "Fencing",
 	SKILLFENCINGDESCRIPT = "Strikes enemy 3 times. If target dies, switch to another enemy.",
 	SKILLLUNGE = "Lunge",

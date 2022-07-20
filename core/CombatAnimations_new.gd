@@ -167,20 +167,20 @@ func default_animation(node, args):
 
 func default_sfx(node, args):
 	var id = args.animation
-	var playtime = 0.4
-	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
-	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
+	var playtime = 0
+	hp_update_delays[node] = 0 #delay for hp updating during this animation
+	hp_float_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
-	buffs_update_delays[node] = 0.4
-	input_handler.gfx_sprite(node, id, 0.3, null)
+	buffs_update_delays[node] = 0
+	input_handler.gfx_sprite(node, id, 0.5, null)
 	return playtime + aftereffectdelay
 
 
 func casterattack(node, args = null):#obsolete
 	var tween = input_handler.GetTweenNode(node)
-	var playtime = 0.2
+	var playtime = 0
 	var delaytime = 0
-	var effectdelay = 0.4
+	var effectdelay = 0
 	var nextanimationtime = 0
 	
 	tween.interpolate_property(node, 'rect_position', node.get_position(), node.get_position() + node.get_attack_vector(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
@@ -198,12 +198,12 @@ func casterattack(node, args = null):#obsolete
 
 func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.4
-	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
-	hp_float_delays[node] = 0.3 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.3)
-	buffs_update_delays[node] = 0.4
-	input_handler.gfx_sprite(node, 'slash', 0.3, 0.1) #strike
+	var nextanimationtime = 0
+	hp_update_delays[node] = 0 #delay for hp updating during this animation
+	hp_float_delays[node] = 0 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0)
+	buffs_update_delays[node] = 0
+	input_handler.gfx_sprite(node, 'slash', 0, 0.1) #strike
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -248,9 +248,9 @@ func targetattack(node, args = null):
 
 func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.2
-	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
-	hp_float_delays[node] = 0.1 #delay for hp updating during this animation
+	var nextanimationtime = 0
+	hp_update_delays[node] = 0 #delay for hp updating during this animation
+	hp_float_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.1)
 	buffs_update_delays[node] = 0.2
 	input_handler.gfx(node, 'gfx/fire')
@@ -350,7 +350,7 @@ func damage_float(node, args):
 	
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+	tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1.5, fadetime = 0.7, offset = Vector2(0,0)})
 	return delaytime + delay
 
 

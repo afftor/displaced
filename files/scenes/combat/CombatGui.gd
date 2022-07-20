@@ -254,7 +254,7 @@ func build_selected_skill(skill): #not skill_id
 	active_panel.visible = true
 	active_panel2.visible = true
 	active_panel2.get_node("TextureRect").texture = skill.icon
-	active_panel2.get_node("Label").text = skill.name
+	active_panel2.get_node("Label").text = tr("SKILL" + skill.name.to_upper())
 
 
 func build_selected_item(item): 

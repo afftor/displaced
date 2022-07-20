@@ -76,9 +76,9 @@ onready var battlefieldpositions = {
 
 #player party should be placed onto 1-3 positions
 var positions = {
-	1: Vector2(380, 55),
-	2: Vector2(240, 325),
-	3: Vector2(100, 595),
+	1: Vector2(403, 124),
+	2: Vector2(259, 323),
+	3: Vector2(192, 532),
 	4: Vector2(1085, 55),
 	5: Vector2(1170, 325),
 	6: Vector2(1255, 595),
@@ -849,18 +849,17 @@ func victory():#2remake for it is broken for now
 		state.heroes.erase(i.id)
 	defeated.clear()
 	
-	input_handler.ClearContainerForced($Rewards/HBoxContainer/first)
-	input_handler.ClearContainerForced($Rewards/HBoxContainer/second)
+	input_handler.ClearContainerForced($Rewards/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for ch in state.characters:
 		var i = state.heroes[ch]
 		if !i.unlocked:
 			i.baseexp += ceil(rewardsdict.xp)
 			continue
-		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
-		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
-			$Rewards/HBoxContainer/first.remove_child(newbutton)
-			$Rewards/HBoxContainer/second.add_child(newbutton)
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer)
+#		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
+#			$Rewards/HBoxContainer/first.remove_child(newbutton)
+#			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
 		newbutton.get_node("xpbar").value = i.baseexp
 		newbutton.get_node("xpbar").max_value = i.get_exp_cap()

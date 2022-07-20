@@ -219,7 +219,7 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 	var textnode = Label.new()
 	get_tree().get_root().add_child(textnode)
 	textnode.text = text
-	textnode.rect_global_position = node.rect_global_position+positionoffset
+	textnode.rect_global_position = node.rect_global_position + node.rect_size * 0.5  + positionoffset 
 	textnode.set("custom_colors/font_color", color)
 	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
 	floatfont.size = 50
@@ -239,7 +239,7 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 	if wr.get_ref(): textnode.queue_free()
 
 
-func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)): #critical, group, type, damage = {}
+func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(50,0)): #critical, group, type, damage = {}
 	if args.type == 'pure':
 		args.type = 'pierce'
 	var floatnode = HBoxContainer.new()
@@ -315,7 +315,7 @@ func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(0,0
 		floatnode.add_child(textnode)
 	
 	get_tree().get_root().add_child(floatnode)
-	floatnode.rect_global_position = node.rect_global_position + positionoffset
+	floatnode.rect_global_position = node.rect_global_position + node.rect_size * 0.5  + positionoffset 
 	if args.group == 'ally':
 		DamageTextFly(floatnode, false)
 	elif args.group == 'enemy':
@@ -337,7 +337,7 @@ func FloatHeal(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(0,
 	var textnode = Label.new()
 	get_tree().get_root().add_child(textnode)
 	textnode.text = text
-	textnode.rect_global_position = node.rect_global_position + positionoffset
+	textnode.rect_global_position = node.rect_global_position + node.rect_size * 0.5  + positionoffset 
 	textnode.set("custom_colors/font_color", color)
 	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
 	floatfont.size = size
@@ -350,15 +350,16 @@ func FloatHeal(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(0,
 
 func DamageTextFly(node, reverse = false):
 	var tween = GetTweenNode(node)
-	var firstvector = Vector2(100, -100)
+	var firstvector = Vector2(-30, -200)
 	var secondvector = Vector2(200, 200)
 	if reverse == true:
-		firstvector = Vector2(-100, -100)
+		firstvector = Vector2(30, -200)
 		secondvector = Vector2(-200, 200)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'rect_position', node.rect_position+firstvector, node.rect_position+secondvector, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
-	FadeAnimation(node, 0.2 , 0.7)
+	
+	#yield(get_tree().create_timer(0.5), 'timeout')
+	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 1.7, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	#tween.interpolate_property(node, 'rect_position', node.rect_position+firstvector, node.rect_position+secondvector, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
+	FadeAnimation(node, 0.4 , 0.9)
 	tween.start()
 
 func HealTextFly(node):
