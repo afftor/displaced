@@ -97,7 +97,7 @@ var locations = { #added seqs bindings and other fields
 		code = 'village',
 		background = null, 
 		missions = [],
-		events = ['erika_at_village',]
+		events = ['erika_at_village','dimitrius_2_1_2']
 	},
 	forest =  {
 		code = 'forest',
@@ -429,6 +429,13 @@ var scene_sequences = {
 		{type = 'system', value = 'unlock_mission', arg = 'castle_rilu_return'},
 		{type = 'system', value = 'enable_character', arg = ['rose',false] },
 		{type = 'system', value = 'enable_character', arg = ['iola',false] },
+		]
+	},
+	dimitrius_2_1_2 = {
+		initiate_signal = 'village', 
+		initiate_reqs = [{type = 'mission_complete', value = 'castle_rilu_return'}],
+		actions = [
+		{type = 'scene', value = 'dimitrius_2_1_2'},
 		]
 	},
 	rose_reunion = {
