@@ -101,7 +101,7 @@ func rebuild_scene_list():
 #			else:
 #				panel.get_node('Button').disabled = true
 #			continue
-		if eventdata.has("initiate_reqs") and state.valuecheck(eventdata.initiate_reqs): #not shown but unlockable
+		if eventdata.has("initiate_reqs") and state.checkreqs(eventdata.initiate_reqs): #not shown but unlockable
 			var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button2')
 			var can_unlock = true
 #			panel.get_node('Image').texture = resources.get_res(eventdata.icon)
