@@ -1617,7 +1617,7 @@ var skilllist = {
 		damagestat = ['no_stat', '+damage_hp'],
 		cooldown = 1,
 #		manacost = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleance'}), 'e_s_resetfire'],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), 'e_s_resetfire'],
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_cleansing', target = 'target', period = 'predamage'}],
@@ -2504,7 +2504,7 @@ var skilllist = {
 		value = [['caster.damage', '*1.2']],
 		cooldown = 1,
 #		manacost = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleance'})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'})],
 		repeat = 1,
 		hidden = false,
 		sfx = [],
@@ -4723,7 +4723,7 @@ var patches = {
 		targetpattern = {type = 'set', value = 'line'},
 	},
 	p_clean_2 = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleance'}), Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})]}
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})]}
 	},
 	p_barrier = {
 		repeat = {type = 'add', value = 1}
