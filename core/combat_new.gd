@@ -1422,12 +1422,15 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 
 
+var follow_up_skill = null
+var follow_up_flag = false
+
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	caster.acted = true
 
-	var follow_up_skill = null
-	var follow_up_flag = false
+	follow_up_skill = null
+	follow_up_flag = false
 
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
