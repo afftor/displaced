@@ -407,6 +407,7 @@ var skilllist = {
 		reqs = [],
 		tags = ['buff'],
 		value = ['0'],
+		damagestat = 'no_stat',
 		cooldown = 1,
 #		manacost = 0,
 		casteffects = ['e_s_protect'],

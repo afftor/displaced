@@ -235,7 +235,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'caster',
 		name = 'protect_c',
-		tick_event = variables.TR_TURN_F,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = -2, 
 		stack = 1,
@@ -269,7 +269,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'protect_t',
-		tick_event = variables.TR_TURN_F,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = -2, 
 		stack = 1,
@@ -297,6 +297,11 @@ var effect_table = {
 		req_skill = true,
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'sfx', value = 'sfx_parry'}],
+			},
 			{
 				type = 'oneshot',
 				target = 'skill',
