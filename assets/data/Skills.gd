@@ -4697,7 +4697,7 @@ var patches = {
 		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_ava'})]}
 	},
 	p_thorn = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_add_s'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_add_s1'})]}
 	},
 	p_echo_1 = {
 		value = {type = 'replace', value = [['caster.hpmax','*0.5'],['caster.damage','*0.6']],}

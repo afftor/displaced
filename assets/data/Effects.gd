@@ -1751,6 +1751,11 @@ var effect_table = {
 		target = 'owner',
 		atomic = ['a_souls_add']
 	},
+	e_add_s1 = {
+		type = 'oneshot',
+		target = 'caster',
+		atomic = ['a_souls_add']
+	},
 	e_pay_soul = {
 		type = 'trigger',
 		trigger = [variables.TR_CAST],
