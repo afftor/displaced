@@ -937,6 +937,7 @@ func FinishCombat(value):
 		ch.defeated = false
 		ch.cooldowns.clear()
 		ch.hp = ch.get_stat('hpmax')
+		ch.shield = 0
 		ch.process_event(variables.TR_COMBAT_F)
 	
 	for pos in variables.enemyparty:
