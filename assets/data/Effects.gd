@@ -201,7 +201,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'damage', value = ['parent_args', 0]}],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/dodgedebuff.png", 
+				icon = "res://assets/images/iconsskills/arron_7.png", 
 				description = "damage decreased for %d turns",
 				args = [{obj = 'parent', param = 'remains', dynamic = true}],
 				t_name = 'fen'
@@ -244,7 +244,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/arron_2.png", 
 				description = "",
 				limit = 1,
 				t_name = 'protect_c'
@@ -279,7 +279,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/arron_2.png", 
 				description = "Is protected",
 				limit = 1,
 				t_name = 'protect_t'
@@ -316,7 +316,7 @@ var effect_table = {
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']}, 
 			{type = 'skill', value = ['tags', 'has_no', 'aoe']}, 
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['hitres', 'mask', variables.RES_HITCRIT]},
 			{type = 'random', value = 0.5}
 		],
 		trigger = [variables.TR_DEF],
@@ -390,7 +390,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 2.5}],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/arron_4.png", 
 				description = "Damage increased",
 				limit = 1,
 				t_name = 'swordmas'
@@ -442,7 +442,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 1.25}],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/arron_5.png", 
 				description = "Damage increased",
 				limit = 1,
 				t_name = 'termination'
@@ -471,7 +471,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 1.5}],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/arron_5.png", 
 				description = "Damage increased",
 				limit = 1,
 				t_name = 'termination'
@@ -491,7 +491,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 90}],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/dodgedebuff.png", 
+				icon = "res://assets/images/iconsskills/arron_6.png", 
 				description = "Evasion increased",
 				args = [],
 				t_name = 'eva90'
@@ -537,7 +537,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -25}],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/dodgedebuff.png", 
+				icon = "res://assets/images/iconsskills/rose_2.png", 
 				description = "hitchance decreased",
 				args = [],
 				t_name = 'flash'
@@ -782,7 +782,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -15}],
 		buffs = [{
-				icon = "res://assets/images/traits/dodgedebuff.png", 
+				icon = "res://assets/images/iconsskills/erika_3.png", 
 				description = "hitchance decreased",
 				args = [],
 				t_name = 'shower'
@@ -847,7 +847,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.5}],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/erika_8.png", 
 				description = "Damage decreased",
 				limit = 1,
 				t_name = 'charm'
@@ -979,7 +979,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -20}],
 		buffs = [{
-				icon = "res://assets/images/traits/dodgedebuff.png", 
+				icon = "res://assets/images/iconsskills/ember_3.png", 
 				description = "hitchance decreased",
 				args = [],
 				t_name = 'shockwave'
@@ -997,7 +997,7 @@ var effect_table = {
 		args = [],
 		sub_effects = ['e_t_uppercut'],
 		atomic = [],
-		buffs = ['b_wave'],
+		buffs = ['b_wave1'],
 	},
 	e_t_uppercut = {
 		type = 'trigger',
@@ -1054,7 +1054,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/ember_6.png", 
 				description = "Is protected",
 				limit = 1,
 				t_name = 'protect_t'
@@ -1207,7 +1207,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -25}],
 		buffs = [{
-				icon = "res://assets/images/traits/dodgedebuff.png", 
+				icon = "res://assets/images/iconsskills/rilu_3.png", 
 				description = "hitchance decreased",
 				args = [],
 				t_name = 'mist_d'
@@ -1456,7 +1456,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 25}],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/ember_6.png", 
 				description = "",
 				limit = 1,
 				t_name = 'protect_c'
@@ -1508,7 +1508,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/ember_6.png", 
 				description = "Is protected",
 				limit = 1,
 				t_name = 'protect_t'
@@ -1592,7 +1592,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
 		buffs = [
 			{ #not this
-				icon = "res://assets/images/iconsclasses/Knight.png", 
+				icon = "res://assets/images/iconsskills/defaultattack.png", 
 				description = "",
 				limit = 1,
 				t_name = 'e_i_defup'
@@ -2566,7 +2566,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.33}],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/speeddebuf.png", 
+				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
 				description = "Damage reduced for %d turns",
 				args = [{obj = 'parent', param = 'remains'}],
 				t_name = 'cripple'
@@ -2647,7 +2647,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/speeddebuf.png", 
+				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
 				description = "Speed and evasion reduced",
 				limit = 1,
 				t_name = 'earthquake'
@@ -3434,120 +3434,126 @@ var atomic = {
 #needs filling
 var buffs = {
 	#new part
-	b_intimidate = {
-		icon = "res://assets/images/traits/speeddebuf.png", 
+	b_intimidate = { 
+		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
 		description = "Damage reduced for %d turns",
 		args = [{obj = 'parent', param = 'remains'}],
 		t_name = 'intimidate'
 	},
-	b_bleed = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+	b_bleed = { 
+		icon = "res://assets/images/iconsskills/arron_3.png", 
 		description = "Bleeding",
 		t_name = 'bleed'
 	},
-	b_poison = {
+	b_poison = { # none
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "poisoned",
 		t_name = 'poison'
 	},
-	b_silence = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+	b_silence = { # doesn't fit
+		icon = "res://assets/images/iconsskills/iola_5.png", 
 		description = "Silenced",
 		t_name = 'silence'
 	},
 	b_swift = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/arron_1.png", 
 		description = "Evasion increased",
 		t_name = 'swift'
 	},
 	b_burn = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/rose_4.png", 
 		description = "Burning",
 		t_name = 'burn'
 	},
 	b_chill = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/erika_5.png", 
 		description = "Chilled",
 		t_name = 'chill'
 	},
 	b_mist = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/rilu_3.png", 
 		description = "Takes water damage",
 		t_name = 'mist'
 	},
 	b_wave = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		icon = "res://assets/images/iconsskills/rose_5.png", 
 		description = "Damage from next air-based skill is increased",
 		limit = 1,
 		t_name = 'wave'
 	},
-	b_freeze = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+	b_wave1 = {
+		icon = "res://assets/images/iconsskills/ember_1.png", 
+		description = "Damage from next air-based skill is increased",
+		limit = 1,
+		t_name = 'wave'
+	},
+	b_freeze = { # kinda doesn't fit 
+		icon = "res://assets/images/iconsskills/erika_5.png",
 		description = "Damage from next skill is increased",
 		limit = 1,
 		t_name = 'freeze'
 	},
 	b_firepunch = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		icon = "res://assets/images/iconsskills/ember_4.png",
 		description = "Damage from next skills is increased",
 		limit = 1,
 		t_name = 'firepunch'
 	},
 	b_renew = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/rose_8.png", 
 		description = "Healing",
 		t_name = 'renew'
 	},
-	b_renew1 = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+	b_renew1 = { # doesn't fit
+		icon = "res://assets/images/iconsskills/rose_8.png", 
 		description = "Damage taking decreased",
 		t_name = 'renew1'
 	},
 	b_defend = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/ember_6.png", 
 		description = "Damage taking decreased",
 		t_name = 'defend'
 	},
 	b_aegis = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/ember_8.png", 
 		description = "Damage taking decreased",
 		t_name = 'aegis'
 	},
-	b_aegis1 = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+	b_aegis1 = { # doesn't fit
+		icon = "res://assets/images/iconsskills/ember_8.png", 
 		description = "Max hp increased",
 		t_name = 'aegis1'
 	},
-	b_natbless = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+	b_natbless = { 
+		icon = "res://assets/images/iconsskills/erika_1.png", 
 		description = "Damage and hitchance increased",
 		t_name = 'natbless'
 	},
-	b_hearts = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+	b_hearts = { 
+		icon = "res://assets/images/iconsskills/erika_7.png", 
 		description = "Damage taking increased",
 		t_name = 'hearts'
 	},
 	b_dragonprot = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		icon = "res://assets/images/iconsskills/ember_2.png", 
 		description = "",
 		limit = 1,
 		t_name = 'dragonprot'
 	},
 	b_ava = {
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/rilu_1.png", 
 		description = "Damage taking increased",
 		t_name = 'avalanche'
 	},
-	b_souls = {
-		icon = "res://assets/images/traits/speedondamage.png", #to fix
+	b_souls = { # none
+		icon = "res://assets/images/traits/speedondamage.png",
 		description = "Has %d souls",
 		args = [{obj = 'parent_args', param = 0}],
 		t_name = 'souls',
 		limit = 1
 	},
 	b_soulprot = {
-		icon = "res://assets/images/traits/speedondamage.png", #to fix
+		icon = "res://assets/images/iconsskills/rilu_5.png", 
 		description = "Can't die'",
 		t_name = 'soulprot',
 		limit = 0
@@ -3559,80 +3565,80 @@ var buffs = {
 		t_name = 'taunt'
 	},
 	b_gust = {
-		icon = "res://assets/images/iconsclasses/Knight.png", 
+		icon = "res://assets/images/iconsskills/iola_3.png", 
 		description = "Damage decreased",
 		limit = 1,
 		t_name = 'gust'
 	},
-	b_bloodlust = {
-		icon = "res://assets/images/iconsclasses/Knight.png", 
+	b_bloodlust = { # none 
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Damage increased",
 		limit = 5,
 		t_name = 'bloodlust'
 	},
-	b_unstable = {
-		icon = "res://assets/images/iconsclasses/Knight.png", 
+	b_unstable = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Is in unstable condition",
 		limit = 1,
 		t_name = 'unstable'
 	},
-	b_ex_charge = {
-		icon = "res://assets/images/traits/experience.png", #to fix
+	b_ex_charge = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Charging execute",
 		limit = 1,
 		t_name = 'charge'
 	},
-	b_dim_1 = {
-		icon = "res://assets/images/traits/experience.png", #to fix
+	b_dim_1 = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "No barriers",
 		limit = 1,
 		t_name = 'rule1'
 	},
-	b_dim_2 = {
-		icon = "res://assets/images/traits/experience.png", #to fix
+	b_dim_2 = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "No heals",
 		limit = 1,
 		t_name = 'rule2'
 	},
-	b_dim_3 = {
-		icon = "res://assets/images/traits/experience.png", #to fix
+	b_dim_3 = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "No reanimation",
 		limit = 1,
 		t_name = 'rule3'
 	},
-	b_wound = {
-		icon = "res://assets/images/iconsclasses/Knight.png", 
+	b_wound = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Received damage increased",
 		limit = 1,
 		t_name = 'wound'
 	},
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_stun = {
-		icon = "res://assets/images/traits/experience.png", #?? mb to fix
+		icon = "res://assets/images/iconsskills/iola_6.png", 
 		description = "Stunned",
 		limit = 1,
 		t_name = 'stun'
 	},
-	b_wwalk = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+	b_wwalk = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Stats increased",
 		limit = 1,
 		t_name = 'wwalk'
 	},
-	b_nbless = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+	b_nbless = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Regenerates HP every turn",
 		limit = 1,
 		t_name = 'nbless'
 	},
-	b_sanct = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+	b_sanct = { # none
+		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Regenerates HP every turn",
 		limit = 1,
 		t_name = 'sanctuary'
 	},
 	b_def = {
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+		icon = "res://assets/images/iconsskills/action_2.png", 
 		description = "Halves incoming damage",
 		limit = 1,
 		t_name = 'defence'
