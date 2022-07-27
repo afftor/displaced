@@ -433,8 +433,12 @@ func finish_area():
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('events') and areadata.events.has("on_complete"):
 		var scene = areadata.events.on_complete
-		if not(state.OldEvents.has(scene) and events.events[scene].onetime):
+		if !state.OldEvents.has(scene):
 			if globals.play_scene(scene):
+#				yield(input_handler.scene_node, "scene_end")
+				yield(input_handler, "EventFinished")
+		else:
+			if globals.play_scene(scene, true):
 #				yield(input_handler.scene_node, "scene_end")
 				yield(input_handler, "EventFinished")
 	if location != 'mission': open_explore()
@@ -490,10 +494,11 @@ func advance_check():
 #			advance_area()
 		if areadata.events.has("after_fight_%d" % (areastate.stage - 1)):
 			var scene = areadata.events["after_fight_%d" % (areastate.stage - 1)]
-			if state.OldEvents.has(scene) and events.events[scene].onetime:
-				$AdvConfirm.visible = true
-#				areastate.stage += 1
-#				advance_area()
+			if state.OldEvents.has(scene):
+				if globals.play_scene(scene, true):
+					pass
+				else:
+					$AdvConfirm.visible = true
 			else:
 				if globals.play_scene(scene):
 					pass
