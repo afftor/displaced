@@ -519,6 +519,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_4.png",
 				lvldesc = "4",
+				cost = {},
 				},
 		}
 	},
