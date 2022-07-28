@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/gui/buildings/panel.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/village/Townhall.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/images/portrait/EmberNormal.png" type="Texture" id=14]
 [ext_resource path="res://files/scenes/Questlog.tscn" type="PackedScene" id=15]
 [ext_resource path="res://files/scenes/village/SceneUnlockPanel.tscn" type="PackedScene" id=16]
+[ext_resource path="res://files/scenes/Outlined_Sprite.gd" type="Script" id=17]
 
 [node name="TownHall" type="TextureRect"]
 margin_left = 35.0
@@ -184,6 +185,7 @@ rect_min_size = Vector2( 200, 200 )
 texture_normal = ExtResource( 14 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 17 )
 
 [node name="UpgradeList" type="TextureRect" parent="."]
 visible = false
