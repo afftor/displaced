@@ -69,6 +69,8 @@ func build_hero_panels():
 		var ch = ch_order[i]
 		var node = get_hero_panel(ch)
 		$PlayerStats/VBoxContainer.move_child(node, i)
+		var ch_d = state.heroes[ch].displaynode
+		ch_d.get_parent().move_child(ch_d, i)
 	for ch in state.characters:
 		var hero = state.heroes[ch]
 		var node1 = get_hero_panel(ch)
