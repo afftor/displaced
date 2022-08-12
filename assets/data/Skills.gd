@@ -1734,6 +1734,7 @@ var skilllist = {
 		reqs = [],
 		tags = ['damage', 'debuff', 'dispel'],
 		value = ['0'],
+		damadestat = 'no_stat',
 		cooldown = 10,
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_silence', duration = 2})],
