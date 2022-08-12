@@ -64,7 +64,7 @@ func upgrade():
 #	createfromtemplate(template.next_level)
 	var tmp = effects_pool.e_createfromtemplate(template.next_level, id)
 #	get_applied_obj().apply_effect(id)
-	get_applied_obj().apply_effect(tmp.id)
+	get_applied_obj().apply_effect(effects_pool.add_effect(tmp))
 	pass
 
 func tick_eff():

@@ -762,6 +762,7 @@ func move_hero(chid, pos):
 	call_deferred('select_actor')
 
 
+
 func activate_swap():
 	var res = []
 	for pos in [1, 2, 3]:
@@ -1678,6 +1679,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			caster.process_event(variables.TR_TURN_F)
 			if caster.displaynode:
 				caster.displaynode.process_disable()
+				caster.rebuildbuffs()
 		call_deferred('select_actor')
 		eot = false
 	else:
