@@ -41,4 +41,4 @@ animations = [ {
 position = Vector2( 196.358, 76.3552 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-speed_scale = 2.0
+speed_scale = 3.8

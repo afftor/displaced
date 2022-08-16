@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/images/gfx/cleansing/Effects_fight_iola_fire-animation_01.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gfx/cleansing/Effects_fight_iola_fire-animation_04.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/images/gfx/cleansing/Effects_fight_iola_fire-animation_13.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/gfx/cleansing/Effects_fight_iola_fire-animation_23.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gfx/cleansing/Effects_fight_iola_fire-animation_27.png" type="Texture" id=29]
+[ext_resource path="res://scene_animation_centering.gd" type="Script" id=30]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -39,7 +40,8 @@ animations = [ {
 } ]
 
 [node name="HitAnimation" type="AnimatedSprite"]
-position = Vector2( 141.088, 226.573 )
+position = Vector2( 192, 225 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-speed_scale = 2.0
+speed_scale = 7.5
+script = ExtResource( 30 )

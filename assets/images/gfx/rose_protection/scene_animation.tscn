@@ -38,7 +38,7 @@ animations = [ {
 } ]
 
 [node name="HitAnimation" type="AnimatedSprite"]
-position = Vector2( 260.593, 78.9165 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 215, 78.916 )
+scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 1 )
-speed_scale = 2.0
+speed_scale = 4.0

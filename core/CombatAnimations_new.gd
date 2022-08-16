@@ -167,12 +167,12 @@ func default_animation(node, args):
 
 func default_sfx(node, args):
 	var id = args.animation
-	var playtime = 0
-	hp_update_delays[node] = 0 #delay for hp updating during this animation
-	hp_float_delays[node] = 0 #delay for hp updating during this animation
+	var playtime = 0.07 # 0.7
+	hp_update_delays[node] = 0 # 0.3 both
+	hp_float_delays[node] = 0
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0
-	input_handler.gfx_sprite(node, id, 0.5, null)
+	input_handler.gfx_sprite(node, id, null, null)
 	return playtime + aftereffectdelay
 
 

@@ -116,6 +116,10 @@ func setup_character(ch):
 	
 	visible = (position != null)
 	
+	$Buffs.rect_position = $sprite.rect_position
+	$Buffs.rect_position -= $Buffs.rect_size
+	if $Buffs.rect_position.y < 0:
+		$Buffs.rect_position.y = 0
 
 func reset_shield():
 	$sprite/shield.rect_size = $sprite.rect_min_size * 1.5

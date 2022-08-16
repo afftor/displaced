@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/images/gfx/barrier/fight_shield_sq_04.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gfx/barrier/fight_shield_sq_06.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/images/gfx/barrier/fight_shield_sq_02.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/gfx/barrier/fight_shield_sq_00.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gfx/barrier/fight_shield_sq_03.png" type="Texture" id=25]
+[ext_resource path="res://scene_animation_centering.gd" type="Script" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -35,7 +36,9 @@ animations = [ {
 } ]
 
 [node name="HitAnimation" type="AnimatedSprite"]
-position = Vector2( 124.439, 124.301 )
-scale = Vector2( 0.5, 0.5 )
+modulate = Color( 1, 1, 1, 0.513726 )
+position = Vector2( 190, 222 )
+scale = Vector2( 0.551803, 0.551803 )
 frames = SubResource( 1 )
-speed_scale = 2.0
+speed_scale = 5.0
+script = ExtResource( 26 )
