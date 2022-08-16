@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/images/gfx/dark_orb/Fight_explosion_sq_16.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gfx/dark_orb/Fight_explosion_sq_00.png" type="Texture" id=2]
@@ -17,17 +17,19 @@
 [ext_resource path="res://assets/images/gfx/dark_orb/Fight_explosion_sq_09.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gfx/dark_orb/Fight_explosion_sq_15.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gfx/dark_orb/Fight_explosion_sq_06.png" type="Texture" id=17]
+[ext_resource path="res://scene_animation_centering.gd" type="Script" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 17 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 1 ) ],
 "loop": false,
 "name": "default",
-"speed": 5.0
+"speed": 6.0
 } ]
 
 [node name="HitAnimation" type="AnimatedSprite"]
-position = Vector2( 124.439, 124.301 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( 289.891, 238.075 )
+scale = Vector2( 0.466989, 0.466989 )
 frames = SubResource( 1 )
-speed_scale = 2.0
+speed_scale = 4.0
+script = ExtResource( 18 )

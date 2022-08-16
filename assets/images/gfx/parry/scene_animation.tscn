@@ -22,11 +22,11 @@ animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 14 ) ],
 "loop": false,
 "name": "default",
-"speed": 5.0
+"speed": 8.25
 } ]
 
 [node name="HitAnimation" type="AnimatedSprite"]
-position = Vector2( 354.031, 335.206 )
+position = Vector2( 216, 120 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-speed_scale = 2.0
+speed_scale = 2.45

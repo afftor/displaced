@@ -662,7 +662,7 @@ var effect_table = {
 				execute = 'remove'
 			}
 		],
-		buffs = ['b_wave']
+		buffs = ['b_wave2']
 	},
 	e_s_aarrow1 = {
 		type = 'temp_s',
@@ -1153,7 +1153,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/resistdebuf.png", 
+				icon = "res://assets/images/iconsskills/rilu_6.png", 
 				description = "Resistances reduced",
 				limit = 1,
 				t_name = 'orb'
@@ -3487,6 +3487,12 @@ var buffs = {
 		limit = 1,
 		t_name = 'wave'
 	},
+	b_wave2 = {
+		icon = "res://assets/images/iconsskills/erika_2.png", 
+		description = "Damage from next air-based skill is increased",
+		limit = 1,
+		t_name = 'wave'
+	},
 	b_freeze = { # kinda doesn't fit 
 		icon = "res://assets/images/iconsskills/erika_5.png",
 		description = "Damage from next skill is increased",
@@ -3559,7 +3565,7 @@ var buffs = {
 		limit = 0
 	},
 	b_taunt = {
-		icon = "res://assets/images/iconsskills/taunt.png", 
+		icon = "res://assets/images/iconsskills/rilu_8.png", 
 		description = "This unit is taunted and must attack next turn",
 		limit = 1,
 		t_name = 'taunt'

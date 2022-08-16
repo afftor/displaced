@@ -578,7 +578,8 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	if delayuntilfade != null:
 		input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
-	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+#	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+	yield(x, 'animation_finished')
 	
 	if wr.get_ref(): x.queue_free()
 
