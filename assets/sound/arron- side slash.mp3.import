@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/arron- side slash.mp3-3d883d93bd6aac5b2040d4cc0cfa75bc.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/arron- side slash.mp3"
+dest_files=[ "res://.import/arron- side slash.mp3-3d883d93bd6aac5b2040d4cc0cfa75bc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

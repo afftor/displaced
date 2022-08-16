@@ -14,7 +14,7 @@ var binded_events = {
 	cult = null,
 	modern_city = null
 }
-
+var village_inside_event = false
 
 func _ready():
 	input_handler.connect("EventFinished", self, "buildscreen")
@@ -82,6 +82,7 @@ func update_map():
 		elif loc == 'village':
 			area_node.set_border_type('safe')
 			area_node.set_active()
+			area_node.set_current(village_inside_event)
 #		elif loc == 'town':
 #			area_node.set_inactive()
 		else:
@@ -113,3 +114,5 @@ func check_location(loc_id):
 		if state.check_sequence(seq):
 			binded_events[loc_id] = seq
 			break
+	if loc_id == 'village':
+		village_inside_event = input_handler.village_node.buildscreen()

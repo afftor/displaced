@@ -77,6 +77,7 @@ func check_start():
 	advance_timer()
 
 func advance_timer():
+#	print(str(OS.get_ticks_msec()) + " timer adv")
 	hp_update_delays.clear()
 	if animations_queue.empty(): return
 	cur_timer = animations_queue.keys().min()
@@ -85,6 +86,7 @@ func advance_timer():
 		start_animation(node)
 
 func finish_animation(node):
+#	print(str(OS.get_ticks_msec()) + " finish anim for " + str(node))
 	animation_delays.erase(node)
 	animations_queue[cur_timer][node].pop_front()
 	if animations_queue[cur_timer][node].empty(): 
@@ -100,11 +102,14 @@ func finish_animation(node):
 		start_animation(node)
 
 func start_animation(node):
+#	print(str(OS.get_ticks_msec()) + " start anim for " + str(node))
 	var f_anim = animations_queue[cur_timer][node].front()
 	var delay = 0
 	for data in f_anim:
 		#print("%d - %d %s"%[OS.get_ticks_msec(),cur_timer, data.type])
 		delay = max(delay, call(data.type, data.node, data.params))
+#	print(delay)
+#	print(str(OS.get_ticks_msec()) + " starting anim")
 	animation_delays[node] = delay
 
 #not used 
@@ -141,10 +146,12 @@ func sound(node, args):
 	return 0.1
 
 func default_animation(node, args):
+#	print(args.animation)
 	var id = args.animation
 	var playtime
 	var transition_time = variables.default_animations_transition[id]
 	var delaytime = variables.default_animations_delay[id]
+	var delayafter = variables.default_animations_after_delay[id]
 	var tex = null
 	if node.fighter.animations.has(id):
 		tex = node.fighter.animations[id]
@@ -156,23 +163,26 @@ func default_animation(node, args):
 		playtime = tex.frames / tex.fps
 	else:
 		playtime = variables.default_animations_duration[id]
+	input_handler.force_end_tweens(sp)
+	input_handler.force_end_tweens(sp2)
 	input_handler.FadeAnimation(sp, transition_time, delaytime)
 	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
 	input_handler.FadeAnimation(sp2, transition_time, playtime + delaytime - transition_time, true)
 	input_handler.UnfadeAnimation(sp, transition_time, playtime + delaytime - transition_time, true)
 	if args.has('callback'):
 		input_handler.DelayedCallback(node, playtime + delaytime - transition_time, args.callback)
-	return playtime + delaytime
+	return playtime + delaytime + delayafter
 
 
 func default_sfx(node, args):
+#	print("sfx")
 	var id = args.animation
 	var playtime = 0.07 # 0.7
 	hp_update_delays[node] = 0 # 0.3 both
 	hp_float_delays[node] = 0
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0
-	input_handler.gfx_sprite(node, id, null, null)
+	input_handler.call_deferred('gfx_sprite', node, id, 0.5, null)
 	return playtime + aftereffectdelay
 
 
@@ -312,6 +322,7 @@ func c_log(node, args):
 #	return delay
 
 func hp_update(node, args):
+#	print("hp")
 	var delay = 0
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
 	hp_update_delays.erase(node)
@@ -344,6 +355,7 @@ func hp_update(node, args):
 
 
 func damage_float(node, args):
+#	print("dmg float")
 	var delay = 0
 	if hp_float_delays.has(node): delay = hp_float_delays[node]
 	hp_float_delays.erase(node)

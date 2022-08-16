@@ -626,24 +626,25 @@ func calculate_hit_sound(skill, caster, target):
 #position manipulation
 func advance_frontrow():
 	nextenemy = 4
-	for pos in range(6, 10):
+	for pos in range(7, 10):
 		if battlefield[pos] == null: continue
 		if enemygroup[pos] == null : continue
 		enemygroup[pos - 3] = enemygroup[pos]
 		enemygroup.erase(pos)
-	for i in range(6, 10):
+	for i in range(7, 10):
 		if battlefield[i] == null: continue
 		battlefield[i].displaynode.disable_panel_node()
 		battlefield[i].displaynode.disappear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
-	for i in range(6, 10):
+	for i in range(7, 10):
 		if battlefield[i] == null: continue
 		battlefield[i].displaynode.visible = false
 		battlefield[i] = null
 	for i in range(4, 7):
 		if !enemygroup.has(i): continue
+		if enemygroup[i].defeated: continue
 		battlefield[i] = enemygroup[i]
 		battlefield[i].position = i
 		make_fighter_panel(battlefield[i], i, false)
@@ -760,6 +761,7 @@ func move_hero(chid, pos):
 	gui_node.RebuildReserve()
 	gui_node.build_hero_panels()
 	call_deferred('select_actor')
+
 
 
 func activate_swap():
@@ -1678,6 +1680,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			caster.process_event(variables.TR_TURN_F)
 			if caster.displaynode:
 				caster.displaynode.process_disable()
+				caster.rebuildbuffs()
 		call_deferred('select_actor')
 		eot = false
 	else:

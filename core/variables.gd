@@ -58,7 +58,7 @@ var default_animations_duration = {
 	dead = 0.5,#for npc only
 	null: 0.5,
 }
-var default_animations_transition = {
+var default_animations_transition = { #those are not added to duration
 	attack = 0.2,
 	cast = 0.2,
 	special = 0.2,
@@ -73,6 +73,15 @@ var default_animations_delay = {
 	hit = 0.3,
 	dead = 0,
 	null: 0.5,
+}
+
+var default_animations_after_delay = { #generally should be negative, but not overexeeding delay + duration
+	attack = -0.4,
+	cast = -0.4,
+	special = -0.4,
+	hit = 0.0,
+	dead = 0,
+	null: 0.0,
 }
 
 func _ready():

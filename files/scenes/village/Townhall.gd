@@ -181,9 +181,11 @@ func build_events():
 				res = true
 				break
 	
+	$UpcomingEvents.visible = false
 	input_handler.ClearContainer(charpanel, ['portrait'])
 	for ch in binded_events:
 		if binded_events[ch] == null: continue
+		$UpcomingEvents.visible = true
 		var panel = input_handler.DuplicateContainerTemplate(charpanel, 'portrait')
 		panel.connect("pressed", globals, "run_seq", [binded_events[ch]])
 		var tex = resources.get_res("portrait/%s" % input_handler.scene_node.char_map[ch].portrait)

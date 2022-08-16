@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=2]
-[ext_resource path="res://files/SFX/BarrierShader2.tres" type="Material" id=3]
+[ext_resource path="res://assets/images/gfx/sanctuary/iola_4_hexagon2_sq_17.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/charpanel_old/healthbar.png" type="Texture" id=4]
 [ext_resource path="res://files/scenes/combat/FighterNode.gd" type="Script" id=5]
-[ext_resource path="res://assets/images/gui/combat/cloud.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -47,11 +46,13 @@ __meta__ = {
 
 [node name="shield" type="TextureRect" parent="sprite"]
 visible = false
-material = ExtResource( 3 )
-margin_right = 285.0
-margin_bottom = 347.0
+modulate = Color( 1, 1, 1, 0.658824 )
+margin_left = -27.0
+margin_top = -48.0
+margin_right = 309.0
+margin_bottom = 390.0
 mouse_filter = 2
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
 __meta__ = {

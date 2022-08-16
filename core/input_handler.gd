@@ -560,10 +560,15 @@ var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'}
 func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	var scene
 	if sprites.has(effect):
-		scene = load(sprites[effect])
+		if sprites[effect] is String:
+			scene = load(sprites[effect])
+			sprites[effect] = scene
+		else:
+			scene = sprites[effect]
 	else:
 		scene = load("res://assets/images/gfx/%s/scene_animation.tscn" % effect)
-	if scene == null:
+		sprites[effect] = scene
+	if !(scene is PackedScene):
 		return
 	var x = scene.instance()
 	node.add_child(x)
@@ -603,6 +608,10 @@ func BlackScreenTransition(duration = 0.5):
 
 func DelayedText(node, text):
 	node.text = text
+
+func force_end_tweens(node):
+	var tween = GetTweenNode(node)
+	tween.stop_all()
 
 
 func calculate_number_from_string_array(arr, caster, target):

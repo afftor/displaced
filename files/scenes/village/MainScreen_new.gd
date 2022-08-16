@@ -95,6 +95,7 @@ func show():
 	.show()
 
 func buildscreen(empty = null):
+	var res = false
 	for build in globals.upgradelist:
 		var node = get_node(build)
 		if node != null: node.build_icon()
@@ -106,13 +107,18 @@ func buildscreen(empty = null):
 					binded_events[build] = seq
 					break
 		
-		if binded_events[build] != null or build == 'bridge':
+		if binded_events[build] != null:
+			node.set_active()
+			res = true
+		elif build == 'bridge':
 			node.set_active()
 		else:
 			node.set_inactive()
 	
 	if $TownHall.build_events():
 		get_node("townhall").set_active()
+		res = true
+	return res
 
 
 
