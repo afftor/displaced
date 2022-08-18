@@ -1,9 +1,9 @@
-extends TextureButton
+extends TextureRect
 
 var dragdata = {type = 'character', id = ''}
 
 func get_drag_data(position):
-	dragdata.id = name.trim_suffix('_reserve')
+	dragdata.id = get_parent().name
 	var hero = state.heroes[dragdata.id]
 	if hero.acted: return null
 	input_handler.combat_node.activate_swap()
@@ -12,10 +12,3 @@ func get_drag_data(position):
 	set_drag_preview(spr)
 	return dragdata
 
-func can_drop_data(position, data):
-	if data.type != 'character': return false
-	return true
-
-
-func drop_data(position, data):
-	input_handler.combat_node.reserve_hero(data.id)

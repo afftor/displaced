@@ -396,7 +396,7 @@ func StopMusic(instant = false):
 #Sounds
 
 func PlaySound(res, delay = 0):
-	if name == null:
+	if res == null:
 		return #STAB to fix some skills cause crashing
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()

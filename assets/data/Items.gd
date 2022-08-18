@@ -945,3 +945,5 @@ var hero_items_data = {
 func _ready():
 	for i in Items:
 		Items[i].code = i
+		if Items[i].has('waponsound'):
+			resources.preload_res("sound/%s" % Items[i].waponsound)

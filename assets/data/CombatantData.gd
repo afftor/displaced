@@ -151,6 +151,7 @@ var charlist = {
 }
 
 func _ready():
+	resources.preload_res('sound/slash') #default
 	yield(preload_icons(), 'completed')
 	print("Character icons preloaded")
 

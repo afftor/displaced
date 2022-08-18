@@ -203,7 +203,7 @@ func get_weapon_sound():
 	var template = Items.hero_items_data["%s_%s" % [id, curweapon]]
 	if template != null:
 		res = template.weaponsound
-	return res
+	return "sound/%s" % res
 
 
 #this function is broken and needs revision (but for now skill tooltips are broken as well due to translation issues so i didn't fix this)

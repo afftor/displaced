@@ -4849,3 +4849,11 @@ func _ready():
 	for i in skilllist:
 		skilllist[i].code = i #do not touch
 		skilllist[i].name = skilllist[i].code #temp, 2remove
+		if skilllist[i].has('sounddata'):
+			var tdata = skilllist[i].sounddata
+			if tdata.has('initiate') and tdata.initiate != null:
+				resources.preload_res("sound/%s" % tdata.initiate)
+			if tdata.has('strike') and tdata.strike != null and tdata.strike != "weapon":
+				resources.preload_res("sound/%s" % tdata.strike)
+			if tdata.has('hit') and tdata.has('hittype') and tdata.hit != null and tdata.hittype == "absolute":
+				resources.preload_res("sound/%s" % tdata.hit)

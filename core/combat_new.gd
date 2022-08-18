@@ -618,7 +618,7 @@ func calculate_hit_sound(skill, caster, target):
 				'flesh':pass
 				'wood':pass
 				'stone':pass
-	rval = 'fleshhit'
+	rval = 'sound/slash' #stub
 	
 	return rval
 
@@ -705,7 +705,7 @@ func swap_active_hero():#not used
 	
 
 
-func swap_heroes(pos):
+func swap_heroes_old(pos):
 	var newhero = swapchar
 	swapchar = null
 	#remove current char
@@ -734,7 +734,7 @@ func swap_heroes(pos):
 	call_deferred('select_actor')
 
 
-func move_hero(chid, pos):
+func move_hero(chid, pos): #reserve -> bf
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
 	var newchar = state.heroes[chid]
@@ -762,6 +762,68 @@ func move_hero(chid, pos):
 	gui_node.build_hero_panels()
 	call_deferred('select_actor')
 
+
+func reserve_hero(chid): #bf -> reserve
+	gui_node.activate_shades([])
+	gui_node.hide_screen()
+	var newchar = state.heroes[chid]
+	var pos = newchar.position
+	newchar.displaynode.disappear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	newchar.position = null
+	newchar.acted = true
+	make_hero_panel(newchar)
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+	playergroup.erase(pos)
+	battlefield[pos] = null
+	recheck_auras()
+	gui_node.RebuildReserve()
+	gui_node.build_hero_panels()
+	call_deferred('select_actor')
+
+
+func swap_heroes(chid, pos): #bf <-> bf
+	gui_node.activate_shades([])
+	gui_node.hide_screen()
+	var newchar = state.heroes[chid]
+	var tpos = newchar.position
+	var targetchar = null
+	if battlefield[pos] != null:
+		targetchar = battlefield[pos]
+#		print(targetchar.id)
+		targetchar.displaynode.disappear()
+	newchar.displaynode.disappear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	if targetchar != null:
+		targetchar.position = tpos
+		playergroup[tpos] = targetchar
+		battlefield[tpos] = targetchar
+		make_hero_panel(targetchar, false)
+		targetchar.displaynode.appear()
+	else:
+		playergroup.erase(tpos)
+		battlefield[tpos] = null
+		#add new char
+	#	activecharacter.acted = true
+	newchar.position = pos
+	playergroup[pos] = newchar
+	battlefield[pos] = newchar
+	make_hero_panel(newchar, false)
+	newchar.displaynode.appear()
+	gui_node.build_hero_panels()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	
+	recheck_auras()
+#	gui_node.RebuildReserve()
+	call_deferred('select_actor')
 
 
 func activate_swap():
@@ -1370,7 +1432,7 @@ func FighterPress(position):
 				if swapchar != null:
 					activecharacter.acted = true #idk why active and not target, but if you insisted...
 					activecharacter.displaynode.process_disable()
-					swap_heroes(position)
+					swap_heroes_old(position)
 				else:
 					if allowedtargets.enemy.has(position):
 						activecharacter.skills_autoselect.push_back(activeaction)
