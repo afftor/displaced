@@ -1,0 +1,28 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_02.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_09.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_08.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_04.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_01.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_05.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_03.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_07.png" type="Texture" id=8]
+[ext_resource path="res://scene_animation_centering.gd" type="Script" id=9]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_06.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gfx/src_pierce/src_pierce_00.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="HitAnimation" type="AnimatedSprite"]
+position = Vector2( 200, 260 )
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 1 )
+speed_scale = 3.5
+script = ExtResource( 9 )
