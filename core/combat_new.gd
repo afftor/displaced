@@ -1568,7 +1568,12 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#follow-up
 				if skill.has('follow_up'):
 					yield(use_skill(skill.follow_up, caster, target_pos), 'completed')
-				if skill.has('not_final'): return
+				if skill.has('not_final'): 
+					if caster.combatgroup == 'ally':
+						CombatAnimations.check_start()
+						if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+					turns += 1
+					return
 				#final
 				turns += 1
 				if activeitem != null:
