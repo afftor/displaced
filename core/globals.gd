@@ -29,7 +29,6 @@ var workersdict
 var randomgroups
 
 var enemylist
-var upgradelist
 
 #var skillsdata
 #var effectdata
@@ -188,7 +187,7 @@ func _ready():
 	#combatantdata = load("res://files/CombatantClass.gd").new()
 	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
 
-	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
+#	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 
 	#====================================
 

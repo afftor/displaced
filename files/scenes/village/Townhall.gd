@@ -50,14 +50,14 @@ func upgradelist():
 	$UpgradeDescript.hide()
 	input_handler.ClearContainer($UpgradeList/ScrollContainer/VBoxContainer)
 	var array = []
-	for i in globals.upgradelist.values():
+	for i in Upgradedata.upgradelist.values():
 		array.append(i)
-
+	
 	array.sort_custom(self, 'sortupgrades')
-
+	
 	for i in array:
 		var currentupgradelevel = findupgradelevel(i)
-
+	
 		var check = true
 		if i.levels.has(currentupgradelevel):
 			for k in i.levels[currentupgradelevel].unlockreqs:
@@ -65,13 +65,12 @@ func upgradelist():
 					check = false
 		if check == false:
 			continue
-
-		var text = i.name
-
+	
+		var text = tr(i.name)
+	
 		if currentupgradelevel > 1 && i.levels.has(currentupgradelevel):
 			text += ": " + str(currentupgradelevel)
-
-
+	
 		var newbutton = input_handler.DuplicateContainerTemplate($UpgradeList/ScrollContainer/VBoxContainer)
 		if i.levels.has(currentupgradelevel) == false:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
@@ -81,6 +80,7 @@ func upgradelist():
 			newbutton.get_node("icon").texture = i.levels[currentupgradelevel].icon
 		newbutton.get_node("name").text = text
 		newbutton.connect("pressed", self, "selectupgrade", [i])
+
 
 func sortupgrades(first, second):
 	if first.levels.has(findupgradelevel(first)) && second.levels.has(findupgradelevel(second)):
@@ -93,43 +93,52 @@ func sortupgrades(first, second):
 	else:
 		return false
 
+
 func selectupgrade(upgrade):
-	var text = upgrade.descript
+	var text = tr(upgrade.descript)
 	selectedupgrade = upgrade
 	$UpgradeDescript.show()
 	$UpgradeDescript/Label.text = upgrade.name
-
-
-
+	
 	input_handler.ClearContainer($UpgradeDescript/HBoxContainer)
-
+	
 	var currentupgradelevel = findupgradelevel(upgrade)
-
-
+	
 	if currentupgradelevel > 1:
-			text += '\n\n' + tr("UPGRADEPREVBONUS") + ': ' + upgrade.levels[currentupgradelevel-1].bonusdescript
-
+			text += '\n\n' + tr("UPGRADEPREVBONUS") + ': ' + tr(upgrade.levels[currentupgradelevel-1].bonusdescript)
+	
 	var canpurchase = true
-
+	
 	if upgrade.levels.has(currentupgradelevel):
-		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + upgrade.levels[currentupgradelevel].bonusdescript
-
+		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + tr(upgrade.levels[currentupgradelevel].bonusdescript)
+	
 		for i in upgrade.levels[currentupgradelevel].cost:
-			var item = Items.Items[i]
-			var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
-			newnode.get_node("icon").texture = item.icon
-			newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(upgrade.levels[currentupgradelevel].cost[i])
-			globals.connectmaterialtooltip(newnode, item)
-			if state.materials[i] >= upgrade.levels[currentupgradelevel].cost[i]:
-				newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
+			if i != 'gold':
+				var item = Items.Items[i]
+				var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
+				newnode.get_node("icon").texture = item.icon
+				newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(upgrade.levels[currentupgradelevel].cost[i])
+				globals.connectmaterialtooltip(newnode, item)
+				if state.materials[i] >= upgrade.levels[currentupgradelevel].cost[i]:
+					newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
+				else:
+					newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
+					canpurchase = false
 			else:
-				newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
-				canpurchase = false
+				var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
+				newnode.get_node("icon").texture = load("res://assets/images/iconsitems/gold.png")
+				newnode.get_node("Label").text = str(state.money) + "/"+ str(upgrade.levels[currentupgradelevel].cost[i])
+				if state.money >= upgrade.levels[currentupgradelevel].cost[i]:
+					newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
+				else:
+					newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
+					canpurchase = false
 	else:
 		canpurchase = false
 
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
 	$UpgradeDescript/UnlockButton.visible = canpurchase
+
 
 func findupgradelevel(upgrade):
 	var rval = 1
@@ -137,17 +146,21 @@ func findupgradelevel(upgrade):
 		rval += state.townupgrades[upgrade.code]
 	return rval
 
+
 func unlockupgrade():
 	var upgrade = selectedupgrade
 	var currentupgradelevel = findupgradelevel(upgrade)
 	for i in upgrade.levels[currentupgradelevel].cost:
-		state.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
-
+		if i == 'gold':
+			state.money -= upgrade.levels[currentupgradelevel].cost[i]
+		else:
+			state.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
+	
 	if state.townupgrades.has(upgrade.code):
 		state.townupgrades[upgrade.code] += 1
 	else:
 		state.townupgrades[upgrade.code] = 1
-
+	
 	input_handler.SystemMessage(tr("UPGRADEUNLOCKED") + ": " + upgrade.name)
 	upgradelist()
 	#animation

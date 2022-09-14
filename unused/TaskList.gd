@@ -57,7 +57,7 @@ func calculateworkers(task, mode = 'default'):
 func workerlimit(task):
 	var rval = task.baselimit
 	if task.upgradelimit != null && state.townupgrades.has(task.upgradelimit):
-		rval = globals.upgradelist[task.upgradelimit].levels[state.townupgrades[task.upgradelimit]].limitchange
+		rval = Upgradedata.upgradelist[task.upgradelimit].levels[state.townupgrades[task.upgradelimit]].limitchange
 	return rval 
 
 func OpenSelectTab(task, worker):
