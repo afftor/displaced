@@ -18,7 +18,7 @@ var upgradelist = {#2 fix data
 	},
 	townhall = {
 		code = 'townhall',
-		name = tr("BRIDGEUPGRADE"),
+		name = tr("TOWNHALLUPGRADE"),
 		positionorder = 1,
 		descript = tr("UPGRADEBRIDGEDESCRIPT"),
 		levels = {
@@ -33,7 +33,7 @@ var upgradelist = {#2 fix data
 	},
 	market = {
 		code = 'market',
-		name = tr("BRIDGEUPGRADE"),
+		name = tr("MARKETUPGRADE"),
 		positionorder = 1,
 		descript = tr("UPGRADEBRIDGEDESCRIPT"),
 		levels = {
