@@ -70,30 +70,13 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="townhall"]
 margin_left = 339.708
 margin_top = -31.8903
 margin_right = 473.708
 margin_bottom = 91.1097
-texture = ExtResource( 28 )
-
-[node name="market" type="TextureButton" parent="."]
-margin_left = 222.685
-margin_top = 495.09
-margin_right = 674.685
-margin_bottom = 918.09
-texture_normal = ExtResource( 25 )
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="QuestActive" type="TextureRect" parent="market"]
-margin_left = 222.668
-margin_top = -77.1963
-margin_right = 356.668
-margin_bottom = 45.8037
 texture = ExtResource( 28 )
 
 [node name="bridge" type="TextureButton" parent="."]
@@ -106,6 +89,7 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="bridge"]
 margin_left = 125.893
@@ -130,6 +114,25 @@ margin_left = 200.728
 margin_top = -37.2357
 margin_right = 334.728
 margin_bottom = 85.7643
+texture = ExtResource( 28 )
+
+[node name="market" type="TextureButton" parent="."]
+margin_left = 222.685
+margin_top = 495.09
+margin_right = 674.685
+margin_bottom = 918.09
+texture_normal = ExtResource( 25 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+outline_hover = true
+
+[node name="QuestActive" type="TextureRect" parent="market"]
+margin_left = 222.668
+margin_top = -77.1963
+margin_right = 356.668
+margin_bottom = 45.8037
 texture = ExtResource( 28 )
 
 [node name="farm" type="TextureButton" parent="."]
@@ -160,6 +163,7 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="forge"]
 margin_left = 274.0
@@ -175,9 +179,6 @@ margin_right = 1857.62
 margin_bottom = 992.665
 texture_normal = ExtResource( 22 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="QuestActive" type="TextureRect" parent="tavern"]
 margin_left = 396.726

@@ -42,6 +42,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/market.png"), #no onormal icon
 				node = load("res://assets/images/buildings/market.png"),
 				bonusdescript = tr("UPGRADEBRIDGEBONUS"),
+				townnode = "market",
 				cost = {wood = 5, gold = 10},
 			}
 		}
@@ -152,6 +153,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_forge.png"),
 				node = load("res://assets/images/buildings/forge_1.png"),
 				bonusdescript = tr(""),
+				townnode = "forge",
 				cost = {wood = 5, gold = 10},
 			},
 			2:{
@@ -159,6 +161,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_forge2.png"),
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
+				townnode = "forge",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			3:{
@@ -166,6 +169,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_forge2.png"),
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
+				townnode = "forge",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			4:{
@@ -173,6 +177,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_forge2.png"),
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
+				townnode = "forge",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			}
 		}
@@ -188,6 +193,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
+				townnode = "tavern",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			2:{
@@ -195,6 +201,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
+				townnode = "tavern",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			3:{
@@ -202,6 +209,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
+				townnode = "tavern",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			4:{
@@ -209,6 +217,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
 				bonusdescript = tr(""),
+				townnode = "tavern",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			}
 		}
@@ -224,13 +233,15 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
-				cost = {wood = 5, gold = 10},#do not fill till materials rework
+				townnode = "mine",
+				cost = {wood = 0, gold = 0},#do not fill till materials rework
 			},
 			2:{
 				unlockreqs = [],
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
+				townnode = "mine",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			3:{
@@ -238,6 +249,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
+				townnode = "mine",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			4:{
@@ -245,6 +257,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
 				bonusdescript = tr(""),
+				townnode = "mine",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			}
 		}
@@ -260,6 +273,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
+				townnode = "farm",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			2:{
@@ -267,6 +281,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
+				townnode = "farm",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			3:{
@@ -274,6 +289,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
+				townnode = "farm",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			4:{
@@ -281,6 +297,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
+				townnode = "farm",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			}
 		}
@@ -296,6 +313,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
+				townnode = "mill",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			2:{
@@ -303,6 +321,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
+				townnode = "mill",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			3:{
@@ -310,6 +329,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
+				townnode = "mill",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			},
 			4:{
@@ -317,6 +337,7 @@ var upgradelist = {#2 fix data
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
+				townnode = "mill",
 				cost = {wood = 5, gold = 10},#do not fill till materials rework
 			}
 		}

@@ -1,5 +1,5 @@
 extends TextureButton
-
+export var outline_hover = false
 
 func _ready():
 	connect("mouse_entered", self, 'hightlight', [true])
@@ -58,6 +58,7 @@ func set_inactive():
 	$QuestActive.visible = false
 
 func hightlight(flag):
+	if !outline_hover: return
 	if flag:
 		material.set_shader_param('opacity', 0.9)
 		material.set_shader_param('highlight', 0.1)
