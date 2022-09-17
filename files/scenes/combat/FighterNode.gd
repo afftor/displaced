@@ -357,16 +357,31 @@ func highlight_target_enemy_final():
 func disable():
 	if fighter.defeated: 
 		return
+	var tmp = $sprite.margin_bottom
+#	var tmp2 = $sprite.rect_size.x
 	$sprite.texture = fighter.animations.idle_1
 	$sprite.rect_min_size = fighter.animations.idle_1.get_size()
+	yield(get_tree(), "idle_frame")
+
+	$sprite.rect_size = $sprite.rect_min_size
+	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
+#	if $sprite.rect_size.x < tmp2:
+#		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
 	regenerate_click_mask()
 
 
 func enable():
 	if fighter.defeated: 
 		return
+	var tmp = $sprite.margin_bottom
+#	var tmp2 = $sprite.rect_size.x
 	$sprite.texture = fighter.animations.idle
 	$sprite.rect_min_size = fighter.animations.idle.get_size()
+	yield(get_tree(), "idle_frame")
+	$sprite.rect_size = $sprite.rect_min_size
+	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
+#	if $sprite.rect_size.x < tmp2:
+#		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
 	regenerate_click_mask()
 
 

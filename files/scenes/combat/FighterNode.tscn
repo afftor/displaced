@@ -34,16 +34,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -13.0
+margin_left = -75.0
 margin_top = -48.0
 margin_right = 5.0
 margin_bottom = -20.0
-grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="shield" type="TextureRect" parent="sprite"]
 visible = false
@@ -66,7 +62,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
+margin_left = -75.0
 margin_top = -40.0
 margin_right = 20.0
 margin_bottom = -20.0

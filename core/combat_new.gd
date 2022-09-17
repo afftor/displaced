@@ -387,6 +387,7 @@ func player_turn(pos):
 
 
 func enemy_turn(pos):
+	gui_node.RebuildSkillPanel()
 	turns += 1
 	nextenemy += 1
 	var fighter = enemygroup[pos]

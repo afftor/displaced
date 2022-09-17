@@ -163,7 +163,10 @@ func ClearSkillPanel():
 
 
 func RebuildSkillPanel():
-	if !combat.allowaction: return
+	if !combat.allowaction: 
+		$SkillPanel.visible = false
+		return
+	$SkillPanel.visible = true
 	var activecharacter = combat.activecharacter
 	ClearSkillPanel()
 	for i in activecharacter.skills:
@@ -189,9 +192,13 @@ func RebuildSkillPanel():
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
-	$SkillPanel/SkillContainer.visible = true
-	$SkillPanel/DefaultSkillContainer.visible = true
-	$SkillPanel/ItemContainer.visible = false
+	if activecharacter.combatgroup == 'ally':
+		$SkillPanel/SkillContainer.visible = true
+		$SkillPanel/DefaultSkillContainer.visible = true
+		$SkillPanel/ItemContainer.visible = false
+		$SkillPanel/CategoriesContainer.visible = true
+	else:
+		$SkillPanel.visible = false
 
 
 #item panel
