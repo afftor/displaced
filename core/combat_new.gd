@@ -1548,7 +1548,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		caster.displaynode.process_sound(skill.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
-		sfxtarget.process_sfx(i.code)
+		sfxtarget.process_sfx_dict(i)
 	#skill's repeat cycle of predamage-damage-postdamage
 	var targets
 	var endturn = !s_skill1.tags.has('instant');
@@ -1613,7 +1613,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			target_pos = newtarget
 		for i in animationdict.prehit:
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
-			sfxtarget.process_sfx(i.code)
+			sfxtarget.process_sfx_dict(i)
 		
 		turns += 1
 		target = battlefield[target_pos]
@@ -1629,7 +1629,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					caster.displaynode.process_sound(skill.sounddata.strike)
 			for j in animationdict.predamage:
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
-				sfxtarget.process_sfx(j.code)
+				sfxtarget.process_sfx_dict(j)
 			#special results
 			if skill.damagetype is String and skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
@@ -1668,7 +1668,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
 				for j in animationdict.postdamage:
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
-					sfxtarget.process_sfx(j.code)
+					sfxtarget.process_sfx_dict(j)
 				#applying resists
 				s_skill2.calculate_dmg()
 				#logging result & dealing damage

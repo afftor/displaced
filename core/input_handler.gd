@@ -558,7 +558,7 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 
 var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'}
 
-func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h = false, flip_v = false):
 	var scene
 	if sprites.has(effect):
 		if sprites[effect] is String:
@@ -572,6 +572,8 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	if !(scene is PackedScene):
 		return
 	var x = scene.instance()
+	x.flip_h = flip_h
+	x.flip_v = flip_v
 	node.add_child(x)
 	x.play()
 #	if delayuntilfade == null:

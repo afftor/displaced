@@ -316,7 +316,7 @@ var effect_table = {
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']}, 
 			{type = 'skill', value = ['tags', 'has_no', 'aoe']}, 
-			{type = 'skill', value = ['hitres', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 			{type = 'random', value = 0.5}
 		],
 		trigger = [variables.TR_DEF],
@@ -327,7 +327,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'skill',
 				args = [],
-				atomic = [{type = 'stat_set', stat = 'hitres', value = variables.RES_MISS}],
+				atomic = [{type = 'stat_set', stat = 'hit_res', value = variables.RES_MISS}],
 			},
 		],
 		buffs = []

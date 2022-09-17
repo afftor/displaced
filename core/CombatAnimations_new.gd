@@ -182,7 +182,15 @@ func default_sfx(node, args):
 	hp_float_delays[node] = 0
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0
-	input_handler.call_deferred('gfx_sprite', node, id, 0.5, null)
+	if args.has('flip_h'):
+		if args.has('flip_v'):
+			input_handler.call_deferred('gfx_sprite', node, id, 0.5, null, args.flip_h, args.flip_v)
+		else:
+			input_handler.call_deferred('gfx_sprite', node, id, 0.5, null, args.flip_h)
+	elif args.has('flip_v'):
+		input_handler.call_deferred('gfx_sprite', node, id, 0.5, null, false, args.flip_v)
+	else:
+		input_handler.call_deferred('gfx_sprite', node, id, 0.5, null)
 	return playtime + aftereffectdelay
 
 

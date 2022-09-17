@@ -208,7 +208,24 @@ func process_sfx(code):
 		data = {node = self, time = input_handler.combat_node.turns,type = code, slot = 'SFX', params = {}}
 	animation_node.add_new_data(data)
 
+
+func process_sfx_dict(dict):
+	var code = dict.code
+	var data 
+	if code.begins_with('anim_'):
+		data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = dict.duplicate()}
+		data.params.animation = code.trim_prefix('anim_')
+	elif code.begins_with('sfx_'):
+		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx', slot = 'SFX', params = dict.duplicate()}
+		data.params.animation = code.trim_prefix('sfx_')
+	else:
+		data = {node = self, time = input_handler.combat_node.turns, type = code, slot = 'SFX', params = dict.duplicate()}
+	animation_node.add_new_data(data)
+
+
 func process_sound(sound):
+	if !sound.begins_with('sound/'):
+		sound = 'sound/' + sound
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
 	animation_node.add_new_data(data)
 
