@@ -430,7 +430,8 @@ var skilllist = {
 
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_parry_1'}
-		]
+		],
+		sounddata = {initiate = null, strike = null, hit = 'arron_parry', hittype = 'absolute'},
 	},
 	sword_mastery = {
 		code = 'sword_mastery',
