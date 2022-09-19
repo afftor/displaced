@@ -3,6 +3,7 @@ extends TextureButton
 var dragdata = {type = 'character', id = ''}
 
 func get_drag_data(position):
+	if !input_handler.combat_node.allowaction: return null
 	dragdata.id = name.trim_suffix('_reserve')
 	var hero = state.heroes[dragdata.id]
 	if hero.acted: return null

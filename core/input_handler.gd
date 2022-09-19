@@ -321,7 +321,7 @@ func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(50,
 	elif args.group == 'enemy':
 		DamageTextFly(floatnode, true)
 	var wr = weakref(floatnode)
-	gfx_sprite(node, "src_%s" % args.type, 0.5, null)
+	gfx_sprite(node, "src_%s" % args.type, 0.5, null, (args.group == 'ally'))
 	yield(get_tree().create_timer(time + 1), 'timeout')
 	if wr.get_ref(): floatnode.queue_free()
 

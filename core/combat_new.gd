@@ -738,6 +738,7 @@ func swap_heroes_old(pos):
 func move_hero(chid, pos): #reserve -> bf
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
+	allowaction = false
 	var newchar = state.heroes[chid]
 	if battlefield[pos] != null:
 		var targetchar = battlefield[pos]
@@ -753,6 +754,7 @@ func move_hero(chid, pos): #reserve -> bf
 	playergroup[pos] = newchar
 	battlefield[pos] = newchar
 	make_hero_panel(newchar, false)
+	gui_node.build_hero_panels()
 	newchar.displaynode.appear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -760,13 +762,14 @@ func move_hero(chid, pos): #reserve -> bf
 	
 	recheck_auras()
 	gui_node.RebuildReserve()
-	gui_node.build_hero_panels()
+	allowaction = true
 	call_deferred('select_actor')
 
 
 func reserve_hero(chid): #bf -> reserve
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
+	allowaction = false
 	var newchar = state.heroes[chid]
 	var pos = newchar.position
 	newchar.displaynode.disappear()
@@ -784,12 +787,14 @@ func reserve_hero(chid): #bf -> reserve
 	recheck_auras()
 	gui_node.RebuildReserve()
 	gui_node.build_hero_panels()
+	allowaction = true
 	call_deferred('select_actor')
 
 
 func swap_heroes(chid, pos): #bf <-> bf
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
+	allowaction = false
 	var newchar = state.heroes[chid]
 	var tpos = newchar.position
 	var targetchar = null
@@ -816,22 +821,24 @@ func swap_heroes(chid, pos): #bf <-> bf
 	playergroup[pos] = newchar
 	battlefield[pos] = newchar
 	make_hero_panel(newchar, false)
-	newchar.displaynode.appear()
 	gui_node.build_hero_panels()
+	newchar.displaynode.appear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	
 	recheck_auras()
+	allowaction = true
 #	gui_node.RebuildReserve()
 	call_deferred('select_actor')
 
 
-func activate_swap():
+func activate_swap(pos_drag = null):
 	var res = []
 	for pos in [1, 2, 3]:
 		if battlefield[pos] == null: res.push_back(pos)
 		else:
+			if pos == pos_drag: continue
 			var tchar = battlefield[pos]
 			if !tchar.acted: res.push_back(pos)
 	gui_node.activate_shades(res)
@@ -1493,6 +1500,7 @@ var follow_up_flag = false
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
+	globals.hideskilltooltip()
 	caster.acted = true
 
 	follow_up_skill = null
