@@ -81,6 +81,7 @@ func setup_character(ch):
 		panel_node2.disabled = false
 	else:
 		panel_node2 = panel_node
+		$sprite.set_script(null)
 	update_hp_label(fighter.hp)
 	
 	$sprite.texture = null
