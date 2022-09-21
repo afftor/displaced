@@ -107,7 +107,10 @@ func upgrade_slot(slot):
 	var cost = hero.get_item_upgrade_data(slot).cost
 	hero.upgrade_gear(slot)
 	for res in cost:
-		state.materials[res] -= cost[res]
+		if res == 'gold':
+			state.money -= cost[res]
+		else:
+			state.materials[res] -= cost[res]
 	rebuild_gear()
 
 
