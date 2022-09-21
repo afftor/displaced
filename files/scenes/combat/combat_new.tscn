@@ -49,6 +49,9 @@ margin_left = 40.0
 margin_top = 41.0
 margin_right = 1872.0
 margin_bottom = 1058.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlayerGroup" type="Control" parent="battlefield" groups=[
 "sfx_a",

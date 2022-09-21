@@ -204,6 +204,8 @@ func process_sfx(code):
 		data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = {animation = code.trim_prefix('anim_')}}
 	elif code.begins_with('sfx_'):
 		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx', slot = 'SFX', params = {animation = code.trim_prefix('sfx_')}}
+	elif code.begins_with('sfxFlipH_'):
+		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx_flipped', slot = 'SFX', params = {animation = code.trim_prefix('sfxFlipH_'), flip = "H"}}
 	else:
 		data = {node = self, time = input_handler.combat_node.turns,type = code, slot = 'SFX', params = {}}
 	animation_node.add_new_data(data)
@@ -340,7 +342,7 @@ func highlight_target_enemy_final():
 func disable():
 	if fighter.defeated: 
 		return
-	$sprite.texture = fighter.animations.idle_1
+	$sprite.texture = fighter.animations.idle
 	$sprite.rect_min_size = fighter.animations.idle_1.get_size()
 	regenerate_click_mask()
 

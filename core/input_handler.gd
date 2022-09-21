@@ -555,9 +555,9 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 
 	if wr.get_ref(): x.queue_free()
 
-var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'}
+var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'} 
 
-func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = null):
 	var scene
 	if sprites.has(effect):
 		if sprites[effect] is String:
@@ -571,7 +571,12 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	if !(scene is PackedScene):
 		return
 	var x = scene.instance()
+	if flip == "H": # flipping sfx for enemy attacks
+		x.flip_h = true
+		x.position.y -= 100 # characters are too tall so need to adjust
 	node.add_child(x)
+	if effect == "earthquake":
+		node.move_child(x, 0)
 	x.play()
 #	if delayuntilfade == null:
 #		delayuntilfade = x.frames.get_frame_count(x.animation) / x.frames.get_animation_speed(x.animation)

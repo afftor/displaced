@@ -35,9 +35,9 @@ func run_test():
 	state.heroes.arron.position = 1
 	state.heroes.ember.position = 2
 	state.heroes.rose.position = 3
-	state.heroes.rilu.position = null
-	state.heroes.iola.position = null
-	state.heroes.erika.position = null
+#	state.heroes.rilu.position = 1
+#	state.heroes.iola.position = 2
+#	state.heroes.erika.position = 3
 	
 	var endata = []
 	for i in range(1, 5):
@@ -55,4 +55,4 @@ func run_test():
 			endata.push_back(wdata)
 	if endata.empty(): return
 	$combat.show()
-	$combat.start_combat(endata, int($enlv/value.text), 'combat_cave')
+	$combat.start_combat(endata, int($enlv/value.text), 'combat_mountains')

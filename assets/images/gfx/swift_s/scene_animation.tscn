@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scene_animation_centering.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/gfx/hit/slash_4.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gfx/hit/slash_3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gfx/hit/slash_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gfx/hit/slash_1.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="HitAnimation" type="AnimatedSprite"]
+position = Vector2( 124.439, 124.301 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+speed_scale = 4.0
+flip_v = true
+script = ExtResource( 1 )

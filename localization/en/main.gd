@@ -82,11 +82,11 @@ var TranslationDict = {
 
 
 	#enemies
-	MONSTERELVENRAT = "Elven Rat",
+	MONSTERELVENRAT = " ",
 	MONSTERELVENRATFLAVOR = "These animals are fairly common in most areas. Distinct ears make them accumulate all sorts of moniker, but goblins seem to label them this way...",
 	MONSTERTREANT = "Ent",
 	MONSTERTREANTFLAVOR = "Despite its looks, this thing is actually a plant. Often disguises itself as a simple trunk for a nasty surprise.",
-	MONSTERBIGTREANT = "Big Ent",
+	MONSTERBIGTREANT = " ",
 	MONSTERBIGTREANTFLAVOR = "Big ents are somewhat mobile and quite dangerous when provoked.",
 	MONSTEREARTHGOLEM = "Earth Golem",
 	MONSTEREARTHGOLEMFLAVOR = "A magic creature of considerable power. They seem to roam around some caves and dungeons with little thought. I would expect more from a hand-made slave. ",
@@ -301,10 +301,10 @@ var TranslationDict = {
 	CLASSTRAIT = "Class bonus",
 
 	#Names
-	ARRON = 'Arron',
-	ROSE = 'Rose',
-	EMBER = 'Ember',
-	ERIKA = 'Erika',
+	ARRON = ' ',
+	ROSE = ' ',
+	EMBER = ' ',
+	ERIKA = ' ',
 	RILU = 'Rilu',
 	IOLA = 'Iola',
 	GOBLIN = 'Goblin',
