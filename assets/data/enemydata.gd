@@ -990,13 +990,13 @@ var loottables = { # no need to separate materials from usables now
 		items = [{code = 'stone', chance = 36}],
 	},
 	test_2 = {
-		items = [{code = 'wood', chance = 9}],
+		items = [{code = 'wood', chance = 20}],
 	},
 	test_3 = {
-		items = [{code = 'metal', chance = 10}, {code = 'chitine', chance = 10}],
+		items = [{code = 'metal', chance = 15}, {code = 'chitine', chance = 15}],
 	},
 	test_4 = {
-		items = [{code = 'leather', chance = 13}],
+		items = [{code = 'leather', chance = 20}],
 	},
 	test_5 = {
 		items = [{code = 'scales', chance = 47}],

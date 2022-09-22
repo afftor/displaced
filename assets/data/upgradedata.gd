@@ -162,7 +162,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
 				townnode = "forge",
-				cost = {stone = 10,wood = 10, gold = 5000},#do not fill till materials rework
+				cost = {stone = 10, wood = 10, gold = 5000},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
@@ -170,7 +170,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
 				townnode = "forge",
-				cost = {scales = 15,leather = 15, gold = 15000},#do not fill till materials rework
+				cost = {scales = 15, leather = 15, gold = 15000},#do not fill till materials rework
 			},
 			4:{
 				unlockreqs = [],
@@ -178,7 +178,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
 				townnode = "forge",
-				cost = {demonic = 20,otherworld = 20, gold = 3000},#do not fill till materials rework
+				cost = {demonic = 20, otherworld = 20, gold = 3000},#do not fill till materials rework
 			}
 		}
 	},

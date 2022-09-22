@@ -543,7 +543,7 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_2.png",
 				lvldesc = "6",
-				cost = {chitine = 45, gold = 5000},
+				cost = {chitine = 30, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_3.png",
@@ -627,17 +627,17 @@ var hero_items_data = {
 			1:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_1.png",
 				lvldesc = "5",
-				cost = {wood = 20, gold = 500},
+				cost = {wood = 25, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_2.png",
 				lvldesc = "6",
-				cost = {metal = 45, gold = 5000},
+				cost = {metal = 35, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_3.png",
 				lvldesc = "7",
-				cost = {scales = 15, gold = 10000},
+				cost = {leather = 20, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_4.png",
@@ -663,7 +663,7 @@ var hero_items_data = {
 			3:{
 				icon = "res://assets/images/iconsgear/iola_armor_3.png",
 				lvldesc = "3",
-				cost = {scales = 15, gold = 4000},
+				cost = {leather = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_armor_4.png",
@@ -687,7 +687,7 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_2.png",
 				lvldesc = "2",
-				cost = {stone = 20, gold = 1000},
+				cost = {stone = 25, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_3.png",
@@ -697,7 +697,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_4.png",
 				lvldesc = "4",
-				cost = {demonic = 20, gold = 17000},
+				cost = {demonic = 10, gold = 17000},
 				},
 		}
 	},
@@ -716,7 +716,7 @@ var hero_items_data = {
 			1:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_1.png",
 				lvldesc = "5",
-				cost = {wood = 15, gold = 500},
+				cost = {wood = 20, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_2.png",
@@ -776,7 +776,7 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_2.png",
 				lvldesc = "2",
-				cost = {stone = 25, gold = 1000},
+				cost = {stone = 30, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_3.png",
@@ -841,7 +841,7 @@ var hero_items_data = {
 			3:{
 				icon = "res://assets/images/iconsgear/ember_armor_3.png",
 				lvldesc = "3",
-				cost = {metal = 30, gold = 4000},
+				cost = {leather = 30, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_armor_4.png",
@@ -875,7 +875,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_4.png",
 				lvldesc = "4",
-				cost = {otherworld = 10, gold = 17000},
+				cost = {otherworld = 15, gold = 17000},
 				},
 		}
 	},
@@ -894,7 +894,7 @@ var hero_items_data = {
 			1:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_1.png",
 				lvldesc = "5",
-				cost = {wood = 20, gold = 500},
+				cost = {stone = 20, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_2.png",
@@ -904,7 +904,7 @@ var hero_items_data = {
 			3:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_3.png",
 				lvldesc = "7",
-				cost = {scales = 10, gold = 10000},
+				cost = {leather = 15, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_4.png",
