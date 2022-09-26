@@ -805,7 +805,7 @@ var hero_items_data = {
 			1:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_1.png",
 				lvldesc = "5",
-				cost = {stone = 10, gold = 500},
+				cost = {stone = 30, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_2.png",
@@ -935,7 +935,7 @@ var hero_items_data = {
 			4:{
 				icon = "res://assets/images/iconsgear/erika_armor_4.png",
 				lvldesc = "4",
-				cost = {demonic = 20, gold = 10000},
+				cost = {demonic = 15, gold = 10000},
 				},
 		}
 	},
