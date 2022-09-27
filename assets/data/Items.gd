@@ -409,7 +409,7 @@ var hero_items_data = {
 		name = 'weapon1',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'slash',
 		weaponsound = 'dodge',
 		leveldata = {
 			1:{
@@ -498,7 +498,7 @@ var hero_items_data = {
 		name = 'weapon1',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'dark',
 		weaponsound = 'dodge',
 		leveldata = {
 			1:{
@@ -527,7 +527,7 @@ var hero_items_data = {
 		name = 'weapon2',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'light',
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
@@ -587,7 +587,7 @@ var hero_items_data = {
 		name = 'weapon1',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'wind',
 		weaponsound = 'dodge',
 		leveldata = {
 			1:{
@@ -616,7 +616,7 @@ var hero_items_data = {
 		name = 'weapon2',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'water',
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
@@ -676,7 +676,7 @@ var hero_items_data = {
 		name = 'weapon1',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'fire',
 		weaponsound = 'dodge',
 		leveldata = {
 			1:{
@@ -705,7 +705,7 @@ var hero_items_data = {
 		name = 'weapon2',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'dark',
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later
@@ -765,7 +765,7 @@ var hero_items_data = {
 		name = 'weapon1',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'bludgeon',
 		weaponsound = 'dodge',
 		leveldata = {
 			1:{
@@ -794,7 +794,7 @@ var hero_items_data = {
 		name = 'weapon2',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'pierce',
+		damagetype = 'bludgeon',
 		weaponsound = 'dodge',
 		leveldata = {
 			0:{ #for possible use later

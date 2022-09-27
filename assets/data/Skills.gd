@@ -31,7 +31,8 @@ var skilllist = {
 			{conditions = [{type = 'id', value = 'rose', check = true}], patch = 'p_base_rose'},
 			{conditions = [{type = 'id', value = 'erika', check = true}], patch = 'p_base_erika'},
 		], #while it is completely functional 'as is', we should either clone this skill or make a complex patches system to reflect element and range changes in sound and sfx data (or change current sfx code to use 'weapon_sfx' or 'element_sfx' placeholder)
-		ai_priority = 1
+		ai_priority = 1,
+		sounddata = {initiate = null, strike = null, hit = 'sound_hit', hittype = 'absolute'},
 	},
 	defence = {
 		code = 'defence',

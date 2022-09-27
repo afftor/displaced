@@ -848,7 +848,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/erika_8.png", 
-				description = "Deal 50% less damage",
+				description = "Deal 50%% less damage",
 				limit = 1,
 				t_name = 'charm'
 			}
