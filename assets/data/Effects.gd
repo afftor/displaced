@@ -203,7 +203,7 @@ var effect_table = {
 			{
 				icon = "res://assets/images/iconsskills/arron_7.png", 
 				description = "Deal 15%% less damage",
-				args = [{obj = 'parent', param = 'remains', dynamic = true}],
+				args = [],
 				t_name = 'fen'
 			}
 		],
@@ -2145,7 +2145,7 @@ var effect_table = {
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png", 
 				description = "Evasion reduced by 10",
-				args = [{obj = 'parent', param = 'remains', dynamic = true}],
+				args = [],
 				t_name = 'eva10'
 			}
 		],
