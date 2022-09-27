@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/KingDwarf_sprite.png-bdbb3d6746c68f66c97e661f0a1d54f9.stex"
+path="res://.import/blood_blue.png-1ee4f116d37f6ef3d5bf421ad2881222.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/KingDwarf_sprite.png"
-dest_files=[ "res://.import/KingDwarf_sprite.png-bdbb3d6746c68f66c97e661f0a1d54f9.stex" ]
+source_file="res://assets/images/iconsskills/blood_blue.png"
+dest_files=[ "res://.import/blood_blue.png-1ee4f116d37f6ef3d5bf421ad2881222.stex" ]
 
 [params]
 

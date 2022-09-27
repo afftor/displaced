@@ -23,8 +23,8 @@ var skilllist = {
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
-		{code = 'anim_hit', target = 'target', period = 'predamage'}, 
-		{code = 'targetattack', target = 'target', period = 'predamage'}],
+		{code = 'targetattack', target = 'target', period = 'predamage'},
+		{code = 'anim_hit', target = 'target', period = 'postdamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [

@@ -202,7 +202,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_7.png", 
-				description = "damage decreased for %d turns",
+				description = "Deal 15%% less damage",
 				args = [{obj = 'parent', param = 'remains', dynamic = true}],
 				t_name = 'fen'
 			}
@@ -280,7 +280,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_2.png", 
-				description = "Is protected",
+				description = "Is protected: Damage will be redirected to Arron",
 				limit = 1,
 				t_name = 'protect_t'
 			}
@@ -391,7 +391,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_4.png", 
-				description = "Damage increased",
+				description = "Damage Increased for next attack: +150%%",
 				limit = 1,
 				t_name = 'swordmas'
 			}
@@ -443,7 +443,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_5.png", 
-				description = "Damage increased",
+				description = "Damage Increased: 25%%",
 				limit = 1,
 				t_name = 'termination'
 			}
@@ -472,7 +472,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_5.png", 
-				description = "Damage increased",
+				description = "Damage Increased: 50%%",
 				limit = 1,
 				t_name = 'termination'
 			}
@@ -492,7 +492,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_6.png", 
-				description = "Evasion increased",
+				description = "Evasion increased by 90%%",
 				args = [],
 				t_name = 'eva90'
 			}
@@ -538,7 +538,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/rose_2.png", 
-				description = "hitchance decreased",
+				description = "Reduce Hit Rate by 25",
 				args = [],
 				t_name = 'flash'
 			}
@@ -783,7 +783,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -15}],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/erika_3.png", 
-				description = "hitchance decreased",
+				description = "Reduce Hit Rate by 15",
 				args = [],
 				t_name = 'shower'
 			}],
@@ -848,7 +848,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/erika_8.png", 
-				description = "Damage decreased",
+				description = "Deal 50% less damage",
 				limit = 1,
 				t_name = 'charm'
 			}
@@ -980,7 +980,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -20}],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/ember_3.png", 
-				description = "hitchance decreased",
+				description = "Reduce Hit Rate by 20",
 				args = [],
 				t_name = 'shockwave'
 			}],
@@ -1055,7 +1055,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/ember_6.png", 
-				description = "Is protected",
+				description = "Is protected: Damage will be redirected to Ember",
 				limit = 1,
 				t_name = 'protect_t'
 			}
@@ -1154,7 +1154,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/rilu_6.png", 
-				description = "Resistances reduced",
+				description = "Reduced Dark and Light resistance by 25",
 				limit = 1,
 				t_name = 'orb'
 			}
@@ -1208,7 +1208,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'hitchance', value = -25}],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/rilu_3.png", 
-				description = "hitchance decreased",
+				description = "Reduce Hit Rate by 25",
 				args = [],
 				t_name = 'mist_d'
 			}],
@@ -1428,7 +1428,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png", 
-				description = "Evasion increased",
+				description = "Evasion increased by 25",
 				args = [],
 				t_name = 'energyburst'
 			}
@@ -1457,7 +1457,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/ember_6.png", 
-				description = "",
+				description = "Receive 25%% less damage",
 				limit = 1,
 				t_name = 'protect_c'
 			}
@@ -1509,7 +1509,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/ember_6.png", 
-				description = "Is protected",
+				description = "Is protected: Damage redirected to Ember",
 				limit = 1,
 				t_name = 'protect_t'
 			}
@@ -1593,7 +1593,7 @@ var effect_table = {
 		buffs = [
 			{ #not this
 				icon = "res://assets/images/iconsskills/defaultattack.png", 
-				description = "",
+				description = "Receive 50%% less damage",
 				limit = 1,
 				t_name = 'e_i_defup'
 			}
@@ -1617,7 +1617,7 @@ var effect_table = {
 		buffs = [
 			{ #not this
 				icon = "res://assets/images/iconsskills/defaultattack.png", 
-				description = "",
+				description = "Increase Damage by 50%%",
 				limit = 1,
 				t_name = 'e_i_defup'
 			}
@@ -1685,7 +1685,7 @@ var effect_table = {
 		buffs = [
 			{ #not this
 				icon = "res://assets/images/iconsskills/defaultattack.png", 
-				description = "",
+				description = "Increase all damage by 20%% and Hit Chance by 20 ",
 				limit = 1,
 				t_name = 'e_i_defup'
 			}
@@ -1838,7 +1838,7 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.2}],
-		buffs = ['b_bloodlust'],#or not
+		buffs = ['b_enrage'],#or not
 	},
 	e_dispel_rage = { #for both dwarwenking and dwarves
 		type = 'trigger',
@@ -2144,7 +2144,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png", 
-				description = "Evasion reduced for %d turns",
+				description = "Evasion reduced by 10",
 				args = [{obj = 'parent', param = 'remains', dynamic = true}],
 				t_name = 'eva10'
 			}
@@ -2215,7 +2215,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speedondamage.png", 
-				description = "Speed increased for %d turns",
+				description = "Speed increased by 20",
 				args = [{obj = 'parent', param = 'remains'}],
 				t_name = 'react'
 			}
@@ -2385,7 +2385,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/resistdebuf.png", 
-				description = "All resistances reduced",
+				description = "All Resists are reduced by 15",
 				limit = 1,
 				t_name = 'noresist'
 			}
@@ -2471,7 +2471,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/beastdamage.png", 
-				description = "Damage increased",
+				description = "Damage increased by 5 per stack",
 				limit = 1,
 				t_name = 'dwarwenbuf'
 			}
@@ -2498,7 +2498,7 @@ var effect_table = {
 				buffs = [
 					{
 						icon = "res://assets/images/traits/armor.png", 
-						description = "Damage-absorbing shield, blocks 15 phys damage, recreates every turn",
+						description = "Damage-absorbing shield, blocks 15 phys damage, regenerates every turn",
 						limit = 1,
 						t_name = 'treant_shield'
 					}
@@ -2567,7 +2567,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
-				description = "Damage reduced for %d turns",
+				description = "Damage reduced by 33%%",
 				args = [{obj = 'parent', param = 'remains'}],
 				t_name = 'cripple'
 			}
@@ -2597,7 +2597,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/armorignore.png", 
-				description = "Armor reduced",
+				description = "Armor is reduced",
 				limit = 1,
 				t_name = 'sp_noarm'
 			}
@@ -2648,7 +2648,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
-				description = "Speed and evasion reduced",
+				description = "Speed and Evasion reduced by 20",
 				limit = 1,
 				t_name = 'earthquake'
 			}
@@ -3442,17 +3442,17 @@ var buffs = {
 	},
 	b_bleed = { 
 		icon = "res://assets/images/iconsskills/arron_3.png", 
-		description = "Bleeding",
+		description = "Bleeding: Takes Neutral damage at the end of turn",
 		t_name = 'bleed'
 	},
 	b_poison = { # none
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "poisoned",
+		description = "Poisoned: Takes Neutral damage at the end of turn",
 		t_name = 'poison'
 	},
 	b_silence = { # doesn't fit
 		icon = "res://assets/images/iconsskills/iola_5.png", 
-		description = "Silenced",
+		description = "Silenced: Can't cast certain spells",
 		t_name = 'silence'
 	},
 	b_swift = {
@@ -3462,7 +3462,7 @@ var buffs = {
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
-		description = "Burning",
+		description = "Burn: Takes Fire damage at the end of turn. Removed by Water damage.",
 		t_name = 'burn'
 	},
 	b_chill = {
@@ -3472,7 +3472,7 @@ var buffs = {
 	},
 	b_mist = {
 		icon = "res://assets/images/iconsskills/rilu_3.png", 
-		description = "Takes water damage",
+		description = "Takes water damage at the end of turn.",
 		t_name = 'mist'
 	},
 	b_wave = {
@@ -3495,24 +3495,24 @@ var buffs = {
 	},
 	b_freeze = { # kinda doesn't fit 
 		icon = "res://assets/images/iconsskills/erika_5.png",
-		description = "Damage from next skill is increased",
+		description = "Frozen: Can't Act, Damage from next skill is increased",
 		limit = 1,
 		t_name = 'freeze'
 	},
 	b_firepunch = {
 		icon = "res://assets/images/iconsskills/ember_4.png",
-		description = "Damage from next skills is increased",
+		description = "Incoming damage increased by 30%%",
 		limit = 1,
 		t_name = 'firepunch'
 	},
 	b_renew = {
 		icon = "res://assets/images/iconsskills/rose_8.png", 
-		description = "Healing",
+		description = "Restores some health at the start of turn",
 		t_name = 'renew'
 	},
 	b_renew1 = { # doesn't fit
 		icon = "res://assets/images/iconsskills/rose_8.png", 
-		description = "Damage taking decreased",
+		description = "Damage taken is reduced",
 		t_name = 'renew1'
 	},
 	b_defend = {
@@ -3532,7 +3532,7 @@ var buffs = {
 	},
 	b_natbless = { 
 		icon = "res://assets/images/iconsskills/erika_1.png", 
-		description = "Damage and hitchance increased",
+		description = "Increase all damage by 20%% and Hit Chance by 20 ",
 		t_name = 'natbless'
 	},
 	b_hearts = { 
@@ -3572,48 +3572,54 @@ var buffs = {
 	},
 	b_gust = {
 		icon = "res://assets/images/iconsskills/iola_3.png", 
-		description = "Damage decreased",
+		description = "Damage decreased by 15%%",
 		limit = 1,
 		t_name = 'gust'
 	},
 	b_bloodlust = { # none 
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "Damage increased",
+		description = "Damage is increased by 10%% per stack. Can be dispelled. ",
 		limit = 5,
 		t_name = 'bloodlust'
 	},
+	b_enrage = { # none 
+		icon = "res://assets/images/iconsskills/taunt.png", 
+		description = "Damage is increased by 20%% per stack. Removed by Water damage. ",
+		limit = 5,
+		t_name = 'enrage'
+	},
 	b_unstable = { # none
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "Is in unstable condition",
+		icon = "res://assets/images/iconsskills/unstable.png", 
+		description = "When dies deal high damage. On player turn, deal damage to player characters. On enemy turn deal damage to Zelroth. ",
 		limit = 1,
 		t_name = 'unstable'
 	},
 	b_ex_charge = { # none
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/strongattack.png", 
 		description = "Charging execute",
 		limit = 1,
 		t_name = 'charge'
 	},
 	b_dim_1 = { # none
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "No barriers",
+		icon = "res://assets/images/iconsskills/blood_blue.png", 
+		description = "Can't be protected with barriers",
 		limit = 1,
 		t_name = 'rule1'
 	},
 	b_dim_2 = { # none
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "No heals",
+		icon = "res://assets/images/iconsskills/blood_blue.png", 
+		description = "Can't be healed",
 		limit = 1,
 		t_name = 'rule2'
 	},
 	b_dim_3 = { # none
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "No reanimation",
+		icon = "res://assets/images/iconsskills/blood_blue.png", 
+		description = "Can't be resurrected on knock out",
 		limit = 1,
 		t_name = 'rule3'
 	},
 	b_wound = { # none
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
+		icon = "res://assets/images/iconsskills/blood_blue.png", 
 		description = "Received damage increased",
 		limit = 1,
 		t_name = 'wound'
@@ -3621,7 +3627,7 @@ var buffs = {
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_stun = {
 		icon = "res://assets/images/iconsskills/iola_6.png", 
-		description = "Stunned",
+		description = "Stunned: Can't act next turn",
 		limit = 1,
 		t_name = 'stun'
 	},
