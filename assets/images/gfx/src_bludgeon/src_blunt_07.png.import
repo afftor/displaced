@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/src_blunt_06.png-91c5bd8a07fe27a913c09f4547898eff.stex"
+path="res://.import/src_blunt_07.png-9deaf3e1818bb1d952a8be18239a6975.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gfx/src_blunt/src_blunt_06.png"
-dest_files=[ "res://.import/src_blunt_06.png-91c5bd8a07fe27a913c09f4547898eff.stex" ]
+source_file="res://assets/images/gfx/src_bludgeon/src_blunt_07.png"
+dest_files=[ "res://.import/src_blunt_07.png-9deaf3e1818bb1d952a8be18239a6975.stex" ]
 
 [params]
 
