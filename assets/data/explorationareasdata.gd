@@ -1226,6 +1226,53 @@ var areas = { #missions in new terminology
 				],
 			},
 		},
+	
+	final_battle_stage1 = {
+		code = 'modern_city_stage1',
+		name = 'Final Battle', 
+		descript = "",
+		image = 'combat_futurecity',
+		stages = 8, 
+		level = 30,
+		enemies = {
+			
+			1 : [
+				{ 2 : ['soldier'], 4 : ['soldier'], 6 : ['drone']},
+				{ 1 : ['soldier'], 3 : ['soldier'], 5 : ['bomber']},
+				],
+			2 : [
+				{ 2 : ['drone'], 4 : ['soldier'], 5 : ['drone']},
+				{ 1 : ['demon1'], 3 : ['drone']},
+				],
+			3 : [
+				{ 1 : ['soldier'], 2 : ['soldier'], 3 : ['drone']},
+				{ 1 : ['demon1'], 2 : ['demon1']},
+				{ 2 : ['demon2'], 3 : ['demon1']},
+				],
+			4 : [
+				{ 2 : ['demon1'], 3 : ['demon1'], 5 : ['demon2']},
+				{ 1 : ['demon2'], 2 : ['demon2'], 3 : ['demon2']},
+				],
+			5 : [
+				{ 1 : ['demon2'], 3 : ['demon2'], 5 : ['drone']},
+				{ 1 : ['drone'], 3 : ['drone'], 4 : ['drone'], 6 : ['drone']},
+				{ 1 : ['soldier'], 2 : ['demon2'], 3 : ['soldier']},
+				],
+			6 : [
+				{ 2 : ['demon1'], 3 : ['demon2']},
+				{ 1 : ['demon1'], 2 : ['demon1'], 5 : ['demon2'], 6 : ['demon2']},
+				],
+			7 : [
+				{ 1 : ['drone'], 2 : ['drone'], 3 : ['drone'], 4 : ['drone'], 5 : ['drone'], 6 : ['drone']},
+				{ 1 : ['soldier'], 2 : ['soldier'], 3 : ['soldier'], 4 : ['soldier'], 5 : ['soldier'], 6 : ['soldier']},
+				{ 1 : ['demon2'], 2 : ['demon1'], 3 : ['demon2']},
+				],
+			8 : [
+				{ 2 : ['demitrius1']},
+				],
+			},
+		},
+	
 	modern_city_stage1 = {
 		code = 'modern_city_stage1',
 		name = 'Escort Demitrius', 

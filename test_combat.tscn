@@ -516,9 +516,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w1/s1/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w1/s1/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -565,9 +563,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w1/s2/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w1/s2/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -613,9 +609,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w1/s3/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w1/s3/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -661,9 +655,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w1/s4/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w1/s4/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -709,9 +701,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w1/s5/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w1/s5/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -757,9 +747,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w1/s6/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w1/s6/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -809,9 +797,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w2/s1/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w2/s1/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -857,9 +843,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w2/s2/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w2/s2/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -905,9 +889,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w2/s3/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w2/s3/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -953,9 +935,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w2/s4/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w2/s4/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1001,9 +981,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w2/s5/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w2/s5/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1049,9 +1027,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w2/s6/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w2/s6/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1101,9 +1077,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w3/s1/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w3/s1/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1149,9 +1123,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w3/s2/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w3/s2/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1197,9 +1169,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w3/s3/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w3/s3/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1245,9 +1215,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w3/s4/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w3/s4/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1293,9 +1261,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w3/s5/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w3/s5/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1341,9 +1307,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w3/s6/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w3/s6/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1393,9 +1357,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w4/s1/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w4/s1/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1441,9 +1403,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w4/s2/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w4/s2/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1489,9 +1449,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w4/s3/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w4/s3/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1537,9 +1495,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w4/s4/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w4/s4/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1585,9 +1541,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w4/s5/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w4/s5/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0
@@ -1633,9 +1587,7 @@ margin_right = 99.0
 margin_bottom = 27.0
 text = "monster"
 
-[node name="value" type="OptionButton" parent="waves/w4/s6/monster" groups=[
-"mongroup",
-]]
+[node name="value" type="OptionButton" parent="waves/w4/s6/monster" groups=["mongroup"]]
 margin_left = 103.0
 margin_right = 303.0
 margin_bottom = 30.0

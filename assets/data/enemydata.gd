@@ -549,7 +549,7 @@ var enemylist = {
 		skills = ['attack', 'light_attack'],
 		basehp = 180,
 		damage = 70,
-		resists = {slash = -100, pierce = 50, bludgeon = 100, fire = 50, earth = -100, water = 100, air = -100, light = 50, dark = -100},
+		resists = {slash = -100, pierce = 50, bludgeon = -50, fire = 50, earth = -100, water = 100, air = 50, light = 50, dark = -50},
 		xpreward = 10,
 		bodyhitsound = 'flesh',
 		base_dmg_type = 'pierce',
@@ -565,6 +565,29 @@ var enemylist = {
 		},
 	},
 	
+	drone = {
+		code = 'elvenrat',
+		name = "",
+		flavor = "",
+		race = 'humanoid',
+		skills = ['attack', 'light_attack'],
+		basehp = 210,
+		damage = 60,
+		resists = {slash = -50, pierce = 50, bludgeon = 100, fire = -100, earth = 100, water = -50, air = -100, light = 50, dark = 50},
+		xpreward = 10,
+		bodyhitsound = 'flesh',
+		base_dmg_type = 'pierce',
+		traits = [],
+		combaticon = '',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'test_7',
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0004s_0002_Specnaz_idle (1)",
+			hit = "Fight/Fight_spritesFHD_0004s_0000_Specnaz_hit (1)",
+			attack = "Fight/Fight_spritesFHD_0004s_0001_Specnaz_at (1)",
+		},
+	},
 	
 	
 	bomber = {
