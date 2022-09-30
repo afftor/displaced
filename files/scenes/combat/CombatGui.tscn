@@ -1752,6 +1752,9 @@ margin_right = 121.531
 margin_bottom = 174.259
 rect_min_size = Vector2( 75, 75 )
 theme = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/Escape"]
 margin_right = 40.0

@@ -84,4 +84,4 @@ frame_77/delay_sec = 0.0
 frame_78/delay_sec = 0.0
 frame_79/delay_sec = 0.0
 script = ExtResource( 1 )
-prefix = "Ent_idle"
+prefix = "ent"

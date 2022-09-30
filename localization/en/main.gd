@@ -363,10 +363,10 @@ var TranslationDict = {
 	CLASSTRAIT = "Class bonus",
 
 	#Names
-	ARRON = 'Arron',
-	ROSE = 'Rose',
-	EMBER = 'Ember',
-	ERIKA = 'Erika',
+	ARRON = ' ',
+	ROSE = ' ',
+	EMBER = ' ',
+	ERIKA = ' ',
 	RILU = 'Rilu',
 	IOLA = 'Iola',
 	GOBLIN = 'Goblin',

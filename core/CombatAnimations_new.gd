@@ -221,7 +221,8 @@ func targetattack(node, args = null):
 	hp_float_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0
-	input_handler.gfx_sprite(node, 'slash', 0, 0.1) #strike
+#	input_handler.gfx_sprite(node, 'slash', 0, 0.1) #strike
+	input_handler.gfx_sprite(node, 'hit', 0, 0.1)
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -370,7 +371,8 @@ func damage_float(node, args):
 	
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1.5, fadetime = 0.7, offset = Vector2(0,0)})
+	if args.damage.hp != 0 or args.damage.shield != 0:
+		tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1, fadetime = 0.7, offset = Vector2(0,0)})
 	return delaytime + delay
 
 
@@ -381,7 +383,8 @@ func heal_float(node, args):
 	
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(input_handler, delay, 'FloatHealArgs', {node = node, args = args, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+	if args.heal != 0:
+		tween.interpolate_callback(input_handler, delay, 'FloatHealArgs', {node = node, args = args, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	return delaytime + delay
 
 
@@ -390,7 +393,7 @@ func test_combat_start(node, args):
 
 func shield_update(node, args):
 #	node.material.set_shader_param('modulate', args.color)
-	node.get_node('sprite/shield').visible = args.value
+#	node.get_node('sprite/shield').visible = args.value # works and looks wierd so I disabled it for now
 	return 0.1
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode

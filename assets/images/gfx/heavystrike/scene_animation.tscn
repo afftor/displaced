@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/images/gfx/heavystrike/fight_combo_sq_08.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gfx/heavystrike/fight_combo_sq_09.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gfx/heavystrike/fight_combo_sq_10.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gfx/heavystrike/fight_combo_sq_05.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gfx/heavystrike/fight_combo_sq_07.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gfx/heavystrike/fight_combo_sq_06.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "default",
+"speed": 9.0
+} ]
+
+[node name="HitAnimation" type="AnimatedSprite"]
+self_modulate = Color( 0.607843, 0.607843, 0.607843, 1 )
+position = Vector2( 220, 273.75 )
+scale = Vector2( 0.843023, 0.843023 )
+frames = SubResource( 1 )
+speed_scale = 2.9

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gfx/sanctuary/iola_4_hexagon2_sq_17.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gfx/block/fight_shield1_sq_09.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/charpanel_old/healthbar.png" type="Texture" id=4]
 [ext_resource path="res://files/scenes/combat/FighterNode.gd" type="Script" id=5]
 [ext_resource path="res://files/scenes/combat/char_spride_drag.gd" type="Script" id=6]
@@ -40,13 +40,16 @@ margin_right = 5.0
 margin_bottom = -20.0
 grow_vertical = 0
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="shield" type="TextureRect" parent="sprite"]
 visible = false
 modulate = Color( 1, 1, 1, 0.658824 )
 margin_left = -27.0
-margin_top = -48.0
-margin_right = 309.0
+margin_top = 128.0
+margin_right = 223.0
 margin_bottom = 390.0
 mouse_filter = 2
 texture = ExtResource( 3 )
@@ -63,10 +66,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -75.0
-margin_top = -40.0
-margin_right = 20.0
+margin_top = -48.0
+margin_right = 5.0
 margin_bottom = -20.0
-grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 __meta__ = {
@@ -123,6 +125,9 @@ margin_top = -308.0
 margin_right = -119.0
 margin_bottom = -253.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="TextureRect" parent="Buffs"]
 visible = false
@@ -139,8 +144,8 @@ margin_left = -10.0
 margin_top = 15.0
 margin_right = 62.0
 margin_bottom = 47.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
 text = "555"
 align = 1

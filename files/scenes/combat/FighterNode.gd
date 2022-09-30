@@ -360,7 +360,7 @@ func disable():
 		return
 	var tmp = $sprite.margin_bottom
 #	var tmp2 = $sprite.rect_size.x
-	$sprite.texture = fighter.animations.idle_1
+	$sprite.texture = fighter.animations.idle
 	$sprite.rect_min_size = fighter.animations.idle_1.get_size()
 	yield(get_tree(), "idle_frame")
 
