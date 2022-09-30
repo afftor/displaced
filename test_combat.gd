@@ -55,4 +55,4 @@ func run_test():
 			endata.push_back(wdata)
 	if endata.empty(): return
 	$combat.show()
-	$combat.start_combat(endata, int($enlv/value.text), 'combat_mountains')
+	$combat.start_combat(endata, int($enlv/value.text), 'combat_cave')

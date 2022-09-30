@@ -193,17 +193,6 @@ func default_sfx(node, args):
 		input_handler.call_deferred('gfx_sprite', node, id, 0.5, null)
 	return playtime + aftereffectdelay
 
-func default_sfx_flipped(node, args):
-#	print("sfx")
-	var id = args.animation
-	var playtime = 0.07 # 0.7
-	hp_update_delays[node] = 0 # 0.3 both
-	hp_float_delays[node] = 0
-	log_update_delay = max(log_update_delay, 0.3)
-	buffs_update_delays[node] = 0
-	input_handler.call_deferred('gfx_sprite', node, id, 0.5, null, args.flip)
-	return playtime + aftereffectdelay
-
 
 func casterattack(node, args = null):#obsolete
 	var tween = input_handler.GetTweenNode(node)
@@ -404,7 +393,7 @@ func test_combat_start(node, args):
 
 func shield_update(node, args):
 #	node.material.set_shader_param('modulate', args.color)
-	node.get_node('sprite/shield').visible = args.value
+#	node.get_node('sprite/shield').visible = args.value # works and looks wierd so I disabled it for now
 	return 0.1
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode
