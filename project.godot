@@ -207,6 +207,7 @@ globals="*res://core/globals.gd"
 input_handler="*res://core/input_handler.gd"
 effects_pool="*res://core/effects_pool.gd"
 AI_data="*res://assets/data/ai_data.gd"
+Upgradedata="*res://assets/data/upgradedata.gd"
 
 [debug]
 

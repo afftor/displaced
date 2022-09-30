@@ -81,6 +81,7 @@ func setup_character(ch):
 		panel_node2.disabled = false
 	else:
 		panel_node2 = panel_node
+		$sprite.set_script(null)
 	update_hp_label(fighter.hp)
 	
 	$sprite.texture = null
@@ -204,13 +205,28 @@ func process_sfx(code):
 		data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = {animation = code.trim_prefix('anim_')}}
 	elif code.begins_with('sfx_'):
 		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx', slot = 'SFX', params = {animation = code.trim_prefix('sfx_')}}
-	elif code.begins_with('sfxFlipH_'):
-		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx_flipped', slot = 'SFX', params = {animation = code.trim_prefix('sfxFlipH_'), flip = "H"}}
 	else:
 		data = {node = self, time = input_handler.combat_node.turns,type = code, slot = 'SFX', params = {}}
 	animation_node.add_new_data(data)
 
+
+func process_sfx_dict(dict):
+	var code = dict.code
+	var data 
+	if code.begins_with('anim_'):
+		data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = dict.duplicate()}
+		data.params.animation = code.trim_prefix('anim_')
+	elif code.begins_with('sfx_'):
+		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx', slot = 'SFX', params = dict.duplicate()}
+		data.params.animation = code.trim_prefix('sfx_')
+	else:
+		data = {node = self, time = input_handler.combat_node.turns, type = code, slot = 'SFX', params = dict.duplicate()}
+	animation_node.add_new_data(data)
+
+
 func process_sound(sound):
+	if !sound.begins_with('sound/'):
+		sound = 'sound/' + sound
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
 	animation_node.add_new_data(data)
 
@@ -342,16 +358,31 @@ func highlight_target_enemy_final():
 func disable():
 	if fighter.defeated: 
 		return
+	var tmp = $sprite.margin_bottom
+#	var tmp2 = $sprite.rect_size.x
 	$sprite.texture = fighter.animations.idle
 	$sprite.rect_min_size = fighter.animations.idle_1.get_size()
+	yield(get_tree(), "idle_frame")
+
+	$sprite.rect_size = $sprite.rect_min_size
+	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
+#	if $sprite.rect_size.x < tmp2:
+#		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
 	regenerate_click_mask()
 
 
 func enable():
 	if fighter.defeated: 
 		return
+	var tmp = $sprite.margin_bottom
+#	var tmp2 = $sprite.rect_size.x
 	$sprite.texture = fighter.animations.idle
 	$sprite.rect_min_size = fighter.animations.idle.get_size()
+	yield(get_tree(), "idle_frame")
+	$sprite.rect_size = $sprite.rect_min_size
+	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
+#	if $sprite.rect_size.x < tmp2:
+#		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
 	regenerate_click_mask()
 
 

@@ -96,7 +96,7 @@ func show():
 
 func buildscreen(empty = null):
 	var res = false
-	for build in globals.upgradelist:
+	for build in Upgradedata.upgradelist:
 		var node = get_node(build)
 		if node != null: node.build_icon()
 		

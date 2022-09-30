@@ -1,5 +1,5 @@
 extends TextureButton
-
+export var outline_hover = false
 
 func _ready():
 	connect("mouse_entered", self, 'hightlight', [true])
@@ -23,7 +23,7 @@ func build_icon():
 		visible = false
 #		regenerate_click_mask()
 		return
-	var data = globals.upgradelist[name]
+	var data = Upgradedata.upgradelist[name]
 	var lvl_data = data.levels[state.townupgrades[name]]
 	texture_normal = lvl_data.node
 	regenerate_click_mask()
@@ -37,7 +37,7 @@ func play_upgrade_animation():
 			print('error in upgrade data')
 	else:
 		input_handler.FadeAnimation(self, 1.0, 0)
-	var data = globals.upgradelist[name]
+	var data = Upgradedata.upgradelist[name]
 	var lvl_data = data.levels[state.townupgrades[name]]
 	texture_normal = lvl_data.node
 	input_handler.UnfadeAnimation(self, 1.5, 1.0)
@@ -58,6 +58,7 @@ func set_inactive():
 	$QuestActive.visible = false
 
 func hightlight(flag):
+	if !outline_hover: return
 	if flag:
 		material.set_shader_param('opacity', 0.9)
 		material.set_shader_param('highlight', 0.1)

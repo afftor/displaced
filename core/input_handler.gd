@@ -321,6 +321,7 @@ func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(50,
 	elif args.group == 'enemy':
 		DamageTextFly(floatnode, true)
 	var wr = weakref(floatnode)
+	gfx_sprite(node, "src_%s" % args.type, 0.5, null, (args.group == 'ally'))
 	yield(get_tree().create_timer(time + 1), 'timeout')
 	if wr.get_ref(): floatnode.queue_free()
 
@@ -396,7 +397,7 @@ func StopMusic(instant = false):
 #Sounds
 
 func PlaySound(res, delay = 0):
-	if name == null:
+	if res == null:
 		return #STAB to fix some skills cause crashing
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
@@ -557,7 +558,7 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 
 var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'} 
 
-func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = null):
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h = false, flip_v = false):
 	var scene
 	if sprites.has(effect):
 		if sprites[effect] is String:
@@ -571,9 +572,10 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = n
 	if !(scene is PackedScene):
 		return
 	var x = scene.instance()
-	if flip == "H": # flipping sfx for enemy attacks
-		x.flip_h = true
-		x.position.y -= 100 # characters are too tall so need to adjust
+	if flip_h or flip_v:
+		x.position.y -= 80 # need do adjust because hero sprites are too tall
+	x.flip_h = flip_h
+	x.flip_v = flip_v
 	node.add_child(x)
 	if effect == "earthquake":
 		node.move_child(x, 0)

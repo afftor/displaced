@@ -387,6 +387,7 @@ func player_turn(pos):
 
 
 func enemy_turn(pos):
+	gui_node.RebuildSkillPanel()
 	turns += 1
 	nextenemy += 1
 	var fighter = enemygroup[pos]
@@ -618,7 +619,7 @@ func calculate_hit_sound(skill, caster, target):
 				'flesh':pass
 				'wood':pass
 				'stone':pass
-	rval = 'fleshhit'
+	rval = 'sound/slash' #stub
 	
 	return rval
 
@@ -705,7 +706,7 @@ func swap_active_hero():#not used
 	
 
 
-func swap_heroes(pos):
+func swap_heroes_old(pos):
 	var newhero = swapchar
 	swapchar = null
 	#remove current char
@@ -734,9 +735,10 @@ func swap_heroes(pos):
 	call_deferred('select_actor')
 
 
-func move_hero(chid, pos):
+func move_hero(chid, pos): #reserve -> bf
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
+	allowaction = false
 	var newchar = state.heroes[chid]
 	if battlefield[pos] != null:
 		var targetchar = battlefield[pos]
@@ -752,6 +754,7 @@ func move_hero(chid, pos):
 	playergroup[pos] = newchar
 	battlefield[pos] = newchar
 	make_hero_panel(newchar, false)
+	gui_node.build_hero_panels()
 	newchar.displaynode.appear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -759,16 +762,83 @@ func move_hero(chid, pos):
 	
 	recheck_auras()
 	gui_node.RebuildReserve()
-	gui_node.build_hero_panels()
+	allowaction = true
 	call_deferred('select_actor')
 
 
+func reserve_hero(chid): #bf -> reserve
+	gui_node.activate_shades([])
+	gui_node.hide_screen()
+	allowaction = false
+	var newchar = state.heroes[chid]
+	var pos = newchar.position
+	newchar.displaynode.disappear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	newchar.position = null
+	newchar.acted = true
+	make_hero_panel(newchar)
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+	playergroup.erase(pos)
+	battlefield[pos] = null
+	recheck_auras()
+	gui_node.RebuildReserve()
+	gui_node.build_hero_panels()
+	allowaction = true
+	call_deferred('select_actor')
 
-func activate_swap():
+
+func swap_heroes(chid, pos): #bf <-> bf
+	gui_node.activate_shades([])
+	gui_node.hide_screen()
+	allowaction = false
+	var newchar = state.heroes[chid]
+	var tpos = newchar.position
+	var targetchar = null
+	if battlefield[pos] != null:
+		targetchar = battlefield[pos]
+#		print(targetchar.id)
+		targetchar.displaynode.disappear()
+	newchar.displaynode.disappear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	if targetchar != null:
+		targetchar.position = tpos
+		playergroup[tpos] = targetchar
+		battlefield[tpos] = targetchar
+		make_hero_panel(targetchar, false)
+		targetchar.displaynode.appear()
+	else:
+		playergroup.erase(tpos)
+		battlefield[tpos] = null
+		#add new char
+	#	activecharacter.acted = true
+	newchar.position = pos
+	playergroup[pos] = newchar
+	battlefield[pos] = newchar
+	make_hero_panel(newchar, false)
+	gui_node.build_hero_panels()
+	newchar.displaynode.appear()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	turns += 1
+	
+	recheck_auras()
+	allowaction = true
+#	gui_node.RebuildReserve()
+	call_deferred('select_actor')
+
+
+func activate_swap(pos_drag = null):
 	var res = []
 	for pos in [1, 2, 3]:
 		if battlefield[pos] == null: res.push_back(pos)
 		else:
+			if pos == pos_drag: continue
 			var tchar = battlefield[pos]
 			if !tchar.acted: res.push_back(pos)
 	gui_node.activate_shades(res)
@@ -1370,7 +1440,7 @@ func FighterPress(position):
 				if swapchar != null:
 					activecharacter.acted = true #idk why active and not target, but if you insisted...
 					activecharacter.displaynode.process_disable()
-					swap_heroes(position)
+					swap_heroes_old(position)
 				else:
 					if allowedtargets.enemy.has(position):
 						activecharacter.skills_autoselect.push_back(activeaction)
@@ -1430,6 +1500,7 @@ var follow_up_flag = false
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
+	globals.hideskilltooltip()
 	caster.acted = true
 
 	follow_up_skill = null
@@ -1486,7 +1557,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		caster.displaynode.process_sound(skill.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
-		sfxtarget.process_sfx(i.code)
+		sfxtarget.process_sfx_dict(i)
 	#skill's repeat cycle of predamage-damage-postdamage
 	var targets
 	var endturn = !s_skill1.tags.has('instant');
@@ -1506,7 +1577,12 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#follow-up
 				if skill.has('follow_up'):
 					yield(use_skill(skill.follow_up, caster, target_pos), 'completed')
-				if skill.has('not_final'): return
+				if skill.has('not_final'): 
+					if caster.combatgroup == 'ally':
+						CombatAnimations.check_start()
+						if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+					turns += 1
+					return
 				#final
 				turns += 1
 				if activeitem != null:
@@ -1546,7 +1622,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			target_pos = newtarget
 		for i in animationdict.prehit:
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
-			sfxtarget.process_sfx(i.code)
+			sfxtarget.process_sfx_dict(i)
 		
 		turns += 1
 		target = battlefield[target_pos]
@@ -1562,7 +1638,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					caster.displaynode.process_sound(skill.sounddata.strike)
 			for j in animationdict.predamage:
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
-				sfxtarget.process_sfx(j.code)
+				sfxtarget.process_sfx_dict(j)
 			#special results
 			if skill.damagetype is String and skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
@@ -1601,7 +1677,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
 				for j in animationdict.postdamage:
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
-					sfxtarget.process_sfx(j.code)
+					sfxtarget.process_sfx_dict(j)
 				#applying resists
 				s_skill2.calculate_dmg()
 				#logging result & dealing damage

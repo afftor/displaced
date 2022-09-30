@@ -1029,4 +1029,6 @@ func preload_icons():
 				an.fill_frames()
 			else:
 				resources.preload_res(an)
+		if ch.has('weaponsound'):
+			resources.preload_res('sound/%s' % ch.weaponsound)
 	if resources.is_busy(): yield(resources, "done_work")

@@ -26,9 +26,6 @@ margin_right = 1826.0
 margin_bottom = 984.0
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ButtonPanel" type="TextureRect" parent="."]
 margin_left = 120.0
@@ -231,6 +228,7 @@ show_behind_parent = true
 margin_right = 300.0
 margin_bottom = 200.0
 texture = ExtResource( 11 )
+expand = true
 
 [node name="UpgradeDescript" type="TextureRect" parent="."]
 visible = false

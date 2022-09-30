@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spell_souds.wav-0b1400225061f865d4f0ba19d7f1558e.sample"
+
+[deps]
+
+source_file="res://assets/sound/spell_souds.wav"
+dest_files=[ "res://.import/spell_souds.wav-0b1400225061f865d4f0ba19d7f1558e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

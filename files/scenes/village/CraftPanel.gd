@@ -88,6 +88,7 @@ func rebuild_gear_slot(node, data, newdata):
 		node.get_node("ResPanel").visible = true
 		input_handler.ClearContainer(node.get_node("VBoxContainer"), ['button'])
 		for res in newdata.cost:
+			if res == 'gold': continue
 			var panel = input_handler.DuplicateContainerTemplate(node.get_node("VBoxContainer"), 'button')
 			panel.get_node('icon').texture = Items.Items[res].icon #as it is now - items icons are loaded directly on start
 			panel.get_node("Label").text = "%d/%d" % [newdata.cost[res], state.materials[res]]
@@ -106,7 +107,10 @@ func upgrade_slot(slot):
 	var cost = hero.get_item_upgrade_data(slot).cost
 	hero.upgrade_gear(slot)
 	for res in cost:
-		state.materials[res] -= cost[res]
+		if res == 'gold':
+			state.money -= cost[res]
+		else:
+			state.materials[res] -= cost[res]
 	rebuild_gear()
 
 

@@ -10,7 +10,11 @@ func can_drop_data(position, data):
 
 
 func drop_data(position, data):
-	input_handler.combat_node.move_hero(data.id, pos)
+	var newchar = state.heroes[data.id]
+	if newchar.position == null:
+		input_handler.combat_node.move_hero(data.id, pos)
+	else:
+		input_handler.combat_node.swap_heroes(data.id, pos)
 
 
 func set_active():
