@@ -154,7 +154,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/forge_1.png"),
 				bonusdescript = tr(""),
 				townnode = "forge",
-				cost = {wood = 5, gold = 10},
+				cost = {wood = 0, gold = 0},
 			},
 			2:{
 				unlockreqs = [],
@@ -162,7 +162,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
 				townnode = "forge",
-				cost = {wood = 5, gold = 10},#do not fill till materials rework
+				cost = {stone = 10, wood = 10, gold = 5000},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
@@ -170,7 +170,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
 				townnode = "forge",
-				cost = {wood = 5, gold = 10},#do not fill till materials rework
+				cost = {scales = 15, leather = 15, gold = 15000},#do not fill till materials rework
 			},
 			4:{
 				unlockreqs = [],
@@ -178,7 +178,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/forge_2.png"),
 				bonusdescript = tr(""),
 				townnode = "forge",
-				cost = {wood = 5, gold = 10},#do not fill till materials rework
+				cost = {demonic = 20, otherworld = 20, gold = 3000},#do not fill till materials rework
 			}
 		}
 	},
@@ -282,7 +282,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/farm.png"),
 				bonusdescript = tr(""),
 				townnode = "farm",
-				cost = {chitin = 25, gold = 10000},#do not fill till materials rework
+				cost = {chitine = 25, gold = 10000},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],
@@ -322,7 +322,7 @@ var upgradelist = {#2 fix data
 				node = load("res://assets/images/buildings/sawmill.png"),
 				bonusdescript = tr(""),
 				townnode = "mill",
-				cost = {chitin = 20, gold = 10000},#do not fill till materials rework
+				cost = {chitine = 20, gold = 10000},#do not fill till materials rework
 			},
 			3:{
 				unlockreqs = [],

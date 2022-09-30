@@ -70,8 +70,8 @@ var default_animations_delay = {
 	attack = 0.0,
 	cast = 0.0,
 	special = 0.0,
-	hit = 0.3,
-	dead = 0.0,
+	hit = 0.0,
+	dead = 0,
 	null: 0.5,
 }
 

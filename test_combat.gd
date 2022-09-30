@@ -3,6 +3,8 @@ extends Panel
 
 
 func _ready():
+	input_handler.SetMusic("eventgeneric")#('combattheme')
+	input_handler.SetMusic('combattheme')
 	globals.preload_backgrounds()
 	for ch in state.heroes:
 		get_node("VBoxContainer/%s/Label" % ch).text = ch
@@ -22,7 +24,6 @@ func test_combat():
 
 func run_test():
 	if resources.is_busy(): yield(resources, "done_work")
-	
 	state.add_test_resources()
 	for ch in state.characters:
 		state.unlock_char(ch)
@@ -55,4 +56,4 @@ func run_test():
 			endata.push_back(wdata)
 	if endata.empty(): return
 	$combat.show()
-	$combat.start_combat(endata, int($enlv/value.text), 'combat_cave')
+	$combat.start_combat(endata, int($enlv/value.text), 'combat_cave', 'combattheme')

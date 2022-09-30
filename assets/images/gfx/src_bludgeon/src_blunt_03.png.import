@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rouz_idle_14.png-b9da8855be4f66b07d115ebd98ea2565.stex"
+path="res://.import/src_blunt_03.png-cfb8177458597a40cb9fd71756b8248f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Fight/Heroes/Rose/Rose_idle/Rouz_idle_14.png"
-dest_files=[ "res://.import/Rouz_idle_14.png-b9da8855be4f66b07d115ebd98ea2565.stex" ]
+source_file="res://assets/images/gfx/src_bludgeon/src_blunt_03.png"
+dest_files=[ "res://.import/src_blunt_03.png-cfb8177458597a40cb9fd71756b8248f.stex" ]
 
 [params]
 

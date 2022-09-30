@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/src_blunt_07.png-9837e1c2a106756659a2a2ab2bd59624.stex"
+path="res://.import/src_blunt_09.png-b4c9be44b735841fe1ff7c76ef59d081.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gfx/src_blunt/src_blunt_07.png"
-dest_files=[ "res://.import/src_blunt_07.png-9837e1c2a106756659a2a2ab2bd59624.stex" ]
+source_file="res://assets/images/gfx/src_bludgeon/src_blunt_09.png"
+dest_files=[ "res://.import/src_blunt_09.png-b4c9be44b735841fe1ff7c76ef59d081.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
