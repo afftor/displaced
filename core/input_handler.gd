@@ -265,13 +265,13 @@ func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(50,
 			text += "!"
 			textnode.set("custom_colors/font_color", color3)
 		textnode.text = text
-		var iconnode = TextureRect.new()
-		iconnode.rect_size.x = heigh
-		iconnode.rect_size.y = heigh
-		iconnode.rect_min_size = iconnode.rect_size
-		iconnode.expand = true
-		iconnode.texture = load("res://assets/images/iconsskills/source_%s.png" % args.type)
-		floatnode.add_child(iconnode)
+#		var iconnode = TextureRect.new()
+#		iconnode.rect_size.x = heigh
+#		iconnode.rect_size.y = heigh
+#		iconnode.rect_min_size = iconnode.rect_size
+#		iconnode.expand = true
+#		iconnode.texture = load("res://assets/images/iconsskills/source_%s.png" % args.type)
+#		floatnode.add_child(iconnode)
 		floatnode.add_child(textnode)
 		if args.damage.shield > 0:
 			var text2 = str(ceil(args.damage.shield))
@@ -305,13 +305,13 @@ func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(50,
 			text += "!"
 			textnode.set("custom_colors/font_color", color3)
 		textnode.text = text
-		var iconnode = TextureRect.new()
-		iconnode.rect_size.x = heigh
-		iconnode.rect_size.y = heigh
-		iconnode.rect_min_size = iconnode.rect_size
-		iconnode.expand = true
-		iconnode.texture = load("res://assets/images/iconsskills/source_%s.png" % args.type)
-		floatnode.add_child(iconnode)
+#		var iconnode = TextureRect.new()
+#		iconnode.rect_size.x = heigh
+#		iconnode.rect_size.y = heigh
+#		iconnode.rect_min_size = iconnode.rect_size
+#		iconnode.expand = true
+#		iconnode.texture = load("res://assets/images/iconsskills/source_%s.png" % args.type)
+#		floatnode.add_child(iconnode)
 		floatnode.add_child(textnode)
 	
 	get_tree().get_root().add_child(floatnode)
