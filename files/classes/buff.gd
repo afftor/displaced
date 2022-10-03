@@ -9,6 +9,7 @@ var args: = []
 var self_args := []
 var template_name
 var name setget ,get_name
+var amount = 1
 
 func _init(caller):
 	parent = caller

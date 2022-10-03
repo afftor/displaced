@@ -293,6 +293,14 @@ func add_buff(i):
 			'barrier':
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
+			'duration':
+				if i.get_duration() != null:
+					newbuff.get_node("Label").show()
+					newbuff.get_node("Label").text = str(i.get_duration())
+			'amount':
+				if i.amount > 1:
+					newbuff.get_node("Label").show()
+					newbuff.get_node("Label").text = str(i.amount)
 	newbuff.hint_tooltip = text
 
 func update_buff(i):
@@ -306,6 +314,14 @@ func update_buff(i):
 			'barrier':
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
+			'duration':
+				if i.get_duration() != null:
+					newbuff.get_node("Label").show()
+					newbuff.get_node("Label").text = str(i.get_duration())
+			'amount':
+				if i.amount > 1:
+					newbuff.get_node("Label").show()
+					newbuff.get_node("Label").text = str(i.amount)
 	newbuff.hint_tooltip = text
 
 func update_hp_label(newhp): 

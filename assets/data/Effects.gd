@@ -3432,6 +3432,7 @@ var atomic = {
 
 };
 #needs filling
+#add bonuseffect = 'duration' to buffs with duration
 var buffs = {
 	#new part
 	b_intimidate = { 
@@ -3579,14 +3580,16 @@ var buffs = {
 	b_bloodlust = { # none 
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Damage is increased by 10%% per stack. Can be dispelled. ",
-		limit = 5,
-		t_name = 'bloodlust'
+		limit = 1,
+		t_name = 'bloodlust',
+		bonuseffect = 'amount'
 	},
 	b_enrage = { # none 
 		icon = "res://assets/images/iconsskills/taunt.png", 
 		description = "Damage is increased by 20%% per stack. Removed by Water damage. ",
-		limit = 5,
-		t_name = 'enrage'
+		limit = 1,
+		t_name = 'enrage',
+		bonuseffect = 'amount'
 	},
 	b_unstable = { # none
 		icon = "res://assets/images/iconsskills/unstable.png", 

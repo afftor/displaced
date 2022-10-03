@@ -714,11 +714,17 @@ func get_all_buffs():
 		if eff == null: continue
 		for b in eff.buffs:
 			b.calculate_args()
+			b.amount = 1
 			if !res.has(b.template_name):
 				if !(b.template.has('limit') and b.template.limit == 0):
 					res[b.template_name] = []
 					res[b.template_name].push_back(b)
-			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
+			elif b.template.has('limit'):
+				if res[b.template_name].size() < b.template.limit:
+					res[b.template_name].push_back(b)
+				else:
+					res[b.template_name].back().amount += 1
+			else:
 				res[b.template_name].push_back(b)
 	if input_handler.combat_node != null:
 		for e in input_handler.combat_node.aura_effects[combatgroup]:
@@ -726,12 +732,17 @@ func get_all_buffs():
 			if eff == null: continue
 			#eff.calculate_args()
 			for b in eff.buffs:
-				b.calculate_args()
+				b.amount = 1
 				if !res.has(b.template_name):
 					if !(b.template.has('limit') and b.template.limit == 0):
 						res[b.template_name] = []
 						res[b.template_name].push_back(b)
-				elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
+				elif b.template.has('limit'):
+					if res[b.template_name].size() < b.template.limit:
+						res[b.template_name].push_back(b)
+					else:
+						res[b.template_name].back().amount += 1
+				else:
 					res[b.template_name].push_back(b)
 	var tmp = []
 	for b_a in res.values():
