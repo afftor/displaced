@@ -293,14 +293,17 @@ func add_buff(i):
 			'barrier':
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
+				newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.gray)
 			'duration':
 				if i.get_duration() != null:
 					newbuff.get_node("Label").show()
 					newbuff.get_node("Label").text = str(i.get_duration())
+					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.k_green)
 			'amount':
 				if i.amount > 1:
 					newbuff.get_node("Label").show()
 					newbuff.get_node("Label").text = str(i.amount)
+					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.magenta)
 	newbuff.hint_tooltip = text
 
 func update_buff(i):
@@ -314,14 +317,17 @@ func update_buff(i):
 			'barrier':
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
+				newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.gray)
 			'duration':
 				if i.get_duration() != null:
 					newbuff.get_node("Label").show()
 					newbuff.get_node("Label").text = str(i.get_duration())
+					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.k_green)
 			'amount':
 				if i.amount > 1:
 					newbuff.get_node("Label").show()
 					newbuff.get_node("Label").text = str(i.amount)
+					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.magenta)
 	newbuff.hint_tooltip = text
 
 func update_hp_label(newhp): 
