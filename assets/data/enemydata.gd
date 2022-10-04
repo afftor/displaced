@@ -1010,25 +1010,25 @@ var loottables = { # no need to separate materials from usables now
 	},
 	#for material testing, for real - duplicate per unit & add usables, gold and other
 	test_1 = {
-		items = [{code = 'stone', chance = 36}],
+		items = [{code = 'stone', chance = 60}],
 	},
 	test_2 = {
-		items = [{code = 'wood', chance = 20}],
+		items = [{code = 'wood', chance = 60}],
 	},
 	test_3 = {
-		items = [{code = 'metal', chance = 15}, {code = 'chitine', chance = 15}],
+		items = [{code = 'metal', chance = 40}, {code = 'chitine', chance = 40}],
 	},
 	test_4 = {
-		items = [{code = 'leather', chance = 20}],
+		items = [{code = 'leather', chance = 50}],
 	},
 	test_5 = {
-		items = [{code = 'scales', chance = 47}],
+		items = [{code = 'scales', chance = 60}],
 	},
 	test_6 = {
-		items = [{code = 'otherworld', chance = 28}],
+		items = [{code = 'otherworld', chance = 20}],
 	},
 	test_7 = {
-		items = [{code = 'demonic', chance = 27}],
+		items = [{code = 'demonic', chance = 20}],
 	},
 }
 
