@@ -1020,6 +1020,7 @@ func FinishCombat(value):
 	clear_auras()
 	CombatAnimations.force_end()
 	input_handler.combat_node = null
+	input_handler.RevertMusic()
 	hide()
 	state.cleanup()
 	
