@@ -880,7 +880,7 @@ func tag_sound(res_name: String) -> void:
 	input_handler.PlaySound(resources.get_res("sound/%s" % res_name))
 
 func tag_music(res_name: String) -> void:
-	input_handler.SetMusic(resources.get_res("music/%s" % res_name))
+	input_handler.SetMusic(res_name)
 
 func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 	if !is_video_bg:

@@ -377,9 +377,10 @@ func StopTweenRepeat(node):
 	tween.remove_all()
 
 #Music
-
+var prevtheme = ""
 func SetMusic(res, delay = 0):
 	if typeof(res) == TYPE_STRING:
+		prevtheme = res
 		res = resources.get_res("music/%s" % res)
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
@@ -394,6 +395,9 @@ func StopMusic(instant = false):
 	musicfading = true
 
 
+func RevertMusic():
+	if prevtheme != null and prevtheme.length() > 0:
+		SetMusic(prevtheme)
 #Sounds
 
 func PlaySound(res, delay = 0):
