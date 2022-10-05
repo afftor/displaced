@@ -146,7 +146,7 @@ var locations = { #added seqs bindings and other fields
 	modern_city =  {
 		code = 'modern_city',
 		background = 'future_city',
-		missions = ['dimitrius_finale'],
+		missions = ['final_battle_stage1'],#'dimitrius_finale'],
 		events = []
 	},
 }
@@ -453,8 +453,8 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'seq_seen', value = 'rose_reunion'}],
 		actions = [
 		{type = 'scene', value = 'flak_future_city'},
-		{type = 'system', value = 'unlock_mission', arg = 'modern_city_1'},
-		{type = 'system', value = 'unlock_area', arg = 'modern_city'}
+		{type = 'system', value = 'unlock_area', arg = 'modern_city'},
+		{type = 'system', value = 'unlock_mission', arg = 'final_battle_stage1'},
 		]
 	},
 	
@@ -1228,7 +1228,7 @@ var areas = { #missions in new terminology
 		},
 	
 	final_battle_stage1 = {
-		code = 'modern_city_stage1',
+		code = 'final_battle_stage1',
 		name = 'Final Battle', 
 		descript = "",
 		image = 'combat_futurecity',
