@@ -1297,7 +1297,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
 		tags = ['taunt'],
-		args = [{obj = 'parent_arg_get', index = 0, param = 'position'}],
+		args = [{obj = 'parent_arg_get', index = 0, param = 'id'}],
 		sub_effects = [],
 		atomic = ['a_taunt'],
 		buffs = ['b_taunt'],

@@ -94,7 +94,7 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 
 func if_has_target(s_name, t_pos):
 	for t in skill_targets[s_name]:
-		if t.position == t_pos: return true
+		if t.target == t_pos: return true
 	return false
 
 func _get_weight_for_skill(s_name):
