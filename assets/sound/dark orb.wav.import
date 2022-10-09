@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dark orb.wav-4fa465601f381b4534fb3da049cf56e6.sample"
+
+[deps]
+
+source_file="res://assets/sound/dark orb.wav"
+dest_files=[ "res://.import/dark orb.wav-4fa465601f381b4534fb3da049cf56e6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
