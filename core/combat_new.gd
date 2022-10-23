@@ -171,6 +171,8 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	aura_bonuses.enemy.clear()
 	
 #	$Background.texture = images.backgrounds[background]
+	if background is Array:
+		background = input_handler.random_element(background)
 	var tmp = resources.get_res("bg/%s" % background)
 	$Background.texture = tmp
 	$Combatlog/RichTextLabel.clear()
