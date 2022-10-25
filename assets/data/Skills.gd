@@ -1618,7 +1618,8 @@ var skilllist = {
 #		manacost = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1, cahnce = 0.2})],
 		hidden = false,
-		sfx = [{code = 'sfx_avalanche', target = 'target', period = 'predamage'},
+		repeat = 5,
+		sfx = [{code = 'sfx_avalanche', target = 'target', period = 'windup'},
 			{code = 'anim_hit', target = 'target', period = 'predamage'},
 			{code = 'anim_attack', target = 'caster', period = 'windup'},], #the only period, that do not clone for each repeat 
 		sfxcaster = null,
@@ -1626,7 +1627,7 @@ var skilllist = {
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_ava'}
 		],
-		follow_up = 'avalanche1'
+#		follow_up = 'avalanche1'
 	},
 	avalanche1 = {
 		code = 'avalanche1',
