@@ -204,7 +204,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_7.png", 
 				description = "Deal 15%% less damage",
 				args = [],
-				t_name = 'fen'
+				t_name = 'fen',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -247,7 +248,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_2.png", 
 				description = "",
 				limit = 1,
-				t_name = 'protect_c'
+				t_name = 'protect_c',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -282,7 +284,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_2.png", 
 				description = "Is protected: Damage will be redirected to Arron",
 				limit = 1,
-				t_name = 'protect_t'
+				t_name = 'protect_t',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -445,7 +448,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_5.png", 
 				description = "Damage Increased: 25%%",
 				limit = 1,
-				t_name = 'termination'
+				t_name = 'termination',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -474,7 +478,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_5.png", 
 				description = "Damage Increased: 50%%",
 				limit = 1,
-				t_name = 'termination'
+				t_name = 'termination',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -850,7 +855,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/erika_8.png", 
 				description = "Deal 50%% less damage",
 				limit = 1,
-				t_name = 'charm'
+				t_name = 'charm',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -1156,7 +1162,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/rilu_6.png", 
 				description = "Reduced Dark and Light resistance by 25",
 				limit = 1,
-				t_name = 'orb'
+				t_name = 'orb',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -1210,7 +1217,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/rilu_3.png", 
 				description = "Reduce Hit Rate by 25",
 				args = [],
-				t_name = 'mist_d'
+				t_name = 'mist_d',
+				bonuseffect = 'duration'
 			}],
 	},
 	e_t_mist = {
@@ -1430,7 +1438,8 @@ var effect_table = {
 				icon = "res://assets/images/traits/dodgedebuff.png", 
 				description = "Evasion increased by 25",
 				args = [],
-				t_name = 'energyburst'
+				t_name = 'energyburst',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -1595,7 +1604,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/defaultattack.png", 
 				description = "Receive 50%% less damage",
 				limit = 1,
-				t_name = 'e_i_defup'
+				t_name = 'e_i_defup',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -3439,32 +3449,38 @@ var buffs = {
 		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
 		description = "Damage reduced for %d turns",
 		args = [{obj = 'parent', param = 'remains'}],
-		t_name = 'intimidate'
+		t_name = 'intimidate',
+		bonuseffect = 'duration'
 	},
 	b_bleed = { 
 		icon = "res://assets/images/iconsskills/arron_3.png", 
 		description = "Bleeding: Takes Neutral damage at the end of turn",
-		t_name = 'bleed'
+		t_name = 'bleed',
+		bonuseffect = 'duration'
 	},
 	b_poison = { # none
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Poisoned: Takes Neutral damage at the end of turn",
-		t_name = 'poison'
+		t_name = 'poison',
+		bonuseffect = 'duration'
 	},
 	b_silence = { # doesn't fit
 		icon = "res://assets/images/iconsskills/iola_5.png", 
 		description = "Silenced: Can't cast certain spells",
-		t_name = 'silence'
+		t_name = 'silence',
+		bonuseffect = 'duration'
 	},
 	b_swift = {
 		icon = "res://assets/images/iconsskills/arron_1.png", 
 		description = "Evasion increased",
-		t_name = 'swift'
+		t_name = 'swift',
+		bonuseffect = 'duration'
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
 		description = "Burn: Takes Fire damage at the end of turn. Removed by Water damage.",
-		t_name = 'burn'
+		t_name = 'burn',
+		bonuseffect = 'duration'
 	},
 	b_chill = {
 		icon = "res://assets/images/iconsskills/erika_5.png", 
@@ -3474,7 +3490,8 @@ var buffs = {
 	b_mist = {
 		icon = "res://assets/images/iconsskills/rilu_3.png", 
 		description = "Takes water damage at the end of turn.",
-		t_name = 'mist'
+		t_name = 'mist',
+		bonuseffect = 'duration'
 	},
 	b_wave = {
 		icon = "res://assets/images/iconsskills/rose_5.png", 
@@ -3498,23 +3515,27 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/erika_5.png",
 		description = "Frozen: Can't Act, Damage from next skill is increased",
 		limit = 1,
-		t_name = 'freeze'
+		t_name = 'freeze',
+		bonuseffect = 'duration'
 	},
 	b_firepunch = {
 		icon = "res://assets/images/iconsskills/ember_4.png",
 		description = "Incoming damage increased by 30%%",
 		limit = 1,
-		t_name = 'firepunch'
+		t_name = 'firepunch',
+		bonuseffect = 'duration'
 	},
 	b_renew = {
 		icon = "res://assets/images/iconsskills/rose_8.png", 
 		description = "Restores some health at the start of turn",
-		t_name = 'renew'
+		t_name = 'renew',
+		bonuseffect = 'duration'
 	},
 	b_renew1 = { # doesn't fit
 		icon = "res://assets/images/iconsskills/rose_8.png", 
 		description = "Damage taken is reduced",
-		t_name = 'renew1'
+		t_name = 'renew1',
+		bonuseffect = 'duration'
 	},
 	b_defend = {
 		icon = "res://assets/images/iconsskills/ember_6.png", 
@@ -3529,17 +3550,20 @@ var buffs = {
 	b_aegis1 = { # doesn't fit
 		icon = "res://assets/images/iconsskills/ember_8.png", 
 		description = "Max hp increased",
-		t_name = 'aegis1'
+		t_name = 'aegis1',
+		bonuseffect = 'duration'
 	},
 	b_natbless = { 
 		icon = "res://assets/images/iconsskills/erika_1.png", 
 		description = "Increase all damage by 20%% and Hit Chance by 20 ",
-		t_name = 'natbless'
+		t_name = 'natbless',
+		bonuseffect = 'duration'
 	},
 	b_hearts = { 
 		icon = "res://assets/images/iconsskills/erika_7.png", 
 		description = "Damage taking increased",
-		t_name = 'hearts'
+		t_name = 'hearts',
+		bonuseffect = 'duration'
 	},
 	b_dragonprot = {
 		icon = "res://assets/images/iconsskills/ember_2.png", 
@@ -3550,7 +3574,8 @@ var buffs = {
 	b_ava = {
 		icon = "res://assets/images/iconsskills/rilu_1.png", 
 		description = "Damage taking increased",
-		t_name = 'avalanche'
+		t_name = 'avalanche',
+		bonuseffect = 'duration'
 	},
 	b_souls = { # none
 		icon = "res://assets/images/traits/speedondamage.png",
@@ -3563,19 +3588,22 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/rilu_5.png", 
 		description = "Can't die'",
 		t_name = 'soulprot',
-		limit = 0
+		limit = 0,
+		bonuseffect = 'duration'
 	},
 	b_taunt = {
 		icon = "res://assets/images/iconsskills/rilu_8.png", 
 		description = "This unit is taunted and must attack next turn",
 		limit = 1,
-		t_name = 'taunt'
+		t_name = 'taunt',
+		bonuseffect = 'duration'
 	},
 	b_gust = {
 		icon = "res://assets/images/iconsskills/iola_3.png", 
 		description = "Damage decreased by 15%%",
 		limit = 1,
-		t_name = 'gust'
+		t_name = 'gust',
+		bonuseffect = 'duration'
 	},
 	b_bloodlust = { # none 
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
@@ -3625,14 +3653,16 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/blood_blue.png", 
 		description = "Received damage increased",
 		limit = 1,
-		t_name = 'wound'
+		t_name = 'wound',
+		bonuseffect = 'duration'
 	},
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_stun = {
 		icon = "res://assets/images/iconsskills/iola_6.png", 
 		description = "Stunned: Can't act next turn",
 		limit = 1,
-		t_name = 'stun'
+		t_name = 'stun',
+		bonuseffect = 'duration'
 	},
 	b_wwalk = { # none
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
