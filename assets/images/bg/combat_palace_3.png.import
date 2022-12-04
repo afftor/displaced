@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/combat_palace_1.png-1908365474182fa1f26436e9a4817203.stex"
+path="res://.import/combat_palace_3.png-edf1251036f75a95475a8b010dd3833b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/bg/combat_palace_1.png"
-dest_files=[ "res://.import/combat_palace_1.png-1908365474182fa1f26436e9a4817203.stex" ]
+source_file="res://assets/images/bg/combat_palace_3.png"
+dest_files=[ "res://.import/combat_palace_3.png-edf1251036f75a95475a8b010dd3833b.stex" ]
 
 [params]
 

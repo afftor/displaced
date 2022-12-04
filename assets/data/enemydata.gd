@@ -147,6 +147,29 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0001s_0000_Fairy_at",
 		},
 	},
+	faery_2 = {
+		code = 'faery_2',
+		name = '',
+		flavor = '',
+		race = 'humanoid',
+		skills = ['attack', 'fire_attack'],
+		basehp = 55,
+		damage = 61,
+		resists = {pierce = -100, bludgeon = 50, earth = 50, water = -100, light = -100},
+		xpreward = 10,
+		bodyhitsound = 'flesh',
+		base_dmg_type = 'air',
+		traits = [],
+		combaticon = '',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'test_2',
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0002s_0002_fairyalt_idle",
+			hit = "Fight/Fight_spritesFHD_0002s_0001_fairyalt_hit",
+			attack = "Fight/Fight_spritesFHD_0002s_0000_fairyalt_at",
+		},
+	},
 	spider = {
 		code = 'spider',
 		name = '',
@@ -170,6 +193,30 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0000s_0002s_0001_Spider_at",
 		},
 	},
+	spider_2 = {
+		code = 'spider_2',
+		name = '',
+		flavor = "",
+		race = 'insect',
+		skills = ['attack', 'poison_spit'],
+		basehp = 75,
+		damage = 55,
+		resists = {slash = -50, pierce = 50, fire = -100, air = -50, dark = 50},
+		xpreward = 10,
+		bodyhitsound = 'flesh',
+		base_dmg_type = 'pierce',
+		traits = [],
+		combaticon = '',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'test_3',
+		animations = {
+			idle = "Fight/Fight_spritesFHD_0001s_0002_spideralt_idle",
+			hit = "Fight/Fight_spritesFHD_0001s_0000_spideralt_hit",
+			attack = "Fight/Fight_spritesFHD_0001s_0001_spideralt_at",
+		},
+	},
+	
 	earthgolem = {
 		code = 'earthgolem',
 		name = "",
@@ -1013,22 +1060,22 @@ var loottables = { # no need to separate materials from usables now
 		items = [{code = 'stone', chance = 60}],
 	},
 	test_2 = {
-		items = [{code = 'wood', chance = 60}],
+		items = [{code = 'wood', chance = 70}],
 	},
 	test_3 = {
-		items = [{code = 'metal', chance = 40}, {code = 'chitine', chance = 40}],
+		items = [{code = 'metal', chance = 45}, {code = 'chitine', chance = 45}],
 	},
 	test_4 = {
 		items = [{code = 'leather', chance = 50}],
 	},
 	test_5 = {
-		items = [{code = 'scales', chance = 60}],
+		items = [{code = 'scales', chance = 50}],
 	},
 	test_6 = {
 		items = [{code = 'otherworld', chance = 20}],
 	},
 	test_7 = {
-		items = [{code = 'demonic', chance = 20}],
+		items = [{code = 'demonic', chance = 25}],
 	},
 }
 

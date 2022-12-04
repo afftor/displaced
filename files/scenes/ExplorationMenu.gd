@@ -169,7 +169,7 @@ func build_area_description():
 	else:
 		areadesc.bbcode_text = ""
 	if areadata.has('explore_image') and areadata.explore_image != null and areadata.explore_image!= '':
-		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.image)
+		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.explore_image)
 #	elif areadata.has('image') and areadata.image != null and areadata.image!= '':
 #		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.image)
 	else:
@@ -286,7 +286,7 @@ func advance_area():
 			var bg
 			if Explorationdata.locations.has(location): 
 				bg = Explorationdata.locations[location].background
-			if areadata.has('image') and areadata.image != null and areadata.image != "":
+			if areadata.has('image') and areadata.image != null and (areadata.image is Array or areadata.image != ""):
 				bg = areadata.image
 			#2add set sound
 			combat_node.show()
@@ -317,7 +317,7 @@ func advance_area():
 			var level = areastate.level
 			set_party_level_data(party, areadata.level, level)
 			var bg = Explorationdata.locations[location].background
-			if areadata.has('image') and areadata.image != null and areadata.image != "":
+			if areadata.has('image') and areadata.image != null and(areadata.image is Array or areadata.image != ""):
 				bg = areadata.image
 			#2add set sound
 			combat_node.show()
