@@ -1676,6 +1676,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				if skill.has('sounddata') and skill.sounddata.hit != null:
 					if skill.sounddata.hittype == 'absolute':
 						s_skill2.target.displaynode.process_sound(skill.sounddata.hit)
+					elif skill.sounddata.hittype == 'bodyhitsound':
+						s_skill2.target.displaynode.process_sound(s_skill2.target.bodyhitsound)
 					elif skill.sounddata.hittype == 'bodyarmor':
 						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
 				for j in animationdict.postdamage:

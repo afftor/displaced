@@ -88,6 +88,11 @@ func get_animations():
 	return res
 
 
+func get_weapon_sound():
+	var res = weaponsound
+	return "sound/%s" % res
+
+
 func get_stat(statname):
 	if statname == 'hp_p':
 		return 100.0 * hp / hpmax_get()
