@@ -515,3 +515,26 @@ func adv_confirm():
 
 func adv_decline():
 	$AdvConfirm.visible = false
+
+
+func check_party():
+	var free_positions = [1, 2, 3]
+	var free_heroes = []
+	for ch in state.characters:
+		var thero = state.heroes[ch]
+		if !thero.unlocked : continue
+		if thero.position == null: 
+			free_heroes.push_back(thero)
+		else:
+			free_positions.erase(thero.position)
+	while !free_positions.empty() and !free_heroes.empty():
+		var pos = free_positions.front()
+		var tch = free_heroes.front()
+		tch.position = pos
+		free_positions.pop_front()
+		free_heroes.pop_front()
+
+
+func auto_advance():
+	check_party()
+	advance_area()

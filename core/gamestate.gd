@@ -500,6 +500,8 @@ func system_action(action):
 #simple action wrappers
 func unlock_char(code, value = true):
 	heroes[code].unlocked = value
+	if !value:
+		heroes[code].position = null
 
 
 func unlock_loc(loc_id, value = true):

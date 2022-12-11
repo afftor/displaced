@@ -49,7 +49,7 @@ var charlist = {
 		evasion = 0,
 		hitrate = 100,
 		damage = 35,
-		unlocked = false,
+		unlocked = true,
 		bonusres = ['slash', 'water', 'air', 'dark'],
 		skilllist = ['swipe', 'fire_bolt', 'flash', 'deluge', 'renew', 'dispel', 'explosion', 'protect'],
 	},
