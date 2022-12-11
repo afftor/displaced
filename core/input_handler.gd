@@ -130,6 +130,13 @@ func Open(node):
 	OpenAnimation(node)
 	CloseableWindowsArray.append(node)
 
+func OpenInstant(node):
+	node.visible = true
+	node.modulate = Color(1,1,1,1)
+	node.rect_scale = Vector2(1,1)
+	CloseableWindowsArray.append(node)
+
+
 func GetItemTooltip():
 	var tooltipnode
 	var node = get_tree().get_root()
@@ -506,6 +513,10 @@ func OpenAnimation(node):
 	yield(get_tree().create_timer(0.3), 'timeout')
 	BeingAnimated.erase(node)
 	#globals.call_deferred('EventCheck');
+
+
+
+
 
 
 func DelayedCallback(node, delay, method, args = []):

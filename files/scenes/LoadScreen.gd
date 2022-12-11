@@ -5,6 +5,8 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene
 
+var mode = 1
+
 var mainmenu = "res://files/scenes/MainScreen.gd"
 
 func _ready():
@@ -13,6 +15,7 @@ func _ready():
 #	goto_scene(globals.scenedict.menu)
 
 func goto_scene(path): # game requests to switch to this scene
+	mode = 1
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # check for errors
 		#show_error()
@@ -26,9 +29,8 @@ func goto_scene(path): # game requests to switch to this scene
 
 	wait_frames = 1
 
-
 func _process(delta):
-	if loader == null:
+	if loader == null and mode != 2:
 		# no need to process anymore
 		set_process(false)
 		return
@@ -38,18 +40,26 @@ func _process(delta):
 	var t = OS.get_ticks_msec()
 	while OS.get_ticks_msec() < t + time_max: # use "time_max" to control how much time we block this thread
 		# poll your loader
-		var err = loader.poll()
-		if err == ERR_FILE_EOF: # load finished
-			var resource = loader.get_resource()
-			loader = null
-			set_new_scene(resource)
-			break
-		elif err == OK:
-			update_progress()
-		else: # error during loading
-			#show_error()
-			loader = null
-			break
+		if mode == 1:
+			var err = loader.poll()
+			if err == ERR_FILE_EOF: # load finished
+				var resource = loader.get_resource()
+				mode = 2
+				loader = null
+				set_new_scene(resource)
+				break
+			elif err == OK:
+				update_progress()
+			else: # error during loading
+				#show_error()
+				loader = null
+				break
+		if mode == 2:
+			if resources.is_busy(): # load not finished
+				update_progress_res()
+			else:
+				set_new_scene_finish()
+				break
 
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
@@ -62,10 +72,26 @@ func update_progress():
 	# call this on a paused animation. use "true" as the second parameter to force the animation to update
 	get_node("animation").seek(progress * length, true)
 
+
+func update_progress_res():
+	var progress = float(resources.current_loaded) / resources.max_loaded
+	# update your progress bar?
+	get_node("progress").value = progress*100
+
+	# or update a progress animation?
+	var length = get_node("animation").get_current_animation_length()
+
+	# call this on a paused animation. use "true" as the second parameter to force the animation to update
+	get_node("animation").seek(progress * length, true)
+
+
 func set_new_scene(scene_resource):
 	current_scene = scene_resource.instance()
 	globals.CurrentScene = current_scene
 	get_node("/root").add_child(current_scene)
-	get_node("/root").remove_child(self)
+	self.raise()
+
+func set_new_scene_finish():
 	globals.emit_signal("scene_changed")
+	get_node("/root").remove_child(self)
 	self.queue_free()

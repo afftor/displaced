@@ -10,7 +10,7 @@ export var test_mode = false
 
 func _ready():
 	hide()
-	if input_handler.scene_node == null:
+	if input_handler.scene_node == null and test_mode:
 		input_handler.initiate_scennode(self)
 	$Panel/Panel/close.connect("pressed", self, 'hide')
 	for ch in charlist.get_children():

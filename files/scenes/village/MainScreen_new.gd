@@ -45,7 +45,7 @@ func debug():
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
-	if input_handler.scene_node == null:
+	if input_handler.scene_node == null and debug:
 		input_handler.initiate_scennode(self)
 	input_handler.SetMusic("towntheme")
 	

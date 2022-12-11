@@ -286,7 +286,10 @@ func play_scene(scene_id, enforce_replay = false):
 	if !enforce_replay and state.OldEvents.has(scene_id):
 		return false
 	state.CurEvent = scene_id
-	input_handler.OpenClose(input_handler.scene_node)
+	if scene_id != 'intro_1': #not good but no other way currently
+		input_handler.OpenClose(input_handler.scene_node)
+	else:
+		input_handler.OpenInstant(input_handler.scene_node)
 	input_handler.scene_node.replay_mode = state.OldEvents.has(scene_id)
 	input_handler.scene_node.play_scene(scene_id)
 	return true
