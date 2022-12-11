@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deluge.wav-60ae8bd2e641044097f8026cef67a059.sample"
+
+[deps]
+
+source_file="res://assets/sound/deluge.wav"
+dest_files=[ "res://.import/deluge.wav-60ae8bd2e641044097f8026cef67a059.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

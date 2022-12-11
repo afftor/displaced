@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/golem at.wav-56a3dec17f090f827eee2312d03f4aa1.sample"
+
+[deps]
+
+source_file="res://assets/sound/golem at.wav"
+dest_files=[ "res://.import/golem at.wav-56a3dec17f090f827eee2312d03f4aa1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

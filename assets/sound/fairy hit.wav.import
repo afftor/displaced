@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fairy hit.wav-b9ec6174b867f8c4309717643bf17497.sample"
+
+[deps]
+
+source_file="res://assets/sound/fairy hit.wav"
+dest_files=[ "res://.import/fairy hit.wav-b9ec6174b867f8c4309717643bf17497.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

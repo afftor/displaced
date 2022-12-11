@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dwarf atttack armor.wav-ced181c7dd68d1c8ec1630d0937328c2.sample"
+
+[deps]
+
+source_file="res://assets/sound/dwarf atttack armor.wav"
+dest_files=[ "res://.import/dwarf atttack armor.wav-ced181c7dd68d1c8ec1630d0937328c2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

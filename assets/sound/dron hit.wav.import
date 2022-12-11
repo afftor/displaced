@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dron hit.wav-28dcfe2d879a6b0b3f8e4f8dff899c7c.sample"
+
+[deps]
+
+source_file="res://assets/sound/dron hit.wav"
+dest_files=[ "res://.import/dron hit.wav-28dcfe2d879a6b0b3f8e4f8dff899c7c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dwarf hit.wav-fe5987030243413905b8ef594e87d6e5.sample"
+
+[deps]
+
+source_file="res://assets/sound/dwarf hit.wav"
+dest_files=[ "res://.import/dwarf hit.wav-fe5987030243413905b8ef594e87d6e5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
