@@ -248,6 +248,8 @@ func run_actions_list(list, replay = false):
 				if stop_syncronous: break
 				stop_syncronous = true
 				force_start_mission(action.value)
+				if action.has('auto_advance') and action.auto_advance:
+					input_handler.explore_node.auto_advance()
 
 
 func change_screen(screen):
