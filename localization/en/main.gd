@@ -91,7 +91,7 @@ var TranslationDict = {
 	MONSTERFAERY = "Faery",
 	MONSTERFAERYFLAVOR = "If not for their nasty nature, I would even consider them appealing.",
 	
-	MONSTERTREANT = "Ent",
+	MONSTERTREANT = "Treant",
 	MONSTERTREANTFLAVOR = "Despite its looks, this thing is actually a plant. Often disguises itself as a simple trunk for a nasty surprise.",
 	MONSTERSPIDER = "Spider",
 	MONSTERSPIDERFLAVOR = "Of course just ents weren't enough...",

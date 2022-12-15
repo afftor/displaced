@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sukkub at.wav-91ca448901b88500e1953cb5303bd757.sample"
+
+[deps]
+
+source_file="res://assets/sound/sukkub at.wav"
+dest_files=[ "res://.import/sukkub at.wav-91ca448901b88500e1953cb5303bd757.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

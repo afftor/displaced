@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ent at boss.wav-63c589a9f21f09378ff8d7b4e9b89a37.sample"
+
+[deps]
+
+source_file="res://assets/sound/ent at boss.wav"
+dest_files=[ "res://.import/ent at boss.wav-63c589a9f21f09378ff8d7b4e9b89a37.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
