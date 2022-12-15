@@ -357,6 +357,7 @@ var skilllist = {
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_fencing_3'},
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_fencing_4'},
 		],
+		sounddata = {initiate = null, strike = null, hit = 'fencing', hittype = 'absolute'},
 		follow_up = "fencing1"
 	},
 	fencing1 = {
@@ -389,6 +390,7 @@ var skilllist = {
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_fencing_3'},
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_fencing_4'},
 		],
+		sounddata = {initiate = null, strike = null, hit = 'fencing', hittype = 'absolute'},
 		not_final = true
 	},
 	lunge = {
@@ -417,7 +419,7 @@ var skilllist = {
 			{code = 'sfx_lunge', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-
+		sounddata = {initiate = null, strike = 'lunge', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_lunge'},
 		]
@@ -445,6 +447,7 @@ var skilllist = {
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
 			{code = 'anim_hit', target = 'target', period = 'predamage'},
 			{code = 'sfx_side_slash', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'side slash', hit = null, hittype = 'absolute'},
 		sfxcaster = null,
 		sfxtarget = null,
 
@@ -475,7 +478,7 @@ var skilllist = {
 			{code = 'sfx_swift_s', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-
+		sounddata = {initiate = null, strike = 'swift strike13', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_swift_1'}
 		]
@@ -507,11 +510,10 @@ var skilllist = {
 		sfx_duration = 0.3,
 		sfxcaster = null,
 		sfxtarget = null,
-
+		sounddata = {initiate = null, strike = null, hit = 'arron_parry', hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_parry_1'}
 		],
-		sounddata = {initiate = null, strike = null, hit = 'arron_parry', hittype = 'absolute'},
 	},
 	sword_mastery = {
 		code = 'sword_mastery',
@@ -537,11 +539,11 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'sfx_fencing', target = 'target', period = 'predamage'},
 #			{code = 'anim_cast', target = 'target', period = 'windup'},
-{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'anim_attack', target = 'caster', period = 'windup'},
 		], #or not. put this animation here
 		sfxcaster = null,
 		sfxtarget = null,
-
+		sounddata = {initiate = 'sword mastery', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_swm_1'}
 		]
@@ -571,6 +573,7 @@ var skilllist = {
 			{code = 'sfx_fight_arron_combo_sq', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = null, hit = 'termination', hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_term_1'}
 		],
@@ -599,7 +602,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = null, hit = 'termination', hittype = 'absolute'},
 		patches = [{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_term_1'}],
 		not_final = true
 	},
@@ -628,7 +631,7 @@ var skilllist = {
 		{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'smoke screen', strike = null, hit = null, hittype = 'absolute'},
 	},
 	swipe = {#NEW, NEED FILLING DATA
 		code = 'swipe',
@@ -656,7 +659,7 @@ var skilllist = {
 			{code = 'sfx_rose_swipe', target = 'target', period = 'predamage'}], #still think it not match her weapon
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'swipe', hit = null, hittype = 'absolute'},
 	},
 	fire_bolt = {
 		code = 'fire_bolt',
@@ -684,6 +687,7 @@ var skilllist = {
 			{code = 'anim_hit', target = 'target', period = 'predamage'},],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = 'firebolt', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_fbolt_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_fbolt_2'},
@@ -712,7 +716,7 @@ var skilllist = {
 		{code = 'anim_attack', target = 'caster', period = 'windup'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'flash', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'eq'}], patch = 'p_flash_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_flash_2'},
@@ -742,7 +746,7 @@ var skilllist = {
 			{code = 'sfx_fight_rouz_9_water_sq', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'deluge', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_deluge'},
 		]
@@ -774,7 +778,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_renew_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_renew_2'},
@@ -806,7 +810,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'dispel', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_dispel'}
 		]
@@ -836,7 +840,7 @@ var skilllist = {
 			{code = 'sfx_explosion', target = 'target_group', period = 'prehit'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = 'explosion', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_explosion'}
 		]
@@ -868,7 +872,7 @@ var skilllist = {
 		],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'protection', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_protect'}
 		]
@@ -898,7 +902,7 @@ var skilllist = {
 		sfx = [{code = 'sfx_rose_protection', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'protection', hit = null, hittype = 'absolute'},
 		not_final = true
 	},
 	qshot = {
@@ -925,6 +929,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'arrow_shot', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_qshot_1'},
 		],
@@ -953,6 +958,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'arrow_shot', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_qshot_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_qshot_2'},
@@ -1014,6 +1020,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'earth_strike', hit = null, hittype = 'absolute'},
 		patches = []
 	},
 	frost_arrow = {
@@ -1040,7 +1047,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'frost arrow', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'frost arrow', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'lte'}], patch = 'p_farrow_1'},
 		]
@@ -1070,7 +1077,7 @@ var skilllist = {
 		],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = 'arrowshower', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_arrshower'}
 		]
@@ -1101,7 +1108,7 @@ var skilllist = {
 			],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'nature_blessing', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_natbless'}
 			]
@@ -1159,6 +1166,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'predamage'},],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = 'heart_seeker', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_hearts'},
 		]
@@ -1214,6 +1222,7 @@ var skilllist = {
 			{code = 'sfx_combo', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
@@ -1244,6 +1253,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = null, hit = 'punch', hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
@@ -1272,6 +1282,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = null, hit = 'punch', hittype = 'absolute'},
 		patches = [],
 		not_final = true
 	},
@@ -1358,6 +1369,7 @@ var skilllist = {
 		sfx = [],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = null, strike = 'shockwave', hit = null, hittype = 'absolute'},
 		patches = [],
 		not_final = true
 	},
@@ -1479,7 +1491,7 @@ var skilllist = {
 		{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = 'aegis', hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'aegis', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_aegis'},
 		]
@@ -1536,7 +1548,7 @@ var skilllist = {
 		sfx = [],#{code = 'sfx_earthquake', target = 'target_group', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'earthquake', strike = null, hit = null, hittype = 'absolute'},
 		patches = [],
 		not_final = true
 	},
@@ -1564,7 +1576,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'dark orb', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'dark orb', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_orb_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_orb_2'},
@@ -1624,6 +1636,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},], #the only period, that do not clone for each repeat 
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_ava'}
 		],
@@ -1652,6 +1665,7 @@ var skilllist = {
 		sfx = [], 
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_ava'}
 		],
@@ -1681,11 +1695,12 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = 'dark orb', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_thorn'},
 		]
 	},
-	dark_echoes = {
+	dark_echoes = { 
 		code = 'dark_echoes',
 		name = tr(""),
 		description = tr(""),
@@ -1712,7 +1727,7 @@ var skilllist = {
 		],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'weapon', hit = 'strike', hittype = 'bodyarmor'},
+		sounddata = {initiate = 'dispel', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_echo_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_echo_2'}
@@ -1743,7 +1758,7 @@ var skilllist = {
 		],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'restoration', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'restoration', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_resto'},
 		]
@@ -1801,7 +1816,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'soul protection', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'soul protection', strike = null, hit = null, hittype = 'absolute'},
 		patches = []
 	},
 	holy_light = {
@@ -1855,7 +1870,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = null, strike = 'gust of wind', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'gust of wind', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_gust'},
 		]
@@ -1977,7 +1992,7 @@ var skilllist = {
 		],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_defend_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_defend_2'},
@@ -2718,6 +2733,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'windup'},],
 		sfxcaster = null,
 		sfxtarget = null,
+		sounddata = {initiate = 'zombi at', strike = null, hit = null, hittype = 'absolute'},
 		patches = [],
 		ai_priority = 0.3
 	},
@@ -2829,7 +2845,7 @@ var skilllist = {
 		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},],
 		sfxcaster = null,
 		sfxtarget = null,
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'firebolt', hit = 'firehit', hittype = 'absolute'},
 		patches = [],
 		ai_priority = 1
 	},

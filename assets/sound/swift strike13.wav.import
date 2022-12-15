@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swift strike13.wav-0c935d42109fc2d573f21cc346545187.sample"
+
+[deps]
+
+source_file="res://assets/sound/swift strike13.wav"
+dest_files=[ "res://.import/swift strike13.wav-0c935d42109fc2d573f21cc346545187.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

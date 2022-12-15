@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/kingdwarf1.png-bf4ecb9fa5536b40a5ef253d9060cc9a.stex"
+path="res://.import/KingDwarf1.png-3762c0e88062e55eda1c5939ead611f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprite/kingdwarf1.png"
-dest_files=[ "res://.import/kingdwarf1.png-bf4ecb9fa5536b40a5ef253d9060cc9a.stex" ]
+source_file="res://assets/images/sprite/KingDwarf1.png"
+dest_files=[ "res://.import/KingDwarf1.png-3762c0e88062e55eda1c5939ead611f3.stex" ]
 
 [params]
 

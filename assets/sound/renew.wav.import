@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/renew.wav-c86572c9d88fb17e15436941e4b374f5.sample"
+
+[deps]
+
+source_file="res://assets/sound/renew.wav"
+dest_files=[ "res://.import/renew.wav-c86572c9d88fb17e15436941e4b374f5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

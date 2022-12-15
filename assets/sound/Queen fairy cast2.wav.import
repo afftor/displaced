@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Queen fairy cast2.wav-f8a4f6536fc193d6eec05a2fb518a659.sample"
+
+[deps]
+
+source_file="res://assets/sound/Queen fairy cast2.wav"
+dest_files=[ "res://.import/Queen fairy cast2.wav-f8a4f6536fc193d6eec05a2fb518a659.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

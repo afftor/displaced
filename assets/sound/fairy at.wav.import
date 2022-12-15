@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fairy at.wav-681a4c09333fb5f5b4d6604ae555c205.sample"
+
+[deps]
+
+source_file="res://assets/sound/fairy at.wav"
+dest_files=[ "res://.import/fairy at.wav-681a4c09333fb5f5b4d6604ae555c205.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

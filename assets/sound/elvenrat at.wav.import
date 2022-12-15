@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/elvenrat at.wav-f04572aa1fcabe033478994e6ffb37c8.sample"
+
+[deps]
+
+source_file="res://assets/sound/elvenrat at.wav"
+dest_files=[ "res://.import/elvenrat at.wav-f04572aa1fcabe033478994e6ffb37c8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

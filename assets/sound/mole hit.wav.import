@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mole hit.wav-51525e97d324c64d3efc6c71bfe2232f.sample"
+
+[deps]
+
+source_file="res://assets/sound/mole hit.wav"
+dest_files=[ "res://.import/mole hit.wav-51525e97d324c64d3efc6c71bfe2232f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

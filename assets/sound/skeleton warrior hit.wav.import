@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/skeleton warrior hit.wav-bc6ed162b4826b090cbe42fdd84d544c.sample"
+
+[deps]
+
+source_file="res://assets/sound/skeleton warrior hit.wav"
+dest_files=[ "res://.import/skeleton warrior hit.wav-bc6ed162b4826b090cbe42fdd84d544c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

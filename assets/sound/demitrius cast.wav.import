@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/demitrius cast.wav-6c97edd35437c7d8bd41fee725617108.sample"
+
+[deps]
+
+source_file="res://assets/sound/demitrius cast.wav"
+dest_files=[ "res://.import/demitrius cast.wav-6c97edd35437c7d8bd41fee725617108.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
