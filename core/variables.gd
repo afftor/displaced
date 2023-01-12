@@ -55,7 +55,7 @@ var default_animations_duration = {
 	cast = 0.6,
 	special = 0.6,
 	hit = 0.6,
-	dead = 0.7,#for npc only
+	dead = 1.4,#for npc only
 	null: 0.5,
 }
 var default_animations_transition = { #those are not added to duration
