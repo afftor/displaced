@@ -249,6 +249,13 @@ func buildenemygroup(group):
 		enemygroup[i].process_event(variables.TR_COMBAT_S)
 	
 	gui_node.build_enemy_panels()
+	
+	for i in range (4, 10):
+		if battlefield[i] == null : continue
+		battlefield[i].displaynode.rect_global_position = battlefield[i].displaynode.rect_global_position + Vector2(OS.get_window_size().x/3, 0)
+		var tweennode = input_handler.GetTweenNode(self)
+		tweennode.interpolate_property(battlefield[i].displaynode, 'rect_global_position', battlefield[i].displaynode.rect_global_position, battlefield[i].displaynode.rect_global_position - Vector2(OS.get_window_size().x/3, 0), 0.5, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+		tweennode.start()
 		#new part for gamestate
 #		state.heroes[enemygroup[i].id] = enemygroup[i]
 #		state.combatparty[i] = enemygroup[i].id
@@ -275,7 +282,7 @@ func make_fighter_panel(fighter, spot, show = true):
 	panel.panel_node = gui_node.get_enemy_panel(spot)
 	panel.setup_character(fighter)
 	panel.set_global_position(positions[spot])
-	if show: panel.visible = true
+	panel.visible = show
 	panel.noq_rebuildbuffs(fighter.get_all_buffs())
 
 
@@ -290,7 +297,7 @@ func make_hero_panel(fighter, show = true):
 #		print(panel.rect_global_position)
 	else:
 		panel.set_global_position(Vector2(0,0))
-	if !show: panel.visible = false
+	panel.visible = show
 	panel.noq_rebuildbuffs(fighter.get_all_buffs())
 
 
@@ -629,15 +636,23 @@ func calculate_hit_sound(skill, caster, target):
 #position manipulation
 func advance_frontrow():
 	nextenemy = 4
+	
+	var prev_pos = {} # used for row animation
+	for i in range(1, 10): #
+		prev_pos[i] = null #
+	
 	for pos in range(7, 10):
 		if battlefield[pos] == null: continue
 		if enemygroup[pos] == null : continue
+		
+		prev_pos[pos] = battlefield[pos].displaynode.rect_global_position #
+		
 		enemygroup[pos - 3] = enemygroup[pos]
 		enemygroup.erase(pos)
 	for i in range(7, 10):
 		if battlefield[i] == null: continue
 		battlefield[i].displaynode.disable_panel_node()
-		battlefield[i].displaynode.disappear()
+#		battlefield[i].displaynode.disappear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
@@ -651,7 +666,20 @@ func advance_frontrow():
 		battlefield[i] = enemygroup[i]
 		battlefield[i].position = i
 		make_fighter_panel(battlefield[i], i, false)
-		battlefield[i].displaynode.appear()
+#		battlefield[i].displaynode.appear()
+		
+		prev_pos[i] = battlefield[i].displaynode.rect_global_position #
+	
+	# making animation
+	for i in range (4, 7):
+		if prev_pos[i] == null : continue
+		battlefield[i].displaynode.rect_global_position = prev_pos[i+3]
+		battlefield[i].displaynode.visible = true
+		var tweennode = input_handler.GetTweenNode(self)
+		tweennode.interpolate_property(battlefield[i].displaynode, 'rect_global_position', prev_pos[i+3], prev_pos[i], 0.5, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+		tweennode.start()
+		
+	
 	gui_node.build_enemy_panels()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
