@@ -268,6 +268,18 @@ func process_resurrect():
 	animation_node.add_new_data(data)
 
 
+func appear_move():
+	var data 
+	data = {node = self, time = input_handler.combat_node.turns, type = 'move_sprite', slot = 'full', params = {duration = 0.5, start = input_handler.combat_node.positions[position] + Vector2(OS.get_window_size().x/3, 0), finish = input_handler.combat_node.positions[position]}} 
+	animation_node.add_new_data(data)
+
+
+func advance_move():
+	var data 
+	data = {node = self, time = input_handler.combat_node.turns, type = 'move_sprite', slot = 'full', params = {duration = 0.5, start = input_handler.combat_node.positions[position + 3], finish = input_handler.combat_node.positions[position]}} 
+	animation_node.add_new_data(data)
+
+
 #control visuals
 func noq_rebuildbuffs(newbuffs):
 	var oldbuff = 0

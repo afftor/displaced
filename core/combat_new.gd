@@ -246,19 +246,11 @@ func buildenemygroup(group):
 		enemygroup[i].position = i
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)
-		enemygroup[i].process_event(variables.TR_COMBAT_S)
-	
+		enemygroup[i].displaynode.appear_move()
 	gui_node.build_enemy_panels()
-	
-	for i in range (4, 10):
-		if battlefield[i] == null : continue
-		battlefield[i].displaynode.rect_global_position = battlefield[i].displaynode.rect_global_position + Vector2(OS.get_window_size().x/3, 0)
-		var tweennode = input_handler.GetTweenNode(self)
-		tweennode.interpolate_property(battlefield[i].displaynode, 'rect_global_position', battlefield[i].displaynode.rect_global_position, battlefield[i].displaynode.rect_global_position - Vector2(OS.get_window_size().x/3, 0), 0.5, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-		tweennode.start()
-		#new part for gamestate
-#		state.heroes[enemygroup[i].id] = enemygroup[i]
-#		state.combatparty[i] = enemygroup[i].id
+	turns += 1
+	for i in enemygroup:
+		enemygroup[i].process_event(variables.TR_COMBAT_S)
 
 
 func buildplayergroup():
@@ -637,27 +629,14 @@ func calculate_hit_sound(skill, caster, target):
 func advance_frontrow():
 	nextenemy = 4
 	
-	var prev_pos = {} # used for row animation
-	for i in range(1, 10): #
-		prev_pos[i] = null #
-	
 	for pos in range(7, 10):
 		if battlefield[pos] == null: continue
 		if enemygroup[pos] == null : continue
-		
-		prev_pos[pos] = battlefield[pos].displaynode.rect_global_position #
-		
 		enemygroup[pos - 3] = enemygroup[pos]
 		enemygroup.erase(pos)
 	for i in range(7, 10):
 		if battlefield[i] == null: continue
 		battlefield[i].displaynode.disable_panel_node()
-#		battlefield[i].displaynode.disappear()
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	turns += 1
-	for i in range(7, 10):
-		if battlefield[i] == null: continue
 		battlefield[i].displaynode.visible = false
 		battlefield[i] = null
 	for i in range(4, 7):
@@ -667,18 +646,7 @@ func advance_frontrow():
 		battlefield[i].position = i
 		make_fighter_panel(battlefield[i], i, false)
 #		battlefield[i].displaynode.appear()
-		
-		prev_pos[i] = battlefield[i].displaynode.rect_global_position #
-	
-	# making animation
-	for i in range (4, 7):
-		if prev_pos[i] == null : continue
-		battlefield[i].displaynode.rect_global_position = prev_pos[i+3]
-		battlefield[i].displaynode.visible = true
-		var tweennode = input_handler.GetTweenNode(self)
-		tweennode.interpolate_property(battlefield[i].displaynode, 'rect_global_position', prev_pos[i+3], prev_pos[i], 0.5, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-		tweennode.start()
-		
+		battlefield[i].displaynode.advance_move()
 	
 	gui_node.build_enemy_panels()
 	CombatAnimations.check_start()

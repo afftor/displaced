@@ -431,3 +431,13 @@ func death_animation(node):
 	
 	input_handler.FadeAnimation(node, 1, 0.5)
 	return delaytime
+
+
+func move_sprite(node, args):
+	var tween = input_handler.GetTweenNode(node)
+	var playtime = args.duration
+	node.rect_global_position = args.start
+	tween.interpolate_property(node, 'rect_global_position', args.start, args.finish, playtime, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	tween.start()
+	node.visible = true
+	return playtime
