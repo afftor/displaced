@@ -15,9 +15,6 @@ var gear_level = {weapon1 = 1, weapon2 = 0, armor = 1}
 var curweapon = 'weapon1'
 var base_dmg_type = 'bludgeon' setget , get_weapon_damagetype
 
-var skillpoints = {support = 1, main = 1, ultimate = 0}
-
-
 #out of combat regen stats
 var regen_collected = 0
 
@@ -88,12 +85,18 @@ func a_mana_set(value):
 func levelup():
 	level += 1
 	recentlevelups += 1
-	if level in [4, 16, 22]:
-		skillpoints.main += 1
-	if level == 12:
-		skillpoints.support += 1
-	if level in [8, 28]:
-		skillpoints.ultimate += 1
+#	var template = combatantdata.charlist[id]
+#	for id in template.skills:
+#		if template.skills[id] == level:
+#			skills.push_back(id)
+
+func get_skills():
+	var res = []
+	var template = combatantdata.charlist[id]
+	for id in template.skilllist:
+		if template.skilllist[id] <= level:
+			res.push_back(id)
+	return res
 
 
 func see_enemy_killed():
@@ -101,39 +104,12 @@ func see_enemy_killed():
 	friend_points += 1 #can adjust it here, arron still get fp
 
 
-
-func can_unlock_skill(skill_code):
-	var template = Skillsdata.skilllist[skill_code]
-	if template.has('req_level') and level < template.req_level: return false
-	if skills.has(skill_code): return false
-	if !skillpoints.has(template.skilltype): return false
-	return skillpoints[template.skilltype] > 0
-
-func unlock_skill(skill_code):
-	if !can_unlock_skill(skill_code): return
-	var template = Skillsdata.skilllist[skill_code]
-	skills.push_back(skill_code)
-	skillpoints[template.skilltype] -= 1
-
-func can_forget_skill(skill_code):
-	var template = Skillsdata.skilllist[skill_code]
-	if !skills.has(skill_code): return false
-	if template.tags.has('default'): return false
-	return true
-
-func forget_skill(skill_code):
-	if !can_forget_skill(skill_code): return
-	var template = Skillsdata.skilllist[skill_code]
-	skills.erase(skill_code)
-	skillpoints[template.skilltype] += 1
-
-
-#cheat
-func unlock_all_skills():
-	var template = combatantdata.charlist[id]
-	for s in template.skilllist:
-		if !skills.has(s):
-			skills.push_back(s)
+##cheat
+#func unlock_all_skills():
+#	var template = combatantdata.charlist[id]
+#	for s in template.skilllist:
+#		if !skills.has(s):
+#			skills.push_back(s)
 
 
 
@@ -238,7 +214,6 @@ func serialize():
 	tmp.level = level
 	tmp.curweapon = curweapon
 	tmp.gear_level = gear_level.duplicate()
-	tmp.skillpoints = skillpoints.duplicate()
 	tmp.skills = skills.duplicate()
 	tmp.hp = hp
 #	tmp.mana = mana
@@ -260,7 +235,6 @@ func deserialize(savedir):
 	level = savedir.level
 	curweapon = savedir.curweapon
 	gear_level = savedir.gear_level.duplicate()
-	skillpoints = savedir.skillpoints.duplicate()
 	skills = savedir.skills.duplicate()
 	hp = savedir.hp
 #	mana = savedir.mana

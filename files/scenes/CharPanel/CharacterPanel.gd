@@ -164,37 +164,10 @@ func build_stats():
 	stats_list.get_node("hp").max_value = v2
 	stats_list.get_node("hp").value = v1
 	stats_list.get_node("hp/Label").text = "%d/%d" % [v1, v2]
-#	input_handler.ClearContainer(stats_list.get_node('stats/statnames'), ['panel'])
-#	input_handler.ClearContainer(stats_list.get_node('stats/values'), ['panel'])
-#	input_handler.ClearContainer(stats_list.get_node('stats/icons'), ['panel'])
 	stats_list.get_node("dmg/value").text = str(character.get_stat('damage'))
 	stats_list.get_node("dmg/icon").texture = load("res://assets/images/iconsskills/source_%s.png" % character.get_stat('base_dmg_type'))
 	build_skills()
 	
-#	for st in statlist:
-##		var p1 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/statnames'), 'panel')
-##		var p2 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/values'), 'panel')
-##		var p3 = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats/icons'), 'panel')
-#		var panel = input_handler.DuplicateContainerTemplate(stats_list.get_node('stats'), 'panel')
-#		panel.get_node('stat').text = st
-#		var tval = ""
-#		for line in statlist[st].text:
-#			if line.begins_with("get_"):
-#				tval += str(character.get_stat(line.trim_prefix("get_")))
-#			else:
-#				tval += line
-#		panel.get_node('value').text = tval
-#		if typeof(statlist[st].icon) == TYPE_STRING:
-#			panel.get_node('icon').texture = load(statlist[st].icon)
-#		elif typeof(statlist[st].icon) == TYPE_ARRAY:
-#			var tname = statlist[st].icon[0]
-#			var tstat = statlist[st].icon[1]
-#			if tstat.begins_with("get_"):
-#				tstat = character.get_stat(tstat.trim_prefix("get_"))
-#			panel.get_node('icon').texture = load(tname % tstat)
-#		else:
-#			panel.get_node('icon').texture = statlist[st].icon
-#	build_res()
 
 
 func build_res():
@@ -207,15 +180,11 @@ func build_res():
 		panel.get_node('icon/src').texture = load("res://assets/images/iconsskills/source_%s.png" % src)
 		panel.get_node("icon").hint_tooltip = "Resist: " + src.capitalize() #TODO: change to actual tooltip later
  
-#
-#func build_sp():
-#	$Label.text = "Attack SP %d | Support SP %d | Ultimate SP %d" % [character.skillpoints.main, character.skillpoints.support, character.skillpoints.ultimate]
 	
 #
 #
 func build_skills():
 	var chardata = combatantdata.charlist[character.id]
-	var splimit = character.skillpoints.duplicate()
 	input_handler.ClearContainer(skill_list)
 	for skill_id in chardata.skilllist: #attack not showing due to being always learned
 		var skilldata = Skillsdata.patch_skill(skill_id, character)
@@ -224,32 +193,6 @@ func build_skills():
 		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
 		panel.get_node('icon').texture = skilldata.icon
 		globals.connectskilltooltip(panel, character.id, skill_id)
-		if character.skills.has(skill_id):
-			splimit[skilldata.skilltype] += 1
-			panel.pressed = true
-			panel.connect("pressed", self, "unlearn_skill", [skill_id])
-			if !character.can_forget_skill(skill_id):
-				panel.disabled = true
-				panel.get_node('icon').material.set_shader_param('percent', 1.0)
-			else:
-				panel.get_node('icon').material.set_shader_param('percent', 0.0)
-		else:
-			panel.pressed = false
-			panel.connect("pressed", self, "learn_skill", [skill_id])
-			if !character.can_unlock_skill(skill_id):
-				panel.disabled = true
-				panel.get_node('icon').material.set_shader_param('percent', 1.0)
-			else:
-				panel.get_node('icon').material.set_shader_param('percent', 0.5)
-	$Panel/sp_label.text = "A %d/%d \n S %d/%d \n U %d/%d" % [character.skillpoints.main, splimit.main, character.skillpoints.support,splimit.support, character.skillpoints.ultimate, splimit.ultimate]
+		panel.pressed = character.skills.has(skill_id)
 
 
-
-func unlearn_skill(skill_id):
-	character.forget_skill(skill_id)
-	build_skills()
-
-
-func learn_skill(skill_id):
-	character.unlock_skill(skill_id)
-	build_skills()

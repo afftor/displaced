@@ -27,7 +27,6 @@ func run_test():
 	state.add_test_resources()
 	for ch in state.characters:
 		state.unlock_char(ch)
-		state.heroes[ch].unlock_all_skills()
 		state.heroes[ch].level = int($partylv/value.text)
 		state.heroes[ch].hp = state.heroes[ch].hpmax
 		state.heroes[ch].curweapon = get_node("VBoxContainer/%s/weapon/value" % ch).text

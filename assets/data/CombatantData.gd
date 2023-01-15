@@ -24,7 +24,7 @@ var charlist = {
 		damage = 30,
 		unlocked = true,
 		bonusres = ['slash', 'light', 'fire', 'earth'],
-		skilllist = ['fencing', 'lunge', 'sideslash', 'swift_s', 'parry', 'sword_mastery', 'termination', 'smoke_s'],
+		skilllist = {'fencing':1, 'parry':3, 'lunge':4, 'sword_mastery':8, 'sideslash':10, 'termination':10, 'swift_s':14, 'smoke_s':18},
 		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")
 	},
 	rose = {
@@ -51,7 +51,7 @@ var charlist = {
 		damage = 35,
 		unlocked = true,
 		bonusres = ['slash', 'water', 'air', 'dark'],
-		skilllist = ['swipe', 'fire_bolt', 'flash', 'deluge', 'renew', 'dispel', 'explosion', 'protect'],
+		skilllist = {'fire_bolt':1, 'renew':3, 'swipe':5, 'deluge':8, 'dispel':8, 'explosion':10, 'flash':12,  'protect':16},
 	},
 	erika = {
 		code = 'Erika',
@@ -76,7 +76,7 @@ var charlist = {
 		damage = 32,
 		unlocked = false,
 		bonusres = ['water', 'light', 'pierce', 'earth'],
-		skilllist = ['qshot', 'aarrow', 'eastrike', 'frost_arrow', 'arr_shower', 'nat_bless', 'heartseeker', 'charm'],
+		skilllist = {'aarrow':1, 'qshot':4, 'arr_shower':6, 'nat_bless':8, 'charm':10,  'eastrike':12, 'frost_arrow':14, 'heartseeker':15},
 	},
 	ember = {
 		code = 'Ember',
@@ -100,7 +100,7 @@ var charlist = {
 		damage = 29,
 		unlocked = false,
 		bonusres = ['bludgeon', 'air', 'fire', 'earth'],
-		skilllist = ['combo', 'firepunch', 'shockwave', 'uppercut', 'defend', 'dragon_protection', 'aegis', 'earthquake'],
+		skilllist = {'firepunch':1, 'defend':3, 'combo':6, 'uppercut':8, 'shockwave':12, 'earthquake':12, 'dragon_protection':14, 'aegis':18},
 	},
 	rilu = {
 		code = 'Rilu',
@@ -125,7 +125,7 @@ var charlist = {
 		damage = 28,
 		unlocked = false,
 		bonusres = ['dark', 'light', 'water', 'pierce'],
-		skilllist = ['dark_orb', 'pale_mist', 'avalanche', 'soulthorns', 'dark_echoes', 'restoration', 'soul_beam', 'soul_prot'],
+		skilllist = {'dark_orb':1, 'dark_echoes':8, 'avalanche':10, 'soul_beam':12, 'pale_mist':13, 'restoration':14, 'soulthorns':16, 'soul_prot':16},
 	},
 	iola = {
 		code = 'Iola',
@@ -150,7 +150,7 @@ var charlist = {
 		damage = 25,
 		unlocked = false,
 		bonusres = ['bludgeon', 'dark', 'fire', 'air'],
-		skilllist = ['holy_light', 'gustofwind', 'smash', 'cleansing', 'barrier', 'bless', 'sanctuary', 'purge'],
+		skilllist = {'holy_light':1, 'barrier':8, 'gustofwind':10, 'sanctuary':10, 'smash':12, 'cleansing':14, 'bless':16, 'purge':20},
 	},
 }
 

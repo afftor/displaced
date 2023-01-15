@@ -145,7 +145,6 @@ func test_combat():
 	
 	for ch in state.characters:
 		state.unlock_char(ch)
-		state.heroes[ch].unlock_all_skills()
 		state.heroes[ch].level = 39
 		state.heroes[ch].hp = state.heroes[ch].hpmax
 	state.heroes.arron.position = 1

@@ -32,7 +32,7 @@ var base_dmg_range = 'melee'
 
 var flavor
 
-var skills = ['attack']
+var skills = ['attack'] setget ,get_skills
 var traits = []
 var traitpoints := 0
 
@@ -231,6 +231,11 @@ func hp_set(value):
 		hp = clamp(round(value), 0, hp_max)
 	if displaynode != null:
 		displaynode.update_hp()
+
+
+func get_skills():
+	return skills
+
 
 #func mana_set(value):
 #	mana = clamp(round(value), 0, get_stat('manamax'))

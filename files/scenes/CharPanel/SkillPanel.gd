@@ -22,9 +22,6 @@ func RepositionCloseButton():
 	closebutton.set_global_position(pos)
 
 
-func build_sp():
-	$Label.text = "Attack SP %d | Support SP %d | Ultimate SP %d" % [character.skillpoints.main, character.skillpoints.support, character.skillpoints.ultimate]
-
 
 func build_stats():
 	stats_list.get_node('name').text = character.name
@@ -66,36 +63,6 @@ func build_skill_panel(panel, data):
 	panel.get_node('VBoxContainer/descript').text = tr("SKILL" + data.code.to_upper() + "DESCRIPT")
 
 
-#func build_skills():
-#	var chardata = combatantdata.charlist[character.id]
-#	input_handler.ClearContainer(skill_list)
-#	for skill_id in chardata.skilllist: #attack not showing due to being always learned
-#		var skilldata = Skillsdata.patch_skill(skill_id, character)
-#		var panel = input_handler.DuplicateContainerTemplate(skill_list)
-#		panel.get_node("Label").text = skilldata.name
-#		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
-#		panel.get_node('icon').texture = skilldata.icon
-#		#2add icon node and set icon data to it!
-##		panel.texture_normal = skilldata.icon
-#		globals.connectskilltooltip(panel, character.id, skill_id)
-#		if character.skills.has(skill_id):
-#			panel.pressed = true
-#			panel.connect("pressed", self, "unlearn_skill", [skill_id])
-#			if !character.can_forget_skill(skill_id):
-#				panel.disabled = true
-#				panel.get_node('icon').material.set_shader_param('percent', 1.0)
-#			else:
-#				panel.get_node('icon').material.set_shader_param('percent', 0.0)
-#		else:
-#			panel.pressed = false
-#			panel.connect("pressed", self, "learn_skill", [skill_id])
-#			if !character.can_unlock_skill(skill_id):
-#				panel.disabled = true
-#				panel.get_node('icon').material.set_shader_param('percent', 1.0)
-#			else:
-#				panel.get_node('icon').material.set_shader_param('percent', 0.5)
-
-
 func build_res():
 	input_handler.ClearContainer(res_list, ['panel'])
 	var resists = character.get_stat('resists')
@@ -105,14 +72,3 @@ func build_res():
 		panel.get_node('Label').text = ": %d" % resists[src] + "%"
 		panel.get_node('icon/src').texture = load("res://assets/images/iconsskills/source_%s.png" % src)
 		panel.get_node("icon").hint_tooltip = "Resist: " + src.capitalize() #TODO: change to actual tooltip later
-
-#func unlearn_skill(skill_id):
-#	character.forget_skill(skill_id)
-#	build_sp()
-#	build_skills()
-#
-#
-#func learn_skill(skill_id):
-#	character.unlock_skill(skill_id)
-#	build_sp()
-#	build_skills()
