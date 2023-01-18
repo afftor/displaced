@@ -68,4 +68,4 @@ frame_61/delay_sec = 0.0
 frame_62/delay_sec = 0.0
 frame_63/delay_sec = 0.0
 script = ExtResource( 1 )
-prefix = "dragon_sq"
+prefix = "Dragon_idle_sq"

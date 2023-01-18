@@ -850,9 +850,9 @@ var enemylist = {
 		weaponsound = 'dragon at boss',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Dragon_idle_sq/Dragon.tres"),
-			hit = "Fight/Bosses/Dragon2_0002_Dragon_hit",
-			attack ="Fight/Bosses/Dragon2_0001_Dragon_at" ,
-			cast ="Fight/Bosses/Dragon2_0000_Dragon_cast" ,
+			hit = "Fight/Bosses/Dragon_hit",
+			attack ="Fight/Bosses/Dragon_at" ,
+			cast ="Fight/Bosses/Dragon_cast" ,
 		},
 	},
 	viktor_boss = { #stats copied from above!!!
