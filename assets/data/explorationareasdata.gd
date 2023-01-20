@@ -3,6 +3,7 @@ extends Node
 
 var event_triggers = {#reworked to same syntax as seqs
 	intro_1 = [
+		{type = 'show_map'},
 		{type = 'mission', value = 'road_to_village', auto_advance = true},
 	],
 	intro_2 = [

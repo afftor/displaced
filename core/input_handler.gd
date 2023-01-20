@@ -120,6 +120,11 @@ func OpenClose(node):
 	OpenAnimation(node)
 	CloseableWindowsArray.append(node)
 
+func OpenUnfade(node):
+	node.show()
+	UnfadeAnimation(node)
+	CloseableWindowsArray.append(node)
+
 func Close(node):
 	CloseableWindowsArray.erase(node)
 	CloseAnimation(node)
