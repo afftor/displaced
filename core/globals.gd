@@ -270,7 +270,8 @@ func change_screen(screen):
 			input_handler.explore_node.show()
 #			input_handler.explore_node.open_mission()
 		'village':
-			pass
+			input_handler.explore_node.hide()
+			if input_handler.village_node != null: input_handler.village_node.show()
 
 
 func force_start_mission(mission_id):

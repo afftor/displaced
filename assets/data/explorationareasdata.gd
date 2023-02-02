@@ -195,7 +195,8 @@ var scene_sequences = {
 		actions = [
 			{type = 'scene', value = 'intro_2'},
 #			{type = 'system', value = 'unlock_character', arg = 'rose'},
-			{type = 'system', value = 'unlock_area', arg = 'village'}
+			{type = 'system', value = 'unlock_area', arg = 'village'},
+			{type = 'show_screen', value = 'village'},
 		]
 	},
 	erika_at_village = {
