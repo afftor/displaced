@@ -220,6 +220,7 @@ func StartGame():
 	change_screen('map')
 	if resources.is_busy(): yield(resources, "done_work")
 	print('start')
+	state.screen = true
 	run_seq('intro')
 
 
@@ -284,7 +285,7 @@ func force_start_mission(mission_id):
 	change_screen('mission')
 
 
-func play_scene(scene_id, enforce_replay = false):
+func play_scene(scene_id, enforce_replay = false, restore = false):
 	if input_handler.scene_node == null:
 		print("scene node not open")
 		return false
@@ -297,7 +298,7 @@ func play_scene(scene_id, enforce_replay = false):
 #	else:
 #		input_handler.OpenInstant(input_handler.scene_node)
 	input_handler.scene_node.replay_mode = state.OldEvents.has(scene_id)
-	input_handler.scene_node.play_scene(scene_id)
+	input_handler.scene_node.play_scene(scene_id, restore)
 	return true
 
 

@@ -31,9 +31,8 @@ var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
 var characters = ['arron', 'rose', 'erika', 'ember', 'iola', 'rilu']
 var party_save
 
-var CurrentTextScene
+var scene_restore_data = {}
 var CurrentScreen
-var CurrentLine := 0
 
 #var heroguild := {}
 #var guild_save
@@ -44,6 +43,7 @@ var gallery_unlocks = []
 #var gallery_event_unlocks = []
 var CurEvent := "" #event name
 var CurBuild := ""
+var screen = false
 
 #Progress
 var mainprogress = 0
@@ -100,13 +100,13 @@ func revert():
 	lognode = null
 	unlocks.clear()
 	combatparty = {1 : null, 2 : null, 3 : null}
-	CurrentTextScene = null
+	scene_restore_data = {}
 	CurrentScreen = null
-	CurrentLine = 0
 	OldSeqs.clear()
 	OldEvents.clear()
 	CurEvent = "" #event name
 	CurBuild = ""
+	screen = false
 	mainprogress = 0
 	decisions.clear()
 	activequests.clear()
@@ -213,6 +213,7 @@ func StoreEvent(nm):
 func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
+	scene_restore_data.clear()
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
 #	input_handler.emit_signal("EventFinished")
 	if Explorationdata.event_triggers.has(CurEvent):
@@ -404,8 +405,8 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild', 'mainprogress', 'CurEvent', 'CurrentLine', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea']
-	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild','CurEvent', 'mainprogress', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea', 'screen']
+	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'scene_restore_data']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
@@ -453,6 +454,15 @@ func deserialize(tmp:Dictionary):
 	}
 	for k in town_save.keys() :
 		townupgrades[k] = int(town_save[k])
+	for k in scene_restore_data:
+		if k == 'show_sprite': continue
+		scene_restore_data[k] = int(scene_restore_data[k])
+	if CurEvent != null and CurEvent != "":
+		globals.play_scene(CurEvent, false, true)
+	if screen:
+		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,1)
+	else:
+		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
 
 func cleanup():
 	for ch in heroes.keys().duplicate():
