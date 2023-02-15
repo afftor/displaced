@@ -200,6 +200,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	gui_node.combat_start()
 	input_handler.ShowGameTip('aftercombat')
 	gui_node.build_enemy_head()
+	TutorialCore.check_event("combat_start")
 	newturn()
 	call_deferred('select_actor')
 
@@ -307,6 +308,7 @@ func newturn():
 	gui_node.RebuildReserve()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	TutorialCore.check_event("combat_newturn")
 
 
 func select_actor():
@@ -383,7 +385,7 @@ func player_turn(pos):
 	gui_node.RebuildItemPanel()
 	gui_node.RebuildDefaultsPanel()
 	gui_node.RebuildSkillPanel()
-	SelectSkill(selected_character.get_autoselected_skill())
+	SelectSkill(selected_character.get_autoselected_skill(), true)
 
 
 func enemy_turn(pos):
@@ -438,6 +440,7 @@ func enemy_turn(pos):
 
 
 func ActivateItem(item):
+	if !TutorialCore.check_action("combat_activate_item", [item.id]): return
 	activeaction = item.useskill
 	activeitem = item
 	SelectSkill(activeaction)
@@ -445,7 +448,8 @@ func ActivateItem(item):
 	#UpdateSkillTargets()
 
 
-func SelectSkill(skill):
+func SelectSkill(skill, system = false):
+	if !system and !TutorialCore.check_action("combat_select_skill", [skill]): return
 	swapchar = null
 	activecharacter.displaynode.highlight_active()
 	Input.set_custom_mouse_cursor(cursors.default)
@@ -453,7 +457,7 @@ func SelectSkill(skill):
 	#need to add daily restriction check
 	if !activecharacter.can_use_skill(skill) :
 		#SelectSkill('attack')
-		call_deferred('SelectSkill', 'attack')
+		call_deferred('SelectSkill', ['attack', true])
 		return
 #	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
@@ -462,7 +466,7 @@ func SelectSkill(skill):
 		if checkwinlose() == FIN_NO:
 			print ('no legal targets')
 			combatlogadd('No legal targets')
-			call_deferred('SelectSkill', 'attack')
+			call_deferred('SelectSkill', ['attack', true])
 			return
 	if skill.allowedtargets.has('self') and skill.allowedtargets.size() == 1 :
 		globals.closeskilltooltip()
@@ -553,6 +557,7 @@ func checkdeaths():
 			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
 			#add fix around defeated player chars
 			if i > 3:
+				TutorialCore.check_event("combat_enemy_killed")
 				defeated.push_back(battlefield[i])
 #				battlefield[i].displaynode.visible = false
 #				battlefield[i].displaynode = null
@@ -652,6 +657,7 @@ func advance_frontrow():
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	recheck_auras()
+	TutorialCore.check_event("combat_advance")
 
 
 func advance_backrow():#not used for now
@@ -733,6 +739,7 @@ func swap_heroes_old(pos):
 
 
 func move_hero(chid, pos): #reserve -> bf
+	if !TutorialCore.check_action("combat_move_hero", [chid, pos]): return
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
 	allowaction = false
@@ -764,6 +771,7 @@ func move_hero(chid, pos): #reserve -> bf
 
 
 func reserve_hero(chid): #bf -> reserve
+	if !TutorialCore.check_action("combat_reserve_hero", [chid]): return
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
 	allowaction = false
@@ -789,6 +797,7 @@ func reserve_hero(chid): #bf -> reserve
 
 
 func swap_heroes(chid, pos): #bf <-> bf
+	if !TutorialCore.check_action("combat_swap_heroes", [chid, pos]): return
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
 	allowaction = false
@@ -863,6 +872,7 @@ func summon(montype, number):
 		make_fighter_panel(battlefield[sum_pos], sum_pos);
 #		state.combatparty[sum_pos] = enemygroup[sum_pos].id
 		state.heroes[enemygroup[sum_pos].id] = enemygroup[sum_pos]
+		TutorialCore.check_event("combat_summon")
 
 #combat finishes
 var rewardsdict
@@ -870,6 +880,7 @@ var rewardsdict
 func victory():#2remake for it is broken for now
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	TutorialCore.check_event("combat_victory")
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
@@ -1426,6 +1437,7 @@ func FighterPress(position):
 		T_CHARSELECT:
 			if position > 3:
 				return
+			if !TutorialCore.check_action("combat_select_hero", [position]): return
 			if battlefield[position] == null: return
 			if battlefield[position].acted: return
 			if battlefield[position].defeated: return
@@ -1433,6 +1445,7 @@ func FighterPress(position):
 			player_turn(position)
 			return
 		T_TARGETOVER:
+			if !TutorialCore.check_action("combat_use_skill", [position]): return
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				cur_state = T_AUTO
 				if swapchar != null:
@@ -1446,10 +1459,12 @@ func FighterPress(position):
 			return
 		T_SKILLCHAROVER:
 			if allowedtargets.enemy.has(position):
+				if !TutorialCore.check_action("combat_use_skill", [position]): return
 				cur_state = T_AUTO
 				activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
 			elif position in variables.playerparty:
+				if !TutorialCore.check_action("combat_select_char", [position]): return
 				if battlefield[position] == null: return
 				if battlefield[position].acted: return
 				if battlefield[position].defeated: return
@@ -1457,6 +1472,7 @@ func FighterPress(position):
 				player_turn(position)
 			return
 		T_SKILLSELECTED:
+			if !TutorialCore.check_action("combat_use_skill", [position]): return
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
@@ -1464,11 +1480,13 @@ func FighterPress(position):
 			return
 		T_SKILLCHAR:
 			if allowedtargets.enemy.has(position):
+				if !TutorialCore.check_action("combat_use_skill", [position]): return
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
 				activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
 			elif position in variables.playerparty:
+				if !TutorialCore.check_action("combat_select_char", [position]): return
 				if battlefield[position] == null: return
 				if battlefield[position].acted: return
 				if battlefield[position].defeated: return
@@ -1587,7 +1605,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					state.add_materials(activeitem.code, -1, false)
 	#				activeitem.amount -= 1
 					activeitem = null
-					SelectSkill(caster.get_autoselected_skill())
+					SelectSkill(caster.get_autoselected_skill(), true)
 
 				caster.rebuildbuffs()
 				#print(caster.name + ' finished attacking')
@@ -1614,7 +1632,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					allowaction = true
 					gui_node.RebuildSkillPanel()
 					gui_node.RebuildItemPanel()
-					SelectSkill(activeaction)
+					SelectSkill(activeaction, true)
 					eot = true
 				return
 			target_pos = newtarget
@@ -1738,7 +1756,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		state.add_materials(activeitem.code, -1, false)
 #		activeitem.amount -= 1
 		activeitem = null
-		SelectSkill(caster.get_autoselected_skill())
+		SelectSkill(caster.get_autoselected_skill(), true)
 
 	caster.rebuildbuffs()
 
@@ -1766,7 +1784,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			allowaction = true
 			gui_node.RebuildSkillPanel()
 			gui_node.RebuildItemPanel()
-			SelectSkill(activeaction)
+			SelectSkill(activeaction, true)
 		eot = true
 	print(str(caster.position) + ' ended ' + skill.name)
 

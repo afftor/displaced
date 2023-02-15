@@ -29,6 +29,7 @@ func _ready():
 
 
 func open():
+	TutorialCore.check_event("village_townhall_open")
 	$UpgradeList.hide()
 	$UpgradeDescript.hide()
 	show()
@@ -39,8 +40,9 @@ func show():
 	.show();
 
 func hide():
-		state.CurBuild = "";
-		.hide();
+	if !TutorialCore.check_action("village_townhall_hide"): return
+	state.CurBuild = "";
+	.hide();
 
 #func selecttaskfromlist(task):
 #	$SelectWorker.OpenSelectTab(task)
@@ -148,6 +150,7 @@ func findupgradelevel(upgrade):
 
 
 func unlockupgrade():
+	if !TutorialCore.check_action("village_upgrade_purchase", [selectedupgrade.code]): return
 	var upgrade = selectedupgrade
 	var currentupgradelevel = findupgradelevel(upgrade)
 	for i in upgrade.levels[currentupgradelevel].cost:
@@ -179,6 +182,7 @@ func unlockupgrade():
 			yield(get_tree().create_timer(2.5), 'timeout')
 			self.modulate.a = 1
 			input_handler.HideOutline(animnode)
+	TutorialCore.check_event("village_upgrade_purchase", selectedupgrade.code)
 #	globals.check_signal("UpgradeUnlocked", upgrade)
 #	globals.EventCheck()
 	#state.townupgrades[upgrade.code] = true
@@ -200,9 +204,13 @@ func build_events():
 		if binded_events[ch] == null: continue
 		$UpcomingEvents.visible = true
 		var panel = input_handler.DuplicateContainerTemplate(charpanel, 'portrait')
-		panel.connect("pressed", globals, "run_seq", [binded_events[ch]])
+		panel.connect("pressed", self, "run_seq", [ch])
 		var tex = resources.get_res("portrait/%s" % input_handler.scene_node.char_map[ch].portrait)
 		panel.texture_normal = tex
 	
 	return res
 
+
+func run_seq(ch):
+	if !TutorialCore.check_action("village_run_seq", [ch]): return
+	globals.run_seq(binded_events[ch])

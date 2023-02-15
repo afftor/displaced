@@ -22,6 +22,7 @@ func geartooltip(item):
 
 
 func open():
+	TutorialCore.check_event("village_blacksmith_open")
 	state.CurBuild = "blacksmith"
 	input_handler.ShowGameTip('blacksmith')
 	input_handler.menu_node.visible = false
@@ -36,4 +37,5 @@ func hide():
 
 
 func opencraft():
+	if !TutorialCore.check_action("village_craft_open"): return
 	$craft.open()

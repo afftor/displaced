@@ -44,6 +44,7 @@ func RepositionCloseButton():
 
 
 func open():
+	TutorialCore.check_event('village_craft_open')
 	$Tooltip.hide()
 	for cid in state.characters:
 		var ch = charlist.get_node(cid)
@@ -54,6 +55,7 @@ func open():
 
 
 func select_hero(cid):
+	if !TutorialCore.check_action("craft_hero_selected", [cid]): return
 	for ch in charlist.get_children():
 		ch.pressed = (ch.name == cid)
 		ch.rebuild()
@@ -103,6 +105,7 @@ func rebuild_gear_slot(node, data, newdata):
 
 
 func upgrade_slot(slot):
+	if !TutorialCore.check_action("craft_slot_upg", [slot]): return
 	var hero = state.heroes[selected_char]
 	var cost = hero.get_item_upgrade_data(slot).cost
 	hero.upgrade_gear(slot)
@@ -112,6 +115,7 @@ func upgrade_slot(slot):
 		else:
 			state.materials[res] -= cost[res]
 	rebuild_gear()
+	TutorialCore.check_event('craft_slot_upg')
 
 
 func slot_select(slot = selected_slot):

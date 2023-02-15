@@ -91,7 +91,9 @@ var globalsettings = {
 	skipread = false,
 	textmonocolor = false,
 	warnseen = false,
-	disabletips = false
+	disabletips = false,
+	
+	seen_tuts = []
 } setget settings_save
 
 func settings_load():
