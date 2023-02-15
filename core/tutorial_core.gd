@@ -35,7 +35,7 @@ func check_action(action, args = null):
 func check_event(event, args = null):
 	if cur_tut != null: return
 	for tut in tutorials_data:
-#		if globals.globalsettings.seen_tuts.has(tut): continue
+		if globals.globalsettings.seen_tuts.has(tut): continue
 		var tutdata = tutorials_data[tut]
 		if !tutdata.trigger.has(event): continue
 		if args == null or (tutdata.has('trigger_args') and tutdata.trigger_args.has(args)):
