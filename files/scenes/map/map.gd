@@ -55,6 +55,7 @@ func unlock_area(area):
 
 #real functions
 func location_pressed(locname):
+	if !TutorialCore.check_action("map_location_pressed", [locname]): return
 	if binded_events[locname] != null:
 		globals.run_seq(binded_events[locname])
 	else:

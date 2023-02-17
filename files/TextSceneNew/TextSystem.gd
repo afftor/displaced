@@ -684,9 +684,13 @@ func tag_white() -> void:
 	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.7)
 
 func tag_music_stop() -> void:
+	if !replay_mode:
+		state.scene_restore_data.music = line_nr
 	input_handler.StopMusic()
 
 func tag_gui_normal() -> void:
+	if !replay_mode:
+		state.scene_restore_data.gui = line_nr
 	$Panel.self_modulate.a = 1
 	$Panel/Panel.modulate.a = 0
 	$Panel.modulate.a = 1
@@ -700,10 +704,14 @@ func tag_gui_normal() -> void:
 	panel_vis = true
 
 func tag_gui_hide() -> void:
+	if !replay_mode:
+		state.scene_restore_data.gui = line_nr
 	$Panel.hide()
 	panel_vis = false
 
 func tag_gui_full() -> void:
+	if !replay_mode:
+		state.scene_restore_data.gui = line_nr
 	$Panel.self_modulate.a = 0
 	$Panel/Panel.modulate.a = 0.7
 	$Panel/DisplayName.self_modulate.a = 0
@@ -738,6 +746,9 @@ func tag_blacktrans(secs: String = "0.5") -> void:
 	input_handler.FadeAnimation($BlackScreen, duration, duration)
 
 func tag_bg(res_name: String, secs: String = "") -> void:
+	if !replay_mode:
+		state.scene_restore_data.bg = line_nr
+	
 	if is_video_bg:
 		$Tween.interpolate_property($Background, "modulate:a",
 			0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
@@ -840,6 +851,9 @@ func tag_sprite_hide() -> void:
 	ImageSprite.modulate = Color(1,1,1,0)
 
 func tag_sprite(res_name: String) -> void:
+	if !replay_mode:
+		state.scene_restore_data.sprite = line_nr
+		state.scene_restore_data.show_sprite = true
 	var tspr = ImageSprite.get_node_or_null('sprite')
 	if tspr != null:
 		tspr.free()#to testing
@@ -856,9 +870,13 @@ func tag_sprite(res_name: String) -> void:
 	input_handler.UnfadeAnimation(ImageSprite, 0.3 , delay)
 
 func tag_sprite_fade(secs: String = "0.5") -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_sprite = false
 	input_handler.FadeAnimation(ImageSprite, float(secs), delay)
 
 func tag_sprite_unfade(secs: String = "0.5") -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_sprite = true
 	input_handler.UnfadeAnimation(ImageSprite, float(secs), delay)
 
 func tag_shake_sprite(secs: String = "0.2") -> void:
@@ -880,9 +898,14 @@ func tag_sound(res_name: String) -> void:
 	input_handler.PlaySound(resources.get_res("sound/%s" % res_name))
 
 func tag_music(res_name: String) -> void:
+	if !replay_mode:
+		state.scene_restore_data.music = line_nr
 	input_handler.SetMusic(res_name)
 
 func tag_abg(res_name: String, sec_res_name: String = "") -> void:
+	if !replay_mode:
+		state.scene_restore_data.bg = line_nr
+		
 	if !is_video_bg:
 		$Tween.interpolate_property($Background, "modulate:a",
 			1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
@@ -974,6 +997,8 @@ func advance_scene() -> void:
 		callv(method_name, line_dr)
 		
 	else:
+		if !replay_mode:
+			state.scene_restore_data.text = line_nr
 		var splitted = line_dr.split(" - ")
 		
 		var is_narrator = true
@@ -1008,13 +1033,69 @@ func advance_scene() -> void:
 	
 	line_nr += 1
 
+
+func apply_line_direct(line) -> void:
+	line_dr = ref_src[line]
+	if line_dr.begins_with("#"):
+		return
+	if line_dr.begins_with("=") && line_dr.ends_with("="):
+		line_dr = line_dr.replace("=", "")
+		line_dr = line_dr.split(" ")
+		if line_dr.size() == 0:
+			print("Empty tag!")
+			return
+		if !(line_dr[0] in AVAIL_EFFECTS):
+			print("Unknown tag: ", line_dr)
+			return
+		var method_name = "tag_%s" % line_dr[0].to_lower()
+		if !has_method(method_name):
+			print("Tag method %s not implemented yet!" % method_name)
+			return
+		
+		line_dr.remove(0)
+		callv(method_name, line_dr)
+		
+	else:
+		line_nr = line
+		var splitted = line_dr.split(" - ")
+		
+		var is_narrator = true
+		var character = char_map['Narrator']
+		var replica = line_dr
+		
+		if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
+			character = char_map[splitted[0]]
+			replica = splitted[1]
+			is_narrator = false
+		
+		ShownCharacters = 0
+		replica = tr(replica)
+		if is_narrator:
+			text_log += '\n\n' + replica
+		else:
+			text_log += '\n\n' + '[' + tr(character.source) + ']\n' + replica
+		
+		TextField.visible_characters = ShownCharacters
+		TextField.bbcode_text = "[color=#%s]%s[/color]" % [character.color.to_html(), replica]
+		
+		var portrait_res = resources.get_res("portrait/%s" % character.portrait)
+		
+		$Panel/DisplayName.modulate.a = 1 if !is_narrator else 0
+		$Panel/CharPortrait.modulate.a = 1 if !is_narrator && portrait_res != null else 0
+		$Panel/DisplayName/Label.text = tr(character.source)
+		if ($Panel/CharPortrait.visible || $Panel/CharPortrait.modulate.a == 1) \
+													&& portrait_res != null:
+			$Panel/CharPortrait.texture = portrait_res
+	
+
+
 func preload_scene(scene: String) -> void:
 	scene_map = scenes_map[scene]
 	for i in scene_map["res"].keys():
 		for j in scene_map["res"][i]:
 			resources.preload_res("%s/%s" % [i, j])
 
-func play_scene(scene: String) -> void:
+func play_scene(scene: String, restore = false) -> void:
 	set_process(false)
 	set_process_input(false)
 
@@ -1062,6 +1143,13 @@ func play_scene(scene: String) -> void:
 	yield(get_tree(), "idle_frame")
 	set_process(true)
 	set_process_input(true)
+	if restore:
+		var data = state.scene_restore_data
+		for k in data:
+			if k == 'show_sprite':
+				pass
+			else:
+				apply_line_direct(data[k])
 
 func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	var out = {}

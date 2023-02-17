@@ -21,7 +21,7 @@ func _ready():
 func show():
 	.show()
 #	if globals.CurrentScene.get_node("ExploreScreen/combat") != null && globals.CurrentScene.get_node("ExploreScreen/combat").visible:
-	if input_handler.CurrentScreen in ['Map', 'Village']:
+	if input_handler.CurrentScreen in ['Map', 'Village', 'Scene']:
 		$VBoxContainer/Save.disabled = false
 	else:
 		$VBoxContainer/Save.disabled = true

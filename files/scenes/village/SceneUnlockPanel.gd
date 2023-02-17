@@ -36,6 +36,7 @@ func testmode():
 
 
 func open():
+	TutorialCore.check_event("scene_unlock_open")
 	for ch in charlist.get_children():
 		var cid = ch.name.to_lower()
 		if cid != "all" and cid != 'group':
@@ -46,6 +47,7 @@ func open():
 
 
 func select_hero(cid):
+	if !TutorialCore.check_action("scenes_select_hero", [cid]): return
 	if cid == selected_char: return
 	selected_char = cid
 	for ch in charlist.get_children():
@@ -56,6 +58,7 @@ func select_hero(cid):
 		$TextureRect.texture = tmp
 	else:
 		$TextureRect.texture = null
+	TutorialCore.check_event("scenes_select_hero", cid)
 
 
 func rebuild_scene_list():
@@ -134,9 +137,11 @@ func show_event(ev):
 
 
 func unlock_show_event(ev):
+	if !TutorialCore.check_action("scenes_unlock_scene", [ev]): return
 	var eventdata = Explorationdata.scene_sequences[ev]
 	for ch in eventdata.unlock_price:
 		var hero = state.heroes[ch]
 		hero.friend_points -= eventdata.unlock_price[ch]
 	show_event(ev)
 	rebuild_scene_list()
+	TutorialCore.check_event("scenes_unlock_scene", ev)

@@ -93,6 +93,7 @@ func show():
 	input_handler.CurrentScreen = 'Village'
 #	globals.CurrentScene = self
 	.show()
+	TutorialCore.check_event("village_open")
 
 func buildscreen(empty = null):
 	var res = false
@@ -127,6 +128,7 @@ func check_townhall_events():
 
 
 func building_entered(b_name):
+	if !TutorialCore.check_action("village_building_pressed", [b_name]): return
 	if binded_events[b_name] != null:
 		globals.run_seq(binded_events[b_name])
 #		yield(input_handler, "EventFinished")
