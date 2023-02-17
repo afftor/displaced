@@ -220,6 +220,14 @@ func hpmax_get():
 	value += hp_growth * variables.curve[level - 1]
 	return value
 
+func get_hpmax_at_level(lvl):
+	var value = hpmax
+	value += hp_growth * variables.curve[lvl - 1]
+	return value
+
+func get_damage_at_level(lvl):
+	return damage * variables.curve[lvl - 1]
+
 func damage_get():
 	return damage * variables.curve[level - 1]
 

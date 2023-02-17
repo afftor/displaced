@@ -26,6 +26,7 @@ var allowedtargets = {'ally':[],'enemy':[]}
 var swapchar = null
 
 var fightover = false
+var leveled_up_chars = []
 
 var playergroup = {}
 var enemygroup_full = []
@@ -128,6 +129,7 @@ func _ready():
 #	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 #warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
+	$LevelUp/CloseButton.connect("pressed",self,'on_level_up_close')
 
 
 func cheatvictory():
@@ -185,6 +187,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	input_handler.SetMusic(music)
 	fightover = false
 	$Rewards.visible = false
+	$LevelUp.visible = false
 	allowaction = false
 	curstage = 0
 	defeated.clear()
@@ -920,6 +923,8 @@ func victory():#2remake for it is broken for now
 	
 	input_handler.ClearContainerForced($Rewards/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
+	
+	leveled_up_chars.clear()
 	for ch in state.characters:
 		var i = state.heroes[ch]
 		if !i.unlocked:
@@ -940,6 +945,7 @@ func victory():#2remake for it is broken for now
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
 			subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
+			leveled_up_chars.push_back(i)
 		elif i.level == level && i.baseexp >= i.get_exp_cap() :
 			newbutton.get_node("xpbar").value = 100
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
@@ -986,6 +992,7 @@ func victory():#2remake for it is broken for now
 #			newnode.get_node("Label").text = str(i.amount)
 	
 	yield(get_tree().create_timer(1.7), 'timeout')
+	on_level_up_close()
 	
 	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
 		if i.name == 'Button':
@@ -1000,6 +1007,38 @@ func victory():#2remake for it is broken for now
 	#yield(get_tree().create_timer(1), 'timeout')
 	$Rewards/CloseButton.disabled = false
 
+func on_level_up_close():
+	if leveled_up_chars.size() > 0:
+		var character = leveled_up_chars[0]
+		$LevelUp.visible = true
+		fill_up_level_up(character)
+		leveled_up_chars.erase(character)
+	else:
+		$LevelUp.visible = false
+
+func fill_up_level_up(character):
+	input_handler.ClearContainer($LevelUp/VBoxContainer/NewSkill/HBoxContainer)
+	$LevelUp/Avatar/Circle.texture = character.portrait_circle()
+	$LevelUp/Label.text = tr(character.name) + " has just acquired a level!"
+	$LevelUp/VBoxContainer/Level/Before.text = str(character.level - 1)
+	$LevelUp/VBoxContainer/Level/After.text = str(character.level)
+	$LevelUp/VBoxContainer/Health/Before.text = str(ceil(character.get_hpmax_at_level(character.level - 1)))
+	$LevelUp/VBoxContainer/Health/After.text = str(ceil(character.get_hpmax_at_level(character.level)))
+	$LevelUp/VBoxContainer/Attack/Before.text = str(ceil(character.get_damage_at_level(character.level - 1)))
+	$LevelUp/VBoxContainer/Attack/After.text = str(ceil(character.get_damage_at_level(character.level)))
+	for key in combatantdata.charlist[character.id].skilllist:
+		if combatantdata.charlist[character.id].skilllist[key] == character.level: # will fail if we go from lvl 5 to 7 and new skill was at lvl 6
+			var new_icon = input_handler.DuplicateContainerTemplate($LevelUp/VBoxContainer/NewSkill/HBoxContainer)
+			new_icon.visible = true
+			new_icon.texture = Skillsdata.skilllist[key].icon
+			globals.connectskilltooltip(new_icon, character.id, key)
+			
+#			if got_new_skill:
+#				$LevelUp/VBoxContainer/NewSkill/New.text += ", " + tr("SKILL" + key.to_upper())
+#			else:
+#				$LevelUp/VBoxContainer/NewSkill/New.text = tr("SKILL" + key.to_upper())
+#				got_new_skill = true
+			$LevelUp/VBoxContainer/NewSkill.visible = true
 
 func FinishCombat(value):
 	for ch in state.heroes.values():
