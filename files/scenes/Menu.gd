@@ -48,6 +48,7 @@ func newgame():
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('map')
 	yield(globals, 'scene_changed')
+	input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,1)
 	#temporaly removed until tutorials reworked
 #	input_handler.ActivateTutorial()
 	globals.StartGame()
