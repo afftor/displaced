@@ -723,20 +723,30 @@ func tag_gui_full() -> void:
 	panel_vis = true
 
 func tag_blackon() -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_bs = true
 	$BlackScreen.modulate.a = 1
 
 func tag_blackoff() -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_bs = false
 	$BlackScreen.modulate.a = 0
 
 func tag_blackfade(secs: String = "0.5") -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_bs = false
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.FadeAnimation($BlackScreen, float(secs))
 
 func tag_blackunfade(secs: String = "0.5") -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_bs = true
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.UnfadeAnimation($BlackScreen, float(secs))
 
 func tag_blacktrans(secs: String = "0.5") -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_bs = false
 	var duration = float(secs)
 	TextField.bbcode_text = ''
 	$Panel/CharPortrait.modulate.a = 0
@@ -848,6 +858,8 @@ func tag_state(method:String, arg):
 		_: print("Unknown state command: %s" % method)
 
 func tag_sprite_hide() -> void:
+	if !replay_mode:
+		state.scene_restore_data.show_sprite = false
 	ImageSprite.modulate = Color(1,1,1,0)
 
 func tag_sprite(res_name: String) -> void:
@@ -1147,7 +1159,15 @@ func play_scene(scene: String, restore = false) -> void:
 		var data = state.scene_restore_data
 		for k in data:
 			if k == 'show_sprite':
-				pass
+				if data[k]:
+					ImageSprite.modulate = Color(1,1,1,1)
+				else:
+					ImageSprite.modulate = Color(1,1,1,0)
+			elif k == 'show_bs':
+				if data[k]:
+					$BlackScreen.modulate.a = 1
+				else:
+					$BlackScreen.modulate.a = 0
 			else:
 				apply_line_direct(data[k])
 

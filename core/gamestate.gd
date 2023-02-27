@@ -455,7 +455,7 @@ func deserialize(tmp:Dictionary):
 	for k in town_save.keys() :
 		townupgrades[k] = int(town_save[k])
 	for k in scene_restore_data:
-		if k == 'show_sprite': continue
+		if k in ['show_sprite', 'show_bs']: continue
 		scene_restore_data[k] = int(scene_restore_data[k])
 	if CurEvent != null and CurEvent != "":
 		globals.play_scene(CurEvent, false, true)
