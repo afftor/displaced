@@ -342,12 +342,12 @@ var skilllist = {
 		cooldown = 0,
 #		manacost = 0,
 		casteffects = [],
-		repeat = 1,
+		repeat = 3,
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
-			{code = 'anim_hit', target = 'target', period = 'predamage'},
-			{code = 'targetattack', target = 'target', period = 'predamage'}, 
-			],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'anim_hit', target = 'target', period = 'windup'},
+			{code = 'targetattack', target = 'target', period = 'windup'}, 
+			],  #if it does not look properly it is still a bad reason to use follow-up over implementing another period value, cause it is breaking logic
 		sfxcaster = null,
 		sfxtarget = null,
 		req_level = 1,#new addition, 2setup other heroes skills
@@ -358,7 +358,7 @@ var skilllist = {
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_fencing_4'},
 		],
 		sounddata = {initiate = null, strike = null, hit = 'fencing', hittype = 'absolute'},
-		follow_up = "fencing1"
+#		follow_up = "fencing1"
 	},
 	fencing1 = {
 		code = 'fencing1',
