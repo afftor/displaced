@@ -13,7 +13,7 @@ var TranslationDict = {
 	HARVESTPLANT = "Harvest Plants",
 	GOBLINWORKER = "Goblin Worker",
 	ELFWORKER = "Elven Worker",
-
+	
 	#Materials
 	STARTINGADJ = "Starting",
 
@@ -289,11 +289,16 @@ var TranslationDict = {
 	TRAITPOINTSCOST = "Trait Points",
 	TRAITPOINTS = "Trait Points used",
 	GOLDPRICE = "Gold Cost",
+	ABANDONAREA = "Abandon Area",
 
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
 
-
+	BASEDAMAGETYPE = "Basic Attack damage type",
+	TOOLTIPEXP = "Experience. Character gains EXP from combat.",
+	TOOLTIPHP = "Health. Automatically restored after each combat.",
+	
+	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",

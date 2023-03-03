@@ -31,17 +31,20 @@ func build_stats():
 	var v2 = character.get_stat('exp_cap')
 	stats_list.get_node("exp").max_value = v2
 	stats_list.get_node("exp").value = v1
+	stats_list.get_node("exp").hint_tooltip = tr("TOOLTIPEXP")
 	stats_list.get_node("exp/Label").text = "%d/%d" % [v1, v2]
 	v1 = character.hp
 	v2 = character.get_stat('hpmax')
 	stats_list.get_node("hp").max_value = v2
 	stats_list.get_node("hp").value = v1
+	stats_list.get_node("hp").hint_tooltip = tr("TOOLTIPHP")
 	stats_list.get_node("hp/Label").text = "%d/%d" % [v1, v2]
 #	input_handler.ClearContainer(stats_list.get_node('stats/statnames'), ['panel'])
 #	input_handler.ClearContainer(stats_list.get_node('stats/values'), ['panel'])
 #	input_handler.ClearContainer(stats_list.get_node('stats/icons'), ['panel'])
 	stats_list.get_node("dmg/value").text = str(character.get_stat('damage'))
 	stats_list.get_node("dmg/icon").texture = load("res://assets/images/iconsskills/source_%s.png" % character.get_stat('base_dmg_type'))
+	stats_list.get_node("dmg").hint_tooltip = tr("BASEDAMAGETYPE") + ": " + tr(character.get_stat('base_dmg_type'))
 	build_skills()
 	build_res()
 
@@ -57,7 +60,12 @@ func build_skills():
 
 func build_skill_panel(panel, data):
 	panel.get_node('TextureRect/icon').texture = data.icon
-	panel.get_node('VBoxContainer/HBoxContainer/name').text = tr(data.name)
+	panel.get_node('VBoxContainer/HBoxContainer/name').text = tr("SKILL" + data.name.to_upper())
+	if data.cooldown == 0:
+		panel.get_node('VBoxContainer/HBoxContainer/cd').hide()
+		panel.get_node('VBoxContainer/HBoxContainer/TextureRect').hide()
+		panel.get_node('VBoxContainer/HBoxContainer/Label').hide()
+		
 	panel.get_node('VBoxContainer/HBoxContainer/cd').text = str(data.cooldown)
 #	panel.get_node('VBoxContainer/descript').text = tr(data.description)
 	panel.get_node('VBoxContainer/descript').text = tr("SKILL" + data.code.to_upper() + "DESCRIPT")

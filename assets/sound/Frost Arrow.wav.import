@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/frost arrow.wav-f43409cbe0c5c957f778eb46e797306e.sample"
+path="res://.import/Frost Arrow.wav-8f66c8fe155296db8bcdd8dc3302eec8.sample"
 
 [deps]
 
-source_file="res://assets/sound/frost arrow.wav"
-dest_files=[ "res://.import/frost arrow.wav-f43409cbe0c5c957f778eb46e797306e.sample" ]
+source_file="res://assets/sound/Frost Arrow.wav"
+dest_files=[ "res://.import/Frost Arrow.wav-8f66c8fe155296db8bcdd8dc3302eec8.sample" ]
 
 [params]
 

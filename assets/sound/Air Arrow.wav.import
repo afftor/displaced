@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/air arrow.wav-94590cf01147096e1f7a4b82aeacff98.sample"
+path="res://.import/Air Arrow.wav-9af411f2c19291e536b9265d6a805c77.sample"
 
 [deps]
 
-source_file="res://assets/sound/air arrow.wav"
-dest_files=[ "res://.import/air arrow.wav-94590cf01147096e1f7a4b82aeacff98.sample" ]
+source_file="res://assets/sound/Air Arrow.wav"
+dest_files=[ "res://.import/Air Arrow.wav-9af411f2c19291e536b9265d6a805c77.sample" ]
 
 [params]
 
