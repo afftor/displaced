@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/uppercut.wav-828f6edca35bc423e40046df2bbb44ea.sample"
+path="res://.import/Uppercut.wav-081bc1fb6f7f44529cab0ba90f3d994b.sample"
 
 [deps]
 
-source_file="res://assets/sound/uppercut.wav"
-dest_files=[ "res://.import/uppercut.wav-828f6edca35bc423e40046df2bbb44ea.sample" ]
+source_file="res://assets/sound/Uppercut.wav"
+dest_files=[ "res://.import/Uppercut.wav-081bc1fb6f7f44529cab0ba90f3d994b.sample" ]
 
 [params]
 
