@@ -8,7 +8,9 @@ onready var textnode = $RichTextLabel
 
 
 func _process(delta):
-	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
+	var fixed_global_rect = parentnode.get_global_rect()
+	fixed_global_rect.size = fixed_global_rect.size * parentnode.get_global_transform().get_scale()
+	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !fixed_global_rect.has_point(get_global_mouse_position())):
 		set_process(false)
 		hide()
 
@@ -26,7 +28,7 @@ func showup_usable(node, item):
 
 func showup_material(node, item):
 	var text = ''
-	text = '[center]' + item.name + '[/center]\n' + item.description
+	text = '[center]' + tr(item.name) + '[/center]\n' + tr(item.description)
 	if state.materials[item.code] > 0:
 		text += '\n\n' + tr("INPOSESSION") + ": " + str(state.materials[item.code])
 	textnode.bbcode_text = text

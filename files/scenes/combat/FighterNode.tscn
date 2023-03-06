@@ -28,6 +28,9 @@ rect_pivot_offset = Vector2( 125, 155 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sprite" type="TextureRect" parent="."]
 anchor_left = 0.5
