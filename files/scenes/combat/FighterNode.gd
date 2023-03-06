@@ -241,11 +241,14 @@ func rebuildbuffs():
 func process_enable():
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'enable', slot = 'full', params = {}}
 	animation_node.add_new_data(data)
+	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'gray_out', slot = 'full', params = {undo = true}})
 
 func process_disable():
 	disabled = true
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'disable', slot = 'full', params = {}}
 	animation_node.add_new_data(data)
+	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'gray_out', slot = 'full', params = {undo = false}})
+	
 
 func appear():#stub
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'reappear', slot = 'full', params = {}}

@@ -149,7 +149,7 @@ func GetItemTooltip():
 		tooltipnode = node.get_node('itemtooltip')
 		node.remove_child(tooltipnode)
 	else:
-		tooltipnode = load("res://files/Simple Tooltip/Imagetooltip.tscn").instance()
+		tooltipnode = load("res://files/Simple Tooltip/Itemtooltip.tscn").instance()
 		tooltipnode.name = 'itemtooltip'
 	node.add_child(tooltipnode)
 	return tooltipnode
@@ -818,7 +818,7 @@ var node_data = {
 #	NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/TextEditField.tscn")},
 #	NODE_SLAVETOOLTIP : {name = 'slavetooltip', mode = 'scene', scene = preload("res://src/SlaveTooltip.tscn")},
 	NODE_SKILLTOOLTIP : {name = 'skilltooltip', mode = 'scene', scene = preload("res://files/scenes/SkillToolTip.tscn")},
-	NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://files/Simple Tooltip/Imagetooltip.tscn")},
+	NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://files/Simple Tooltip/Itemtooltip.tscn")},
 	NODE_GEARTOOLTIP : {name = 'slottooltip', mode = 'scene', scene = preload("res://files/scenes/GearTooltip.tscn")},
 #	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
 #	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},

@@ -30,7 +30,6 @@
 [ext_resource path="res://assets/images/gui/menu/menubuttonhl.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=29]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 649, 788 )

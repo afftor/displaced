@@ -1029,6 +1029,8 @@ func on_level_up_close():
 
 func fill_up_level_up(character):
 	input_handler.ClearContainer($LevelUp/VBoxContainer/NewSkill/HBoxContainer)
+	$LevelUp/VBoxContainer/NewSkill.visible = false
+	
 	$LevelUp/Avatar/Circle.texture = character.portrait_circle()
 	$LevelUp/Label.text = tr(character.name) + " has just acquired a level!"
 	$LevelUp/VBoxContainer/Level/Before.text = str(character.level - 1)
@@ -1043,12 +1045,6 @@ func fill_up_level_up(character):
 			new_icon.visible = true
 			new_icon.texture = Skillsdata.skilllist[key].icon
 			globals.connectskilltooltip(new_icon, character.id, key)
-			
-#			if got_new_skill:
-#				$LevelUp/VBoxContainer/NewSkill/New.text += ", " + tr("SKILL" + key.to_upper())
-#			else:
-#				$LevelUp/VBoxContainer/NewSkill/New.text = tr("SKILL" + key.to_upper())
-#				got_new_skill = true
 			$LevelUp/VBoxContainer/NewSkill.visible = true
 
 func FinishCombat(value):

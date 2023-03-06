@@ -465,7 +465,7 @@ text = "1"
 align = 2
 
 [node name="frame" type="TextureRect" parent="Rewards/ScrollContainer/HBoxContainer/Button"]
-margin_right = 77.0
+margin_right = 75.0
 margin_bottom = 75.0
 texture = ExtResource( 16 )
 expand = true
