@@ -43,7 +43,6 @@ var gallery_unlocks = []
 #var gallery_event_unlocks = []
 var CurEvent := "" #event name
 var CurBuild := ""
-var screen = false
 
 #Progress
 var mainprogress = 0
@@ -106,7 +105,6 @@ func revert():
 	OldEvents.clear()
 	CurEvent = "" #event name
 	CurBuild = ""
-	screen = false
 	mainprogress = 0
 	decisions.clear()
 	activequests.clear()
@@ -214,6 +212,7 @@ func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
 	scene_restore_data.clear()
+	input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
 #	input_handler.emit_signal("EventFinished")
 	if Explorationdata.event_triggers.has(CurEvent):
@@ -459,7 +458,6 @@ func deserialize(tmp:Dictionary):
 		scene_restore_data[k] = int(scene_restore_data[k])
 	if CurEvent != null and CurEvent != "":
 		globals.play_scene(CurEvent, false, true)
-	if screen:
 		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,1)
 	else:
 		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
