@@ -253,8 +253,6 @@ func run_actions_list(list, replay = false):
 				force_start_mission(action.value)
 				if action.has('auto_advance') and action.auto_advance:
 					input_handler.explore_node.auto_advance()
-			'show_map':
-				input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
 
 
 func change_screen(screen):
