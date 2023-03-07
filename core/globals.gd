@@ -222,7 +222,6 @@ func StartGame():
 	change_screen('map')
 	if resources.is_busy(): yield(resources, "done_work")
 	print('start')
-	state.screen = true
 	run_seq('intro')
 
 
