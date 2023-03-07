@@ -546,7 +546,10 @@ func _ready() -> void:
 
 var panel_vis = true
 func toggle_panel():
-	if !panel_vis: return
+	if $MenuPanel.visible: 
+		return
+	if !panel_vis: 
+		return
 	$Panel.visible = !$Panel.visible
 
 
