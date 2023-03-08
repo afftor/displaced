@@ -25,6 +25,7 @@ func _ready():
 #	input_handler.combat_node = $combat
 	input_handler.scene_node = $TextSystem
 	input_handler.menu_node = $menu_node
+	input_handler.SystemMessageNode = $SystemMessageLabel
 	input_handler.scene_node.preload_scene('intro_1')
 	
 	

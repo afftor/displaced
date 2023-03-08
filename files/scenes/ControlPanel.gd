@@ -11,7 +11,7 @@ func _ready():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
 	
-	input_handler.SystemMessageNode = $SystemMessageLabel
+#	input_handler.SystemMessageNode = $SystemMessageLabel
 	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
