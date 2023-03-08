@@ -1054,6 +1054,7 @@ func FinishCombat(value):
 		ch.hp = ch.get_stat('hpmax')
 		ch.shield = 0
 		ch.process_event(variables.TR_COMBAT_F)
+		ch.displaynode = null
 	
 	for pos in variables.enemyparty:
 		if battlefield[pos] == null: continue
