@@ -37,11 +37,26 @@ func testmode():
 
 func open():
 	TutorialCore.check_event("scene_unlock_open")
-	for ch in charlist.get_children():
-		var cid = ch.name.to_lower()
-		if cid != "all" and cid != 'group':
-			ch.visible = (state.heroes[cid].unlocked)
-	select_hero('all')
+	var def_char = null
+	var f_group = false
+	for ch_id in ['rose', 'ember', 'erika', 'iola', 'rilu']:
+		var ch = charlist.get_node(ch_id)
+		if state.heroes[ch_id].unlocked:
+			ch.visible = true
+			if def_char == null:
+				def_char = ch_id
+			else:
+				f_group = true
+		else:
+			ch.visible = false
+	for ch_id in ['all', 'group']:
+		var ch = charlist.get_node(ch_id)
+		ch.visible = f_group
+#	for ch in charlist.get_children():
+#		var cid = ch.name.to_lower()
+#		if cid != "all" and cid != 'group':
+#			ch.visible = (state.heroes[cid].unlocked)
+	select_hero(def_char)
 	input_handler.UnfadeAnimation(self)
 	show()
 

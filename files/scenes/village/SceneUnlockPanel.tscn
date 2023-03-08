@@ -48,29 +48,25 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
-margin_left = 6.0
-margin_right = 1080.0
+margin_right = 1074.0
 margin_bottom = 150.0
 size_flags_horizontal = 6
 
-[node name="All" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="all" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/All"]
+[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/all"]
 margin_left = 7.0
 margin_top = 6.0
 margin_right = 142.0
 margin_bottom = 142.0
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/All"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/all"]
 margin_left = 10.2202
 margin_top = 6.60709
 margin_right = 132.22
@@ -95,9 +91,6 @@ margin_right = 142.0
 margin_bottom = 142.0
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/group"]
 margin_left = 10.2202
@@ -110,14 +103,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Rose" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="rose" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
 margin_left = 308.0
 margin_right = 458.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/Rose"]
+[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/rose"]
 margin_left = 7.0
 margin_top = 6.0
 margin_right = 142.0
@@ -125,22 +118,16 @@ margin_bottom = 142.0
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Rose"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/rose"]
 margin_left = 10.2202
 margin_top = 6.60709
 margin_right = 132.22
 margin_bottom = 30.6071
 text = "Rose"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Rose"]
+[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/rose"]
 margin_left = 75.6908
 margin_top = 123.891
 margin_right = 147.691
@@ -152,14 +139,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Ember" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="ember" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
 margin_left = 462.0
 margin_right = 612.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/Ember"]
+[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/ember"]
 margin_left = 7.0
 margin_top = 6.0
 margin_right = 142.0
@@ -167,11 +154,8 @@ margin_bottom = 142.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Ember"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/ember"]
 margin_left = 10.2202
 margin_top = 6.60709
 margin_right = 132.22
@@ -182,7 +166,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Ember"]
+[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/ember"]
 margin_left = 75.6908
 margin_top = 123.891
 margin_right = 147.691
@@ -195,14 +179,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Erika" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="erika" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
 margin_left = 616.0
 margin_right = 766.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/Erika"]
+[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/erika"]
 margin_left = 7.0
 margin_top = 6.0
 margin_right = 142.0
@@ -210,11 +194,8 @@ margin_bottom = 142.0
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Erika"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/erika"]
 margin_left = 10.0
 margin_top = 7.0
 margin_right = 132.0
@@ -225,7 +206,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Erika"]
+[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/erika"]
 margin_left = 75.6908
 margin_top = 123.891
 margin_right = 147.691
@@ -238,14 +219,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Iola" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="iola" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
 margin_left = 770.0
 margin_right = 920.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/Iola"]
+[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/iola"]
 margin_left = 7.0
 margin_top = 6.0
 margin_right = 142.0
@@ -253,11 +234,8 @@ margin_bottom = 142.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Iola"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/iola"]
 margin_left = 10.0
 margin_top = 7.0
 margin_right = 132.0
@@ -268,7 +246,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Iola"]
+[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/iola"]
 margin_left = 75.6908
 margin_top = 123.891
 margin_right = 147.691
@@ -281,14 +259,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Rilu" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="rilu" type="Button" parent="Panel/ScrollContainer/HBoxContainer"]
 margin_left = 924.0
 margin_right = 1074.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/Rilu"]
+[node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/rilu"]
 margin_left = 7.0
 margin_top = 6.0
 margin_right = 142.0
@@ -296,11 +274,8 @@ margin_bottom = 142.0
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Rilu"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/rilu"]
 margin_left = 10.2202
 margin_top = 6.60709
 margin_right = 132.22
@@ -311,7 +286,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/Rilu"]
+[node name="Friendship" type="Label" parent="Panel/ScrollContainer/HBoxContainer/rilu"]
 margin_left = 75.6908
 margin_top = 123.891
 margin_right = 147.691
