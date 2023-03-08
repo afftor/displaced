@@ -93,7 +93,8 @@ var globalsettings = {
 	warnseen = false,
 	disabletips = false,
 	
-	seen_tuts = []
+	seen_tuts = [],
+	tuts_enabled = false
 } setget settings_save
 
 func settings_load():

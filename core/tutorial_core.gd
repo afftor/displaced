@@ -33,7 +33,10 @@ func check_action(action, args = null):
 
 
 func check_event(event, args = null):
-	if cur_tut != null: return
+	if cur_tut != null: 
+		return
+	if !globals.globalsettings.tuts_enabled : 
+		return
 	for tut in tutorials_data:
 		if globals.globalsettings.seen_tuts.has(tut): continue
 		var tutdata = tutorials_data[tut]
