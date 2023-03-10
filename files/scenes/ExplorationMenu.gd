@@ -47,7 +47,8 @@ func test():
 	for cid in state.characters:
 		state.unlock_char(cid)
 	set_location('forest')
-	area = 'forestelves'
+	area = 'forest_erika'
+	state.areaprogress[area].unlocked = true
 #	show()
 	open_mission()
 
@@ -225,7 +226,7 @@ func build_party():
 #		node.texture = null
 #		node.parent_node = self
 #		node.dragdata = null
-	
+
 	input_handler.ClearContainer(reservelist, ['Button'])
 	for ch in state.characters:
 		var hero = state.heroes[ch]
@@ -243,7 +244,7 @@ func build_party():
 		node.get_node('name').text = hero.name
 		node.dragdata = ch
 		node.parent_node = self
-	
+
 	$ExplorationSelect/Panel/advance.disabled = (party_count == 0)
 
 

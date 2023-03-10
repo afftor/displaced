@@ -73,8 +73,8 @@ func press():
 	$level.set("custom_colors/font_color", variables.hexcolordict.highlight_blue)
 
 func unpress():
-	toggle_mode = false
 	pressed = false
+	toggle_mode = false
 	if input_handler.if_mouse_inside(self):
 		$name.set("custom_colors/font_color", variables.hexcolordict.light_grey)
 		$level.set("custom_colors/font_color", variables.hexcolordict.light_grey)
