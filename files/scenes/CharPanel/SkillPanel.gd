@@ -53,6 +53,7 @@ func build_skills():
 	var chardata = combatantdata.charlist[character.id]
 	input_handler.ClearContainer(skill_list, ['Panel'])
 	for skill_id in chardata.skilllist: 
+		if !character.skills.has(skill_id): continue #maybe not hide but build disabled
 		var skilldata = Skillsdata.patch_skill(skill_id, character)
 		var panel = input_handler.DuplicateContainerTemplate(skill_list, 'Panel')
 		build_skill_panel(panel, skilldata)

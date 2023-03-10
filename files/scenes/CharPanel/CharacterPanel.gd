@@ -197,6 +197,6 @@ func build_skills():
 		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
 		panel.get_node('icon').texture = skilldata.icon
 		globals.connectskilltooltip(panel, character.id, skill_id)
-		panel.pressed = character.skills.has(skill_id)
+		panel.visible = character.skills.has(skill_id)
 
 
