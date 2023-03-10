@@ -655,7 +655,7 @@ var areas = { #missions in new terminology
 		},
 		},
 	forest_erika = {
-		code = 'forestelves',
+		code = 'forest_erika',
 		name = 'Search for Elves',
 		descript = "You've learned that the elves live at the ancient forest and might be able to help you ",
 		image = ['combat_forest_1', 'combat_forest_2', 'combat_forest_3'], 
@@ -1069,7 +1069,7 @@ var areas = { #missions in new terminology
 			},
 		},
 	caves_wanderer = {
-		code = 'caves_iola',
+		code = 'caves_wanderer',
 		name = '', 
 		descript = "",
 		image = ['combat_cave_1', 'combat_cave_2', 'combat_cave_3'],
