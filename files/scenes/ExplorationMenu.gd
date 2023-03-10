@@ -126,7 +126,7 @@ func select_area(area_code):
 		$ExplorationSelect/Panel/advance.visible = false
 		$ExplorationSelect/Panel/abandon.visible = false
 		scalecheck.set_state(false)
-		scalecheck.disabled = !state.areaprogress[area].completed
+		scalecheck.visible = !state.areaprogress[area].completed
 	elif state.activearea != area:
 		$ExplorationSelect/Panel/start.visible = true
 		$ExplorationSelect/Panel/start.disabled = true
