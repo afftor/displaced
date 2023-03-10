@@ -79,6 +79,8 @@ func update_map():
 			area_node.m_show()
 		else:
 			area_node.m_hide()
+			area_node.set_inactive()
+			return
 
 		if binded_events[loc] != null:
 			area_node.set_border_type('event')
