@@ -460,7 +460,8 @@ func deserialize(tmp:Dictionary):
 		globals.play_scene(CurEvent, false, true)
 		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,1)
 	else:
-		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
+		input_handler.FadeAnimation(input_handler.map_node.get_node('screen'))
+#		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
 
 func cleanup():
 	for ch in heroes.keys().duplicate():
