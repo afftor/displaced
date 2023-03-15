@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 max_offset = vec2(20, 5);
+uniform float speed = 0.5;
+
+void vertex() {
+	float t_time = TIME * speed;
+	mat2 transf = mat2(vec2(cos(t_time), sin(t_time)), vec2(-sin(t_time), cos(t_time)));
+	VERTEX += max_offset * transf;
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/max_offset = Vector2( 20, 5 )
+shader_param/speed = 0.5
