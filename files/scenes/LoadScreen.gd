@@ -74,9 +74,12 @@ func update_progress():
 
 
 func update_progress_res():
-	var progress = float(resources.current_loaded) / resources.max_loaded
+	var tmp = resources.max_loaded
+	var progress = 1.0
+	if tmp > 0 and tmp > resources.current_loaded:
+		progress = float(resources.current_loaded) / tmp
 	# update your progress bar?
-	get_node("progress").value = progress*100
+	get_node("progress").value = progress * 100
 
 	# or update a progress animation?
 	var length = get_node("animation").get_current_animation_length()
