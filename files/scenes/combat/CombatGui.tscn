@@ -513,6 +513,8 @@ __meta__ = {
 margin_right = 60.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
+toggle_mode = true
+pressed = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/CategoriesContainer/SkillsButton"]
 anchor_left = 0.5
@@ -533,6 +535,7 @@ margin_top = 70.0
 margin_right = 60.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 60, 60 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/CategoriesContainer/ItemsButton"]
 anchor_left = 0.5
@@ -632,6 +635,7 @@ __meta__ = {
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button"]
 margin_left = 5.0
@@ -663,6 +667,7 @@ margin_left = 85.0
 margin_right = 165.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button2"]
 margin_left = 5.0
@@ -694,6 +699,7 @@ margin_left = 170.0
 margin_right = 250.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button3"]
 margin_left = 5.0
@@ -725,6 +731,7 @@ margin_left = 255.0
 margin_right = 335.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button4"]
 margin_left = 5.0
@@ -756,6 +763,7 @@ margin_top = 90.0
 margin_right = 80.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button5"]
 margin_left = 5.0
@@ -788,6 +796,7 @@ margin_top = 90.0
 margin_right = 165.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button6"]
 margin_left = 5.0
@@ -820,6 +829,7 @@ margin_top = 90.0
 margin_right = 250.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button7"]
 margin_left = 5.0
@@ -852,6 +862,7 @@ margin_top = 90.0
 margin_right = 335.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/SkillContainer/Button8"]
 margin_left = 5.0
@@ -896,6 +907,7 @@ __meta__ = {
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button"]
 anchor_right = 1.0
@@ -929,6 +941,7 @@ margin_left = 55.0
 margin_right = 105.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button2"]
 anchor_right = 1.0
@@ -962,6 +975,7 @@ margin_left = 110.0
 margin_right = 160.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button3"]
 anchor_right = 1.0
@@ -995,6 +1009,7 @@ margin_left = 165.0
 margin_right = 215.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button4"]
 anchor_right = 1.0
@@ -1028,6 +1043,7 @@ margin_left = 220.0
 margin_right = 270.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button5"]
 anchor_right = 1.0
@@ -1061,6 +1077,7 @@ margin_left = 275.0
 margin_right = 325.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button6"]
 anchor_right = 1.0
@@ -1094,6 +1111,7 @@ margin_left = 330.0
 margin_right = 380.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button7"]
 anchor_right = 1.0
@@ -1127,6 +1145,7 @@ margin_left = 385.0
 margin_right = 435.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button8"]
 anchor_right = 1.0
@@ -1160,6 +1179,7 @@ margin_top = 60.0
 margin_right = 50.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button9"]
 anchor_right = 1.0
@@ -1194,6 +1214,7 @@ margin_top = 60.0
 margin_right = 105.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button10"]
 anchor_right = 1.0
@@ -1228,6 +1249,7 @@ margin_top = 60.0
 margin_right = 160.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button11"]
 anchor_right = 1.0
@@ -1262,6 +1284,7 @@ margin_top = 60.0
 margin_right = 215.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button12"]
 anchor_right = 1.0
@@ -1296,6 +1319,7 @@ margin_top = 60.0
 margin_right = 270.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button13"]
 anchor_right = 1.0
@@ -1330,6 +1354,7 @@ margin_top = 60.0
 margin_right = 325.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button14"]
 anchor_right = 1.0
@@ -1364,6 +1389,7 @@ margin_top = 60.0
 margin_right = 380.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button15"]
 anchor_right = 1.0
@@ -1398,6 +1424,7 @@ margin_top = 60.0
 margin_right = 435.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button16"]
 anchor_right = 1.0
@@ -1431,6 +1458,7 @@ margin_top = 120.0
 margin_right = 50.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button17"]
 anchor_right = 1.0
@@ -1465,6 +1493,7 @@ margin_top = 120.0
 margin_right = 105.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button18"]
 anchor_right = 1.0
@@ -1499,6 +1528,7 @@ margin_top = 120.0
 margin_right = 160.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button19"]
 anchor_right = 1.0
@@ -1533,6 +1563,7 @@ margin_top = 120.0
 margin_right = 215.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button20"]
 anchor_right = 1.0
@@ -1567,6 +1598,7 @@ margin_top = 120.0
 margin_right = 270.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button21"]
 anchor_right = 1.0
@@ -1601,6 +1633,7 @@ margin_top = 120.0
 margin_right = 325.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button22"]
 anchor_right = 1.0
@@ -1635,6 +1668,7 @@ margin_top = 120.0
 margin_right = 380.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button23"]
 anchor_right = 1.0
@@ -1669,6 +1703,7 @@ margin_top = 120.0
 margin_right = 435.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="SkillPanel/ItemContainer/Button24"]
 anchor_right = 1.0
@@ -1712,6 +1747,7 @@ __meta__ = {
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="SkillPanel/DefaultSkillContainer/attack"]
 margin_left = 5.0

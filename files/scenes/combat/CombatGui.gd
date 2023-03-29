@@ -13,6 +13,8 @@ func _ready():
 	$SkillPanel/Escape.connect("pressed", combat, "run")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
 	$SkillPanel/CategoriesContainer/ItemsButton.connect('pressed', self, "RebuildItemPanel")
+	for ch in $SkillPanel/CategoriesContainer.get_children():
+		ch.connect('pressed', self, 'UpdatePressedStatus', [ch])
 	$Combatlog2.connect("pressed", self, 'set_log')
 	bind_hero_panels()
 	hide_screen()
@@ -192,6 +194,7 @@ func RebuildSkillPanel():
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
+	
 	if activecharacter.combatgroup == 'ally':
 		$SkillPanel/SkillContainer.visible = true
 		$SkillPanel/DefaultSkillContainer.visible = true
@@ -217,11 +220,11 @@ func RebuildItemPanel():
 			newbutton.get_node("count").text = str(state.materials[id])
 			newbutton.set_meta('skill', i.useskill)
 			newbutton.connect('pressed', self, 'skill_button_pressed', ['item', i])
+			newbutton.connect('pressed', self, 'UpdatePressedStatus', [newbutton])
 			globals.connectmaterialtooltip(newbutton, i)
 	$SkillPanel/SkillContainer.visible = false
 	$SkillPanel/DefaultSkillContainer.visible = false
 	$SkillPanel/ItemContainer.visible = true
-
 
 #utility & default
 func RebuildDefaultsPanel():
@@ -257,6 +260,14 @@ func build_enemy_head():
 	var nw = combat.enemygroup_full.size()
 	$EmemyStats/Label.text = "Wave %d/%d" % [cw, nw]
 
+func UpdatePressedStatus(button):
+	if button == $SkillPanel/CategoriesContainer/SkillsButton or button == $SkillPanel/CategoriesContainer/ItemsButton:
+		$SkillPanel/CategoriesContainer/SkillsButton.pressed = button == $SkillPanel/CategoriesContainer/SkillsButton
+		$SkillPanel/CategoriesContainer/ItemsButton.pressed = button == $SkillPanel/CategoriesContainer/ItemsButton
+		return
+	for ch in $SkillPanel/ItemContainer.get_children():
+		ch.pressed = ch == button
+
 #stub for next 3 actions
 #this panel not helps in re-selecting heroes 
 func build_selected_skill(skill): #not skill_id
@@ -264,6 +275,12 @@ func build_selected_skill(skill): #not skill_id
 	active_panel2.visible = true
 	active_panel2.get_node("TextureRect").texture = skill.icon
 	active_panel2.get_node("Label").text = tr("SKILL" + skill.name.to_upper())
+
+	$SkillPanel/DefaultSkillContainer/attack.pressed = skill.code == "attack"
+	$SkillPanel/CategoriesContainer/ItemsButton.pressed = $SkillPanel/ItemContainer.visible
+	$SkillPanel/CategoriesContainer/SkillsButton.pressed = $SkillPanel/SkillContainer.visible
+	for ch in $SkillPanel/SkillContainer.get_children():
+		ch.pressed = ch.get_meta("skill") == skill.code
 
 
 func build_selected_item(item): 
