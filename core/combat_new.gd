@@ -287,12 +287,13 @@ func make_hero_panel(fighter, show = true):
 	panel.panel_node = gui_node.get_hero_panel(fighter.id)
 	panel.panel_node2 = gui_node.get_hero_reserve(fighter.id)
 	panel.setup_character(fighter)
+	panel.visible = show
 	if spot != null:
 		panel.set_global_position(positions[spot])
 #		print(panel.rect_global_position)
 	else:
 		panel.set_global_position(Vector2(0,0))
-	panel.visible = show
+		panel.visible = false
 	panel.noq_rebuildbuffs(fighter.get_all_buffs())
 
 

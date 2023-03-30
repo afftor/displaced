@@ -682,7 +682,7 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})],
 		repeat = 1,
 		hidden = false,
-		sfx = [{code = 'sfx_firebolt', target = 'target', period = 'predamage'},
+		sfx = [{code = 'sfx_firebolt', target = 'target', period = 'prehit'},
 			{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'predamage'},],
 		sfxcaster = null,
