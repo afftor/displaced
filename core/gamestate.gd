@@ -462,6 +462,7 @@ func deserialize(tmp:Dictionary):
 	else:
 		input_handler.FadeAnimation(input_handler.map_node.get_node('screen'))
 #		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
+#	input_handler.map_node.update_map()
 
 func cleanup():
 	for ch in heroes.keys().duplicate():
@@ -515,6 +516,7 @@ func unlock_char(code, value = true):
 
 func unlock_loc(loc_id, value = true):
 	location_unlock[loc_id] = value
+	input_handler.map_node.update_map()
 
 
 func make_upgrade(id, lvl):

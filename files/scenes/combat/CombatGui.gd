@@ -280,6 +280,7 @@ func build_selected_skill(skill): #not skill_id
 	$SkillPanel/CategoriesContainer/ItemsButton.pressed = $SkillPanel/ItemContainer.visible
 	$SkillPanel/CategoriesContainer/SkillsButton.pressed = $SkillPanel/SkillContainer.visible
 	for ch in $SkillPanel/SkillContainer.get_children():
+		if ch.name == 'Button': continue
 		ch.pressed = ch.get_meta("skill") == skill.code
 
 
