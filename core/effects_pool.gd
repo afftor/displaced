@@ -28,7 +28,7 @@ func get_effect_by_id(id):
 
 func cleanup():
 	for id in effects.keys().duplicate():
-		if !effects[id].is_applied or effects[id].applied_char == null:
+		if !effects[id].is_applied or effects[id].applied_char == null or !state.characters.has(effects[id].applied_char):
 			remove_id(id)
 	pass
 
