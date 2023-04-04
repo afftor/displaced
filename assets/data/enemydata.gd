@@ -712,7 +712,7 @@ var enemylist = {
 		speed = 20,
 		resists = {},
 		xpreward = 50,
-		
+		ai = load('res://files/ai_classes/big_treant.gd').new(),
 		bodyhitsound = 'wood',
 		
 		combaticon = 'enemies/BigtreantCombatIcon',

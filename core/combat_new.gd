@@ -872,6 +872,7 @@ func summon(montype, number):
 		battlefield[sum_pos] = enemygroup[sum_pos];
 		enemygroup[sum_pos].acted = true
 		enemygroup[sum_pos].position = sum_pos
+		enemygroup[sum_pos].add_trait('summon')
 		make_fighter_panel(battlefield[sum_pos], sum_pos);
 #		state.combatparty[sum_pos] = enemygroup[sum_pos].id
 		state.heroes[enemygroup[sum_pos].id] = enemygroup[sum_pos]
@@ -1900,6 +1901,13 @@ func res_all(hpval):
 			ch.hp = hpval * ch.get_stat('hpmax')
 			ch.acted = false
 
+
+func clean_summons():
+	for pos in battlefield:
+		if battlefield[pos] == null:
+			continue
+		if battlefield[pos].has_status('summon'):
+			battlefield[pos].apply_atomic({type = 'stat_set', stat = 'hp', value = 0})
 
 func miss(fighter):
 	CombatAnimations.miss(fighter.displaynode)

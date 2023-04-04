@@ -273,6 +273,15 @@ var traitlist = {
 		effects = ['e_tr_rilu']
 	},
 	#monsters
+	summon = {
+		code = 'summon',
+		name = '',
+		description = '',
+		icon = null,
+		cost = 0,
+		hidden = false,
+		effects = ['e_summon']
+	},
 	el_heal = {
 		code = 'el_heal',
 		name = '',

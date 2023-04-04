@@ -136,6 +136,8 @@ func e_apply():
 							obj.follow_up_flag = true
 						'resurrect_all':
 							obj.res_all(eff.template.value)
+						'clean_summons':
+							obj.clean_summons()
 		pass
 	sub_effects.clear()
 	pass
