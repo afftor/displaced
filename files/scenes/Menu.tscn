@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://files/scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
@@ -18,6 +18,14 @@
 [ext_resource path="res://files/scenes/Options.tscn" type="PackedScene" id=16]
 [ext_resource path="res://files/scenes/SaveLoadPanel.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/scenes/WarnScreen.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/videos/main_screen_video.ogv" type="VideoStream" id=19]
+[ext_resource path="res://assets/images/particles/spark.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/particles/spark1.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/particles/spark2.png" type="Texture" id=22]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.255034, 0.630872, 0.986577, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
 
 [node name="Menu" type="Node"]
 script = ExtResource( 1 )
@@ -26,6 +34,19 @@ script = ExtResource( 1 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_left = 1.24487
+margin_right = 1923.24
+margin_bottom = 1080.0
+stream = ExtResource( 19 )
+autoplay = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 760.0
@@ -33,6 +54,9 @@ margin_top = 358.0
 margin_right = 1208.0
 margin_bottom = 1018.0
 custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
 margin_right = 448.0
@@ -78,6 +102,7 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 12 )
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 margin_left = 1730.0
 margin_top = 40.0
 margin_right = 1916.0
@@ -190,3 +215,159 @@ Fixed issues with fullscreen, Added hotkey (F9) and option to toggle fullscreen 
 Fixed gear items selling
 Fixed defeated characters not being able to participate in combat
 Fixed certain issues with some panels on scene change"
+
+[node name="Particles2D10" type="CPUParticles2D" parent="."]
+position = Vector2( 1167.22, 1067.15 )
+amount = 30
+lifetime = 1.5
+preprocess = 1.0
+speed_scale = 0.3
+explosiveness = 0.01
+randomness = 1.0
+lifetime_randomness = 0.2
+texture = ExtResource( 20 )
+direction = Vector2( 50, 50 )
+spread = 114.68
+gravity = Vector2( 300, -500 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+linear_accel = 100.0
+linear_accel_random = 0.88
+radial_accel = 100.0
+radial_accel_random = 1.0
+tangential_accel = 100.0
+tangential_accel_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle_random = 1.0
+color_ramp = SubResource( 1 )
+
+[node name="Particles2D11" type="CPUParticles2D" parent="."]
+position = Vector2( 1674.22, 1046.34 )
+amount = 30
+lifetime = 1.5
+preprocess = 1.0
+speed_scale = 0.3
+explosiveness = 0.01
+randomness = 1.0
+lifetime_randomness = 0.2
+texture = ExtResource( 21 )
+direction = Vector2( 50, 50 )
+spread = 114.68
+gravity = Vector2( -300, -500 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+linear_accel = 100.0
+linear_accel_random = 0.88
+radial_accel = 100.0
+radial_accel_random = 1.0
+tangential_accel = 100.0
+tangential_accel_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle_random = 1.0
+color_ramp = SubResource( 1 )
+
+[node name="Particles2D12" type="CPUParticles2D" parent="."]
+position = Vector2( 1464.74, 1006.16 )
+amount = 30
+lifetime = 1.5
+preprocess = 1.0
+speed_scale = 0.3
+explosiveness = 0.01
+randomness = 1.0
+lifetime_randomness = 0.2
+texture = ExtResource( 22 )
+direction = Vector2( 50, 50 )
+spread = 114.68
+gravity = Vector2( 0, -500 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+linear_accel = 100.0
+linear_accel_random = 0.88
+radial_accel = 100.0
+radial_accel_random = 1.0
+tangential_accel = 100.0
+tangential_accel_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle_random = 1.0
+color_ramp = SubResource( 1 )
+
+[node name="Particles2D13" type="CPUParticles2D" parent="."]
+position = Vector2( 116.6, 1042.46 )
+amount = 20
+lifetime = 1.5
+preprocess = 1.0
+speed_scale = 0.3
+explosiveness = 0.01
+randomness = 1.0
+lifetime_randomness = 0.2
+texture = ExtResource( 20 )
+direction = Vector2( 50, 50 )
+spread = 114.68
+gravity = Vector2( 300, -500 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+linear_accel = 100.0
+linear_accel_random = 0.88
+radial_accel = 100.0
+radial_accel_random = 1.0
+tangential_accel = 100.0
+tangential_accel_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle_random = 1.0
+color_ramp = SubResource( 1 )
+
+[node name="Particles2D14" type="CPUParticles2D" parent="."]
+position = Vector2( 769.515, 1062.06 )
+amount = 20
+lifetime = 1.5
+preprocess = 1.0
+speed_scale = 0.3
+explosiveness = 0.01
+randomness = 1.0
+lifetime_randomness = 0.2
+texture = ExtResource( 21 )
+direction = Vector2( 50, 50 )
+spread = 114.68
+gravity = Vector2( -300, -500 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+linear_accel = 100.0
+linear_accel_random = 0.88
+radial_accel = 100.0
+radial_accel_random = 1.0
+tangential_accel = 100.0
+tangential_accel_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle_random = 1.0
+color_ramp = SubResource( 1 )
+
+[node name="Particles2D15" type="CPUParticles2D" parent="."]
+position = Vector2( 436.563, 1024.12 )
+amount = 20
+lifetime = 1.5
+preprocess = 1.0
+speed_scale = 0.3
+explosiveness = 0.01
+randomness = 1.0
+lifetime_randomness = 0.2
+texture = ExtResource( 22 )
+direction = Vector2( 50, 50 )
+spread = 114.68
+gravity = Vector2( 0, -500 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+linear_accel = 100.0
+linear_accel_random = 0.88
+radial_accel = 100.0
+radial_accel_random = 1.0
+tangential_accel = 100.0
+tangential_accel_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle_random = 1.0
+color_ramp = SubResource( 1 )
