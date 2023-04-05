@@ -18,7 +18,7 @@
 [ext_resource path="res://files/scenes/Options.tscn" type="PackedScene" id=16]
 [ext_resource path="res://files/scenes/SaveLoadPanel.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/scenes/WarnScreen.tscn" type="PackedScene" id=18]
-[ext_resource path="res://assets/videos/main_screen.ogv" type="VideoStream" id=19]
+[ext_resource path="res://assets/videos/main_screen_video.ogv" type="VideoStream" id=19]
 [ext_resource path="res://assets/images/particles/spark.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/particles/spark1.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/particles/spark2.png" type="Texture" id=22]
@@ -54,6 +54,9 @@ margin_top = 358.0
 margin_right = 1208.0
 margin_bottom = 1018.0
 custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
 margin_right = 448.0
