@@ -86,12 +86,13 @@ func open_explore():
 		var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 		panel.text = areadata.name
 		locname.text = areadata.name
+		locdesc.text = areadata.descript
 		panel.set_meta('area', area)
 		panel.connect('pressed', self, 'select_area', [area])
 		panel.get_node('Completed').visible = false
 		num_missions += 1
 	else:
-		locname.text = Explorationdata.locations[location].code #need to change to .name, but there are no names for locations in data
+		locname.text = Explorationdata.locations[location].name
 		for a in Explorationdata.locations[location].missions:
 			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
