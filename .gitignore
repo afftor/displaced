@@ -1,3 +1,5 @@
 *.stex
 *.md5
 *.sample
+*.import
+*.translate
