@@ -10,7 +10,7 @@ onready var areapanel = $ExplorationSelect/Panel
 onready var areadesc = $ExplorationSelect/desc
 onready var partylist = $ExplorationSelect/Panel/party
 onready var reservelist = $ExplorationSelect/Panel/roster
-onready var locdesc = $ExplorationSelect/Panel/RichTextLabel
+onready var locdesc = $ExplorationSelect/desc
 onready var locname = $ExplorationSelect/head
 onready var scalecheck = $ExplorationSelect/Panel/ScaleCheck
 
@@ -86,13 +86,13 @@ func open_explore():
 		var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 		panel.text = areadata.name
 		locname.text = areadata.name
-		locdesc.text = areadata.descript
 		panel.set_meta('area', area)
 		panel.connect('pressed', self, 'select_area', [area])
 		panel.get_node('Completed').visible = false
 		num_missions += 1
 	else:
 		locname.text = Explorationdata.locations[location].name
+		locdesc.text = tr(Explorationdata.locations[location].descript)
 		for a in Explorationdata.locations[location].missions:
 			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
@@ -108,7 +108,7 @@ func open_explore():
 			if !state.areaprogress[a].unlocked: continue
 			if !state.areaprogress[a].completed: continue
 			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
-			panel.text = areadata.name
+			panel.text = areadata.name 
 			panel.set_meta('area', a)
 			panel.connect('pressed', self, 'select_area', [a])
 			panel.get_node('Completed').visible = true

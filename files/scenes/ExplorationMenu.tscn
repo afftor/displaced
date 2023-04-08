@@ -61,7 +61,11 @@ margin_left = 126.0
 margin_top = 510.0
 margin_right = 761.0
 margin_bottom = 602.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="head" type="Label" parent="ExplorationSelect"]
 margin_left = 316.0
@@ -75,6 +79,9 @@ custom_constants/shadow_offset_y = 2
 text = "Location name"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="level" type="Label" parent="ExplorationSelect"]
 anchor_left = 0.5
@@ -101,6 +108,9 @@ margin_right = 320.0
 margin_bottom = 493.0
 value = 50.0
 texture_progress = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="ExplorationSelect/progress"]
 anchor_left = 0.5
@@ -117,6 +127,9 @@ custom_constants/shadow_offset_y = 1
 text = "1/10"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ExplorationSelect"]
 anchor_left = 0.5
@@ -191,6 +204,9 @@ margin_left = 933.497
 margin_right = 1819.5
 margin_bottom = 980.0
 texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="ExplorationSelect/Panel"]
 margin_left = 304.0
@@ -240,6 +256,9 @@ margin_top = 805.616
 margin_right = 530.673
 margin_bottom = 845.616
 script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="start" type="Button" parent="ExplorationSelect/Panel"]
 anchor_left = 0.5
@@ -254,6 +273,9 @@ theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="advance" type="Button" parent="ExplorationSelect/Panel"]
 anchor_left = 0.5
@@ -285,6 +307,9 @@ theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Abandon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="screen" type="TextureRect" parent="ExplorationSelect/Panel"]
 visible = false

@@ -178,11 +178,11 @@ func _ready():
 	
 	for i in Explorationdata.locations.values():
 		i.name = "AREA" + i.code.to_upper() + "NAME"
-		i.desccript = "AREA" + i.code.to_upper() + "DESCRIPT"
+		i.descript = "AREA" + i.code.to_upper() + "DESCRIPT"
 	
 	for i in Explorationdata.areas.values():
 		i.name = i.code.to_upper() + "NAME"
-		i.desccript = i.code.to_upper() + "DESCRIPT"
+		i.descript = i.code.to_upper() + "DESCRIPT"
 	
 	for i in Enemydata.enemylist.values():
 		i.name = "MONSTER" + i.code.to_upper()
