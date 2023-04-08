@@ -1313,6 +1313,14 @@ var areas = { #missions in new terminology
 }
 
 
+func _ready():
+	for i in locations.values():
+		i.name = "AREA" + i.code.to_upper() + "NAME"
+		i.descript = "AREA" + i.code.to_upper() + "DESCRIPT"
+	
+	for i in areas.values():
+		i.name = i.code.to_upper() + "NAME"
+		i.descript = i.code.to_upper() + "DESCRIPT"
 
 
 func check_area_avail(area):

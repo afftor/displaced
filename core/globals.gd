@@ -175,18 +175,6 @@ func _ready():
 	settings_load()
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
-	
-	for i in Explorationdata.locations.values():
-		i.name = "AREA" + i.code.to_upper() + "NAME"
-		i.descript = "AREA" + i.code.to_upper() + "DESCRIPT"
-	
-	for i in Explorationdata.areas.values():
-		i.name = i.code.to_upper() + "NAME"
-		i.descript = i.code.to_upper() + "DESCRIPT"
-	
-	for i in Enemydata.enemylist.values():
-		i.name = "MONSTER" + i.code.to_upper()
-		i.flavor = "MONSTER" + i.code.to_upper() + "FLAVOR"
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true

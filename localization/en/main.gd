@@ -219,7 +219,7 @@ var TranslationDict = {
 	
 	
 	FOREST_ERIKANAME = "Search for Elves",
-	FORESTERIKADESCRIPT = "You've learned that the elves live at the ancient forest and might be able to help you.",
+	FOREST_ERIKADESCRIPT = "You've learned that the elves live at the ancient forest and might be able to help you.",
 	CAVES_DEMITRIUSNAME = "Escort Demitrius",
 	CAVES_DEMITRIUSDESCRIPT = "A priest from Ancestors' cult has asked you to escort him to the depths of the caves... And you couldn't refute.",
 	CAVES_IOLANAME = "Escort Iola",
