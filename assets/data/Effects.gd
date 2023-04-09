@@ -16,6 +16,14 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
 		buffs = ['b_def'],
 	},
+	e_summon = {
+		type = 'static',
+		tags = ['summon'],
+		args = [],
+		sub_effects = [],
+		atomic = [],
+		buffs = ['b_summon'],
+	},
 	#statuses
 	e_s_burn = {
 		type = 'temp_s',
@@ -2518,6 +2526,17 @@ var effect_table = {
 		],
 		buffs = []
 	},
+	e_summon_clean = {
+		type = 'trigger',
+		trigger = [variables.TR_DEATH],
+		conditions = [],
+		req_skill = false,
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'combat',
+			execute = 'clean_summons',
+			}]
+	},
 	#skills
 #	e_s_stun05 = {
 #		type = 'trigger',
@@ -3687,6 +3706,12 @@ var buffs = {
 		description = "Halves incoming damage",
 		limit = 1,
 		t_name = 'defence'
+	},
+	b_summon = {
+		icon = "res://assets/images/iconsskills/action_2.png", #2fix
+		description = "Summoned unit. Dies after summoner defeated",
+		limit = 1,
+		t_name = 'summon'
 	},
 	
 };

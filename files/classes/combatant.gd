@@ -304,11 +304,22 @@ func recheck_effect_tag(tg):
 func apply_atomic(template):
 	match template.type:
 		'damage':
-			deal_damage(template.value, template.source)
-			pass
+			var tmp = deal_damage(template.value, template.source)
+			if displaynode != null:
+				var args = {critical = false, group = combatgroup}
+				var data = {}
+				args.type = template.source
+				args.damage = tmp
+				data = {node = displaynode, time = input_handler.combat_node.turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
+				input_handler.combat_node.CombatAnimations.add_new_data(data)
 		'heal':
 			heal(template.value)
-			pass
+			if displaynode != null:
+				var args = {critical = false, group = combatgroup}
+				var data = {}
+				args.heal = template.value
+				data = {node = displaynode, time = input_handler.combat_node.turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
+				input_handler.combat_node.CombatAnimations.add_new_data(data)
 #		'mana':
 #			mana_update(template.value)
 #			pass

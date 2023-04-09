@@ -175,11 +175,6 @@ func _ready():
 	settings_load()
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
-	
-	
-	for i in Enemydata.enemylist.values():
-		i.name = "MONSTER" + i.code.to_upper()
-		i.flavor = "MONSTER" + i.code.to_upper() + "FLAVOR"
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true

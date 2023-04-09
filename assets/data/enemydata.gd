@@ -712,7 +712,7 @@ var enemylist = {
 		speed = 20,
 		resists = {},
 		xpreward = 50,
-		
+		ai = load('res://files/ai_classes/big_treant.gd').new(),
 		bodyhitsound = 'wood',
 		
 		combaticon = 'enemies/BigtreantCombatIcon',
@@ -1113,8 +1113,10 @@ var loottables = { # no need to separate materials from usables now
 
 
 func _ready():
-#	for e in enemylist.values():
+	for i in enemylist.values():
 #		e.basehp = 1
+		i.name = "MONSTER" + i.code.to_upper()
+		i.flavor = "MONSTER" + i.code.to_upper() + "FLAVOR"
 	yield(preload_icons(), 'completed')
 	print("Enemies icons preloaded")
 

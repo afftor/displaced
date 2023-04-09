@@ -656,8 +656,8 @@ var areas = { #missions in new terminology
 		},
 	forest_erika = {
 		code = 'forest_erika',
-		name = 'Search for Elves',
-		descript = "You've learned that the elves live at the ancient forest and might be able to help you ",
+		name = '',
+		descript = "",
 		image = ['combat_forest_1', 'combat_forest_2', 'combat_forest_3'], 
 		explore_image = 'combat_forest', #or not
 		stages = 5, 
@@ -688,7 +688,7 @@ var areas = { #missions in new terminology
 		},
 	caves_demitrius = {
 		code = 'caves_demitrius',
-		name = 'Escort Demitrius', 
+		name = '', 
 		descript = "",
 		image = ['combat_cave_1', 'combat_cave_2', 'combat_cave_3'],
 		explore_image = 'combat_cave',
@@ -761,7 +761,7 @@ var areas = { #missions in new terminology
 		},
 	road_to_town = {
 		code = 'road_to_town',
-		name = 'Road to Aeros', 
+		name = '', 
 		descript = "",
 		image = ['combat_desert_1', 'combat_desert_2', 'combat_desert_3'],
 		explore_image = 'combat_desert',
@@ -787,7 +787,7 @@ var areas = { #missions in new terminology
 		},
 	caves_dwarf = {
 		code = 'caves_dwarf',
-		name = 'Dwarfing Problems', 
+		name = '', 
 		descript = "",
 		image = ['combat_dwarvencave_1', 'combat_dwarvencave_2', 'combat_dwarvencave_3'],
 		explore_image = 'combat_cave2',
@@ -833,7 +833,7 @@ var areas = { #missions in new terminology
 	
 	forest_erika_sidequest = {#stub
 		code = 'forest_erika_sidequest',
-		name = 'Elven Medicine', 
+		name = '', 
 		descript = "",
 		image = ['combat_elvenforest_1', 'combat_elvenforest_2', 'combat_elvenforest_3'],
 		explore_image = 'combat_forest1',
@@ -860,7 +860,7 @@ var areas = { #missions in new terminology
 	
 	forest_faeries_1 = {
 		code = 'forest_faeries_1',
-		name = 'Faery Queen', 
+		name = '', 
 		descript = "",
 		image = ['combat_elvenforest_1', 'combat_elvenforest_2', 'combat_elvenforest_3'],
 		explore_image = 'combat_forest1',
@@ -894,7 +894,7 @@ var areas = { #missions in new terminology
 		},
 	forest_faeries_2 = {
 		code = 'forest_faeries_2',
-		name = 'Faering Dirty Laundry', 
+		name = '', 
 		descript = "",
 		image = ['combat_elvenforest_1', 'combat_elvenforest_2', 'combat_elvenforest_3'],
 		explore_image = 'combat_forest1',
@@ -923,7 +923,7 @@ var areas = { #missions in new terminology
 		},
 	forest_faeries_3 = {
 		code = 'forest_faeries_3',
-		name = 'Trapping the Royalty', 
+		name = '', 
 		descript = "",
 		image = ['combat_elvenforest_1', 'combat_elvenforest_2', 'combat_elvenforest_3'],
 		explore_image = 'combat_forest1',
@@ -947,7 +947,7 @@ var areas = { #missions in new terminology
 		},
 	castle_iola = {
 		code = 'castle_iola',
-		name = 'Fetch Quest', 
+		name = '', 
 		descript = "",
 		image = ['combat_palace_1', 'combat_palace_2', 'combat_palace_3'],
 		explore_image = 'combat_palace',
@@ -981,7 +981,7 @@ var areas = { #missions in new terminology
 		},
 	cult_iola_rescue = {
 		code = 'cult_iola_rescue',
-		name = "Iola's Rescue", 
+		name = "", 
 		descript = "",
 		image = ['combat_temple_1', 'combat_temple_2', 'combat_temple_3'],
 		explore_image = 'combat_temple',
@@ -1011,7 +1011,7 @@ var areas = { #missions in new terminology
 		
 	dragon_mountains = {
 		code = 'dragon_mountains',
-		name = 'Dragon Climbing', 
+		name = '', 
 		descript = "",
 		image = ['combat_mountains_1', 'combat_mountains_2', 'combat_mountains_3'],
 		explore_image = 'combat_mountains',
@@ -1054,7 +1054,7 @@ var areas = { #missions in new terminology
 		
 	town_viktor_fight = {
 		code = 'town_viktor_fight',
-		name = 'Vengence', 
+		name = '', 
 		descript = "",
 		image = ['combat_forest_1', 'combat_forest_2', 'combat_forest_3'], 
 		explore_image = 'forest', #better make unique one
@@ -1105,7 +1105,7 @@ var areas = { #missions in new terminology
 		
 	town_siege = {
 		code = 'town_siege',
-		name = 'Pandemonium', 
+		name = '', 
 		descript = "",
 		image = ['burning_city_1', 'burning_city_2', 'burning_city_3'],
 		explore_image = 'burning_city',
@@ -1143,7 +1143,7 @@ var areas = { #missions in new terminology
 		},
 	castle_rilu = {
 		code = 'castle_rilu',
-		name = 'combat_palace', 
+		name = '', 
 		descript = "",
 		image = ['combat_palace_1', 'combat_palace_2', 'combat_palace_3'],
 		explore_image = 'castle_interior', #or not
@@ -1171,7 +1171,7 @@ var areas = { #missions in new terminology
 		},
 	castle_rilu_return = {
 		code = 'castle_rilu_return',
-		name = 'Escort Demitrius', 
+		name = '', 
 		descript = "",
 		image = ['combat_palace_1', 'combat_palace_2', 'combat_palace_3'],
 		explore_image = 'combat_palace',
@@ -1216,7 +1216,7 @@ var areas = { #missions in new terminology
 	
 	cult_rose_rescue = {
 		code = 'cult_rose_rescue',
-		name = 'Escort Demitrius', 
+		name = '', 
 		descript = "",
 		image = ['combat_temple_1', 'combat_temple_2', 'combat_temple_3'],
 		explore_image = 'combat_temple',
@@ -1246,7 +1246,7 @@ var areas = { #missions in new terminology
 	
 	final_battle_stage1 = {
 		code = 'final_battle_stage1',
-		name = 'Final Battle', 
+		name = '', 
 		descript = "",
 		image = ['combat_future_city_1', 'combat_future_city_2', 'combat_future_city_3'],
 		explore_image = 'combat_futurecity',
@@ -1293,7 +1293,7 @@ var areas = { #missions in new terminology
 	
 	modern_city_stage1 = {
 		code = 'modern_city_stage1',
-		name = 'Escort Demitrius', 
+		name = '', 
 		descript = "",
 		image = ['combat_future_city_1', 'combat_future_city_2', 'combat_future_city_3'],
 		explore_image = 'combat_futurecity',
@@ -1303,7 +1303,7 @@ var areas = { #missions in new terminology
 	
 	forest_erika_rose_mission = {
 		code = 'forest_erika_rose_mission',
-		name = 'Search for Elves',
+		name = '',
 		descript = "",
 		image = ['combat_elvenforest_1', 'combat_elvenforest_2', 'combat_elvenforest_3'],
 		explore_image = 'combat_forest1',
@@ -1313,6 +1313,14 @@ var areas = { #missions in new terminology
 }
 
 
+func _ready():
+	for i in locations.values():
+		i.name = "AREA" + i.code.to_upper() + "NAME"
+		i.descript = "AREA" + i.code.to_upper() + "DESCRIPT"
+	
+	for i in areas.values():
+		i.name = i.code.to_upper() + "NAME"
+		i.descript = i.code.to_upper() + "DESCRIPT"
 
 
 func check_area_avail(area):
