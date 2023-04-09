@@ -66,7 +66,7 @@ func showup(node):
 	
 	if get_rect().end.x > screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
-	if node.get_rect().end.y > screen.size.y:
+	if get_rect().end.y > screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
 	set_process(true)
