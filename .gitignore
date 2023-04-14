@@ -3,3 +3,4 @@
 *.sample
 *.import
 *.translate
+files/scenes/combat/FighterNode.tscn

@@ -47,7 +47,7 @@ __meta__ = {
 [node name="Image" type="TextureRect" parent="ExplorationSelect"]
 margin_left = 123.0
 margin_top = 133.0
-margin_right = 762.0
+margin_right = 556.0
 margin_bottom = 473.0
 texture = ExtResource( 5 )
 expand = true
@@ -57,10 +57,10 @@ __meta__ = {
 }
 
 [node name="desc" type="RichTextLabel" parent="ExplorationSelect"]
-margin_left = 126.0
-margin_top = 510.0
-margin_right = 761.0
-margin_bottom = 602.0
+margin_left = 577.0
+margin_top = 113.524
+margin_right = 826.0
+margin_bottom = 591.524
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "text"
 __meta__ = {
@@ -225,10 +225,10 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ExplorationSelect/Panel"]
-margin_left = 115.0
-margin_top = 672.0
-margin_right = 719.0
-margin_bottom = 764.0
+margin_left = 508.0
+margin_top = 81.0
+margin_right = 844.0
+margin_bottom = 406.0
 custom_fonts/normal_font = ExtResource( 14 )
 custom_colors/default_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 text = "Area Info"
@@ -326,10 +326,10 @@ __meta__ = {
 [node name="party" type="HBoxContainer" parent="ExplorationSelect/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 137.661
-margin_top = 310.0
-margin_right = -128.339
-margin_bottom = -392.335
+margin_left = 107.661
+margin_top = 460.0
+margin_right = -158.339
+margin_bottom = -240.0
 custom_constants/separation = 40
 __meta__ = {
 "_edit_use_anchors_": false
@@ -502,15 +502,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="roster" type="HBoxContainer" parent="ExplorationSelect/Panel"]
-margin_left = 62.0
-margin_top = 95.0
-margin_right = 822.0
-margin_bottom = 265.0
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="roster" type="GridContainer" parent="ExplorationSelect/Panel"]
+margin_left = 73.0
+margin_top = 82.0
+margin_right = 494.0
+margin_bottom = 436.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 14
+columns = 3
 
 [node name="Button" type="TextureButton" parent="ExplorationSelect/Panel/roster"]
 margin_right = 110.0

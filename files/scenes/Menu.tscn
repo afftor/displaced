@@ -59,7 +59,7 @@ __meta__ = {
 }
 
 [node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
-margin_right = 448.0
+margin_right = 600.0
 margin_bottom = 68.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
@@ -67,7 +67,7 @@ texture_hover = ExtResource( 4 )
 
 [node name="newgamebutton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 76.0
-margin_right = 448.0
+margin_right = 600.0
 margin_bottom = 144.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 5 )
@@ -76,7 +76,7 @@ texture_hover = ExtResource( 6 )
 
 [node name="loadbutton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 152.0
-margin_right = 448.0
+margin_right = 600.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 7 )
@@ -85,7 +85,7 @@ texture_hover = ExtResource( 8 )
 
 [node name="optionsbutton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 228.0
-margin_right = 448.0
+margin_right = 600.0
 margin_bottom = 296.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 9 )
@@ -94,7 +94,7 @@ texture_hover = ExtResource( 10 )
 
 [node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 304.0
-margin_right = 448.0
+margin_right = 600.0
 margin_bottom = 372.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 11 )
