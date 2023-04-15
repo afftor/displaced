@@ -65,6 +65,9 @@ margin_right = 142.0
 margin_bottom = 142.0
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/all"]
 margin_left = 10.2202
