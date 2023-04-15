@@ -1,6 +1,7 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var character
+var skills_character_name
 
 onready var charlist = $Panel/ScrollContainer/HBoxContainer
 #onready var skill_list = $Panel/SkillContainer/GridContainer
@@ -26,6 +27,8 @@ func _ready():
 		ch.connect('pressed', self, 'select_hero', [cid])
 	
 	$Panel/SkillsButton.connect("pressed", self, "open_skills")
+	$SkillPanel/switch_left.connect("pressed", self, "switch_skills_left")
+	$SkillPanel/switch_right.connect("pressed", self, "switch_skills_right")
 #	$Panel/Weapon.connect("pressed", self, "open_weapon")
 #	$SkillPanel/CloseButton.connect("pressed",self,"close_skills")
 #	$WeaponPanel/CloseButton.connect("pressed",self,"close_weapon")
@@ -72,6 +75,7 @@ func select_hero(cid, rebuild = false):
 		ch.rebuild()
 	if cid == character.id and !rebuild: return
 	character = state.heroes[cid]
+	skills_character_name = character.name.to_lower()
 	for slot in ['weapon1', 'weapon2', 'armor']:
 		build_slot(slot)
 	build_stats()
@@ -127,6 +131,7 @@ func open_skills():
 	if $SkillPanel.is_visible_in_tree() == true:
 		$SkillPanel.hide()
 	else:
+		skills_character_name = character.name.to_lower()
 		$SkillPanel.open(character)
 
 
@@ -200,3 +205,26 @@ func build_skills():
 		panel.visible = character.skills.has(skill_id)
 
 
+func switch_skills_left():
+	var left_skills_character = get_new_skills_character(-1)
+	$SkillPanel.open(left_skills_character)
+
+
+func switch_skills_right():
+	var right_skills_character = get_new_skills_character(+1)
+	$SkillPanel.open(right_skills_character)
+
+
+func get_new_skills_character(switch_val : int):
+	var current_char_node = get_node('Panel/ScrollContainer/HBoxContainer/' + skills_character_name)
+	var current_characters = []
+	var current_character_ind : int
+	for ch in charlist.get_children():
+		if ch.visible:
+			current_characters.append(ch)
+	current_character_ind = current_characters.find(current_char_node)
+	var new_character_ind = (current_character_ind + switch_val) % current_characters.size()
+	var new_character_node = current_characters[new_character_ind]
+	var new_character = state.heroes[new_character_node.name]
+	skills_character_name = new_character_node.name
+	return new_character
