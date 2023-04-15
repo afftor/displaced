@@ -13,7 +13,7 @@ export var test_mode = false
 var lock
 
 func _ready():
-	visible = false
+	#visible = false
 	if resources.is_busy(): 
 		yield(resources, "done_work")
 	input_handler.ClearContainer(charlist, ['panel'])
