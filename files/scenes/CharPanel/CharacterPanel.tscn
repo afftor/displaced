@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/themes/statlist.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=2]
@@ -9,8 +9,6 @@
 [ext_resource path="res://files/scenes/charinfo_portrait.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/iconsskills/arron_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/buttons/charpanel/button_skill.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/buttons/charpanel/button_skill_pressed.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/buttons/charpanel/button_skill_hover.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/buttons/charpanel/hpbar_charinfo_filler.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/iconsgear/arron_weapon1_1.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/charpanel/panel_charinfo_big.png" type="Texture" id=14]
@@ -29,7 +27,6 @@
 [ext_resource path="res://assets/images/buttons/charpanel/expbar_charinfo_frame.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/iconsskills/shield.png" type="Texture" id=28]
 [ext_resource path="res://files/scenes/CharPanel/SkillPanel.tscn" type="PackedScene" id=29]
-[ext_resource path="res://assets/sfx/bw_shader.tres" type="Material" id=30]
 [ext_resource path="res://assets/themes/button_location_small.tres" type="Theme" id=31]
 [ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=32]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=33]
@@ -533,11 +530,8 @@ visible = false
 margin_right = 108.0
 margin_bottom = 108.0
 texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 11 )
 
 [node name="icon" type="TextureRect" parent="Panel/HBoxContainer/Button"]
-material = ExtResource( 30 )
 margin_left = 9.0
 margin_top = 9.0
 margin_right = 98.0

@@ -13,7 +13,7 @@ export var test_mode = false
 var lock
 
 func _ready():
-	visible = false
+	#visible = false
 	if resources.is_busy(): 
 		yield(resources, "done_work")
 	input_handler.ClearContainer(charlist, ['panel'])
@@ -199,7 +199,7 @@ func build_skills():
 		var skilldata = Skillsdata.patch_skill(skill_id, character)
 		var panel = input_handler.DuplicateContainerTemplate(skill_list)
 #		panel.get_node("Label").text = skilldata.name
-		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
+	#	panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
 		panel.get_node('icon').texture = skilldata.icon
 		globals.connectskilltooltip(panel, character.id, skill_id)
 		panel.visible = character.skills.has(skill_id)
