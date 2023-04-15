@@ -40,8 +40,8 @@ margin_left = 183.052
 margin_top = -49.3633
 margin_right = 481.052
 margin_bottom = -9.36328
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "arron"
 align = 1
 __meta__ = {
@@ -72,8 +72,8 @@ margin_left = 14.0517
 margin_top = 498.637
 margin_right = 640.052
 margin_bottom = 814.637
-custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Character Descript with scroll"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,11 +91,11 @@ texture_progress = ExtResource( 17 )
 [node name="Label" type="Label" parent="StatsPanel/exp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-custom_fonts/font = ExtResource( 7 )
 text = "50/100"
 align = 1
 valign = 1
@@ -112,11 +112,11 @@ texture_progress = ExtResource( 16 )
 [node name="Label" type="Label" parent="StatsPanel/hp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-custom_fonts/font = ExtResource( 7 )
 text = "50/100"
 align = 1
 valign = 1
@@ -131,8 +131,8 @@ size_flags_horizontal = 3
 [node name="stat" type="Label" parent="StatsPanel/dmg"]
 margin_right = 42.0
 margin_bottom = 32.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "ATK"
 align = 1
 
@@ -140,8 +140,8 @@ align = 1
 margin_left = 46.0
 margin_right = 98.0
 margin_bottom = 32.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "4000"
 align = 1
 
@@ -162,8 +162,8 @@ margin_bottom = 376.0
 [node name="name" type="Label" parent="ResPanel"]
 anchor_right = 1.0
 margin_bottom = 32.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Resistances"
 align = 1
 
@@ -195,9 +195,20 @@ margin_top = 9.0
 margin_right = 104.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 50, 0 )
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = ": 100"
+
+[node name="switch_left" type="Button" parent="."]
+margin_left = 249.0
+margin_top = 954.0
+margin_right = 313.0
+margin_bottom = 1018.0
+theme = ExtResource( 11 )
+text = "<-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="close" type="Button" parent="."]
 margin_left = 377.0
@@ -206,6 +217,17 @@ margin_right = 680.0
 margin_bottom = 1018.0
 theme = ExtResource( 11 )
 text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="switch_right" type="Button" parent="."]
+margin_left = 749.0
+margin_top = 954.0
+margin_right = 813.0
+margin_bottom = 1018.0
+theme = ExtResource( 11 )
+text = "->"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -259,8 +281,8 @@ margin_bottom = 40.0
 margin_right = 488.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Skill"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -278,8 +300,8 @@ margin_left = 512.0
 margin_top = 4.0
 margin_right = 525.0
 margin_bottom = 36.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "0"
 
 [node name="Label" type="Label" parent="skills/Panel/VBoxContainer/HBoxContainer"]
@@ -288,15 +310,15 @@ margin_left = 468.0
 margin_top = 4.0
 margin_right = 525.0
 margin_bottom = 36.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Turns"
 
 [node name="descript" type="Label" parent="skills/Panel/VBoxContainer"]
 margin_top = 44.0
 margin_right = 525.0
 margin_bottom = 71.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Skill Descrpit"
 autowrap = true

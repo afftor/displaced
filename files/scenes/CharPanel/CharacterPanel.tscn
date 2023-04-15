@@ -39,6 +39,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 33 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -59,10 +62,10 @@ margin_left = 650.0
 margin_top = 13.0
 margin_right = 952.0
 margin_bottom = 67.0
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 3 )
 text = "Info"
 align = 1
 valign = 1
@@ -163,8 +166,8 @@ anchor_right = 1.0
 margin_top = 6.0
 margin_right = -2.0
 margin_bottom = 46.0
-custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 text = "Name"
 align = 1
 
@@ -200,11 +203,11 @@ texture_progress = ExtResource( 25 )
 [node name="Label" type="Label" parent="Panel/StatsPanel/exp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-custom_fonts/font = ExtResource( 4 )
 text = "50/100"
 align = 1
 valign = 1
@@ -221,11 +224,11 @@ texture_progress = ExtResource( 12 )
 [node name="Label" type="Label" parent="Panel/StatsPanel/hp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-custom_fonts/font = ExtResource( 4 )
 text = "50/100"
 align = 1
 valign = 1
@@ -242,8 +245,8 @@ alignment = 1
 margin_left = 39.0
 margin_right = 81.0
 margin_bottom = 32.0
-custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 text = "ATK"
 align = 1
 
@@ -251,8 +254,8 @@ align = 1
 margin_left = 85.0
 margin_right = 137.0
 margin_bottom = 32.0
-custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 text = "4000"
 align = 1
 
@@ -278,8 +281,8 @@ __meta__ = {
 [node name="name" type="Label" parent="Panel/ResPanel"]
 anchor_right = 1.0
 margin_bottom = 32.0
-custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 text = "Resistances"
 align = 1
 
@@ -314,8 +317,8 @@ margin_top = 9.0
 margin_right = 104.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 50, 0 )
-custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 text = ": 100"
 
 [node name="SkillsButton" type="Button" parent="Panel"]
@@ -324,11 +327,11 @@ margin_top = 915.0
 margin_right = 336.0
 margin_bottom = 971.0
 theme = ExtResource( 31 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_hover = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_pressed = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 2 )
 text = "Details"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -479,8 +482,8 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 5.0
 margin_bottom = 45.0
-custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -495,8 +498,8 @@ margin_left = 1.414
 margin_top = -50.0
 margin_right = 1.414
 margin_bottom = -10.0
-custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
 text = "Broad Sword"
 align = 1
 __meta__ = {
@@ -508,8 +511,8 @@ margin_left = 448.0
 margin_top = 859.0
 margin_right = 598.0
 margin_bottom = 985.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "1
 2
 3"
@@ -547,3 +550,5 @@ __meta__ = {
 
 [node name="SkillPanel" parent="." instance=ExtResource( 29 )]
 visible = false
+
+[editable path="SkillPanel"]
