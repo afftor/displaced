@@ -27,7 +27,7 @@ func _ready():
 	input_handler.menu_node = $menu_node
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	input_handler.scene_node.preload_scene('intro_1')
-	
+	input_handler.curtain_node = $curtain
 	
 	if test_mode:
 		test()

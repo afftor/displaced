@@ -1155,7 +1155,14 @@ func play_scene(scene: String, restore = false) -> void:
 		preload_scene(scene)
 		if resources.is_busy(): yield(resources, "done_work")
 
+	var my_tween = input_handler.GetTweenNode(self)
+	if my_tween.is_active():
+		yield(my_tween, "tween_all_completed")
+#		my_tween.connect("tween_all_completed",input_handler,"emit_signal",["EventOnScreen"],CONNECT_ONESHOT)
+#	else:
+#		input_handler.emit_signal("EventOnScreen")
 	yield(get_tree(), "idle_frame")
+	input_handler.emit_signal("EventOnScreen")
 	set_process(true)
 	set_process_input(true)
 	if restore:

@@ -1212,12 +1212,25 @@ margin_bottom = -0.943848
 [node name="combat" parent="." instance=ExtResource( 16 )]
 visible = false
 
+[node name="curtain" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="screen" type="Panel" parent="."]
 visible = false
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextSystem" parent="." instance=ExtResource( 14 )]
 visible = false

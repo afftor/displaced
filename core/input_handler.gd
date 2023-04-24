@@ -23,6 +23,7 @@ signal CombatEnded
 signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
+signal EventOnScreen
 signal EventFinished
 signal QuestStarted
 signal QuestCompleted
@@ -39,6 +40,7 @@ var explore_node
 var combat_node
 var scene_node
 var menu_node
+var curtain_node
 
 var rmb_state = false
 

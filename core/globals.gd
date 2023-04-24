@@ -72,6 +72,7 @@ var textcodedict = {
 	url = {start = '[url=',end = '[/url]'}
 }
 
+enum SEQ {NONE, SCENE_STARTED}
 
 var globalsettings = {
 	ActiveLocalization = 'en',
@@ -218,18 +219,23 @@ func StartGame():
 	change_screen('map')
 	if resources.is_busy(): yield(resources, "done_work")
 	print('start')
-	run_seq('intro')
-
+	input_handler.curtain_node.show()
+	var output = run_seq('intro')
+	if output == SEQ.SCENE_STARTED :
+		input_handler.connect("EventOnScreen",input_handler.curtain_node,"hide",[],CONNECT_ONESHOT)
 
 func run_seq(id, forced = false):
 	if !state.check_sequence(id, forced): return
 	if !state.OldSeqs.has(id): forced = false
-	run_actions_list(Explorationdata.scene_sequences[id].actions, forced)
+	var output = run_actions_list(Explorationdata.scene_sequences[id].actions, forced)
 	state.store_sequence(id)
+	return output
 
 
+#we may need to analyse this func further deep, so simple bool output for scene could make refactoring harder in future
 func run_actions_list(list, replay = false):
 	var stop_syncronous = false
+	var output = SEQ.NONE
 	for action in list:
 		match action.type:
 			'scene':
@@ -237,6 +243,8 @@ func run_actions_list(list, replay = false):
 				if action.has('reqs') and !state.checkreqs(action.reqs):
 					continue #stub, for this can lead to missing unlock opportunity, cant simply unlock either
 				stop_syncronous = play_scene(action.value, replay)
+				if stop_syncronous:
+					output = SEQ.SCENE_STARTED
 			'system':
 				if !replay: state.system_action(action)
 			'show_screen':
@@ -248,6 +256,7 @@ func run_actions_list(list, replay = false):
 				force_start_mission(action.value)
 				if action.has('auto_advance') and action.auto_advance:
 					input_handler.explore_node.auto_advance()
+	return output
 
 
 func change_screen(screen):
