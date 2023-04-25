@@ -1051,7 +1051,7 @@ func fill_up_level_up(character):
 
 func FinishCombat(value):
 	var curtain_time = 0.5
-	input_handler.UnfadeAnimation(input_handler.curtain_node, curtain_time)
+	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
 	yield(get_tree().create_timer(curtain_time), 'timeout')
 
 	for ch in state.heroes.values():
@@ -1080,7 +1080,7 @@ func FinishCombat(value):
 func hide_me():
 	input_handler.combat_node = null
 	hide()
-	input_handler.FadeAnimation(input_handler.curtain_node)
+	input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
 
 
 

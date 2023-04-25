@@ -219,10 +219,9 @@ func StartGame():
 	change_screen('map')
 	if resources.is_busy(): yield(resources, "done_work")
 	print('start')
-	input_handler.curtain_node.show()
 	var output = run_seq('intro')
 	if output == SEQ.SCENE_STARTED :
-		input_handler.connect("EventOnScreen",input_handler.curtain_node,"hide",[],CONNECT_ONESHOT)
+		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 
 func run_seq(id, forced = false):
 	if !state.check_sequence(id, forced): return

@@ -957,28 +957,31 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 	delay = max(delay, 0.3) #not sure, but should be enough to fix asynchonisation of abg changing 
 
 
+func tag_loose() -> void:
+	stop_scene()#stop_scene supposed to run separately of any tags for sake of seqinced scenes, so here it's usage appropriate only for gameover purpose
+	if !replay_mode and input_handler.menu_node != null:
+		input_handler.menu_node.GameOverShow()
+
+
 func prompt_close():
 	$ClosePanel.show()
 	print_tree_pretty()
 
 
-func tag_stop() -> void:
+func stop_scene() -> void:
 	input_handler.StopMusic()
 	set_process(false)
 	set_process_input(false)
 	#globals.check_signal("EventFinished")
+	input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	hide()
 	if !replay_mode:
 		state.FinishEvent()
+	else:
+		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 	replay_mode = false
 #	emit_signal("scene_end")
 	input_handler.emit_signal("EventFinished")
-
-
-func tag_loose() -> void:
-	tag_stop()
-	if !replay_mode and input_handler.menu_node != null:
-		input_handler.menu_node.GameOverShow()
 
 
 func advance_scene() -> void:
@@ -1000,6 +1003,9 @@ func advance_scene() -> void:
 		if !(line_dr[0] in AVAIL_EFFECTS):
 			print("Unknown tag: ", line_dr)
 			line_nr += 1
+			return
+		if line_dr[0] == "STOP":
+			stop_scene()
 			return
 		
 		var method_name = "tag_%s" % line_dr[0].to_lower()
@@ -1135,7 +1141,9 @@ func play_scene(scene: String, restore = false) -> void:
 	$Panel.visible = false
 	panel_vis = false
 	$CharImage.modulate.a = 0
-	$BlackScreen.modulate.a = 0
+	var BlackScreen_node = $BlackScreen
+	input_handler.GetTweenNode(BlackScreen_node).stop_all()
+	BlackScreen_node.modulate.a = 0
 	for i in $VideoBunch.get_children():
 		i.stop()
 		i.stream = null
