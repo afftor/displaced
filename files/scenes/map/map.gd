@@ -41,7 +41,7 @@ func test():
 		state.unlock_char(ch)
 #		state.heroes[ch].unlock_all_skills()
 	unlock_area('forest')
-	input_handler.FadeAnimation($screen)
+	input_handler.FadeAnimation(input_handler.curtain_node)
 
 
 func buildscreen(empty = null):

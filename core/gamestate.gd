@@ -212,7 +212,7 @@ func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
 	scene_restore_data.clear()
-	input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
+	input_handler.curtain_node.hide()
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
 #	input_handler.emit_signal("EventFinished")
 	if Explorationdata.event_triggers.has(CurEvent):
@@ -458,10 +458,10 @@ func deserialize(tmp:Dictionary):
 		scene_restore_data[k] = int(scene_restore_data[k])
 	if CurEvent != null and CurEvent != "":
 		globals.play_scene(CurEvent, false, true)
-		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,1)
+		input_handler.curtain_node.show()
 	else:
-		input_handler.FadeAnimation(input_handler.map_node.get_node('screen'))
-#		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
+		input_handler.FadeAnimation(input_handler.curtain_node)
+#		input_handler.curtain_node.self_modulate = Color(0,0,0,0)
 #	input_handler.map_node.update_map()
 
 func cleanup():
