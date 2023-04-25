@@ -23,6 +23,7 @@ signal CombatEnded
 signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
+signal EventOnScreen
 signal EventFinished
 signal QuestStarted
 signal QuestCompleted
@@ -39,6 +40,8 @@ var explore_node
 var combat_node
 var scene_node
 var menu_node
+
+var curtains
 
 var rmb_state = false
 
@@ -396,6 +399,7 @@ func SetMusic(res, delay = 0):
 		res = resources.get_res("music/%s" % res)
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
+	musicfading = false
 	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
 	if musicnode.stream == res:
 		return

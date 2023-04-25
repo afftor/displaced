@@ -60,6 +60,14 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="bg_curtain" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VideoBunch" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,6 +97,9 @@ margin_bottom = 1080.0
 mouse_filter = 0
 expand = true
 stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CharImage" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -173,8 +184,8 @@ margin_left = 104.0
 margin_top = 32.0
 margin_right = 381.0
 margin_bottom = 64.0
-custom_colors/font_color = Color( 1, 0.823822, 0.0195313, 1 )
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 0.823822, 0.0195313, 1 )
 
 [node name="CharPortrait" type="TextureRect" parent="Panel"]
 margin_left = -310.0
@@ -239,8 +250,8 @@ margin_left = 39.0
 margin_top = 145.0
 margin_right = 1138.0
 margin_bottom = 735.0
-custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = ExtResource( 13 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie dolor et commodo pulvinar. Nam ac nisl quis mauris malesuada commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam semper venenatis elit, eget venenatis velit dictum mattis. Etiam pharetra erat sed dui eleifend, et vehicula nulla faucibus. Pellentesque ut dolor vel augue aliquet tincidunt eu vitae purus. Nullam tristique posuere dolor vel tincidunt. Sed sit amet ante quis lectus fringilla mollis. Quisque ac nisl purus. Nullam gravida pretium nisi. Maecenas imperdiet sed tortor eu interdum.
 

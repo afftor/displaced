@@ -27,7 +27,7 @@ func _ready():
 	input_handler.menu_node = $menu_node
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	input_handler.scene_node.preload_scene('intro_1')
-	
+	input_handler.curtains = $curtains
 	
 	if test_mode:
 		test()
@@ -41,7 +41,7 @@ func test():
 		state.unlock_char(ch)
 #		state.heroes[ch].unlock_all_skills()
 	unlock_area('forest')
-	input_handler.FadeAnimation($screen)
+	input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 
 
 func buildscreen(empty = null):

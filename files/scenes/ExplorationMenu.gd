@@ -437,20 +437,19 @@ func finish_area():
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('events') and areadata.events.has("on_complete"):
 		var scene = areadata.events.on_complete
-		if !state.OldEvents.has(scene):
-			if globals.play_scene(scene):
-#				yield(input_handler.scene_node, "scene_end")
-				yield(input_handler, "EventFinished")
-		else:
-			if globals.play_scene(scene, true):
-#				yield(input_handler.scene_node, "scene_end")
-				yield(input_handler, "EventFinished")
+		var enforce_replay = state.OldEvents.has(scene)
+		if globals.play_scene(scene, enforce_replay):
+#			yield(input_handler.scene_node, "scene_end")
+			yield(input_handler, "EventFinished")
 	if location != 'mission': open_explore()
 	else: hide()
 	if areadata.has('events') and areadata.events.has("on_complete_seq"):
 		var seq_id = areadata.events.on_complete_seq
 		if state.check_sequence(seq_id):
-			globals.run_seq(seq_id)
+			var output = globals.run_seq(seq_id)
+			if output == globals.SEQ.SCENE_STARTED :
+				yield(input_handler, "EventOnScreen")
+	input_handler.combat_node.hide_me()
 
 
 func combat_finished(value):
@@ -465,6 +464,7 @@ func combat_win():
 
 
 func combat_loose():
+	input_handler.combat_node.hide_me()
 	var areastate = state.areaprogress[area]
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('no_escape') and areadata.no_escape:
@@ -496,22 +496,19 @@ func advance_check():
 		build_area_description()
 #		if areadata.stagedenemies.has(areastate.stage) and areadata.stagedenemies[areastate.stage].has('scene'):
 #			advance_area()
+		var playing_scene = false
 		if areadata.events.has("after_fight_%d" % (areastate.stage - 1)):
 			var scene = areadata.events["after_fight_%d" % (areastate.stage - 1)]
-			if state.OldEvents.has(scene):
-				if globals.play_scene(scene, true):
-					pass
-				else:
-					$AdvConfirm.visible = true
-			else:
-				if globals.play_scene(scene):
-					pass
-				else:
-					$AdvConfirm.visible = true
-				
+			var enforce_replay = state.OldEvents.has(scene)
+			playing_scene = globals.play_scene(scene, enforce_replay)
+			if playing_scene:
+				yield(input_handler, "EventOnScreen")
+
+#			if !enforce_replay: #kept legacy code with it's logic, but it was already to old to work
 #				yield(input_handler.scene_node, "scene_end")
 #				advance_check()
-		else:
+		input_handler.combat_node.hide_me()
+		if !playing_scene:
 			$AdvConfirm.visible = true
 
 func adv_confirm():

@@ -212,16 +212,19 @@ func FinishEvent():
 	if CurEvent == "" or CurEvent == null:return
 	StoreEvent(CurEvent)
 	scene_restore_data.clear()
-	input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
 #	input_handler.emit_signal("EventFinished")
+	var next_is_scene = false
 	if Explorationdata.event_triggers.has(CurEvent):
 		var nseqdata = Explorationdata.event_triggers[CurEvent]
 		CurEvent = ""
-		globals.run_actions_list(nseqdata)
+		var output = globals.run_actions_list(nseqdata)
+		next_is_scene = (output == globals.SEQ.SCENE_STARTED)
 	else:
 		CurEvent = ""
-	
+
+	if !next_is_scene:
+		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 
 
 func store_choice(choice, option):
@@ -458,10 +461,9 @@ func deserialize(tmp:Dictionary):
 		scene_restore_data[k] = int(scene_restore_data[k])
 	if CurEvent != null and CurEvent != "":
 		globals.play_scene(CurEvent, false, true)
-		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,1)
+		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	else:
-		input_handler.FadeAnimation(input_handler.map_node.get_node('screen'))
-#		input_handler.map_node.get_node('screen').self_modulate = Color(0,0,0,0)
+		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 #	input_handler.map_node.update_map()
 
 func cleanup():
