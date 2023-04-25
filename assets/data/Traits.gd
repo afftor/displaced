@@ -282,6 +282,15 @@ var traitlist = {
 		hidden = false,
 		effects = ['e_summon']
 	},
+	summoner = {
+		code = 'summon',
+		name = '',
+		description = '',
+		icon = null,
+		cost = 0,
+		hidden = false,
+		effects = ['e_summon_clean']
+	},
 	el_heal = {
 		code = 'el_heal',
 		name = '',

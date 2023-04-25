@@ -1050,10 +1050,7 @@ func fill_up_level_up(character):
 			$LevelUp/VBoxContainer/NewSkill.visible = true
 
 func FinishCombat(value):
-	var curtain_time = 0.5
-	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
-	yield(get_tree().create_timer(curtain_time), 'timeout')
-
+	
 	for ch in state.heroes.values():
 		ch.defeated = false
 		ch.cooldowns.clear()
@@ -1072,6 +1069,11 @@ func FinishCombat(value):
 	input_handler.RevertMusic()
 	state.cleanup()
 	
+	var curtain_time = 0.5
+	if input_handler.curtains != null: 
+		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
+		yield(get_tree().create_timer(curtain_time), 'timeout')
+	
 	if input_handler.explore_node != null:
 		input_handler.explore_node.combat_finished(value)
 	else:
@@ -1080,7 +1082,8 @@ func FinishCombat(value):
 func hide_me():
 	input_handler.combat_node = null
 	hide()
-	input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
+	if input_handler.curtains != null: 
+		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
 
 
 

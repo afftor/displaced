@@ -725,6 +725,7 @@ var enemylist = {
 			hit = "Fight/Bosses/Ent_hit",
 			attack = "Fight/Bosses/Ent_at",
 		},
+		traits = ['summoner']
 	},
 	earthgolemboss = { #animations copied from regulal version!!!
 		code = 'earthgolemboss',
@@ -821,6 +822,7 @@ var enemylist = {
 			hit = "Fight/Bosses/Queen_fairy_hit",
 			attack ="Fight/Bosses/Queen_fairy_cast" ,
 		},
+		traits = ['summoner']
 	},
 	dragon_boss = { #stats copied from above!!!  skills copied from wyvern
 		code = 'dragon_boss',
@@ -953,6 +955,7 @@ var enemylist = {
 			hit = "Fight/Bosses/Fight_spritesFHD_0000s_0001_Doc_hit",
 			attack ="Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at" ,
 		},
+		traits = ['summoner']
 	},
 	caliban = { #stats copied from above!!!
 		code = 'caliban',
