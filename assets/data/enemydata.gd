@@ -798,7 +798,7 @@ var enemylist = {
 		race = 'rock',
 		skills = [],
 		passives = [],
-		traits = ['fq_armor'],
+		traits = ['fq_armor', 'summoner'],
 		basehp = 1000,
 		basemana = 0,
 		armor = 35,
@@ -822,7 +822,6 @@ var enemylist = {
 			hit = "Fight/Bosses/Queen_fairy_hit",
 			attack ="Fight/Bosses/Queen_fairy_cast" ,
 		},
-		traits = ['summoner']
 	},
 	dragon_boss = { #stats copied from above!!!  skills copied from wyvern
 		code = 'dragon_boss',
@@ -944,7 +943,7 @@ var enemylist = {
 		ai = load('res://files/ai_classes/scientist.gd').new(),
 		
 		bodyhitsound = 'flesh',
-		traits = ['unstable'],
+		traits = ['unstable', 'summoner'],
 		combaticon = 'enemies/Scientist_bossCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
@@ -955,7 +954,6 @@ var enemylist = {
 			hit = "Fight/Bosses/Fight_spritesFHD_0000s_0001_Doc_hit",
 			attack ="Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at" ,
 		},
-		traits = ['summoner']
 	},
 	caliban = { #stats copied from above!!!
 		code = 'caliban',
