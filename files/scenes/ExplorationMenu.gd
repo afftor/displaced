@@ -447,7 +447,7 @@ func finish_area():
 		var seq_id = areadata.events.on_complete_seq
 		if state.check_sequence(seq_id):
 			var output = globals.run_seq(seq_id)
-			if output == globals.SEQ.SCENE_STARTED :
+			if output == variables.SEQ_SCENE_STARTED :
 				yield(input_handler, "EventOnScreen")
 	input_handler.combat_node.hide_me()
 

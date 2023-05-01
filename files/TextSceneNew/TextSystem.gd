@@ -500,7 +500,8 @@ var ref_src = PoolStringArray()
 
 var current_scene = ""
 var scene_map = {}
-var line_nr = 0
+var step = 0
+var line_start = 0
 var line_dr = ""
 
 var scenes_map = {}
@@ -516,8 +517,10 @@ var force_stop
 var is_video_bg = false
 var decisions = PoolStringArray()
 var last_choice = -1
+var choice_number = -1
 
 var replay_mode = false
+var rewind_mode = false
 
 func _ready() -> void:
 	input_handler.scene_node = self
@@ -673,6 +676,7 @@ func _input(event: InputEvent) -> void:
 		if replay_mode: #only avail in replay mode due to ability to miss critical choices and unlocks otherwise
 			prompt_close()
 
+#--------------tags------------
 func tag_white() -> void:
 	var tween = input_handler.GetTweenNode($WhiteScreenGFX)
 	var node = $WhiteScreenGFX
@@ -687,13 +691,9 @@ func tag_white() -> void:
 	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.7)
 
 func tag_music_stop() -> void:
-	if !replay_mode:
-		state.scene_restore_data.music = line_nr
 	input_handler.StopMusic()
 
 func tag_gui_normal() -> void:
-	if !replay_mode:
-		state.scene_restore_data.gui = line_nr
 	$Panel.self_modulate.a = 1
 	$Panel/Panel.modulate.a = 0
 	$Panel.modulate.a = 1
@@ -707,14 +707,10 @@ func tag_gui_normal() -> void:
 	panel_vis = true
 
 func tag_gui_hide() -> void:
-	if !replay_mode:
-		state.scene_restore_data.gui = line_nr
 	$Panel.hide()
 	panel_vis = false
 
 func tag_gui_full() -> void:
-	if !replay_mode:
-		state.scene_restore_data.gui = line_nr
 	$Panel.self_modulate.a = 0
 	$Panel/Panel.modulate.a = 0.7
 	$Panel/DisplayName.self_modulate.a = 0
@@ -726,57 +722,58 @@ func tag_gui_full() -> void:
 	panel_vis = true
 
 func tag_blackon() -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_bs = true
 	$BlackScreen.modulate.a = 1
 
 func tag_blackoff() -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_bs = false
 	$BlackScreen.modulate.a = 0
 
 func tag_blackfade(secs: String = "0.5") -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_bs = false
 	input_handler.emit_signal("ScreenChanged")
-	input_handler.FadeAnimation($BlackScreen, float(secs))
+	if rewind_mode:
+		tag_blackoff()
+	else:
+		input_handler.FadeAnimation($BlackScreen, float(secs))
 
 func tag_blackunfade(secs: String = "0.5") -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_bs = true
 	input_handler.emit_signal("ScreenChanged")
-	input_handler.UnfadeAnimation($BlackScreen, float(secs))
+	if rewind_mode:
+		tag_blackon()
+	else:
+		input_handler.UnfadeAnimation($BlackScreen, float(secs))
 
 func tag_blacktrans(secs: String = "0.5") -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_bs = false
-	var duration = float(secs)
 	TextField.bbcode_text = ''
 	$Panel/CharPortrait.modulate.a = 0
 	$Panel/DisplayName.modulate.a = 0
+	if rewind_mode:
+		input_handler.emit_signal("ScreenChanged")#should it be here?
+		tag_blackoff()
+		return
+	var duration = float(secs)
 	input_handler.UnfadeAnimation($BlackScreen, duration)
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.FadeAnimation($BlackScreen, duration, duration)
 
 func tag_bg(res_name: String, secs: String = "") -> void:
-	if !replay_mode:
-		state.scene_restore_data.bg = line_nr
-	
 	if is_video_bg:
-		$Tween.interpolate_property($Background, "modulate:a",
-			0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
-		$Tween.interpolate_property($VideoBunch, "modulate:a",
-			1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
-		$Tween.start()
 		is_video_bg = false
-		yield(get_tree().create_timer(0.3), "timeout")
+		if rewind_mode:
+			$Background.modulate.a = 1.0
+			$VideoBunch.modulate.a = 0.0
+		else:
+			$Tween.interpolate_property($Background, "modulate:a",
+				0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
+			$Tween.interpolate_property($VideoBunch, "modulate:a",
+				1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
+			$Tween.start()
+			yield(get_tree().create_timer(0.3), "timeout")
 		for i in $VideoBunch.get_children():
 			i.stop()
 			i.stream = null
 #	if !replay_mode:
 	state.unlock_path(res_name, false)
 	var res = resources.get_res("bg/%s" % res_name)
-	if secs != "":
+	if secs != "" and !rewind_mode:
 		input_handler.SmoothTextureChange($Background, res, float(secs))
 	else:
 		$Background.texture = res
@@ -784,25 +781,25 @@ func tag_bg(res_name: String, secs: String = "") -> void:
 
 
 func tag_delay(secs: String) -> void:
+	if rewind_mode:
+		return
 	if skip: delay = 0.1
 	else: delay = float(secs)
 
-func get_choice(i: int):
-	last_choice = i
-	if !replay_mode:
-		state.store_choice(choice_line, i)
-	for ch_button in $ChoicePanel/VBoxContainer.get_children():
-		if ch_button.index == i:
-			print("%d %s" % [i, ch_button.get_node("Label").text])
-			text_log += "\n\n" + ch_button.get_node("Label").text
-			break
-	$ChoicePanel.visible = false
-	force_stop = false
-	advance_scene()
-
-
-var choice_line = 0
 func tag_choice(chstring: String) -> void:
+	choice_number += 1
+	if rewind_mode:
+		var stored_choice = state.get_choice(choice_number)
+		if stored_choice != null:
+			last_choice = stored_choice
+			return
+		else:
+			print("warning - no stored choice")
+			rewind_mode = false
+			#So we stop rewinding if there is no choice stored,
+			#which should occur only if save-file is incompatible with game version
+			#or there was an error. Mind that "decision" in this case
+			#probably has been stored correctly.
 	var chsplit = chstring.split("|")
 	skip = false
 	force_stop = true
@@ -814,7 +811,6 @@ func tag_choice(chstring: String) -> void:
 	$ChoicePanel.visible = true
 	
 	var c = 0
-	choice_line = line_nr
 	for ch in chsplit:
 		var newbutton = $ChoicePanel/VBoxContainer.get_node("Button").duplicate()
 		$ChoicePanel/VBoxContainer.add_child(newbutton)
@@ -824,7 +820,7 @@ func tag_choice(chstring: String) -> void:
 		newbutton.index = c
 		newbutton.connect('i_pressed', self, 'get_choice')
 		if replay_mode:
-			var stored_choice = state.get_choice(line_nr)
+			var stored_choice = state.get_choice(choice_number)
 			if stored_choice == null:
 				print("warning - no stored choice")
 			else:
@@ -832,14 +828,27 @@ func tag_choice(chstring: String) -> void:
 					newbutton.disabled = true
 		c += 1
 
+func get_choice(i: int):
+	last_choice = i
+	if !replay_mode:
+		state.store_choice(choice_number, i)
+	for ch_button in $ChoicePanel/VBoxContainer.get_children():
+		if ch_button.index == i:
+			print("%d %s" % [i, ch_button.get_node("Label").text])
+			text_log += "\n\n" + ch_button.get_node("Label").text
+			break
+	$ChoicePanel.visible = false
+	force_stop = false
+	advance_scene()
+
+
 func tag_decision(dec_name: String) -> void:
 	decisions.append(dec_name)
-	if !replay_mode:
-		state.decisions.append(dec_name)
-
+	if replay_mode or rewind_mode: return
+	state.decisions.append(dec_name)
 
 func tag_state(method:String, arg):
-	if replay_mode: return
+	if replay_mode or rewind_mode: return
 	match method:
 		'char_unlock':
 			state.unlock_char(arg)
@@ -861,14 +870,9 @@ func tag_state(method:String, arg):
 		_: print("Unknown state command: %s" % method)
 
 func tag_sprite_hide() -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_sprite = false
 	ImageSprite.modulate = Color(1,1,1,0)
 
 func tag_sprite(res_name: String) -> void:
-	if !replay_mode:
-		state.scene_restore_data.sprite = line_nr
-		state.scene_restore_data.show_sprite = true
 	var tspr = ImageSprite.get_node_or_null('sprite')
 	if tspr != null:
 		tspr.free()#to testing
@@ -882,23 +886,27 @@ func tag_sprite(res_name: String) -> void:
 		tmp.set_anchors_preset(PRESET_CENTER)
 		ImageSprite.add_child(tmp)
 	#autounfade
-	input_handler.UnfadeAnimation(ImageSprite, 0.3 , delay)
+	tag_sprite_unfade("0.3")
 
 func tag_sprite_fade(secs: String = "0.5") -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_sprite = false
-	input_handler.FadeAnimation(ImageSprite, float(secs), delay)
+	if rewind_mode:
+		ImageSprite.modulate.a = 0.0
+	else:
+		input_handler.FadeAnimation(ImageSprite, float(secs), delay)
 
 func tag_sprite_unfade(secs: String = "0.5") -> void:
-	if !replay_mode:
-		state.scene_restore_data.show_sprite = true
-	input_handler.UnfadeAnimation(ImageSprite, float(secs), delay)
+	if rewind_mode:
+		ImageSprite.modulate.a = 1.0
+	else:
+		input_handler.UnfadeAnimation(ImageSprite, float(secs), delay)
 
 func tag_shake_sprite(secs: String = "0.2") -> void:
+	if rewind_mode: return
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.ShakeAnimation(ImageSprite, float(secs))
 
 func tag_shake_screen(secs: String = "0.2") -> void:
+	if rewind_mode: return
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.ShakeAnimation(self, float(secs))
 
@@ -907,27 +915,28 @@ func tag_skip(ifindex_s: String, lcount_s: String) -> void:
 	var lcount = int(lcount_s)
 
 	if ifindex == last_choice or ifindex == -1:
-		line_nr += lcount
+		step += lcount
 
 func tag_sound(res_name: String) -> void:
+	if rewind_mode: return
 	input_handler.PlaySound(resources.get_res("sound/%s" % res_name))
 
 func tag_music(res_name: String) -> void:
-	if !replay_mode:
-		state.scene_restore_data.music = line_nr
 	input_handler.SetMusic(res_name)
 
 func tag_abg(res_name: String, sec_res_name: String = "") -> void:
-	if !replay_mode:
-		state.scene_restore_data.bg = line_nr
-		
 	if !is_video_bg:
-		$Tween.interpolate_property($Background, "modulate:a",
-			1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
-		$Tween.interpolate_property($VideoBunch, "modulate:a",
-			0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
-		$Tween.start()
 		is_video_bg = true
+		if rewind_mode:
+			$Background.modulate.a = 0.0
+			$VideoBunch.modulate.a = 1.0
+		else:
+			$Tween.interpolate_property($Background, "modulate:a",
+				1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
+			$Tween.interpolate_property($VideoBunch, "modulate:a",
+				0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
+			$Tween.start()
+		
 		
 
 #	if !replay_mode:
@@ -962,6 +971,7 @@ func tag_loose() -> void:
 	if !replay_mode and input_handler.menu_node != null:
 		input_handler.menu_node.GameOverShow()
 
+#-------------------------------
 
 func prompt_close():
 	$ClosePanel.show()
@@ -985,41 +995,38 @@ func stop_scene() -> void:
 
 
 func advance_scene() -> void:
-	line_dr = ref_src[line_nr]
+	step += 1
+	if !replay_mode and !rewind_mode:
+		state.scene_restore_data.step = step
+	line_dr = ref_src[get_line_nr()]
 	receive_input = false
 
 	if line_dr.begins_with("#"):
-		line_nr += 1
 		return
 
 	if line_dr.begins_with("=") && line_dr.ends_with("="):
 		line_dr = line_dr.replace("=", "")
-		line_dr = line_dr.split(" ")
-		if line_dr.size() == 0:
+		var line_array = line_dr.split(" ")
+		if line_array.size() == 0:
 			print("Empty tag!")
-			line_nr += 1
 			advance_scene()
 			return
-		if !(line_dr[0] in AVAIL_EFFECTS):
-			print("Unknown tag: ", line_dr)
-			line_nr += 1
+		if !(line_array[0] in AVAIL_EFFECTS):
+			print("Unknown tag: ", line_array)
 			return
-		if line_dr[0] == "STOP":
+		if line_array[0] == "STOP":
 			stop_scene()
 			return
 		
-		var method_name = "tag_%s" % line_dr[0].to_lower()
+		var method_name = "tag_%s" % line_array[0].to_lower()
 		if !has_method(method_name):
 			print("Tag method %s not implemented yet!" % method_name)
-			line_nr += 1
 			return
 		
-		line_dr.remove(0)
-		callv(method_name, line_dr)
+		line_array.remove(0)
+		callv(method_name, line_array)
 		
-	else:
-		if !replay_mode:
-			state.scene_restore_data.text = line_nr
+	elif !rewind_mode:
 		var splitted = line_dr.split(" - ")
 		
 		var is_narrator = true
@@ -1051,63 +1058,6 @@ func advance_scene() -> void:
 			$Panel/CharPortrait.texture = portrait_res
 		
 		receive_input = true
-	
-	line_nr += 1
-
-
-func apply_line_direct(line) -> void:
-	line_dr = ref_src[line]
-	if line_dr.begins_with("#"):
-		return
-	if line_dr.begins_with("=") && line_dr.ends_with("="):
-		line_dr = line_dr.replace("=", "")
-		line_dr = line_dr.split(" ")
-		if line_dr.size() == 0:
-			print("Empty tag!")
-			return
-		if !(line_dr[0] in AVAIL_EFFECTS):
-			print("Unknown tag: ", line_dr)
-			return
-		var method_name = "tag_%s" % line_dr[0].to_lower()
-		if !has_method(method_name):
-			print("Tag method %s not implemented yet!" % method_name)
-			return
-		
-		line_dr.remove(0)
-		callv(method_name, line_dr)
-		
-	else:
-		line_nr = line
-		var splitted = line_dr.split(" - ")
-		
-		var is_narrator = true
-		var character = char_map['Narrator']
-		var replica = line_dr
-		
-		if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
-			character = char_map[splitted[0]]
-			replica = splitted[1]
-			is_narrator = false
-		
-		ShownCharacters = 0
-		replica = tr(replica)
-		if is_narrator:
-			text_log += '\n\n' + replica
-		else:
-			text_log += '\n\n' + '[' + tr(character.source) + ']\n' + replica
-		
-		TextField.visible_characters = ShownCharacters
-		TextField.bbcode_text = "[color=#%s]%s[/color]" % [character.color.to_html(), replica]
-		
-		var portrait_res = resources.get_res("portrait/%s" % character.portrait)
-		
-		$Panel/DisplayName.modulate.a = 1 if !is_narrator else 0
-		$Panel/CharPortrait.modulate.a = 1 if !is_narrator && portrait_res != null else 0
-		$Panel/DisplayName/Label.text = tr(character.source)
-		if ($Panel/CharPortrait.visible || $Panel/CharPortrait.modulate.a == 1) \
-													&& portrait_res != null:
-			$Panel/CharPortrait.texture = portrait_res
-	
 
 
 func preload_scene(scene: String) -> void:
@@ -1122,12 +1072,14 @@ func play_scene(scene: String, restore = false) -> void:
 
 	scene_map = scenes_map[scene]
 
-	line_nr = scene_map["start"]
+	line_start = scene_map["start"]
+	step = -1
 	skip = false
 	delay = 0
 	receive_input = false
 	decisions = PoolStringArray()
 	last_choice = -1
+	choice_number = -1
 	state.CurEvent = scene
 
 	$Background.texture = null
@@ -1166,28 +1118,20 @@ func play_scene(scene: String, restore = false) -> void:
 	var my_tween = input_handler.GetTweenNode(self)
 	if my_tween.is_active():
 		yield(my_tween, "tween_all_completed")
-#		my_tween.connect("tween_all_completed",input_handler,"emit_signal",["EventOnScreen"],CONNECT_ONESHOT)
-#	else:
-#		input_handler.emit_signal("EventOnScreen")
 	yield(get_tree(), "idle_frame")
 	input_handler.emit_signal("EventOnScreen")
 	set_process(true)
 	set_process_input(true)
 	if restore:
-		var data = state.scene_restore_data
-		for k in data:
-			if k == 'show_sprite':
-				if data[k]:
-					ImageSprite.modulate = Color(1,1,1,1)
-				else:
-					ImageSprite.modulate = Color(1,1,1,0)
-			elif k == 'show_bs':
-				if data[k]:
-					$BlackScreen.modulate.a = 1
-				else:
-					$BlackScreen.modulate.a = 0
-			else:
-				apply_line_direct(data[k])
+		var rewind_to_step = 0
+		if state.scene_restore_data.has("step"):
+			rewind_to_step = state.scene_restore_data.step
+		rewind_to_step -= 1
+		rewind_mode = true
+		while step < rewind_to_step:
+			advance_scene()
+			if !rewind_mode : break
+		rewind_mode = false
 
 func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	var out = {}
@@ -1324,3 +1268,7 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	current_scene = ""
 	line_dr = ""
 	return out.duplicate(true)
+
+func get_line_nr() -> int:
+	return line_start + step
+

@@ -219,7 +219,7 @@ func FinishEvent():
 		var nseqdata = Explorationdata.event_triggers[CurEvent]
 		CurEvent = ""
 		var output = globals.run_actions_list(nseqdata)
-		next_is_scene = (output == globals.SEQ.SCENE_STARTED)
+		next_is_scene = (output == variables.SEQ_SCENE_STARTED)
 	else:
 		CurEvent = ""
 

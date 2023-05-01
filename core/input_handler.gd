@@ -409,6 +409,7 @@ func SetMusic(res, delay = 0):
 
 func StopMusic(instant = false):
 	musicfading = true
+	musicraising = false
 
 
 func RevertMusic():
