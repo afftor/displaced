@@ -87,7 +87,16 @@ var char_map = {
 	},
 	T = {
 		source = 'Traveler',
-		portrait = 'traveller', #not exist
+		portrait = 'traveller',
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Traveler = {
+		source = 'Traveler',
+		portrait = 'traveller_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
