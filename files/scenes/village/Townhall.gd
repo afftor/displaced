@@ -35,6 +35,7 @@ func open():
 	show()
 
 func show():
+	update_events_panel()
 	state.CurBuild = 'TownHall';
 	input_handler.menu_node.visible = false
 #	globals.check_signal("BuildingEntered", 'TownHall')
@@ -200,6 +201,12 @@ func build_events():
 				res = true
 				break
 	
+	if visible :
+		update_events_panel()
+	
+	return res
+
+func update_events_panel():
 	$UpcomingEvents.visible = false
 	input_handler.ClearContainer(charpanel, ['portrait'])
 	for ch in binded_events:
@@ -209,9 +216,6 @@ func build_events():
 		panel.connect("pressed", self, "run_seq", [ch])
 		var tex = resources.get_res("portrait/%s" % input_handler.scene_node.char_map[ch].portrait)
 		panel.texture_normal = tex
-	
-	return res
-
 
 func run_seq(ch):
 	if !TutorialCore.check_action("village_run_seq", [ch]): return
