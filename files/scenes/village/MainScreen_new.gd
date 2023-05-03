@@ -90,7 +90,7 @@ func _ready():
 
 func show():
 	buildscreen()
-	input_handler.CurrentScreen = 'Village'
+	state.CurrentScreen = 'Village'
 #	globals.CurrentScene = self
 	.show()
 	TutorialCore.check_event("village_open")
@@ -158,7 +158,7 @@ func openmarket():
 func ReturnToMap():
 	input_handler.map_node.update_map()
 	hide()
-	input_handler.CurrentScreen = 'Map'
+	state.CurrentScreen = 'Map'
 
 
 func VotePanelShow(quest):

@@ -36,12 +36,14 @@ func open():
 
 func show():
 	state.CurBuild = 'TownHall';
+	input_handler.menu_node.visible = false
 #	globals.check_signal("BuildingEntered", 'TownHall')
 	.show();
 
 func hide():
 	if !TutorialCore.check_action("village_townhall_hide"): return
 	state.CurBuild = "";
+	input_handler.menu_node.visible = true
 	.hide();
 
 #func selecttaskfromlist(task):

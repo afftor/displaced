@@ -5,7 +5,6 @@ extends Node
 #warning-ignore-all:unused_signal
 var CloseableWindowsArray = []
 var ShakingNodes = []
-var CurrentScreen = 'Map'
 
 var BeingAnimated = []
 var SystemMessageNode

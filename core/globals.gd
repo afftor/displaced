@@ -642,8 +642,11 @@ func LoadGame(filename):
 	state.deserialize(savedict)
 	CurrentScene.buildscreen()
 
-	if state.CurBuild != '' and state.CurBuild != null:
-		CurrentScene.get_node(state.CurBuild).show()
+	#here was state.CurBuild condition to open back building's window
+	#for now it all removed so as CurBuild param in saving serialization in gamestate
+	if state.CurrentScreen == 'Village':
+		input_handler.village_node.show()
+
 	#opentextscene
 #	if state.CurEvent != "":
 #		StartEventScene(state.CurEvent, false, state.CurrentLine);
