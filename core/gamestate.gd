@@ -219,7 +219,7 @@ func FinishEvent():
 		var nseqdata = Explorationdata.event_triggers[CurEvent]
 		CurEvent = ""
 		var output = globals.run_actions_list(nseqdata)
-		next_is_scene = (output == globals.SEQ.SCENE_STARTED)
+		next_is_scene = (output == variables.SEQ_SCENE_STARTED)
 	else:
 		CurEvent = ""
 
@@ -231,7 +231,7 @@ func store_choice(choice, option):
 	if CurEvent == "" or CurEvent == null:
 		print("warning - no active event")
 		return
-	var line = "%s_%d" % [CurEvent, choice]
+	var line = "%s_ch%d" % [CurEvent, choice]
 	if if_has_choice(line):
 		print ("warning - choice already stored")
 		return
@@ -253,7 +253,7 @@ func get_choice(choice):
 	if CurEvent == "" or CurEvent == null:
 		print("warning - no active event")
 		return null
-	var line = "%s_%d" % [CurEvent, choice]
+	var line = "%s_ch%d" % [CurEvent, choice]
 	if if_has_choice(line): return OldEvents[line]
 	else:
 		print("warning - no stored choice %s " % line)
@@ -407,7 +407,7 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurBuild','CurEvent', 'mainprogress', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea', 'screen']
+	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurEvent', 'mainprogress', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea', 'screen', 'CurrentScreen']
 	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'scene_restore_data']
 	for prop in arr:
 		tmp[prop] = get(prop)

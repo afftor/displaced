@@ -27,4 +27,14 @@ func build_res(panel, item_id):
 
 func open():
 	update_data()
+	show()
+
+func show():
+	state.CurBuild = 'shop';
+	input_handler.menu_node.visible = false
 	.show()
+
+func hide():
+	state.CurBuild = '';
+	input_handler.menu_node.visible = true
+	.hide()

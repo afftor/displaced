@@ -1069,8 +1069,8 @@ func FinishCombat(value):
 	input_handler.RevertMusic()
 	state.cleanup()
 	
-	var curtain_time = 0.5
 	if input_handler.curtains != null: 
+		var curtain_time = 0.5
 		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
 		yield(get_tree().create_timer(curtain_time), 'timeout')
 	

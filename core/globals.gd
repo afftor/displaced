@@ -72,8 +72,6 @@ var textcodedict = {
 	url = {start = '[url=',end = '[/url]'}
 }
 
-enum SEQ {NONE, SCENE_STARTED}
-
 var globalsettings = {
 	ActiveLocalization = 'en',
 	mastervol = -15,
@@ -220,7 +218,7 @@ func StartGame():
 	if resources.is_busy(): yield(resources, "done_work")
 	print('start')
 	var output = run_seq('intro')
-	if output == SEQ.SCENE_STARTED :
+	if output == variables.SEQ_SCENE_STARTED :
 		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 
 func run_seq(id, forced = false):
@@ -234,7 +232,7 @@ func run_seq(id, forced = false):
 #we may need to analyse this func further deep, so simple bool output for scene could make refactoring harder in future
 func run_actions_list(list, replay = false):
 	var stop_syncronous = false
-	var output = SEQ.NONE
+	var output = variables.SEQ_NONE
 	for action in list:
 		match action.type:
 			'scene':
@@ -243,7 +241,7 @@ func run_actions_list(list, replay = false):
 					continue #stub, for this can lead to missing unlock opportunity, cant simply unlock either
 				stop_syncronous = play_scene(action.value, replay)
 				if stop_syncronous:
-					output = SEQ.SCENE_STARTED
+					output = variables.SEQ_SCENE_STARTED
 			'system':
 				if !replay: state.system_action(action)
 			'show_screen':
@@ -644,8 +642,11 @@ func LoadGame(filename):
 	state.deserialize(savedict)
 	CurrentScene.buildscreen()
 
-	if state.CurBuild != '' and state.CurBuild != null:
-		CurrentScene.get_node(state.CurBuild).show()
+	#here was state.CurBuild condition to open back building's window
+	#for now it all removed so as CurBuild param in saving serialization in gamestate
+	if state.CurrentScreen == 'Village':
+		input_handler.village_node.show()
+
 	#opentextscene
 #	if state.CurEvent != "":
 #		StartEventScene(state.CurEvent, false, state.CurrentLine);

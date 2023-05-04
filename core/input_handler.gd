@@ -5,7 +5,6 @@ extends Node
 #warning-ignore-all:unused_signal
 var CloseableWindowsArray = []
 var ShakingNodes = []
-var CurrentScreen = 'Map'
 
 var BeingAnimated = []
 var SystemMessageNode
@@ -409,6 +408,7 @@ func SetMusic(res, delay = 0):
 
 func StopMusic(instant = false):
 	musicfading = true
+	musicraising = false
 
 
 func RevertMusic():

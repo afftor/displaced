@@ -23,12 +23,14 @@ func geartooltip(item):
 
 func open():
 	TutorialCore.check_event("village_blacksmith_open")
-	state.CurBuild = "blacksmith"
 	input_handler.ShowGameTip('blacksmith')
-	input_handler.menu_node.visible = false
 #	globals.check_signal("BuildingEntered", 'blacksmith')
-	.show()
+	show()
 
+func show():
+	input_handler.menu_node.visible = false
+	state.CurBuild = "blacksmith"
+	.show()
 
 func hide():
 	input_handler.menu_node.visible = true
