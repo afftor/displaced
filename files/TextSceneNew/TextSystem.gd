@@ -971,7 +971,10 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 	var res = resources.get_res("abg/%s" % res_name)
 	var sec_res = resources.get_res("abg/%s" % sec_res_name)
 
-	$VideoBunch.Change(res, sec_res)
+	if rewind_mode:
+		$VideoBunch.force_show(res, sec_res)
+	else:
+		$VideoBunch.Change(res, sec_res)
 	delay = max(delay, 0.3) #not sure, but should be enough to fix asynchonisation of abg changing 
 
 

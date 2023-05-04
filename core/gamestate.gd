@@ -231,7 +231,7 @@ func store_choice(choice, option):
 	if CurEvent == "" or CurEvent == null:
 		print("warning - no active event")
 		return
-	var line = "%s_%d" % [CurEvent, choice]
+	var line = "%s_ch%d" % [CurEvent, choice]
 	if if_has_choice(line):
 		print ("warning - choice already stored")
 		return
@@ -253,7 +253,7 @@ func get_choice(choice):
 	if CurEvent == "" or CurEvent == null:
 		print("warning - no active event")
 		return null
-	var line = "%s_%d" % [CurEvent, choice]
+	var line = "%s_ch%d" % [CurEvent, choice]
 	if if_has_choice(line): return OldEvents[line]
 	else:
 		print("warning - no stored choice %s " % line)

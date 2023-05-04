@@ -12,6 +12,17 @@ func Change(first: VideoStreamTheora, sec: VideoStreamTheora = null) -> void:
 		current_plrs[0].show()
 		current_plrs[1].hide()
 
+func force_show(first: VideoStreamTheora, sec: VideoStreamTheora = null) -> void:
+	current_queue.clear()
+	if current_plrs[0].stream == null:
+		current_plrs[0].show()
+		current_plrs[1].hide()
+	if sec:
+		current_plrs[0].stream = sec
+	else:
+		current_plrs[0].stream = first
+	current_plrs[0].play()
+
 func _ready() -> void:
 	$"0".connect("finished", self, "vid_finish", [false])
 	$"1".connect("finished", self, "vid_finish", [true])
