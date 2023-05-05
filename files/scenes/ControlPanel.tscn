@@ -1,16 +1,15 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/gui/universal/msstash2.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/universal/mspanel.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/universal/msworkers1.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/universal/msworkers2.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/universal/msstash1.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/universal/msheroes1.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/universal/msheroes2.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/universal/msoptions1.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/universal/msinventory.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/universal/mspanel2.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/universal/msbutton_default.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/universal/msheroes.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/universal/msmenu.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/universal/msbutton_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/universal/msbutton_pressed.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/universal/msvillage.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/iconsitems/Food.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/universal/msoptions2.png" type="Texture" id=11]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=12]
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=13]
 [ext_resource path="res://files/scenes/CharacterMenu.tscn" type="PackedScene" id=14]
@@ -47,50 +46,141 @@ script = ExtResource( 28 )
 
 [node name="ControlPanel" type="TextureRect" parent="."]
 margin_left = 111.0
-margin_top = 970.0
-margin_right = 607.0
+margin_top = 868.0
+margin_right = 765.0
 margin_bottom = 1080.0
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Inventory" type="TextureButton" parent="ControlPanel"]
-margin_left = 31.0
-margin_top = 24.0
-margin_right = 108.0
-margin_bottom = 101.0
-hint_tooltip = "INVENTORY"
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 2 )
-
-[node name="Slavelist" type="TextureButton" parent="ControlPanel"]
-margin_left = 151.0
-margin_top = 25.0
-margin_right = 228.0
-margin_bottom = 102.0
-hint_tooltip = "WORKERLIST"
+[node name="Return" type="TextureButton" parent="ControlPanel"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 161.0
+margin_bottom = 161.0
+hint_tooltip = "RETURN"
 texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ControlPanel/Return"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -43.5
+margin_right = 44.0
+margin_bottom = 43.5
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="ControlPanel/Return"]
+margin_left = 18.0
+margin_top = 130.0
+margin_right = 98.0
+margin_bottom = 154.0
+text = "Return"
+
+[node name="Inventory" type="TextureButton" parent="ControlPanel"]
+margin_left = 191.0
+margin_top = 40.0
+margin_right = 312.0
+margin_bottom = 161.0
+hint_tooltip = "INVENTORY"
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ControlPanel/Inventory"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.5
+margin_top = -43.5
+margin_right = 44.5
+margin_bottom = 43.5
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="ControlPanel/Inventory"]
+margin_left = 4.0
+margin_top = 130.0
+margin_right = 116.0
+margin_bottom = 154.0
+text = "Inventory"
 
 [node name="Herolist" type="TextureButton" parent="ControlPanel"]
-margin_left = 269.0
-margin_top = 24.0
-margin_right = 346.0
-margin_bottom = 101.0
+margin_left = 342.0
+margin_top = 40.0
+margin_right = 463.0
+margin_bottom = 161.0
 hint_tooltip = "HEROLIST"
 toggle_mode = true
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ControlPanel/Herolist"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -45.0
+margin_right = 44.0
+margin_bottom = 45.0
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="ControlPanel/Herolist"]
+margin_left = 18.0
+margin_top = 130.0
+margin_right = 101.0
+margin_bottom = 154.0
+text = "Heroes"
 
 [node name="Options" type="TextureButton" parent="ControlPanel"]
-margin_left = 388.0
-margin_top = 24.0
-margin_right = 465.0
-margin_bottom = 101.0
+margin_left = 493.0
+margin_top = 40.0
+margin_right = 614.0
+margin_bottom = 161.0
 hint_tooltip = "OPTIONMENU"
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 11 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ControlPanel/Options"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -45.0
+margin_right = 44.0
+margin_bottom = 45.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlPanel/Options"]
+margin_left = 26.0
+margin_top = 130.0
+margin_right = 93.0
+margin_bottom = 154.0
+text = "Menu"
 
 [node name="Gold" type="Label" parent="ControlPanel"]
 margin_left = 1661.0
