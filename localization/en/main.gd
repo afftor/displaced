@@ -347,7 +347,7 @@ var TranslationDict = {
 	CLASSINFO = "Class Details",
 
 	INVENTORY = "Inventory",
-	WORKERLIST = "Worker List",
+	RETURN = "Return",
 	HEROLIST = "Hero List",
 	OPTIONMENU = "Options",
 
