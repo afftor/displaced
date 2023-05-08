@@ -70,10 +70,10 @@ margin_right = -293.511
 margin_bottom = 104.599
 
 [node name="cloud14" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = -837.986
-margin_top = 42.6625
-margin_right = -518.986
-margin_bottom = 134.662
+margin_left = -838.33
+margin_top = 39.0
+margin_right = -519.33
+margin_bottom = 131.0
 
 [node name="cloud15" parent="outer/clouds" instance=ExtResource( 12 )]
 margin_left = 965.811
@@ -345,6 +345,48 @@ margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
 
+[node name="cloud_new" parent="castle/clouds" instance=ExtResource( 10 )]
+margin_left = -309.962
+margin_top = 36.5986
+margin_right = 6.0376
+margin_bottom = 101.599
+
+[node name="cloud_new2" parent="castle/clouds" instance=ExtResource( 10 )]
+margin_left = -52.2074
+margin_top = -79.6225
+margin_right = 266.793
+margin_bottom = 17.3775
+
+[node name="cloud_new3" parent="castle/clouds" instance=ExtResource( 11 )]
+margin_left = 252.918
+margin_top = -27.0
+margin_right = 382.918
+margin_bottom = 27.0
+
+[node name="cloud_new4" parent="castle/clouds" instance=ExtResource( 11 )]
+margin_left = 316.918
+margin_top = 125.0
+margin_right = 446.918
+margin_bottom = 179.0
+
+[node name="cloud_new5" parent="castle/clouds" instance=ExtResource( 10 )]
+margin_left = 61.0
+margin_top = 40.0
+margin_right = 295.0
+margin_bottom = 105.0
+
+[node name="cloud_new6" parent="castle/clouds" instance=ExtResource( 10 )]
+margin_left = 197.0
+margin_top = 64.0
+margin_right = 431.0
+margin_bottom = 129.0
+
+[node name="cloud_new7" parent="castle/clouds" instance=ExtResource( 10 )]
+margin_left = 445.0
+margin_top = 56.0
+margin_right = 679.0
+margin_bottom = 121.0
+
 [node name="cloud" parent="castle/clouds" instance=ExtResource( 10 )]
 margin_left = -233.762
 margin_top = -45.102
@@ -470,6 +512,36 @@ visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+
+[node name="cloud_new" parent="town/clouds" instance=ExtResource( 10 )]
+margin_left = -214.823
+margin_top = -202.619
+margin_right = 80.177
+margin_bottom = -92.619
+
+[node name="cloud_new2" parent="town/clouds" instance=ExtResource( 10 )]
+margin_left = 177.177
+margin_top = -218.619
+margin_right = 472.177
+margin_bottom = -108.619
+
+[node name="cloud_new3" parent="town/clouds" instance=ExtResource( 10 )]
+margin_left = 121.177
+margin_top = -90.619
+margin_right = 416.177
+margin_bottom = 19.381
+
+[node name="cloud_new4" parent="town/clouds" instance=ExtResource( 10 )]
+margin_left = 465.177
+margin_top = -106.619
+margin_right = 760.177
+margin_bottom = 3.381
+
+[node name="cloud_new5" parent="town/clouds" instance=ExtResource( 10 )]
+margin_left = 121.177
+margin_top = 85.381
+margin_right = 416.177
+margin_bottom = 195.381
 
 [node name="cloud" parent="town/clouds" instance=ExtResource( 10 )]
 margin_left = 41.1769
@@ -598,6 +670,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="cloud_new" parent="cave/clouds" instance=ExtResource( 11 )]
+margin_left = 90.3265
+margin_top = 52.1361
+margin_right = 403.327
+margin_bottom = 155.136
+
+[node name="cloud_new2" parent="cave/clouds" instance=ExtResource( 11 )]
+margin_left = -309.674
+margin_top = 44.1361
+margin_right = 3.32697
+margin_bottom = 147.136
+
 [node name="cloud" parent="cave/clouds" instance=ExtResource( 12 )]
 margin_left = 28.2891
 margin_top = -53.6938
@@ -694,6 +778,24 @@ margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
 
+[node name="cloud_new" parent="forest/clouds" instance=ExtResource( 10 )]
+margin_left = 108.0
+margin_top = -61.0
+margin_right = 279.0
+margin_bottom = 0.0
+
+[node name="cloud_new2" parent="forest/clouds" instance=ExtResource( 10 )]
+margin_left = 59.0
+margin_top = 46.0
+margin_right = 230.0
+margin_bottom = 119.0
+
+[node name="cloud_new3" parent="forest/clouds" instance=ExtResource( 10 )]
+margin_left = -103.0
+margin_top = 128.0
+margin_right = 124.0
+margin_bottom = 206.0
+
 [node name="cloud" parent="forest/clouds" instance=ExtResource( 10 )]
 margin_left = -172.92
 margin_top = -81.6273
@@ -737,10 +839,10 @@ margin_right = 353.0
 margin_bottom = 167.0
 
 [node name="cloud8" parent="forest/clouds" instance=ExtResource( 11 )]
-margin_left = 10.506
-margin_top = 152.774
-margin_right = 197.506
-margin_bottom = 217.774
+margin_left = -12.494
+margin_top = 147.774
+margin_right = 174.506
+margin_bottom = 212.774
 
 [node name="cloud9" parent="forest/clouds" instance=ExtResource( 11 )]
 margin_left = 411.934
@@ -789,6 +891,36 @@ visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+
+[node name="cloud_new" parent="village/clouds" instance=ExtResource( 11 )]
+margin_left = -46.8074
+margin_top = 32.9495
+margin_right = 304.193
+margin_bottom = 154.95
+
+[node name="cloud_new2" parent="village/clouds" instance=ExtResource( 11 )]
+margin_left = 41.1926
+margin_top = 192.95
+margin_right = 392.193
+margin_bottom = 314.95
+
+[node name="cloud_new3" parent="village/clouds" instance=ExtResource( 11 )]
+margin_left = 233.193
+margin_top = -47.0505
+margin_right = 584.193
+margin_bottom = 74.9495
+
+[node name="cloud_new4" parent="village/clouds" instance=ExtResource( 11 )]
+margin_left = 425.193
+margin_top = -39.0505
+margin_right = 776.193
+margin_bottom = 82.9495
+
+[node name="cloud_new5" parent="village/clouds" instance=ExtResource( 11 )]
+margin_left = 185.193
+margin_top = 256.95
+margin_right = 536.193
+margin_bottom = 378.95
 
 [node name="cloud" parent="village/clouds" instance=ExtResource( 11 )]
 margin_left = -78.8074
@@ -903,6 +1035,24 @@ visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+
+[node name="cloud_new" parent="cult/clouds" instance=ExtResource( 10 )]
+margin_left = -196.0
+margin_top = -199.0
+margin_right = 86.0
+margin_bottom = -149.0
+
+[node name="cloud_new2" parent="cult/clouds" instance=ExtResource( 10 )]
+margin_left = 307.67
+margin_top = -77.0
+margin_right = 561.67
+margin_bottom = 12.0
+
+[node name="cloud_new3" parent="cult/clouds" instance=ExtResource( 10 )]
+margin_left = 307.67
+margin_top = 51.0
+margin_right = 561.67
+margin_bottom = 140.0
 
 [node name="cloud" parent="cult/clouds" instance=ExtResource( 10 )]
 margin_left = -332.0
@@ -1079,6 +1229,12 @@ __meta__ = {
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+
+[node name="cloud_new" parent="inner/clouds" instance=ExtResource( 10 )]
+margin_left = -1522.33
+margin_top = -112.0
+margin_right = -1214.33
+margin_bottom = 31.0
 
 [node name="cloud" parent="inner/clouds" instance=ExtResource( 10 )]
 margin_left = 48.2936
