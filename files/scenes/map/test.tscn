@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://files/scenes/map/cloud_1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://files/scenes/map/cloud_2.tscn" type="PackedScene" id=2]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -40,32 +39,32 @@ margin_top = 334.036
 margin_right = -786.919
 margin_bottom = -608.964
 
-[node name="cloud2" parent="." instance=ExtResource( 2 )]
-margin_left = 1077.27
-margin_top = 325.686
-margin_right = -372.732
-margin_bottom = -569.314
+[node name="cloud7" parent="." instance=ExtResource( 1 )]
+margin_left = 1072.0
+margin_top = 391.0
+margin_right = -545.0
+margin_bottom = -552.0
 
-[node name="cloud7" parent="." instance=ExtResource( 2 )]
-margin_left = 380.802
-margin_top = 432.577
-margin_right = -1069.2
-margin_bottom = -462.423
+[node name="cloud8" parent="." instance=ExtResource( 1 )]
+margin_left = 559.0
+margin_top = 380.0
+margin_right = -1058.0
+margin_bottom = -563.0
 
-[node name="cloud8" parent="." instance=ExtResource( 2 )]
-margin_left = 810.038
-margin_top = 405.854
-margin_right = -639.962
-margin_bottom = -489.146
+[node name="cloud9" parent="." instance=ExtResource( 1 )]
+margin_left = 687.0
+margin_top = 210.0
+margin_right = -930.0
+margin_bottom = -733.0
 
-[node name="cloud9" parent="." instance=ExtResource( 2 )]
-margin_left = 487.693
-margin_top = 320.675
-margin_right = -962.307
-margin_bottom = -574.325
+[node name="cloud10" parent="." instance=ExtResource( 1 )]
+margin_left = 657.0
+margin_top = 478.0
+margin_right = -960.0
+margin_bottom = -465.0
 
-[node name="cloud10" parent="." instance=ExtResource( 2 )]
-margin_left = 726.529
-margin_top = 207.103
-margin_right = -723.471
-margin_bottom = -687.897
+[node name="cloud11" parent="." instance=ExtResource( 1 )]
+margin_left = 978.0
+margin_top = 251.0
+margin_right = -639.0
+margin_bottom = -692.0
