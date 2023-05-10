@@ -63,7 +63,7 @@ func location_pressed(locname):
 		globals.run_seq(binded_events[locname])
 	else:
 		if locname == 'village':
-			input_handler.village_node.show()
+			input_handler.village_node.show_anim()
 		else:
 			input_handler.explore_node.set_location(locname)
 			input_handler.explore_node.show()

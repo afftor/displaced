@@ -12,6 +12,7 @@ func _ready():
 	if resources.is_busy(): yield(resources, "done_work")
 	
 #	input_handler.SystemMessageNode = $SystemMessageLabel
+	$ControlPanel/Return.connect('pressed',self,'openvillage')
 	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
@@ -61,6 +62,8 @@ func openinventory(hero = null):
 func openinventorytrade():
 	$Inventory.open("shop")
 
+func openvillage():
+	input_handler.village_node.switch_show()
 
 func FadeToBlackAnimation(time = 1):
 	input_handler.UnfadeAnimation($BlackScreen, time)

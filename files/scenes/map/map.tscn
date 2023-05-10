@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/images/map/map_full.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/map/map_icon_1.png" type="Texture" id=2]
@@ -9,9 +9,7 @@
 [ext_resource path="res://assets/images/map/map_icon_5.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/map/map_icon_3.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/map/map_icon_7.png" type="Texture" id=9]
-[ext_resource path="res://files/scenes/map/cloud_2.tscn" type="PackedScene" id=10]
 [ext_resource path="res://files/scenes/map/cloud_1.tscn" type="PackedScene" id=11]
-[ext_resource path="res://files/scenes/map/cloud_3.tscn" type="PackedScene" id=12]
 [ext_resource path="res://files/scenes/map/map.gd" type="Script" id=13]
 [ext_resource path="res://files/TextSceneNew/TextSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://files/scenes/ControlPanel.tscn" type="PackedScene" id=15]
@@ -21,8 +19,13 @@
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/map/map_icon_8.png" type="Texture" id=20]
 [ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=21]
+[ext_resource path="res://assets/images/map/cloud_7.png" type="Texture" id=22]
 [ext_resource path="res://core/curtains_handler.gd" type="Script" id=23]
 [ext_resource path="res://files/scenes/map/map_label.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/images/map/cloud_9.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/map/cloud11.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/map/cloud_8.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/map/cloud_10.png" type="Texture" id=28]
 
 [node name="map" type="TextureRect"]
 anchor_right = 1.0
@@ -51,137 +54,179 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud11" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = -483.907
-margin_top = -49.1976
-margin_right = -164.907
-margin_bottom = 42.8024
+[node name="bg" type="Control" parent="outer/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud12" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = -731.094
-margin_top = -34.1659
-margin_right = -412.094
-margin_bottom = 57.8341
+[node name="cloud_11_2" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( 874.67, 17 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud13" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = -612.511
-margin_top = 12.5992
-margin_right = -293.511
-margin_bottom = 104.599
+[node name="cloud_8_2" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( 1055.67, 60 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud14" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = -837.986
-margin_top = 42.6625
-margin_right = -518.986
-margin_bottom = 134.662
+[node name="cloud_8_3" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( -282.33, 13 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud15" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 965.811
-margin_top = -42.5168
-margin_right = 1284.81
-margin_bottom = 49.4832
+[node name="cloud_7_1" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( 1155.67, 117 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud16" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 605.052
-margin_top = -45.8572
-margin_right = 924.052
-margin_bottom = 46.1428
+[node name="cloud_7_2" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( -652.33, 31 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud17" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 743.677
-margin_top = -4.1026
-margin_right = 1062.68
-margin_bottom = 87.8974
+[node name="cloud_8_1" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( 627.67, 55 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud18" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 919.046
-margin_top = 42.6625
-margin_right = 1238.05
-margin_bottom = 134.663
+[node name="cloud_9_1" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( 1165.67, 61 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud19" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 1032.62
-margin_top = 107.8
-margin_right = 1351.62
-margin_bottom = 199.8
+[node name="cloud_9_2" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( -500.33, 117 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud20" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 853.909
-margin_top = 96.1083
-margin_right = 1172.91
-margin_bottom = 188.108
+[node name="cloud_10_1" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( 873.67, 113 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud21" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 615.073
-margin_top = 9.25885
-margin_right = 934.073
-margin_bottom = 101.259
+[node name="cloud_10_2" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( -532.33, -1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud22" parent="outer/clouds" instance=ExtResource( 12 )]
-margin_left = 409.641
-margin_top = -55.8783
-margin_right = 728.641
-margin_bottom = 36.1217
+[node name="cloud_11_1" type="Sprite" parent="outer/clouds/bg"]
+position = Vector2( 746.67, 69 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud" parent="outer/clouds" instance=ExtResource( 10 )]
-margin_left = -721.0
-margin_top = -30.0
-margin_right = -421.0
-margin_bottom = 77.0
+[node name="fg" type="Control" parent="outer/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
 
-[node name="cloud2" parent="outer/clouds" instance=ExtResource( 10 )]
-margin_left = 965.884
-margin_top = -31.6702
-margin_right = 1265.88
-margin_bottom = 75.3298
+[node name="cloud_01" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 496.67
+margin_top = -5.0
+margin_right = 593.67
+margin_bottom = 57.0
 
-[node name="cloud3" parent="outer/clouds" instance=ExtResource( 10 )]
-margin_left = 745.084
-margin_top = -39.628
-margin_right = 968.084
-margin_bottom = 39.372
+[node name="cloud_02" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 673.67
+margin_top = 45.0
+margin_right = 770.67
+margin_bottom = 107.0
 
-[node name="cloud4" parent="outer/clouds" instance=ExtResource( 10 )]
-margin_left = 925.649
-margin_top = 48.6596
-margin_right = 1238.65
-margin_bottom = 164.66
+[node name="cloud_18" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 629.67
+margin_top = -22.0
+margin_right = 726.67
+margin_bottom = 40.0
 
-[node name="cloud5" parent="outer/clouds" instance=ExtResource( 11 )]
-margin_left = 566.211
-margin_top = -49.0182
-margin_right = 740.211
-margin_bottom = 23.9818
+[node name="cloud_03" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 824.67
+margin_top = -17.0
+margin_right = 921.67
+margin_bottom = 45.0
 
-[node name="cloud6" parent="outer/clouds" instance=ExtResource( 11 )]
-margin_left = -430.888
-margin_top = -27.3059
-margin_right = -256.888
-margin_bottom = 45.6941
+[node name="cloud_04" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 829.67
+margin_top = 97.0
+margin_right = 926.67
+margin_bottom = 159.0
 
-[node name="cloud7" parent="outer/clouds" instance=ExtResource( 11 )]
-margin_left = -679.745
-margin_top = 62.884
-margin_right = -505.745
-margin_bottom = 135.884
+[node name="cloud_05" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 960.67
+margin_top = -17.0
+margin_right = 1057.67
+margin_bottom = 45.0
 
-[node name="cloud8" parent="outer/clouds" instance=ExtResource( 11 )]
-margin_left = 744.733
-margin_top = 43.3298
-margin_right = 1010.73
-margin_bottom = 126.33
+[node name="cloud_06" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 944.67
+margin_top = 128.0
+margin_right = 1041.67
+margin_bottom = 190.0
 
-[node name="cloud9" parent="outer/clouds" instance=ExtResource( 11 )]
-margin_left = 1006.95
-margin_top = 133.52
-margin_right = 1272.95
-margin_bottom = 216.52
+[node name="cloud_07" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 1096.67
+margin_top = 121.0
+margin_right = 1193.67
+margin_bottom = 183.0
 
-[node name="cloud10" parent="outer/clouds" instance=ExtResource( 11 )]
-margin_left = -761.435
-margin_top = 146.617
-margin_right = -542.435
-margin_bottom = 229.617
+[node name="cloud_08" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 926.67
+margin_top = 58.0
+margin_right = 1023.67
+margin_bottom = 120.0
+
+[node name="cloud_09" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 1109.67
+margin_top = -23.0
+margin_right = 1206.67
+margin_bottom = 39.0
+
+[node name="cloud_10" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 1195.67
+margin_top = 43.0
+margin_right = 1292.67
+margin_bottom = 105.0
+
+[node name="cloud_11" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -300.33
+margin_top = -49.0
+margin_right = -203.33
+margin_bottom = 13.0
+
+[node name="cloud_12" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -450.33
+margin_top = 26.0
+margin_right = -353.33
+margin_bottom = 88.0
+
+[node name="cloud_13" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -568.33
+margin_top = 102.0
+margin_right = -471.33
+margin_bottom = 164.0
+
+[node name="cloud_14" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -623.33
+margin_top = 36.0
+margin_right = -526.33
+margin_bottom = 98.0
+
+[node name="cloud_15" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -557.33
+margin_top = -55.0
+margin_right = -460.33
+margin_bottom = 7.0
+
+[node name="cloud_16" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -728.33
+margin_top = 105.0
+margin_right = -631.33
+margin_bottom = 167.0
+
+[node name="cloud_17" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -730.33
+margin_top = -36.0
+margin_right = -633.33
+margin_bottom = 26.0
 
 [node name="dragon_mountains" type="TextureButton" parent="."]
 margin_left = 656.0
@@ -203,112 +248,138 @@ margin_bottom = 162.0
 text = "Dragon Peaks"
 
 [node name="clouds" type="Control" parent="dragon_mountains"]
-visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud" parent="dragon_mountains/clouds" instance=ExtResource( 12 )]
-margin_left = -180.779
-margin_top = -65.1496
-margin_right = 201.221
-margin_bottom = 61.8504
+[node name="bg" type="Control" parent="dragon_mountains/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="dragon_mountains/clouds" instance=ExtResource( 12 )]
-margin_left = 117.071
-margin_top = -57.9898
-margin_right = 499.071
-margin_bottom = 69.0102
+[node name="cloud_11_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( -16.3298, 54 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud3" parent="dragon_mountains/clouds" instance=ExtResource( 12 )]
-margin_left = 3.9455
-margin_top = 19.3368
-margin_right = 385.945
-margin_bottom = 146.337
+[node name="cloud_8_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( 326.67, 114 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud4" parent="dragon_mountains/clouds" instance=ExtResource( 12 )]
-margin_left = 296.068
-margin_top = 20.7687
-margin_right = 678.068
-margin_bottom = 147.769
+[node name="cloud_8_2" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( 217.67, 18 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud17" parent="dragon_mountains/clouds" instance=ExtResource( 11 )]
-margin_left = 62.796
-margin_top = -19.2619
-margin_right = 235.796
-margin_bottom = 30.7381
+[node name="cloud_7_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( 447.67, 80 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud5" parent="dragon_mountains/clouds" instance=ExtResource( 12 )]
-margin_left = -344.024
-margin_top = 16.4728
-margin_right = 37.9761
-margin_bottom = 143.473
+[node name="cloud_7_2" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( 47.6702, 19 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud6" parent="dragon_mountains/clouds" instance=ExtResource( 10 )]
-margin_left = -261.0
-margin_top = -47.0
-margin_right = 52.0
-margin_bottom = 26.0
+[node name="cloud_9_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( 314.67, 43 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud7" parent="dragon_mountains/clouds" instance=ExtResource( 10 )]
-margin_left = 277.422
-margin_top = -44.136
-margin_right = 590.422
-margin_bottom = 28.864
+[node name="cloud_9_2" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( -153.33, -7 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud8" parent="dragon_mountains/clouds" instance=ExtResource( 10 )]
-margin_left = 5.3468
-margin_top = -21.2245
-margin_right = 318.347
-margin_bottom = 51.7755
+[node name="cloud_10_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+position = Vector2( 173.67, 115 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud15" parent="dragon_mountains/clouds" instance=ExtResource( 11 )]
-margin_left = -147.704
-margin_top = 22.2653
-margin_right = 25.296
-margin_bottom = 72.2653
+[node name="fg" type="Control" parent="dragon_mountains/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud16" parent="dragon_mountains/clouds" instance=ExtResource( 11 )]
-margin_left = 228.905
-margin_top = 30.8571
-margin_right = 401.905
-margin_bottom = 80.8571
+[node name="cloud_02" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -256.33
+margin_top = -15.0
+margin_right = -159.33
+margin_bottom = 47.0
 
-[node name="cloud9" parent="dragon_mountains/clouds" instance=ExtResource( 10 )]
-margin_left = -298.534
-margin_top = 39.1599
-margin_right = -90.534
-margin_bottom = 86.1599
+[node name="cloud_03" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -351.33
+margin_top = -48.0
+margin_right = -254.33
+margin_bottom = 14.0
 
-[node name="cloud10" parent="dragon_mountains/clouds" instance=ExtResource( 10 )]
-margin_left = 319.0
-margin_top = 52.0
-margin_right = 553.0
-margin_bottom = 99.0
+[node name="cloud_04" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -137.33
+margin_top = -7.0
+margin_right = -40.3298
+margin_bottom = 55.0
 
-[node name="cloud11" parent="dragon_mountains/clouds" instance=ExtResource( 10 )]
-margin_left = -87.0
-margin_top = 74.0
-margin_right = 266.0
-margin_bottom = 128.0
+[node name="cloud_05" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -125.33
+margin_top = 48.0
+margin_right = -28.3296
+margin_bottom = 110.0
 
-[node name="cloud12" parent="dragon_mountains/clouds" instance=ExtResource( 11 )]
-margin_left = 550.959
-margin_top = 66.5919
-margin_right = 636.959
-margin_bottom = 89.5919
+[node name="cloud_06" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 46.6702
+margin_top = 83.0
+margin_right = 143.67
+margin_bottom = 145.0
 
-[node name="cloud13" parent="dragon_mountains/clouds" instance=ExtResource( 11 )]
-margin_left = 269.0
-margin_top = 91.0
-margin_right = 442.0
-margin_bottom = 141.0
+[node name="cloud_07" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -17.3298
+margin_top = -24.0
+margin_right = 79.6702
+margin_bottom = 38.0
 
-[node name="cloud14" parent="dragon_mountains/clouds" instance=ExtResource( 11 )]
-margin_left = -408.323
-margin_top = 62.3605
-margin_right = -235.323
-margin_bottom = 112.361
+[node name="cloud_08" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 128.67
+margin_top = 53.0
+margin_right = 225.67
+margin_bottom = 115.0
+
+[node name="cloud_09" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 113.67
+margin_top = -54.0
+margin_right = 210.67
+margin_bottom = 8.0
+
+[node name="cloud_10" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 254.67
+margin_top = 78.0
+margin_right = 351.67
+margin_bottom = 140.0
+
+[node name="cloud_11" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 471.67
+margin_top = -19.0
+margin_right = 568.67
+margin_bottom = 43.0
+
+[node name="cloud_12" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 357.67
+margin_top = 57.0
+margin_right = 454.67
+margin_bottom = 119.0
+
+[node name="cloud_14" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 287.67
+margin_top = 2.0
+margin_right = 384.67
+margin_bottom = 64.0
 
 [node name="active" type="TextureRect" parent="dragon_mountains"]
 visible = false
@@ -344,96 +415,231 @@ text = "Summerhill"
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud" parent="castle/clouds" instance=ExtResource( 10 )]
-margin_left = -233.762
-margin_top = -45.102
-margin_right = 85.2382
-margin_bottom = 51.898
+[node name="bg" type="Control" parent="castle/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( -576.33, -63 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="castle/clouds" instance=ExtResource( 10 )]
-margin_left = 59.7926
-margin_top = -23.6225
-margin_right = 378.793
-margin_bottom = 73.3775
+[node name="cloud_11_1" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 85.6702, 18 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud3" parent="castle/clouds" instance=ExtResource( 10 )]
-margin_left = 358.0
-margin_top = 4.0
-margin_right = 674.0
-margin_bottom = 69.0
+[node name="cloud_11_4" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 383.67, 87 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud8" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = 172.918
-margin_top = 58.0
-margin_right = 302.918
-margin_bottom = 112.0
+[node name="cloud_11_2" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 171.67, 120 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud9" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = 16.8333
-margin_top = 16.4728
-margin_right = 146.833
-margin_bottom = 70.4728
+[node name="cloud_11_3" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 440.67, 115 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud10" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = -123.5
-margin_top = 49.4081
-margin_right = 6.49994
-margin_bottom = 103.408
+[node name="cloud_8_1" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 210.67, 34 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud4" parent="castle/clouds" instance=ExtResource( 10 )]
-margin_left = -347.962
-margin_top = 75.5986
-margin_right = -31.9624
-margin_bottom = 140.599
+[node name="cloud_7_1" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( -97.3298, 49 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud5" parent="castle/clouds" instance=ExtResource( 10 )]
-margin_left = -19.0
-margin_top = 88.0
-margin_right = 215.0
-margin_bottom = 153.0
+[node name="cloud_7_7" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( -15.3298, 25 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud6" parent="castle/clouds" instance=ExtResource( 10 )]
-margin_left = 351.881
-margin_top = 73.6802
-margin_right = 585.881
-margin_bottom = 138.68
+[node name="cloud_7_8" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( -287.33, 57 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud7" parent="castle/clouds" instance=ExtResource( 10 )]
-margin_left = 188.636
-margin_top = 126.663
-margin_right = 422.636
-margin_bottom = 191.663
+[node name="cloud_7_5" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 637.67, 103 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud11" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = 572.439
-margin_top = 89.5033
-margin_right = 702.439
-margin_bottom = 143.503
+[node name="cloud_7_6" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 494.67, 101 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud12" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = 410.626
-margin_top = 132.462
-margin_right = 540.626
-margin_bottom = 186.462
+[node name="cloud_7_3" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 284.67, 74 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud13" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = 238.789
-margin_top = 178.286
-margin_right = 368.789
-margin_bottom = 232.286
+[node name="cloud_7_4" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 304.67, 145 )
+rotation = 0.760027
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud14" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = -120.636
-margin_top = 131.031
-margin_right = 9.36377
-margin_bottom = 185.031
+[node name="cloud_7_2" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( -298.33, 159 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud15" parent="castle/clouds" instance=ExtResource( 11 )]
-margin_left = -345.888
-margin_top = 125.248
-margin_right = -88.8878
-margin_bottom = 209.248
+[node name="cloud_9_1" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( -264.33, 109 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+
+[node name="cloud_10_1" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( -122.33, 142 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
+
+[node name="cloud_10_2" type="Sprite" parent="castle/clouds/bg"]
+position = Vector2( 523.67, 135 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
+
+[node name="fg" type="Control" parent="castle/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cloud_01" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 595.67
+margin_top = 76.0
+margin_right = 692.67
+margin_bottom = 138.0
+
+[node name="cloud_19" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 463.67
+margin_top = 74.0
+margin_right = 560.67
+margin_bottom = 136.0
+
+[node name="cloud_20" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 380.67
+margin_top = 120.0
+margin_right = 477.67
+margin_bottom = 182.0
+
+[node name="cloud_02" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 477.67
+margin_top = 13.0
+margin_right = 574.67
+margin_bottom = 75.0
+
+[node name="cloud_03" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 375.67
+margin_top = 20.0
+margin_right = 472.67
+margin_bottom = 82.0
+
+[node name="cloud_04" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 308.67
+margin_top = 8.0
+margin_right = 405.67
+margin_bottom = 70.0
+
+[node name="cloud_05" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 255.67
+margin_top = 85.0
+margin_right = 352.67
+margin_bottom = 147.0
+
+[node name="cloud_06" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 237.67
+margin_top = 160.0
+margin_right = 334.67
+margin_bottom = 222.0
+
+[node name="cloud_07" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 138.67
+margin_top = 68.0
+margin_right = 235.67
+margin_bottom = 130.0
+
+[node name="cloud_08" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 177.67
+margin_top = -12.0
+margin_right = 274.67
+margin_bottom = 50.0
+
+[node name="cloud_09" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 33.6702
+margin_top = 18.0
+margin_right = 130.67
+margin_bottom = 80.0
+
+[node name="cloud_10" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 53.6702
+margin_top = -55.0
+margin_right = 150.67
+margin_bottom = 7.0
+
+[node name="cloud_11" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 39.6702
+margin_top = 105.0
+margin_right = 136.67
+margin_bottom = 167.0
+
+[node name="cloud_12" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -106.33
+margin_top = 106.0
+margin_right = -9.32977
+margin_bottom = 168.0
+
+[node name="cloud_13" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -217.33
+margin_top = 52.0
+margin_right = -120.33
+margin_bottom = 114.0
+
+[node name="cloud_14" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -292.33
+margin_top = -65.0
+margin_right = -195.33
+margin_bottom = -3.0
+
+[node name="cloud_15" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -53.3298
+margin_top = -62.0
+margin_right = 43.6702
+margin_bottom = 0.0
+
+[node name="cloud_16" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -195.33
+margin_top = 85.0
+margin_right = -98.3298
+margin_bottom = 147.0
+
+[node name="cloud_21" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -183.33
+margin_top = 16.0
+margin_right = -86.3298
+margin_bottom = 78.0
+
+[node name="cloud_17" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -296.33
+margin_top = 38.0
+margin_right = -199.33
+margin_bottom = 100.0
+
+[node name="cloud_18" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -344.33
+margin_top = 141.0
+margin_right = -247.33
+margin_bottom = 203.0
 
 [node name="active" type="TextureRect" parent="castle"]
 visible = false
@@ -470,96 +676,283 @@ visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud" parent="town/clouds" instance=ExtResource( 10 )]
-margin_left = 41.1769
-margin_top = -202.619
-margin_right = 336.177
-margin_bottom = -92.619
+[node name="bg" type="Control" parent="town/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="town/clouds" instance=ExtResource( 10 )]
-margin_left = 294.636
-margin_top = -135.316
-margin_right = 589.636
-margin_bottom = -25.3163
+[node name="cloud_10_3" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 610.67, -88 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud3" parent="town/clouds" instance=ExtResource( 10 )]
-margin_left = -193.84
-margin_top = -125.408
-margin_right = 241.16
-margin_bottom = -15.4081
+[node name="cloud_7_1" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( -63.3297, -92 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud4" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = 592.0
-margin_top = -84.0
-margin_right = 813.0
-margin_bottom = 18.0
+[node name="cloud_7_6" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 349.67, 48 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud5" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = -112.959
-margin_top = -35.2484
-margin_right = 55.0409
-margin_bottom = 32.7516
+[node name="cloud_7_2" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 684.67, -30 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud6" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = 231.0
-margin_top = -31.0
-margin_right = 515.0
-margin_bottom = 61.0
+[node name="cloud_7_3" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 746.67, 88 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud7" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = -4.0
-margin_top = 2.0
-margin_right = 207.0
-margin_bottom = 74.0
+[node name="cloud_7_5" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 80.6704, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud8" parent="town/clouds" instance=ExtResource( 10 )]
-margin_left = -30.4218
-margin_top = 63.7279
-margin_right = 235.578
-margin_bottom = 163.728
+[node name="cloud_8_1" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 169.67, -120 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud9" parent="town/clouds" instance=ExtResource( 10 )]
-margin_left = 407.639
-margin_top = 22.0
-margin_right = 759.639
-margin_bottom = 122.0
+[node name="cloud_8_3" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 120.67, 113 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud10" parent="town/clouds" instance=ExtResource( 10 )]
-margin_left = 564.0
-margin_top = 133.0
-margin_right = 799.0
-margin_bottom = 196.0
+[node name="cloud_8_2" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 1.67029, 5 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud11" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = 197.262
-margin_top = 46.5442
-margin_right = 312.262
-margin_bottom = 99.5442
+[node name="cloud_9_1" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 193.67, 190 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud12" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = 279.225
-margin_top = 56.9524
-margin_right = 491.225
-margin_bottom = 149.952
+[node name="cloud_10_1" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 344.67, 134 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud13" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = 423.527
-margin_top = 129.048
-margin_right = 565.527
-margin_bottom = 186.048
+[node name="cloud_10_2" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 454.67, -74 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud14" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = 235.939
-margin_top = 146.231
-margin_right = 377.939
-margin_bottom = 203.231
+[node name="cloud_11_1" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 306.67, -150 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud15" parent="town/clouds" instance=ExtResource( 11 )]
-margin_left = -43.7041
-margin_top = 142.248
-margin_right = 210.296
-margin_bottom = 225.248
+[node name="cloud_11_2" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 630.67, 133 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="cloud_11_3" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 509.67, 41 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="cloud_7_4" type="Sprite" parent="town/clouds/bg"]
+position = Vector2( 217.67, 35 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
+
+[node name="fg" type="Control" parent="town/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cloud_01" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 52.6702
+margin_top = 138.0
+margin_right = 149.67
+margin_bottom = 200.0
+
+[node name="cloud_29" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 131.67
+margin_top = 117.0
+margin_right = 228.67
+margin_bottom = 179.0
+
+[node name="cloud_02" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -7.32977
+margin_top = 51.0
+margin_right = 89.6702
+margin_bottom = 113.0
+
+[node name="cloud_03" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -143.33
+margin_top = -32.0
+margin_right = -46.3298
+margin_bottom = 30.0
+
+[node name="cloud_04" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -160.33
+margin_top = -147.0
+margin_right = -63.3297
+margin_bottom = -85.0
+
+[node name="cloud_05" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -9.32971
+margin_top = -179.0
+margin_right = 87.6703
+margin_bottom = -117.0
+
+[node name="cloud_06" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -5.32971
+margin_top = -71.0
+margin_right = 91.6703
+margin_bottom = -9.0
+
+[node name="cloud_07" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 115.67
+margin_top = 18.0
+margin_right = 212.67
+margin_bottom = 80.0
+
+[node name="cloud_08" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 83.6703
+margin_top = -101.0
+margin_right = 180.67
+margin_bottom = -39.0
+
+[node name="cloud_09" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 106.67
+margin_top = -209.0
+margin_right = 203.67
+margin_bottom = -147.0
+
+[node name="cloud_10" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 200.67
+margin_top = -101.0
+margin_right = 297.67
+margin_bottom = -39.0
+
+[node name="cloud_26" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 110.67
+margin_top = -65.0
+margin_right = 207.67
+margin_bottom = -3.0
+
+[node name="cloud_27" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -82.3297
+margin_top = -120.0
+margin_right = 14.6703
+margin_bottom = -58.0
+
+[node name="cloud_11" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 225.67
+margin_top = -273.0
+margin_right = 322.67
+margin_bottom = -211.0
+
+[node name="cloud_12" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 230.67
+margin_top = 82.0
+margin_right = 327.67
+margin_bottom = 144.0
+
+[node name="cloud_13" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 379.67
+margin_top = 91.0
+margin_right = 476.67
+margin_bottom = 153.0
+
+[node name="cloud_28" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 285.67
+margin_top = 114.0
+margin_right = 382.67
+margin_bottom = 176.0
+
+[node name="cloud_14" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 349.67
+margin_top = -18.0
+margin_right = 446.67
+margin_bottom = 44.0
+
+[node name="cloud_15" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 411.67
+margin_top = -110.0
+margin_right = 508.67
+margin_bottom = -48.0
+
+[node name="cloud_16" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 317.67
+margin_top = -169.0
+margin_right = 414.67
+margin_bottom = -107.0
+
+[node name="cloud_17" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 477.67
+margin_top = 1.0
+margin_right = 574.67
+margin_bottom = 63.0
+
+[node name="cloud_18" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 502.67
+margin_top = 101.0
+margin_right = 599.67
+margin_bottom = 163.0
+
+[node name="cloud_30" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 410.67
+margin_top = -54.0
+margin_right = 507.67
+margin_bottom = 8.0
+
+[node name="cloud_19" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 604.67
+margin_top = 92.0
+margin_right = 701.67
+margin_bottom = 154.0
+
+[node name="cloud_20" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 543.67
+margin_top = 24.0
+margin_right = 640.67
+margin_bottom = 86.0
+
+[node name="cloud_25" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 218.67
+margin_top = 15.0
+margin_right = 315.67
+margin_bottom = 77.0
+
+[node name="cloud_21" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 662.67
+margin_top = 3.0
+margin_right = 759.67
+margin_bottom = 65.0
+
+[node name="cloud_22" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 670.67
+margin_top = -108.0
+margin_right = 767.67
+margin_bottom = -46.0
+
+[node name="cloud_23" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 527.67
+margin_top = -106.0
+margin_right = 624.67
+margin_bottom = -44.0
+
+[node name="cloud_31" parent="town/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 527.67
+margin_top = -106.0
+margin_right = 624.67
+margin_bottom = -44.0
 
 [node name="active" type="TextureRect" parent="town"]
 visible = false
@@ -598,65 +991,98 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud" parent="cave/clouds" instance=ExtResource( 12 )]
-margin_left = 28.2891
-margin_top = -53.6938
-margin_right = 193.289
-margin_bottom = 2.30615
+[node name="bg" type="Control" parent="cave/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="cave/clouds" instance=ExtResource( 12 )]
-margin_left = -153.571
-margin_top = -20.7585
-margin_right = 11.4286
-margin_bottom = 35.2415
+[node name="cloud_8_2" type="Sprite" parent="cave/clouds/bg"]
+position = Vector2( -16.3298, 54 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud3" parent="cave/clouds" instance=ExtResource( 12 )]
-margin_left = 51.2007
-margin_top = -9.30267
-margin_right = 216.201
-margin_bottom = 46.6973
+[node name="cloud_7_1" type="Sprite" parent="cave/clouds/bg"]
+position = Vector2( 69.6702, 16 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud4" parent="cave/clouds" instance=ExtResource( 12 )]
-margin_left = -226.602
-margin_top = -13.5986
-margin_right = -61.602
-margin_bottom = 42.4014
+[node name="cloud_8_1" type="Sprite" parent="cave/clouds/bg"]
+position = Vector2( -12.3298, 86 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud5" parent="cave/clouds" instance=ExtResource( 11 )]
-margin_left = -53.6735
-margin_top = -67.8639
-margin_right = 259.327
-margin_bottom = 35.1361
+[node name="cloud_9_1" type="Sprite" parent="cave/clouds/bg"]
+position = Vector2( 126.67, 67 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud6" parent="cave/clouds" instance=ExtResource( 11 )]
-margin_left = -228.701
-margin_top = 13.5034
-margin_right = -10.7007
-margin_bottom = 66.5034
+[node name="cloud_11_1" type="Sprite" parent="cave/clouds/bg"]
+position = Vector2( 271.67, 111 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud7" parent="cave/clouds" instance=ExtResource( 11 )]
-margin_left = 128.0
-margin_top = 3.0
-margin_right = 373.0
+[node name="fg" type="Control" parent="cave/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cloud_01" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -155.33
+margin_top = 11.0
+margin_right = -58.3298
 margin_bottom = 73.0
 
-[node name="cloud8" parent="cave/clouds" instance=ExtResource( 10 )]
-margin_left = -109.065
-margin_top = 53.9116
-margin_right = 305.935
-margin_bottom = 149.912
+[node name="cloud_02" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -99.3298
+margin_top = 55.0
+margin_right = -2.32977
+margin_bottom = 117.0
 
-[node name="cloud9" parent="cave/clouds" instance=ExtResource( 11 )]
-margin_left = -166.391
-margin_top = 106.687
-margin_right = 22.6089
-margin_bottom = 168.687
+[node name="cloud_03" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -62.3298
+margin_top = -53.0
+margin_right = 34.6702
+margin_bottom = 9.0
 
-[node name="cloud10" parent="cave/clouds" instance=ExtResource( 11 )]
-margin_left = 77.0
-margin_top = 132.0
-margin_right = 239.0
-margin_bottom = 162.0
+[node name="cloud_04" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 53.6702
+margin_top = 7.0
+margin_right = 150.67
+margin_bottom = 69.0
+
+[node name="cloud_05" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 21.6702
+margin_top = 77.0
+margin_right = 118.67
+margin_bottom = 139.0
+
+[node name="cloud_06" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 229.67
+margin_top = 136.0
+margin_right = 326.67
+margin_bottom = 198.0
+
+[node name="cloud_07" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 219.67
+margin_top = 64.0
+margin_right = 316.67
+margin_bottom = 126.0
+
+[node name="cloud_08" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 125.67
+margin_top = 32.0
+margin_right = 222.67
+margin_bottom = 94.0
+
+[node name="cloud_09" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 47.6702
+margin_top = -84.0
+margin_right = 144.67
+margin_bottom = -22.0
 
 [node name="active" type="TextureRect" parent="cave"]
 visible = false
@@ -693,66 +1119,187 @@ visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud" parent="forest/clouds" instance=ExtResource( 10 )]
-margin_left = -172.92
-margin_top = -81.6273
-margin_right = 218.08
-margin_bottom = 44.3727
+[node name="bg" type="Control" parent="forest/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="forest/clouds" instance=ExtResource( 10 )]
-margin_left = -395.0
-margin_top = -21.0
-margin_right = -87.0
-margin_bottom = 73.0
+[node name="cloud_9_1" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( -42.3298, 20 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud3" parent="forest/clouds" instance=ExtResource( 10 )]
-margin_left = -169.692
-margin_top = 42.4669
-margin_right = 138.308
-margin_bottom = 136.467
+[node name="cloud_7_1" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( 114.67, 44 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud4" parent="forest/clouds" instance=ExtResource( 10 )]
-margin_left = -420.387
-margin_top = 63.0937
-margin_right = -112.387
-margin_bottom = 157.094
+[node name="cloud_7_4" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( -191.33, 59 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud5" parent="forest/clouds" instance=ExtResource( 10 )]
-margin_left = -493.867
-margin_top = 127.827
-margin_right = 68.1333
-margin_bottom = 262.827
+[node name="cloud_7_2" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( 28.6702, 161 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud6" parent="forest/clouds" instance=ExtResource( 11 )]
-margin_left = 107.627
-margin_top = 59.5867
-margin_right = 300.627
-margin_bottom = 137.587
+[node name="cloud_7_3" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( -130.33, 138 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud7" parent="forest/clouds" instance=ExtResource( 11 )]
-margin_left = 166.0
-margin_top = 102.0
-margin_right = 353.0
+[node name="cloud_8_1" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( 296.67, 109 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_2" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( -273.33, 80 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_9_2" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( 135.67, 152 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+
+[node name="cloud_10_1" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( -190.33, 218 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
+
+[node name="cloud_11_1" type="Sprite" parent="forest/clouds/bg"]
+position = Vector2( -298.33, 127 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="fg" type="Control" parent="forest/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cloud_01" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 280.67
+margin_top = 92.0
+margin_right = 377.67
+margin_bottom = 154.0
+
+[node name="cloud_02" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 223.67
+margin_top = 18.0
+margin_right = 320.67
+margin_bottom = 80.0
+
+[node name="cloud_03" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 58.6702
+margin_top = 126.0
+margin_right = 155.67
+margin_bottom = 188.0
+
+[node name="cloud_04" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 145.67
+margin_top = 105.0
+margin_right = 242.67
 margin_bottom = 167.0
 
-[node name="cloud8" parent="forest/clouds" instance=ExtResource( 11 )]
-margin_left = 10.506
-margin_top = 152.774
-margin_right = 197.506
-margin_bottom = 217.774
+[node name="cloud_05" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -0.329773
+margin_top = 8.0
+margin_right = 96.6702
+margin_bottom = 70.0
 
-[node name="cloud9" parent="forest/clouds" instance=ExtResource( 11 )]
-margin_left = 411.934
-margin_top = 140.08
-margin_right = 598.934
-margin_bottom = 205.08
+[node name="cloud_06" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -47.3298
+margin_top = 122.0
+margin_right = 49.6702
+margin_bottom = 184.0
 
-[node name="cloud10" parent="forest/clouds" instance=ExtResource( 11 )]
-margin_left = -406.233
-margin_top = 193.508
-margin_right = -98.2329
-margin_bottom = 328.508
+[node name="cloud_07" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -128.33
+margin_top = 194.0
+margin_right = -31.3298
+margin_bottom = 256.0
+
+[node name="cloud_08" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -170.33
+margin_top = 111.0
+margin_right = -73.3298
+margin_bottom = 173.0
+
+[node name="cloud_09" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -223.33
+margin_top = 208.0
+margin_right = -126.33
+margin_bottom = 270.0
+
+[node name="cloud_10" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -172.33
+margin_top = -8.0
+margin_right = -75.3298
+margin_bottom = 54.0
+
+[node name="cloud_11" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -51.3298
+margin_top = 66.0
+margin_right = 45.6702
+margin_bottom = 128.0
+
+[node name="cloud_12" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -91.3298
+margin_top = -42.0
+margin_right = 5.67023
+margin_bottom = 20.0
+
+[node name="cloud_13" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 114.67
+margin_top = -44.0
+margin_right = 211.67
+margin_bottom = 18.0
+
+[node name="cloud_14" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -298.33
+margin_top = -40.0
+margin_right = -201.33
+margin_bottom = 22.0
+
+[node name="cloud_15" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -264.33
+margin_top = 91.0
+margin_right = -167.33
+margin_bottom = 153.0
+
+[node name="cloud_16" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -272.33
+margin_top = 155.0
+margin_right = -175.33
+margin_bottom = 217.0
+
+[node name="cloud_17" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -391.33
+margin_top = 178.0
+margin_right = -294.33
+margin_bottom = 240.0
+
+[node name="cloud_18" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -389.33
+margin_top = 74.0
+margin_right = -292.33
+margin_bottom = 136.0
+
+[node name="cloud_19" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -345.33
+margin_top = 10.0
+margin_right = -248.33
+margin_bottom = 72.0
 
 [node name="active" type="TextureRect" parent="forest"]
 visible = false
@@ -789,84 +1336,332 @@ visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = -78.8074
-margin_top = -55.0505
-margin_right = 272.193
-margin_bottom = 66.9495
+[node name="bg" type="Control" parent="village/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="village/clouds" instance=ExtResource( 10 )]
-margin_left = 423.137
-margin_top = -39.9771
-margin_right = 655.137
-margin_bottom = 58.0229
+[node name="cloud_7_1" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 305.67, 23 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud3" parent="village/clouds" instance=ExtResource( 10 )]
-margin_left = 188.0
-margin_top = 26.0
-margin_right = 604.0
-margin_bottom = 121.0
+[node name="cloud_7_3" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 322.67, 268 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud4" parent="village/clouds" instance=ExtResource( 10 )]
-margin_left = -185.684
-margin_top = 70.0147
-margin_right = 124.316
-margin_bottom = 165.015
+[node name="cloud_7_6" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 241.67, 310 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud5" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = -398.363
-margin_top = 70.0587
-margin_right = -95.3634
-margin_bottom = 202.059
+[node name="cloud_10_2" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 457.67, 216 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud6" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = 62.3899
-margin_top = 91.5073
-margin_right = 338.39
-margin_bottom = 190.507
+[node name="cloud_11_3" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( -88.3298, 200 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud7" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = 255.0
-margin_top = 95.0
-margin_right = 671.0
-margin_bottom = 249.0
+[node name="cloud_7_2" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 303.67, 142 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud8" parent="village/clouds" instance=ExtResource( 10 )]
-margin_left = -172.0
-margin_top = 170.0
-margin_right = 177.0
-margin_bottom = 301.0
+[node name="cloud_10_4" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 736.67, 420 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud9" parent="village/clouds" instance=ExtResource( 10 )]
-margin_left = 156.411
-margin_top = 228.61
-margin_right = 440.411
-margin_bottom = 314.61
+[node name="cloud_7_5" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 752.67, 355 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud10" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = 416.0
-margin_top = 185.0
-margin_right = 798.0
-margin_bottom = 329.0
+[node name="cloud_7_4" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 475.67, 325 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud11" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = 624.107
-margin_top = 302.853
-margin_right = 898.107
-margin_bottom = 375.853
+[node name="cloud_10_3" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 85.6702, 165 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud12" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = 283.317
-margin_top = 326.985
-margin_right = 611.317
-margin_bottom = 417.985
+[node name="cloud_11_4" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 686.67, 316 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud13" parent="village/clouds" instance=ExtResource( 11 )]
-margin_left = 507.581
-margin_top = 370.493
-margin_right = 861.581
-margin_bottom = 481.493
+[node name="cloud_8_1" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 487.67, 30 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_5" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 547.67, 436 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_8" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 391.67, 384 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_4" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 553.67, 158 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_2" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( -25.3298, 75 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_11_5" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( -18.3298, 267 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="cloud_8_3" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 138.67, 49 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_6" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( -344.33, 58 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_7" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( -221.33, 196 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_9_1" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 140.67, 17 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+
+[node name="cloud_10_1" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 117.67, 237 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
+
+[node name="cloud_11_1" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( -177.33, 102 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="cloud_11_2" type="Sprite" parent="village/clouds/bg"]
+position = Vector2( 577.67, 47 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="fg" type="Control" parent="village/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="cloud_01" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -333.33
+margin_top = 63.0
+margin_right = -236.33
+margin_bottom = 125.0
+
+[node name="cloud_31" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -472.33
+margin_top = -18.0
+margin_right = -375.33
+margin_bottom = 44.0
+
+[node name="cloud_32" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -380.33
+margin_top = 20.0
+margin_right = -283.33
+margin_bottom = 82.0
+
+[node name="cloud_02" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -281.33
+margin_top = -1.0
+margin_right = -184.33
+margin_bottom = 61.0
+
+[node name="cloud_03" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -262.33
+margin_top = 139.0
+margin_right = -165.33
+margin_bottom = 201.0
+
+[node name="cloud_04" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -112.33
+margin_top = 115.0
+margin_right = -15.3298
+margin_bottom = 177.0
+
+[node name="cloud_05" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -193.33
+margin_top = -9.0
+margin_right = -96.3298
+margin_bottom = 53.0
+
+[node name="cloud_06" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -103.33
+margin_top = -45.0
+margin_right = -6.32977
+margin_bottom = 17.0
+
+[node name="cloud_07" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -184.33
+margin_top = 214.0
+margin_right = -87.3298
+margin_bottom = 276.0
+
+[node name="cloud_08" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -18.3298
+margin_top = 212.0
+margin_right = 78.6702
+margin_bottom = 274.0
+
+[node name="cloud_09" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -8.32977
+margin_top = 86.0
+margin_right = 88.6702
+margin_bottom = 148.0
+
+[node name="cloud_10" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -79.3298
+margin_top = 5.0
+margin_right = 17.6702
+margin_bottom = 67.0
+
+[node name="cloud_11" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 70.6702
+margin_top = -54.0
+margin_right = 167.67
+margin_bottom = 8.0
+
+[node name="cloud_12" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 11.6702
+margin_top = 3.0
+margin_right = 108.67
+margin_bottom = 65.0
+
+[node name="cloud_13" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 194.67
+margin_top = 146.0
+margin_right = 291.67
+margin_bottom = 208.0
+
+[node name="cloud_14" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 151.67
+margin_top = 203.0
+margin_right = 248.67
+margin_bottom = 265.0
+
+[node name="cloud_15" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 170.67
+margin_top = 3.0
+margin_right = 267.67
+margin_bottom = 65.0
+
+[node name="cloud_16" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 241.67
+margin_top = -80.0
+margin_right = 338.67
+margin_bottom = -18.0
+
+[node name="cloud_17" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 403.67
+margin_top = -47.0
+margin_right = 500.67
+margin_bottom = 15.0
+
+[node name="cloud_18" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 289.67
+margin_top = 70.0
+margin_right = 386.67
+margin_bottom = 132.0
+
+[node name="cloud_19" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 403.67
+margin_top = 196.0
+margin_right = 500.67
+margin_bottom = 258.0
+
+[node name="cloud_20" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 298.67
+margin_top = 146.0
+margin_right = 395.67
+margin_bottom = 208.0
+
+[node name="cloud_21" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 279.67
+margin_top = 270.0
+margin_right = 376.67
+margin_bottom = 332.0
+
+[node name="cloud_22" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 350.67
+margin_top = 351.0
+margin_right = 447.67
+margin_bottom = 413.0
+
+[node name="cloud_23" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 514.67
+margin_top = 384.0
+margin_right = 611.67
+margin_bottom = 446.0
+
+[node name="cloud_24" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 462.67
+margin_top = 289.0
+margin_right = 559.67
+margin_bottom = 351.0
+
+[node name="cloud_25" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 652.67
+margin_top = 265.0
+margin_right = 749.67
+margin_bottom = 327.0
+
+[node name="cloud_26" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 683.67
+margin_top = 372.0
+margin_right = 780.67
+margin_bottom = 434.0
+
+[node name="cloud_27" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 795.67
+margin_top = 346.0
+margin_right = 892.67
+margin_bottom = 408.0
+
+[node name="cloud_28" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 548.67
+margin_top = 206.0
+margin_right = 645.67
+margin_bottom = 268.0
+
+[node name="cloud_29" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 405.67
+margin_top = 75.0
+margin_right = 502.67
+margin_bottom = 137.0
+
+[node name="cloud_30" parent="village/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 531.67
+margin_top = -3.0
+margin_right = 628.67
+margin_bottom = 59.0
 
 [node name="active" type="TextureRect" parent="village"]
 visible = false
@@ -899,124 +1694,283 @@ margin_bottom = 11.0
 text = "Cult Grounds"
 
 [node name="clouds" type="Control" parent="cult"]
-visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud" parent="cult/clouds" instance=ExtResource( 10 )]
-margin_left = -332.0
-margin_top = -199.0
-margin_right = -50.0
-margin_bottom = -149.0
+[node name="bg" type="Control" parent="cult/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="cult/clouds" instance=ExtResource( 12 )]
-margin_left = -56.1869
-margin_top = -227.334
-margin_right = 255.813
-margin_bottom = -159.334
+[node name="cloud_7_4" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 230.67, 100 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud3" parent="cult/clouds" instance=ExtResource( 12 )]
-margin_left = 118.347
-margin_top = -205.121
-margin_right = 430.347
-margin_bottom = -137.121
+[node name="cloud_7_3" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 333.67, -120 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud4" parent="cult/clouds" instance=ExtResource( 12 )]
-margin_left = -205.334
-margin_top = -167.041
-margin_right = 106.666
-margin_bottom = -99.0406
+[node name="cloud_7_2" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( -194.33, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud5" parent="cult/clouds" instance=ExtResource( 12 )]
-margin_left = -271.975
-margin_top = -124.2
-margin_right = 40.0254
-margin_bottom = -56.2004
+[node name="cloud_10_4" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 256.67, 202 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud6" parent="cult/clouds" instance=ExtResource( 12 )]
-margin_left = 138.974
-margin_top = -152.76
-margin_right = 450.974
-margin_bottom = -84.7605
+[node name="cloud_10_3" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 355.67, -43 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud7" parent="cult/clouds" instance=ExtResource( 12 )]
-margin_left = 150.08
-margin_top = -238.441
-margin_right = 462.08
-margin_bottom = -170.441
+[node name="cloud_9_3" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 40.6703, -34 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud8" parent="cult/clouds" instance=ExtResource( 10 )]
-margin_left = 6.07971
-margin_top = -222.641
-margin_right = 297.08
-margin_bottom = -147.641
+[node name="cloud_9_2" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 447.67, -156 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
 
-[node name="cloud9" parent="cult/clouds" instance=ExtResource( 10 )]
-margin_left = 148.747
-margin_top = -189.28
-margin_right = 545.747
-margin_bottom = -73.2801
+[node name="cloud_8_1" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 65.6703, 199 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud10" parent="cult/clouds" instance=ExtResource( 10 )]
-margin_left = -226.0
-margin_top = -124.214
-margin_right = -23.0
-margin_bottom = -84.2139
+[node name="cloud_8_4" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 177.67, 42 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud11" parent="cult/clouds" instance=ExtResource( 11 )]
-margin_left = -66.9073
-margin_top = -135.574
-margin_right = 230.093
-margin_bottom = -36.5736
+[node name="cloud_8_3" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 67.6703, -133 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud12" parent="cult/clouds" instance=ExtResource( 11 )]
-margin_left = -383.08
-margin_top = -101.04
-margin_right = -7.08023
-margin_bottom = 51.96
+[node name="cloud_8_5" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 107.67, 300 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud13" parent="cult/clouds" instance=ExtResource( 10 )]
-margin_left = 103.053
-margin_top = -85.6934
-margin_right = 464.053
-margin_bottom = 56.3066
+[node name="cloud_8_2" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( -64.3297, -90 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud14" parent="cult/clouds" instance=ExtResource( 10 )]
-margin_left = -117.827
-margin_top = -10.8267
-margin_right = 183.173
-margin_bottom = 77.1733
+[node name="cloud_10_1" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( -71.3298, 83 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud15" parent="cult/clouds" instance=ExtResource( 11 )]
-margin_left = 153.64
-margin_top = 26.2665
-margin_right = 388.64
-margin_bottom = 115.267
+[node name="cloud_10_2" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 157.67, -157 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
 
-[node name="cloud16" parent="cult/clouds" instance=ExtResource( 11 )]
-margin_left = -251.0
-margin_top = 60.0
-margin_right = 100.0
-margin_bottom = 171.0
+[node name="cloud_11_1" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( -222.33, -73 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud17" parent="cult/clouds" instance=ExtResource( 11 )]
-margin_left = -48.0
-margin_top = 101.0
-margin_right = 233.0
-margin_bottom = 182.0
+[node name="cloud_11_2" type="Sprite" parent="cult/clouds/bg"]
+position = Vector2( 428.67, 100 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud18" parent="cult/clouds" instance=ExtResource( 11 )]
-margin_left = 163.067
-margin_top = 102.693
-margin_right = 511.066
-margin_bottom = 210.693
+[node name="fg" type="Control" parent="cult/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
 
-[node name="cloud19" parent="cult/clouds" instance=ExtResource( 11 )]
-margin_left = -123.0
-margin_top = 190.0
-margin_right = 141.0
-margin_bottom = 269.0
+[node name="cloud_01" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -363.33
+margin_top = -144.0
+margin_right = -266.33
+margin_bottom = -82.0
+
+[node name="cloud_02" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -345.33
+margin_top = -72.0
+margin_right = -248.33
+margin_bottom = -10.0
+
+[node name="cloud_03" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -278.33
+margin_top = -195.0
+margin_right = -181.33
+margin_bottom = -133.0
+
+[node name="cloud_04" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -197.33
+margin_top = -87.0
+margin_right = -100.33
+margin_bottom = -25.0
+
+[node name="cloud_05" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -296.33
+margin_top = 34.0
+margin_right = -199.33
+margin_bottom = 96.0
+
+[node name="cloud_06" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -170.33
+margin_top = 79.0
+margin_right = -73.3298
+margin_bottom = 141.0
+
+[node name="cloud_07" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -71.3298
+margin_top = 173.0
+margin_right = 25.6702
+margin_bottom = 235.0
+
+[node name="cloud_08" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -125.33
+margin_top = 9.0
+margin_right = -28.3298
+margin_bottom = 71.0
+
+[node name="cloud_09" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -60.3298
+margin_top = 88.0
+margin_right = 36.6702
+margin_bottom = 150.0
+
+[node name="cloud_10" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -4.32977
+margin_top = 230.0
+margin_right = 92.6702
+margin_bottom = 292.0
+
+[node name="cloud_11" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 65.6702
+margin_top = 159.0
+margin_right = 162.67
+margin_bottom = 221.0
+
+[node name="cloud_13" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 179.67
+margin_top = 157.0
+margin_right = 276.67
+margin_bottom = 219.0
+
+[node name="cloud_15" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 300.67
+margin_top = 121.0
+margin_right = 397.67
+margin_bottom = 183.0
+
+[node name="cloud_17" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 338.67
+margin_top = 18.0
+margin_right = 435.67
+margin_bottom = 80.0
+
+[node name="cloud_18" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 408.67
+margin_top = 103.0
+margin_right = 505.67
+margin_bottom = 165.0
+
+[node name="cloud_19" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 388.67
+margin_top = -95.0
+margin_right = 485.67
+margin_bottom = -33.0
+
+[node name="cloud_20" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 188.67
+margin_top = -64.0
+margin_right = 285.67
+margin_bottom = -2.0
+
+[node name="cloud_21" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 100.67
+margin_top = 35.0
+margin_right = 197.67
+margin_bottom = 97.0
+
+[node name="cloud_22" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 19.6702
+margin_top = -102.0
+margin_right = 116.67
+margin_bottom = -40.0
+
+[node name="cloud_23" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 113.67
+margin_top = -151.0
+margin_right = 210.67
+margin_bottom = -89.0
+
+[node name="cloud_24" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 106.67
+margin_top = -56.0
+margin_right = 203.67
+margin_bottom = 6.0
+
+[node name="cloud_25" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 322.67
+margin_top = -141.0
+margin_right = 419.67
+margin_bottom = -79.0
+
+[node name="cloud_26" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 219.67
+margin_top = -220.0
+margin_right = 316.67
+margin_bottom = -158.0
+
+[node name="cloud_27" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 354.67
+margin_top = -247.0
+margin_right = 451.67
+margin_bottom = -185.0
+
+[node name="cloud_28" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 60.6702
+margin_top = -247.0
+margin_right = 157.67
+margin_bottom = -185.0
+
+[node name="cloud_29" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -18.3298
+margin_top = -209.0
+margin_right = 78.6702
+margin_bottom = -147.0
+
+[node name="cloud_30" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -7.32977
+margin_top = -144.0
+margin_right = 89.6702
+margin_bottom = -82.0
+
+[node name="cloud_31" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -175.33
+margin_top = -205.0
+margin_right = -78.3298
+margin_bottom = -143.0
+
+[node name="cloud_32" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -146.33
+margin_top = -140.0
+margin_right = -49.3298
+margin_bottom = -78.0
+
+[node name="cloud_33" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -67.3298
+margin_top = -254.0
+margin_right = 29.6702
+margin_bottom = -192.0
 
 [node name="active" type="TextureRect" parent="cult"]
 visible = false
@@ -1079,60 +2033,192 @@ __meta__ = {
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud" parent="inner/clouds" instance=ExtResource( 10 )]
-margin_left = 48.2936
-margin_top = 12.1733
-margin_right = 534.294
-margin_bottom = 101.173
+[node name="bg" type="Control" parent="inner/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="cloud2" parent="inner/clouds" instance=ExtResource( 10 )]
-margin_left = -128.0
-margin_top = 65.0
-margin_right = 269.0
-margin_bottom = 125.0
+[node name="cloud_7_3" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1024.33, 106 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud3" parent="inner/clouds" instance=ExtResource( 10 )]
-margin_left = -1414.75
-margin_top = -126.76
-margin_right = -1153.75
-margin_bottom = -57.76
+[node name="cloud_7_2" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -816.33, 126 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud4" parent="inner/clouds" instance=ExtResource( 10 )]
-margin_left = -1287.51
-margin_top = -66.0667
-margin_right = -953.507
-margin_bottom = 31.9333
+[node name="cloud_7_4" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1488.33, -208 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud5" parent="inner/clouds" instance=ExtResource( 11 )]
-margin_left = -1019.04
-margin_top = -58.8001
-margin_right = -653.04
-margin_bottom = 60.1999
+[node name="cloud_7_5" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1368.33, -128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
 
-[node name="cloud6" parent="inner/clouds" instance=ExtResource( 11 )]
-margin_left = -1509.32
-margin_top = -41.3467
-margin_right = -1143.32
-margin_bottom = 77.6533
+[node name="cloud_11_2" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1190.33, -6 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
 
-[node name="cloud7" parent="inner/clouds" instance=ExtResource( 11 )]
-margin_left = -1353.4
-margin_top = 17.24
-margin_right = -838.4
-margin_bottom = 174.24
+[node name="cloud_8_1" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( 276.67, 154 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud8" parent="inner/clouds" instance=ExtResource( 11 )]
-margin_left = -931.547
-margin_top = 55.6532
-margin_right = -457.547
-margin_bottom = 183.653
+[node name="cloud_8_3" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -871.33, 86 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
 
-[node name="cloud9" parent="inner/clouds" instance=ExtResource( 11 )]
-margin_left = -1557.0
-margin_top = -222.0
-margin_right = -1292.0
-margin_bottom = -90.0
+[node name="cloud_8_4" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1163.33, 78 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_8_2" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( 565.67, 68 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 27 )
+
+[node name="cloud_9_1" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( 397.67, 94 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+
+[node name="cloud_9_2" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1134.33, 52 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+
+[node name="cloud_10_1" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -703.33, 150 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
+
+[node name="cloud_10_2" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1387.33, -18 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 28 )
+
+[node name="cloud_11_1" type="Sprite" parent="inner/clouds/bg"]
+position = Vector2( -1294.33, 70 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="fg" type="Control" parent="inner/clouds"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="cloud_01" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -665.33
+margin_top = 88.0
+margin_right = -568.33
+margin_bottom = 150.0
+
+[node name="cloud_15" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 126.67
+margin_top = 80.0
+margin_right = 223.67
+margin_bottom = 142.0
+
+[node name="cloud_16" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 252.67
+margin_top = 46.0
+margin_right = 349.67
+margin_bottom = 108.0
+
+[node name="cloud_17" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 376.67
+margin_top = 28.0
+margin_right = 473.67
+margin_bottom = 90.0
+
+[node name="cloud_18" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = 460.67
+margin_top = -76.0
+margin_right = 557.67
+margin_bottom = -14.0
+
+[node name="cloud_02" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -831.33
+margin_top = 38.0
+margin_right = -734.33
+margin_bottom = 100.0
+
+[node name="cloud_03" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -927.33
+margin_top = 40.0
+margin_right = -830.33
+margin_bottom = 102.0
+
+[node name="cloud_04" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1055.33
+margin_top = -16.0
+margin_right = -958.33
+margin_bottom = 46.0
+
+[node name="cloud_05" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1147.33
+margin_top = 32.0
+margin_right = -1050.33
+margin_bottom = 94.0
+
+[node name="cloud_06" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1301.33
+margin_top = 22.0
+margin_right = -1204.33
+margin_bottom = 84.0
+
+[node name="cloud_07" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1277.33
+margin_top = -62.0
+margin_right = -1180.33
+margin_bottom = 0.0
+
+[node name="cloud_08" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1451.33
+margin_top = -104.0
+margin_right = -1354.33
+margin_bottom = -42.0
+
+[node name="cloud_09" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1419.33
+margin_top = 4.0
+margin_right = -1322.33
+margin_bottom = 66.0
+
+[node name="cloud_10" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1355.33
+margin_top = -158.0
+margin_right = -1258.33
+margin_bottom = -96.0
+
+[node name="cloud_11" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1407.33
+margin_top = -210.0
+margin_right = -1310.33
+margin_bottom = -148.0
+
+[node name="cloud_12" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1511.33
+margin_top = -270.0
+margin_right = -1414.33
+margin_bottom = -208.0
+
+[node name="cloud_13" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+margin_left = -1165.33
+margin_top = -70.0
+margin_right = -1068.33
+margin_bottom = -8.0
 
 [node name="MainScreen" parent="." instance=ExtResource( 18 )]
 visible = false
