@@ -5,22 +5,22 @@ var location = 'village'
 var area = null
 
 
-onready var arealist = $ExplorationSelect/ScrollContainer/MarginContainer/VBoxContainer
-onready var areapanel = $ExplorationSelect/Panel
-onready var locdesc = $ExplorationSelect/desc
-onready var partylist = $ExplorationSelect/Panel/party
-onready var reservelist = $ExplorationSelect/Panel/roster
-onready var areadesc = $ExplorationSelect/Panel/RichTextLabel
+onready var arealist = $ExplorationSelect/missions/ScrollContainer/MarginContainer/VBoxContainer
+onready var areapanel = $BattleGroup
+onready var locdesc = $ExplorationSelect/about/desc
+onready var partylist = $BattleGroup/party
+onready var reservelist = $BattleGroup/roster
+onready var areadesc = $BattleGroup/about_bg/about
 onready var locname = $ExplorationSelect/head
-onready var scalecheck = $ExplorationSelect/Panel/ScaleCheck
+onready var scalecheck = $BattleGroup/ScaleCheck
 
 onready var combat_node = get_parent().get_node("combat")
 
 func _ready():
 	Explorationdata.preload_resources()
-	$ExplorationSelect/Panel/start.connect("pressed", self, "start_area")
-	$ExplorationSelect/Panel/advance.connect("pressed", self, "advance_area")
-	$ExplorationSelect/Panel/abandon.connect("pressed", self, "abandon_area")
+	$BattleGroup/start.connect("pressed", self, "start_area")
+	$BattleGroup/advance.connect("pressed", self, "advance_area")
+	$BattleGroup/abandon.connect("pressed", self, "abandon_area")
 	$ExplorationSelect/Close.connect('pressed', self, 'hide')
 	
 	build_party()
@@ -28,13 +28,13 @@ func _ready():
 	input_handler.connect("EventFinished", self, 'build_party')
 	input_handler.explore_node = self
 	
-	$ExplorationSelect/Panel/screen.parent_node = self
+	$BattleGroup/screen.parent_node = self
 	
 	$AdvConfirm/screen.rect_size = rect_size
 	$AdvConfirm/screen.rect_global_position = Vector2(0, 0)
 	$AdvConfirm/ok.connect("pressed", self, 'adv_confirm')
 	$AdvConfirm/no.connect("pressed", self, 'adv_decline')
-	scalecheck.connect('pressed', self, 'reset_level')
+	scalecheck.connect('true_pressed', self, 'reset_level')
 	
 	closebutton.visible = false
 	
@@ -56,9 +56,9 @@ func test():
 func set_location(loc_code):
 	location = loc_code
 	if typeof(Explorationdata.locations[location].background) == TYPE_STRING:
-		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
+		$ExplorationSelect/about/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	else:
-		$ExplorationSelect/Image.texture = Explorationdata.locations[location].background #obsolete, for testing
+		$ExplorationSelect/about/Image.texture = Explorationdata.locations[location].background #obsolete, for testing
 	areadesc.bbcode_text = ""
 
 
@@ -76,9 +76,9 @@ func show():
 
 func open_explore():
 	areapanel.visible = false
-	$ExplorationSelect/Close.disabled = false
-	$ExplorationSelect/level.text = ""
-	$ExplorationSelect/progress.visible = false
+	$ExplorationSelect/Close.show()
+	$ExplorationSelect/about/level.text = ""
+	$ExplorationSelect/about/progress.visible = false
 	input_handler.ClearContainer(arealist, ['Button'])
 	var num_missions = 0
 	if !Explorationdata.locations.has(location): #mission case
@@ -124,45 +124,35 @@ func select_area(area_code):
 	for node in arealist.get_children():
 		node.pressed = (node.has_meta('area') and area == node.get_meta('area'))
 	if state.activearea == null:
-		$ExplorationSelect/Panel/start.visible = true
-		$ExplorationSelect/Panel/start.disabled = false
-		$ExplorationSelect/Panel/advance.visible = false
-		$ExplorationSelect/Panel/abandon.visible = false
 		scalecheck.set_state(false)
-		scalecheck.visible = state.areaprogress[area].completed
-		$ExplorationSelect/Panel/Label2.visible = state.areaprogress[area].completed
+		scalecheck.disabled = false
 	elif state.activearea != area:
-		$ExplorationSelect/Panel/start.visible = true
-		$ExplorationSelect/Panel/start.disabled = true
-		$ExplorationSelect/Panel/advance.visible = false
-		$ExplorationSelect/Panel/abandon.visible = false
 		scalecheck.set_state(false)
 		scalecheck.disabled = true
 	else:
-		$ExplorationSelect/Panel/start.visible = false
-		$ExplorationSelect/Panel/advance.visible = true
-		$ExplorationSelect/Panel/abandon.visible = true
 		scalecheck.set_state(Explorationdata.areas[area].level != state.areaprogress[area].level)
 		scalecheck.disabled = true
-	
+	scalecheck.visible = state.areaprogress[area].completed
 	build_area_description() #+build_area_info
+	#update_buttons() #build_area_description has it
 
 
 func reset_level():
 	if area == null : return
 	if scalecheck.checked:
-		$ExplorationSelect/level.text = "Level %d" % state.heroes['arron'].level
+		$ExplorationSelect/about/level.text = "Level %d" % state.heroes['arron'].level
 	else:
-		$ExplorationSelect/level.text = "Level %d" % Explorationdata.areas[area].level
+		$ExplorationSelect/about/level.text = "Level %d" % Explorationdata.areas[area].level
 
 
 func reset_progress():
 	var areastate = state.areaprogress[area]
 	var areadata = Explorationdata.areas[area]
-	$ExplorationSelect/progress.visible = true
-	$ExplorationSelect/progress.value = areastate.stage - 1
-	$ExplorationSelect/progress.max_value = areadata.stages
-	$ExplorationSelect/progress/Label.text = "%d/%d" % [areastate.stage, areadata.stages]
+	var progress_node = $ExplorationSelect/about/progress
+	progress_node.visible = true
+	progress_node.value = areastate.stage - 1
+	progress_node.max_value = areadata.stages
+	progress_node.get_node("Label").text = "%d/%d" % [areastate.stage, areadata.stages]
 
 
 func build_area_description():
@@ -173,23 +163,19 @@ func build_area_description():
 	else:
 		areadesc.bbcode_text = ""
 	if areadata.has('explore_image') and areadata.explore_image != null and areadata.explore_image!= '':
-		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.explore_image)
+		$ExplorationSelect/about/Image.texture = resources.get_res("bg/%s" % areadata.explore_image)
 #	elif areadata.has('image') and areadata.image != null and areadata.image!= '':
-#		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % areadata.image)
+#		$ExplorationSelect/about/Image.texture = resources.get_res("bg/%s" % areadata.image)
 	else:
-		$ExplorationSelect/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
+		$ExplorationSelect/about/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	reset_level()
 	
 	if state.activearea != null and state.activearea == area:
 		reset_progress()
-		if areadata.has('no_escape') and areadata.no_escape:
-			$ExplorationSelect/Panel/abandon.disabled = true
-			$ExplorationSelect/Close.disabled = true
-		else:
-			$ExplorationSelect/Panel/abandon.disabled = false
-			$ExplorationSelect/Close.disabled = false
 	else:
-		$ExplorationSelect/progress.visible = false
+		$ExplorationSelect/about/progress.visible = false
+	
+	update_buttons()
 
 
 func start_area():
@@ -208,11 +194,10 @@ func open_mission():
 
 
 func show_screen():
-	$ExplorationSelect/Panel/screen.visible = true
+	$BattleGroup/screen.visible = true
 
 func build_party():
-	$ExplorationSelect/Panel/screen.visible = false
-	var party_count = 0
+	$BattleGroup/screen.visible = false
 	for i in range(3):
 #		partylist.get_child(i).disabled = true
 		var node = partylist.get_child(i)
@@ -239,7 +224,6 @@ func build_party():
 			node.get_node('level').text = "Level %d" % hero.level
 			node.get_node('name').text = hero.name
 			node.dragdata = ch
-			party_count += 1
 		var node = input_handler.DuplicateContainerTemplate(reservelist, 'Button')
 		node.get_node('icon').texture = hero.portrait()
 		node.get_node('level').text = "Level %d" % hero.level
@@ -247,7 +231,7 @@ func build_party():
 		node.dragdata = ch
 		node.parent_node = self
 
-	$ExplorationSelect/Panel/advance.disabled = (party_count == 0)
+	update_buttons()
 
 
 func show_info(ch_id):
@@ -539,3 +523,37 @@ func check_party():
 func auto_advance():
 	check_party()
 	advance_area()
+
+func update_buttons() ->void:
+	var start = $BattleGroup/start
+	var advance = $BattleGroup/advance
+	var abandon = $BattleGroup/abandon
+	var close = $ExplorationSelect/Close
+
+	close.show()
+	if state.activearea == null:
+		start.show()
+		advance.hide()
+		abandon.hide()
+	elif state.activearea != area:
+		start.hide()
+		advance.hide()
+		abandon.hide()
+	else:
+		start.hide()
+		advance.show()
+		abandon.show()
+		
+		var areadata = Explorationdata.areas[area]
+		if areadata.has('no_escape') and areadata.no_escape:
+			abandon.hide()
+			close.hide()
+
+	var has_no_party = true
+	for ch in state.characters:
+		if state.heroes[ch].position != null:
+			has_no_party = false
+			break
+	if has_no_party:
+		start.hide()
+		advance.hide()

@@ -1,30 +1,36 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig_back.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig_hover.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitbig_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_default.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_pressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portraitbig_back.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/bg/forest.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portraitsmall.png" type="Texture" id=7]
 [ext_resource path="res://files/scenes/ExplorationMenu.gd" type="Script" id=8]
 [ext_resource path="res://files/CharDragNode.gd" type="Script" id=9]
 [ext_resource path="res://assets/images/buttons/explore/tick_active.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_big_l.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/themes/scroll_explore.tres" type="Theme" id=12]
 [ext_resource path="res://assets/themes/button_location.tres" type="Theme" id=13]
 [ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/images/gui/explore/zone_panel_mission.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/pt_18.tres" type="DynamicFont" id=16]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_big_r.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/explore/bgroup_bg.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/buttons/explore/bar_dungeon_filler.png" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/pt_14.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=20]
 [ext_resource path="res://files/scenes/FullStateCheck.gd" type="Script" id=21]
 [ext_resource path="res://assets/themes/button_location_small.tres" type="Theme" id=22]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_back.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_hover.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/gui/explore/panel_dungeon_portraitsmall_pressed.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portraitsmall_pressed.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portraitsmall_hover.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_about.png" type="Texture" id=25]
 [ext_resource path="res://files/scenes/ExploreDropScreen.gd" type="Script" id=26]
+[ext_resource path="res://assets/images/gui/explore/zone_panel_about.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/gui/explore/zone_panel_name_mission.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gui/explore/zone_panel_bg.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/explore/bgroup_panel_portraitsmall_back.png" type="Texture" id=31]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -39,30 +45,7 @@ margin_left = 62.2006
 margin_top = 51.327
 margin_right = 948.201
 margin_bottom = 1031.33
-texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Image" type="TextureRect" parent="ExplorationSelect"]
-margin_left = 123.0
-margin_top = 133.0
-margin_right = 556.0
-margin_bottom = 473.0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="desc" type="RichTextLabel" parent="ExplorationSelect"]
-margin_left = 577.0
-margin_top = 113.524
-margin_right = 826.0
-margin_bottom = 591.524
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "text"
+texture = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,13 +66,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level" type="Label" parent="ExplorationSelect"]
+[node name="bg" type="TextureRect" parent="ExplorationSelect"]
+show_behind_parent = true
+margin_left = 18.0
+margin_top = 50.0
+margin_right = 869.0
+margin_bottom = 977.0
+texture = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="about" type="TextureRect" parent="ExplorationSelect"]
+margin_left = 50.0
+margin_top = 101.0
+margin_right = 835.0
+margin_bottom = 587.0
+texture = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="ExplorationSelect/about"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -85.0
-margin_top = 85.0
-margin_right = 85.0
-margin_bottom = 124.0
+margin_left = -84.0
+margin_top = -4.0
+margin_right = 86.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Level 10"
@@ -99,20 +103,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="progress" type="TextureProgress" parent="ExplorationSelect"]
+[node name="Image" type="TextureRect" parent="ExplorationSelect/about"]
+show_behind_parent = true
+margin_left = 18.0
+margin_top = 34.0
+margin_right = 440.0
+margin_bottom = 452.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="RichTextLabel" parent="ExplorationSelect/about"]
+margin_left = 466.0
+margin_top = 34.0
+margin_right = 760.0
+margin_bottom = 451.0
+custom_fonts/normal_font = ExtResource( 11 )
+text = "Information about zone"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="TextureProgress" parent="ExplorationSelect/about"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -319.0
-margin_top = 475.0
-margin_right = 320.0
-margin_bottom = 493.0
+margin_left = -318.0
+margin_top = 456.0
+margin_right = 321.0
+margin_bottom = 474.0
 value = 50.0
 texture_progress = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ExplorationSelect/progress"]
+[node name="Label" type="Label" parent="ExplorationSelect/about/progress"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -131,35 +159,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ExplorationSelect"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="missions" type="TextureRect" parent="ExplorationSelect"]
+margin_left = 60.0
+margin_top = 652.0
+margin_right = 825.0
+margin_bottom = 862.0
+texture = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ExplorationSelect/missions"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -296.0
-margin_top = -312.0
-margin_right = 309.0
-margin_bottom = -128.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
 theme = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="ExplorationSelect/ScrollContainer"]
-margin_right = 605.0
+[node name="MarginContainer" type="MarginContainer" parent="ExplorationSelect/missions/ScrollContainer"]
+margin_right = 725.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 custom_constants/margin_right = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ExplorationSelect/ScrollContainer/MarginContainer"]
-margin_right = 585.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ExplorationSelect/missions/ScrollContainer/MarginContainer"]
+margin_right = 705.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
-[node name="Button" type="Button" parent="ExplorationSelect/ScrollContainer/MarginContainer/VBoxContainer"]
-margin_right = 585.0
+[node name="Button" type="Button" parent="ExplorationSelect/missions/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_right = 705.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 0, 54 )
 theme = ExtResource( 13 )
@@ -168,7 +207,7 @@ custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 toggle_mode = true
 text = "Quest Name"
 
-[node name="Completed" type="TextureRect" parent="ExplorationSelect/ScrollContainer/MarginContainer/VBoxContainer/Button"]
+[node name="Completed" type="TextureRect" parent="ExplorationSelect/missions/ScrollContainer/MarginContainer/VBoxContainer/Button"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -187,10 +226,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -114.0
-margin_top = -114.0
-margin_right = 118.0
-margin_bottom = -60.0
+margin_left = -113.5
+margin_top = -105.0
+margin_right = 116.5
+margin_bottom = -49.0
 theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -199,16 +238,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="TextureRect" parent="ExplorationSelect"]
-margin_left = 933.497
-margin_right = 1819.5
-margin_bottom = 980.0
+[node name="BattleGroup" type="TextureRect" parent="."]
+margin_left = 995.698
+margin_top = 51.327
+margin_right = 1881.7
+margin_bottom = 1031.33
+texture = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="BattleGroup"]
+show_behind_parent = true
+margin_left = 19.0
+margin_top = 37.0
+margin_right = 870.0
+margin_bottom = 964.0
 texture = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ExplorationSelect/Panel"]
+[node name="Label" type="Label" parent="BattleGroup"]
 margin_left = 304.0
 margin_top = 17.0
 margin_right = 571.0
@@ -224,23 +275,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ExplorationSelect/Panel"]
-margin_left = 508.0
-margin_top = 81.0
-margin_right = 844.0
-margin_bottom = 406.0
-custom_fonts/normal_font = ExtResource( 14 )
-custom_colors/default_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+[node name="about_bg" type="TextureRect" parent="BattleGroup"]
+margin_left = 485.0
+margin_top = 102.0
+margin_right = 825.0
+margin_bottom = 472.0
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="about" type="RichTextLabel" parent="BattleGroup/about_bg"]
+margin_left = 34.0
+margin_top = 28.0
+margin_right = 308.0
+margin_bottom = 311.0
+custom_fonts/normal_font = ExtResource( 11 )
 text = "Area Info"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="ExplorationSelect/Panel"]
-margin_left = 185.0
-margin_top = 785.0
-margin_right = 640.0
-margin_bottom = 860.0
+[node name="ScaleCheck" type="Button" parent="BattleGroup"]
+margin_left = 683.975
+margin_top = 422.289
+margin_right = 723.975
+margin_bottom = 462.289
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="BattleGroup/ScaleCheck"]
+margin_left = -133.975
+margin_top = -3.28894
+margin_right = -1.97534
+margin_bottom = 42.7111
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Scale level"
@@ -250,25 +320,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScaleCheck" type="Button" parent="ExplorationSelect/Panel"]
-margin_left = 490.673
-margin_top = 805.616
-margin_right = 530.673
-margin_bottom = 845.616
-script = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="start" type="Button" parent="ExplorationSelect/Panel"]
+[node name="start" type="Button" parent="BattleGroup"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -158.0
-margin_top = -114.0
-margin_right = 158.0
-margin_bottom = -60.0
+margin_left = -113.5
+margin_top = -106.0
+margin_right = 116.5
+margin_bottom = -50.0
 theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -277,15 +337,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="advance" type="Button" parent="ExplorationSelect/Panel"]
+[node name="advance" type="Button" parent="BattleGroup"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -238.0
-margin_top = -114.0
+margin_top = -106.0
 margin_right = -8.0
-margin_bottom = -60.0
+margin_bottom = -50.0
 theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -294,15 +354,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="abandon" type="Button" parent="ExplorationSelect/Panel"]
+[node name="abandon" type="Button" parent="BattleGroup"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = -114.0
+margin_top = -106.0
 margin_right = 238.0
-margin_bottom = -60.0
+margin_bottom = -50.0
 theme = ExtResource( 22 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -311,7 +371,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="screen" type="TextureRect" parent="ExplorationSelect/Panel"]
+[node name="screen" type="TextureRect" parent="BattleGroup"]
 visible = false
 margin_left = -992.0
 margin_top = -70.0
@@ -323,38 +383,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="party" type="HBoxContainer" parent="ExplorationSelect/Panel"]
+[node name="party" type="HBoxContainer" parent="BattleGroup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 107.661
-margin_top = 460.0
-margin_right = -158.339
-margin_bottom = -240.0
-custom_constants/separation = 40
+margin_left = 105.0
+margin_top = 562.0
+margin_right = -161.0
+margin_bottom = -138.0
+custom_constants/separation = 65
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button1" type="TextureButton" parent="ExplorationSelect/Panel/party"]
+[node name="Button1" type="TextureButton" parent="BattleGroup/party"]
 margin_right = 180.0
-margin_bottom = 280.0
+margin_bottom = 287.0
 rect_min_size = Vector2( 0, 200 )
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 4 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 script = ExtResource( 9 )
 pos = 1
 
-[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/party/Button1"]
+[node name="back" type="TextureRect" parent="BattleGroup/party/Button1"]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 1 )
+margin_left = 2.0
+margin_top = 28.0
+margin_right = 178.0
+margin_bottom = 245.0
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/party/Button1"]
+[node name="icon" type="TextureRect" parent="BattleGroup/party/Button1"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -366,10 +428,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="ExplorationSelect/Panel/party/Button1"]
+[node name="name" type="Label" parent="BattleGroup/party/Button1"]
 margin_right = 177.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 11 )
 text = "name"
 align = 1
 valign = 1
@@ -377,12 +439,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level" type="Label" parent="ExplorationSelect/Panel/party/Button1"]
+[node name="level" type="Label" parent="BattleGroup/party/Button1"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -37.0
-custom_fonts/font = ExtResource( 14 )
+margin_top = -40.0
+margin_bottom = -13.0
+custom_fonts/font = ExtResource( 11 )
 text = "Lv 1"
 align = 1
 valign = 1
@@ -390,27 +453,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="TextureButton" parent="ExplorationSelect/Panel/party"]
-margin_left = 220.0
-margin_right = 400.0
-margin_bottom = 280.0
+[node name="Button2" type="TextureButton" parent="BattleGroup/party"]
+margin_left = 245.0
+margin_right = 425.0
+margin_bottom = 287.0
 rect_min_size = Vector2( 0, 200 )
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 4 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 script = ExtResource( 9 )
 pos = 2
 
-[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/party/Button2"]
+[node name="back" type="TextureRect" parent="BattleGroup/party/Button2"]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 1 )
+margin_left = 2.0
+margin_top = 28.0
+margin_right = 178.0
+margin_bottom = 245.0
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/party/Button2"]
+[node name="icon" type="TextureRect" parent="BattleGroup/party/Button2"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -422,10 +487,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="ExplorationSelect/Panel/party/Button2"]
+[node name="name" type="Label" parent="BattleGroup/party/Button2"]
 margin_right = 177.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 11 )
 text = "name"
 align = 1
 valign = 1
@@ -433,12 +498,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level" type="Label" parent="ExplorationSelect/Panel/party/Button2"]
+[node name="level" type="Label" parent="BattleGroup/party/Button2"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -37.0
-custom_fonts/font = ExtResource( 14 )
+margin_top = -40.0
+margin_bottom = -13.0
+custom_fonts/font = ExtResource( 11 )
 text = "Lv 1"
 align = 1
 valign = 1
@@ -446,27 +512,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button3" type="TextureButton" parent="ExplorationSelect/Panel/party"]
-margin_left = 440.0
-margin_right = 620.0
-margin_bottom = 280.0
+[node name="Button3" type="TextureButton" parent="BattleGroup/party"]
+margin_left = 490.0
+margin_right = 670.0
+margin_bottom = 287.0
 rect_min_size = Vector2( 0, 200 )
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 4 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 script = ExtResource( 9 )
 pos = 3
 
-[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/party/Button3"]
+[node name="back" type="TextureRect" parent="BattleGroup/party/Button3"]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 1 )
+margin_left = 2.0
+margin_top = 28.0
+margin_right = 178.0
+margin_bottom = 245.0
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/party/Button3"]
+[node name="icon" type="TextureRect" parent="BattleGroup/party/Button3"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -478,10 +546,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="ExplorationSelect/Panel/party/Button3"]
+[node name="name" type="Label" parent="BattleGroup/party/Button3"]
 margin_right = 177.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 11 )
 text = "name"
 align = 1
 valign = 1
@@ -489,12 +557,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level" type="Label" parent="ExplorationSelect/Panel/party/Button3"]
+[node name="level" type="Label" parent="BattleGroup/party/Button3"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -37.0
-custom_fonts/font = ExtResource( 14 )
+margin_top = -40.0
+margin_bottom = -13.0
+custom_fonts/font = ExtResource( 11 )
 text = "Lv 1"
 align = 1
 valign = 1
@@ -502,33 +571,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="roster" type="GridContainer" parent="ExplorationSelect/Panel"]
-margin_left = 73.0
-margin_top = 82.0
-margin_right = 494.0
-margin_bottom = 436.0
-custom_constants/vseparation = 4
-custom_constants/hseparation = 14
+[node name="roster" type="GridContainer" parent="BattleGroup"]
+margin_left = 60.0
+margin_top = 102.0
+margin_right = 421.0
+margin_bottom = 472.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 15
 columns = 3
-
-[node name="Button" type="TextureButton" parent="ExplorationSelect/Panel/roster"]
-margin_right = 110.0
-margin_bottom = 175.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 25 )
-texture_hover = ExtResource( 24 )
-script = ExtResource( 9 )
-
-[node name="back" type="TextureRect" parent="ExplorationSelect/Panel/roster/Button"]
-show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="ExplorationSelect/Panel/roster/Button"]
+[node name="Button" type="TextureButton" parent="BattleGroup/roster"]
+margin_right = 110.0
+margin_bottom = 175.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
+script = ExtResource( 9 )
+
+[node name="back" type="TextureRect" parent="BattleGroup/roster/Button"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 19.0
+margin_right = 107.0
+margin_bottom = 150.0
+texture = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="BattleGroup/roster/Button"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -539,7 +613,62 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="ExplorationSelect/Panel/roster/Button"]
+[node name="name" type="Label" parent="BattleGroup/roster/Button"]
+anchor_right = 1.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 19 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="BattleGroup/roster/Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 19 )
+text = "Lv 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="TextureButton" parent="BattleGroup/roster"]
+margin_left = 125.0
+margin_right = 235.0
+margin_bottom = 175.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
+script = ExtResource( 9 )
+
+[node name="back" type="TextureRect" parent="BattleGroup/roster/Button2"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 19.0
+margin_right = 107.0
+margin_bottom = 150.0
+texture = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="BattleGroup/roster/Button2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="BattleGroup/roster/Button2"]
 anchor_right = 1.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 16 )
@@ -550,7 +679,117 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level" type="Label" parent="ExplorationSelect/Panel/roster/Button"]
+[node name="level" type="Label" parent="BattleGroup/roster/Button2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 16 )
+text = "Lv 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="TextureButton" parent="BattleGroup/roster"]
+margin_left = 250.0
+margin_right = 360.0
+margin_bottom = 175.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
+script = ExtResource( 9 )
+
+[node name="back" type="TextureRect" parent="BattleGroup/roster/Button3"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 19.0
+margin_right = 107.0
+margin_bottom = 150.0
+texture = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="BattleGroup/roster/Button3"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="BattleGroup/roster/Button3"]
+anchor_right = 1.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 16 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="BattleGroup/roster/Button3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+custom_fonts/font = ExtResource( 16 )
+text = "Lv 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="TextureButton" parent="BattleGroup/roster"]
+margin_top = 195.0
+margin_right = 110.0
+margin_bottom = 370.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
+script = ExtResource( 9 )
+
+[node name="back" type="TextureRect" parent="BattleGroup/roster/Button4"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 19.0
+margin_right = 107.0
+margin_bottom = 150.0
+texture = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="BattleGroup/roster/Button4"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="BattleGroup/roster/Button4"]
+anchor_right = 1.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 16 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="BattleGroup/roster/Button4"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
