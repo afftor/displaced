@@ -1,7 +1,7 @@
 extends Control
 
-onready var charlist = $Panel/ScrollContainer/HBoxContainer
-onready var scenelist = $Panel/Panel/ScrollContainer/GridContainer
+onready var charlist = $Panel/heroes/HBoxContainer
+onready var scenelist = $Panel/scenes/GridContainer
 
 var selected_char
 
@@ -12,7 +12,8 @@ func _ready():
 	hide()
 	if input_handler.scene_node == null and test_mode:
 		input_handler.initiate_scennode(self)
-	$Panel/Panel/close.connect("pressed", self, 'hide')
+	$close.connect("pressed", self, 'hide')
+	$CloseButton.connect("pressed", self, 'hide')
 	for ch in charlist.get_children():
 		var cid = ch.name.to_lower()
 		ch.set_meta('hero', cid)
@@ -70,78 +71,28 @@ func select_hero(cid):
 	rebuild_scene_list()
 	if selected_char != 'all' and selected_char != 'group': #simple sprite setup. tell me if animated sprite is needed
 		var tmp = resources.get_res("sprite/%s" % selected_char) 
-		$TextureRect.texture = tmp
+		$panel_hero/hero.texture = tmp
 	else:
-		$TextureRect.texture = null
+		$panel_hero/hero.texture = null
 	TutorialCore.check_event("scenes_select_hero", cid)
 
 
 func rebuild_scene_list():
-	input_handler.ClearContainer(scenelist, ['Button', 'Button2', 'Button3'])
-#	for event in events.events:
+	input_handler.ClearContainer(scenelist, ['Button'])
 	for event in Explorationdata.scene_sequences:
-#		var eventdata = events.events[event]
 		var eventdata = Explorationdata.scene_sequences[event]
 		if !eventdata.has('category'): continue
-#		if eventdata.cost.empty(): continue
 		if selected_char != 'all' and eventdata.category != selected_char: continue
-#		if state.gallery_event_unlocks.has(event):
-#			var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
-#			panel.get_node('Image').texture = resources.get_res(eventdata.icon)
-#			panel.get_node('Label').text = "{name}\n{description}".format(eventdata)
-#			panel.connect('pressed', self, 'show_event', [event])
-#			continue
+		var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
 		if state.OldSeqs.has(event):
-			var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
-			if eventdata.has('icon'):
-				panel.get_node('Image').texture = resources.get_res(eventdata.icon)
-			panel.get_node('Label').text = "{name}\n{descript}".format(eventdata)
-			panel.connect('pressed', self, 'show_event', [event])
+			panel.set_unlocked(eventdata)
+			panel.connect('show_pressed', self, 'show_event', [event])
 			continue
-#		if state.OldEvents.has(event): #shown and not unlocked == not unknown
-#			var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button2')
-#			var can_unlock = true
-#			panel.get_node('Image').texture = resources.get_res(eventdata.icon)
-#			panel.get_node('Label').text = "{name}\n{description}".format(eventdata)
-#			var cost_con = panel.get_node('HBoxContainer')
-#			input_handler.ClearContainer(cost_con, ['Label'])
-#			for ch in eventdata.cost:
-#				var hero = state.heroes[ch]
-#				var panel1 = input_handler.DuplicateContainerTemplate(cost_con, 'Label')
-#				panel1.get_node('TextureRect').texture = ch.portrait()
-#				panel1.text = "%d/%d" % [eventdata.cost[ch], hero.friend_points]
-#				if eventdata.cost[ch] > hero.friend_points:
-#					panel1.set("custom_colors/font_color", variables.hexcolordict.red)
-#					can_unlock = false
-#			if can_unlock:
-#				panel.get_node('Button').disabled = false
-#				panel.get_node('Button').connect('pressed', self, 'unlock_show_event', [event])
-#			else:
-#				panel.get_node('Button').disabled = true
-#			continue
 		if eventdata.has("initiate_reqs") and state.checkreqs(eventdata.initiate_reqs): #not shown but unlockable
-			var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button2')
-			var can_unlock = true
-#			panel.get_node('Image').texture = resources.get_res(eventdata.icon)
-			panel.get_node('Label').text = "{name}\n{descript}".format(eventdata)
-			var cost_con = panel.get_node('HBoxContainer')
-			input_handler.ClearContainer(cost_con, ['Label'])
-			for ch in eventdata.unlock_price:
-				var hero = state.heroes[ch]
-				var panel1 = input_handler.DuplicateContainerTemplate(cost_con, 'Label')
-				panel1.get_node('TextureRect').texture = hero.portrait()
-				panel1.text = "%d/%d" % [eventdata.unlock_price[ch], hero.friend_points]
-				if eventdata.unlock_price[ch] > hero.friend_points:
-					panel1.set("custom_colors/font_color", variables.hexcolordict.red)
-					can_unlock = false
-			if can_unlock:
-				panel.get_node('Button').disabled = false
-				panel.get_node('Button').connect('pressed', self, 'unlock_show_event', [event])
-			else:
-				panel.get_node('Button').disabled = true
+			panel.set_unlockable(eventdata)
+			panel.connect('unlocked_pressed', self, 'unlock_show_event', [event])
 			continue
-		#unknown and locked - default
-		var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button3')
+		panel.set_unknown()
 
 
 func show_event(ev):

@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/images/iconsskills/shield.png" type="Texture" id=28]
 [ext_resource path="res://files/scenes/CharPanel/SkillPanel.tscn" type="PackedScene" id=29]
 [ext_resource path="res://assets/sfx/bw_shader.tres" type="Material" id=30]
-[ext_resource path="res://assets/themes/button_location_small.tres" type="Theme" id=31]
+[ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=31]
 [ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=32]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=33]
 

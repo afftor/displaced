@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/images/gui/gallery/icon_hero_default.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/portrait/RoseNormal.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/gallery/icon_hero_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/gallery/icon_hero_active.png" type="Texture" id=4]
+[ext_resource path="res://files/scenes/village/SceneUnlockHero.gd" type="Script" id=5]
+
+[node name="hero" type="TextureButton"]
+margin_left = 380.0
+margin_right = 530.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 26.0
+margin_top = 20.0
+margin_right = 123.0
+margin_bottom = 140.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 10.2202
+margin_top = 7.60709
+margin_right = 132.22
+margin_bottom = 31.6071
+text = "Rose"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Friendship" type="Label" parent="."]
+visible = false
+margin_left = 75.6908
+margin_top = 119.891
+margin_right = 147.691
+margin_bottom = 143.891
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "135"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
