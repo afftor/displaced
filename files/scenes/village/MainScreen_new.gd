@@ -96,7 +96,7 @@ func switch_show() ->void:
 func show_anim() ->void:
 	input_handler.OpenAnimation(self)
 #	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, 0.3)
-#	input_handler.curtains.connect("show_anim_finished", self,
+#	input_handler.curtains.connect("anim_finished", self,
 #	"show_anim_2", [], CONNECT_ONESHOT)
 #
 #func show_anim_2(curtain_type :int) ->void:
@@ -108,7 +108,7 @@ func show_anim() ->void:
 func hide_anim() ->void:
 	input_handler.CloseAnimation(self)
 #	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, 0.3)
-#	input_handler.curtains.connect("show_anim_finished", self,
+#	input_handler.curtains.connect("anim_finished", self,
 #	"hide_anim_2", [], CONNECT_ONESHOT)
 #
 #func hide_anim_2(curtain_type :int) ->void:
