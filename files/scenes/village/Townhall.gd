@@ -26,6 +26,10 @@ func _ready():
 #	visible = false
 #	if resources.is_busy(): yield(resources, "done_work")
 #	open()
+	
+	#very ugly patch. As ugly as very idea to instantiate "closebutton" after everything else in ClosingPanel.gd
+	#the purpose is to prevent closebutton from been visible in "scenes" screen
+	move_child(closebutton, closebutton.get_index()-1)
 
 
 func open():

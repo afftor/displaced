@@ -308,7 +308,7 @@ margin_bottom = 782.0
 
 [node name="scenes" parent="." instance=ExtResource( 16 )]
 visible = false
-margin_left = 25.4271
-margin_top = -55.092
-margin_right = 25.4271
-margin_bottom = -55.092
+margin_left = -35.0
+margin_top = -54.0
+margin_right = 94.0
+margin_bottom = 96.0
