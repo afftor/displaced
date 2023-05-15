@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/bg/scenes/rilu_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/gallery/locked_image.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/themes/button_1.tres" type="Theme" id=6]
+[ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=6]
 [ext_resource path="res://files/scenes/village/SceneUnlockScene.gd" type="Script" id=7]
 
 [node name="scene" type="Control"]
@@ -15,6 +15,9 @@ margin_right = -1560.0
 margin_bottom = -624.0
 rect_min_size = Vector2( 360, 456 )
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="panel" type="TextureRect" parent="."]
 margin_left = -23.0
@@ -156,10 +159,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button" type="Button" parent="."]
-anchor_right = 1.0
+[node name="watch_btn" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-flat = true
+margin_left = -95.5
+margin_top = -64.0
+margin_right = 95.5
+margin_bottom = -16.0
+theme = ExtResource( 6 )
+text = "Watch"
 __meta__ = {
 "_edit_use_anchors_": false
 }

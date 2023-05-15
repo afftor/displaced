@@ -76,7 +76,6 @@ func show():
 
 func open_explore():
 	areapanel.visible = false
-	$ExplorationSelect/Close.show()
 	$ExplorationSelect/about/level.text = ""
 	$ExplorationSelect/about/progress.visible = false
 	input_handler.ClearContainer(arealist, ['Button'])
@@ -457,9 +456,7 @@ func combat_loose():
 		return
 	if areastate.stage == 1:
 		state.abandon_area()
-	else:
-		pass
-	if $ExplorationSelect/Close.visible:
+	if !$ExplorationSelect/Close.disabled:
 		hide()
 
 
@@ -530,13 +527,18 @@ func update_buttons() ->void:
 	var abandon = $BattleGroup/abandon
 	var close = $ExplorationSelect/Close
 
-	close.show()
+	start.disabled = false
+	advance.disabled = false
+	abandon.disabled = false
+	close.disabled = false
+	
 	if state.activearea == null:
 		start.show()
 		advance.hide()
 		abandon.hide()
 	elif state.activearea != area:
-		start.hide()
+		start.show()
+		start.disabled = true
 		advance.hide()
 		abandon.hide()
 	else:
@@ -546,8 +548,8 @@ func update_buttons() ->void:
 		
 		var areadata = Explorationdata.areas[area]
 		if areadata.has('no_escape') and areadata.no_escape:
-			abandon.hide()
-			close.hide()
+			abandon.disabled = true
+			close.disabled = true
 
 	var has_no_party = true
 	for ch in state.characters:
@@ -555,5 +557,5 @@ func update_buttons() ->void:
 			has_no_party = false
 			break
 	if has_no_party:
-		start.hide()
-		advance.hide()
+		start.disabled = true
+		advance.disabled = true

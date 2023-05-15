@@ -63,10 +63,10 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 100.0
-margin_top = 126.0
-margin_right = 1192.0
-margin_bottom = 715.0
+margin_left = 101.0
+margin_top = 125.0
+margin_right = 1193.0
+margin_bottom = 714.0
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -209,9 +209,8 @@ valign = 1
 margin_left = 62.0
 margin_top = 93.0
 margin_right = 214.0
-margin_bottom = 157.0
+margin_bottom = 153.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 11 )
 text = "Sell"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,9 +220,8 @@ __meta__ = {
 margin_left = 274.0
 margin_top = 93.0
 margin_right = 427.0
-margin_bottom = 157.0
+margin_bottom = 153.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 11 )
 text = "Buy"
 
 [node name="SelectAmountPanel" type="TextureRect" parent="."]
@@ -363,10 +361,9 @@ text = "90000"
 margin_left = 485.0
 margin_top = 189.0
 margin_right = 704.0
-margin_bottom = 253.0
+margin_bottom = 249.0
 size_flags_horizontal = 3
 theme = ExtResource( 12 )
-custom_fonts/font = ExtResource( 11 )
 text = "Buy"
 __meta__ = {
 "_edit_use_anchors_": false

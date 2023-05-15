@@ -4,6 +4,13 @@ onready var charlist = $Panel/heroes/HBoxContainer
 onready var scenelist = $Panel/scenes/GridContainer
 
 var selected_char
+const char_sprites = {
+	rose = 'rose',
+	ember = 'emberhappy',
+	erika = 'erika',
+	iola = 'iola',
+	rilu = 'rilu'
+}
 
 
 export var test_mode = false
@@ -18,7 +25,9 @@ func _ready():
 		var cid = ch.name.to_lower()
 		ch.set_meta('hero', cid)
 		ch.connect('pressed', self, 'select_hero', [cid])
-		if cid != 'all': resources.preload_res("sprite/%s" % cid)
+		if char_sprites.has(cid): resources.preload_res("sprite/%s" % char_sprites[cid])
+	#TODO full preload of previews is a bad idea! Need to optimise it somehow
+	preload_previews()
 	if test_mode:
 		testmode()
 		if resources.is_busy(): yield(resources, "done_work")
@@ -33,6 +42,13 @@ func testmode():
 #	input_handler.scene_node = tnode #will be set on add_child anyway
 #	tnode.hide()
 #	add_child(tnode)
+
+
+func preload_previews():
+	for event in Explorationdata.scene_sequences:
+		var eventdata = Explorationdata.scene_sequences[event]
+		if eventdata.has('category') and eventdata.has('preview'):
+			resources.preload_res("scene_preview/%s" % eventdata.preview)
 
 
 
@@ -70,7 +86,7 @@ func select_hero(cid):
 		ch.pressed = (ch.get_meta('hero') == cid)
 	rebuild_scene_list()
 	if selected_char != 'all' and selected_char != 'group': #simple sprite setup. tell me if animated sprite is needed
-		var tmp = resources.get_res("sprite/%s" % selected_char) 
+		var tmp = resources.get_res("sprite/%s" % char_sprites[selected_char]) 
 		$panel_hero/hero.texture = tmp
 	else:
 		$panel_hero/hero.texture = null

@@ -472,9 +472,10 @@ var scene_sequences = {
 	
 	
 	ember_boobs = {
-		name = "",
+		name = "Ember's boobs",
 		descript = "",
 		category  = 'ember',
+		preview = 'ember_boobs',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 		unlock_price = {ember = 100},
 		actions = [
@@ -483,9 +484,10 @@ var scene_sequences = {
 		]
 	},
 	rose_night = {
-		name = "",
+		name = "Rose's night",
 		descript = "",
 		category  = 'rose',
+		preview = 'rose_night',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_boobs'}],
 		unlock_price = {rose = 100},
 		actions = [
@@ -494,9 +496,10 @@ var scene_sequences = {
 		]
 	},
 	rose_public = {
-		name = "",
+		name = "Rose in public",
 		descript = "",
 		category  = 'rose',
+#		preview = '',#find it!!!
 		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
 		unlock_price = {rose = 500},
 		actions = [
@@ -505,9 +508,10 @@ var scene_sequences = {
 		]
 	},
 	erika_doggy = {
-		name = "",
+		name = "Erika's doggy",
 		descript = "",
 		category  = 'erika',
+		preview = 'erika_doggy',
 		initiate_reqs = [],
 		unlock_price = {erika = 100},
 		actions = [
@@ -516,9 +520,10 @@ var scene_sequences = {
 		]
 	},
 	erika_rose_three = {
-		name = "",
+		name = "Erika and Rose",
 		descript = "",
 		category  = 'group',
+		preview = 'erika_rose_three',
 		unlock_price = {rose = 200, erika = 200},
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika_sidequest'}],
 		actions = [
@@ -527,9 +532,10 @@ var scene_sequences = {
 		]
 	},
 	ember_missionary = {
-		name = "",
+		name = "Ember's missionary",
 		descript = "",
 		category  = 'ember',
+		preview = 'ember_missionary',
 		unlock_price = {ember = 200},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
 		actions = [
@@ -538,9 +544,10 @@ var scene_sequences = {
 		]
 	},
 	ember_titjob = {
-		name = "",
+		name = "Ember's titjob",
 		descript = "",
 		category  = 'ember',
+		preview = 'ember_titjob',
 		unlock_price = {ember = 500},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_missionary'}],
 		actions = [
@@ -549,9 +556,10 @@ var scene_sequences = {
 		]
 	},
 	ember_doggy = {
-		name = "",
+		name = "Ember's doggy",
 		descript = "",
 		category  = 'ember',
+		preview = 'ember_doggy',
 		unlock_price = {ember = 1000},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_titjob'}],
 		actions = [
@@ -560,9 +568,10 @@ var scene_sequences = {
 		]
 	},
 	rilu_cowgirl = {
-		name = "",
+		name = "Rilu is a cowgirl",
 		descript = "",
 		category  = 'rilu',
+		preview = 'rilu_cowgirl',
 		unlock_price = {rilu = 200},
 		initiate_reqs = [],
 		actions = [
@@ -571,9 +580,10 @@ var scene_sequences = {
 		]
 	},
 	rilu_doggy = {
-		name = "",
+		name = "Rilu's doggy",
 		descript = "",
 		category  = 'rilu',
+		preview = 'rilu_doggy',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_cowgirl'}],
 		unlock_price = {rilu = 500},
 		actions = [
@@ -582,9 +592,10 @@ var scene_sequences = {
 		]
 	},
 	rilu_anal = {
-		name = "",
+		name = "Rilu's anal",
 		descript = "",
 		category  = 'rilu',
+		preview = 'rilu_anal',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_doggy'}],
 		unlock_price = {rilu = 1000},
 		actions = [
@@ -594,9 +605,10 @@ var scene_sequences = {
 	},
 	
 	iola_blowjob = {
-		name = "",
+		name = "Iola's blowjob",
 		descript = "",
 		category  = 'iola',
+		preview = 'iola_blowjob',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_recruited' }],
 		unlock_price = {iola = 200},
 		actions = [
@@ -605,9 +617,10 @@ var scene_sequences = {
 		]
 	},
 	iola_riding = {
-		name = "",
+		name = "Iola's riding",
 		descript = "",
 		category  = 'iola',
+		preview = 'iola_riding',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_blowjob' }],
 		unlock_price = {iola = 500},
 		actions = [
@@ -616,9 +629,10 @@ var scene_sequences = {
 		]
 	},
 	iola_foursome = {
-		name = "",
+		name = "Iola's foursome",
 		descript = "",
 		category  = 'group',
+#		preview = '',#what is it?!
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_missionary' }],
 		unlock_price = {iola = 500, erika = 500, rose = 500},
 		actions = [

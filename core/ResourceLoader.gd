@@ -11,7 +11,8 @@ const RES_ROOT = {
 	"sound" : "res://assets",
 	"music" : "res://assets",
 	"Fight" : "res://assets/images",
-	"enemies" : "res://assets/images"
+	"enemies" : "res://assets/images",
+	"scene_preview" : "res://assets/images"
 }
 
 const RES_EXT = {
@@ -24,7 +25,8 @@ const RES_EXT = {
 	"sound" : "wav",
 	"music" : "ogg",
 	"Fight" : "png",
-	"enemies" : "png"
+	"enemies" : "png",
+	"scene_preview" : "png"
 }
 
 signal done_work

@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/images/gui/gallery/icon_hero_active.png" type="Texture" id=16]
 [ext_resource path="res://files/scenes/village/SceneUnlockHero.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/Close Panel Button/CloseButton.tscn" type="PackedScene" id=18]
-[ext_resource path="res://assets/themes/button_thick.tres" type="Theme" id=19]
+[ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=19]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -55,7 +55,7 @@ margin_right = 659.0
 margin_bottom = 904.0
 texture = ExtResource( 2 )
 expand = true
-stretch_mode = 5
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

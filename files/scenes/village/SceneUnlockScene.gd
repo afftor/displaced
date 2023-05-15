@@ -3,7 +3,7 @@ extends Control
 signal show_pressed
 signal unlocked_pressed
 
-onready var button = $button
+onready var watch_btn = $watch_btn
 onready var unlock_btn = $unlock_btn
 onready var image = $Image
 onready var label = $Label
@@ -12,21 +12,19 @@ onready var reqs = $reqs
 
 
 func _ready():
-	button.connect('pressed', self, 'emit_signal', ["show_pressed"])
+	watch_btn.connect('pressed', self, 'emit_signal', ["show_pressed"])
 	unlock_btn.connect('pressed', self, 'emit_signal', ["unlocked_pressed"])
 
 func set_unlocked(eventdata :Dictionary):
-	if eventdata.has('icon'):
-		image.texture = resources.get_res(eventdata.icon)
+	set_preview(eventdata)
 	label.text = "{name}\n{descript}".format(eventdata)
 	lock.hide()
 	reqs.hide()
 	unlock_btn.hide()
 
 func set_unlockable(eventdata :Dictionary):
-	if eventdata.has('icon'):
-		image.texture = resources.get_res(eventdata.icon)
-	label.text = "Locked"
+	set_preview(eventdata)
+	label.text = eventdata.name
 	var cost_con = reqs
 	input_handler.ClearContainer(cost_con, ['line'])
 	for ch in eventdata.unlock_price:
@@ -38,11 +36,16 @@ func set_unlockable(eventdata :Dictionary):
 		if eventdata.unlock_price[ch] > hero.friend_points:
 			line_label.set("custom_colors/font_color", variables.hexcolordict.red)
 			unlock_btn.hide()
-	button.hide()
+	watch_btn.hide()
 
 func set_unknown():
 	image.hide()
 	label.text = "Unknown"
 	reqs.hide()
-	button.hide()
+	watch_btn.hide()
 	unlock_btn.hide()
+
+
+func set_preview(eventdata :Dictionary):
+	if eventdata.has('preview'):
+		image.texture = resources.get_res("scene_preview/%s" % eventdata.preview)
