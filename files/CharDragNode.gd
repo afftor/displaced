@@ -41,7 +41,11 @@ func get_drag_data(position):
 		return null
 	parent_node.show_screen()
 	press()
-	set_drag_preview(self.duplicate())
+	var container = Control.new()
+	var drag_item = self.duplicate()
+	container.add_child(drag_item)
+	drag_item.rect_position = - drag_item.rect_size * 0.5
+	set_drag_preview(container)
 	return dragdata
  
 

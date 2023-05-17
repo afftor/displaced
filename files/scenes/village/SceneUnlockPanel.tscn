@@ -82,7 +82,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/heroes"]
-margin_right = 1290.0
+margin_right = 1100.0
 margin_bottom = 150.0
 custom_constants/separation = 40
 __meta__ = {
@@ -114,57 +114,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="group" type="TextureButton" parent="Panel/heroes/HBoxContainer"]
+[node name="rose" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
 margin_left = 190.0
 margin_right = 340.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 150, 150 )
-toggle_mode = true
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 15 )
-
-[node name="Label" type="Label" parent="Panel/heroes/HBoxContainer/group"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -61.0
-margin_top = -20.0
-margin_right = 61.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 13 )
-text = "Group"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="rose" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
 hero_name = "Rose"
 portrait = ExtResource( 6 )
 
 [node name="ember" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
-margin_left = 570.0
-margin_right = 720.0
 hero_name = "Ember"
 portrait = ExtResource( 4 )
 
 [node name="erika" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
-margin_left = 760.0
-margin_right = 910.0
+margin_left = 570.0
+margin_right = 720.0
 hero_name = "Erika"
 portrait = ExtResource( 8 )
 
 [node name="iola" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
-margin_left = 950.0
-margin_right = 1100.0
+margin_left = 760.0
+margin_right = 910.0
 hero_name = "Iola"
 portrait = ExtResource( 5 )
 
 [node name="rilu" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
-margin_left = 1140.0
-margin_right = 1290.0
+margin_left = 950.0
+margin_right = 1100.0
 hero_name = "Rilu"
 portrait = ExtResource( 7 )
 

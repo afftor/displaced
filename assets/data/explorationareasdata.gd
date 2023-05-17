@@ -522,7 +522,7 @@ var scene_sequences = {
 	erika_rose_three = {
 		name = "Erika and Rose",
 		descript = "",
-		category  = 'group',
+		category  = 'erika',
 		preview = 'erika_rose_three',
 		unlock_price = {rose = 200, erika = 200},
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika_sidequest'}],
@@ -631,7 +631,7 @@ var scene_sequences = {
 	iola_foursome = {
 		name = "Iola's foursome",
 		descript = "",
-		category  = 'group',
+		category  = 'iola',
 #		preview = '',#what is it?!
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_missionary' }],
 		unlock_price = {iola = 500, erika = 500, rose = 500},

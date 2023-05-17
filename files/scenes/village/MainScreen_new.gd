@@ -94,28 +94,27 @@ func switch_show() ->void:
 		show_anim()
 
 func show_anim() ->void:
-	input_handler.OpenAnimation(self)
-#	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, 0.3)
-#	input_handler.curtains.connect("anim_finished", self,
-#	"show_anim_2", [], CONNECT_ONESHOT)
-#
-#func show_anim_2(curtain_type :int) ->void:
-#	if curtain_type != variables.CURTAIN_BATTLE :
-#		return
-#	show()
-#	input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE, 0.3)
+#	input_handler.OpenAnimation(self)
+	#TODO should be some kind of foolproof check whether show or hide anim is in process
+	var curtain_time = 0.3
+	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
+	get_tree().create_timer(curtain_time).connect("timeout", self,
+	"on_show_anim_finish", [], CONNECT_ONESHOT)
+
+func on_show_anim_finish() ->void:
+	show()
+	input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE, 0.3)
 
 func hide_anim() ->void:
-	input_handler.CloseAnimation(self)
-#	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, 0.3)
-#	input_handler.curtains.connect("anim_finished", self,
-#	"hide_anim_2", [], CONNECT_ONESHOT)
-#
-#func hide_anim_2(curtain_type :int) ->void:
-#	if curtain_type != variables.CURTAIN_BATTLE :
-#		return
-#	hide()
-#	input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE, 0.3)
+#	input_handler.CloseAnimation(self)
+	var curtain_time = 0.3
+	input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
+	get_tree().create_timer(curtain_time).connect("timeout", self,
+	"on_hide_anim_finish", [], CONNECT_ONESHOT)
+
+func on_hide_anim_finish() ->void:
+	hide()
+	input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE, 0.3)
 
 
 
