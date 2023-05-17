@@ -1,20 +1,21 @@
 extends Control
 
 var curtain_nodes = {};
-signal anim_finished
+signal anim_finished #the signal is currently unused
 
 func _ready():
-	var curtain = $battle
-	curtain_nodes[variables.CURTAIN_BATTLE] = curtain
-	input_handler.GetTweenNode(curtain).connect(
-		"tween_all_completed", self, 
-		"emit_signal", ["anim_finished", variables.CURTAIN_BATTLE])
+	var curtains = [
+		{	"node" : $battle,
+			"id" : variables.CURTAIN_BATTLE},
+		{	"node" : $scene,
+			"id" : variables.CURTAIN_SCENE}
+	]
 	
-	curtain = $scene
-	curtain_nodes[variables.CURTAIN_SCENE] = curtain
-	input_handler.GetTweenNode(curtain).connect(
-		"tween_all_completed", self, 
-		"emit_signal", ["anim_finished", variables.CURTAIN_SCENE])
+	for curtain in curtains:
+		curtain_nodes[curtain.id] = curtain.node
+		input_handler.GetTweenNode(curtain.node).connect(
+			"tween_all_completed", self, 
+			"emit_signal", ["anim_finished", curtain.id])
 
 func show_anim(curtain_type :int, duration :float = 0.5):
 	input_handler.UnfadeAnimation(curtain_nodes[curtain_type], duration)
