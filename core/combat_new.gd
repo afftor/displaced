@@ -324,6 +324,8 @@ func select_actor():
 	gui_node.active_panel.visible = false
 	gui_node.active_panel2.visible = false
 	checkdeaths()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	
 	var f = checkwinlose()
 	if f == FIN_VIC or f == FIN_LOOSE:
@@ -581,6 +583,11 @@ func checkdeaths():
 #			battlefield[i] = null
 #			enemygroup.erase(i)
 
+func remove_enemy(pos, id):
+	if battlefield[pos].id != id :
+		return
+	enemygroup.erase(pos)
+	battlefield[pos] = null
 
 func checkwinlose():
 	var playergroupcounter = 0
@@ -1050,7 +1057,6 @@ func fill_up_level_up(character):
 			$LevelUp/VBoxContainer/NewSkill.visible = true
 
 func FinishCombat(value):
-	
 	for ch in state.heroes.values():
 		ch.defeated = false
 		ch.cooldowns.clear()
@@ -1380,7 +1386,6 @@ func get_random_target():
 
 #visuals
 func FighterMouseOver(position):
-#	print(position)
 	if position == null: return
 	var fighter = battlefield[position]
 	var node = fighter.displaynode
