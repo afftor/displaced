@@ -1572,6 +1572,7 @@ var follow_up_flag = false
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	globals.hideskilltooltip()
+	gui_node.HideSkillPanel()
 	caster.acted = true
 
 	follow_up_skill = null
