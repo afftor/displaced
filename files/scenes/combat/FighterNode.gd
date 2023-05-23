@@ -448,7 +448,7 @@ func defeat():
 		set_process_input(false)
 #		input_handler.FadeAnimation(self, 0.5, 0.3)
 		disable_panel_node()
-		input_handler.combat_node.remove_enemy(position, fighter.id)
+		input_handler.combat_node.remove_enemy(fighter.position, fighter.id)
 		fighter.displaynode = null
 		visible = false
 

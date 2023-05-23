@@ -25,7 +25,8 @@ var highlightargets = false
 var allowedtargets = {'ally':[],'enemy':[]}
 var swapchar = null
 
-var fightover = false
+var fightover = false #for victory
+var fight_finished = false #for FinishCombat
 var leveled_up_chars = []
 
 var playergroup = {}
@@ -186,6 +187,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 
 	input_handler.SetMusic(music)
 	fightover = false
+	fight_finished = false
 	$Rewards.visible = false
 	$LevelUp.visible = false
 	allowaction = false
@@ -584,7 +586,7 @@ func checkdeaths():
 #			enemygroup.erase(i)
 
 func remove_enemy(pos, id):
-	if battlefield[pos].id != id :
+	if battlefield[pos].id != id or enemygroup[pos].id != id:
 		return
 	enemygroup.erase(pos)
 	battlefield[pos] = null
@@ -671,25 +673,25 @@ func advance_frontrow():
 	TutorialCore.check_event("combat_advance")
 
 
-func advance_backrow():#not used for now
-	var pos = 10
-	while pos < enemygroup.size():
-		if enemygroup[pos] == null : continue
-		enemygroup[pos - 3] = enemygroup[pos]
-		enemygroup[pos] = null
-	enemygroup.pop_back()
-	enemygroup.pop_back()
-	enemygroup.pop_back()
-	for i in range(6, 10):
-		battlefield[i] = enemygroup[i]
-		battlefield[i].position = i
-		make_fighter_panel(battlefield[i], i, false)
-		battlefield[i].displaynode.appear()
-	turns += 1
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	turns += 1
-	recheck_auras()
+#func advance_backrow():#not used for now
+#	var pos = 10
+#	while pos < enemygroup.size():
+#		if enemygroup[pos] == null : continue
+#		enemygroup[pos - 3] = enemygroup[pos]
+#		enemygroup[pos] = null
+#	enemygroup.pop_back()
+#	enemygroup.pop_back()
+#	enemygroup.pop_back()
+#	for i in range(6, 10):
+#		battlefield[i] = enemygroup[i]
+#		battlefield[i].position = i
+#		make_fighter_panel(battlefield[i], i, false)
+#		battlefield[i].displaynode.appear()
+#	turns += 1
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+#	recheck_auras()
 
 
 func swap_active_hero():#not used
@@ -890,12 +892,13 @@ func summon(montype, number):
 var rewardsdict
 
 func victory():#2remake for it is broken for now
+	if fightover: return
+	fightover = true
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	TutorialCore.check_event("combat_victory")
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
-	fightover = true
 	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
 	#on combat ends triggers
@@ -1057,6 +1060,11 @@ func fill_up_level_up(character):
 			$LevelUp/VBoxContainer/NewSkill.visible = true
 
 func FinishCombat(value):
+	if fight_finished: #not sure if it's necessary, but for the time I cann't predict all checkwinlose situations
+		print("!ALERT! FinishCombat used inappropriately")
+		return
+	fight_finished = true
+	
 	for ch in state.heroes.values():
 		ch.defeated = false
 		ch.cooldowns.clear()
@@ -1586,6 +1594,11 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	allowaction = false
 
 	var skill = Skillsdata.patch_skill(skill_code, caster)#Skillsdata.skilllist[skill_code]
+
+	print("%s uses %s" % [caster.position, skill.name])
+	if activeitem and activeitem.has("name"):
+		print('%s uses item %s' % [caster.name, activeitem.name])
+
 	if skill.has('follow_up'):
 		follow_up_skill = skill.follow_up
 		follow_up_flag = true
@@ -1599,11 +1612,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
-			print(caster.name + ' uses ' + activeitem.name)
 		else:
 			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
 #			combatlogadd("\n" + str(caster.position) + ' uses ' + skill.name + ". ")
-			print(str(caster.position) + ' uses ' + skill.name)
 
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown
@@ -1654,6 +1665,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 						CombatAnimations.check_start()
 						if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 					turns += 1
+					print("%s ended %s, it's not final" % [caster.position, skill.name])
 					return
 				#final
 				turns += 1
@@ -1690,6 +1702,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					gui_node.RebuildItemPanel()
 					SelectSkill(activeaction, true)
 					eot = true
+				print("%s ended %s, no newtarget" % [caster.position, skill.name])
 				return
 			target_pos = newtarget
 		for i in animationdict.prehit:
@@ -1759,7 +1772,6 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		turns += 1
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		print(str(caster.position) + ' finishing ' + skill.name)
 		#postdamage triggers and cleanup real_target s_skills
 		var fkill = false
 		for s_skill2 in s_skill2_list:
@@ -1777,6 +1789,10 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 #			Off_Target_Glow();
 			s_skill2.remove_effects()
 		if fkill: s_skill1.process_event(variables.TR_KILL)
+		
+		CombatAnimations.check_start()
+		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
 	turns += 1
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
@@ -1791,15 +1807,16 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		q_skills.clear()
 		if f == FIN_STAGE:
 			call_deferred('select_actor')
+		print('%s ended %s on winlose' % [caster.position, skill.name])
 		return
 	#follow-up
 	if follow_up_flag and (follow_up_skill != null):
 		yield(use_skill(follow_up_skill, caster, target_pos), 'completed')
 	if skill.has('not_final'):
-		print(str(caster.position) + ' ended pretime ' + skill.name)
+		print('%s ended %s on pretime' % [caster.position, skill.name])
 		return
 
-	print(str(caster.position) + ' almost ended ' + skill.name)
+	print('%s almost ended %s' % [caster.position, skill.name])
 
 	#use queued skills
 	while !q_skills.empty():
@@ -1816,7 +1833,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 
 	caster.rebuildbuffs()
 
-	if caster.combatgroup == 'ally' and checkwinlose() == FIN_NO:
+	f = checkwinlose()
+	if caster.combatgroup == 'ally' and f == FIN_NO:
 		var temp = 0
 		for pos in range(4, 7): if battlefield[pos] == null: temp += 1
 		if temp == 3:
@@ -1842,7 +1860,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			gui_node.RebuildItemPanel()
 			SelectSkill(activeaction, true)
 		eot = true
-	print(str(caster.position) + ' ended ' + skill.name)
+	print('%s ended %s' % [caster.position, skill.name])
 
 
 func execute_skill(s_skill2):
