@@ -30,10 +30,8 @@ func _ready():
 	
 	$BattleGroup/screen.parent_node = self
 	
-	$AdvConfirm/screen.rect_size = rect_size
-	$AdvConfirm/screen.rect_global_position = Vector2(0, 0)
-	$AdvConfirm/ok.connect("pressed", self, 'adv_confirm')
-	$AdvConfirm/no.connect("pressed", self, 'adv_decline')
+	$AdvConfirm/panel/ok.connect("pressed", self, 'adv_confirm')
+	$AdvConfirm/panel/no.connect("pressed", self, 'adv_decline')
 	scalecheck.connect('true_pressed', self, 'reset_level')
 	
 	closebutton.visible = false

@@ -218,6 +218,8 @@ var TranslationDict = {
 	AREAMODERN_CITYDESCRIPT = "A desolate landscape of towering, rusted skyscrapers and broken highways. This once-thriving metropolis was destroyed in the process of teleportation into this dimension by Demitrius and all its inhabitants have been killed or possessed by demons. ",
 	
 	
+	ROAD_TO_VILLAGENAME = "Road to village",
+	ROAD_TO_VILLAGEDESCRIPT = "You are forced to walk through deserts in search of any kind of settlement.",
 	FOREST_ERIKANAME = "Search for Elves",
 	FOREST_ERIKADESCRIPT = "You've learned that the elves live at the ancient forest and might be able to help you.",
 	CAVES_DEMITRIUSNAME = "Escort Demitrius",

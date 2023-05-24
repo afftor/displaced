@@ -488,11 +488,13 @@ text = "Wave 1/3"
 align = 1
 
 [node name="SkillPanel" type="Panel" parent="."]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -225.0
 rect_min_size = Vector2( 1920, 225 )
+mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

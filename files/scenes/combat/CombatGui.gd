@@ -163,10 +163,13 @@ func skill_button_pressed(mode, arg):
 func ClearSkillPanel():
 	input_handler.ClearContainer($SkillPanel/SkillContainer)
 
+func HideSkillPanel():
+	$SkillPanel.visible = false
+
 
 func RebuildSkillPanel():
 	if !combat.allowaction: 
-		$SkillPanel.visible = false
+		HideSkillPanel()
 		return
 	$SkillPanel.visible = true
 	var activecharacter = combat.activecharacter
@@ -201,7 +204,7 @@ func RebuildSkillPanel():
 		$SkillPanel/ItemContainer.visible = false
 		$SkillPanel/CategoriesContainer.visible = true
 	else:
-		$SkillPanel.visible = false
+		HideSkillPanel()
 
 
 #item panel

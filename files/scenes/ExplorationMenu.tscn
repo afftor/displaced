@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_default.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_pressed.png" type="Texture" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://assets/images/gui/explore/zone_panel_bg.png" type="Texture" id=29]
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portraitsmall_back.png" type="Texture" id=31]
+[ext_resource path="res://assets/themes/button_small.tres" type="Theme" id=32]
+[ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=33]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -798,38 +800,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AdvConfirm" type="Panel" parent="."]
+[node name="AdvConfirm" type="Control" parent="."]
 visible = false
-margin_left = 724.853
-margin_top = 386.812
-margin_right = 1201.85
-margin_bottom = 561.812
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="screen" type="TextureRect" parent="AdvConfirm"]
+[node name="panel" type="TextureRect" parent="AdvConfirm"]
 show_behind_parent = true
-margin_left = -244.977
-margin_top = -102.272
-margin_right = 642.023
-margin_bottom = 322.728
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -119.0
+margin_right = 236.0
+margin_bottom = 58.0
 mouse_filter = 0
+texture = ExtResource( 33 )
+expand = true
 
-[node name="Label" type="Label" parent="AdvConfirm"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 463.0
-margin_bottom = 91.0
+[node name="Label" type="Label" parent="AdvConfirm/panel"]
+anchor_right = 1.0
+margin_top = 48.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Advance further?"
+align = 1
 
-[node name="ok" type="Button" parent="AdvConfirm"]
-margin_left = 34.4611
-margin_top = 106.38
-margin_right = 187.461
-margin_bottom = 146.38
+[node name="ok" type="Button" parent="AdvConfirm/panel"]
+margin_left = 35.0
+margin_top = 98.0
+margin_right = 188.0
+margin_bottom = 146.0
+theme = ExtResource( 32 )
 text = "yes"
 
-[node name="no" type="Button" parent="AdvConfirm"]
-margin_left = 280.183
-margin_top = 109.376
-margin_right = 433.183
-margin_bottom = 149.376
+[node name="no" type="Button" parent="AdvConfirm/panel"]
+margin_left = 280.0
+margin_top = 98.0
+margin_right = 433.0
+margin_bottom = 146.0
+theme = ExtResource( 32 )
 text = "no"

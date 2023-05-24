@@ -25,7 +25,8 @@ var highlightargets = false
 var allowedtargets = {'ally':[],'enemy':[]}
 var swapchar = null
 
-var fightover = false
+var fightover = false #for victory
+var fight_finished = false #for FinishCombat
 var leveled_up_chars = []
 
 var playergroup = {}
@@ -103,11 +104,13 @@ var sounds = {
 	"levelup" : "sound/levelup"
 }
 
-enum {T_CHARSELECT,
- T_SKILLSELECTED, #support skill selected - only targeting mode
- T_SKILLCHAR, #attacking skill selected - T_CHARSELECT + T_SKILLSELECTED
- T_TARGETOVER, #over possible target
- T_SKILLCHAROVER, #over friendly char while having attacking skill selected
+enum {
+# T_CHARSELECT,
+ T_SKILLSUPPORT, #support skill selected - only targeting mode
+ T_SKILLATTACK, #attacking skill selected - T_CHARSELECT + T_SKILLSUPPORT
+ T_OVERATTACK, #over possible target for attack
+ T_OVERSUPPORT, #over possible target for suuport
+ T_OVERATTACKALLY, #over friendly char while having attacking skill selected
  T_AUTO #animations active
 }
 var cur_state = T_AUTO
@@ -186,6 +189,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 
 	input_handler.SetMusic(music)
 	fightover = false
+	fight_finished = false
 	$Rewards.visible = false
 	$LevelUp.visible = false
 	allowaction = false
@@ -324,6 +328,8 @@ func select_actor():
 	gui_node.active_panel.visible = false
 	gui_node.active_panel2.visible = false
 	checkdeaths()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	
 	var f = checkwinlose()
 	if f == FIN_VIC or f == FIN_LOOSE:
@@ -477,9 +483,9 @@ func SelectSkill(skill, system = false):
 #		activecharacter.selectedskill = 'attack'
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter.position)
 	if !allowedtargets.ally.empty():
-		cur_state = T_SKILLSELECTED
+		cur_state = T_SKILLSUPPORT
 	else:
-		cur_state = T_SKILLCHAR
+		cur_state = T_SKILLATTACK
 	gui_node.build_selected_skill(skill)
 
 #helpers
@@ -509,7 +515,7 @@ func SelectExchange(char_id):
 	if allowedtargets.ally.empty():
 		print("error - no char to swap")
 	else:
-		cur_state = T_SKILLSELECTED
+		cur_state = T_SKILLSUPPORT
 		swapchar = char_id
 		gui_node.build_selected_char(state.heroes[char_id])
 
@@ -581,6 +587,11 @@ func checkdeaths():
 #			battlefield[i] = null
 #			enemygroup.erase(i)
 
+func remove_enemy(pos, id):
+	if battlefield[pos].id != id or enemygroup[pos].id != id:
+		return
+	enemygroup.erase(pos)
+	battlefield[pos] = null
 
 func checkwinlose():
 	var playergroupcounter = 0
@@ -664,25 +675,25 @@ func advance_frontrow():
 	TutorialCore.check_event("combat_advance")
 
 
-func advance_backrow():#not used for now
-	var pos = 10
-	while pos < enemygroup.size():
-		if enemygroup[pos] == null : continue
-		enemygroup[pos - 3] = enemygroup[pos]
-		enemygroup[pos] = null
-	enemygroup.pop_back()
-	enemygroup.pop_back()
-	enemygroup.pop_back()
-	for i in range(6, 10):
-		battlefield[i] = enemygroup[i]
-		battlefield[i].position = i
-		make_fighter_panel(battlefield[i], i, false)
-		battlefield[i].displaynode.appear()
-	turns += 1
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	turns += 1
-	recheck_auras()
+#func advance_backrow():#not used for now
+#	var pos = 10
+#	while pos < enemygroup.size():
+#		if enemygroup[pos] == null : continue
+#		enemygroup[pos - 3] = enemygroup[pos]
+#		enemygroup[pos] = null
+#	enemygroup.pop_back()
+#	enemygroup.pop_back()
+#	enemygroup.pop_back()
+#	for i in range(6, 10):
+#		battlefield[i] = enemygroup[i]
+#		battlefield[i].position = i
+#		make_fighter_panel(battlefield[i], i, false)
+#		battlefield[i].displaynode.appear()
+#	turns += 1
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+#	recheck_auras()
 
 
 func swap_active_hero():#not used
@@ -883,12 +894,13 @@ func summon(montype, number):
 var rewardsdict
 
 func victory():#2remake for it is broken for now
+	if fightover: return
+	fightover = true
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	TutorialCore.check_event("combat_victory")
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
-	fightover = true
 	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
 	#on combat ends triggers
@@ -1050,6 +1062,10 @@ func fill_up_level_up(character):
 			$LevelUp/VBoxContainer/NewSkill.visible = true
 
 func FinishCombat(value):
+	if fight_finished: #not sure if it's necessary, but for the time I cann't predict all checkwinlose situations
+		print("!ALERT! FinishCombat used inappropriately")
+		return
+	fight_finished = true
 	
 	for ch in state.heroes.values():
 		ch.defeated = false
@@ -1380,19 +1396,18 @@ func get_random_target():
 
 #visuals
 func FighterMouseOver(position):
-#	print(position)
 	if position == null: return
 	var fighter = battlefield[position]
 	var node = fighter.displaynode
 	match cur_state:
 		T_AUTO:
 			return
-		T_CHARSELECT:
-			if fighter.combatgroup == 'enemy': return
-			if fighter.defeated : return
-			if fighter.acted: return
-			node.highlight_hover()
-		T_SKILLSELECTED:
+#		T_CHARSELECT:
+#			if fighter.combatgroup == 'enemy': return
+#			if fighter.defeated : return
+#			if fighter.acted: return
+#			node.highlight_hover()
+		T_SKILLSUPPORT:
 			if position in allowedtargets.ally:
 				Input.set_custom_mouse_cursor(cursors.support)
 				for pos in allowedtargets.ally + allowedtargets.enemy:
@@ -1404,7 +1419,7 @@ func FighterMouseOver(position):
 					cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_ally_final()
-				cur_state = T_TARGETOVER
+				cur_state = T_OVERSUPPORT
 				return
 			if position in allowedtargets.enemy:
 				Input.set_custom_mouse_cursor(cursors.attack)
@@ -1414,16 +1429,16 @@ func FighterMouseOver(position):
 				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_enemy_final()
-				cur_state = T_TARGETOVER
+				cur_state = T_OVERSUPPORT
 				return
-		T_SKILLCHAR:
+		T_SKILLATTACK:
 			if position in allowedtargets.ally:
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
 				if fighter.defeated : return
 				if fighter.acted: return
 				node.highlight_hover()
-				cur_state = T_SKILLCHAROVER
+				cur_state = T_OVERATTACKALLY
 				return
 			if position in allowedtargets.enemy:
 				Input.set_custom_mouse_cursor(cursors.attack)
@@ -1433,9 +1448,9 @@ func FighterMouseOver(position):
 				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_enemy_final()
-				cur_state = T_TARGETOVER
+				cur_state = T_OVERATTACK
 				return
-		T_TARGETOVER, T_SKILLCHAROVER:
+		T_OVERSUPPORT, T_OVERATTACK, T_OVERATTACKALLY:
 			print("warning - mouseover while targets highlighted")
 
 
@@ -1447,32 +1462,35 @@ func FighterMouseOverFinish(position):
 	match cur_state:
 		T_AUTO:
 			return
-		T_CHARSELECT:
-			if fighter.combatgroup == 'enemy': return
-			if fighter.defeated : return
-			if fighter.acted: return
-			node.stop_highlight()
-		T_TARGETOVER:
+#		T_CHARSELECT:
+#			if fighter.combatgroup == 'enemy': return
+#			if fighter.defeated : return
+#			if fighter.acted: return
+#			node.stop_highlight()
+		T_OVERATTACK, T_OVERSUPPORT:
 			for nd in battlefieldpositions.values():
 				nd.stop_highlight()
 			for pos in allowedtargets.enemy:
 				battlefieldpositions[pos].highlight_target_enemy()
 			for pos in allowedtargets.ally:
 				battlefield[pos].displaynode.highlight_target_ally()
-			cur_state = T_SKILLSELECTED
+			if cur_state == T_OVERATTACK:
+				cur_state = T_SKILLATTACK
+			else:
+				cur_state = T_SKILLSUPPORT
 			activecharacter.displaynode.highlight_active()
 			return
-		T_SKILLCHAROVER:
+		T_OVERATTACKALLY:
 			for nd in battlefieldpositions.values():
 				nd.stop_highlight()
 			for pos in allowedtargets.enemy:
 				battlefieldpositions[pos].highlight_target_enemy()
 #			for pos in allowedtargets.ally:
 #				battlefieldpositions[pos].highlight_target_ally()
-			cur_state = T_SKILLCHAR
+			cur_state = T_SKILLATTACK
 			activecharacter.displaynode.highlight_active()
 			return
-		T_SKILLSELECTED, T_SKILLCHAR:
+		T_SKILLSUPPORT, T_SKILLATTACK:
 			if !(position in allowedtargets.ally + allowedtargets.enemy):
 				return
 			print("warning - mouseover finish while targets not highlighted")
@@ -1484,17 +1502,17 @@ func FighterPress(position):
 	match cur_state:
 		T_AUTO:
 			return
-		T_CHARSELECT:
-			if position > 3:
-				return
-			if !TutorialCore.check_action("combat_select_hero", [position]): return
-			if battlefield[position] == null: return
-			if battlefield[position].acted: return
-			if battlefield[position].defeated: return
-			cur_state = T_AUTO
-			player_turn(position)
-			return
-		T_TARGETOVER:
+#		T_CHARSELECT:
+#			if position > 3:
+#				return
+#			if !TutorialCore.check_action("combat_select_hero", [position]): return
+#			if battlefield[position] == null: return
+#			if battlefield[position].acted: return
+#			if battlefield[position].defeated: return
+#			cur_state = T_AUTO
+#			player_turn(position)
+#			return
+		T_OVERATTACK, T_OVERSUPPORT:
 			if !TutorialCore.check_action("combat_use_skill", [position]): return
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				cur_state = T_AUTO
@@ -1507,7 +1525,7 @@ func FighterPress(position):
 						activecharacter.skills_autoselect.push_back(activeaction)
 					use_skill(activeaction, activecharacter, position)
 			return
-		T_SKILLCHAROVER:
+		T_OVERATTACKALLY:
 			if allowedtargets.enemy.has(position):
 				if !TutorialCore.check_action("combat_use_skill", [position]): return
 				cur_state = T_AUTO
@@ -1521,14 +1539,14 @@ func FighterPress(position):
 				cur_state = T_AUTO
 				player_turn(position)
 			return
-		T_SKILLSELECTED:
+		T_SKILLSUPPORT:
 			if !TutorialCore.check_action("combat_use_skill", [position]): return
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
 				use_skill(activeaction, activecharacter, position)
 			return
-		T_SKILLCHAR:
+		T_SKILLATTACK:
 			if allowedtargets.enemy.has(position):
 				if !TutorialCore.check_action("combat_use_skill", [position]): return
 				print("warning - allowed target not highlighted properly")
@@ -1567,6 +1585,7 @@ var follow_up_flag = false
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	globals.hideskilltooltip()
+	gui_node.HideSkillPanel()
 	caster.acted = true
 
 	follow_up_skill = null
@@ -1580,6 +1599,11 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	allowaction = false
 
 	var skill = Skillsdata.patch_skill(skill_code, caster)#Skillsdata.skilllist[skill_code]
+
+	print("%s uses %s" % [caster.position, skill.name])
+	if activeitem and activeitem.has("name"):
+		print('%s uses item %s' % [caster.name, activeitem.name])
+
 	if skill.has('follow_up'):
 		follow_up_skill = skill.follow_up
 		follow_up_flag = true
@@ -1593,11 +1617,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
-			print(caster.name + ' uses ' + activeitem.name)
 		else:
 			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
 #			combatlogadd("\n" + str(caster.position) + ' uses ' + skill.name + ". ")
-			print(str(caster.position) + ' uses ' + skill.name)
 
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown
@@ -1648,6 +1670,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 						CombatAnimations.check_start()
 						if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 					turns += 1
+					print("%s ended %s, it's not final" % [caster.position, skill.name])
 					return
 				#final
 				turns += 1
@@ -1684,6 +1707,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					gui_node.RebuildItemPanel()
 					SelectSkill(activeaction, true)
 					eot = true
+				print("%s ended %s, no newtarget" % [caster.position, skill.name])
 				return
 			target_pos = newtarget
 		for i in animationdict.prehit:
@@ -1753,7 +1777,6 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		turns += 1
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		print(str(caster.position) + ' finishing ' + skill.name)
 		#postdamage triggers and cleanup real_target s_skills
 		var fkill = false
 		for s_skill2 in s_skill2_list:
@@ -1771,6 +1794,10 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 #			Off_Target_Glow();
 			s_skill2.remove_effects()
 		if fkill: s_skill1.process_event(variables.TR_KILL)
+		
+		CombatAnimations.check_start()
+		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
 	turns += 1
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
@@ -1785,15 +1812,16 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		q_skills.clear()
 		if f == FIN_STAGE:
 			call_deferred('select_actor')
+		print('%s ended %s on winlose' % [caster.position, skill.name])
 		return
 	#follow-up
 	if follow_up_flag and (follow_up_skill != null):
 		yield(use_skill(follow_up_skill, caster, target_pos), 'completed')
 	if skill.has('not_final'):
-		print(str(caster.position) + ' ended pretime ' + skill.name)
+		print('%s ended %s on pretime' % [caster.position, skill.name])
 		return
 
-	print(str(caster.position) + ' almost ended ' + skill.name)
+	print('%s almost ended %s' % [caster.position, skill.name])
 
 	#use queued skills
 	while !q_skills.empty():
@@ -1810,7 +1838,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 
 	caster.rebuildbuffs()
 
-	if caster.combatgroup == 'ally' and checkwinlose() == FIN_NO:
+	f = checkwinlose()
+	if caster.combatgroup == 'ally' and f == FIN_NO:
 		var temp = 0
 		for pos in range(4, 7): if battlefield[pos] == null: temp += 1
 		if temp == 3:
@@ -1836,7 +1865,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			gui_node.RebuildItemPanel()
 			SelectSkill(activeaction, true)
 		eot = true
-	print(str(caster.position) + ' ended ' + skill.name)
+	print('%s ended %s' % [caster.position, skill.name])
 
 
 func execute_skill(s_skill2):
