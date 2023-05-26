@@ -563,9 +563,6 @@ func clean_effects():#clean effects before deleting character
 		eff.remove()
 
 func process_event(ev, skill = null):
-	for e in temp_effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		eff.process_event(ev)
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if skill != null and eff.req_skill:
@@ -574,6 +571,13 @@ func process_event(ev, skill = null):
 			eff.set_args('skill', null)
 		else:
 			eff.process_event(ev)
+	#ATTENTION! temp_effects has buff's calculate_args() inside process_event,
+	#for now it's unobvious if it is effecting triggered_effects somehow.
+	#If it is, temp_effects probably should be processed befor triggered_effects,
+	#but than problem with temp_effects removeing it's triggered_effects will return
+	for e in temp_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.process_event(ev)
 
 func deal_damage(value, source):
 	var tmp = hp
