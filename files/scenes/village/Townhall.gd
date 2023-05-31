@@ -33,7 +33,6 @@ func _ready():
 
 
 func open():
-	TutorialCore.check_event("village_townhall_open")
 	$UpgradeList.hide()
 	$UpgradeDescript.hide()
 	show()
@@ -46,7 +45,6 @@ func show():
 	.show();
 
 func hide():
-	if !TutorialCore.check_action("village_townhall_hide"): return
 	state.CurBuild = "";
 	input_handler.menu_node.visible = true
 	.hide();
@@ -157,7 +155,6 @@ func findupgradelevel(upgrade):
 
 
 func unlockupgrade():
-	if !TutorialCore.check_action("village_upgrade_purchase", [selectedupgrade.code]): return
 	var upgrade = selectedupgrade
 	var currentupgradelevel = findupgradelevel(upgrade)
 	for i in upgrade.levels[currentupgradelevel].cost:
@@ -189,7 +186,6 @@ func unlockupgrade():
 			yield(get_tree().create_timer(2.5), 'timeout')
 			self.modulate.a = 1
 			input_handler.HideOutline(animnode)
-	TutorialCore.check_event("village_upgrade_purchase", selectedupgrade.code)
 #	globals.check_signal("UpgradeUnlocked", upgrade)
 #	globals.EventCheck()
 	#state.townupgrades[upgrade.code] = true
@@ -222,5 +218,4 @@ func update_events_panel():
 		panel.texture_normal = tex
 
 func run_seq(ch):
-	if !TutorialCore.check_action("village_run_seq", [ch]): return
 	globals.run_seq(binded_events[ch])

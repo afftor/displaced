@@ -73,7 +73,6 @@ func _ready():
 	if debug == true:
 		debug()
 	
-	#$TutorialNode.activatetutorial(state.currenttutorial)
 	buildscreen()
 	yield(get_tree(),'idle_frame')
 #	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
@@ -123,7 +122,6 @@ func show():
 	state.CurrentScreen = 'Village'
 #	globals.CurrentScene = self
 	.show()
-	TutorialCore.check_event("village_open")
 
 func buildscreen(empty = null):
 	var res = false
@@ -158,7 +156,6 @@ func check_townhall_events():
 
 
 func building_entered(b_name):
-	if !TutorialCore.check_action("village_building_pressed", [b_name]): return
 	if binded_events[b_name] != null:
 		globals.run_seq(binded_events[b_name])
 #		yield(input_handler, "EventFinished")

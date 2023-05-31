@@ -52,7 +52,6 @@ func newgame():
 	globals.ChangeScene('map')
 	yield(globals, 'scene_changed')
 	#temporaly removed until tutorials reworked
-#	input_handler.ActivateTutorial()
 	globals.StartGame()
 	#globals.StartEventScene("Intro")
 	self.queue_free()
