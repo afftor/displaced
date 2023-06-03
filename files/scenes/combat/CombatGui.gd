@@ -18,6 +18,18 @@ func _ready():
 	$Combatlog2.connect("pressed", self, 'set_log')
 	bind_hero_panels()
 	hide_screen()
+	
+	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
+	#so we have to yield, to get correct global_position for button
+	yield(get_tree(), "idle_frame")
+	var skill_btn = $SkillPanel/SkillContainer.get_child(0)
+	TutorialCore.register_button("skill", 
+		skill_btn.rect_global_position, 
+		skill_btn.rect_size)
+	TutorialCore.register_button("char_reserve", 
+		$PlayerStats.rect_global_position, 
+		$PlayerStats.rect_size)
+	
 
 func combat_start():
 	clear_log()

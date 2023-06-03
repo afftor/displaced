@@ -344,7 +344,6 @@ var TranslationDict = {
 	WORKERLIMITREACHER = "Worker Limit Reached: Upgrade Houses to increase",
 	TOTALWORKERS = "Total Workers",
 
-	TUTORIAL = "Tutorial",
 	TRAITS = "Traits",
 	CLASSINFO = "Class Details",
 
@@ -684,4 +683,11 @@ var TranslationDict = {
 	ITEMITEM_BUFF_DEFNAME = "Scroll of the Protection",
 	ITEMITEM_BUFF_DEFDESCRIPT = "Reduce incoming damage by 50% for 3 turns to ally",
 	
+	TUTORIAL = "Tutorial",
+	TUTORIAL_SKILL_USAGE = "Select a skill to use on your enemy. Different skills have different attributes and elements to them. Selecting correct skill in certain situation is a key to victory.",
+	TUTORIAL_SELECT_CHARACTER = "You can select your characters to make them act first. After all your characters have acted this turn your turn ends.",
+	TUTORIAL_ELEMENTAL_WEAKNESSES = "Different enemies are weak to certain elements. Strike with correct element to deal more damage.",
+	TUTORIAL_SWAPPING_CHARACTERS = "Drag characters to their positions to place or swap them. This costs no turn.",
+	TUTORIAL_BUILDING_UPGRADES = "Select Townhall to access your actions. Upgrading settlement makes characters stronger.",
+	TUTORIAL_EXPLORATION_MENU = "Select location and select mission you will be attending. You can replay your old missions for materials and experience.",
 }

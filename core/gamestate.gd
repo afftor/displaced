@@ -63,7 +63,6 @@ var location_unlock = {
 }
 var area_save
 var stashedarea
-var currenttutorial = 'tutorial1'
 var viewed_tips := []
 
 func time_set(value):
@@ -113,7 +112,6 @@ func revert():
 	reset_areaprogress()
 	activearea = null
 	stashedarea = null
-	currenttutorial = 'tutorial1'
 	viewed_tips.clear()
 	location_unlock = {
 		dragon_mountains = false,

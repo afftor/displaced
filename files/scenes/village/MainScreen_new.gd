@@ -73,9 +73,13 @@ func _ready():
 	if debug == true:
 		debug()
 	
-	#$TutorialNode.activatetutorial(state.currenttutorial)
 	buildscreen()
 	yield(get_tree(),'idle_frame')
+	
+	TutorialCore.register_button("townhall", 
+		$townhall.rect_global_position, 
+		$townhall.rect_size)
+	
 #	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
 #		EnvironmentColor('morning', true)
 #	elif floor(state.daytime) >= floor(variables.TimePerDay/4) && floor(state.daytime) < floor(variables.TimePerDay/4*2):
@@ -87,11 +91,12 @@ func _ready():
 	#EnvironmentColor('night', true)
 #	set_process(true)
 
-func switch_show() ->void:
-	if visible:
-		hide_anim()
-	else:
-		show_anim()
+#temporaly unused. It seems that location_pressed()/building_entered() is preferable way
+#func switch_show() ->void:
+#	if visible:
+#		hide_anim()
+#	else:
+#		show_anim()
 
 func show_anim() ->void:
 #	input_handler.OpenAnimation(self)
@@ -123,7 +128,6 @@ func show():
 	state.CurrentScreen = 'Village'
 #	globals.CurrentScene = self
 	.show()
-	TutorialCore.check_event("village_open")
 
 func buildscreen(empty = null):
 	var res = false
@@ -158,7 +162,6 @@ func check_townhall_events():
 
 
 func building_entered(b_name):
-	if !TutorialCore.check_action("village_building_pressed", [b_name]): return
 	if binded_events[b_name] != null:
 		globals.run_seq(binded_events[b_name])
 #		yield(input_handler, "EventFinished")

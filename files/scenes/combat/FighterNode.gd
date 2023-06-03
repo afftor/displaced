@@ -47,7 +47,10 @@ func _ready():
 	$sprite.material.set_shader_param('outline_width', 1.0)
 
 
-func _input(event):
+#Legacy remark: _input() was used befor, it was bad idea from begining, which has
+#finaly shot with tutorial blockscreen, which was using _gui_input().
+#Be advised: if something will break in here, try to bring back _input()
+func _gui_input(event):
 	if input_handler.if_mouse_inside($sprite) or input_handler.if_mouse_inside($sprite2):
 		if event.is_pressed():
 			if event.is_action("RMB"):
@@ -460,6 +463,12 @@ func resurrect():
 #	input_handler.UnfadeAnimation($sprite, 0.3)
 	panel_node.modulate = Color(1,1,1,1)
 	panel_node2.modulate = Color(1,1,1,1)
+
+#this func created for TutorialCore.register_button(), so we can predict sprite position
+func get_sprite_left_bottom() ->Vector2:
+	var sprite_rect = $sprite.get_rect()
+	return Vector2(sprite_rect.position.x, sprite_rect.end.y)
+	
 
 
 

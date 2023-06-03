@@ -33,6 +33,10 @@ func _ready():
 		test()
 	
 	update_map()
+	
+	TutorialCore.register_button("exploration_loc", 
+		$forest.rect_global_position, 
+		$forest.rect_size)
 # test functions
 #	unlock_area('village')
 
@@ -58,7 +62,6 @@ func unlock_area(area):
 #real functions
 func location_pressed(locname):
 	if !state.location_unlock[locname]: return
-	if !TutorialCore.check_action("map_location_pressed", [locname]): return
 	if binded_events[locname] != null:
 		globals.run_seq(binded_events[locname])
 	else:

@@ -53,7 +53,9 @@ func _input(event):
 		rmb_state = false
 	if event.is_echo() == true || event.is_pressed() == false :
 		return
-	if event.is_action("ESC") && event.is_pressed() && CloseableWindowsArray.back() != scene_node:
+	if (event.is_action("ESC") && event.is_pressed() &&
+			(CloseableWindowsArray.empty() ||
+			CloseableWindowsArray.back() != scene_node)):
 		if CloseableWindowsArray.size() != 0:
 			CloseTopWindow()
 		else:
@@ -766,29 +768,12 @@ func SystemMessage(text, time = 4):
 	SystemMessageNode.bbcode_text = text
 	FadeAnimation(SystemMessageNode, 1, basetime)
 
-func GetTutorialNode():
-	var node = get_tree().get_root()
-	if node.has_node("MainScreen"):
-		node = node.get_node("MainScreen")
-	var tutnode
-	if node.has_node('TutorialNode'):
-		tutnode = node.get_node('TutorialNode')
-		node.remove_child(tutnode)
-	else:
-		tutnode = load("res://files/scenes/Tutorial.tscn").instance()
-		tutnode.name = 'TutorialNode'
-	node.add_child(tutnode)
-	return tutnode
-
-func ActivateTutorial(stage = 'tutorial1'):
-	var node = get_spec_node(NODE_TUTORIAL)#GetTutorialNode()
-	node.activatetutorial(stage)
-
-func ShowGameTip(tip):
-	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
-		return
-	var tipnode = get_spec_node(NODE_GAMETIP)
-	tipnode.showtip(tip)
+#!!!!!! Clearup NODE_GAMETIP constants befor deleting this
+#func ShowGameTip(tip):
+#	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
+#		return
+#	var tipnode = get_spec_node(NODE_GAMETIP)
+#	tipnode.showtip(tip)
 
 func ShowOutline(node):
 	node.material = load('res://files/scenes/portret_shader.tres').duplicate()
@@ -806,7 +791,7 @@ enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NOD
 var node_data = {
 	NODE_GAMETIP : {name = 'GameTips', mode = 'scene', scene = preload("res://files/scenes/GameplayTips.tscn")},
 #	NODE_CHAT : {name = 'chatwindow', mode = 'scene', scene = preload("res://src/scenes/ChatNode.tscn")},
-	NODE_TUTORIAL : {name = 'TutorialNode', mode = 'scene', scene = preload("res://files/scenes/Tutorial.tscn")},
+#	NODE_TUTORIAL : {name = 'TutorialNode', mode = 'scene', scene = preload("res://files/scenes/Tutorial.tscn")},
 #	NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
 #	NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://src/InteractiveMessage.tscn")},
 #	NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://files/Inventory.tscn"), calls = 'open'},

@@ -115,6 +115,11 @@ enum {
 }
 var cur_state = T_AUTO
 
+signal combat_started
+signal turn_started
+signal combat_ended
+#feel free to add state signals per need
+
 func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
@@ -133,6 +138,28 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
 	$LevelUp/CloseButton.connect("pressed",self,'on_level_up_close')
+	
+	#In very essence of register_button() idea, we should use clickable area
+	#and here is the simplest way:
+#	var button_size = battlefieldpositions[4].rect_size
+#	TutorialCore.register_button("enemy", 
+#		positions[4], button_size)
+#	TutorialCore.register_button("character", 
+#		positions[2], button_size)
+	#But FighterNode has very complex sprite system, and actual sprite is smaller then node base
+	#to make tutorial buttons more elegant, we have to use next smart-ass wizardry.
+	#OBVIOUSLY it will fall appart in case of grand changes, so fill free to default to code above in such case
+	var sprite_bottom = battlefieldpositions[4].get_sprite_left_bottom()
+	var sprite_pos_4 = sprite_bottom + positions[4]
+	var rat_sprite_size = resources.get_res(Enemydata.enemylist['elvenrat'].animations.idle).get_size()
+	sprite_pos_4.y -= rat_sprite_size.y
+	TutorialCore.register_button("enemy", 
+		sprite_pos_4, rat_sprite_size)
+	var sprite_pos_2 = sprite_bottom + positions[2]
+	var rose_sprite_size = state.heroes['rose'].animations.idle.get_size()
+	sprite_pos_2.y -= rose_sprite_size.y
+	TutorialCore.register_button("character", 
+		sprite_pos_2, rose_sprite_size)
 
 
 func cheatvictory():
@@ -205,9 +232,9 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 #		battlefield[i].process_event(variables.TR_COMBAT_S)
 #		battlefield[i].rebuildbuffs()
 	gui_node.combat_start()
-	input_handler.ShowGameTip('aftercombat')
+#	input_handler.ShowGameTip('aftercombat')
 	gui_node.build_enemy_head()
-	TutorialCore.check_event("combat_start")
+	emit_signal("combat_started")
 	newturn()
 	call_deferred('select_actor')
 
@@ -316,7 +343,7 @@ func newturn():
 	gui_node.RebuildReserve()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	TutorialCore.check_event("combat_newturn")
+	emit_signal("turn_started")
 
 
 func select_actor():
@@ -450,7 +477,6 @@ func enemy_turn(pos):
 
 
 func ActivateItem(item):
-	if !TutorialCore.check_action("combat_activate_item", [item.id]): return
 	activeaction = item.useskill
 	activeitem = item
 	SelectSkill(activeaction)
@@ -459,7 +485,6 @@ func ActivateItem(item):
 
 
 func SelectSkill(skill, system = false):
-	if !system and !TutorialCore.check_action("combat_select_skill", [skill]): return
 	swapchar = null
 	activecharacter.displaynode.highlight_active()
 	Input.set_custom_mouse_cursor(cursors.default)
@@ -567,7 +592,6 @@ func checkdeaths():
 			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
 			#add fix around defeated player chars
 			if i > 3:
-				TutorialCore.check_event("combat_enemy_killed")
 				defeated.push_back(battlefield[i])
 #				battlefield[i].displaynode.visible = false
 #				battlefield[i].displaynode = null
@@ -672,7 +696,6 @@ func advance_frontrow():
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	recheck_auras()
-	TutorialCore.check_event("combat_advance")
 
 
 #func advance_backrow():#not used for now
@@ -754,7 +777,6 @@ func swap_heroes_old(pos):
 
 
 func move_hero(chid, pos): #reserve -> bf
-	if !TutorialCore.check_action("combat_move_hero", [chid, pos]): return
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
 	allowaction = false
@@ -786,7 +808,6 @@ func move_hero(chid, pos): #reserve -> bf
 
 
 func reserve_hero(chid): #bf -> reserve
-	if !TutorialCore.check_action("combat_reserve_hero", [chid]): return
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
 	allowaction = false
@@ -812,7 +833,6 @@ func reserve_hero(chid): #bf -> reserve
 
 
 func swap_heroes(chid, pos): #bf <-> bf
-	if !TutorialCore.check_action("combat_swap_heroes", [chid, pos]): return
 	gui_node.activate_shades([])
 	gui_node.hide_screen()
 	allowaction = false
@@ -888,7 +908,6 @@ func summon(montype, number):
 		make_fighter_panel(battlefield[sum_pos], sum_pos);
 #		state.combatparty[sum_pos] = enemygroup[sum_pos].id
 		state.heroes[enemygroup[sum_pos].id] = enemygroup[sum_pos]
-		TutorialCore.check_event("combat_summon")
 
 #combat finishes
 var rewardsdict
@@ -898,7 +917,6 @@ func victory():#2remake for it is broken for now
 	fightover = true
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	TutorialCore.check_event("combat_victory")
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	$Rewards/CloseButton.disabled = true
@@ -1090,6 +1108,7 @@ func FinishCombat(value):
 		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
 		yield(get_tree().create_timer(curtain_time), 'timeout')
 	
+	emit_signal("combat_ended")
 	if input_handler.explore_node != null:
 		input_handler.explore_node.combat_finished(value)
 	else:
@@ -1505,7 +1524,6 @@ func FighterPress(position):
 #		T_CHARSELECT:
 #			if position > 3:
 #				return
-#			if !TutorialCore.check_action("combat_select_hero", [position]): return
 #			if battlefield[position] == null: return
 #			if battlefield[position].acted: return
 #			if battlefield[position].defeated: return
@@ -1513,7 +1531,6 @@ func FighterPress(position):
 #			player_turn(position)
 #			return
 		T_OVERATTACK, T_OVERSUPPORT:
-			if !TutorialCore.check_action("combat_use_skill", [position]): return
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				cur_state = T_AUTO
 				if swapchar != null:
@@ -1527,12 +1544,10 @@ func FighterPress(position):
 			return
 		T_OVERATTACKALLY:
 			if allowedtargets.enemy.has(position):
-				if !TutorialCore.check_action("combat_use_skill", [position]): return
 				cur_state = T_AUTO
 				activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
 			elif position in variables.playerparty:
-				if !TutorialCore.check_action("combat_select_char", [position]): return
 				if battlefield[position] == null: return
 				if battlefield[position].acted: return
 				if battlefield[position].defeated: return
@@ -1540,7 +1555,6 @@ func FighterPress(position):
 				player_turn(position)
 			return
 		T_SKILLSUPPORT:
-			if !TutorialCore.check_action("combat_use_skill", [position]): return
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
@@ -1548,13 +1562,11 @@ func FighterPress(position):
 			return
 		T_SKILLATTACK:
 			if allowedtargets.enemy.has(position):
-				if !TutorialCore.check_action("combat_use_skill", [position]): return
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
 				activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
 			elif position in variables.playerparty:
-				if !TutorialCore.check_action("combat_select_char", [position]): return
 				if battlefield[position] == null: return
 				if battlefield[position].acted: return
 				if battlefield[position].defeated: return
