@@ -63,7 +63,12 @@ func openinventorytrade():
 	$Inventory.open("shop")
 
 func openvillage():
-	input_handler.village_node.switch_show()
+#	input_handler.village_node.switch_show()
+	var village = input_handler.village_node
+	if village.visible:
+		village.building_entered("bridge")
+	else:
+		input_handler.map_node.location_pressed("village")
 
 func FadeToBlackAnimation(time = 1):
 	input_handler.UnfadeAnimation($BlackScreen, time)
