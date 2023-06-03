@@ -22,7 +22,7 @@ func geartooltip(item):
 
 
 func open():
-	input_handler.ShowGameTip('blacksmith')
+#	input_handler.ShowGameTip('blacksmith')
 #	globals.check_signal("BuildingEntered", 'blacksmith')
 	show()
 

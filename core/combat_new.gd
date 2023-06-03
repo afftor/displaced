@@ -115,6 +115,11 @@ enum {
 }
 var cur_state = T_AUTO
 
+signal combat_started
+signal turn_started
+signal combat_ended
+#feel free to add state signals per need
+
 func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
@@ -133,6 +138,28 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
 	$LevelUp/CloseButton.connect("pressed",self,'on_level_up_close')
+	
+	#In very essence of register_button() idea, we should use clickable area
+	#and here is the simplest way:
+#	var button_size = battlefieldpositions[4].rect_size
+#	TutorialCore.register_button("enemy", 
+#		positions[4], button_size)
+#	TutorialCore.register_button("character", 
+#		positions[2], button_size)
+	#But FighterNode has very complex sprite system, and actual sprite is smaller then node base
+	#to make tutorial buttons more elegant, we have to use next smart-ass wizardry.
+	#OBVIOUSLY it will fall appart in case of grand changes, so fill free to default to code above in such case
+	var sprite_bottom = battlefieldpositions[4].get_sprite_left_bottom()
+	var sprite_pos_4 = sprite_bottom + positions[4]
+	var rat_sprite_size = resources.get_res(Enemydata.enemylist['elvenrat'].animations.idle).get_size()
+	sprite_pos_4.y -= rat_sprite_size.y
+	TutorialCore.register_button("enemy", 
+		sprite_pos_4, rat_sprite_size)
+	var sprite_pos_2 = sprite_bottom + positions[2]
+	var rose_sprite_size = state.heroes['rose'].animations.idle.get_size()
+	sprite_pos_2.y -= rose_sprite_size.y
+	TutorialCore.register_button("character", 
+		sprite_pos_2, rose_sprite_size)
 
 
 func cheatvictory():
@@ -205,8 +232,9 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 #		battlefield[i].process_event(variables.TR_COMBAT_S)
 #		battlefield[i].rebuildbuffs()
 	gui_node.combat_start()
-	input_handler.ShowGameTip('aftercombat')
+#	input_handler.ShowGameTip('aftercombat')
 	gui_node.build_enemy_head()
+	emit_signal("combat_started")
 	newturn()
 	call_deferred('select_actor')
 
@@ -315,6 +343,7 @@ func newturn():
 	gui_node.RebuildReserve()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	emit_signal("turn_started")
 
 
 func select_actor():
@@ -1079,6 +1108,7 @@ func FinishCombat(value):
 		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
 		yield(get_tree().create_timer(curtain_time), 'timeout')
 	
+	emit_signal("combat_ended")
 	if input_handler.explore_node != null:
 		input_handler.explore_node.combat_finished(value)
 	else:

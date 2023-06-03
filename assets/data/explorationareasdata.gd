@@ -9,13 +9,20 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'scene', value = 'intro_3'},
 		{type = 'system', value = 'unlock_area', arg = 'forest'},
 		{type = 'system', value = 'unlock_mission', arg = 'forest_erika'},
-		{type = 'show_screen', value = 'village'},
+#		{type = 'show_screen', value = 'village'},
 		{type = 'system', value = 'unlock_building', arg = 'bridge'}
+	],
+	intro_3 = [
+		{type = 'tutorial', value = 'exploration_menu'},
 	],
 	forest2 = [
 		{type = 'system', value = 'unlock_character', arg = 'erika'},
 #		{code = 'system', value = 'show_screen', args = 'exploration'},
 		{type = 'show_screen', value = 'exploration'},
+	],
+	erika_1 = [
+		{type = 'show_screen', value = 'village'},
+		{type = 'tutorial', value = 'building_upgrades'}
 	],
 	dimitrius_1_3 = [
 #		{code = 'system', value = 'start_next_scene', args = 'dimitrius_1_4'},
@@ -181,12 +188,13 @@ var scene_sequences = {
 		initiate_reqs = [], #all sequences only playable once, unless specified
 		actions = [
 		{type = 'scene', value = 'intro_1'},
-		{type = 'mission', value = 'road_to_village'}, #actually stops here
-		{type = 'scene', value = 'intro_2'},
-		{type = 'scene', value = 'intro_3'},
-#		{type = 'system', value = 'start_game'},
-		{type = 'system', value = 'unlock_character', arg = 'arron'}, #there should be rose for sure
-		{type = 'system', value = 'unlock_area', arg = 'village'} #Suggestion: hardcode similar unlocks into single function i.e. start_game one
+		#actually stops here
+#		{type = 'mission', value = 'road_to_village'},
+#		{type = 'scene', value = 'intro_2'},
+#		{type = 'scene', value = 'intro_3'},
+##		{type = 'system', value = 'start_game'},
+#		{type = 'system', value = 'unlock_character', arg = 'arron'}, #there should be rose for sure
+#		{type = 'system', value = 'unlock_area', arg = 'village'} #Suggestion: hardcode similar unlocks into single function i.e. start_game one
 		]
 	},
 	intro_finish = {
@@ -195,7 +203,7 @@ var scene_sequences = {
 			{type = 'scene', value = 'intro_2'},
 #			{type = 'system', value = 'unlock_character', arg = 'rose'},
 			{type = 'system', value = 'unlock_area', arg = 'village'},
-			{type = 'show_screen', value = 'village'},
+#			{type = 'show_screen', value = 'village'},
 		]
 	},
 	erika_at_village = {
@@ -204,6 +212,7 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'erika_1'},
 		{type = 'system', value = 'unlock_character', arg = 'erika'},#duplicate of postscene action
+#		{type = 'show_screen', value = 'village'},
 		]
 	},
 	
@@ -653,6 +662,10 @@ var areas = { #missions in new terminology
 		enemygroups = [], 
 		level = 1,
 		no_escape = true,
+		tutorials = {
+			1: "first_battle",
+			2: "second_battle"
+		},
 		events = {
 			on_complete_seq = 'intro_finish'
 		},
@@ -708,6 +721,9 @@ var areas = { #missions in new terminology
 		explore_image = 'combat_cave',
 		stages = 6, 
 		level = 4,
+		tutorials = {
+			1: "party_battle"
+		},
 		events = {
 			after_fight_3 = 'dimitrius_1_2',
 			on_complete = "dimitrius_1_3",

@@ -75,6 +75,11 @@ func _ready():
 	
 	buildscreen()
 	yield(get_tree(),'idle_frame')
+	
+	TutorialCore.register_button("townhall", 
+		$townhall.rect_global_position, 
+		$townhall.rect_size)
+	
 #	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
 #		EnvironmentColor('morning', true)
 #	elif floor(state.daytime) >= floor(variables.TimePerDay/4) && floor(state.daytime) < floor(variables.TimePerDay/4*2):
@@ -86,11 +91,12 @@ func _ready():
 	#EnvironmentColor('night', true)
 #	set_process(true)
 
-func switch_show() ->void:
-	if visible:
-		hide_anim()
-	else:
-		show_anim()
+#temporaly unused. It seems that location_pressed()/building_entered() is preferable way
+#func switch_show() ->void:
+#	if visible:
+#		hide_anim()
+#	else:
+#		show_anim()
 
 func show_anim() ->void:
 #	input_handler.OpenAnimation(self)

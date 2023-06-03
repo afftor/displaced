@@ -39,6 +39,12 @@ func _ready():
 	if test_mode: 
 		if resources.is_busy(): yield(resources, "done_work")
 		test()
+	
+	var mission_btn = arealist.get_node("Button")
+	TutorialCore.register_button("missions", 
+		mission_btn.rect_global_position, 
+		mission_btn.rect_size)
+	
 
 
 func test():
@@ -274,6 +280,9 @@ func advance_area():
 			if areadata.has('image') and areadata.image != null and (areadata.image is Array or areadata.image != ""):
 				bg = areadata.image
 			#2add set sound
+			if areadata.has("tutorials") and areadata.tutorials.has(areastate.stage):
+				TutorialCore.scenario_connect(
+					areadata.tutorials[areastate.stage], combat_node)
 			combat_node.show()
 			combat_node.start_combat(party, level, bg)
 #			elif stagedata.has('scene'):

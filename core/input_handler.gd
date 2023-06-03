@@ -53,7 +53,9 @@ func _input(event):
 		rmb_state = false
 	if event.is_echo() == true || event.is_pressed() == false :
 		return
-	if event.is_action("ESC") && event.is_pressed() && CloseableWindowsArray.back() != scene_node:
+	if (event.is_action("ESC") && event.is_pressed() &&
+			(CloseableWindowsArray.empty() ||
+			CloseableWindowsArray.back() != scene_node)):
 		if CloseableWindowsArray.size() != 0:
 			CloseTopWindow()
 		else:
@@ -766,14 +768,12 @@ func SystemMessage(text, time = 4):
 	SystemMessageNode.bbcode_text = text
 	FadeAnimation(SystemMessageNode, 1, basetime)
 
-func activate_tutorial(stage = 'tutorial1'):
-	pass
-
-func ShowGameTip(tip):
-	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
-		return
-	var tipnode = get_spec_node(NODE_GAMETIP)
-	tipnode.showtip(tip)
+#!!!!!! Clearup NODE_GAMETIP constants befor deleting this
+#func ShowGameTip(tip):
+#	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
+#		return
+#	var tipnode = get_spec_node(NODE_GAMETIP)
+#	tipnode.showtip(tip)
 
 func ShowOutline(node):
 	node.material = load('res://files/scenes/portret_shader.tres').duplicate()

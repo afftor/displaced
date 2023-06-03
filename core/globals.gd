@@ -92,7 +92,6 @@ var globalsettings = {
 	warnseen = false,
 	disabletips = false,
 	
-	seen_tuts = [],
 	tuts_enabled = false
 } setget settings_save
 
@@ -230,7 +229,7 @@ func run_seq(id, forced = false):
 
 
 #we may need to analyse this func further deep, so simple bool output for scene could make refactoring harder in future
-func run_actions_list(list, replay = false):
+func run_actions_list(list, replay = false) ->int:
 	var stop_syncronous = false
 	var output = variables.SEQ_NONE
 	for action in list:
@@ -253,6 +252,9 @@ func run_actions_list(list, replay = false):
 				force_start_mission(action.value)
 				if action.has('auto_advance') and action.auto_advance:
 					input_handler.explore_node.auto_advance()
+			'tutorial':
+				if replay: continue
+				TutorialCore.start_tut(action.value)
 	return output
 
 

@@ -30,6 +30,11 @@ func _ready():
 	#very ugly patch. As ugly as very idea to instantiate "closebutton" after everything else in ClosingPanel.gd
 	#the purpose is to prevent closebutton from been visible in "scenes" screen
 	move_child(closebutton, closebutton.get_index()-1)
+	
+	var upgrades_btn = $ButtonPanel/VBoxContainer/Upgrades
+	TutorialCore.register_button("town_upgrade", 
+		upgrades_btn.rect_global_position, 
+		upgrades_btn.rect_size)
 
 
 func open():

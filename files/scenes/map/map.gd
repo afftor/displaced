@@ -33,6 +33,10 @@ func _ready():
 		test()
 	
 	update_map()
+	
+	TutorialCore.register_button("exploration_loc", 
+		$forest.rect_global_position, 
+		$forest.rect_size)
 # test functions
 #	unlock_area('village')
 
