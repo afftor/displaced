@@ -14,6 +14,7 @@ func _ready():
 	$TabContainer/Text/textspeed.connect("value_changed", self, 'textspeed')
 #warning-ignore:return_value_discarded
 	$TabContainer/Text/skipread.connect("pressed", self, 'pressedskipread')
+	$TabContainer/Text/disabletut.connect("pressed", self, 'pressed_disable_tutorial')
 #warning-ignore:return_value_discarded
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 #warning-ignore:return_value_discarded
@@ -24,6 +25,7 @@ func open():
 	show()
 	$TabContainer/Text/skipread.pressed = globals.globalsettings.skipread
 	$TabContainer/Text/textspeed.value = globals.globalsettings.textspeed
+	$TabContainer/Text/disabletut.pressed = globals.globalsettings.disable_tutorial
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = globals.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
@@ -61,6 +63,9 @@ func textspeed(value):
 
 func pressedskipread():
 	globals.globalsettings.skipread = $TabContainer/Text/skipread.pressed
+
+func pressed_disable_tutorial():
+	globals.globalsettings.disable_tutorial = $TabContainer/Text/disabletut.pressed
 
 func close():
 	hide()

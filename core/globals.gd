@@ -91,6 +91,7 @@ var globalsettings = {
 	textmonocolor = false,
 	warnseen = false,
 	disabletips = false,
+	disable_tutorial = false,
 	
 	tuts_enabled = false
 } setget settings_save

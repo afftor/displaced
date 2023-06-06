@@ -2,6 +2,7 @@ extends Control
 
 onready var node_text = $Panel/RichTextLabel
 onready var node_close = $Panel/Button
+onready var node_disable = $Panel/CheckBox
 onready var node_highlighter = $highlighter
 onready var node_panel = $Panel
 
@@ -35,6 +36,7 @@ func _ready() ->void:
 		panel_margin, bottom_y))#bottom-left
 
 	node_close.connect("pressed", self, "stop_tut")
+	node_disable.connect("pressed", self, "disable_tutorial")
 
 func show_tut(text :String, buttons_seq :Array = [], no_auto_close :bool = false) ->void:
 	node_text.text = tr(text)
@@ -125,6 +127,9 @@ func calculate_screen() ->void:
 	screen_right.rect_size.x = rect_size.x - highlighter_rect.end.x
 	screen_right.rect_size.y = highlighter_rect.size.y
 
+
+func disable_tutorial():
+	globals.globalsettings.disable_tutorial = node_disable.pressed
 
 #--------------------legacy------------
 #func blink():

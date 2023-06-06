@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://files/scenes/tutorial.gd" type="Script" id=1]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/themes/button_tutorial.tres" type="Theme" id=3]
+[ext_resource path="res://assets/themes/Checkbox&Tabs.tres" type="Theme" id=4]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=1]
 draw_center = false
 border_width_left = 7
 border_width_top = 7
@@ -16,19 +17,19 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0705882, 0.0588235, 0.145098, 0.803922 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 25
 use_filter = true
 font_data = ExtResource( 2 )
@@ -36,6 +37,10 @@ font_data = ExtResource( 2 )
 [node name="TutorialNode" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = -3.0
+margin_right = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -96,7 +101,7 @@ margin_top = -7.0
 margin_right = 7.0
 margin_bottom = 7.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,7 +114,7 @@ margin_top = 40.0
 margin_right = 392.0
 margin_bottom = 554.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,7 +124,7 @@ margin_left = 45.0
 margin_top = 30.0
 margin_right = 223.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "TUTORIAL"
 __meta__ = {
@@ -132,13 +137,35 @@ anchor_bottom = 1.0
 margin_left = 45.0
 margin_top = 80.0
 margin_right = -56.0
-margin_bottom = -112.0
+margin_bottom = -162.0
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
 bbcode_text = "This is a message"
 text = "This is a message"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -148.5
+margin_top = -132.0
+margin_right = 148.5
+margin_bottom = -88.0
+focus_mode = 0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "DONOTSHOW"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="Panel"]
 anchor_left = 0.5
