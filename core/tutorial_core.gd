@@ -53,7 +53,6 @@ func load_scene_if_notyet() ->void:
 
 func register_button(id :String, pos :Vector2, size :Vector2) ->void:
 	assert(tutorial_buttons.has(id), "tutorial_core is tring to register nonexistent button")
-#	print("!!! register_button %s %s %s" %[id,String(pos),String(size)])
 	var button = tutorial_buttons[id]
 	button.pos = pos
 	button.size = size
@@ -68,6 +67,8 @@ func get_button_size(id :String) ->Vector2:
 
 func start_tut(id :String) ->void:
 	assert(tutorials_data.has(id), "tutorial_core is tring to start nonexistent tutorial")
+	if is_tutorial_disabled(): return
+	
 	load_scene_if_notyet()
 	var new_tut :Control = scene_tutorial.instance()
 	get_tree().get_root().add_child(new_tut)
@@ -87,8 +88,15 @@ func start_tut(id :String) ->void:
 func scenario_connect(scenario_id :String, obj :Object) ->void:
 	assert(scenarios.has(scenario_id), "tutorial_core is tring to start nonexistent scenario")
 	assert(!cur_scenarios.has(scenario_id), "tutorial_core is tring to restart active scenario")
+	if is_tutorial_disabled(): return
+	
 	cur_scenarios[scenario_id] = {obj = obj}
 	call(scenarios[scenario_id], obj)
+
+func is_tutorial_disabled() ->bool:
+	return globals.globalsettings.disable_tutorial
+
+
 
 #-------first_battle scenario----------
 func first_battle_connect(battle_node :Object) ->void:

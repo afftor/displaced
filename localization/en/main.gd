@@ -280,6 +280,7 @@ var TranslationDict = {
 
 	TEXTSPEED = "Text Speed",
 	SKIPREAD = "Skip Read",
+	DISABLETUTORIAL = "Disable Tutorial",
 
 	CURRENTFOOD = "Current Food",
 	GAINFOOD = "Food Value",
@@ -328,6 +329,7 @@ var TranslationDict = {
 	TRAITPOINTS = "Trait Points used",
 	GOLDPRICE = "Gold Cost",
 	ABANDONAREA = "Abandon Area",
+	DONOTSHOW = "Don't show any more",
 
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
