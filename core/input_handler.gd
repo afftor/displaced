@@ -107,7 +107,9 @@ func _process(delta):
 func CloseTopWindow():
 	var node = CloseableWindowsArray.back()
 	if typeof(node) == TYPE_STRING:
-		return;
+		return
+	if node.has_method("can_hide") and !node.can_hide() :
+		return
 	node.hide()
 	CloseableWindowsArray.pop_back(); #i think this is required
 

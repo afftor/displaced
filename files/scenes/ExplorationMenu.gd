@@ -566,3 +566,9 @@ func update_buttons() ->void:
 	if has_no_party:
 		start.disabled = true
 		advance.disabled = true
+
+func can_hide() ->bool:
+	if area == null:
+		return true
+	var areadata = Explorationdata.areas[area]
+	return !(areadata.has('no_escape') and areadata.no_escape)
