@@ -9,6 +9,22 @@ onready var active_panel2 = $ActiveActionPanel2
 var hpanel1 = load("res://files/scenes/combat/char_stat_party.tscn")
 var hpanel2 = load("res://files/scenes/combat/char_stat_reserve.tscn")
 
+var hotkey_buttons = {
+	hotkey_skill_2 = 0,
+	hotkey_skill_3 = 1,
+	hotkey_skill_4 = 2,
+	hotkey_skill_5 = 3,
+	
+	hotkey_skill_7 = 4,
+	hotkey_skill_8 = 5,
+	hotkey_skill_9 = 6,
+	hotkey_skill_10 = 7,
+	
+	#for hotkey identification checks only
+	hotkey_skill_1 = -1,
+	hotkey_skill_6 = -1
+}
+
 func _ready():
 	$SkillPanel/Escape.connect("pressed", combat, "run")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
@@ -18,6 +34,8 @@ func _ready():
 	$Combatlog2.connect("pressed", self, 'set_log')
 	bind_hero_panels()
 	hide_screen()
+	set_process_input(false)
+	combat.connect("combat_ended", self, "combat_finish")
 	
 	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
 	#so we have to yield, to get correct global_position for button
@@ -36,6 +54,10 @@ func combat_start():
 	prepare_shades()
 	hide_screen()
 	$Combatlog.visible = false
+	set_process_input(true)
+
+func combat_finish():
+	set_process_input(false)
 
 #panels
 func get_hero_panel(hero_id):
@@ -311,6 +333,30 @@ func build_selected_char(hero):
 	active_panel2.visible = true
 	active_panel2.get_node("TextureRect").texture = hero.portrait_circle()
 	active_panel2.get_node("Label").text = hero.name
+
+func _input(event):
+	if $SkillPanel.visible and $SkillPanel/SkillContainer.visible:
+		for hotkey in hotkey_buttons:
+			if event.is_action_pressed(hotkey):
+				var button = get_button_by_hotkey(hotkey)
+				if button != null:
+					button.emit_signal("pressed")
+				get_tree().set_input_as_handled()
+				break
+
+func get_button_by_hotkey(hotkey :String) ->Node:
+	if hotkey == "hotkey_skill_1":
+		return $SkillPanel/DefaultSkillContainer/attack
+	if hotkey == "hotkey_skill_6":
+		return $SkillPanel/DefaultSkillContainer/defence
+	if !hotkey_buttons.has(hotkey):
+		assert(false, "no such hotkey in CombatGui.gd")
+		return null
+	var skillcontainer = $SkillPanel/SkillContainer
+	var button_num = hotkey_buttons[hotkey]
+	if button_num >= skillcontainer.get_child_count()-1:
+		return null
+	return skillcontainer.get_child(button_num)
 
 
 
