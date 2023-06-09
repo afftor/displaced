@@ -686,3 +686,23 @@ func get_last_save():
 	pass
 
 
+func get_hotkey_as_text(hotkey :String) ->String:
+	if !InputMap.has_action(hotkey):
+		assert(false, "globals trying to get unexistant hotkey")
+		return "err"
+	return InputMap.get_action_list(hotkey)[0].as_text()
+
+func set_hotkey_for_node(node: Node, hotkey :String) ->void:
+	if !node.has_node("hotkey"):
+		assert(false, "globals trying to set hotkey for node %s, but there is no lable" % node.name)
+		return
+	var hotkey_node = node.get_node("hotkey")
+	hotkey_node.text = get_hotkey_as_text(hotkey)
+	hotkey_node.show()
+
+func disable_hotkey_for_node(node: Node) ->void:
+	if !node.has_node("hotkey"):
+		assert(false, "globals trying to disable hotkey for node %s, but there is no lable" % node.name)
+		return
+	node.get_node("hotkey").hide()
+

@@ -5,6 +5,10 @@ onready var combat = get_parent()
 onready var utility_bar = $SkillPanel/UtilityContainer
 onready var active_panel = $ActiveActionPanel
 onready var active_panel2 = $ActiveActionPanel2
+onready var skill_panel = $SkillPanel
+onready var skill_container = $SkillPanel/SkillContainer
+onready var item_container = $SkillPanel/ItemContainer
+onready var defaultskill_container = $SkillPanel/DefaultSkillContainer
 
 var hpanel1 = load("res://files/scenes/combat/char_stat_party.tscn")
 var hpanel2 = load("res://files/scenes/combat/char_stat_reserve.tscn")
@@ -34,18 +38,25 @@ func _ready():
 	$Combatlog2.connect("pressed", self, 'set_log')
 	bind_hero_panels()
 	hide_screen()
+	
 	set_process_input(false)
 	combat.connect("combat_ended", self, "combat_finish")
+	globals.set_hotkey_for_node(
+		defaultskill_container.get_node("attack"),
+		"hotkey_skill_1")
+	globals.set_hotkey_for_node(
+		defaultskill_container.get_node("defence"),
+		"hotkey_skill_6")
 	
 	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
 	#so we have to yield, to get correct global_position for button
 	yield(get_tree(), "idle_frame")
-	var skill_btn = $SkillPanel/SkillContainer.get_child(0)
-	TutorialCore.register_button("skill", 
-		skill_btn.rect_global_position, 
+	var skill_btn = skill_container.get_child(0)
+	TutorialCore.register_button("skill",
+		skill_btn.rect_global_position,
 		skill_btn.rect_size)
-	TutorialCore.register_button("char_reserve", 
-		$PlayerStats.rect_global_position, 
+	TutorialCore.register_button("char_reserve",
+		$PlayerStats.rect_global_position,
 		$PlayerStats.rect_size)
 	
 
@@ -195,22 +206,23 @@ func skill_button_pressed(mode, arg):
 
 #skill panel
 func ClearSkillPanel():
-	input_handler.ClearContainer($SkillPanel/SkillContainer)
+	input_handler.ClearContainer(skill_container)
 
 func HideSkillPanel():
-	$SkillPanel.visible = false
+	skill_panel.visible = false
 
 
 func RebuildSkillPanel():
 	if !combat.allowaction: 
 		HideSkillPanel()
 		return
-	$SkillPanel.visible = true
+	skill_panel.visible = true
 	var activecharacter = combat.activecharacter
 	ClearSkillPanel()
+	var skill_num = -1
 	for i in activecharacter.skills:
 		if i in ['attack', 'defence']: continue
-		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel/SkillContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate(skill_container)
 		var skill = Skillsdata.patch_skill(i, activecharacter)
 		newbutton.get_node("TextureRect").texture = skill.icon
 		newbutton.get_node("Cooldown").text = ""
@@ -231,11 +243,21 @@ func RebuildSkillPanel():
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
+		skill_num +=1
+		if newbutton.disabled:
+			globals.disable_hotkey_for_node(newbutton)
+		else:
+			var hotkey = "err"
+			for key in hotkey_buttons:
+				if hotkey_buttons[key] == skill_num:
+					hotkey = key
+					break
+			globals.set_hotkey_for_node(newbutton, hotkey)
 	
 	if activecharacter.combatgroup == 'ally':
-		$SkillPanel/SkillContainer.visible = true
-		$SkillPanel/DefaultSkillContainer.visible = true
-		$SkillPanel/ItemContainer.visible = false
+		skill_container.visible = true
+		defaultskill_container.visible = true
+		item_container.visible = false
 		$SkillPanel/CategoriesContainer.visible = true
 	else:
 		HideSkillPanel()
@@ -243,7 +265,7 @@ func RebuildSkillPanel():
 
 #item panel
 func ClearItemPanel():
-	input_handler.ClearContainer($SkillPanel/ItemContainer)
+	input_handler.ClearContainer(item_container)
 
 func RebuildItemPanel():
 	if !combat.allowaction: return
@@ -252,16 +274,16 @@ func RebuildItemPanel():
 		if state.materials[id] <= 0: continue
 		var i = Items.Items[id]
 		if i.itemtype == 'usable_combat':
-			var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel/ItemContainer)
+			var newbutton = input_handler.DuplicateContainerTemplate(item_container)
 			newbutton.get_node("icon").texture = i.icon
 			newbutton.get_node("count").text = str(state.materials[id])
 			newbutton.set_meta('skill', i.useskill)
 			newbutton.connect('pressed', self, 'skill_button_pressed', ['item', i])
 			newbutton.connect('pressed', self, 'UpdatePressedStatus', [newbutton])
 			globals.connectmaterialtooltip(newbutton, i)
-	$SkillPanel/SkillContainer.visible = false
-	$SkillPanel/DefaultSkillContainer.visible = false
-	$SkillPanel/ItemContainer.visible = true
+	skill_container.visible = false
+	defaultskill_container.visible = false
+	item_container.visible = true
 
 #utility & default
 func RebuildDefaultsPanel():
@@ -302,7 +324,7 @@ func UpdatePressedStatus(button):
 		$SkillPanel/CategoriesContainer/SkillsButton.pressed = button == $SkillPanel/CategoriesContainer/SkillsButton
 		$SkillPanel/CategoriesContainer/ItemsButton.pressed = button == $SkillPanel/CategoriesContainer/ItemsButton
 		return
-	for ch in $SkillPanel/ItemContainer.get_children():
+	for ch in item_container.get_children():
 		ch.pressed = ch == button
 
 #stub for next 3 actions
@@ -313,10 +335,10 @@ func build_selected_skill(skill): #not skill_id
 	active_panel2.get_node("TextureRect").texture = skill.icon
 	active_panel2.get_node("Label").text = tr("SKILL" + skill.name.to_upper())
 
-	$SkillPanel/DefaultSkillContainer/attack.pressed = skill.code == "attack"
-	$SkillPanel/CategoriesContainer/ItemsButton.pressed = $SkillPanel/ItemContainer.visible
-	$SkillPanel/CategoriesContainer/SkillsButton.pressed = $SkillPanel/SkillContainer.visible
-	for ch in $SkillPanel/SkillContainer.get_children():
+	defaultskill_container.get_node("attack").pressed = skill.code == "attack"
+	$SkillPanel/CategoriesContainer/ItemsButton.pressed = item_container.visible
+	$SkillPanel/CategoriesContainer/SkillsButton.pressed = skill_container.visible
+	for ch in skill_container.get_children():
 		if ch.name == 'Button': continue
 		ch.pressed = ch.get_meta("skill") == skill.code
 
@@ -335,28 +357,27 @@ func build_selected_char(hero):
 	active_panel2.get_node("Label").text = hero.name
 
 func _input(event):
-	if $SkillPanel.visible and $SkillPanel/SkillContainer.visible:
+	if skill_panel.visible and skill_container.visible:
 		for hotkey in hotkey_buttons:
 			if event.is_action_pressed(hotkey):
 				var button = get_button_by_hotkey(hotkey)
-				if button != null:
+				if button != null and !button.disabled:
 					button.emit_signal("pressed")
 				get_tree().set_input_as_handled()
 				break
 
 func get_button_by_hotkey(hotkey :String) ->Node:
 	if hotkey == "hotkey_skill_1":
-		return $SkillPanel/DefaultSkillContainer/attack
+		return defaultskill_container.get_node("attack")
 	if hotkey == "hotkey_skill_6":
-		return $SkillPanel/DefaultSkillContainer/defence
+		return defaultskill_container.get_node("defence")
 	if !hotkey_buttons.has(hotkey):
 		assert(false, "no such hotkey in CombatGui.gd")
 		return null
-	var skillcontainer = $SkillPanel/SkillContainer
 	var button_num = hotkey_buttons[hotkey]
-	if button_num >= skillcontainer.get_child_count()-1:
+	if button_num >= skill_container.get_child_count()-1:
 		return null
-	return skillcontainer.get_child(button_num)
+	return skill_container.get_child(button_num)
 
 
 
