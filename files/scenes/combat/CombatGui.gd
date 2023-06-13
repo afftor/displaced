@@ -65,6 +65,8 @@ func combat_start():
 
 func combat_finish():
 	set_process_input(false)
+	HideSkillPanel()
+	globals.hideskilltooltip()
 
 #panels
 func get_hero_panel(hero_id):
