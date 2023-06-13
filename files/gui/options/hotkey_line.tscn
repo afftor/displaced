@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/themes/options_hotkey.tres" type="Theme" id=1]
+[ext_resource path="res://files/gui/options/hotkey_line.gd" type="Script" id=2]
+
+[node name="hotkey_line" type="Control"]
+margin_right = 401.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 42 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -12.0
+margin_right = 200.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 200, 0 )
+text = "Skill name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = -12.0
+margin_right = -128.0
+margin_bottom = 12.0
+grow_horizontal = 0
+text = "K"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remap" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -115.0
+margin_bottom = 42.0
+grow_horizontal = 0
+text = "HOTKEYS_REMAP"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

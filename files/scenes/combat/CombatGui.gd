@@ -28,6 +28,7 @@ var hotkey_buttons = {
 	hotkey_skill_1 = -1,
 	hotkey_skill_6 = -1
 }
+var hotkeys
 
 func _ready():
 	$SkillPanel/Escape.connect("pressed", combat, "run")
@@ -41,12 +42,7 @@ func _ready():
 	
 	set_process_input(false)
 	combat.connect("combat_ended", self, "combat_finish")
-	globals.set_hotkey_for_node(
-		defaultskill_container.get_node("attack"),
-		"hotkey_skill_1")
-	globals.set_hotkey_for_node(
-		defaultskill_container.get_node("defence"),
-		"hotkey_skill_6")
+	hotkeys = globals.get_hotkeys_handler()
 	
 	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
 	#so we have to yield, to get correct global_position for button
@@ -217,6 +213,12 @@ func RebuildSkillPanel():
 		HideSkillPanel()
 		return
 	skill_panel.visible = true
+	hotkeys.set_hotkey_for_node(
+		defaultskill_container.get_node("attack"),
+		"hotkey_skill_1")
+	hotkeys.set_hotkey_for_node(
+		defaultskill_container.get_node("defence"),
+		"hotkey_skill_6")
 	var activecharacter = combat.activecharacter
 	ClearSkillPanel()
 	var skill_num = -1
@@ -245,14 +247,14 @@ func RebuildSkillPanel():
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
 		skill_num +=1
 		if newbutton.disabled:
-			globals.disable_hotkey_for_node(newbutton)
+			hotkeys.disable_hotkey_for_node(newbutton)
 		else:
 			var hotkey = "err"
 			for key in hotkey_buttons:
 				if hotkey_buttons[key] == skill_num:
 					hotkey = key
 					break
-			globals.set_hotkey_for_node(newbutton, hotkey)
+			hotkeys.set_hotkey_for_node(newbutton, hotkey)
 	
 	if activecharacter.combatgroup == 'ally':
 		skill_container.visible = true

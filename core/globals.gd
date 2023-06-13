@@ -60,6 +60,8 @@ var scenes = {}
 
 #var combat_node
 
+var hotkeys_handler
+
 var hexcolordict = {
 	red = '#ff0000',
 	yellow = "#ffff00",
@@ -104,6 +106,11 @@ func settings_load():
 	var settings = config.get_section_keys("settings")
 	for i in settings:
 		globalsettings[i] = config.get_value("settings", i, null)
+	var hotkeys :Dictionary
+	var hotkeys_keys = config.get_section_keys("hotkeys")
+	for i in hotkeys_keys:
+		hotkeys[i] = config.get_value("hotkeys", i)
+	hotkeys_handler.deserialize(hotkeys)
 	#updatevolume
 	var counter = 0
 	for i in ['master','music','sound']:
@@ -118,6 +125,11 @@ func settings_save(value):
 	config.load(userfolder + "Settings.ini")
 	for i in globalsettings:
 		config.set_value('settings', i, globalsettings[i])
+	if config.has_section('hotkeys'):
+		config.erase_section('hotkeys')
+	var hotkeys :Dictionary = hotkeys_handler.serialize()
+	for i in hotkeys:
+		config.set_value('hotkeys', i, hotkeys[i])
 	config.save(userfolder + "Settings.ini")
 
 func _notification(what):
@@ -170,6 +182,7 @@ func _ready():
 #	OS.window_position = Vector2(300,0)
 	randomize()
 	rng.randomize()
+	hotkeys_handler = HotkeysHandler.new()
 	#Settings and folders
 	settings_load()
 	OS.window_size = globalsettings.window_size
@@ -685,24 +698,7 @@ func get_last_save():
 	return b
 	pass
 
+func get_hotkeys_handler() ->Object:
+	return hotkeys_handler
 
-func get_hotkey_as_text(hotkey :String) ->String:
-	if !InputMap.has_action(hotkey):
-		assert(false, "globals trying to get unexistant hotkey")
-		return "err"
-	return InputMap.get_action_list(hotkey)[0].as_text()
-
-func set_hotkey_for_node(node: Node, hotkey :String) ->void:
-	if !node.has_node("hotkey"):
-		assert(false, "globals trying to set hotkey for node %s, but there is no lable" % node.name)
-		return
-	var hotkey_node = node.get_node("hotkey")
-	hotkey_node.text = get_hotkey_as_text(hotkey)
-	hotkey_node.show()
-
-func disable_hotkey_for_node(node: Node) ->void:
-	if !node.has_node("hotkey"):
-		assert(false, "globals trying to disable hotkey for node %s, but there is no lable" % node.name)
-		return
-	node.get_node("hotkey").hide()
 
