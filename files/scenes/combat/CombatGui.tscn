@@ -666,8 +666,10 @@ __meta__ = {
 }
 
 [node name="hotkey" parent="SkillPanel/SkillContainer/Button" instance=ExtResource( 38 )]
-margin_top = 59.0
-margin_bottom = 86.0
+margin_left = -2.0
+margin_top = 54.0
+margin_right = 19.0
+margin_bottom = 81.0
 
 [node name="Button2" type="Button" parent="SkillPanel/SkillContainer"]
 margin_left = 85.0
@@ -1770,8 +1772,10 @@ __meta__ = {
 }
 
 [node name="hotkey" parent="SkillPanel/DefaultSkillContainer/attack" instance=ExtResource( 38 )]
-margin_top = 59.0
-margin_bottom = 86.0
+margin_left = -2.0
+margin_top = 54.0
+margin_right = 19.0
+margin_bottom = 81.0
 
 [node name="defence" type="Button" parent="SkillPanel/DefaultSkillContainer"]
 margin_top = 90.0
@@ -1793,8 +1797,10 @@ __meta__ = {
 }
 
 [node name="hotkey" parent="SkillPanel/DefaultSkillContainer/defence" instance=ExtResource( 38 )]
-margin_top = 59.0
-margin_bottom = 86.0
+margin_left = -2.0
+margin_top = 54.0
+margin_right = 19.0
+margin_bottom = 81.0
 
 [node name="Escape" type="Button" parent="SkillPanel"]
 margin_left = 46.5313
