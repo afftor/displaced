@@ -3,6 +3,12 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var tabnames = {Audio = "AUDIO", Graphics = "GRAPHICS", Text = "TEXT"}
 var menu_open_sound = "sound/menu_open"
 
+onready var hotkeys_list = $TabContainer/Hotkeys/ScrollContainer/VBoxContainer
+onready var remap_panel = $remap_panel
+var remaping_hotkey :String = ""
+var demaping_hotkey :String = ""
+var hotkeys
+
 func _ready():
 	resources.preload_res(menu_open_sound)
 	if resources.is_busy(): yield(resources, "done_work")
@@ -20,6 +26,14 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$CloseButton.connect("pressed",self,'close')
 	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
+	
+	hotkeys = globals.get_hotkeys_handler()
+	for remap_node in hotkeys_list.get_children():
+		if remap_node.has_signal("remap"):
+			remap_node.connect("remap",self,"remap_hotkey_start")
+		if remap_node.name == "default" and remap_node.has_node("Button"):
+			remap_node.get_node("Button").connect("pressed", self, "default_hotkeys_ask")
+	set_process_input(false)
 
 func open():
 	show()
@@ -69,3 +83,58 @@ func pressed_disable_tutorial():
 
 func close():
 	hide()
+
+func remap_hotkey_start(hotkey :String):
+	var remap_text_node = $remap_panel/TextureRect/Label
+	remap_text_node.text = tr("REMAP_TEXT") % hotkeys.get_action_name(hotkey)
+	remaping_hotkey = hotkey
+	remap_panel.show()
+	set_process_input(true)
+
+func remap_hotkey(scancode :int):
+	remap_panel.hide()
+	if remaping_hotkey.empty() or !InputMap.has_action(remaping_hotkey):
+		assert(false, "Options.gd has error on remaping hotkey")
+		return
+	var cur_event = InputMap.get_action_list(remaping_hotkey)[0]
+	if cur_event.scancode == scancode:
+		return
+	var existing_map :String = hotkeys.find_hotkey_by_scancode(scancode)
+	if !existing_map.empty():
+		demaping_hotkey = existing_map
+		var old_name = hotkeys.get_action_name(existing_map)
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'remap_hotkey_switch',tr("REMAP_SWITCH_TEXT") % old_name])
+		return
+	remap_hotkey_finish(scancode)
+
+func remap_hotkey_switch():
+	assert(!(remaping_hotkey.empty() or demaping_hotkey.empty()), "Options.gd used remap_hotkey_switch inappropriately")
+	var new_scancode = InputMap.get_action_list(demaping_hotkey)[0].scancode
+	var switched_scancode = InputMap.get_action_list(remaping_hotkey)[0].scancode
+	hotkeys.remap_hotkey(demaping_hotkey, switched_scancode)
+	demaping_hotkey = ""
+	remap_hotkey_finish(new_scancode)
+
+func remap_hotkey_finish(scancode :int):
+	hotkeys.remap_hotkey(remaping_hotkey, scancode)
+	remaping_hotkey = ""
+	update_hotkey_tab()
+
+func _input(event):
+	if event is InputEventKey:
+		remap_hotkey(event.scancode)
+		get_tree().set_input_as_handled()
+		set_process_input(false)
+
+func update_hotkey_tab():
+	for hotkey_line in hotkeys_list.get_children():
+		if hotkey_line.has_method("update_me"):
+			hotkey_line.update_me()
+
+func default_hotkeys_ask():
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'default_hotkeys',tr("REMAP_DEFAULT")])
+
+func default_hotkeys():
+	hotkeys.to_default()
+	update_hotkey_tab()
+

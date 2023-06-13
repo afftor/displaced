@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/images/icons/icon_flag.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/combat/drop_slot.gd" type="Script" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=35]
 [ext_resource path="res://assets/images/gui/combat/char_placeholder_battle.png" type="Texture" id=36]
 [ext_resource path="res://files/scenes/combat/dropscreen.gd" type="Script" id=37]
+[ext_resource path="res://files/gui/hotkey.tscn" type="PackedScene" id=38]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 21 )
@@ -663,6 +664,12 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="hotkey" parent="SkillPanel/SkillContainer/Button" instance=ExtResource( 38 )]
+margin_left = -2.0
+margin_top = 54.0
+margin_right = 19.0
+margin_bottom = 81.0
 
 [node name="Button2" type="Button" parent="SkillPanel/SkillContainer"]
 margin_left = 85.0
@@ -1764,6 +1771,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="hotkey" parent="SkillPanel/DefaultSkillContainer/attack" instance=ExtResource( 38 )]
+margin_left = -2.0
+margin_top = 54.0
+margin_right = 19.0
+margin_bottom = 81.0
+
 [node name="defence" type="Button" parent="SkillPanel/DefaultSkillContainer"]
 margin_top = 90.0
 margin_right = 80.0
@@ -1782,6 +1795,12 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="hotkey" parent="SkillPanel/DefaultSkillContainer/defence" instance=ExtResource( 38 )]
+margin_left = -2.0
+margin_top = 54.0
+margin_right = 19.0
+margin_bottom = 81.0
 
 [node name="Escape" type="Button" parent="SkillPanel"]
 margin_left = 46.5313
