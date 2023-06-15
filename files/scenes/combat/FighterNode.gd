@@ -21,6 +21,7 @@ var speed = 1.33
 
 var hp
 #var mp
+onready var hp_bar = $Label/HP
 var buffs = []
 
 #data format: node, time, type, slot, params
@@ -74,6 +75,8 @@ func setup_character(ch):
 	panel_node.get_node('ProgressBar').value = hp
 	panel_node.get_node('Label').text = fighter.get_stat('name')
 	panel_node.disabled = false
+	hp_bar.max_value = fighter.get_stat('hpmax')
+	hp_bar.value = hp
 	for n in panel_node.get_children():
 		n.visible = true
 	if fighter is hero:
@@ -120,10 +123,24 @@ func setup_character(ch):
 	
 	visible = (position != null)
 	
-	$Buffs.rect_position = $sprite.rect_position
-	$Buffs.rect_position -= $Buffs.rect_size
-	if $Buffs.rect_position.y < 0:
-		$Buffs.rect_position.y = 0
+	center_node_on_sprite($Label)
+	center_node_on_sprite($Buffs)
+	put_above($Buffs, $sprite)
+	if fighter is h_rose:
+		#Rose got blank area on top of her sprite, so patch is in order.
+		#It may be better to fix image file itself, but for now I'll leave it as it is
+		var roses_height = 285
+		$Buffs.rect_position.y = get_sprite_left_bottom().y - roses_height
+		$Buffs.rect_position.y -= $Buffs.rect_size.y
+	put_above($Label, $Buffs)
+
+func center_node_on_sprite(node :Control):
+	node.rect_position.x = $sprite.rect_position.x + $sprite.rect_size.x * 0.5
+	node.rect_position.x -= node.rect_size.x * 0.5
+
+func put_above(node_above :Control, node_under :Control):
+	node_above.rect_position.y = node_under.rect_position.y
+	node_above.rect_position.y -= node_above.rect_size.y
 
 func reset_shield():
 	$sprite/shield.rect_size = $sprite.rect_min_size * 1.5
@@ -470,6 +487,7 @@ func get_sprite_left_bottom() ->Vector2:
 	return Vector2(sprite_rect.position.x, sprite_rect.end.y)
 	
 
-
+func ret_hp_bar() ->Node:
+	return hp_bar
 
 
