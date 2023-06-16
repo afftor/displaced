@@ -353,8 +353,9 @@ func hp_update(node, args):
 #			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
-	tween_field.interpolate_property(hpnode_field, 'value', hpnode_field.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
-	tween_field.start()
+	if hpnode_field.visible:
+		tween_field.interpolate_property(hpnode_field, 'value', hpnode_field.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+		tween_field.start()
 	if !hpnode2.is_visible_in_tree():
 		tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 		hpnode2.value = args.newhp

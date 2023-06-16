@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://files/scenes/combat/FighterNode.gd" type="Script" id=5]
 [ext_resource path="res://files/scenes/combat/char_spride_drag.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlegray_filler.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -74,6 +75,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -85,18 +87,32 @@ margin_bottom = -314.289
 text = "Name"
 align = 1
 
-[node name="HP" type="TextureProgress" parent="Label"]
+[node name="HP" type="TextureProgress" parent="."]
 show_behind_parent = true
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -5.0
-margin_top = -4.0
-margin_right = 5.0
+margin_left = -101.0
+margin_top = -15.0
+margin_right = 68.0
+margin_bottom = 17.0
 mouse_filter = 2
 value = 75.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HP"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "10/100"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -21,7 +21,7 @@ var speed = 1.33
 
 var hp
 #var mp
-onready var hp_bar = $Label/HP
+onready var hp_bar = $HP
 var buffs = []
 
 #data format: node, time, type, slot, params
@@ -75,8 +75,6 @@ func setup_character(ch):
 	panel_node.get_node('ProgressBar').value = hp
 	panel_node.get_node('Label').text = fighter.get_stat('name')
 	panel_node.disabled = false
-	hp_bar.max_value = fighter.get_stat('hpmax')
-	hp_bar.value = hp
 	for n in panel_node.get_children():
 		n.visible = true
 	if fighter is hero:
@@ -88,7 +86,6 @@ func setup_character(ch):
 	else:
 		panel_node2 = panel_node
 		$sprite.set_script(null)
-	update_hp_label(fighter.hp)
 	
 	$sprite.texture = null
 	if fighter.defeated:
@@ -102,7 +99,6 @@ func setup_character(ch):
 		panel_node.modulate = Color(1,1,1,1)
 		panel_node2.modulate = Color(1,1,1,1)
 		reset_shield()
-	$Label.text = fighter.name
 	regenerate_click_mask() # some cheating with not doing this every frame
 	stop_highlight()
 	set_process_input(true)
@@ -123,7 +119,15 @@ func setup_character(ch):
 	
 	visible = (position != null)
 	
-	center_node_on_sprite($Label)
+	if fighter is hero:
+		hp_bar.hide()
+	else:
+		hp_bar.show()
+		hp_bar.max_value = fighter.get_stat('hpmax')
+		hp_bar.value = hp
+		center_node_on_sprite(hp_bar)
+	update_hp_label(fighter.hp)
+	
 	center_node_on_sprite($Buffs)
 	put_above($Buffs, $sprite)
 	if fighter is h_rose:
@@ -132,7 +136,11 @@ func setup_character(ch):
 		var roses_height = 285
 		$Buffs.rect_position.y = get_sprite_left_bottom().y - roses_height
 		$Buffs.rect_position.y -= $Buffs.rect_size.y
-	put_above($Label, $Buffs)
+	
+	#names are disabled for now
+#	$Label.text = fighter.name
+#	center_node_on_sprite($Label)
+#	put_above($Label, $Buffs)
 
 func center_node_on_sprite(node :Control):
 	node.rect_position.x = $sprite.rect_position.x + $sprite.rect_size.x * 0.5
@@ -366,8 +374,11 @@ func update_buff(i):
 	newbuff.hint_tooltip = text
 
 func update_hp_label(newhp): 
-	panel_node.get_node('hp').text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
-	panel_node2.get_node('hp').text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
+	var new_text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
+	panel_node.get_node('hp').text = new_text
+	panel_node2.get_node('hp').text = new_text
+	if hp_bar.visible:
+		hp_bar.get_node('Label').text = new_text
 #	panel_node.get_node('ProgressBar').value = newhp
 
 #highlight modes
