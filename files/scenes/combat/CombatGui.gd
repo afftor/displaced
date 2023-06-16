@@ -44,6 +44,8 @@ func _ready():
 	combat.connect("combat_ended", self, "combat_finish")
 	hotkeys = globals.get_hotkeys_handler()
 	
+	$EmemyStats/ExpandBtn.connect("pressed", self, "expand_ememy_stats")
+	
 	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
 	#so we have to yield, to get correct global_position for button
 	yield(get_tree(), "idle_frame")
@@ -79,7 +81,7 @@ func get_enemy_panel(pos):
 	pos -= 4
 	var r = pos / 3
 	var l = pos % 3
-	return get_node("EmemyStats/VBoxContainer").get_child(l * 2 + r)
+	return get_node("EmemyStats/Panel/VBoxContainer").get_child(l * 2 + r)
 
 
 func bind_hero_panels():
@@ -383,6 +385,10 @@ func get_button_by_hotkey(hotkey :String) ->Node:
 		return null
 	return skill_container.get_child(button_num)
 
+
+func expand_ememy_stats():
+	var ememy_stats = $EmemyStats/Panel
+	ememy_stats.visible = !ememy_stats.visible
 
 
 #combatlog
