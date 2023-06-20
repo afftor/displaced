@@ -1096,7 +1096,8 @@ func FinishCombat(value):
 	for pos in variables.enemyparty:
 		if battlefield[pos] == null: continue
 		battlefield[pos].displaynode = null
-		enemygroup.erase(pos)
+		battlefieldpositions[pos].hide()
+		remove_enemy(pos, battlefield[pos].id)
 	
 	clear_auras()
 	CombatAnimations.force_end()
