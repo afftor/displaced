@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/buttons/combat/button_charlistbattle.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlebig_filler.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlebig_frame.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=7]
+[ext_resource path="res://files/scenes/combat/char_stat_party.gd" type="Script" id=8]
 
 [node name="arron" type="TextureButton"]
 margin_right = 222.0
@@ -15,6 +16,7 @@ rect_min_size = Vector2( 0, 65 )
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
+script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 72.0

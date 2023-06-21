@@ -818,7 +818,6 @@ func reserve_hero(chid): #bf -> reserve
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	newchar.position = null
-	newchar.acted = true
 	make_hero_panel(newchar)
 #	CombatAnimations.check_start()
 #	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
