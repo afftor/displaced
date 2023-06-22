@@ -16,27 +16,27 @@ __meta__ = {
 [node name="name" type="Label" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
+margin_left = 30.0
 margin_top = -12.0
-margin_right = 200.0
+margin_right = 145.0
 margin_bottom = 12.0
-rect_min_size = Vector2( 200, 0 )
 text = "Skill name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="key" type="Label" parent="."]
-anchor_left = 1.0
+[node name="default" type="Label" parent="."]
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -144.0
+margin_left = 27.5
 margin_top = -12.0
-margin_right = -128.0
+margin_right = 54.5
 margin_bottom = 12.0
 grow_horizontal = 0
 text = "K"
-align = 2
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,10 +44,11 @@ __meta__ = {
 [node name="remap" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -115.0
+margin_left = -95.0
+margin_right = -44.0
 margin_bottom = 42.0
 grow_horizontal = 0
-text = "HOTKEYS_REMAP"
+text = "H"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
