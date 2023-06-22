@@ -20,6 +20,13 @@ func get_hotkey_as_text(hotkey :String) ->String:
 		return "err"
 	return InputMap.get_action_list(hotkey)[0].as_text()
 
+func get_hotkey_default_as_text(hotkey :String) ->String:
+	if !InputMap.has_action(hotkey):
+		assert(false, "hotkeys trying to get unexistant hotkey")
+		return "err"
+	var event = ProjectSettings.get_setting("input/%s" % hotkey).events[0]
+	return event.as_text()
+
 func set_hotkey_for_node(node: Node, hotkey :String) ->void:
 	if !node.has_node("hotkey"):
 		assert(false, "hotkeys trying to set hotkey for node %s, but there is no lable" % node.name)

@@ -476,7 +476,7 @@ func defeat():
 		panel_node.modulate = Color(1,1,1,0.4)
 		panel_node2.modulate = Color(1,1,1,0.4)
 	else:
-		set_process_input(false)
+		set_process_input(false) #it is probably unnecessary since this script started to use _gui_input()
 #		input_handler.FadeAnimation(self, 0.5, 0.3)
 		disable_panel_node()
 		input_handler.combat_node.remove_enemy(fighter.position, fighter.id)

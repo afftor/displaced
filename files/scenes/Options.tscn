@@ -1,10 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/images/gui/taskmenu/jobgui.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/Options.gd" type="Script" id=2]
 [ext_resource path="res://assets/themes/Checkbox&Tabs.tres" type="Theme" id=3]
-[ext_resource path="res://assets/images/gui/universal/tabactive.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/universal/tabinactive.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/universal/tabpanel.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=8]
@@ -13,27 +11,9 @@
 [ext_resource path="res://assets/themes/options_hotkey.tres" type="Theme" id=11]
 [ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=12]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 159, 94 )
-margin_left = 20.0
-margin_right = 20.0
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 159, 94 )
-margin_left = 20.0
-margin_right = 20.0
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 579, 482 )
-
 [node name="Options" type="TextureRect"]
-margin_left = 602.0
-margin_top = 138.0
-margin_right = 1251.0
-margin_bottom = 926.0
+margin_right = 649.0
+margin_bottom = 788.0
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -46,97 +26,139 @@ margin_top = 99.0
 margin_right = 616.0
 margin_bottom = 668.0
 theme = ExtResource( 3 )
-custom_styles/tab_fg = SubResource( 1 )
-custom_styles/tab_bg = SubResource( 2 )
-custom_styles/panel = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color_bg = Color( 0, 0, 0, 1 )
 custom_colors/font_color_fg = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Audio" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
 margin_left = 40.0
-margin_top = 90.0
+margin_top = 45.0
 margin_right = 453.0
-margin_bottom = 220.0
-custom_constants/separation = 31
+margin_bottom = 191.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="master" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+[node name="master" type="Control" parent="TabContainer/Audio/VBoxContainer"]
 margin_right = 413.0
-margin_bottom = 28.0
-min_value = -40.0
-max_value = 0.0
-value = -20.0
-
-[node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/master"]
-margin_left = 458.0
-margin_top = -12.0
-margin_right = 502.0
-margin_bottom = 32.0
-align = 2
+margin_bottom = 82.0
+rect_min_size = Vector2( 0, 82 )
 
 [node name="Label" type="Label" parent="TabContainer/Audio/VBoxContainer/master"]
-margin_left = 124.0
-margin_top = -24.0
-margin_right = 308.0
+margin_right = 184.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "MASTERSOUND"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="music" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
-margin_top = 59.0
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/master"]
+margin_top = 54.0
 margin_right = 413.0
-margin_bottom = 87.0
+margin_bottom = 82.0
 min_value = -40.0
 max_value = 0.0
+value = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/music"]
-margin_left = 458.0
-margin_top = -12.0
-margin_right = 502.0
-margin_bottom = 32.0
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/master"]
+margin_left = 446.0
+margin_top = 44.0
+margin_right = 490.0
+margin_bottom = 88.0
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="music" type="Control" parent="TabContainer/Audio/VBoxContainer"]
+margin_top = 132.0
+margin_right = 413.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 0, 82 )
 
 [node name="Label" type="Label" parent="TabContainer/Audio/VBoxContainer/music"]
-margin_left = 124.0
-margin_top = -24.0
-margin_right = 296.0
+margin_right = 172.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "MUSIC"
-align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="sound" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
-margin_top = 118.0
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/music"]
+margin_top = 54.0
 margin_right = 413.0
-margin_bottom = 146.0
+margin_bottom = 82.0
 min_value = -40.0
 max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/sound"]
-margin_left = 458.0
-margin_top = -12.0
-margin_right = 502.0
-margin_bottom = 32.0
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/music"]
+margin_left = 446.0
+margin_top = 44.0
+margin_right = 490.0
+margin_bottom = 88.0
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sound" type="Control" parent="TabContainer/Audio/VBoxContainer"]
+margin_top = 264.0
+margin_right = 413.0
+margin_bottom = 346.0
+rect_min_size = Vector2( 0, 82 )
 
 [node name="Label" type="Label" parent="TabContainer/Audio/VBoxContainer/sound"]
-margin_left = 124.0
-margin_top = -24.0
-margin_right = 308.0
+margin_right = 184.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "SOUND"
-align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/sound"]
+margin_top = 54.0
+margin_right = 413.0
+margin_bottom = 82.0
+min_value = -40.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/sound"]
+margin_left = 446.0
+margin_top = 44.0
+margin_right = 490.0
+margin_bottom = 88.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="TabContainer/Audio"]
-margin_left = 485.0
-margin_top = 40.0
-margin_right = 554.0
-margin_bottom = 64.0
+margin_left = 474.0
+margin_top = 45.0
+margin_right = 543.0
+margin_bottom = 69.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "MUTE"
 __meta__ = {
@@ -150,11 +172,21 @@ anchor_bottom = 1.0
 margin_top = 34.0
 
 [node name="fullscreen" type="CheckBox" parent="TabContainer/Graphics"]
-margin_left = 26.0
-margin_top = 14.0
-margin_right = 293.0
-margin_bottom = 58.0
+margin_left = 40.0
+margin_top = 45.0
+margin_right = 84.0
+margin_bottom = 89.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Graphics/fullscreen"]
+margin_left = 62.0
+margin_top = 11.0
+margin_right = 189.0
+margin_bottom = 35.0
 text = "Full Screen"
 
 [node name="Text" type="Tabs" parent="TabContainer"]
@@ -164,10 +196,10 @@ anchor_bottom = 1.0
 margin_top = 34.0
 
 [node name="textspeed" type="HSlider" parent="TabContainer/Text"]
-margin_left = 103.0
-margin_top = 82.0
-margin_right = 381.0
-margin_bottom = 98.0
+margin_left = 40.0
+margin_top = 99.0
+margin_right = 453.0
+margin_bottom = 127.0
 min_value = 20.0
 max_value = 200.0
 step = 20.0
@@ -177,19 +209,27 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Text/textspeed"]
-margin_left = 65.0
-margin_top = -34.0
-margin_right = 201.0
-margin_bottom = -10.0
+margin_top = -54.0
+margin_right = 136.0
+margin_bottom = -30.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "TEXTSPEED"
 
 [node name="skipread" type="CheckBox" parent="TabContainer/Text"]
-margin_left = 104.0
-margin_top = 116.0
-margin_right = 382.0
-margin_bottom = 148.0
+margin_left = 40.0
+margin_top = 168.0
+margin_right = 84.0
+margin_bottom = 212.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Text/skipread"]
+margin_left = 62.0
+margin_top = 10.0
+margin_right = 180.0
+margin_bottom = 34.0
 text = "SKIPREAD"
 
 [node name="disabletut" type="CheckBox" parent="TabContainer/Text"]
@@ -197,121 +237,226 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -189.5
-margin_top = -372.0
-margin_right = 107.5
-margin_bottom = -328.0
+margin_left = -253.5
+margin_top = -284.0
+margin_right = -209.5
+margin_bottom = -240.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Text/disabletut"]
+margin_left = 62.0
+margin_top = 12.0
+margin_right = 279.0
+margin_bottom = 36.0
 text = "DISABLETUTORIAL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Hotkeys" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="TabContainer/Hotkeys"]
+anchor_right = 1.0
+margin_top = 25.0
+margin_bottom = 47.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="action" type="Label" parent="TabContainer/Hotkeys/Control"]
+margin_left = 40.0
+margin_right = 173.0
+margin_bottom = 24.0
+text = "HK_ACTION"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="default" type="Label" parent="TabContainer/Hotkeys/Control"]
+margin_left = 245.0
+margin_right = 399.0
+margin_bottom = 24.0
+text = "HK_DEFAULT"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remap" type="Label" parent="TabContainer/Hotkeys/Control"]
+margin_left = 418.0
+margin_right = 549.0
+margin_bottom = 24.0
+text = "HK_REMAP"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="NinePatchRect" parent="TabContainer/Hotkeys/Control"]
+margin_top = 38.0
+margin_right = 587.0
+margin_bottom = 138.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 579, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Hotkeys"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_top = 74.0
+margin_right = -15.0
+margin_bottom = -16.0
 theme = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Hotkeys/ScrollContainer"]
-margin_right = 551.0
-margin_bottom = 530.0
+margin_right = 562.0
+margin_bottom = 630.0
 size_flags_horizontal = 3
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="skills" type="Label" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
-margin_right = 551.0
-margin_bottom = 24.0
-text = "TAB_HOTKEYS_SKILLS"
-align = 1
-
 [node name="hotkey_line" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 28.0
-margin_right = 551.0
-margin_bottom = 70.0
+margin_right = 543.0
 hotkey = "hotkey_skill_1"
 
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 543.0
+margin_bottom = 54.0
+
 [node name="hotkey_line2" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 74.0
-margin_right = 551.0
-margin_bottom = 116.0
+margin_top = 64.0
+margin_right = 543.0
+margin_bottom = 106.0
 hotkey = "hotkey_skill_6"
 
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 543.0
+margin_bottom = 118.0
+
 [node name="hotkey_line3" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 120.0
-margin_right = 551.0
-margin_bottom = 162.0
+margin_top = 128.0
+margin_right = 543.0
+margin_bottom = 170.0
 hotkey = "hotkey_skill_2"
 
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 180.0
+margin_right = 543.0
+margin_bottom = 182.0
+
 [node name="hotkey_line4" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 166.0
-margin_right = 551.0
-margin_bottom = 208.0
+margin_top = 192.0
+margin_right = 543.0
+margin_bottom = 234.0
 hotkey = "hotkey_skill_3"
 
+[node name="HSeparator4" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 244.0
+margin_right = 543.0
+margin_bottom = 246.0
+
 [node name="hotkey_line5" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 212.0
-margin_right = 551.0
-margin_bottom = 254.0
+margin_top = 256.0
+margin_right = 543.0
+margin_bottom = 298.0
 hotkey = "hotkey_skill_4"
 
+[node name="HSeparator5" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 308.0
+margin_right = 543.0
+margin_bottom = 310.0
+
 [node name="hotkey_line6" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 258.0
-margin_right = 551.0
-margin_bottom = 300.0
+margin_top = 320.0
+margin_right = 543.0
+margin_bottom = 362.0
 hotkey = "hotkey_skill_5"
 
+[node name="HSeparator6" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 372.0
+margin_right = 543.0
+margin_bottom = 374.0
+
 [node name="hotkey_line7" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 304.0
-margin_right = 551.0
-margin_bottom = 346.0
+margin_top = 384.0
+margin_right = 543.0
+margin_bottom = 426.0
 hotkey = "hotkey_skill_7"
 
+[node name="HSeparator7" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 436.0
+margin_right = 543.0
+margin_bottom = 438.0
+
 [node name="hotkey_line8" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 350.0
-margin_right = 551.0
-margin_bottom = 392.0
+margin_top = 448.0
+margin_right = 543.0
+margin_bottom = 490.0
 hotkey = "hotkey_skill_8"
 
+[node name="HSeparator8" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 500.0
+margin_right = 543.0
+margin_bottom = 502.0
+
 [node name="hotkey_line9" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 396.0
-margin_right = 551.0
-margin_bottom = 438.0
+margin_top = 512.0
+margin_right = 543.0
+margin_bottom = 554.0
 hotkey = "hotkey_skill_9"
 
+[node name="HSeparator9" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 564.0
+margin_right = 543.0
+margin_bottom = 566.0
+
 [node name="hotkey_line10" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 442.0
-margin_right = 551.0
-margin_bottom = 484.0
+margin_top = 576.0
+margin_right = 543.0
+margin_bottom = 618.0
 hotkey = "hotkey_skill_10"
 
+[node name="HSeparator10" type="HSeparator" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
+margin_top = 628.0
+margin_right = 543.0
+margin_bottom = 630.0
+
 [node name="default" type="Control" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
-margin_top = 488.0
-margin_right = 551.0
-margin_bottom = 530.0
+visible = false
+margin_top = 640.0
+margin_right = 543.0
+margin_bottom = 682.0
 rect_min_size = Vector2( 0, 42 )
 
 [node name="Button" type="Button" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer/default"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -160.0
+margin_left = -202.0
+margin_right = -42.0
 margin_bottom = 42.0
 grow_horizontal = 0
-text = "HOTKEYS_DEFAULT"
+text = "HK_DEFAULT"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false

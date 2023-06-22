@@ -11,4 +11,5 @@ func _ready():
 func update_me():
 	var hotkeys = globals.get_hotkeys_handler()
 	$name.text = hotkeys.get_action_name(hotkey)
-	$key.text = hotkeys.get_hotkey_as_text(hotkey)
+	$default.text = hotkeys.get_hotkey_default_as_text(hotkey)
+	$remap.text = hotkeys.get_hotkey_as_text(hotkey)

@@ -1,6 +1,6 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
-var tabnames = {Audio = "AUDIO", Graphics = "GRAPHICS", Text = "TEXT"}
+#var tabnames = {Audio = "AUDIO", Graphics = "GRAPHICS", Text = "TEXT"}
 var menu_open_sound = "sound/menu_open"
 
 onready var hotkeys_list = $TabContainer/Hotkeys/ScrollContainer/VBoxContainer
@@ -14,7 +14,7 @@ func _ready():
 	if resources.is_busy(): yield(resources, "done_work")
 
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
-		i.connect("value_changed", self, 'soundsliderchange',[i.name])
+		i.get_node("HSlider").connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
 #warning-ignore:return_value_discarded
 	$TabContainer/Text/textspeed.connect("value_changed", self, 'textspeed')
@@ -41,9 +41,9 @@ func open():
 	$TabContainer/Text/textspeed.value = globals.globalsettings.textspeed
 	$TabContainer/Text/disabletut.pressed = globals.globalsettings.disable_tutorial
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
-		i.value = globals.globalsettings[i.name+'vol']
+		i.get_node("HSlider").value = globals.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
-		i.editable = !i.get_node("CheckBox").pressed
+		i.get_node("HSlider").editable = !i.get_node("CheckBox").pressed
 
 func togglefullscreen():
 	globals.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
@@ -62,7 +62,7 @@ func soundsliderchange(value,name):
 func mutepressed(node):
 	var name = node.get_parent().name
 	globals.globalsettings[name + 'mute'] = node.pressed
-	node.get_parent().editable = !node.pressed
+	node.get_node("../HSlider").editable = !node.pressed
 	updatesounds()
 
 func updatesounds():

@@ -818,7 +818,6 @@ func reserve_hero(chid): #bf -> reserve
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	newchar.position = null
-	newchar.acted = true
 	make_hero_panel(newchar)
 #	CombatAnimations.check_start()
 #	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -1096,7 +1095,8 @@ func FinishCombat(value):
 	for pos in variables.enemyparty:
 		if battlefield[pos] == null: continue
 		battlefield[pos].displaynode = null
-		enemygroup.erase(pos)
+		battlefieldpositions[pos].hide()
+		remove_enemy(pos, battlefield[pos].id)
 	
 	clear_auras()
 	CombatAnimations.force_end()

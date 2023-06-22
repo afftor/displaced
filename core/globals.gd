@@ -106,11 +106,12 @@ func settings_load():
 	var settings = config.get_section_keys("settings")
 	for i in settings:
 		globalsettings[i] = config.get_value("settings", i, null)
-	var hotkeys :Dictionary
-	var hotkeys_keys = config.get_section_keys("hotkeys")
-	for i in hotkeys_keys:
-		hotkeys[i] = config.get_value("hotkeys", i)
-	hotkeys_handler.deserialize(hotkeys)
+	if config.has_section("hotkeys"):
+		var hotkeys :Dictionary
+		var hotkeys_keys = config.get_section_keys("hotkeys")
+		for i in hotkeys_keys:
+			hotkeys[i] = config.get_value("hotkeys", i)
+		hotkeys_handler.deserialize(hotkeys)
 	#updatevolume
 	var counter = 0
 	for i in ['master','music','sound']:

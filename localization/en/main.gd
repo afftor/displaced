@@ -283,10 +283,11 @@ var TranslationDict = {
 	DISABLETUTORIAL = "Disable Tutorial",
 
 	#hotkeys tab in options
-	TAB_HOTKEYS = "Hotkays",
-	TAB_HOTKEYS_SKILLS = "Skills",
-	HOTKEYS_REMAP = "Remap",
-	HOTKEYS_DEFAULT = "Default",
+#	TAB_HOTKEYS = "Hotkays",
+#	TAB_HOTKEYS_SKILLS = "Skills",
+	HK_ACTION = "Action",
+	HK_REMAP = "Remap",
+	HK_DEFAULT = "Default",
 	SKILL_ATTACK = "Attack",
 	SKILL_DEFENCE = "Defence",
 	SKILL_PERSONAL1 = "Hero's skill 1",
