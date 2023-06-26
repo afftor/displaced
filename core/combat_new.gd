@@ -1106,6 +1106,7 @@ func FinishCombat(value):
 		battlefieldpositions[pos].hide()
 		remove_enemy(pos, battlefield[pos].id)
 	
+	ClearSkillTargets()
 	clear_auras()
 	CombatAnimations.force_end()
 	input_handler.RevertMusic()
@@ -1187,8 +1188,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		rangetype = fighter.get_weapon_range()
 	
 	highlightargets = true
-	allowedtargets.clear()
-	allowedtargets = {ally = [], enemy = []}
 	
 	if targetgroups.has('enemy'):
 		var t_targets
