@@ -288,13 +288,13 @@ func disappear():#stub
 
 
 func process_defeat():
-	var data 
+	var data
 	data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = {animation = 'dead', callback = 'defeat'}}
 	animation_node.add_new_data(data)
 
 
 func process_resurrect():
-	var data 
+	var data
 	data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = {animation = null, callback = 'resurrect'}} #null animation as a stub
 	animation_node.add_new_data(data)
 
