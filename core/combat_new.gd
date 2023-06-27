@@ -361,6 +361,14 @@ func select_actor():
 	var f = checkwinlose()
 	if f == FIN_VIC or f == FIN_LOOSE:
 		return
+	if f == FIN_NO:
+		var noone_at_front = true
+		for pos in range(4, 7):
+			if battlefield[pos] != null:
+				noone_at_front = false
+				break
+		if noone_at_front:
+			yield(advance_frontrow(), 'completed')
 #	self.charselect = false
 	while battlefield.has(nextenemy) and battlefield[nextenemy] == null:
 		nextenemy += 1
@@ -1098,6 +1106,7 @@ func FinishCombat(value):
 		battlefieldpositions[pos].hide()
 		remove_enemy(pos, battlefield[pos].id)
 	
+	ClearSkillTargets()
 	clear_auras()
 	CombatAnimations.force_end()
 	input_handler.RevertMusic()
@@ -1179,8 +1188,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		rangetype = fighter.get_weapon_range()
 	
 	highlightargets = true
-	allowedtargets.clear()
-	allowedtargets = {ally = [], enemy = []}
 	
 	if targetgroups.has('enemy'):
 		var t_targets
@@ -1849,16 +1856,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		SelectSkill(caster.get_autoselected_skill(), true)
 
 	caster.rebuildbuffs()
-
-	f = checkwinlose()
-	if caster.combatgroup == 'ally' and f == FIN_NO:
-		var temp = 0
-		for pos in range(4, 7): if battlefield[pos] == null: temp += 1
-		if temp == 3:
-			yield(advance_frontrow(), 'completed')
 	turns +=1
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
 		if caster.hp > 0:
@@ -1877,6 +1875,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			gui_node.RebuildItemPanel()
 			SelectSkill(activeaction, true)
 		eot = true
+
 	print('%s ended %s' % [caster.position, skill.name])
 
 
