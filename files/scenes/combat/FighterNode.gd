@@ -8,10 +8,13 @@ var panel_node2
 signal signal_RMB
 signal signal_RMB_release
 signal signal_LMB
+signal signal_entered
+signal signal_exited
 
 var position = 0
 var fighter
 var RMBpressed = false
+var mouse_in_me = false
 
 var anim_up = true
 var hightlight = false
@@ -46,23 +49,35 @@ func _process(delta):
 func _ready():
 	$sprite.material = load("res://files/scenes/portret_shader.tres").duplicate();
 	$sprite.material.set_shader_param('outline_width', 1.0)
+	connect("mouse_exited", self, 'check_signal_exited')
 
 
-#Legacy remark: _input() was used befor, it was bad idea from begining, which has
-#finaly shot with tutorial blockscreen, which was using _gui_input().
-#Be advised: if something will break in here, try to bring back _input()
 func _gui_input(event):
-	if input_handler.if_mouse_inside($sprite) or input_handler.if_mouse_inside($sprite2):
-		if event.is_pressed():
-			if event.is_action("RMB"):
-				emit_signal("signal_RMB", fighter)
-				RMBpressed = true
-			elif event.is_action('LMB'):
-				emit_signal("signal_LMB", position)
+#	if input_handler.if_mouse_inside($sprite) or input_handler.if_mouse_inside($sprite2):
+	var mouse_in_mask :bool = texture_click_mask.get_bit(event.position)
+	if mouse_in_mask and event.is_pressed():
+		if event.is_action("RMB"):
+			emit_signal("signal_RMB", fighter)
+			RMBpressed = true
+		elif event.is_action('LMB'):
+			emit_signal("signal_LMB", position)
+
+	if event is InputEventMouseMotion:
+		if mouse_in_mask:
+			if !mouse_in_me:
+				emit_signal("signal_entered")
+				mouse_in_me = true
+		else:
+			check_signal_exited()
+
 	if event.is_action_released("RMB") && RMBpressed == true:
 		emit_signal("signal_RMB_release")
 		RMBpressed = false
 
+func check_signal_exited():
+	if mouse_in_me:
+		emit_signal("signal_exited")
+		mouse_in_me = false
 
 func setup_character(ch):
 #	print("%s - %s" % [str(modulate), str(ch.position)])
@@ -110,12 +125,12 @@ func setup_character(ch):
 	if is_connected("signal_LMB",input_handler.combat_node, 'FighterPress'):
 		disconnect('signal_LMB', input_handler.combat_node, 'FighterPress')
 	connect("signal_LMB", input_handler.combat_node, 'FighterPress')
-	if is_connected('mouse_entered', input_handler.combat_node, 'FighterMouseOver'):
-		disconnect('mouse_entered', input_handler.combat_node, 'FighterMouseOver')
-	connect("mouse_entered", input_handler.combat_node, 'FighterMouseOver', [position])
-	if is_connected("mouse_exited", input_handler.combat_node, 'FighterMouseOverFinish'):
-		disconnect("mouse_exited", input_handler.combat_node, 'FighterMouseOverFinish')
-	connect("mouse_exited", input_handler.combat_node, 'FighterMouseOverFinish', [position])
+	if is_connected('signal_entered', input_handler.combat_node, 'FighterMouseOver'):
+		disconnect('signal_entered', input_handler.combat_node, 'FighterMouseOver')
+	connect("signal_entered", input_handler.combat_node, 'FighterMouseOver', [position])
+	if is_connected("signal_exited", input_handler.combat_node, 'FighterMouseOverFinish'):
+		disconnect("signal_exited", input_handler.combat_node, 'FighterMouseOverFinish')
+	connect("signal_exited", input_handler.combat_node, 'FighterMouseOverFinish', [position])
 	
 	visible = (position != null)
 	
@@ -389,7 +404,7 @@ func stop_highlight():
 func highlight_active():
 	hightlight = true
 	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('opacity', 0.0)
 	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
 
 func highlight_hover():
@@ -401,7 +416,7 @@ func highlight_hover():
 func highlight_target_ally():
 	hightlight = true
 	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('opacity', 0.0)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
 func highlight_target_ally_final():
@@ -413,7 +428,7 @@ func highlight_target_ally_final():
 func highlight_target_enemy():
 	hightlight = true
 	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('opacity', 0.0)
 	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
 func highlight_target_enemy_final():
