@@ -54,7 +54,9 @@ func _ready():
 
 func _gui_input(event):
 #	if input_handler.if_mouse_inside($sprite) or input_handler.if_mouse_inside($sprite2):
-	var mouse_in_mask :bool = texture_click_mask.get_bit(event.position)
+	var mouse_in_mask :bool = false
+	if event is InputEventMouse:
+		mouse_in_mask = texture_click_mask.get_bit(event.position)
 	if mouse_in_mask and event.is_pressed():
 		if event.is_action("RMB"):
 			emit_signal("signal_RMB", fighter)
