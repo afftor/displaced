@@ -17,8 +17,8 @@ var RMBpressed = false
 var mouse_in_me = false
 
 var anim_up = true
-var hightlight = false
-var highlight_animated = false
+#var hightlight = false
+#var highlight_animated = false
 var speed = 1.33
 #var damageeffectsarray = []
 
@@ -38,20 +38,20 @@ var scan_vecs = [
 	Vector2(-1.0, 0.0), #Vector2(-1.0, -1.0).normalized()
 ]
 
-func _process(delta):
-	if !hightlight or !highlight_animated: return
-	var tmp = $sprite.material.get_shader_param('opacity')
-	if anim_up: 
-		tmp += delta * speed
-		if tmp >= 1.0:
-			anim_up = false
-			tmp = 1.0
-	else:
-		tmp -= delta * speed
-		if tmp <= 0.0:
-			anim_up = true
-			tmp = 0.0
-	$sprite.material.set_shader_param('opacity', tmp)
+#func _process(delta):
+#	if !hightlight or !highlight_animated: return
+#	var tmp = $sprite.material.get_shader_param('opacity')
+#	if anim_up:
+#		tmp += delta * speed
+#		if tmp >= 1.0:
+#			anim_up = false
+#			tmp = 1.0
+#	else:
+#		tmp -= delta * speed
+#		if tmp <= 0.0:
+#			anim_up = true
+#			tmp = 0.0
+#	$sprite.material.set_shader_param('opacity', tmp)
 
 
 func _ready():
@@ -426,41 +426,41 @@ func update_hp_label(newhp):
 #highlight modes
 func stop_highlight():
 	$sprite.material.set_shader_param('opacity', 0.0)
-	hightlight = false
+#	hightlight = false
 
 func highlight_active():
-	hightlight = true
-	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.0)
+#	hightlight = true
+#	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
 
 func highlight_hover():
-	hightlight = true
-	highlight_animated = false
+#	hightlight = true
+#	highlight_animated = false
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
 
 func highlight_target_ally():
-	hightlight = true
-	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.0)
+#	hightlight = true
+#	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
 func highlight_target_ally_final():
-	hightlight = true
-	highlight_animated = false
+#	hightlight = true
+#	highlight_animated = false
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
 func highlight_target_enemy():
-	hightlight = true
-	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.0)
+#	hightlight = true
+#	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
 func highlight_target_enemy_final():
-	hightlight = true
-	highlight_animated = false
+#	hightlight = true
+#	highlight_animated = false
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
