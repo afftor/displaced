@@ -29,6 +29,14 @@ var buffs = []
 
 #data format: node, time, type, slot, params
 
+#those are normal vectors to check pixels "around" given one
+#8 vectors - slower, but with higher precision
+var scan_vecs = [
+	Vector2(0.0, -1.0), #Vector2(1.0, -1.0).normalized(),
+	Vector2(1.0, 0.0), #Vector2(1.0, 1.0).normalized(),
+	Vector2(0.0, 1.0), #Vector2(-1.0, 1.0).normalized(),
+	Vector2(-1.0, 0.0), #Vector2(-1.0, -1.0).normalized()
+]
 
 func _process(delta):
 	if !hightlight or !highlight_animated: return
@@ -50,6 +58,9 @@ func _ready():
 	$sprite.material = load("res://files/scenes/portret_shader.tres").duplicate();
 	$sprite.material.set_shader_param('outline_width', 1.0)
 	connect("mouse_exited", self, 'check_signal_exited')
+	var overgrow = 10.0#size of a buffer around sprite for click mask
+	for i in range(0,scan_vecs.size()):
+		scan_vecs[i] *= overgrow
 
 
 func _gui_input(event):
@@ -57,6 +68,20 @@ func _gui_input(event):
 	var mouse_in_mask :bool = false
 	if event is InputEventMouse:
 		mouse_in_mask = texture_click_mask.get_bit(event.position)
+		#About click mask buffer: in all honesty I don't like this solution. Contrary to my best
+		#anticipations it is still takes no more then 1 ms to execute, so it seems acceptable.
+		#My first idea was to modify texture_click_mask accordingly, to simplify this validation,
+		#but it happened to be far more resource-intensive (around 1200 ms for each regenerate_click_mask).
+		#Be advised to optimize the whole solution somehow.
+		if !mouse_in_mask:
+			var bounderis = texture_click_mask.get_size()
+			for scan_vec in scan_vecs:
+				var scan_point = event.position + scan_vec
+				scan_point.x = clamp(scan_point.x, 0.0, bounderis.x)
+				scan_point.y = clamp(scan_point.y, 0.0, bounderis.y)
+				if texture_click_mask.get_bit(scan_point):
+					mouse_in_mask = true
+					break
 	if mouse_in_mask and event.is_pressed():
 		if event.is_action("RMB"):
 			emit_signal("signal_RMB", fighter)
@@ -195,7 +220,7 @@ func regenerate_click_mask(spr1 = true):
 	texture_click_mask = BitMap.new()
 #	texture_click_mask.create_from_image_alpha(tt, 0.9)
 	texture_click_mask.create_from_image_alpha(tm, 0.9)
-	
+
 
 #func get_attack_vector():
 #	if fighter.combatgroup == 'ally': return Vector2(100, 0)
