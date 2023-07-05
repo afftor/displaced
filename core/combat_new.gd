@@ -137,7 +137,7 @@ func _ready():
 #	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 #warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
-	$LevelUp/CloseButton.connect("pressed",self,'on_level_up_close')
+	$LevelUp/panel/CloseButton.connect("pressed",self,'on_level_up_close')
 	
 	#In very essence of register_button() idea, we should use clickable area
 	#and here is the simplest way:
@@ -1060,9 +1060,11 @@ func victory():#2remake for it is broken for now
 func on_level_up_close():
 	if leveled_up_chars.size() > 0:
 		var character = leveled_up_chars[0]
-		$LevelUp.visible = true
 		fill_up_level_up(character)
 		leveled_up_chars.erase(character)
+		$LevelUp/ShowPlayer.play("show")
+		$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
+		$LevelUp.visible = true
 	else:
 		$LevelUp.visible = false
 
@@ -1070,8 +1072,8 @@ func fill_up_level_up(character):
 	input_handler.ClearContainer($LevelUp/VBoxContainer/NewSkill/HBoxContainer)
 	$LevelUp/VBoxContainer/NewSkill.visible = false
 	
-	$LevelUp/Avatar/Circle.texture = character.portrait_circle()
-	$LevelUp/Label.text = tr(character.name) + " has just acquired a level!"
+	$LevelUp/panel/Avatar/Circle.texture = character.portrait_circle()
+	$LevelUp/panel/Label.text = tr(character.name) + " has just acquired a level!"
 	$LevelUp/VBoxContainer/Level/Before.text = str(character.level - 1)
 	$LevelUp/VBoxContainer/Level/After.text = str(character.level)
 	$LevelUp/VBoxContainer/Health/Before.text = str(ceil(character.get_hpmax_at_level(character.level - 1)))
