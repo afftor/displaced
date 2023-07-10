@@ -986,8 +986,8 @@ func victory():#2remake for it is broken for now
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)
 #			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
-		newbutton.get_node("xpbar").value = i.baseexp
 		newbutton.get_node("xpbar").max_value = i.get_exp_cap()
+		newbutton.get_node("xpbar").value = i.baseexp
 		var level = i.level
 		i.baseexp += ceil(rewardsdict.xp)
 		var subtween = input_handler.GetTweenNode(newbutton)
