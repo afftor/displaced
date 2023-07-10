@@ -141,25 +141,26 @@ func _ready():
 	
 	#In very essence of register_button() idea, we should use clickable area
 	#and here is the simplest way:
-#	var button_size = battlefieldpositions[4].rect_size
-#	TutorialCore.register_button("enemy", 
-#		positions[4], button_size)
-#	TutorialCore.register_button("character", 
-#		positions[2], button_size)
-	#But FighterNode has very complex sprite system, and actual sprite is smaller then node base
-	#to make tutorial buttons more elegant, we have to use next smart-ass wizardry.
-	#OBVIOUSLY it will fall appart in case of grand changes, so fill free to default to code above in such case
-	var sprite_bottom = battlefieldpositions[4].get_sprite_left_bottom()
-	var sprite_pos_4 = sprite_bottom + positions[4]
-	var rat_sprite_size = resources.get_res(Enemydata.enemylist['elvenrat'].animations.idle).get_size()
-	sprite_pos_4.y -= rat_sprite_size.y
+	var button_size = battlefieldpositions[4].rect_size
 	TutorialCore.register_button("enemy", 
-		sprite_pos_4, rat_sprite_size)
-	var sprite_pos_2 = sprite_bottom + positions[2]
-	var rose_sprite_size = state.heroes['rose'].animations.idle.get_size()
-	sprite_pos_2.y -= rose_sprite_size.y
+		positions[4], button_size)
 	TutorialCore.register_button("character", 
-		sprite_pos_2, rose_sprite_size)
+		positions[2], button_size)
+	#But FighterNode has very complex sprite system, and actual sprite is smaller then node base
+	#to make tutorial buttons more elegant, I've tried to use smart-ass wizardry.
+	#but, as predicted, it has fell appart with very first change inside FighterNode
+	#So I'm kepping this legecy code for a while, but feel free to delete it with some time
+#	var sprite_bottom = battlefieldpositions[4].get_sprite_left_bottom()
+#	var sprite_pos_4 = sprite_bottom + positions[4]
+#	var rat_sprite_size = resources.get_res(Enemydata.enemylist['elvenrat'].animations.idle).get_size()
+#	sprite_pos_4.y -= rat_sprite_size.y
+#	TutorialCore.register_button("enemy", 
+#		sprite_pos_4, rat_sprite_size)
+#	var sprite_pos_2 = sprite_bottom + positions[2]
+#	var rose_sprite_size = state.heroes['rose'].animations.idle.get_size()
+#	sprite_pos_2.y -= rose_sprite_size.y
+#	TutorialCore.register_button("character", 
+#		sprite_pos_2, rose_sprite_size)
 
 
 func cheatvictory():

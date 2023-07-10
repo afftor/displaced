@@ -157,7 +157,7 @@ func default_animation(node, args):
 		tex = node.fighter.animations[id]
 	var sp = node.get_node('sprite')
 	var sp2 = node.get_node('sprite2')
-	sp2.texture = tex
+	node.set_sprite_2(tex)
 	sp2.visible = true
 	if tex is AnimatedTexAutofill:
 		playtime = tex.frames / tex.fps
