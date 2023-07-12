@@ -732,6 +732,7 @@ func tag_gui_normal() -> void:
 	$Panel.modulate.a = 1
 	$Panel/DisplayName.self_modulate.a = 1
 	$Panel/DisplayName/Label.set("custom_colors/font_color", Color('ffd204'))
+	$Panel/DisplayName.modulate.a = 0
 	$Panel/CharPortrait.visible = true
 	$Panel/CharPortrait.modulate.a = 0
 	$Panel.visible = true
@@ -1126,6 +1127,8 @@ func play_scene(scene: String, restore = false) -> void:
 	$Panel/DisplayName/Label.text = ''
 	$Panel/DisplayName.visible = true
 	$Panel/CharPortrait.visible = false
+	$Panel/DisplayName.modulate.a = 0
+	$Panel/CharPortrait.modulate.a = 0
 	$Panel.visible = false
 	panel_vis = false
 	$CharImage.modulate.a = 0
