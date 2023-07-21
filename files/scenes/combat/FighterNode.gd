@@ -5,15 +5,15 @@ var panel_node
 var panel_node2
 
 
-signal signal_RMB
-signal signal_RMB_release
+#signal signal_RMB
+#signal signal_RMB_release
 signal signal_LMB
 signal signal_entered
 signal signal_exited
 
 var position = 0
 var fighter
-var RMBpressed = false
+#var RMBpressed = false
 var mouse_in_me = false
 
 var anim_up = true
@@ -67,9 +67,10 @@ func _ready():
 
 
 func _gui_input(event):
-#	if input_handler.if_mouse_inside($sprite) or input_handler.if_mouse_inside($sprite2):
 	var mouse_in_mask :bool = false
 	if event is InputEventMouse:
+		if (event.position.x < 0 or event.position.x > rect_size.x
+			or event.position.y < 0 or event.position.y > rect_size.y) : return
 		mouse_in_mask = texture_click_mask.get_bit(event.position)
 		#About click mask buffer: in all honesty I don't like this solution. Contrary to my best
 		#anticipations it is still takes no more then 1 ms to execute, so it seems acceptable.
@@ -86,11 +87,11 @@ func _gui_input(event):
 					mouse_in_mask = true
 					break
 	if mouse_in_mask and event.is_pressed():
-		if event.is_action("RMB"):
-			emit_signal("signal_RMB", fighter)
-			RMBpressed = true
-		elif event.is_action('LMB'):
+		if event.is_action('LMB'):
 			emit_signal("signal_LMB", position)
+#		elif event.is_action("RMB"):
+#			emit_signal("signal_RMB", fighter)
+#			RMBpressed = true
 
 	if event is InputEventMouseMotion:
 		if mouse_in_mask:
@@ -100,9 +101,9 @@ func _gui_input(event):
 		else:
 			check_signal_exited()
 
-	if event.is_action_released("RMB") && RMBpressed == true:
-		emit_signal("signal_RMB_release")
-		RMBpressed = false
+#	if event.is_action_released("RMB") && RMBpressed == true:
+#		emit_signal("signal_RMB_release")
+#		RMBpressed = false
 
 func check_signal_exited():
 	if mouse_in_me:
