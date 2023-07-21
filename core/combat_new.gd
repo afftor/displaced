@@ -101,7 +101,9 @@ enum {FIN_NO, FIN_STAGE, FIN_VIC, FIN_LOOSE}
 var sounds = {
 	"victory" : "sound/victory",
 	"itemget" : "sound/itemget_1",
-	"levelup" : "sound/levelup"
+	"levelup" : "sound/levelup",
+	"start" : "sound/battle_start",
+	"levelup_show" : "sound/level_up_window"
 }
 
 enum {
@@ -215,6 +217,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	enemygroup.clear()
 	playergroup.clear()
 
+	input_handler.PlaySound(sounds["start"])
 	input_handler.SetMusic(music)
 	fightover = false
 	fight_finished = false
@@ -1066,6 +1069,7 @@ func on_level_up_close():
 		$LevelUp/ShowPlayer.play("show")
 		$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
 		$LevelUp.visible = true
+		input_handler.PlaySound(sounds["levelup_show"])
 	else:
 		$LevelUp.visible = false
 
