@@ -24,9 +24,6 @@ rect_pivot_offset = Vector2( 125, 155 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="sprite" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -106,8 +103,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="HP"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "10/100"
 align = 1
 __meta__ = {
@@ -125,9 +122,6 @@ margin_right = 109.5
 margin_bottom = -253.0
 rect_min_size = Vector2( 101, 0 )
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="TextureRect" parent="Buffs"]
 visible = false
@@ -144,8 +138,8 @@ margin_left = -10.0
 margin_top = 15.0
 margin_right = 62.0
 margin_bottom = 47.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "555"
 align = 1
