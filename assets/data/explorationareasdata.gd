@@ -662,6 +662,7 @@ var areas = { #missions in new terminology
 		enemygroups = [], 
 		level = 1,
 		no_escape = true,
+		auto_advance = true,
 		tutorials = {
 			1: "first_battle",
 			2: "second_battle"

@@ -5,20 +5,20 @@ var panel_node
 var panel_node2
 
 
-signal signal_RMB
-signal signal_RMB_release
+#signal signal_RMB
+#signal signal_RMB_release
 signal signal_LMB
 signal signal_entered
 signal signal_exited
 
 var position = 0
 var fighter
-var RMBpressed = false
+#var RMBpressed = false
 var mouse_in_me = false
 
 var anim_up = true
-var hightlight = false
-var highlight_animated = false
+#var hightlight = false
+#var highlight_animated = false
 var speed = 1.33
 #var damageeffectsarray = []
 
@@ -29,38 +29,69 @@ var buffs = []
 
 #data format: node, time, type, slot, params
 
+#those are normal vectors to check pixels "around" given one
+#8 vectors - slower, but with higher precision
+var scan_vecs = [
+	Vector2(0.0, -1.0), #Vector2(1.0, -1.0).normalized(),
+	Vector2(1.0, 0.0), #Vector2(1.0, 1.0).normalized(),
+	Vector2(0.0, 1.0), #Vector2(-1.0, 1.0).normalized(),
+	Vector2(-1.0, 0.0), #Vector2(-1.0, -1.0).normalized()
+]
 
-func _process(delta):
-	if !hightlight or !highlight_animated: return
-	var tmp = $sprite.material.get_shader_param('opacity')
-	if anim_up: 
-		tmp += delta * speed
-		if tmp >= 1.0:
-			anim_up = false
-			tmp = 1.0
-	else:
-		tmp -= delta * speed
-		if tmp <= 0.0:
-			anim_up = true
-			tmp = 0.0
-	$sprite.material.set_shader_param('opacity', tmp)
+var sprite_bottom_margin = 0.0
+
+#func _process(delta):
+#	if !hightlight or !highlight_animated: return
+#	var tmp = $sprite.material.get_shader_param('opacity')
+#	if anim_up:
+#		tmp += delta * speed
+#		if tmp >= 1.0:
+#			anim_up = false
+#			tmp = 1.0
+#	else:
+#		tmp -= delta * speed
+#		if tmp <= 0.0:
+#			anim_up = true
+#			tmp = 0.0
+#	$sprite.material.set_shader_param('opacity', tmp)
 
 
 func _ready():
+	sprite_bottom_margin = $sprite.margin_bottom
 	$sprite.material = load("res://files/scenes/portret_shader.tres").duplicate();
 	$sprite.material.set_shader_param('outline_width', 1.0)
 	connect("mouse_exited", self, 'check_signal_exited')
+	var overgrow = 10.0#size of a buffer around sprite for click mask
+	for i in range(0,scan_vecs.size()):
+		scan_vecs[i] *= overgrow
 
 
 func _gui_input(event):
-#	if input_handler.if_mouse_inside($sprite) or input_handler.if_mouse_inside($sprite2):
-	var mouse_in_mask :bool = texture_click_mask.get_bit(event.position)
+	var mouse_in_mask :bool = false
+	if event is InputEventMouse:
+		if (event.position.x < 0 or event.position.x > rect_size.x
+			or event.position.y < 0 or event.position.y > rect_size.y) : return
+		mouse_in_mask = texture_click_mask.get_bit(event.position)
+		#About click mask buffer: in all honesty I don't like this solution. Contrary to my best
+		#anticipations it is still takes no more then 1 ms to execute, so it seems acceptable.
+		#My first idea was to modify texture_click_mask accordingly, to simplify this validation,
+		#but it happened to be far more resource-intensive (around 1200 ms for each regenerate_click_mask).
+		#Be advised to optimize the whole solution somehow.
+		if !mouse_in_mask:
+			var bounderis = texture_click_mask.get_size() - Vector2(1.0,1.0)
+			for scan_vec in scan_vecs:
+				var scan_point = event.position + scan_vec
+				scan_point.x = clamp(scan_point.x, 0.0, bounderis.x)
+				scan_point.y = clamp(scan_point.y, 0.0, bounderis.y)
+				if texture_click_mask.get_bit(scan_point):
+					mouse_in_mask = true
+					break
 	if mouse_in_mask and event.is_pressed():
-		if event.is_action("RMB"):
-			emit_signal("signal_RMB", fighter)
-			RMBpressed = true
-		elif event.is_action('LMB'):
+		if event.is_action('LMB'):
 			emit_signal("signal_LMB", position)
+#		elif event.is_action("RMB"):
+#			emit_signal("signal_RMB", fighter)
+#			RMBpressed = true
 
 	if event is InputEventMouseMotion:
 		if mouse_in_mask:
@@ -70,9 +101,9 @@ func _gui_input(event):
 		else:
 			check_signal_exited()
 
-	if event.is_action_released("RMB") && RMBpressed == true:
-		emit_signal("signal_RMB_release")
-		RMBpressed = false
+#	if event.is_action_released("RMB") && RMBpressed == true:
+#		emit_signal("signal_RMB_release")
+#		RMBpressed = false
 
 func check_signal_exited():
 	if mouse_in_me:
@@ -104,13 +135,11 @@ func setup_character(ch):
 	
 	$sprite.texture = null
 	if fighter.defeated:
-		$sprite.rect_min_size = fighter.animations.dead_1.get_size()
-		$sprite.texture = fighter.animations.dead_1
+		set_sprite_1(fighter.animations.dead_1)
 		panel_node.modulate = Color(1,1,1,0.4)
 		panel_node2.modulate = Color(1,1,1,0.4)
 	else:
-		$sprite.rect_min_size = fighter.animations.idle.get_size()
-		$sprite.texture = fighter.animations.idle
+		set_sprite_1(fighter.animations.idle)
 		panel_node.modulate = Color(1,1,1,1)
 		panel_node2.modulate = Color(1,1,1,1)
 		reset_shield()
@@ -140,26 +169,27 @@ func setup_character(ch):
 		hp_bar.show()
 		hp_bar.max_value = fighter.get_stat('hpmax')
 		hp_bar.value = hp
-		center_node_on_sprite(hp_bar)
+#		center_node_on_sprite(hp_bar)
 	update_hp_label(fighter.hp)
 	
-	center_node_on_sprite($Buffs)
+#	center_node_on_sprite($Buffs)
 	put_above($Buffs, $sprite)
 	if fighter is h_rose:
 		#Rose got blank area on top of her sprite, so patch is in order.
 		#It may be better to fix image file itself, but for now I'll leave it as it is
 		var roses_height = 285
-		$Buffs.rect_position.y = get_sprite_left_bottom().y - roses_height
-		$Buffs.rect_position.y -= $Buffs.rect_size.y
+		$Buffs.rect_position.y = (get_sprite_bottom_center().y
+				- roses_height - $Buffs.rect_size.y)
 	
 	#names are disabled for now
 #	$Label.text = fighter.name
 #	center_node_on_sprite($Label)
 #	put_above($Label, $Buffs)
 
-func center_node_on_sprite(node :Control):
-	node.rect_position.x = $sprite.rect_position.x + $sprite.rect_size.x * 0.5
-	node.rect_position.x -= node.rect_size.x * 0.5
+#for now sprite is no longer changes it's center
+#func center_node_on_sprite(node :Control):
+#	node.rect_position.x = $sprite.rect_position.x + $sprite.rect_size.x * 0.5
+#	node.rect_position.x -= node.rect_size.x * 0.5
 
 func put_above(node_above :Control, node_under :Control):
 	node_above.rect_position.y = node_under.rect_position.y
@@ -193,7 +223,7 @@ func regenerate_click_mask(spr1 = true):
 	texture_click_mask = BitMap.new()
 #	texture_click_mask.create_from_image_alpha(tt, 0.9)
 	texture_click_mask.create_from_image_alpha(tm, 0.9)
-	
+
 
 #func get_attack_vector():
 #	if fighter.combatgroup == 'ally': return Vector2(100, 0)
@@ -399,77 +429,81 @@ func update_hp_label(newhp):
 #highlight modes
 func stop_highlight():
 	$sprite.material.set_shader_param('opacity', 0.0)
-	hightlight = false
+#	hightlight = false
 
 func highlight_active():
-	hightlight = true
-	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.0)
+#	hightlight = true
+#	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
 
 func highlight_hover():
-	hightlight = true
-	highlight_animated = false
+#	hightlight = true
+#	highlight_animated = false
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
 
 func highlight_target_ally():
-	hightlight = true
-	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.0)
+#	hightlight = true
+#	highlight_animated = true
+	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
 func highlight_target_ally_final():
-	hightlight = true
-	highlight_animated = false
+#	hightlight = true
+#	highlight_animated = false
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
 func highlight_target_enemy():
-	hightlight = true
-	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.0)
-	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
-
-func highlight_target_enemy_final():
-	hightlight = true
-	highlight_animated = false
+#	hightlight = true
+#	highlight_animated = true
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
-#disable-enable
-func disable():
-	if fighter.defeated: 
-		return
-	var tmp = $sprite.margin_bottom
-#	var tmp2 = $sprite.rect_size.x
-	$sprite.texture = fighter.animations.idle
-	$sprite.rect_min_size = fighter.animations.idle_1.get_size()
-	yield(get_tree(), "idle_frame")
+func highlight_target_enemy_final():
+#	hightlight = true
+#	highlight_animated = false
+	$sprite.material.set_shader_param('opacity', 0.8)
+	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
-	$sprite.rect_size = $sprite.rect_min_size
-	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
-#	if $sprite.rect_size.x < tmp2:
-#		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
-	regenerate_click_mask()
+#disable-enable temporaly switched off. As they seems only have been attuning sprites, it is no longer needed with new set_sprite() logic
+#but, as I am not sure if this truly was there only function, I am leaving legecy code for a while
+#Consider to bring it back, if something would crush
+func disable():
+	pass
+#	if fighter.defeated: 
+#		return
+#	var tmp = $sprite.margin_bottom
+##	var tmp2 = $sprite.rect_size.x
+#	$sprite.texture = fighter.animations.idle
+#	$sprite.rect_min_size = fighter.animations.idle_1.get_size()
+#	yield(get_tree(), "idle_frame")
+#
+#	$sprite.rect_size = $sprite.rect_min_size
+#	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
+##	if $sprite.rect_size.x < tmp2:
+##		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
+#	regenerate_click_mask()
 
 
 func enable():
-	if fighter.defeated: 
-		return
-	var tmp = $sprite.margin_bottom
-#	var tmp2 = $sprite.rect_size.x
-	$sprite.texture = fighter.animations.idle
-	$sprite.rect_min_size = fighter.animations.idle.get_size()
-	$sprite2.rect_min_size = fighter.animations.idle.get_size()
-	yield(get_tree(), "idle_frame")
-	$sprite.rect_size = $sprite.rect_min_size
-	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
-	$sprite2.rect_size = $sprite2.rect_min_size
-	$sprite2.rect_position.y -= $sprite2.margin_bottom - tmp
-#	if $sprite.rect_size.x < tmp2:
-#		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
-	regenerate_click_mask()
+	pass
+#	if fighter.defeated: 
+#		return
+#	var tmp = $sprite.margin_bottom
+##	var tmp2 = $sprite.rect_size.x
+#	$sprite.texture = fighter.animations.idle
+#	$sprite.rect_min_size = fighter.animations.idle.get_size()
+#	$sprite2.rect_min_size = fighter.animations.idle.get_size()
+#	yield(get_tree(), "idle_frame")
+#	$sprite.rect_size = $sprite.rect_min_size
+#	$sprite.rect_position.y -= $sprite.margin_bottom - tmp
+#	$sprite2.rect_size = $sprite2.rect_min_size
+#	$sprite2.rect_position.y -= $sprite2.margin_bottom - tmp
+##	if $sprite.rect_size.x < tmp2:
+##		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
+#	regenerate_click_mask()
 
 
 func disable_panel_node():
@@ -481,12 +515,7 @@ func disable_panel_node():
 func defeat():
 	print("!")
 	if fighter is hero:
-		$sprite.texture = fighter.animations.dead_1
-		$sprite.rect_min_size = fighter.animations.dead_1.get_size()
-#		$sprite.visible = false
-#		$sprite2.texture = fighter.animations.dead
-#		$sprite2.rect_min_size = fighter.animations.dead.get_size()
-#		$sprite2.visible = true
+		set_sprite_1(fighter.animations.dead_1)
 		regenerate_click_mask()
 		panel_node.modulate = Color(1,1,1,0.4)
 		panel_node2.modulate = Color(1,1,1,0.4)
@@ -499,8 +528,7 @@ func defeat():
 		visible = false
 
 func resurrect():
-	$sprite.texture = fighter.animations.idle
-	$sprite.rect_size = fighter.animations.idle.get_size()
+	set_sprite_1(fighter.animations.idle)
 	regenerate_click_mask()
 #	input_handler.FadeAnimation($sprite2, 0.3)
 #	input_handler.UnfadeAnimation($sprite, 0.3)
@@ -508,12 +536,30 @@ func resurrect():
 	panel_node2.modulate = Color(1,1,1,1)
 
 #this func created for TutorialCore.register_button(), so we can predict sprite position
-func get_sprite_left_bottom() ->Vector2:
-	var sprite_rect = $sprite.get_rect()
-	return Vector2(sprite_rect.position.x, sprite_rect.end.y)
-	
+#legecy code. Feel free to delete in time
+#func get_sprite_left_bottom() ->Vector2:
+#	var sprite_rect = $sprite.get_rect()
+#	return Vector2(sprite_rect.position.x, sprite_rect.end.y)
+
+func get_sprite_bottom_center() ->Vector2:
+	return Vector2(rect_size.x*0.5, rect_size.y + sprite_bottom_margin)
 
 func ret_hp_bar() ->Node:
 	return hp_bar
 
+func set_sprite(new_tex :Texture, sprite :TextureRect):
+	var bottom_center = get_sprite_bottom_center()
+	sprite.texture = new_tex
+	if new_tex != null :
+		var new_size = new_tex.get_size()
+		sprite.rect_position.x = bottom_center.x - new_size.x * 0.5
+		sprite.rect_position.y = bottom_center.y - new_size.y
+		sprite.rect_min_size = new_size
+		sprite.rect_size = new_size
+
+func set_sprite_2(new_tex :Texture):
+	set_sprite(new_tex, $sprite2)
+
+func set_sprite_1(new_tex :Texture):
+	set_sprite(new_tex, $sprite)
 

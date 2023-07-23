@@ -589,16 +589,22 @@ var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'}
 func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h = false, flip_v = false):
 	var scene
 	if sprites.has(effect):
-		if sprites[effect] is String:
-			scene = load(sprites[effect])
-			sprites[effect] = scene
+		if sprites[effect] is bool:#can only be false here
+			return
 		else:
 			scene = sprites[effect]
 	else:
-		scene = load("res://assets/images/gfx/%s/scene_animation.tscn" % effect)
-		sprites[effect] = scene
+		scene = "res://assets/images/gfx/%s/scene_animation.tscn" % effect
 	if !(scene is PackedScene):
-		return
+		if scene is String:
+			if ResourceLoader.exists(scene):
+				scene = load(scene)
+				sprites[effect] = scene
+			else:
+				sprites[effect] = false
+				return
+		else:
+			return
 	var x = scene.instance()
 	if flip_h or flip_v:
 		x.position.y -= 80 # need do adjust because hero sprites are too tall

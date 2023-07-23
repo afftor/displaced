@@ -481,7 +481,6 @@ func advance_check():
 	if areastate.stage > areadata.stages:
 		finish_area()
 	else:
-		build_area_description()
 #		if areadata.stagedenemies.has(areastate.stage) and areadata.stagedenemies[areastate.stage].has('scene'):
 #			advance_area()
 		var playing_scene = false
@@ -496,8 +495,13 @@ func advance_check():
 #				yield(input_handler.scene_node, "scene_end")
 #				advance_check()
 		input_handler.combat_node.hide_me()
-		if !playing_scene:
-			$AdvConfirm.visible = true
+		if areadata.has("auto_advance") and areadata.auto_advance:
+			assert(!playing_scene,"area with auto_advance has after_fight event!")
+			advance_area()
+		else:
+			build_area_description()
+			if !playing_scene:
+				$AdvConfirm.visible = true
 
 func adv_confirm():
 	advance_area()

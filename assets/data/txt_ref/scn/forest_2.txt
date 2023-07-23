@@ -22,11 +22,12 @@ Et - Thou propose a trade agreement? Of course, we have elves to spare for you a
 Ar - Sure, why not.
 Et - *Groan*
 Another huge treant slowly comes close. Its trunk bark bends to the sides, revealing a semi-conscious naked figure of an elven girl restricted inside of it.
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
-=ABG erika_vine_1=
-=GUI_FULL=
 =SPRITE_HIDE=
+=ABG erika_vine_1=
+=BLACKFADE 1=
+=GUI_FULL=
 Ar - What the hell? 
 Et - This is the elf thou were looking for.
 Ro - Why is she like that?!
@@ -38,12 +39,13 @@ Ar - That's enough, you should release her.
 Et - What? No. This is not correct...
 Ar - Rose, pass me the torch.
 Et - Alright, alright...
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
-=GUI_NORMAL=
 =BG forest=
-=SPRITE_UNFADE 0.5=
+=BLACKFADE 1=
+=GUI_NORMAL=
 =SPRITE erika_n=
+=SPRITE_UNFADE 0.5=
 In a few moments vines have released the girl's body, which fell into Arron's arms.
 Er - Ugh...
 Er - What's going on, Willy? 

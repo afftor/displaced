@@ -548,7 +548,6 @@ func _ready() -> void:
 	scenes_map = build_scenes_map(ref_src)
 
 	globals.AddPanelOpenCloseAnimation($LogPanel)
-	input_handler.connect("RMB_pressed", self, "toggle_panel")
 	$Panel/Log.connect("pressed",self,'OpenLog')
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
 	
@@ -657,33 +656,58 @@ func _process(delta: float) -> void:
 		advance_scene()
 
 
+func is_input_blocked() ->bool:
+	return (delay > 0
+			or $ChoicePanel.visible
+			or $ClosePanel.visible
+			or $MenuPanel.visible)
 
-func _input(event: InputEvent) -> void:
+
+func _input(event: InputEvent):
+	#here we process only keyboard events, for mouse events see _gui_input()
+	if !(event is InputEventKey): return
 	if event.is_action("ctrl"):
 		if event.is_pressed():
 			skip = true
 		else:
 			skip = false
-	if delay > 0: return
-	if $ChoicePanel.visible or $ClosePanel.visible or $MenuPanel.visible: return
+		get_tree().set_input_as_handled()
+		return
+	if is_input_blocked(): return
 
+	#only avail in replay mode due to ability to miss critical choices and unlocks otherwise
+	if replay_mode and event.is_action_pressed("ESC"):
+		prompt_close()
+		get_tree().set_input_as_handled()
+		return
+
+func _gui_input(event: InputEvent):
+	#here we process only mouse events, to avoid collisions with buttons
+	#for keyboard events see _input()
+	if is_input_blocked(): return
 	if $LogPanel.visible == true:
-		if event.is_action("MouseDown") && ($LogPanel/RichTextLabel.get_v_scroll().value + $LogPanel/RichTextLabel.get_v_scroll().page == $LogPanel/RichTextLabel.get_v_scroll().max_value || !$LogPanel/RichTextLabel.get_v_scroll().visible):
-			$LogPanel.hide()
+		if event.is_action_pressed("MouseDown"):
+			var v_scroll = $LogPanel/RichTextLabel.get_v_scroll()
+			if (v_scroll.value + v_scroll.page == v_scroll.max_value
+					|| !v_scroll.visible):
+				$LogPanel.hide()
 		return
-	if event.is_echo() == true || event.is_pressed() == false:
+	elif event.is_action_pressed("MouseUp"):
+		OpenLog()
+		return
+	
+	if event.is_action_pressed("RMB"):
+		toggle_panel()
 		return
 
-	if (event.is_action("LMB") or event.is_action("MouseDown")) and !(input_handler.if_mouse_inside($Panel/Log) or input_handler.if_mouse_inside($Panel/Options)):
+	if (event.is_action_pressed("LMB")
+				or event.is_action_pressed("MouseDown")):
 		if TextField.get_visible_characters() < TextField.get_total_character_count():
 			TextField.set_visible_characters(TextField.get_total_character_count())
 		else:
 #			print("+")
 			advance_scene()
-	
-	if event.is_action("ESC") and event.is_pressed():
-		if replay_mode: #only avail in replay mode due to ability to miss critical choices and unlocks otherwise
-			prompt_close()
+		return
 
 #--------------tags------------
 func tag_white() -> void:
@@ -708,6 +732,7 @@ func tag_gui_normal() -> void:
 	$Panel.modulate.a = 1
 	$Panel/DisplayName.self_modulate.a = 1
 	$Panel/DisplayName/Label.set("custom_colors/font_color", Color('ffd204'))
+	$Panel/DisplayName.modulate.a = 0
 	$Panel/CharPortrait.visible = true
 	$Panel/CharPortrait.modulate.a = 0
 	$Panel.visible = true
@@ -1102,6 +1127,8 @@ func play_scene(scene: String, restore = false) -> void:
 	$Panel/DisplayName/Label.text = ''
 	$Panel/DisplayName.visible = true
 	$Panel/CharPortrait.visible = false
+	$Panel/DisplayName.modulate.a = 0
+	$Panel/CharPortrait.modulate.a = 0
 	$Panel.visible = false
 	panel_vis = false
 	$CharImage.modulate.a = 0

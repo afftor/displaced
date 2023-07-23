@@ -101,7 +101,9 @@ enum {FIN_NO, FIN_STAGE, FIN_VIC, FIN_LOOSE}
 var sounds = {
 	"victory" : "sound/victory",
 	"itemget" : "sound/itemget_1",
-	"levelup" : "sound/levelup"
+	"levelup" : "sound/levelup",
+	"start" : "sound/battle_start",
+	"levelup_show" : "sound/level_up_window"
 }
 
 enum {
@@ -137,29 +139,30 @@ func _ready():
 #	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 #warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
-	$LevelUp/CloseButton.connect("pressed",self,'on_level_up_close')
+	$LevelUp/panel/CloseButton.connect("pressed",self,'on_level_up_close')
 	
 	#In very essence of register_button() idea, we should use clickable area
 	#and here is the simplest way:
-#	var button_size = battlefieldpositions[4].rect_size
-#	TutorialCore.register_button("enemy", 
-#		positions[4], button_size)
-#	TutorialCore.register_button("character", 
-#		positions[2], button_size)
-	#But FighterNode has very complex sprite system, and actual sprite is smaller then node base
-	#to make tutorial buttons more elegant, we have to use next smart-ass wizardry.
-	#OBVIOUSLY it will fall appart in case of grand changes, so fill free to default to code above in such case
-	var sprite_bottom = battlefieldpositions[4].get_sprite_left_bottom()
-	var sprite_pos_4 = sprite_bottom + positions[4]
-	var rat_sprite_size = resources.get_res(Enemydata.enemylist['elvenrat'].animations.idle).get_size()
-	sprite_pos_4.y -= rat_sprite_size.y
+	var button_size = battlefieldpositions[4].rect_size
 	TutorialCore.register_button("enemy", 
-		sprite_pos_4, rat_sprite_size)
-	var sprite_pos_2 = sprite_bottom + positions[2]
-	var rose_sprite_size = state.heroes['rose'].animations.idle.get_size()
-	sprite_pos_2.y -= rose_sprite_size.y
+		positions[4], button_size)
 	TutorialCore.register_button("character", 
-		sprite_pos_2, rose_sprite_size)
+		positions[2], button_size)
+	#But FighterNode has very complex sprite system, and actual sprite is smaller then node base
+	#to make tutorial buttons more elegant, I've tried to use smart-ass wizardry.
+	#but, as predicted, it has fell appart with very first change inside FighterNode
+	#So I'm kepping this legecy code for a while, but feel free to delete it with some time
+#	var sprite_bottom = battlefieldpositions[4].get_sprite_left_bottom()
+#	var sprite_pos_4 = sprite_bottom + positions[4]
+#	var rat_sprite_size = resources.get_res(Enemydata.enemylist['elvenrat'].animations.idle).get_size()
+#	sprite_pos_4.y -= rat_sprite_size.y
+#	TutorialCore.register_button("enemy", 
+#		sprite_pos_4, rat_sprite_size)
+#	var sprite_pos_2 = sprite_bottom + positions[2]
+#	var rose_sprite_size = state.heroes['rose'].animations.idle.get_size()
+#	sprite_pos_2.y -= rose_sprite_size.y
+#	TutorialCore.register_button("character", 
+#		sprite_pos_2, rose_sprite_size)
 
 
 func cheatvictory():
@@ -214,6 +217,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	enemygroup.clear()
 	playergroup.clear()
 
+	input_handler.PlaySound(sounds["start"])
 	input_handler.SetMusic(music)
 	fightover = false
 	fight_finished = false
@@ -985,8 +989,8 @@ func victory():#2remake for it is broken for now
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)
 #			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
-		newbutton.get_node("xpbar").value = i.baseexp
 		newbutton.get_node("xpbar").max_value = i.get_exp_cap()
+		newbutton.get_node("xpbar").value = i.baseexp
 		var level = i.level
 		i.baseexp += ceil(rewardsdict.xp)
 		var subtween = input_handler.GetTweenNode(newbutton)
@@ -1060,9 +1064,12 @@ func victory():#2remake for it is broken for now
 func on_level_up_close():
 	if leveled_up_chars.size() > 0:
 		var character = leveled_up_chars[0]
-		$LevelUp.visible = true
 		fill_up_level_up(character)
 		leveled_up_chars.erase(character)
+		$LevelUp/ShowPlayer.play("show")
+		$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
+		$LevelUp.visible = true
+		input_handler.PlaySound(sounds["levelup_show"])
 	else:
 		$LevelUp.visible = false
 
@@ -1070,8 +1077,8 @@ func fill_up_level_up(character):
 	input_handler.ClearContainer($LevelUp/VBoxContainer/NewSkill/HBoxContainer)
 	$LevelUp/VBoxContainer/NewSkill.visible = false
 	
-	$LevelUp/Avatar/Circle.texture = character.portrait_circle()
-	$LevelUp/Label.text = tr(character.name) + " has just acquired a level!"
+	$LevelUp/panel/Avatar/Circle.texture = character.portrait_circle()
+	$LevelUp/panel/Label.text = tr(character.name) + " has just acquired a level!"
 	$LevelUp/VBoxContainer/Level/Before.text = str(character.level - 1)
 	$LevelUp/VBoxContainer/Level/After.text = str(character.level)
 	$LevelUp/VBoxContainer/Health/Before.text = str(ceil(character.get_hpmax_at_level(character.level - 1)))
