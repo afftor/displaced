@@ -29,8 +29,15 @@ var hotkey_buttons = {
 	hotkey_skill_6 = -1
 }
 var hotkeys
+var sounds = {
+	"skill_pressed" : "sound/menu_btn"
+}
 
 func _ready():
+	for i in sounds.values():
+		resources.preload_res(i)
+	if resources.is_busy(): yield(resources, "done_work")
+	
 	$SkillPanel/Escape.connect("pressed", combat, "run")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
 	$SkillPanel/CategoriesContainer/ItemsButton.connect('pressed', self, "RebuildItemPanel")
@@ -200,6 +207,7 @@ func skill_button_pressed(mode, arg):
 	if !combat.allowaction: return
 	match mode:
 		'skill':
+			input_handler.PlaySound(sounds["skill_pressed"])
 			combat.SelectSkill(arg)
 		'item':
 			combat.ActivateItem(arg)
@@ -298,8 +306,8 @@ func RebuildDefaultsPanel():
 	for i in ['attack', 'defence']:
 		var newbutton = get_node("SkillPanel/DefaultSkillContainer").get_node(i)
 		var skill = Skillsdata.patch_skill(i, activecharacter)
-		if !newbutton.is_connected('pressed', combat, 'SelectSkill'):
-			newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
+		if !newbutton.is_connected('pressed', self, 'skill_button_pressed'):
+			newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 			newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
 
