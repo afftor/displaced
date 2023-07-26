@@ -30,7 +30,6 @@ const RES_EXT = {
 }
 
 signal done_work
-signal resource_loaded(path)
 onready var mutex = Mutex.new()
 
 var res_pool = {
@@ -39,23 +38,14 @@ var res_pool = {
 var current_loaded = 0
 var max_loaded = 0
 
-var queue = []
+var queue = {}
 var path_to_delete = []
 
 var busy = 0
 
-func resource_loaded(path) -> void:
-	if path in path_to_delete:
-		path_to_delete.erase(path)
-		print(path, " (invalid) ", current_loaded, "/", max_loaded)
-	else:
-#		print(path, " ", current_loaded, "/", max_loaded)
-		pass
 
 
-func _ready() -> void:
-	connect("resource_loaded", self, "resource_loaded")
-
+#func _ready() -> void:
 #	var path = resources.RES_ROOT.bg + '/bg'
 #	var dir = globals.dir_contents(path)
 #	if dir != null:
@@ -65,14 +55,19 @@ func _ready() -> void:
 #	yield(resources, "done_work")
 #	print('debug')
 
-
-func get_res(path: String) -> Resource:
-	var psplit = path.split("/")
+func split_path(path: String):
+	var psplit = path.split("/", true, 1)
 	if psplit.size() < 2:
 		print("wrong get res path %s" % path)
+		return
+	return psplit
+
+func get_res(path: String) -> Resource:
+	var psplit = split_path(path)
+	if !psplit:
 		return null
 	var category = psplit[0]
-	var label = path.replace(category + "/", "")
+	var label = psplit[1]
 
 	if (res_pool.has(category) && res_pool[category].has(label)):
 		return res_pool[category][label]
@@ -80,22 +75,27 @@ func get_res(path: String) -> Resource:
 		return null
 
 
+func has_res(path: String) -> bool:
+	var psplit = split_path(path)
+	if !psplit:
+		return false
+	var category = psplit[0]
+	var label = psplit[1]
+	return res_pool.has(category) and res_pool[category].has(label)
+
+
 func _loaded(category: String, label: String, path: String, thread: Thread) -> void:
 	var res = thread.wait_to_finish()
-	current_loaded += 1
-	emit_signal("resource_loaded", path)
 	if res:
 		if !res_pool.has(category):
 			res_pool[category] = {}
 		res_pool[category][label] = res
 	else:
-		print("%s not found!" % path)
-		path_to_delete.append(category + "/" + label)
+		print("NOT FOUND: %s" % path)
+	queue[category].erase(label)
 	busy -= 1
 	if busy == 0:
 		emit_signal("done_work")
-		max_loaded = 0
-		current_loaded = 0
 
 
 func _thread_load(args: Array) -> Resource:
@@ -114,20 +114,22 @@ func _thread_load(args: Array) -> Resource:
 
 
 func preload_res(path: String) -> void:
-	var psplit = path.split("/")
-	if psplit.size() < 2:
-		print("wrong preload res path %s" % path)
+	var psplit = split_path(path)
+	if !psplit:
 		return
 	var category = psplit[0]
-	var label = path.trim_prefix(category + "/")
+	var label = psplit[1]
 
-	if path in queue:
+	if res_pool.has(category) and res_pool[category].has(label):
+		return
+	if !queue.has(category):
+		queue[category] = []
+	if queue[category].has(label):
 		return
 
 	var thread = Thread.new()
 	busy += 1
-	queue.append(path)
-	max_loaded += 1
+	queue[category].append(label)
 	thread.start(self, "_thread_load", [category, label, thread])
 
 func is_busy() -> bool:

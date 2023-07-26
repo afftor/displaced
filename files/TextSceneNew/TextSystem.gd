@@ -1144,7 +1144,7 @@ func play_scene(scene: String, restore = false) -> void:
 	var has_res = true
 	for i in scene_map["res"].keys():
 		for j in scene_map["res"][i]:
-			has_res =  i + "/" + j in resources.queue
+			has_res = resources.has_res(i + "/" + j)
 			if !has_res:
 				break
 		if !has_res:
