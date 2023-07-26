@@ -16,9 +16,6 @@ margin_right = 649.0
 margin_bottom = 788.0
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_left = 29.0
