@@ -197,6 +197,8 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	input_handler.combat_node = self
 	turns = 0
 	en_level = level
+	resources.preload_res("music/%s" % music)
+	if resources.is_busy(): yield(resources, "done_work")
 	
 	rules.clear()
 	aura_effects.ally.clear()
@@ -218,7 +220,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	playergroup.clear()
 
 	input_handler.PlaySound(sounds["start"])
-	input_handler.SetMusic(music)
+	input_handler.SetMusic(music, 10)
 	fightover = false
 	fight_finished = false
 	$Rewards.visible = false
@@ -1098,6 +1100,7 @@ func FinishCombat(value):
 		print("!ALERT! FinishCombat used inappropriately")
 		return
 	fight_finished = true
+	input_handler.StopMusic()
 	
 	for ch in state.heroes.values():
 		ch.defeated = false
@@ -1116,7 +1119,7 @@ func FinishCombat(value):
 	ClearSkillTargets()
 	clear_auras()
 	CombatAnimations.force_end()
-	input_handler.RevertMusic()
+#	input_handler.RevertMusic()
 	state.cleanup()
 	
 	if input_handler.curtains != null: 
