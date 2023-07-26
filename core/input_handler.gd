@@ -44,6 +44,13 @@ var curtains
 
 var rmb_state = false
 
+var musicfading = false
+var musicraising = false
+const musicfade_speed_default = 50
+var musicfade_speed = musicfade_speed_default
+const musicraise_speed_default = 100
+var musicraise_speed = musicraise_speed_default
+
 func _input(event):
 	if event.is_action_pressed("RMB") and !rmb_state:
 		emit_signal("RMB_pressed")
@@ -72,10 +79,6 @@ func _input(event):
 #		if str(int(event.as_text())) in str(range(1,4)):
 #			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 
-var musicfading = false
-var musicraising = false
-var musicvalue
-
 func _process(delta):
 	for i in CloseableWindowsArray:
 		if typeof(i) == TYPE_STRING: continue
@@ -91,14 +94,14 @@ func _process(delta):
 	soundcooldown -= delta
 
 	if musicfading:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*musicfade_speed)
 		if AudioServer.get_bus_volume_db(1) <= -80:
-			musicfading = false
-	if musicraising:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*100)
+			MusicStopFade()
+	elif musicraising:
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*musicraise_speed)
 		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
 			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
-			musicraising = false
+			MusicStopRaise()
 
 
 
@@ -396,39 +399,52 @@ func StopTweenRepeat(node):
 
 #Music
 var prevtheme = ""
-func SetMusic(res, delay = 0):
+func SetMusic(res, raise_speed = musicraise_speed_default):
 	if typeof(res) == TYPE_STRING:
-		prevtheme = res
 		res = resources.get_res("music/%s" % res)
-	yield(get_tree().create_timer(delay), 'timeout')
+	musicraise_speed = raise_speed
 	musicraising = true
-	musicfading = false
+	MusicStopFade()
 	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
-	if musicnode.stream == res:
+	if musicnode.stream == res and musicnode.is_playing() :
 		return
+	prevtheme = musicnode.stream
 	musicnode.stream = res
 	musicnode.play(0)
 
 
-func StopMusic(instant = false):
+func StopMusic(fade_speed = musicfade_speed_default):
+	musicfade_speed = fade_speed
 	musicfading = true
-	musicraising = false
+	MusicStopRaise()
 
 
 func RevertMusic():
-	if prevtheme != null and prevtheme.length() > 0:
+	if prevtheme != null:
 		SetMusic(prevtheme)
+
+func MusicStopFade():
+	musicfading = false
+	musicfade_speed = musicfade_speed_default
+	get_spec_node(NODE_MUSIC).stop()
+
+func MusicStopRaise():
+	musicraising = false
+	musicraise_speed = musicraise_speed_default
+
 #Sounds
 
 func PlaySound(res, delay = 0):
-	if res == null:
-		return #STAB to fix some skills cause crashing
+	var true_res
+	if res is String:
+		true_res = resources.get_res(res)
+	else:
+		true_res = res
+	if true_res == null:
+		return
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
-	if res is String:
-		soundnode.stream = resources.get_res(res)
-	else:
-		soundnode.stream = res
+	soundnode.stream = true_res
 	soundnode.seek(0)
 	soundnode.play(0)
 	yield(soundnode, 'finished')
