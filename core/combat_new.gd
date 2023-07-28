@@ -134,7 +134,7 @@ func _ready():
 	add_child(CombatAnimations)
 	for nd in get_tree().get_nodes_in_group('sfx_a'):
 		nd.set_script(load("res://files/scenes/combat/combat_sfx_anchor.gd"))
-		nd.animation_node = CombatAnimations
+		nd.set_animation_node(CombatAnimations)
 #warning-ignore:return_value_discarded
 #	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 #warning-ignore:return_value_discarded
@@ -213,7 +213,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	$Background.texture = tmp
 	$Combatlog/RichTextLabel.clear()
 	for i in battlefieldpositions:
-		battlefieldpositions[i].animation_node = CombatAnimations
+		battlefieldpositions[i].set_animation_node(CombatAnimations)
 	for i in range (1, 10):
 		battlefield[i] = null
 	enemygroup.clear()
