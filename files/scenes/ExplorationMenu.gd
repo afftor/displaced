@@ -16,8 +16,16 @@ onready var scalecheck = $BattleGroup/ScaleCheck
 
 onready var combat_node = get_parent().get_node("combat")
 
+var sounds = {
+	"start" : "sound/dragon protection",
+	"abandon" : "sound/menu_close"
+}
+
 func _ready():
 	Explorationdata.preload_resources()
+	for i in sounds.values():
+		resources.preload_res(i)
+	if resources.is_busy(): yield(resources, "done_work")
 	$BattleGroup/start.connect("pressed", self, "start_area")
 	$BattleGroup/advance.connect("pressed", self, "advance_area")
 	$BattleGroup/abandon.connect("pressed", self, "abandon_area")
@@ -182,6 +190,7 @@ func build_area_description():
 
 
 func start_area():
+	input_handler.PlaySound(sounds["start"])
 	state.start_area(area, scalecheck.checked)
 	for node in arealist.get_children():
 		if !node.visible: continue
@@ -248,6 +257,7 @@ func abandon_area():
 
 
 func abandon_area_confirm():
+	input_handler.PlaySound(sounds["abandon"])
 	state.abandon_area()
 	open_explore()
 

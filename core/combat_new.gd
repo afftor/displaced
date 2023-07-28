@@ -103,7 +103,8 @@ var sounds = {
 	"itemget" : "sound/itemget_1",
 	"levelup" : "sound/levelup",
 	"start" : "sound/battle_start",
-	"levelup_show" : "sound/level_up_window"
+	"levelup_show" : "sound/level_up_window",
+	"move_hero" : "sound/dodge"
 }
 
 enum {
@@ -810,6 +811,7 @@ func move_hero(chid, pos): #reserve -> bf
 	battlefield[pos] = newchar
 	make_hero_panel(newchar, false)
 	gui_node.build_hero_panels()
+	input_handler.PlaySound(sounds["move_hero"])
 	newchar.displaynode.appear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -827,6 +829,7 @@ func reserve_hero(chid): #bf -> reserve
 	allowaction = false
 	var newchar = state.heroes[chid]
 	var pos = newchar.position
+	input_handler.PlaySound(sounds["move_hero"])
 	newchar.displaynode.disappear()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -852,6 +855,7 @@ func swap_heroes(chid, pos): #bf <-> bf
 	var newchar = state.heroes[chid]
 	var tpos = newchar.position
 	var targetchar = null
+	input_handler.PlaySound(sounds["move_hero"])
 	if battlefield[pos] != null:
 		targetchar = battlefield[pos]
 #		print(targetchar.id)

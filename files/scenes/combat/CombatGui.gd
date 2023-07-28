@@ -30,7 +30,7 @@ var hotkey_buttons = {
 }
 var hotkeys
 var sounds = {
-	"skill_pressed" : "sound/menu_btn"
+	"skill_pressed" : "sound/itemget_2"
 }
 
 func _ready():
