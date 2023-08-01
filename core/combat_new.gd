@@ -221,7 +221,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	playergroup.clear()
 
 	input_handler.PlaySound(sounds["start"])
-	input_handler.SetMusic(music, 10)
+	input_handler.SetMusic(music, 20)
 	fightover = false
 	fight_finished = false
 	$Rewards.visible = false
@@ -1080,8 +1080,12 @@ func on_level_up_close():
 		$LevelUp.visible = false
 
 func fill_up_level_up(character):
-	input_handler.ClearContainer($LevelUp/VBoxContainer/NewSkill/HBoxContainer)
-	$LevelUp/VBoxContainer/NewSkill.visible = false
+	var skill_planks = [
+		$LevelUp/VBoxContainer/NewSkill,
+		$LevelUp/VBoxContainer/NewSkill2
+	]
+	skill_planks[0].visible = false
+	skill_planks[1].visible = false
 	
 	$LevelUp/panel/Avatar/Circle.texture = character.portrait_circle()
 	$LevelUp/panel/Label.text = tr(character.name) + " has just acquired a level!"
@@ -1091,13 +1095,19 @@ func fill_up_level_up(character):
 	$LevelUp/VBoxContainer/Health/After.text = str(ceil(character.get_hpmax_at_level(character.level)))
 	$LevelUp/VBoxContainer/Attack/Before.text = str(ceil(character.get_damage_at_level(character.level - 1)))
 	$LevelUp/VBoxContainer/Attack/After.text = str(ceil(character.get_damage_at_level(character.level)))
+	var skill_num = -1
 	for key in combatantdata.charlist[character.id].skilllist:
 		if combatantdata.charlist[character.id].skilllist[key] == character.level: # will fail if we go from lvl 5 to 7 and new skill was at lvl 6
-			var new_icon = input_handler.DuplicateContainerTemplate($LevelUp/VBoxContainer/NewSkill/HBoxContainer)
-			new_icon.visible = true
-			new_icon.texture = Skillsdata.skilllist[key].icon
-			globals.connectskilltooltip(new_icon, character.id, key)
-			$LevelUp/VBoxContainer/NewSkill.visible = true
+			skill_num += 1
+			var skill_info = Skillsdata.skilllist[key]
+			var skill_icon = skill_planks[skill_num].get_node("Icon")
+			skill_icon.texture = skill_info.icon
+			globals.connectskilltooltip(skill_icon, character.id, key)
+			var skill_name = skill_planks[skill_num].get_node("SkillText")
+			skill_name.text = tr("SKILL"+skill_info.name.to_upper())
+			skill_planks[skill_num].visible = true
+			if skill_num == 1:#unfortunately for this time we can't have more than 2 skills at lvl-up
+				break
 
 func FinishCombat(value):
 	if fight_finished: #not sure if it's necessary, but for the time I cann't predict all checkwinlose situations

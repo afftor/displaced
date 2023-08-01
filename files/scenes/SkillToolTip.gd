@@ -14,8 +14,8 @@ func showup(node, character_id, skillcode):
 #		$type.set("custom_colors/font_color", Color(1,0,0))
 #	elif skill.skilltype == 'spell':
 #		$type.set("custom_colors/font_color", Color(0,0,1))
-	$cooldown.text = str(skill.cooldown)
-	$type.text = skill.skilltype.capitalize()
+	$cooldown.text = "%s %s" % [str(skill.cooldown), tr("SKILLTURNS")]
+#	$type.text = skill.skilltype.capitalize()#put back, when needed!!!
 #	$descript.bbcode_text = character.skill_tooltip_text(skillcode)
 #	$descript.bbcode_text = skill.description
 	$descript.bbcode_text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT") #temporal

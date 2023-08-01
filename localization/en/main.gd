@@ -546,6 +546,8 @@ var TranslationDict = {
 	SKILLRILUPASSIVE = "Spirit Attractor",
 	SKILLRILUPASSIVEDESCRIPT = "Start the battle with 1 Spirit. Each Spirit increase damage received by 5% and damage dealt by 8%. When hit has 50% chance to generate new Spirit. Can hold up to 5 Spirits.",
 	
+	SKILLTURNS = "turns",
+	
 	WEAPON_ARRON1 = "Bastard Sword",
 	WEAPON_ARRON2 = "Royal Sword",
 	WEAPON_ARRON1_EFFECT1 = "Fencing: deals 1 more attack if target is killed",

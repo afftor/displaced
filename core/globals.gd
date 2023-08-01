@@ -417,7 +417,9 @@ func showskilltooltip(skill, node, character_id):
 	skilltooltip.showup(node, character_id, skill)
 	var pos = node.get_global_rect()
 	var pos2 = skilltooltip.rect_size
-	pos = Vector2(pos.end.x - pos2.x, pos.position.y - pos2.y)
+#	pos = Vector2(pos.end.x - pos2.x, pos.position.y - pos2.y)
+	pos = Vector2(pos.position.x + pos.size.x * 0.5 - pos2.x * 0.5,
+		pos.position.y - pos2.y)
 	skilltooltip.set_global_position(pos)
 
 

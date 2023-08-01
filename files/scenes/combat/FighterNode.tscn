@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://files/scenes/combat/char_spride_drag.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlegray_filler.png" type="Texture" id=7]
 [ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=8]
+[ext_resource path="res://tooltip_theme.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -128,6 +129,7 @@ visible = false
 margin_right = 50.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
+theme = ExtResource( 9 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6

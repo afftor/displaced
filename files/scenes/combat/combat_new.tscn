@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
@@ -35,6 +35,21 @@ size = 55
 use_filter = true
 font_data = ExtResource( 11 )
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/NewSkill2:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "show"
 length = 1.8
@@ -63,72 +78,84 @@ tracks/1/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VBoxContainer/Level:rect_scale")
+tracks/2/path = NodePath("VBoxContainer:rect_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 0.3, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("VBoxContainer/Health:rect_scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 0.3, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("VBoxContainer/Attack:rect_scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 1.1, 1.2 ),
-"transitions": PoolRealArray( 1, 0.3, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("VBoxContainer/NewSkill:rect_scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1.4, 1.5 ),
-"transitions": PoolRealArray( 1, 0.3, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("VBoxContainer:rect_scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer/Level:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 0.3, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/Health:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 0.3, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer/Attack:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 0.3, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("VBoxContainer/NewSkill:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 0.3, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
 tracks/7/type = "value"
-tracks/7/path = NodePath("panel/CloseButton:self_modulate")
+tracks/7/path = NodePath("VBoxContainer/NewSkill2:rect_scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 0.3, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("panel/CloseButton:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
 "times": PoolRealArray( 0, 1.6, 1.8 ),
 "transitions": PoolRealArray( 1, 0.3, 1 ),
 "update": 0,
@@ -636,18 +663,27 @@ margin_left = -368.492
 margin_top = -398.5
 margin_right = 306.508
 margin_bottom = 476.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ShowPlayer" type="AnimationPlayer" parent="LevelUp"]
+anims/RESET = SubResource( 7 )
 anims/show = SubResource( 2 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LevelUp"]
+visible = false
+margin_right = 677.0
+margin_bottom = 878.0
+texture = ExtResource( 7 )
+patch_margin_left = 57
+patch_margin_top = 89
+patch_margin_right = 50
+patch_margin_bottom = 93
 
 [node name="panel" type="TextureRect" parent="LevelUp"]
 margin_right = 675.0
 margin_bottom = 875.0
 rect_pivot_offset = Vector2( 335, 435 )
 texture = ExtResource( 7 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -684,7 +720,6 @@ custom_fonts/font = SubResource( 3 )
 text = "Name has just acquired a level"
 
 [node name="CloseButton" type="TextureButton" parent="LevelUp/panel"]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 251.5
 margin_top = 716.0
 margin_right = 423.5
@@ -692,9 +727,6 @@ margin_bottom = 778.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Header" type="TextureRect" parent="LevelUp"]
 margin_left = -43.0
@@ -703,19 +735,14 @@ margin_right = 718.0
 margin_bottom = 72.0
 rect_pivot_offset = Vector2( 380, 106 )
 texture = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelUp"]
 margin_left = 67.0
-margin_top = 312.0
+margin_top = 260.0
 margin_right = 612.0
-margin_bottom = 397.0
+margin_bottom = 705.0
 custom_constants/separation = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+alignment = 1
 
 [node name="Level" type="TextureRect" parent="LevelUp/VBoxContainer"]
 margin_right = 545.0
@@ -888,9 +915,6 @@ margin_bottom = 17.5
 custom_fonts/font = SubResource( 5 )
 text = "1000"
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Arrow" type="TextureRect" parent="LevelUp/VBoxContainer/Attack"]
 anchor_left = 0.5
@@ -927,7 +951,6 @@ __meta__ = {
 margin_top = 270.0
 margin_right = 545.0
 margin_bottom = 355.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 272, 42 )
 texture = ExtResource( 12 )
 
@@ -942,30 +965,70 @@ margin_right = -105.5
 margin_bottom = 23.5
 custom_fonts/font = SubResource( 4 )
 text = "New skill"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelUp/VBoxContainer/NewSkill"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -2.5
-margin_top = -24.5
-margin_right = 224.5
-margin_bottom = 24.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureRect" parent="LevelUp/VBoxContainer/NewSkill/HBoxContainer"]
-visible = false
-margin_right = 49.0
-margin_bottom = 49.0
+[node name="Icon" type="TextureRect" parent="LevelUp/VBoxContainer/NewSkill"]
+margin_left = 270.0
+margin_top = 18.0
+margin_right = 319.0
+margin_bottom = 67.0
 rect_min_size = Vector2( 49, 49 )
 texture = ExtResource( 17 )
 expand = true
 stretch_mode = 7
+
+[node name="SkillText" type="Label" parent="LevelUp/VBoxContainer/NewSkill"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 51.5
+margin_top = -22.5
+margin_right = 259.5
+margin_bottom = 17.5
+custom_fonts/font = SubResource( 5 )
+text = "Skill name"
+clip_text = true
+
+[node name="NewSkill2" type="TextureRect" parent="LevelUp/VBoxContainer"]
+margin_top = 360.0
+margin_right = 545.0
+margin_bottom = 445.0
+rect_pivot_offset = Vector2( 272, 42 )
+texture = ExtResource( 12 )
+
+[node name="Text" type="Label" parent="LevelUp/VBoxContainer/NewSkill2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -247.5
+margin_top = -23.5
+margin_right = -105.5
+margin_bottom = 23.5
+custom_fonts/font = SubResource( 4 )
+text = "New skill"
+
+[node name="Icon" type="TextureRect" parent="LevelUp/VBoxContainer/NewSkill2"]
+margin_left = 270.0
+margin_top = 18.0
+margin_right = 319.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 49, 49 )
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 7
+
+[node name="SkillText" type="Label" parent="LevelUp/VBoxContainer/NewSkill2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 51.5
+margin_top = -22.5
+margin_right = 259.5
+margin_bottom = 17.5
+custom_fonts/font = SubResource( 5 )
+text = "Skill name"
+clip_text = true
 
 [connection signal="pressed" from="test" to="." method="test_combat"]
