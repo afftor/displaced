@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/combat/arron_circle.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
+[ext_resource path="res://files/scenes/combat/ResistToolTip.tscn" type="PackedScene" id=30]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -511,6 +512,17 @@ margin_bottom = 686.929
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ResistToolTipCont" type="CenterContainer" parent="."]
+margin_left = 288.0
+margin_top = 688.0
+margin_right = 788.0
+margin_bottom = 805.0
+mouse_filter = 2
+
+[node name="ResistToolTip" parent="ResistToolTipCont" instance=ExtResource( 30 )]
+margin_left = 81.0
+margin_right = 419.0
 
 [node name="gui" parent="." instance=ExtResource( 3 )]
 

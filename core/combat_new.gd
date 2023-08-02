@@ -17,6 +17,7 @@ var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false
 
 var CombatAnimations = preload("res://core/CombatAnimations_new.gd").new()
 onready var gui_node = $gui
+onready var resist_tooltip = $ResistToolTipCont/ResistToolTip
 
 var debug = false
 
@@ -123,6 +124,8 @@ signal turn_started
 signal combat_ended
 #feel free to add state signals per need
 
+var resist_tooltip_for_pos = -1
+
 func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
@@ -195,6 +198,7 @@ func test_combat():
 #battlefield setup
 func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	$test.visible = false
+	hide_resist_tooltip()
 	input_handler.combat_node = self
 	turns = 0
 	en_level = level
@@ -604,6 +608,7 @@ func checkdeaths():
 	for i in battlefield:
 		if battlefield[i] != null && battlefield[i].defeated != true && battlefield[i].hp <= 0:
 			battlefield[i].death()
+			hide_resist_tooltip_if_my(i)
 			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
 			#add fix around defeated player chars
 			if i > 3:
@@ -1447,6 +1452,7 @@ func get_random_target():
 #visuals
 func FighterMouseOver(position):
 	if position == null: return
+	show_resist_tooltip(position)
 	var fighter = battlefield[position]
 	var node = fighter.displaynode
 	match cur_state:
@@ -1506,6 +1512,7 @@ func FighterMouseOver(position):
 
 func FighterMouseOverFinish(position):
 	if position == null: return
+	hide_resist_tooltip()
 	Input.set_custom_mouse_cursor(cursors.default)
 	var fighter = battlefield[position]
 	var node = fighter.displaynode
@@ -2022,3 +2029,39 @@ func add_bonus(party, b_rec:String, value, revert = false):
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): aura_bonuses[party][b_rec] = 1.0 + value
 			else: aura_bonuses[party][b_rec] = value
+
+
+#resist_tooltip
+func show_resist_tooltip(pos :int):
+	if pos < 4 :
+		return
+	resist_tooltip_for_pos = pos
+	yield(get_tree().create_timer(1), 'timeout')
+	
+	if resist_tooltip_for_pos != pos:
+		return
+	var fighter = battlefield[pos]
+	if !fighter or fighter.defeated:
+		resist_tooltip_for_pos = -1
+		return
+	resist_tooltip.show_up(fighter.id)
+	var container = resist_tooltip.get_parent()
+	var pos_rect = fighter.displaynode.get_global_rect()
+	if pos == 6 or pos == 9:#at the bottom
+		var sprite_top_center = fighter.displaynode.get_global_sprite_top_center()
+		container.rect_position.y = (sprite_top_center.y - container.rect_size.y)
+	else:
+		container.rect_position.y = pos_rect.end.y
+	container.rect_position.x = (pos_rect.position.x
+		+ pos_rect.size.x * 0.5
+		- container.rect_size.x * 0.5)
+	if pos == 9:#need to do something with this porn
+		container.rect_position.x -= 30
+
+func hide_resist_tooltip():
+	resist_tooltip_for_pos = -1
+	resist_tooltip.hide()
+
+func hide_resist_tooltip_if_my(pos :int):
+	if resist_tooltip_for_pos == pos:
+		hide_resist_tooltip()

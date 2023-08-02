@@ -21,10 +21,39 @@ func showup(node, character_id, skillcode):
 	$descript.bbcode_text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT") #temporal
 	#$RichTextLabel.bbcode_text = text
 	
+	var damage_type :String
+	var damage_type_node = $damagetype
+	if skill.damagetype is String:
+		damage_type = get_true_damagetype(skill.damagetype, character_id)
+		damage_type_node.hide_value()
+	elif skill.damagetype is Array:
+		damage_type = get_true_damagetype(skill.damagetype[0], character_id)
+		damage_type_node.update_value("+")
+		print("ATTENTION! Skill at SkillToolTip has numerous damagetypes!!!")
+	else:
+		damage_type = ""
+	if damage_type.empty():
+		damage_type_node.hide()
+	else:
+		damage_type_node.show()
+		damage_type_node.set_resist_type(damage_type)
+	
 	var screen = get_viewport().get_visible_rect()
 	if get_rect().end.x >= screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
 	if get_rect().end.y >= screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
+
+func get_true_damagetype(damagetype :String, char_id) ->String:
+	var true_damagetype :String
+	if damagetype == 'weapon':
+		true_damagetype = state.heroes[char_id].get_weapon_damagetype()
+	else:
+		true_damagetype = damagetype
+	if !variables.resistlist.has(true_damagetype):
+		return ""
+	return true_damagetype
+
+
 

@@ -534,6 +534,12 @@ func resurrect():
 func get_sprite_bottom_center() ->Vector2:
 	return Vector2(rect_size.x*0.5, rect_size.y + sprite_bottom_margin)
 
+func get_global_sprite_top_center() ->Vector2:
+	var sprite = $sprite
+	return Vector2(sprite.rect_global_position.x - sprite.rect_size.x * 0.5,
+		sprite.rect_global_position.y)
+
+
 func ret_hp_bar() ->Node:
 	return hp_bar
 

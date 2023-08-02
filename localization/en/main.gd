@@ -191,6 +191,18 @@ var TranslationDict = {
 	MAXLEVEL =  "Maximum Level",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
 
+	#resists
+	RESIST_DAMAGE = "Damage",
+	RESIST_SLASH = "Slash",
+	RESIST_PIERCE = "Pierce",
+	RESIST_BLUDGEON = "Bludgeon",
+	RESIST_LIGHT = "Light",
+	RESIST_DARK = "Dark",
+	RESIST_AIR = "Air",
+	RESIST_WATER = "Water",
+	RESIST_EARTH = "Earth",
+	RESIST_FIRE = "Fire",
+
 	#stat tooltips
 	TOOLTIPDAMAGE = "Defines damage output of skills and spells",
 	TOOLTIPARMOR = "Reduces skill damage taken by this percent",

@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 #stub.
 var ch_id = ""
 
@@ -12,9 +12,18 @@ func build_for_hero(hero):
 
 func build_for_fighter(fighter):
 	ch_id = fighter
-	$Label.text = ""
+#	$Label.text = ""
 	var person = state.heroes[ch_id]
 	$icon.texture = person.combat_portrait()
 	var data = person.get_resists()
-	for res in data:
-		$Label.text += "%s: %.1f\n" % [res, data[res]]
+	for container in $VBoxContainer.get_children():
+		if !data.has(container.name):
+			container.hide()
+		else:
+			container.show()
+			container.get_node("ResistIcon").update_value(
+				"%.1f" % data[container.name],
+				data[container.name] > 0
+			)
+#	for res in data:
+#		$Label.text += "%s: %.1f\n" % [res, data[res]]
