@@ -443,6 +443,14 @@ func player_turn(pos):
 	gui_node.RebuildSkillPanel()
 	SelectSkill(selected_character.get_autoselected_skill(), true)
 
+func select_player_char(char_id):
+	for pos in variables.playerparty:
+		var ch = battlefield[pos]
+		if (ch != null and ch.id == char_id and
+				!ch.acted and !ch.defeated):
+			player_turn(pos)
+			return
+
 
 func enemy_turn(pos):
 	gui_node.RebuildSkillPanel()

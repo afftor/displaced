@@ -96,12 +96,13 @@ func bind_hero_panels():
 	for ch in state.characters:
 		var node = hpanel1.instance()
 		node.name = ch
-		node.connect('pressed', self, 'ShowHeroTooltip', [ch])
+		node.connect('pressed_lmb', combat, 'select_player_char', [ch])
+		node.connect('pressed_rmb', self, 'ShowHeroTooltip', [ch])
 		$PlayerStats/VBoxContainer.add_child(node)
 	for ch in state.characters:
 		var node = hpanel2.instance()
 		node.name = ch + '_reserve'
-		node.connect('pressed', self, 'ShowHeroTooltip', [ch])
+		node.connect('pressed_rmb', self, 'ShowHeroTooltip', [ch])
 		$PlayerStats/VBoxContainer.add_child(node)
 
 
