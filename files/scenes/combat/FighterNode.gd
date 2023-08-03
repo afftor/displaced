@@ -424,10 +424,11 @@ func stop_highlight():
 func highlight_active():
 #	hightlight = true
 #	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.8)
-	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
+	$sprite.material.set_shader_param('outline_width', 2.0)
+	$sprite.material.set_shader_param('opacity', 0.9)
+	$sprite.material.set_shader_param('outline_color', Color(1, 1, 0.35))
 
-func highlight_hover():
+func highlight_hover():#is it in use?
 #	hightlight = true
 #	highlight_animated = false
 	$sprite.material.set_shader_param('opacity', 0.8)
@@ -436,26 +437,32 @@ func highlight_hover():
 func highlight_target_ally():
 #	hightlight = true
 #	highlight_animated = true
+	$sprite.material.set_shader_param('outline_width', 1.0)
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
 func highlight_target_ally_final():
 #	hightlight = true
 #	highlight_animated = false
-	$sprite.material.set_shader_param('opacity', 0.8)
-	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+#	$sprite.material.set_shader_param('opacity', 0.8)
+#	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+	#without animation they are same at the moment
+	highlight_target_ally()
 
 func highlight_target_enemy():
 #	hightlight = true
 #	highlight_animated = true
+	$sprite.material.set_shader_param('outline_width', 1.0)
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
 func highlight_target_enemy_final():
 #	hightlight = true
 #	highlight_animated = false
-	$sprite.material.set_shader_param('opacity', 0.8)
-	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
+#	$sprite.material.set_shader_param('opacity', 0.8)
+#	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
+	#without animation they are same at the moment
+	highlight_target_enemy()
 
 #disable-enable temporaly switched off. As they seems only have been attuning sprites, it is no longer needed with new set_sprite() logic
 #but, as I am not sure if this truly was there only function, I am leaving legecy code for a while
