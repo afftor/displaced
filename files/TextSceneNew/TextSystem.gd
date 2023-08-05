@@ -1016,7 +1016,8 @@ func prompt_close():
 
 
 func stop_scene() -> void:
-	input_handler.StopMusic()
+#	input_handler.StopMusic()
+	input_handler.SetMusic("towntheme")
 	set_process(false)
 	set_process_input(false)
 	#globals.check_signal("EventFinished")

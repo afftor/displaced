@@ -39,6 +39,9 @@ func _ready():
 		$forest.rect_size)
 # test functions
 #	unlock_area('village')
+	resources.preload_res("music/towntheme")
+	if resources.is_busy(): yield(resources, "done_work")
+	input_handler.SetMusic("towntheme")
 
 func test():
 	for ch in state.characters:

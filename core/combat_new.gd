@@ -225,7 +225,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	playergroup.clear()
 
 	input_handler.PlaySound(sounds["start"])
-	input_handler.SetMusic(music, 20)
+	input_handler.SetMusic(music, 50)
 	fightover = false
 	fight_finished = false
 	$Rewards.visible = false
@@ -1127,7 +1127,7 @@ func FinishCombat(value):
 		print("!ALERT! FinishCombat used inappropriately")
 		return
 	fight_finished = true
-	input_handler.StopMusic()
+	input_handler.SetMusic("towntheme",20)#very slow, so events could take over
 	
 	for ch in state.heroes.values():
 		ch.defeated = false

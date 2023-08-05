@@ -33,6 +33,7 @@ signal PositionChanged
 signal RMB_pressed
 signal RMB_released
 
+
 var map_node
 var village_node
 var explore_node
@@ -50,6 +51,7 @@ const musicfade_speed_default = 50
 var musicfade_speed = musicfade_speed_default
 const musicraise_speed_default = 100
 var musicraise_speed = musicraise_speed_default
+var setting_music
 
 func _input(event):
 	if event.is_action_pressed("RMB") and !rmb_state:
@@ -93,15 +95,7 @@ func _process(delta):
 			ShakingNodes.erase(i)
 	soundcooldown -= delta
 
-	if musicfading:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*musicfade_speed)
-		if AudioServer.get_bus_volume_db(1) <= -80:
-			MusicStopFade()
-	elif musicraising:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*musicraise_speed)
-		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
-			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
-			MusicStopRaise()
+	ProcessMusic(delta)
 
 
 
@@ -398,39 +392,62 @@ func StopTweenRepeat(node):
 	tween.remove_all()
 
 #Music
-var prevtheme = ""
-func SetMusic(res, raise_speed = musicraise_speed_default):
+#var prevtheme = ""
+func SetMusic(res, raise_speed = musicraise_speed_default, fade_speed = musicfade_speed_default):
 	if typeof(res) == TYPE_STRING:
 		res = resources.get_res("music/%s" % res)
-	musicraise_speed = raise_speed
-	musicraising = true
-	MusicStopFade()
-	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
-	if musicnode.stream == res and musicnode.is_playing() :
+	var musicnode = get_spec_node(NODE_MUSIC)
+	if res == null:
+		if musicnode.is_playing():
+			MusicFade(fade_speed)
 		return
-	prevtheme = musicnode.stream
-	musicnode.stream = res
-	musicnode.play(0)
+	elif musicnode.stream == res and musicnode.is_playing() :
+		return
+	setting_music = res
+	musicraise_speed = raise_speed
+	MusicFade(fade_speed)
 
+func on_music_fade():
+	if setting_music == null:
+		return
+	var musicnode = get_spec_node(NODE_MUSIC)
+#	prevtheme = musicnode.stream
+	musicnode.stream = setting_music
+	musicnode.play(0)
+	MusicRaise(musicraise_speed)
+	setting_music = null
 
 func StopMusic(fade_speed = musicfade_speed_default):
-	musicfade_speed = fade_speed
-	musicfading = true
-	MusicStopRaise()
+	setting_music = null
+	MusicFade(fade_speed)
 
+#not used for now. Delete with time
+#func RevertMusic():
+#	if prevtheme != null:
+#		SetMusic(prevtheme)
 
-func RevertMusic():
-	if prevtheme != null:
-		SetMusic(prevtheme)
-
-func MusicStopFade():
-	musicfading = false
-	musicfade_speed = musicfade_speed_default
-	get_spec_node(NODE_MUSIC).stop()
-
-func MusicStopRaise():
+func MusicFade(speed = musicfade_speed_default):
 	musicraising = false
-	musicraise_speed = musicraise_speed_default
+	musicfading = true
+	musicfade_speed = speed
+
+func MusicRaise(speed = musicraise_speed_default):
+	musicfading = false
+	musicraising = true
+	musicraise_speed = speed
+
+func ProcessMusic(delta):
+	if musicfading:
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*musicfade_speed)
+		if AudioServer.get_bus_volume_db(1) <= -80:
+			musicfading = false
+			get_spec_node(NODE_MUSIC).stop()
+			on_music_fade()
+	elif musicraising:
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*musicraise_speed)
+		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
+			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
+			musicraising = false
 
 #Sounds
 
