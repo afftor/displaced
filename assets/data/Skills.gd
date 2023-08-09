@@ -5223,3 +5223,22 @@ func _ready():
 				resources.preload_res("sound/%s" % tdata.strike)
 			if tdata.has('hit') and tdata.has('hittype') and tdata.hit != null and tdata.hittype == "absolute":
 				resources.preload_res("sound/%s" % tdata.hit)
+
+func get_true_damagetype(damagetype, char_id) ->String:
+	if damagetype is String:
+		return calc_damagetype(damagetype, char_id)
+	elif damagetype is Array:
+		print("ATTENTION! Skill for UI has numerous damagetypes!!!")
+		return  calc_damagetype(damagetype[0], char_id)
+	else:
+		return ""
+
+func calc_damagetype(damagetype :String, char_id) ->String:
+	var true_damagetype :String
+	if damagetype == 'weapon':
+		true_damagetype = state.heroes[char_id].get_weapon_damagetype()
+	else:
+		true_damagetype = damagetype
+	if !variables.resistlist.has(true_damagetype):
+		return ""
+	return true_damagetype

@@ -521,8 +521,10 @@ margin_bottom = 805.0
 mouse_filter = 2
 
 [node name="ResistToolTip" parent="ResistToolTipCont" instance=ExtResource( 30 )]
-margin_left = 81.0
-margin_right = 419.0
+margin_left = 250.0
+margin_top = 58.0
+margin_right = 250.0
+margin_bottom = 58.0
 
 [node name="gui" parent="." instance=ExtResource( 3 )]
 

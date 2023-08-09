@@ -20,7 +20,9 @@ func _ready():
 	label_node.connect("item_rect_changed", self, "on_label_rect_changed")
 	set_resist_type(resist_type)
 
+
 func on_label_rect_changed() ->void:
+	if !label_node.visible : return
 	rect_min_size.x = label_node.get_rect().end.x
 
 
@@ -32,6 +34,7 @@ func set_resist_type(new_type :String) ->void:
 
 func update_value(value :String, positive :bool = true) ->void:
 	label_node.show()
+	on_label_rect_changed()
 	label_node.text = value
 	var label_color :Color
 	if positive:
@@ -39,10 +42,6 @@ func update_value(value :String, positive :bool = true) ->void:
 	else:
 		label_color = negative_color
 	label_node.add_color_override('font_color', label_color)
-
-func hide_value() ->void:
-	label_node.hide()
-	rect_min_size.x = sprite_node.rect_size.x
 
 func set_resistance(new_type :String, value :String, positive :bool = true) ->void:
 	set_resist_type(new_type)

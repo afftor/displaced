@@ -62,12 +62,18 @@ func build_skills():
 func build_skill_panel(panel, data):
 	panel.get_node('TextureRect/icon').texture = data.icon
 	panel.get_node('VBoxContainer/HBoxContainer/name').text = tr("SKILL" + data.name.to_upper())
+	var resist_icon = panel.get_node('VBoxContainer/HBoxContainer/ResistIcon')
+	var damage_type :String = Skillsdata.get_true_damagetype(data.damagetype, character.id)
+	if damage_type.empty():
+		resist_icon.hide()
+	else:
+		resist_icon.set_resist_type(damage_type)
 	if data.cooldown == 0:
 		panel.get_node('VBoxContainer/HBoxContainer/cd').hide()
 		panel.get_node('VBoxContainer/HBoxContainer/TextureRect').hide()
 		panel.get_node('VBoxContainer/HBoxContainer/Label').hide()
-		
-	panel.get_node('VBoxContainer/HBoxContainer/cd').text = str(data.cooldown)
+	else:
+		panel.get_node('VBoxContainer/HBoxContainer/cd').text = str(data.cooldown)
 #	panel.get_node('VBoxContainer/descript').text = tr(data.description)
 	panel.get_node('VBoxContainer/descript').text = tr("SKILL" + data.code.to_upper() + "DESCRIPT")
 

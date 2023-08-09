@@ -1,4 +1,4 @@
-extends Panel
+extends NinePatchRect
 
 
 func showup(node, character_id, skillcode):
@@ -21,17 +21,8 @@ func showup(node, character_id, skillcode):
 	$descript.bbcode_text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT") #temporal
 	#$RichTextLabel.bbcode_text = text
 	
-	var damage_type :String
+	var damage_type :String = Skillsdata.get_true_damagetype(skill.damagetype, character_id)
 	var damage_type_node = $damagetype
-	if skill.damagetype is String:
-		damage_type = get_true_damagetype(skill.damagetype, character_id)
-		damage_type_node.hide_value()
-	elif skill.damagetype is Array:
-		damage_type = get_true_damagetype(skill.damagetype[0], character_id)
-		damage_type_node.update_value("+")
-		print("ATTENTION! Skill at SkillToolTip has numerous damagetypes!!!")
-	else:
-		damage_type = ""
 	if damage_type.empty():
 		damage_type_node.hide()
 	else:
@@ -45,15 +36,7 @@ func showup(node, character_id, skillcode):
 		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
 
-func get_true_damagetype(damagetype :String, char_id) ->String:
-	var true_damagetype :String
-	if damagetype == 'weapon':
-		true_damagetype = state.heroes[char_id].get_weapon_damagetype()
-	else:
-		true_damagetype = damagetype
-	if !variables.resistlist.has(true_damagetype):
-		return ""
-	return true_damagetype
+
 
 
 
