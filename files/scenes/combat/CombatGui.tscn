@@ -69,9 +69,6 @@ margin_top = -1.49829
 margin_bottom = -1.49829
 mouse_filter = 2
 script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -198,6 +195,7 @@ margin_right = -5.0
 margin_bottom = 306.0
 grow_horizontal = 0
 rect_min_size = Vector2( 361, 300 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1863,6 +1861,15 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="cheat" type="Button" parent="SkillPanel"]
+visible = false
+margin_left = 134.531
+margin_top = 99.2594
+margin_right = 209.531
+margin_bottom = 174.259
+rect_min_size = Vector2( 75, 75 )
+theme = ExtResource( 34 )
 
 [node name="ActiveActionPanel" type="Panel" parent="."]
 anchor_left = 0.5

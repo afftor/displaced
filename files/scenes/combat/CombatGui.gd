@@ -39,6 +39,7 @@ func _ready():
 	if resources.is_busy(): yield(resources, "done_work")
 	
 	$SkillPanel/Escape.connect("pressed", combat, "run")
+	$SkillPanel/cheat.connect("pressed", combat, "victory")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
 	$SkillPanel/CategoriesContainer/ItemsButton.connect('pressed', self, "RebuildItemPanel")
 	for ch in $SkillPanel/CategoriesContainer.get_children():

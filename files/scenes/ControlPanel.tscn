@@ -258,8 +258,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1188.0
+margin_left = -1003.0
 margin_top = -154.0
+margin_right = -22.0
+margin_bottom = 0.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="HeroPanel" parent="." instance=ExtResource( 14 )]

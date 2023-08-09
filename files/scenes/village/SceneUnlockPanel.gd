@@ -85,7 +85,9 @@ func rebuild_scene_list():
 	for event in Explorationdata.scene_sequences:
 		var eventdata = Explorationdata.scene_sequences[event]
 		if !eventdata.has('category'): continue
-		if selected_char != 'all' and eventdata.category != selected_char: continue
+		if selected_char == 'all':
+			if !state.heroes[eventdata.category].unlocked: continue
+		elif eventdata.category != selected_char: continue
 		var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
 		if state.OldSeqs.has(event):
 			panel.set_unlocked(eventdata)

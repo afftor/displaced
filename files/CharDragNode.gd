@@ -91,13 +91,8 @@ func press():
 func unpress():
 	pressed = false
 	toggle_mode = false
-	if input_handler.if_mouse_inside(self):
-		$name.set("custom_colors/font_color", variables.hexcolordict.light_grey)
-		$level.set("custom_colors/font_color", variables.hexcolordict.light_grey)
-	else:
-		$name.set("custom_colors/font_color", variables.hexcolordict.dark_grey)
-		$level.set("custom_colors/font_color", variables.hexcolordict.dark_grey)
-
+	$name.set("custom_colors/font_color", variables.hexcolordict.light_grey)
+	$level.set("custom_colors/font_color", variables.hexcolordict.light_grey)
 
 func rclick():
 	if dragdata == null: return
