@@ -15,6 +15,7 @@ var binded_events = {
 	modern_city = null
 }
 var village_inside_event = false
+var map_has_event = false
 
 func _ready():
 	input_handler.connect("EventFinished", self, "buildscreen")
@@ -77,9 +78,9 @@ func location_pressed(locname):
 
 
 func update_map():
+	map_has_event = false
 	for loc in binded_events:
 		check_location(loc)
-#		binded_events[loc] = globals.check_signal_test('LocationEntered', loc)
 		var area_node = get_node(loc)
 
 		if state.location_unlock[loc]:
@@ -92,6 +93,8 @@ func update_map():
 		if binded_events[loc] != null:
 			area_node.set_border_type('event')
 			area_node.set_active()
+			area_node.set_current(true)
+			map_has_event = true
 		elif loc == 'village':
 			area_node.set_border_type('safe')
 			area_node.set_active()
@@ -99,20 +102,20 @@ func update_map():
 #		elif loc == 'town':
 #			area_node.set_inactive()
 		else:
-#			area_node.set_border_type('combat')
-			
 			if Explorationdata.check_location_activity(loc):
 				area_node.set_active()
 				if Explorationdata.check_new_location_activity(loc):
-					area_node.set_border_type('combat')
+					area_node.set_border_type('event')
+					area_node.set_current(true)
+					map_has_event = true
 				else:
 					area_node.set_border_type('combat_replays')
-				if state.activearea != null:
-#					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
-					area_node.set_current(Explorationdata.locations[loc].missions.has(state.activearea))
-				else:
 					area_node.set_current(false)
+				if (state.activearea != null
+						and Explorationdata.locations[loc].missions.has(state.activearea)):
+					area_node.set_border_type('combat')
 			else:
+				area_node.set_current(false)
 				area_node.set_inactive()
 
 

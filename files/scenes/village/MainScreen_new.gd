@@ -73,7 +73,7 @@ func _ready():
 	if debug == true:
 		debug()
 	
-	buildscreen()
+#	buildscreen()
 	yield(get_tree(),'idle_frame')
 	
 	TutorialCore.register_button("townhall", 
@@ -145,7 +145,7 @@ func buildscreen(empty = null):
 		if binded_events[build] != null:
 			node.set_active()
 			res = true
-		elif build == 'bridge':
+		elif build == 'bridge' and input_handler.map_node.map_has_event:
 			node.set_active()
 		else:
 			node.set_inactive()
@@ -154,7 +154,6 @@ func buildscreen(empty = null):
 		get_node("townhall").set_active()
 		res = true
 	return res
-
 
 
 func check_townhall_events():

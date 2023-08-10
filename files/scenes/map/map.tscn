@@ -244,6 +244,17 @@ margin_right = 254.0
 margin_bottom = 162.0
 text = "Dragon Peaks"
 
+[node name="active" type="TextureRect" parent="dragon_mountains"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
+
 [node name="clouds" type="Control" parent="dragon_mountains"]
 margin_left = -1.67023
 margin_right = 38.3298
@@ -378,17 +389,6 @@ margin_top = 2.0
 margin_right = 384.67
 margin_bottom = 64.0
 
-[node name="active" type="TextureRect" parent="dragon_mountains"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
-texture = ExtResource( 19 )
-expand = true
-
 [node name="castle" type="TextureButton" parent="."]
 margin_left = 301.0
 margin_top = 153.0
@@ -407,6 +407,17 @@ margin_top = -21.0
 margin_right = 172.0
 margin_bottom = 3.0
 text = "Summerhill"
+
+[node name="active" type="TextureRect" parent="castle"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="clouds" type="Control" parent="castle"]
 margin_left = -1.67023
@@ -638,17 +649,6 @@ margin_top = 141.0
 margin_right = -247.33
 margin_bottom = 203.0
 
-[node name="active" type="TextureRect" parent="castle"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
-texture = ExtResource( 19 )
-expand = true
-
 [node name="town" type="TextureButton" parent="."]
 margin_left = 1126.0
 margin_top = 321.0
@@ -657,9 +657,6 @@ margin_bottom = 514.0
 texture_normal = ExtResource( 5 )
 expand = true
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" parent="town" instance=ExtResource( 24 )]
 margin_left = 232.0
@@ -667,6 +664,17 @@ margin_top = -32.0
 margin_right = 300.0
 margin_bottom = -8.0
 text = "Aeros"
+
+[node name="active" type="TextureRect" parent="town"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -133.0
+margin_top = -32.0
+margin_right = -69.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="clouds" type="Control" parent="town"]
 visible = false
@@ -951,17 +959,6 @@ margin_top = -106.0
 margin_right = 624.67
 margin_bottom = -44.0
 
-[node name="active" type="TextureRect" parent="town"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -133.0
-margin_top = -32.0
-margin_right = -69.0
-margin_bottom = 35.0
-texture = ExtResource( 19 )
-expand = true
-
 [node name="cave" type="TextureButton" parent="."]
 margin_left = 819.0
 margin_top = 387.0
@@ -978,6 +975,17 @@ __meta__ = {
 margin_left = 56.0
 margin_right = 112.0
 text = "Cave"
+
+[node name="active" type="TextureRect" parent="cave"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="clouds" type="Control" parent="cave"]
 visible = false
@@ -1081,17 +1089,6 @@ margin_top = -84.0
 margin_right = 144.67
 margin_bottom = -22.0
 
-[node name="active" type="TextureRect" parent="cave"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
-texture = ExtResource( 19 )
-expand = true
-
 [node name="forest" type="TextureButton" parent="."]
 margin_left = 342.0
 margin_top = 389.0
@@ -1110,6 +1107,17 @@ margin_top = -12.0
 margin_right = 124.0
 margin_bottom = 12.0
 text = "Forest"
+
+[node name="active" type="TextureRect" parent="forest"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="clouds" type="Control" parent="forest"]
 visible = false
@@ -1298,17 +1306,6 @@ margin_top = 10.0
 margin_right = -248.33
 margin_bottom = 72.0
 
-[node name="active" type="TextureRect" parent="forest"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
-texture = ExtResource( 19 )
-expand = true
-
 [node name="village" type="TextureButton" parent="."]
 margin_left = 493.0
 margin_top = 611.0
@@ -1327,6 +1324,17 @@ margin_top = -31.0
 margin_right = 204.0
 margin_bottom = -7.0
 text = "Village"
+
+[node name="active" type="TextureRect" parent="village"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="clouds" type="Control" parent="village"]
 visible = false
@@ -1660,17 +1668,6 @@ margin_top = -3.0
 margin_right = 628.67
 margin_bottom = 59.0
 
-[node name="active" type="TextureRect" parent="village"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
-texture = ExtResource( 19 )
-expand = true
-
 [node name="cult" type="TextureButton" parent="."]
 margin_left = 1434.0
 margin_top = 742.0
@@ -1689,6 +1686,17 @@ margin_top = -13.0
 margin_right = 261.0
 margin_bottom = 11.0
 text = "Cult Grounds"
+
+[node name="active" type="TextureRect" parent="cult"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -33.0
+margin_top = -32.0
+margin_right = 31.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+expand = true
 
 [node name="clouds" type="Control" parent="cult"]
 margin_left = -1.67023
@@ -1968,17 +1976,6 @@ margin_left = -67.3298
 margin_top = -254.0
 margin_right = 29.6702
 margin_bottom = -192.0
-
-[node name="active" type="TextureRect" parent="cult"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
-texture = ExtResource( 19 )
-expand = true
 
 [node name="modern_city" type="TextureButton" parent="."]
 visible = false
