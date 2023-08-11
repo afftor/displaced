@@ -48,11 +48,12 @@ func _ready():
 		if resources.is_busy(): yield(resources, "done_work")
 		test()
 	
-	var mission_btn = arealist.get_node("Button")
-	TutorialCore.register_button("missions", 
-		mission_btn.rect_global_position, 
-		mission_btn.rect_size)
-	
+	TutorialCore.register_dynamic_button("missions", self, "pressed")
+
+
+func get_tutorial_button(button_name :String):
+	if button_name == "missions":
+		return arealist.get_child(0)
 
 
 func test():

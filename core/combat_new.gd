@@ -122,6 +122,7 @@ var cur_state = T_AUTO
 signal combat_started
 signal turn_started
 signal combat_ended
+signal player_ready
 #feel free to add state signals per need
 
 var resist_tooltip_for_pos = -1
@@ -145,28 +146,10 @@ func _ready():
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
 	$LevelUp/panel/CloseButton.connect("pressed",self,'on_level_up_close')
 	
-	#In very essence of register_button() idea, we should use clickable area
-	#and here is the simplest way:
-	var button_size = battlefieldpositions[4].rect_size
-	TutorialCore.register_button("enemy", 
-		positions[4], button_size)
-	TutorialCore.register_button("character", 
-		positions[2], button_size)
-	#But FighterNode has very complex sprite system, and actual sprite is smaller then node base
-	#to make tutorial buttons more elegant, I've tried to use smart-ass wizardry.
-	#but, as predicted, it has fell appart with very first change inside FighterNode
-	#So I'm kepping this legecy code for a while, but feel free to delete it with some time
-#	var sprite_bottom = battlefieldpositions[4].get_sprite_left_bottom()
-#	var sprite_pos_4 = sprite_bottom + positions[4]
-#	var rat_sprite_size = resources.get_res(Enemydata.enemylist['elvenrat'].animations.idle).get_size()
-#	sprite_pos_4.y -= rat_sprite_size.y
-#	TutorialCore.register_button("enemy", 
-#		sprite_pos_4, rat_sprite_size)
-#	var sprite_pos_2 = sprite_bottom + positions[2]
-#	var rose_sprite_size = state.heroes['rose'].animations.idle.get_size()
-#	sprite_pos_2.y -= rose_sprite_size.y
-#	TutorialCore.register_button("character", 
-#		sprite_pos_2, rose_sprite_size)
+	TutorialCore.register_static_button("enemy",
+		battlefieldpositions[4], 'signal_LMB')
+	TutorialCore.register_static_button("character",
+		battlefieldpositions['rose'], 'signal_LMB')
 
 
 func cheatvictory():
@@ -442,6 +425,7 @@ func player_turn(pos):
 	gui_node.RebuildDefaultsPanel()
 	gui_node.RebuildSkillPanel()
 	SelectSkill(selected_character.get_autoselected_skill(), true)
+	emit_signal('player_ready')
 
 func select_player_char(char_id):
 	for pos in variables.playerparty:

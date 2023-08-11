@@ -76,9 +76,9 @@ func _ready():
 #	buildscreen()
 	yield(get_tree(),'idle_frame')
 	
-	TutorialCore.register_button("townhall", 
-		$townhall.rect_global_position, 
-		$townhall.rect_size)
+	TutorialCore.register_static_button("townhall", $townhall, "pressed")
+	TutorialCore.register_static_button("bridge", $bridge, "pressed")
+	
 	
 #	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
 #		EnvironmentColor('morning', true)

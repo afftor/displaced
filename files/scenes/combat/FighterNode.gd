@@ -8,7 +8,7 @@ var panel_node2
 
 #signal signal_RMB
 #signal signal_RMB_release
-signal signal_LMB
+signal signal_LMB(position)
 signal signal_entered
 signal signal_exited
 
@@ -531,12 +531,6 @@ func resurrect():
 #	input_handler.UnfadeAnimation($sprite, 0.3)
 	panel_node.modulate = Color(1,1,1,1)
 	panel_node2.modulate = Color(1,1,1,1)
-
-#this func created for TutorialCore.register_button(), so we can predict sprite position
-#legecy code. Feel free to delete in time
-#func get_sprite_left_bottom() ->Vector2:
-#	var sprite_rect = $sprite.get_rect()
-#	return Vector2(sprite_rect.position.x, sprite_rect.end.y)
 
 func get_sprite_bottom_center() ->Vector2:
 	return Vector2(rect_size.x*0.5, rect_size.y + sprite_bottom_margin)

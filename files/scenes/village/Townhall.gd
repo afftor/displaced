@@ -31,10 +31,8 @@ func _ready():
 	#the purpose is to prevent closebutton from been visible in "scenes" screen
 	move_child(closebutton, closebutton.get_index()-1)
 	
-	var upgrades_btn = $ButtonPanel/VBoxContainer/Upgrades
-	TutorialCore.register_button("town_upgrade", 
-		upgrades_btn.rect_global_position, 
-		upgrades_btn.rect_size)
+	TutorialCore.register_static_button("town_upgrade",
+		$ButtonPanel/VBoxContainer/Upgrades, 'pressed')
 
 
 func open():

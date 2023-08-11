@@ -276,8 +276,10 @@ func run_actions_list(list, replay = false) ->int:
 func change_screen(screen):
 	match screen:
 		'map', 'exploration':
-			if input_handler.explore_node != null: input_handler.explore_node.hide()
-			if input_handler.village_node != null: input_handler.village_node.hide()
+			if input_handler.explore_node != null:
+				input_handler.explore_node.hide()
+			if input_handler.village_node != null and input_handler.village_node.visible:
+				input_handler.village_node.ReturnToMap()
 			if input_handler.combat_node != null: 
 				input_handler.combat_node.hide()
 		'mission':

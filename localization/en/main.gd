@@ -725,5 +725,5 @@ var TranslationDict = {
 	TUTORIAL_ELEMENTAL_WEAKNESSES = "Different enemies are weak to certain elements. Strike with correct element to deal more damage.",
 	TUTORIAL_SWAPPING_CHARACTERS = "Drag characters to their positions to place or swap them. This costs no turn.",
 	TUTORIAL_BUILDING_UPGRADES = "Select Townhall to access your actions. Upgrading settlement makes characters stronger.",
-	TUTORIAL_EXPLORATION_MENU = "Select location and select mission you will be attending. You can replay your old missions for materials and experience.",
+	TUTORIAL_EXPLORATION_MENU = "Exclamation mark on buildings and locations indicates main plot's events and missions.\n\nLeave village, then select location and select mission you will be attending. You can replay your old missions for materials and experience.",
 }

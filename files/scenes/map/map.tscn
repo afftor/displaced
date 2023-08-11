@@ -1097,9 +1097,6 @@ margin_bottom = 563.0
 texture_normal = ExtResource( 6 )
 expand = true
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" parent="forest" instance=ExtResource( 24 )]
 margin_left = 48.0

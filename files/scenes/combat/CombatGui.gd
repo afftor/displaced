@@ -57,14 +57,17 @@ func _ready():
 	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
 	#so we have to yield, to get correct global_position for button
 	yield(get_tree(), "idle_frame")
-	var skill_btn = skill_container.get_child(0)
-	TutorialCore.register_button("skill",
-		skill_btn.rect_global_position,
-		skill_btn.rect_size)
-	TutorialCore.register_button("char_reserve",
-		$PlayerStats.rect_global_position,
-		$PlayerStats.rect_size)
-	
+	TutorialCore.register_dynamic_button("skill", self, "pressed")
+	TutorialCore.register_dynamic_button("char_reserve", self, "button_down")
+
+func get_tutorial_button(button_name :String):
+	if button_name == "skill":
+		return skill_container.get_child(0)
+	elif button_name == "char_reserve":
+		for ch in state.characters:
+			var node = get_hero_reserve(ch)
+			if node.visible:
+				return node
 
 func combat_start():
 	clear_log()

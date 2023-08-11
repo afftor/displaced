@@ -88,15 +88,12 @@ margin_bottom = 1.0
 text = "Townhall"
 
 [node name="bridge" type="TextureButton" parent="."]
-margin_left = 1569.76
-margin_top = 518.503
-margin_right = 1888.76
-margin_bottom = 868.503
+margin_left = 1570.0
+margin_top = 519.0
+margin_right = 1764.0
+margin_bottom = 682.0
 texture_normal = ExtResource( 19 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="bridge"]

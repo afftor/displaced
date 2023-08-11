@@ -35,9 +35,7 @@ func _ready():
 	
 	update_map()
 	
-	TutorialCore.register_button("exploration_loc", 
-		$forest.rect_global_position, 
-		$forest.rect_size)
+	TutorialCore.register_static_button("exploration_loc", $forest, "pressed")
 # test functions
 #	unlock_area('village')
 	resources.preload_res("music/towntheme")

@@ -212,7 +212,6 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'erika_1'},
 		{type = 'system', value = 'unlock_character', arg = 'erika'},#duplicate of postscene action
-#		{type = 'show_screen', value = 'village'},
 		]
 	},
 	
