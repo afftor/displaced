@@ -14,6 +14,7 @@ var tutorial_buttons = {
 	exploration_loc = {},
 	missions = {},
 	bridge = {},
+	townhall_event = {},
 }
 
 var tutorials_data = {
@@ -33,8 +34,12 @@ var tutorials_data = {
 		buttons = ["char_reserve"],
 		message = "TUTORIAL_SWAPPING_CHARACTERS"
 	},
+	quest_character = {
+		buttons = ["townhall", "townhall_event"],
+		message = "TUTORIAL_QUEST_CHARACTER"
+	},
 	building_upgrades = {
-		buttons = ["townhall", "town_upgrade"],
+		buttons = ["town_upgrade"],
 		message = "TUTORIAL_BUILDING_UPGRADES"
 	},
 	exploration_menu = {

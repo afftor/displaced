@@ -22,6 +22,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	erika_1 = [
 		{type = 'show_screen', value = 'village'},
+		{type = 'tutorial', value = 'quest_character'}
+	],
+	ember_1_1 = [
 		{type = 'tutorial', value = 'building_upgrades'}
 	],
 	dimitrius_1_3 = [

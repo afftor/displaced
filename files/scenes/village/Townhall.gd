@@ -33,6 +33,12 @@ func _ready():
 	
 	TutorialCore.register_static_button("town_upgrade",
 		$ButtonPanel/VBoxContainer/Upgrades, 'pressed')
+	TutorialCore.register_dynamic_button("townhall_event",
+		self, 'pressed')
+
+func get_tutorial_button(button_name :String):
+	if button_name == 'townhall_event':
+		return charpanel.get_child(0)
 
 
 func open():
