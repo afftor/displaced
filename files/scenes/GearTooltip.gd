@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 
 func _ready():
@@ -13,15 +13,18 @@ func showup(hero_id, slot, position):
 	show()
 
 func build_slot_tooltip(hero_id, slot):
-	var itemdata = Items.hero_items_data["%s_%s" % [hero_id, slot]]
+#	var itemdata = Items.hero_items_data["%s_%s" % [hero_id, slot]]
 	var hero = state.heroes[hero_id]
-	input_handler.ClearContainer($VBoxContainer, ['level', 'desc', 'separator'])
-	for i in range(1, 5):
-		var text = input_handler.DuplicateContainerTemplate($VBoxContainer, 'level')
-		text.text = "Level %d\n" % i
-		var text2 = input_handler.DuplicateContainerTemplate($VBoxContainer, 'desc')
-		text2.text = itemdata.leveldata[i].lvldesc
-#		if hero.gear_level[slot] >= i:
-#			text2 = "[color=green]%s[/color]" % text2
-		if i != 4:
-			var tmp = input_handler.DuplicateContainerTemplate($VBoxContainer, 'separator')
+	var itemdata = hero.get_item_data(slot)
+	$level.text = "Level %d\n" % itemdata.level
+	$desc.text = itemdata.description
+
+func build_upgrade_tooltip(hero_id, slot):
+	var hero = state.heroes[hero_id]
+	var itemdata = hero.get_item_upgrade_data(slot)
+	if !itemdata:
+		$level.text = "Current Level is maximum"
+		$desc.text = ""
+		return
+	$level.text = "Next level %d\n" % itemdata.level
+	$desc.text = itemdata.description

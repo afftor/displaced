@@ -148,7 +148,7 @@ func get_item_data_level(slot, level):
 	if typeof(res.icon) == TYPE_STRING:
 		res.icon = load(res.icon)
 	res.name = tr(template.name)
-	res.description = tr(template.description) + tr(template.leveldata[level].lvldesc)
+	res.description = tr(template.leveldata[level].lvldesc) #tr(template.description) +
 	res.cost = template.leveldata[level].cost.duplicate()
 	return res
 

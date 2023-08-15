@@ -39,6 +39,20 @@ func _ready():
 		testmode()
 		if resources.is_busy(): yield(resources, "done_work")
 		open(state.heroes['arron'])
+	
+	for slot in ['weapon1', 'weapon2', 'armor']:
+		var panel = $Panel.get_node(slot)
+		var tooltip_pos
+		if slot != 'armor':
+			panel.connect('pressed', self, 'select_slot', [slot])
+			var pos = panel.get_global_rect()
+			tooltip_pos = Vector2(pos.end.x, pos.position.y)
+		else:
+			var pos = panel.get_global_position()
+			tooltip_pos = Vector2(pos.x - 400, pos.y)
+		panel.connect("mouse_entered", self , 'show_slot_tooltip', [slot, tooltip_pos])
+		panel.connect("mouse_exited", globals , 'hideslottooltip')
+	connect("hide", globals , 'hideslottooltip')
 
 
 func testmode():
@@ -46,6 +60,10 @@ func testmode():
 		state.unlock_char(cid)
 		state.heroes[cid].upgrade_gear('weapon2')
 		state.heroes[cid].upgrade_gear('weapon2')
+
+
+func show_slot_tooltip(slot, pos):
+	globals.showslottooltip(character.id, slot, pos)
 
 
 func RepositionCloseButton():
@@ -98,16 +116,6 @@ func build_slot(slot):
 	panel.get_node("Icon").texture = data.icon
 	if slot != 'armor':
 		panel.pressed = (character.curweapon == slot)
-		if panel.is_connected("pressed", self, 'select_slot'):
-			panel.disconnect("pressed", self, 'select_slot')
-		panel.connect('pressed', self, 'select_slot', [slot])
-		var pos = panel.get_global_rect()
-		pos = Vector2(pos.end.x, pos.position.y - 150)
-		globals.connectslottooltip(panel, character.id, slot, pos)
-	else:
-		var pos = panel.get_global_position()
-		pos = Vector2(pos.x - 450, pos.y - 150)
-		globals.connectslottooltip(panel, character.id, slot, pos)
 
 
 func select_slot(sel):

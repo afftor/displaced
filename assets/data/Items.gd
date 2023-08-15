@@ -406,7 +406,7 @@ var bonustatsarray = ['damage','evasion', 'hitrate','hp','speed','resistfire', '
 
 var hero_items_data = {
 	arron_weapon1 = {
-		name = 'weapon1',
+		name = 'WEAPON_ARRON1',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'slash',
@@ -414,28 +414,28 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_1.png",
-				lvldesc = "1",
+				lvldesc = "WEAPON_ARRON1_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_2.png",
-				lvldesc = "2",
+				lvldesc = "WEAPON_ARRON1_EFFECT2",
 				cost = {wood = 10, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_3.png",
-				lvldesc = "3",
+				lvldesc = "WEAPON_ARRON1_EFFECT3",
 				cost = {chitine = 15, gold = 8000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_4.png",
-				lvldesc = "4",
+				lvldesc = "WEAPON_ARRON1_EFFECT4",
 				cost = {demonic = 10, gold = 17000},
 				},
 		}
 	},
 	arron_weapon2 = {
-		name = 'weapon2',
+		name = 'WEAPON_ARRON2',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'slash',
@@ -448,54 +448,54 @@ var hero_items_data = {
 				},
 			1:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_1.png",
-				lvldesc = "5",
+				lvldesc = "WEAPON_ARRON2_EFFECT1",
 				cost = {wood = 15, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_2.png",
-				lvldesc = "6",
+				lvldesc = "WEAPON_ARRON2_EFFECT2",
 				cost = {metal = 20, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_3.png",
-				lvldesc = "7",
+				lvldesc = "WEAPON_ARRON2_EFFECT3",
 				cost = {scales = 10, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_4.png",
-				lvldesc = "8",
+				lvldesc = "WEAPON_ARRON2_EFFECT4",
 				cost = {demonic = 10, gold = 15000},
 				},
 		}
 	},
 	arron_armor = {
-		name = 'armor',
+		name = 'ARMOR_ARRON',
 		description = 'descript',
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/arron_armor_1.png",
-				lvldesc = "1",
+				lvldesc = "ARMOR_ARRON_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/arron_armor_2.png",
-				lvldesc = "2",
+				lvldesc = "ARMOR_ARRON_EFFECT2",
 				cost = {stone = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_armor_3.png",
-				lvldesc = "3",
+				lvldesc = "ARMOR_ARRON_EFFECT3",
 				cost = {metal = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_armor_4.png",
-				lvldesc = "4",
+				lvldesc = "ARMOR_ARRON_EFFECT4",
 				cost = {otherworld = 10, gold = 10000},
 				},
 		}
 	},
 	rilu_weapon1 = {
-		name = 'weapon1',
+		name = 'WEAPON_RILU1',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'dark',
@@ -503,28 +503,28 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_1.png",
-				lvldesc = "1",
+				lvldesc = "WEAPON_RILU1_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_2.png",
-				lvldesc = "2",
+				lvldesc = "WEAPON_RILU1_EFFECT2",
 				cost = {metal = 15, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_3.png",
-				lvldesc = "3",
+				lvldesc = "WEAPON_RILU1_EFFECT3",
 				cost = {leather = 10, gold = 8000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_4.png",
-				lvldesc = "4",
+				lvldesc = "WEAPON_RILU1_EFFECT4",
 				cost = {demonic = 10, gold = 17000},
 				},
 		}
 	},
 	rilu_weapon2 = {
-		name = 'weapon2',
+		name = 'WEAPON_RILU2',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'light',
@@ -537,54 +537,54 @@ var hero_items_data = {
 				},
 			1:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_1.png",
-				lvldesc = "5",
+				lvldesc = "WEAPON_RILU2_EFFECT1",
 				cost = {stone = 15, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_2.png",
-				lvldesc = "6",
+				lvldesc = "WEAPON_RILU2_EFFECT2",
 				cost = {chitine = 15, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_3.png",
-				lvldesc = "7",
+				lvldesc = "WEAPON_RILU2_EFFECT3",
 				cost = {leather = 10, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_4.png",
-				lvldesc = "8",
+				lvldesc = "WEAPON_RILU2_EFFECT4",
 				cost = {otherworld = 10, gold = 15000},
 				},
 		}
 	},
 	rilu_armor = {
-		name = 'armor',
+		name = 'ARMOR_RILU',
 		description = 'descript',
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/rilu_armor_1.png",
-				lvldesc = "1",
+				lvldesc = "ARMOR_RILU_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_armor_2.png",
-				lvldesc = "2",
+				lvldesc = "ARMOR_RILU_EFFECT2",
 				cost = {chitine = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_armor_3.png",
-				lvldesc = "3",
+				lvldesc = "ARMOR_RILU_EFFECT3",
 				cost = {scales = 10, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_armor_4.png",
-				lvldesc = "4",
+				lvldesc = "ARMOR_RILU_EFFECT4",
 				cost = {otherworld = 10, gold = 10000},
 				},
 		}
 	},
 	iola_weapon1 = {
-		name = 'weapon1',
+		name = 'WEAPON_IOLA1',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'wind',
@@ -592,28 +592,28 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_1.png",
-				lvldesc = "1",
+				lvldesc = "WEAPON_IOLA1_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_2.png",
-				lvldesc = "2",
+				lvldesc = "WEAPON_IOLA1_EFFECT2",
 				cost = {chitine = 10, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_3.png",
-				lvldesc = "3",
+				lvldesc = "WEAPON_IOLA1_EFFECT3",
 				cost = {scales = 15, gold = 8000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_4.png",
-				lvldesc = "4",
+				lvldesc = "WEAPON_IOLA1_EFFECT4",
 				cost = {otherworld = 10, gold = 17000},
 				},
 		}
 	},
 	iola_weapon2 = {
-		name = 'weapon2',
+		name = 'WEAPON_IOLA2',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'water',
@@ -626,54 +626,54 @@ var hero_items_data = {
 				},
 			1:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_1.png",
-				lvldesc = "5",
+				lvldesc = "WEAPON_IOLA2_EFFECT1",
 				cost = {wood = 15, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_2.png",
-				lvldesc = "6",
+				lvldesc = "WEAPON_IOLA2_EFFECT2",
 				cost = {metal = 20, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_3.png",
-				lvldesc = "7",
+				lvldesc = "WEAPON_IOLA2_EFFECT3",
 				cost = {leather = 10, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_4.png",
-				lvldesc = "8",
+				lvldesc = "WEAPON_IOLA2_EFFECT4",
 				cost = {otherworld = 10, gold = 15000},
 				},
 		}
 	},
 	iola_armor = {
-		name = 'armor',
+		name = 'ARMOR_IOLA',
 		description = 'descript',
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/iola_armor_1.png",
-				lvldesc = "1",
+				lvldesc = "ARMOR_IOLA_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/iola_armor_2.png",
-				lvldesc = "2",
+				lvldesc = "ARMOR_IOLA_EFFECT2",
 				cost = {metal = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_armor_3.png",
-				lvldesc = "3",
+				lvldesc = "ARMOR_IOLA_EFFECT3",
 				cost = {leather = 10, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_armor_4.png",
-				lvldesc = "4",
+				lvldesc = "ARMOR_IOLA_EFFECT4",
 				cost = {demonic = 10, gold = 10000},
 				},
 		}
 	},
 	rose_weapon1 = {
-		name = 'weapon1',
+		name = 'WEAPON_ROSE1',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'fire',
@@ -681,28 +681,28 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_1.png",
-				lvldesc = "1",
+				lvldesc = "WEAPON_ROSE1_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_2.png",
-				lvldesc = "2",
+				lvldesc = "WEAPON_ROSE1_EFFECT2",
 				cost = {stone = 15, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_3.png",
-				lvldesc = "3",
+				lvldesc = "WEAPON_ROSE1_EFFECT3",
 				cost = {scales = 10, gold = 8000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_4.png",
-				lvldesc = "4",
+				lvldesc = "WEAPON_ROSE1_EFFECT4",
 				cost = {demonic = 5, gold = 17000},
 				},
 		}
 	},
 	rose_weapon2 = {
-		name = 'weapon2',
+		name = 'WEAPON_ROSE2',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'dark',
@@ -715,54 +715,54 @@ var hero_items_data = {
 				},
 			1:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_1.png",
-				lvldesc = "5",
+				lvldesc = "WEAPON_ROSE2_EFFECT1",
 				cost = {wood = 10, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_2.png",
-				lvldesc = "6",
+				lvldesc = "WEAPON_ROSE2_EFFECT2",
 				cost = {metal = 15, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_3.png",
-				lvldesc = "7",
+				lvldesc = "WEAPON_ROSE2_EFFECT3",
 				cost = {scales = 5, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_4.png",
-				lvldesc = "8",
+				lvldesc = "WEAPON_ROSE2_EFFECT4",
 				cost = {demonic = 10, gold = 15000},
 				},
 		}
 	},
 	rose_armor = {
-		name = 'armor',
+		name = 'ARMOR_ROSE',
 		description = 'descript',
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/rose_armor_1.png",
-				lvldesc = "1",
+				lvldesc = "ARMOR_ROSE_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rose_armor_2.png",
-				lvldesc = "2",
+				lvldesc = "ARMOR_ROSE_EFFECT2",
 				cost = {stone = 15, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_armor_3.png",
-				lvldesc = "3",
+				lvldesc = "ARMOR_ROSE_EFFECT3",
 				cost = {chitine = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rose_armor_4.png",
-				lvldesc = "4",
+				lvldesc = "ARMOR_ROSE_EFFECT4",
 				cost = {demonic = 5, gold = 10000},
 				},
 		}
 	},
 	ember_weapon1 = {
-		name = 'weapon1',
+		name = 'WEAPON_EMBER1',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'bludgeon',
@@ -770,28 +770,28 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_1.png",
-				lvldesc = "1",
+				lvldesc = "WEAPON_EMBER1_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_2.png",
-				lvldesc = "2",
+				lvldesc = "WEAPON_EMBER1_EFFECT2",
 				cost = {stone = 15, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_3.png",
-				lvldesc = "3",
+				lvldesc = "WEAPON_EMBER1_EFFECT3",
 				cost = {chitine = 15, gold = 8000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_4.png",
-				lvldesc = "4",
+				lvldesc = "WEAPON_EMBER1_EFFECT4",
 				cost = {otherworld = 5, gold = 17000},
 				},
 		}
 	},
 	ember_weapon2 = {
-		name = 'weapon2',
+		name = 'WEAPON_EMBER2',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'bludgeon',
@@ -804,54 +804,54 @@ var hero_items_data = {
 				},
 			1:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_1.png",
-				lvldesc = "5",
+				lvldesc = "WEAPON_EMBER2_EFFECT1",
 				cost = {stone = 15, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_2.png",
-				lvldesc = "6",
+				lvldesc = "WEAPON_EMBER2_EFFECT2",
 				cost = {chitine = 15, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_3.png",
-				lvldesc = "7",
+				lvldesc = "WEAPON_EMBER2_EFFECT3",
 				cost = {scales = 10, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_4.png",
-				lvldesc = "8",
+				lvldesc = "WEAPON_EMBER2_EFFECT4",
 				cost = {demonic = 10, gold = 15000},
 				},
 		}
 	},
 	ember_armor = {
-		name = 'armor',
+		name = 'ARMOR_EMBER',
 		description = 'descript',
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/ember_armor_1.png",
-				lvldesc = "1",
+				lvldesc = "ARMOR_EMBER_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/ember_armor_2.png",
-				lvldesc = "2",
+				lvldesc = "ARMOR_EMBER_EFFECT2",
 				cost = {wood = 15, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_armor_3.png",
-				lvldesc = "3",
+				lvldesc = "ARMOR_EMBER_EFFECT3",
 				cost = {leather = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_armor_4.png",
-				lvldesc = "4",
+				lvldesc = "ARMOR_EMBER_EFFECT4",
 				cost = {demonic = 10, gold = 10000},
 				},
 		}
 	},
 	erika_weapon1 = {
-		name = 'weapon1',
+		name = 'WEAPON_ERIKA1',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'pierce',
@@ -859,28 +859,28 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_1.png",
-				lvldesc = "1",
+				lvldesc = "WEAPON_ERIKA1_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_2.png",
-				lvldesc = "2",
+				lvldesc = "WEAPON_ERIKA1_EFFECT2",
 				cost = {wood = 15, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_3.png",
-				lvldesc = "3",
+				lvldesc = "WEAPON_ERIKA1_EFFECT3",
 				cost = {scales = 10, gold = 8000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_4.png",
-				lvldesc = "4",
+				lvldesc = "WEAPON_ERIKA1_EFFECT4",
 				cost = {otherworld = 10, gold = 17000},
 				},
 		}
 	},
 	erika_weapon2 = {
-		name = 'weapon2',
+		name = 'WEAPON_ERIKA2',
 		description = 'descript',
 		weaponrange = 'melee',
 		damagetype = 'pierce',
@@ -893,48 +893,48 @@ var hero_items_data = {
 				},
 			1:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_1.png",
-				lvldesc = "5",
+				lvldesc = "WEAPON_ERIKA2_EFFECT1",
 				cost = {stone = 10, gold = 500},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_2.png",
-				lvldesc = "6",
+				lvldesc = "WEAPON_ERIKA2_EFFECT2",
 				cost = {chitine = 20, gold = 5000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_3.png",
-				lvldesc = "7",
+				lvldesc = "WEAPON_ERIKA2_EFFECT3",
 				cost = {leather = 10, gold = 10000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_4.png",
-				lvldesc = "8",
+				lvldesc = "WEAPON_ERIKA2_EFFECT4",
 				cost = {otherworld = 5, gold = 15000},
 				},
 		}
 	},
 	erika_armor = {
-		name = 'armor',
+		name = 'ARMOR_ERIKA',
 		description = 'descript',
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/erika_armor_1.png",
-				lvldesc = "1",
+				lvldesc = "ARMOR_ERIKA_EFFECT1",
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/erika_armor_2.png",
-				lvldesc = "2",
+				lvldesc = "ARMOR_ERIKA_EFFECT2",
 				cost = {wood = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/erika_armor_3.png",
-				lvldesc = "3",
+				lvldesc = "ARMOR_ERIKA_EFFECT3",
 				cost = {metal = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_armor_4.png",
-				lvldesc = "4",
+				lvldesc = "ARMOR_ERIKA_EFFECT4",
 				cost = {demonic = 10, gold = 10000},
 				},
 		}

@@ -340,9 +340,6 @@ toggle_mode = true
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 17 )
 texture_disabled = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureRect" parent="Panel/weapon1"]
 anchor_left = 0.5
@@ -380,9 +377,11 @@ margin_left = 1.414
 margin_top = -50.0
 margin_right = 1.414
 margin_bottom = -10.0
+grow_vertical = 0
 custom_fonts/font = ExtResource( 5 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -435,9 +434,11 @@ margin_left = 1.414
 margin_top = -50.0
 margin_right = 1.414
 margin_bottom = -10.0
+grow_vertical = 0
 custom_fonts/font = ExtResource( 5 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -490,10 +491,12 @@ margin_left = 1.414
 margin_top = -50.0
 margin_right = 1.414
 margin_bottom = -10.0
+grow_vertical = 0
 custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

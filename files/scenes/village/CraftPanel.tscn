@@ -46,9 +46,9 @@ margin_left = 452.0
 margin_top = 16.0
 margin_right = 748.0
 margin_bottom = 67.0
-custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 13 )
 text = "Forge"
 align = 1
 valign = 1
@@ -177,9 +177,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -237.0
 margin_bottom = -197.0
+grow_vertical = 0
 custom_fonts/font = ExtResource( 11 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -233,9 +235,9 @@ margin_left = 5.0
 margin_top = 68.0
 margin_right = 90.0
 margin_bottom = 95.0
-custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 18 )
 text = "50/100"
 align = 1
 __meta__ = {
@@ -298,12 +300,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -237.0
 margin_bottom = -197.0
+grow_vertical = 0
 custom_fonts/font = ExtResource( 11 )
 text = "Broad Sword"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+autowrap = true
 
 [node name="ResPanel" type="TextureRect" parent="Panel/weapon2"]
 anchor_left = 0.5
@@ -354,9 +355,9 @@ margin_left = 5.0
 margin_top = 68.0
 margin_right = 90.0
 margin_bottom = 95.0
-custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 18 )
 text = "50/100"
 align = 1
 __meta__ = {
@@ -422,9 +423,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -237.0
 margin_bottom = -197.0
+grow_vertical = 0
 custom_fonts/font = ExtResource( 11 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -478,18 +481,30 @@ margin_left = 5.0
 margin_top = 68.0
 margin_right = 90.0
 margin_bottom = 95.0
-custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 18 )
 text = "50/100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tooltip" parent="." instance=ExtResource( 19 )]
+[node name="Tooltip" type="Control" parent="."]
 visible = false
-margin_left = 1460.71
-margin_top = 427.161
-margin_right = 1910.71
-margin_bottom = 977.161
+margin_left = 452.0
+margin_top = 430.0
+margin_right = 492.0
+margin_bottom = 470.0
+
+[node name="Next" parent="Tooltip" instance=ExtResource( 19 )]
+margin_left = 245.0
+margin_top = 342.0
+margin_right = 645.0
+margin_bottom = 482.0
+
+[node name="Current" parent="Tooltip" instance=ExtResource( 19 )]
+margin_left = -384.0
+margin_top = 342.0
+margin_right = 16.0
+margin_bottom = 504.0

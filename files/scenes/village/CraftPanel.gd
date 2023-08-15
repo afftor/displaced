@@ -1,9 +1,12 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 onready var charlist = $Panel/ScrollContainer/HBoxContainer
-onready var w1panel = $Panel/weapon1
-onready var w2panel = $Panel/weapon2
-onready var armpanel = $Panel/armor
+onready var slot_panels = {
+	"weapon1" : $Panel/weapon1,
+	"weapon2" : $Panel/weapon2,
+	"armor" : $Panel/armor
+}
+onready var tooltip = $Tooltip
 
 
 var selected_char
@@ -25,6 +28,10 @@ func _ready():
 		ch.get_node('TextureRect').texture = hero.portrait()
 		ch.connect('pressed', self, 'select_hero', [cid])
 	
+	for slot in slot_panels:
+		slot_panels[slot].connect('pressed', self, 'slot_select', [slot])
+		slot_panels[slot].get_node("Button").connect("pressed", self, 'upgrade_slot', [slot])
+	
 	if test_mode:
 		testmode()
 		if resources.is_busy(): 
@@ -44,7 +51,7 @@ func RepositionCloseButton():
 
 
 func open():
-	$Tooltip.hide()
+	tooltip.hide()
 	for cid in state.characters:
 		var ch = charlist.get_node(cid)
 		ch.visible = (state.heroes[cid].unlocked)
@@ -67,14 +74,12 @@ func select_hero(cid):
 
 func rebuild_gear(cid = selected_char):
 	var hero = state.heroes[cid]
-	rebuild_gear_slot(w1panel, hero.get_item_data('weapon1'), hero.get_item_upgrade_data('weapon1'))
-	rebuild_gear_slot(w2panel, hero.get_item_data('weapon2'), hero.get_item_upgrade_data('weapon2'))
-	rebuild_gear_slot(armpanel, hero.get_item_data('armor'), hero.get_item_upgrade_data('armor'))
+	for slot in slot_panels:
+		rebuild_gear_slot(slot_panels[slot], hero.get_item_data(slot), hero.get_item_upgrade_data(slot))
 	highlight_slot()
 
 
 func rebuild_gear_slot(node, data, newdata):
-	node.connect('pressed', self, 'slot_select', [data.type])
 	node.get_node("Icon").texture = data.icon
 	node.get_node("Label2").text = data.name
 	if data.level > 0:
@@ -95,7 +100,6 @@ func rebuild_gear_slot(node, data, newdata):
 			if newdata.cost[res] > state.materials[res]:
 				node.get_node("Button").disabled = true
 				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
-		node.get_node("Button").connect("pressed", self, 'upgrade_slot', [data.type])
 	else:
 		node.get_node("Button").visible = false
 		node.get_node("VBoxContainer").visible = false
@@ -112,21 +116,28 @@ func upgrade_slot(slot):
 		else:
 			state.materials[res] -= cost[res]
 	rebuild_gear()
+	if tooltip.visible:
+		rebuild_tooltip()
 
 
 func slot_select(slot = selected_slot):
 	if slot == selected_slot:
 		selected_slot = null
-		$Tooltip.hide()
+		tooltip.hide()
 	else:
 		selected_slot = slot
-		$Tooltip.build_slot_tooltip(selected_char, selected_slot)
-		$Tooltip.show()
+		rebuild_tooltip();
+		tooltip.rect_position = slot_panels[selected_slot].rect_global_position
+		tooltip.show()
 	highlight_slot()
 
+func rebuild_tooltip():
+	tooltip.get_node("Next").build_upgrade_tooltip(selected_char, selected_slot)
+	tooltip.get_node("Current").build_slot_tooltip(selected_char, selected_slot)
+
 func highlight_slot():
-	for sid in ['weapon1', 'weapon2', 'armor']:
-		var node = $Panel.get_node(sid)
+	for sid in slot_panels:
+		var node = slot_panels[sid]
 		if sid == selected_slot:
 			node.pressed = true
 			node.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.highlight_blue)
