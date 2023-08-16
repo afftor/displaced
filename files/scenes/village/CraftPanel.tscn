@@ -25,9 +25,6 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -217,8 +214,9 @@ grow_vertical = 0
 size_flags_horizontal = 3
 
 [node name="icon" type="TextureRect" parent="Panel/weapon1/VBoxContainer/button"]
+margin_top = 5.0
 margin_right = 97.0
-margin_bottom = 64.0
+margin_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 64, 64 )
@@ -226,9 +224,6 @@ size_flags_horizontal = 3
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Panel/weapon1/VBoxContainer/button"]
 margin_left = 5.0
@@ -337,8 +332,9 @@ grow_vertical = 0
 size_flags_horizontal = 3
 
 [node name="icon" type="TextureRect" parent="Panel/weapon2/VBoxContainer/button"]
+margin_top = 5.0
 margin_right = 97.0
-margin_bottom = 64.0
+margin_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 64, 64 )
@@ -463,8 +459,9 @@ grow_vertical = 0
 size_flags_horizontal = 3
 
 [node name="icon" type="TextureRect" parent="Panel/armor/VBoxContainer/button"]
+margin_top = 5.0
 margin_right = 97.0
-margin_bottom = 64.0
+margin_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 64, 64 )
