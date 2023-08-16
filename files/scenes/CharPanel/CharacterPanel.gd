@@ -46,10 +46,10 @@ func _ready():
 		if slot != 'armor':
 			panel.connect('pressed', self, 'select_slot', [slot])
 			var pos = panel.get_global_rect()
-			tooltip_pos = Vector2(pos.end.x, pos.position.y)
+			tooltip_pos = Vector2(pos.end.x + 5, pos.position.y)
 		else:
 			var pos = panel.get_global_position()
-			tooltip_pos = Vector2(pos.x - 400, pos.y)
+			tooltip_pos = Vector2(pos.x - 405, pos.y)
 		panel.connect("mouse_entered", self , 'show_slot_tooltip', [slot, tooltip_pos])
 		panel.connect("mouse_exited", globals , 'hideslottooltip')
 	connect("hide", globals , 'hideslottooltip')

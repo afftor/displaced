@@ -490,21 +490,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tooltip" type="Control" parent="."]
-visible = false
-margin_left = 452.0
-margin_top = 430.0
-margin_right = 492.0
-margin_bottom = 470.0
-
-[node name="Next" parent="Tooltip" instance=ExtResource( 19 )]
-margin_left = 245.0
-margin_top = 342.0
-margin_right = 645.0
-margin_bottom = 482.0
-
-[node name="Current" parent="Tooltip" instance=ExtResource( 19 )]
-margin_left = -384.0
-margin_top = 342.0
-margin_right = 16.0
-margin_bottom = 504.0
+[node name="Tooltip" parent="." instance=ExtResource( 19 )]
+margin_left = 7.0
+margin_top = 431.0
+margin_right = 447.0
+margin_bottom = 593.0

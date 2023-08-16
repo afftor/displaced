@@ -51,10 +51,10 @@ func RepositionCloseButton():
 
 
 func open():
-	tooltip.hide()
 	for cid in state.characters:
 		var ch = charlist.get_node(cid)
 		ch.visible = (state.heroes[cid].unlocked)
+	selected_char = null
 	select_hero('arron')
 #	input_handler.UnfadeAnimation(self)
 	show()
@@ -126,14 +126,19 @@ func slot_select(slot = selected_slot):
 		tooltip.hide()
 	else:
 		selected_slot = slot
-		rebuild_tooltip();
-		tooltip.rect_position = slot_panels[selected_slot].rect_global_position
+		rebuild_tooltip()
+		if selected_slot == 'armor':
+			tooltip.rect_position.x = (
+				slot_panels['armor'].get_global_rect().end.x + 5)
+		else:
+			tooltip.rect_position.x = (
+				slot_panels['weapon1'].rect_global_position.x -
+				tooltip.rect_size.x - 5)
 		tooltip.show()
 	highlight_slot()
 
 func rebuild_tooltip():
-	tooltip.get_node("Next").build_upgrade_tooltip(selected_char, selected_slot)
-	tooltip.get_node("Current").build_slot_tooltip(selected_char, selected_slot)
+	tooltip.build_upgrade_tooltip(selected_char, selected_slot)
 
 func highlight_slot():
 	for sid in slot_panels:
