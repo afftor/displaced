@@ -467,11 +467,7 @@ func enemy_turn(pos):
 		if checkwinlose() == FIN_NO:
 			print ('error getting targets')
 		return
-	#target = battlefield[target]
 
-	if target == null:
-		print(fighter.name, ' no target found')
-		return
 	yield(use_skill(castskill, fighter, target), 'completed')
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')

@@ -145,3 +145,6 @@ func _get_target(s_name):#for chosen with _get_action() func
 
 func get_spec_data():
 	return 0
+
+func bind(ch):
+	app_obj = ch

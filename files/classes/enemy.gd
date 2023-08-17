@@ -86,9 +86,9 @@ func createfromtemplate(enemy_id, lvl):
 		for t in template.traits:
 			add_trait(t);
 	if template.has('ai'):
-		ai = template.ai
+		ai = template.ai.new()
 	else:
 		ai = ai_base.new()
-	ai.app_obj = self
+	ai.bind(self)
 	animations = template.animations.duplicate()
 
