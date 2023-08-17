@@ -206,20 +206,20 @@ func StoreEvent(nm):
 	OldEvents[nm] = date
 
 
-func FinishEvent():
+func FinishEvent(replay = false):
 	if CurEvent == "" or CurEvent == null:return
-	StoreEvent(CurEvent)
+	if !replay:
+		StoreEvent(CurEvent)
 	scene_restore_data.clear()
+	var finished_event = CurEvent
+	CurEvent = ""
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
 #	input_handler.emit_signal("EventFinished")
 	var next_is_scene = false
-	if Explorationdata.event_triggers.has(CurEvent):
-		var nseqdata = Explorationdata.event_triggers[CurEvent]
-		CurEvent = ""
-		var output = globals.run_actions_list(nseqdata)
+	if Explorationdata.event_triggers.has(finished_event):
+		var nseqdata = Explorationdata.event_triggers[finished_event]
+		var output = globals.run_actions_list(nseqdata, replay)
 		next_is_scene = (output == variables.SEQ_SCENE_STARTED)
-	else:
-		CurEvent = ""
 
 	if !next_is_scene:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)

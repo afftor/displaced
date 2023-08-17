@@ -1023,10 +1023,7 @@ func stop_scene() -> void:
 	#globals.check_signal("EventFinished")
 	input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	hide()
-	if !replay_mode:
-		state.FinishEvent()
-	else:
-		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
+	state.FinishEvent(replay_mode)
 	replay_mode = false
 #	emit_signal("scene_end")
 	input_handler.emit_signal("EventFinished")
