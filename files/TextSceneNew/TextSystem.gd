@@ -42,7 +42,8 @@ const AVAIL_EFFECTS = [
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
 	"ABG", "STOP", "CHOICE", "SKIP",
-	"DECISION", "STATE", "LOOSE"
+	"DECISION", "STATE", "LOOSE",
+	"IF", "MOVETO", "POSITION"
 	]
 
 const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth','zelrothcaliban', 'rilu', 'demitrius', 'demitrius_demon', 'goblin', 'goblin2'] #idk if they are named this way in scenes
@@ -1002,6 +1003,43 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 		$VideoBunch.Change(res, sec_res)
 	delay = max(delay, 0.3) #not sure, but should be enough to fix asynchonisation of abg changing 
 
+#it would be best to migrate from =SKIP= methods to =IF= and =MOVETO=, as last one is far more flexible and mistakeproof, but it would be hard to do so
+func tag_moveto(pos :String) ->void:
+	var cur_line = get_line_nr()
+	#1000 - is an abstract "alot". If tags =STOP= or =POSITION= will not be found within 1000 lines, it would certainly be an error
+	for line_num in range(cur_line, cur_line + 1000):
+		var line = ref_src[line_num]
+		if line.begins_with("=") and line.ends_with("="):
+			var tag_string = line.replace("=", "")
+			var tag_array = tag_string.split(" ")
+			if tag_array.size() == 0:
+				continue
+			if (tag_array[0] == "POSITION"
+					and tag_array[1] == pos):
+				step = line_num - line_start
+				return
+			if tag_array[0] == "STOP":
+				break
+	assert(false, "POSITION not found in tag_moveto!!!")
+
+func tag_position(pos :String) ->void:
+	#ignored, as this is not a tag, but a marker for =MOVETO= tag
+	pass
+
+func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->void:
+	var success :bool
+	if type == "SCENESEEN":
+		success = state.valuecheck({type = "scene_seen", value = value})
+	elif type == "LASTCHOICE":
+		success = (int(value) == last_choice)
+	else:
+		assert(false, "Unknow condition in tag_if!!!")
+		return
+	
+	if success:
+		tag_moveto(true_pos)
+	else:
+		tag_moveto(false_pos)
 
 func tag_loose() -> void:
 	stop_scene()#stop_scene supposed to run separately of any tags for sake of seqinced scenes, so here it's usage appropriate only for gameover purpose

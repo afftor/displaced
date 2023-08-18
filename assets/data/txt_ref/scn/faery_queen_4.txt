@@ -22,12 +22,13 @@ FQ - Even less of a reason for me.
 Er - She won't bend, let's just strip her.
 FQ - What the hell are you thinking, you crazy bimbo?!
 Ar - That seems a bit extreme...
-(if seens Rose scene faery_queen_1_a) {
+=IF SCENESEEN faery_queen_1_a 0 1=
+=POSITION 0=
 Ro(sarcastic) - Yeah, go for it, Erika. 
 Ro(sarcastic) - Make her pay for what I went through.
 Ar(neutral) - Huh? What do you mean?
 Ro - N-no, it's nothing.
-}
+=POSITION 1=
 Er - No, if we humiliate her in front of others she will lose her authority.
 Em(normal) - Ho-oh, so that's why people wear clothes? 
 Ar(neutral) - Still seems a bit dirty, but if there's nothing else we can do...
@@ -35,6 +36,7 @@ FQ - No, stay away you imbecile perverts!
 =BLACKUNFADE 1=
 =DELAY 1=
 ...
+=SPRITE_HIDE=
 =BLACKFADE 1=
 =DELAY 1=
 =SPRITE erika=
@@ -49,6 +51,6 @@ Ar - Let's go home for now.
 Er - Good call, I'm already sick of this forest. 
 Ro(sad) - Haaah... What are we gonna do now, though.
 =GUI_HIDE=
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
 =STOP=
