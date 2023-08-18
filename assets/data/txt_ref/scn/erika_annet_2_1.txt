@@ -61,6 +61,6 @@ An - Your name is Erika, right?
 Erika went numb from hearing her name. 
 Her previous readiness to fight drains from her.
 =GUI_HIDE=
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
 =STOP=
