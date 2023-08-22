@@ -472,9 +472,13 @@ var scene_sequences = {
 	
 	erika_rose_init = {
 		initiate_signal = 'village_townhall_erika', 
-		initiate_reqs = [{type = 'seq_seen', value = 'erika_doggy'}],
+		initiate_reqs = [
+#			{type = 'seq_seen', value = 'erika_doggy'},
+			{type = 'decision', name = 'erika_2_true'},
+		],
 		actions = [
-		{type = 'scene', value = 'erika_rose_1'}, #must unlock new area/mission if agreed during the scene
+		{type = 'scene', value = 'erika_rose_1'},
+		{type = 'system', value = 'unlock_mission', arg = 'forest_erika_sidequest'}
 		]
 		
 	},
@@ -873,7 +877,7 @@ var areas = { #missions in new terminology
 		stages = 4, 
 		level = 12,
 		events = {
-			#on_complete = "", To be added
+			on_complete = "erika_3",
 		},
 		enemies = {
 			1 : [
