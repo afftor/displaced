@@ -206,13 +206,16 @@ func StoreEvent(nm):
 	OldEvents[nm] = date
 
 
+func ClearEvent():
+	scene_restore_data.clear()
+	CurEvent = ""
+
 func FinishEvent(replay = false):
 	if CurEvent == "" or CurEvent == null:return
 	if !replay:
 		StoreEvent(CurEvent)
-	scene_restore_data.clear()
 	var finished_event = CurEvent
-	CurEvent = ""
+	ClearEvent()
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
 #	input_handler.emit_signal("EventFinished")
 	var next_is_scene = false

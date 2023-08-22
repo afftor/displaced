@@ -1042,7 +1042,7 @@ func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->
 		tag_moveto(false_pos)
 
 func tag_loose() -> void:
-	stop_scene()#stop_scene supposed to run separately of any tags for sake of seqinced scenes, so here it's usage appropriate only for gameover purpose
+	stop_scene_on_lose()
 	if !replay_mode and input_handler.menu_node != null:
 		input_handler.menu_node.GameOverShow()
 
@@ -1066,6 +1066,14 @@ func stop_scene() -> void:
 #	emit_signal("scene_end")
 	input_handler.emit_signal("EventFinished")
 
+#it should be almost the same to stop_scene() but with no afteractions
+func stop_scene_on_lose() ->void:
+	set_process(false)
+	set_process_input(false)
+	hide()
+	state.ClearEvent()
+	replay_mode = false
+	input_handler.emit_signal("EventFinished")
 
 func advance_scene() -> void:
 	step += 1
