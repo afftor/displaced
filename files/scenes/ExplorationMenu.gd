@@ -107,9 +107,9 @@ func open_explore():
 		locname.text = tr(Explorationdata.locations[location].name)
 		locdesc.bbcode_text = tr(Explorationdata.locations[location].descript)
 		for a in Explorationdata.locations[location].missions:
-			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
 			if state.areaprogress[a].completed: continue
+			var areadata = Explorationdata.areas[a]
 			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 			panel.text = tr(areadata.name)
 			panel.set_meta('area', a)
@@ -117,17 +117,18 @@ func open_explore():
 			panel.get_node('Completed').visible = false
 			num_missions += 1
 		for a in Explorationdata.locations[location].missions:
-			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
 			if !state.areaprogress[a].completed: continue
+			var areadata = Explorationdata.areas[a]
 			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 			panel.text = tr(areadata.name)
 			panel.set_meta('area', a)
 			panel.connect('pressed', self, 'select_area', [a])
 			panel.get_node('Completed').visible = true
 			num_missions += 1
-	if num_missions == 0:
-		hide()
+	#this hide() seems to break down opening of missionless locs. If it has any other use, return this code
+#	if num_missions == 0:
+#		hide()
 
 
 func select_area(area_code):
