@@ -609,10 +609,15 @@ func preload_portraits():
 
 var text_log = ""
 func OpenLog():
-	$LogPanel/RichTextLabel.bbcode_text = text_log
-	$LogPanel.show()
+	var log_panel = $LogPanel
+	var log_label = $LogPanel/RichTextLabel
+	if log_panel.visible:
+		log_panel.hide()
+		return
+	log_label.bbcode_text = text_log
+	log_panel.show()
 	yield(get_tree().create_timer(0.2), 'timeout')
-	$LogPanel/RichTextLabel.scroll_to_line($LogPanel/RichTextLabel.get_line_count()-1)
+	log_label.scroll_to_line(log_label.get_line_count()-1)
 
 func OpenOptions():
 	$MenuPanel.show()
@@ -685,7 +690,7 @@ func _input(event: InputEvent):
 func _gui_input(event: InputEvent):
 	#here we process only mouse events, to avoid collisions with buttons
 	#for keyboard events see _input()
-	if is_input_blocked(): return
+	if $MenuPanel.visible: return
 	if $LogPanel.visible == true:
 		if event.is_action_pressed("MouseDown"):
 			var v_scroll = $LogPanel/RichTextLabel.get_v_scroll()
@@ -696,6 +701,8 @@ func _gui_input(event: InputEvent):
 	elif event.is_action_pressed("MouseUp"):
 		OpenLog()
 		return
+	
+	if is_input_blocked(): return
 	
 	if event.is_action_pressed("RMB"):
 		toggle_panel()
