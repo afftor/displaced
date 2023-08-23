@@ -783,18 +783,19 @@ func tag_blackunfade(secs: String = "0.5") -> void:
 	else:
 		input_handler.UnfadeAnimation($BlackScreen, float(secs))
 
+#using yield() is not good idea, but the best practice would be to get rid =BLACKTRANS= tag at all
 func tag_blacktrans(secs: String = "0.5") -> void:
+	input_handler.emit_signal("ScreenChanged")
 	TextField.bbcode_text = ''
 	$Panel/CharPortrait.modulate.a = 0
 	$Panel/DisplayName.modulate.a = 0
 	if rewind_mode:
-		input_handler.emit_signal("ScreenChanged")#should it be here?
 		tag_blackoff()
 		return
 	var duration = float(secs)
 	input_handler.UnfadeAnimation($BlackScreen, duration)
-	input_handler.emit_signal("ScreenChanged")
-	input_handler.FadeAnimation($BlackScreen, duration, duration)
+	yield(get_tree().create_timer(duration), 'timeout')
+	input_handler.FadeAnimation($BlackScreen, duration)
 
 func tag_bg(res_name: String, secs: String = "") -> void:
 	if is_video_bg:
