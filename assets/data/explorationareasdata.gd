@@ -97,7 +97,7 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{code = 'system', value = 'show_screen', args = 'village'},
 		{type = 'show_screen', value = 'village'},
 	],
-	zelroth_2 = [
+	dimitrius_2_1_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
 	],
 }
@@ -133,7 +133,7 @@ var locations = { #added seqs bindings and other fields
 #		missions = ['town_viktor_fight','town_siege'],
 		missions = ['road_to_town', 'town_siege'],
 		function = '',
-		events = ['town_gates', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', ]
+		events = ['town_gates', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', 'city_raid']
 	},
 	castle =  {
 		code = 'castle',
@@ -397,7 +397,7 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'victor_2_3'}, 
 		{type = 'mission', value = 'town_viktor_fight'},
-		{type = 'scene', value = 'victor_2_4'}
+#		{type = 'scene', value = 'victor_2_4'}
 		]
 	},
 	rilu_disappear =  {
@@ -413,7 +413,7 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'rilu_2_3_2'},
 		{type = 'mission', value = 'castle_rilu'},
-		{type = 'scene', value = 'rilu_2_4'},
+#		{type = 'scene', value = 'rilu_2_4'},
 		]
 	},
 	iola_wanderer = {
@@ -428,7 +428,14 @@ var scene_sequences = {
 		initiate_signal = 'village_townhall_flak', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_wanderer'}],
 		actions = [
-		{type = 'scene', value = 'flak_city_raid'},
+		{type = 'scene', value = 'flak_city_raid'}
+		]
+	},
+	city_raid = {
+		initiate_signal = 'town',
+		initiate_reqs = [{type = 'seq_seen', value = 'flak_town_raid'}],
+		actions = [
+		{type = 'scene', value = 'city_raid'},
 		{type = 'system', value = 'unlock_mission', arg = 'town_siege'}
 		]
 	},
@@ -1149,8 +1156,8 @@ var areas = { #missions in new terminology
 		stages = 7, 
 		level = 25,
 		events = {
-			after_fight_3 = 'town_siege_intermission',#to be added
-			pre_boss = 'annet_1',
+			after_fight_3 = 'town_siege_intermission',
+			after_fight_6 = 'annet_1',
 			on_complete = "annet_2",
 		},
 		enemies = {
@@ -1289,6 +1296,7 @@ var areas = { #missions in new terminology
 		explore_image = 'combat_futurecity',
 		stages = 8, 
 		level = 30,
+		events = {},
 		enemies = {
 			
 			1 : [
@@ -1328,25 +1336,25 @@ var areas = { #missions in new terminology
 			},
 		},
 	
-	modern_city_stage1 = {
-		code = 'modern_city_stage1',
-		name = '', 
-		descript = "",
-		image = ['combat_future_city_1', 'combat_future_city_2', 'combat_future_city_3'],
-		explore_image = 'combat_futurecity',
-		stages = 10, 
-		level = 30,
-		},
-	
-	forest_erika_rose_mission = {
-		code = 'forest_erika_rose_mission',
-		name = '',
-		descript = "",
-		image = ['combat_elvenforest_1', 'combat_elvenforest_2', 'combat_elvenforest_3'],
-		explore_image = 'combat_forest1',
-		stages = 6, 
-		level = 20,
-		},
+#	modern_city_stage1 = {
+#		code = 'modern_city_stage1',
+#		name = '', 
+#		descript = "",
+#		image = ['combat_future_city_1', 'combat_future_city_2', 'combat_future_city_3'],
+#		explore_image = 'combat_futurecity',
+#		stages = 10, 
+#		level = 30,
+#		},
+#
+#	forest_erika_rose_mission = {
+#		code = 'forest_erika_rose_mission',
+#		name = '',
+#		descript = "",
+#		image = ['combat_elvenforest_1', 'combat_elvenforest_2', 'combat_elvenforest_3'],
+#		explore_image = 'combat_forest1',
+#		stages = 6, 
+#		level = 20,
+#		},
 }
 
 

@@ -230,6 +230,8 @@ var TranslationDict = {
 	AREACAVEDESCRIPT = "A labyrinth of dark tunnels and chambers that lead deep into the earth. The walls are slick with moisture and the air is thick with the musky scent of bats. Legend has it that hidden within the caves lies an ancient evil capable of bringing world's destruction.",
 	AREAROAD_TO_TOWNNAME = "Road to Aeros",
 	AREAROAD_TO_TOWNDESCRIPT = "A well-traveled path that winds through rolling hills and stretches of open plain. Merchants and adventurers alike make use of this road to reach the nearby town, but beware of bandits and wild animals that lurk in the shadows.",
+	AREATOWNNAME = "Aeros",
+	AREATOWNDESCRIPT = "The great town of Aeros.",
 	AREACASTLENAME = "Summerhill Keep",
 	AREACASTLEDESCRIPT = "A foreboding fortress that looms over a desolate wasteland. The castle's walls are lined with the skeletal remains of those who dared to approach, and its halls echo with the haunting whispers of restless spirits. ",
 	AREADRAGON_MOUNTAINSNAME = "Dragon Mountains",
@@ -279,11 +281,12 @@ var TranslationDict = {
 	CULT_ROSE_RESCUENAME = "Standoff",
 	CULT_ROSE_RESCUEDESCRIPT = "We have to face Demitrius to get back my property... I mean, Rose and Iola.",
 	FINAL_BATTLE_STAGE1NAME = "Final Battle",
-	FINAL_BATTLE_STAGE1DESCRIPT = "A serie of battles in final standing",
-	MODERN_CITY_STAGE1NAME = "Unknown Ruins",
-	MODERN_CITY_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",
-	FOREST_ERIKA_ROSE_MISSIONNAME = "Elven Tea",
-	FOREST_ERIKA_ROSE_MISSIONDESCRIPT = "Erika suggested to get some special herbs to make Rose more... accepting. ",
+	FINAL_BATTLE_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",
+#	FINAL_BATTLE_STAGE1DESCRIPT = "A serie of battles in final standing",
+#	MODERN_CITY_STAGE1NAME = "Unknown Ruins",
+#	MODERN_CITY_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",
+#	FOREST_ERIKA_ROSE_MISSIONNAME = "Elven Tea",
+#	FOREST_ERIKA_ROSE_MISSIONDESCRIPT = "Erika suggested to get some special herbs to make Rose more... accepting. ",
 	
 	
 	#Menu

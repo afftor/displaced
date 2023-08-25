@@ -1,11 +1,11 @@
 ** victor_2_1 **
 =BLACKFADE 1=
-=DELAY 1=
-=GUI_NORMAL=
 =BG mountainsday=
 =SPRITE victor=
 =MUSIC event_mysterious=
+=GUI_NORMAL=
 A few hours later
+=DELAY 1=
 V - Looks like a perfect timing for me.
 Dr - Who are you, human?
 Dr - You reek of death.
@@ -23,7 +23,9 @@ Dr - Y-you wretch...
 V - Just die already.
 Wounded and exhausted from the previous fight, the dragon had no chance against him. 
 =GUI_HIDE=
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
 A nearly dead Qothus fell before Victor as life left his body.
@@ -31,8 +33,8 @@ V - Hmph, too easy.
 V - Well, can't blame you, after you've already been defeated today. 
 V - Let's finally finish this. 
 Victor raised his sword dealing a killing blow. 
-*Slash*
 =SOUND slash=
+*Slash*
 V - Finally. This should be the last one...
 V - ...
 V - ...

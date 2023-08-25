@@ -19,7 +19,6 @@ Ri - ........
 Rilu demonstrates a small black ring. 
 Ri - It's an ancient artifact - The Circle.
 =SPRITE zelroth=
-=SPRITE_UNFADE 0.1=
 Z - She plans to destroy the world with it.
 Ar - What?
 Ri(spell) - Stay down.

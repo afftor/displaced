@@ -248,10 +248,10 @@ text = "Dragon Peaks"
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
+margin_left = -26.0
+margin_top = 7.0
+margin_right = 38.0
+margin_bottom = 74.0
 texture = ExtResource( 19 )
 expand = true
 
@@ -1988,6 +1988,7 @@ __meta__ = {
 }
 
 [node name="clouds" type="Control" parent="modern_city"]
+visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -1996,10 +1997,10 @@ margin_bottom = 40.0
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
+margin_left = -128.0
+margin_top = -19.0
+margin_right = -64.0
+margin_bottom = 48.0
 texture = ExtResource( 19 )
 expand = true
 

@@ -53,7 +53,7 @@ func m_show():
 func set_active():
 #	is_active = true
 	set_process(true)
-	visible = true
+#	visible = true
 #	set_process_input(true)
 	material.set_shader_param('opacity', 0.8);
 
@@ -88,3 +88,6 @@ func set_border_type(val):
 
 func set_current(val):
 	$active.visible = val
+
+func is_current() ->bool:
+	return $active.visible

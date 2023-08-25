@@ -750,6 +750,7 @@ func tag_gui_normal() -> void:
 
 func tag_gui_hide() -> void:
 	$Panel.hide()
+	TextField.bbcode_text = ''
 	panel_vis = false
 
 func tag_gui_full() -> void:

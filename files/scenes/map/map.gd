@@ -46,20 +46,20 @@ func test():
 	for ch in state.characters:
 		state.unlock_char(ch)
 #		state.heroes[ch].unlock_all_skills()
-	unlock_area('forest')
+#	unlock_area('forest')
 	input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 
 
 func buildscreen(empty = null):
 	update_map()
 
-
-func unlock_area(area):
-	var area_node = get_node(area)
-	area_node.visible = true
-	area_node.m_show()
-	area_node.set_active()
-	area_node.set_border_type('safe')
+#seems not to be in use
+#func unlock_area(area):
+#	var area_node = get_node(area)
+#	area_node.visible = true
+#	area_node.m_show()
+#	area_node.set_active()
+#	area_node.set_border_type('safe')
 
 #real functions
 func location_pressed(locname):
@@ -81,7 +81,10 @@ func update_map():
 		check_location(loc)
 		var area_node = get_node(loc)
 
-		if state.location_unlock[loc]:
+		if loc == 'cult' and state.location_unlock['modern_city']:
+			area_node.hide()
+			area_node.set_inactive()
+		elif state.location_unlock[loc]:
 			area_node.m_show()
 		else:
 			area_node.m_hide()
@@ -115,6 +118,11 @@ func update_map():
 			else:
 				area_node.set_current(false)
 				area_node.set_inactive()
+		assert(
+			loc != 'cult'
+			or !state.location_unlock['modern_city']
+			or !area_node.is_current(),
+			"Cult has active mark, but hidden under modern_city")
 
 
 

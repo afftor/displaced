@@ -32,7 +32,7 @@ Dr - Yes. You have no knowledge of your ancestry? A pity.
 Dr - Ezet was one of our wyer. But it's from a time before we were facing today's crisis. 
 Ro - What crisis? 
 Dr - Hmm... I'll need time to explain.
-Dr - We dragons possess souls unlike normal mortals. Andh these souls grant us sentience. 
+Dr - We dragons possess souls unlike normal mortals. And these souls grant us sentience. 
 Dr - When a dragon dies, his soul leaves his body and finds its way to a new one.
 Dr - Without a soul, we are but beasts. You've met many of those on your way here. 
 Dr - From some time ago something has changed. 

@@ -2,7 +2,7 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-=BG castle=
+=BG castle_interior=
 =SPRITE zelroth=
 Z - So you've come again. 
 Ar - Why don't you give us what we need and we pretend we've never met.

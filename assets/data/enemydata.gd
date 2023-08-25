@@ -655,9 +655,9 @@ var enemylist = {
 		loottable = 'test_7',
 		weaponsound = 'drone at',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0004s_0002_Specnaz_idle (1)",
-			hit = "Fight/Fight_spritesFHD_0004s_0000_Specnaz_hit (1)",
-			attack = "Fight/Fight_spritesFHD_0004s_0001_Specnaz_at (1)",
+			idle = "Fight/Fight_spritesFHD_0002s_0002_Dron_idle (1)",
+			hit = "Fight/Fight_spritesFHD_0002s_0000_Dron_hit (1)",
+			attack = "Fight/Fight_spritesFHD_0002s_0001_Dron_at (1)",
 		},
 	},
 	
