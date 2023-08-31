@@ -161,6 +161,8 @@ func default_animation(node, args):
 	sp2.visible = true
 	if tex is AnimatedTexAutofill:
 		playtime = tex.frames / tex.fps
+		if tex.oneshot:
+			tex.current_frame = 0
 	else:
 		playtime = variables.default_animations_duration[id]
 	input_handler.force_end_tweens(sp)
