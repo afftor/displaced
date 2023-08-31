@@ -283,9 +283,7 @@ margin_left = 321.482
 margin_top = -11.1893
 margin_right = -3.51782
 margin_bottom = -31.1893
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="left" parent="battlefield/EnemyGroup/Back" instance=ExtResource( 4 )]
 visible = false
@@ -315,9 +313,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -334.0
 margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="left" parent="battlefield/EnemyGroup/Front" instance=ExtResource( 4 )]
 visible = false
@@ -505,13 +501,11 @@ margin_bottom = 665.0
 bbcode_enabled = true
 
 [node name="test" type="Button" parent="."]
+visible = false
 margin_left = 444.968
 margin_top = 483.929
 margin_right = 497.968
 margin_bottom = 686.929
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ResistToolTipCont" type="CenterContainer" parent="."]
 margin_left = 288.0
@@ -521,10 +515,8 @@ margin_bottom = 805.0
 mouse_filter = 2
 
 [node name="ResistToolTip" parent="ResistToolTipCont" instance=ExtResource( 30 )]
-margin_left = 250.0
-margin_top = 58.0
-margin_right = 250.0
-margin_bottom = 58.0
+margin_left = 173.0
+margin_right = 326.0
 
 [node name="gui" parent="." instance=ExtResource( 3 )]
 
