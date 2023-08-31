@@ -9,7 +9,7 @@ func get_spec_data():
 
 
 func get_skill_list():
-	if app_obj.hp > 200: #first stage
+	if app_obj.get_stat('hp_p') > 50: #first stage
 		return ['attack', 'fq_summon', 'fq_lance', 'fq_screech']
 	else: #second stage
 		return ['attack', 'fq_summon', 'fq_lance', 'fq_screech', 'fq_flash', 'fq_blast']
