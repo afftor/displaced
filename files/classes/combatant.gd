@@ -357,8 +357,7 @@ func apply_atomic(template):
 			process_event(variables.TR_RES)
 		'use_combat_skill':
 			if input_handler.combat_node == null: return
-#			input_handler.combat_node.use_skill(template.skill, self, position)
-			input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = position})
+			input_handler.combat_node.enqueue_skill(template.skill, self, position)
 #		'add_counter':
 #			if counters.size() <= template.index + 1:
 #				counters.resize(template.index + 1)
@@ -639,6 +638,7 @@ func stat_update(stat, value):
 func death():
 	defeated = true
 	hp = 0
+	process_event(variables.TR_DEATH)
 	if displaynode != null:
 		displaynode.process_defeat()
 		if !aura_effects.empty():

@@ -17,6 +17,7 @@ func _ready():
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
+	$test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
 
 
 func _process(delta):

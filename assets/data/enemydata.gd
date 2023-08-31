@@ -690,7 +690,7 @@ var enemylist = {
 			idle = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0002_Zombie_boom_idle",
 			hit = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0001_Zombie_boom_hit",
 			attack = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0000_Zombie_boom_at",
-			explode = load("res://assets/images/Fight/Bosses/Zombie/Zombie_boom_sq/Zombie_explode.tres")
+#			dead = load("res://assets/images/Fight/Bosses/Zombie/Zombie_boom_sq/Zombie_explode.tres")
 		},
 	},
 	#bosses
@@ -927,7 +927,7 @@ var enemylist = {
 		name = tr("MONSTERELVENRAT"),
 		flavor = tr("MONSTERELVENRATFLAVOR"),
 		race = 'animal',
-		skills = ['sc_summon1', 'sc_shatter', 'en_enburst', 'en_thrust'], # not really
+		skills = [], # got them from ai
 		passives = [],
 		basehp = 500,
 		basemana = 0,
@@ -943,7 +943,7 @@ var enemylist = {
 		ai = load('res://files/ai_classes/scientist.gd'),
 		
 		bodyhitsound = 'flesh',
-		traits = ['unstable', 'summoner'],
+		traits = ['summoner'],
 		combaticon = 'enemies/Scientist_bossCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
@@ -973,10 +973,9 @@ var enemylist = {
 		speed = 50,
 		resists = {},
 		xpreward = 10,
-		ai = load('res://files/ai_classes/scientist.gd'),
 		
 		bodyhitsound = 'flesh',
-		traits = ['unstable'],
+		traits = [],
 		combaticon = 'enemies/CalibanCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',

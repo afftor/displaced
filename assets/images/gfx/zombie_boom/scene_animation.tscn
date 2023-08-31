@@ -1,0 +1,41 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_23.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_36.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_35.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_28.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_33.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_31.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_25.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_18.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_17.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_24.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_37.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_15.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_21.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_19.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_22.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_34.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_26.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_16.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_20.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_32.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_29.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_38.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_39.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_27.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/gfx/zombie_boom/Zombie_idle_30.png" type="Texture" id=41]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 31 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 24 ), ExtResource( 32 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 2 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 28 ), ExtResource( 38 ), ExtResource( 6 ), ExtResource( 35 ), ExtResource( 41 ), ExtResource( 10 ), ExtResource( 34 ), ExtResource( 8 ), ExtResource( 26 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 19 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="HitAnimation" type="AnimatedSprite"]
+position = Vector2( 476, 452 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 1 )
+speed_scale = 3.5

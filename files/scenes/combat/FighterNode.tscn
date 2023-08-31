@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=2]
@@ -9,6 +9,13 @@
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlegray_filler.png" type="Texture" id=7]
 [ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=8]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=9]
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -26,6 +33,14 @@ expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
 
+[node name="debug_board" type="Panel" parent="."]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 2 )
+
 [node name="sprite" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -36,9 +51,6 @@ margin_top = -66.0
 margin_right = 40.0
 margin_bottom = -38.0
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="shield" type="TextureRect" parent="sprite"]
 visible = false
@@ -97,9 +109,6 @@ value = 75.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="HP"]
 anchor_right = 1.0

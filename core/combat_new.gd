@@ -125,6 +125,9 @@ signal combat_ended
 signal player_ready
 #feel free to add state signals per need
 
+var is_player_turn = false
+var skill_in_progress = false
+
 var resist_tooltip_for_pos = -1
 
 func _ready():
@@ -161,26 +164,31 @@ func _process(delta):
 	pass
 
 func test_combat():
-	if resources.is_busy(): yield(resources, "done_work")
-	
-	state.add_test_resources()
-	
-	for ch in state.characters:
-		state.unlock_char(ch)
-		state.heroes[ch].level = 39
-		state.heroes[ch].hp = state.heroes[ch].hpmax
-	state.heroes.arron.position = 1
-	state.heroes.ember.position = 2
-#	state.heroes.rose.position = 3
-	
+#	if resources.is_busy(): yield(resources, "done_work")
+#
+#	state.add_test_resources()
+#
+#	for ch in state.characters:
+#		state.unlock_char(ch)
+#		state.heroes[ch].level = 39
+#		state.heroes[ch].hp = state.heroes[ch].hpmax
+#	state.heroes.arron.position = 1
+#	state.heroes.ember.position = 2
+##	state.heroes.rose.position = 3
+#
+#	show()
+#	start_combat([{1:'elvenrat', 4: ['elvenrat', 10]}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'combat_cave')
+
+	var party = [
+		{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'], 
+		4 : ['bomber'], 5 : ['bomber'], 6 : ['bomber']}
+	]
+	input_handler.explore_node.set_party_level_data(party, 27, 27)
 	show()
-	start_combat([{1:'elvenrat', 4: ['elvenrat', 10]}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'combat_cave')
-#	start_combat([{1:'elvenrat',2:'elvenrat',
-#	3:'elvenrat',4:'elvenrat',5:'elvenrat',6:'elvenrat'}],20, 'cave')
+	start_combat(party, 27, 'combat_cave')
 
 #battlefield setup
 func start_combat(newenemygroup, level, background, music = 'combattheme'):
-	$test.visible = false
 	hide_resist_tooltip()
 	input_handler.combat_node = self
 	turns = 0
@@ -379,6 +387,7 @@ func select_actor():
 		newturn()
 	
 	if get_avail_char_number('ally') > 0:
+		is_player_turn = true
 		turns += 1
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy:
@@ -389,6 +398,7 @@ func select_actor():
 #		cur_state = T_CHARSELECT
 #		self.charselect = true
 	else:
+		is_player_turn = false
 		enemy_turn(nextenemy)
 
 
@@ -586,9 +596,9 @@ func process_check(dir):
 				if ch != null: tres += 1
 			res = tres == 1
 		'is_player_turn':
-			res = activecharacter.position < 4
+			res = is_player_turn
 		'is_enemy_turn':
-			res = activecharacter.position >= 4
+			res = !is_player_turn
 	return res
 
 
@@ -1622,6 +1632,7 @@ var follow_up_flag = false
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
+	skill_in_progress = true
 	globals.hideskilltooltip()
 	gui_node.HideSkillPanel()
 	caster.acted = true
@@ -1822,7 +1833,6 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
 			if s_skill2.target.hp <= 0:
 				fkill = true
-				s_skill2.target.process_event(variables.TR_DEATH)
 				s_skill2.caster.process_event(variables.TR_KILL)
 			else:
 				s_skill2.target.process_event(variables.TR_POST_TARG, s_skill2)
@@ -1895,8 +1905,14 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			SelectSkill(activeaction, true)
 		eot = true
 
+	skill_in_progress = false
 	print('%s ended %s' % [caster.position, skill.name])
 
+func enqueue_skill(skill_code, caster, target_pos):
+	if skill_in_progress:
+		q_skills.push_back({skill = skill_code, caster = caster, target = target_pos})
+	else:
+		use_skill(skill_code, caster, target_pos)
 
 func execute_skill(s_skill2):
 	var text = ''

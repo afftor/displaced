@@ -1443,7 +1443,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 25}],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/dodgedebuff.png", 
+				icon = "res://assets/images/traits/dodge.png", 
 				description = "Evasion increased by 25",
 				args = [],
 				t_name = 'energyburst',
@@ -3640,7 +3640,7 @@ var buffs = {
 	},
 	b_unstable = { # none
 		icon = "res://assets/images/iconsskills/unstable.png", 
-		description = "When dies deal high damage. On player turn, deal damage to player characters. On enemy turn deal damage to Zelroth. ",
+		description = "When dies deal high damage. On player turn, deal damage to player characters. On enemy turn deal damage to enemy. ",
 		limit = 1,
 		t_name = 'unstable'
 	},
