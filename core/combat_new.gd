@@ -222,6 +222,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	$Rewards.visible = false
 	$LevelUp.visible = false
 	allowaction = false
+	skill_in_progress = false
 	curstage = 0
 	defeated.clear()
 	enemygroup_full = newenemygroup
@@ -1625,10 +1626,11 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 		'full':
 			return $battlefield
 
+#those vars seemed to be in use only for "enable_followup" effect in trigger-type effects,
+#wich for this moment used only once, and the case is seems to be outdated and doesn't work anymore for other reasons
+#var follow_up_skill = null
+#var follow_up_flag = false
 
-
-var follow_up_skill = null
-var follow_up_flag = false
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
@@ -1637,38 +1639,45 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	gui_node.HideSkillPanel()
 	caster.acted = true
 
-	follow_up_skill = null
-	follow_up_flag = false
-
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
 	turns += 1
-	var target = battlefield[target_pos]
+	var target#is someone, we targeting
+	var targets#those, how are actually affected
+	target = battlefield[target_pos]
 	if activeaction != skill_code: activeaction = skill_code
 	allowaction = false
 
-	var skill = Skillsdata.patch_skill(skill_code, caster)#Skillsdata.skilllist[skill_code]
+	#skill vars naming system:
+	#var skill :Dictionary - raw data, template, reference book of a sort
+	#var s_skill1 :S_Skill - metaskill, sample and controller for applicable skills
+	#var s_skill2 :S_Skill - applicable skill, created by cloning s_skill1 for each target in each cycle of s_skill1
+	#actual damage and effects are made by s_skill2
+	var skill = Skillsdata.patch_skill(skill_code, caster)
 
 	print("%s uses %s" % [caster.position, skill.name])
 	if activeitem and activeitem.has("name"):
 		print('%s uses item %s' % [caster.name, activeitem.name])
 
-	if skill.has('follow_up'):
-		follow_up_skill = skill.follow_up
-		follow_up_flag = true
-	elif skill.has('follow_up_cond'):
-		follow_up_skill = skill.follow_up_cond
-		follow_up_flag = false
-	else:
-		follow_up_skill = null
-		follow_up_flag = false
+	#aside from follow_up_skill usage, there is also follow_up_cond skill parameter, that do not work at the moment
+#	follow_up_skill = null
+#	follow_up_flag = false
+#	if skill.has('follow_up'):
+#		follow_up_skill = skill.follow_up
+#		follow_up_flag = true
+#	elif skill.has('follow_up_cond'):
+#		follow_up_skill = skill.follow_up_cond
+#		follow_up_flag = false
+#	else:
+#		follow_up_skill = null
+#		follow_up_flag = false
+
 
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
 		else:
 			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
-#			combatlogadd("\n" + str(caster.position) + ' uses ' + skill.name + ". ")
 
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown
@@ -1676,27 +1685,26 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
 	s_skill1.createfromskill(skill_code, caster)
-	#s_skill1.setup_caster(caster)
 	s_skill1.process_event(variables.TR_CAST)
-
 	caster.process_event(variables.TR_CAST, s_skill1)
 
 	turns += 1
-	#preparing animations
+	#preparing and sort animations
 	var animations = skill.sfx
 	var animationdict = {windup = [], prehit = [], predamage = [], postdamage = []}
-	#sort animations
 	for i in animations:
 		animationdict[i.period].append(i)
-	#casteranimations
+	
+	#========windup animation and initiate sound
 	#for sure at windup there should not be real_target-related animations
 	if skill.has('sounddata') and skill.sounddata.initiate != null:
 		caster.displaynode.process_sound(skill.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 		sfxtarget.process_sfx_dict(i)
+	#=============
+	
 	#skill's repeat cycle of predamage-damage-postdamage
-	var targets
 	var endturn = !s_skill1.tags.has('instant');
 	if !endturn:
 		caster.acted = false
@@ -1706,70 +1714,26 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		#get all affected targets
 		if !s_skill1.tags.has('no_refine'):
 			var newtarget = refine_target(s_skill1, caster, target_pos)
-			if newtarget == null: #finish skill usage
-				turns += 1
-				s_skill1.process_event(variables.TR_SKILL_FINISH)
-				caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
-				s_skill1.remove_effects()
-				#follow-up
-				if skill.has('follow_up'):
-					yield(use_skill(skill.follow_up, caster, target_pos), 'completed')
-				if skill.has('not_final'): 
-					if caster.combatgroup == 'ally':
-						CombatAnimations.check_start()
-						if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-					turns += 1
-					print("%s ended %s, it's not final" % [caster.position, skill.name])
-					return
-				#final
-				turns += 1
-				if activeitem != null:
-					state.add_materials(activeitem.code, -1, false)
-	#				activeitem.amount -= 1
-					activeitem = null
-					SelectSkill(caster.get_autoselected_skill(), true)
-
-				caster.rebuildbuffs()
-				#print(caster.name + ' finished attacking')
-				if caster.combatgroup == 'ally':
-					var temp = 0
-					for pos in range(4, 7): if  battlefield[pos] == null: temp += 1
-					if temp == 3:
-						yield(advance_frontrow(), 'completed')
-				turns += 1
-				CombatAnimations.check_start()
-				if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-				if endturn or caster.hp <= 0 or !caster.can_act():
-					#on end turn triggers
-					if caster.hp > 0:
-						caster.process_event(variables.TR_TURN_F)
-						if caster.displaynode:
-							caster.displaynode.process_disable()
-					call_deferred('select_actor')
-					eot = false
-				else:
-					if caster.combatgroup == 'ally':
-						CombatAnimations.check_start()
-						if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-					allowaction = true
-					gui_node.RebuildSkillPanel()
-					gui_node.RebuildItemPanel()
-					SelectSkill(activeaction, true)
-					eot = true
-				print("%s ended %s, no newtarget" % [caster.position, skill.name])
-				return
+			if newtarget == null:
+				print("%s's %s has no new target" % [caster.position, skill.name])
+				break
 			target_pos = newtarget
+		
+		#======prehit animation
 		for i in animationdict.prehit:
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 			sfxtarget.process_sfx_dict(i)
+		#====
 		
 		turns += 1
 		target = battlefield[target_pos]
-		if target == null and !skill.tags.has('empty_target'): continue
+		if target == null and !skill.tags.has('empty_target'):
+			continue
 		targets = CalculateTargets(skill, caster, target_pos, true)
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:
+			#======predamage animation and strike sound
 			if skill.has('sounddata') and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
 					caster.displaynode.process_sound(get_weapon_sound(caster))
@@ -1778,13 +1742,15 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			for j in animationdict.predamage:
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 				sfxtarget.process_sfx_dict(j)
+			#======
+			
 			#special results
 			if skill.damagetype is String and skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			elif skill.damagetype is String and skill.damagetype == 'resurrect':
 				if !rules.has('no_res'): i.resurrect(skill.value[0]) #not sure
+			#default skill result
 			else:
-				#default skill result
 				var s_skill2:S_Skill = s_skill1.clone()
 				s_skill2.setup_target(i)
 				#place for non-existing another trigger
@@ -1808,7 +1774,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				combatlogadd(s_skill2.target.name + " evades the damage.")
 #				Off_Target_Glow()
 			else:
-				#hit landed animation
+				#=========postdamage animation and hit sound
 				if skill.has('sounddata') and skill.sounddata.hit != null:
 					if skill.sounddata.hittype == 'absolute':
 						s_skill2.target.displaynode.process_sound(skill.sounddata.hit)
@@ -1819,11 +1785,13 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				for j in animationdict.postdamage:
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
 					sfxtarget.process_sfx_dict(j)
+				#=========
 				#applying resists
 				s_skill2.calculate_dmg()
 				#logging result & dealing damage
 				execute_skill(s_skill2)
 		turns += 1
+		#wait for damage animations from execute_skill()
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		#postdamage triggers and cleanup real_target s_skills
@@ -1846,27 +1814,38 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
+	#=========skill itself finished==========
+	
 	turns += 1
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 	s_skill1.remove_effects()
-	
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	var f = checkwinlose()
-	if f != FIN_NO:
-		CombatAnimations.check_start()
-		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		q_skills.clear()
-		if f == FIN_STAGE:
-			call_deferred('select_actor')
-		print('%s ended %s on winlose' % [caster.position, skill.name])
-		return
-	#follow-up
-	if follow_up_flag and (follow_up_skill != null):
-		yield(use_skill(follow_up_skill, caster, target_pos), 'completed')
+	
+	#checking winlose
+	#mind that befor refactoring, skill, that returned on "no newtarget", made no checkwinlose()
+#	var f = checkwinlose()
+#	if f != FIN_NO:
+#		#stop skill for end of stage or combat
+#		CombatAnimations.check_start()
+#		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#		q_skills.clear()
+#		if f == FIN_STAGE:
+#			call_deferred('select_actor')
+#		skill_in_progress = false
+#		print('%s ended %s on winlose' % [caster.position, skill.name])
+#		return
+	
+	#activate follow-up skill
+#	if follow_up_flag and (follow_up_skill != null):
+#		yield(use_skill(follow_up_skill, caster, target_pos), 'completed')
+	if skill.has('follow_up'):
+		yield(use_skill(skill.follow_up, caster, target_pos), 'completed')
+	
+	#stop for recursion skills, like follow_ups and queued skills
 	if skill.has('not_final'):
-		print('%s ended %s on pretime' % [caster.position, skill.name])
+		print('%s ended %s as not final' % [caster.position, skill.name])
 		return
 
 	print('%s almost ended %s' % [caster.position, skill.name])
@@ -1899,6 +1878,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		if caster.combatgroup == 'ally':
 			CombatAnimations.check_start()
 			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+			#mind that next 4 lines of code has 1 tab less in same code under "no newtarget" return (befor refactoring)
 			allowaction = true
 			gui_node.RebuildSkillPanel()
 			gui_node.RebuildItemPanel()
@@ -1925,7 +1905,8 @@ func execute_skill(s_skill2):
 	#new section applying conception of multi-value skills
 	#TO POLISH & REMAKE
 	for i in range(s_skill2.value.size()):
-		if s_skill2.damagestat[i] == 'no_stat': continue #for skill values that directly process into effects
+		if s_skill2.damagestat[i] == 'no_stat':
+			continue #for skill values that directly process into effects
 		var data = {}
 		if s_skill2.damagestat[i] == '+damage_hp': #damage, damage no log, negative damage
 			var tmp = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)

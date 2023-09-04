@@ -1803,20 +1803,20 @@ var effect_table = {
 		buffs = []
 	},
 	
-	e_tr_enable_fa = {
-		type = 'trigger',
-		trigger = [variables.TR_KILL],
-		conditions = [],
-		req_skill = true,
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'combat',
-				execute = 'enable_followup'
-			},
-		],
-		buffs = []
-	},
+#	e_tr_enable_fa = {
+#		type = 'trigger',
+#		trigger = [variables.TR_KILL],
+#		conditions = [],
+#		req_skill = true,
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'combat',
+#				execute = 'enable_followup'
+#			},
+#		],
+#		buffs = []
+#	},
 	
 	e_tr_bloodlust = {
 		type = 'trigger',

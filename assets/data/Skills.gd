@@ -1,6 +1,8 @@
 extends Node
 #var S_Skill = preload("res://files/scripts/short_skill.gd");
 # {code = 'sfx_aegis', target = 'target', period = 'predamage'}
+#Guide for effects system is at the end of the file
+
 var skilllist = {
 	#new part
 	attack = {
@@ -1245,7 +1247,7 @@ var skilllist = {
 		value = ['caster.damage', '*0.65'],
 		cooldown = 0,
 #		manacost = 0,
-		casteffects = ['e_tr_enable_fa'],
+		casteffects = [],#'e_tr_enable_fa'
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'predamage'},
@@ -1257,41 +1259,41 @@ var skilllist = {
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
 		],
-		follow_up_cond = 'combo1',
-		follow_up = 'com1'
+#		follow_up_cond = 'combo1',
+		follow_up = 'combo1'
 	},
-	combo1 = {
+#	combo1 = {
+#		code = 'combo1',
+#		name = "",
+#		description = "",
+#		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+#		damagetype = "bludgeon",
+#		skilltype = 'skill',
+#		userange = "any",
+#		targetpattern = 'single',
+#		allowedtargets = ['enemy'],
+#		keep_target = variables.TARGET_MOVEFIRST,
+#		next_target = variables.NT_BACK,
+#		reqs = [],
+#		tags = ['damage'],
+#		value = ['caster.damage', '*0.65'],
+#		cooldown = 0,
+##		manacost = 0,
+#		casteffects = [],
+#		repeat = 3,
+#		hidden = true,
+#		sfx = [],
+#		sfxcaster = null,
+#		sfxtarget = null,
+#		sounddata = {initiate = null, strike = null, hit = 'punch', hittype = 'absolute'},
+#		patches = [
+#			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
+#			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
+#		],
+#		not_final = true
+#	},
+	combo1 = {#NEW, NEED FILLING DATA
 		code = 'combo1',
-		name = "",
-		description = "",
-		icon = load("res://assets/images/iconsskills/defaultattack.png"),
-		damagetype = "bludgeon",
-		skilltype = 'skill',
-		userange = "any",
-		targetpattern = 'single',
-		allowedtargets = ['enemy'],
-		keep_target = variables.TARGET_MOVEFIRST,
-		next_target = variables.NT_BACK,
-		reqs = [],
-		tags = ['damage'],
-		value = ['caster.damage', '*0.65'],
-		cooldown = 0,
-#		manacost = 0,
-		casteffects = [],
-		repeat = 3,
-		hidden = true,
-		sfx = [],
-		sfxcaster = null,
-		sfxtarget = null,
-		sounddata = {initiate = null, strike = null, hit = 'punch', hittype = 'absolute'},
-		patches = [
-			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
-			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
-		],
-		not_final = true
-	},
-	com1 = {#NEW, NEED FILLING DATA
-		code = 'com1',
 		name = "",
 		description = tr(""),
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
@@ -1313,7 +1315,10 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = null, hit = 'punch', hittype = 'absolute'},
-		patches = [],
+		patches = [
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_combo_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_combo_2'},
+		],
 		not_final = true
 	},
 	firepunch = {
@@ -5255,3 +5260,22 @@ func calc_damagetype(damagetype :String, char_id) ->String:
 	if !variables.resistlist.has(true_damagetype):
 		return ""
 	return true_damagetype
+
+
+#Here is a sort of a guide for effects system (as it is f%#$ complicated):
+#First thing - dictionaries in skilllist here are templates. True skills to use are 'S_Skill' objects, created with this templates.
+#'casteffects' in skill-template is a list of effect-templates.
+#If it's string, go for corresponding dictionary to 'Effectdata' singleton, .
+#rebuild_template() creates local trigger-type effect-template dictionary with sub_effect from arguments.
+#When S_Skill-object actually created, it creates effect-objects of classes corresponding to 'type' in effect-templates of casteffects.
+#For example, trigger-type effect-template makes 'triggered_effect' class object.
+#Then, effect-object put into 'effects_pool' singleton, and referred by id wherever it's needed.
+#This "first class" effect-objects are tied to parent S_Skill-objects. Mostly it's trigger-type effects,
+#so when triggered, they creates new effect-objects from templetes in there 'sub_effects' parameter.
+#It's goes mostly in same manner, but this "sub class" effect-objects are tied to there parent effect-object, instead of the skill.
+#The most complicated thing is: any effect-objects can have further sub_effects and this can grow to a big tree.
+#Effect-classes are very different, can apply to different game objects and have specific rules.
+#All-in-all: every active effect - is an object in 'effects_pool' singleton. Effect can be appled to certain game object (like skill or character)
+#and be activated by it with process_event() function. Also most effects are tied to it's parent and can influence it.
+#There are effects, who's purpose is only to control there sub_effects or parent-effect. And there are effects, wich created for a short instant action.
+#"Leaf" effects of a "tree", wich has no sub_effects and/or are actually effecting there appled object, seems to have 'atomic' parameter filled.
