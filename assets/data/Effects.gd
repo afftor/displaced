@@ -39,6 +39,20 @@ var effect_table = {
 		atomic = [],
 		buffs = ['b_burn'],
 	},
+	e_s_burn_onget = {#same as e_s_burn, but triggered at TR_TURN_GET
+		type = 'temp_s',
+		target = 'target',
+		name = 'burn',
+		stack = 1,
+		tick_event = [variables.TR_TURN_GET],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 2,
+		tags = ['burn'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [rebuild_dot_onget('a_burn'), rebuild_remove(['damagetype','eq', 'water'])],
+		atomic = [],
+		buffs = ['b_burn_onget'],
+	},
 	e_s_poison = {
 		type = 'temp_s',
 		target = 'target',
@@ -66,6 +80,20 @@ var effect_table = {
 		sub_effects = [rebuild_dot('a_bleed'), rebuild_remove(['tags','has','heal'])],
 		atomic = [],
 		buffs = ['b_bleed'],
+	},
+	e_s_bleed_onget = {#same as e_s_bleed, but treggered by TR_TURN_GET
+		type = 'temp_s',
+		target = 'target',
+		name = 'bleed',
+		stack = 1,
+		tick_event = [variables.TR_TURN_GET],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 2,
+		tags = ['bleed'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [rebuild_dot_onget('a_bleed'), rebuild_remove(['tags','has','heal'])],
+		atomic = [],
+		buffs = ['b_bleed_onget'],
 	},
 	e_stun = {
 		type = 'temp_s',
@@ -758,7 +786,7 @@ var effect_table = {
 		target = 'target',
 		name = 'chill',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent',
 		tags = ['negative', 'chill'],
@@ -976,7 +1004,7 @@ var effect_table = {
 		],
 		args = [{obj = 'parent', param = 'process_value'}],
 		req_skill = true,
-		sub_effects = ['e_s_burn'],
+		sub_effects = ['e_s_burn_onget'],
 		buffs = []
 	},
 
@@ -1234,7 +1262,7 @@ var effect_table = {
 		target = 'target',
 		name = 'mist',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
 		tags = ['negative', 'mist'],
@@ -1377,7 +1405,7 @@ var effect_table = {
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
 		],
 		req_skill = true,
-		sub_effects = ['e_s_burn'], #or any other burn effect cause they all are stack 1 and this won't be applied
+		sub_effects = ['e_s_burn_onget'], #or any other burn effect cause they all are stack 1 and this won't be applied
 		buffs = []
 	},
 	e_s_bless = {
@@ -3477,6 +3505,12 @@ var buffs = {
 		t_name = 'bleed',
 		bonuseffect = 'duration'
 	},
+	b_bleed_onget = { 
+		icon = "res://assets/images/iconsskills/arron_3.png", 
+		description = "Bleeding: Takes Neutral damage at the beginning of turn",
+		t_name = 'bleed',
+		bonuseffect = 'duration'
+	},
 	b_poison = { # none
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Poisoned: Takes Neutral damage at the end of turn",
@@ -3501,14 +3535,21 @@ var buffs = {
 		t_name = 'burn',
 		bonuseffect = 'duration'
 	},
+	b_burn_onget = {
+		icon = "res://assets/images/iconsskills/rose_4.png", 
+		description = "Burn: Takes Fire damage at the beginning of turn. Removed by Water damage.",
+		t_name = 'burn',
+		bonuseffect = 'duration'
+	},
 	b_chill = {
 		icon = "res://assets/images/iconsskills/erika_5.png", 
-		description = "Chilled",
-		t_name = 'chill'
+		description = "Chilled: Takes water damage at the beginning of turn.",
+		t_name = 'chill',
+		bonuseffect = 'duration'
 	},
 	b_mist = {
 		icon = "res://assets/images/iconsskills/rilu_3.png", 
-		description = "Takes water damage at the end of turn.",
+		description = "Takes water damage at the beginning of turn.",
 		t_name = 'mist',
 		bonuseffect = 'duration'
 	},
@@ -3762,6 +3803,12 @@ const e_dot_template = {
 
 func rebuild_dot(at_e):
 	var res = e_dot_template.duplicate(true)
+	res.sub_effects[0].atomic.push_back(at_e)
+	return res
+
+func rebuild_dot_onget(at_e):
+	var res = e_dot_template.duplicate(true)
+	res.trigger = [variables.TR_TURN_GET]
 	res.sub_effects[0].atomic.push_back(at_e)
 	return res
 
