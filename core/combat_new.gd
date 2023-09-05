@@ -418,13 +418,19 @@ func player_turn(pos):
 	turns += 1
 	currentactor = pos
 	var selected_character = playergroup[pos]
+	
 	selected_character.process_event(variables.TR_TURN_GET)
 	selected_character.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
+	checkdeaths()#TR_TURN_GET event can kill
+	if selected_character.defeated:
+		call_deferred('select_actor')
+		return
 	
 	if !selected_character.can_act():
+		selected_character.acted = true
 		selected_character.process_event(variables.TR_TURN_F)
 		selected_character.rebuildbuffs()
 		call_deferred('select_actor')
@@ -453,10 +459,16 @@ func enemy_turn(pos):
 	nextenemy += 1
 	var fighter = enemygroup[pos]
 	#fighter.update_timers()
+	
 	fighter.process_event(variables.TR_TURN_GET)
 	fighter.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	checkdeaths()#TR_TURN_GET event can kill
+	if fighter.defeated:
+		call_deferred('select_actor')
+		return
+		
 	if !fighter.can_act():
 		fighter.acted = true
 		#combatlogadd("%s cannot act" % fighter.name)

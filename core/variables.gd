@@ -13,7 +13,7 @@ enum {TR_CAST,#on skill cast, befor even target refining and any true actions
 	TR_HIT,#for applicable skill and caster befor actual damage on target, but after all preparations for it
 	TR_DEF,#same moment, but for target
 	TR_TURN_S,#on new turn start for every players's chars and enemy in combat, except for defeated
-	TR_TURN_GET,#on char gets to make turn (to act). Mind that player's chars have this event each time thay are selected
+	TR_TURN_GET,#on char gets to make turn (to act)
 	TR_TURN_F,#on char finishing turn (action), if still alive. Takes place even if char can't act in this turn for some reason
 	TR_DEATH,#on char's death
 	TR_KILL,#occurs for caster on death of each target. Occurs also for metaskill, but only once, even if it killed multiple targets

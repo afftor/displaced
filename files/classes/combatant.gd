@@ -55,6 +55,7 @@ var combatgroup = 'ally'
 #var selectedskill = 'attack'
 
 var acted = false
+var got_turn = false#flag for single process of TR_TURN_GET. Mostly needed only by player's chars, as thay get this event on each selection
 #mods. obsolete imho
 #var damagemod = 1
 #var hpmod = 1
@@ -562,6 +563,16 @@ func clean_effects():#clean effects before deleting character
 		eff.remove()
 
 func process_event(ev, skill = null):
+	#TR_TURN_GET for player's char can be processed on each selection, wich is wrong
+	#this event must be processed strictly once per turn
+	if ev == variables.TR_TURN_GET:
+		if got_turn:
+			return
+		else:
+			got_turn = true
+	elif ev == variables.TR_TURN_S:
+		got_turn = false
+	
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if skill != null and eff.req_skill:
