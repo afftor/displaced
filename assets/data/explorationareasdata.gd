@@ -100,6 +100,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	dimitrius_2_1_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
 	],
+	dimitrius_2_2 = [
+		{type = 'system', value = 'enable_character', arg = ['iola',true] },
+	],
 }
 
 var locations = { #added seqs bindings and other fields
@@ -463,7 +466,6 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'rose_2'},
 		{type = 'system', value = 'enable_character', arg = ['rose',true] },
-		{type = 'system', value = 'enable_character', arg = ['iola',true] },
 		]
 	},
 	
