@@ -65,6 +65,8 @@ var area_save
 var stashedarea
 var viewed_tips := []
 
+signal party_changed
+
 func time_set(value):
 	#here may be placed day changing code from main screen
 	#but for now i place here only new code for rising midday event
@@ -515,6 +517,7 @@ func unlock_char(code, value = true):
 	heroes[code].unlocked = value
 	if !value:
 		heroes[code].position = null
+	emit_signal("party_changed")
 
 
 func unlock_loc(loc_id, value = true):
