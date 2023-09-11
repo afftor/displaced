@@ -13,7 +13,8 @@ func _ready():
 	
 #	input_handler.SystemMessageNode = $SystemMessageLabel
 	$ControlPanel/Return.connect('pressed',self,'openvillage')
-	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
+#	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
+	$ControlPanel/Inventory.connect('pressed',$Inventory,'open')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
@@ -56,12 +57,11 @@ func openherolist(toggled):
 		$ControlPanel/Herolist.pressed = false
 
 
-func openinventory(hero = null):
-	$Inventory.open('hero', hero)
-
-
-func openinventorytrade():
-	$Inventory.open("shop")
+#to delete
+#func openinventory(hero = null):
+#	$Inventory.open('hero', hero)
+#func openinventorytrade():
+#	$Inventory.open("shop")
 
 func openvillage():
 #	input_handler.village_node.switch_show()

@@ -322,11 +322,11 @@ func play_scene(scene_id, enforce_replay = false, restore = false):
 	return true
 
 
-func CreateUsableItem(item, amount = 1): #obsolete, but keep for now
+#func CreateUsableItem(item, amount = 1): #obsolete, but keep for now
 #	var newitem = Item.new()
 #	newitem.CreateUsable(item, amount)
 #	return newitem
-	state.add_materials(item, amount)
+#	state.add_materials(item, amount)
 
 
 func dir_contents(target):

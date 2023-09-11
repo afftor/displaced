@@ -1,5 +1,6 @@
 extends Reference
 class_name Item
+#seems not to be in use
 
 var name = ""
 var id
