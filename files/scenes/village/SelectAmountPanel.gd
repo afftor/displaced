@@ -39,8 +39,8 @@ func confirm():
 
 
 func setup_res():
-	$LineEdit.text = "0"
-	amount = 0
+	$LineEdit.text = "1"
+	amount = 1
 	var itemdata = Items.Items[item_id]
 	$Icon.texture = itemdata.icon 
 	$HBoxContainer/name.text = tr(itemdata.name) #do not think these translations should be made in data file
