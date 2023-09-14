@@ -13,7 +13,7 @@ var race
 
 var level = 1
 
-var hp = 0 setget hp_set
+var hp = 0 setget hp_set#mind that setter works only though self.hp inside the class
 var hpmax = 0 setget , hpmax_get #base value
 var hp_growth
 var defeated = false
@@ -348,14 +348,13 @@ func apply_atomic(template):
 		'event':
 			process_event(template.value)
 		'resurrect':
-			if !defeated: return
+			var new_hp
 			if template.has('value'):
-				self.hp = template.value
+				new_hp = template.value
 			elif template.has('value_p'):
-				self.hp = template.value_p * get_stat('hpmax')
+				new_hp = template.value_p * get_stat('hpmax')
 			else: return
-			defeated = false
-			process_event(variables.TR_RES)
+			resurrection(new_hp)
 		'use_combat_skill':
 			if input_handler.combat_node == null: return
 			input_handler.combat_node.enqueue_skill(template.skill, self, position)
@@ -655,6 +654,19 @@ func death():
 		if !aura_effects.empty():
 			input_handler.combat_node.recheck_auras()
 
+func resurrection(new_hp = 1):
+	if !defeated: return
+	
+	defeated = false
+	self.hp = new_hp
+	acted = false
+	process_event(variables.TR_RES)
+	if displaynode != null:
+		displaynode.process_resurrect()
+		displaynode.process_enable()#if acted = false
+#		if !aura_effects.empty():
+#			input_handler.combat_node.recheck_auras()
+
 func can_act():
 	var res = !acted
 	for e in static_effects + temp_effects:
@@ -838,3 +850,4 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 			else:
 				result = false
 	return result
+

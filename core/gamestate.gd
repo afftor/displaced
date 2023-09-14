@@ -66,6 +66,7 @@ var stashedarea
 var viewed_tips := []
 
 signal party_changed
+signal money_changed
 
 func time_set(value):
 	#here may be placed day changing code from main screen
@@ -424,6 +425,7 @@ func deserialize(tmp:Dictionary):
 	tmp.erase('effects')
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
+	emit_signal("money_changed")
 	for id in materials:
 		materials[id] = int(materials[id])
 	refill_materials()
@@ -603,6 +605,7 @@ func add_money(value, log_f = true):
 	var tmp = money
 	money += value
 	if money < 0: money = 0
+	emit_signal("money_changed")
 	if !log_f: return
 	tmp = money - tmp
 	if tmp > 0:

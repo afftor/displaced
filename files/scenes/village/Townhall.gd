@@ -168,7 +168,7 @@ func unlockupgrade():
 	var currentupgradelevel = findupgradelevel(upgrade)
 	for i in upgrade.levels[currentupgradelevel].cost:
 		if i == 'gold':
-			state.money -= upgrade.levels[currentupgradelevel].cost[i]
+			state.add_money(-upgrade.levels[currentupgradelevel].cost[i], false)
 		else:
 			state.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
 	

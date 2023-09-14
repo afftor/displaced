@@ -19,13 +19,16 @@ func _ready():
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 	$test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
+	state.connect("money_changed", self, "UpdateMoney")
 
-
-func _process(delta):
+func UpdateMoney():
 	$ControlPanel/Gold.text = str(state.money)
-#	$ControlPanel/Food.text = str(state.food)
-	
-	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
+
+#func _process(delta):
+#	$ControlPanel/Gold.text = str(state.money)
+##	$ControlPanel/Food.text = str(state.food)
+#
+#	BS.visible = BS.modulate.a > 0.0
 
 
 func GameOverShow():
@@ -72,9 +75,9 @@ func openvillage():
 		input_handler.map_node.location_pressed("village")
 
 func FadeToBlackAnimation(time = 1):
-	input_handler.UnfadeAnimation($BlackScreen, time)
+	input_handler.UnfadeAnimation(BS, time)
 	input_handler.emit_signal("ScreenChanged")
-	input_handler.FadeAnimation($BlackScreen, time, time)
+	input_handler.FadeAnimation(BS, time, time)
 
 
 var itemicon = preload("res://files/scenes/ItemIcon.tscn")

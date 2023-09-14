@@ -432,6 +432,8 @@ func player_turn(pos):
 	if !selected_character.can_act():
 		selected_character.acted = true
 		selected_character.process_event(variables.TR_TURN_F)
+		if selected_character.displaynode:
+			selected_character.displaynode.process_disable()
 		selected_character.rebuildbuffs()
 		call_deferred('select_actor')
 		return
@@ -522,7 +524,7 @@ func SelectSkill(skill, system = false):
 	#need to add daily restriction check
 	if !activecharacter.can_use_skill(skill) :
 		#SelectSkill('attack')
-		call_deferred('SelectSkill', ['attack', true])
+		call_deferred('SelectSkill', 'attack', true)
 		return
 #	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
@@ -531,7 +533,7 @@ func SelectSkill(skill, system = false):
 		if checkwinlose() == FIN_NO:
 			print ('no legal targets')
 			combatlogadd('No legal targets')
-			call_deferred('SelectSkill', ['attack', true])
+			call_deferred('SelectSkill', 'attack', true)
 			return
 	if skill.allowedtargets.has('self') and skill.allowedtargets.size() == 1 :
 		globals.closeskilltooltip()
@@ -1035,7 +1037,7 @@ func victory():#2remake for it is broken for now
 	$Rewards.set_meta("result", 'victory')
 	
 	if rewardsdict.gold > 0:
-		state.money += rewardsdict.gold
+		state.add_money(rewardsdict.gold, false)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		newbutton.hide()
 		newbutton.texture = load("res://assets/images/iconsitems/gold.png")
@@ -1236,12 +1238,14 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		for t in t_targets:
 			allowedtargets.enemy.push_back(t.position)
 	if targetgroups.has('ally'):
-		var t_targets = get_allied_targets(fighter)
+		var t_targets :Array
 		if rangetype == 'dead':
-			t_targets.clear()
+			t_targets = []
 			for t in playergroup.values():
 				if t.defeated:
 					t_targets.push_back(t)
+		else:
+			t_targets = get_allied_targets(fighter)
 		
 		for t in t_targets:
 			allowedtargets.ally.push_back(t.position)
@@ -1305,7 +1309,7 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 	var change = false
 	#var skill = Skillsdata.skilllist[s_code]
 	if ttarget == null: change = true #forced change
-	elif ttarget.defeated or ttarget.hp <= 0: change = true #forced change. or not. nvn error
+	elif (ttarget.defeated or ttarget.hp <= 0) and skill.userange != "dead": change = true #forced change. or not. nvn error
 	elif skill.keep_target == variables.TARGET_NOKEEP: change = true #intentional change
 	elif skill.keep_target == variables.TARGET_KEEPFIRST: skill.keep_target = variables.TARGET_NOKEEP
 	elif skill.keep_target == variables.TARGET_MOVEFIRST:
@@ -1667,9 +1671,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	#actual damage and effects are made by s_skill2
 	var skill = Skillsdata.patch_skill(skill_code, caster)
 
-	print("%s uses %s" % [caster.position, skill.name])
-	if activeitem and activeitem.has("name"):
-		print('%s uses item %s' % [caster.name, activeitem.name])
+	print("%s uses %s at %s" % [caster.position, skill.name, target_pos])
+	if activeitem and activeitem.has("code"):
+		print('%s uses item %s' % [caster.name, activeitem.code])
 
 	#aside from follow_up_skill usage, there is also follow_up_cond skill parameter, that do not work at the moment
 #	follow_up_skill = null
@@ -1977,10 +1981,7 @@ func combatlogadd(text):
 func res_all(hpval):
 	var p = playergroup
 	for ch in p.values():
-		if ch.defeated:
-			ch.defeated = false
-			ch.hp = hpval * ch.get_stat('hpmax')
-			ch.acted = false
+		ch.resurrection(hpval * ch.get_stat('hpmax'))
 
 
 func clean_summons():
