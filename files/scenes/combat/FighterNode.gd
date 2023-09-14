@@ -252,10 +252,6 @@ func update_hp():
 #		else:
 #			args.type = 'heal'
 #			args.color = Color(0.2,0.8,0.2)
-		if hp <= 0: 
-#			args.damage_float = false
-			if fighter.hp > 0:
-				process_resurrect()
 		hp = fighter.hp
 		if hp < 0:
 			args.newhp = 0

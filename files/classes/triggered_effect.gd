@@ -135,8 +135,8 @@ func e_apply():
 						#seems to be useless
 #						'enable_followup':
 #							obj.follow_up_flag = true
-						'resurrect_all':
-							obj.res_all(eff.template.value)
+#						'resurrect_all':
+#							obj.res_all(eff.template.value * 0.01)
 						'clean_summons':
 							obj.clean_summons()
 		pass

@@ -1427,15 +1427,14 @@ var effect_table = {
 	},
 	e_s_sanct = {
 		type = 'trigger',
-		trigger = [variables.TR_SKILL_FINISH],
+		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = false,
 		sub_effects = [{
 			type = 'oneshot',
-			target = 'combat',
-			execute = 'resurrect_all',
-			value = 10
-			}]
+			target = 'target',
+			atomic = [{type = 'resurrect', value_p = 0.2}] 
+		}]
 	},
 	e_s_viccull = {
 		type = 'temp_s',
@@ -1584,30 +1583,6 @@ var effect_table = {
 		target = 'target',
 		atomic = [{type = 'resurrect', value_p = 1.0}] 
 	},
-	e_i_resall20 = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [],
-		req_skill = false,
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'combat',
-			execute = 'resurrect_all',
-			value = 20
-			}]
-	},
-	e_i_resall100 = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [],
-		req_skill = false,
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'combat',
-			execute = 'resurrect_all',
-			value = 100
-			}]
-	},
 	e_i_atkup = {
 		type = 'temp_s',
 		target = 'target',
@@ -1622,7 +1597,15 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add_p', stat = 'damage', value = 0.5},
 			],
-		buffs = ['b_natbless'],#not
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/scroll_sword.png", 
+				description = "Increase damage by 50%%",
+				limit = 1,
+				t_name = 'e_i_atkup',
+				bonuseffect = 'duration'
+			}
+		],
 	},
 	e_i_defup = {
 		type = 'temp_s',
@@ -1636,8 +1619,8 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
 		buffs = [
-			{ #not this
-				icon = "res://assets/images/iconsskills/defaultattack.png", 
+			{
+				icon = "res://assets/images/iconsitems/scroll_shield.png", 
 				description = "Receive 50%% less damage",
 				limit = 1,
 				t_name = 'e_i_defup',

@@ -233,6 +233,7 @@ func damage_get():
 	return damage * variables.curve[level - 1]
 
 func hp_set(value):
+	if defeated: return
 	var hp_max = get_stat('hpmax')
 	if has_status('soulprot') or (hp == hp_max and base == 'bomber'):
 		hp = clamp(round(value), 1, hp_max)

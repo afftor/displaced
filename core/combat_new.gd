@@ -1222,7 +1222,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	var skill = Skillsdata.patch_skill(activeaction, caster)#Skillsdata.skilllist[activeaction]
 	var fighter = caster
 	var targetgroups = skill.allowedtargets
-	var targetpattern = skill.targetpattern
 	var rangetype = skill.userange
 	ClearSkillTargets()
 	
@@ -1238,17 +1237,13 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		for t in t_targets:
 			allowedtargets.enemy.push_back(t.position)
 	if targetgroups.has('ally'):
-		var t_targets :Array
-		if rangetype == 'dead':
-			t_targets = []
-			for t in playergroup.values():
-				if t.defeated:
-					t_targets.push_back(t)
-		else:
-			t_targets = get_allied_targets(fighter)
-		
+		var t_targets = get_allied_targets(fighter)
 		for t in t_targets:
 			allowedtargets.ally.push_back(t.position)
+	if targetgroups.has('dead'):#bearing in mind, that only player's chars can be "dead"
+		for t in playergroup.values():
+			if t.defeated:
+				allowedtargets.ally.push_back(t.position)
 	if targetgroups.has('self'):
 		allowedtargets.ally.append(int(fighter.position))
 	
@@ -1309,7 +1304,7 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 	var change = false
 	#var skill = Skillsdata.skilllist[s_code]
 	if ttarget == null: change = true #forced change
-	elif (ttarget.defeated or ttarget.hp <= 0) and skill.userange != "dead": change = true #forced change. or not. nvn error
+	elif (ttarget.defeated or ttarget.hp <= 0) and !skill.template.allowedtargets.has("dead"): change = true #forced change. or not. nvn error
 	elif skill.keep_target == variables.TARGET_NOKEEP: change = true #intentional change
 	elif skill.keep_target == variables.TARGET_KEEPFIRST: skill.keep_target = variables.TARGET_NOKEEP
 	elif skill.keep_target == variables.TARGET_MOVEFIRST:
@@ -1363,8 +1358,10 @@ func CalculateTargets(skill, caster, target_pos, finale = false):
 	if skill.allowedtargets.has('enemy'):
 		if caster.combatgroup == 'ally': targetgroup = 'enemy'
 		else: targetgroup = 'ally'
-	elif skill.allowedtargets.has('ally') or skill.allowedtargets.has('self'):
+	else: #'ally', 'self', 'dead'
 		targetgroup = caster.combatgroup
+	var ignore_defeated = !skill.allowedtargets.has('dead')
+	var for_range = { 'ally': [1, 4], 'enemy': [4, 10] }
 	
 	match skill.targetpattern:
 		'single':
@@ -1375,7 +1372,7 @@ func CalculateTargets(skill, caster, target_pos, finale = false):
 					for j in variables.rows[i]:
 						if battlefield[j] == null : continue
 						var tchar = battlefield[j]
-						if tchar.defeated: continue
+						if tchar.defeated and ignore_defeated: continue
 						#if !tchar.can_be_damaged(skill.code) and !finale: continue
 						array.append(tchar)
 		'line':
@@ -1384,38 +1381,32 @@ func CalculateTargets(skill, caster, target_pos, finale = false):
 					for j in variables.lines[i]:
 						if battlefield[j] == null : continue
 						var tchar = battlefield[j]
-						if tchar.defeated: continue
+						if tchar.defeated and ignore_defeated: continue
 						#if !tchar.can_be_damaged(skill.code) and !finale: continue
 						array.append(tchar)
 		'all':
-			for j in range(1, 10):
-				if j in range(1,4) && targetgroup == 'ally':
-					if battlefield[j] == null : continue
-					var tchar = battlefield[j]
-					if tchar.defeated: continue
-					#if !tchar.can_be_damaged(skill.code) and !finale: continue
-					array.append(tchar)
-				elif j in range(4, 10) && targetgroup == 'enemy':
-					if battlefield[j] == null : continue
-					var tchar = battlefield[j]
-					if tchar.defeated: continue
-					#if !tchar.can_be_damaged(skill.code) and !finale: continue
-					array.append(tchar)
+			var target_range = for_range[targetgroup]
+			for j in range(target_range[0], target_range[1]):
+				if battlefield[j] == null : continue
+				var tchar = battlefield[j]
+				if tchar.defeated and ignore_defeated: continue
+				#if !tchar.can_be_damaged(skill.code) and !finale: continue
+				array.append(tchar)
+		'dead':
+			for j in range(1, 4):#only player's char can be targeted as dead
+				if battlefield[j] == null : continue
+				var tchar = battlefield[j]
+				if !tchar.defeated: continue
+				array.append(tchar)
 		'no_target':
-			for j in range(1, 10):
+			var target_range = for_range[targetgroup]
+			for j in range(target_range[0], target_range[1]):
 				if j == target_pos: continue
-				if j in range(1,4) && targetgroup == 'ally':
-					if battlefield[j] == null : continue
-					var tchar = battlefield[j]
-					if tchar.defeated: continue
-					#if !tchar.can_be_damaged(skill.code) and !finale: continue
-					array.append(tchar)
-				elif j in range(4, 10) && targetgroup == 'enemy':
-					if battlefield[j] == null : continue
-					var tchar = battlefield[j]
-					if tchar.defeated: continue
-					#if !tchar.can_be_damaged(skill.code) and !finale: continue
-					array.append(tchar)
+				if battlefield[j] == null : continue
+				var tchar = battlefield[j]
+				if tchar.defeated and ignore_defeated: continue
+				#if !tchar.can_be_damaged(skill.code) and !finale: continue
+				array.append(tchar)
 		'sideslash':
 			var tpos = [target_pos]
 			if target_pos in [1, 4, 7]: tpos.push_back(target_pos + 1)
@@ -1976,12 +1967,6 @@ func execute_skill(s_skill2):
 func combatlogadd(text):
 	var data = {node = gui_node, time = turns, type = 'c_log', slot = 'c_log', params = {text = text}}
 	CombatAnimations.add_new_data(data)
-
-
-func res_all(hpval):
-	var p = playergroup
-	for ch in p.values():
-		ch.resurrection(hpval * ch.get_stat('hpmax'))
 
 
 func clean_summons():
