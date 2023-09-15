@@ -523,7 +523,7 @@ func SelectSkill(skill, system = false):
 	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
 	#need to add daily restriction check
 	if !activecharacter.can_use_skill(skill) :
-		#SelectSkill('attack')
+		activeitem = null
 		call_deferred('SelectSkill', 'attack', true)
 		return
 #	activecharacter.selectedskill = skill.code
@@ -533,6 +533,7 @@ func SelectSkill(skill, system = false):
 		if checkwinlose() == FIN_NO:
 			print ('no legal targets')
 			combatlogadd('No legal targets')
+			activeitem = null
 			call_deferred('SelectSkill', 'attack', true)
 			return
 	if skill.allowedtargets.has('self') and skill.allowedtargets.size() == 1 :
