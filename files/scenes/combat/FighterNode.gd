@@ -26,7 +26,6 @@ var speed = 1.33
 var hp
 #var mp
 onready var hp_bar = $HP
-var buffs = []
 
 #data format: node, time, type, slot, params
 
@@ -67,6 +66,7 @@ func _ready():
 	var overgrow = 10.0#size of a buffer around sprite for click mask
 	for i in range(0,scan_vecs.size()):
 		scan_vecs[i] *= overgrow
+	input_handler.ClearContainer($Buffs)
 
 
 func _gui_input(event):
@@ -344,65 +344,52 @@ func advance_move():
 
 #control visuals
 func noq_rebuildbuffs(newbuffs):
-	var oldbuff = 0
+	var buffs = $Buffs
 	for b in newbuffs:
-		if buffs.has(b.template_name): oldbuff += 1
-	if oldbuff == buffs.size():
-		for i in newbuffs:
-			if buffs.has(i.template_name): update_buff(i)
-			else: add_buff(i)
-	else:
-		input_handler.ClearContainer($Buffs)
-		buffs.clear()
-		for i in newbuffs:
-			add_buff(i)
+		if buffs.has_node(b.template_name):
+			update_buff(b)
+		else:
+			add_buff(b)
+	for buff in buffs.get_children():
+		if !buff.visible: continue#template is invisible
+		if buff.has_meta("just_updated"):
+			buff.remove_meta("just_updated")
+		else:
+			buff.hide()
+			buff.queue_free()
 
-func add_buff(i):
-	var newbuff = input_handler.DuplicateContainerTemplate($Buffs)
-	var text = i.description
-	newbuff.texture = i.icon
-	buffs.push_back(i.template_name)
-	if i.template.has('bonuseffect'):
-		match i.template.bonuseffect:
-			'barrier':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.shield)
-				newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.gray)
-			'duration':
-				if i.get_duration() != null:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.get_duration())
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.k_green)
-			'amount':
-				if i.amount > 1:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.amount)
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.magenta)
-	newbuff.hint_tooltip = text
+func add_buff(buff):
+	var buffs = $Buffs
+	assert(!buffs.has_node(buff.template_name), "%s already has buff %s" % [fighter.name, buff.template_name])
+	var newbuff = input_handler.DuplicateContainerTemplate(buffs)
+	newbuff.name = buff.template_name
+	update_buff(buff)
 
-func update_buff(i):
-	var pos = buffs.find(i.template_name)
-	var newbuff = $Buffs.get_child(pos)
-	var text = i.description
-	newbuff.texture = i.icon
-	buffs.push_back(i.template_name)
-	if i.template.has('bonuseffect'):
-		match i.template.bonuseffect:
+func update_buff(buff):
+	var buff_btn = $Buffs.get_node(buff.template_name)
+	buff_btn.set_meta("just_updated", true)
+	buff_btn.hint_tooltip = buff.description
+	buff_btn.texture = buff.icon
+	if buff.template.has('bonuseffect'):
+		var label_text = ""
+		var label_color = ""
+		match buff.template.bonuseffect:
 			'barrier':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.shield)
-				newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.gray)
+				label_text = str(fighter.shield)
+				label_color = variables.hexcolordict.gray
 			'duration':
-				if i.get_duration() != null:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.get_duration())
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.k_green)
+				if buff.get_duration() != null:
+					label_text = str(buff.get_duration())
+					label_color = variables.hexcolordict.k_green
 			'amount':
-				if i.amount > 1:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.amount)
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.magenta)
-	newbuff.hint_tooltip = text
+				if buff.amount > 1:
+					label_text = str(buff.amount)
+					label_color = variables.hexcolordict.magenta
+		if !label_text.empty():
+			var label = buff_btn.get_node("Label")
+			label.show()
+			label.text = label_text
+			label.set("custom_colors/font_color", label_color)
 
 func update_hp_label(newhp): 
 	var new_text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
