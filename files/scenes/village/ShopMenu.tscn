@@ -232,9 +232,6 @@ margin_right = 1026.0
 margin_bottom = 616.0
 texture = ExtResource( 15 )
 script = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureRect" parent="SelectAmountPanel"]
 margin_left = 66.9587
@@ -317,22 +314,24 @@ max_length = 5
 
 [node name="down" type="TextureButton" parent="SelectAmountPanel"]
 margin_left = 69.2142
-margin_top = 206.191
-margin_right = 94.2142
-margin_bottom = 235.191
+margin_top = 196.191
+margin_right = 109.214
+margin_bottom = 246.191
 rect_scale = Vector2( -1, 1 )
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 18 )
+expand = true
 
 [node name="up" type="TextureButton" parent="SelectAmountPanel"]
-margin_left = 153.214
-margin_top = 206.191
-margin_right = 178.214
-margin_bottom = 235.191
+margin_left = 155.0
+margin_top = 195.0
+margin_right = 195.0
+margin_bottom = 245.0
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 18 )
+expand = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SelectAmountPanel"]
 margin_left = 268.0
