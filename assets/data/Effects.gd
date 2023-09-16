@@ -1599,7 +1599,7 @@ var effect_table = {
 			],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsitems/scroll_sword.png", 
+				icon = "res://assets/images/iconsskills/defaultattack.png", 
 				description = "Increase damage by 50%%",
 				limit = 1,
 				t_name = 'e_i_atkup',
@@ -1620,7 +1620,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsitems/scroll_shield.png", 
+				icon = "res://assets/images/iconsskills/tackle.png", 
 				description = "Receive 50%% less damage",
 				limit = 1,
 				t_name = 'e_i_defup',
@@ -3388,7 +3388,8 @@ var effect_table = {
 						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield (%d remains)",
 						args = [{obj = 'parent_args', param = 1}],
-						t_name = 'i_shield'
+						t_name = 'i_shield',
+						bonuseffect = 'duration'
 					}
 				],
 				sub_effects = [],
@@ -3420,7 +3421,8 @@ var effect_table = {
 						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield (%d remains)",
 						args = [{obj = 'parent_args', param = 1}],
-						t_name = 'i_shield'
+						t_name = 'i_shield',
+						bonuseffect = 'duration'
 					}
 				],
 				sub_effects = [],

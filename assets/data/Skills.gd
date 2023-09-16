@@ -3363,10 +3363,11 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_heal_2_effect = {
 		code = 'item_heal_2_effect',
@@ -3387,10 +3388,11 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_heal_3_effect = {
 		code = 'item_heal_3_effect',
@@ -3411,10 +3413,11 @@ var skilllist = {
 		casteffects = ['e_i_dispelheal'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_heal_aoe_1_effect = {
 		code = 'item_heal_aoe_1_effect',
@@ -3435,10 +3438,11 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_heal_aoe_2_effect = {
 		code = 'item_heal_aoe_2_effect',
@@ -3459,10 +3463,11 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_heal_aoe_3_effect = {
 		code = 'item_heal_aoe_3_effect',
@@ -3483,10 +3488,11 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_dispel_1_effect = {
 		code = 'item_dispel_1_effect',
@@ -3507,10 +3513,11 @@ var skilllist = {
 		casteffects = ['e_i_dispelheal'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_dispel', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'dispel', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_dispel_2_effect = {
 		code = 'item_dispel_2_effect',
@@ -3531,10 +3538,11 @@ var skilllist = {
 		casteffects = ['e_i_dispelheal'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_dispel', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'dispel', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_res_1_effect = {
 		code = 'item_res_1_effect',
@@ -3555,10 +3563,11 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_i_resurrect20'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_resto', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'restoration', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_res_2_effect = {
 		code = 'item_res_2_effect',
@@ -3579,10 +3588,11 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_i_resurrect100'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_resto', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'restoration', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_res_3_effect = {
 		code = 'item_res_3_effect',
@@ -3603,10 +3613,11 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_i_resurrect20'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_resto', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
-		patches = []
+		patches = [],
+		sounddata = {initiate = 'restoration', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_res_4_effect = {
 		code = 'item_res_4_effect',
@@ -3630,10 +3641,11 @@ var skilllist = {
 		],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_sanctuary', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'sanctuary', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_barrier_1_effect = {
 		code = 'item_barrier_1_effect',
@@ -3654,10 +3666,11 @@ var skilllist = {
 		casteffects = ['e_i_barrier5'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_barrier', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'barrier2', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_barrier_2_effect = {
 		code = 'item_barrier_2_effect',
@@ -3678,10 +3691,11 @@ var skilllist = {
 		casteffects = ['e_i_barrier4'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_barrier', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'barrier2', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_barrier_3_effect = {
 		code = 'item_barrier_3_effect',
@@ -3702,10 +3716,11 @@ var skilllist = {
 		casteffects = ['e_i_barrier5'],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_barrier', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'barrier2', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_damage_1_effect = {
 		code = 'item_damage_1_effect',
@@ -3726,13 +3741,14 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
-			{code = 'anim_hit', target = 'target', period = 'predamage'},
-			{code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [#{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'sfx_shockwave', target = 'target', period = 'predamage'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [], 
-		ai_priority = 1
+		ai_priority = 1,
+		sounddata = {initiate = 'explosion', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_damage_2_effect = {
 		code = 'item_damage_2_effect',
@@ -3753,11 +3769,14 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'targetattack', target = 'target', period = 'predamage'}],
+		sfx = [#{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'sfx_shockwave', target = 'target', period = 'predamage'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [], 
-		ai_priority = 1
+		ai_priority = 1,
+		sounddata = {initiate = 'explosion', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_buff_atk_effect = {
 		code = 'item_buff_atk_effect',
@@ -3778,10 +3797,11 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_i_atkup'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_fencing', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'sword mastery', strike = null, hit = null, hittype = 'absolute'}
 	},
 	item_buff_def_effect = {
 		code = 'item_buff_def_effect',
@@ -3802,10 +3822,11 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_i_defup'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'sfx_shield_up', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'nature_blessing', strike = null, hit = null, hittype = 'absolute'}
 	},
 	#old part
 	#to remove all obsolete

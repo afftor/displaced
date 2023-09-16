@@ -45,7 +45,7 @@ var enemylist = {
 		combaticon = 'enemies/ElvenratCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_1',#'elvenratloot',
+		loottable = 'elvenratloot',
 		weaponsound = 'elvenrat at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle",
@@ -70,7 +70,7 @@ var enemylist = {
 		combaticon = 'enemies/MoleCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_1',
+		loottable = 'moleloot',
 		weaponsound = 'mole at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0007s_0000_mole_idle",
@@ -95,7 +95,7 @@ var enemylist = {
 		combaticon = 'enemies/VultureCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_1',
+		loottable = 'vultureloot',
 		weaponsound = 'vulture at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0005s_0000_vulture_idle",
@@ -120,7 +120,7 @@ var enemylist = {
 		combaticon = 'enemies/TreantCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_2',
+		loottable = 'treantloot',
 		weaponsound = 'treant at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0003s_0002_Treant_idle",
@@ -144,7 +144,7 @@ var enemylist = {
 		combaticon = 'enemies/FaeryCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_2',
+		loottable = 'faeryloot',
 		weaponsound = 'fairy at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0001s_0002_Fairy_idle",
@@ -168,7 +168,7 @@ var enemylist = {
 		combaticon = '',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_2',
+		loottable = 'faeryloot_2',
 		weaponsound = 'fairy at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0002s_0002_fairyalt_idle",
@@ -192,7 +192,7 @@ var enemylist = {
 		combaticon = 'enemies/SpiderCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'spiderloot',
 		weaponsound = 'spider at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0002s_0002_Spider_idle",
@@ -216,7 +216,7 @@ var enemylist = {
 		combaticon = 'enemies/Spider_2CombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'spiderloot_2',
 		weaponsound = 'spider at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0001s_0002_spideralt_idle",
@@ -241,7 +241,7 @@ var enemylist = {
 		combaticon = 'enemies/EarthgolemCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'earthgolemloot',
 		weaponsound = 'golem at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0001s_0002_Golem_idle",
@@ -265,7 +265,7 @@ var enemylist = {
 		combaticon = 'enemies/AngrydwarfCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'angrydwarfloot',
 		weaponsound = 'dwarf at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0003s_0002_Dwarf2_idle",
@@ -289,7 +289,7 @@ var enemylist = {
 		combaticon = 'enemies/DwarfwarriorCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'dwarfwarriorloot',
 		weaponsound = 'dwarf attack armor',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
@@ -313,7 +313,7 @@ var enemylist = {
 		combaticon = 'enemies/ZombieCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_4',
+		loottable = 'zombieloot',
 		weaponsound = 'zombie at',
 		animations = {
 			idle ="Fight/Fight_spritesFHD_0002s_0002_Zombieidle" ,
@@ -337,7 +337,7 @@ var enemylist = {
 		combaticon = 'enemies/Skeleton_warriorCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_4',
+		loottable = 'skeletonwarriorloot',
 		weaponsound = 'skeleton warrior at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0002_Skelet_warrior_idle",
@@ -362,7 +362,7 @@ var enemylist = {
 		combaticon = 'enemies/Skeleton_archerCombatIcon',
 		bodyimage = null,
 		aiposition = 'ranged',
-		loottable = 'test_4',
+		loottable = 'skeletonarcherloot',
 		weaponsound = 'arrow_shot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0005s_0002_Archer_idle",
@@ -386,7 +386,7 @@ var enemylist = {
 		combaticon = 'enemies/WraithCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_4',
+		loottable = 'wraithloot',
 		weaponsound = 'wraith at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0006s_0000_wraith_idle",
@@ -410,7 +410,7 @@ var enemylist = {
 		combaticon = 'enemies/Cult_soldierCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_6',
+		loottable = 'cultsoldierloot',
 		weaponsound = 'slash',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0008s_0000_cultsoldier_idle",
@@ -435,7 +435,7 @@ var enemylist = {
 		combaticon = 'enemies/Cult_mageCombatIcon',
 		bodyimage = null,
 		aiposition = 'ranged',
-		loottable = 'test_6',
+		loottable = 'cultmageloot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0003s_0000_culthealer_idle",
 			hit = "Fight/Fight_spritesFHD_0003s_0000_culthealer_hit",
@@ -460,7 +460,7 @@ var enemylist = {
 		combaticon = 'enemies/Cult_archerCombatIcon',
 		bodyimage = null,
 		aiposition = 'ranged',
-		loottable = 'test_6',
+		loottable = 'cultarcherloot',
 		weaponsound = 'arrow_shot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0004s_0000_cultarcher_idle",
@@ -484,7 +484,7 @@ var enemylist = {
 		combaticon = 'enemies/HatchlingCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',
+		loottable = 'hatchlingloot',
 		weaponsound = 'hatchling at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0004s_0002_Dragon_idle",
@@ -508,7 +508,7 @@ var enemylist = {
 		combaticon = 'enemies/WyvernCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',
+		loottable = 'wyvernloot',
 		weaponsound = 'wyvern at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0007s_0002_Wyvern_idle",
@@ -532,7 +532,7 @@ var enemylist = {
 		combaticon = 'enemies/Armored_beastCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',
+		loottable = 'armoredbeastloot',
 		weaponsound = 'tortle at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0005s_0002_Tortle_idle",
@@ -556,7 +556,7 @@ var enemylist = {
 		combaticon = 'enemies/Giant_toadCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',#or not - not used
+		loottable = 'gianttoadloot',#or not - not used
 		weaponsound = 'toad at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0006s_0002_Toad_idle",
@@ -580,7 +580,7 @@ var enemylist = {
 		combaticon = '',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'demon1loot',
 		weaponsound = 'demon at',
 		animations = {
 			idle = "Fight/Demon_idle",
@@ -604,7 +604,7 @@ var enemylist = {
 		combaticon = '',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'demon2loot',
 		weaponsound = 'demon at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0002_Demonalt_idle",
@@ -627,7 +627,7 @@ var enemylist = {
 		combaticon = 'enemies/SoldierCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'soldierloot',
 		weaponsound = 'soldier at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0004s_0002_Specnaz_idle (1)",
@@ -652,7 +652,7 @@ var enemylist = {
 		combaticon = 'enemies/DroneCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'droneloot',
 		weaponsound = 'drone at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0002s_0002_Dron_idle (1)",
@@ -784,7 +784,7 @@ var enemylist = {
 		combaticon = 'enemies/DwarvenkingCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'dwarvenkingloot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
 			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
@@ -816,7 +816,7 @@ var enemylist = {
 		combaticon = 'enemies/FearyqueenCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'fearyqueenloot',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Fairy_sq/FairyQueen.tres"),
 			hit = "Fight/Bosses/Queen_fairy_hit",
@@ -847,7 +847,7 @@ var enemylist = {
 		combaticon = 'enemies/Dragon_bossCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'dragonbossloot',
 		weaponsound = 'dragon at boss',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Dragon_idle_sq/Dragon.tres"),
@@ -880,7 +880,7 @@ var enemylist = {
 		combaticon = 'enemies/Viktor_bossCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'viktorbossloot',
 		weaponsound = 'viktor at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Viktor_sq_idle/Viktor.tres"),
@@ -913,7 +913,7 @@ var enemylist = {
 		combaticon = 'enemies/AnnetCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'annetloot',
 		weaponsound = 'sukkub at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Sukkub_sq_anim/Succubus.tres"),
@@ -1011,7 +1011,7 @@ var enemylist = {
 		combaticon = 'enemies/Demitrius1CombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'demitrius1loot',
 		weaponsound = 'demitrius at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
@@ -1045,7 +1045,7 @@ var enemylist = {
 		combaticon = 'enemies/Demitrius2CombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'demitrius2loot',
 		weaponsound = 'demitrius at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
@@ -1065,49 +1065,352 @@ var enemylist = {
 
 var loottables = { # no need to separate materials from usables now
 	# added option to put xpreward into lootable
-#	elvenratloot = {
-#		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
-#		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
-#	},
 	elvenratloot = {
-		items = [{code = 'morsel', min = 1, max = 1, chance = 25}],
-		gold = [10, 50]
+		items = [
+			{code = 'item_heal_2', chance = 30},
+			{code = 'stone', chance = 60}
+		],
+		gold = [1, 5]
+	},
+	moleloot = {
+		items = [
+			{code = 'item_heal_1', chance = 50},
+			{code = 'stone', chance = 60}
+		],
+		gold = [10, 20]
+	},
+	vultureloot = {
+		items = [
+			{code = 'item_barrier_1', chance = 30},
+			{code = 'item_barrier_2', chance = 5},
+			{code = 'stone', chance = 60}
+		],
+		gold = [50, 60]
 	},
 	treantloot = {
+		items = [
+			{code = 'item_heal_1', chance = 30},
+			{code = 'item_dispel_1', chance = 10},
+			{code = 'wood', chance = 70}
+		],
+		gold = [1, 20]
 	},
-	bigtreantloot = {
+	faeryloot = {
+		items = [
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_dispel_1', chance = 30},
+			{code = 'wood', chance = 70}
+		],
+		gold = [20, 40]
+	},
+	faeryloot_2 = {
+		items = [
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_heal_aoe_2', chance = 10},
+			{code = 'item_dispel_2', chance = 20},
+			{code = 'wood', chance = 70}
+		],
+		gold = [50, 70]
 	},
 	spiderloot = {
+		items = [
+			{code = 'chitine', chance = 45},
+			{code = 'item_heal_aoe_2', chance = 10}
+		],
+		gold = [10, 20]
+	},
+	spiderloot_2 = {
+		items = [
+			{code = 'chitine', chance = 70},
+			{code = 'item_heal_aoe_3', chance = 10}
+		],
+		gold = [10, 40]
 	},
 	earthgolemloot = {
-	},
-	fairiesloot = {
+		items = [
+			{code = 'metal', chance = 45},
+			{code = 'stone', chance = 45},
+			{code = 'item_heal_aoe_1', chance = 10},
+			{code = 'item_res_3', chance = 5}
+		],
+		gold = [30, 50]
 	},
 	angrydwarfloot = {
+		items = [
+			{code = 'metal', chance = 80},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_barrier_2', chance = 5},
+			{code = 'item_damage_1', chance = 10}
+		],
+		gold = [50, 70]
+	},
+	dwarfwarriorloot = {
+		items = [
+			{code = 'metal', chance = 100},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 5},
+			{code = 'item_barrier_2', chance = 10},
+			{code = 'item_barrier_3', chance = 5},
+			{code = 'item_damage_1', chance = 20},
+			{code = 'item_buff_atk', chance = 5}
+		],
+		gold = [80, 120]
+	},
+	zombieloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_1', chance = 10},
+		],
+		gold = [50, 100]
+	},
+	skeletonwarriorloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_1', chance = 10},
+			{code = 'item_res_2', chance = 5},
+		],
+		gold = [50, 100]
+	},
+	skeletonarcherloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_2', chance = 10},
+			{code = 'item_res_3', chance = 5},
+		],
+		gold = [50, 100]
+	},
+	wraithloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_3', chance = 10},
+			{code = 'item_res_4', chance = 5},
+			{code = 'item_barrier_2', chance = 10}
+		],
+		gold = [70, 120]
+	},
+	hatchlingloot = {
+		items = [
+			{code = 'scales', chance = 50},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_heal_aoe_2', chance = 20},
+			{code = 'item_barrier_1', chance = 10}
+		],
+		gold = [50, 100]
+	},
+	wyvernloot = {
+		items = [
+			{code = 'scales', chance = 80},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_heal_aoe_3', chance = 20},
+			{code = 'item_barrier_2', chance = 10}
+		],
+		gold = [70, 120]
+	},
+	armoredbeastloot = {
+		items = [
+			{code = 'scales', chance = 80},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_aoe_3', chance = 10},
+			{code = 'item_barrier_2', chance = 10},
+			{code = 'item_barrier_3', chance = 50}
+		],
+		gold = [70, 120]
+	},
+	gianttoadloot = {
+		items = [
+			{code = 'scales', chance = 50},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 5},
+			{code = 'item_heal_aoe_2', chance = 10},
+			{code = 'item_barrier_2', chance = 5},
+		],
+		gold = [70, 120]
+	},
+	cultsoldierloot = {
+		items = [
+			{code = 'otherworld', chance = 20},
+			{code = 'item_heal_2', chance = 30},
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_dispel_1', chance = 30},
+		],
+		gold = [50, 100]
+	},
+	cultarcherloot = {
+		items = [
+			{code = 'otherworld', chance = 80},
+			{code = 'item_heal_2', chance = 30},
+			{code = 'item_heal_aoe_2', chance = 10},
+			{code = 'item_barrier_2', chance = 10},
+		],
+		gold = [50, 100]
+	},
+	cultmageloot = {
+		items = [
+			{code = 'otherworld', chance = 100},
+			{code = 'item_heal_2', chance = 30},
+			{code = 'item_heal_aoe_2', chance = 30},
+			{code = 'item_heal_aoe_3', chance = 5},
+			{code = 'item_dispel_1', chance = 30},
+			{code = 'item_dispel_2', chance = 5},
+			{code = 'item_barrier_3', chance = 5},
+			{code = 'item_res_1', chance = 5},
+			{code = 'item_buff_atk', chance = 10},
+			{code = 'item_buff_def', chance = 10}
+		],
+		gold = [100, 150]
+	},
+	demon1loot = {
+		items = [
+			{code = 'demonic', chance = 25},
+			{code = 'item_dispel_1', chance = 20},
+			{code = 'item_res_3', chance = 5},
+			{code = 'item_barrier_1', chance = 10},
+			{code = 'item_damage_1', chance = 10},
+		],
+		gold = [150, 200]
+	},
+	demon2loot = {
+		items = [
+			{code = 'demonic', chance = 50},
+			{code = 'item_dispel_1', chance = 20},
+			{code = 'item_res_4', chance = 5},
+			{code = 'item_barrier_2', chance = 10},
+			{code = 'item_damage_1', chance = 10},
+		],
+		gold = [150, 200]
+	},
+	soldierloot = {
+		items = [
+			{code = 'demonic', chance = 50},
+			{code = 'item_heal_1', chance = 20},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_damage_1', chance = 10},
+			{code = 'item_damage_2', chance = 5},
+		],
+		gold = [150, 200]
+	},
+	droneloot = {
+		items = [
+			{code = 'demonic', chance = 50},
+			{code = 'item_damage_1', chance = 10},
+			{code = 'item_damage_2', chance = 5},
+		],
+		gold = [150, 200]
+	},
+	
+	#bosses
+	bigtreantloot = {
+		items = [
+			{code = 'item_heal_1', chance = 100, min = 1, max = 3},
+			{code = 'item_dispel_2', chance = 100},
+			{code = 'item_res_3', chance = 10},
+			{code = 'item_buff_def', chance = 10},
+			{code = 'wood', chance = 100, min = 1, max = 5}
+		],
+		gold = [100, 200]
+	},
+	fearyqueenloot = {
+		items = [
+			{code = 'item_heal_aoe_1', chance = 100},
+			{code = 'item_heal_aoe_2', chance = 30},
+			{code = 'item_heal_aoe_3', chance = 5},
+			{code = 'item_dispel_1', chance = 70},
+			{code = 'item_dispel_2', chance = 50},
+			{code = 'item_res_2', chance = 80},
+			{code = 'item_res_3', chance = 50},
+			{code = 'wood', chance = 100, min = 1, max = 3}
+		],
+		gold = [100, 190]
 	},
 	earthgolembossloot = {
+		items = [
+			{code = 'metal', chance = 100, min = 1, max = 5},
+			{code = 'stone', chance = 100, min = 3, max = 7},
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_res_3', chance = 20},
+			{code = 'item_res_4', chance = 5},
+			{code = 'item_barrier_1', chance = 30}
+		],
+		gold = [120, 200]
 	},
-	#for material testing, for real - duplicate per unit & add usables, gold and other
-	test_1 = {
-		items = [{code = 'stone', chance = 60}],
+	dwarvenkingloot = {
+		items = [
+			{code = 'metal', chance = 100, min = 1, max = 5},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 30},
+			{code = 'item_barrier_2', chance = 30},
+			{code = 'item_barrier_3', chance = 15},
+			{code = 'item_damage_1', chance = 30},
+			{code = 'item_damage_2', chance = 5},
+			{code = 'item_buff_atk', chance = 50}
+		],
+		gold = [150, 220]
 	},
-	test_2 = {
-		items = [{code = 'wood', chance = 70}],
+	dragonbossloot = {
+		items = [
+			{code = 'scales', chance = 100, min = 1, max = 5},
+			{code = 'item_heal_aoe_3', chance = 100},
+			{code = 'item_barrier_2', chance = 70},
+			{code = 'item_barrier_3', chance = 20},
+			{code = 'item_dispel_1', chance = 100},
+			{code = 'item_res_2', chance = 50},
+			{code = 'item_buff_atk', chance = 5},
+			{code = 'item_buff_def', chance = 5},
+		],
+		gold = [200, 300]
 	},
-	test_3 = {
-		items = [{code = 'metal', chance = 45}, {code = 'chitine', chance = 45}],
+	viktorbossloot = {
+		items = [
+			{code = 'otherworld', chance = 100, min = 1, max = 5},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 30},
+			{code = 'item_heal_aoe_3', chance = 40},
+			{code = 'item_dispel_1', chance = 30},
+			{code = 'item_barrier_2', chance = 80},
+			{code = 'item_buff_atk', chance = 10},
+			{code = 'item_buff_def', chance = 10}
+		],
+		gold = [250, 300]
 	},
-	test_4 = {
-		items = [{code = 'leather', chance = 50}],
+	annetloot = {
+		items = [
+			{code = 'demonic', chance = 100, min = 1, max = 5},
+			{code = 'item_dispel_1', chance = 100},
+			{code = 'item_dispel_2', chance = 50},
+			{code = 'item_res_3', chance = 80},
+			{code = 'item_res_4', chance = 50},
+			{code = 'item_barrier_2', chance = 80},
+			{code = 'item_barrier_3', chance = 40}
+		],
+		gold = [300, 400]
 	},
-	test_5 = {
-		items = [{code = 'scales', chance = 50}],
+	demitrius1loot = {
+		items = [
+			{code = 'demonic', chance = 100, min = 5, max = 10},
+			{code = 'item_heal_aoe_2', chance = 100},
+			{code = 'item_heal_aoe_3', chance = 50},
+			{code = 'item_res_1', chance = 100},
+			{code = 'item_res_2', chance = 100},
+			{code = 'item_res_3', chance = 50},
+			{code = 'item_res_4', chance = 50},
+			{code = 'item_barrier_2', chance = 100},
+			{code = 'item_barrier_3', chance = 100},
+			{code = 'item_buff_atk', chance = 100},
+			{code = 'item_buff_def', chance = 100}
+		],
+		gold = [400, 500]
 	},
-	test_6 = {
-		items = [{code = 'otherworld', chance = 20}],
-	},
-	test_7 = {
-		items = [{code = 'demonic', chance = 25}],
+	demitrius2loot = {
+		items = [
+			{code = 'demonic', chance = 100, min = 5, max = 10},
+			{code = 'item_heal_aoe_3', chance = 100},
+			{code = 'item_res_2', chance = 100},
+			{code = 'item_res_4', chance = 100},
+			{code = 'item_barrier_3', chance = 100},
+			{code = 'item_buff_atk', chance = 100},
+			{code = 'item_buff_def', chance = 100}
+		],
+		gold = [700, 1000]
 	},
 }
 
