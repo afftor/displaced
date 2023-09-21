@@ -46,7 +46,7 @@ margin_bottom = 67.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 13 )
-text = "Forge"
+text = "BLACKSMITH"
 align = 1
 valign = 1
 __meta__ = {
@@ -153,9 +153,6 @@ margin_top = -56.0
 margin_right = 111.5
 theme = ExtResource( 4 )
 text = "Upgrade"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Panel/weapon1"]
 anchor_right = 1.0
@@ -182,6 +179,38 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UpdateText" type="NinePatchRect" parent="Panel/weapon1"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -109.0
+margin_right = 89.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 100, 50 )
+texture = ExtResource( 15 )
+patch_margin_left = 25
+patch_margin_top = 38
+patch_margin_right = 29
+patch_margin_bottom = 30
+
+[node name="Label" type="Label" parent="Panel/weapon1/UpdateText"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 11 )
+text = "UPGRADEBLACKSMITHREQUEST"
+align = 1
+valign = 2
+autowrap = true
+clip_text = true
 
 [node name="ResPanel" type="TextureRect" parent="Panel/weapon1"]
 anchor_left = 0.5
@@ -274,9 +303,6 @@ margin_top = -56.0
 margin_right = 111.5
 theme = ExtResource( 4 )
 text = "Upgrade"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Panel/weapon2"]
 anchor_right = 1.0
@@ -300,6 +326,38 @@ custom_fonts/font = ExtResource( 11 )
 text = "Broad Sword"
 align = 1
 autowrap = true
+
+[node name="UpdateText" type="NinePatchRect" parent="Panel/weapon2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -109.0
+margin_right = 89.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 100, 50 )
+texture = ExtResource( 15 )
+patch_margin_left = 25
+patch_margin_top = 38
+patch_margin_right = 29
+patch_margin_bottom = 30
+
+[node name="Label" type="Label" parent="Panel/weapon2/UpdateText"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 11 )
+text = "UPGRADEBLACKSMITHREQUEST"
+align = 1
+valign = 2
+autowrap = true
+clip_text = true
 
 [node name="ResPanel" type="TextureRect" parent="Panel/weapon2"]
 anchor_left = 0.5
@@ -427,6 +485,38 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UpdateText" type="NinePatchRect" parent="Panel/armor"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -109.0
+margin_right = 89.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 100, 50 )
+texture = ExtResource( 15 )
+patch_margin_left = 25
+patch_margin_top = 38
+patch_margin_right = 29
+patch_margin_bottom = 30
+
+[node name="Label" type="Label" parent="Panel/armor/UpdateText"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 11 )
+text = "UPGRADEBLACKSMITHREQUEST"
+align = 1
+valign = 2
+autowrap = true
+clip_text = true
 
 [node name="ResPanel" type="TextureRect" parent="Panel/armor"]
 anchor_left = 0.5

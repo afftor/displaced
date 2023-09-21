@@ -10,7 +10,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'unlock_area', arg = 'forest'},
 		{type = 'system', value = 'unlock_mission', arg = 'forest_erika'},
 #		{type = 'show_screen', value = 'village'},
-		{type = 'system', value = 'unlock_building', arg = 'bridge'}
+#		{type = 'system', value = 'unlock_building', arg = 'bridge'}#unlocked from very beginning
 	],
 	intro_3 = [
 		{type = 'tutorial', value = 'exploration_menu'},

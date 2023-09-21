@@ -180,9 +180,6 @@ margin_right = 876.702
 margin_bottom = 749.123
 texture_normal = ExtResource( 23 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="forge"]

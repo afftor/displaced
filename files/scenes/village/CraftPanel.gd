@@ -87,7 +87,9 @@ func rebuild_gear_slot(node, data, newdata):
 	else:
 		node.get_node("Label").text = ""
 	if newdata != null:
-		node.get_node("Button").visible = true
+		var forge_can :bool = state.if_has_upgrade('forge', newdata.level)
+		node.get_node("Button").visible = forge_can
+		node.get_node("UpdateText").visible = !forge_can
 		node.get_node("Button").disabled = false
 		node.get_node("VBoxContainer").visible = true
 		node.get_node("ResPanel").visible = true
