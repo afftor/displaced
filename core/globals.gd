@@ -373,23 +373,23 @@ func disconnecttooltip(node):
 #	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
 #	node.showup(targetnode, data)
 
-func connectitemtooltip(node, item):
-	if node.is_connected("mouse_entered",self,'showitemtooltip'):
-		node.disconnect("mouse_entered",self,'showitemtooltip')
-	node.connect("mouse_entered", self ,'showitemtooltip', [node, item])
+#func connectitemtooltip(node, item):
+#	if node.is_connected("mouse_entered",self,'showitemtooltip'):
+#		node.disconnect("mouse_entered",self,'showitemtooltip')
+#	node.connect("mouse_entered", self ,'showitemtooltip', [node, item])
+#
+#func showitemtooltip(targetnode, data):
+#	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
+#	node.showup_usable(targetnode, data)
 
-func showitemtooltip(targetnode, data):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
-	node.showup_usable(targetnode, data)
-
-func connectgeartooltip(node, item):
-	if node.is_connected("mouse_entered",self,'showgeartooltip'):
-		node.disconnect("mouse_entered",self,'showgeartooltip')
-	node.connect("mouse_entered", self ,'showgeartooltip', [node, item])
-
-func showgeartooltip(targetnode, data):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
-	node.showup_gear(targetnode, data)
+#func connectgeartooltip(node, item):
+#	if node.is_connected("mouse_entered",self,'showgeartooltip'):
+#		node.disconnect("mouse_entered",self,'showgeartooltip')
+#	node.connect("mouse_entered", self ,'showgeartooltip', [node, item])
+#
+#func showgeartooltip(targetnode, data):
+#	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
+#	node.showup_gear(targetnode, data)
 
 #func connectslottooltip(node, hero_id, slot, position = Vector2(0, 0)):
 #	if node.is_connected("mouse_entered",self,'showslottooltip'):

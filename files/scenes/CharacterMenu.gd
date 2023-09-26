@@ -1,5 +1,6 @@
 #needs remove
 extends "res://files/Close Panel Button/ClosingPanel.gd"
+#seems not to be in use
 
 var character
 

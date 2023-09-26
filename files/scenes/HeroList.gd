@@ -20,7 +20,6 @@ func _ready():
 	state.connect("party_changed", self, "UpdateList")
 
 func open():
-	$HeroPanel.hide()
 	UpdateList()
 	show()
 	#popup()
@@ -35,11 +34,6 @@ func UpdateList():
 #		newbutton.connect("pressed", self, "OpenEquip", [i])
 		newbutton.connect("pressed", self, "OpenInfo", [i.id])
 		newbutton.set_meta("hero", i)
-
-#func OpenEquip(hero):
-#	equipopen = true
-#	$HeroPanel.open(hero)
-
 
 func OpenInfo(ch_id):
 	var node = input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL)

@@ -1,4 +1,4 @@
-extends Panel
+extends NinePatchRect
 
 var parentnode
 var shutoff = false
@@ -18,13 +18,14 @@ func _init():
 	set_process(false)
 	#connect("popup_hide", self, 'cooldown')
 
-func showup_usable(node, item):
-	var text = ''
-	text = item.tooltiptext()
-	textnode.bbcode_text = globals.TextEncoder(text)
-	input_handler.itemshadeimage(iconnode, item)
-	$Cost/Label.text = str(item.calculateprice())
-	showup(node)
+#legacy code
+#func showup_usable(node, item):
+#	var text = ''
+#	text = item.tooltiptext()
+#	textnode.bbcode_text = globals.TextEncoder(text)
+#	input_handler.itemshadeimage(iconnode, item)
+#	$Cost/Label.text = str(item.calculateprice())
+#	showup(node)
 
 func showup_material(node, item):
 	var text = ''
@@ -38,13 +39,14 @@ func showup_material(node, item):
 	$Cost/Label.text = str(item.price)
 	showup(node)
 
-func showup_gear(node, item):
-	var text = ''
-	text = '[center]' + item.name + '[/center]\n' + item.description
-	textnode.bbcode_text = globals.TextEncoder(text)
-	input_handler.itemshadeimage(iconnode, item)
-	iconnode.material = null
-	showup(node)
+#legacy code
+#func showup_gear(node, item):
+#	var text = ''
+#	text = '[center]' + item.name + '[/center]\n' + item.description
+#	textnode.bbcode_text = globals.TextEncoder(text)
+#	input_handler.itemshadeimage(iconnode, item)
+#	iconnode.material = null
+#	showup(node)
 
 func showup(node):
 	parentnode = node
@@ -60,21 +62,24 @@ func showup(node):
 	
 	show()
 	
-	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
-	self.set_global_position(pos)
+	var node_rect = node.get_global_rect()
+	self.set_global_position(Vector2(
+		node_rect.position.x + node_rect.size.x * 0.5 - rect_size.x * 0.5,
+		node_rect.end.y + 5))
 	
-	if get_rect().end.x > screen.size.x:
+	if rect_global_position.x < 0:
+		rect_global_position.x = 0
+	if get_global_rect().end.x > screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
-	if get_rect().end.y > screen.size.y:
-		rect_global_position.y -= get_rect().end.y - screen.size.y
+	if get_global_rect().end.y > screen.size.y:
+		rect_global_position.y = node_rect.position.y - rect_size.y - 5
 	
 	set_process(true)
 
-func cooldown():
-	shutoff = true
-	yield(get_tree().create_timer(0.2), 'timeout')
-	shutoff = false
+#func cooldown():
+#	shutoff = true
+#	yield(get_tree().create_timer(0.2), 'timeout')
+#	shutoff = false
 
 func hide():
 	parentnode = null
