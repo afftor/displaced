@@ -1755,8 +1755,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			#special results
 			if skill.damagetype is String and skill.damagetype == 'summon':
 				summon(skill.value[0], skill.value[1]);
-			elif skill.damagetype is String and skill.damagetype == 'resurrect':
-				if !rules.has('no_res'): i.resurrect(skill.value[0]) #not sure
+			#does not work, I think
+#			elif skill.damagetype is String and skill.damagetype == 'resurrect':
+#				if !rules.has('no_res'): i.resurrect(skill.value[0]) #not sure
 			#default skill result
 			else:
 				var s_skill2:S_Skill = s_skill1.clone()

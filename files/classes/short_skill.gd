@@ -42,7 +42,7 @@ func _init():
 #	random_factor_p = 0.0
 
 func clone():
-	var res = dict2inst(inst2dict(self))
+	var res = dict2inst(inst2dict(self).duplicate(true))
 	res.effects.clear()
 	for e in template.casteffects:
 		var eff = effects_pool.e_createfromtemplate(e, res)
@@ -233,6 +233,9 @@ func resolve_value(check_m):
 			endvalue /= 2
 		value[i] = endvalue
 	process_value = value[0]
+#	print("resolve_value for %s: %s" % [code, process_value])
+#	print(long_value)
+#	print(value)
 
 func calculate_dmg():
 	if damagetype == 'weapon':

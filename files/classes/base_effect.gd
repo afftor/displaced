@@ -187,6 +187,16 @@ func get_arg(index):
 				args[index] = par.get(arg.param)
 	return args[index]
 
+#func test_id_me() -> String:
+#	var par = get_applied_obj()
+#	var my_id = "%s " % id
+#	if par != null:
+#		return my_id + par.name
+#	elif typeof(parent) == TYPE_STRING:
+#		return my_id + parent
+#	else:
+#		return my_id + parent.code
+
 func set_args(arg, value):
 	self_args[arg] = value
 	#calculate_args()
