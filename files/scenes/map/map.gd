@@ -81,10 +81,22 @@ func update_map():
 		check_location(loc)
 		var area_node = get_node(loc)
 
-		if loc == 'cult' and state.location_unlock['modern_city']:
-			area_node.hide()
-			area_node.set_inactive()
-		elif state.location_unlock[loc]:
+		if loc == 'cult':
+			if state.location_unlock['modern_city']:
+				area_node.hide()
+				area_node.set_inactive()
+				continue
+			else:
+				area_node.show()
+		elif loc == 'modern_city':
+			if state.location_unlock[loc]:
+				area_node.show()
+			else:
+				area_node.hide()
+				area_node.set_inactive()
+				continue
+		
+		if state.location_unlock[loc]:
 			area_node.m_show()
 		else:
 			area_node.m_hide()

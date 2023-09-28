@@ -46,7 +46,7 @@ func m_hide():
 
 
 func m_show():
-	visible = true
+#	visible = true
 	$clouds.visible = false
 
 

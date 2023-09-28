@@ -1077,7 +1077,7 @@ func victory():#2remake for it is broken for now
 		if i.name == 'Button':
 			continue
 		tween = input_handler.GetTweenNode(i)
-		yield(get_tree().create_timer(1), 'timeout')
+		yield(get_tree().create_timer(0.5), 'timeout')
 		i.show()
 		input_handler.PlaySound(sounds["itemget"])
 		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

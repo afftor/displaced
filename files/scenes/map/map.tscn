@@ -1673,9 +1673,6 @@ margin_bottom = 994.0
 texture_normal = ExtResource( 9 )
 expand = true
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" parent="cult" instance=ExtResource( 24 )]
 margin_left = 111.0

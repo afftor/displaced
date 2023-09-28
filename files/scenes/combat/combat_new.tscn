@@ -559,9 +559,6 @@ margin_top = 579.0
 margin_right = 581.0
 margin_bottom = 750.0
 scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Rewards/ScrollContainer"]
 custom_constants/separation = 6
