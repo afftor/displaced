@@ -36,6 +36,7 @@ var tutorials_data = {
 	},
 	quest_character = {
 		buttons = ["townhall", "townhall_event"],
+		delay = {"townhall_event" : 0.2},
 		message = "TUTORIAL_QUEST_CHARACTER"
 	},
 	building_upgrades = {
@@ -44,7 +45,7 @@ var tutorials_data = {
 	},
 	exploration_menu = {
 		buttons = ["bridge", "exploration_loc", "missions"],
-		delay = {"exploration_loc" : 0.7, "missions" : 0.7},
+		delay = {"exploration_loc" : 0.4, "missions" : 0.2},
 		message = "TUTORIAL_EXPLORATION_MENU"
 	},
 }

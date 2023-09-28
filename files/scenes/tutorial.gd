@@ -84,7 +84,9 @@ func highlight_next_button() ->void:
 	var btn_id = cur_button_seq[cur_button_num]
 	if cur_delay.has(btn_id):
 		mouse_filter = MOUSE_FILTER_STOP
-		node_highlighter.hide()
+		node_highlighter.rect_position = Vector2(-1,-1)
+		node_highlighter.rect_size = Vector2(0,0)
+		calculate_screen()
 		yield(get_tree().create_timer(cur_delay[btn_id]), 'timeout')
 		mouse_filter = MOUSE_FILTER_IGNORE
 	
