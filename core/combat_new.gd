@@ -1642,26 +1642,27 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
-	skill_in_progress = true
 	globals.hideskilltooltip()
 	gui_node.HideSkillPanel()
 	caster.acted = true
-
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
 	turns += 1
-	var target#is someone, we targeting
-	var targets#those, how are actually affected
-	target = battlefield[target_pos]
-	if activeaction != skill_code: activeaction = skill_code
-	allowaction = false
-
+	
 	#skill vars naming system:
 	#var skill :Dictionary - raw data, template, reference book of a sort
 	#var s_skill1 :S_Skill - metaskill, sample and controller for applicable skills
 	#var s_skill2 :S_Skill - applicable skill, created by cloning s_skill1 for each target in each cycle of s_skill1
 	#actual damage and effects are made by s_skill2
 	var skill = Skillsdata.patch_skill(skill_code, caster)
+	var not_final_skill_in_solo :bool = (!skill_in_progress and skill.has('not_final'))
+	skill_in_progress = true
+	
+	var target#is someone, we targeting
+	var targets#those, how are actually affected
+	target = battlefield[target_pos]
+	if activeaction != skill_code: activeaction = skill_code
+	allowaction = false
 
 	print("%s uses %s at %s" % [caster.position, skill.name, target_pos])
 	if activeitem and activeitem.has("code"):
@@ -1854,6 +1855,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	
 	#stop for recursion skills, like follow_ups and queued skills
 	if skill.has('not_final'):
+		if not_final_skill_in_solo:
+			skill_in_progress = false
 		print('%s ended %s as not final' % [caster.position, skill.name])
 		return
 
@@ -1868,7 +1871,6 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	turns += 1
 	if activeitem != null:
 		state.add_materials(activeitem.code, -1, false)
-#		activeitem.amount -= 1
 		activeitem = null
 		SelectSkill(caster.get_autoselected_skill(), true)
 
@@ -1901,7 +1903,7 @@ func enqueue_skill(skill_code, caster, target_pos):
 	if skill_in_progress:
 		q_skills.push_back({skill = skill_code, caster = caster, target = target_pos})
 	else:
-		use_skill(skill_code, caster, target_pos)
+		yield(use_skill(skill_code, caster, target_pos), 'completed')
 
 func execute_skill(s_skill2):
 	var text = ''
