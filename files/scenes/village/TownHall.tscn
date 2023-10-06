@@ -273,6 +273,7 @@ margin_left = 68.0
 margin_top = 573.0
 margin_right = 587.0
 margin_bottom = 655.0
+custom_constants/separation = 14
 
 [node name="Button" type="TextureRect" parent="UpgradeDescript/HBoxContainer"]
 visible = false
@@ -293,14 +294,15 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="UpgradeDescript/HBoxContainer/Button"]
-margin_left = 2.0
+margin_left = -8.0
 margin_top = 84.0
-margin_right = 80.0
+margin_right = 91.0
 margin_bottom = 108.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "5/10"
+text = "150/100"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="Questlog" parent="." instance=ExtResource( 15 )]
 visible = false
