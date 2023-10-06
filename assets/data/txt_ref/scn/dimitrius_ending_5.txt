@@ -3,11 +3,11 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG future_city_reactor=
-=SPRITE demitrius=
-D - So this is where you've been hiding. 
+=SPRITE demitrius_demon=
+De - So this is where you've been hiding. 
 Ar(neutral) - Shit, he found us.
-D - You really are tenacious to survive that. Just like little cockroaches. 
-D - But it's time to finish our little game. 
+De - You really are tenacious to survive that. Just like little cockroaches. 
+De - But it's time to finish our little game. 
 Ar(anger) - For once I agree with you. 
 Ar(anger) - Let's do this.
 =STOP=

@@ -508,7 +508,8 @@ func advance_check():
 #				advance_check()
 		input_handler.combat_node.hide_me()
 		if areadata.has("auto_advance") and areadata.auto_advance:
-			assert(!playing_scene,"area with auto_advance has after_fight event!")
+			if playing_scene:
+				yield(input_handler, "AllEventsFinished")
 			advance_area()
 		else:
 			build_area_description()

@@ -924,8 +924,8 @@ var enemylist = {
 	},
 	scientist_boss = {
 		code = 'scientist_boss',
-		name = tr("MONSTERELVENRAT"),
-		flavor = tr("MONSTERELVENRATFLAVOR"),
+		name = '',
+		flavor = '',
 		race = 'animal',
 		skills = [], # got them from ai
 		passives = [],
@@ -955,10 +955,10 @@ var enemylist = {
 			attack ="Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at" ,
 		},
 	},
-	caliban = { #stats copied from above!!!
+	caliban = {
 		code = 'caliban',
-		name = tr("MONSTERELVENRAT"),
-		flavor = tr("MONSTERELVENRATFLAVOR"),
+		name = '',
+		flavor = '',
 		race = 'animal',
 		skills = ['attack'],#there are no skills for him in docs
 		passives = [],
@@ -987,7 +987,7 @@ var enemylist = {
 			attack ="Fight/Bosses/Fight_spritesFHD_0001s_0000_Mnstr_at" ,
 		},
 	},
-	demitrius1 = { #stats copied from above!!!
+	demitrius1 = {
 		code = 'demitrius1',
 		name = "",
 		flavor = "",
@@ -1004,7 +1004,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 95,
 		speed = 30,
-		resists = {earth = 50, air = 25},
+		resists = {slash = 50, pierce = 50, bludgeon = 50, light = -100, dark = 100, air = 50, water = -50, earth = 50, fire = -50},
 		xpreward = 50,
 		bodyhitsound = 'stone',
 
@@ -1016,12 +1016,12 @@ var enemylist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
 			hit = "Fight/Bosses/Demitrius_hit",
-			attack ="Fight/Bosses/Demitrius_at" ,
-			special ="Fight/Bosses/Demitrius_cast" ,
+			attack ="Fight/Bosses/Demitrius_at",
+			special ="Fight/Bosses/Demitrius_cast",
 		},
 		
 	},
-	demitrius2 = { #stats copied from above!!!
+	demitrius2 = {
 		code = 'demitrius2',
 		name = "",
 		flavor = "",
@@ -1038,7 +1038,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 100,
 		speed = 30,
-		resists = {earth = 50, air = 25},
+		resists = {slash = 75, pierce = 75, bludgeon = 75, light = -100, dark = 75, air = 75, water = -100, earth = 75, fire = -100},
 		xpreward = 50,
 		bodyhitsound = 'stone',
 		ai = load('res://files/ai_classes/dimitrius_2.gd'),
@@ -1050,10 +1050,43 @@ var enemylist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
 			hit = "Fight/Bosses/Demitrius_hit",
-			attack ="Fight/Bosses/Demitrius_at" ,
-			special ="Fight/Bosses/Demitrius_cast" ,
+			attack ="Fight/Bosses/Demitrius_at",
+			special ="Fight/Bosses/Demitrius_cast",
 		},
-		
+	},
+	
+	demitrius3 = {
+		code = 'demitrius3',
+		name = "",
+		flavor = "",
+		race = 'humanoid',
+		skills = ['dm_storm', 'dm_nova', 'dm_form'],
+		passives = [],
+		traits = [],
+		basehp = 450,
+		basemana = 0,
+		armor = 35,
+		armorpenetration = 0,
+		mdef = 15,
+		evasion = 0,
+		hitrate = 95,
+		damage = 100,
+		speed = 30,
+		resists = {slash = 75, pierce = 75, bludgeon = 75, light = -200, dark = 75, air = 75, water = -100, earth = 75, fire = -100},
+		xpreward = 50,
+		bodyhitsound = 'stone',
+		ai = load('res://files/ai_classes/dimitrius_3.gd'),
+		combaticon = 'enemies/Demitrius2CombatIcon',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'demitrius2loot',
+		weaponsound = 'demitrius at',
+		animations = {
+			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
+			hit = "Fight/Bosses/Demitrius_hit",
+			attack ="Fight/Bosses/Demitrius_at",
+			special ="Fight/Bosses/Demitrius_cast",
+		},
 	},
 }
 
@@ -1417,7 +1450,6 @@ var loottables = { # no need to separate materials from usables now
 
 func _ready():
 	for i in enemylist.values():
-#		e.basehp = 1
 		i.name = "MONSTER" + i.code.to_upper()
 		i.flavor = "MONSTER" + i.code.to_upper() + "FLAVOR"
 	yield(preload_icons(), 'completed')

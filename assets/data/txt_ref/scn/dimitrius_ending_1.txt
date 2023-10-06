@@ -1,8 +1,8 @@
 ** dimitrius_ending_1 **
 =BLACKFADE 0.5=
+=BG future_city=
 =DELAY 0.5=
 =GUI_NORMAL=
-=BG future_city=
 Ro - This place looks so bizarre. 
 Ro(talk) - Everything is made out of stone, but it’s crumbling.
 Ri(talk) - Looks like it was a human city before it was brought here. 

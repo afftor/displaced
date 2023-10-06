@@ -97,7 +97,7 @@ var TranslationDict = {
 	MONSTERMOLE = "Mole",
 	MONSTERMOLEFLAVOR = "",
 	MONSTERVULTURE = "Vulture",
-	MONSTEVOLTUREFLAVOR = "",
+	MONSTERVOLTUREFLAVOR = "",
 	MONSTERFAERY = "Faery",
 	MONSTERFAERYFLAVOR = "If not for their nasty nature, I would even consider them appealing.",
 	
@@ -169,6 +169,8 @@ var TranslationDict = {
 	MONSTERDEMITRIUS1FLAVOR = "",
 	MONSTERDEMITRIUS2 = "Demitrius",
 	MONSTERDEMITRIUS2FLAVOR = "",
+	MONSTERDEMITRIUS3 = "Demitrius",
+	MONSTERDEMITRIUS3FLAVOR = "",
 	
 	#gearclasses
 	GEARSWORD = "Swords",
@@ -280,8 +282,12 @@ var TranslationDict = {
 	CASTLE_RILU_RETURNDESCRIPT = "With both Rose and Iola missing, there's not much we can do, except for relying on Rilu's plan.",
 	CULT_ROSE_RESCUENAME = "Standoff",
 	CULT_ROSE_RESCUEDESCRIPT = "We have to face Demitrius to get back my property... I mean, Rose and Iola.",
-	FINAL_BATTLE_STAGE1NAME = "Final Battle",
+	FINAL_BATTLE_STAGE1NAME = "Unknown Ruins",
 	FINAL_BATTLE_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",
+	FINAL_BATTLE_SEWERSNAME = "Through Sewers",
+	FINAL_BATTLE_SEWERSDESCRIPT = "Survived the explosion, we have to move through sewers",
+	FINAL_BATTLE_PLANTNAME = "Nuclear Plant",
+	FINAL_BATTLE_PLANTDESCRIPT = "Now it's time to lure Dimitrius in!\n(This is final battle with no delays, so be prepared!)",
 #	FINAL_BATTLE_STAGE1DESCRIPT = "A serie of battles in final standing",
 #	MODERN_CITY_STAGE1NAME = "Unknown Ruins",
 #	MODERN_CITY_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",

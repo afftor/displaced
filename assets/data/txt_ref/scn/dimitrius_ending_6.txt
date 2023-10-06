@@ -3,23 +3,28 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG future_city_reactor=
-=SPRITE demitrius=
-D - Ghah, you idiots. 
-D - Still don't understand that you can't defeat me.
+=SPRITE demitrius_demon=
+De - Ghah, you idiots. 
+De - Still don't understand that you can't defeat me.
 Ar(shock) - Damnit. You guys escape, I'll hold him back.
-D(anger) - ...Seriously?
-D - Fine, I'll play with you for the last time, Arron.
+De(anger) - ...Seriously?
+De - Fine, I'll play with you for the last time, Arron.
 *snap*
 A number of demon minions jumped from the outside into the building. 
 Ar(anger) - Gh...
-D - Go after them!
-D - Now I made you look like an idiot. Ahaha!
+De - Go after them!
+De - Now I made you look like an idiot. Ahaha!
 Ar(neutral) - We'll see about that, asshole.
 Saying that, Arron turned his back and ran away.
-D(anger) - ...?
-D - This imbecile never learns. 
+De(anger) - ...?
+De - This imbecile never learns. 
 =SOUND footstep=
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=SPRITE_HIDE=
+=GUI_NORMAL=
+=BLACKFADE 1=
 Meanwhile Rose and Erika moved through the lab’s upper floors.
 Ro - Come on, come on.
 Ro(talk) - Erika, you sure you remember the map?

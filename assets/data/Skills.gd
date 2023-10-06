@@ -249,6 +249,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = null, strike = 'holy light', hit = null, hittype = 'absolute'},
 		ai_priority = 1
 	},
 	pierce_attack = {
@@ -2478,6 +2479,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'magic_effect', strike = null , hit = null, hittype = 'absolute'},
 		ai_priority = 1
 	},
 	en_thrust = {#victor & scientist
@@ -3005,6 +3007,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'absolute'},
 		ai_priority = 1
 	},
 	impale = {
@@ -3033,6 +3036,7 @@ var skilllist = {
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = null, strike = 'lunge', hit = null, hittype = 'absolute'},
 		ai_priority = 1 #?
 	},
 	an_attack = {
@@ -3208,10 +3212,13 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},
+			{code = 'sfx_AOE_fight_blacklightning_storm_sq', target = 'target_group', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'magic_effect', strike = null, hit = null, hittype = 'absolute'},
 		ai_priority = 1
 	},
 	dm_fire = {
@@ -3234,10 +3241,13 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},
+			{code = 'sfx_explosion', target = 'target_group', period = 'prehit'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'explosion', strike = null, hit = null, hittype = 'absolute'},
 		ai_priority = 1
 	},
 	dm_poison_spike = {
@@ -3260,10 +3270,13 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_poison_water', push_value = true})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},
+			{code = 'sfx_earth_strike', target = 'target', period = 'predamage', flip_h = true}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = null, strike = 'earth_strike', hit = null, hittype = 'absolute'},
 		ai_priority = 1 # was not in file
 	},
 	dm_bomb = {
@@ -3286,10 +3299,13 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', duration = 2})],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'sfx_shockwave', target = 'target', period = 'predamage'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'explosion', strike = null, hit = null, hittype = 'absolute'},
 		ai_priority = 1
 	},
 	dm_nova = {
@@ -3311,10 +3327,13 @@ var skilllist = {
 		casteffects = [],
 		repeat = 1,
 		hidden = false,
-		sfx = [],
+		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},
+			{code = 'sfx_AOE_fight_liht_ex_sq', target = 'target_group', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		patches = [],
+		sounddata = {initiate = 'magic_effect', strike = null, hit = null, hittype = 'absolute'},
 		ai_priority = 1
 	},
 	dm_form = {
@@ -3337,7 +3356,8 @@ var skilllist = {
 		casteffects = ['e_dim_resists'],
 
 		hidden = false,
-		sfx = [{code = 'anim_special', target = 'caster', period = 'windup'}],
+		sfx = [{code = 'anim_special', target = 'caster', period = 'windup'},
+			{code = 'sfx_sanctuary', target = 'target', period = 'predamage'}],
 		sfxcaster = null,
 		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'heal', hit = null, hittype = 'absolute'},

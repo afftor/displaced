@@ -23,7 +23,8 @@ signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
 signal EventOnScreen
-signal EventFinished
+signal EventFinished#scene_node finished event
+signal AllEventsFinished#state singelton see no consequent events
 signal QuestStarted
 signal QuestCompleted
 signal Midday

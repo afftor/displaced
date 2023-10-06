@@ -259,7 +259,10 @@ func run_actions_list(list, replay = false) ->int:
 			'system':
 				if !replay: state.system_action(action)
 			'show_screen':
-				if !replay: change_screen(action.value)
+				if !replay:
+					var arg :String = ''
+					if action.has('arg'): arg = action.arg
+					change_screen(action.value, arg)
 			'mission':
 				if replay: continue
 				if stop_syncronous: break
@@ -273,15 +276,17 @@ func run_actions_list(list, replay = false) ->int:
 	return output
 
 
-func change_screen(screen):
+func change_screen(screen, loc :String = ''):
 	match screen:
-		'map', 'exploration':
+		'map':
 			if input_handler.explore_node != null:
 				input_handler.explore_node.hide()
 			if input_handler.village_node != null and input_handler.village_node.visible:
 				input_handler.village_node.ReturnToMap()
 			if input_handler.combat_node != null: 
 				input_handler.combat_node.hide()
+		'exploration':
+			input_handler.map_node.location_pressed(loc)
 		'mission':
 			if state.activearea == null: return
 			if input_handler.village_node != null: input_handler.village_node.hide()

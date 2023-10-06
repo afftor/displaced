@@ -17,8 +17,7 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	forest2 = [
 		{type = 'system', value = 'unlock_character', arg = 'erika'},
-#		{code = 'system', value = 'show_screen', args = 'exploration'},
-		{type = 'show_screen', value = 'exploration'},
+		{type = 'show_screen', value = 'map'},
 	],
 	erika_1 = [
 		{type = 'show_screen', value = 'village'},
@@ -28,16 +27,14 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'tutorial', value = 'building_upgrades'}
 	],
 	dimitrius_1_3 = [
-#		{code = 'system', value = 'start_next_scene', args = 'dimitrius_1_4'},
 		{type = 'scene', value = 'dimitrius_1_4'},
 	],
 	dimitrius_1_4 = [
-#		{code = 'system', value = 'show_screen', args = 'exploration'},
-		{type = 'show_screen', value = 'exploration'},
+		{type = 'show_screen', value = 'map'},
 	],
 	aeros_1 = [
 		{type = 'system', value = 'unlock_mission', arg = 'caves_dwarf'},
-		{type = 'show_screen', value = 'exploration'},
+		{type = 'show_screen', value = 'map'},
 	],
 	aeros_2 = [
 		{type = 'scene', value = 'aeros_3'},
@@ -47,16 +44,15 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	iola_2_2_1 = [
 		{type = 'system', value = 'unlock_area', arg = 'cult'},
-#		{code = 'system', value = 'show_screen', args = 'exploration'},
-		{type = 'show_screen', value = 'exploration'},
+		{type = 'show_screen', value = 'map'},
 	],
-	rilu_1_2 = [
-		{type = 'system', value = 'heal_team'},
-	],
+#	rilu_1_2 = [
+#		{type = 'system', value = 'heal_team'},
+#	],
 	rilu_1_3 = [
 		{type = 'system', value = 'unlock_character', arg = 'rilu'},
-		{type = 'system', value = 'add_member_to_active_party', slot = 3, member = 'rilu'},
-		{type = 'system', value = 'heal_team'},
+		{type = 'system', value = 'add_to_party', arg = ['rilu', 3]},
+#		{type = 'system', value = 'heal_team'},
 	],
 	faery_queen_1 = [
 		{type = 'scene', value = 'faery_queen_1_a', reqs = [{type = 'decision', name = 'portal'}]},
@@ -64,19 +60,18 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	faery_queen_1_a = [
 		{type = 'scene', value = 'faery_queen_1_b'},
-#		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
 	],
 	faery_queen_1_b = [
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
-		{type = 'show_screen', value = 'exploration'},
+#		{type = 'show_screen', value = 'map'},#not tested
 	],
 	faery_queen_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_3'},
-		{type = 'show_screen', value = 'exploration'},
+#		{type = 'show_screen', value = 'map'},#not tested
 	],
 	
 	faery_queen_4 = [
-		{type = 'show_screen', value = 'exploration'},
+		{type = 'show_screen', value = 'map'},
 	],
 	
 	victor_2_3 = [
@@ -90,8 +85,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'scene', value = 'victor_2_1'},
 	],
 	victor_2_1 = [
-#		{code = 'system', value = 'show_screen', args = 'exploration'},
-		{type = 'show_screen', value = 'exploration'},
+		{type = 'show_screen', value = 'map'},
 	],
 	iola_2_4 = [
 #		{code = 'system', value = 'show_screen', args = 'village'},
@@ -102,6 +96,43 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	dimitrius_2_2 = [
 		{type = 'system', value = 'enable_character', arg = ['iola',true] },
+	],
+	dimitrius_ending_1 = [
+		{type = 'show_screen', value = 'exploration', arg = 'modern_city'},
+	],
+	dimitrius_ending_3 = [
+		{type = 'system', value = 'unlock_mission', arg = 'final_battle_sewers' },
+	],
+	dimitrius_ending_4 = [
+		{type = 'system', value = 'unlock_mission', arg = 'final_battle_plant' },
+	],
+	dimitrius_ending_6 = [
+		{type = 'system', value = 'enable_character', arg = ['arron',false] },
+		{type = 'system', value = 'enable_character', arg = ['ember',false] },
+		{type = 'system', value = 'enable_character', arg = ['iola',false] },
+		{type = 'system', value = 'enable_character', arg = ['rilu',false] },
+		{type = 'system', value = 'add_to_party', arg = ['rose', 1]},
+		{type = 'system', value = 'add_to_party', arg = ['erika', 2]},
+	],
+	dimitrius_ending_7 = [
+		{type = 'system', value = 'enable_character', arg = ['ember',true] },
+		{type = 'system', value = 'enable_character', arg = ['iola',true] },
+		{type = 'system', value = 'enable_character', arg = ['rilu',true] },
+		{type = 'system', value = 'enable_character', arg = ['rose',false] },
+		{type = 'system', value = 'enable_character', arg = ['erika',false] },
+		{type = 'system', value = 'add_to_party', arg = ['ember', 1]},
+		{type = 'system', value = 'add_to_party', arg = ['iola', 2]},
+		{type = 'system', value = 'add_to_party', arg = ['rilu', 3]},
+	],
+	dimitrius_ending_8 = [
+		{type = 'system', value = 'enable_character', arg = ['arron',true] },
+		{type = 'system', value = 'enable_character', arg = ['ember',false] },
+		{type = 'system', value = 'enable_character', arg = ['iola',false] },
+		{type = 'system', value = 'enable_character', arg = ['rilu',false] },
+		{type = 'system', value = 'add_to_party', arg = ['arron', 2]},
+	],
+	dimitrius_ending_9 = [
+		{type = 'scene', value = 'ending_1'},
 	],
 }
 
@@ -159,8 +190,8 @@ var locations = { #added seqs bindings and other fields
 	modern_city =  {
 		code = 'modern_city',
 		background = 'future_city',
-		missions = ['final_battle_stage1'],#'dimitrius_finale'],
-		events = []
+		missions = ['final_battle_stage1', 'final_battle_sewers', 'final_battle_plant'],
+		events = ["dimitrius_ending_1"]
 	},
 }
 
@@ -190,7 +221,7 @@ var characters = { #for binding village characters events
 var scene_sequences = { 
 	
 	intro = {
-		initiate_signal = 'game_start', #can be signals like 'click specific location'
+#		initiate_signal = 'game_start', #can be signals like 'click specific location'
 		initiate_reqs = [], #all sequences only playable once, unless specified
 		actions = [
 		{type = 'scene', value = 'intro_1'},
@@ -213,7 +244,7 @@ var scene_sequences = {
 		]
 	},
 	erika_at_village = {
-		initiate_signal = 'village_activate', 
+#		initiate_signal = 'village_activate', 
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika'}],
 		actions = [
 		{type = 'scene', value = 'erika_1'},
@@ -222,7 +253,7 @@ var scene_sequences = {
 	},
 	
 	ember_arrival = {
-		initiate_signal = 'village_townhall_ember', 
+#		initiate_signal = 'village_townhall_ember', 
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_1'},
@@ -232,7 +263,7 @@ var scene_sequences = {
 	},
 	
 	ember_smith = {
-		initiate_signal = 'village_smith', 
+#		initiate_signal = 'village_smith', 
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_2'},
@@ -240,7 +271,7 @@ var scene_sequences = {
 	},
 	
 	dimitrius_arrival = {
-		initiate_signal = 'village_townhall_dimitrius', 
+#		initiate_signal = 'village_townhall_dimitrius', 
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 		actions = [
 		{type = 'scene', value = 'dimitrius_1_1'},
@@ -250,7 +281,7 @@ var scene_sequences = {
 	},
 	
 	iola_arrival = {
-		initiate_signal = 'village_townhall_iola', 
+#		initiate_signal = 'village_townhall_iola', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_demitrius'}],
 		actions = [
 		{type = 'scene', value = 'iola_1_1'},
@@ -259,7 +290,7 @@ var scene_sequences = {
 	},
 	
 	flak_task = {
-		initiate_signal = 'village_townhall_fask', 
+#		initiate_signal = 'village_townhall_fask', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_iola'}],
 		actions = [
 		{type = 'scene', value = 'flak_1'}, #not currently existing,
@@ -269,7 +300,7 @@ var scene_sequences = {
 	},
 	
 	town_gates = {
-		initiate_signal = 'town', 
+#		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_dwarf'}],
 		actions = [
 		{type = 'scene', value = 'aeros_2'},
@@ -280,7 +311,7 @@ var scene_sequences = {
 	},
 	
 	flak_task_return = {
-		initiate_signal = 'village_townhall_fask', 
+#		initiate_signal = 'village_townhall_fask', 
 		initiate_reqs = [{type = 'seq_seen', value = 'aeros_2'}],
 		actions = [
 		{type = 'scene', value = 'flak_2'}, #not currently existing,
@@ -288,21 +319,21 @@ var scene_sequences = {
 	},
 	
 	viktor_introduction = {
-		initiate_signal = 'town', 
+#		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'}],
 		actions = [
 		{type = 'scene', value = 'victor_1'},
 		]
 	},
 	annet_introduction = {
-		initiate_signal = 'town', 
+#		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_faeries_1'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_1'},
 		]
 	},
 	erika_meet_annet = {
-		initiate_signal = 'town', 
+#		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_faeries_3'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_1'}, 
@@ -312,7 +343,7 @@ var scene_sequences = {
 		]
 	},
 	arron_meet_annet = {
-		initiate_signal = 'town', 
+#		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'seq_seen', value = 'erika_meet_annet'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_3'}, 
@@ -320,7 +351,7 @@ var scene_sequences = {
 	
 	},
 	rose_annet_rescue = {
-		initiate_signal = 'town', 
+#		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'seq_seen', value = 'arron_meet_annet'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_4'},
@@ -330,7 +361,7 @@ var scene_sequences = {
 	},
 	
 	iola_second_visit = {
-		initiate_signal = 'village_townhall_iola', 
+#		initiate_signal = 'village_townhall_iola', 
 		initiate_reqs = [{type = 'seq_seen', value = 'rose_annet_rescue'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_1'},
@@ -339,14 +370,14 @@ var scene_sequences = {
 		]
 	},
 	iola_gets_caught = {
-		initiate_signal = 'cult_grounds', #?
+#		initiate_signal = 'cult_grounds', #?
 		initiate_reqs = [{type = 'mission_complete', value = 'castle_iola'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_2_2'},
 		]
 	},
 	rilu_reports_iola = {
-		initiate_signal = 'village_townhall_rilu', 
+#		initiate_signal = 'village_townhall_rilu', 
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_gets_caught'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_2_3'},
@@ -354,7 +385,7 @@ var scene_sequences = {
 		]
 	},
 	iola_rescue_start = {
-		initiate_signal = 'cult', 
+#		initiate_signal = 'cult', 
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_reports_iola'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_3'},
@@ -362,7 +393,7 @@ var scene_sequences = {
 		]
 	},
 	iola_recruited = {
-		initiate_signal = 'village_townhall_iola', 
+#		initiate_signal = 'village_townhall_iola', 
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_iola_rescue'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_5'},
@@ -371,7 +402,7 @@ var scene_sequences = {
 	},
 	
 	ember_arc_initiate = {
-		initiate_signal = 'village_townhall_ember', 
+#		initiate_signal = 'village_townhall_ember', 
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_recruited'}],
 		actions = [
 		{type = 'scene', value = 'ember_2_1'},
@@ -387,7 +418,7 @@ var scene_sequences = {
 #		]
 #	},
 	viktor_sends_threat = {
-		initiate_signal = 'village_townhall_ember', 
+#		initiate_signal = 'village_townhall_ember', 
 		initiate_reqs = [{type = 'scene_seen', value = 'victor_2_1'}],
 		actions = [
 		{type = 'scene', value = 'victor_2_2'},
@@ -395,7 +426,7 @@ var scene_sequences = {
 		]
 	},
 	viktor_duel = {
-		initiate_signal = 'town', 
+#		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'seq_seen', value = 'viktor_sends_threat'}],
 		actions = [
 		{type = 'scene', value = 'victor_2_3'}, 
@@ -404,14 +435,14 @@ var scene_sequences = {
 		]
 	},
 	rilu_disappear =  {
-		initiate_signal = 'village_townhall_rilu', 
+#		initiate_signal = 'village_townhall_rilu', 
 		initiate_reqs = [{type = 'mission_complete', value = 'town_viktor_fight'}],
 		actions = [
 		{type = 'scene', value = 'rilu_2_3_1'},
 		]
 	},
 	rilu_castle =  {
-		initiate_signal = 'castle', 
+#		initiate_signal = 'castle', 
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_disappear'}],
 		actions = [
 		{type = 'scene', value = 'rilu_2_3_2'},
@@ -420,7 +451,7 @@ var scene_sequences = {
 		]
 	},
 	iola_wanderer = {
-		initiate_signal = 'village_townhall_iola', 
+#		initiate_signal = 'village_townhall_iola', 
 		initiate_reqs = [{type = 'mission_complete', value = 'castle_rilu'}],
 		actions = [
 		{type = 'scene', value = 'iola_3_1'},
@@ -428,14 +459,14 @@ var scene_sequences = {
 		]
 	},
 	flak_town_raid = {
-		initiate_signal = 'village_townhall_flak', 
+#		initiate_signal = 'village_townhall_flak', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_wanderer'}],
 		actions = [
 		{type = 'scene', value = 'flak_city_raid'}
 		]
 	},
 	city_raid = {
-		initiate_signal = 'town',
+#		initiate_signal = 'town',
 		initiate_reqs = [{type = 'seq_seen', value = 'flak_town_raid'}],
 		actions = [
 		{type = 'scene', value = 'city_raid'},
@@ -444,7 +475,7 @@ var scene_sequences = {
 	},
 	
 	rose_kidnap = {
-		initiate_signal = 'village_townhall_rose', 
+#		initiate_signal = 'village_townhall_rose', 
 		initiate_reqs = [{type = 'mission_complete', value = 'town_siege'}],
 		actions = [
 		{type = 'scene', value = 'dimitrius_2_1'},
@@ -454,14 +485,14 @@ var scene_sequences = {
 		]
 	},
 	dimitrius_2_1_2 = {
-		initiate_signal = 'village', 
+#		initiate_signal = 'village', 
 		initiate_reqs = [{type = 'mission_complete', value = 'castle_rilu_return'}],
 		actions = [
 		{type = 'scene', value = 'dimitrius_2_1_2'},
 		]
 	},
 	rose_reunion = {
-		initiate_signal = 'village_townhall', 
+#		initiate_signal = 'village_townhall', 
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_rose_rescue'}],
 		actions = [
 		{type = 'scene', value = 'rose_2'},
@@ -470,17 +501,16 @@ var scene_sequences = {
 	},
 	
 	flak_modern_city = {
-		initiate_signal = 'village_townhall_flak', 
+#		initiate_signal = 'village_townhall_flak', 
 		initiate_reqs = [{type = 'seq_seen', value = 'rose_reunion'}],
 		actions = [
 		{type = 'scene', value = 'flak_future_city'},
 		{type = 'system', value = 'unlock_area', arg = 'modern_city'},
-		{type = 'system', value = 'unlock_mission', arg = 'final_battle_stage1'},
 		]
 	},
 	
 	erika_rose_init = {
-		initiate_signal = 'village_townhall_erika', 
+#		initiate_signal = 'village_townhall_erika', 
 		initiate_reqs = [
 #			{type = 'seq_seen', value = 'erika_doggy'},
 			{type = 'decision', name = 'erika_2_true'},
@@ -490,6 +520,13 @@ var scene_sequences = {
 		{type = 'system', value = 'unlock_mission', arg = 'forest_erika_sidequest'}
 		]
 		
+	},
+	dimitrius_ending_1 = {
+		initiate_reqs = [{type = 'seq_seen', value = 'flak_modern_city'}],
+		actions = [
+		{type = 'scene', value = 'dimitrius_ending_1'},
+		{type = 'system', value = 'unlock_mission', arg = 'final_battle_stage1'},
+		]
 	},
 	
 	#Gallery scenes
@@ -1298,9 +1335,11 @@ var areas = { #missions in new terminology
 		explore_image = 'combat_futurecity',
 		stages = 8, 
 		level = 30,
-		events = {},
+		events = {
+			after_fight_7 = 'dimitrius_ending_2',
+			on_complete = 'dimitrius_ending_3'
+		},
 		enemies = {
-			
 			1 : [
 				{ 2 : ['soldier'], 4 : ['soldier'], 6 : ['drone']},
 				{ 1 : ['soldier'], 3 : ['soldier'], 5 : ['bomber']},
@@ -1338,16 +1377,79 @@ var areas = { #missions in new terminology
 			},
 		},
 	
-#	modern_city_stage1 = {
-#		code = 'modern_city_stage1',
-#		name = '', 
-#		descript = "",
-#		image = ['combat_future_city_1', 'combat_future_city_2', 'combat_future_city_3'],
-#		explore_image = 'combat_futurecity',
-#		stages = 10, 
-#		level = 30,
-#		},
-#
+	final_battle_sewers = {
+		code = 'final_battle_sewers',
+		name = '', 
+		descript = "",
+		image = ['combat_interior_2'],
+		explore_image = 'combat_interior_2',
+		stages = 4, 
+		level = 30,
+		events = {
+			on_complete = 'dimitrius_ending_4'
+		},
+		enemies = {
+			1 : [
+				{ 1 : ['drone']},
+				{ 2 : ['drone'], 4 : ['drone'], 5 : ['drone'], 6 : ['drone']},
+				],
+			2 : [
+				{ 1 : ['soldier'], 5 : ['drone'], 4 : ['drone'], 6 : ['drone']},
+				{ 1 : ['soldier'], 2 : ['soldier'], 3 : ['soldier'], 6 : ['drone']},
+				],
+			3 : [
+				{ 1 : ['drone'], 2 : ['drone'], 6 : ['soldier']},
+				{ 1 : ['demon1'], 5 : ['drone'], 6 : ['drone']},
+				{ 1 : ['demon1'], 3 : ['demon1'], 5 : ['demon2']},
+				],
+			4 : [
+				{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'], 4 : ['soldier'], 5 : ['soldier'], 6 : ['soldier']},
+				{ 1 : ['drone'], 2 : ['drone'], 3 : ['drone'], 4 : ['drone'], 6 : ['drone'], 5 : ['demon2']},
+				],
+			},
+		},
+	
+	final_battle_plant = {
+		code = 'final_battle_plant',
+		name = '', 
+		descript = "",
+		image = ['combat_interior_1', 'combat_interior_3'],
+		explore_image = 'combat_interior',
+		auto_advance = true,
+		no_escape = true,
+		stages = 5,
+		level = 31,
+		events = {
+			after_fight_1 = 'dimitrius_ending_5',
+			after_fight_2 = 'dimitrius_ending_6',
+			after_fight_3 = 'dimitrius_ending_7',
+			after_fight_4 = 'dimitrius_ending_8',
+			on_complete = 'dimitrius_ending_9'
+		},
+		enemies = {
+			1 : [
+				{ 1 : ['soldier'], 5 : ['drone']},
+				{ 1 : ['soldier'], 2 : ['drone'], 3 : ['soldier'], 4 : ['drone'], 6 : ['drone']},
+				{ 1 : ['demon1'], 2 : ['demon1'], 5 : ['demon2'], 6 : ['demon2']},
+				],
+			2 : [
+				{ 2 : ['demitrius2']},
+				],
+			3 : [
+				{ 1 : ['demon1'], 4 : ['demon2']},
+				{ 2 : ['demon2'], 5 : ['drone'], 6 : ['drone']},
+				],
+			4 : [
+				{ 1 : ['demon1'], 4 : ['demon1']},
+				{ 2 : ['demon1'], 3 : ['demon1'], 4 : ['demon2'], 5 : ['demon2']},
+				],
+			5 : [
+				{ 2 : ['demitrius3']},
+				]
+			},
+		},
+	
+
 #	forest_erika_rose_mission = {
 #		code = 'forest_erika_rose_mission',
 #		name = '',

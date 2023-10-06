@@ -753,32 +753,32 @@ func advance_frontrow():
 #	recheck_auras()
 
 
-func swap_active_hero():#not used
-	var newhero = swapchar
-	swapchar = null
-	#remove current char
-	activecharacter.acted = true
-	activecharacter.displaynode.disappear()
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	turns += 1
-	activecharacter.position = null
-	#add new char
-	activecharacter = state.heroes[newhero]
+#func swap_active_hero():#not used
+#	var newhero = swapchar
+#	swapchar = null
+#	#remove current char
 #	activecharacter.acted = true
-	activecharacter.position = currentactor
-	playergroup[currentactor] = activecharacter
-	battlefield[currentactor] = activecharacter
-	make_hero_panel(activecharacter, false)
-	activecharacter.displaynode.appear()
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	turns += 1
-	
-	recheck_auras()
-	gui_node.RebuildReserve()
-	call_deferred('select_actor')
-	
+#	activecharacter.displaynode.disappear()
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+#	activecharacter.position = null
+#	#add new char
+#	activecharacter = state.heroes[newhero]
+##	activecharacter.acted = true
+#	activecharacter.position = currentactor
+#	playergroup[currentactor] = activecharacter
+#	battlefield[currentactor] = activecharacter
+#	make_hero_panel(activecharacter, false)
+#	activecharacter.displaynode.appear()
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+#
+#	recheck_auras()
+#	gui_node.RebuildReserve()
+#	call_deferred('select_actor')
+#
 
 
 func swap_heroes_old(pos):

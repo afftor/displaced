@@ -229,6 +229,7 @@ func FinishEvent(replay = false):
 
 	if !next_is_scene:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
+		input_handler.emit_signal("AllEventsFinished")
 
 
 func store_choice(choice, option):
@@ -513,6 +514,8 @@ func system_action(action):
 			make_upgrade(action.arg, 1)
 		'show_screen':
 			pass
+		'add_to_party':
+			add_char_to_party(action.arg[0], action.arg[1])
 
 #simple action wrappers
 func unlock_char(code, value = true):
@@ -525,6 +528,15 @@ func unlock_char(code, value = true):
 func unlock_loc(loc_id, value = true):
 	location_unlock[loc_id] = value
 	input_handler.map_node.update_map()
+
+
+func add_char_to_party(id, pos):
+	if !heroes[id].unlocked:
+		return
+	for i in heroes:
+		if heroes[i].position == pos:
+			heroes[i].position == null
+	heroes[id].position = pos
 
 
 func make_upgrade(id, lvl):

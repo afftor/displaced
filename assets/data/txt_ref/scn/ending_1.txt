@@ -1,6 +1,4 @@
 ** ending_1 **
-=BLACKUNFADE 1=
-=DELAY 1=
 =BG hall=
 =MUSIC eventlight=
 =BLACKFADE 0.5=
@@ -16,7 +14,7 @@ Ar(neutral) - I think we've stayed long enough.
 Ar - After all I have a home which needs to be taken care of.
 Ar - And I feel like visiting Norbert for a payback.
 Ro - I see. 
-Ro(happy) - Somehow it seems you've grown more responsible, Master.
+Ro - Somehow it seems you've grown more responsible, Master.
 Ar - Oh yeah, now that I remembered that. You haven't forgot anything, Rose?
 Ro - Yes?..
 Ar(shock) - It was your fault we've ended up here! Did you really think I'll let it go?!
@@ -31,10 +29,15 @@ Ro - Eh?..
 Ar - I'll personally administer your punishment before you can be forgiven.
 Ro(sad) - ...Alright.
 Despite Rose's downed expression, her tail swayed excitedly. 
-=BLACK TRANSITION 2=
-=SPRITE ember=
-Em(tired) - Sir Arron, I can't believe you are leaving us!
-Em(tired) - And you too, Rose. It's so unfair!
+=GUI_HIDE=
+=BLACKUNFADE 2=
+=DELAY 2=
+=BLACKFADE 1=
+=DELAY 1=
+=SPRITE embershock=
+=GUI_NORMAL=
+Em(sad) - Sir Arron, I can't believe you are leaving us!
+Em(sad) - And you too, Rose. It's so unfair!
 =SPRITE erika=
 Er - Don't be so selfish, Ember.
 Er(happy) - You've done a lot for us after all, didn't you?

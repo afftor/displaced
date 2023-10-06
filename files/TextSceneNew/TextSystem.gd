@@ -43,7 +43,7 @@ const AVAIL_EFFECTS = [
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
 	"ABG", "STOP", "CHOICE", "SKIP",
 	"DECISION", "STATE", "LOOSE",
-	"IF", "MOVETO", "POSITION"
+	"IF", "MOVETO", "POSITION", "BG_EMPTY"
 	]
 
 const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth','zelrothcaliban', 'rilu', 'demitrius', 'demitrius_demon', 'goblin', 'goblin2'] #idk if they are named this way in scenes
@@ -410,6 +410,12 @@ var char_map = {
 #		custom_variants = [], #for specific ones
 #		sprite = 'caliban',
 #		animated = true,
+		color = Color('ffffff'),
+	},
+	Cy = {
+		source = 'Cyrex',
+		portrait = 'Caliban',
+		base_variants = [], #for normal filenamaes with suffixes
 		color = Color('ffffff'),
 	},
 	Boy = {
@@ -815,14 +821,18 @@ func tag_bg(res_name: String, secs: String = "") -> void:
 			i.stop()
 			i.stream = null
 #	if !replay_mode:
-	state.unlock_path(res_name, false)
-	var res = resources.get_res("bg/%s" % res_name)
+	var res = null
+	if !res_name.empty():
+		state.unlock_path(res_name, false)
+		res = resources.get_res("bg/%s" % res_name)
 	if secs != "" and !rewind_mode:
 		input_handler.SmoothTextureChange($Background, res, float(secs))
 	else:
 		$Background.texture = res
 	$Background.update()
 
+func tag_bg_empty() -> void:
+	tag_bg('')
 
 func tag_delay(secs: String) -> void:
 	if rewind_mode:
@@ -1063,16 +1073,13 @@ func prompt_close():
 
 
 func stop_scene() -> void:
-#	input_handler.StopMusic()
 	input_handler.SetMusic("towntheme")
 	set_process(false)
 	set_process_input(false)
-	#globals.check_signal("EventFinished")
 	input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	hide()
 	state.FinishEvent(replay_mode)
 	replay_mode = false
-#	emit_signal("scene_end")
 	input_handler.emit_signal("EventFinished")
 
 #it should be almost the same to stop_scene() but with no afteractions
