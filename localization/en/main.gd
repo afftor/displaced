@@ -795,4 +795,7 @@ var TranslationDict = {
 	TUTORIAL_BUILDING_UPGRADES = "Select Townhall to access your actions. Upgrading settlement makes characters stronger.",
 	TUTORIAL_EXPLORATION_MENU = "Exclamation mark on buildings and locations indicates main plot's events and missions.\n\nLeave village, then select location and select mission you will be attending. You can replay your old missions for materials and experience.",
 	TUTORIAL_QUEST_CHARACTER = "People occasionally came to Townhall in search of your aid. Select Townhall to see their requests.",
+	
+	CREDITS_TEXT = "[center]Place holder for credits[/center]",
+	CREDITS_BUTTON = "Thanks",
 }

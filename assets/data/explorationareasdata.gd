@@ -134,6 +134,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	dimitrius_ending_9 = [
 		{type = 'scene', value = 'ending_1'},
 	],
+	ending_1 = [
+		{type = 'system', value = 'credits'},
+	],
 }
 
 var locations = { #added seqs bindings and other fields
@@ -1440,7 +1443,7 @@ var areas = { #missions in new terminology
 				{ 2 : ['demon2'], 5 : ['drone'], 6 : ['drone']},
 				],
 			4 : [
-				{ 1 : ['demon1'], 4 : ['demon1']},
+				{ 2 : ['demon1'], 5 : ['demon1']},
 				{ 2 : ['demon1'], 3 : ['demon1'], 4 : ['demon2'], 5 : ['demon2']},
 				],
 			5 : [

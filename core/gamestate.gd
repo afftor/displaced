@@ -516,6 +516,8 @@ func system_action(action):
 			pass
 		'add_to_party':
 			add_char_to_party(action.arg[0], action.arg[1])
+		'credits':
+			input_handler.get_spec_node(input_handler.NODE_CREDITS).show_end_credits()
 
 #simple action wrappers
 func unlock_char(code, value = true):

@@ -34,9 +34,6 @@ script = ExtResource( 1 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
 margin_left = 1.24487
