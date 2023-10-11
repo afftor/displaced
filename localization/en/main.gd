@@ -287,13 +287,15 @@ var TranslationDict = {
 	FINAL_BATTLE_SEWERSNAME = "Through Sewers",
 	FINAL_BATTLE_SEWERSDESCRIPT = "Survived the explosion, we have to move through sewers",
 	FINAL_BATTLE_PLANTNAME = "Nuclear Plant",
-	FINAL_BATTLE_PLANTDESCRIPT = "Now it's time to lure Dimitrius in!\n(This is final battle with no delays, so be prepared!)",
+	FINAL_BATTLE_PLANTDESCRIPT = "Now it's time to lure Dimitrius in!",
 #	FINAL_BATTLE_STAGE1DESCRIPT = "A serie of battles in final standing",
 #	MODERN_CITY_STAGE1NAME = "Unknown Ruins",
 #	MODERN_CITY_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",
 #	FOREST_ERIKA_ROSE_MISSIONNAME = "Elven Tea",
 #	FOREST_ERIKA_ROSE_MISSIONDESCRIPT = "Erika suggested to get some special herbs to make Rose more... accepting. ",
 	
+	FINAL_BATTLE_WARNING = "This is final battle. You will not be able to get back to openworld activities. If you feel unprepared or there are still things to do, scenes to open, please consider to press cancel button and return later.",
+	FINAL_BATTLE_WARNING_BTN = "Start",
 	
 	#Menu
 	NEWGAME = "New Game",

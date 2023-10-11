@@ -245,9 +245,6 @@ margin_top = 51.327
 margin_right = 1881.7
 margin_bottom = 1031.33
 texture = ExtResource( 30 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg" type="TextureRect" parent="BattleGroup"]
 show_behind_parent = true

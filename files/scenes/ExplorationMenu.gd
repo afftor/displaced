@@ -26,7 +26,7 @@ func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
-	$BattleGroup/start.connect("pressed", self, "start_area")
+	$BattleGroup/start.connect("pressed", self, "on_start_press")
 	$BattleGroup/advance.connect("pressed", self, "advance_area")
 	$BattleGroup/abandon.connect("pressed", self, "abandon_area")
 	$ExplorationSelect/Close.connect('pressed', self, 'hide')
@@ -189,6 +189,14 @@ func build_area_description():
 		$ExplorationSelect/about/progress.visible = false
 	
 	update_buttons()
+
+
+func on_start_press():
+	var areadata = Explorationdata.areas[area]
+	if areadata.has("final") and areadata.final:
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANELBIG, [self, 'start_area', tr('FINAL_BATTLE_WARNING'), tr('FINAL_BATTLE_WARNING_BTN')])
+	else:
+		start_area()
 
 
 func start_area():

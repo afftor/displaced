@@ -1422,6 +1422,7 @@ var areas = { #missions in new terminology
 		no_escape = true,
 		stages = 5,
 		level = 31,
+		final = true,
 		events = {
 			after_fight_1 = 'dimitrius_ending_5',
 			after_fight_2 = 'dimitrius_ending_6',
