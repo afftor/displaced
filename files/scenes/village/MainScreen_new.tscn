@@ -162,9 +162,6 @@ margin_right = 1554.19
 margin_bottom = 805.14
 texture_normal = ExtResource( 27 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="QuestActive" type="TextureRect" parent="farm"]
 margin_left = 182.102

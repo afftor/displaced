@@ -2,8 +2,8 @@ extends TextureButton
 export var outline_hover = false
 
 func _ready():
-	connect("mouse_entered", self, 'hightlight', [true])
-	connect("mouse_exited", self, 'hightlight', [false])
+	connect("mouse_entered", self, 'on_mouse_hightlight', [true])
+	connect("mouse_exited", self, 'on_mouse_hightlight', [false])
 	connect('pressed', self, 'onclick')
 	material = load("res://files/scenes/portret_shader.tres").duplicate();
 	material.set_shader_param('outline_width', 2.0)
@@ -57,8 +57,11 @@ func set_inactive():
 #	set_process(false)
 	$QuestActive.visible = false
 
-func hightlight(flag):
+func on_mouse_hightlight(flag):
 	if !outline_hover: return
+	hightlight(flag)
+
+func hightlight(flag):
 	if flag:
 		material.set_shader_param('opacity', 0.9)
 		material.set_shader_param('highlight', 0.1)
