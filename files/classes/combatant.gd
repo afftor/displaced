@@ -573,7 +573,8 @@ func process_event(ev, skill = null):
 	elif ev == variables.TR_TURN_S:
 		got_turn = false
 	
-	for e in triggered_effects:
+	var effects_to_process = triggered_effects.duplicate()#effects can be removed from original array during cycle
+	for e in effects_to_process:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if skill != null and eff.req_skill:
 			eff.set_args('skill', skill)
@@ -585,7 +586,8 @@ func process_event(ev, skill = null):
 	#for now it's unobvious if it is effecting triggered_effects somehow.
 	#If it is, temp_effects probably should be processed befor triggered_effects,
 	#but than problem with temp_effects removeing it's triggered_effects will return
-	for e in temp_effects:
+	effects_to_process = temp_effects.duplicate()
+	for e in effects_to_process:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(ev)
 
