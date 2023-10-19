@@ -108,42 +108,55 @@ func get_stat(statname):
 	return res
 
 
-func add_stat_bonuses(ls:Dictionary):
-	if variables.new_stat_bonuses_syntax:
-		for rec in ls:
-			add_bonus(rec, ls[rec])
-		recheck_effect_tag('recheck_stats')
-	else:
-		for rec in ls:
-			if (rec as String).begins_with('resist') :
-				add_bonus(rec + '_add', ls[rec])
-				continue
-			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
-				add_bonus(rec.replace('mod','_mul'), ls[rec])
-				continue
-			if get(rec) == null:
-			#safe variant
-			#add_bonus(rec, ls[rec])
-				continue
-			add_stat(rec, ls[rec])
+#seems not to be in use
+#func add_stat_bonuses(ls:Dictionary):
+#	if variables.new_stat_bonuses_syntax:
+#		for rec in ls:
+#			add_bonus(rec, ls[rec])
+#		recheck_effect_tag('recheck_stats')
+#	else:
+#		for rec in ls:
+#			if (rec as String).begins_with('resist') :
+#				add_bonus(rec + '_add', ls[rec])
+#				continue
+#			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
+#				add_bonus(rec.replace('mod','_mul'), ls[rec])
+#				continue
+#			if get(rec) == null:
+#			#safe variant
+#			#add_bonus(rec, ls[rec])
+#				continue
+#			add_stat(rec, ls[rec])
+#
+#func remove_stat_bonuses(ls:Dictionary):
+#	if variables.new_stat_bonuses_syntax:
+#		for rec in ls:
+#			add_bonus(rec, ls[rec], true)
+#		recheck_effect_tag('recheck_stats')
+#	else:
+#		for rec in ls:
+#			if (rec as String).begins_with('resist'):
+#				add_bonus(rec + '_add', ls[rec], true)
+#				continue
+#			if (rec as String).ends_with('mod') :
+#				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
+#				continue
+#			if get(rec) == null: continue
+#			add_stat(rec, ls[rec], true)
 
-func remove_stat_bonuses(ls:Dictionary):
-	if variables.new_stat_bonuses_syntax:
-		for rec in ls:
-			add_bonus(rec, ls[rec], true)
-		recheck_effect_tag('recheck_stats')
+func check_bonus(bonus_name :String):
+	var suffix_free :String = bonus_name.trim_suffix("_add")
+	suffix_free = suffix_free.trim_suffix("_mul")
+	if suffix_free.begins_with('resist'):
+		assert((
+			variables.resistlist.has(suffix_free.trim_prefix('resist')) or
+			variables.status_list.has(suffix_free.trim_prefix('resist'))),
+			"%s trying to edit unexisting resist by %s" % [name, bonus_name])
 	else:
-		for rec in ls:
-			if (rec as String).begins_with('resist'):
-				add_bonus(rec + '_add', ls[rec], true)
-				continue
-			if (rec as String).ends_with('mod') :
-				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
-				continue
-			if get(rec) == null: continue
-			add_stat(rec, ls[rec], true)
+		assert(get(suffix_free) != null, "%s trying to edit unexisting stat by %s" % [name, bonus_name])
 
 func add_bonus(b_rec:String, value, revert = false):
+	check_bonus(b_rec)
 	if value == 0: return
 	if bonuses.has(b_rec):
 		if revert:
@@ -158,7 +171,6 @@ func add_bonus(b_rec:String, value, revert = false):
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
 
-
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
 		if revert: set(statname, get(statname) - value)
@@ -172,6 +184,7 @@ func mul_stat(statname, value, revert = false):
 		if revert: set(statname, get(statname) / value)
 		else: set(statname, get(statname) * value)
 	else:
+		check_bonus(statname)
 		if bonuses.has(statname + '_mul'):
 			if revert:
 				bonuses[statname + '_mul'] /= value
