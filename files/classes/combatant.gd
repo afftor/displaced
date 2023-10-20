@@ -205,18 +205,28 @@ func add_part_stat(statname, value, revert = false):
 	recheck_effect_tag('recheck_stats')
 
 #confirmed getters
+func calc_resist_mul_bonus(base :float, bonus :float) -> float:
+	#base rasist < 0 is actualy debuff, yet mul_bonus > 1 must still increase resistance, and mul_bonus < 1 decrease it
+	if base > 0.0:
+		return base * bonus
+	elif base < 0.0:
+		return base / bonus
+	return base
+
 func get_resists():
 	var res = resists.duplicate()
 	for r in variables.resistlist:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
-		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+		if bonuses.has('resist' + r + '_mul'):
+			res[r] = calc_resist_mul_bonus(res[r], bonuses['resist' + r + '_mul'])
 	return res
 
 func get_s_resists():
 	var res = status_resists.duplicate()
 	for r in variables.status_list:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
-		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+		if bonuses.has('resist' + r + '_mul'):
+			res[r] = calc_resist_mul_bonus(res[r], bonuses['resist' + r + '_mul'])
 	return res
 
 func set_shield(value):
