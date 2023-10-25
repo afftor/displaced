@@ -224,6 +224,7 @@ func serialize():
 	tmp.triggered_effects = triggered_effects.duplicate()
 	tmp.bonuses = bonuses.duplicate()
 	tmp.fr_p = friend_points
+	tmp.traits = traits.duplicate()
 	return tmp
 
 func deserialize(savedir):
@@ -272,6 +273,17 @@ func deserialize(savedir):
 	for slot in gear_level:
 		gear_level[slot] = int(gear_level[slot])
 	friend_points = int(savedir.fr_p)
+	#most of the stuff is just fix for savegame traits compatibility. In regular cases only savedir.traits import is relevant
+	if savedir.has('traits'):
+		traits = savedir.traits.duplicate()
+	else:
+		traits = []
+	var template = combatantdata.charlist[base]
+	if template.keys().has('traits'):
+		for trait in template.traits:
+			if !(trait in traits):
+				clear_trait_effects(trait)
+				add_trait(trait)
 
 
 var skills_autoselect = ["attack"]

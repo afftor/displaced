@@ -288,7 +288,7 @@ func need_heal(): #stub. borderlines are subject to tuning
 #traits
 func can_acq_trait(tr_id):
 	if traits.has(tr_id):
-		print("already has trait")
+		print("%s already has trait %s" % [name, tr_id])
 		return false
 	return true
 
@@ -304,6 +304,9 @@ func add_trait(trait_code):
 func remove_trait(trait_code):
 	if !traits.has(trait_code): return
 	traits.erase(trait_code)
+	clear_trait_effects(trait_code)
+
+func clear_trait_effects(trait_code):
 	var tmp = find_eff_by_trait(trait_code)
 	for e in tmp:
 		var eff = effects_pool.get_effect_by_id(e)
@@ -550,7 +553,7 @@ func apply_effect(eff_id):
 func remove_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static', 'c_static': static_effects.erase(eff_id)
+		'static', 'c_static', 'dynamic': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
 		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
 		'aura': 
@@ -597,6 +600,7 @@ func process_event(ev, skill = null):
 		got_turn = false
 	
 	var effects_to_process = triggered_effects.duplicate()#effects can be removed from original array during cycle
+#	print("%s process_event %s" % [name, String(effects_to_process)])
 	for e in effects_to_process:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if skill != null and eff.req_skill:
