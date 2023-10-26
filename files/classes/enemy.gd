@@ -58,6 +58,7 @@ func createfromtemplate(enemy_id, lvl):
 	hpmax = 0 #template.basehp #or not
 	hp_growth = template.basehp
 	self.hp = get_stat('hpmax')
+	is_boss = (template.has('is_boss') and template.is_boss)
 #	manamax = template.basemana
 #	self.mana = manamax
 	skills = template.skills.duplicate()

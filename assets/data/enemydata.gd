@@ -714,7 +714,7 @@ var enemylist = {
 		xpreward = 50,
 		ai = load('res://files/ai_classes/big_treant.gd'),
 		bodyhitsound = 'wood',
-		
+		is_boss = true,
 		combaticon = 'enemies/BigtreantCombatIcon',
 		bodyimage = null,
 		aiposition = 'ranged',
@@ -746,7 +746,7 @@ var enemylist = {
 		speed = 30,
 		resists = {earth = 50, air = 25},
 		xpreward = 50,
-		
+		is_boss = true,
 		bodyhitsound = 'stone',
 		
 		combaticon = 'enemies/EarthgolemCombatIcon',
@@ -780,7 +780,7 @@ var enemylist = {
 		xpreward = 50,
 		ai = load('res://files/ai_classes/dk.gd'),
 		bodyhitsound = 'stone',
-		
+		is_boss = true,
 		combaticon = 'enemies/DwarvenkingCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
@@ -812,7 +812,7 @@ var enemylist = {
 		xpreward = 50,
 		ai = load('res://files/ai_classes/faery_queen.gd'),
 		bodyhitsound = 'stone',
-
+		is_boss = true,
 		combaticon = 'enemies/FearyqueenCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
@@ -843,7 +843,7 @@ var enemylist = {
 		resists = {earth = 50, air = 25},
 		xpreward = 50,
 		bodyhitsound = 'stone',
-
+		is_boss = true,
 		combaticon = 'enemies/Dragon_bossCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
@@ -875,6 +875,7 @@ var enemylist = {
 		speed = 30,
 		resists = {earth = 50, air = 25},
 		xpreward = 50,
+		is_boss = true,
 		bodyhitsound = 'stone',
 		ai = load('res://files/ai_classes/viktor.gd'),
 		combaticon = 'enemies/Viktor_bossCombatIcon',
@@ -908,6 +909,7 @@ var enemylist = {
 		speed = 30,
 		resists = {earth = 50, air = 25},
 		xpreward = 50,
+		is_boss = true,
 		bodyhitsound = 'stone',
 		ai = load('res://files/ai_classes/annet.gd'),
 		combaticon = 'enemies/AnnetCombatIcon',
@@ -941,7 +943,7 @@ var enemylist = {
 		resists = {},
 		xpreward = 10,
 		ai = load('res://files/ai_classes/scientist.gd'),
-		
+		is_boss = true,
 		bodyhitsound = 'flesh',
 		traits = ['summoner'],
 		combaticon = 'enemies/Scientist_bossCombatIcon',
@@ -973,7 +975,7 @@ var enemylist = {
 		speed = 50,
 		resists = {},
 		xpreward = 10,
-		
+		is_boss = true,
 		bodyhitsound = 'flesh',
 		traits = [],
 		combaticon = 'enemies/CalibanCombatIcon',
@@ -1007,7 +1009,7 @@ var enemylist = {
 		resists = {slash = 50, pierce = 50, bludgeon = 50, light = -100, dark = 100, air = 50, water = -50, earth = 50, fire = -50},
 		xpreward = 50,
 		bodyhitsound = 'stone',
-
+		is_boss = true,
 		combaticon = 'enemies/Demitrius1CombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
@@ -1040,6 +1042,7 @@ var enemylist = {
 		speed = 30,
 		resists = {slash = 75, pierce = 75, bludgeon = 75, light = -100, dark = 75, air = 75, water = -100, earth = 75, fire = -100},
 		xpreward = 50,
+		is_boss = true,
 		bodyhitsound = 'stone',
 		ai = load('res://files/ai_classes/dimitrius_2.gd'),
 		combaticon = 'enemies/Demitrius2CombatIcon',
@@ -1074,6 +1077,7 @@ var enemylist = {
 		speed = 30,
 		resists = {slash = 75, pierce = 75, bludgeon = 75, light = -200, dark = 75, air = 75, water = -100, earth = 75, fire = -100},
 		xpreward = 50,
+		is_boss = true,
 		bodyhitsound = 'stone',
 		ai = load('res://files/ai_classes/dimitrius_3.gd'),
 		combaticon = 'enemies/Demitrius2CombatIcon',

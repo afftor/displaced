@@ -29,6 +29,7 @@ var status_resists = {} setget ,get_s_resists
 var shield = 0 setget set_shield;
 #var base_dmg_type = 'bludgeon'
 var base_dmg_range = 'melee'
+var is_boss :bool = false
 
 var flavor
 
@@ -868,8 +869,7 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 		'status':
 			result = has_status(req.status) == req.check
 		'is_boss':
-			#stub!!!!
-			result = !req.check
+			result = is_boss == req.check
 		'skill':
 			if skills.has(req.skill):
 				var skilldata = Skillsdata.patch_skill(req.skill, self)
