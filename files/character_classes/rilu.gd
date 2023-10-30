@@ -5,7 +5,6 @@ func _init():
 	id = 'rilu'
 	state.heroes[id] = self
 	createfromname('rilu')
-	add_trait('necro_trait')
 
 #func deserialize(savedir): 
 #	.deserialize(savedir)

@@ -208,6 +208,14 @@ func reset_shield():
 	$sprite/shield.visible = (fighter.shield > 0)
 
 
+func update_hp_bar_max():
+	var new_max_value = fighter.get_stat('hpmax')
+	panel_node.get_node('ProgressBar').max_value = new_max_value
+	if fighter is hero:
+		panel_node2.get_node('ProgressBar').max_value = new_max_value
+	else:
+		hp_bar.max_value = new_max_value
+
 func regenerate_click_mask(spr1 = true):
 	var t
 	if spr1:

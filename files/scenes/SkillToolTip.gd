@@ -5,7 +5,7 @@ func showup(node, character_id, skillcode):
 	var character = state.heroes[character_id]
 	var skill = Skillsdata.patch_skill(skillcode, character)
 	show()
-	$name.text = tr("SKILL"+skill.name.to_upper())
+	$name.text = tr(skill.name)
 #	$cost.text = str(skill.manacost)
 #	$cost.visible = skill.manacost != 0
 #	$manaicon.visible = skill.manacost != 0
@@ -18,7 +18,7 @@ func showup(node, character_id, skillcode):
 #	$type.text = skill.skilltype.capitalize()#put back, when needed!!!
 #	$descript.bbcode_text = character.skill_tooltip_text(skillcode)
 #	$descript.bbcode_text = skill.description
-	$descript.bbcode_text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT") #temporal
+	$descript.bbcode_text = tr(skill.description) #temporal
 	#$RichTextLabel.bbcode_text = text
 	
 	var damage_type :String = Skillsdata.get_true_damagetype(skill.damagetype, character_id)

@@ -620,30 +620,26 @@ func process_check(dir):
 
 func checkdeaths():
 	for i in battlefield:
-		if battlefield[i] != null && battlefield[i].defeated != true && battlefield[i].hp <= 0:
+		if battlefield[i] == null || battlefield[i].defeated : continue
+		
+		if battlefield[i].hp <= 0:
 			battlefield[i].death()
 			hide_resist_tooltip_if_my(i)
 			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
 			#add fix around defeated player chars
 			if i > 3:
 				defeated.push_back(battlefield[i])
-#				battlefield[i].displaynode.visible = false
-#				battlefield[i].displaynode = null
-#				battlefield[i] = null
-#				enemygroup.erase(i)
 				#add state-based kill effects here
 				for pos in variables.playerparty:
 					if battlefield[pos] == null: continue
 					battlefield[pos].see_enemy_killed()
-		if battlefield[i] != null && battlefield[i].has_status('charmed'):
+		elif battlefield[i].has_status('charmed'):
 			combatlogadd("\n" + battlefield[i].name + "is charmed and has been removed from combat.")
-			defeated.push_back(battlefield[i])
-			#2fix
-			
-#			battlefield[i].displaynode.queue_free()
-#			battlefield[i].displaynode = null
-#			battlefield[i] = null
-#			enemygroup.erase(i)
+			battlefield[i].death()#for glitch-proof reasons we use death here, but it is not death so be mindful about on-death effects triggered here
+			hide_resist_tooltip_if_my(i)
+			#not in defeated list, as it's not death - no rewards
+#			defeated.push_back(battlefield[i])
+
 
 func remove_enemy(pos, id):
 	if battlefield[pos].id != id or enemygroup[pos].id != id:
@@ -1123,7 +1119,7 @@ func fill_up_level_up(character):
 			skill_icon.texture = skill_info.icon
 			globals.connectskilltooltip(skill_icon, character.id, key)
 			var skill_name = skill_planks[skill_num].get_node("SkillText")
-			skill_name.text = tr("SKILL"+skill_info.name.to_upper())
+			skill_name.text = tr(skill_info.name)
 			skill_planks[skill_num].visible = true
 			if skill_num == 1:#unfortunately for this time we can't have more than 2 skills at lvl-up
 				break
@@ -1399,7 +1395,7 @@ func CalculateTargets(skill, caster, target_pos, finale = false):
 				var tchar = battlefield[j]
 				if !tchar.defeated: continue
 				array.append(tchar)
-		'no_target':
+		'no_target':#means: except target
 			var target_range = for_range[targetgroup]
 			for j in range(target_range[0], target_range[1]):
 				if j == target_pos: continue
@@ -1689,7 +1685,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
 
 		if skill.cooldown > 0:
-			caster.cooldowns[skill_code] = skill.cooldown
+			caster.cooldowns[skill_code] = skill.cooldown + 1#+1 is so current turn wouldn't count
 
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
@@ -1730,6 +1726,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		
 		#======prehit animation
 		for i in animationdict.prehit:
+#			if i.has('once') and i.once and n > 1: continue#once-mechanic not used now, but tested and working
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 			sfxtarget.process_sfx_dict(i)
 		#====
@@ -1749,6 +1746,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				else:
 					caster.displaynode.process_sound(skill.sounddata.strike)
 			for j in animationdict.predamage:
+#				if j.has('once') and j.once and n > 1: continue
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 				sfxtarget.process_sfx_dict(j)
 			#======
@@ -1793,6 +1791,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					elif skill.sounddata.hittype == 'bodyarmor':
 						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
 				for j in animationdict.postdamage:
+#					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
 					sfxtarget.process_sfx_dict(j)
 				#=========

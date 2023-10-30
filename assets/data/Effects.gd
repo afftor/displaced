@@ -5,8 +5,8 @@ var effect_table = {
 	#defence
 	e_s_defence = {
 		type = 'temp_s',
-		target = 'caster',
 		name = 'defence',
+		target = 'caster',
 		stack = 1,
 		tick_event = [],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_TURN_S],
@@ -18,6 +18,7 @@ var effect_table = {
 	},
 	e_summon = {
 		type = 'static',
+		debug_name = 'trait_summon',
 		tags = ['summon'],
 		args = [],
 		sub_effects = [],
@@ -27,8 +28,8 @@ var effect_table = {
 	#statuses
 	e_s_burn = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'burn',
+		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -41,8 +42,8 @@ var effect_table = {
 	},
 	e_s_burn_onget = {#same as e_s_burn, but triggered at TR_TURN_GET
 		type = 'temp_s',
+		name = 'burn_onget',
 		target = 'target',
-		name = 'burn',
 		stack = 1,
 		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
@@ -55,8 +56,8 @@ var effect_table = {
 	},
 	e_s_poison = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'poison',
+		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -69,8 +70,8 @@ var effect_table = {
 	},
 	e_s_bleed = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'bleed',
+		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -83,8 +84,8 @@ var effect_table = {
 	},
 	e_s_bleed_onget = {#same as e_s_bleed, but treggered by TR_TURN_GET
 		type = 'temp_s',
+		name = 'bleed_onget',
 		target = 'target',
-		name = 'bleed',
 		stack = 1,
 		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
@@ -97,12 +98,12 @@ var effect_table = {
 	},
 	e_stun = {
 		type = 'temp_s',
+		name = 'stun',
 		target = 'target',
 		stack = 1,
 		duration = 'parent',#while document states this to be 1, there also is a skill with stun 2 duratiuon, so here we are
 		rem_event = [variables.TR_COMBAT_F],
 		tick_event = [variables.TR_TURN_F],
-		name = 'stun',
 		tags = ['stun'],
 		disable = true,
 		sub_effects = [rebuild_remove(['tags','has','heal'])],
@@ -111,12 +112,12 @@ var effect_table = {
 	},
 	e_intimidate = {
 		type = 'temp_s',
+		name = 'intimidate',
 		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		duration = 2,
 		rem_event = [variables.TR_COMBAT_F],
-		name = 'intimidate',
 		tags = ['intimidate', 'negative'],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.5}],
@@ -124,12 +125,12 @@ var effect_table = {
 	},
 	e_silence = {
 		type = 'temp_s',
+		name = 'silence',
 		target = 'target',
 		stack = 1,
 		duration = 'parent',
 		rem_event = [variables.TR_COMBAT_F],
 		tick_event = [variables.TR_TURN_F],
-		name = 'silence',
 		tags = ['afflict', 'silence'],
 		disable = true,
 		sub_effects = [],
@@ -138,8 +139,8 @@ var effect_table = {
 	},
 	e_s_poison_water = {
 		type = 'temp_s',
+		name = 'poison_water',
 		target = 'target',
-		name = 'poison_w',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -152,8 +153,8 @@ var effect_table = {
 	},
 	e_s_wound = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'wound',
+		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -163,10 +164,11 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
 		buffs = ['b_wound'],
 	},
-	e_tr_wound = rebuild_template({chance = 0.33, effect = 'e_s_wound'}),
+	e_tr_wound = rebuild_template({chance = 0.33, effect = 'e_s_wound', debug_name = "starter_wound"}),
 	#effects for new skils
 	e_fen_addrep = {
 		type = 'trigger',
+		debug_name = 'starter_add_repeat_1',
 		trigger = [variables.TR_KILL],
 		reset = [variables.TR_CAST],
 		req_skill = true,
@@ -185,6 +187,7 @@ var effect_table = {
 	},
 	e_fen_addrep2 = {
 		type = 'trigger',
+		debug_name = 'starter_add_repeat_2',
 		trigger = [variables.TR_KILL],
 		reset = [variables.TR_CAST],
 		req_skill = true,
@@ -203,52 +206,62 @@ var effect_table = {
 	},
 	e_fen_debuf = {
 		type = 'trigger',
+		debug_name = 'starter_fencing_debuf_1',
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		val = 0.85,
-		args = [{obj = 'template', param = 'val'}],
+		buff_text = '15',
+		args = [
+			{obj = 'template', param = 'val'},
+			{obj = 'template', param = 'buff_text'}],
 		sub_effects = ['e_t_nodamagearg'],
 		atomic = [],
 		buffs = [],
 	},
 	e_fen_debuf2 = {
 		type = 'trigger',
+		debug_name = 'starter_fencing_debuf_2',
 		req_skill = true,
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		val = 0.75,
-		args = [{obj = 'template', param = 'val'}],
+		buff_text = '25',
+		args = [
+			{obj = 'template', param = 'val'},
+			{obj = 'template', param = 'buff_text'}],
 		sub_effects = ['e_t_nodamagearg'],
 		atomic = [],
 		buffs = [],
 	},
 	e_t_nodamagearg = {
 		type = 'temp_s',
+		name = 'fencing_debuf',
 		target = 'target',
-		name = 'fen_debuf',
 		tags = ['negative'],# or not? mb affliction?
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 2,
 		stack = 1,
 		sub_effects = [],
-		args = [{obj = 'parent_args', param = 0}],
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'parent_args', param = 1}],
 		atomic = [{type = 'stat_mul', stat = 'damage', value = ['parent_args', 0]}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_7.png", 
-				description = "Deal 15%% less damage",
-				args = [],
-				t_name = 'fen',
+				description = "Deal %s%% less damage",
+				args = [{obj = 'parent_args', param = 1}],
+				t_name = 'icon_fencing_debuf',
 				bonuseffect = 'duration'
 			}
 		],
 	},
 	e_s_swift = {
 		type = 'temp_s',
-		target = 'caster',
 		name = 'swift',
+		target = 'caster',
 		stack = 1,
 		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
@@ -261,6 +274,7 @@ var effect_table = {
 	},
 	e_s_protect = {
 		type = 'trigger',
+		debug_name = 'starter_parry',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
@@ -270,11 +284,11 @@ var effect_table = {
 	},
 	e_t_protect_c = {
 		type = 'temp_s',
+		name = 'parry_on_caster',
 		target = 'caster',
-		name = 'protect_c',
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
-		duration = -2, 
+		duration = {obj = 'parent_args', param = 1},
 		stack = 1,
 		tags = ['buff'],
 		sub_effects = ['e_t_protect_ctr', 'e_t_protect_ret', 'e_t_protect_buff'],
@@ -282,22 +296,23 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_2.png", 
-				description = "",
+				description = "Parry: additional 50%% dodge chance, counterattacks enemy",
 				limit = 1,
-				t_name = 'protect_c',
+				t_name = 'icon_parry_receiver',
 				bonuseffect = 'duration'
 			}
 		],
 	},
 	e_t_protect_ctr = {
 		type = 'trigger',
+		debug_name = 'protect_cleaner',
 		conditions = [],
 		trigger = [variables.TR_DEATH],
 		req_skill = false,
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'self',
+				target = 'parent',
 				execute = 'remove_siblings'
 			},
 		],
@@ -305,11 +320,11 @@ var effect_table = {
 	},
 	e_t_protect_t = {
 		type = 'temp_s',
+		name = 'parry_listener',
 		target = 'target',
-		name = 'protect_t',
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
-		duration = -2, 
+		duration = {obj = 'parent_args', param = 1}, 
 		stack = 1,
 		tags = ['buff'],
 		args = [{obj = 'parent_args', param = 0}],
@@ -320,13 +335,14 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_2.png", 
 				description = "Is protected: Damage will be redirected to Arron",
 				limit = 1,
-				t_name = 'protect_t',
+				t_name = 'icon_parry_listener',
 				bonuseffect = 'duration'
 			}
 		],
 	},
 	e_t_protect_ttr = {
 		type = 'trigger',
+		debug_name = 'protect_transmiter',
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['tags', 'has_no', 'aoe']},
@@ -352,6 +368,7 @@ var effect_table = {
 	},
 	e_t_protect_buff = {
 		type = 'trigger',
+		debug_name = 'parry_dodge',
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']}, 
 			{type = 'skill', value = ['tags', 'has_no', 'aoe']}, 
@@ -373,25 +390,27 @@ var effect_table = {
 	},
 	e_t_protect_ret = {
 		type = 'trigger',
+		debug_name = 'parry_counterblow',
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']}, 
 			{type = 'skill', value = ['tags', 'has_no', 'aoe']}
 		],
-		trigger = [variables.TR_POSTDAMAGE],
+		trigger = [variables.TR_POST_TARG],
 		req_skill = true,
 		args = [{obj = 'app_obj', param = 'damage'}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'caster',
-				args = [],
-				atomic = [{type = 'damage', source = 'slash', value = [['parent_args', 0], '*', '1.0']}],
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = [{type = 'damage', source = 'slash', value = ['parent_args', 0]}],
 			},
 		],
 		buffs = []
 	},
 	e_s_swordmas = {
 		type = 'trigger',
+		debug_name = 'starter_sword_mastery',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
@@ -401,43 +420,44 @@ var effect_table = {
 	},
 	e_s_swordmas_timer = {
 		type = 'temp_p',
-		duration = 3,
+		name = 'timer_sword_mastery',
+		duration = 4,
 		target = 'caster',
 		tick_event = variables.TR_TURN_F,
 		rem_event = variables.TR_COMBAT_F,
-		name = 'timer_swm',
 		next_level = 'e_s_swordmas_remove',
 		stack = 1,
-		buffs = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/arron_4.png", 
+			description = "Damage Increased for next attack: +150%%",
+			limit = 1,
+			t_name = 'icon_sword_mastery',
+			bonuseffect = 'duration'
+		}],
 		atomic = [],
 		sub_effects = [],
-		tags = ['timer']
+		tags = ['timer', 'swordmas']
 	},
 	e_s_swordmas_remove = {
 		type = 'oneshot',
-		atomic = [{type = 'remove_effect', value = 'swordmas'}]
+		atomic = [{type = 'remove_all_effects', value = 'swordmas'}]
 	},
 	e_s_swordmas_main = {
-		type = 'temp_s',
+		type = 'temp_p',
+		name = 'sword_mastery',
 		target = 'caster',
-		duration = -1,
+		duration = {obj = 'parent_args', param = 0},
 		rem_event = variables.TR_COMBAT_F,
+		next_level = 'e_s_swordmas_remove',
 		sub_effects = ['e_tr_swordmas'],
 		tags = ['buff', 'swordmas'],
-		name = 'swordmas',
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 2.5}],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/arron_4.png", 
-				description = "Damage Increased for next attack: +150%%",
-				limit = 1,
-				t_name = 'swordmas'
-			}
-		],
+		buffs = [],
 	},
 	e_tr_swordmas = {
 		type = 'trigger',
+		debug_name = 'sword_mastery_user',
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']}, 
 		],
@@ -453,76 +473,69 @@ var effect_table = {
 #			},
 			{
 				type = 'oneshot',
-				target = 'self',
-				execute = 'tick_parent'
+				target = 'parent',
+				execute = 'tick'
 			},
 		],
 		buffs = []
 	},
 	e_s_termination = {
 		type = 'trigger',
+		debug_name = 'starter_termination_buff_1',
 		trigger = [variables.TR_CAST],
 		conditions = [],
 		req_skill = true,
-		args = [],
+		val = 1.25,
+		buff_text = '25',
+		args = [
+			{obj = 'template', param = 'val'},
+			{obj = 'template', param = 'buff_text'}],
+		sub_effects = ['e_t_termination'],
+		buffs = []
+	},
+	e_s_termination1 = {
+		type = 'trigger',
+		debug_name = 'starter_termination_buff_2',
+		trigger = [variables.TR_CAST],
+		conditions = [],
+		req_skill = true,
+		val = 1.5,
+		buff_text = '50',
+		args = [
+			{obj = 'template', param = 'val'},
+			{obj = 'template', param = 'buff_text'}],
 		sub_effects = ['e_t_termination'],
 		buffs = []
 	},
 	e_t_termination = {
 		type = 'temp_s',
+		name = 'termination_buff',
 		target = 'caster',
-		duration = 4,
-		tick_event = variables.TR_SKILL_FINISH ,
+		duration = 3,
+		tick_event = variables.TR_TURN_F,
 		rem_event = variables.TR_COMBAT_F,
 		sub_effects = [],
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'parent_args', param = 1}],
 		tags = ['buff'],
-		name = 'termination',
 		stack = 1,
-		atomic = [{type = 'stat_mul', stat = 'damage', value = 1.25}],
+		atomic = [{type = 'stat_mul', stat = 'damage', value = ['parent_args', 0]}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_5.png", 
-				description = "Damage Increased: 25%%",
+				description = "Damage Increased: %s%%",
+				args = [{obj = 'parent_args', param = 1}],
 				limit = 1,
-				t_name = 'termination',
-				bonuseffect = 'duration'
-			}
-		],
-	},
-	e_s_termination1 = {
-		type = 'trigger',
-		trigger = [variables.TR_CAST],
-		conditions = [],
-		req_skill = true,
-		args = [],
-		sub_effects = ['e_t_termination1'],
-		buffs = []
-	},
-	e_t_termination1 = {
-		type = 'temp_s',
-		target = 'caster',
-		duration = 4,
-		tick_event = variables.TR_SKILL_FINISH ,
-		rem_event = variables.TR_COMBAT_F,
-		sub_effects = [],
-		tags = ['buff'],
-		name = 'termination',
-		stack = 1,
-		atomic = [{type = 'stat_mul', stat = 'damage', value = 1.5}],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/arron_5.png", 
-				description = "Damage Increased: 50%%",
-				limit = 1,
-				t_name = 'termination',
+				t_name = 'icon_termination_buff',
 				bonuseffect = 'duration'
 			}
 		],
 	},
 	e_s_smoke = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'smoke',
+		target = 'target',
 		tags = ['buff'],
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
@@ -535,12 +548,13 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_6.png", 
 				description = "Evasion increased by 90%%",
 				args = [],
-				t_name = 'eva90'
+				t_name = 'icon_smoke'
 			}
 		],
 	},
 	e_s_swipe = {
 		type = 'trigger',
+		debug_name = 'swipe',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
@@ -554,6 +568,7 @@ var effect_table = {
 	},
 	e_s_dispel = {
 		type = 'trigger',
+		debug_name = 'dispel',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
@@ -567,29 +582,28 @@ var effect_table = {
 	},
 	e_s_flash = {
 		type = 'temp_s',
+		name = 'flash',
 		target = 'target',
-		name = 'smoke',
 		tags = ['negative'],
 		tick_event = variables.TR_TURN_F,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 1,
 		stack = 1,
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'hitchance', value = -25}],
+		atomic = [{type = 'stat_add', stat = 'hitrate', value = -25}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/rose_2.png", 
-				description = "Reduce Hit Rate by 25",
-				args = [],
-				t_name = 'flash'
+				description = "Reduce Hit Rate by 25%%",
+				t_name = 'icon_flash'
 			}
 		],
 	},
 	e_t_deluge = {
 		type = 'trigger',
+		debug_name = 'deluge',
 		target = 'target',
 		trigger = [variables.TR_DEF],
-		test = 'deluge',
 		conditions = [
 			{type = 'skill', value = ['damagetype','eq', 'air'] },
 			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
@@ -608,24 +622,36 @@ var effect_table = {
 				execute = 'remove'
 			}
 		],
-		buffs = ['b_wave']
+		buffs = [{
+			icon = "res://assets/images/iconsskills/rose_5.png", 
+			description = "Damage from next air-based skill is increased by 30%%",
+			limit = 1,
+			t_name = 'icon_deluge'
+		}]
 	},
 	e_s_renew = {
 		type = 'temp_s',
+		name = 'renew_timer',
 		target = 'target',
-		name = 'renew',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = 3,
+		duration = 2,
 		tags = ['buff'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_renew'],
 		atomic = [],
-		buffs = ['b_renew'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/rose_8.png", 
+			description = "Restores %d health at the start of turn",
+			args = [{obj = 'parent_args', param = 0}],
+			t_name = 'icon_renew',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_renew = {
 		type = 'trigger',
+		debug_name = 'renew',
 		trigger = [variables.TR_TURN_S],
 		req_skill = false,
 		conditions = [],
@@ -634,41 +660,44 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_renew'],
+				atomic = [{type = 'heal', value = ['parent_args', 0]}],
 			}
 		],
 		buffs = []
 	},
 	e_s_renew1 = {
 		type = 'temp_s',
+		name = 'renew_resist_1',
 		target = 'target',
-		name = 'renew',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
+		val = 20,
 		tags = ['buff'],
-		args = [],
+		args = [{obj = 'template', param = 'val'}],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 20}],
+		atomic = ['a_renew_resist'],
 		buffs = ['b_renew1'],
 	},
 	e_s_renew2 = {
 		type = 'temp_s',
+		name = 'renew_resist_2',
 		target = 'target',
-		name = 'renew',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
+		val = 30,
 		tags = ['buff'],
-		args = [],
+		args = [{obj = 'template', param = 'val'}],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 30}],
+		atomic = ['a_renew_resist'],
 		buffs = ['b_renew1'],
 	},
 	e_s_explosion = {
 		type = 'trigger',
+		debug_name = 'explosion_ultra',
 		trigger = [variables.TR_CAST],
 		conditions = [{type = 'combat', value = {type = 'single_enemy'}}],
 		req_skill = true,
@@ -681,8 +710,9 @@ var effect_table = {
 		}],
 		buffs = []
 	},
-	e_t_aarrow = {#this effect is not dispellable and is not counted as dispellable by other effects. i can fix this if needed
+	e_t_aarrow = {
 		type = 'trigger',
+		debug_name = 'air_arrow_mul',
 		target = 'target',
 		trigger = [variables.TR_DEF],
 		conditions = [
@@ -703,12 +733,17 @@ var effect_table = {
 				execute = 'remove'
 			}
 		],
-		buffs = ['b_wave2']
+		buffs = [{
+			icon = "res://assets/images/iconsskills/erika_2.png", 
+			description = "Damage from next air-based skill is increased by 50%%",
+			limit = 1,
+			t_name = 'icon_air_arrow'
+		}]
 	},
 	e_s_aarrow1 = {
 		type = 'temp_s',
+		name = 'air_arrow_ignor_1',
 		target = 'target',
-		name = 'aarrow',
 		stack = 1,
 		rem_event = [variables.TR_POST_TARG],
 		tags = ['negative'],
@@ -719,8 +754,8 @@ var effect_table = {
 	},
 	e_s_aarrow2 = {
 		type = 'temp_s',
+		name = 'air_arrow_ignor_2',
 		target = 'target',
-		name = 'aarrow',
 		stack = 1,
 		rem_event = [variables.TR_POST_TARG],
 		tags = ['negative'],
@@ -731,6 +766,7 @@ var effect_table = {
 	},
 	e_t_eastrike = {
 		type = 'trigger',
+		debug_name = 'earth_strike_stun_mul',
 		req_skill = true,
 		trigger = [variables.TR_HIT],
 		conditions = [{type = 'target', value = {type = 'status', status = 'stun', check = true}}],
@@ -746,8 +782,8 @@ var effect_table = {
 	},
 	e_s_freeze = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'freeze',
+		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -757,10 +793,17 @@ var effect_table = {
 		args = [],
 		sub_effects = ['e_t_freeze'],
 		atomic = [],
-		buffs = ['b_freeze'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/erika_5.png",
+			description = "Frozen: Can't Act, Damage from next skill is doubled",
+			limit = 1,
+			t_name = 'icon_freeze',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_t_freeze = {
 		type = 'trigger',
+		debug_name = 'freeze_damage_doubler',
 		trigger = [variables.TR_DEF],
 		conditions = [
 			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
@@ -775,28 +818,34 @@ var effect_table = {
 			},
 			{
 				type = 'oneshot',
-				target = 'self',
-				execute = 'remove_parent'
+				target = 'parent',
+				execute = 'remove'
 			}
 		],
 		buffs = []
 	},
 	e_s_chill = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'chill',
+		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = 'parent',
+		duration = 3,
 		tags = ['negative', 'chill'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_chill'],
 		atomic = [],
-		buffs = ['b_chill'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/erika_5.png", 
+			description = "Chilled: Takes water damage at the beginning of turn.",
+			t_name = 'icon_chill',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_chill = {
 		type = 'trigger',
+		debug_name = "chill_damager",
 		trigger = [variables.TR_TURN_GET],
 		req_skill = false,
 		conditions = [],
@@ -805,66 +854,72 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_chill'],
+				atomic = [{type = 'damage', source = 'water', value = [['parent_args', 0], '/', 2.25]}],#skill gives 0.9 of base damage 0.9/2.25 = 0.4
 			}
 		],
 		buffs = []
 	},
 	e_s_arrshower = {
 		type = 'temp_s',
+		name = 'arrow_shower_debuff',
 		target = 'target',
-		name = 'arrshower',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = 1,#not sure cause not declared
+		duration = 1,
 		tags = ['negative'],
 		args = [],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'hitchance', value = -15}],
+		atomic = [{type = 'stat_add', stat = 'hitrate', value = -15}],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/erika_3.png", 
-				description = "Reduce Hit Rate by 15",
-				args = [],
-				t_name = 'shower'
+				description = "Reduce Hit Rate by 15%%",
+				t_name = 'icon_arrow_shower_debuff'
 			}],
+	},
+	e_t_nat_bless_caster = {
+		type = 'trigger',
+		debug_name = 'starter_nature_bless_caster',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'eq'}}],
+		val = 3,
+		args = [{obj = 'template', param = 'val'}],
+		buffs = [],
+		sub_effects = ['e_s_nat_bless']
+	},
+	e_t_nat_bless_others = {
+		type = 'trigger',
+		debug_name = 'starter_nature_bless_others',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'neq'}}],
+		val = 2,
+		args = [{obj = 'template', param = 'val'}],
+		buffs = [],
+		sub_effects = ['e_s_nat_bless']
 	},
 	e_s_nat_bless = {
 		type = 'temp_s',
+		name = 'nature_bless',
 		target = 'target',
-		name = 'nbless',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = 2,
+		duration = {obj = 'parent_args', param = 0},
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'hitchance', value = 20},
+			{type = 'stat_add', stat = 'hitrate', value = 20},
 			{type = 'stat_add_p', stat = 'damage', value = 0.20},
 			],
 		buffs = ['b_natbless'],
 	},
-#	e_s_nat_bless1 = {
-#		type = 'temp_s',
-#		target = 'target',
-#		name = 'nbless',
-#		stack = 1,
-#		rem_event = [variables.TR_COMBAT_F],
-#		tags = ['buff'],
-#		args = [],
-#		sub_effects = [],
-#		atomic = [
-#			{type = 'stat_add', stat = 'hitchance', value = 20},
-#			{type = 'stat_add_p', stat = 'damage', value = 0.20},
-#			],
-#		buffs = ['b_natbless'],
-#	},
 	e_s_hearts = {
 		type = 'temp_s',
+		name = 'heartseeker_debuff',
 		target = 'target',
-		name = 'hearts',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -873,17 +928,22 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -25}],
-		buffs = ['b_hearts'],
+		buffs = [{ 
+			icon = "res://assets/images/iconsskills/erika_7.png", 
+			description = "Damage taking increased by 25%%",
+			t_name = 'icon_heartseeker_debuff',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_s_charm = {
 		type = 'temp_s',
+		name = 'charm',
 		target = 'target',
 		duration = 3,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		sub_effects = [],
 		tags = ['negative'],
-		name = 'charm',
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.5}],
 		buffs = [
@@ -891,13 +951,14 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/erika_8.png", 
 				description = "Deal 50%% less damage",
 				limit = 1,
-				t_name = 'charm',
+				t_name = 'icon_charm',
 				bonuseffect = 'duration'
 			}
 		],
 	},
 	e_s_charm1 = {
 		type = 'trigger',
+		debug_name = "charm_away",
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
 			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] },
@@ -915,6 +976,7 @@ var effect_table = {
 	},
 	e_t_combo1 = {
 		type = 'trigger',
+		debug_name = "combo_stun_mul_1",
 		trigger = [variables.TR_HIT],
 		conditions = [
 			{type = 'target', value = {type = 'status', status = 'stun', check = true}}
@@ -932,6 +994,7 @@ var effect_table = {
 	},
 	e_t_combo2 = {
 		type = 'trigger',
+		debug_name = "combo_stun_mul_2",
 		trigger = [variables.TR_HIT],
 		conditions = [
 			{type = 'target', value = {type = 'status', status = 'stun', check = true}}
@@ -949,8 +1012,8 @@ var effect_table = {
 	},
 	e_s_firepunch = {
 		type = 'temp_s',
+		name = 'timer_firepunch_debuff',
 		target = 'target',
-		name = 'firepunch',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
@@ -959,10 +1022,17 @@ var effect_table = {
 		args = [],
 		sub_effects = ['e_t_firepunch'],
 		atomic = [],
-		buffs = ['b_firepunch'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/ember_4.png",
+			description = "Incoming damage increased by 20%%",
+			limit = 1,
+			t_name = 'icon_firepunch_debuff',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_t_firepunch = {
 		type = 'trigger',
+		debug_name = "firepunch_debuff",
 		trigger = [variables.TR_DEF],
 		conditions = [
 			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
@@ -980,6 +1050,7 @@ var effect_table = {
 	},
 	e_t_punch1 = {
 		type = 'trigger',
+		debug_name = "firepunch_burn_mul",
 		trigger = [variables.TR_HIT],
 		conditions = [
 			{type = 'target', value = {type = 'status', status = 'burn', check = true}}
@@ -997,6 +1068,7 @@ var effect_table = {
 	},
 	e_t_punch2 = {
 		type = 'trigger',
+		debug_name = "firepunch_burn",
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
 			{type = 'target', value = {type = 'status', status = 'burn', check = false}},
@@ -1010,43 +1082,50 @@ var effect_table = {
 
 	e_s_shockwave = {
 		type = 'temp_s',
+		name = 'shockwave_debuff',
 		target = 'target',
-		name = 'shockwave',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = 1,#not sure cause not declared
+		duration = 1,
 		tags = ['negative'],
 		args = [],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'hitchance', value = -20}],
+		atomic = [{type = 'stat_add', stat = 'hitrate', value = -20}],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/ember_3.png", 
-				description = "Reduce Hit Rate by 20",
+				description = "Reduce Hit Rate by 20%%",
 				args = [],
-				t_name = 'shockwave'
+				t_name = 'icon_shockwave_debuff'
 			}],
 	},
 	e_s_uppercut = {
 		type = 'temp_s',
+		name = 'timer_uppercut',
 		target = 'target',
-		name = 'uppercut',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 1,
 		tags = ['negative', 'uppercut'],
 		args = [],
 		sub_effects = ['e_t_uppercut'],
 		atomic = [],
-		buffs = ['b_wave1'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/ember_1.png", 
+			description = "Damage from next air-based skill is increased by 50%%",
+			limit = 1,
+			t_name = 'icon_uppercut',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_t_uppercut = {
 		type = 'trigger',
+		debug_name = "uppercut_mul",
 		target = 'target',
 		trigger = [variables.TR_DEF],
 		conditions = [
-			{type = 'skill', value = ['damagetype','eq', 'air'] },
+			{type = 'skill', value = ['damagetype', 'eq', 'air'] },
 			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
 		],
 		req_skill = true,
@@ -1057,22 +1136,31 @@ var effect_table = {
 				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5}],
 				sub_effects = []
 			},
+			{
+				type = 'oneshot',
+				target = 'parent',
+				execute = 'remove'
+			}
 		],
 		buffs = []
 	},
 	e_s_protect_er = {
 		type = 'trigger',
+		debug_name = 'starter_defend',
 		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'target', value = {type = 'stats', stat = 'id', value = 'ember', operant = 'neq'}}
+		],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'tempdur'}],
+		args = [{obj = 'parent', param = 'caster'}],
 		sub_effects = ['e_t_protect_c_er', 'e_t_protect_t_er'],
 		buffs = []
 	},
 	e_t_protect_c_er = {
 		type = 'temp_s',
+		name = 'defend_on_caster',
 		target = 'caster',
-		name = 'protect_c',
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 1, 
@@ -1084,8 +1172,8 @@ var effect_table = {
 	},
 	e_t_protect_t_er = {
 		type = 'temp_s',
+		name = 'defend_listener',
 		target = 'target',
-		name = 'protect_t',
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 1, 
@@ -1099,14 +1187,14 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/ember_6.png", 
 				description = "Is protected: Damage will be redirected to Ember",
 				limit = 1,
-				t_name = 'protect_t'
+				t_name = 'icon_defend_listener'
 			}
 		],
 	},
 	e_s_defend = {
 		type = 'temp_s',
+		name = 'defend_buff',
 		target = 'caster',
-		name = 'defend',
 		stack = 1,
 		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
@@ -1115,69 +1203,94 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 25}],
-		buffs = ['b_defend'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/ember_6.png", 
+			description = "Damage taking decreased by 25%%",
+			t_name = 'icon_defend_buff',
+		}],
 	},
 	e_t_dragonprot = {
 		type = 'temp_s',
+		name = 'dragon_protection',
 		target = 'target',
-		name = 'dragonprot',
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 1,
 		stack = 1,
 		tags = ['bless'],
-		args = [{obj = 'parent_args', param = 0}],
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'app_obj', param = 'shield', dynamic = true}],
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 0]},
 			{type = 'stat_set_revert', stat = 'resistnegative', value = 100}
 		],
-		buffs = ['b_dragonprot'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/ember_2.png", 
+			description = "Barrier (%d remains), can't be debuffed",
+			args = [{obj = 'parent_args', param = 1}],
+			limit = 1,
+			t_name = 'icon_dragon_protection'
+		}],
 	},
-	e_t_dragonprot1 = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'dragonprot',
-		tick_event = variables.TR_TURN_F,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 1,
-		stack = 1,
-		tags = ['bless'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_set_revert', stat = 'shield', value = [['parent_args', 0], '*', 2]},
-			{type = 'stat_set_revert', stat = 'resistnegative', value = 100}
-		],
-		buffs = ['b_dragonprot'],
-	},
+	#delete with time
+#	e_t_dragonprot1 = {
+#		type = 'temp_s',
+#		name = 'dragon_protection2',
+#		target = 'target',
+#		tick_event = variables.TR_TURN_F,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 1,
+#		stack = 1,
+#		tags = ['bless'],
+#		args = [
+#			{obj = 'parent_args', param = 0},
+#			{obj = 'app_obj', param = 'shield', dynamic = true}],
+#		sub_effects = [],
+#		atomic = [
+#			{type = 'stat_set_revert', stat = 'shield', value = [['parent_args', 0], '*', 2]},
+#			{type = 'stat_set_revert', stat = 'resistnegative', value = 100}
+#		],
+#		buffs = ['b_dragonprot'],
+#	},
 	e_s_aegis = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'aegis',
+		target = 'target',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 1,
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 75}],
-		buffs = ['b_aegis'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/ember_8.png", 
+			description = "Damage taking decreased by 75%%",
+			t_name = 'icon_aegis',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_s_aegis1 = {
 		type = 'temp_s',
+		name = 'aegis_hp',
 		target = 'target',
-		name = 'aegis1',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 3,
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_mul', stat = 'hpmax', value = 1.25}],
-		buffs = ['b_aegis1'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/ember_8.png",
+			description = "Max hp increased by 25%%",
+			t_name = 'icon_aegis_hp',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_t_orb = {
 		type = 'temp_s',
@@ -1515,7 +1628,7 @@ var effect_table = {
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'self',
+				target = 'parent',
 				execute = 'remove_siblings'
 			},
 		],
@@ -1532,7 +1645,7 @@ var effect_table = {
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'self',
+				target = 'parent',
 				execute = 'remove_siblings'
 			},
 		],
@@ -1553,7 +1666,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/ember_6.png", 
-				description = "Is protected: Damage redirected to Ember",
+				description = "Is protected: Damage redirected to Cult Soldier",
 				limit = 1,
 				t_name = 'protect_t'
 			}
@@ -1692,33 +1805,34 @@ var effect_table = {
 #	},
 	e_tr_erica = {
 			type = 'trigger',
+			debug_name = "starter_passive_nature_bless",
 			trigger = [variables.TR_COMBAT_S],
-			conditions = [],
+			conditions = [
+				{type = 'owner', value = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}] },
+			],
 			req_skill = false,
 			sub_effects = ['e_aura_erica'],
 			buffs = []
 		},
 	e_aura_erica = {
 		type = 'aura',
+		debug_name = "passive_nature_bless",
 		target = 'owner',
 		conditions = [
-			{type = 'skill', skill = 'nat_bless', check = 'disabled'},
-			{type = 'stats', stat = 'position', operant = 'neq', value = null}
+#			{type = 'skill', skill = 'nat_bless', check = 'disabled'},
+#			{type = 'stats', stat = 'position', operant = 'neq', value = null}
 			], 
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'hitchance', value = 20},
+			{type = 'stat_add', stat = 'hitrate', value = 20},
 			{type = 'stat_add_p', stat = 'damage', value = 0.20},
 		],
-		buffs = [
-			{ #not this
-				icon = "res://assets/images/iconsskills/defaultattack.png", 
-				description = "Increase all damage by 20%% and Hit Chance by 20 ",
-				limit = 1,
-				t_name = 'e_i_defup'
-			}
-		],
+		buffs = [{ 
+			icon = "res://assets/images/iconsskills/erika_1.png", 
+			description = "Increase all damage by 20%% and Hit Chance by 20%%",
+			t_name = 'buff_bless_passive'
+		}],
 	},
 	e_tr_ember = { #ember weapon1 lvl3+ static trait
 		type = 'static',
@@ -2341,8 +2455,8 @@ var effect_table = {
 #			},
 #			{
 #				type = 'oneshot',
-#				target = 'self',
-#				execute = 'remove_parent'
+#				target = 'parent',
+#				execute = 'remove'
 #			}
 #		]
 #	},
@@ -2914,51 +3028,52 @@ var effect_table = {
 		atomic = [],
 		buffs = ['b_sanct'],
 	},
-	e_s_wave = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_t_wave'],
-		buffs = []
-	},
-	e_t_wave = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'wave',
-		tick_event = variables.TR_TURN_F,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 2,
-		stack = 1,
-		tags = ['natural_debuf'],
-		sub_effects = [
-			{
-				type = 'trigger',
-				trigger = [variables.TR_DEF],
-				conditions = [
-#					{type = 'skill', value = ['damagetype','eq',variables.S_AIR] },
-					{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
-				],
-				req_skill = true,
-				sub_effects = [
-					{
-						type = 'oneshot',
-						target = 'skill',
-						atomic = [{type = 'stat_mul', stat = 'value', value = 2.0}],
-						sub_effects = []
-					},
-					{
-						type = 'oneshot',
-						target = 'self',
-						execute = 'remove_parent'
-					}
-				],
-				buffs = []
-			}
-		],
-		atomic = [],
-		buffs = ['b_wave'],
-	},
+	#seems not in use
+#	e_s_wave = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_t_wave'],
+#		buffs = []
+#	},
+#	e_t_wave = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'wave',
+#		tick_event = variables.TR_TURN_F,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 2,
+#		stack = 1,
+#		tags = ['natural_debuf'],
+#		sub_effects = [
+#			{
+#				type = 'trigger',
+#				trigger = [variables.TR_DEF],
+#				conditions = [
+##					{type = 'skill', value = ['damagetype','eq',variables.S_AIR] },
+#					{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
+#				],
+#				req_skill = true,
+#				sub_effects = [
+#					{
+#						type = 'oneshot',
+#						target = 'skill',
+#						atomic = [{type = 'stat_mul', stat = 'value', value = 2.0}],
+#						sub_effects = []
+#					},
+#					{
+#						type = 'oneshot',
+#						target = 'parent',
+#						execute = 'remove'
+#					}
+#				],
+#				buffs = []
+#			}
+#		],
+#		atomic = [],
+#		buffs = ['b_wave'],
+#	},
 	e_s_spiritshield = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -3430,6 +3545,25 @@ var effect_table = {
 		],
 		buffs = []
 	},
+	common_shield_info = {
+		type = 'temp_s',#this should be endless "temporal" effect
+		rem_event = [variables.TR_SHIELD_DOWN,variables.TR_COMBAT_F],
+		target = 'target',
+		stack = 1,
+		name = 'common_shield_info',
+		args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/armor.png", 
+				description = "Damage-absorbing shield (%d remains)",
+				args = [{obj = 'parent_args', param = 0}],
+				t_name = 'i_shield',
+			}
+		],
+		sub_effects = [],
+	},
+	
+	
 	
 #	e_i_barrier2 = {
 #		type = 'oneshot',
@@ -3450,9 +3584,8 @@ var atomic = {
 	a_burn = {type = 'damage', source = 'fire', value = ['parent_args', 0]},
 	a_poison = {type = 'damage', source = 'neutral', value = ['parent_args', 0]},
 	a_poison_w = {type = 'damage', source = 'water', value = ['parent_args', 0]},
-	a_chill = {type = 'damage', source = 'water', value = [['parent_args', 0], '/', 2.25]},
 	a_mist = {type = 'damage', source = 'water', value = [['parent_args', 0], '*', 2]},
-	a_renew = {type = 'heal', value = ['parent_args', 0]},
+	a_renew_resist = {type = 'stat_add', stat = 'resistdamage', value = ['parent_args', 0]},
 	a_souls_clean = {type = 'stat_set', stat = 'alt_mana', value = 0},
 	a_souls_add = {type = 'stat_add', stat = 'alt_mana', value = 1},
 	a_souls_remove = {type = 'stat_add', stat = 'alt_mana', value = -1},
@@ -3481,55 +3614,49 @@ var buffs = {
 		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
 		description = "Damage reduced for %d turns",
 		args = [{obj = 'parent', param = 'remains'}],
-		t_name = 'intimidate',
+		t_name = 'buff_intimidate',
 		bonuseffect = 'duration'
 	},
 	b_bleed = { 
 		icon = "res://assets/images/iconsskills/arron_3.png", 
 		description = "Bleeding: Takes Neutral damage at the end of turn",
-		t_name = 'bleed',
+		t_name = 'buff_bleed',
 		bonuseffect = 'duration'
 	},
 	b_bleed_onget = { 
 		icon = "res://assets/images/iconsskills/arron_3.png", 
 		description = "Bleeding: Takes Neutral damage at the beginning of turn",
-		t_name = 'bleed',
+		t_name = 'buff_bleed_onget',
 		bonuseffect = 'duration'
 	},
 	b_poison = { # none
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "Poisoned: Takes Neutral damage at the end of turn",
-		t_name = 'poison',
+		t_name = 'buff_poison',
 		bonuseffect = 'duration'
 	},
 	b_silence = { # doesn't fit
 		icon = "res://assets/images/iconsskills/iola_5.png", 
 		description = "Silenced: Can't cast certain spells",
-		t_name = 'silence',
+		t_name = 'buff_silence',
 		bonuseffect = 'duration'
 	},
 	b_swift = {
 		icon = "res://assets/images/iconsskills/arron_1.png", 
 		description = "Evasion increased",
-		t_name = 'swift',
+		t_name = 'buff_swift',
 		bonuseffect = 'duration'
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
 		description = "Burn: Takes Fire damage at the end of turn. Removed by Water damage.",
-		t_name = 'burn',
+		t_name = 'buff_burn',
 		bonuseffect = 'duration'
 	},
 	b_burn_onget = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
 		description = "Burn: Takes Fire damage at the beginning of turn. Removed by Water damage.",
-		t_name = 'burn',
-		bonuseffect = 'duration'
-	},
-	b_chill = {
-		icon = "res://assets/images/iconsskills/erika_5.png", 
-		description = "Chilled: Takes water damage at the beginning of turn.",
-		t_name = 'chill',
+		t_name = 'buff_burn_onget',
 		bonuseffect = 'duration'
 	},
 	b_mist = {
@@ -3538,83 +3665,18 @@ var buffs = {
 		t_name = 'mist',
 		bonuseffect = 'duration'
 	},
-	b_wave = {
-		icon = "res://assets/images/iconsskills/rose_5.png", 
-		description = "Damage from next air-based skill is increased",
-		limit = 1,
-		t_name = 'wave'
-	},
-	b_wave1 = {
-		icon = "res://assets/images/iconsskills/ember_1.png", 
-		description = "Damage from next air-based skill is increased",
-		limit = 1,
-		t_name = 'wave'
-	},
-	b_wave2 = {
-		icon = "res://assets/images/iconsskills/erika_2.png", 
-		description = "Damage from next air-based skill is increased",
-		limit = 1,
-		t_name = 'wave'
-	},
-	b_freeze = { # kinda doesn't fit 
-		icon = "res://assets/images/iconsskills/erika_5.png",
-		description = "Frozen: Can't Act, Damage from next skill is increased",
-		limit = 1,
-		t_name = 'freeze',
-		bonuseffect = 'duration'
-	},
-	b_firepunch = {
-		icon = "res://assets/images/iconsskills/ember_4.png",
-		description = "Incoming damage increased by 30%%",
-		limit = 1,
-		t_name = 'firepunch',
-		bonuseffect = 'duration'
-	},
-	b_renew = {
+	b_renew1 = {
 		icon = "res://assets/images/iconsskills/rose_8.png", 
-		description = "Restores some health at the start of turn",
-		t_name = 'renew',
-		bonuseffect = 'duration'
-	},
-	b_renew1 = { # doesn't fit
-		icon = "res://assets/images/iconsskills/rose_8.png", 
-		description = "Damage taken is reduced",
-		t_name = 'renew1',
-		bonuseffect = 'duration'
-	},
-	b_defend = {
-		icon = "res://assets/images/iconsskills/ember_6.png", 
-		description = "Damage taking decreased",
-		t_name = 'defend'
-	},
-	b_aegis = {
-		icon = "res://assets/images/iconsskills/ember_8.png", 
-		description = "Damage taking decreased",
-		t_name = 'aegis'
-	},
-	b_aegis1 = { # doesn't fit
-		icon = "res://assets/images/iconsskills/ember_8.png", 
-		description = "Max hp increased",
-		t_name = 'aegis1',
+		description = "Damage taken is reduced by %d%%",
+		args = [{obj = 'parent_args', param = 0}],
+		t_name = 'buff_renew_resist',
 		bonuseffect = 'duration'
 	},
 	b_natbless = { 
 		icon = "res://assets/images/iconsskills/erika_1.png", 
-		description = "Increase all damage by 20%% and Hit Chance by 20 ",
-		t_name = 'natbless',
+		description = "Increase all damage by 20%% and Hit Chance by 20%%",
+		t_name = 'buff_bless',
 		bonuseffect = 'duration'
-	},
-	b_hearts = { 
-		icon = "res://assets/images/iconsskills/erika_7.png", 
-		description = "Damage taking increased",
-		t_name = 'hearts',
-		bonuseffect = 'duration'
-	},
-	b_dragonprot = {
-		icon = "res://assets/images/iconsskills/ember_2.png", 
-		description = "",
-		limit = 1,
-		t_name = 'dragonprot'
 	},
 	b_ava = {
 		icon = "res://assets/images/iconsskills/rilu_1.png", 
@@ -3698,7 +3760,7 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/blood_blue.png", 
 		description = "Received damage increased",
 		limit = 1,
-		t_name = 'wound',
+		t_name = 'buff_wound',
 		bonuseffect = 'duration'
 	},
 	#icons are defined by path or by name in images.icons, do not load images here!
@@ -3706,7 +3768,7 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/iola_6.png", 
 		description = "Stunned: Can't act next turn",
 		limit = 1,
-		t_name = 'stun',
+		t_name = 'buff_stun',
 		bonuseffect = 'duration'
 	},
 	b_wwalk = { # none
@@ -3731,7 +3793,7 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/action_2.png", 
 		description = "Halves incoming damage",
 		limit = 1,
-		t_name = 'defence'
+		t_name = 'buff_defence'
 	},
 	b_summon = {
 		icon = "res://assets/images/iconsskills/action_2.png", #2fix
@@ -3745,6 +3807,7 @@ var buffs = {
 func rebuild_template(args):
 	var res = {
 		type = 'trigger',
+		debug_name = 'starter_rebuilded',
 		req_skill = true,
 		trigger = [],
 		conditions = [],
@@ -3765,6 +3828,9 @@ func rebuild_template(args):
 		res.duration = args.duration
 	if args.has('push_value'):
 		res.args = [{obj = 'parent', param = 'process_value'}]
+	
+	if args.has('debug_name'):
+		res.debug_name = args.debug_name
 	
 	res.sub_effects.push_back(args.effect)
 	
@@ -3808,8 +3874,8 @@ const e_remove = {
 	sub_effects = [
 		{
 			type = 'oneshot',
-			target = 'self',
-			execute = 'remove_parent'
+			target = 'parent',
+			execute = 'remove'
 		}
 	],
 	buffs = []

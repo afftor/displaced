@@ -24,7 +24,7 @@ enum {TR_CAST,#on skill cast, befor even target refining and any true actions
 	TR_HEAL,#on char been actually healed (hp increase)
 	TR_COMBAT_S,#on char's group been formed at start of combat. Occurs for all player's char at combat start, and for enemies of the wave at wave's start
 	TR_COMBAT_F,#occurs for every char on battlefield on very finish of combat (window closure): at loss, at runaway and on reward claiming after victory
-	TR_SHIELD_DOWN,#on char's shield been depleted to 0 (not sure yet, what "shield" truely is)
+	TR_SHIELD_DOWN,#on char's shield been depleted to 0
 	TR_RES#on char's resurrection
 	};
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_REMOVE};
@@ -42,7 +42,7 @@ var EasyDiffMul = 0.7
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['damage']
+var bonuses_stat_list = ['damage', 'hitrate', 'hpmax']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'alt_mana', 'taunt', 'shield']

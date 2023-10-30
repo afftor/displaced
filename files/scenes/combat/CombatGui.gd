@@ -245,19 +245,14 @@ func RebuildSkillPanel():
 		var skill = Skillsdata.patch_skill(i, activecharacter)
 		newbutton.get_node("TextureRect").texture = skill.icon
 		newbutton.get_node("Cooldown").text = ""
-		if skill.tags.has('disabled'):
+		if (skill.tags.has('disabled') or
+				activecharacter.cooldowns.has(i) or
+				!activecharacter.process_check(skill.reqs) or
+				!activecharacter.can_use_skill(skill)):
 			newbutton.disabled = true
 			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.cooldowns.has(i):
-			newbutton.disabled = true
-			newbutton.get_node("Cooldown").text = str(activecharacter.cooldowns[i])
-			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
-		if !activecharacter.process_check(skill.reqs):
-			newbutton.disabled = true
-			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
-		if !activecharacter.can_use_skill(skill):
-			newbutton.disabled = true
-			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.cooldowns.has(i):
+				newbutton.get_node("Cooldown").text = str(activecharacter.cooldowns[i])
 #		newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)
@@ -352,7 +347,7 @@ func build_selected_skill(skill): #not skill_id
 	active_panel.visible = true
 	active_panel2.visible = true
 	active_panel2.get_node("TextureRect").texture = skill.icon
-	active_panel2.get_node("Label").text = tr("SKILL" + skill.name.to_upper())
+	active_panel2.get_node("Label").text = tr(skill.name)
 
 	defaultskill_container.get_node("attack").pressed = skill.code == "attack"
 	$SkillPanel/CategoriesContainer/ItemsButton.pressed = item_container.visible

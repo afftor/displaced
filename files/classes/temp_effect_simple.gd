@@ -37,42 +37,44 @@ func apply():
 		if typeof(template.duration) == TYPE_STRING:
 			match template.duration:
 				'parent':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
+					var par = get_parent()
 					if par != null:
 						template.duration = int(par.template.duration)
 					else:
 						print('error in template %s' % template_name)
 						template.duration = -1
 				'parent_arg':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
+					var par = get_parent()
 					if par != null:
 						template.duration = int(par.self_args['duration'])
 					else:
 						print('error in template %s' % template_name)
 						template.duration = -1
-		elif template.duration < 0:
-			var par
-			if typeof(parent) == TYPE_STRING:
-				par = effects_pool.get_effect_by_id(parent)
-			else:
-				par = parent
-			if par != null:
-				template.duration = int(par.get_arg(-template.duration - 1))
+		elif typeof(template.duration) == TYPE_DICTIONARY:
+			if template.duration.obj == 'parent_args':
+				var par = get_parent()
+				if par != null:
+					template.duration = int(par.get_arg(template.duration.param))
+				else:
+					print('error in template %s' % template_name)
+					template.duration = -1
 			else:
 				print('error in template %s' % template_name)
 				template.duration = -1
+		elif template.duration < 0:
+			print('error in template %s' % template_name)
+			#obj/param dictionary now replicates this
+#			var par = get_parent()
+#			if par != null:
+#				template.duration = int(par.get_arg(-template.duration - 1))
+#			else:
+#				print('error in template %s' % template_name)
+#				template.duration = -1
 		remains = template.duration
 	var obj = get_applied_obj()
 	for eff in sub_effects:
 		obj.apply_effect(eff)
+#	print("%s applied on %s" % [template_name, obj.name])
 
 func tick_eff():
 	remains -= 1
@@ -83,6 +85,7 @@ func tick_eff():
 
 func process_event(ev):
 	if !is_applied: return
+#	print("process_event %s for %s of %s" % [ev, template_name, get_applied_obj_name()])
 	if tick_event.has(ev):
 		tick_eff()
 	if rem_event.has(ev):

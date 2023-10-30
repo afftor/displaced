@@ -159,6 +159,7 @@ func setup_effects_final():
 			eff.set_args('duration', tempdur)
 
 func hit_roll():
+#	print("hit_roll by %s - %s" % [chance, evade])
 	var prop = chance - evade
 	if prop < randf()*100 && caster.combatgroup != target.combatgroup:
 		hit_res = variables.RES_MISS

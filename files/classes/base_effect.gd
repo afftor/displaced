@@ -12,10 +12,16 @@ var buffs := []
 var atomic := []
 var is_applied
 var applied_char = null
+var name = "undefined debug name"
 
 func _init(caller):
 	parent = caller
 	is_applied = false
+
+func get_parent():
+	if typeof(parent) == TYPE_STRING:
+		return effects_pool.get_effect_by_id(parent)
+	return parent
 
 func apply():
 	var obj = get_applied_obj()
@@ -91,6 +97,16 @@ func get_applied_obj():
 		return null
 	return state.heroes[applied_char]
 
+func get_applied_obj_name() -> String:
+	var obj = get_applied_obj()
+	if obj:
+		var resault = obj.get("name")
+		if resault:
+			return resault
+		return "not_named_obj"
+	elif self_args.has('skill'):
+		return self_args['skill'].template.name
+	return "no_obj"
 
 func createfromtemplate(buff_t):
 	if typeof(buff_t) == TYPE_STRING:
@@ -105,6 +121,10 @@ func createfromtemplate(buff_t):
 		template['buffs'] = []
 	if !template.has('atomic'):
 		template['atomic'] = []
+	if template.has('name'):
+		name = template.name#mind, that this param sort of duplicates template_name for effects, that has it
+	elif template.has('debug_name'):
+		name = template.debug_name
 
 
 
@@ -117,11 +137,7 @@ func calculate_args():
 					args.push_back(self_args[arg.param])
 					pass
 				'parent':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
+					var par = get_parent()
 					if par == null:
 						args.push_back(null)
 					else:
@@ -130,21 +146,13 @@ func calculate_args():
 				'template':
 					args.push_back(template[arg.param])
 				'parent_args':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
+					var par = get_parent()
 					if par == null:
 						args.push_back(null)
 					else:
 						args.push_back(par.get_arg(int(arg.param)))
 				'parent_arg_get':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
+					var par = get_parent()
 					if par == null:
 						args.push_back(null)
 					else:
@@ -158,28 +166,16 @@ func get_arg(index):
 	if arg.has('dynamic') || args[index] == null:
 		match arg.obj:
 			'parent':
-				var par
-				if typeof(parent) == TYPE_STRING:
-					par = effects_pool.get_effect_by_id(parent)
-				else:
-					par = parent
+				var par = get_parent()
 				if par != null:
 					args[index] = par.get(arg.param)
 				pass
 			'parent_args':
-				var par
-				if typeof(parent) == TYPE_STRING:
-					par = effects_pool.get_effect_by_id(parent)
-				else:
-					par = parent
+				var par = get_parent()
 				if par != null:
 					args[index] = par.get_arg(int(arg.param))
 			'parent_arg_get':
-				var par
-				if typeof(parent) == TYPE_STRING:
-					par = effects_pool.get_effect_by_id(parent)
-				else:
-					par = parent
+				var par = get_parent()
 				if par != null:
 					args[index] = par.get_arg(int(arg.index)).get(arg.param)
 			'app_obj':
@@ -203,6 +199,7 @@ func set_args(arg, value):
 
 func serialize():
 	var tmp := {}
+	tmp['name'] = name
 	tmp['is_applied'] = is_applied
 	tmp['template'] = template
 	tmp['args'] = self_args
@@ -216,6 +213,8 @@ func serialize():
 	return tmp
 
 func deserialize(tmp):
+	if tmp.has('name'):#probably only old savegame compatibility issue
+		name = tmp['name']
 	is_applied = tmp['is_applied']
 	template = tmp['template'].duplicate()
 	if template.has('tags'):

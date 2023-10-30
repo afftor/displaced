@@ -244,24 +244,14 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_rose']
 	},
-	#class passives
-	arch_trait = {
-		code = 'arch_trait',
+	erica_nature_bless = {
+		code = 'erica_nature_bless',
 		name = '',
 		description = '',
 		icon = null,
 		cost = 0,
-		hidden = false, #is not displayed at all
-		effects = []
-	},
-	mage_trait = {
-		code = 'mage_trait',
-		name = '',
-		description = '',
-		icon = null,
-		cost = 0,
-		hidden = false, #is not displayed at all
-		effects = []
+		hidden = false,
+		effects = ['e_tr_erica']
 	},
 	necro_trait = {
 		code = 'necro_trait',
@@ -272,10 +262,29 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_rilu']
 	},
+	#class passives
+#	arch_trait = {
+#		code = 'arch_trait',
+#		name = '',
+#		description = '',
+#		icon = null,
+#		cost = 0,
+#		hidden = false, #is not displayed at all
+#		effects = []
+#	},
+#	mage_trait = {
+#		code = 'mage_trait',
+#		name = '',
+#		description = '',
+#		icon = null,
+#		cost = 0,
+#		hidden = false, #is not displayed at all
+#		effects = []
+#	},
 	#monsters
 	summon = {
 		code = 'summon',
-		name = '',
+		name = 'trait_summon',
 		description = '',
 		icon = null,
 		cost = 0,

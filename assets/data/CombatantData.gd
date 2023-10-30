@@ -3,7 +3,7 @@ extends Node
 
 var charlist = {
 	arron = {
-		code = 'Arron',
+		code = 'arron',
 		name = 'ARRON',
 		icon = 'portrait/ArronNormal',
 		combaticon = 'combat/arron_circle',
@@ -28,7 +28,7 @@ var charlist = {
 		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")
 	},
 	rose = {
-		code = 'Rose',
+		code = 'rose',
 		name = 'ROSE',
 		icon = 'portrait/RoseNormal',
 		combaticon = 'combat/rose_circle',
@@ -54,7 +54,7 @@ var charlist = {
 		skilllist = {'fire_bolt':1, 'renew':3, 'swipe':5, 'deluge':8, 'dispel':8, 'explosion':10, 'flash':12,  'protect':16},
 	},
 	erika = {
-		code = 'Erika',
+		code = 'erika',
 		name = 'ERIKA',
 		icon = 'portrait/ErikaNormal',
 		combaticon = 'combat/erika_circle',
@@ -75,11 +75,12 @@ var charlist = {
 		hitrate = 100,
 		damage = 32,
 		unlocked = false,
+		traits = ['erica_nature_bless'],
 		bonusres = ['water', 'light', 'pierce', 'earth'],
 		skilllist = {'aarrow':1, 'qshot':4, 'arr_shower':6, 'nat_bless':8, 'charm':10,  'eastrike':12, 'frost_arrow':14, 'heartseeker':15},
 	},
 	ember = {
-		code = 'Ember',
+		code = 'ember',
 		name = 'EMBER',
 		icon = 'portrait/EmberNormal',
 		combaticon = 'combat/ember_circle',
@@ -103,7 +104,7 @@ var charlist = {
 		skilllist = {'firepunch':1, 'defend':3, 'combo':6, 'uppercut':8, 'shockwave':12, 'earthquake':12, 'dragon_protection':14, 'aegis':18},
 	},
 	rilu = {
-		code = 'Rilu',
+		code = 'rilu',
 		name = 'RILU',
 		icon = 'portrait/RiluNormal',
 		combaticon = 'combat/rilu_circle',
@@ -124,11 +125,12 @@ var charlist = {
 		hitrate = 100,
 		damage = 28,
 		unlocked = false,
+		traits = ['necro_trait'],
 		bonusres = ['dark', 'light', 'water', 'pierce'],
 		skilllist = {'dark_orb':1, 'dark_echoes':8, 'avalanche':10, 'soul_beam':12, 'pale_mist':13, 'restoration':14, 'soulthorns':16, 'soul_prot':16},
 	},
 	iola = {
-		code = 'Iola',
+		code = 'iola',
 		name = 'IOLA',
 		icon = 'portrait/Iola',
 		combaticon = 'combat/iola_circle',

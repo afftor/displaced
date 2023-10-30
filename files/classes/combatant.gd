@@ -183,10 +183,24 @@ func add_bonus(b_rec:String, value, revert = false):
 			if bonus_type == BTYPE.MUL: bonuses[b_rec] *= value
 			else: bonuses[b_rec] += value
 	else:
-		if revert: print('error bonus not found')
+		assert(!revert, 'error bonus not found')
+		if bonus_type == BTYPE.PART: bonuses[b_rec] = 1.0 + value
+		else: bonuses[b_rec] = value
+	
+	#hpmax change reaction
+	if statname == 'hpmax':
+		assert(bonus_type != BTYPE.PART, "avoid using stat_add_p atomic effect with hpmax!")
+		var new_hp
+		if revert:
+			if bonus_type == BTYPE.MUL: new_hp = hp / value
+			else: new_hp = hp - value#ADD-type bonus hasn't been tested
 		else:
-			if bonus_type == BTYPE.PART: bonuses[b_rec] = 1.0 + value
-			else: bonuses[b_rec] = value
+			if bonus_type == BTYPE.MUL: new_hp = hp * value
+			else: new_hp = hp + value
+		if displaynode != null:
+			displaynode.update_hp_bar_max()
+		hp_set(new_hp)
+	
 	#keep it to test new add_bonus() till it's workability will be assured
 #	if !bonuses.has(b_rec):
 #		print("add_bonus %s removed by %s" % [b_rec, value])
