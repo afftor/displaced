@@ -145,32 +145,53 @@ func get_stat(statname):
 #			if get(rec) == null: continue
 #			add_stat(rec, ls[rec], true)
 
-func check_bonus(bonus_name :String):
-	var suffix_free :String = bonus_name.trim_suffix("_add")
-	suffix_free = suffix_free.trim_suffix("_mul")
-	if suffix_free.begins_with('resist'):
-		assert((
-			variables.resistlist.has(suffix_free.trim_prefix('resist')) or
-			variables.status_list.has(suffix_free.trim_prefix('resist'))),
-			"%s trying to edit unexisting resist by %s" % [name, bonus_name])
-	else:
-		assert(get(suffix_free) != null, "%s trying to edit unexisting stat by %s" % [name, bonus_name])
-
 func add_bonus(b_rec:String, value, revert = false):
-	check_bonus(b_rec)
+	#classification
+	var BTYPE = {ADD = 0, MUL = 1, PART = 2}
+	var bonus_type :int = -1
+	if b_rec.ends_with('_part'):#all _part thing is for add_part_stat(), which should be refactored down to mul_stat() someday
+		bonus_type = BTYPE.PART
+		b_rec = b_rec.trim_suffix("_part")
+		b_rec += '_mul'
+	elif b_rec.ends_with('_mul'):
+		bonus_type = BTYPE.MUL
+	elif b_rec.ends_with('_add'):
+		bonus_type = BTYPE.ADD
+	assert(bonus_type != -1, 'add_bonus got unexpected bonus type')
+	
+	#validation
+	var statname :String = b_rec.trim_suffix("_add")
+	statname = statname.trim_suffix("_mul")
+	if statname.begins_with('resist'):
+		assert((
+			variables.resistlist.has(statname.trim_prefix('resist')) or
+			variables.status_list.has(statname.trim_prefix('resist'))),
+			"%s trying to edit unexisting resist by %s" % [name, b_rec])
+	else:
+		assert(get(statname) != null, "%s trying to edit unexisting stat by %s" % [name, b_rec])
+	
+	#bonus process
 	if value == 0: return
 	if bonuses.has(b_rec):
 		if revert:
-			bonuses[b_rec] -= value
-			if b_rec.ends_with('_add') and bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
-			if b_rec.ends_with('_mul') and bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
-		else: bonuses[b_rec] += value
+			if bonus_type == BTYPE.MUL: bonuses[b_rec] /= value
+			else: bonuses[b_rec] -= value
+			if bonus_type == BTYPE.ADD:
+				if bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
+			elif bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
+		else:
+			if bonus_type == BTYPE.MUL: bonuses[b_rec] *= value
+			else: bonuses[b_rec] += value
 	else:
 		if revert: print('error bonus not found')
 		else:
-			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
-			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
+			if bonus_type == BTYPE.PART: bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
+	#keep it to test new add_bonus() till it's workability will be assured
+#	if !bonuses.has(b_rec):
+#		print("add_bonus %s removed by %s" % [b_rec, value])
+#	else:
+#		print("add_bonus %s by %s to %s" % [b_rec, value, bonuses[b_rec]])
 
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -185,16 +206,7 @@ func mul_stat(statname, value, revert = false):
 		if revert: set(statname, get(statname) / value)
 		else: set(statname, get(statname) * value)
 	else:
-		check_bonus(statname)
-		if bonuses.has(statname + '_mul'):
-			if revert:
-				bonuses[statname + '_mul'] /= value
-				if bonuses[statname + '_mul'] == 1:
-					bonuses.erase(statname + '_mul')
-			else: bonuses[statname + '_mul'] *= value
-		else:
-			if revert: print('error bonus not found')
-			else: bonuses[statname + '_mul'] = value
+		add_bonus(statname+'_mul', value, revert)
 	recheck_effect_tag('recheck_stats')
 
 func add_part_stat(statname, value, revert = false):
@@ -202,7 +214,7 @@ func add_part_stat(statname, value, revert = false):
 		if revert: set(statname, get(statname) / (1.0 + value))
 		else: set(statname, get(statname) * (1.0 + value))
 	else:
-		add_bonus(statname+'_mul', value, revert)
+		add_bonus(statname+'_part', value, revert)
 	recheck_effect_tag('recheck_stats')
 
 #confirmed getters
