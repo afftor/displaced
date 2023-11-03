@@ -382,9 +382,13 @@ func update_buff(buff):
 		var label_text = ""
 		var label_color = ""
 		match buff.template.bonuseffect:
-			'barrier':
-				label_text = str(fighter.shield)
-				label_color = variables.hexcolordict.gray
+#			'barrier':
+#				label_text = str(fighter.shield)
+#				label_color = variables.hexcolordict.gray
+			'arg':
+				assert(buff.template.has('bonusarg'), "buff with bonuseffect == arg has no bonusarg")
+				label_text = str(buff.get_calc_arg(buff.template.bonusarg))
+				label_color = variables.hexcolordict.pink
 			'duration':
 				if buff.get_duration() != null:
 					label_text = str(buff.get_duration())
