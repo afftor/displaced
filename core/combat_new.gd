@@ -294,12 +294,13 @@ func buildplayergroup():
 	var newgroup = {}
 	for ch in state.characters:
 		var hero = state.heroes[ch]
-		if hero.position == null:
-			pass
-		else:
+		make_hero_panel(hero)#it's very bad, that we make panels for locked heros, but rest of the code work with this, so should refactor all that later
+		if !hero.unlocked: continue
+		
+		if hero.position != null:
 			battlefield[hero.position] = hero
 			newgroup[hero.position] = hero
-		make_hero_panel(hero)
+		hero.activate_traits()
 		hero.process_event(variables.TR_COMBAT_S)
 	playergroup = newgroup
 	gui_node.RebuildReserve(true)
@@ -1138,6 +1139,8 @@ func FinishCombat(value):
 		ch.shield = 0
 		ch.process_event(variables.TR_COMBAT_F)
 		ch.displaynode = null
+		ch.clear_traits()
+		ch.clean_effects()#in fact, that shouldn't be necessary, as all effects must stop themselfs, still to be safe
 	
 	for pos in variables.enemyparty:
 		if battlefield[pos] == null: continue

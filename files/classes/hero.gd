@@ -46,13 +46,14 @@ func createfromname(name):
 		if !template.has('status_resists'): continue
 		if template.status_resists.has(i):
 			status_resists[i] = template.status_resists[i]
-	if template.keys().has('traits'):
-		for t in template.traits:
-#			traits[t] = false;
-			add_trait(t);
 	animations = template.animations.duplicate()
 	hp = get_stat('hpmax')
 
+func activate_traits():
+	var template = combatantdata.charlist[base]
+	if template.keys().has('traits'):
+		for t in template.traits:
+			add_trait(t);
 
 func regen_tick(delta):
 	var regen_thresholds = regen_calculate_threshold()
@@ -219,12 +220,19 @@ func serialize():
 #	tmp.mana = mana
 #	tmp.defeated = defeated
 	tmp.position = position
-	tmp.static_effects = static_effects.duplicate()
-	tmp.temp_effects = temp_effects.duplicate()
-	tmp.triggered_effects = triggered_effects.duplicate()
 	tmp.bonuses = bonuses.duplicate()
 	tmp.fr_p = friend_points
-	tmp.traits = traits.duplicate()
+	if !static_effects.empty():
+		print("ERROR on save %s! There are %s static_effects active" % [name, static_effects.size()])
+	if !triggered_effects.empty():
+		print("ERROR on save %s! There are %s triggered_effects active" % [name, triggered_effects.size()])
+	if !temp_effects.empty():
+		print("ERROR on save %s! There are %s temp_effects active" % [name, temp_effects.size()])
+	#delete, if new dynamic traits system works
+#	tmp.static_effects = static_effects.duplicate()
+#	tmp.temp_effects = temp_effects.duplicate()
+#	tmp.triggered_effects = triggered_effects.duplicate()
+#	tmp.traits = traits.duplicate()
 	return tmp
 
 func deserialize(savedir):
@@ -245,45 +253,46 @@ func deserialize(savedir):
 	else:
 		position = null
 	if position != null: state.combatparty[position] = id
-	static_effects = savedir.static_effects.duplicate()
-	temp_effects = savedir.temp_effects.duplicate()
-	triggered_effects = savedir.triggered_effects.duplicate()
-	for eff in static_effects.duplicate():
-		var tmp = effects_pool.get_effect_by_id(eff)
-		if tmp == null: 
-			static_effects.erase(eff)
-			continue
-		tmp.applied_char = id
-		tmp.calculate_args() 
-	for eff in temp_effects.duplicate():
-		var tmp = effects_pool.get_effect_by_id(eff)
-		if tmp == null: 
-			temp_effects.erase(eff)
-			continue
-		tmp.applied_char = id
-		tmp.calculate_args() 
-	for eff in triggered_effects.duplicate():
-		var tmp = effects_pool.get_effect_by_id(eff)
-		if tmp == null: 
-			triggered_effects.erase(eff)
-			continue
-		tmp.applied_char = id
-		tmp.calculate_args() 
 	bonuses = savedir.bonuses.duplicate()
 	for slot in gear_level:
 		gear_level[slot] = int(gear_level[slot])
 	friend_points = int(savedir.fr_p)
+	#delete, if new dynamic traits system works
+#	static_effects = savedir.static_effects.duplicate()
+#	temp_effects = savedir.temp_effects.duplicate()
+#	triggered_effects = savedir.triggered_effects.duplicate()
+#	for eff in static_effects.duplicate():
+#		var tmp = effects_pool.get_effect_by_id(eff)
+#		if tmp == null: 
+#			static_effects.erase(eff)
+#			continue
+#		tmp.applied_char = id
+#		tmp.calculate_args() 
+#	for eff in temp_effects.duplicate():
+#		var tmp = effects_pool.get_effect_by_id(eff)
+#		if tmp == null: 
+#			temp_effects.erase(eff)
+#			continue
+#		tmp.applied_char = id
+#		tmp.calculate_args() 
+#	for eff in triggered_effects.duplicate():
+#		var tmp = effects_pool.get_effect_by_id(eff)
+#		if tmp == null: 
+#			triggered_effects.erase(eff)
+#			continue
+#		tmp.applied_char = id
+#		tmp.calculate_args() 
 	#most of the stuff is just fix for savegame traits compatibility. In regular cases only savedir.traits import is relevant
-	if savedir.has('traits'):
-		traits = savedir.traits.duplicate()
-	else:
-		traits = []
-	var template = combatantdata.charlist[base]
-	if template.keys().has('traits'):
-		for trait in template.traits:
-			if !(trait in traits):
-				clear_trait_effects(trait)
-				add_trait(trait)
+#	if savedir.has('traits'):
+#		traits = savedir.traits.duplicate()
+#	else:
+#		traits = []
+#	var template = combatantdata.charlist[base]
+#	if template.keys().has('traits'):
+#		for trait in template.traits:
+#			if !(trait in traits):
+#				clear_trait_effects(trait)
+#				add_trait(trait)
 
 
 var skills_autoselect = ["attack"]

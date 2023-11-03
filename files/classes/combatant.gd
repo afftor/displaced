@@ -328,16 +328,23 @@ func add_trait(trait_code):
 		apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('trait', tmp.code)
 
-func remove_trait(trait_code):
-	if !traits.has(trait_code): return
-	traits.erase(trait_code)
-	clear_trait_effects(trait_code)
+#func remove_trait(trait_code):
+#	if !traits.has(trait_code): return
+#	traits.erase(trait_code)
+#	clear_trait_effects(trait_code)
+
+func clear_traits():
+	for code in traits:
+		clear_trait_effects(code)
+	traits.clear()
 
 func clear_trait_effects(trait_code):
 	var tmp = find_eff_by_trait(trait_code)
 	for e in tmp:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
+
+
 
 #skills
 func tick_cooldowns():
@@ -594,10 +601,10 @@ func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is
 	eff.remove()
 	pass
 
-func remove_all_temp_effects():
-	for e in temp_effects:
-		var obj = effects_pool.get_effect_by_id(e)
-		obj.call_deferred('remove')
+#func remove_all_temp_effects():
+#	for e in temp_effects:
+#		var obj = effects_pool.get_effect_by_id(e)
+#		obj.call_deferred('remove')
 
 func remove_temp_effect_tag(eff_tag):#function for nonn-direct temps removing, like heal or dispel
 	var tmp = find_temp_effect_tag(eff_tag)
@@ -610,10 +617,10 @@ func remove_all_effect_tag(eff_tag):#function for nonn-direct temps removing, li
 	for eff in tmp:
 		remove_temp_effect(eff)
 
-func clean_effects():#clean effects before deleting character
+func clean_effects():
 	for e in temp_effects + static_effects + triggered_effects + aura_effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.remove()
+		eff.call_deferred('remove')
 
 func process_event(ev, skill = null):
 	#TR_TURN_GET for player's char can be processed on each selection, wich is wrong
