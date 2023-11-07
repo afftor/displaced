@@ -1518,7 +1518,7 @@ var skilllist = {
 		not_final = true
 	},
 	dark_orb = {
-		code = 'dark_orb',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/rilu_6.png"),
@@ -1547,7 +1547,7 @@ var skilllist = {
 		]
 	},
 	pale_mist = {
-		code = 'pale_mist',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/rilu_3.png"),
@@ -1571,11 +1571,11 @@ var skilllist = {
 #		sfxtarget = null,
 		sounddata = {initiate = null, strike = 'pale mist', hit = null, hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'glte'}], patch = 'p_mist'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'gte'}], patch = 'p_mist'},
 		]
 	},
 	avalanche = {
-		code = 'avalanche',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/rilu_1.png"),
@@ -1604,36 +1604,36 @@ var skilllist = {
 		],
 #		follow_up = 'avalanche1'
 	},
-	avalanche1 = {
-		code = 'avalanche1',
-		name = "",
-		description = "",
-		icon = load("res://assets/images/iconsskills/rilu_1.png"),
-		damagetype = "earth",
-		skilltype = 'main',
-		userange = "any",
-		targetpattern = 'single',
-		allowedtargets = ['enemy'],
-		keep_target = variables.TARGET_NOKEEP,
-		next_target = variables.NT_ANY,
-		reqs = [],
-		tags = ['damage'],
-		value = [['caster.damage', '*0.4']],
-		cooldown = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1, chance = 0.2})],
-		repeat = 4,
-		hidden = false,
-		sfx = [], 
-#		sfxcaster = null,
-#		sfxtarget = null,
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'absolute'},
-		patches = [
-			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_ava'}
-		],
-		not_final = true
-	},
+#	avalanche1 = {
+#		code = 'avalanche1',
+#		name = "",
+#		description = "",
+#		icon = load("res://assets/images/iconsskills/rilu_1.png"),
+#		damagetype = "earth",
+#		skilltype = 'main',
+#		userange = "any",
+#		targetpattern = 'single',
+#		allowedtargets = ['enemy'],
+#		keep_target = variables.TARGET_NOKEEP,
+#		next_target = variables.NT_ANY,
+#		reqs = [],
+#		tags = ['damage'],
+#		value = [['caster.damage', '*0.4']],
+#		cooldown = 0,
+#		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1, chance = 0.2})],
+#		repeat = 4,
+#		hidden = false,
+#		sfx = [], 
+##		sfxcaster = null,
+##		sfxtarget = null,
+#		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'absolute'},
+#		patches = [
+#			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_ava'}
+#		],
+#		not_final = true
+#	},
 	soulthorns = {
-		code = 'soulthorns',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/rilu_7.png"),
@@ -1661,9 +1661,9 @@ var skilllist = {
 		]
 	},
 	dark_echoes = { 
-		code = 'dark_echoes',
-		name = tr(""),
-		description = tr(""),
+		code = '',
+		name = '',
+		description = '',
 		icon = load("res://assets/images/iconsskills/rilu_8.png"),#
 		damagetype = "dark",
 		skilltype = 'support',
@@ -1676,7 +1676,7 @@ var skilllist = {
 		tags = ['damage', 'aoe', 'taunt'],
 		value = [['caster.hpmax', '*0.3'],['caster.damage','*0.6']],
 		damagestat = ['no_stat', '+damage_hp'],
-		cooldown = 1, #i'm strongly against cd of this skill being lesser than taunt duration - for abusing this skill will cause bugs
+		cooldown = 1,
 		casteffects = ['e_s_echo', Effectdata.rebuild_template({effect = 'e_echo_shield', push_value = true})],
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
@@ -1693,7 +1693,7 @@ var skilllist = {
 		]
 	},
 	restoration = {
-		code = 'restoration',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/rilu_2.png"),
@@ -1722,7 +1722,7 @@ var skilllist = {
 		]
 	},
 	soul_beam = {
-		code = 'soul_beam',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/rilu_4.png"),
@@ -1732,11 +1732,14 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],#or not
+		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],
 		tags = ['damage', 'debuff', 'souls'],
-		value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+1'], '*0.9'],
+		value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+0.9']],
 		cooldown = 10,
-		casteffects = ['e_pay_all_souls', Effectdata.rebuild_template({effect = 'e_t_beam', trigger = variables.TR_HIT})],
+		casteffects = [
+			'e_pay_all_souls',
+			Effectdata.rebuild_template({effect = 'e_t_beam', trigger = variables.TR_HIT}),
+			Effectdata.rebuild_template({effect = 'e_s_beam_debuff'})],
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_soul_beam', target = 'full', period = 'predamage'},
@@ -1750,7 +1753,7 @@ var skilllist = {
 		]
 	},
 	soul_prot = {
-		code = 'soul_prot',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/rilu_5.png"),
@@ -1760,7 +1763,7 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['ally', 'self'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],#or not
+		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],
 		tags = ['heal', 'buff', 'souls'],
 		value = ['target.hpmax', '*', ['caster.alt_mana', '*0.1']],
 		damagestat = '-damage_hp',
@@ -5066,7 +5069,7 @@ var patches = {
 		reqs = {type = 'replace', value = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 2}],}
 	},
 	p_beam = {
-		value = {type = 'replace', value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+1'],'*1.35'],},
+		value = {type = 'replace', value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+0.9'],'*1.5'],},
 	},
 	p_gust = {
 		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_gust2', chance = 0.8})]}
