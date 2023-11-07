@@ -1229,7 +1229,7 @@ var effect_table = {
 			{obj = 'app_obj', param = 'shield', dynamic = true}],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 0]},
+			{type = 'shield_add_temporal', shield_id = 'dragonprot', value = ['parent_args', 0]},
 			{type = 'stat_set_revert', stat = 'resistnegative', value = 100}
 		],
 		buffs = [{
@@ -1255,7 +1255,7 @@ var effect_table = {
 #			{obj = 'app_obj', param = 'shield', dynamic = true}],
 #		sub_effects = [],
 #		atomic = [
-#			{type = 'stat_set_revert', stat = 'shield', value = [['parent_args', 0], '*', 2]},
+#			{type = 'shield_add_temporal', shield_id = 'dragonprot1', value = [['parent_args', 0], '*', 2]},
 #			{type = 'stat_set_revert', stat = 'resistnegative', value = 100}
 #		],
 #		buffs = ['b_dragonprot'],
@@ -1447,7 +1447,7 @@ var effect_table = {
 		type = 'oneshot',
 		target = 'caster',
 		args = [{obj = 'parent_args', param = 0}],
-		atomic = [{type = 'stat_set', stat = 'shield', value = ['parent_args', 0]}]
+		atomic = [{type = 'stat_add', stat = 'shield', value = ['parent_args', 0]}]
 	},
 	e_s_echo = {
 		type = 'trigger',
@@ -2713,7 +2713,7 @@ var effect_table = {
 				stack = 1,
 				name = 'treant_shield',
 				atomic = [
-					{type = 'stat_set_revert', stat = 'shield', value = 15},
+					{type = 'shield_add_temporal', shield_id = 'treant_barrier', value = 15},
 #					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
 					],
 				buffs = [
@@ -3167,7 +3167,7 @@ var effect_table = {
 				stack = 1,
 				name = 'spirit_shield',
 				atomic = [
-					{type = 'stat_set_revert', stat = 'shield', value = 50},
+					{type = 'shield_add_temporal', shield_id = 'spiritshield', value = 50},
 #					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL}
 					],
 				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
@@ -3508,7 +3508,7 @@ var effect_table = {
 				stack = 1,
 				name = 'phys_shield',
 				atomic = [
-					{type = 'stat_set_revert', stat = 'shield', value = 50},
+					{type = 'shield_add_temporal', shield_id = 'barrier2', value = 50},
 #					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_PHYS}
 					],
 				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
@@ -3540,7 +3540,7 @@ var effect_table = {
 				stack = 1,
 				name = 'mag_shield',
 				atomic = [
-					{type = 'stat_set_revert', stat = 'shield', value = 50},
+					{type = 'shield_add_temporal', shield_id = 'barrier3', value = 50},
 #					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_MAG}
 					],
 				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
@@ -3574,7 +3574,7 @@ var effect_table = {
 				name = 'mag_shield',#change
 				args = [{obj = 'parent_args', param = 0}, {obj = 'app_obj', param = 'shield', dynamic = true}],
 				atomic = [
-					{type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 0]},
+					{type = 'shield_add_temporal', shield_id = 'barrier4', value = ['parent_args', 0]},
 					],
 				buffs = [
 					{
@@ -3607,7 +3607,7 @@ var effect_table = {
 				name = 'mag_shield',#change
 				args = [{obj = 'parent_args', param = 0}, {obj = 'app_obj', param = 'shield', dynamic = true}],
 				atomic = [
-					{type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 0]},
+					{type = 'shield_add_temporal', shield_id = 'barrier5', value = ['parent_args', 0]},
 					],
 				buffs = [
 					{
@@ -3675,7 +3675,7 @@ var atomic = {
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_hp_restore_ex = {type = 'heal', value = [['parent_args', 0], '*', 0.2]},#can be made as stat_add to hppercent
 	a_mana_restore_ex = {type = 'mana', value = [['parent_args', 1], '*', 0.2]},
-	a_ward_shield = {type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 1]},
+	a_ward_shield = {type = 'shield_add_temporal', shield_id = 'a_ward_shield', value = ['parent_args', 1]},
 	a_sanctuary_heal = {type = 'heal', value = ['parent_args', 0]},
 
 };

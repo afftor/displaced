@@ -50,6 +50,7 @@ var temp_effects = []
 var triggered_effects = []
 var aura_effects = []
 
+var temporal_shields = {}
 
 var position
 var combatgroup = 'ally'
@@ -231,6 +232,30 @@ func add_part_stat(statname, value, revert = false):
 		add_bonus(statname+'_part', value, revert)
 	recheck_effect_tag('recheck_stats')
 
+func add_temporal_shield(value, temporal_id :String):
+	if !temporal_shields.has(temporal_id):
+		temporal_shields[temporal_id] = 0
+	temporal_shields[temporal_id] += value
+	add_stat('shield', value)
+
+func remove_temporal_shield(temporal_id :String):
+	if !temporal_shields.has(temporal_id): return
+	
+	add_stat('shield', temporal_shields[temporal_id], true)
+	temporal_shields.erase(temporal_id)
+
+func wither_temporal_shields(value):
+	for shield_id in temporal_shields.keys():
+		temporal_shields[shield_id] -= value
+		if temporal_shields[shield_id] < 0 :
+			value = -temporal_shields[shield_id]
+			temporal_shields.erase(shield_id)
+		else:
+			break
+
+func clear_temporal_shields():
+	temporal_shields.clear()
+
 #confirmed getters
 func calc_resist_mul_bonus(base :float, bonus :float) -> float:
 	#base rasist < 0 is actualy debuff, yet mul_bonus > 1 must still increase resistance, and mul_bonus < 1 decrease it
@@ -261,7 +286,12 @@ func set_shield(value):
 #		process_event(variables.TR_SHIELD_DOWN)
 	if input_handler.combat_node != null and input_handler.combat_node.rules.has('no_shield'):
 		if value > shield: return
+	if value == 0:
+		clear_temporal_shields()
+	elif value < shield:
+		wither_temporal_shields(shield - value)
 	shield = value;
+	#that stuff not working. For now all shield representation made through buff-icons
 	if displaynode != null:
 		displaynode.update_shield()
 	recheck_effect_tag('recheck_stats')
@@ -394,6 +424,8 @@ func apply_atomic(template):
 			mul_stat(template.stat, template.value)
 		'stat_add_p':
 			add_part_stat(template.stat, template.value)
+		'shield_add_temporal':
+			add_temporal_shield(template.value, template.shield_id)
 		'bonus': #reverting those effect can not clear no-bonus entries, so be careful not to overuse those
 			if bonuses.has(template.bonusname): bonuses[template.bonusname] += template.value
 			else: bonuses[template.bonusname] = template.value
@@ -449,6 +481,8 @@ func remove_atomic(template):
 			mul_stat(template.stat, template.value, true)
 		'stat_add_p':
 			add_part_stat(template.stat, template.value, true)
+		'shield_add_temporal':
+			remove_temporal_shield(template.shield_id)
 		'bonus':
 			if bonuses.has(template.bonusname): bonuses[template.bonusname] -= template.value
 			else: print('error bonus not found')

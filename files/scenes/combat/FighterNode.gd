@@ -268,7 +268,7 @@ func update_hp():
 		var data = {node = self, time = input_handler.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
 		animation_node.add_new_data(data)
 
-
+#that stuff not working. For now all shield representation made through buff-icons
 func update_shield(): 
 	var args = {}
 	if fighter.shield <= 0: 

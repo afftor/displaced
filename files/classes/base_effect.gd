@@ -197,6 +197,7 @@ func set_args(arg, value):
 	self_args[arg] = value
 	#calculate_args()
 
+#mind, that effects are no longer suppose to be saved in savegames, so serialize/deserialize should be useless for now
 func serialize():
 	var tmp := {}
 	tmp['name'] = name

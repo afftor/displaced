@@ -399,6 +399,7 @@ func heal_float(node, args):
 func test_combat_start(node, args):
 	return 1.0
 
+#that stuff not working. For now all shield representation made through buff-icons
 func shield_update(node, args):
 #	node.material.set_shader_param('modulate', args.color)
 #	node.get_node('sprite/shield').visible = args.value # works and looks wierd so I disabled it for now
