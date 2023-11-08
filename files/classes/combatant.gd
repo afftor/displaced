@@ -777,6 +777,7 @@ func can_use_skill(skill):
 #	if mana < skill.manacost: return false
 	if cooldowns.has(skill.code): return false
 	if skill.tags.has('disabled'): return false
+	if !process_check(skill.reqs): return false
 	if has_status('silence') and skill.skilltype != 'item' and !skill.tags.has('default'): return false #possible to change in caase of combat item system
 	return true
 

@@ -245,10 +245,7 @@ func RebuildSkillPanel():
 		var skill = Skillsdata.patch_skill(i, activecharacter)
 		newbutton.get_node("TextureRect").texture = skill.icon
 		newbutton.get_node("Cooldown").text = ""
-		if (skill.tags.has('disabled') or
-				activecharacter.cooldowns.has(i) or
-				!activecharacter.process_check(skill.reqs) or
-				!activecharacter.can_use_skill(skill)):
+		if !activecharacter.can_use_skill(skill):
 			newbutton.disabled = true
 			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
 			if activecharacter.cooldowns.has(i):
