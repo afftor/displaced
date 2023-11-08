@@ -220,6 +220,10 @@ func process_event(ev):
 		eff.set_args('skill', self)
 		eff.process_event(ev)
 
+#that's very much of a reckless patch for meta-skill TR_CAST event processing. Mind that it is not a replacement for resolve_value
+#to get rid of this, need to do a major refactor of all this meta/applicable skill system
+func prepare_process_value_on_meta():
+	process_value = input_handler.calculate_number_from_string_array(long_value[0], caster, target)
 
 func resolve_value(check_m):
 	value.resize(long_value.size())

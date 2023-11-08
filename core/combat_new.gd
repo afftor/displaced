@@ -1693,6 +1693,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
 	s_skill1.createfromskill(skill_code, caster)
+	s_skill1.setup_target(target)
+	s_skill1.prepare_process_value_on_meta()
 	s_skill1.process_event(variables.TR_CAST)
 	caster.process_event(variables.TR_CAST, s_skill1)
 
