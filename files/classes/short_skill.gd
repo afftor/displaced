@@ -6,7 +6,7 @@ var template
 
 var damagetype
 var damagesrc
-var damagestat = []
+var damagestat
 var is_drain = false
 var skilltype
 var tags

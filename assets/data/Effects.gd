@@ -14,16 +14,26 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
-		buffs = ['b_def'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/action_2.png", 
+			description = "Halves incoming damage",
+			limit = 1,
+			t_name = 'icon_defence'
+		}],
 	},
 	e_summon = {
 		type = 'static',
-		debug_name = 'trait_summon',
+		debug_name = 'summon',
 		tags = ['summon'],
 		args = [],
 		sub_effects = [],
 		atomic = [],
-		buffs = ['b_summon'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/meditate.png",
+			description = "Summoned unit. Dies after summoner defeated",
+			limit = 1,
+			t_name = 'icon_summon'
+		}],
 	},
 	#statuses
 	e_s_burn = {
@@ -35,7 +45,10 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
 		tags = ['burn'],
-		args = [{obj = 'parent_args', param = 0}],
+		icon_text = "end",
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'template', param = 'icon_text'}],
 		sub_effects = [rebuild_dot('a_burn'), rebuild_remove(['damagetype','eq', 'water'])],
 		atomic = [],
 		buffs = ['b_burn'],
@@ -49,10 +62,13 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
 		tags = ['burn'],
-		args = [{obj = 'parent_args', param = 0}],
+		icon_text = "beginning",
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'template', param = 'icon_text'}],
 		sub_effects = [rebuild_dot_onget('a_burn'), rebuild_remove(['damagetype','eq', 'water'])],
 		atomic = [],
-		buffs = ['b_burn_onget'],
+		buffs = ['b_burn'],
 	},
 	e_s_poison = {
 		type = 'temp_s',
@@ -63,8 +79,28 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 3,
 		tags = ['poison'],
-		args = [{obj = 'parent_args', param = 0}],
+		icon_text = "Neutral",
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'template', param = 'icon_text'}],
 		sub_effects = [rebuild_dot('a_poison')],
+		atomic = [],
+		buffs = ['b_poison'],
+	},
+	e_s_poison_water = {
+		type = 'temp_s',
+		name = 'poison_water',
+		target = 'target',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 3,
+		tags = ['poison'],#or may be not
+		icon_text = "Water",
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'template', param = 'icon_text'}],
+		sub_effects = [rebuild_dot('a_poison_w')],
 		atomic = [],
 		buffs = ['b_poison'],
 	},
@@ -77,7 +113,10 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
 		tags = ['bleed'],
-		args = [{obj = 'parent_args', param = 0}],
+		icon_text = "end",
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'template', param = 'icon_text'}],
 		sub_effects = [rebuild_dot('a_bleed'), rebuild_remove(['tags','has','heal'])],
 		atomic = [],
 		buffs = ['b_bleed'],
@@ -91,10 +130,13 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
 		tags = ['bleed'],
-		args = [{obj = 'parent_args', param = 0}],
+		icon_text = "beginning",
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'template', param = 'icon_text'}],
 		sub_effects = [rebuild_dot_onget('a_bleed'), rebuild_remove(['tags','has','heal'])],
 		atomic = [],
-		buffs = ['b_bleed_onget'],
+		buffs = ['b_bleed'],
 	},
 	e_stun = {
 		type = 'temp_s',
@@ -127,7 +169,13 @@ var effect_table = {
 		tags = ['intimidate', 'negative'],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.5}],
-		buffs = ['b_intimidate']
+		buffs = [{ 
+			icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+			description = "Damage reduced for %d turns",
+			args = [{obj = 'parent', param = 'remains'}],
+			t_name = 'icon_intimidate',
+			bonuseffect = 'duration'
+		}]
 	},
 	e_silence = {
 		type = 'temp_s',
@@ -137,25 +185,16 @@ var effect_table = {
 		duration = 'parent',
 		rem_event = [variables.TR_COMBAT_F],
 		tick_event = [variables.TR_TURN_F],
-		tags = ['afflict', 'silence'],
-		disable = true,
+		tags = ['afflict', 'silence'],#does not effect skills with 'default' tag
+#		disable = true,#gives no action at all, not just silence
 		sub_effects = [],
-		buffs = ['b_silence'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/iola_5.png", 
+			description = "Silenced: Can't cast certain spells",
+			t_name = 'icon_silence',
+			bonuseffect = 'duration'
+		}],
 		atomic = [],
-	},
-	e_s_poison_water = {
-		type = 'temp_s',
-		name = 'poison_water',
-		target = 'target',
-		stack = 1,
-		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F],
-		duration = 3,
-		tags = ['poison'],#or may be not
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [rebuild_dot('a_poison_w')],
-		atomic = [],
-		buffs = ['b_poison'],
 	},
 	e_s_wound = {
 		type = 'temp_s',
@@ -168,7 +207,13 @@ var effect_table = {
 		tags = ['negative'],#or may be not
 		args = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
-		buffs = ['b_wound'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/blood_blue.png", 
+			description = "Received damage increased by 20%%",
+			limit = 1,
+			t_name = 'icon_wound',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_tr_wound = rebuild_template({chance = 0.33, effect = 'e_s_wound', debug_name = "starter_wound"}),
 	#effects for new skils
@@ -920,7 +965,12 @@ var effect_table = {
 			{type = 'stat_add', stat = 'hitrate', value = 20},
 			{type = 'stat_add_p', stat = 'damage', value = 0.20},
 			],
-		buffs = ['b_natbless'],
+		buffs = [{ 
+			icon = "res://assets/images/iconsskills/erika_1.png", 
+			description = "Increase all damage by 20%% and Hit Chance by 20%%",
+			t_name = 'icon_nature_bless',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_s_hearts = {
 		type = 'temp_s',
@@ -1543,28 +1593,32 @@ var effect_table = {
 	},
 	e_s_gust1 = {
 		type = 'temp_s',
+		name = 'gustofwind_debuff1',
 		target = 'target',
 		duration = 2,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		sub_effects = [],
 		tags = ['negative'],
-		name = 'gust',
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.85}],
+		buff_text = '15',
+		args = [{obj = 'template', param = 'buff_text'}],
 		buffs = ['b_gust'],
 	},
 	e_s_gust2 = {
 		type = 'temp_s',
+		name = 'gustofwind_debuff2',
 		target = 'target',
 		duration = 2,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		sub_effects = [],
 		tags = ['negative'],
-		name = 'gust',
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.75}],
+		buff_text = '25',
+		args = [{obj = 'template', param = 'buff_text'}],
 		buffs = ['b_gust'],
 	},
 	e_s_cleanse = {
@@ -1574,6 +1628,7 @@ var effect_table = {
 	},
 	e_s_resetfire = {
 		type = 'trigger',
+		debug_name = 'resetfire',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
 			{type = 'target', value = {type = 'status', status = 'burn', check = true}},
@@ -1583,25 +1638,76 @@ var effect_table = {
 		sub_effects = ['e_s_burn_onget'], #or any other burn effect cause they all are stack 1 and this won't be applied
 		buffs = []
 	},
+	e_t_iola_barrier = {
+		type = 'temp_s',
+		name = 'iola_barrier',
+		target = 'target',
+		tick_event = variables.TR_TURN_S,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 1,
+		stack = 1,
+		args = [
+			{obj = 'parent_args', param = 0},
+			{obj = 'app_obj', param = 'shield', dynamic = true}],
+		sub_effects = [],
+		atomic = [
+			{type = 'shield_add_temporal', shield_id = 'iola_barrier', value = ['parent_args', 0]},
+		],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/iola_1.png", 
+			description = "Barrier (%d remains)",
+			args = [{obj = 'parent_args', param = 1}],
+			limit = 1,
+			t_name = 'icon_iola_barrier'
+		}],
+	},
+	e_t_bless_caster = {
+		type = 'trigger',
+		debug_name = 'starter_bless_caster',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'iola', operant = 'eq'}}],
+		val = 3,
+		args = [{obj = 'template', param = 'val'}],
+		buffs = [],
+		sub_effects = ['e_s_bless']
+	},
+	e_t_bless_others = {
+		type = 'trigger',
+		debug_name = 'starter_bless_others',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'iola', operant = 'neq'}}],
+		val = 2,
+		args = [{obj = 'template', param = 'val'}],
+		buffs = [],
+		sub_effects = ['e_s_bless']
+	},
 	e_s_bless = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'bless',
+		target = 'target',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = 2,
+		duration = {obj = 'parent_args', param = 0},
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'hitchance', value = 25},
+			{type = 'stat_add', stat = 'hitrate', value = 25},
 			{type = 'stat_add_p', stat = 'damage', value = 0.15},
 			],
-		buffs = ['b_natbless'],#or not
+		buffs = [{ 
+			icon = "res://assets/images/iconsskills/iola_2.png", 
+			description = "Increase all damage by 15%% and Hit Rate by 25%%",
+			t_name = 'icon_bless',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_s_sanct = {
 		type = 'trigger',
+		debug_name = 'sanctuary_resurrect',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = false,
@@ -3517,7 +3623,7 @@ var effect_table = {
 						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield, blocks 50 phys damage (%d remains)",
 						args = [{obj = 'parent_args', param = 0}],
-						t_name = 'i_shield'
+						t_name = 'icon_barrier2'
 					}
 				],
 				sub_effects = [],
@@ -3549,7 +3655,7 @@ var effect_table = {
 						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield, blocks 50 magic damage (%d remains)",
 						args = [{obj = 'parent_args', param = 0}],
-						t_name = 'i_shield'
+						t_name = 'icon_barrier3'
 					}
 				],
 				sub_effects = [],
@@ -3581,7 +3687,7 @@ var effect_table = {
 						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield (%d remains)",
 						args = [{obj = 'parent_args', param = 1}],
-						t_name = 'i_shield',
+						t_name = 'icon_barrier4',
 						bonuseffect = 'duration'
 					}
 				],
@@ -3614,7 +3720,7 @@ var effect_table = {
 						icon = "res://assets/images/traits/armor.png", 
 						description = "Damage-absorbing shield (%d remains)",
 						args = [{obj = 'parent_args', param = 1}],
-						t_name = 'i_shield',
+						t_name = 'icon_barrier5',
 						bonuseffect = 'duration'
 					}
 				],
@@ -3635,7 +3741,7 @@ var effect_table = {
 				icon = "res://assets/images/traits/armor.png", 
 				description = "Damage-absorbing shield (%d remains)",
 				args = [{obj = 'parent_args', param = 0}],
-				t_name = 'i_shield',
+				t_name = 'icon_shield_info',
 			}
 		],
 		sub_effects = [],
@@ -3683,35 +3789,18 @@ var atomic = {
 #add bonuseffect = 'duration' to buffs with duration
 var buffs = {
 	#new part
-	b_intimidate = { 
-		icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
-		description = "Damage reduced for %d turns",
-		args = [{obj = 'parent', param = 'remains'}],
-		t_name = 'buff_intimidate',
-		bonuseffect = 'duration'
-	},
 	b_bleed = { 
 		icon = "res://assets/images/iconsskills/arron_3.png", 
-		description = "Bleeding: Takes Neutral damage at the end of turn",
-		t_name = 'buff_bleed',
+		description = "Bleeding: Takes Neutral damage at the %s of turn",
+		args = [{obj = 'parent_args', param = 1}],
+		t_name = 'icon_bleed',
 		bonuseffect = 'duration'
 	},
-	b_bleed_onget = { 
-		icon = "res://assets/images/iconsskills/arron_3.png", 
-		description = "Bleeding: Takes Neutral damage at the beginning of turn",
-		t_name = 'buff_bleed_onget',
-		bonuseffect = 'duration'
-	},
-	b_poison = { # none
+	b_poison = {
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "Poisoned: Takes Neutral damage at the end of turn",
-		t_name = 'buff_poison',
-		bonuseffect = 'duration'
-	},
-	b_silence = { # doesn't fit
-		icon = "res://assets/images/iconsskills/iola_5.png", 
-		description = "Silenced: Can't cast certain spells",
-		t_name = 'buff_silence',
+		description = "Poisoned: Takes %s damage at the end of turn",
+		args = [{obj = 'parent_args', param = 1}],
+		t_name = 'icon_poison',
 		bonuseffect = 'duration'
 	},
 	b_swift = {
@@ -3722,14 +3811,9 @@ var buffs = {
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
-		description = "Burn: Takes Fire damage at the end of turn. Removed by Water damage.",
-		t_name = 'buff_burn',
-		bonuseffect = 'duration'
-	},
-	b_burn_onget = {
-		icon = "res://assets/images/iconsskills/rose_4.png", 
-		description = "Burn: Takes Fire damage at the beginning of turn. Removed by Water damage.",
-		t_name = 'buff_burn_onget',
+		description = "Burn: Takes Fire damage at the %s of turn. Removed by Water damage.",
+		args = [{obj = 'parent_args', param = 1}],
+		t_name = 'icon_burn',
 		bonuseffect = 'duration'
 	},
 	b_renew1 = {
@@ -3737,12 +3821,6 @@ var buffs = {
 		description = "Damage taken is reduced by %d%%",
 		args = [{obj = 'parent_args', param = 0}],
 		t_name = 'buff_renew_resist',
-		bonuseffect = 'duration'
-	},
-	b_natbless = { 
-		icon = "res://assets/images/iconsskills/erika_1.png", 
-		description = "Increase all damage by 20%% and Hit Chance by 20%%",
-		t_name = 'buff_bless',
 		bonuseffect = 'duration'
 	},
 	b_ava = {
@@ -3753,9 +3831,10 @@ var buffs = {
 	},
 	b_gust = {
 		icon = "res://assets/images/iconsskills/iola_3.png", 
-		description = "Damage decreased by 15%%",
+		description = "Damage decreased by %s%%",
+		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
-		t_name = 'gust',
+		t_name = 'icon_gustofwind_debuff',
 		bonuseffect = 'duration'
 	},
 	b_bloodlust = { # none 
@@ -3802,13 +3881,6 @@ var buffs = {
 		limit = 1,
 		t_name = 'rule3'
 	},
-	b_wound = { # none
-		icon = "res://assets/images/iconsskills/blood_blue.png", 
-		description = "Received damage increased",
-		limit = 1,
-		t_name = 'buff_wound',
-		bonuseffect = 'duration'
-	},
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_wwalk = { # none
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
@@ -3827,18 +3899,6 @@ var buffs = {
 		description = "Regenerates HP every turn",
 		limit = 1,
 		t_name = 'sanctuary'
-	},
-	b_def = {
-		icon = "res://assets/images/iconsskills/action_2.png", 
-		description = "Halves incoming damage",
-		limit = 1,
-		t_name = 'buff_defence'
-	},
-	b_summon = {
-		icon = "res://assets/images/iconsskills/action_2.png", #2fix
-		description = "Summoned unit. Dies after summoner defeated",
-		limit = 1,
-		t_name = 'summon'
 	},
 	
 };

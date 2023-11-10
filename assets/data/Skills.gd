@@ -1677,7 +1677,7 @@ var skilllist = {
 		value = [['caster.hpmax', '*0.3'],['caster.damage','*0.6']],
 		damagestat = ['no_stat', '+damage_hp'],
 		cooldown = 1,
-		casteffects = ['e_s_echo', Effectdata.rebuild_template({effect = 'e_echo_shield', push_value = true})],
+		casteffects = ['e_s_echo', Effectdata.rebuild_template({trigger = variables.TR_CAST, effect = 'e_echo_shield', push_value = true})],
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
 			{code = 'sfx_dark_echoes', target = 'target', period = 'predamage'}, 
@@ -1779,7 +1779,7 @@ var skilllist = {
 		patches = []
 	},
 	holy_light = {
-		code = 'holy_light',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/iola_4.png"),
@@ -1805,7 +1805,7 @@ var skilllist = {
 		patches = []
 	},
 	gustofwind = {
-		code = 'gustofwind',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/iola_3.png"),
@@ -1833,7 +1833,7 @@ var skilllist = {
 		]
 	},
 	smash = {
-		code = 'smash',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/iola_6.png"),
@@ -1855,13 +1855,13 @@ var skilllist = {
 			{code = 'sfx_iola_swipe', target = 'target', period = 'predamage'}],
 #		sfxcaster = null,
 #		sfxtarget = null,
-				sounddata = {initiate = null, strike = 'smash', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = null, strike = 'smash', hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_smash'},
 		]
 	},
 	cleansing = {
-		code = 'cleansing',
+		code = '',
 		name = "",
 		description = "",
 		icon = load("res://assets/images/iconsskills/iola_7.png"),
@@ -1891,10 +1891,10 @@ var skilllist = {
 		]
 	},
 	barrier = {
-		code = 'barrier',
-		name = tr(""),
-		description = tr(""),
-		icon = load("res://assets/images/iconsskills/iola_1.png"),#
+		code = '',
+		name = "",
+		description = "",
+		icon = load("res://assets/images/iconsskills/iola_1.png"),
 		damagetype = "light",
 		skilltype = 'support',
 		userange = "any",
@@ -1904,11 +1904,11 @@ var skilllist = {
 		next_target = variables.NT_CASTER,
 		repeat = 1,
 		reqs = [],
-		tags = ['buff', 'shield'],
+		tags = ['buff'],
 		value = ['target.hpmax', '*0.5'],
-		damagestat = ['+shield'],
+		damagestat = ['no_stat'],
 		cooldown = 1,
-		casteffects = [],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_t_iola_barrier', push_value = true})],
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
 			{code = 'sfx_barrier', target = 'target', period = 'predamage'}],
@@ -1919,10 +1919,10 @@ var skilllist = {
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 1, op = 'gte'}], patch = 'p_barrier'},
 		]
 	},
-	bless = {#NEW, NEED FILLING DATA
-		code = 'bless',
-		name = tr(""),
-		description = tr(""),
+	bless = {
+		code = '',
+		name = "",
+		description = "",
 		icon = load("res://assets/images/iconsskills/iola_2.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -1938,7 +1938,7 @@ var skilllist = {
 		cooldown = 2,
 		chance = 100,
 		evade = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_bless'})],
+		casteffects = ['e_t_bless_caster', 'e_t_bless_others'],
 		hidden = false,
 		sfx = [{code = 'sfx_bless', target = 'target', period = 'predamage'},
 			{code = 'anim_attack', target = 'caster', period = 'windup'},
@@ -1947,15 +1947,15 @@ var skilllist = {
 #		sfxtarget = null,
 		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'gte'}], patch = 'p_defend_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_defend_1'},
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_defend_2'},
 		]
 	},
 	sanctuary = {
-		code = 'sanctuary',
-		name = tr(""),
-		description = tr(""),
-		icon = load("res://assets/images/iconsskills/iola_8.png"),#
+		code = '',
+		name = "",
+		description = "",
+		icon = load("res://assets/images/iconsskills/iola_8.png"),
 		damagetype = "light",
 		skilltype = 'ultimate',
 		userange = "any",
@@ -1983,9 +1983,9 @@ var skilllist = {
 		]
 	},
 	purge = {
-		code = 'purge',
-		name = tr(""),
-		description = tr(""),
+		code = '',
+		name = "",
+		description = "",
 		icon = load("res://assets/images/iconsskills/iola_5.png"),#
 		damagetype = "light",
 		skilltype = 'ultimate',
@@ -1997,9 +1997,11 @@ var skilllist = {
 		reqs = [],
 		tags = ['damage', 'debuff', 'dispel'],
 		value = ['0'],
-		damadestat = 'no_stat',
+		damagestat = '+damage_hp',
 		cooldown = 10,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_silence', duration = 2})],
+		casteffects = [
+			Effectdata.rebuild_template({effect = 'e_s_cleanse'}),
+			Effectdata.rebuild_template({effect = 'e_silence', duration = 2})],
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
 			{code = 'anim_hit', target = 'target', period = 'predamage'},
@@ -5081,7 +5083,7 @@ var patches = {
 		targetpattern = {type = 'set', value = 'line'},
 	},
 	p_clean_2 = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})]}
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_s_burn_onget', push_value = true})]}
 	},
 	p_barrier = {
 		repeat = {type = 'add', value = 1}
