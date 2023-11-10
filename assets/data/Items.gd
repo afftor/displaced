@@ -518,7 +518,7 @@ var hero_items_data = {
 		name = 'WEAPON_IOLA1',
 		description = 'descript',
 		weaponrange = 'melee',
-		damagetype = 'wind',
+		damagetype = 'air',
 		weaponsound = 'dodge',
 		leveldata = {
 			1:{
