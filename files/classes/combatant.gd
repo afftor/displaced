@@ -321,6 +321,9 @@ func hp_set(value):
 		hp = clamp(round(value), 0, hp_max)
 	if displaynode != null:
 		displaynode.update_hp()
+	var possible_ai = get('ai')
+	if possible_ai != null:
+		possible_ai.check_stage()
 
 
 func get_skills():
@@ -358,10 +361,10 @@ func add_trait(trait_code):
 		apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('trait', tmp.code)
 
-#func remove_trait(trait_code):
-#	if !traits.has(trait_code): return
-#	traits.erase(trait_code)
-#	clear_trait_effects(trait_code)
+func remove_trait(trait_code):
+	if !traits.has(trait_code): return
+	traits.erase(trait_code)
+	clear_trait_effects(trait_code)
 
 func clear_traits():
 	for code in traits:
@@ -654,7 +657,7 @@ func remove_all_effect_tag(eff_tag):#function for nonn-direct temps removing, li
 func clean_effects():
 	for e in temp_effects + static_effects + triggered_effects + aura_effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.call_deferred('remove')
+		eff.remove()
 
 func process_event(ev, skill = null):
 	#TR_TURN_GET for player's char can be processed on each selection, wich is wrong
