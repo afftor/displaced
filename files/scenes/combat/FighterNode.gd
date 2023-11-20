@@ -397,11 +397,13 @@ func update_buff(buff):
 				if buff.amount > 1:
 					label_text = str(buff.amount)
 					label_color = variables.hexcolordict.magenta
+		var label = buff_btn.get_node("Label")
 		if !label_text.empty():
-			var label = buff_btn.get_node("Label")
 			label.show()
 			label.text = label_text
 			label.set("custom_colors/font_color", label_color)
+		else:
+			label.hide()
 
 func update_hp_label(newhp): 
 	var new_text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
