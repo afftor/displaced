@@ -796,7 +796,7 @@ var effect_table = {
 		name = 'air_arrow_ignor_1',
 		target = 'target',
 		stack = 1,
-		rem_event = [variables.TR_POST_TARG],
+		rem_event = [variables.TR_POST_TARG, variables.TR_DEATH],
 		tags = ['negative'],
 		args = [],
 		sub_effects = [],
@@ -2129,46 +2129,51 @@ var effect_table = {
 	
 	e_tr_bloodlust = {
 		type = 'trigger',
+		debug_name = 'bloodlust_starter',
 		trigger = [variables.TR_TURN_F],
 		conditions = [],
 		req_skill = false,
 		sub_effects = ['e_bloodlust'],
 		buffs = []
 	},
-	e_bloodlust = {
+	e_bloodlust = {#dwarf king rage of stage 1
 		type = 'temp_s',
-		target = 'owner',
 		name = 'bloodlust',
+		target = 'owner',
 		stack = 5,
 		rem_event = [variables.TR_COMBAT_F],
 		tags = ['buff'],
-		args = [],
+		icon_text = "10",
+		args = [{obj = 'template', param = 'icon_text'}],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.1}],
 		buffs = ['b_bloodlust'],
 	},
 	e_tr_rage = {
 		type = 'trigger',
+		debug_name = 'rage_starter',
 		trigger = [variables.TR_TURN_F],
 		conditions = [],
 		req_skill = false,
 		sub_effects = ['e_rage'],
 		buffs = []
 	},
-	e_rage = {
+	e_rage = {#dwarf king rage of stage 2
 		type = 'temp_s',
-		target = 'owner',
 		name = 'rage',
+		target = 'owner',
 		stack = 5,
 		rem_event = [variables.TR_COMBAT_F],
 		tags = ['buff', 'rage'],
-		args = [],
+		icon_text = "20",
+		args = [{obj = 'template', param = 'icon_text'}],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.2}],
-		buffs = ['b_enrage'],#or not
+		buffs = ['b_enrage'],
 	},
 	e_dispel_rage = { #for both dwarwenking and dwarves
 		type = 'trigger',
+		debug_name = "dwarf_enrage_dispel",
 		trigger = [variables.TR_POST_TARG],
 		conditions = [
 			{type = 'skill', value = ['damagetype','eq', 'water'] },
@@ -2183,8 +2188,9 @@ var effect_table = {
 		}],
 		buffs = []
 	},
-	e_tr_rage_1 = {
+	e_tr_rage_1 = {#regular dwarf rage
 		type = 'trigger',
+		debug_name = "dwarf_enrage_starter",
 		trigger = [variables.TR_POST_TARG],
 		conditions = [
 			{type = 'skill', value = ['tags','has', 'damage'] },
@@ -2196,29 +2202,62 @@ var effect_table = {
 	},
 	e_rage_1 = {
 		type = 'temp_s',
+		name = 'dwarf_enrage',
 		target = 'owner',
-		name = 'rage',
 		stack = 0,
 		rem_event = [variables.TR_COMBAT_F],
 		tags = ['buff', 'rage'],
-		args = [],
+		icon_text = "5",
+		args = [{obj = 'template', param = 'icon_text'}],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.05}],
-		buffs = ['b_bloodlust'],#or not
+		buffs = ['b_enrage'],
 	},
 	e_s_execute_charge = {
 		type = 'temp_s',
-		target = 'caster',
 		name = 'execute_charge',
+		target = 'caster',
 		stack = 1,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['charge'],
+		tags = ['execute_charged'],#status for AI to add dk_execute skill
 		args = [],
 		sub_effects = [],
-		atomic = [{type = 'add_skill', skill = 'dk_execute'}],
-		buffs = ['b_ex_charge'],
+		atomic = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/strongattack.png", 
+			description = "Charging Execute",
+			limit = 1,
+			t_name = 'icon_execute_charge'
+		}],
+	},
+	e_execute_heal = {
+		type = 'temp_s',
+		name = 'execute_heal',
+		target = 'caster',
+		stack = 1,
+		rem_event = [variables.TR_TURN_F],
+		tags = [],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+			type = 'trigger',
+			debug_name = 'execute_healer',
+			trigger = [variables.TR_KILL],
+			req_skill = false,
+			conditions = [],
+			args = [{obj = 'parent_args', param = 0}],
+			sub_effects = [{
+					type = 'oneshot',
+					target = 'owner',
+					args = [{obj = 'parent_args', param = 0}],
+					atomic = [{type = 'heal', value = ['parent_args', 0]}],
+				}
+			],
+			buffs = []
+		}],
+		atomic = [],
+		buffs = [],
 	},
 	e_tr_fq = { 
 		type = 'trigger',
@@ -3837,18 +3876,20 @@ var buffs = {
 		t_name = 'icon_gustofwind_debuff',
 		bonuseffect = 'duration'
 	},
-	b_bloodlust = { # none 
-		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "Damage is increased by 10%% per stack. Can be dispelled. ",
+	b_bloodlust = {
+		icon = "res://assets/images/iconsskills/tackle.png", 
+		description = "Damage is increased by %s per stack. Can be dispelled.",
+		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
-		t_name = 'bloodlust',
+		t_name = 'icon_bloodlust',
 		bonuseffect = 'amount'
 	},
-	b_enrage = { # none 
+	b_enrage = {
 		icon = "res://assets/images/iconsskills/taunt.png", 
-		description = "Damage is increased by 20%% per stack. Removed by Water damage. ",
+		description = "Damage is increased by %s per stack. Can be dispelled or removed by Water damage.",
+		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
-		t_name = 'enrage',
+		t_name = 'icon_rage',
 		bonuseffect = 'amount'
 	},
 	b_unstable = { # none
@@ -3856,12 +3897,6 @@ var buffs = {
 		description = "When dies deal high damage. On player turn, deal damage to player characters. On enemy turn deal damage to enemy. ",
 		limit = 1,
 		t_name = 'unstable'
-	},
-	b_ex_charge = { # none
-		icon = "res://assets/images/iconsskills/strongattack.png", 
-		description = "Charging execute",
-		limit = 1,
-		t_name = 'charge'
 	},
 	b_dim_1 = { # none
 		icon = "res://assets/images/iconsskills/blood_blue.png", 

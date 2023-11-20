@@ -338,7 +338,7 @@ var traitlist = {
 	},
 	dwking_enrage1 = {
 		code = 'dwking_enrage1',
-		name = '',
+		name = 'Blood Lust',
 		description = '',
 		icon = null,
 		cost = 0,
@@ -347,7 +347,7 @@ var traitlist = {
 	},
 	dwking_enrage2 = {
 		code = 'dwking_enrage2',
-		name = '',
+		name = 'Rage',
 		description = '',
 		icon = null,
 		cost = 0,
@@ -356,11 +356,11 @@ var traitlist = {
 	},
 	dw_enrage = {
 		code = 'dw_enrage',
-		name = '',
+		name = 'Dwarf Enrage',
 		description = '',
 		icon = null,
 		cost = 0,
-		hidden = false, #is not displayed at all
+		hidden = false,
 		effects = ['e_tr_rage_1', 'e_dispel_rage']
 	},
 	wounds = {

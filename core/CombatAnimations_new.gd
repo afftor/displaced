@@ -215,19 +215,19 @@ func casterattack(node, args = null):#obsolete
 #
 #	cast_timer = effectdelay
 
-
-func targetattack(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0
-	hp_update_delays[node] = 0 #delay for hp updating during this animation
-	hp_float_delays[node] = 0 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0)
-	buffs_update_delays[node] = 0
-#	input_handler.gfx_sprite(node, 'slash', 0, 0.1) #strike
-	input_handler.gfx_sprite(node, 'hit', 0, 0.1)
-	tween.start()
-	
-	return nextanimationtime + aftereffectdelay
+#seems to be fully replaced by default_sfx() with id 'hit'
+#func targetattack(node, args = null):
+#	var tween = input_handler.GetTweenNode(node)
+#	var nextanimationtime = 0
+#	hp_update_delays[node] = 0 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0)
+#	buffs_update_delays[node] = 0
+##	input_handler.gfx_sprite(node, 'slash', 0, 0.1) #strike
+#	input_handler.gfx_sprite(node, 'hit', 0, 0.1)
+#	tween.start()
+#
+#	return nextanimationtime + aftereffectdelay
 
 #func firebolt(node, args = null):
 #	var tween = input_handler.GetTweenNode(node)
