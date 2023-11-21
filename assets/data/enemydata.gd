@@ -786,9 +786,9 @@ var enemylist = {
 		aiposition = 'melee',
 		loottable = 'dwarvenkingloot',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
-			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
-			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+			idle = load("res://assets/images/Fight/Bosses/King_dwarf_idle_sq/king_dwarf.tres"),
+			hit = "Fight/Bosses/King_dwarf_hit",
+			attack ="Fight/Bosses/King_dwarf_at" ,
 		},
 	},
 	fearyqueen = { #stats copied from above!!!  

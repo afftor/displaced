@@ -502,6 +502,12 @@ var char_map = {
 		base_variants = [],
 		color = Color('ffffff'),
 	},
+	Dwarf = {
+		source = 'Dwarf Soldier',
+		portrait = 'DwarfSoldier',
+		base_variants = [],
+		color = Color('ffffff'),
+	},
 }
 
 

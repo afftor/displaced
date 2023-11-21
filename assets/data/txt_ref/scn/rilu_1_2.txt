@@ -24,19 +24,19 @@ Rilu faced the wall and began chanting a spell. The barely visible spirits began
 =SPRITE kingdwarf1=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-S - The surface dwellers we have trapped on the other side seems to have found a way to disable the spirit wall.
+Dwarf - The surface dwellers we have trapped on the other side seems to have found a way to disable the spirit wall.
 KD - Finally. I feared I wouldn’t be able to finish them personally. Arm the cannon. 
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-=SPRITE_UNFADE 0.5=
+=SPRITE_HIDE=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =SPRITE rilu=
 =GUI_NORMAL=
 A sphere of spirit energy has shot from Rilu and dispelled the wall revealing the ambush behind it. 
 Ri - ...
-S - SHOOT!
+Dwarf - SHOOT!
 =SOUND explosion=
 =MUSIC_stop=
 A loud explosion shook the whole cave as a steel ball flew from the cannon at great speed.
