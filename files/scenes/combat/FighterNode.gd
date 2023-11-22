@@ -149,7 +149,7 @@ func setup_character(ch):
 		set_sprite_1(fighter.animations.idle)
 		panel_node.modulate = Color(1,1,1,1)
 		panel_node2.modulate = Color(1,1,1,1)
-		reset_shield()
+#		reset_shield()
 	regenerate_click_mask() # some cheating with not doing this every frame
 	stop_highlight()
 	set_process_input(true)
@@ -202,10 +202,11 @@ func put_above(node_above :Control, node_under :Control):
 	node_above.rect_position.y = node_under.rect_position.y
 	node_above.rect_position.y -= node_above.rect_size.y
 
-func reset_shield():
-	$sprite/shield.rect_size = $sprite.rect_min_size * 1.5
-	$sprite/shield.rect_position = - $sprite/shield.rect_size / 6.0
-	$sprite/shield.visible = (fighter.shield > 0)
+#that stuff not working for now. All shield representation made through buff-icons, decomment it in other case
+#func reset_shield():
+#	$sprite/shield.rect_size = $sprite.rect_min_size * 1.5
+#	$sprite/shield.rect_position = - $sprite/shield.rect_size / 6.0
+#	$sprite/shield.visible = (fighter.shield > 0)
 
 
 func update_hp_bar_max():
