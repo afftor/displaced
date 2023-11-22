@@ -1756,8 +1756,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				sfxtarget.process_sfx_dict(j)
 			#======
 			
-			#special results
-			if skill.damagetype is String and skill.damagetype == 'summon':
+			#special results. Should probably be refactored into S_Skill class somehow
+			if s_skill1.get_exception_type() == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			#does not work, I think
 #			elif skill.damagetype is String and skill.damagetype == 'resurrect':

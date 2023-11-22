@@ -223,6 +223,8 @@ func process_event(ev):
 #that's very much of a reckless patch for meta-skill TR_CAST event processing. Mind that it is not a replacement for resolve_value
 #to get rid of this, need to do a major refactor of all this meta/applicable skill system
 func prepare_process_value_on_meta():
+	if !get_exception_type().empty():
+		return
 	process_value = input_handler.calculate_number_from_string_array(long_value[0], caster, target)
 
 func resolve_value(check_m):
@@ -250,3 +252,9 @@ func calculate_dmg():
 			if damagestat[i] in variables.dmg_mod_list:
 				value[i] *= caster.get_stat('critmod')
 	for v in value: v = round(v)
+
+#returns empty string for default skill processing
+func get_exception_type() ->String:
+	if damagetype is String and damagetype == 'summon':
+		return 'summon'
+	return ''
