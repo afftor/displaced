@@ -137,6 +137,7 @@ func setup_caster(c):
 
 func setup_target(t):
 	target = t
+	if target == null: return#in all honesty, it shouldn't ever work, but it is still needed for zombie selfdestraction
 	evade = target.get_stat('evasion')
 
 func setup_final():
@@ -223,7 +224,7 @@ func process_event(ev):
 #that's very much of a reckless patch for meta-skill TR_CAST event processing. Mind that it is not a replacement for resolve_value
 #to get rid of this, need to do a major refactor of all this meta/applicable skill system
 func prepare_process_value_on_meta():
-	if !get_exception_type().empty():
+	if !get_exception_type().empty() or target == null:
 		return
 	process_value = input_handler.calculate_number_from_string_array(long_value[0], caster, target)
 
