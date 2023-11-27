@@ -104,6 +104,22 @@ var effect_table = {
 		atomic = [],
 		buffs = ['b_poison'],
 	},
+	e_s_poison_permanent = {
+		type = 'temp_s',
+		name = 'poison_permanent',
+		target = 'target',
+		stack = 1,
+		rem_event = [variables.TR_COMBAT_F],
+		tags = ['poison', 'negative'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [rebuild_dot('a_poison')],
+		atomic = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Debilitate.png", 
+			description = "Permanent poison: Takes damage at the end of turn. Can be dispelled.",
+			t_name = 'icon_poison_permanent'
+		}],
+	},
 	e_s_bleed = {
 		type = 'temp_s',
 		name = 'bleed',
@@ -1474,7 +1490,12 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
-		buffs = ['b_ava'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/rilu_1.png", 
+			description = "Damage taking increased by 20%%",
+			t_name = 'icon_resistdamage_debuff',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_t_thorns = {
 		type = 'trigger',
@@ -1719,20 +1740,27 @@ var effect_table = {
 	},
 	e_s_viccull = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'culling',
+		target = 'target',
 		stack = 10,
-		tick_event = [variables.TR_TURN_F],
+#		tick_event = [variables.TR_TURN_F],#for now it's only stackable and dispelable
+#		duration = 2,
 		rem_event = [variables.TR_COMBAT_F],
-		duration = 2,
 		tags = ['negative'],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
-		buffs = ['b_ava'],
+		buffs = [{
+			icon = "res://assets/images/traits/armorignore.png", 
+			description = "Damage taking increased by 20%% per stack. Can be dispelled.",
+			limit = 1,
+			t_name = 'icon_culling',
+			bonuseffect = 'amount'
+		}],
 	},
 	e_tr_vicen = {
 		type = 'trigger',
+		debug_name = 'energyburst_buff_starter',
 		trigger = [variables.TR_CAST],
 		conditions = [],
 		req_skill = true,
@@ -1740,12 +1768,12 @@ var effect_table = {
 	},
 	e_s_vicen = {
 		type = 'temp_s',
+		name = 'energyburst_buff',
 		target = 'caster',
-		name = 'energyburst',
 		tags = ['buff'],
 		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
-		duration = 2,
+		duration = 3,
 		stack = 1,
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 25}],
@@ -1753,8 +1781,7 @@ var effect_table = {
 			{
 				icon = "res://assets/images/traits/dodge.png", 
 				description = "Evasion increased by 25",
-				args = [],
-				t_name = 'energyburst',
+				t_name = 'iacon_energyburst_buff',
 				bonuseffect = 'duration'
 			}
 		],
@@ -2261,6 +2288,7 @@ var effect_table = {
 	},
 	e_tr_fq = { 
 		type = 'trigger',
+		debug_name = 'faery_barrier',
 		trigger = [variables.TR_TURN_S],
 		conditions = [],
 		req_skill = false,
@@ -2271,9 +2299,28 @@ var effect_table = {
 				args = [{obj = 'app_obj', param = 'ai_spec'}],
 				atomic = [{type = 'stat_add', stat = 'shield', value = [['parent_args', 0], '*', 25]}],
 				sub_effects = []
-			},
+			}
 		],
-		buffs = []
+		args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
+		buffs = [{
+			icon = "res://assets/images/traits/armor.png", 
+			description = "At the start of each turn adds Barrier of 25 per Faery in battle. (%d remains)",
+			args = [{obj = 'parent_args', param = 0}],
+			t_name = 'icon_faery_barrier',
+		}],
+	},
+	e_fq_blast_info = {
+		type = 'static',
+		debug_name = 'fqueen_blast_info',
+		args = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/erika_5.png", 
+				description = "Queen's Ice Blast damage reduced by 20%% per Faery in battle.",
+				t_name = 'icon_fqueen_blast_info',
+			}
+		],
+		sub_effects = [],
 	},
 	e_s_suicide = {
 		type = 'oneshot',
@@ -3770,10 +3817,10 @@ var effect_table = {
 	},
 	common_shield_info = {
 		type = 'temp_s',#this should be endless "temporal" effect
+		name = 'common_shield_info',
 		rem_event = [variables.TR_SHIELD_DOWN,variables.TR_COMBAT_F],
 		target = 'target',
 		stack = 1,
-		name = 'common_shield_info',
 		args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 		buffs = [
 			{
@@ -3860,12 +3907,6 @@ var buffs = {
 		description = "Damage taken is reduced by %d%%",
 		args = [{obj = 'parent_args', param = 0}],
 		t_name = 'buff_renew_resist',
-		bonuseffect = 'duration'
-	},
-	b_ava = {
-		icon = "res://assets/images/iconsskills/rilu_1.png", 
-		description = "Damage taking increased by 20%%",
-		t_name = 'icon_resistdamage_debuff',
 		bonuseffect = 'duration'
 	},
 	b_gust = {

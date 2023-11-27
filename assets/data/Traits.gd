@@ -378,8 +378,17 @@ var traitlist = {
 		description = '',
 		icon = null,
 		cost = 0,
-		hidden = false, #is not displayed at all
+		hidden = false,
 		effects = ['e_tr_fq']
+	},
+	fq_blast_info = {
+		code = 'fq_blast_info',
+		name = '',
+		description = '',
+		icon = null,
+		cost = 0,
+		hidden = false,
+		effects = ['e_fq_blast_info']
 	},
 	dem_rules = {
 		code = 'dem_rules',

@@ -611,6 +611,30 @@ var enemylist = {
 			hit = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_hit",
 			attack = "Fight/Fight_spritesFHD_0000s_0001_Demonalt_at",}
 	},
+	bigdemon = {
+		code = 'bigdemon',
+		name = "",
+		flavor = "",
+		race = 'demon',
+		skills = ['attack', 'de_attack'],
+		basehp = 120,
+		damage = 55,
+		resists = {slash = 50, pierce = -100, bludgeon = 50, fire = 0, earth = 50, water = 50, air = -100, light = -100, dark = 50},
+		xpreward = 10,
+		bodyhitsound = 'flesh',
+		base_dmg_type = 'slash',
+		traits = [],
+		combaticon = '',
+		bodyimage = null,
+		aiposition = 'melee',
+		loottable = '',
+		weaponsound = 'demon at',
+		animations = {
+			idle = "Fight/Demon_idle",
+			hit = "Fight/Demon_hit",
+			attack = "Fight/Demon_at",
+		},
+	},
 	soldier = {
 		code = 'soldier',
 		name = "",
@@ -727,12 +751,12 @@ var enemylist = {
 		},
 		traits = ['summoner']
 	},
-	earthgolemboss = { #animations copied from regulal version!!!
+	earthgolemboss = {
 		code = 'earthgolemboss',
 		name = "",
 		flavor = "",
 		race = 'rock',
-		skills = ['attack'], #'golemattack'], stop giving nonexistant skills!
+		skills = ['attack', 'earth_aoe'], #'golemattack'], stop giving nonexistant skills!
 		passives = [],
 		traits = [],
 		basehp = 470,
@@ -744,7 +768,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 100,
 		speed = 30,
-		resists = {earth = 50, air = 25},
+		resists = {slash = 80, pierce = 80, bludgeon = -50, earth = 150, water = -50, air = 50, light = 50, dark = 50},
 		xpreward = 50,
 		is_boss = true,
 		bodyhitsound = 'stone',
@@ -759,7 +783,7 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0000s_0001s_0000_Golem_at",
 		}
 	},
-	dwarvenking = { #stats copied from above!!! animation copied from regular warrior!!!! passives not set up
+	dwarvenking = {
 		code = 'dwarvenking',
 		name = "",
 		flavor = "",
@@ -791,7 +815,7 @@ var enemylist = {
 			attack ="Fight/Bosses/King_dwarf_at" ,
 		},
 	},
-	fearyqueen = { #stats copied from above!!!  
+	fearyqueen = {
 		code = 'fearyqueen',
 		name = "",
 		flavor = "",
@@ -808,7 +832,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 90,
 		speed = 30,
-		resists = {earth = 50, air = 25},
+		resists = {pierce = -50, bludgeon = 90, earth = 90, water = -50, light = -50},
 		xpreward = 50,
 		ai = load('res://files/ai_classes/faery_queen.gd'),
 		bodyhitsound = 'stone',
@@ -820,10 +844,10 @@ var enemylist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Fairy_sq/FairyQueen.tres"),
 			hit = "Fight/Bosses/Queen_fairy_hit",
-			attack ="Fight/Bosses/Queen_fairy_cast" ,
+			attack ="Fight/Bosses/Queen_fairy_cast"
 		},
 	},
-	dragon_boss = { #stats copied from above!!!  skills copied from wyvern
+	dragon_boss = {
 		code = 'dragon_boss',
 		name = "",
 		flavor = "",
@@ -840,7 +864,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 70,
 		speed = 30,
-		resists = {earth = 50, air = 25},
+		resists = {slash = 90, pierce = -50, bludgeon = 90, fire = 90, earth = 90, water = -50, air = -50, light = 90, dark = -50},
 		xpreward = 50,
 		bodyhitsound = 'stone',
 		is_boss = true,
@@ -856,8 +880,8 @@ var enemylist = {
 			cast ="Fight/Bosses/Dragon_cast" ,
 		},
 	},
-	viktor_boss = { #stats copied from above!!!
-		code = 'dragon_boss',
+	viktor_boss = {
+		code = 'viktor_boss',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
@@ -873,7 +897,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 100,
 		speed = 30,
-		resists = {earth = 50, air = 25},
+		resists = {slash = 90, pierce = 80, fire = 100, earth = -50, water = -50, air = 70, light = -50, dark = 90},
 		xpreward = 50,
 		is_boss = true,
 		bodyhitsound = 'stone',
@@ -886,11 +910,11 @@ var enemylist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Viktor_sq_idle/Viktor.tres"),
 			hit = "Fight/Bosses/Viktor_hit",
-			attack ="Fight/Bosses/Viktor_at" ,
-			special ="Fight/Bosses/Viktor_sp_at" ,
+			attack = "Fight/Bosses/Viktor_at",
+			cast = "Fight/Bosses/Viktor_sp_at"
 		},
 	},
-	annet = { #stats copied from above!!!
+	annet = {
 		code = 'annet',
 		name = "",
 		flavor = "",
@@ -907,7 +931,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 110,
 		speed = 30,
-		resists = {earth = 50, air = 25},
+		resists = {slash = -50, pierce = 100, bludgeon = -50, fire = 80, earth = -50, water = -50, air = 80, light = -100, dark = 100},
 		xpreward = 50,
 		is_boss = true,
 		bodyhitsound = 'stone',
@@ -920,8 +944,8 @@ var enemylist = {
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Sukkub_sq_anim/Succubus.tres"),
 			hit = "Fight/Bosses/Sukkub_hit",
-			attack ="Fight/Bosses/Sukkub_at" ,
-			special ="Fight/Bosses/Sukkub_cast" ,
+			attack = "Fight/Bosses/Sukkub_at",
+			cast = "Fight/Bosses/Sukkub_cast",
 		},
 	},
 	scientist_boss = {
@@ -949,12 +973,13 @@ var enemylist = {
 		combaticon = 'enemies/Scientist_bossCombatIcon',
 		bodyimage = null,
 		aiposition = 'melee',
-		loottable = '',
+		loottable = 'scientistloot',
 		weaponsound = 'doc at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Doctor_idle_sq/doc_idle.tres"),
 			hit = "Fight/Bosses/Fight_spritesFHD_0000s_0001_Doc_hit",
-			attack ="Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at" ,
+			attack = "Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at",
+			cast = "Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at"#for en_enburst skill compatibility
 		},
 	},
 	caliban = {
@@ -1382,6 +1407,18 @@ var loottables = { # no need to separate materials from usables now
 			{code = 'item_buff_atk', chance = 50}
 		],
 		gold = [150, 220]
+	},
+	scientistloot = {
+		items = [
+			{code = 'leather', chance = 100, min = 1, max = 5},
+			{code = 'item_res_1', chance = 100},
+			{code = 'item_res_2', chance = 100},
+			{code = 'item_res_3', chance = 80},
+			{code = 'item_res_4', chance = 50},
+			{code = 'item_barrier_2', chance = 80},
+			{code = 'item_buff_def', chance = 10},
+		],
+		gold = [190, 290]
 	},
 	dragonbossloot = {
 		items = [
