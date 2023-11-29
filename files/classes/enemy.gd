@@ -65,10 +65,6 @@ func createfromtemplate(enemy_id, lvl):
 	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
 	state.heroes[id] = self
-	for i in variables.resistlist:
-		resists[i] = 0
-		if template.resists.has(i):
-			resists[i] = template.resists[i]
 	for i in ['damage','name','hitrate','evasion','icon','combaticon', 'loottable', 'xpreward', 'bodyhitsound', 'weaponsound', 'flavor', 'base_dmg_type', 'base_dmg_range']:
 		#self[i] = template[i]
 		if template.has(i): set(i, template[i])

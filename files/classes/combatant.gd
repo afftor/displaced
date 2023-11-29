@@ -24,7 +24,8 @@ var evasion = 0
 var hitrate = 80
 var critchance = 5
 var critmod = 1.5
-var resists = {} setget ,get_resists
+#Mind, that use of getters with dictionaries makes it dangerous for attempts to modify it from outside
+var resists = {} setget ,get_resists#to modify resists from outside use set_resists()!
 var status_resists = {} setget ,get_s_resists
 var shield = 0 setget set_shield;
 #var base_dmg_type = 'bludgeon'
@@ -264,6 +265,11 @@ func calc_resist_mul_bonus(base :float, bonus :float) -> float:
 	elif base < 0.0:
 		return base / bonus
 	return base
+
+func set_resists(new_resists :Dictionary):#not making it a setter, as I don't cleary understand, how would it work, when you will try to set precise value in dictionary
+	for i in variables.resistlist:
+		if new_resists.has(i):
+			resists[i] = new_resists[i]
 
 func get_resists():
 	var res = resists.duplicate()
