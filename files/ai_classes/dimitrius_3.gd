@@ -1,13 +1,14 @@
 extends ai_base
 
 func shuffle_resists():
-	var key_tres = ['slash', 'pierce', 'dark', 'air']
+	var key_tres = ['slash', 'pierce', 'dark', 'air']#advantageous for Arron
 	var tres = ['bludgeon', 'light', 'water', 'earth', 'fire']
 	for resist in key_tres:
 		app_obj.resists[resist] = 75.0
 	for resist in tres:
 		app_obj.resists[resist] = 75.0
 	
+	#idea is that slash resist must be at least -100, so Arron could have a chance
 	randomize()
 	var best = randi() % 4
 	var support

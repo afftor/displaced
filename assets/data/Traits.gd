@@ -390,6 +390,15 @@ var traitlist = {
 		hidden = false,
 		effects = ['e_fq_blast_info']
 	},
+	dem_soulprot = {
+		code = 'dem_soulprot',
+		name = '',
+		description = '',
+		icon = null,
+		cost = 0,
+		hidden = true,
+		effects = ['e_dim_soulprot']
+	},
 	dem_rules = {
 		code = 'dem_rules',
 		name = '',

@@ -471,7 +471,8 @@ func apply_atomic(template):
 			tick_cooldowns()
 		'add_rule':
 			if input_handler.combat_node == null: return
-			if !input_handler.combat_node.rules.has(template.value): input_handler.combat_node.rules.push_back(template.value)
+			if !input_handler.combat_node.rules.has(template.value):
+				input_handler.combat_node.rules.push_back(template.value)
 
 
 func remove_atomic(template):
@@ -757,6 +758,7 @@ func death():
 
 func resurrection(new_hp = 1):
 	if !defeated: return
+	if input_handler.combat_node.rules.has('no_res'): return
 	
 	defeated = false
 	self.hp = new_hp

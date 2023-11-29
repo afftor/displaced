@@ -1014,12 +1014,12 @@ var enemylist = {
 			attack ="Fight/Bosses/Fight_spritesFHD_0001s_0000_Mnstr_at" ,
 		},
 	},
-	demitrius1 = {
+	demitrius1 = {#first encounter, only first phase
 		code = 'demitrius1',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
-		skills = ['dm_storm', 'dm_fire', 'dm_poison_spike', 'dm_bomb'],
+		skills = ['attack', 'dm_storm', 'dm_fire', 'dm_poison_spike', 'dm_bomb'],
 		passives = [],
 		traits = [],
 		basehp = 2200,
@@ -1044,19 +1044,19 @@ var enemylist = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
 			hit = "Fight/Bosses/Demitrius_hit",
 			attack ="Fight/Bosses/Demitrius_at",
-			special ="Fight/Bosses/Demitrius_cast",
+			cast ="Fight/Bosses/Demitrius_cast",
 		},
 		
 	},
-	demitrius2 = {
+	demitrius2 = {#second encounter, both phases
 		code = 'demitrius2',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
-		skills = ['dm_storm', 'dm_nova', 'dm_form'],
+		skills = [],
 		passives = [],
-		traits = ['dem_rules'],
-		basehp = 450,
+		traits = ['dem_soulprot'],
+		basehp = 2000,
 		basemana = 0,
 		armor = 35,
 		armorpenetration = 0,
@@ -1079,16 +1079,16 @@ var enemylist = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
 			hit = "Fight/Bosses/Demitrius_hit",
 			attack ="Fight/Bosses/Demitrius_at",
-			special ="Fight/Bosses/Demitrius_cast",
+			cast ="Fight/Bosses/Demitrius_cast",
 		},
 	},
 	
-	demitrius3 = {
+	demitrius3 = {#last encounter: duel with Arron, only simplified second phase
 		code = 'demitrius3',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
-		skills = ['dm_storm', 'dm_nova', 'dm_form'],
+		skills = ['attack', 'dm_storm', 'dm_nova', 'dm_form', 'dm_fire'],
 		passives = [],
 		traits = [],
 		basehp = 450,
@@ -1114,7 +1114,7 @@ var enemylist = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
 			hit = "Fight/Bosses/Demitrius_hit",
 			attack ="Fight/Bosses/Demitrius_at",
-			special ="Fight/Bosses/Demitrius_cast",
+			cast ="Fight/Bosses/Demitrius_cast",
 		},
 	},
 }

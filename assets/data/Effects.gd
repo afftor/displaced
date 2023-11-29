@@ -2369,31 +2369,57 @@ var effect_table = {
 		],
 		buffs = []
 	},
+	e_dim_soulprot = {
+		type = 'static',
+		debug_name = 'demitrius_soulprot',
+		tags = ['soulprot'],
+		sub_effects = [],
+		atomic = [],
+		buffs = []
+	},
 	e_dim_hp_1 = {
 		type = 'c_static',
+		debug_name = 'rule_no_barriers',
 		conditions = [{type = 'stats', stat = 'hp_p', operant = 'lt', value = 100}],
 		tags = ['recheck_damage'],
 #		no_escape = true,
-		atomic = [{type = 'add_rule', value = 'no_barrier'}],
-		buffs = ['b_dim_1'],
+		atomic = [{type = 'add_rule', value = 'no_shield'}],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/blood_blue.png", 
+			description = "Noone can be protected with barriers",
+			limit = 1,
+			t_name = 'icon_rule_no_barriers'
+		}],
 		sub_effects = [],
 	},
 	e_dim_hp_2 = {
 		type = 'c_static',
+		debug_name = 'rule_no_heal',
 		conditions = [{type = 'stats', stat = 'hp_p', operant = 'lt', value = 75}],
 		tags = ['recheck_damage'],
 #		no_escape = true,
 		atomic = [{type = 'add_rule', value = 'no_heal'}],
-		buffs = ['b_dim_2'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/blood_blue.png", 
+			description = "Noone can be healed",
+			limit = 1,
+			t_name = 'icon_rule_no_heal'
+		}],
 		sub_effects = [],
 	},
 	e_dim_hp_3 = {
 		type = 'c_static',
+		debug_name = 'rule_no_res',
 		conditions = [{type = 'stats', stat = 'hp_p', operant = 'lt', value = 40}],
 		tags = ['recheck_damage'],
 #		no_escape = true,
 		atomic = [{type = 'add_rule', value = 'no_res'}],
-		buffs = ['b_dim_3'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/blood_blue.png", 
+			description = "Noone can be resurrected",
+			limit = 1,
+			t_name = 'icon_rule_no_res'
+		}],
 		sub_effects = [],
 	},
 	e_dim_resists = {
@@ -3938,24 +3964,6 @@ var buffs = {
 		description = "When dies deal high damage. On player turn, deal damage to player characters. On enemy turn deal damage to enemy. ",
 		limit = 1,
 		t_name = 'unstable'
-	},
-	b_dim_1 = { # none
-		icon = "res://assets/images/iconsskills/blood_blue.png", 
-		description = "Can't be protected with barriers",
-		limit = 1,
-		t_name = 'rule1'
-	},
-	b_dim_2 = { # none
-		icon = "res://assets/images/iconsskills/blood_blue.png", 
-		description = "Can't be healed",
-		limit = 1,
-		t_name = 'rule2'
-	},
-	b_dim_3 = { # none
-		icon = "res://assets/images/iconsskills/blood_blue.png", 
-		description = "Can't be resurrected on knock out",
-		limit = 1,
-		t_name = 'rule3'
 	},
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_wwalk = { # none
