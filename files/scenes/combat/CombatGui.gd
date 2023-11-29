@@ -40,6 +40,7 @@ func _ready():
 	
 	$SkillPanel/Escape.connect("pressed", combat, "run")
 	$SkillPanel/cheat.connect("pressed", combat, "cheatvictory")
+	$SkillPanel/cheatheal.connect("pressed", combat, "cheatheal")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
 	$SkillPanel/CategoriesContainer/ItemsButton.connect('pressed', self, "RebuildItemPanel")
 	for ch in $SkillPanel/CategoriesContainer.get_children():

@@ -160,6 +160,10 @@ func cheatvictory():
 		i.hp = 0
 	#checkwinlose()
 
+func cheatheal():
+	for i in playergroup.values():
+		i.hp = i.hpmax
+
 func _process(delta):
 	pass
 
