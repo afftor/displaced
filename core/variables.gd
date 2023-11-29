@@ -42,7 +42,7 @@ var EasyDiffMul = 0.7
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['damage', 'hitrate', 'hpmax']
+var bonuses_stat_list = ['damage', 'hitrate', 'hpmax', 'evasion', 'critchance']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'alt_mana', 'taunt', 'shield']

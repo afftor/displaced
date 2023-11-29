@@ -336,8 +336,13 @@ var effect_table = {
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'dodge', value = 20}],
-		buffs = ['b_swift'],
+		atomic = [{type = 'stat_add', stat = 'evasion', value = 20}],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/arron_1.png", 
+			description = "Evasion increased",
+			t_name = 'icon_swift',
+			bonuseffect = 'duration'
+		}],
 	},
 	e_s_protect = {
 		type = 'trigger',
@@ -2485,12 +2490,12 @@ var effect_table = {
 			}
 		]
 	},
-	e_tr_fastlearn = { #no icon for buff as this is the only effect of trait. can add if reqired
-		type = 'static',
-		atomic = [{type = 'stat_add', stat = 'xpmod', value = 0.15}],
-		buffs = [],
-		sub_effects = [],
-	},
+#	e_tr_fastlearn = { #no icon for buff as this is the only effect of trait. can add if reqired
+#		type = 'static',
+#		atomic = [{type = 'stat_add', stat = 'xpmod', value = 0.15}],#xpmod stat_add probably doesn't work
+#		buffs = [],
+#		sub_effects = [],
+#	},
 	e_tr_hitrate = {#no icon for buff as this is the only effect of trait. can add if reqired
 		type = 'static',
 		atomic = [{type = 'stat_add', stat = 'hitrate', value = 10}],
@@ -2509,12 +2514,12 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_tr_crit = {#no icon for buff as this is the only effect of trait. can add if reqired
-		type = 'static',
-		atomic = [{type = 'stat_add', stat = 'critchance', value = 10}],
-		buffs = [],
-		sub_effects = [],
-	},
+#	e_tr_crit = {#no icon for buff as this is the only effect of trait. can add if reqired
+#		type = 'static',
+#		atomic = [{type = 'stat_add', stat = 'critchance', value = 10}],
+#		buffs = [],
+#		sub_effects = [],
+#	},
 	e_tr_resist = {#no icon for buff as this is the only effect of trait. can add if reqired
 		type = 'static',
 		atomic = [
@@ -2538,28 +2543,28 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_tr_speed = {#no icon for buff as this is the only effect of trait. version with icon exists too
-		type = 'static',
-		atomic = [{type = 'stat_add', stat = 'speed', value = 10}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_regen = {#no icon for buff as this is the only effect of trait. can add if reqired
-		type = 'trigger',
-		req_skill = false,
-		trigger = [variables.TR_TURN_F],
-		conditions = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				atomic = [{type = 'stat_add', stat = 'hppercent', value = 5}],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		buffs = []
-	},
+#	e_tr_speed = {#no icon for buff as this is the only effect of trait. version with icon exists too
+#		type = 'static',
+#		atomic = [{type = 'stat_add', stat = 'speed', value = 10}],#speed stat seems not exist
+#		buffs = [],
+#		sub_effects = [],
+#	},
+#	e_tr_regen = {#no icon for buff as this is the only effect of trait. can add if reqired
+#		type = 'trigger',
+#		req_skill = false,
+#		trigger = [variables.TR_TURN_F],
+#		conditions = [],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'owner',
+#				atomic = [{type = 'stat_add', stat = 'hppercent', value = 5}],#hppercent stat seems not exist
+#				buffs = [],
+#				sub_effects = []
+#			}
+#		],
+#		buffs = []
+#	},
 	e_tr_noevade = {
 		type = 'trigger',
 		req_skill = true,
@@ -2632,34 +2637,34 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_tr_react = {
-		type = 'trigger',
-		req_skill = false,
-		trigger = [variables.TR_DMG],
-		conditions = [],
-		sub_effects = ['e_t_react'],
-		buffs = [],
-	},
-	e_t_react = {
-		type = 'temp_s',
-		target = 'owner',
-		name = 'react20',
-		tags = ['pos_state'],
-		tick_event = variables.TR_TURN_S,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 2,
-		stack = 1,
-		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'speed', value = 20}],
-		buffs = [
-			{
-				icon = "res://assets/images/traits/speedondamage.png", 
-				description = "Speed increased by 20",
-				args = [{obj = 'parent', param = 'remains'}],
-				t_name = 'react'
-			}
-		],
-	},
+#	e_tr_react = {
+#		type = 'trigger',
+#		req_skill = false,
+#		trigger = [variables.TR_DMG],
+#		conditions = [],
+#		sub_effects = ['e_t_react'],
+#		buffs = [],
+#	},
+#	e_t_react = {
+#		type = 'temp_s',
+#		target = 'owner',
+#		name = 'react20',
+#		tags = ['pos_state'],
+#		tick_event = variables.TR_TURN_S,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 2,
+#		stack = 1,
+#		sub_effects = [],
+#		atomic = [{type = 'stat_add', stat = 'speed', value = 20}],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/traits/speedondamage.png", 
+#				description = "Speed increased by 20",
+#				args = [{obj = 'parent', param = 'remains'}],
+#				t_name = 'react'
+#			}
+#		],
+#	},
 	e_tr_magecrit = {
 		type = 'trigger',
 		req_skill = true,
@@ -2679,37 +2684,37 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_tr_slowarrow = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_t_slowarrow'],
-		buffs = []
-	},
-	e_t_slowarrow = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'slowarrow',
-		tick_event = variables.TR_TURN_S,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 2,
-		stack = 2,
-		tags = ['natural_debuf'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'speed', value = -10},
-			{type = 'stat_add', stat = 'evasion', value = -10}
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/traits/speeddebuf.png", 
-				description = "Speed and evasion reduced",
-				limit = 1,
-				t_name = 'slowarrow'
-			}
-		],
-	},
+#	e_tr_slowarrow = {
+#		type = 'trigger',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_t_slowarrow'],
+#		buffs = []
+#	},
+#	e_t_slowarrow = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'slowarrow',
+#		tick_event = variables.TR_TURN_S,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 2,
+#		stack = 2,
+#		tags = ['natural_debuf'],
+#		sub_effects = [],
+#		atomic = [
+#			{type = 'stat_add', stat = 'speed', value = -10},
+#			{type = 'stat_add', stat = 'evasion', value = -10}
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/traits/speeddebuf.png", 
+#				description = "Speed and evasion reduced",
+#				limit = 1,
+#				t_name = 'slowarrow'
+#			}
+#		],
+#	},
 	e_tr_killer = {
 		type = 'trigger',
 		req_skill = false,
@@ -2772,31 +2777,31 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_tr_speed_a = {
-		type = 'static',
-		atomic = [],
-		buffs = [
-			{#for testing purpose
-				icon = "res://assets/images/traits/dodgegroup.png", 
-				description = "This unit owns area speed increasing effect",
-				t_name = 'areaspeed1'
-			}
-		],
-		sub_effects = ['e_tr_areaspeed'],
-	},
-	e_tr_areaspeed = {
-		type = 'area',
-		area = 'line',
-		atomic = [{type = 'stat_add', stat = 'speed', value = 10}],#i'm still confused if this buff should increase speed or evasion....
-		buffs = [
-			{#for testing purpose
-				icon = "res://assets/images/traits/dodgegroup.png", 
-				description = "This unit's speed is increased by area effect ",
-				t_name = 'areaspeed2'
-			}
-		],
-		sub_effects = [],
-	},
+#	e_tr_speed_a = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = [
+#			{#for testing purpose
+#				icon = "res://assets/images/traits/dodgegroup.png", 
+#				description = "This unit owns area speed increasing effect",
+#				t_name = 'areaspeed1'
+#			}
+#		],
+#		sub_effects = ['e_tr_areaspeed'],
+#	},
+#	e_tr_areaspeed = {
+#		type = 'area',
+#		area = 'line',
+#		atomic = [{type = 'stat_add', stat = 'speed', value = 10}],#i'm still confused if this buff should increase speed or evasion....
+#		buffs = [
+#			{#for testing purpose
+#				icon = "res://assets/images/traits/dodgegroup.png", 
+#				description = "This unit's speed is increased by area effect ",
+#				t_name = 'areaspeed2'
+#			}
+#		],
+#		sub_effects = [],
+#	},
 	e_tr_noresist = {
 		type = 'trigger',
 		conditions = [],
@@ -3073,99 +3078,99 @@ var effect_table = {
 #		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.25}],
 #		buffs = ['b_taunt']
 #	},
-	e_s_quake = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_t_quake'],
-		buffs = []
-	},
-	e_t_quake = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'earthquake',
-		tick_event = variables.TR_TURN_S,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 2,
-		stack = 1,
-		tags = ['natural_debuf'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'speed', value = -20},
-			{type = 'stat_add', stat = 'evasion', value = -20}
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
-				description = "Speed and Evasion reduced by 20",
-				limit = 1,
-				t_name = 'earthquake'
-			}
-		],
-	},
-	e_s_wwalk = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_t_wwalk'],
-		buffs = []
-	},
-	e_t_wwalk = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'wwalk',
-		tick_event = variables.TR_TURN_S,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 3,
-		stack = 1,
-		tags = ['bless'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'speed', value = 15},
-			{type = 'stat_add', stat = 'hitrate', value = 25},
-			{type = 'stat_add', stat = 'evasion', value = 25}
-		],
-		buffs = ['b_wwalk'],
-	},
-	e_s_nbless = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_t_nbless'],
-		buffs = []
-	},
-	e_t_nbless = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'wwalk',
-		tick_event = variables.TR_TURN_F,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 3,
-		stack = 1,
-		tags = ['bless'],
-		sub_effects = [
-			{
-				type = 'trigger',
-				trigger = [variables.TR_TURN_GET],
-				conditions = [],
-				req_skill = false,
-				sub_effects = [
-					{
-						type = 'oneshot',
-						target = 'owner',
-						atomic = [{type = 'stat_add', stat = 'hppercent', value = 20}],
-						sub_effects = []
-					}
-				],
-				buffs = []
-			}
-		],
-		atomic = [],
-		buffs = ['b_nbless'],
-	},
+#	e_s_quake = {
+#		type = 'trigger',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_t_quake'],
+#		buffs = []
+#	},
+#	e_t_quake = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'earthquake',
+#		tick_event = variables.TR_TURN_S,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 2,
+#		stack = 1,
+#		tags = ['natural_debuf'],
+#		sub_effects = [],
+#		atomic = [
+#			{type = 'stat_add', stat = 'speed', value = -20},
+#			{type = 'stat_add', stat = 'evasion', value = -20}
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+#				description = "Speed and Evasion reduced by 20",
+#				limit = 1,
+#				t_name = 'earthquake'
+#			}
+#		],
+#	},
+#	e_s_wwalk = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_t_wwalk'],
+#		buffs = []
+#	},
+#	e_t_wwalk = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'wwalk',
+#		tick_event = variables.TR_TURN_S,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 3,
+#		stack = 1,
+#		tags = ['bless'],
+#		sub_effects = [],
+#		atomic = [
+#			{type = 'stat_add', stat = 'speed', value = 15},
+#			{type = 'stat_add', stat = 'hitrate', value = 25},
+#			{type = 'stat_add', stat = 'evasion', value = 25}
+#		],
+#		buffs = ['b_wwalk'],
+#	},
+#	e_s_nbless = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_t_nbless'],
+#		buffs = []
+#	},
+#	e_t_nbless = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'wwalk',
+#		tick_event = variables.TR_TURN_F,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 3,
+#		stack = 1,
+#		tags = ['bless'],
+#		sub_effects = [
+#			{
+#				type = 'trigger',
+#				trigger = [variables.TR_TURN_GET],
+#				conditions = [],
+#				req_skill = false,
+#				sub_effects = [
+#					{
+#						type = 'oneshot',
+#						target = 'owner',
+#						atomic = [{type = 'stat_add', stat = 'hppercent', value = 20}],
+#						sub_effects = []
+#					}
+#				],
+#				buffs = []
+#			}
+#		],
+#		atomic = [],
+#		buffs = ['b_nbless'],
+#	},
 	e_s_bcry = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -3247,42 +3252,42 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_s_bless_ = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_t_bless'],
-		buffs = []
-	},
-	e_t_bless = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'bless',
-		tick_event = variables.TR_TURN_S,
-		rem_event = variables.TR_COMBAT_F,
-		duration = 4,
-		stack = 1,
-		tags = ['bless'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'damade', value = 10},
-#			{type = 'stat_add', stat = 'armor', value = 10},
-#			{type = 'stat_add', stat = 'mdef', value = 10},
-			{type = 'stat_add', stat = 'speed', value = 10},
-			{type = 'stat_add', stat = 'hitrate', value = 10},
-			{type = 'stat_add', stat = 'evasion', value = 10},
-#			{type = 'stat_add', stat = 'armorpenetration', value = 10}
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
-				description = "Stats increased",
-				limit = 1,
-				t_name = 'bless'
-			}
-		],
-	},
+#	e_s_bless_ = {
+#		type = 'trigger',
+#		trigger = [variables.TR_HIT],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_t_bless'],
+#		buffs = []
+#	},
+#	e_t_bless = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'bless',
+#		tick_event = variables.TR_TURN_S,
+#		rem_event = variables.TR_COMBAT_F,
+#		duration = 4,
+#		stack = 1,
+#		tags = ['bless'],
+#		sub_effects = [],
+#		atomic = [
+#			{type = 'stat_add', stat = 'damade', value = 10},
+##			{type = 'stat_add', stat = 'armor', value = 10},
+##			{type = 'stat_add', stat = 'mdef', value = 10},
+#			{type = 'stat_add', stat = 'speed', value = 10},
+#			{type = 'stat_add', stat = 'hitrate', value = 10},
+#			{type = 'stat_add', stat = 'evasion', value = 10},
+##			{type = 'stat_add', stat = 'armorpenetration', value = 10}
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/traits/speeddebuf.png", #TO FIX
+#				description = "Stats increased",
+#				limit = 1,
+#				t_name = 'bless'
+#			}
+#		],
+#	},
 	e_s_sanctuary = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -3890,7 +3895,7 @@ var atomic = {
 #	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},
 	a_elvenwood_rod = {type = 'mana', value = [['parent_args', 0], '*', 0.1]},
 	#not used new part (allows to setup stat changing with effect's template)
-	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
+#	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_hp_restore_ex = {type = 'heal', value = [['parent_args', 0], '*', 0.2]},#can be made as stat_add to hppercent
 	a_mana_restore_ex = {type = 'mana', value = [['parent_args', 1], '*', 0.2]},
 	a_ward_shield = {type = 'shield_add_temporal', shield_id = 'a_ward_shield', value = ['parent_args', 1]},
@@ -3913,12 +3918,6 @@ var buffs = {
 		description = "Poisoned: Takes %s damage at the end of turn",
 		args = [{obj = 'parent_args', param = 1}],
 		t_name = 'icon_poison',
-		bonuseffect = 'duration'
-	},
-	b_swift = {
-		icon = "res://assets/images/iconsskills/arron_1.png", 
-		description = "Evasion increased",
-		t_name = 'buff_swift',
 		bonuseffect = 'duration'
 	},
 	b_burn = {

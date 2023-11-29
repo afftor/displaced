@@ -24,16 +24,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_nodmgbeast']
 	},
-	bonusexp = {
-		code = 'bonusexp',
-		name = '',
-		description = tr('TRAITBEASTBONUSEXP'),
-		icon = load("res://assets/images/traits/experience.png"),
-		cost = 1,
-		price = 200,
-		hidden = false, #is not displayed at all
-		effects = ['e_tr_fastlearn']
-	},
+#	bonusexp = {
+#		code = 'bonusexp',
+#		name = '',
+#		description = tr('TRAITBEASTBONUSEXP'),
+#		icon = load("res://assets/images/traits/experience.png"),
+#		cost = 1,
+#		price = 200,
+#		hidden = false, #is not displayed at all
+#		effects = ['e_tr_fastlearn']
+#	},
 	bonushit = {
 		code = 'bonushit',
 		name = '',
@@ -64,16 +64,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_ev15']
 	},
-	bonuscrit = {
-		code = 'bonuscrit',
-		name = '',
-		description = tr('TRAITBONUSCRIT'),
-		icon = load("res://assets/images/traits/critrate.png"),
-		cost = 1,
-		price = 300,
-		hidden = false, #is not displayed at all
-		effects = ['e_tr_crit']
-	},
+#	bonuscrit = {
+#		code = 'bonuscrit',
+#		name = '',
+#		description = tr('TRAITBONUSCRIT'),
+#		icon = load("res://assets/images/traits/critrate.png"),
+#		cost = 1,
+#		price = 300,
+#		hidden = false, #is not displayed at all
+#		effects = ['e_tr_crit']
+#	},
 	bonusresist = {
 		code = 'bonusresist',
 		name = '',
@@ -94,16 +94,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_armor']
 	},
-	bonusspeed = {
-		code = 'bonusspeed',
-		name = '',
-		description = tr('TRAITBONUSSPEED'),
-		icon = load("res://assets/images/traits/speed.png"),
-		cost = 1,
-		price = 200,
-		hidden = false, #is not displayed at all
-		effects = ['e_tr_speed']
-	},
+#	bonusspeed = {
+#		code = 'bonusspeed',
+#		name = '',
+#		description = tr('TRAITBONUSSPEED'),
+#		icon = load("res://assets/images/traits/speed.png"),
+#		cost = 1,
+#		price = 200,
+#		hidden = false, #is not displayed at all
+#		effects = ['e_tr_speed']
+#	},
 	bonushpmax = {
 		code = 'bonushpmax',
 		name = '',
@@ -114,16 +114,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_hpmax']
 	},
-	bonusregen = {
-		code = 'bonusregen',
-		name = '',
-		description = tr('TRAITBONUSREGEN'),
-		icon = load("res://assets/images/traits/hprecovery.png"),
-		cost = 1,
-		price = 300,
-		hidden = false, #is not displayed at all
-		effects = ['e_tr_regen']
-	},
+#	bonusregen = {
+#		code = 'bonusregen',
+#		name = '',
+#		description = tr('TRAITBONUSREGEN'),
+#		icon = load("res://assets/images/traits/hprecovery.png"),
+#		cost = 1,
+#		price = 300,
+#		hidden = false, #is not displayed at all
+#		effects = ['e_tr_regen']
+#	},
 	dodgedebuff = {
 		code = 'dodgedebuff',
 		name = '',
@@ -154,16 +154,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_healer']
 	},
-	speedondamage = {
-		code = 'speedondamage',
-		name = '',
-		description = tr('TRAITSPEEDONDAMAGE'),
-		icon = load("res://assets/images/traits/speedondamage.png"),
-		cost = 1,
-		price = 250,
-		hidden = false, #is not displayed at all
-		effects = ['e_tr_react']
-	},
+#	speedondamage = {
+#		code = 'speedondamage',
+#		name = '',
+#		description = tr('TRAITSPEEDONDAMAGE'),
+#		icon = load("res://assets/images/traits/speedondamage.png"),
+#		cost = 1,
+#		price = 250,
+#		hidden = false, #is not displayed at all
+#		effects = ['e_tr_react']
+#	},
 	spellcritbonus = {
 		code = 'spellcritbonus',
 		name = '',
@@ -174,16 +174,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_magecrit']
 	},
-	speeddebuff = {
-		code = 'speeddebuff',
-		name = '',
-		description = tr('TRAITSPEEDDEBUFF'),
-		icon = load("res://assets/images/traits/speeddebuf.png"),
-		cost = 1,
-		price = 300,
-		hidden = false, #is not displayed at all
-		effects = ['e_tr_slowarrow']
-	},
+#	speeddebuff = {
+#		code = 'speeddebuff',
+#		name = '',
+#		description = tr('TRAITSPEEDDEBUFF'),
+#		icon = load("res://assets/images/traits/speeddebuf.png"),
+#		cost = 1,
+#		price = 300,
+#		hidden = false, #is not displayed at all
+#		effects = ['e_tr_slowarrow']
+#	},
 	bowextradamage = {
 		code = 'bowextradamage',
 		name = '',
@@ -204,16 +204,16 @@ var traitlist = {
 		hidden = false, #is not displayed at all
 		effects = ['e_tr_rangecrit']
 	},
-	dodgegroup = {
-		code = 'dodgegroup',
-		name = '',
-		description = tr('TRAITDODGEGROUP'),
-		icon = load("res://assets/images/traits/dodgegroup.png"),
-		cost = 1,
-		price = 300,
-		hidden = false, #is not displayed at all
-		effects = ['e_tr_areaspeed', 'e_tr_speed_icon']
-	},
+#	dodgegroup = {
+#		code = 'dodgegroup',
+#		name = '',
+#		description = tr('TRAITDODGEGROUP'),
+#		icon = load("res://assets/images/traits/dodgegroup.png"),
+#		cost = 1,
+#		price = 300,
+#		hidden = false, #is not displayed at all
+#		effects = ['e_tr_areaspeed', 'e_tr_speed_icon']
+#	},
 	resistdebuff = {
 		code = 'resistdebuff',
 		name = '',
