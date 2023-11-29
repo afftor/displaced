@@ -2380,7 +2380,7 @@ var effect_table = {
 	e_dim_hp_1 = {
 		type = 'c_static',
 		debug_name = 'rule_no_barriers',
-		conditions = [{type = 'stats', stat = 'hp_p', operant = 'lt', value = 100}],
+		conditions = [{type = 'stats', stat = 'hp_p', operant = 'lt', value = 99}],
 		tags = ['recheck_damage'],
 #		no_escape = true,
 		atomic = [{type = 'add_rule', value = 'no_shield'}],
