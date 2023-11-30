@@ -16,6 +16,7 @@ func add_effect(eff):
 	var id = get_new_id()
 	effects[id] = eff
 	eff.id = id
+#	print('current effect count: %s' % effects.size())
 	return id
 
 #seems not to be in use
