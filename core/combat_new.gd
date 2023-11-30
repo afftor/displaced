@@ -560,8 +560,8 @@ func get_avail_char_number(group):
 	for i in rg:
 		if battlefield[i] == null: continue
 		if battlefield[i].defeated: continue
-#		if battlefield[i].acted: continue
-		if !battlefield[i].can_act(): continue
+		if battlefield[i].acted: continue
+#		if !battlefield[i].can_act(): continue
 		res += 1
 	return res
 
