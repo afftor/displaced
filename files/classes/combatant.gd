@@ -584,7 +584,7 @@ func apply_temp_effect(eff_id):
 	if check_status_resist(eff):
 		if input_handler.combat_node != null:
 			input_handler.combat_node.combatlogadd("\n%s resists %s." % [get_stat('name'), eff.template.name])
-			play_sfx('resist')
+			play_sfx('sfx_dispel')
 		return
 	if input_handler.combat_node != null:
 		input_handler.combat_node.combatlogadd("\n%s is afflicted by %s." % [get_stat('name'), eff.template.name])
