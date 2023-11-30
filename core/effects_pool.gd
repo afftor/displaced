@@ -18,8 +18,9 @@ func add_effect(eff):
 	eff.id = id
 	return id
 
-func add_stored_effect(id, eff):
-	effects[id] = eff
+#seems not to be in use
+#func add_stored_effect(id, eff):
+#	effects[id] = eff
 
 func get_effect_by_id(id):
 	if effects.has(id):

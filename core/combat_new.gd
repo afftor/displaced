@@ -584,15 +584,15 @@ func SelectExchange(char_id):
 
 
 
-
-func get_first_avail_hero():
-	for i in [1, 2 ,3]:
-		if battlefield[i] == null: continue
-		if battlefield[i].defeated: continue
-#		if battlefield[i].acted: continue
-		if !battlefield[i].can_act(): continue
-		return battlefield[i]
-	return null
+#seems not to be in use
+#func get_first_avail_hero():
+#	for i in [1, 2 ,3]:
+#		if battlefield[i] == null: continue
+#		if battlefield[i].defeated: continue
+##		if battlefield[i].acted: continue
+#		if !battlefield[i].can_act(): continue
+#		return battlefield[i]
+#	return null
 
 
 func checkreqs(passive, caster, target): #not used?
@@ -1157,6 +1157,7 @@ func FinishCombat(value):
 	CombatAnimations.force_end()
 #	input_handler.RevertMusic()
 	state.cleanup()
+	effects_pool.cleanup()
 	
 	if input_handler.curtains != null: 
 		var curtain_time = 0.5
