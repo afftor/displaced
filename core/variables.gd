@@ -5,7 +5,10 @@ var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 var show_enemy_hp = false
 
-enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6};
+enum {RES_MISS = 1,#0b001
+	RES_HIT = 2,#0b010
+	RES_CRIT = 4,#0b100
+	RES_HITCRIT = 6};#0b110, means both RES_HIT and RES_CRIT
 #trigger events for process_event() functions
 #concepts of metaskill and applicable skill are described in use_skill() function of main combat script
 enum {TR_CAST,#on skill cast, befor even target refining and any true actions

@@ -762,7 +762,7 @@ var areas = { #missions in new terminology
 				],
 			4 : [
 				{1 : ['treant'], 2 : ['treant'], 4 : ['treant'], 6 : ['treant']},
-				{2 : ['faery'], 5 : ['faery']},
+				{2 : ['faery_2'], 5 : ['faery']},
 				],
 			5 : [
 				{2 : ['bigtreant']},
@@ -792,7 +792,7 @@ var areas = { #missions in new terminology
 				{1 : ['spider'], 3 : ['spider']},
 				],
 			3 : [
-				{1 : ['spider'], 3 : ['spider'], 4 : ['spider'], 6 : ['spider']},
+				{1 : ['spider'], 3 : ['spider'], 4 : ['spider'], 6 : ['spider_2']},
 				{1 : ['elvenrat'], 2 : ['elvenrat'], 3 : ['elvenrat']},
 				{2 : ['earthgolem']},
 				],
@@ -806,7 +806,7 @@ var areas = { #missions in new terminology
 				],
 			6 : [
 				{1 : ['elvenrat', 6], 2 : ['elvenrat', 6], 3 : ['elvenrat', 6]},
-				{1 : ['spider'], 2 : ['spider'], 3 : ['spider']},
+				{1 : ['spider'], 2 : ['spider_2'], 3 : ['spider']},
 				{2 : ['earthgolemboss']},
 				],
 			},
@@ -835,13 +835,13 @@ var areas = { #missions in new terminology
 				{2 : ['earthgolem'], 5 : ['spider']},
 				],
 			4 : [
-				{ 1 : ['spider'], 2 : ['spider'], 3 : ['spider'], 4 : ['spider'], 5 : ['spider'], 6 : ['spider']},
+				{ 1 : ['spider'], 2 : ['spider'], 3 : ['spider'], 4 : ['spider_2'], 5 : ['spider'], 6 : ['spider_2']},
 				],
 			5 : [
 				{1 : ['angrydwarf'], 2 : ['angrydwarf'], 3 : ['angrydwarf']},
 				],
 			6 : [
-				{1 : ['spider'], 2 : ['spider', 9], 3 : ['spider']},
+				{1 : ['spider'], 2 : ['spider_2', 9], 3 : ['spider']},
 				],
 			},
 		},
@@ -858,7 +858,7 @@ var areas = { #missions in new terminology
 		},
 		enemies = {
 			1 : [
-				{ 1 : ['spider'], 2 : ['spider'],  5 : ['spider'], 6 : ['spider']},
+				{ 1 : ['spider'], 2 : ['spider'], 5 : ['spider'], 6 : ['spider']},
 				],
 			2 : [
 				{1 : ['mole'], 3 : ['mole'], 4: ['mole'], 6:['vulture']},
@@ -901,10 +901,10 @@ var areas = { #missions in new terminology
 			5 : [
 				{1 : ['dwarfwarrior'], 3: ['dwarfwarrior']},
 				{2 : ['angrydwarf'], 5: ['angrydwarf']},
-				{2 : ['spider', 15]},
+				{2 : ['spider_2', 15]},
 				],
 			6 : [
-				{ 1 : ['spider'], 2 : ['spider'], 3 : ['spider'], 4 : ['earthgolem'], 6: ['earthgolem']},
+				{ 1 : ['spider'], 2 : ['spider_2'], 3 : ['spider'], 4 : ['earthgolem'], 6: ['earthgolem']},
 				
 			],
 			7 : [
@@ -930,16 +930,16 @@ var areas = { #missions in new terminology
 		},
 		enemies = {
 			1 : [
-				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},
+				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery_2'], 6 : ['faery_2']},
 				],
 			2 : [
 				{1 : ['treant'], 3 : ['treant'], 4: ['faery'], 6:['faery']},
 				],
 			3 : [
-				{1 : ['faery'], 2 : ['faery'], 3: ['faery'], 4:['faery'], 6:['faery']},
+				{1 : ['faery_2'], 2 : ['faery_2'], 3: ['faery_2'], 4:['faery'], 6:['faery']},
 				],
 			4 : [
-				{1 : ['treant'], 2 : ['faery'], 3: ['treant'], 4:['faery'], 6:['faery']},
+				{1 : ['treant'], 2 : ['faery_2'], 3: ['treant'], 4:['faery'], 6:['faery']},
 				],
 			},
 	},
@@ -960,21 +960,21 @@ var areas = { #missions in new terminology
 				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},
 				],
 			2 : [
-				{1 : ['treant'], 3 : ['treant'], 4: ['faery'], 6:['faery']},
+				{1 : ['treant'], 3 : ['treant'], 4: ['faery'], 6:['faery_2']},
 				],
 			3 : [
-				{1 : ['faery'], 2 : ['faery'], 3: ['faery'], 4:['faery'], 6:['faery']},
+				{1 : ['faery_2'], 2 : ['faery'], 3: ['faery_2'], 4:['faery'], 6:['faery']},
 				],
 			4 : [
-				{1 : ['treant'], 2 : ['faery'], 3: ['treant'], 4:['faery'], 6:['faery']},
+				{1 : ['treant'], 2 : ['faery_2'], 3: ['treant'], 4:['faery'], 6:['faery']},
 				],
 			5 : [
 				{1 : ['treant'], 3 : ['treant'], 4: ['treant'], 6:['treant']},
 				
 				],
 			6 : [
-				{1 : ['faery'], 3 : ['faery'], 4: ['faery'], 6:['faery']},
-				{4 : ['faery'], 5 : ['faery'], 6 : ['faery']}
+				{1 : ['faery_2'], 3 : ['faery_2'], 4: ['faery'], 6:['faery']},
+				{4 : ['faery'], 5 : ['faery_2'], 6 : ['faery']}
 				],
 			},
 		},
@@ -991,16 +991,16 @@ var areas = { #missions in new terminology
 		},
 		enemies = {
 			1 : [
-				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},
+				{ 1 : ['spider_2'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},
 				],
 			2 : [
 				{1 : ['treant'], 3 : ['treant'], 4: ['faery'], 6:['faery']},
 				],
 			3 : [
-				{1 : ['faery'], 2 : ['faery'], 3: ['faery'], 4:['faery'], 6:['faery']},
+				{1 : ['faery_2'], 2 : ['faery'], 3: ['faery_2'], 4:['faery'], 6:['faery']},
 				],
 			4 : [
-				{1 : ['treant'], 2 : ['faery'], 3: ['treant'], 4:['faery'], 6:['faery']},
+				{1 : ['treant'], 2 : ['faery'], 3: ['treant'], 4:['faery'], 6:['faery_2']},
 				],
 			5 : [
 				{1 : ['treant'], 3 : ['treant'], 4: ['treant'], 6:['treant']},
@@ -1021,10 +1021,10 @@ var areas = { #missions in new terminology
 		},
 		enemies = {
 			1 : [
-				{ 1 : ['spider'], 2 : ['spider'],  5 : ['faery'], 6 : ['faery']},
+				{ 1 : ['spider_2'], 2 : ['spider_2'],  5 : ['faery_2'], 6 : ['faery_2']},
 				],
 			2 : [
-				{1 : ['treant'], 3 : ['treant'], 4: ['faery'], 6:['faery']},
+				{1 : ['treant'], 3 : ['treant'], 4: ['faery_2'], 6:['faery_2']},
 				],
 			3 : [
 				{1 : ['faery'], 5 : ['fearyqueen'], 3: ['faery']},
@@ -1120,13 +1120,13 @@ var areas = { #missions in new terminology
 				],
 			4 : [
 				{ 1 : ['wyvern'], 3 : ['wyvern']},
-				{ 1 : ['hatchling'], 2 : ['hatchling'],  3 : ['hatchling']},
+				{ 1 : ['hatchling'], 2 : ['giant_toad'],  3 : ['hatchling']},
 				],
 			5 : [
 				{ 1 : ['wyvern'], 2 : ['armored_beast'], 3: ['wyvern']},
 				],
 			6 : [
-				{ 1 : ['armored_beast'], 2 : ['hatchling'], 3: ['armored_beast'], 5 : ['hatchling']},
+				{ 1 : ['armored_beast'], 2 : ['giant_toad'], 3: ['armored_beast'], 5 : ['giant_toad']},
 				],
 			7 : [
 				{ 1 : ['wyvern'], 3 : ['wyvern'], 5 : ['wyvern'] },
@@ -1168,7 +1168,7 @@ var areas = { #missions in new terminology
 		},
 		enemies = {
 			1 : [
-				{ 1 : ['spider'], 2 : ['earthgolem'],  3 : ['spider'], 4 : ['spider'], 5 : ['spider'], 6 : ['spider']},
+				{ 1 : ['spider'], 2 : ['earthgolem'],  3 : ['spider'], 4 : ['spider_2'], 5 : ['spider_2'], 6 : ['spider_2']},
 				],
 			2 : [
 				{ 1 : ['dwarfwarrior'], 2 : ['dwarfwarrior'], 3: ['earthgolem'],5:['angrydwarf']},
@@ -1181,7 +1181,7 @@ var areas = { #missions in new terminology
 				{ 1 : ['angrydwarf'], 2 : ['dwarfwarrior'], 3 : ['angrydwarf'], 4 : ['dwarfwarrior'], 5 : ['angrydwarf'], 6 : ['dwarfwarrior']},
 				],
 			5 : [
-				{ 1 : ['spider'], 2 : ['spider'], 3: ['spider'], 4 : ['earthgolem'], 6 : ['earthgolem']},
+				{ 1 : ['spider'], 2 : ['spider_2'], 3: ['spider'], 4 : ['earthgolem'], 6 : ['earthgolem']},
 				],
 			6 : [
 				{ 1 : ['earthgolemboss'], 3: ['earthgolemboss']},
@@ -1204,7 +1204,7 @@ var areas = { #missions in new terminology
 		},
 		enemies = {
 			1 : [
-				{ 1 : ['spider'], 2 : ['earthgolem'],  3 : ['spider'], 4 : ['spider'], 5 : ['spider'], 6 : ['spider']},
+				{ 1 : ['spider'], 2 : ['earthgolem'],  3 : ['spider'], 4 : ['spider'], 5 : ['spider_2'], 6 : ['spider']},
 				],
 			2 : [
 				{ 1 : ['dwarfwarrior'], 2 : ['dwarfwarrior'], 3: ['earthgolem'],5:['angrydwarf']},
@@ -1217,7 +1217,7 @@ var areas = { #missions in new terminology
 				{ 1 : ['angrydwarf'], 2 : ['dwarfwarrior'], 3 : ['angrydwarf'], 4 : ['dwarfwarrior'], 5 : ['angrydwarf'], 6 : ['dwarfwarrior']},
 				],
 			5 : [
-				{ 1 : ['spider'], 2 : ['spider'], 3: ['spider'], 4 : ['earthgolem'], 6 : ['earthgolem']},
+				{ 1 : ['spider'], 2 : ['spider_2'], 3: ['spider'], 4 : ['earthgolem'], 6 : ['earthgolem']},
 				],
 			6 : [
 				{ 1 : ['earthgolemboss'], 3: ['earthgolemboss']},
