@@ -1883,7 +1883,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		activeitem = null
 		SelectSkill(caster.get_autoselected_skill(), true)
 
-	caster.rebuildbuffs()
+#	caster.rebuildbuffs()#update_buffs() at the end should cover this
 	turns +=1
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
@@ -1891,7 +1891,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			caster.process_event(variables.TR_TURN_F)
 			if caster.displaynode:
 				caster.displaynode.process_disable()
-				caster.rebuildbuffs()
+#				caster.rebuildbuffs()#update_buffs() at the end should cover this
 		call_deferred('select_actor')
 		eot = false
 	else:
@@ -1905,6 +1905,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			SelectSkill(activeaction, true)
 		eot = true
 
+	update_buffs()#not only caster and targets could be effected ("remove_siblings" oneshot for example)
 	skill_in_progress = false
 	print('%s ended %s' % [caster.position, skill.name])
 

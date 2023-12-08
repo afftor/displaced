@@ -74,7 +74,7 @@ func setup_siblings():
 		eff.self_args['siblings'].erase(se)
 
 func remove_siblings():
-	if !self_args.has('siblings'):return
+	if !self_args.has('siblings'): return
 	for se in self_args['siblings']:
 		var eff = effects_pool.get_effect_by_id(se)
 		eff.remove()
