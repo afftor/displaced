@@ -209,6 +209,11 @@ func apply_effect(eff):
 			pass
 
 
+func recalculate_effects():
+	for e in effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.calculate_args()
+
 func remove_effects():
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
@@ -241,7 +246,9 @@ func resolve_value(check_m):
 			endvalue /= 2
 		value[i] = endvalue
 	process_value = value[0]
+	recalculate_effects()
 #	print("resolve_value for %s: %s" % [code, process_value])
+#	print("target is %s" % target.name)
 #	print(long_value)
 #	print(value)
 
