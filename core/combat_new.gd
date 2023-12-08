@@ -409,12 +409,19 @@ func select_actor():
 
 
 func autoselect_player_char():
+	var disabled_char
 	for i in variables.playerparty:
 		var ch = battlefield[i]
 		if ch == null : continue
 		if ch.acted: continue
 		if ch.defeated: continue
+		if !ch.can_act():
+			disabled_char = i
+			continue
 		player_turn(i)
+		return
+	if disabled_char != null:
+		player_turn(disabled_char)
 		return
 	print ("error - no possible chars while having them when counting")
 
