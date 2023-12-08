@@ -596,8 +596,9 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_smoke'})],
 		hidden = false,
 		sfx = [{code = 'sfx_smoke_screen', target = 'target', period = 'predamage'},
-		{code = 'anim_attack', target = 'caster', period = 'windup'},],
+			{code = 'anim_attack', target = 'caster', period = 'windup'}],
 		sounddata = {initiate = 'smoke screen', strike = null, hit = null, hittype = 'absolute'},
+		patches = [{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_smoke_screen'}],
 	},
 	swipe = {
 		code = '',
@@ -608,7 +609,7 @@ var skilllist = {
 		skilltype = 'main',
 		userange = "melee",
 		targetpattern = 'single',
-		allowedtargets = ['enemy'],
+		allowedtargets = ['enemy', 'damage'],
 		keep_target = variables.TARGET_KEEP,
 		repeat = 1,
 		reqs = [],
@@ -1780,9 +1781,10 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
 			{code = 'sfx_barrier', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'barrier2', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'barrier2', strike = null, hit = null, hittype = 'bodyarmor'},
 		patches = [
-			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 1, op = 'gte'}], patch = 'p_barrier'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_barrier'},
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_barrier_all'},
 		]
 	},
 	bless = {
@@ -3004,6 +3006,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/carrot.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3026,6 +3029,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/Morsel.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3048,6 +3052,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/meat2.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3070,6 +3075,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/shroom.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3092,6 +3098,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/leaf.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3114,6 +3121,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/flower.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3136,6 +3144,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/apple.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3158,6 +3167,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/apple2.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3180,6 +3190,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/item_res.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3202,6 +3213,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/item_res3.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3224,6 +3236,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/item_res2.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3246,6 +3259,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/item_res4.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3271,6 +3285,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/feather3.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3293,6 +3308,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/feather1.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3315,6 +3331,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/feather2.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3337,6 +3354,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/bomb.png"),
 		damagetype = "magic",#not sure
 		skilltype = 'item',
 		userange = "any",
@@ -3361,6 +3379,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/bomb_adv.png"),
 		damagetype = "magic",#not sure
 		skilltype = 'item',
 		userange = "any",
@@ -3385,6 +3404,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/scroll_sword.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3407,6 +3427,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		icon = load("res://assets/images/iconsitems/scroll_shield.png"),
 		damagetype = "light",
 		skilltype = 'item',
 		userange = "any",
@@ -3593,6 +3614,9 @@ var patches = {
 	p_barrier = {
 		repeat = {type = 'add', value = 1}
 	},
+	p_barrier_all = {
+		targetpattern = {type = 'set', value = 'all'}
+	},
 	p_sanct = {
 		value = {type = 'replace', value = ['caster.hpmax','*0.7'],},
 	},
@@ -3601,7 +3625,10 @@ var patches = {
 	},
 	p_natbless = {
 		tags = {type = 'append', value = ['disabled']}
-	}
+	},
+	p_smoke_screen = {
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_smoke_patch'})]}
+	},
 }
 
 func patch_skill(skill_id, unit):

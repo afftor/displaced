@@ -365,7 +365,7 @@ func add_trait(trait_code):
 	for e in tmp.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 		apply_effect(effects_pool.add_effect(eff))
-		eff.set_args('trait', tmp.code)
+		eff.set_args('trait', trait_code)
 
 func remove_trait(trait_code):
 	if !traits.has(trait_code): return

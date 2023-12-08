@@ -529,9 +529,7 @@ var effect_table = {
 	e_tr_swordmas = {
 		type = 'trigger',
 		debug_name = 'sword_mastery_user',
-		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'damage']}, 
-		],
+		conditions = [{type = 'skill', value = ['tags', 'has', 'damage']}],
 		trigger = [variables.TR_HIT],
 		req_skill = true,
 		args = [],
@@ -620,6 +618,26 @@ var effect_table = {
 				description = "Evasion increased by 90%%",
 				args = [],
 				t_name = 'icon_smoke'
+			}
+		],
+	},
+	e_s_smoke_patch = {
+		type = 'temp_s',
+		name = 'smoke_resist',
+		target = 'target',
+		tick_event = variables.TR_TURN_S,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 2,
+		stack = 1,
+		tags = ['buff'],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/arron_6.png", 
+				description = "Receive 50%% less damage",
+				t_name = 'icon_smoke_resist',
+				bonuseffect = 'duration'
 			}
 		],
 	},
@@ -769,7 +787,7 @@ var effect_table = {
 	e_s_explosion = {
 		type = 'trigger',
 		debug_name = 'explosion_ultra',
-		trigger = [variables.TR_CAST],
+		trigger = [variables.TR_HIT],
 		conditions = [{type = 'combat', value = {type = 'single_enemy'}}],
 		req_skill = true,
 		args = [],
@@ -828,7 +846,7 @@ var effect_table = {
 		name = 'air_arrow_ignor_2',
 		target = 'target',
 		stack = 1,
-		rem_event = [variables.TR_POST_TARG],
+		rem_event = [variables.TR_POST_TARG, variables.TR_DEATH],
 		tags = ['negative'],
 		args = [],
 		sub_effects = [],
@@ -1096,7 +1114,7 @@ var effect_table = {
 		duration = 2,
 		tags = ['negative'],
 		args = [],
-		sub_effects = ['e_t_firepunch'],
+		sub_effects = ['e_t_firepunch'],#maybe it would be better to make it through resistdamage
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_4.png",
@@ -1400,15 +1418,7 @@ var effect_table = {
 		conditions = [{type = 'random', value = 0.2}],
 		atomic = [],
 		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_add', stat = 'repeat', value = 1}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
+		sub_effects = ['e_orb_rep']
 	},
 	e_orb_addrep2 = {
 		type = 'trigger',
@@ -1418,15 +1428,14 @@ var effect_table = {
 		conditions = [{type = 'random', value = 0.4}],
 		atomic = [],
 		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_add', stat = 'repeat', value = 1}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
+		sub_effects = ['e_orb_rep']
+	},
+	e_orb_rep = {
+		type = 'oneshot',
+		target = 'skill',
+		atomic = [{type = 'stat_add', stat = 'repeat', value = 1}],
+		buffs = [],
+		sub_effects = []
 	},
 	e_s_mist = {
 		type = 'temp_s',
@@ -2070,9 +2079,9 @@ var effect_table = {
 	e_at_souls = {
 		type = 'trigger',
 		debug_name = "souls_obtainer",
-		trigger = [variables.TR_POSTDAMAGE],
+		trigger = [variables.TR_POST_TARG],
 		conditions = [
-			{type = 'skill', value = ['code', 'eq', 'attack']},#mb not and there should be skill damage check 
+			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 #			{type = 'random', value = 0.5}#that probably should be 100% chance
 			],
@@ -2097,7 +2106,7 @@ var effect_table = {
 	e_add_s1 = {
 		type = 'oneshot',
 		target = 'caster',
-		atomic = ['a_souls_add', 'a_souls_add']
+		atomic = ['a_souls_add']
 	},
 	e_pay_soul = {
 		type = 'trigger',
