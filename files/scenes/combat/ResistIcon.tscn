@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/iconsskills/defaultattack.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/combat/ResistIcon.gd" type="Script" id=2]
@@ -11,6 +11,12 @@
 [ext_resource path="res://assets/images/iconsskills/source_fire.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/iconsskills/source_earth.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/iconsskills/source_dark.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/iconsskills/Debilitate.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/iconsskills/rose_4.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsskills/arron_3.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/iconsskills/iola_6.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/iconsskills/rose_3.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/iconsskills/erika_5.png" type="Texture" id=17]
 
 [node name="ResistIcon" type="Control"]
 rect_min_size = Vector2( 30, 30 )
@@ -26,6 +32,12 @@ air = ExtResource( 6 )
 water = ExtResource( 7 )
 earth = ExtResource( 10 )
 fire = ExtResource( 9 )
+burn = ExtResource( 13 )
+stun = ExtResource( 15 )
+chill = ExtResource( 17 )
+negative = ExtResource( 16 )
+poison = ExtResource( 12 )
+bleed = ExtResource( 14 )
 
 [node name="sprite" type="TextureRect" parent="."]
 anchor_top = 0.5

@@ -6,8 +6,8 @@ func _ready():
 	pass # Replace with function body.
 
 
-func build_for_hero(hero):
-	ch_id = hero
+#func build_for_hero(hero):
+#	ch_id = hero
 
 
 func build_for_fighter(fighter):
@@ -15,7 +15,8 @@ func build_for_fighter(fighter):
 #	$Label.text = ""
 	var person = state.heroes[ch_id]
 	$icon.texture = person.combat_portrait()
-	var data = person.get_resists()
+	var data :Dictionary = person.get_resists().duplicate()#in fact get_resists() return unique dict for now, but it's better to duplicate it once more in case of future changes
+	data.merge(person.get_s_resists())
 	for container in $VBoxContainer.get_children():
 		if !data.has(container.name):
 			container.hide()

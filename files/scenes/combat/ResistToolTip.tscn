@@ -6,7 +6,7 @@
 
 [node name="ResistToolTip" type="Control"]
 margin_right = 153.0
-margin_bottom = 118.0
+margin_bottom = 147.0
 rect_min_size = Vector2( 153, 118 )
 mouse_filter = 2
 script = ExtResource( 11 )
@@ -89,3 +89,44 @@ margin_top = 68.0
 margin_right = 64.0
 margin_bottom = 98.0
 resist_type = "fire"
+
+[node name="burn" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 68.0
+margin_top = 68.0
+margin_right = 98.0
+margin_bottom = 98.0
+resist_type = "burn"
+
+[node name="stun" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 102.0
+margin_top = 68.0
+margin_right = 132.0
+margin_bottom = 98.0
+resist_type = "stun"
+
+[node name="chill" parent="GridContainer" instance=ExtResource( 1 )]
+margin_top = 102.0
+margin_right = 30.0
+margin_bottom = 132.0
+resist_type = "chill"
+
+[node name="negative" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 34.0
+margin_top = 102.0
+margin_right = 64.0
+margin_bottom = 132.0
+resist_type = "negative"
+
+[node name="poison" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 68.0
+margin_top = 102.0
+margin_right = 98.0
+margin_bottom = 132.0
+resist_type = "poison"
+
+[node name="bleed" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 102.0
+margin_top = 102.0
+margin_right = 132.0
+margin_bottom = 132.0
+resist_type = "bleed"

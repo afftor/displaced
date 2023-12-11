@@ -4,6 +4,7 @@ onready var label_node :Label = $label
 onready var sprite_node :TextureRect = $sprite
 export var resist_type :String = 'damage'
 export(Texture) var damage
+#damage resists
 export(Texture) var slash
 export(Texture) var pierce
 export(Texture) var bludgeon
@@ -13,6 +14,13 @@ export(Texture) var air
 export(Texture) var water
 export(Texture) var earth
 export(Texture) var fire
+#status resists
+export(Texture) var burn
+export(Texture) var stun
+export(Texture) var chill
+export(Texture) var negative
+export(Texture) var poison
+export(Texture) var bleed
 export var positive_color :Color = Color('#00ff0a')
 export var negative_color :Color = Color('#ff0000')
 

@@ -11,7 +11,13 @@ onready var resists :Dictionary = {
 	'air' : $GridContainer/air,
 	'water' : $GridContainer/water,
 	'earth' : $GridContainer/earth,
-	'fire' : $GridContainer/fire
+	'fire' : $GridContainer/fire,
+	'burn' : $GridContainer/burn,
+	'stun' : $GridContainer/stun,
+	'chill' : $GridContainer/chill,
+	'negative' : $GridContainer/negative,
+	'poison' : $GridContainer/poison,
+	'bleed' : $GridContainer/bleed
 }
 
 func _ready():
@@ -25,7 +31,9 @@ func on_grid_rect_changed() ->void:
 
 
 func show_up(char_id: String) ->void:
-	var data :Dictionary = state.heroes[char_id].get_resists()
+	var chara = state.heroes[char_id]
+	var data :Dictionary = chara.get_resists().duplicate()#in fact get_resists() return unique dict for now, but it's better to duplicate it once more in case of future changes
+	data.merge(chara.get_s_resists())
 	var show_me :bool = false
 	for resist_type in resists:
 		if !data.has(resist_type) or data[resist_type] == 0:

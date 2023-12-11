@@ -216,6 +216,12 @@ var TranslationDict = {
 	RESIST_WATER = "Water",
 	RESIST_EARTH = "Earth",
 	RESIST_FIRE = "Fire",
+	RESIST_BURN = "Burn",
+	RESIST_STUN = "Stun",
+	RESIST_CHILL = "Chill",
+	RESIST_NEGATIVE = "Debuff",
+	RESIST_POISON = "Poison",
+	RESIST_BLEED = "Bleed",
 
 	#stat tooltips
 	TOOLTIPDAMAGE = "Defines damage output of skills and spells",

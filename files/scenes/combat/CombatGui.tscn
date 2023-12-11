@@ -2056,11 +2056,11 @@ visible = false
 margin_left = 320.0
 margin_top = 45.0
 margin_right = 620.0
-margin_bottom = 514.0
+margin_bottom = 718.0
 
 [node name="enemypanel" parent="." instance=ExtResource( 14 )]
 visible = false
 margin_left = 1226.0
 margin_top = 45.0
 margin_right = 1526.0
-margin_bottom = 511.0
+margin_bottom = 718.0
