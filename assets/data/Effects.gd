@@ -167,7 +167,7 @@ var effect_table = {
 		sub_effects = [rebuild_remove(['tags','has','heal'])],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/iola_6.png", 
-			description = "Stunned: Can't act next turn",
+			description = "Stunned: Can't act next turn. Can be healed",
 			limit = 1,
 			t_name = 'icon_stun',
 			bonuseffect = 'duration'
@@ -1318,7 +1318,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'shield_add_temporal', shield_id = 'dragonprot', value = ['parent_args', 0]},
-			{type = 'stat_set_revert', stat = 'resistnegative', value = 100}
+			{type = 'stat_add', stat = 'resistnegative', value = 100}
 		],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_2.png", 
