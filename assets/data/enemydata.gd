@@ -148,8 +148,8 @@ var enemylist = {
 	},
 	faery_2 = {
 		code = '',
-		name = '',
-		flavor = '',
+		name = 'MONSTERFAERY',
+		flavor = 'MONSTERFAERYFLAVOR',
 		race = 'humanoid',
 		skills = ['attack', 'fire_attack_small'],
 		basehp = 55,
@@ -159,7 +159,7 @@ var enemylist = {
 		bodyhitsound = 'flesh',
 		base_dmg_type = 'air',
 		traits = [],
-		combaticon = '',
+		combaticon = 'enemies/Faery_2CombatIcon',
 #		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'faeryloot_2',
@@ -196,8 +196,8 @@ var enemylist = {
 	},
 	spider_2 = {
 		code = '',
-		name = '',
-		flavor = "",
+		name = 'MONSTERSPIDER',
+		flavor = "MONSTERSPIDERFLAVOR",
 		race = 'insect',
 		skills = ['attack', 'poison_spit'],
 		basehp = 75,
@@ -585,8 +585,8 @@ var enemylist = {
 	},
 	demon2 = {
 		code = '',
-		name = "",
-		flavor = "",
+		name = "MONSTERDEMON1",
+		flavor = "MONSTERDEMON1FLAVOR",
 		race = 'demon',
 		skills = ['attack', 'fire_attack', 'impale'],
 		basehp = 190,
@@ -608,8 +608,8 @@ var enemylist = {
 	},
 	bigdemon = {
 		code = '',
-		name = "",
-		flavor = "",
+		name = "MONSTERDEMON1",
+		flavor = "MONSTERDEMON1FLAVOR",
 		race = 'demon',
 		skills = ['attack', 'de_attack'],
 		basehp = 120,
@@ -1052,8 +1052,8 @@ var enemylist = {
 	},
 	demitrius2 = {#second encounter, both phases
 		code = '',
-		name = "",
-		flavor = "",
+		name = "MONSTERDEMITRIUS1",
+		flavor = "MONSTERDEMITRIUS1FLAVOR",
 		race = 'humanoid',
 		skills = [],
 #		passives = [],
@@ -1088,8 +1088,8 @@ var enemylist = {
 	
 	demitrius3 = {#last encounter: duel with Arron, only simplified second phase
 		code = '',
-		name = "",
-		flavor = "",
+		name = "MONSTERDEMITRIUS1",
+		flavor = "MONSTERDEMITRIUS1FLAVOR",
 		race = 'humanoid',
 		skills = ['attack', 'dm_storm', 'dm_nova', 'dm_form', 'dm_fire'],
 #		passives = [],
@@ -1496,8 +1496,10 @@ var loottables = { # no need to separate materials from usables now
 func _ready():
 	for i in enemylist:
 		enemylist[i].code = i
-		enemylist[i].name = "MONSTER" + i.to_upper()
-		enemylist[i].flavor = "MONSTER" + i.to_upper() + "FLAVOR"
+		if enemylist[i].name.empty():
+			enemylist[i].name = "MONSTER" + i.to_upper()
+		if enemylist[i].flavor.empty():
+			enemylist[i].flavor = "MONSTER" + i.to_upper() + "FLAVOR"
 	yield(preload_icons(), 'completed')
 	print("Enemies icons preloaded")
 
