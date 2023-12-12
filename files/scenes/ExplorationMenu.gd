@@ -459,7 +459,12 @@ func finish_area():
 			var output = globals.run_seq(seq_id)
 			if output == variables.SEQ_SCENE_STARTED :
 				yield(input_handler, "EventOnScreen")
-	input_handler.combat_node.hide_me()
+	hide_combat_curtain()
+
+
+func hide_combat_curtain():
+	if input_handler.curtains != null:
+		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
 
 
 func combat_finished(value):
@@ -474,7 +479,7 @@ func combat_win():
 
 
 func combat_loose():
-	input_handler.combat_node.hide_me()
+	hide_combat_curtain()
 	var areastate = state.areaprogress[area]
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('no_escape') and areadata.no_escape:
@@ -514,7 +519,7 @@ func advance_check():
 #			if !enforce_replay: #kept legacy code with it's logic, but it was already to old to work
 #				yield(input_handler.scene_node, "scene_end")
 #				advance_check()
-		input_handler.combat_node.hide_me()
+		hide_combat_curtain()
 		if areadata.has("auto_advance") and areadata.auto_advance:
 			if playing_scene:
 				yield(input_handler, "AllEventsFinished")

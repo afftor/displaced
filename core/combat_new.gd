@@ -956,7 +956,7 @@ func summon(montype, number):
 #combat finishes
 var rewardsdict
 
-func victory():#2remake for it is broken for now
+func victory():
 	if fightover: return
 	fightover = true
 	CombatAnimations.check_start()
@@ -1171,18 +1171,13 @@ func FinishCombat(value):
 		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
 		yield(get_tree().create_timer(curtain_time), 'timeout')
 	
+	input_handler.combat_node = null
+	hide()
 	emit_signal("combat_ended")
 	if input_handler.explore_node != null:
 		input_handler.explore_node.combat_finished(value)
-	else:
-		hide_me()
-
-func hide_me():
-	input_handler.combat_node = null
-	hide()
-	if input_handler.curtains != null: 
+	elif input_handler.curtains != null:
 		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
-
 
 
 #targeting
