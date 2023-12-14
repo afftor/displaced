@@ -83,6 +83,7 @@ func rebuild_gear(cid = selected_char):
 	for slot in slot_panels:
 		rebuild_gear_slot(slot_panels[slot], hero.get_item_data(slot), hero.get_item_upgrade_data(slot))
 	highlight_slot()
+	$Panel/goldicon/Label.text = String(state.money)
 
 
 func rebuild_gear_slot(node, data, newdata):
@@ -101,11 +102,21 @@ func rebuild_gear_slot(node, data, newdata):
 		node.get_node("ResPanel").visible = true
 		input_handler.ClearContainer(node.get_node("VBoxContainer"), ['button'])
 		for res in newdata.cost:
-			if res == 'gold': continue
+			var icon
+			var has_amount
+			var res_text
+			if res == 'gold':
+				icon = Items.gold_icon
+				has_amount = state.money
+				res_text = String(newdata.cost[res])
+			else:
+				icon = Items.Items[res].icon#as it is now - items icons are loaded directly on start
+				has_amount = state.materials[res]
+				res_text = "%d/%d" % [newdata.cost[res], has_amount]
 			var panel = input_handler.DuplicateContainerTemplate(node.get_node("VBoxContainer"), 'button')
-			panel.get_node('icon').texture = Items.Items[res].icon #as it is now - items icons are loaded directly on start
-			panel.get_node("Label").text = "%d/%d" % [newdata.cost[res], state.materials[res]]
-			if newdata.cost[res] > state.materials[res]:
+			panel.get_node('icon').texture = icon
+			panel.get_node("Label").text = res_text
+			if newdata.cost[res] > has_amount:
 				node.get_node("Button").disabled = true
 				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
 	else:

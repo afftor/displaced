@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/images/gui/buildings/panel.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/village/Townhall.gd" type="Script" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://assets/images/gui/buildings/panel_dialogue.png" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/themes/button_small.tres" type="Theme" id=20]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=21]
+[ext_resource path="res://assets/fonts/pt_36_boldshad.tres" type="DynamicFont" id=22]
 
 [node name="TownHall" type="TextureRect"]
 margin_left = 35.0
@@ -303,6 +305,26 @@ text = "150/100"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="goldicon" type="TextureRect" parent="UpgradeDescript"]
+margin_left = 28.0
+margin_top = 673.0
+margin_right = 100.0
+margin_bottom = 743.0
+hint_tooltip = "MONEYDESCRIPT"
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UpgradeDescript/goldicon"]
+margin_left = 67.0
+margin_top = 13.0
+margin_right = 138.0
+margin_bottom = 60.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 22 )
+text = "Gold"
 
 [node name="Questlog" parent="." instance=ExtResource( 15 )]
 visible = false

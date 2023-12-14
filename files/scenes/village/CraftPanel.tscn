@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://files/scenes/village/CraftPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=18]
 [ext_resource path="res://files/scenes/GearTooltip.tscn" type="PackedScene" id=19]
 [ext_resource path="res://files/scenes/village/forge_portrait.gd" type="Script" id=20]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=21]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -89,9 +90,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/HBoxContainer/panel"]
 show_behind_parent = true
@@ -231,9 +229,6 @@ margin_left = 31.0
 margin_top = 340.0
 margin_right = 230.0
 margin_bottom = 440.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="button" type="TextureRect" parent="Panel/weapon1/VBoxContainer"]
 margin_right = 199.0
@@ -264,9 +259,6 @@ custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 18 )
 text = "50/100"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="weapon2" type="TextureButton" parent="Panel"]
 margin_left = 428.0
@@ -576,6 +568,28 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="goldicon" type="TextureRect" parent="Panel"]
+margin_left = 1106.0
+margin_top = 919.0
+margin_right = 1178.0
+margin_bottom = 989.0
+hint_tooltip = "MONEYDESCRIPT"
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Panel/goldicon"]
+margin_left = -65.0
+margin_top = 13.0
+margin_right = 6.0
+margin_bottom = 60.0
+grow_horizontal = 0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 13 )
+text = "Gold"
+align = 2
 
 [node name="Tooltip" parent="." instance=ExtResource( 19 )]
 margin_left = 7.0

@@ -872,6 +872,7 @@ var hero_items_data = {
 	},
 }
 
+var gold_icon = load("res://assets/images/iconsitems/gold.png")
 
 func _ready():
 	for i in Items:

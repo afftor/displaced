@@ -131,7 +131,7 @@ func update_upgrade():
 				var item = Items.Items[i]
 				var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
 				newnode.get_node("icon").texture = item.icon
-				newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(upgrade.levels[next_level].cost[i])
+				newnode.get_node("Label").text = str(upgrade.levels[next_level].cost[i]) + "/" + str(state.materials[i])
 				globals.connectmaterialtooltip(newnode, item)
 				if state.materials[i] >= upgrade.levels[next_level].cost[i]:
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
@@ -140,8 +140,8 @@ func update_upgrade():
 					canpurchase = false
 			else:
 				var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
-				newnode.get_node("icon").texture = load("res://assets/images/iconsitems/gold.png")
-				newnode.get_node("Label").text = str(state.money) + "/"+ str(upgrade.levels[next_level].cost[i])
+				newnode.get_node("icon").texture = Items.gold_icon
+				newnode.get_node("Label").text = str(upgrade.levels[next_level].cost[i])
 				if state.money >= upgrade.levels[next_level].cost[i]:
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
 				else:
@@ -152,6 +152,8 @@ func update_upgrade():
 
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
 	$UpgradeDescript/UnlockButton.visible = canpurchase
+	$UpgradeDescript/goldicon/Label.text = String(state.money)
+	$UpgradeDescript/goldicon.visible = canpurchase
 
 
 func findupgradelevel(upgrade):
