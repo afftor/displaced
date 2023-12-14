@@ -42,9 +42,9 @@ func get_tutorial_button(button_name :String):
 
 
 func open():
-	$UpgradeList.hide()
-	$UpgradeDescript.hide()
 	show()
+	if $UpgradeDescript.visible:
+		update_upgrade()
 
 func show():
 	update_events_panel()
@@ -102,9 +102,14 @@ func sortupgrades(first, second):
 
 
 func selectupgrade(upgrade):
-	var text = tr(upgrade.descript)
 	selectedupgrade = upgrade
 	$UpgradeDescript.show()
+	update_upgrade()
+
+
+func update_upgrade():
+	var upgrade = selectedupgrade
+	var text = tr(upgrade.descript)
 	$UpgradeDescript/Label.text = tr(upgrade.name)
 	
 	input_handler.ClearContainer($UpgradeDescript/HBoxContainer)

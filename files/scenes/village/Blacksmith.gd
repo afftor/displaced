@@ -24,6 +24,7 @@ func geartooltip(item):
 func open():
 #	input_handler.ShowGameTip('blacksmith')
 #	globals.check_signal("BuildingEntered", 'blacksmith')
+	if $craft.visible: $craft.update_content()
 	show()
 
 func show():

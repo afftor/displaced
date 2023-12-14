@@ -34,9 +34,6 @@
 [node name="MainScreen" type="Control"]
 theme = ExtResource( 1 )
 script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sky" type="Sprite" parent="."]
 position = Vector2( 960.02, 538.517 )

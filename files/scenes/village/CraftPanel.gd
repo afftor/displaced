@@ -51,13 +51,19 @@ func RepositionCloseButton():
 
 
 func open():
+	update_content()
+#	input_handler.UnfadeAnimation(self)
+	show()
+
+
+func update_content():
 	for cid in state.characters:
 		var ch = charlist.get_node(cid)
 		ch.visible = (state.heroes[cid].unlocked)
+	var old_char = selected_char
+	if old_char == null: old_char = 'arron'
 	selected_char = null
-	select_hero('arron')
-#	input_handler.UnfadeAnimation(self)
-	show()
+	select_hero(old_char)
 
 
 func select_hero(cid):
