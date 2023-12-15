@@ -149,7 +149,7 @@ func get_item_data_level(slot, level):
 	if typeof(res.icon) == TYPE_STRING:
 		res.icon = load(res.icon)
 	res.name = tr(template.name)
-	res.description = tr(template.leveldata[level].lvldesc) #tr(template.description) +
+	res.description = Items.form_lvl_desc(template.leveldata[level].lvldesc)
 	res.cost = template.leveldata[level].cost.duplicate()
 	return res
 
@@ -185,14 +185,14 @@ func get_weapon_sound():
 
 #this function is broken and needs revision (but for now skill tooltips are broken as well due to translation issues so i didn't fix this)
 #still need fixing
-func skill_tooltip_text(skillcode):
-	var skill = Skillsdata.skilllist[skillcode]
-	var text = ''
-	if skill.description.find("%d") >= 0:
-		text += skill.description % calculate_number_from_string_array(skill.value)
-	else:
-		text += skill.description
-	return text
+#func skill_tooltip_text(skillcode):
+#	var skill = Skillsdata.skilllist[skillcode]
+#	var text = ''
+#	if skill.description.find("%d") >= 0:
+#		text += skill.description % calculate_number_from_string_array(skill.value)
+#	else:
+#		text += skill.description
+#	return text
 
 
 func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats

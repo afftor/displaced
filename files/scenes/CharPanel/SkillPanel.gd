@@ -74,8 +74,7 @@ func build_skill_panel(panel, data):
 		panel.get_node('VBoxContainer/HBoxContainer/Label').hide()
 	else:
 		panel.get_node('VBoxContainer/HBoxContainer/cd').text = str(data.cooldown)
-#	panel.get_node('VBoxContainer/descript').text = tr(data.description)
-	panel.get_node('VBoxContainer/descript').text = tr(data.description)
+	panel.get_node('VBoxContainer/descript').text = Skillsdata.get_description(data)
 
 
 func build_res():

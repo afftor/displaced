@@ -16,9 +16,8 @@ func showup(node, character_id, skillcode):
 #		$type.set("custom_colors/font_color", Color(0,0,1))
 	$cooldown.text = "%s %s" % [str(skill.cooldown), tr("SKILLTURNS")]
 #	$type.text = skill.skilltype.capitalize()#put back, when needed!!!
-#	$descript.bbcode_text = character.skill_tooltip_text(skillcode)
-#	$descript.bbcode_text = skill.description
-	$descript.bbcode_text = tr(skill.description) #temporal
+#	$descript.bbcode_text = character.skill_tooltip_text(skillcode)#seems to be too old
+	$descript.bbcode_text = Skillsdata.get_description(skill)
 	#$RichTextLabel.bbcode_text = text
 	
 	var damage_type :String = Skillsdata.get_true_damagetype(skill.damagetype, character_id)

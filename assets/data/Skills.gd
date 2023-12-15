@@ -9,6 +9,7 @@ var skilllist = {
 		code = '',#set in _ready()
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/action_1.png"),
 		damagetype = "weapon",
 		skilltype = 'skill',
@@ -38,6 +39,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/action_2.png"),
 		damagetype = "weapon",
 		skilltype = 'skill',
@@ -323,6 +325,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_7.png"),
 		damagetype = "slash",
 		skilltype = 'main',#set to reqired type
@@ -390,6 +393,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_3.png"),
 		damagetype = "pierce",
 		skilltype = 'main',
@@ -418,6 +422,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_8.png"),
 		damagetype = "dark",
 		skilltype = 'main',
@@ -442,6 +447,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_1.png"),
 		damagetype = "air",
 		skilltype = 'support',
@@ -470,6 +476,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_2.png"),
 		damagetype = "weapon",
 		skilltype = 'support',
@@ -499,6 +506,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_4.png"),
 		damagetype = "weapon",
 		skilltype = 'support',
@@ -527,6 +535,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_5.png"),
 		damagetype = "slash",
 		skilltype = 'ultimate',
@@ -555,7 +564,6 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
-		icon = load("res://assets/images/iconsskills/arron_5.png"),
 		damagetype = "slash",
 		skilltype = 'ultimate',
 		userange = "melee",
@@ -579,6 +587,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/arron_6.png"),
 		damagetype = "magic",
 		skilltype = 'ultimate',
@@ -604,6 +613,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_1.png"),
 		damagetype = "slash",
 		skilltype = 'main',
@@ -629,6 +639,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_4.png"),
 		damagetype = "fire",
 		skilltype = 'main',
@@ -658,6 +669,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_2.png"),
 		damagetype = "light",
 		skilltype = 'main',
@@ -684,6 +696,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_5.png"),
 		damagetype = "water",
 		skilltype = 'support',
@@ -710,6 +723,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_8.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -740,6 +754,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_3.png"),
 		damagetype = "magic",
 		skilltype = 'support',
@@ -768,6 +783,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_7.png"),
 		damagetype = "fire",
 		skilltype = 'ultimate',
@@ -794,6 +810,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_6.png"),
 		damagetype = "magic",
 		skilltype = 'ultimate',
@@ -823,7 +840,6 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
-		icon = null,
 		damagetype = "magic",
 		skilltype = 'spell',
 		userange = "any",
@@ -848,6 +864,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_6.png"),
 		damagetype = "pierce",
 		skilltype = 'main',
@@ -908,6 +925,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_2.png"),
 		damagetype = "air",
 		skilltype = 'main',
@@ -935,6 +953,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_4.png"),
 		damagetype = "earth",
 		skilltype = 'main',
@@ -959,6 +978,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_5.png"),
 		damagetype = "water",
 		skilltype = 'support',
@@ -985,6 +1005,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_3.png"),
 		damagetype = "pierce",
 		skilltype = 'support',
@@ -1012,6 +1033,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_1.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -1068,6 +1090,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_7.png"),
 		damagetype = "pure",
 		skilltype = 'ultimate',
@@ -1094,6 +1117,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_8.png"),
 		damagetype = "magic",
 		skilltype = 'ultimate',
@@ -1119,6 +1143,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_5.png"),
 		damagetype = "bludgeon",
 		skilltype = 'main',
@@ -1177,6 +1202,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_4.png"),
 		damagetype = "fire",
 		skilltype = 'main',
@@ -1205,6 +1231,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_3.png"),
 		damagetype = "earth",
 		skilltype = 'main',
@@ -1254,6 +1281,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_1.png"),
 		damagetype = "air",
 		skilltype = 'support',
@@ -1278,6 +1306,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_6.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -1307,6 +1336,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_2.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -1337,6 +1367,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_8.png"),
 		damagetype = "light",
 		skilltype = 'ultimate',
@@ -1365,6 +1396,7 @@ var skilllist = {
 		code = '',
 		name = '',
 		description = '',
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_7.png"),
 		damagetype = "earth",
 		skilltype = 'ultimate',
@@ -1414,6 +1446,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_6.png"),
 		damagetype = "dark",
 		skilltype = 'main',
@@ -1441,6 +1474,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_3.png"),
 		damagetype = "water",
 		skilltype = 'main',
@@ -1467,6 +1501,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_1.png"),
 		damagetype = "earth",
 		skilltype = 'main',
@@ -1523,6 +1558,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_7.png"),
 		damagetype = "pierce",
 		skilltype = 'support',
@@ -1549,6 +1585,7 @@ var skilllist = {
 		code = '',
 		name = '',
 		description = '',
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_8.png"),
 		damagetype = "dark",
 		skilltype = 'support',
@@ -1579,6 +1616,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_2.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -1606,6 +1644,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_4.png"),
 		damagetype = "light",
 		skilltype = 'ultimate',
@@ -1635,6 +1674,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_5.png"),
 		damagetype = "light",
 		skilltype = 'ultimate',
@@ -1659,6 +1699,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_4.png"),
 		damagetype = "light",
 		skilltype = 'main',
@@ -1683,6 +1724,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_3.png"),
 		damagetype = "air",
 		skilltype = 'main',
@@ -1709,6 +1751,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_6.png"),
 		damagetype = "bludgeon",
 		skilltype = 'main',
@@ -1735,6 +1778,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_7.png"),
 		damagetype = "fire",
 		skilltype = 'support',
@@ -1763,6 +1807,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_1.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -1791,6 +1836,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_2.png"),
 		damagetype = "light",
 		skilltype = 'support',
@@ -1813,14 +1859,15 @@ var skilllist = {
 		],
 		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
-			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_defend_1'},
-			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_defend_2'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 3, op = 'lte'}], patch = 'p_bless_1'},
+			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'eq'}], patch = 'p_bless_2'},
 		]
 	},
 	sanctuary = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_8.png"),
 		damagetype = "light",
 		skilltype = 'ultimate',
@@ -1850,6 +1897,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_5.png"),
 		damagetype = "light",
 		skilltype = 'ultimate',
@@ -3457,178 +3505,300 @@ var patches = {
 		sfx = {type = 'replace', value = [{code = 'anim_attack', target = 'caster', period = 'windup'},{code = 'anim_hit', target = 'target', period = 'predamage'}, {code = 'sfx_iola_swipe', target = 'target', period = 'predamage'}]}
 	},
 	p_fencing_1 = {
-		casteffects = {type = 'append', value = ['e_fen_addrep']}
+		casteffects = {type = 'append', value = ['e_fen_addrep']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON1', effect = 'WEAPON_ARRON1_EFFECT1'}]}
 	},
 	p_fencing_2 = {
-		casteffects = {type = 'append', value = ['e_fen_addrep2']}
+		casteffects = {type = 'append', value = ['e_fen_addrep2']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON1', effect = 'WEAPON_ARRON1_EFFECT1_4'}]}
 	},
 	p_fencing_3 = {
-		casteffects = {type = 'append', value = ['e_fen_debuf']}
+		casteffects = {type = 'append', value = ['e_fen_debuf']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON2', effect = 'WEAPON_ARRON2_EFFECT1'}]}
 	},
 	p_fencing_4 = {
-		casteffects = {type = 'append', value = ['e_fen_debuf2']}
+		casteffects = {type = 'append', value = ['e_fen_debuf2']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON2', effect = 'WEAPON_ARRON2_EFFECT1_4'}]}
 	},
 	p_lunge = {
-		targetpattern = {type = 'set', value = 'row'}
+		targetpattern = {type = 'set', value = 'row'},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON2', effect = 'WEAPON_ARRON2_EFFECT3'}]}
 	},
 	p_swift_1 = {
-		custom_duration = {type = 'set', value = 2}
+		custom_duration = {type = 'set', value = 2},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON1', effect = 'WEAPON_ARRON1_EFFECT3'}]}
 	},
 	p_parry_1 = {
-		custom_duration = {type = 'add', value = 1}
+		custom_duration = {type = 'add', value = 1},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON2', effect = 'WEAPON_ARRON2_EFFECT2'}]}
 	},
 	p_swm_1 = {
-		custom_duration = {type = 'add', value = 1}
+		custom_duration = {type = 'add', value = 1},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON1', effect = 'WEAPON_ARRON1_EFFECT2'}]}
 	},
 	p_term_1 = {
-		casteffects = {type = 'replace', value = ['e_s_termination1']}
+		casteffects = {type = 'replace', value = ['e_s_termination1']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON1', effect = 'WEAPON_ARRON1_EFFECT4'}]}
+	},
+	p_smoke_screen = {
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_smoke_patch'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ARRON2', effect = 'WEAPON_ARRON2_EFFECT4'}]}
 	},
 	p_dispel = {
-		targetpattern = {type = 'set', value = 'all'}
+		targetpattern = {type = 'set', value = 'all'},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE2', effect = 'WEAPON_ROSE2_EFFECT2'}]}
 	},
 	p_fbolt_1 = {
-		value = {type = 'replace', value = [['caster.damage'], ['caster.damage']]}
+		value = {type = 'replace', value = [['caster.damage'], ['caster.damage']]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE1', effect = 'WEAPON_ROSE1_EFFECT1'}]}
 	},
 	p_fbolt_2 = {
-		value = {type = 'replace', value = [['caster.damage', '*1.5'], ['caster.damage']]}
+		value = {type = 'replace', value = [['caster.damage', '*1.5'], ['caster.damage']]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE1', effect = 'WEAPON_ROSE1_EFFECT1_4'}]}
 	},
 	p_flash_1 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.1, duration = 1})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.1, duration = 1})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE1', effect = 'WEAPON_ROSE1_EFFECT3'}]}
 	},
 	p_flash_2 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.15, duration = 1})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.15, duration = 1})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE1', effect = 'WEAPON_ROSE1_EFFECT3_4'}]}
 	},
 	p_deluge = {
 		targetpattern = {type = 'set', value = 'all'},
-		chance = {type = 'set', value = 100}
+		chance = {type = 'set', value = 100},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE2', effect = 'WEAPON_ROSE2_EFFECT3'}]}
 	},
 	p_renew_1 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_renew1'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_renew1'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE2', effect = 'WEAPON_ROSE2_EFFECT1'}]}
 	},
 	p_renew_2 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_renew2'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_renew2'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE2', effect = 'WEAPON_ROSE2_EFFECT1_4'}]}
 	},
 	p_explosion = {
-		casteffects = {type = 'append', value = ['e_s_explosion']}
+		casteffects = {type = 'append', value = ['e_s_explosion']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE1', effect = 'WEAPON_ROSE1_EFFECT4'}]}
 	},
 	p_protect = {
-		follow_up = {type = 'set', value = 'protect1'}
+		follow_up = {type = 'set', value = 'protect1'},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ROSE2', effect = 'WEAPON_ROSE2_EFFECT4'}]}
 	},
 	p_qshot_1 = {
-		keep_target = {type = 'set', value = variables.TARGET_KEEP}
+		keep_target = {type = 'set', value = variables.TARGET_KEEP},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA1', effect = 'WEAPON_ERIKA1_EFFECT3'}]}
 	},
 	p_qshot_2 = {
-		repeat = {type = 'add', value = 1}
+		repeat = {type = 'add', value = 1},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA2', effect = 'WEAPON_ERIKA2_EFFECT1'}]}
 	},
 	p_qshot_3 = {
-		repeat = {type = 'add', value = 2}
+		repeat = {type = 'add', value = 2},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA2', effect = 'WEAPON_ERIKA2_EFFECT1_4'}]}
 	},
 	p_aarrow_1 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_aarrow1', trigger = variables.TR_HIT})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_aarrow1', trigger = variables.TR_HIT})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA1', effect = 'WEAPON_ERIKA1_EFFECT1'}]}
 	},
 	p_aarrow_2 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_aarrow2', trigger = variables.TR_HIT})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_aarrow2', trigger = variables.TR_HIT})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA1', effect = 'WEAPON_ERIKA1_EFFECT1_4'}]}
 	},
 	p_farrow_1 = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_chill', push_value = true})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_chill', push_value = true})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA1', effect = 'WEAPON_ERIKA1_EFFECT2'}]}
 	},
 	p_arrshower = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_arrshower'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_arrshower'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA2', effect = 'WEAPON_ERIKA2_EFFECT2'}]}
 	},
 	p_hearts = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_hearts'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_hearts'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA1', effect = 'WEAPON_ERIKA1_EFFECT4'}]}
 	},
 	p_charm = {
-		casteffects = {type = 'append', value = ['e_s_charm1']}
+		casteffects = {type = 'append', value = ['e_s_charm1']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA2', effect = 'WEAPON_ERIKA2_EFFECT4'}]}
+	},
+	p_natbless = {
+		tags = {type = 'append', value = ['disabled']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_ERIKA2', effect = 'WEAPON_ERIKA2_EFFECT3'}]}
 	},
 	p_combo_1 = {
-		casteffects = {type = 'append', value = ['e_t_combo1']}
+		casteffects = {type = 'append', value = ['e_t_combo1']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER1', effect = 'WEAPON_EMBER1_EFFECT1'}]}
 	},
 	p_combo_2 = {
-		casteffects = {type = 'append', value = ['e_t_combo2']}
+		casteffects = {type = 'append', value = ['e_t_combo2']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER1', effect = 'WEAPON_EMBER1_EFFECT1_4'}]}
 	},
 	p_punch_1 = {
-		casteffects = {type = 'append', value = ['e_s_firepunch']}
+		casteffects = {type = 'append', value = ['e_s_firepunch']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER1', effect = 'WEAPON_EMBER1_EFFECT2'}]}
 	},
 	p_shockwave = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_shockwave'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_shockwave'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER2', effect = 'WEAPON_EMBER2_EFFECT2'}]}
 	},
 	p_defend_1 = {
-		cooldown = {type = 'add', value = -1}
+		cooldown = {type = 'add', value = -1},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER2', effect = 'WEAPON_EMBER2_EFFECT1'}]}
 	},
 	p_defend_2 = {
-		cooldown = {type = 'add', value = -2}
+		cooldown = {type = 'add', value = -2},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER2', effect = 'WEAPON_EMBER2_EFFECT1_4'}]}
 	},
 	p_dragonprot = {
-		value = {type = 'replace', value = ['caster.hpmax', '*0.5']}
+		value = {type = 'replace', value = ['caster.hpmax', '*0.5']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER2', effect = 'WEAPON_EMBER2_EFFECT3'}]}
 		#delete with time
 #		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_t_dragonprot1', push_value = true})]}
 	},
 	p_aegis = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_aegis1'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_aegis1'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER2', effect = 'WEAPON_EMBER2_EFFECT4'}]}
 	},
 	p_eq = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.2, duration = 1})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.2, duration = 1})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_EMBER1', effect = 'WEAPON_EMBER1_EFFECT4'}]}
 	},
 	p_orb_1 = {
-		casteffects = {type = 'append', value = ['e_orb_addrep1']}
+		casteffects = {type = 'append', value = ['e_orb_addrep1']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT1'}]}
 	},
 	p_orb_2 = {
-		casteffects = {type = 'append', value = ['e_orb_addrep2']}
+		casteffects = {type = 'append', value = ['e_orb_addrep2']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT1_4'}]}
 	},
 	p_mist = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_mist'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_mist'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU2', effect = 'WEAPON_RILU2_EFFECT3'}]}
 	},
 	p_ava = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_ava'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_ava'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU2', effect = 'WEAPON_RILU2_EFFECT2'}]}
 	},
 	p_thorn = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_add_s1'})]}
+		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_add_s1'})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT2'}]}
 	},
 	p_echo_1 = {
-		value = {type = 'replace', value = [['caster.hpmax','*0.5'],['caster.damage','*0.6']],}
+		value = {type = 'replace', value = [['caster.hpmax','*0.5'],['caster.damage','*0.6']],},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU2', effect = 'WEAPON_RILU2_EFFECT1'}]}
 	},
 	p_echo_2 = {
-		value = {type = 'replace', value = [['caster.hpmax','*0.75'],['caster.damage','*0.6']],}
+		value = {type = 'replace', value = [['caster.hpmax','*0.75'],['caster.damage','*0.6']],},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU2', effect = 'WEAPON_RILU2_EFFECT1_4'}]}
 	},
 	p_resto = {
 		value = {type = 'replace', value = ['caster.hpmax','*0.4'],},
 		casteffects = {type = 'append', value = ['e_pay_soul']},
-		reqs = {type = 'replace', value = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 2}],}
+		reqs = {type = 'replace', value = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 2}]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT3'}]}
 	},
 	p_beam = {
-		value = {type = 'replace', value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+0.9'],'*1.5'],},
+		value = {type = 'replace', value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+0.9'],'*1.5']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT4'}]}
+	},
+	p_bless_1 = {
+		cooldown = {type = 'add', value = -1},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT1'}]}
+	},
+	p_bless_2 = {
+		cooldown = {type = 'add', value = -2},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT1_4'}]}
 	},
 	p_gust = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_gust2', chance = 0.8})]}
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_gust2', chance = 0.8})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT2'}]}
 	},
 	p_smash = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1})]}
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT2'}]}
 	},
 	p_clean_1 = {
 		targetpattern = {type = 'set', value = 'line'},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT3'}]}
 	},
 	p_clean_2 = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_s_burn_onget', push_value = true})]}
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_s_cleanse'}), Effectdata.rebuild_template({effect = 'e_s_burn_onget', push_value = true})]},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT3'}]}
 	},
 	p_barrier = {
-		repeat = {type = 'add', value = 1}
+		repeat = {type = 'add', value = 1},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT1'}]}
 	},
 	p_barrier_all = {
-		targetpattern = {type = 'set', value = 'all'}
+		targetpattern = {type = 'set', value = 'all'},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT1_4'}]}
 	},
 	p_sanct = {
-		value = {type = 'replace', value = ['caster.hpmax','*0.7'],},
+		value = {type = 'replace', value = ['caster.hpmax','*0.7']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT4'}]}
 	},
 	p_purge = {
-		value = {type = 'replace', value = ['caster.damage','*2.5'],},
-	},
-	p_natbless = {
-		tags = {type = 'append', value = ['disabled']}
-	},
-	p_smoke_screen = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_s_smoke_patch'})]}
-	},
+		value = {type = 'replace', value = ['caster.damage','*2.5']},
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT4'}]}
+	}
 }
 
 func patch_skill(skill_id, unit):
@@ -3649,6 +3819,13 @@ func patch_skill(skill_id, unit):
 							for i in tmp[key].value:
 								template[key].push_back(i)
 	return template
+
+func get_description(patched_skill :Dictionary) -> String:
+	var desc_text = tr(patched_skill.description)
+	assert(patched_skill.has('description_patch'), "skill '%s' has no description_patch, but trying to show description" % patched_skill.code)
+	for add_desc in patched_skill.description_patch:
+		desc_text += "\n%s: %s" % [tr(add_desc.weapon), tr(add_desc.effect)]
+	return desc_text
 
 func _ready():
 	for i in skilllist:
