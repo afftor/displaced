@@ -1,5 +1,13 @@
 extends NinePatchRect
 
+export(float) var desc_bottom_margin
+onready var desc_node = $descript
+
+func _ready():
+	desc_node.connect("item_rect_changed", self, "on_desc_rect_changed")
+
+func on_desc_rect_changed() ->void:
+	rect_size.y = desc_node.get_rect().end.y + desc_bottom_margin
 
 func showup(node, character_id, skillcode):
 	var character = state.heroes[character_id]
@@ -17,7 +25,7 @@ func showup(node, character_id, skillcode):
 	$cooldown.text = "%s %s" % [str(skill.cooldown), tr("SKILLTURNS")]
 #	$type.text = skill.skilltype.capitalize()#put back, when needed!!!
 #	$descript.bbcode_text = character.skill_tooltip_text(skillcode)#seems to be too old
-	$descript.bbcode_text = Skillsdata.get_description(skill)
+	desc_node.bbcode_text = Skillsdata.get_description(skill)
 	#$RichTextLabel.bbcode_text = text
 	
 	var damage_type :String = Skillsdata.get_true_damagetype(skill.damagetype, character_id)

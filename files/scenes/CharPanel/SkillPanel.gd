@@ -1,6 +1,6 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
-onready var skill_list = $skills
+onready var skill_list = $skills/list
 onready var stats_list = $StatsPanel
 onready var res_list = $ResPanel/res
 
@@ -60,7 +60,7 @@ func build_skills():
 
 
 func build_skill_panel(panel, data):
-	panel.get_node('TextureRect/icon').texture = data.icon
+	panel.get_node('icon_container/TextureRect/icon').texture = data.icon
 	panel.get_node('VBoxContainer/HBoxContainer/name').text = tr(data.name)
 	var resist_icon = panel.get_node('VBoxContainer/HBoxContainer/ResistIcon')
 	var damage_type :String = Skillsdata.get_true_damagetype(data.damagetype, character.id)
