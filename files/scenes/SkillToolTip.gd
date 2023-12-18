@@ -9,10 +9,9 @@ func _ready():
 func on_desc_rect_changed() ->void:
 	rect_size.y = desc_node.get_rect().end.y + desc_bottom_margin
 
-func showup(node, character_id, skillcode):
+func prepare(node, character_id, skillcode):
 	var character = state.heroes[character_id]
 	var skill = Skillsdata.patch_skill(skillcode, character)
-	show()
 	$name.text = tr(skill.name)
 #	$cost.text = str(skill.manacost)
 #	$cost.visible = skill.manacost != 0
@@ -43,7 +42,11 @@ func showup(node, character_id, skillcode):
 		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
 
-
+func get_estimated_height() ->float:
+	var text_height = desc_node.get_content_height()
+	if text_height < desc_node.rect_min_size.y:
+		text_height = desc_node.rect_min_size.y
+	return desc_node.rect_position.y + text_height + desc_bottom_margin
 
 
 

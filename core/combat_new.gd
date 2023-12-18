@@ -549,7 +549,7 @@ func SelectSkill(skill, system = false):
 			call_deferred('SelectSkill', 'attack', true)
 			return
 	if skill.allowedtargets.has('self') and skill.allowedtargets.size() == 1 :
-		globals.closeskilltooltip()
+		globals.hideskilltooltip()
 #		activecharacter.selectedskill = 'attack'
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter.position)
 	if !allowedtargets.ally.empty():

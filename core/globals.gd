@@ -423,13 +423,14 @@ func connectskilltooltip(node, character_id, skill):
 
 func showskilltooltip(skill, node, character_id):
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
-	skilltooltip.showup(node, character_id, skill)
-	var pos = node.get_global_rect()
-	var pos2 = skilltooltip.rect_size
-#	pos = Vector2(pos.end.x - pos2.x, pos.position.y - pos2.y)
-	pos = Vector2(pos.position.x + pos.size.x * 0.5 - pos2.x * 0.5,
-		pos.position.y - pos2.y)
+	skilltooltip.prepare(node, character_id, skill)
+	var node_rect = node.get_global_rect()
+	var tip_width = skilltooltip.rect_size.x
+	var tip_height = skilltooltip.get_estimated_height()
+	var pos = Vector2(node_rect.position.x + node_rect.size.x * 0.5 - tip_width * 0.5,
+		node_rect.position.y - tip_height)
 	skilltooltip.set_global_position(pos)
+	skilltooltip.show()
 
 
 func hideskilltooltip():
@@ -590,11 +591,11 @@ func CloseSelection(panel):
 	panel.hide()
 
 
-func closeskilltooltip():
-	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
-	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
-	skilltooltip.set_process(false)
-	skilltooltip.hide()
+#func closeskilltooltip():
+#	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
+#	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
+#	skilltooltip.set_process(false)
+#	skilltooltip.hide()
 
 
 func calculatepercent(value1, value2):

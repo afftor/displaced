@@ -679,6 +679,7 @@ margin_top = 5.0
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -955,6 +956,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
+mouse_filter = 2
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
@@ -1778,9 +1780,6 @@ margin_right = 425.0
 margin_bottom = 190.0
 theme = ExtResource( 25 )
 custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="attack" type="Button" parent="SkillPanel/DefaultSkillContainer"]
 margin_right = 80.0
@@ -1794,12 +1793,10 @@ margin_top = 5.0
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hotkey" parent="SkillPanel/DefaultSkillContainer/attack" instance=ExtResource( 38 )]
 margin_left = -2.0
@@ -1819,6 +1816,7 @@ margin_top = 5.0
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
