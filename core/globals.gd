@@ -681,15 +681,20 @@ func LoadGame(filename):
 #		StartEventScene(state.CurEvent, false, state.CurrentLine);
 
 
-func datetime_comp(a, b):
-	if a.year > b.year: return true
-	if a.month > b.month: return true
-	if a.day > b.day: return true
-	if a.hour > b.hour: return true
-	if a.minute > b.minute: return true
-	if a.second > b.second: return true
-	return false
-	pass
+#func datetime_comp(a, b):
+#	if a.year > b.year: return true
+#	elif a.year < b.year: return false
+#	if a.month > b.month: return true
+#	elif a.month < b.month: return false
+#	if a.day > b.day: return true
+#	elif a.day < b.day: return false
+#	if a.hour > b.hour: return true
+#	elif a.hour < b.hour: return false
+#	if a.minute > b.minute: return true
+#	elif a.minute < b.minute: return false
+#	if a.second > b.second: return true
+#	return false
+#	pass
 
 
 func get_last_save():
@@ -697,19 +702,18 @@ func get_last_save():
 
 	if dir == null: return
 
-	var dated_dir = {}
 	var tmp = File.new()
+	var max_time = 0
+	var oldest_file
 	for i in dir_contents(userfolder + 'saves'):
 		if i.ends_with('.sav') == false:
 			continue
-		dated_dir[i] = OS.get_datetime_from_unix_time(tmp.get_modified_time(i))
-	if dated_dir.size() == 0: return null
-	var b = dated_dir.keys()[0]
-	for i in range(dated_dir.keys().size()):
-		if datetime_comp(dated_dir[dated_dir.keys()[i]], dated_dir[b]):
-			b = dated_dir.keys()[i]
-	return b
-	pass
+		var file_time = tmp.get_modified_time(i)
+		if file_time > max_time:
+			max_time = file_time
+			oldest_file = i
+	if max_time == 0: return null
+	return oldest_file
 
 func get_hotkeys_handler() ->Object:
 	return hotkeys_handler
