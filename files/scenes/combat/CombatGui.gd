@@ -38,7 +38,7 @@ func _ready():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
 	
-	$SkillPanel/Escape.connect("pressed", combat, "run")
+	$SkillPanel/Escape.connect("pressed", combat, "try_to_run")
 	$SkillPanel/cheat.connect("pressed", combat, "cheatvictory")
 	$SkillPanel/cheatheal.connect("pressed", combat, "cheatheal")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
@@ -310,9 +310,9 @@ func RebuildDefaultsPanel():
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
 
 
-func RebuildReserve(forced = false):
-	if !combat.allowaction and !forced: return
-	$SkillPanel/Escape.visible = true
+#func RebuildReserve(forced = false):
+#	if !combat.allowaction and !forced: return
+#	$SkillPanel/Escape.visible = true
 #	for ch in state.characters:
 #		var hero = state.heroes[ch]
 #		if !hero.unlocked: continue

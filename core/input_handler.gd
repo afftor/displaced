@@ -496,17 +496,17 @@ func GetEventNode():
 		get_tree().get_root().add_child(node)
 	return node
 
-func ShowConfirmPanel(TargetNode, TargetFunction, Text):
-	var node
-	if get_tree().get_root().has_node('ConfirmPanel') == false:
-		node = load("res://files/scenes/ConfirmPanel.tscn").instance()
-		get_tree().get_root().add_child(node)
-		node.name = 'ConfirmPanel'
-	else:
-		node = get_tree().get_root().get_node("ConfirmPanel")
-		get_tree().get_root().remove_child(node)
-		get_tree().get_root().add_child(node)
-	node.Show(TargetNode, TargetFunction, Text)
+#func ShowConfirmPanel(TargetNode, TargetFunction, Text):
+#	var node
+#	if get_tree().get_root().has_node('ConfirmPanel') == false:
+#		node = load("res://files/scenes/ConfirmPanel.tscn").instance()
+#		get_tree().get_root().add_child(node)
+#		node.name = 'ConfirmPanel'
+#	else:
+#		node = get_tree().get_root().get_node("ConfirmPanel")
+#		get_tree().get_root().remove_child(node)
+#		get_tree().get_root().add_child(node)
+#	node.Show(TargetNode, TargetFunction, Text)
 
 
 #Item shading function

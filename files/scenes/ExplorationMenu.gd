@@ -598,6 +598,9 @@ func update_buttons() ->void:
 		advance.disabled = true
 
 func can_hide() ->bool:
+	return can_escape()
+
+func can_escape() ->bool:
 	if area == null:
 		return true
 	var areadata = Explorationdata.areas[area]

@@ -383,6 +383,8 @@ var TranslationDict = {
 	GOLDPRICE = "Gold Cost",
 	ABANDONAREA = "Abandon Area",
 	DONOTSHOW = "Don't show any more",
+	THEREISNOESCAPE = "You can't escape this battle",
+	GAMEOVER = 'Game Over',
 
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",

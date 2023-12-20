@@ -246,8 +246,14 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	call_deferred('select_actor')
 
 
-func run():
+func try_to_run():
 	if !allowaction: return
+	if input_handler.explore_node != null and !input_handler.explore_node.can_escape():
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'run', tr('THEREISNOESCAPE'), tr('GAMEOVER')])
+		return
+	run()
+
+func run():
 	FinishCombat(false)
 
 func buildenemygroup(group):
@@ -307,7 +313,7 @@ func buildplayergroup():
 		hero.activate_traits()
 		hero.process_event(variables.TR_COMBAT_S)
 	playergroup = newgroup
-	gui_node.RebuildReserve(true)
+#	gui_node.RebuildReserve(true)
 	gui_node.build_hero_panels()
 
 
@@ -348,7 +354,7 @@ func newturn():
 		if i.displaynode.visible: i.displaynode.process_enable()
 		i.tick_cooldowns()
 	turns +=1
-	gui_node.RebuildReserve()
+#	gui_node.RebuildReserve()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	emit_signal("turn_started")
@@ -813,7 +819,7 @@ func swap_heroes_old(pos):
 	turns += 1
 	
 	recheck_auras()
-	gui_node.RebuildReserve()
+#	gui_node.RebuildReserve()
 	gui_node.build_hero_panels()
 	call_deferred('select_actor')
 
@@ -845,7 +851,7 @@ func move_hero(chid, pos): #reserve -> bf
 	turns += 1
 	
 	recheck_auras()
-	gui_node.RebuildReserve()
+#	gui_node.RebuildReserve()
 	allowaction = true
 	call_deferred('select_actor')
 
@@ -869,7 +875,7 @@ func reserve_hero(chid): #bf -> reserve
 	playergroup.erase(pos)
 	battlefield[pos] = null
 	recheck_auras()
-	gui_node.RebuildReserve()
+#	gui_node.RebuildReserve()
 	gui_node.build_hero_panels()
 	allowaction = true
 	call_deferred('select_actor')
