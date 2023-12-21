@@ -4,13 +4,13 @@
 =GUI_NORMAL=
 =BG future_city_reactor_inside=
 =SPRITE demitrius_demon=
-=SOUND sword_fall=
+=SOUND parry=
 After a few clashes Dimitrius has managed to strike Arron's sword from his hands.
 Ar(shock) - Ah!
 De - And it's over.
 Ar(anger) - Like hell it is!
 Taken by surprise, Dimitrius was attacked by barehanded Arron, throwing him on the ground.
-=SOUND tumble=
+=SOUND sound_fall=
 What he didn't see is how Arron pulled the shock baton out of his clothes.
 De(anger) - What the-
 =SOUND shocker=
@@ -64,7 +64,7 @@ Ar - Given your condition, it seems my shocker has nearly run out of power.
 Ar - So, say, do you think you will be able to survive fifty millions degree heat?
 De - Enough!
 Dimitrius pushed Arron away with a slowly returning power, still oblivious to what was going on around him. 
-=SOUND fall=
+=SOUND sound_fall=
 Ar(shock) - Behind!
 Realizing that Arron indeed saw something behind him, Dimitrius looked around to find a huge cloud of forming plasma spreading through the reactor's coil.
 In the same moment Arron disappeared from his previous place.

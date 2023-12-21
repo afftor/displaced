@@ -82,7 +82,7 @@ D - Enough of this bad joke.
 =MUSIC bosstheme=
 T - Wha...
 Sergius fell on the ground from a mortal wound.
-=SOUND fall=
+=SOUND sound_fall=
 =SPRITE demitrius_demon=
 I(shock) - NOOO!
 De - Sorry to interrupt your party, but I kinda needed his powers.
