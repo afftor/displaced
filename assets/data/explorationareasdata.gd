@@ -538,7 +538,7 @@ var scene_sequences = {
 	ember_boobs = {
 		name = "Ember's boobs",
 		descript = "",
-		category  = 'ember',
+		gallery = true,
 		preview = 'ember_boobs',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 		unlock_price = {ember = 100},
@@ -550,7 +550,7 @@ var scene_sequences = {
 	rose_night = {
 		name = "Rose's night",
 		descript = "",
-		category  = 'rose',
+		gallery = true,
 		preview = 'rose_night',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_boobs'}],
 		unlock_price = {rose = 100},
@@ -562,19 +562,19 @@ var scene_sequences = {
 	rose_public = {
 		name = "Rose in public",
 		descript = "",
-		category  = 'rose',
+		gallery = true,
 #		preview = '',#find it!!!
 		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
 		unlock_price = {rose = 500},
 		actions = [
 		{type = 'scene', value = 'rose_3'},
-		{type = 'unlock_scene', value = 'rose_night'},#rly?
+		{type = 'unlock_scene', value = 'rose_public'},
 		]
 	},
 	erika_doggy = {
 		name = "Erika's doggy",
 		descript = "",
-		category  = 'erika',
+		gallery = true,
 		preview = 'erika_doggy',
 		initiate_reqs = [],
 		unlock_price = {erika = 100},
@@ -586,7 +586,7 @@ var scene_sequences = {
 	erika_rose_three = {
 		name = "Erika and Rose",
 		descript = "",
-		category  = 'erika',
+		gallery = true,
 		preview = 'erika_rose_three',
 		unlock_price = {rose = 200, erika = 200},
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika_sidequest'}],
@@ -598,7 +598,7 @@ var scene_sequences = {
 	ember_missionary = {
 		name = "Ember's missionary",
 		descript = "",
-		category  = 'ember',
+		gallery = true,
 		preview = 'ember_missionary',
 		unlock_price = {ember = 200},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
@@ -610,7 +610,7 @@ var scene_sequences = {
 	ember_titjob = {
 		name = "Ember's titjob",
 		descript = "",
-		category  = 'ember',
+		gallery = true,
 		preview = 'ember_titjob',
 		unlock_price = {ember = 500},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_missionary'}],
@@ -622,7 +622,7 @@ var scene_sequences = {
 	ember_doggy = {
 		name = "Ember's doggy",
 		descript = "",
-		category  = 'ember',
+		gallery = true,
 		preview = 'ember_doggy',
 		unlock_price = {ember = 1000},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_titjob'}],
@@ -634,7 +634,7 @@ var scene_sequences = {
 	rilu_cowgirl = {
 		name = "Rilu is a cowgirl",
 		descript = "",
-		category  = 'rilu',
+		gallery = true,
 		preview = 'rilu_cowgirl',
 		unlock_price = {rilu = 200},
 		initiate_reqs = [],
@@ -646,7 +646,7 @@ var scene_sequences = {
 	rilu_doggy = {
 		name = "Rilu's doggy",
 		descript = "",
-		category  = 'rilu',
+		gallery = true,
 		preview = 'rilu_doggy',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_cowgirl'}],
 		unlock_price = {rilu = 500},
@@ -658,7 +658,7 @@ var scene_sequences = {
 	rilu_anal = {
 		name = "Rilu's anal",
 		descript = "",
-		category  = 'rilu',
+		gallery = true,
 		preview = 'rilu_anal',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_doggy'}],
 		unlock_price = {rilu = 1000},
@@ -671,7 +671,7 @@ var scene_sequences = {
 	iola_blowjob = {
 		name = "Iola's blowjob",
 		descript = "",
-		category  = 'iola',
+		gallery = true,
 		preview = 'iola_blowjob',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_recruited' }],
 		unlock_price = {iola = 200},
@@ -683,7 +683,7 @@ var scene_sequences = {
 	iola_riding = {
 		name = "Iola's riding",
 		descript = "",
-		category  = 'iola',
+		gallery = true,
 		preview = 'iola_riding',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_blowjob' }],
 		unlock_price = {iola = 500},
@@ -695,7 +695,7 @@ var scene_sequences = {
 	iola_foursome = {
 		name = "Iola's foursome",
 		descript = "",
-		category  = 'iola',
+		gallery = true,
 #		preview = '',#what is it?!
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_missionary' }],
 		unlock_price = {iola = 500, erika = 500, rose = 500},

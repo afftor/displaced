@@ -47,7 +47,7 @@ func testmode():
 func preload_previews():
 	for event in Explorationdata.scene_sequences:
 		var eventdata = Explorationdata.scene_sequences[event]
-		if eventdata.has('category') and eventdata.has('preview'):
+		if eventdata.has('gallery') and eventdata.has('preview'):
 			resources.preload_res("scene_preview/%s" % eventdata.preview)
 
 
@@ -84,10 +84,15 @@ func rebuild_scene_list():
 	input_handler.ClearContainer(scenelist, ['Button'])
 	for event in Explorationdata.scene_sequences:
 		var eventdata = Explorationdata.scene_sequences[event]
-		if !eventdata.has('category'): continue
-		if selected_char == 'all':
-			if !state.heroes[eventdata.category].unlocked: continue
-		elif eventdata.category != selected_char: continue
+		if !eventdata.has('gallery'): continue
+		var girls = eventdata.unlock_price.keys()
+		var locked = false
+		for girl in girls:
+			if !state.heroes[girl].unlocked:
+				locked = true
+				break
+		if locked: continue
+		if selected_char != 'all' and !(selected_char in girls): continue
 		var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
 		if state.OldSeqs.has(event):
 			panel.set_unlocked(eventdata)
