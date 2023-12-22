@@ -77,8 +77,23 @@ var event_triggers = {#reworked to same syntax as seqs
 	victor_2_3 = [
 		{type = 'mission', value = 'town_viktor_fight'},
 	],
+	rilu_2_3_1 = [
+		{type = 'system', value = 'enable_character', arg = ['rilu', false]}
+	],
 	rilu_2_3_2 = [
+		{type = 'system', value = 'enable_character', arg = ['ember', false]},
+		{type = 'system', value = 'enable_character', arg = ['iola', false]},
+		{type = 'system', value = 'enable_character', arg = ['rose', false]},
+		{type = 'system', value = 'enable_character', arg = ['erika', false]},
+		{type = 'system', value = 'add_to_party', arg = ['arron', 2]},
 		{type = 'mission', value = 'castle_rilu'},
+	],
+	rilu_2_4 = [
+		{type = 'system', value = 'enable_character', arg = ['ember', true]},
+		{type = 'system', value = 'enable_character', arg = ['iola', true]},
+		{type = 'system', value = 'enable_character', arg = ['rose', true]},
+		{type = 'system', value = 'enable_character', arg = ['erika', true]},
+		{type = 'system', value = 'enable_character', arg = ['rilu', true]},
 	],
 	ember_2_4 = [
 #		{code = 'system', value = 'start_next_scene', args = 'viktor_2_1'},
@@ -176,7 +191,7 @@ var locations = { #added seqs bindings and other fields
 		code = 'castle',
 		background = 'castle_interior', 
 		missions = ['castle_iola','castle_rilu_return'],
-		events = ['rilu_castle', ]
+		events = ['rilu_castle']
 	},
 	dragon_mountains = {
 		code = 'dragon_mountains',
@@ -444,12 +459,12 @@ var scene_sequences = {
 		{type = 'scene', value = 'rilu_2_3_1'},
 		]
 	},
-	rilu_castle =  {
+	rilu_castle = {
 #		initiate_signal = 'castle', 
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_disappear'}],
 		actions = [
 		{type = 'scene', value = 'rilu_2_3_2'},
-		{type = 'mission', value = 'castle_rilu'},
+#		{type = 'mission', value = 'castle_rilu'},
 #		{type = 'scene', value = 'rilu_2_4'},
 		]
 	},
