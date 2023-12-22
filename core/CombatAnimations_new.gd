@@ -169,10 +169,11 @@ func default_animation(node, args):
 	input_handler.force_end_tweens(sp2)
 	input_handler.FadeAnimation(sp, transition_time, delaytime)
 	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
-	input_handler.FadeAnimation(sp2, transition_time, playtime + delaytime - transition_time, true)
-	input_handler.UnfadeAnimation(sp, transition_time, playtime + delaytime - transition_time, true)
+	var back_delay = max(playtime + delaytime - transition_time, 0)
+	input_handler.FadeAnimation(sp2, transition_time, back_delay, true)
+	input_handler.UnfadeAnimation(sp, transition_time, back_delay, true)
 	if args.has('callback'):
-		input_handler.DelayedCallback(node, playtime + delaytime - transition_time, args.callback)
+		input_handler.DelayedCallback(node, back_delay, args.callback)
 	return playtime + delaytime + delayafter
 
 
