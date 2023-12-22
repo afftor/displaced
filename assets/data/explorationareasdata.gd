@@ -158,11 +158,11 @@ var locations = { #added seqs bindings and other fields
 		missions = ['caves_demitrius','caves_iola','caves_dwarf','caves_wanderer'],
 		events = []
 	},
-	road_to_town =  { #needs rebinding or adding a dedicated map location
-		code = 'desert',
-		background = '',
-		missions = ['road_to_town'],
-	},
+#	road_to_town =  { #needs rebinding or adding a dedicated map location
+#		code = 'desert',
+#		background = '',
+#		missions = ['road_to_town'],
+#	},
 	town =  { #should have differnet custom handling
 		#idk for what reason
 		code = 'town',
@@ -613,7 +613,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'ember_titjob',
 		unlock_price = {ember = 500},
-		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_missionary'}],
+		initiate_reqs = [{type = 'seq_seen', value = 'ember_missionary'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_5'},
 		{type = 'unlock_scene', value = 'ember_titjob'},
@@ -625,7 +625,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'ember_doggy',
 		unlock_price = {ember = 1000},
-		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}, {type = 'seq_seen', value = 'ember_titjob'}],
+		initiate_reqs = [{type = 'seq_seen', value = 'ember_titjob'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_6'},
 		{type = 'unlock_scene', value = 'ember_doggy'},
@@ -1204,7 +1204,7 @@ var areas = { #missions in new terminology
 		},
 		enemies = {
 			1 : [
-				{ 1 : ['spider'], 2 : ['earthgolem'],  3 : ['spider'], 4 : ['spider'], 5 : ['spider_2'], 6 : ['spider']},
+				{ 1 : ['spider'], 2 : ['demon1'],  3 : ['spider'], 4 : ['spider'], 5 : ['spider_2'], 6 : ['spider']},
 				],
 			2 : [
 				{ 1 : ['dwarfwarrior'], 2 : ['dwarfwarrior'], 3: ['earthgolem'],5:['angrydwarf']},
@@ -1220,7 +1220,7 @@ var areas = { #missions in new terminology
 				{ 1 : ['spider'], 2 : ['spider_2'], 3: ['spider'], 4 : ['earthgolem'], 6 : ['earthgolem']},
 				],
 			6 : [
-				{ 1 : ['earthgolemboss'], 3: ['earthgolemboss']},
+				{ 1 : ['earthgolemboss'], 3: ['earthgolemboss'], 5: ['demon2']},
 				],
 			7: [
 				{2: ['annet']}
