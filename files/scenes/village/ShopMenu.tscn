@@ -44,17 +44,14 @@ margin_top = -70.0
 margin_right = 301.0
 margin_bottom = 76.0
 mouse_filter = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 529.0
 margin_top = 18.0
 margin_right = 735.0
 margin_bottom = 63.0
-custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.996078, 0.996078, 0.996078, 1 )
+custom_fonts/font = ExtResource( 14 )
 text = "Shop"
 align = 1
 valign = 1
@@ -69,13 +66,10 @@ margin_right = 1193.0
 margin_bottom = 714.0
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="GridContainer" parent="ScrollContainer"]
 margin_right = 1092.0
-margin_bottom = 152.0
+margin_bottom = 180.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 22
 custom_constants/hseparation = 60
@@ -83,11 +77,12 @@ columns = 2
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 margin_right = 512.0
-margin_bottom = 152.0
-rect_min_size = Vector2( 400, 150 )
+margin_bottom = 180.0
+rect_min_size = Vector2( 512, 180 )
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 5 )
+expand = true
 
 [node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 21.0
@@ -98,18 +93,12 @@ rect_min_size = Vector2( 125, 0 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 150.0
 margin_top = 14.0
 margin_right = 490.0
 margin_bottom = 46.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
 margin_right = 261.0
@@ -137,24 +126,21 @@ custom_fonts/font = ExtResource( 9 )
 text = "100"
 
 [node name="desc" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 150.0
-margin_top = 50.0
-margin_right = 490.0
-margin_bottom = 108.0
+margin_left = 158.0
+margin_top = 48.0
+margin_right = 498.0
+margin_bottom = 165.0
 mouse_filter = 2
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 10 )
 text = "Short description
 45646"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="amount" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 150.0
-margin_top = 112.0
-margin_right = 490.0
-margin_bottom = 139.0
+margin_left = 15.0
+margin_top = 135.0
+margin_right = 150.0
+margin_bottom = 162.0
 custom_fonts/font = ExtResource( 10 )
 text = "in posession: 0"
 
@@ -232,9 +218,6 @@ margin_right = 1026.0
 margin_bottom = 616.0
 texture = ExtResource( 15 )
 script = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureRect" parent="SelectAmountPanel"]
 margin_left = 66.9587
@@ -310,29 +293,31 @@ margin_left = 78.1683
 margin_top = 204.0
 margin_right = 150.168
 margin_bottom = 236.0
-custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 9 )
+custom_styles/normal = SubResource( 1 )
 text = "10000"
 max_length = 5
 
 [node name="down" type="TextureButton" parent="SelectAmountPanel"]
 margin_left = 69.2142
-margin_top = 206.191
-margin_right = 94.2142
-margin_bottom = 235.191
+margin_top = 196.191
+margin_right = 109.214
+margin_bottom = 246.191
 rect_scale = Vector2( -1, 1 )
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 18 )
+expand = true
 
 [node name="up" type="TextureButton" parent="SelectAmountPanel"]
-margin_left = 153.214
-margin_top = 206.191
-margin_right = 178.214
-margin_bottom = 235.191
+margin_left = 155.0
+margin_top = 195.0
+margin_right = 195.0
+margin_bottom = 245.0
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 18 )
+expand = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SelectAmountPanel"]
 margin_left = 268.0

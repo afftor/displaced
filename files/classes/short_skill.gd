@@ -6,7 +6,7 @@ var template
 
 var damagetype
 var damagesrc
-var damagestat = []
+var damagestat
 var is_drain = false
 var skilltype
 var tags
@@ -42,7 +42,7 @@ func _init():
 #	random_factor_p = 0.0
 
 func clone():
-	var res = dict2inst(inst2dict(self))
+	var res = dict2inst(inst2dict(self).duplicate(true))
 	res.effects.clear()
 	for e in template.casteffects:
 		var eff = effects_pool.e_createfromtemplate(e, res)
@@ -137,6 +137,7 @@ func setup_caster(c):
 
 func setup_target(t):
 	target = t
+	if target == null: return#in all honesty, it shouldn't ever work, but it is still needed for zombie selfdestraction
 	evade = target.get_stat('evasion')
 
 func setup_final():
@@ -159,6 +160,7 @@ func setup_effects_final():
 			eff.set_args('duration', tempdur)
 
 func hit_roll():
+#	print("hit_roll by %s - %s" % [chance, evade])
 	var prop = chance - evade
 	if prop < randf()*100 && caster.combatgroup != target.combatgroup:
 		hit_res = variables.RES_MISS
@@ -207,6 +209,11 @@ func apply_effect(eff):
 			pass
 
 
+func recalculate_effects():
+	for e in effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.calculate_args()
+
 func remove_effects():
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
@@ -219,6 +226,12 @@ func process_event(ev):
 		eff.set_args('skill', self)
 		eff.process_event(ev)
 
+#that's very much of a reckless patch for meta-skill TR_CAST event processing. Mind that it is not a replacement for resolve_value
+#to get rid of this, need to do a major refactor of all this meta/applicable skill system
+func prepare_process_value_on_meta():
+	if !get_exception_type().empty() or target == null:
+		return
+	process_value = input_handler.calculate_number_from_string_array(long_value[0], caster, target)
 
 func resolve_value(check_m):
 	value.resize(long_value.size())
@@ -233,6 +246,11 @@ func resolve_value(check_m):
 			endvalue /= 2
 		value[i] = endvalue
 	process_value = value[0]
+	recalculate_effects()
+#	print("resolve_value for %s: %s" % [code, process_value])
+#	print("target is %s" % target.name)
+#	print(long_value)
+#	print(value)
 
 func calculate_dmg():
 	if damagetype == 'weapon':
@@ -242,3 +260,9 @@ func calculate_dmg():
 			if damagestat[i] in variables.dmg_mod_list:
 				value[i] *= caster.get_stat('critmod')
 	for v in value: v = round(v)
+
+#returns empty string for default skill processing
+func get_exception_type() ->String:
+	if damagetype is String and damagetype == 'summon':
+		return 'summon'
+	return ''

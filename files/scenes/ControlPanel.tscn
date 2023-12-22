@@ -10,9 +10,9 @@
 [ext_resource path="res://assets/images/gui/universal/msbutton_pressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/universal/msvillage.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/iconsitems/Food.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/pt_36_boldshad.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=12]
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=13]
-[ext_resource path="res://files/scenes/CharacterMenu.tscn" type="PackedScene" id=14]
 [ext_resource path="res://files/scenes/MenuPanel.tscn" type="PackedScene" id=15]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=18]
@@ -183,11 +183,14 @@ margin_bottom = 154.0
 text = "Menu"
 
 [node name="Gold" type="Label" parent="ControlPanel"]
-margin_left = 1661.0
-margin_top = -934.0
-margin_right = 1713.0
-margin_bottom = -910.0
+margin_left = 1638.0
+margin_top = -849.0
+margin_right = 1709.0
+margin_bottom = -802.0
+grow_horizontal = 0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 11 )
 text = "Gold"
 align = 2
 
@@ -203,6 +206,18 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="test_combat" type="TextureButton" parent="."]
+visible = false
+margin_left = 15.0
+margin_top = 972.0
+margin_right = 97.0
+margin_bottom = 1051.0
+hint_tooltip = "RETURN"
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
 
 [node name="foodicon" type="TextureRect" parent="."]
 visible = false
@@ -228,9 +243,7 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[node name="MenuPanel" parent="." groups=[
-"pauseprocess",
-] instance=ExtResource( 15 )]
+[node name="MenuPanel" parent="." groups=["pauseprocess"] instance=ExtResource( 15 )]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -241,9 +254,7 @@ margin_top = -221.0
 margin_right = 183.0
 margin_bottom = 221.0
 
-[node name="Inventory" parent="." groups=[
-"pauseprocess",
-] instance=ExtResource( 23 )]
+[node name="Inventory" parent="." groups=["pauseprocess"] instance=ExtResource( 23 )]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -262,16 +273,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1188.0
+margin_left = -1003.0
 margin_top = -154.0
+margin_right = -22.0
+margin_bottom = 0.0
 custom_styles/panel = SubResource( 2 )
-
-[node name="HeroPanel" parent="." instance=ExtResource( 14 )]
-visible = false
-margin_left = 454.182
-margin_top = 53.1943
-margin_right = 1402.18
-margin_bottom = 841.194
 
 [node name="SystemMessageLabel" type="RichTextLabel" parent="."]
 margin_left = 29.0
@@ -279,8 +285,8 @@ margin_top = 919.0
 margin_right = 1901.0
 margin_bottom = 958.0
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 27 )
 custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
+custom_fonts/normal_font = ExtResource( 27 )
 bbcode_enabled = true
 scroll_active = false
 __meta__ = {
@@ -292,6 +298,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 16 )
 expand = true
 

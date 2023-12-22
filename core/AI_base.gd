@@ -130,7 +130,7 @@ func _get_action(hide_ignore = false):
 			app_obj.taunt = null
 			return _get_action(hide_ignore)
 		else:
-			print ('ERROR IN AI TEMPLATE')
+			assert(false, 'ERROR IN AI TEMPLATE')
 	var res = input_handler.weightedrandom(actions)
 	return res
 
@@ -145,3 +145,9 @@ func _get_target(s_name):#for chosen with _get_action() func
 
 func get_spec_data():
 	return 0
+
+func bind(ch):
+	app_obj = ch
+
+func check_stage():#for bosses
+	pass

@@ -1,9 +1,9 @@
 ** dimitrius_ending_2 **
 =BLACKFADE 0.5=
+=BG future_city=
 =DELAY 0.5=
 =GUI_NORMAL=
-=BG future_city=
-=SPRITE demitrius=
+=SPRITE demitrius_demon=
 =SPRITE_UNFADE 0.3=
 De - Hah, you finally came.
 De - How do you like my work? 

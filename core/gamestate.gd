@@ -65,6 +65,9 @@ var area_save
 var stashedarea
 var viewed_tips := []
 
+signal party_changed
+signal money_changed
+
 func time_set(value):
 	#here may be placed day changing code from main screen
 	#but for now i place here only new code for rising midday event
@@ -206,23 +209,27 @@ func StoreEvent(nm):
 	OldEvents[nm] = date
 
 
-func FinishEvent():
-	if CurEvent == "" or CurEvent == null:return
-	StoreEvent(CurEvent)
+func ClearEvent():
 	scene_restore_data.clear()
+	CurEvent = ""
+
+func FinishEvent(replay = false):
+	if CurEvent == "" or CurEvent == null:return
+	if !replay:
+		StoreEvent(CurEvent)
+	var finished_event = CurEvent
+	ClearEvent()
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
 #	input_handler.emit_signal("EventFinished")
 	var next_is_scene = false
-	if Explorationdata.event_triggers.has(CurEvent):
-		var nseqdata = Explorationdata.event_triggers[CurEvent]
-		CurEvent = ""
-		var output = globals.run_actions_list(nseqdata)
+	if Explorationdata.event_triggers.has(finished_event):
+		var nseqdata = Explorationdata.event_triggers[finished_event]
+		var output = globals.run_actions_list(nseqdata, replay)
 		next_is_scene = (output == variables.SEQ_SCENE_STARTED)
-	else:
-		CurEvent = ""
 
 	if !next_is_scene:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
+		input_handler.emit_signal("AllEventsFinished")
 
 
 func store_choice(choice, option):
@@ -419,6 +426,7 @@ func deserialize(tmp:Dictionary):
 	tmp.erase('effects')
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
+	emit_signal("money_changed")
 	for id in materials:
 		materials[id] = int(materials[id])
 	refill_materials()
@@ -506,17 +514,31 @@ func system_action(action):
 			make_upgrade(action.arg, 1)
 		'show_screen':
 			pass
+		'add_to_party':
+			add_char_to_party(action.arg[0], action.arg[1])
+		'credits':
+			input_handler.get_spec_node(input_handler.NODE_CREDITS).show_end_credits()
 
 #simple action wrappers
 func unlock_char(code, value = true):
 	heroes[code].unlocked = value
 	if !value:
 		heroes[code].position = null
+	emit_signal("party_changed")
 
 
 func unlock_loc(loc_id, value = true):
 	location_unlock[loc_id] = value
 	input_handler.map_node.update_map()
+
+
+func add_char_to_party(id, pos):
+	if !heroes[id].unlocked:
+		return
+	for i in heroes:
+		if heroes[i].position == pos:
+			heroes[i].position == null
+	heroes[id].position = pos
 
 
 func make_upgrade(id, lvl):
@@ -597,6 +619,7 @@ func add_money(value, log_f = true):
 	var tmp = money
 	money += value
 	if money < 0: money = 0
+	emit_signal("money_changed")
 	if !log_f: return
 	tmp = money - tmp
 	if tmp > 0:

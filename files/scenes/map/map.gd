@@ -15,6 +15,7 @@ var binded_events = {
 	modern_city = null
 }
 var village_inside_event = false
+var map_has_event = false
 
 func _ready():
 	input_handler.connect("EventFinished", self, "buildscreen")
@@ -34,30 +35,31 @@ func _ready():
 	
 	update_map()
 	
-	TutorialCore.register_button("exploration_loc", 
-		$forest.rect_global_position, 
-		$forest.rect_size)
+	TutorialCore.register_static_button("exploration_loc", $forest, "pressed")
 # test functions
 #	unlock_area('village')
+	resources.preload_res("music/towntheme")
+	if resources.is_busy(): yield(resources, "done_work")
+	input_handler.SetMusic("towntheme")
 
 func test():
 	for ch in state.characters:
 		state.unlock_char(ch)
 #		state.heroes[ch].unlock_all_skills()
-	unlock_area('forest')
+#	unlock_area('forest')
 	input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 
 
 func buildscreen(empty = null):
 	update_map()
 
-
-func unlock_area(area):
-	var area_node = get_node(area)
-	area_node.visible = true
-	area_node.m_show()
-	area_node.set_active()
-	area_node.set_border_type('safe')
+#seems not to be in use
+#func unlock_area(area):
+#	var area_node = get_node(area)
+#	area_node.visible = true
+#	area_node.m_show()
+#	area_node.set_active()
+#	area_node.set_border_type('safe')
 
 #real functions
 func location_pressed(locname):
@@ -74,11 +76,26 @@ func location_pressed(locname):
 
 
 func update_map():
+	map_has_event = false
 	for loc in binded_events:
 		check_location(loc)
-#		binded_events[loc] = globals.check_signal_test('LocationEntered', loc)
 		var area_node = get_node(loc)
 
+		if loc == 'cult':
+			if state.location_unlock['modern_city']:
+				area_node.hide()
+				area_node.set_inactive()
+				continue
+			else:
+				area_node.show()
+		elif loc == 'modern_city':
+			if state.location_unlock[loc]:
+				area_node.show()
+			else:
+				area_node.hide()
+				area_node.set_inactive()
+				continue
+		
 		if state.location_unlock[loc]:
 			area_node.m_show()
 		else:
@@ -89,6 +106,8 @@ func update_map():
 		if binded_events[loc] != null:
 			area_node.set_border_type('event')
 			area_node.set_active()
+			area_node.set_current(true)
+			map_has_event = true
 		elif loc == 'village':
 			area_node.set_border_type('safe')
 			area_node.set_active()
@@ -96,21 +115,26 @@ func update_map():
 #		elif loc == 'town':
 #			area_node.set_inactive()
 		else:
-#			area_node.set_border_type('combat')
-			
 			if Explorationdata.check_location_activity(loc):
 				area_node.set_active()
 				if Explorationdata.check_new_location_activity(loc):
-					area_node.set_border_type('combat')
+					area_node.set_border_type('event')
+					area_node.set_current(true)
+					map_has_event = true
 				else:
 					area_node.set_border_type('combat_replays')
-				if state.activearea != null:
-#					area_node.set_current(Explorationdata.areas[state.activearea].category == loc)
-					area_node.set_current(Explorationdata.locations[loc].missions.has(state.activearea))
-				else:
 					area_node.set_current(false)
+				if (state.activearea != null
+						and Explorationdata.locations[loc].missions.has(state.activearea)):
+					area_node.set_border_type('combat')
 			else:
+				area_node.set_current(false)
 				area_node.set_inactive()
+		assert(
+			loc != 'cult'
+			or !state.location_unlock['modern_city']
+			or !area_node.is_current(),
+			"Cult has active mark, but hidden under modern_city")
 
 
 

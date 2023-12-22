@@ -54,6 +54,17 @@ func apply():
 					else:
 						print('error in template %s' % template_name)
 						template.duration = -1
+		elif typeof(template.duration) == TYPE_DICTIONARY:
+			if template.duration.obj == 'parent_args':
+				var par = get_parent()
+				if par != null:
+					template.duration = int(par.get_arg(template.duration.param))
+				else:
+					print('error in template %s' % template_name)
+					template.duration = -1
+			else:
+				print('error in template %s' % template_name)
+				template.duration = -1
 		remains = template.duration
 	var obj = get_applied_obj()
 	for eff in sub_effects:

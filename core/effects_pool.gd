@@ -16,10 +16,12 @@ func add_effect(eff):
 	var id = get_new_id()
 	effects[id] = eff
 	eff.id = id
+#	print('current effect count: %s' % effects.size())
 	return id
 
-func add_stored_effect(id, eff):
-	effects[id] = eff
+#seems not to be in use
+#func add_stored_effect(id, eff):
+#	effects[id] = eff
 
 func get_effect_by_id(id):
 	if effects.has(id):

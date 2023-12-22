@@ -32,7 +32,12 @@ Ar - And how you yelled at me right before we ended up here.
 Ro(sad) - *sob* M-master...
 Ro(sad) - I'm so sorry... Waaah...
 Ar - Ouch, easy there...
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
 ...
 Ar - Feeling better now?
 Ro - *nod*

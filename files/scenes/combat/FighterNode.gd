@@ -1,13 +1,14 @@
 extends TextureButton
 
 var animation_node
+var sfx_anchor
 var panel_node
 var panel_node2
 
 
 #signal signal_RMB
 #signal signal_RMB_release
-signal signal_LMB
+signal signal_LMB(position)
 signal signal_entered
 signal signal_exited
 
@@ -25,7 +26,6 @@ var speed = 1.33
 var hp
 #var mp
 onready var hp_bar = $HP
-var buffs = []
 
 #data format: node, time, type, slot, params
 
@@ -60,10 +60,13 @@ func _ready():
 	sprite_bottom_margin = $sprite.margin_bottom
 	$sprite.material = load("res://files/scenes/portret_shader.tres").duplicate();
 	$sprite.material.set_shader_param('outline_width', 1.0)
+	var sfx_anchor_class = load("res://files/scenes/combat/combat_sfx_anchor.gd")
+	sfx_anchor = sfx_anchor_class.new(self)
 	connect("mouse_exited", self, 'check_signal_exited')
 	var overgrow = 10.0#size of a buffer around sprite for click mask
 	for i in range(0,scan_vecs.size()):
 		scan_vecs[i] *= overgrow
+	input_handler.ClearContainer($Buffs)
 
 
 func _gui_input(event):
@@ -105,6 +108,10 @@ func _gui_input(event):
 #		emit_signal("signal_RMB_release")
 #		RMBpressed = false
 
+func set_animation_node(node):
+	animation_node = node
+	sfx_anchor.set_animation_node(node)
+
 func check_signal_exited():
 	if mouse_in_me:
 		emit_signal("signal_exited")
@@ -142,7 +149,7 @@ func setup_character(ch):
 		set_sprite_1(fighter.animations.idle)
 		panel_node.modulate = Color(1,1,1,1)
 		panel_node2.modulate = Color(1,1,1,1)
-		reset_shield()
+#		reset_shield()
 	regenerate_click_mask() # some cheating with not doing this every frame
 	stop_highlight()
 	set_process_input(true)
@@ -195,11 +202,20 @@ func put_above(node_above :Control, node_under :Control):
 	node_above.rect_position.y = node_under.rect_position.y
 	node_above.rect_position.y -= node_above.rect_size.y
 
-func reset_shield():
-	$sprite/shield.rect_size = $sprite.rect_min_size * 1.5
-	$sprite/shield.rect_position = - $sprite/shield.rect_size / 6.0
-	$sprite/shield.visible = (fighter.shield > 0)
+#that stuff not working for now. All shield representation made through buff-icons, decomment it in other case
+#func reset_shield():
+#	$sprite/shield.rect_size = $sprite.rect_min_size * 1.5
+#	$sprite/shield.rect_position = - $sprite/shield.rect_size / 6.0
+#	$sprite/shield.visible = (fighter.shield > 0)
 
+
+func update_hp_bar_max():
+	var new_max_value = fighter.get_stat('hpmax')
+	panel_node.get_node('ProgressBar').max_value = new_max_value
+	if fighter is hero:
+		panel_node2.get_node('ProgressBar').max_value = new_max_value
+	else:
+		hp_bar.max_value = new_max_value
 
 func regenerate_click_mask(spr1 = true):
 	var t
@@ -245,10 +261,6 @@ func update_hp():
 #		else:
 #			args.type = 'heal'
 #			args.color = Color(0.2,0.8,0.2)
-		if hp <= 0: 
-#			args.damage_float = false
-			if fighter.hp > 0:
-				process_resurrect()
 		hp = fighter.hp
 		if hp < 0:
 			args.newhp = 0
@@ -257,7 +269,7 @@ func update_hp():
 		var data = {node = self, time = input_handler.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
 		animation_node.add_new_data(data)
 
-
+#that stuff not working. For now all shield representation made through buff-icons
 func update_shield(): 
 	var args = {}
 	if fighter.shield <= 0: 
@@ -273,28 +285,11 @@ func update_shield():
 	animation_node.add_new_data(data)
 
 func process_sfx(code):
-	var data 
-	if code.begins_with('anim_'):
-		data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = {animation = code.trim_prefix('anim_')}}
-	elif code.begins_with('sfx_'):
-		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx', slot = 'SFX', params = {animation = code.trim_prefix('sfx_')}}
-	else:
-		data = {node = self, time = input_handler.combat_node.turns,type = code, slot = 'SFX', params = {}}
-	animation_node.add_new_data(data)
+	sfx_anchor.process_sfx(code)
 
 
 func process_sfx_dict(dict):
-	var code = dict.code
-	var data 
-	if code.begins_with('anim_'):
-		data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = dict.duplicate()}
-		data.params.animation = code.trim_prefix('anim_')
-	elif code.begins_with('sfx_'):
-		data = {node = self, time = input_handler.combat_node.turns, type = 'default_sfx', slot = 'SFX', params = dict.duplicate()}
-		data.params.animation = code.trim_prefix('sfx_')
-	else:
-		data = {node = self, time = input_handler.combat_node.turns, type = code, slot = 'SFX', params = dict.duplicate()}
-	animation_node.add_new_data(data)
+	sfx_anchor.process_sfx_dict(dict)
 
 
 func process_sound(sound):
@@ -358,65 +353,58 @@ func advance_move():
 
 #control visuals
 func noq_rebuildbuffs(newbuffs):
-	var oldbuff = 0
+	var buffs = $Buffs
 	for b in newbuffs:
-		if buffs.has(b.template_name): oldbuff += 1
-	if oldbuff == buffs.size():
-		for i in newbuffs:
-			if buffs.has(i.template_name): update_buff(i)
-			else: add_buff(i)
-	else:
-		input_handler.ClearContainer($Buffs)
-		buffs.clear()
-		for i in newbuffs:
-			add_buff(i)
+		if buffs.has_node(b.template_name):
+			update_buff(b)
+		else:
+			add_buff(b)
+	for buff in buffs.get_children():
+		if !buff.visible: continue#template is invisible
+		if buff.has_meta("just_updated"):
+			buff.remove_meta("just_updated")
+		else:
+			buff.hide()
+			buff.queue_free()
 
-func add_buff(i):
-	var newbuff = input_handler.DuplicateContainerTemplate($Buffs)
-	var text = i.description
-	newbuff.texture = i.icon
-	buffs.push_back(i.template_name)
-	if i.template.has('bonuseffect'):
-		match i.template.bonuseffect:
-			'barrier':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.shield)
-				newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.gray)
-			'duration':
-				if i.get_duration() != null:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.get_duration())
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.k_green)
-			'amount':
-				if i.amount > 1:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.amount)
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.magenta)
-	newbuff.hint_tooltip = text
+func add_buff(buff):
+	var buffs = $Buffs
+	assert(!buffs.has_node(buff.template_name), "%s already has buff %s" % [fighter.name, buff.template_name])
+	var newbuff = input_handler.DuplicateContainerTemplate(buffs)
+	newbuff.name = buff.template_name
+	update_buff(buff)
 
-func update_buff(i):
-	var pos = buffs.find(i.template_name)
-	var newbuff = $Buffs.get_child(pos)
-	var text = i.description
-	newbuff.texture = i.icon
-	buffs.push_back(i.template_name)
-	if i.template.has('bonuseffect'):
-		match i.template.bonuseffect:
-			'barrier':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.shield)
-				newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.gray)
+func update_buff(buff):
+	var buff_btn = $Buffs.get_node(buff.template_name)
+	buff_btn.set_meta("just_updated", true)
+	buff_btn.hint_tooltip = buff.description
+	buff_btn.texture = buff.icon
+	if buff.template.has('bonuseffect'):
+		var label_text = ""
+		var label_color = ""
+		match buff.template.bonuseffect:
+#			'barrier':
+#				label_text = str(fighter.shield)
+#				label_color = variables.hexcolordict.gray
+			'arg':
+				assert(buff.template.has('bonusarg'), "buff with bonuseffect == arg has no bonusarg")
+				label_text = str(buff.get_calc_arg(buff.template.bonusarg))
+				label_color = variables.hexcolordict.pink
 			'duration':
-				if i.get_duration() != null:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.get_duration())
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.k_green)
+				if buff.get_duration() != null:
+					label_text = str(buff.get_duration())
+					label_color = variables.hexcolordict.k_green
 			'amount':
-				if i.amount > 1:
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(i.amount)
-					newbuff.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.magenta)
-	newbuff.hint_tooltip = text
+				if buff.amount > 1:
+					label_text = str(buff.amount)
+					label_color = variables.hexcolordict.magenta
+		var label = buff_btn.get_node("Label")
+		if !label_text.empty():
+			label.show()
+			label.text = label_text
+			label.set("custom_colors/font_color", label_color)
+		else:
+			label.hide()
 
 func update_hp_label(newhp): 
 	var new_text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
@@ -434,10 +422,11 @@ func stop_highlight():
 func highlight_active():
 #	hightlight = true
 #	highlight_animated = true
-	$sprite.material.set_shader_param('opacity', 0.8)
-	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
+	$sprite.material.set_shader_param('outline_width', 2.0)
+	$sprite.material.set_shader_param('opacity', 0.9)
+	$sprite.material.set_shader_param('outline_color', Color(1, 1, 0.35))
 
-func highlight_hover():
+func highlight_hover():#is it in use?
 #	hightlight = true
 #	highlight_animated = false
 	$sprite.material.set_shader_param('opacity', 0.8)
@@ -446,26 +435,32 @@ func highlight_hover():
 func highlight_target_ally():
 #	hightlight = true
 #	highlight_animated = true
+	$sprite.material.set_shader_param('outline_width', 1.0)
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
 func highlight_target_ally_final():
 #	hightlight = true
 #	highlight_animated = false
-	$sprite.material.set_shader_param('opacity', 0.8)
-	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+#	$sprite.material.set_shader_param('opacity', 0.8)
+#	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+	#without animation they are same at the moment
+	highlight_target_ally()
 
 func highlight_target_enemy():
 #	hightlight = true
 #	highlight_animated = true
+	$sprite.material.set_shader_param('outline_width', 1.0)
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
 func highlight_target_enemy_final():
 #	hightlight = true
 #	highlight_animated = false
-	$sprite.material.set_shader_param('opacity', 0.8)
-	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
+#	$sprite.material.set_shader_param('opacity', 0.8)
+#	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
+	#without animation they are same at the moment
+	highlight_target_enemy()
 
 #disable-enable temporaly switched off. As they seems only have been attuning sprites, it is no longer needed with new set_sprite() logic
 #but, as I am not sure if this truly was there only function, I am leaving legecy code for a while
@@ -535,14 +530,14 @@ func resurrect():
 	panel_node.modulate = Color(1,1,1,1)
 	panel_node2.modulate = Color(1,1,1,1)
 
-#this func created for TutorialCore.register_button(), so we can predict sprite position
-#legecy code. Feel free to delete in time
-#func get_sprite_left_bottom() ->Vector2:
-#	var sprite_rect = $sprite.get_rect()
-#	return Vector2(sprite_rect.position.x, sprite_rect.end.y)
-
 func get_sprite_bottom_center() ->Vector2:
 	return Vector2(rect_size.x*0.5, rect_size.y + sprite_bottom_margin)
+
+func get_global_sprite_top_center() ->Vector2:
+	var sprite = $sprite
+	return Vector2(sprite.rect_global_position.x - sprite.rect_size.x * 0.5,
+		sprite.rect_global_position.y)
+
 
 func ret_hp_bar() ->Node:
 	return hp_bar

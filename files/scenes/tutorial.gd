@@ -13,6 +13,7 @@ onready var screen_left = $highlighter/screen_left
 
 var cur_button_num :int = -1
 var cur_button_seq :Array
+var cur_delay :Dictionary
 var auto_close :bool = true
 var panel_has_best_pos :bool = false
 
@@ -38,7 +39,7 @@ func _ready() ->void:
 	node_close.connect("pressed", self, "stop_tut")
 	node_disable.connect("pressed", self, "disable_tutorial")
 
-func show_tut(text :String, buttons_seq :Array = [], no_auto_close :bool = false) ->void:
+func show_tut(text :String, buttons_seq :Array = [], delay :Dictionary = {}, no_auto_close :bool = false) ->void:
 	node_text.text = tr(text)
 	auto_close = !no_auto_close
 #	node_close.visible = no_auto_close
@@ -47,9 +48,10 @@ func show_tut(text :String, buttons_seq :Array = [], no_auto_close :bool = false
 	
 	if !buttons_seq.empty():
 		mouse_filter = MOUSE_FILTER_IGNORE
-		set_process_input(true)
+#		set_process_input(true)
 		cur_button_seq = buttons_seq
 		cur_button_num = -1
+		cur_delay = delay
 		
 		for panel_pos in panel_positions:
 			node_panel.rect_position = panel_pos
@@ -68,7 +70,7 @@ func show_tut(text :String, buttons_seq :Array = [], no_auto_close :bool = false
 		highlight_next_button()
 	else:
 		mouse_filter = MOUSE_FILTER_STOP
-		set_process_input(false)
+#		set_process_input(false)
 		node_highlighter.hide()
 	show()
 
@@ -80,9 +82,19 @@ func highlight_next_button() ->void:
 		return
 	
 	var btn_id = cur_button_seq[cur_button_num]
+	if cur_delay.has(btn_id):
+		mouse_filter = MOUSE_FILTER_STOP
+		node_highlighter.rect_position = Vector2(-1,-1)
+		node_highlighter.rect_size = Vector2(0,0)
+		calculate_screen()
+		yield(get_tree().create_timer(cur_delay[btn_id]), 'timeout')
+		mouse_filter = MOUSE_FILTER_IGNORE
+	
 	node_highlighter.rect_position = TutorialCore.get_button_pos(btn_id)
 	node_highlighter.rect_size = TutorialCore.get_button_size(btn_id)
 	calculate_screen()
+	node_highlighter.show()
+	TutorialCore.connect_to_button(btn_id, self, 'highlight_next_button')
 	
 	if !panel_has_best_pos:
 		var panel_pos_found = false
@@ -97,10 +109,11 @@ func highlight_next_button() ->void:
 			assert(false, "tutorial cann't find a place for panel")
 #			node_close.show()
 
-func _input(event) ->void:
-	if (event.is_action_pressed("LMB") and
-			node_highlighter.get_rect().has_point(event.position)):
-		call_deferred("highlight_next_button")#so that event could end the processing
+#delete with time, if not nedded
+#func _input(event) ->void:
+#	if (event.is_action_pressed("LMB") and
+#			node_highlighter.get_rect().has_point(event.position)):
+#		call_deferred("highlight_next_button")#so that event could end the processing
 
 func stop_tut() ->void:
 	if !cur_button_seq.empty():

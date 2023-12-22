@@ -42,7 +42,7 @@ C - .......
 =BLACKTRANS 2=
 =DELAY 2=
 =MUSIC event_tragic=
-=BG cult2=
+=BG scenes/dungeon_1=
 =SPRITE rose=
 Behind the iron bars of the jail, Rose sits out in the cold.
 Ro - ...
@@ -82,7 +82,7 @@ slavetrader - You will not get a lot of money from me for her.
 slavetrader - I'll have to smuggle her somewhere far away, so at least her breed will net some worth.
 Woman - It's fine. 
 Woman - She's an orphan and there's no other relatives.
-Woman - Plus I don't want to raise  her any further, I've wasted quite a sum ofmoney on her food already.
+Woman - Plus I don't want to raise her any further, I've wasted quite a sum of money on her food already.
 Rose didn't realize what they were talking about, but since that day she never saw that woman again.
 ...
 ....
@@ -167,7 +167,7 @@ Boy - Are you done yet?
 =BLACKTRANS 1=
 =GUI_NORMAL=
 =DELAY 1=
-=BG cult2=
+=BG scenes/dungeon_1=
 =SPRITE rose=
 ...
 Ro - *sigh*

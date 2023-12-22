@@ -161,16 +161,19 @@ func default_animation(node, args):
 	sp2.visible = true
 	if tex is AnimatedTexAutofill:
 		playtime = tex.frames / tex.fps
+		if tex.oneshot:
+			tex.current_frame = 0
 	else:
 		playtime = variables.default_animations_duration[id]
 	input_handler.force_end_tweens(sp)
 	input_handler.force_end_tweens(sp2)
 	input_handler.FadeAnimation(sp, transition_time, delaytime)
 	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
-	input_handler.FadeAnimation(sp2, transition_time, playtime + delaytime - transition_time, true)
-	input_handler.UnfadeAnimation(sp, transition_time, playtime + delaytime - transition_time, true)
+	var back_delay = max(playtime + delaytime - transition_time, 0)
+	input_handler.FadeAnimation(sp2, transition_time, back_delay, true)
+	input_handler.UnfadeAnimation(sp, transition_time, back_delay, true)
 	if args.has('callback'):
-		input_handler.DelayedCallback(node, playtime + delaytime - transition_time, args.callback)
+		input_handler.DelayedCallback(node, back_delay, args.callback)
 	return playtime + delaytime + delayafter
 
 
@@ -213,19 +216,19 @@ func casterattack(node, args = null):#obsolete
 #
 #	cast_timer = effectdelay
 
-
-func targetattack(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0
-	hp_update_delays[node] = 0 #delay for hp updating during this animation
-	hp_float_delays[node] = 0 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0)
-	buffs_update_delays[node] = 0
-#	input_handler.gfx_sprite(node, 'slash', 0, 0.1) #strike
-	input_handler.gfx_sprite(node, 'hit', 0, 0.1)
-	tween.start()
-	
-	return nextanimationtime + aftereffectdelay
+#seems to be fully replaced by default_sfx() with id 'hit'
+#func targetattack(node, args = null):
+#	var tween = input_handler.GetTweenNode(node)
+#	var nextanimationtime = 0
+#	hp_update_delays[node] = 0 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0)
+#	buffs_update_delays[node] = 0
+##	input_handler.gfx_sprite(node, 'slash', 0, 0.1) #strike
+#	input_handler.gfx_sprite(node, 'hit', 0, 0.1)
+#	tween.start()
+#
+#	return nextanimationtime + aftereffectdelay
 
 #func firebolt(node, args = null):
 #	var tween = input_handler.GetTweenNode(node)
@@ -397,6 +400,7 @@ func heal_float(node, args):
 func test_combat_start(node, args):
 	return 1.0
 
+#that stuff not working. For now all shield representation made through buff-icons
 func shield_update(node, args):
 #	node.material.set_shader_param('modulate', args.color)
 #	node.get_node('sprite/shield').visible = args.value # works and looks wierd so I disabled it for now

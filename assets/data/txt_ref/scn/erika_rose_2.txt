@@ -1,18 +1,10 @@
 ** erika_rose_2 **
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-=BG forest=
 =MUSIC eventlight=
-=BLACKFADE 0.5=
-=DELAY 0.5=
-=GUI_NORMAL=
-=SPRITE erika=
-Er(happy) - That one is perfect.
-Er - Now I'll begin the preparations. Bring Rose with you this evening to my room.
-=BLACKUNFADE 0.5=
-=DELAY 1.5=
-=SPRITE rose=
 =BG villagenight=
+=GUI_NORMAL=
+=SPRITE rose=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Ro - It seems a bit unusual for Erika to invite us both at the same time.
@@ -107,11 +99,12 @@ Er - First let’s get rid of our clothes, shall we?
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =ABG erika_rose_69_1=
-=DELAY 1=
+=DELAY 2=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Erika lays down and spreads her legs wide, inviting a naked Rose to climb on top of her.
 Without warning, Erika grabs ahold of Rose's slender ass and sticks her tongue deep into her pussy.
+=ABG erika_rose_69_7=
 Rose lets out a surprised yelp, but the confused expression on her face quickly changes to one of pure bliss.
 Er - *Slllrrp* *sllrp* *slllp* *sllrrrp*
 Er - Mmmhmm, you taste so good...
@@ -129,13 +122,12 @@ Er - Let me feel it on my clit Rose, like this.
 Rose’s head bobs up and down as her tongue slips in and out of Erika’s hole, licking her clit with each pass.
 Er - Right there, Rose, yes!
 Erika’s hands spread Rose’s buttcheeks apart, opening the young fox girl’s pussy to show her clit.
+=ABG erika_rose_69_4 erika_rose_69_5=
 For the next few minutes, Arron observes the  two gorgeous naked girls moaning and writhing as they eat each other out to orgasm.
 Ro - Ahhh... Erika!!
 Er - Mmhmm!
 Both of their bodies tremble as their orgasms seize them.
-=ABG erika_rose_69_4 erika_rose_69_5=
 Despite cumming hard, neither seems to be satisfied with it and they continue tlicking and sucking at each other’s pussies. 
-=ABG erika_rose_69_6 erika_rose_69_7=
 Er - Hehe, it seems like Rose is not so easily satisfied.
 Er - Maybe she needs something a little more intense to get her off.
 Er - Say, Arron, have you tried Rose's ass? 
@@ -180,9 +172,6 @@ Er - That’s it, suck my clit you horny little bitch!.
 Rose barely recognized what Erika said, as her mind was lost in a flood of pleasure as another orgasm shuddered through her.
 Er - Do it, you fucker, fill her tight little asshole with your cum.
 Rose’s tongue hangs slackly out of her mouth and her eyes lose focus as Arron’s penis pounds her ass. 
-=ABG erika_rose_69_12 erika_rose_69_13=
-=WHITE=
-=DELAY 0.5=
 Er - Or spill it all over my face. 
 Er - If you wish, I'll obediently lick it all up.
 Arron feels his orgasm coming on fast as he looks down at Erika’s eager face framed by Rose’s slender thighs.
@@ -197,17 +186,22 @@ Er - You want the Master’s seed to fill your tight little ass.
 Ro - Oooh! NNnnnhhh! Yes! Yes, Master! Cum in me! Fill my ass with your spunk!
 Er - I knew it!
 Arron can’t hold his load any longer and shoots his sperm deep into Rose’s asshole as her toes curl and her back arches.
+=ABG erika_rose_69_12 erika_rose_69_13=
+=WHITE=
+=DELAY 0.5=
 His cum overflows from Rose’s tight hole and drips down her buttcheeks onto Erika, who waits with an open mouth to catch the sticky droplets.
-Slowly, Rose’s ass squeezes all the cum from his cock as he gently penetrates her.e, The three of them finally fall asleep hugging each other.
+Slowly, Rose’s ass squeezes all the cum from his cock as he gently penetrates her. The three of them finally fall asleep hugging each other.
 =BLACKUNFADE 0.5=
-=DELAY 1.5=
+=SPRITE_FADE 0.1=
+=DELAY 0.5=
 =MUSIC_STOP=
-=GUI_NORMAL=
+=GUI_HIDE=
 =MUSIC eventlight=
 =BG hall=
-=SPRITE_FADE 0.1=
+=DELAY 1=
 =BLACKFADE 0.5=
 =DELAY 0.5=
+=GUI_NORMAL=
 Morning
 Ro - Mhmh... It's so bright...
 Ro - ...
@@ -233,4 +227,7 @@ Without finishing her sentence she darted out the door and left Erika's room.
 Er - Fufu, she didn't outright reject it.
 Er(happy) - Mission success!
 Ar - Not sure about that. But I'm not complaining.
+=GUI_HIDE=
+=BLACKUNFADE 1.5=
+=DELAY 1.5=
 =STOP=

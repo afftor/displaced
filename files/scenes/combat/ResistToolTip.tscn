@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://files/scenes/combat/ResistIcon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/gui/charpanel/panel_skilltooltip.png" type="Texture" id=2]
+[ext_resource path="res://files/scenes/combat/ResistToolTip.gd" type="Script" id=11]
+
+[node name="ResistToolTip" type="Control"]
+margin_right = 153.0
+margin_bottom = 147.0
+rect_min_size = Vector2( 153, 118 )
+mouse_filter = 2
+script = ExtResource( 11 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 73.0
+margin_bottom = 31.0
+mouse_filter = 2
+columns = 4
+
+[node name="damage" parent="GridContainer" instance=ExtResource( 1 )]
+margin_right = 30.0
+margin_bottom = 30.0
+
+[node name="slash" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 34.0
+margin_right = 64.0
+margin_bottom = 30.0
+resist_type = "slash"
+
+[node name="pierce" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 68.0
+margin_right = 98.0
+margin_bottom = 30.0
+resist_type = "pierce"
+
+[node name="bludgeon" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 102.0
+margin_right = 132.0
+margin_bottom = 30.0
+resist_type = "bludgeon"
+
+[node name="light" parent="GridContainer" instance=ExtResource( 1 )]
+margin_top = 34.0
+margin_right = 30.0
+margin_bottom = 64.0
+resist_type = "light"
+
+[node name="dark" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 34.0
+margin_top = 34.0
+margin_right = 64.0
+margin_bottom = 64.0
+resist_type = "dark"
+
+[node name="air" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 68.0
+margin_top = 34.0
+margin_right = 98.0
+margin_bottom = 64.0
+resist_type = "air"
+
+[node name="water" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 102.0
+margin_top = 34.0
+margin_right = 132.0
+margin_bottom = 64.0
+resist_type = "water"
+
+[node name="earth" parent="GridContainer" instance=ExtResource( 1 )]
+margin_top = 68.0
+margin_right = 30.0
+margin_bottom = 98.0
+resist_type = "earth"
+
+[node name="fire" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 34.0
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 98.0
+resist_type = "fire"
+
+[node name="burn" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 68.0
+margin_top = 68.0
+margin_right = 98.0
+margin_bottom = 98.0
+resist_type = "burn"
+
+[node name="stun" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 102.0
+margin_top = 68.0
+margin_right = 132.0
+margin_bottom = 98.0
+resist_type = "stun"
+
+[node name="chill" parent="GridContainer" instance=ExtResource( 1 )]
+margin_top = 102.0
+margin_right = 30.0
+margin_bottom = 132.0
+resist_type = "chill"
+
+[node name="negative" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 34.0
+margin_top = 102.0
+margin_right = 64.0
+margin_bottom = 132.0
+resist_type = "negative"
+
+[node name="poison" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 68.0
+margin_top = 102.0
+margin_right = 98.0
+margin_bottom = 132.0
+resist_type = "poison"
+
+[node name="bleed" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 102.0
+margin_top = 102.0
+margin_right = 132.0
+margin_bottom = 132.0
+resist_type = "bleed"

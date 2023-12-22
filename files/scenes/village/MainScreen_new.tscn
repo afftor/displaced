@@ -34,9 +34,6 @@
 [node name="MainScreen" type="Control"]
 theme = ExtResource( 1 )
 script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sky" type="Sprite" parent="."]
 position = Vector2( 960.02, 538.517 )
@@ -88,15 +85,12 @@ margin_bottom = 1.0
 text = "Townhall"
 
 [node name="bridge" type="TextureButton" parent="."]
-margin_left = 1569.76
-margin_top = 518.503
-margin_right = 1888.76
-margin_bottom = 868.503
+margin_left = 1570.0
+margin_top = 519.0
+margin_right = 1764.0
+margin_bottom = 682.0
 texture_normal = ExtResource( 19 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="bridge"]
@@ -165,9 +159,6 @@ margin_right = 1554.19
 margin_bottom = 805.14
 texture_normal = ExtResource( 27 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="QuestActive" type="TextureRect" parent="farm"]
 margin_left = 182.102
@@ -183,9 +174,6 @@ margin_right = 876.702
 margin_bottom = 749.123
 texture_normal = ExtResource( 23 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="forge"]

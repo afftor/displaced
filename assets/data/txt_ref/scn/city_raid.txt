@@ -2,10 +2,10 @@
 =BLACKUNFADE 1=
 =DELAY 1=
 =MUSIC event_combat=
-=BLACKFADE 0.5=
-=DELAY 0.5=
-=GUI_NORMAL=
 =BG burning_city=
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
 The team has entered Aeros observing the surrounding disaster.
 Ro(sad) - This looks horrible...
 Surv - What are you doing here?!

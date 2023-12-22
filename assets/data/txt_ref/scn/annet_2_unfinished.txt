@@ -22,7 +22,7 @@ An - Ha-h, lets see how long you'll hold up.
 An - But while we are at it...
 I(sad) - This looks really bad, there's no end to them.
 An - *Chanting*
-An - (italic)Erika, return to my side.
+An - ***Erika, return to my side***
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
 Er(sad) - .....
@@ -45,7 +45,7 @@ An - Never leave things to chance.
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 An - Isn't that nice, Eri...?
-=BG scenes/annet_erika_2=
+=BG scenes/annet_erika_1=
 =SOUND sound_stab=
 =BLACKFADE 0.5=
 =DELAY 0.5=
@@ -58,10 +58,10 @@ Er(anger) - You really thought I would never find a way to resist your hypnosis?
 An(anger) - You... biiitch!.. 
 Er(anger) - I've learned from the best.
 An(anger) - Ghhh!..
-*Slash*
 =SOUND sound_splatter=
-=BG scenes/annet_erika_1=
+=BG scenes/annet_erika_2=
 =MUSIC event_combat=
+*Slash*
 An(anger) - Nnooo!..
 A red splash erupted from Annet's neck as the dagger sliced it through.
 Er(anger) - Go to hell, Mistress.
@@ -105,6 +105,7 @@ I - We'll stop you and end this madness.
 De - Yeah, sure, struggle some more if you wish.
 De - Have your little celebration, for today.
 =SPRITE_FADE 0.5=
+=DELAY 0.5=
 Ar(neutral) - ....He's gone.
 Ri - There seems to be a crowd outside.
 Ro - Those are probably the survivors. 

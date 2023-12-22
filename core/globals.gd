@@ -259,7 +259,10 @@ func run_actions_list(list, replay = false) ->int:
 			'system':
 				if !replay: state.system_action(action)
 			'show_screen':
-				if !replay: change_screen(action.value)
+				if !replay:
+					var arg :String = ''
+					if action.has('arg'): arg = action.arg
+					change_screen(action.value, arg)
 			'mission':
 				if replay: continue
 				if stop_syncronous: break
@@ -273,13 +276,17 @@ func run_actions_list(list, replay = false) ->int:
 	return output
 
 
-func change_screen(screen):
+func change_screen(screen, loc :String = ''):
 	match screen:
-		'map', 'exploration':
-			if input_handler.explore_node != null: input_handler.explore_node.hide()
-			if input_handler.village_node != null: input_handler.village_node.hide()
+		'map':
+			if input_handler.explore_node != null:
+				input_handler.explore_node.hide()
+			if input_handler.village_node != null and input_handler.village_node.visible:
+				input_handler.village_node.ReturnToMap()
 			if input_handler.combat_node != null: 
 				input_handler.combat_node.hide()
+		'exploration':
+			input_handler.map_node.location_pressed(loc)
 		'mission':
 			if state.activearea == null: return
 			if input_handler.village_node != null: input_handler.village_node.hide()
@@ -320,11 +327,11 @@ func play_scene(scene_id, enforce_replay = false, restore = false):
 	return true
 
 
-func CreateUsableItem(item, amount = 1): #obsolete, but keep for now
+#func CreateUsableItem(item, amount = 1): #obsolete, but keep for now
 #	var newitem = Item.new()
 #	newitem.CreateUsable(item, amount)
 #	return newitem
-	state.add_materials(item, amount)
+#	state.add_materials(item, amount)
 
 
 func dir_contents(target):
@@ -371,32 +378,34 @@ func disconnecttooltip(node):
 #	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
 #	node.showup(targetnode, data)
 
-func connectitemtooltip(node, item):
-	if node.is_connected("mouse_entered",self,'showitemtooltip'):
-		node.disconnect("mouse_entered",self,'showitemtooltip')
-	node.connect("mouse_entered", self ,'showitemtooltip', [node, item])
+#func connectitemtooltip(node, item):
+#	if node.is_connected("mouse_entered",self,'showitemtooltip'):
+#		node.disconnect("mouse_entered",self,'showitemtooltip')
+#	node.connect("mouse_entered", self ,'showitemtooltip', [node, item])
+#
+#func showitemtooltip(targetnode, data):
+#	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
+#	node.showup_usable(targetnode, data)
 
-func showitemtooltip(targetnode, data):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
-	node.showup_usable(targetnode, data)
+#func connectgeartooltip(node, item):
+#	if node.is_connected("mouse_entered",self,'showgeartooltip'):
+#		node.disconnect("mouse_entered",self,'showgeartooltip')
+#	node.connect("mouse_entered", self ,'showgeartooltip', [node, item])
+#
+#func showgeartooltip(targetnode, data):
+#	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
+#	node.showup_gear(targetnode, data)
 
-func connectgeartooltip(node, item):
-	if node.is_connected("mouse_entered",self,'showgeartooltip'):
-		node.disconnect("mouse_entered",self,'showgeartooltip')
-	node.connect("mouse_entered", self ,'showgeartooltip', [node, item])
+#func connectslottooltip(node, hero_id, slot, position = Vector2(0, 0)):
+#	if node.is_connected("mouse_entered",self,'showslottooltip'):
+#		node.disconnect("mouse_entered",self,'showslottooltip')
+#	node.connect("mouse_entered", self ,'showslottooltip', [node, hero_id, slot, position])
+#	if !node.is_connected("mouse_exited", self ,'hideslottooltip'):
+#		node.connect("mouse_exited", self ,'hideslottooltip')
+#	if !node.is_connected("hide", self ,'hideslottooltip'):
+#		node.connect("hide", self ,'hideslottooltip')
 
-func showgeartooltip(targetnode, data):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP)#GetItemTooltip()
-	node.showup_gear(targetnode, data)
-
-func connectslottooltip(node, hero_id, slot, position = Vector2(0, 0)):
-	if node.is_connected("mouse_entered",self,'showslottooltip'):
-		node.disconnect("mouse_entered",self,'showslottooltip')
-	node.connect("mouse_entered", self ,'showslottooltip', [node, hero_id, slot, position])
-	if !node.is_connected("mouse_exited", self ,'hideslottooltip'):
-		node.connect("mouse_exited", self ,'hideslottooltip')
-
-func showslottooltip(targtenode, hero_id, slot, position):
+func showslottooltip(hero_id, slot, position):#targtenode
 	var node = input_handler.get_spec_node(input_handler.NODE_GEARTOOLTIP)
 	node.showup(hero_id, slot, position)
 
@@ -414,11 +423,14 @@ func connectskilltooltip(node, character_id, skill):
 
 func showskilltooltip(skill, node, character_id):
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
-	skilltooltip.showup(node, character_id, skill)
-	var pos = node.get_global_rect()
-	var pos2 = skilltooltip.rect_size
-	pos = Vector2(pos.end.x - pos2.x, pos.position.y - pos2.y)
+	skilltooltip.prepare(node, character_id, skill)
+	var node_rect = node.get_global_rect()
+	var tip_width = skilltooltip.rect_size.x
+	var tip_height = skilltooltip.get_estimated_height()
+	var pos = Vector2(node_rect.position.x + node_rect.size.x * 0.5 - tip_width * 0.5,
+		node_rect.position.y - tip_height)
 	skilltooltip.set_global_position(pos)
+	skilltooltip.show()
 
 
 func hideskilltooltip():
@@ -579,11 +591,11 @@ func CloseSelection(panel):
 	panel.hide()
 
 
-func closeskilltooltip():
-	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
-	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
-	skilltooltip.set_process(false)
-	skilltooltip.hide()
+#func closeskilltooltip():
+#	#var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
+#	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)#GetSkillTooltip()
+#	skilltooltip.set_process(false)
+#	skilltooltip.hide()
 
 
 func calculatepercent(value1, value2):
@@ -669,15 +681,20 @@ func LoadGame(filename):
 #		StartEventScene(state.CurEvent, false, state.CurrentLine);
 
 
-func datetime_comp(a, b):
-	if a.year > b.year: return true
-	if a.month > b.month: return true
-	if a.day > b.day: return true
-	if a.hour > b.hour: return true
-	if a.minute > b.minute: return true
-	if a.second > b.second: return true
-	return false
-	pass
+#func datetime_comp(a, b):
+#	if a.year > b.year: return true
+#	elif a.year < b.year: return false
+#	if a.month > b.month: return true
+#	elif a.month < b.month: return false
+#	if a.day > b.day: return true
+#	elif a.day < b.day: return false
+#	if a.hour > b.hour: return true
+#	elif a.hour < b.hour: return false
+#	if a.minute > b.minute: return true
+#	elif a.minute < b.minute: return false
+#	if a.second > b.second: return true
+#	return false
+#	pass
 
 
 func get_last_save():
@@ -685,19 +702,18 @@ func get_last_save():
 
 	if dir == null: return
 
-	var dated_dir = {}
 	var tmp = File.new()
+	var max_time = 0
+	var oldest_file
 	for i in dir_contents(userfolder + 'saves'):
 		if i.ends_with('.sav') == false:
 			continue
-		dated_dir[i] = OS.get_datetime_from_unix_time(tmp.get_modified_time(i))
-	if dated_dir.size() == 0: return null
-	var b = dated_dir.keys()[0]
-	for i in range(dated_dir.keys().size()):
-		if datetime_comp(dated_dir[dated_dir.keys()[i]], dated_dir[b]):
-			b = dated_dir.keys()[i]
-	return b
-	pass
+		var file_time = tmp.get_modified_time(i)
+		if file_time > max_time:
+			max_time = file_time
+			oldest_file = i
+	if max_time == 0: return null
+	return oldest_file
 
 func get_hotkeys_handler() ->Object:
 	return hotkeys_handler

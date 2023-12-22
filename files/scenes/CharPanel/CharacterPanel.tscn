@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/themes/statlist.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://files/scenes/charinfo_portrait.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/iconsskills/arron_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/buttons/charpanel/button_skill.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/buttons/charpanel/button_skill_pressed.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/buttons/charpanel/button_skill_hover.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/buttons/charpanel/hpbar_charinfo_filler.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/iconsgear/arron_weapon1_1.png" type="Texture" id=13]
@@ -29,7 +28,6 @@
 [ext_resource path="res://assets/images/buttons/charpanel/expbar_charinfo_frame.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/iconsskills/shield.png" type="Texture" id=28]
 [ext_resource path="res://files/scenes/CharPanel/SkillPanel.tscn" type="PackedScene" id=29]
-[ext_resource path="res://assets/sfx/bw_shader.tres" type="Material" id=30]
 [ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=31]
 [ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=32]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=33]
@@ -39,9 +37,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 33 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -62,10 +57,10 @@ margin_left = 650.0
 margin_top = 13.0
 margin_right = 952.0
 margin_bottom = 67.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 3 )
 text = "Info"
 align = 1
 valign = 1
@@ -135,9 +130,6 @@ margin_bottom = 32.0
 custom_fonts/font = ExtResource( 2 )
 text = "Arron"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="Panel/ScrollContainer/HBoxContainer/panel"]
 anchor_top = 1.0
@@ -166,8 +158,8 @@ anchor_right = 1.0
 margin_top = 6.0
 margin_right = -2.0
 margin_bottom = 46.0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Name"
 align = 1
 
@@ -203,11 +195,11 @@ texture_progress = ExtResource( 25 )
 [node name="Label" type="Label" parent="Panel/StatsPanel/exp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 4 )
 text = "50/100"
 align = 1
 valign = 1
@@ -224,11 +216,11 @@ texture_progress = ExtResource( 12 )
 [node name="Label" type="Label" parent="Panel/StatsPanel/hp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 4 )
 text = "50/100"
 align = 1
 valign = 1
@@ -245,8 +237,8 @@ alignment = 1
 margin_left = 39.0
 margin_right = 81.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "ATK"
 align = 1
 
@@ -254,8 +246,8 @@ align = 1
 margin_left = 85.0
 margin_right = 137.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "4000"
 align = 1
 
@@ -281,8 +273,8 @@ __meta__ = {
 [node name="name" type="Label" parent="Panel/ResPanel"]
 anchor_right = 1.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Resistances"
 align = 1
 
@@ -317,8 +309,8 @@ margin_top = 9.0
 margin_right = 104.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 50, 0 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = ": 100"
 
 [node name="SkillsButton" type="Button" parent="Panel"]
@@ -327,11 +319,11 @@ margin_top = 915.0
 margin_right = 336.0
 margin_bottom = 971.0
 theme = ExtResource( 31 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_hover = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_pressed = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Details"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -348,9 +340,6 @@ toggle_mode = true
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 17 )
 texture_disabled = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureRect" parent="Panel/weapon1"]
 anchor_left = 0.5
@@ -388,9 +377,11 @@ margin_left = 1.414
 margin_top = -50.0
 margin_right = 1.414
 margin_bottom = -10.0
+grow_vertical = 0
 custom_fonts/font = ExtResource( 5 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -443,9 +434,11 @@ margin_left = 1.414
 margin_top = -50.0
 margin_right = 1.414
 margin_bottom = -10.0
+grow_vertical = 0
 custom_fonts/font = ExtResource( 5 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -458,7 +451,7 @@ margin_bottom = 820.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 texture_normal = ExtResource( 22 )
-texture_pressed = ExtResource( 17 )
+texture_pressed = ExtResource( 22 )
 texture_disabled = ExtResource( 18 )
 
 [node name="Icon" type="TextureRect" parent="Panel/armor"]
@@ -482,8 +475,8 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 5.0
 margin_bottom = 45.0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -498,10 +491,12 @@ margin_left = 1.414
 margin_top = -50.0
 margin_right = 1.414
 margin_bottom = -10.0
-custom_fonts/font = ExtResource( 5 )
+grow_vertical = 0
 custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Broad Sword"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -511,8 +506,8 @@ margin_left = 448.0
 margin_top = 859.0
 margin_right = 598.0
 margin_bottom = 985.0
-custom_fonts/font = ExtResource( 32 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_fonts/font = ExtResource( 32 )
 text = "1
 2
 3"
@@ -533,20 +528,17 @@ visible = false
 margin_right = 108.0
 margin_bottom = 108.0
 texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 11 )
 
 [node name="icon" type="TextureRect" parent="Panel/HBoxContainer/Button"]
-material = ExtResource( 30 )
 margin_left = 9.0
 margin_top = 9.0
 margin_right = 98.0
 margin_bottom = 98.0
+mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SkillPanel" parent="." instance=ExtResource( 29 )]
 visible = false

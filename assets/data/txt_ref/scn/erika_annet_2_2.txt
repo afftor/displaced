@@ -1,8 +1,8 @@
 ** erika_annet_2_2 **
+=BLACKFADE 0.5=
 =MUSIC event_mysterious=
 =GUI_FULL=
 =ABG annet_erika_1=
-=BLACKFADE 0.5=
 Annet brings Erika into her mansion.
 In the middle of a dark cell, Erika suddenly feelsAnnet standing very close behind her.
 An - It's been a long time, Erika, that’s for sure. 

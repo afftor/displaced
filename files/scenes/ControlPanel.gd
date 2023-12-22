@@ -13,24 +13,29 @@ func _ready():
 	
 #	input_handler.SystemMessageNode = $SystemMessageLabel
 	$ControlPanel/Return.connect('pressed',self,'openvillage')
-	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
+#	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
+	$ControlPanel/Inventory.connect('pressed',$Inventory,'open')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
+	$test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
+	state.connect("money_changed", self, "UpdateMoney")
 
-
-func _process(delta):
+func UpdateMoney():
 	$ControlPanel/Gold.text = str(state.money)
-#	$ControlPanel/Food.text = str(state.food)
-	
-	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
+
+#func _process(delta):
+#	$ControlPanel/Gold.text = str(state.money)
+##	$ControlPanel/Food.text = str(state.food)
+#
+#	BS.visible = BS.modulate.a > 0.0
 
 
 func GameOverShow():
 	if !visible: visible = true
 	$GameOverPanel.show()
 	input_handler.UnfadeAnimation($GameOverPanel, 2)
-	input_handler.StopMusic(true)
+	input_handler.StopMusic(500)
 	input_handler.PlaySound(sounds["defeat"])
 #	GameOver()
 
@@ -55,12 +60,11 @@ func openherolist(toggled):
 		$ControlPanel/Herolist.pressed = false
 
 
-func openinventory(hero = null):
-	$Inventory.open('hero', hero)
-
-
-func openinventorytrade():
-	$Inventory.open("shop")
+#to delete
+#func openinventory(hero = null):
+#	$Inventory.open('hero', hero)
+#func openinventorytrade():
+#	$Inventory.open("shop")
 
 func openvillage():
 #	input_handler.village_node.switch_show()
@@ -71,9 +75,9 @@ func openvillage():
 		input_handler.map_node.location_pressed("village")
 
 func FadeToBlackAnimation(time = 1):
-	input_handler.UnfadeAnimation($BlackScreen, time)
+	input_handler.UnfadeAnimation(BS, time)
 	input_handler.emit_signal("ScreenChanged")
-	input_handler.FadeAnimation($BlackScreen, time, time)
+	input_handler.FadeAnimation(BS, time, time)
 
 
 var itemicon = preload("res://files/scenes/ItemIcon.tscn")

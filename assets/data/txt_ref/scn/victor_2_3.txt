@@ -4,7 +4,7 @@
 =GUI_NORMAL=
 =BG forest=
 =MUSIC eventgeneric=
-=SPRITE viktor=
+=SPRITE victor=
 Ar - This guy looks familiar.
 Ro - This is Viktor. We've seen him in Aeros.
 I(shock) - Ah, it's the man who was talking to the father at that time.
@@ -42,7 +42,7 @@ V - Strength. Immortality. Power. You name it.
 V - A reward worthy of a supreme warrior.
 V - And it all lies within my grasp now. 
 V - The only reason I'm telling you about this is  your death looms. 
-An(anger) - I'm sick of this psycho. He deserves some retribution.
+Ar(anger) - I'm sick of this psycho. He deserves some retribution.
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

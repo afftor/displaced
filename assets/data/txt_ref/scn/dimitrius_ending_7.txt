@@ -1,8 +1,8 @@
 ** dimitrius_ending_7 **
 =BLACKFADE 0.5=
 =DELAY 0.5=
-=GUI_NORMAL=
 =BG future_city_reactor=
+=GUI_NORMAL=
 =SPRITE rose=
 Ro - We made it...
 Er - Yes, come in, it's after this door.
@@ -14,25 +14,38 @@ Er - You sure you can manage it?
 Ro(sarcastic) - No, it would help if you could help me out too.
 Er - You know I'm too stupid for this stuff.
 Ro - ...Just let Rilu know we got there. 
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=SPRITE_HIDE=
+=GUI_NORMAL=
+=BLACKFADE 1=
 Meanwhile Arron kept escaping from Dimitrius.
 After making through another room he ended up in a small room connected to a giant curved structure.
 Without taking a pause he opened a small hatch and jumped inside, sealing it shut behind him.
-=BLACKTRANS 0.5=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =BG future_city_reactor_inside=
-=SPRITE demitrius=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 Right as he finished, Dimitrius predictably appeared next to him. 
+=SPRITE demitrius_demon=
 =SOUND slash=
 Arron attempted to land a surprise attack, but Dimitrius blocked it.
 Ar(anger) - Damn you.
-D - It seems your brilliance is finally overshadowed by your human nature.
-D - What a stupid thing to trap yourself in this place even though I can easily  teleport.
+De - It seems your brilliance is finally overshadowed by your human nature.
+De - What a stupid thing to trap yourself in this place even though I can easily teleport.
 Dimitrius was correct, they appeared to be inside of an isolated curving tunnel only spacious enough to allow one person running in it.
 Ar(anger) - ...
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=SPRITE_HIDE=
 =BG future_city_reactor=
-=SPRITE rilu=
+=GUI_NORMAL=
+=BLACKFADE 1=
 Meanwhile Ember, Rilu and Iola ran from the other side of the tunnel. 
+=SPRITE rilu=
 Ri - Ember, give it to me.
 Em - Sure.
 Ember passed Rilu a small piece of red cloth that she managed to rip off Dimitrius' outfit during the fight.

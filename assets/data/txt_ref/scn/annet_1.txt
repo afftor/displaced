@@ -7,7 +7,7 @@
 =GUI_NORMAL=
 =MUSIC combattheme=
 The team has barged into the main city hall as Annet meets them there.
-=SPRITE Annet=
+=SPRITE annet=
 =SPRITE_UNFADE 0.3=
 An - Look what we have here.
 An - Can't say I expected to see you still alive.

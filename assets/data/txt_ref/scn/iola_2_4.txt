@@ -2,17 +2,19 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-=BG cult=
+=BG scenes/dungeon_1=
 =MUSIC eventgeneric=
+The team ended up in a jail building near one of the cells.
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
-The team ended up in a jail building near one of the cells.
 Ri - It's here.
 Ar - This is quite a sturdy door.
 Ar - Ember, could you?
 Em - Alright!
 =SOUND crash=
+=DELAY 1=
 =SPRITE iola=
+=SPRITE_UNFADE 1=
 I - Sir Arron!?
 Ar - I prefer "Prince Charming" at times like this.
 Ro(sarcastic) - Ha-ha.
@@ -30,6 +32,7 @@ Ro - It's not sane to stay here.
 I(sad) - No, this must be some mistake.
 I - I'm sure he can understand if I talk to him.
 However, the armed group gathered on the other side of the hall.
+=MUSIC event_combat=
 Guard - We cornered them! 
 Guard - Archers, ready!
 Guard_2 - But Lady Iola is there.
@@ -64,7 +67,7 @@ D - What are you waiting for, idiots? Shoot again!
 Guard - Yes, si...
 =SHAKE_SCREEN 0.5=
 =SOUND explosion=
-=BG prison=
+=BG scenes/dungeon_1=
 =SPRITE embershock=
 A shockwave and further trembling threw soldiers of balance making them unable to continue that attack.
 Em - Oh.. I think it was a bearing wall.
@@ -74,9 +77,15 @@ Ar(anger) - The building is unstable. Run!
 D - Damnit.
 Guard - Your Highness, they are getting away. 
 D - Really observant, you idiot. 
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=MUSIC event_tragic=
 =BG forest=
 =SPRITE iola=
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
 I(sad) - Rilu, please do not die!
 I(sad) - You protected us... *sob*
 Ri - *cough* *cough*

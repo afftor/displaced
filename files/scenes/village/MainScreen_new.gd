@@ -47,7 +47,7 @@ func _ready():
 	get_tree().set_auto_accept_quit(false)
 	if input_handler.scene_node == null and debug:
 		input_handler.initiate_scennode(self)
-	input_handler.SetMusic("towntheme")
+#	input_handler.SetMusic("towntheme")
 	
 #	var speedvalues = [0,1,10]
 #	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
@@ -73,12 +73,12 @@ func _ready():
 	if debug == true:
 		debug()
 	
-	buildscreen()
+#	buildscreen()
 	yield(get_tree(),'idle_frame')
 	
-	TutorialCore.register_button("townhall", 
-		$townhall.rect_global_position, 
-		$townhall.rect_size)
+	TutorialCore.register_static_button("townhall", $townhall, "pressed")
+	TutorialCore.register_static_button("bridge", $bridge, "pressed")
+	
 	
 #	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
 #		EnvironmentColor('morning', true)
@@ -145,7 +145,7 @@ func buildscreen(empty = null):
 		if binded_events[build] != null:
 			node.set_active()
 			res = true
-		elif build == 'bridge':
+		elif build == 'bridge' and input_handler.map_node.map_has_event:
 			node.set_active()
 		else:
 			node.set_inactive()
@@ -154,7 +154,6 @@ func buildscreen(empty = null):
 		get_node("townhall").set_active()
 		res = true
 	return res
-
 
 
 func check_townhall_events():

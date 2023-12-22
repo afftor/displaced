@@ -16,9 +16,17 @@ onready var scalecheck = $BattleGroup/ScaleCheck
 
 onready var combat_node = get_parent().get_node("combat")
 
+var sounds = {
+	"start" : "sound/dragon protection",
+	"abandon" : "sound/menu_close"
+}
+
 func _ready():
 	Explorationdata.preload_resources()
-	$BattleGroup/start.connect("pressed", self, "start_area")
+	for i in sounds.values():
+		resources.preload_res(i)
+	if resources.is_busy(): yield(resources, "done_work")
+	$BattleGroup/start.connect("pressed", self, "on_start_press")
 	$BattleGroup/advance.connect("pressed", self, "advance_area")
 	$BattleGroup/abandon.connect("pressed", self, "abandon_area")
 	$ExplorationSelect/Close.connect('pressed', self, 'hide')
@@ -40,11 +48,12 @@ func _ready():
 		if resources.is_busy(): yield(resources, "done_work")
 		test()
 	
-	var mission_btn = arealist.get_node("Button")
-	TutorialCore.register_button("missions", 
-		mission_btn.rect_global_position, 
-		mission_btn.rect_size)
-	
+	TutorialCore.register_dynamic_button("missions", self, "pressed")
+
+
+func get_tutorial_button(button_name :String):
+	if button_name == "missions":
+		return arealist.get_child(0)
 
 
 func test():
@@ -98,9 +107,9 @@ func open_explore():
 		locname.text = tr(Explorationdata.locations[location].name)
 		locdesc.bbcode_text = tr(Explorationdata.locations[location].descript)
 		for a in Explorationdata.locations[location].missions:
-			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
 			if state.areaprogress[a].completed: continue
+			var areadata = Explorationdata.areas[a]
 			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 			panel.text = tr(areadata.name)
 			panel.set_meta('area', a)
@@ -108,17 +117,18 @@ func open_explore():
 			panel.get_node('Completed').visible = false
 			num_missions += 1
 		for a in Explorationdata.locations[location].missions:
-			var areadata = Explorationdata.areas[a]
 			if !state.areaprogress[a].unlocked: continue
 			if !state.areaprogress[a].completed: continue
+			var areadata = Explorationdata.areas[a]
 			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 			panel.text = tr(areadata.name)
 			panel.set_meta('area', a)
 			panel.connect('pressed', self, 'select_area', [a])
 			panel.get_node('Completed').visible = true
 			num_missions += 1
-	if num_missions == 0:
-		hide()
+	#this hide() seems to break down opening of missionless locs. If it has any other use, return this code
+#	if num_missions == 0:
+#		hide()
 
 
 func select_area(area_code):
@@ -181,7 +191,16 @@ func build_area_description():
 	update_buttons()
 
 
+func on_start_press():
+	var areadata = Explorationdata.areas[area]
+	if areadata.has("final") and areadata.final:
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANELBIG, [self, 'start_area', tr('FINAL_BATTLE_WARNING'), tr('FINAL_BATTLE_WARNING_BTN')])
+	else:
+		start_area()
+
+
 func start_area():
+	input_handler.PlaySound(sounds["start"])
 	state.start_area(area, scalecheck.checked)
 	for node in arealist.get_children():
 		if !node.visible: continue
@@ -248,6 +267,7 @@ func abandon_area():
 
 
 func abandon_area_confirm():
+	input_handler.PlaySound(sounds["abandon"])
 	state.abandon_area()
 	open_explore()
 
@@ -439,7 +459,12 @@ func finish_area():
 			var output = globals.run_seq(seq_id)
 			if output == variables.SEQ_SCENE_STARTED :
 				yield(input_handler, "EventOnScreen")
-	input_handler.combat_node.hide_me()
+	hide_combat_curtain()
+
+
+func hide_combat_curtain():
+	if input_handler.curtains != null:
+		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
 
 
 func combat_finished(value):
@@ -454,7 +479,7 @@ func combat_win():
 
 
 func combat_loose():
-	input_handler.combat_node.hide_me()
+	hide_combat_curtain()
 	var areastate = state.areaprogress[area]
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('no_escape') and areadata.no_escape:
@@ -494,9 +519,10 @@ func advance_check():
 #			if !enforce_replay: #kept legacy code with it's logic, but it was already to old to work
 #				yield(input_handler.scene_node, "scene_end")
 #				advance_check()
-		input_handler.combat_node.hide_me()
+		hide_combat_curtain()
 		if areadata.has("auto_advance") and areadata.auto_advance:
-			assert(!playing_scene,"area with auto_advance has after_fight event!")
+			if playing_scene:
+				yield(input_handler, "AllEventsFinished")
 			advance_area()
 		else:
 			build_area_description()
@@ -572,6 +598,9 @@ func update_buttons() ->void:
 		advance.disabled = true
 
 func can_hide() ->bool:
+	return can_escape()
+
+func can_escape() ->bool:
 	if area == null:
 		return true
 	var areadata = Explorationdata.areas[area]

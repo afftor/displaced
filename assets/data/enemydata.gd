@@ -4,9 +4,6 @@ extends Node
 var predeterminatedgroups = {
 	forestboss = {weight = 0.1, group = {5 : 'bigtreant'}, code = 'forestboss', music = 'boss'},
 	caveboss = {weight = 0.1, group = {2 : 'earthgolemboss'}, code = 'caveboss', music = 'boss'},
-	
-	
-	
 }
 
 var randomgroups = {
@@ -30,7 +27,7 @@ var randomgroups = {
 
 var enemylist = {
 	elvenrat = {
-		code = 'elvenrat',
+		code = '',
 		name = '',
 		flavor = '',
 		race = 'animal',
@@ -43,19 +40,18 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/ElvenratCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_1',#'elvenratloot',
+		loottable = 'elvenratloot',
 		weaponsound = 'elvenrat at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle",
 			hit = "Fight/Fight_spritesFHD_0000s_0000s_0001_Rat_hit",
-			attack = "Fight/Fight_spritesFHD_0000s_0000s_0000_Rat_at",
-#			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
+			attack = "Fight/Fight_spritesFHD_0000s_0000s_0000_Rat_at"
 		},
 	},
 	mole = { #copied from rat fully!!!
-		code = 'mole',
+		code = '',
 		name = '',
 		flavor = '',
 		race = 'animal',
@@ -68,19 +64,18 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/MoleCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_1',
+		loottable = 'moleloot',
 		weaponsound = 'mole at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0007s_0000_mole_idle",
 			hit = "Fight/Fight_spritesFHD_0007s_0002_mole_hit",
-			attack = "Fight/Fight_spritesFHD_0007s_0001_mole_at",
-#			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
+			attack = "Fight/Fight_spritesFHD_0007s_0001_mole_at"
 		},
 	},
 	vulture = { #copied from rat fully!!!
-		code = 'vulture',
+		code = '',
 		name = '',
 		flavor = '',
 		race = 'animal',
@@ -93,19 +88,18 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/VultureCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_1',
+		loottable = 'vultureloot',
 		weaponsound = 'vulture at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0005s_0000_vulture_idle",
 			hit = "Fight/Fight_spritesFHD_0005s_0000_vulture_hit",
-			attack = "Fight/Fight_spritesFHD_0005s_0000_vulture_at",
-#			idle_1 = "res://assets/images/Fight/Fight_spritesFHD_0000s_0000s_0002_Rat_idle.png"
+			attack = "Fight/Fight_spritesFHD_0005s_0000_vulture_at"
 		},
 	},
 	treant = {
-		code = 'treant',
+		code = '',
 		name = '',
 		flavor = '',
 		race = 'plant',
@@ -118,9 +112,9 @@ var enemylist = {
 		base_dmg_type = 'bludgeon',
 		traits = [],
 		combaticon = 'enemies/TreantCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_2',
+		loottable = 'treantloot',
 		weaponsound = 'treant at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0003s_0002_Treant_idle",
@@ -129,11 +123,11 @@ var enemylist = {
 		},
 	},
 	faery = {
-		code = 'faery',
+		code = '',
 		name = '',
 		flavor = '',
 		race = 'humanoid',
-		skills = ['attack', 'fire_attack', 'f_heal'],
+		skills = ['attack', 'fire_attack_small', 'f_heal'],
 		basehp = 86,
 		damage = 35,
 		resists = {pierce = -100, bludgeon = 50, earth = 50, water = -100, light = -100},
@@ -142,9 +136,9 @@ var enemylist = {
 		base_dmg_type = 'air',
 		traits = [],
 		combaticon = 'enemies/FaeryCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_2',
+		loottable = 'faeryloot',
 		weaponsound = 'fairy at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0001s_0002_Fairy_idle",
@@ -153,11 +147,11 @@ var enemylist = {
 		},
 	},
 	faery_2 = {
-		code = 'faery_2',
-		name = '',
-		flavor = '',
+		code = '',
+		name = 'MONSTERFAERY',
+		flavor = 'MONSTERFAERYFLAVOR',
 		race = 'humanoid',
-		skills = ['attack', 'fire_attack'],
+		skills = ['attack', 'fire_attack_small'],
 		basehp = 55,
 		damage = 61,
 		resists = {pierce = -100, bludgeon = 50, earth = 50, water = -100, light = -100},
@@ -165,10 +159,10 @@ var enemylist = {
 		bodyhitsound = 'flesh',
 		base_dmg_type = 'air',
 		traits = [],
-		combaticon = '',
-		bodyimage = null,
+		combaticon = 'enemies/Faery_3CombatIcon',
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_2',
+		loottable = 'faeryloot_2',
 		weaponsound = 'fairy at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0002s_0002_fairyalt_idle",
@@ -177,7 +171,7 @@ var enemylist = {
 		},
 	},
 	spider = {
-		code = 'spider',
+		code = '',
 		name = '',
 		flavor = "",
 		race = 'insect',
@@ -190,9 +184,9 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/SpiderCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'spiderloot',
 		weaponsound = 'spider at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0002s_0002_Spider_idle",
@@ -201,9 +195,9 @@ var enemylist = {
 		},
 	},
 	spider_2 = {
-		code = 'spider_2',
-		name = '',
-		flavor = "",
+		code = '',
+		name = 'MONSTERSPIDER',
+		flavor = "MONSTERSPIDERFLAVOR",
 		race = 'insect',
 		skills = ['attack', 'poison_spit'],
 		basehp = 75,
@@ -214,9 +208,9 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/Spider_2CombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'spiderloot_2',
 		weaponsound = 'spider at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0001s_0002_spideralt_idle",
@@ -226,7 +220,7 @@ var enemylist = {
 	},
 	
 	earthgolem = {
-		code = 'earthgolem',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'rock',
@@ -239,9 +233,9 @@ var enemylist = {
 		base_dmg_type = 'earth',
 		traits = [],
 		combaticon = 'enemies/EarthgolemCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'earthgolemloot',
 		weaponsound = 'golem at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0001s_0002_Golem_idle",
@@ -250,7 +244,7 @@ var enemylist = {
 		},
 	},
 	angrydwarf = {
-		code = 'angrydwarf',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
@@ -263,9 +257,9 @@ var enemylist = {
 		base_dmg_type = 'slash',
 		traits = ['dw_enrage'],
 		combaticon = 'enemies/AngrydwarfCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'angrydwarfloot',
 		weaponsound = 'dwarf at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0003s_0002_Dwarf2_idle",
@@ -274,7 +268,7 @@ var enemylist = {
 		},
 	},
 	dwarfwarrior = {
-		code = 'dwarfwarrior',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
@@ -287,9 +281,9 @@ var enemylist = {
 		base_dmg_type = 'slash',
 		traits = ['dw_enrage'],
 		combaticon = 'enemies/DwarfwarriorCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_3',
+		loottable = 'dwarfwarriorloot',
 		weaponsound = 'dwarf attack armor',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
@@ -298,7 +292,7 @@ var enemylist = {
 		},
 	},
 	zombie = {
-		code = 'zombie',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'undead',
@@ -311,9 +305,9 @@ var enemylist = {
 		base_dmg_type = 'bludgeon',
 		traits = [],
 		combaticon = 'enemies/ZombieCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_4',
+		loottable = 'zombieloot',
 		weaponsound = 'zombie at',
 		animations = {
 			idle ="Fight/Fight_spritesFHD_0002s_0002_Zombieidle" ,
@@ -322,7 +316,7 @@ var enemylist = {
 		},
 	},
 	skeleton_warrior = {
-		code = 'skeleton_warrior',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'undead',
@@ -335,9 +329,9 @@ var enemylist = {
 		base_dmg_type = 'slash',
 		traits = ['wounds'],
 		combaticon = 'enemies/Skeleton_warriorCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_4',
+		loottable = 'skeletonwarriorloot',
 		weaponsound = 'skeleton warrior at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0002_Skelet_warrior_idle",
@@ -346,7 +340,7 @@ var enemylist = {
 		},
 	},
 	skeleton_archer = {
-		code = 'skeleton_archer',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'undead',
@@ -360,9 +354,9 @@ var enemylist = {
 		base_dmg_range = 'any',
 		traits = [],
 		combaticon = 'enemies/Skeleton_archerCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'ranged',
-		loottable = 'test_4',
+		loottable = 'skeletonarcherloot',
 		weaponsound = 'arrow_shot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0005s_0002_Archer_idle",
@@ -370,8 +364,8 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0005s_0001_Archer_at",
 		},
 	},
-	wraith = { #animations copied
-		code = 'wraith',
+	wraith = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'undead',
@@ -384,9 +378,9 @@ var enemylist = {
 		base_dmg_type = 'dark',
 		traits = [],
 		combaticon = 'enemies/WraithCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_4',
+		loottable = 'wraithloot',
 		weaponsound = 'wraith at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0006s_0000_wraith_idle",
@@ -394,8 +388,8 @@ var enemylist = {
 			attack ="Fight/Fight_spritesFHD_0006s_0000_wraith_at" ,
 		},
 	},
-	cult_soldier = { #sprites copied
-		code = 'cult_soldier',
+	cult_soldier = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
@@ -408,9 +402,9 @@ var enemylist = {
 		base_dmg_type = 'slash',
 		traits = [],
 		combaticon = 'enemies/Cult_soldierCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_6',
+		loottable = 'cultsoldierloot',
 		weaponsound = 'slash',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0008s_0000_cultsoldier_idle",
@@ -418,8 +412,8 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0008s_0000_cultsoldier_at",
 		},
 	},
-	cult_mage = { #sprites copied
-		code = 'cult_mage',
+	cult_mage = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
@@ -433,22 +427,22 @@ var enemylist = {
 		base_dmg_range = 'any',
 		traits = [],
 		combaticon = 'enemies/Cult_mageCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'ranged',
-		loottable = 'test_6',
+		loottable = 'cultmageloot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0003s_0000_culthealer_idle",
 			hit = "Fight/Fight_spritesFHD_0003s_0000_culthealer_hit",
-			attack ="Fight/Fight_spritesFHD_0003s_0000_culthealer_at" ,
-			cast ="Fight/Fight_spritesFHD_0003s_0000_culthealer_cast" ,
+			attack ="Fight/Fight_spritesFHD_0003s_0000_culthealer_at",
+			cast ="Fight/Fight_spritesFHD_0003s_0000_culthealer_cast",
 		},
 	},
-	cult_archer = { #sprites copied
-		code = 'cult_archer',
+	cult_archer = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
-		skills = ['attack', 'fire_attack', 'c_heal_archer'],
+		skills = ['attack', 'fire_attack', 'c_heal'],
 		basehp = 112,
 		damage = 51,
 		resists = {slash = -100, pierce = 50, fire = -100, earth = 50, water = 100, air = -100, light = -100},
@@ -458,18 +452,19 @@ var enemylist = {
 		base_dmg_range = 'any',
 		traits = [],
 		combaticon = 'enemies/Cult_archerCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'ranged',
-		loottable = 'test_6',
+		loottable = 'cultarcherloot',
 		weaponsound = 'arrow_shot',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0004s_0000_cultarcher_idle",
 			hit = "Fight/Fight_spritesFHD_0004s_0000_cultarcher_hit",
 			attack = "Fight/Fight_spritesFHD_0004s_0000_cultarcher_at",
+			cast ="Fight/Fight_spritesFHD_0004s_0000_cultarcher_at"#for c_heal compatibility
 		},
 	},
 	hatchling = {
-		code = 'hatchling',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'dragon',
@@ -482,18 +477,18 @@ var enemylist = {
 		base_dmg_type = 'fire',
 		traits = [],
 		combaticon = 'enemies/HatchlingCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',
+		loottable = 'hatchlingloot',
 		weaponsound = 'hatchling at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0004s_0002_Dragon_idle",
-			hit ="Fight/Fight_spritesFHD_0000s_0004s_0000_Dragon_hit" ,
+			hit ="Fight/Fight_spritesFHD_0000s_0004s_0000_Dragon_hit",
 			attack = "Fight/Fight_spritesFHD_0000s_0004s_0001_Dragon_at",
 		},
 	},
 	wyvern = {
-		code = 'wyvern',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'dragon',
@@ -506,9 +501,9 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/WyvernCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',
+		loottable = 'wyvernloot',
 		weaponsound = 'wyvern at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0007s_0002_Wyvern_idle",
@@ -517,7 +512,7 @@ var enemylist = {
 		},
 	},
 	armored_beast = {
-		code = 'armored_beast',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'animal',
@@ -530,9 +525,9 @@ var enemylist = {
 		base_dmg_type = 'bludgeon',
 		traits = [],
 		combaticon = 'enemies/Armored_beastCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',
+		loottable = 'armoredbeastloot',
 		weaponsound = 'tortle at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0005s_0002_Tortle_idle",
@@ -541,7 +536,7 @@ var enemylist = {
 		},
 	},
 	giant_toad = {
-		code = 'giant_toad',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'animal',
@@ -554,9 +549,9 @@ var enemylist = {
 		base_dmg_type = 'water',
 		traits = [],
 		combaticon = 'enemies/Giant_toadCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_5',#or not - not used
+		loottable = 'gianttoadloot',
 		weaponsound = 'toad at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0006s_0002_Toad_idle",
@@ -565,7 +560,7 @@ var enemylist = {
 		},
 	},
 	demon1 = {
-		code = 'demon1',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'demon',
@@ -577,10 +572,10 @@ var enemylist = {
 		bodyhitsound = 'flesh',
 		base_dmg_type = 'slash',
 		traits = [],
-		combaticon = '',
-		bodyimage = null,
+		combaticon = 'enemies/DemonCombatIcon',
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'demon1loot',
 		weaponsound = 'demon at',
 		animations = {
 			idle = "Fight/Demon_idle",
@@ -589,9 +584,9 @@ var enemylist = {
 		},
 	},
 	demon2 = {
-		code = 'demon2',
-		name = "",
-		flavor = "",
+		code = '',
+		name = "MONSTERDEMON1",
+		flavor = "MONSTERDEMON1FLAVOR",
 		race = 'demon',
 		skills = ['attack', 'fire_attack', 'impale'],
 		basehp = 190,
@@ -601,18 +596,43 @@ var enemylist = {
 		bodyhitsound = 'flesh',
 		base_dmg_type = 'dark',
 		traits = [],
-		combaticon = '',
-		bodyimage = null,
+		combaticon = 'enemies/Demon2CombatIcon',
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'demon2loot',
 		weaponsound = 'demon at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0000s_0002_Demonalt_idle",
 			hit = "Fight/Fight_spritesFHD_0000s_0000_Demonalt_hit",
 			attack = "Fight/Fight_spritesFHD_0000s_0001_Demonalt_at",}
 	},
+	bigdemon = {
+		code = '',
+		name = "MONSTERDEMON1",
+		flavor = "MONSTERDEMON1FLAVOR",
+		race = 'demon',
+		skills = ['attack', 'de_attack'],
+		basehp = 120,
+		damage = 55,
+		resists = {slash = 50, pierce = -100, bludgeon = 50, fire = 0, earth = 50, water = 50, air = -100, light = -100, dark = 50},
+		xpreward = 10,
+		bodyhitsound = 'flesh',
+		base_dmg_type = 'slash',
+		traits = [],
+		combaticon = 'enemies/DemonCombatIcon',
+#		bodyimage = null,
+		aiposition = 'melee',
+		loottable = '',
+		weaponsound = 'demon at',
+		animations = {
+			idle = "Fight/Demon_idle",
+			hit = "Fight/Demon_hit",
+			attack = "Fight/Demon_at",
+		},
+	},
+	
 	soldier = {
-		code = 'soldier',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
@@ -625,9 +645,9 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/SoldierCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'soldierloot',
 		weaponsound = 'soldier at',
 		animations = {
 			idle = "Fight/Fight_spritesFHD_0004s_0002_Specnaz_idle (1)",
@@ -635,9 +655,8 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0004s_0001_Specnaz_at (1)",
 		},
 	},
-	
 	drone = {
-		code = 'drone',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
@@ -650,73 +669,72 @@ var enemylist = {
 		base_dmg_type = 'pierce',
 		traits = [],
 		combaticon = 'enemies/DroneCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'test_7',
+		loottable = 'droneloot',
 		weaponsound = 'drone at',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0004s_0002_Specnaz_idle (1)",
-			hit = "Fight/Fight_spritesFHD_0004s_0000_Specnaz_hit (1)",
-			attack = "Fight/Fight_spritesFHD_0004s_0001_Specnaz_at (1)",
+			idle = "Fight/Fight_spritesFHD_0002s_0002_Dron_idle (1)",
+			hit = "Fight/Fight_spritesFHD_0002s_0000_Dron_hit (1)",
+			attack = "Fight/Fight_spritesFHD_0002s_0001_Dron_at (1)",
 		},
 	},
-	
 	bomber = {
-		code = 'bomber',
-		name = tr("MONSTERELVENRAT"),
-		flavor = tr("MONSTERELVENRATFLAVOR"),
+		code = '',
+		name = "",
+		flavor = "",
 		race = 'animal',
 		skills = ['attack'],
-		passives = [],
+#		passives = [],
 		basehp = 50,
-		basemana = 0,
-		armor = 0,
-		armorpenetration = 0,
-		mdef = 0,
+#		basemana = 0,
+#		armor = 0,
+#		armorpenetration = 0,
+#		mdef = 0,
 		evasion = 0,
 		hitrate = 80,
 		damage = 15,
-		speed = 50,
+#		speed = 50,
 		resists = {},
 		xpreward = 10,
-		
 		bodyhitsound = 'flesh',
 		traits = ['unstable'],
 		combaticon = 'enemies/BomberCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
 		animations = {
 			idle = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0002_Zombie_boom_idle",
 			hit = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0001_Zombie_boom_hit",
 			attack = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0000_Zombie_boom_at",
-			explode = load("res://assets/images/Fight/Bosses/Zombie/Zombie_boom_sq/Zombie_explode.tres")
+#			dead = load("res://assets/images/Fight/Bosses/Zombie/Zombie_boom_sq/Zombie_explode.tres")
 		},
 	},
 	#bosses
 	bigtreant = {
-		code = 'bigtreant',
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'plant',
 		skills = ['attack', 'treant_summon'],
-		passives = [],
+#		passives = [],
 		basehp = 720,
-		basemana = 100,
-		armor = 0,
-		armorpenetration = 0,
-		mdef = 0,
+#		basemana = 100,
+#		armor = 0,
+#		armorpenetration = 0,
+#		mdef = 0,
 		evasion = 0,
 		hitrate = 70,
 		damage = 73,
-		speed = 20,
+#		speed = 20,
 		resists = {},
+		status_resists = {stun = 100},
 		xpreward = 50,
-		ai = load('res://files/ai_classes/big_treant.gd').new(),
+		ai = load('res://files/ai_classes/big_treant.gd'),
 		bodyhitsound = 'wood',
-		
+		is_boss = true,
 		combaticon = 'enemies/BigtreantCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'ranged',
 		loottable = 'bigtreantloot',
 		weaponsound = 'ent at boss',
@@ -727,30 +745,30 @@ var enemylist = {
 		},
 		traits = ['summoner']
 	},
-	earthgolemboss = { #animations copied from regulal version!!!
-		code = 'earthgolemboss',
+	earthgolemboss = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'rock',
-		skills = ['attack'], #'golemattack'], stop giving nonexistant skills!
-		passives = [],
+		skills = ['attack', 'earth_aoe'], #'golemattack'], stop giving nonexistant skills!
+#		passives = [],
 		traits = [],
 		basehp = 470,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 100,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {slash = 80, pierce = 80, bludgeon = -50, earth = 150, water = -50, air = 50, light = 50, dark = 50},
+		status_resists = {stun = 100},
 		xpreward = 50,
-		
+		is_boss = true,
 		bodyhitsound = 'stone',
-		
 		combaticon = 'enemies/EarthgolemCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'earthgolembossloot',
 		animations = {
@@ -759,95 +777,98 @@ var enemylist = {
 			attack = "Fight/Fight_spritesFHD_0000s_0001s_0000_Golem_at",
 		}
 	},
-	dwarvenking = { #stats copied from above!!! animation copied from regular warrior!!!! passives not set up
-		code = 'dwarvenking',
+	dwarvenking = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'rock',
 		skills = [],
-		passives = [],
-		traits = [],
+#		passives = [],
+		traits = ['dwking_enrage1'],
 		basehp = 430,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 74,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {slash = 100, pierce = 100, earth = 100, air = -50, light = -50},
+		status_resists = {stun = 100},
 		xpreward = 50,
-		ai = load('res://files/ai_classes/dk.gd').new(),
+		ai = load('res://files/ai_classes/dk.gd'),
 		bodyhitsound = 'stone',
-		
+		is_boss = true,
 		combaticon = 'enemies/DwarvenkingCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'dwarvenkingloot',
 		animations = {
-			idle = "Fight/Fight_spritesFHD_0004s_0002_Dwarf1_idle",
-			hit = "Fight/Fight_spritesFHD_0004s_0000_Dwarf1_hit",
-			attack ="Fight/Fight_spritesFHD_0004s_0001_Dwarf1_at" ,
+			idle = load("res://assets/images/Fight/Bosses/King_dwarf_idle_sq/king_dwarf.tres"),
+			hit = "Fight/Bosses/King_dwarf_hit",
+			attack ="Fight/Bosses/King_dwarf_at" ,
 		},
 	},
-	fearyqueen = { #stats copied from above!!!  
-		code = 'fearyqueen',
+	fearyqueen = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'rock',
 		skills = [],
-		passives = [],
+#		passives = [],
 		traits = ['fq_armor', 'summoner'],
 		basehp = 1000,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 90,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {pierce = -50, bludgeon = 90, earth = 90, water = -50, light = -50},
+		status_resists = {stun = 100},
 		xpreward = 50,
-		ai = load('res://files/ai_classes/faery_queen.gd').new(),
+		ai = load('res://files/ai_classes/faery_queen.gd'),
 		bodyhitsound = 'stone',
-
+		is_boss = true,
 		combaticon = 'enemies/FearyqueenCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'fearyqueenloot',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Fairy_sq/FairyQueen.tres"),
 			hit = "Fight/Bosses/Queen_fairy_hit",
-			attack ="Fight/Bosses/Queen_fairy_cast" ,
+			attack ="Fight/Bosses/Queen_fairy_cast"
 		},
 	},
-	dragon_boss = { #stats copied from above!!!  skills copied from wyvern
-		code = 'dragon_boss',
+	dragon_boss = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'dragon',
 		skills = ['attack', 'fire_breath_drag_boss', 'tail_swipe'],
-		passives = [],
+#		passives = [],
 		traits = [],
 		basehp = 1300,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 70,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {slash = 90, pierce = -50, bludgeon = 90, fire = 90, earth = 90, water = -50, air = -50, light = 90, dark = -50},
+		status_resists = {stun = 100},
 		xpreward = 50,
 		bodyhitsound = 'stone',
-
+		is_boss = true,
 		combaticon = 'enemies/Dragon_bossCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'dragonbossloot',
 		weaponsound = 'dragon at boss',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Dragon_idle_sq/Dragon.tres"),
@@ -856,129 +877,135 @@ var enemylist = {
 			cast ="Fight/Bosses/Dragon_cast" ,
 		},
 	},
-	viktor_boss = { #stats copied from above!!!
-		code = 'dragon_boss',
+	viktor_boss = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
 		skills = [],
-		passives = [],
+#		passives = [],
 		traits = [],
 		basehp = 450,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 100,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {slash = 90, pierce = 80, fire = 100, earth = -50, water = -50, air = 70, light = -50, dark = 90},
+		status_resists = {stun = 100},
 		xpreward = 50,
+		is_boss = true,
 		bodyhitsound = 'stone',
-		ai = load('res://files/ai_classes/viktor.gd').new(),
+		ai = load('res://files/ai_classes/viktor.gd'),
 		combaticon = 'enemies/Viktor_bossCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'viktorbossloot',
 		weaponsound = 'viktor at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Viktor_sq_idle/Viktor.tres"),
 			hit = "Fight/Bosses/Viktor_hit",
-			attack ="Fight/Bosses/Viktor_at" ,
-			special ="Fight/Bosses/Viktor_sp_at" ,
+			attack = "Fight/Bosses/Viktor_at",
+			cast = "Fight/Bosses/Viktor_sp_at"
 		},
 	},
-	annet = { #stats copied from above!!!
-		code = 'annet',
+	annet = {
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
 		skills = ['an_attack', 'an_charm', 'an_summon', 'an_poison_mist', 'an_light_2_rand'],
-		passives = [],
+#		passives = [],
 		traits = [],
 		basehp = 1200,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 110,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {slash = -50, pierce = 100, bludgeon = -50, fire = 80, earth = -50, water = -50, air = 80, light = -100, dark = 100},
+		status_resists = {stun = 100},
 		xpreward = 50,
+		is_boss = true,
 		bodyhitsound = 'stone',
-		ai = load('res://files/ai_classes/annet.gd').new(),
+		ai = load('res://files/ai_classes/annet.gd'),
 		combaticon = 'enemies/AnnetCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'annetloot',
 		weaponsound = 'sukkub at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Sukkub_sq_anim/Succubus.tres"),
 			hit = "Fight/Bosses/Sukkub_hit",
-			attack ="Fight/Bosses/Sukkub_at" ,
-			special ="Fight/Bosses/Sukkub_cast" ,
+			attack = "Fight/Bosses/Sukkub_at",
+			cast = "Fight/Bosses/Sukkub_cast",
 		},
 	},
 	scientist_boss = {
-		code = 'scientist_boss',
-		name = tr("MONSTERELVENRAT"),
-		flavor = tr("MONSTERELVENRATFLAVOR"),
+		code = '',
+		name = '',
+		flavor = '',
 		race = 'animal',
-		skills = ['sc_summon1', 'sc_shatter', 'en_enburst', 'en_thrust'], # not really
-		passives = [],
+		skills = [], # got them from ai
+#		passives = [],
 		basehp = 500,
-		basemana = 0,
-		armor = 0,
-		armorpenetration = 0,
-		mdef = 0,
+#		basemana = 0,
+#		armor = 0,
+#		armorpenetration = 0,
+#		mdef = 0,
 		evasion = 0,
 		hitrate = 80,
 		damage = 15,
-		speed = 50,
+#		speed = 50,
 		resists = {},
+		status_resists = {stun = 100},
 		xpreward = 10,
-		ai = load('res://files/ai_classes/scientist.gd').new(),
-		
+		ai = load('res://files/ai_classes/scientist.gd'),
+		is_boss = true,
 		bodyhitsound = 'flesh',
-		traits = ['unstable', 'summoner'],
+		traits = ['summoner'],
 		combaticon = 'enemies/Scientist_bossCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = '',
+		loottable = 'scientistloot',
 		weaponsound = 'doc at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Doctor_idle_sq/doc_idle.tres"),
 			hit = "Fight/Bosses/Fight_spritesFHD_0000s_0001_Doc_hit",
-			attack ="Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at" ,
+			attack = "Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at",
+			cast = "Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at"#for en_enburst skill compatibility
 		},
 	},
-	caliban = { #stats copied from above!!!
-		code = 'caliban',
-		name = tr("MONSTERELVENRAT"),
-		flavor = tr("MONSTERELVENRATFLAVOR"),
+	caliban = {
+		code = '',
+		name = '',
+		flavor = '',
 		race = 'animal',
 		skills = ['attack'],#there are no skills for him in docs
-		passives = [],
+#		passives = [],
 		basehp = 500,
-		basemana = 0,
-		armor = 0,
-		armorpenetration = 0,
-		mdef = 0,
+#		basemana = 0,
+#		armor = 0,
+#		armorpenetration = 0,
+#		mdef = 0,
 		evasion = 0,
 		hitrate = 80,
 		damage = 15,
-		speed = 50,
+#		speed = 50,
 		resists = {},
+#		status_resists = {stun = 100},#he is bosslike, but probably should be stunable, as only a part of bossfight
 		xpreward = 10,
-		ai = load('res://files/ai_classes/scientist.gd').new(),
-		
+		is_boss = true,
 		bodyhitsound = 'flesh',
-		traits = ['unstable'],
+		traits = [],
 		combaticon = 'enemies/CalibanCombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
 		weaponsound = 'caliban at',
@@ -988,73 +1015,111 @@ var enemylist = {
 			attack ="Fight/Bosses/Fight_spritesFHD_0001s_0000_Mnstr_at" ,
 		},
 	},
-	demitrius1 = { #stats copied from above!!!
-		code = 'demitrius1',
+	demitrius1 = {#first encounter, only first phase
+		code = '',
 		name = "",
 		flavor = "",
 		race = 'humanoid',
-		skills = ['dm_storm', 'dm_fire', 'dm_poison_spike', 'dm_bomb'],
-		passives = [],
+		skills = ['attack', 'dm_storm', 'dm_fire', 'dm_poison_spike', 'dm_bomb'],
+#		passives = [],
 		traits = [],
 		basehp = 2200,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 95,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {slash = 50, pierce = 50, bludgeon = 50, light = -100, dark = 100, air = 50, water = -50, earth = 50, fire = -50},
+		status_resists = {stun = 100},
 		xpreward = 50,
 		bodyhitsound = 'stone',
-
+		is_boss = true,
 		combaticon = 'enemies/Demitrius1CombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'demitrius1loot',
 		weaponsound = 'demitrius at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
 			hit = "Fight/Bosses/Demitrius_hit",
-			attack ="Fight/Bosses/Demitrius_at" ,
-			special ="Fight/Bosses/Demitrius_cast" ,
+			attack ="Fight/Bosses/Demitrius_at",
+			cast ="Fight/Bosses/Demitrius_cast",
 		},
 		
 	},
-	demitrius2 = { #stats copied from above!!!
-		code = 'demitrius2',
-		name = "",
-		flavor = "",
+	demitrius2 = {#second encounter, both phases
+		code = '',
+		name = "MONSTERDEMITRIUS1",
+		flavor = "MONSTERDEMITRIUS1FLAVOR",
 		race = 'humanoid',
-		skills = ['dm_storm', 'dm_nova', 'dm_form'],
-		passives = [],
-		traits = ['dem_rules'],
-		basehp = 450,
-		basemana = 0,
-		armor = 35,
-		armorpenetration = 0,
-		mdef = 15,
+		skills = [],
+#		passives = [],
+		traits = ['dem_soulprot'],
+		basehp = 2000,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
 		evasion = 0,
 		hitrate = 95,
 		damage = 100,
-		speed = 30,
-		resists = {earth = 50, air = 25},
+#		speed = 30,
+		resists = {slash = 75, pierce = 75, bludgeon = 75, light = -100, dark = 75, air = 75, water = -100, earth = 75, fire = -100},
+		status_resists = {stun = 100},
 		xpreward = 50,
+		is_boss = true,
 		bodyhitsound = 'stone',
-		ai = load('res://files/ai_classes/dimitrius_2.gd').new(),
+		ai = load('res://files/ai_classes/dimitrius_2.gd'),
 		combaticon = 'enemies/Demitrius2CombatIcon',
-		bodyimage = null,
+#		bodyimage = null,
 		aiposition = 'melee',
-		loottable = 'earthgolembossloot',
+		loottable = 'demitrius2loot',
 		weaponsound = 'demitrius at',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
 			hit = "Fight/Bosses/Demitrius_hit",
-			attack ="Fight/Bosses/Demitrius_at" ,
-			special ="Fight/Bosses/Demitrius_cast" ,
+			attack ="Fight/Bosses/Demitrius_at",
+			cast ="Fight/Bosses/Demitrius_cast",
 		},
-		
+	},
+	
+	demitrius3 = {#last encounter: duel with Arron, only simplified second phase
+		code = '',
+		name = "MONSTERDEMITRIUS1",
+		flavor = "MONSTERDEMITRIUS1FLAVOR",
+		race = 'humanoid',
+		skills = ['attack', 'dm_storm', 'dm_nova', 'dm_form', 'dm_fire'],
+#		passives = [],
+		traits = [],
+		basehp = 450,
+#		basemana = 0,
+#		armor = 35,
+#		armorpenetration = 0,
+#		mdef = 15,
+		evasion = 0,
+		hitrate = 95,
+		damage = 100,
+#		speed = 30,
+		resists = {slash = 75, pierce = 75, bludgeon = 75, light = -200, dark = 75, air = 75, water = -100, earth = 75, fire = -100},
+		status_resists = {stun = 100},
+		xpreward = 50,
+		is_boss = true,
+		bodyhitsound = 'stone',
+		ai = load('res://files/ai_classes/dimitrius_3.gd'),
+		combaticon = 'enemies/Demitrius2CombatIcon',
+#		bodyimage = null,
+		aiposition = 'melee',
+		loottable = 'demitrius2loot',
+		weaponsound = 'demitrius at',
+		animations = {
+			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
+			hit = "Fight/Bosses/Demitrius_hit",
+			attack ="Fight/Bosses/Demitrius_at",
+			cast ="Fight/Bosses/Demitrius_cast",
+		},
 	},
 }
 
@@ -1066,58 +1131,375 @@ var enemylist = {
 
 var loottables = { # no need to separate materials from usables now
 	# added option to put xpreward into lootable
-#	elvenratloot = {
-#		materials = [{code = 'leather', min = 1, max = 1, chance = 35}, {code = 'bone', min = 1, max = 1, chance = 25}],
-#		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
-#	},
 	elvenratloot = {
-		items = [{code = 'morsel', min = 1, max = 1, chance = 25}],
-		gold = [10, 50]
+		items = [
+			{code = 'item_heal_2', chance = 30},
+			{code = 'stone', chance = 60}
+		],
+		gold = [1, 5]
+	},
+	moleloot = {
+		items = [
+			{code = 'item_heal_1', chance = 50},
+			{code = 'stone', chance = 60}
+		],
+		gold = [10, 20]
+	},
+	vultureloot = {
+		items = [
+			{code = 'item_barrier_1', chance = 30},
+			{code = 'item_barrier_2', chance = 5},
+			{code = 'stone', chance = 60}
+		],
+		gold = [50, 60]
 	},
 	treantloot = {
+		items = [
+			{code = 'item_heal_1', chance = 30},
+			{code = 'item_dispel_1', chance = 10},
+			{code = 'wood', chance = 70}
+		],
+		gold = [1, 20]
 	},
-	bigtreantloot = {
+	faeryloot = {
+		items = [
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_dispel_1', chance = 30},
+			{code = 'wood', chance = 70}
+		],
+		gold = [20, 40]
+	},
+	faeryloot_2 = {
+		items = [
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_heal_aoe_2', chance = 10},
+			{code = 'item_dispel_2', chance = 20},
+			{code = 'wood', chance = 70}
+		],
+		gold = [50, 70]
 	},
 	spiderloot = {
+		items = [
+			{code = 'chitine', chance = 45},
+			{code = 'item_heal_aoe_2', chance = 10}
+		],
+		gold = [10, 20]
+	},
+	spiderloot_2 = {
+		items = [
+			{code = 'chitine', chance = 70},
+			{code = 'item_heal_aoe_3', chance = 10}
+		],
+		gold = [10, 40]
 	},
 	earthgolemloot = {
-	},
-	fairiesloot = {
+		items = [
+			{code = 'metal', chance = 45},
+			{code = 'stone', chance = 45},
+			{code = 'item_heal_aoe_1', chance = 10},
+			{code = 'item_res_3', chance = 5}
+		],
+		gold = [30, 50]
 	},
 	angrydwarfloot = {
+		items = [
+			{code = 'metal', chance = 80},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_barrier_2', chance = 5},
+			{code = 'item_damage_1', chance = 10}
+		],
+		gold = [50, 70]
+	},
+	dwarfwarriorloot = {
+		items = [
+			{code = 'metal', chance = 100},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 5},
+			{code = 'item_barrier_2', chance = 10},
+			{code = 'item_barrier_3', chance = 5},
+			{code = 'item_damage_1', chance = 20},
+			{code = 'item_buff_atk', chance = 5}
+		],
+		gold = [80, 120]
+	},
+	zombieloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_1', chance = 10},
+		],
+		gold = [50, 100]
+	},
+	skeletonwarriorloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_1', chance = 10},
+			{code = 'item_res_2', chance = 5},
+		],
+		gold = [50, 100]
+	},
+	skeletonarcherloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_2', chance = 10},
+			{code = 'item_res_3', chance = 5},
+		],
+		gold = [50, 100]
+	},
+	wraithloot = {
+		items = [
+			{code = 'leather', chance = 50},
+			{code = 'item_res_3', chance = 10},
+			{code = 'item_res_4', chance = 5},
+			{code = 'item_barrier_2', chance = 10}
+		],
+		gold = [70, 120]
+	},
+	hatchlingloot = {
+		items = [
+			{code = 'scales', chance = 50},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_heal_aoe_2', chance = 20},
+			{code = 'item_barrier_1', chance = 10}
+		],
+		gold = [50, 100]
+	},
+	wyvernloot = {
+		items = [
+			{code = 'scales', chance = 80},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_heal_aoe_3', chance = 20},
+			{code = 'item_barrier_2', chance = 10}
+		],
+		gold = [70, 120]
+	},
+	armoredbeastloot = {
+		items = [
+			{code = 'scales', chance = 80},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_aoe_3', chance = 10},
+			{code = 'item_barrier_2', chance = 10},
+			{code = 'item_barrier_3', chance = 50}
+		],
+		gold = [70, 120]
+	},
+	gianttoadloot = {
+		items = [
+			{code = 'scales', chance = 50},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 5},
+			{code = 'item_heal_aoe_2', chance = 10},
+			{code = 'item_barrier_2', chance = 5},
+		],
+		gold = [70, 120]
+	},
+	cultsoldierloot = {
+		items = [
+			{code = 'otherworld', chance = 20},
+			{code = 'item_heal_2', chance = 30},
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_dispel_1', chance = 30},
+		],
+		gold = [50, 100]
+	},
+	cultarcherloot = {
+		items = [
+			{code = 'otherworld', chance = 80},
+			{code = 'item_heal_2', chance = 30},
+			{code = 'item_heal_aoe_2', chance = 10},
+			{code = 'item_barrier_2', chance = 10},
+		],
+		gold = [50, 100]
+	},
+	cultmageloot = {
+		items = [
+			{code = 'otherworld', chance = 100},
+			{code = 'item_heal_2', chance = 30},
+			{code = 'item_heal_aoe_2', chance = 30},
+			{code = 'item_heal_aoe_3', chance = 5},
+			{code = 'item_dispel_1', chance = 30},
+			{code = 'item_dispel_2', chance = 5},
+			{code = 'item_barrier_3', chance = 5},
+			{code = 'item_res_1', chance = 5},
+			{code = 'item_buff_atk', chance = 10},
+			{code = 'item_buff_def', chance = 10}
+		],
+		gold = [100, 150]
+	},
+	demon1loot = {
+		items = [
+			{code = 'demonic', chance = 25},
+			{code = 'item_dispel_1', chance = 20},
+			{code = 'item_res_3', chance = 5},
+			{code = 'item_barrier_1', chance = 10},
+			{code = 'item_damage_1', chance = 10},
+		],
+		gold = [150, 200]
+	},
+	demon2loot = {
+		items = [
+			{code = 'demonic', chance = 50},
+			{code = 'item_dispel_1', chance = 20},
+			{code = 'item_res_4', chance = 5},
+			{code = 'item_barrier_2', chance = 10},
+			{code = 'item_damage_1', chance = 10},
+		],
+		gold = [150, 200]
+	},
+	soldierloot = {
+		items = [
+			{code = 'demonic', chance = 50},
+			{code = 'item_heal_1', chance = 20},
+			{code = 'item_heal_2', chance = 20},
+			{code = 'item_damage_1', chance = 10},
+			{code = 'item_damage_2', chance = 5},
+		],
+		gold = [150, 200]
+	},
+	droneloot = {
+		items = [
+			{code = 'demonic', chance = 50},
+			{code = 'item_damage_1', chance = 10},
+			{code = 'item_damage_2', chance = 5},
+		],
+		gold = [150, 200]
+	},
+	
+	#bosses
+	bigtreantloot = {
+		items = [
+			{code = 'item_heal_1', chance = 100, min = 1, max = 3},
+			{code = 'item_dispel_2', chance = 100},
+			{code = 'item_res_3', chance = 10},
+			{code = 'item_buff_def', chance = 10},
+			{code = 'wood', chance = 100, min = 1, max = 5}
+		],
+		gold = [100, 200]
+	},
+	fearyqueenloot = {
+		items = [
+			{code = 'item_heal_aoe_1', chance = 100},
+			{code = 'item_heal_aoe_2', chance = 30},
+			{code = 'item_heal_aoe_3', chance = 5},
+			{code = 'item_dispel_1', chance = 70},
+			{code = 'item_dispel_2', chance = 50},
+			{code = 'item_res_2', chance = 80},
+			{code = 'item_res_3', chance = 50},
+			{code = 'wood', chance = 100, min = 1, max = 3}
+		],
+		gold = [100, 190]
 	},
 	earthgolembossloot = {
+		items = [
+			{code = 'metal', chance = 100, min = 1, max = 5},
+			{code = 'stone', chance = 100, min = 3, max = 7},
+			{code = 'item_heal_aoe_1', chance = 30},
+			{code = 'item_res_3', chance = 20},
+			{code = 'item_res_4', chance = 5},
+			{code = 'item_barrier_1', chance = 30}
+		],
+		gold = [120, 200]
 	},
-	#for material testing, for real - duplicate per unit & add usables, gold and other
-	test_1 = {
-		items = [{code = 'stone', chance = 60}],
+	dwarvenkingloot = {
+		items = [
+			{code = 'metal', chance = 100, min = 1, max = 5},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 30},
+			{code = 'item_barrier_2', chance = 30},
+			{code = 'item_barrier_3', chance = 15},
+			{code = 'item_damage_1', chance = 30},
+			{code = 'item_damage_2', chance = 5},
+			{code = 'item_buff_atk', chance = 50}
+		],
+		gold = [150, 220]
 	},
-	test_2 = {
-		items = [{code = 'wood', chance = 70}],
+	scientistloot = {
+		items = [
+			{code = 'leather', chance = 100, min = 1, max = 5},
+			{code = 'item_res_1', chance = 100},
+			{code = 'item_res_2', chance = 100},
+			{code = 'item_res_3', chance = 80},
+			{code = 'item_res_4', chance = 50},
+			{code = 'item_barrier_2', chance = 80},
+			{code = 'item_buff_def', chance = 10},
+		],
+		gold = [190, 290]
 	},
-	test_3 = {
-		items = [{code = 'metal', chance = 45}, {code = 'chitine', chance = 45}],
+	dragonbossloot = {
+		items = [
+			{code = 'scales', chance = 100, min = 1, max = 5},
+			{code = 'item_heal_aoe_3', chance = 100},
+			{code = 'item_barrier_2', chance = 70},
+			{code = 'item_barrier_3', chance = 20},
+			{code = 'item_dispel_1', chance = 100},
+			{code = 'item_res_2', chance = 50},
+			{code = 'item_buff_atk', chance = 5},
+			{code = 'item_buff_def', chance = 5},
+		],
+		gold = [200, 300]
 	},
-	test_4 = {
-		items = [{code = 'leather', chance = 50}],
+	viktorbossloot = {
+		items = [
+			{code = 'otherworld', chance = 100, min = 1, max = 5},
+			{code = 'item_heal_2', chance = 50},
+			{code = 'item_heal_3', chance = 30},
+			{code = 'item_heal_aoe_3', chance = 40},
+			{code = 'item_dispel_1', chance = 30},
+			{code = 'item_barrier_2', chance = 80},
+			{code = 'item_buff_atk', chance = 10},
+			{code = 'item_buff_def', chance = 10}
+		],
+		gold = [250, 300]
 	},
-	test_5 = {
-		items = [{code = 'scales', chance = 50}],
+	annetloot = {
+		items = [
+			{code = 'demonic', chance = 100, min = 1, max = 5},
+			{code = 'item_dispel_1', chance = 100},
+			{code = 'item_dispel_2', chance = 50},
+			{code = 'item_res_3', chance = 80},
+			{code = 'item_res_4', chance = 50},
+			{code = 'item_barrier_2', chance = 80},
+			{code = 'item_barrier_3', chance = 40}
+		],
+		gold = [300, 400]
 	},
-	test_6 = {
-		items = [{code = 'otherworld', chance = 20}],
+	demitrius1loot = {
+		items = [
+			{code = 'demonic', chance = 100, min = 5, max = 10},
+			{code = 'item_heal_aoe_2', chance = 100},
+			{code = 'item_heal_aoe_3', chance = 50},
+			{code = 'item_res_1', chance = 100},
+			{code = 'item_res_2', chance = 100},
+			{code = 'item_res_3', chance = 50},
+			{code = 'item_res_4', chance = 50},
+			{code = 'item_barrier_2', chance = 100},
+			{code = 'item_barrier_3', chance = 100},
+			{code = 'item_buff_atk', chance = 100},
+			{code = 'item_buff_def', chance = 100}
+		],
+		gold = [400, 500]
 	},
-	test_7 = {
-		items = [{code = 'demonic', chance = 25}],
+	demitrius2loot = {
+		items = [
+			{code = 'demonic', chance = 100, min = 5, max = 10},
+			{code = 'item_heal_aoe_3', chance = 100},
+			{code = 'item_res_2', chance = 100},
+			{code = 'item_res_4', chance = 100},
+			{code = 'item_barrier_3', chance = 100},
+			{code = 'item_buff_atk', chance = 100},
+			{code = 'item_buff_def', chance = 100}
+		],
+		gold = [700, 1000]
 	},
 }
 
 
 func _ready():
-	for i in enemylist.values():
-#		e.basehp = 1
-		i.name = "MONSTER" + i.code.to_upper()
-		i.flavor = "MONSTER" + i.code.to_upper() + "FLAVOR"
+	for i in enemylist:
+		enemylist[i].code = i
+		if enemylist[i].name.empty():
+			enemylist[i].name = "MONSTER" + i.to_upper()
+		if enemylist[i].flavor.empty():
+			enemylist[i].flavor = "MONSTER" + i.to_upper() + "FLAVOR"
 	yield(preload_icons(), 'completed')
 	print("Enemies icons preloaded")
 
@@ -1127,8 +1509,8 @@ func preload_icons():
 #		if b.icon.begins_with("res:"): continue
 		if ch.combaticon != null:
 			resources.preload_res(ch.combaticon)
-		if ch.bodyimage != null:
-			resources.preload_res(ch.bodyimage)
+#		if ch.bodyimage != null:
+#			resources.preload_res(ch.bodyimage)
 		for an in ch.animations.values():
 			if an is AnimatedTexAutofill:
 				an.fill_frames()

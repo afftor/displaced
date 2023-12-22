@@ -25,7 +25,7 @@ Em - Can we go there?
 Ar - If I say "No", are you going to do it anyway?
 Em - Yes!
 Ro(talk) - That doesn't seem like a very good idea.
-Ar(neutral) - Welp, looks like we don't have a choice. 
+Ar(neutral) - Well, looks like we don't have a choice. 
 Ar - Ember is an important member of our community.
 Ar - And I can't be left without a blacksmith. 
 Ar - Suddenly it feels like I'm being blackmailed.

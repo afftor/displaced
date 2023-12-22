@@ -30,6 +30,12 @@ func get_tooltip():
 	calculate_args()
 	return description % args
 
+#for optimisation cause expected to be used after get_tooltip() (getter to description), for any other cases decomment calculate_args()
+func get_calc_arg(num :int):
+	#calculate_args()
+	assert(args.size() > num, "get_calc_arg() trys to get unexistant arg")
+	return args[num]
+
 func get_icon():
 	if icon.begins_with("res:"):
 		return load(icon)

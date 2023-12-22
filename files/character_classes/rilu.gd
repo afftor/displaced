@@ -5,7 +5,6 @@ func _init():
 	id = 'rilu'
 	state.heroes[id] = self
 	createfromname('rilu')
-	add_trait('necro_trait')
 
 #func deserialize(savedir): 
 #	.deserialize(savedir)
@@ -36,7 +35,7 @@ func get_resists():
 
 func hpmax_get():
 	var res = .hpmax_get()
-	match state.get_upgrade_level('field'):
+	match state.get_upgrade_level('farm'):
 		1: res *= 1.15
 		2: res *= 1.3
 		3: res *= 1.45
@@ -54,9 +53,8 @@ func damage_get():
 
 func a_mana_set(value):
 	if value > alt_mana:
-		if cooldowns.has('soul_prot') and gear_check('weapon1', 'gte', 4):
-			var rnd = globals.rng.randf()
-			if rnd < 0.25: 
+		if cooldowns.has('soul_prot') and gear_check('weapon2', 4, 'gte'):
+			if globals.rng.randf() < 0.25:
 				cooldowns['soul_prot'] -= 1
 				if cooldowns['soul_prot'] == 0: cooldowns.erase('soul_prot') 
 	alt_mana = clamp(round(value), 0, 5) 

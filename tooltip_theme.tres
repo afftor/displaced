@@ -7,15 +7,15 @@ content_margin_left = 25.0
 content_margin_right = 25.0
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 141, 138 )
-margin_left = 8.59416
-margin_right = 7.0
-margin_top = 7.77226
-margin_bottom = 9.0
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 14.5478
 
 [resource]
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
-TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
-TooltipLabel/constants/shadow_offset_x = 1
-TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+TooltipLabel/constants/shadow_offset_x = 2
+TooltipLabel/constants/shadow_offset_y = 2
 TooltipLabel/fonts/font = null
 TooltipPanel/styles/panel = SubResource( 1 )

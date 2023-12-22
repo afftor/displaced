@@ -29,7 +29,7 @@ C - ....Hold on.
 C - Are you still planning to fight Dimitrius?
 Ar - Do we look like we have any other option?
 C - You hardly have any chances on your own at his current power.
-Ar - So what, do you suggest we  give up?
+Ar - So what, do you suggest we give up?
 C - No, I actually want to offer you some help.
 Ro - Why? How do we even trust you?
 C - I'm not one of them and it's only a matter of time after they finish you off that they get to me.
@@ -39,10 +39,10 @@ Ar(neutral) - Fair enough, I don't mind letting you go free.
 Ar(neutral) - As long as you aren't going to repeat Zelroth's deeds. Caliban, was it?
 C - No, actually I've chosen a new name for me. Now I'm Cyrex.
 Ar - Alright, Cyrex, so what can you offer.
-C - I'm not going to help you personally, but there still might be a way to defeat Dimitrius.
-C - Although, it's not going to be simple at all.
+Cy - I'm not going to help you personally, but there still might be a way to defeat Dimitrius.
+Cy - Although, it's not going to be simple at all.
 Ar - Something is better than nothing.
-C - Good. Then, you must be aware that demons are weak to light.
-=BLACKTRANS 0.5=
+Cy - Good. Then, you must be aware that demons are weak to light.
+=BLACKUNFADE 0.5=
 The team has made preparations and moved to their new destination while Dimitrius still had no idea where they are.
 =STOP=

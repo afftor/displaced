@@ -44,6 +44,7 @@ func deserialize(tmp):
 	req_skill = template.req_skill
 
 func process_event(ev):
+#	print("process_event %s for %s of %s" % [ev, name, get_applied_obj_name()])
 	if triggered_event.has(ev) and ready:
 		if !req_skill or (self_args.has('skill') and self_args['skill'] != null):
 			#check conditions
@@ -99,17 +100,9 @@ func e_apply():
 				match eff.template.execute:
 					'remove':
 						call_deferred('remove')
-					'remove_parent':
-						var obj = effects_pool.get_effect_by_id(parent)
-						obj.remove()
-					'remove_siblings':
-						var obj = effects_pool.get_effect_by_id(parent)
-						obj.remove_siblings()
-						obj.remove()
-					'tick_parent':
-						var obj = effects_pool.get_effect_by_id(parent)
-						if obj is temp_e_progress or obj is temp_e_simple or obj is temp_e_upgrade:
-							obj.tick_eff()
+					'remove_siblings':#haven't been tested
+						remove_siblings()
+						call_deferred('remove')
 			'skill':
 				var obj = self_args['skill']
 				obj.apply_effect(e)
@@ -126,16 +119,30 @@ func e_apply():
 				var obj = get_applied_obj()
 				obj.apply_effect(e)
 			'parent':
-				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
-				obj.apply_effect(e)
+				match eff.template.execute:
+					'remove':
+						var obj = effects_pool.get_effect_by_id(parent)
+						obj.remove()
+					'remove_siblings':
+						var obj = effects_pool.get_effect_by_id(parent)
+						obj.remove_siblings()
+						obj.remove()
+					'tick':
+						var obj = effects_pool.get_effect_by_id(parent)
+						if obj is temp_e_progress or obj is temp_e_simple or obj is temp_e_upgrade:
+							obj.tick_eff()
+				#that seems not to be in use
+#				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
+#				obj.apply_effect(e)
 			'combat':
 				var obj = input_handler.combat_node
 				if obj != null:
 					match eff.template.execute:
-						'enable_followup':
-							obj.follow_up_flag = true
-						'resurrect_all':
-							obj.res_all(eff.template.value)
+						#seems to be useless
+#						'enable_followup':
+#							obj.follow_up_flag = true
+#						'resurrect_all':
+#							obj.res_all(eff.template.value * 0.01)
 						'clean_summons':
 							obj.clean_summons()
 		pass

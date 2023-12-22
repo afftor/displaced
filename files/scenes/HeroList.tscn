@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/images/gui/universal/heroline.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/HeroList.gd" type="Script" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://assets/images/portrait/ArronNeutral.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/charpanel_old/healthbar.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/charpanel_old/manabar.png" type="Texture" id=6]
-[ext_resource path="res://files/scenes/CharacterMenu.tscn" type="PackedScene" id=7]
-
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -24,21 +22,21 @@ texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 274, 29 )
 
 [node name="HeroList" type="Panel"]
-margin_left = 710.0
+margin_left = 917.0
 margin_top = 926.0
 margin_right = 1898.0
 margin_bottom = 1080.0
+rect_min_size = Vector2( 981, 154 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 81.0
+margin_left = 58.0
 margin_top = -72.0
-margin_right = 1201.0
+margin_right = 918.0
 margin_bottom = 135.0
 
 [node name="Button" type="TextureButton" parent="HBoxContainer"]
-visible = false
 margin_right = 140.0
 margin_bottom = 207.0
 rect_min_size = Vector2( 130, 150 )
@@ -87,9 +85,252 @@ step = 1.0
 value = 100.0
 percent_visible = false
 
-[node name="HeroPanel" parent="." instance=ExtResource( 7 )]
-visible = false
-margin_left = 230.0
-margin_top = -890.0
-margin_right = 1178.0
-margin_bottom = -102.0
+[node name="Button2" type="TextureButton" parent="HBoxContainer"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 130, 150 )
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Button2"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 128.0
+margin_bottom = 33.0
+text = "Name"
+align = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Button2"]
+show_behind_parent = true
+margin_left = 7.0
+margin_top = 40.0
+margin_right = 134.0
+margin_bottom = 198.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="hpbar" type="ProgressBar" parent="HBoxContainer/Button2"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 163.0
+margin_right = 137.0
+margin_bottom = 187.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="mpbar" type="ProgressBar" parent="HBoxContainer/Button2"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 173.0
+margin_right = 137.0
+margin_bottom = 197.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="Button3" type="TextureButton" parent="HBoxContainer"]
+margin_left = 288.0
+margin_right = 428.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 130, 150 )
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Button3"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 128.0
+margin_bottom = 33.0
+text = "Name"
+align = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Button3"]
+show_behind_parent = true
+margin_left = 7.0
+margin_top = 40.0
+margin_right = 134.0
+margin_bottom = 198.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="hpbar" type="ProgressBar" parent="HBoxContainer/Button3"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 163.0
+margin_right = 137.0
+margin_bottom = 187.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="mpbar" type="ProgressBar" parent="HBoxContainer/Button3"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 173.0
+margin_right = 137.0
+margin_bottom = 197.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="Button4" type="TextureButton" parent="HBoxContainer"]
+margin_left = 432.0
+margin_right = 572.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 130, 150 )
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Button4"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 128.0
+margin_bottom = 33.0
+text = "Name"
+align = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Button4"]
+show_behind_parent = true
+margin_left = 7.0
+margin_top = 40.0
+margin_right = 134.0
+margin_bottom = 198.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="hpbar" type="ProgressBar" parent="HBoxContainer/Button4"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 163.0
+margin_right = 137.0
+margin_bottom = 187.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="mpbar" type="ProgressBar" parent="HBoxContainer/Button4"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 173.0
+margin_right = 137.0
+margin_bottom = 197.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="Button5" type="TextureButton" parent="HBoxContainer"]
+margin_left = 576.0
+margin_right = 716.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 130, 150 )
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Button5"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 128.0
+margin_bottom = 33.0
+text = "Name"
+align = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Button5"]
+show_behind_parent = true
+margin_left = 7.0
+margin_top = 40.0
+margin_right = 134.0
+margin_bottom = 198.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="hpbar" type="ProgressBar" parent="HBoxContainer/Button5"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 163.0
+margin_right = 137.0
+margin_bottom = 187.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="mpbar" type="ProgressBar" parent="HBoxContainer/Button5"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 173.0
+margin_right = 137.0
+margin_bottom = 197.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="Button6" type="TextureButton" parent="HBoxContainer"]
+margin_left = 720.0
+margin_right = 860.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 130, 150 )
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Button6"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 128.0
+margin_bottom = 33.0
+text = "Name"
+align = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Button6"]
+show_behind_parent = true
+margin_left = 7.0
+margin_top = 40.0
+margin_right = 134.0
+margin_bottom = 198.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="hpbar" type="ProgressBar" parent="HBoxContainer/Button6"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 163.0
+margin_right = 137.0
+margin_bottom = 187.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false
+
+[node name="mpbar" type="ProgressBar" parent="HBoxContainer/Button6"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 173.0
+margin_right = 137.0
+margin_bottom = 197.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+percent_visible = false

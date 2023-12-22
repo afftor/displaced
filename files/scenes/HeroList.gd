@@ -3,7 +3,6 @@ extends Control
 #var heropanel
 #var equipopen = false
 
-
 #func _process(delta):
 #	for i in $HBoxContainer.get_children():
 #		if i.name != "Button":
@@ -17,11 +16,16 @@ extends Control
 #		popup()
 #		set_process(false)
 
+func _ready():
+	state.connect("party_changed", self, "UpdateList")
+
 func open():
-	input_handler.ClearContainer($HBoxContainer)
-	$HeroPanel.hide()
+	UpdateList()
 	show()
 	#popup()
+
+func UpdateList():
+	input_handler.ClearContainer($HBoxContainer)
 	for i in state.heroes.values():
 		if !i.unlocked: continue
 		var newbutton = input_handler.DuplicateContainerTemplate($HBoxContainer)
@@ -30,12 +34,6 @@ func open():
 #		newbutton.connect("pressed", self, "OpenEquip", [i])
 		newbutton.connect("pressed", self, "OpenInfo", [i.id])
 		newbutton.set_meta("hero", i)
-
-
-#func OpenEquip(hero):
-#	equipopen = true
-#	$HeroPanel.open(hero)
-
 
 func OpenInfo(ch_id):
 	var node = input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL)

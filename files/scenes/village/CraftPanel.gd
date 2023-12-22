@@ -1,9 +1,12 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 onready var charlist = $Panel/ScrollContainer/HBoxContainer
-onready var w1panel = $Panel/weapon1
-onready var w2panel = $Panel/weapon2
-onready var armpanel = $Panel/armor
+onready var slot_panels = {
+	"weapon1" : $Panel/weapon1,
+	"weapon2" : $Panel/weapon2,
+	"armor" : $Panel/armor
+}
+onready var tooltip = $Tooltip
 
 
 var selected_char
@@ -25,6 +28,10 @@ func _ready():
 		ch.get_node('TextureRect').texture = hero.portrait()
 		ch.connect('pressed', self, 'select_hero', [cid])
 	
+	for slot in slot_panels:
+		slot_panels[slot].connect('pressed', self, 'slot_select', [slot])
+		slot_panels[slot].get_node("Button").connect("pressed", self, 'upgrade_slot', [slot])
+	
 	if test_mode:
 		testmode()
 		if resources.is_busy(): 
@@ -44,13 +51,19 @@ func RepositionCloseButton():
 
 
 func open():
-	$Tooltip.hide()
+	update_content()
+#	input_handler.UnfadeAnimation(self)
+	show()
+
+
+func update_content():
 	for cid in state.characters:
 		var ch = charlist.get_node(cid)
 		ch.visible = (state.heroes[cid].unlocked)
-	select_hero('arron')
-#	input_handler.UnfadeAnimation(self)
-	show()
+	var old_char = selected_char
+	if old_char == null: old_char = 'arron'
+	selected_char = null
+	select_hero(old_char)
 
 
 func select_hero(cid):
@@ -67,14 +80,13 @@ func select_hero(cid):
 
 func rebuild_gear(cid = selected_char):
 	var hero = state.heroes[cid]
-	rebuild_gear_slot(w1panel, hero.get_item_data('weapon1'), hero.get_item_upgrade_data('weapon1'))
-	rebuild_gear_slot(w2panel, hero.get_item_data('weapon2'), hero.get_item_upgrade_data('weapon2'))
-	rebuild_gear_slot(armpanel, hero.get_item_data('armor'), hero.get_item_upgrade_data('armor'))
+	for slot in slot_panels:
+		rebuild_gear_slot(slot_panels[slot], hero.get_item_data(slot), hero.get_item_upgrade_data(slot))
 	highlight_slot()
+	$Panel/goldicon/Label.text = String(state.money)
 
 
 func rebuild_gear_slot(node, data, newdata):
-	node.connect('pressed', self, 'slot_select', [data.type])
 	node.get_node("Icon").texture = data.icon
 	node.get_node("Label2").text = data.name
 	if data.level > 0:
@@ -82,20 +94,31 @@ func rebuild_gear_slot(node, data, newdata):
 	else:
 		node.get_node("Label").text = ""
 	if newdata != null:
-		node.get_node("Button").visible = true
+		var forge_can :bool = state.if_has_upgrade('forge', newdata.level)
+		node.get_node("Button").visible = forge_can
+		node.get_node("UpdateText").visible = !forge_can
 		node.get_node("Button").disabled = false
 		node.get_node("VBoxContainer").visible = true
 		node.get_node("ResPanel").visible = true
 		input_handler.ClearContainer(node.get_node("VBoxContainer"), ['button'])
 		for res in newdata.cost:
-			if res == 'gold': continue
+			var icon
+			var has_amount
+			var res_text
+			if res == 'gold':
+				icon = Items.gold_icon
+				has_amount = state.money
+				res_text = String(newdata.cost[res])
+			else:
+				icon = Items.Items[res].icon#as it is now - items icons are loaded directly on start
+				has_amount = state.materials[res]
+				res_text = "%d/%d" % [newdata.cost[res], has_amount]
 			var panel = input_handler.DuplicateContainerTemplate(node.get_node("VBoxContainer"), 'button')
-			panel.get_node('icon').texture = Items.Items[res].icon #as it is now - items icons are loaded directly on start
-			panel.get_node("Label").text = "%d/%d" % [newdata.cost[res], state.materials[res]]
-			if newdata.cost[res] > state.materials[res]:
+			panel.get_node('icon').texture = icon
+			panel.get_node("Label").text = res_text
+			if newdata.cost[res] > has_amount:
 				node.get_node("Button").disabled = true
 				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
-		node.get_node("Button").connect("pressed", self, 'upgrade_slot', [data.type])
 	else:
 		node.get_node("Button").visible = false
 		node.get_node("VBoxContainer").visible = false
@@ -108,25 +131,37 @@ func upgrade_slot(slot):
 	hero.upgrade_gear(slot)
 	for res in cost:
 		if res == 'gold':
-			state.money -= cost[res]
+			state.add_money(-cost[res], false)
 		else:
 			state.materials[res] -= cost[res]
 	rebuild_gear()
+	if tooltip.visible:
+		rebuild_tooltip()
 
 
 func slot_select(slot = selected_slot):
 	if slot == selected_slot:
 		selected_slot = null
-		$Tooltip.hide()
+		tooltip.hide()
 	else:
 		selected_slot = slot
-		$Tooltip.build_slot_tooltip(selected_char, selected_slot)
-		$Tooltip.show()
+		rebuild_tooltip()
+		if selected_slot == 'armor':
+			tooltip.rect_position.x = (
+				slot_panels['armor'].get_global_rect().end.x + 5)
+		else:
+			tooltip.rect_position.x = (
+				slot_panels['weapon1'].rect_global_position.x -
+				tooltip.rect_size.x - 5)
+		tooltip.show()
 	highlight_slot()
 
+func rebuild_tooltip():
+	tooltip.build_upgrade_tooltip(selected_char, selected_slot)
+
 func highlight_slot():
-	for sid in ['weapon1', 'weapon2', 'armor']:
-		var node = $Panel.get_node(sid)
+	for sid in slot_panels:
+		var node = slot_panels[sid]
 		if sid == selected_slot:
 			node.pressed = true
 			node.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.highlight_blue)

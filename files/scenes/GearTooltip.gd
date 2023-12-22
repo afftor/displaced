@@ -1,9 +1,13 @@
-extends TextureRect
+extends Control
 
+onready var container = $VBoxContainer
 
 func _ready():
-	pass # Replace with function body.
+	container.connect("resized", self, "size_up")
 
+func size_up():
+	var rect = container.get_rect()
+	rect_size.y = rect.end.y + 10;
 
 func showup(hero_id, slot, position):
 	if is_visible_in_tree():
@@ -13,15 +17,27 @@ func showup(hero_id, slot, position):
 	show()
 
 func build_slot_tooltip(hero_id, slot):
-	var itemdata = Items.hero_items_data["%s_%s" % [hero_id, slot]]
+#	var itemdata = Items.hero_items_data["%s_%s" % [hero_id, slot]]
 	var hero = state.heroes[hero_id]
-	input_handler.ClearContainer($VBoxContainer, ['level', 'desc', 'separator'])
-	for i in range(1, 5):
-		var text = input_handler.DuplicateContainerTemplate($VBoxContainer, 'level')
-		text.text = "Level %d\n" % i
-		var text2 = input_handler.DuplicateContainerTemplate($VBoxContainer, 'desc')
-		text2.text = itemdata.leveldata[i].lvldesc
-#		if hero.gear_level[slot] >= i:
-#			text2 = "[color=green]%s[/color]" % text2
-		if i != 4:
-			var tmp = input_handler.DuplicateContainerTemplate($VBoxContainer, 'separator')
+	var itemdata = hero.get_item_data(slot)
+	container.get_node("level").text = "Level %d" % itemdata.level
+	container.get_node("desc").text = itemdata.description
+	container.get_node("divider").hide()
+	container.get_node("next_level").hide()
+	container.get_node("next_desc").hide()
+
+func build_upgrade_tooltip(hero_id, slot):
+	build_slot_tooltip(hero_id, slot)
+	container.get_node("divider").show()
+	var next_level = container.get_node("next_level")
+	var hero = state.heroes[hero_id]
+	var upgrade_data = hero.get_item_upgrade_data(slot)
+	if !upgrade_data:
+		next_level.text = "Level maximum"
+		next_level.show()
+		return
+	next_level.text = "Next level %d" % upgrade_data.level
+	next_level.show()
+	var next_desc = container.get_node("next_desc")
+	next_desc.text = upgrade_data.description
+	next_desc.show()

@@ -13,7 +13,7 @@ var race
 
 var level = 1
 
-var hp = 0 setget hp_set
+var hp = 0 setget hp_set#mind that setter works only though self.hp inside the class
 var hpmax = 0 setget , hpmax_get #base value
 var hp_growth
 var defeated = false
@@ -24,11 +24,13 @@ var evasion = 0
 var hitrate = 80
 var critchance = 5
 var critmod = 1.5
-var resists = {} setget ,get_resists
+#Mind, that use of getters with dictionaries makes it dangerous for attempts to modify it from outside
+var resists = {} setget ,get_resists#to modify resists from outside use set_resists()!
 var status_resists = {} setget ,get_s_resists
 var shield = 0 setget set_shield;
 #var base_dmg_type = 'bludgeon'
 var base_dmg_range = 'melee'
+var is_boss :bool = false
 
 var flavor
 
@@ -49,12 +51,14 @@ var temp_effects = []
 var triggered_effects = []
 var aura_effects = []
 
+var temporal_shields = {}
 
 var position
 var combatgroup = 'ally'
 #var selectedskill = 'attack'
 
 var acted = false
+var got_turn = false#flag for single process of TR_TURN_GET. Mostly needed only by player's chars, as thay get this event on each selection
 #mods. obsolete imho
 #var damagemod = 1
 #var hpmod = 1
@@ -107,56 +111,103 @@ func get_stat(statname):
 	return res
 
 
-func add_stat_bonuses(ls:Dictionary):
-	if variables.new_stat_bonuses_syntax:
-		for rec in ls:
-			add_bonus(rec, ls[rec])
-		recheck_effect_tag('recheck_stats')
-	else:
-		for rec in ls:
-			if (rec as String).begins_with('resist') :
-				add_bonus(rec + '_add', ls[rec])
-				continue
-			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
-				add_bonus(rec.replace('mod','_mul'), ls[rec])
-				continue
-			if get(rec) == null:
-			#safe variant
-			#add_bonus(rec, ls[rec])
-				continue
-			add_stat(rec, ls[rec])
-
-func remove_stat_bonuses(ls:Dictionary):
-	if variables.new_stat_bonuses_syntax:
-		for rec in ls:
-			add_bonus(rec, ls[rec], true)
-		recheck_effect_tag('recheck_stats')
-	else:
-		for rec in ls:
-			if (rec as String).begins_with('resist'):
-				add_bonus(rec + '_add', ls[rec], true)
-				continue
-			if (rec as String).ends_with('mod') :
-				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
-				continue
-			if get(rec) == null: continue
-			add_stat(rec, ls[rec], true)
+#seems not to be in use
+#func add_stat_bonuses(ls:Dictionary):
+#	if variables.new_stat_bonuses_syntax:
+#		for rec in ls:
+#			add_bonus(rec, ls[rec])
+#		recheck_effect_tag('recheck_stats')
+#	else:
+#		for rec in ls:
+#			if (rec as String).begins_with('resist') :
+#				add_bonus(rec + '_add', ls[rec])
+#				continue
+#			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
+#				add_bonus(rec.replace('mod','_mul'), ls[rec])
+#				continue
+#			if get(rec) == null:
+#			#safe variant
+#			#add_bonus(rec, ls[rec])
+#				continue
+#			add_stat(rec, ls[rec])
+#
+#func remove_stat_bonuses(ls:Dictionary):
+#	if variables.new_stat_bonuses_syntax:
+#		for rec in ls:
+#			add_bonus(rec, ls[rec], true)
+#		recheck_effect_tag('recheck_stats')
+#	else:
+#		for rec in ls:
+#			if (rec as String).begins_with('resist'):
+#				add_bonus(rec + '_add', ls[rec], true)
+#				continue
+#			if (rec as String).ends_with('mod') :
+#				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
+#				continue
+#			if get(rec) == null: continue
+#			add_stat(rec, ls[rec], true)
 
 func add_bonus(b_rec:String, value, revert = false):
+	#classification
+	var BTYPE = {ADD = 0, MUL = 1, PART = 2}
+	var bonus_type :int = -1
+	if b_rec.ends_with('_part'):#all _part thing is for add_part_stat(), which should be refactored down to mul_stat() someday
+		bonus_type = BTYPE.PART
+		b_rec = b_rec.trim_suffix("_part")
+		b_rec += '_mul'
+	elif b_rec.ends_with('_mul'):
+		bonus_type = BTYPE.MUL
+	elif b_rec.ends_with('_add'):
+		bonus_type = BTYPE.ADD
+	assert(bonus_type != -1, 'add_bonus got unexpected bonus type')
+	
+	#validation
+	var statname :String = b_rec.trim_suffix("_add")
+	statname = statname.trim_suffix("_mul")
+	if statname.begins_with('resist'):
+		assert((
+			variables.resistlist.has(statname.trim_prefix('resist')) or
+			variables.status_list.has(statname.trim_prefix('resist'))),
+			"%s trying to edit unexisting resist by %s" % [name, b_rec])
+	else:
+		assert(get(statname) != null, "%s trying to edit unexisting stat by %s" % [name, b_rec])
+	
+	#bonus process
 	if value == 0: return
 	if bonuses.has(b_rec):
 		if revert:
-			bonuses[b_rec] -= value
-			if b_rec.ends_with('_add') and bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
-			if b_rec.ends_with('_mul') and bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
-		else: bonuses[b_rec] += value
-	else:
-		if revert: print('error bonus not found')
+			if bonus_type == BTYPE.MUL: bonuses[b_rec] /= value
+			else: bonuses[b_rec] -= value
+			if bonus_type == BTYPE.ADD:
+				if bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
+			elif bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
 		else:
-			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
-			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
-			else: bonuses[b_rec] = value
-
+			if bonus_type == BTYPE.MUL: bonuses[b_rec] *= value
+			else: bonuses[b_rec] += value
+	else:
+		assert(!revert, 'error bonus not found')
+		if bonus_type == BTYPE.PART: bonuses[b_rec] = 1.0 + value
+		else: bonuses[b_rec] = value
+	
+	#hpmax change reaction
+	if statname == 'hpmax':
+		assert(bonus_type != BTYPE.PART, "avoid using stat_add_p atomic effect with hpmax!")
+		var new_hp
+		if revert:
+			if bonus_type == BTYPE.MUL: new_hp = hp / value
+			else: new_hp = hp - value#ADD-type bonus hasn't been tested
+		else:
+			if bonus_type == BTYPE.MUL: new_hp = hp * value
+			else: new_hp = hp + value
+		if displaynode != null:
+			displaynode.update_hp_bar_max()
+		hp_set(new_hp)
+	
+	#keep it to test new add_bonus() till it's workability will be assured
+#	if !bonuses.has(b_rec):
+#		print("add_bonus %s removed by %s" % [b_rec, value])
+#	else:
+#		print("add_bonus %s by %s to %s" % [b_rec, value, bonuses[b_rec]])
 
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -171,15 +222,7 @@ func mul_stat(statname, value, revert = false):
 		if revert: set(statname, get(statname) / value)
 		else: set(statname, get(statname) * value)
 	else:
-		if bonuses.has(statname + '_mul'):
-			if revert:
-				bonuses[statname + '_mul'] /= value
-				if bonuses[statname + '_mul'] == 1:
-					bonuses.erase(statname + '_mul')
-			else: bonuses[statname + '_mul'] *= value
-		else:
-			if revert: print('error bonus not found')
-			else: bonuses[statname + '_mul'] = value
+		add_bonus(statname+'_mul', value, revert)
 	recheck_effect_tag('recheck_stats')
 
 func add_part_stat(statname, value, revert = false):
@@ -187,22 +230,61 @@ func add_part_stat(statname, value, revert = false):
 		if revert: set(statname, get(statname) / (1.0 + value))
 		else: set(statname, get(statname) * (1.0 + value))
 	else:
-		add_bonus(statname+'_mul', value, revert)
+		add_bonus(statname+'_part', value, revert)
 	recheck_effect_tag('recheck_stats')
 
+func add_temporal_shield(value, temporal_id :String):
+	if !temporal_shields.has(temporal_id):
+		temporal_shields[temporal_id] = 0
+	temporal_shields[temporal_id] += value
+	add_stat('shield', value)
+
+func remove_temporal_shield(temporal_id :String):
+	if !temporal_shields.has(temporal_id): return
+	
+	add_stat('shield', temporal_shields[temporal_id], true)
+	temporal_shields.erase(temporal_id)
+
+func wither_temporal_shields(value):
+	for shield_id in temporal_shields.keys():
+		temporal_shields[shield_id] -= value
+		if temporal_shields[shield_id] < 0 :
+			value = -temporal_shields[shield_id]
+			temporal_shields.erase(shield_id)
+		else:
+			break
+
+func clear_temporal_shields():
+	temporal_shields.clear()
+
 #confirmed getters
+func calc_resist_mul_bonus(base :float, bonus :float) -> float:
+	#base rasist < 0 is actualy debuff, yet mul_bonus > 1 must still increase resistance, and mul_bonus < 1 decrease it
+	if base > 0.0:
+		return base * bonus
+	elif base < 0.0:
+		return base / bonus
+	return base
+
+func set_resists(new_resists :Dictionary):#not making it a setter, as I don't cleary understand, how would it work, when you will try to set precise value in dictionary
+	for i in variables.resistlist:
+		if new_resists.has(i):
+			resists[i] = new_resists[i]
+
 func get_resists():
 	var res = resists.duplicate()
 	for r in variables.resistlist:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
-		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+		if bonuses.has('resist' + r + '_mul'):
+			res[r] = calc_resist_mul_bonus(res[r], bonuses['resist' + r + '_mul'])
 	return res
 
 func get_s_resists():
 	var res = status_resists.duplicate()
 	for r in variables.status_list:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
-		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+		if bonuses.has('resist' + r + '_mul'):
+			res[r] = calc_resist_mul_bonus(res[r], bonuses['resist' + r + '_mul'])
 	return res
 
 func set_shield(value):
@@ -210,7 +292,12 @@ func set_shield(value):
 #		process_event(variables.TR_SHIELD_DOWN)
 	if input_handler.combat_node != null and input_handler.combat_node.rules.has('no_shield'):
 		if value > shield: return
+	if value == 0:
+		clear_temporal_shields()
+	elif value < shield:
+		wither_temporal_shields(shield - value)
 	shield = value;
+	#that stuff not working. For now all shield representation made through buff-icons
 	if displaynode != null:
 		displaynode.update_shield()
 	recheck_effect_tag('recheck_stats')
@@ -232,6 +319,7 @@ func damage_get():
 	return damage * variables.curve[level - 1]
 
 func hp_set(value):
+	if defeated: return
 	var hp_max = get_stat('hpmax')
 	if has_status('soulprot') or (hp == hp_max and base == 'bomber'):
 		hp = clamp(round(value), 1, hp_max)
@@ -239,6 +327,9 @@ func hp_set(value):
 		hp = clamp(round(value), 0, hp_max)
 	if displaynode != null:
 		displaynode.update_hp()
+	var possible_ai = get('ai')
+	if possible_ai != null:
+		possible_ai.check_stage()
 
 
 func get_skills():
@@ -263,7 +354,7 @@ func need_heal(): #stub. borderlines are subject to tuning
 #traits
 func can_acq_trait(tr_id):
 	if traits.has(tr_id):
-		print("already has trait")
+		print("%s already has trait %s" % [name, tr_id])
 		return false
 	return true
 
@@ -274,15 +365,25 @@ func add_trait(trait_code):
 	for e in tmp.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 		apply_effect(effects_pool.add_effect(eff))
-		eff.set_args('trait', tmp.code)
+		eff.set_args('trait', trait_code)
 
 func remove_trait(trait_code):
 	if !traits.has(trait_code): return
 	traits.erase(trait_code)
+	clear_trait_effects(trait_code)
+
+func clear_traits():
+	for code in traits:
+		clear_trait_effects(code)
+	traits.clear()
+
+func clear_trait_effects(trait_code):
 	var tmp = find_eff_by_trait(trait_code)
 	for e in tmp:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
+
+
 
 #skills
 func tick_cooldowns():
@@ -332,6 +433,8 @@ func apply_atomic(template):
 			mul_stat(template.stat, template.value)
 		'stat_add_p':
 			add_part_stat(template.stat, template.value)
+		'shield_add_temporal':
+			add_temporal_shield(template.value, template.shield_id)
 		'bonus': #reverting those effect can not clear no-bonus entries, so be careful not to overuse those
 			if bonuses.has(template.bonusname): bonuses[template.bonusname] += template.value
 			else: bonuses[template.bonusname] = template.value
@@ -347,18 +450,16 @@ func apply_atomic(template):
 		'event':
 			process_event(template.value)
 		'resurrect':
-			if !defeated: return
+			var new_hp
 			if template.has('value'):
-				self.hp = template.value
+				new_hp = template.value
 			elif template.has('value_p'):
-				self.hp = template.value_p * get_stat('hpmax')
+				new_hp = template.value_p * get_stat('hpmax')
 			else: return
-			defeated = false
-			process_event(variables.TR_RES)
+			resurrection(new_hp)
 		'use_combat_skill':
 			if input_handler.combat_node == null: return
-#			input_handler.combat_node.use_skill(template.skill, self, position)
-			input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = position})
+			input_handler.combat_node.enqueue_skill(template.skill, self, position)
 #		'add_counter':
 #			if counters.size() <= template.index + 1:
 #				counters.resize(template.index + 1)
@@ -376,7 +477,8 @@ func apply_atomic(template):
 			tick_cooldowns()
 		'add_rule':
 			if input_handler.combat_node == null: return
-			if !input_handler.combat_node.rules.has(template.value): input_handler.combat_node.rules.push_back(template.value)
+			if !input_handler.combat_node.rules.has(template.value):
+				input_handler.combat_node.rules.push_back(template.value)
 
 
 func remove_atomic(template):
@@ -389,6 +491,8 @@ func remove_atomic(template):
 			mul_stat(template.stat, template.value, true)
 		'stat_add_p':
 			add_part_stat(template.stat, template.value, true)
+		'shield_add_temporal':
+			remove_temporal_shield(template.shield_id)
 		'bonus':
 			if bonuses.has(template.bonusname): bonuses[template.bonusname] -= template.value
 			else: print('error bonus not found')
@@ -480,7 +584,7 @@ func apply_temp_effect(eff_id):
 	if check_status_resist(eff):
 		if input_handler.combat_node != null:
 			input_handler.combat_node.combatlogadd("\n%s resists %s." % [get_stat('name'), eff.template.name])
-			play_sfx('resist')
+			play_sfx('sfx_dispel')
 		return
 	if input_handler.combat_node != null:
 		input_handler.combat_node.combatlogadd("\n%s is afflicted by %s." % [get_stat('name'), eff.template.name])
@@ -527,7 +631,7 @@ func apply_effect(eff_id):
 func remove_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static', 'c_static': static_effects.erase(eff_id)
+		'static', 'c_static', 'dynamic': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
 		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
 		'aura': 
@@ -541,10 +645,10 @@ func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is
 	eff.remove()
 	pass
 
-func remove_all_temp_effects():
-	for e in temp_effects:
-		var obj = effects_pool.get_effect_by_id(e)
-		obj.call_deferred('remove')
+#func remove_all_temp_effects():
+#	for e in temp_effects:
+#		var obj = effects_pool.get_effect_by_id(e)
+#		obj.call_deferred('remove')
 
 func remove_temp_effect_tag(eff_tag):#function for nonn-direct temps removing, like heal or dispel
 	var tmp = find_temp_effect_tag(eff_tag)
@@ -557,13 +661,25 @@ func remove_all_effect_tag(eff_tag):#function for nonn-direct temps removing, li
 	for eff in tmp:
 		remove_temp_effect(eff)
 
-func clean_effects():#clean effects before deleting character
+func clean_effects():
 	for e in temp_effects + static_effects + triggered_effects + aura_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 
 func process_event(ev, skill = null):
-	for e in triggered_effects:
+	#TR_TURN_GET for player's char can be processed on each selection, wich is wrong
+	#this event must be processed strictly once per turn
+	if ev == variables.TR_TURN_GET:
+		if got_turn:
+			return
+		else:
+			got_turn = true
+	elif ev == variables.TR_TURN_S:
+		got_turn = false
+	
+	var effects_to_process = triggered_effects.duplicate()#effects can be removed from original array during cycle
+#	print("%s process_event %s" % [name, String(effects_to_process)])
+	for e in effects_to_process:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if skill != null and eff.req_skill:
 			eff.set_args('skill', skill)
@@ -575,7 +691,8 @@ func process_event(ev, skill = null):
 	#for now it's unobvious if it is effecting triggered_effects somehow.
 	#If it is, temp_effects probably should be processed befor triggered_effects,
 	#but than problem with temp_effects removeing it's triggered_effects will return
-	for e in temp_effects:
+	effects_to_process = temp_effects.duplicate()
+	for e in effects_to_process:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(ev)
 
@@ -639,10 +756,25 @@ func stat_update(stat, value):
 func death():
 	defeated = true
 	hp = 0
+	process_event(variables.TR_DEATH)
 	if displaynode != null:
 		displaynode.process_defeat()
 		if !aura_effects.empty():
 			input_handler.combat_node.recheck_auras()
+
+func resurrection(new_hp = 1):
+	if !defeated: return
+	if input_handler.combat_node.rules.has('no_res'): return
+	
+	defeated = false
+	self.hp = new_hp
+	acted = false
+	process_event(variables.TR_RES)
+	if displaynode != null:
+		displaynode.process_resurrect()
+		displaynode.process_enable()#if acted = false
+#		if !aura_effects.empty():
+#			input_handler.combat_node.recheck_auras()
 
 func can_act():
 	var res = !acted
@@ -656,6 +788,7 @@ func can_use_skill(skill):
 #	if mana < skill.manacost: return false
 	if cooldowns.has(skill.code): return false
 	if skill.tags.has('disabled'): return false
+	if !process_check(skill.reqs): return false
 	if has_status('silence') and skill.skilltype != 'item' and !skill.tags.has('default'): return false #possible to change in caase of combat item system
 	return true
 
@@ -815,8 +948,7 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 		'status':
 			result = has_status(req.status) == req.check
 		'is_boss':
-			#stub!!!!
-			result = !req.check
+			result = is_boss == req.check
 		'skill':
 			if skills.has(req.skill):
 				var skilldata = Skillsdata.patch_skill(req.skill, self)
@@ -827,3 +959,4 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 			else:
 				result = false
 	return result
+

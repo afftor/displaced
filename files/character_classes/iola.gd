@@ -27,7 +27,7 @@ func get_resists():
 
 func hpmax_get():
 	var res = .hpmax_get()
-	match state.get_upgrade_level('field'):
+	match state.get_upgrade_level('farm'):
 		1: res *= 1.15
 		2: res *= 1.3
 		3: res *= 1.45

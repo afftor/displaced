@@ -42,7 +42,8 @@ const AVAIL_EFFECTS = [
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
 	"ABG", "STOP", "CHOICE", "SKIP",
-	"DECISION", "STATE", "LOOSE"
+	"DECISION", "STATE", "LOOSE",
+	"IF", "MOVETO", "POSITION", "BG_EMPTY"
 	]
 
 const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth','zelrothcaliban', 'rilu', 'demitrius', 'demitrius_demon', 'goblin', 'goblin2'] #idk if they are named this way in scenes
@@ -411,6 +412,12 @@ var char_map = {
 #		animated = true,
 		color = Color('ffffff'),
 	},
+	Cy = {
+		source = 'Cyrex',
+		portrait = 'Caliban',
+		base_variants = [], #for normal filenamaes with suffixes
+		color = Color('ffffff'),
+	},
 	Boy = {
 		source = 'Boy',
 		portrait = 'Boy', #not exist
@@ -492,6 +499,12 @@ var char_map = {
 	slavetrader2 = {
 		source = 'Slave Trader 2',
 		portrait = 'Boy',
+		base_variants = [],
+		color = Color('ffffff'),
+	},
+	Dwarf = {
+		source = 'Dwarf Soldier',
+		portrait = 'DwarfSoldier',
 		base_variants = [],
 		color = Color('ffffff'),
 	},
@@ -608,10 +621,15 @@ func preload_portraits():
 
 var text_log = ""
 func OpenLog():
-	$LogPanel/RichTextLabel.bbcode_text = text_log
-	$LogPanel.show()
+	var log_panel = $LogPanel
+	var log_label = $LogPanel/RichTextLabel
+	if log_panel.visible:
+		log_panel.hide()
+		return
+	log_label.bbcode_text = text_log
+	log_panel.show()
 	yield(get_tree().create_timer(0.2), 'timeout')
-	$LogPanel/RichTextLabel.scroll_to_line($LogPanel/RichTextLabel.get_line_count()-1)
+	log_label.scroll_to_line(log_label.get_line_count()-1)
 
 func OpenOptions():
 	$MenuPanel.show()
@@ -684,7 +702,7 @@ func _input(event: InputEvent):
 func _gui_input(event: InputEvent):
 	#here we process only mouse events, to avoid collisions with buttons
 	#for keyboard events see _input()
-	if is_input_blocked(): return
+	if $MenuPanel.visible: return
 	if $LogPanel.visible == true:
 		if event.is_action_pressed("MouseDown"):
 			var v_scroll = $LogPanel/RichTextLabel.get_v_scroll()
@@ -695,6 +713,8 @@ func _gui_input(event: InputEvent):
 	elif event.is_action_pressed("MouseUp"):
 		OpenLog()
 		return
+	
+	if is_input_blocked(): return
 	
 	if event.is_action_pressed("RMB"):
 		toggle_panel()
@@ -742,6 +762,7 @@ func tag_gui_normal() -> void:
 
 func tag_gui_hide() -> void:
 	$Panel.hide()
+	TextField.bbcode_text = ''
 	panel_vis = false
 
 func tag_gui_full() -> void:
@@ -775,18 +796,19 @@ func tag_blackunfade(secs: String = "0.5") -> void:
 	else:
 		input_handler.UnfadeAnimation($BlackScreen, float(secs))
 
+#using yield() is not good idea, but the best practice would be to get rid =BLACKTRANS= tag at all
 func tag_blacktrans(secs: String = "0.5") -> void:
+	input_handler.emit_signal("ScreenChanged")
 	TextField.bbcode_text = ''
 	$Panel/CharPortrait.modulate.a = 0
 	$Panel/DisplayName.modulate.a = 0
 	if rewind_mode:
-		input_handler.emit_signal("ScreenChanged")#should it be here?
 		tag_blackoff()
 		return
 	var duration = float(secs)
 	input_handler.UnfadeAnimation($BlackScreen, duration)
-	input_handler.emit_signal("ScreenChanged")
-	input_handler.FadeAnimation($BlackScreen, duration, duration)
+	yield(get_tree().create_timer(duration), 'timeout')
+	input_handler.FadeAnimation($BlackScreen, duration)
 
 func tag_bg(res_name: String, secs: String = "") -> void:
 	if is_video_bg:
@@ -805,14 +827,18 @@ func tag_bg(res_name: String, secs: String = "") -> void:
 			i.stop()
 			i.stream = null
 #	if !replay_mode:
-	state.unlock_path(res_name, false)
-	var res = resources.get_res("bg/%s" % res_name)
+	var res = null
+	if !res_name.empty():
+		state.unlock_path(res_name, false)
+		res = resources.get_res("bg/%s" % res_name)
 	if secs != "" and !rewind_mode:
 		input_handler.SmoothTextureChange($Background, res, float(secs))
 	else:
 		$Background.texture = res
 	$Background.update()
 
+func tag_bg_empty() -> void:
+	tag_bg('')
 
 func tag_delay(secs: String) -> void:
 	if rewind_mode:
@@ -1002,9 +1028,46 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 		$VideoBunch.Change(res, sec_res)
 	delay = max(delay, 0.3) #not sure, but should be enough to fix asynchonisation of abg changing 
 
+#it would be best to migrate from =SKIP= methods to =IF= and =MOVETO=, as last one is far more flexible and mistakeproof, but it would be hard to do so
+func tag_moveto(pos :String) ->void:
+	var cur_line = get_line_nr()
+	#1000 - is an abstract "alot". If tags =STOP= or =POSITION= will not be found within 1000 lines, it would certainly be an error
+	for line_num in range(cur_line, cur_line + 1000):
+		var line = ref_src[line_num]
+		if line.begins_with("=") and line.ends_with("="):
+			var tag_string = line.replace("=", "")
+			var tag_array = tag_string.split(" ")
+			if tag_array.size() == 0:
+				continue
+			if (tag_array[0] == "POSITION"
+					and tag_array[1] == pos):
+				step = line_num - line_start
+				return
+			if tag_array[0] == "STOP":
+				break
+	assert(false, "POSITION not found in tag_moveto!!!")
+
+func tag_position(pos :String) ->void:
+	#ignored, as this is not a tag, but a marker for =MOVETO= tag
+	pass
+
+func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->void:
+	var success :bool
+	if type == "SCENESEEN":
+		success = state.valuecheck({type = "scene_seen", value = value})
+	elif type == "LASTCHOICE":
+		success = (int(value) == last_choice)
+	else:
+		assert(false, "Unknow condition in tag_if!!!")
+		return
+	
+	if success:
+		tag_moveto(true_pos)
+	else:
+		tag_moveto(false_pos)
 
 func tag_loose() -> void:
-	stop_scene()#stop_scene supposed to run separately of any tags for sake of seqinced scenes, so here it's usage appropriate only for gameover purpose
+	stop_scene_on_lose()
 	if !replay_mode and input_handler.menu_node != null:
 		input_handler.menu_node.GameOverShow()
 
@@ -1016,20 +1079,23 @@ func prompt_close():
 
 
 func stop_scene() -> void:
-	input_handler.StopMusic()
+	input_handler.SetMusic("towntheme")
 	set_process(false)
 	set_process_input(false)
-	#globals.check_signal("EventFinished")
 	input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	hide()
-	if !replay_mode:
-		state.FinishEvent()
-	else:
-		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
+	state.FinishEvent(replay_mode)
 	replay_mode = false
-#	emit_signal("scene_end")
 	input_handler.emit_signal("EventFinished")
 
+#it should be almost the same to stop_scene() but with no afteractions
+func stop_scene_on_lose() ->void:
+	set_process(false)
+	set_process_input(false)
+	hide()
+	state.ClearEvent()
+	replay_mode = false
+	input_handler.emit_signal("EventFinished")
 
 func advance_scene() -> void:
 	step += 1
@@ -1144,7 +1210,7 @@ func play_scene(scene: String, restore = false) -> void:
 	var has_res = true
 	for i in scene_map["res"].keys():
 		for j in scene_map["res"][i]:
-			has_res =  i + "/" + j in resources.queue
+			has_res = resources.has_res(i + "/" + j)
 			if !has_res:
 				break
 		if !has_res:

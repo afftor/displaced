@@ -29,9 +29,18 @@ var hotkey_buttons = {
 	hotkey_skill_6 = -1
 }
 var hotkeys
+var sounds = {
+	"skill_pressed" : "sound/itemget_2"
+}
 
 func _ready():
-	$SkillPanel/Escape.connect("pressed", combat, "run")
+	for i in sounds.values():
+		resources.preload_res(i)
+	if resources.is_busy(): yield(resources, "done_work")
+	
+	$SkillPanel/Escape.connect("pressed", combat, "try_to_run")
+	$SkillPanel/cheat.connect("pressed", combat, "cheatvictory")
+	$SkillPanel/cheatheal.connect("pressed", combat, "cheatheal")
 	$SkillPanel/CategoriesContainer/SkillsButton.connect('pressed', self, "RebuildSkillPanel")
 	$SkillPanel/CategoriesContainer/ItemsButton.connect('pressed', self, "RebuildItemPanel")
 	for ch in $SkillPanel/CategoriesContainer.get_children():
@@ -49,14 +58,17 @@ func _ready():
 	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
 	#so we have to yield, to get correct global_position for button
 	yield(get_tree(), "idle_frame")
-	var skill_btn = skill_container.get_child(0)
-	TutorialCore.register_button("skill",
-		skill_btn.rect_global_position,
-		skill_btn.rect_size)
-	TutorialCore.register_button("char_reserve",
-		$PlayerStats.rect_global_position,
-		$PlayerStats.rect_size)
-	
+	TutorialCore.register_dynamic_button("skill", self, "pressed")
+	TutorialCore.register_dynamic_button("char_reserve", self, "button_down")
+
+func get_tutorial_button(button_name :String):
+	if button_name == "skill":
+		return skill_container.get_child(0)
+	elif button_name == "char_reserve":
+		for ch in state.characters:
+			var node = get_hero_reserve(ch)
+			if node.visible:
+				return node
 
 func combat_start():
 	clear_log()
@@ -89,12 +101,13 @@ func bind_hero_panels():
 	for ch in state.characters:
 		var node = hpanel1.instance()
 		node.name = ch
-		node.connect('pressed', self, 'ShowHeroTooltip', [ch])
+		node.connect('pressed_lmb', combat, 'select_player_char', [ch])
+		node.connect('pressed_rmb', self, 'ShowHeroTooltip', [ch])
 		$PlayerStats/VBoxContainer.add_child(node)
 	for ch in state.characters:
 		var node = hpanel2.instance()
 		node.name = ch + '_reserve'
-		node.connect('pressed', self, 'ShowHeroTooltip', [ch])
+		node.connect('pressed_rmb', self, 'ShowHeroTooltip', [ch])
 		$PlayerStats/VBoxContainer.add_child(node)
 
 
@@ -200,6 +213,7 @@ func skill_button_pressed(mode, arg):
 	if !combat.allowaction: return
 	match mode:
 		'skill':
+			input_handler.PlaySound(sounds["skill_pressed"])
 			combat.SelectSkill(arg)
 		'item':
 			combat.ActivateItem(arg)
@@ -232,19 +246,11 @@ func RebuildSkillPanel():
 		var skill = Skillsdata.patch_skill(i, activecharacter)
 		newbutton.get_node("TextureRect").texture = skill.icon
 		newbutton.get_node("Cooldown").text = ""
-		if skill.tags.has('disabled'):
-			newbutton.disabled = true
-			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.cooldowns.has(i):
-			newbutton.disabled = true
-			newbutton.get_node("Cooldown").text = str(activecharacter.cooldowns[i])
-			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
-		if !activecharacter.process_check(skill.reqs):
-			newbutton.disabled = true
-			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
 		if !activecharacter.can_use_skill(skill):
 			newbutton.disabled = true
 			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.cooldowns.has(i):
+				newbutton.get_node("Cooldown").text = str(activecharacter.cooldowns[i])
 #		newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)
@@ -298,15 +304,15 @@ func RebuildDefaultsPanel():
 	for i in ['attack', 'defence']:
 		var newbutton = get_node("SkillPanel/DefaultSkillContainer").get_node(i)
 		var skill = Skillsdata.patch_skill(i, activecharacter)
-		if !newbutton.is_connected('pressed', combat, 'SelectSkill'):
-			newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
+		if !newbutton.is_connected('pressed', self, 'skill_button_pressed'):
+			newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 			newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
 
 
-func RebuildReserve(forced = false):
-	if !combat.allowaction and !forced: return
-	$SkillPanel/Escape.visible = true
+#func RebuildReserve(forced = false):
+#	if !combat.allowaction and !forced: return
+#	$SkillPanel/Escape.visible = true
 #	for ch in state.characters:
 #		var hero = state.heroes[ch]
 #		if !hero.unlocked: continue
@@ -339,7 +345,7 @@ func build_selected_skill(skill): #not skill_id
 	active_panel.visible = true
 	active_panel2.visible = true
 	active_panel2.get_node("TextureRect").texture = skill.icon
-	active_panel2.get_node("Label").text = tr("SKILL" + skill.name.to_upper())
+	active_panel2.get_node("Label").text = tr(skill.name)
 
 	defaultskill_container.get_node("attack").pressed = skill.code == "attack"
 	$SkillPanel/CategoriesContainer/ItemsButton.pressed = item_container.visible

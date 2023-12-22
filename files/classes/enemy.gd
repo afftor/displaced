@@ -58,16 +58,13 @@ func createfromtemplate(enemy_id, lvl):
 	hpmax = 0 #template.basehp #or not
 	hp_growth = template.basehp
 	self.hp = get_stat('hpmax')
+	is_boss = (template.has('is_boss') and template.is_boss)
 #	manamax = template.basemana
 #	self.mana = manamax
 	skills = template.skills.duplicate()
 	id = 'h'+str(state.heroidcounter)
 	state.heroidcounter += 1
 	state.heroes[id] = self
-	for i in variables.resistlist:
-		resists[i] = 0
-		if template.resists.has(i):
-			resists[i] = template.resists[i]
 	for i in ['damage','name','hitrate','evasion','icon','combaticon', 'loottable', 'xpreward', 'bodyhitsound', 'weaponsound', 'flavor', 'base_dmg_type', 'base_dmg_range']:
 		#self[i] = template[i]
 		if template.has(i): set(i, template[i])
@@ -86,9 +83,9 @@ func createfromtemplate(enemy_id, lvl):
 		for t in template.traits:
 			add_trait(t);
 	if template.has('ai'):
-		ai = template.ai
+		ai = template.ai.new()
 	else:
 		ai = ai_base.new()
-	ai.app_obj = self
+	ai.bind(self)
 	animations = template.animations.duplicate()
 

@@ -23,7 +23,8 @@ signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
 signal EventOnScreen
-signal EventFinished
+signal EventFinished#scene_node finished event
+signal AllEventsFinished#state singelton see no consequent events
 signal QuestStarted
 signal QuestCompleted
 signal Midday
@@ -32,6 +33,7 @@ signal PositionChanged
 
 signal RMB_pressed
 signal RMB_released
+
 
 var map_node
 var village_node
@@ -43,6 +45,14 @@ var menu_node
 var curtains
 
 var rmb_state = false
+
+var musicfading = false
+var musicraising = false
+const musicfade_speed_default = 50
+var musicfade_speed = musicfade_speed_default
+const musicraise_speed_default = 100
+var musicraise_speed = musicraise_speed_default
+var setting_music
 
 func _input(event):
 	if event.is_action_pressed("RMB") and !rmb_state:
@@ -72,10 +82,6 @@ func _input(event):
 #		if str(int(event.as_text())) in str(range(1,4)):
 #			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 
-var musicfading = false
-var musicraising = false
-var musicvalue
-
 func _process(delta):
 	for i in CloseableWindowsArray:
 		if typeof(i) == TYPE_STRING: continue
@@ -90,15 +96,7 @@ func _process(delta):
 			ShakingNodes.erase(i)
 	soundcooldown -= delta
 
-	if musicfading:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
-		if AudioServer.get_bus_volume_db(1) <= -80:
-			musicfading = false
-	if musicraising:
-		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*100)
-		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
-			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
-			musicraising = false
+	ProcessMusic(delta)
 
 
 
@@ -395,40 +393,76 @@ func StopTweenRepeat(node):
 	tween.remove_all()
 
 #Music
-var prevtheme = ""
-func SetMusic(res, delay = 0):
+#var prevtheme = ""
+func SetMusic(res, raise_speed = musicraise_speed_default, fade_speed = musicfade_speed_default):
 	if typeof(res) == TYPE_STRING:
-		prevtheme = res
 		res = resources.get_res("music/%s" % res)
-	yield(get_tree().create_timer(delay), 'timeout')
-	musicraising = true
-	musicfading = false
-	var musicnode = get_spec_node(NODE_MUSIC)#GetMusicNode()
-	if musicnode.stream == res:
+	var musicnode = get_spec_node(NODE_MUSIC)
+	if res == null:
+		if musicnode.is_playing():
+			MusicFade(fade_speed)
 		return
-	musicnode.stream = res
+	elif musicnode.stream == res and musicnode.is_playing() :
+		return
+	setting_music = res
+	musicraise_speed = raise_speed
+	MusicFade(fade_speed)
+
+func on_music_fade():
+	if setting_music == null:
+		return
+	var musicnode = get_spec_node(NODE_MUSIC)
+#	prevtheme = musicnode.stream
+	musicnode.stream = setting_music
 	musicnode.play(0)
+	MusicRaise(musicraise_speed)
+	setting_music = null
 
+func StopMusic(fade_speed = musicfade_speed_default):
+	setting_music = null
+	MusicFade(fade_speed)
 
-func StopMusic(instant = false):
-	musicfading = true
+#not used for now. Delete with time
+#func RevertMusic():
+#	if prevtheme != null:
+#		SetMusic(prevtheme)
+
+func MusicFade(speed = musicfade_speed_default):
 	musicraising = false
+	musicfading = true
+	musicfade_speed = speed
 
+func MusicRaise(speed = musicraise_speed_default):
+	musicfading = false
+	musicraising = true
+	musicraise_speed = speed
 
-func RevertMusic():
-	if prevtheme != null and prevtheme.length() > 0:
-		SetMusic(prevtheme)
+func ProcessMusic(delta):
+	if musicfading:
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*musicfade_speed)
+		if AudioServer.get_bus_volume_db(1) <= -80:
+			musicfading = false
+			get_spec_node(NODE_MUSIC).stop()
+			on_music_fade()
+	elif musicraising:
+		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) + delta*musicraise_speed)
+		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
+			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
+			musicraising = false
+
 #Sounds
 
 func PlaySound(res, delay = 0):
-	if res == null:
-		return #STAB to fix some skills cause crashing
+	var true_res
+	if res is String:
+		true_res = resources.get_res(res)
+	else:
+		true_res = res
+	if true_res == null:
+		return
 	yield(get_tree().create_timer(delay), 'timeout')
 	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
-	if res is String:
-		soundnode.stream = resources.get_res(res)
-	else:
-		soundnode.stream = res
+	soundnode.stream = true_res
 	soundnode.seek(0)
 	soundnode.play(0)
 	yield(soundnode, 'finished')
@@ -462,17 +496,17 @@ func GetEventNode():
 		get_tree().get_root().add_child(node)
 	return node
 
-func ShowConfirmPanel(TargetNode, TargetFunction, Text):
-	var node
-	if get_tree().get_root().has_node('ConfirmPanel') == false:
-		node = load("res://files/scenes/ConfirmPanel.tscn").instance()
-		get_tree().get_root().add_child(node)
-		node.name = 'ConfirmPanel'
-	else:
-		node = get_tree().get_root().get_node("ConfirmPanel")
-		get_tree().get_root().remove_child(node)
-		get_tree().get_root().add_child(node)
-	node.Show(TargetNode, TargetFunction, Text)
+#func ShowConfirmPanel(TargetNode, TargetFunction, Text):
+#	var node
+#	if get_tree().get_root().has_node('ConfirmPanel') == false:
+#		node = load("res://files/scenes/ConfirmPanel.tscn").instance()
+#		get_tree().get_root().add_child(node)
+#		node.name = 'ConfirmPanel'
+#	else:
+#		node = get_tree().get_root().get_node("ConfirmPanel")
+#		get_tree().get_root().remove_child(node)
+#		get_tree().get_root().add_child(node)
+#	node.Show(TargetNode, TargetFunction, Text)
 
 
 #Item shading function
@@ -794,7 +828,7 @@ func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])
 
 #variative get node method stuff
-enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_GAMETIP : {name = 'GameTips', mode = 'scene', scene = preload("res://files/scenes/GameplayTips.tscn")},
@@ -805,6 +839,7 @@ var node_data = {
 #	NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://files/Inventory.tscn"), calls = 'open'},
 #	NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},
 	NODE_CONFIRMPANEL : {name = 'ConfirmPanel', mode = 'scene', scene = preload("res://files/scenes/ConfirmPanel.tscn"), calls = 'Show'},
+	NODE_CONFIRMPANELBIG : {name = 'ConfirmPanelBig', mode = 'scene_on_demand', scene_path = 'res://files/scenes/ConfirmPanelBig.tscn', calls = 'Show'},
 #	NODE_SLAVESELECT : {name = 'SlaveSelectMenu', mode = 'scene', scene = preload("res://src/SlaveSelectMenu.tscn")},
 #	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
 	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextSceneNew/TextSystem.tscn")},
@@ -821,6 +856,7 @@ var node_data = {
 #	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
 	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://files/scenes/CharPanel/CharacterPanel.tscn")},
 #	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
+	NODE_CREDITS : {name = 'credits', mode = 'scene_on_demand', scene_path = "res://files/scenes/Credits.tscn"},
 }
 
 func get_spec_node(type, args = null, raise = true):
@@ -833,6 +869,8 @@ func get_spec_node(type, args = null, raise = true):
 		match node_data[type].mode:
 			'scene':
 				window = node_data[type].scene.instance()
+			'scene_on_demand':
+				window = load(node_data[type].scene_path).instance()
 			'node':
 				window = node_data[type].node.new()
 		window.name = node_data[type].name

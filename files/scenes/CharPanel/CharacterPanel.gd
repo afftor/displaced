@@ -39,6 +39,20 @@ func _ready():
 		testmode()
 		if resources.is_busy(): yield(resources, "done_work")
 		open(state.heroes['arron'])
+	
+	for slot in ['weapon1', 'weapon2', 'armor']:
+		var panel = $Panel.get_node(slot)
+		var tooltip_pos
+		if slot != 'armor':
+			panel.connect('pressed', self, 'select_slot', [slot])
+			var pos = panel.get_global_rect()
+			tooltip_pos = Vector2(pos.end.x + 5, pos.position.y)
+		else:
+			var pos = panel.get_global_position()
+			tooltip_pos = Vector2(pos.x - 405, pos.y)
+		panel.connect("mouse_entered", self , 'show_slot_tooltip', [slot, tooltip_pos])
+		panel.connect("mouse_exited", globals , 'hideslottooltip')
+	connect("hide", globals , 'hideslottooltip')
 
 
 func testmode():
@@ -46,6 +60,10 @@ func testmode():
 		state.unlock_char(cid)
 		state.heroes[cid].upgrade_gear('weapon2')
 		state.heroes[cid].upgrade_gear('weapon2')
+
+
+func show_slot_tooltip(slot, pos):
+	globals.showslottooltip(character.id, slot, pos)
 
 
 func RepositionCloseButton():
@@ -98,16 +116,6 @@ func build_slot(slot):
 	panel.get_node("Icon").texture = data.icon
 	if slot != 'armor':
 		panel.pressed = (character.curweapon == slot)
-		if panel.is_connected("pressed", self, 'select_slot'):
-			panel.disconnect("pressed", self, 'select_slot')
-		panel.connect('pressed', self, 'select_slot', [slot])
-		var pos = panel.get_global_rect()
-		pos = Vector2(pos.end.x, pos.position.y - 150)
-		globals.connectslottooltip(panel, character.id, slot, pos)
-	else:
-		var pos = panel.get_global_position()
-		pos = Vector2(pos.x - 450, pos.y - 150)
-		globals.connectslottooltip(panel, character.id, slot, pos)
 
 
 func select_slot(sel):
@@ -199,7 +207,7 @@ func build_skills():
 		var skilldata = Skillsdata.patch_skill(skill_id, character)
 		var panel = input_handler.DuplicateContainerTemplate(skill_list)
 #		panel.get_node("Label").text = skilldata.name
-		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
+#		panel.get_node('icon').material = panel.get_node('icon').material.duplicate()
 		panel.get_node('icon').texture = skilldata.icon
 		globals.connectskilltooltip(panel, character.id, skill_id)
 		panel.visible = character.skills.has(skill_id)
