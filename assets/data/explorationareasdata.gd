@@ -324,13 +324,13 @@ var scene_sequences = {
 		{type = 'scene', value = 'aeros_2'},
 #		{type = 'system', value = 'unlock_area', arg = 'faery_forest'}, 
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_1'},
-		{type = 'scene', value = 'aeros_3'},
+#		{type = 'scene', value = 'aeros_3'},
 		]
 	},
 	
 	flak_task_return = {
 #		initiate_signal = 'village_townhall_fask', 
-		initiate_reqs = [{type = 'seq_seen', value = 'aeros_2'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'}],
 		actions = [
 		{type = 'scene', value = 'flak_2'}, #not currently existing,
 		]
@@ -338,7 +338,7 @@ var scene_sequences = {
 	
 	viktor_introduction = {
 #		initiate_signal = 'town', 
-		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'aeros_3'}],
 		actions = [
 		{type = 'scene', value = 'victor_1'},
 		]
@@ -579,7 +579,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 #		preview = '',#find it!!!
-		initiate_reqs = [{type = 'seq_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
 		unlock_price = {rose = 500},
 		actions = [
 		{type = 'scene', value = 'rose_3'},
