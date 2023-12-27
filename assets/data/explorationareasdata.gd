@@ -578,7 +578,7 @@ var scene_sequences = {
 		name = "Rose in public",
 		descript = "",
 		gallery = true,
-#		preview = '',#find it!!!
+		preview = 'rose_public',
 		initiate_reqs = [{type = 'scene_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
 		unlock_price = {rose = 500},
 		actions = [
@@ -689,10 +689,22 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'iola_blowjob',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_recruited' }],
-		unlock_price = {iola = 200},
+		unlock_price = {iola = 100},
 		actions = [
 		{type = 'scene', value = 'iola_2_6'},
 		{type = 'unlock_scene', value = 'iola_blowjob'},
+		]
+	},
+	iola_cunnilingus = {
+		name = "Iola's first cunnilingus",
+		descript = "",
+		gallery = true,
+		preview = 'iola_cunnilingus',
+		initiate_reqs = [{type = 'seq_seen', value = 'iola_blowjob' }],
+		unlock_price = {iola = 200},
+		actions = [
+		{type = 'scene', value = 'iola_1_5'},
+		{type = 'unlock_scene', value = 'iola_cunnilingus'},
 		]
 	},
 	iola_riding = {
@@ -700,10 +712,10 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'iola_riding',
-		initiate_reqs = [{type = 'seq_seen', value = 'iola_blowjob' }],
+		initiate_reqs = [{type = 'seq_seen', value = 'iola_cunnilingus' }],
 		unlock_price = {iola = 500},
 		actions = [
-		{type = 'scene', value = 'iola_2_7'},
+		{type = 'scene', value = 'iola_1_6'},
 		{type = 'unlock_scene', value = 'iola_riding'},
 		]
 	},
@@ -711,11 +723,11 @@ var scene_sequences = {
 		name = "Iola's foursome",
 		descript = "",
 		gallery = true,
-#		preview = '',#what is it?!
-		initiate_reqs = [{type = 'seq_seen', value = 'iola_missionary' }],
+		preview = 'iola_foursome',
+		initiate_reqs = [{type = 'seq_seen', value = 'iola_riding' }],
 		unlock_price = {iola = 500, erika = 500, rose = 500},
 		actions = [
-		{type = 'scene', value = 'iola_2_8'},
+		{type = 'scene', value = 'iola_2_7'},
 		{type = 'unlock_scene', value = 'iola_foursome'},
 		]
 	},
