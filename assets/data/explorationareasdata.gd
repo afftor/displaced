@@ -37,7 +37,10 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'show_screen', value = 'map'},
 	],
 	aeros_2 = [
-		{type = 'scene', value = 'aeros_3'},
+		{type = 'scene', value = 'flak_2'},
+	],
+	aeros_3 = [
+		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_1'},
 	],
 	erika_annet_2_1 = [
 		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
@@ -185,7 +188,7 @@ var locations = { #added seqs bindings and other fields
 #		missions = ['town_viktor_fight','town_siege'],
 		missions = ['road_to_town', 'town_siege'],
 		function = '',
-		events = ['town_gates', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', 'city_raid']
+		events = ['town_gates', 'search_clues', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', 'city_raid']
 	},
 	castle =  {
 		code = 'castle',
@@ -230,7 +233,7 @@ var characters = { #for binding village characters events
 	I = ['iola_arrival', 'iola_second_visit', 'iola_recruited', 'iola_wanderer'],
 	D = ['dimitrius_arrival'], #there is a problem in this - it appears directly after closing ember arrival scene, that is not good
 	F = ['flak_task', 'flak_task_return', 'flak_town_raid', 'flak_modern_city'],
-	Ri = ['rilu_reports_iola', 'rilu_disappear'],
+	Ri = ['rilu_accepted', 'rilu_reports_iola', 'rilu_disappear'],
 	Ro = ['rose_kidnap'],
 	Er = ['erika_rose_init'],
 }
@@ -311,7 +314,7 @@ var scene_sequences = {
 #		initiate_signal = 'village_townhall_fask', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_iola'}],
 		actions = [
-		{type = 'scene', value = 'flak_1'}, #not currently existing,
+		{type = 'scene', value = 'flak_1'},
 		{type = 'system', value = 'unlock_area', arg = 'town'},
 		{type = 'system', value = 'unlock_mission', arg = 'road_to_town'}
 		]
@@ -320,25 +323,32 @@ var scene_sequences = {
 	town_gates = {
 #		initiate_signal = 'town', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_dwarf'}],
-		actions = [
-		{type = 'scene', value = 'aeros_2'},
-#		{type = 'system', value = 'unlock_area', arg = 'faery_forest'}, 
-		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_1'},
-#		{type = 'scene', value = 'aeros_3'},
-		]
+		actions = [{type = 'scene', value = 'aeros_2'}]
 	},
 	
 	flak_task_return = {
 #		initiate_signal = 'village_townhall_fask', 
-		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'flak_2'}],
 		actions = [
-		{type = 'scene', value = 'flak_2'}, #not currently existing,
+		{type = 'scene', value = 'flak_3'},
+		]
+	},
+	
+	rilu_accepted = {
+		initiate_reqs = [{type = 'mission_complete', value = 'caves_dwarf'}],
+		actions = [{type = 'scene', value = 'rilu_1_5'}]
+	},
+	
+	search_clues = {
+		initiate_reqs = [{type = 'scene_seen', value = 'rilu_1_5'}],
+		actions = [
+		{type = 'scene', value = 'aeros_3'},
 		]
 	},
 	
 	viktor_introduction = {
 #		initiate_signal = 'town', 
-		initiate_reqs = [{type = 'scene_seen', value = 'aeros_3'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'}],
 		actions = [
 		{type = 'scene', value = 'victor_1'},
 		]
@@ -356,7 +366,7 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_1'}, 
 		{type = 'system', value = 'enable_character', arg = ['erika',false] },
-		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
+#		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
 		
 		]
 	},
@@ -579,7 +589,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'rose_public',
-		initiate_reqs = [{type = 'scene_seen', value = 'aeros_3'},{type = 'seq_seen', value = 'rose_night'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'},{type = 'seq_seen', value = 'rose_night'}],
 		unlock_price = {rose = 500},
 		actions = [
 		{type = 'scene', value = 'rose_3'},
