@@ -53,7 +53,7 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{type = 'system', value = 'heal_team'},
 #	],
 	rilu_1_3 = [
-		{type = 'system', value = 'unlock_character', arg = 'rilu'},
+		{type = 'system', value = 'enable_character', arg = ['rilu', true]},
 		{type = 'system', value = 'add_to_party', arg = ['rilu', 3]},
 #		{type = 'system', value = 'heal_team'},
 	],

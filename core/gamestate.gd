@@ -537,7 +537,7 @@ func add_char_to_party(id, pos):
 		return
 	for i in heroes:
 		if heroes[i].position == pos:
-			heroes[i].position == null
+			heroes[i].position = null
 	heroes[id].position = pos
 
 
