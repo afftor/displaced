@@ -946,10 +946,10 @@ var areas = { #missions in new terminology
 			],
 			7 : [
 				{1 : ['angrydwarf'], 2: ['angrydwarf'], 3: ['angrydwarf'], 4: ['dwarfwarrior'], 6: ['dwarfwarrior']},
-				{1 : ['dwarfwarrior'], 2: ['dwarfwarrior'], 3: ['dwarfwarrior']},
+				{1 : ['dwarfwarrior'], 2: ['dwarvenking'], 3: ['dwarfwarrior']},
 				],
 			8 : [
-				{1 : ['dwarfwarrior'], 5: ['dwarvenking'], 3: ['dwarfwarrior']},
+				{1 : ['dwarfwarrior'], 5: ['dwarvenking_2'], 3: ['dwarfwarrior']},
 				],
 			},
 		},
