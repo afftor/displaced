@@ -358,13 +358,19 @@ var char_map = {
 #		animated = false,
 		color = Color('ffffff'),
 	},
-	DrJr = {
-		source = 'Dragon Whelp',
-		portrait = 'DragonJr',
-		base_variants = [], #for normal filenamaes with suffixes
-#		custom_variants = [], #for specific ones
-#		sprite = null,
-#		animated = false,
+#	DrJr = {
+#		source = 'Dragon Whelp',
+#		portrait = 'DragonJr',
+#		base_variants = [], #for normal filenamaes with suffixes
+##		custom_variants = [], #for specific ones
+##		sprite = null,
+##		animated = false,
+#		color = Color('ffffff'),
+#	},
+	Ezet = {
+		source = 'Ezet',
+		portrait = 'Ezet',
+		base_variants = [],
 		color = Color('ffffff'),
 	},
 	Dr = {

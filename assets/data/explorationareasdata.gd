@@ -458,7 +458,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'seq_seen', value = 'viktor_sends_threat'}],
 		actions = [
 		{type = 'scene', value = 'victor_2_3'}, 
-		{type = 'mission', value = 'town_viktor_fight'},
+#		{type = 'mission', value = 'town_viktor_fight'},
 #		{type = 'scene', value = 'victor_2_4'}
 		]
 	},

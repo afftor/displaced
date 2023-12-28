@@ -8,8 +8,11 @@ Late at the evening Rilu was going to Arron's office.
 Ri - *Sigh*
 Ri - *To think I'd be doing this...*
 Ri - *Alright, Arron should be alone today.*
-=BLACKTRANS 0.5=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=SPRITE_HIDE=
 =BG hall=
+=BLACKFADE 0.5=
 Arron sat at the table with a huge stack of paper he was going through.
 Ar(neutral) - Complaint, complaint, complaint, credit application, complaint, credit...
 Ar(neutral) - A request to invade a neighbor village...
@@ -74,9 +77,12 @@ Ri - He-he, you came a lot.
 Ar - That was mind blowing.
 Ri - Thanks.
 Ri - But I can't wait any longer.
-=BLACKTRANS 0.5=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =ABG rilu_doggy_1=
 Rilu crawled on the floor before Arron, presenting her naked rear.
+=DELAY 1=
+=BLACKFADE 0.5=
 Ri - Please...
 Ar - You don't have to ask me twice.
 =ABG rilu_doggy_2 rilu_doggy_3=
@@ -118,7 +124,7 @@ Ri - Your hot seed.
 Ar - Did it help?
 Ri - Absolutely.
 Ri - Feels amazing to be alive.
-=BLACKFADE 1.5=
+=BLACKUNFADE 1.5=
 Arron allowed Rilu to stay at his room for this night.
 Ri - *I hope he didn't suspect anything?*
 Ri - ....
