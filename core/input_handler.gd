@@ -546,6 +546,8 @@ func CloseAnimation(node):
 	node.visible = false
 	BeingAnimated.erase(node)
 	globals.hidetooltip()
+	if node.has_method('on_close_finished'):
+		node.on_close_finished()
 	#globals.call_deferred('EventCheck');
 
 func OpenAnimation(node):
@@ -559,6 +561,8 @@ func OpenAnimation(node):
 	tweennode.start()
 	yield(get_tree().create_timer(0.3), 'timeout')
 	BeingAnimated.erase(node)
+	if node.has_method('on_open_finished'):
+		node.on_open_finished()
 	#globals.call_deferred('EventCheck');
 
 
