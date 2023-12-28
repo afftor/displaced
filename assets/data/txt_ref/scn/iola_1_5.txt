@@ -1,92 +1,137 @@
-** iola_1_6 **
+** iola_1_5 **
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-=BG town_in=
+=BG villageday=
 =MUSIC eventlight=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
+=SPRITE goblin=
+G - Bet I can throw this rock further than you.
+Ar - Like hell you can.
+*swoosh*
+Ar - Hmph, try to beat this.
+G - Hah. 
+*swoosh*
+Ar(shock) - What the heck?! You’re cheating!
+Ar(neutral) - No way you can throw it that far with your height. 
+G - Gold please.
+Ar(neutral) - Hmph.
+I - Sir Arron?
+Ar - Aye.
+Ar - *whisper* Hey you, get lost.
+G - Sure, loser.
 =SPRITE iola=
-Iola has gone on missionary work, with Arron escorting her to the nearby human village.
-Io - ...And this is why you must brush your teeth two times a day and take a bath once a month.
-The crowd observed Iola with caution and reverence.
-Io - Thank you all for your attention, Ancestors be with you.
-*black screen transition*
-Io - Thank you for watching after me, Sir Arron. 
-Io - I'm glad this trip went with no issues despite my status.
-Ar(neutral) - I'm more surprised your father isn't after us.
-I(sad) - Maybe he will calm down once I finish my training.
+I - What are you doing here?
+Ar - Nothing much, Rose and Ember are away until tomorrow to gather some ingredients.
+I(sad) - So that's why you are here all alone.
+Ar(neutral) - Hey, don't make it sound like I'm some creep.
+I - Oh, that wasn't what I meant.
+Ar - You look worried, did something happen?
+I(sad) - N-no, nothing like that, it's just...
+I - I haven’t trained anymore - since the last time.
+Ar - ...
+Ar(shock) - Why didn't you say so sooner?!
+I - I was a bit embarrassed I guess.
+Ar - Say no more, let's go!
+I - No, wait, I have to prepare myself first.
+I - I'll be waiting in your room this evening.
+Ar - Sheesh, fine. 
+=SPRITE_FADE 0.5=
+Ar(neutral) - Huh... What do I do now?
+Ar - Hey, Gobbo, wanna make a new bet?
+=GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG hall=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-I - Thanks again for your company today.
-I - You know, today is the day when I have to finish my initiation.
-I - But since I can't return to the cult, I'll have to ask you for help again, Sir Arron...
-Ar - What a shame. Have no worries, I'm at your service.
-=BLACKUNFADE 0.5=
-=DELAY 0.5=
-=BLACKFADE 0.5=
-=DELAY 0.5=
-Arron and Iola went to her room.
+=GUI_NORMAL=
+Ar - (Hmm, there's light coming from my room, I guess Iola is already there)
+Ar - I'm coming in.
+=SOUND doorlocked=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =MUSIC_STOP=
 =GUI_FULL=
 =MUSIC erotheme=
-=ABG iola_cowgirl_01=
+=ABG iola_cuni_01=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-I - I've been waiting for this a long time, but I'm still feeling a bit nervous.
-Ar - Well, this is your real first time.
-I - I'm not too heavy, am I?
-Ar - Pfft, it's nothing for someone like me.
-I - I see... Are you ready to start then?
-Ar - Yes.
-=ABG iola_cowgirl_02 iola_cowgirl_03=
-I - Aaah... It went in.
-Ar - It's not painful?
-I - It's bearable. 
-Ar - You are being rather casual about it.
-I - Since I'm a vestal, I must be ready for something small like this.
-Ar - Right...
-=ABG iola_cowgirl_04 iola_cowgirl_05=
-I - Ah!.. Wait.
-Ar - Hah, still not used to it?
-I - This is... Ah, too unusual.
-Ar - Hmph, you’d better get used to it then, who are you to complain now?
-I - You are... Ah... Correct.
-Ar - And you are quite tight too.
-I - Ahhh... Sorry...
-Ar - That was a compliment, stupid.
-I - Aah....
-I - That was?.. 
-I - Let me...
-Ar - Oooh, moving your hips in response?
-I - This is a part of my duty...
-Ar - What diligence.
-Ar - Ready to go faster?
-=ABG iola_cowgirl_06 iola_cowgirl_06=
-I - Aaaaaah!!...
-I - You are... too fast...
-Ar - Nonsense, it's you being too slow.
-I - Aah... if you keep moving like that..
-I - I will...
-Ar - Your pussy is just too good to stop now.
+Iola kneels on the floor, bending over with one hand between her legs, fingers spreading her smooth pussy-lips apart.
+I - Please enter.
+Ar - Hoh, there’s a sight for sore eyes.
+I - This is... Sort of embarrassing.
+Ar - I'd imagine that is part of the point of this training.
+I - You are right.
+I - Please, teach me what it’s like to have my pussy used.
+Ar - I’ll be glad to.
+I - But don’t take my virginity… Not yet at least...
+Ar - Well, ok, are you ready to begin?
+I - ...Yes, go on please.
+=ABG iola_cuni_02 iola_cuni_03=
+Arron reaches out and runs his finger down Iola’s glistening slit.
+I - Aaah!..
+Ar - Hey, keep your voice down.
+Ar - I've barely even touched you yet.
+I - S-Sorry, it's the first time for me...
+I - I'm not sure how to react.
+Arron keeps stroking Iola’s quivering pussy, gently teasing her clit until it starts to swell
+Ar - You are pretty wet already.
+Ar - Looks like you are properly aroused.
+I - Is it so easy to tell?
+I - It feels really good - what you’re doing.
+=ABG iola_cuni_04 iola_cuni_05=
+I - Aah! 
+I - W-What are you doing?
+Ar - this is what we are here for, isn’t it? 
+Ar - Helping you to feel good and confident.
+I - Mnh... This...
+I - Your tongue...
+I - Ah... I've never felt... like this...
+Ar - You are managing nicely.
+I - You... Ah... think so?
+Ar - Yep, Rose is still very embarrassed by this kind of thing, despite our past.
+I - I... can't blame her...
+=ABG iola_cuni_06 iola_cuni_07=
+Ar - Hehe, looks like you are getting impatient.
+I - Ah... Please...
+I - Don't stop...
+Ar - For your first time getting cunnilingus you got into it pretty quickly.
+I - That must be... because of my mission...
+Ar - What a pious follower you are.
+I - Ah... I can't...
+=ABG iola_cuni_08=
+Ar - Hey, slow down a bit. 
 I - Aaah... 
-I - Don't say... things like that...
-Ar - It feels like you are sucking me in.
-I - No... Noooo...
+I - What... Am I...
+Ar - Wow, you are like an animal in heat.
+I - I... can't stop...
+Ar - Fine, fine, let's finish this.
+I - Aahh... Are you..?
+I - AAAaahhh!!...
+=ABG iola_cuni_09 iola_cuni_11=
 =WHITE=
-=ABG iola_cowgirl_08 iola_cowgirl_09=
-I - AAAAahhhh...
-I - Hah... 
-I - So this is the feeling... 
-I - When you are filled with love...
-Ar - ...Haah.
-Ar - That's one way to put it.
-I - It makes me so unusually happy.
+=DELAY 0.5=
+Ar - Wow, that was a bit messy.
+I - Ah... hah... I'm sorry...
+Ar - It’s fine.
+I - I didn't realize that it would be so much better than doing it by myself.
+Ar - That's only natural.
+I - I see...
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1.5=
 =MUSIC_STOP=
+=MUSIC eventlight=
+=BG hall=
 =BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE iola=
+=GUI_NORMAL=
+I - I want to thank you, Sir Arron.
+Ar - Don't mention  it. 
+I - I hope you'll keep helping me with my training.
+Ar(shock) - You think I'd pass up such an opportunity?
+I - Ha-ha, I guess no.
 =STOP=

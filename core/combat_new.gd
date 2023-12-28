@@ -1037,7 +1037,8 @@ func victory():
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, newbutton.get_node("xpbar").max_value, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
-			subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
+			if leveled_up_chars.empty():#honestly, should refactor that shit, so levelup sound would play once, outside of subtweens
+				subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
 			leveled_up_chars.push_back(i)
 		elif i.level == level && i.baseexp >= i.get_exp_cap() :
 			newbutton.get_node("xpbar").value = 100

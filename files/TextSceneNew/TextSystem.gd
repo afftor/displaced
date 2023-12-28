@@ -114,8 +114,8 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Str2 = {
-		source = 'Survivor 2',
-		portrait = 'Survivor_2', #not exist
+		source = 'Stranger 2',
+		portrait = 'Stranger_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -125,6 +125,15 @@ var char_map = {
 	Str = {
 		source = 'Stranger',
 		portrait = 'Stranger', #not exist
+		base_variants = [], #for normal filenamaes with suffixes
+#		custom_variants = [], #for specific ones
+#		sprite = null,
+#		animated = false,
+		color = Color('ffffff'),
+	},
+	Entr = {
+		source = 'Entertainer',
+		portrait = 'Entertainer', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -349,13 +358,19 @@ var char_map = {
 #		animated = false,
 		color = Color('ffffff'),
 	},
-	DrJr = {
-		source = 'Dragon Whelp',
-		portrait = 'DragonJr',
-		base_variants = [], #for normal filenamaes with suffixes
-#		custom_variants = [], #for specific ones
-#		sprite = null,
-#		animated = false,
+#	DrJr = {
+#		source = 'Dragon Whelp',
+#		portrait = 'DragonJr',
+#		base_variants = [], #for normal filenamaes with suffixes
+##		custom_variants = [], #for specific ones
+##		sprite = null,
+##		animated = false,
+#		color = Color('ffffff'),
+#	},
+	Ezet = {
+		source = 'Ezet',
+		portrait = 'Ezet',
+		base_variants = [],
 		color = Color('ffffff'),
 	},
 	Dr = {
@@ -811,31 +826,33 @@ func tag_blacktrans(secs: String = "0.5") -> void:
 	input_handler.FadeAnimation($BlackScreen, duration)
 
 func tag_bg(res_name: String, secs: String = "") -> void:
-	if is_video_bg:
-		is_video_bg = false
-		if rewind_mode:
-			$Background.modulate.a = 1.0
-			$VideoBunch.modulate.a = 0.0
-		else:
-			$Tween.interpolate_property($Background, "modulate:a",
-				0.0, 1.0, 0.3, Tween.TRANS_LINEAR)
-			$Tween.interpolate_property($VideoBunch, "modulate:a",
-				1.0, 0.0, 0.3, Tween.TRANS_LINEAR)
-			$Tween.start()
-			yield(get_tree().create_timer(0.3), "timeout")
-		for i in $VideoBunch.get_children():
-			i.stop()
-			i.stream = null
 #	if !replay_mode:
 	var res = null
 	if !res_name.empty():
 		state.unlock_path(res_name, false)
 		res = resources.get_res("bg/%s" % res_name)
-	if secs != "" and !rewind_mode:
+	if !secs.empty() and !is_video_bg and !rewind_mode:
 		input_handler.SmoothTextureChange($Background, res, float(secs))
 	else:
 		$Background.texture = res
 	$Background.update()
+	
+	if is_video_bg:
+		is_video_bg = false
+		if rewind_mode or secs.empty():
+			$Background.modulate.a = 1.0
+			$VideoBunch.modulate.a = 0.0
+		else:
+			var time = float(secs)
+			$Tween.interpolate_property($Background, "modulate:a",
+				0.0, 1.0, time, Tween.TRANS_LINEAR)
+			$Tween.interpolate_property($VideoBunch, "modulate:a",
+				1.0, 0.0, time, Tween.TRANS_LINEAR)
+			$Tween.start()
+			yield(get_tree().create_timer(time), "timeout")
+		for i in $VideoBunch.get_children():
+			i.stop()
+			i.stream = null
 
 func tag_bg_empty() -> void:
 	tag_bg('')

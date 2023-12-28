@@ -1,9 +1,9 @@
 ** iola_2_7 **
+=BG hall=
+=SPRITE rose=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-=BG hall=
-=SPRITE rose=
 Ro - So, to sum it up, you are wasting too much money on fancy food.
 Ar(neutral) - Rose, have you seen where we live at?
 Ar - I'm not a peasant, I need fresh food. 
@@ -21,7 +21,12 @@ I - You see, we are gonna need at least four people...
 Ro - Eh...?
 Ar - Oh, I haven't told you about her practices, right.
 Ar - You see...
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 Er - Sounds fun. 
 I - Right? What about you, Rose?
 Ro(sarcastic) - No way. I absolutely refuse.
@@ -51,12 +56,15 @@ I - That's nice, I'll make sure everyone is comfortable and happy.
 I - Give me half an hour or so.
 I - Arron, get out. 
 Ar - Gotcha.
-=BLACKFADE 0.5=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 Arron was waiting outside of the bedroom until he heard an invitation.
 I - Okay, we are ready, you can come in!
 =MUSIC erotheme=
 =ABG rose_erika_iola_1=
-=BLACKUNFADE 0.5=
+=GUI_FULL=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 A three girls laid naked before Arron spreading their legs in lewd poses.
 Ar - Wow, now I know what I want for my birthdays.
 I - Remember, this is an important ritual.
@@ -183,5 +191,6 @@ I - That's true. We can continue for at least until evening.
 Er - He-he, let me get on top of Rose this time.
 I - Ooh, I didn't think of that!
 Ro - (Uh oh...)
-=BLACKFADE 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
 =STOP=
