@@ -2404,7 +2404,7 @@ var skilllist = {
 #			{code = 'sfx_explosion', target = 'target_group', period = 'predamage'}
 		],
 		patches = [],
-		sounddata = {initiate = null, strike = 'explosion', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'explosion', strike = null, hit = null, hittype = 'absolute'},
 		not_final = true
 	},
 	bomb_cond2 = {
@@ -2431,7 +2431,7 @@ var skilllist = {
 #			{code = 'sfx_explosion', target = 'target_group', period = 'predamage'}
 			],
 		patches = [],
-		sounddata = {initiate = null, strike = 'explosion', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'explosion', strike = null, hit = null, hittype = 'absolute'},
 		not_final = true
 	},
 	f_heal = {

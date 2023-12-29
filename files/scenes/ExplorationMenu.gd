@@ -106,26 +106,26 @@ func open_explore():
 	else: #general case
 		locname.text = tr(Explorationdata.locations[location].name)
 		locdesc.bbcode_text = tr(Explorationdata.locations[location].descript)
+		var completed_missions = []
+		var incompleted_missions = []
 		for a in Explorationdata.locations[location].missions:
 			if !state.areaprogress[a].unlocked: continue
-			if state.areaprogress[a].completed: continue
+			if state.areaprogress[a].completed:
+				completed_missions.append(a)
+			else:
+				incompleted_missions.append(a)
+		for a in incompleted_missions + completed_missions:
 			var areadata = Explorationdata.areas[a]
 			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
 			panel.text = tr(areadata.name)
 			panel.set_meta('area', a)
 			panel.connect('pressed', self, 'select_area', [a])
-			panel.get_node('Completed').visible = false
+			panel.get_node('Completed').visible = state.areaprogress[a].completed
 			num_missions += 1
-		for a in Explorationdata.locations[location].missions:
-			if !state.areaprogress[a].unlocked: continue
-			if !state.areaprogress[a].completed: continue
-			var areadata = Explorationdata.areas[a]
-			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
-			panel.text = tr(areadata.name)
-			panel.set_meta('area', a)
-			panel.connect('pressed', self, 'select_area', [a])
-			panel.get_node('Completed').visible = true
-			num_missions += 1
+			if area:
+				panel.pressed = (area == a)
+			if state.activearea:
+				panel.disabled = (state.activearea != a)
 	#this hide() seems to break down opening of missionless locs. If it has any other use, return this code
 #	if num_missions == 0:
 #		hide()
@@ -202,9 +202,6 @@ func on_start_press():
 func start_area():
 	input_handler.PlaySound(sounds["start"])
 	state.start_area(area, scalecheck.checked)
-	for node in arealist.get_children():
-		if !node.visible: continue
-		node.disabled = (area != node.get_meta('area'))
 	open_mission()
 
 

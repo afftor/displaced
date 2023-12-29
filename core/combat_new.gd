@@ -1647,11 +1647,18 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 		'full':
 			return $battlefield
 
+func sound_from_fighter(sound :String, fighter):
+	if !sound.begins_with('sound/'):
+		sound = 'sound/' + sound
+	if fighter and fighter.displaynode:
+		fighter.displaynode.process_sound(sound)
+	else:
+		input_handler.PlaySound(sound)
+
 #those vars seemed to be in use only for "enable_followup" effect in trigger-type effects,
 #wich for this moment used only once, and the case is seems to be outdated and doesn't work anymore for other reasons
 #var follow_up_skill = null
 #var follow_up_flag = false
-
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
@@ -1722,7 +1729,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	#========windup animation and initiate sound
 	#for sure at windup there should not be real_target-related animations
 	if skill.has('sounddata') and skill.sounddata.initiate != null:
-		caster.displaynode.process_sound(skill.sounddata.initiate)
+		sound_from_fighter(skill.sounddata.initiate, caster)
 	for i in animationdict.windup:
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 		sfxtarget.process_sfx_dict(i)
@@ -1761,9 +1768,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			#======predamage animation and strike sound
 			if skill.has('sounddata') and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
-					caster.displaynode.process_sound(get_weapon_sound(caster))
+					sound_from_fighter(get_weapon_sound(caster), caster)
 				else:
-					caster.displaynode.process_sound(skill.sounddata.strike)
+					sound_from_fighter(skill.sounddata.strike, caster)
 			for j in animationdict.predamage:
 #				if j.has('once') and j.once and n > 1: continue
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
@@ -1804,11 +1811,11 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#=========postdamage animation and hit sound
 				if skill.has('sounddata') and skill.sounddata.hit != null:
 					if skill.sounddata.hittype == 'absolute':
-						s_skill2.target.displaynode.process_sound(skill.sounddata.hit)
+						sound_from_fighter(skill.sounddata.hit, s_skill2.target)
 					elif skill.sounddata.hittype == 'bodyhitsound':
-						s_skill2.target.displaynode.process_sound(s_skill2.target.bodyhitsound)
+						sound_from_fighter(s_skill2.target.bodyhitsound, s_skill2.target)
 					elif skill.sounddata.hittype == 'bodyarmor':
-						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
+						sound_from_fighter(calculate_hit_sound(skill, caster, s_skill2.target), s_skill2.target)
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
