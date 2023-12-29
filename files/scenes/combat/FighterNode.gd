@@ -293,8 +293,6 @@ func process_sfx_dict(dict):
 
 
 func process_sound(sound):
-	if !sound.begins_with('sound/'):
-		sound = 'sound/' + sound
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
 	animation_node.add_new_data(data)
 

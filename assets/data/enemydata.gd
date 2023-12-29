@@ -703,6 +703,7 @@ var enemylist = {
 #		bodyimage = null,
 		aiposition = 'melee',
 		loottable = '',
+		weaponsound = 'zombie at',
 		animations = {
 			idle = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0002_Zombie_boom_idle",
 			hit = "Fight/Bosses/Zombie/Fight_spritesFHD_0001s_0001_Zombie_boom_hit",
