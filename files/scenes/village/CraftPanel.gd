@@ -1,4 +1,11 @@
-extends "res://files/Close Panel Button/ClosingPanel.gd"
+#extends "res://files/Close Panel Button/ClosingPanel.gd"
+#func RepositionCloseButton():
+#	var rect = $Panel.get_global_rect()
+#	var pos = Vector2(rect.end.x + 6 - closebutton.rect_size.x - closebuttonoffset[0], rect.position.y + closebuttonoffset[1])
+#	closebutton.set_global_position(pos)
+#it is not ClosingPanel for now, while it's part of Blacksmith.tscn installation
+extends Control
+
 
 onready var charlist = $Panel/ScrollContainer/HBoxContainer
 onready var slot_panels = {
@@ -16,7 +23,7 @@ var selected_slot = null
 export var test_mode = false
 
 func _ready():
-	visible = false
+#	visible = false
 	if resources.is_busy(): 
 		yield(resources, "done_work")
 	input_handler.ClearContainer(charlist, ['panel'])
@@ -42,12 +49,6 @@ func testmode():
 	for cid in state.characters:
 		state.unlock_char(cid)
 #	state.unlock_char('rose', false)
-
-
-func RepositionCloseButton():
-	var rect = $Panel.get_global_rect()
-	var pos = Vector2(rect.end.x + 6 - closebutton.rect_size.x - closebuttonoffset[0], rect.position.y + closebuttonoffset[1])
-	closebutton.set_global_position(pos)
 
 
 func open():
@@ -146,13 +147,15 @@ func slot_select(slot = selected_slot):
 	else:
 		selected_slot = slot
 		rebuild_tooltip()
-		if selected_slot == 'armor':
-			tooltip.rect_position.x = (
-				slot_panels['armor'].get_global_rect().end.x + 5)
-		else:
-			tooltip.rect_position.x = (
-				slot_panels['weapon1'].rect_global_position.x -
-				tooltip.rect_size.x - 5)
+		tooltip.rect_global_position.x = (
+			slot_panels[selected_slot].get_global_rect().end.x + 5)
+#		if selected_slot == 'armor':
+#			tooltip.rect_position.x = (
+#				slot_panels['armor'].get_global_rect().end.x + 5)
+#		else:
+#			tooltip.rect_position.x = (
+#				slot_panels['weapon1'].rect_global_position.x -
+#				tooltip.rect_size.x - 5)
 		tooltip.show()
 	highlight_slot()
 
