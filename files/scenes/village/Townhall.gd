@@ -125,6 +125,7 @@ func update_upgrade():
 		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + tr(upgrade.levels[next_level].bonusdescript)
 		if upgrade.levels[next_level].has("unlockable_by_script"):
 			canpurchase = false
+		$UpgradeDescript/goldicon.visible = true
 	
 		for i in upgrade.levels[next_level].cost:
 			if i != 'gold':
@@ -149,11 +150,11 @@ func update_upgrade():
 					canpurchase = false
 	else:
 		canpurchase = false
+		$UpgradeDescript/goldicon.visible = false
 
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
 	$UpgradeDescript/UnlockButton.visible = canpurchase
 	$UpgradeDescript/goldicon/Label.text = String(state.money)
-	$UpgradeDescript/goldicon.visible = canpurchase
 
 
 func findupgradelevel(upgrade):
