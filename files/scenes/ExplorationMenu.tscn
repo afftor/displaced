@@ -48,9 +48,6 @@ margin_top = 51.327
 margin_right = 948.201
 margin_bottom = 1031.33
 texture = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="head" type="Label" parent="ExplorationSelect"]
 margin_left = 316.0
@@ -791,12 +788,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AdvConfirm" type="Control" parent="."]
+[node name="AdvConfirm(del)" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="panel" type="TextureRect" parent="AdvConfirm"]
+[node name="panel" type="TextureRect" parent="AdvConfirm(del)"]
 show_behind_parent = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -810,7 +807,7 @@ mouse_filter = 0
 texture = ExtResource( 33 )
 expand = true
 
-[node name="Label" type="Label" parent="AdvConfirm/panel"]
+[node name="Label" type="Label" parent="AdvConfirm(del)/panel"]
 anchor_right = 1.0
 margin_top = 48.0
 margin_bottom = 72.0
@@ -818,7 +815,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Advance further?"
 align = 1
 
-[node name="ok" type="Button" parent="AdvConfirm/panel"]
+[node name="ok" type="Button" parent="AdvConfirm(del)/panel"]
 margin_left = 35.0
 margin_top = 98.0
 margin_right = 188.0
@@ -826,7 +823,7 @@ margin_bottom = 146.0
 theme = ExtResource( 32 )
 text = "yes"
 
-[node name="no" type="Button" parent="AdvConfirm/panel"]
+[node name="no" type="Button" parent="AdvConfirm(del)/panel"]
 margin_left = 280.0
 margin_top = 98.0
 margin_right = 433.0

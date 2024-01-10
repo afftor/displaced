@@ -537,9 +537,9 @@ margin_right = 1319.28
 margin_bottom = 1017.0
 
 [node name="CloseButton" type="TextureButton" parent="Rewards"]
-margin_left = 258.0
+margin_left = 438.0
 margin_top = 764.0
-margin_right = 396.0
+margin_right = 576.0
 margin_bottom = 832.0
 texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 22 )
@@ -551,7 +551,33 @@ margin_left = 2.0
 margin_top = 21.0
 margin_right = 135.0
 margin_bottom = 45.0
-text = "CLOSE"
+text = "FINISH"
+align = 1
+
+[node name="AdvanceButton" type="TextureButton" parent="Rewards"]
+margin_left = 78.8333
+margin_top = 764.0
+margin_right = 216.833
+margin_bottom = 832.0
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 23 )
+texture_disabled = ExtResource( 24 )
+
+[node name="Label" type="Label" parent="Rewards/AdvanceButton"]
+margin_left = 2.0
+margin_top = 21.0
+margin_right = 135.0
+margin_bottom = 45.0
+text = "ADVANCE"
+align = 1
+
+[node name="progress" type="Label" parent="Rewards"]
+margin_left = 260.833
+margin_top = 785.0
+margin_right = 393.833
+margin_bottom = 809.0
+text = "1/5"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Rewards"]
