@@ -973,6 +973,7 @@ func victory():
 	var close_button = $Rewards/CloseButton
 	var advance_button = $Rewards/AdvanceButton
 	var progress_label = $Rewards/progress
+	close_button.get_node("Label").text = tr('CLOSE')
 	close_button.disabled = true
 	advance_button.disabled = true
 	progress_label.visible = false
@@ -1112,6 +1113,7 @@ func victory():
 		progress_label.text = "%d/%d" % [area_stage, area_stage_num]
 		progress_label.visible = true
 		if explore_node.is_last_stage():
+			close_button.get_node("Label").text = tr('FINISH')
 			close_button.disabled = false
 		else:
 			if !explore_node.has_auto_advance():
