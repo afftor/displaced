@@ -5,6 +5,9 @@ var selectedupgrade
 
 var binded_events = {}
 onready var charpanel = $UpcomingEvents/ScrollContainer/HBoxContainer
+onready var block_screen = $block_screen
+
+var building_sound = "sound/building"
 
 func _ready():
 	input_handler.connect("EventFinished", self, "build_events")
@@ -35,6 +38,9 @@ func _ready():
 		$ButtonPanel/VBoxContainer/Upgrades, 'pressed')
 	TutorialCore.register_dynamic_button("townhall_event",
 		self, 'pressed')
+	
+	resources.preload_res(building_sound)
+	if resources.is_busy(): yield(resources, "done_work")
 
 func get_tutorial_button(button_name :String):
 	if button_name == 'townhall_event':
@@ -62,19 +68,18 @@ func hide():
 #	$SelectWorker.OpenSelectTab(task)
 
 func upgradelist():
-	$UpgradeList.show()
-	$UpgradeDescript.hide()
 	input_handler.ClearContainer($UpgradeList/ScrollContainer/VBoxContainer)
 	var array = []
-	for i in Upgradedata.upgradelist.values():
+	for i in Upgradedata.upgradelist:
 		array.append(i)
 	
 	array.sort_custom(self, 'sortupgrades')
 	
 	for i in array:
-		var next_level = findupgradelevel(i)
-		var has_next_level = i.levels.has(next_level)
-		var text = tr(i.name)
+		var upgrade = Upgradedata.upgradelist[i]
+		var next_level = findupgradelevel(upgrade)
+		var has_next_level = upgrade.levels.has(next_level)
+		var text = tr(upgrade.name)
 		if next_level > 1 && has_next_level:
 			text += ": " + str(next_level)
 	
@@ -82,14 +87,22 @@ func upgradelist():
 		if !has_next_level:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
 			text += ' Unlocked'
-			newbutton.get_node("icon").texture = i.levels[next_level-1].icon
+			newbutton.get_node("icon").texture = upgrade.levels[next_level-1].icon
 		else:
-			newbutton.get_node("icon").texture = i.levels[next_level].icon
+			newbutton.get_node("icon").texture = upgrade.levels[next_level].icon
 		newbutton.get_node("name").text = text
 		newbutton.connect("pressed", self, "selectupgrade", [i])
+	
+	$UpgradeList.show()
+	if selectedupgrade == null:
+		$UpgradeDescript.hide()
+	elif $UpgradeDescript.visible:
+		update_upgrade()
 
 
-func sortupgrades(first, second):
+func sortupgrades(first_code, second_code):
+	var first = Upgradedata.upgradelist[first_code]
+	var second = Upgradedata.upgradelist[second_code]
 	if first.levels.has(findupgradelevel(first)) && second.levels.has(findupgradelevel(second)):
 		if first.positionorder < second.positionorder:
 			return true
@@ -101,14 +114,14 @@ func sortupgrades(first, second):
 		return false
 
 
-func selectupgrade(upgrade):
-	selectedupgrade = upgrade
+func selectupgrade(upgrade_code):
+	selectedupgrade = upgrade_code
 	$UpgradeDescript.show()
 	update_upgrade()
 
 
 func update_upgrade():
-	var upgrade = selectedupgrade
+	var upgrade = Upgradedata.upgradelist[selectedupgrade]
 	var text = tr(upgrade.descript)
 	$UpgradeDescript/Label.text = tr(upgrade.name)
 	
@@ -117,7 +130,10 @@ func update_upgrade():
 	var next_level = findupgradelevel(upgrade)
 	
 	if next_level > 1:
-			text += '\n\n' + tr("UPGRADEPREVBONUS") + ': ' + tr(upgrade.levels[next_level-1].bonusdescript)
+		text += "\n\n%s: %s" % [
+			tr("UPGRADEPREVBONUS"),
+			tr(upgrade.levels[next_level-1].bonusdescript)
+		]
 	
 	var canpurchase = true
 	
@@ -165,7 +181,7 @@ func findupgradelevel(upgrade):
 
 
 func unlockupgrade():
-	var upgrade = selectedupgrade
+	var upgrade = Upgradedata.upgradelist[selectedupgrade]
 	var next_level = findupgradelevel(upgrade)
 	for i in upgrade.levels[next_level].cost:
 		if i == 'gold':
@@ -178,7 +194,7 @@ func unlockupgrade():
 	else:
 		state.townupgrades[upgrade.code] = 1
 	
-	input_handler.SystemMessage(tr("UPGRADEUNLOCKED") + ": " + tr(upgrade.name))
+#	input_handler.SystemMessage(tr("UPGRADEUNLOCKED") + ": " + tr(upgrade.name))
 	upgradelist()
 	if upgrade.has('effects_hp'):
 		for ch in state.heroes.values():
@@ -187,21 +203,25 @@ func unlockupgrade():
 		get_parent().get_node(upgrade.townnode).build_icon()
 	
 	#animation
-	if upgrade.levels[next_level].has("animatebuilding"):
-		var animnode
-		if get_parent().has_node(upgrade.townnode):
-			animnode = get_parent().get_node(upgrade.townnode)
-		else:
-			animnode = get_parent().get_node("Background/"+upgrade.townnode)
-		if animnode != null:
-			self.modulate.a = 0
+	var animnode
+	if get_parent().has_node(upgrade.townnode):
+		animnode = get_parent().get_node(upgrade.townnode)
+	else:
+		animnode = get_parent().get_node("Background/"+upgrade.townnode)
+	if animnode != null:
+		var building_timer = 2.0
+		input_handler.ShowOutline(animnode)
+		self.modulate.a = 0
+		block_screen.show()
+		if upgrade.levels[next_level].has("animatebuilding"):
+			building_timer = 3.0
 			animnode.show()
-			input_handler.ShowOutline(animnode)
 			input_handler.UnfadeAnimation(animnode, 2.5, 0)
-			input_handler.PlaySound("building")
-			yield(get_tree().create_timer(3.0), 'timeout')
-			self.modulate.a = 1
-			input_handler.HideOutline(animnode)
+		input_handler.PlaySound(building_sound)
+		yield(get_tree().create_timer(building_timer), 'timeout')
+		self.modulate.a = 1
+		block_screen.hide()
+		input_handler.HideOutline(animnode)
 #	globals.check_signal("UpgradeUnlocked", upgrade)
 #	globals.EventCheck()
 	#state.townupgrades[upgrade.code] = true

@@ -34,12 +34,12 @@ var upgradelist = {#2 fix data
 		name = "MARKETUPGRADE",
 		positionorder = 1,
 		descript = "UPGRADEMARKETDESCRIPT",
+		townnode = "market",
 		levels = {
 			1:{
 				icon = load("res://assets/images/buildings/market.png"), #no onormal icon
 				node = load("res://assets/images/buildings/market.png"),
 				bonusdescript = "UPGRADEMARKETBONUS1",
-				townnode = "market",
 				cost = {},
 			}
 		}
