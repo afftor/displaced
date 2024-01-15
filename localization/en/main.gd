@@ -410,6 +410,11 @@ var TranslationDict = {
 	RETURN = "Return",
 	HEROLIST = "Hero List",
 	OPTIONMENU = "Options",
+	MENU_HOME = "Home",
+	MENU_WORLD = "World",
+	MENU_INV = "Inventory",
+	MENU_HEROS = "Heroes",
+	MENU_OPTION = "Menu",
 
 	INVENTORYALL = "All items",
 	INVENTORYWEAPON = "Weapons",
