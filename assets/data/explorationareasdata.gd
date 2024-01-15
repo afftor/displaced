@@ -279,7 +279,7 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'ember_1_1'},
 		{type = 'system', value = 'unlock_character', arg = 'ember'},
-		{type = 'system', value = 'unlock_building', arg = 'forge'},
+#		{type = 'system', value = 'unlock_building', arg = 'forge'},#done by hand with tutorial now
 		]
 	},
 	

@@ -52,9 +52,10 @@ var upgradelist = {#2 fix data
 		townnode = "forge",
 		levels = { #only two sprites for a forge currently
 			1:{
-				unlockable_by_script = true,
+				unlock_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 				icon = load("res://assets/images/buildings/upgrade_forge.png"),
 				node = load("res://assets/images/buildings/forge_1.png"),
+				animatebuilding = true,
 				bonusdescript = "UPGRADEBLACKSMITHBONUS1",
 				cost = {},
 			},

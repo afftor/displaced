@@ -197,6 +197,13 @@ margin_right = 931.0
 margin_bottom = 858.0
 texture = ExtResource( 9 )
 
+[node name="back_screen" type="Control" parent="UpgradeList"]
+show_behind_parent = true
+margin_left = -283.0
+margin_top = -67.0
+margin_right = 1503.0
+margin_bottom = 862.0
+
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeList"]
 margin_left = 47.0
 margin_top = 100.0
@@ -235,18 +242,17 @@ margin_bottom = 200.0
 texture = ExtResource( 11 )
 expand = true
 
-[node name="UpgradeDescript" type="TextureRect" parent="."]
+[node name="UpgradeDescript" type="TextureRect" parent="UpgradeList"]
 visible = false
-margin_left = 932.0
-margin_top = 70.0
-margin_right = 1581.0
-margin_bottom = 858.0
+margin_left = 650.0
+margin_right = 1299.0
+margin_bottom = 788.0
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UpgradeDescript"]
+[node name="Label" type="Label" parent="UpgradeList/UpgradeDescript"]
 margin_left = 205.0
 margin_top = 101.0
 margin_right = 425.0
@@ -255,7 +261,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Name"
 align = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UpgradeDescript"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UpgradeList/UpgradeDescript"]
 margin_left = 52.0
 margin_top = 173.0
 margin_right = 594.0
@@ -263,7 +269,7 @@ margin_bottom = 530.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Descript"
 
-[node name="UnlockButton" type="Button" parent="UpgradeDescript"]
+[node name="UnlockButton" type="Button" parent="UpgradeList/UpgradeDescript"]
 margin_left = 242.0
 margin_top = 685.0
 margin_right = 420.0
@@ -271,21 +277,21 @@ margin_bottom = 738.0
 theme = ExtResource( 20 )
 text = "Unlock"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeDescript"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeList/UpgradeDescript"]
 margin_left = 68.0
 margin_top = 573.0
 margin_right = 587.0
 margin_bottom = 655.0
 custom_constants/separation = 14
 
-[node name="Button" type="TextureRect" parent="UpgradeDescript/HBoxContainer"]
+[node name="Button" type="TextureRect" parent="UpgradeList/UpgradeDescript/HBoxContainer"]
 visible = false
 margin_right = 80.0
 margin_bottom = 82.0
 texture = ExtResource( 12 )
 stretch_mode = 6
 
-[node name="icon" type="TextureRect" parent="UpgradeDescript/HBoxContainer/Button"]
+[node name="icon" type="TextureRect" parent="UpgradeList/UpgradeDescript/HBoxContainer/Button"]
 show_behind_parent = true
 margin_left = 4.0
 margin_top = 4.0
@@ -296,7 +302,7 @@ texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UpgradeDescript/HBoxContainer/Button"]
+[node name="Label" type="Label" parent="UpgradeList/UpgradeDescript/HBoxContainer/Button"]
 margin_left = -8.0
 margin_top = 84.0
 margin_right = 91.0
@@ -307,7 +313,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="goldicon" type="TextureRect" parent="UpgradeDescript"]
+[node name="goldicon" type="TextureRect" parent="UpgradeList/UpgradeDescript"]
 margin_left = 28.0
 margin_top = 673.0
 margin_right = 100.0
@@ -317,7 +323,7 @@ texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UpgradeDescript/goldicon"]
+[node name="Label" type="Label" parent="UpgradeList/UpgradeDescript/goldicon"]
 margin_left = 67.0
 margin_top = 13.0
 margin_right = 138.0

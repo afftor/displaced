@@ -811,7 +811,7 @@ var TranslationDict = {
 	TUTORIAL_SELECT_CHARACTER = "You can select your characters to make them act first. After all your characters have acted this turn your turn ends.",
 	TUTORIAL_ELEMENTAL_WEAKNESSES = "Different enemies are weak to certain elements. Strike with correct element to deal more damage.",
 	TUTORIAL_SWAPPING_CHARACTERS = "Drag characters to their positions to place or swap them. This costs no turn.",
-	TUTORIAL_BUILDING_UPGRADES = "Select Townhall to access your actions. Upgrading settlement makes characters stronger.",
+	TUTORIAL_BUILDING_UPGRADES = "Select Townhall to access your actions. Upgrading settlement makes characters stronger.\n\nYou can build Blacksmith now.\nSelect building to open up it's details. If you met all requerments and have needed resources, 'Unlock' button will appear.",
 	TUTORIAL_EXPLORATION_MENU = "Exclamation mark on buildings and locations indicates main plot's events and missions.\n\nLeave village, then select location and select mission you will be attending. You can replay your old missions for materials and experience.",
 	TUTORIAL_QUEST_CHARACTER = "People occasionally came to Townhall in search of your aid. Select Townhall to see their requests.",
 	

@@ -6,6 +6,8 @@ var selectedupgrade
 var binded_events = {}
 onready var charpanel = $UpcomingEvents/ScrollContainer/HBoxContainer
 onready var block_screen = $block_screen
+onready var upgrade_list = $UpgradeList/ScrollContainer/VBoxContainer
+onready var upgrade_desc = $UpgradeList/UpgradeDescript
 
 var building_sound = "sound/building"
 
@@ -15,7 +17,7 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Upgrades.connect('pressed', self, 'upgradelist')
 #warning-ignore:return_value_discarded
-	$UpgradeDescript/UnlockButton.connect("pressed", self, 'unlockupgrade')
+	upgrade_desc.get_node('UnlockButton').connect("pressed", self, 'unlockupgrade')
 #warning-ignore:return_value_discarded
 #	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
 #warning-ignore:return_value_discarded
@@ -23,7 +25,7 @@ func _ready():
 	$ButtonPanel/VBoxContainer/Scenes.connect("pressed", $scenes, "open")
 	#globals.AddPanelOpenCloseAnimation($TaskList)
 	globals.AddPanelOpenCloseAnimation($UpgradeList)
-	globals.AddPanelOpenCloseAnimation($UpgradeDescript)
+	globals.AddPanelOpenCloseAnimation(upgrade_desc)
 	
 	binded_events.clear()
 #	visible = false
@@ -36,7 +38,11 @@ func _ready():
 	
 	TutorialCore.register_static_button("town_upgrade",
 		$ButtonPanel/VBoxContainer/Upgrades, 'pressed')
+	TutorialCore.register_static_button("unlock_upgrade",
+		upgrade_desc.get_node('UnlockButton'), 'pressed')
 	TutorialCore.register_dynamic_button("townhall_event",
+		self, 'pressed')
+	TutorialCore.register_dynamic_button("forge_upgrade",
 		self, 'pressed')
 	
 	resources.preload_res(building_sound)
@@ -45,11 +51,18 @@ func _ready():
 func get_tutorial_button(button_name :String):
 	if button_name == 'townhall_event':
 		return charpanel.get_child(0)
+	elif button_name == 'forge_upgrade':
+		#it's presumed, that forge is at the beginning of the list
+		$UpgradeList/ScrollContainer.scroll_vertical = 0#quite rough, but better than make whole new tutorial scenario for this
+		for btn in upgrade_list.get_children():
+			if btn.has_meta("upgrade_code") and btn.get_meta("upgrade_code") == 'forge':
+				return btn
+		return null#button not ready
 
 
 func open():
 	show()
-	if $UpgradeDescript.visible:
+	if upgrade_desc.visible:
 		update_upgrade()
 
 func show():
@@ -68,7 +81,7 @@ func hide():
 #	$SelectWorker.OpenSelectTab(task)
 
 func upgradelist():
-	input_handler.ClearContainer($UpgradeList/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer(upgrade_list)
 	var array = []
 	for i in Upgradedata.upgradelist:
 		array.append(i)
@@ -83,7 +96,8 @@ func upgradelist():
 		if next_level > 1 && has_next_level:
 			text += ": " + str(next_level)
 	
-		var newbutton = input_handler.DuplicateContainerTemplate($UpgradeList/ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate(upgrade_list)
+		newbutton.set_meta("upgrade_code", i)
 		if !has_next_level:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
 			text += ' Unlocked'
@@ -95,8 +109,8 @@ func upgradelist():
 	
 	$UpgradeList.show()
 	if selectedupgrade == null:
-		$UpgradeDescript.hide()
-	elif $UpgradeDescript.visible:
+		upgrade_desc.hide()
+	elif upgrade_desc.visible:
 		update_upgrade()
 
 
@@ -116,16 +130,16 @@ func sortupgrades(first_code, second_code):
 
 func selectupgrade(upgrade_code):
 	selectedupgrade = upgrade_code
-	$UpgradeDescript.show()
+	upgrade_desc.show()
 	update_upgrade()
 
 
 func update_upgrade():
 	var upgrade = Upgradedata.upgradelist[selectedupgrade]
 	var text = tr(upgrade.descript)
-	$UpgradeDescript/Label.text = tr(upgrade.name)
+	upgrade_desc.get_node('Label').text = tr(upgrade.name)
 	
-	input_handler.ClearContainer($UpgradeDescript/HBoxContainer)
+	input_handler.ClearContainer(upgrade_desc.get_node('HBoxContainer'))
 	
 	var next_level = findupgradelevel(upgrade)
 	
@@ -138,39 +152,39 @@ func update_upgrade():
 	var canpurchase = true
 	
 	if upgrade.levels.has(next_level):
-		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + tr(upgrade.levels[next_level].bonusdescript)
-		if upgrade.levels[next_level].has("unlockable_by_script"):
+		var level_info = upgrade.levels[next_level]
+		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + tr(level_info.bonusdescript)
+		if level_info.has("unlock_reqs") and !state.checkreqs(level_info.unlock_reqs):
 			canpurchase = false
-		$UpgradeDescript/goldicon.visible = true
+		upgrade_desc.get_node('goldicon').visible = true
 	
-		for i in upgrade.levels[next_level].cost:
+		for i in level_info.cost:
+			var newnode = input_handler.DuplicateContainerTemplate(upgrade_desc.get_node('HBoxContainer'))
 			if i != 'gold':
 				var item = Items.Items[i]
-				var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
 				newnode.get_node("icon").texture = item.icon
-				newnode.get_node("Label").text = str(upgrade.levels[next_level].cost[i]) + "/" + str(state.materials[i])
+				newnode.get_node("Label").text = str(level_info.cost[i]) + "/" + str(state.materials[i])
 				globals.connectmaterialtooltip(newnode, item)
-				if state.materials[i] >= upgrade.levels[next_level].cost[i]:
+				if state.materials[i] >= level_info.cost[i]:
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
 				else:
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
 					canpurchase = false
 			else:
-				var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
 				newnode.get_node("icon").texture = Items.gold_icon
-				newnode.get_node("Label").text = str(upgrade.levels[next_level].cost[i])
-				if state.money >= upgrade.levels[next_level].cost[i]:
+				newnode.get_node("Label").text = str(level_info.cost[i])
+				if state.money >= level_info.cost[i]:
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
 				else:
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
 					canpurchase = false
 	else:
 		canpurchase = false
-		$UpgradeDescript/goldicon.visible = false
+		upgrade_desc.get_node('goldicon').visible = false
 
-	$UpgradeDescript/RichTextLabel.bbcode_text = text
-	$UpgradeDescript/UnlockButton.visible = canpurchase
-	$UpgradeDescript/goldicon/Label.text = String(state.money)
+	upgrade_desc.get_node('RichTextLabel').bbcode_text = text
+	upgrade_desc.get_node('UnlockButton').visible = canpurchase
+	upgrade_desc.get_node('goldicon/Label').text = String(state.money)
 
 
 func findupgradelevel(upgrade):

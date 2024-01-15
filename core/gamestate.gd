@@ -510,8 +510,9 @@ func system_action(action):
 			unlock_char(action.arg)
 		'game_stage':
 			ProgressMainStage(action.arg)
-		'unlock_building':
-			make_upgrade(action.arg, 1)
+		#not in use now
+#		'unlock_building':
+#			make_upgrade(action.arg, 1)
 		'show_screen':
 			pass
 		'add_to_party':
@@ -540,7 +541,7 @@ func add_char_to_party(id, pos):
 			heroes[i].position = null
 	heroes[id].position = pos
 
-
+#not realy in use, but could still be called by old code, consider refactor
 func make_upgrade(id, lvl):
 	#stub
 	#add checks, logging and signals

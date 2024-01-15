@@ -95,6 +95,6 @@ Ar - Well, that's all the better for us, but I'll have to tax you for taking tow
 Em - Okay!
 Ember has joined the settlement. Forge is available now.
 =GUI_HIDE=
-=BLACKUNFADE 1=
-=DELAY 1=
+=BLACKUNFADE 1.5=
+=DELAY 1.5=
 =STOP=

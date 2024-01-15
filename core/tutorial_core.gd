@@ -11,6 +11,8 @@ var tutorial_buttons = {
 	char_reserve = {},
 	townhall = {},
 	town_upgrade = {},
+	forge_upgrade = {},
+	unlock_upgrade = {},
 	exploration_loc = {},
 	missions = {},
 	bridge = {},
@@ -40,7 +42,8 @@ var tutorials_data = {
 		message = "TUTORIAL_QUEST_CHARACTER"
 	},
 	building_upgrades = {
-		buttons = ["town_upgrade"],
+		buttons = ["town_upgrade", "forge_upgrade", "unlock_upgrade"],
+		delay = {"forge_upgrade" : 0.2, "unlock_upgrade" : 0.2},
 		message = "TUTORIAL_BUILDING_UPGRADES"
 	},
 	exploration_menu = {
@@ -73,6 +76,7 @@ func register_static_button(id :String, obj :Node, sig :String) ->void:
 	var button = tutorial_buttons[id]
 	button['obj'] = obj
 	button['sig'] = sig
+	button['ready'] = true
 
 func register_dynamic_button(id :String, obj :Node, sig :String) ->void:
 	assert(tutorial_buttons.has(id), "tutorial_core is tring to register nonexistent button")
@@ -80,26 +84,36 @@ func register_dynamic_button(id :String, obj :Node, sig :String) ->void:
 	var button = tutorial_buttons[id]
 	button['parent_obj'] = obj
 	button['sig'] = sig
+	button['ready'] = false
 
-func refresh_dynamic_button(id :String) ->void:
+
+func refresh_dynamic_button(id :String) ->bool:#true if successfully refreshed
+	assert(tutorial_buttons.has(id), "tutorial_core is tring to refresh nonexistent button")
 	var button = tutorial_buttons[id]
-	if !button.has('parent_obj'): return
+	if !button.has('parent_obj'): return true#not dynamic button
 	button['obj'] = button.parent_obj.get_tutorial_button(id)
+	if button['obj'] == null: return false
 	assert(obj_is_button(button.obj, button.sig), "in tutorial_core dynamic button returns nonbutton")
+	button['ready'] = true
+	return true
 
-func get_button_pos(id :String) ->Vector2:
-	assert(tutorial_buttons.has(id), "tutorial_core is tring to get nonexistent button")
+func check_button_ready(id :String):
+	if tutorial_buttons[id].ready: return
 	refresh_dynamic_button(id)
+	assert(tutorial_buttons[id].ready, "in tutorial_core dynamic button can't be refreshed on use")
+
+#it is highly recommended to manually refresh_dynamic_button() befor getting it's rect and connection!
+#------------
+func get_button_pos(id :String) ->Vector2:
+	check_button_ready(id)
 	return tutorial_buttons[id].obj.rect_global_position
 
 func get_button_size(id :String) ->Vector2:
-	assert(tutorial_buttons.has(id), "tutorial_core is tring to get nonexistent button")
-	refresh_dynamic_button(id)
+	check_button_ready(id)
 	return tutorial_buttons[id].obj.rect_size
 
 func connect_to_button(id :String, obj :Node, method :String) ->void:
-	assert(tutorial_buttons.has(id), "tutorial_core is tring to connect to nonexistent button")
-	refresh_dynamic_button(id)
+	check_button_ready(id)
 	var button = tutorial_buttons[id]
 	var args_num = -1
 	var signals_list = button.obj.get_signal_list()
@@ -115,6 +129,7 @@ func connect_to_button(id :String, obj :Node, method :String) ->void:
 		button.obj.connect(button.sig, obj, method, [], CONNECT_ONESHOT)
 	elif args_num == 1:
 		button.obj.connect(button.sig, self, 'signal_resender', [obj, method], CONNECT_ONESHOT)
+#-----------
 
 func signal_resender(_needles_arg, obj :Node, method :String):
 	obj.call(method)
