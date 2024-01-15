@@ -13,8 +13,7 @@ func _ready():
 	
 #	input_handler.SystemMessageNode = $SystemMessageLabel
 	$ControlPanel/Return.connect('pressed',self,'openvillage')
-#	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
-	$ControlPanel/Inventory.connect('pressed',$Inventory,'open')
+	$ControlPanel/Inventory.connect('pressed', self, 'openinventory')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
@@ -46,10 +45,18 @@ func GameOver():
 
 
 func openmenu():
-	if !$MenuPanel.visible:
-		$MenuPanel.show()
+	var node = $MenuPanel
+	if !node.visible:
+		node.show()
 	else:
-		$MenuPanel.hide()
+		node.hide()
+
+func openinventory():
+	var node = $Inventory
+	if !node.visible:
+		node.open()
+	else:
+		node.hide()
 
 func openherolist(toggled):
 	if $HeroList.visible == false:
