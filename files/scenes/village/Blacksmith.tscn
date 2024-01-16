@@ -23,17 +23,16 @@ texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 293, 79 )
 
 [node name="Blacksmith" type="TextureRect"]
-margin_left = 35.0
-margin_top = 54.0
-margin_right = 1826.0
-margin_bottom = 984.0
+margin_top = 40.0
+margin_right = 1920.0
+margin_bottom = 1040.0
 texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ButtonPanel" type="TextureRect" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 23.0
 margin_right = 542.0
@@ -74,10 +73,12 @@ align = 1
 
 [node name="BG" type="TextureRect" parent="."]
 show_behind_parent = true
-margin_left = 1.0
-margin_top = 10.0
-margin_right = 1779.0
-margin_bottom = 928.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = -10.0
+margin_bottom = -5.0
 mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
@@ -85,17 +86,16 @@ stretch_mode = 7
 
 [node name="Sprite" type="TextureButton" parent="."]
 show_behind_parent = true
-margin_left = 972.0
-margin_top = -51.0
-margin_right = 1720.0
-margin_bottom = 926.0
+margin_left = 1137.0
+margin_top = 1.0
+margin_right = 1885.0
+margin_bottom = 978.0
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
 [node name="craft" parent="." instance=ExtResource( 23 )]
-visible = false
-margin_left = -35.0
-margin_top = -52.0
-margin_right = 95.0
-margin_bottom = 93.0
+margin_left = 45.0
+margin_top = -8.0
+margin_right = -674.0
+margin_bottom = 10.0

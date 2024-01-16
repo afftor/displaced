@@ -146,7 +146,8 @@ func _ready():
 #warning-ignore:return_value_discarded
 #	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 #warning-ignore:return_value_discarded
-	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
+	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true, false])
+	$Rewards/AdvanceButton.connect("pressed",self,'FinishCombat', [true, true])
 	$LevelUp/panel/CloseButton.connect("pressed",self,'on_level_up_close')
 	
 	TutorialCore.register_static_button("enemy",
@@ -969,7 +970,13 @@ func victory():
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
-	$Rewards/CloseButton.disabled = true
+	var close_button = $Rewards/CloseButton
+	var advance_button = $Rewards/AdvanceButton
+	var progress_label = $Rewards/progress
+	close_button.get_node("Label").text = tr('CLOSE')
+	close_button.disabled = true
+	advance_button.disabled = true
+	progress_label.visible = false
 	input_handler.StopMusic()
 	#on combat ends triggers
 	
@@ -1099,7 +1106,22 @@ func victory():
 		tween.start()
 	
 	#yield(get_tree().create_timer(1), 'timeout')
-	$Rewards/CloseButton.disabled = false
+	if input_handler.explore_node != null:
+		var explore_node = input_handler.explore_node
+		var area_stage = explore_node.get_area_stage()
+		var area_stage_num = explore_node.get_area_stage_num()
+		progress_label.text = "%d/%d" % [area_stage, area_stage_num]
+		progress_label.visible = true
+		if explore_node.is_last_stage():
+			close_button.get_node("Label").text = tr('FINISH')
+			close_button.disabled = false
+		else:
+			if !explore_node.has_auto_advance():
+				close_button.disabled = false
+			advance_button.disabled = false
+	else:
+		close_button.disabled = false
+	
 
 func on_level_up_close():
 	if leveled_up_chars.size() > 0:
@@ -1143,7 +1165,7 @@ func fill_up_level_up(character):
 			if skill_num == 1:#unfortunately for this time we can't have more than 2 skills at lvl-up
 				break
 
-func FinishCombat(value):
+func FinishCombat(victorious :bool, do_advance :bool = false):
 	if fight_finished: #not sure if it's necessary, but for the time I cann't predict all checkwinlose situations
 		print("!ALERT! FinishCombat used inappropriately")
 		return
@@ -1182,7 +1204,7 @@ func FinishCombat(value):
 	hide()
 	emit_signal("combat_ended")
 	if input_handler.explore_node != null:
-		input_handler.explore_node.combat_finished(value)
+		input_handler.explore_node.combat_finished(victorious, do_advance)
 	elif input_handler.curtains != null:
 		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
 

@@ -5,6 +5,7 @@ var closebutton
 #var open_sound = 'sound/menu_open'
 #var close_sound = 'sound/menu_close'
 var visible_ready = false
+var use_ready = false
 
 func _ready():
 
@@ -37,12 +38,17 @@ func show():
 
 func on_open_finished():
 	visible_ready = true
+	use_ready = true
 
 func hide():
 	if resources.is_busy(): yield(resources, "done_work")
 	if is_visible_in_tree() && visible_ready:
 #		input_handler.PlaySound(close_sound)
+		use_ready = false
 		input_handler.Close(self)
 
 func on_close_finished():
 	visible_ready = false
+
+func is_ready_to_use() ->bool:
+	return visible_ready

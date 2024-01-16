@@ -116,7 +116,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Debilitate.png", 
-			description = "Permanent poison: Takes damage at the end of turn. Can be dispelled.",
+			description = "Poison: Takes damage at the end of turn. Can be dispelled.",
 			t_name = 'icon_poison_permanent'
 		}],
 	},
@@ -1765,7 +1765,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
 		buffs = [{
 			icon = "res://assets/images/traits/armorignore.png", 
-			description = "Damage taking increased by 20%% per stack. Can be dispelled.",
+			description = "Damage taking increased by 20%% per stack.\nCan be dispelled.",
 			limit = 1,
 			t_name = 'icon_culling',
 			bonuseffect = 'amount'
@@ -2043,7 +2043,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/traits/speedondamage.png",
-			description = "Has %d souls. Damage and damage resist are increased per soul",
+			description = "Has %d souls. Damage and resistance are increased per soul",
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_souls',
 			limit = 1,
@@ -2302,7 +2302,7 @@ var effect_table = {
 		args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 		buffs = [{
 			icon = "res://assets/images/traits/armor.png", 
-			description = "At the start of each turn adds Barrier of 25 per Faery in battle. (%d remains)",
+			description = "At the start of each turn adds Barrier of 25\nper Faery in battle. (%d remains)",
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_faery_barrier',
 		}],
@@ -2333,7 +2333,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/unstable.png", 
-			description = "When dies deal high damage. On player turn, deal damage to player characters. On enemy turn deal damage to enemy.",
+			description = "When dies deal high damage.\nOn player turn, deal damage to player characters.\nOn enemy turn deal damage to enemy.",
 			t_name = 'icon_unstable'
 		}],
 		sub_effects = ['e_d_bomb1', 'e_d_bomb2'],
@@ -3901,7 +3901,7 @@ var buffs = {
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
-		description = "Burn: Takes Fire damage at the %s of turn. Removed by Water damage.",
+		description = "Burn: Takes Fire damage at the %s of turn.\nRemoved by Water damage.",
 		args = [{obj = 'parent_args', param = 1}],
 		t_name = 'icon_burn',
 		bonuseffect = 'duration'
@@ -3931,7 +3931,7 @@ var buffs = {
 	},
 	b_enrage = {
 		icon = "res://assets/images/iconsskills/taunt.png", 
-		description = "Damage is increased by %s per stack. Can be dispelled or removed by Water damage.",
+		description = "Damage is increased by %s per stack.\nCan be dispelled or removed by Water damage.",
 		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
 		t_name = 'icon_rage',

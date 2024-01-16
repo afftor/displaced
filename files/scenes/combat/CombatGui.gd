@@ -57,7 +57,7 @@ func _ready():
 	
 	#strange thing, but at this point SkillPanel hasn't yet updated it's coordinates
 	#so we have to yield, to get correct global_position for button
-	yield(get_tree(), "idle_frame")
+#	yield(get_tree(), "idle_frame")
 	TutorialCore.register_dynamic_button("skill", self, "pressed")
 	TutorialCore.register_dynamic_button("char_reserve", self, "button_down")
 
