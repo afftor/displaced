@@ -43,8 +43,9 @@ func build_stats():
 #	input_handler.ClearContainer(stats_list.get_node('stats/values'), ['panel'])
 #	input_handler.ClearContainer(stats_list.get_node('stats/icons'), ['panel'])
 	stats_list.get_node("dmg/value").text = str(character.get_stat('damage'))
+	stats_list.get_node("dmg/value").hint_tooltip = tr("BASEDAMAGE")
 	stats_list.get_node("dmg/icon").texture = load("res://assets/images/iconsskills/source_%s.png" % character.get_stat('base_dmg_type'))
-	stats_list.get_node("dmg").hint_tooltip = tr("BASEDAMAGETYPE") + ": " + tr(character.get_stat('base_dmg_type'))
+	stats_list.get_node("dmg/icon").hint_tooltip = tr("BASEDAMAGETYPE") + ": " + tr(character.get_stat('base_dmg_type'))
 	build_skills()
 	build_res()
 
