@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://files/scenes/ItemTooltip.gd" type="Script" id=1]
+[ext_resource path="res://files/Simple Tooltip/ItemTooltip.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/gui/charpanel/panel_skilltooltip.png" type="Texture" id=3]
 
