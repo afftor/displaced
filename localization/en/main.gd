@@ -17,6 +17,9 @@ var TranslationDict = {
 	#Materials
 	STARTINGADJ = "Starting",
 
+	GOLD = "Gold",
+	GOLDDESCRIPT = "Gold is used to purchase goods and upgrades.",
+
 	MATERIALWOOD = "Wood",
 	MATERIALWOODDESCRIPT = "Sturdy wood for general building and furnishing purposes.",
 #	WOODADJ = "wooden",
@@ -426,7 +429,7 @@ var TranslationDict = {
 	SELLCONFIRM = "Sell",
 	RAWPRICE = "Raw Price",
 	FOODDESCRIPT = "Food is used to feed workers. ",
-	MONEYDESCRIPT = "Money is used to purchase goods and workers.",
+#	MONEYDESCRIPT = "Money is used to purchase goods and workers.",
 
 	AREAISENDLESS = "This area has no progression",
 	TOWNRETURN = "Return",

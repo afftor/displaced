@@ -1065,6 +1065,7 @@ func victory():
 		newbutton.hide()
 		newbutton.texture = load("res://assets/images/iconsitems/gold.png")
 		newbutton.get_node("Label").text = str(rewardsdict.gold)
+		globals.connectmaterialtooltip(newbutton, Items.gold_info)
 	for id in rewardsdict.items:
 		var item = Items.Items[id]
 		state.materials[id] += rewardsdict.items[id]
