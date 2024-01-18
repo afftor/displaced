@@ -305,16 +305,17 @@ func rebuildbuffs():
 #	animation_node.add_new_data(data)
 
 func process_enable():
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'enable', slot = 'full', params = {}}
-	animation_node.add_new_data(data)
+	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'enable', slot = 'full', params = {}})
 	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'gray_out', slot = 'full', params = {undo = true}})
+	if fighter is hero:
+		panel_node.gray_out_undo()#animation_node creates tween, which breaks disable_panel_node()
 
 func process_disable():
 	disabled = true
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'disable', slot = 'full', params = {}}
-	animation_node.add_new_data(data)
+	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'disable', slot = 'full', params = {}})
 	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'gray_out', slot = 'full', params = {undo = false}})
-	
+	if fighter is hero:
+		panel_node.gray_out()#animation_node creates tween, which breaks disable_panel_node()
 
 func appear():#stub
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'reappear', slot = 'full', params = {}}
