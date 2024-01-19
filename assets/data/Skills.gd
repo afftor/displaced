@@ -1273,7 +1273,7 @@ var skilllist = {
 		repeat = 1,
 		hidden = true,
 		sfx = [{code = 'anim_hit', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'shockwave', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'shockwave', strike = null, hit = null, hittype = 'absolute'},
 		patches = [],
 		not_final = true
 	},

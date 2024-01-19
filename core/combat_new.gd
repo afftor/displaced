@@ -22,7 +22,6 @@ onready var resist_tooltip = $ResistToolTipCont/ResistToolTip
 var debug = false
 
 var allowaction = false
-var highlightargets = false
 var allowedtargets = {'ally':[],'enemy':[]}
 var swapchar = null
 
@@ -537,7 +536,7 @@ func ActivateItem(item):
 
 func SelectSkill(skill, system = false):
 	swapchar = null
-	activecharacter.displaynode.highlight_active()
+#	activecharacter.displaynode.highlight_active()
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
 	#need to add daily restriction check
@@ -1265,8 +1264,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	if rangetype == 'weapon':
 		rangetype = fighter.get_weapon_range()
 	
-	highlightargets = true
-	
 	if targetgroups.has('enemy'):
 		var t_targets
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
@@ -1389,7 +1386,7 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 			return caster.position
 
 
-func CalculateTargets(skill, caster, target_pos, finale = false):
+func CalculateTargets(skill, caster, target_pos):#finale = false
 	#if target == null: return
 	var target = battlefield[target_pos]
 	var array = []
@@ -1480,11 +1477,24 @@ func CalculateTargets(skill, caster, target_pos, finale = false):
 			var tpos2 = []
 			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
 			array = tpos2
-	if (!finale) and skill.tags.has('random_target'):
-		array.clear()
-		for pos in allowedtargets.enemy + allowedtargets.ally:
-			var tchar = battlefield[pos]
-			array.push_back(tchar)
+	
+	#seems not in use
+#	if !finale and skill.tags.has('random_target'):
+#		true_targets.clear()
+#		for pos in allowedtargets.enemy + allowedtargets.ally:
+#			var tchar = battlefield[pos]
+#			true_targets.push_back(tchar)
+	return array
+
+func CalculateTargetsHighlight(skill, caster, target_pos):
+	var array = CalculateTargets(skill, caster, target_pos)
+	if skill.has("follow_up"):
+		var follow_up_skill = Skillsdata.patch_skill(skill.follow_up, caster)
+		if follow_up_skill.targetpattern != skill.targetpattern:
+			var add_targets = CalculateTargets(follow_up_skill, caster, target_pos)
+			for new_target in add_targets:
+				if !array.has(new_target):
+					array.append(new_target)
 	return array
 
 
@@ -1521,7 +1531,7 @@ func FighterMouseOver(position):
 				if swapchar != null:
 					cur_targets = [fighter]
 				else:
-					cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+					cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_ally()
 				cur_state = T_OVERSUPPORT
@@ -1553,7 +1563,7 @@ func FighterMouseOver(position):
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
 				var cur_targets = []
-				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+				cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_enemy()
 				cur_state = T_OVERATTACK
@@ -1781,7 +1791,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		target = battlefield[target_pos]
 		if target == null and !skill.tags.has('empty_target'):
 			continue
-		targets = CalculateTargets(skill, caster, target_pos, true)
+		targets = CalculateTargets(skill, caster, target_pos)#finale = true
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:
