@@ -22,7 +22,6 @@ onready var resist_tooltip = $ResistToolTipCont/ResistToolTip
 var debug = false
 
 var allowaction = false
-var highlightargets = false
 var allowedtargets = {'ally':[],'enemy':[]}
 var swapchar = null
 
@@ -114,7 +113,7 @@ enum {
  T_SKILLATTACK, #attacking skill selected - T_CHARSELECT + T_SKILLSUPPORT
  T_OVERATTACK, #over possible target for attack
  T_OVERSUPPORT, #over possible target for suuport
- T_OVERATTACKALLY, #over friendly char while having attacking skill selected
+# T_OVERATTACKALLY,#seems not working now #over friendly char while having attacking skill selected
  T_AUTO #animations active
 }
 var cur_state = T_AUTO
@@ -537,7 +536,7 @@ func ActivateItem(item):
 
 func SelectSkill(skill, system = false):
 	swapchar = null
-	activecharacter.displaynode.highlight_active()
+#	activecharacter.displaynode.highlight_active()
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
 	#need to add daily restriction check
@@ -1065,6 +1064,7 @@ func victory():
 		newbutton.hide()
 		newbutton.texture = load("res://assets/images/iconsitems/gold.png")
 		newbutton.get_node("Label").text = str(rewardsdict.gold)
+		globals.connectmaterialtooltip(newbutton, Items.gold_info)
 	for id in rewardsdict.items:
 		var item = Items.Items[id]
 		state.materials[id] += rewardsdict.items[id]
@@ -1264,8 +1264,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	if rangetype == 'weapon':
 		rangetype = fighter.get_weapon_range()
 	
-	highlightargets = true
-	
 	if targetgroups.has('enemy'):
 		var t_targets
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
@@ -1284,13 +1282,18 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		allowedtargets.ally.append(int(fighter.position))
 	
 	if glow_skip: return
-	
+	highlight_skill_targets()
+
+func highlight_skill_targets():
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
+	for pos in range(4,10):
+		if battlefield[pos] != null:
+			battlefield[pos].displaynode.mark_unreachable()
 	for pos in allowedtargets.enemy:
-		battlefieldpositions[pos].highlight_target_enemy()
-	for pos in allowedtargets.ally:
-		battlefield[pos].displaynode.highlight_target_ally()
+		battlefield[pos].displaynode.unmark_unreachable()
+#	for pos in allowedtargets.ally:
+#		battlefield[pos].displaynode.highlight_target_ally()
 	activecharacter.displaynode.highlight_active()
 
 
@@ -1383,7 +1386,7 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 			return caster.position
 
 
-func CalculateTargets(skill, caster, target_pos, finale = false):
+func CalculateTargets(skill, caster, target_pos):#finale = false
 	#if target == null: return
 	var target = battlefield[target_pos]
 	var array = []
@@ -1474,11 +1477,24 @@ func CalculateTargets(skill, caster, target_pos, finale = false):
 			var tpos2 = []
 			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
 			array = tpos2
-	if (!finale) and skill.tags.has('random_target'):
-		array.clear()
-		for pos in allowedtargets.enemy + allowedtargets.ally:
-			var tchar = battlefield[pos]
-			array.push_back(tchar)
+	
+	#seems not in use
+#	if !finale and skill.tags.has('random_target'):
+#		true_targets.clear()
+#		for pos in allowedtargets.enemy + allowedtargets.ally:
+#			var tchar = battlefield[pos]
+#			true_targets.push_back(tchar)
+	return array
+
+func CalculateTargetsHighlight(skill, caster, target_pos):
+	var array = CalculateTargets(skill, caster, target_pos)
+	if skill.has("follow_up"):
+		var follow_up_skill = Skillsdata.patch_skill(skill.follow_up, caster)
+		if follow_up_skill.targetpattern != skill.targetpattern:
+			var add_targets = CalculateTargets(follow_up_skill, caster, target_pos)
+			for new_target in add_targets:
+				if !array.has(new_target):
+					array.append(new_target)
 	return array
 
 
@@ -1510,45 +1526,49 @@ func FighterMouseOver(position):
 				Input.set_custom_mouse_cursor(cursors.support)
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
+				activecharacter.displaynode.highlight_active()
 				var cur_targets = []
 				if swapchar != null:
 					cur_targets = [fighter]
 				else:
-					cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+					cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
-					ch.displaynode.highlight_target_ally_final()
+					ch.displaynode.highlight_target_ally()
 				cur_state = T_OVERSUPPORT
 				return
-			if position in allowedtargets.enemy:
-				Input.set_custom_mouse_cursor(cursors.attack)
-				for pos in allowedtargets.ally + allowedtargets.enemy:
-					battlefield[pos].displaynode.stop_highlight()
-				var cur_targets = []
-				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
-				for ch in cur_targets:
-					ch.displaynode.highlight_target_enemy_final()
-				cur_state = T_OVERSUPPORT
-				return
+			#probably impossible
+#			if position in allowedtargets.enemy:
+#				Input.set_custom_mouse_cursor(cursors.attack)
+#				for pos in allowedtargets.ally + allowedtargets.enemy:
+#					battlefield[pos].displaynode.stop_highlight()
+#				activecharacter.displaynode.highlight_active()
+#				var cur_targets = []
+#				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+#				for ch in cur_targets:
+#					ch.displaynode.highlight_target_enemy()
+#				cur_state = T_OVERSUPPORT
+#				return
 		T_SKILLATTACK:
-			if position in allowedtargets.ally:
-				for pos in allowedtargets.ally + allowedtargets.enemy:
-					battlefield[pos].displaynode.stop_highlight()
-				if fighter.defeated : return
-				if fighter.acted: return
-				node.highlight_hover()
-				cur_state = T_OVERATTACKALLY
-				return
+			#probably impossible
+#			if position in allowedtargets.ally:
+#				for pos in allowedtargets.ally + allowedtargets.enemy:
+#					battlefield[pos].displaynode.stop_highlight()
+#				if fighter.defeated : return
+#				if fighter.acted: return
+#				node.highlight_hover()
+#				cur_state = T_OVERATTACKALLY
+#				return
 			if position in allowedtargets.enemy:
 				Input.set_custom_mouse_cursor(cursors.attack)
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
 				var cur_targets = []
-				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+				cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
-					ch.displaynode.highlight_target_enemy_final()
+					ch.displaynode.highlight_target_enemy()
 				cur_state = T_OVERATTACK
 				return
-		T_OVERSUPPORT, T_OVERATTACK, T_OVERATTACKALLY:
+		T_OVERSUPPORT, T_OVERATTACK:#T_OVERATTACKALLY
 			print("warning - mouseover while targets highlighted")
 
 
@@ -1567,28 +1587,16 @@ func FighterMouseOverFinish(position):
 #			if fighter.acted: return
 #			node.stop_highlight()
 		T_OVERATTACK, T_OVERSUPPORT:
-			for nd in battlefieldpositions.values():
-				nd.stop_highlight()
-			for pos in allowedtargets.enemy:
-				battlefieldpositions[pos].highlight_target_enemy()
-			for pos in allowedtargets.ally:
-				battlefield[pos].displaynode.highlight_target_ally()
+			highlight_skill_targets()
 			if cur_state == T_OVERATTACK:
 				cur_state = T_SKILLATTACK
 			else:
 				cur_state = T_SKILLSUPPORT
-			activecharacter.displaynode.highlight_active()
 			return
-		T_OVERATTACKALLY:
-			for nd in battlefieldpositions.values():
-				nd.stop_highlight()
-			for pos in allowedtargets.enemy:
-				battlefieldpositions[pos].highlight_target_enemy()
-#			for pos in allowedtargets.ally:
-#				battlefieldpositions[pos].highlight_target_ally()
-			cur_state = T_SKILLATTACK
-			activecharacter.displaynode.highlight_active()
-			return
+#		T_OVERATTACKALLY:
+#			highlight_skill_targets()
+#			cur_state = T_SKILLATTACK
+#			return
 		T_SKILLSUPPORT, T_SKILLATTACK:
 			if !(position in allowedtargets.ally + allowedtargets.enemy):
 				return
@@ -1622,18 +1630,18 @@ func FighterPress(position):
 						activecharacter.skills_autoselect.push_back(activeaction)
 					use_skill(activeaction, activecharacter, position)
 			return
-		T_OVERATTACKALLY:
-			if allowedtargets.enemy.has(position):
-				cur_state = T_AUTO
-				activecharacter.skills_autoselect.push_back(activeaction)
-				use_skill(activeaction, activecharacter, position)
-			elif position in variables.playerparty:
-				if battlefield[position] == null: return
-				if battlefield[position].acted: return
-				if battlefield[position].defeated: return
-				cur_state = T_AUTO
-				player_turn(position)
-			return
+#		T_OVERATTACKALLY:
+#			if allowedtargets.enemy.has(position):
+#				cur_state = T_AUTO
+#				activecharacter.skills_autoselect.push_back(activeaction)
+#				use_skill(activeaction, activecharacter, position)
+#			elif position in variables.playerparty:
+#				if battlefield[position] == null: return
+#				if battlefield[position].acted: return
+#				if battlefield[position].defeated: return
+#				cur_state = T_AUTO
+#				player_turn(position)
+#			return
 		T_SKILLSUPPORT:
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
@@ -1783,7 +1791,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		target = battlefield[target_pos]
 		if target == null and !skill.tags.has('empty_target'):
 			continue
-		targets = CalculateTargets(skill, caster, target_pos, true)
+		targets = CalculateTargets(skill, caster, target_pos)#finale = true
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:

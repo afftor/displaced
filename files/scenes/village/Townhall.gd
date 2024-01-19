@@ -171,8 +171,9 @@ func update_upgrade():
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
 					canpurchase = false
 			else:
-				newnode.get_node("icon").texture = Items.gold_icon
+				newnode.get_node("icon").texture = Items.gold_info.icon
 				newnode.get_node("Label").text = str(level_info.cost[i])
+				globals.connectmaterialtooltip(newnode, Items.gold_info)
 				if state.money >= level_info.cost[i]:
 					newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
 				else:

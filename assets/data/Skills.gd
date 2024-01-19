@@ -41,7 +41,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/action_2.png"),
-		damagetype = "weapon",
+		damagetype = "",
 		skilltype = 'skill',
 		userange = "weapon",
 		targetpattern = 'single',
@@ -1273,7 +1273,7 @@ var skilllist = {
 		repeat = 1,
 		hidden = true,
 		sfx = [{code = 'anim_hit', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'shockwave', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'shockwave', strike = null, hit = null, hittype = 'absolute'},
 		patches = [],
 		not_final = true
 	},
@@ -3846,7 +3846,7 @@ func get_true_damagetype(damagetype, char_id) ->String:
 		return calc_damagetype(damagetype, char_id)
 	elif damagetype is Array:
 		print("ATTENTION! Skill for UI has numerous damagetypes!!!")
-		return  calc_damagetype(damagetype[0], char_id)
+		return calc_damagetype(damagetype[0], char_id)
 	else:
 		return ""
 

@@ -27,7 +27,7 @@ func _ready():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
 	$BattleGroup/start.connect("pressed", self, "on_start_press")
-	$BattleGroup/advance.connect("pressed", self, "advance_area")
+	$BattleGroup/advance.connect("pressed", self, "on_advance_pressed")
 	$BattleGroup/abandon.connect("pressed", self, "abandon_area")
 	$ExplorationSelect/Close.connect('pressed', self, 'hide')
 	
@@ -275,6 +275,13 @@ func abandon_area_confirm():
 	state.abandon_area()
 	open_explore()
 
+func on_advance_pressed():
+	if input_handler.curtains != null:
+		var curtain_time = 0.5
+		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
+		yield(get_tree().create_timer(curtain_time), 'timeout')
+	advance_area()
+	hide_combat_curtain()
 
 func advance_area():
 #	$AdvConfirm.visible = false

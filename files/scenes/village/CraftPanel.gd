@@ -107,20 +107,24 @@ func rebuild_gear_slot(node, data, newdata):
 		node.get_node("ResPanel").visible = true
 		input_handler.ClearContainer(node.get_node("VBoxContainer"), ['button'])
 		for res in newdata.cost:
+			var info
 			var icon
 			var has_amount
 			var res_text
 			if res == 'gold':
-				icon = Items.gold_icon
+				info = Items.gold_info
+				icon = info.icon
 				has_amount = state.money
 				res_text = String(newdata.cost[res])
 			else:
-				icon = Items.Items[res].icon#as it is now - items icons are loaded directly on start
+				info = Items.Items[res]
+				icon = info.icon#as it is now - items icons are loaded directly on start
 				has_amount = state.materials[res]
 				res_text = "%d/%d" % [newdata.cost[res], has_amount]
 			var panel = input_handler.DuplicateContainerTemplate(node.get_node("VBoxContainer"), 'button')
 			panel.get_node('icon').texture = icon
 			panel.get_node("Label").text = res_text
+			globals.connectmaterialtooltip(panel, info)
 			if newdata.cost[res] > has_amount:
 				node.get_node("Button").disabled = true
 				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)

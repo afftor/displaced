@@ -128,6 +128,11 @@ func show():
 	state.CurrentScreen = 'Village'
 #	globals.CurrentScene = self
 	.show()
+	input_handler.menu_node.update_return_button()
+
+func hide():
+	.hide()
+	input_handler.menu_node.update_return_button()
 
 func buildscreen(empty = null):
 	var res = false
