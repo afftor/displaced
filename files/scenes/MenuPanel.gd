@@ -5,9 +5,9 @@ func _ready():
 	resources.preload_res(click_sound)
 	if resources.is_busy(): yield(resources, "done_work")
 #warning-ignore:return_value_discarded
-	$VBoxContainer/Save.connect('pressed', $saveloadpanel, 'SavePanelOpen')
+	$VBoxContainer/Save.connect('pressed', $saveloadpanel, 'show')
 #warning-ignore:return_value_discarded
-	$VBoxContainer/Load.connect('pressed', $saveloadpanel, 'LoadPanelOpen')
+#	$VBoxContainer/Load.connect('pressed', $saveloadpanel, 'LoadPanelOpen')
 #warning-ignore:return_value_discarded
 	$VBoxContainer/Options.connect('pressed', self, 'OptionsOpen')
 #warning-ignore:return_value_discarded
@@ -19,12 +19,16 @@ func _ready():
 	$Options.raise()
 
 func show():
+	globals.make_save_screenshot()
 	.show()
-#	if globals.CurrentScene.get_node("ExploreScreen/combat") != null && globals.CurrentScene.get_node("ExploreScreen/combat").visible:
-	if state.CurrentScreen in ['Map', 'Village', 'Scene']: #can it be 'Scene'?
-		$VBoxContainer/Save.disabled = false
-	else:
-		$VBoxContainer/Save.disabled = true
+#	if state.CurrentScreen in ['Map', 'Village', 'Scene']: #can it be 'Scene'?
+#		$VBoxContainer/Save.disabled = false
+#	else:
+#		$VBoxContainer/Save.disabled = true
+
+func hide():
+	globals.free_save_screenshot()
+	.hide()
 
 func OptionsOpen():
 	$Options.open()

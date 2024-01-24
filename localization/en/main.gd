@@ -435,7 +435,6 @@ var TranslationDict = {
 	TOWNRETURN = "Return",
 
 	#Confirms
-
 	LEAVECONFIRM = "Leave to Main Menu? Unsaved progress will be lost. ",
 	LOADCONFIRM = "Load this save file?",
 	OVERWRITECONFIRM = "Overwrite this save file?",
@@ -443,6 +442,9 @@ var TranslationDict = {
 	STOPTASKCONFIRM = "Stop this job?",
 	SLAVEREMOVECONFIRM = "Expel this worker?",
 
+	#notes
+	NOSAVENAMENOTE = "Please, type a name for save file!",
+	SAVENAMEEXISTSNOTE = "Such save file exists already! Please, type a unique name.",
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
