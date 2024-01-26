@@ -1,10 +1,12 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
-onready var mode_panel = $modeselect
-onready var amount_panel = $SelectAmountPanel
-onready var reslist = $ScrollContainer/VBoxContainer
+onready var mode_panel = $Panel/modeselect
+onready var amount_panel = $Panel/SelectAmountPanel
+onready var reslist = $Panel/ScrollContainer/VBoxContainer
 
 
+func _enter_tree():
+	closebuttonoffset = [16,44]
 
 func update_data():
 	input_handler.ClearContainer(reslist, ['Button'])
@@ -12,7 +14,7 @@ func update_data():
 		var panel = input_handler.DuplicateContainerTemplate(reslist, 'Button')
 		build_res(panel, id)
 		panel.connect('pressed', mode_panel, 'open', [id])
-	$HBoxContainer/money.text = str(state.money)
+	$Panel/HBoxContainer/money.text = str(state.money)
 
 
 func build_res(panel, item_id):
