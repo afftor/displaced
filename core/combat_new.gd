@@ -972,10 +972,12 @@ func victory():
 	var close_button = $Rewards/CloseButton
 	var advance_button = $Rewards/AdvanceButton
 	var progress_label = $Rewards/progress
+	var unlock_panel = $Rewards/UnlockPanel
 	close_button.get_node("Label").text = tr('CLOSE')
 	close_button.disabled = true
 	advance_button.disabled = true
 	progress_label.visible = false
+	unlock_panel.hide()
 	input_handler.StopMusic()
 	#on combat ends triggers
 	
@@ -1067,8 +1069,11 @@ func victory():
 		globals.connectmaterialtooltip(newbutton, Items.gold_info)
 	for id in rewardsdict.items:
 		var item = Items.Items[id]
-		state.materials[id] += rewardsdict.items[id]
+		var new_material = state.try_unlock_material(id)
+		state.add_materials(id, rewardsdict.items[id])
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		if new_material:
+			newbutton.set_meta("new_id", id)
 		newbutton.hide()
 		newbutton.texture = item.icon
 		newbutton.get_node("Label").text = str(rewardsdict.items[id])
@@ -1101,6 +1106,8 @@ func victory():
 		tween = input_handler.GetTweenNode(i)
 		yield(get_tree().create_timer(0.5), 'timeout')
 		i.show()
+		if i.has_meta("new_id"):
+			unlock_panel.show_material(i.get_meta("new_id"))
 		input_handler.PlaySound(sounds["itemget"])
 		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()

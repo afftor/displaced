@@ -202,7 +202,7 @@ func unlockupgrade():
 		if i == 'gold':
 			state.add_money(-upgrade.levels[next_level].cost[i], false)
 		else:
-			state.materials[i] -= upgrade.levels[next_level].cost[i]
+			state.add_materials(i, -upgrade.levels[next_level].cost[i])
 	
 	if state.townupgrades.has(upgrade.code):
 		state.townupgrades[upgrade.code] += 1

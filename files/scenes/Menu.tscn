@@ -145,10 +145,14 @@ margin_bottom = 394.0
 
 [node name="saveloadpanel" parent="." instance=ExtResource( 17 )]
 visible = false
-margin_left = 594.0
-margin_top = 212.0
-margin_right = 1221.0
-margin_bottom = 735.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -562.0
+margin_top = -434.5
+margin_right = 562.0
+margin_bottom = 434.5
 
 [node name="version" type="Label" parent="."]
 margin_right = 168.0

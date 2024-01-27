@@ -73,6 +73,7 @@ var textcodedict = {
 	color = {start = '[color=', end = '[/color]'},
 	url = {start = '[url=',end = '[/url]'}
 }
+var save_screenshot :Image
 
 var globalsettings = {
 	ActiveLocalization = 'en',
@@ -636,21 +637,39 @@ func scanfolder(path): #makes an array of all folders in modfolder
 			file_name = dir.get_next()
 		return array
 
-
+#seems not in use
 func QuickSave():
-	SaveGame('QuickSave');
-	pass
+	make_save_screenshot()
+	SaveGame('QuickSave')
+	free_save_screenshot()
 
+func make_save_screenshot():
+	save_screenshot = get_viewport().get_texture().get_data()
 
-
+func free_save_screenshot():
+	save_screenshot = null
 
 func SaveGame(name):
 #	if state.CurEvent != '':
 #		state.CurrentLine = input_handler.get_spec_node(input_handler.NODE_EVENT).CurrentLine
 	var savedict = state.serialize();
-	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
+	var file_name = userfolder + 'saves/' + name
+	file.open(file_name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
+	
+	if save_screenshot:
+		var target_width :int = 480
+		var target_height :int = 270
+		if (save_screenshot.get_width() != target_width
+				or save_screenshot.get_height() != target_height):
+			save_screenshot.flip_y()
+			var resize_height :int = (
+				(float(target_width) / save_screenshot.get_width())
+				* save_screenshot.get_height())
+			save_screenshot.resize(target_width, resize_height)
+			save_screenshot.crop(target_width, target_height)
+		save_screenshot.save_png(file_name + '.png')
 
 
 func LoadGame(filename):
@@ -705,7 +724,7 @@ func get_last_save():
 	var tmp = File.new()
 	var max_time = 0
 	var oldest_file
-	for i in dir_contents(userfolder + 'saves'):
+	for i in dir:
 		if i.ends_with('.sav') == false:
 			continue
 		var file_time = tmp.get_modified_time(i)

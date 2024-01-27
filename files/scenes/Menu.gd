@@ -61,7 +61,7 @@ func CloseDemoWarn():
 	$DemoPanel.hide()
 
 func loadwindow():
-	$saveloadpanel.LoadPanelOpen()
+	$saveloadpanel.show(true)
 
 func options():
 	$Options.open()
