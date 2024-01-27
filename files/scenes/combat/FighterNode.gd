@@ -16,6 +16,7 @@ var position = 0
 var fighter
 #var RMBpressed = false
 var mouse_in_me = false
+var unreachable = false
 
 var anim_up = true
 #var hightlight = false
@@ -293,8 +294,6 @@ func process_sfx_dict(dict):
 
 
 func process_sound(sound):
-	if !sound.begins_with('sound/'):
-		sound = 'sound/' + sound
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
 	animation_node.add_new_data(data)
 
@@ -307,16 +306,17 @@ func rebuildbuffs():
 #	animation_node.add_new_data(data)
 
 func process_enable():
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'enable', slot = 'full', params = {}}
-	animation_node.add_new_data(data)
+	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'enable', slot = 'full', params = {}})
 	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'gray_out', slot = 'full', params = {undo = true}})
+	if fighter is hero:
+		panel_node.gray_out_undo()#animation_node creates tween, which breaks disable_panel_node()
 
 func process_disable():
 	disabled = true
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'disable', slot = 'full', params = {}}
-	animation_node.add_new_data(data)
+	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'disable', slot = 'full', params = {}})
 	animation_node.add_new_data({node = self, time = input_handler.combat_node.turns, type = 'gray_out', slot = 'full', params = {undo = false}})
-	
+	if fighter is hero:
+		panel_node.gray_out()#animation_node creates tween, which breaks disable_panel_node()
 
 func appear():#stub
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'reappear', slot = 'full', params = {}}
@@ -417,6 +417,7 @@ func update_hp_label(newhp):
 #highlight modes
 func stop_highlight():
 	$sprite.material.set_shader_param('opacity', 0.0)
+	unmark_unreachable()
 #	hightlight = false
 
 func highlight_active():
@@ -426,41 +427,44 @@ func highlight_active():
 	$sprite.material.set_shader_param('opacity', 0.9)
 	$sprite.material.set_shader_param('outline_color', Color(1, 1, 0.35))
 
-func highlight_hover():#is it in use?
-#	hightlight = true
-#	highlight_animated = false
-	$sprite.material.set_shader_param('opacity', 0.8)
-	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
+#seems not in use, while T_OVERATTACKALLY is not in use
+#func highlight_hover():
+##	hightlight = true
+##	highlight_animated = false
+#	$sprite.material.set_shader_param('opacity', 0.8)
+#	$sprite.material.set_shader_param('outline_color', Color(0.9, 0.9, 0.25))
 
 func highlight_target_ally():
 #	hightlight = true
 #	highlight_animated = true
-	$sprite.material.set_shader_param('outline_width', 1.0)
+	$sprite.material.set_shader_param('outline_width', 2.0)
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
 
-func highlight_target_ally_final():
-#	hightlight = true
-#	highlight_animated = false
-#	$sprite.material.set_shader_param('opacity', 0.8)
-#	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
-	#without animation they are same at the moment
-	highlight_target_ally()
+#got old
+#func highlight_target_ally_final():
+##	hightlight = true
+##	highlight_animated = false
+##	$sprite.material.set_shader_param('opacity', 0.8)
+##	$sprite.material.set_shader_param('outline_color', Color(0.0, 0.9, 0.0))
+#	#without animation they are same at the moment
+#	highlight_target_ally()
 
 func highlight_target_enemy():
 #	hightlight = true
 #	highlight_animated = true
-	$sprite.material.set_shader_param('outline_width', 1.0)
+	$sprite.material.set_shader_param('outline_width', 2.0)
 	$sprite.material.set_shader_param('opacity', 0.8)
 	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
 
-func highlight_target_enemy_final():
-#	hightlight = true
-#	highlight_animated = false
-#	$sprite.material.set_shader_param('opacity', 0.8)
-#	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
-	#without animation they are same at the moment
-	highlight_target_enemy()
+#got old
+#func highlight_target_enemy_final():
+##	hightlight = true
+##	highlight_animated = false
+##	$sprite.material.set_shader_param('opacity', 0.8)
+##	$sprite.material.set_shader_param('outline_color', Color(1, 0.0, 0.0))
+#	#without animation they are same at the moment
+#	highlight_target_enemy()
 
 #disable-enable temporaly switched off. As they seems only have been attuning sprites, it is no longer needed with new set_sprite() logic
 #but, as I am not sure if this truly was there only function, I am leaving legecy code for a while
@@ -500,6 +504,14 @@ func enable():
 ##		$sprite.rect_position.x -= ($sprite.rect_size.x - tmp2) / 2
 #	regenerate_click_mask()
 
+func mark_unreachable():
+	unreachable = true
+	modulate = Color(0.4, 0.4, 0.4, 1)
+
+func unmark_unreachable():
+	if unreachable:
+		unreachable = false
+		modulate = Color(1, 1, 1, 1)
 
 func disable_panel_node():
 	panel_node.disabled = true

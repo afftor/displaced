@@ -29,16 +29,24 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_text = "Load/Overwrite?"
 text = "Load/Overwrite?"
 
-[node name="Confirm" type="TextureButton" parent="."]
+[node name="buttons" type="HBoxContainer" parent="."]
 margin_left = 30.0
 margin_top = 164.0
-margin_right = 192.0
+margin_right = 437.0
 margin_bottom = 211.0
+custom_constants/separation = 80
+alignment = 1
+
+[node name="Confirm" type="TextureButton" parent="buttons"]
+margin_left = 1.0
+margin_right = 163.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 162, 47 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="Confirm"]
+[node name="Label" type="Label" parent="buttons/Confirm"]
 margin_left = 13.0
 margin_top = 13.0
 margin_right = 136.0
@@ -47,16 +55,16 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CONFIRM"
 align = 1
 
-[node name="Cancel" type="TextureButton" parent="."]
-margin_left = 277.0
-margin_top = 164.0
-margin_right = 439.0
-margin_bottom = 211.0
+[node name="Cancel" type="TextureButton" parent="buttons"]
+margin_left = 243.0
+margin_right = 405.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 162, 47 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="Cancel"]
+[node name="Label" type="Label" parent="buttons/Cancel"]
 margin_left = 13.0
 margin_top = 13.0
 margin_right = 136.0

@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/shop/panel_shop_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/universal/closebuttonpress.png" type="Texture" id=6]
+[ext_resource path="res://files/scenes/UnlockPanel.gd" type="Script" id=7]
+[ext_resource path="res://assets/images/gui/universal/closebuttonhl.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/universal/closebutton.png" type="Texture" id=10]
+
+[node name="UnlockPanel" type="Control"]
+margin_left = 1367.0
+margin_top = 39.0
+margin_right = 1897.0
+margin_bottom = 1035.0
+mouse_filter = 1
+script = ExtResource( 7 )
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -522.0
+alignment = 1
+
+[node name="panel" type="Control" parent="HBoxContainer"]
+margin_top = 398.0
+margin_right = 522.0
+margin_bottom = 598.0
+rect_min_size = Vector2( 522, 200 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/panel"]
+margin_left = 81.0
+margin_top = 25.0
+margin_right = 436.0
+margin_bottom = 108.0
+custom_constants/separation = 7
+alignment = 1
+
+[node name="icon_border" type="TextureRect" parent="HBoxContainer/panel/HBoxContainer"]
+margin_left = 101.0
+margin_right = 181.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 80, 82 )
+texture = ExtResource( 9 )
+
+[node name="icon" type="TextureRect" parent="HBoxContainer/panel/HBoxContainer/icon_border"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="name" type="Label" parent="HBoxContainer/panel/HBoxContainer"]
+margin_left = 188.0
+margin_top = 29.0
+margin_right = 253.0
+margin_bottom = 53.0
+text = "name"
+
+[node name="info" type="Label" parent="HBoxContainer/panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = -90.0
+margin_right = -34.0
+margin_bottom = -39.0
+text = "UNLOCKMATERIAL"
+align = 1
+autowrap = true
+
+[node name="close_btn" type="TextureButton" parent="HBoxContainer/panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -59.0
+margin_top = 8.0
+margin_right = -10.0
+margin_bottom = 57.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 8 )
+
+[node name="close_all_btn-del" type="TextureButton" parent="."]
+visible = false
+margin_left = -199.0
+margin_top = 472.0
+margin_right = -12.0
+margin_bottom = 528.0
+rect_min_size = Vector2( 162, 47 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="close_all_btn-del"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -12.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CLOSEALL"
+align = 1

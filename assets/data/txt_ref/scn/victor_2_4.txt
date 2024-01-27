@@ -32,41 +32,41 @@ Being close to the streams, a shining essence has been drawn from Ember's hands.
 The essence near ember began to form into a dragon shape.
 Em - Is this...
 Em - M-mother?
-DrJr - Yes. 
-DrJr - This seems to be at an end.
-DrJr - I'm proud of you, Ember. 
-DrJr - Sorry, I was a terrible parent. 
+Ezet - Yes.
+Ezet - This seems to be at an end.
+Ezet - I'm proud of you, Ember.
+Ezet - Sorry, I was a terrible parent.
 Em - No.
 Em - You were with me all this time. 
 Em - And you gave birth to me.
-DrJr - You've grown well.
+Ezet - You've grown well.
 Em - Thank you.
 Em - What happens now?
-DrJr - You have freed their souls.
-DrJr - Now they can be reborn into a new hatchling. 
+Ezet - You have freed their souls.
+Ezet - Now they can be reborn into a new hatchling.
 Em - So, we saved them?
-DrJr - Yes, you've done a great deed.
-DrJr - But it seems I'll have to go too. 
+Ezet - Yes, you've done a great deed.
+Ezet - But it seems I'll have to go too.
 Em - ...
 Em - Thanks for staying with me all this time. 
-DrJr - Heh, I was sure you'd be crying here.
+Ezet - Heh, I was sure you'd be crying here.
 Em - Maybe we can meet again?
-DrJr - After rebirth we will not remember who we were in previous life.
-DrJr - But I'm glad you have found your place and friends you can rely on. 
-DrJr - Arron. You are still to face great dangers, but I trust you to take care of my daughter. 
+Ezet - After rebirth we will not remember who we were in previous life.
+Ezet - But I'm glad you have found your place and friends you can rely on.
+Ezet - Arron. You are still to face great dangers, but I trust you to take care of my daughter.
 Ar - Hmm... I'm not sure I'm up to the responsibility yet. 
-DrJr - Don't worry, I'm  sure you can make Ember some fine offspring with some practice.
+Ezet - Don't worry, I'm  sure you can make Ember some fine offspring with some practice.
 Em - Eh?!
-DrJr - After all I've almost had first-hand experience.
+Ezet - After all I've almost had first-hand experience.
 Ar - You had what?!
-DrJr - Don't act so surprised now. 
-DrJr - My daughter is too innocent to take initiative, so I gave her a couple of hints.
+Ezet - Don't act so surprised now.
+Ezet - My daughter is too innocent to take initiative, so I gave her a couple of hints.
 Ar - ...And took some liberty in the bedroom...?
-DrJr - That was the best for all of us. 
-DrJr - But it's time for me to go. 
-DrJr - Good luck, children. 
+Ezet - That was the best for all of us.
+Ezet - But it's time for me to go.
+Ezet - Good luck, children.
 With last words vanishing in the air so did the image of Ezet.
-=BG forest=
+=BG forest 1=
 Ar - ...Look, it wasn't as lewd as you imagine. 
 Ro - Disgusting.
 Em - Ah, so that's why I acted like that.

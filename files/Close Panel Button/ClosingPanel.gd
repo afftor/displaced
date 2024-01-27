@@ -4,7 +4,8 @@ var closebuttonoffset = [14,5]
 var closebutton
 #var open_sound = 'sound/menu_open'
 #var close_sound = 'sound/menu_close'
-var close_played = false
+var visible_ready = false
+var use_ready = false
 
 func _ready():
 
@@ -21,6 +22,7 @@ func _ready():
 	closebutton.raise()
 	closebutton.connect("pressed", self, 'hide')
 	RepositionCloseButton()
+	visible_ready = is_visible_in_tree()
 
 func RepositionCloseButton():
 	var rect = get_global_rect()
@@ -31,13 +33,22 @@ func show():
 	if resources.is_busy(): yield(resources, "done_work")
 	if !is_visible_in_tree():
 #		input_handler.PlaySound(open_sound)
-		close_played = false
 		input_handler.Open(self)
 	#globals.call_deferred("EventCheck");
 
+func on_open_finished():
+	visible_ready = true
+	use_ready = true
+
 func hide():
 	if resources.is_busy(): yield(resources, "done_work")
-	if is_visible_in_tree() && close_played == false:
+	if is_visible_in_tree() && visible_ready:
 #		input_handler.PlaySound(close_sound)
-		close_played = true
+		use_ready = false
 		input_handler.Close(self)
+
+func on_close_finished():
+	visible_ready = false
+
+func is_ready_to_use() ->bool:
+	return visible_ready

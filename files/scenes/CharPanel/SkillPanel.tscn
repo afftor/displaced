@@ -51,17 +51,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="StatsPanel"]
-margin_left = 41.0
-margin_top = 54.0
-margin_right = 220.0
-margin_bottom = 333.0
+[node name="icon_bounds" type="Control" parent="StatsPanel"]
+margin_left = 34.0
+margin_top = 51.0
+margin_right = 224.0
+margin_bottom = 335.0
+rect_clip_content = true
+
+[node name="icon" type="TextureRect" parent="StatsPanel/icon_bounds"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 179, 279 )
 texture = ExtResource( 5 )
-expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="StatsPanel"]
 margin_left = 28.8622
@@ -130,27 +136,30 @@ margin_top = 340.0
 margin_right = 201.809
 margin_bottom = 372.0
 size_flags_horizontal = 3
+alignment = 1
 
 [node name="stat" type="Label" parent="StatsPanel/dmg"]
-margin_right = 42.0
+margin_left = 10.0
+margin_right = 40.0
 margin_bottom = 32.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
-text = "ATK"
+text = "BD"
 align = 1
 
 [node name="value" type="Label" parent="StatsPanel/dmg"]
-margin_left = 46.0
-margin_right = 98.0
+margin_left = 44.0
+margin_right = 96.0
 margin_bottom = 32.0
+mouse_filter = 1
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "4000"
 align = 1
 
 [node name="icon" type="TextureRect" parent="StatsPanel/dmg"]
-margin_left = 102.0
-margin_right = 134.0
+margin_left = 100.0
+margin_right = 132.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 18 )

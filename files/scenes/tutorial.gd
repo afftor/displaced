@@ -57,6 +57,10 @@ func show_tut(text :String, buttons_seq :Array = [], delay :Dictionary = {}, no_
 			node_panel.rect_position = panel_pos
 			var has_intersections = false
 			for btn_id in cur_button_seq:
+				var btn_ready = TutorialCore.refresh_dynamic_button(btn_id)
+				if !btn_ready:
+					has_intersections = true
+					break
 				var highlighter_rect = Rect2(
 						TutorialCore.get_button_pos(btn_id), 
 						TutorialCore.get_button_size(btn_id))
@@ -90,6 +94,7 @@ func highlight_next_button() ->void:
 		yield(get_tree().create_timer(cur_delay[btn_id]), 'timeout')
 		mouse_filter = MOUSE_FILTER_IGNORE
 	
+	TutorialCore.refresh_dynamic_button(btn_id)
 	node_highlighter.rect_position = TutorialCore.get_button_pos(btn_id)
 	node_highlighter.rect_size = TutorialCore.get_button_size(btn_id)
 	calculate_screen()

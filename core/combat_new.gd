@@ -22,7 +22,6 @@ onready var resist_tooltip = $ResistToolTipCont/ResistToolTip
 var debug = false
 
 var allowaction = false
-var highlightargets = false
 var allowedtargets = {'ally':[],'enemy':[]}
 var swapchar = null
 
@@ -114,7 +113,7 @@ enum {
  T_SKILLATTACK, #attacking skill selected - T_CHARSELECT + T_SKILLSUPPORT
  T_OVERATTACK, #over possible target for attack
  T_OVERSUPPORT, #over possible target for suuport
- T_OVERATTACKALLY, #over friendly char while having attacking skill selected
+# T_OVERATTACKALLY,#seems not working now #over friendly char while having attacking skill selected
  T_AUTO #animations active
 }
 var cur_state = T_AUTO
@@ -146,7 +145,8 @@ func _ready():
 #warning-ignore:return_value_discarded
 #	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 #warning-ignore:return_value_discarded
-	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true])
+	$Rewards/CloseButton.connect("pressed",self,'FinishCombat', [true, false])
+	$Rewards/AdvanceButton.connect("pressed",self,'FinishCombat', [true, true])
 	$LevelUp/panel/CloseButton.connect("pressed",self,'on_level_up_close')
 	
 	TutorialCore.register_static_button("enemy",
@@ -536,7 +536,7 @@ func ActivateItem(item):
 
 func SelectSkill(skill, system = false):
 	swapchar = null
-	activecharacter.displaynode.highlight_active()
+#	activecharacter.displaynode.highlight_active()
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
 	#need to add daily restriction check
@@ -969,7 +969,15 @@ func victory():
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
-	$Rewards/CloseButton.disabled = true
+	var close_button = $Rewards/CloseButton
+	var advance_button = $Rewards/AdvanceButton
+	var progress_label = $Rewards/progress
+	var unlock_panel = $Rewards/UnlockPanel
+	close_button.get_node("Label").text = tr('CLOSE')
+	close_button.disabled = true
+	advance_button.disabled = true
+	progress_label.visible = false
+	unlock_panel.hide()
 	input_handler.StopMusic()
 	#on combat ends triggers
 	
@@ -1037,7 +1045,8 @@ func victory():
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, newbutton.get_node("xpbar").max_value, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
-			subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
+			if leveled_up_chars.empty():#honestly, should refactor that shit, so levelup sound would play once, outside of subtweens
+				subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
 			leveled_up_chars.push_back(i)
 		elif i.level == level && i.baseexp >= i.get_exp_cap() :
 			newbutton.get_node("xpbar").value = 100
@@ -1057,10 +1066,14 @@ func victory():
 		newbutton.hide()
 		newbutton.texture = load("res://assets/images/iconsitems/gold.png")
 		newbutton.get_node("Label").text = str(rewardsdict.gold)
+		globals.connectmaterialtooltip(newbutton, Items.gold_info)
 	for id in rewardsdict.items:
 		var item = Items.Items[id]
-		state.materials[id] += rewardsdict.items[id]
+		var new_material = state.try_unlock_material(id)
+		state.add_materials(id, rewardsdict.items[id])
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		if new_material:
+			newbutton.set_meta("new_id", id)
 		newbutton.hide()
 		newbutton.texture = item.icon
 		newbutton.get_node("Label").text = str(rewardsdict.items[id])
@@ -1093,12 +1106,29 @@ func victory():
 		tween = input_handler.GetTweenNode(i)
 		yield(get_tree().create_timer(0.5), 'timeout')
 		i.show()
+		if i.has_meta("new_id"):
+			unlock_panel.show_material(i.get_meta("new_id"))
 		input_handler.PlaySound(sounds["itemget"])
 		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()
 	
 	#yield(get_tree().create_timer(1), 'timeout')
-	$Rewards/CloseButton.disabled = false
+	if input_handler.explore_node != null:
+		var explore_node = input_handler.explore_node
+		var area_stage = explore_node.get_area_stage()
+		var area_stage_num = explore_node.get_area_stage_num()
+		progress_label.text = "%d/%d" % [area_stage, area_stage_num]
+		progress_label.visible = true
+		if explore_node.is_last_stage():
+			close_button.get_node("Label").text = tr('FINISH')
+			close_button.disabled = false
+		else:
+			if !explore_node.has_auto_advance():
+				close_button.disabled = false
+			advance_button.disabled = false
+	else:
+		close_button.disabled = false
+	
 
 func on_level_up_close():
 	if leveled_up_chars.size() > 0:
@@ -1142,7 +1172,7 @@ func fill_up_level_up(character):
 			if skill_num == 1:#unfortunately for this time we can't have more than 2 skills at lvl-up
 				break
 
-func FinishCombat(value):
+func FinishCombat(victorious :bool, do_advance :bool = false):
 	if fight_finished: #not sure if it's necessary, but for the time I cann't predict all checkwinlose situations
 		print("!ALERT! FinishCombat used inappropriately")
 		return
@@ -1181,7 +1211,7 @@ func FinishCombat(value):
 	hide()
 	emit_signal("combat_ended")
 	if input_handler.explore_node != null:
-		input_handler.explore_node.combat_finished(value)
+		input_handler.explore_node.combat_finished(victorious, do_advance)
 	elif input_handler.curtains != null:
 		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
 
@@ -1241,8 +1271,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	if rangetype == 'weapon':
 		rangetype = fighter.get_weapon_range()
 	
-	highlightargets = true
-	
 	if targetgroups.has('enemy'):
 		var t_targets
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
@@ -1261,13 +1289,18 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		allowedtargets.ally.append(int(fighter.position))
 	
 	if glow_skip: return
-	
+	highlight_skill_targets()
+
+func highlight_skill_targets():
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
+	for pos in range(4,10):
+		if battlefield[pos] != null:
+			battlefield[pos].displaynode.mark_unreachable()
 	for pos in allowedtargets.enemy:
-		battlefieldpositions[pos].highlight_target_enemy()
-	for pos in allowedtargets.ally:
-		battlefield[pos].displaynode.highlight_target_ally()
+		battlefield[pos].displaynode.unmark_unreachable()
+#	for pos in allowedtargets.ally:
+#		battlefield[pos].displaynode.highlight_target_ally()
 	activecharacter.displaynode.highlight_active()
 
 
@@ -1360,7 +1393,7 @@ func refine_target(skill, caster, target): #s_skill, caster, target_positin
 			return caster.position
 
 
-func CalculateTargets(skill, caster, target_pos, finale = false):
+func CalculateTargets(skill, caster, target_pos):#finale = false
 	#if target == null: return
 	var target = battlefield[target_pos]
 	var array = []
@@ -1451,11 +1484,24 @@ func CalculateTargets(skill, caster, target_pos, finale = false):
 			var tpos2 = []
 			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
 			array = tpos2
-	if (!finale) and skill.tags.has('random_target'):
-		array.clear()
-		for pos in allowedtargets.enemy + allowedtargets.ally:
-			var tchar = battlefield[pos]
-			array.push_back(tchar)
+	
+	#seems not in use
+#	if !finale and skill.tags.has('random_target'):
+#		true_targets.clear()
+#		for pos in allowedtargets.enemy + allowedtargets.ally:
+#			var tchar = battlefield[pos]
+#			true_targets.push_back(tchar)
+	return array
+
+func CalculateTargetsHighlight(skill, caster, target_pos):
+	var array = CalculateTargets(skill, caster, target_pos)
+	if skill.has("follow_up"):
+		var follow_up_skill = Skillsdata.patch_skill(skill.follow_up, caster)
+		if follow_up_skill.targetpattern != skill.targetpattern:
+			var add_targets = CalculateTargets(follow_up_skill, caster, target_pos)
+			for new_target in add_targets:
+				if !array.has(new_target):
+					array.append(new_target)
 	return array
 
 
@@ -1487,45 +1533,49 @@ func FighterMouseOver(position):
 				Input.set_custom_mouse_cursor(cursors.support)
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
+				activecharacter.displaynode.highlight_active()
 				var cur_targets = []
 				if swapchar != null:
 					cur_targets = [fighter]
 				else:
-					cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+					cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
-					ch.displaynode.highlight_target_ally_final()
+					ch.displaynode.highlight_target_ally()
 				cur_state = T_OVERSUPPORT
 				return
-			if position in allowedtargets.enemy:
-				Input.set_custom_mouse_cursor(cursors.attack)
-				for pos in allowedtargets.ally + allowedtargets.enemy:
-					battlefield[pos].displaynode.stop_highlight()
-				var cur_targets = []
-				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
-				for ch in cur_targets:
-					ch.displaynode.highlight_target_enemy_final()
-				cur_state = T_OVERSUPPORT
-				return
+			#probably impossible
+#			if position in allowedtargets.enemy:
+#				Input.set_custom_mouse_cursor(cursors.attack)
+#				for pos in allowedtargets.ally + allowedtargets.enemy:
+#					battlefield[pos].displaynode.stop_highlight()
+#				activecharacter.displaynode.highlight_active()
+#				var cur_targets = []
+#				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+#				for ch in cur_targets:
+#					ch.displaynode.highlight_target_enemy()
+#				cur_state = T_OVERSUPPORT
+#				return
 		T_SKILLATTACK:
-			if position in allowedtargets.ally:
-				for pos in allowedtargets.ally + allowedtargets.enemy:
-					battlefield[pos].displaynode.stop_highlight()
-				if fighter.defeated : return
-				if fighter.acted: return
-				node.highlight_hover()
-				cur_state = T_OVERATTACKALLY
-				return
+			#probably impossible
+#			if position in allowedtargets.ally:
+#				for pos in allowedtargets.ally + allowedtargets.enemy:
+#					battlefield[pos].displaynode.stop_highlight()
+#				if fighter.defeated : return
+#				if fighter.acted: return
+#				node.highlight_hover()
+#				cur_state = T_OVERATTACKALLY
+#				return
 			if position in allowedtargets.enemy:
 				Input.set_custom_mouse_cursor(cursors.attack)
 				for pos in allowedtargets.ally + allowedtargets.enemy:
 					battlefield[pos].displaynode.stop_highlight()
 				var cur_targets = []
-				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+				cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
-					ch.displaynode.highlight_target_enemy_final()
+					ch.displaynode.highlight_target_enemy()
 				cur_state = T_OVERATTACK
 				return
-		T_OVERSUPPORT, T_OVERATTACK, T_OVERATTACKALLY:
+		T_OVERSUPPORT, T_OVERATTACK:#T_OVERATTACKALLY
 			print("warning - mouseover while targets highlighted")
 
 
@@ -1544,28 +1594,16 @@ func FighterMouseOverFinish(position):
 #			if fighter.acted: return
 #			node.stop_highlight()
 		T_OVERATTACK, T_OVERSUPPORT:
-			for nd in battlefieldpositions.values():
-				nd.stop_highlight()
-			for pos in allowedtargets.enemy:
-				battlefieldpositions[pos].highlight_target_enemy()
-			for pos in allowedtargets.ally:
-				battlefield[pos].displaynode.highlight_target_ally()
+			highlight_skill_targets()
 			if cur_state == T_OVERATTACK:
 				cur_state = T_SKILLATTACK
 			else:
 				cur_state = T_SKILLSUPPORT
-			activecharacter.displaynode.highlight_active()
 			return
-		T_OVERATTACKALLY:
-			for nd in battlefieldpositions.values():
-				nd.stop_highlight()
-			for pos in allowedtargets.enemy:
-				battlefieldpositions[pos].highlight_target_enemy()
-#			for pos in allowedtargets.ally:
-#				battlefieldpositions[pos].highlight_target_ally()
-			cur_state = T_SKILLATTACK
-			activecharacter.displaynode.highlight_active()
-			return
+#		T_OVERATTACKALLY:
+#			highlight_skill_targets()
+#			cur_state = T_SKILLATTACK
+#			return
 		T_SKILLSUPPORT, T_SKILLATTACK:
 			if !(position in allowedtargets.ally + allowedtargets.enemy):
 				return
@@ -1599,18 +1637,18 @@ func FighterPress(position):
 						activecharacter.skills_autoselect.push_back(activeaction)
 					use_skill(activeaction, activecharacter, position)
 			return
-		T_OVERATTACKALLY:
-			if allowedtargets.enemy.has(position):
-				cur_state = T_AUTO
-				activecharacter.skills_autoselect.push_back(activeaction)
-				use_skill(activeaction, activecharacter, position)
-			elif position in variables.playerparty:
-				if battlefield[position] == null: return
-				if battlefield[position].acted: return
-				if battlefield[position].defeated: return
-				cur_state = T_AUTO
-				player_turn(position)
-			return
+#		T_OVERATTACKALLY:
+#			if allowedtargets.enemy.has(position):
+#				cur_state = T_AUTO
+#				activecharacter.skills_autoselect.push_back(activeaction)
+#				use_skill(activeaction, activecharacter, position)
+#			elif position in variables.playerparty:
+#				if battlefield[position] == null: return
+#				if battlefield[position].acted: return
+#				if battlefield[position].defeated: return
+#				cur_state = T_AUTO
+#				player_turn(position)
+#			return
 		T_SKILLSUPPORT:
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
@@ -1646,11 +1684,18 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 		'full':
 			return $battlefield
 
+func sound_from_fighter(sound :String, fighter):
+	if !sound.begins_with('sound/'):
+		sound = 'sound/' + sound
+	if fighter and fighter.displaynode:
+		fighter.displaynode.process_sound(sound)
+	else:
+		input_handler.PlaySound(sound)
+
 #those vars seemed to be in use only for "enable_followup" effect in trigger-type effects,
 #wich for this moment used only once, and the case is seems to be outdated and doesn't work anymore for other reasons
 #var follow_up_skill = null
 #var follow_up_flag = false
-
 
 #skill use
 func use_skill(skill_code, caster, target_pos): #code, caster, target_position
@@ -1721,7 +1766,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	#========windup animation and initiate sound
 	#for sure at windup there should not be real_target-related animations
 	if skill.has('sounddata') and skill.sounddata.initiate != null:
-		caster.displaynode.process_sound(skill.sounddata.initiate)
+		sound_from_fighter(skill.sounddata.initiate, caster)
 	for i in animationdict.windup:
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 		sfxtarget.process_sfx_dict(i)
@@ -1753,16 +1798,16 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		target = battlefield[target_pos]
 		if target == null and !skill.tags.has('empty_target'):
 			continue
-		targets = CalculateTargets(skill, caster, target_pos, true)
+		targets = CalculateTargets(skill, caster, target_pos)#finale = true
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:
 			#======predamage animation and strike sound
 			if skill.has('sounddata') and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
-					caster.displaynode.process_sound(get_weapon_sound(caster))
+					sound_from_fighter(get_weapon_sound(caster), caster)
 				else:
-					caster.displaynode.process_sound(skill.sounddata.strike)
+					sound_from_fighter(skill.sounddata.strike, caster)
 			for j in animationdict.predamage:
 #				if j.has('once') and j.once and n > 1: continue
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
@@ -1803,11 +1848,11 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#=========postdamage animation and hit sound
 				if skill.has('sounddata') and skill.sounddata.hit != null:
 					if skill.sounddata.hittype == 'absolute':
-						s_skill2.target.displaynode.process_sound(skill.sounddata.hit)
+						sound_from_fighter(skill.sounddata.hit, s_skill2.target)
 					elif skill.sounddata.hittype == 'bodyhitsound':
-						s_skill2.target.displaynode.process_sound(s_skill2.target.bodyhitsound)
+						sound_from_fighter(s_skill2.target.bodyhitsound, s_skill2.target)
 					elif skill.sounddata.hittype == 'bodyarmor':
-						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
+						sound_from_fighter(calculate_hit_sound(skill, caster, s_skill2.target), s_skill2.target)
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)

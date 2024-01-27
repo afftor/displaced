@@ -24,8 +24,8 @@ var heroes_save
 #var items := {}
 #var items_save
 var materials := {}
+var materials_unlocks := {}
 var lognode
-var unlocks := []
 
 var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
 var characters = ['arron', 'rose', 'erika', 'ember', 'iola', 'rilu']
@@ -97,9 +97,8 @@ func revert():
 	reset_heroes()
 	reset_inventory()
 #	items.clear()
-	materials.clear()
+#	materials.clear()#reset_inventory() made this
 	lognode = null
-	unlocks.clear()
 	combatparty = {1 : null, 2 : null, 3 : null}
 	scene_restore_data = {}
 	CurrentScreen = null
@@ -413,7 +412,7 @@ func serialize():
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurEvent', 'mainprogress', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea', 'screen', 'CurrentScreen']
-	var arr2 = ['town_save', 'materials', 'unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'scene_restore_data']
+	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'scene_restore_data']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
@@ -424,12 +423,14 @@ func serialize():
 func deserialize(tmp:Dictionary):
 	effects_pool.deserialize(tmp['effects'])
 	tmp.erase('effects')
+	materials_unlocks.clear()#only for old savegame compatibility
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
 	emit_signal("money_changed")
 	for id in materials:
 		materials[id] = int(materials[id])
 	refill_materials()
+	update_materials_unlocks()
 	cleanup()
 	combatparty.clear()
 	for key in heroes_save.keys():
@@ -491,12 +492,28 @@ func reset_inventory():
 	#temporal version
 	materials.clear()
 	refill_materials()
-
+	materials_unlocks.clear()
 
 func refill_materials():
 	for id in Items.Items:
 		if !materials.has(id): materials[id] = 0
 
+func update_materials_unlocks():
+	for id in materials:
+		if materials[id] > 0:
+			try_unlock_material(id)
+
+func is_material_unlocked(id :String) ->bool:
+	if materials_unlocks.has(id):
+		return materials_unlocks[id]
+	return false
+
+func try_unlock_material(id :String) ->bool:#true if success
+	assert(Items.Items.has(id), "try_unlock_material trying to unlock unexistant material!")
+	if is_material_unlocked(id):
+		return false
+	materials_unlocks[id] = true
+	return true
 
 func system_action(action):
 	match action.value:
@@ -510,8 +527,9 @@ func system_action(action):
 			unlock_char(action.arg)
 		'game_stage':
 			ProgressMainStage(action.arg)
-		'unlock_building':
-			make_upgrade(action.arg, 1)
+		#not in use now
+#		'unlock_building':
+#			make_upgrade(action.arg, 1)
 		'show_screen':
 			pass
 		'add_to_party':
@@ -537,10 +555,10 @@ func add_char_to_party(id, pos):
 		return
 	for i in heroes:
 		if heroes[i].position == pos:
-			heroes[i].position == null
+			heroes[i].position = null
 	heroes[id].position = pos
 
-
+#not realy in use, but could still be called by old code, consider refactor
 func make_upgrade(id, lvl):
 	#stub
 	#add checks, logging and signals
@@ -603,6 +621,8 @@ func add_materials(res, value, log_f = true):
 	var tmp = materials[res]
 	materials[res] += value
 	if materials[res] < 0: materials[res] = 0
+	#this probably should be done by hand somewhere, where we can popup UI with info on success
+	if materials[res] > 0: try_unlock_material(res)
 	if !log_f: return
 	tmp = materials[res] - tmp
 	if tmp > 0:

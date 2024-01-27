@@ -3,9 +3,9 @@
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG market=
-=BLACKFADE 1=
 =SPRITE flak=
 =SPRITE_UNFADE 0.3=
+=BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
 F - So she already left, huh.
@@ -21,6 +21,6 @@ Ar - ...
 F - Now go, I still have business to do.
 Ar(shock) - I swear, I’ll never do deliveries for you again.
 =GUI_HIDE=
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
 =STOP=

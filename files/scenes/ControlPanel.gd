@@ -6,20 +6,23 @@ var sounds = {
 	"itemget" : "sound/itemget"
 }
 
+export(Texture) var menu_home_icon
+export(Texture) var menu_world_icon
+
 func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
 	
 #	input_handler.SystemMessageNode = $SystemMessageLabel
-	$ControlPanel/Return.connect('pressed',self,'openvillage')
-#	$ControlPanel/Inventory.connect('pressed',self,'openinventory')
-	$ControlPanel/Inventory.connect('pressed',$Inventory,'open')
+	$ControlPanel/Return.connect('pressed', self, 'openvillage')
+	$ControlPanel/Inventory.connect('pressed', self, 'openinventory')
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 	$test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
 	state.connect("money_changed", self, "UpdateMoney")
+	update_return_button()
 
 func UpdateMoney():
 	$ControlPanel/Gold.text = str(state.money)
@@ -46,10 +49,18 @@ func GameOver():
 
 
 func openmenu():
-	if !$MenuPanel.visible:
-		$MenuPanel.show()
+	var node = $MenuPanel
+	if !node.visible:
+		node.show()
 	else:
-		$MenuPanel.hide()
+		node.hide()
+
+func openinventory():
+	var node = $Inventory
+	if !node.visible:
+		node.open()
+	else:
+		node.hide()
 
 func openherolist(toggled):
 	if $HeroList.visible == false:
@@ -73,6 +84,14 @@ func openvillage():
 		village.building_entered("bridge")
 	else:
 		input_handler.map_node.location_pressed("village")
+
+func update_return_button():
+	if input_handler.village_node.visible:
+		$ControlPanel/Return/TextureRect.texture = menu_world_icon
+		$ControlPanel/Return/Label.text = tr('MENU_WORLD')
+	else:
+		$ControlPanel/Return/TextureRect.texture = menu_home_icon
+		$ControlPanel/Return/Label.text = tr('MENU_HOME')
 
 func FadeToBlackAnimation(time = 1):
 	input_handler.UnfadeAnimation(BS, time)

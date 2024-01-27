@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/images/combat/arron_circle.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
 [ext_resource path="res://files/scenes/combat/ResistToolTip.tscn" type="PackedScene" id=30]
+[ext_resource path="res://files/scenes/UnlockPanel.tscn" type="PackedScene" id=31]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -537,9 +538,9 @@ margin_right = 1319.28
 margin_bottom = 1017.0
 
 [node name="CloseButton" type="TextureButton" parent="Rewards"]
-margin_left = 258.0
+margin_left = 438.0
 margin_top = 764.0
-margin_right = 396.0
+margin_right = 576.0
 margin_bottom = 832.0
 texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 22 )
@@ -551,7 +552,33 @@ margin_left = 2.0
 margin_top = 21.0
 margin_right = 135.0
 margin_bottom = 45.0
-text = "CLOSE"
+text = "FINISH"
+align = 1
+
+[node name="AdvanceButton" type="TextureButton" parent="Rewards"]
+margin_left = 78.8333
+margin_top = 764.0
+margin_right = 216.833
+margin_bottom = 832.0
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 23 )
+texture_disabled = ExtResource( 24 )
+
+[node name="Label" type="Label" parent="Rewards/AdvanceButton"]
+margin_left = 2.0
+margin_top = 21.0
+margin_right = 135.0
+margin_bottom = 45.0
+text = "ADVANCE"
+align = 1
+
+[node name="progress" type="Label" parent="Rewards"]
+margin_left = 260.833
+margin_top = 785.0
+margin_right = 393.833
+margin_bottom = 809.0
+text = "1/5"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Rewards"]
@@ -655,6 +682,14 @@ margin_bottom = 122.0
 custom_fonts/font = SubResource( 1 )
 text = "VICTORY"
 align = 1
+
+[node name="UnlockPanel" parent="Rewards" instance=ExtResource( 31 )]
+visible = false
+margin_left = 707.0
+margin_top = 59.0
+margin_right = 1237.0
+margin_bottom = 1055.0
+rect_scale = Vector2( 0.8, 0.8 )
 
 [node name="LevelUp" type="Control" parent="."]
 visible = false

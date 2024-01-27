@@ -30,13 +30,18 @@ func _init():
 func showup_material(node, item):
 	var text = ''
 	text = '[center]' + tr(item.name) + '[/center]\n' + tr(item.description)
-	if state.materials[item.code] > 0:
+	if item.itemtype == 'gold':
+		text += '\n\n' + tr("INPOSESSION") + ": " + str(state.money)
+	elif state.materials[item.code] > 0:
 		text += '\n\n' + tr("INPOSESSION") + ": " + str(state.materials[item.code])
 	textnode.bbcode_text = text
 	iconnode.texture = item.icon
 	iconnode.material = null
-#	$Cost/Label.text = str(Items.Items[item.code].price)
-	$Cost/Label.text = str(item.price)
+	if item.itemtype != 'gold':
+		$Cost.show()
+		$Cost/Label.text = str(item.price)
+	else:
+		$Cost.hide()
 	showup(node)
 
 #legacy code

@@ -234,26 +234,27 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="stat" type="Label" parent="Panel/StatsPanel/dmg"]
-margin_left = 39.0
-margin_right = 81.0
+margin_left = 45.0
+margin_right = 75.0
 margin_bottom = 32.0
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "ATK"
+text = "BD"
 align = 1
 
 [node name="value" type="Label" parent="Panel/StatsPanel/dmg"]
-margin_left = 85.0
-margin_right = 137.0
+margin_left = 79.0
+margin_right = 131.0
 margin_bottom = 32.0
+mouse_filter = 1
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "4000"
 align = 1
 
 [node name="icon" type="TextureRect" parent="Panel/StatsPanel/dmg"]
-margin_left = 141.0
-margin_right = 173.0
+margin_left = 135.0
+margin_right = 167.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 19 )

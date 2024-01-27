@@ -1,6 +1,6 @@
 ** iola_2_6 **
-=BLACKFADE 0.5=
-=DELAY 0.5=
+=BLACKFADE 1=
+=DELAY 1=
 =GUI_NORMAL=
 =BG hall=
 =SPRITE iola=
@@ -20,9 +20,12 @@ Ar - I see. So what is it?
 I - I'll need you to come to my room at tomorrow's morning after breakfast.
 Ar - Understood. 
 Next morning.
-=BLACKTRANS 0.5=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =SPRITE_HIDE=
 =BG villageday=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 =SOUND knocking=
 Ar - Iola? I'm here.
 I - One moment!
@@ -30,8 +33,12 @@ Ar - She must be preparing for something.
 I - You can come in.
 I - Ah, and close the door.
 Ar - Okay.
-=BLACKTRANS 0.5=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
 =MUSIC erotheme=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 As Arron makes his way inside, he discovers a fully naked Iola kneeling in front of him.
 Ar - ...
 I - Is something wrong? Are you displeased with me?
@@ -51,7 +58,8 @@ I - Oh... It's so big!
 I - Sorry, it's going to be my first time...
 I - We study a lot about human anatomy...
 I - But touching it personally feels completely different...
-I - Do I stroke it like this? 
+I - Do I stroke it like this?
+=GUI_FULL=
 =ABG iola_minet_1=
 Iola begins to move her hand over Arron's dick, slowly stroking his shaft.
 Ar - Y-yes.
@@ -113,7 +121,7 @@ I - ...!
 A hot salty stream of semen struck Iola's throat. 
 I - Mhm... *gulp* *gulp*
 I - Aah...
-Iola pulls Arron’s penis from her mouth as he’s still ejaculating and   a good part of his load splashes across her face.
+Iola pulls Arron’s penis from her mouth as he’s still ejaculating and a good part of his load splashes across her face.
 I - Sorry, I couldn't swallow it all.
 Ar - Don't push yourself too hard. Plenty of time to master swallowing.
 Ar - I'd rate it 9 out of 10 for the first time.
@@ -122,9 +130,14 @@ I - Thanks Arron.
 Ar - It's been a real pleasure.
 I - I hope we can practice together more in future.
 Ar - I could be persuaded.
-=BLACKTRANS 0.5=
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =BG villageday=
 =SPRITE iola=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
 Ar - So, I was just wondering one thing.
 Ar - Are you supposed to do it for anyone who asks?
 I - Well, actually there are options. 
