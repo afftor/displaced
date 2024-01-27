@@ -306,6 +306,7 @@ var TranslationDict = {
 	OPTIONS = 'Options',
 	QUIT = 'Quit',
 	CLOSE = "Close",
+	CLOSEALL = "Close all",
 	PROCEED = "Proceed",
 	FINISH = "Finish",
 	ADVANCE = "Advance",
@@ -445,6 +446,10 @@ var TranslationDict = {
 	#notes
 	NOSAVENAMENOTE = "Please, type a name for save file!",
 	SAVENAMEEXISTSNOTE = "Such save file exists already! Please, type a unique name.",
+
+	#unlocks
+	UNLOCKMATERIAL = "New material unlocked!\nYou can now trade it on the market.",
+	UNLOCKUSABLE = "New item unlocked!\nYou can now trade it on the market.",
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',

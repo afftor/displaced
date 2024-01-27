@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/images/combat/arron_circle.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
 [ext_resource path="res://files/scenes/combat/ResistToolTip.tscn" type="PackedScene" id=30]
+[ext_resource path="res://files/scenes/UnlockPanel.tscn" type="PackedScene" id=31]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -681,6 +682,14 @@ margin_bottom = 122.0
 custom_fonts/font = SubResource( 1 )
 text = "VICTORY"
 align = 1
+
+[node name="UnlockPanel" parent="Rewards" instance=ExtResource( 31 )]
+visible = false
+margin_left = 707.0
+margin_top = 59.0
+margin_right = 1237.0
+margin_bottom = 1055.0
+rect_scale = Vector2( 0.8, 0.8 )
 
 [node name="LevelUp" type="Control" parent="."]
 visible = false

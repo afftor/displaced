@@ -1,6 +1,6 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
-
+var shop_menu
 var max_v = 1
 
 var item_id = 'item_6_1'
@@ -9,6 +9,7 @@ var mode = M_SELL
 var amount = 0
 
 func _ready():
+	shop_menu = get_parent().get_parent()
 	$LineEdit.connect("text_entered", self, 'enter_amount')
 	$up.connect("pressed", self, 'change_amount', [1])
 	$down.connect("pressed", self, 'change_amount', [-1])
@@ -34,7 +35,7 @@ func confirm():
 			confirm_buy()
 		M_SELL:
 			confirm_sell()
-	get_parent().update_data()
+	shop_menu.update_data()
 	hide()
 
 

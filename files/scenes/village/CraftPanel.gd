@@ -142,7 +142,7 @@ func upgrade_slot(slot):
 		if res == 'gold':
 			state.add_money(-cost[res], false)
 		else:
-			state.materials[res] -= cost[res]
+			state.add_materials(res, -cost[res])
 	rebuild_gear()
 #	if tooltip.visible:
 #		rebuild_tooltip()

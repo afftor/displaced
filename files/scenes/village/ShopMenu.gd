@@ -11,6 +11,8 @@ func _enter_tree():
 func update_data():
 	input_handler.ClearContainer(reslist, ['Button'])
 	for id in Items.Items:
+		if !state.is_material_unlocked(id):
+			continue
 		var panel = input_handler.DuplicateContainerTemplate(reslist, 'Button')
 		build_res(panel, id)
 		panel.connect('pressed', mode_panel, 'open', [id])
