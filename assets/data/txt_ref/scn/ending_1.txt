@@ -74,8 +74,28 @@ I - It won't take more than a moment...
 Ar - Oh, one last thing.
 =SPRITE arron=
 Ro(shock) - There's still something left?
-Ar - I wish we'll meet again.
+Ar - I gonna wish that we'll meet again.
 =GUI_HIDE=
 =BLACKUNFADE 3=
 =DELAY 3=
 =STOP=
+
+
+
+Er - I'm planning to return to elven lands.
+Er - I wanna try getting my kin back in motion, you know.
+Em - That's so cool! 
+Em - I wish I could do things with my kin...
+Em(sad) - But I can only run my forge.
+Em(sad) - Uuuu, why do you have to leave, Sir Arron? *sob*
+I - Hey, don't act so childish. Look at Rilu. 
+Em - Really, you don't look mature.
+Er - Aren't Rilu's older than me, though? 
+Ri - I'm as old as I appear to be.
+Ro(sarcastic) - That's... not very clear definition.
+Ar - What are you planning to do, though? 
+Ri - ...I've been thinking about receiving some promised favors from certain individuals.
+I - Ah, right, once we finish with this I'll be helping you out, Rilu. 
+I - Since I'm also a new cult leader, I feel responsible.
+Ri - ...Thank you.
+
