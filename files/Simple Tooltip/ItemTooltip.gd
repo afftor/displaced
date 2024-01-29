@@ -29,15 +29,21 @@ func _init():
 
 func showup_material(node, item):
 	var text = ''
-	text = '[center]' + tr(item.name) + '[/center]\n' + tr(item.description)
-	if item.itemtype == 'gold':
-		text += '\n\n' + tr("INPOSESSION") + ": " + str(state.money)
-	elif state.materials[item.code] > 0:
-		text += '\n\n' + tr("INPOSESSION") + ": " + str(state.materials[item.code])
+	var unlocked = true
+	if Items.Items.has(item.code):#gold always unlocked
+		unlocked = state.is_material_unlocked(item.code)
+	if unlocked:
+		text = '[center]' + tr(item.name) + '[/center]\n' + tr(item.description)
+		if item.itemtype == 'gold':
+			text += '\n\n' + tr("INPOSESSION") + ": " + str(state.money)
+		elif state.materials[item.code] > 0:
+			text += '\n\n' + tr("INPOSESSION") + ": " + str(state.materials[item.code])
+	else:
+		text = "[center]%s[/center]" % tr('LOCKEDMATERIAL')
 	textnode.bbcode_text = text
 	iconnode.texture = item.icon
 	iconnode.material = null
-	if item.itemtype != 'gold':
+	if unlocked and item.itemtype != 'gold':
 		$Cost.show()
 		$Cost/Label.text = str(item.price)
 	else:

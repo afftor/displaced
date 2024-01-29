@@ -450,6 +450,7 @@ var TranslationDict = {
 	#unlocks
 	UNLOCKMATERIAL = "New material unlocked!\nYou can now trade it on the market.",
 	UNLOCKUSABLE = "New item unlocked!\nYou can now trade it on the market.",
+	LOCKEDMATERIAL = "Material yet unknown!",
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
