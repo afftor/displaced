@@ -439,7 +439,7 @@ var TranslationDict = {
 	LEAVECONFIRM = "Leave to Main Menu? Unsaved progress will be lost. ",
 	LOADCONFIRM = "Load this save file?",
 	OVERWRITECONFIRM = "Overwrite this save file?",
-	DELETECONFIRM = "Delete this save file?",
+	DELETECONFIRM = "Delete %s save file?",
 	STOPTASKCONFIRM = "Stop this job?",
 	SLAVEREMOVECONFIRM = "Expel this worker?",
 
