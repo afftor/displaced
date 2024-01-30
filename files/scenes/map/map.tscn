@@ -2315,13 +2315,6 @@ margin_right = 129.921
 margin_bottom = 170.9
 text = "Gold: 5000"
 
-[node name="tutorial" type="TextureRect" parent="."]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
 [node name="SystemMessageLabel" type="RichTextLabel" parent="."]
 margin_left = 19.4863
 margin_top = 29.4725
