@@ -501,13 +501,6 @@ margin_right = 932.0
 margin_bottom = 665.0
 bbcode_enabled = true
 
-[node name="test" type="Button" parent="."]
-visible = false
-margin_left = 444.968
-margin_top = 483.929
-margin_right = 497.968
-margin_bottom = 686.929
-
 [node name="ResistToolTipCont" type="CenterContainer" parent="."]
 margin_left = 288.0
 margin_top = 688.0
@@ -1069,4 +1062,12 @@ custom_fonts/font = SubResource( 5 )
 text = "Skill name"
 clip_text = true
 
-[connection signal="pressed" from="test" to="." method="test_combat"]
+[node name="test" type="Button" parent="."]
+visible = false
+margin_left = 858.0
+margin_top = 487.0
+margin_right = 1048.0
+margin_bottom = 606.0
+text = "test combat"
+
+[connection signal="pressed" from="test" to="." method="test_with_prepare"]

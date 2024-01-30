@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/images/gui/charpanel/panel_charinfo_details_descriptionmask.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/buildings/buttonpanel.png" type="Texture" id=6]
+[ext_resource path="res://files/scenes/UnlockCharPanel.gd" type="Script" id=7]
+[ext_resource path="res://assets/images/gui/combat/panel_battle_enemies.png" type="Texture" id=8]
+
+[node name="UnlockCharPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.211765 )
+
+[node name="panel" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -301.0
+margin_right = 301.0
+margin_bottom = 666.0
+rect_min_size = Vector2( 522, 200 )
+
+[node name="TextureJoin" type="TextureRect" parent="panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="TextureLeave" type="TextureRect" parent="panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 59.0
+margin_top = 125.0
+margin_right = -59.0
+margin_bottom = -4.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="icon_border" type="TextureRect" parent="panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -98.0
+margin_top = -81.5
+margin_right = 98.0
+margin_bottom = 209.5
+rect_min_size = Vector2( 80, 82 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="icon" type="TextureRect" parent="panel/icon_border"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="panel/icon_border"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -29.0
+margin_bottom = -5.0
+text = "name"
+align = 1
+
+[node name="info" type="Label" parent="panel"]
+anchor_right = 1.0
+margin_left = 129.0
+margin_top = 135.0
+margin_right = -119.0
+margin_bottom = 211.0
+text = "UNLOCKCHARJOIN"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="close_btn" type="TextureButton" parent="panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -108.5
+margin_top = -91.0
+margin_right = 108.5
+margin_bottom = -31.0
+rect_min_size = Vector2( 162, 47 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="panel/close_btn"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -12.0
+margin_bottom = 12.0
+text = "CONFIRM"
+align = 1

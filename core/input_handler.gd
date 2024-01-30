@@ -832,7 +832,7 @@ func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])
 
 #variative get node method stuff
-enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG, NODE_NOTIFICATION} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG, NODE_NOTIFICATION, NODE_UNLOCKCHAR} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_GAMETIP : {name = 'GameTips', mode = 'scene', scene = preload("res://files/scenes/GameplayTips.tscn")},
@@ -862,6 +862,7 @@ var node_data = {
 	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://files/scenes/CharPanel/CharacterPanel.tscn")},
 #	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
 	NODE_CREDITS : {name = 'credits', mode = 'scene_on_demand', scene_path = "res://files/scenes/Credits.tscn"},
+	NODE_UNLOCKCHAR : {name = 'UnlockCharPanel', mode = 'scene_on_demand', scene_path = 'res://files/scenes/UnlockCharPanel.tscn', calls = 'open'},
 }
 
 func get_spec_node(type, args = null, raise = true):

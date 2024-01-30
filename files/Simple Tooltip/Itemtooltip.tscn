@@ -24,13 +24,10 @@ margin_bottom = 196.0
 rect_min_size = Vector2( 180, 180 )
 mouse_filter = 2
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 196.0
-margin_top = 8.0
+margin_top = 15.0
 margin_right = 583.0
 margin_bottom = 208.0
 mouse_filter = 2

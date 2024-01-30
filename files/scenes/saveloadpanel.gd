@@ -121,7 +121,7 @@ func PressSaveGame():
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveGame', tr("OVERWRITECONFIRM")])
 
 func PressDeleteGame():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteSave', tr("DELETECONFIRM")])
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteSave', tr("DELETECONFIRM") % cur_save.get_meta("save_name")])
 
 func DeleteSave():
 	var file_name = saves_folder + '/' + cur_save.get_meta("save_name")

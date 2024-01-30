@@ -439,7 +439,7 @@ var TranslationDict = {
 	LEAVECONFIRM = "Leave to Main Menu? Unsaved progress will be lost. ",
 	LOADCONFIRM = "Load this save file?",
 	OVERWRITECONFIRM = "Overwrite this save file?",
-	DELETECONFIRM = "Delete this save file?",
+	DELETECONFIRM = "Delete %s save file?",
 	STOPTASKCONFIRM = "Stop this job?",
 	SLAVEREMOVECONFIRM = "Expel this worker?",
 
@@ -450,6 +450,9 @@ var TranslationDict = {
 	#unlocks
 	UNLOCKMATERIAL = "New material unlocked!\nYou can now trade it on the market.",
 	UNLOCKUSABLE = "New item unlocked!\nYou can now trade it on the market.",
+	LOCKEDMATERIAL = "Material yet unknown!",
+	UNLOCKCHARJOIN = "Now joining your party!",
+	UNLOCKCHARLEAVE = "Leaveing your party...",
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
