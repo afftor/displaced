@@ -15,8 +15,8 @@ var event_triggers = {#reworked to same syntax as seqs
 	intro_3 = [
 		{type = 'tutorial', value = 'exploration_menu'},
 	],
-	forest2 = [
-		{type = 'system', value = 'unlock_character', arg = 'erika'},
+	forest_2 = [
+		{type = 'system', value = 'enable_character', arg = ['erika', true]},
 		{type = 'show_screen', value = 'map'},
 	],
 	erika_1 = [
@@ -24,7 +24,9 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'tutorial', value = 'quest_character'}
 	],
 	ember_1_1 = [
-		{type = 'tutorial', value = 'building_upgrades'}
+		{type = 'tutorial', value = 'building_upgrades'},#mind that tutorial here must precede enable_character for node order
+#		{type = 'system', value = 'unlock_building', arg = 'forge'},#done by hand with tutorial now
+		{type = 'system', value = 'enable_character', arg = ['ember', true]},
 	],
 	dimitrius_1_3 = [
 		{type = 'scene', value = 'dimitrius_1_4'},
@@ -84,18 +86,18 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'enable_character', arg = ['rilu', false]}
 	],
 	rilu_2_3_2 = [
-		{type = 'system', value = 'enable_character', arg = ['ember', false]},
-		{type = 'system', value = 'enable_character', arg = ['iola', false]},
-		{type = 'system', value = 'enable_character', arg = ['rose', false]},
-		{type = 'system', value = 'enable_character', arg = ['erika', false]},
+		{type = 'system', value = 'enable_character', arg = ['ember', false, false]},
+		{type = 'system', value = 'enable_character', arg = ['iola', false, false]},
+		{type = 'system', value = 'enable_character', arg = ['rose', false, false]},
+		{type = 'system', value = 'enable_character', arg = ['erika', false, false]},
 		{type = 'system', value = 'add_to_party', arg = ['arron', 2]},
 		{type = 'mission', value = 'castle_rilu'},
 	],
 	rilu_2_4 = [
-		{type = 'system', value = 'enable_character', arg = ['ember', true]},
-		{type = 'system', value = 'enable_character', arg = ['iola', true]},
-		{type = 'system', value = 'enable_character', arg = ['rose', true]},
-		{type = 'system', value = 'enable_character', arg = ['erika', true]},
+		{type = 'system', value = 'enable_character', arg = ['ember', true, false]},
+		{type = 'system', value = 'enable_character', arg = ['iola', true, false]},
+		{type = 'system', value = 'enable_character', arg = ['rose', true, false]},
+		{type = 'system', value = 'enable_character', arg = ['erika', true, false]},
 		{type = 'system', value = 'enable_character', arg = ['rilu', true]},
 	],
 	ember_2_4 = [
@@ -113,7 +115,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
 	],
 	dimitrius_2_2 = [
-		{type = 'system', value = 'enable_character', arg = ['iola',true] },
+		{type = 'system', value = 'enable_character', arg = ['iola', true] },
 	],
 	dimitrius_ending_1 = [
 		{type = 'show_screen', value = 'exploration', arg = 'modern_city'},
@@ -125,28 +127,28 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'unlock_mission', arg = 'final_battle_plant' },
 	],
 	dimitrius_ending_6 = [
-		{type = 'system', value = 'enable_character', arg = ['arron',false] },
-		{type = 'system', value = 'enable_character', arg = ['ember',false] },
-		{type = 'system', value = 'enable_character', arg = ['iola',false] },
-		{type = 'system', value = 'enable_character', arg = ['rilu',false] },
+		{type = 'system', value = 'enable_character', arg = ['arron', false, false] },
+		{type = 'system', value = 'enable_character', arg = ['ember', false, false] },
+		{type = 'system', value = 'enable_character', arg = ['iola', false, false] },
+		{type = 'system', value = 'enable_character', arg = ['rilu', false, false] },
 		{type = 'system', value = 'add_to_party', arg = ['rose', 1]},
 		{type = 'system', value = 'add_to_party', arg = ['erika', 2]},
 	],
 	dimitrius_ending_7 = [
-		{type = 'system', value = 'enable_character', arg = ['ember',true] },
-		{type = 'system', value = 'enable_character', arg = ['iola',true] },
-		{type = 'system', value = 'enable_character', arg = ['rilu',true] },
-		{type = 'system', value = 'enable_character', arg = ['rose',false] },
-		{type = 'system', value = 'enable_character', arg = ['erika',false] },
+		{type = 'system', value = 'enable_character', arg = ['ember',true, false] },
+		{type = 'system', value = 'enable_character', arg = ['iola',true, false] },
+		{type = 'system', value = 'enable_character', arg = ['rilu',true, false] },
+		{type = 'system', value = 'enable_character', arg = ['rose',false, false] },
+		{type = 'system', value = 'enable_character', arg = ['erika',false, false] },
 		{type = 'system', value = 'add_to_party', arg = ['ember', 1]},
 		{type = 'system', value = 'add_to_party', arg = ['iola', 2]},
 		{type = 'system', value = 'add_to_party', arg = ['rilu', 3]},
 	],
 	dimitrius_ending_8 = [
-		{type = 'system', value = 'enable_character', arg = ['arron',true] },
-		{type = 'system', value = 'enable_character', arg = ['ember',false] },
-		{type = 'system', value = 'enable_character', arg = ['iola',false] },
-		{type = 'system', value = 'enable_character', arg = ['rilu',false] },
+		{type = 'system', value = 'enable_character', arg = ['arron', true, false] },
+		{type = 'system', value = 'enable_character', arg = ['ember', false, false] },
+		{type = 'system', value = 'enable_character', arg = ['iola', false, false] },
+		{type = 'system', value = 'enable_character', arg = ['rilu', false, false] },
 		{type = 'system', value = 'add_to_party', arg = ['arron', 2]},
 	],
 	dimitrius_ending_9 = [
@@ -269,7 +271,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika'}],
 		actions = [
 		{type = 'scene', value = 'erika_1'},
-		{type = 'system', value = 'unlock_character', arg = 'erika'},#duplicate of postscene action
+#		{type = 'system', value = 'unlock_character', arg = 'erika'},#duplicate of postscene action
 		]
 	},
 	
@@ -278,8 +280,6 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_1'},
-		{type = 'system', value = 'unlock_character', arg = 'ember'},
-#		{type = 'system', value = 'unlock_building', arg = 'forge'},#done by hand with tutorial now
 		]
 	},
 	
@@ -365,7 +365,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_faeries_3'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_1'}, 
-		{type = 'system', value = 'enable_character', arg = ['erika',false] },
+		{type = 'system', value = 'enable_character', arg = ['erika', false] },
 #		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
 		
 		]
@@ -384,7 +384,7 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_4'},
 		{type = 'system', value = 'game_stage', arg = 'erika_rescued'},
-		{type = 'system', value = 'enable_character', arg = ['erika',true] },
+		{type = 'system', value = 'enable_character', arg = ['erika', true] },
 		]
 	},
 	
@@ -425,7 +425,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_iola_rescue'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_5'},
-		{type = 'system', value = 'unlock_character', arg = 'iola'},
+		{type = 'system', value = 'enable_character', arg = ['iola', true]},
 		]
 	},
 	
@@ -508,8 +508,8 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'dimitrius_2_1'},
 		{type = 'system', value = 'unlock_mission', arg = 'castle_rilu_return'},
-		{type = 'system', value = 'enable_character', arg = ['rose',false] },
-		{type = 'system', value = 'enable_character', arg = ['iola',false] },
+		{type = 'system', value = 'enable_character', arg = ['rose', false] },
+		{type = 'system', value = 'enable_character', arg = ['iola', false] },
 		]
 	},
 	dimitrius_2_1_2 = {
@@ -524,7 +524,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_rose_rescue'}],
 		actions = [
 		{type = 'scene', value = 'rose_2'},
-		{type = 'system', value = 'enable_character', arg = ['rose',true] },
+		{type = 'system', value = 'enable_character', arg = ['rose', true] },
 		]
 	},
 	

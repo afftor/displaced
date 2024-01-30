@@ -522,9 +522,12 @@ func system_action(action):
 		'unlock_mission':
 			unlock_area(action.arg)
 		'enable_character':
-			unlock_char(action.arg[0], action.arg[1])
-		'unlock_character':
-			unlock_char(action.arg)
+			var notify = true
+			if action.arg.size() >= 3:
+				notify = action.arg[2]
+			unlock_char(action.arg[0], action.arg[1], notify)
+#		'unlock_character':
+#			unlock_char(action.arg)
 		'game_stage':
 			ProgressMainStage(action.arg)
 		#not in use now
@@ -538,10 +541,12 @@ func system_action(action):
 			input_handler.get_spec_node(input_handler.NODE_CREDITS).show_end_credits()
 
 #simple action wrappers
-func unlock_char(code, value = true):
+func unlock_char(code, value = true, notify = true):
 	heroes[code].unlocked = value
 	if !value:
 		heroes[code].position = null
+	if notify:
+		input_handler.get_spec_node(input_handler.NODE_UNLOCKCHAR, [code, value])
 	emit_signal("party_changed")
 
 
