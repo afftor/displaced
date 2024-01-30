@@ -19,7 +19,8 @@ var CombatAnimations = preload("res://core/CombatAnimations_new.gd").new()
 onready var gui_node = $gui
 onready var resist_tooltip = $ResistToolTipCont/ResistToolTip
 
-var debug = false
+var debug_btn_on = false
+var debug_run = false
 
 var allowaction = false
 var allowedtargets = {'ally':[],'enemy':[]}
@@ -130,6 +131,7 @@ var skill_in_progress = false
 var resist_tooltip_for_pos = -1
 
 func _ready():
+	debug_btn_on = $test.visible
 	for i in sounds.values():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
@@ -155,6 +157,7 @@ func _ready():
 		battlefieldpositions['rose'], 'signal_LMB')
 
 
+#debug section---------------------
 func cheatvictory():
 	for i in enemygroup.values():
 		i.hp = 0
@@ -164,35 +167,47 @@ func cheatheal():
 	for i in playergroup.values():
 		i.hp = i.hpmax
 
-func _process(delta):
-	pass
+func test_with_prepare():
+	var hero_lvl = 39
+	resources.preload_res("bg/combat_cave")
+	if resources.is_busy(): yield(resources, "done_work")
+
+	state.add_test_resources()
+
+	for ch in state.characters:
+		state.unlock_char(ch, true, false)
+		state.heroes[ch].level = hero_lvl
+		state.heroes[ch].hp = state.heroes[ch].hpmax
+	state.heroes.arron.position = 1
+
+	test_combat()
 
 func test_combat():
-#	if resources.is_busy(): yield(resources, "done_work")
-#
-#	state.add_test_resources()
-#
-#	for ch in state.characters:
-#		state.unlock_char(ch)
-#		state.heroes[ch].level = 39
-#		state.heroes[ch].hp = state.heroes[ch].hpmax
-#	state.heroes.arron.position = 1
-#	state.heroes.ember.position = 2
-##	state.heroes.rose.position = 3
-#
-#	show()
-#	start_combat([{1:'elvenrat', 4: ['elvenrat', 10]}, {3:'elvenrat', 5: 'elvenrat'}], 40, 'combat_cave')
-
+	var enemy_lvl = 27
 	var party = [
-		{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'], 
-		4 : ['bomber'], 5 : ['bomber'], 6 : ['bomber']}
+		#first wave
+		{ 1 : ['spider'], 2 : ['spider'], 3 : ['spider'],
+		4 : ['spider'], 5 : ['spider'], 6 : ['spider']},
+		#second wave
+#		{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'],
+#		4 : ['bomber'], 5 : ['bomber'], 6 : ['bomber']}
+		#third wave
+#		{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'],
+#		4 : ['bomber'], 5 : ['bomber'], 6 : ['bomber']}
 	]
-	input_handler.explore_node.set_party_level_data(party, 27, 27)
+	for wave in party:
+		for pos in wave:
+			wave[pos].push_back(enemy_lvl)
+	debug_run = true
 	show()
-	start_combat(party, 27, 'combat_cave')
+	start_combat(party, enemy_lvl, 'combat_cave')
+#------------------------
+
 
 #battlefield setup
 func start_combat(newenemygroup, level, background, music = 'combattheme'):
+	if debug_btn_on:
+		$test.hide()
 	hide_resist_tooltip()
 	input_handler.combat_node = self
 	turns = 0
@@ -1113,7 +1128,7 @@ func victory():
 		tween.start()
 	
 	#yield(get_tree().create_timer(1), 'timeout')
-	if input_handler.explore_node != null:
+	if input_handler.explore_node != null and !debug_run:
 		var explore_node = input_handler.explore_node
 		var area_stage = explore_node.get_area_stage()
 		var area_stage_num = explore_node.get_area_stage_num()
@@ -1210,10 +1225,16 @@ func FinishCombat(victorious :bool, do_advance :bool = false):
 	input_handler.combat_node = null
 	hide()
 	emit_signal("combat_ended")
-	if input_handler.explore_node != null:
+	if input_handler.explore_node != null and !debug_run:
 		input_handler.explore_node.combat_finished(victorious, do_advance)
 	elif input_handler.curtains != null:
 		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
+	
+	if debug_run:
+		debug_run = false
+	if debug_btn_on:
+		show()
+		$test.show()
 
 
 #targeting
