@@ -34,7 +34,9 @@ func show_material(id :String):
 	check_visibility()
 	var panel = input_handler.DuplicateContainerTemplate(info_container, 'panel')
 	var itemdata = Items.Items[id]
-	panel.get_node("HBoxContainer/icon_border/icon").texture = itemdata.icon
+	var icon = panel.get_node("HBoxContainer/icon_border/icon")
+	icon.texture = itemdata.icon
+	globals.connectmaterialtooltip(icon, itemdata)
 	if itemdata.itemtype == "material":
 		panel.get_node("info").text = tr("UNLOCKMATERIAL")
 	elif itemdata.itemtype == "usable_combat":
