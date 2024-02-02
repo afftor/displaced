@@ -4053,3 +4053,60 @@ func preload_icons():
 		if b.icon.begins_with("res:"): continue
 		resources.preload_res(b.icon)
 	if resources.is_busy(): yield(resources, "done_work")
+
+func has_damagetype_of_resist(eff, dam_type :String) ->bool:#eff :String/Dictionary
+	var effect :Dictionary
+	if eff is String:
+		assert(effect_table.has(eff), "has_resist_damage_type() tries to get unexistant effect %s" % eff)
+		effect = effect_table[eff]
+	else:
+		effect = eff
+	
+	if effect.has('atomic'):
+		for entry in effect.atomic:
+			var atomic_eff :Dictionary
+			if entry is String:
+				atomic_eff = atomic[entry]
+			else:
+				atomic_eff = entry
+			if atomic_eff.has('type') and atomic_eff.type == 'damage' and atomic_eff.source == dam_type:
+				return true
+	
+	if effect.has('sub_effects'):
+		for sub_effect in effect.sub_effects:
+			if has_damagetype_of_resist(sub_effect, dam_type):
+				return true
+	
+	return false
+
+func has_status_of_resist(eff, status :String) ->bool:#eff :String/Dictionary
+	var effect :Dictionary
+	if eff is String:
+		assert(effect_table.has(eff), "has_status_of_resist() tries to get unexistant effect %s" % eff)
+		effect = effect_table[eff]
+	else:
+		effect = eff
+	
+	if effect.has('tags'):
+		if effect.tags.has(status):
+			return true
+	
+	if effect.has('sub_effects'):
+		for sub_effect in effect.sub_effects:
+			if has_status_of_resist(sub_effect, status):
+				return true
+	
+	return false
+
+func get_resists_applicable(eff) ->Array:#eff :String/Dictionary
+	var resists = []
+	for resist_type in variables.resistlist:#there is idle run for 'damage' resist type, but I leave it for unification purpose
+		if has_damagetype_of_resist(eff, resist_type):
+			resists.append(resist_type)
+	for status in variables.status_list:
+		if has_status_of_resist(eff, status):
+			resists.append(status)
+	return resists
+
+
+

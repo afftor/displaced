@@ -725,7 +725,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rose_8.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'support',
 		userange = "any",
 		targetpattern = 'single',
@@ -1035,7 +1035,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/erika_1.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'support',
 		userange = "any",
 		targetpattern = 'all',
@@ -1308,7 +1308,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_6.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'support',
 		userange = "any",
 		targetpattern = 'all',
@@ -1338,7 +1338,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_2.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'support',
 		userange = "any",
 		targetpattern = 'single',
@@ -1369,7 +1369,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/ember_8.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'ultimate',
 		userange = "any",
 		targetpattern = 'all',
@@ -1618,7 +1618,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_2.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'support',
 		userange = "any",
 		targetpattern = 'all',
@@ -1676,7 +1676,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/rilu_5.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'ultimate',
 		userange = "any",
 		targetpattern = 'single',
@@ -1809,7 +1809,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_1.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'support',
 		userange = "any",
 		targetpattern = 'single',
@@ -1838,7 +1838,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_2.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'support',
 		userange = "any",
 		targetpattern = 'single',
@@ -1869,7 +1869,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_8.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'ultimate',
 		userange = "any",
 		targetpattern = 'all',
@@ -1899,7 +1899,7 @@ var skilllist = {
 		description = "",
 		description_patch = [],
 		icon = load("res://assets/images/iconsskills/iola_5.png"),
-		damagetype = "light",
+		damagetype = "",
 		skilltype = 'ultimate',
 		userange = "any",
 		targetpattern = 'all',
@@ -3796,6 +3796,7 @@ var patches = {
 	},
 	p_purge = {
 		value = {type = 'replace', value = ['caster.damage','*2.5']},
+		damagetype = {type = 'set', value = 'light'},
 		description_patch = {type = 'append',
 			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT4'}]}
 	}
@@ -3859,6 +3860,35 @@ func calc_damagetype(damagetype :String, char_id) ->String:
 	if !variables.resistlist.has(true_damagetype):
 		return ""
 	return true_damagetype
+
+static func append_array_unique(arr :Array, app_arr :Array):#modifies arr!
+	for new_entry in app_arr:
+		if !arr.has(new_entry):
+			arr.append(new_entry)
+
+func get_resists_applicable(skill_id :String, char_id :String) ->Array:
+	var resists = []
+	var skill = patch_skill(skill_id, state.heroes[char_id])
+	for resist_type in variables.resistlist:#there is idle run for 'damage' resist type, but I leave it for unification purpose
+		if skill.damagetype is String:
+			if skill.damagetype == resist_type:#weapon-damagetype goes separately as item
+				resists.append(resist_type)
+				continue
+		elif skill.damagetype is Array:
+			if skill.damagetype.has(resist_type):
+				resists.append(resist_type)
+				continue
+		else:
+			assert(false, "damagetype of skill %s has unexpected type" % skill_id)
+	
+	if skill.has('casteffects'):
+		for effect in skill.casteffects:
+			append_array_unique(resists, Effectdata.get_resists_applicable(effect))
+	
+	if skill.has('follow_up'):
+		append_array_unique(resists, get_resists_applicable(skill.follow_up, char_id))
+	
+	return resists
 
 
 #Here is a sort of a guide for effects system (as it is f%#$ complicated):

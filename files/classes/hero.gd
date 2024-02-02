@@ -302,3 +302,33 @@ func get_autoselected_skill():
 		skills_autoselect.pop_back()
 		skilldata = Skillsdata.patch_skill( skills_autoselect.back(), self)
 	return skills_autoselect.back()
+
+func unlock_resists() ->Array:#return only new unlocked resists
+	var active_resists = {}
+	var skill_list = get_skills()
+	for i in range(2):
+		if i == 1:
+			if gear_level['weapon2'] == 0:
+				break
+			#the thig is, we switch weapon, if possible, to let skills patch themselves with both weapons
+			#but it still could be a bad idea, as this is not true weapon switching event,
+			#and rest of the game could behave itself unexpectedly
+			switch_weapon()
+		
+		active_resists[get_weapon_damagetype()] = true
+		
+		for skill_id in skill_list:
+			var resists_applicable = Skillsdata.get_resists_applicable(skill_id, id)
+			for new_resist in resists_applicable:
+				active_resists[new_resist] = true
+		
+		if i == 1:
+			switch_weapon()
+	
+	var unlocked = []
+	for resist in active_resists:
+		if state.try_unlock_resist(resist):
+			unlocked.append(resist)
+	return unlocked
+
+

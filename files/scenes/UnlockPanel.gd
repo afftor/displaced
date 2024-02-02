@@ -9,7 +9,7 @@ var active_panel_count = 0
 #	close_all_btn.connect('pressed', self, 'hide')
 
 func check_visibility():
-	if is_visible_in_tree():
+	if visible:
 		return
 	input_handler.ClearContainer(info_container, ['panel'])
 	active_panel_count = 0
@@ -44,6 +44,24 @@ func show_material(id :String):
 	else:
 		print("show_material trying to show material with unknowen itemtype")
 	panel.get_node("HBoxContainer/name").text = tr(itemdata.name)
+	panel.get_node("close_btn").connect('pressed', self, 'close_panel', [panel.name])
+	active_panel_count += 1
+#	check_close_all()
+
+func show_resist(id :String):
+	check_visibility()
+	var panel = input_handler.DuplicateContainerTemplate(info_container, 'panel')
+	var resist_data = variables.get_resist_data(id)
+	var icon = panel.get_node("HBoxContainer/icon_border/icon")
+	icon.texture = resist_data.icon
+	#need some tooltip for resist?
+	if resist_data.type == "damage":
+		panel.get_node("info").text = tr("UNLOCKRESISTDAMAGE")
+	elif resist_data.type == "status":
+		panel.get_node("info").text = tr("UNLOCKRESISTSTATUS")
+	else:
+		print("show_resist trying to show resist with unknowen type")
+	panel.get_node("HBoxContainer/name").text = tr(resist_data.name)
 	panel.get_node("close_btn").connect('pressed', self, 'close_panel', [panel.name])
 	active_panel_count += 1
 #	check_close_all()

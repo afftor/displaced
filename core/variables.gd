@@ -49,8 +49,107 @@ var bonuses_stat_list = ['damage', 'hitrate', 'hpmax', 'evasion', 'critchance']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'alt_mana', 'taunt', 'shield']
+
+#------------------resist section---------------------
+#consider to move it to separate singleton
+#resistlist and status_list are separate for logic reason, but there must be no duplicate entries for presentation reason
 var resistlist = ['damage', 'slash', 'pierce', 'bludgeon', 'light', 'dark', 'air', 'water', 'earth', 'fire']
 var status_list = ['burn', 'stun', 'chill', 'negative', 'poison', 'bleed']
+var resist_data = {
+	#resistlist
+	damage = {
+		name = 'RESIST_DAMAGE',
+		icon = preload('res://assets/images/iconsskills/defaultattack.png'),
+		type = 'damage'
+	},
+	slash = {
+		name = 'RESIST_SLASH',
+		icon = preload('res://assets/images/iconsskills/source_slash.png'),
+		type = 'damage'
+	},
+	pierce = {
+		name = 'RESIST_PIERCE',
+		icon = preload('res://assets/images/iconsskills/source_pierce.png'),
+		type = 'damage'
+	},
+	bludgeon = {
+		name = 'RESIST_BLUDGEON',
+		icon = preload('res://assets/images/iconsskills/source_bludgeon.png'),
+		type = 'damage'
+	},
+	light = {
+		name = 'RESIST_LIGHT',
+		icon = preload('res://assets/images/iconsskills/source_light.png'),
+		type = 'damage'
+	},
+	dark = {
+		name = 'RESIST_DARK',
+		icon = preload('res://assets/images/iconsskills/source_dark.png'),
+		type = 'damage'
+	},
+	air = {
+		name = 'RESIST_AIR',
+		icon = preload('res://assets/images/iconsskills/source_air.png'),
+		type = 'damage'
+	},
+	water = {
+		name = 'RESIST_WATER',
+		icon = preload('res://assets/images/iconsskills/source_water.png'),
+		type = 'damage'
+	},
+	earth = {
+		name = 'RESIST_EARTH',
+		icon = preload('res://assets/images/iconsskills/source_earth.png'),
+		type = 'damage'
+	},
+	fire = {
+		name = 'RESIST_FIRE',
+		icon = preload('res://assets/images/iconsskills/source_fire.png'),
+		type = 'damage'
+	},
+	#status_list
+	burn = {
+		name = 'RESIST_BURN',
+		icon = preload('res://assets/images/iconsskills/rose_4.png'),
+		type = 'status'
+	},
+	stun = {
+		name = 'RESIST_STUN',
+		icon = preload('res://assets/images/iconsskills/iola_6.png'),
+		type = 'status'
+	},
+	chill = {
+		name = 'RESIST_CHILL',
+		icon = preload('res://assets/images/iconsskills/erika_5.png'),
+		type = 'status'
+	},
+	negative = {
+		name = 'RESIST_NEGATIVE',
+		icon = preload('res://assets/images/iconsskills/rose_3.png'),
+		type = 'status'
+	},
+	poison = {
+		name = 'RESIST_POISON',
+		icon = preload('res://assets/images/iconsskills/Debilitate.png'),
+		type = 'status'
+	},
+	bleed = {
+		name = 'RESIST_BLEED',
+		icon = preload('res://assets/images/iconsskills/arron_3.png'),
+		type = 'status'
+	},
+}
+
+func get_resist_data(resist :String) ->Dictionary:
+	assert(resist_data.has(resist), "resist_data has no entry for %s!" % resist)
+	return resist_data[resist]
+
+func check_resist_integrity():
+	for entry in resistlist:
+		assert(!status_list.has(entry), "resistlist and status_list has duplicates!")
+	for entry in resistlist + status_list:
+		assert(resist_data.has(entry), "resist_data has no icon for %s!" % entry)
+#---------------------------------
 
 #config flags
 var ai_setup = 'off' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is. obsolete
@@ -112,6 +211,7 @@ var default_animations_after_delay = { #generally should be negative, but not ov
 func _ready():
 	fill_curve()
 	print(curve)
+	check_resist_integrity()
 
 func fill_curve():
 	for i in range(14): 

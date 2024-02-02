@@ -1154,6 +1154,13 @@ func on_level_up_close():
 		$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
 		$LevelUp.visible = true
 		input_handler.PlaySound(sounds["levelup_show"])
+		#theoretically, better to analyse new skills separately, but it's less bugproof
+		var new_resists :Array = character.unlock_resists()
+		var unlock_panel = $Rewards/UnlockPanel
+		for new_resist in new_resists:
+			unlock_panel.show_resist(new_resist)
+#		print("on_level_up!!!!")
+#		print(new_resists)
 	else:
 		$LevelUp.visible = false
 
