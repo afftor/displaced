@@ -26,6 +26,7 @@ var heroes_save
 var materials := {}
 var materials_unlocks := {}
 var lognode
+var resist_unlocks := {}
 
 var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
 var characters = ['arron', 'rose', 'erika', 'ember', 'iola', 'rilu']
@@ -412,7 +413,7 @@ func serialize():
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurEvent', 'mainprogress', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea', 'screen', 'CurrentScreen']
-	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'scene_restore_data']
+	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'scene_restore_data']
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
@@ -423,18 +424,22 @@ func serialize():
 func deserialize(tmp:Dictionary):
 	effects_pool.deserialize(tmp['effects'])
 	tmp.erase('effects')
-	materials_unlocks.clear()#only for old savegame compatibility
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
 	emit_signal("money_changed")
 	for id in materials:
 		materials[id] = int(materials[id])
 	refill_materials()
-	update_materials_unlocks()
+	if !tmp.has('materials_unlocks'):#only for old savegame compatibility
+		print("old save! reset_materials_unlocks!")
+		reset_materials_unlocks()
 	cleanup()
 	combatparty.clear()
 	for key in heroes_save.keys():
 		heroes[key].deserialize(heroes_save[key])
+	if !tmp.has('resist_unlocks'):#only for old savegame compatibility
+		print("old save! reset_resist_unlocks!")
+		reset_resist_unlocks()
 	effects_pool.cleanup()
 #	items.clear()
 #	for key in items_save.keys():
@@ -486,6 +491,7 @@ func reset_heroes():
 	h_iola.new()
 	h_rilu.new()
 	h_rose.new()
+	reset_resist_unlocks()
 
 
 func reset_inventory():
@@ -498,7 +504,8 @@ func refill_materials():
 	for id in Items.Items:
 		if !materials.has(id): materials[id] = 0
 
-func update_materials_unlocks():
+func reset_materials_unlocks():
+	materials_unlocks.clear()
 	for id in materials:
 		if materials[id] > 0:
 			try_unlock_material(id)
@@ -513,6 +520,27 @@ func try_unlock_material(id :String) ->bool:#true if success
 	if is_material_unlocked(id):
 		return false
 	materials_unlocks[id] = true
+	return true
+
+func reset_resist_unlocks():
+	resist_unlocks.clear()
+	for character in heroes.values():
+		if character.unlocked:
+			var new_resists = character.unlock_resists()
+#	print("reset_resist_unlocks!!!!")
+#	print(resist_unlocks)
+
+func is_resist_unlocked(id :String) ->bool:
+	if resist_unlocks.has(id):
+		return resist_unlocks[id]
+	return false
+
+func try_unlock_resist(id :String) ->bool:#true if success
+	assert(variables.resistlist.has(id) or variables.status_list.has(id),
+			"try_unlock_resist trying to unlock unexistant resist!")
+	if is_resist_unlocked(id):
+		return false
+	resist_unlocks[id] = true
 	return true
 
 func system_action(action):

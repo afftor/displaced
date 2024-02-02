@@ -14,6 +14,7 @@ onready var slot_panels = {
 	"armor" : $Panel/armor
 }
 onready var tooltip = $Tooltip
+onready var unlock_panel = $UnlockPanel
 
 
 var selected_char
@@ -61,6 +62,7 @@ func open():
 
 
 func update_content():
+	unlock_panel.hide()#or maybe on select_hero()?
 	for cid in state.characters:
 		var ch = charlist.get_node(cid)
 		ch.visible = (state.heroes[cid].unlocked)
@@ -144,6 +146,12 @@ func upgrade_slot(slot):
 		else:
 			state.add_materials(res, -cost[res])
 	rebuild_gear()
+	if slot != 'armor':
+		var new_resists :Array = hero.unlock_resists()
+		for new_resist in new_resists:
+			unlock_panel.show_resist(new_resist)
+#		print("upgrade_slot!!!!")
+#		print(new_resists)
 #	if tooltip.visible:
 #		rebuild_tooltip()
 

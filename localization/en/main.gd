@@ -453,6 +453,8 @@ var TranslationDict = {
 	LOCKEDMATERIAL = "Material yet unknown!",
 	UNLOCKCHARJOIN = "Now joining your party!",
 	UNLOCKCHARLEAVE = "Leaveing your party...",
+	UNLOCKRESISTDAMAGE = "New damage type unlocked!\nYou can now see resistance against it.",
+	UNLOCKRESISTSTATUS = "New harmful status unlocked!\nYou can now see resistance against it.",
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
@@ -829,7 +831,7 @@ var TranslationDict = {
 	TUTORIAL = "Tutorial",
 	TUTORIAL_SKILL_USAGE = "Select a skill to use on your enemy. Different skills inflicts different proportions of character's Base Damage (BD), have different additional attributes and elements to them. Selecting correct skill in certain situation is a key to victory.",
 	TUTORIAL_SELECT_CHARACTER = "You can select your characters to make them act first. After all your characters have acted this turn your turn ends.",
-	TUTORIAL_ELEMENTAL_WEAKNESSES = "Different enemies are weak to certain elements. Strike with correct element to deal more damage.",
+	TUTORIAL_ELEMENTAL_WEAKNESSES = "Different enemies are weak or strong against certain elements and damage types. Strike with correct element to deal more damage. There is also a resistance to harmful states like 'burn'. If enemy is resilient, it can avoid such states. You will discover more damage types as you go.",
 	TUTORIAL_SWAPPING_CHARACTERS = "Drag characters to their positions to place or swap them. This costs no turn.",
 	TUTORIAL_BUILDING_UPGRADES = "Select Townhall to access your actions. Upgrading settlement makes characters stronger.\n\nYou can build Blacksmith now.\nSelect building to open up it's details. If you met all requerments and have needed resources, 'Unlock' button will appear.",
 	TUTORIAL_EXPLORATION_MENU = "Exclamation mark on buildings and locations indicates main plot's events and missions.\n\nLeave village, then select location and select mission you will be attending. You can replay your old missions for materials and experience.",

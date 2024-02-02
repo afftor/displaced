@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/gui/charpanel/panel_charinfo_details_descriptionmask.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/images/gui/buildings/buttonpanel.png" type="Texture" id=6]
 [ext_resource path="res://files/scenes/UnlockCharPanel.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/gui/combat/panel_battle_enemies.png" type="Texture" id=8]
+[ext_resource path="res://files/scenes/UnlockPanel.tscn" type="PackedScene" id=9]
 
 [node name="UnlockCharPanel" type="Control"]
 anchor_right = 1.0
@@ -111,3 +112,6 @@ margin_top = -12.0
 margin_bottom = 12.0
 text = "CONFIRM"
 align = 1
+
+[node name="UnlockPanel" parent="." instance=ExtResource( 9 )]
+visible = false

@@ -80,10 +80,12 @@ func build_skill_panel(panel, data):
 
 func build_res():
 	input_handler.ClearContainer(res_list, ['panel'])
-	var resists = character.get_stat('resists')
+	var resists = character.get_resists()
 	for src in variables.resistlist:
-		if src == 'damage' : continue
+		if src == 'damage' or !state.is_resist_unlocked(src):
+			continue
 		var panel = input_handler.DuplicateContainerTemplate(res_list, 'panel')
-		panel.get_node('Label').text = ": %d" % resists[src] + "%"
-		panel.get_node('icon/src').texture = load("res://assets/images/iconsskills/source_%s.png" % src)
-		panel.get_node("icon").hint_tooltip = "Resist: " + src.capitalize() #TODO: change to actual tooltip later
+		var resist_data = variables.get_resist_data(src)
+		panel.get_node('Label').text = ": %d%%" % resists[src]
+		panel.get_node('icon/src').texture = resist_data.icon
+		panel.get_node("icon").hint_tooltip = "Resist: %s" % tr(resist_data.name)#TODO: change to actual tooltip later

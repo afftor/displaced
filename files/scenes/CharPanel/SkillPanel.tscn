@@ -182,13 +182,13 @@ align = 1
 [node name="res" type="GridContainer" parent="ResPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
+margin_left = 33.0
 margin_top = 42.0
-margin_right = -48.0
+margin_right = -23.0
 columns = 3
 
 [node name="panel" type="HBoxContainer" parent="ResPanel/res"]
-margin_right = 104.0
+margin_right = 110.0
 margin_bottom = 50.0
 
 [node name="icon" type="TextureRect" parent="ResPanel/res/panel"]
@@ -204,12 +204,12 @@ expand = true
 [node name="Label" type="Label" parent="ResPanel/res/panel"]
 margin_left = 54.0
 margin_top = 9.0
-margin_right = 104.0
+margin_right = 110.0
 margin_bottom = 41.0
-rect_min_size = Vector2( 50, 0 )
+rect_min_size = Vector2( 56, 0 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_fonts/font = ExtResource( 6 )
-text = ": 100"
+text = ": 99%"
 
 [node name="switch_left" type="Button" parent="."]
 margin_left = 249.0
