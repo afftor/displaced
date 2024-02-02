@@ -25,7 +25,21 @@ func set_resist_type(new_type :String) ->void:
 func update_value(value :int, format :String = "%d") ->void:
 	label_node.show()
 	on_label_rect_changed()
-	label_node.text = format % value
+	var value_str :String
+	if format == "+":
+		if value > 50:
+			value_str = "++"
+		elif value > 0:
+			value_str = "+"
+		elif value == 0:
+			value_str = "0"
+		elif value >= -50:
+			value_str = "-"
+		else:
+			value_str = "--"
+	else:
+		value_str = format % value
+	label_node.text = value_str
 	var label_color :Color
 	if value > 0:
 		label_color = positive_color

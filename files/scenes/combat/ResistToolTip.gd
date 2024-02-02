@@ -28,7 +28,7 @@ func show_up(char_id: String) ->void:
 				or !state.is_resist_unlocked(resist_type)):
 			resist_node.hide()
 		else:
-			resist_node.update_value(data[resist_type])
+			resist_node.update_value(data[resist_type], "+")
 			resist_node.show()
 			show_me = true
 	if show_me:
