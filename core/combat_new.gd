@@ -179,6 +179,7 @@ func test_with_prepare():
 		state.heroes[ch].level = hero_lvl
 		state.heroes[ch].hp = state.heroes[ch].hpmax
 	state.heroes.arron.position = 1
+	state.reset_resist_unlocks()
 
 	test_combat()
 
