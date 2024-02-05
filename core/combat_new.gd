@@ -168,22 +168,39 @@ func cheatheal():
 		i.hp = i.hpmax
 
 func test_with_prepare():
-	var hero_lvl = 39
+	#----options
+	#to lock hero comment the line
+	#lvl - char level, w - equipped weapon, w_lvl - level of that weapon, a_lvl - armor level
+	var heroes = {
+		arron = {lvl = 39, w = "weapon1", w_lvl = 4, a_lvl = 4},
+		rose = {lvl = 39, w = "weapon2", w_lvl = 4, a_lvl = 1},
+		erika = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 1},
+		ember = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 1},
+		iola = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 1},
+		rilu = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 1},
+	}
+	#---------
 	resources.preload_res("bg/combat_cave")
 	if resources.is_busy(): yield(resources, "done_work")
 
 	state.add_test_resources()
 
-	for ch in state.characters:
+	for ch in heroes:
+		var info = heroes[ch]
 		state.unlock_char(ch, true, false)
-		state.heroes[ch].level = hero_lvl
-		state.heroes[ch].hp = state.heroes[ch].hpmax
-	state.heroes.arron.position = 1
+		var chara = state.heroes[ch]
+		chara.level = info.lvl
+		chara.hp = chara.hpmax
+		chara.set_gear('armor', info.a_lvl)
+		chara.set_gear(info.w, info.w_lvl)
+		chara.set_weapon(info.w)
+	state.heroes[heroes.keys()[0]].position = 1
 	state.reset_resist_unlocks()
 
 	test_combat()
 
 func test_combat():
+	#----options
 	var enemy_lvl = 27
 	var party = [
 		#first wave
@@ -196,6 +213,7 @@ func test_combat():
 #		{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'],
 #		4 : ['bomber'], 5 : ['bomber'], 6 : ['bomber']}
 	]
+	#---------
 	for wave in party:
 		for pos in wave:
 			wave[pos].push_back(enemy_lvl)

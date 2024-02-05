@@ -564,6 +564,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
+		description_patch = [],
 		damagetype = "slash",
 		skilltype = 'ultimate',
 		userange = "melee",
