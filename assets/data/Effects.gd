@@ -1,6 +1,24 @@
 extends Node
 #warning! only short pathes in buffs section will be preloaded 
 
+#templates
+var e_dot_template = {
+	type = 'trigger',
+	trigger = [variables.TR_TURN_F],
+	req_skill = false,
+	conditions = [],
+	args = [{obj = 'parent_args', param = 0}],
+	sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'parent_args', param = 0}],
+			atomic = [],
+		}
+	],
+	buffs = []
+}
+#------------------
+
 var effect_table = {
 	#defence
 	e_s_defence = {
@@ -3991,22 +4009,6 @@ func rebuild_template(args):
 	
 	return res
 
-const e_dot_template = {
-	type = 'trigger',
-	trigger = [variables.TR_TURN_F],
-	req_skill = false,
-	conditions = [],
-	args = [{obj = 'parent_args', param = 0}],
-	sub_effects = [{
-			type = 'oneshot',
-			target = 'owner',
-			args = [{obj = 'parent_args', param = 0}],
-			atomic = [],
-		}
-	],
-	buffs = []
-}
-
 func rebuild_dot(at_e):
 	var res = e_dot_template.duplicate(true)
 	res.sub_effects[0].atomic.push_back(at_e)
@@ -4018,35 +4020,29 @@ func rebuild_dot_onget(at_e):
 	res.sub_effects[0].atomic.push_back(at_e)
 	return res
 
-const e_remove = {
-	type = 'trigger',
-	trigger = [variables.TR_DEF],
-	conditions = [
-#		{type = 'skill', value = ['damagetype','eq', 'water'] },
-		{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
-	],
-	req_skill = true,
-	sub_effects = [
-		{
-			type = 'oneshot',
-			target = 'parent',
-			execute = 'remove'
-		}
-	],
-	buffs = []
-}
-
-
 func rebuild_remove(skill_cond):
-	var res = e_remove.duplicate(true)
-	res.conditions.push_back({type = 'skill', value = skill_cond.duplicate()})
-	return res
+	return {
+		type = 'trigger',
+		trigger = [variables.TR_DEF],
+		conditions = [
+			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] },
+			{type = 'skill', value = skill_cond.duplicate()}
+		],
+		req_skill = true,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'parent',
+				execute = 'remove'
+			}
+		],
+		buffs = []
+	}
 
 
 func _ready():
 	yield(preload_icons(), 'completed')
 	print("Buff icons preloaded")
-
 
 func preload_icons():
 	for b in buffs.values():
