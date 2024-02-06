@@ -165,7 +165,7 @@ func reset_progress():
 	progress_node.visible = true
 	progress_node.value = areastage - 1
 	progress_node.max_value = areastage_num
-	progress_node.get_node("Label").text = "%d/%d" % [areastage, areastage_num]
+	progress_node.get_node("Label").text = "%d/%d" % [progress_node.value, progress_node.max_value]
 
 func get_area_stage() ->int:
 	if !area: return 0

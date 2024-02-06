@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_default.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_pressed.png" type="Texture" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portraitsmall_back.png" type="Texture" id=31]
 [ext_resource path="res://assets/themes/button_small.tres" type="Theme" id=32]
 [ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/buttons/explore/bar_dungeon_under.png" type="Texture" id=34]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -82,9 +83,6 @@ margin_top = 101.0
 margin_right = 835.0
 margin_bottom = 587.0
 texture = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="level" type="Label" parent="ExplorationSelect/about"]
 anchor_left = 0.5
@@ -134,10 +132,8 @@ margin_top = 456.0
 margin_right = 321.0
 margin_bottom = 474.0
 value = 50.0
+texture_under = ExtResource( 34 )
 texture_progress = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="ExplorationSelect/about/progress"]
 anchor_left = 0.5
