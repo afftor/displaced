@@ -481,7 +481,7 @@ var effect_table = {
 		type = 'trigger',
 		debug_name = 'parry_counterblow',
 		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'damage']}, 
+			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['tags', 'has_no', 'aoe']}
 		],
 		trigger = [variables.TR_POST_TARG],
@@ -493,6 +493,11 @@ var effect_table = {
 				target = 'caster',
 				args = [{obj = 'parent_args', param = 0}],
 				atomic = [{type = 'damage', source = 'slash', value = ['parent_args', 0]}],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'sfx', value = 'anim_attack'}],
 			},
 		],
 		buffs = []

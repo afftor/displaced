@@ -120,9 +120,6 @@ margin_right = 760.0
 margin_bottom = 451.0
 custom_fonts/normal_font = ExtResource( 11 )
 text = "Information about zone"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="progress" type="TextureProgress" parent="ExplorationSelect/about"]
 anchor_left = 0.5
