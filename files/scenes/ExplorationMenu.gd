@@ -40,7 +40,7 @@ func _ready():
 	
 #	$AdvConfirm/panel/ok.connect("pressed", self, 'adv_confirm')
 #	$AdvConfirm/panel/no.connect("pressed", self, 'adv_decline')
-	scalecheck.connect('true_pressed', self, 'reset_level')
+	scalecheck.connect('pressed', self, 'reset_level')
 	
 	closebutton.visible = false
 	
@@ -137,14 +137,14 @@ func select_area(area_code):
 	for node in arealist.get_children():
 		node.pressed = (node.has_meta('area') and area == node.get_meta('area'))
 	if state.activearea == null:
-		scalecheck.set_state(false)
-		scalecheck.disabled = false
+		scalecheck.pressed = false
+		scalecheck.smart_disable(false)
 	elif state.activearea != area:
-		scalecheck.set_state(false)
-		scalecheck.disabled = true
+		scalecheck.pressed = false
+		scalecheck.smart_disable(true)
 	else:
-		scalecheck.set_state(Explorationdata.areas[area].level != state.areaprogress[area].level)
-		scalecheck.disabled = true
+		scalecheck.pressed = Explorationdata.areas[area].level != state.areaprogress[area].level
+		scalecheck.smart_disable(true)
 	scalecheck.visible = state.areaprogress[area].completed
 	build_area_description() #+build_area_info
 	#update_buttons() #build_area_description has it
@@ -152,7 +152,7 @@ func select_area(area_code):
 
 func reset_level():
 	if area == null : return
-	if scalecheck.checked:
+	if scalecheck.pressed:
 		$ExplorationSelect/about/level.text = "Level %d" % state.heroes['arron'].level
 	else:
 		$ExplorationSelect/about/level.text = "Level %d" % Explorationdata.areas[area].level
@@ -208,7 +208,7 @@ func on_start_press():
 
 func start_area():
 	input_handler.PlaySound(sounds["start"])
-	state.start_area(area, scalecheck.checked)
+	state.start_area(area, scalecheck.pressed)
 	open_mission()
 
 
