@@ -492,7 +492,9 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'caster',
 				args = [{obj = 'parent_args', param = 0}],
-				atomic = [{type = 'damage', source = 'slash', value = ['parent_args', 0]}],
+				atomic = [
+					{type = 'damage', source = 'slash', value = ['parent_args', 0]},
+					{type = 'sfx', value = 'anim_hit'}],
 			},
 			{
 				type = 'oneshot',
