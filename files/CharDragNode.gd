@@ -3,44 +3,46 @@ extends TextureButton
 var parent_node
 var dragdata
 export var pos = 0
+var just_droped = false
 
 
-signal signal_RMB
-signal signal_RMB_release
+#signal signal_RMB
+#signal signal_RMB_release
 
-var RMBpressed = false
-
-
-#func _input(event):
-#	if get_global_rect().has_point(get_global_mouse_position()):
-#		if event.is_pressed() and event.is_action("RMB"):
-#			emit_signal("signal_RMB")
-#			RMBpressed = true
-#	if event.is_action_released("RMB") && RMBpressed == true:
-#		emit_signal("signal_RMB_release")
-#		RMBpressed = false
+#var RMBpressed = false
 
 
-func _ready():
-	connect("gui_input", self, "_on_Button_gui_input")
-	connect("signal_RMB_release", self, "rclick")
+#func _ready():
+#	connect("gui_input", self, "_on_Button_gui_input")
+#	connect("signal_RMB_release", self, "rclick")
 
 
-func _on_Button_gui_input(event):
+func _gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
+		just_droped = false
 		match event.button_index:
-#			BUTTON_LEFT:
+			BUTTON_LEFT:
+				if parent_node.has_pressed_char_btn():
+					if parent_node.get_pressed_char_btn() == self:
+						parent_node.unpress_char_btn()
+						#must avoid PositionChanged signal here, for drag to work
+					else:
+						drop_data(null, parent_node.get_selected_char())
+						#parent_node unpresses all buttons on PositionChanged signal
+				elif dragdata != null:#empty slots are unclickable so as undragable
+					parent_node.press_char_btn(self)
 #				emit_signal("signal_LMB", position)
 			BUTTON_RIGHT:
-				emit_signal("signal_RMB_release")
-				emit_signal("signal_RMB")
+				rclick()
+#				emit_signal("signal_RMB_release")
+#				emit_signal("signal_RMB")
 
 
 func get_drag_data(position):
-	if dragdata == null: 
+	if dragdata == null or just_droped: 
 		return null
 	parent_node.show_screen()
-	press()
+	parent_node.press_char_btn(self)
 	var container = Control.new()
 	var drag_item = self.duplicate()
 	container.add_child(drag_item)
@@ -54,32 +56,30 @@ func can_drop_data(position, data):
 
 
 func drop_data(position, data):
-	if data == null:# and dragdata != null: #drag empty slot
-#		var hero1 = state.heroes[dragdata]
-#		var pos1 = pos
-#		if pos1 == 0: pos1 = null
-#		hero1.position = pos1
-		pass 
-	elif dragdata == null and data != null: #drag char onto empty slot
-		var hero1 = state.heroes[data]
-		var pos1 = pos
-		if pos1 == 0: pos1 = null
-		hero1.position = pos1
-#	elif dragdata != null and data != null:
+	if data == null:#drag empty slot
+		#practically impossible
+		return
+	
+	if pos == 0:#drag char to reserve (dragdata can't be null)
+		var drag_char = state.heroes[data]
+		if drag_char.position != 0:#draged char in party
+			if data == dragdata:#drag to self
+				drag_char.position = null
+			else:#drag to another char
+				switch_char(data, dragdata)
+	elif dragdata == null: #drag char onto empty slot
+		state.heroes[data].position = pos
 	elif dragdata != data: #drag char onto another char
-		var hero1 = state.heroes[data]
-		var pos1 = pos
-		if pos1 == 0: pos1 = null
-		var hero2 = state.heroes[dragdata]
-		var pos2 = hero1.position
-		hero1.position = pos1
-		hero2.position = pos2
-	elif pos == 0: #drag char on self upwards
-		var hero1 = state.heroes[data]
-		hero1.position = null
-	else: #drag char on self downwards
-		pass
+		switch_char(data, dragdata)
 	input_handler.emit_signal("PositionChanged")
+	just_droped = true
+
+func switch_char(data1, data2):
+	var char1 = state.heroes[data1]
+	var char2 = state.heroes[data2]
+	var pos1 = char1.position
+	char1.position = char2.position
+	char2.position = pos1
 
 
 func press():
@@ -97,3 +97,6 @@ func unpress():
 func rclick():
 	if dragdata == null: return
 	parent_node.show_info(dragdata)
+
+func get_char_data():
+	return dragdata

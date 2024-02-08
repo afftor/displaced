@@ -21,6 +21,8 @@ var sounds = {
 	"abandon" : "sound/menu_close"
 }
 
+var pressed_char_btn
+
 func _ready():
 	Explorationdata.preload_resources()
 	for i in sounds.values():
@@ -224,6 +226,7 @@ func show_screen():
 
 func build_party():
 	$BattleGroup/screen.visible = false
+	unpress_char_btn()
 	for i in range(3):
 #		partylist.get_child(i).disabled = true
 		var node = partylist.get_child(i)
@@ -616,3 +619,24 @@ func can_escape() ->bool:
 		return true
 	var areadata = Explorationdata.areas[area]
 	return !(areadata.has('no_escape') and areadata.no_escape)
+
+func press_char_btn(pressed_btn :BaseButton):
+	unpress_char_btn()
+	pressed_char_btn = pressed_btn
+	pressed_btn.press()
+
+func unpress_char_btn():
+	if pressed_char_btn != null:
+		pressed_char_btn.unpress()
+		pressed_char_btn = null
+
+func get_selected_char():
+	if pressed_char_btn == null:
+		return null
+	return pressed_char_btn.get_char_data()
+
+func get_pressed_char_btn():
+	return pressed_char_btn
+
+func has_pressed_char_btn() ->bool:
+	return (pressed_char_btn != null)
