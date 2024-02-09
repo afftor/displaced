@@ -697,10 +697,9 @@ func process_event(ev, skill = null):
 		eff.process_event(ev)
 
 func deal_damage(value, source):
-	var tmp = hp
 	var out = {hp = 0, shield = 0}
 	var res = get_stat('resists')
-	value = round(value);
+	value = round(value)
 	value *= 1 - res['damage']/100.0
 	if variables.resistlist.has(source): value *= 1 - res[source]/100.0
 	if value < 0: 
@@ -712,15 +711,15 @@ func deal_damage(value, source):
 		if shield < 0:
 			out.shield += shield
 			self.hp = hp + shield
+			out.hp = -shield
 			process_event(variables.TR_DMG)
 			self.shield = 0
 		if shield == 0: process_event(variables.TR_SHIELD_DOWN)
 	else:
 		self.hp = hp - value
+		out.hp = value
 		process_event(variables.TR_DMG)
 		recheck_effect_tag('recheck_damage')
-	tmp = tmp - hp
-	out.hp = tmp
 	return out
 
 func heal(value):
