@@ -21,6 +21,8 @@ var sounds = {
 	"abandon" : "sound/menu_close"
 }
 
+var pressed_char_btn
+
 func _ready():
 	Explorationdata.preload_resources()
 	for i in sounds.values():
@@ -40,7 +42,7 @@ func _ready():
 	
 #	$AdvConfirm/panel/ok.connect("pressed", self, 'adv_confirm')
 #	$AdvConfirm/panel/no.connect("pressed", self, 'adv_decline')
-	scalecheck.connect('true_pressed', self, 'reset_level')
+	scalecheck.connect('pressed', self, 'reset_level')
 	
 	closebutton.visible = false
 	
@@ -137,14 +139,14 @@ func select_area(area_code):
 	for node in arealist.get_children():
 		node.pressed = (node.has_meta('area') and area == node.get_meta('area'))
 	if state.activearea == null:
-		scalecheck.set_state(false)
-		scalecheck.disabled = false
+		scalecheck.pressed = false
+		scalecheck.smart_disable(false)
 	elif state.activearea != area:
-		scalecheck.set_state(false)
-		scalecheck.disabled = true
+		scalecheck.pressed = false
+		scalecheck.smart_disable(true)
 	else:
-		scalecheck.set_state(Explorationdata.areas[area].level != state.areaprogress[area].level)
-		scalecheck.disabled = true
+		scalecheck.pressed = Explorationdata.areas[area].level != state.areaprogress[area].level
+		scalecheck.smart_disable(true)
 	scalecheck.visible = state.areaprogress[area].completed
 	build_area_description() #+build_area_info
 	#update_buttons() #build_area_description has it
@@ -152,7 +154,7 @@ func select_area(area_code):
 
 func reset_level():
 	if area == null : return
-	if scalecheck.checked:
+	if scalecheck.pressed:
 		$ExplorationSelect/about/level.text = "Level %d" % state.heroes['arron'].level
 	else:
 		$ExplorationSelect/about/level.text = "Level %d" % Explorationdata.areas[area].level
@@ -165,7 +167,7 @@ func reset_progress():
 	progress_node.visible = true
 	progress_node.value = areastage - 1
 	progress_node.max_value = areastage_num
-	progress_node.get_node("Label").text = "%d/%d" % [areastage, areastage_num]
+	progress_node.get_node("Label").text = "%d/%d" % [progress_node.value, progress_node.max_value]
 
 func get_area_stage() ->int:
 	if !area: return 0
@@ -208,7 +210,7 @@ func on_start_press():
 
 func start_area():
 	input_handler.PlaySound(sounds["start"])
-	state.start_area(area, scalecheck.checked)
+	state.start_area(area, scalecheck.pressed)
 	open_mission()
 
 
@@ -224,6 +226,7 @@ func show_screen():
 
 func build_party():
 	$BattleGroup/screen.visible = false
+	unpress_char_btn()
 	for i in range(3):
 #		partylist.get_child(i).disabled = true
 		var node = partylist.get_child(i)
@@ -616,3 +619,24 @@ func can_escape() ->bool:
 		return true
 	var areadata = Explorationdata.areas[area]
 	return !(areadata.has('no_escape') and areadata.no_escape)
+
+func press_char_btn(pressed_btn :BaseButton):
+	unpress_char_btn()
+	pressed_char_btn = pressed_btn
+	pressed_btn.press()
+
+func unpress_char_btn():
+	if pressed_char_btn != null:
+		pressed_char_btn.unpress()
+		pressed_char_btn = null
+
+func get_selected_char():
+	if pressed_char_btn == null:
+		return null
+	return pressed_char_btn.get_char_data()
+
+func get_pressed_char_btn():
+	return pressed_char_btn
+
+func has_pressed_char_btn() ->bool:
+	return (pressed_char_btn != null)

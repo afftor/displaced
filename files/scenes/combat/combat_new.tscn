@@ -1069,5 +1069,3 @@ margin_top = 487.0
 margin_right = 1048.0
 margin_bottom = 606.0
 text = "test combat"
-
-[connection signal="pressed" from="test" to="." method="test_with_prepare"]

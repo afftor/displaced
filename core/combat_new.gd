@@ -132,6 +132,8 @@ var resist_tooltip_for_pos = -1
 
 func _ready():
 	debug_btn_on = $test.visible
+	if debug_btn_on:
+		$test.connect("pressed", self, "prepare_test", [], CONNECT_ONESHOT)
 	for i in sounds.values():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
@@ -167,28 +169,45 @@ func cheatheal():
 	for i in playergroup.values():
 		i.hp = i.hpmax
 
-func test_with_prepare():
-	var hero_lvl = 39
+func prepare_test():
+	#----options
+	#to lock hero comment the line
+	#lvl - char level, w - equipped weapon, w_lvl - level of that weapon, a_lvl - armor level
+	var heroes = {
+		arron = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 4},
+		rose = {lvl = 39, w = "weapon2", w_lvl = 1, a_lvl = 4},
+		erika = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 4},
+		ember = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 4},
+		iola = {lvl = 39, w = "weapon1", w_lvl = 1, a_lvl = 4},
+		rilu = {lvl = 39, w = "weapon1", w_lvl = 4, a_lvl = 4},
+	}
+	#---------
 	resources.preload_res("bg/combat_cave")
 	if resources.is_busy(): yield(resources, "done_work")
 
 	state.add_test_resources()
 
-	for ch in state.characters:
+	for ch in heroes:
+		var info = heroes[ch]
 		state.unlock_char(ch, true, false)
-		state.heroes[ch].level = hero_lvl
-		state.heroes[ch].hp = state.heroes[ch].hpmax
-	state.heroes.arron.position = 1
+		var chara = state.heroes[ch]
+		chara.level = info.lvl
+		chara.hp = chara.hpmax
+		chara.set_gear('armor', info.a_lvl)
+		chara.set_gear(info.w, info.w_lvl)
+		chara.set_weapon(info.w)
+	state.heroes[heroes.keys()[0]].position = 1
 	state.reset_resist_unlocks()
 
+	$test.connect("pressed", self, "test_combat")
 	test_combat()
 
 func test_combat():
+	#----options
 	var enemy_lvl = 27
 	var party = [
 		#first wave
-		{ 1 : ['spider'], 2 : ['spider'], 3 : ['spider'],
-		4 : ['spider'], 5 : ['spider'], 6 : ['spider']},
+		{ 2 : ['wyvern']},
 		#second wave
 #		{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'],
 #		4 : ['bomber'], 5 : ['bomber'], 6 : ['bomber']}
@@ -196,6 +215,7 @@ func test_combat():
 #		{ 1 : ['bomber'], 2 : ['bomber'], 3 : ['bomber'],
 #		4 : ['bomber'], 5 : ['bomber'], 6 : ['bomber']}
 	]
+	#---------
 	for wave in party:
 		for pos in wave:
 			wave[pos].push_back(enemy_lvl)
@@ -1788,7 +1808,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	turns += 1
 	#preparing and sort animations
 	var animations = skill.sfx
-	var animationdict = {windup = [], prehit = [], predamage = [], postdamage = []}
+	var animationdict = {windup = [], prehit = [], predamage = [], postdamage = [], effected = []}
 	for i in animations:
 		animationdict[i.period].append(i)
 	
@@ -1800,12 +1820,12 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 		sfxtarget.process_sfx_dict(i)
 	#=============
-	
 	#skill's repeat cycle of predamage-damage-postdamage
 	var endturn = !s_skill1.tags.has('instant');
 	if !endturn:
 		caster.acted = false
 	var n = 0
+	var effected_positions = {}
 	while n < s_skill1.repeat:
 		n += 1
 		#get all affected targets
@@ -1816,6 +1836,11 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				break
 			target_pos = newtarget
 		
+		turns += 1
+		target = battlefield[target_pos]
+		if target == null and !skill.tags.has('empty_target'):
+			continue
+		
 		#======prehit animation
 		for i in animationdict.prehit:
 #			if i.has('once') and i.once and n > 1: continue#once-mechanic not used now, but tested and working
@@ -1823,10 +1848,6 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			sfxtarget.process_sfx_dict(i)
 		#====
 		
-		turns += 1
-		target = battlefield[target_pos]
-		if target == null and !skill.tags.has('empty_target'):
-			continue
 		targets = CalculateTargets(skill, caster, target_pos)#finale = true
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
@@ -1891,6 +1912,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				s_skill2.calculate_dmg()
 				#logging result & dealing damage
 				execute_skill(s_skill2)
+				effected_positions[s_skill2.target.position] = true
 		turns += 1
 		#wait for damage animations from execute_skill()
 		CombatAnimations.check_start()
@@ -1915,6 +1937,15 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
+	#=========effected animation
+	for effected_pos in effected_positions:
+		var effected = battlefield[effected_pos]
+		if effected == null or effected.defeated:
+			continue
+		for i in animationdict.effected:
+			var sfxtarget = ProcessSfxTarget(i.target, caster, effected)
+			sfxtarget.process_sfx_dict(i)
+	#==========
 	#=========skill itself finished==========
 	
 	turns += 1

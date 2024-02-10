@@ -399,7 +399,8 @@ var TranslationDict = {
 	BASEDAMAGE = "Base Damage",
 	TOOLTIPEXP = "Experience. Character gains EXP from combat.",
 	TOOLTIPHP = "Health. Automatically restored after each combat.",
-	
+	TOOLTIPMFINISED = "This mission is finished, but you can replay it.",
+	TOOLTIPSCALELVL = "This option will scale enemies up to your current level.",
 	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
