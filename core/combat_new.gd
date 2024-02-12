@@ -24,7 +24,7 @@ var debug_run = false
 
 var allowaction = false
 var allowedtargets = {'ally':[],'enemy':[]}
-var swapchar = null
+#var swapchar = null
 
 var fightover = false #for victory
 var fight_finished = false #for FinishCombat
@@ -402,8 +402,7 @@ func select_actor():
 	ClearSkillTargets()
 	gui_node.ClearSkillPanel()
 	gui_node.ClearItemPanel()
-	gui_node.active_panel.visible = false
-	gui_node.active_panel2.visible = false
+	gui_node.unbild_selection()
 	checkdeaths()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -497,7 +496,8 @@ func player_turn(pos):
 	gui_node.RebuildItemPanel()
 	gui_node.RebuildDefaultsPanel()
 	gui_node.RebuildSkillPanel()
-	SelectSkill(selected_character.get_autoselected_skill(), true)
+#	unselect_skill()
+	SelectSkill(selected_character.get_autoselected_skill())
 	emit_signal('player_ready')
 
 func select_player_char(char_id):
@@ -507,6 +507,12 @@ func select_player_char(char_id):
 				!ch.acted and !ch.defeated):
 			player_turn(pos)
 			return
+
+func try_select_player_char_by_pos(position):
+	if !(position in variables.playerparty): return
+	var ch = battlefield[position]
+	if ch == null or ch.acted or ch.defeated: return
+	player_turn(position)
 
 
 func enemy_turn(pos):
@@ -570,15 +576,15 @@ func ActivateItem(item):
 	#UpdateSkillTargets()
 
 
-func SelectSkill(skill, system = false):
-	swapchar = null
+func SelectSkill(skill):
+#	swapchar = null
 #	activecharacter.displaynode.highlight_active()
 	Input.set_custom_mouse_cursor(cursors.default)
-	skill = Skillsdata.patch_skill(skill, activecharacter)#Skillsdata.skilllist[skill]
+	skill = Skillsdata.patch_skill(skill, activecharacter)
 	#need to add daily restriction check
 	if !activecharacter.can_use_skill(skill) :
 		activeitem = null
-		call_deferred('SelectSkill', 'attack', true)
+#		call_deferred('SelectSkill', 'attack')
 		return
 #	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
@@ -588,7 +594,8 @@ func SelectSkill(skill, system = false):
 			print ('no legal targets')
 			combatlogadd('No legal targets')
 			activeitem = null
-			call_deferred('SelectSkill', 'attack', true)
+			unselect_skill()
+#			call_deferred('SelectSkill', 'attack')
 			return
 	if skill.allowedtargets.has('self') and skill.allowedtargets.size() == 1 :
 		globals.hideskilltooltip()
@@ -599,6 +606,14 @@ func SelectSkill(skill, system = false):
 	else:
 		cur_state = T_SKILLATTACK
 	gui_node.build_selected_skill(skill)
+
+func unselect_skill():
+	Input.set_custom_mouse_cursor(cursors.default)
+	activeaction = null
+	ClearSkillTargets()
+	reset_all_highlight()
+	cur_state = T_AUTO
+	gui_node.unbild_selection()
 
 #helpers
 func get_avail_char_number(group):
@@ -614,22 +629,23 @@ func get_avail_char_number(group):
 		res += 1
 	return res
 
-func SelectExchange(char_id):
-	activecharacter.displaynode.highlight_active()
-	Input.set_custom_mouse_cursor(cursors.default)
-	#need to add daily restriction check
-	ClearSkillTargets()
-	for pos in variables.playerparty:
-		if battlefield[pos] == null: continue
-		if battlefield[pos].acted: continue
-		allowedtargets.ally.push_back(pos)
-	
-	if allowedtargets.ally.empty():
-		print("error - no char to swap")
-	else:
-		cur_state = T_SKILLSUPPORT
-		swapchar = char_id
-		gui_node.build_selected_char(state.heroes[char_id])
+#seems not in use
+#func SelectExchange(char_id):
+#	activecharacter.displaynode.highlight_active()
+#	Input.set_custom_mouse_cursor(cursors.default)
+#	#need to add daily restriction check
+#	ClearSkillTargets()
+#	for pos in variables.playerparty:
+#		if battlefield[pos] == null: continue
+#		if battlefield[pos].acted: continue
+#		allowedtargets.ally.push_back(pos)
+#
+#	if allowedtargets.ally.empty():
+#		print("error - no char to swap")
+#	else:
+#		cur_state = T_SKILLSUPPORT
+#		swapchar = char_id
+#		gui_node.build_selected_char(state.heroes[char_id])
 
 
 
@@ -831,33 +847,34 @@ func advance_frontrow():
 #
 
 
-func swap_heroes_old(pos):
-	var newhero = swapchar
-	swapchar = null
-	#remove current char
-	var targetchar = battlefield[pos]
-	targetchar.displaynode.disappear()
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	turns += 1
-	targetchar.position = null
-	make_hero_panel(targetchar)
-	#add new char
-	var newchar = state.heroes[newhero]
-#	activecharacter.acted = true
-	newchar.position = pos
-	playergroup[pos] = newchar
-	battlefield[pos] = newchar
-	make_hero_panel(newchar, false)
-	newchar.displaynode.appear()
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	turns += 1
-	
-	recheck_auras()
-#	gui_node.RebuildReserve()
-	gui_node.build_hero_panels()
-	call_deferred('select_actor')
+#seems not in use. Delete with swapchar in time (since 09.02.24)
+#func swap_heroes_old(pos):
+#	var newhero = swapchar
+#	swapchar = null
+#	#remove current char
+#	var targetchar = battlefield[pos]
+#	targetchar.displaynode.disappear()
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+#	targetchar.position = null
+#	make_hero_panel(targetchar)
+#	#add new char
+#	var newchar = state.heroes[newhero]
+##	activecharacter.acted = true
+#	newchar.position = pos
+#	playergroup[pos] = newchar
+#	battlefield[pos] = newchar
+#	make_hero_panel(newchar, false)
+#	newchar.displaynode.appear()
+#	CombatAnimations.check_start()
+#	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+#	turns += 1
+#
+#	recheck_auras()
+##	gui_node.RebuildReserve()
+#	gui_node.build_hero_panels()
+#	call_deferred('select_actor')
 
 
 func move_hero(chid, pos): #reserve -> bf
@@ -1310,8 +1327,8 @@ func get_enemy_targets_melee(fighter, hide_ignore = false):
 	return res
 
 
-func UpdateSkillTargets(caster, glow_skip = false):
-	var skill = Skillsdata.patch_skill(activeaction, caster)#Skillsdata.skilllist[activeaction]
+func UpdateSkillTargets(caster):
+	var skill = Skillsdata.patch_skill(activeaction, caster)
 	var fighter = caster
 	var targetgroups = skill.allowedtargets
 	var rangetype = skill.userange
@@ -1337,21 +1354,20 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	if targetgroups.has('self'):
 		allowedtargets.ally.append(int(fighter.position))
 	
-	if glow_skip: return
-	highlight_skill_targets()
+	reset_all_highlight()
+	mark_skill_targets()
 
-func highlight_skill_targets():
-	for nd in battlefieldpositions.values():
-		nd.stop_highlight()
+func mark_skill_targets():
 	for pos in range(4,10):
 		if battlefield[pos] != null:
 			battlefield[pos].displaynode.mark_unreachable()
 	for pos in allowedtargets.enemy:
 		battlefield[pos].displaynode.unmark_unreachable()
-#	for pos in allowedtargets.ally:
-#		battlefield[pos].displaynode.highlight_target_ally()
-	activecharacter.displaynode.highlight_active()
 
+func reset_all_highlight():
+	for nd in battlefieldpositions.values():
+		nd.stop_highlight()
+	activecharacter.displaynode.highlight_active()
 
 func ClearSkillTargets():
 	allowedtargets.ally.clear()
@@ -1580,14 +1596,11 @@ func FighterMouseOver(position):
 		T_SKILLSUPPORT:
 			if position in allowedtargets.ally:
 				Input.set_custom_mouse_cursor(cursors.support)
-				for pos in allowedtargets.ally + allowedtargets.enemy:
-					battlefield[pos].displaynode.stop_highlight()
-				activecharacter.displaynode.highlight_active()
 				var cur_targets = []
-				if swapchar != null:
-					cur_targets = [fighter]
-				else:
-					cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+#				if swapchar != null:
+#					cur_targets = [fighter]
+#				else:
+				cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
 					ch.displaynode.highlight_target_ally()
 				cur_state = T_OVERSUPPORT
@@ -1595,9 +1608,7 @@ func FighterMouseOver(position):
 			#probably impossible
 #			if position in allowedtargets.enemy:
 #				Input.set_custom_mouse_cursor(cursors.attack)
-#				for pos in allowedtargets.ally + allowedtargets.enemy:
-#					battlefield[pos].displaynode.stop_highlight()
-#				activecharacter.displaynode.highlight_active()
+#				reset_all_highlight()
 #				var cur_targets = []
 #				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 #				for ch in cur_targets:
@@ -1616,8 +1627,6 @@ func FighterMouseOver(position):
 #				return
 			if position in allowedtargets.enemy:
 				Input.set_custom_mouse_cursor(cursors.attack)
-				for pos in allowedtargets.ally + allowedtargets.enemy:
-					battlefield[pos].displaynode.stop_highlight()
 				var cur_targets = []
 				cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
 				for ch in cur_targets:
@@ -1632,8 +1641,8 @@ func FighterMouseOverFinish(position):
 	if position == null: return
 	hide_resist_tooltip()
 	Input.set_custom_mouse_cursor(cursors.default)
-	var fighter = battlefield[position]
-	var node = fighter.displaynode
+#	var fighter = battlefield[position]
+#	var node = fighter.displaynode
 	match cur_state:
 		T_AUTO:
 			return
@@ -1643,14 +1652,15 @@ func FighterMouseOverFinish(position):
 #			if fighter.acted: return
 #			node.stop_highlight()
 		T_OVERATTACK, T_OVERSUPPORT:
-			highlight_skill_targets()
+			reset_all_highlight()
+			mark_skill_targets()
 			if cur_state == T_OVERATTACK:
 				cur_state = T_SKILLATTACK
 			else:
 				cur_state = T_SKILLSUPPORT
 			return
 #		T_OVERATTACKALLY:
-#			highlight_skill_targets()
+#			mark_skill_targets()
 #			cur_state = T_SKILLATTACK
 #			return
 		T_SKILLSUPPORT, T_SKILLATTACK:
@@ -1664,6 +1674,7 @@ func FighterPress(position):
 	if allowaction == false : return
 	match cur_state:
 		T_AUTO:
+			try_select_player_char_by_pos(position)
 			return
 #		T_CHARSELECT:
 #			if position > 3:
@@ -1677,14 +1688,14 @@ func FighterPress(position):
 		T_OVERATTACK, T_OVERSUPPORT:
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				cur_state = T_AUTO
-				if swapchar != null:
-					activecharacter.acted = true #idk why active and not target, but if you insisted...
-					activecharacter.displaynode.process_disable()
-					swap_heroes_old(position)
-				else:
-					if allowedtargets.enemy.has(position):
-						activecharacter.skills_autoselect.push_back(activeaction)
-					use_skill(activeaction, activecharacter, position)
+#				if swapchar != null:
+#					activecharacter.acted = true #idk why active and not target, but if you insisted...
+#					activecharacter.displaynode.process_disable()
+#					swap_heroes_old(position)
+#				else:
+				if allowedtargets.enemy.has(position):
+					activecharacter.skills_autoselect.push_back(activeaction)
+				use_skill(activeaction, activecharacter, position)
 			return
 #		T_OVERATTACKALLY:
 #			if allowedtargets.enemy.has(position):
@@ -1699,25 +1710,22 @@ func FighterPress(position):
 #				player_turn(position)
 #			return
 		T_SKILLSUPPORT:
+			#should not be possible
 			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
 				use_skill(activeaction, activecharacter, position)
 			return
 		T_SKILLATTACK:
-			if allowedtargets.enemy.has(position):
+			if !allowedtargets.enemy.has(position):
+				try_select_player_char_by_pos(position)
+			else:
+				#should not be possible
 				print("warning - allowed target not highlighted properly")
 				cur_state = T_AUTO
 				activecharacter.skills_autoselect.push_back(activeaction)
 				use_skill(activeaction, activecharacter, position)
-			elif position in variables.playerparty:
-				if battlefield[position] == null: return
-				if battlefield[position].acted: return
-				if battlefield[position].defeated: return
-				cur_state = T_AUTO
-				player_turn(position)
 			return
-
 
 
 func ProcessSfxTarget(sfxtarget, caster, target):
@@ -1994,7 +2002,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if activeitem != null:
 		state.add_materials(activeitem.code, -1, false)
 		activeitem = null
-		SelectSkill(caster.get_autoselected_skill(), true)
+		unselect_skill()
+#		SelectSkill(caster.get_autoselected_skill())
 
 #	caster.rebuildbuffs()#update_buffs() at the end should cover this
 	turns +=1
@@ -2015,7 +2024,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			allowaction = true
 			gui_node.RebuildSkillPanel()
 			gui_node.RebuildItemPanel()
-			SelectSkill(activeaction, true)
+			SelectSkill(activeaction)
 		eot = true
 
 	update_buffs()#not only caster and targets could be effected ("remove_siblings" oneshot for example)
@@ -2175,3 +2184,7 @@ func hide_resist_tooltip():
 func hide_resist_tooltip_if_my(pos :int):
 	if resist_tooltip_for_pos == pos:
 		hide_resist_tooltip()
+
+func _gui_input(event):
+	if event.is_action_pressed('RMB'):
+		unselect_skill()
