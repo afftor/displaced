@@ -401,6 +401,7 @@ var TranslationDict = {
 	TOOLTIPHP = "Health. Automatically restored after each combat.",
 	TOOLTIPMFINISED = "This mission is finished, but you can replay it.",
 	TOOLTIPSCALELVL = "This option will scale enemies up to your current level.",
+	TOOLTIPFILEDELETE = 'Press this button to delete selected save file.',
 	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
