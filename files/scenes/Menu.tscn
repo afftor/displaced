@@ -34,9 +34,6 @@ script = ExtResource( 1 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
 margin_left = 1.24487
@@ -44,9 +41,6 @@ margin_right = 1923.24
 margin_bottom = 1080.0
 stream = ExtResource( 19 )
 autoplay = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 760.0
@@ -54,9 +48,6 @@ margin_top = 358.0
 margin_right = 1208.0
 margin_bottom = 1018.0
 custom_constants/separation = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
 margin_right = 600.0
@@ -167,9 +158,6 @@ margin_bottom = 434.5
 margin_right = 168.0
 margin_bottom = 24.0
 text = "ver. 0.1.0"
-
-[node name="WarnScreen" parent="." instance=ExtResource( 18 )]
-visible = false
 
 [node name="DemoPanel" type="Panel" parent="."]
 visible = false
@@ -383,3 +371,6 @@ damping = 100.0
 damping_random = 1.0
 angle_random = 1.0
 color_ramp = SubResource( 1 )
+
+[node name="WarnScreen" parent="." instance=ExtResource( 18 )]
+visible = false

@@ -795,7 +795,7 @@ var enemylist = {
 		hitrate = 95,
 		damage = 74,
 #		speed = 30,
-		resists = {slash = 100, pierce = 100, earth = 100, air = -50, light = -50},
+		resists = {slash = 50, pierce = 50, earth = 100, air = -50, light = -50},
 		status_resists = {stun = 100},
 		xpreward = 15,#50 for both stages
 		bodyhitsound = 'stone',
@@ -821,7 +821,7 @@ var enemylist = {
 		evasion = 0,
 		hitrate = 95,
 		damage = 74,
-		resists = {slash = 100, pierce = 100, earth = 100, air = -50, light = -50},
+		resists = {slash = 50, pierce = 50, earth = 100, air = -50, light = -50},
 		status_resists = {stun = 100},
 		xpreward = 35,#50 for both stages
 		ai = load('res://files/ai_classes/dk.gd'),
