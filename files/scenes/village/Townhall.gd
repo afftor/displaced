@@ -146,14 +146,15 @@ func update_upgrade():
 	if next_level > 1:
 		text += "\n\n%s: %s" % [
 			tr("UPGRADEPREVBONUS"),
-			tr(upgrade.levels[next_level-1].bonusdescript)
+			Upgradedata.get_refined_bonusdescript(selectedupgrade, next_level-1)
 		]
 	
 	var canpurchase = true
 	
 	if upgrade.levels.has(next_level):
 		var level_info = upgrade.levels[next_level]
-		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + tr(level_info.bonusdescript)
+		var bonusdescript = Upgradedata.get_refined_bonusdescript(selectedupgrade, next_level)
+		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + bonusdescript
 		if level_info.has("unlock_reqs") and !state.checkreqs(level_info.unlock_reqs):
 			canpurchase = false
 		upgrade_desc.get_node('goldicon').visible = true

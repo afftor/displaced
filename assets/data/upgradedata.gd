@@ -220,7 +220,52 @@ var upgradelist = {#2 fix data
 	},
 }
 
+var descript_refine_list = {
+	tavern = {
+		chars = ['arron', 'ember', 'erika'],
+		bonusdescript = "UPGRADETAVERNBONUSREFINE",
+		level_value = {1: "15", 2: "30", 3: "45", 4: "60"}
+	},
+	mine = {
+		chars = ['arron', 'ember', 'erika'],
+		bonusdescript = "UPGRADEMINEBONUSREFINE",
+		level_value = {1: "15", 2: "30", 3: "45", 4: "60"}
+	},
+	farm = {
+		chars = ['rose', 'rilu', 'iola'],
+		bonusdescript = "UPGRADEFARMBONUSREFINE",
+		level_value = {1: "15", 2: "30", 3: "45", 4: "60"}
+	},
+	mill = {
+		chars = ['rose', 'rilu', 'iola'],
+		bonusdescript = "UPGRADEMILLBONUSREFINE",
+		level_value = {1: "15", 2: "30", 3: "45", 4: "60"}
+	}
+}
+
 
 func _ready():
 	for code in upgradelist:
 		upgradelist[code].code = code
+
+func get_refined_bonusdescript(upgrade :String, level :int) ->String:
+	if !descript_refine_list.has(upgrade):
+		return tr(upgradelist[upgrade].levels[level].bonusdescript)
+	
+	var data = descript_refine_list[upgrade]
+	#it is only a char list for now, so no ifs
+	var char_list = []
+	for id in data.chars:
+		var char_data = state.heroes[id]
+		if char_data.unlocked:
+			char_list.append(char_data.name)
+	var char_str = ''
+	for i in range(char_list.size()):
+		if i == 0:
+			pass
+		elif i == char_list.size()-1:
+			char_str += " and "
+		else:
+			char_str += ", "
+		char_str += char_list[i]
+	return tr(data.bonusdescript) % [char_str, data.level_value[level]]
