@@ -1,10 +1,11 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/pt_30_button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/images/buttons/button_small_pressed.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/buttons/button_small_normal.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/buttons/button_small_hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/buttons/button_small_disabled.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/taskmenu/jobtoolfield.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -38,6 +39,16 @@ margin_right = 14.0
 margin_top = 14.0
 margin_bottom = 14.0
 
+[sub_resource type="StyleBoxTexture" id=5]
+content_margin_left = 25.0
+content_margin_right = 25.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 141, 138 )
+margin_left = 8.59416
+margin_right = 7.0
+margin_top = 7.77226
+margin_bottom = 9.0
+
 [resource]
 Button/colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 Button/colors/font_color_disabled = Color( 0.870588, 0.870588, 0.901961, 0.870588 )
@@ -50,3 +61,9 @@ Button/styles/focus = null
 Button/styles/hover = SubResource( 2 )
 Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 4 )
+TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.101961 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = null
+TooltipPanel/styles/panel = SubResource( 5 )

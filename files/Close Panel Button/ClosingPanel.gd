@@ -16,10 +16,14 @@ func _ready():
 #	if resources.is_busy(): yield(resources, "done_work")
 
 	rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
-	closebutton = load("res://files/Close Panel Button/CloseButton.tscn").instance()
-	add_child(closebutton)
-#	move_child(closebutton, 0)
-	closebutton.raise()
+	
+	if has_node("CloseButton"):
+		closebutton = $CloseButton
+	else:
+		closebutton = load("res://files/Close Panel Button/CloseButton.tscn").instance()
+		add_child(closebutton)
+#		move_child(closebutton, 0)
+		closebutton.raise()
 	closebutton.connect("pressed", self, 'hide')
 	RepositionCloseButton()
 	visible_ready = is_visible_in_tree()

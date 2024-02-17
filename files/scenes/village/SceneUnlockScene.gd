@@ -19,6 +19,10 @@ func set_unlocked(eventdata :Dictionary):
 	set_preview(eventdata)
 	label.text = "{name}\n{descript}".format(eventdata)
 	lock.hide()
+	image.material = null#unblur for on-texture shader
+	#bluring now by shader, but maybe it would be more efficient to generate
+	#blurred image from original through get_pixel()/set_pixel() with same
+	#shader's algorithm. Mind it in case of freezes in the scene with shaders
 	reqs.hide()
 	unlock_btn.hide()
 
