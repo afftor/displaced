@@ -29,7 +29,7 @@ func set_unlocked(eventdata :Dictionary):
 func set_unlockable(eventdata :Dictionary):
 	set_preview(eventdata)
 	label.text = eventdata.name
-	var cost_con = reqs
+	var cost_con = reqs.get_node("list")
 	input_handler.ClearContainer(cost_con, ['line'])
 	for ch in eventdata.unlock_price:
 		var hero = state.heroes[ch]

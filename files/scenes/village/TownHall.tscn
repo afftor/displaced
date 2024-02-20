@@ -108,9 +108,6 @@ margin_bottom = 44.0
 text = "SCENES"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Quests" type="TextureButton" parent="ButtonPanel/VBoxContainer"]
 visible = false

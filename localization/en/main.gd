@@ -199,6 +199,7 @@ var TranslationDict = {
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
+	FRIENDPOINT = "Friendship points",
 
 	#resists
 	RESIST_DAMAGE = "Damage",
@@ -228,6 +229,8 @@ var TranslationDict = {
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
+	FRIENDPOINTSALLTOOLTIP = "Current friendship points: %s",
+	FRIENDPOINTSTOOLTIP = "Friendship points. Earned in shared battles. Can be used to unlock scenes in Town Hall",
 
 	AREAFORESTNAME = "Forest",
 	AREAFORESTDESCRIPT = "An ancient forests rumored to be home to elves and stumps. The visitors are rare around these places especially after the stray faeries have been appearing around here.",

@@ -3,6 +3,7 @@ class_name hero
 
 var unlocked = false setget set_unlocked
 var friend_points = 0
+var friend_points_new = 0
 
 var recentlevelups = 0
 var baseexp = 0 setget exp_set
@@ -103,7 +104,10 @@ func get_skills():
 func see_enemy_killed():
 	#stub
 	friend_points += 1 #can adjust it here, arron still get fp
+	friend_points_new += 1
 
+func clear_new_friend_points():
+	friend_points_new = 0
 
 ##cheat
 #func unlock_all_skills():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
 [ext_resource path="res://files/scenes/combat/ResistToolTip.tscn" type="PackedScene" id=30]
 [ext_resource path="res://files/scenes/UnlockPanel.tscn" type="PackedScene" id=31]
+[ext_resource path="res://tooltip_theme.tres" type="Theme" id=32]
+[ext_resource path="res://assets/images/traits/healthskillsdouble.png" type="Texture" id=33]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -637,18 +639,12 @@ margin_top = 52.0
 margin_right = 263.0
 margin_bottom = 66.0
 texture_progress = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Rewards/HBoxContainer/Button/xpbar"]
 margin_left = -15.0
 margin_top = -24.0
 margin_right = 148.0
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="icon" type="TextureRect" parent="Rewards/HBoxContainer/Button"]
 margin_left = 16.5969
@@ -658,6 +654,24 @@ margin_bottom = 102.403
 texture = ExtResource( 28 )
 expand = true
 stretch_mode = 6
+
+[node name="friend" type="TextureRect" parent="Rewards/HBoxContainer/Button"]
+margin_left = 80.0
+margin_top = 73.3333
+margin_right = 120.0
+margin_bottom = 113.333
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 20, 20 )
+theme = ExtResource( 32 )
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 5
+
+[node name="friend_label" type="Label" parent="Rewards/HBoxContainer/Button"]
+margin_left = 123.0
+margin_top = 81.0
+margin_right = 191.0
+margin_bottom = 105.0
 
 [node name="victorylabel" type="TextureRect" parent="Rewards"]
 margin_left = -146.0
