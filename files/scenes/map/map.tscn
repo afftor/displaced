@@ -27,6 +27,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="outer" type="TextureButton" parent="."]
 margin_left = 656.0
@@ -439,6 +442,7 @@ __meta__ = {
 }
 
 [node name="clouds" type="Control" parent="town"]
+visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -557,6 +561,7 @@ __meta__ = {
 }
 
 [node name="clouds" type="Control" parent="cave"]
+visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -648,6 +653,7 @@ __meta__ = {
 }
 
 [node name="clouds" type="Control" parent="forest"]
+visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -736,6 +742,7 @@ __meta__ = {
 }
 
 [node name="clouds" type="Control" parent="village"]
+visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -842,6 +849,7 @@ __meta__ = {
 }
 
 [node name="clouds" type="Control" parent="cult"]
+visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -1170,8 +1178,8 @@ margin_top = 29.4725
 margin_right = 1891.49
 margin_bottom = 68.4725
 mouse_filter = 2
-custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
 custom_fonts/normal_font = ExtResource( 21 )
+custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
 bbcode_enabled = true
 scroll_active = false
 __meta__ = {

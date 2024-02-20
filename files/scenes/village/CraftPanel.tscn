@@ -207,13 +207,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button" type="VBoxContainer" parent="Panel/weapon1/VBoxContainer"]
+[node name="button" type="TextureRect" parent="Panel/weapon1/VBoxContainer"]
 margin_right = 199.0
 margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 3
 
 [node name="icon" type="TextureRect" parent="Panel/weapon1/VBoxContainer/button"]
-margin_right = 199.0
+margin_right = 97.0
 margin_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -222,10 +224,14 @@ size_flags_horizontal = 3
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/weapon1/VBoxContainer/button"]
+margin_left = 5.0
 margin_top = 68.0
-margin_right = 199.0
+margin_right = 90.0
 margin_bottom = 95.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -322,13 +328,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button" type="VBoxContainer" parent="Panel/weapon2/VBoxContainer"]
+[node name="button" type="TextureRect" parent="Panel/weapon2/VBoxContainer"]
 margin_right = 199.0
 margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 3
 
 [node name="icon" type="TextureRect" parent="Panel/weapon2/VBoxContainer/button"]
-margin_right = 199.0
+margin_right = 97.0
 margin_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -337,10 +345,14 @@ size_flags_horizontal = 3
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/weapon2/VBoxContainer/button"]
+margin_left = 5.0
 margin_top = 68.0
-margin_right = 199.0
+margin_right = 90.0
 margin_bottom = 95.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -362,6 +374,9 @@ toggle_mode = true
 texture_normal = ExtResource( 15 )
 texture_pressed = ExtResource( 17 )
 texture_disabled = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Icon" type="TextureRect" parent="Panel/armor"]
 margin_left = 0.729553
@@ -437,13 +452,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button" type="VBoxContainer" parent="Panel/armor/VBoxContainer"]
+[node name="button" type="TextureRect" parent="Panel/armor/VBoxContainer"]
 margin_right = 199.0
 margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 3
 
 [node name="icon" type="TextureRect" parent="Panel/armor/VBoxContainer/button"]
-margin_right = 199.0
+margin_right = 97.0
 margin_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -452,10 +469,14 @@ size_flags_horizontal = 3
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/armor/VBoxContainer/button"]
+margin_left = 5.0
 margin_top = 68.0
-margin_right = 199.0
+margin_right = 90.0
 margin_bottom = 95.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

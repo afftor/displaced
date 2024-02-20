@@ -18,10 +18,10 @@
 [ext_resource path="res://files/scenes/Options.tscn" type="PackedScene" id=16]
 [ext_resource path="res://files/scenes/SaveLoadPanel.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/scenes/WarnScreen.tscn" type="PackedScene" id=18]
-[ext_resource path="res://assets/videos/main_screen_video.ogv" type="VideoStream" id=19]
-[ext_resource path="res://assets/images/particles/spark.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/particles/spark1.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/particles/spark2.png" type="Texture" id=22]
+[ext_resource path="res://assets/videos/main_screen.ogv" type="VideoStream" id=19]
+[ext_resource path="res://assets/images/particles/spark_big.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/particles/spark_mid.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/particles/spark_small.png" type="Texture" id=22]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.255034, 0.630872, 0.986577, 1 )
