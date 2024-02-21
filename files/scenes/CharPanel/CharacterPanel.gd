@@ -105,14 +105,16 @@ func select_hero(cid, rebuild = false):
 func build_slot(slot):
 	var panel = $Panel.get_node(slot)
 	var data = character.get_item_data(slot)
-	if data.level < 1:
+	if data.level > 0:
+		panel.get_node("Label").text = "Level %d" % data.level
+	else:
+		panel.get_node("Label").text = "" #stub
+	if slot == 'weapon2' and data.level < 1:
 		panel.disabled = true
 		panel.get_node("Label2").text = "???" #stub
-		panel.get_node("Label").text = "" #stub
 	else:
 		panel.disabled = false
 		panel.get_node("Label2").text = data.name
-		panel.get_node("Label").text = "Level %d" % data.level
 	panel.get_node("Icon").texture = data.icon
 	if slot != 'armor':
 		panel.pressed = (character.curweapon == slot)

@@ -611,6 +611,8 @@ var TranslationDict = {
 #	SKILLRILUPASSIVEDESCRIPT = "Start the battle with 1 Spirit. Each Spirit increase damage received by 5% and damage dealt by 8%. When hit has 50% chance to generate new Spirit. Can hold up to 5 Spirits.",
 	
 	SKILLTURNS = "turns",
+	WEAPON_1_EFFECT0 = "No specific effects",
+	WEAPON_2_EFFECT0 = "Not forged yet",
 	
 	WEAPON_ARRON1 = "Bastard Sword",
 	WEAPON_ARRON2 = "Royal Sword",

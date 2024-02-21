@@ -12,7 +12,7 @@ var exp_cap = 100 setget ,get_exp_cap
 var alt_mana = 0 setget a_mana_set
 
 
-var gear_level = {weapon1 = 1, weapon2 = 0, armor = 1}
+var gear_level = {weapon1 = 0, weapon2 = 0, armor = 1}
 var curweapon = 'weapon1'
 var base_dmg_type = 'bludgeon' setget , get_weapon_damagetype
 var armorbase = {}
@@ -131,6 +131,8 @@ func set_weapon(slot):
 func gear_check(slot, level, op):
 	var lv = gear_level[slot]
 	if slot != 'armor' and slot != curweapon:
+		return false
+	if lv == 0:#for armed weapon with level 0 (armor can't be level 0)
 		return false
 	match op:
 		'eq': return lv == level
