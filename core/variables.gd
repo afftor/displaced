@@ -139,6 +139,7 @@ var resist_data = {
 		type = 'status'
 	},
 }
+#var max_resist_name_size :int = 0
 
 func get_resist_data(resist :String) ->Dictionary:
 	assert(resist_data.has(resist), "resist_data has no entry for %s!" % resist)
@@ -149,6 +150,12 @@ func check_resist_integrity():
 		assert(!status_list.has(entry), "resistlist and status_list has duplicates!")
 	for entry in resistlist + status_list:
 		assert(resist_data.has(entry), "resist_data has no icon for %s!" % entry)
+
+#func calc_max_resist_name_size():
+#	for id in resist_data:
+#		var name_size = tr(resist_data[id].name).length()
+#		if name_size > max_resist_name_size:
+#			max_resist_name_size = name_size
 #---------------------------------
 
 #config flags
@@ -212,6 +219,7 @@ func _ready():
 	fill_curve()
 	print(curve)
 	check_resist_integrity()
+#	calc_max_resist_name_size()
 
 func fill_curve():
 	for i in range(14): 

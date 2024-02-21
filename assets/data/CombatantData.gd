@@ -24,6 +24,8 @@ var charlist = {
 		damage = 30,
 		unlocked = true,
 		bonusres = ['slash', 'light', 'fire', 'earth'],
+		armorbase = {1: 10, 2: 20, 3: 30, 4: 40},
+		armorbonus = {1: 20, 2: 40, 3: 60, 4: 80},
 		skilllist = {'fencing':1, 'parry':3, 'lunge':4, 'sword_mastery':8, 'sideslash':10, 'termination':10, 'swift_s':14, 'smoke_s':18},
 		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")
 	},
@@ -52,6 +54,8 @@ var charlist = {
 		unlocked = true,
 		traits = ['rose_kill_tick'],
 		bonusres = ['slash', 'water', 'air', 'dark'],
+		armorbase = {1: 7, 2: 15, 3: 23, 4: 30},
+		armorbonus = {1: 15, 2: 30, 3: 45, 4: 60},
 		skilllist = {'fire_bolt':1, 'renew':3, 'swipe':5, 'deluge':8, 'dispel':8, 'explosion':10, 'flash':12,  'protect':16},
 	},
 	erika = {
@@ -78,6 +82,8 @@ var charlist = {
 		unlocked = false,
 		traits = ['erica_nature_bless'],
 		bonusres = ['water', 'light', 'pierce', 'earth'],
+		armorbase = {1: 7, 2: 15, 3: 23, 4: 30},
+		armorbonus = {1: 15, 2: 30, 3: 45, 4: 60},
 		skilllist = {'aarrow':1, 'qshot':4, 'arr_shower':6, 'nat_bless':8, 'charm':10,  'eastrike':12, 'frost_arrow':14, 'heartseeker':15},
 	},
 	ember = {
@@ -103,6 +109,8 @@ var charlist = {
 		unlocked = false,
 		traits = ['ember_damage_mul'],
 		bonusres = ['bludgeon', 'air', 'fire', 'earth'],
+		armorbase = {1: 10, 2: 20, 3: 30, 4: 40},
+		armorbonus = {1: 20, 2: 40, 3: 60, 4: 80},
 		skilllist = {'firepunch':1, 'defend':3, 'combo':6, 'uppercut':8, 'shockwave':12, 'earthquake':12, 'dragon_protection':14, 'aegis':18},
 	},
 	rilu = {
@@ -129,6 +137,8 @@ var charlist = {
 		unlocked = false,
 		traits = ['necro_trait'],
 		bonusres = ['dark', 'light', 'water', 'pierce'],
+		armorbase = {1: 10, 2: 20, 3: 30, 4: 40},
+		armorbonus = {1: 20, 2: 40, 3: 60, 4: 80},
 		skilllist = {'dark_orb':1, 'dark_echoes':8, 'avalanche':10, 'soul_beam':12, 'pale_mist':13, 'restoration':14, 'soulthorns':16, 'soul_prot':16},
 	},
 	iola = {
@@ -154,6 +164,8 @@ var charlist = {
 		damage = 25,
 		unlocked = false,
 		bonusres = ['bludgeon', 'dark', 'fire', 'air'],
+		armorbase = {1: 7, 2: 15, 3: 23, 4: 30},
+		armorbonus = {1: 15, 2: 30, 3: 45, 4: 60},
 		skilllist = {'holy_light':1, 'barrier':8, 'gustofwind':10, 'sanctuary':10, 'smash':12, 'cleansing':14, 'bless':16, 'purge':20},
 	},
 }
