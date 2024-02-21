@@ -38,9 +38,6 @@ margin_top = 23.0
 margin_right = 542.0
 margin_bottom = 689.0
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="ButtonPanel"]
 margin_left = 78.0

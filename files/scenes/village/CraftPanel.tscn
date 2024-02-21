@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://files/scenes/village/CraftPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/iconsgear/arron_weapon1_1.png" type="Texture" id=3]
-[ext_resource path="res://assets/themes/button_forge.tres" type="Theme" id=4]
+[ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=4]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_portrait_back.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_portrait.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_portrait_pressed.png" type="Texture" id=7]
@@ -22,6 +22,7 @@
 [ext_resource path="res://files/scenes/village/forge_portrait.gd" type="Script" id=20]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=21]
 [ext_resource path="res://files/scenes/UnlockPanel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/images/iconsgear/ember_weapon2_4.png" type="Texture" id=23]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -149,7 +150,7 @@ margin_left = -111.5
 margin_top = -56.0
 margin_right = 111.5
 theme = ExtResource( 4 )
-text = "Upgrade"
+text = "CRAFT"
 
 [node name="Label" type="Label" parent="Panel/weapon1"]
 anchor_right = 1.0
@@ -169,6 +170,7 @@ anchor_bottom = 1.0
 margin_top = -237.0
 margin_bottom = -197.0
 grow_vertical = 0
+custom_constants/line_spacing = -12
 custom_fonts/font = ExtResource( 11 )
 text = "Broad Sword"
 align = 1
@@ -283,7 +285,7 @@ margin_top = 39.1892
 margin_right = 250.73
 margin_bottom = 289.189
 rect_min_size = Vector2( 250, 250 )
-texture = ExtResource( 3 )
+texture = ExtResource( 23 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -299,7 +301,7 @@ margin_left = -111.5
 margin_top = -56.0
 margin_right = 111.5
 theme = ExtResource( 4 )
-text = "Upgrade"
+text = "CRAFT"
 
 [node name="Label" type="Label" parent="Panel/weapon2"]
 anchor_right = 1.0
@@ -319,8 +321,9 @@ anchor_bottom = 1.0
 margin_top = -237.0
 margin_bottom = -197.0
 grow_vertical = 0
+custom_constants/line_spacing = -12
 custom_fonts/font = ExtResource( 11 )
-text = "Broad Sword"
+text = "Gauntlets of Endurance"
 align = 1
 autowrap = true
 
@@ -458,7 +461,7 @@ margin_left = -111.5
 margin_top = -56.0
 margin_right = 111.5
 theme = ExtResource( 4 )
-text = "Upgrade"
+text = "CRAFT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -481,6 +484,7 @@ anchor_bottom = 1.0
 margin_top = -237.0
 margin_bottom = -197.0
 grow_vertical = 0
+custom_constants/line_spacing = -12
 custom_fonts/font = ExtResource( 11 )
 text = "Broad Sword"
 align = 1

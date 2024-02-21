@@ -15,6 +15,7 @@ onready var slot_panels = {
 }
 onready var tooltip = $Tooltip
 onready var unlock_panel = $UnlockPanel
+var craft_sound = "sound/itemcraft"
 
 
 var selected_char
@@ -25,6 +26,7 @@ export var test_mode = false
 
 func _ready():
 #	visible = false
+	resources.preload_res(craft_sound)
 	if resources.is_busy(): 
 		yield(resources, "done_work")
 	input_handler.ClearContainer(charlist, ['panel'])
@@ -145,6 +147,19 @@ func upgrade_slot(slot):
 			state.add_money(-cost[res], false)
 		else:
 			state.add_materials(res, -cost[res])
+	
+	#animation and sound
+	input_handler.block_screen()
+	slot_panels[slot].get_node("Button").hide()
+	input_handler.PlaySound(craft_sound)
+	var icon = slot_panels[slot].get_node("Icon")
+	input_handler.FadeAnimation(icon, 0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	icon.texture = hero.get_item_data(slot).icon
+	input_handler.UnfadeAnimation(icon, 2)
+	yield(get_tree().create_timer(2), 'timeout')
+	input_handler.unblock_screen()
+	
 	rebuild_gear()
 	if slot != 'armor':
 		var new_resists :Array = hero.unlock_resists()
