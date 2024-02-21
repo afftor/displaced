@@ -150,3 +150,6 @@ func check_location(loc_id):
 			break
 	if loc_id == 'village':
 		village_inside_event = input_handler.village_node.buildscreen()
+
+func switch_block_screen(value :bool):
+	$block_screen.visible = value

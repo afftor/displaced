@@ -53,6 +53,7 @@ var musicfade_speed = musicfade_speed_default
 const musicraise_speed_default = 100
 var musicraise_speed = musicraise_speed_default
 var setting_music
+var screen_blocked = false
 
 func _input(event):
 	if event.is_action_pressed("RMB") and !rmb_state:
@@ -65,7 +66,8 @@ func _input(event):
 		return
 	if (event.is_action("ESC") && event.is_pressed() &&
 			(CloseableWindowsArray.empty() ||
-			CloseableWindowsArray.back() != scene_node)):
+			CloseableWindowsArray.back() != scene_node) &&
+			!screen_blocked):
 		if CloseableWindowsArray.size() != 0:
 			CloseTopWindow()
 		else:
@@ -944,3 +946,14 @@ func DuplicateContainerTemplate(container, template = 'Button'):
 	container.add_child(newbutton)
 	container.move_child(container.get_node(template), newbutton.get_position_in_parent())
 	return newbutton
+
+#TODO: move all screen block mechanics in game to this solution
+func block_screen():
+	if map_node == null: return
+	screen_blocked = true
+	map_node.switch_block_screen(true)
+
+func unblock_screen():
+	if map_node == null: return
+	screen_blocked = false
+	map_node.switch_block_screen(false)
