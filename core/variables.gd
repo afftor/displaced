@@ -183,6 +183,8 @@ var curve = [1.0]
 
 var default_animations_duration = {
 	attack = 0.6,
+	ultimate = 1,
+	use = 0.6,
 	cast = 0.6,
 	special = 0.6,
 	hit = 0.6,
@@ -191,6 +193,8 @@ var default_animations_duration = {
 }
 var default_animations_transition = { #those are not added to duration
 	attack = 0.2,
+	ultimate = 0.2,
+	use = 0.2,
 	cast = 0.2,
 	special = 0.2,
 	hit = 0.2,
@@ -199,6 +203,8 @@ var default_animations_transition = { #those are not added to duration
 }
 var default_animations_delay = {
 	attack = 0.0,
+	ultimate = 0.0,
+	use = 0.0,
 	cast = 0.0,
 	special = 0.0,
 	hit = 0.0,
@@ -208,6 +214,8 @@ var default_animations_delay = {
 
 var default_animations_after_delay = { #generally should be negative, but not overexeeding delay + duration
 	attack = -0.4,
+	ultimate = -0.4,
+	use = -0.4,
 	cast = -0.4,
 	special = -0.4,
 	hit = 0.0,
