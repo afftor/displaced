@@ -5,7 +5,6 @@ var selectedupgrade
 
 var binded_events = {}
 onready var charpanel = $UpcomingEvents/ScrollContainer/HBoxContainer
-onready var block_screen = $block_screen
 onready var upgrade_list = $UpgradeList/ScrollContainer/VBoxContainer
 onready var upgrade_desc = $UpgradeList/UpgradeDescript
 
@@ -228,7 +227,7 @@ func unlockupgrade():
 		var building_timer = 2.0
 		input_handler.ShowOutline(animnode)
 		self.modulate.a = 0
-		block_screen.show()
+		input_handler.block_screen()
 		if upgrade.levels[next_level].has("animatebuilding"):
 			building_timer = 3.0
 			animnode.show()
@@ -236,7 +235,7 @@ func unlockupgrade():
 		input_handler.PlaySound(building_sound)
 		yield(get_tree().create_timer(building_timer), 'timeout')
 		self.modulate.a = 1
-		block_screen.hide()
+		input_handler.unblock_screen()
 		input_handler.HideOutline(animnode)
 #	globals.check_signal("UpgradeUnlocked", upgrade)
 #	globals.EventCheck()

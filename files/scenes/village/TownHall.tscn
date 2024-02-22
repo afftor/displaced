@@ -347,12 +347,3 @@ margin_left = -35.0
 margin_top = -54.0
 margin_right = 94.0
 margin_bottom = 96.0
-
-[node name="block_screen" type="Control" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -37.0
-margin_top = -57.0
-margin_right = 99.0
-margin_bottom = 101.0
