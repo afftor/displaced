@@ -28,6 +28,9 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{type = 'system', value = 'unlock_building', arg = 'forge'},#done by hand with tutorial now
 		{type = 'system', value = 'enable_character', arg = ['ember', true]},
 	],
+	ember_1_2 = [
+		{type = 'tutorial', value = 'forge'},
+	],
 	dimitrius_1_3 = [
 		{type = 'scene', value = 'dimitrius_1_4'},
 	],
@@ -223,7 +226,7 @@ var buildings = { #for binding village buidings events
 	townhall = {
 		events = ['rose_reunion']
 	},
-	smith = {
+	forge = {
 		events = ['ember_smith']
 	},
 }
