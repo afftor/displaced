@@ -709,7 +709,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'sfx_soul_prot', target = 'target', period = 'predamage'},
-			{code = 'anim_attack', target = 'caster', period = 'windup'},],
+			{code = 'anim_special', target = 'caster', period = 'windup'},],
 		sounddata = {initiate = 'renew', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_renew_1'},
@@ -739,7 +739,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'sfx_dispel', target = 'target', period = 'predamage'},
-			{code = 'anim_attack', target = 'caster', period = 'windup'},],
+			{code = 'anim_special', target = 'caster', period = 'windup'},],
 		sounddata = {initiate = 'dispel', strike = null, hit = null, hittype = 'absolute'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_dispel'}
@@ -1537,7 +1537,7 @@ var skilllist = {
 		cooldown = 1,
 		casteffects = ['e_s_echo', Effectdata.rebuild_template({trigger = variables.TR_CAST, effect = 'e_echo_shield', push_value = true})],
 		hidden = false,
-		sfx = [{code = 'anim_attack', target = 'caster', period = 'windup'},
+		sfx = [{code = 'anim_special', target = 'caster', period = 'windup'},
 			{code = 'sfx_dark_echoes', target = 'target', period = 'predamage'}, 
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'sfx_dark_echoes_1', target = 'caster', period = 'postdamage'}
@@ -1569,7 +1569,7 @@ var skilllist = {
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_resto', target = 'target', period = 'predamage'},
-			{code = 'anim_attack', target = 'caster', period = 'windup'},
+			{code = 'anim_special', target = 'caster', period = 'windup'},
 		],
 		sounddata = {initiate = 'restoration', strike = null, hit = null, hittype = 'absolute'},
 		patches = [

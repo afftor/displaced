@@ -44,4 +44,4 @@ frame_37/delay_sec = 0.0
 frame_38/delay_sec = 0.0
 frame_39/delay_sec = 0.0
 script = ExtResource( 1 )
-prefix = "Ember1"
+prefix = "Ember_spine-01_idle"

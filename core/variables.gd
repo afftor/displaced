@@ -183,7 +183,7 @@ var curve = [1.0]
 
 var default_animations_duration = {
 	attack = 0.6,
-	ultimate = 1,
+	ultimate = 0.6,
 	use = 0.6,
 	cast = 0.6,
 	special = 0.6,
