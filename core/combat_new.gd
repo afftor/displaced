@@ -348,6 +348,7 @@ func buildplayergroup():
 			newgroup[hero.position] = hero
 		hero.activate_traits()
 		hero.process_event(variables.TR_COMBAT_S)
+		hero.clear_new_friend_points()
 	playergroup = newgroup
 #	gui_node.RebuildReserve(true)
 	gui_node.build_hero_panels()
@@ -1108,6 +1109,13 @@ func victory():
 		else:
 			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*i.xpmod)))
+		var friend_node = newbutton.get_node("friend")
+		if i.friend_points_new == 0 or ch == 'arron':
+			friend_node.hide()
+		else:
+			friend_node.hint_tooltip = tr('FRIENDPOINTSALLTOOLTIP') % i.friend_points
+			subtween.interpolate_property(friend_node,'rect_scale', Vector2(0,0), Vector2(1,1), 0.5, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("friend_label"), '+' + str(i.friend_points_new))
 		subtween.start()
 	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
 	$Rewards.visible = true

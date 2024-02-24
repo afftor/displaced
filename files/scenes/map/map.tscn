@@ -2325,3 +2325,8 @@ custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
 custom_fonts/normal_font = ExtResource( 21 )
 bbcode_enabled = true
 scroll_active = false
+
+[node name="block_screen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0

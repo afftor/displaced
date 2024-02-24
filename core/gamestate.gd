@@ -524,9 +524,10 @@ func try_unlock_material(id :String) ->bool:#true if success
 
 func reset_resist_unlocks():
 	resist_unlocks.clear()
+	try_unlock_resist('damage')
 	for character in heroes.values():
 		if character.unlocked:
-			var new_resists = character.unlock_resists()
+			character.unlock_resists()
 #	print("reset_resist_unlocks!!!!")
 #	print(resist_unlocks)
 

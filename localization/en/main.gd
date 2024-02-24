@@ -199,6 +199,7 @@ var TranslationDict = {
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
+	FRIENDPOINT = "Friendship points",
 
 	#resists
 	RESIST_DAMAGE = "Damage",
@@ -228,6 +229,8 @@ var TranslationDict = {
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
+	FRIENDPOINTSALLTOOLTIP = "Current friendship points: %s",
+	FRIENDPOINTSTOOLTIP = "Friendship points. Earned in shared battles. Can be used to unlock scenes in Town Hall",
 
 	AREAFORESTNAME = "Forest",
 	AREAFORESTDESCRIPT = "An ancient forests rumored to be home to elves and stumps. The visitors are rare around these places especially after the stray faeries have been appearing around here.",
@@ -608,6 +611,8 @@ var TranslationDict = {
 #	SKILLRILUPASSIVEDESCRIPT = "Start the battle with 1 Spirit. Each Spirit increase damage received by 5% and damage dealt by 8%. When hit has 50% chance to generate new Spirit. Can hold up to 5 Spirits.",
 	
 	SKILLTURNS = "turns",
+	WEAPON_1_EFFECT0 = "No specific effects",
+	WEAPON_2_EFFECT0 = "Not forged yet",
 	
 	WEAPON_ARRON1 = "Bastard Sword",
 	WEAPON_ARRON2 = "Royal Sword",
@@ -622,10 +627,10 @@ var TranslationDict = {
 	WEAPON_ARRON2_EFFECT3 = "also hits target behind",#Lunge
 	WEAPON_ARRON2_EFFECT4 = "also reduce all received damage by 50% for 2 turns",#Smoke Screen
 	ARMOR_ARRON = "Arron's armor",
-	ARMOR_ARRON_EFFECT1 = "Base resistance 10%",
-	ARMOR_ARRON_EFFECT2 = "Base resistance 20%",
-	ARMOR_ARRON_EFFECT3 = "Base resistance 30%",
-	ARMOR_ARRON_EFFECT4 = "Base resistance 40%",
+#	ARMOR_ARRON_EFFECT1 = "Base resistance 10%",
+#	ARMOR_ARRON_EFFECT2 = "Base resistance 20%",
+#	ARMOR_ARRON_EFFECT3 = "Base resistance 30%",
+#	ARMOR_ARRON_EFFECT4 = "Base resistance 40%",
 	
 	WEAPON_ROSE1 = "Wand of Fire",
 	WEAPON_ROSE2 = "Crystal Staff",
@@ -641,10 +646,10 @@ var TranslationDict = {
 	WEAPON_ROSE2_EFFECT3 = "base hit chance is always 100%, and affect all enemies",#Deluge
 	WEAPON_ROSE2_EFFECT4 = "gives all other allies barrier with 1/3 of strength",#Protection
 	ARMOR_ROSE = "Rose's dress",
-	ARMOR_ROSE_EFFECT1 = "Base resistance 7%",
-	ARMOR_ROSE_EFFECT2 = "Base resistance 15%",
-	ARMOR_ROSE_EFFECT3 = "Base resistance 23%",
-	ARMOR_ROSE_EFFECT4 = "Base resistance 30%",
+#	ARMOR_ROSE_EFFECT1 = "Base resistance 7%",
+#	ARMOR_ROSE_EFFECT2 = "Base resistance 15%",
+#	ARMOR_ROSE_EFFECT3 = "Base resistance 23%",
+#	ARMOR_ROSE_EFFECT4 = "Base resistance 30%",
 
 	WEAPON_ERIKA1 = "Windbreaker",
 	WEAPON_ERIKA2 = "The Hawk",
@@ -659,10 +664,10 @@ var TranslationDict = {
 	WEAPON_ERIKA2_EFFECT3 = "is passive and applied at the start of combat",#Nature's Blessing
 	WEAPON_ERIKA2_EFFECT4 = "all non-boss enemies leave the battlefield, granting no loot or exp.",#Charm
 	ARMOR_ERIKA = "Erika's \"armor\"",
-	ARMOR_ERIKA_EFFECT1 = "Base resistance 7%",
-	ARMOR_ERIKA_EFFECT2 = "Base resistance 15%",
-	ARMOR_ERIKA_EFFECT3 = "Base resistance 23%",
-	ARMOR_ERIKA_EFFECT4 = "Base resistance 30%",
+#	ARMOR_ERIKA_EFFECT1 = "Base resistance 7%",
+#	ARMOR_ERIKA_EFFECT2 = "Base resistance 15%",
+#	ARMOR_ERIKA_EFFECT3 = "Base resistance 23%",
+#	ARMOR_ERIKA_EFFECT4 = "Base resistance 30%",
 	
 	WEAPON_EMBER1 = "Punching Gloves",
 	WEAPON_EMBER2 = "Gauntlets of Endurance",
@@ -677,10 +682,10 @@ var TranslationDict = {
 	WEAPON_EMBER2_EFFECT3 = "Increase barrier strength to 50%",#Dragon Protection
 	WEAPON_EMBER2_EFFECT4 = "Apply buff: +25% max hp for 3 tuns",#Aegis
 	ARMOR_EMBER = "Ember's armor",
-	ARMOR_EMBER_EFFECT1 = "Base resistance 10%",
-	ARMOR_EMBER_EFFECT2 = "Base resistance 20%",
-	ARMOR_EMBER_EFFECT3 = "Base resistance 30%",
-	ARMOR_EMBER_EFFECT4 = "Base resistance 40%",
+#	ARMOR_EMBER_EFFECT1 = "Base resistance 10%",
+#	ARMOR_EMBER_EFFECT2 = "Base resistance 20%",
+#	ARMOR_EMBER_EFFECT3 = "Base resistance 30%",
+#	ARMOR_EMBER_EFFECT4 = "Base resistance 40%",
 	
 	WEAPON_RILU1 = "Spirit Orb",
 	WEAPON_RILU2 = "Sun Sphere",
@@ -695,10 +700,10 @@ var TranslationDict = {
 	WEAPON_RILU2_EFFECT3 = "Also reduce target's Hit Rate by 25",#Pale Mist
 	WEAPON_RILU2_EFFECT4 = "25% chance to reduce active cooldown by 1 when Spirit is generated",#Soul Protection
 	ARMOR_RILU = "Rilu's robe",
-	ARMOR_RILU_EFFECT1 = "Base resistance 10%",
-	ARMOR_RILU_EFFECT2 = "Base resistance 20%",
-	ARMOR_RILU_EFFECT3 = "Base resistance 30%",
-	ARMOR_RILU_EFFECT4 = "Base resistance 40%",
+#	ARMOR_RILU_EFFECT1 = "Base resistance 10%",
+#	ARMOR_RILU_EFFECT2 = "Base resistance 20%",
+#	ARMOR_RILU_EFFECT3 = "Base resistance 30%",
+#	ARMOR_RILU_EFFECT4 = "Base resistance 40%",
 	
 	WEAPON_IOLA1 = "Staff of Ancients",
 	WEAPON_IOLA2 = "Depths Wand",
@@ -713,11 +718,12 @@ var TranslationDict = {
 	WEAPON_IOLA2_EFFECT3 = "is cast on line",#Cleansing
 	WEAPON_IOLA2_EFFECT4 = "also deal 250%BD Light damage to all enemies",#Purge
 	ARMOR_IOLA = "Iola's dress",
-	ARMOR_IOLA_EFFECT1 = "Base resistance 7%",
-	ARMOR_IOLA_EFFECT2 = "Base resistance 15%",
-	ARMOR_IOLA_EFFECT3 = "Base resistance 23%",
-	ARMOR_IOLA_EFFECT4 = "Base resistance 30%",
+#	ARMOR_IOLA_EFFECT1 = "Base resistance 7%",
+#	ARMOR_IOLA_EFFECT2 = "Base resistance 15%",
+#	ARMOR_IOLA_EFFECT3 = "Base resistance 23%",
+#	ARMOR_IOLA_EFFECT4 = "Base resistance 30%",
 
+	ARMOR_EFFECT = "Base resistance: %s%%\nBonus resistance: %s%%, applied for %s.",
 
 	#Upgrades
 	UPGRADEPREVBONUS = "Current bonus",
@@ -842,6 +848,7 @@ var TranslationDict = {
 	TUTORIAL_BUILDING_UPGRADES = "Select Townhall to access your actions. Upgrading settlement makes characters stronger.\n\nYou can build Blacksmith now.\nSelect building to open up it's details. If you met all requerments and have needed resources, 'Unlock' button will appear.",
 	TUTORIAL_EXPLORATION_MENU = "Exclamation mark on buildings and locations indicates main plot's events and missions.\n\nLeave village, then select location and select mission you will be attending. You can replay your old missions for materials and experience.",
 	TUTORIAL_QUEST_CHARACTER = "People occasionally came to Townhall in search of your aid. Select Townhall to see their requests.",
+	TUTORIAL_FORGE = "In forge you can craft and upgrade weapons and armor. It will require some materials and gold. Also maximum level of equipment is limited by level of forge itself.\n\nWhile armor upgrade provides resistance increase, weapon determines damage type for basic Attack, and most importantly augments character's skills. With higher level more skills are effected and old augmentations improves. Each character can choose between two different weapons.",
 	
 	CREDITS_TEXT = "[center]Place holder for credits[/center]",
 	CREDITS_BUTTON = "Thanks",

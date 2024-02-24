@@ -168,15 +168,14 @@ func check_townhall_events():
 func building_entered(b_name):
 	if binded_events[b_name] != null:
 		globals.run_seq(binded_events[b_name])
-#		yield(input_handler, "EventFinished")
+		yield(input_handler, "EventFinished")
 #		buildscreen()
-	else:
-		match b_name:
-			'townhall': OpenTownhall()
-			'forge': openblacksmith()
-			'market': openmarket()
-			'bridge': ReturnToMap()
-			_: pass #todo
+	match b_name:
+		'townhall': OpenTownhall()
+		'forge': openblacksmith()
+		'market': openmarket()
+		'bridge': ReturnToMap()
+#		_: pass #todo
 
 
 func OpenTownhall():

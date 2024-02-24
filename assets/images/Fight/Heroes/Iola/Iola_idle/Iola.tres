@@ -60,4 +60,4 @@ frame_53/delay_sec = 0.0
 frame_54/delay_sec = 0.0
 frame_55/delay_sec = 0.0
 script = ExtResource( 1 )
-prefix = "Iola_idle"
+prefix = "Iola-01_idle"

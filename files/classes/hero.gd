@@ -3,6 +3,7 @@ class_name hero
 
 var unlocked = false setget set_unlocked
 var friend_points = 0
+var friend_points_new = 0
 
 var recentlevelups = 0
 var baseexp = 0 setget exp_set
@@ -11,9 +12,11 @@ var exp_cap = 100 setget ,get_exp_cap
 var alt_mana = 0 setget a_mana_set
 
 
-var gear_level = {weapon1 = 1, weapon2 = 0, armor = 1}
+var gear_level = {weapon1 = 0, weapon2 = 0, armor = 1}
 var curweapon = 'weapon1'
 var base_dmg_type = 'bludgeon' setget , get_weapon_damagetype
+var armorbase = {}
+var armorbonus = {}
 
 #out of combat regen stats
 var regen_collected = 0
@@ -34,7 +37,7 @@ func createfromname(name):
 	var template = combatantdata.charlist[name]
 	base = template.code
 	self.name = tr(template.name)
-	for key in ['hpmax', 'hp_growth', 'evasion', 'hitrate', 'race', 'bonusres', 'unlocked', 'icon','combaticon', 'bodyhitsound', 'flavor', 'damage']:
+	for key in ['hpmax', 'hp_growth', 'evasion', 'hitrate', 'race', 'bonusres', 'armorbase', 'armorbonus', 'unlocked', 'icon','combaticon', 'bodyhitsound', 'flavor', 'damage']:
 		if template.has(key): set(key, template[key])
 	for i in variables.resistlist:
 		resists[i] = 0
@@ -103,7 +106,10 @@ func get_skills():
 func see_enemy_killed():
 	#stub
 	friend_points += 1 #can adjust it here, arron still get fp
+	friend_points_new += 1
 
+func clear_new_friend_points():
+	friend_points_new = 0
 
 ##cheat
 #func unlock_all_skills():
@@ -125,6 +131,8 @@ func set_weapon(slot):
 func gear_check(slot, level, op):
 	var lv = gear_level[slot]
 	if slot != 'armor' and slot != curweapon:
+		return false
+	if lv == 0:#for armed weapon with level 0 (armor can't be level 0)
 		return false
 	match op:
 		'eq': return lv == level
@@ -151,7 +159,10 @@ func get_item_data_level(slot, level):
 	if typeof(res.icon) == TYPE_STRING:
 		res.icon = load(res.icon)
 	res.name = tr(template.name)
-	res.description = Items.form_lvl_desc(template.leveldata[level].lvldesc)
+	if slot == 'armor':
+		res.description = form_armor_lvl_desc(level)
+	else:#weapon
+		res.description = Items.form_weapon_lvl_desc(template.leveldata[level].lvldesc)
 	res.cost = template.leveldata[level].cost.duplicate()
 	return res
 
@@ -336,4 +347,31 @@ func unlock_resists() ->Array:#return only new unlocked resists
 			unlocked.append(resist)
 	return unlocked
 
+func get_base_resists():
+	var res = resists.duplicate()
+	for r in variables.resistlist:
+		if r in bonusres:
+			res[r] = armorbonus[gear_level.armor]
+		else:
+			res[r] = armorbase[gear_level.armor]
+	return res
 
+func form_armor_lvl_desc(lvl :int) -> String:
+	var bonus_list = ''
+	var bonus_unlocked = []
+	for res in bonusres:
+		if state.is_resist_unlocked(res):
+			bonus_unlocked.append(res)
+	for i in range(bonus_unlocked.size()):
+		if i == 0:
+			pass
+		elif i == bonus_unlocked.size()-1:
+			bonus_list += " and "
+		else:
+			bonus_list += ", "
+		bonus_list += tr(variables.get_resist_data(bonus_unlocked[i]).name)
+	
+	return tr("ARMOR_EFFECT") % [armorbase[lvl],
+		armorbonus[lvl],
+		bonus_list
+	]

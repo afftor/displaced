@@ -271,8 +271,11 @@ func set_resists(new_resists :Dictionary):#not making it a setter, as I don't cl
 		if new_resists.has(i):
 			resists[i] = new_resists[i]
 
+func get_base_resists():#subject to overriding
+	return resists.duplicate()
+
 func get_resists():
-	var res = resists.duplicate()
+	var res = get_base_resists()
 	for r in variables.resistlist:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
 		if bonuses.has('resist' + r + '_mul'):

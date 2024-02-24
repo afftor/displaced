@@ -51,6 +51,10 @@ var tutorials_data = {
 		delay = {"exploration_loc" : 0.4, "missions" : 0.2},
 		message = "TUTORIAL_EXPLORATION_MENU"
 	},
+	forge = {
+		no_auto_close = true,
+		message = "TUTORIAL_FORGE"
+	},
 }
 
 var scenarios = {

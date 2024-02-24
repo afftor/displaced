@@ -139,6 +139,7 @@ var resist_data = {
 		type = 'status'
 	},
 }
+#var max_resist_name_size :int = 0
 
 func get_resist_data(resist :String) ->Dictionary:
 	assert(resist_data.has(resist), "resist_data has no entry for %s!" % resist)
@@ -149,6 +150,12 @@ func check_resist_integrity():
 		assert(!status_list.has(entry), "resistlist and status_list has duplicates!")
 	for entry in resistlist + status_list:
 		assert(resist_data.has(entry), "resist_data has no icon for %s!" % entry)
+
+#func calc_max_resist_name_size():
+#	for id in resist_data:
+#		var name_size = tr(resist_data[id].name).length()
+#		if name_size > max_resist_name_size:
+#			max_resist_name_size = name_size
 #---------------------------------
 
 #config flags
@@ -176,6 +183,8 @@ var curve = [1.0]
 
 var default_animations_duration = {
 	attack = 0.6,
+	ultimate = 0.6,
+	use = 0.6,
 	cast = 0.6,
 	special = 0.6,
 	hit = 0.6,
@@ -184,6 +193,8 @@ var default_animations_duration = {
 }
 var default_animations_transition = { #those are not added to duration
 	attack = 0.2,
+	ultimate = 0.2,
+	use = 0.2,
 	cast = 0.2,
 	special = 0.2,
 	hit = 0.2,
@@ -192,6 +203,8 @@ var default_animations_transition = { #those are not added to duration
 }
 var default_animations_delay = {
 	attack = 0.0,
+	ultimate = 0.0,
+	use = 0.0,
 	cast = 0.0,
 	special = 0.0,
 	hit = 0.0,
@@ -201,6 +214,8 @@ var default_animations_delay = {
 
 var default_animations_after_delay = { #generally should be negative, but not overexeeding delay + duration
 	attack = -0.4,
+	ultimate = -0.4,
+	use = -0.4,
 	cast = -0.4,
 	special = -0.4,
 	hit = 0.0,
@@ -212,6 +227,7 @@ func _ready():
 	fill_curve()
 	print(curve)
 	check_resist_integrity()
+#	calc_max_resist_name_size()
 
 func fill_curve():
 	for i in range(14): 

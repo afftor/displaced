@@ -24,7 +24,7 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 #warning-ignore:return_value_discarded
-	$CloseButton.connect("pressed",self,'close')
+	$close_button.connect("pressed",self,'close')
 	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
 	
 	hotkeys = globals.get_hotkeys_handler()

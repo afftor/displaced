@@ -4,12 +4,9 @@ var chosenpartbutton
 var itemparts = {}
 var itemtemplate
 var repairitemlist = [] #obsolete
-var craft_sound = "sound/itemcraft"
 
 
-func _ready():
-	resources.preload_res(craft_sound)
-	if resources.is_busy(): yield(resources, "done_work")
+#func _ready():
 	#not in use for now
 #	$ButtonPanel/CraftButton.connect("pressed", self, 'opencraft')
 

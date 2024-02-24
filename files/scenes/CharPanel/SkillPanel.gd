@@ -46,6 +46,11 @@ func build_stats():
 	stats_list.get_node("dmg/value").hint_tooltip = tr("BASEDAMAGE")
 	stats_list.get_node("dmg/icon").texture = load("res://assets/images/iconsskills/source_%s.png" % character.get_stat('base_dmg_type'))
 	stats_list.get_node("dmg/icon").hint_tooltip = tr("BASEDAMAGETYPE") + ": " + tr(character.get_stat('base_dmg_type'))
+	if character.id == 'arron':
+		stats_list.get_node("friend").hide()
+	else:
+		stats_list.get_node("friend").show()
+		stats_list.get_node("friend/Label").text = String(character.friend_points)
 	build_skills()
 	build_res()
 

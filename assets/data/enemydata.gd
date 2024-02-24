@@ -806,8 +806,8 @@ var enemylist = {
 		loottable = 'dwarvenkingloot',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/King_dwarf_idle_sq/king_dwarf.tres"),
-			hit = "Fight/Bosses/King_dwarf_hit",
-			attack ="Fight/Bosses/King_dwarf_at" ,
+			hit = "Fight/Bosses/Fight_spritesFHD_0003s_0000_Dwarf_hit",
+			attack ="Fight/Bosses/Fight_spritesFHD_0003s_0001_Dwarf_at" ,
 		},
 	},
 	dwarvenking_2 = {
@@ -832,8 +832,8 @@ var enemylist = {
 		loottable = 'dwarvenkingloot',
 		animations = {
 			idle = load("res://assets/images/Fight/Bosses/King_dwarf_idle_sq/king_dwarf.tres"),
-			hit = "Fight/Bosses/King_dwarf_hit",
-			attack ="Fight/Bosses/King_dwarf_at",
+			hit = "Fight/Bosses/Fight_spritesFHD_0003s_0000_Dwarf_hit",
+			attack ="Fight/Bosses/Fight_spritesFHD_0003s_0001_Dwarf_at",
 		},
 	},
 	fearyqueen = {

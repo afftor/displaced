@@ -38,9 +38,6 @@ margin_top = 23.0
 margin_right = 542.0
 margin_bottom = 689.0
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="ButtonPanel"]
 margin_left = 78.0
@@ -108,9 +105,6 @@ margin_bottom = 44.0
 text = "SCENES"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Quests" type="TextureButton" parent="ButtonPanel/VBoxContainer"]
 visible = false
@@ -353,12 +347,3 @@ margin_left = -35.0
 margin_top = -54.0
 margin_right = 94.0
 margin_bottom = 96.0
-
-[node name="block_screen" type="Control" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -37.0
-margin_top = -57.0
-margin_right = 99.0
-margin_bottom = 101.0

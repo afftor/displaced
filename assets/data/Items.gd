@@ -343,12 +343,19 @@ var hero_items_data = {
 		damagetype = 'slash',
 		weaponsound = 'dodge',
 		leveldata = {
+			0:{
+				icon = "res://assets/images/iconsgear/arron_weapon1_1.png",
+				lvldesc = [
+					{effect = "WEAPON_1_EFFECT0"}
+				],
+				cost = {},
+				},
 			1:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_1.png",
 				lvldesc = [
 					{skill = 'SKILLFENCING', effect = "WEAPON_ARRON1_EFFECT1"}
 				],
-				cost = {},
+				cost = {gold = 100},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_2.png",
@@ -389,7 +396,7 @@ var hero_items_data = {
 			0:{ #for possible use later
 				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = [
-					{effect = "Not forged yet"}
+					{effect = "WEAPON_2_EFFECT0"}
 				],
 				cost = {},
 				},
@@ -435,22 +442,22 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/arron_armor_1.png",
-				lvldesc = [{effect = "ARMOR_ARRON_EFFECT1"}],
+#				lvldesc = [{effect = "ARMOR_ARRON_EFFECT1"}],
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/arron_armor_2.png",
-				lvldesc = [{effect = "ARMOR_ARRON_EFFECT2"}],
+#				lvldesc = [{effect = "ARMOR_ARRON_EFFECT2"}],
 				cost = {stone = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_armor_3.png",
-				lvldesc = [{effect = "ARMOR_ARRON_EFFECT3"}],
+#				lvldesc = [{effect = "ARMOR_ARRON_EFFECT3"}],
 				cost = {metal = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_armor_4.png",
-				lvldesc = [{effect = "ARMOR_ARRON_EFFECT4"}],
+#				lvldesc = [{effect = "ARMOR_ARRON_EFFECT4"}],
 				cost = {otherworld = 10, gold = 10000},
 				},
 		}
@@ -462,12 +469,19 @@ var hero_items_data = {
 		damagetype = 'dark',
 		weaponsound = 'dodge',
 		leveldata = {
+			0:{
+				icon = "res://assets/images/iconsgear/rilu_weapon1_1.png",
+				lvldesc = [
+					{effect = "WEAPON_1_EFFECT0"}
+				],
+				cost = {},
+				},
 			1:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_1.png",
 				lvldesc = [
 					{skill = 'SKILLDARK_ORB', effect = "WEAPON_RILU1_EFFECT1"}
 				],
-				cost = {},
+				cost = {gold = 100},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_2.png",
@@ -508,7 +522,7 @@ var hero_items_data = {
 			0:{ #for possible use later
 				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = [
-					{effect = "Not forged yet"}
+					{effect = "WEAPON_2_EFFECT0"}
 				],
 				cost = {},
 				},
@@ -554,22 +568,22 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/rilu_armor_1.png",
-				lvldesc = [{effect = "ARMOR_RILU_EFFECT1"}],
+#				lvldesc = [{effect = "ARMOR_RILU_EFFECT1"}],
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_armor_2.png",
-				lvldesc = [{effect = "ARMOR_RILU_EFFECT2"}],
+#				lvldesc = [{effect = "ARMOR_RILU_EFFECT2"}],
 				cost = {chitine = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_armor_3.png",
-				lvldesc = [{effect = "ARMOR_RILU_EFFECT3"}],
+#				lvldesc = [{effect = "ARMOR_RILU_EFFECT3"}],
 				cost = {scales = 10, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_armor_4.png",
-				lvldesc = [{effect = "ARMOR_RILU_EFFECT4"}],
+#				lvldesc = [{effect = "ARMOR_RILU_EFFECT4"}],
 				cost = {otherworld = 10, gold = 10000},
 				},
 		}
@@ -581,12 +595,19 @@ var hero_items_data = {
 		damagetype = 'air',
 		weaponsound = 'dodge',
 		leveldata = {
+			0:{
+				icon = "res://assets/images/iconsgear/iola_weapon1_1.png",
+				lvldesc = [
+					{effect = "WEAPON_1_EFFECT0"}
+				],
+				cost = {},
+				},
 			1:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_1.png",
 				lvldesc = [
 					{skill = 'SKILLBLESS', effect = "WEAPON_IOLA1_EFFECT1"}
 				],
-				cost = {},
+				cost = {gold = 100},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_2.png",
@@ -627,7 +648,7 @@ var hero_items_data = {
 			0:{ #for possible use later
 				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
 				lvldesc = [
-					{effect = "Not forged yet"}
+					{effect = "WEAPON_2_EFFECT0"}
 				],
 				cost = {},
 				},
@@ -673,22 +694,22 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/iola_armor_1.png",
-				lvldesc = [{effect = "ARMOR_IOLA_EFFECT1"}],
+#				lvldesc = [{effect = "ARMOR_IOLA_EFFECT1"}],
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/iola_armor_2.png",
-				lvldesc = [{effect = "ARMOR_IOLA_EFFECT2"}],
+#				lvldesc = [{effect = "ARMOR_IOLA_EFFECT2"}],
 				cost = {metal = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_armor_3.png",
-				lvldesc = [{effect = "ARMOR_IOLA_EFFECT3"}],
+#				lvldesc = [{effect = "ARMOR_IOLA_EFFECT3"}],
 				cost = {leather = 10, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_armor_4.png",
-				lvldesc = [{effect = "ARMOR_IOLA_EFFECT4"}],
+#				lvldesc = [{effect = "ARMOR_IOLA_EFFECT4"}],
 				cost = {demonic = 10, gold = 10000},
 				},
 		}
@@ -700,12 +721,19 @@ var hero_items_data = {
 		damagetype = 'fire',
 		weaponsound = 'dodge',
 		leveldata = {
+			0:{
+				icon = "res://assets/images/iconsgear/rose_weapon1_1.png",
+				lvldesc = [
+					{effect = "WEAPON_1_EFFECT0"}
+				],
+				cost = {},
+				},
 			1:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_1.png",
 				lvldesc = [
 					{skill = 'SKILLFIRE_BOLT', effect = "WEAPON_ROSE1_EFFECT1"}
 				],
-				cost = {},
+				cost = {gold = 100},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_2.png",
@@ -745,7 +773,7 @@ var hero_items_data = {
 		leveldata = {
 			0:{ #for possible use later
 				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
-				lvldesc = [{effect = "Not forged yet"}],
+				lvldesc = [{effect = "WEAPON_2_EFFECT0"}],
 				cost = {},
 				},
 			1:{
@@ -790,22 +818,22 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/rose_armor_1.png",
-				lvldesc = [{effect = "ARMOR_ROSE_EFFECT1"}],
+#				lvldesc = [{effect = "ARMOR_ROSE_EFFECT1"}],
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rose_armor_2.png",
-				lvldesc = [{effect = "ARMOR_ROSE_EFFECT2"}],
+#				lvldesc = [{effect = "ARMOR_ROSE_EFFECT2"}],
 				cost = {stone = 15, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_armor_3.png",
-				lvldesc = [{effect = "ARMOR_ROSE_EFFECT3"}],
+#				lvldesc = [{effect = "ARMOR_ROSE_EFFECT3"}],
 				cost = {chitine = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rose_armor_4.png",
-				lvldesc = [{effect = "ARMOR_ROSE_EFFECT4"}],
+#				lvldesc = [{effect = "ARMOR_ROSE_EFFECT4"}],
 				cost = {demonic = 5, gold = 10000},
 				},
 		}
@@ -817,12 +845,19 @@ var hero_items_data = {
 		damagetype = 'bludgeon',
 		weaponsound = 'dodge',
 		leveldata = {
+			0:{
+				icon = "res://assets/images/iconsgear/ember_weapon1_1.png",
+				lvldesc = [
+					{effect = "WEAPON_1_EFFECT0"}
+				],
+				cost = {},
+				},
 			1:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_1.png",
 				lvldesc = [
 					{skill = 'SKILLCOMBO', effect = "WEAPON_EMBER1_EFFECT1"}
 				],
-				cost = {},
+				cost = {gold = 100},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_2.png",
@@ -862,7 +897,7 @@ var hero_items_data = {
 		leveldata = {
 			0:{ #for possible use later
 				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
-				lvldesc = [{effect = "Not forged yet"}],
+				lvldesc = [{effect = "WEAPON_2_EFFECT0"}],
 				cost = {},
 				},
 			1:{
@@ -907,22 +942,22 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/ember_armor_1.png",
-				lvldesc = [{effect = "ARMOR_EMBER_EFFECT1"}],
+#				lvldesc = [{effect = "ARMOR_EMBER_EFFECT1"}],
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/ember_armor_2.png",
-				lvldesc = [{effect = "ARMOR_EMBER_EFFECT2"}],
+#				lvldesc = [{effect = "ARMOR_EMBER_EFFECT2"}],
 				cost = {wood = 15, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_armor_3.png",
-				lvldesc = [{effect = "ARMOR_EMBER_EFFECT3"}],
+#				lvldesc = [{effect = "ARMOR_EMBER_EFFECT3"}],
 				cost = {leather = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_armor_4.png",
-				lvldesc = [{effect = "ARMOR_EMBER_EFFECT4"}],
+#				lvldesc = [{effect = "ARMOR_EMBER_EFFECT4"}],
 				cost = {demonic = 10, gold = 10000},
 				},
 		}
@@ -934,12 +969,19 @@ var hero_items_data = {
 		damagetype = 'pierce',
 		weaponsound = 'dodge',
 		leveldata = {
+			0:{
+				icon = "res://assets/images/iconsgear/erika_weapon1_1.png",
+				lvldesc = [
+					{effect = "WEAPON_1_EFFECT0"}
+				],
+				cost = {},
+				},
 			1:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_1.png",
 				lvldesc = [
 					{skill = 'SKILLAARROW', effect = "WEAPON_ERIKA1_EFFECT1"}
 				],
-				cost = {},
+				cost = {gold = 100},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_2.png",
@@ -979,7 +1021,7 @@ var hero_items_data = {
 		leveldata = {
 			0:{ #for possible use later
 				icon = "res://assets/images/gui/forge/panel_forge_gear_disabled.png",
-				lvldesc = [{effect = "Not forged yet"}],
+				lvldesc = [{effect = "WEAPON_2_EFFECT0"}],
 				cost = {},
 				},
 			1:{
@@ -1024,22 +1066,22 @@ var hero_items_data = {
 		leveldata = {
 			1:{
 				icon = "res://assets/images/iconsgear/erika_armor_1.png",
-				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT1"}],
+#				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT1"}],
 				cost = {},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/erika_armor_2.png",
-				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT2"}],
+#				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT2"}],
 				cost = {wood = 10, gold = 700},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/erika_armor_3.png",
-				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT3"}],
+#				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT3"}],
 				cost = {metal = 15, gold = 4000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_armor_4.png",
-				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT4"}],
+#				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT4"}],
 				cost = {demonic = 10, gold = 10000},
 				},
 		}
@@ -1059,7 +1101,8 @@ func _ready():
 		if Items[i].has('waponsound'):
 			resources.preload_res("sound/%s" % Items[i].waponsound)
 
-func form_lvl_desc(lvldesc :Array) -> String:
+#armor lvldesc formed in hero.gd
+func form_weapon_lvl_desc(lvldesc :Array) -> String:
 	var desc = ""
 	for line in lvldesc:
 		if !desc.empty():
@@ -1069,3 +1112,5 @@ func form_lvl_desc(lvldesc :Array) -> String:
 		else:
 			desc += tr(line.effect)
 	return desc
+
+
