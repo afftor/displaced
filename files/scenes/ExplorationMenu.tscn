@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_default.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/explore/bgroup_panel_portrait_pressed.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/themes/button_location.tres" type="Theme" id=13]
 [ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/images/gui/explore/zone_panel_mission.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/combat_load/displaced.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/explore/bgroup_bg.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/buttons/explore/bar_dungeon_filler.png" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/pt_14.tres" type="DynamicFont" id=19]
@@ -40,6 +41,15 @@
 [ext_resource path="res://assets/images/buttons/explore/tick_active_hover.png" type="Texture" id=39]
 [ext_resource path="res://files/scenes/FullStateCheck.gd" type="Script" id=40]
 [ext_resource path="res://assets/images/buttons/explore/tick_active_disabled.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/combat_load/caves.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/combat_load/bar_fill.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/combat_load/frame.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/combat_load/bar_back.png" type="Texture" id=45]
+[ext_resource path="res://files/scenes/fake_load.gd" type="Script" id=46]
+[ext_resource path="res://assets/images/combat_load/city.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/combat_load/forest.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/combat_load/mountains.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/combat_load/desert.png" type="Texture" id=50]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -726,3 +736,63 @@ margin_right = 433.0
 margin_bottom = 146.0
 theme = ExtResource( 32 )
 text = "no"
+
+[node name="fake_load" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 46 )
+bg_forest = ExtResource( 48 )
+bg_cave = ExtResource( 42 )
+bg_town = ExtResource( 50 )
+bg_castle = ExtResource( 48 )
+bg_mountains = ExtResource( 49 )
+bg_cult = ExtResource( 50 )
+bg_modern_city = ExtResource( 47 )
+
+[node name="bg" type="TextureRect" parent="fake_load"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 42 )
+
+[node name="displaced" type="TextureRect" parent="fake_load"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -337.0
+margin_top = -99.5
+margin_right = 337.0
+margin_bottom = 99.5
+texture = ExtResource( 16 )
+
+[node name="frame" type="TextureRect" parent="fake_load"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 44 )
+
+[node name="progress" type="TextureProgress" parent="fake_load"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -611.5
+margin_top = -104.0
+margin_right = 611.5
+margin_bottom = -56.0
+value = 90.0
+texture_under = ExtResource( 45 )
+texture_progress = ExtResource( 43 )
+texture_progress_offset = Vector2( 29, 5 )
+
+[node name="press_key" type="Label" parent="fake_load"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -85.0
+margin_top = -56.0
+margin_right = 85.0
+margin_bottom = -32.0
+grow_horizontal = 2
+text = "PRESSANYKEY"

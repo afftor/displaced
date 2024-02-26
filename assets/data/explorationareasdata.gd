@@ -192,7 +192,7 @@ var locations = { #added seqs bindings and other fields
 		background = 'town_in',
 #		missions = ['town_viktor_fight','town_siege'],
 		missions = ['road_to_town', 'town_siege'],
-		function = '',
+#		function = '',
 		events = ['town_gates', 'search_clues', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', 'city_raid']
 	},
 	castle =  {

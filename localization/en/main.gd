@@ -394,6 +394,7 @@ var TranslationDict = {
 	DONOTSHOW = "Don't show any more",
 	THEREISNOESCAPE = "You can't escape this battle",
 	GAMEOVER = 'Game Over',
+	PRESSANYKEY = "Press any key",
 
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",

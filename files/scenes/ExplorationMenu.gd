@@ -13,6 +13,7 @@ onready var reservelist = $BattleGroup/roster
 onready var areadesc = $BattleGroup/about_bg/about
 onready var locname = $ExplorationSelect/head
 onready var scalecheck = $BattleGroup/ScaleCheck
+onready var fakeload = $fake_load
 
 onready var combat_node = get_parent().get_node("combat")
 
@@ -279,11 +280,19 @@ func abandon_area_confirm():
 	open_explore()
 
 func on_advance_pressed():
-	if input_handler.curtains != null:
-		var curtain_time = 0.5
-		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
-		yield(get_tree().create_timer(curtain_time), 'timeout')
+	input_handler.block_screen()
+	var curtain_time = 0.5
+	show_combat_curtain(curtain_time)
+	yield(get_tree().create_timer(curtain_time), 'timeout')
+	fakeload.open(location)
+	hide_combat_curtain()
+	fakeload.start_load()
+	yield(fakeload, "load_finished")
+	show_combat_curtain(curtain_time)
+	yield(get_tree().create_timer(curtain_time), 'timeout')
+	fakeload.hide()
 	advance_area()
+	input_handler.unblock_screen()
 	hide_combat_curtain()
 
 func advance_area():
@@ -471,10 +480,21 @@ func finish_area():
 				yield(input_handler, "EventOnScreen")
 	hide_combat_curtain()
 
+func show_combat_curtain(duration :float = 0.0):
+	var curtains = input_handler.curtains
+	if curtains == null: return
+	if duration > 0.0:
+		curtains.show_anim(variables.CURTAIN_BATTLE, duration)
+	else:
+		curtains.show_anim(variables.CURTAIN_BATTLE)
 
-func hide_combat_curtain():
-	if input_handler.curtains != null:
-		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
+func hide_combat_curtain(duration :float = 0.0):
+	var curtains = input_handler.curtains
+	if curtains == null: return
+	if duration > 0.0:
+		curtains.hide_anim(variables.CURTAIN_BATTLE, duration)
+	else:
+		curtains.hide_anim(variables.CURTAIN_BATTLE)
 
 
 func combat_finished(value, do_advance :bool):
