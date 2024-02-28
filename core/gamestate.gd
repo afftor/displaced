@@ -266,11 +266,10 @@ func get_choice(choice):
 
 
 func checkreqs(array):
-	var check = true
 	for i in array:
-		if valuecheck(i) == false:
-			check = false
-	return check
+		if !valuecheck(i):
+			return false
+	return true
 
 
 func valuecheck(dict):
