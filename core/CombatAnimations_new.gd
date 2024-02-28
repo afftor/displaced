@@ -380,8 +380,7 @@ func damage_float(node, args):
 	
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	if args.damage.hp != 0 or args.damage.shield != 0:
-		tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1, fadetime = 0.7, offset = Vector2(0,0)})
+	tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1, fadetime = 0.7, offset = Vector2(0,0)})
 	return delaytime + delay
 
 
