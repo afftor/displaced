@@ -284,7 +284,7 @@ func on_advance_pressed():
 	var curtain_time = 0.5
 	show_combat_curtain(curtain_time)
 	yield(get_tree().create_timer(curtain_time), 'timeout')
-	fakeload.open(location)
+	fakeload.open()
 	hide_combat_curtain()
 	fakeload.start_load()
 	yield(fakeload, "load_finished")

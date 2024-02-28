@@ -1,26 +1,29 @@
 extends Control
 
-#it is not yet obvious, how bg should be chosen: per location or per mission
-#that's why this dictionary is here
-#for now it's per location
-export var bg_village :Texture
 export var bg_forest :Texture
 export var bg_cave :Texture
-export var bg_town :Texture
-export var bg_castle :Texture
 export var bg_mountains :Texture
-export var bg_cult :Texture
+export var bg_desert :Texture
 export var bg_modern_city :Texture
-onready var bg = {
-	'village' : bg_village,
-	'forest' : bg_forest,
-	'cave' : bg_cave,
-	'town' : bg_town,
-	'castle' : bg_castle,
-	'dragon_mountains' : bg_mountains,
-	'cult' : bg_cult,
-	'modern_city' : bg_modern_city
-}
+#in all honesty, fully-fledged unlock system via gamestate.gd would be better, but, while I still
+#not sure, how fake_load should work, I'll leave it to be local for now
+onready var backgrounds = [
+	{bg = bg_forest, unlock = false,
+		reqs = [{type = 'seq_seen', value = 'intro_finish'}],
+	},
+	{bg = bg_cave, unlock = false,
+		reqs = [{type = 'seq_seen', value = 'dimitrius_arrival'}],
+	},
+	{bg = bg_mountains, unlock = false,
+		reqs = [{type = 'seq_seen', value = 'ember_arc_initiate'}],
+	},
+	{bg = bg_desert, unlock = true,
+		reqs = [],
+	},
+	{bg = bg_modern_city, unlock = false,
+		reqs = [{type = 'seq_seen', value = 'flak_modern_city'}],
+	}
+]
 
 const min_load_time = 2.5
 const max_load_time = 3.5
@@ -32,13 +35,22 @@ signal load_finished
 
 func _ready():
 	set_process_input(false)
-	for loc in Explorationdata.locations:
-		assert(bg.has(loc), "fake_load has no bg for location %s!" % loc)
 
-func open(loc :String = 'forest'):
-	assert(bg.has(loc), "fake_load has no such bg: %s!" % loc)
-	$bg.texture = bg[loc]
+func try_unlock_bg():
+	for bg in backgrounds:
+		if !bg.unlock:
+			bg.unlock = state.checkreqs(bg.reqs)
+
+func open():
+	try_unlock_bg()
+	var unlocked_bg = []
+	for i in range(backgrounds.size()):
+		if backgrounds[i].unlock:
+			unlocked_bg.append(i)
+	var chosen = unlocked_bg[randi() % unlocked_bg.size()]
+	$bg.texture = backgrounds[chosen].bg
 	progress_node.value = 0.0
+	progress_node.show()
 	press_key_node.hide()
 	show()
 
@@ -64,6 +76,8 @@ func start_load():
 		yield(get_tree().create_timer(times[i] - cur_time), 'timeout')
 		progress_node.value = steps[i]
 		cur_time = times[i]
+	yield(get_tree().create_timer(0.5), 'timeout')
+	progress_node.hide()
 	press_key_node.show()
 	set_process_input(true)
 
