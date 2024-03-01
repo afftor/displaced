@@ -25,8 +25,8 @@ onready var backgrounds = [
 	}
 ]
 
-const min_load_time = 2.5
-const max_load_time = 3.5
+const min_load_time = 1.5
+const max_load_time = 2.5
 
 onready var progress_node = $progress
 onready var press_key_node = $press_key
