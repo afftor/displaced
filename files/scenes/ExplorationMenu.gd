@@ -36,8 +36,8 @@ func _ready():
 	
 	build_party()
 	input_handler.connect("PositionChanged", self, 'build_party')
-	input_handler.connect("EventFinished", self, 'build_party')
-	input_handler.explore_node = self
+	input_handler.queue_connection("scene_node", "EventFinished", self, 'build_party')
+	input_handler.set_handler_node('explore_node', self)
 	
 	$BattleGroup/screen.parent_node = self
 	
@@ -469,7 +469,7 @@ func finish_area():
 		var enforce_replay = state.OldEvents.has(scene)
 		if globals.play_scene(scene, enforce_replay):
 #			yield(input_handler.scene_node, "scene_end")
-			yield(input_handler, "EventFinished")
+			yield(input_handler.scene_node, "EventFinished")
 	if location != 'mission': open_explore()
 	else: hide()
 	if areadata.has('events') and areadata.events.has("on_complete_seq"):
@@ -477,7 +477,7 @@ func finish_area():
 		if state.check_sequence(seq_id):
 			var output = globals.run_seq(seq_id)
 			if output == variables.SEQ_SCENE_STARTED :
-				yield(input_handler, "EventOnScreen")
+				yield(input_handler.scene_node, "EventOnScreen")
 	hide_combat_curtain()
 
 func show_combat_curtain(duration :float = 0.0):
@@ -548,7 +548,7 @@ func advance_check(do_advance :bool = false):
 		var enforce_replay = state.OldEvents.has(scene)
 		playing_scene = globals.play_scene(scene, enforce_replay)
 		if playing_scene:
-			yield(input_handler, "EventOnScreen")
+			yield(input_handler.scene_node, "EventOnScreen")
 
 #		if !enforce_replay: #kept legacy code with it's logic, but it was already to old to work
 #			yield(input_handler.scene_node, "scene_end")
@@ -556,7 +556,7 @@ func advance_check(do_advance :bool = false):
 	hide_combat_curtain()
 	if has_auto_advance() or do_advance:
 		if playing_scene:
-			yield(input_handler, "AllEventsFinished")
+			yield(input_handler.scene_node, "AllEventsFinished")
 		advance_area()
 	else:
 		build_area_description()

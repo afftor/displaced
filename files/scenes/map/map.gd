@@ -18,14 +18,14 @@ var village_inside_event = false
 var map_has_event = false
 
 func _ready():
-	input_handler.connect("EventFinished", self, "buildscreen")
+	input_handler.queue_connection("scene_node", "EventFinished", self, "buildscreen")
 	
-	input_handler.map_node = self
-	input_handler.village_node = $MainScreen
-	input_handler.explore_node = $explore
-#	input_handler.combat_node = $combat
-	input_handler.scene_node = $TextSystem
-	input_handler.menu_node = $menu_node
+	input_handler.set_handler_node('map_node', self)
+	input_handler.set_handler_node('village_node', $MainScreen)
+#	input_handler.set_handler_node('explore_node', $explore)
+#	input_handler.set_handler_node('combat_node', $combat)
+#	input_handler.set_handler_node('scene_node', $TextSystem)
+	input_handler.set_handler_node('menu_node', $menu_node)
 	input_handler.SystemMessageNode = $SystemMessageLabel
 	input_handler.scene_node.preload_scene('intro_1')
 	input_handler.curtains = $curtains

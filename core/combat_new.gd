@@ -230,7 +230,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	if debug_btn_on:
 		$test.hide()
 	hide_resist_tooltip()
-	input_handler.combat_node = self
+	input_handler.set_handler_node('combat_node', self)
 	turns = 0
 	en_level = level
 	resources.preload_res("music/%s" % music)

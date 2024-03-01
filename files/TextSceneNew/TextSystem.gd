@@ -1,6 +1,11 @@
 extends Control
 # warning-ignore-all:warning-id
 signal scene_end
+#all those signals should be here, so that yield-stuff could work correctly on freed instance (on load, for example)
+signal EventOnScreen
+signal AllEventsFinished
+signal EventFinished
+#=======
 
 const REF_PATH = [
 	"res://assets/data/txt_ref/scn",
@@ -560,7 +565,7 @@ var replay_mode = false
 var rewind_mode = false
 
 func _ready() -> void:
-	input_handler.scene_node = self
+	input_handler.set_handler_node('scene_node', self)
 	extend_char_map()
 	preload_portraits()
 	set_process(false)
@@ -1103,7 +1108,7 @@ func stop_scene() -> void:
 	hide()
 	state.FinishEvent(replay_mode)
 	replay_mode = false
-	input_handler.emit_signal("EventFinished")
+	emit_signal("EventFinished")
 
 #it should be almost the same to stop_scene() but with no afteractions
 func stop_scene_on_lose() ->void:
@@ -1112,7 +1117,7 @@ func stop_scene_on_lose() ->void:
 	hide()
 	state.ClearEvent()
 	replay_mode = false
-	input_handler.emit_signal("EventFinished")
+	emit_signal("EventFinished")
 
 func advance_scene() -> void:
 	step += 1
@@ -1241,7 +1246,7 @@ func play_scene(scene: String, restore = false) -> void:
 	if my_tween.is_active():
 		yield(my_tween, "tween_all_completed")
 	yield(get_tree(), "idle_frame")
-	input_handler.emit_signal("EventOnScreen")
+	emit_signal("EventOnScreen")
 	set_process(true)
 	set_process_input(true)
 	if restore:

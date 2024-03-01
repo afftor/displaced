@@ -229,7 +229,7 @@ func FinishEvent(replay = false):
 
 	if !next_is_scene:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
-		input_handler.emit_signal("AllEventsFinished")
+		input_handler.scene_node.emit_signal("AllEventsFinished")
 
 
 func store_choice(choice, option):

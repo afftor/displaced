@@ -22,9 +22,6 @@ signal CombatEnded
 signal WorkerAssigned
 signal SpeedChanged
 signal UpgradeUnlocked
-signal EventOnScreen
-signal EventFinished#scene_node finished event
-signal AllEventsFinished#state singelton see no consequent events
 signal QuestStarted
 signal QuestCompleted
 signal Midday
@@ -34,13 +31,16 @@ signal PositionChanged
 signal RMB_pressed
 signal RMB_released
 
+var connect_queue = []
 
+#===those should be set with set_handler_node()
 var map_node
 var village_node
 var explore_node
 var combat_node
 var scene_node
 var menu_node
+#===========
 
 var curtains
 
@@ -957,3 +957,20 @@ func unblock_screen():
 	if map_node == null: return
 	screen_blocked = false
 	map_node.switch_block_screen(false)
+
+func queue_connection(obj :String, sig :String, subj :Node, method :String):
+	var node = get(obj)
+	if node != null and is_instance_valid(node):
+		node.connect(sig, subj, method)
+		return
+	connect_queue.append({obj = obj, sig = sig, subj = subj, method = method})
+
+func set_handler_node(property :String, node :Node):
+	set(property, node)
+	for i in range(connect_queue.size()-1,-1,-1):
+		var connection = connect_queue[i]
+		if connection.obj == property:
+			node.connect(connection.sig, connection.subj, connection.method)
+			connect_queue.remove(i)
+
+
