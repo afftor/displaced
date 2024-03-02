@@ -191,8 +191,7 @@ func _ready():
 
 
 
-func check_sequence(id, forced = false):
-	if OldSeqs.has(id) and !forced: return false
+func check_sequence(id):
 	if !Explorationdata.scene_sequences.has(id):
 		print("event seq %s not found" % id)
 		return false
@@ -206,7 +205,8 @@ func store_sequence(id):
 
 
 func StoreEvent(nm):
-	OldEvents[nm] = date
+	if OldEvents.has(nm): return
+	OldEvents[nm] = date#for now (2.03.24) "date" mechanics does not work, so it's bool in practice
 
 
 func ClearEvent():
@@ -215,8 +215,7 @@ func ClearEvent():
 
 func FinishEvent(replay = false):
 	if CurEvent == "" or CurEvent == null:return
-	if !replay:
-		StoreEvent(CurEvent)
+	StoreEvent(CurEvent)
 	var finished_event = CurEvent
 	ClearEvent()
 #	if input_handler.map_node!= null: input_handler.map_node.update_map()
@@ -229,7 +228,7 @@ func FinishEvent(replay = false):
 
 	if !next_is_scene:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
-		input_handler.emit_signal("AllEventsFinished")
+		input_handler.scene_node.emit_signal("AllEventsFinished")
 
 
 func store_choice(choice, option):
@@ -266,11 +265,10 @@ func get_choice(choice):
 
 
 func checkreqs(array):
-	var check = true
 	for i in array:
-		if valuecheck(i) == false:
-			check = false
-	return check
+		if !valuecheck(i):
+			return false
+	return true
 
 
 func valuecheck(dict):
@@ -472,7 +470,7 @@ func deserialize(tmp:Dictionary):
 		if k in ['show_sprite', 'show_bs']: continue
 		scene_restore_data[k] = int(scene_restore_data[k])
 	if CurEvent != null and CurEvent != "":
-		globals.play_scene(CurEvent, false, true)
+		globals.play_scene(CurEvent, true)
 		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	else:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)

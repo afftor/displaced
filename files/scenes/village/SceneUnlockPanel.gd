@@ -106,9 +106,8 @@ func rebuild_scene_list():
 
 
 func show_event(ev):
-	globals.run_seq(ev, true)
+	globals.run_seq(ev)
 #	input_handler.OpenClose(input_handler.scene_node)
-#	input_handler.scene_node.replay_mode = true
 #	input_handler.scene_node.play_scene(ev)
 
 

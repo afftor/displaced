@@ -6,9 +6,11 @@ onready var utility_bar = $SkillPanel/UtilityContainer
 onready var active_panel = $ActiveActionPanel
 onready var active_panel2 = $ActiveActionPanel2
 onready var skill_panel = $SkillPanel
-onready var skill_container = $SkillPanel/SkillContainer
+onready var allskill_container = $SkillPanel/Skills
+onready var skill_container = $SkillPanel/Skills/SkillContainer
+onready var ultskill_container = $SkillPanel/Skills/UltSkillContainer
+onready var defaultskill_container = $SkillPanel/Skills/DefaultSkillContainer
 onready var item_container = $SkillPanel/ItemContainer
-onready var defaultskill_container = $SkillPanel/DefaultSkillContainer
 
 var hpanel1 = load("res://files/scenes/combat/char_stat_party.tscn")
 var hpanel2 = load("res://files/scenes/combat/char_stat_reserve.tscn")
@@ -17,16 +19,16 @@ var hotkey_buttons = {
 	hotkey_skill_2 = 0,
 	hotkey_skill_3 = 1,
 	hotkey_skill_4 = 2,
-	hotkey_skill_5 = 3,
 	
-	hotkey_skill_7 = 4,
-	hotkey_skill_8 = 5,
-	hotkey_skill_9 = 6,
-	hotkey_skill_10 = 7,
+	hotkey_skill_7 = 3,
+	hotkey_skill_8 = 4,
+	hotkey_skill_9 = 5,
 	
 	#for hotkey identification checks only
 	hotkey_skill_1 = -1,
-	hotkey_skill_6 = -1
+	hotkey_skill_6 = -1,
+	hotkey_skill_5 = -1,
+	hotkey_skill_10 = -1,
 }
 var hotkeys
 var sounds = {
@@ -219,6 +221,7 @@ func skill_button_pressed(mode, arg):
 #skill panel
 func ClearSkillPanel():
 	input_handler.ClearContainer(skill_container)
+	input_handler.ClearContainer(ultskill_container)
 
 func HideSkillPanel():
 	skill_panel.visible = false
@@ -238,10 +241,27 @@ func RebuildSkillPanel():
 	var activecharacter = combat.activecharacter
 	ClearSkillPanel()
 	var skill_num = -1
+	var first_ult = true
 	for i in activecharacter.skills:
 		if i in ['attack', 'defence']: continue
-		var newbutton = input_handler.DuplicateContainerTemplate(skill_container)
 		var skill = Skillsdata.patch_skill(i, activecharacter)
+		var hotkey = "err"
+		var container
+		if skill.skilltype == 'ultimate':
+			container = ultskill_container
+			if first_ult:
+				hotkey = 'hotkey_skill_5'
+				first_ult = false
+			else:
+				hotkey = 'hotkey_skill_10'
+		else:
+			container = skill_container
+			skill_num +=1
+			for key in hotkey_buttons:
+				if hotkey_buttons[key] == skill_num:
+					hotkey = key
+					break
+		var newbutton = input_handler.DuplicateContainerTemplate(container)
 		newbutton.get_node("TextureRect").texture = skill.icon
 		newbutton.get_node("Cooldown").text = ""
 		if !activecharacter.can_use_skill(skill):
@@ -253,20 +273,13 @@ func RebuildSkillPanel():
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)
 		globals.connectskilltooltip(newbutton, activecharacter.id, i)
-		skill_num +=1
 		if newbutton.disabled:
 			hotkeys.disable_hotkey_for_node(newbutton)
 		else:
-			var hotkey = "err"
-			for key in hotkey_buttons:
-				if hotkey_buttons[key] == skill_num:
-					hotkey = key
-					break
 			hotkeys.set_hotkey_for_node(newbutton, hotkey)
 	
 	if activecharacter.combatgroup == 'ally':
-		skill_container.visible = true
-		defaultskill_container.visible = true
+		allskill_container.visible = true
 		item_container.visible = false
 		$SkillPanel/CategoriesContainer.visible = true
 		UpdatePressedStatus()
@@ -291,8 +304,7 @@ func RebuildItemPanel():
 			newbutton.set_meta('skill', i.useskill)
 			newbutton.connect('pressed', self, 'skill_button_pressed', ['item', i])
 			globals.connectmaterialtooltip(newbutton, i)
-	skill_container.visible = false
-	defaultskill_container.visible = false
+	allskill_container.visible = false
 	item_container.visible = true
 	UpdatePressedStatus()
 
@@ -301,7 +313,7 @@ func RebuildDefaultsPanel():
 	if !combat.allowaction: return
 	var activecharacter = combat.activecharacter
 	for i in ['attack', 'defence']:
-		var newbutton = get_node("SkillPanel/DefaultSkillContainer").get_node(i)
+		var newbutton = defaultskill_container.get_node(i)
 		var skill = Skillsdata.patch_skill(i, activecharacter)
 		if !newbutton.is_connected('pressed', self, 'skill_button_pressed'):
 			newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
@@ -332,7 +344,7 @@ func build_enemy_head():
 
 func UpdatePressedStatus():
 	$SkillPanel/CategoriesContainer/ItemsButton.pressed = item_container.visible
-	$SkillPanel/CategoriesContainer/SkillsButton.pressed = skill_container.visible
+	$SkillPanel/CategoriesContainer/SkillsButton.pressed = allskill_container.visible
 
 #stub for next 3 actions
 #this panel not helps in re-selecting heroes 
@@ -344,7 +356,7 @@ func build_selected_skill(skill): #not skill_id
 
 	UpdatePressedStatus()
 	defaultskill_container.get_node("attack").pressed = skill.code == "attack"
-	for ch in skill_container.get_children():
+	for ch in skill_container.get_children() + ultskill_container.get_children():
 		if ch.name == 'Button': continue
 		ch.pressed = ch.get_meta("skill") == skill.code
 
@@ -371,9 +383,9 @@ func unbild_selection():
 	active_panel.visible = false
 	active_panel2.visible = false
 #	UpdatePressedStatus()
-	if skill_container.visible:
+	if allskill_container.visible:
 		defaultskill_container.get_node("attack").pressed = false
-		for ch in skill_container.get_children():
+		for ch in skill_container.get_children() + ultskill_container.get_children():
 			ch.pressed = false
 	elif item_container.visible:
 		for ch in item_container.get_children():
@@ -381,7 +393,7 @@ func unbild_selection():
 
 
 func _input(event):
-	if skill_panel.visible and skill_container.visible:
+	if skill_panel.visible and allskill_container.visible:
 		for hotkey in hotkey_buttons:
 			if event.is_action_pressed(hotkey):
 				var button = get_button_by_hotkey(hotkey)
@@ -396,6 +408,15 @@ func get_button_by_hotkey(hotkey :String) ->Node:
 		return defaultskill_container.get_node("attack")
 	if hotkey == "hotkey_skill_6":
 		return defaultskill_container.get_node("defence")
+	if hotkey == "hotkey_skill_5":
+		#with all get_child_count() mind, that there is always 'template' child at the end of list
+		if ultskill_container.get_child_count() < 2:
+			return null
+		return ultskill_container.get_child(0)
+	if hotkey == "hotkey_skill_10":
+		if ultskill_container.get_child_count() < 3:
+			return null
+		return ultskill_container.get_child(1)
 	if !hotkey_buttons.has(hotkey):
 		assert(false, "no such hotkey in CombatGui.gd")
 		return null

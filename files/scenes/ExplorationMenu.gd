@@ -13,6 +13,7 @@ onready var reservelist = $BattleGroup/roster
 onready var areadesc = $BattleGroup/about_bg/about
 onready var locname = $ExplorationSelect/head
 onready var scalecheck = $BattleGroup/ScaleCheck
+onready var fakeload = $fake_load
 
 onready var combat_node = get_parent().get_node("combat")
 
@@ -35,8 +36,8 @@ func _ready():
 	
 	build_party()
 	input_handler.connect("PositionChanged", self, 'build_party')
-	input_handler.connect("EventFinished", self, 'build_party')
-	input_handler.explore_node = self
+	input_handler.queue_connection("scene_node", "EventFinished", self, 'build_party')
+	input_handler.set_handler_node('explore_node', self)
 	
 	$BattleGroup/screen.parent_node = self
 	
@@ -279,11 +280,19 @@ func abandon_area_confirm():
 	open_explore()
 
 func on_advance_pressed():
-	if input_handler.curtains != null:
-		var curtain_time = 0.5
-		input_handler.curtains.show_anim(variables.CURTAIN_BATTLE, curtain_time)
-		yield(get_tree().create_timer(curtain_time), 'timeout')
+	input_handler.block_screen()
+	var curtain_time = 0.5
+	show_combat_curtain(curtain_time)
+	yield(get_tree().create_timer(curtain_time), 'timeout')
+	fakeload.open()
+	hide_combat_curtain()
+	fakeload.start_load()
+	yield(fakeload, "load_finished")
+	show_combat_curtain(curtain_time)
+	yield(get_tree().create_timer(curtain_time), 'timeout')
+	fakeload.hide()
 	advance_area()
+	input_handler.unblock_screen()
 	hide_combat_curtain()
 
 func advance_area():
@@ -323,7 +332,6 @@ func advance_area():
 #			else:
 #				#2move to globals method
 #				input_handler.OpenClose(input_handler.scene_node)
-#				input_handler.scene_node.replay_mode = state.OldEvents.has(stagedata.scene)
 #				input_handler.scene_node.play_scene(stagedata.scene)
 #
 #				yield(input_handler.scene_node, "scene_end")
@@ -457,10 +465,9 @@ func finish_area():
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('events') and areadata.events.has("on_complete"):
 		var scene = areadata.events.on_complete
-		var enforce_replay = state.OldEvents.has(scene)
-		if globals.play_scene(scene, enforce_replay):
+		if globals.play_scene(scene):
 #			yield(input_handler.scene_node, "scene_end")
-			yield(input_handler, "EventFinished")
+			yield(input_handler.scene_node, "EventFinished")
 	if location != 'mission': open_explore()
 	else: hide()
 	if areadata.has('events') and areadata.events.has("on_complete_seq"):
@@ -468,13 +475,24 @@ func finish_area():
 		if state.check_sequence(seq_id):
 			var output = globals.run_seq(seq_id)
 			if output == variables.SEQ_SCENE_STARTED :
-				yield(input_handler, "EventOnScreen")
+				yield(input_handler.scene_node, "EventOnScreen")
 	hide_combat_curtain()
 
+func show_combat_curtain(duration :float = 0.0):
+	var curtains = input_handler.curtains
+	if curtains == null: return
+	if duration > 0.0:
+		curtains.show_anim(variables.CURTAIN_BATTLE, duration)
+	else:
+		curtains.show_anim(variables.CURTAIN_BATTLE)
 
-func hide_combat_curtain():
-	if input_handler.curtains != null:
-		input_handler.curtains.hide_anim(variables.CURTAIN_BATTLE)
+func hide_combat_curtain(duration :float = 0.0):
+	var curtains = input_handler.curtains
+	if curtains == null: return
+	if duration > 0.0:
+		curtains.hide_anim(variables.CURTAIN_BATTLE, duration)
+	else:
+		curtains.hide_anim(variables.CURTAIN_BATTLE)
 
 
 func combat_finished(value, do_advance :bool):
@@ -525,18 +543,13 @@ func advance_check(do_advance :bool = false):
 	var playing_scene = false
 	if areadata.events.has("after_fight_%d" % (areastate.stage - 1)):
 		var scene = areadata.events["after_fight_%d" % (areastate.stage - 1)]
-		var enforce_replay = state.OldEvents.has(scene)
-		playing_scene = globals.play_scene(scene, enforce_replay)
+		playing_scene = globals.play_scene(scene)
 		if playing_scene:
-			yield(input_handler, "EventOnScreen")
-
-#		if !enforce_replay: #kept legacy code with it's logic, but it was already to old to work
-#			yield(input_handler.scene_node, "scene_end")
-#			advance_check()
+			yield(input_handler.scene_node, "EventOnScreen")
 	hide_combat_curtain()
 	if has_auto_advance() or do_advance:
 		if playing_scene:
-			yield(input_handler, "AllEventsFinished")
+			yield(input_handler.scene_node, "AllEventsFinished")
 		advance_area()
 	else:
 		build_area_description()

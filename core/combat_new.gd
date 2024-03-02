@@ -230,7 +230,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	if debug_btn_on:
 		$test.hide()
 	hide_resist_tooltip()
-	input_handler.combat_node = self
+	input_handler.set_handler_node('combat_node', self)
 	turns = 0
 	en_level = level
 	resources.preload_res("music/%s" % music)
@@ -1822,17 +1822,28 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	caster.process_event(variables.TR_CAST, s_skill1)
 
 	turns += 1
-	#preparing and sort animations
-	var animations = skill.sfx
-	var animationdict = {windup = [], prehit = [], predamage = [], postdamage = [], effected = []}
-	for i in animations:
+	#preparing and sort animations and sounds
+	var animationdict = {cast = [], postcast = [], repeat = [], predamage = [], postdamage = [], effected = []}
+	var sounddict = {}
+	for i in skill.sfx:
 		animationdict[i.period].append(i)
+	if skill.has('sounddata'):
+		for i in animationdict:
+			if skill.sounddata.has(i):
+				sounddict[i] = skill.sounddata[i]
 	
-	#========windup animation and initiate sound
-	#for sure at windup there should not be real_target-related animations
-	if skill.has('sounddata') and skill.sounddata.initiate != null:
-		sound_from_fighter(skill.sounddata.initiate, caster)
-	for i in animationdict.windup:
+	#for sure at cast and postcast there should not be real_target-related animations
+	#========cast animation and sound
+	if sounddict.has('cast'):
+		sound_from_fighter(sounddict.cast, caster)
+	for i in animationdict.cast:
+		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
+		sfxtarget.process_sfx_dict(i)
+	#========postcast animation and sound
+	turns += 1
+	if sounddict.has('postcast'):
+		sound_from_fighter(sounddict.postcast, caster)
+	for i in animationdict.postcast:
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 		sfxtarget.process_sfx_dict(i)
 	#=============
@@ -1857,8 +1868,10 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		if target == null and !skill.tags.has('empty_target'):
 			continue
 		
-		#======prehit animation
-		for i in animationdict.prehit:
+		#======repeat animation and sound
+		if sounddict.has('repeat'):
+			sound_from_fighter(sounddict.repeat, caster)
+		for i in animationdict.repeat:
 #			if i.has('once') and i.once and n > 1: continue#once-mechanic not used now, but tested and working
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 			sfxtarget.process_sfx_dict(i)
@@ -1868,12 +1881,12 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:
-			#======predamage animation and strike sound
-			if skill.has('sounddata') and skill.sounddata.strike != null:
-				if skill.sounddata.strike == 'weapon':
+			#======predamage animation sound
+			if sounddict.has('predamage'):
+				if sounddict.predamage == 'weapon':
 					sound_from_fighter(get_weapon_sound(caster), caster)
 				else:
-					sound_from_fighter(skill.sounddata.strike, caster)
+					sound_from_fighter(sounddict.predamage, caster)
 			for j in animationdict.predamage:
 #				if j.has('once') and j.once and n > 1: continue
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
@@ -1911,14 +1924,14 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				combatlogadd(s_skill2.target.name + " evades the damage.")
 #				Off_Target_Glow()
 			else:
-				#=========postdamage animation and hit sound
-				if skill.has('sounddata') and skill.sounddata.hit != null:
-					if skill.sounddata.hittype == 'absolute':
-						sound_from_fighter(skill.sounddata.hit, s_skill2.target)
-					elif skill.sounddata.hittype == 'bodyhitsound':
+				#=========postdamage animation sound
+				if sounddict.has('postdamage'):
+					if sounddict.postdamage == 'bodyhitsound':
 						sound_from_fighter(s_skill2.target.bodyhitsound, s_skill2.target)
-					elif skill.sounddata.hittype == 'bodyarmor':
+					elif sounddict.postdamage == 'bodyarmor':
 						sound_from_fighter(calculate_hit_sound(skill, caster, s_skill2.target), s_skill2.target)
+					else:
+						sound_from_fighter(sounddict.postdamage, s_skill2.target)
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)

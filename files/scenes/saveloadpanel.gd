@@ -36,7 +36,6 @@ func ResetSavePanel():
 	btn_delete.disabled = true
 	btn_load.disabled = true
 	btn_save.disabled = true
-	btn_save.visible = can_save()
 	input_handler.ClearContainer(saves_container)
 	
 	if can_save():
@@ -95,7 +94,7 @@ func choose_save(save_name :String):
 	var is_new_save :bool = save_name.empty()
 	btn_delete.disabled = is_new_save
 	btn_load.disabled = is_new_save
-	btn_save.disabled = false
+	btn_save.disabled = !can_save()
 
 func PressLoadGame():
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])

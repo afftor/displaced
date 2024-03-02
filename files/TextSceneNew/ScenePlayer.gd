@@ -13,10 +13,9 @@ func play_scene(scn_name: String, replay_mode: bool) -> void:
 	$"..".current_tab = 0
 #	$TextSystem.show()
 	input_handler.OpenClose($TextSystem)
-	$TextSystem.replay_mode = replay_mode
-	$TextSystem.play_scene(scn_name)
+	$TextSystem.play_scene(scn_name, false, replay_mode)
 #	yield($TextSystem, "scene_end")
-	yield(input_handler,"EventFinished")
+	yield(input_handler.scene_node,"EventFinished")
 
 func preload_scene(scn_name: String) -> void:
 	$TextSystem.preload_scene(scn_name)

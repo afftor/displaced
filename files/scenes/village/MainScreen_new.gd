@@ -67,7 +67,7 @@ func _ready():
 	####
 	
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
-	input_handler.connect("EventFinished", self, "buildscreen")
+	input_handler.queue_connection("scene_node", "EventFinished", self, "buildscreen")
 	
 	if resources.is_busy(): yield(resources, "done_work")
 	if debug == true:
@@ -168,7 +168,7 @@ func check_townhall_events():
 func building_entered(b_name):
 	if binded_events[b_name] != null:
 		globals.run_seq(binded_events[b_name])
-		yield(input_handler, "EventFinished")
+		yield(input_handler.scene_node, "EventFinished")
 #		buildscreen()
 	match b_name:
 		'townhall': OpenTownhall()

@@ -11,7 +11,7 @@ onready var upgrade_desc = $UpgradeList/UpgradeDescript
 var building_sound = "sound/building"
 
 func _ready():
-	input_handler.connect("EventFinished", self, "build_events")
+	input_handler.queue_connection("scene_node", "EventFinished", self, "build_events")
 	#$ButtonPanel/VBoxContainer/Tasks.connect("pressed",self,'tasklist')
 #warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Upgrades.connect('pressed', self, 'upgradelist')
