@@ -236,16 +236,17 @@ func StartGame():
 	if output == variables.SEQ_SCENE_STARTED :
 		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 
-func run_seq(id, forced = false):
-	if !state.check_sequence(id, forced): return
-	if !state.OldSeqs.has(id): forced = false
-	var output = run_actions_list(Explorationdata.scene_sequences[id].actions, forced)
+func run_seq(id, force_replay = false):
+	if !state.check_sequence(id): return
+	var replay = (force_replay or state.OldSeqs.has(id))
+	var output = run_actions_list(Explorationdata.scene_sequences[id].actions, replay)
 	state.store_sequence(id)
 	return output
 
 
 #we may need to analyse this func further deep, so simple bool output for scene could make refactoring harder in future
-func run_actions_list(list, replay = false) ->int:
+#mind that 'list' can come from either sequence or postevent so 'replay' can have different nature (OldSeqs or OldEvents)
+func run_actions_list(list, replay :bool) ->int:
 	var stop_syncronous = false
 	var output = variables.SEQ_NONE
 	for action in list:
@@ -254,18 +255,19 @@ func run_actions_list(list, replay = false) ->int:
 				if stop_syncronous: break
 				if action.has('reqs') and !state.checkreqs(action.reqs):
 					continue #stub, for this can lead to missing unlock opportunity, cant simply unlock either
-				stop_syncronous = play_scene(action.value, replay)
+				stop_syncronous = play_scene(action.value)
 				if stop_syncronous:
 					output = variables.SEQ_SCENE_STARTED
 			'system':
-				if !replay: state.system_action(action)
-			'show_screen':
-				if !replay:
-					var arg :String = ''
-					if action.has('arg'): arg = action.arg
-					change_screen(action.value, arg)
-			'mission':
 				if replay: continue
+				state.system_action(action)
+			'show_screen':
+				if replay: continue
+				var arg :String = ''
+				if action.has('arg'): arg = action.arg
+				change_screen(action.value, arg)
+			'mission':
+				if replay: continue#caution advised, event replay never should consider replaying mission
 				if stop_syncronous: break
 				stop_syncronous = true
 				force_start_mission(action.value)
@@ -311,11 +313,9 @@ func force_start_mission(mission_id):
 	change_screen('mission')
 
 
-func play_scene(scene_id, enforce_replay = false, restore = false):
+func play_scene(scene_id, restore = false):
 	if input_handler.scene_node == null:
 		print("scene node not open")
-		return false
-	if !enforce_replay and state.OldEvents.has(scene_id):
 		return false
 	state.CurEvent = scene_id
 	input_handler.OpenUnfade(input_handler.scene_node)
@@ -323,7 +323,6 @@ func play_scene(scene_id, enforce_replay = false, restore = false):
 #		input_handler.OpenUnfade(input_handler.scene_node)
 #	else:
 #		input_handler.OpenInstant(input_handler.scene_node)
-	input_handler.scene_node.replay_mode = state.OldEvents.has(scene_id)
 	input_handler.scene_node.play_scene(scene_id, restore)
 	return true
 

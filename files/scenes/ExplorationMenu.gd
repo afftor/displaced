@@ -332,7 +332,6 @@ func advance_area():
 #			else:
 #				#2move to globals method
 #				input_handler.OpenClose(input_handler.scene_node)
-#				input_handler.scene_node.replay_mode = state.OldEvents.has(stagedata.scene)
 #				input_handler.scene_node.play_scene(stagedata.scene)
 #
 #				yield(input_handler.scene_node, "scene_end")
@@ -466,8 +465,7 @@ func finish_area():
 	var areadata = Explorationdata.areas[area]
 	if areadata.has('events') and areadata.events.has("on_complete"):
 		var scene = areadata.events.on_complete
-		var enforce_replay = state.OldEvents.has(scene)
-		if globals.play_scene(scene, enforce_replay):
+		if globals.play_scene(scene):
 #			yield(input_handler.scene_node, "scene_end")
 			yield(input_handler.scene_node, "EventFinished")
 	if location != 'mission': open_explore()
@@ -545,14 +543,9 @@ func advance_check(do_advance :bool = false):
 	var playing_scene = false
 	if areadata.events.has("after_fight_%d" % (areastate.stage - 1)):
 		var scene = areadata.events["after_fight_%d" % (areastate.stage - 1)]
-		var enforce_replay = state.OldEvents.has(scene)
-		playing_scene = globals.play_scene(scene, enforce_replay)
+		playing_scene = globals.play_scene(scene)
 		if playing_scene:
 			yield(input_handler.scene_node, "EventOnScreen")
-
-#		if !enforce_replay: #kept legacy code with it's logic, but it was already to old to work
-#			yield(input_handler.scene_node, "scene_end")
-#			advance_check()
 	hide_combat_curtain()
 	if has_auto_advance() or do_advance:
 		if playing_scene:

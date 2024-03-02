@@ -1089,7 +1089,7 @@ func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->
 		tag_moveto(false_pos)
 
 func tag_loose() -> void:
-	stop_scene_on_lose()
+	stop_scene_on_lose()#mind that here replay_mode made false in any case (is it right?)
 	if !replay_mode and input_handler.menu_node != null:
 		input_handler.menu_node.GameOverShow()
 
@@ -1121,7 +1121,7 @@ func stop_scene_on_lose() ->void:
 
 func advance_scene() -> void:
 	step += 1
-	if !replay_mode and !rewind_mode:
+	if !rewind_mode:#'and !replay_mode' also was here. Mind if something would break
 		state.scene_restore_data.step = step
 	line_dr = ref_src[get_line_nr()]
 	receive_input = false
@@ -1191,9 +1191,10 @@ func preload_scene(scene: String) -> void:
 		for j in scene_map["res"][i]:
 			resources.preload_res("%s/%s" % [i, j])
 
-func play_scene(scene: String, restore = false) -> void:
+func play_scene(scene: String, restore = false, force_replay = false) -> void:
 	set_process(false)
 	set_process_input(false)
+	replay_mode = (force_replay or state.OldEvents.has(scene))
 
 	scene_map = scenes_map[scene]
 
