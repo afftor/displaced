@@ -472,10 +472,10 @@ func finish_area():
 	else: hide()
 	if areadata.has('events') and areadata.events.has("on_complete_seq"):
 		var seq_id = areadata.events.on_complete_seq
-		if state.check_sequence(seq_id):
-			var output = globals.run_seq(seq_id)
-			if output == variables.SEQ_SCENE_STARTED :
-				yield(input_handler.scene_node, "EventOnScreen")
+#		if state.check_sequence(seq_id):#run_seq() makes this check
+		var output = globals.run_seq(seq_id)
+		if output == variables.SEQ_SCENE_STARTED :
+			yield(input_handler.scene_node, "EventOnScreen")
 	hide_combat_curtain()
 
 func show_combat_curtain(duration :float = 0.0):
