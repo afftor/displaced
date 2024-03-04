@@ -237,8 +237,8 @@ func StartGame():
 		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 
 func run_seq(id, force_replay = false):
-	if !state.check_sequence(id): return
 	var replay = (force_replay or state.OldSeqs.has(id))
+	if !replay and !state.check_sequence(id): return
 	var output = run_actions_list(Explorationdata.scene_sequences[id].actions, replay)
 	state.store_sequence(id)
 	return output

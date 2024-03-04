@@ -190,8 +190,10 @@ func _ready():
 		gallery_unlocks.push_back(false)
 
 
-
+#this func checks relevancy, so already seen sequence is irrelevant
 func check_sequence(id):
+	if state.OldSeqs.has(id):
+		return false
 	if !Explorationdata.scene_sequences.has(id):
 		print("event seq %s not found" % id)
 		return false
