@@ -8,6 +8,9 @@ enum {M_SELL, M_BUY}
 var mode = M_SELL
 var amount = 0
 
+func _enter_tree():
+	closebuttonoffset = [8,5]
+
 func _ready():
 	shop_menu = get_parent().get_parent()
 	$LineEdit.connect("text_entered", self, 'enter_amount')
@@ -40,21 +43,19 @@ func confirm():
 
 
 func setup_res():
-	$LineEdit.text = "1"
-	amount = 1
+	set_amount(1)
 	var itemdata = Items.Items[item_id]
-	$Icon.texture = itemdata.icon 
+	$Icon.texture = itemdata.icon
 	$HBoxContainer/name.text = tr(itemdata.name) #do not think these translations should be made in data file
 	$desc.bbcode_text = tr(itemdata.description)
 	$HBoxContainer/cost.text = str(itemdata.price)
 	$amount1.text = "in posession: %d" % state.materials[item_id]
-	$HBoxContainer2/money.text = str(state.money)
 
 
 func open_buy(id):
 	item_id = id
 	var itemdata = Items.Items[item_id]
-	max_v = state.money / itemdata.price
+	max_v = int(state.money / itemdata.price)
 	mode = M_BUY
 	$Button.text = "Buy"
 	setup_res()
@@ -74,13 +75,14 @@ func set_amount(value):
 	amount = value
 	$down.disabled = false
 	$up.disabled = false
-	if amount < 0:
-		amount = 0
+	if amount <= 1:
+		amount = 1
 		$down.disabled = true
-	if amount > max_v:
+	if amount >= max_v:
 		amount = max_v
 		$up.disabled = true
 	$LineEdit.text = str(amount)
+	$HBoxContainer2/money.text = str(amount * Items.Items[item_id].price)
 
 
 func enter_amount(txt):

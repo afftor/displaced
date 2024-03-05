@@ -257,9 +257,6 @@ margin_left = 196.0
 margin_top = 60.0
 margin_right = 662.0
 margin_bottom = 92.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="Label" parent="Panel/SelectAmountPanel/HBoxContainer"]
 margin_right = 387.0
@@ -346,9 +343,6 @@ margin_left = 268.0
 margin_top = 207.0
 margin_right = 449.0
 margin_bottom = 239.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="Panel/SelectAmountPanel/HBoxContainer2"]
 margin_right = 32.0
