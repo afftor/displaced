@@ -198,6 +198,7 @@ var TranslationDict = {
 	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
+	TILLNEXTLEVEL = "Until next level: %s",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	FRIENDPOINT = "Friendship points",
 
