@@ -390,6 +390,8 @@ func newturn():
 		i.rebuildbuffs()
 		if i.displaynode.visible: i.displaynode.process_enable()
 		i.tick_cooldowns()
+	for ch in state.characters:
+		state.heroes[ch].try_rest()
 	turns +=1
 #	gui_node.RebuildReserve()
 	CombatAnimations.check_start()
