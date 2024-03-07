@@ -394,6 +394,7 @@ var TranslationDict = {
 	ABANDONAREA = "Abandon Area",
 	DONOTSHOW = "Don't show any more",
 	THEREISNOESCAPE = "You can't escape this battle",
+	SURETOESCAPE = "You about to escape this battle. Are you sure?",
 	GAMEOVER = 'Game Over',
 	PRESSANYKEY = "Press any key",
 

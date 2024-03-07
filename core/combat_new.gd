@@ -287,7 +287,7 @@ func try_to_run():
 	if input_handler.explore_node != null and !input_handler.explore_node.can_escape():
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'run', tr('THEREISNOESCAPE'), tr('GAMEOVER')])
 		return
-	run()
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'run', tr('SURETOESCAPE')])
 
 func run():
 	FinishCombat(false)
