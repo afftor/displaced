@@ -64,15 +64,12 @@ func _input(event):
 		rmb_state = false
 	if event.is_echo() == true || event.is_pressed() == false :
 		return
-	if (event.is_action("ESC") && event.is_pressed() &&
-			(CloseableWindowsArray.empty() ||
-			CloseableWindowsArray.back() != scene_node) &&
-			!screen_blocked):
-		if CloseableWindowsArray.size() != 0:
+	if event.is_action_pressed("ESC") && !screen_blocked:
+		if !CloseableWindowsArray.empty():
 			CloseTopWindow()
 		else:
-			if globals.CurrentScene.name == 'MainScreen':
-				globals.CurrentScene.openmenu()
+			if input_handler.menu_node and input_handler.menu_node.visible:
+				input_handler.menu_node.openmenu()
 	if event.is_action("F9") && event.is_pressed():
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscreen = OS.window_fullscreen
@@ -85,10 +82,11 @@ func _input(event):
 #			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 
 func _process(delta):
-	for i in CloseableWindowsArray:
-		if typeof(i) == TYPE_STRING: continue
-		if i.is_visible_in_tree() == false:
-			i.hide()
+	#that stuff was bad. It's endlessly trys to hide non-ClosingPanel.gd nodes
+	#keeping this here for a while, if some crutch would fall. Delete in time
+#	for i in CloseableWindowsArray:
+#		if i.is_visible_in_tree() == false:
+#			i.hide()
 	for i in ShakingNodes:
 		if i.time > 0:
 			i.time -= delta
@@ -106,47 +104,31 @@ func _process(delta):
 
 func CloseTopWindow():
 	var node = CloseableWindowsArray.back()
-	if typeof(node) == TYPE_STRING:
-		return
 	if node.has_method("can_hide") and !node.can_hide() :
 		return
-	node.hide()
-	CloseableWindowsArray.pop_back(); #i think this is required
+	CloseableWindowsArray.pop_back()
+	node.hide()#node can try to reg_close(), but that's no problem while reg_open() restricts doubles
 
-func LockOpenWindow():
-	CloseableWindowsArray.append('lock')
+#not in use
+#func LockOpenWindow():
+#	CloseableWindowsArray.append('lock')
+#func UnlockOpenWindow():
+#	var node = CloseableWindowsArray.back()
+#	if typeof(node) == TYPE_STRING:
+#		CloseableWindowsArray.pop_back();
 
-func UnlockOpenWindow():
-	var node = CloseableWindowsArray.back()
-	if typeof(node) == TYPE_STRING:
-		CloseableWindowsArray.pop_back();
-
-func OpenClose(node):
-	node.show()
-	OpenAnimation(node)
-	CloseableWindowsArray.append(node)
-
-func OpenUnfade(node):
-	node.show()
-	UnfadeAnimation(node)
-	CloseableWindowsArray.append(node)
-
-func Close(node):
+func reg_close(node):
+	#mind that reg_open() should restrict doubles
 	CloseableWindowsArray.erase(node)
-	CloseAnimation(node)
 
-func Open(node):
+func reg_open(node) ->bool:#true on success
 	if CloseableWindowsArray.has(node):
-		return
-	OpenAnimation(node)
+		return false
 	CloseableWindowsArray.append(node)
+	return true
 
-func OpenInstant(node):
-	node.visible = true
-	node.modulate = Color(1,1,1,1)
-	node.rect_scale = Vector2(1,1)
-	CloseableWindowsArray.append(node)
-
+func clear_closeable_windows():
+	CloseableWindowsArray.clear()
 
 func GetItemTooltip():
 	var tooltipnode

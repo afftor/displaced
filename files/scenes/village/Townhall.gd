@@ -17,6 +17,7 @@ func _ready():
 	$ButtonPanel/VBoxContainer/Upgrades.connect('pressed', self, 'upgradelist')
 #warning-ignore:return_value_discarded
 	upgrade_desc.get_node('UnlockButton').connect("pressed", self, 'unlockupgrade')
+	upgrade_desc.get_node('CloseButton').connect("pressed", upgrade_desc, 'hide')
 #warning-ignore:return_value_discarded
 #	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
 #warning-ignore:return_value_discarded
@@ -24,8 +25,6 @@ func _ready():
 	$ButtonPanel/VBoxContainer/Scenes.connect("pressed", $scenes, "open")
 	#globals.AddPanelOpenCloseAnimation($TaskList)
 	globals.AddPanelOpenCloseAnimation($UpgradeList)
-	globals.AddPanelOpenCloseAnimation(upgrade_desc)
-	
 	binded_events.clear()
 #	visible = false
 #	if resources.is_busy(): yield(resources, "done_work")
@@ -74,6 +73,8 @@ func show():
 func hide():
 	state.CurBuild = "";
 	input_handler.menu_node.visible = true
+	$UpgradeList.hide()
+	$scenes.hide()
 	.hide();
 
 #func selecttaskfromlist(task):

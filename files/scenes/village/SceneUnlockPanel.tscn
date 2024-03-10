@@ -192,9 +192,6 @@ margin_right = 1058.0
 margin_bottom = 1051.0
 theme = ExtResource( 19 )
 text = "Close"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CloseButton" parent="." instance=ExtResource( 18 )]
 margin_left = 1868.0

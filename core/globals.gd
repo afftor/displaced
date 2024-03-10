@@ -222,7 +222,7 @@ func logupdate(text):
 signal scene_changed
 
 func ChangeScene(name):
-	input_handler.CloseableWindowsArray.clear()
+	input_handler.clear_closeable_windows()
 	var loadscreen = load("res://files/scenes/LoadScreen.tscn").instance()
 	get_tree().get_root().add_child(loadscreen)
 	loadscreen.goto_scene(scenedict[name])
@@ -318,7 +318,8 @@ func play_scene(scene_id, restore = false):
 		print("scene node not open")
 		return false
 	state.CurEvent = scene_id
-	input_handler.OpenUnfade(input_handler.scene_node)
+	input_handler.scene_node.show()
+	input_handler.UnfadeAnimation(input_handler.scene_node)
 #	if scene_id != 'intro_1': #not good but no other way currently
 #		input_handler.OpenUnfade(input_handler.scene_node)
 #	else:
@@ -556,35 +557,36 @@ func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	showtooltip(text, node)
 
-func CharacterSelect(targetscript, type, function, requirements):
-	var node
-	if get_tree().get_root().has_node("CharacterSelect"):
-		node = get_tree().get_root().get_node("CharacterSelect")
-		get_tree().get_root().remove_child(node)
-		get_tree().get_root().add_child(node)
-	else:
-		node = load("res://WorkerSelect.tscn").instance()
-		node.name = 'CharacterSelect'
-		get_tree().get_root().add_child(node)
-		AddPanelOpenCloseAnimation(node)
+#not in use
+#func CharacterSelect(targetscript, type, function, requirements):
+#	var node
+#	if get_tree().get_root().has_node("CharacterSelect"):
+#		node = get_tree().get_root().get_node("CharacterSelect")
+#		get_tree().get_root().remove_child(node)
+#		get_tree().get_root().add_child(node)
+#	else:
+#		node = load("res://WorkerSelect.tscn").instance()
+#		node.name = 'CharacterSelect'
+#		get_tree().get_root().add_child(node)
+#		AddPanelOpenCloseAnimation(node)
 
-	node.show()
-	#node.set_as_toplevel(true)
-	input_handler.ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
-
-	var array = []
-#	if type == 'workers':
-#		array = state.workers.values()
-
-	for i in array:
-		if requirements == 'notask' && i.task != null:
-			continue
-		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
-		newnode.get_node("Label").text = i.name
-		newnode.get_node("Icon").texture = load(i.icon)
-		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
-		newnode.connect('pressed', targetscript, function, [i.id])
-		newnode.connect('pressed',self,'CloseSelection', [node])
+#	node.show()
+#	#node.set_as_toplevel(true)
+#	input_handler.ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
+#
+#	var array = []
+##	if type == 'workers':
+##		array = state.workers.values()
+#
+#	for i in array:
+#		if requirements == 'notask' && i.task != null:
+#			continue
+#		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+#		newnode.get_node("Label").text = i.name
+#		newnode.get_node("Icon").texture = load(i.icon)
+#		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
+#		newnode.connect('pressed', targetscript, function, [i.id])
+#		newnode.connect('pressed',self,'CloseSelection', [node])
 
 
 func CloseSelection(panel):
@@ -678,7 +680,7 @@ func LoadGame(filename):
 
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
-	input_handler.CloseableWindowsArray.clear()
+	input_handler.clear_closeable_windows()
 	CurrentScene.queue_free()
 	ChangeScene('map');
 	yield(self, "scene_changed")

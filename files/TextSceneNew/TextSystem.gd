@@ -1400,3 +1400,16 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 func get_line_nr() -> int:
 	return line_start + step
 
+#for CloseableWindowsArray processing------
+func show():
+	if !input_handler.reg_open(self):
+		print("possible error! Scene_node already opened!")
+	.show()
+
+func hide():
+	input_handler.reg_close(self)
+	.hide()
+
+func can_hide():
+	return false
+#--------------------

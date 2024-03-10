@@ -2216,3 +2216,17 @@ func hide_resist_tooltip_if_my(pos :int):
 func _gui_input(event):
 	if event.is_action_pressed('RMB'):
 		unselect_skill()
+
+#for CloseableWindowsArray processing------
+func show():
+	if !input_handler.reg_open(self):
+		print("possible error! Combat_node already opened!")
+	.show()
+
+func hide():
+	input_handler.reg_close(self)
+	.hide()
+
+func can_hide():
+	return false
+#--------------------
