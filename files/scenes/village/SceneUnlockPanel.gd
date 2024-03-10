@@ -1,4 +1,4 @@
-extends Control
+extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 onready var charlist = $Panel/heroes/HBoxContainer
 onready var scenelist = $Panel/scenes/GridContainer
@@ -15,12 +15,13 @@ const char_sprites = {
 
 export var test_mode = false
 
+func RepositionCloseButton():
+	pass#no reposition
+
 func _ready():
-	hide()
 	if input_handler.scene_node == null and test_mode:
 		input_handler.initiate_scennode(self)
 	$close.connect("pressed", self, 'hide')
-	$CloseButton.connect("pressed", self, 'hide')
 	for ch in charlist.get_children():
 		var cid = ch.name.to_lower()
 		ch.set_meta('hero', cid)
@@ -63,7 +64,6 @@ func open():
 		else:
 			ch.visible = false
 	select_hero(def_char)
-	input_handler.UnfadeAnimation(self)
 	show()
 
 

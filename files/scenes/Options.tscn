@@ -318,13 +318,10 @@ margin_top = 74.0
 margin_right = -15.0
 margin_bottom = -16.0
 theme = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Hotkeys/ScrollContainer"]
 margin_right = 562.0
-margin_bottom = 630.0
+margin_bottom = 682.0
 size_flags_horizontal = 3
 custom_constants/separation = 10
 __meta__ = {
@@ -440,7 +437,6 @@ margin_right = 543.0
 margin_bottom = 630.0
 
 [node name="default" type="Control" parent="TabContainer/Hotkeys/ScrollContainer/VBoxContainer"]
-visible = false
 margin_top = 640.0
 margin_right = 543.0
 margin_bottom = 682.0
@@ -455,9 +451,6 @@ margin_bottom = 42.0
 grow_horizontal = 0
 text = "HK_DEFAULT"
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="close_button" type="TextureButton" parent="."]
 margin_left = 249.0

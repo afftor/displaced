@@ -198,6 +198,7 @@ var TranslationDict = {
 	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
+	TILLNEXTLEVEL = "Until next level: %s",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	FRIENDPOINT = "Friendship points",
 
@@ -340,7 +341,7 @@ var TranslationDict = {
 	SKILL_PERSONAL6 = "Hero's skill 6",
 	SKILL_PERSONAL7 = "Hero's skill 7",
 	SKILL_PERSONAL8 = "Hero's skill 8",
-	REMAP_TEXT = "Please, press desired button for action %s",
+	REMAP_TEXT = "Please, press desired button for action %s, or press esc to cancel",
 	REMAP_SWITCH_TEXT = "Pressed button already maped on %s. Do you wish to switch them?",
 	REMAP_DEFAULT = "This action will irreversible neglect all your changes to hotkey mapping. Are you sure?",
 
@@ -393,6 +394,7 @@ var TranslationDict = {
 	ABANDONAREA = "Abandon Area",
 	DONOTSHOW = "Don't show any more",
 	THEREISNOESCAPE = "You can't escape this battle",
+	SURETOESCAPE = "You about to escape this battle. Are you sure?",
 	GAMEOVER = 'Game Over',
 	PRESSANYKEY = "Press any key",
 

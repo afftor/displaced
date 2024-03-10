@@ -631,6 +631,7 @@ visible = false
 margin_right = 278.0
 margin_bottom = 119.0
 rect_pivot_offset = Vector2( 139, 59.5 )
+theme = ExtResource( 32 )
 texture = ExtResource( 26 )
 
 [node name="xpbar" type="TextureProgress" parent="Rewards/HBoxContainer/Button"]
@@ -644,6 +645,7 @@ texture_progress = ExtResource( 27 )
 margin_left = -15.0
 margin_top = -24.0
 margin_right = 148.0
+mouse_filter = 1
 align = 1
 
 [node name="icon" type="TextureRect" parent="Rewards/HBoxContainer/Button"]
@@ -662,7 +664,6 @@ margin_right = 120.0
 margin_bottom = 113.333
 rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 20, 20 )
-theme = ExtResource( 32 )
 texture = ExtResource( 33 )
 expand = true
 stretch_mode = 5

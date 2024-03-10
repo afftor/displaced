@@ -3,6 +3,9 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var item_id
 var shop_menu
 
+func _enter_tree():
+	closebuttonoffset = [8,5]
+
 func _ready():
 	shop_menu = get_parent().get_parent()
 	$Button.connect("pressed", self, 's_press')

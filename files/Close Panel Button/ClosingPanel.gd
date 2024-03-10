@@ -37,7 +37,8 @@ func show():
 	if resources.is_busy(): yield(resources, "done_work")
 	if !is_visible_in_tree():
 #		input_handler.PlaySound(open_sound)
-		input_handler.Open(self)
+		if input_handler.reg_open(self):
+			input_handler.OpenAnimation(self)
 	#globals.call_deferred("EventCheck");
 
 func on_open_finished():
@@ -49,7 +50,8 @@ func hide():
 	if is_visible_in_tree() && visible_ready:
 #		input_handler.PlaySound(close_sound)
 		use_ready = false
-		input_handler.Close(self)
+		input_handler.CloseAnimation(self)
+		input_handler.reg_close(self)
 
 func on_close_finished():
 	visible_ready = false

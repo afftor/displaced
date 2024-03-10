@@ -4,6 +4,7 @@ onready var saves_container = $ScrollContainer/GridContainer
 var saves_folder :String
 var cur_save
 var no_save_state = false
+var double_click_info = {time = 0, savename = ''}
 
 onready var btn_save = $buttons/save_btn
 onready var btn_load = $buttons/load_btn
@@ -73,13 +74,26 @@ func ResetSavePanel():
 			var screenshot_tex = ImageTexture.new()
 			screenshot_tex.create_from_image(screenshot)
 			newbutton.get_node("screenshot").texture = screenshot_tex
-		newbutton.connect("pressed", self, "choose_save", [save_name])
+		newbutton.connect("pressed", self, "on_file_click", [save_name])
 
 func on_lineedit_enter(_text):
 	PressSaveGame()
 
+func on_file_click(save_name :String):
+	var click_time = Time.get_ticks_msec()
+	if (click_time - double_click_info.time < 300
+			and double_click_info.savename == save_name):
+		PressLoadGame()
+		return
+	
+	double_click_info.time = click_time
+	double_click_info.savename = save_name
+	choose_save(save_name)
+
 func choose_save(save_name :String):
 	if cur_save:
+		if cur_save.get_meta("save_name") == save_name:
+			return
 		cur_save.pressed = false
 		var editor = cur_save.get_node("LineEdit")
 		if editor.visible:

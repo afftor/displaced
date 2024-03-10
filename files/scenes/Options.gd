@@ -92,7 +92,6 @@ func remap_hotkey_start(hotkey :String):
 	set_process_input(true)
 
 func remap_hotkey(scancode :int):
-	remap_panel.hide()
 	if remaping_hotkey.empty() or !InputMap.has_action(remaping_hotkey):
 		assert(false, "Options.gd has error on remaping hotkey")
 		return
@@ -122,7 +121,9 @@ func remap_hotkey_finish(scancode :int):
 
 func _input(event):
 	if event is InputEventKey:
-		remap_hotkey(event.scancode)
+		if !event.is_action("ESC"):
+			remap_hotkey(event.scancode)
+		remap_panel.hide()
 		get_tree().set_input_as_handled()
 		set_process_input(false)
 

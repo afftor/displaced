@@ -375,3 +375,8 @@ func form_armor_lvl_desc(lvl :int) -> String:
 		armorbonus[lvl],
 		bonus_list
 	]
+
+func try_rest():
+	if defeated or position != null:
+		return
+	heal(get_stat('hpmax') * 0.25)

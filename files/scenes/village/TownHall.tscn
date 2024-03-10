@@ -249,9 +249,6 @@ margin_left = 650.0
 margin_right = 1299.0
 margin_bottom = 788.0
 texture = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="UpgradeList/UpgradeDescript"]
 margin_left = 205.0
@@ -333,6 +330,12 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = ExtResource( 22 )
 text = "Gold"
+
+[node name="CloseButton" parent="UpgradeList/UpgradeDescript" instance=ExtResource( 23 )]
+margin_left = 586.0
+margin_top = 6.0
+margin_right = 635.0
+margin_bottom = 55.0
 
 [node name="Questlog" parent="." instance=ExtResource( 15 )]
 visible = false

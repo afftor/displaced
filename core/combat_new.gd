@@ -287,7 +287,7 @@ func try_to_run():
 	if input_handler.explore_node != null and !input_handler.explore_node.can_escape():
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'run', tr('THEREISNOESCAPE'), tr('GAMEOVER')])
 		return
-	run()
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'run', tr('SURETOESCAPE')])
 
 func run():
 	FinishCombat(false)
@@ -390,6 +390,8 @@ func newturn():
 		i.rebuildbuffs()
 		if i.displaynode.visible: i.displaynode.process_enable()
 		i.tick_cooldowns()
+	for ch in state.characters:
+		state.heroes[ch].try_rest()
 	turns +=1
 #	gui_node.RebuildReserve()
 	CombatAnimations.check_start()
@@ -1090,25 +1092,30 @@ func victory():
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)
 #			$Rewards/HBoxContainer/second.add_child(newbutton)
 		newbutton.get_node('icon').texture = i.portrait_circle()
-		newbutton.get_node("xpbar").max_value = i.get_exp_cap()
-		newbutton.get_node("xpbar").value = i.baseexp
+		var xpbar_node = newbutton.get_node("xpbar")
+		var xplabel_node = newbutton.get_node("xpbar/Label")
+		xpbar_node.max_value = i.get_exp_cap()
+		xpbar_node.value = i.baseexp
 		var level = i.level
 		i.baseexp += ceil(rewardsdict.xp)
+		var new_exp_cap = i.get_exp_cap()
 		var subtween = input_handler.GetTweenNode(newbutton)
 		if i.level > level:
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, newbutton.get_node("xpbar").max_value, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(i.level) + "!")
+			subtween.interpolate_property(xpbar_node, 'value', xpbar_node.value, xpbar_node.max_value, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_property(xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_callback(input_handler, 1, 'DelayedText', xplabel_node, tr("LEVELUP")+ ': ' + str(i.level) + "!")
 			if leveled_up_chars.empty():#honestly, should refactor that shit, so levelup sound would play once, outside of subtweens
 				subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
 			leveled_up_chars.push_back(i)
-		elif i.level == level && i.baseexp >= i.get_exp_cap() :
-			newbutton.get_node("xpbar").value = 100
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
-			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))
+		elif i.level == level && i.baseexp >= new_exp_cap:
+			xpbar_node.value = 100
+			subtween.interpolate_property(xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			subtween.interpolate_callback(input_handler, 0, 'DelayedText', xplabel_node, tr("MAXLEVEL"))
 		else:
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*i.xpmod)))
+			subtween.interpolate_property(xpbar_node, 'value', xpbar_node.value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+			subtween.interpolate_callback(input_handler, 2, 'DelayedText', xplabel_node, '+' + str(ceil(rewardsdict.xp*i.xpmod)))
+		xpbar_node.hint_tooltip = tr("TILLNEXTLEVEL") % (max(new_exp_cap - i.baseexp, 0))
+		xplabel_node.hint_tooltip = xpbar_node.hint_tooltip
 		var friend_node = newbutton.get_node("friend")
 		if i.friend_points_new == 0 or ch == 'arron':
 			friend_node.hide()
@@ -2209,3 +2216,17 @@ func hide_resist_tooltip_if_my(pos :int):
 func _gui_input(event):
 	if event.is_action_pressed('RMB'):
 		unselect_skill()
+
+#for CloseableWindowsArray processing------
+func show():
+	if !input_handler.reg_open(self):
+		print("possible error! Combat_node already opened!")
+	.show()
+
+func hide():
+	input_handler.reg_close(self)
+	.hide()
+
+func can_hide():
+	return false
+#--------------------
