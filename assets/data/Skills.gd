@@ -1017,7 +1017,7 @@ var skilllist = {
 		cooldown = 5,
 		chance = 100,
 		evade = 0,
-		casteffects = ['e_t_nat_bless_caster', 'e_t_nat_bless_others'],
+		casteffects = ['e_t_nat_bless_common'],
 		hidden = false,
 		sfx = [{code = 'sfx_nat_bless', target = 'target', period = 'predamage'},
 			{code = 'anim_attack', target = 'caster', period = 'cast'},

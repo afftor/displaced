@@ -991,26 +991,37 @@ var effect_table = {
 				t_name = 'icon_arrow_shower_debuff'
 			}],
 	},
-	e_t_nat_bless_caster = {
+	#Here is TR_TURN_F-type implementation for e_t_nat_bless. Idea is to secure an ability for each
+	#char to use bless for exactly 2 turns, witch is not guaranteed with TR_TURN_S-type
+#	e_t_nat_bless_caster = {
+#		type = 'trigger',
+#		debug_name = 'starter_nature_bless_caster',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		req_skill = true,
+#		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'eq'}}],
+#		val = 3,
+#		args = [{obj = 'template', param = 'val'}],
+#		buffs = [],
+#		sub_effects = ['e_s_nat_bless']
+#	},
+#	e_t_nat_bless_others = {
+#		type = 'trigger',
+#		debug_name = 'starter_nature_bless_others',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		req_skill = true,
+#		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'neq'}}],
+#		val = 2,
+#		args = [{obj = 'template', param = 'val'}],
+#		buffs = [],
+#		sub_effects = ['e_s_nat_bless']
+#	},
+	#TR_TURN_S-type implementation
+	e_t_nat_bless_common = {
 		type = 'trigger',
-		debug_name = 'starter_nature_bless_caster',
+		debug_name = 'starter_nature_bless',
 		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
 		req_skill = true,
-		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'eq'}}],
-		val = 3,
-		args = [{obj = 'template', param = 'val'}],
-		buffs = [],
-		sub_effects = ['e_s_nat_bless']
-	},
-	e_t_nat_bless_others = {
-		type = 'trigger',
-		debug_name = 'starter_nature_bless_others',
-		trigger = [variables.TR_POSTDAMAGE],
-		req_skill = true,
-		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'neq'}}],
-		val = 2,
-		args = [{obj = 'template', param = 'val'}],
-		buffs = [],
 		sub_effects = ['e_s_nat_bless']
 	},
 	e_s_nat_bless = {
@@ -1018,9 +1029,9 @@ var effect_table = {
 		name = 'nature_bless',
 		target = 'target',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = {obj = 'parent_args', param = 0},
+		duration = 2,#{obj = 'parent_args', param = 0},#for TR_TURN_F-type implementation
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
