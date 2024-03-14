@@ -210,6 +210,9 @@ func on_start_press():
 
 
 func start_area():
+	var areadata = Explorationdata.areas[area]
+	if areadata.has("no_escape") and areadata.no_escape:
+		globals.auto_save()
 	input_handler.PlaySound(sounds["start"])
 	state.start_area(area, scalecheck.pressed)
 	open_mission()
@@ -299,6 +302,8 @@ func advance_area():
 #	$AdvConfirm.visible = false
 	var areadata = Explorationdata.areas[area]
 	var areastate = state.areaprogress[area]
+	if !areadata.has("no_escape") or !areadata.no_escape:
+		globals.auto_save()
 	#2add generic scene check
 	assert(areastate.stage <= areadata.stages, "advance_area() made on unexistant stage")
 	if areadata.enemies.has(areastate.stage):

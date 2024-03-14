@@ -454,6 +454,7 @@ var TranslationDict = {
 	#notes
 	NOSAVENAMENOTE = "Please, type a name for save file!",
 	SAVENAMEEXISTSNOTE = "Such save file exists already! Please, type a unique name.",
+	SAVENAMERESTRICTNOTE = "This name is in use! Please, type another.",
 
 	#unlocks
 	UNLOCKMATERIAL = "New material unlocked!\nYou can now trade it on the market.",

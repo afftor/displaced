@@ -3,7 +3,7 @@ extends Node
 
 var event_triggers = {#reworked to same syntax as seqs
 	intro_1 = [
-		{type = 'mission', value = 'road_to_village', auto_advance = true},
+		{type = 'mission', value = 'road_to_village', auto_advance = true, no_autosave = true},
 	],
 	intro_2 = [
 		{type = 'scene', value = 'intro_3'},
@@ -1564,3 +1564,27 @@ func preload_resources():
 			elif rec.image != '':
 				print("bg/%s" % rec.image)
 				resources.preload_res("bg/%s" % rec.image)
+
+#"needs autosave" means action starts mission with no "no_autosave" flag
+func is_action_needs_autosave(action :Dictionary) ->bool:
+	if action.type == 'mission' and (!action.has("no_autosave") or !action.no_autosave):
+		return true
+	if action.type == 'scene' and is_event_needs_autosave(action.value):
+		return true
+	return false
+
+func is_event_needs_autosave(event_id :String) -> bool:
+	if !event_triggers.has(event_id):
+		return false
+	for action in event_triggers[event_id]:
+		if is_action_needs_autosave(action):
+			return true
+	return false
+
+func is_seq_needs_autosave(seq_id :String) -> bool:
+	assert(scene_sequences.has(seq_id), "no such scene in scene_sequences (%s)" % seq_id)
+	for action in scene_sequences[seq_id].actions:
+		if is_action_needs_autosave(action):
+			return true
+	return false
+

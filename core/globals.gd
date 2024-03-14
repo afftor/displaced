@@ -239,6 +239,8 @@ func StartGame():
 func run_seq(id, force_replay = false):
 	var replay = (force_replay or state.OldSeqs.has(id))
 	if !replay and !state.check_sequence(id): return
+	if Explorationdata.is_seq_needs_autosave(id):
+		globals.auto_save()
 	var output = run_actions_list(Explorationdata.scene_sequences[id].actions, replay)
 	state.store_sequence(id)
 	return output
@@ -304,7 +306,7 @@ func change_screen(screen, loc :String = ''):
 
 
 func force_start_mission(mission_id):
-	var missiondata = Explorationdata.areas[mission_id]
+#	var missiondata = Explorationdata.areas[mission_id]
 	if state.stashedarea != null:
 		print("error - script missions interrupting")
 	if state.activearea != null:
@@ -639,16 +641,20 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		return array
 
 #seems not in use
-func QuickSave():
-	make_save_screenshot()
-	SaveGame('QuickSave')
-	free_save_screenshot()
+#func QuickSave():
+#	make_save_screenshot()
+#	SaveGame('QuickSave')
+#	free_save_screenshot()
 
 func make_save_screenshot():
 	save_screenshot = get_viewport().get_texture().get_data()
 
 func free_save_screenshot():
 	save_screenshot = null
+
+func auto_save():
+	free_save_screenshot()#or add screenshotless param to SaveGame()
+	SaveGame(variables.autosave_name)
 
 func SaveGame(name):
 #	if state.CurEvent != '':
