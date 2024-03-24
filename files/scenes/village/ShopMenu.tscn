@@ -1,19 +1,18 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/pt_36.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=3]
 [ext_resource path="res://assets/themes/scroll_shop.tres" type="Theme" id=4]
 [ext_resource path="res://assets/images/buttons/shop/button_shopitem_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/buttons/shop/button_shopitem_pressed.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/buttons/shop/button_shopitem.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/shop/panel_shop_big.png" type="Texture" id=8]
-[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=9]
-[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=10]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/fonts/mainfont_bold_30.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/fonts/mainfont_20.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/fonts/mainfont_36.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=12]
 [ext_resource path="res://assets/images/gui/shop/panel_shop_1.png" type="Texture" id=13]
-[ext_resource path="res://assets/fonts/pt_36_boldshad.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/images/gui/shop/panel_shop_2.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/buttons/shop/arrow_tiny_pressed.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/buttons/shop/arrow_tiny.png" type="Texture" id=17]
@@ -69,13 +68,14 @@ texture = ExtResource( 8 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Panel"]
-margin_left = 529.0
-margin_top = 18.0
-margin_right = 735.0
+margin_left = 519.0
+margin_top = 21.0
+margin_right = 746.0
 margin_bottom = 65.0
+grow_horizontal = 2
 custom_colors/font_color = Color( 0.996078, 0.996078, 0.996078, 1 )
-custom_fonts/font = ExtResource( 14 )
-text = "Shop"
+custom_fonts/font = ExtResource( 9 )
+text = "MARKET_TITLE"
 align = 1
 valign = 1
 
@@ -121,28 +121,28 @@ margin_right = 490.0
 margin_bottom = 46.0
 
 [node name="name" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_right = 261.0
-margin_bottom = 32.0
+margin_top = 4.0
+margin_right = 258.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
 text = "ItemName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 265.0
-margin_right = 297.0
+margin_left = 262.0
+margin_right = 294.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 0 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="cost" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 301.0
+margin_left = 298.0
+margin_top = 4.0
 margin_right = 340.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 9 )
+margin_bottom = 28.0
 text = "100"
 
 [node name="desc" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer/Button"]
@@ -158,8 +158,8 @@ text = "Short description
 
 [node name="amount" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Button"]
 margin_left = 15.0
-margin_top = 135.0
-margin_right = 150.0
+margin_top = 142.0
+margin_right = 154.0
 margin_bottom = 162.0
 custom_fonts/font = ExtResource( 10 )
 text = "in posession: 0"
@@ -169,9 +169,6 @@ margin_left = 515.0
 margin_top = 807.0
 margin_right = 745.0
 margin_bottom = 857.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer"]
 margin_right = 50.0
@@ -182,10 +179,10 @@ expand = true
 
 [node name="money" type="Label" parent="Panel/HBoxContainer"]
 margin_left = 54.0
-margin_top = 1.0
-margin_right = 154.0
-margin_bottom = 48.0
-custom_fonts/font = ExtResource( 2 )
+margin_top = 7.0
+margin_right = 176.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 11 )
 text = "90000"
 
 [node name="modeselect" type="TextureRect" parent="Panel"]
@@ -206,8 +203,8 @@ margin_left = 27.0
 margin_top = 36.0
 margin_right = 449.0
 margin_bottom = 78.0
-custom_fonts/font = ExtResource( 11 )
-text = "You want to:"
+custom_fonts/font = ExtResource( 2 )
+text = "MODE_TEXT"
 align = 1
 valign = 1
 
@@ -217,7 +214,7 @@ margin_top = 93.0
 margin_right = 214.0
 margin_bottom = 153.0
 size_flags_horizontal = 3
-text = "Sell"
+text = "SELL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -228,7 +225,7 @@ margin_top = 93.0
 margin_right = 427.0
 margin_bottom = 153.0
 size_flags_horizontal = 3
-text = "Buy"
+text = "BUY"
 
 [node name="SelectAmountPanel" type="TextureRect" parent="Panel"]
 visible = false
@@ -259,28 +256,28 @@ margin_right = 662.0
 margin_bottom = 92.0
 
 [node name="name" type="Label" parent="Panel/SelectAmountPanel/HBoxContainer"]
-margin_right = 387.0
-margin_bottom = 32.0
+margin_top = 4.0
+margin_right = 384.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
 text = "ItemName"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="Panel/SelectAmountPanel/HBoxContainer"]
-margin_left = 391.0
-margin_right = 423.0
+margin_left = 388.0
+margin_right = 420.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 0 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="cost" type="Label" parent="Panel/SelectAmountPanel/HBoxContainer"]
-margin_left = 427.0
+margin_left = 424.0
+margin_top = 4.0
 margin_right = 466.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 9 )
+margin_bottom = 28.0
 text = "100"
 
 [node name="desc" type="RichTextLabel" parent="Panel/SelectAmountPanel"]
@@ -293,26 +290,23 @@ size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 10 )
 text = "Short description
 45646"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="amount1" type="Label" parent="Panel/SelectAmountPanel"]
 margin_left = 196.0
-margin_top = 158.0
+margin_top = 164.0
 margin_right = 665.0
 margin_bottom = 185.0
 custom_fonts/font = ExtResource( 10 )
 text = "in posession: 0"
 
 [node name="LineEdit" type="LineEdit" parent="Panel/SelectAmountPanel"]
-margin_left = 78.1683
-margin_top = 204.0
-margin_right = 150.168
+margin_left = 78.0
+margin_top = 210.0
+margin_right = 148.0
 margin_bottom = 236.0
-custom_fonts/font = ExtResource( 9 )
 custom_styles/normal = SubResource( 1 )
-text = "10000"
+text = "100"
+align = 1
 max_length = 5
 caret_blink = true
 caret_blink_speed = 0.5
@@ -353,9 +347,9 @@ expand = true
 
 [node name="money" type="Label" parent="Panel/SelectAmountPanel/HBoxContainer2"]
 margin_left = 36.0
-margin_right = 101.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 9 )
+margin_top = 4.0
+margin_right = 119.0
+margin_bottom = 28.0
 text = "90000"
 
 [node name="Button" type="Button" parent="Panel/SelectAmountPanel"]
@@ -365,7 +359,4 @@ margin_right = 704.0
 margin_bottom = 249.0
 size_flags_horizontal = 3
 theme = ExtResource( 12 )
-text = "Buy"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "BUY"

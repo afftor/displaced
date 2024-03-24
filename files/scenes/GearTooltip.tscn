@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://files/scenes/GearTooltip.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/forge/divider_forge_tooltip.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/gui/charpanel/panel_skilltooltip.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=4]
 
 [node name="Tooltip" type="Control"]
 margin_right = 400.0
@@ -18,26 +17,25 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 margin_left = 10.0
-margin_top = 5.0
+margin_top = 8.0
 margin_right = -10.0
-margin_bottom = 76.0
+margin_bottom = 79.0
 mouse_filter = 2
 
 [node name="level" type="Label" parent="VBoxContainer"]
 margin_right = 380.0
-margin_bottom = 40.0
+margin_bottom = 32.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "level 1"
 align = 1
 valign = 1
 
 [node name="desc" type="Label" parent="VBoxContainer"]
-margin_top = 44.0
+margin_top = 36.0
 margin_right = 380.0
-margin_bottom = 76.0
+margin_bottom = 60.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 4 )
 text = "description"
 autowrap = true
 
@@ -63,22 +61,21 @@ texture = ExtResource( 2 )
 
 [node name="next_level" type="Label" parent="VBoxContainer"]
 visible = false
-margin_top = 124.0
+margin_top = 64.0
 margin_right = 380.0
-margin_bottom = 164.0
+margin_bottom = 96.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "next level 2"
 align = 1
 valign = 1
 
 [node name="next_desc" type="Label" parent="VBoxContainer"]
 visible = false
-margin_top = 168.0
+margin_top = 100.0
 margin_right = 380.0
-margin_bottom = 200.0
+margin_bottom = 124.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 4 )
 text = "description"
 autowrap = true
 

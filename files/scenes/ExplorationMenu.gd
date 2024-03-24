@@ -155,10 +155,11 @@ func select_area(area_code):
 
 func reset_level():
 	if area == null : return
+	var level_str = tr("LEVEL") + " %d"
 	if scalecheck.pressed:
-		$ExplorationSelect/about/level.text = "Level %d" % state.heroes['arron'].level
+		$ExplorationSelect/about/level.text = level_str % state.heroes['arron'].level
 	else:
-		$ExplorationSelect/about/level.text = "Level %d" % Explorationdata.areas[area].level
+		$ExplorationSelect/about/level.text = level_str % Explorationdata.areas[area].level
 
 
 func reset_progress():
@@ -254,12 +255,12 @@ func build_party():
 		if hero.position != null:
 			var node = partylist.get_child(hero.position - 1)
 			node.get_node('icon').texture = hero.portrait()
-			node.get_node('level').text = "Level %d" % hero.level
+			node.get_node('level').text = tr("LEVEL") + " %d" % hero.level
 			node.get_node('name').text = hero.name
 			node.dragdata = ch
 		var node = input_handler.DuplicateContainerTemplate(reservelist, 'Button')
 		node.get_node('icon').texture = hero.portrait()
-		node.get_node('level').text = "Level %d" % hero.level
+		node.get_node('level').text = tr("LVL") + " %d" % hero.level
 		node.get_node('name').text = hero.name
 		node.dragdata = ch
 		node.parent_node = self

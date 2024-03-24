@@ -1,10 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/themes/statlist.tres" type="Theme" id=1]
-[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/fonts/pt_36.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/mainfont_bold_30.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/mainfont_30_tight.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/mainfont_36.tres" type="DynamicFont" id=5]
 [ext_resource path="res://files/scenes/CharPanel/CharacterPanel.gd" type="Script" id=6]
 [ext_resource path="res://files/scenes/charinfo_portrait.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/iconsskills/arron_1.png" type="Texture" id=8]
@@ -29,7 +29,6 @@
 [ext_resource path="res://assets/images/iconsskills/shield.png" type="Texture" id=28]
 [ext_resource path="res://files/scenes/CharPanel/SkillPanel.tscn" type="PackedScene" id=29]
 [ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=31]
-[ext_resource path="res://assets/fonts/pt_30_boldshad.tres" type="DynamicFont" id=32]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=33]
 
 [node name="Control" type="Control"]
@@ -54,19 +53,17 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel"]
 margin_left = 650.0
-margin_top = 13.0
+margin_top = 17.0
 margin_right = 952.0
 margin_bottom = 67.0
+grow_horizontal = 2
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 3 )
-text = "Info"
+custom_fonts/font = ExtResource( 5 )
+text = "CHARPANEL"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 anchor_right = 1.0
@@ -126,8 +123,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/panel"]
 anchor_right = 1.0
+margin_top = 8.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
 text = "Arron"
 align = 1
 
@@ -135,9 +132,8 @@ align = 1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -37.0
+margin_top = -30.0
 margin_bottom = -5.0
-custom_fonts/font = ExtResource( 2 )
 text = "Arron"
 align = 1
 __meta__ = {
@@ -152,16 +148,6 @@ margin_bottom = 987.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="name" type="Label" parent="Panel/StatsPanel"]
-anchor_right = 1.0
-margin_top = 6.0
-margin_right = -2.0
-margin_bottom = 46.0
-custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "Name"
-align = 1
 
 [node name="portrait" type="TextureRect" parent="Panel/StatsPanel"]
 margin_left = 89.0
@@ -183,6 +169,16 @@ margin_right = 8.0
 margin_bottom = 11.0
 texture = ExtResource( 24 )
 
+[node name="name" type="Label" parent="Panel/StatsPanel"]
+anchor_right = 1.0
+margin_top = 14.0
+margin_right = -2.0
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Name"
+align = 1
+
 [node name="exp" type="TextureProgress" parent="Panel/StatsPanel"]
 margin_left = 88.0
 margin_top = 316.0
@@ -195,11 +191,11 @@ texture_progress = ExtResource( 25 )
 [node name="Label" type="Label" parent="Panel/StatsPanel/exp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 4.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-custom_fonts/font = ExtResource( 4 )
 text = "50/100"
 align = 1
 valign = 1
@@ -216,11 +212,11 @@ texture_progress = ExtResource( 12 )
 [node name="Label" type="Label" parent="Panel/StatsPanel/hp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 4.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-custom_fonts/font = ExtResource( 4 )
 text = "50/100"
 align = 1
 valign = 1
@@ -234,27 +230,27 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="stat" type="Label" parent="Panel/StatsPanel/dmg"]
-margin_left = 45.0
-margin_right = 75.0
-margin_bottom = 32.0
+margin_left = 36.0
+margin_top = 4.0
+margin_right = 70.0
+margin_bottom = 28.0
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
-custom_fonts/font = ExtResource( 2 )
 text = "BD"
 align = 1
 
 [node name="value" type="Label" parent="Panel/StatsPanel/dmg"]
-margin_left = 79.0
-margin_right = 131.0
-margin_bottom = 32.0
+margin_left = 74.0
+margin_top = 4.0
+margin_right = 141.0
+margin_bottom = 28.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
-custom_fonts/font = ExtResource( 2 )
 text = "4000"
 align = 1
 
 [node name="icon" type="TextureRect" parent="Panel/StatsPanel/dmg"]
-margin_left = 135.0
-margin_right = 167.0
+margin_left = 145.0
+margin_right = 177.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 19 )
@@ -275,7 +271,6 @@ __meta__ = {
 anchor_right = 1.0
 margin_bottom = 32.0
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
-custom_fonts/font = ExtResource( 2 )
 text = "Resistances"
 align = 1
 
@@ -311,7 +306,6 @@ margin_right = 104.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 50, 0 )
 custom_colors/font_color = Color( 0.0823529, 0.105882, 0.113725, 1 )
-custom_fonts/font = ExtResource( 2 )
 text = ": 100"
 
 [node name="SkillsButton" type="Button" parent="Panel"]
@@ -324,11 +318,7 @@ custom_colors/font_color_disabled = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_hover = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_color_pressed = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Details"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "DETAILS"
 
 [node name="weapon1" type="TextureButton" parent="Panel"]
 margin_left = 510.0
@@ -348,9 +338,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -110.0
-margin_top = -110.0
+margin_top = -119.0
 margin_right = 110.0
-margin_bottom = 110.0
+margin_bottom = 101.0
 rect_min_size = Vector2( 220, 220 )
 texture = ExtResource( 13 )
 expand = true
@@ -361,9 +351,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel/weapon1"]
 anchor_right = 1.0
-margin_top = 5.0
+margin_top = 13.0
 margin_bottom = 45.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -374,12 +364,12 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.414
-margin_top = -50.0
-margin_right = 1.414
+margin_left = 10.0
+margin_top = -42.0
+margin_right = -13.0
 margin_bottom = -10.0
 grow_vertical = 0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Broad Sword"
 align = 1
 autowrap = true
@@ -405,9 +395,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -110.0
-margin_top = -110.0
+margin_top = -119.0
 margin_right = 110.0
-margin_bottom = 110.0
+margin_bottom = 101.0
 rect_min_size = Vector2( 220, 220 )
 texture = ExtResource( 13 )
 expand = true
@@ -418,9 +408,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel/weapon2"]
 anchor_right = 1.0
-margin_top = 5.0
+margin_top = 13.0
 margin_bottom = 45.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -431,12 +421,12 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.414
-margin_top = -50.0
-margin_right = 1.414
+margin_left = 10.0
+margin_top = -42.0
+margin_right = -13.0
 margin_bottom = -10.0
 grow_vertical = 0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Broad Sword"
 align = 1
 autowrap = true
@@ -461,9 +451,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -110.0
-margin_top = -110.0
+margin_top = -119.0
 margin_right = 110.0
-margin_bottom = 110.0
+margin_bottom = 101.0
 rect_min_size = Vector2( 200, 210 )
 texture = ExtResource( 23 )
 expand = true
@@ -474,10 +464,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel/armor"]
 anchor_right = 1.0
-margin_top = 5.0
+margin_top = 13.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -488,13 +478,13 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.414
-margin_top = -50.0
-margin_right = 1.414
+margin_left = 10.0
+margin_top = -42.0
+margin_right = -13.0
 margin_bottom = -10.0
 grow_vertical = 0
 custom_colors/font_color = Color( 0.290196, 1, 0.992157, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Broad Sword"
 align = 1
 autowrap = true
@@ -504,11 +494,11 @@ __meta__ = {
 
 [node name="sp_label" type="Label" parent="Panel"]
 margin_left = 448.0
-margin_top = 859.0
+margin_top = 872.0
 margin_right = 598.0
 margin_bottom = 985.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 32 )
+custom_fonts/font = ExtResource( 3 )
 text = "1
 2
 3"
@@ -520,9 +510,6 @@ margin_top = 869.0
 margin_right = 1554.0
 margin_bottom = 977.0
 custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="TextureButton" parent="Panel/HBoxContainer"]
 visible = false
@@ -543,5 +530,15 @@ expand = true
 
 [node name="SkillPanel" parent="." instance=ExtResource( 29 )]
 visible = false
+
+[node name="StatsPanel" parent="SkillPanel" index="0"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="switch_right" parent="SkillPanel" index="4"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="SkillPanel"]

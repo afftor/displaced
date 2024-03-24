@@ -9,20 +9,20 @@
 [ext_resource path="res://assets/images/gui/forge/panel_forge_portrait_pressed.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_portrait_hover.png" type="Texture" id=9]
-[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=10]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_big.png" type="Texture" id=12]
-[ext_resource path="res://assets/fonts/pt_36_boldshad.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_resources.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_gear.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_gear_disabled.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_gear_pressed.png" type="Texture" id=17]
-[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=18]
 [ext_resource path="res://files/scenes/GearTooltip.tscn" type="PackedScene" id=19]
 [ext_resource path="res://files/scenes/village/forge_portrait.gd" type="Script" id=20]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=21]
 [ext_resource path="res://files/scenes/UnlockPanel.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/images/iconsgear/ember_weapon2_4.png" type="Texture" id=23]
+[ext_resource path="res://assets/fonts/mainfont_bold_30.tres" type="DynamicFont" id=24]
+[ext_resource path="res://assets/fonts/mainfont_20.tres" type="DynamicFont" id=25]
+[ext_resource path="res://assets/fonts/mainfont_30_tight.tres" type="DynamicFont" id=26]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -40,12 +40,12 @@ texture = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="Panel"]
 margin_left = 452.0
-margin_top = 16.0
+margin_top = 26.0
 margin_right = 748.0
 margin_bottom = 67.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 24 )
 text = "BLACKSMITH"
 align = 1
 valign = 1
@@ -107,8 +107,7 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -32.0
-custom_fonts/font = ExtResource( 10 )
+margin_top = -24.0
 text = "Arron"
 align = 1
 __meta__ = {
@@ -154,9 +153,9 @@ text = "CRAFT"
 
 [node name="Label" type="Label" parent="Panel/weapon1"]
 anchor_right = 1.0
-margin_top = 11.0
+margin_top = 19.0
 margin_bottom = 51.0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -167,17 +166,15 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -237.0
+margin_left = 16.0
+margin_top = -225.0
+margin_right = -16.0
 margin_bottom = -197.0
 grow_vertical = 0
-custom_constants/line_spacing = -12
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 26 )
 text = "Broad Sword"
 align = 1
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="UpdateText" type="NinePatchRect" parent="Panel/weapon1"]
 visible = false
@@ -200,11 +197,11 @@ patch_margin_bottom = 30
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 5.0
+margin_top = 25.0
 margin_right = -5.0
 margin_bottom = -5.0
 grow_vertical = 0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 text = "UPGRADEBLACKSMITHREQUEST"
 align = 1
 valign = 2
@@ -252,12 +249,12 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="Panel/weapon1/VBoxContainer/button"]
 margin_left = 5.0
-margin_top = 68.0
+margin_top = 75.0
 margin_right = 90.0
 margin_bottom = 95.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 18 )
+custom_fonts/font = ExtResource( 25 )
 text = "50/100"
 align = 1
 
@@ -305,9 +302,9 @@ text = "CRAFT"
 
 [node name="Label" type="Label" parent="Panel/weapon2"]
 anchor_right = 1.0
-margin_top = 11.0
+margin_top = 19.0
 margin_bottom = 51.0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -318,11 +315,12 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -237.0
+margin_left = 16.0
+margin_top = -225.0
+margin_right = -16.0
 margin_bottom = -197.0
 grow_vertical = 0
-custom_constants/line_spacing = -12
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 26 )
 text = "Gauntlets of Endurance"
 align = 1
 autowrap = true
@@ -348,11 +346,11 @@ patch_margin_bottom = 30
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 5.0
+margin_top = 25.0
 margin_right = -5.0
 margin_bottom = -5.0
 grow_vertical = 0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 text = "UPGRADEBLACKSMITHREQUEST"
 align = 1
 valign = 2
@@ -406,12 +404,12 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel/weapon2/VBoxContainer/button"]
 margin_left = 5.0
-margin_top = 68.0
+margin_top = 75.0
 margin_right = 90.0
 margin_bottom = 95.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 18 )
+custom_fonts/font = ExtResource( 25 )
 text = "50/100"
 align = 1
 __meta__ = {
@@ -468,9 +466,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel/armor"]
 anchor_right = 1.0
-margin_top = 11.0
+margin_top = 19.0
 margin_bottom = 51.0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 text = "Level 1"
 align = 1
 __meta__ = {
@@ -481,11 +479,12 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -237.0
+margin_left = 16.0
+margin_top = -225.0
+margin_right = -16.0
 margin_bottom = -197.0
 grow_vertical = 0
-custom_constants/line_spacing = -12
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 26 )
 text = "Broad Sword"
 align = 1
 autowrap = true
@@ -514,11 +513,11 @@ patch_margin_bottom = 30
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 5.0
+margin_top = 22.0
 margin_right = -5.0
 margin_bottom = -5.0
 grow_vertical = 0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 text = "UPGRADEBLACKSMITHREQUEST"
 align = 1
 valign = 2
@@ -572,12 +571,12 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Panel/armor/VBoxContainer/button"]
 margin_left = 5.0
-margin_top = 68.0
+margin_top = 75.0
 margin_right = 90.0
 margin_bottom = 95.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 18 )
+custom_fonts/font = ExtResource( 25 )
 text = "50/100"
 align = 1
 __meta__ = {
@@ -601,13 +600,13 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="Panel/goldicon"]
 margin_left = -65.0
-margin_top = 13.0
+margin_top = 25.0
 margin_right = 6.0
 margin_bottom = 60.0
 grow_horizontal = 0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 24 )
 text = "Gold"
 align = 2
 

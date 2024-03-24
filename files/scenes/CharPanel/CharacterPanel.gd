@@ -1,7 +1,7 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var character
-var skills_character_name
+var skills_character_id
 
 onready var charlist = $Panel/ScrollContainer/HBoxContainer
 #onready var skill_list = $Panel/SkillContainer/GridContainer
@@ -22,7 +22,7 @@ func _ready():
 		var ch = input_handler.DuplicateContainerTemplate(charlist, 'panel')
 		ch.name = cid
 		ch.get_node('Label').text = hero.name
-		ch.get_node('Label2').text = "Level %d" % hero.level
+		ch.get_node('Label2').text = tr("LEVEL") + " %d" % hero.level
 		ch.get_node('TextureRect').texture = hero.portrait()
 		ch.connect('pressed', self, 'select_hero', [cid])
 	
@@ -93,7 +93,7 @@ func select_hero(cid, rebuild = false):
 		ch.rebuild()
 	if cid == character.id and !rebuild: return
 	character = state.heroes[cid]
-	skills_character_name = character.name.to_lower()
+	skills_character_id = character.id
 	for slot in ['weapon1', 'weapon2', 'armor']:
 		build_slot(slot)
 	build_stats()
@@ -106,7 +106,7 @@ func build_slot(slot):
 	var panel = $Panel.get_node(slot)
 	var data = character.get_item_data(slot)
 	if data.level > 0:
-		panel.get_node("Label").text = "Level %d" % data.level
+		panel.get_node("Label").text = tr("LEVEL") + " %d" % data.level
 	else:
 		panel.get_node("Label").text = "" #stub
 	if slot == 'weapon2' and data.level < 1:
@@ -141,7 +141,7 @@ func open_skills():
 	if $SkillPanel.is_visible_in_tree() == true:
 		$SkillPanel.hide()
 	else:
-		skills_character_name = character.name.to_lower()
+		skills_character_id = character.id
 		$SkillPanel.open(character)
 
 
@@ -185,9 +185,9 @@ func build_stats():
 	stats_list.get_node("dmg/value").text = str(character.get_stat('damage'))
 	stats_list.get_node("dmg/value").hint_tooltip = tr("BASEDAMAGE")
 	stats_list.get_node("dmg/icon").texture = load("res://assets/images/iconsskills/source_%s.png" % character.get_stat('base_dmg_type'))
-	stats_list.get_node("dmg/icon").hint_tooltip = tr("BASEDAMAGETYPE") + ": " + tr(character.get_stat('base_dmg_type'))
+	var resist_str_id = variables.get_resist_data(character.get_stat('base_dmg_type')).name
+	stats_list.get_node("dmg/icon").hint_tooltip = "%s: %s" % [tr("BASEDAMAGETYPE"), tr(resist_str_id)]
 	build_skills()
-	
 
 
 func build_res():
@@ -227,7 +227,7 @@ func switch_skills_right():
 
 
 func get_new_skills_character(switch_val : int):
-	var current_char_node = get_node('Panel/ScrollContainer/HBoxContainer/' + skills_character_name)
+	var current_char_node = charlist.get_node(skills_character_id)
 	var current_characters = []
 	var current_character_ind : int
 	for ch in charlist.get_children():
@@ -237,5 +237,5 @@ func get_new_skills_character(switch_val : int):
 	var new_character_ind = (current_character_ind + switch_val) % current_characters.size()
 	var new_character_node = current_characters[new_character_ind]
 	var new_character = state.heroes[new_character_node.name]
-	skills_character_name = new_character_node.name
+	skills_character_id = new_character_node.name
 	return new_character

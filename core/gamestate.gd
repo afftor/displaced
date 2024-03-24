@@ -661,11 +661,11 @@ func add_materials(res, value, log_f = true):
 	tmp = materials[res] - tmp
 	if tmp > 0:
 		var text = "Gained "
-		text += str(tmp) + ' {color=yellow|' + Items.Items[res].name + '}'
+		text += str(tmp) + ' {color=yellow|' + tr(Items.Items[res].name) + '}'
 		logupdate(text)
 	elif tmp < 0:
 		var text = "Lost "
-		text += str(-tmp) + ' {color=yellow|' + Items.Items[res].name + '}'
+		text += str(-tmp) + ' {color=yellow|' + tr(Items.Items[res].name) + '}'
 		logupdate(text)
 
 

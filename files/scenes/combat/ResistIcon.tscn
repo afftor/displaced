@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/images/iconsskills/defaultattack.png" type="Texture" id=1]
 [ext_resource path="res://files/scenes/combat/ResistIcon.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/iconsskills/shield.png" type="Texture" id=4]
 
 [node name="ResistIcon" type="Control"]
@@ -41,9 +41,9 @@ visible = false
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 33.0
-margin_top = -20.0
-margin_right = 63.0
-margin_bottom = 20.0
+margin_top = -13.0
+margin_right = 65.0
+margin_bottom = 19.0
 custom_colors/font_color = Color( 0, 1, 0.0392157, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "++"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/TextSceneNew/TextSystem.gd" type="Script" id=2]
@@ -6,15 +6,15 @@
 [ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/fonts/mainfont_40.tres" type="DynamicFont" id=8]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=10]
 [ext_resource path="res://files/SFX/white.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/text scene/textfieldpanel.png" type="Texture" id=12]
-[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=13]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/text scene/namepanel.png" type="Texture" id=17]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/images/gui/text scene/portraitpanel.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=22]
@@ -39,11 +39,6 @@ region_rect = Rect2( 0, 0, 138, 68 )
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 138, 68 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 32
-use_filter = true
-font_data = ExtResource( 18 )
 
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 25 )
@@ -140,11 +135,14 @@ mouse_filter = 2
 [node name="DisplayText" type="RichTextLabel" parent="Panel"]
 modulate = Color( 0.953125, 0.953125, 0.953125, 1 )
 margin_left = 35.0
-margin_top = 30.0
+margin_top = 33.0
 margin_right = 1064.0
 margin_bottom = 212.0
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 13 )
+custom_colors/font_color_shadow = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 
 [node name="Log" type="Button" parent="Panel"]
@@ -157,7 +155,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
-text = "Log"
+text = "B_LOG"
 
 [node name="Options" type="Button" parent="Panel"]
 margin_left = 1095.0
@@ -169,7 +167,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
-text = "Options"
+text = "OPTIONS"
 
 [node name="DisplayName" type="TextureRect" parent="Panel"]
 margin_left = -12.0
@@ -184,7 +182,7 @@ margin_top = 32.0
 margin_right = 381.0
 margin_bottom = 64.0
 custom_colors/font_color = Color( 1, 0.823822, 0.0195313, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 
 [node name="CharPortrait" type="TextureRect" parent="Panel"]
 margin_left = -310.0
@@ -231,7 +229,10 @@ margin_left = 36.0
 margin_top = 17.0
 margin_right = 520.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color_shadow = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 8 )
 text = "Option"
 align = 1
 valign = 1
@@ -251,7 +252,10 @@ margin_top = 145.0
 margin_right = 1138.0
 margin_bottom = 735.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
-custom_fonts/normal_font = ExtResource( 13 )
+custom_colors/font_color_shadow = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie dolor et commodo pulvinar. Nam ac nisl quis mauris malesuada commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam semper venenatis elit, eget venenatis velit dictum mattis. Etiam pharetra erat sed dui eleifend, et vehicula nulla faucibus. Pellentesque ut dolor vel augue aliquet tincidunt eu vitae purus. Nullam tristique posuere dolor vel tincidunt. Sed sit amet ante quis lectus fringilla mollis. Quisque ac nisl purus. Nullam gravida pretium nisi. Maecenas imperdiet sed tortor eu interdum.
 
@@ -293,18 +297,13 @@ anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ClosePanel"]
+[node name="Label" type="Label" parent="ClosePanel"]
 margin_left = 49.0
 margin_top = 58.0
 margin_right = 416.0
 margin_bottom = 162.0
-mouse_filter = 2
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_text = "Skip this scene?"
-text = "Skip this scene?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SKIPSCENECONFIRM"
 
 [node name="Confirm" type="TextureButton" parent="ClosePanel"]
 margin_left = 30.0

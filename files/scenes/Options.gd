@@ -5,6 +5,7 @@ var menu_open_sound = "sound/menu_open"
 
 onready var hotkeys_list = $TabContainer/Hotkeys/ScrollContainer/VBoxContainer
 onready var remap_panel = $remap_panel
+onready var locale_panel = $TabContainer/Text/locale
 var remaping_hotkey :String = ""
 var demaping_hotkey :String = ""
 var hotkeys
@@ -21,12 +22,20 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$TabContainer/Text/skipread.connect("pressed", self, 'pressedskipread')
 	$TabContainer/Text/disabletut.connect("pressed", self, 'pressed_disable_tutorial')
+	for locale in globals.localizations:
+		assert(locale_panel.has_node(locale), "options screen has no %s locale checkbox" % locale)
+		locale_panel.get_node(locale).connect("pressed", self, 'pressed_locale', [locale])
 #warning-ignore:return_value_discarded
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 #warning-ignore:return_value_discarded
 	$close_button.connect("pressed",self,'close')
 	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
-	
+	var tabs = $TabContainer
+	tabs.set_tab_title(0, tr('AUDIO'))
+	tabs.set_tab_title(1, tr('GRAPHICS'))
+	tabs.set_tab_title(2, tr('OPT_TEXT'))
+	tabs.set_tab_title(3, tr('HOTKEYS'))
+
 	hotkeys = globals.get_hotkeys_handler()
 	for remap_node in hotkeys_list.get_children():
 		if remap_node.has_signal("remap"):
@@ -44,6 +53,7 @@ func open():
 		i.get_node("HSlider").value = globals.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
 		i.get_node("HSlider").editable = !i.get_node("CheckBox").pressed
+	locale_update()
 
 func togglefullscreen():
 	globals.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
@@ -139,3 +149,12 @@ func default_hotkeys():
 	hotkeys.to_default()
 	update_hotkey_tab()
 
+func pressed_locale(new_locale :String):
+	globals.globalsettings.ActiveLocalization = new_locale
+#	TranslationServer.set_locale(new_locale)
+	locale_update()
+	input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("REBOOTNOTE")])
+
+func locale_update():
+	for locale in globals.localizations:
+		locale_panel.get_node(locale).pressed = (globals.globalsettings.ActiveLocalization == locale)

@@ -9,10 +9,10 @@
 [ext_resource path="res://assets/images/gui/menu/textfieldactive.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/menu/textfield.png" type="Texture" id=8]
 [ext_resource path="res://assets/themes/Checkbox&Tabs.tres" type="Theme" id=9]
-[ext_resource path="res://assets/fonts/pt_36.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/themes/button_small.tres" type="Theme" id=11]
 [ext_resource path="res://assets/themes/button_base.tres" type="Theme" id=12]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/fonts/mainfont_36.tres" type="DynamicFont" id=13]
 [ext_resource path="res://files/custom_button.gd" type="Script" id=14]
 [ext_resource path="res://assets/images/gui/menu/autosave_screen.png" type="Texture" id=15]
 
@@ -45,11 +45,11 @@ autosave_shot = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 436.0
-margin_top = 16.0
+margin_top = 24.0
 margin_right = 680.0
 margin_bottom = 63.0
-custom_fonts/font = ExtResource( 10 )
-text = "Save & Load"
+custom_fonts/font = ExtResource( 13 )
+text = "SAVE_LOAD"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -96,7 +96,7 @@ margin_bottom = 253.0
 custom_styles/read_only = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-placeholder_text = "type file name"
+placeholder_text = "SAVELINEEDIT"
 caret_blink = true
 
 [node name="name" type="Label" parent="ScrollContainer/GridContainer/Button"]
@@ -146,8 +146,8 @@ margin_right = 250.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 250, 70 )
 theme = ExtResource( 12 )
-custom_fonts/font = ExtResource( 13 )
-text = "Load"
+custom_fonts/font = ExtResource( 10 )
+text = "B_LOAD"
 
 [node name="save_btn" type="Button" parent="buttons"]
 margin_left = 280.0
@@ -156,5 +156,5 @@ margin_bottom = 70.0
 rect_min_size = Vector2( 250, 70 )
 theme = ExtResource( 12 )
 custom_constants/hseparation = 0
-custom_fonts/font = ExtResource( 13 )
-text = "Save"
+custom_fonts/font = ExtResource( 10 )
+text = "B_SAVE"

@@ -82,7 +82,7 @@ margin_left = 191.0
 margin_top = -23.0
 margin_right = 296.0
 margin_bottom = 1.0
-text = "Townhall"
+text = "TOWNHALL"
 
 [node name="bridge" type="TextureButton" parent="."]
 margin_left = 1570.0
@@ -106,7 +106,7 @@ margin_left = 79.0
 margin_top = -28.0
 margin_right = 123.0
 margin_bottom = -4.0
-text = "Exit"
+text = "BRIDGE"
 
 [node name="mine" type="TextureButton" parent="."]
 margin_left = 90.6535
@@ -143,7 +143,7 @@ margin_left = 114.0
 margin_top = 76.0
 margin_right = 197.0
 margin_bottom = 100.0
-text = "Market"
+text = "MARKET"
 
 [node name="QuestActive" type="TextureRect" parent="market"]
 margin_left = 222.668
@@ -188,7 +188,7 @@ margin_left = 91.0
 margin_top = 72.0
 margin_right = 218.0
 margin_bottom = 96.0
-text = "Blacksmith"
+text = "BLACKSMITH"
 
 [node name="tavern" type="TextureButton" parent="."]
 margin_left = 1406.62

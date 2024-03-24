@@ -66,15 +66,18 @@ func _input(event):
 		return
 	if event.is_action_pressed("ESC") && !screen_blocked:
 		if !CloseableWindowsArray.empty():
-			CloseTopWindow()
+			if CloseTopWindow():
+				get_tree().set_input_as_handled()
 		else:
 			if input_handler.menu_node and input_handler.menu_node.visible:
 				input_handler.menu_node.openmenu()
+				get_tree().set_input_as_handled()
 	if event.is_action("F9") && event.is_pressed():
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
+		get_tree().set_input_as_handled()
 	
 	
 #	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0:
@@ -102,12 +105,13 @@ func _process(delta):
 
 
 
-func CloseTopWindow():
+func CloseTopWindow() ->bool:#true if closed
 	var node = CloseableWindowsArray.back()
 	if node.has_method("can_hide") and !node.can_hide() :
-		return
+		return false
 	CloseableWindowsArray.pop_back()
 	node.hide()#node can try to reg_close(), but that's no problem while reg_open() restricts doubles
+	return true
 
 #not in use
 #func LockOpenWindow():
@@ -202,7 +206,7 @@ func TargetEnemyTurn(node):
 	tween.interpolate_property(node, 'rect_scale', Vector2(1.05,1.05), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,0.5)
 	tween.start()
 
-var floatfont = preload("res://FloatFont.tres")
+var floatfont = preload("res://assets/fonts/mainfont_float.tres")
 
 func FloatTextArgs(args):
 	#print('ftchecked')

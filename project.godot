@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Item",
 "language": "GDScript",
-"path": "res://files/classes/ItemClass.gd"
+"path": "res://files/classes/unused/ItemClass.gd"
 }, {
 "base": "Reference",
 "class": "S_Skill",
@@ -204,7 +204,7 @@ Effectdata="*res://assets/data/Effects.gd"
 Explorationdata="*res://assets/data/explorationareasdata.gd"
 Skillsdata="*res://assets/data/Skills.gd"
 Traitdata="*res://assets/data/Traits.gd"
-TownData="*res://assets/data/TownData.gd"
+TownData="res://assets/data/unused/TownData.gd"
 combatantdata="*res://assets/data/CombatantData.gd"
 state="*res://core/gamestate.gd"
 Items="*res://assets/data/Items.gd"
@@ -241,7 +241,7 @@ window/stretch/aspect="keep"
 
 [gui]
 
-theme/custom_font="res://MainFont.tres"
+theme/custom_font="res://assets/fonts/mainfont_24.tres"
 timers/tooltip_delay_sec=0.2
 
 [input]
@@ -359,6 +359,39 @@ hotkey_skill_10={
 
 test="en"
 translations=PoolStringArray( "res://localization/tr.en.translation" )
+locale_filter=[ 1, [ "en", "ru" ] ]
+translation_remaps={
+"res://assets/fonts/mainfont_100.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_100.tres:ru" ),
+"res://assets/fonts/mainfont_14.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_14.tres:ru" ),
+"res://assets/fonts/mainfont_20.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_20.tres:ru" ),
+"res://assets/fonts/mainfont_24.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_24.tres:ru" ),
+"res://assets/fonts/mainfont_24_tight.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_24_tight.tres:ru" ),
+"res://assets/fonts/mainfont_30.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_30.tres:ru" ),
+"res://assets/fonts/mainfont_30_btn.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_30_btn.tres:ru" ),
+"res://assets/fonts/mainfont_30_tight.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_30_tight.tres:ru" ),
+"res://assets/fonts/mainfont_32.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_32.tres:ru" ),
+"res://assets/fonts/mainfont_36.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_36.tres:ru" ),
+"res://assets/fonts/mainfont_40.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_40.tres:ru" ),
+"res://assets/fonts/mainfont_55.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_55.tres:ru" ),
+"res://assets/fonts/mainfont_bold_30.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_bold_30.tres:ru" ),
+"res://assets/fonts/mainfont_bold_36.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_bold_36.tres:ru" ),
+"res://assets/fonts/mainfont_bold_hotkey.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_bold_hotkey.tres:ru" ),
+"res://assets/fonts/mainfont_float.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_float.tres:ru" ),
+"res://assets/images/gui/MainScreen/Continue.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/ContinueSelect.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/Load.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/LoadSelect.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/NewGames.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/NewGamesSelect.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/Options.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/OptionsSelect.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/Quit.png": PoolStringArray(  ),
+"res://assets/images/gui/MainScreen/QuitSelect.png": PoolStringArray(  ),
+"res://assets/images/gui/combat/header_level_up.png": PoolStringArray(  ),
+"res://assets/images/gui/combat/level_up_button_active.png": PoolStringArray(  ),
+"res://assets/images/gui/combat/level_up_button_hover.png": PoolStringArray(  ),
+"res://assets/images/gui/combat/level_up_button_unactive.png": PoolStringArray(  )
+}
 
 [rendering]
 

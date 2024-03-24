@@ -340,7 +340,7 @@ func RebuildDefaultsPanel():
 func build_enemy_head():
 	var cw = combat.curstage + 1
 	var nw = combat.enemygroup_full.size()
-	$EmemyStats/Label.text = "Wave %d/%d" % [cw, nw]
+	$EmemyStats/Label.text = tr("WAVE") + " %d/%d" % [cw, nw]
 
 func UpdatePressedStatus():
 	$SkillPanel/CategoriesContainer/ItemsButton.pressed = item_container.visible

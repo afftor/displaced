@@ -17,7 +17,7 @@ func _ready():
 
 func set_unlocked(eventdata :Dictionary):
 	set_preview(eventdata)
-	label.text = "{name}\n{descript}".format(eventdata)
+	label.text = "%s\n%s" % [tr(eventdata.name), tr(eventdata.descript)]
 	lock.hide()
 	image.material = null#unblur for on-texture shader
 	#bluring now by shader, but maybe it would be more efficient to generate
@@ -28,7 +28,7 @@ func set_unlocked(eventdata :Dictionary):
 
 func set_unlockable(eventdata :Dictionary):
 	set_preview(eventdata)
-	label.text = eventdata.name
+	label.text = tr(eventdata.name)
 	var cost_con = reqs.get_node("list")
 	input_handler.ClearContainer(cost_con, ['line'])
 	for ch in eventdata.unlock_price:
@@ -44,7 +44,7 @@ func set_unlockable(eventdata :Dictionary):
 
 func set_unknown():
 	image.hide()
-	label.text = "Unknown"
+	label.text = tr("UNKNOWN")
 	reqs.hide()
 	watch_btn.hide()
 	unlock_btn.hide()

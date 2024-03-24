@@ -43,7 +43,7 @@ func ResetSavePanel():
 	
 	if can_save():
 		var newbutton = input_handler.DuplicateContainerTemplate(saves_container)
-		newbutton.get_node("name").text = "New save"
+		newbutton.get_node("name").text = tr("SAVENEWSAVE")
 		newbutton.get_node("date").text = ""
 		newbutton.get_node("time").text = ""
 		newbutton.set_meta("save_name", "")

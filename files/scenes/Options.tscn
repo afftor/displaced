@@ -26,9 +26,6 @@ theme = ExtResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color_bg = Color( 0, 0, 0, 1 )
 custom_colors/font_color_fg = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Audio" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
@@ -158,9 +155,6 @@ margin_right = 543.0
 margin_bottom = 69.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "MUTE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Graphics" type="Tabs" parent="TabContainer"]
 visible = false
@@ -184,7 +178,7 @@ margin_left = 62.0
 margin_top = 11.0
 margin_right = 189.0
 margin_bottom = 35.0
-text = "Full Screen"
+text = "OPT_FULLSCREEN"
 
 [node name="Text" type="Tabs" parent="TabContainer"]
 visible = false
@@ -201,9 +195,6 @@ min_value = 20.0
 max_value = 200.0
 step = 20.0
 value = 60.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="TabContainer/Text/textspeed"]
 margin_top = -54.0
@@ -240,9 +231,6 @@ margin_right = -209.5
 margin_bottom = -240.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="TabContainer/Text/disabletut"]
 margin_left = 62.0
@@ -250,6 +238,61 @@ margin_top = 12.0
 margin_right = 279.0
 margin_bottom = 36.0
 text = "DISABLETUTORIAL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="locale" type="Control" parent="TabContainer/Text"]
+margin_top = 321.0
+margin_right = 580.0
+margin_bottom = 402.0
+
+[node name="Label" type="Label" parent="TabContainer/Text/locale"]
+margin_left = 48.0
+margin_right = 265.0
+margin_bottom = 24.0
+text = "OPT_LANGUAGE"
+
+[node name="en" type="CheckBox" parent="TabContainer/Text/locale"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_top = -48.0
+margin_right = -206.0
+margin_bottom = -4.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="TabContainer/Text/locale/en"]
+margin_left = 62.0
+margin_top = 12.0
+margin_right = 92.0
+margin_bottom = 36.0
+text = "L_EN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ru" type="CheckBox" parent="TabContainer/Text/locale"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -138.0
+margin_top = -48.0
+margin_right = -94.0
+margin_bottom = -4.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="TabContainer/Text/locale/ru"]
+margin_left = 62.0
+margin_top = 12.0
+margin_right = 96.0
+margin_bottom = 36.0
+text = "L_RU"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -100,7 +100,7 @@ func upgradelist():
 		newbutton.set_meta("upgrade_code", i)
 		if !has_next_level:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
-			text += ' Unlocked'
+			text += ' ' + tr("UP_UNLOCKED")
 			newbutton.get_node("icon").texture = upgrade.levels[next_level-1].icon
 		else:
 			newbutton.get_node("icon").texture = upgrade.levels[next_level].icon

@@ -45,7 +45,8 @@ func build_stats():
 	stats_list.get_node("dmg/value").text = str(character.get_stat('damage'))
 	stats_list.get_node("dmg/value").hint_tooltip = tr("BASEDAMAGE")
 	stats_list.get_node("dmg/icon").texture = load("res://assets/images/iconsskills/source_%s.png" % character.get_stat('base_dmg_type'))
-	stats_list.get_node("dmg/icon").hint_tooltip = tr("BASEDAMAGETYPE") + ": " + tr(character.get_stat('base_dmg_type'))
+	var resist_str_id = variables.get_resist_data(character.get_stat('base_dmg_type')).name
+	stats_list.get_node("dmg/icon").hint_tooltip = "%s: %s" % [tr("BASEDAMAGETYPE"), tr(resist_str_id)]
 	if character.id == 'arron':
 		stats_list.get_node("friend").hide()
 	else:
@@ -76,7 +77,7 @@ func build_skill_panel(panel, data):
 		resist_icon.set_resist_type(damage_type)
 	if data.cooldown == 0:
 		panel.get_node('VBoxContainer/HBoxContainer/cd').hide()
-		panel.get_node('VBoxContainer/HBoxContainer/TextureRect').hide()
+		panel.get_node('VBoxContainer/HBoxContainer/timer_icon').hide()
 		panel.get_node('VBoxContainer/HBoxContainer/Label').hide()
 	else:
 		panel.get_node('VBoxContainer/HBoxContainer/cd').text = str(data.cooldown)
@@ -93,4 +94,4 @@ func build_res():
 		var resist_data = variables.get_resist_data(src)
 		panel.get_node('Label').text = ": %d%%" % resists[src]
 		panel.get_node('icon/src').texture = resist_data.icon
-		panel.get_node("icon").hint_tooltip = "Resist: %s" % tr(resist_data.name)#TODO: change to actual tooltip later
+		panel.get_node("icon").hint_tooltip = "%s: %s" % [tr("RESIST"), tr(resist_data.name)]#TODO: change to actual tooltip later
