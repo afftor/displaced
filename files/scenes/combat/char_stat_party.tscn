@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/buttons/combat/button_charlistbattle.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/images/buttons/combat/button_charlistbattle_hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlebig_filler.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlebig_frame.png" type="Texture" id=6]
-[ext_resource path="res://assets/fonts/pt_24.tres" type="DynamicFont" id=7]
 [ext_resource path="res://files/scenes/combat/char_stat_party.gd" type="Script" id=8]
 
 [node name="arron" type="TextureButton"]
@@ -21,11 +20,10 @@ script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 72.0
-margin_top = 4.0
+margin_top = 11.0
 margin_right = 256.0
 margin_bottom = 36.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 7 )
 text = "Arron"
 align = 1
 
@@ -51,11 +49,10 @@ __meta__ = {
 }
 
 [node name="hp" type="Label" parent="."]
-margin_left = 103.341
-margin_top = 32.7071
-margin_right = 229.341
-margin_bottom = 64.7071
+margin_left = 103.0
+margin_top = 40.0
+margin_right = 229.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-custom_fonts/font = ExtResource( 7 )
 text = "350/1500"
 align = 1

@@ -16,9 +16,6 @@ texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 3 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 26.0

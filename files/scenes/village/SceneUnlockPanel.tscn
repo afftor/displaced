@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/images/gui/gallery/panel_hero.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/gallery/panel_gallery.png" type="Texture" id=11]
 [ext_resource path="res://assets/themes/scroll_grey.tres" type="Theme" id=12]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/images/gui/gallery/icon_hero_default.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/gallery/icon_hero_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/gallery/icon_hero_active.png" type="Texture" id=16]
@@ -74,9 +74,6 @@ margin_right = 1144.0
 margin_bottom = 187.0
 theme = ExtResource( 12 )
 scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/heroes"]
 margin_right = 1100.0
@@ -101,42 +98,39 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -61.0
-margin_top = -20.0
+margin_top = -15.0
 margin_right = 61.0
 margin_bottom = 20.0
 custom_fonts/font = ExtResource( 13 )
-text = "All"
+text = "ALL"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="rose" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
 margin_left = 190.0
 margin_right = 340.0
-hero_name = "Rose"
+hero_name = "ROSE"
 portrait = ExtResource( 6 )
 
 [node name="ember" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
-hero_name = "Ember"
+hero_name = "EMBER"
 portrait = ExtResource( 4 )
 
 [node name="erika" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
 margin_left = 570.0
 margin_right = 720.0
-hero_name = "Erika"
+hero_name = "ERIKA"
 portrait = ExtResource( 8 )
 
 [node name="iola" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
 margin_left = 760.0
 margin_right = 910.0
-hero_name = "Iola"
+hero_name = "IOLA"
 portrait = ExtResource( 5 )
 
 [node name="rilu" parent="Panel/heroes/HBoxContainer" instance=ExtResource( 17 )]
 margin_left = 950.0
 margin_right = 1100.0
-hero_name = "Rilu"
+hero_name = "RILU"
 portrait = ExtResource( 7 )
 
 [node name="scenes" type="ScrollContainer" parent="Panel"]
@@ -147,9 +141,6 @@ margin_bottom = 880.0
 rect_min_size = Vector2( 0, 653 )
 theme = ExtResource( 12 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="Panel/scenes"]
 margin_right = 1100.0
@@ -191,7 +182,7 @@ margin_top = 992.0
 margin_right = 1058.0
 margin_bottom = 1051.0
 theme = ExtResource( 19 )
-text = "Close"
+text = "CLOSE"
 
 [node name="CloseButton" parent="." instance=ExtResource( 18 )]
 margin_left = 1868.0

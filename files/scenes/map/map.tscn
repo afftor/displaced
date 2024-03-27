@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/images/map/map_icon_5.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/map/map_icon_3.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/map/map_icon_7.png" type="Texture" id=9]
+[ext_resource path="res://assets/fonts/mainfont_40.tres" type="DynamicFont" id=10]
 [ext_resource path="res://files/scenes/map/cloud_1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://files/scenes/map/map.gd" type="Script" id=13]
 [ext_resource path="res://files/TextSceneNew/TextSystem.tscn" type="PackedScene" id=14]
@@ -18,7 +19,6 @@
 [ext_resource path="res://files/scenes/village/MainScreen_new.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/map/map_icon_8.png" type="Texture" id=20]
-[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=21]
 [ext_resource path="res://assets/images/map/cloud_7.png" type="Texture" id=22]
 [ext_resource path="res://core/curtains_handler.gd" type="Script" id=23]
 [ext_resource path="res://files/scenes/map/map_label.tscn" type="PackedScene" id=24]
@@ -239,7 +239,7 @@ margin_left = 96.0
 margin_top = 138.0
 margin_right = 254.0
 margin_bottom = 162.0
-text = "Dragon Peaks"
+text = "AREADRAGON_MOUNTAINSNAME"
 
 [node name="active" type="TextureRect" parent="dragon_mountains"]
 visible = false
@@ -403,7 +403,7 @@ margin_left = 40.0
 margin_top = -21.0
 margin_right = 172.0
 margin_bottom = 3.0
-text = "Summerhill"
+text = "AREACASTLENAME"
 
 [node name="active" type="TextureRect" parent="castle"]
 visible = false
@@ -660,7 +660,7 @@ margin_left = 232.0
 margin_top = -32.0
 margin_right = 300.0
 margin_bottom = -8.0
-text = "Aeros"
+text = "AREATOWNNAME"
 
 [node name="active" type="TextureRect" parent="town"]
 visible = false
@@ -971,7 +971,7 @@ __meta__ = {
 [node name="Label" parent="cave" instance=ExtResource( 24 )]
 margin_left = 56.0
 margin_right = 112.0
-text = "Cave"
+text = "AREACAVENAME"
 
 [node name="active" type="TextureRect" parent="cave"]
 visible = false
@@ -1100,7 +1100,7 @@ margin_left = 48.0
 margin_top = -12.0
 margin_right = 124.0
 margin_bottom = 12.0
-text = "Forest"
+text = "AREAFORESTNAME"
 
 [node name="active" type="TextureRect" parent="forest"]
 visible = false
@@ -1317,7 +1317,7 @@ margin_left = 128.0
 margin_top = -31.0
 margin_right = 204.0
 margin_bottom = -7.0
-text = "Village"
+text = "MAPVILLAGENAME"
 
 [node name="active" type="TextureRect" parent="village"]
 visible = false
@@ -1676,7 +1676,7 @@ margin_left = 111.0
 margin_top = -13.0
 margin_right = 261.0
 margin_bottom = 11.0
-text = "Cult Grounds"
+text = "AREACULTNAME"
 
 [node name="active" type="TextureRect" parent="cult"]
 visible = false
@@ -2319,7 +2319,10 @@ margin_right = 1891.49
 margin_bottom = 68.4725
 mouse_filter = 2
 custom_colors/default_color = Color( 1, 0.890625, 0, 1 )
-custom_fonts/normal_font = ExtResource( 21 )
+custom_colors/font_color_shadow = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
 scroll_active = false
 

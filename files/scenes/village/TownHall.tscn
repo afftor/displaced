@@ -14,14 +14,14 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/portrait/EmberNormal.png" type="Texture" id=14]
-[ext_resource path="res://files/scenes/Questlog.tscn" type="PackedScene" id=15]
+[ext_resource path="res://files/scenes/unused/Questlog.tscn" type="PackedScene" id=15]
 [ext_resource path="res://files/scenes/village/SceneUnlockPanel.tscn" type="PackedScene" id=16]
 [ext_resource path="res://files/scenes/Outlined_Sprite.gd" type="Script" id=17]
 [ext_resource path="res://assets/images/gui/buildings/panel_dialogue.png" type="Texture" id=18]
-[ext_resource path="res://assets/fonts/pt_30.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/themes/button_small.tres" type="Theme" id=20]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=21]
-[ext_resource path="res://assets/fonts/pt_36_boldshad.tres" type="DynamicFont" id=22]
+[ext_resource path="res://assets/fonts/mainfont_bold_36.tres" type="DynamicFont" id=22]
 [ext_resource path="res://files/Close Panel Button/CloseButton.tscn" type="PackedScene" id=23]
 
 [node name="TownHall" type="TextureRect"]
@@ -85,9 +85,6 @@ margin_bottom = 50.0
 text = "UPGRADES"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Scenes" type="TextureButton" parent="ButtonPanel/VBoxContainer"]
 margin_top = 83.0
@@ -227,9 +224,9 @@ texture_normal = ExtResource( 10 )
 
 [node name="name" type="Label" parent="UpgradeList/ScrollContainer/VBoxContainer/Button"]
 margin_left = 313.0
-margin_top = 83.0
+margin_top = 87.0
 margin_right = 547.0
-margin_bottom = 107.0
+margin_bottom = 119.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
 text = "Name"
@@ -273,7 +270,8 @@ margin_top = 685.0
 margin_right = 420.0
 margin_bottom = 738.0
 theme = ExtResource( 20 )
-text = "Unlock"
+text = "UP_UNLOCK"
+clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradeList/UpgradeDescript"]
 margin_left = 68.0
@@ -323,8 +321,8 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="UpgradeList/UpgradeDescript/goldicon"]
 margin_left = 67.0
-margin_top = 13.0
-margin_right = 138.0
+margin_top = 24.0
+margin_right = 145.0
 margin_bottom = 60.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1

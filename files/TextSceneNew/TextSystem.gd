@@ -7,6 +7,8 @@ signal AllEventsFinished
 signal EventFinished
 #=======
 
+var text_log = ""
+
 const REF_PATH = [
 	"res://assets/data/txt_ref/scn",
 #	"res://assets/data/txt_ref/chardef.txt",
@@ -56,7 +58,7 @@ const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 
 #others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
 var char_map = {
 	Narrator = {
-		source = 'Narrator',
+		source = 'NARRATOR',
 		portrait = null,
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones, useless now
@@ -65,7 +67,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Z = {
-		source = 'Zelroth',
+		source = 'ZELROTH',
 		portrait = 'Zelroth',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -74,7 +76,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Woman = {
-		source = 'Woman',
+		source = 'WOMAN',
 		portrait = 'Woman', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -83,7 +85,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	V = {
-		source = 'Viktor',
+		source = 'VIKTOR',
 		portrait = 'Viktor',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -92,7 +94,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	T = {
-		source = 'Traveler',
+		source = 'TRAVELER',
 		portrait = 'traveller',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -101,7 +103,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Traveler = {
-		source = 'Traveler',
+		source = 'TRAVELER',
 		portrait = 'traveller_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -110,7 +112,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Surv = {
-		source = 'Survivor',
+		source = 'SURVIVOR',
 		portrait = 'Survivor', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -119,7 +121,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Str2 = {
-		source = 'Stranger 2',
+		source = 'STRANGER2',
 		portrait = 'Stranger_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -128,7 +130,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Str = {
-		source = 'Stranger',
+		source = 'STRANGER',
 		portrait = 'Stranger', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -137,7 +139,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Entr = {
-		source = 'Entertainer',
+		source = 'ENTERTAINER',
 		portrait = 'Entertainer', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -146,7 +148,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	SlaveTrader2 = {
-		source = 'Slave Trader A',
+		source = 'SLAVE_TRADER_A',
 		portrait = 'Slave_Trader', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -155,7 +157,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	SlaveTrader = {
-		source = 'Slave Trader B',
+		source = 'SLAVE_TRADER_B',
 		portrait = 'Slave_Trader_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -164,7 +166,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	S = {
-		source = 'Soldier',
+		source = 'SOLDIER',
 		portrait = 'Guard', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -173,7 +175,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Ro = {
-		source = 'Rose',
+		source = 'ROSE',
 		portrait = 'Rose',
 		base_variants = ['Normal', 'Talk', 'Shock', 'Sad', 'Sarcastic'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -182,7 +184,7 @@ var char_map = {
 		color = Color('ff8c00'),
 	},
 	Ri = {
-		source = 'Rilu',
+		source = 'RILU',
 		portrait = 'Rilu',
 		base_variants = ['Normal', 'Blush', 'Spell', 'Talk'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -191,7 +193,7 @@ var char_map = {
 		color = Color('C53BFF'),#?
 	},
 	RN = {
-		source = 'Rich Noble',
+		source = 'RICH_NOBLE',
 		portrait = 'Rich_Noble', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -200,7 +202,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Nt = {
-		source = 'Norbert',
+		source = 'NORBERT',
 		portrait = 'Norbert',
 		base_variants = ['Normal', 'Anger'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -209,7 +211,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	N = {
-		source = 'Nicolas',
+		source = 'NICOLAS',
 		portrait = 'Nicolas', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -218,7 +220,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	M = {
-		source = 'Merchant',
+		source = 'MERCHANT',
 		portrait = 'Merchant', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -227,7 +229,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Lr = {
-		source = 'Lyra',
+		source = 'LYRA',
 		portrait = 'Lyra',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -236,7 +238,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	KD = {
-		source = 'King Dwarf',
+		source = 'KING_DWARF',
 		portrait = 'King_Dwarf',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -245,7 +247,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	I = {
-		source = 'Iola',
+		source = 'IOLA',
 		portrait = 'Iola',
 		base_variants = ['Neutral', 'Sad', 'Shock'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -254,7 +256,7 @@ var char_map = {
 		color = Color('2A97CB'),#?
 	},
 	Guard = {
-		source = 'Guard',
+		source = 'GUARD1',
 		portrait = 'Guard',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -263,7 +265,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Guard_2 = {
-		source = 'Guard 2',
+		source = 'GUARD2',
 		portrait = 'Guard',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -272,7 +274,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Guard_3 = {
-		source = 'Guard 3',
+		source = 'GUARD3',
 		portrait = 'Guard',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -281,7 +283,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	G = {
-		source = 'Goblin',
+		source = 'GOBLIN',
 		portrait = 'Goblin',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -290,7 +292,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	FQ = {
-		source = 'Faery Queen',
+		source = 'FAERY_QUEEN',
 		portrait = 'FairyQueen',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -299,7 +301,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	FA = {
-		source = 'Faery A',
+		source = 'FAERY_A',
 		portrait = 'Fairy_A', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -317,7 +319,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	F = {
-		source = 'Flak',
+		source = 'FLAK',
 		portrait = 'Flak',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -326,7 +328,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Et = {
-		source = 'Ent',
+		source = 'ENT',
 		portrait = 'Ent', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -335,7 +337,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Er = {
-		source = 'Erika',
+		source = 'ERIKA',
 		portrait = 'Erika',
 		base_variants = ['Normal', 'Happy', 'Anger', 'Sad'], #for normal filenamaes with suffixes
 #		custom_variants = [
@@ -346,7 +348,7 @@ var char_map = {
 		color = Color('228b22'),
 	},
 	Em = {
-		source = 'Ember',
+		source = 'EMBER',
 		portrait = 'Ember',
 		base_variants = ['Normal', 'Happy', 'Sad'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -355,7 +357,7 @@ var char_map = {
 		color = Color('b22156'),
 	},
 	EC = {
-		source = 'Elf Child',
+		source = 'ELF_CHILD',
 		portrait = 'Elf_Child', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -373,13 +375,13 @@ var char_map = {
 #		color = Color('ffffff'),
 #	},
 	Ezet = {
-		source = 'Ezet',
+		source = 'EZET',
 		portrait = 'Ezet',
 		base_variants = [],
 		color = Color('ffffff'),
 	},
 	Dr = {
-		source = 'Dragon',
+		source = 'DRAGON',
 		portrait = 'Dragon',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -388,7 +390,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Demon = {
-		source = 'Demon',
+		source = 'DEMON',
 		portrait = 'Demon', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -397,7 +399,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	D = {
-		source = 'Demitrius',
+		source = 'DEMITRIUS',
 		portrait = 'Demitrius',
 		base_variants = ['Normal', 'Talk', 'Anger'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -406,7 +408,7 @@ var char_map = {
 		color = Color('ffffff'),#?
 	},
 	De = {
-		source = 'Demitrius Demon',
+		source = 'DEMITRIUS_DEMON',
 		portrait = 'Demitrius_Demon',
 		base_variants = ['Normal', 'Anger'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -415,7 +417,7 @@ var char_map = {
 		color = Color('ffffff'), #?
 	},
 	CM = {
-		source = 'Committee Member',
+		source = 'COMMITTEE_MEMBER',
 		portrait = 'Committee_Member', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -424,7 +426,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	C = {
-		source = 'Caliban',
+		source = 'CALIBAN',
 		portrait = 'Caliban',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -433,13 +435,13 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Cy = {
-		source = 'Cyrex',
+		source = 'CYREX',
 		portrait = 'Caliban',
 		base_variants = [], #for normal filenamaes with suffixes
 		color = Color('ffffff'),
 	},
 	Boy = {
-		source = 'Boy',
+		source = 'BOY',
 		portrait = 'Boy', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -448,7 +450,7 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	Ar = {
-		source = 'Arron',
+		source = 'ARRON',
 		portrait = 'Arron',
 		base_variants = ['Normal', 'Neutral', 'Shock', 'Anger'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -457,7 +459,7 @@ var char_map = {
 		color = Color('c0c0c0'),
 	},
 	An = {
-		source = 'Annet',
+		source = 'ANNET',
 		portrait = 'Annet',
 		base_variants = ['Normal', 'Anger'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
@@ -511,19 +513,19 @@ var char_map = {
 		color = Color('ffffff'),
 	},
 	slavetrader = {
-		source = 'Slave Trader 1',
+		source = 'SLAVE_TRADER_A',
 		portrait = 'Boy',
 		base_variants = [],
 		color = Color('ffffff'),
 	},
 	slavetrader2 = {
-		source = 'Slave Trader 2',
+		source = 'SLAVE_TRADER_B',
 		portrait = 'Boy',
 		base_variants = [],
 		color = Color('ffffff'),
 	},
 	Dwarf = {
-		source = 'Dwarf Soldier',
+		source = 'DWARF_SOLDIER',
 		portrait = 'DwarfSoldier',
 		base_variants = [],
 		color = Color('ffffff'),
@@ -585,7 +587,7 @@ func _ready() -> void:
 	$Panel/Options.connect('pressed', self, 'OpenOptions')
 	
 	$ClosePanel/Cancel.connect("pressed", $ClosePanel, "hide")
-	$ClosePanel/Confirm.connect("pressed", self, "tag_stop")
+	$ClosePanel/Confirm.connect("pressed", self, "on_closepanel_confirm")
 
 
 var panel_vis = true
@@ -639,7 +641,6 @@ func preload_portraits():
 		if chardata.has('portrait') and chardata.portrait != null:
 			resources.preload_res("portrait/%s" % chardata.portrait)
 
-var text_log = ""
 func OpenLog():
 	var log_panel = $LogPanel
 	var log_label = $LogPanel/RichTextLabel
@@ -713,11 +714,11 @@ func _input(event: InputEvent):
 		return
 	if is_input_blocked(): return
 
+func _unhandled_key_input(event):
 	#only avail in replay mode due to ability to miss critical choices and unlocks otherwise
 	if replay_mode and event.is_action_pressed("ESC"):
 		prompt_close()
 		get_tree().set_input_as_handled()
-		return
 
 func _gui_input(event: InputEvent):
 	#here we process only mouse events, to avoid collisions with buttons
@@ -1097,7 +1098,11 @@ func tag_loose() -> void:
 
 func prompt_close():
 	$ClosePanel.show()
-	print_tree_pretty()
+#	print_tree_pretty()
+
+func on_closepanel_confirm():
+	$ClosePanel.hide()
+	stop_scene()
 
 
 func stop_scene() -> void:
@@ -1207,6 +1212,7 @@ func play_scene(scene: String, restore = false, force_replay = false) -> void:
 	last_choice = -1
 	choice_number = -1
 	state.CurEvent = scene
+	text_log = ""
 
 	$Background.texture = null
 	$Background.visible = true

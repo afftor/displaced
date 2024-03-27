@@ -3,7 +3,7 @@ extends Node
 
 var event_triggers = {#reworked to same syntax as seqs
 	intro_1 = [
-		{type = 'mission', value = 'road_to_village', auto_advance = true},
+		{type = 'mission', value = 'road_to_village', auto_advance = true, no_autosave = true},
 	],
 	intro_2 = [
 		{type = 'scene', value = 'intro_3'},
@@ -564,7 +564,7 @@ var scene_sequences = {
 	
 	#Gallery scenes
 	ember_boobs = {
-		name = "Ember's boobs",
+		name = "GALLERY_EMBER_BOOBS",
 		descript = "",
 		gallery = true,
 		preview = 'ember_boobs',
@@ -576,7 +576,7 @@ var scene_sequences = {
 		]
 	},
 	rose_night = {
-		name = "Rose's night",
+		name = "GALLERY_ROSE_NIGHT",
 		descript = "",
 		gallery = true,
 		preview = 'rose_night',
@@ -588,7 +588,7 @@ var scene_sequences = {
 		]
 	},
 	rose_public = {
-		name = "Rose in public",
+		name = "GALLERY_ROSE_PUBLIC",
 		descript = "",
 		gallery = true,
 		preview = 'rose_public',
@@ -600,7 +600,7 @@ var scene_sequences = {
 		]
 	},
 	erika_doggy = {
-		name = "Erika's doggy",
+		name = "GALLERY_ERIKA_DOGGY",
 		descript = "",
 		gallery = true,
 		preview = 'erika_doggy',
@@ -612,7 +612,7 @@ var scene_sequences = {
 		]
 	},
 	erika_rose_three = {
-		name = "Erika and Rose",
+		name = "GALLERY_ERIKA_ROSE_THREE",
 		descript = "",
 		gallery = true,
 		preview = 'erika_rose_three',
@@ -624,7 +624,7 @@ var scene_sequences = {
 		]
 	},
 	ember_missionary = {
-		name = "Ember's missionary",
+		name = "GALLERY_EMBER_MISSIONARY",
 		descript = "",
 		gallery = true,
 		preview = 'ember_missionary',
@@ -636,7 +636,7 @@ var scene_sequences = {
 		]
 	},
 	ember_titjob = {
-		name = "Ember's titjob",
+		name = "GALLERY_EMBER_TITJOB",
 		descript = "",
 		gallery = true,
 		preview = 'ember_titjob',
@@ -648,7 +648,7 @@ var scene_sequences = {
 		]
 	},
 	ember_doggy = {
-		name = "Ember's doggy",
+		name = "GALLERY_EMBER_DOGGY",
 		descript = "",
 		gallery = true,
 		preview = 'ember_doggy',
@@ -660,7 +660,7 @@ var scene_sequences = {
 		]
 	},
 	rilu_cowgirl = {
-		name = "Rilu is a cowgirl",
+		name = "GALLERY_RILU_COWGIRL",
 		descript = "",
 		gallery = true,
 		preview = 'rilu_cowgirl',
@@ -672,7 +672,7 @@ var scene_sequences = {
 		]
 	},
 	rilu_doggy = {
-		name = "Rilu's doggy",
+		name = "GALLERY_RILU_DOGGY",
 		descript = "",
 		gallery = true,
 		preview = 'rilu_doggy',
@@ -684,7 +684,7 @@ var scene_sequences = {
 		]
 	},
 	rilu_anal = {
-		name = "Rilu's anal",
+		name = "GALLERY_RILU_ANAL",
 		descript = "",
 		gallery = true,
 		preview = 'rilu_anal',
@@ -697,7 +697,7 @@ var scene_sequences = {
 	},
 	
 	iola_blowjob = {
-		name = "Iola's blowjob",
+		name = "GALLERY_IOLA_BLOWJOB",
 		descript = "",
 		gallery = true,
 		preview = 'iola_blowjob',
@@ -709,7 +709,7 @@ var scene_sequences = {
 		]
 	},
 	iola_cunnilingus = {
-		name = "Iola's first cunnilingus",
+		name = "GALLERY_IOLA_CUNNILINGUS",
 		descript = "",
 		gallery = true,
 		preview = 'iola_cunnilingus',
@@ -721,7 +721,7 @@ var scene_sequences = {
 		]
 	},
 	iola_riding = {
-		name = "Iola's riding",
+		name = "GALLERY_IOLA_RIDING",
 		descript = "",
 		gallery = true,
 		preview = 'iola_riding',
@@ -733,7 +733,7 @@ var scene_sequences = {
 		]
 	},
 	iola_foursome = {
-		name = "Iola's foursome",
+		name = "GALLERY_IOLA_FOURSOME",
 		descript = "",
 		gallery = true,
 		preview = 'iola_foursome',
@@ -1564,3 +1564,27 @@ func preload_resources():
 			elif rec.image != '':
 				print("bg/%s" % rec.image)
 				resources.preload_res("bg/%s" % rec.image)
+
+#"needs autosave" means action starts mission with no "no_autosave" flag
+func is_action_needs_autosave(action :Dictionary) ->bool:
+	if action.type == 'mission' and (!action.has("no_autosave") or !action.no_autosave):
+		return true
+	if action.type == 'scene' and is_event_needs_autosave(action.value):
+		return true
+	return false
+
+func is_event_needs_autosave(event_id :String) -> bool:
+	if !event_triggers.has(event_id):
+		return false
+	for action in event_triggers[event_id]:
+		if is_action_needs_autosave(action):
+			return true
+	return false
+
+func is_seq_needs_autosave(seq_id :String) -> bool:
+	assert(scene_sequences.has(seq_id), "no such scene in scene_sequences (%s)" % seq_id)
+	for action in scene_sequences[seq_id].actions:
+		if is_action_needs_autosave(action):
+			return true
+	return false
+

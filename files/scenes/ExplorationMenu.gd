@@ -155,10 +155,11 @@ func select_area(area_code):
 
 func reset_level():
 	if area == null : return
+	var level_str = tr("LEVEL") + " %d"
 	if scalecheck.pressed:
-		$ExplorationSelect/about/level.text = "Level %d" % state.heroes['arron'].level
+		$ExplorationSelect/about/level.text = level_str % state.heroes['arron'].level
 	else:
-		$ExplorationSelect/about/level.text = "Level %d" % Explorationdata.areas[area].level
+		$ExplorationSelect/about/level.text = level_str % Explorationdata.areas[area].level
 
 
 func reset_progress():
@@ -210,6 +211,9 @@ func on_start_press():
 
 
 func start_area():
+	var areadata = Explorationdata.areas[area]
+	if areadata.has("no_escape") and areadata.no_escape:
+		globals.auto_save()
 	input_handler.PlaySound(sounds["start"])
 	state.start_area(area, scalecheck.pressed)
 	open_mission()
@@ -251,12 +255,12 @@ func build_party():
 		if hero.position != null:
 			var node = partylist.get_child(hero.position - 1)
 			node.get_node('icon').texture = hero.portrait()
-			node.get_node('level').text = "Level %d" % hero.level
+			node.get_node('level').text = tr("LEVEL") + " %d" % hero.level
 			node.get_node('name').text = hero.name
 			node.dragdata = ch
 		var node = input_handler.DuplicateContainerTemplate(reservelist, 'Button')
 		node.get_node('icon').texture = hero.portrait()
-		node.get_node('level').text = "Level %d" % hero.level
+		node.get_node('level').text = tr("LVL") + " %d" % hero.level
 		node.get_node('name').text = hero.name
 		node.dragdata = ch
 		node.parent_node = self
@@ -299,6 +303,8 @@ func advance_area():
 #	$AdvConfirm.visible = false
 	var areadata = Explorationdata.areas[area]
 	var areastate = state.areaprogress[area]
+	if !areadata.has("no_escape") or !areadata.no_escape:
+		globals.auto_save()
 	#2add generic scene check
 	assert(areastate.stage <= areadata.stages, "advance_area() made on unexistant stage")
 	if areadata.enemies.has(areastate.stage):

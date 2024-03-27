@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
@@ -10,11 +10,11 @@
 [ext_resource path="res://assets/images/gui/combat/header_level_up.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/combat/level_up_button_active.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/combat/level_up_button_hover.png" type="Texture" id=10]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://assets/fonts/mainfont_55.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/images/gui/combat/level_up_field.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/combat/level_up_arrow.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/combat/ember_circle.png" type="Texture" id=14]
-[ext_resource path="res://assets/fonts/PTSans-Regular.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://assets/fonts/mainfont_36.tres" type="DynamicFont" id=15]
 [ext_resource path="res://assets/images/gui/buildings/panel.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/iconsskills/rilu_1.png" type="Texture" id=17]
 [ext_resource path="res://assets/sfx/white shader material.tres" type="Material" id=18]
@@ -33,11 +33,7 @@
 [ext_resource path="res://files/scenes/UnlockPanel.tscn" type="PackedScene" id=31]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=32]
 [ext_resource path="res://assets/images/traits/healthskillsdouble.png" type="Texture" id=33]
-
-[sub_resource type="DynamicFont" id=1]
-size = 55
-use_filter = true
-font_data = ExtResource( 11 )
+[ext_resource path="res://assets/fonts/mainfont_30.tres" type="DynamicFont" id=34]
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -165,26 +161,6 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-
-[sub_resource type="DynamicFont" id=3]
-size = 30
-use_filter = true
-font_data = ExtResource( 15 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 36
-use_filter = true
-font_data = ExtResource( 15 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 30
-use_filter = true
-font_data = ExtResource( 15 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 36
-use_filter = true
-font_data = ExtResource( 15 )
 
 [node name="combat" type="Control"]
 anchor_right = 1.0
@@ -687,8 +663,8 @@ stretch_mode = 6
 margin_left = 313.0
 margin_top = 66.0
 margin_right = 645.0
-margin_bottom = 122.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 123.0
+custom_fonts/font = ExtResource( 11 )
 text = "VICTORY"
 align = 1
 
@@ -759,11 +735,11 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="LevelUp/panel"]
-margin_left = 213.0
-margin_top = 157.0
-margin_right = 629.0
-margin_bottom = 197.0
-custom_fonts/font = SubResource( 3 )
+margin_left = 204.0
+margin_top = 162.0
+margin_right = 620.0
+margin_bottom = 198.0
+custom_fonts/font = ExtResource( 34 )
 text = "Name has just acquired a level"
 
 [node name="CloseButton" type="TextureButton" parent="LevelUp/panel"]
@@ -803,14 +779,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -247.5
-margin_top = -23.5
+margin_top = -16.5
 margin_right = -156.5
-margin_bottom = 23.5
-custom_fonts/font = SubResource( 4 )
-text = "Level"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 24.5
+custom_fonts/font = ExtResource( 15 )
+text = "LEVEL"
 
 [node name="Before" type="Label" parent="LevelUp/VBoxContainer/Level"]
 anchor_left = 0.5
@@ -818,10 +791,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -2.5
-margin_top = -22.5
+margin_top = -20.5
 margin_right = 70.5
-margin_bottom = 17.5
-custom_fonts/font = SubResource( 5 )
+margin_bottom = 19.5
+custom_fonts/font = ExtResource( 34 )
 text = "1000"
 valign = 1
 __meta__ = {
@@ -848,11 +821,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 161.5
-margin_top = -27.5
+margin_top = -20.5
 margin_right = 248.5
-margin_bottom = 19.5
+margin_bottom = 20.5
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 15 )
 text = "1000"
 valign = 1
 __meta__ = {
@@ -872,14 +845,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -247.5
-margin_top = -23.5
+margin_top = -15.5
 margin_right = -134.5
-margin_bottom = 23.5
-custom_fonts/font = SubResource( 4 )
-text = "Health"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 25.5
+custom_fonts/font = ExtResource( 15 )
+text = "HEALTH"
 
 [node name="Before" type="Label" parent="LevelUp/VBoxContainer/Health"]
 anchor_left = 0.5
@@ -887,10 +857,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -2.5
-margin_top = -22.5
+margin_top = -20.5
 margin_right = 70.5
-margin_bottom = 17.5
-custom_fonts/font = SubResource( 5 )
+margin_bottom = 19.5
+custom_fonts/font = ExtResource( 34 )
 text = "1000"
 valign = 1
 __meta__ = {
@@ -917,11 +887,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 161.5
-margin_top = -27.5
+margin_top = -25.5
 margin_right = 248.5
-margin_bottom = 19.5
+margin_bottom = 21.5
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 15 )
 text = "1000"
 valign = 1
 __meta__ = {
@@ -941,11 +911,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -247.5
-margin_top = -23.5
+margin_top = -16.5
 margin_right = -132.5
-margin_bottom = 23.5
-custom_fonts/font = SubResource( 4 )
-text = "Attack"
+margin_bottom = 24.5
+custom_fonts/font = ExtResource( 15 )
+text = "ATTACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -956,10 +926,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -2.5
-margin_top = -22.5
+margin_top = -20.5
 margin_right = 70.5
-margin_bottom = 17.5
-custom_fonts/font = SubResource( 5 )
+margin_bottom = 19.5
+custom_fonts/font = ExtResource( 34 )
 text = "1000"
 valign = 1
 
@@ -983,11 +953,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 161.5
-margin_top = -27.5
+margin_top = -25.5
 margin_right = 248.5
-margin_bottom = 19.5
+margin_bottom = 21.5
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 15 )
 text = "1000"
 valign = 1
 __meta__ = {
@@ -1007,11 +977,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -247.5
-margin_top = -23.5
-margin_right = -105.5
-margin_bottom = 23.5
-custom_fonts/font = SubResource( 4 )
-text = "New skill"
+margin_top = -16.5
+margin_right = -100.5
+margin_bottom = 24.5
+custom_fonts/font = ExtResource( 15 )
+text = "NEWSKILL"
 
 [node name="Icon" type="TextureRect" parent="LevelUp/VBoxContainer/NewSkill"]
 margin_left = 270.0
@@ -1029,10 +999,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 51.5
-margin_top = -22.5
+margin_top = -17.5
 margin_right = 259.5
-margin_bottom = 17.5
-custom_fonts/font = SubResource( 5 )
+margin_bottom = 19.5
+custom_fonts/font = ExtResource( 34 )
 text = "Skill name"
 clip_text = true
 
@@ -1049,11 +1019,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -247.5
-margin_top = -23.5
-margin_right = -105.5
-margin_bottom = 23.5
-custom_fonts/font = SubResource( 4 )
-text = "New skill"
+margin_top = -14.5
+margin_right = -100.5
+margin_bottom = 24.5
+custom_fonts/font = ExtResource( 15 )
+text = "NEWSKILL"
 
 [node name="Icon" type="TextureRect" parent="LevelUp/VBoxContainer/NewSkill2"]
 margin_left = 270.0
@@ -1071,10 +1041,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 51.5
-margin_top = -22.5
+margin_top = -13.5
 margin_right = 259.5
 margin_bottom = 17.5
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = ExtResource( 34 )
 text = "Skill name"
 clip_text = true
 

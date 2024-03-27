@@ -1226,7 +1226,7 @@ func fill_up_level_up(character):
 	skill_planks[1].visible = false
 	
 	$LevelUp/panel/Avatar/Circle.texture = character.portrait_circle()
-	$LevelUp/panel/Label.text = tr(character.name) + " has just acquired a level!"
+	$LevelUp/panel/Label.text = tr("LEVELUPCHAR") % tr(character.name)
 	$LevelUp/VBoxContainer/Level/Before.text = str(character.level - 1)
 	$LevelUp/VBoxContainer/Level/After.text = str(character.level)
 	$LevelUp/VBoxContainer/Health/Before.text = str(ceil(character.get_hpmax_at_level(character.level - 1)))

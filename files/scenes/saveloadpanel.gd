@@ -1,5 +1,7 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
+export(Texture) var autosave_shot
+
 onready var saves_container = $ScrollContainer/GridContainer
 var saves_folder :String
 var cur_save
@@ -41,7 +43,7 @@ func ResetSavePanel():
 	
 	if can_save():
 		var newbutton = input_handler.DuplicateContainerTemplate(saves_container)
-		newbutton.get_node("name").text = "New save"
+		newbutton.get_node("name").text = tr("SAVENEWSAVE")
 		newbutton.get_node("date").text = ""
 		newbutton.get_node("time").text = ""
 		newbutton.set_meta("save_name", "")
@@ -66,14 +68,18 @@ func ResetSavePanel():
 		newbutton.set_meta("save_name", save_name)
 		newbutton.get_node("date").text = "%d/%02d/%02d" % [file_time.day, file_time.month, file_time.year % 100]
 		newbutton.get_node("time").text = "%d:%02d" % [file_time.hour, file_time.minute]
-		var screenshot_file = file_path.replace('.sav', '.png')
-		var filereader = File.new()
-		if filereader.file_exists(screenshot_file):
-			var screenshot = Image.new()
-			screenshot.load(screenshot_file)
-			var screenshot_tex = ImageTexture.new()
-			screenshot_tex.create_from_image(screenshot)
-			newbutton.get_node("screenshot").texture = screenshot_tex
+		
+		if save_name == variables.autosave_name:
+			newbutton.get_node("screenshot").texture = autosave_shot
+		else:
+			var screenshot_file = file_path.replace('.sav', '.png')
+			var filereader = File.new()
+			if filereader.file_exists(screenshot_file):
+				var screenshot = Image.new()
+				screenshot.load(screenshot_file)
+				var screenshot_tex = ImageTexture.new()
+				screenshot_tex.create_from_image(screenshot)
+				newbutton.get_node("screenshot").texture = screenshot_tex
 		newbutton.connect("pressed", self, "on_file_click", [save_name])
 
 func on_lineedit_enter(_text):
@@ -106,9 +112,10 @@ func choose_save(save_name :String):
 			break
 	cur_save.pressed = true
 	var is_new_save :bool = save_name.empty()
+	var is_auto_save :bool = (save_name == variables.autosave_name)
 	btn_delete.disabled = is_new_save
 	btn_load.disabled = is_new_save
-	btn_save.disabled = !can_save()
+	btn_save.disabled = !can_save() or is_auto_save
 
 func PressLoadGame():
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])
@@ -123,6 +130,9 @@ func PressSaveGame():
 			return
 		if editor.text.empty():
 			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("NOSAVENAMENOTE")])
+			return
+		if editor.text == variables.autosave_name:
+			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("SAVENAMERESTRICTNOTE")])
 			return
 		var file = File.new()
 		if file.file_exists(saves_folder + '/' + editor.text + '.sav'):

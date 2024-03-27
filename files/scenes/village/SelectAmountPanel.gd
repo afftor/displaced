@@ -46,10 +46,10 @@ func setup_res():
 	set_amount(1)
 	var itemdata = Items.Items[item_id]
 	$Icon.texture = itemdata.icon
-	$HBoxContainer/name.text = tr(itemdata.name) #do not think these translations should be made in data file
+	$HBoxContainer/name.text = tr(itemdata.name)
 	$desc.bbcode_text = tr(itemdata.description)
 	$HBoxContainer/cost.text = str(itemdata.price)
-	$amount1.text = "in posession: %d" % state.materials[item_id]
+	$amount1.text = tr("INPOSESSION") + ": %d" % state.materials[item_id]
 
 
 func open_buy(id):
@@ -57,7 +57,7 @@ func open_buy(id):
 	var itemdata = Items.Items[item_id]
 	max_v = int(state.money / itemdata.price)
 	mode = M_BUY
-	$Button.text = "Buy"
+	$Button.text = tr("BUY")
 	setup_res()
 	show()
 
@@ -66,7 +66,7 @@ func open_sell(id):
 	item_id = id
 	max_v = state.materials[item_id]
 	mode = M_SELL
-	$Button.text = "Sell"
+	$Button.text = tr("SELL")
 	setup_res()
 	show()
 

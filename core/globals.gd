@@ -24,7 +24,7 @@ var events_path = "res://assets/data/events"
 
 #var items
 #var TownData
-var workersdict
+#var workersdict
 #var enemydata
 var randomgroups
 
@@ -40,7 +40,7 @@ var enemylist
 var skills
 var effects
 var combateffects
-var explorationares
+#var explorationares
 
 var rng := RandomNumberGenerator.new()
 
@@ -74,6 +74,9 @@ var textcodedict = {
 	url = {start = '[url=',end = '[/url]'}
 }
 var save_screenshot :Image
+
+const base_locale = 'en'
+var localizations = [base_locale, 'ru']
 
 var globalsettings = {
 	ActiveLocalization = 'en',
@@ -154,13 +157,26 @@ func _init():
 #	for i in dir_contents(LocalizationFolder):
 #		TranslationData[i.replace(LocalizationFolder + '/', '').replace('.gd','')] = i
 	
-	#Applying active translation
-	var activetranslation = Translation.new()
-	var translationscript = load(TranslationData[globalsettings.ActiveLocalization]).new()
-	activetranslation.set_locale(globalsettings.ActiveLocalization)
-	for i in translationscript.TranslationDict:
-		activetranslation.add_message(i, translationscript.TranslationDict[i])
-	TranslationServer.add_translation(activetranslation)
+	#Applying translation
+	var base_translation
+	assert(localizations[0] == base_locale, "base_locale has to be first in localizations array!")
+	for locale_num in range(localizations.size()):
+		var locale = localizations[locale_num]
+		var activetranslation = Translation.new()
+		var translationscript = load(TranslationData[locale]).new()
+		if locale_num == 0:
+			base_translation = translationscript
+		else:
+			for i in base_translation.TranslationDict:
+				assert(translationscript.TranslationDict.has(i), "locale %s has no %s string" % [locale, i])
+		activetranslation.set_locale(locale)
+		for i in translationscript.TranslationDict:
+			activetranslation.add_message(i, translationscript.TranslationDict[i])
+		TranslationServer.add_translation(activetranslation)
+	#Settings and folders
+	hotkeys_handler = HotkeysHandler.new()
+	settings_load()
+	TranslationServer.set_locale(globalsettings.ActiveLocalization)
 
 
 func preload_backgrounds():
@@ -184,9 +200,6 @@ func _ready():
 #	OS.window_position = Vector2(300,0)
 	randomize()
 	rng.randomize()
-	hotkeys_handler = HotkeysHandler.new()
-	#Settings and folders
-	settings_load()
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
 	#LoadEventData()
@@ -201,7 +214,7 @@ func _ready():
 	#TownData = load("res://files/TownData.gd").new()
 	#Traitdata = load("res://assets/data/Traits.gd").new()
 	#combatantdata = load("res://files/CombatantClass.gd").new()
-	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
+#	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
 
 #	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 
@@ -239,6 +252,8 @@ func StartGame():
 func run_seq(id, force_replay = false):
 	var replay = (force_replay or state.OldSeqs.has(id))
 	if !replay and !state.check_sequence(id): return
+	if Explorationdata.is_seq_needs_autosave(id):
+		globals.auto_save()
 	var output = run_actions_list(Explorationdata.scene_sequences[id].actions, replay)
 	state.store_sequence(id)
 	return output
@@ -304,7 +319,7 @@ func change_screen(screen, loc :String = ''):
 
 
 func force_start_mission(mission_id):
-	var missiondata = Explorationdata.areas[mission_id]
+#	var missiondata = Explorationdata.areas[mission_id]
 	if state.stashedarea != null:
 		print("error - script missions interrupting")
 	if state.activearea != null:
@@ -512,7 +527,7 @@ func AddPanelOpenCloseAnimation(node):
 	node._ready()
 
 func MaterialTooltip(value):
-	var text = '[center][color=yellow]' + Items.Items[value].name + '[/color][/center]\n' + Items.Items[value].description + '\n\n' + tr("INPOSESSION") + ': ' + str(state.materials[value])
+	var text = '[center][color=yellow]' + tr(Items.Items[value].name) + '[/color][/center]\n' + tr(Items.Items[value].description) + '\n\n' + tr("INPOSESSION") + ': ' + str(state.materials[value])
 	return text
 
 
@@ -639,16 +654,20 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		return array
 
 #seems not in use
-func QuickSave():
-	make_save_screenshot()
-	SaveGame('QuickSave')
-	free_save_screenshot()
+#func QuickSave():
+#	make_save_screenshot()
+#	SaveGame('QuickSave')
+#	free_save_screenshot()
 
 func make_save_screenshot():
 	save_screenshot = get_viewport().get_texture().get_data()
 
 func free_save_screenshot():
 	save_screenshot = null
+
+func auto_save():
+	free_save_screenshot()#or add screenshotless param to SaveGame()
+	SaveGame(variables.autosave_name)
 
 func SaveGame(name):
 #	if state.CurEvent != '':

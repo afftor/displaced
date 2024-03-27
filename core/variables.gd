@@ -266,3 +266,5 @@ var hexcolordict = {
 	light_grey = "#dedede",
 	dark_grey = "#8b8b8b",
 }
+
+const autosave_name = "autosave"

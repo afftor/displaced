@@ -34,7 +34,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/action_2.png", 
-			description = "Halves incoming damage",
+			description = "BUFF_DEFENCE",
 			limit = 1,
 			t_name = 'icon_defence'
 		}],
@@ -48,7 +48,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/meditate.png",
-			description = "Summoned unit. Dies after summoner defeated",
+			description = "BUFF_SUMMON",
 			limit = 1,
 			t_name = 'icon_summon'
 		}],
@@ -134,7 +134,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Debilitate.png", 
-			description = "Poison: Takes damage at the end of turn. Can be dispelled.",
+			description = "BUFF_POISON_PERMANENT",
 			t_name = 'icon_poison_permanent'
 		}],
 	},
@@ -185,7 +185,7 @@ var effect_table = {
 		sub_effects = [rebuild_remove(['tags','has','heal'])],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/iola_6.png", 
-			description = "Stunned: Can't act next turn. Can be healed",
+			description = "BUFF_STUN",
 			limit = 1,
 			t_name = 'icon_stun',
 			bonuseffect = 'duration'
@@ -205,7 +205,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = -0.5}],
 		buffs = [{ 
 			icon = "res://assets/images/traits/speeddebuf.png",
-			description = "Damage reduced for 50%%",
+			description = "BUFF_INTIMIDATE",
 			t_name = 'icon_intimidate',
 			bonuseffect = 'duration'
 		}]
@@ -223,7 +223,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/iola_5.png", 
-			description = "Silenced: Can't cast certain spells",
+			description = "BUFF_SILENCE",
 			t_name = 'icon_silence',
 			bonuseffect = 'duration'
 		}],
@@ -242,7 +242,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/blood_blue.png", 
-			description = "Received damage increased by 20%%",
+			description = "BUFF_WOUND",
 			limit = 1,
 			t_name = 'icon_wound',
 			bonuseffect = 'duration'
@@ -332,10 +332,9 @@ var effect_table = {
 			{obj = 'parent_args', param = 0},
 			{obj = 'parent_args', param = 1}],
 		atomic = [{type = 'stat_mul', stat = 'damage', value = ['parent_args', 0]}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/arron_7.png", 
-				description = "Deal %s%% less damage",
+				description = "BUFF_FENCING_DEBUFF",
 				args = [{obj = 'parent_args', param = 1}],
 				t_name = 'icon_fencing_debuf',
 				bonuseffect = 'duration'
@@ -356,7 +355,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 20}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/arron_1.png", 
-			description = "Evasion increased",
+			description = "BUFF_SWIFT",
 			t_name = 'icon_swift',
 			bonuseffect = 'duration'
 		}],
@@ -382,10 +381,9 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = ['e_t_protect_ctr', 'e_t_protect_ret', 'e_t_protect_buff'],
 		atomic = [],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/arron_2.png", 
-				description = "Parry: additional 50%% dodge chance, counterattacks enemy",
+				description = "BUFF_PARRY_RECEIVER",
 				limit = 1,
 				t_name = 'icon_parry_receiver',
 				bonuseffect = 'duration'
@@ -422,7 +420,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arron_2.png", 
-				description = "Is protected: Damage will be redirected to Arron",
+				description = "BUFF_PARRY_LISTENER",
 				limit = 1,
 				t_name = 'icon_parry_listener',
 				bonuseffect = 'duration'
@@ -525,7 +523,7 @@ var effect_table = {
 		stack = 1,
 		buffs = [{
 			icon = "res://assets/images/iconsskills/arron_4.png", 
-			description = "Damage Increased for next attack: +150%%",
+			description = "BUFF_SWORD_MASTERY",
 			limit = 1,
 			t_name = 'icon_sword_mastery',
 			bonuseffect = 'duration'
@@ -615,10 +613,9 @@ var effect_table = {
 		tags = ['buff'],
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = ['parent_args', 0]}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/arron_5.png", 
-				description = "Damage Increased: %s%%",
+				description = "BUFF_TERMINATION",
 				args = [{obj = 'parent_args', param = 1}],
 				limit = 1,
 				t_name = 'icon_termination_buff',
@@ -637,10 +634,9 @@ var effect_table = {
 		stack = 1,
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 90}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/arron_6.png", 
-				description = "Evasion increased by 90%%",
+				description = "BUFF_SMOKE",
 				args = [],
 				t_name = 'icon_smoke'
 			}
@@ -657,10 +653,9 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/arron_6.png", 
-				description = "Receive 50%% less damage",
+				description = "BUFF_SMOKE_RESIST",
 				t_name = 'icon_smoke_resist',
 				bonuseffect = 'duration'
 			}
@@ -705,10 +700,9 @@ var effect_table = {
 		stack = 1,
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitrate', value = -25}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/rose_2.png", 
-				description = "Reduce Hit Rate by 25%%",
+				description = "BUFF_FLASH",
 				t_name = 'icon_flash'
 			}
 		],
@@ -738,7 +732,7 @@ var effect_table = {
 		],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rose_5.png", 
-			description = "Damage from next air-based skill is increased by 30%%",
+			description = "BUFF_DELUGE",
 			limit = 1,
 			t_name = 'icon_deluge'
 		}]
@@ -757,7 +751,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rose_8.png", 
-			description = "Restores %d health at the start of turn",
+			description = "BUFF_RENEW",
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_renew',
 			bonuseffect = 'duration'
@@ -849,7 +843,7 @@ var effect_table = {
 		],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/erika_2.png", 
-			description = "Damage from next air-based skill is increased by 50%%",
+			description = "BUFF_AIR_ARROW",
 			limit = 1,
 			t_name = 'icon_air_arrow'
 		}]
@@ -909,7 +903,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/erika_5.png",
-			description = "Frozen: Can't Act, Damage from next skill is doubled",
+			description = "BUFF_FREEZE",
 			limit = 1,
 			t_name = 'icon_freeze',
 			bonuseffect = 'duration'
@@ -952,7 +946,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/erika_5.png", 
-			description = "Chilled: Takes water damage at the beginning of turn.",
+			description = "BUFF_CHILL",
 			t_name = 'icon_chill',
 			bonuseffect = 'duration'
 		}],
@@ -986,31 +980,42 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'hitrate', value = -15}],
 		buffs = [{
-				icon = "res://assets/images/iconsskills/erika_3.png", 
-				description = "Reduce Hit Rate by 15%%",
-				t_name = 'icon_arrow_shower_debuff'
-			}],
+			icon = "res://assets/images/iconsskills/erika_3.png", 
+			description = "BUFF_ARROW_SHOWER_DEBUFF",
+			t_name = 'icon_arrow_shower_debuff'
+		}],
 	},
-	e_t_nat_bless_caster = {
+	#Here is TR_TURN_F-type implementation for e_t_nat_bless. Idea is to secure an ability for each
+	#char to use bless for exactly 2 turns, witch is not guaranteed with TR_TURN_S-type
+#	e_t_nat_bless_caster = {
+#		type = 'trigger',
+#		debug_name = 'starter_nature_bless_caster',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		req_skill = true,
+#		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'eq'}}],
+#		val = 3,
+#		args = [{obj = 'template', param = 'val'}],
+#		buffs = [],
+#		sub_effects = ['e_s_nat_bless']
+#	},
+#	e_t_nat_bless_others = {
+#		type = 'trigger',
+#		debug_name = 'starter_nature_bless_others',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		req_skill = true,
+#		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'neq'}}],
+#		val = 2,
+#		args = [{obj = 'template', param = 'val'}],
+#		buffs = [],
+#		sub_effects = ['e_s_nat_bless']
+#	},
+	#TR_TURN_S-type implementation
+	e_t_nat_bless_common = {
 		type = 'trigger',
-		debug_name = 'starter_nature_bless_caster',
+		debug_name = 'starter_nature_bless',
 		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
 		req_skill = true,
-		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'eq'}}],
-		val = 3,
-		args = [{obj = 'template', param = 'val'}],
-		buffs = [],
-		sub_effects = ['e_s_nat_bless']
-	},
-	e_t_nat_bless_others = {
-		type = 'trigger',
-		debug_name = 'starter_nature_bless_others',
-		trigger = [variables.TR_POSTDAMAGE],
-		req_skill = true,
-		conditions = [{type = 'target', value = {type = 'stats', stat = 'id', value = 'erika', operant = 'neq'}}],
-		val = 2,
-		args = [{obj = 'template', param = 'val'}],
-		buffs = [],
 		sub_effects = ['e_s_nat_bless']
 	},
 	e_s_nat_bless = {
@@ -1018,9 +1023,9 @@ var effect_table = {
 		name = 'nature_bless',
 		target = 'target',
 		stack = 1,
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_TURN_S],
 		rem_event = [variables.TR_COMBAT_F],
-		duration = {obj = 'parent_args', param = 0},
+		duration = 2,#{obj = 'parent_args', param = 0},#for TR_TURN_F-type implementation
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
@@ -1030,7 +1035,7 @@ var effect_table = {
 			],
 		buffs = [{ 
 			icon = "res://assets/images/iconsskills/erika_1.png", 
-			description = "Increase all damage by 20%% and Hit Chance by 20%%",
+			description = "BUFF_NATURE_BLESS",
 			t_name = 'icon_nature_bless',
 			bonuseffect = 'duration'
 		}],
@@ -1049,7 +1054,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -25}],
 		buffs = [{ 
 			icon = "res://assets/images/iconsskills/erika_7.png", 
-			description = "Damage taking increased by 25%%",
+			description = "BUFF_HEARTSEEKER_DEBUFF",
 			t_name = 'icon_heartseeker_debuff',
 			bonuseffect = 'duration'
 		}],
@@ -1065,10 +1070,9 @@ var effect_table = {
 		tags = ['negative'],
 		stack = 1,
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 0.5}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/erika_8.png", 
-				description = "Deal 50%% less damage",
+				description = "BUFF_CHARM",
 				limit = 1,
 				t_name = 'icon_charm',
 				bonuseffect = 'duration'
@@ -1143,7 +1147,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_4.png",
-			description = "Incoming damage increased by 20%%",
+			description = "BUFF_FIREPUNCH_DEBUFF",
 			limit = 1,
 			t_name = 'icon_firepunch_debuff',
 			bonuseffect = 'duration'
@@ -1213,7 +1217,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'hitrate', value = -20}],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/ember_3.png", 
-				description = "Reduce Hit Rate by 20%%",
+				description = "BUFF_SHOCKWAVE_DEBUFF",
 				args = [],
 				t_name = 'icon_shockwave_debuff'
 			}],
@@ -1232,7 +1236,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_1.png", 
-			description = "Damage from next air-based skill is increased by 50%%",
+			description = "BUFF_UPPERCUT",
 			limit = 1,
 			t_name = 'icon_uppercut',
 			bonuseffect = 'duration'
@@ -1301,10 +1305,9 @@ var effect_table = {
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_t_protect_ttr'],
 		atomic = [],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/ember_6.png", 
-				description = "Is protected: Damage will be redirected to Ember",
+				description = "BUFF_DEFEND_LISTENER",
 				limit = 1,
 				t_name = 'icon_defend_listener'
 			}
@@ -1324,7 +1327,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 25}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_6.png", 
-			description = "Damage taking decreased by 25%%",
+			description = "BUFF_DEFEND_BUFF",
 			t_name = 'icon_defend_buff',
 		}],
 	},
@@ -1347,7 +1350,7 @@ var effect_table = {
 		],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_2.png", 
-			description = "Barrier (%d remains), can't be debuffed",
+			description = "BUFF_DRAGON_PROTECTION",
 			args = [{obj = 'parent_args', param = 1}],
 			limit = 1,
 			t_name = 'icon_dragon_protection'
@@ -1387,7 +1390,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 75}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_8.png", 
-			description = "Damage taking decreased by 75%%",
+			description = "BUFF_AEGIS",
 			t_name = 'icon_aegis',
 			bonuseffect = 'duration'
 		}],
@@ -1406,7 +1409,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'hpmax', value = 1.25}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/ember_8.png",
-			description = "Max hp increased by 25%%",
+			description = "BUFF_AEGIS_HP",
 			t_name = 'icon_aegis_hp',
 			bonuseffect = 'duration'
 		}],
@@ -1425,10 +1428,9 @@ var effect_table = {
 			{type = 'stat_add', stat = 'resistlight', value = -25},
 			{type = 'stat_add', stat = 'resistdark', value = -25},
 		],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/rilu_6.png", 
-				description = "Reduced Dark and Light resistance by 25%%",
+				description = "BUFF_ORB",
 				limit = 1,
 				t_name = 'icon_orb',
 				bonuseffect = 'duration'
@@ -1476,7 +1478,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'hitrate', value = -25}],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/rilu_3.png", 
-				description = "Reduce Hit Rate by 25%%",
+				description = "BUFF_MIST_DEBUFF",
 				t_name = 'icon_mist_debuff',
 				bonuseffect = 'duration'
 			}],
@@ -1495,7 +1497,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rilu_3.png", 
-			description = "Takes water damage at the beginning of turn.",
+			description = "BUFF_MIST",
 			t_name = 'icon_mist',
 			bonuseffect = 'duration'
 		}],
@@ -1530,7 +1532,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rilu_1.png", 
-			description = "Damage taking increased by 20%%",
+			description = "BUFF_AVALANCHE_DEBUFF",
 			t_name = 'icon_avalanche_debuff',
 			bonuseffect = 'duration'
 		}],
@@ -1577,7 +1579,7 @@ var effect_table = {
 		args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rilu_8.png", 
-			description = "Barrier (%d remains)",
+			description = "BUFF_ECHO_SHIELD",
 			args = [{obj = 'parent_args', param = 0}],
 			limit = 1,
 			t_name = 'icon_echo_shield'
@@ -1598,7 +1600,7 @@ var effect_table = {
 		atomic = [{type = 'stat_set_revert', stat = 'taunt', value = ['parent_args', 0]}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rilu_8.png", 
-			description = "This unit is taunted and must attack Rilu",
+			description = "BUFF_ECHO_TAUNT",
 			limit = 1,
 			t_name = 'icon_echo_taunt',
 			bonuseffect = 'duration'
@@ -1624,7 +1626,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rilu_4.png",
-			description = "Incoming damage increased by 20%%",
+			description = "BUFF_BEAM_DEBUFF",
 			limit = 1,
 			t_name = 'icon_beam_debuff',
 			bonuseffect = 'duration'
@@ -1644,7 +1646,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/rilu_5.png",
-			description = "Can't die",
+			description = "BUFF_SOULPROT",
 			t_name = 'icon_soulprot',
 			limit = 1,
 			bonuseffect = 'duration'
@@ -1714,7 +1716,7 @@ var effect_table = {
 		],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/iola_1.png", 
-			description = "Barrier (%d remains)",
+			description = "BUFF_IOLA_BARRIER",
 			args = [{obj = 'parent_args', param = 1}],
 			limit = 1,
 			t_name = 'icon_iola_barrier'
@@ -1759,7 +1761,7 @@ var effect_table = {
 			],
 		buffs = [{ 
 			icon = "res://assets/images/iconsskills/iola_2.png", 
-			description = "Increase all damage by 15%% and Hit Rate by 25%%",
+			description = "BUFF_BLESS",
 			t_name = 'icon_bless',
 			bonuseffect = 'duration'
 		}],
@@ -1790,7 +1792,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = -20}],
 		buffs = [{
 			icon = "res://assets/images/traits/armorignore.png", 
-			description = "Damage taking increased by 20%% per stack.\nCan be dispelled.",
+			description = "BUFF_CULLING",
 			limit = 1,
 			t_name = 'icon_culling',
 			bonuseffect = 'amount'
@@ -1815,10 +1817,9 @@ var effect_table = {
 		stack = 1,
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 25}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/traits/dodge.png", 
-				description = "Evasion increased by 25",
+				description = "BUFF_ENERGYBURST_BUFF",
 				t_name = 'icon_energyburst_buff',
 				bonuseffect = 'duration'
 			}
@@ -1845,10 +1846,9 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = ['e_t_protect_ctr', 'e_t_def_ctr1'],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 25}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/ember_6.png", 
-				description = "Receive 25%% less damage. Can be removed by stun",
+				description = "BUFF_GUARD_ON_CASTER",
 				limit = 1,
 				t_name = 'icon_guard_on_caster'
 			}
@@ -1881,10 +1881,9 @@ var effect_table = {
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_t_protect_ttr'],
 		atomic = [],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/ember_6.png", 
-				description = "Is protected: Damage redirected to Cult Soldier",
+				description = "BUFF_GUARD_LISTENER",
 				limit = 1,
 				t_name = 'icon_guard_listener'
 			}
@@ -1913,10 +1912,9 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.5}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/defaultattack.png", 
-				description = "Increase damage by 50%%",
+				description = "BUFF_SCROLL_OFFENSE",
 				limit = 1,
 				t_name = 'icon_scroll_offense',
 				bonuseffect = 'duration'
@@ -1934,10 +1932,9 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [{type = 'stat_add', stat = 'resistdamage', value = 50}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/iconsskills/tackle.png", 
-				description = "Receive 50%% less damage",
+				description = "BUFF_SCROLL_DEFENCE",
 				limit = 1,
 				t_name = 'icon_scroll_defence',
 				bonuseffect = 'duration'
@@ -2033,7 +2030,7 @@ var effect_table = {
 		],
 		buffs = [{ 
 			icon = "res://assets/images/iconsskills/erika_1.png", 
-			description = "Increase all damage by 20%% and Hit Chance by 20%%",
+			description = "BUFF_NATURE_BLESS",
 			t_name = 'icon_passive_bless'
 		}],
 	},
@@ -2055,7 +2052,7 @@ var effect_table = {
 		atomic = [{type = 'stat_mul', stat = 'damage', value = 1.2}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/defaultattack.png", 
-			description = "Increase damage by 20%%",
+			description = "BUFF_PASSIVE_DAMAGE",
 			t_name = 'icon_passive_damage'
 		}],
 		sub_effects = [],
@@ -2068,7 +2065,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/traits/speedondamage.png",
-			description = "Has %d souls. Damage and resistance are increased per soul",
+			description = "BUFF_SOULS",
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_souls',
 			limit = 1,
@@ -2279,7 +2276,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/strongattack.png", 
-			description = "Charging Execute",
+			description = "BUFF_EXECUTE_CHARGE",
 			limit = 1,
 			t_name = 'icon_execute_charge'
 		}],
@@ -2327,7 +2324,7 @@ var effect_table = {
 		args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
 		buffs = [{
 			icon = "res://assets/images/traits/armor.png", 
-			description = "At the start of each turn adds Barrier of 25\nper Faery in battle. (%d remains)",
+			description = "BUFF_FAERY_BARRIER",
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_faery_barrier',
 		}],
@@ -2338,7 +2335,7 @@ var effect_table = {
 		args = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/erika_5.png", 
-			description = "Queen's Ice Blast damage reduced by 20%% per Faery in battle.",
+			description = "BUFF_FQUEEN_BLAST_INFO",
 			t_name = 'icon_fqueen_blast_info',
 		}],
 		sub_effects = [],
@@ -2358,7 +2355,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/unstable.png", 
-			description = "When dies deal high damage.\nOn player turn, deal damage to player characters.\nOn enemy turn deal damage to enemy.",
+			description = "BUFF_UNSTABLE",
 			t_name = 'icon_unstable'
 		}],
 		sub_effects = ['e_d_bomb1', 'e_d_bomb2'],
@@ -2406,7 +2403,7 @@ var effect_table = {
 		atomic = [{type = 'add_rule', value = 'no_shield'}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/blood_blue.png", 
-			description = "Noone can be protected with barriers",
+			description = "BUFF_RULE_NO_BARRIERS",
 			limit = 1,
 			t_name = 'icon_rule_no_barriers'
 		}],
@@ -2421,7 +2418,7 @@ var effect_table = {
 		atomic = [{type = 'add_rule', value = 'no_heal'}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/blood_blue.png", 
-			description = "Noone can be healed",
+			description = "BUFF_RULE_NO_HEAL",
 			limit = 1,
 			t_name = 'icon_rule_no_heal'
 		}],
@@ -2436,7 +2433,7 @@ var effect_table = {
 		atomic = [{type = 'add_rule', value = 'no_res'}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/blood_blue.png", 
-			description = "Noone can be resurrected",
+			description = "BUFF_RULE_NO_RES",
 			limit = 1,
 			t_name = 'icon_rule_no_res'
 		}],
@@ -2489,13 +2486,7 @@ var effect_table = {
 		stack = 1,
 		args = [{obj = 'parent_args', param = 0}, {obj = 'app_obj', param = 'shield', dynamic = true}],
 		atomic = [{type = 'shield_add_temporal', shield_id = 'barrier4', value = ['parent_args', 0]}],
-		buffs = [{
-			icon = "res://assets/images/traits/armor.png", 
-			description = "Damage-absorbing shield (%d remains)",
-			args = [{obj = 'parent_args', param = 1}],
-			t_name = 'icon_barrier4',
-			bonuseffect = 'duration'
-		}],
+		buffs = ['b_barrier'],
 		sub_effects = [],
 	},
 	e_i_barrier5 = {
@@ -2518,13 +2509,7 @@ var effect_table = {
 		stack = 1,
 		args = [{obj = 'parent_args', param = 0}, {obj = 'app_obj', param = 'shield', dynamic = true}],
 		atomic = [{type = 'shield_add_temporal', shield_id = 'barrier5', value = ['parent_args', 0]}],
-		buffs = [{
-			icon = "res://assets/images/traits/armor.png", 
-			description = "Damage-absorbing shield (%d remains)",
-			args = [{obj = 'parent_args', param = 1}],
-			t_name = 'icon_barrier5',
-			bonuseffect = 'duration'
-		}],
+		buffs = ['b_barrier'],
 		sub_effects = [],
 	},
 	common_shield_info = {
@@ -2534,10 +2519,9 @@ var effect_table = {
 		target = 'target',
 		stack = 1,
 		args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
-		buffs = [
-			{
+		buffs = [{
 				icon = "res://assets/images/traits/armor.png", 
-				description = "Damage-absorbing shield (%d remains)",
+				description = "BUFF_SHIELD_INFO",
 				args = [{obj = 'parent_args', param = 0}],
 				t_name = 'icon_shield_info',
 			}
@@ -3912,35 +3896,35 @@ var buffs = {
 	#new part
 	b_bleed = { 
 		icon = "res://assets/images/iconsskills/arron_3.png", 
-		description = "Bleeding: Takes Neutral damage at the %s of turn",
+		description = "BUFF_BLEED",
 		args = [{obj = 'parent_args', param = 1}],
 		t_name = 'icon_bleed',
 		bonuseffect = 'duration'
 	},
 	b_poison = {
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
-		description = "Poisoned: Takes %s damage at the end of turn",
+		description = "BUFF_POISON",
 		args = [{obj = 'parent_args', param = 1}],
 		t_name = 'icon_poison',
 		bonuseffect = 'duration'
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
-		description = "Burn: Takes Fire damage at the %s of turn.\nRemoved by Water damage.",
+		description = "BUFF_BURN",
 		args = [{obj = 'parent_args', param = 1}],
 		t_name = 'icon_burn',
 		bonuseffect = 'duration'
 	},
 	b_renew1 = {
 		icon = "res://assets/images/iconsskills/rose_8.png", 
-		description = "Damage taken is reduced by %d%%",
+		description = "BUFF_RENEW_RESIST",
 		args = [{obj = 'parent_args', param = 0}],
 		t_name = 'icon_renew_resist',
 		bonuseffect = 'duration'
 	},
 	b_gust = {
 		icon = "res://assets/images/iconsskills/iola_3.png", 
-		description = "Damage decreased by %s%%",
+		description = "BUFF_GUSTOFWIND_DEBUFF",
 		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
 		t_name = 'icon_gustofwind_debuff',
@@ -3948,7 +3932,7 @@ var buffs = {
 	},
 	b_bloodlust = {
 		icon = "res://assets/images/iconsskills/tackle.png", 
-		description = "Damage is increased by %s per stack. Can be dispelled.",
+		description = "BUFF_BLOODLUST",
 		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
 		t_name = 'icon_bloodlust',
@@ -3956,11 +3940,18 @@ var buffs = {
 	},
 	b_enrage = {
 		icon = "res://assets/images/iconsskills/taunt.png", 
-		description = "Damage is increased by %s per stack.\nCan be dispelled or removed by Water damage.",
+		description = "BUFF_RAGE",
 		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
 		t_name = 'icon_rage',
 		bonuseffect = 'amount'
+	},
+	b_barrier = {
+		icon = "res://assets/images/traits/armor.png", 
+		description = "BUFF_SHIELD_INFO",
+		args = [{obj = 'parent_args', param = 1}],
+		t_name = 'icon_barrier',
+		bonuseffect = 'duration'
 	},
 	#not in use or old
 	#icons are defined by path or by name in images.icons, do not load images here!

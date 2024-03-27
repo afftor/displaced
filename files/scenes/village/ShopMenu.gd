@@ -22,10 +22,10 @@ func update_data():
 func build_res(panel, item_id):
 	var itemdata = Items.Items[item_id]
 	panel.get_node('Icon').texture = itemdata.icon 
-	panel.get_node('HBoxContainer/name').text = tr(itemdata.name) #do not think these translations should be made in data file
+	panel.get_node('HBoxContainer/name').text = tr(itemdata.name)
 	panel.get_node('desc').bbcode_text = tr(itemdata.description)
 	panel.get_node('HBoxContainer/cost').text = str(itemdata.price)
-	panel.get_node('amount').text = "in posession: %d" % state.materials[item_id]
+	panel.get_node('amount').text = tr("INPOSESSION") + ": %d" % state.materials[item_id]
 
 
 func open():

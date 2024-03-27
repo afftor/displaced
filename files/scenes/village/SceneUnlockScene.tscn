@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/images/portrait/EmberNormal.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/scene_preview/ember_boobs.png" type="Texture" id=3]
 [ext_resource path="res://files/SFX/blur_box_ontex.shader" type="Shader" id=4]
-[ext_resource path="res://assets/fonts/pt_20.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/mainfont_20.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=6]
 [ext_resource path="res://files/scenes/village/SceneUnlockScene.gd" type="Script" id=7]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=8]
@@ -55,7 +55,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 margin_left = 17.0
 margin_top = 236.0
-margin_right = 333.0
+margin_right = 198.0
 margin_bottom = 376.0
 custom_fonts/font = ExtResource( 5 )
 text = "Locked"
@@ -101,8 +101,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="reqs/list/line"]
 margin_left = 50.0
-margin_top = 2.0
-margin_right = 123.0
+margin_top = 8.0
+margin_right = 129.0
 margin_bottom = 29.0
 custom_fonts/font = ExtResource( 5 )
 text = "135/500"
@@ -129,8 +129,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="reqs/list/line2"]
 margin_left = 50.0
-margin_top = 2.0
-margin_right = 123.0
+margin_top = 8.0
+margin_right = 129.0
 margin_bottom = 29.0
 custom_fonts/font = ExtResource( 5 )
 text = "135/500"
@@ -157,8 +157,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="reqs/list/line3"]
 margin_left = 50.0
-margin_top = 2.0
-margin_right = 123.0
+margin_top = 8.0
+margin_right = 129.0
 margin_bottom = 29.0
 custom_fonts/font = ExtResource( 5 )
 text = "135/500"
@@ -176,10 +176,7 @@ margin_top = -64.0
 margin_right = 95.5
 margin_bottom = -16.0
 theme = ExtResource( 6 )
-text = "Watch"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "WATCH"
 
 [node name="unlock_btn" type="Button" parent="."]
 anchor_left = 0.5
@@ -189,9 +186,10 @@ anchor_bottom = 1.0
 margin_left = -95.5
 margin_top = -64.0
 margin_right = 95.5
-margin_bottom = -20.0
+margin_bottom = -16.0
 theme = ExtResource( 6 )
-text = "Unlock"
+text = "GAL_UNLOCK"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

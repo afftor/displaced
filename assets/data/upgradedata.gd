@@ -91,26 +91,26 @@ var upgradelist = {#2 fix data
 			1:{
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
-				bonusdescript = "UPGRADETAVERNBONUS1",
+#				bonusdescript = "UPGRADETAVERNBONUS1",
 				animatebuilding = true,
 				cost = {stone = 10, gold = 2000},
 			},
 			2:{
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
-				bonusdescript = "UPGRADETAVERNBONUS2",
+#				bonusdescript = "UPGRADETAVERNBONUS2",
 				cost = {metal = 20, gold = 10000},
 			},
 			3:{
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
-				bonusdescript = "UPGRADETAVERNBONUS3",
+#				bonusdescript = "UPGRADETAVERNBONUS3",
 				cost = {scales = 20, gold = 25000},
 			},
 			4:{
 				icon = load("res://assets/images/buildings/tavern.png"),
 				node = load("res://assets/images/buildings/tavern.png"),
-				bonusdescript = "UPGRADETAVERNBONUS4",
+#				bonusdescript = "UPGRADETAVERNBONUS4",
 				cost = {otherworld = 25, gold = 50000},
 			}
 		}
@@ -125,26 +125,26 @@ var upgradelist = {#2 fix data
 			1:{
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
-				bonusdescript = "UPGRADEMINEBONUS1",
+#				bonusdescript = "UPGRADEMINEBONUS1",
 				animatebuilding = true,
 				cost = {stone = 15, gold = 2000},
 			},
 			2:{
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
-				bonusdescript = "UPGRADEMINEBONUS2",
+#				bonusdescript = "UPGRADEMINEBONUS2",
 				cost = {metal = 25, gold = 10000},
 			},
 			3:{
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
-				bonusdescript = "UPGRADEMINEBONUS3",
+#				bonusdescript = "UPGRADEMINEBONUS3",
 				cost = {scales = 30, gold = 25000},
 			},
 			4:{
 				icon = load("res://assets/images/buildings/upgrade_mine.png"),
 				node = load("res://assets/images/buildings/mine.png"),
-				bonusdescript = "UPGRADEMINEBONUS4",
+#				bonusdescript = "UPGRADEMINEBONUS4",
 				cost = {otherworld = 35, gold = 50000},
 			}
 		}
@@ -160,26 +160,26 @@ var upgradelist = {#2 fix data
 			1:{
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
-				bonusdescript = "UPGRADEFARMBONUS1",
+#				bonusdescript = "UPGRADEFARMBONUS1",
 				animatebuilding = true,
 				cost = {wood = 15, gold = 2000},
 			},
 			2:{
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
-				bonusdescript = "UPGRADEFARMBONUS2",
+#				bonusdescript = "UPGRADEFARMBONUS2",
 				cost = {chitine = 25, gold = 10000},
 			},
 			3:{
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
-				bonusdescript = "UPGRADEFARMBONUS3",
+#				bonusdescript = "UPGRADEFARMBONUS3",
 				cost = {leather = 25, gold = 25000},
 			},
 			4:{
 				icon = load("res://assets/images/buildings/upgrade_farm.png"),
 				node = load("res://assets/images/buildings/farm.png"),
-				bonusdescript = "UPGRADEFARMBONUS4",
+#				bonusdescript = "UPGRADEFARMBONUS4",
 				cost = {demonic = 25, gold = 50000},
 			}
 		}
@@ -194,26 +194,26 @@ var upgradelist = {#2 fix data
 			1:{
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
-				bonusdescript = "UPGRADEMILLBONUS1",
+#				bonusdescript = "UPGRADEMILLBONUS1",
 				animatebuilding = true,
 				cost = {wood = 10, gold = 2000},
 			},
 			2:{
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
-				bonusdescript = "UPGRADEMILLBONUS2",
+#				bonusdescript = "UPGRADEMILLBONUS2",
 				cost = {chitine = 20, gold = 10000},
 			},
 			3:{
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
-				bonusdescript = "UPGRADEMILLBONUS3",
+#				bonusdescript = "UPGRADEMILLBONUS3",
 				cost = {leather = 20, gold = 25000},
 			},
 			4:{
 				icon = load("res://assets/images/buildings/upgrade_lumbermill.png"),
 				node = load("res://assets/images/buildings/sawmill.png"),
-				bonusdescript = "UPGRADEMILLBONUS4",
+#				bonusdescript = "UPGRADEMILLBONUS4",
 				cost = {demonic = 20, gold = 50000},
 			}
 		}

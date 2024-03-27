@@ -99,7 +99,7 @@ func rebuild_gear_slot(node, data, newdata):
 	node.get_node("Icon").texture = data.icon
 	node.get_node("Label2").text = data.name
 	if data.level > 0:
-		node.get_node("Label").text = "Level %d" % data.level
+		node.get_node("Label").text = tr("LEVEL") + " %d" % data.level
 	else:
 		node.get_node("Label").text = ""
 	if newdata != null:

@@ -1,6 +1,7 @@
 extends Panel
 
 func _ready():
+	$RichTextLabel.parse_bbcode(tr("WARNTEXT"))
 	show()
 #warning-ignore:return_value_discarded
 	$Accept.connect("pressed",self,"Accept")
