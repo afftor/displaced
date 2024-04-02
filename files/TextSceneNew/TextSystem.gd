@@ -21,7 +21,7 @@ const AVAIL_EFFECTS = [
 	"SPRITE", "SPRITE_FADE", "SPRITE_HIDE",
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
-	"ABG", "STOP", "CHOICE", "SKIP",
+	"ABG", "STOP", "CHOICE",
 	"DECISION", "STATE", "LOOSE",
 	"IF", "MOVETO", "POSITION", "BG_EMPTY"
 	]
@@ -966,12 +966,13 @@ func tag_shake_screen(secs: String = "0.2") -> void:
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.ShakeAnimation(self, float(secs))
 
-func tag_skip(ifindex_s: String, lcount_s: String) -> void:
-	var ifindex = int(ifindex_s)
-	var lcount = int(lcount_s)
-
-	if ifindex == last_choice or ifindex == -1:
-		step += lcount
+#fully migrated from =SKIP= methods to =IF= and =MOVETO=, as it is far more flexible and mistakeproof
+#func tag_skip(ifindex_s: String, lcount_s: String) -> void:
+#	var ifindex = int(ifindex_s)
+#	var lcount = int(lcount_s)
+#
+#	if ifindex == last_choice or ifindex == -1:
+#		step += lcount
 
 func tag_sound(res_name: String) -> void:
 	if rewind_mode: return
@@ -1024,11 +1025,9 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 		$VideoBunch.Change(res, sec_res)
 	delay = max(delay, 0.3) #not sure, but should be enough to fix asynchonisation of abg changing 
 
-#it would be best to migrate from =SKIP= methods to =IF= and =MOVETO=, as last one is far more flexible and mistakeproof, but it would be hard to do so
 func tag_moveto(pos :String) ->void:
 	var cur_line = get_line_nr()
-	#1000 - is an abstract "alot". If tags =STOP= or =POSITION= will not be found within 1000 lines, it would certainly be an error
-	for line_num in range(cur_line, cur_line + 1000):
+	for line_num in range(cur_line, scene_map["stop"]):
 		var line = ref_src[line_num]
 		if line.begins_with("=") and line.ends_with("="):
 			var tag_string = line.replace("=", "")
@@ -1039,8 +1038,6 @@ func tag_moveto(pos :String) ->void:
 					and tag_array[1] == pos):
 				step = line_num - line_start
 				return
-			if tag_array[0] == "STOP":
-				break
 	assert(false, "POSITION not found in tag_moveto!!!")
 
 func tag_position(pos :String) ->void:
@@ -1272,6 +1269,7 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 			line_dr = i.replace("=", "")
 			match line_dr:
 				"STOP":
+					#mind, that event can have few STOP tags, so only the last one will be recorded as scene end
 					out[current_scene]["stop"] = c
 #				"CHARDEF_BEGIN":
 #					chardef = true

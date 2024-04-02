@@ -122,7 +122,8 @@ Ar - I don't think she swings that way.  & EV_ERIKA_2_87
 Er(happy) - Well if you give me permission, we can make her try something new. & EV_ERIKA_2_88
 =CHOICE Allow|Refuse=
 Er - I'm sure I can at least get her to consider it...  & EV_ERIKA_2_89
-=SKIP 0 7=
+=IF LASTCHOICE 0 2 1=
+=POSITION 1=
 Ar - I'd rather not.  & EV_ERIKA_2_90
 Er(happy) - Afraid I'm gonna steal her from you? & EV_ERIKA_2_91
 Ar - Ha! Maybe. Pretty sure you are capable. & EV_ERIKA_2_92
@@ -130,6 +131,7 @@ Er - Well, I might be, but I would never turn against you like that. & EV_ERIKA_
 Er - Alright, I won’t try to make Rose all pervy, but please keep my affection in mind. & EV_ERIKA_2_94
 =STOP=
 
+=POSITION 2=
 =DECISION erika_2_true=
 Ar - Well, that's true, I guess she might like it after trying it out.  & EV_ERIKA_2_95
 Er - There’s nothing to worry about. You will be there with her, so she'll be fine.  & EV_ERIKA_2_96
