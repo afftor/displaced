@@ -3,8 +3,8 @@ extends Tabs
 func _ready() -> void:
 	$EvMap.connect("state_update", self, "state_update")
 
-func play_scene(scn_name: String) -> void:
-	yield(get_tree().create_timer(0.5), "timeout")
+#func play_scene(scn_name: String) -> void:
+#	yield(get_tree().create_timer(0.5), "timeout")
 
 func state_update(cstate: Array) -> void:
 	$AvailActions.clear()
@@ -36,7 +36,7 @@ func _on_Map_item_activated(index: int) -> void:
 func _on_AvailScenes_item_activated(index: int) -> void:
 	var iname = $AvailScenes.get_item_text(index)
 	if $DoPlayScenes.pressed:
-		yield($"../scene_player".play_scene(iname), \
+		yield($"../scene_player".play_scene(iname, false), \
 											"completed")
 		for dec in $"../scene_player/TextSystem".decisions:
 			$EvMap.decisions.append(str(dec))

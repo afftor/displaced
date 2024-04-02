@@ -1,0 +1,32 @@
+** erika_1 **
+=MUSIC eventlight=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+=GUI_NORMAL=
+Er - Well, this place ain't half bad.
+Ar - Naturally. I'm the ruler here after all.
+Er - You won't mind me staying here too?
+Ar - I would be honored.
+Ro - I mind. We don't really have a room for guests.
+Er - Hmm... That's a shame. Say, Arron, you have a nice, big bed.
+Er - Isn't it a Mayor's responsibility to provide guests with a sleeping place? 
+Er(happy) - I would love to know you better while you are short on rooms for guests.
+Ro(shock) - NO!
+Er - Hm? Why are you against it? 
+Ro - Because... Guests shouldn't be bothered by others as they sleep.
+Ro - I can sleep in Master's bed and you take mine.
+Er - Eeeh? But I don't wanna sleep alone.
+Er(happy) - Well, if you don't want to get separated from Arron, why don't we all sleep together?
+Ar - (As appealing as it may sound, I'm afraid this might end up in a disaster. Rose seems quite serious about this. )
+Ar - Alright, calm down you two, I believe we have some additional space in the attic.
+Er - Hmm... Fine, but leave your door unlocked. I might want to visit if I get bored.
+Ro - Sigh. You are still going at it?
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

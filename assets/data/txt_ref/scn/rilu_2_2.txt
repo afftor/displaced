@@ -5,187 +5,187 @@
 =BG hall=
 =SPRITE rose=
 =MUSIC eventgeneric=
-The girls and Arron are having dinner.
-Em - Wow, this tastes great, Rose! 
-Em(sad) - I wish I could cook like you.
-Ro(talk) - It's nothing special.
-Ro - I had to learn it as part of my training.
-Er - The meat is quite unusual, never tried anything like this before.
-Ro(talk) - Ah, it was Rilu's recipe. 
-Ro - She helped me out today.
-Ar - Ah, some ancient culinary? That's fancy.
+The girls and Arron are having dinner. & EV_RILU_2_2_0
+Em - Wow, this tastes great, Rose!  & EV_RILU_2_2_1
+Em(sad) - I wish I could cook like you. & EV_RILU_2_2_2
+Ro(talk) - It's nothing special. & EV_RILU_2_2_3
+Ro - I had to learn it as part of my training. & EV_RILU_2_2_4
+Er - The meat is quite unusual, never tried anything like this before. & EV_RILU_2_2_5
+Ro(talk) - Ah, it was Rilu's recipe.  & EV_RILU_2_2_6
+Ro - She helped me out today. & EV_RILU_2_2_7
+Ar - Ah, some ancient culinary? That's fancy. & EV_RILU_2_2_8
 =SPRITE rilu=
-Ri - ...Yes, something like that.
-Ri(talk) - Thanks for the meal, I should go now.
+Ri - ...Yes, something like that. & EV_RILU_2_2_9
+Ri(talk) - Thanks for the meal, I should go now. & EV_RILU_2_2_10
 =SPRITE_FADE 0.3=
-Ro(sarcastic) - Master, have you offended her recently? 
-Ar - Can't imagine how.
-Ro(talk) - She looked displeased after you spoke to her.
-Ar(neutral) - Maybe it's my breath? 
-Ar - It would be your fault then.
-Em - Your breath smells fine.
-Ro(sarcastic) - Wait, why would it be my fault?
-Ar - It's your duty to make sure I don't embarrass myself.
-Ro(sarcastic) - No, it's not.
-Ar - Whatever. I'll go talk to her I guess.
+Ro(sarcastic) - Master, have you offended her recently?  & EV_RILU_2_2_11
+Ar - Can't imagine how. & EV_RILU_2_2_12
+Ro(talk) - She looked displeased after you spoke to her. & EV_RILU_2_2_13
+Ar(neutral) - Maybe it's my breath?  & EV_RILU_2_2_14
+Ar - It would be your fault then. & EV_RILU_2_2_15
+Em - Your breath smells fine. & EV_RILU_2_2_16
+Ro(sarcastic) - Wait, why would it be my fault? & EV_RILU_2_2_17
+Ar - It's your duty to make sure I don't embarrass myself. & EV_RILU_2_2_18
+Ro(sarcastic) - No, it's not. & EV_RILU_2_2_19
+Ar - Whatever. I'll go talk to her I guess. & EV_RILU_2_2_20
 =BLACKTRANS 1=
 =DELAY 1=
 =BG villagenight=
-Arron went to Rilu's house.
+Arron went to Rilu's house. & EV_RILU_2_2_21
 =SPRITE_UNFADE 0.3=
-Ar(neutral) - Hey. Is something wrong?
-Ar(neutral) - I should probably apologize for the last time.
-Ar(neutral) - You weren't yourself and I took advantage of it.
-Ri - No, it wasn't really like that...
-Ar - Oh, okay then.
-Ar - So there's no tension between us?
-Ri - That's...
-Ri - Actually, I must confess.
-Ar(shock) - You are pregnant!
-Ri(talk) - Wha...? 
-Ri - No, no, this isn't possible for me.
-Ar - Phew...
-Ar - What do you have on your mind then?
-Ri - Before we met, I never cared much for sex.
-Ri - Never was interested in it either.
-Ar(neutral) - You did it though.
-Ri - Not so much did it, as it was done to me.
-Ar(neutral) - Eh?
-Ri - Arron, not everyone out there was as nice to me as you.
-Ri - Most people usually ostracized and feared me. 
-Ri - Some because of my condition.
-Ri - Some because of my practices.
-Ri - And many did torture me, while some had experiments.
-Ar(neutral) - This sounds awful.
-Ar(neutral) - I'm sorry you had to deal with that.
-Ri - Don't be, I've gotten used to it after all.
-Ri - Probably because of it I never had much interest in intimacy.
-Ri - Or so I thought.
-Ri - Then there was that incident with the... Well...
-Ar - Potency restoration.
-Ri - i didn't expect it would be a very different experience to me. 
-Ri - So much, that I started to think about it.
-Ri - A... lot, actually. 
-Ri - But even though I was interested in it now, I had no idea how to talk about it.
-Ar - Hah, so you are kinda like Rose at that.
-Ri - What do you mean?
-Ar - Nevermind.
-Ar - So I take it, you used a cat spirit as an excuse.
-Ri - Yes. 
-Ri - It was a bit unbearable at the time. 
-Ri - I'm sorry about deceiving you.
-Ar - Don't worry, that was a pleasure for me.
-Ri - ... I'm glad you feel that way. 
-Ar - You don't have to hold back if you need it at any time.
-Ri - Can we do it today then?
-Ar - You don't beat around the bush.
-Ar - I think I have a fun idea.
-Ar - Come to the townhall in one hour.
-Ri - *Nod*
+Ar(neutral) - Hey. Is something wrong? & EV_RILU_2_2_22
+Ar(neutral) - I should probably apologize for the last time. & EV_RILU_2_2_23
+Ar(neutral) - You weren't yourself and I took advantage of it. & EV_RILU_2_2_24
+Ri - No, it wasn't really like that... & EV_RILU_2_2_25
+Ar - Oh, okay then. & EV_RILU_2_2_26
+Ar - So there's no tension between us? & EV_RILU_2_2_27
+Ri - That's... & EV_RILU_2_2_28
+Ri - Actually, I must confess. & EV_RILU_2_2_29
+Ar(shock) - You are pregnant! & EV_RILU_2_2_30
+Ri(talk) - Wha...?  & EV_RILU_2_2_31
+Ri - No, no, this isn't possible for me. & EV_RILU_2_2_32
+Ar - Phew... & EV_RILU_2_2_33
+Ar - What do you have on your mind then? & EV_RILU_2_2_34
+Ri - Before we met, I never cared much for sex. & EV_RILU_2_2_35
+Ri - Never was interested in it either. & EV_RILU_2_2_36
+Ar(neutral) - You did it though. & EV_RILU_2_2_37
+Ri - Not so much did it, as it was done to me. & EV_RILU_2_2_38
+Ar(neutral) - Eh? & EV_RILU_2_2_39
+Ri - Arron, not everyone out there was as nice to me as you. & EV_RILU_2_2_40
+Ri - Most people usually ostracized and feared me.  & EV_RILU_2_2_41
+Ri - Some because of my condition. & EV_RILU_2_2_42
+Ri - Some because of my practices. & EV_RILU_2_2_43
+Ri - And many did torture me, while some had experiments. & EV_RILU_2_2_44
+Ar(neutral) - This sounds awful. & EV_RILU_2_2_45
+Ar(neutral) - I'm sorry you had to deal with that. & EV_RILU_2_2_46
+Ri - Don't be, I've gotten used to it after all. & EV_RILU_2_2_47
+Ri - Probably because of it I never had much interest in intimacy. & EV_RILU_2_2_48
+Ri - Or so I thought. & EV_RILU_2_2_49
+Ri - Then there was that incident with the... Well... & EV_RILU_2_2_50
+Ar - Potency restoration. & EV_RILU_2_2_51
+Ri - i didn't expect it would be a very different experience to me.  & EV_RILU_2_2_52
+Ri - So much, that I started to think about it. & EV_RILU_2_2_53
+Ri - A... lot, actually.  & EV_RILU_2_2_54
+Ri - But even though I was interested in it now, I had no idea how to talk about it. & EV_RILU_2_2_55
+Ar - Hah, so you are kinda like Rose at that. & EV_RILU_2_2_56
+Ri - What do you mean? & EV_RILU_2_2_57
+Ar - Nevermind. & EV_RILU_2_2_58
+Ar - So I take it, you used a cat spirit as an excuse. & EV_RILU_2_2_59
+Ri - Yes.  & EV_RILU_2_2_60
+Ri - It was a bit unbearable at the time.  & EV_RILU_2_2_61
+Ri - I'm sorry about deceiving you. & EV_RILU_2_2_62
+Ar - Don't worry, that was a pleasure for me. & EV_RILU_2_2_63
+Ri - ... I'm glad you feel that way.  & EV_RILU_2_2_64
+Ar - You don't have to hold back if you need it at any time. & EV_RILU_2_2_65
+Ri - Can we do it today then? & EV_RILU_2_2_66
+Ar - You don't beat around the bush. & EV_RILU_2_2_67
+Ar - I think I have a fun idea. & EV_RILU_2_2_68
+Ar - Come to the townhall in one hour. & EV_RILU_2_2_69
+Ri - *Nod* & EV_RILU_2_2_70
 =BLACKUNFADE 1=
 =DELAY 1=
-Some time later
+Some time later & EV_RILU_2_2_71
 =SOUND knocking=
 =BG hall=
 =BLACKFADE 1=
 =DELAY 1=
-Ar - Hop in.
-Ar - Say, you aren't against some experiments?
-Ri - .....
+Ar - Hop in. & EV_RILU_2_2_72
+Ar - Say, you aren't against some experiments? & EV_RILU_2_2_73
+Ri - ..... & EV_RILU_2_2_74
 =MUSIC erotheme=
 =GUI_FULL=
 =ABG rilu_anal_1=
-By Arron's instructions, Rilu laid on the side.
-Ri - This is somewhat embarrassing.
-Ar - Doesn't it make you excited? 
-Ri - ...
-Ar - Now let me show you...
+By Arron's instructions, Rilu laid on the side. & EV_RILU_2_2_75
+Ri - This is somewhat embarrassing. & EV_RILU_2_2_76
+Ar - Doesn't it make you excited?  & EV_RILU_2_2_77
+Ri - ... & EV_RILU_2_2_78
+Ar - Now let me show you... & EV_RILU_2_2_79
 =ABG rilu_anal_2 rilu_anal_3=
-Arron pulled out a small wooden object.
-Ri - That's...
-Ar - A dildo.
-Ri - Why...?
-Ar - I want to play with you.
-Ar - It's actually shaped like my dick. 
-Ri - You really are a pervert.
-Ar - Guilty. 
-Ar - Now let's try to get it in...
+Arron pulled out a small wooden object. & EV_RILU_2_2_80
+Ri - That's... & EV_RILU_2_2_81
+Ar - A dildo. & EV_RILU_2_2_82
+Ri - Why...? & EV_RILU_2_2_83
+Ar - I want to play with you. & EV_RILU_2_2_84
+Ar - It's actually shaped like my dick.  & EV_RILU_2_2_85
+Ri - You really are a pervert. & EV_RILU_2_2_86
+Ar - Guilty.  & EV_RILU_2_2_87
+Ar - Now let's try to get it in... & EV_RILU_2_2_88
 =ABG rilu_anal_4 rilu_anal_5=
-Arron slowly pushed a wooden dildo into Rilu's pussy.
-Ri - Ngh...
-Ar - Huh, you are quite wet already. 
-Ar - It penetrated you easily.
-Ri - It feels weird...
-Ri - Ah!..
-Ri - Why are you moving it...
-Ar - You can't have sex without moving.
-Ri - It feels good...
-Ar - Of course, I'm a master at pleasing girls.
-Ri - You can do it rougher.
-Ar - Roger.
-Ri - Ngh... Ah...
-Ri - This is...
-Ri - Feels similar to before...
-Ri - A bit deeper.
-Ar - You seem to really enjoy it.
-Ri - I'm... I'm going to cum...
-Ar - It's fine.
-Ri - Aah, ahhh...
+Arron slowly pushed a wooden dildo into Rilu's pussy. & EV_RILU_2_2_89
+Ri - Ngh... & EV_RILU_2_2_90
+Ar - Huh, you are quite wet already.  & EV_RILU_2_2_91
+Ar - It penetrated you easily. & EV_RILU_2_2_92
+Ri - It feels weird... & EV_RILU_2_2_93
+Ri - Ah!.. & EV_RILU_2_2_94
+Ri - Why are you moving it... & EV_RILU_2_2_95
+Ar - You can't have sex without moving. & EV_RILU_2_2_96
+Ri - It feels good... & EV_RILU_2_2_97
+Ar - Of course, I'm a master at pleasing girls. & EV_RILU_2_2_98
+Ri - You can do it rougher. & EV_RILU_2_2_99
+Ar - Roger. & EV_RILU_2_2_100
+Ri - Ngh... Ah... & EV_RILU_2_2_101
+Ri - This is... & EV_RILU_2_2_102
+Ri - Feels similar to before... & EV_RILU_2_2_103
+Ri - A bit deeper. & EV_RILU_2_2_104
+Ar - You seem to really enjoy it. & EV_RILU_2_2_105
+Ri - I'm... I'm going to cum... & EV_RILU_2_2_106
+Ar - It's fine. & EV_RILU_2_2_107
+Ri - Aah, ahhh... & EV_RILU_2_2_108
 =WHITE=
-Ri - AAAahhh!...
-Ri - Hah... ah...
-Ar - You look quite happy.
-Ri - Stop teasing me.
-Ar - Hmph, let's do something new now.
-Ri - ...Huh?..
+Ri - AAAahhh!... & EV_RILU_2_2_109
+Ri - Hah... ah... & EV_RILU_2_2_110
+Ar - You look quite happy. & EV_RILU_2_2_111
+Ri - Stop teasing me. & EV_RILU_2_2_112
+Ar - Hmph, let's do something new now. & EV_RILU_2_2_113
+Ri - ...Huh?.. & EV_RILU_2_2_114
 =ABG rilu_anal_6 rilu_anal_7=
-Leaving dildo in Rilu's pussy, Arron pushed his cock into her butt.
-Ri - Ah! 
-Ri - Thats my ass!
-Ar - Yep, how does it feel?
-Ri - Aah... 
-Ri - It feels weird...
-Ri - Nh... Not entirely unpleasant.
-Ar - Thought you might like it.
-Ri - I can feel you throbbing.
-Ar - Soon you'll feel much more than that.
-Arron began moving inside of Rilu's butt.
-Ri - Aaah... My ass...
-Ar - Ngh...
-Ar - How does it feel?
-Ri - I... 
-Ri - I-Ah... Think I'll start to like it...
-Ar - Let's not forget about your pussy either.
-While fucking Rilu's ass Arron also began to move the dildo he left in her pussy.
-Ri - Ohhh-...
-Ri - This...
-Ri - This is too much...
-Ri - You gonna make me..
-Ri - Cum again..!
-Ar - Gotcha.
-Ar - Let's do it together.
+Leaving dildo in Rilu's pussy, Arron pushed his cock into her butt. & EV_RILU_2_2_115
+Ri - Ah!  & EV_RILU_2_2_116
+Ri - Thats my ass! & EV_RILU_2_2_117
+Ar - Yep, how does it feel? & EV_RILU_2_2_118
+Ri - Aah...  & EV_RILU_2_2_119
+Ri - It feels weird... & EV_RILU_2_2_120
+Ri - Nh... Not entirely unpleasant. & EV_RILU_2_2_121
+Ar - Thought you might like it. & EV_RILU_2_2_122
+Ri - I can feel you throbbing. & EV_RILU_2_2_123
+Ar - Soon you'll feel much more than that. & EV_RILU_2_2_124
+Arron began moving inside of Rilu's butt. & EV_RILU_2_2_125
+Ri - Aaah... My ass... & EV_RILU_2_2_126
+Ar - Ngh... & EV_RILU_2_2_127
+Ar - How does it feel? & EV_RILU_2_2_128
+Ri - I...  & EV_RILU_2_2_129
+Ri - I-Ah... Think I'll start to like it... & EV_RILU_2_2_130
+Ar - Let's not forget about your pussy either. & EV_RILU_2_2_131
+While fucking Rilu's ass Arron also began to move the dildo he left in her pussy. & EV_RILU_2_2_132
+Ri - Ohhh-... & EV_RILU_2_2_133
+Ri - This... & EV_RILU_2_2_134
+Ri - This is too much... & EV_RILU_2_2_135
+Ri - You gonna make me.. & EV_RILU_2_2_136
+Ri - Cum again..! & EV_RILU_2_2_137
+Ar - Gotcha. & EV_RILU_2_2_138
+Ar - Let's do it together. & EV_RILU_2_2_139
 =ABG rilu_anal_8 rilu_anal_9=
 =WHITE=
-Ri - Aaah!!
-Ar - Ngh... Hah...
-Ar - Came inside your butt.
-Ri - Ah... 
-Ri - It feels so hot...
-Ar - Hah... And you called me a pervert. 
+Ri - Aaah!! & EV_RILU_2_2_140
+Ar - Ngh... Hah... & EV_RILU_2_2_141
+Ar - Came inside your butt. & EV_RILU_2_2_142
+Ri - Ah...  & EV_RILU_2_2_143
+Ri - It feels so hot... & EV_RILU_2_2_144
+Ar - Hah... And you called me a pervert.  & EV_RILU_2_2_145
 =GUI_NORMAL=
 =BLACKTRANS 1=
 =DELAY 1=
 =BG town_in=
 =SPRITE rilu=
-Ar(neutral) - Hope you aren't having second thoughts.
-Ri - .....
-Ri(talk) - No. 
-Ar - What's up with that pause?
-Ri - I wonder if I always was this lewd.
-Ar - Nothing wrong with having a bit of fun with someone you like.
-Ri - You might be right.
-Ri - ...Then I'll rely on you from now on. 
-Ar - Alright, as long as you act normally. 
-Ri - *Nod*
-Ri - I can... Get used to it.
+Ar(neutral) - Hope you aren't having second thoughts. & EV_RILU_2_2_146
+Ri - ..... & EV_RILU_2_2_147
+Ri(talk) - No.  & EV_RILU_2_2_148
+Ar - What's up with that pause? & EV_RILU_2_2_149
+Ri - I wonder if I always was this lewd. & EV_RILU_2_2_150
+Ar - Nothing wrong with having a bit of fun with someone you like. & EV_RILU_2_2_151
+Ri - You might be right. & EV_RILU_2_2_152
+Ri - ...Then I'll rely on you from now on.  & EV_RILU_2_2_153
+Ar - Alright, as long as you act normally.  & EV_RILU_2_2_154
+Ri - *Nod* & EV_RILU_2_2_155
+Ri - I can... Get used to it. & EV_RILU_2_2_156
 =STOP=

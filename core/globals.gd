@@ -20,7 +20,7 @@ var scenedict = {
 	map = "res://files/scenes/map/map.tscn"
 }
 
-var events_path = "res://assets/data/events"
+#var events_path = "res://assets/data/events"
 
 #var items
 #var TownData

@@ -238,10 +238,10 @@ func fill_curve():
 		curve.push_back(curve.back() * 1.02)
 
 
-var gallery_singles_list = [
+#var gallery_singles_list = [
 #	{path = "rose_sex_1", type = 'abg'},
 #	{path = "villagenight", type = 'bg'},
-	]
+#	]
 
 
 var hexcolordict = {

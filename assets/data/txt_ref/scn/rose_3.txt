@@ -5,41 +5,41 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-Ar(neutral) - This is one of the saddest festivals I've ever seen.
-Ro - It's not that bad.
-Ar(neutral) - You've dragged me all the way here, for this.
-Ro - But you should make yourself more accustomed with the local lifestyle.
-Ar(neutral) - Boring.
-Ro(talk) - Especially since you are a political figure.
-Ar(neutral) - When are you going to have some fun, Rose?
-Ro - Well, I thought it would be more lively...
-Str - Hey, Sir, wanna cupcake for your lady?
-Ro - How much is it?
-Str - 50 gold.
-Ar(shock) - What the hell? It's 8 times more than usual!
-Ro - And it looks kinda stale. 
-Str - No way, it's only a week old.
-Ar(neutral) - Are you trying to scam us?
-Str - Don't want - don't buy. We have enough guests coming in this time of year.
-Ar - Listen, you punk...
-Ro - Master, look.
-Rose pointed at the small platform which seemed to be drawing the majority of people‘s attention.
-Ar - What's that, a performance?
-Ro - Seems so.
-Entr - Today, according to our yearly customs, you'll see the beloved story of the Growing Fern.
-Entr - A symbol of our land.
-Ar(neutral) - You gotta be kidding me.
-Str2 - Pfft, stupid foreigners never recognize the high culture.
-Entr - But before that, we have a special announcement.
-Entr - City council declares new orders on taxes and regulations as follows...
-Ar(neutral) - That's it, I'm out.
-Ro(shock) - Wait, Master, it's not polite to leave!
-Ar(shock) - It's not sane to stay!
-Ro(sad) - I'm sorry, it's my fault...
-Ar(neutral) - ...
-Ar - Are you ready to take some responsibility then?
-Ro - Yes?
-Ar - Come here.
+Ar(neutral) - This is one of the saddest festivals I've ever seen. & EV_ROSE_3_0
+Ro - It's not that bad. & EV_ROSE_3_1
+Ar(neutral) - You've dragged me all the way here, for this. & EV_ROSE_3_2
+Ro - But you should make yourself more accustomed with the local lifestyle. & EV_ROSE_3_3
+Ar(neutral) - Boring. & EV_ROSE_3_4
+Ro(talk) - Especially since you are a political figure. & EV_ROSE_3_5
+Ar(neutral) - When are you going to have some fun, Rose? & EV_ROSE_3_6
+Ro - Well, I thought it would be more lively... & EV_ROSE_3_7
+Str - Hey, Sir, wanna cupcake for your lady? & EV_ROSE_3_8
+Ro - How much is it? & EV_ROSE_3_9
+Str - 50 gold. & EV_ROSE_3_10
+Ar(shock) - What the hell? It's 8 times more than usual! & EV_ROSE_3_11
+Ro - And it looks kinda stale.  & EV_ROSE_3_12
+Str - No way, it's only a week old. & EV_ROSE_3_13
+Ar(neutral) - Are you trying to scam us? & EV_ROSE_3_14
+Str - Don't want - don't buy. We have enough guests coming in this time of year. & EV_ROSE_3_15
+Ar - Listen, you punk... & EV_ROSE_3_16
+Ro - Master, look. & EV_ROSE_3_17
+Rose pointed at the small platform which seemed to be drawing the majority of people‘s attention. & EV_ROSE_3_18
+Ar - What's that, a performance? & EV_ROSE_3_19
+Ro - Seems so. & EV_ROSE_3_20
+Entr - Today, according to our yearly customs, you'll see the beloved story of the Growing Fern. & EV_ROSE_3_21
+Entr - A symbol of our land. & EV_ROSE_3_22
+Ar(neutral) - You gotta be kidding me. & EV_ROSE_3_23
+Str2 - Pfft, stupid foreigners never recognize the high culture. & EV_ROSE_3_24
+Entr - But before that, we have a special announcement. & EV_ROSE_3_25
+Entr - City council declares new orders on taxes and regulations as follows... & EV_ROSE_3_26
+Ar(neutral) - That's it, I'm out. & EV_ROSE_3_27
+Ro(shock) - Wait, Master, it's not polite to leave! & EV_ROSE_3_28
+Ar(shock) - It's not sane to stay! & EV_ROSE_3_29
+Ro(sad) - I'm sorry, it's my fault... & EV_ROSE_3_30
+Ar(neutral) - ... & EV_ROSE_3_31
+Ar - Are you ready to take some responsibility then? & EV_ROSE_3_32
+Ro - Yes? & EV_ROSE_3_33
+Ar - Come here. & EV_ROSE_3_34
 =GUI_HIDE=
 =MUSIC erotheme=
 =BLACKUNFADE 0.5=
@@ -49,63 +49,63 @@ Ar - Come here.
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_FULL=
-Ro - Wait, we can't do this!
-Ar - Now, that's new, wasn't a problem before.
-Ro - That's not it, we are in public!
-Ar - It's fine, no one is watching.
-Ro - Master, why are you so unreasonable...
-Ar - You are saying that while you’re so wet?
+Ro - Wait, we can't do this! & EV_ROSE_3_35
+Ar - Now, that's new, wasn't a problem before. & EV_ROSE_3_36
+Ro - That's not it, we are in public! & EV_ROSE_3_37
+Ar - It's fine, no one is watching. & EV_ROSE_3_38
+Ro - Master, why are you so unreasonable... & EV_ROSE_3_39
+Ar - You are saying that while you’re so wet? & EV_ROSE_3_40
 =ABG rose_town_2 rose_town_3=
-Arron lifted Rose's leg over his shoulder. 
-Ro - Nnh...
-Ar - The truth is...
-Ar - You are quite excited right now.
-Ro - That’s... not true.
-Ro - Aaah... What are you...
-Ar - Don’t lie to me.
-Ar - And better not raise your voice too much or others might pay attention.
-Ro - S-sorry... 
+Arron lifted Rose's leg over his shoulder.  & EV_ROSE_3_41
+Ro - Nnh... & EV_ROSE_3_42
+Ar - The truth is... & EV_ROSE_3_43
+Ar - You are quite excited right now. & EV_ROSE_3_44
+Ro - That’s... not true. & EV_ROSE_3_45
+Ro - Aaah... What are you... & EV_ROSE_3_46
+Ar - Don’t lie to me. & EV_ROSE_3_47
+Ar - And better not raise your voice too much or others might pay attention. & EV_ROSE_3_48
+Ro - S-sorry...  & EV_ROSE_3_49
 =ABG rose_town_4 rose_town_5=
-Ar - He-he, even your nipples are hard.
-Ro - Nooo...
-Ar - You are so lucky to have such a responsive body.
-Ro - That's... not a compliment at all..
-Ro - Aah...
-Ar - Really? You aren't savioring this attention of mine?
-Ro - ...
-Ar - Should we stop here then?
-Ro - ...no...
-Ar - I can't hear you over the crowd.
-Ro - P-Please, Master, continue...
-Ar - *smirk* Hmph.
+Ar - He-he, even your nipples are hard. & EV_ROSE_3_50
+Ro - Nooo... & EV_ROSE_3_51
+Ar - You are so lucky to have such a responsive body. & EV_ROSE_3_52
+Ro - That's... not a compliment at all.. & EV_ROSE_3_53
+Ro - Aah... & EV_ROSE_3_54
+Ar - Really? You aren't savioring this attention of mine? & EV_ROSE_3_55
+Ro - ... & EV_ROSE_3_56
+Ar - Should we stop here then? & EV_ROSE_3_57
+Ro - ...no... & EV_ROSE_3_58
+Ar - I can't hear you over the crowd. & EV_ROSE_3_59
+Ro - P-Please, Master, continue... & EV_ROSE_3_60
+Ar - *smirk* Hmph. & EV_ROSE_3_61
 =ABG rose_town_6 rose_town_7=
-Ro - Aah... 
-Ro - Master, you entered me...
-Ar - Hey Rose.
-Ro - Ah... Yes...?
-Ar - You've asked me to fuck you in public.
-Ro - Stop saying that!.. Ahhh...
-Ar - You are a lewd, lewd girl.
-Ro - Aah... enough...
-Ar - But I love that part of you.
-Ro - Master.. Ah... you are... jerk...
-Ar - Oh really.
+Ro - Aah...  & EV_ROSE_3_62
+Ro - Master, you entered me... & EV_ROSE_3_63
+Ar - Hey Rose. & EV_ROSE_3_64
+Ro - Ah... Yes...? & EV_ROSE_3_65
+Ar - You've asked me to fuck you in public. & EV_ROSE_3_66
+Ro - Stop saying that!.. Ahhh... & EV_ROSE_3_67
+Ar - You are a lewd, lewd girl. & EV_ROSE_3_68
+Ro - Aah... enough... & EV_ROSE_3_69
+Ar - But I love that part of you. & EV_ROSE_3_70
+Ro - Master.. Ah... you are... jerk... & EV_ROSE_3_71
+Ar - Oh really. & EV_ROSE_3_72
 =ABG rose_town_8=
-Ro - Ah... Nh...
-Ro - Not so... 
-Ar - Heh, keep quiet, or you'll be heard.
-Ro - Noo... Aaah... 
-Ro - I... can't hold...
-Ar - Heh, gotcha.
+Ro - Ah... Nh... & EV_ROSE_3_73
+Ro - Not so...  & EV_ROSE_3_74
+Ar - Heh, keep quiet, or you'll be heard. & EV_ROSE_3_75
+Ro - Noo... Aaah...  & EV_ROSE_3_76
+Ro - I... can't hold... & EV_ROSE_3_77
+Ar - Heh, gotcha. & EV_ROSE_3_78
 =ABG rose_town_9 rose_town_10=
 =WHITE=
 =DELAY 0.5=
-Ro - Nnngghh...
-Ro - Aahh... 
-Ar - Heh... Nice job.
-Ro - Stupid... 
-Str - Hey, did you hear some noise from that alley?
-Ar - Oh, crap. Well, we better go now.
+Ro - Nnngghh... & EV_ROSE_3_79
+Ro - Aahh...  & EV_ROSE_3_80
+Ar - Heh... Nice job. & EV_ROSE_3_81
+Ro - Stupid...  & EV_ROSE_3_82
+Str - Hey, did you hear some noise from that alley? & EV_ROSE_3_83
+Ar - Oh, crap. Well, we better go now. & EV_ROSE_3_84
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =GUI_HIDE=
@@ -114,17 +114,17 @@ Ar - Oh, crap. Well, we better go now.
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-Ar - Say Rose.
-Ro - Yes?
-Ar(neutral) - That wasn't half bad huh?
-Ro(sarcastic) - ...I guess it beats tax announcements.
-Ar - Maybe we should do it again some other day.
-Ro - If you do it again, I'll yell rape. 
-Ar - Hmm, how troublesome. 
-Ar - You should be more honest with your feelings.
-Ro(sarcastic) - I'm honest in that I don't wanna be caught doing something like this on the streets. 
-Ar - Then don't get caught. 
-Ro - *sigh*
+Ar - Say Rose. & EV_ROSE_3_85
+Ro - Yes? & EV_ROSE_3_86
+Ar(neutral) - That wasn't half bad huh? & EV_ROSE_3_87
+Ro(sarcastic) - ...I guess it beats tax announcements. & EV_ROSE_3_88
+Ar - Maybe we should do it again some other day. & EV_ROSE_3_89
+Ro - If you do it again, I'll yell rape.  & EV_ROSE_3_90
+Ar - Hmm, how troublesome.  & EV_ROSE_3_91
+Ar - You should be more honest with your feelings. & EV_ROSE_3_92
+Ro(sarcastic) - I'm honest in that I don't wanna be caught doing something like this on the streets.  & EV_ROSE_3_93
+Ar - Then don't get caught.  & EV_ROSE_3_94
+Ro - *sigh* & EV_ROSE_3_95
 =GUI_HIDE=
 =BLACKUNFADE 1.5=
 =DELAY 1.5=

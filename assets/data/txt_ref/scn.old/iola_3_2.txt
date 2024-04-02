@@ -1,0 +1,20 @@
+** iola_3_2 **
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+=BG cave=
+=MUSIC eventgeneric=
+=SPRITE iola=
+I - Wow, these caves are quite dark. 
+I - You say you were here all alone, Rilu? 
+I - Seems like a scary place for a little girl.
+Ri - Please, I'm older than you. 
+Ar - Plus you don't have to worry about actually dying.
+Ri - I'd be in trouble if you die though.
+Ar - Won't we all.
+I(sad) - I don't really feel comfortable around here.
+Ro - Me neither. Let's find what we need sooner rather than later.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

@@ -1,0 +1,81 @@
+** victor_2_4 **
+=BLACKFADE 1=
+=DELAY 1=
+=BG forest=
+=GUI_NORMAL=
+Defeated Victor fell on his knees not in any condition to continue the fight.
+V - Ghhh... How... Can I lose...
+V - After all... these years...
+V - Defeated... by a bunch of kids...
+Ar(neutral) - This is over, you bastard. 
+Ar(neutral) - Ember. 
+Em - ...*nod*
+Ember steadily advanced to crouching man.
+V - You think... I'm scared of you?... 
+*Crack*
+=SOUND hit=
+Em - ...
+Ember's fist struck into Victor's face.
+As Victor's skull cracked, the blade fell from his hand.
+Ar - That was an uninspired last line.
+Ro - Wha... What's going on?
+A blade from Victor's hand began shining as it was covered in cracks. 
+After a loud explosion streams of energy began dissipating in all directions.
+Ar - These are...
+Ri(talk) - Dragons souls are being freed. 
+Ri(talk) - He can't suppress them any longer inside of his sword.
+Em - Ah... 
+Er - Wow, that's quite a sight.
+Ro - Look, something happens to Ember!
+Being close to the streams, a shining essence has been drawn from Ember's hands.
+=BG scenes/ember_dragon=
+The essence near ember began to form into a dragon shape.
+Em - Is this...
+Em - M-mother?
+Ezet - Yes.
+Ezet - This seems to be at an end.
+Ezet - I'm proud of you, Ember.
+Ezet - Sorry, I was a terrible parent.
+Em - No.
+Em - You were with me all this time. 
+Em - And you gave birth to me.
+Ezet - You've grown well.
+Em - Thank you.
+Em - What happens now?
+Ezet - You have freed their souls.
+Ezet - Now they can be reborn into a new hatchling.
+Em - So, we saved them?
+Ezet - Yes, you've done a great deed.
+Ezet - But it seems I'll have to go too.
+Em - ...
+Em - Thanks for staying with me all this time. 
+Ezet - Heh, I was sure you'd be crying here.
+Em - Maybe we can meet again?
+Ezet - After rebirth we will not remember who we were in previous life.
+Ezet - But I'm glad you have found your place and friends you can rely on.
+Ezet - Arron. You are still to face great dangers, but I trust you to take care of my daughter.
+Ar - Hmm... I'm not sure I'm up to the responsibility yet. 
+Ezet - Don't worry, I'm  sure you can make Ember some fine offspring with some practice.
+Em - Eh?!
+Ezet - After all I've almost had first-hand experience.
+Ar - You had what?!
+Ezet - Don't act so surprised now.
+Ezet - My daughter is too innocent to take initiative, so I gave her a couple of hints.
+Ar - ...And took some liberty in the bedroom...?
+Ezet - That was the best for all of us.
+Ezet - But it's time for me to go.
+Ezet - Good luck, children.
+With last words vanishing in the air so did the image of Ezet.
+=BG forest 1=
+Ar - ...Look, it wasn't as lewd as you imagine. 
+Ro - Disgusting.
+Em - Ah, so that's why I acted like that.
+Ri - ...
+Er - Kinky.
+I(sad) - Hmm I'm not sure how ancestors would feel about it.
+Ar - Okay, enough. 
+Ar - Let's get out of here, before someone sees us and blames us for murdering Aeros's hero. 
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

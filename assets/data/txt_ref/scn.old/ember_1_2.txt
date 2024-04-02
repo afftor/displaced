@@ -1,0 +1,33 @@
+** ember_1_2 **
+=MUSIC eventlight=
+=BLACKON=
+=DELAY 0.4=
+=BG forge=
+=BLACKFADE 0.4=
+=DELAY 0.4=
+=GUI_NORMAL=
+=SPRITE ember=
+=SPRITE_UNFADE 0.3=
+Em - I see you found some unusual wood up there. Please, let me have it!
+Ar - Hmh... sure. What's so unusual about it?
+Em - Oh, I can use it to make items with special properties.
+Ar - You can do that? You are pretty useful after all.
+Em - Ha-ha, You are so kind, Sir Arron! I can also cook scrambled eggs!
+Ar - That's amazing. What are those properties anyway?
+Em - Depends on the material used, it can make you stronger, faster... stuff like that.
+Ar - Ho-oh. Can it make my wood stronger?
+Em - Huh? Your wood? You are not a human?
+Ar - Nah, I'm actually a half-ent.
+Em(happy) - REALLY?!
+Ro(sarcastic) - Please, don't trust everything people say.
+Ar - But I do have wood, occasionally, maybe you could help with it.
+Em - I don't quite understand, but sure!
+Ro(sarcastic) - He lies to you, he has no lumber.
+Ar(neutral) - Tsk... I've trusted you, Rose. Such a brutish move from you.
+Em(sad) - Uh... I still don't understand, but in either case, if you find any more rare materials, make sure to bring them to me!
+Ar - Aren't I'm one of a kind?
+Ro - Please, stop.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

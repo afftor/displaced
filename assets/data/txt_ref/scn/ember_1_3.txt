@@ -6,84 +6,84 @@
 =BLACKFADE 0.4=
 =DELAY 0.4=
 =GUI_NORMAL=
-Em - Oh, hi Sir Arron, great to see you! What can I help you with?
-Ar - I'm good. Just curious how you are doing.
-Em - Oh, it's great here! And you visit me regularly too. 
-Em - In the past people didn't seem to like having me around the village much, but you seem so relaxed about it.
-Ar - Well, I'm a dragon's descendant just like you.
-Em(happy) - What?! REALLY?
-Ar - Maybe. 
-Em - Oh... I guess that could be true because you don’t seem to be afraid of me.
-Em - My appearance must be what repulses other people... Do you think I'll ever be able to find a place where I would be accepted?
-Ar - Hmmm. It’s true that some people like to be among those similar to themselves, rather than different. 
-Em(sad) - Oh... this makes me sad. 
-Ar - But you know what? You might still eventually pass as human. 
-Em - Oooh? I can? 
-Ar - Naturally, you have some human characteristics, after all, I'm just not entirely sure how authentic they are.
-Em(sad) - Uh... Sorry, I don't understand.
-Ar - I'm saying that I'll need to fully investigate your body to see if you can pass for a human.
-Em - OOOOH, Sir Arron, you can do this for me!? 
-Ar - Well if you request it, it's my job to make sure everyone here is happy. 
-Em - Okay, please! Let me just untie my apron.
-Ar - (Darn.. this was way too easy, maybe later I should give her a couple of lessons about dignity)
+Em - Oh, hi Sir Arron, great to see you! What can I help you with? & EV_EMBER_1_3_0
+Ar - I'm good. Just curious how you are doing. & EV_EMBER_1_3_1
+Em - Oh, it's great here! And you visit me regularly too.  & EV_EMBER_1_3_2
+Em - In the past people didn't seem to like having me around the village much, but you seem so relaxed about it. & EV_EMBER_1_3_3
+Ar - Well, I'm a dragon's descendant just like you. & EV_EMBER_1_3_4
+Em(happy) - What?! REALLY? & EV_EMBER_1_3_5
+Ar - Maybe.  & EV_EMBER_1_3_6
+Em - Oh... I guess that could be true because you don’t seem to be afraid of me. & EV_EMBER_1_3_7
+Em - My appearance must be what repulses other people... Do you think I'll ever be able to find a place where I would be accepted? & EV_EMBER_1_3_8
+Ar - Hmmm. It’s true that some people like to be among those similar to themselves, rather than different.  & EV_EMBER_1_3_9
+Em(sad) - Oh... this makes me sad.  & EV_EMBER_1_3_10
+Ar - But you know what? You might still eventually pass as human.  & EV_EMBER_1_3_11
+Em - Oooh? I can?  & EV_EMBER_1_3_12
+Ar - Naturally, you have some human characteristics, after all, I'm just not entirely sure how authentic they are. & EV_EMBER_1_3_13
+Em(sad) - Uh... Sorry, I don't understand. & EV_EMBER_1_3_14
+Ar - I'm saying that I'll need to fully investigate your body to see if you can pass for a human. & EV_EMBER_1_3_15
+Em - OOOOH, Sir Arron, you can do this for me!?  & EV_EMBER_1_3_16
+Ar - Well if you request it, it's my job to make sure everyone here is happy.  & EV_EMBER_1_3_17
+Em - Okay, please! Let me just untie my apron. & EV_EMBER_1_3_18
+Ar - (Darn.. this was way too easy, maybe later I should give her a couple of lessons about dignity) & EV_EMBER_1_3_19
 =DELAY 0.4=
 =ABG ember_boobs_1=
 =GUI_FULL=
-Ember shrugs off her apron and lays it over a chair. Her large breasts bounce as she turns to Arron.
-Em - So, how do I look?
-Ar - Hmmm... Let's see.
-Arron slowly circles around Ember. 
-Her breasts rise and fall with her excited breathing.
-Ar - You look rather healthy to me.
-Em - I do? Master always said I heal very fast. 
-Ar - Did he now?
-Em - He hit me a lot, but I never felt much. It was just kinda funny, ha-ha.
-Ar - Is that so?
-Using both hands, Arron grabs hold of Ember's juicy tits and forcefully squeezes them.
+Ember shrugs off her apron and lays it over a chair. Her large breasts bounce as she turns to Arron. & EV_EMBER_1_3_20
+Em - So, how do I look? & EV_EMBER_1_3_21
+Ar - Hmmm... Let's see. & EV_EMBER_1_3_22
+Arron slowly circles around Ember.  & EV_EMBER_1_3_23
+Her breasts rise and fall with her excited breathing. & EV_EMBER_1_3_24
+Ar - You look rather healthy to me. & EV_EMBER_1_3_25
+Em - I do? Master always said I heal very fast.  & EV_EMBER_1_3_26
+Ar - Did he now? & EV_EMBER_1_3_27
+Em - He hit me a lot, but I never felt much. It was just kinda funny, ha-ha. & EV_EMBER_1_3_28
+Ar - Is that so? & EV_EMBER_1_3_29
+Using both hands, Arron grabs hold of Ember's juicy tits and forcefully squeezes them. & EV_EMBER_1_3_30
 =ABG ember_boobs_2 ember_boobs_3=
-Ember’s beautiful tits are soft but firm in Arron’s grip
-Em - Aah!
-Ar - Did it hurt?
-Em - N-no, it was just so sudden...
-Ar - I see, well, their softness seems to be rather good. 
-He takes one of her hardening nipples between thumb and forefinger.
-*Pinch*
-Em - A-aah!...
-Ar - Hmm sensitivity seems to be acceptable...
-Ar - (Darn... I might be enjoying this a bit too much)
-Em - ...Sir Arron? 
-Ar - Just by the way, You don't really need to add 'Sir' for me.
-Em - I don't?.. Oh- Aah!
-Ar - Sorry, was it too rough? 
-Em - No, it just... feels weird.
-Ar - Mhmm, well that is a good sign. Very nice...
+Ember’s beautiful tits are soft but firm in Arron’s grip & EV_EMBER_1_3_31
+Em - Aah! & EV_EMBER_1_3_32
+Ar - Did it hurt? & EV_EMBER_1_3_33
+Em - N-no, it was just so sudden... & EV_EMBER_1_3_34
+Ar - I see, well, their softness seems to be rather good.  & EV_EMBER_1_3_35
+He takes one of her hardening nipples between thumb and forefinger. & EV_EMBER_1_3_36
+*Pinch* & EV_EMBER_1_3_37
+Em - A-aah!... & EV_EMBER_1_3_38
+Ar - Hmm sensitivity seems to be acceptable... & EV_EMBER_1_3_39
+Ar - (Darn... I might be enjoying this a bit too much) & EV_EMBER_1_3_40
+Em - ...Sir Arron?  & EV_EMBER_1_3_41
+Ar - Just by the way, You don't really need to add 'Sir' for me. & EV_EMBER_1_3_42
+Em - I don't?.. Oh- Aah! & EV_EMBER_1_3_43
+Ar - Sorry, was it too rough?  & EV_EMBER_1_3_44
+Em - No, it just... feels weird. & EV_EMBER_1_3_45
+Ar - Mhmm, well that is a good sign. Very nice... & EV_EMBER_1_3_46
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ro - (Did Master go to Ember’s again? Jeez, he always skips the boring work...)
+Ro - (Did Master go to Ember’s again? Jeez, he always skips the boring work...) & EV_EMBER_1_3_47
 =BLACKFADE 0.5=
 =ABG ember_boobs_4 ember_boobs_5=
 =GUI_FULL=
-Ro - Hey, Ember, have you seen Ar...
+Ro - Hey, Ember, have you seen Ar... & EV_EMBER_1_3_48
 =DELAY 0.5=
-Ro - ...
-Ar - ...
-Ro - (What's even going on? They are doing it right here?)
-Ro - (...Wow, Ember's are twice as big as mine!)
-Ro - Master, what are you doing?!
-Ar - What's up now? Ember just asked me for some help.
-Ro - (Ember made a move on the Master!? I never expected that...)
-Em - Oh Hey Rose. If you are in no hurry, can you give us a moment.
-Ro - Ah... I'm just... Sorry...
-Rose quickly shuts the door.
+Ro - ... & EV_EMBER_1_3_49
+Ar - ... & EV_EMBER_1_3_50
+Ro - (What's even going on? They are doing it right here?) & EV_EMBER_1_3_51
+Ro - (...Wow, Ember's are twice as big as mine!) & EV_EMBER_1_3_52
+Ro - Master, what are you doing?! & EV_EMBER_1_3_53
+Ar - What's up now? Ember just asked me for some help. & EV_EMBER_1_3_54
+Ro - (Ember made a move on the Master!? I never expected that...) & EV_EMBER_1_3_55
+Em - Oh Hey Rose. If you are in no hurry, can you give us a moment. & EV_EMBER_1_3_56
+Ro - Ah... I'm just... Sorry... & EV_EMBER_1_3_57
+Rose quickly shuts the door. & EV_EMBER_1_3_58
 =BG forge 0.5=
 =GUI_NORMAL=
-Ro - (No way... She never looked as mature as that before)
-Ar - Hmm, well I think I’m satisfied. 
-Em - So what do you think? Do I seem human?
-Ar - I think you can pass, yes.. With some time and work you will surely be able to live with humans nicely.
-Em - Really!? This makes me so happy. Please, will you help me again in the future too, Sir Arron?
-Ar - Gladly.
+Ro - (No way... She never looked as mature as that before) & EV_EMBER_1_3_59
+Ar - Hmm, well I think I’m satisfied.  & EV_EMBER_1_3_60
+Em - So what do you think? Do I seem human? & EV_EMBER_1_3_61
+Ar - I think you can pass, yes.. With some time and work you will surely be able to live with humans nicely. & EV_EMBER_1_3_62
+Em - Really!? This makes me so happy. Please, will you help me again in the future too, Sir Arron? & EV_EMBER_1_3_63
+Ar - Gladly. & EV_EMBER_1_3_64
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =STOP=

@@ -1,0 +1,150 @@
+** iola_2_6 **
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+=BG hall=
+=SPRITE iola=
+Ar - Hey, I was just wondering how you are doing.
+Ar - After, you know, your dad's stuff.
+I - Thank you, Sir Arron. 
+I - I think I'm okay now.
+Ar - Just Arron is fine. 
+I - Okay, Arron.
+I - I could use your help with my religious training.
+Ar - Huh? Aren't you done with the cult?
+I - Even if I can't be a proper member, I'm not giving up on my faith.
+Ar - That's some devotion.
+Ar - You don't need that essence thing you asked us to get anymore?
+I - No. Now I can just continue with my training.
+Ar - I see. So what is it?
+I - I'll need you to come to my room at tomorrow's morning after breakfast.
+Ar - Understood. 
+Next morning.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=SPRITE_HIDE=
+=BG villageday=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SOUND knocking=
+Ar - Iola? I'm here.
+I - One moment!
+Ar - She must be preparing for something.
+I - You can come in.
+I - Ah, and close the door.
+Ar - Okay.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC erotheme=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+As Arron makes his way inside, he discovers a fully naked Iola kneeling in front of him.
+Ar - ...
+I - Is something wrong? Are you displeased with me?
+Ar - I wonder if I'm still sleeping. What are you doing?
+I - Oh, it's a part of my training.
+Ar - Being naked?
+I - Yes! It makes the partner more excited, they say.
+I - But if you prefer it differently, I can put on my clothes.
+Ar - No, no, this is just fine.
+Ar - ...It might be a bit late to explain, but how exactly is this your training?
+I - As a cult's Vestal I'm obliged to spread love and provide pleasure to those in need.
+Ar - That's the most convenient religious doctrine I've ever heard.
+I - So to become a proper Vestal I need to train at it.
+I - So.. Um, we can start if you don't mind.
+Iola casually freed Arron's penis from his pants.
+I - Oh... It's so big!
+I - Sorry, it's going to be my first time...
+I - We study a lot about human anatomy...
+I - But touching it personally feels completely different...
+I - Do I stroke it like this?
+=GUI_FULL=
+=ABG iola_minet_1=
+Iola begins to move her hand over Arron's dick, slowly stroking his shaft.
+Ar - Y-yes.
+Ar - That would be correct.
+I - Aha, this feels kinda intuitive. 
+I - You’re getting harder.
+I - They said that should happen.
+I - Does that mean you like this?
+Ar - Yes.
+Ar - You could go a little faster, actually.
+I - Alright...
+=ABG iola_minet_2 iola_minet_3=
+Iola increases her speed while trying to stay gentle.
+I - Is that better?
+Ar - That’s good.
+Ar - Not too fast now.
+I - It’s so big and hard already!
+I - They warned us this might take a while, but...
+I - And it feels… hot?
+I - I wasn’t expecting that.
+Iola looks up at Arron, her innocent blue eyes are wide with curiosity as she smiles.
+I - Oh right, I almost forgot!
+I - I'm also supposed to use my mouth.
+=ABG iola_minet_4 iola_minet_5=
+Iola brings Arron’s penis into her inexperienced mouth, sucking the head of his cock like a lollipop.
+Ar - Ouch, watch the teeth there.
+I - Oh, sorry.
+I - I'll lick it.
+I - Is that better?
+Ar - That’ll do.
+Iola licks slowly up the length of Arron’s shaft, her lips closing around the tip of his penis with each stroke.
+I - Mmmhm...
+I - It tastes weird.
+Ar - You’ll get used to it.
+I - ...Mmm… I hope so...
+I - How doesh thish heel?
+I - Am I shucking eyough?
+Ar - Considering it’s your first time I won't complain.
+=ABG iola_minet_6 iola_minet_7=
+I - (I'll try to do something more advanced)
+I - *slurp*
+I - (Circling my tongue around the tip)
+Ar - Hah...
+Ar - You’re putting some real effort in.
+Ar - You could be very skilled at this.
+I - (He praised me)
+I - Mmhm...
+I - (I wonder if I'm blushing now)
+Ar - Mh, Yes…
+Ar - Take it a bit deeper, into your throat. Don’t gag.
+Ar - That’s it. Just a bit more...
+I - ....Mmhhm *slurp*
+Ar - Watch it, I'm cumming.
+Iola nods in confirmation.
+=ABG iola_minet_8 iola_minet_9=
+=WHITE=
+Ar - Ooougggh...
+I - ...!
+A hot salty stream of semen struck Iola's throat. 
+I - Mhm... *gulp* *gulp*
+I - Aah...
+Iola pulls Arron’s penis from her mouth as he’s still ejaculating and a good part of his load splashes across her face.
+I - Sorry, I couldn't swallow it all.
+Ar - Don't push yourself too hard. Plenty of time to master swallowing.
+Ar - I'd rate it 9 out of 10 for the first time.
+I - Wow, that's a lot! Almost perfect!
+I - Thanks Arron.
+Ar - It's been a real pleasure.
+I - I hope we can practice together more in future.
+Ar - I could be persuaded.
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG villageday=
+=SPRITE iola=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ar - So, I was just wondering one thing.
+Ar - Are you supposed to do it for anyone who asks?
+I - Well, actually there are options. 
+I - Some Vestals do it for everyone, others serve only selected persons or just their loved ones.
+I - I haven't decided yet.
+I - But there's littlepoint making a decision until I finish my training.
+I - And anyway, I still have to part with my virginity.
+Ar - Oh, huh. Hmmm.
+Ar - Well, you know where to find me.
+=STOP=

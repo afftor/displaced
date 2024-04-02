@@ -6,25 +6,25 @@
 =GUI_NORMAL=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Ar(neutral) - Hmm, what's up with the commotion? 
-Ro - I'm not sure. Looks like someone popular is paying us a visit?
-Ar - Hey you, what's going on? 
+Ar(neutral) - Hmm, what's up with the commotion?  & EV_DIMITRIUS_1_1_0
+Ro - I'm not sure. Looks like someone popular is paying us a visit? & EV_DIMITRIUS_1_1_1
+Ar - Hey you, what's going on?  & EV_DIMITRIUS_1_1_2
 =SPRITE goblin=
 =SPRITE_UNFADE 0.5=
-G - What, are you some country bumpkin? It's the Ancestral Cult's priest. 
-Ar(neutral) - What cult?
-Ro - Ancestral Cult. They are the most popular religious group around here. 
-Ro - It seems even goblins hold them in high regards.
-Ar - Anyway, what's up with the disrespect? Don't you know I'm your mayor?
-G - Whatever, dumbass. I didn't vote for you. 
+G - What, are you some country bumpkin? It's the Ancestral Cult's priest.  & EV_DIMITRIUS_1_1_3
+Ar(neutral) - What cult? & EV_DIMITRIUS_1_1_4
+Ro - Ancestral Cult. They are the most popular religious group around here.  & EV_DIMITRIUS_1_1_5
+Ro - It seems even goblins hold them in high regards. & EV_DIMITRIUS_1_1_6
+Ar - Anyway, what's up with the disrespect? Don't you know I'm your mayor? & EV_DIMITRIUS_1_1_7
+G - Whatever, dumbass. I didn't vote for you.  & EV_DIMITRIUS_1_1_8
 =SPRITE_FADE 0.5=
-The goblin defiantly walks away from Arron. 
-Ar(neutral) - That bastard... 
-Ar - Rose, we should build a jail. And maybe institute new laws to punish disrespectful folk.
-Ro - Maybe we should see why this priest came by instead?
-Ro(sarcastic) - You know, as your duty as mayor.
-Ar - Fine. But I refuse to treat him seriously on the inside. 
-Ro(sarcastic) - Maybe you should, given he probably has more authority here than you.
+The goblin defiantly walks away from Arron.  & EV_DIMITRIUS_1_1_9
+Ar(neutral) - That bastard...  & EV_DIMITRIUS_1_1_10
+Ar - Rose, we should build a jail. And maybe institute new laws to punish disrespectful folk. & EV_DIMITRIUS_1_1_11
+Ro - Maybe we should see why this priest came by instead? & EV_DIMITRIUS_1_1_12
+Ro(sarcastic) - You know, as your duty as mayor. & EV_DIMITRIUS_1_1_13
+Ar - Fine. But I refuse to treat him seriously on the inside.  & EV_DIMITRIUS_1_1_14
+Ro(sarcastic) - Maybe you should, given he probably has more authority here than you. & EV_DIMITRIUS_1_1_15
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
@@ -32,39 +32,39 @@ Ro(sarcastic) - Maybe you should, given he probably has more authority here than
 =SPRITE_UNFADE 0.5=
 =DELAY 1=
 =GUI_NORMAL=
-D - ...This is why you should always keep your eyes open and report any suspicious activities.
-D - Hmm? You must be the new ruler of this village. My name is Demitrius. Pleased to meet you.
-Ro(talk) - This is the Mayor, Sir Arron. And my name is Rose. 
-Ro - We are pleased to meet you as well.
-Ar - Hmm? What were you talking about just now?
-D - This is my mission, to explain to everyone the danger of Demons.
+D - ...This is why you should always keep your eyes open and report any suspicious activities. & EV_DIMITRIUS_1_1_16
+D - Hmm? You must be the new ruler of this village. My name is Demitrius. Pleased to meet you. & EV_DIMITRIUS_1_1_17
+Ro(talk) - This is the Mayor, Sir Arron. And my name is Rose.  & EV_DIMITRIUS_1_1_18
+Ro - We are pleased to meet you as well. & EV_DIMITRIUS_1_1_19
+Ar - Hmm? What were you talking about just now? & EV_DIMITRIUS_1_1_20
+D - This is my mission, to explain to everyone the danger of Demons. & EV_DIMITRIUS_1_1_21
 =CHOICE Listen_obediently|Listen_disinterestedly=
-D - But since you had no idea, allow me to repeat myself for you.
+D - But since you had no idea, allow me to repeat myself for you. & EV_DIMITRIUS_1_1_22
 #{"effect":"choice","value":[{"index":0,"text":"Listen obediently"},{"index":1,"text":"Listen disinterestedly"}]},
 #{"effect":"skip","log":"LISTEN OBEDIENTLY","value":1},
 #{"effect":"skip","log":"LISTEN DISINTERESTEDLY","value":0},
-D - Despite how peaceful this world might look to you, there are evil beings we call Demons, who always aim to invade and destroy all that is good for us.
-Ar(neutral) - Seems nasty. Why would they do this?
-D - They feed on the world's life energy and since their world has become a barren wasteland, they have been attempting to come here for centuries.
-Ro - What do they look like?
-D - They take many forms, but mostly they disguise themselves as sentient beings. This is why you should be especially careful around any strangers.
-D -  They might lie about how they lost their memory or came from some other world, but our interrogations have shown it all to be lies.
-D - Anyone, looking suspicious or having appeared from nowhere should be reported to Ancestral Cult immediately. 
-D - So we are doing our best to keep the peace. 
-Ro - *Gulp*
-Ar - You are doing God's work, Demitrius, we'll make sure to contact you immediately. 
-Ar - If that's the only thing you've came for, we can do our best to help you with supplies on your way back.
-D - I'm glad you asked. In fact, I have a cult's mission on my shoulders, I'd be pleased to have your help. 
-Ar - What could it be?
-D - There has been a report about an unknown artifact located in some nearby caverns. 
-D - Sometimes such things appear in our world and if it's connected to Demons, it's my job to ensure it's harmless.
-D - As you can see, I'm no fighter, so your escort would be greatly appreciated.
-Ro - (With all respect, I think it would be best for us to refuse this task.)
-G - Of course our mayor will gladly help you out, Father. He often skirmishes outside and can handle himself in battle.
-Ar - ... I guess we should've hurried with enacting those new laws.
-Ar(neutral) - I mean, we gladly will help you out, Father Demitrius.
-D - I'm glad to know this village is so high spirited. 
-D - Once you prepare, I'll be waiting for you at the exit.
+D - Despite how peaceful this world might look to you, there are evil beings we call Demons, who always aim to invade and destroy all that is good for us. & EV_DIMITRIUS_1_1_23
+Ar(neutral) - Seems nasty. Why would they do this? & EV_DIMITRIUS_1_1_24
+D - They feed on the world's life energy and since their world has become a barren wasteland, they have been attempting to come here for centuries. & EV_DIMITRIUS_1_1_25
+Ro - What do they look like? & EV_DIMITRIUS_1_1_26
+D - They take many forms, but mostly they disguise themselves as sentient beings. This is why you should be especially careful around any strangers. & EV_DIMITRIUS_1_1_27
+D -  They might lie about how they lost their memory or came from some other world, but our interrogations have shown it all to be lies. & EV_DIMITRIUS_1_1_28
+D - Anyone, looking suspicious or having appeared from nowhere should be reported to Ancestral Cult immediately.  & EV_DIMITRIUS_1_1_29
+D - So we are doing our best to keep the peace.  & EV_DIMITRIUS_1_1_30
+Ro - *Gulp* & EV_DIMITRIUS_1_1_31
+Ar - You are doing God's work, Demitrius, we'll make sure to contact you immediately.  & EV_DIMITRIUS_1_1_32
+Ar - If that's the only thing you've came for, we can do our best to help you with supplies on your way back. & EV_DIMITRIUS_1_1_33
+D - I'm glad you asked. In fact, I have a cult's mission on my shoulders, I'd be pleased to have your help.  & EV_DIMITRIUS_1_1_34
+Ar - What could it be? & EV_DIMITRIUS_1_1_35
+D - There has been a report about an unknown artifact located in some nearby caverns.  & EV_DIMITRIUS_1_1_36
+D - Sometimes such things appear in our world and if it's connected to Demons, it's my job to ensure it's harmless. & EV_DIMITRIUS_1_1_37
+D - As you can see, I'm no fighter, so your escort would be greatly appreciated. & EV_DIMITRIUS_1_1_38
+Ro - (With all respect, I think it would be best for us to refuse this task.) & EV_DIMITRIUS_1_1_39
+G - Of course our mayor will gladly help you out, Father. He often skirmishes outside and can handle himself in battle. & EV_DIMITRIUS_1_1_40
+Ar - ... I guess we should've hurried with enacting those new laws. & EV_DIMITRIUS_1_1_41
+Ar(neutral) - I mean, we gladly will help you out, Father Demitrius. & EV_DIMITRIUS_1_1_42
+D - I'm glad to know this village is so high spirited.  & EV_DIMITRIUS_1_1_43
+D - Once you prepare, I'll be waiting for you at the exit. & EV_DIMITRIUS_1_1_44
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

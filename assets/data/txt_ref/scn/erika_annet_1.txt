@@ -6,32 +6,32 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-The annual meeting is being held at the city hall. 
-The hall is filled with nobles and the richest people of the region. 
-CM - So, according to this claim, Mr. Nicolas has failed his contract agreement.
-CM - Do you acknowledge it? 
-N - Yes, but it wasn't my fault. 
-N - My storage was set on fire!
+The annual meeting is being held at the city hall.  & EV_ERIKA_ANNET_1_0
+The hall is filled with nobles and the richest people of the region.  & EV_ERIKA_ANNET_1_1
+CM - So, according to this claim, Mr. Nicolas has failed his contract agreement. & EV_ERIKA_ANNET_1_2
+CM - Do you acknowledge it?  & EV_ERIKA_ANNET_1_3
+N - Yes, but it wasn't my fault.  & EV_ERIKA_ANNET_1_4
+N - My storage was set on fire! & EV_ERIKA_ANNET_1_5
 =SPRITE annet=
 =SPRITE_UNFADE 0.3=
-?(An) - You know this can't be used for your defense. 
-?(An) - You've broken the business agreement and now you have to pay the fine. 
-N - Gh... But I'll be going bankrupt because of this!
-?(An) - This isn't the city's issue. 
-?(An) - If you can't make your deals, you shouldn't accept them in the first place.
-CM - I agree with Ms. Annet. We will have to seize your property in the name of the city. 
-CM - Please provide an escort to Mr. Nicolas, the meeting is over. 
-N - Damnit, I've been set up!..
+?(An) - You know this can't be used for your defense.  & EV_ERIKA_ANNET_1_6
+?(An) - You've broken the business agreement and now you have to pay the fine.  & EV_ERIKA_ANNET_1_7
+N - Gh... But I'll be going bankrupt because of this! & EV_ERIKA_ANNET_1_8
+?(An) - This isn't the city's issue.  & EV_ERIKA_ANNET_1_9
+?(An) - If you can't make your deals, you shouldn't accept them in the first place. & EV_ERIKA_ANNET_1_10
+CM - I agree with Ms. Annet. We will have to seize your property in the name of the city.  & EV_ERIKA_ANNET_1_11
+CM - Please provide an escort to Mr. Nicolas, the meeting is over.  & EV_ERIKA_ANNET_1_12
+N - Damnit, I've been set up!.. & EV_ERIKA_ANNET_1_13
 =BLACKTRANS 1=
 =DELAY 1=
-An - Another hard issue resolved, friend?
-CM - Indeed, I must thank you for your cooperation.
-CM - I knew it was the right decision to introduce you to the committee.
-An - You scratch my back, and I'll scratch yours, right?
-CM - True, now if you excuse me, I have other business to take care of.
+An - Another hard issue resolved, friend? & EV_ERIKA_ANNET_1_14
+CM - Indeed, I must thank you for your cooperation. & EV_ERIKA_ANNET_1_15
+CM - I knew it was the right decision to introduce you to the committee. & EV_ERIKA_ANNET_1_16
+An - You scratch my back, and I'll scratch yours, right? & EV_ERIKA_ANNET_1_17
+CM - True, now if you excuse me, I have other business to take care of. & EV_ERIKA_ANNET_1_18
 =SOUND footstep=
-...
-An - Heh, humans are really easy.
+... & EV_ERIKA_ANNET_1_19
+An - Heh, humans are really easy. & EV_ERIKA_ANNET_1_20
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

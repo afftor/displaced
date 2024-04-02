@@ -4,22 +4,22 @@
 =GUI_NORMAL=
 =BG hall=
 =SPRITE iola=
-Ar - Hey, I was just wondering how you are doing.
-Ar - After, you know, your dad's stuff.
-I - Thank you, Sir Arron. 
-I - I think I'm okay now.
-Ar - Just Arron is fine. 
-I - Okay, Arron.
-I - I could use your help with my religious training.
-Ar - Huh? Aren't you done with the cult?
-I - Even if I can't be a proper member, I'm not giving up on my faith.
-Ar - That's some devotion.
-Ar - You don't need that essence thing you asked us to get anymore?
-I - No. Now I can just continue with my training.
-Ar - I see. So what is it?
-I - I'll need you to come to my room at tomorrow's morning after breakfast.
-Ar - Understood. 
-Next morning.
+Ar - Hey, I was just wondering how you are doing. & EV_IOLA_2_6_0
+Ar - After, you know, your dad's stuff. & EV_IOLA_2_6_1
+I - Thank you, Sir Arron.  & EV_IOLA_2_6_2
+I - I think I'm okay now. & EV_IOLA_2_6_3
+Ar - Just Arron is fine.  & EV_IOLA_2_6_4
+I - Okay, Arron. & EV_IOLA_2_6_5
+I - I could use your help with my religious training. & EV_IOLA_2_6_6
+Ar - Huh? Aren't you done with the cult? & EV_IOLA_2_6_7
+I - Even if I can't be a proper member, I'm not giving up on my faith. & EV_IOLA_2_6_8
+Ar - That's some devotion. & EV_IOLA_2_6_9
+Ar - You don't need that essence thing you asked us to get anymore? & EV_IOLA_2_6_10
+I - No. Now I can just continue with my training. & EV_IOLA_2_6_11
+Ar - I see. So what is it? & EV_IOLA_2_6_12
+I - I'll need you to come to my room at tomorrow's morning after breakfast. & EV_IOLA_2_6_13
+Ar - Understood.  & EV_IOLA_2_6_14
+Next morning. & EV_IOLA_2_6_15
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =SPRITE_HIDE=
@@ -27,109 +27,109 @@ Next morning.
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =SOUND knocking=
-Ar - Iola? I'm here.
-I - One moment!
-Ar - She must be preparing for something.
-I - You can come in.
-I - Ah, and close the door.
-Ar - Okay.
+Ar - Iola? I'm here. & EV_IOLA_2_6_16
+I - One moment! & EV_IOLA_2_6_17
+Ar - She must be preparing for something. & EV_IOLA_2_6_18
+I - You can come in. & EV_IOLA_2_6_19
+I - Ah, and close the door. & EV_IOLA_2_6_20
+Ar - Okay. & EV_IOLA_2_6_21
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG hall=
 =MUSIC erotheme=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-As Arron makes his way inside, he discovers a fully naked Iola kneeling in front of him.
-Ar - ...
-I - Is something wrong? Are you displeased with me?
-Ar - I wonder if I'm still sleeping. What are you doing?
-I - Oh, it's a part of my training.
-Ar - Being naked?
-I - Yes! It makes the partner more excited, they say.
-I - But if you prefer it differently, I can put on my clothes.
-Ar - No, no, this is just fine.
-Ar - ...It might be a bit late to explain, but how exactly is this your training?
-I - As a cult's Vestal I'm obliged to spread love and provide pleasure to those in need.
-Ar - That's the most convenient religious doctrine I've ever heard.
-I - So to become a proper Vestal I need to train at it.
-I - So.. Um, we can start if you don't mind.
-Iola casually freed Arron's penis from his pants.
-I - Oh... It's so big!
-I - Sorry, it's going to be my first time...
-I - We study a lot about human anatomy...
-I - But touching it personally feels completely different...
-I - Do I stroke it like this?
+As Arron makes his way inside, he discovers a fully naked Iola kneeling in front of him. & EV_IOLA_2_6_22
+Ar - ... & EV_IOLA_2_6_23
+I - Is something wrong? Are you displeased with me? & EV_IOLA_2_6_24
+Ar - I wonder if I'm still sleeping. What are you doing? & EV_IOLA_2_6_25
+I - Oh, it's a part of my training. & EV_IOLA_2_6_26
+Ar - Being naked? & EV_IOLA_2_6_27
+I - Yes! It makes the partner more excited, they say. & EV_IOLA_2_6_28
+I - But if you prefer it differently, I can put on my clothes. & EV_IOLA_2_6_29
+Ar - No, no, this is just fine. & EV_IOLA_2_6_30
+Ar - ...It might be a bit late to explain, but how exactly is this your training? & EV_IOLA_2_6_31
+I - As a cult's Vestal I'm obliged to spread love and provide pleasure to those in need. & EV_IOLA_2_6_32
+Ar - That's the most convenient religious doctrine I've ever heard. & EV_IOLA_2_6_33
+I - So to become a proper Vestal I need to train at it. & EV_IOLA_2_6_34
+I - So.. Um, we can start if you don't mind. & EV_IOLA_2_6_35
+Iola casually freed Arron's penis from his pants. & EV_IOLA_2_6_36
+I - Oh... It's so big! & EV_IOLA_2_6_37
+I - Sorry, it's going to be my first time... & EV_IOLA_2_6_38
+I - We study a lot about human anatomy... & EV_IOLA_2_6_39
+I - But touching it personally feels completely different... & EV_IOLA_2_6_40
+I - Do I stroke it like this? & EV_IOLA_2_6_41
 =GUI_FULL=
 =ABG iola_minet_1=
-Iola begins to move her hand over Arron's dick, slowly stroking his shaft.
-Ar - Y-yes.
-Ar - That would be correct.
-I - Aha, this feels kinda intuitive. 
-I - You’re getting harder.
-I - They said that should happen.
-I - Does that mean you like this?
-Ar - Yes.
-Ar - You could go a little faster, actually.
-I - Alright...
+Iola begins to move her hand over Arron's dick, slowly stroking his shaft. & EV_IOLA_2_6_42
+Ar - Y-yes. & EV_IOLA_2_6_43
+Ar - That would be correct. & EV_IOLA_2_6_44
+I - Aha, this feels kinda intuitive.  & EV_IOLA_2_6_45
+I - You’re getting harder. & EV_IOLA_2_6_46
+I - They said that should happen. & EV_IOLA_2_6_47
+I - Does that mean you like this? & EV_IOLA_2_6_48
+Ar - Yes. & EV_IOLA_2_6_49
+Ar - You could go a little faster, actually. & EV_IOLA_2_6_50
+I - Alright... & EV_IOLA_2_6_51
 =ABG iola_minet_2 iola_minet_3=
-Iola increases her speed while trying to stay gentle.
-I - Is that better?
-Ar - That’s good.
-Ar - Not too fast now.
-I - It’s so big and hard already!
-I - They warned us this might take a while, but...
-I - And it feels… hot?
-I - I wasn’t expecting that.
-Iola looks up at Arron, her innocent blue eyes are wide with curiosity as she smiles.
-I - Oh right, I almost forgot!
-I - I'm also supposed to use my mouth.
+Iola increases her speed while trying to stay gentle. & EV_IOLA_2_6_52
+I - Is that better? & EV_IOLA_2_6_53
+Ar - That’s good. & EV_IOLA_2_6_54
+Ar - Not too fast now. & EV_IOLA_2_6_55
+I - It’s so big and hard already! & EV_IOLA_2_6_56
+I - They warned us this might take a while, but... & EV_IOLA_2_6_57
+I - And it feels… hot? & EV_IOLA_2_6_58
+I - I wasn’t expecting that. & EV_IOLA_2_6_59
+Iola looks up at Arron, her innocent blue eyes are wide with curiosity as she smiles. & EV_IOLA_2_6_60
+I - Oh right, I almost forgot! & EV_IOLA_2_6_61
+I - I'm also supposed to use my mouth. & EV_IOLA_2_6_62
 =ABG iola_minet_4 iola_minet_5=
-Iola brings Arron’s penis into her inexperienced mouth, sucking the head of his cock like a lollipop.
-Ar - Ouch, watch the teeth there.
-I - Oh, sorry.
-I - I'll lick it.
-I - Is that better?
-Ar - That’ll do.
-Iola licks slowly up the length of Arron’s shaft, her lips closing around the tip of his penis with each stroke.
-I - Mmmhm...
-I - It tastes weird.
-Ar - You’ll get used to it.
-I - ...Mmm… I hope so...
-I - How doesh thish heel?
-I - Am I shucking eyough?
-Ar - Considering it’s your first time I won't complain.
+Iola brings Arron’s penis into her inexperienced mouth, sucking the head of his cock like a lollipop. & EV_IOLA_2_6_63
+Ar - Ouch, watch the teeth there. & EV_IOLA_2_6_64
+I - Oh, sorry. & EV_IOLA_2_6_65
+I - I'll lick it. & EV_IOLA_2_6_66
+I - Is that better? & EV_IOLA_2_6_67
+Ar - That’ll do. & EV_IOLA_2_6_68
+Iola licks slowly up the length of Arron’s shaft, her lips closing around the tip of his penis with each stroke. & EV_IOLA_2_6_69
+I - Mmmhm... & EV_IOLA_2_6_70
+I - It tastes weird. & EV_IOLA_2_6_71
+Ar - You’ll get used to it. & EV_IOLA_2_6_72
+I - ...Mmm… I hope so... & EV_IOLA_2_6_73
+I - How doesh thish heel? & EV_IOLA_2_6_74
+I - Am I shucking eyough? & EV_IOLA_2_6_75
+Ar - Considering it’s your first time I won't complain. & EV_IOLA_2_6_76
 =ABG iola_minet_6 iola_minet_7=
-I - (I'll try to do something more advanced)
-I - *slurp*
-I - (Circling my tongue around the tip)
-Ar - Hah...
-Ar - You’re putting some real effort in.
-Ar - You could be very skilled at this.
-I - (He praised me)
-I - Mmhm...
-I - (I wonder if I'm blushing now)
-Ar - Mh, Yes…
-Ar - Take it a bit deeper, into your throat. Don’t gag.
-Ar - That’s it. Just a bit more...
-I - ....Mmhhm *slurp*
-Ar - Watch it, I'm cumming.
-Iola nods in confirmation.
+I - (I'll try to do something more advanced) & EV_IOLA_2_6_77
+I - *slurp* & EV_IOLA_2_6_78
+I - (Circling my tongue around the tip) & EV_IOLA_2_6_79
+Ar - Hah... & EV_IOLA_2_6_80
+Ar - You’re putting some real effort in. & EV_IOLA_2_6_81
+Ar - You could be very skilled at this. & EV_IOLA_2_6_82
+I - (He praised me) & EV_IOLA_2_6_83
+I - Mmhm... & EV_IOLA_2_6_84
+I - (I wonder if I'm blushing now) & EV_IOLA_2_6_85
+Ar - Mh, Yes… & EV_IOLA_2_6_86
+Ar - Take it a bit deeper, into your throat. Don’t gag. & EV_IOLA_2_6_87
+Ar - That’s it. Just a bit more... & EV_IOLA_2_6_88
+I - ....Mmhhm *slurp* & EV_IOLA_2_6_89
+Ar - Watch it, I'm cumming. & EV_IOLA_2_6_90
+Iola nods in confirmation. & EV_IOLA_2_6_91
 =ABG iola_minet_8 iola_minet_9=
 =WHITE=
-Ar - Ooougggh...
-I - ...!
-A hot salty stream of semen struck Iola's throat. 
-I - Mhm... *gulp* *gulp*
-I - Aah...
-Iola pulls Arron’s penis from her mouth as he’s still ejaculating and a good part of his load splashes across her face.
-I - Sorry, I couldn't swallow it all.
-Ar - Don't push yourself too hard. Plenty of time to master swallowing.
-Ar - I'd rate it 9 out of 10 for the first time.
-I - Wow, that's a lot! Almost perfect!
-I - Thanks Arron.
-Ar - It's been a real pleasure.
-I - I hope we can practice together more in future.
-Ar - I could be persuaded.
+Ar - Ooougggh... & EV_IOLA_2_6_92
+I - ...! & EV_IOLA_2_6_93
+A hot salty stream of semen struck Iola's throat.  & EV_IOLA_2_6_94
+I - Mhm... *gulp* *gulp* & EV_IOLA_2_6_95
+I - Aah... & EV_IOLA_2_6_96
+Iola pulls Arron’s penis from her mouth as he’s still ejaculating and a good part of his load splashes across her face. & EV_IOLA_2_6_97
+I - Sorry, I couldn't swallow it all. & EV_IOLA_2_6_98
+Ar - Don't push yourself too hard. Plenty of time to master swallowing. & EV_IOLA_2_6_99
+Ar - I'd rate it 9 out of 10 for the first time. & EV_IOLA_2_6_100
+I - Wow, that's a lot! Almost perfect! & EV_IOLA_2_6_101
+I - Thanks Arron. & EV_IOLA_2_6_102
+Ar - It's been a real pleasure. & EV_IOLA_2_6_103
+I - I hope we can practice together more in future. & EV_IOLA_2_6_104
+Ar - I could be persuaded. & EV_IOLA_2_6_105
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -138,13 +138,13 @@ Ar - I could be persuaded.
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ar - So, I was just wondering one thing.
-Ar - Are you supposed to do it for anyone who asks?
-I - Well, actually there are options. 
-I - Some Vestals do it for everyone, others serve only selected persons or just their loved ones.
-I - I haven't decided yet.
-I - But there's littlepoint making a decision until I finish my training.
-I - And anyway, I still have to part with my virginity.
-Ar - Oh, huh. Hmmm.
-Ar - Well, you know where to find me.
+Ar - So, I was just wondering one thing. & EV_IOLA_2_6_106
+Ar - Are you supposed to do it for anyone who asks? & EV_IOLA_2_6_107
+I - Well, actually there are options.  & EV_IOLA_2_6_108
+I - Some Vestals do it for everyone, others serve only selected persons or just their loved ones. & EV_IOLA_2_6_109
+I - I haven't decided yet. & EV_IOLA_2_6_110
+I - But there's littlepoint making a decision until I finish my training. & EV_IOLA_2_6_111
+I - And anyway, I still have to part with my virginity. & EV_IOLA_2_6_112
+Ar - Oh, huh. Hmmm. & EV_IOLA_2_6_113
+Ar - Well, you know where to find me. & EV_IOLA_2_6_114
 =STOP=

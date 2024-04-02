@@ -358,7 +358,7 @@ hotkey_skill_10={
 [locale]
 
 test="en"
-translations=PoolStringArray( "res://localization/tr.en.translation" )
+translations=PoolStringArray(  )
 locale_filter=[ 1, [ "en", "ru" ] ]
 translation_remaps={
 "res://assets/fonts/mainfont_100.tres": PoolStringArray( "res://assets/fonts/locale/ru/rufont_100.tres:ru" ),

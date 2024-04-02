@@ -8,42 +8,42 @@
 =GUI_NORMAL=
 =SPRITE_UNFADE 0.3=
 =SPRITE rose=
-Ro - Okay, we've searched through the central library. 
-Ar(neutral) - So what have you found?
-Ro - We've gone through Rilu's description and only found very scarce mentions to someone matching it. 
-Ro - The person is referred to as the Traveler. They are thought to be some sort of powerful mage or even a mysterious entity.
-Ar - Interesting. So you say there's a chance that Traveler is a cute girl? 
-Ro(sarcastic) - Sure, if that makes you motivated. 
-Ro - The only issue is we don't really have any leads. There's one book with a quite detailed description, though.
-Ro - An artifact named "Saint’s Pearl". It's rumored to have great power and is associated with the Traveler somehow. 
-Ro - Perhaps we should investigate it at least.
-Er - Oh, I know where we can find it. 
-Ro(shock) - You do? Tell us!
-Er - Hmmm... But what would I get from it?
-Ro - *Sigh* What do you want?
-Er - A night together?
-Ro - No.
-Er - A kiss?
-Ro - No. 
-Er - Can I touch your fluffy tail at least, then? 
-Ro(sarcastic) - (I'm not getting out of this one, am I?)
-Ro(talk) - Fine, just do it and tell us already.
-Er - He-he, sure. 
-Er - Don't worry, I'll be gentle...
+Ro - Okay, we've searched through the central library.  & EV_AEROS_3_0
+Ar(neutral) - So what have you found? & EV_AEROS_3_1
+Ro - We've gone through Rilu's description and only found very scarce mentions to someone matching it.  & EV_AEROS_3_2
+Ro - The person is referred to as the Traveler. They are thought to be some sort of powerful mage or even a mysterious entity. & EV_AEROS_3_3
+Ar - Interesting. So you say there's a chance that Traveler is a cute girl?  & EV_AEROS_3_4
+Ro(sarcastic) - Sure, if that makes you motivated.  & EV_AEROS_3_5
+Ro - The only issue is we don't really have any leads. There's one book with a quite detailed description, though. & EV_AEROS_3_6
+Ro - An artifact named "Saint’s Pearl". It's rumored to have great power and is associated with the Traveler somehow.  & EV_AEROS_3_7
+Ro - Perhaps we should investigate it at least. & EV_AEROS_3_8
+Er - Oh, I know where we can find it.  & EV_AEROS_3_9
+Ro(shock) - You do? Tell us! & EV_AEROS_3_10
+Er - Hmmm... But what would I get from it? & EV_AEROS_3_11
+Ro - *Sigh* What do you want? & EV_AEROS_3_12
+Er - A night together? & EV_AEROS_3_13
+Ro - No. & EV_AEROS_3_14
+Er - A kiss? & EV_AEROS_3_15
+Ro - No.  & EV_AEROS_3_16
+Er - Can I touch your fluffy tail at least, then?  & EV_AEROS_3_17
+Ro(sarcastic) - (I'm not getting out of this one, am I?) & EV_AEROS_3_18
+Ro(talk) - Fine, just do it and tell us already. & EV_AEROS_3_19
+Er - He-he, sure.  & EV_AEROS_3_20
+Er - Don't worry, I'll be gentle... & EV_AEROS_3_21
 =SHAKE_SPRITE 0.3=
-Ro(shock) - ... Ah!
-Er - Oh, sorry, I didn't expect you to be this sensitive.
-Er - Mhmm it's really soft and nice to touch.
-Ro(talk) - Enough, just tell us. 
-Er - Okay... the Faery Queen has it in her possessions.
-Ar - Faeries? Do you mean those small things in the forest?
-Er - Yep. They are nasty little bastards.
-Er - I'd not feel remorse tearing a few of their wings on the way there.
-Ro - That seems a bit harsh for you.
-Er - They mostly manage to earn it. And they grow back with time after all.
-Ar - You know how we can find her?
-Er - Sure, but cornering her might be pretty hard.
-Ar(neutral) - We'll figure something out once we get there.
+Ro(shock) - ... Ah! & EV_AEROS_3_22
+Er - Oh, sorry, I didn't expect you to be this sensitive. & EV_AEROS_3_23
+Er - Mhmm it's really soft and nice to touch. & EV_AEROS_3_24
+Ro(talk) - Enough, just tell us.  & EV_AEROS_3_25
+Er - Okay... the Faery Queen has it in her possessions. & EV_AEROS_3_26
+Ar - Faeries? Do you mean those small things in the forest? & EV_AEROS_3_27
+Er - Yep. They are nasty little bastards. & EV_AEROS_3_28
+Er - I'd not feel remorse tearing a few of their wings on the way there. & EV_AEROS_3_29
+Ro - That seems a bit harsh for you. & EV_AEROS_3_30
+Er - They mostly manage to earn it. And they grow back with time after all. & EV_AEROS_3_31
+Ar - You know how we can find her? & EV_AEROS_3_32
+Er - Sure, but cornering her might be pretty hard. & EV_AEROS_3_33
+Ar(neutral) - We'll figure something out once we get there. & EV_AEROS_3_34
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

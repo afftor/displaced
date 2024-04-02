@@ -4,20 +4,20 @@
 =GUI_NORMAL=
 =BG future_city_reactor=
 =SPRITE demitrius_demon=
-De - Ghah, you idiots. 
-De - Still don't understand that you can't defeat me.
-Ar(shock) - Damnit. You guys escape, I'll hold him back.
-De(anger) - ...Seriously?
-De - Fine, I'll play with you for the last time, Arron.
-*snap*
-A number of demon minions jumped from the outside into the building. 
-Ar(anger) - Gh...
-De - Go after them!
-De - Now I made you look like an idiot. Ahaha!
-Ar(neutral) - We'll see about that, asshole.
-Saying that, Arron turned his back and ran away.
-De(anger) - ...?
-De - This imbecile never learns. 
+De - Ghah, you idiots.  & EV_DIMITRIUS_ENDING_6_0
+De - Still don't understand that you can't defeat me. & EV_DIMITRIUS_ENDING_6_1
+Ar(shock) - Damnit. You guys escape, I'll hold him back. & EV_DIMITRIUS_ENDING_6_2
+De(anger) - ...Seriously? & EV_DIMITRIUS_ENDING_6_3
+De - Fine, I'll play with you for the last time, Arron. & EV_DIMITRIUS_ENDING_6_4
+*snap* & EV_DIMITRIUS_ENDING_6_5
+A number of demon minions jumped from the outside into the building.  & EV_DIMITRIUS_ENDING_6_6
+Ar(anger) - Gh... & EV_DIMITRIUS_ENDING_6_7
+De - Go after them! & EV_DIMITRIUS_ENDING_6_8
+De - Now I made you look like an idiot. Ahaha! & EV_DIMITRIUS_ENDING_6_9
+Ar(neutral) - We'll see about that, asshole. & EV_DIMITRIUS_ENDING_6_10
+Saying that, Arron turned his back and ran away. & EV_DIMITRIUS_ENDING_6_11
+De(anger) - ...? & EV_DIMITRIUS_ENDING_6_12
+De - This imbecile never learns.  & EV_DIMITRIUS_ENDING_6_13
 =SOUND footstep=
 =GUI_HIDE=
 =BLACKUNFADE 1=
@@ -25,15 +25,15 @@ De - This imbecile never learns.
 =SPRITE_HIDE=
 =GUI_NORMAL=
 =BLACKFADE 1=
-Meanwhile Rose and Erika moved through the lab’s upper floors.
-Ro - Come on, come on.
-Ro(talk) - Erika, you sure you remember the map?
-Er - Of course, elves have an excellent photographic memory. 
-Er - Or so I was told anyway.
-Ro(talk) - Please, we are in a dire situation here. 
-Er - I'm kidding, it should be around this corner. 
+Meanwhile Rose and Erika moved through the lab’s upper floors. & EV_DIMITRIUS_ENDING_6_14
+Ro - Come on, come on. & EV_DIMITRIUS_ENDING_6_15
+Ro(talk) - Erika, you sure you remember the map? & EV_DIMITRIUS_ENDING_6_16
+Er - Of course, elves have an excellent photographic memory.  & EV_DIMITRIUS_ENDING_6_17
+Er - Or so I was told anyway. & EV_DIMITRIUS_ENDING_6_18
+Ro(talk) - Please, we are in a dire situation here.  & EV_DIMITRIUS_ENDING_6_19
+Er - I'm kidding, it should be around this corner.  & EV_DIMITRIUS_ENDING_6_20
 =SPRITE demon=
-Demon - Arrgh!
-Ro(shock) - Oh no, they found us!
-Er(sad) - I guess we will have to fight through them.
+Demon - Arrgh! & EV_DIMITRIUS_ENDING_6_21
+Ro(shock) - Oh no, they found us! & EV_DIMITRIUS_ENDING_6_22
+Er(sad) - I guess we will have to fight through them. & EV_DIMITRIUS_ENDING_6_23
 =STOP=

@@ -1,0 +1,59 @@
+** dimitrius_ending_7 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=BG future_city_reactor=
+=GUI_NORMAL=
+=SPRITE rose=
+Ro - We made it...
+Er - Yes, come in, it's after this door.
+Ro(talk) - Great.
+Rose and Erika entered the room filled with glowing glass screens.
+Er - Alright, it's your turn.
+Ro - Uh... This might take some time.
+Er - You sure you can manage it?
+Ro(sarcastic) - No, it would help if you could help me out too.
+Er - You know I'm too stupid for this stuff.
+Ro - ...Just let Rilu know we got there. 
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=SPRITE_HIDE=
+=GUI_NORMAL=
+=BLACKFADE 1=
+Meanwhile Arron kept escaping from Dimitrius.
+After making through another room he ended up in a small room connected to a giant curved structure.
+Without taking a pause he opened a small hatch and jumped inside, sealing it shut behind him.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG future_city_reactor_inside=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Right as he finished, Dimitrius predictably appeared next to him. 
+=SPRITE demitrius_demon=
+=SOUND slash=
+Arron attempted to land a surprise attack, but Dimitrius blocked it.
+Ar(anger) - Damn you.
+De - It seems your brilliance is finally overshadowed by your human nature.
+De - What a stupid thing to trap yourself in this place even though I can easily teleport.
+Dimitrius was correct, they appeared to be inside of an isolated curving tunnel only spacious enough to allow one person running in it.
+Ar(anger) - ...
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=SPRITE_HIDE=
+=BG future_city_reactor=
+=GUI_NORMAL=
+=BLACKFADE 1=
+Meanwhile Ember, Rilu and Iola ran from the other side of the tunnel. 
+=SPRITE rilu=
+Ri - Ember, give it to me.
+Em - Sure.
+Ember passed Rilu a small piece of red cloth that she managed to rip off Dimitrius' outfit during the fight.
+Ri - Erika said they got to the control room as well.
+Ri - Iola, you can start making your preparations.
+I - Got it!
+=SPRITE demon=
+Demon - Arghh!
+Em - Oh no, they found us!
+Ri - We have no time for this. 
+=STOP=

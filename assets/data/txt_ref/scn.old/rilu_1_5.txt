@@ -1,0 +1,76 @@
+** rilu_1_5 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE rilu=
+=SPRITE_UNFADE 0.5=
+Ro(talk) - So there's no place or friends you can return to? How sad. 
+Ri - Don't worry about it.
+Ri - I've gotten used to it.
+Ar - Make yourself at home, we still have some unoccupied rooms.
+Ro - Your help was immeasurable, but I'm actually curious.
+Ro - How come someone like you became a necromancer? 
+Ri - .....
+Ro - I mean in the tales necromancers are usually creepy evil old folk.
+Ri - I've been studying my condition. 
+Ar - Your immortality? 
+Ri - Yes. 
+Ri - Unfortunately I've only managed to kill myself another couple dozens of times.
+Ro - ...
+Ar - But your skills are rather useful. 
+Ar - And more importantly, awesome.
+Ro - Rilu... How old are you?
+Ri - Hmm... I'm not sure. What year is it? 
+Er - 34XX.
+Ri - *pondering*
+Ri - 600-ish something. 
+Ri - I've had at least a few hundred combined in isolation though. 
+Ro - ...
+Ar - I bet you all wish you’d stay this young for so long.
+Ro(sarcastic) - I dunno about that.
+Er - Nah, I'm good.
+Ri - You shouldn't.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=GUI_NORMAL=
+Ri - ...So, you say I can stay with you?
+Ar - I'm not going to let alive friendly necromancer not join us.
+Ro - If Master has set his mind on something, there's little reason to argue.
+Er(happy) - Your harem seems to get weirder and weirder, Arron.
+Ar - Plus, there's a thing you might be able to help us out with.
+Ri - Yes?
+Ar - You see...
+=BLACKUNFADE 0.5=
+=DELAY 1.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=MUSIC eventgeneric=
+As they finished explaining their problem, Rilu has harshly broken their hope.
+Ri - I've never heard about such means of transportation.
+Ri - However, there might be one person I know who might know something.
+Ar - Huh? Wouldn't all people you know be feeding the worms?
+Ri - Normally. That isn't as big of a deal as I could summon their spirits, but I'm not actually sure if he's dead. 
+Ri - A few centuries ago there was a small religious group worshipping the deity. 
+Ri - According to them, he was the creator of this world.
+Ar - A title to aspire.
+Ri - They did seem like just a bunch of lunatics, but I've actually met him before I met the group.
+Ar - Did he look like the creator then?
+Ri - No, but I've realized he's been living for much longer than me.
+Ri - So I began to pursue him, to see if he knows something about my condition.
+Ri - But he wasn't weak like me. And he knew nothing about it either.
+Ri - I've seen him using teleportation with little effort.
+Ri - He also insisted that he wouldn't interfere with anything going on around here.
+Ar(neutral) - So you think he's not of this world as well?
+Ri - Back then I thought it was the case. 
+Ar(neutral) - That's actually something. Let's try to see what we can find then.
+Ar - And thanks, Rilu.
+Ri(blush) - ...Don't mention it.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

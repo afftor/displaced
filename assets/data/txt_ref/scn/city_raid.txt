@@ -6,26 +6,26 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-The team has entered Aeros observing the surrounding disaster.
-Ro(sad) - This looks horrible...
-Surv - What are you doing here?!
-Surv - You should escape with everyone now!
-Ar(neutral) - What exactly is going on?
-Surv - Monsters and demons attacked the city.
-Surv - They have taken the city hall and now hunt every man in the vicinity.
-Surv - Some guards still try to fight, but it's all meaningless.
-Ar(neutral) - Hmm.. What about the city hall?
-Surv - People say everyone there was killed. Monsters come from there as if there's a nest.
-Ar - I guess that's our target then.
-Surv - Whatever, if you die it's not my problem.
-Ar(neutral) - Why don't you show some guts? It's your city after all.
-Surv - You are a fool.
-Surv - At times like these your only chance to survive is to watch out for yourself.
+The team has entered Aeros observing the surrounding disaster. & EV_CITY_RAID_0
+Ro(sad) - This looks horrible... & EV_CITY_RAID_1
+Surv - What are you doing here?! & EV_CITY_RAID_2
+Surv - You should escape with everyone now! & EV_CITY_RAID_3
+Ar(neutral) - What exactly is going on? & EV_CITY_RAID_4
+Surv - Monsters and demons attacked the city. & EV_CITY_RAID_5
+Surv - They have taken the city hall and now hunt every man in the vicinity. & EV_CITY_RAID_6
+Surv - Some guards still try to fight, but it's all meaningless. & EV_CITY_RAID_7
+Ar(neutral) - Hmm.. What about the city hall? & EV_CITY_RAID_8
+Surv - People say everyone there was killed. Monsters come from there as if there's a nest. & EV_CITY_RAID_9
+Ar - I guess that's our target then. & EV_CITY_RAID_10
+Surv - Whatever, if you die it's not my problem. & EV_CITY_RAID_11
+Ar(neutral) - Why don't you show some guts? It's your city after all. & EV_CITY_RAID_12
+Surv - You are a fool. & EV_CITY_RAID_13
+Surv - At times like these your only chance to survive is to watch out for yourself. & EV_CITY_RAID_14
 =SPRITE demon=
 =SPRITE_UNFADE 0.3=
-Demon - Raaargh!
-Surv - S-Screw you, I'm out of here!
-Ar(neutral) - No wonder the city is in ruins with residents like these.
+Demon - Raaargh! & EV_CITY_RAID_15
+Surv - S-Screw you, I'm out of here! & EV_CITY_RAID_16
+Ar(neutral) - No wonder the city is in ruins with residents like these. & EV_CITY_RAID_17
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

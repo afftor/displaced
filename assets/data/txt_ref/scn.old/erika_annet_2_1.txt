@@ -1,0 +1,66 @@
+** erika_annet_2_1 **
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+=BG town_in=
+=SPRITE erika=
+=SPRITE_UNFADE 0.3=
+=MUSIC eventgeneric=
+Taking a day off Erika walks through Aeros' market.
+M - Hey, elf girl. 
+M - Looking for something specific?
+Er - Nah, Just checking around.
+M - Oh right, you are from that desert village. 
+M - You don't have to dress that skimpy around here though. 
+Er - Don't worry, it's one of my favorite outfits.
+M - A-ha, alright then.
+EC - No, please let us go!
+Erika turned to the noise from the other side of the market.
+=MUSIC event_mysterious=
+A pair of captured children, no older than twelve, were sold to an obese rich man.
+RN - Shut it, you cur.
+RN - I've paid a good sum for you.
+EC - *sob* Please, I want to see my mom.
+RN - They are pretty unruly.
+RN - Don't worry, you'll work off your price in bed and become real ta-
+=SOUND punch=
+=SHAKE_SCREEN 0.5=
+Before the man could notice it, Erika punched him into the face, quickly freeing the children after that.
+Er - Run kids.
+Without a second thought they disappeared into the crowds.
+RN - You... Bitch! What do you think you are doing?!
+Er(anger) - The right thing.
+RN - You don't know who I am? I'm Hector Blackthrorn.
+Hearing that name made people around pay more attention as it was one of the city's strongest families.
+RN - Those slaves cost me 12 thousand gold.
+RN - You better pay up now.
+RN - Or should we turn you into the city guard.
+Er(anger) - ...
+Erika noticed how people were gathering around her, attracted by the ruckus.
+RN - Hah, there's no way you can carry this much money in your garment though.
+=SPRITE annet=
+=SPRITE_UNFADE 0.3=
+An - What's going on here, Hector?
+Er - ...?
+RN - Ms. Annet? It's nothing requiring your attention. 
+RN - This elf just made me lose a pair of freshly bought slaves.
+An(anger) - Trying to get your filthy hands on the poor kids again, are you?
+An(anger) - That's disgusting, and it's only natural someone would want to save them.
+RN - This is not against the law, and I paid fair and square. 
+RN - I demand my money back!
+An(anger) - Hmph, fine. You'll have your gold, make sure it will serve something better than your perverted hobbies.
+Hearing this, the previously distant crowd began cheering Annet.
+Str - Wow, Ms. Annet really is a respectable committee member.
+Str2 - This is what all rich and nobles should be like.
+RN - Hmph, fine.
+RN - Have it your way, this time. 
+After receiving the confirmation letter, Hector walked away.
+An - Now, that is taken care of...
+An - I would like to have a word with you...
+An - Your name is Erika, right?
+Erika went numb from hearing her name. 
+Her previous readiness to fight drains from her.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

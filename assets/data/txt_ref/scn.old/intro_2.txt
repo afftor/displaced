@@ -1,0 +1,66 @@
+** intro_2 **
+=BLACKON=
+=MUSIC eventlight=
+=BG villageday=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+After days worth of walking, and losing hope, Arron and Rose come across a small, poor settlement.
+Ro(shock) - Look, Master, a goblin village!
+Ar(neutral) - Looks more like a dunghole to me.
+Ro - We haven't seen any people for 2 days... Let's check it out at least.
+Ar(neutral) - Fine, whatever.
+Arron calls for the attention of a single goblin who does not seem surprised by his appearance.
+=SPRITE goblin=
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Ar(neutral) - Hey you, what is this place? 
+G - What does it look like to you? We live here.
+Ro - This place does not look very comfortable to live in. But where is it located? Maybe you can show us on a map? If you have one around?
+G - Do I look like I ever went anywhere else? And what’s a map? 
+Ro - ...
+Ar(neutral) - Yet, you don't look very surprised by us. 
+G - Freaking big deal. Adventurers come and go all the time. Some even stay and leech off our food.
+Ar - Curious, and whose domain is this? 
+G - Eh? We don't belong to anyone since nobody really cares about this land. 
+G - This place might look like a dump, but it's totally independent. 
+Ar(shock) - What? Who governs you then? You don't even have a leader?
+G - No. I told just you that...
+Hearing that Arron's eyes quickly shine with fervor.
+Ar - You heard it? These savages need a governor!
+Ro(sarcastic) - With all respect, I don't think you will be able to lead...
+Ar - Tell me, friend, do you know the benefits of having someone to organize and take care of town's problems?
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=GUI_NORMAL=
+A few days later
+=BLACKFADE 1=
+=DELAY 1=
+After becoming the settlement's mayor, Arron and Rose moved into the best available house.
+Ar - See that? And they were saying democracy is a mistake.
+Ro(sarcastic) - (Makes me realize why)
+Ro(talk) - I must say, this is a rather nice living space.
+Ro(talk) - Oh, and we also have our first visitor today.
+Ar - People want to meet their new leader. Let's not keep them waiting. Bring them in.
+A shabby looking goblin casually walks in, disinterestedly looking around.
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+G - Oi, Governor, since you are responsible for the village now, Flak from market asks you to visit him.
+Ar(neutral) - (No manners at all, huh)
+Ar(neutral) - Why did he not visit himself?
+G - He is busy, I guess. Just don't take too long.
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+The goblin disappears, leaving Arron mildly baffled. 
+Ar(neutral) - You bring him here then. 
+Ro(sarcastic) - I'm afraid he won't agree to follow me. We can't order them around just like that. 
+Ar(neutral) - ...
+Ar(neutral) - Democracy was a mistake.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

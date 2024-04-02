@@ -1,0 +1,32 @@
+** city_raid **
+=BLACKUNFADE 1=
+=DELAY 1=
+=MUSIC event_combat=
+=BG burning_city=
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+The team has entered Aeros observing the surrounding disaster.
+Ro(sad) - This looks horrible...
+Surv - What are you doing here?!
+Surv - You should escape with everyone now!
+Ar(neutral) - What exactly is going on?
+Surv - Monsters and demons attacked the city.
+Surv - They have taken the city hall and now hunt every man in the vicinity.
+Surv - Some guards still try to fight, but it's all meaningless.
+Ar(neutral) - Hmm.. What about the city hall?
+Surv - People say everyone there was killed. Monsters come from there as if there's a nest.
+Ar - I guess that's our target then.
+Surv - Whatever, if you die it's not my problem.
+Ar(neutral) - Why don't you show some guts? It's your city after all.
+Surv - You are a fool.
+Surv - At times like these your only chance to survive is to watch out for yourself.
+=SPRITE demon=
+=SPRITE_UNFADE 0.3=
+Demon - Raaargh!
+Surv - S-Screw you, I'm out of here!
+Ar(neutral) - No wonder the city is in ruins with residents like these.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

@@ -1,0 +1,137 @@
+** iola_1_5 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG villageday=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE goblin=
+G - Bet I can throw this rock further than you.
+Ar - Like hell you can.
+*swoosh*
+Ar - Hmph, try to beat this.
+G - Hah. 
+*swoosh*
+Ar(shock) - What the heck?! You’re cheating!
+Ar(neutral) - No way you can throw it that far with your height. 
+G - Gold please.
+Ar(neutral) - Hmph.
+I - Sir Arron?
+Ar - Aye.
+Ar - *whisper* Hey you, get lost.
+G - Sure, loser.
+=SPRITE iola=
+I - What are you doing here?
+Ar - Nothing much, Rose and Ember are away until tomorrow to gather some ingredients.
+I(sad) - So that's why you are here all alone.
+Ar(neutral) - Hey, don't make it sound like I'm some creep.
+I - Oh, that wasn't what I meant.
+Ar - You look worried, did something happen?
+I(sad) - N-no, nothing like that, it's just...
+I - I haven’t trained anymore - since the last time.
+Ar - ...
+Ar(shock) - Why didn't you say so sooner?!
+I - I was a bit embarrassed I guess.
+Ar - Say no more, let's go!
+I - No, wait, I have to prepare myself first.
+I - I'll be waiting in your room this evening.
+Ar - Sheesh, fine. 
+=SPRITE_FADE 0.5=
+Ar(neutral) - Huh... What do I do now?
+Ar - Hey, Gobbo, wanna make a new bet?
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ar - (Hmm, there's light coming from my room, I guess Iola is already there)
+Ar - I'm coming in.
+=SOUND doorlocked=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=MUSIC_STOP=
+=GUI_FULL=
+=MUSIC erotheme=
+=ABG iola_cuni_01=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Iola kneels on the floor, bending over with one hand between her legs, fingers spreading her smooth pussy-lips apart.
+I - Please enter.
+Ar - Hoh, there’s a sight for sore eyes.
+I - This is... Sort of embarrassing.
+Ar - I'd imagine that is part of the point of this training.
+I - You are right.
+I - Please, teach me what it’s like to have my pussy used.
+Ar - I’ll be glad to.
+I - But don’t take my virginity… Not yet at least...
+Ar - Well, ok, are you ready to begin?
+I - ...Yes, go on please.
+=ABG iola_cuni_02 iola_cuni_03=
+Arron reaches out and runs his finger down Iola’s glistening slit.
+I - Aaah!..
+Ar - Hey, keep your voice down.
+Ar - I've barely even touched you yet.
+I - S-Sorry, it's the first time for me...
+I - I'm not sure how to react.
+Arron keeps stroking Iola’s quivering pussy, gently teasing her clit until it starts to swell
+Ar - You are pretty wet already.
+Ar - Looks like you are properly aroused.
+I - Is it so easy to tell?
+I - It feels really good - what you’re doing.
+=ABG iola_cuni_04 iola_cuni_05=
+I - Aah! 
+I - W-What are you doing?
+Ar - this is what we are here for, isn’t it? 
+Ar - Helping you to feel good and confident.
+I - Mnh... This...
+I - Your tongue...
+I - Ah... I've never felt... like this...
+Ar - You are managing nicely.
+I - You... Ah... think so?
+Ar - Yep, Rose is still very embarrassed by this kind of thing, despite our past.
+I - I... can't blame her...
+=ABG iola_cuni_06 iola_cuni_07=
+Ar - Hehe, looks like you are getting impatient.
+I - Ah... Please...
+I - Don't stop...
+Ar - For your first time getting cunnilingus you got into it pretty quickly.
+I - That must be... because of my mission...
+Ar - What a pious follower you are.
+I - Ah... I can't...
+=ABG iola_cuni_08=
+Ar - Hey, slow down a bit. 
+I - Aaah... 
+I - What... Am I...
+Ar - Wow, you are like an animal in heat.
+I - I... can't stop...
+Ar - Fine, fine, let's finish this.
+I - Aahh... Are you..?
+I - AAAaahhh!!...
+=ABG iola_cuni_09 iola_cuni_11=
+=WHITE=
+=DELAY 0.5=
+Ar - Wow, that was a bit messy.
+I - Ah... hah... I'm sorry...
+Ar - It’s fine.
+I - I didn't realize that it would be so much better than doing it by myself.
+Ar - That's only natural.
+I - I see...
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1.5=
+=MUSIC_STOP=
+=MUSIC eventlight=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE iola=
+=GUI_NORMAL=
+I - I want to thank you, Sir Arron.
+Ar - Don't mention  it. 
+I - I hope you'll keep helping me with my training.
+Ar(shock) - You think I'd pass up such an opportunity?
+I - Ha-ha, I guess no.
+=STOP=

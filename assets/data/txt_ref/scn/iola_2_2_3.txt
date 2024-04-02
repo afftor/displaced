@@ -8,36 +8,36 @@
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Ar - This is weird. We got the essence, but Iola hasn't come back since that day.
-Ro - Maybe they let her pass without it?
-Ar(neutral) - That would suck.
-Ar - How do we get rewarded like this then?
+Ar - This is weird. We got the essence, but Iola hasn't come back since that day. & EV_IOLA_2_2_3_0
+Ro - Maybe they let her pass without it? & EV_IOLA_2_2_3_1
+Ar(neutral) - That would suck. & EV_IOLA_2_2_3_2
+Ar - How do we get rewarded like this then? & EV_IOLA_2_2_3_3
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
-Ri - She's actually in trouble. 
-Ro(talk) - Eh?
-Ar(neutral) - What do you mean?
-Ri - She was captured and kept imprisoned.
-Ar - But how do you know that?
-Ri - I've planted a small spirit on her.
-Ro(sarcastic) - Why?
-Ri - So I can know her condition and location.
-Ar - That's something new.
-Ar - Do you do this often?
-Ri - Don't worry, you won't notice it.
-Ro(sarcastic) - .....
-Ar(neutral) - Anyway, where's Iola? 
-Ri - I assume it's her cult grounds.
-Ri(talk) - We should go there to save her.
-Ar - Huh, you seem... Kinda worried? 
-Ar - What happened to the deadpan girl I knew?
-Ri(talk) - I'm not deadpan.
-Ro(talk) - You think we should go there? 
-Ro - This might be quite dangerous.
-Ar - Well, someone has to pay for the mission we've completed. 
-Ar - In the worst case we can loot something from there.
-Ro(sarcastic) - Please, don't.
-Ro(sarcastic) - We have enough problems without being accused of theft.
+Ri - She's actually in trouble.  & EV_IOLA_2_2_3_4
+Ro(talk) - Eh? & EV_IOLA_2_2_3_5
+Ar(neutral) - What do you mean? & EV_IOLA_2_2_3_6
+Ri - She was captured and kept imprisoned. & EV_IOLA_2_2_3_7
+Ar - But how do you know that? & EV_IOLA_2_2_3_8
+Ri - I've planted a small spirit on her. & EV_IOLA_2_2_3_9
+Ro(sarcastic) - Why? & EV_IOLA_2_2_3_10
+Ri - So I can know her condition and location. & EV_IOLA_2_2_3_11
+Ar - That's something new. & EV_IOLA_2_2_3_12
+Ar - Do you do this often? & EV_IOLA_2_2_3_13
+Ri - Don't worry, you won't notice it. & EV_IOLA_2_2_3_14
+Ro(sarcastic) - ..... & EV_IOLA_2_2_3_15
+Ar(neutral) - Anyway, where's Iola?  & EV_IOLA_2_2_3_16
+Ri - I assume it's her cult grounds. & EV_IOLA_2_2_3_17
+Ri(talk) - We should go there to save her. & EV_IOLA_2_2_3_18
+Ar - Huh, you seem... Kinda worried?  & EV_IOLA_2_2_3_19
+Ar - What happened to the deadpan girl I knew? & EV_IOLA_2_2_3_20
+Ri(talk) - I'm not deadpan. & EV_IOLA_2_2_3_21
+Ro(talk) - You think we should go there?  & EV_IOLA_2_2_3_22
+Ro - This might be quite dangerous. & EV_IOLA_2_2_3_23
+Ar - Well, someone has to pay for the mission we've completed.  & EV_IOLA_2_2_3_24
+Ar - In the worst case we can loot something from there. & EV_IOLA_2_2_3_25
+Ro(sarcastic) - Please, don't. & EV_IOLA_2_2_3_26
+Ro(sarcastic) - We have enough problems without being accused of theft. & EV_IOLA_2_2_3_27
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

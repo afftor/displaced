@@ -6,126 +6,126 @@
 =BG cave=
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
-The party came to a small ruin circle.
-I - Alright, this must be the place.
-Ar - Great. What do we do now?
-I - I'll prepare the ritual. You can just wait.
-Ar(neutral) - Damn, I hate waiting. 
-Ri - I'll help.
+The party came to a small ruin circle. & EV_IOLA_3_3_0
+I - Alright, this must be the place. & EV_IOLA_3_3_1
+Ar - Great. What do we do now? & EV_IOLA_3_3_2
+I - I'll prepare the ritual. You can just wait. & EV_IOLA_3_3_3
+Ar(neutral) - Damn, I hate waiting.  & EV_IOLA_3_3_4
+Ri - I'll help. & EV_IOLA_3_3_5
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
 =GUI_NORMAL=
-I - Alright, now...
-As Iola chanted the spell, ruins began glowing with blue light. After a couple of seconds a figure appeared in front of them.
+I - Alright, now... & EV_IOLA_3_3_6
+As Iola chanted the spell, ruins began glowing with blue light. After a couple of seconds a figure appeared in front of them. & EV_IOLA_3_3_7
 =SPRITE traveller=
 =SPRITE_UNFADE=
 =SOUND teleport=
-T - Wretches! What the hell do you want?
-Ar(neutral) - ......
-Ro(shock) - ......
-I(shock) - .....
-T - ...Sorry, Let's try this again. 
-T - Hi. Who are you?
-Ar - None of your fuckin' business.
-Ro(shock) - Master!
-Ar - What? Isn't it his way of saying 'hi'.
-Ar - Is this even the correct guy?
-Ri - *Nod*
-I - I can't believe my eyes, you really are a Saint Sergius from holy texts!
-T - ...You can call me that, if you must.
-I - I never thought I would meet someone like you.
-T - Hmmh? Well that was some time ago...
-Ar - I respect your religious insight, but we kinda have some business here. 
-I - Oh, I'm sorry. Let me explain...
+T - Wretches! What the hell do you want? & EV_IOLA_3_3_8
+Ar(neutral) - ...... & EV_IOLA_3_3_9
+Ro(shock) - ...... & EV_IOLA_3_3_10
+I(shock) - ..... & EV_IOLA_3_3_11
+T - ...Sorry, Let's try this again.  & EV_IOLA_3_3_12
+T - Hi. Who are you? & EV_IOLA_3_3_13
+Ar - None of your fuckin' business. & EV_IOLA_3_3_14
+Ro(shock) - Master! & EV_IOLA_3_3_15
+Ar - What? Isn't it his way of saying 'hi'. & EV_IOLA_3_3_16
+Ar - Is this even the correct guy? & EV_IOLA_3_3_17
+Ri - *Nod* & EV_IOLA_3_3_18
+I - I can't believe my eyes, you really are a Saint Sergius from holy texts! & EV_IOLA_3_3_19
+T - ...You can call me that, if you must. & EV_IOLA_3_3_20
+I - I never thought I would meet someone like you. & EV_IOLA_3_3_21
+T - Hmmh? Well that was some time ago... & EV_IOLA_3_3_22
+Ar - I respect your religious insight, but we kinda have some business here.  & EV_IOLA_3_3_23
+I - Oh, I'm sorry. Let me explain... & EV_IOLA_3_3_24
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
 =GUI_NORMAL=
-I(sad) - So I was hoping you could help me to figure out what's going on with my father and the cult...
-T - Did you say that the cult is searching for demons invading this world?
-I - Yes. 
-T - No, this is wrong. 
-I(shock) - Eh?
-T - Demons do not invade this world in physical form. 
-T - They can't leave their dimension at will and enter here.
-T - What they do instead is influence and corrupt other beings. In some cases to an extreme degree.
-T - Like local dwarves who turned into bloodthirsty maniacs, or faeries being massive bitches.
-Ar(neutral) - That explains quite a lot. 
-I(sad) - I had no idea. What are demons really then?
-T - They are entities from another dimension, who generally seek a life energy which they feed on. 
-T - Violence, negative emotions, things like this. They would gladly enter this world but most aren't powerful enough for that. 
-T - Once defeated they return to their realm, but strong light power can kill them entirely.
-T - From the sound of it, I'd guess your father isn't quite himself anymore. 
-T - But spare me from these worldly worries. Is there something else? 
-Ar - Actually yes, I wanna know who you really are.
-T - You don't take me for a God? 
-Ar - Hardly.
-T - Haha, well, let's say I'm sort of a traveller like you, except that I came here willingly. 
-Ar - Is that so?
-T - Well... I willingly escaped my pursuers a long time ago and chose this world. 
-Ar - So you are basically a fugitive. Got it.
-T - Shhh, don't tell anyone.
-Ro - You can move through dimensions on will?
-T - Yes, kind of, it's the power I possess. Envious? You can't have it.
-Ro(talk) - No, but we could use your help to go home.
-T - Hah. Hahahah. 
-Ro - Could you please do that? 
-T - Hmh... I could. For this you'd have to bring me something first.
-T - There are four elements. Earth, Water, Fire and Air.
-Ar - .....
-T - Their existence is focused in certain places, deep underground, vast oceans, skies and so on.
-T - Bring me one of-
-Before Segius could finish a sentence, a small bomb exploded, creating a blinding flash. 
+I(sad) - So I was hoping you could help me to figure out what's going on with my father and the cult... & EV_IOLA_3_3_25
+T - Did you say that the cult is searching for demons invading this world? & EV_IOLA_3_3_26
+I - Yes.  & EV_IOLA_3_3_27
+T - No, this is wrong.  & EV_IOLA_3_3_28
+I(shock) - Eh? & EV_IOLA_3_3_29
+T - Demons do not invade this world in physical form.  & EV_IOLA_3_3_30
+T - They can't leave their dimension at will and enter here. & EV_IOLA_3_3_31
+T - What they do instead is influence and corrupt other beings. In some cases to an extreme degree. & EV_IOLA_3_3_32
+T - Like local dwarves who turned into bloodthirsty maniacs, or faeries being massive bitches. & EV_IOLA_3_3_33
+Ar(neutral) - That explains quite a lot.  & EV_IOLA_3_3_34
+I(sad) - I had no idea. What are demons really then? & EV_IOLA_3_3_35
+T - They are entities from another dimension, who generally seek a life energy which they feed on.  & EV_IOLA_3_3_36
+T - Violence, negative emotions, things like this. They would gladly enter this world but most aren't powerful enough for that.  & EV_IOLA_3_3_37
+T - Once defeated they return to their realm, but strong light power can kill them entirely. & EV_IOLA_3_3_38
+T - From the sound of it, I'd guess your father isn't quite himself anymore.  & EV_IOLA_3_3_39
+T - But spare me from these worldly worries. Is there something else?  & EV_IOLA_3_3_40
+Ar - Actually yes, I wanna know who you really are. & EV_IOLA_3_3_41
+T - You don't take me for a God?  & EV_IOLA_3_3_42
+Ar - Hardly. & EV_IOLA_3_3_43
+T - Haha, well, let's say I'm sort of a traveller like you, except that I came here willingly.  & EV_IOLA_3_3_44
+Ar - Is that so? & EV_IOLA_3_3_45
+T - Well... I willingly escaped my pursuers a long time ago and chose this world.  & EV_IOLA_3_3_46
+Ar - So you are basically a fugitive. Got it. & EV_IOLA_3_3_47
+T - Shhh, don't tell anyone. & EV_IOLA_3_3_48
+Ro - You can move through dimensions on will? & EV_IOLA_3_3_49
+T - Yes, kind of, it's the power I possess. Envious? You can't have it. & EV_IOLA_3_3_50
+Ro(talk) - No, but we could use your help to go home. & EV_IOLA_3_3_51
+T - Hah. Hahahah.  & EV_IOLA_3_3_52
+Ro - Could you please do that?  & EV_IOLA_3_3_53
+T - Hmh... I could. For this you'd have to bring me something first. & EV_IOLA_3_3_54
+T - There are four elements. Earth, Water, Fire and Air. & EV_IOLA_3_3_55
+Ar - ..... & EV_IOLA_3_3_56
+T - Their existence is focused in certain places, deep underground, vast oceans, skies and so on. & EV_IOLA_3_3_57
+T - Bring me one of- & EV_IOLA_3_3_58
+Before Segius could finish a sentence, a small bomb exploded, creating a blinding flash.  & EV_IOLA_3_3_59
 =SOUND slash=
-D - Enough of this bad joke.
+D - Enough of this bad joke. & EV_IOLA_3_3_60
 =MUSIC bosstheme=
-T - Wha...
-Sergius fell on the ground from a mortal wound.
+T - Wha... & EV_IOLA_3_3_61
+Sergius fell on the ground from a mortal wound. & EV_IOLA_3_3_62
 =SOUND sound_fall=
 =SPRITE demitrius_demon=
-I(shock) - NOOO!
-De - Sorry to interrupt your party, but I kinda needed his powers.
-De - And now I finally have them. Must thank you for finding him for me, haha. 
-Ar(anger) - You'll pay for this.
-Arron charged at Dimitrius from a few feet away.
-But as his sword was about to strike, Dimitrius disappeared and quickly reappeared on the other side of the cave.
-De - Watch out, it's dangerous to run with sharp things.
-Ar(anger) - What the hell...
-De - Hahaha, aren't these powers great?
-De - Okay, have fun worms, daughter...
-I(shock) - .....
-De - There's things that need to be set in motion.
+I(shock) - NOOO! & EV_IOLA_3_3_63
+De - Sorry to interrupt your party, but I kinda needed his powers. & EV_IOLA_3_3_64
+De - And now I finally have them. Must thank you for finding him for me, haha.  & EV_IOLA_3_3_65
+Ar(anger) - You'll pay for this. & EV_IOLA_3_3_66
+Arron charged at Dimitrius from a few feet away. & EV_IOLA_3_3_67
+But as his sword was about to strike, Dimitrius disappeared and quickly reappeared on the other side of the cave. & EV_IOLA_3_3_68
+De - Watch out, it's dangerous to run with sharp things. & EV_IOLA_3_3_69
+Ar(anger) - What the hell... & EV_IOLA_3_3_70
+De - Hahaha, aren't these powers great? & EV_IOLA_3_3_71
+De - Okay, have fun worms, daughter... & EV_IOLA_3_3_72
+I(shock) - ..... & EV_IOLA_3_3_73
+De - There's things that need to be set in motion. & EV_IOLA_3_3_74
 =SPRITE_HIDE=
-Dimitrius teleported out of the cave leaving everyone in shock.
+Dimitrius teleported out of the cave leaving everyone in shock. & EV_IOLA_3_3_75
 =SPRITE iola=
-I(shock) - Please, don't die, I... can heal you...
-T - You can't... 
-T - I've been running away long enough...
-T - This will... Get very bad...
-T - Listen... You must stop him...
-T - The cult... is his tool...
-The last words of Sergius escaped his mouth as life left his body.
-I(shock) - No, this can't be!
-Ar - .....We must go.
-Ar - Iola?
-I(sad) - .......
-After a few minutes they left the caves.
+I(shock) - Please, don't die, I... can heal you... & EV_IOLA_3_3_76
+T - You can't...  & EV_IOLA_3_3_77
+T - I've been running away long enough... & EV_IOLA_3_3_78
+T - This will... Get very bad... & EV_IOLA_3_3_79
+T - Listen... You must stop him... & EV_IOLA_3_3_80
+T - The cult... is his tool... & EV_IOLA_3_3_81
+The last words of Sergius escaped his mouth as life left his body. & EV_IOLA_3_3_82
+I(shock) - No, this can't be! & EV_IOLA_3_3_83
+Ar - .....We must go. & EV_IOLA_3_3_84
+Ar - Iola? & EV_IOLA_3_3_85
+I(sad) - ....... & EV_IOLA_3_3_86
+After a few minutes they left the caves. & EV_IOLA_3_3_87
 =GUI_HIDE=
 =MUSIC eventgeneric=
 =BLACKTRANS 1=
 =DELAY 1=
 =BG villageday=
 =GUI_NORMAL=
-I(sad) - Sorry, I need some rest.
-Ro - Sure, let me help you.
+I(sad) - Sorry, I need some rest. & EV_IOLA_3_3_88
+Ro - Sure, let me help you. & EV_IOLA_3_3_89
 =SPRITE_FADE 0.3=
-Em(sad) - I don't get it. Why is she so upset?
-Ri - Her father just killed the saint in front of her eyes. 
-Ri - She might not have truly known him, but it's too much to take for her beliefs. 
-Ar(neutral) - I haven't actually considered that.
-Em(sad) - Sorry, I still don't understand. 
-Ri - It's fine, we might have worse things to deal with soon.
+Em(sad) - I don't get it. Why is she so upset? & EV_IOLA_3_3_90
+Ri - Her father just killed the saint in front of her eyes.  & EV_IOLA_3_3_91
+Ri - She might not have truly known him, but it's too much to take for her beliefs.  & EV_IOLA_3_3_92
+Ar(neutral) - I haven't actually considered that. & EV_IOLA_3_3_93
+Em(sad) - Sorry, I still don't understand.  & EV_IOLA_3_3_94
+Ri - It's fine, we might have worse things to deal with soon. & EV_IOLA_3_3_95
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

@@ -8,90 +8,90 @@
 =BG mountainsday=
 =SPRITE dragon=
 =SPRITE_UNFADE 0.3=
-The large dragon is held in place breathing heavily.
-Dr - Guh... Enough...
-Dr - You've proven your strength. What do you want?
-Ro - As we said-
-Dr - What?
-Dr - Speak Louder! 
-Em - WE HAVE COME BECAUSE OF ME!
-Dr - Hmm? What's this...
-The huge dragon brought his head closer to the ground and observed Ember.
-Dr - Ooh, why haven't you said so sooner. 
-Ar - Because of your senile deafness.
-Dr - Quiet. You'll be worse than me in mere decades.
-Ar - ...So now you can hear.
-Dr - You have a familiar scent.
-Dr - What's your name, child?
-Em - I'm Ember. Nice to meet you.
-Em - Even though we've fought already. 
-Dr - I see... You are the child of Ezet. 
-Dr - Truly a wonder to meet someone like you. 
-Em - Ezet? Is that the name of my mother?
-Dr - Yes. You have no knowledge of your ancestry? A pity.
-Dr - Ezet was one of our wyer. But it's from a time before we were facing today's crisis. 
-Ro - What crisis? 
-Dr - Hmm... I'll need time to explain.
-Dr - We dragons possess souls unlike normal mortals. And these souls grant us sentience. 
-Dr - When a dragon dies, his soul leaves his body and finds its way to a new one.
-Dr - Without a soul, we are but beasts. You've met many of those on your way here. 
-Dr - From some time ago something has changed. 
-Dr - Dead dragons have been reborn less and less. Somehow, their souls can't find a way back here.
-Em(sad) - No way.
-Dr - I haven't seen anyone here for the last few years. I fear that we might be hunted. 
-Dr - But it feels like... You might have Ezet's soul inside of you.
-Dr - Somehow she managed to conceal herself inside of you.
-Em - My mother inside of me? So I'm her?
-Dr - No. It would be more accurate to say that she lays dormant, perhaps occasionally influencing your actions. 
-Ro(talk) - Then that note was likely her doing.
-Em - So that means... My mother is dead? 
-Dr - Yes and no, her body is likely dead, but her soul is within you for now. 
-Dr - I hope she will eventually be reborn as we once were.
-Dr - Although I did not expect her to take a... Mortal partner. 
-Dr - At times like these I will not complain. 
-Dr - My name is Qothus.
-Dr - I welcome you as one of my kin. 
-Ar - Before you continue with the family reunion, there's one thing we need to ask for.
-Dr - Yes?
-Ro - We are currently looking for someone...
+The large dragon is held in place breathing heavily. & EV_EMBER_2_4_0
+Dr - Guh... Enough... & EV_EMBER_2_4_1
+Dr - You've proven your strength. What do you want? & EV_EMBER_2_4_2
+Ro - As we said- & EV_EMBER_2_4_3
+Dr - What? & EV_EMBER_2_4_4
+Dr - Speak Louder!  & EV_EMBER_2_4_5
+Em - WE HAVE COME BECAUSE OF ME! & EV_EMBER_2_4_6
+Dr - Hmm? What's this... & EV_EMBER_2_4_7
+The huge dragon brought his head closer to the ground and observed Ember. & EV_EMBER_2_4_8
+Dr - Ooh, why haven't you said so sooner.  & EV_EMBER_2_4_9
+Ar - Because of your senile deafness. & EV_EMBER_2_4_10
+Dr - Quiet. You'll be worse than me in mere decades. & EV_EMBER_2_4_11
+Ar - ...So now you can hear. & EV_EMBER_2_4_12
+Dr - You have a familiar scent. & EV_EMBER_2_4_13
+Dr - What's your name, child? & EV_EMBER_2_4_14
+Em - I'm Ember. Nice to meet you. & EV_EMBER_2_4_15
+Em - Even though we've fought already.  & EV_EMBER_2_4_16
+Dr - I see... You are the child of Ezet.  & EV_EMBER_2_4_17
+Dr - Truly a wonder to meet someone like you.  & EV_EMBER_2_4_18
+Em - Ezet? Is that the name of my mother? & EV_EMBER_2_4_19
+Dr - Yes. You have no knowledge of your ancestry? A pity. & EV_EMBER_2_4_20
+Dr - Ezet was one of our wyer. But it's from a time before we were facing today's crisis.  & EV_EMBER_2_4_21
+Ro - What crisis?  & EV_EMBER_2_4_22
+Dr - Hmm... I'll need time to explain. & EV_EMBER_2_4_23
+Dr - We dragons possess souls unlike normal mortals. And these souls grant us sentience.  & EV_EMBER_2_4_24
+Dr - When a dragon dies, his soul leaves his body and finds its way to a new one. & EV_EMBER_2_4_25
+Dr - Without a soul, we are but beasts. You've met many of those on your way here.  & EV_EMBER_2_4_26
+Dr - From some time ago something has changed.  & EV_EMBER_2_4_27
+Dr - Dead dragons have been reborn less and less. Somehow, their souls can't find a way back here. & EV_EMBER_2_4_28
+Em(sad) - No way. & EV_EMBER_2_4_29
+Dr - I haven't seen anyone here for the last few years. I fear that we might be hunted.  & EV_EMBER_2_4_30
+Dr - But it feels like... You might have Ezet's soul inside of you. & EV_EMBER_2_4_31
+Dr - Somehow she managed to conceal herself inside of you. & EV_EMBER_2_4_32
+Em - My mother inside of me? So I'm her? & EV_EMBER_2_4_33
+Dr - No. It would be more accurate to say that she lays dormant, perhaps occasionally influencing your actions.  & EV_EMBER_2_4_34
+Ro(talk) - Then that note was likely her doing. & EV_EMBER_2_4_35
+Em - So that means... My mother is dead?  & EV_EMBER_2_4_36
+Dr - Yes and no, her body is likely dead, but her soul is within you for now.  & EV_EMBER_2_4_37
+Dr - I hope she will eventually be reborn as we once were. & EV_EMBER_2_4_38
+Dr - Although I did not expect her to take a... Mortal partner.  & EV_EMBER_2_4_39
+Dr - At times like these I will not complain.  & EV_EMBER_2_4_40
+Dr - My name is Qothus. & EV_EMBER_2_4_41
+Dr - I welcome you as one of my kin.  & EV_EMBER_2_4_42
+Ar - Before you continue with the family reunion, there's one thing we need to ask for. & EV_EMBER_2_4_43
+Dr - Yes? & EV_EMBER_2_4_44
+Ro - We are currently looking for someone... & EV_EMBER_2_4_45
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
 =MUSIC event_mysterious=
 =GUI_NORMAL=
-Dr - Curious story, but my knowledge is not enough to help you here. 
-Dr - I don't know anything about that person or item you possess.
-Ar - Well damn. At least I've defeated a dragon today. What do you think father would say?
-Ro - Now that you say it, we actually did...
-Ar - Well, Ember, take your time, we will be waiting around the corner.
-Party leaves Ember alone with the Qothus.
-Em - I didn't expect this would turn out like this.
-Dr - Threads of destiny are often chaotic in nature.
-Dr - Your mate is strong, you've chosen wisely.
-Em - Wha-? Sir Arron is not my...
-Dr - Or was it Ezet's influence, I wonder.
-Em - Um, could you tell me about my mother?
-Dr - Oh, she was one nasty rascal.
-Dr - And a fool unlike others. 
-Dr - Always got into fights with others. One time she even scorched Elder's nest cave.
-Dr - ...
-Dr - Shame I won't see her again.
-Em - You were related?
-Dr - We are all siblings in a sense.
-Em - Ah, so I can call you an Uncle Qothus then?
-Dr - This is...
-Em - Please?
-Dr - *sigh* Alright.
-Em - But what should I do now?
-Dr - You look quite accustomed to mortals. 
-Dr - You should naturally stay with them now.
-Dr - In truth, I don't know if we will even continue to exist for much longer.
-Dr - I haven't seen or heard of anyone for a long time until you came.
-Dr - So go, glide proudly and remember what you are. 
-Dr - Don't shy away from returning here if you need help. 
-Dr - I may look old, but a few more centuries are nothing for me.
-Em - Thanks, Uncle Qothus I'm glad we met.
-Ember awkwardly hugged the big dragon.
+Dr - Curious story, but my knowledge is not enough to help you here.  & EV_EMBER_2_4_46
+Dr - I don't know anything about that person or item you possess. & EV_EMBER_2_4_47
+Ar - Well damn. At least I've defeated a dragon today. What do you think father would say? & EV_EMBER_2_4_48
+Ro - Now that you say it, we actually did... & EV_EMBER_2_4_49
+Ar - Well, Ember, take your time, we will be waiting around the corner. & EV_EMBER_2_4_50
+Party leaves Ember alone with the Qothus. & EV_EMBER_2_4_51
+Em - I didn't expect this would turn out like this. & EV_EMBER_2_4_52
+Dr - Threads of destiny are often chaotic in nature. & EV_EMBER_2_4_53
+Dr - Your mate is strong, you've chosen wisely. & EV_EMBER_2_4_54
+Em - Wha-? Sir Arron is not my... & EV_EMBER_2_4_55
+Dr - Or was it Ezet's influence, I wonder. & EV_EMBER_2_4_56
+Em - Um, could you tell me about my mother? & EV_EMBER_2_4_57
+Dr - Oh, she was one nasty rascal. & EV_EMBER_2_4_58
+Dr - And a fool unlike others.  & EV_EMBER_2_4_59
+Dr - Always got into fights with others. One time she even scorched Elder's nest cave. & EV_EMBER_2_4_60
+Dr - ... & EV_EMBER_2_4_61
+Dr - Shame I won't see her again. & EV_EMBER_2_4_62
+Em - You were related? & EV_EMBER_2_4_63
+Dr - We are all siblings in a sense. & EV_EMBER_2_4_64
+Em - Ah, so I can call you an Uncle Qothus then? & EV_EMBER_2_4_65
+Dr - This is... & EV_EMBER_2_4_66
+Em - Please? & EV_EMBER_2_4_67
+Dr - *sigh* Alright. & EV_EMBER_2_4_68
+Em - But what should I do now? & EV_EMBER_2_4_69
+Dr - You look quite accustomed to mortals.  & EV_EMBER_2_4_70
+Dr - You should naturally stay with them now. & EV_EMBER_2_4_71
+Dr - In truth, I don't know if we will even continue to exist for much longer. & EV_EMBER_2_4_72
+Dr - I haven't seen or heard of anyone for a long time until you came. & EV_EMBER_2_4_73
+Dr - So go, glide proudly and remember what you are.  & EV_EMBER_2_4_74
+Dr - Don't shy away from returning here if you need help.  & EV_EMBER_2_4_75
+Dr - I may look old, but a few more centuries are nothing for me. & EV_EMBER_2_4_76
+Em - Thanks, Uncle Qothus I'm glad we met. & EV_EMBER_2_4_77
+Ember awkwardly hugged the big dragon. & EV_EMBER_2_4_78
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
@@ -99,14 +99,14 @@ Ember awkwardly hugged the big dragon.
 =MUSIC eventgeneric=
 =SPRITE emberhappy=
 =SPRITE_UNFADE 0.5=
-Em - Hey, I'm ready to go.
-Em - Hey, what are you doing to that whelp?
+Em - Hey, I'm ready to go. & EV_EMBER_2_4_79
+Em - Hey, what are you doing to that whelp? & EV_EMBER_2_4_80
 =SPRITE dragonwhelp=
 =SPRITE_UNFADE 0.5=
-Ar - Oh, don't worry about it. 
-Ar - We don't need it anymore.
-Er - It was supposed to substitute you in case you'd chose to stay here. 
-Em - Eh? Eeeeeeh?!
+Ar - Oh, don't worry about it.  & EV_EMBER_2_4_81
+Ar - We don't need it anymore. & EV_EMBER_2_4_82
+Er - It was supposed to substitute you in case you'd chose to stay here.  & EV_EMBER_2_4_83
+Em - Eh? Eeeeeeh?! & EV_EMBER_2_4_84
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

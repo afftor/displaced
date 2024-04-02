@@ -1,0 +1,100 @@
+** ember_1_1 **
+=MUSIC eventgeneric=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Ro - There's a new visitor who wants to meet you. Her name is Ember.
+Ar - Oho, a new lady? Finally, this position begins to pay off. Come on in!
+=SHAKE_SCREEN 0.5=
+=SOUND doorsmash=
+*Slam*
+=SPRITE emberhappy=
+Dragon girl appears in room
+=SPRITE_UNFADE 0.5=
+=DELAY 0.5=
+Em - Hey!
+Em - You are the mayor, right?!
+Em - My name is Ember.
+Ar - Shit, Rose, there's a dragon on the loose!
+Ro(sarcastic) - Uhm... this is the visitor. 
+Ar - Huh... well, at least you’re not a goblin.
+Ar - (She's certainly the hottest dragon I've ever seen. Although, for others, it was generally their biology. )
+Ember seemingly pays no attention to the commentary.
+Em - I'm sorry, am I being too blunt again? Ah-ha, Sorry...
+Em - Wow, this place is really great! And you look very representative as well!
+Ar - It is, indeed. My skills were recognized by the folk so I was found to be the most suitable ruler.
+Ro(sarcastic) - Indeed, given you were the only candidate.
+Ar - I'll have to penalize you for spilling my trade secrets.
+Ar - Anyway, what brought you here? 
+Em - Ah, You see, I'm a blacksmith's...
+Em - ...apprentice.
+Em - It might not sound great, but I was one for a really long time!
+Em - Since this town has a ruler now, you do need a blacksmith, right?
+Em - Someone to take care of tools, weapons and armor. Please, let me start a forge here!
+Em - I'm a bit short on money as of now, but...
+Em - If you allow me to open my personal shop, I will craft whatever you need as a payment. That's a great deal, right? 
+Ro(sarcastic) - Does anyone even need a smith shop around here..?
+Ar - A valid point, why here of all places?
+Em - I'll tell you, but it's a secret, so don't tell anyone, alright? 
+Ar - Sure, I'll just force Rose to wear a gag whenever she goes out, to make sure she stays quiet. So?
+Ro(sarcastic) - *Frown*
+Em - Have you seen the competition?
+Em - Do you realize how much profit I'll be making with no other blacksmiths around? This is a perfect opportunity to start my own shop!
+Em - I might not look like it, but I have studied my craft.
+Em - This is a perfect opportunity to start my own shop!
+Ro - ...
+Ar - ...
+=CHOICE Allow|Refuse=
+Ar - ...
+=IF LASTCHOICE 0 1 0=
+=POSITION 0=
+Ar(neutral) - This is an impossible request.
+Em(sad) - What? But I went such a long way...
+=SPRITE embershock=
+Ember's eyes began filling with tears.
+Ar - No, we can't allow a half-dragon into our town, this would go against safety reg...
+Em(sad) - *Sob*
+=CHOICE Allow|Still_refuse=
+Ar - (God, you are not serious now? )
+=IF LASTCHOICE 0 3 2=
+=POSITION 2=
+Ro(sarcastic) - What? I can't believe you are so cruel to her. Look, she's crying.
+Ar - We can't be driven by woman's emotions in hefty decisions.
+Ro - Hmph, I'm leaving then.
+Ar - You can't leave. You were mine to start with!
+Ro - That was in Avior, here I'm free to do what I want. 
+Ro - Now, let's go Ember, I'm sure we will find a more friendly place than this.
+Ar - Is that so? You'll regret this!
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+...
+......
+Being left alone, Arron failed as Mayor and has been exiled by the goblins.
+=LOOSE=
+=POSITION 3=
+Ar - Fine, I'll allow it. You will have to sign a number of contracts first, though.
+=SPRITE emberhappy=
+Ember's face quickly changes into an image of pure relief.
+=MOVETO 4=
+=POSITION 1=
+Ro - You might be wro...
+Ar - That's a great idea! Just sign a couple of contracts and you can start right away.
+Embers eyes shine with happiness
+=POSITION 4=
+Em(happy) - Wow, thank you, Arron! I'm so indebted to you for this.
+Ro(sarcastic) - (What a coincidental use of words.)
+Em - You won't regret it!
+Ar - So, you gonna need a house for a forge? We might be able to assemble something...
+Em - Oh, there's no need. I brought my house with me! It's on the hill right outside of town.
+Ro(talk) - Huh, really. Did you carry it all by yourself? Half-dragons can do stuff like that? 
+Em - Ha-ha, I've always been carrying stuff around the forge, so I wouldn't get in the way of Master's work. 
+Ar - Well, that's all the better for us, but I'll have to tax you for taking town's space. 
+Em - Okay!
+Ember has joined the settlement. Forge is available now.
+=GUI_HIDE=
+=BLACKUNFADE 1.5=
+=DELAY 1.5=
+=STOP=

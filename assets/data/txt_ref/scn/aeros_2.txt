@@ -6,18 +6,18 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ar - Hey, we dealt with that dwarf issue. 
-Guard - Which dwarf issue? 
-Ar(neutral) - The one you told us to take care of. Bloodthirsty dwarves and such, remember?
-Guard - No idea what you are talking about.
-Ar - Carl, please, you are really getting on my nerves.
-Guard_2 - I'm not Carl. That guy was kicked out a few days ago.
-Ar(neutral) - Argh... Whatever. We've dealt with dwarves, now let us pass. We had an agreement.
-Guard_2 - Look, I don't know anything about the agreement. And I’m only seeing you for the first time.
-Guard_2 - You are free to pass through. No idea what that moron Carl said to you, but the entrance is free. 
-Ar - ......
-Ro - It's all good, we can enter the city now, right?
-Ar(neutral) - That bastard was really lucky his face was hidden by a helmet. 
+Ar - Hey, we dealt with that dwarf issue.  & EV_AEROS_2_0
+Guard - Which dwarf issue?  & EV_AEROS_2_1
+Ar(neutral) - The one you told us to take care of. Bloodthirsty dwarves and such, remember? & EV_AEROS_2_2
+Guard - No idea what you are talking about. & EV_AEROS_2_3
+Ar - Carl, please, you are really getting on my nerves. & EV_AEROS_2_4
+Guard_2 - I'm not Carl. That guy was kicked out a few days ago. & EV_AEROS_2_5
+Ar(neutral) - Argh... Whatever. We've dealt with dwarves, now let us pass. We had an agreement. & EV_AEROS_2_6
+Guard_2 - Look, I don't know anything about the agreement. And I’m only seeing you for the first time. & EV_AEROS_2_7
+Guard_2 - You are free to pass through. No idea what that moron Carl said to you, but the entrance is free.  & EV_AEROS_2_8
+Ar - ...... & EV_AEROS_2_9
+Ro - It's all good, we can enter the city now, right? & EV_AEROS_2_10
+Ar(neutral) - That bastard was really lucky his face was hidden by a helmet.  & EV_AEROS_2_11
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

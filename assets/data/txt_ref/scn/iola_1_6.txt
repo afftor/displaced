@@ -6,21 +6,21 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Iola has gone on missionary work, with Arron escorting her to the nearby human village.
+Iola has gone on missionary work, with Arron escorting her to the nearby human village. & EV_IOLA_1_6_0
 =SPRITE iola=
-I - ...And this is why you must brush your teeth two times a day and take a bath once a month.
-The crowd observed Iola with caution and reverence.
-I - Thank you all for your attention, Ancestors be with you.
+I - ...And this is why you must brush your teeth two times a day and take a bath once a month. & EV_IOLA_1_6_1
+The crowd observed Iola with caution and reverence. & EV_IOLA_1_6_2
+I - Thank you all for your attention, Ancestors be with you. & EV_IOLA_1_6_3
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-I - Thank you for watching after me, Sir Arron. 
-I - I'm glad this trip went with no issues despite my status.
-Ar(neutral) - I'm more surprised your father isn't after us.
-I(sad) - Maybe he will calm down once I finish my training.
+I - Thank you for watching after me, Sir Arron.  & EV_IOLA_1_6_4
+I - I'm glad this trip went with no issues despite my status. & EV_IOLA_1_6_5
+Ar(neutral) - I'm more surprised your father isn't after us. & EV_IOLA_1_6_6
+I(sad) - Maybe he will calm down once I finish my training. & EV_IOLA_1_6_7
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -28,68 +28,68 @@ I(sad) - Maybe he will calm down once I finish my training.
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-I - Thanks again for your company today.
-I - You know, today is the day when I have to finish my initiation.
-I - But since I can't return to the cult, I'll have to ask you for help again, Sir Arron...
-Ar - What a shame. Have no worries, I'm at your service.
+I - Thanks again for your company today. & EV_IOLA_1_6_8
+I - You know, today is the day when I have to finish my initiation. & EV_IOLA_1_6_9
+I - But since I can't return to the cult, I'll have to ask you for help again, Sir Arron... & EV_IOLA_1_6_10
+Ar - What a shame. Have no worries, I'm at your service. & EV_IOLA_1_6_11
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-Arron and Iola went to her room.
+Arron and Iola went to her room. & EV_IOLA_1_6_12
 =MUSIC_STOP=
 =GUI_FULL=
 =MUSIC erotheme=
 =ABG iola_cowgirl_01=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-I - I've been waiting for this a long time, but I'm still feeling a bit nervous.
-Ar - Well, this is your real first time.
-I - I'm not too heavy, am I?
-Ar - Pfft, it's nothing for someone like me.
-I - I see... Are you ready to start then?
-Ar - Yes.
+I - I've been waiting for this a long time, but I'm still feeling a bit nervous. & EV_IOLA_1_6_13
+Ar - Well, this is your real first time. & EV_IOLA_1_6_14
+I - I'm not too heavy, am I? & EV_IOLA_1_6_15
+Ar - Pfft, it's nothing for someone like me. & EV_IOLA_1_6_16
+I - I see... Are you ready to start then? & EV_IOLA_1_6_17
+Ar - Yes. & EV_IOLA_1_6_18
 =ABG iola_cowgirl_02 iola_cowgirl_03=
-I - Aaah... It went in.
-Ar - It's not painful?
-I - It's bearable. 
-Ar - You are being rather casual about it.
-I - Since I'm a vestal, I must be ready for something small like this.
-Ar - Right...
+I - Aaah... It went in. & EV_IOLA_1_6_19
+Ar - It's not painful? & EV_IOLA_1_6_20
+I - It's bearable.  & EV_IOLA_1_6_21
+Ar - You are being rather casual about it. & EV_IOLA_1_6_22
+I - Since I'm a vestal, I must be ready for something small like this. & EV_IOLA_1_6_23
+Ar - Right... & EV_IOLA_1_6_24
 =ABG iola_cowgirl_04 iola_cowgirl_05=
-I - Ah!.. Wait.
-Ar - Hah, still not used to it?
-I - This is... Ah, too unusual.
-Ar - Hmph, you’d better get used to it then, who are you to complain now?
-I - You are... Ah... Correct.
-Ar - And you are quite tight too.
-I - Ahhh... Sorry...
-Ar - That was a compliment, stupid.
-I - Aah....
-I - That was?.. 
-I - Let me...
-Ar - Oooh, moving your hips in response?
-I - This is a part of my duty...
-Ar - What diligence.
-Ar - Ready to go faster?
+I - Ah!.. Wait. & EV_IOLA_1_6_25
+Ar - Hah, still not used to it? & EV_IOLA_1_6_26
+I - This is... Ah, too unusual. & EV_IOLA_1_6_27
+Ar - Hmph, you’d better get used to it then, who are you to complain now? & EV_IOLA_1_6_28
+I - You are... Ah... Correct. & EV_IOLA_1_6_29
+Ar - And you are quite tight too. & EV_IOLA_1_6_30
+I - Ahhh... Sorry... & EV_IOLA_1_6_31
+Ar - That was a compliment, stupid. & EV_IOLA_1_6_32
+I - Aah.... & EV_IOLA_1_6_33
+I - That was?..  & EV_IOLA_1_6_34
+I - Let me... & EV_IOLA_1_6_35
+Ar - Oooh, moving your hips in response? & EV_IOLA_1_6_36
+I - This is a part of my duty... & EV_IOLA_1_6_37
+Ar - What diligence. & EV_IOLA_1_6_38
+Ar - Ready to go faster? & EV_IOLA_1_6_39
 =ABG iola_cowgirl_06 iola_cowgirl_07=
-I - Aaaaaah!!...
-I - You are... too fast...
-Ar - Nonsense, it's you being too slow.
-I - Aah... if you keep moving like that..
-I - I will...
-Ar - Your pussy is just too good to stop now.
-I - Aaah... 
-I - Don't say... things like that...
-Ar - It feels like you are sucking me in.
-I - No... Noooo...
+I - Aaaaaah!!... & EV_IOLA_1_6_40
+I - You are... too fast... & EV_IOLA_1_6_41
+Ar - Nonsense, it's you being too slow. & EV_IOLA_1_6_42
+I - Aah... if you keep moving like that.. & EV_IOLA_1_6_43
+I - I will... & EV_IOLA_1_6_44
+Ar - Your pussy is just too good to stop now. & EV_IOLA_1_6_45
+I - Aaah...  & EV_IOLA_1_6_46
+I - Don't say... things like that... & EV_IOLA_1_6_47
+Ar - It feels like you are sucking me in. & EV_IOLA_1_6_48
+I - No... Noooo... & EV_IOLA_1_6_49
 =WHITE=
 =ABG iola_cowgirl_08 iola_cowgirl_09=
-I - AAAAahhhh...
-I - Hah... 
-I - So this is the feeling... 
-I - When you are filled with love...
-Ar - ...Haah.
-Ar - That's one way to put it.
-I - It makes me so unusually happy.
+I - AAAAahhhh... & EV_IOLA_1_6_50
+I - Hah...  & EV_IOLA_1_6_51
+I - So this is the feeling...  & EV_IOLA_1_6_52
+I - When you are filled with love... & EV_IOLA_1_6_53
+Ar - ...Haah. & EV_IOLA_1_6_54
+Ar - That's one way to put it. & EV_IOLA_1_6_55
+I - It makes me so unusually happy. & EV_IOLA_1_6_56
 =BLACKUNFADE 1=
 =DELAY 1=
 =MUSIC_STOP=
