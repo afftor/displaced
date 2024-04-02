@@ -214,7 +214,16 @@ margin_left = 15.0
 margin_top = 966.0
 margin_right = 97.0
 margin_bottom = 1051.0
-text = "test"
+text = "test c"
+clip_text = true
+
+[node name="test_event" type="Button" parent="."]
+visible = false
+margin_left = 15.0
+margin_top = 862.0
+margin_right = 97.0
+margin_bottom = 947.0
+text = "test e"
 clip_text = true
 
 [node name="foodicon" type="TextureRect" parent="."]
