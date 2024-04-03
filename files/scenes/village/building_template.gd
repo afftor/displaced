@@ -46,7 +46,7 @@ func build_icon():
 
 func set_active():
 #	is_active = true
-	visible = true
+#	visible = true
 	$QuestActive.visible = true
 #	set_process(true)
 #	material.set_shader_param('opacity', 0.8);
