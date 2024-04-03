@@ -871,8 +871,8 @@ func tag_choice(chstring: String) -> void:
 		var newbutton = $ChoicePanel/VBoxContainer.get_node("Button").duplicate()
 		$ChoicePanel/VBoxContainer.add_child(newbutton)
 		newbutton.show()
-		print("%d %s" % [c, tr(ch.replace('_', ' '))])
-		newbutton.get_node("Label").text = tr(ch.replace('_', ' '))
+#		print("%d %s" % [c, tr(ch)])
+		newbutton.get_node("Label").text = tr(ch)
 		newbutton.index = c
 		newbutton.connect('i_pressed', self, 'get_choice')
 		if replay_mode:
@@ -890,7 +890,7 @@ func get_choice(i: int):
 		state.store_choice(choice_number, i)
 	for ch_button in $ChoicePanel/VBoxContainer.get_children():
 		if ch_button.index == i:
-			print("%d %s" % [i, ch_button.get_node("Label").text])
+#			print("%d %s" % [i, ch_button.get_node("Label").text])
 			text_log += "\n\n" + ch_button.get_node("Label").text
 			break
 	$ChoicePanel.visible = false

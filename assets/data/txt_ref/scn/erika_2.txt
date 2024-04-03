@@ -120,7 +120,7 @@ Er - Fufu, Rose is a little sweetie. This kind of thing might not suit her so we
 Er - But, you know… It would be nice to have fun with her someday... & EV_ERIKA_2_86
 Ar - I don't think she swings that way.  & EV_ERIKA_2_87
 Er(happy) - Well if you give me permission, we can make her try something new. & EV_ERIKA_2_88
-=CHOICE Allow|Refuse=
+=CHOICE EV_ERIKA_ALLOW|EV_ERIKA_REFUSE=
 Er - I'm sure I can at least get her to consider it...  & EV_ERIKA_2_89
 =IF LASTCHOICE 0 2 1=
 =POSITION 1=

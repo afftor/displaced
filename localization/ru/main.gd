@@ -765,6 +765,17 @@ var TranslationDict = {
 	
 	
 	#events
+	EV_OBEDIENTLY = "Слушать покорно",
+	EV_DISINTERESTEDLY = "Слушать равнодушно",
+	EV_EMBER_ALLOW = "Разрешить",
+	EV_EMBER_REFUSE = "Отказать",
+	EV_STILL_REFUSE = "Всё равно отказать",
+	EV_ERIKA_ALLOW = "Разрешить",
+	EV_ERIKA_REFUSE = "Отказать",
+	EV_GO_AFTER_HER = "Следовать за ней",
+	EV_BETTER_NOT_TO = "Лучше не надо",
+	
+	
 	EV_IOLA_2_2_1_0 = "(говорит по-русски) Phew.. It's dead.",
 	EV_IOLA_2_2_1_1 = "(говорит по-русски) There's an essence!",
 	EV_IOLA_2_2_1_2 = "(говорит по-русски) It looks fancy. ",

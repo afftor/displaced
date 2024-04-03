@@ -1036,4 +1036,15 @@ var TranslationDict = {
 	BD = "BD",
 	RESISTANCES = "Resistances",
 	RESIST = "Resist",
+	
+	#events
+	EV_OBEDIENTLY = "Listen obediently",
+	EV_DISINTERESTEDLY = "Listen disinterestedly",
+	EV_EMBER_ALLOW = "Allow",
+	EV_EMBER_REFUSE = "Refuse",
+	EV_STILL_REFUSE = "Still refuse",
+	EV_ERIKA_ALLOW = "Allow",
+	EV_ERIKA_REFUSE = "Refuse",
+	EV_GO_AFTER_HER = "Go after her",
+	EV_BETTER_NOT_TO = "Better not to",
 }

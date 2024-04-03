@@ -47,7 +47,7 @@ Em - I might not look like it, but I have studied my craft. & EV_EMBER_1_1_32
 Em - This is a perfect opportunity to start my own shop! & EV_EMBER_1_1_33
 Ro - ... & EV_EMBER_1_1_34
 Ar - ... & EV_EMBER_1_1_35
-=CHOICE Allow|Refuse=
+=CHOICE EV_EMBER_ALLOW|EV_EMBER_REFUSE=
 Ar - ... & EV_EMBER_1_1_36
 =IF LASTCHOICE 0 1 0=
 =POSITION 0=
@@ -57,7 +57,7 @@ Em(sad) - What? But I went such a long way... & EV_EMBER_1_1_38
 Ember's eyes began filling with tears. & EV_EMBER_1_1_39
 Ar - No, we can't allow a half-dragon into our town, this would go against safety reg... & EV_EMBER_1_1_40
 Em(sad) - *Sob* & EV_EMBER_1_1_41
-=CHOICE Allow|Still_refuse=
+=CHOICE EV_EMBER_ALLOW|EV_STILL_REFUSE=
 Ar - (God, you are not serious now? ) & EV_EMBER_1_1_42
 =IF LASTCHOICE 0 3 2=
 =POSITION 2=
