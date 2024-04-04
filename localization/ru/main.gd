@@ -295,8 +295,6 @@ var TranslationDict = {
 
 	#notes
 	NOSAVENAMENOTE = "Имя впиши",
-	SAVENAMEEXISTSNOTE = "Уже есть",
-	SAVENAMERESTRICTNOTE = "Нельзя такое имя",
 	REBOOTNOTE = "Пожалуйста, перезапустите игру, чтобы изменения вступили в силу",
 
 	#unlocks
