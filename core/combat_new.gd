@@ -29,6 +29,7 @@ var allowedtargets = {'ally':[],'enemy':[]}
 var fightover = false #for victory
 var fight_finished = false #for FinishCombat
 var leveled_up_chars = []
+var old_level_on_up :int
 
 var playergroup = {}
 var enemygroup_full = []
@@ -1096,18 +1097,18 @@ func victory():
 		var xplabel_node = newbutton.get_node("xpbar/Label")
 		xpbar_node.max_value = i.get_exp_cap()
 		xpbar_node.value = i.baseexp
-		var level = i.level
+		old_level_on_up = i.level
 		i.baseexp += ceil(rewardsdict.xp)
 		var new_exp_cap = i.get_exp_cap()
 		var subtween = input_handler.GetTweenNode(newbutton)
-		if i.level > level:
+		if i.level > old_level_on_up:
 			subtween.interpolate_property(xpbar_node, 'value', xpbar_node.value, xpbar_node.max_value, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_property(xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 			subtween.interpolate_callback(input_handler, 1, 'DelayedText', xplabel_node, tr("LEVELUP")+ ': ' + str(i.level) + "!")
 			if leveled_up_chars.empty():#honestly, should refactor that shit, so levelup sound would play once, outside of subtweens
 				subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
 			leveled_up_chars.push_back(i)
-		elif i.level == level && i.baseexp >= new_exp_cap:
+		elif i.level == old_level_on_up && i.baseexp >= new_exp_cap:
 			xpbar_node.value = 100
 			subtween.interpolate_property(xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
 			subtween.interpolate_callback(input_handler, 0, 'DelayedText', xplabel_node, tr("MAXLEVEL"))
@@ -1227,15 +1228,16 @@ func fill_up_level_up(character):
 	
 	$LevelUp/panel/Avatar/Circle.texture = character.portrait_circle()
 	$LevelUp/panel/Label.text = tr("LEVELUPCHAR") % tr(character.name)
-	$LevelUp/VBoxContainer/Level/Before.text = str(character.level - 1)
+	$LevelUp/VBoxContainer/Level/Before.text = str(old_level_on_up)
 	$LevelUp/VBoxContainer/Level/After.text = str(character.level)
 	$LevelUp/VBoxContainer/Health/Before.text = str(ceil(character.get_hpmax_at_level(character.level - 1)))
 	$LevelUp/VBoxContainer/Health/After.text = str(ceil(character.get_hpmax_at_level(character.level)))
 	$LevelUp/VBoxContainer/Attack/Before.text = str(ceil(character.get_damage_at_level(character.level - 1)))
 	$LevelUp/VBoxContainer/Attack/After.text = str(ceil(character.get_damage_at_level(character.level)))
 	var skill_num = -1
-	for key in combatantdata.charlist[character.id].skilllist:
-		if combatantdata.charlist[character.id].skilllist[key] == character.level: # will fail if we go from lvl 5 to 7 and new skill was at lvl 6
+	var skill_list = combatantdata.charlist[character.id].skilllist
+	for key in skill_list:
+		if skill_list[key] <= character.level and skill_list[key] > old_level_on_up:
 			skill_num += 1
 			var skill_info = Skillsdata.skilllist[key]
 			var skill_icon = skill_planks[skill_num].get_node("Icon")
