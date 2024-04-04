@@ -756,6 +756,23 @@ var TranslationDict = {
 	RESISTANCES = "Сопротивления",
 	RESIST = "Против",
 	
+	#combat log
+	WAVE_CLEARED = "Волна %d расчищена.",
+	NEW_WAVE = "Новая волна!",
+	NO_TARGETS = "Нет подходящих целей",
+	HAS_BEEN_DEFEATED = "%s повержен.",
+	IS_CHARMED = "%s очарован и покинул битву.",
+	USES = "%s использует %s.",
+	EVADES_DAMAGE = "%s уворачивается.",
+	CRITICAL = "Крит!!",
+	IS_HIT = "%s получил %d повреждений.",
+	IS_HEALED = "%s исцелён на %d здоровья.",
+	IS_RESTORED = "%s восстановил %d %s.",
+	IS_DRAINED = "%s отнял %d %s у %s.",
+	IS_LOSING = "%s теряет %d %s.",
+	IS_NOW = "%s's %s сейчас %d.",
+	IS_RESISTS = "%s сопротивляется эффекту %s.",
+	IS_AFFLICTED = "%s под действием эффекта %s.",
 	
 	
 	

@@ -1035,6 +1035,24 @@ var TranslationDict = {
 	RESISTANCES = "Resistances",
 	RESIST = "Resist",
 	
+	#combat log
+	WAVE_CLEARED = "Wave %d was cleared.",
+	NEW_WAVE = "New wave!",
+	NO_TARGETS = "No legal targets",
+	HAS_BEEN_DEFEATED = "%s has been defeated.",
+	IS_CHARMED = "%s is charmed and has been removed from combat.",
+	USES = "%s uses %s.",
+	EVADES_DAMAGE = "%s evades the damage.",
+	CRITICAL = "Critical!!",
+	IS_HIT = "%s is hit for %d damage.",
+	IS_HEALED = "%s is healed for %d health.",
+	IS_RESTORED = "%s restored %d %s.",
+	IS_DRAINED = "%s drained %d %s from %s.",
+	IS_LOSING = "%s loses %d %s.",
+	IS_NOW = "%s's %s is now %d.",
+	IS_RESISTS = "%s resists %s.",
+	IS_AFFLICTED = "%s is afflicted by %s.",
+	
 	#events
 	EV_OBEDIENTLY = "Listen obediently",
 	EV_DISINTERESTEDLY = "Listen disinterestedly",

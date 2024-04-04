@@ -428,8 +428,8 @@ func select_actor():
 	if f == FIN_STAGE :
 		turns += 1
 		curstage += 1
-		combatlogadd("\n" + " Wave %d was cleared." % curstage)
-		combatlogadd("\n" + "New wave!")
+		combatlogadd(tr("WAVE_CLEARED") % curstage)
+		combatlogadd("\n" + tr("NEW_WAVE"))
 		buildenemygroup(enemygroup_full[curstage])
 		gui_node.build_enemy_head()
 		newturn()
@@ -596,7 +596,7 @@ func SelectSkill(skill):
 	if allowedtargets.ally.empty() and allowedtargets.enemy.empty():
 		if checkwinlose() == FIN_NO:
 			print ('no legal targets')
-			combatlogadd('No legal targets')
+			combatlogadd(tr("NO_TARGETS"))
 			activeitem = null
 			unselect_skill()
 #			call_deferred('SelectSkill', 'attack')
@@ -699,7 +699,7 @@ func checkdeaths():
 		if battlefield[i].hp <= 0:
 			battlefield[i].death()
 			hide_resist_tooltip_if_my(i)
-			combatlogadd("\n" + battlefield[i].name + " has been defeated.")
+			combatlogadd(tr("HAS_BEEN_DEFEATED") % battlefield[i].name)
 			#add fix around defeated player chars
 			if i > 3:
 				defeated.push_back(battlefield[i])
@@ -708,7 +708,7 @@ func checkdeaths():
 					if battlefield[pos] == null: continue
 					battlefield[pos].see_enemy_killed()
 		elif battlefield[i].has_status('charmed'):
-			combatlogadd("\n" + battlefield[i].name + "is charmed and has been removed from combat.")
+			combatlogadd(tr("IS_CHARMED") % battlefield[i].name)
 			battlefield[i].death()#for glitch-proof reasons we use death here, but it is not death so be mindful about on-death effects triggered here
 			hide_resist_tooltip_if_my(i)
 			#not in defeated list, as it's not death - no rewards
@@ -1814,10 +1814,12 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 
 
 	if caster != null && skill.name != "":
+		var log_skill_name :String
 		if activeitem:
-			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
+			log_skill_name = activeitem.name
 		else:
-			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
+			log_skill_name = skill.name
+		combatlogadd("\n" + tr("USES") % [caster.name, tr(log_skill_name)])
 
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown + 1#+1 is so current turn wouldn't count
@@ -1930,7 +1932,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
 				s_skill2.target.play_sfx('miss')
-				combatlogadd(s_skill2.target.name + " evades the damage.")
+				combatlogadd(tr("EVADES_DAMAGE") % s_skill2.target.name)
 #				Off_Target_Glow()
 			else:
 				#=========postdamage animation sound
@@ -2073,7 +2075,7 @@ func execute_skill(s_skill2):
 #	var data = {node = self, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
 #	CombatAnimations.add_new_data(data)
 	if s_skill2.hit_res == variables.RES_CRIT:
-		text += "[color=yellow]Critical!![/color] "
+		text += "[color=yellow]%s[/color] " % tr("CRITICAL")
 		args.critical = true
 	#new section applying conception of multi-value skills
 	#TO POLISH & REMAKE
@@ -2087,19 +2089,19 @@ func execute_skill(s_skill2):
 				args.type = s_skill2.damagetype
 				args.damage = tmp
 				if !s_skill2.tags.has('no_log'):
-					text += "%s is hit for %d damage. " %[s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
+					text += tr("IS_HIT") % [s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
 			else:
 				args.heal = -tmp.hp
 				if !s_skill2.tags.has('no_log'):
-					text += "%s is healed for %d health." % [s_skill2.target.name, -tmp.hp]
+					text += tr("IS_HEALED") % [s_skill2.target.name, -tmp.hp]
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
 			CombatAnimations.add_new_data(data)
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			var tmp = s_skill2.target.heal(s_skill2.value[i])
 			args.heal = tmp
 			if !s_skill2.tags.has('no_log'):
-				text += "%s is healed for %d health." %[s_skill2.target.name, tmp]
+				text += tr("IS_HEALED") % [s_skill2.target.name, tmp]
 			data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
 			CombatAnimations.add_new_data(data)
 		else:
@@ -2108,25 +2110,26 @@ func execute_skill(s_skill2):
 			if mod == '+':
 				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i])
 				if !s_skill2.tags.has('no log'):
-					text += "%s restored %d %s." %[s_skill2.target.name, rval, tr(stat)]
+					text += tr("IS_RESTORED") % [s_skill2.target.name, rval, tr(stat)]
 			elif mod == '-':
 				var rval = s_skill2.target.stat_update(stat, -s_skill2.value[i])
 				if s_skill2.is_drain:
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s." %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+						text += tr("IS_DRAINED") % [s_skill2.caster.name, s_skill2.value[i], tr(stat), s_skill2.target.name]
 				elif !s_skill2.tags.has('no log'):
-					text += "%s loses %d %s." %[s_skill2.target.name, -rval, tr(stat)]
+					text += tr("IS_LOSING") % [s_skill2.target.name, -rval, tr(stat)]
 			elif mod == '=':
 				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i], true)
 				if s_skill2.is_drain:# use this on your own risk
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s." %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+						text += tr("IS_DRAINED") % [s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
 				elif !s_skill2.tags.has('no log'):
-					text += "%s's %s is now %d." %[s_skill2.target.name, tr(stat), s_skill2.value[i]]
+					text += tr("IS_NOW") % [s_skill2.target.name, tr(stat), s_skill2.value[i]]
 			else: print('error in damagestat %s' % s_skill2.damagestat[i])
-	combatlogadd(text)
+	if !text.empty():
+		combatlogadd(text)
 
 
 #simple actions
