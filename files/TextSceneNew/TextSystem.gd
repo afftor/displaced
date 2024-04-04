@@ -678,16 +678,14 @@ func is_input_blocked() ->bool:
 func _input(event: InputEvent):
 	#here we process only keyboard events, for mouse events see _gui_input()
 	if !(event is InputEventKey): return
+	if is_input_blocked(): return
 	if event.is_action("ctrl"):
-		if event.is_pressed():
-			skip = true
-		else:
-			skip = false
+		skip = event.is_pressed()
 		get_tree().set_input_as_handled()
 		return
-	if is_input_blocked(): return
 
 func _unhandled_key_input(event):
+	if is_input_blocked(): return
 	#only avail in replay mode due to ability to miss critical choices and unlocks otherwise
 	if replay_mode and event.is_action_pressed("ESC"):
 		prompt_close()
