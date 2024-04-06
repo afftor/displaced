@@ -60,7 +60,7 @@ var skilllist = {
 	},
 	fire_attack_cast = {
 		code = '',
-		name = "",
+		name = "SKILLFIRE_ATTACK",
 		description = "",
 		damagetype = "fire",
 		skilltype = 'skill',
@@ -108,7 +108,7 @@ var skilllist = {
 	},
 	fire_attack_small = { #the same skill for the time being, but with smaller sfx sprite 
 		code = '',
-		name = "",
+		name = "SKILLFIRE_ATTACK",
 		description = "",
 		damagetype = "fire",
 		skilltype = 'skill',
@@ -2501,7 +2501,7 @@ var skilllist = {
 	},
 	fire_breath_drag_boss = {
 		code = '',
-		name = "",
+		name = "SKILLFIRE_BREATH",
 		description = "",
 		damagetype = "fire",
 		skilltype = 'spell',
@@ -3792,8 +3792,10 @@ func get_description(patched_skill :Dictionary) -> String:
 func _ready():
 	for i in skilllist:
 		skilllist[i].code = i #do not touch
-		skilllist[i].name = "SKILL" + i.to_upper()
-		skilllist[i].description = "SKILL" + i.to_upper() + "DESCRIPT"
+		if skilllist[i].name.empty():
+			skilllist[i].name = "SKILL" + i.to_upper()
+		if skilllist[i].description.empty():
+			skilllist[i].description = "SKILL" + i.to_upper() + "DESCRIPT"
 		if skilllist[i].has('sounddata'):
 			var tdata = skilllist[i].sounddata
 			for period in tdata:
