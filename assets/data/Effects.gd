@@ -23,6 +23,7 @@ var effect_table = {
 	#defence
 	e_s_defence = {
 		type = 'temp_s',
+		screen_name = 'EF_DEFENCE',#all in all, temp effect with buffs should have screen_name
 		name = 'defence',
 		target = 'caster',
 		stack = 1,
@@ -56,6 +57,7 @@ var effect_table = {
 	#statuses
 	e_s_burn = {
 		type = 'temp_s',
+		screen_name = 'EF_BURN',
 		name = 'burn',
 		target = 'target',
 		stack = 1,
@@ -73,6 +75,7 @@ var effect_table = {
 	},
 	e_s_burn_onget = {#same as e_s_burn, but triggered at TR_TURN_GET
 		type = 'temp_s',
+		screen_name = 'EF_BURN',
 		name = 'burn_onget',
 		target = 'target',
 		stack = 1,
@@ -90,6 +93,7 @@ var effect_table = {
 	},
 	e_s_poison = {
 		type = 'temp_s',
+		screen_name = 'EF_POISON',
 		name = 'poison',
 		target = 'target',
 		stack = 1,
@@ -107,6 +111,7 @@ var effect_table = {
 	},
 	e_s_poison_water = {
 		type = 'temp_s',
+		screen_name = 'EF_POISON_WATER',
 		name = 'poison_water',
 		target = 'target',
 		stack = 1,
@@ -124,6 +129,7 @@ var effect_table = {
 	},
 	e_s_poison_permanent = {
 		type = 'temp_s',
+		screen_name = 'EF_POISON_PERMANENT',
 		name = 'poison_permanent',
 		target = 'target',
 		stack = 1,
@@ -140,6 +146,7 @@ var effect_table = {
 	},
 	e_s_bleed = {
 		type = 'temp_s',
+		screen_name = 'EF_BLEED',
 		name = 'bleed',
 		target = 'target',
 		stack = 1,
@@ -157,6 +164,7 @@ var effect_table = {
 	},
 	e_s_bleed_onget = {#same as e_s_bleed, but treggered by TR_TURN_GET
 		type = 'temp_s',
+		screen_name = 'EF_BLEED',
 		name = 'bleed_onget',
 		target = 'target',
 		stack = 1,
@@ -174,6 +182,7 @@ var effect_table = {
 	},
 	e_stun = {
 		type = 'temp_s',
+		screen_name = 'EF_STUN',
 		name = 'stun',
 		target = 'target',
 		stack = 1,
@@ -194,6 +203,7 @@ var effect_table = {
 	},
 	e_intimidate = {
 		type = 'temp_s',
+		screen_name = 'EF_INTIMIDATE',
 		name = 'intimidate',
 		target = 'target',
 		stack = 1,
@@ -212,6 +222,7 @@ var effect_table = {
 	},
 	e_silence = {
 		type = 'temp_s',
+		screen_name = 'EF_SILENCE',
 		name = 'silence',
 		target = 'target',
 		stack = 1,
@@ -231,6 +242,7 @@ var effect_table = {
 	},
 	e_s_wound = {
 		type = 'temp_s',
+		screen_name = 'EF_WOUND',
 		name = 'wound',
 		target = 'target',
 		stack = 1,
@@ -320,6 +332,7 @@ var effect_table = {
 	},
 	e_t_nodamagearg = {
 		type = 'temp_s',
+		screen_name = 'EF_FENCING_DEBUF',
 		name = 'fencing_debuf',
 		target = 'target',
 		tags = ['negative'],# or not? mb affliction?
@@ -343,6 +356,7 @@ var effect_table = {
 	},
 	e_s_swift = {
 		type = 'temp_s',
+		screen_name = 'EF_SWIFT',
 		name = 'swift',
 		target = 'caster',
 		stack = 1,
@@ -372,6 +386,7 @@ var effect_table = {
 	},
 	e_t_protect_c = {
 		type = 'temp_s',
+		screen_name = 'EF_PARRY',
 		name = 'parry_on_caster',
 		target = 'caster',
 		tick_event = variables.TR_TURN_S,
@@ -407,6 +422,7 @@ var effect_table = {
 	},
 	e_t_protect_t = {
 		type = 'temp_s',
+		screen_name = 'EF_PARRY',
 		name = 'parry_listener',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,
@@ -514,6 +530,7 @@ var effect_table = {
 	},
 	e_s_swordmas_timer = {
 		type = 'temp_p',
+		screen_name = 'EF_SWORD_MASTERY',
 		name = 'timer_sword_mastery',
 		duration = 4,
 		target = 'caster',
@@ -601,6 +618,7 @@ var effect_table = {
 	},
 	e_t_termination = {
 		type = 'temp_s',
+		screen_name = 'EF_TERMINATION_BUFF',
 		name = 'termination_buff',
 		target = 'caster',
 		duration = 3,
@@ -625,6 +643,7 @@ var effect_table = {
 	},
 	e_s_smoke = {
 		type = 'temp_s',
+		screen_name = 'EF_SMOKE',
 		name = 'smoke',
 		target = 'target',
 		tags = ['buff'],
@@ -644,6 +663,7 @@ var effect_table = {
 	},
 	e_s_smoke_patch = {
 		type = 'temp_s',
+		screen_name = 'EF_SMOKE_RESIST',
 		name = 'smoke_resist',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,
@@ -691,6 +711,7 @@ var effect_table = {
 	},
 	e_s_flash = {
 		type = 'temp_s',
+		screen_name = 'EF_FLASH',
 		name = 'flash',
 		target = 'target',
 		tags = ['negative'],
@@ -739,6 +760,7 @@ var effect_table = {
 	},
 	e_s_renew = {
 		type = 'temp_s',
+		screen_name = 'EF_RENEW',
 		name = 'renew_timer',
 		target = 'target',
 		stack = 1,
@@ -775,6 +797,7 @@ var effect_table = {
 	},
 	e_s_renew1 = {
 		type = 'temp_s',
+		screen_name = 'EF_RENEW_RESIST',
 		name = 'renew_resist_1',
 		target = 'target',
 		stack = 1,
@@ -790,6 +813,7 @@ var effect_table = {
 	},
 	e_s_renew2 = {
 		type = 'temp_s',
+		screen_name = 'EF_RENEW_RESIST',
 		name = 'renew_resist_2',
 		target = 'target',
 		stack = 1,
@@ -890,6 +914,7 @@ var effect_table = {
 	},
 	e_s_freeze = {
 		type = 'temp_s',
+		screen_name = 'EF_FREEZE',
 		name = 'freeze',
 		target = 'target',
 		stack = 1,
@@ -934,6 +959,7 @@ var effect_table = {
 	},
 	e_s_chill = {
 		type = 'temp_s',
+		screen_name = 'EF_CHILL',
 		name = 'chill',
 		target = 'target',
 		stack = 1,
@@ -969,6 +995,7 @@ var effect_table = {
 	},
 	e_s_arrshower = {
 		type = 'temp_s',
+		screen_name = 'EF_ARROW_SHOWER_DEBUFF',
 		name = 'arrow_shower_debuff',
 		target = 'target',
 		stack = 1,
@@ -1020,6 +1047,7 @@ var effect_table = {
 	},
 	e_s_nat_bless = {
 		type = 'temp_s',
+		screen_name = 'EF_NATURE_BLESS',
 		name = 'nature_bless',
 		target = 'target',
 		stack = 1,
@@ -1042,6 +1070,7 @@ var effect_table = {
 	},
 	e_s_hearts = {
 		type = 'temp_s',
+		screen_name = 'EF_HEARTSEEKER_DEBUFF',
 		name = 'heartseeker_debuff',
 		target = 'target',
 		stack = 1,
@@ -1061,6 +1090,7 @@ var effect_table = {
 	},
 	e_s_charm = {
 		type = 'temp_s',
+		screen_name = 'EF_CHARM',
 		name = 'charm',
 		target = 'target',
 		duration = 3,
@@ -1135,6 +1165,7 @@ var effect_table = {
 	},
 	e_s_firepunch = {
 		type = 'temp_s',
+		screen_name = 'EF_FIREPUNCH_DEBUFF',
 		name = 'timer_firepunch_debuff',
 		target = 'target',
 		stack = 1,
@@ -1205,6 +1236,7 @@ var effect_table = {
 
 	e_s_shockwave = {
 		type = 'temp_s',
+		screen_name = 'EF_SHOCKWAVE_DEBUFF',
 		name = 'shockwave_debuff',
 		target = 'target',
 		stack = 1,
@@ -1224,6 +1256,7 @@ var effect_table = {
 	},
 	e_s_uppercut = {
 		type = 'temp_s',
+		screen_name = 'EF_UPPERCUT',
 		name = 'timer_uppercut',
 		target = 'target',
 		stack = 1,
@@ -1295,6 +1328,7 @@ var effect_table = {
 	},
 	e_t_protect_t_er = {
 		type = 'temp_s',
+		screen_name = 'EF_DEFEND',
 		name = 'defend_listener',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,
@@ -1315,6 +1349,7 @@ var effect_table = {
 	},
 	e_s_defend = {
 		type = 'temp_s',
+		screen_name = 'EF_DEFEND_BUFF',
 		name = 'defend_buff',
 		target = 'caster',
 		stack = 1,
@@ -1333,6 +1368,7 @@ var effect_table = {
 	},
 	e_t_dragonprot = {
 		type = 'temp_s',
+		screen_name = 'EF_DRAGON_PROTECTION',
 		name = 'dragon_protection',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,
@@ -1378,6 +1414,7 @@ var effect_table = {
 #	},
 	e_s_aegis = {
 		type = 'temp_s',
+		screen_name = 'EF_AEGIS',
 		name = 'aegis',
 		target = 'target',
 		stack = 1,
@@ -1397,6 +1434,7 @@ var effect_table = {
 	},
 	e_s_aegis1 = {
 		type = 'temp_s',
+		screen_name = 'EF_AEGIS_HP',
 		name = 'aegis_hp',
 		target = 'target',
 		stack = 1,
@@ -1416,6 +1454,7 @@ var effect_table = {
 	},
 	e_t_orb = {
 		type = 'temp_s',
+		screen_name = 'EF_ORB',
 		name = 'orb',
 		target = 'target',
 		tags = ['negative'],
@@ -1466,6 +1505,7 @@ var effect_table = {
 	},
 	e_s_mist = {
 		type = 'temp_s',
+		screen_name = 'EF_MIST_DEBUFF',
 		name = 'mist_debuff',
 		target = 'target',
 		stack = 1,
@@ -1485,6 +1525,7 @@ var effect_table = {
 	},
 	e_t_mist = {
 		type = 'temp_s',
+		screen_name = 'EF_MIST',
 		name = 'mist_timer',
 		target = 'target',
 		stack = 1,
@@ -1520,6 +1561,7 @@ var effect_table = {
 	},
 	e_s_ava = {
 		type = 'temp_s',
+		screen_name = 'EF_AVALANCHE_DEBUFF',
 		name = 'avalanche_debuff',
 		target = 'target',
 		stack = 1,
@@ -1572,6 +1614,7 @@ var effect_table = {
 	},
 	e_echo_shield_icon = {
 		type = 'temp_s',
+		screen_name = 'EF_ECHO_SHIELD',
 		name = 'echo_shield',
 		target = 'caster',
 		rem_event = [variables.TR_SHIELD_DOWN, variables.TR_COMBAT_F],
@@ -1588,6 +1631,7 @@ var effect_table = {
 	},
 	e_echo_taunt = {
 		type = 'temp_s',
+		screen_name = 'EF_ECHO_TAUNT',
 		name = 'echo_taunt',
 		target = 'target',
 		stack = 1,
@@ -1614,6 +1658,7 @@ var effect_table = {
 	},
 	e_s_beam_debuff = {
 		type = 'temp_s',
+		screen_name = 'EF_BEAM_DEBUFF',
 		name = 'timer_beam_debuff',
 		target = 'target',
 		stack = 1,
@@ -1634,6 +1679,7 @@ var effect_table = {
 	},
 	e_t_soulprot = {
 		type = 'temp_s',
+		screen_name = 'EF_SOULPROT',
 		name = 'soulprot',
 		target = 'target',
 		stack = 1,
@@ -1654,6 +1700,7 @@ var effect_table = {
 	},
 	e_s_gust1 = {
 		type = 'temp_s',
+		screen_name = 'EF_GUSTOFWIND_DEBUFF',
 		name = 'gustofwind_debuff1',
 		target = 'target',
 		duration = 2,
@@ -1669,6 +1716,7 @@ var effect_table = {
 	},
 	e_s_gust2 = {
 		type = 'temp_s',
+		screen_name = 'EF_GUSTOFWIND_DEBUFF',
 		name = 'gustofwind_debuff2',
 		target = 'target',
 		duration = 2,
@@ -1701,6 +1749,7 @@ var effect_table = {
 	},
 	e_t_iola_barrier = {
 		type = 'temp_s',
+		screen_name = 'EF_IOLA_BARRIER',
 		name = 'iola_barrier',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,
@@ -1746,6 +1795,7 @@ var effect_table = {
 	},
 	e_s_bless = {
 		type = 'temp_s',
+		screen_name = 'EF_BLESS',
 		name = 'bless',
 		target = 'target',
 		stack = 1,
@@ -1780,6 +1830,7 @@ var effect_table = {
 	},
 	e_s_viccull = {
 		type = 'temp_s',
+		screen_name = 'EF_CULLING',
 		name = 'culling',
 		target = 'target',
 		stack = 10,
@@ -1808,6 +1859,7 @@ var effect_table = {
 	},
 	e_s_vicen = {
 		type = 'temp_s',
+		screen_name = 'EF_ENERGYBURST_BUFF',
 		name = 'energyburst_buff',
 		target = 'caster',
 		tags = ['buff'],
@@ -1837,6 +1889,7 @@ var effect_table = {
 	},
 	e_t_def_c = {
 		type = 'temp_s',
+		screen_name = 'EF_GUARD',
 		name = 'guard_on_caster',
 		target = 'caster',
 		tick_event = variables.TR_TURN_S,
@@ -1871,6 +1924,7 @@ var effect_table = {
 	},
 	e_t_def_t = {
 		type = 'temp_s',
+		screen_name = 'EF_GUARD',
 		name = 'guard_listener',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,
@@ -1902,6 +1956,7 @@ var effect_table = {
 	},
 	e_i_atkup = {
 		type = 'temp_s',
+		screen_name = 'EF_SCROLL_OFFENSE',
 		name = 'scroll_offense',
 		target = 'target',
 		stack = 1,
@@ -1923,6 +1978,7 @@ var effect_table = {
 	},
 	e_i_defup = {
 		type = 'temp_s',
+		screen_name = 'EF_SCROLL_DEFENCE',
 		name = 'scroll_defence',
 		target = 'target',
 		tick_event = variables.TR_TURN_F,
@@ -2187,6 +2243,7 @@ var effect_table = {
 	},
 	e_bloodlust = {#dwarf king rage of stage 1
 		type = 'temp_s',
+		screen_name = 'EF_BLOODLUST',
 		name = 'bloodlust',
 		target = 'owner',
 		stack = 5,
@@ -2209,6 +2266,7 @@ var effect_table = {
 	},
 	e_rage = {#dwarf king rage of stage 2
 		type = 'temp_s',
+		screen_name = 'EF_RAGE',
 		name = 'rage',
 		target = 'owner',
 		stack = 5,
@@ -2251,6 +2309,7 @@ var effect_table = {
 	},
 	e_rage_1 = {
 		type = 'temp_s',
+		screen_name = 'EF_RAGE',
 		name = 'dwarf_enrage',
 		target = 'owner',
 		stack = 0,
@@ -2264,6 +2323,7 @@ var effect_table = {
 	},
 	e_s_execute_charge = {
 		type = 'temp_s',
+		screen_name = 'EF_EXECUTE_CHARGE',
 		name = 'execute_charge',
 		target = 'caster',
 		stack = 1,
@@ -2478,6 +2538,7 @@ var effect_table = {
 	},
 	e_i_barrier4_timer = {
 		type = 'temp_s',
+		screen_name = 'EF_BARRIER',
 		name = 'item_barrier_3',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,#or get
@@ -2501,6 +2562,7 @@ var effect_table = {
 	},
 	e_i_barrier5_timer = {
 		type = 'temp_s',
+		screen_name = 'EF_BARRIER',
 		name = 'item_barrier_2',
 		target = 'target',
 		tick_event = variables.TR_TURN_S,#or get
@@ -2514,6 +2576,7 @@ var effect_table = {
 	},
 	common_shield_info = {
 		type = 'temp_s',#this should be endless "temporal" effect
+		screen_name = 'EF_SHIELD',
 		name = 'common_shield_info',
 		rem_event = [variables.TR_SHIELD_DOWN, variables.TR_COMBAT_F],
 		target = 'target',
