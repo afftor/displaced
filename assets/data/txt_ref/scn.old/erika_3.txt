@@ -1,0 +1,15 @@
+** erika_3 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG forest=
+=SPRITE erika=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+Er(happy) - That one is perfect.
+Er - Now I'll begin the preparations. Bring Rose with you this evening to my room.
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=STOP=

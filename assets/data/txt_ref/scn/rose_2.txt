@@ -3,54 +3,54 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG hall=
-Arron laid in the bed, recuperating from wounds left by Dimitrius.
+Arron laid in the bed, recuperating from wounds left by Dimitrius. & EV_ROSE_2_0
 =SOUND knocking=
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
-Ro - Can I come in?
-Ar - Sorry, I'm not quite in the condition for a liaison. Can you postpone it?
-Ro - ...
-Ro - Iola said that you were very lucky to survive that.
-Ar - Yeah, felt like my organs became a paste. 
-Ar - Hurt like hell too.
-Ro(talk) - ...I did a terrible thing.
-Ar - Huh, so it's about you now? Really supportive there.
-Ro - Oh... Uh... Sorry...
-Ar - I'm kidding, you twit. 
-Ar(neutral) - Yeah, don't worry about it.
-Ar - I knew you'd not in your mind since Dimitrius is a demon and all that shit.
-Ro - ...That's not the entire truth. 
-Ro - Those things I said about everyone... 
-Ro(talk) - I really feel that way, at least sometimes.
-Ar - ...So what? 
-Ar - We all sometimes feel like we hate everything and everyone, especially about someone close.
-Ar - You remember how you supported Ember when we met for the first time?
-Ro - ...
-Ar - And how you volunteered to save Erika, when she was captured, despite the danger?
-Ro(sarcastic) - That was...
-Ar - And how you yelled at me right before we ended up here. 
-Ro(sad) - *sob* M-master...
-Ro(sad) - I'm so sorry... Waaah...
-Ar - Ouch, easy there...
+Ro - Can I come in? & EV_ROSE_2_1
+Ar - Sorry, I'm not quite in the condition for a liaison. Can you postpone it? & EV_ROSE_2_2
+Ro - ... & EV_ROSE_2_3
+Ro - Iola said that you were very lucky to survive that. & EV_ROSE_2_4
+Ar - Yeah, felt like my organs became a paste.  & EV_ROSE_2_5
+Ar - Hurt like hell too. & EV_ROSE_2_6
+Ro(talk) - ...I did a terrible thing. & EV_ROSE_2_7
+Ar - Huh, so it's about you now? Really supportive there. & EV_ROSE_2_8
+Ro - Oh... Uh... Sorry... & EV_ROSE_2_9
+Ar - I'm kidding, you twit.  & EV_ROSE_2_10
+Ar(neutral) - Yeah, don't worry about it. & EV_ROSE_2_11
+Ar - I knew you'd not in your mind since Dimitrius is a demon and all that shit. & EV_ROSE_2_12
+Ro - ...That's not the entire truth.  & EV_ROSE_2_13
+Ro - Those things I said about everyone...  & EV_ROSE_2_14
+Ro(talk) - I really feel that way, at least sometimes. & EV_ROSE_2_15
+Ar - ...So what?  & EV_ROSE_2_16
+Ar - We all sometimes feel like we hate everything and everyone, especially about someone close. & EV_ROSE_2_17
+Ar - You remember how you supported Ember when we met for the first time? & EV_ROSE_2_18
+Ro - ... & EV_ROSE_2_19
+Ar - And how you volunteered to save Erika, when she was captured, despite the danger? & EV_ROSE_2_20
+Ro(sarcastic) - That was... & EV_ROSE_2_21
+Ar - And how you yelled at me right before we ended up here.  & EV_ROSE_2_22
+Ro(sad) - *sob* M-master... & EV_ROSE_2_23
+Ro(sad) - I'm so sorry... Waaah... & EV_ROSE_2_24
+Ar - Ouch, easy there... & EV_ROSE_2_25
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-...
-Ar - Feeling better now?
-Ro - *nod*
-Ar - Jeez... I feel like I'm doing a therapist’s job a lot lately.
-Ro(talk) - I haven't thought about you being compassionate before.
-Ar - Tell anyone and I'll kill you. 
-Ro - I have to ask forgiveness from the others. 
-Ar - Yeah, you can do that.
-Ro - Thank you, Master. 
-Ro - I'll be off now. Get well soon.
+... & EV_ROSE_2_26
+Ar - Feeling better now? & EV_ROSE_2_27
+Ro - *nod* & EV_ROSE_2_28
+Ar - Jeez... I feel like I'm doing a therapist’s job a lot lately. & EV_ROSE_2_29
+Ro(talk) - I haven't thought about you being compassionate before. & EV_ROSE_2_30
+Ar - Tell anyone and I'll kill you.  & EV_ROSE_2_31
+Ro - I have to ask forgiveness from the others.  & EV_ROSE_2_32
+Ar - Yeah, you can do that. & EV_ROSE_2_33
+Ro - Thank you, Master.  & EV_ROSE_2_34
+Ro - I'll be off now. Get well soon. & EV_ROSE_2_35
 =SPRITE_HIDE=
 =SOUND slam=
-Ar - On a second thought... A liaison might not be a bad idea.
-Ar(neutral) - Rose, wait, you hear me?
-Ar - Darn it.
+Ar - On a second thought... A liaison might not be a bad idea. & EV_ROSE_2_36
+Ar(neutral) - Rose, wait, you hear me? & EV_ROSE_2_37
+Ar - Darn it. & EV_ROSE_2_38
 =STOP=

@@ -47,14 +47,15 @@ func ResetSavePanel():
 		newbutton.get_node("date").text = ""
 		newbutton.get_node("time").text = ""
 		newbutton.set_meta("save_name", "")
+		newbutton.set_meta("file_name", "")
 		newbutton.connect("pressed", self, "choose_save", [""])
 		newbutton.get_node("LineEdit").connect("text_entered", self, 'on_lineedit_enter')
 	
+	var filereader = File.new()
 	var file_list = []
 	for i in globals.dir_contents(saves_folder):
-		if i.ends_with('.sav') == false:
+		if !i.ends_with('.sav'):
 			continue
-		var filereader = File.new()
 		var file_unix_time = filereader.get_modified_time(i) + (Time.get_time_zone_from_system().bias * 60)
 		file_list.append([file_unix_time,i])
 	file_list.sort_custom(self, 'save_files_sort')
@@ -63,42 +64,48 @@ func ResetSavePanel():
 		var file_path = entry[1]
 		var newbutton = input_handler.DuplicateContainerTemplate(saves_container)
 		var file_time :Dictionary = Time.get_datetime_dict_from_unix_time(file_unix_time)
-		var save_name :String = SaveNameTransform(file_path)
+		var file_name :String = SaveNameTransform(file_path)
+		var save_name :String = file_name
+		filereader.open(file_path, File.READ)
+		var first_line = filereader.get_line()
+		filereader.close()
+		if first_line.begins_with("name="):
+			save_name = first_line.trim_prefix("name=")
 		newbutton.get_node("name").text = save_name
 		newbutton.set_meta("save_name", save_name)
+		newbutton.set_meta("file_name", file_name)
 		newbutton.get_node("date").text = "%d/%02d/%02d" % [file_time.day, file_time.month, file_time.year % 100]
 		newbutton.get_node("time").text = "%d:%02d" % [file_time.hour, file_time.minute]
 		
-		if save_name == variables.autosave_name:
+		if file_name == variables.autosave_name:
 			newbutton.get_node("screenshot").texture = autosave_shot
 		else:
 			var screenshot_file = file_path.replace('.sav', '.png')
-			var filereader = File.new()
 			if filereader.file_exists(screenshot_file):
 				var screenshot = Image.new()
 				screenshot.load(screenshot_file)
 				var screenshot_tex = ImageTexture.new()
 				screenshot_tex.create_from_image(screenshot)
 				newbutton.get_node("screenshot").texture = screenshot_tex
-		newbutton.connect("pressed", self, "on_file_click", [save_name])
+		newbutton.connect("pressed", self, "on_file_click", [file_name])
 
 func on_lineedit_enter(_text):
 	PressSaveGame()
 
-func on_file_click(save_name :String):
+func on_file_click(file_name :String):
 	var click_time = Time.get_ticks_msec()
 	if (click_time - double_click_info.time < 300
-			and double_click_info.savename == save_name):
+			and double_click_info.savename == file_name):
 		PressLoadGame()
 		return
 	
 	double_click_info.time = click_time
-	double_click_info.savename = save_name
-	choose_save(save_name)
+	double_click_info.savename = file_name
+	choose_save(file_name)
 
-func choose_save(save_name :String):
+func choose_save(file_name :String):
 	if cur_save:
-		if cur_save.get_meta("save_name") == save_name:
+		if cur_save.get_meta("file_name") == file_name:
 			return
 		cur_save.pressed = false
 		var editor = cur_save.get_node("LineEdit")
@@ -107,12 +114,12 @@ func choose_save(save_name :String):
 			editor.hide()
 			cur_save.get_node("name").show()
 	for btn in saves_container.get_children():
-		if btn.get_meta("save_name") == save_name:
+		if btn.get_meta("file_name") == file_name:
 			cur_save = btn
 			break
 	cur_save.pressed = true
-	var is_new_save :bool = save_name.empty()
-	var is_auto_save :bool = (save_name == variables.autosave_name)
+	var is_new_save :bool = file_name.empty()
+	var is_auto_save :bool = (file_name == variables.autosave_name)
 	btn_delete.disabled = is_new_save
 	btn_load.disabled = is_new_save
 	btn_save.disabled = !can_save() or is_auto_save
@@ -131,13 +138,6 @@ func PressSaveGame():
 		if editor.text.empty():
 			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("NOSAVENAMENOTE")])
 			return
-		if editor.text == variables.autosave_name:
-			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("SAVENAMERESTRICTNOTE")])
-			return
-		var file = File.new()
-		if file.file_exists(saves_folder + '/' + editor.text + '.sav'):
-			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("SAVENAMEEXISTSNOTE")])
-			return
 		cur_save.set_meta("save_name", editor.text)
 		SaveGame()
 	else:
@@ -147,7 +147,7 @@ func PressDeleteGame():
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteSave', tr("DELETECONFIRM") % cur_save.get_meta("save_name")])
 
 func DeleteSave():
-	var file_name = saves_folder + '/' + cur_save.get_meta("save_name")
+	var file_name = saves_folder + '/' + cur_save.get_meta("file_name")
 	var dir = Directory.new()
 	dir.remove(file_name + '.sav')
 	if dir.file_exists(file_name + '.png'):
@@ -155,12 +155,12 @@ func DeleteSave():
 	ResetSavePanel()
 
 func SaveGame():
-	globals.SaveGame(cur_save.get_meta("save_name"))
+	globals.SaveGame(cur_save.get_meta("file_name"), cur_save.get_meta("save_name"))
 	hide()
 #	ResetSavePanel()
 
 func LoadGame():
-	globals.LoadGame(cur_save.get_meta("save_name"))
+	globals.LoadGame(cur_save.get_meta("file_name"))
 
 func SaveNameTransform(path):
 	return path.replace(saves_folder + "/","").replace('.sav', '')

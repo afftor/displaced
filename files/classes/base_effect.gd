@@ -13,6 +13,7 @@ var atomic := []
 var is_applied
 var applied_char = null
 var name = "undefined debug name"
+var screen_name = ""
 
 func _init(caller):
 	parent = caller
@@ -125,6 +126,8 @@ func createfromtemplate(buff_t):
 		name = template.name#mind, that this param sort of duplicates template_name for effects, that has it
 	elif template.has('debug_name'):
 		name = template.debug_name
+	if template.has('screen_name'):
+		screen_name = template.screen_name
 
 
 
@@ -244,3 +247,9 @@ func rebuild_buffs():
 
 func clear_buffs():
 	buffs.clear()
+
+func has_screen_name() ->bool:
+	return !screen_name.empty()
+
+func get_screen_name() ->String:
+	return tr(screen_name)

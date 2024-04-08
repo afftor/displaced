@@ -8,25 +8,27 @@
 =SPRITE faeryqueen=
 =SPRITE_UNFADE 0.5=
 =GUI_NORMAL=
-FQ - Greetings, fuckwits.
-FQ - What do you think you are doing coming here?
-Ar - Huh... I wonder if there's any point in trying to negotiate at all.
-FQ - Huh? Whatcha gonna do, dumbass? Ride that dragon cunt like some damn hero?
-Ar - Whatever, we want the Saint's Pearl.
-FQ - Yeah, and I want your ass roasted by an ogre. Do you think I'm gonna give it to you?
-Ar - ...Get this bitch.
-FQ - Ha, suck it losers.
+FQ - Greetings, fuckwits. & EV_FAERY_QUEEN_1_0
+FQ - What do you think you are doing coming here? & EV_FAERY_QUEEN_1_1
+Ar - Huh... I wonder if there's any point in trying to negotiate at all. & EV_FAERY_QUEEN_1_2
+FQ - Huh? Whatcha gonna do, dumbass? Ride that dragon cunt like some damn hero? & EV_FAERY_QUEEN_1_3
+Ar - Whatever, we want the Saint's Pearl. & EV_FAERY_QUEEN_1_4
+FQ - Yeah, and I want your ass roasted by an ogre. Do you think I'm gonna give it to you? & EV_FAERY_QUEEN_1_5
+Ar - ...Get this bitch. & EV_FAERY_QUEEN_1_6
+FQ - Ha, suck it losers. & EV_FAERY_QUEEN_1_7
 =SPRITE_FADE 0.5=
 =SOUND sound_teleport=
-Ar - Damn it, she got away.
-Em - Look, there's a portal left after her.
-Ar - Ah, we could follow it.
-Ro(sarcastic) - I don't think this is a good idea. 
-Ro(sarcastic) - We don't know where we might end up.
-=CHOICE Go_after_her|Better_not_to=
-Ar - ...
-=SKIP 1 1=
+Ar - Damn it, she got away. & EV_FAERY_QUEEN_1_8
+Em - Look, there's a portal left after her. & EV_FAERY_QUEEN_1_9
+Ar - Ah, we could follow it. & EV_FAERY_QUEEN_1_10
+Ro(sarcastic) - I don't think this is a good idea.  & EV_FAERY_QUEEN_1_11
+Ro(sarcastic) - We don't know where we might end up. & EV_FAERY_QUEEN_1_12
+=CHOICE EV_GO_AFTER_HER|EV_BETTER_NOT_TO=
+Ar - ... & EV_FAERY_QUEEN_1_13
+=IF LASTCHOICE 0 1 2=
+=POSITION 1=
 =DECISION portal=
+=POSITION 2=
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

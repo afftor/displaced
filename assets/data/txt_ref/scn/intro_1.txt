@@ -6,123 +6,123 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-The Kingdom of Avior has been at peace for the last few centuries. Political stability felt almost taken for granted not only by the citizens, but even by royalty. 
-Military successes of the previous king, Mizar, provided his family with a big and strong country, which rightfully ruled to this day.
-His son and successor, Alcor, reinforced his father's achievements and continued his rulership.
-As it happens in a monarchy, his first son, Norbert, prepared to take his place, given his father’s old age.
-However, in his twenties, the second prince Arron is nothing but trouble to his family...
+The Kingdom of Avior has been at peace for the last few centuries. Political stability felt almost taken for granted not only by the citizens, but even by royalty.  & EV_INTRO_1_0
+Military successes of the previous king, Mizar, provided his family with a big and strong country, which rightfully ruled to this day. & EV_INTRO_1_1
+His son and successor, Alcor, reinforced his father's achievements and continued his rulership. & EV_INTRO_1_2
+As it happens in a monarchy, his first son, Norbert, prepared to take his place, given his father’s old age. & EV_INTRO_1_3
+However, in his twenties, the second prince Arron is nothing but trouble to his family... & EV_INTRO_1_4
 =BG castleroom=
 =SPRITE arron=
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-First prince's bedroom
-Ar - My Lady, it's a great honor for me to be invited into your bedroom.
-Lr - Huhu, enough Arron, just come inside already. 
+First prince's bedroom & EV_INTRO_1_5
+Ar - My Lady, it's a great honor for me to be invited into your bedroom. & EV_INTRO_1_6
+Lr - Huhu, enough Arron, just come inside already.  & EV_INTRO_1_7
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-Ro - (Jeez, what is master even thinking to go at it again...) 
-Ro - (Oh, they went in. I better take my position. Sigh...) 
+Ro - (Jeez, what is master even thinking to go at it again...)  & EV_INTRO_1_8
+Ro - (Oh, they went in. I better take my position. Sigh...)  & EV_INTRO_1_9
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
-Ar - I've been dreaming of this day since our last meeting, and my heart skipped once I'd noticed your beautiful lustful eyes on me this morning...
-Lr - You and your flattering again... Gosh, why are you already naked?
-Ar - And why aren't you? 
-Lr - Oh my...
+Ar - I've been dreaming of this day since our last meeting, and my heart skipped once I'd noticed your beautiful lustful eyes on me this morning... & EV_INTRO_1_10
+Lr - You and your flattering again... Gosh, why are you already naked? & EV_INTRO_1_11
+Ar - And why aren't you?  & EV_INTRO_1_12
+Lr - Oh my... & EV_INTRO_1_13
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-Few moments later...
+Few moments later... & EV_INTRO_1_14
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-Ro - (Someone is coming... )
-Ro - (It's Prince Norbert!)
+Ro - (Someone is coming... ) & EV_INTRO_1_15
+Ro - (It's Prince Norbert!) & EV_INTRO_1_16
 =SOUND knocking=
-*Knock Knock Knock*
+*Knock Knock Knock* & EV_INTRO_1_17
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
-Arron recognized the signal his servant, Rose, was instructed to give. 
-Ar(neutral) - (Uh-oh... This is bad.)
-Ar - My sincerest apologies, my lady.
+Arron recognized the signal his servant, Rose, was instructed to give.  & EV_INTRO_1_18
+Ar(neutral) - (Uh-oh... This is bad.) & EV_INTRO_1_19
+Ar - My sincerest apologies, my lady. & EV_INTRO_1_20
 =SOUND doorlocked=
-Ar(neutral) - ... Huh?
-Ar(shock) - The balcony door is stuck? 
-Lr - Oh, it completely slipped my mind.
-Lr - Norbert had jammed the door after last time.
-Ar(neutral) - ......... Shit.
+Ar(neutral) - ... Huh? & EV_INTRO_1_21
+Ar(shock) - The balcony door is stuck?  & EV_INTRO_1_22
+Lr - Oh, it completely slipped my mind. & EV_INTRO_1_23
+Lr - Norbert had jammed the door after last time. & EV_INTRO_1_24
+Ar(neutral) - ......... Shit. & EV_INTRO_1_25
 =BLACKTRANS 0.5=
 =DELAY 0.5=
 =SOUND doorsmash=
-Norbert and a few guards barge into the room. As he sees his naked wife, rage quickly engulfs his face.
-Nt(anger) - Where is he?! 
-Lr - Dear, what are you doing? I had been taking a nap so nicely. Why have you brought these people into our love nest?
-Nt(anger) - Check all the cabinets, and look under the bed!
-Guard - There's nothing under the bed, m'lord. 
-Guard_2 - Cabinets are empty as well.
-Guard_3 - Balcony is not opening.
-Nt(anger) - No way! He couldn't have gotten away again, keep looking.
-Lr - Hmph, if only you were as zealous at night as you are right now. 
-*chuckle*
-Nt(anger) - What the... 
-Guard - Behind the door!
-Ar - There's nobody here!
-Nt(anger) - ARRON!!
-Ar(neutral) - ...
-Ar - I know how it looks, but it wasn't me.
-Ar(shock) - Ouch, stop dragging me, I can walk on my own!
+Norbert and a few guards barge into the room. As he sees his naked wife, rage quickly engulfs his face. & EV_INTRO_1_26
+Nt(anger) - Where is he?!  & EV_INTRO_1_27
+Lr - Dear, what are you doing? I had been taking a nap so nicely. Why have you brought these people into our love nest? & EV_INTRO_1_28
+Nt(anger) - Check all the cabinets, and look under the bed! & EV_INTRO_1_29
+Guard - There's nothing under the bed, m'lord.  & EV_INTRO_1_30
+Guard_2 - Cabinets are empty as well. & EV_INTRO_1_31
+Guard_3 - Balcony is not opening. & EV_INTRO_1_32
+Nt(anger) - No way! He couldn't have gotten away again, keep looking. & EV_INTRO_1_33
+Lr - Hmph, if only you were as zealous at night as you are right now.  & EV_INTRO_1_34
+*chuckle* & EV_INTRO_1_35
+Nt(anger) - What the...  & EV_INTRO_1_36
+Guard - Behind the door! & EV_INTRO_1_37
+Ar - There's nobody here! & EV_INTRO_1_38
+Nt(anger) - ARRON!! & EV_INTRO_1_39
+Ar(neutral) - ... & EV_INTRO_1_40
+Ar - I know how it looks, but it wasn't me. & EV_INTRO_1_41
+Ar(shock) - Ouch, stop dragging me, I can walk on my own! & EV_INTRO_1_42
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-Ro(shock) - (Uh-oh.. this didn't go well. I better follow them...)
+Ro(shock) - (Uh-oh.. this didn't go well. I better follow them...) & EV_INTRO_1_43
 =GUI_HIDE=
 =BLACKTRANS 0.5=
 =DELAY 0.5=
 =BG scenes/dungeon_1=
 =SPRITE arron=
 =GUI_NORMAL=
-Arron, with his hands tied behind his back sits on the floor of a large cell. Norbert observes him, while his subordinates prepare for a ritual.
-Rose hides among the shadows of a far corner, unnoticed.
-Nt - You know, it was funny when you convinced the Pope that Aunt Mary had been possessed by the devil so he performed a whole ceremony for her. 
-Ar - Everyone knows old people are evil. That's why they are still with us and not with the God.
-Nt - ...it also was rather amusing when you brought a bunch of homeless people to our dining hall during the negotiations with Reines and insisted that you will become their king in a new nation.
-Ar - Bob could also replace me as a King.
-Nt - Your luck it was a friendly meeting and many were almost dying of boredom...
-Nt - But you are not taking this seriously, are you? Tell me, were you really not satisfied with all those palace maids and feudal daughters? Why go after my wife? 
-Ar - Dunno, you went for her for some reason. You don't know either?
-Nt(anger) - THAT WAS THE ONLY REASON!? Because she's MY wife?
-Ar - Nah, she also seemed quite delighted with my company. I mean, how can you ignore someone who eagerly woos you?
-Nt(anger) - Shut the hell up, I'm not going to hear from you that my wife is unfaithful. 
-Ar(neutral) - Sure, it's all my fault.
-Nt - Your wildness had been ignored by father way too many times.
-Ar - Hah. So what you gonna do? You can't kill or imprison me. Everyone will realize you did it, and the people won't like it. 
-Nt - True. Even though many nobles find your behavior displeasing, killing you isn’t really worth it. You have to disappear.
-Ar(neutral) - ... What? This is what you are preparing?
+Arron, with his hands tied behind his back sits on the floor of a large cell. Norbert observes him, while his subordinates prepare for a ritual. & EV_INTRO_1_44
+Rose hides among the shadows of a far corner, unnoticed. & EV_INTRO_1_45
+Nt - You know, it was funny when you convinced the Pope that Aunt Mary had been possessed by the devil so he performed a whole ceremony for her.  & EV_INTRO_1_46
+Ar - Everyone knows old people are evil. That's why they are still with us and not with the God. & EV_INTRO_1_47
+Nt - ...it also was rather amusing when you brought a bunch of homeless people to our dining hall during the negotiations with Reines and insisted that you will become their king in a new nation. & EV_INTRO_1_48
+Ar - Bob could also replace me as a King. & EV_INTRO_1_49
+Nt - Your luck it was a friendly meeting and many were almost dying of boredom... & EV_INTRO_1_50
+Nt - But you are not taking this seriously, are you? Tell me, were you really not satisfied with all those palace maids and feudal daughters? Why go after my wife?  & EV_INTRO_1_51
+Ar - Dunno, you went for her for some reason. You don't know either? & EV_INTRO_1_52
+Nt(anger) - THAT WAS THE ONLY REASON!? Because she's MY wife? & EV_INTRO_1_53
+Ar - Nah, she also seemed quite delighted with my company. I mean, how can you ignore someone who eagerly woos you? & EV_INTRO_1_54
+Nt(anger) - Shut the hell up, I'm not going to hear from you that my wife is unfaithful.  & EV_INTRO_1_55
+Ar(neutral) - Sure, it's all my fault. & EV_INTRO_1_56
+Nt - Your wildness had been ignored by father way too many times. & EV_INTRO_1_57
+Ar - Hah. So what you gonna do? You can't kill or imprison me. Everyone will realize you did it, and the people won't like it.  & EV_INTRO_1_58
+Nt - True. Even though many nobles find your behavior displeasing, killing you isn’t really worth it. You have to disappear. & EV_INTRO_1_59
+Ar(neutral) - ... What? This is what you are preparing? & EV_INTRO_1_60
 =BG scenes/dungeon_2 0.5=
-As they kept talking, a number of magical runes across the floor began to glow. 
-Nt - Yes and we are about to finish. This portal spell will send you where you won't be causing us any more troubles ever again. 
-Arron's eyes widened with surprise and disbelief.
-Ar(neutral) - (Uh, shit, he seems to actually be serious this time.)
-Ar(shock) - Hey, stop it, Norb, father will know! 
-Nt - Nobody will know, and the nobles will confirm that you just disappeared during the night. Everyone will be happier without you around.
+As they kept talking, a number of magical runes across the floor began to glow.  & EV_INTRO_1_61
+Nt - Yes and we are about to finish. This portal spell will send you where you won't be causing us any more troubles ever again.  & EV_INTRO_1_62
+Arron's eyes widened with surprise and disbelief. & EV_INTRO_1_63
+Ar(neutral) - (Uh, shit, he seems to actually be serious this time.) & EV_INTRO_1_64
+Ar(shock) - Hey, stop it, Norb, father will know!  & EV_INTRO_1_65
+Nt - Nobody will know, and the nobles will confirm that you just disappeared during the night. Everyone will be happier without you around. & EV_INTRO_1_66
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-Ro(shock) - (Oh, no, I have to do something!)
-Nt - Farewell, Arron, you were a huge pain in the ass all these years. 
-Portal runes shine with incredible brightness when Rose runs out of hiding, trying to push Arron away from it.
-Ar(shock) - Rose? What the... 
+Ro(shock) - (Oh, no, I have to do something!) & EV_INTRO_1_67
+Nt - Farewell, Arron, you were a huge pain in the ass all these years.  & EV_INTRO_1_68
+Portal runes shine with incredible brightness when Rose runs out of hiding, trying to push Arron away from it. & EV_INTRO_1_69
+Ar(shock) - Rose? What the...  & EV_INTRO_1_70
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
 =SOUND teleport=
-Just as she enters the circle, the spell completes, the light fading, and revealing the empty space where once was two people.
-Nt - Huh... was that his slave? Well, one less witness to worry about. Clean it all up, I'll prepare to make a report for father.
+Just as she enters the circle, the spell completes, the light fading, and revealing the empty space where once was two people. & EV_INTRO_1_71
+Nt - Huh... was that his slave? Well, one less witness to worry about. Clean it all up, I'll prepare to make a report for father. & EV_INTRO_1_72
 =GUI_HIDE=
 =BLACKON=
-*Slam*
+*Slam* & EV_INTRO_1_73
 =DELAY 0.5=
 =BG desert=
 =BLACKFADE 0.5=
@@ -133,47 +133,47 @@ Nt - Huh... was that his slave? Well, one less witness to worry about. Clean it 
 =DELAY 0.5=
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-In the middle of an empty desert two bodies appear on the ground.
-Ar(neutral) - Ouch... Damn it, Rose you are an idiot! 
-Ro(sad) - Ugh. What is this place? Where are we? 
-Ar(neutral) - Hell if I know. Untie me already.
-Arron barely managed to get up with his hands still tied behind his back.
-Rose frees Arron from the ropes. 
+In the middle of an empty desert two bodies appear on the ground. & EV_INTRO_1_74
+Ar(neutral) - Ouch... Damn it, Rose you are an idiot!  & EV_INTRO_1_75
+Ro(sad) - Ugh. What is this place? Where are we?  & EV_INTRO_1_76
+Ar(neutral) - Hell if I know. Untie me already. & EV_INTRO_1_77
+Arron barely managed to get up with his hands still tied behind his back. & EV_INTRO_1_78
+Rose frees Arron from the ropes.  & EV_INTRO_1_79
 =SOUND punch=
 =SHAKE_SPRITE 0.3=
 =DELAY 0.3=
-*Slam* 
-Ro(sad) - Owie... Why!?
-Ar(neutral) - Why? Why jump in, you moron? In what universe does that seem like a good idea?
-Ro(sad) - I'm sorry, Master... I just... couldn't hold back.
-Ar(neutral) - Forget it. Now, what is this place?
-The pairtakes a long look at their surroundings, finding only desert and rocks. 
-Ar(neutral) - Shit, I really shouldn't have slept during those geography lessons.
-Ar(neutral) - Norb will really pay for this once I get back.
-Ar - First I'll have to take care of those suspicious guys with him...
-Ro - I think it will be better if we start moving.
-Ar - Yeah, it doesn’t seem like anyone will be coming to help us any time soon. Let's go.
-Ro - Where to? 
-Ar(neutral) - Hrm...
-Ar - Anywhere! I'm free now, so I can go anywhere I want, Mwahaha!
-Ro - (Despite the situation, looks like Master has returned to his normal mood pretty quick. That's a relief...)
+*Slam*  & EV_INTRO_1_80
+Ro(sad) - Owie... Why!? & EV_INTRO_1_81
+Ar(neutral) - Why? Why jump in, you moron? In what universe does that seem like a good idea? & EV_INTRO_1_82
+Ro(sad) - I'm sorry, Master... I just... couldn't hold back. & EV_INTRO_1_83
+Ar(neutral) - Forget it. Now, what is this place? & EV_INTRO_1_84
+The pairtakes a long look at their surroundings, finding only desert and rocks.  & EV_INTRO_1_85
+Ar(neutral) - Shit, I really shouldn't have slept during those geography lessons. & EV_INTRO_1_86
+Ar(neutral) - Norb will really pay for this once I get back. & EV_INTRO_1_87
+Ar - First I'll have to take care of those suspicious guys with him... & EV_INTRO_1_88
+Ro - I think it will be better if we start moving. & EV_INTRO_1_89
+Ar - Yeah, it doesn’t seem like anyone will be coming to help us any time soon. Let's go. & EV_INTRO_1_90
+Ro - Where to?  & EV_INTRO_1_91
+Ar(neutral) - Hrm... & EV_INTRO_1_92
+Ar - Anywhere! I'm free now, so I can go anywhere I want, Mwahaha! & EV_INTRO_1_93
+Ro - (Despite the situation, looks like Master has returned to his normal mood pretty quick. That's a relief...) & EV_INTRO_1_94
 =BLACKTRANS 0.5=
 =DELAY 0.5=
-Ro - Hmmm... It was midnight when we were at the castle, but it’s noon here, that must mean...
-Ar - Time travel! 
-Ro(sarcastic) - No, we must be very far away from the kingdom.
-Ar(neutral) - Bullshit, you’re telling me time travel isn't real now?
-Ro - It never was...
-Ar(shock) - So I’ll never be able to become my own grandfather? 
-Ro(sarcastic) - ...Thankfully.
+Ro - Hmmm... It was midnight when we were at the castle, but it’s noon here, that must mean... & EV_INTRO_1_95
+Ar - Time travel!  & EV_INTRO_1_96
+Ro(sarcastic) - No, we must be very far away from the kingdom. & EV_INTRO_1_97
+Ar(neutral) - Bullshit, you’re telling me time travel isn't real now? & EV_INTRO_1_98
+Ro - It never was... & EV_INTRO_1_99
+Ar(shock) - So I’ll never be able to become my own grandfather?  & EV_INTRO_1_100
+Ro(sarcastic) - ...Thankfully. & EV_INTRO_1_101
 =BLACKTRANS 0.5=
 =DELAY 0.5=
-Ro - Master, look, there's something moving.
-Ar - Oh, locals? Great, we could get some food, I haven't had a dinner today.
-Ro(shock) - No, I think it's monsters. They've spotted us.
-Ar - So, instead of a food servers we got the food itself coming for us?
-Ro - I can't believe you are so casual about it.
-Ar - It's fine, just stay behind and watch my moves. 
+Ro - Master, look, there's something moving. & EV_INTRO_1_102
+Ar - Oh, locals? Great, we could get some food, I haven't had a dinner today. & EV_INTRO_1_103
+Ro(shock) - No, I think it's monsters. They've spotted us. & EV_INTRO_1_104
+Ar - So, instead of a food servers we got the food itself coming for us? & EV_INTRO_1_105
+Ro - I can't believe you are so casual about it. & EV_INTRO_1_106
+Ar - It's fine, just stay behind and watch my moves.  & EV_INTRO_1_107
 =SPRITE_FADE 0.5=
 =GUI_HIDE=
 =BLACKUNFADE 1=

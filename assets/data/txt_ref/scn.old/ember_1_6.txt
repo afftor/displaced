@@ -1,0 +1,133 @@
+** ember_1_6 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG town_in=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE emberhappy=
+Arron and Ember have gone to Aeros to get new supplies for the forge.
+Em - This is so cool, there are so many people here and nobody threw anything at me yet!
+Ar - People around here seem not to care about much at all.
+Ar - Including your attire.
+Em - Look, this coal looks really great! Can we buy it?
+Ar - If you think so, I'd rather leave the coal to you.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+After a few minutes Ember brings lots of large, full crates and loads them onto the cart.
+Em - Phew, hopefully this should be enough.
+Ar - Fine, let's return before I lose my mind in this crowd.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG forest=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Ar - I'm still amazed how you can carry so much, including the cart, all by yourself.
+Ar - Must be nice to be so strong.
+Em - A-ha, it's nothing really, I'm not that strong.
+Ar(neutral) - Really?
+Em - Back in my old village some people were stronger than me, like my master, who beat me often to improve my discipline.
+Ar - You could only have been a child.
+Em - I guess so. I always win in endurance contests though!
+Ar - No way.
+Em - I'm serious.
+Ar - ...
+Ar - I bet I could beat you.
+Em(happy) - Really? You’re gonna compete with me? Let’s race home and see who gets there first!
+Ar - No, I wouldn't wanna break any of the goods. I have a better idea.
+Em - Ah?
+Ar - Come here.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=GUI_FULL=
+=MUSIC erotheme=
+=ABG ember_doggy_03=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Em - Sir Arron, I don't understand. Didn't you want to challenge me?
+Ar - Yep, this is the contest. Now bend over. Put your hands on that tree
+Em - Eeeh? I've never heard about a contest like this.
+Ar - It's more fun than running and we can find out who lasts longer. 
+Em - Oooh, I'm not going to lose then!
+Ar - We'll see. And so we begin.
+=ABG ember_doggy_04 ember_doggy_05=
+Arron unceremoniously enters Ember, shoving his cock into her up to the hilt.
+Em - Aaah! Don't put it all the way in so suddenly!
+Ar - Sorry.
+Em - Nh-aah… It's' so big...
+Em - We are doing it again, he-he.
+Ar - Hey, stay focused, don’t forget this is a contest.
+Em - Aaah!..
+Ar - And you might be losing it soon.
+Em - Eeeh!? Why?
+Ar - Whoever cums first loses. 
+Ar - And you are already so wet.
+Em - Ha-ah, that's not fair!
+Ar - Sounds like loser talk.
+Em - Nhaah, I'm not going to lose so easily!
+Ar - Hmh, we'll see about that. Now take this!
+Arron increases his speed, pounding Ember’s tight pussy as she braces against the tree.
+Em - Aah, this is nothing!...
+Em - But it feels so good...
+Em - Aaah...
+Ar - Haah, perhaps you are a worthy opponent after all.
+Em - This is... aah... really different from running...
+Em - Aaah!
+Em - More, faster, oh yesss...
+Ar - Jeez, you are a real fiend.
+Ar - Are you ready to lose to me?
+Em - No way... Aaah!
+Ar - You might be tough, but you are no match for my stamina.
+Em - I can- Oh! Oooh!
+Em - No, nooo... Aaah, I'm cumming!
+=WHITE=
+=ABG ember_doggy_06 ember_doggy_07=
+Em - Aaaaaahhhh! You win, you win!
+Ar - Hah, and with that…
+Arron grips her hips and thrusts his cock deep inside Ember’s pulsing pussy.
+Ar - I take my reward!
+=WHITE=
+=ABG ember_doggy_08 ember_doggy_09=
+Em - AAah... I'm so full of your seed… I think I’m leaking…
+Em - I can feel it trickling down my thighs.
+Ar - Haaah... You fought well, Ember.
+Em - I lost... But, it felt so good…
+Ar - You’re still inexperienced, but you have a lot of natural talent
+Em - For all the good it did me...
+=BLACKUNFADE 0.5=
+=DELAY 1.5=
+=MUSIC_STOP=
+=GUI_NORMAL=
+=MUSIC eventlight=
+=BG forest=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE emberhappy=
+Em(sad) - Aww, I can't believe that I lost.
+Em - You really are strong, Sir Arron. 
+Ar - Certainly, but that might've been more skill than pure strength on my part.
+Em(sad) - Ooh? What do you mean?
+Ar - I'm sure you can learn to last longer. 
+Ar - We just need to practice more often.
+Em(happy) - We'll train more in future then?
+Ar - More and harder. You can bet on it.
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG villageday=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Ro - Oh, Master, you are back. Did everything go well?
+Ar - Of course it did. Have I ever failed you?
+Ro(sarcastic) - ...
+Em - Ah. Hi Rose. Sir Arron is really strong. 
+Em - You know, he could even beat me!
+Ro - Uh huh.
+Em - But I think it's because he trains with you every so often.
+Ro - …
+Em - But he says we’re going to train more…
+Em - So I can last longer.
+Ro(sarcastic) - Trains? With me? 
+=STOP=

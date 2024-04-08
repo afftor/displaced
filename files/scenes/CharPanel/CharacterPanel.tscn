@@ -72,9 +72,6 @@ margin_top = 97.0
 margin_right = -52.0
 margin_bottom = 471.0
 scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
 margin_left = 632.0

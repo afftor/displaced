@@ -1,0 +1,178 @@
+** zelroth_2 **
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=BG castle_interior=
+=MUSIC event_mysterious=
+=SPRITE zelroth=
+Z - Gh... How... are you...
+Z - So strong.
+=SOUND sound_fall=
+=SPRITE_HIDE=
+C - Master defeated! I run!
+Big monster quickly escapes in one of the halls leaving Zelroth laying on the floor.
+Ar(neutral) - Wait!
+=SPRITE rilu=
+Ri - Ignore it, we don't need him.
+Z - Even after you kill me... 
+Z -  Dimitrius will get you...
+Ri - Shut up, I'm not going to kill you.
+Rilu proceeded to inspect Zelroth's possessions.
+Ri - ...
+Ri - Found it.
+Ar(neutral) - Uh, are we really going to use this?
+Ri - I don't see any other options on hand.
+Ar - ...Fine, I'll trust this to you.
+Ri - Let's return then.
+=BLACKTRANS 1=
+=DELAY 1=
+=SPRITE zelroth=
+Z - Fuck... I can barely move...
+=SPRITE caliban=
+C - ...Master.
+Z - Hey, you imbecile, come help me!
+Big monster walked over to the lying man.
+Z - Wait. What are you doing-
+Z - Stop!
+C - .....
+Z - What the fuck are you-
+=SOUND sound_splat=
+Z - Arrggh!!
+C - .......
+=BLACKTRANS 2=
+=DELAY 2=
+=MUSIC event_tragic=
+=BG scenes/dungeon_1=
+=SPRITE rose=
+Behind the iron bars of the jail, Rose sits out in the cold.
+Ro - ...
+Ro - How do I even get out of this?
+Ro - Life was so simple back then...
+=BLACKUNFADE 1=
+=DELAY 1=
+=GUI_FULL=
+=SPRITE_HIDE=
+.....
+? - Poor thing... Losing her parents at such a young age.
+?? - You mean last week's fire? 
+?? - That was fierce.
+? - She’s been in shock since then and barely says anything. Only sobs.
+? - She has no relatives around here, we're gonna have to find her an orphanage.
+Woman - I'll be taking care of her.
+Woman - I knew her parents.
+? - You must have a really kind heart, miss.
+Woman - Hey, you are Rose, right? 
+Woman - Do you want to be friends with me?
+Ro - .....
+...
+....
+.....
+Woman - Good morning, Rose. 
+Woman - How are you feeling today?
+Ro - I'm good, thanks.
+Rose smiled. 
+It's been a few months since the incident and she grew accustomed to her new life.
+Woman - Today we go for a walk. Make sure to clean your face. 
+Ro - *nod*
+...
+....
+.....
+slavetrader - She's just a child, and untrained one. 
+slavetrader - You will not get a lot of money from me for her.
+slavetrader - I'll have to smuggle her somewhere far away, so at least her breed will net some worth.
+Woman - It's fine. 
+Woman - She's an orphan and there's no other relatives.
+Woman - Plus I don't want to raise her any further, I've wasted quite a sum of money on her food already.
+Rose didn't realize what they were talking about, but since that day she never saw that woman again.
+...
+....
+.....
+=BLACKFADE 1=
+=BG scenes/rose_baby_1=
+slavetrader - What about this one? Looks pretty interesting at least.
+slavetrader2 - Yeah, but she's a failure. 
+slavetrader2 - After we tried to train her she just became like this.
+slavetrader2 - Barely reacts to anything, always has the eyes of a dead fish. 
+slavetrader - Won't even wag her tail, like they usually do, huh?
+slavetrader2 - Yeah, a shame. 
+slavetrader2 - It happens rarely, so we basically got unlucky.
+slavetrader2 - Don't think anyone would want to buy a slave like that. 
+slavetrader - We might have to dispose of her soon then.
+Ro - ...
+...
+...
+=BLACKTRANS 2=
+=DELAY 2=
+Rose sat on the floor of a small cage, placed in a deserted part of a building. 
+She had a visitor. A young, luxuriously clothed boy of her age.
+=BG scenes/rose_baby_4=
+Boy - Hey.
+Boy - What's your name?
+Ro - .....
+Boy - Hey, you heard me. 
+Boy - What's your name?
+Boy - Why aren't you responding?
+Ro - ...What is it?
+Boy - I'm wondering what's your name.
+Ro - ...It's Rose. 
+Ro - Now leave me alone.
+Boy - No. 
+Ro - ....
+Boy - Why are you telling me to leave you alone?
+=BG scenes/rose_baby_3=
+Ro - Are you stupid? I want to be left alone.
+Boy - You're rude. 
+Boy - So why do you want to be left alone?
+Ro - Shut up! 
+Ro - I just want to! Why are you so stupid?!
+Boy - I'm not stupid. 
+Boy - I have a name. 
+Ro - And what’s your name? 
+Boy - I won't tell you. 
+Ro - Darn it, what do you even want!? 
+Boy - Maybe I want you. 
+Ro - Are you stupid? You're a child.
+Boy - So are you.
+Ro - I don't care. I don't want it.
+Boy - Why?
+Ro - Because I want to be left alone!
+Boy - I don't believe you. 
+Boy - And I don't care what you want. 
+Ro - .....
+Ro - Why are you even talking to me?
+Boy - You are not like others. 
+Boy - I like you. 
+Ro - Wha..?
+Boy - You don't act like you're desperate to please me.
+Ro - You are weird. 
+Boy - Got to go, see you soon. 
+Ro - .....
+=BLACKUNFADE 1=
+=DELAY 1=
+...
+....
+=BLACKFADE 1=
+=BG scenes/rose_baby_2=
+? - Young master wants this girl?
+? - I think it's better to pick someone who can be a better... caretaker? 
+Boy - No. 
+?? - You know that once Arron decides there's no turn back.
+?? - Plus he refused to take anyone for 3 times straight.
+Boy - It's your stupid rule how every royal member must have a personal servant.
+?? - It's not MY rule, it's your family's rule. 
+?? - This is how you get used to the-
+Boy - I don't care.
+? - Well, at least she's young so we can teach her literacy and penmanship. 
+Boy - Are you done yet? 
+=BLACKTRANS 1=
+=GUI_NORMAL=
+=DELAY 1=
+=BG scenes/dungeon_1=
+=SPRITE rose=
+...
+Ro - *sigh*
+Ro - This is terrible...
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

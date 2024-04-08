@@ -1,0 +1,22 @@
+** faery_queen_2 **
+=MUSIC eventlight=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG forest_fairy=
+=BLACKFADE 1=
+=DELAY 1=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+=GUI_NORMAL=
+Er - This should be the place.
+Ar(neutral) - Seems like nobody is around.
+Er - They change their homes often.
+...
+Er - This must be it.
+Er - Hmm...
+Er - Got it. We can go now.
+Ar - Good. I can't wait to shut her nasty mouth.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

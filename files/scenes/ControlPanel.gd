@@ -21,8 +21,13 @@ func _ready():
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 	$test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
+	$test_event.connect("pressed", self, "test_event")
 	state.connect("money_changed", self, "UpdateMoney")
 	update_return_button()
+
+func test_event():
+	globals.play_scene('faery_queen_1')
+
 
 func UpdateMoney():
 	$ControlPanel/Gold.text = str(state.money)

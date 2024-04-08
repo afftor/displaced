@@ -1,0 +1,47 @@
+** iola_1_3 **
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BG cave=
+=MUSIC eventlight=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=SPRITE iola=
+=SPRITE_UNFADE 0.3=
+Ar - Well, last time it was somewhere around here.
+Ar - It must have been some terrible acci...
+I - Father!
+=SPRITE demitrius=
+=SPRITE_UNFADE 0.5=
+The tall familiar figure appears from the far corner of the cave room. 
+Iola rushes and hugs her father.
+Ar - ...
+Ro(shock) - Holy!...
+Ar - Huh... I guess practicing your shock reaction wasn't really necessary. 
+D - Iola, what are you doing here?
+I - I've come searching for you! What were you doing here for so long?
+D - Hm... I must have lost in thoughts and time flew by without me noticing. 
+D - I'm sorry about that. Let's go home.
+Without raising any suspicion Demitrius moved to the room's exit.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=SPRITE_FADE 0.2=
+=DELAY 1=
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+After leaving the caves Demitrius gives no apparent interest to Arron's party and left them with his daughter.
+Ro - But how can this be? Maybe he actually did survive?
+Ar - I don't think anyone survives having half of his head smashed to pieces.
+Ro - ...
+Em - But isn't it great this all ended well? It doesn't seem like he remembers what happened. 
+Ar - That's true. See Rose, you should be more optimistic like Ember. 
+Ro - No-no, this is certainly not right.
+Er - Maybe it was just an illusion or a dream? 
+Ar - I don't really care at this point. 
+Ar(neutral) - I've missed my opportunity of getting closer with Iola so let's go back.
+Er(happy) - Arron is on point as ever.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

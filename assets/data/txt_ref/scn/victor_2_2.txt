@@ -5,18 +5,18 @@
 =BG villageday=
 =SPRITE rose=
 =MUSIC eventlight=
-Ro - I've got a letter. Looks like it's about Ember.
-Ar - Hmm? That's unusual. 
-Ro - It says "I know you are hiding a dragon offspring. Give her away or your little village will be demolished."
-Ro - "This is the only warning. Bring it to the Aeros' Forest entrance."
-Ar(neutral) - Hmm, I guess we have a new task on our hands.
-Ro - They make a threat against the village, and this looks like a trap.
-Ro - Why would they need Ember? 
-Ar(shock) - Who cares!? My harem is mine and if they dare to threaten it, I won't give them any mercy.
-Ro(sarcastic) - You really should stop seeing us as your property. 
-Ar(neutral) - You aren't property. I don't care about property. 
-Ar - I care about cute girls.
-Ro - Well, I guess we will know it once we get there.
+Ro - I've got a letter. Looks like it's about Ember. & EV_VICTOR_2_2_0
+Ar - Hmm? That's unusual.  & EV_VICTOR_2_2_1
+Ro - It says "I know you are hiding a dragon offspring. Give her away or your little village will be demolished." & EV_VICTOR_2_2_2
+Ro - "This is the only warning. Bring it to the Aeros' Forest entrance." & EV_VICTOR_2_2_3
+Ar(neutral) - Hmm, I guess we have a new task on our hands. & EV_VICTOR_2_2_4
+Ro - They make a threat against the village, and this looks like a trap. & EV_VICTOR_2_2_5
+Ro - Why would they need Ember?  & EV_VICTOR_2_2_6
+Ar(shock) - Who cares!? My harem is mine and if they dare to threaten it, I won't give them any mercy. & EV_VICTOR_2_2_7
+Ro(sarcastic) - You really should stop seeing us as your property.  & EV_VICTOR_2_2_8
+Ar(neutral) - You aren't property. I don't care about property.  & EV_VICTOR_2_2_9
+Ar - I care about cute girls. & EV_VICTOR_2_2_10
+Ro - Well, I guess we will know it once we get there. & EV_VICTOR_2_2_11
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

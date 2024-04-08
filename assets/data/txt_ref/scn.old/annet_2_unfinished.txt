@@ -1,0 +1,132 @@
+** annet_2 **
+=BLACKUNFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+=BG burning_city=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=SPRITE annet=
+=SPRITE_UNFADE 0.3=
+=MUSIC event_mysterious=
+An - Gh, you degenerates...
+An - Demons, crush them!
+=SPRITE demon=
+=SPRITE_UNFADE 0.3=
+A horde of large demons swarmed the hall from all directions.
+Ar(shock) - Oh shit!
+Ar(shock) - Stay together.
+Ro(shock) - There's too many!
+Em(sad) - Ngh...
+An - How does it feel to be outnumbered now?
+An - Ha-h, lets see how long you'll hold up.
+An - But while we are at it...
+I(sad) - This looks really bad, there's no end to them.
+An - *Chanting*
+An - ***Erika, return to my side***
+=SPRITE erika=
+=SPRITE_UNFADE 0.3=
+Er(sad) - .....
+Ro(talk) - Eh... Erika?
+Ar(shock) - What are you doing?!
+Er(sad) - I'm... sorry.
+Ignoring the battle and enemies, Erika left the team and slowly walked into Annet's direction.
+Ro(shock) - No way...
+An - Hahah, you imbeciles!
+An - Did you seriously think I'd leave my toy with no security measures?
+Ro - You are the lowest.
+Ro(talk) - Stop, Erika!
+An - Don't waste your breath.
+An - She was hypnotized long time ago to obey my will on command. 
+Ri - We won't hold without her...
+An - Your really don't know how to secure victory, Arron.
+An - Never leave things to chance.
+=MUSIC_STOP=
+=SPRITE hide=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+An - Isn't that nice, Eri...?
+=BG scenes/annet_erika_1=
+=SOUND sound_stab=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+Whole room froze in awe as Erika stabbed Annet's neck.
+An(anger) - Wha...t...
+An(anger) - Why...
+Er(anger) - You are right.
+Er(anger) - Never leave things to chance.
+Er(anger) - You really thought I would never find a way to resist your hypnosis? 
+An(anger) - You... biiitch!.. 
+Er(anger) - I've learned from the best.
+An(anger) - Ghhh!..
+=SOUND sound_splatter=
+=BG scenes/annet_erika_2=
+=MUSIC event_combat=
+*Slash*
+An(anger) - Nnooo!..
+A red splash erupted from Annet's neck as the dagger sliced it through.
+Er(anger) - Go to hell, Mistress.
+=SOUND sound_fall=
+=BG burning_city=
+=SPRITE erika=
+=SPRITE_UNFADE 0.3=
+With Annet's defeat all demons in the hall quickly retreated from sight.
+Er(anger) - Phew... 
+Er(sad) - I'm shaking now.
+Er - But somehow feel great.
+Ar - Yeah, you've saved us.
+Er - Turns out, I'm a pretty good actress, huh?
+Ro - You really made us worried. 
+Er - I've realized she'd always treat me as her victim.
+Er - So I thought this would be a safer approach.
+Ar - Well, looks like we saved a city at least.
+=SPRITE demitrius_demon=
+=SOUND sound_teleport=
+=SPRITE_UNFADE 0.5=
+=SHAKE_SPRITE 0.7=
+De - Nice work, insects. 
+Ar(anger) - Dimitrius!
+De - Now, don't look so mad.
+De - You've done me a great service today and I'll spare your lives for some time.
+Ar(neutral) - You talk highly for someone who'll be gutted by the end of this.
+De - Ahahah, nice one, Arron. 
+De - You actually have no idea how troublesome it is to kill another demon lord with a big reputation in this world. 
+De - But you actually did it.
+Ro - You wanted her dead? That's why you didn't help her?
+De - That's what I said. 
+De - I actually thought about giving you a hand on one occasion, but you managed anyway.
+Ri - You've left your kin here to die like that.
+Ro - They don't think of their own any higher than of normal people.
+Em(sad) - You really aren't afraid to lose?
+De - What, do you really  think I should be worried about you?
+De - You just don't understand, do you?
+De - You are not a threat. You killed Annet, but she was weak and stupid. 
+De - I can squash you all like bugs, but you never know when you might need a couple of resourceful mortals.
+I - We'll stop you and end this madness.
+De - Yeah, sure, struggle some more if you wish.
+De - Have your little celebration, for today.
+=SPRITE_FADE 0.5=
+=DELAY 0.5=
+Ar(neutral) - ....He's gone.
+Ri - There seems to be a crowd outside.
+Ro - Those are probably the survivors. 
+=GUI_HIDE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=BLACKFADE 0.5=
+=GUI_NORMAL=
+Surv - It was you? You defeated the demons?
+Ar(neutral) - No, we just were really persuasive.
+Surv - Eh? 
+Ar(neutral) - Let's return to the village. 
+Ro - Indeed, this was a tough day.
+Surv - But what should we do? What if demons return?
+Ar(neutral) - I'm afraid my charisma is too low to take you all.
+Ar - You will have to figure out how to defend yourself eventually.
+The team left puzzled civilians.
+I(sad) - I wonder if we should've left them like this.
+Ar(neutral) - It can't be helped.
+Er(sad) - After seeing what was happening in the city I don't feel like we should've helped them even if we could.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

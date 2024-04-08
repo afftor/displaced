@@ -474,9 +474,6 @@ rect_min_size = Vector2( 180, 180 )
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="Label" parent="BattleGroup/party/Button1"]
 margin_top = 5.0
@@ -509,7 +506,7 @@ texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 script = ExtResource( 9 )
-pos = 1
+pos = 2
 
 [node name="back" type="TextureRect" parent="BattleGroup/party/Button2"]
 show_behind_parent = true
@@ -565,7 +562,7 @@ texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 script = ExtResource( 9 )
-pos = 1
+pos = 3
 
 [node name="back" type="TextureRect" parent="BattleGroup/party/Button3"]
 show_behind_parent = true

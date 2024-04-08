@@ -4,128 +4,128 @@
 =GUI_NORMAL=
 =BG villagenight=
 =SPRITE rilu=
-Late at the evening Rilu was going to Arron's office. 
-Ri - *Sigh*
-Ri - *To think I'd be doing this...*
-Ri - *Alright, Arron should be alone today.*
+Late at the evening Rilu was going to Arron's office.  & EV_RILU_2_1_0
+Ri - *Sigh* & EV_RILU_2_1_1
+Ri - *To think I'd be doing this...* & EV_RILU_2_1_2
+Ri - *Alright, Arron should be alone today.* & EV_RILU_2_1_3
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =SPRITE_HIDE=
 =BG hall=
 =BLACKFADE 0.5=
-Arron sat at the table with a huge stack of paper he was going through.
-Ar(neutral) - Complaint, complaint, complaint, credit application, complaint, credit...
-Ar(neutral) - A request to invade a neighbor village...
-Ar(neutral) - What the hell... It's like I'm still back at the kingdom, reading nobles' complaints. 
-Ar - I should've made Rose take care of those. 
-Ar - Who even taught goblins to write anyway?
-Arron rose up and left the table. 
-As he undressed preparing to sleep, an unexpected vision unveiled before him.
+Arron sat at the table with a huge stack of paper he was going through. & EV_RILU_2_1_4
+Ar(neutral) - Complaint, complaint, complaint, credit application, complaint, credit... & EV_RILU_2_1_5
+Ar(neutral) - A request to invade a neighbor village... & EV_RILU_2_1_6
+Ar(neutral) - What the hell... It's like I'm still back at the kingdom, reading nobles' complaints.  & EV_RILU_2_1_7
+Ar - I should've made Rose take care of those.  & EV_RILU_2_1_8
+Ar - Who even taught goblins to write anyway? & EV_RILU_2_1_9
+Arron rose up and left the table.  & EV_RILU_2_1_10
+As he undressed preparing to sleep, an unexpected vision unveiled before him. & EV_RILU_2_1_11
 =MUSIC erotheme=
 =ABG rilu_minet_1=
-Ri - Hey, you don't mind some company at this time, do you?
-Ar - Eh...? Rilu? 
-Before him a half-naked Rilu stands at his? knees, lustly reaching for his manhood.
-Ri - I'm in a bit of trouble here...
-Ar - I don't remember you having animal ears.
-Ri - Um, yes... 
-Ri - Well, this is embarrassing...
-Ar - More embarrassing than being naked? 
-Ri - I've got possessed by a cat spirit.
-Ri - And the poor thing was in heat.
-Ri - It's hard to control myself...
-Ar - Understood, you can rely on me.
+Ri - Hey, you don't mind some company at this time, do you? & EV_RILU_2_1_12
+Ar - Eh...? Rilu?  & EV_RILU_2_1_13
+Before him a half-naked Rilu stands at his? knees, lustly reaching for his manhood. & EV_RILU_2_1_14
+Ri - I'm in a bit of trouble here... & EV_RILU_2_1_15
+Ar - I don't remember you having animal ears. & EV_RILU_2_1_16
+Ri - Um, yes...  & EV_RILU_2_1_17
+Ri - Well, this is embarrassing... & EV_RILU_2_1_18
+Ar - More embarrassing than being naked?  & EV_RILU_2_1_19
+Ri - I've got possessed by a cat spirit. & EV_RILU_2_1_20
+Ri - And the poor thing was in heat. & EV_RILU_2_1_21
+Ri - It's hard to control myself... & EV_RILU_2_1_22
+Ar - Understood, you can rely on me. & EV_RILU_2_1_23
 =ABG rilu_minet_2=
-Ri - Let me make you feel good.
-Rilu stack out her tongue and slowly licked over Arron's cock like it's candy.
-Ri - *slurp*
-Ar - Ouch.
-Ar - Slow down a bit, your tongue is rough.
-Ri - Sorry *slurp* I'm not thinking very straight.
-Ri - This smell... 
-Ri - Drives me crazy.
+Ri - Let me make you feel good. & EV_RILU_2_1_24
+Rilu stack out her tongue and slowly licked over Arron's cock like it's candy. & EV_RILU_2_1_25
+Ri - *slurp* & EV_RILU_2_1_26
+Ar - Ouch. & EV_RILU_2_1_27
+Ar - Slow down a bit, your tongue is rough. & EV_RILU_2_1_28
+Ri - Sorry *slurp* I'm not thinking very straight. & EV_RILU_2_1_29
+Ri - This smell...  & EV_RILU_2_1_30
+Ri - Drives me crazy. & EV_RILU_2_1_31
 =ABG rilu_minet_3 rilu_minet_4=
-As Rilu feverishly worked over Arron's cock, her other hand was rubbing her pussy.
-Ar - Mh.. It's unusual to see you being this proactive.
-Ri - *slurp* You don't like it? 
-Ar - Don't be silly. 
-Ar - Variety like this is never bad.
-Ri - I'm glad.
-Ri - Let me try this...
+As Rilu feverishly worked over Arron's cock, her other hand was rubbing her pussy. & EV_RILU_2_1_32
+Ar - Mh.. It's unusual to see you being this proactive. & EV_RILU_2_1_33
+Ri - *slurp* You don't like it?  & EV_RILU_2_1_34
+Ar - Don't be silly.  & EV_RILU_2_1_35
+Ar - Variety like this is never bad. & EV_RILU_2_1_36
+Ri - I'm glad. & EV_RILU_2_1_37
+Ri - Let me try this... & EV_RILU_2_1_38
 =ABG rilu_minet_5 rilu_minet_6=
-After saying that, Rilu took the whole thing into her mouth.
-Ri - Mhm..
-Her moans grew more exciting as she awkwardly coiled on Arron's penis.
-Ar - Damn.
-Ri - Mhmmmm... Thu likh ith? 
-Ar - Oh... 
-Ar - If you continue like this...
-Ri - *slurp*
-Not hearing, or probably even ignoring him, Rilu blissfully sucked his cock.
-Ri - Come on.
-Ri - *slurp* I want your milk...
-Ar - Hah, won't make a girl wait.
-Ar - Since you asked for it.
-Ri - Mhmmm...
+After saying that, Rilu took the whole thing into her mouth. & EV_RILU_2_1_39
+Ri - Mhm.. & EV_RILU_2_1_40
+Her moans grew more exciting as she awkwardly coiled on Arron's penis. & EV_RILU_2_1_41
+Ar - Damn. & EV_RILU_2_1_42
+Ri - Mhmmmm... Thu likh ith?  & EV_RILU_2_1_43
+Ar - Oh...  & EV_RILU_2_1_44
+Ar - If you continue like this... & EV_RILU_2_1_45
+Ri - *slurp* & EV_RILU_2_1_46
+Not hearing, or probably even ignoring him, Rilu blissfully sucked his cock. & EV_RILU_2_1_47
+Ri - Come on. & EV_RILU_2_1_48
+Ri - *slurp* I want your milk... & EV_RILU_2_1_49
+Ar - Hah, won't make a girl wait. & EV_RILU_2_1_50
+Ar - Since you asked for it. & EV_RILU_2_1_51
+Ri - Mhmmm... & EV_RILU_2_1_52
 =ABG rilu_minet_7 rilu_minet_8=
 =WHITE=
-Ar - Aah!... 
-Ri - Mh!...
-Rilu's mouth filled with seed but she didn't break her hold.
-Ri - *gulp* *gulp*
-Ri - He-he, you came a lot.
-Ar - That was mind blowing.
-Ri - Thanks.
-Ri - But I can't wait any longer.
+Ar - Aah!...  & EV_RILU_2_1_53
+Ri - Mh!... & EV_RILU_2_1_54
+Rilu's mouth filled with seed but she didn't break her hold. & EV_RILU_2_1_55
+Ri - *gulp* *gulp* & EV_RILU_2_1_56
+Ri - He-he, you came a lot. & EV_RILU_2_1_57
+Ar - That was mind blowing. & EV_RILU_2_1_58
+Ri - Thanks. & EV_RILU_2_1_59
+Ri - But I can't wait any longer. & EV_RILU_2_1_60
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =ABG rilu_doggy_1=
-Rilu crawled on the floor before Arron, presenting her naked rear.
+Rilu crawled on the floor before Arron, presenting her naked rear. & EV_RILU_2_1_61
 =DELAY 1=
 =BLACKFADE 0.5=
-Ri - Please...
-Ar - You don't have to ask me twice.
+Ri - Please... & EV_RILU_2_1_62
+Ar - You don't have to ask me twice. & EV_RILU_2_1_63
 =ABG rilu_doggy_2 rilu_doggy_3=
-Ar - Now it's a matter of honor to help you out.
-Ri - Just hurry.
+Ar - Now it's a matter of honor to help you out. & EV_RILU_2_1_64
+Ri - Just hurry. & EV_RILU_2_1_65
 =ABG rilu_doggy_4 rilu_doggy_5=
-Without dragging it any longer Arron penetrated Rilu's pussy much to her joy. 
-Ri - Aaah!..
-Ar - Are you alright? 
-Ri - Y-yes, sorry...
-Ri - I've been waiting for this for too long.
-Ar - You never raised your voice like that.
-Ar - And your pussy is incredibly wet.
-Ri - Mmmhm...
-Ar - Jee, you are so impatient now you are moving on your own.
-Ri - ...Your thing inside...
-Ri - It's so hard.
-Ar - You turned into a really naughty kitten.
-Ri - Meow...
-Ri - Push it deeper...
-Ri - Yes, scrap my insides...
-Ar - Wow, your pussy is clamping quite hard on me.
-Ri - Ah... Faster...
-Ar - Ngh... Alright.
+Without dragging it any longer Arron penetrated Rilu's pussy much to her joy.  & EV_RILU_2_1_66
+Ri - Aaah!.. & EV_RILU_2_1_67
+Ar - Are you alright?  & EV_RILU_2_1_68
+Ri - Y-yes, sorry... & EV_RILU_2_1_69
+Ri - I've been waiting for this for too long. & EV_RILU_2_1_70
+Ar - You never raised your voice like that. & EV_RILU_2_1_71
+Ar - And your pussy is incredibly wet. & EV_RILU_2_1_72
+Ri - Mmmhm... & EV_RILU_2_1_73
+Ar - Jee, you are so impatient now you are moving on your own. & EV_RILU_2_1_74
+Ri - ...Your thing inside... & EV_RILU_2_1_75
+Ri - It's so hard. & EV_RILU_2_1_76
+Ar - You turned into a really naughty kitten. & EV_RILU_2_1_77
+Ri - Meow... & EV_RILU_2_1_78
+Ri - Push it deeper... & EV_RILU_2_1_79
+Ri - Yes, scrap my insides... & EV_RILU_2_1_80
+Ar - Wow, your pussy is clamping quite hard on me. & EV_RILU_2_1_81
+Ri - Ah... Faster... & EV_RILU_2_1_82
+Ar - Ngh... Alright. & EV_RILU_2_1_83
 =ABG rilu_doggy_6=
-Ri - Yes!
-Ar - You've asked for it.
-Ri - This feels amazing..
-Ri - I'm... I'm coming!..
-Ar - OOohhh!
+Ri - Yes! & EV_RILU_2_1_84
+Ar - You've asked for it. & EV_RILU_2_1_85
+Ri - This feels amazing.. & EV_RILU_2_1_86
+Ri - I'm... I'm coming!.. & EV_RILU_2_1_87
+Ar - OOohhh! & EV_RILU_2_1_88
 =ABG rilu_doggy_7 rilu_doggy_8=
 =WHITE=
-With his last movements Arron pushed as deep as he possibly could, holding Rilu by the waist.
-Ri - Nyahhh!
-Ri - *Pant*
-Ar - Hah..
-Ri - It's filling my insides...
-Ri - Your hot seed.
-Ar - Did it help?
-Ri - Absolutely.
-Ri - Feels amazing to be alive.
+With his last movements Arron pushed as deep as he possibly could, holding Rilu by the waist. & EV_RILU_2_1_89
+Ri - Nyahhh! & EV_RILU_2_1_90
+Ri - *Pant* & EV_RILU_2_1_91
+Ar - Hah.. & EV_RILU_2_1_92
+Ri - It's filling my insides... & EV_RILU_2_1_93
+Ri - Your hot seed. & EV_RILU_2_1_94
+Ar - Did it help? & EV_RILU_2_1_95
+Ri - Absolutely. & EV_RILU_2_1_96
+Ri - Feels amazing to be alive. & EV_RILU_2_1_97
 =BLACKUNFADE 1.5=
-Arron allowed Rilu to stay at his room for this night.
-Ri - *I hope he didn't suspect anything?*
-Ri - ....
+Arron allowed Rilu to stay at his room for this night. & EV_RILU_2_1_98
+Ri - *I hope he didn't suspect anything?* & EV_RILU_2_1_99
+Ri - .... & EV_RILU_2_1_100
 =STOP=

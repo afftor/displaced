@@ -4,193 +4,193 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ro - So, to sum it up, you are wasting too much money on fancy food.
-Ar(neutral) - Rose, have you seen where we live at?
-Ar - I'm not a peasant, I need fresh food. 
-Ar - Tell her, Erika. 
-Er - Well, I am used to the forests, so I will have to support Arron.
-Ro(sarcastic) - Ugh... At least stop binging on the alcohol every second day...
+Ro - So, to sum it up, you are wasting too much money on fancy food. & EV_IOLA_2_7_0
+Ar(neutral) - Rose, have you seen where we live at? & EV_IOLA_2_7_1
+Ar - I'm not a peasant, I need fresh food.  & EV_IOLA_2_7_2
+Ar - Tell her, Erika.  & EV_IOLA_2_7_3
+Er - Well, I am used to the forests, so I will have to support Arron. & EV_IOLA_2_7_4
+Ro(sarcastic) - Ugh... At least stop binging on the alcohol every second day... & EV_IOLA_2_7_5
 =SOUND dooropen=
 =SPRITE iola=
-I - Hey, Arron, Rose, Erika.
-I - Today is the Ancestor's Solidarity Day!
-I - So... I wish to ask you to participate in the celebration.
-Ro(talk) - Fine, as long as it doesn't cost us too much.
-I - It costs nothing really. It's more of a spiritual practice.
-I - You see, we are gonna need at least four people...
-Ro - Eh...?
-Ar - Oh, I haven't told you about her practices, right.
-Ar - You see...
+I - Hey, Arron, Rose, Erika. & EV_IOLA_2_7_6
+I - Today is the Ancestor's Solidarity Day! & EV_IOLA_2_7_7
+I - So... I wish to ask you to participate in the celebration. & EV_IOLA_2_7_8
+Ro(talk) - Fine, as long as it doesn't cost us too much. & EV_IOLA_2_7_9
+I - It costs nothing really. It's more of a spiritual practice. & EV_IOLA_2_7_10
+I - You see, we are gonna need at least four people... & EV_IOLA_2_7_11
+Ro - Eh...? & EV_IOLA_2_7_12
+Ar - Oh, I haven't told you about her practices, right. & EV_IOLA_2_7_13
+Ar - You see... & EV_IOLA_2_7_14
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Er - Sounds fun. 
-I - Right? What about you, Rose?
-Ro(sarcastic) - No way. I absolutely refuse.
-I(sad) - Oh... That's a bummer. 
-Ar - Yeah, Rose, stop spoiling the fun.
-Ro(sarcastic) - That's not fun, this is basically an orgy. 
-I - Not exactly.
-I - This will be centered around Arron, since he's our only man in charge. 
-Ro(sarcastic) - I still refuse. 
-Ro - (If they need at least four people, that means if I refuse, they won't do it anyway)
-Er - Well, that's too bad. 
-Er - Do you think Ember will be willing to take her place?
-Ro(shock) - Eh?!
-I - Oh, we can ask her out.
-Ro - (Wait)
-Ro - (Master will be doing it with three other girls at same time)
-Ro - (While I'll be left out)
-Ro - ...
-Ro(talk) - No, don't.
-Ro - ...I'll do it.
-Ar - Hmm? What's up Rose? I thought you're against it.
-Ro - I... Don't... 
-Ro - Uh... I can... 
-Ro - I can try it for once, I suppose.
-Ro - (Uh... why does nobody else around here have any problems with this?)
-I - That's nice, I'll make sure everyone is comfortable and happy.
-I - Give me half an hour or so.
-I - Arron, get out. 
-Ar - Gotcha.
+Er - Sounds fun.  & EV_IOLA_2_7_15
+I - Right? What about you, Rose? & EV_IOLA_2_7_16
+Ro(sarcastic) - No way. I absolutely refuse. & EV_IOLA_2_7_17
+I(sad) - Oh... That's a bummer.  & EV_IOLA_2_7_18
+Ar - Yeah, Rose, stop spoiling the fun. & EV_IOLA_2_7_19
+Ro(sarcastic) - That's not fun, this is basically an orgy.  & EV_IOLA_2_7_20
+I - Not exactly. & EV_IOLA_2_7_21
+I - This will be centered around Arron, since he's our only man in charge.  & EV_IOLA_2_7_22
+Ro(sarcastic) - I still refuse.  & EV_IOLA_2_7_23
+Ro - (If they need at least four people, that means if I refuse, they won't do it anyway) & EV_IOLA_2_7_24
+Er - Well, that's too bad.  & EV_IOLA_2_7_25
+Er - Do you think Ember will be willing to take her place? & EV_IOLA_2_7_26
+Ro(shock) - Eh?! & EV_IOLA_2_7_27
+I - Oh, we can ask her out. & EV_IOLA_2_7_28
+Ro - (Wait) & EV_IOLA_2_7_29
+Ro - (Master will be doing it with three other girls at same time) & EV_IOLA_2_7_30
+Ro - (While I'll be left out) & EV_IOLA_2_7_31
+Ro - ... & EV_IOLA_2_7_32
+Ro(talk) - No, don't. & EV_IOLA_2_7_33
+Ro - ...I'll do it. & EV_IOLA_2_7_34
+Ar - Hmm? What's up Rose? I thought you're against it. & EV_IOLA_2_7_35
+Ro - I... Don't...  & EV_IOLA_2_7_36
+Ro - Uh... I can...  & EV_IOLA_2_7_37
+Ro - I can try it for once, I suppose. & EV_IOLA_2_7_38
+Ro - (Uh... why does nobody else around here have any problems with this?) & EV_IOLA_2_7_39
+I - That's nice, I'll make sure everyone is comfortable and happy. & EV_IOLA_2_7_40
+I - Give me half an hour or so. & EV_IOLA_2_7_41
+I - Arron, get out.  & EV_IOLA_2_7_42
+Ar - Gotcha. & EV_IOLA_2_7_43
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-Arron was waiting outside of the bedroom until he heard an invitation.
-I - Okay, we are ready, you can come in!
+Arron was waiting outside of the bedroom until he heard an invitation. & EV_IOLA_2_7_44
+I - Okay, we are ready, you can come in! & EV_IOLA_2_7_45
 =MUSIC erotheme=
 =ABG rose_erika_iola_1=
 =GUI_FULL=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-A three girls laid naked before Arron spreading their legs in lewd poses.
-Ar - Wow, now I know what I want for my birthdays.
-I - Remember, this is an important ritual.
-I - We satisfy our bodies and become closer.
-Er - Look how timid Rose is.
-Ro - I'm not timid! 
-Ro - I'm just not used to such things...
-Ar - You are doing good, Rose. 
-Ar - I appreciate your dedication.
-Ro - Shut up...
-I - Arron, you can proceed however you like.
-Er - Don't overexert yourself though.
-Ar - Don't worry, I've been blessed with endless virility.
-I - I've fed him with a stamina supplement, so it should be all good.
-Ar - Jeez, why did you tell them. What about my image?
+A three girls laid naked before Arron spreading their legs in lewd poses. & EV_IOLA_2_7_46
+Ar - Wow, now I know what I want for my birthdays. & EV_IOLA_2_7_47
+I - Remember, this is an important ritual. & EV_IOLA_2_7_48
+I - We satisfy our bodies and become closer. & EV_IOLA_2_7_49
+Er - Look how timid Rose is. & EV_IOLA_2_7_50
+Ro - I'm not timid!  & EV_IOLA_2_7_51
+Ro - I'm just not used to such things... & EV_IOLA_2_7_52
+Ar - You are doing good, Rose.  & EV_IOLA_2_7_53
+Ar - I appreciate your dedication. & EV_IOLA_2_7_54
+Ro - Shut up... & EV_IOLA_2_7_55
+I - Arron, you can proceed however you like. & EV_IOLA_2_7_56
+Er - Don't overexert yourself though. & EV_IOLA_2_7_57
+Ar - Don't worry, I've been blessed with endless virility. & EV_IOLA_2_7_58
+I - I've fed him with a stamina supplement, so it should be all good. & EV_IOLA_2_7_59
+Ar - Jeez, why did you tell them. What about my image? & EV_IOLA_2_7_60
 =ABG rose_erika_iola_2 rose_erika_iola_3=
-Er - Oo-oh... 
-Er - I'm getting it first.
-Ar - You are always ready, aren't you.
-Er - Ah... yes...
-Er - Screw me rougher... 
-Er - Like this...
-Er - You stirring my pussy... 
-Er - With your big dick...
-Erika kept enticing Arron while moving her body in response.
-I - I could learn a few things from Erika.
-I - Rose, I see you are getting excited too. 
-I - You can touch yourself too.
-I - Or do you want me to help you out?
-Ro - N-no, this is fine...
-Ro - Ah!
+Er - Oo-oh...  & EV_IOLA_2_7_61
+Er - I'm getting it first. & EV_IOLA_2_7_62
+Ar - You are always ready, aren't you. & EV_IOLA_2_7_63
+Er - Ah... yes... & EV_IOLA_2_7_64
+Er - Screw me rougher...  & EV_IOLA_2_7_65
+Er - Like this... & EV_IOLA_2_7_66
+Er - You stirring my pussy...  & EV_IOLA_2_7_67
+Er - With your big dick... & EV_IOLA_2_7_68
+Erika kept enticing Arron while moving her body in response. & EV_IOLA_2_7_69
+I - I could learn a few things from Erika. & EV_IOLA_2_7_70
+I - Rose, I see you are getting excited too.  & EV_IOLA_2_7_71
+I - You can touch yourself too. & EV_IOLA_2_7_72
+I - Or do you want me to help you out? & EV_IOLA_2_7_73
+Ro - N-no, this is fine... & EV_IOLA_2_7_74
+Ro - Ah! & EV_IOLA_2_7_75
 =ABG rose_erika_iola_4=
-Unexpectedly Arron picked up their conversation and moved his hand to Rose's crotch.
-Ar - Don't be so uptight, here's your beloved master's caress.
-Ro - That's... 
-Ro - Ah... Good...
-I - Wow, nice multitasking. 
-I - You are really skilled, Arron.
-Ar - I'm getting close...
-Er - Great, my pussy is too...
-Er - Harder... 
-Er - Push as deep... 
-Er - As you can...
-Ar - Nghh!..
-Er - AAAhhh!..
+Unexpectedly Arron picked up their conversation and moved his hand to Rose's crotch. & EV_IOLA_2_7_76
+Ar - Don't be so uptight, here's your beloved master's caress. & EV_IOLA_2_7_77
+Ro - That's...  & EV_IOLA_2_7_78
+Ro - Ah... Good... & EV_IOLA_2_7_79
+I - Wow, nice multitasking.  & EV_IOLA_2_7_80
+I - You are really skilled, Arron. & EV_IOLA_2_7_81
+Ar - I'm getting close... & EV_IOLA_2_7_82
+Er - Great, my pussy is too... & EV_IOLA_2_7_83
+Er - Harder...  & EV_IOLA_2_7_84
+Er - Push as deep...  & EV_IOLA_2_7_85
+Er - As you can... & EV_IOLA_2_7_86
+Ar - Nghh!.. & EV_IOLA_2_7_87
+Er - AAAhhh!.. & EV_IOLA_2_7_88
 =ABG rose_erika_iola_5 rose_erika_iola_6=
-Ar - Hah...
-Er - It's filling me.
-Er - Your hot spunk...
-Ro - (She looks really happy...)
-Ar - Phew... Two more to go.
+Ar - Hah... & EV_IOLA_2_7_89
+Er - It's filling me. & EV_IOLA_2_7_90
+Er - Your hot spunk... & EV_IOLA_2_7_91
+Ro - (She looks really happy...) & EV_IOLA_2_7_92
+Ar - Phew... Two more to go. & EV_IOLA_2_7_93
 =ABG rose_erika_iola_7 rose_erika_iola_8=
-I - Aah...
-I - It's inside.
-I - Ah... 
-I - You are reaching so deep.
-I - I... Ah...
-I - Haven't practiced enough.
-Ar - Mh, your pussy is as tight as the first time.
-I - T-thank you.
-Ro - Oh...
-Er - Hehe, it seems Rose feels lonely.
-Er - And you are all dripping down there too.
-Ro - Stop...
-Er - Don't be sad, I bet he left the best for the dessert. 
+I - Aah... & EV_IOLA_2_7_94
+I - It's inside. & EV_IOLA_2_7_95
+I - Ah...  & EV_IOLA_2_7_96
+I - You are reaching so deep. & EV_IOLA_2_7_97
+I - I... Ah... & EV_IOLA_2_7_98
+I - Haven't practiced enough. & EV_IOLA_2_7_99
+Ar - Mh, your pussy is as tight as the first time. & EV_IOLA_2_7_100
+I - T-thank you. & EV_IOLA_2_7_101
+Ro - Oh... & EV_IOLA_2_7_102
+Er - Hehe, it seems Rose feels lonely. & EV_IOLA_2_7_103
+Er - And you are all dripping down there too. & EV_IOLA_2_7_104
+Ro - Stop... & EV_IOLA_2_7_105
+Er - Don't be sad, I bet he left the best for the dessert.  & EV_IOLA_2_7_106
 =ABG rose_erika_iola_9=
-Meanwhile Iola and Arron focused solely on their intercourse.
-I - I'm sorry, I feel like..
-I - I'm...
-I - Ah, I'm getting close...
-Ar - Me too...
-I - Aahh... Ahh.
-I - I'm cumming!...
+Meanwhile Iola and Arron focused solely on their intercourse. & EV_IOLA_2_7_107
+I - I'm sorry, I feel like.. & EV_IOLA_2_7_108
+I - I'm... & EV_IOLA_2_7_109
+I - Ah, I'm getting close... & EV_IOLA_2_7_110
+Ar - Me too... & EV_IOLA_2_7_111
+I - Aahh... Ahh. & EV_IOLA_2_7_112
+I - I'm cumming!... & EV_IOLA_2_7_113
 =ABG rose_erika_iola_10 rose_erika_iola_11=
-Arron pumped Iola's pussy with his hot seed.
-I - AAaah...
-Ar - OOoh...
-Ar - Ha-h... This is pretty intense.
-I - This felt amazing.
-Ar - Likewise. 
-Pulling out of Iola, Arron finally moved to the girl who had been left waiting this whole time.
-Ar - You must be bouncing off the walls, Rose. 
-Ro - ...Just do it already.
-Ar - Come on, don't be so distant.
-Ar - You'd be spoiling the fun for others.
-Ro - ...Sorry, please make l-love to me.
-Er - Aww, how old-fashioned.
-Ar - Alright, here's your patience reward...
+Arron pumped Iola's pussy with his hot seed. & EV_IOLA_2_7_114
+I - AAaah... & EV_IOLA_2_7_115
+Ar - OOoh... & EV_IOLA_2_7_116
+Ar - Ha-h... This is pretty intense. & EV_IOLA_2_7_117
+I - This felt amazing. & EV_IOLA_2_7_118
+Ar - Likewise.  & EV_IOLA_2_7_119
+Pulling out of Iola, Arron finally moved to the girl who had been left waiting this whole time. & EV_IOLA_2_7_120
+Ar - You must be bouncing off the walls, Rose.  & EV_IOLA_2_7_121
+Ro - ...Just do it already. & EV_IOLA_2_7_122
+Ar - Come on, don't be so distant. & EV_IOLA_2_7_123
+Ar - You'd be spoiling the fun for others. & EV_IOLA_2_7_124
+Ro - ...Sorry, please make l-love to me. & EV_IOLA_2_7_125
+Er - Aww, how old-fashioned. & EV_IOLA_2_7_126
+Ar - Alright, here's your patience reward... & EV_IOLA_2_7_127
 =ABG rose_erika_iola_12 rose_erika_iola_13=
-Arron carefully pushed his cock inside of the already wet Rose.
-Ro - Ah... 
-Ro - Master...
-Ar - Wow, don't remember you ever being this soaked.
-Ar - You've been fighting back so much, but this seems to really excite you.
-Ro - It's not like that... 
-Ro - Ah...
-Ar - Don't you enjoy it?
-Ro - Yes... 
-Ro - Faster...
-Ar - Just look at this.
-Ar - We are turning our meek Rose into a passionate whore.
+Arron carefully pushed his cock inside of the already wet Rose. & EV_IOLA_2_7_128
+Ro - Ah...  & EV_IOLA_2_7_129
+Ro - Master... & EV_IOLA_2_7_130
+Ar - Wow, don't remember you ever being this soaked. & EV_IOLA_2_7_131
+Ar - You've been fighting back so much, but this seems to really excite you. & EV_IOLA_2_7_132
+Ro - It's not like that...  & EV_IOLA_2_7_133
+Ro - Ah... & EV_IOLA_2_7_134
+Ar - Don't you enjoy it? & EV_IOLA_2_7_135
+Ro - Yes...  & EV_IOLA_2_7_136
+Ro - Faster... & EV_IOLA_2_7_137
+Ar - Just look at this. & EV_IOLA_2_7_138
+Ar - We are turning our meek Rose into a passionate whore. & EV_IOLA_2_7_139
 =ABG rose_erika_iola_14=
-Ro - Stop... Ah... 
-Er - Seeing her expression makes me jealous. 
-I - She looks like she's completely into it.
-Er - Well it's often more exciting when you aren't prepared for it.
-Ro - Ah... Master... 
-Ro - I love you...
-Ro - And your cock...
-Ar - Damn you Rose.
-Ar - Enjoying this more than even me.
-Ro - I'm almost... 
-Ro - I'm cumming!!
+Ro - Stop... Ah...  & EV_IOLA_2_7_140
+Er - Seeing her expression makes me jealous.  & EV_IOLA_2_7_141
+I - She looks like she's completely into it. & EV_IOLA_2_7_142
+Er - Well it's often more exciting when you aren't prepared for it. & EV_IOLA_2_7_143
+Ro - Ah... Master...  & EV_IOLA_2_7_144
+Ro - I love you... & EV_IOLA_2_7_145
+Ro - And your cock... & EV_IOLA_2_7_146
+Ar - Damn you Rose. & EV_IOLA_2_7_147
+Ar - Enjoying this more than even me. & EV_IOLA_2_7_148
+Ro - I'm almost...  & EV_IOLA_2_7_149
+Ro - I'm cumming!! & EV_IOLA_2_7_150
 =ABG rose_erika_iola_15 rose_erika_iola_16=
-Ar - Nghhh!
-Ro - AAaah!....
-Ro - Ah... Hah... Ahh... 
-I - You did great, Rose!
-Er - Hehe, looking at you, made me wish to go for a second round.
-Ro - Eh?... We aren't done?
-Ar - Why would we be? Today we feast.
-Ro - Uh...
-I - That's true. We can continue for at least until evening.
-Er - He-he, let me get on top of Rose this time.
-I - Ooh, I didn't think of that!
-Ro - (Uh oh...)
+Ar - Nghhh! & EV_IOLA_2_7_151
+Ro - AAaah!.... & EV_IOLA_2_7_152
+Ro - Ah... Hah... Ahh...  & EV_IOLA_2_7_153
+I - You did great, Rose! & EV_IOLA_2_7_154
+Er - Hehe, looking at you, made me wish to go for a second round. & EV_IOLA_2_7_155
+Ro - Eh?... We aren't done? & EV_IOLA_2_7_156
+Ar - Why would we be? Today we feast. & EV_IOLA_2_7_157
+Ro - Uh... & EV_IOLA_2_7_158
+I - That's true. We can continue for at least until evening. & EV_IOLA_2_7_159
+Er - He-he, let me get on top of Rose this time. & EV_IOLA_2_7_160
+I - Ooh, I didn't think of that! & EV_IOLA_2_7_161
+Ro - (Uh oh...) & EV_IOLA_2_7_162
 =BLACKUNFADE 1=
 =DELAY 1=
 =STOP=

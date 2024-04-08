@@ -1,0 +1,120 @@
+** erika_annet_2_3 **
+=BLACKFADE 1=
+=DELAY 1=
+=BG villageday=
+=MUSIC eventlight=
+=GUI_NORMAL=
+=SPRITE rose=
+=SPRITE_UNFADE 0.5=
+Ar - Hey Rose, what happened to Erika?
+Ro(talk) - She said she was going to the city market yesterday
+Ro - She hasn't returned since then.
+Ar - Hmm... That seems a bit unlike her. 
+Ro - Would you like to investigate?
+Ar(neutral) - Yeah, I've been bored from sitting around here all day.
+Ar - I hope she hasn't decided to live in a big city instead.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=SPRITE_FADE=
+=BG town_in=
+=GUI_NORMAL=
+=SPRITE stranger=
+Str - The elven girl in skimpy clothes?
+Str - Yeah, she was here yesterday. 
+Str - Was causing some ruckus, then walked away with Annet.
+Ro(talk) - Annet?
+Str - Yeah, the city committee member, the one with horns.
+Ar(neutral) - Oh, right, that one.
+Ar - What she's even about?
+Str - Don't know much, really. 
+Str - She was elected due to her business influence and money mostly.
+Str - I think she's from an aristocratic family, or that's what she looks like anyway. 
+Ar(neutral) - Don't you find her weird though? 
+Ar - Those horns and tail I mean.
+Ar - She kinda looks like a succubus to me.
+Str - Hey man, not cool. We aren’t prejudiced.
+Str - Anyone can be a good person.
+Str - Especially when they have lots of money.
+Ar(neutral) - Uh huh, I guess we should check her estate then. 
+Str - Yeah... Don't tell her I told you though.
+Str - And don't comment on those things. 
+Str - She does not seem to like it.
+Ar - ...Right
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
+After a half hour Arron and Rose have found Annet's estate.
+=GUI_HIDE=
+=DELAY 1=
+=BG annet_quarters=
+=SPRITE annet=
+=SPRITE_UNFADE 0.3=
+=DELAY 1=
+=GUI_NORMAL=
+=BLACKFADE 1=
+=MUSIC event_mysterious=
+Ar - ...So we have been looking for her.
+An - I see. Mr. Arron, right?
+An - I do indeed know about Erika and where she is right now.
+An - But there might be some difficulties.
+Ar(neutral) - Such as?
+An - You see, she's an old friend of mine and we have just reunited.
+An - She wants to stay with me.
+Ro - Does she really?
+An - Of course she does, silly.
+An - You don't believe me?
+An - That's fine. Erika, please come in.
+=SOUND dooropen=
+=DELAY 0.5=
+=SPRITE erika=
+=SPRITE_UNFADE 0.5=
+Ro - *Huh, she looks quite disturbed*
+Ar - Hey, we were worried. How are you doing?
+Er(sad) - I'm sorry for my disappearance, Arron, Rose.
+Er(sad) - I will be staying with M-
+Er(sad) - With Annet from now.
+Er(sad) - You don't have to stay here.
+Ro(shock) - Huh?
+=SPRITE annet=
+An - As you see, she's perfectly fine and stays here by her will.
+Ar(neutral) - Hmm, this does look a bit fishy.
+Ro - .....
+An - You are a clever man, Mr. Arron. 
+An - You do look different from most people in this city. 
+An - I can tell you aren't of lowly heritage.
+Ar(neutral) - Please, you are making me blush.
+An - I'm not flattering you. 
+An - I can see how others react to you, especially your companions. 
+An - Rose, correct? 
+Ro - ...
+An - You see, to me there are two kinds of people in this world.
+An - Those who rule and those who obey. 
+An - Erika is obeying me, just as Rose obeys you.
+An - That makes us alike, don't you think? 
+Ro(talk) - This is absurd.
+Ar - Shush, don't make me bring your gag with us next time.
+Ro(shock) - !.....
+An - Ha, see! You get it.
+An - You have come to me so you do hold interest in Erika. 
+An - Since she has joined you before, you must be a responsible leader.
+An - So I'm not wholly against letting her go.
+An - But I do need someone around to help me with my... business.
+An - Your girl, Rose, looks quite capable of that. 
+An - What would you say if we switch for an uncertain period of time?
+Ro(shock) - .....
+Rose noticed how Erika's eyes screamed protest, but they both remained silent.
+She was terrified by the idea of being left alone with Annet.
+Ar(neutral) - This is a tempting offer...
+Ar - But I'll have to consider it first.
+Ar - If that's fine with you.
+Ro(talk) - (C-consider?)
+An - Of course not. 
+An - Once you decide, I'll be waiting. 
+An - I hope we can have a productive relationship in future.
+Ar(neutral) - Likewise.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

@@ -6,40 +6,40 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ar - Oh jeez, not the guards...
-Em - Hey, Rose, why doesn’t sir Arron like the guards?
-Ro - It's probably since they mostly had to keep him in place.
-Ar - Far from it, but you can also count that.
-Guard - Halt. Where are you going?
-Ar - Can we go in?
-Guard - Hmmm... Are you a citizen?
-Ar - No. We are sorta on a delivery here?
-Guard - I don't trust you. The city is off-limits if you aren’t a citizen. 
-Guard - We don't need a new group of beggars on the streets.
-Ar(neutral) - You gotta be shitting me. Do I look like a beggar?
-Guard - No pass.
-Ar - Listen, guard...
-Guard - I have a name, and it's Carl.
-Ar - ......
-Ar - Listen, Carl, we really need to go in, how can we prove we aren't beggars?
-Guard - Hmph. Perhaps a small payment of 10,000 gold will prove it. For each person.
-Ar(anger) - YOU FU...
-Ro - Wait, Sir Carl, we really need to get inside. Could you please consider some other way? We are willing to do anything!
-Guard - Heh... Anything you say? 
-Ro(sarcastic) - .....Except that.
-Guard - Hmph. 
-Guard - ...
-Guard - Fine, there's been a lot of reports about bloodthirsty dwarves coming out from nearby caves. 
-Guard - If you take care of them, I will consider allowing you to pass.
-Ar(neutral) - Sigh.. let's just get on with it.
-Traveler - Is it those caves they say have necromancer lair?
-Ro - N-necromancer?
-Traveler - Yeah, nobody goes there because of the dwarves, but the folk rumor..
-Guard - Enough chit chat, move the line!
-Ar - Now you see why I hate guards, Ember.
-Ro - Now that you mention it, I can relate.
-Ro(sarcastic) - Maybe we could let Erika please him to let us in though.
-Er - Boo. Like I would cheat on Arron like that.
+Ar - Oh jeez, not the guards... & EV_AEROS_1_0
+Em - Hey, Rose, why doesn’t sir Arron like the guards? & EV_AEROS_1_1
+Ro - It's probably since they mostly had to keep him in place. & EV_AEROS_1_2
+Ar - Far from it, but you can also count that. & EV_AEROS_1_3
+Guard - Halt. Where are you going? & EV_AEROS_1_4
+Ar - Can we go in? & EV_AEROS_1_5
+Guard - Hmmm... Are you a citizen? & EV_AEROS_1_6
+Ar - No. We are sorta on a delivery here? & EV_AEROS_1_7
+Guard - I don't trust you. The city is off-limits if you aren’t a citizen.  & EV_AEROS_1_8
+Guard - We don't need a new group of beggars on the streets. & EV_AEROS_1_9
+Ar(neutral) - You gotta be shitting me. Do I look like a beggar? & EV_AEROS_1_10
+Guard - No pass. & EV_AEROS_1_11
+Ar - Listen, guard... & EV_AEROS_1_12
+Guard - I have a name, and it's Carl. & EV_AEROS_1_13
+Ar - ...... & EV_AEROS_1_14
+Ar - Listen, Carl, we really need to go in, how can we prove we aren't beggars? & EV_AEROS_1_15
+Guard - Hmph. Perhaps a small payment of 10,000 gold will prove it. For each person. & EV_AEROS_1_16
+Ar(anger) - YOU FU... & EV_AEROS_1_17
+Ro - Wait, Sir Carl, we really need to get inside. Could you please consider some other way? We are willing to do anything! & EV_AEROS_1_18
+Guard - Heh... Anything you say?  & EV_AEROS_1_19
+Ro(sarcastic) - .....Except that. & EV_AEROS_1_20
+Guard - Hmph.  & EV_AEROS_1_21
+Guard - ... & EV_AEROS_1_22
+Guard - Fine, there's been a lot of reports about bloodthirsty dwarves coming out from nearby caves.  & EV_AEROS_1_23
+Guard - If you take care of them, I will consider allowing you to pass. & EV_AEROS_1_24
+Ar(neutral) - Sigh.. let's just get on with it. & EV_AEROS_1_25
+Traveler - Is it those caves they say have necromancer lair? & EV_AEROS_1_26
+Ro - N-necromancer? & EV_AEROS_1_27
+Traveler - Yeah, nobody goes there because of the dwarves, but the folk rumor.. & EV_AEROS_1_28
+Guard - Enough chit chat, move the line! & EV_AEROS_1_29
+Ar - Now you see why I hate guards, Ember. & EV_AEROS_1_30
+Ro - Now that you mention it, I can relate. & EV_AEROS_1_31
+Ro(sarcastic) - Maybe we could let Erika please him to let us in though. & EV_AEROS_1_32
+Er - Boo. Like I would cheat on Arron like that. & EV_AEROS_1_33
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

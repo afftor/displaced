@@ -6,94 +6,94 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ro - There's a new visitor who wants to meet you. Her name is Ember.
-Ar - Oho, a new lady? Finally, this position begins to pay off. Come on in!
+Ro - There's a new visitor who wants to meet you. Her name is Ember. & EV_EMBER_1_1_0
+Ar - Oho, a new lady? Finally, this position begins to pay off. Come on in! & EV_EMBER_1_1_1
 =SHAKE_SCREEN 0.5=
 =SOUND doorsmash=
-*Slam*
+*Slam* & EV_EMBER_1_1_2
 =SPRITE emberhappy=
-Dragon girl appears in room
+Dragon girl appears in room & EV_EMBER_1_1_3
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-Em - Hey!
-Em - You are the mayor, right?!
-Em - My name is Ember.
-Ar - Shit, Rose, there's a dragon on the loose!
-Ro(sarcastic) - Uhm... this is the visitor. 
-Ar - Huh... well, at least you’re not a goblin.
-Ar - (She's certainly the hottest dragon I've ever seen. Although, for others, it was generally their biology. )
-Ember seemingly pays no attention to the commentary.
-Em - I'm sorry, am I being too blunt again? Ah-ha, Sorry...
-Em - Wow, this place is really great! And you look very representative as well!
-Ar - It is, indeed. My skills were recognized by the folk so I was found to be the most suitable ruler.
-Ro(sarcastic) - Indeed, given you were the only candidate.
-Ar - I'll have to penalize you for spilling my trade secrets.
-Ar - Anyway, what brought you here? 
-Em - Ah, You see, I'm a blacksmith's...
-Em - ...apprentice.
-Em - It might not sound great, but I was one for a really long time!
-Em - Since this town has a ruler now, you do need a blacksmith, right?
-Em - Someone to take care of tools, weapons and armor. Please, let me start a forge here!
-Em - I'm a bit short on money as of now, but...
-Em - If you allow me to open my personal shop, I will craft whatever you need as a payment. That's a great deal, right? 
-Ro(sarcastic) - Does anyone even need a smith shop around here..?
-Ar - A valid point, why here of all places?
-Em - I'll tell you, but it's a secret, so don't tell anyone, alright? 
-Ar - Sure, I'll just force Rose to wear a gag whenever she goes out, to make sure she stays quiet. So?
-Ro(sarcastic) - *Frown*
-Em - Have you seen the competition?
-Em - Do you realize how much profit I'll be making with no other blacksmiths around? This is a perfect opportunity to start my own shop!
-Em - I might not look like it, but I have studied my craft.
-Em - This is a perfect opportunity to start my own shop!
-Ro - ...
-Ar - ...
-=CHOICE Allow|Refuse=
-Ar - ...
+Em - Hey! & EV_EMBER_1_1_4
+Em - You are the mayor, right?! & EV_EMBER_1_1_5
+Em - My name is Ember. & EV_EMBER_1_1_6
+Ar - Shit, Rose, there's a dragon on the loose! & EV_EMBER_1_1_7
+Ro(sarcastic) - Uhm... this is the visitor.  & EV_EMBER_1_1_8
+Ar - Huh... well, at least you’re not a goblin. & EV_EMBER_1_1_9
+Ar - (She's certainly the hottest dragon I've ever seen. Although, for others, it was generally their biology. ) & EV_EMBER_1_1_10
+Ember seemingly pays no attention to the commentary. & EV_EMBER_1_1_11
+Em - I'm sorry, am I being too blunt again? Ah-ha, Sorry... & EV_EMBER_1_1_12
+Em - Wow, this place is really great! And you look very representative as well! & EV_EMBER_1_1_13
+Ar - It is, indeed. My skills were recognized by the folk so I was found to be the most suitable ruler. & EV_EMBER_1_1_14
+Ro(sarcastic) - Indeed, given you were the only candidate. & EV_EMBER_1_1_15
+Ar - I'll have to penalize you for spilling my trade secrets. & EV_EMBER_1_1_16
+Ar - Anyway, what brought you here?  & EV_EMBER_1_1_17
+Em - Ah, You see, I'm a blacksmith's... & EV_EMBER_1_1_18
+Em - ...apprentice. & EV_EMBER_1_1_19
+Em - It might not sound great, but I was one for a really long time! & EV_EMBER_1_1_20
+Em - Since this town has a ruler now, you do need a blacksmith, right? & EV_EMBER_1_1_21
+Em - Someone to take care of tools, weapons and armor. Please, let me start a forge here! & EV_EMBER_1_1_22
+Em - I'm a bit short on money as of now, but... & EV_EMBER_1_1_23
+Em - If you allow me to open my personal shop, I will craft whatever you need as a payment. That's a great deal, right?  & EV_EMBER_1_1_24
+Ro(sarcastic) - Does anyone even need a smith shop around here..? & EV_EMBER_1_1_25
+Ar - A valid point, why here of all places? & EV_EMBER_1_1_26
+Em - I'll tell you, but it's a secret, so don't tell anyone, alright?  & EV_EMBER_1_1_27
+Ar - Sure, I'll just force Rose to wear a gag whenever she goes out, to make sure she stays quiet. So? & EV_EMBER_1_1_28
+Ro(sarcastic) - *Frown* & EV_EMBER_1_1_29
+Em - Have you seen the competition? & EV_EMBER_1_1_30
+Em - Do you realize how much profit I'll be making with no other blacksmiths around? This is a perfect opportunity to start my own shop! & EV_EMBER_1_1_31
+Em - I might not look like it, but I have studied my craft. & EV_EMBER_1_1_32
+Em - This is a perfect opportunity to start my own shop! & EV_EMBER_1_1_33
+Ro - ... & EV_EMBER_1_1_34
+Ar - ... & EV_EMBER_1_1_35
+=CHOICE EV_EMBER_ALLOW|EV_EMBER_REFUSE=
+Ar - ... & EV_EMBER_1_1_36
 =IF LASTCHOICE 0 1 0=
 =POSITION 0=
-Ar(neutral) - This is an impossible request.
-Em(sad) - What? But I went such a long way...
+Ar(neutral) - This is an impossible request. & EV_EMBER_1_1_37
+Em(sad) - What? But I went such a long way... & EV_EMBER_1_1_38
 =SPRITE embershock=
-Ember's eyes began filling with tears.
-Ar - No, we can't allow a half-dragon into our town, this would go against safety reg...
-Em(sad) - *Sob*
-=CHOICE Allow|Still_refuse=
-Ar - (God, you are not serious now? )
+Ember's eyes began filling with tears. & EV_EMBER_1_1_39
+Ar - No, we can't allow a half-dragon into our town, this would go against safety reg... & EV_EMBER_1_1_40
+Em(sad) - *Sob* & EV_EMBER_1_1_41
+=CHOICE EV_EMBER_ALLOW|EV_STILL_REFUSE=
+Ar - (God, you are not serious now? ) & EV_EMBER_1_1_42
 =IF LASTCHOICE 0 3 2=
 =POSITION 2=
-Ro(sarcastic) - What? I can't believe you are so cruel to her. Look, she's crying.
-Ar - We can't be driven by woman's emotions in hefty decisions.
-Ro - Hmph, I'm leaving then.
-Ar - You can't leave. You were mine to start with!
-Ro - That was in Avior, here I'm free to do what I want. 
-Ro - Now, let's go Ember, I'm sure we will find a more friendly place than this.
-Ar - Is that so? You'll regret this!
+Ro(sarcastic) - What? I can't believe you are so cruel to her. Look, she's crying. & EV_EMBER_1_1_43
+Ar - We can't be driven by woman's emotions in hefty decisions. & EV_EMBER_1_1_44
+Ro - Hmph, I'm leaving then. & EV_EMBER_1_1_45
+Ar - You can't leave. You were mine to start with! & EV_EMBER_1_1_46
+Ro - That was in Avior, here I'm free to do what I want.  & EV_EMBER_1_1_47
+Ro - Now, let's go Ember, I'm sure we will find a more friendly place than this. & EV_EMBER_1_1_48
+Ar - Is that so? You'll regret this! & EV_EMBER_1_1_49
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-...
-......
-Being left alone, Arron failed as Mayor and has been exiled by the goblins.
+... & EV_EMBER_1_1_50
+...... & EV_EMBER_1_1_51
+Being left alone, Arron failed as Mayor and has been exiled by the goblins. & EV_EMBER_1_1_52
 =LOOSE=
 =POSITION 3=
-Ar - Fine, I'll allow it. You will have to sign a number of contracts first, though.
+Ar - Fine, I'll allow it. You will have to sign a number of contracts first, though. & EV_EMBER_1_1_53
 =SPRITE emberhappy=
-Ember's face quickly changes into an image of pure relief.
+Ember's face quickly changes into an image of pure relief. & EV_EMBER_1_1_54
 =MOVETO 4=
 =POSITION 1=
-Ro - You might be wro...
-Ar - That's a great idea! Just sign a couple of contracts and you can start right away.
-Embers eyes shine with happiness
+Ro - You might be wro... & EV_EMBER_1_1_55
+Ar - That's a great idea! Just sign a couple of contracts and you can start right away. & EV_EMBER_1_1_56
+Embers eyes shine with happiness & EV_EMBER_1_1_57
 =POSITION 4=
-Em(happy) - Wow, thank you, Arron! I'm so indebted to you for this.
-Ro(sarcastic) - (What a coincidental use of words.)
-Em - You won't regret it!
-Ar - So, you gonna need a house for a forge? We might be able to assemble something...
-Em - Oh, there's no need. I brought my house with me! It's on the hill right outside of town.
-Ro(talk) - Huh, really. Did you carry it all by yourself? Half-dragons can do stuff like that? 
-Em - Ha-ha, I've always been carrying stuff around the forge, so I wouldn't get in the way of Master's work. 
-Ar - Well, that's all the better for us, but I'll have to tax you for taking town's space. 
-Em - Okay!
-Ember has joined the settlement. Forge is available now.
+Em(happy) - Wow, thank you, Arron! I'm so indebted to you for this. & EV_EMBER_1_1_58
+Ro(sarcastic) - (What a coincidental use of words.) & EV_EMBER_1_1_59
+Em - You won't regret it! & EV_EMBER_1_1_60
+Ar - So, you gonna need a house for a forge? We might be able to assemble something... & EV_EMBER_1_1_61
+Em - Oh, there's no need. I brought my house with me! It's on the hill right outside of town. & EV_EMBER_1_1_62
+Ro(talk) - Huh, really. Did you carry it all by yourself? Half-dragons can do stuff like that?  & EV_EMBER_1_1_63
+Em - Ha-ha, I've always been carrying stuff around the forge, so I wouldn't get in the way of Master's work.  & EV_EMBER_1_1_64
+Ar - Well, that's all the better for us, but I'll have to tax you for taking town's space.  & EV_EMBER_1_1_65
+Em - Okay! & EV_EMBER_1_1_66
+Ember has joined the settlement. Forge is available now. & EV_EMBER_1_1_67
 =GUI_HIDE=
 =BLACKUNFADE 1.5=
 =DELAY 1.5=

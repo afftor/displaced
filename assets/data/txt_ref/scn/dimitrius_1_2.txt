@@ -9,27 +9,27 @@
 =SPRITE demitrius=
 =SPRITE_UNFADE 0.3=
 =DELAY 0.5=
-As Demitrus goes slightly behind the group, Rose talks to the Arron.
+As Demitrus goes slightly behind the group, Rose talks to the Arron. & EV_DIMITRIUS_1_2_0
 =SPRITE_FADE 0.3=
 =DELAY 0.5=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ro - We are in a tight spot here. 
-Ro(talk) - If our origin goes public, they will certainly proclaim us to be demons.
-Ar(neutral) - Relax, he does not seem to suspect anything.
-Ar - Once we are done with his task, he's going to leave and it will be all good.
-Ro - I suppose...
-Ro(talk) - The villagers do seem to pay him great respect though.
-Ro - Thankfully, it does not seem like they actually believe in this whole demon idea.
-Er - Of course it's all nonsense.
+Ro - We are in a tight spot here.  & EV_DIMITRIUS_1_2_1
+Ro(talk) - If our origin goes public, they will certainly proclaim us to be demons. & EV_DIMITRIUS_1_2_2
+Ar(neutral) - Relax, he does not seem to suspect anything. & EV_DIMITRIUS_1_2_3
+Ar - Once we are done with his task, he's going to leave and it will be all good. & EV_DIMITRIUS_1_2_4
+Ro - I suppose... & EV_DIMITRIUS_1_2_5
+Ro(talk) - The villagers do seem to pay him great respect though. & EV_DIMITRIUS_1_2_6
+Ro - Thankfully, it does not seem like they actually believe in this whole demon idea. & EV_DIMITRIUS_1_2_7
+Er - Of course it's all nonsense. & EV_DIMITRIUS_1_2_8
 =SPRITE_FADE 0.3=
 =DELAY 0.5=
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
-Ro(shock) - EH? You were listening all this time?
-Er(happy) - Don't worry, my lips are shut.
-Er - Unless you are interested in my oral skills.
-Ro - *Sigh* Let's just get this over with.
+Ro(shock) - EH? You were listening all this time? & EV_DIMITRIUS_1_2_9
+Er(happy) - Don't worry, my lips are shut. & EV_DIMITRIUS_1_2_10
+Er - Unless you are interested in my oral skills. & EV_DIMITRIUS_1_2_11
+Ro - *Sigh* Let's just get this over with. & EV_DIMITRIUS_1_2_12
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

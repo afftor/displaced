@@ -6,19 +6,19 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-Str - That goblin girl.. I remember.
-Str - She left a few months ago.
-Ar(neutral) - Where did she go?
-Str - No idea, we don't care where outsiders go when they leave.
-Ro - I see, thank you for the help.
+Str - That goblin girl.. I remember. & EV_FLAK_2_0
+Str - She left a few months ago. & EV_FLAK_2_1
+Ar(neutral) - Where did she go? & EV_FLAK_2_2
+Str - No idea, we don't care where outsiders go when they leave. & EV_FLAK_2_3
+Ro - I see, thank you for the help. & EV_FLAK_2_4
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ro - Seems like we were too late.
-Ar - Let's read the letter at least then.
-Ro(shock) - No, you can't read someone else's message!
-Ar - Oh, come on. 
-Ro - No, Master, please respect other people's privacy.
-Ar(neutral) - ...Fine, whatever, let's go back.
+Ro - Seems like we were too late. & EV_FLAK_2_5
+Ar - Let's read the letter at least then. & EV_FLAK_2_6
+Ro(shock) - No, you can't read someone else's message! & EV_FLAK_2_7
+Ar - Oh, come on.  & EV_FLAK_2_8
+Ro - No, Master, please respect other people's privacy. & EV_FLAK_2_9
+Ar(neutral) - ...Fine, whatever, let's go back. & EV_FLAK_2_10
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

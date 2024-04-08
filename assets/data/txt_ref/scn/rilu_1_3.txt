@@ -8,26 +8,26 @@
 =GUI_NORMAL=
 =SPRITE kingdwarf1=
 =SPRITE_UNFADE 0.5=
-KD - Haha, these surfacers are quite feisty. 
-Ro(shock) - Master, we can't fight them for much longer. 
-Em(sad) - Sorry, they are numerous and really tough.
-Ar - Shit, the king is coming at us now!
-KD - You have fought well kid, but you've messed with the wrong dwarves.
-KD - My ax demands its nourishment!
-Ar(anger) - You crazy midget fucker...
-Ar(anger) - (This is not good, maybe we should try to escape at this point...)
-Er - Arron, look!
-Arron turned to the side Erika pointed at, broadening his eyes in disbelief.
-Blood covered Rilu slowly stood up on her knees. 
+KD - Haha, these surfacers are quite feisty.  & EV_RILU_1_3_0
+Ro(shock) - Master, we can't fight them for much longer.  & EV_RILU_1_3_1
+Em(sad) - Sorry, they are numerous and really tough. & EV_RILU_1_3_2
+Ar - Shit, the king is coming at us now! & EV_RILU_1_3_3
+KD - You have fought well kid, but you've messed with the wrong dwarves. & EV_RILU_1_3_4
+KD - My ax demands its nourishment! & EV_RILU_1_3_5
+Ar(anger) - You crazy midget fucker... & EV_RILU_1_3_6
+Ar(anger) - (This is not good, maybe we should try to escape at this point...) & EV_RILU_1_3_7
+Er - Arron, look! & EV_RILU_1_3_8
+Arron turned to the side Erika pointed at, broadening his eyes in disbelief. & EV_RILU_1_3_9
+Blood covered Rilu slowly stood up on her knees.  & EV_RILU_1_3_10
 =SPRITE rilu=
-Ro(shock) - She's alive!
-Ri - Ugh, This didn't take long to happen again.
-Ri - Can't I get a break...
-The dwarven king shows no sign of hesitation being completely overwhelmed by combat haze. 
-KD - What an interesting girl! Look like an ideal practice target, Hahaha.
-Previously expressionless Rilu's face now lit with magic glow displayed an angry look mixed with determination.
-Ri(spell) - Arron, was it? I'll join if you don't mind.
-Ar - Not gonna stop you.
+Ro(shock) - She's alive! & EV_RILU_1_3_11
+Ri - Ugh, This didn't take long to happen again. & EV_RILU_1_3_12
+Ri - Can't I get a break... & EV_RILU_1_3_13
+The dwarven king shows no sign of hesitation being completely overwhelmed by combat haze.  & EV_RILU_1_3_14
+KD - What an interesting girl! Look like an ideal practice target, Hahaha. & EV_RILU_1_3_15
+Previously expressionless Rilu's face now lit with magic glow displayed an angry look mixed with determination. & EV_RILU_1_3_16
+Ri(spell) - Arron, was it? I'll join if you don't mind. & EV_RILU_1_3_17
+Ar - Not gonna stop you. & EV_RILU_1_3_18
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

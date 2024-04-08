@@ -8,20 +8,20 @@
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
 =GUI_NORMAL=
-Ar(neutral) - So, anyone has any ideas?
-Ri - I can stop her from getting away.
-Ar - You can?
-Ri - We can take her close relative as a hostage.
-Ro - That's...
-Ri - I'm jesting. 
-Ri - I can stop her with magic. 
-Ri - I’m gonna need something of her personal belongings though. 
-Ri - Like a brush or a piece of cloth.
-Er - We might find something at her nest then.
-Ar - You know where is it?
-Er - Yeah I know the old one. 
-Er - Faeries often change them but they also tend to leave some of their stuff behind.
-Ar - Alright, let's check it.
+Ar(neutral) - So, anyone has any ideas? & EV_FAERY_QUEEN_1_B_0
+Ri - I can stop her from getting away. & EV_FAERY_QUEEN_1_B_1
+Ar - You can? & EV_FAERY_QUEEN_1_B_2
+Ri - We can take her close relative as a hostage. & EV_FAERY_QUEEN_1_B_3
+Ro - That's... & EV_FAERY_QUEEN_1_B_4
+Ri - I'm jesting.  & EV_FAERY_QUEEN_1_B_5
+Ri - I can stop her with magic.  & EV_FAERY_QUEEN_1_B_6
+Ri - I’m gonna need something of her personal belongings though.  & EV_FAERY_QUEEN_1_B_7
+Ri - Like a brush or a piece of cloth. & EV_FAERY_QUEEN_1_B_8
+Er - We might find something at her nest then. & EV_FAERY_QUEEN_1_B_9
+Ar - You know where is it? & EV_FAERY_QUEEN_1_B_10
+Er - Yeah I know the old one.  & EV_FAERY_QUEEN_1_B_11
+Er - Faeries often change them but they also tend to leave some of their stuff behind. & EV_FAERY_QUEEN_1_B_12
+Ar - Alright, let's check it. & EV_FAERY_QUEEN_1_B_13
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

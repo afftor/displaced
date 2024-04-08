@@ -9,34 +9,7 @@ signal EventFinished
 
 var text_log = ""
 
-const REF_PATH = [
-	"res://assets/data/txt_ref/scn",
-#	"res://assets/data/txt_ref/chardef.txt",
-#	"res://assets/data/txt_ref/scn/intro.txt",
-#	"res://assets/data/txt_ref/scn/forest.txt",
-#	"res://assets/data/txt_ref/scn/ember_1.txt",
-#	"res://assets/data/txt_ref/scn/rose.txt",
-#	"res://assets/data/txt_ref/scn/dimitrius_1.txt",
-#	"res://assets/data/txt_ref/scn/iola_1.txt",
-#	"res://assets/data/txt_ref/scn/erika.txt",
-#	"res://assets/data/txt_ref/scn/erika_rose.txt",
-#	"res://assets/data/txt_ref/scn/aeros.txt",
-#	"res://assets/data/txt_ref/scn/rilu_1.txt",
-#	"res://assets/data/txt_ref/scn/faery_queen.txt",
-#	"res://assets/data/txt_ref/scn/victor_1.txt",
-#	"res://assets/data/txt_ref/scn/erika_annet.txt",
-#	"res://assets/data/txt_ref/scn/rilu_2.txt",
-#	"res://assets/data/txt_ref/scn/iola_2.txt",
-#	"res://assets/data/txt_ref/scn/ember_2.txt",
-#	"res://assets/data/txt_ref/scn/victor_2.txt",
-#	"res://assets/data/txt_ref/scn/iola_3.txt",
-#	"res://assets/data/txt_ref/scn/city_raid.txt",
-#	"res://assets/data/txt_ref/scn/annet.txt",
-#	"res://assets/data/txt_ref/scn/dimitrius_2.txt",
-#	"res://assets/data/txt_ref/scn/zelroth.txt",
-#	"res://assets/data/txt_ref/scn/future_city.txt",
-#	"res://assets/data/txt_ref/scn/dimitrius_ending.txt",
-	]
+const REF_PATH = "res://assets/data/txt_ref/scn"
 
 const AVAIL_EFFECTS = [
 	"WHITE", "SPRITE_HIDE",
@@ -48,7 +21,7 @@ const AVAIL_EFFECTS = [
 	"SPRITE", "SPRITE_FADE", "SPRITE_HIDE",
 	"SPRITE_UNFADE", "SHAKE_SPRITE",
 	"SHAKE_SCREEN", "SOUND", "MUSIC",
-	"ABG", "STOP", "CHOICE", "SKIP",
+	"ABG", "STOP", "CHOICE",
 	"DECISION", "STATE", "LOOSE",
 	"IF", "MOVETO", "POSITION", "BG_EMPTY"
 	]
@@ -573,13 +546,12 @@ func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
-	for pth in REF_PATH:
-		for i in process_path_dir(pth):
-			f.open(i, File.READ)
-			ref_src.append_array(f.get_as_text().split("\n"))
-			f.close()
+	for i in process_path_dir(REF_PATH):
+		f.open(i, File.READ)
+		ref_src.append_array(f.get_as_text().split("\n"))
+		f.close()
 	
-	ref_src.append_array(process_gallery_singles())
+#	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
 
 	globals.AddPanelOpenCloseAnimation($LogPanel)
@@ -656,25 +628,26 @@ func OpenOptions():
 	$MenuPanel.show()
 
 
-func process_gallery_singles() -> PoolStringArray:
-	var res = PoolStringArray()
-	for i in range(variables.gallery_singles_list.size()):
-		res.append_array(process_gallery_item(i, variables.gallery_singles_list[i]))
-	return res
+#variables.gallery_singles_list seems to be empty and unused
+#func process_gallery_singles() -> PoolStringArray:
+#	var res = PoolStringArray()
+#	for i in range(variables.gallery_singles_list.size()):
+#		res.append_array(process_gallery_item(i, variables.gallery_singles_list[i]))
+#	return res
 
-func process_gallery_item(index: int, item: Dictionary) -> PoolStringArray:
-	var res = PoolStringArray()
-	res.append("** gallery_%d **" % index)
-	res.append("=GUI_HIDE=")
-	match item.type:
-		'bg':
-			res.append("=BG %s=" % item.path)
-		'abg':
-			res.append("=ABG %s=" % item.path)
-	res.append("...")
-	res.append("=STOP=")
-
-	return res
+#func process_gallery_item(index: int, item: Dictionary) -> PoolStringArray:
+#	var res = PoolStringArray()
+#	res.append("** gallery_%d **" % index)
+#	res.append("=GUI_HIDE=")
+#	match item.type:
+#		'bg':
+#			res.append("=BG %s=" % item.path)
+#		'abg':
+#			res.append("=ABG %s=" % item.path)
+#	res.append("...")
+#	res.append("=STOP=")
+#
+#	return res
 
 
 func _process(delta: float) -> void:
@@ -705,16 +678,14 @@ func is_input_blocked() ->bool:
 func _input(event: InputEvent):
 	#here we process only keyboard events, for mouse events see _gui_input()
 	if !(event is InputEventKey): return
+	if is_input_blocked(): return
 	if event.is_action("ctrl"):
-		if event.is_pressed():
-			skip = true
-		else:
-			skip = false
+		skip = event.is_pressed()
 		get_tree().set_input_as_handled()
 		return
-	if is_input_blocked(): return
 
 func _unhandled_key_input(event):
+	if is_input_blocked(): return
 	#only avail in replay mode due to ability to miss critical choices and unlocks otherwise
 	if replay_mode and event.is_action_pressed("ESC"):
 		prompt_close()
@@ -898,8 +869,8 @@ func tag_choice(chstring: String) -> void:
 		var newbutton = $ChoicePanel/VBoxContainer.get_node("Button").duplicate()
 		$ChoicePanel/VBoxContainer.add_child(newbutton)
 		newbutton.show()
-		print("%d %s" % [c, tr(ch.replace('_', ' '))])
-		newbutton.get_node("Label").text = tr(ch.replace('_', ' '))
+#		print("%d %s" % [c, tr(ch)])
+		newbutton.get_node("Label").text = tr(ch)
 		newbutton.index = c
 		newbutton.connect('i_pressed', self, 'get_choice')
 		if replay_mode:
@@ -917,7 +888,7 @@ func get_choice(i: int):
 		state.store_choice(choice_number, i)
 	for ch_button in $ChoicePanel/VBoxContainer.get_children():
 		if ch_button.index == i:
-			print("%d %s" % [i, ch_button.get_node("Label").text])
+#			print("%d %s" % [i, ch_button.get_node("Label").text])
 			text_log += "\n\n" + ch_button.get_node("Label").text
 			break
 	$ChoicePanel.visible = false
@@ -993,12 +964,13 @@ func tag_shake_screen(secs: String = "0.2") -> void:
 	input_handler.emit_signal("ScreenChanged")
 	input_handler.ShakeAnimation(self, float(secs))
 
-func tag_skip(ifindex_s: String, lcount_s: String) -> void:
-	var ifindex = int(ifindex_s)
-	var lcount = int(lcount_s)
-
-	if ifindex == last_choice or ifindex == -1:
-		step += lcount
+#fully migrated from =SKIP= methods to =IF= and =MOVETO=, as it is far more flexible and mistakeproof
+#func tag_skip(ifindex_s: String, lcount_s: String) -> void:
+#	var ifindex = int(ifindex_s)
+#	var lcount = int(lcount_s)
+#
+#	if ifindex == last_choice or ifindex == -1:
+#		step += lcount
 
 func tag_sound(res_name: String) -> void:
 	if rewind_mode: return
@@ -1051,11 +1023,9 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 		$VideoBunch.Change(res, sec_res)
 	delay = max(delay, 0.3) #not sure, but should be enough to fix asynchonisation of abg changing 
 
-#it would be best to migrate from =SKIP= methods to =IF= and =MOVETO=, as last one is far more flexible and mistakeproof, but it would be hard to do so
 func tag_moveto(pos :String) ->void:
 	var cur_line = get_line_nr()
-	#1000 - is an abstract "alot". If tags =STOP= or =POSITION= will not be found within 1000 lines, it would certainly be an error
-	for line_num in range(cur_line, cur_line + 1000):
+	for line_num in range(cur_line, scene_map["stop"]):
 		var line = ref_src[line_num]
 		if line.begins_with("=") and line.ends_with("="):
 			var tag_string = line.replace("=", "")
@@ -1066,8 +1036,6 @@ func tag_moveto(pos :String) ->void:
 					and tag_array[1] == pos):
 				step = line_num - line_start
 				return
-			if tag_array[0] == "STOP":
-				break
 	assert(false, "POSITION not found in tag_moveto!!!")
 
 func tag_position(pos :String) ->void:
@@ -1157,19 +1125,26 @@ func advance_scene() -> void:
 		callv(method_name, line_array)
 		
 	elif !rewind_mode:
-		var splitted = line_dr.split(" - ")
-		
 		var is_narrator = true
 		var character = char_map['Narrator']
 		var replica = line_dr
 		
-		if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
-			character = char_map[splitted[0]]
-			replica = splitted[1]
-			is_narrator = false
+		if " - " in line_dr:
+			var splitted = line_dr.split(" - ", true, 1)
+			if is_char_name(splitted[0]):
+				character = char_map[splitted[0]]
+				replica = splitted[1]
+				is_narrator = false
+		
+		if " & " in replica:
+			var splitted = replica.split(" & ")
+			assert(splitted.size() == 2, "inappropriate use of & in %s" % state.CurEvent)
+			if TranslationServer.get_locale() != globals.base_locale:
+				replica = tr(splitted[1])
+			else:
+				replica = splitted[0]
 		
 		ShownCharacters = 0
-		replica = tr(replica)
 		if is_narrator:
 			text_log += '\n\n' + replica
 		else:
@@ -1271,8 +1246,8 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	var out = {}
 	var c = 0
 
-	var chardef = false
-	var chardef_color = Color.black
+#	var chardef = false
+#	var chardef_color = Color.black
 
 	for i in lines:
 		if i.begins_with("#"):
@@ -1285,24 +1260,23 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 				"start" : c + 1,
 				"res" : {}
 			}
+			c+=1
+			continue
 
 		if i.begins_with("=") && i.ends_with("="):
 			line_dr = i.replace("=", "")
 			match line_dr:
 				"STOP":
+					#mind, that event can have few STOP tags, so only the last one will be recorded as scene end
 					out[current_scene]["stop"] = c
-
-				"CHARDEF_BEGIN":
-					chardef = true
-
-				"CHARDEF_END":
-					chardef = false
-
+#				"CHARDEF_BEGIN":
+#					chardef = true
+#				"CHARDEF_END":
+#					chardef = false
 				_:
-					if chardef:
-						if line_dr.begins_with("COLOR #"):
-							chardef_color = Color(line_dr.replace("COLOR #", ""))
-
+#					if chardef:
+#						if line_dr.begins_with("COLOR #"):
+#							chardef_color = Color(line_dr.replace("COLOR #", ""))
 					if line_dr.begins_with("ABG "):
 						var vids = line_dr.replace("ABG ", "")
 						vids = vids.split(" ")
@@ -1330,67 +1304,67 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 								if res_name == "null": break
 								if res_type == 'SPRITE' and animated_sprites.has(res_name):
 									res_type = 'animated_sprite'
-								if !out[current_scene]["res"].has(res_type.to_lower()):
-									out[current_scene]["res"][res_type.to_lower()] = []
-								if !out[current_scene]["res"][res_type.to_lower()].has(res_name):
-									out[current_scene]["res"][res_type.to_lower()].append(res_name)
-
+								var res_type_lower = res_type.to_lower()
+								if !out[current_scene]["res"].has(res_type_lower):
+									out[current_scene]["res"][res_type_lower] = []
+								if !out[current_scene]["res"][res_type_lower].has(res_name):
+									out[current_scene]["res"][res_type_lower].append(res_name)
 								break
 
 		else:
-			if chardef: #obsolete, but hard to clean out fast
-				if i.split(" - ").size() == 2:
-					var parsed = i.split(" - ")
-					var raw = parsed[0]
-					var raw_vars = []
-					var left = []
-					if raw.find("[") != -1:
-						raw_vars = raw.right(raw.find("["))
-						var raw_root = raw.left(raw.find("["))
-						raw_vars = raw_vars.replace("[", "").replace("]", "")
-						raw_vars = raw_vars.split(", ")
-						var skipfirst = false
-						for j in raw_vars:
-							if !skipfirst:
-								skipfirst = true
-								left.append(raw_root)
-								continue
-							left.append(raw_root + "(" + j.to_lower() + ")")
-					else:
-						left.append(raw)
-
-					var cooked = parsed[1].split(" ")
-					var source = cooked[0]
-					var portrait = [cooked[0]]
-					var color = chardef_color
-
-					if cooked.size() > 1:
-						for j in cooked:
-							if j.begins_with("#"):
-								color = Color(j.replace("#", ""))
-							else:
-								portrait = [j]
-
-					if raw_vars.size() > 0:
-						var portrait_root = portrait[0]
-						portrait = []
-						for j in raw_vars:
-							portrait.append(portrait_root + j)
-
-					for j in range(left.size()):
-						char_map[left[j]] = {
-							"source" : source.replace("_", " "),
-							"portrait" : portrait[j],
-							"color" : color
-						}
-						if left[j].length() > char_max:
-							char_max = left[j].length()
-			else:
-				var splitted = i.split(" - ")
-
-				if splitted[0].length() <= char_max && splitted[0] in char_map.keys():
-					var character = char_map[splitted[0]]
-
+			#to del
+#			if chardef: #obsolete, but hard to clean out fast
+#				if i.split(" - ").size() == 2:
+#					var parsed = i.split(" - ")
+#					var raw = parsed[0]
+#					var raw_vars = []
+#					var left = []
+#					if raw.find("[") != -1:
+#						raw_vars = raw.right(raw.find("["))
+#						var raw_root = raw.left(raw.find("["))
+#						raw_vars = raw_vars.replace("[", "").replace("]", "")
+#						raw_vars = raw_vars.split(", ")
+#						var skipfirst = false
+#						for j in raw_vars:
+#							if !skipfirst:
+#								skipfirst = true
+#								left.append(raw_root)
+#								continue
+#							left.append(raw_root + "(" + j.to_lower() + ")")
+#					else:
+#						left.append(raw)
+#
+#					var cooked = parsed[1].split(" ")
+#					var source = cooked[0]
+#					var portrait = [cooked[0]]
+#					var color = chardef_color
+#
+#					if cooked.size() > 1:
+#						for j in cooked:
+#							if j.begins_with("#"):
+#								color = Color(j.replace("#", ""))
+#							else:
+#								portrait = [j]
+#
+#					if raw_vars.size() > 0:
+#						var portrait_root = portrait[0]
+#						portrait = []
+#						for j in raw_vars:
+#							portrait.append(portrait_root + j)
+#
+#					for j in range(left.size()):
+#						char_map[left[j]] = {
+#							"source" : source.replace("_", " "),
+#							"portrait" : portrait[j],
+#							"color" : color
+#						}
+#						if left[j].length() > char_max:
+#							char_max = left[j].length()
+#			else:
+			if " - " in i:
+				var char_code = i.get_slice(" - ", 0)
+				if is_char_name(char_code):
+					var character = char_map[char_code]
 					var res_name = character.portrait
 					if !out[current_scene]["res"].has("portrait"):
 						out[current_scene]["res"]["portrait"] = []
@@ -1401,10 +1375,13 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 
 	current_scene = ""
 	line_dr = ""
-	return out.duplicate(true)
+	return out.duplicate(true)#duplicate needed?
 
 func get_line_nr() -> int:
 	return line_start + step
+
+func is_char_name(char_name :String) ->bool:
+	return (char_name.length() <= char_max && char_name in char_map.keys())
 
 #for CloseableWindowsArray processing------
 func show():
@@ -1419,3 +1396,60 @@ func hide():
 func can_hide():
 	return false
 #--------------------
+
+
+
+#This func was intended to be used only once at _ready() with ref_src argument
+#in order to add translation ids to all event files.
+#It was used and now has no purpose. I'm leaving it here only for legacy reason,
+#so to know how it was made at the time.
+#func make_lines_translatable(lines: PoolStringArray):
+#	var scene_name :String = ""
+#	var string_name :String = ""
+#	var string_count :int = 0
+#	var file_text :String = ""
+#	var dict_text :String = ""
+#	var out_path = "user://out/"
+#	var file_handler = File.new()
+#	for i in lines:
+#		if i.begins_with("**") && i.ends_with("**"):
+#			if !file_text.empty():
+#				file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+#				file_handler.store_string(file_text)
+#				file_handler.close()
+#			file_text = i
+#			scene_name = i.replace("**", "").replace(" ", "")
+#			string_name = "EV_%s_" % scene_name.to_upper()
+#			string_count = 0
+#			continue
+#		file_text += "\n"
+#
+#		if i.begins_with("#"):
+#			file_text += i
+#			continue
+#
+#		if i.begins_with("=") && i.ends_with("="):
+#			file_text += i
+#			continue
+#
+#		if i.empty():
+#			continue
+#
+#		var replica = i
+#		if " - " in i:
+#			var splitted = i.split(" - ", true, 1)
+#			if is_char_name(splitted[0]):
+#				replica = splitted[1]
+#		var string_name_full = string_name + str(string_count)
+#		dict_text += "%s = \"(говорит по-русски) %s\",\n" % [string_name_full, replica]
+#
+#		file_text += "%s & %s" % [i, string_name_full]
+#		string_count += 1
+#	#last file
+#	file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+#	file_handler.store_string(file_text)
+#	file_handler.close()
+#	#dictionary
+#	file_handler.open(out_path + "main.txt", File.WRITE)
+#	file_handler.store_string(dict_text)
+#	file_handler.close()

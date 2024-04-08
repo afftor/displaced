@@ -8,47 +8,47 @@
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Meanwhile Iola had finished her routine and was preparing to go to Arron again.
-I - Phew, almost done here.
-I - I should warn father, that I'm leaving.
+Meanwhile Iola had finished her routine and was preparing to go to Arron again. & EV_IOLA_2_2_2_0
+I - Phew, almost done here. & EV_IOLA_2_2_2_1
+I - I should warn father, that I'm leaving. & EV_IOLA_2_2_2_2
 =BLACKTRANS 1=
 =DELAY 1=
 =BG cult1=
-She took a peek at her father's office before entering.
-I - Huh, he seems to receive guests...
+She took a peek at her father's office before entering. & EV_IOLA_2_2_2_3
+I - Huh, he seems to receive guests... & EV_IOLA_2_2_2_4
 =BLACKTRANS 1=
 =DELAY 1=
 =SPRITE demitrius=
 =SPRITE_UNFADE 0.3=
-D - So you got rid of that dwarf king?
+D - So you got rid of that dwarf king? & EV_IOLA_2_2_2_5
 =SPRITE victor=
 =SPRITE_UNFADE 0.3=
-V - Sort of, wasn't me, but I finished the bastard.
-D - Wasn't you?
-V - Yeah, it seems like that guy got to him first.
-D - I thought I ordered you to keep your eyes on him, idiot.
-V - Whatever, from this world or not, he's no match for me.
-V - I can kill him any time I want. 
-D(anger) - That's not what I ordered.
-D - Maybe we can use him to do our job.
-V - Your job.
-D(anger) - It will be your job if you fuck this up. 
-V - *grunt*
-D - Now get lost already, it's not good if we are seen here together.
-V - Oh is it? You probably should take care of peeping toms next time. 
-D - Huh?
-Before Iola realized it, the door in front of her was forced in and she was dragged inside.
+V - Sort of, wasn't me, but I finished the bastard. & EV_IOLA_2_2_2_6
+D - Wasn't you? & EV_IOLA_2_2_2_7
+V - Yeah, it seems like that guy got to him first. & EV_IOLA_2_2_2_8
+D - I thought I ordered you to keep your eyes on him, idiot. & EV_IOLA_2_2_2_9
+V - Whatever, from this world or not, he's no match for me. & EV_IOLA_2_2_2_10
+V - I can kill him any time I want.  & EV_IOLA_2_2_2_11
+D(anger) - That's not what I ordered. & EV_IOLA_2_2_2_12
+D - Maybe we can use him to do our job. & EV_IOLA_2_2_2_13
+V - Your job. & EV_IOLA_2_2_2_14
+D(anger) - It will be your job if you fuck this up.  & EV_IOLA_2_2_2_15
+V - *grunt* & EV_IOLA_2_2_2_16
+D - Now get lost already, it's not good if we are seen here together. & EV_IOLA_2_2_2_17
+V - Oh is it? You probably should take care of peeping toms next time.  & EV_IOLA_2_2_2_18
+D - Huh? & EV_IOLA_2_2_2_19
+Before Iola realized it, the door in front of her was forced in and she was dragged inside. & EV_IOLA_2_2_2_20
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
-I(shock) - What?! 
-I(shock) - Let me go now! 
-I(shock) - Father! What-
-*Thud*
+I(shock) - What?!  & EV_IOLA_2_2_2_21
+I(shock) - Let me go now!  & EV_IOLA_2_2_2_22
+I(shock) - Father! What- & EV_IOLA_2_2_2_23
+*Thud* & EV_IOLA_2_2_2_24
 =SOUND punch=
-V - Hell, I hate women.
-V - Always so noisy.
-D - Don't dare kill her. 
-D(anger) - Shit, now I have to sort this out too...
+V - Hell, I hate women. & EV_IOLA_2_2_2_25
+V - Always so noisy. & EV_IOLA_2_2_2_26
+D - Don't dare kill her.  & EV_IOLA_2_2_2_27
+D(anger) - Shit, now I have to sort this out too... & EV_IOLA_2_2_2_28
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

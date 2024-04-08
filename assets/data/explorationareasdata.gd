@@ -1525,8 +1525,8 @@ func check_area_avail(area):
 
 
 func check_location_activity(loc): #if there is mission avail
-	if locations[loc].missions.empty():
-		return true
+#	if locations[loc].missions.empty():#pointless, works only with village, which never goes through this func
+#		return true
 	for i in locations[loc].missions:
 		if !check_area_avail(i): continue
 		return true
@@ -1540,8 +1540,8 @@ func check_area_new_avail(area):
 
 
 func check_new_location_activity(loc): #if there is non-completed mission avail
-	if locations[loc].missions.empty():
-		return true
+#	if locations[loc].missions.empty():#pointless, works only with village, which never goes through this func
+#		return true
 	for i in locations[loc].missions:
 		if !check_area_new_avail(i): continue
 		return true

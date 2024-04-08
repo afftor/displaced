@@ -40,7 +40,7 @@ var CurrentScreen
 
 var OldSeqs = []
 var OldEvents := {}
-var gallery_unlocks = []
+#var gallery_unlocks = []
 #var gallery_event_unlocks = []
 var CurEvent := "" #event name
 var CurBuild := ""
@@ -126,9 +126,9 @@ func revert():
 		cult = false,
 		modern_city = false
 	}
-	gallery_unlocks.clear()
-	for i in variables.gallery_singles_list:
-		gallery_unlocks.push_back(false)
+#	gallery_unlocks.clear()
+#	for i in variables.gallery_singles_list:
+#		gallery_unlocks.push_back(false)
 #	gallery_event_unlocks.clear()
 
 
@@ -186,8 +186,8 @@ func _ready():
 	reset_heroes()
 	reset_inventory()
 	reset_areaprogress()
-	for i in variables.gallery_singles_list:
-		gallery_unlocks.push_back(false)
+#	for i in variables.gallery_singles_list:
+#		gallery_unlocks.push_back(false)
 
 
 #this func checks relevancy, so already seen sequence is irrelevant
@@ -246,13 +246,15 @@ func store_choice(choice, option):
 
 
 func unlock_path(path, is_abg):
-	print("unlocking path %s" % path)
-	for i in range(variables.gallery_singles_list.size()):
-		var item = variables.gallery_singles_list[i]
-		if item.path != path: continue
-		if item.type == 'abg' and !is_abg: continue
-		if item.type == 'bg' and is_abg: continue
-		gallery_unlocks[i] = true
+	#this is usless for now
+	pass
+#	print("unlocking path %s" % path)
+#	for i in range(variables.gallery_singles_list.size()):
+#		var item = variables.gallery_singles_list[i]
+#		if item.path != path: continue
+#		if item.type == 'abg' and !is_abg: continue
+#		if item.type == 'bg' and is_abg: continue
+#		gallery_unlocks[i] = true
 
 
 func get_choice(choice):
@@ -413,7 +415,7 @@ func serialize():
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
 	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurEvent', 'mainprogress', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea', 'screen', 'CurrentScreen']
-	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'gallery_unlocks', 'scene_restore_data']
+	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'scene_restore_data']#'gallery_unlocks'
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:

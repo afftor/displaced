@@ -8,21 +8,21 @@
 =GUI_NORMAL=
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
-Ar - Well, last time it was somewhere around here.
-Ar - It must have been some terrible acci...
-I - Father!
+Ar - Well, last time it was somewhere around here. & EV_IOLA_1_3_0
+Ar - It must have been some terrible acci... & EV_IOLA_1_3_1
+I - Father! & EV_IOLA_1_3_2
 =SPRITE demitrius=
 =SPRITE_UNFADE 0.5=
-The tall familiar figure appears from the far corner of the cave room. 
-Iola rushes and hugs her father.
-Ar - ...
-Ro(shock) - Holy!...
-Ar - Huh... I guess practicing your shock reaction wasn't really necessary. 
-D - Iola, what are you doing here?
-I - I've come searching for you! What were you doing here for so long?
-D - Hm... I must have lost in thoughts and time flew by without me noticing. 
-D - I'm sorry about that. Let's go home.
-Without raising any suspicion Demitrius moved to the room's exit.
+The tall familiar figure appears from the far corner of the cave room.  & EV_IOLA_1_3_3
+Iola rushes and hugs her father. & EV_IOLA_1_3_4
+Ar - ... & EV_IOLA_1_3_5
+Ro(shock) - Holy!... & EV_IOLA_1_3_6
+Ar - Huh... I guess practicing your shock reaction wasn't really necessary.  & EV_IOLA_1_3_7
+D - Iola, what are you doing here? & EV_IOLA_1_3_8
+I - I've come searching for you! What were you doing here for so long? & EV_IOLA_1_3_9
+D - Hm... I must have lost in thoughts and time flew by without me noticing.  & EV_IOLA_1_3_10
+D - I'm sorry about that. Let's go home. & EV_IOLA_1_3_11
+Without raising any suspicion Demitrius moved to the room's exit. & EV_IOLA_1_3_12
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =SPRITE_FADE 0.2=
@@ -30,17 +30,17 @@ Without raising any suspicion Demitrius moved to the room's exit.
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-After leaving the caves Demitrius gives no apparent interest to Arron's party and left them with his daughter.
-Ro - But how can this be? Maybe he actually did survive?
-Ar - I don't think anyone survives having half of his head smashed to pieces.
-Ro - ...
-Em - But isn't it great this all ended well? It doesn't seem like he remembers what happened. 
-Ar - That's true. See Rose, you should be more optimistic like Ember. 
-Ro - No-no, this is certainly not right.
-Er - Maybe it was just an illusion or a dream? 
-Ar - I don't really care at this point. 
-Ar(neutral) - I've missed my opportunity of getting closer with Iola so let's go back.
-Er(happy) - Arron is on point as ever.
+After leaving the caves Demitrius gives no apparent interest to Arron's party and left them with his daughter. & EV_IOLA_1_3_13
+Ro - But how can this be? Maybe he actually did survive? & EV_IOLA_1_3_14
+Ar - I don't think anyone survives having half of his head smashed to pieces. & EV_IOLA_1_3_15
+Ro - ... & EV_IOLA_1_3_16
+Em - But isn't it great this all ended well? It doesn't seem like he remembers what happened.  & EV_IOLA_1_3_17
+Ar - That's true. See Rose, you should be more optimistic like Ember.  & EV_IOLA_1_3_18
+Ro - No-no, this is certainly not right. & EV_IOLA_1_3_19
+Er - Maybe it was just an illusion or a dream?  & EV_IOLA_1_3_20
+Ar - I don't really care at this point.  & EV_IOLA_1_3_21
+Ar(neutral) - I've missed my opportunity of getting closer with Iola so let's go back. & EV_IOLA_1_3_22
+Er(happy) - Arron is on point as ever. & EV_IOLA_1_3_23
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

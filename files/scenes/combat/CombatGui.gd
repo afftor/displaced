@@ -372,11 +372,11 @@ func build_selected_item(item):
 		ch.pressed = ch.get_meta("skill") == item.useskill
 
 
-func build_selected_char(hero):
-	active_panel.visible = true
-	active_panel2.visible = true
-	active_panel2.get_node("TextureRect").texture = hero.portrait_circle()
-	active_panel2.get_node("Label").text = hero.name
+#func build_selected_char(hero):
+#	active_panel.visible = true
+#	active_panel2.visible = true
+#	active_panel2.get_node("TextureRect").texture = hero.portrait_circle()
+#	active_panel2.get_node("Label").text = hero.name
 
 
 func unbild_selection():
@@ -437,7 +437,7 @@ func clear_log():
 
 
 func combatlogadd_q(text):
-	$Combatlog/RichTextLabel.append_bbcode(text)
+	$Combatlog/RichTextLabel.append_bbcode(text + "\n")
 
 
 func set_log():

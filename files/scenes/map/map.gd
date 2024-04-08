@@ -101,6 +101,7 @@ func update_map():
 		else:
 			area_node.m_hide()
 			area_node.set_inactive()
+			area_node.set_current(false)
 			continue
 
 		if binded_events[loc] != null:

@@ -6,60 +6,60 @@
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
 =MUSIC eventgeneric=
-Taking a day off Erika walks through Aeros' market.
-M - Hey, elf girl. 
-M - Looking for something specific?
-Er - Nah, Just checking around.
-M - Oh right, you are from that desert village. 
-M - You don't have to dress that skimpy around here though. 
-Er - Don't worry, it's one of my favorite outfits.
-M - A-ha, alright then.
-EC - No, please let us go!
-Erika turned to the noise from the other side of the market.
+Taking a day off Erika walks through Aeros' market. & EV_ERIKA_ANNET_2_1_0
+M - Hey, elf girl.  & EV_ERIKA_ANNET_2_1_1
+M - Looking for something specific? & EV_ERIKA_ANNET_2_1_2
+Er - Nah, Just checking around. & EV_ERIKA_ANNET_2_1_3
+M - Oh right, you are from that desert village.  & EV_ERIKA_ANNET_2_1_4
+M - You don't have to dress that skimpy around here though.  & EV_ERIKA_ANNET_2_1_5
+Er - Don't worry, it's one of my favorite outfits. & EV_ERIKA_ANNET_2_1_6
+M - A-ha, alright then. & EV_ERIKA_ANNET_2_1_7
+EC - No, please let us go! & EV_ERIKA_ANNET_2_1_8
+Erika turned to the noise from the other side of the market. & EV_ERIKA_ANNET_2_1_9
 =MUSIC event_mysterious=
-A pair of captured children, no older than twelve, were sold to an obese rich man.
-RN - Shut it, you cur.
-RN - I've paid a good sum for you.
-EC - *sob* Please, I want to see my mom.
-RN - They are pretty unruly.
-RN - Don't worry, you'll work off your price in bed and become real ta-
+A pair of captured children, no older than twelve, were sold to an obese rich man. & EV_ERIKA_ANNET_2_1_10
+RN - Shut it, you cur. & EV_ERIKA_ANNET_2_1_11
+RN - I've paid a good sum for you. & EV_ERIKA_ANNET_2_1_12
+EC - *sob* Please, I want to see my mom. & EV_ERIKA_ANNET_2_1_13
+RN - They are pretty unruly. & EV_ERIKA_ANNET_2_1_14
+RN - Don't worry, you'll work off your price in bed and become real ta- & EV_ERIKA_ANNET_2_1_15
 =SOUND punch=
 =SHAKE_SCREEN 0.5=
-Before the man could notice it, Erika punched him into the face, quickly freeing the children after that.
-Er - Run kids.
-Without a second thought they disappeared into the crowds.
-RN - You... Bitch! What do you think you are doing?!
-Er(anger) - The right thing.
-RN - You don't know who I am? I'm Hector Blackthrorn.
-Hearing that name made people around pay more attention as it was one of the city's strongest families.
-RN - Those slaves cost me 12 thousand gold.
-RN - You better pay up now.
-RN - Or should we turn you into the city guard.
-Er(anger) - ...
-Erika noticed how people were gathering around her, attracted by the ruckus.
-RN - Hah, there's no way you can carry this much money in your garment though.
+Before the man could notice it, Erika punched him into the face, quickly freeing the children after that. & EV_ERIKA_ANNET_2_1_16
+Er - Run kids. & EV_ERIKA_ANNET_2_1_17
+Without a second thought they disappeared into the crowds. & EV_ERIKA_ANNET_2_1_18
+RN - You... Bitch! What do you think you are doing?! & EV_ERIKA_ANNET_2_1_19
+Er(anger) - The right thing. & EV_ERIKA_ANNET_2_1_20
+RN - You don't know who I am? I'm Hector Blackthrorn. & EV_ERIKA_ANNET_2_1_21
+Hearing that name made people around pay more attention as it was one of the city's strongest families. & EV_ERIKA_ANNET_2_1_22
+RN - Those slaves cost me 12 thousand gold. & EV_ERIKA_ANNET_2_1_23
+RN - You better pay up now. & EV_ERIKA_ANNET_2_1_24
+RN - Or should we turn you into the city guard. & EV_ERIKA_ANNET_2_1_25
+Er(anger) - ... & EV_ERIKA_ANNET_2_1_26
+Erika noticed how people were gathering around her, attracted by the ruckus. & EV_ERIKA_ANNET_2_1_27
+RN - Hah, there's no way you can carry this much money in your garment though. & EV_ERIKA_ANNET_2_1_28
 =SPRITE annet=
 =SPRITE_UNFADE 0.3=
-An - What's going on here, Hector?
-Er - ...?
-RN - Ms. Annet? It's nothing requiring your attention. 
-RN - This elf just made me lose a pair of freshly bought slaves.
-An(anger) - Trying to get your filthy hands on the poor kids again, are you?
-An(anger) - That's disgusting, and it's only natural someone would want to save them.
-RN - This is not against the law, and I paid fair and square. 
-RN - I demand my money back!
-An(anger) - Hmph, fine. You'll have your gold, make sure it will serve something better than your perverted hobbies.
-Hearing this, the previously distant crowd began cheering Annet.
-Str - Wow, Ms. Annet really is a respectable committee member.
-Str2 - This is what all rich and nobles should be like.
-RN - Hmph, fine.
-RN - Have it your way, this time. 
-After receiving the confirmation letter, Hector walked away.
-An - Now, that is taken care of...
-An - I would like to have a word with you...
-An - Your name is Erika, right?
-Erika went numb from hearing her name. 
-Her previous readiness to fight drains from her.
+An - What's going on here, Hector? & EV_ERIKA_ANNET_2_1_29
+Er - ...? & EV_ERIKA_ANNET_2_1_30
+RN - Ms. Annet? It's nothing requiring your attention.  & EV_ERIKA_ANNET_2_1_31
+RN - This elf just made me lose a pair of freshly bought slaves. & EV_ERIKA_ANNET_2_1_32
+An(anger) - Trying to get your filthy hands on the poor kids again, are you? & EV_ERIKA_ANNET_2_1_33
+An(anger) - That's disgusting, and it's only natural someone would want to save them. & EV_ERIKA_ANNET_2_1_34
+RN - This is not against the law, and I paid fair and square.  & EV_ERIKA_ANNET_2_1_35
+RN - I demand my money back! & EV_ERIKA_ANNET_2_1_36
+An(anger) - Hmph, fine. You'll have your gold, make sure it will serve something better than your perverted hobbies. & EV_ERIKA_ANNET_2_1_37
+Hearing this, the previously distant crowd began cheering Annet. & EV_ERIKA_ANNET_2_1_38
+Str - Wow, Ms. Annet really is a respectable committee member. & EV_ERIKA_ANNET_2_1_39
+Str2 - This is what all rich and nobles should be like. & EV_ERIKA_ANNET_2_1_40
+RN - Hmph, fine. & EV_ERIKA_ANNET_2_1_41
+RN - Have it your way, this time.  & EV_ERIKA_ANNET_2_1_42
+After receiving the confirmation letter, Hector walked away. & EV_ERIKA_ANNET_2_1_43
+An - Now, that is taken care of... & EV_ERIKA_ANNET_2_1_44
+An - I would like to have a word with you... & EV_ERIKA_ANNET_2_1_45
+An - Your name is Erika, right? & EV_ERIKA_ANNET_2_1_46
+Erika went numb from hearing her name.  & EV_ERIKA_ANNET_2_1_47
+Her previous readiness to fight drains from her. & EV_ERIKA_ANNET_2_1_48
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

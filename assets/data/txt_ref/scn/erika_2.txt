@@ -8,101 +8,101 @@
 =GUI_NORMAL=
 =SPRITE erika=
 =SPRITE_UNFADE 0.5=
-Er - Oh hi, Arron.
-Ar - What's up?
-Er(happy) - Let's have sex!
-Ar - ...I thought it was usually guys who take the initiative around here.
-Er - But you haven't made any advances all this time and I got really lonely.
-Er(happy) - And look, you’re already hard!
-Erika slipped her hand into Arron's pants and began stroking him.
-Er - After all, I came here because I've taken a liking to you.
-Er - Why haven't you approached me for so long?
-Ar - I imagined you might leave right after...
-Ar - Ow, slow down a bit!
-Er(happy) - So silly. I'm not like that. 
-Er - Don't you know elves stay with one partner for life?
-Ar - ...Really? 
-Er(happy) - Nah, that's just an old superstition.
-Er - But  I have stayed around this long, and I'd be willing to continue doing so.
-Er - If you can accept my feelings, that is.
-Ar - Looks like there's no other option here... 
-Ar - (Damn, I'm not used to a girl being so assertive)
-Er - Look, my pussy is juicy and wet for you.
-Smiling, Erika took Arron's hand and guided it down between her legs as her other hand kept caressing his dick.
-Ar - (Since when have I taken the role of sub? Screw this!)
-With sudden determination Arron grabbed Erika's head, bringing her lips close to him and forcing his tongue into her mouth.
-Er - MMH! Mmmm...
-Meanwhile, his hand moved into Erika's panties and pinched the bud of her clit.
+Er - Oh hi, Arron. & EV_ERIKA_2_0
+Ar - What's up? & EV_ERIKA_2_1
+Er(happy) - Let's have sex! & EV_ERIKA_2_2
+Ar - ...I thought it was usually guys who take the initiative around here. & EV_ERIKA_2_3
+Er - But you haven't made any advances all this time and I got really lonely. & EV_ERIKA_2_4
+Er(happy) - And look, you’re already hard! & EV_ERIKA_2_5
+Erika slipped her hand into Arron's pants and began stroking him. & EV_ERIKA_2_6
+Er - After all, I came here because I've taken a liking to you. & EV_ERIKA_2_7
+Er - Why haven't you approached me for so long? & EV_ERIKA_2_8
+Ar - I imagined you might leave right after... & EV_ERIKA_2_9
+Ar - Ow, slow down a bit! & EV_ERIKA_2_10
+Er(happy) - So silly. I'm not like that.  & EV_ERIKA_2_11
+Er - Don't you know elves stay with one partner for life? & EV_ERIKA_2_12
+Ar - ...Really?  & EV_ERIKA_2_13
+Er(happy) - Nah, that's just an old superstition. & EV_ERIKA_2_14
+Er - But  I have stayed around this long, and I'd be willing to continue doing so. & EV_ERIKA_2_15
+Er - If you can accept my feelings, that is. & EV_ERIKA_2_16
+Ar - Looks like there's no other option here...  & EV_ERIKA_2_17
+Ar - (Damn, I'm not used to a girl being so assertive) & EV_ERIKA_2_18
+Er - Look, my pussy is juicy and wet for you. & EV_ERIKA_2_19
+Smiling, Erika took Arron's hand and guided it down between her legs as her other hand kept caressing his dick. & EV_ERIKA_2_20
+Ar - (Since when have I taken the role of sub? Screw this!) & EV_ERIKA_2_21
+With sudden determination Arron grabbed Erika's head, bringing her lips close to him and forcing his tongue into her mouth. & EV_ERIKA_2_22
+Er - MMH! Mmmm... & EV_ERIKA_2_23
+Meanwhile, his hand moved into Erika's panties and pinched the bud of her clit. & EV_ERIKA_2_24
 =SPRITE erika_n=
-Er - Ow! Ooh, Arron, I didn't misjudge you.
-Ar - You've pushed me way too far.
-Er - Yes, I've been a very bad girl. What are you going to do about it?
+Er - Ow! Ooh, Arron, I didn't misjudge you. & EV_ERIKA_2_25
+Ar - You've pushed me way too far. & EV_ERIKA_2_26
+Er - Yes, I've been a very bad girl. What are you going to do about it? & EV_ERIKA_2_27
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =MUSIC_STOP=
-Arron tugged at the elf girl’s clothes, sending them falling to the floor around her ankles.
-Erika turned around and bent over, bracing against the wall as she looked back at him seductively.
+Arron tugged at the elf girl’s clothes, sending them falling to the floor around her ankles. & EV_ERIKA_2_28
+Erika turned around and bent over, bracing against the wall as she looked back at him seductively. & EV_ERIKA_2_29
 =GUI_FULL=
 =MUSIC erotheme=
 =ABG erika_sex_1=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Erika’s breasts swung freely below her as she pressed her naked ass towards him.
-Er - Say, aren’t you eager to punish this lewd elf?
-Ar - I’m just admiring the view first.
-Arron took a minute to contemplate Erika's round ass and her glistening slickpussy.
-Erika spread her thighs a little wider, wiggling her butt at him suggestively.
-Ar - You look like you know how to use that.
-Er - Oh I do, I really do... but do you?
-Arron stared at her, fighting the temptation to give her a spanking first. 
-Er - Ooh... I haven't been looked at like that for quite a long time.
-Er - Perhaps you’d like to see a bit more detail? Here you go...
+Erika’s breasts swung freely below her as she pressed her naked ass towards him. & EV_ERIKA_2_30
+Er - Say, aren’t you eager to punish this lewd elf? & EV_ERIKA_2_31
+Ar - I’m just admiring the view first. & EV_ERIKA_2_32
+Arron took a minute to contemplate Erika's round ass and her glistening slickpussy. & EV_ERIKA_2_33
+Erika spread her thighs a little wider, wiggling her butt at him suggestively. & EV_ERIKA_2_34
+Ar - You look like you know how to use that. & EV_ERIKA_2_35
+Er - Oh I do, I really do... but do you? & EV_ERIKA_2_36
+Arron stared at her, fighting the temptation to give her a spanking first.  & EV_ERIKA_2_37
+Er - Ooh... I haven't been looked at like that for quite a long time. & EV_ERIKA_2_38
+Er - Perhaps you’d like to see a bit more detail? Here you go... & EV_ERIKA_2_39
 =ABG erika_sex_2 erika_sex_3=
-Reaching between her legs, Erika used two fingers to spread her pussy lips, opening her narrow slit to Arron.
-Ar - I think this might be the first time I've seen someone this lewd.
-Erika only smiled at him flirtatiously and spread her pussy wider
-Ar - Oh wow! You really don’t have any shame, do you?
-Er - Fufu... You don't have to flatter me anymore, you know.
-Er - You could just get on with it.
-Er - You could just take me right here, right now.
-Er - Just help yourself to some hot, wet, elven hole.
-Ar - You know… I don’t mind if I do. 
-Without further delay, Arron dropped his pants and penetrated Erika roughly from behind.
+Reaching between her legs, Erika used two fingers to spread her pussy lips, opening her narrow slit to Arron. & EV_ERIKA_2_40
+Ar - I think this might be the first time I've seen someone this lewd. & EV_ERIKA_2_41
+Erika only smiled at him flirtatiously and spread her pussy wider & EV_ERIKA_2_42
+Ar - Oh wow! You really don’t have any shame, do you? & EV_ERIKA_2_43
+Er - Fufu... You don't have to flatter me anymore, you know. & EV_ERIKA_2_44
+Er - You could just get on with it. & EV_ERIKA_2_45
+Er - You could just take me right here, right now. & EV_ERIKA_2_46
+Er - Just help yourself to some hot, wet, elven hole. & EV_ERIKA_2_47
+Ar - You know… I don’t mind if I do.  & EV_ERIKA_2_48
+Without further delay, Arron dropped his pants and penetrated Erika roughly from behind. & EV_ERIKA_2_49
 =ABG erika_sex_4 erika_sex_5=
-Arron’s penis thrust easily into Erika’s dripping pussy, sliding between her splayed fingers.
-Er - Aaaghh! Oh yes! That's the spot right there...
-Ar - Ooh, wow! Despite the wetness you’re still pretty tight.
-Er - Mmmh, you seem to appreciate the greatness of a perfect elven pussy.
-Ar - Got a high opinion of yourself, haven’t you?
-Er - Mmmmhhmm, well when you’re the hottest piece of ass for miles around it’s hard to be humble. 
-Er - Oooh!
-Arron picked up his pace a bit, slamming his penis harder into Erika, his hips pounding against her thick beautiful ass. 
-Er - Ahhh... You’re so rough with me!……
-Ar - Aha, can’t take it?
-Er - I love it! Ahhhhh, harder!
-Arron increased his speed further, hammering Erika’s willing cunt until her words dissolved into moans.
+Arron’s penis thrust easily into Erika’s dripping pussy, sliding between her splayed fingers. & EV_ERIKA_2_50
+Er - Aaaghh! Oh yes! That's the spot right there... & EV_ERIKA_2_51
+Ar - Ooh, wow! Despite the wetness you’re still pretty tight. & EV_ERIKA_2_52
+Er - Mmmh, you seem to appreciate the greatness of a perfect elven pussy. & EV_ERIKA_2_53
+Ar - Got a high opinion of yourself, haven’t you? & EV_ERIKA_2_54
+Er - Mmmmhhmm, well when you’re the hottest piece of ass for miles around it’s hard to be humble.  & EV_ERIKA_2_55
+Er - Oooh! & EV_ERIKA_2_56
+Arron picked up his pace a bit, slamming his penis harder into Erika, his hips pounding against her thick beautiful ass.  & EV_ERIKA_2_57
+Er - Ahhh... You’re so rough with me!…… & EV_ERIKA_2_58
+Ar - Aha, can’t take it? & EV_ERIKA_2_59
+Er - I love it! Ahhhhh, harder! & EV_ERIKA_2_60
+Arron increased his speed further, hammering Erika’s willing cunt until her words dissolved into moans. & EV_ERIKA_2_61
 =ABG erika_sex_6 erika_sex_7=
-Erika’s eyes were unfocused and her tongue was hanging out of her mouth as pleasure overwhelmed her.
-Er - Oh yes, oh Arron, your dick feels amaaaazing…
-Er - it’s so fucking hard!
-Er - Fuck me good Arron, ah! Ah! Yes, fuck me like that!
-Er - Ooouuh! Fuck me harder!Oh, fuck this sweet elven cunt until I scream for mercy!...
-Er - Aaaiieeee! Yes! Yes! Fuck my lewd brains out, use me as your fucktoy! 
-Er - I want more! I want it all! Fuck my perfect little pussy like you hate me!
-Er - Ah! Ah! Oh yes! Fuck me like you want to break my naughty ass in half!
-Ar - (Wow... I think even port whores might be less vulgar than this.)
-Er - Ahh... You are fucking this dirty elf slut like a dog in heat...
-Er - You fuck me like an animal! Aah! And it turns me on... soooo much…
-Er - Ooh! I love your powerful cock inside me! Aaaahhh!...
-Ar - (Jeez, I hope there's nobody outside that can hear her screaming.)
-Er - Aah! Are you going to cum? Fill me up till your seed leaks out of me!
-Er - I want you to pump your hot load into my womb! Oooh!
-Er - Please, I’m begging you… Cum in me, please cum in me...
-Ar - You don't have to offer twice...
+Erika’s eyes were unfocused and her tongue was hanging out of her mouth as pleasure overwhelmed her. & EV_ERIKA_2_62
+Er - Oh yes, oh Arron, your dick feels amaaaazing… & EV_ERIKA_2_63
+Er - it’s so fucking hard! & EV_ERIKA_2_64
+Er - Fuck me good Arron, ah! Ah! Yes, fuck me like that! & EV_ERIKA_2_65
+Er - Ooouuh! Fuck me harder!Oh, fuck this sweet elven cunt until I scream for mercy!... & EV_ERIKA_2_66
+Er - Aaaiieeee! Yes! Yes! Fuck my lewd brains out, use me as your fucktoy!  & EV_ERIKA_2_67
+Er - I want more! I want it all! Fuck my perfect little pussy like you hate me! & EV_ERIKA_2_68
+Er - Ah! Ah! Oh yes! Fuck me like you want to break my naughty ass in half! & EV_ERIKA_2_69
+Ar - (Wow... I think even port whores might be less vulgar than this.) & EV_ERIKA_2_70
+Er - Ahh... You are fucking this dirty elf slut like a dog in heat... & EV_ERIKA_2_71
+Er - You fuck me like an animal! Aah! And it turns me on... soooo much… & EV_ERIKA_2_72
+Er - Ooh! I love your powerful cock inside me! Aaaahhh!... & EV_ERIKA_2_73
+Ar - (Jeez, I hope there's nobody outside that can hear her screaming.) & EV_ERIKA_2_74
+Er - Aah! Are you going to cum? Fill me up till your seed leaks out of me! & EV_ERIKA_2_75
+Er - I want you to pump your hot load into my womb! Oooh! & EV_ERIKA_2_76
+Er - Please, I’m begging you… Cum in me, please cum in me... & EV_ERIKA_2_77
+Ar - You don't have to offer twice... & EV_ERIKA_2_78
 =ABG erika_sex_8 erika_sex_9=
 =WHITE=
 =DELAY 0.5=
-Er - Ah... Aaah...Aaaiiieee, I'm cumming as your spunk fills up my pussy!
+Er - Ah... Aaah...Aaaiiieee, I'm cumming as your spunk fills up my pussy! & EV_ERIKA_2_79
 =BLACKUNFADE 0.5=
 =DELAY 1.5=
 =MUSIC_STOP=
@@ -111,28 +111,30 @@ Er - Ah... Aaah...Aaaiiieee, I'm cumming as your spunk fills up my pussy!
 =BG hall=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Er(happy) - You made one sluttyelven girl very happy today.
-Ar - ...Well, it was very much my pleasure.
-Ar - I must say, you have quite a temper on you. Unlike anything I've seen before.
-Er - You don't like it?
-Ar - No, I didn’t say that. Unexpected but certainly arousing. Maybe I should make Rose act like this sometimes.
-Er - Fufu, Rose is a little sweetie. This kind of thing might not suit her so well. 
-Er - But, you know… It would be nice to have fun with her someday...
-Ar - I don't think she swings that way. 
-Er(happy) - Well if you give me permission, we can make her try something new.
-=CHOICE Allow|Refuse=
-Er - I'm sure I can at least get her to consider it... 
-=SKIP 0 7=
-Ar - I'd rather not. 
-Er(happy) - Afraid I'm gonna steal her from you?
-Ar - Ha! Maybe. Pretty sure you are capable.
-Er - Well, I might be, but I would never turn against you like that.
-Er - Alright, I won’t try to make Rose all pervy, but please keep my affection in mind.
+Er(happy) - You made one sluttyelven girl very happy today. & EV_ERIKA_2_80
+Ar - ...Well, it was very much my pleasure. & EV_ERIKA_2_81
+Ar - I must say, you have quite a temper on you. Unlike anything I've seen before. & EV_ERIKA_2_82
+Er - You don't like it? & EV_ERIKA_2_83
+Ar - No, I didn’t say that. Unexpected but certainly arousing. Maybe I should make Rose act like this sometimes. & EV_ERIKA_2_84
+Er - Fufu, Rose is a little sweetie. This kind of thing might not suit her so well.  & EV_ERIKA_2_85
+Er - But, you know… It would be nice to have fun with her someday... & EV_ERIKA_2_86
+Ar - I don't think she swings that way.  & EV_ERIKA_2_87
+Er(happy) - Well if you give me permission, we can make her try something new. & EV_ERIKA_2_88
+=CHOICE EV_ERIKA_ALLOW|EV_ERIKA_REFUSE=
+Er - I'm sure I can at least get her to consider it...  & EV_ERIKA_2_89
+=IF LASTCHOICE 0 2 1=
+=POSITION 1=
+Ar - I'd rather not.  & EV_ERIKA_2_90
+Er(happy) - Afraid I'm gonna steal her from you? & EV_ERIKA_2_91
+Ar - Ha! Maybe. Pretty sure you are capable. & EV_ERIKA_2_92
+Er - Well, I might be, but I would never turn against you like that. & EV_ERIKA_2_93
+Er - Alright, I won’t try to make Rose all pervy, but please keep my affection in mind. & EV_ERIKA_2_94
 =STOP=
 
+=POSITION 2=
 =DECISION erika_2_true=
-Ar - Well, that's true, I guess she might like it after trying it out. 
-Er - There’s nothing to worry about. You will be there with her, so she'll be fine. 
-Ar - Okay, just go easy. She's quite steady, but I wouldn't want her to have any kind of a grudge with either of us.
-Er - Got it. I'll let you know once I have loosened her panties a little... 
+Ar - Well, that's true, I guess she might like it after trying it out.  & EV_ERIKA_2_95
+Er - There’s nothing to worry about. You will be there with her, so she'll be fine.  & EV_ERIKA_2_96
+Ar - Okay, just go easy. She's quite steady, but I wouldn't want her to have any kind of a grudge with either of us. & EV_ERIKA_2_97
+Er - Got it. I'll let you know once I have loosened her panties a little...  & EV_ERIKA_2_98
 =STOP=

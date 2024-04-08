@@ -20,7 +20,7 @@ var scenedict = {
 	map = "res://files/scenes/map/map.tscn"
 }
 
-var events_path = "res://assets/data/events"
+#var events_path = "res://assets/data/events"
 
 #var items
 #var TownData
@@ -53,6 +53,7 @@ var LocalizationFolder = "res://localization/"
 #var state
 
 var userfolder = 'user://'
+var save_path_template = userfolder + 'saves/%s.sav'
 
 #var images = load("res://files/scripts/ResourceImages.gd").new()
 #var audio = load("res://files/scripts/ResourceAudio.gd").new()
@@ -669,12 +670,25 @@ func auto_save():
 	free_save_screenshot()#or add screenshotless param to SaveGame()
 	SaveGame(variables.autosave_name)
 
-func SaveGame(name):
+func SaveGame(file_name, save_name = ""):
 #	if state.CurEvent != '':
 #		state.CurrentLine = input_handler.get_spec_node(input_handler.NODE_EVENT).CurrentLine
+	if file_name.empty():#new save
+		var success = false
+		for i in range(100000):#who needs more then 100000 save files?
+			file_name = "save%d" % i
+			if !file.file_exists(save_path_template % file_name):
+				success = true
+				break
+		if !success:
+			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, ["ERROR! Max file count reached. Save is impossible!"])
+			return
+	if save_name.empty():
+		save_name = file_name
 	var savedict = state.serialize();
-	var file_name = userfolder + 'saves/' + name
-	file.open(file_name + '.sav', File.WRITE)
+	var file_path = save_path_template % file_name
+	file.open(file_path, File.WRITE)
+	file.store_line("name=" + save_name)
 	file.store_line(to_json(savedict))
 	file.close()
 	
@@ -689,12 +703,12 @@ func SaveGame(name):
 				* save_screenshot.get_height())
 			save_screenshot.resize(target_width, resize_height)
 			save_screenshot.crop(target_width, target_height)
-		save_screenshot.save_png(file_name + '.png')
+		save_screenshot.save_png(file_path.trim_suffix(".sav") + '.png')
 
 
-func LoadGame(filename):
-	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
-		print("no file %s" % (userfolder+'saves/'+ filename + '.sav'))
+func LoadGame(file_name):
+	if !file.file_exists(save_path_template % file_name) :
+		print("no file %s" % (save_path_template % file_name))
 		return
 
 	input_handler.BlackScreenTransition(1)
@@ -704,9 +718,13 @@ func LoadGame(filename):
 	ChangeScene('map');
 	yield(self, "scene_changed")
 
-	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
-	var savedict = parse_json(file.get_as_text())
+	file.open(save_path_template % file_name, File.READ)
+	var cur_line = file.get_line()
+	if cur_line.begins_with("name="):
+		cur_line = file.get_line()
 	file.close()
+	var savedict = parse_json(cur_line)
+	assert(typeof(savedict) == TYPE_DICTIONARY, "ERROR on parse_json in LoadGame() for %s" % file_name)
 	state.deserialize(savedict)
 	CurrentScene.buildscreen()
 

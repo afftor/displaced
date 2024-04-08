@@ -1,0 +1,20 @@
+** flak_city_raid **
+=MUSIC eventgeneric=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG market=
+=BLACKFADE 1=
+=SPRITE flak=
+=SPRITE_UNFADE 0.3=
+=DELAY 1=
+=GUI_NORMAL=
+F - Hey, big guy, there's some nasty news coming from Aeros.
+Ar - Really? What about?
+F - Dunno, something like a war?
+F -  There seem to be many refugees coming from that direction.
+F - Just thought you'd be interested to know about it.
+Ar(neutral) - Doesn't seem good. I guess we should check it out.
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

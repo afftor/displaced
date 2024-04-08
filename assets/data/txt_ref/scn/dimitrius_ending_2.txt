@@ -5,21 +5,21 @@
 =GUI_NORMAL=
 =SPRITE demitrius_demon=
 =SPRITE_UNFADE 0.3=
-De - Hah, you finally came.
-De - How do you like my work? 
-Ro(talk) - This is terrible. Why would you do this?
-De - Stop being so boring.
-De - When else would you be able to see something so different to your insipid lives?
-Ar(neutral) - Pardon my insipidness, but we'll be stopping you.
-De - Hahaha, that's a funny joke. 
-De - You fight for this world, but it's a lost cause.
-De - I really like your persistence, but look at yourself.
-De - You guys are the only ones who actually came. 
-Ar(neutral) - But it was you, who made locals indifferent to their future. 
-De - Bullshit. It's just your nature. 
-De - To be cattle for us. 
-Ar(anger) - Getting really sick of your arrogance.
-De - Great, entertain me little moths!
+De - Hah, you finally came. & EV_DIMITRIUS_ENDING_2_0
+De - How do you like my work?  & EV_DIMITRIUS_ENDING_2_1
+Ro(talk) - This is terrible. Why would you do this? & EV_DIMITRIUS_ENDING_2_2
+De - Stop being so boring. & EV_DIMITRIUS_ENDING_2_3
+De - When else would you be able to see something so different to your insipid lives? & EV_DIMITRIUS_ENDING_2_4
+Ar(neutral) - Pardon my insipidness, but we'll be stopping you. & EV_DIMITRIUS_ENDING_2_5
+De - Hahaha, that's a funny joke.  & EV_DIMITRIUS_ENDING_2_6
+De - You fight for this world, but it's a lost cause. & EV_DIMITRIUS_ENDING_2_7
+De - I really like your persistence, but look at yourself. & EV_DIMITRIUS_ENDING_2_8
+De - You guys are the only ones who actually came.  & EV_DIMITRIUS_ENDING_2_9
+Ar(neutral) - But it was you, who made locals indifferent to their future.  & EV_DIMITRIUS_ENDING_2_10
+De - Bullshit. It's just your nature.  & EV_DIMITRIUS_ENDING_2_11
+De - To be cattle for us.  & EV_DIMITRIUS_ENDING_2_12
+Ar(anger) - Getting really sick of your arrogance. & EV_DIMITRIUS_ENDING_2_13
+De - Great, entertain me little moths! & EV_DIMITRIUS_ENDING_2_14
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

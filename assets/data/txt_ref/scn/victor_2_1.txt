@@ -4,73 +4,73 @@
 =SPRITE victor=
 =MUSIC event_mysterious=
 =GUI_NORMAL=
-A few hours later
+A few hours later & EV_VICTOR_2_1_0
 =DELAY 1=
-V - Looks like a perfect timing for me.
-Dr - Who are you, human?
-Dr - You reek of death.
+V - Looks like a perfect timing for me. & EV_VICTOR_2_1_1
+Dr - Who are you, human? & EV_VICTOR_2_1_2
+Dr - You reek of death. & EV_VICTOR_2_1_3
 =SPRITE dragon=
-V - Finding you hiding here was quite a task.
-V - But I'm rather happy to finally be able to slay you.
-Dr - You are awfully arrogant for a mere mortal, coming here all alone.
-V - *Sigh* Same thing every time.
-Dr - ...?
+V - Finding you hiding here was quite a task. & EV_VICTOR_2_1_4
+V - But I'm rather happy to finally be able to slay you. & EV_VICTOR_2_1_5
+Dr - You are awfully arrogant for a mere mortal, coming here all alone. & EV_VICTOR_2_1_6
+V - *Sigh* Same thing every time. & EV_VICTOR_2_1_7
+Dr - ...? & EV_VICTOR_2_1_8
 =SOUND slash=
-*Slash*
-At inhumane speed Victor cut the big dragon across the neck and wing. 
-Dr - Y-you wretch...
+*Slash* & EV_VICTOR_2_1_9
+At inhumane speed Victor cut the big dragon across the neck and wing.  & EV_VICTOR_2_1_10
+Dr - Y-you wretch... & EV_VICTOR_2_1_11
 =SPRITE victor=
-V - Just die already.
-Wounded and exhausted from the previous fight, the dragon had no chance against him. 
+V - Just die already. & EV_VICTOR_2_1_12
+Wounded and exhausted from the previous fight, the dragon had no chance against him.  & EV_VICTOR_2_1_13
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-A nearly dead Qothus fell before Victor as life left his body.
-V - Hmph, too easy. 
-V - Well, can't blame you, after you've already been defeated today. 
-V - Let's finally finish this. 
-Victor raised his sword dealing a killing blow. 
+A nearly dead Qothus fell before Victor as life left his body. & EV_VICTOR_2_1_14
+V - Hmph, too easy.  & EV_VICTOR_2_1_15
+V - Well, can't blame you, after you've already been defeated today.  & EV_VICTOR_2_1_16
+V - Let's finally finish this.  & EV_VICTOR_2_1_17
+Victor raised his sword dealing a killing blow.  & EV_VICTOR_2_1_18
 =SOUND slash=
-*Slash*
-V - Finally. This should be the last one...
-V - ...
-V - ...
-Contrary to Victor's expectations, nothing unusual happened.
-V - Fuck. So it's not over yet.
+*Slash* & EV_VICTOR_2_1_19
+V - Finally. This should be the last one... & EV_VICTOR_2_1_20
+V - ... & EV_VICTOR_2_1_21
+V - ... & EV_VICTOR_2_1_22
+Contrary to Victor's expectations, nothing unusual happened. & EV_VICTOR_2_1_23
+V - Fuck. So it's not over yet. & EV_VICTOR_2_1_24
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-A few days later
+A few days later & EV_VICTOR_2_1_25
 =GUI_HIDE=
 =BLACKFADE 1=
 =BG cult1=
 =GUI_NORMAL=
 =SPRITE victor=
-D - I think I ordered you to stop coming here as you please.
-V - Whatever. 
-D - In a bad mood, huh?
-D - Having trouble with your silly quest?
-V - Yeah.
-V - I killed the last of the winged pests, but somehow it's not complete.
-D - Maybe time to do some real jobs then?
-V - Hey, you've given me the pass on this hunt.
-D - Because dragons were dangerous to us.
-D - You've driven them to extinction by this point.
-V - I'm not doing it for fun, once I get all of their powers, we won't need to chase that fool.
-D - Hmph, that's just your assumptions.
-D - And you are out of luck now.
-D - .....
-D - Actually, I might have a lead for you.
-V - You aren't trying to make me your dirty work, do you?
-D - You make it sound like I'm some sort of scheming bastard. 
-D - You must remember the wretch, Arron? The one who I told you to keep your eyes on?
-V - You know I don't give a damn about weaklings.
-D - And if you did, you'd know he has one notable follower.
-V - ...
+D - I think I ordered you to stop coming here as you please. & EV_VICTOR_2_1_26
+V - Whatever.  & EV_VICTOR_2_1_27
+D - In a bad mood, huh? & EV_VICTOR_2_1_28
+D - Having trouble with your silly quest? & EV_VICTOR_2_1_29
+V - Yeah. & EV_VICTOR_2_1_30
+V - I killed the last of the winged pests, but somehow it's not complete. & EV_VICTOR_2_1_31
+D - Maybe time to do some real jobs then? & EV_VICTOR_2_1_32
+V - Hey, you've given me the pass on this hunt. & EV_VICTOR_2_1_33
+D - Because dragons were dangerous to us. & EV_VICTOR_2_1_34
+D - You've driven them to extinction by this point. & EV_VICTOR_2_1_35
+V - I'm not doing it for fun, once I get all of their powers, we won't need to chase that fool. & EV_VICTOR_2_1_36
+D - Hmph, that's just your assumptions. & EV_VICTOR_2_1_37
+D - And you are out of luck now. & EV_VICTOR_2_1_38
+D - ..... & EV_VICTOR_2_1_39
+D - Actually, I might have a lead for you. & EV_VICTOR_2_1_40
+V - You aren't trying to make me your dirty work, do you? & EV_VICTOR_2_1_41
+D - You make it sound like I'm some sort of scheming bastard.  & EV_VICTOR_2_1_42
+D - You must remember the wretch, Arron? The one who I told you to keep your eyes on? & EV_VICTOR_2_1_43
+V - You know I don't give a damn about weaklings. & EV_VICTOR_2_1_44
+D - And if you did, you'd know he has one notable follower. & EV_VICTOR_2_1_45
+V - ... & EV_VICTOR_2_1_46
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

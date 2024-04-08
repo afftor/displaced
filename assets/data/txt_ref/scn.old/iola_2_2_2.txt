@@ -1,0 +1,55 @@
+** iola_2_2_2 **
+=MUSIC eventlight=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG cult=
+=BLACKFADE 1=
+=DELAY 1=
+=SPRITE iola=
+=SPRITE_UNFADE 0.3=
+=GUI_NORMAL=
+Meanwhile Iola had finished her routine and was preparing to go to Arron again.
+I - Phew, almost done here.
+I - I should warn father, that I'm leaving.
+=BLACKTRANS 1=
+=DELAY 1=
+=BG cult1=
+She took a peek at her father's office before entering.
+I - Huh, he seems to receive guests...
+=BLACKTRANS 1=
+=DELAY 1=
+=SPRITE demitrius=
+=SPRITE_UNFADE 0.3=
+D - So you got rid of that dwarf king?
+=SPRITE victor=
+=SPRITE_UNFADE 0.3=
+V - Sort of, wasn't me, but I finished the bastard.
+D - Wasn't you?
+V - Yeah, it seems like that guy got to him first.
+D - I thought I ordered you to keep your eyes on him, idiot.
+V - Whatever, from this world or not, he's no match for me.
+V - I can kill him any time I want. 
+D(anger) - That's not what I ordered.
+D - Maybe we can use him to do our job.
+V - Your job.
+D(anger) - It will be your job if you fuck this up. 
+V - *grunt*
+D - Now get lost already, it's not good if we are seen here together.
+V - Oh is it? You probably should take care of peeping toms next time. 
+D - Huh?
+Before Iola realized it, the door in front of her was forced in and she was dragged inside.
+=SPRITE iola=
+=SPRITE_UNFADE 0.3=
+I(shock) - What?! 
+I(shock) - Let me go now! 
+I(shock) - Father! What-
+*Thud*
+=SOUND punch=
+V - Hell, I hate women.
+V - Always so noisy.
+D - Don't dare kill her. 
+D(anger) - Shit, now I have to sort this out too...
+=GUI_HIDE=
+=BLACKTRANS 1=
+=DELAY 1=
+=STOP=

@@ -8,15 +8,15 @@
 =SPRITE_UNFADE 0.3=
 =DELAY 1=
 =GUI_NORMAL=
-F - Hey, looks like you've made it.
-F - I wanted to see you, but your gals didn't let me in. 
-Ar - Fair, they didn't let me out either.
-Ar(neutral) - So what's been going on?
-F - Not much, except for bloodthirsty monsters and demons roaming around.
-F - Good thing they don't seem to care much about our village though.
-F - And that huge dead town thing emerging on the east where you've come from last time.
-F - Kinda feels like the world is coming to an end.
-Ar(neutral) - True... I should check this out before it's too late.
+F - Hey, looks like you've made it. & EV_FLAK_FUTURE_CITY_0
+F - I wanted to see you, but your gals didn't let me in.  & EV_FLAK_FUTURE_CITY_1
+Ar - Fair, they didn't let me out either. & EV_FLAK_FUTURE_CITY_2
+Ar(neutral) - So what's been going on? & EV_FLAK_FUTURE_CITY_3
+F - Not much, except for bloodthirsty monsters and demons roaming around. & EV_FLAK_FUTURE_CITY_4
+F - Good thing they don't seem to care much about our village though. & EV_FLAK_FUTURE_CITY_5
+F - And that huge dead town thing emerging on the east where you've come from last time. & EV_FLAK_FUTURE_CITY_6
+F - Kinda feels like the world is coming to an end. & EV_FLAK_FUTURE_CITY_7
+Ar(neutral) - True... I should check this out before it's too late. & EV_FLAK_FUTURE_CITY_8
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

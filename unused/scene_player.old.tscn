@@ -1,0 +1,197 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://files/TextSceneNew/TextSystem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://files/unused/EventMap/EventSystem.gd" type="Script" id=3]
+[ext_resource path="res://files/unused/EventMap/SampleEventMonitor.gd" type="Script" id=4]
+[ext_resource path="res://files/TextSceneNew/ScenePlayer.gd" type="Script" id=5]
+
+[node name="Control2" type="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scene_player" type="Tabs" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 42.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 5 )
+
+[node name="ItemList" type="ItemList" parent="scene_player"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_right = 200.0
+margin_bottom = -59.9999
+rect_min_size = Vector2( 200, 0 )
+items = [ "Item 0", null, false ]
+
+[node name="Button" type="Button" parent="scene_player"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -40.0
+margin_right = 200.0
+text = "Load and run"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="scene_player"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 222.856
+margin_top = -40.0
+margin_right = 622.856
+text = "Load and run replay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextSystem" parent="scene_player" instance=ExtResource( 2 )]
+visible = false
+margin_top = -42.0
+margin_right = 8.00012
+margin_bottom = 4.0
+
+[node name="event_sym" type="Tabs" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 42.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 4 )
+
+[node name="EvMap" type="Control" parent="event_sym"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" type="ItemList" parent="event_sym"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = 164.0
+margin_right = 200.0
+margin_bottom = -63.9999
+
+[node name="AvailScenes" type="ItemList" parent="event_sym"]
+anchor_left = 0.814
+anchor_right = 0.814
+anchor_bottom = 1.0
+margin_left = -200.368
+margin_top = 164.0
+margin_right = 199.632
+margin_bottom = -63.9999
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvailActions" type="ItemList" parent="event_sym"]
+anchor_left = 0.186
+anchor_right = 0.186
+anchor_bottom = 1.0
+margin_left = -199.632
+margin_top = 164.0
+margin_right = 200.368
+margin_bottom = -63.9999
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MapLabel" type="Label" parent="event_sym"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -24.9999
+margin_top = 124.0
+margin_right = 25.0001
+margin_bottom = 148.0
+text = "Map"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvailScenesLabel" type="Label" parent="event_sym"]
+anchor_left = 0.814
+anchor_right = 0.814
+margin_left = -94.3679
+margin_top = 124.0
+margin_right = 94.6321
+margin_bottom = 148.0
+text = "Available Scenes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvailActionsLabel" type="Label" parent="event_sym"]
+anchor_left = 0.186
+anchor_right = 0.186
+margin_left = -94.632
+margin_top = 124.0
+margin_right = 96.368
+margin_bottom = 148.0
+text = "Available actions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WalletLevel" type="Label" parent="event_sym"]
+margin_left = 152.556
+margin_top = 40.2572
+margin_right = 235.556
+margin_bottom = 64.2572
+text = "Wallet: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wallet" type="SpinBox" parent="event_sym"]
+margin_left = 243.64
+margin_top = 35.6158
+margin_right = 329.64
+margin_bottom = 69.6158
+max_value = 1e+10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DoPlayScenes" type="CheckBox" parent="event_sym"]
+margin_left = 159.354
+margin_top = 80.8661
+margin_right = 183.354
+margin_bottom = 112.866
+text = "play scenes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AutoPlayScenes" type="CheckBox" parent="event_sym"]
+margin_left = 334.019
+margin_top = 80.9487
+margin_right = 552.019
+margin_bottom = 112.949
+text = "auto play scenes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="scene_player/Button" to="scene_player" method="_on_Button_pressed"]
+[connection signal="pressed" from="scene_player/Button2" to="scene_player" method="_on_Button_pressed_1"]
+[connection signal="item_activated" from="event_sym/Map" to="event_sym" method="_on_Map_item_activated"]
+[connection signal="item_activated" from="event_sym/AvailScenes" to="event_sym" method="_on_AvailScenes_item_activated"]
+[connection signal="item_activated" from="event_sym/AvailActions" to="event_sym" method="_on_AvailActions_item_activated"]
+[connection signal="value_changed" from="event_sym/Wallet" to="event_sym" method="_on_Wallet_value_changed"]
+[connection signal="toggled" from="event_sym/AutoPlayScenes" to="event_sym" method="_on_AutoPlayScenes_toggled"]

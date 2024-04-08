@@ -5,31 +5,31 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-After days worth of walking, and losing hope, Arron and Rose come across a small, poor settlement.
-Ro(shock) - Look, Master, a goblin village!
-Ar(neutral) - Looks more like a dunghole to me.
-Ro - We haven't seen any people for 2 days... Let's check it out at least.
-Ar(neutral) - Fine, whatever.
-Arron calls for the attention of a single goblin who does not seem surprised by his appearance.
+After days worth of walking, and losing hope, Arron and Rose come across a small, poor settlement. & EV_INTRO_2_0
+Ro(shock) - Look, Master, a goblin village! & EV_INTRO_2_1
+Ar(neutral) - Looks more like a dunghole to me. & EV_INTRO_2_2
+Ro - We haven't seen any people for 2 days... Let's check it out at least. & EV_INTRO_2_3
+Ar(neutral) - Fine, whatever. & EV_INTRO_2_4
+Arron calls for the attention of a single goblin who does not seem surprised by his appearance. & EV_INTRO_2_5
 =SPRITE goblin=
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-Ar(neutral) - Hey you, what is this place? 
-G - What does it look like to you? We live here.
-Ro - This place does not look very comfortable to live in. But where is it located? Maybe you can show us on a map? If you have one around?
-G - Do I look like I ever went anywhere else? And what’s a map? 
-Ro - ...
-Ar(neutral) - Yet, you don't look very surprised by us. 
-G - Freaking big deal. Adventurers come and go all the time. Some even stay and leech off our food.
-Ar - Curious, and whose domain is this? 
-G - Eh? We don't belong to anyone since nobody really cares about this land. 
-G - This place might look like a dump, but it's totally independent. 
-Ar(shock) - What? Who governs you then? You don't even have a leader?
-G - No. I told just you that...
-Hearing that Arron's eyes quickly shine with fervor.
-Ar - You heard it? These savages need a governor!
-Ro(sarcastic) - With all respect, I don't think you will be able to lead...
-Ar - Tell me, friend, do you know the benefits of having someone to organize and take care of town's problems?
+Ar(neutral) - Hey you, what is this place?  & EV_INTRO_2_6
+G - What does it look like to you? We live here. & EV_INTRO_2_7
+Ro - This place does not look very comfortable to live in. But where is it located? Maybe you can show us on a map? If you have one around? & EV_INTRO_2_8
+G - Do I look like I ever went anywhere else? And what’s a map?  & EV_INTRO_2_9
+Ro - ... & EV_INTRO_2_10
+Ar(neutral) - Yet, you don't look very surprised by us.  & EV_INTRO_2_11
+G - Freaking big deal. Adventurers come and go all the time. Some even stay and leech off our food. & EV_INTRO_2_12
+Ar - Curious, and whose domain is this?  & EV_INTRO_2_13
+G - Eh? We don't belong to anyone since nobody really cares about this land.  & EV_INTRO_2_14
+G - This place might look like a dump, but it's totally independent.  & EV_INTRO_2_15
+Ar(shock) - What? Who governs you then? You don't even have a leader? & EV_INTRO_2_16
+G - No. I told just you that... & EV_INTRO_2_17
+Hearing that Arron's eyes quickly shine with fervor. & EV_INTRO_2_18
+Ar - You heard it? These savages need a governor! & EV_INTRO_2_19
+Ro(sarcastic) - With all respect, I don't think you will be able to lead... & EV_INTRO_2_20
+Ar - Tell me, friend, do you know the benefits of having someone to organize and take care of town's problems? & EV_INTRO_2_21
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
@@ -37,29 +37,29 @@ Ar - Tell me, friend, do you know the benefits of having someone to organize and
 =DELAY 0.5=
 =BG hall=
 =GUI_NORMAL=
-A few days later
+A few days later & EV_INTRO_2_22
 =BLACKFADE 1=
 =DELAY 1=
-After becoming the settlement's mayor, Arron and Rose moved into the best available house.
-Ar - See that? And they were saying democracy is a mistake.
-Ro(sarcastic) - (Makes me realize why)
-Ro(talk) - I must say, this is a rather nice living space.
-Ro(talk) - Oh, and we also have our first visitor today.
-Ar - People want to meet their new leader. Let's not keep them waiting. Bring them in.
-A shabby looking goblin casually walks in, disinterestedly looking around.
+After becoming the settlement's mayor, Arron and Rose moved into the best available house. & EV_INTRO_2_23
+Ar - See that? And they were saying democracy is a mistake. & EV_INTRO_2_24
+Ro(sarcastic) - (Makes me realize why) & EV_INTRO_2_25
+Ro(talk) - I must say, this is a rather nice living space. & EV_INTRO_2_26
+Ro(talk) - Oh, and we also have our first visitor today. & EV_INTRO_2_27
+Ar - People want to meet their new leader. Let's not keep them waiting. Bring them in. & EV_INTRO_2_28
+A shabby looking goblin casually walks in, disinterestedly looking around. & EV_INTRO_2_29
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-G - Oi, Governor, since you are responsible for the village now, Flak from market asks you to visit him.
-Ar(neutral) - (No manners at all, huh)
-Ar(neutral) - Why did he not visit himself?
-G - He is busy, I guess. Just don't take too long.
+G - Oi, Governor, since you are responsible for the village now, Flak from market asks you to visit him. & EV_INTRO_2_30
+Ar(neutral) - (No manners at all, huh) & EV_INTRO_2_31
+Ar(neutral) - Why did he not visit himself? & EV_INTRO_2_32
+G - He is busy, I guess. Just don't take too long. & EV_INTRO_2_33
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
-The goblin disappears, leaving Arron mildly baffled. 
-Ar(neutral) - You bring him here then. 
-Ro(sarcastic) - I'm afraid he won't agree to follow me. We can't order them around just like that. 
-Ar(neutral) - ...
-Ar(neutral) - Democracy was a mistake.
+The goblin disappears, leaving Arron mildly baffled.  & EV_INTRO_2_34
+Ar(neutral) - You bring him here then.  & EV_INTRO_2_35
+Ro(sarcastic) - I'm afraid he won't agree to follow me. We can't order them around just like that.  & EV_INTRO_2_36
+Ar(neutral) - ... & EV_INTRO_2_37
+Ar(neutral) - Democracy was a mistake. & EV_INTRO_2_38
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

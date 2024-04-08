@@ -3,14 +3,14 @@
 =BG future_city=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ro - This place looks so bizarre. 
-Ro(talk) - Everything is made out of stone, but it’s crumbling.
-Ri(talk) - Looks like it was a human city before it was brought here. 
-Er - I could never imagine a city like that.
-Ri - Probably built with some advanced magic or technologies.
-Ar(neutral) - I'd be more worried about what we're gonna meet here. 
-Ar - Wouldn't like to repeat my last encounter. 
-I - Yes, let's move with caution.
+Ro - This place looks so bizarre.  & EV_DIMITRIUS_ENDING_1_0
+Ro(talk) - Everything is made out of stone, but it’s crumbling. & EV_DIMITRIUS_ENDING_1_1
+Ri(talk) - Looks like it was a human city before it was brought here.  & EV_DIMITRIUS_ENDING_1_2
+Er - I could never imagine a city like that. & EV_DIMITRIUS_ENDING_1_3
+Ri - Probably built with some advanced magic or technologies. & EV_DIMITRIUS_ENDING_1_4
+Ar(neutral) - I'd be more worried about what we're gonna meet here.  & EV_DIMITRIUS_ENDING_1_5
+Ar - Wouldn't like to repeat my last encounter.  & EV_DIMITRIUS_ENDING_1_6
+I - Yes, let's move with caution. & EV_DIMITRIUS_ENDING_1_7
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

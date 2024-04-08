@@ -22,7 +22,6 @@ func _ready():
 		var ch = input_handler.DuplicateContainerTemplate(charlist, 'panel')
 		ch.name = cid
 		ch.get_node('Label').text = hero.name
-		ch.get_node('Label2').text = tr("LEVEL") + " %d" % hero.level
 		ch.get_node('TextureRect').texture = hero.portrait()
 		ch.connect('pressed', self, 'select_hero', [cid])
 	
@@ -88,6 +87,7 @@ func select_hero(cid, rebuild = false):
 	for ch in charlist.get_children():
 		if ch.name == 'panel': continue
 		var hero = state.heroes[ch.name]
+		ch.get_node('Label2').text = tr("LEVEL") + " %d" % hero.level
 		ch.visible = hero.unlocked
 		ch.pressed = (ch.name == cid)
 		ch.rebuild()

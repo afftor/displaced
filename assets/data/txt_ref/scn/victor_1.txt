@@ -4,31 +4,31 @@
 =GUI_NORMAL=
 =BG town_in=
 =MUSIC eventlight=
-A moderate crowd is gathered around one of the city entrances as if there was a parade.
-Ar - Hmm? What's going on here?
-S - You don't know? 
-S - Sir Victor returns from his expedition. 
+A moderate crowd is gathered around one of the city entrances as if there was a parade. & EV_VICTOR_1_0
+Ar - Hmm? What's going on here? & EV_VICTOR_1_1
+S - You don't know?  & EV_VICTOR_1_2
+S - Sir Victor returns from his expedition.  & EV_VICTOR_1_3
 =SPRITE victor=
-Ro(talk) - We aren't quite locals. Who's that?
-S - He's the strongest fighter around these lands. 
-Ar - Nonsense, I'm the strongest fighter around these lands.
-Ro(sarcastic) - No, you aren't. 
-S - He almost single-handedly won the conclusive battle of the trade wars 15 years ago. 
-S - And he has been defending the kingdom's peace all these years. 
-Ar - Well, isn't he popular.
-S - He sure is! Despite his age, he has no contenders in the arena or in training.
-Ar - Are you in his fan club or something?
-S - ... Maybe, what's it to you?
-Ar - Okay, this is getting silly.
-Ar - Let's go already, there's nothing to do here.
-Ar - .....
-Ar - Maybe I'll start my own fanclub eventually.
-Ro(sarcastic) - I don't think that's how it works.
-Em - Oh, you gonna have a fanclub? Can I join!?
-Ar - Sure, once we start our campaign for world domination we can use all the help we can get.
-Em - Eh? What's world domination? 
-Ro(sarcastic) - Ignore it Ember, it's not important.
-Ar - Hmph. Don't make me reconsider your second-in-command position, Rose.
+Ro(talk) - We aren't quite locals. Who's that? & EV_VICTOR_1_4
+S - He's the strongest fighter around these lands.  & EV_VICTOR_1_5
+Ar - Nonsense, I'm the strongest fighter around these lands. & EV_VICTOR_1_6
+Ro(sarcastic) - No, you aren't.  & EV_VICTOR_1_7
+S - He almost single-handedly won the conclusive battle of the trade wars 15 years ago.  & EV_VICTOR_1_8
+S - And he has been defending the kingdom's peace all these years.  & EV_VICTOR_1_9
+Ar - Well, isn't he popular. & EV_VICTOR_1_10
+S - He sure is! Despite his age, he has no contenders in the arena or in training. & EV_VICTOR_1_11
+Ar - Are you in his fan club or something? & EV_VICTOR_1_12
+S - ... Maybe, what's it to you? & EV_VICTOR_1_13
+Ar - Okay, this is getting silly. & EV_VICTOR_1_14
+Ar - Let's go already, there's nothing to do here. & EV_VICTOR_1_15
+Ar - ..... & EV_VICTOR_1_16
+Ar - Maybe I'll start my own fanclub eventually. & EV_VICTOR_1_17
+Ro(sarcastic) - I don't think that's how it works. & EV_VICTOR_1_18
+Em - Oh, you gonna have a fanclub? Can I join!? & EV_VICTOR_1_19
+Ar - Sure, once we start our campaign for world domination we can use all the help we can get. & EV_VICTOR_1_20
+Em - Eh? What's world domination?  & EV_VICTOR_1_21
+Ro(sarcastic) - Ignore it Ember, it's not important. & EV_VICTOR_1_22
+Ar - Hmph. Don't make me reconsider your second-in-command position, Rose. & EV_VICTOR_1_23
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

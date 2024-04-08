@@ -3,17 +3,17 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG cult=
-The group has entered the Cult's temple grounds. 
-Ar(neutral) - Huh... This organization seems rather abundant. 
-Ar - So, do you think we'll be able to pass through without causing ruckus?
-Guard - Hey, stop right there!
-Guard_2 - Hey, it's those guys we've been told about.
-Guard - Shit, don't let them get away!
-Ar - Looks like we are expected.
-Ro(sarcastic) - That's not a good thing.
-Ar - Why are you so pessimistic? 
-Ar - Maybe they just wanna show us around.
-Ro(sarcastic) - I'm willing to bet it will be their prison they want us to see.
+The group has entered the Cult's temple grounds.  & EV_IOLA_2_3_0
+Ar(neutral) - Huh... This organization seems rather abundant.  & EV_IOLA_2_3_1
+Ar - So, do you think we'll be able to pass through without causing ruckus? & EV_IOLA_2_3_2
+Guard - Hey, stop right there! & EV_IOLA_2_3_3
+Guard_2 - Hey, it's those guys we've been told about. & EV_IOLA_2_3_4
+Guard - Shit, don't let them get away! & EV_IOLA_2_3_5
+Ar - Looks like we are expected. & EV_IOLA_2_3_6
+Ro(sarcastic) - That's not a good thing. & EV_IOLA_2_3_7
+Ar - Why are you so pessimistic?  & EV_IOLA_2_3_8
+Ar - Maybe they just wanna show us around. & EV_IOLA_2_3_9
+Ro(sarcastic) - I'm willing to bet it will be their prison they want us to see. & EV_IOLA_2_3_10
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
