@@ -1891,13 +1891,16 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		targets = CalculateTargets(skill, caster, target_pos)#finale = true
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
+		#it's important to sync sfx and sound on predamage, so sound shouldn't be duplicated with aoe
+		var sounded_predamage_once = false
 		for i in targets:
 			#======predamage animation sound
-			if sounddict.has('predamage'):
+			if sounddict.has('predamage') and !sounded_predamage_once:
 				if sounddict.predamage == 'weapon':
 					sound_from_fighter(get_weapon_sound(caster), caster)
 				else:
 					sound_from_fighter(sounddict.predamage, caster)
+				sounded_predamage_once = true
 			for j in animationdict.predamage:
 #				if j.has('once') and j.once and n > 1: continue
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
@@ -1928,6 +1931,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
+		var sounded_postdamage_once = false
 		for s_skill2 in s_skill2_list:
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
@@ -1936,13 +1940,14 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 #				Off_Target_Glow()
 			else:
 				#=========postdamage animation sound
-				if sounddict.has('postdamage'):
+				if sounddict.has('postdamage') and !sounded_postdamage_once:
 					if sounddict.postdamage == 'bodyhitsound':
 						sound_from_fighter(s_skill2.target.bodyhitsound, s_skill2.target)
 					elif sounddict.postdamage == 'bodyarmor':
 						sound_from_fighter(calculate_hit_sound(skill, caster, s_skill2.target), s_skill2.target)
 					else:
 						sound_from_fighter(sounddict.postdamage, s_skill2.target)
+					sounded_postdamage_once = true
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)

@@ -203,9 +203,6 @@ margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="arron" parent="battlefield/PlayerGroup/Front" instance=ExtResource( 4 )]
 visible = false

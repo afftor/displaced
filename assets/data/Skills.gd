@@ -518,8 +518,9 @@ var skilllist = {
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'effected'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_arron', target = 'full', period = 'cast'},
 			{code = 'sfx_fight_arron_combo_sq', target = 'target', period = 'postcast'}],
-		sounddata = {postdamage = 'termination'},
+		sounddata = {predamage = 'termination'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_term_1'}
 		],
@@ -572,8 +573,9 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_smoke'})],
 		hidden = false,
 		sfx = [{code = 'sfx_smoke_screen', target = 'target', period = 'predamage'},
-			{code = 'anim_ultimate', target = 'caster', period = 'cast'}],
-		sounddata = {cast = 'smoke screen'},
+			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_arron', target = 'full', period = 'cast'},],
+		sounddata = {predamage = 'smoke screen'},
 		patches = [{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'eq'}], patch = 'p_smoke_screen'}],
 	},
 	swipe = {
@@ -767,6 +769,7 @@ var skilllist = {
 		casteffects = [],
 		hidden = false,
 		sfx = [{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_rose', target = 'full', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'sfx_explosion', target = 'target_group', period = 'postcast'}],
 		sounddata = {postcast = 'explosion'},
@@ -798,6 +801,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'sfx_rose_protection', target = 'target', period = 'predamage'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_rose', target = 'full', period = 'cast'},
 		],
 		sounddata = {predamage = 'protection'},
 		patches = [
@@ -1076,8 +1080,9 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'sfx_heartseeker', target = 'target', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'anim_ultimate', target = 'caster', period = 'predamage'},],
-		sounddata = {cast = 'heart_seeker'},
+			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_erika', target = 'full', period = 'cast'},],
+		sounddata = {predamage = 'heart_seeker'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_hearts'},
 		]
@@ -1103,7 +1108,8 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_charm'})],
 		hidden = false,
 		sfx = [{code = 'sfx_charm', target = 'target', period = 'predamage'},
-			{code = 'anim_ultimate', target = 'caster', period = 'cast'}],
+			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_erika', target = 'full', period = 'cast'}],
 		sounddata = {predamage = 'charm'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_charm'},
@@ -1327,8 +1333,9 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_aegis'})],
 		hidden = false,
 		sfx = [{code = 'sfx_aegis', target = 'target', period = 'predamage'},
-			{code = 'anim_ultimate', target = 'caster', period = 'cast'}],
-		sounddata = {cast = 'aegis'},
+			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_ember', target = 'full', period = 'cast'}],
+		sounddata = {predamage = 'aegis'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_aegis'},
 		]
@@ -1353,6 +1360,7 @@ var skilllist = {
 		casteffects = [],
 		hidden = false,
 		sfx = [{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_ember', target = 'full', period = 'cast'},
 			{code = 'sfx_earthquake', target = 'target_group', period = 'postcast'},#it's better to make a separate earthquake animation to set up custom delay
 			{code = 'anim_hit', target = 'target', period = 'postdamage'}],
 		sounddata = {postcast = 'earthquake'},
@@ -1605,7 +1613,8 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'sfx_soul_beam', target = 'full', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'anim_ultimate', target = 'caster', period = 'cast'},],
+			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_rilu', target = 'full', period = 'cast'}],
 		sounddata = {predamage = 'sould beam'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_beam'},
@@ -1632,8 +1641,9 @@ var skilllist = {
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'},
-			{code = 'anim_ultimate', target = 'caster', period = 'cast'},],
-		sounddata = {cast = 'soul protection'},
+			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_rilu', target = 'full', period = 'cast'}],
+		sounddata = {predamage = 'soul protection'},
 		patches = []
 	},
 	holy_light = {
@@ -1828,8 +1838,9 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'sfx_sanctuary', target = 'target', period = 'predamage'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_iola', target = 'full', period = 'cast'}
 		],
-		sounddata = {cast = 'sanctuary'},#postdamage = 'bodyarmor'
+		sounddata = {predamage = 'sanctuary'},#postdamage = 'bodyarmor'
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_sanct'},
 		]
@@ -1857,6 +1868,7 @@ var skilllist = {
 			Effectdata.rebuild_template({effect = 'e_silence', duration = 2})],
 		hidden = false,
 		sfx = [{code = 'anim_ultimate', target = 'caster', period = 'cast'},
+			{code = 'sfx_slide_iola', target = 'full', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'sfx_purge', target = 'target', period = 'predamage'}
 		],
