@@ -679,7 +679,8 @@ func DelayedText(node, text):
 
 func force_end_tweens(node):
 	var tween = GetTweenNode(node)
-	tween.stop_all()
+#	tween.stop_all()
+	tween.remove_all()
 
 
 func calculate_number_from_string_array(arr, caster, target):

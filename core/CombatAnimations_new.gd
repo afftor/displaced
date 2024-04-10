@@ -146,7 +146,7 @@ func sound(node, args):
 	return 0.1
 
 func default_animation(node, args):
-#	print(args.animation)
+#	print("anim %s %s" % [node.name, args.animation])
 	var id = args.animation
 	var playtime
 	var transition_time = variables.default_animations_transition[id]
