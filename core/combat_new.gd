@@ -2094,7 +2094,12 @@ func execute_skill(s_skill2):
 				args.type = s_skill2.damagetype
 				args.damage = tmp
 				if !s_skill2.tags.has('no_log'):
-					text += tr("IS_HIT") % [s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
+					if tmp.shield > 0:
+						text += tr("IS_HIT_SHIELD") % [s_skill2.target.name, tmp.shield]
+						if tmp.hp > 0:
+							text += "\n"
+					if tmp.hp > 0 or (tmp.shield == 0 and tmp.hp == 0):
+						text += tr("IS_HIT") % [s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
 			else:
 				args.heal = -tmp.hp

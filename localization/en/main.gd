@@ -1153,6 +1153,7 @@ var TranslationDict = {
 	EVADES_DAMAGE = "%s evades the damage.",
 	CRITICAL = "Critical!!",
 	IS_HIT = "%s is hit for %d damage.",
+	IS_HIT_SHIELD = "%s's shield drained for %d damage.",
 	IS_HEALED = "%s is healed for %d health.",
 	IS_RESTORED = "%s restored %d %s.",
 	IS_DRAINED = "%s drained %d %s from %s.",
