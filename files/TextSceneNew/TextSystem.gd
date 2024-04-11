@@ -678,9 +678,12 @@ func is_input_blocked() ->bool:
 func _input(event: InputEvent):
 	#here we process only keyboard events, for mouse events see _gui_input()
 	if !(event is InputEventKey): return
-	if is_input_blocked(): return
 	if event.is_action("ctrl"):
-		skip = event.is_pressed()
+		if event.is_pressed():
+			if !is_input_blocked():
+				skip = true
+		else:
+			skip = false
 		get_tree().set_input_as_handled()
 		return
 
