@@ -29,9 +29,10 @@ func _ready():
 	for i in sounds.values():
 		resources.preload_res(i)
 	if resources.is_busy(): yield(resources, "done_work")
-	$BattleGroup/start.connect("pressed", self, "on_start_press")
-	$BattleGroup/advance.connect("pressed", self, "on_advance_pressed")
-	$BattleGroup/abandon.connect("pressed", self, "abandon_area")
+	$BattleGroup/btns/start.connect("pressed", self, "on_start_press")
+	$BattleGroup/btns/advance.connect("pressed", self, "on_advance_pressed")
+	$BattleGroup/btns/stop.connect("pressed", self, "stop_area")
+	$BattleGroup/btns/abandon.connect("pressed", self, "abandon_area")
 	$ExplorationSelect/Close.connect('pressed', self, 'hide')
 	
 	build_party()
@@ -193,12 +194,7 @@ func build_area_description():
 	else:
 		$ExplorationSelect/about/Image.texture = resources.get_res("bg/%s" % Explorationdata.locations[location].background)
 	reset_level()
-	
-	if state.activearea != null and state.activearea == area:
-		reset_progress()
-	else:
-		$ExplorationSelect/about/progress.visible = false
-	
+	reset_progress()
 	update_buttons()
 
 
@@ -277,10 +273,14 @@ func show_info(ch_id):
 func abandon_area():
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'abandon_area_confirm', tr('ABANDONAREA')])
 
-
 func abandon_area_confirm():
 	input_handler.PlaySound(sounds["abandon"])
-	state.abandon_area()
+	state.abandon_area(area)
+	open_explore()
+
+func stop_area():
+	input_handler.PlaySound(sounds["abandon"])
+	state.stop_area()
 	open_explore()
 
 func on_advance_pressed():
@@ -516,8 +516,8 @@ func combat_loose():
 #		hide()
 		input_handler.menu_node.GameOverShow()
 		return
-	if areastate.stage == 1:
-		state.abandon_area()
+#	if areastate.stage == 1:
+#		state.abandon_area()
 	if !$ExplorationSelect/Close.disabled:
 		hide()
 
@@ -592,33 +592,40 @@ func auto_advance():
 	advance_area()
 
 func update_buttons() ->void:
-	var start = $BattleGroup/start
-	var advance = $BattleGroup/advance
-	var abandon = $BattleGroup/abandon
+	var start = $BattleGroup/btns/start
+	var advance = $BattleGroup/btns/advance
+	var abandon = $BattleGroup/btns/abandon
+	var stop = $BattleGroup/btns/stop
 	var close = $ExplorationSelect/Close
 
 	start.disabled = false
 	advance.disabled = false
 	abandon.disabled = false
+	stop.disabled = false
 	close.disabled = false
 	
+	if area:
+		abandon.visible = state.areaprogress[area].stage > 1
+	else:
+		abandon.visible = false
 	if state.activearea == null:
 		start.show()
 		advance.hide()
-		abandon.hide()
+		stop.hide()
 	elif state.activearea != area:
 		start.show()
 		start.disabled = true
 		advance.hide()
-		abandon.hide()
+		stop.hide()
 	else:
 		start.hide()
 		advance.show()
-		abandon.show()
+		stop.show()
 		
 		var areadata = Explorationdata.areas[area]
 		if areadata.has('no_escape') and areadata.no_escape:
 			abandon.disabled = true
+			stop.disabled = true
 			close.disabled = true
 
 	var has_no_party = true

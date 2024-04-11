@@ -137,7 +137,7 @@ func reset_areaprogress():
 	var tmp = {
 		unlocked = false,
 		level = 0,
-		stage = 0,
+		stage = 1,
 		completed = false
 	}
 	for area in Explorationdata.areas:
@@ -153,7 +153,7 @@ func start_area(area_code, autolevel = false):
 	if !areaprogress[area_code].unlocked:
 		print("force start locked mission %s" % area_code)
 		areaprogress[area_code].unlocked = true
-	areaprogress[area_code].stage = 1 
+#	areaprogress[area_code].stage = 1
 	if autolevel:
 		areaprogress[area_code].level = heroes['arron'].level
 	else:
@@ -161,14 +161,17 @@ func start_area(area_code, autolevel = false):
 
 
 func abandon_area(area_code = activearea):
-	areaprogress[area_code].stage = 0
+	areaprogress[area_code].stage = 1
+	stop_area(area_code)
+
+func stop_area(area_code = activearea):
 	if area_code == activearea:
 		activearea = null
 
 
 func complete_area(area_code = activearea):
 	areaprogress[area_code].completed = true
-	areaprogress[area_code].stage = 0
+	areaprogress[area_code].stage = 1
 	if area_code == activearea:
 		activearea = stashedarea
 		if stashedarea != null:
@@ -316,8 +319,8 @@ func valuecheck(dict):
 			return if_has_upgrade(dict.name, dict.value)
 		"main_progress":
 			return if_has_progress(dict.value, dict.operant)
-		"area_progress":
-			return if_has_area_progress(dict.value, dict.operant, dict.area)
+#		"area_progress":
+#			return if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
 			return decisions.has(dict.name)
 		"quest_stage":
@@ -340,9 +343,10 @@ func if_quest_stage(name, value, operant):
 
 	return input_handler.operate(operant, questprogress, value)
 
-func if_has_area_progress(value, operant, area):
-	if !areaprogress.has(area):return false
-	return input_handler.operate(operant, areaprogress[area].stage, value)
+#not in use
+#func if_has_area_progress(value, operant, area):
+#	if !areaprogress.has(area):return false
+#	return input_handler.operate(operant, areaprogress[area].stage, value)
 
 func if_has_progress(value, operant):
 	return input_handler.operate(operant, mainprogress, value)
@@ -461,6 +465,8 @@ func deserialize(tmp:Dictionary):
 		areaprogress[k].unlocked = area_save[k].unlocked
 		areaprogress[k].level = int(area_save[k].level)
 		areaprogress[k].stage = int(area_save[k].stage)
+		if areaprogress[k].stage == 0:
+			areaprogress[k].stage = 1
 #		areaprogress[k].active = area_save[k].active
 		areaprogress[k].completed = area_save[k].completed
 	townupgrades = {

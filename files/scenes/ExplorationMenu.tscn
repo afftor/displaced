@@ -378,50 +378,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="start" type="Button" parent="BattleGroup"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -113.5
-margin_top = -106.0
-margin_right = 116.5
-margin_bottom = -56.0
+[node name="btns" type="HBoxContainer" parent="BattleGroup"]
+margin_left = 40.0
+margin_top = 881.0
+margin_right = 852.0
+margin_bottom = 931.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="start" type="Button" parent="BattleGroup/btns"]
+margin_left = 167.0
+margin_right = 398.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 231, 50 )
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "B_START"
 
-[node name="advance" type="Button" parent="BattleGroup"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -238.0
-margin_top = -106.0
-margin_right = -8.0
-margin_bottom = -56.0
+[node name="advance" type="Button" parent="BattleGroup/btns"]
+visible = false
+margin_left = 290.0
+margin_right = 521.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 231, 50 )
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "ADVANCE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="abandon" type="Button" parent="BattleGroup"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -106.0
-margin_right = 238.0
-margin_bottom = -56.0
+[node name="stop" type="Button" parent="BattleGroup/btns"]
+visible = false
+margin_left = 494.0
+margin_right = 725.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 231, 50 )
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+text = "STOP"
+
+[node name="abandon" type="Button" parent="BattleGroup/btns"]
+margin_left = 414.0
+margin_right = 645.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 231, 50 )
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "B_ABANDON"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="screen" type="TextureRect" parent="BattleGroup"]
 visible = false
