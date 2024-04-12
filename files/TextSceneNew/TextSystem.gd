@@ -669,18 +669,19 @@ func _process(delta: float) -> void:
 
 
 func is_input_blocked() ->bool:
-	return (delay > 0
-			or $ChoicePanel.visible
+	return delay > 0 or is_panel_visible()
+
+func is_panel_visible() ->bool:
+	return ($ChoicePanel.visible
 			or $ClosePanel.visible
 			or $MenuPanel.visible)
-
 
 func _input(event: InputEvent):
 	#here we process only keyboard events, for mouse events see _gui_input()
 	if !(event is InputEventKey): return
 	if event.is_action("ctrl"):
 		if event.is_pressed():
-			if !is_input_blocked():
+			if !is_panel_visible():
 				skip = true
 		else:
 			skip = false
