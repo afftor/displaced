@@ -917,12 +917,12 @@ func tag_state(method:String, arg):
 			state.add_money(int(arg))
 		'add_material':
 			state.add_materials(arg[0], int(arg[1]))
-		'make_quest':
-			state.MakeQuest(arg)
-		'advance_quest':
-			state.AdvanceQuest(arg)
-		'finish_quest':
-			state.FinishQuest(arg)
+#		'make_quest':
+#			state.MakeQuest(arg)
+#		'advance_quest':
+#			state.AdvanceQuest(arg)
+#		'finish_quest':
+#			state.FinishQuest(arg)
 
 		_: print("Unknown state command: %s" % method)
 

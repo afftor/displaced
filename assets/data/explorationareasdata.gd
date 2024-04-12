@@ -386,7 +386,7 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'seq_seen', value = 'arron_meet_annet'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_4'},
-		{type = 'system', value = 'game_stage', arg = 'erika_rescued'},
+#		{type = 'system', value = 'game_stage', arg = 'erika_rescued'},
 		{type = 'system', value = 'enable_character', arg = ['erika', true] },
 		]
 	},

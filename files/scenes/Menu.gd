@@ -46,7 +46,7 @@ func newgame():
 	yield(get_tree().create_timer(1), 'timeout')
 
 	state.revert()
-	state.newgame = true
+#	state.newgame = true
 	state._ready()
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('map')
