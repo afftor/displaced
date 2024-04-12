@@ -1044,6 +1044,12 @@ func victory():
 	
 	input_handler.PlaySound(sounds["victory"])
 	
+	var rewards_bonus = true
+	for ch in state.characters:
+		if state.heroes[ch].defeated:
+			rewards_bonus = false
+			break
+	
 	rewardsdict = {items = {}, xp = 0, gold = 0}
 	for i in defeated:
 		var tmp = i.xpreward
@@ -1078,6 +1084,11 @@ func victory():
 				rewardsdict.xp += tmp
 		state.heroes.erase(i.id)
 	defeated.clear()
+	
+	if rewards_bonus:
+		rewardsdict.xp = int(rewardsdict.xp * 1.1)
+		rewardsdict.gold = int(rewardsdict.gold * 1.1)
+	$Rewards/bonus_label.visible = rewards_bonus
 	
 	input_handler.ClearContainerForced($Rewards/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)

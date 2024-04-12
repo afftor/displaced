@@ -834,6 +834,7 @@ var TranslationDict = {
 	ACTIVEACTION = "Действие",
 	SELECTTARGET = "Выбор Цели",
 	VICTORY = "ПОБЕДА",
+	NO_DEFEATED = "Бонус за выживание!",
 	LEVELUPCHAR = "%s, уровень повышен!",
 	NEWSKILL = "Навык",
 	

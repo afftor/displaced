@@ -1113,6 +1113,7 @@ var TranslationDict = {
 	ACTIVEACTION = "Active Action",
 	SELECTTARGET = "Select Target",
 	VICTORY = "VICTORY",
+	NO_DEFEATED = "All heroes alive bonus!",
 	LEVELUPCHAR = "%s has just acquired a level!",
 	NEWSKILL = "New skill",
 	
