@@ -1,15 +1,19 @@
 extends Node
 
-var date := 1
-var daytime = 0  setget time_set
+#doesn't work for now
+#var date := 1
+#var daytime = 0  setget time_set
+#var newgame = false
+#var itemidcounter := 0
+#var mainprogress = 0
+#var activequests := []
+#var completedquests := []
 
-var newgame = false
 var difficulty = 'normal'
 
 var votelinksseen = false
 
 #resources
-var itemidcounter := 0
 var heroidcounter := 0
 var money = 0
 #var food = 50
@@ -28,9 +32,9 @@ var materials_unlocks := {}
 var lognode
 var resist_unlocks := {}
 
-var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
+#var combatparty := {1 : null, 2 : null, 3 : null} setget pos_set
 var characters = ['arron', 'rose', 'erika', 'ember', 'iola', 'rilu']
-var party_save
+#var party_save
 
 var scene_restore_data = {}
 var CurrentScreen
@@ -46,10 +50,7 @@ var CurEvent := "" #event name
 var CurBuild := ""
 
 #Progress
-var mainprogress = 0
 var decisions := []
-var activequests := []
-var completedquests := []
 var areaprogress := {} #{level, stage, completed}
 var activearea = null
 var location_unlock = {
@@ -63,30 +64,30 @@ var location_unlock = {
 	modern_city = false
 }
 var area_save
-var stashedarea
+#var stashedarea#in fact it works, but with new mission's 'stop' mechanic not really necessary
 var viewed_tips := []
 
 signal party_changed
 signal money_changed
 
-func time_set(value):
-	#here may be placed day changing code from main screen
-	#but for now i place here only new code for rising midday event
-	if (daytime < variables.TimePerDay / 2) and (value >= variables.TimePerDay / 2):
-		pass
-#		globals.check_signal('Midday')
-	daytime = value
+#func time_set(value):
+#	#here may be placed day changing code from main screen
+#	#but for now i place here only new code for rising midday event
+#	if (daytime < variables.TimePerDay / 2) and (value >= variables.TimePerDay / 2):
+#		pass
+##		globals.check_signal('Midday')
+#	daytime = value
 
 func get_difficulty():
 	return difficulty #or change this to settings record if diff to be session-relatad instead of party-related
 #	return globals.globalsettings.difficulty
 
 func revert():
-	date = 1
-	daytime = 0
-	newgame = false
+#	date = 1
+#	daytime = 0
+#	newgame = false
 	votelinksseen = false
-	itemidcounter = 0
+#	itemidcounter = 0
 	heroidcounter = 0
 	money = 0
 #	food = 50
@@ -100,21 +101,21 @@ func revert():
 #	items.clear()
 #	materials.clear()#reset_inventory() made this
 	lognode = null
-	combatparty = {1 : null, 2 : null, 3 : null}
+#	combatparty = {1 : null, 2 : null, 3 : null}
 	scene_restore_data = {}
 	CurrentScreen = null
 	OldSeqs.clear()
 	OldEvents.clear()
 	CurEvent = "" #event name
 	CurBuild = ""
-	mainprogress = 0
+#	mainprogress = 0
 	decisions.clear()
-	activequests.clear()
-	completedquests.clear()
+#	activequests.clear()
+#	completedquests.clear()
 #	areaprogress.clear()
 	reset_areaprogress()
 	activearea = null
-	stashedarea = null
+#	stashedarea = null
 	viewed_tips.clear()
 	location_unlock = {
 		dragon_mountains = false,
@@ -137,7 +138,7 @@ func reset_areaprogress():
 	var tmp = {
 		unlocked = false,
 		level = 0,
-		stage = 0,
+		stage = 1,
 		completed = false
 	}
 	for area in Explorationdata.areas:
@@ -153,7 +154,7 @@ func start_area(area_code, autolevel = false):
 	if !areaprogress[area_code].unlocked:
 		print("force start locked mission %s" % area_code)
 		areaprogress[area_code].unlocked = true
-	areaprogress[area_code].stage = 1 
+#	areaprogress[area_code].stage = 1
 	if autolevel:
 		areaprogress[area_code].level = heroes['arron'].level
 	else:
@@ -161,26 +162,29 @@ func start_area(area_code, autolevel = false):
 
 
 func abandon_area(area_code = activearea):
-	areaprogress[area_code].stage = 0
+	areaprogress[area_code].stage = 1
+	stop_area(area_code)
+
+func stop_area(area_code = activearea):
 	if area_code == activearea:
 		activearea = null
 
 
 func complete_area(area_code = activearea):
 	areaprogress[area_code].completed = true
-	areaprogress[area_code].stage = 0
+	areaprogress[area_code].stage = 1
 	if area_code == activearea:
-		activearea = stashedarea
-		if stashedarea != null:
-			stashedarea = null
+		activearea = null #stashedarea
+#		if stashedarea != null:
+#			stashedarea = null
 	input_handler.map_node.update_map()
 
 
-func pos_set(value):
-	combatparty = value
-	for p in combatparty:
-		if combatparty[p] == null: continue
-		heroes[combatparty[p]].position = p
+#func pos_set(value):
+#	combatparty = value
+#	for p in combatparty:
+#		if combatparty[p] == null: continue
+#		heroes[combatparty[p]].position = p
 
 func _ready():
 	reset_heroes()
@@ -208,7 +212,7 @@ func store_sequence(id):
 
 func StoreEvent(nm):
 	if OldEvents.has(nm): return
-	OldEvents[nm] = date#for now (2.03.24) "date" mechanics does not work, so it's bool in practice
+	OldEvents[nm] = 1#date#for now (2.03.24) "date" mechanics does not work, so it's bool in practice
 
 
 func ClearEvent():
@@ -297,33 +301,33 @@ func valuecheck(dict):
 			return if_has_property(dict['prop'], dict['value'])
 		"has_hero":
 			return if_has_hero(dict['name'])
-		"event_finished":
-			var tmp = OldEvents.has(dict['name'])
-			if tmp and dict.has('delay'):
-				tmp = OldEvents[dict['name']] + dict['delay'] <= date
-			return tmp
+#		"event_finished":
+#			var tmp = OldEvents.has(dict['name'])
+#			if tmp and dict.has('delay'):
+#				tmp = OldEvents[dict['name']] + dict['delay'] <= date
+#			return tmp
 		"has_material":
 			return if_has_material(dict['material'], dict.operant, dict['value'])
-		"date":
-			return date >= dict['date']
+#		"date":
+#			return date >= dict['date']
 #		"item":
 #			return if_has_item(dict['name'])
 		"building":
 			return CurBuild == dict['value']
-		"gamestart":
-			return newgame
+#		"gamestart":
+#			return newgame
 		"has_upgrade":
 			return if_has_upgrade(dict.name, dict.value)
-		"main_progress":
-			return if_has_progress(dict.value, dict.operant)
-		"area_progress":
-			return if_has_area_progress(dict.value, dict.operant, dict.area)
+#		"main_progress":
+#			return if_has_progress(dict.value, dict.operant)
+#		"area_progress":
+#			return if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
 			return decisions.has(dict.name)
-		"quest_stage":
-			return if_quest_stage(dict.name, dict.value, dict.operant)
-		"quest_completed":
-			return completedquests.has(dict.name)
+#		"quest_stage":
+#			return if_quest_stage(dict.name, dict.value, dict.operant)
+#		"quest_completed":
+#			return completedquests.has(dict.name)
 		"party_level":
 			return if_party_level(dict.operant, dict.value)
 		"hero_level":
@@ -332,20 +336,21 @@ func valuecheck(dict):
 			else:
 				return if_hero_level(dict.name, dict.operant, dict.value)
 
-func if_quest_stage(name, value, operant):
-	var questprogress
-	questprogress = GetQuest(name)
-	if questprogress == null:
-		questprogress = 0
+#func if_quest_stage(name, value, operant):
+#	var questprogress
+#	questprogress = GetQuest(name)
+#	if questprogress == null:
+#		questprogress = 0
+#
+#	return input_handler.operate(operant, questprogress, value)
 
-	return input_handler.operate(operant, questprogress, value)
+#not in use
+#func if_has_area_progress(value, operant, area):
+#	if !areaprogress.has(area):return false
+#	return input_handler.operate(operant, areaprogress[area].stage, value)
 
-func if_has_area_progress(value, operant, area):
-	if !areaprogress.has(area):return false
-	return input_handler.operate(operant, areaprogress[area].stage, value)
-
-func if_has_progress(value, operant):
-	return input_handler.operate(operant, mainprogress, value)
+#func if_has_progress(value, operant):
+#	return input_handler.operate(operant, mainprogress, value)
 
 func if_has_upgrade(upgrade, level):
 	if !townupgrades.has(upgrade): return false
@@ -356,14 +361,22 @@ func get_upgrade_level(upgrade):
 	return townupgrades[upgrade]
 
 func get_character_by_pos(pos):
-	if combatparty[pos] == null: return null
-	return heroes[combatparty[pos]]
+#	if combatparty[pos] == null: return null
+#	return heroes[combatparty[pos]]
+	for ch in characters:
+		if heroes[ch].position == pos:
+			return heroes[ch]
+	return null
 
+#in fact this func is not relevant, but it used only in randomgroups, which is not strictly in use
 func if_party_level(operant,value):
 	var counter = 0
-	for i in combatparty.values():
-		if i != null:
-			counter += heroes[i].level
+#	for i in combatparty.values():
+#		if i != null:
+#			counter += heroes[i].level
+	for ch in characters:
+		if heroes[ch].position != null:
+			counter += heroes[ch].level
 	return input_handler.operate(operant, counter, value)
 
 func if_hero_level(name, operant, value):
@@ -406,7 +419,7 @@ func serialize():
 	var tmp = {}
 	area_save = areaprogress
 	town_save = townupgrades
-	party_save = combatparty
+#	party_save = combatparty
 #	tmp['items_save'] = {}
 #	for i in items.keys():
 #		tmp['items_save'][i] = inst2dict(items[i])
@@ -414,17 +427,19 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['date', 'daytime', 'newgame', 'itemidcounter', 'heroidcounter', 'money', 'CurEvent', 'mainprogress', 'stashedarea', 'currentutorial', 'newgame', 'votelinksseen', 'activearea', 'screen', 'CurrentScreen']
-	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'party_save', 'OldSeqs', 'OldEvents', 'decisions', 'activequests', 'completedquests', 'area_save', 'location_unlock', 'scene_restore_data']#'gallery_unlocks'
+	var arr = ['heroidcounter', 'money', 'CurEvent', 'votelinksseen', 'activearea', 'CurrentScreen']#'date', 'daytime', 'newgame', 'itemidcounter', 'mainprogress', 'stashedarea', 'currentutorial', 'screen'
+	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'OldSeqs', 'OldEvents', 'decisions', 'area_save', 'location_unlock', 'scene_restore_data']#'gallery_unlocks', 'party_save', 'activequests', 'completedquests'
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
 		tmp[prop] = get(prop).duplicate()
-	tmp['effects'] = effects_pool.serialize()
+#	tmp['effects'] = effects_pool.serialize()
+	if !effects_pool.serialize().empty():
+		print("!!!!!ALERT!!!!! There are effects for save!")
 	return tmp
 
 func deserialize(tmp:Dictionary):
-	effects_pool.deserialize(tmp['effects'])
+#	effects_pool.deserialize(tmp['effects'])
 	tmp.erase('effects')
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
@@ -436,7 +451,7 @@ func deserialize(tmp:Dictionary):
 		print("old save! reset_materials_unlocks!")
 		reset_materials_unlocks()
 	cleanup()
-	combatparty.clear()
+#	combatparty.clear()
 	for key in heroes_save.keys():
 		heroes[key].deserialize(heroes_save[key])
 	if !tmp.has('resist_unlocks'):#only for old savegame compatibility
@@ -461,6 +476,8 @@ func deserialize(tmp:Dictionary):
 		areaprogress[k].unlocked = area_save[k].unlocked
 		areaprogress[k].level = int(area_save[k].level)
 		areaprogress[k].stage = int(area_save[k].stage)
+		if areaprogress[k].stage == 0:
+			areaprogress[k].stage = 1
 #		areaprogress[k].active = area_save[k].active
 		areaprogress[k].completed = area_save[k].completed
 	townupgrades = {
@@ -559,8 +576,8 @@ func system_action(action):
 			unlock_char(action.arg[0], action.arg[1], notify)
 #		'unlock_character':
 #			unlock_char(action.arg)
-		'game_stage':
-			ProgressMainStage(action.arg)
+#		'game_stage':
+#			ProgressMainStage(action.arg)
 		#not in use now
 #		'unlock_building':
 #			make_upgrade(action.arg, 1)
@@ -611,39 +628,39 @@ func logupdate(text):
 	lognode.bbcode_text = globals.TextEncoder(text)
 
 
-func ProgressMainStage(stage = null):#2remake
-	if stage == null:
-		mainprogress += 1
-	else:
-		mainprogress = stage
+#func ProgressMainStage(stage = null):#2remake
+#	if stage == null:
+#		mainprogress += 1
+#	else:
+#		mainprogress = stage
 
 
-func MakeQuest(code):
-	activequests.append({code = code, stage = 1})
-#	globals.check_signal("QuestStarted", code)
+#func MakeQuest(code):
+#	activequests.append({code = code, stage = 1})
+##	globals.check_signal("QuestStarted", code)
 
 
-func GetQuest(code):
-	for i in activequests:
-		if i.code == code:
-			return i.stage
-	return null
+#func GetQuest(code):
+#	for i in activequests:
+#		if i.code == code:
+#			return i.stage
+#	return null
 
 
-func AdvanceQuest(code):
-	for i in activequests:
-		if i.code == code:
-			i.stage += 1
+#func AdvanceQuest(code):
+#	for i in activequests:
+#		if i.code == code:
+#			i.stage += 1
 
 
-func FinishQuest(code):
-	var tempquest
-	for i in activequests:
-		if i.code == code:
-			tempquest = i
-	activequests.erase(tempquest)
-	completedquests.append(tempquest.code)
-#	globals.check_signal("QuestCompleted", code)
+#func FinishQuest(code):
+#	var tempquest
+#	for i in activequests:
+#		if i.code == code:
+#			tempquest = i
+#	activequests.erase(tempquest)
+#	completedquests.append(tempquest.code)
+##	globals.check_signal("QuestCompleted", code)
 
 
 func add_test_resources():

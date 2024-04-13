@@ -1044,6 +1044,12 @@ func victory():
 	
 	input_handler.PlaySound(sounds["victory"])
 	
+	var rewards_bonus = true
+	for ch in state.characters:
+		if state.heroes[ch].defeated:
+			rewards_bonus = false
+			break
+	
 	rewardsdict = {items = {}, xp = 0, gold = 0}
 	for i in defeated:
 		var tmp = i.xpreward
@@ -1078,6 +1084,11 @@ func victory():
 				rewardsdict.xp += tmp
 		state.heroes.erase(i.id)
 	defeated.clear()
+	
+	if rewards_bonus:
+		rewardsdict.xp = int(rewardsdict.xp * 1.1)
+		rewardsdict.gold = int(rewardsdict.gold * 1.1)
+	$Rewards/bonus_label.visible = rewards_bonus
 	
 	input_handler.ClearContainerForced($Rewards/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
@@ -1891,13 +1902,16 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		targets = CalculateTargets(skill, caster, target_pos)#finale = true
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
+		#it's important to sync sfx and sound on predamage, so sound shouldn't be duplicated with aoe
+		var sounded_predamage_once = false
 		for i in targets:
 			#======predamage animation sound
-			if sounddict.has('predamage'):
+			if sounddict.has('predamage') and !sounded_predamage_once:
 				if sounddict.predamage == 'weapon':
 					sound_from_fighter(get_weapon_sound(caster), caster)
 				else:
 					sound_from_fighter(sounddict.predamage, caster)
+				sounded_predamage_once = true
 			for j in animationdict.predamage:
 #				if j.has('once') and j.once and n > 1: continue
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
@@ -1928,6 +1942,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
+		var sounded_postdamage_once = false
 		for s_skill2 in s_skill2_list:
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
@@ -1936,13 +1951,14 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 #				Off_Target_Glow()
 			else:
 				#=========postdamage animation sound
-				if sounddict.has('postdamage'):
+				if sounddict.has('postdamage') and !sounded_postdamage_once:
 					if sounddict.postdamage == 'bodyhitsound':
 						sound_from_fighter(s_skill2.target.bodyhitsound, s_skill2.target)
 					elif sounddict.postdamage == 'bodyarmor':
 						sound_from_fighter(calculate_hit_sound(skill, caster, s_skill2.target), s_skill2.target)
 					else:
 						sound_from_fighter(sounddict.postdamage, s_skill2.target)
+					sounded_postdamage_once = true
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
@@ -2089,7 +2105,12 @@ func execute_skill(s_skill2):
 				args.type = s_skill2.damagetype
 				args.damage = tmp
 				if !s_skill2.tags.has('no_log'):
-					text += tr("IS_HIT") % [s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
+					if tmp.shield > 0:
+						text += tr("IS_HIT_SHIELD") % [s_skill2.target.name, tmp.shield]
+						if tmp.hp > 0:
+							text += "\n"
+					if tmp.hp > 0 or (tmp.shield == 0 and tmp.hp == 0):
+						text += tr("IS_HIT") % [s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
 			else:
 				args.heal = -tmp.hp

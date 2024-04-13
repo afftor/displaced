@@ -632,10 +632,11 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h =
 		else:
 			return
 	var x = scene.instance()
-	if flip_h or flip_v:
-		x.position.y -= 80 # need do adjust because hero sprites are too tall
-	x.flip_h = flip_h
-	x.flip_v = flip_v
+	if x is AnimatedSprite:#x can be AnimationPlayer
+		if flip_h or flip_v:
+			x.position.y -= 80 # need do adjust because hero sprites are too tall
+		x.flip_h = flip_h
+		x.flip_v = flip_v
 	node.add_child(x)
 	if effect == "earthquake":
 		node.move_child(x, 0)
@@ -678,7 +679,8 @@ func DelayedText(node, text):
 
 func force_end_tweens(node):
 	var tween = GetTweenNode(node)
-	tween.stop_all()
+#	tween.stop_all()
+	tween.remove_all()
 
 
 func calculate_number_from_string_array(arr, caster, target):

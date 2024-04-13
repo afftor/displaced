@@ -669,18 +669,22 @@ func _process(delta: float) -> void:
 
 
 func is_input_blocked() ->bool:
-	return (delay > 0
-			or $ChoicePanel.visible
+	return delay > 0 or is_panel_visible()
+
+func is_panel_visible() ->bool:
+	return ($ChoicePanel.visible
 			or $ClosePanel.visible
 			or $MenuPanel.visible)
-
 
 func _input(event: InputEvent):
 	#here we process only keyboard events, for mouse events see _gui_input()
 	if !(event is InputEventKey): return
-	if is_input_blocked(): return
 	if event.is_action("ctrl"):
-		skip = event.is_pressed()
+		if event.is_pressed():
+			if !is_panel_visible():
+				skip = true
+		else:
+			skip = false
 		get_tree().set_input_as_handled()
 		return
 
@@ -914,12 +918,12 @@ func tag_state(method:String, arg):
 			state.add_money(int(arg))
 		'add_material':
 			state.add_materials(arg[0], int(arg[1]))
-		'make_quest':
-			state.MakeQuest(arg)
-		'advance_quest':
-			state.AdvanceQuest(arg)
-		'finish_quest':
-			state.FinishQuest(arg)
+#		'make_quest':
+#			state.MakeQuest(arg)
+#		'advance_quest':
+#			state.AdvanceQuest(arg)
+#		'finish_quest':
+#			state.FinishQuest(arg)
 
 		_: print("Unknown state command: %s" % method)
 

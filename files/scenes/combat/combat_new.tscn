@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://core/combat_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bg/cave.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=32]
 [ext_resource path="res://assets/images/traits/healthskillsdouble.png" type="Texture" id=33]
 [ext_resource path="res://assets/fonts/mainfont_30.tres" type="DynamicFont" id=34]
+[ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=35]
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -203,9 +204,6 @@ margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="arron" parent="battlefield/PlayerGroup/Front" instance=ExtResource( 4 )]
 visible = false
@@ -666,6 +664,15 @@ margin_right = 645.0
 margin_bottom = 123.0
 custom_fonts/font = ExtResource( 11 )
 text = "VICTORY"
+align = 1
+
+[node name="bonus_label" type="Label" parent="Rewards"]
+margin_left = 52.0
+margin_top = 129.0
+margin_right = 604.0
+margin_bottom = 161.0
+custom_fonts/font = ExtResource( 35 )
+text = "NO_DEFEATED"
 align = 1
 
 [node name="UnlockPanel" parent="Rewards" instance=ExtResource( 31 )]

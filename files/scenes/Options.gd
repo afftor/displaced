@@ -11,6 +11,7 @@ var demaping_hotkey :String = ""
 var hotkeys
 
 func _ready():
+	set_process_input(false)
 	resources.preload_res(menu_open_sound)
 	if resources.is_busy(): yield(resources, "done_work")
 
@@ -42,7 +43,6 @@ func _ready():
 			remap_node.connect("remap",self,"remap_hotkey_start")
 		if remap_node.name == "default" and remap_node.has_node("Button"):
 			remap_node.get_node("Button").connect("pressed", self, "default_hotkeys_ask")
-	set_process_input(false)
 
 func open():
 	show()

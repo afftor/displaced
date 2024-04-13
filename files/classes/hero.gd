@@ -265,7 +265,7 @@ func deserialize(savedir):
 		position = int(savedir.position)
 	else:
 		position = null
-	if position != null: state.combatparty[position] = id
+#	if position != null: state.combatparty[position] = id
 	bonuses = savedir.bonuses.duplicate()
 	for slot in gear_level:
 		gear_level[slot] = int(gear_level[slot])

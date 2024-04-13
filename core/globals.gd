@@ -321,10 +321,11 @@ func change_screen(screen, loc :String = ''):
 
 func force_start_mission(mission_id):
 #	var missiondata = Explorationdata.areas[mission_id]
-	if state.stashedarea != null:
-		print("error - script missions interrupting")
+#	if state.stashedarea != null:
+#		print("error - script missions interrupting")
 	if state.activearea != null:
-		state.stashedarea = state.activearea
+		state.stop_area()#not really necessary, but better to be
+#		state.stashedarea = state.activearea
 	state.start_area(mission_id)
 	change_screen('mission')
 
