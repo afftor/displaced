@@ -125,6 +125,8 @@ func setup_character(ch):
 	ch.displaynode = self
 	position = fighter.position
 	hp = fighter.hp
+	var sprite1 = $sprite
+	var sprite2 = $sprite2
 	panel_node.get_node('ProgressBar').max_value = fighter.get_stat('hpmax')
 	panel_node.get_node('ProgressBar').value = hp
 	panel_node.get_node('Label').text = fighter.get_stat('name')
@@ -139,9 +141,11 @@ func setup_character(ch):
 		panel_node2.disabled = false
 	else:
 		panel_node2 = panel_node
-		$sprite.set_script(null)
+		sprite1.set_script(null)
 	
-	$sprite.texture = null
+	input_handler.force_end_tweens(sprite1)
+	input_handler.force_end_tweens(sprite2)
+#	sprite1.texture = null
 	if fighter.defeated:
 		set_sprite_1(fighter.animations.dead_1)
 		panel_node.modulate = Color(1,1,1,0.4)
@@ -151,6 +155,8 @@ func setup_character(ch):
 		panel_node.modulate = Color(1,1,1,1)
 		panel_node2.modulate = Color(1,1,1,1)
 #		reset_shield()
+	sprite1.modulate.a = 1
+	sprite2.modulate.a = 0
 	regenerate_click_mask() # some cheating with not doing this every frame
 	stop_highlight()
 	set_process_input(true)
@@ -181,7 +187,7 @@ func setup_character(ch):
 	update_hp_label(fighter.hp)
 	
 #	center_node_on_sprite($Buffs)
-	put_above($Buffs, $sprite)
+	put_above($Buffs, sprite1)
 	if fighter is h_rose:
 		#Rose got blank area on top of her sprite, so patch is in order.
 		#It may be better to fix image file itself, but for now I'll leave it as it is
