@@ -8,38 +8,39 @@
 =MUSIC combattheme=
 The team barges into the main room with Dimitrius in it. & EV_DIMITRIUS_2_2_0
 =SOUND doorsmash=
-De - Ah, I almost forgot about you, fools. & EV_DIMITRIUS_2_2_1
+De - Hm? Oh, I almost forgot about you, fools. & EV_DIMITRIUS_2_2_1
 Er(anger) - Stop screwing around. Give our friends back! & EV_DIMITRIUS_2_2_2
 De - How about "No"? & EV_DIMITRIUS_2_2_3
 Ar(neutral) - Figured asking nicely wouldn't work with you.  & EV_DIMITRIUS_2_2_4
-Ar - So how about a trade then? & EV_DIMITRIUS_2_2_5
+Ar - Would you consider trading with us then? & EV_DIMITRIUS_2_2_5
 De - Hah, what can you possibly offer to me? Your lives? & EV_DIMITRIUS_2_2_6
 Ar - How about this?  & EV_DIMITRIUS_2_2_7
 Arron presents the previously acquired black ring. & EV_DIMITRIUS_2_2_8
 De - An interesting thing, but what good does it do to you?  & EV_DIMITRIUS_2_2_9
 De - You would never dare to use it anyway.  & EV_DIMITRIUS_2_2_10
-Ri - You are right. He wouldn't.  & EV_DIMITRIUS_2_2_11
+Ri - You are right, Arron wouldn't.  & EV_DIMITRIUS_2_2_11
 Ri - But I will. & EV_DIMITRIUS_2_2_12
 D(anger) - Hmph, is that so? & EV_DIMITRIUS_2_2_13
-Ar(neutral) - You know she would, if you don't want your existence completely erased, return our friends. & EV_DIMITRIUS_2_2_14
-De - Hahahah, Fine. & EV_DIMITRIUS_2_2_15
+Ar(neutral) - Since you know about it, you know about her goal. If you don't want your existence completely erased, return our friends. & EV_DIMITRIUS_2_2_14
+De - Hahahah, good. & EV_DIMITRIUS_2_2_15
 De - Rose, come over here. & EV_DIMITRIUS_2_2_16
 =SPRITE rose=
-Ro(shock) - What are you doing here!? I've told you to leave me! & EV_DIMITRIUS_2_2_17
+Ro(shock) - Master, what are you doing here!? I've told you to leave me! & EV_DIMITRIUS_2_2_17
 Ar(neutral) - So, you want me to leave? & EV_DIMITRIUS_2_2_18
 Ro - ..... & EV_DIMITRIUS_2_2_19
+Ar(neutral) - I'm taking you back with us. & EV_DIMITRIUS_2_2_19_1
 Ro(sad) - Why are you so stupid. & EV_DIMITRIUS_2_2_20
 Ro(sad) - After all those terrible things I've said... & EV_DIMITRIUS_2_2_21
-Ar(neutral) - Who cares about that. & EV_DIMITRIUS_2_2_22
-Em - Yeah, we still think of you as friend, Rose. & EV_DIMITRIUS_2_2_23
+Ar(neutral) - I can't remember a thing. & EV_DIMITRIUS_2_2_22
+Em - We still think of you as friend, Rose. & EV_DIMITRIUS_2_2_23
 Er - And more. & EV_DIMITRIUS_2_2_24
-Ro(sad) - ...I don't deserve this. & EV_DIMITRIUS_2_2_25
+Ro(sad) - ...I'm sorry... I don't deserve this. & EV_DIMITRIUS_2_2_25
 Ar(neutral) - Oh, enough of your whining already. & EV_DIMITRIUS_2_2_26
 Rose hesitatingly makes a step towards the group. & EV_DIMITRIUS_2_2_27
 De - Aahahah, really nice one Arron. I'm quite impressed. & EV_DIMITRIUS_2_2_28
 De - Fine, you can have your girls.  & EV_DIMITRIUS_2_2_29
 Ro(shock) - But you've said to me... & EV_DIMITRIUS_2_2_30
-De - Too bad, sweetie, Arron wins this round. & EV_DIMITRIUS_2_2_31
+De - Too bad, darling, Arron wins this round. & EV_DIMITRIUS_2_2_31
 De - I can't allow them to destroy my reign. & EV_DIMITRIUS_2_2_32
 Iola also appears by Arron's side. & EV_DIMITRIUS_2_2_33
 De - *snap*  & EV_DIMITRIUS_2_2_34
@@ -49,19 +50,20 @@ De - Here, they aren't under my influence anymore.  & EV_DIMITRIUS_2_2_37
 De - Now give that to me. & EV_DIMITRIUS_2_2_38
 Rilu silently threw the ring in Dimitrius' direction. It vanished in a thin air. & EV_DIMITRIUS_2_2_39
 De - Good, you made me worry for a moment there.  & EV_DIMITRIUS_2_2_40
-De - That's quite an achievement for you pests..  & EV_DIMITRIUS_2_2_41
-Er - You act all high and mighty, but we got our friends back from you.  & EV_DIMITRIUS_2_2_42
+De - That's quite an achievement for you, pests.  & EV_DIMITRIUS_2_2_41
+Er - You act all high and mighty, but we have an upper hand now. & EV_DIMITRIUS_2_2_42
 Er - Your plan failed. & EV_DIMITRIUS_2_2_43
 De - What?  & EV_DIMITRIUS_2_2_44
-De - Aahahah, holy crap, you thought my plan was to steal your friends? & EV_DIMITRIUS_2_2_45
-De - You actually are an idiot. & EV_DIMITRIUS_2_2_46
+De - Aahahah, holy shit, you thought my plan was to steal your friends? & EV_DIMITRIUS_2_2_45
+De - You truly are an idiot. & EV_DIMITRIUS_2_2_46
 De - You only interested me because of your connection to the other dimension, and now I've achieved it anyway. & EV_DIMITRIUS_2_2_47
-Ro - N-no way!? & EV_DIMITRIUS_2_2_48
-De - Yeah, I never really cared if you join me or not, Rose, but it's always fun to make mortals hate each other. & EV_DIMITRIUS_2_2_49
+Ro - W-what!? & EV_DIMITRIUS_2_2_48
+De - Yeah, I never really cared if you join me or not, Rose, but it's always entertaining to make mortals hate each other. & EV_DIMITRIUS_2_2_49
 De - This was fun while it lasted, but it's time to finish with this world already. & EV_DIMITRIUS_2_2_50
 De - And once we are done here, it's your home's turn. & EV_DIMITRIUS_2_2_51
 =SHAKE_SCREEN 1=
 =SOUND sound_crack=
+The ground began to shake as the magic aura surrounded Dimitrius. & EV_DIMITRIUS_2_2_52
 Ar(shock) - Eh? What's going on? & EV_DIMITRIUS_2_2_52
 Ri(talk) - This is bad, we should stop him. & EV_DIMITRIUS_2_2_53
 Ar(anger) - Shit, no other choice!.. & EV_DIMITRIUS_2_2_54

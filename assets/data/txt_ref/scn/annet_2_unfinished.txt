@@ -87,13 +87,13 @@ De - Nice work, insects.  & EV_ANNET_2_52
 Ar(anger) - Dimitrius! & EV_ANNET_2_53
 De - Now, don't look so mad. & EV_ANNET_2_54
 De - You've done me a great service today and I'll spare your lives for some time. & EV_ANNET_2_55
-Ar(neutral) - You talk highly for someone who'll be gutted by the end of this. & EV_ANNET_2_56
+Ar(neutral) - You might end up dead by the end of it as well. & EV_ANNET_2_56
 De - Ahahah, nice one, Arron.  & EV_ANNET_2_57
-De - You actually have no idea how troublesome it is to kill another demon lord with a big reputation in this world.  & EV_ANNET_2_58
+De - You just have no idea how troublesome it is to kill another demon lord with a big reputation in this world.  & EV_ANNET_2_58
 De - But you actually did it. & EV_ANNET_2_59
 Ro - You wanted her dead? That's why you didn't help her? & EV_ANNET_2_60
 De - That's what I said.  & EV_ANNET_2_61
-De - I actually thought about giving you a hand on one occasion, but you managed anyway. & EV_ANNET_2_62
+De - I thought about giving you a hand on one occasion, but you managed anyway. & EV_ANNET_2_62
 Ri - You've left your kin here to die like that. & EV_ANNET_2_63
 Ro - They don't think of their own any higher than of normal people. & EV_ANNET_2_64
 Em(sad) - You really aren't afraid to lose? & EV_ANNET_2_65

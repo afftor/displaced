@@ -3,6 +3,7 @@
 =BG future_city=
 =DELAY 0.5=
 =GUI_NORMAL=
+=MUSIC event_combat=
 =SPRITE demitrius_demon=
 De - Hmph, enough of this little play. & EV_DIMITRIUS_ENDING_3_0
 Ar - Getting cold feet now?  & EV_DIMITRIUS_ENDING_3_1

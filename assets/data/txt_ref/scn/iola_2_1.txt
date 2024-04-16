@@ -49,7 +49,7 @@ Ro(talk) - She's actually quite old. & EV_IOLA_2_1_31
 I - Oh, really? & EV_IOLA_2_1_32
 I - I'm sorry, I didn't mean to offend you. & EV_IOLA_2_1_33
 Ri - Don't worry, I'm used to it. & EV_IOLA_2_1_34
-Em - Yeah, she's really old, like granny. & EV_IOLA_2_1_35
+Em - Yeah, she's really old. Like granny. & EV_IOLA_2_1_35
 Ro(sarcastic) - Ember, please.  & EV_IOLA_2_1_36
 Ar - Rilu, Iola is looking for something called Spirit Essence. & EV_IOLA_2_1_37
 ... & EV_IOLA_2_1_38

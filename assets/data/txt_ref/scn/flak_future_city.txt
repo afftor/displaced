@@ -1,5 +1,5 @@
 ** flak_future_city **
-=MUSIC eventgeneric=
+=MUSIC rilu_theme=
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG market=
@@ -8,13 +8,14 @@
 =SPRITE_UNFADE 0.3=
 =DELAY 1=
 =GUI_NORMAL=
+After a couple days with Iola's help Arron has finally recuperated. & EV_FLAK_FUTURE_CITY_0_1
 F - Hey, looks like you've made it. & EV_FLAK_FUTURE_CITY_0
 F - I wanted to see you, but your gals didn't let me in.  & EV_FLAK_FUTURE_CITY_1
 Ar - Fair, they didn't let me out either. & EV_FLAK_FUTURE_CITY_2
 Ar(neutral) - So what's been going on? & EV_FLAK_FUTURE_CITY_3
 F - Not much, except for bloodthirsty monsters and demons roaming around. & EV_FLAK_FUTURE_CITY_4
 F - Good thing they don't seem to care much about our village though. & EV_FLAK_FUTURE_CITY_5
-F - And that huge dead town thing emerging on the east where you've come from last time. & EV_FLAK_FUTURE_CITY_6
+F - And that huge mysterious building thing emerging on the east where you've come from last time. & EV_FLAK_FUTURE_CITY_6
 F - Kinda feels like the world is coming to an end. & EV_FLAK_FUTURE_CITY_7
 Ar(neutral) - True... I should check this out before it's too late. & EV_FLAK_FUTURE_CITY_8
 =GUI_HIDE=

@@ -18,7 +18,7 @@ Ro - True. I still can't say I understand how she thinks. & EV_ERIKA_ROSE_2_3
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Er(happy) - Arron, Rose! Please make yourself comfortable. & EV_ERIKA_ROSE_2_4
-Er - I've just brewed a bit of rare elven tea and I want to share it with you. & EV_ERIKA_ROSE_2_5
+Er - I've just brewed a bit of custom elven tea and I want to share it with you. & EV_ERIKA_ROSE_2_5
 Er - Hold on, I'll get the cups.  & EV_ERIKA_ROSE_2_6
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -33,7 +33,7 @@ Er - Let me tell you some of our traditional elven stories. & EV_ERIKA_ROSE_2_10
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Ro - (Uh.. why are most of her stories so lewd... Are the local elves really that perverted?) & EV_ERIKA_ROSE_2_11
-Er - Rose you seem a bit red. Come sit on the sofa here, it's more comfortable and the air is clearer next to me. & EV_ERIKA_ROSE_2_12
+Er - Rose you seem a bit heated. Come sit on the sofa here, it's more comfortable and the air is clearer next to me. & EV_ERIKA_ROSE_2_12
 Ro - ...Okay, maybe I should sit over there. Can I please have another cup?  & EV_ERIKA_ROSE_2_13
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -50,7 +50,7 @@ Unusually, Rose shows no sign of resistance to physical intimacy, even though sh
 Ar - (This elven tea is pretty dangerous. It’s not like alcohol, Rose does not appear to be intoxicated at all) & EV_ERIKA_ROSE_2_18
 Er - Rose, I have to tell you, you are so beautiful. & EV_ERIKA_ROSE_2_19
 Er - Arron is one happy man to always have someone like you around. & EV_ERIKA_ROSE_2_20
-Ro - Oh, you’re flattering me, Erika... You have such a gorgeous figure... & EV_ERIKA_ROSE_2_21
+Ro - Oh, you’re flattering me, Erika... Besides, my figure is not on par with yours... & EV_ERIKA_ROSE_2_21
 Er - I mean it. Your ears and tail are so charming. I'm really jealous of Arron. & EV_ERIKA_ROSE_2_22
 Ro - Stop, you're making me blu... & EV_ERIKA_ROSE_2_23
 =ABG erika_rose_sofa_2 erika_rose_sofa_3=
@@ -209,7 +209,7 @@ Ro - Oh god... & EV_ERIKA_ROSE_2_147
 =SPRITE erika_n=
 =SPRITE_UNFADE 0.5=
 Er(happy) - Morning, Rose, how do you feel?  & EV_ERIKA_ROSE_2_148
-Ro - Pretty good... Wait, that's not the issue.  & EV_ERIKA_ROSE_2_149
+Ro - Not too bad... Wait, that's not the issue.  & EV_ERIKA_ROSE_2_149
 Ro - How the hell did this happen!? & EV_ERIKA_ROSE_2_150
 Ar - Well, it seems Erika was very persuasive. & EV_ERIKA_ROSE_2_151
 Ro - You... Master, you've set me up! & EV_ERIKA_ROSE_2_152
@@ -217,15 +217,15 @@ Er - Now, you don't have to be so condemning. I remember you were very satisfied
 Ro - That's...  & EV_ERIKA_ROSE_2_154
 Ro(sarcastic) - True, I suppose. & EV_ERIKA_ROSE_2_155
 Er(happy) - See? You had lots of fun, so why complain now? & EV_ERIKA_ROSE_2_156
-Ro - (Ugh, I can't deny it certainly felt great.) & EV_ERIKA_ROSE_2_157
+Ro - (Ugh, I can't deny I didn't hate it.) & EV_ERIKA_ROSE_2_157
 Ro - (And Master seems very pleased though I did it with another person right in front of him...) & EV_ERIKA_ROSE_2_158
-Ro - Screw you! I'm never drinking anything with you again. & EV_ERIKA_ROSE_2_159
+Ro - Darn you! I'm never drinking anything from you again. & EV_ERIKA_ROSE_2_159
 Er - Fiiine. But let's try something different next time. & EV_ERIKA_ROSE_2_160
 Ro - I'll nev... & EV_ERIKA_ROSE_2_161
 Rose was prepared to say something, but it stuck in her throat.  & EV_ERIKA_ROSE_2_162
 Without finishing her sentence she darted out the door and left Erika's room.  & EV_ERIKA_ROSE_2_163
 Er - Fufu, she didn't outright reject it. & EV_ERIKA_ROSE_2_164
-Er(happy) - Mission success! & EV_ERIKA_ROSE_2_165
+Er(happy) - Mission successful! & EV_ERIKA_ROSE_2_165
 Ar - Not sure about that. But I'm not complaining. & EV_ERIKA_ROSE_2_166
 =GUI_HIDE=
 =BLACKUNFADE 1.5=

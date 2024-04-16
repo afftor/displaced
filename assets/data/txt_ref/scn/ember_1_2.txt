@@ -19,7 +19,7 @@ Ar - Ho-oh. Can it make my wood stronger? & EV_EMBER_1_2_7
 Em - Huh? Your wood? You are not a human? & EV_EMBER_1_2_8
 Ar - Nah, I'm actually a half-ent. & EV_EMBER_1_2_9
 Em(happy) - REALLY?! & EV_EMBER_1_2_10
-Ro(sarcastic) - Please, don't trust everything people say. & EV_EMBER_1_2_11
+Ro(sarcastic) - Please, don't trust everything Master says. & EV_EMBER_1_2_11
 Ar - But I do have wood, occasionally, maybe you could help with it. & EV_EMBER_1_2_12
 Em - I don't quite understand, but sure! & EV_EMBER_1_2_13
 Ro(sarcastic) - He lies to you, he has no lumber. & EV_EMBER_1_2_14

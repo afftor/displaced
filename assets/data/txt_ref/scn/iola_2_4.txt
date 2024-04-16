@@ -28,7 +28,7 @@ I - It's father's order so there should be some reason. & EV_IOLA_2_4_14
 Ar(neutral) - Look, your father locked you in a jail like this. & EV_IOLA_2_4_15
 Ar(neutral) - Even if he's not psycho, you won't make things better by staying here. & EV_IOLA_2_4_16
 Ro - Plus he ordered the guards to attack us.  & EV_IOLA_2_4_17
-Ro - It's not sane to stay here. & EV_IOLA_2_4_18
+Ro - It's not safe to stay here. & EV_IOLA_2_4_18
 I(sad) - No, this must be some mistake. & EV_IOLA_2_4_19
 I - I'm sure he can understand if I talk to him. & EV_IOLA_2_4_20
 However, the armed group gathered on the other side of the hall. & EV_IOLA_2_4_21
@@ -36,7 +36,7 @@ However, the armed group gathered on the other side of the hall. & EV_IOLA_2_4_2
 Guard - We cornered them!  & EV_IOLA_2_4_22
 Guard - Archers, ready! & EV_IOLA_2_4_23
 Guard_2 - But Lady Iola is there. & EV_IOLA_2_4_24
-Guard - Damnit, did these bastards plan this out? & EV_IOLA_2_4_25
+Guard - Damnit, are these bastards using her as a shield? & EV_IOLA_2_4_25
 =SPRITE demitrius=
 D - Shoot.  & EV_IOLA_2_4_26
 Guard - Eh?!  & EV_IOLA_2_4_27
@@ -86,6 +86,8 @@ D - Really observant, you idiot.  & EV_IOLA_2_4_54
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
+After getting away for a reasonable distance the team has finally took a break in the woods. & EV_IOLA_2_4_54_1
+Ember has carefully dropped pincushioned Rilu to the ground. & EV_IOLA_2_4_54_2
 I(sad) - Rilu, please do not die! & EV_IOLA_2_4_55
 I(sad) - You protected us... *sob* & EV_IOLA_2_4_56
 Ri - *cough* *cough* & EV_IOLA_2_4_57
@@ -98,7 +100,7 @@ Ar - Weirdly enough she's immortal. & EV_IOLA_2_4_63
 I - Oh... Thank goodness. & EV_IOLA_2_4_64
 I(sad) - I can't believe my father ordered them to kill me... & EV_IOLA_2_4_65
 I - I want to thank you all for my rescue. & EV_IOLA_2_4_66
-I(sad) - I don't know what I should do now, though. & EV_IOLA_2_4_67
+I(sad) - What should I do now? & EV_IOLA_2_4_67
 Ar - You are welcome to live with us.  & EV_IOLA_2_4_68
 Ar - It's not fancy but folk here is pretty friendly. & EV_IOLA_2_4_69
 Ar - I'm afraid your father won't be generous to us any time soon though.  & EV_IOLA_2_4_70
@@ -108,9 +110,9 @@ Ro - *Sigh* & EV_IOLA_2_4_73
 Ar - Right, Rilu? & EV_IOLA_2_4_74
 Ri - ...Why are you asking me? & EV_IOLA_2_4_75
 Ar - Didn't you suggest the whole rescue thing in the first place? & EV_IOLA_2_4_76
-Ri - ... & EV_IOLA_2_4_77
+Ri - This is none of importance and I would prefer you to forget about it. & EV_IOLA_2_4_77
 I - I'm not sure how I can ever repay you for this. & EV_IOLA_2_4_78
-Ri - That's fine. & EV_IOLA_2_4_79
+Ri - ...Don't sweat about it. & EV_IOLA_2_4_79
 Ro - I'll see where we can let you stay.  & EV_IOLA_2_4_80
 =GUI_HIDE=
 =BLACKTRANS 1=

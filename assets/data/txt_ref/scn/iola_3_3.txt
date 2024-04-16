@@ -21,6 +21,7 @@ As Iola chanted the spell, ruins began glowing with blue light. After a couple o
 =SPRITE traveller=
 =SPRITE_UNFADE=
 =SOUND teleport=
+A strange man appeared in the flash of light. & EV_IOLA_3_3_7_1
 T - Wretches! What the hell do you want? & EV_IOLA_3_3_8
 Ar(neutral) - ...... & EV_IOLA_3_3_9
 Ro(shock) - ...... & EV_IOLA_3_3_10
@@ -51,7 +52,7 @@ T - Demons do not invade this world in physical form.  & EV_IOLA_3_3_30
 T - They can't leave their dimension at will and enter here. & EV_IOLA_3_3_31
 T - What they do instead is influence and corrupt other beings. In some cases to an extreme degree. & EV_IOLA_3_3_32
 T - Like local dwarves who turned into bloodthirsty maniacs, or faeries being massive bitches. & EV_IOLA_3_3_33
-Ar(neutral) - That explains quite a lot.  & EV_IOLA_3_3_34
+Ro - That explains some things.  & EV_IOLA_3_3_34
 I(sad) - I had no idea. What are demons really then? & EV_IOLA_3_3_35
 T - They are entities from another dimension, who generally seek a life energy which they feed on.  & EV_IOLA_3_3_36
 T - Violence, negative emotions, things like this. They would gladly enter this world but most aren't powerful enough for that.  & EV_IOLA_3_3_37
@@ -61,11 +62,11 @@ T - But spare me from these worldly worries. Is there something else?  & EV_IOLA
 Ar - Actually yes, I wanna know who you really are. & EV_IOLA_3_3_41
 T - You don't take me for a God?  & EV_IOLA_3_3_42
 Ar - Hardly. & EV_IOLA_3_3_43
-T - Haha, well, let's say I'm sort of a traveller like you, except that I came here willingly.  & EV_IOLA_3_3_44
+T - Let's say I'm sort of a traveller like you, except that I came here willingly.  & EV_IOLA_3_3_44
 Ar - Is that so? & EV_IOLA_3_3_45
 T - Well... I willingly escaped my pursuers a long time ago and chose this world.  & EV_IOLA_3_3_46
-Ar - So you are basically a fugitive. Got it. & EV_IOLA_3_3_47
-T - Shhh, don't tell anyone. & EV_IOLA_3_3_48
+Ar - So you are basically a fugitive. & EV_IOLA_3_3_47
+T - Shh, not so loud, I don't need to be found out. & EV_IOLA_3_3_48
 Ro - You can move through dimensions on will? & EV_IOLA_3_3_49
 T - Yes, kind of, it's the power I possess. Envious? You can't have it. & EV_IOLA_3_3_50
 Ro(talk) - No, but we could use your help to go home. & EV_IOLA_3_3_51
@@ -76,7 +77,7 @@ T - There are four elements. Earth, Water, Fire and Air. & EV_IOLA_3_3_55
 Ar - ..... & EV_IOLA_3_3_56
 T - Their existence is focused in certain places, deep underground, vast oceans, skies and so on. & EV_IOLA_3_3_57
 T - Bring me one of- & EV_IOLA_3_3_58
-Before Segius could finish a sentence, a small bomb exploded, creating a blinding flash.  & EV_IOLA_3_3_59
+Before Sergius could finish a sentence, a small bomb exploded, creating a blinding flash.  & EV_IOLA_3_3_59
 =SOUND slash=
 D - Enough of this bad joke. & EV_IOLA_3_3_60
 =MUSIC bosstheme=
@@ -85,8 +86,8 @@ Sergius fell on the ground from a mortal wound. & EV_IOLA_3_3_62
 =SOUND sound_fall=
 =SPRITE demitrius_demon=
 I(shock) - NOOO! & EV_IOLA_3_3_63
-De - Sorry to interrupt your party, but I kinda needed his powers. & EV_IOLA_3_3_64
-De - And now I finally have them. Must thank you for finding him for me, haha.  & EV_IOLA_3_3_65
+De - Sorry to interrupt your pitiful party, but I needed his powers. & EV_IOLA_3_3_64
+De - And now I finally have them. Must thank you for finding him for me.  & EV_IOLA_3_3_65
 Ar(anger) - You'll pay for this. & EV_IOLA_3_3_66
 Arron charged at Dimitrius from a few feet away. & EV_IOLA_3_3_67
 But as his sword was about to strike, Dimitrius disappeared and quickly reappeared on the other side of the cave. & EV_IOLA_3_3_68
@@ -112,7 +113,7 @@ Ar - Iola? & EV_IOLA_3_3_85
 I(sad) - ....... & EV_IOLA_3_3_86
 After a few minutes they left the caves. & EV_IOLA_3_3_87
 =GUI_HIDE=
-=MUSIC eventgeneric=
+=MUSIC rilu_theme=
 =BLACKTRANS 1=
 =DELAY 1=
 =BG villageday=
@@ -123,7 +124,7 @@ Ro - Sure, let me help you. & EV_IOLA_3_3_89
 Em(sad) - I don't get it. Why is she so upset? & EV_IOLA_3_3_90
 Ri - Her father just killed the saint in front of her eyes.  & EV_IOLA_3_3_91
 Ri - She might not have truly known him, but it's too much to take for her beliefs.  & EV_IOLA_3_3_92
-Ar(neutral) - I haven't actually considered that. & EV_IOLA_3_3_93
+Ar(neutral) - ...I haven't considered that. & EV_IOLA_3_3_93
 Em(sad) - Sorry, I still don't understand.  & EV_IOLA_3_3_94
 Ri - It's fine, we might have worse things to deal with soon. & EV_IOLA_3_3_95
 =GUI_HIDE=

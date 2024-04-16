@@ -1,5 +1,5 @@
 ** flak_city_raid **
-=MUSIC eventgeneric=
+=MUSIC rilu_theme=
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG market=

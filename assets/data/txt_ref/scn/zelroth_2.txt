@@ -16,7 +16,7 @@ Ar(neutral) - Wait! & EV_ZELROTH_2_4
 Ri - Ignore it, we don't need him. & EV_ZELROTH_2_5
 Z - Even after you kill me...  & EV_ZELROTH_2_6
 Z -  Dimitrius will get you... & EV_ZELROTH_2_7
-Ri - Shut up, I'm not going to kill you. & EV_ZELROTH_2_8
+Ri - Keep quiet. I'm not going to kill you. & EV_ZELROTH_2_8
 Rilu proceeded to inspect Zelroth's possessions. & EV_ZELROTH_2_9
 Ri - ... & EV_ZELROTH_2_10
 Ri - Found it. & EV_ZELROTH_2_11
@@ -47,7 +47,7 @@ C - ....... & EV_ZELROTH_2_25
 Behind the iron bars of the jail, Rose sits out in the cold. & EV_ZELROTH_2_26
 Ro - ... & EV_ZELROTH_2_27
 Ro - How do I even get out of this? & EV_ZELROTH_2_28
-Ro - Life was so simple back then... & EV_ZELROTH_2_29
+Ro - I'm not good at making decisions... Back then it was so simple. & EV_ZELROTH_2_29
 =BLACKUNFADE 1=
 =DELAY 1=
 =GUI_FULL=
@@ -56,10 +56,10 @@ Ro - Life was so simple back then... & EV_ZELROTH_2_29
 ? - Poor thing... Losing her parents at such a young age. & EV_ZELROTH_2_31
 ?? - You mean last week's fire?  & EV_ZELROTH_2_32
 ?? - That was fierce. & EV_ZELROTH_2_33
-? - She’s been in shock since then and barely says anything. Only sobs. & EV_ZELROTH_2_34
+? - She’s been in shock since then and barely says anything. Only cries and stares onto the ground. & EV_ZELROTH_2_34
 ? - She has no relatives around here, we're gonna have to find her an orphanage. & EV_ZELROTH_2_35
-Woman - I'll be taking care of her. & EV_ZELROTH_2_36
-Woman - I knew her parents. & EV_ZELROTH_2_37
+Woman - I knew her parents. & EV_ZELROTH_2_36
+Woman - I can take care of her. & EV_ZELROTH_2_37
 ? - You must have a really kind heart, miss. & EV_ZELROTH_2_38
 Woman - Hey, you are Rose, right?  & EV_ZELROTH_2_39
 Woman - Do you want to be friends with me? & EV_ZELROTH_2_40
@@ -82,7 +82,7 @@ slavetrader - You will not get a lot of money from me for her. & EV_ZELROTH_2_56
 slavetrader - I'll have to smuggle her somewhere far away, so at least her breed will net some worth. & EV_ZELROTH_2_57
 Woman - It's fine.  & EV_ZELROTH_2_58
 Woman - She's an orphan and there's no other relatives. & EV_ZELROTH_2_59
-Woman - Plus I don't want to raise her any further, I've wasted quite a sum of money on her food already. & EV_ZELROTH_2_60
+Woman - I don't want to raise her any further, I've wasted a generous sum of money on her food already. & EV_ZELROTH_2_60
 Rose didn't realize what they were talking about, but since that day she never saw that woman again. & EV_ZELROTH_2_61
 ... & EV_ZELROTH_2_62
 .... & EV_ZELROTH_2_63
@@ -129,19 +129,19 @@ Boy - I'm not stupid.  & EV_ZELROTH_2_97
 Boy - I have a name.  & EV_ZELROTH_2_98
 Ro - And what’s your name?  & EV_ZELROTH_2_99
 Boy - I won't tell you.  & EV_ZELROTH_2_100
-Ro - Darn it, what do you even want!?  & EV_ZELROTH_2_101
+Ro - What the hell do you even want!?  & EV_ZELROTH_2_101
 Boy - Maybe I want you.  & EV_ZELROTH_2_102
 Ro - Are you stupid? You're a child. & EV_ZELROTH_2_103
 Boy - So are you. & EV_ZELROTH_2_104
 Ro - I don't care. I don't want it. & EV_ZELROTH_2_105
 Boy - Why? & EV_ZELROTH_2_106
 Ro - Because I want to be left alone! & EV_ZELROTH_2_107
-Boy - I don't believe you.  & EV_ZELROTH_2_108
-Boy - And I don't care what you want.  & EV_ZELROTH_2_109
+Boy - I don't care. & EV_ZELROTH_2_108
+Boy - I don't believe you.  & EV_ZELROTH_2_109
 Ro - ..... & EV_ZELROTH_2_110
 Ro - Why are you even talking to me? & EV_ZELROTH_2_111
-Boy - You are not like others.  & EV_ZELROTH_2_112
-Boy - I like you.  & EV_ZELROTH_2_113
+Boy - I like you.  & EV_ZELROTH_2_112
+Boy - You are not like others.  & EV_ZELROTH_2_113
 Ro - Wha..? & EV_ZELROTH_2_114
 Boy - You don't act like you're desperate to please me. & EV_ZELROTH_2_115
 Ro - You are weird.  & EV_ZELROTH_2_116
@@ -162,7 +162,7 @@ Boy - It's your stupid rule how every royal member must have a personal servant.
 ?? - It's not MY rule, it's your family's rule.  & EV_ZELROTH_2_127
 ?? - This is how you get used to the- & EV_ZELROTH_2_128
 Boy - I don't care. & EV_ZELROTH_2_129
-? - Well, at least she's young so we can teach her literacy and penmanship.  & EV_ZELROTH_2_130
+? - Well, at least she's young so we can teach her literacy and penmanship at this age.  & EV_ZELROTH_2_130
 Boy - Are you done yet?  & EV_ZELROTH_2_131
 =BLACKTRANS 1=
 =GUI_NORMAL=
@@ -171,7 +171,7 @@ Boy - Are you done yet?  & EV_ZELROTH_2_131
 =SPRITE rose=
 ... & EV_ZELROTH_2_132
 Ro - *sigh* & EV_ZELROTH_2_133
-Ro - This is terrible... & EV_ZELROTH_2_134
+Ro - I feel terrible. & EV_ZELROTH_2_134
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

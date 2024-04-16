@@ -14,7 +14,7 @@ Ro(talk) - Uh.. I think we should tell you about the time we went with him to th
 =BLACKTRANS 1=
 =DELAY 1=
 =GUI_NORMAL=
-I(sad) - That sounds really weird. & EV_IOLA_2_5_5
+I(sad) - That sounds unreal... But I can't deny your words. & EV_IOLA_2_5_5
 Ar - Just for the note, we aren't demons or anything like that. & EV_IOLA_2_5_6
 Ro(sarcastic) - Not in a literal sense at least. & EV_IOLA_2_5_7
 I(sad) - I believe you. & EV_IOLA_2_5_8
@@ -27,11 +27,11 @@ I - I've been studying it during my initiation.  & EV_IOLA_2_5_14
 I - And you are planning to find him? & EV_IOLA_2_5_15
 Ar(neutral) - Don't see any better options. & EV_IOLA_2_5_16
 I(sad) - It's hard to believe he'd still be alive.  & EV_IOLA_2_5_17
-I - He was one of the former a long time ago, but it never said what happened to him. & EV_IOLA_2_5_18
+I - He was one of the formers a long time ago, but it never said what happened to him. & EV_IOLA_2_5_18
 I - Please, let me help you. If he's actually the Sergius, he would know what's going on.  & EV_IOLA_2_5_19
 I(sad) - Although I don't know why he would just avoid us if he's still alive. & EV_IOLA_2_5_20
 Ro - Maybe he has lost his memory or something.  & EV_IOLA_2_5_21
-Ar - Or just got bored of the religious stuff. & EV_IOLA_2_5_22
+Ar - Or just got bored of the religious organization running stuff. & EV_IOLA_2_5_22
 I(shock) - No way! & EV_IOLA_2_5_23
 Ar - What? Don't you ever feel bored by the repetitive rituals? & EV_IOLA_2_5_24
 Ar - It's like brushing your teeth but also everyone makes you feel guilty for not doing it. & EV_IOLA_2_5_25

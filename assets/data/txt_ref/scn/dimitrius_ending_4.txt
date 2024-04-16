@@ -6,8 +6,8 @@
 =SPRITE rose=
 Ro - I see an exit. & EV_DIMITRIUS_ENDING_4_0
 Ar - Finally. Let's see what's there. & EV_DIMITRIUS_ENDING_4_1
-... & EV_DIMITRIUS_ENDING_4_2
-... & EV_DIMITRIUS_ENDING_4_3
+..... & EV_DIMITRIUS_ENDING_4_2
+........ & EV_DIMITRIUS_ENDING_4_3
 The group entered a small building filled with books and unknown devices. & EV_DIMITRIUS_ENDING_4_4
 =SPRITE caliban=
 Ro(shock) - Ah! & EV_DIMITRIUS_ENDING_4_5
@@ -19,28 +19,28 @@ Ar(neutral) - You are not going to fight us? & EV_DIMITRIUS_ENDING_4_10
 C - No, I'd rather not. & EV_DIMITRIUS_ENDING_4_11
 Ar - You also talk differently. & EV_DIMITRIUS_ENDING_4_12
 Ar - Where's Zelroth then? & EV_DIMITRIUS_ENDING_4_13
-C - He's no more. I've absorbed his intelligence.  & EV_DIMITRIUS_ENDING_4_14
+C - You don't have to worry about him anymore. I've dealt with him... and grew smarter somehow.  & EV_DIMITRIUS_ENDING_4_14
 C - Must thank you for that opportunity.  & EV_DIMITRIUS_ENDING_4_15
 Ro(talk) - But what are you doing here then?  & EV_DIMITRIUS_ENDING_4_16
-C - Studying. I've been having an unusual thirst for knowledge recently.  & EV_DIMITRIUS_ENDING_4_17
-C - Humans here had a really advanced understanding of the world and nature. & EV_DIMITRIUS_ENDING_4_18
+C - Studying. Recently learning new things have given me joy.  & EV_DIMITRIUS_ENDING_4_17
+C - Humans from here had a fairly advanced understanding of the material world. & EV_DIMITRIUS_ENDING_4_18
 Ar(neutral) - Well, if you aren't going to fight we should move on. & EV_DIMITRIUS_ENDING_4_19
 C - ....Hold on.  & EV_DIMITRIUS_ENDING_4_20
 C - Are you still planning to fight Dimitrius? & EV_DIMITRIUS_ENDING_4_21
 Ar - Do we look like we have any other option? & EV_DIMITRIUS_ENDING_4_22
 C - You hardly have any chances on your own at his current power. & EV_DIMITRIUS_ENDING_4_23
 Ar - So what, do you suggest we give up? & EV_DIMITRIUS_ENDING_4_24
-C - No, I actually want to offer you some help. & EV_DIMITRIUS_ENDING_4_25
+C - No, actually I want to offer you some help. & EV_DIMITRIUS_ENDING_4_25
 Ro - Why? How do we even trust you? & EV_DIMITRIUS_ENDING_4_26
 C - I'm not one of them and it's only a matter of time after they finish you off that they get to me. & EV_DIMITRIUS_ENDING_4_27
-C - And they are not going to like what I did. & EV_DIMITRIUS_ENDING_4_28
+C - And they are not going to like what I did to one their kind. & EV_DIMITRIUS_ENDING_4_28
 C - Between you and the demons I'd clearly prefer your dominance. & EV_DIMITRIUS_ENDING_4_29
 Ar(neutral) - Fair enough, I don't mind letting you go free. & EV_DIMITRIUS_ENDING_4_30
 Ar(neutral) - As long as you aren't going to repeat Zelroth's deeds. Caliban, was it? & EV_DIMITRIUS_ENDING_4_31
 C - No, actually I've chosen a new name for me. Now I'm Cyrex. & EV_DIMITRIUS_ENDING_4_32
 Ar - Alright, Cyrex, so what can you offer. & EV_DIMITRIUS_ENDING_4_33
-Cy - I'm not going to help you personally, but there still might be a way to defeat Dimitrius. & EV_DIMITRIUS_ENDING_4_34
-Cy - Although, it's not going to be simple at all. & EV_DIMITRIUS_ENDING_4_35
+Cy - I'm not going to fight along your side, but there still might be a way to defeat Dimitrius. & EV_DIMITRIUS_ENDING_4_34
+Cy - Although, it's not going to be simple. & EV_DIMITRIUS_ENDING_4_35
 Ar - Something is better than nothing. & EV_DIMITRIUS_ENDING_4_36
 Cy - Good. Then, you must be aware that demons are weak to light. & EV_DIMITRIUS_ENDING_4_37
 =BLACKUNFADE 0.5=

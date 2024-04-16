@@ -7,7 +7,7 @@
 =MUSIC eventgeneric=
 Ar - Rose is busy with the chores, and Erika left to visit her friends. & EV_RILU_2_3_1_0
 Ar(neutral) - So boring. & EV_RILU_2_3_1_1
-Ar - I guess I'll have to find something interesting to do on myself. It's just another fine day to save the world. & EV_RILU_2_3_1_2
+Ar - I guess I'll have to find something interesting to do on myself. I can't be saving the world every night without any breaks. & EV_RILU_2_3_1_2
 Ar - ... & EV_RILU_2_3_1_3
 As Arron was strolling through the night village, he spotted a familiar figure moving discreetly. & EV_RILU_2_3_1_4
 =SPRITE rilu=
