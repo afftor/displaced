@@ -1165,13 +1165,13 @@ var TranslationDict = {
 	IS_AFFLICTED = "%s is afflicted by %s.",
 	
 	#events
-	EV_OBEDIENTLY = "Listen obediently",
-	EV_DISINTERESTEDLY = "Listen disinterestedly",
-	EV_EMBER_ALLOW = "Allow",
-	EV_EMBER_REFUSE = "Refuse",
-	EV_STILL_REFUSE = "Still refuse",
-	EV_ERIKA_ALLOW = "Allow",
-	EV_ERIKA_REFUSE = "Refuse",
-	EV_GO_AFTER_HER = "Go after her",
-	EV_BETTER_NOT_TO = "Better not to",
+	EVCH_OBEDIENTLY = "Listen obediently",
+	EVCH_DISINTERESTEDLY = "Listen disinterestedly",
+	EVCH_EMBER_ALLOW = "Allow",
+	EVCH_EMBER_REFUSE = "Refuse",
+	EVCH_STILL_REFUSE = "Still refuse",
+	EVCH_ERIKA_ALLOW = "Allow",
+	EVCH_ERIKA_REFUSE = "Refuse",
+	EVCH_GO_AFTER_HER = "Go after her",
+	EVCH_BETTER_NOT_TO = "Better not to",
 }
