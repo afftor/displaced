@@ -16,6 +16,7 @@ Ro - "You must go the Dragon Mountains"? & EV_EMBER_2_1_4
 Ar - That's some atrocious writing.  & EV_EMBER_2_1_5
 Ar - Have you written it, Ember? & EV_EMBER_2_1_6
 Em - No, I can't write.  & EV_EMBER_2_1_7
+Ro - You seem weirdly proud of it. & EV_EMBER_2_1_7_1
 Ar - Huh... What are those Dragon Mountains anyway? & EV_EMBER_2_1_8
 Ro(sarcastic) - I wonder. & EV_EMBER_2_1_9
 Er - Its large mountains in the North of Aeros.  & EV_EMBER_2_1_10
@@ -28,7 +29,7 @@ Ro(talk) - That doesn't seem like a very good idea. & EV_EMBER_2_1_16
 Ar(neutral) - Well, looks like we don't have a choice.  & EV_EMBER_2_1_17
 Ar - Ember is an important member of our community. & EV_EMBER_2_1_18
 Ar - And I can't be left without a blacksmith.  & EV_EMBER_2_1_19
-Ar - Suddenly it feels like I'm being blackmailed. & EV_EMBER_2_1_20
+Ar - When I think about it, it feels like I'm being blackmailed. & EV_EMBER_2_1_20
 Em - Hmm, what's blackmailed?  & EV_EMBER_2_1_21
 Ar - You can tell her, Rose. & EV_EMBER_2_1_22
 Ro(sarcastic) - What do you mean by that? & EV_EMBER_2_1_23

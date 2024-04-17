@@ -20,7 +20,7 @@ Ar - ... & EV_RILU_1_6_8
 Ar - Can I see it? & EV_RILU_1_6_9
 Ri - Do as you wish.  & EV_RILU_1_6_10
 Ri - ... & EV_RILU_1_6_11
-Ri - There really is a malicious spirit in it.  & EV_RILU_1_6_12
+Ri - There indeed is a malicious spirit inside of it.  & EV_RILU_1_6_12
 Ar - Woah, can you deal with it? & EV_RILU_1_6_13
 Ri - Hmph, who do you think I am? & EV_RILU_1_6_14
 Ri - Let's see... & EV_RILU_1_6_15
@@ -28,7 +28,7 @@ Rilu chanted a spell and a small puff of smoke erupted from the figurine in her 
 To her surprise though, it swiftly dashed towards Arron quickly diving into him. & EV_RILU_1_6_17
 Ri - Oh... & EV_RILU_1_6_18
 Ar(shock) - What the hell? What just happened? & EV_RILU_1_6_19
-Ri - I think it invaded you. & EV_RILU_1_6_20
+Ri - I think it moved inside of you. & EV_RILU_1_6_20
 Ri - It must be stronger than I anticipated. & EV_RILU_1_6_21
 Ar(shock) - Can't you do something? & EV_RILU_1_6_22
 Ri - I... can take a look, but let's go someplace else so it won't go after other people. & EV_RILU_1_6_23
@@ -39,16 +39,16 @@ Ri - I... can take a look, but let's go someplace else so it won't go after othe
 =DELAY 0.5=
 Ri - Alright. Let me see. & EV_RILU_1_6_24
 Ri - ... & EV_RILU_1_6_25
-Ri - It seems the spirit has brought disease upon you. & EV_RILU_1_6_26
+Ri - It seems the spirit has brought disorder upon you. & EV_RILU_1_6_26
 Ar(shock) - Eh? What is it? & EV_RILU_1_6_27
 Ri - Erectile dysfunction. & EV_RILU_1_6_28
 Ar(shock) - No no no no no no no no no no no....... & EV_RILU_1_6_29
 Ar(neutral) - Can you help with this? You surely can, right? & EV_RILU_1_6_30
 Ar(shock) - It's your fault I was cursed in the first place! & EV_RILU_1_6_31
-Ri - I can, but it would be better if you also ask Rose or someone else for assistance. & EV_RILU_1_6_32
+Ri - it would be better if you ask Rose or someone else for assistance. & EV_RILU_1_6_32
 Ar(neutral) - No way! Nobody else can ever know about this. & EV_RILU_1_6_33
 Ri - ...  & EV_RILU_1_6_34
-Ri - I see. Well, I guess I can do it then.  & EV_RILU_1_6_35
+Ri - I see. Well, I guess I have to do it then.  & EV_RILU_1_6_35
 Ri - Excuse my inexperience. & EV_RILU_1_6_36
 Freeing Arron from his pants, Rilu began to clumsily feel up his penis with her hands. & EV_RILU_1_6_37
 Ri - ... & EV_RILU_1_6_38
@@ -144,5 +144,5 @@ Ar - That's a relief to hear, glad we both got cured by it. & EV_RILU_1_6_107
 Ri - You are a weird man, Arron. I'm not used to being taken care of. & EV_RILU_1_6_108
 Ri - I know that I creep most people out. & EV_RILU_1_6_109
 Ar - I like having you around.  You don’t have to worry about that with me. & EV_RILU_1_6_110
-Ri - I see.  & EV_RILU_1_6_111
+Ri - ...I see.  & EV_RILU_1_6_111
 =STOP=

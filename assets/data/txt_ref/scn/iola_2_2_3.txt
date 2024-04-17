@@ -8,13 +8,13 @@
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Ar - This is weird. We got the essence, but Iola hasn't come back since that day. & EV_IOLA_2_2_3_0
+Ar - This is weird. We got the essence, but Iola hasn't contacted us since that day. & EV_IOLA_2_2_3_0
 Ro - Maybe they let her pass without it? & EV_IOLA_2_2_3_1
 Ar(neutral) - That would suck. & EV_IOLA_2_2_3_2
-Ar - How do we get rewarded like this then? & EV_IOLA_2_2_3_3
+Ar - How do we get rewarded for our job then? & EV_IOLA_2_2_3_3
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
-Ri - She's actually in trouble.  & EV_IOLA_2_2_3_4
+Ri - Iola is in trouble.  & EV_IOLA_2_2_3_4
 Ro(talk) - Eh? & EV_IOLA_2_2_3_5
 Ar(neutral) - What do you mean? & EV_IOLA_2_2_3_6
 Ri - She was captured and kept imprisoned. & EV_IOLA_2_2_3_7
@@ -25,7 +25,7 @@ Ri - So I can know her condition and location. & EV_IOLA_2_2_3_11
 Ar - That's something new. & EV_IOLA_2_2_3_12
 Ar - Do you do this often? & EV_IOLA_2_2_3_13
 Ri - Don't worry, you won't notice it. & EV_IOLA_2_2_3_14
-Ro(sarcastic) - ..... & EV_IOLA_2_2_3_15
+Ro(sarcastic) - ...That's not what's wrong with it. & EV_IOLA_2_2_3_15
 Ar(neutral) - Anyway, where's Iola?  & EV_IOLA_2_2_3_16
 Ri - I assume it's her cult grounds. & EV_IOLA_2_2_3_17
 Ri(talk) - We should go there to save her. & EV_IOLA_2_2_3_18

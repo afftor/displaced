@@ -32,9 +32,9 @@ RN - You... Bitch! What do you think you are doing?! & EV_ERIKA_ANNET_2_1_19
 Er(anger) - The right thing. & EV_ERIKA_ANNET_2_1_20
 RN - You don't know who I am? I'm Hector Blackthrorn. & EV_ERIKA_ANNET_2_1_21
 Hearing that name made people around pay more attention as it was one of the city's strongest families. & EV_ERIKA_ANNET_2_1_22
-RN - Those slaves cost me 12 thousand gold. & EV_ERIKA_ANNET_2_1_23
+RN - Those slaves cost me twelve thousand gold! & EV_ERIKA_ANNET_2_1_23
 RN - You better pay up now. & EV_ERIKA_ANNET_2_1_24
-RN - Or should we turn you into the city guard. & EV_ERIKA_ANNET_2_1_25
+RN - Or should we turn you to the city guards. & EV_ERIKA_ANNET_2_1_25
 Er(anger) - ... & EV_ERIKA_ANNET_2_1_26
 Erika noticed how people were gathering around her, attracted by the ruckus. & EV_ERIKA_ANNET_2_1_27
 RN - Hah, there's no way you can carry this much money in your garment though. & EV_ERIKA_ANNET_2_1_28

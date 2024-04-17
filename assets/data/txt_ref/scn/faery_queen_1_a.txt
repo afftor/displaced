@@ -20,7 +20,7 @@ Ro - I wasn’t expecting this to happen... & EV_FAERY_QUEEN_1_A_8
 Ro - Hm... How will I find others now... & EV_FAERY_QUEEN_1_A_9
 Wandering around Rose doesn’t realize that she is being observed from the bushes. & EV_FAERY_QUEEN_1_A_10
 FA - Hey, look at this dumbass trollop.  & EV_FAERY_QUEEN_1_A_11
-FA - She clearly has no idea what she's doing. & EV_FAERY_QUEEN_1_A_12
+FA - ...She seems to be all alone here. & EV_FAERY_QUEEN_1_A_12
 FB - True. & EV_FAERY_QUEEN_1_A_13
 FB - Hey, I have an idea. & EV_FAERY_QUEEN_1_A_14
 FA - What is it? & EV_FAERY_QUEEN_1_A_15
@@ -28,7 +28,7 @@ FB - Watch this.  & EV_FAERY_QUEEN_1_A_16
 Before Rose could react, a faery snatches a handkerchief from her and dashes to a nearby hollow tree, laughing all the way. & EV_FAERY_QUEEN_1_A_17
 Ro(talk) - What the... Hey you! & EV_FAERY_QUEEN_1_A_18
 Ro(talk) - Argh!.. & EV_FAERY_QUEEN_1_A_19
-Without a second thought, Rose dives into the  tree’s hollow, grabbing the handkerchief.  & EV_FAERY_QUEEN_1_A_20
+Without a second thought, Rose dives into the tree’s hollow, grabbing the handkerchief.  & EV_FAERY_QUEEN_1_A_20
 Ro - Aw sheesh, it's all dirty now. & EV_FAERY_QUEEN_1_A_21
 Ro - Eh? & EV_FAERY_QUEEN_1_A_22
 =GUI_FULL=
@@ -143,7 +143,7 @@ Ar - Sorry, that wasn't a good idea. & EV_FAERY_QUEEN_1_A_115
 Ro(talk) - ...It's nothing, let's finish with this. & EV_FAERY_QUEEN_1_A_116
 Ar - You sure? You look a bit shabby. & EV_FAERY_QUEEN_1_A_117
 Ro - Yes... I was just a bit worried. & EV_FAERY_QUEEN_1_A_118
-Ro(sarcastic) - (Idiot Master, if it wasn't for your reckless decision...) & EV_FAERY_QUEEN_1_A_119
+Ro(sarcastic) - (Master, you idiot! Because of your stupid decision...) & EV_FAERY_QUEEN_1_A_119
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

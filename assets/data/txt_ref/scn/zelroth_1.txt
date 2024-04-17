@@ -2,14 +2,15 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
+=MUSIC rilu_theme=
 =BG castle_interior=
 =SPRITE zelroth=
-Z - So you've come again.  & EV_ZELROTH_1_0
+Z - So you've come buggering me again. What do you want? & EV_ZELROTH_1_0
 Ar - Why don't you give us what we need and we pretend we've never met. & EV_ZELROTH_1_1
-Z - Don't expect to take me by surprise with such cowardly tricks like last time.  & EV_ZELROTH_1_2
+Z - Hah, don't expect to take me by surprise with cowardly tricks like last time. I'm not giving you a thing. & EV_ZELROTH_1_2
 Ri(talk) - You've been kidnapping people and turning them into undead to fight for you and you call me a coward? & EV_ZELROTH_1_3
 Z - Hah, those are just natural resources.  & EV_ZELROTH_1_4
 Z - What is their purpose if not serving us? & EV_ZELROTH_1_5
-Ri - We are wasting time talking to him. & EV_ZELROTH_1_6
-Z - Once your friends join my army, I'll have plenty of use for you in my experiments. & EV_ZELROTH_1_7
+Ri - It pains you turned out to be like this. & EV_ZELROTH_1_6
+Z - Whatver you say. Once your friends join my army, I can find a new purpose for you. There's many experiments on human body I've yet to try. & EV_ZELROTH_1_7
 =STOP=

@@ -12,7 +12,7 @@ The team has barged into the main city hall as Annet meets them there. & EV_ANNE
 An - Look what we have here. & EV_ANNET_1_1
 An - Can't say I expected to see you still alive. & EV_ANNET_1_2
 Ar(neutral) - I knew you were a one kind of a bitch after learning your history with Erika. & EV_ANNET_1_3
-Ar(neutral) - But must say, this is a whole different level.  & EV_ANNET_1_4
+Ar(neutral) - But this is a whole different level.  & EV_ANNET_1_4
 An - I'm glad you appreciate my work. & EV_ANNET_1_5
 Ro(shock) - Your work?  & EV_ANNET_1_6
 Ro(shock) - You are slaughtering innocent people! & EV_ANNET_1_7

@@ -20,7 +20,8 @@ I - Huh, he seems to receive guests... & EV_IOLA_2_2_2_4
 =DELAY 1=
 =SPRITE demitrius=
 =SPRITE_UNFADE 0.3=
-D - So you got rid of that dwarf king? & EV_IOLA_2_2_2_5
+D - So you got rid of that dwarf king? He's one of potential nuisances for our future plan. & EV_IOLA_2_2_2_5
+D - Even though I doubt he's interested in opposing us. & EV_IOLA_2_2_2_5_1
 =SPRITE victor=
 =SPRITE_UNFADE 0.3=
 V - Sort of, wasn't me, but I finished the bastard. & EV_IOLA_2_2_2_6
@@ -48,7 +49,7 @@ I(shock) - Father! What- & EV_IOLA_2_2_2_23
 V - Hell, I hate women. & EV_IOLA_2_2_2_25
 V - Always so noisy. & EV_IOLA_2_2_2_26
 D - Don't dare kill her.  & EV_IOLA_2_2_2_27
-D(anger) - Shit, now I have to sort this out too... & EV_IOLA_2_2_2_28
+D(anger) - Shit, now I have to deal with this as well... & EV_IOLA_2_2_2_28
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

@@ -49,7 +49,7 @@ Ro(shock) - No way, all this for nothing?  & EV_FAERY_QUEEN_4_27
 Ar(neutral) - Well, we might find some use for it in future.  & EV_FAERY_QUEEN_4_28
 Ar - Let's go home for now. & EV_FAERY_QUEEN_4_29
 Er - Good call, I'm already sick of this forest.  & EV_FAERY_QUEEN_4_30
-Ro(sad) - Haaah... What are we gonna do now, though. & EV_FAERY_QUEEN_4_31
+Ro(sad) - Haaah, how do we find this traveler now... & EV_FAERY_QUEEN_4_31
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

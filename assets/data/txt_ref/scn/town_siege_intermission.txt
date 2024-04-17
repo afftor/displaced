@@ -1,5 +1,5 @@
 ** town_siege_intermission **
-=MUSIC eventgeneric=
+=MUSIC rilu_theme=
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG burning_city =

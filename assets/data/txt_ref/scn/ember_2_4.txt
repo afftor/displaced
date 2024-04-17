@@ -65,7 +65,7 @@ Ar - Well damn. At least I've defeated a dragon today. What do you think father 
 Ro - Now that you say it, we actually did... & EV_EMBER_2_4_49
 Ar - Well, Ember, take your time, we will be waiting around the corner. & EV_EMBER_2_4_50
 Party leaves Ember alone with the Qothus. & EV_EMBER_2_4_51
-Em - I didn't expect this would turn out like this. & EV_EMBER_2_4_52
+Em - Uh, how did that letter lead me into this? & EV_EMBER_2_4_52
 Dr - Threads of destiny are often chaotic in nature. & EV_EMBER_2_4_53
 Dr - Your mate is strong, you've chosen wisely. & EV_EMBER_2_4_54
 Em - Wha-? Sir Arron is not my... & EV_EMBER_2_4_55

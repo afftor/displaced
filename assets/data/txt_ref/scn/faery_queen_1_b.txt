@@ -9,7 +9,7 @@
 =SPRITE_UNFADE 0.5=
 =GUI_NORMAL=
 Ar(neutral) - So, anyone has any ideas? & EV_FAERY_QUEEN_1_B_0
-Ri - I can stop her from getting away. & EV_FAERY_QUEEN_1_B_1
+Ri - I can prevent her using teleportation. & EV_FAERY_QUEEN_1_B_1
 Ar - You can? & EV_FAERY_QUEEN_1_B_2
 Ri - We can take her close relative as a hostage. & EV_FAERY_QUEEN_1_B_3
 Ro - That's... & EV_FAERY_QUEEN_1_B_4
@@ -19,7 +19,7 @@ Ri - I’m gonna need something of her personal belongings though.  & EV_FAERY_Q
 Ri - Like a brush or a piece of cloth. & EV_FAERY_QUEEN_1_B_8
 Er - We might find something at her nest then. & EV_FAERY_QUEEN_1_B_9
 Ar - You know where is it? & EV_FAERY_QUEEN_1_B_10
-Er - Yeah I know the old one.  & EV_FAERY_QUEEN_1_B_11
+Er - Yeah I know the one she used in the past.  & EV_FAERY_QUEEN_1_B_11
 Er - Faeries often change them but they also tend to leave some of their stuff behind. & EV_FAERY_QUEEN_1_B_12
 Ar - Alright, let's check it. & EV_FAERY_QUEEN_1_B_13
 =GUI_HIDE=

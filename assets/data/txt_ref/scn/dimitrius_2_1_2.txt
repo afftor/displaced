@@ -13,7 +13,7 @@ Ar(anger) - Demitrius! & EV_DIMITRIUS_2_1_2_2
 De - Hows it been going? & EV_DIMITRIUS_2_1_2_3
 De - Seems you've taken care of Zelroth. Too bad that fool was already useless to me. & EV_DIMITRIUS_2_1_2_4
 Ar(anger) - Where's- & EV_DIMITRIUS_2_1_2_5
-De - Oh, shut up. I wouldn't be here, but there's someone who wanted to come see ya. & EV_DIMITRIUS_2_1_2_6
+De - Shut up. I wouldn't be here, but there's someone who wanted to come see ya. & EV_DIMITRIUS_2_1_2_6
 =SPRITE rose=
 Ar(shock) - Rose! Get away from him! & EV_DIMITRIUS_2_1_2_7
 Ro - Stop. & EV_DIMITRIUS_2_1_2_8
@@ -36,11 +36,13 @@ Ro(talk) - Erika is a shallow harlot. & EV_DIMITRIUS_2_1_2_23
 Ro(talk) - Rilu, you just creep me out.  & EV_DIMITRIUS_2_1_2_24
 Ri - You wouldn't be the first. & EV_DIMITRIUS_2_1_2_25
 Ro(talk) - And Master... You are the worst irresponsible womanizer I've ever met. & EV_DIMITRIUS_2_1_2_26
+Ar(neutral) - That's the best you've got? & EV_DIMITRIUS_2_1_2_26_1
+Ro - ..... & EV_DIMITRIUS_2_1_2_26_2
 Ro - It was me, who told your brother about your affair with his wife. & EV_DIMITRIUS_2_1_2_27
 Ro(talk) - You told me to choose what I wanna do with my life. & EV_DIMITRIUS_2_1_2_28
 Ro(talk) - I don't want to see any of you anymore from now on. & EV_DIMITRIUS_2_1_2_29
-Er(anger) - ... & EV_DIMITRIUS_2_1_2_30
-Em(sad) - ... & EV_DIMITRIUS_2_1_2_31
+Er(anger) - ....... & EV_DIMITRIUS_2_1_2_30
+Em(sad) - ..... & EV_DIMITRIUS_2_1_2_31
 =SPRITE demitrius_demon=
 De - Hell, I'm already so bored with you.  & EV_DIMITRIUS_2_1_2_32
 De - Enough! We are leaving. & EV_DIMITRIUS_2_1_2_33
@@ -49,7 +51,7 @@ De - Enough! We are leaving. & EV_DIMITRIUS_2_1_2_33
 Before Arron could protest Rose and Demitrius vanished in thin air. & EV_DIMITRIUS_2_1_2_34
 Ar(anger) - Damnit! & EV_DIMITRIUS_2_1_2_35
 Em(sad) - ... What are we gonna do now? & EV_DIMITRIUS_2_1_2_36
-Ar(neutral) -  & EV_DIMITRIUS_2_1_2_37
+Ar(neutral) - ...Go after them. & EV_DIMITRIUS_2_1_2_37
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

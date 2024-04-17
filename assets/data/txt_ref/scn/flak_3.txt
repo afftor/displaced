@@ -19,7 +19,7 @@ F - And even if I had, you didn't complete the task anyway. & EV_FLAK_3_7
 Ro - That's true. & EV_FLAK_3_8
 Ar - ... & EV_FLAK_3_9
 F - Now go, I still have business to do. & EV_FLAK_3_10
-Ar(shock) - I swear, I’ll never do deliveries for you again. & EV_FLAK_3_11
+Ar(shock) - Don't ever dare to ask me to do your deliveries again! & EV_FLAK_3_11
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

@@ -5,11 +5,12 @@
 =BG forest=
 =MUSIC eventgeneric=
 =SPRITE victor=
-Ar - This guy looks familiar. & EV_VICTOR_2_3_0
+At the established spot in the clearing the team comes across a lone burly man. & EV_VICTOR_2_3_0_1
+Ar - This guy looks familiar. & EV_VICTOR_2_3_0_2
 Ro - This is Viktor. We've seen him in Aeros. & EV_VICTOR_2_3_1
 I(shock) - Ah, it's the man who was talking to the father at that time. & EV_VICTOR_2_3_2
 V - You shouldn't have come, I only need the mongrel one.  & EV_VICTOR_2_3_3
-V - But now you all will die.  & EV_VICTOR_2_3_4
+V - But I guess you saved me time from killing you later.  & EV_VICTOR_2_3_4
 V - Dimitrius will be happy I had to do his dirty work. & EV_VICTOR_2_3_5
 Em - Why? What do you want from me? & EV_VICTOR_2_3_6
 V - Nothing, you just seem to have something I need. & EV_VICTOR_2_3_7
@@ -30,8 +31,8 @@ V - And also to test himself.  & EV_VICTOR_2_3_21
 Em - You killed Uncle Qothus! & EV_VICTOR_2_3_22
 Ro - Calm down, Ember! & EV_VICTOR_2_3_23
 V - Yeah, save yourself some energy for the fight. & EV_VICTOR_2_3_24
-Ar - So you test yourself by challenging some girl who looks weak and killing time-worn dragons? & EV_VICTOR_2_3_25
-V - Hmph. You have a sharp tongue boy. & EV_VICTOR_2_3_26
+Ar(neutral) - So you test yourself by challenging some girl who looks weak and killing senior dragons? & EV_VICTOR_2_3_25
+V - Hmph. You have a sharp tongue, boy. & EV_VICTOR_2_3_26
 V - But you are right, it's not much of a test. & EV_VICTOR_2_3_27
 Ar(neutral) - So what's your deal? & EV_VICTOR_2_3_28
 V - Do you know about dragon souls?  & EV_VICTOR_2_3_29
@@ -40,9 +41,9 @@ V - I've been collecting them for long years. It seems one was hiding by your si
 Ar(neutral) - And I presume you'd get something by getting them all.  & EV_VICTOR_2_3_32
 V - Strength. Immortality. Power. You name it.  & EV_VICTOR_2_3_33
 V - A reward worthy of a supreme warrior. & EV_VICTOR_2_3_34
-V - And it all lies within my grasp now.  & EV_VICTOR_2_3_35
-V - The only reason I'm telling you about this is  your death looms.  & EV_VICTOR_2_3_36
-Ar(anger) - I'm sick of this psycho. He deserves some retribution. & EV_VICTOR_2_3_37
+V - And I'm finally gonna be done with this.  & EV_VICTOR_2_3_35
+V - Don't let it bother you, you'll die now anyway.  & EV_VICTOR_2_3_36
+Ar(anger) - I was an idiot thinking we could talk this out... & EV_VICTOR_2_3_37
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

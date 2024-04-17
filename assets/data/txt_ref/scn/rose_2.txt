@@ -8,7 +8,7 @@ Arron laid in the bed, recuperating from wounds left by Dimitrius. & EV_ROSE_2_0
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
 Ro - Can I come in? & EV_ROSE_2_1
-Ar - Sorry, I'm not quite in the condition for a liaison. Can you postpone it? & EV_ROSE_2_2
+Ar - Sorry, I'm not quite in the condition for a liaison. Can you drop by in a few days? & EV_ROSE_2_2
 Ro - ... & EV_ROSE_2_3
 Ro - Iola said that you were very lucky to survive that. & EV_ROSE_2_4
 Ar - Yeah, felt like my organs became a paste.  & EV_ROSE_2_5
@@ -26,7 +26,7 @@ Ar - ...So what?  & EV_ROSE_2_16
 Ar - We all sometimes feel like we hate everything and everyone, especially about someone close. & EV_ROSE_2_17
 Ar - You remember how you supported Ember when we met for the first time? & EV_ROSE_2_18
 Ro - ... & EV_ROSE_2_19
-Ar - And how you volunteered to save Erika, when she was captured, despite the danger? & EV_ROSE_2_20
+Ar - And how you volunteered to save Erika, when she was captured, despite your relationship and the danger? & EV_ROSE_2_20
 Ro(sarcastic) - That was... & EV_ROSE_2_21
 Ar - And how you yelled at me right before we ended up here.  & EV_ROSE_2_22
 Ro(sad) - *sob* M-master... & EV_ROSE_2_23
@@ -41,16 +41,17 @@ Ar - Ouch, easy there... & EV_ROSE_2_25
 ... & EV_ROSE_2_26
 Ar - Feeling better now? & EV_ROSE_2_27
 Ro - *nod* & EV_ROSE_2_28
-Ar - Jeez... I feel like I'm doing a therapist’s job a lot lately. & EV_ROSE_2_29
-Ro(talk) - I haven't thought about you being compassionate before. & EV_ROSE_2_30
-Ar - Tell anyone and I'll kill you.  & EV_ROSE_2_31
-Ro - I have to ask forgiveness from the others.  & EV_ROSE_2_32
+Ar - Jeez... I feel like I've doing a therapist’s job a lot lately. & EV_ROSE_2_29
+Ro(talk) - Master... I think you've became more compassionate. & EV_ROSE_2_30
+Ar - Tell anyone and I'll flagellate you. & EV_ROSE_2_31
+Ro - I have to beg forgiveness from the other girls.  & EV_ROSE_2_32
 Ar - Yeah, you can do that. & EV_ROSE_2_33
 Ro - Thank you, Master.  & EV_ROSE_2_34
 Ro - I'll be off now. Get well soon. & EV_ROSE_2_35
 =SPRITE_HIDE=
+=SPRITE_FADE 0.5=
 =SOUND slam=
 Ar - On a second thought... A liaison might not be a bad idea. & EV_ROSE_2_36
 Ar(neutral) - Rose, wait, you hear me? & EV_ROSE_2_37
-Ar - Darn it. & EV_ROSE_2_38
+Ar - ...Darn it. & EV_ROSE_2_38
 =STOP=

@@ -31,7 +31,7 @@ An - You scratch my back, and I'll scratch yours, right? & EV_ERIKA_ANNET_1_17
 CM - True, now if you excuse me, I have other business to take care of. & EV_ERIKA_ANNET_1_18
 =SOUND footstep=
 ... & EV_ERIKA_ANNET_1_19
-An - Heh, humans are really easy. & EV_ERIKA_ANNET_1_20
+An - Heh, humans are really clueless. & EV_ERIKA_ANNET_1_20
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

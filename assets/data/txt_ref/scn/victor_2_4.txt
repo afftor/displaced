@@ -40,22 +40,22 @@ Em - No. & EV_VICTOR_2_4_31
 Em - You were with me all this time.  & EV_VICTOR_2_4_32
 Em - And you gave birth to me. & EV_VICTOR_2_4_33
 Ezet - You've grown well. & EV_VICTOR_2_4_34
-Em - Thank you. & EV_VICTOR_2_4_35
+Em - ...Thank you. & EV_VICTOR_2_4_35
 Em - What happens now? & EV_VICTOR_2_4_36
 Ezet - You have freed their souls. & EV_VICTOR_2_4_37
 Ezet - Now they can be reborn into a new hatchling. & EV_VICTOR_2_4_38
 Em - So, we saved them? & EV_VICTOR_2_4_39
 Ezet - Yes, you've done a great deed. & EV_VICTOR_2_4_40
 Ezet - But it seems I'll have to go too. & EV_VICTOR_2_4_41
-Em - ... & EV_VICTOR_2_4_42
+Em - ........ & EV_VICTOR_2_4_42
 Em - Thanks for staying with me all this time.  & EV_VICTOR_2_4_43
-Ezet - Heh, I was sure you'd be crying here. & EV_VICTOR_2_4_44
-Em - Maybe we can meet again? & EV_VICTOR_2_4_45
+Ezet - Hah, I was sure you'd be crying here. & EV_VICTOR_2_4_44
+Em - Maybe we will meet again? & EV_VICTOR_2_4_45
 Ezet - After rebirth we will not remember who we were in previous life. & EV_VICTOR_2_4_46
 Ezet - But I'm glad you have found your place and friends you can rely on. & EV_VICTOR_2_4_47
 Ezet - Arron. You are still to face great dangers, but I trust you to take care of my daughter. & EV_VICTOR_2_4_48
 Ar - Hmm... I'm not sure I'm up to the responsibility yet.  & EV_VICTOR_2_4_49
-Ezet - Don't worry, I'm  sure you can make Ember some fine offspring with some practice. & EV_VICTOR_2_4_50
+Ezet - Don't worry, I'm  sure you can make Ember some fine offspring with more practice. & EV_VICTOR_2_4_50
 Em - Eh?! & EV_VICTOR_2_4_51
 Ezet - After all I've almost had first-hand experience. & EV_VICTOR_2_4_52
 Ar - You had what?! & EV_VICTOR_2_4_53
@@ -74,7 +74,7 @@ Ri - ... & EV_VICTOR_2_4_64
 Er - Kinky. & EV_VICTOR_2_4_65
 I(sad) - Hmm I'm not sure how ancestors would feel about it. & EV_VICTOR_2_4_66
 Ar - Okay, enough.  & EV_VICTOR_2_4_67
-Ar - Let's get out of here, before someone sees us and blames us for murdering Aeros's hero.  & EV_VICTOR_2_4_68
+Ar - Let's get out of here, before someone sees us and blames us for murdering local hero.  & EV_VICTOR_2_4_68
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

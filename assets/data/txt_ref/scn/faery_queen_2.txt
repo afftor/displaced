@@ -10,12 +10,12 @@
 =GUI_NORMAL=
 Er - This should be the place. & EV_FAERY_QUEEN_2_0
 Ar(neutral) - Seems like nobody is around. & EV_FAERY_QUEEN_2_1
-Er - They change their homes often. & EV_FAERY_QUEEN_2_2
+Er - They likely left this place. & EV_FAERY_QUEEN_2_2
 ... & EV_FAERY_QUEEN_2_3
 Er - This must be it. & EV_FAERY_QUEEN_2_4
 Er - Hmm... & EV_FAERY_QUEEN_2_5
 Er - Got it. We can go now. & EV_FAERY_QUEEN_2_6
-Ar - Good. I can't wait to shut her nasty mouth. & EV_FAERY_QUEEN_2_7
+Ar - Finally. I can't wait to punish her nasty mouth. & EV_FAERY_QUEEN_2_7
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
