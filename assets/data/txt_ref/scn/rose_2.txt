@@ -48,7 +48,6 @@ Ro - I have to beg forgiveness from the other girls.  & EV_ROSE_2_32
 Ar - Yeah, you can do that. & EV_ROSE_2_33
 Ro - Thank you, Master.  & EV_ROSE_2_34
 Ro - I'll be off now. Get well soon. & EV_ROSE_2_35
-=SPRITE_HIDE=
 =SPRITE_FADE 0.5=
 =SOUND slam=
 Ar - On a second thought... A liaison might not be a bad idea. & EV_ROSE_2_36
