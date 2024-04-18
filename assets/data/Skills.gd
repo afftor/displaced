@@ -712,7 +712,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'sfx_soul_prot', target = 'target', period = 'predamage'},
-			{code = 'anim_special', target = 'caster', period = 'cast'},],
+			{code = 'anim_attack', target = 'caster', period = 'cast'},],
 		sounddata = {cast = 'renew'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 3, op = 'lte'}], patch = 'p_renew_1'},
@@ -743,7 +743,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'sfx_dispel', target = 'target', period = 'predamage'},
-			{code = 'anim_special', target = 'caster', period = 'cast'},],
+			{code = 'anim_attack', target = 'caster', period = 'cast'},],
 		sounddata = {cast = 'dispel'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_dispel'}
