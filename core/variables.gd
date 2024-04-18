@@ -151,6 +151,19 @@ func check_resist_integrity():
 	for entry in resistlist + status_list:
 		assert(resist_data.has(entry), "resist_data has no icon for %s!" % entry)
 
+#seems useless, because image tends to be too small to fit in text
+#func damage_tag_process(input_str :String, img_height :int) ->String:
+#	for i in range(10000):#no more then 10000 tags?
+#		if !("[d:" in input_str):
+#			break
+#		var tag_start = input_str.find("[d:")
+#		var tag_end = input_str.find("]", tag_start)
+#		var tag = input_str.substr(tag_start, tag_end - tag_start + 1)
+#		var damage_type = tag.substr(3, tag.length() - 4)
+#		var img = "[img=%sx%s]%s[/img]" % [img_height, img_height, get_resist_data(damage_type).icon.resource_path]
+#		input_str = input_str.replace(tag, img)
+#	return input_str
+
 #func calc_max_resist_name_size():
 #	for id in resist_data:
 #		var name_size = tr(resist_data[id].name).length()
