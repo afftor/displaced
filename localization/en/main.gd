@@ -329,6 +329,7 @@ var TranslationDict = {
 	AUDIO = "Audio",
 	GRAPHICS = "Graphics",
 	OPT_TEXT = "Text",
+	OPT_GAME = "Game",
 	HOTKEYS = "Hotkeys",
 	SAVE_LOAD = "Save & Load",
 	EXIT = "Exit",
@@ -342,6 +343,7 @@ var TranslationDict = {
 	SKIPREAD = "Skip Read",
 	DISABLETUTORIAL = "Disable Tutorial",
 	OPT_FULLSCREEN = "Full Screen",
+	FORCED_CONTENT = "Allow forced content",
 
 	#hotkeys tab in options
 	HK_ACTION = "Action",

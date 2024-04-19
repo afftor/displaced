@@ -218,6 +218,7 @@ var TranslationDict = {
 	AUDIO = "Аудио",
 	GRAPHICS = "Графика",
 	OPT_TEXT = "Текст",
+	OPT_GAME = "Игра",
 	HOTKEYS = "Клавиши",
 	SAVE_LOAD = "Сохранения",
 	EXIT = "Выход",
@@ -231,6 +232,7 @@ var TranslationDict = {
 	SKIPREAD = "Пропуск фраз",
 	DISABLETUTORIAL = "Откл. обучение",
 	OPT_FULLSCREEN = "Во весь экран",
+	FORCED_CONTENT = "Разрешить насильственные сцены",
 
 	#hotkeys tab in options
 	HK_ACTION = "Действие",

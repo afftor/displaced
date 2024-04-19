@@ -292,8 +292,8 @@ func valuecheck(dict):
 			return OldSeqs.has(dict.value)
 		"scene_seen":
 			return OldEvents.has(dict.value)
-		"rules":
-			return true #stub
+		"forced_content":
+			return globals.globalsettings.forced_content
 		#old ones, possibly obsolete
 		"has_money":
 			return if_has_money(dict['value'])

@@ -1052,6 +1052,9 @@ func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->
 		success = state.valuecheck({type = "scene_seen", value = value})
 	elif type == "LASTCHOICE":
 		success = (int(value) == last_choice)
+	elif type == "FORCEDCONTENT":
+		#value in this case irrelevant
+		success = globals.globalsettings.forced_content
 	else:
 		assert(false, "Unknow condition in tag_if!!!")
 		return

@@ -100,7 +100,8 @@ var globalsettings = {
 	disabletips = false,
 	disable_tutorial = false,
 	
-	tuts_enabled = false
+	tuts_enabled = false,
+	forced_content = true
 } setget settings_save
 
 func settings_load():
