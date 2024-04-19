@@ -28,14 +28,15 @@ func _ready():
 		locale_panel.get_node(locale).connect("pressed", self, 'pressed_locale', [locale])
 #warning-ignore:return_value_discarded
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
+	$TabContainer/Game/forced.connect("pressed", self, "toggleforced")
 #warning-ignore:return_value_discarded
 	$close_button.connect("pressed",self,'close')
-	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
 	var tabs = $TabContainer
 	tabs.set_tab_title(0, tr('AUDIO'))
 	tabs.set_tab_title(1, tr('GRAPHICS'))
 	tabs.set_tab_title(2, tr('OPT_TEXT'))
-	tabs.set_tab_title(3, tr('HOTKEYS'))
+	tabs.set_tab_title(3, tr('OPT_GAME'))
+	tabs.set_tab_title(4, tr('HOTKEYS'))
 
 	hotkeys = globals.get_hotkeys_handler()
 	for remap_node in hotkeys_list.get_children():
@@ -49,6 +50,8 @@ func open():
 	$TabContainer/Text/skipread.pressed = globals.globalsettings.skipread
 	$TabContainer/Text/textspeed.value = globals.globalsettings.textspeed
 	$TabContainer/Text/disabletut.pressed = globals.globalsettings.disable_tutorial
+	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
+	$TabContainer/Game/forced.pressed = globals.globalsettings.forced_content
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.get_node("HSlider").value = globals.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
@@ -60,6 +63,9 @@ func togglefullscreen():
 	OS.window_fullscreen = globals.globalsettings.fullscreen
 	if globals.globalsettings.fullscreen == false:
 		OS.window_position = Vector2(0,0)
+
+func toggleforced():
+	globals.globalsettings.forced_content = $TabContainer/Game/forced.pressed
 
 func soundsliderchange(value,name):
 	if value <= -39:

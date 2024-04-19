@@ -1052,6 +1052,9 @@ func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->
 		success = state.valuecheck({type = "scene_seen", value = value})
 	elif type == "LASTCHOICE":
 		success = (int(value) == last_choice)
+	elif type == "FORCEDCONTENT":
+		#value in this case irrelevant
+		success = globals.globalsettings.forced_content
 	else:
 		assert(false, "Unknow condition in tag_if!!!")
 		return
@@ -1249,6 +1252,7 @@ func play_scene(scene: String, restore = false, force_replay = false) -> void:
 func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	var out = {}
 	var c = 0
+	var strings_to_check = []#only for changes in events
 
 #	var chardef = false
 #	var chardef_color = Color.black
@@ -1374,9 +1378,17 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 						out[current_scene]["res"]["portrait"] = []
 					if !out[current_scene]["res"]["portrait"].has(res_name):
 						out[current_scene]["res"]["portrait"].append(res_name)
+			
+			#-------should be switched off in most cases, except changes in events------
+			if " & " in i:
+				strings_to_check.append(i.get_slice(" & ", 1))
+			#-----------
 
 		c += 1
 
+	#-------should be switched off in most cases, except changes in events------
+	globals.check_event_translation_integrity(strings_to_check)
+	#---------
 	current_scene = ""
 	line_dr = ""
 	return out.duplicate(true)#duplicate needed?

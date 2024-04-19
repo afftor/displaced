@@ -38,7 +38,7 @@ Ro(talk) - This is the Mayor, Sir Arron. And my name is Rose.  & EV_DIMITRIUS_1_
 Ro - We are pleased to meet you as well. & EV_DIMITRIUS_1_1_19
 Ar - Hmm? What were you talking about just now? & EV_DIMITRIUS_1_1_20
 D - This is my mission, to explain to everyone the danger of Demons. & EV_DIMITRIUS_1_1_21
-=CHOICE EV_OBEDIENTLY|EV_DISINTERESTEDLY=
+=CHOICE EVCH_OBEDIENTLY|EVCH_DISINTERESTEDLY=
 D - But since you had no idea, allow me to repeat myself for you. & EV_DIMITRIUS_1_1_22
 #{"effect":"choice","value":[{"index":0,"text":"Listen obediently"},{"index":1,"text":"Listen disinterestedly"}]},
 #{"effect":"skip","log":"LISTEN OBEDIENTLY","value":1},

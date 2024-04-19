@@ -6,7 +6,7 @@
 =BLACKFADE 0.4=
 =DELAY 0.4=
 =GUI_NORMAL=
-=SPRITE ember=
+=SPRITE emberhappy=
 =SPRITE_UNFADE 0.3=
 Em - I see you found some unusual wood up there. Please, let me have it! & EV_EMBER_1_2_0
 Ar - Hmh... sure. What's so unusual about it? & EV_EMBER_1_2_1

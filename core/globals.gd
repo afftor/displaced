@@ -100,7 +100,8 @@ var globalsettings = {
 	disabletips = false,
 	disable_tutorial = false,
 	
-	tuts_enabled = false
+	tuts_enabled = false,
+	forced_content = true
 } setget settings_save
 
 func settings_load():
@@ -165,11 +166,13 @@ func _init():
 		var locale = localizations[locale_num]
 		var activetranslation = Translation.new()
 		var translationscript = load(TranslationData[locale]).new()
+		#-------should probably be commented befor release------
 		if locale_num == 0:
 			base_translation = translationscript
 		else:
 			for i in base_translation.TranslationDict:
 				assert(translationscript.TranslationDict.has(i), "locale %s has no %s string" % [locale, i])
+		#--------------------------
 		activetranslation.set_locale(locale)
 		for i in translationscript.TranslationDict:
 			activetranslation.add_message(i, translationscript.TranslationDict[i])
@@ -179,6 +182,25 @@ func _init():
 	settings_load()
 	TranslationServer.set_locale(globalsettings.ActiveLocalization)
 
+func check_event_translation_integrity(strings :Array):
+	for locale_num in range(localizations.size()):
+		var locale = localizations[locale_num]
+		if locale == base_locale: continue
+		
+		var translationscript = load(TranslationData[locale]).new()
+		var strings_of_translation = {}
+		for key in translationscript.TranslationDict:
+			if key.begins_with("EV_"):
+				strings_of_translation[key] = false
+		for code in strings:
+			if strings_of_translation.has(code):
+				strings_of_translation[code] = true
+			else:
+				print("Integrity failure! No %s in %s" % [code, locale])
+		for key in strings_of_translation:
+			if !strings_of_translation[key]:
+				print("Redundancy! %s in %s has no use" % [key, locale])
+		
 
 func preload_backgrounds():
 	var path = resources.RES_ROOT.bg + '/bg'
@@ -764,7 +786,7 @@ func get_last_save():
 	var max_time = 0
 	var oldest_file
 	for i in dir:
-		if i.ends_with('.sav') == false:
+		if !i.ends_with('.sav') or i.ends_with('%s.sav' % variables.autosave_name):
 			continue
 		var file_time = tmp.get_modified_time(i)
 		if file_time > max_time:

@@ -329,6 +329,7 @@ var TranslationDict = {
 	AUDIO = "Audio",
 	GRAPHICS = "Graphics",
 	OPT_TEXT = "Text",
+	OPT_GAME = "Game",
 	HOTKEYS = "Hotkeys",
 	SAVE_LOAD = "Save & Load",
 	EXIT = "Exit",
@@ -342,6 +343,7 @@ var TranslationDict = {
 	SKIPREAD = "Skip Read",
 	DISABLETUTORIAL = "Disable Tutorial",
 	OPT_FULLSCREEN = "Full Screen",
+	FORCED_CONTENT = "Allow forced content",
 
 	#hotkeys tab in options
 	HK_ACTION = "Action",
@@ -1165,13 +1167,13 @@ var TranslationDict = {
 	IS_AFFLICTED = "%s is afflicted by %s.",
 	
 	#events
-	EV_OBEDIENTLY = "Listen obediently",
-	EV_DISINTERESTEDLY = "Listen disinterestedly",
-	EV_EMBER_ALLOW = "Allow",
-	EV_EMBER_REFUSE = "Refuse",
-	EV_STILL_REFUSE = "Still refuse",
-	EV_ERIKA_ALLOW = "Allow",
-	EV_ERIKA_REFUSE = "Refuse",
-	EV_GO_AFTER_HER = "Go after her",
-	EV_BETTER_NOT_TO = "Better not to",
+	EVCH_OBEDIENTLY = "Listen obediently",
+	EVCH_DISINTERESTEDLY = "Listen disinterestedly",
+	EVCH_EMBER_ALLOW = "Allow",
+	EVCH_EMBER_REFUSE = "Refuse",
+	EVCH_STILL_REFUSE = "Still refuse",
+	EVCH_ERIKA_ALLOW = "Allow",
+	EVCH_ERIKA_REFUSE = "Refuse",
+	EVCH_GO_AFTER_HER = "Go after her",
+	EVCH_BETTER_NOT_TO = "Better not to",
 }

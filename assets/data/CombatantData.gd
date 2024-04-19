@@ -41,7 +41,6 @@ var charlist = {
 			idle = load("res://assets/images/Fight/Heroes/Rose/Rose_idle/Rose.tres"),
 			hit = "Fight/Heroes/Rose/Rouz_crop_0001_Rouz_hit",
 			attack = "Fight/Heroes/Rose/Rouz_crop_0003_Rouz_at",
-			special = "Fight/Heroes/Rose/Rouz_crop_0002_Rouz_cast",
 			idle_1 = "Fight/Heroes/Rose/Rouz_crop_0000_Rouz_idle",
 			dead = load("res://assets/images/Fight/Heroes/Rose/Rose_death/rose_d.tres"),
 			dead_1 = "Fight/Heroes/Rose/Rose_death/rouz_death_20",

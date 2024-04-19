@@ -48,7 +48,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_1'},
 	],
 	erika_annet_2_1 = [
-		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
+		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'forced_content'}]},
 	],
 	iola_2_2_1 = [
 		{type = 'system', value = 'unlock_area', arg = 'cult'},

@@ -19,11 +19,13 @@ FQ - Ha, suck it losers. & EV_FAERY_QUEEN_1_7
 =SPRITE_FADE 0.5=
 =SOUND sound_teleport=
 Ar - Damn it, she got away. & EV_FAERY_QUEEN_1_8
+=IF FORCEDCONTENT _ 3 2=
+=POSITION 3=
 Em - Look, there's a portal left after her. & EV_FAERY_QUEEN_1_9
 Ar - Ah, we could follow it. & EV_FAERY_QUEEN_1_10
 Ro(sarcastic) - I don't think this is a good idea.  & EV_FAERY_QUEEN_1_11
 Ro(sarcastic) - We don't know where we might end up. & EV_FAERY_QUEEN_1_12
-=CHOICE EV_GO_AFTER_HER|EV_BETTER_NOT_TO=
+=CHOICE EVCH_GO_AFTER_HER|EVCH_BETTER_NOT_TO=
 Ar - ... & EV_FAERY_QUEEN_1_13
 =IF LASTCHOICE 0 1 2=
 =POSITION 1=
