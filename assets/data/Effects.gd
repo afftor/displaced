@@ -1481,7 +1481,7 @@ var effect_table = {
 		debug_name = 'orb_repeater_1',
 		trigger = [variables.TR_CAST],
 		req_skill = true,
-		conditions = [{type = 'random', value = 0.2}],
+		conditions = [{type = 'random', value = 0.25}],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_orb_rep']
@@ -1491,7 +1491,7 @@ var effect_table = {
 		debug_name = 'orb_repeater_2',
 		trigger = [variables.TR_CAST],
 		req_skill = true,
-		conditions = [{type = 'random', value = 0.4}],
+		conditions = [{type = 'random', value = 0.45}],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_orb_rep']

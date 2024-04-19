@@ -1180,6 +1180,11 @@ func victory():
 	yield(get_tree().create_timer(1.7), 'timeout')
 	on_level_up_close()
 	
+	
+	tween = input_handler.GetTweenNode($Rewards/bonus_label)
+	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(0.5,0.5), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	
 	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
 		if i.name == 'Button':
 			continue

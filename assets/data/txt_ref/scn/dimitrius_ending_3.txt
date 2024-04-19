@@ -12,7 +12,7 @@ Without hesitation Arron charged at Dimitrius & EV_DIMITRIUS_ENDING_3_3
 =SPRITE_HIDE=
 But he teleported at the last moment a few feet into the air. & EV_DIMITRIUS_ENDING_3_4
 Ar(neutral) - Tsk. & EV_DIMITRIUS_ENDING_3_5
-De - Let me show something really cool. & EV_DIMITRIUS_ENDING_3_6
+De - Let me show you something special. & EV_DIMITRIUS_ENDING_3_6
 Ro - Huh?  & EV_DIMITRIUS_ENDING_3_7
 A sound of distant explosions shook the air. & EV_DIMITRIUS_ENDING_3_8
 As they turned the way it came from, they could see a small object flying through the air. & EV_DIMITRIUS_ENDING_3_9
