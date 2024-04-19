@@ -786,7 +786,7 @@ func get_last_save():
 	var max_time = 0
 	var oldest_file
 	for i in dir:
-		if i.ends_with('.sav') == false:
+		if !i.ends_with('.sav') or i.ends_with('%s.sav' % variables.autosave_name):
 			continue
 		var file_time = tmp.get_modified_time(i)
 		if file_time > max_time:
