@@ -306,9 +306,7 @@ func set_shield(value):
 	recheck_effect_tag('recheck_stats')
 
 func hpmax_get():
-	var value = hpmax
-	value += hp_growth * variables.curve[level - 1]
-	return value
+	return get_hpmax_at_level(level)
 
 func get_hpmax_at_level(lvl):
 	var value = hpmax
@@ -319,7 +317,7 @@ func get_damage_at_level(lvl):
 	return damage * variables.curve[lvl - 1]
 
 func damage_get():
-	return damage * variables.curve[level - 1]
+	return get_damage_at_level(level)
 
 func hp_set(value):
 	if defeated: return
