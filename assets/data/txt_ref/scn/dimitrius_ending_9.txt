@@ -3,13 +3,14 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG future_city_reactor_inside=
+=MUSIC event_combat=
 =SPRITE demitrius_demon=
 =SOUND parry=
 After a few clashes Dimitrius has managed to strike Arron's sword from his hands. & EV_DIMITRIUS_ENDING_9_0
 Ar(shock) - Ah! & EV_DIMITRIUS_ENDING_9_1
 De - And it's over. & EV_DIMITRIUS_ENDING_9_2
 Ar(anger) - Like hell it is! & EV_DIMITRIUS_ENDING_9_3
-Taken by surprise, Dimitrius was attacked by barehanded Arron, throwing him on the ground. & EV_DIMITRIUS_ENDING_9_4
+Taken by surprise, Dimitrius was attacked by barehanded Arron, tackling him on the ground. & EV_DIMITRIUS_ENDING_9_4
 =SOUND sound_fall=
 What he didn't see is how Arron pulled the shock baton out of his clothes. & EV_DIMITRIUS_ENDING_9_5
 De(anger) - What the- & EV_DIMITRIUS_ENDING_9_6
@@ -105,7 +106,7 @@ Ro - Look, demons are gone.  & EV_DIMITRIUS_ENDING_9_64
 Ri - Yes, with Dimitrius dead the dimensions are no longer connected.  & EV_DIMITRIUS_ENDING_9_65
 Ar - Nice work. Time to go home then.  & EV_DIMITRIUS_ENDING_9_66
 Em - Huh... Is this place going to stay in our world though? & EV_DIMITRIUS_ENDING_9_67
-Ar - Not my problem.  & EV_DIMITRIUS_ENDING_9_68
+Ar - ...Not my problem.  & EV_DIMITRIUS_ENDING_9_68
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
@@ -113,15 +114,16 @@ Ar - Not my problem.  & EV_DIMITRIUS_ENDING_9_68
 =SPRITE flak=
 =BLACKFADE 1=
 =GUI_NORMAL=
+=MUSIC eventgeneric=
 Ar - Hey, we are back and alive. & EV_DIMITRIUS_ENDING_9_69
 F - Nice to see you then, ex-mayor. & EV_DIMITRIUS_ENDING_9_70
 Ar(neutral) - ...What do you mean, 'ex-mayor'? & EV_DIMITRIUS_ENDING_9_71
 F - Oh, we have elected a new mayor since you were gone and we had no idea if you are even alive. & EV_DIMITRIUS_ENDING_9_72
 Ar(shock) - WHAAAT?! & EV_DIMITRIUS_ENDING_9_73
-F - There he is by the way. & EV_DIMITRIUS_ENDING_9_74
+F - By the way, there he is. & EV_DIMITRIUS_ENDING_9_74
 =SPRITE caliban=
 Ar - ...Eh? How? & EV_DIMITRIUS_ENDING_9_75
-F - Well, he said that he will stop the end of the world if we get him elected.  & EV_DIMITRIUS_ENDING_9_76
+F - Well, he said that he will stop the end of the world and all those demons if we get him elected.  & EV_DIMITRIUS_ENDING_9_76
 Cy - Oh, Hi Arron. How are you doing? & EV_DIMITRIUS_ENDING_9_77
 Ar - ...I'll fucking murder you.  & EV_DIMITRIUS_ENDING_9_78
 Ar(shock) - It was me who stopped the end of the world, not him! & EV_DIMITRIUS_ENDING_9_79
@@ -136,5 +138,26 @@ I(sad) - Maybe because we were related. & EV_DIMITRIUS_ENDING_9_86
 I - I think I'll be able to transfer you back to your world. & EV_DIMITRIUS_ENDING_9_87
 F - Well now, don't be so rushy, we surely can celebrate your return before you go. & EV_DIMITRIUS_ENDING_9_88
 Ar - ...Thanks. & EV_DIMITRIUS_ENDING_9_89
-=BLACKFADE 0.5=
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG finale=
+=GUI_FULL=
+=BLACKFADE 1=
+Er - So what happened when you were left alone with him in there?
+Ar - Obviously I've almost defeated him. Could've managed without those tricks.
+Ro - Master, your nose might grow if you talk too much.
+Ar - I guess you do deserve a praise for your part of the plan. 
+Ro - It's hard to imagine how we could ever deal with this otherwise. Cyrex deserved a praise for it.
+Em - Ah, speaking of which, Sir Cyrex, am I still allowed to stay at the village?
+Cy - Why, yes. Craftsmanship brings prosperity to the industry and benefits people.
+F - You truly are a bright individual, Mayor. 
+Ar - Grrr, he really pisses me off now. How come he became that good at everything?
+Ro - At least you don't have to fear for stealing all the girls. 
+Ar - True, I can settle with that. Must be terrible to live with a face like this.
+Er - Face isn't everything to girls, you know. Even fat guys can fascin...
+Ro - I don't wanna hear about this! The last thing I need is Master not taking care of himself.
+Ar - I deserve some rest after all we've done, don't I?
+=GUI_HIDE=
+=BLACKUNFADE 2=
+=DELAY 2=
 =STOP=

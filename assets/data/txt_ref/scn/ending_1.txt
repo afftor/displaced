@@ -30,8 +30,8 @@ Ar - I'll personally administer your punishment before you can be forgiven. & EV
 Ro(sad) - ...Alright. & EV_ENDING_1_22
 Despite Rose's downed expression, her tail swayed excitedly.  & EV_ENDING_1_23
 =GUI_HIDE=
-=BLACKUNFADE 2=
-=DELAY 2=
+=BLACKUNFADE 1=
+=DELAY 1=
 =BLACKFADE 1=
 =DELAY 1=
 =SPRITE embershock=
@@ -61,9 +61,9 @@ Ar(neutral) - Whatever. So, are you coming or what? & EV_ENDING_1_43
 Ri - Thank you, but I think I gonna need some time. & EV_ENDING_1_44
 Ri(blush) - For... some things. & EV_ENDING_1_45
 Ri - I might visit later though and have you keep your word for certain. & EV_ENDING_1_46
-Ar - Well, all is good as long as you don't try to destroy the universe again. & EV_ENDING_1_47
+Ar - Well, all is good as long as you don't try to destroy the reality again. & EV_ENDING_1_47
 =SPRITE iola=
-I - I'm sure she'd never do that. & EV_ENDING_1_48
+I - What are you saying, Rilu is a good girl and would never have done that. & EV_ENDING_1_48
 Ar - What are you planning to do now, though? & EV_ENDING_1_49
 I - Ah, I will be leading the cult now that Father is gone.  & EV_ENDING_1_50
 I(sad) - It seems many of the followers went missing since the incident though. & EV_ENDING_1_51

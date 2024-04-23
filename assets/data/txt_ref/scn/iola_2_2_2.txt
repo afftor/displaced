@@ -1,5 +1,5 @@
 ** iola_2_2_2 **
-=MUSIC eventlight=
+=MUSIC event_mysterious=
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG cult=
@@ -38,6 +38,7 @@ V - *grunt* & EV_IOLA_2_2_2_16
 D - Now get lost already, it's not good if we are seen here together. & EV_IOLA_2_2_2_17
 V - Oh is it? You probably should take care of peeping toms next time.  & EV_IOLA_2_2_2_18
 D - Huh? & EV_IOLA_2_2_2_19
+=MUSIC STOP=
 Before Iola realized it, the door in front of her was forced in and she was dragged inside. & EV_IOLA_2_2_2_20
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=

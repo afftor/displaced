@@ -3,7 +3,7 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG forest=
-=MUSIC eventgeneric=
+=MUSIC event_mysterious=
 =SPRITE victor=
 At the established spot in the clearing the team comes across a lone burly man. & EV_VICTOR_2_3_0_1
 Ar - This guy looks familiar. & EV_VICTOR_2_3_0_2
@@ -23,11 +23,13 @@ V - Sorry, I don't take note how my prey was called.  & EV_VICTOR_2_3_13
 Em - What?.. & EV_VICTOR_2_3_14
 Em - You have... & EV_VICTOR_2_3_15
 V - Yeah, I've slayed it.  & EV_VICTOR_2_3_16
+=MUSIC STOP=
 Em(sad) - ... & EV_VICTOR_2_3_17
 Em(sad) - Why? & EV_VICTOR_2_3_18
 V - *Sigh* Why do men hunt?  & EV_VICTOR_2_3_19
 V - To dominate. To feed. To feel joy. & EV_VICTOR_2_3_20
 V - And also to test himself.  & EV_VICTOR_2_3_21
+=MUSIC bosstheme=
 Em - You killed Uncle Qothus! & EV_VICTOR_2_3_22
 Ro - Calm down, Ember! & EV_VICTOR_2_3_23
 V - Yeah, save yourself some energy for the fight. & EV_VICTOR_2_3_24

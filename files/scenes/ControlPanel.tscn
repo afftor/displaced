@@ -124,9 +124,6 @@ toggle_mode = true
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="ControlPanel/Herolist"]
 anchor_left = 0.5

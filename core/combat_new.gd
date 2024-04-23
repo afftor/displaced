@@ -1030,6 +1030,7 @@ func victory():
 	var advance_button = $Rewards/AdvanceButton
 	var progress_label = $Rewards/progress
 	var unlock_panel = $Rewards/UnlockPanel
+	$Rewards/bonus_label.visible = false
 	close_button.get_node("Label").text = tr('CLOSE')
 	close_button.disabled = true
 	advance_button.disabled = true
@@ -1085,10 +1086,6 @@ func victory():
 		state.heroes.erase(i.id)
 	defeated.clear()
 	
-	if rewards_bonus:
-		rewardsdict.xp = int(rewardsdict.xp * 1.1)
-		rewardsdict.gold = int(rewardsdict.gold * 1.1)
-	$Rewards/bonus_label.visible = rewards_bonus
 	
 	input_handler.ClearContainerForced($Rewards/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
@@ -1181,9 +1178,14 @@ func victory():
 	on_level_up_close()
 	
 	
-	tween = input_handler.GetTweenNode($Rewards/bonus_label)
-	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(0.5,0.5), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+	$Rewards/bonus_label.visible = rewards_bonus
+	
+	if rewards_bonus:
+		rewardsdict.xp = int(rewardsdict.xp * 1.1)
+		rewardsdict.gold = int(rewardsdict.gold * 1.1)
+		tween = input_handler.GetTweenNode($Rewards/bonus_label)
+		tween.interpolate_property($Rewards/bonus_label,'rect_scale', Vector2(0.5,0.5), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
 	
 	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
 		if i.name == 'Button':

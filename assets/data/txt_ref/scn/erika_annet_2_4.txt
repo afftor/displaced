@@ -74,7 +74,7 @@ Ro(talk) - Not now, we have to escape. & EV_ERIKA_ANNET_2_4_50
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
-=BG town_in=
+=BG town_night=
 =BLACKFADE 1=
 =GUI_NORMAL=
 Rose dragged Erika outside where Arron and others were waiting for her. & EV_ERIKA_ANNET_2_4_52

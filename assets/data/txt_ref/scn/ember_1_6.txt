@@ -11,8 +11,8 @@ Arron and Ember have gone to Aeros to get new supplies for the forge. & EV_EMBER
 Em - This is so cool, there are so many people here and nobody threw anything at me yet! & EV_EMBER_1_6_1
 Ar - People around here seem not to care about much at all. & EV_EMBER_1_6_2
 Ar - Including your attire. & EV_EMBER_1_6_3
-Em - Look, this coal looks really great! Can we buy it? & EV_EMBER_1_6_4
-Ar - If you think so, I'd rather leave the coal to you. & EV_EMBER_1_6_5
+Em - Look, this coal looks really fresh! Can we buy it? & EV_EMBER_1_6_4
+Ar - If you say so, I'd rather leave the coal selection to you. & EV_EMBER_1_6_5
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BLACKFADE 0.5=
@@ -30,14 +30,14 @@ Ar - Must be nice to be so strong. & EV_EMBER_1_6_10
 Em - A-ha, it's nothing really, I'm not that strong. & EV_EMBER_1_6_11
 Ar(neutral) - Really? & EV_EMBER_1_6_12
 Em - Back in my old village some people were stronger than me, like my master, who beat me often to improve my discipline. & EV_EMBER_1_6_13
-Ar - You could only have been a child. & EV_EMBER_1_6_14
+Ar - Perhaps that's because you still were a child. & EV_EMBER_1_6_14
 Em - I guess so. I always win in endurance contests though! & EV_EMBER_1_6_15
 Ar - No way. & EV_EMBER_1_6_16
 Em - I'm serious. & EV_EMBER_1_6_17
 Ar - ... & EV_EMBER_1_6_18
 Ar - I bet I could beat you. & EV_EMBER_1_6_19
 Em(happy) - Really? You’re gonna compete with me? Let’s race home and see who gets there first! & EV_EMBER_1_6_20
-Ar - No, I wouldn't wanna break any of the goods. I have a better idea. & EV_EMBER_1_6_21
+Ar - No, I wouldn't wanna break any of the crates. I have a better idea. & EV_EMBER_1_6_21
 Em - Ah? & EV_EMBER_1_6_22
 Ar - Come here. & EV_EMBER_1_6_23
 =BLACKUNFADE 0.5=
@@ -48,7 +48,7 @@ Ar - Come here. & EV_EMBER_1_6_23
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Em - Sir Arron, I don't understand. Didn't you want to challenge me? & EV_EMBER_1_6_24
-Ar - Yep, this is the contest. Now bend over. Put your hands on that tree & EV_EMBER_1_6_25
+Ar - Yep, this is the contest. Now face this way and put your hands on that tree... & EV_EMBER_1_6_25
 Em - Eeeh? I've never heard about a contest like this. & EV_EMBER_1_6_26
 Ar - It's more fun than running and we can find out who lasts longer.  & EV_EMBER_1_6_27
 Em - Oooh, I'm not going to lose then! & EV_EMBER_1_6_28
@@ -119,7 +119,7 @@ Ar - More and harder. You can bet on it. & EV_EMBER_1_6_76
 =BG villageday=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Ro - Oh, Master, you are back. Did everything go well? & EV_EMBER_1_6_77
+Ro - Oh, Master, you are back. Did everything went well? & EV_EMBER_1_6_77
 Ar - Of course it did. Have I ever failed you? & EV_EMBER_1_6_78
 Ro(sarcastic) - ... & EV_EMBER_1_6_79
 Em - Ah. Hi Rose. Sir Arron is really strong.  & EV_EMBER_1_6_80
@@ -127,7 +127,9 @@ Em - You know, he could even beat me! & EV_EMBER_1_6_81
 Ro - Uh huh. & EV_EMBER_1_6_82
 Em - But I think it's because he trains with you every so often. & EV_EMBER_1_6_83
 Ro - … & EV_EMBER_1_6_84
-Em - But he says we’re going to train more… & EV_EMBER_1_6_85
+Em - He says we’re going to train more… & EV_EMBER_1_6_85
 Em - So I can last longer. & EV_EMBER_1_6_86
-Ro(sarcastic) - Trains? With me?  & EV_EMBER_1_6_87
+Ro(sarcastic) - Wait, what do you mean he's training with me?  & EV_EMBER_1_6_87
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =STOP=

@@ -28,7 +28,7 @@ var charlist = {
 		bonusres = ['slash', 'light', 'fire', 'earth'],
 		armorbase = {1: 10, 2: 20, 3: 30, 4: 40},
 		armorbonus = {1: 20, 2: 40, 3: 60, 4: 80},
-		skilllist = {'fencing':1, 'parry':3, 'lunge':4, 'sword_mastery':8, 'sideslash':10, 'termination':10, 'swift_s':14, 'smoke_s':18},
+		skilllist = {'fencing':1, 'parry':3, 'lunge':4, 'sword_mastery':8, 'sideslash':10, 'termination':10, 'swift_s':14, 'smoke_s':19},
 		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")
 	},
 	rose = {
@@ -58,7 +58,7 @@ var charlist = {
 		bonusres = ['slash', 'water', 'air', 'dark'],
 		armorbase = {1: 7, 2: 15, 3: 23, 4: 30},
 		armorbonus = {1: 15, 2: 30, 3: 45, 4: 60},
-		skilllist = {'fire_bolt':1, 'renew':3, 'swipe':5, 'deluge':8, 'dispel':8, 'explosion':10, 'flash':12,  'protect':16},
+		skilllist = {'fire_bolt':1, 'renew':2, 'swipe':5, 'deluge':8, 'dispel':22, 'explosion':10, 'flash':14,  'protect':18},
 	},
 	erika = {
 		code = 'erika',
@@ -146,7 +146,7 @@ var charlist = {
 		bonusres = ['dark', 'light', 'water', 'pierce'],
 		armorbase = {1: 10, 2: 20, 3: 30, 4: 40},
 		armorbonus = {1: 20, 2: 40, 3: 60, 4: 80},
-		skilllist = {'dark_orb':1, 'dark_echoes':8, 'avalanche':10, 'soul_beam':12, 'pale_mist':13, 'restoration':14, 'soulthorns':16, 'soul_prot':16},
+		skilllist = {'dark_orb':1, 'dark_echoes':8, 'avalanche':10, 'soul_beam':18, 'pale_mist':13, 'restoration':14, 'soulthorns':16, 'soul_prot':24},
 	},
 	iola = {
 		code = 'iola',
@@ -174,7 +174,7 @@ var charlist = {
 		bonusres = ['bludgeon', 'dark', 'fire', 'air'],
 		armorbase = {1: 7, 2: 15, 3: 23, 4: 30},
 		armorbonus = {1: 15, 2: 30, 3: 45, 4: 60},
-		skilllist = {'holy_light':1, 'barrier':8, 'gustofwind':10, 'sanctuary':10, 'smash':12, 'cleansing':14, 'bless':16, 'purge':20},
+		skilllist = {'holy_light':1, 'barrier':8, 'gustofwind':12, 'sanctuary':20, 'smash':18, 'cleansing':14, 'bless':16, 'purge':25},
 	},
 }
 

@@ -8,6 +8,7 @@
 =GUI_NORMAL=
 The team has entered Aeros observing the surrounding disaster. & EV_CITY_RAID_0
 Ro(sad) - This looks horrible... & EV_CITY_RAID_1
+=SPRITE Human_M=
 Surv - What are you doing here?! & EV_CITY_RAID_2
 Surv - You should escape with everyone now! & EV_CITY_RAID_3
 Ar(neutral) - What exactly is going on? & EV_CITY_RAID_4

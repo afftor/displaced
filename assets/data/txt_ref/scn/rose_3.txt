@@ -5,13 +5,14 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
+Rose has persuaded Arron to go to the city on the presumption of a major festival event going there.
 Ar(neutral) - This is one of the saddest festivals I've ever seen. & EV_ROSE_3_0
 Ro - It's not that bad. & EV_ROSE_3_1
 Ar(neutral) - You've dragged me all the way here, for this. & EV_ROSE_3_2
 Ro - But you should make yourself more accustomed with the local lifestyle. & EV_ROSE_3_3
 Ar(neutral) - Boring. & EV_ROSE_3_4
 Ro(talk) - Especially since you are a political figure. & EV_ROSE_3_5
-Ar(neutral) - When are you going to have some fun, Rose? & EV_ROSE_3_6
+Ar(neutral) - You shouldn't so uptight and allow yourself to relax. & EV_ROSE_3_6
 Ro - Well, I thought it would be more lively... & EV_ROSE_3_7
 Str - Hey, Sir, wanna cupcake for your lady? & EV_ROSE_3_8
 Ro - How much is it? & EV_ROSE_3_9
@@ -21,14 +22,14 @@ Ro - And it looks kinda stale.  & EV_ROSE_3_12
 Str - No way, it's only a week old. & EV_ROSE_3_13
 Ar(neutral) - Are you trying to scam us? & EV_ROSE_3_14
 Str - Don't want - don't buy. We have enough guests coming in this time of year. & EV_ROSE_3_15
-Ar - Listen, you punk... & EV_ROSE_3_16
+Ar - You can't be serious... & EV_ROSE_3_16
 Ro - Master, look. & EV_ROSE_3_17
 Rose pointed at the small platform which seemed to be drawing the majority of people‘s attention. & EV_ROSE_3_18
 Ar - What's that, a performance? & EV_ROSE_3_19
 Ro - Seems so. & EV_ROSE_3_20
 Entr - Today, according to our yearly customs, you'll see the beloved story of the Growing Fern. & EV_ROSE_3_21
 Entr - A symbol of our land. & EV_ROSE_3_22
-Ar(neutral) - You gotta be kidding me. & EV_ROSE_3_23
+Ar(neutral) - A literal weed. & EV_ROSE_3_23
 Str2 - Pfft, stupid foreigners never recognize the high culture. & EV_ROSE_3_24
 Entr - But before that, we have a special announcement. & EV_ROSE_3_25
 Entr - City council declares new orders on taxes and regulations as follows... & EV_ROSE_3_26
@@ -36,12 +37,12 @@ Ar(neutral) - That's it, I'm out. & EV_ROSE_3_27
 Ro(shock) - Wait, Master, it's not polite to leave! & EV_ROSE_3_28
 Ar(shock) - It's not sane to stay! & EV_ROSE_3_29
 Ro(sad) - I'm sorry, it's my fault... & EV_ROSE_3_30
-Ar(neutral) - ... & EV_ROSE_3_31
+Ar - Hmm... & EV_ROSE_3_31
 Ar - Are you ready to take some responsibility then? & EV_ROSE_3_32
 Ro - Yes? & EV_ROSE_3_33
-Ar - Come here. & EV_ROSE_3_34
+Ar - Come with me. & EV_ROSE_3_34
 =GUI_HIDE=
-=MUSIC erotheme=
+=MUSIC eventgeneric=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =SPRITE_HIDE=
@@ -114,6 +115,7 @@ Ar - Oh, crap. Well, we better go now. & EV_ROSE_3_84
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
+=MUSIC eventlight=
 Ar - Say Rose. & EV_ROSE_3_85
 Ro - Yes? & EV_ROSE_3_86
 Ar(neutral) - That wasn't half bad huh? & EV_ROSE_3_87

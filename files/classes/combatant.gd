@@ -308,6 +308,7 @@ func set_shield(value):
 func hpmax_get():
 	var value = hpmax
 	value += hp_growth * variables.curve[level - 1]
+	
 	return value
 
 func get_hpmax_at_level(lvl):

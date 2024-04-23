@@ -299,8 +299,8 @@ var TranslationDict = {
 	FINAL_BATTLE_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",
 	FINAL_BATTLE_SEWERSNAME = "Through Sewers",
 	FINAL_BATTLE_SEWERSDESCRIPT = "Survived the explosion, we have to move through sewers",
-	FINAL_BATTLE_PLANTNAME = "Nuclear Plant",
-	FINAL_BATTLE_PLANTDESCRIPT = "Now it's time to lure Dimitrius in!",
+	FINAL_BATTLE_PLANTNAME = "Fusion Plant",
+	FINAL_BATTLE_PLANTDESCRIPT = "Now it's time to deal with Dimitrius",
 #	FINAL_BATTLE_STAGE1DESCRIPT = "A serie of battles in final standing",
 #	MODERN_CITY_STAGE1NAME = "Unknown Ruins",
 #	MODERN_CITY_STAGE1DESCRIPT = "I don't like it, but what else we gonna do but go for Demitrius now?",
@@ -425,7 +425,7 @@ var TranslationDict = {
 	TOOLTIPEXP = "Experience. Character gains EXP from combat.",
 	TOOLTIPHP = "Health. Automatically restored after each combat.",
 	TOOLTIPMFINISED = "This mission is finished, but you can replay it.",
-	TOOLTIPSCALELVL = "This option will scale enemies up to your current level.",
+	TOOLTIPSCALELVL = "This option will scale enemies up to your current level. They will give more XP on defeat but will be harder. ",
 	TOOLTIPFILEDELETE = 'Press this button to delete selected save file.',
 	
 #	SELECT = "Select",
@@ -1143,7 +1143,7 @@ var TranslationDict = {
 	#char panel
 	CHARPANEL = "Info",
 	DETAILS = "Details",
-	BD = "BD",
+	BD = "Attack",
 	RESISTANCES = "Resistances",
 	RESIST = "Resist",
 	

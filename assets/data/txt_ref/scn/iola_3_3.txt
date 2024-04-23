@@ -98,6 +98,8 @@ De - Okay, have fun worms, daughter... & EV_IOLA_3_3_72
 I(shock) - ..... & EV_IOLA_3_3_73
 De - There's things that need to be set in motion. & EV_IOLA_3_3_74
 =SPRITE_HIDE=
+=SPRITE_FADE 0.3=
+=SOUND teleport=
 Dimitrius teleported out of the cave leaving everyone in shock. & EV_IOLA_3_3_75
 =SPRITE iola=
 I(shock) - Please, don't die, I... can heal you... & EV_IOLA_3_3_76
@@ -113,7 +115,7 @@ Ar - Iola? & EV_IOLA_3_3_85
 I(sad) - ....... & EV_IOLA_3_3_86
 After a few minutes they left the caves. & EV_IOLA_3_3_87
 =GUI_HIDE=
-=MUSIC rilu_theme=
+=MUSIC event_tragic=
 =BLACKTRANS 1=
 =DELAY 1=
 =BG villageday=

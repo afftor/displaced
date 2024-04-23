@@ -3,6 +3,7 @@
 =SPRITE rose=
 =BLACKFADE 0.5=
 =DELAY 0.5=
+=MUSIC eventgeneric=
 =GUI_NORMAL=
 Ro - So, to sum it up, you are wasting too much money on fancy food. & EV_IOLA_2_7_0
 Ar(neutral) - Rose, have you seen where we live at? & EV_IOLA_2_7_1
@@ -36,14 +37,14 @@ Ro(sarcastic) - That's not fun, this is basically an orgy.  & EV_IOLA_2_7_20
 I - Not exactly. & EV_IOLA_2_7_21
 I - This will be centered around Arron, since he's our only man in charge.  & EV_IOLA_2_7_22
 Ro(sarcastic) - I still refuse.  & EV_IOLA_2_7_23
-Ro - (If they need at least four people, that means if I refuse, they won't do it anyway) & EV_IOLA_2_7_24
+Ro - (If they need at least four people, that means if I refuse, they won't do it anyway.) & EV_IOLA_2_7_24
 Er - Well, that's too bad.  & EV_IOLA_2_7_25
 Er - Do you think Ember will be willing to take her place? & EV_IOLA_2_7_26
 Ro(shock) - Eh?! & EV_IOLA_2_7_27
 I - Oh, we can ask her out. & EV_IOLA_2_7_28
-Ro - (Wait) & EV_IOLA_2_7_29
-Ro - (Master will be doing it with three other girls at same time) & EV_IOLA_2_7_30
-Ro - (While I'll be left out) & EV_IOLA_2_7_31
+Ro - (Wait.) & EV_IOLA_2_7_29
+Ro - (Master will be doing it with three other girls at same time.) & EV_IOLA_2_7_30
+Ro - (While I'll be left out...) & EV_IOLA_2_7_31
 Ro - ... & EV_IOLA_2_7_32
 Ro(talk) - No, don't. & EV_IOLA_2_7_33
 Ro - ...I'll do it. & EV_IOLA_2_7_34
@@ -80,6 +81,7 @@ Er - Don't overexert yourself though. & EV_IOLA_2_7_57
 Ar - Don't worry, I've been blessed with endless virility. & EV_IOLA_2_7_58
 I - I've fed him with a stamina supplement, so it should be all good. & EV_IOLA_2_7_59
 Ar - Jeez, why did you tell them. What about my image? & EV_IOLA_2_7_60
+=DELAY 1=
 =ABG rose_erika_iola_2 rose_erika_iola_3=
 Er - Oo-oh...  & EV_IOLA_2_7_61
 Er - I'm getting it first. & EV_IOLA_2_7_62
@@ -96,6 +98,7 @@ I - You can touch yourself too. & EV_IOLA_2_7_72
 I - Or do you want me to help you out? & EV_IOLA_2_7_73
 Ro - N-no, this is fine... & EV_IOLA_2_7_74
 Ro - Ah! & EV_IOLA_2_7_75
+=DELAY 1=
 =ABG rose_erika_iola_4=
 Unexpectedly Arron picked up their conversation and moved his hand to Rose's crotch. & EV_IOLA_2_7_76
 Ar - Don't be so uptight, here's your beloved master's caress. & EV_IOLA_2_7_77
@@ -110,12 +113,14 @@ Er - Push as deep...  & EV_IOLA_2_7_85
 Er - As you can... & EV_IOLA_2_7_86
 Ar - Nghh!.. & EV_IOLA_2_7_87
 Er - AAAhhh!.. & EV_IOLA_2_7_88
+=DELAY 1=
 =ABG rose_erika_iola_5 rose_erika_iola_6=
 Ar - Hah... & EV_IOLA_2_7_89
 Er - It's filling me. & EV_IOLA_2_7_90
 Er - Your hot spunk... & EV_IOLA_2_7_91
 Ro - (She looks really happy...) & EV_IOLA_2_7_92
 Ar - Phew... Two more to go. & EV_IOLA_2_7_93
+=DELAY 1=
 =ABG rose_erika_iola_7 rose_erika_iola_8=
 I - Aah... & EV_IOLA_2_7_94
 I - It's inside. & EV_IOLA_2_7_95
@@ -130,6 +135,7 @@ Er - Hehe, it seems Rose feels lonely. & EV_IOLA_2_7_103
 Er - And you are all dripping down there too. & EV_IOLA_2_7_104
 Ro - Stop... & EV_IOLA_2_7_105
 Er - Don't be sad, I bet he left the best for the dessert.  & EV_IOLA_2_7_106
+=DELAY 1=
 =ABG rose_erika_iola_9=
 Meanwhile Iola and Arron focused solely on their intercourse. & EV_IOLA_2_7_107
 I - I'm sorry, I feel like.. & EV_IOLA_2_7_108
@@ -138,6 +144,7 @@ I - Ah, I'm getting close... & EV_IOLA_2_7_110
 Ar - Me too... & EV_IOLA_2_7_111
 I - Aahh... Ahh. & EV_IOLA_2_7_112
 I - I'm cumming!... & EV_IOLA_2_7_113
+=DELAY 1=
 =ABG rose_erika_iola_10 rose_erika_iola_11=
 Arron pumped Iola's pussy with his hot seed. & EV_IOLA_2_7_114
 I - AAaah... & EV_IOLA_2_7_115
@@ -153,6 +160,7 @@ Ar - You'd be spoiling the fun for others. & EV_IOLA_2_7_124
 Ro - ...Sorry, please make l-love to me. & EV_IOLA_2_7_125
 Er - Aww, how old-fashioned. & EV_IOLA_2_7_126
 Ar - Alright, here's your patience reward... & EV_IOLA_2_7_127
+=DELAY 1=
 =ABG rose_erika_iola_12 rose_erika_iola_13=
 Arron carefully pushed his cock inside of the already wet Rose. & EV_IOLA_2_7_128
 Ro - Ah...  & EV_IOLA_2_7_129
@@ -166,6 +174,7 @@ Ro - Yes...  & EV_IOLA_2_7_136
 Ro - Faster... & EV_IOLA_2_7_137
 Ar - Just look at this. & EV_IOLA_2_7_138
 Ar - We are turning our meek Rose into a passionate whore. & EV_IOLA_2_7_139
+=DELAY 1=
 =ABG rose_erika_iola_14=
 Ro - Stop... Ah...  & EV_IOLA_2_7_140
 Er - Seeing her expression makes me jealous.  & EV_IOLA_2_7_141
@@ -178,6 +187,7 @@ Ar - Damn you Rose. & EV_IOLA_2_7_147
 Ar - Enjoying this more than even me. & EV_IOLA_2_7_148
 Ro - I'm almost...  & EV_IOLA_2_7_149
 Ro - I'm cumming!! & EV_IOLA_2_7_150
+=DELAY 1=
 =ABG rose_erika_iola_15 rose_erika_iola_16=
 Ar - Nghhh! & EV_IOLA_2_7_151
 Ro - AAaah!.... & EV_IOLA_2_7_152

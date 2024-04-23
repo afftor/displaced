@@ -29,6 +29,7 @@ func _ready():
 
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
+		
 
 func check_last_save():
 	lastsave = globals.get_last_save();

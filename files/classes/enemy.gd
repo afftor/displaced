@@ -19,7 +19,7 @@ func get_spec_data():
 
 
 func get_reward():
-	return  int(xpreward * variables.curve[level - 1])
+	return  int(xpreward * variables.exp_curve[level - 1])
 
 
 func hpmax_get():

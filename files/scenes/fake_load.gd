@@ -77,7 +77,7 @@ func start_load():
 		progress_node.value = steps[i]
 		cur_time = times[i]
 	yield(get_tree().create_timer(0.5), 'timeout')
-	progress_node.hide()
+	#progress_node.hide()
 	press_key_node.show()
 	set_process_input(true)
 

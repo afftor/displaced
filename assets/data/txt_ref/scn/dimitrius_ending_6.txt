@@ -3,6 +3,7 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG future_city_reactor=
+=MUSIC event_combat=
 =SPRITE demitrius_demon=
 De - Ghah, you idiots.  & EV_DIMITRIUS_ENDING_6_0
 De - Still don't understand that you can't defeat me. & EV_DIMITRIUS_ENDING_6_1
@@ -14,7 +15,7 @@ A number of demon minions jumped from the outside into the building.  & EV_DIMIT
 Ar(anger) - Gh... & EV_DIMITRIUS_ENDING_6_7
 De - Go after them! & EV_DIMITRIUS_ENDING_6_8
 De - Now I made you look like an idiot. Ahaha! & EV_DIMITRIUS_ENDING_6_9
-Ar(neutral) - We'll see about that, asshole. & EV_DIMITRIUS_ENDING_6_10
+Ar(neutral) - We'll see about that, bastard. & EV_DIMITRIUS_ENDING_6_10
 Saying that, Arron turned his back and ran away. & EV_DIMITRIUS_ENDING_6_11
 De(anger) - ...? & EV_DIMITRIUS_ENDING_6_12
 De - This imbecile never learns.  & EV_DIMITRIUS_ENDING_6_13
@@ -25,6 +26,7 @@ De - This imbecile never learns.  & EV_DIMITRIUS_ENDING_6_13
 =SPRITE_HIDE=
 =GUI_NORMAL=
 =BLACKFADE 1=
+=SPRITE erika=
 Meanwhile Rose and Erika moved through the lab’s upper floors. & EV_DIMITRIUS_ENDING_6_14
 Ro - Come on, come on. & EV_DIMITRIUS_ENDING_6_15
 Ro(talk) - Erika, you sure you remember the map? & EV_DIMITRIUS_ENDING_6_16
