@@ -28,7 +28,8 @@ enum {TR_CAST,#on skill cast, befor even target refining and any true actions
 	TR_COMBAT_S,#on char's group been formed at start of combat. Occurs for all player's char at combat start, and for enemies of the wave at wave's start
 	TR_COMBAT_F,#occurs for every char on battlefield on very finish of combat (window closure): at loss, at runaway and on reward claiming after victory
 	TR_SHIELD_DOWN,#on char's shield been depleted to 0
-	TR_RES#on char's resurrection
+	TR_RES,#on char's resurrection
+	TR_RESERVE#on hero moving to reserve
 	};
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_REMOVE};
 enum {TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};

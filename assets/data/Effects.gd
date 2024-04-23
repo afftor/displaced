@@ -409,7 +409,7 @@ var effect_table = {
 		type = 'trigger',
 		debug_name = 'protect_cleaner',
 		conditions = [],
-		trigger = [variables.TR_DEATH],
+		trigger = [variables.TR_DEATH, variables.TR_RESERVE],
 		req_skill = false,
 		sub_effects = [
 			{

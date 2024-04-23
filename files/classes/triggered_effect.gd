@@ -102,6 +102,7 @@ func e_apply():
 						call_deferred('remove')
 					'remove_siblings':#haven't been tested
 						remove_siblings()
+						input_handler.combat_node.update_buffs()
 						call_deferred('remove')
 			'skill':
 				var obj = self_args['skill']
@@ -127,6 +128,7 @@ func e_apply():
 						var obj = effects_pool.get_effect_by_id(parent)
 						obj.remove_siblings()
 						obj.remove()
+						input_handler.combat_node.update_buffs()
 					'tick':
 						var obj = effects_pool.get_effect_by_id(parent)
 						if obj is temp_e_progress or obj is temp_e_simple or obj is temp_e_upgrade:

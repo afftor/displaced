@@ -888,6 +888,7 @@ func move_hero(chid, pos): #reserve -> bf
 	var newchar = state.heroes[chid]
 	if battlefield[pos] != null:
 		var targetchar = battlefield[pos]
+		targetchar.process_event(variables.TR_RESERVE)
 		targetchar.displaynode.disappear()
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -919,6 +920,7 @@ func reserve_hero(chid): #bf -> reserve
 	allowaction = false
 	var newchar = state.heroes[chid]
 	var pos = newchar.position
+	newchar.process_event(variables.TR_RESERVE)
 	input_handler.PlaySound(sounds["move_hero"])
 	newchar.displaynode.disappear()
 	CombatAnimations.check_start()
