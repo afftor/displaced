@@ -1032,14 +1032,12 @@ func victory():
 	var advance_button = $Rewards/AdvanceButton
 	var progress_label = $Rewards/progress
 	var unlock_panel = $Rewards/UnlockPanel
-	var bonus_label = $Rewards/bonus_label
 	close_button.get_node("Label").text = tr('CLOSE')
 	close_button.disabled = true
 	advance_button.disabled = true
 	progress_label.visible = false
 	unlock_panel.hide()
 	input_handler.StopMusic()
-	bonus_label.hide()
 	#on combat ends triggers
 	
 	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
@@ -1092,6 +1090,7 @@ func victory():
 	if rewards_bonus:
 		rewardsdict.xp = int(rewardsdict.xp * 1.1)
 		rewardsdict.gold = int(rewardsdict.gold * 1.1)
+	$Rewards/bonus_label.visible = rewards_bonus
 	
 	input_handler.ClearContainerForced($Rewards/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
@@ -1183,12 +1182,10 @@ func victory():
 	yield(get_tree().create_timer(1.7), 'timeout')
 	on_level_up_close()
 	
-	if rewards_bonus:
-		bonus_label.rect_scale = Vector2(0.5,0.5)
-		bonus_label.show()
-		tween = input_handler.GetTweenNode(bonus_label)
-		tween.interpolate_property(bonus_label,'rect_scale', Vector2(0.5,0.5), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
+	
+	tween = input_handler.GetTweenNode($Rewards/bonus_label)
+	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(0.5,0.5), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 	
 	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
 		if i.name == 'Button':

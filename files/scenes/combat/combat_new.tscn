@@ -671,7 +671,6 @@ margin_left = 52.0
 margin_top = 129.0
 margin_right = 604.0
 margin_bottom = 161.0
-rect_pivot_offset = Vector2( 276, 16 )
 custom_fonts/font = ExtResource( 35 )
 text = "NO_DEFEATED"
 align = 1
