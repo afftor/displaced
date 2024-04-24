@@ -165,7 +165,7 @@ var event_triggers = {#reworked to same syntax as seqs
 var locations = { #added seqs bindings and other fields
 	village =  {
 		code = 'village',
-		background = null, 
+		background = null,
 		missions = [],
 		events = ['erika_at_village','dimitrius_2_1_2']
 	},
@@ -1549,20 +1549,26 @@ func check_new_location_activity(loc): #if there is non-completed mission avail
 
 
 func preload_resources():
+#	print("preload bg:")
+#	print("locations:")
 	for rec in locations.values():
-		print("bg/%s" % rec.background) 
-		resources.preload_res("bg/%s" % rec.background)
+		if rec.background != null:
+#			print(rec.background)
+			resources.preload_res("bg/%s" % rec.background)
+#	print("areas:")
 	for rec in areas.values():
+#		print("explore_image:")
 		if rec.has('explore_image') and rec.explore_image != null and rec.explore_image != '':
-			print("bg/%s" % rec.explore_image)
+#			print(rec.explore_image)
 			resources.preload_res("bg/%s" % rec.explore_image)
+#		print("image:")
 		if rec.has('image') and rec.image != null:
 			if rec.image is Array:
 				for img in rec.image:
-					print("bg/%s" % img)
+#					print(img)
 					resources.preload_res("bg/%s" % img)
 			elif rec.image != '':
-				print("bg/%s" % rec.image)
+#				print(rec.image)
 				resources.preload_res("bg/%s" % rec.image)
 
 #"needs autosave" means action starts mission with no "no_autosave" flag

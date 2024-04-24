@@ -4103,7 +4103,7 @@ func rebuild_remove(skill_cond):
 
 func _ready():
 	yield(preload_icons(), 'completed')
-	print("Buff icons preloaded")
+#	print("Buff icons preloaded")
 
 func preload_icons():
 	for b in buffs.values():

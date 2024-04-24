@@ -239,7 +239,7 @@ var default_animations_after_delay = { #generally should be negative, but not ov
 
 func _ready():
 	fill_curve()
-	print(curve)
+#	print(curve)
 	check_resist_integrity()
 #	calc_max_resist_name_size()
 

@@ -32,7 +32,7 @@ const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 
 var char_map = {
 	Narrator = {
 		source = 'NARRATOR',
-		portrait = null,
+#		portrait = null,
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones, useless now
 #		sprite = null, #useless for now due to SPRITE format currntly used
@@ -50,7 +50,7 @@ var char_map = {
 	},
 	Woman = {
 		source = 'WOMAN',
-		portrait = 'Woman', #not exist
+#		portrait = 'Woman', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -77,7 +77,7 @@ var char_map = {
 	},
 	Traveler = {
 		source = 'TRAVELER',
-		portrait = 'traveller_2', #not exist
+#		portrait = 'traveller_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -86,7 +86,7 @@ var char_map = {
 	},
 	Surv = {
 		source = 'SURVIVOR',
-		portrait = 'Survivor', #not exist
+#		portrait = 'Survivor', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -95,7 +95,7 @@ var char_map = {
 	},
 	Str2 = {
 		source = 'STRANGER2',
-		portrait = 'Stranger_2', #not exist
+#		portrait = 'Stranger_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -104,7 +104,7 @@ var char_map = {
 	},
 	Str = {
 		source = 'STRANGER',
-		portrait = 'Stranger', #not exist
+#		portrait = 'Stranger', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -113,7 +113,7 @@ var char_map = {
 	},
 	Entr = {
 		source = 'ENTERTAINER',
-		portrait = 'Entertainer', #not exist
+#		portrait = 'Entertainer', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -122,7 +122,7 @@ var char_map = {
 	},
 	SlaveTrader2 = {
 		source = 'SLAVE_TRADER_A',
-		portrait = 'Slave_Trader', #not exist
+#		portrait = 'Slave_Trader', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -131,7 +131,7 @@ var char_map = {
 	},
 	SlaveTrader = {
 		source = 'SLAVE_TRADER_B',
-		portrait = 'Slave_Trader_2', #not exist
+#		portrait = 'Slave_Trader_2', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -140,7 +140,7 @@ var char_map = {
 	},
 	S = {
 		source = 'SOLDIER',
-		portrait = 'Guard', #not exist
+		portrait = 'Guard',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -167,7 +167,7 @@ var char_map = {
 	},
 	RN = {
 		source = 'RICH_NOBLE',
-		portrait = 'Rich_Noble', #not exist
+#		portrait = 'Rich_Noble', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -185,7 +185,7 @@ var char_map = {
 	},
 	N = {
 		source = 'NICOLAS',
-		portrait = 'Nicolas', #not exist
+#		portrait = 'Nicolas', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -194,7 +194,7 @@ var char_map = {
 	},
 	M = {
 		source = 'MERCHANT',
-		portrait = 'Merchant', #not exist
+#		portrait = 'Merchant', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -222,7 +222,7 @@ var char_map = {
 	I = {
 		source = 'IOLA',
 		portrait = 'Iola',
-		base_variants = ['Neutral', 'Sad', 'Shock'], #for normal filenamaes with suffixes
+		base_variants = ['Sad', 'Shock'], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'iola',
 #		animated = true,
@@ -275,7 +275,7 @@ var char_map = {
 	},
 	FA = {
 		source = 'FAERY_A',
-		portrait = 'Fairy_A', #not exist
+#		portrait = 'Fairy_A', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -284,7 +284,7 @@ var char_map = {
 	},
 	FB = {
 		source = 'Faery B',
-		portrait = 'Fairy_B', #not exist
+#		portrait = 'Fairy_B', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -302,7 +302,7 @@ var char_map = {
 	},
 	Et = {
 		source = 'ENT',
-		portrait = 'Ent', #not exist
+#		portrait = 'Ent', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'ent',
@@ -331,7 +331,7 @@ var char_map = {
 	},
 	EC = {
 		source = 'ELF_CHILD',
-		portrait = 'Elf_Child', #not exist
+#		portrait = 'Elf_Child', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -364,7 +364,7 @@ var char_map = {
 	},
 	Demon = {
 		source = 'DEMON',
-		portrait = 'Demon', #not exist
+#		portrait = 'Demon', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'demon',
@@ -374,7 +374,7 @@ var char_map = {
 	D = {
 		source = 'DEMITRIUS',
 		portrait = 'Demitrius',
-		base_variants = ['Normal', 'Talk', 'Anger'], #for normal filenamaes with suffixes
+		base_variants = ['Normal', 'Talk'],#'Anger' #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'demitrius',
 #		animated = true,
@@ -383,7 +383,7 @@ var char_map = {
 	De = {
 		source = 'DEMITRIUS_DEMON',
 		portrait = 'Demitrius_Demon',
-		base_variants = ['Normal', 'Anger'], #for normal filenamaes with suffixes
+		base_variants = ['Normal'],#'Anger' #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = 'demitrius_demon',
 #		animated = true,
@@ -391,7 +391,7 @@ var char_map = {
 	},
 	CM = {
 		source = 'COMMITTEE_MEMBER',
-		portrait = 'Committee_Member', #not exist
+#		portrait = 'Committee_Member', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -415,7 +415,7 @@ var char_map = {
 	},
 	Boy = {
 		source = 'BOY',
-		portrait = 'Boy', #not exist
+#		portrait = 'Boy', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -442,7 +442,7 @@ var char_map = {
 	},
 	'?':{
 		source = '??',
-		portrait = '??', #not exist
+#		portrait = '??', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -451,7 +451,7 @@ var char_map = {
 	},
 	'??': {
 		source = '???',
-		portrait = '???', #not exist
+#		portrait = '???', #not exist
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -460,7 +460,7 @@ var char_map = {
 	},
 	'?(Z)': {
 		source = '???',
-		portrait = 'Zelroth', #not exist
+		portrait = 'Zelroth',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -469,7 +469,7 @@ var char_map = {
 	},
 	'?(C)': {
 		source = '???',
-		portrait = 'Caliban', #not exist
+		portrait = 'Caliban',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -478,7 +478,7 @@ var char_map = {
 	},
 	'?(An)': {
 		source = '???',
-		portrait = 'Annet', #not exist
+		portrait = 'AnnetNormal',
 		base_variants = [], #for normal filenamaes with suffixes
 #		custom_variants = [], #for specific ones
 #		sprite = null,
@@ -487,13 +487,13 @@ var char_map = {
 	},
 	slavetrader = {
 		source = 'SLAVE_TRADER_A',
-		portrait = 'Boy',
+#		portrait = 'Boy',
 		base_variants = [],
 		color = Color('ffffff'),
 	},
 	slavetrader2 = {
 		source = 'SLAVE_TRADER_B',
-		portrait = 'Boy',
+#		portrait = 'Boy',
 		base_variants = [],
 		color = Color('ffffff'),
 	},
@@ -598,19 +598,20 @@ func extend_char_map():
 				char_map[newkey] = newdata
 		if mapdata.has('base_variants'):
 			for variant in mapdata.base_variants:
-				var newkey = "%s(%s)"  % [key, variant.to_lower()]
+				var newkey = "%s(%s)" % [key, variant.to_lower()]
 				var newdata = mapdata.duplicate(true)
 				if newkey.length() > char_max:
 					char_max = newkey.length()
-				newdata.portrait = newdata.portrait + variant
+				if newdata.has("portrait"):#in fact chars with base_variants always should have portrait
+					newdata.portrait = newdata.portrait + variant
 				char_map[newkey] = newdata
-			if mapdata.base_variants.has('Normal'):
+			if mapdata.base_variants.has('Normal') and char_map[key].has("portrait"):
 				char_map[key].portrait = char_map[key].portrait + 'Normal'
 
 
 func preload_portraits():
 	for chardata in char_map.values():
-		if chardata.has('portrait') and chardata.portrait != null:
+		if chardata.has('portrait'):
 			resources.preload_res("portrait/%s" % chardata.portrait)
 
 func OpenLog():
@@ -1160,7 +1161,9 @@ func advance_scene() -> void:
 		TextField.visible_characters = ShownCharacters
 		TextField.bbcode_text = "[color=#%s]%s[/color]" % [character.color.to_html(), replica]
 		
-		var portrait_res = resources.get_res("portrait/%s" % character.portrait)
+		var portrait_res
+		if character.has("portrait"):
+			portrait_res = resources.get_res("portrait/%s" % character.portrait)
 		
 		$Panel/DisplayName.modulate.a = 1 if !is_narrator else 0
 		$Panel/CharPortrait.modulate.a = 1 if !is_narrator && portrait_res != null else 0
@@ -1373,11 +1376,12 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 				var char_code = i.get_slice(" - ", 0)
 				if is_char_name(char_code):
 					var character = char_map[char_code]
-					var res_name = character.portrait
-					if !out[current_scene]["res"].has("portrait"):
-						out[current_scene]["res"]["portrait"] = []
-					if !out[current_scene]["res"]["portrait"].has(res_name):
-						out[current_scene]["res"]["portrait"].append(res_name)
+					if character.has("portrait"):
+						var res_name = character.portrait
+						if !out[current_scene]["res"].has("portrait"):
+							out[current_scene]["res"]["portrait"] = []
+						if !out[current_scene]["res"]["portrait"].has(res_name):
+							out[current_scene]["res"]["portrait"].append(res_name)
 			
 			#-------should be switched off in most cases, except changes in events------
 			if " & " in i:

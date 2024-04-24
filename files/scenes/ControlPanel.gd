@@ -3,7 +3,7 @@ extends Control
 onready var BS = $BlackScreen;
 var sounds = {
 	"defeat" : "sound/defeat",
-	"itemget" : "sound/itemget"
+#	"itemget" : "sound/itemget_1"
 }
 
 export(Texture) var menu_home_icon
@@ -106,14 +106,15 @@ func FadeToBlackAnimation(time = 1):
 
 var itemicon = preload("res://files/scenes/ItemIcon.tscn")
 
-func flyingitemicon(taskbar, icon):
-	var x = itemicon.instance()
-	add_child(x)
-	x.texture = icon
-	x.rect_global_position = taskbar.rect_global_position
-	input_handler.PlaySound(sounds["itemget"])
-	input_handler.ResourceGetAnimation(x, taskbar.rect_global_position, $ControlPanel/Inventory.rect_global_position)
-	yield(get_tree().create_timer(0.7), 'timeout')
-	x.queue_free()
+#seems not in use
+#func flyingitemicon(taskbar, icon):
+#	var x = itemicon.instance()
+#	add_child(x)
+#	x.texture = icon
+#	x.rect_global_position = taskbar.rect_global_position
+#	input_handler.PlaySound(sounds["itemget"])
+#	input_handler.ResourceGetAnimation(x, taskbar.rect_global_position, $ControlPanel/Inventory.rect_global_position)
+#	yield(get_tree().create_timer(0.7), 'timeout')
+#	x.queue_free()
 
 

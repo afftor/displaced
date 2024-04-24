@@ -2482,7 +2482,7 @@ var skilllist = {
 		sfx = [{code = 'sfx_pale_mist', target = 'target', period = 'predamage', flip_h = true},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'anim_attack', target = 'caster', period = 'cast'},],
-		sounddata = {cast = 'zombi at'},
+		sounddata = {cast = 'zombie at'},
 		patches = [],
 		ai_priority = 0.3
 	},
@@ -2998,7 +2998,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'anim_cast', target = 'caster', period = 'cast'},
 			{code = 'sfx_sanctuary', target = 'target', period = 'predamage'}],
-		sounddata = {predamage = 'heal'},
+		sounddata = {predamage = 'renew'},
 		ai_priority = 10,
 	},
 	
