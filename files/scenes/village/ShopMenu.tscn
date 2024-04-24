@@ -83,19 +83,19 @@ valign = 1
 margin_left = 101.0
 margin_top = 125.0
 margin_right = 1193.0
-margin_bottom = 714.0
+margin_bottom = 744.0
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="GridContainer" parent="Panel/ScrollContainer"]
 margin_right = 1092.0
-margin_bottom = 180.0
 size_flags_horizontal = 3
-custom_constants/vseparation = 22
+custom_constants/vseparation = 2
 custom_constants/hseparation = 60
 columns = 2
 
 [node name="Button" type="TextureButton" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
 margin_right = 512.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 512, 180 )

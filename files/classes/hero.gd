@@ -81,7 +81,7 @@ func exp_set(value):
 
 
 func get_exp_cap():
-	return int(100 * variables.curve[level - 1])
+	return int(100 * variables.exp_curve[level - 1])
 
 func a_mana_set(value):
 	pass

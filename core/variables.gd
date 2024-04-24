@@ -194,6 +194,7 @@ const lines = {
 }
 
 var curve = [1.0]
+var exp_curve = [1.0]
 
 var default_animations_duration = {
 	attack = 0.6,
@@ -245,11 +246,14 @@ func _ready():
 
 func fill_curve():
 	for i in range(14): 
-		curve.push_back(curve.back() * 1.15)#old 1.25
+		curve.push_back(curve.back() * (1.15 + 0.01*i))#old 1.25
+		exp_curve.push_back(exp_curve.back() * 1.25)
 	for i in range(5): 
 		curve.push_back(curve.back() * 1.08)#old 1.1
+		exp_curve.push_back(exp_curve.back() * 1.1)
 	for i in range(26): 
 		curve.push_back(curve.back() * 1.02)
+		exp_curve.push_back(exp_curve.back() * 1.02)
 
 
 #var gallery_singles_list = [

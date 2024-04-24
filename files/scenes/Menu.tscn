@@ -172,8 +172,8 @@ margin_top = 47.0
 margin_right = 574.0
 margin_bottom = 215.0
 bbcode_enabled = true
-bbcode_text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
-text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+bbcode_text = "Thank you for participating in testing of Displaced. This is an alpha release. The game balance and content are subject to changes. Please leave your feedback at related discord/itch pages/forums"
+text = "Thank you for participating in testing of Displaced. This is an alpha release. The game balance and content are subject to changes. Please leave your feedback at related discord/itch pages/forums"
 
 [node name="Button" type="Button" parent="DemoPanel"]
 margin_left = 170.0
@@ -373,4 +373,3 @@ angle_random = 1.0
 color_ramp = SubResource( 1 )
 
 [node name="WarnScreen" parent="." instance=ExtResource( 18 )]
-visible = false

@@ -15,7 +15,7 @@ G - Hah.  & EV_IOLA_1_5_4
 *swoosh* & EV_IOLA_1_5_5
 Ar(shock) - What the heck?! You’re cheating! & EV_IOLA_1_5_6
 Ar(neutral) - No way you can throw it that far with your height.  & EV_IOLA_1_5_7
-G - Gold please. & EV_IOLA_1_5_8
+G - Pay up for the bet already. & EV_IOLA_1_5_8
 Ar(neutral) - Hmph. & EV_IOLA_1_5_9
 I - Sir Arron? & EV_IOLA_1_5_10
 Ar - Aye. & EV_IOLA_1_5_11

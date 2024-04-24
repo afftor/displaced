@@ -4,6 +4,7 @@
 =BG future_city_reactor=
 =GUI_NORMAL=
 =SPRITE rose=
+=MUSIC event_combat=
 Ro - We made it... & EV_DIMITRIUS_ENDING_7_0
 Er - Yes, come in, it's after this door. & EV_DIMITRIUS_ENDING_7_1
 Ro(talk) - Great. & EV_DIMITRIUS_ENDING_7_2
@@ -11,7 +12,7 @@ Rose and Erika entered the room filled with glowing glass screens. & EV_DIMITRIU
 Er - Alright, it's your turn. & EV_DIMITRIUS_ENDING_7_4
 Ro - Uh... This might take some time. & EV_DIMITRIUS_ENDING_7_5
 Er - You sure you can manage it? & EV_DIMITRIUS_ENDING_7_6
-Ro(sarcastic) - No, it would help if you could help me out too. & EV_DIMITRIUS_ENDING_7_7
+Ro(sarcastic) - No, but you could help me out. & EV_DIMITRIUS_ENDING_7_7
 Er - You know I'm too stupid for this stuff. & EV_DIMITRIUS_ENDING_7_8
 Ro - ...Just let Rilu know we got there.  & EV_DIMITRIUS_ENDING_7_9
 =GUI_HIDE=
@@ -55,5 +56,5 @@ I - Got it! & EV_DIMITRIUS_ENDING_7_26
 =SPRITE demon=
 Demon - Arghh! & EV_DIMITRIUS_ENDING_7_27
 Em - Oh no, they found us! & EV_DIMITRIUS_ENDING_7_28
-Ri - We have no time for this.  & EV_DIMITRIUS_ENDING_7_29
+Ri - ...We don't really have time for this.  & EV_DIMITRIUS_ENDING_7_29
 =STOP=

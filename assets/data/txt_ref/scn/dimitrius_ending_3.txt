@@ -18,10 +18,13 @@ A sound of distant explosions shook the air. & EV_DIMITRIUS_ENDING_3_8
 As they turned the way it came from, they could see a small object flying through the air. & EV_DIMITRIUS_ENDING_3_9
 Er - Look! & EV_DIMITRIUS_ENDING_3_10
 Ar(shock) - Shit, dodge! & EV_DIMITRIUS_ENDING_3_11
+=MUSIC STOP=
 Before Arron noticed, Dimitrius had escaped, observing them from a safe distance. & EV_DIMITRIUS_ENDING_3_12
 =SPRITE demitrius_demon=
 =SOUND explosion=
-An explosion of insane power erupted on top of the square where he just fought. & EV_DIMITRIUS_ENDING_3_13
+=SHAKE_SCREEN 1=
+=DELAY 1=
+An explosion of unbelieavble power erupted on top of the square where he just fought. & EV_DIMITRIUS_ENDING_3_13
 De - Hahaha!  & EV_DIMITRIUS_ENDING_3_14
 De - These toys are really something. & EV_DIMITRIUS_ENDING_3_15
 De - How did you like this tactical nuke, Arron? & EV_DIMITRIUS_ENDING_3_16
@@ -33,6 +36,7 @@ De - Ah, I guess you can't answer anymore. & EV_DIMITRIUS_ENDING_3_17
 =SPRITE_HIDE=
 =BLACKFADE 0.5=
 =GUI_NORMAL=
+=MUSIC event_mysterious=
 Ar - Shit... Everyone alright? & EV_DIMITRIUS_ENDING_3_18
 Ro(talk) - Yes, we've got pushed underground by the blast. & EV_DIMITRIUS_ENDING_3_19
 Ro - Iola shielded us in the last moment. & EV_DIMITRIUS_ENDING_3_20

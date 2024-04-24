@@ -581,7 +581,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'rose_night',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_boobs'}],
-		unlock_price = {rose = 50},
+		unlock_price = {rose = 100},
 		actions = [
 		{type = 'scene', value = 'rose_1'},
 		{type = 'unlock_scene', value = 'rose_night'},
@@ -593,7 +593,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'rose_public',
 		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'},{type = 'seq_seen', value = 'rose_night'}],
-		unlock_price = {rose = 250},
+		unlock_price = {rose = 150},
 		actions = [
 		{type = 'scene', value = 'rose_3'},
 		{type = 'unlock_scene', value = 'rose_public'},
@@ -628,7 +628,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'ember_missionary',
-		unlock_price = {ember = 100},
+		unlock_price = {ember = 50},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_4'},
@@ -640,7 +640,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'ember_titjob',
-		unlock_price = {ember = 250},
+		unlock_price = {ember = 75},
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_missionary'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_5'},
@@ -652,7 +652,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'ember_doggy',
-		unlock_price = {ember = 500},
+		unlock_price = {ember = 125},
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_titjob'}],
 		actions = [
 		{type = 'scene', value = 'ember_1_6'},
@@ -664,7 +664,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'rilu_cowgirl',
-		unlock_price = {rilu = 100},
+		unlock_price = {rilu = 50},
 		initiate_reqs = [],
 		actions = [
 		{type = 'scene', value = 'rilu_1_6'},
@@ -677,7 +677,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'rilu_doggy',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_cowgirl'}],
-		unlock_price = {rilu = 250},
+		unlock_price = {rilu = 125},
 		actions = [
 		{type = 'scene', value = 'rilu_2_1'},
 		{type = 'unlock_scene', value = 'rilu_doggy'},
@@ -689,7 +689,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'rilu_anal',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_doggy'}],
-		unlock_price = {rilu = 500},
+		unlock_price = {rilu = 150},
 		actions = [
 		{type = 'scene', value = 'rilu_2_2'},
 		{type = 'unlock_scene', value = 'rilu_anal'},
@@ -714,7 +714,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'iola_cunnilingus',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_blowjob' }],
-		unlock_price = {iola = 100},
+		unlock_price = {iola = 75},
 		actions = [
 		{type = 'scene', value = 'iola_1_5'},
 		{type = 'unlock_scene', value = 'iola_cunnilingus'},
@@ -726,7 +726,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'iola_riding',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_cunnilingus' }],
-		unlock_price = {iola = 250},
+		unlock_price = {iola = 100},
 		actions = [
 		{type = 'scene', value = 'iola_1_6'},
 		{type = 'unlock_scene', value = 'iola_riding'},
@@ -738,7 +738,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'iola_foursome',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_riding' }],
-		unlock_price = {iola = 250, erika = 250, rose = 250},
+		unlock_price = {iola = 150, erika = 150, rose = 150},
 		actions = [
 		{type = 'scene', value = 'iola_2_7'},
 		{type = 'unlock_scene', value = 'iola_foursome'},

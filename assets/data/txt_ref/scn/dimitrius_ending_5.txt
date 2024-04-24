@@ -3,11 +3,12 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG future_city_reactor=
+=MUSIC event_combat=
 =SPRITE demitrius_demon=
 De - So this is where you've been hiding.  & EV_DIMITRIUS_ENDING_5_0
-Ar(neutral) - Shit, he found us. & EV_DIMITRIUS_ENDING_5_1
+Ar(neutral) - Crap, he found us. & EV_DIMITRIUS_ENDING_5_1
 De - You really are tenacious to survive that. Just like little cockroaches.  & EV_DIMITRIUS_ENDING_5_2
 De - But it's time to finish our little game.  & EV_DIMITRIUS_ENDING_5_3
 Ar(anger) - For once I agree with you.  & EV_DIMITRIUS_ENDING_5_4
-Ar(anger) - Let's do this. & EV_DIMITRIUS_ENDING_5_5
+Ar(anger) - Time to get rid of your cocky grin. & EV_DIMITRIUS_ENDING_5_5
 =STOP=

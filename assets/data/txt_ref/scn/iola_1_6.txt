@@ -8,7 +8,8 @@
 =GUI_NORMAL=
 Iola has gone on missionary work, with Arron escorting her to the nearby human village. & EV_IOLA_1_6_0
 =SPRITE iola=
-I - ...And this is why you must brush your teeth two times a day and take a bath once a month. & EV_IOLA_1_6_1
+I - ...And this is why you must brush your teeth two times a day and take a bath once a week. & EV_IOLA_1_6_1
+Ar(neutral) - (Huh, that's less frequent than Rose insists.)
 The crowd observed Iola with caution and reverence. & EV_IOLA_1_6_2
 I - Thank you all for your attention, Ancestors be with you. & EV_IOLA_1_6_3
 =GUI_HIDE=
@@ -48,6 +49,7 @@ Ar - Pfft, it's nothing for someone like me. & EV_IOLA_1_6_16
 I - I see... Are you ready to start then? & EV_IOLA_1_6_17
 Ar - Yes. & EV_IOLA_1_6_18
 =ABG iola_cowgirl_02 iola_cowgirl_03=
+=DELAY 1=
 I - Aaah... It went in. & EV_IOLA_1_6_19
 Ar - It's not painful? & EV_IOLA_1_6_20
 I - It's bearable.  & EV_IOLA_1_6_21
@@ -55,6 +57,7 @@ Ar - You are being rather casual about it. & EV_IOLA_1_6_22
 I - Since I'm a vestal, I must be ready for something small like this. & EV_IOLA_1_6_23
 Ar - Right... & EV_IOLA_1_6_24
 =ABG iola_cowgirl_04 iola_cowgirl_05=
+=DELAY 1=
 I - Ah!.. Wait. & EV_IOLA_1_6_25
 Ar - Hah, still not used to it? & EV_IOLA_1_6_26
 I - This is... Ah, too unusual. & EV_IOLA_1_6_27
@@ -71,6 +74,7 @@ I - This is a part of my duty... & EV_IOLA_1_6_37
 Ar - What diligence. & EV_IOLA_1_6_38
 Ar - Ready to go faster? & EV_IOLA_1_6_39
 =ABG iola_cowgirl_06 iola_cowgirl_07=
+=DELAY 1=
 I - Aaaaaah!!... & EV_IOLA_1_6_40
 I - You are... too fast... & EV_IOLA_1_6_41
 Ar - Nonsense, it's you being too slow. & EV_IOLA_1_6_42
@@ -83,6 +87,7 @@ Ar - It feels like you are sucking me in. & EV_IOLA_1_6_48
 I - No... Noooo... & EV_IOLA_1_6_49
 =WHITE=
 =ABG iola_cowgirl_08 iola_cowgirl_09=
+=DELAY 1=
 I - AAAAahhhh... & EV_IOLA_1_6_50
 I - Hah...  & EV_IOLA_1_6_51
 I - So this is the feeling...  & EV_IOLA_1_6_52
