@@ -39,7 +39,7 @@ func set_unlockable(eventdata :Dictionary):
 		line_label.text = "%d/%d" % [hero.friend_points, eventdata.unlock_price[ch]]
 		if eventdata.unlock_price[ch] > hero.friend_points:
 			line_label.set("custom_colors/font_color", variables.hexcolordict.red)
-			#unlock_btn.hide()
+			unlock_btn.hide()
 	watch_btn.hide()
 
 func set_unknown():

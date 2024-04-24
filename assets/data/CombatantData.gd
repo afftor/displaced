@@ -7,7 +7,7 @@ var charlist = {
 		name = 'ARRON',
 		icon = 'portrait/ArronNormal',
 		combaticon = 'combat/arron_circle',
-		image = 'Arron',
+#		image = 'Arron',#is it in use?
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Arron/Arron_idle/Arron.tres"),
 			hit = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0000_Arron_hit",
@@ -36,7 +36,7 @@ var charlist = {
 		name = 'ROSE',
 		icon = 'portrait/RoseNormal',
 		combaticon = 'combat/rose_circle',
-		image = 'Rose',
+#		image = 'Rose',
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Rose/Rose_idle/Rose.tres"),
 			hit = "Fight/Heroes/Rose/Rouz_crop_0001_Rouz_hit",
@@ -65,7 +65,7 @@ var charlist = {
 		name = 'ERIKA',
 		icon = 'portrait/ErikaNormal',
 		combaticon = 'combat/erika_circle',
-		image = 'erika',
+#		image = 'erika',
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Erika/Erika_idle/Erika.tres"),
 			hit = "Fight/Heroes/Erika/Erika_crop_0000_Erika_hit",
@@ -94,7 +94,7 @@ var charlist = {
 		name = 'EMBER',
 		icon = 'portrait/EmberNormal',
 		combaticon = 'combat/ember_circle',
-		image = 'emberhappy',
+#		image = 'emberhappy',
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Ember/Ember_idle/Ember.tres"),
 			hit = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0001_Ember_hit",
@@ -123,7 +123,7 @@ var charlist = {
 		name = 'RILU',
 		icon = 'portrait/RiluNormal',
 		combaticon = 'combat/rilu_circle',
-		image = 'emberhappy',
+#		image = 'emberhappy',
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Rilu/Rilu_idle/Rilu.tres"),
 			hit = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0000_Rilu_hit",
@@ -153,7 +153,7 @@ var charlist = {
 		name = 'IOLA',
 		icon = 'portrait/Iola',
 		combaticon = 'combat/iola_circle',
-		image = 'emberhappy',
+#		image = 'emberhappy',
 		animations = {
 			idle = load("res://assets/images/Fight/Heroes/Iola/Iola_idle/Iola.tres"),
 			hit = "Fight/Heroes/Iola/Iola_crop_0000_Iola_hit",
@@ -181,7 +181,7 @@ var charlist = {
 func _ready():
 	resources.preload_res('sound/slash') #default
 	yield(preload_icons(), 'completed')
-	print("Character icons preloaded")
+#	print("Character icons preloaded")
 
 
 func preload_icons():
@@ -189,7 +189,7 @@ func preload_icons():
 #		if b.icon.begins_with("res:"): continue
 		resources.preload_res(ch.icon)
 		resources.preload_res(ch.combaticon)
-		resources.preload_res(ch.image)
+#		resources.preload_res(ch.image)
 		for an in ch.animations.values():
 			if an is AnimatedTexAutofill:
 				an.fill_frames()

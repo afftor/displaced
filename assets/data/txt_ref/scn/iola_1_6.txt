@@ -9,7 +9,7 @@
 Iola has gone on missionary work, with Arron escorting her to the nearby human village. & EV_IOLA_1_6_0
 =SPRITE iola=
 I - ...And this is why you must brush your teeth two times a day and take a bath once a week. & EV_IOLA_1_6_1
-Ar(neutral) - (Huh, that's less frequent than Rose insists.)
+Ar(neutral) - (Huh, that's less frequent than Rose insists.) & EV_IOLA_1_6_1_1
 The crowd observed Iola with caution and reverence. & EV_IOLA_1_6_2
 I - Thank you all for your attention, Ancestors be with you. & EV_IOLA_1_6_3
 =GUI_HIDE=

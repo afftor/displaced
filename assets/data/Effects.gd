@@ -409,7 +409,7 @@ var effect_table = {
 		type = 'trigger',
 		debug_name = 'protect_cleaner',
 		conditions = [],
-		trigger = [variables.TR_DEATH],
+		trigger = [variables.TR_DEATH, variables.TR_RESERVE],
 		req_skill = false,
 		sub_effects = [
 			{
@@ -4103,7 +4103,7 @@ func rebuild_remove(skill_cond):
 
 func _ready():
 	yield(preload_icons(), 'completed')
-	print("Buff icons preloaded")
+#	print("Buff icons preloaded")
 
 func preload_icons():
 	for b in buffs.values():

@@ -1063,7 +1063,7 @@ var enemylist = {
 		xpreward = 50,
 		bodyhitsound = 'stone',
 		is_boss = true,
-		combaticon = 'enemies/Demitrius1CombatIcon',
+		combaticon = 'enemies/DemitriusCombatIcon',
 #		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'demitrius1loot',
@@ -1099,7 +1099,7 @@ var enemylist = {
 		is_boss = true,
 		bodyhitsound = 'stone',
 		ai = load('res://files/ai_classes/dimitrius_2.gd'),
-		combaticon = 'enemies/Demitrius2CombatIcon',
+		combaticon = 'enemies/DemitriusCombatIcon',
 #		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'demitrius2loot',
@@ -1135,7 +1135,7 @@ var enemylist = {
 		is_boss = true,
 		bodyhitsound = 'stone',
 		ai = load('res://files/ai_classes/dimitrius_3.gd'),
-		combaticon = 'enemies/Demitrius2CombatIcon',
+		combaticon = 'enemies/DemitriusCombatIcon',
 #		bodyimage = null,
 		aiposition = 'melee',
 		loottable = 'demitrius2loot',
@@ -1527,7 +1527,7 @@ func _ready():
 		if enemylist[i].flavor.empty():
 			enemylist[i].flavor = "MONSTER" + i.to_upper() + "FLAVOR"
 	yield(preload_icons(), 'completed')
-	print("Enemies icons preloaded")
+#	print("Enemies icons preloaded")
 
 
 func preload_icons():
