@@ -5,7 +5,7 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-Rose has persuaded Arron to go to the city on the presumption of a major festival event going there.
+Rose has persuaded Arron to go to the city on the presumption of a major festival event going there. & EV_ROSE_3_0_1
 Ar(neutral) - This is one of the saddest festivals I've ever seen. & EV_ROSE_3_0
 Ro - It's not that bad. & EV_ROSE_3_1
 Ar(neutral) - You've dragged me all the way here, for this. & EV_ROSE_3_2

@@ -18,7 +18,7 @@ Ar - Ah, some ancient culinary? That's fancy. & EV_RILU_2_2_8
 Ri - ...Yes, something like that. & EV_RILU_2_2_9
 Ri(talk) - Thanks for the meal, I should go now. & EV_RILU_2_2_10
 =SPRITE_FADE 0.3=
-Ro - It's like she's getting away from here...
+Ro - It's like she's getting away from here... & EV_RILU_2_2_10_1
 Ro(sarcastic) - Master, have you offended her recently?  & EV_RILU_2_2_11
 Ar - Can't imagine how. & EV_RILU_2_2_12
 Ro(talk) - She looked displeased after you spoke to her. & EV_RILU_2_2_13

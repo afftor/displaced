@@ -1386,6 +1386,8 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 			#-------should be switched off in most cases, except changes in events------
 			if " & " in i:
 				strings_to_check.append(i.get_slice(" & ", 1))
+			elif !i.empty():
+				print("No translation at %s: %s" % [current_scene, i])
 			#-----------
 
 		c += 1

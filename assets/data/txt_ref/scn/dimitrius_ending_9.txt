@@ -143,20 +143,20 @@ Ar - ...Thanks. & EV_DIMITRIUS_ENDING_9_89
 =BG finale=
 =GUI_FULL=
 =BLACKFADE 1=
-Er - So what happened when you were left alone with him in there?
-Ar - Obviously I've almost defeated him. Could've managed without those tricks.
-Ro - Master, your nose might grow if you talk too much.
-Ar - I guess you do deserve a praise for your part of the plan. 
-Ro - It's hard to imagine how we could ever deal with this otherwise. Cyrex deserved a praise for it.
-Em - Ah, speaking of which, Sir Cyrex, am I still allowed to stay at the village?
-Cy - Why, yes. Craftsmanship brings prosperity to the industry and benefits people.
-F - You truly are a bright individual, Mayor. 
-Ar - Grrr, he really pisses me off now. How come he became that good at everything?
-Ro - At least you don't have to fear for stealing all the girls. 
-Ar - True, I can settle with that. Must be terrible to live with a face like this.
-Er - Face isn't everything to girls, you know. Even fat guys can fascin...
-Ro - I don't wanna hear about this! The last thing I need is Master not taking care of himself.
-Ar - I deserve some rest after all we've done, don't I?
+Er - So what happened when you were left alone with him in there? & EV_DIMITRIUS_ENDING_9_90
+Ar - Obviously I've almost defeated him. Could've managed without those tricks. & EV_DIMITRIUS_ENDING_9_91
+Ro - Master, your nose might grow if you talk too much. & EV_DIMITRIUS_ENDING_9_92
+Ar - I guess you do deserve a praise for your part of the plan. & EV_DIMITRIUS_ENDING_9_93
+Ro - It's hard to imagine how we could ever deal with this otherwise. Cyrex deserved a praise for it. & EV_DIMITRIUS_ENDING_9_94
+Em - Ah, speaking of which, Sir Cyrex, am I still allowed to stay at the village? & EV_DIMITRIUS_ENDING_9_95
+Cy - Why, yes. Craftsmanship brings prosperity to the industry and benefits people. & EV_DIMITRIUS_ENDING_9_96
+F - You truly are a bright individual, Mayor. & EV_DIMITRIUS_ENDING_9_97
+Ar - Grrr, he really pisses me off now. How come he became that good at everything? & EV_DIMITRIUS_ENDING_9_98
+Ro - At least you don't have to fear for stealing all the girls. & EV_DIMITRIUS_ENDING_9_99
+Ar - True, I can settle with that. Must be terrible to live with a face like this. & EV_DIMITRIUS_ENDING_9_100
+Er - Face isn't everything to girls, you know. Even fat guys can fascin... & EV_DIMITRIUS_ENDING_9_101
+Ro - I don't wanna hear about this! The last thing I need is Master not taking care of himself. & EV_DIMITRIUS_ENDING_9_102
+Ar - I deserve some rest after all we've done, don't I? & EV_DIMITRIUS_ENDING_9_103
 =GUI_HIDE=
 =BLACKUNFADE 2=
 =DELAY 2=
