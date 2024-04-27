@@ -77,7 +77,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'anim_cast', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_firepunch', target = 'target', period = 'predamage', flip_h = true}],
+			{code = 'sfx_firebolt', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
 		sounddata = {cast = 'firebolt'},
 		ai_priority = 1
@@ -101,7 +101,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_firepunch', target = 'target', period = 'predamage', flip_h = true}],
+			{code = 'sfx_firebolt', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
 		ai_priority = 1,
 		sounddata = {cast = 'firebolt'}
@@ -125,7 +125,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_firepunch_fairy', target = 'target', period = 'predamage', flip_h = true}],
+			{code = 'sfx_firebolt', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
 		ai_priority = 1,
 		sounddata = {cast = 'firebolt'}
@@ -224,6 +224,54 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'cast'}],
 		patches = [],
 		sounddata = {predamage = 'holy light'},
+		ai_priority = 1
+	},
+	light_attack_soldier = {
+		code = '',
+		name = "",
+		description = "",
+		damagetype = "light",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		keep_target = variables.TARGET_KEEP,
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		casteffects = [],
+		repeat = 1,
+		hidden = false,
+		sfx = [{code = 'sfx_holy_light', target = 'target', period = 'predamage', flip_h = true},
+			{code = 'anim_hit', target = 'target', period = 'postdamage'},
+			{code = 'anim_attack', target = 'caster', period = 'cast'}],
+		patches = [],
+		sounddata = {predamage = 'soldier at'},
+		ai_priority = 1
+	},
+	light_attack_drone = {
+		code = '',
+		name = "",
+		description = "",
+		damagetype = "light",
+		skilltype = 'skill',
+		userange = "weapon",
+		targetpattern = 'single',
+		allowedtargets = ['enemy'],
+		keep_target = variables.TARGET_KEEP,
+		reqs = [],
+		tags = ['damage'],
+		value = ['caster.damage'],
+		cooldown = 0,
+		casteffects = [],
+		repeat = 1,
+		hidden = false,
+		sfx = [{code = 'sfx_holy_light', target = 'target', period = 'predamage', flip_h = true},
+			{code = 'anim_hit', target = 'target', period = 'postdamage'},
+			{code = 'anim_attack', target = 'caster', period = 'cast'}],
+		patches = [],
+		sounddata = {predamage = 'drone at'},
 		ai_priority = 1
 	},
 	pierce_attack = {
@@ -744,7 +792,7 @@ var skilllist = {
 		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'sfx_dispel', target = 'target', period = 'predamage'},
 			{code = 'anim_attack', target = 'caster', period = 'cast'},],
-		sounddata = {cast = 'dispel'},
+		sounddata = {cast = 'barrier2'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_dispel'}
 		]
@@ -1861,7 +1909,7 @@ var skilllist = {
 		reqs = [],
 		tags = ['damage', 'debuff', 'dispel'],
 		value = ['0'],
-		damagestat = 'no_stat',
+		damagestat = ['damagehp'],
 		cooldown = 10,
 		casteffects = [
 			Effectdata.rebuild_template({effect = 'e_s_cleanse'}),
@@ -2506,7 +2554,8 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_firepunch', target = 'target', period = 'predamage', flip_h = true}],
+			{code = 'sfx_firebolt', target = 'target', period = 'predamage', flip_h = true}],
+			#{code = 'sfx_firepunch', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
 		sounddata = {cast = 'firebolt'},
 		ai_priority = 0.5
@@ -2877,7 +2926,7 @@ var skilllist = {
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'sfx_AOE_fight_blacklightning_storm_sq', target = 'target_group', period = 'predamage'}],
 		patches = [],
-		sounddata = {cast = 'magic_effect'},
+		sounddata = {cast = 'demitrius cast'},
 		ai_priority = 1
 	},
 	dm_fire = {
@@ -2927,7 +2976,7 @@ var skilllist = {
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'sfx_earth_strike', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
-		sounddata = {predamage = 'earth_strike'},
+		sounddata = {predamage = 'demitrius at'},
 		ai_priority = 1
 	},
 	dm_bomb = {
@@ -2976,7 +3025,7 @@ var skilllist = {
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'sfx_AOE_fight_liht_ex_sq', target = 'target_group', period = 'predamage'}],
 		patches = [],
-		sounddata = {cast = 'magic_effect'},
+		sounddata = {cast = 'demitrius cast'},
 		ai_priority = 1
 	},
 	dm_form = {

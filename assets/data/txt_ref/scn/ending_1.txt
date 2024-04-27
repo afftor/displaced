@@ -79,23 +79,3 @@ Ar - I gonna wish that we'll meet again. & EV_ENDING_1_58
 =BLACKUNFADE 3=
 =DELAY 3=
 =STOP=
-
-
-
-Er - I'm planning to return to elven lands. & EV_ENDING_1_59
-Er - I wanna try getting my kin back in motion, you know. & EV_ENDING_1_60
-Em - That's so cool!  & EV_ENDING_1_61
-Em - I wish I could do things with my kin... & EV_ENDING_1_62
-Em(sad) - But I can only run my forge. & EV_ENDING_1_63
-Em(sad) - Uuuu, why do you have to leave, Sir Arron? *sob* & EV_ENDING_1_64
-I - Hey, don't act so childish. Look at Rilu.  & EV_ENDING_1_65
-Em - Really, you don't look mature. & EV_ENDING_1_66
-Er - Aren't Rilu's older than me, though?  & EV_ENDING_1_67
-Ri - I'm as old as I appear to be. & EV_ENDING_1_68
-Ro(sarcastic) - That's... not very clear definition. & EV_ENDING_1_69
-Ar - What are you planning to do, though?  & EV_ENDING_1_70
-Ri - ...I've been thinking about receiving some promised favors from certain individuals. & EV_ENDING_1_71
-I - Ah, right, once we finish with this I'll be helping you out, Rilu.  & EV_ENDING_1_72
-I - Since I'm also a new cult leader, I feel responsible. & EV_ENDING_1_73
-Ri - ...Thank you. & EV_ENDING_1_74
-

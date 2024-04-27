@@ -106,7 +106,7 @@ var sounds = {
 	"levelup" : "sound/levelup",
 	"start" : "sound/battle_start",
 	"levelup_show" : "sound/level_up_window",
-	"move_hero" : "sound/dodge"
+	"move_hero" : "sound/character_swap"
 }
 
 enum {

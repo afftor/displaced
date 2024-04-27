@@ -31,6 +31,7 @@ Ro(sarcastic) - No, it's not. & EV_RILU_2_2_19
 Ar - Whatever. I'll go talk to her I guess. & EV_RILU_2_2_20
 =BLACKTRANS 1=
 =DELAY 1=
+=MUSIC rilu_theme=
 =BG villagenight=
 Arron went to Rilu's house. & EV_RILU_2_2_21
 =SPRITE_UNFADE 0.3=
@@ -39,12 +40,12 @@ Ar(neutral) - I should probably apologize for the last time. & EV_RILU_2_2_23
 Ar(neutral) - You weren't yourself and I took advantage of it. & EV_RILU_2_2_24
 Ri - No, it wasn't really like that... & EV_RILU_2_2_25
 Ar - Oh, okay then. & EV_RILU_2_2_26
-Ar - So there's no tension between us? & EV_RILU_2_2_27
+Ar - So there's no quarrel between us? & EV_RILU_2_2_27
 Ri - That's... & EV_RILU_2_2_28
 Ri - Actually, I must confess. & EV_RILU_2_2_29
-Ar(shock) - You are pregnant! & EV_RILU_2_2_30
+Ar(shock) - I got you pregnant! & EV_RILU_2_2_30
 Ri(talk) - Wha...?  & EV_RILU_2_2_31
-Ri - No, no, this isn't possible for me. & EV_RILU_2_2_32
+Ri - No, no, that can't happen with me. & EV_RILU_2_2_32
 Ar - Phew... & EV_RILU_2_2_33
 Ar - What do you have on your mind then? & EV_RILU_2_2_34
 Ri - Before we met, I never cared much for sex. & EV_RILU_2_2_35
@@ -75,8 +76,8 @@ Ar - So I take it, you used a cat spirit as an excuse. & EV_RILU_2_2_59
 Ri - Yes.  & EV_RILU_2_2_60
 Ri - It was a bit unbearable at the time.  & EV_RILU_2_2_61
 Ri - I'm sorry about deceiving you. & EV_RILU_2_2_62
-Ar - Don't worry, that was a pleasure for me. & EV_RILU_2_2_63
-Ri - ... I'm glad you feel that way.  & EV_RILU_2_2_64
+Ar - Don't worry, that felt good for me. & EV_RILU_2_2_63
+Ri - ... I'm glad.  & EV_RILU_2_2_64
 Ar - You don't have to hold back if you need it at any time. & EV_RILU_2_2_65
 Ri - Can we do it today then? & EV_RILU_2_2_66
 Ar - You don't beat around the bush. & EV_RILU_2_2_67
@@ -85,7 +86,7 @@ Ar - Come to the townhall in one hour. & EV_RILU_2_2_69
 Ri - *Nod* & EV_RILU_2_2_70
 =BLACKUNFADE 1=
 =DELAY 1=
-Some time later & EV_RILU_2_2_71
+Some time later... & EV_RILU_2_2_71
 =SOUND knocking=
 =BG hall=
 =BLACKFADE 1=
@@ -102,6 +103,7 @@ Ar - Doesn't it make you excited?  & EV_RILU_2_2_77
 Ri - ... & EV_RILU_2_2_78
 Ar - Now let me show you... & EV_RILU_2_2_79
 =ABG rilu_anal_2 rilu_anal_3=
+=DELAY 1=
 Arron pulled out a small wooden object. & EV_RILU_2_2_80
 Ri - That's... & EV_RILU_2_2_81
 Ar - A dildo. & EV_RILU_2_2_82
@@ -112,6 +114,7 @@ Ri - You really are a pervert. & EV_RILU_2_2_86
 Ar - Guilty.  & EV_RILU_2_2_87
 Ar - Now let's try to get it in... & EV_RILU_2_2_88
 =ABG rilu_anal_4 rilu_anal_5=
+=DELAY 1=
 Arron slowly pushed a wooden dildo into Rilu's pussy. & EV_RILU_2_2_89
 Ri - Ngh... & EV_RILU_2_2_90
 Ar - Huh, you are quite wet already.  & EV_RILU_2_2_91
@@ -132,6 +135,8 @@ Ar - You seem to really enjoy it. & EV_RILU_2_2_105
 Ri - I'm... I'm going to cum... & EV_RILU_2_2_106
 Ar - It's fine. & EV_RILU_2_2_107
 Ri - Aah, ahhh... & EV_RILU_2_2_108
+=ABG rilu_anal_5 rilu_anal_6=
+=DELAY 1=
 =WHITE=
 Ri - AAAahhh!... & EV_RILU_2_2_109
 Ri - Hah... ah... & EV_RILU_2_2_110
@@ -139,6 +144,7 @@ Ar - You look quite happy. & EV_RILU_2_2_111
 Ri - Stop teasing me. & EV_RILU_2_2_112
 Ar - Hmph, let's do something new now. & EV_RILU_2_2_113
 Ri - ...Huh?.. & EV_RILU_2_2_114
+=DELAY 1=
 =ABG rilu_anal_6 rilu_anal_7=
 Leaving dildo in Rilu's pussy, Arron pushed his cock into her butt. & EV_RILU_2_2_115
 Ri - Ah!  & EV_RILU_2_2_116
@@ -165,6 +171,7 @@ Ri - You gonna make me.. & EV_RILU_2_2_136
 Ri - Cum again..! & EV_RILU_2_2_137
 Ar - Gotcha. & EV_RILU_2_2_138
 Ar - Let's do it together. & EV_RILU_2_2_139
+=DELAY 1=
 =ABG rilu_anal_8 rilu_anal_9=
 =WHITE=
 Ri - Aaah!! & EV_RILU_2_2_140
@@ -173,16 +180,17 @@ Ar - Came inside your butt. & EV_RILU_2_2_142
 Ri - Ah...  & EV_RILU_2_2_143
 Ri - It feels so hot... & EV_RILU_2_2_144
 Ar - Hah... And you called me a pervert.  & EV_RILU_2_2_145
+=DELAY 1=
 =GUI_NORMAL=
 =BLACKTRANS 1=
 =DELAY 1=
-=BG town_in=
+=BG hall=
 =SPRITE rilu=
 Ar(neutral) - Hope you aren't having second thoughts. & EV_RILU_2_2_146
 Ri - ..... & EV_RILU_2_2_147
 Ri(talk) - No.  & EV_RILU_2_2_148
 Ar - What's up with that pause? & EV_RILU_2_2_149
-Ri - I wonder if I always was this lewd. & EV_RILU_2_2_150
+Ri - I wonder if I always had this in me. & EV_RILU_2_2_150
 Ar - Nothing wrong with having a bit of fun with someone you like. & EV_RILU_2_2_151
 Ri - You might be right. & EV_RILU_2_2_152
 Ri - ...Then I'll rely on you from now on.  & EV_RILU_2_2_153
