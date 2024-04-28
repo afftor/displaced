@@ -68,7 +68,7 @@ func showup(node):
 	
 	prevnode = parentnode
 	
-	input_handler.GetTweenNode(self).stop_all()
+	input_handler.force_end_tweens(self)
 	self.modulate.a = 1
 	
 	show()

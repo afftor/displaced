@@ -12,14 +12,12 @@ func _ready():
 
 func make_random_pause():
 	stop()
-	var tween = input_handler.GetTweenNode(self)
 	var time
 	if RndDelay:
 		time = globals.rng.randf_range(MinDelay, MaxDelay)
 	else:
 		time = MinDelay
-	tween.interpolate_callback(self, time, 'play', "default")
-	tween.start()
+	input_handler.tween_callback(self, 'play', time, ["default"])
 
 
 #func play(anim = "", backwards = false):

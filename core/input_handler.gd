@@ -158,8 +158,14 @@ func GetSkillTooltip():
 	node.add_child(tooltipnode)
 	return tooltipnode
 
-
+#----------separate tween mechanics to singleton--------
 func GetTweenNode(node):
+	#new variant with SceneTreeTween can't add new tweeners on play
+#	if !node.has_meta("tween") or !node.get_meta("tween").is_valid():
+#		node.set_meta("tween", node.create_tween())
+#	return node.get_meta("tween")
+	#old variant with Tween node. As of Godot v3.5.2 Tween node has a bug with tweeners processing.
+	#so the new variant above goes through SceneTreeTween with more direct control over tweeners
 	var tweennode
 	if node.has_node('tween'):
 		tweennode = node.get_node('tween')
@@ -169,42 +175,104 @@ func GetTweenNode(node):
 		node.add_child(tweennode)
 	return tweennode
 
-func GetRepeatTweenNode(node):
-	var pos = node.rect_position
-	var tweennode
-	if node.has_node('repeatingtween'):
-		tweennode = node.get_node("repeatingtween")
-		tweennode.repeat = true
-	else:
-		tweennode = Tween.new()
-		tweennode.repeat = true
-		tweennode.name = 'repeatingtween'
-		node.add_child(tweennode)
-	return tweennode
+func force_end_tweens(node):
+	var tween = GetTweenNode(node)
+	#new variant
+#	tween.kill()
+#	node.remove_meta("tween")
+	#old variant with Tween node
+	tween.stop_all()
+#	tween.remove_all()
 
-func SelectionGlow(node):
-	var tween = GetRepeatTweenNode(node)
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,0.5,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'modulate', Color(1,0.5,1,1), Color(1,1,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,1)
+func tween_property(node :Node, property :String, from_val, to_val, transition :float, delay :float = 0, trans_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
+	var tween = GetTweenNode(node)
+	tween_property_with(tween, node, property, from_val, to_val, transition, delay, trans_type, ease_type)
+
+func tween_property_with(tween, node :Node, property :String, from_val, to_val, transition :float, delay :float = 0, trans_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
+	#in new variant tween is a SceneTreeTween
+#	var tweener = tween.tween_property(node, property, to_val, transition)
+#	tweener.from(from_val)
+#	tweener.set_delay(delay)
+#	tweener.set_trans(trans_type)
+#	tweener.set_ease(ease_type)
+	#in old variant tween is a Tween node
+	tween.interpolate_property(node, property, from_val, to_val, transition, trans_type, ease_type, delay)
 	tween.start()
 
-func TargetGlow(node):
-	var tween = GetRepeatTweenNode(node)
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,0.8,0.3,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'modulate', Color(1,0.8,0.3,1), Color(1,1,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,1)
+func tween_callback(node :Node, method :String, delay :float = 0, binds: Array = []):
+	var tween = GetTweenNode(node)
+	tween_callback_with(tween, node, method, delay, binds)
+
+func tween_callback_with(tween, node :Node, method :String, delay :float = 0, binds: Array = []):
+	#in new variant tween is a SceneTreeTween
+#	var tweener = tween.tween_callback(node, method, binds)
+#	tweener.set_delay(delay)
+	#in old variant tween is a Tween node
+	if binds.size() == 0:
+		tween.interpolate_callback(node, delay, method)
+	elif binds.size() == 1:
+		tween.interpolate_callback(node, delay, method, binds[0])
+	elif binds.size() == 2:
+		tween.interpolate_callback(node, delay, method, binds[0], binds[1])
+	assert(binds.size() < 3, "too much binds for this version")
 	tween.start()
 
-func TargetSupport(node):
-	var tween = GetRepeatTweenNode(node)
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(0.5,1,0.5,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'modulate', Color(0.5,1,0.5,1), Color(1,1,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,1)
-	tween.start()
+func get_tween_finish_signal() ->String:
+	#new variant with SceneTreeTween
+#	return "finished"
+	#old variant with Tween node
+	return "tween_all_completed"
 
-func TargetEnemyTurn(node):
-	var tween = GetRepeatTweenNode(node)
-	tween.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(1.05,1.05), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'rect_scale', Vector2(1.05,1.05), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,0.5)
-	tween.start()
+func is_tween_active(tween) ->bool:
+	#new variant with SceneTreeTween
+#	return tween.is_running()
+	#old variant with Tween node
+	return tween.is_active()
+#------------------------------------------
+
+
+
+#seems not in use
+#func GetRepeatTweenNode(node):
+#	var pos = node.rect_position
+#	var tweennode
+#	if node.has_node('repeatingtween'):
+#		tweennode = node.get_node("repeatingtween")
+#		tweennode.repeat = true
+#	else:
+#		tweennode = Tween.new()
+#		tweennode.repeat = true
+#		tweennode.name = 'repeatingtween'
+#		node.add_child(tweennode)
+#	return tweennode
+
+#seems not in use
+#func SelectionGlow(node):
+#	var tween = GetRepeatTweenNode(node)
+#	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,0.5,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.interpolate_property(node, 'modulate', Color(1,0.5,1,1), Color(1,1,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,1)
+#	tween.start()
+
+#seems not in use
+#func TargetGlow(node):
+#	var tween = GetRepeatTweenNode(node)
+#	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,0.8,0.3,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.interpolate_property(node, 'modulate', Color(1,0.8,0.3,1), Color(1,1,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,1)
+#	tween.start()
+
+#seems not in use
+#func TargetSupport(node):
+#	var tween = GetRepeatTweenNode(node)
+#	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(0.5,1,0.5,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.interpolate_property(node, 'modulate', Color(0.5,1,0.5,1), Color(1,1,1,1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,1)
+#	tween.start()
+
+#seems not in use
+#func TargetEnemyTurn(node):
+#	var tween = GetRepeatTweenNode(node)
+#	tween.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(1.05,1.05), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.interpolate_property(node, 'rect_scale', Vector2(1.05,1.05), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,0.5)
+#	tween.start()
 
 var floatfont = preload("res://assets/fonts/mainfont_float.tres")
 
@@ -354,7 +422,6 @@ func FloatHeal(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(0,
 
 
 func DamageTextFly(node, reverse = false):
-	var tween = GetTweenNode(node)
 	var firstvector = Vector2(-30, -200)
 	var secondvector = Vector2(200, 200)
 	if reverse == true:
@@ -362,23 +429,21 @@ func DamageTextFly(node, reverse = false):
 		secondvector = Vector2(-200, 200)
 	
 	#yield(get_tree().create_timer(0.5), 'timeout')
-	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 1.7, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 1.7, 0, Tween.TRANS_SINE)
 	#tween.interpolate_property(node, 'rect_position', node.rect_position+firstvector, node.rect_position+secondvector, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
 	FadeAnimation(node, 0.4 , 0.9)
-	tween.start()
 
 func HealTextFly(node):
-	var tween = GetTweenNode(node)
 	var firstvector = Vector2(0, -150)
-	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,0.5)
+	tween_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 1, 0.5)
 	FadeAnimation(node, 0.2, 1)
-	tween.start()
 
-func StopTweenRepeat(node):
-	var tween = GetRepeatTweenNode(node)
-	tween.seek(0)
-	tween.set_active(false)
-	tween.remove_all()
+#seems not in use
+#func StopTweenRepeat(node):
+#	var tween = GetRepeatTweenNode(node)
+#	tween.seek(0)
+#	tween.set_active(false)
+#	tween.remove_all()
 
 #Music
 #var prevtheme = ""
@@ -526,10 +591,8 @@ func CloseAnimation(node):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)
-	var tweennode = GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tweennode.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(0.7,0.6), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tweennode.start()
+	tween_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.2)
+	tween_property(node, 'rect_scale', Vector2(1,1), Vector2(0.7,0.6), 0.2)
 	yield(get_tree().create_timer(0.3), 'timeout')
 	node.visible = false
 	BeingAnimated.erase(node)
@@ -543,10 +606,8 @@ func OpenAnimation(node):
 		return
 	BeingAnimated.append(node)
 	node.visible = true
-	var tweennode = GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tweennode.interpolate_property(node, 'rect_scale', Vector2(0.7,0.6), Vector2(1,1), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tweennode.start()
+	tween_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 0.2)
+	tween_property(node, 'rect_scale', Vector2(0.7,0.6), Vector2(1,1), 0.2)
 	yield(get_tree().create_timer(0.3), 'timeout')
 	BeingAnimated.erase(node)
 	if node.has_method('on_open_finished'):
@@ -558,25 +619,16 @@ func OpenAnimation(node):
 
 
 
-func DelayedCallback(node, delay, method, args = []):
-	var tweennode = GetTweenNode(node)
-	tweennode.interpolate_callback(node, delay, method)#, args)
-	tweennode.start()
-
 func FadeAnimation(node, time = 0.3, delay = 0, chain = false):
 	if !chain:
 		node.modulate = Color(1,1,1,1)
-	var tweennode = GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
-	tweennode.start()
+	tween_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), time, delay)
 
 func UnfadeAnimation(node, time = 0.3, delay = 0, chain = false):
 	if !chain:
 		node.modulate = Color(1,1,1,0)
-	var tweennode = GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+	tween_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, delay)
 	node.visible = true
-	tweennode.start()
 
 func ShakeAnimation(node, time = 0.5, magnitude = 5):
 	var newdict = {node = node, time = time, magnitude = magnitude, originpos = node.rect_position}
@@ -586,10 +638,11 @@ func ShakeAnimation(node, time = 0.5, magnitude = 5):
 			ShakingNodes.erase(i)
 	ShakingNodes.append(newdict)
 
-func SmoothValueAnimation(node, time, value1, value2):
-	var tween = GetTweenNode(node)
-	tween.interpolate_property(node, 'value', value1, value2, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+#seems not in use
+#func SmoothValueAnimation(node, time, value1, value2):
+#	var tween = GetTweenNode(node)
+#	tween.interpolate_property(node, 'value', value1, value2, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.start()
 
 
 func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false):
@@ -653,10 +706,8 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h =
 
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
-	var tweennode = GetTweenNode(node)
-	tweennode.interpolate_property(node, 'rect_position', startpoint, endpoint, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay + (time/1.2))
-	tweennode.start()
+	tween_property(node, 'rect_position', startpoint, endpoint, time, delay)
+	tween_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.1, delay + (time/1.2))
 
 func SmoothTextureChange(node, newtexture, time = 0.5):
 	var NodeCopy = node.duplicate()
@@ -676,12 +727,6 @@ func BlackScreenTransition(duration = 0.5):
 
 func DelayedText(node, text):
 	node.text = text
-
-func force_end_tweens(node):
-	var tween = GetTweenNode(node)
-#	tween.stop_all()
-	tween.remove_all()
-
 
 func calculate_number_from_string_array(arr, caster, target):
 	if typeof(arr) != TYPE_ARRAY:

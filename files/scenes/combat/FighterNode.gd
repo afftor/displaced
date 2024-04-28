@@ -526,7 +526,7 @@ func disable_panel_node():
 
 #obsolete or semi-obsolete
 func defeat():
-	print("!")
+#	print("!")
 	if fighter is hero:
 		set_sprite_1(fighter.animations.dead_1)
 		regenerate_click_mask()
