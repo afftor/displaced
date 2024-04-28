@@ -728,17 +728,15 @@ func _gui_input(event: InputEvent):
 
 #--------------tags------------
 func tag_white() -> void:
-	var tween = input_handler.GetTweenNode($WhiteScreenGFX)
 	var node = $WhiteScreenGFX
-	tween.start()
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,0.9), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
+	input_handler.tween_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,0.9), 0.3)
+	input_handler.tween_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.3, 0.3)
 	yield(get_tree().create_timer(0.3), 'timeout')
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,0.9), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
+	input_handler.tween_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,0.9), 0.3)
+	input_handler.tween_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.3, 0.3)
 	yield(get_tree().create_timer(0.3), 'timeout')
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,0.9), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
-	tween.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.7)
+	input_handler.tween_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,0.9), 0.7)
+	input_handler.tween_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.4, 0.7)
 
 func tag_music_stop() -> void:
 	input_handler.StopMusic()
@@ -1213,7 +1211,7 @@ func play_scene(scene: String, restore = false, force_replay = false) -> void:
 	panel_vis = false
 	$CharImage.modulate.a = 0
 	var BlackScreen_node = $BlackScreen
-	input_handler.GetTweenNode(BlackScreen_node).stop_all()
+	input_handler.force_end_tweens(BlackScreen_node)
 	BlackScreen_node.modulate.a = 0
 	for i in $VideoBunch.get_children():
 		i.stop()
@@ -1235,8 +1233,8 @@ func play_scene(scene: String, restore = false, force_replay = false) -> void:
 		if resources.is_busy(): yield(resources, "done_work")
 
 	var my_tween = input_handler.GetTweenNode(self)
-	if my_tween.is_active():
-		yield(my_tween, "tween_all_completed")
+	if input_handler.is_tween_active(my_tween):
+		yield(my_tween, input_handler.get_tween_finish_signal())
 	yield(get_tree(), "idle_frame")
 	emit_signal("EventOnScreen")
 	set_process(true)

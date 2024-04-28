@@ -595,7 +595,7 @@ func SelectSkill(skill):
 	UpdateSkillTargets(activecharacter)
 	if allowedtargets.ally.empty() and allowedtargets.enemy.empty():
 		if checkwinlose() == FIN_NO:
-			print ('no legal targets')
+#			print ('no legal targets')
 			combatlogadd(tr("NO_TARGETS"))
 			activeitem = null
 			unselect_skill()
@@ -1042,9 +1042,7 @@ func victory():
 	input_handler.StopMusic()
 	#on combat ends triggers
 	
-	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
-	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+	input_handler.tween_property($Rewards/victorylabel, 'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3)
 	
 	input_handler.PlaySound(sounds["victory"])
 	
@@ -1116,19 +1114,19 @@ func victory():
 		var new_exp_cap = i.get_exp_cap()
 		var subtween = input_handler.GetTweenNode(newbutton)
 		if i.level > old_level_on_up:
-			subtween.interpolate_property(xpbar_node, 'value', xpbar_node.value, xpbar_node.max_value, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_property(xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 1, 'DelayedText', xplabel_node, tr("LEVELUP")+ ': ' + str(i.level) + "!")
+			input_handler.tween_property_with(subtween, xpbar_node, 'value', xpbar_node.value, xpbar_node.max_value, 0.8, 1, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			input_handler.tween_property_with(subtween, xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, 1, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			input_handler.tween_callback_with(subtween, input_handler, 'DelayedText', 1, [xplabel_node, tr("LEVELUP")+ ': ' + str(i.level) + "!"])
 			if leveled_up_chars.empty():#honestly, should refactor that shit, so levelup sound would play once, outside of subtweens
-				subtween.interpolate_callback(input_handler, 1, 'PlaySound', sounds["levelup"])
+				input_handler.tween_callback_with(subtween, input_handler, 'PlaySound', 1, [sounds["levelup"]])
 			leveled_up_chars.push_back(i)
 		elif i.level == old_level_on_up && i.baseexp >= new_exp_cap:
 			xpbar_node.value = 100
-			subtween.interpolate_property(xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
-			subtween.interpolate_callback(input_handler, 0, 'DelayedText', xplabel_node, tr("MAXLEVEL"))
+			input_handler.tween_property_with(subtween, xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, 0, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			input_handler.tween_callback_with(subtween, input_handler, 'DelayedText', 0, [xplabel_node, tr("MAXLEVEL")])
 		else:
-			subtween.interpolate_property(xpbar_node, 'value', xpbar_node.value, i.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 2, 'DelayedText', xplabel_node, '+' + str(ceil(rewardsdict.xp*i.xpmod)))
+			input_handler.tween_property_with(subtween, xpbar_node, 'value', xpbar_node.value, i.baseexp, 0.8, 1, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			input_handler.tween_callback_with(subtween, input_handler, 'DelayedText', 2, [xplabel_node, '+' + str(ceil(rewardsdict.xp*i.xpmod))])
 		xpbar_node.hint_tooltip = tr("TILLNEXTLEVEL") % (max(new_exp_cap - i.baseexp, 0))
 		xplabel_node.hint_tooltip = xpbar_node.hint_tooltip
 		var friend_node = newbutton.get_node("friend")
@@ -1136,9 +1134,8 @@ func victory():
 			friend_node.hide()
 		else:
 			friend_node.hint_tooltip = tr('FRIENDPOINTSALLTOOLTIP') % i.friend_points
-			subtween.interpolate_property(friend_node,'rect_scale', Vector2(0,0), Vector2(1,1), 0.5, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("friend_label"), '+' + str(i.friend_points_new))
-		subtween.start()
+			input_handler.tween_property_with(subtween, friend_node, 'rect_scale', Vector2(0,0), Vector2(1,1), 0.5, 1, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			input_handler.tween_callback_with(subtween, input_handler, 'DelayedText', 2, [newbutton.get_node("friend_label"), '+' + str(i.friend_points_new)])
 	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
@@ -1186,21 +1183,17 @@ func victory():
 	if rewards_bonus:
 		bonus_label.rect_scale = Vector2(0.5,0.5)
 		bonus_label.show()
-		tween = input_handler.GetTweenNode(bonus_label)
-		tween.interpolate_property(bonus_label,'rect_scale', Vector2(0.5,0.5), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
+		input_handler.tween_property(bonus_label, 'rect_scale', Vector2(0.5,0.5), Vector2(1,1), 0.5)
 	
 	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
 		if i.name == 'Button':
 			continue
-		tween = input_handler.GetTweenNode(i)
 		yield(get_tree().create_timer(0.5), 'timeout')
 		i.show()
 		if i.has_meta("new_id"):
 			unlock_panel.show_material(i.get_meta("new_id"))
 		input_handler.PlaySound(sounds["itemget"])
-		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
+		input_handler.tween_property(i, 'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3)
 	
 	#yield(get_tree().create_timer(1), 'timeout')
 	if input_handler.explore_node != null and !debug_run:
@@ -1816,9 +1809,9 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if activeaction != skill_code: activeaction = skill_code
 	allowaction = false
 
-	print("%s uses %s at %s" % [caster.position, skill.name, target_pos])
-	if activeitem and activeitem.has("code"):
-		print('%s uses item %s' % [caster.name, activeitem.code])
+#	print("%s uses %s at %s" % [caster.position, skill.name, target_pos])
+#	if activeitem and activeitem.has("code"):
+#		print('%s uses item %s' % [caster.name, activeitem.code])
 
 	#aside from follow_up_skill usage, there is also follow_up_cond skill parameter, that do not work at the moment
 #	follow_up_skill = null
@@ -1891,7 +1884,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		if !s_skill1.tags.has('no_refine'):
 			var newtarget = refine_target(s_skill1, caster, target_pos)
 			if newtarget == null:
-				print("%s's %s has no new target" % [caster.position, skill.name])
+#				print("%s's %s has no new target" % [caster.position, skill.name])
 				break
 			target_pos = newtarget
 		
@@ -2002,7 +1995,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
+#		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
 	#=========effected animation
 	for effected_pos in effected_positions:
 		var effected = battlefield[effected_pos]
@@ -2045,10 +2038,10 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if skill.has('not_final'):
 		if not_final_skill_in_solo:
 			skill_in_progress = false
-		print('%s ended %s as not final' % [caster.position, skill.name])
+#		print('%s ended %s as not final' % [caster.position, skill.name])
 		return
 
-	print('%s almost ended %s' % [caster.position, skill.name])
+#	print('%s almost ended %s' % [caster.position, skill.name])
 
 	#use queued skills
 	while !q_skills.empty():
@@ -2087,7 +2080,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 
 	update_buffs()#not only caster and targets could be effected ("remove_siblings" oneshot for example)
 	skill_in_progress = false
-	print('%s ended %s' % [caster.position, skill.name])
+#	print('%s ended %s' % [caster.position, skill.name])
 
 func enqueue_skill(skill_code, caster, target_pos):
 	if skill_in_progress:

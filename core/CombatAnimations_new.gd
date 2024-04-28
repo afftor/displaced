@@ -124,16 +124,12 @@ func cast_finished():
 func predamage_finished():
 	#print("predamage_finished")
 	emit_signal("predamage_finished")
-	var tween = input_handler.GetTweenNode(self)
-	tween.interpolate_callback(self, 1, 'allanimationsfinished')
-	tween.start()
+	input_handler.tween_callback(self, 'allanimationsfinished', 1)
 
 func postdamage_finished():
 	#print("postdamage_finished")
 	emit_signal("postdamage_finished")
-	var tween = input_handler.GetTweenNode(self)
-	tween.interpolate_callback(self, 1, 'allanimationsfinished')
-	tween.start()
+	input_handler.tween_callback(self, 'allanimationsfinished', 1)
 
 func allanimationsfinished():
 	#print("allanims_finished")
@@ -165,20 +161,44 @@ func default_animation(node, args):
 			tex.current_frame = 0
 	else:
 		playtime = variables.default_animations_duration[id]
-	input_handler.force_end_tweens(sp)
-	input_handler.force_end_tweens(sp2)
-	input_handler.FadeAnimation(sp, transition_time, delaytime)
-	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
 	var back_delay = max(playtime + delaytime - transition_time, 0)
-	input_handler.FadeAnimation(sp2, transition_time, back_delay, true)
-	input_handler.UnfadeAnimation(sp, transition_time, back_delay, true)
+	#------old variant (bug of Tween node is mostly severe here)
+#	input_handler.force_end_tweens(sp)
+#	input_handler.force_end_tweens(sp2)
+#	input_handler.FadeAnimation(sp, transition_time, delaytime)
+#	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
+#	input_handler.FadeAnimation(sp2, transition_time, back_delay, true)
+#	input_handler.UnfadeAnimation(sp, transition_time, back_delay, true)
+	#------new variant
+	#force_end_tweens
+	if node.has_meta("tween") and node.get_meta("tween").is_valid():
+		node.get_meta("tween").kill()
+	#new tweens
+	var tween = node.create_tween()
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	node.set_meta("tween", tween)
+	#FadeAnimation/UnfadeAnimation
+	var tweener = tween.tween_property(sp, 'modulate', Color(1,1,1,0), transition_time)
+	tweener.from(Color(1,1,1,1))
+	tweener.set_delay(delaytime)
+	tweener = tween.parallel().tween_property(sp2, 'modulate', Color(1,1,1,1), transition_time)
+	tweener.from(Color(1,1,1,0))
+	tweener.set_delay(delaytime)
+	tweener = tween.tween_property(sp2, 'modulate', Color(1,1,1,0), transition_time)
+	tweener.from(Color(1,1,1,1))
+	tweener.set_delay(back_delay)
+	tweener = tween.parallel().tween_property(sp, 'modulate', Color(1,1,1,1), transition_time)
+	tweener.from(Color(1,1,1,0))
+	tweener.set_delay(back_delay)
+	#---------
 	if args.has('callback'):
-		input_handler.DelayedCallback(node, back_delay, args.callback)
+		input_handler.tween_callback(node, args.callback, back_delay)
 	return playtime + delaytime + delayafter
 
 
 func default_sfx(node, args):
-#	print("sfx")
+#	print("sfx %s %s" % [node.name, args.animation])
 	var id = args.animation
 	var playtime = 0.07 # 0.7
 	hp_update_delays[node] = 0 # 0.3 both
@@ -198,15 +218,13 @@ func default_sfx(node, args):
 
 
 func casterattack(node, args = null):#obsolete
-	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0
 	var delaytime = 0
 	var effectdelay = 0
 	var nextanimationtime = 0
 	
-	tween.interpolate_property(node, 'rect_position', node.get_position(), node.get_position() + node.get_attack_vector(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
-	tween.interpolate_property(node, 'rect_position', node.get_position() + node.get_attack_vector(), node.get_position(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, playtime)
-	tween.start()
+	input_handler.tween_property(node, 'rect_position', node.get_position(), node.get_position() + node.get_attack_vector(), playtime, delaytime)
+	input_handler.tween_property(node, 'rect_position', node.get_position() + node.get_attack_vector(), node.get_position(), playtime, playtime)
 	
 	return effectdelay
 	
@@ -269,15 +287,15 @@ func casterattack(node, args = null):#obsolete
 #	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
 func targetfire(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	hp_float_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.1)
 	buffs_update_delays[node] = 0.2
 	input_handler.gfx(node, 'gfx/fire')
+#	var tween = input_handler.GetTweenNode(node)
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
-	tween.start()
+#	tween.start()
 
 	return nextanimationtime + aftereffectdelay
 	#postdamagetimer = nextanimationtime + aftereffectdelay
@@ -295,16 +313,14 @@ func targetfire(node, args = null):
 #	return nextanimationtime + aftereffectdelay
 
 func miss(node, args = null):#conflicting usage of tween node!!
-	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.4
 	var starting_modulate = node.modulate
 	input_handler.PlaySound(miss_sound)
 	input_handler.FloatText(node, tr("MISS"), 'miss', 75, Color(1,1,1), 1, 0.2)#, node.get_node('Icon').rect_size/2-Vector2(80,20))
-	tween.interpolate_property(node, 'modulate', starting_modulate, Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
-	tween.interpolate_property(node, 'modulate', Color(1,1,0), starting_modulate, playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
-	tween.start()
+	input_handler.tween_property(node, 'modulate', starting_modulate, Color(1,1,0), playtime)
+	input_handler.tween_property(node, 'modulate', Color(1,1,0), starting_modulate, playtime, delaytime)
 	
 	return playtime * 2 + delaytime
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
@@ -314,18 +330,14 @@ func buffs(node, args):
 	if buffs_update_delays.has(node): delay = buffs_update_delays[node]
 	buffs_update_delays.erase(node)
 	var delaytime = 0.01
-	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs', args)
-	tween.start()
+	input_handler.tween_callback(node, 'noq_rebuildbuffs', delay, [args])
 	return delaytime + delay
 
 func c_log(node, args):
 	var delay = log_update_delay
 	log_update_delay = 0
 	var delaytime = 0.01
-	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(node, delay, 'combatlogadd_q', args.text)
-	tween.start()
+	input_handler.tween_callback(node, 'combatlogadd_q', delay, [args.text])
 	return delaytime + delay
 
 #func critical(node, args = null):
@@ -345,7 +357,6 @@ func hp_update(node, args):
 	var hpnode = node.panel_node.get_node("ProgressBar")
 	var hpnode2 = node.panel_node2.get_node("ProgressBar")
 	var hpnode_field = node.ret_hp_bar()
-	var tween_field = input_handler.GetTweenNode(hpnode_field)
 	#float damage
 #	if args.damage_float:
 #		if crit_display.has(node):
@@ -357,18 +368,16 @@ func hp_update(node, args):
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
 	if hpnode_field.visible:
-		tween_field.interpolate_property(hpnode_field, 'value', hpnode_field.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
-		tween_field.start()
+		input_handler.tween_property(hpnode_field, 'value', hpnode_field.value, args.newhp, 0.3, delay)
 	if !hpnode2.is_visible_in_tree():
-		tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+		input_handler.tween_property_with(tween, hpnode, 'value', hpnode.value, args.newhp, 0.3, delay)
 		hpnode2.value = args.newhp
 	else:
-		tween.interpolate_property(hpnode2, 'value', hpnode2.value, args.newhp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+		input_handler.tween_property_with(tween, hpnode2, 'value', hpnode2.value, args.newhp, 0.3, delay)
 		if hpnode != hpnode2:
 			hpnode.value = args.newhp
 	#update hp label
-	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp)
-	tween.start()
+	input_handler.tween_callback_with(tween, node, 'update_hp_label', delay, [args.newhp])
 	return delaytime + delay
 
 
@@ -380,7 +389,7 @@ func damage_float(node, args):
 	
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(input_handler, delay, 'FloatDmgArgs', {node = node, args = args, time = 1, fadetime = 0.7, offset = Vector2(0,0)})
+	input_handler.tween_callback_with(tween, input_handler, 'FloatDmgArgs', delay, [{node = node, args = args, time = 1, fadetime = 0.7, offset = Vector2(0,0)}])
 	return delaytime + delay
 
 
@@ -392,7 +401,7 @@ func heal_float(node, args):
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
 	if args.heal != 0:
-		tween.interpolate_callback(input_handler, delay, 'FloatHealArgs', {node = node, args = args, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+		input_handler.tween_callback_with(tween, input_handler, 'FloatHealArgs', delay, [{node = node, args = args, time = 1, fadetime = 0.5, offset = Vector2(0,0)}])
 	return delaytime + delay
 
 
@@ -433,7 +442,6 @@ func reappear(node, args = null):
 	return delay
 
 func death_animation(node):
-	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.8
@@ -443,20 +451,16 @@ func death_animation(node):
 
 
 func move_sprite(node, args):
-	var tween = input_handler.GetTweenNode(node)
 	var playtime = args.duration
 	node.rect_global_position = args.start
-	tween.interpolate_property(node, 'rect_global_position', args.start, args.finish, playtime, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-	tween.start()
+	input_handler.tween_property(node, 'rect_global_position', args.start, args.finish, playtime, 0, Tween.TRANS_EXPO)
 	node.visible = true
 	return playtime
 
 func gray_out(node, args = null):
 	var delay = 0.5
-	var tween = input_handler.GetTweenNode(node)
 	if args.undo:
-		tween.interpolate_property(node, 'modulate', node.modulate, Color(1, 1, 1, 1), 0.12, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		input_handler.tween_property(node, 'modulate', node.modulate, Color(1, 1, 1, 1), 0.12)
 	else:
-		tween.interpolate_property(node, 'modulate', node.modulate, Color(0.6, 0.6, 0.6, 1), 0.12, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+		input_handler.tween_property(node, 'modulate', node.modulate, Color(0.6, 0.6, 0.6, 1), 0.12)
 	return delay

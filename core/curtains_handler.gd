@@ -10,7 +10,7 @@ func _ready():
 	}
 	for id in curtain_nodes:
 		input_handler.GetTweenNode(curtain_nodes[id]).connect(
-			"tween_all_completed", self, 
+			input_handler.get_tween_finish_signal(), self,
 			"on_anim_completed", [id])
 
 func on_anim_completed(curtain_id):
@@ -24,7 +24,7 @@ func show_anim(curtain_type :int, duration :float = 0.5):
 
 func show_inst(curtain_type :int):
 	var curtain = curtain_nodes[curtain_type]
-	input_handler.GetTweenNode(curtain).stop_all()
+	input_handler.force_end_tweens(curtain)
 	curtain.modulate.a = 1
 	curtain.show()
 
@@ -33,5 +33,5 @@ func hide_anim(curtain_type :int, duration :float = 0.5):
 
 func hide_inst(curtain_type :int):
 	var curtain = curtain_nodes[curtain_type]
-	input_handler.GetTweenNode(curtain).stop_all()
+	input_handler.force_end_tweens(curtain)
 	curtain.hide()
