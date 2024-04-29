@@ -69,12 +69,16 @@ func _ready():
 		scan_vecs[i] *= overgrow
 	input_handler.ClearContainer($Buffs)
 
+func _clips_input():
+	return true
 
 func _gui_input(event):
 	var mouse_in_mask :bool = false
 	if event is InputEventMouse:
-		if (event.position.x < 0 or event.position.x > rect_size.x
-			or event.position.y < 0 or event.position.y > rect_size.y) : return
+		#-----seems useless after _clips_input() been added. Delete with time---
+#		if (event.position.x < 0 or event.position.x > rect_size.x
+#			or event.position.y < 0 or event.position.y > rect_size.y) : return
+		#-------
 		mouse_in_mask = texture_click_mask.get_bit(event.position)
 		#About click mask buffer: in all honesty I don't like this solution. Contrary to my best
 		#anticipations it is still takes no more then 1 ms to execute, so it seems acceptable.
