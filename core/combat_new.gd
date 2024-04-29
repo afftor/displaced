@@ -1503,7 +1503,9 @@ func CalculateTargets(skill, caster, target_pos):#finale = false
 	else: #'ally', 'self', 'dead'
 		targetgroup = caster.combatgroup
 	var ignore_defeated = !skill.allowedtargets.has('dead')
-	var for_range = { 'ally': [1, 4], 'enemy': [4, 10] }
+	var targetpattern_all
+	if targetgroup == 'ally': targetpattern_all = variables.playerparty
+	elif targetgroup == 'enemy': targetpattern_all = variables.enemyparty
 	
 	match skill.targetpattern:
 		'single':
@@ -1511,75 +1513,51 @@ func CalculateTargets(skill, caster, target_pos):#finale = false
 		'row':
 			for i in variables.rows:
 				if variables.rows[i].has(target_pos):
-					for j in variables.rows[i]:
-						if battlefield[j] == null : continue
-						var tchar = battlefield[j]
-						if tchar.defeated and ignore_defeated: continue
-						#if !tchar.can_be_damaged(skill.code) and !finale: continue
-						array.append(tchar)
+					#if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array = pos_validate(variables.rows[i], ignore_defeated)
+					break
 		'line':
 			for i in variables.lines:
 				if variables.lines[i].has(target_pos):
-					for j in variables.lines[i]:
-						if battlefield[j] == null : continue
-						var tchar = battlefield[j]
-						if tchar.defeated and ignore_defeated: continue
-						#if !tchar.can_be_damaged(skill.code) and !finale: continue
-						array.append(tchar)
+					#if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array = pos_validate(variables.lines[i], ignore_defeated)
+					break
 		'all':
-			var target_range = for_range[targetgroup]
-			for j in range(target_range[0], target_range[1]):
-				if battlefield[j] == null : continue
-				var tchar = battlefield[j]
-				if tchar.defeated and ignore_defeated: continue
-				#if !tchar.can_be_damaged(skill.code) and !finale: continue
-				array.append(tchar)
+			#if !tchar.can_be_damaged(skill.code) and !finale: continue
+			array = pos_validate(targetpattern_all, ignore_defeated)
 		'dead':
-			for j in range(1, 4):#only player's char can be targeted as dead
-				if battlefield[j] == null : continue
+			for j in variables.playerparty:#only player's char can be targeted as dead
+				if battlefield[j] == null: continue
 				var tchar = battlefield[j]
 				if !tchar.defeated: continue
 				array.append(tchar)
 		'no_target':#means: except target
-			var target_range = for_range[targetgroup]
-			for j in range(target_range[0], target_range[1]):
+			var targetfree_list = []
+			for j in targetpattern_all:
 				if j == target_pos: continue
-				if battlefield[j] == null : continue
-				var tchar = battlefield[j]
-				if tchar.defeated and ignore_defeated: continue
-				#if !tchar.can_be_damaged(skill.code) and !finale: continue
-				array.append(tchar)
+				targetfree_list.append(j)
+			array = pos_validate(targetfree_list, ignore_defeated)
 		'sideslash':
 			var tpos = [target_pos]
-			if target_pos in [1, 4, 7]: tpos.push_back(target_pos + 1)
-			elif target_pos in [3, 6, 9]: tpos.push_back(target_pos - 1)
-			else:
-				tpos.push_back(target_pos + 1)
-				tpos.push_back(target_pos - 1)
-			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
-			if tpos2.size() == 3: tpos2.pop_back()
-			array = tpos2
+			tpos.append_array(pos_get_sides(target_pos))
+			array = pos_validate(tpos, ignore_defeated)
+			if array.size() == 3: array.pop_back()
 		'2random':
-			var tpos = get_allied_targets(target) #possible cause error if no target
+			var tpos = get_allied_targets(target)#possible cause error if no target
 			while tpos.size() > 2:
 				var r = globals.rng.randi_range(0, tpos.size() - 1)
 				tpos.remove(r)
-			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
-			array = tpos2
+			array = pos_validate(tpos, ignore_defeated)
 		'neighbours':
 			var tpos = []
-			if target_pos in [1, 4, 7]: tpos.push_back(target_pos + 1)
-			elif target_pos in [3, 6, 9]: tpos.push_back(target_pos - 1)
-			else:
-				tpos.push_back(target_pos + 1)
-				tpos.push_back(target_pos - 1)
-			if target_pos in [4, 5, 6]:#not sure about this
-				tpos.push_back(target_pos + 3)
-			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
-			array = tpos2
+			tpos.append_array(pos_get_sides(target_pos))
+			tpos.push_back(pos_get_frontback(target_pos))
+			array = pos_validate(tpos, ignore_defeated)
+		'cross':
+			var tpos = [target_pos]
+			tpos.append_array(pos_get_sides(target_pos))
+			tpos.push_back(pos_get_frontback(target_pos))
+			array = pos_validate(tpos, ignore_defeated)
 	
 	#seems not in use
 #	if !finale and skill.tags.has('random_target'):
@@ -1588,6 +1566,28 @@ func CalculateTargets(skill, caster, target_pos):#finale = false
 #			var tchar = battlefield[pos]
 #			true_targets.push_back(tchar)
 	return array
+
+func pos_get_sides(target_pos) ->Array:
+	if target_pos in [1, 4, 7]:
+		return [target_pos + 1]
+	elif target_pos in [2, 5, 8]:
+		return [target_pos + 1, target_pos - 1]
+	else:#in [3, 6, 9]
+		return [target_pos - 1]
+
+func pos_get_frontback(target_pos):
+	if target_pos in variables.lines[2]:
+		return target_pos + 3
+	elif target_pos in variables.lines[3]:
+		return target_pos - 3
+
+func pos_validate(pos_list :Array, ignore_defeated :bool) ->Array:
+	var validated = []
+	for pos in pos_list:
+		if battlefield[pos] == null: continue
+		if battlefield[pos].defeated and ignore_defeated: continue
+		validated.append(battlefield[pos])
+	return validated
 
 func CalculateTargetsHighlight(skill, caster, target_pos):
 	var array = CalculateTargets(skill, caster, target_pos)

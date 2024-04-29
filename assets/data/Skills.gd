@@ -1782,7 +1782,7 @@ var skilllist = {
 		damagetype = "fire",
 		skilltype = 'support',
 		userange = "any",
-		targetpattern = 'single',
+		targetpattern = 'cross',
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
 		reqs = [],
@@ -3791,7 +3791,7 @@ var patches = {
 			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT2'}]}
 	},
 	p_clean_1 = {
-		targetpattern = {type = 'set', value = 'line'},
+		targetpattern = {type = 'set', value = 'all'},
 		description_patch = {type = 'append',
 			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT3'}]}
 	},
