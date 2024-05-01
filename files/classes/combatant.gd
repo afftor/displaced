@@ -407,21 +407,25 @@ func apply_atomic(template):
 	match template.type:
 		'damage':
 			var tmp = deal_damage(template.value, template.source)
+			var combat = input_handler.combat_node
+			combat.combatlogadd(combat.log_get_damage(tmp, name))
 			if displaynode != null:
 				var args = {critical = false, group = combatgroup}
 				var data = {}
 				args.type = template.source
 				args.damage = tmp
 				data = {node = displaynode, time = input_handler.combat_node.turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
-				input_handler.combat_node.CombatAnimations.add_new_data(data)
+				combat.CombatAnimations.add_new_data(data)
 		'heal':
 			heal(template.value)
+			var combat = input_handler.combat_node
+			combat.combatlogadd(combat.log_get_heal(template.value, name))
 			if displaynode != null:
 				var args = {critical = false, group = combatgroup}
 				var data = {}
 				args.heal = template.value
 				data = {node = displaynode, time = input_handler.combat_node.turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
-				input_handler.combat_node.CombatAnimations.add_new_data(data)
+				combat.CombatAnimations.add_new_data(data)
 #		'mana':
 #			mana_update(template.value)
 #			pass
@@ -698,11 +702,12 @@ func process_event(ev, skill = null):
 		eff.process_event(ev)
 
 func deal_damage(value, source):
-	var out = {hp = 0, shield = 0}
+	var out = {hp = 0, shield = 0, true_hp = 0}
 	var res = get_stat('resists')
 	value = round(value)
 	value *= 1 - res['damage']/100.0
 	if variables.resistlist.has(source): value *= 1 - res[source]/100.0
+	var old_hp = hp
 	if value < 0: 
 		out.hp = -heal(-value)
 		return out
@@ -720,7 +725,9 @@ func deal_damage(value, source):
 		self.hp = hp - value
 		out.hp = value
 		process_event(variables.TR_DMG)
-		recheck_effect_tag('recheck_damage')
+	recheck_effect_tag('recheck_damage')
+	out.true_hp = out.hp
+	if hp == 0: out.true_hp = old_hp
 	return out
 
 func heal(value):
@@ -959,4 +966,11 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 			else:
 				result = false
 	return result
+
+func add_permanent_sfx(sfx_code):
+	if !displaynode:
+		return
+	var sfx_obj = input_handler.gfx_sprite_permanent(displaynode, sfx_code)
+	#we seems not in need of storing sfx_obj here. For now 'effect' do it
+	return sfx_obj
 

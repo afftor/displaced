@@ -487,7 +487,7 @@ var hero_items_data = {
 				icon = "res://assets/images/iconsgear/rilu_weapon1_2.png",
 				lvldesc = [
 					{skill = 'SKILLDARK_ORB', effect = "WEAPON_RILU1_EFFECT1"},
-					{skill = 'SKILLSOULTHORNS', effect = "WEAPON_RILU1_EFFECT2"}
+					{effect = "WEAPON_RILU1_EFFECT2"}
 				],
 				cost = {metal = 15, gold = 1000},
 				},
@@ -495,7 +495,7 @@ var hero_items_data = {
 				icon = "res://assets/images/iconsgear/rilu_weapon1_3.png",
 				lvldesc = [
 					{skill = 'SKILLDARK_ORB', effect = "WEAPON_RILU1_EFFECT1"},
-					{skill = 'SKILLSOULTHORNS', effect = "WEAPON_RILU1_EFFECT2"},
+					{effect = "WEAPON_RILU1_EFFECT2"},
 					{skill = 'SKILLRESTORATION', effect = "WEAPON_RILU1_EFFECT3"}
 				],
 				cost = {leather = 10, gold = 8000},
@@ -504,7 +504,7 @@ var hero_items_data = {
 				icon = "res://assets/images/iconsgear/rilu_weapon1_4.png",
 				lvldesc = [
 					{skill = 'SKILLDARK_ORB', effect = "WEAPON_RILU1_EFFECT1_4"},
-					{skill = 'SKILLSOULTHORNS', effect = "WEAPON_RILU1_EFFECT2"},
+					{effect = "WEAPON_RILU1_EFFECT2"},
 					{skill = 'SKILLRESTORATION', effect = "WEAPON_RILU1_EFFECT3"},
 					{skill = 'SKILLSOUL_BEAM', effect = "WEAPON_RILU1_EFFECT4"}
 				],

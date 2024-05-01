@@ -878,6 +878,7 @@ var TranslationDict = {
 	EVADES_DAMAGE = "%s уворачивается.",
 	CRITICAL = "Крит!!",
 	IS_HIT = "%s получает %d повреждений.",
+	IS_HIT_THROUGH = "%s получает %d (%d) повреждений.",
 	IS_HIT_SHIELD = "%s принимает %d повреждений в щит.",
 	IS_HEALED = "%s исцеляется на %d здоровья.",
 	IS_RESTORED = "%s восстановливает %d %s.",

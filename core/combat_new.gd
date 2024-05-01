@@ -2105,27 +2105,23 @@ func execute_skill(s_skill2):
 		if s_skill2.damagestat[i] == '+damage_hp': #damage, damage no log, negative damage
 			var tmp = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
 			if tmp.hp >= 0:
+				s_skill2.damage_dealt_hp = tmp.true_hp
 				args.type = s_skill2.damagetype
 				args.damage = tmp
 				if !s_skill2.tags.has('no_log'):
-					if tmp.shield > 0:
-						text += tr("IS_HIT_SHIELD") % [s_skill2.target.name, tmp.shield]
-						if tmp.hp > 0:
-							text += "\n"
-					if tmp.hp > 0 or (tmp.shield == 0 and tmp.hp == 0):
-						text += tr("IS_HIT") % [s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
+					text += log_get_damage(tmp, s_skill2.target.name)
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
 			else:
 				args.heal = -tmp.hp
 				if !s_skill2.tags.has('no_log'):
-					text += tr("IS_HEALED") % [s_skill2.target.name, -tmp.hp]
+					text += log_get_heal(-tmp.hp, s_skill2.target.name)
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
 			CombatAnimations.add_new_data(data)
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			var tmp = s_skill2.target.heal(s_skill2.value[i])
 			args.heal = tmp
 			if !s_skill2.tags.has('no_log'):
-				text += tr("IS_HEALED") % [s_skill2.target.name, tmp]
+				text += log_get_heal(tmp, s_skill2.target.name)
 			data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
 			CombatAnimations.add_new_data(data)
 		else:
@@ -2161,6 +2157,23 @@ func combatlogadd(text):
 	var data = {node = gui_node, time = turns, type = 'c_log', slot = 'c_log', params = {text = text}}
 	CombatAnimations.add_new_data(data)
 
+func log_get_damage(result :Dictionary, char_name :String) ->String:#result - product of combatant.deal_damage()
+	var text = ""
+	if result.shield > 0:
+		text += tr("IS_HIT_SHIELD") % [char_name, result.shield]
+		if result.hp > 0:
+			text += "\n"
+	if result.hp > 0 or (result.shield == 0 and result.hp == 0):
+		if result.hp == result.true_hp:
+			text += tr("IS_HIT") % [char_name, result.hp]
+		else:
+			text += tr("IS_HIT_THROUGH") % [char_name, result.hp, result.true_hp]
+	return text
+
+func log_get_heal(value, char_name :String) ->String:
+	return tr("IS_HEALED") % [char_name, value]
+
+#TODO: add other log_ funcs and use them at combatant.apply_atomic()
 
 func clean_summons():
 	for pos in battlefield:

@@ -1479,11 +1479,11 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
-		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],
+		reqs = [],
 		tags = ['damage', 'debuff', 'souls'],
 		value = [['caster.damage', '*0.2']],
 		cooldown = 0,
-		casteffects = ['e_pay_soul', Effectdata.rebuild_template({effect = 'e_t_mist', push_value = true})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_t_mist', push_value = true})],
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_pale_mist', target = 'target', period = 'predamage'},
@@ -1575,7 +1575,7 @@ var skilllist = {
 			{code = 'anim_attack', target = 'caster', period = 'cast'},],
 		sounddata = {cast = 'dark orb'},
 		patches = [
-			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_thorn'},
+#			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}], patch = 'p_thorn'},
 		]
 	},
 	dark_echoes = {
@@ -1591,12 +1591,12 @@ var skilllist = {
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
 		repeat = 1,
-		reqs = [],
+		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],
 		tags = ['damage', 'aoe', 'taunt'],
 		value = [['caster.hpmax', '*0.3'],['caster.damage','*0.6']],
 		damagestat = ['no_stat', '+damage_hp'],
 		cooldown = 1,
-		casteffects = ['e_s_echo', Effectdata.rebuild_template({trigger = variables.TR_CAST, effect = 'e_echo_shield', push_value = true})],
+		casteffects = ['e_pay_soul', 'e_s_echo', Effectdata.rebuild_template({trigger = variables.TR_CAST, effect = 'e_echo_shield', push_value = true})],
 		hidden = false,
 		sfx = [{code = 'anim_special', target = 'caster', period = 'cast'},
 			{code = 'sfx_dark_echoes', target = 'target', period = 'predamage'}, 
@@ -1681,18 +1681,46 @@ var skilllist = {
 		allowedtargets = ['ally', 'self'],
 		keep_target = variables.TARGET_KEEP,
 		reqs = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 1}],
-		tags = ['heal', 'buff', 'souls'],
-		value = ['target.hpmax', '*', ['caster.alt_mana', '*0.1']],
-		damagestat = '-damage_hp',
+		tags = ['buff', 'souls'],
+		value = ['0'],
+		damagestat = 'no_stat',
 		cooldown = 10,
-		casteffects = ['e_pay_all_souls', Effectdata.rebuild_template({effect = 'e_t_soulprot'})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_t_soulprot'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'},
+		sfx = [{code = 'sfx_rose_protection', target = 'target', period = 'predamage'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_rilu', target = 'full', period = 'cast'}],
 		sounddata = {predamage = 'soul protection'},
-		patches = []
+		patches = [
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_soul_prot_info'}
+		],
+		follow_up = 'soul_prot_heal'
+	},
+	soul_prot_heal = {
+		code = '',
+		name = "",
+		description = "",
+		damagetype = "",
+		skilltype = 'spell',
+		userange = "any",
+		targetpattern = 'all',
+		allowedtargets = ['ally', 'self'],
+		keep_target = variables.TARGET_KEEP,
+		reqs = [],
+		tags = ['heal'],
+		value = ['target.hpmax', '*', ['caster.alt_mana', '*0.1']],
+		damagestat = '-damage_hp',
+		cooldown = 0,
+		casteffects = ['e_pay_all_souls'],
+		repeat = 1,
+		hidden = false,
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'}],
+		sounddata = {},
+		patches = [
+			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_soul_prot'}
+		],
+		not_final = true
 	},
 	holy_light = {
 		code = '',
@@ -3743,11 +3771,12 @@ var patches = {
 		description_patch = {type = 'append',
 			value = [{weapon = 'WEAPON_RILU2', effect = 'WEAPON_RILU2_EFFECT2'}]}
 	},
-	p_thorn = {
-		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_add_s1'})]},
-		description_patch = {type = 'append',
-			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT2'}]}
-	},
+	#old concept
+#	p_thorn = {
+#		casteffects = {type = 'append', value = [Effectdata.rebuild_template({effect = 'e_add_s1'})]},
+#		description_patch = {type = 'append',
+#			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT2'}]}
+#	},
 	p_echo_1 = {
 		value = {type = 'replace', value = [['caster.hpmax','*0.5'],['caster.damage','*0.6']],},
 		description_patch = {type = 'append',
@@ -3759,8 +3788,8 @@ var patches = {
 			value = [{weapon = 'WEAPON_RILU2', effect = 'WEAPON_RILU2_EFFECT1_4'}]}
 	},
 	p_resto = {
-		value = {type = 'replace', value = ['caster.hpmax','*0.4'],},
-		casteffects = {type = 'append', value = ['e_pay_soul']},
+		value = {type = 'replace', value = ['caster.hpmax'],},
+		casteffects = {type = 'replace', value = ['e_pay_all_souls']},
 		reqs = {type = 'replace', value = [{type = 'stats', stat = 'alt_mana', operant = 'gte', value = 2}]},
 		description_patch = {type = 'append',
 			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT3'}]}
@@ -3769,6 +3798,13 @@ var patches = {
 		value = {type = 'replace', value = ['caster.damage', '*', ['caster.alt_mana', '*0.1', '+0.9'],'*1.5']},
 		description_patch = {type = 'append',
 			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU1_EFFECT4'}]}
+	},
+	p_soul_prot = {
+		casteffects = {type = 'replace', value = ['e_add_all_souls']}
+	},
+	p_soul_prot_info = {
+		description_patch = {type = 'append',
+			value = [{weapon = 'WEAPON_RILU1', effect = 'WEAPON_RILU2_EFFECT4'}]}
 	},
 	p_bless_1 = {
 		cooldown = {type = 'add', value = -1},

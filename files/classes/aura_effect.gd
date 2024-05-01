@@ -39,6 +39,7 @@ func serialize():
 
 func recheck():
 	if !is_applied: return
+	.recheck()
 	var tres = true
 	var obj = get_applied_obj()
 	for cond in template.conditions:

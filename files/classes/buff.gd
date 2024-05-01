@@ -28,6 +28,8 @@ func createfromtemplate(buff_t):
 
 func get_tooltip():
 	calculate_args()
+	if args.empty():
+		return description
 	return description % args
 
 #for optimisation cause expected to be used after get_tooltip() (getter to description), for any other cases decomment calculate_args()
@@ -63,7 +65,6 @@ func calculate_args():
 					var par
 					par = effects_pool.get_effect_by_id(parent)
 					args.push_back(par.get_arg(int(arg.param)))
-		pass
 
 func get_duration():
 	var par = effects_pool.get_effect_by_id(parent)

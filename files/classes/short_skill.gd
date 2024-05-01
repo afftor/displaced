@@ -12,6 +12,7 @@ var skilltype
 var tags
 var value = []
 var long_value = []
+var damage_dealt_hp = 0#actual hp damage done by applicable skill
 #var manacost
 var userange
 var targetpattern

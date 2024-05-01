@@ -665,7 +665,7 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 
 var sprites = {slash = 'res://assets/images/gfx/hit/HitAnimation.tscn'} 
 
-func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h = false, flip_v = false):
+func gfx_get_scene(effect):
 	var scene
 	if sprites.has(effect):
 		if sprites[effect] is bool:#can only be false here
@@ -684,6 +684,11 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h =
 				return
 		else:
 			return
+	return scene
+
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h = false, flip_v = false):
+	var scene = gfx_get_scene(effect)
+	if !scene: return
 	var x = scene.instance()
 	if x is AnimatedSprite:#x can be AnimationPlayer
 		if flip_h or flip_v:
@@ -704,6 +709,18 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h =
 	
 	if wr.get_ref(): x.queue_free()
 
+func gfx_sprite_permanent(node, effect, flip_h = false, flip_v = false):
+	var scene = gfx_get_scene(effect)
+	if !scene: return
+	var x = scene.instance()
+	if x is AnimatedSprite:#x can be AnimationPlayer
+		if flip_h or flip_v:
+			x.position.y -= 80 # need do adjust because hero sprites are too tall
+		x.flip_h = flip_h
+		x.flip_v = flip_v
+	node.add_child(x)
+	x.play()
+	return x
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	tween_property(node, 'rect_position', startpoint, endpoint, time, delay)
