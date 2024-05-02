@@ -63,52 +63,54 @@ func _ready():
 	$sprite.material.set_shader_param('outline_width', 1.0)
 	var sfx_anchor_class = load("res://files/scenes/combat/combat_sfx_anchor.gd")
 	sfx_anchor = sfx_anchor_class.new(self)
-	connect("mouse_exited", self, 'check_signal_exited')
 	var overgrow = 10.0#size of a buffer around sprite for click mask
 	for i in range(0,scan_vecs.size()):
 		scan_vecs[i] *= overgrow
 	input_handler.ClearContainer($Buffs)
 
-func _clips_input():
-	return true
 
-func _gui_input(event):
+func custom_gui_input(event):
+	if !(event is InputEventMouse):
+		print("ATTENTION! custom_gui_input() received non InputEventMouse")
+	var mouse_position = get_local_mouse_position()
+	
+	#need to change texture_click_mask in order to differ DN_NONE and DN_SPRITE
+#	if !$sprite.get_rect().has_point(mouse_position):
+#		return variables.DN_NONE
+	
+	if (mouse_position.x < 0 or mouse_position.x > rect_size.x
+			or mouse_position.y < 0 or mouse_position.y > rect_size.y):
+		return variables.DN_NONE
+	
 	var mouse_in_mask :bool = false
-	if event is InputEventMouse:
-		#-----seems useless after _clips_input() been added. Delete with time---
-#		if (event.position.x < 0 or event.position.x > rect_size.x
-#			or event.position.y < 0 or event.position.y > rect_size.y) : return
-		#-------
-		mouse_in_mask = texture_click_mask.get_bit(event.position)
-		#About click mask buffer: in all honesty I don't like this solution. Contrary to my best
-		#anticipations it is still takes no more then 1 ms to execute, so it seems acceptable.
-		#My first idea was to modify texture_click_mask accordingly, to simplify this validation,
-		#but it happened to be far more resource-intensive (around 1200 ms for each regenerate_click_mask).
-		#Be advised to optimize the whole solution somehow.
-		if !mouse_in_mask:
-			var bounderis = texture_click_mask.get_size() - Vector2(1.0,1.0)
-			for scan_vec in scan_vecs:
-				var scan_point = event.position + scan_vec
-				scan_point.x = clamp(scan_point.x, 0.0, bounderis.x)
-				scan_point.y = clamp(scan_point.y, 0.0, bounderis.y)
-				if texture_click_mask.get_bit(scan_point):
-					mouse_in_mask = true
-					break
-	if mouse_in_mask and event.is_pressed():
+	mouse_in_mask = texture_click_mask.get_bit(mouse_position)
+	#About click mask buffer: in all honesty I don't like this solution. Contrary to my best
+	#anticipations it is still takes no more then 1 ms to execute, so it seems acceptable.
+	#My first idea was to modify texture_click_mask accordingly, to simplify this validation,
+	#but it happened to be far more resource-intensive (around 1200 ms for each regenerate_click_mask).
+	#Be advised to optimize the whole solution somehow.
+	if !mouse_in_mask:
+		var bounderis = texture_click_mask.get_size() - Vector2(1.0,1.0)
+		for scan_vec in scan_vecs:
+			var scan_point = mouse_position + scan_vec
+			scan_point.x = clamp(scan_point.x, 0.0, bounderis.x)
+			scan_point.y = clamp(scan_point.y, 0.0, bounderis.y)
+			if texture_click_mask.get_bit(scan_point):
+				mouse_in_mask = true
+				break
+	
+	if !mouse_in_mask:
+		return variables.DN_NONE
+	
+	if event.is_pressed():
 		if event.is_action('LMB'):
 			emit_signal("signal_LMB", position)
 #		elif event.is_action("RMB"):
 #			emit_signal("signal_RMB", fighter)
 #			RMBpressed = true
-
-	if event is InputEventMouseMotion:
-		if mouse_in_mask:
-			if !mouse_in_me:
-				emit_signal("signal_entered")
-				mouse_in_me = true
-		else:
-			check_signal_exited()
-
+	
+	return variables.DN_HANDLED
+	
 #	if event.is_action_released("RMB") && RMBpressed == true:
 #		emit_signal("signal_RMB_release")
 #		RMBpressed = false
@@ -121,6 +123,11 @@ func check_signal_exited():
 	if mouse_in_me:
 		emit_signal("signal_exited")
 		mouse_in_me = false
+
+func check_signal_entered():
+	if !mouse_in_me:
+		emit_signal("signal_entered")
+		mouse_in_me = true
 
 func setup_character(ch):
 #	print("%s - %s" % [str(modulate), str(ch.position)])

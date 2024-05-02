@@ -74,7 +74,7 @@ onready var battlefieldpositions = {
 	4 : $battlefield/EnemyGroup/Front/left,
 	5 : $battlefield/EnemyGroup/Front/mid,
 	6 : $battlefield/EnemyGroup/Front/right,
-	7: $battlefield/EnemyGroup/Back/left,
+	7 : $battlefield/EnemyGroup/Back/left,
 	8 : $battlefield/EnemyGroup/Back/mid,
 	9 : $battlefield/EnemyGroup/Back/right}
 
@@ -130,6 +130,22 @@ var is_player_turn = false
 var skill_in_progress = false
 
 var resist_tooltip_for_pos = -1
+
+onready var displaynodes = [#in display order
+	battlefieldpositions['arron'],
+	battlefieldpositions['ember'],
+	battlefieldpositions['erika'],
+	battlefieldpositions['iola'],
+	battlefieldpositions['rilu'],
+	battlefieldpositions['rose'],
+	battlefieldpositions[6],
+	battlefieldpositions[9],
+	battlefieldpositions[5],
+	battlefieldpositions[8],
+	battlefieldpositions[4],
+	battlefieldpositions[7]
+]
+var cur_displaynode#it's maybe better idea to walk away from signals and work with this var
 
 func _ready():
 	debug_btn_on = $test.visible
@@ -2258,6 +2274,23 @@ func hide_resist_tooltip_if_my(pos :int):
 func _gui_input(event):
 	if event.is_action_pressed('RMB'):
 		unselect_skill()
+		return
+	
+	for displaynode in displaynodes:
+		if !displaynode.visible: continue
+		var result = displaynode.custom_gui_input(event)
+		if result == variables.DN_HANDLED:
+			if !cur_displaynode or cur_displaynode != displaynode:
+				if cur_displaynode:
+					cur_displaynode.check_signal_exited()
+				cur_displaynode = displaynode
+				displaynode.check_signal_entered()
+			accept_event()
+			return
+	#noone handled
+	if cur_displaynode:
+		cur_displaynode.check_signal_exited()
+		cur_displaynode = null
 
 #for CloseableWindowsArray processing------
 func show():
