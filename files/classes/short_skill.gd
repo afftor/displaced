@@ -12,6 +12,7 @@ var skilltype
 var tags
 var value = []
 var long_value = []
+var long_value_min = []
 var damage_dealt_hp = 0#actual hp damage done by applicable skill
 #var manacost
 var userange
@@ -83,6 +84,16 @@ func createfromskill(s_code, i_caster):
 			long_value.push_back(template.value.duplicate())
 	else:
 		long_value.push_back(template.value)
+	
+	if template.has('value_min'):
+		if typeof(template.value_min) == TYPE_ARRAY: 
+			if typeof(template.value_min[0]) == TYPE_ARRAY:
+				long_value_min = template.value_min.duplicate()
+			else:
+				long_value_min.push_back(template.value_min.duplicate())
+		else:
+			long_value_min.push_back(template.value_min)
+		assert(long_value_min.size() == long_value.size(), "value_min not corresponding to value")
 	
 	get_from_template('damagestat', true)
 	for s in range(damagestat.size()):
@@ -227,17 +238,24 @@ func process_event(ev):
 		eff.set_args('skill', self)
 		eff.process_event(ev)
 
+func calculate_long_value_idx(idx):
+	var result = input_handler.calculate_number_from_string_array(long_value[idx], caster, target)
+	if !long_value_min.empty():
+		var min_val = input_handler.calculate_number_from_string_array(long_value_min[idx], caster, target)
+		result = max(result, min_val)
+	return result
+
 #that's very much of a reckless patch for meta-skill TR_CAST event processing. Mind that it is not a replacement for resolve_value
 #to get rid of this, need to do a major refactor of all this meta/applicable skill system
 func prepare_process_value_on_meta():
 	if !get_exception_type().empty() or target == null:
 		return
-	process_value = input_handler.calculate_number_from_string_array(long_value[0], caster, target)
+	process_value = calculate_long_value_idx(0)
 
 func resolve_value(check_m):
 	value.resize(long_value.size())
 	for i in range(long_value.size()):
-		var endvalue = input_handler.calculate_number_from_string_array(long_value[i], caster, target)
+		var endvalue = calculate_long_value_idx(i)
 		if !(damagestat[i] in variables.dmg_mod_list): 
 			value[i] = endvalue
 			continue
