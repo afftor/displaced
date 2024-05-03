@@ -1961,7 +1961,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
-		var sounded_postdamage_once = false
+		var sounded_postdamage = {}
 		for s_skill2 in s_skill2_list:
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
@@ -1970,14 +1970,18 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 #				Off_Target_Glow()
 			else:
 				#=========postdamage animation sound
-				if sounddict.has('postdamage') and !sounded_postdamage_once:
-					if sounddict.postdamage == 'bodyhitsound':
-						sound_from_fighter(s_skill2.target.bodyhitsound, s_skill2.target)
-					elif sounddict.postdamage == 'bodyarmor':
-						sound_from_fighter(calculate_hit_sound(skill, caster, s_skill2.target), s_skill2.target)
-					else:
-						sound_from_fighter(sounddict.postdamage, s_skill2.target)
-					sounded_postdamage_once = true
+				if sounddict.has('postdamage'):
+					var postdamage_sound = sounddict.postdamage
+					if postdamage_sound == 'bodyarmor':
+						postdamage_sound = calculate_hit_sound(skill, caster, s_skill2.target)
+					if !sounded_postdamage.has(postdamage_sound):
+						sound_from_fighter(postdamage_sound, s_skill2.target)
+						sounded_postdamage[postdamage_sound] = true
+				if !skill.has('no_bodyhitsound') or !skill.no_bodyhitsound:
+					var postdamage_sound = s_skill2.target.bodyhitsound
+					if !sounded_postdamage.has(postdamage_sound):
+						sound_from_fighter(postdamage_sound, s_skill2.target)
+						sounded_postdamage[postdamage_sound] = true
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)

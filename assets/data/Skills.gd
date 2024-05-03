@@ -32,7 +32,8 @@ var skilllist = {
 			{conditions = [{type = 'id', value = 'erika', check = true}], patch = 'p_base_erika'},
 		], #while it is completely functional 'as is', we should either clone this skill or make a complex patches system to reflect element and range changes in sound and sfx data (or change current sfx code to use 'weapon_sfx' or 'element_sfx' placeholder)
 		ai_priority = 1,
-		sounddata = {predamage = 'weapon'},#postdamage = 'bodyhitsound'
+		sounddata = {predamage = 'weapon'},
+		#no_bodyhitsound = true#use it, if target must not sound it's bodyhitsound on postdamage
 	},
 	defence = {
 		code = '',
@@ -2809,7 +2810,7 @@ var skilllist = {
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'}],
 		patches = [],
-		sounddata = {predamage = 'weapon'},#postdamage = 'bodyhitsound'
+		sounddata = {predamage = 'weapon'},
 		ai_priority = 1
 	},
 	an_charm = {
@@ -3898,7 +3899,7 @@ func _ready():
 			for period in tdata:
 				if period == 'predamage' and tdata[period] == "weapon":
 					continue
-				if period == 'postdamage' and (tdata[period] == "bodyhitsound" or tdata[period] == "bodyarmor"):
+				if period == 'postdamage' and tdata[period] == "bodyarmor":#tdata[period] == "bodyhitsound"
 					continue
 				resources.preload_res("sound/%s" % tdata[period])
 
