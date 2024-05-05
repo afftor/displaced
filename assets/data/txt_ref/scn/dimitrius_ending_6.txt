@@ -8,7 +8,7 @@
 De - Ghah, you idiots.  & EV_DIMITRIUS_ENDING_6_0
 De - Still don't understand that you can't defeat me. & EV_DIMITRIUS_ENDING_6_1
 Ar(shock) - Damnit. You guys escape, I'll hold him back. & EV_DIMITRIUS_ENDING_6_2
-De(anger) - ...Seriously? & EV_DIMITRIUS_ENDING_6_3
+De - ...Seriously? & EV_DIMITRIUS_ENDING_6_3
 De - Fine, I'll play with you for the last time, Arron. & EV_DIMITRIUS_ENDING_6_4
 *snap* & EV_DIMITRIUS_ENDING_6_5
 A number of demon minions jumped from the outside into the building.  & EV_DIMITRIUS_ENDING_6_6
@@ -17,7 +17,7 @@ De - Go after them! & EV_DIMITRIUS_ENDING_6_8
 De - Now I made you look like an idiot. Ahaha! & EV_DIMITRIUS_ENDING_6_9
 Ar(neutral) - We'll see about that, bastard. & EV_DIMITRIUS_ENDING_6_10
 Saying that, Arron turned his back and ran away. & EV_DIMITRIUS_ENDING_6_11
-De(anger) - ...? & EV_DIMITRIUS_ENDING_6_12
+De - ...? & EV_DIMITRIUS_ENDING_6_12
 De - This imbecile never learns.  & EV_DIMITRIUS_ENDING_6_13
 =SOUND footstep=
 =GUI_HIDE=

@@ -20,7 +20,7 @@ De - An interesting thing, but what good does it do to you?  & EV_DIMITRIUS_2_2_
 De - You would never dare to use it anyway.  & EV_DIMITRIUS_2_2_10
 Ri - You are right, Arron wouldn't.  & EV_DIMITRIUS_2_2_11
 Ri - But I will. & EV_DIMITRIUS_2_2_12
-D(anger) - Hmph, is that so? & EV_DIMITRIUS_2_2_13
+De - Hmph, is that so? & EV_DIMITRIUS_2_2_13
 Ar(neutral) - Since you know about it, you know about her goal. If you don't want your existence completely erased, return our friends. & EV_DIMITRIUS_2_2_14
 De - Hahahah, good. & EV_DIMITRIUS_2_2_15
 De - Rose, come over here. & EV_DIMITRIUS_2_2_16

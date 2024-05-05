@@ -13,22 +13,22 @@ Ar(anger) - Like hell it is! & EV_DIMITRIUS_ENDING_9_3
 Taken by surprise, Dimitrius was attacked by barehanded Arron, tackling him on the ground. & EV_DIMITRIUS_ENDING_9_4
 =SOUND sound_fall=
 What he didn't see is how Arron pulled the shock baton out of his clothes. & EV_DIMITRIUS_ENDING_9_5
-De(anger) - What the- & EV_DIMITRIUS_ENDING_9_6
+De - What the- & EV_DIMITRIUS_ENDING_9_6
 =SOUND shocker=
 Bzzzzt & EV_DIMITRIUS_ENDING_9_7
-De(anger) - Arrggh... You bastard... & EV_DIMITRIUS_ENDING_9_8
+De - Arrggh... You bastard... & EV_DIMITRIUS_ENDING_9_8
 As the baton was connected to Dimitrius body, electrical shock ran through his body completely immobilizing and depowering him to the point he couldn't speak easily. & EV_DIMITRIUS_ENDING_9_9
 Ar - Hah, so it does work on you after all.  & EV_DIMITRIUS_ENDING_9_10
-De(anger) - You... Will pay for this... & EV_DIMITRIUS_ENDING_9_11
+De - You... Will pay for this... & EV_DIMITRIUS_ENDING_9_11
 Arron kept Dimitrius in one spot as electrical current continued to restrict him. & EV_DIMITRIUS_ENDING_9_12
 Ar(neutral) - You know what really gets on my nerves?  & EV_DIMITRIUS_ENDING_9_13
-De(anger) - You are... just postponing the inevitable... & EV_DIMITRIUS_ENDING_9_14
+De - You are... just postponing the inevitable... & EV_DIMITRIUS_ENDING_9_14
 Ar(neutral) - It's your trash attitude towards us.  & EV_DIMITRIUS_ENDING_9_15
-De(anger) - You still... can't kill me... & EV_DIMITRIUS_ENDING_9_16
+De - You still... can't kill me... & EV_DIMITRIUS_ENDING_9_16
 Ar(neutral) - Humans aren't the animals you take us for. & EV_DIMITRIUS_ENDING_9_17
-De(anger) - And once energy... runs out... & EV_DIMITRIUS_ENDING_9_18
+De - And once energy... runs out... & EV_DIMITRIUS_ENDING_9_18
 Ar(neutral) - I actually believe we can achieve great things. & EV_DIMITRIUS_ENDING_9_19
-De(anger) - You will... fucking die... & EV_DIMITRIUS_ENDING_9_20
+De - You will... fucking die... & EV_DIMITRIUS_ENDING_9_20
 Ar(neutral) - You aren't even listening.  & EV_DIMITRIUS_ENDING_9_21
 Ar - Well, at least you won't tell it to others. & EV_DIMITRIUS_ENDING_9_22
 =BLACKUNFADE 0.5=
@@ -57,9 +57,9 @@ As Arron kept Dimitrius disabled, he sensed how the mechanisms around him went i
 Ar(neutral) - It seems I don't have much time left.  & EV_DIMITRIUS_ENDING_9_32
 De - ...Hah... starting to regret... your arrogance? & EV_DIMITRIUS_ENDING_9_33
 Ar(neutral) - I've heard that demons hate light.  & EV_DIMITRIUS_ENDING_9_34
-De(anger) - (Keep talking fool, I only need a bit more to break free) & EV_DIMITRIUS_ENDING_9_35
+De - (Keep talking fool, I only need a bit more to break free) & EV_DIMITRIUS_ENDING_9_35
 Ar - You might have no idea, but this weird place is called a fusion reactor.  & EV_DIMITRIUS_ENDING_9_36
-De(anger) - Watcha... talking about... & EV_DIMITRIUS_ENDING_9_37
+De - Watcha... talking about... & EV_DIMITRIUS_ENDING_9_37
 Ar - Amazingly, it is able to eminate the power of the Sun itself. & EV_DIMITRIUS_ENDING_9_38
 Ar - Given your condition, it seems my shocker has nearly run out of power.  & EV_DIMITRIUS_ENDING_9_39
 Ar - So, say, do you think you will be able to survive fifty millions degree heat? & EV_DIMITRIUS_ENDING_9_40
@@ -69,13 +69,13 @@ Dimitrius pushed Arron away with a slowly returning power, still oblivious to wh
 Ar(shock) - Behind! & EV_DIMITRIUS_ENDING_9_43
 Realizing that Arron indeed saw something behind him, Dimitrius looked around to find a huge cloud of forming plasma spreading through the reactor's coil. & EV_DIMITRIUS_ENDING_9_44
 In the same moment Arron disappeared from his previous place. & EV_DIMITRIUS_ENDING_9_45
-De(anger) - ...Teleportation? & EV_DIMITRIUS_ENDING_9_46
+De - ...Teleportation? & EV_DIMITRIUS_ENDING_9_46
 De - You fool, did you forget who I am? & EV_DIMITRIUS_ENDING_9_47
 De - ... & EV_DIMITRIUS_ENDING_9_48
-De(anger) - Huh? & EV_DIMITRIUS_ENDING_9_49
-De(anger) - Something stops me?  & EV_DIMITRIUS_ENDING_9_50
-De(anger) - HOW!? & EV_DIMITRIUS_ENDING_9_51
-De(anger) - ARR- & EV_DIMITRIUS_ENDING_9_52
+De - Huh? & EV_DIMITRIUS_ENDING_9_49
+De - Something stops me?  & EV_DIMITRIUS_ENDING_9_50
+De - HOW!? & EV_DIMITRIUS_ENDING_9_51
+De - ARR- & EV_DIMITRIUS_ENDING_9_52
 =WHITE=
 =DELAY 0.6=
 =SPRITE_HIDE=
