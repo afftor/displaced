@@ -51,7 +51,7 @@ func build_stats():
 		stats_list.get_node("friend").hide()
 	else:
 		stats_list.get_node("friend").show()
-		stats_list.get_node("friend/Label").text = String(character.friend_points)
+		stats_list.get_node("friend/Label").text = String(int(character.friend_points))
 	build_skills()
 	build_res()
 

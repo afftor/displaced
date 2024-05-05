@@ -1146,7 +1146,7 @@ func victory():
 		xpbar_node.hint_tooltip = tr("TILLNEXTLEVEL") % (max(new_exp_cap - i.baseexp, 0))
 		xplabel_node.hint_tooltip = xpbar_node.hint_tooltip
 		var friend_node = newbutton.get_node("friend")
-		if i.friend_points_new == 0 or ch == 'arron':
+		if i.friend_points_new <= 0.0:#arron should never have friend_points
 			friend_node.hide()
 		else:
 			friend_node.hint_tooltip = tr('FRIENDPOINTSALLTOOLTIP') % i.friend_points

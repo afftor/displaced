@@ -2,8 +2,8 @@ extends combatant
 class_name hero
 
 var unlocked = false setget set_unlocked
-var friend_points = 0
-var friend_points_new = 0
+var friend_points = 0.0
+var friend_points_new = 0.0
 
 var recentlevelups = 0
 var baseexp = 0 setget exp_set
@@ -105,11 +105,20 @@ func get_skills():
 
 func see_enemy_killed():
 	#stub
-	friend_points += 1 #can adjust it here, arron still get fp
-	friend_points_new += 1
+	if base == 'arron':
+		for ch in state.characters:
+			var girl = state.heroes[ch]
+			if ch != 'arron' and girl.unlocked:
+				girl.add_friend_points(0.3)
+	else:
+		add_friend_points(1)
+
+func add_friend_points(value):
+	friend_points += value
+	friend_points_new += value
 
 func clear_new_friend_points():
-	friend_points_new = 0
+	friend_points_new = 0.0
 
 ##cheat
 #func unlock_all_skills():
@@ -269,7 +278,7 @@ func deserialize(savedir):
 	bonuses = savedir.bonuses.duplicate()
 	for slot in gear_level:
 		gear_level[slot] = int(gear_level[slot])
-	friend_points = int(savedir.fr_p)
+	friend_points = floor(float(savedir.fr_p) * 10) * 0.1
 	#delete, if new dynamic traits system works
 #	static_effects = savedir.static_effects.duplicate()
 #	temp_effects = savedir.temp_effects.duplicate()

@@ -37,7 +37,7 @@ func set_unlockable(eventdata :Dictionary):
 		var line = input_handler.DuplicateContainerTemplate(cost_con, 'line')
 		line.get_node('TextureRect').texture = hero.portrait()
 		var line_label = line.get_node('Label')
-		line_label.text = "%d/%d" % [hero.friend_points, eventdata.unlock_price[ch]]
+		line_label.text = "%d/%d" % [int(hero.friend_points), eventdata.unlock_price[ch]]
 		if eventdata.unlock_price[ch] > hero.friend_points:
 			line_label.set("custom_colors/font_color", variables.hexcolordict.red)
 			unlock_btn.hide()
