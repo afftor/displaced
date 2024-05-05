@@ -50,9 +50,14 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	erika_annet_2_1 = [
 		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'forced_content'}]},
+		{type = 'system', value = 'enable_character', arg = ['erika', false], reqs = [{type = 'forced_content', value = false}] }
 	],
 	erika_annet_2_2 = [
-		{type = 'force_seq_seen', value = 'erika_annet'}
+		{type = 'force_seq_seen', value = 'erika_annet'},
+		{type = 'system', value = 'enable_character', arg = ['erika', false] }
+	],
+	erika_annet_2_4 = [
+		{type = 'system', value = 'enable_character', arg = ['erika', true] }
 	],
 	iola_2_2_1 = [
 		{type = 'system', value = 'unlock_area', arg = 'cult'},
@@ -119,11 +124,21 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{code = 'system', value = 'show_screen', args = 'village'},
 		{type = 'show_screen', value = 'village'},
 	],
+	iola_2_5 = [
+		{type = 'system', value = 'enable_character', arg = ['iola', true]}
+	],
 	dimitrius_2_1_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
 	],
+	dimitrius_2_1 = [
+		{type = 'system', value = 'enable_character', arg = ['rose', false] },
+		{type = 'system', value = 'enable_character', arg = ['iola', false] },
+	],
 	dimitrius_2_2 = [
 		{type = 'system', value = 'enable_character', arg = ['iola', true] },
+	],
+	rose_2 = [
+		{type = 'system', value = 'enable_character', arg = ['rose', true] },
 	],
 	dimitrius_ending_1 = [
 		{type = 'show_screen', value = 'exploration', arg = 'modern_city'},
@@ -373,7 +388,6 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_faeries_3'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_1'}, 
-		{type = 'system', value = 'enable_character', arg = ['erika', false] },
 #		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
 		
 		]
@@ -392,7 +406,6 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_4'},
 #		{type = 'system', value = 'game_stage', arg = 'erika_rescued'},
-		{type = 'system', value = 'enable_character', arg = ['erika', true] },
 		]
 	},
 	
@@ -433,7 +446,6 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_iola_rescue'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_5'},
-		{type = 'system', value = 'enable_character', arg = ['iola', true]},
 		]
 	},
 	
@@ -516,8 +528,6 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'dimitrius_2_1'},
 		{type = 'system', value = 'unlock_mission', arg = 'castle_rilu_return'},
-		{type = 'system', value = 'enable_character', arg = ['rose', false] },
-		{type = 'system', value = 'enable_character', arg = ['iola', false] },
 		]
 	},
 	dimitrius_2_1_2 = {
@@ -532,7 +542,6 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_rose_rescue'}],
 		actions = [
 		{type = 'scene', value = 'rose_2'},
-		{type = 'system', value = 'enable_character', arg = ['rose', true] },
 		]
 	},
 	
