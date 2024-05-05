@@ -293,6 +293,8 @@ func valuecheck(dict):
 		"scene_seen":
 			return OldEvents.has(dict.value)
 		"forced_content":
+			if dict.has("value"):
+				return globals.globalsettings.forced_content == dict.value
 			return globals.globalsettings.forced_content
 		#old ones, possibly obsolete
 		"has_money":
