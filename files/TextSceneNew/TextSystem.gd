@@ -1393,6 +1393,9 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	#-------should be switched off in most cases, except changes in events------
 	globals.check_event_translation_integrity(strings_to_check)
 	#---------
+	for original in Explorationdata.cloned_scenes:
+		var clone = Explorationdata.cloned_scenes[original]
+		out[clone] = out[original].duplicate(true)
 	current_scene = ""
 	line_dr = ""
 	return out.duplicate(true)#duplicate needed?

@@ -32,6 +32,7 @@ func set_unlockable(eventdata :Dictionary):
 	var cost_con = reqs.get_node("list")
 	input_handler.ClearContainer(cost_con, ['line'])
 	for ch in eventdata.unlock_price:
+		if eventdata.unlock_price[ch] == 0: continue
 		var hero = state.heroes[ch]
 		var line = input_handler.DuplicateContainerTemplate(cost_con, 'line')
 		line.get_node('TextureRect').texture = hero.portrait()

@@ -314,6 +314,8 @@ func run_actions_list(list, replay :bool) ->int:
 			'tutorial':
 				if replay: continue
 				TutorialCore.start_tut(action.value)
+			'force_seq_seen':
+				state.store_sequence(action.value)
 	return output
 
 
