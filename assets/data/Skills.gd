@@ -1244,7 +1244,7 @@ var skilllist = {
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'sfx_shockwave', target = 'target', period = 'predamage'}],
-		sounddata = {predamage = 'shockwave'},
+		sounddata = {predamage = 'aegis'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 2, op = 'gte'}], patch = 'p_shockwave'},
 		],
@@ -1268,7 +1268,7 @@ var skilllist = {
 		repeat = 1,
 		hidden = true,
 		sfx = [{code = 'anim_hit', target = 'target', period = 'postdamage'}],
-		sounddata = {cast = 'shockwave'},
+		sounddata = {cast = 'aegis'},
 		patches = [],
 		not_final = true
 	},
@@ -1384,7 +1384,7 @@ var skilllist = {
 		sfx = [{code = 'sfx_aegis', target = 'target', period = 'predamage'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_ember', target = 'full', period = 'cast'}],
-		sounddata = {predamage = 'aegis'},
+		sounddata = {predamage = 'shockwave'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon2', level = 4, op = 'gte'}], patch = 'p_aegis'},
 		]
