@@ -25,6 +25,7 @@ var speed = 1.33
 #var damageeffectsarray = []
 
 var hp
+var ult
 #var mp
 onready var hp_bar = $HP
 
@@ -145,9 +146,12 @@ func setup_character(ch):
 	for n in panel_node.get_children():
 		n.visible = true
 	if fighter is hero:
+		ult = fighter.get_ultimeter()
+		panel_node.get_node('ProgressUlt').value = ult
 		panel_node.get_node('TextureRect').texture = fighter.portrait()
 		panel_node2.get_node('ProgressBar').max_value = fighter.get_stat('hpmax')
 		panel_node2.get_node('ProgressBar').value = hp
+		panel_node2.get_node('ProgressUlt').value = ult
 		panel_node2.get_node('Label').text = fighter.get_stat('name')
 		panel_node2.disabled = false
 	else:
@@ -286,6 +290,18 @@ func update_hp():
 		#damageeffectsarray.append(data)
 		var data = {node = self, time = input_handler.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
 		animation_node.add_new_data(data)
+
+func update_ultimeter():
+	if ult == null:
+		ult = fighter.get_ultimeter()
+	if ult == fighter.get_ultimeter():
+		return
+	
+	ult = fighter.get_ultimeter()
+	animation_node.add_new_data({
+		node = self, time = input_handler.combat_node.turns,
+		type = 'update_ultimeter', slot = 'ult',
+		params = {new_ult = ult}})
 
 #that stuff not working. For now all shield representation made through buff-icons
 func update_shield(): 

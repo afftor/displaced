@@ -380,6 +380,27 @@ func hp_update(node, args):
 	input_handler.tween_callback_with(tween, node, 'update_hp_label', delay, [args.newhp])
 	return delaytime + delay
 
+func update_ultimeter(node, args):
+	var delay = 0#not sure, if it's needed
+	
+	var tween = input_handler.GetTweenNode(node)
+	var ult_node = node.panel_node.get_node("ProgressUlt")
+	var ult_node2 = node.panel_node2.get_node("ProgressUlt")
+	#remake it when inbattle bar for heroes will be added
+#	var hpnode_field = node.ret_hp_bar()
+#	if hpnode_field.visible:
+#		input_handler.tween_property(hpnode_field, 'value', hpnode_field.value, args.newhp, 0.3, delay)
+	if !ult_node2.is_visible_in_tree():
+		input_handler.tween_property_with(tween, ult_node, 'value', ult_node.value, args.new_ult, 0.3, delay)
+		ult_node2.value = args.new_ult
+	else:
+		input_handler.tween_property_with(tween, ult_node2, 'value', ult_node2.value, args.new_ult, 0.3, delay)
+		if ult_node != ult_node2:
+			ult_node.value = args.new_ult
+	#if label will be needed
+#	input_handler.tween_callback_with(tween, node, 'update_ultimeter_label', delay, [args.new_ult])
+	return 0.1 + delay
+
 
 func damage_float(node, args):
 #	print("dmg float")

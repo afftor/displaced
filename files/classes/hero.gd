@@ -11,15 +11,13 @@ var exp_cap = 100 setget ,get_exp_cap
 
 var alt_mana = 0 setget a_mana_set
 
-
+var got_turn = false#flag for single process of TR_TURN_GET
 var gear_level = {weapon1 = 0, weapon2 = 0, armor = 1}
 var curweapon = 'weapon1'
 var base_dmg_type = 'bludgeon' setget , get_weapon_damagetype
 var armorbase = {}
 var armorbonus = {}
-
-#out of combat regen stats
-var regen_collected = 0
+var ultimeter :int = 0
 
 var bonusres = []
 
@@ -58,16 +56,17 @@ func activate_traits():
 		for t in template.traits:
 			add_trait(t);
 
-func regen_tick(delta):
-	var regen_thresholds = regen_calculate_threshold()
-	regen_collected += delta
-	if regen_collected >= regen_thresholds:
-		regen_collected -= regen_thresholds
-		self.hp += 1
-
-
-func regen_calculate_threshold():
-	return variables.TimePerDay/max(get_stat('hpmax'),1)
+#seems not in use (and not working)
+#out of combat regen stats
+#var regen_collected = 0
+#func regen_tick(delta):
+#	var regen_thresholds = regen_calculate_threshold()
+#	regen_collected += delta
+#	if regen_collected >= regen_thresholds:
+#		regen_collected -= regen_thresholds
+#		self.hp += 1
+#func regen_calculate_threshold():
+#	return variables.TimePerDay/max(get_stat('hpmax'),1)
 
 
 func exp_set(value):
@@ -244,6 +243,7 @@ func serialize():
 	tmp.position = position
 	tmp.bonuses = bonuses.duplicate()
 	tmp.fr_p = friend_points
+	tmp.ultimeter = ultimeter
 	if !static_effects.empty():
 		print("ERROR on save %s! There are %s static_effects active" % [name, static_effects.size()])
 	if !triggered_effects.empty():
@@ -279,6 +279,7 @@ func deserialize(savedir):
 	for slot in gear_level:
 		gear_level[slot] = int(gear_level[slot])
 	friend_points = floor(float(savedir.fr_p) * 10) * 0.1
+	ultimeter = int(savedir.ultimeter)
 	#delete, if new dynamic traits system works
 #	static_effects = savedir.static_effects.duplicate()
 #	temp_effects = savedir.temp_effects.duplicate()
@@ -389,3 +390,56 @@ func try_rest():
 	if defeated or position != null:
 		return
 	heal(get_stat('hpmax') * 0.25)
+
+func can_use_skill(skill):
+	if !.can_use_skill(skill): return false
+	if skill.skilltype == 'ultimate':
+		return is_ult_ready()
+	return true
+
+func add_ultimeter(value :int):
+#	print("%s add_ultimeter %d" % [name, value])
+	set_ultimeter(ultimeter + value)
+
+func deplete_ultimeter():
+	set_ultimeter(0)
+
+func set_ultimeter(value :int):
+	ultimeter = value
+	if ultimeter > 100: ultimeter = 100
+	elif ultimeter < 0: ultimeter = 0
+	if displaynode != null:
+		displaynode.update_ultimeter()
+
+func get_ultimeter() ->int:
+	return ultimeter
+
+func is_ult_ready() ->bool:
+	return ultimeter == 100
+
+func process_ultimeter(ev, skill = null):#skill :S_Skill
+	var do_add = variables.ULTIMETER_COSTS.has(ev)
+	if ev == variables.TR_POST_TARG:#S_Skill here is applicable-type
+		do_add = (skill.process_check(['tags', 'has', 'damage'])
+			and skill.process_check(['hit_res', 'mask', variables.RES_HITCRIT]))
+	elif ev == variables.TR_SKILL_FINISH:#S_Skill here is meta-type
+		do_add = (skill.process_check(['tags', 'has', 'damage'])
+			and skill.process_check(['best_hit_res', 'mask', variables.RES_HITCRIT])
+			and !skill.template.has('not_final')
+			and skill.skilltype != 'ultimate')
+	if do_add:
+		add_ultimeter(variables.ULTIMETER_COSTS[ev])
+
+func process_event(ev, skill = null):
+	#TR_TURN_GET for player's char can be processed on each selection, wich is wrong
+	#this event must be processed strictly once per turn
+	if ev == variables.TR_TURN_GET:
+		if got_turn:
+			return
+		else:
+			got_turn = true
+	elif ev == variables.TR_TURN_S:
+		got_turn = false
+	
+	.process_event(ev, skill)
+	process_ultimeter(ev, skill)

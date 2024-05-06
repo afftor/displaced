@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/buttons/combat/button_charlistbattle.png" type="Texture" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://assets/images/buttons/combat/button_charlistbattle_hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlebig_filler.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlebig_frame.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/buttons/charpanel/expbar_charinfo_filler.png" type="Texture" id=7]
 [ext_resource path="res://files/scenes/combat/char_stat_party.gd" type="Script" id=8]
+[ext_resource path="res://assets/images/buttons/charpanel/expbar_charinfo_frame.png" type="Texture" id=9]
 
 [node name="arron" type="TextureButton"]
 margin_right = 222.0
@@ -20,21 +22,31 @@ script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 72.0
-margin_top = 11.0
+margin_top = 7.0
 margin_right = 256.0
-margin_bottom = 36.0
+margin_bottom = 32.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Arron"
 align = 1
 
 [node name="ProgressBar" type="TextureProgress" parent="."]
 margin_left = 95.5269
-margin_top = 35.9393
+margin_top = 27.9393
 margin_right = 235.527
-margin_bottom = 63.9393
+margin_bottom = 55.9393
 value = 75.0
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 5 )
+
+[node name="ProgressUlt" type="TextureProgress" parent="."]
+margin_left = 96.0
+margin_top = 57.0
+margin_right = 236.0
+margin_bottom = 66.0
+value = 75.0
+texture_over = ExtResource( 9 )
+texture_progress = ExtResource( 7 )
+nine_patch_stretch = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 6.0
@@ -50,9 +62,9 @@ __meta__ = {
 
 [node name="hp" type="Label" parent="."]
 margin_left = 103.0
-margin_top = 40.0
+margin_top = 32.0
 margin_right = 229.0
-margin_bottom = 64.0
+margin_bottom = 56.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "350/1500"
 align = 1

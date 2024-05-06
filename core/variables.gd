@@ -29,7 +29,8 @@ enum {TR_CAST,#on skill cast, befor even target refining and any true actions
 	TR_COMBAT_F,#occurs for every char on battlefield on very finish of combat (window closure): at loss, at runaway and on reward claiming after victory
 	TR_SHIELD_DOWN,#on char's shield been depleted to 0
 	TR_RES,#on char's resurrection
-	TR_RESERVE#on hero moving to reserve
+	TR_RESERVE,#on hero moving to reserve
+	TR_WAVE_F#for hero on wave end (excluding last wave)
 	};
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_REMOVE};
 enum {TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
@@ -287,3 +288,10 @@ var hexcolordict = {
 }
 
 const autosave_name = "autosave"
+
+var ULTIMETER_COSTS = {
+	TR_POST_TARG : 10,
+	TR_SKILL_FINISH : 5,
+	TR_WAVE_F : 10,
+	TR_COMBAT_F : 10
+}

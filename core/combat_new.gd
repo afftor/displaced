@@ -446,6 +446,10 @@ func select_actor():
 		curstage += 1
 		combatlogadd(tr("WAVE_CLEARED") % curstage)
 		combatlogadd("\n" + tr("NEW_WAVE"))
+		for ch in state.characters:
+			var chara = state.heroes[ch]
+			if chara.unlocked:
+				chara.process_event(variables.TR_WAVE_F)
 		buildenemygroup(enemygroup_full[curstage])
 		gui_node.build_enemy_head()
 		newturn()
@@ -1292,7 +1296,8 @@ func FinishCombat(victorious :bool, do_advance :bool = false):
 		ch.cooldowns.clear()
 		ch.hp = ch.get_stat('hpmax')
 		ch.shield = 0
-		ch.process_event(variables.TR_COMBAT_F)
+		if ch.unlocked:
+			ch.process_event(variables.TR_COMBAT_F)
 		ch.displaynode = null
 		ch.clear_traits()
 		ch.clean_effects()#in fact, that shouldn't be necessary, as all effects must stop themselfs, still to be safe
@@ -1854,6 +1859,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown + 1#+1 is so current turn wouldn't count
+		if skill.skilltype == 'ultimate':
+			caster.deplete_ultimeter()
 
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
@@ -1951,6 +1958,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#place for non-existing another trigger
 				s_skill2.setup_final()
 				s_skill2.hit_roll()
+				s_skill1.remember_best_hit_res(s_skill2.hit_res)
 				s_skill2.resolve_value(CheckMeleeRange(caster.combatgroup))
 				s_skill2_list.push_back(s_skill2)
 		turns += 1

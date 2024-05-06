@@ -513,7 +513,10 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'owner',
-				atomic = [{type = 'sfx', value = 'anim_attack'}],
+				atomic = [
+					{type = 'sfx', value = 'anim_attack'},
+					{type = 'add_ultimeter',
+						value = variables.ULTIMETER_COSTS[variables.TR_SKILL_FINISH]}],
 			},
 		],
 		buffs = []

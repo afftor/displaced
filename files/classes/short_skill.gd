@@ -25,6 +25,7 @@ var caster
 var target
 var critchance
 var hit_res
+var best_hit_res#metaskill param, stores best result of it's applicable skills
 
 var effects = []
 var process_value
@@ -140,7 +141,6 @@ func process_check(check:Array):
 #	if typeof(op2) == TYPE_STRING && check[1] != 'has':
 #		op2 = get(op2)
 	return input_handler.operate(check[1], op1, op2)
-	pass
 
 func setup_caster(c):
 	caster = c
@@ -180,6 +180,15 @@ func hit_roll():
 		hit_res = variables.RES_HIT
 	else:
 		hit_res = variables.RES_CRIT
+
+func remember_best_hit_res(new_hit_res):
+	var weight = {
+		variables.RES_MISS : 0,
+		variables.RES_HIT : 1,
+		variables.RES_CRIT : 2
+	}
+	if best_hit_res == null or weight[new_hit_res] > weight[best_hit_res]:
+		best_hit_res = new_hit_res
 
 func apply_atomic(tmp):
 	match tmp.type:

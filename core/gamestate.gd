@@ -455,6 +455,9 @@ func deserialize(tmp:Dictionary):
 	cleanup()
 #	combatparty.clear()
 	for key in heroes_save.keys():
+		if !heroes_save[key].has("ultimeter"):#only for old savegame compatibility
+			heroes_save[key].ultimeter = 0
+			if key == characters[0]: print("old save! ultimeter reset!")
 		heroes[key].deserialize(heroes_save[key])
 	if !tmp.has('resist_unlocks'):#only for old savegame compatibility
 		print("old save! reset_resist_unlocks!")

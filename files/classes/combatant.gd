@@ -58,7 +58,6 @@ var combatgroup = 'ally'
 #var selectedskill = 'attack'
 
 var acted = false
-var got_turn = false#flag for single process of TR_TURN_GET. Mostly needed only by player's chars, as thay get this event on each selection
 #mods. obsolete imho
 #var damagemod = 1
 #var hpmod = 1
@@ -484,6 +483,9 @@ func apply_atomic(template):
 			if input_handler.combat_node == null: return
 			if !input_handler.combat_node.rules.has(template.value):
 				input_handler.combat_node.rules.push_back(template.value)
+		'add_ultimeter':#only for hero. Maybe it's better to implement it in hero.gd
+			if has_method('add_ultimeter'):
+				call('add_ultimeter', template.value)
 
 
 func remove_atomic(template):
@@ -672,16 +674,6 @@ func clean_effects():
 		eff.remove()
 
 func process_event(ev, skill = null):
-	#TR_TURN_GET for player's char can be processed on each selection, wich is wrong
-	#this event must be processed strictly once per turn
-	if ev == variables.TR_TURN_GET:
-		if got_turn:
-			return
-		else:
-			got_turn = true
-	elif ev == variables.TR_TURN_S:
-		got_turn = false
-	
 	var effects_to_process = triggered_effects.duplicate()#effects can be removed from original array during cycle
 #	print("%s process_event %s" % [name, String(effects_to_process)])
 	for e in effects_to_process:
