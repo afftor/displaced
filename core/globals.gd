@@ -288,11 +288,11 @@ func run_actions_list(list, replay :bool) ->int:
 	var stop_syncronous = false
 	var output = variables.SEQ_NONE
 	for action in list:
+		if action.has('reqs') and !state.checkreqs(action.reqs):
+			continue #stub, for this can lead to missing unlock opportunity, cant simply unlock either
 		match action.type:
 			'scene':
 				if stop_syncronous: break
-				if action.has('reqs') and !state.checkreqs(action.reqs):
-					continue #stub, for this can lead to missing unlock opportunity, cant simply unlock either
 				stop_syncronous = play_scene(action.value)
 				if stop_syncronous:
 					output = variables.SEQ_SCENE_STARTED
@@ -314,6 +314,8 @@ func run_actions_list(list, replay :bool) ->int:
 			'tutorial':
 				if replay: continue
 				TutorialCore.start_tut(action.value)
+			'force_seq_seen':
+				state.store_sequence(action.value)
 	return output
 
 

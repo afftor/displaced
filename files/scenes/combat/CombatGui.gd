@@ -269,6 +269,8 @@ func RebuildSkillPanel():
 			newbutton.get_node("TextureRect").material = load("res://assets/sfx/bw_shader.tres")
 			if activecharacter.cooldowns.has(i):
 				newbutton.get_node("Cooldown").text = str(activecharacter.cooldowns[i])
+			if skill.skilltype == 'ultimate':
+				newbutton.get_node("Cooldown").text = "%d%%" % activecharacter.get_ultimeter()
 #		newbutton.connect('pressed', combat, 'SelectSkill', [skill.code])
 		newbutton.connect('pressed', self, 'skill_button_pressed', ['skill', skill.code])
 		newbutton.set_meta('skill', skill.code)

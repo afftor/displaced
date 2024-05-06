@@ -30,10 +30,10 @@ V - Yeah, it seems like that guy got to him first. & EV_IOLA_2_2_2_8
 D - I thought I ordered you to keep your eyes on him, idiot. & EV_IOLA_2_2_2_9
 V - Whatever, from this world or not, he's no match for me. & EV_IOLA_2_2_2_10
 V - I can kill him any time I want.  & EV_IOLA_2_2_2_11
-D(anger) - That's not what I ordered. & EV_IOLA_2_2_2_12
+D(talk) - That's not what I ordered. & EV_IOLA_2_2_2_12
 D - Maybe we can use him to do our job. & EV_IOLA_2_2_2_13
 V - Your job. & EV_IOLA_2_2_2_14
-D(anger) - It will be your job if you fuck this up.  & EV_IOLA_2_2_2_15
+D(talk) - It will be your job if you fuck this up.  & EV_IOLA_2_2_2_15
 V - *grunt* & EV_IOLA_2_2_2_16
 D - Now get lost already, it's not good if we are seen here together. & EV_IOLA_2_2_2_17
 V - Oh is it? You probably should take care of peeping toms next time.  & EV_IOLA_2_2_2_18
@@ -50,7 +50,7 @@ I(shock) - Father! What- & EV_IOLA_2_2_2_23
 V - Hell, I hate women. & EV_IOLA_2_2_2_25
 V - Always so noisy. & EV_IOLA_2_2_2_26
 D - Don't dare kill her.  & EV_IOLA_2_2_2_27
-D(anger) - Shit, now I have to deal with this as well... & EV_IOLA_2_2_2_28
+D(talk) - Shit, now I have to deal with this as well... & EV_IOLA_2_2_2_28
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

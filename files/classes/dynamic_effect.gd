@@ -27,6 +27,7 @@ func serialize():
 
 func recheck():
 	if !is_applied: return
+	.recheck()
 	var tres = false
 	var obj = get_applied_obj()
 	var old_args = args.duplicate()

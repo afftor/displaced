@@ -74,7 +74,7 @@ onready var battlefieldpositions = {
 	4 : $battlefield/EnemyGroup/Front/left,
 	5 : $battlefield/EnemyGroup/Front/mid,
 	6 : $battlefield/EnemyGroup/Front/right,
-	7: $battlefield/EnemyGroup/Back/left,
+	7 : $battlefield/EnemyGroup/Back/left,
 	8 : $battlefield/EnemyGroup/Back/mid,
 	9 : $battlefield/EnemyGroup/Back/right}
 
@@ -130,6 +130,22 @@ var is_player_turn = false
 var skill_in_progress = false
 
 var resist_tooltip_for_pos = -1
+
+onready var displaynodes = [#in display order
+	battlefieldpositions['arron'],
+	battlefieldpositions['ember'],
+	battlefieldpositions['erika'],
+	battlefieldpositions['iola'],
+	battlefieldpositions['rilu'],
+	battlefieldpositions['rose'],
+	battlefieldpositions[6],
+	battlefieldpositions[9],
+	battlefieldpositions[5],
+	battlefieldpositions[8],
+	battlefieldpositions[4],
+	battlefieldpositions[7]
+]
+var cur_displaynode#it's maybe better idea to walk away from signals and work with this var
 
 func _ready():
 	debug_btn_on = $test.visible
@@ -430,6 +446,10 @@ func select_actor():
 		curstage += 1
 		combatlogadd(tr("WAVE_CLEARED") % curstage)
 		combatlogadd("\n" + tr("NEW_WAVE"))
+		for ch in state.characters:
+			var chara = state.heroes[ch]
+			if chara.unlocked:
+				chara.process_event(variables.TR_WAVE_F)
 		buildenemygroup(enemygroup_full[curstage])
 		gui_node.build_enemy_head()
 		newturn()
@@ -1130,7 +1150,7 @@ func victory():
 		xpbar_node.hint_tooltip = tr("TILLNEXTLEVEL") % (max(new_exp_cap - i.baseexp, 0))
 		xplabel_node.hint_tooltip = xpbar_node.hint_tooltip
 		var friend_node = newbutton.get_node("friend")
-		if i.friend_points_new == 0 or ch == 'arron':
+		if i.friend_points_new <= 0.0:#arron should never have friend_points
 			friend_node.hide()
 		else:
 			friend_node.hint_tooltip = tr('FRIENDPOINTSALLTOOLTIP') % i.friend_points
@@ -1218,10 +1238,11 @@ func on_level_up_close():
 		var character = leveled_up_chars[0]
 		fill_up_level_up(character)
 		leveled_up_chars.erase(character)
-		$LevelUp/ShowPlayer.play("show")
-		$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
-		$LevelUp.visible = true
-		input_handler.PlaySound(sounds["levelup_show"])
+		if !$LevelUp.visible:
+			$LevelUp/ShowPlayer.play("show")
+			$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
+			$LevelUp.visible = true
+			input_handler.PlaySound(sounds["levelup_show"])
 		#theoretically, better to analyse new skills separately, but it's less bugproof
 		var new_resists :Array = character.unlock_resists()
 		var unlock_panel = $Rewards/UnlockPanel
@@ -1275,7 +1296,8 @@ func FinishCombat(victorious :bool, do_advance :bool = false):
 		ch.cooldowns.clear()
 		ch.hp = ch.get_stat('hpmax')
 		ch.shield = 0
-		ch.process_event(variables.TR_COMBAT_F)
+		if ch.unlocked:
+			ch.process_event(variables.TR_COMBAT_F)
 		ch.displaynode = null
 		ch.clear_traits()
 		ch.clean_effects()#in fact, that shouldn't be necessary, as all effects must stop themselfs, still to be safe
@@ -1503,7 +1525,9 @@ func CalculateTargets(skill, caster, target_pos):#finale = false
 	else: #'ally', 'self', 'dead'
 		targetgroup = caster.combatgroup
 	var ignore_defeated = !skill.allowedtargets.has('dead')
-	var for_range = { 'ally': [1, 4], 'enemy': [4, 10] }
+	var targetpattern_all
+	if targetgroup == 'ally': targetpattern_all = variables.playerparty
+	elif targetgroup == 'enemy': targetpattern_all = variables.enemyparty
 	
 	match skill.targetpattern:
 		'single':
@@ -1511,75 +1535,51 @@ func CalculateTargets(skill, caster, target_pos):#finale = false
 		'row':
 			for i in variables.rows:
 				if variables.rows[i].has(target_pos):
-					for j in variables.rows[i]:
-						if battlefield[j] == null : continue
-						var tchar = battlefield[j]
-						if tchar.defeated and ignore_defeated: continue
-						#if !tchar.can_be_damaged(skill.code) and !finale: continue
-						array.append(tchar)
+					#if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array = pos_validate(variables.rows[i], ignore_defeated)
+					break
 		'line':
 			for i in variables.lines:
 				if variables.lines[i].has(target_pos):
-					for j in variables.lines[i]:
-						if battlefield[j] == null : continue
-						var tchar = battlefield[j]
-						if tchar.defeated and ignore_defeated: continue
-						#if !tchar.can_be_damaged(skill.code) and !finale: continue
-						array.append(tchar)
+					#if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array = pos_validate(variables.lines[i], ignore_defeated)
+					break
 		'all':
-			var target_range = for_range[targetgroup]
-			for j in range(target_range[0], target_range[1]):
-				if battlefield[j] == null : continue
-				var tchar = battlefield[j]
-				if tchar.defeated and ignore_defeated: continue
-				#if !tchar.can_be_damaged(skill.code) and !finale: continue
-				array.append(tchar)
+			#if !tchar.can_be_damaged(skill.code) and !finale: continue
+			array = pos_validate(targetpattern_all, ignore_defeated)
 		'dead':
-			for j in range(1, 4):#only player's char can be targeted as dead
-				if battlefield[j] == null : continue
+			for j in variables.playerparty:#only player's char can be targeted as dead
+				if battlefield[j] == null: continue
 				var tchar = battlefield[j]
 				if !tchar.defeated: continue
 				array.append(tchar)
 		'no_target':#means: except target
-			var target_range = for_range[targetgroup]
-			for j in range(target_range[0], target_range[1]):
+			var targetfree_list = []
+			for j in targetpattern_all:
 				if j == target_pos: continue
-				if battlefield[j] == null : continue
-				var tchar = battlefield[j]
-				if tchar.defeated and ignore_defeated: continue
-				#if !tchar.can_be_damaged(skill.code) and !finale: continue
-				array.append(tchar)
+				targetfree_list.append(j)
+			array = pos_validate(targetfree_list, ignore_defeated)
 		'sideslash':
 			var tpos = [target_pos]
-			if target_pos in [1, 4, 7]: tpos.push_back(target_pos + 1)
-			elif target_pos in [3, 6, 9]: tpos.push_back(target_pos - 1)
-			else:
-				tpos.push_back(target_pos + 1)
-				tpos.push_back(target_pos - 1)
-			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
-			if tpos2.size() == 3: tpos2.pop_back()
-			array = tpos2
+			tpos.append_array(pos_get_sides(target_pos))
+			array = pos_validate(tpos, ignore_defeated)
+			if array.size() == 3: array.pop_back()
 		'2random':
-			var tpos = get_allied_targets(target) #possible cause error if no target
+			var tpos = get_allied_targets(target)#possible cause error if no target
 			while tpos.size() > 2:
 				var r = globals.rng.randi_range(0, tpos.size() - 1)
 				tpos.remove(r)
-			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
-			array = tpos2
+			array = pos_validate(tpos, ignore_defeated)
 		'neighbours':
 			var tpos = []
-			if target_pos in [1, 4, 7]: tpos.push_back(target_pos + 1)
-			elif target_pos in [3, 6, 9]: tpos.push_back(target_pos - 1)
-			else:
-				tpos.push_back(target_pos + 1)
-				tpos.push_back(target_pos - 1)
-			if target_pos in [4, 5, 6]:#not sure about this
-				tpos.push_back(target_pos + 3)
-			var tpos2 = []
-			for pos in tpos: if battlefield[pos] != null: tpos2.push_back(battlefield[pos])
-			array = tpos2
+			tpos.append_array(pos_get_sides(target_pos))
+			tpos.push_back(pos_get_frontback(target_pos))
+			array = pos_validate(tpos, ignore_defeated)
+		'cross':
+			var tpos = [target_pos]
+			tpos.append_array(pos_get_sides(target_pos))
+			tpos.push_back(pos_get_frontback(target_pos))
+			array = pos_validate(tpos, ignore_defeated)
 	
 	#seems not in use
 #	if !finale and skill.tags.has('random_target'):
@@ -1588,6 +1588,28 @@ func CalculateTargets(skill, caster, target_pos):#finale = false
 #			var tchar = battlefield[pos]
 #			true_targets.push_back(tchar)
 	return array
+
+func pos_get_sides(target_pos) ->Array:
+	if target_pos in [1, 4, 7]:
+		return [target_pos + 1]
+	elif target_pos in [2, 5, 8]:
+		return [target_pos + 1, target_pos - 1]
+	else:#in [3, 6, 9]
+		return [target_pos - 1]
+
+func pos_get_frontback(target_pos):
+	if target_pos in variables.lines[2]:
+		return target_pos + 3
+	elif target_pos in variables.lines[3]:
+		return target_pos - 3
+
+func pos_validate(pos_list :Array, ignore_defeated :bool) ->Array:
+	var validated = []
+	for pos in pos_list:
+		if battlefield[pos] == null: continue
+		if battlefield[pos].defeated and ignore_defeated: continue
+		validated.append(battlefield[pos])
+	return validated
 
 func CalculateTargetsHighlight(skill, caster, target_pos):
 	var array = CalculateTargets(skill, caster, target_pos)
@@ -1837,6 +1859,8 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 
 		if skill.cooldown > 0:
 			caster.cooldowns[skill_code] = skill.cooldown + 1#+1 is so current turn wouldn't count
+		if skill.skilltype == 'ultimate':
+			caster.deplete_ultimeter()
 
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
@@ -1934,6 +1958,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#place for non-existing another trigger
 				s_skill2.setup_final()
 				s_skill2.hit_roll()
+				s_skill1.remember_best_hit_res(s_skill2.hit_res)
 				s_skill2.resolve_value(CheckMeleeRange(caster.combatgroup))
 				s_skill2_list.push_back(s_skill2)
 		turns += 1
@@ -1945,7 +1970,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
-		var sounded_postdamage_once = false
+		var sounded_postdamage = {}
 		for s_skill2 in s_skill2_list:
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
@@ -1954,14 +1979,18 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 #				Off_Target_Glow()
 			else:
 				#=========postdamage animation sound
-				if sounddict.has('postdamage') and !sounded_postdamage_once:
-					if sounddict.postdamage == 'bodyhitsound':
-						sound_from_fighter(s_skill2.target.bodyhitsound, s_skill2.target)
-					elif sounddict.postdamage == 'bodyarmor':
-						sound_from_fighter(calculate_hit_sound(skill, caster, s_skill2.target), s_skill2.target)
-					else:
-						sound_from_fighter(sounddict.postdamage, s_skill2.target)
-					sounded_postdamage_once = true
+				if sounddict.has('postdamage'):
+					var postdamage_sound = sounddict.postdamage
+					if postdamage_sound == 'bodyarmor':
+						postdamage_sound = calculate_hit_sound(skill, caster, s_skill2.target)
+					if !sounded_postdamage.has(postdamage_sound):
+						sound_from_fighter(postdamage_sound, s_skill2.target)
+						sounded_postdamage[postdamage_sound] = true
+				if !skill.has('no_bodyhitsound') or !skill.no_bodyhitsound:
+					var postdamage_sound = s_skill2.target.bodyhitsound
+					if !sounded_postdamage.has(postdamage_sound):
+						sound_from_fighter(postdamage_sound, s_skill2.target)
+						sounded_postdamage[postdamage_sound] = true
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
@@ -2105,27 +2134,23 @@ func execute_skill(s_skill2):
 		if s_skill2.damagestat[i] == '+damage_hp': #damage, damage no log, negative damage
 			var tmp = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
 			if tmp.hp >= 0:
+				s_skill2.damage_dealt_hp = tmp.true_hp
 				args.type = s_skill2.damagetype
 				args.damage = tmp
 				if !s_skill2.tags.has('no_log'):
-					if tmp.shield > 0:
-						text += tr("IS_HIT_SHIELD") % [s_skill2.target.name, tmp.shield]
-						if tmp.hp > 0:
-							text += "\n"
-					if tmp.hp > 0 or (tmp.shield == 0 and tmp.hp == 0):
-						text += tr("IS_HIT") % [s_skill2.target.name, tmp.hp]#, s_skill2.value[i]]
+					text += log_get_damage(tmp, s_skill2.target.name)
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
 			else:
 				args.heal = -tmp.hp
 				if !s_skill2.tags.has('no_log'):
-					text += tr("IS_HEALED") % [s_skill2.target.name, -tmp.hp]
+					text += log_get_heal(-tmp.hp, s_skill2.target.name)
 				data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
 			CombatAnimations.add_new_data(data)
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			var tmp = s_skill2.target.heal(s_skill2.value[i])
 			args.heal = tmp
 			if !s_skill2.tags.has('no_log'):
-				text += tr("IS_HEALED") % [s_skill2.target.name, tmp]
+				text += log_get_heal(tmp, s_skill2.target.name)
 			data = {node = s_skill2.target.displaynode, time = turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
 			CombatAnimations.add_new_data(data)
 		else:
@@ -2161,6 +2186,23 @@ func combatlogadd(text):
 	var data = {node = gui_node, time = turns, type = 'c_log', slot = 'c_log', params = {text = text}}
 	CombatAnimations.add_new_data(data)
 
+func log_get_damage(result :Dictionary, char_name :String) ->String:#result - product of combatant.deal_damage()
+	var text = ""
+	if result.shield > 0:
+		text += tr("IS_HIT_SHIELD") % [char_name, result.shield]
+		if result.hp > 0:
+			text += "\n"
+	if result.hp > 0 or (result.shield == 0 and result.hp == 0):
+		if result.hp == result.true_hp:
+			text += tr("IS_HIT") % [char_name, result.hp]
+		else:
+			text += tr("IS_HIT_THROUGH") % [char_name, result.hp, result.true_hp]
+	return text
+
+func log_get_heal(value, char_name :String) ->String:
+	return tr("IS_HEALED") % [char_name, value]
+
+#TODO: add other log_ funcs and use them at combatant.apply_atomic()
 
 func clean_summons():
 	for pos in battlefield:
@@ -2245,6 +2287,23 @@ func hide_resist_tooltip_if_my(pos :int):
 func _gui_input(event):
 	if event.is_action_pressed('RMB'):
 		unselect_skill()
+		return
+	
+	for displaynode in displaynodes:
+		if !displaynode.visible: continue
+		var result = displaynode.custom_gui_input(event)
+		if result == variables.DN_HANDLED:
+			if !cur_displaynode or cur_displaynode != displaynode:
+				if cur_displaynode:
+					cur_displaynode.check_signal_exited()
+				cur_displaynode = displaynode
+				displaynode.check_signal_entered()
+			accept_event()
+			return
+	#noone handled
+	if cur_displaynode:
+		cur_displaynode.check_signal_exited()
+		cur_displaynode = null
 
 #for CloseableWindowsArray processing------
 func show():

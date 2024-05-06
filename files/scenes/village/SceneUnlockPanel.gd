@@ -59,7 +59,7 @@ func open():
 		var ch = charlist.get_node(ch_id)
 		if state.heroes[ch_id].unlocked:
 			ch.visible = true
-			if def_char == null:
+			if selected_char == ch_id or def_char == null:
 				def_char = ch_id
 		else:
 			ch.visible = false
@@ -68,7 +68,9 @@ func open():
 
 
 func select_hero(cid):
-	if cid == selected_char: return
+	if cid == selected_char:
+		rebuild_scene_list()
+		return
 	selected_char = cid
 	for ch in charlist.get_children():
 		ch.pressed = (ch.get_meta('hero') == cid)
@@ -85,6 +87,8 @@ func rebuild_scene_list():
 	for event in Explorationdata.scene_sequences:
 		var eventdata = Explorationdata.scene_sequences[event]
 		if !eventdata.has('gallery'): continue
+		if eventdata.has('forced_content') and !globals.globalsettings.forced_content:
+			continue
 		var girls = eventdata.unlock_price.keys()
 		var locked = false
 		for girl in girls:

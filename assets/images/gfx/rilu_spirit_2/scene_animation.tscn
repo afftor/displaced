@@ -1,0 +1,42 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirit.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_04.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_07.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_01.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_09.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_03.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_05.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_06.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_02.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_00.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_12.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_08.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_10.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_11.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_13.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_15.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_14.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_16.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_17.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_19.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_18.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_21.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_20.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_23.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gfx/rilu_spirit_1/rilu_spirits_sq_22.png" type="Texture" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="HitAnimation" type="AnimatedSprite"]
+position = Vector2( 192, 225 )
+frames = SubResource( 1 )
+speed_scale = 2.5
+script = ExtResource( 1 )
+spirit_number = 1

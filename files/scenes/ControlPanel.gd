@@ -23,7 +23,7 @@ func _ready():
 	$test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
 	$test_event.connect("pressed", self, "test_event")
 	state.connect("money_changed", self, "UpdateMoney")
-	update_return_button()
+	return_button_home()
 
 func test_event():
 	globals.play_scene('faery_queen_1')
@@ -95,8 +95,10 @@ func update_return_button():
 		$ControlPanel/Return/TextureRect.texture = menu_world_icon
 		$ControlPanel/Return/Label.text = tr('MENU_WORLD')
 	else:
-		$ControlPanel/Return/TextureRect.texture = menu_home_icon
-		$ControlPanel/Return/Label.text = tr('MENU_HOME')
+		return_button_home()
+func return_button_home():
+	$ControlPanel/Return/TextureRect.texture = menu_home_icon
+	$ControlPanel/Return/Label.text = tr('MENU_HOME')
 
 func FadeToBlackAnimation(time = 1):
 	input_handler.UnfadeAnimation(BS, time)

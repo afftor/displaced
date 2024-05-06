@@ -58,7 +58,6 @@ var combatgroup = 'ally'
 #var selectedskill = 'attack'
 
 var acted = false
-var got_turn = false#flag for single process of TR_TURN_GET. Mostly needed only by player's chars, as thay get this event on each selection
 #mods. obsolete imho
 #var damagemod = 1
 #var hpmod = 1
@@ -407,21 +406,25 @@ func apply_atomic(template):
 	match template.type:
 		'damage':
 			var tmp = deal_damage(template.value, template.source)
+			var combat = input_handler.combat_node
+			combat.combatlogadd(combat.log_get_damage(tmp, name))
 			if displaynode != null:
 				var args = {critical = false, group = combatgroup}
 				var data = {}
 				args.type = template.source
 				args.damage = tmp
 				data = {node = displaynode, time = input_handler.combat_node.turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
-				input_handler.combat_node.CombatAnimations.add_new_data(data)
+				combat.CombatAnimations.add_new_data(data)
 		'heal':
 			heal(template.value)
+			var combat = input_handler.combat_node
+			combat.combatlogadd(combat.log_get_heal(template.value, name))
 			if displaynode != null:
 				var args = {critical = false, group = combatgroup}
 				var data = {}
 				args.heal = template.value
 				data = {node = displaynode, time = input_handler.combat_node.turns, type = 'heal_float', slot = 'damage', params = args.duplicate()}
-				input_handler.combat_node.CombatAnimations.add_new_data(data)
+				combat.CombatAnimations.add_new_data(data)
 #		'mana':
 #			mana_update(template.value)
 #			pass
@@ -480,6 +483,9 @@ func apply_atomic(template):
 			if input_handler.combat_node == null: return
 			if !input_handler.combat_node.rules.has(template.value):
 				input_handler.combat_node.rules.push_back(template.value)
+		'add_ultimeter':#only for hero. Maybe it's better to implement it in hero.gd
+			if has_method('add_ultimeter'):
+				call('add_ultimeter', template.value)
 
 
 func remove_atomic(template):
@@ -668,16 +674,6 @@ func clean_effects():
 		eff.remove()
 
 func process_event(ev, skill = null):
-	#TR_TURN_GET for player's char can be processed on each selection, wich is wrong
-	#this event must be processed strictly once per turn
-	if ev == variables.TR_TURN_GET:
-		if got_turn:
-			return
-		else:
-			got_turn = true
-	elif ev == variables.TR_TURN_S:
-		got_turn = false
-	
 	var effects_to_process = triggered_effects.duplicate()#effects can be removed from original array during cycle
 #	print("%s process_event %s" % [name, String(effects_to_process)])
 	for e in effects_to_process:
@@ -698,11 +694,12 @@ func process_event(ev, skill = null):
 		eff.process_event(ev)
 
 func deal_damage(value, source):
-	var out = {hp = 0, shield = 0}
+	var out = {hp = 0, shield = 0, true_hp = 0}
 	var res = get_stat('resists')
 	value = round(value)
 	value *= 1 - res['damage']/100.0
 	if variables.resistlist.has(source): value *= 1 - res[source]/100.0
+	var old_hp = hp
 	if value < 0: 
 		out.hp = -heal(-value)
 		return out
@@ -720,7 +717,9 @@ func deal_damage(value, source):
 		self.hp = hp - value
 		out.hp = value
 		process_event(variables.TR_DMG)
-		recheck_effect_tag('recheck_damage')
+	recheck_effect_tag('recheck_damage')
+	out.true_hp = out.hp
+	if hp == 0: out.true_hp = old_hp
 	return out
 
 func heal(value):
@@ -959,4 +958,11 @@ func requirementcombatantcheck(req):#Gear, Race, Types, Resists, stats
 			else:
 				result = false
 	return result
+
+func add_permanent_sfx(sfx_code):
+	if !displaynode:
+		return
+	var sfx_obj = input_handler.gfx_sprite_permanent(displaynode, sfx_code)
+	#we seems not in need of storing sfx_obj here. For now 'effect' do it
+	return sfx_obj
 

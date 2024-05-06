@@ -513,7 +513,10 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'owner',
-				atomic = [{type = 'sfx', value = 'anim_attack'}],
+				atomic = [
+					{type = 'sfx', value = 'anim_attack'},
+					{type = 'add_ultimeter',
+						value = variables.ULTIMETER_COSTS[variables.TR_SKILL_FINISH]}],
 			},
 		],
 		buffs = []
@@ -2116,8 +2119,9 @@ var effect_table = {
 	e_tr_rilu = {#rilu traits
 		type = 'static',
 		debug_name = "souls_processor",
+		tags = ['recheck_alt_mana'],
 		args = [{obj = 'app_obj', param = 'alt_mana', dynamic = true}],
-		sub_effects = ['e_t_souls', 'e_s_souls', 'e_at_souls', 'e_sc_souls'],
+		sub_effects = ['e_t_souls', 'e_h_souls', 'e_at_souls', 'e_tr_d_souls'],
 		atomic = [],
 		buffs = [{
 			icon = "res://assets/images/traits/speedondamage.png",
@@ -2127,6 +2131,20 @@ var effect_table = {
 			limit = 1,
 			bonuseffect = 'arg', bonusarg = 0
 		}],
+		sfx = [
+			{code = "rilu_spirit_1",
+			conditions = [{type = 'owner', value = {type = 'stats', stat = 'alt_mana', value = 1, operant = 'gte'}}],
+			id = 'sfx_souls_1',
+			},
+			{code = "rilu_spirit_2",
+			conditions = [{type = 'owner', value = {type = 'stats', stat = 'alt_mana', value = 2, operant = 'gte'}}],
+			id = 'sfx_souls_2',
+			},
+			{code = "rilu_spirit_3",
+			conditions = [{type = 'owner', value = {type = 'stats', stat = 'alt_mana', value = 3, operant = 'gte'}}],
+			id = 'sfx_souls_3',
+			},
+		],
 	},
 	e_t_souls = {
 		type = 'trigger',
@@ -2143,49 +2161,104 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_s_souls = {
+	e_tr_d_souls = {
+		type = 'trigger',
+		debug_name = "starter_souls_damage",
+		trigger = [variables.TR_COMBAT_S],
+		conditions = [
+			{type = 'owner', value = [{type = 'gear_level', slot = 'weapon1', level = 2, op = 'gte'}] },
+		],
+		req_skill = false,
+		sub_effects = ['e_d_souls'],
+		buffs = []
+	},
+	e_d_souls = {
 		type = 'dynamic',
-		debug_name = "souls_buff",
-		args = [{obj = 'parent_args', param = 0}],
-		atomic = [
-			{type = 'stat_add_p', stat = 'damage', value = [['parent_args', 0],'*', 0.08]},
-			{type = 'stat_add', stat = 'resistdamage', value = [['parent_args', 0],'*',5]}],
-		tags = ['recheck_stats'],
-		bufs = [],
+		debug_name = "souls_damage",
+		target = 'owner',
+		args = [{obj = 'app_obj', param = 'alt_mana', dynamic = true}],
+		atomic = [{type = 'stat_add_p', stat = 'damage', value = [['parent_args', 0],'*', 0.1]}],
+		tags = ['recheck_stats', 'recheck_alt_mana'],
+		buffs = [{
+			icon = "res://assets/images/traits/critrate.png",
+			description = "WEAPON_RILU1_EFFECT2",
+			t_name = 'icon_souls_damage',
+			limit = 1
+		}],
 		sub_effects = []
+	},
+#	e_s_souls = {#old concept
+#		type = 'dynamic',
+#		debug_name = "souls_buff",
+#		args = [{obj = 'parent_args', param = 0}],
+#		atomic = [
+#			{type = 'stat_add_p', stat = 'damage', value = [['parent_args', 0],'*', 0.08]},
+#			{type = 'stat_add', stat = 'resistdamage', value = [['parent_args', 0],'*',5]}],
+#		tags = ['recheck_stats'],
+#		buffs = [],
+#		sub_effects = []
+#	},
+	e_h_souls = {
+		type = 'trigger',
+		debug_name = "souls_heal",
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+		],
+		req_skill = true,
+		args = [
+			{obj = 'parent_args', param = 0, dynamic = true},
+			{obj = 'skill', param = 'damage_dealt_hp', dynamic = true}],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [
+				{obj = 'parent_args', param = 0},
+				{obj = 'parent_args', param = 1}],
+			atomic = [
+				{type = 'heal', value = [['parent_args',1],'*',0.3,'*',['parent_args',0]]},
+				{type = 'sfx', value = 'sfx_soul_prot'}],
+		}],
+		buffs = []
 	},
 	e_at_souls = {
 		type = 'trigger',
 		debug_name = "souls_obtainer",
-		trigger = [variables.TR_POST_TARG],
-		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'damage']},
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-#			{type = 'random', value = 0.5}#that probably should be 100% chance
-			],
-		req_skill = true,
-		sub_effects = ['e_add_s'],
-		buffs = []
-	},
-	e_sc_souls = {
-		type = 'trigger',
-		debug_name = "souls_at_start",
-		trigger = [variables.TR_COMBAT_S],
+		trigger = [variables.TR_TURN_S],
 		conditions = [],
 		req_skill = false,
 		sub_effects = ['e_add_s'],
 		buffs = []
+		#old concept
+#		trigger = [variables.TR_POST_TARG],
+#		conditions = [
+#			{type = 'skill', value = ['tags', 'has', 'damage']},
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+##			{type = 'random', value = 0.5}#that probably should be 100% chance
+#			],
+#		req_skill = true,
 	},
+#	e_sc_souls = {#old concept
+#		type = 'trigger',
+#		debug_name = "souls_at_start",
+#		trigger = [variables.TR_COMBAT_S],
+#		conditions = [],
+#		req_skill = false,
+#		sub_effects = ['e_add_s'],
+#		buffs = []
+#	},
 	e_add_s = {
 		type = 'oneshot',
 		target = 'owner',
 		atomic = ['a_souls_add']
 	},
-	e_add_s1 = {
-		type = 'oneshot',
-		target = 'caster',
-		atomic = ['a_souls_add']
-	},
+	#not in use
+#	e_add_s1 = {
+#		type = 'oneshot',
+#		target = 'caster',
+#		atomic = ['a_souls_add']
+#	},
 	e_pay_soul = {
 		type = 'trigger',
 		debug_name = "pay_soul",
@@ -2214,6 +2287,19 @@ var effect_table = {
 				atomic = ['a_souls_clean']
 			},
 		],
+		buffs = []
+	},
+	e_add_all_souls = {
+		type = 'trigger',
+		debug_name = "add_all_souls",
+		trigger = [variables.TR_SKILL_FINISH],
+		conditions = [],
+		req_skill = true,
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'caster',
+			atomic = ['a_souls_add', 'a_souls_add', 'a_souls_add']
+		}],
 		buffs = []
 	},
 	

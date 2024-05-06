@@ -10,6 +10,7 @@ var sub_effects := []
 var tags := []
 var buffs := []
 var atomic := []
+var sfx := {}
 var is_applied
 var applied_char = null
 var name = "undefined debug name"
@@ -43,6 +44,7 @@ func apply():
 		pass
 	setup_siblings()
 	rebuild_buffs()
+	rebuild_sfx()
 
 func reapply():
 	var obj = get_applied_obj()
@@ -64,6 +66,7 @@ func reapply():
 		pass
 	setup_siblings()
 	rebuild_buffs()
+	rebuild_sfx()
 	
 
 func setup_siblings():
@@ -80,8 +83,9 @@ func remove_siblings():
 		var eff = effects_pool.get_effect_by_id(se)
 		eff.remove()
 
-func recheck(): #overriden in condition_static effect, have no meaning in other cases
-	pass
+func recheck():
+	if !is_applied: return
+	rebuild_sfx()
 
 func remove():
 	if !is_applied: return
@@ -92,6 +96,7 @@ func remove():
 			obj.remove_atomic(a)
 	atomic.clear()
 	buffs.clear()
+	clear_sfx()
 
 func get_applied_obj():
 	if applied_char == null:
@@ -138,14 +143,12 @@ func calculate_args():
 			match arg.obj:
 				'self':
 					args.push_back(self_args[arg.param])
-					pass
 				'parent':
 					var par = get_parent()
 					if par == null:
 						args.push_back(null)
 					else:
 						args.push_back(par.get(arg.param))
-					pass
 				'template':
 					args.push_back(template[arg.param])
 				'parent_args':
@@ -163,6 +166,12 @@ func calculate_args():
 				'app_obj':
 					var par = get_applied_obj()
 					args.push_back(par.get(arg.param))
+				'skill':
+					if self_args.has('skill'):
+						var obj = self_args['skill']
+						args.push_back(obj.get(arg.param))
+					else:
+						args.push_back(0)#considered to be dynamic
 
 func get_arg(index):
 	var arg = template.args[index]
@@ -184,6 +193,10 @@ func get_arg(index):
 			'app_obj':
 				var par = get_applied_obj()
 				args[index] = par.get(arg.param)
+			'skill':
+				assert(self_args.has('skill'), "no skill for skill's arg")
+				var obj = self_args['skill']
+				args[index] = obj.get(arg.param)
 	return args[index]
 
 #func test_id_me() -> String:
@@ -253,3 +266,30 @@ func has_screen_name() ->bool:
 
 func get_screen_name() ->String:
 	return tr(screen_name)
+
+func rebuild_sfx():
+	if !template.has('sfx'): return
+	for e in template.sfx:
+		var do_apply = true
+		if e.has('conditions'):
+			for cond in e.conditions:
+				match cond.type:
+					#add new types per need, or find a way to group it with triggered_effect
+					'owner':
+						do_apply = get_applied_obj().process_check(cond.value)
+				if !do_apply: break
+		if do_apply:
+			if !sfx.has(e.id):
+				var obj = get_applied_obj()
+				assert(obj.has_method('add_permanent_sfx'), 'applied_obj seems not compatible with permanent_sfx')
+				var new_sfx = obj.add_permanent_sfx(e.code)
+				sfx[e.id] = new_sfx
+		elif sfx.has(e.id):
+			sfx[e.id].queue_free()#fade better?
+			sfx.erase(e.id)
+
+func clear_sfx():
+	for id in sfx:
+		sfx[id].queue_free()#fade better?
+	sfx.clear()
+

@@ -18,6 +18,7 @@ var event_triggers = {#reworked to same syntax as seqs
 	forest_2 = [
 		{type = 'system', value = 'enable_character', arg = ['erika', true]},
 		{type = 'show_screen', value = 'map'},
+		{type = 'force_seq_seen', value = 'erika_vine'}
 	],
 	erika_1 = [
 		{type = 'show_screen', value = 'village'},
@@ -49,6 +50,14 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	erika_annet_2_1 = [
 		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'forced_content'}]},
+		{type = 'system', value = 'enable_character', arg = ['erika', false], reqs = [{type = 'forced_content', value = false}] }
+	],
+	erika_annet_2_2 = [
+		{type = 'force_seq_seen', value = 'erika_annet'},
+		{type = 'system', value = 'enable_character', arg = ['erika', false] }
+	],
+	erika_annet_2_4 = [
+		{type = 'system', value = 'enable_character', arg = ['erika', true] }
 	],
 	iola_2_2_1 = [
 		{type = 'system', value = 'unlock_area', arg = 'cult'},
@@ -68,6 +77,7 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	faery_queen_1_a = [
 		{type = 'scene', value = 'faery_queen_1_b'},
+		{type = 'force_seq_seen', value = 'rose_forest'}
 	],
 	faery_queen_1_b = [
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_2'},
@@ -114,11 +124,21 @@ var event_triggers = {#reworked to same syntax as seqs
 #		{code = 'system', value = 'show_screen', args = 'village'},
 		{type = 'show_screen', value = 'village'},
 	],
+	iola_2_5 = [
+		{type = 'system', value = 'enable_character', arg = ['iola', true]}
+	],
 	dimitrius_2_1_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
 	],
+	dimitrius_2_1 = [
+		{type = 'system', value = 'enable_character', arg = ['rose', false] },
+		{type = 'system', value = 'enable_character', arg = ['iola', false] },
+	],
 	dimitrius_2_2 = [
 		{type = 'system', value = 'enable_character', arg = ['iola', true] },
+	],
+	rose_2 = [
+		{type = 'system', value = 'enable_character', arg = ['rose', true] },
 	],
 	dimitrius_ending_1 = [
 		{type = 'show_screen', value = 'exploration', arg = 'modern_city'},
@@ -368,7 +388,6 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_faeries_3'}],
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_1'}, 
-		{type = 'system', value = 'enable_character', arg = ['erika', false] },
 #		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'rule', value = 'forced_content', arg = 'true'}]},#skip if forced content is disabled 
 		
 		]
@@ -387,7 +406,6 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'erika_annet_2_4'},
 #		{type = 'system', value = 'game_stage', arg = 'erika_rescued'},
-		{type = 'system', value = 'enable_character', arg = ['erika', true] },
 		]
 	},
 	
@@ -428,7 +446,6 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_iola_rescue'}],
 		actions = [
 		{type = 'scene', value = 'iola_2_5'},
-		{type = 'system', value = 'enable_character', arg = ['iola', true]},
 		]
 	},
 	
@@ -511,8 +528,6 @@ var scene_sequences = {
 		actions = [
 		{type = 'scene', value = 'dimitrius_2_1'},
 		{type = 'system', value = 'unlock_mission', arg = 'castle_rilu_return'},
-		{type = 'system', value = 'enable_character', arg = ['rose', false] },
-		{type = 'system', value = 'enable_character', arg = ['iola', false] },
 		]
 	},
 	dimitrius_2_1_2 = {
@@ -527,7 +542,6 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'mission_complete', value = 'cult_rose_rescue'}],
 		actions = [
 		{type = 'scene', value = 'rose_2'},
-		{type = 'system', value = 'enable_character', arg = ['rose', true] },
 		]
 	},
 	
@@ -563,6 +577,7 @@ var scene_sequences = {
 	
 	
 	#Gallery scenes
+	#params 'gallery' and 'forced_content' can't be false. If they are, they true
 	ember_boobs = {
 		name = "GALLERY_EMBER_BOOBS",
 		descript = "",
@@ -570,10 +585,7 @@ var scene_sequences = {
 		preview = 'ember_boobs',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
 		unlock_price = {ember = 50},
-		actions = [
-		{type = 'scene', value = 'ember_1_3'},
-		{type = 'unlock_scene', value = 'ember_boobs'},#for gallery
-		]
+		actions = [{type = 'scene', value = 'ember_1_3'}]
 	},
 	rose_night = {
 		name = "GALLERY_ROSE_NIGHT",
@@ -582,10 +594,7 @@ var scene_sequences = {
 		preview = 'rose_night',
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_boobs'}],
 		unlock_price = {rose = 100},
-		actions = [
-		{type = 'scene', value = 'rose_1'},
-		{type = 'unlock_scene', value = 'rose_night'},
-		]
+		actions = [{type = 'scene', value = 'rose_1'}]
 	},
 	rose_public = {
 		name = "GALLERY_ROSE_PUBLIC",
@@ -594,10 +603,17 @@ var scene_sequences = {
 		preview = 'rose_public',
 		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'},{type = 'seq_seen', value = 'rose_night'}],
 		unlock_price = {rose = 150},
-		actions = [
-		{type = 'scene', value = 'rose_3'},
-		{type = 'unlock_scene', value = 'rose_public'},
-		]
+		actions = [{type = 'scene', value = 'rose_3'}]
+	},
+	rose_forest = {
+		name = "GALLERY_ROSE_FOREST",
+		descript = "",
+		gallery = true,
+		forced_content = true,
+		preview = 'rose_forest',
+		initiate_reqs = [{type = 'scene_seen', value = 'faery_queen_1_b'}],
+		unlock_price = {rose = 200},
+		actions = [{type = 'scene', value = 'rose_forest_clone'}]
 	},
 	erika_doggy = {
 		name = "GALLERY_ERIKA_DOGGY",
@@ -606,10 +622,7 @@ var scene_sequences = {
 		preview = 'erika_doggy',
 		initiate_reqs = [],
 		unlock_price = {erika = 50},
-		actions = [
-		{type = 'scene', value = 'erika_2'},
-		{type = 'unlock_scene', value = 'erika_doggy'},
-		]
+		actions = [{type = 'scene', value = 'erika_2'}]
 	},
 	erika_rose_three = {
 		name = "GALLERY_ERIKA_ROSE_THREE",
@@ -618,10 +631,26 @@ var scene_sequences = {
 		preview = 'erika_rose_three',
 		unlock_price = {rose = 100, erika = 100},
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika_sidequest'}],
-		actions = [
-		{type = 'scene', value = 'erika_rose_2'},
-		{type = 'unlock_scene', value = 'erika_rose_three'},
-		]
+		actions = [{type = 'scene', value = 'erika_rose_2'}]
+	},
+	erika_vine = {
+		name = "GALLERY_ERIKA_VINE",
+		descript = "",
+		gallery = true,
+		preview = 'erika_vine',
+		initiate_reqs = [{type = 'scene_seen', value = 'forest_2'}],
+		unlock_price = {erika = 0},
+		actions = [{type = 'scene', value = 'erika_vine_clone'}]
+	},
+	erika_annet = {
+		name = "GALLERY_ERIKA_ANNET",
+		descript = "",
+		gallery = true,
+		forced_content = true,
+		preview = 'erika_annet',
+		initiate_reqs = [{type = 'scene_seen', value = 'erika_annet_2_1'}],
+		unlock_price = {erika = 200},
+		actions = [{type = 'scene', value = 'erika_annet_clone'}]
 	},
 	ember_missionary = {
 		name = "GALLERY_EMBER_MISSIONARY",
@@ -630,10 +659,7 @@ var scene_sequences = {
 		preview = 'ember_missionary',
 		unlock_price = {ember = 50},
 		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
-		actions = [
-		{type = 'scene', value = 'ember_1_4'},
-		{type = 'unlock_scene', value = 'ember_missionary'},
-		]
+		actions = [{type = 'scene', value = 'ember_1_4'}]
 	},
 	ember_titjob = {
 		name = "GALLERY_EMBER_TITJOB",
@@ -642,10 +668,7 @@ var scene_sequences = {
 		preview = 'ember_titjob',
 		unlock_price = {ember = 75},
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_missionary'}],
-		actions = [
-		{type = 'scene', value = 'ember_1_5'},
-		{type = 'unlock_scene', value = 'ember_titjob'},
-		]
+		actions = [{type = 'scene', value = 'ember_1_5'}]
 	},
 	ember_doggy = {
 		name = "GALLERY_EMBER_DOGGY",
@@ -654,10 +677,7 @@ var scene_sequences = {
 		preview = 'ember_doggy',
 		unlock_price = {ember = 125},
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_titjob'}],
-		actions = [
-		{type = 'scene', value = 'ember_1_6'},
-		{type = 'unlock_scene', value = 'ember_doggy'},
-		]
+		actions = [{type = 'scene', value = 'ember_1_6'}]
 	},
 	rilu_cowgirl = {
 		name = "GALLERY_RILU_COWGIRL",
@@ -666,10 +686,7 @@ var scene_sequences = {
 		preview = 'rilu_cowgirl',
 		unlock_price = {rilu = 50},
 		initiate_reqs = [],
-		actions = [
-		{type = 'scene', value = 'rilu_1_6'},
-		{type = 'unlock_scene', value = 'rilu_cowgirl'},
-		]
+		actions = [{type = 'scene', value = 'rilu_1_6'}]
 	},
 	rilu_doggy = {
 		name = "GALLERY_RILU_DOGGY",
@@ -678,10 +695,7 @@ var scene_sequences = {
 		preview = 'rilu_doggy',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_cowgirl'}],
 		unlock_price = {rilu = 125},
-		actions = [
-		{type = 'scene', value = 'rilu_2_1'},
-		{type = 'unlock_scene', value = 'rilu_doggy'},
-		]
+		actions = [{type = 'scene', value = 'rilu_2_1'}]
 	},
 	rilu_anal = {
 		name = "GALLERY_RILU_ANAL",
@@ -690,10 +704,7 @@ var scene_sequences = {
 		preview = 'rilu_anal',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_doggy'}],
 		unlock_price = {rilu = 150},
-		actions = [
-		{type = 'scene', value = 'rilu_2_2'},
-		{type = 'unlock_scene', value = 'rilu_anal'},
-		]
+		actions = [{type = 'scene', value = 'rilu_2_2'}]
 	},
 	
 	iola_blowjob = {
@@ -703,10 +714,7 @@ var scene_sequences = {
 		preview = 'iola_blowjob',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_recruited' }],
 		unlock_price = {iola = 50},
-		actions = [
-		{type = 'scene', value = 'iola_2_6'},
-		{type = 'unlock_scene', value = 'iola_blowjob'},
-		]
+		actions = [{type = 'scene', value = 'iola_2_6'}]
 	},
 	iola_cunnilingus = {
 		name = "GALLERY_IOLA_CUNNILINGUS",
@@ -715,10 +723,7 @@ var scene_sequences = {
 		preview = 'iola_cunnilingus',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_blowjob' }],
 		unlock_price = {iola = 75},
-		actions = [
-		{type = 'scene', value = 'iola_1_5'},
-		{type = 'unlock_scene', value = 'iola_cunnilingus'},
-		]
+		actions = [{type = 'scene', value = 'iola_1_5'}]
 	},
 	iola_riding = {
 		name = "GALLERY_IOLA_RIDING",
@@ -727,10 +732,7 @@ var scene_sequences = {
 		preview = 'iola_riding',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_cunnilingus' }],
 		unlock_price = {iola = 100},
-		actions = [
-		{type = 'scene', value = 'iola_1_6'},
-		{type = 'unlock_scene', value = 'iola_riding'},
-		]
+		actions = [{type = 'scene', value = 'iola_1_6'}]
 	},
 	iola_foursome = {
 		name = "GALLERY_IOLA_FOURSOME",
@@ -739,11 +741,14 @@ var scene_sequences = {
 		preview = 'iola_foursome',
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_riding' }],
 		unlock_price = {iola = 150, erika = 150, rose = 150},
-		actions = [
-		{type = 'scene', value = 'iola_2_7'},
-		{type = 'unlock_scene', value = 'iola_foursome'},
-		]
+		actions = [{type = 'scene', value = 'iola_2_7'}]
 	},
+}
+
+var cloned_scenes = {#ideally any scene should be able to have multiple clones, but it has no use for now
+	faery_queen_1_a = "rose_forest_clone",
+	forest_2 = "erika_vine_clone",
+	erika_annet_2_2 = "erika_annet_clone"
 }
 
 var areas = { #missions in new terminology
