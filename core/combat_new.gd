@@ -1234,10 +1234,11 @@ func on_level_up_close():
 		var character = leveled_up_chars[0]
 		fill_up_level_up(character)
 		leveled_up_chars.erase(character)
-		$LevelUp/ShowPlayer.play("show")
-		$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
-		$LevelUp.visible = true
-		input_handler.PlaySound(sounds["levelup_show"])
+		if !$LevelUp.visible:
+			$LevelUp/ShowPlayer.play("show")
+			$LevelUp/ShowPlayer.seek(0.0,true)#to set all actor's scale to 0
+			$LevelUp.visible = true
+			input_handler.PlaySound(sounds["levelup_show"])
 		#theoretically, better to analyse new skills separately, but it's less bugproof
 		var new_resists :Array = character.unlock_resists()
 		var unlock_panel = $Rewards/UnlockPanel
