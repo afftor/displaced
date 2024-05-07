@@ -145,12 +145,16 @@ func setup_character(ch):
 	for n in panel_node.get_children():
 		n.visible = true
 	if fighter is hero:
-		ult = fighter.get_ultimeter()
-		panel_node.get_node('ProgressUlt').value = ult
+		if fighter.has_ult():
+			ult = fighter.get_ultimeter()
+			panel_node.get_node('ProgressUlt').value = ult
+			panel_node2.get_node('ProgressUlt').value = ult
+		else:
+			panel_node.get_node('ProgressUlt').hide()
+			panel_node2.get_node('ProgressUlt').hide()
 		panel_node.get_node('TextureRect').texture = fighter.portrait()
 		panel_node2.get_node('ProgressBar').max_value = fighter.get_stat('hpmax')
 		panel_node2.get_node('ProgressBar').value = hp
-		panel_node2.get_node('ProgressUlt').value = ult
 		panel_node2.get_node('Label').text = fighter.get_stat('name')
 		panel_node2.disabled = false
 	else:
