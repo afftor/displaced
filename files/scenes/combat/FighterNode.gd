@@ -78,9 +78,9 @@ func custom_gui_input(event):
 	#need to change texture_click_mask in order to differ DN_NONE and DN_SPRITE
 #	if !$sprite.get_rect().has_point(mouse_position):
 #		return variables.DN_NONE
-	
-	if (mouse_position.x < 0 or mouse_position.x > rect_size.x
-			or mouse_position.y < 0 or mouse_position.y > rect_size.y):
+	var bounderis = texture_click_mask.get_size() - Vector2(1.0,1.0)#get_size() same as rect_size()
+	if (mouse_position.x < 0 or mouse_position.x > bounderis.x
+			or mouse_position.y < 0 or mouse_position.y > bounderis.y):
 		return variables.DN_NONE
 	
 	var mouse_in_mask :bool = false
@@ -91,7 +91,6 @@ func custom_gui_input(event):
 	#but it happened to be far more resource-intensive (around 1200 ms for each regenerate_click_mask).
 	#Be advised to optimize the whole solution somehow.
 	if !mouse_in_mask:
-		var bounderis = texture_click_mask.get_size() - Vector2(1.0,1.0)
 		for scan_vec in scan_vecs:
 			var scan_point = mouse_position + scan_vec
 			scan_point.x = clamp(scan_point.x, 0.0, bounderis.x)
