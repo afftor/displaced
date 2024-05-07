@@ -136,6 +136,10 @@ func connect_to_button(id :String, obj :Node, method :String) ->void:
 #-----------
 
 func signal_resender(_needles_arg, obj :Node, method :String):
+	if obj == null:
+		#if this happens, it is bug. Need to find and fix it!
+		print("ALERT! tutorial bug. Find me!")
+		return
 	obj.call(method)
 
 func start_tut(id :String) ->void:
