@@ -1291,7 +1291,9 @@ func FinishCombat(victorious :bool, do_advance :bool = false):
 	fight_finished = true
 	input_handler.SetMusic("towntheme",20)#very slow, so events could take over
 	
-	for ch in state.heroes.values():
+	for ch_id in state.characters:
+		#all of that shouldn't go for locked chars. Refactor!
+		var ch = state.heroes[ch_id]
 		ch.defeated = false
 		ch.cooldowns.clear()
 		ch.hp = ch.get_stat('hpmax')
@@ -1794,13 +1796,13 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 		'full':
 			return $battlefield
 
-func sound_from_fighter(sound :String, fighter):
+func sound_from_fighter(sound :String, fighter, type_loud = false):
 	if !sound.begins_with('sound/'):
 		sound = 'sound/' + sound
 	if fighter and fighter.displaynode:
-		fighter.displaynode.process_sound(sound)
+		fighter.displaynode.process_sound(sound, type_loud)
 	else:
-		input_handler.PlaySound(sound)
+		input_handler.PlaySound(sound, 0, type_loud)
 
 #those vars seemed to be in use only for "enable_followup" effect in trigger-type effects,
 #wich for this moment used only once, and the case is seems to be outdated and doesn't work anymore for other reasons
@@ -1986,10 +1988,11 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					if !sounded_postdamage.has(postdamage_sound):
 						sound_from_fighter(postdamage_sound, s_skill2.target)
 						sounded_postdamage[postdamage_sound] = true
-				if !skill.has('no_bodyhitsound') or !skill.no_bodyhitsound:
+				if (s_skill2.process_check(['tags', 'has', 'damage'])
+						and (!skill.has('no_bodyhitsound') or !skill.no_bodyhitsound)):
 					var postdamage_sound = s_skill2.target.bodyhitsound
-					if !sounded_postdamage.has(postdamage_sound):
-						sound_from_fighter(postdamage_sound, s_skill2.target)
+					if !postdamage_sound.empty() and !sounded_postdamage.has(postdamage_sound):
+						sound_from_fighter(postdamage_sound, s_skill2.target, true)
 						sounded_postdamage[postdamage_sound] = true
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue

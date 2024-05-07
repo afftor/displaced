@@ -18,6 +18,7 @@ var base_dmg_type = 'bludgeon' setget , get_weapon_damagetype
 var armorbase = {}
 var armorbonus = {}
 var ultimeter :int = 0
+var ult_min_lvl :int = 0
 
 var bonusres = []
 
@@ -49,6 +50,12 @@ func createfromname(name):
 			status_resists[i] = template.status_resists[i]
 	animations = template.animations.duplicate()
 	hp = get_stat('hpmax')
+	for skill_id in template.skilllist:
+		var skill_lvl = template.skilllist[skill_id]
+		var skill = Skillsdata.patch_skill(skill_id, self)
+		if (skill.skilltype == 'ultimate'
+				and (ult_min_lvl == 0 or ult_min_lvl > skill_lvl)):
+			ult_min_lvl = skill_lvl
 
 func activate_traits():
 	var template = combatantdata.charlist[base]
@@ -397,6 +404,9 @@ func can_use_skill(skill):
 		return is_ult_ready()
 	return true
 
+func has_ult() ->bool:
+	return level >= ult_min_lvl
+
 func add_ultimeter(value :int):
 #	print("%s add_ultimeter %d" % [name, value])
 	set_ultimeter(ultimeter + value)
@@ -405,6 +415,7 @@ func deplete_ultimeter():
 	set_ultimeter(0)
 
 func set_ultimeter(value :int):
+	if !has_ult(): return
 	ultimeter = value
 	if ultimeter > 100: ultimeter = 100
 	elif ultimeter < 0: ultimeter = 0
@@ -418,6 +429,7 @@ func is_ult_ready() ->bool:
 	return ultimeter == 100
 
 func process_ultimeter(ev, skill = null):#skill :S_Skill
+	if !has_ult(): return
 	var do_add = variables.ULTIMETER_COSTS.has(ev)
 	if ev == variables.TR_POST_TARG:#S_Skill here is applicable-type
 		do_add = (skill.process_check(['tags', 'has', 'damage'])

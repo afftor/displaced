@@ -124,6 +124,9 @@ func settings_load():
 		AudioServer.set_bus_mute(counter, globalsettings[i+'mute'])
 		AudioServer.set_bus_volume_db(counter, globalsettings[i+'vol'])
 		counter += 1
+	#Sound_loud bus patch
+	AudioServer.set_bus_mute(3, globalsettings['soundmute'])
+	AudioServer.set_bus_volume_db(3, globalsettings['soundvol'] + variables.SOUND_LOUD_COR)
 
 
 func settings_save(value):

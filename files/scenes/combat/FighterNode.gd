@@ -78,9 +78,9 @@ func custom_gui_input(event):
 	#need to change texture_click_mask in order to differ DN_NONE and DN_SPRITE
 #	if !$sprite.get_rect().has_point(mouse_position):
 #		return variables.DN_NONE
-	
-	if (mouse_position.x < 0 or mouse_position.x > rect_size.x
-			or mouse_position.y < 0 or mouse_position.y > rect_size.y):
+	var bounderis = texture_click_mask.get_size() - Vector2(1.0,1.0)#get_size() same as rect_size()
+	if (mouse_position.x < 0 or mouse_position.x > bounderis.x
+			or mouse_position.y < 0 or mouse_position.y > bounderis.y):
 		return variables.DN_NONE
 	
 	var mouse_in_mask :bool = false
@@ -91,7 +91,6 @@ func custom_gui_input(event):
 	#but it happened to be far more resource-intensive (around 1200 ms for each regenerate_click_mask).
 	#Be advised to optimize the whole solution somehow.
 	if !mouse_in_mask:
-		var bounderis = texture_click_mask.get_size() - Vector2(1.0,1.0)
 		for scan_vec in scan_vecs:
 			var scan_point = mouse_position + scan_vec
 			scan_point.x = clamp(scan_point.x, 0.0, bounderis.x)
@@ -146,12 +145,16 @@ func setup_character(ch):
 	for n in panel_node.get_children():
 		n.visible = true
 	if fighter is hero:
-		ult = fighter.get_ultimeter()
-		panel_node.get_node('ProgressUlt').value = ult
+		if fighter.has_ult():
+			ult = fighter.get_ultimeter()
+			panel_node.get_node('ProgressUlt').value = ult
+			panel_node2.get_node('ProgressUlt').value = ult
+		else:
+			panel_node.get_node('ProgressUlt').hide()
+			panel_node2.get_node('ProgressUlt').hide()
 		panel_node.get_node('TextureRect').texture = fighter.portrait()
 		panel_node2.get_node('ProgressBar').max_value = fighter.get_stat('hpmax')
 		panel_node2.get_node('ProgressBar').value = hp
-		panel_node2.get_node('ProgressUlt').value = ult
 		panel_node2.get_node('Label').text = fighter.get_stat('name')
 		panel_node2.disabled = false
 	else:
@@ -326,8 +329,8 @@ func process_sfx_dict(dict):
 	sfx_anchor.process_sfx_dict(dict)
 
 
-func process_sound(sound):
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
+func process_sound(sound, type_loud = false):
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound, type_loud = type_loud}}
 	animation_node.add_new_data(data)
 
 func rebuildbuffs():

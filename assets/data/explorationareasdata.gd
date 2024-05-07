@@ -605,15 +605,14 @@ var scene_sequences = {
 		unlock_price = {rose = 150},
 		actions = [{type = 'scene', value = 'rose_3'}]
 	},
-	rose_forest = {
-		name = "GALLERY_ROSE_FOREST",
+	erika_vine = {
+		name = "GALLERY_ERIKA_VINE",
 		descript = "",
 		gallery = true,
-		forced_content = true,
-		preview = 'rose_forest',
-		initiate_reqs = [{type = 'scene_seen', value = 'faery_queen_1_b'}],
-		unlock_price = {rose = 200},
-		actions = [{type = 'scene', value = 'rose_forest_clone'}]
+		preview = 'erika_vine',
+		initiate_reqs = [{type = 'scene_seen', value = 'forest_2'}],
+		unlock_price = {erika = 0},
+		actions = [{type = 'scene', value = 'erika_vine_clone'}]
 	},
 	erika_doggy = {
 		name = "GALLERY_ERIKA_DOGGY",
@@ -632,25 +631,6 @@ var scene_sequences = {
 		unlock_price = {rose = 100, erika = 100},
 		initiate_reqs = [{type = 'mission_complete', value = 'forest_erika_sidequest'}],
 		actions = [{type = 'scene', value = 'erika_rose_2'}]
-	},
-	erika_vine = {
-		name = "GALLERY_ERIKA_VINE",
-		descript = "",
-		gallery = true,
-		preview = 'erika_vine',
-		initiate_reqs = [{type = 'scene_seen', value = 'forest_2'}],
-		unlock_price = {erika = 0},
-		actions = [{type = 'scene', value = 'erika_vine_clone'}]
-	},
-	erika_annet = {
-		name = "GALLERY_ERIKA_ANNET",
-		descript = "",
-		gallery = true,
-		forced_content = true,
-		preview = 'erika_annet',
-		initiate_reqs = [{type = 'scene_seen', value = 'erika_annet_2_1'}],
-		unlock_price = {erika = 200},
-		actions = [{type = 'scene', value = 'erika_annet_clone'}]
 	},
 	ember_missionary = {
 		name = "GALLERY_EMBER_MISSIONARY",
@@ -706,7 +686,6 @@ var scene_sequences = {
 		unlock_price = {rilu = 150},
 		actions = [{type = 'scene', value = 'rilu_2_2'}]
 	},
-	
 	iola_blowjob = {
 		name = "GALLERY_IOLA_BLOWJOB",
 		descript = "",
@@ -742,6 +721,26 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'seq_seen', value = 'iola_riding' }],
 		unlock_price = {iola = 150, erika = 150, rose = 150},
 		actions = [{type = 'scene', value = 'iola_2_7'}]
+	},
+	rose_forest = {
+		name = "GALLERY_ROSE_FOREST",
+		descript = "",
+		gallery = true,
+		forced_content = true,
+		preview = 'rose_forest',
+		initiate_reqs = [{type = 'scene_seen', value = 'faery_queen_1_b'}],
+		unlock_price = {rose = 200},
+		actions = [{type = 'scene', value = 'rose_forest_clone'}]
+	},
+	erika_annet = {
+		name = "GALLERY_ERIKA_ANNET",
+		descript = "",
+		gallery = true,
+		forced_content = true,
+		preview = 'erika_annet',
+		initiate_reqs = [{type = 'scene_seen', value = 'erika_annet_2_1'}],
+		unlock_price = {erika = 200},
+		actions = [{type = 'scene', value = 'erika_annet_clone'}]
 	},
 }
 

@@ -138,7 +138,10 @@ func allanimationsfinished():
 # ALL FUNCTIONS BELOW ARE SETUPPING ANIMATIONS AND THOUGH MUST RETURN THEIR ESTIMATING 'LOCK' TIME  
 func sound(node, args):
 	# need to preload somehow
-	input_handler.PlaySound(args.sound)
+	var type_loud = false
+	if args.has("type_loud"):
+		type_loud = args.type_loud
+	input_handler.PlaySound(args.sound, 0, type_loud)
 	return 0.1
 
 func default_animation(node, args):
