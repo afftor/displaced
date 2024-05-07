@@ -10,6 +10,7 @@ func _ready():
 
 func Accept():
 	hide()
+	input_handler.SetMusic("intro")
 
 func Quit():
 	get_parent().quit()

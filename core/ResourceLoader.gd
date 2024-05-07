@@ -68,7 +68,6 @@ func get_res(path: String) -> Resource:
 		return null
 	var category = psplit[0]
 	var label = psplit[1]
-
 	if (res_pool.has(category) && res_pool[category].has(label)):
 		return res_pool[category][label]
 	else:

@@ -9,7 +9,7 @@ func _ready():
 	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
-	input_handler.StopMusic()
+	#input_handler.StopMusic()
 	check_last_save()
 	for i in range(0,5):
 #warning-ignore:return_value_discarded
@@ -29,7 +29,10 @@ func _ready():
 
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
-		
+	
+	
+	resources.preload_res("music/intro")
+	
 
 func check_last_save():
 	lastsave = globals.get_last_save();
