@@ -1291,7 +1291,9 @@ func FinishCombat(victorious :bool, do_advance :bool = false):
 	fight_finished = true
 	input_handler.SetMusic("towntheme",20)#very slow, so events could take over
 	
-	for ch in state.heroes.values():
+	for ch_id in state.characters:
+		#all of that shouldn't go for locked chars. Refactor!
+		var ch = state.heroes[ch_id]
 		ch.defeated = false
 		ch.cooldowns.clear()
 		ch.hp = ch.get_stat('hpmax')
