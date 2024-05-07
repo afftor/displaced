@@ -1988,9 +1988,10 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 					if !sounded_postdamage.has(postdamage_sound):
 						sound_from_fighter(postdamage_sound, s_skill2.target)
 						sounded_postdamage[postdamage_sound] = true
-				if !skill.has('no_bodyhitsound') or !skill.no_bodyhitsound:
+				if (s_skill2.process_check(['tags', 'has', 'damage'])
+						and (!skill.has('no_bodyhitsound') or !skill.no_bodyhitsound)):
 					var postdamage_sound = s_skill2.target.bodyhitsound
-					if !sounded_postdamage.has(postdamage_sound):
+					if !postdamage_sound.empty() and !sounded_postdamage.has(postdamage_sound):
 						sound_from_fighter(postdamage_sound, s_skill2.target)
 						sounded_postdamage[postdamage_sound] = true
 				for j in animationdict.postdamage:

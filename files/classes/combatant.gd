@@ -41,7 +41,7 @@ var traitpoints := 0
 var inactiveskills = [] #what is this for?
 var cooldowns = {}
 
-var bodyhitsound = 'flesh' #for sound effect calculations
+var bodyhitsound = ''#flesh - for sound effect calculations, but doesn't seems to be needed
 var weaponsound = 'dodge'
 
 
