@@ -1796,13 +1796,13 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 		'full':
 			return $battlefield
 
-func sound_from_fighter(sound :String, fighter):
+func sound_from_fighter(sound :String, fighter, type_loud = false):
 	if !sound.begins_with('sound/'):
 		sound = 'sound/' + sound
 	if fighter and fighter.displaynode:
-		fighter.displaynode.process_sound(sound)
+		fighter.displaynode.process_sound(sound, type_loud)
 	else:
-		input_handler.PlaySound(sound)
+		input_handler.PlaySound(sound, 0, type_loud)
 
 #those vars seemed to be in use only for "enable_followup" effect in trigger-type effects,
 #wich for this moment used only once, and the case is seems to be outdated and doesn't work anymore for other reasons
@@ -1992,7 +1992,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 						and (!skill.has('no_bodyhitsound') or !skill.no_bodyhitsound)):
 					var postdamage_sound = s_skill2.target.bodyhitsound
 					if !postdamage_sound.empty() and !sounded_postdamage.has(postdamage_sound):
-						sound_from_fighter(postdamage_sound, s_skill2.target)
+						sound_from_fighter(postdamage_sound, s_skill2.target, true)
 						sounded_postdamage[postdamage_sound] = true
 				for j in animationdict.postdamage:
 #					if j.has('once') and j.once and n > 1: continue

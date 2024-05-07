@@ -87,6 +87,9 @@ func updatesounds():
 		AudioServer.set_bus_mute(counter, globals.globalsettings[i+'mute'])
 		AudioServer.set_bus_volume_db(counter, globals.globalsettings[i+'vol'])
 		counter += 1
+	#Sound_loud bus patch
+	AudioServer.set_bus_mute(3, globals.globalsettings['soundmute'])
+	AudioServer.set_bus_volume_db(3, globals.globalsettings['soundvol'] + variables.SOUND_LOUD_COR)
 
 func textspeed(value):
 	globals.globalsettings.textspeed = value

@@ -329,8 +329,8 @@ func process_sfx_dict(dict):
 	sfx_anchor.process_sfx_dict(dict)
 
 
-func process_sound(sound):
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
+func process_sound(sound, type_loud = false):
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound, type_loud = type_loud}}
 	animation_node.add_new_data(data)
 
 func rebuildbuffs():

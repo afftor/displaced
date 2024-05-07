@@ -505,7 +505,7 @@ func ProcessMusic(delta):
 
 #Sounds
 
-func PlaySound(res, delay = 0):
+func PlaySound(res, delay = 0, type_loud = false):
 	var true_res
 	if res is String:
 		true_res = resources.get_res(res)
@@ -514,7 +514,11 @@ func PlaySound(res, delay = 0):
 	if true_res == null:
 		return
 	yield(get_tree().create_timer(delay), 'timeout')
-	var soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
+	var soundnode
+	if type_loud:
+		soundnode = get_spec_node(NODE_SOUND_LOUD)
+	else:
+		soundnode = get_spec_node(NODE_SOUND)#GetSoundNode()
 	soundnode.stream = true_res
 	soundnode.seek(0)
 	soundnode.play(0)
@@ -884,7 +888,7 @@ func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])
 
 #variative get node method stuff
-enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG, NODE_NOTIFICATION, NODE_UNLOCKCHAR} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_SOUND_LOUD, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG, NODE_NOTIFICATION, NODE_UNLOCKCHAR} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_GAMETIP : {name = 'GameTips', mode = 'scene', scene = preload("res://files/scenes/GameplayTips.tscn")},
@@ -902,6 +906,7 @@ var node_data = {
 	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextSceneNew/TextSystem.tscn")},
 	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
 	NODE_SOUND : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	NODE_SOUND_LOUD : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound_loud"}},
 	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},
 	#NODE_TWEEN : {name = 'tween', mode = 'node', node = Tween},
 #	NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/TextEditField.tscn")},
