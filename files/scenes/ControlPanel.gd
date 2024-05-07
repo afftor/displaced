@@ -2,7 +2,7 @@ extends Control
 
 onready var BS = $BlackScreen;
 var sounds = {
-	"defeat" : "sound/defeat",
+	"defeat" : "sound/game_over",
 #	"itemget" : "sound/itemget_1"
 }
 
