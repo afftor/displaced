@@ -1,0 +1,24 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/images/gfx/firebolt/firebolt_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gfx/firebolt/firebolt_2.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gfx/firebolt/firebolt_3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gfx/firebolt/firebolt_5.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gfx/firebolt/firebolt_7.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gfx/firebolt/firebolt_4.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gfx/firebolt/firebolt_6.png" type="Texture" id=7]
+[ext_resource path="res://scene_animation_centering.gd" type="Script" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="HitAnimation" type="AnimatedSprite"]
+position = Vector2( 473.304, 216.75 )
+scale = Vector2( 0.39, 0.39 )
+frames = SubResource( 1 )
+script = ExtResource( 8 )
