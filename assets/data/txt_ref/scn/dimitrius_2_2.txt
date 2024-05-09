@@ -64,7 +64,7 @@ De - And once we are done here, it's your home's turn. & EV_DIMITRIUS_2_2_51
 =SHAKE_SCREEN 1=
 =SOUND sound_crack=
 The ground began to shake as the magic aura surrounded Dimitrius. & EV_DIMITRIUS_2_2_52
-Ar(shock) - Eh? What's going on? & EV_DIMITRIUS_2_2_52
+Ar(shock) - Eh? What's going on? & EV_DIMITRIUS_2_2_52_1
 Ri(talk) - This is bad, we should stop him. & EV_DIMITRIUS_2_2_53
 Ar(anger) - Shit, no other choice!.. & EV_DIMITRIUS_2_2_54
 De - Don't make me laugh you wimp. & EV_DIMITRIUS_2_2_55
