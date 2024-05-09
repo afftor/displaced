@@ -126,7 +126,7 @@ var skilllist = {
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_firebolt_fairy', target = 'target', period = 'predamage', flip_h = true}],
+			{code = 'sfx_firebolt', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
 		ai_priority = 1,
 		sounddata = {cast = 'firebolt'}
