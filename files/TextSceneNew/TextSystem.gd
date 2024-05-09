@@ -1383,7 +1383,11 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 			
 			#-------should be switched off in most cases, except changes in events------
 			if " & " in i:
-				strings_to_check.append(i.get_slice(" & ", 1))
+				var tr_id = i.get_slice(" & ", 1)
+				if strings_to_check.has(tr_id):
+					print("Translation double at %s: %s" % [current_scene, tr_id])
+				else:
+					strings_to_check.append(tr_id)
 			elif !i.empty():
 				print("No translation at %s: %s" % [current_scene, i])
 			#-----------
@@ -1476,3 +1480,39 @@ func can_hide():
 #	file_handler.open(out_path + "main.txt", File.WRITE)
 #	file_handler.store_string(dict_text)
 #	file_handler.close()
+
+#Use once at _ready() with ref_src argument, only when needed to dump lines
+func dump_lines_for_translation(lines: PoolStringArray):
+	var scene_name :String = ""
+	var string_name :String = ""
+	var string_count :int = 0
+	var file_text :String = ""
+	var dict_text :String = ""
+	var out_path = "user://out/"
+	var file_handler = File.new()
+	for i in lines:
+		if i.begins_with("**") && i.ends_with("**"):
+			continue
+
+		if i.begins_with("#"):
+			continue
+
+		if i.begins_with("=") && i.ends_with("="):
+			continue
+
+		if i.empty():
+			continue
+
+		var replica = i
+		if " - " in i:
+			var splitted = i.split(" - ", true, 1)
+			if is_char_name(splitted[0]):
+				replica = splitted[1]
+		assert((" & " in replica), "inappropriate use of & in %s" % replica)
+		var splitted = replica.split(" & ")
+		assert(splitted.size() == 2, "inappropriate use of & in %s" % replica)
+		dict_text += "%s = \"%s\",\n" % [splitted[1], splitted[0]]
+	#dictionary
+	file_handler.open(out_path + "main.txt", File.WRITE)
+	file_handler.store_string(dict_text)
+	file_handler.close()

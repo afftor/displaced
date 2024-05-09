@@ -121,7 +121,7 @@ Ar(anger) - You expect me to leave them in this shithead's hands just like that?
 Ri(talk) - I expect you to not be reckless and weight the odds. & EV_DIMITRIUS_2_1_77
 Ri - Acting on your emotions will only make things worse.  & EV_DIMITRIUS_2_1_78
 Ar(anger) - Shit... You don't think I'll just forget about them? & EV_DIMITRIUS_2_1_78_1
-Ri - Arron, you've helped me before and I'm your ally. We don't have much of a chance otherwise. & EV_DIMITRIUS_2_1_78
+Ri - Arron, you've helped me before and I'm your ally. We don't have much of a chance otherwise. & EV_DIMITRIUS_2_1_78_2
 Ar(neutral) - ..... & EV_DIMITRIUS_2_1_79
 Ri - Let's go then, it's better if we don't waste time.  & EV_DIMITRIUS_2_1_80
 =GUI_HIDE=
