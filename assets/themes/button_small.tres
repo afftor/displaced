@@ -1,8 +1,14 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/mainfont_30_btn.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/images/buttons/button_small_pressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/buttons/button_small_normal.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/buttons/button_small_hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/buttons/button_small_disabled.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/taskmenu/jobtoolfield.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 100, 48 )
 margin_left = 14.0
 margin_right = 14.0
@@ -10,6 +16,7 @@ margin_top = 14.0
 margin_bottom = 14.0
 
 [sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 100, 48 )
 margin_left = 14.0
 margin_right = 14.0
@@ -17,6 +24,7 @@ margin_top = 14.0
 margin_bottom = 14.0
 
 [sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 100, 48 )
 margin_left = 14.0
 margin_right = 14.0
@@ -24,6 +32,7 @@ margin_top = 14.0
 margin_bottom = 14.0
 
 [sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 100, 48 )
 margin_left = 14.0
 margin_right = 14.0
@@ -33,6 +42,7 @@ margin_bottom = 14.0
 [sub_resource type="StyleBoxTexture" id=5]
 content_margin_left = 25.0
 content_margin_right = 25.0
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 141, 138 )
 margin_left = 8.59416
 margin_right = 7.0
