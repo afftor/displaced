@@ -1,0 +1,36 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform bool _enable = true;
+
+uniform vec4 _tint_color_1: hint_color = vec4(1.0);
+uniform vec4 _tint_color_2: hint_color = vec4(1.0);
+uniform sampler2D _tint_blend_noise;
+
+uniform float _tint_amount = 0.5;
+uniform float _tint_blend_1 = 0.3;
+uniform float _tint_blend_2 = 0.1;
+
+uniform float _noise_speed = 0.07;
+uniform float _warp_amount = 0.05;
+uniform vec2 _noise_direction = vec2(-1.0, 0.0);
+
+
+void fragment() {
+	if (!_enable) {
+		COLOR = texture(TEXTURE, UV);
+	} else {
+
+	vec4 noise = texture(_tint_blend_noise, UV+_noise_direction*_noise_speed*TIME);
+	vec2 uv_warp = (UV+noise.r*_warp_amount)-vec2(_warp_amount/2.0);
+	vec4 original_color = texture(TEXTURE, uv_warp);
+	float original_alpha = texture(TEXTURE, UV).a; 
+
+	vec3 tint = mix(_tint_color_1, _tint_color_2, smoothstep(_tint_blend_1, _tint_blend_2, noise.g)).rgb;
+	vec3 color = mix(original_color.rgb, tint,  _tint_amount);
+
+	COLOR = vec4(color, original_alpha); 
+	}
+}"

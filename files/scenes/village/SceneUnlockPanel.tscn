@@ -31,9 +31,6 @@ margin_top = 10.0
 margin_right = 1913.0
 margin_bottom = 1064.0
 texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="panel_hero" type="TextureRect" parent="."]
 margin_left = 1201.0
@@ -63,9 +60,6 @@ margin_top = 45.0
 margin_right = 1216.0
 margin_bottom = 945.0
 texture = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="heroes" type="ScrollContainer" parent="Panel"]
 margin_left = 20.0

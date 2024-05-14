@@ -1,5 +1,9 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
+signal scene_pannel_drawn(scene_id)
+signal was_open
+
+
 onready var charlist = $Panel/heroes/HBoxContainer
 onready var scenelist = $Panel/scenes/GridContainer
 
@@ -65,6 +69,7 @@ func open():
 			ch.visible = false
 	select_hero(def_char)
 	show()
+	emit_signal("was_open")
 
 
 func select_hero(cid):
@@ -83,31 +88,51 @@ func select_hero(cid):
 
 
 func rebuild_scene_list():
+	var available_scenes = _get_scenes_to_show()
 	input_handler.ClearContainer(scenelist, ['Button'])
-	for event in Explorationdata.scene_sequences:
-		var eventdata = Explorationdata.scene_sequences[event]
-		if !eventdata.has('gallery'): continue
-		if eventdata.has('forced_content') and !globals.globalsettings.forced_content:
-			continue
-		var girls = eventdata.unlock_price.keys()
-		var locked = false
-		for girl in girls:
-			if !state.heroes[girl].unlocked:
-				locked = true
-				break
-		if locked: continue
-		if selected_char != 'all' and !(selected_char in girls): continue
-		var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
-		if state.OldSeqs.has(event):
-			panel.set_unlocked(eventdata)
-			panel.connect('show_pressed', self, 'show_event', [event])
-			continue
-		if eventdata.has("initiate_reqs") and state.checkreqs(eventdata.initiate_reqs): #not shown but unlockable
-			panel.set_unlockable(eventdata)
-			panel.connect('unlocked_pressed', self, 'unlock_show_event', [event])
-			continue
-		panel.set_unknown()
+	for scene_id in available_scenes:
+		var scene_data = available_scenes[scene_id]
 
+		var is_unlocked = state.OldSeqs.has(scene_id)
+		var is_unlockable = scene_data.has("initiate_reqs") and state.checkreqs(scene_data.initiate_reqs)
+
+
+		var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
+		if is_unlocked:
+			panel.set_unlocked(scene_data)
+			panel.connect('show_pressed', self, 'show_event', [scene_id])
+			#If not unlocked yet but unlockable
+		elif is_unlockable:
+			panel.set_unlockable(scene_data)
+			panel.connect('unlocked_pressed', self, 'unlock_show_event', [scene_id])
+			panel.set_highlighted(scene_id in state.pending_scenes)
+		else: 
+			panel.set_unknown()
+		
+		emit_signal("scene_pannel_drawn", scene_id)
+	
+func _get_scenes_to_show() -> Dictionary:
+	var id_and_scene_data = {}
+
+	for scene_id in Explorationdata.scene_sequences:
+		var scene_data = Explorationdata.scene_sequences[scene_id]
+		if !scene_data.has('gallery'): continue
+		if scene_data.has('forced_content') and !globals.globalsettings.forced_content: continue
+
+		var scene_characters = scene_data.unlock_price.keys()
+		if selected_char != 'all' and !(selected_char in scene_characters): continue
+
+		var character_locked = false
+		for chartater in scene_characters:
+			if !state.heroes[chartater].unlocked:
+				character_locked = true
+				break
+		if character_locked: continue
+		
+		
+		id_and_scene_data[scene_id] = scene_data
+
+	return id_and_scene_data
 
 func show_event(ev):
 	globals.run_seq(ev)

@@ -9,6 +9,7 @@ onready var image = $Image
 onready var label = $Label
 onready var lock = $lock
 onready var reqs = $reqs
+onready var panel = $panel
 
 
 func _ready():
@@ -25,6 +26,10 @@ func set_unlocked(eventdata :Dictionary):
 	#shader's algorithm. Mind it in case of freezes in the scene with shaders
 	reqs.hide()
 	unlock_btn.hide()
+
+func set_highlighted(toggle: bool):
+	panel.material = panel.material.duplicate()
+	panel.material.set("shader_param/_enable", toggle)
 
 func set_unlockable(eventdata :Dictionary):
 	set_preview(eventdata)

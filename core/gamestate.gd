@@ -1,5 +1,8 @@
 extends Node
 
+
+signal pending_scenes_updated
+
 #doesn't work for now
 #var date := 1
 #var daytime = 0  setget time_set
@@ -49,6 +52,8 @@ var OldEvents := {}
 var CurEvent := "" #event name
 var CurBuild := ""
 
+var pending_scenes = []
+var discovered_pending_scenes = []
 #Progress
 var decisions := []
 var areaprogress := {} #{level, stage, completed}
@@ -77,6 +82,14 @@ signal money_changed
 #		pass
 ##		globals.check_signal('Midday')
 #	daytime = value
+
+func update_pending_scenes(scenes: Array):
+	pending_scenes = scenes
+	emit_signal("pending_scenes_updated")
+
+func clear_pending_scenes():
+	pending_scenes.clear()
+	emit_signal("pending_scenes_updated")
 
 func get_difficulty():
 	return difficulty #or change this to settings record if diff to be session-relatad instead of party-related
@@ -438,6 +451,10 @@ func serialize():
 #	tmp['effects'] = effects_pool.serialize()
 	if !effects_pool.serialize().empty():
 		print("!!!!!ALERT!!!!! There are effects for save!")
+		
+	tmp["PENDING_SCENES"] = pending_scenes
+	tmp["DISCOVERED_PENDING_SCENES"] = discovered_pending_scenes
+	
 	return tmp
 
 func deserialize(tmp:Dictionary):
@@ -500,6 +517,12 @@ func deserialize(tmp:Dictionary):
 		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	else:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
+	
+	if tmp.has("PENDING_SCENES"):
+		pending_scenes = tmp["PENDING_SCENES"] 
+	if tmp.has("DISCOVERED_PENDING_SCENES"):
+		discovered_pending_scenes = tmp["DISCOVERED_PENDING_SCENES"]
+	
 #	input_handler.map_node.update_map()
 
 func cleanup():
