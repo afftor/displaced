@@ -10,6 +10,7 @@ func _ready():
 
 func Accept():
 	hide()
+	if resources.is_busy(): yield(resources, "done_work")
 	input_handler.SetMusic("intro")
 
 func Quit():

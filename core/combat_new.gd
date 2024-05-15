@@ -246,15 +246,15 @@ func test_combat():
 func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	if debug_btn_on:
 		$test.hide()
+	if music == 'combattheme':
+		var ost_array = ['combattheme', 'combattheme2']
+		music = ost_array[globals.rng.randi_range(0, ost_array.size()-1)]
 	hide_resist_tooltip()
 	input_handler.set_handler_node('combat_node', self)
 	turns = 0
 	en_level = level
 	resources.preload_res("music/%s" % music)
 	if resources.is_busy(): yield(resources, "done_work")
-	if music == 'combattheme':
-		var ost_array = ['combattheme', 'combattheme2']
-		music = ost_array[globals.rng.randi_range(0, ost_array.size()-1)]
 	rules.clear()
 	aura_effects.ally.clear()
 	aura_effects.enemy.clear()
