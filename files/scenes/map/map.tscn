@@ -2011,9 +2011,6 @@ margin_top = 947.0
 margin_right = 1460.0
 margin_bottom = 955.0
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="clouds" type="Control" parent="inner"]
 margin_left = -1.67023
