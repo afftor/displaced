@@ -1,6 +1,7 @@
 extends Node
 
 var loader
+var wait_frames
 var time_max = 100 # msec
 var current_scene
 
@@ -23,10 +24,18 @@ func goto_scene(path): # game requests to switch to this scene
 	set_process(true)
 	#current_scene.queue_free() # get rid of the old scene
 
+	# start your "loading..." animation
+	get_node("animation").play("loading")
+
+	wait_frames = 1
+
 func _process(delta):
 	if loader == null and mode != 2:
 		# no need to process anymore
 		set_process(false)
+		return
+	if wait_frames > 0: # wait for frames to let the "loading" animation show up
+		wait_frames -= 1
 		return
 	var t = OS.get_ticks_msec()
 	while OS.get_ticks_msec() < t + time_max: # use "time_max" to control how much time we block this thread
@@ -57,6 +66,12 @@ func update_progress():
 	# update your progress bar?
 	get_node("progress").value = progress*100
 
+	# or update a progress animation?
+	var length = get_node("animation").get_current_animation_length()
+
+	# call this on a paused animation. use "true" as the second parameter to force the animation to update
+	get_node("animation").seek(progress * length, true)
+
 
 func update_progress_res():
 	var tmp = resources.max_loaded
@@ -65,6 +80,12 @@ func update_progress_res():
 		progress = float(resources.current_loaded) / tmp
 	# update your progress bar?
 	get_node("progress").value = progress * 100
+
+	# or update a progress animation?
+	var length = get_node("animation").get_current_animation_length()
+
+	# call this on a paused animation. use "true" as the second parameter to force the animation to update
+	get_node("animation").seek(progress * length, true)
 
 
 func set_new_scene(scene_resource):

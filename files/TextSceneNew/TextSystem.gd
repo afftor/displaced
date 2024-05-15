@@ -1481,16 +1481,11 @@ func can_hide():
 #	file_handler.store_string(dict_text)
 #	file_handler.close()
 
-#Use once at _ready() with ref_src argument, only when needed to dump lines
-func dump_lines_for_translation(lines: PoolStringArray):
-	var scene_name :String = ""
-	var string_name :String = ""
-	var string_count :int = 0
-	var file_text :String = ""
+func dump_lines_for_translation():
+	print("Dump started!")
+	print('Mind that only \\" and \\n escape codes are supported by now')
 	var dict_text :String = ""
-	var out_path = "user://out/"
-	var file_handler = File.new()
-	for i in lines:
+	for i in ref_src:
 		if i.begins_with("**") && i.ends_with("**"):
 			continue
 
@@ -1511,8 +1506,27 @@ func dump_lines_for_translation(lines: PoolStringArray):
 		assert((" & " in replica), "inappropriate use of & in %s" % replica)
 		var splitted = replica.split(" & ")
 		assert(splitted.size() == 2, "inappropriate use of & in %s" % replica)
-		dict_text += "%s = \"%s\",\n" % [splitted[1], splitted[0]]
-	#dictionary
-	file_handler.open(out_path + "main.txt", File.WRITE)
-	file_handler.store_string(dict_text)
+		dict_text += "%s = \"%s\",\n" % [splitted[1], escape_for_translation(splitted[0])]
+	#main
+	var main_trans = load(globals.TranslationData[globals.base_locale]).new().TranslationDict
+	var file_text :String = ""
+	for id in main_trans:
+		file_text += "%s = \"%s\",\n" % [id, escape_for_translation(main_trans[id])]#c_escape()
+	file_text += dict_text
+	#dump
+	var dir_handler = Directory.new()
+	if dir_handler.open("user://") != OK:
+		print("can't open user folder")
+		return
+	if !dir_handler.dir_exists("translation"):
+		dir_handler.make_dir("translation")
+	var file_handler = File.new()
+	file_handler.open("user://translation/main.txt", File.WRITE)
+	file_handler.store_string(file_text)
 	file_handler.close()
+	print('Dump finished! Look at user://translation')
+
+func escape_for_translation(input_line :String) ->String:
+	var line = input_line.replace("\n", "\\n")
+	line = line.replace('\"', '\\"')
+	return line
