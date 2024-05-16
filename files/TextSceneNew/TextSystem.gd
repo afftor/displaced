@@ -1506,13 +1506,13 @@ func dump_lines_for_translation():
 		assert((" & " in replica), "inappropriate use of & in %s" % replica)
 		var splitted = replica.split(" & ")
 		assert(splitted.size() == 2, "inappropriate use of & in %s" % replica)
-		dict_text += "%s = \"%s\",\n" % [splitted[1], escape_for_translation(splitted[0])]
+		dict_text += "\t%s = \"%s\",\n" % [splitted[1], escape_for_translation(splitted[0])]
 	#main
 	var main_trans = load(globals.TranslationData[globals.base_locale]).new().TranslationDict
-	var file_text :String = ""
+	var file_text :String = "extends Node\n\nvar TranslationDict = {\n"
 	for id in main_trans:
-		file_text += "%s = \"%s\",\n" % [id, escape_for_translation(main_trans[id])]#c_escape()
-	file_text += dict_text
+		file_text += "\t%s = \"%s\",\n" % [id, escape_for_translation(main_trans[id])]#c_escape()
+	file_text += dict_text + "}"
 	#dump
 	var dir_handler = Directory.new()
 	if dir_handler.open("user://") != OK:
@@ -1521,7 +1521,7 @@ func dump_lines_for_translation():
 	if !dir_handler.dir_exists("translation"):
 		dir_handler.make_dir("translation")
 	var file_handler = File.new()
-	file_handler.open("user://translation/main.txt", File.WRITE)
+	file_handler.open("user://translation/main.gd", File.WRITE)
 	file_handler.store_string(file_text)
 	file_handler.close()
 	print('Dump finished! Look at user://translation')
