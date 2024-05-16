@@ -37,8 +37,6 @@ Ro(sarcastic) - Huh? & EV_EMBER_1_5_21
 =BLACKUNFADE 1.5=
 =DELAY 1.5=
 Next Day. & EV_EMBER_1_5_22
-=BLACKFADE 0.5=
-=DELAY 0.5=
 =GUI_FULL=
 =MUSIC erotheme=
 =ABG ember_titjob_01=
@@ -53,7 +51,6 @@ Em - Erika said you would like it. & EV_EMBER_1_5_28
 Ar - Who could've guessed.  & EV_EMBER_1_5_29
 Em - Here, let me try something... & EV_EMBER_1_5_30
 =ABG ember_titjob_02 ember_titjob_03=
-=ABG ember_titjob_03 ember_titjob_04=
 Ar - Ooh... & EV_EMBER_1_5_31
 Em - Hehe, it feels funny between my breasts. & EV_EMBER_1_5_32
 Em - I didn’t expect it to feel so good. & EV_EMBER_1_5_33

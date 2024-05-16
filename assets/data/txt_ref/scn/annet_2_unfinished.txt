@@ -41,9 +41,9 @@ Ri - We won't hold without her... & EV_ANNET_2_25
 An - Your really don't know how to secure victory, Arron. & EV_ANNET_2_26
 An - Never leave things to chance. & EV_ANNET_2_27
 =MUSIC_STOP=
-=SPRITE hide=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
+=SPRITE_HIDE=
 An - Isn't that nice, Eri...? & EV_ANNET_2_28
 =BG scenes/annet_erika_1=
 =SOUND sound_stab=
@@ -66,7 +66,11 @@ An(anger) - Nnooo!.. & EV_ANNET_2_39
 A red splash erupted from Annet's neck as the dagger sliced it through. & EV_ANNET_2_40
 Er(anger) - Go to hell, Mistress. & EV_ANNET_2_41
 =SOUND sound_fall=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =BG burning_city=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
 With Annet's defeat all demons in the hall quickly retreated from sight. & EV_ANNET_2_42

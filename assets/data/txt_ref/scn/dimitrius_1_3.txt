@@ -15,7 +15,7 @@ Ar(neutral) -  & EV_DIMITRIUS_1_3_3
 Demitrius approaches and closely inspects the box. & EV_DIMITRIUS_1_3_4
 As he removes the lid, a thick fog bursts out and fills the room. & EV_DIMITRIUS_1_3_5
 =MUSIC_STOP=
-=SOUND smoke=
+=SOUND sound_smoke=
 Em - Ah! & EV_DIMITRIUS_1_3_6
 Ar(shock) - What the... & EV_DIMITRIUS_1_3_7
 D - Curses! & EV_DIMITRIUS_1_3_8

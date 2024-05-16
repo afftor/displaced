@@ -42,7 +42,7 @@ Em(happy) - I wanna see treasure! & EV_RILU_1_1_25
 Ro - ... I can't believe we actually made it this far. & EV_RILU_1_1_26
 Ar - Alright, Ember help me out. & EV_RILU_1_1_27
 Em - Gotcha! & EV_RILU_1_1_28
-=SOUND lid=
+=SOUND sound_lid=
 As the heavy lid is removed it reveals a young girl lying inside. & EV_RILU_1_1_29
 =MUSIC rilu_theme=
 =GUI_HIDE=

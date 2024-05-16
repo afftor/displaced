@@ -23,7 +23,7 @@ V - Sorry, I don't take note how my prey was called.  & EV_VICTOR_2_3_13
 Em - What?.. & EV_VICTOR_2_3_14
 Em - You have... & EV_VICTOR_2_3_15
 V - Yeah, I've slayed it.  & EV_VICTOR_2_3_16
-=MUSIC STOP=
+=MUSIC_STOP=
 Em(sad) - ... & EV_VICTOR_2_3_17
 Em(sad) - Why? & EV_VICTOR_2_3_18
 V - *Sigh* Why do men hunt?  & EV_VICTOR_2_3_19

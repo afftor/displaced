@@ -18,7 +18,7 @@ A sound of distant explosions shook the air. & EV_DIMITRIUS_ENDING_3_8
 As they turned the way it came from, they could see a small object flying through the air. & EV_DIMITRIUS_ENDING_3_9
 Er - Look! & EV_DIMITRIUS_ENDING_3_10
 Ar(shock) - Shit, dodge! & EV_DIMITRIUS_ENDING_3_11
-=MUSIC STOP=
+=MUSIC_STOP=
 Before Arron noticed, Dimitrius had escaped, observing them from a safe distance. & EV_DIMITRIUS_ENDING_3_12
 =SPRITE demitrius_demon=
 =SOUND explosion=

@@ -49,7 +49,7 @@ Ar - Yeah, you can do that. & EV_ROSE_2_33
 Ro - Thank you, Master.  & EV_ROSE_2_34
 Ro - I'll be off now. Get well soon. & EV_ROSE_2_35
 =SPRITE_FADE 0.5=
-=SOUND slam=
+=SOUND dooropen=
 Ar - On a second thought... A liaison might not be a bad idea. & EV_ROSE_2_36
 Ar(neutral) - Rose, wait, you hear me? & EV_ROSE_2_37
 Ar - ...Darn it. & EV_ROSE_2_38

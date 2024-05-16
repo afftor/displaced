@@ -110,7 +110,7 @@ C - Raaargh! & EV_RILU_2_4_95
 Before they managed to react, the monster charged into Rilu. & EV_RILU_2_4_96
 Ar(shock) - Oh shit! & EV_RILU_2_4_97
 Arron tackled Rilu out of the way and they both tumbled onto the floor as the monster missed them. & EV_RILU_2_4_98
-=SOUND cling=
+=SOUND sound_fall=
 More undead started pouring from all directions. & EV_RILU_2_4_99
 =SPRITE skeleton=
 Ar(shock) - We are in trouble! & EV_RILU_2_4_100

@@ -14,12 +14,14 @@ Ro - Would you like to investigate? & EV_ERIKA_ANNET_2_3_4
 Ar(neutral) - Yeah, I've been bored from sitting around here all day. & EV_ERIKA_ANNET_2_3_5
 Ar - I hope she hasn't decided to live in a big city instead. & EV_ERIKA_ANNET_2_3_6
 =GUI_HIDE=
-=BLACKTRANS 1=
-=DELAY 1=
-=SPRITE_FADE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=SPRITE_HIDE=
 =BG town_in=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 =GUI_NORMAL=
-=SPRITE stranger=
+=SPRITE Human_M=
 Str - The elven girl in skimpy clothes? & EV_ERIKA_ANNET_2_3_7
 Str - Yeah, she was here yesterday.  & EV_ERIKA_ANNET_2_3_8
 Str - Was causing some ruckus, then walked away with Annet. & EV_ERIKA_ANNET_2_3_9
