@@ -8,28 +8,28 @@
 =SPRITE faeryqueen=
 =SPRITE_UNFADE 0.5=
 =GUI_NORMAL=
-Ar(neutral) - There she is. & EV_FAERY_QUEEN_3_0
-FQ - Oh, look, it's you retards again. & EV_FAERY_QUEEN_3_1
-FQ - Have you not learned your lesson yet? & EV_FAERY_QUEEN_3_2
-Ar - Are you ready? & EV_FAERY_QUEEN_3_3
-Ri - Yes, give me the catalyst.  & EV_FAERY_QUEEN_3_4
-Er - Here's the stuff. & EV_FAERY_QUEEN_3_5
-Ri(talk) - Is that... her underwear? & EV_FAERY_QUEEN_3_6
-Er - Sure. Why? & EV_FAERY_QUEEN_3_7
-Ro(sarcastic) - Why would you pick exactly that? & EV_FAERY_QUEEN_3_8
-Er - How would you be sure it's actually hers otherwise? & EV_FAERY_QUEEN_3_9
-FQ - Haha, what are you even doing? & EV_FAERY_QUEEN_3_10
-FQ - You idiot perverts. & EV_FAERY_QUEEN_3_11
-FQ - Just go wank yourself to death. & EV_FAERY_QUEEN_3_12
-FQ - See you, fools. & EV_FAERY_QUEEN_3_13
-Ri(spell) - ... & EV_FAERY_QUEEN_3_14
+Ar(neutral) - EV_FAERY_QUEEN_3_0
+FQ - EV_FAERY_QUEEN_3_1
+FQ - EV_FAERY_QUEEN_3_2
+Ar - EV_FAERY_QUEEN_3_3
+Ri - EV_FAERY_QUEEN_3_4
+Er - EV_FAERY_QUEEN_3_5
+Ri(talk) - EV_FAERY_QUEEN_3_6
+Er - EV_FAERY_QUEEN_3_7
+Ro(sarcastic) - EV_FAERY_QUEEN_3_8
+Er - EV_FAERY_QUEEN_3_9
+FQ - EV_FAERY_QUEEN_3_10
+FQ - EV_FAERY_QUEEN_3_11
+FQ - EV_FAERY_QUEEN_3_12
+FQ - EV_FAERY_QUEEN_3_13
+Ri(spell) - EV_FAERY_QUEEN_3_14
 =SPRITE_FADE 0.2=
 =DELAY 0.2=
 =SPRITE_UNFADE 0.2=
 =DELAY 0.1=
-FQ - What the... I can't teleport?! & EV_FAERY_QUEEN_3_15
-FQ - You'll pay for this, you bastards!  & EV_FAERY_QUEEN_3_16
-Ar(neutral) - Great, now get her. & EV_FAERY_QUEEN_3_17
+FQ - EV_FAERY_QUEEN_3_15
+FQ - EV_FAERY_QUEEN_3_16
+Ar(neutral) - EV_FAERY_QUEEN_3_17
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

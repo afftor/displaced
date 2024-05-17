@@ -22,15 +22,15 @@ func _ready():
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
 	$dev_panel/test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
 	$dev_panel/test_event.connect("pressed", self, "test_event")
-	$dev_panel/dump_trans.connect("pressed", self, "dump_trans")
+	$dev_panel/dump_ref.connect("pressed", self, "dump_referals")
 	state.connect("money_changed", self, "UpdateMoney")
 	return_button_home()
 
-func dump_trans():
+func dump_referals():
 	if input_handler.scene_node == null:
 		print("there is no scene node")
 		return
-	input_handler.scene_node.dump_lines_for_translation()
+	input_handler.scene_node.dump_referals()
 
 func test_event():
 	globals.play_scene('faery_queen_1')

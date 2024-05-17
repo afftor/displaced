@@ -6,21 +6,21 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-The team arrives at the dark room with a small, generic box placed on a ruined altar. & EV_DIMITRIUS_1_3_0
+EV_DIMITRIUS_1_3_0
 =SPRITE demitrius=
 =SPRITE_UNFADE 0.5=
-D - Yes, this seems to be the thing from my reports.  & EV_DIMITRIUS_1_3_1
-D - You have my deep gratitude, Arron.  & EV_DIMITRIUS_1_3_2
-Ar(neutral) -  & EV_DIMITRIUS_1_3_3
-Demitrius approaches and closely inspects the box. & EV_DIMITRIUS_1_3_4
-As he removes the lid, a thick fog bursts out and fills the room. & EV_DIMITRIUS_1_3_5
+D - EV_DIMITRIUS_1_3_1
+D - EV_DIMITRIUS_1_3_2
+Ar(neutral) - EV_DIMITRIUS_1_3_3
+EV_DIMITRIUS_1_3_4
+EV_DIMITRIUS_1_3_5
 =MUSIC_STOP=
-=SOUND smoke=
-Em - Ah! & EV_DIMITRIUS_1_3_6
-Ar(shock) - What the... & EV_DIMITRIUS_1_3_7
-D - Curses! & EV_DIMITRIUS_1_3_8
-Ro(sad) - *Cough* *Cough* & EV_DIMITRIUS_1_3_9
-Ar(shock) - Darn it... & EV_DIMITRIUS_1_3_10
+=SOUND sound_smoke=
+Em - EV_DIMITRIUS_1_3_6
+Ar(shock) - EV_DIMITRIUS_1_3_7
+D - EV_DIMITRIUS_1_3_8
+Ro(sad) - EV_DIMITRIUS_1_3_9
+Ar(shock) - EV_DIMITRIUS_1_3_10
 =SPRITE_FADE 0.3=
 =GUI_HIDE=
 =BLACKUNFADE 1=
@@ -28,19 +28,19 @@ Ar(shock) - Darn it... & EV_DIMITRIUS_1_3_10
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ar(neutral) - Ugh... What was that... & EV_DIMITRIUS_1_3_11
-Ar(neutral) - Is everyone alright? & EV_DIMITRIUS_1_3_12
-Ro - More or less. & EV_DIMITRIUS_1_3_13
-Demitrius at some distance from the group Demitrius was standing tall with eyes wide open.  & EV_DIMITRIUS_1_3_14
+Ar(neutral) - EV_DIMITRIUS_1_3_11
+Ar(neutral) - EV_DIMITRIUS_1_3_12
+Ro - EV_DIMITRIUS_1_3_13
+EV_DIMITRIUS_1_3_14
 =SPRITE_UNFADE 0.5=
 =MUSIC bosstheme=
-D(talk) - Freeze. I know who you are! & EV_DIMITRIUS_1_3_15
-Ar(neutral) - Eh? & EV_DIMITRIUS_1_3_16
-D - You are not of this world! & EV_DIMITRIUS_1_3_17
-D(talk) - It showed me your demonic nature! & EV_DIMITRIUS_1_3_18
-Ar - Uh... Let's calm down. How about we reasonably discuss it? & EV_DIMITRIUS_1_3_19
-D - You must take me for a fool if you think you can delude me with your lies. & EV_DIMITRIUS_1_3_20
-D(talk) - Surrender now, or face the Ancestor’s Wrath! & EV_DIMITRIUS_1_3_21
+D(talk) - EV_DIMITRIUS_1_3_15
+Ar(neutral) - EV_DIMITRIUS_1_3_16
+D - EV_DIMITRIUS_1_3_17
+D(talk) - EV_DIMITRIUS_1_3_18
+Ar - EV_DIMITRIUS_1_3_19
+D - EV_DIMITRIUS_1_3_20
+D(talk) - EV_DIMITRIUS_1_3_21
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

@@ -8,34 +8,34 @@
 =GUI_NORMAL=
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
-Ro - There seems to be a new traveler in the village. She's looking for an audience. & EV_IOLA_1_1_0
+Ro - EV_IOLA_1_1_0
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
 =SPRITE iola=
 =SPRITE_UNFADE 0.5=
-I - Hello, Sir Arron. I'm Iola from Ancestral Cult.  & EV_IOLA_1_1_1
-Ar - (Wow, she seems pretty hot.) & EV_IOLA_1_1_2
-Ar - (Maybe we'll be able to settle Demitrius disappearance without causing too much of a commotion.) & EV_IOLA_1_1_3
-Ar - Pleased to meet you. The Ancestral cult is quite popular among the villagers.  & EV_IOLA_1_1_4
-Ar - What brings you here? & EV_IOLA_1_1_5
-I - You see, it's about my father... & EV_IOLA_1_1_6
-Ro - ... & EV_IOLA_1_1_7
-Ar(neutral) - ... & EV_IOLA_1_1_8
-I - He seems to have visited your village a few days ago but hasn't returned after that. & EV_IOLA_1_1_9
-Ar - Oh, so you are Demitrius' daughter?  & EV_IOLA_1_1_10
-Ar - Yes, we indeed had him visit us, but... & EV_IOLA_1_1_11
-Ar(shock) - (Ugh... What do I say to her now...) & EV_IOLA_1_1_12
-Ro - We escorted him to his goal, but haven't seen him since then. & EV_IOLA_1_1_13
-Ar - Yes, he made us leave.  & EV_IOLA_1_1_14
-Ar - We had no idea no one had seen him since then. & EV_IOLA_1_1_15
-Ar - The roads around are rather dangerous, but I hope he's fine. & EV_IOLA_1_1_16
-I(sad) - I see, this is not like my father to go missing without telling me first. & EV_IOLA_1_1_17
-I - I have a favor to ask, sir Arron, can you please show me where you left him? & EV_IOLA_1_1_18
-Ar(neutral) - (Darn... I can't even refuse her since we were the only people last seen him.) & EV_IOLA_1_1_19
-Ar(neutral) - (But if anything happens to her, it's a gigantic red flag.) & EV_IOLA_1_1_20
-Ar(neutral) - (The cult won't let 2 of its members disappear near us without serious investigation.) & EV_IOLA_1_1_21
-Ar - Of course, we will surely do our best. Just give us time to prepare. & EV_IOLA_1_1_22
-I - I'm glad to hear that, sir Arron, I'm sure the Ancestors will bless your helpfulness. & EV_IOLA_1_1_23
+I - EV_IOLA_1_1_1
+Ar - EV_IOLA_1_1_2
+Ar - EV_IOLA_1_1_3
+Ar - EV_IOLA_1_1_4
+Ar - EV_IOLA_1_1_5
+I - EV_IOLA_1_1_6
+Ro - EV_IOLA_1_1_7
+Ar(neutral) - EV_IOLA_1_1_8
+I - EV_IOLA_1_1_9
+Ar - EV_IOLA_1_1_10
+Ar - EV_IOLA_1_1_11
+Ar(shock) - EV_IOLA_1_1_12
+Ro - EV_IOLA_1_1_13
+Ar - EV_IOLA_1_1_14
+Ar - EV_IOLA_1_1_15
+Ar - EV_IOLA_1_1_16
+I(sad) - EV_IOLA_1_1_17
+I - EV_IOLA_1_1_18
+Ar(neutral) - EV_IOLA_1_1_19
+Ar(neutral) - EV_IOLA_1_1_20
+Ar(neutral) - EV_IOLA_1_1_21
+Ar - EV_IOLA_1_1_22
+I - EV_IOLA_1_1_23
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

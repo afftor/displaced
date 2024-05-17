@@ -6,44 +6,44 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-After meticulously inspecting the caves, the party concluded there are no visible exits with the only one being blocked by an energy wall. & EV_RILU_1_1_0
+EV_RILU_1_1_0
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ro - Master, I've found an old stone coffin in the other room. But it was too heavy to open for me. & EV_RILU_1_1_1
-Ar - An old coffin? Alright, in the worst case we can settle down here as well.  & EV_RILU_1_1_2
-Ro - Please don't joke about it. & EV_RILU_1_1_3
-Ar - Let's see it. & EV_RILU_1_1_4
+Ro - EV_RILU_1_1_1
+Ar - EV_RILU_1_1_2
+Ro - EV_RILU_1_1_3
+Ar - EV_RILU_1_1_4
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
 =GUI_NORMAL=
-Ar - Looks pretty ancient. What are these letters? & EV_RILU_1_1_5
-Ro - Does not look like anything I ever seen. & EV_RILU_1_1_6
-Em(sad) - Me neither. & EV_RILU_1_1_7
+Ar - EV_RILU_1_1_5
+Ro - EV_RILU_1_1_6
+Em(sad) - EV_RILU_1_1_7
 =SPRITE erika=
-Er - It says... 'Beware'... & EV_RILU_1_1_8
-Er - 'Sealed Evil'... & EV_RILU_1_1_9
-Er - Think this one means 'Undead' & EV_RILU_1_1_10
-Ro - Could this be the necromancer they have been talking about? & EV_RILU_1_1_11
-Er - And something about radish? & EV_RILU_1_1_12
-Ar(neutral) - Radish? What does that have to do with radish? & EV_RILU_1_1_13
-Er - I dunno. The letters are hard to make out. & EV_RILU_1_1_14
-Ar(neutral) - You know this language? & EV_RILU_1_1_15
-Er - Nah, not really. It just looks familiar.  & EV_RILU_1_1_16
-Ar(neutral) - What? How do you read it then? & EV_RILU_1_1_17
-Er(happy) - I might have accidentally learned it sometime in the past. & EV_RILU_1_1_18
-Ar - Well, since there's nothing else to do here, let's open it. & EV_RILU_1_1_19
-Ro(shock) - Master! You've heard what it says, we can't just randomly open it.  & EV_RILU_1_1_20
-Ar - Whatever, it also says some nonsense we can't be sure about.  & EV_RILU_1_1_21
-Ar - Don't be a scaredy-cat. & EV_RILU_1_1_22
-Er(happy) - This is like a surprise box.  & EV_RILU_1_1_23
-Er - There might be some treasure inside? & EV_RILU_1_1_24
-Em(happy) - I wanna see treasure! & EV_RILU_1_1_25
-Ro - ... I can't believe we actually made it this far. & EV_RILU_1_1_26
-Ar - Alright, Ember help me out. & EV_RILU_1_1_27
-Em - Gotcha! & EV_RILU_1_1_28
-=SOUND lid=
-As the heavy lid is removed it reveals a young girl lying inside. & EV_RILU_1_1_29
+Er - EV_RILU_1_1_8
+Er - EV_RILU_1_1_9
+Er - EV_RILU_1_1_10
+Ro - EV_RILU_1_1_11
+Er - EV_RILU_1_1_12
+Ar(neutral) - EV_RILU_1_1_13
+Er - EV_RILU_1_1_14
+Ar(neutral) - EV_RILU_1_1_15
+Er - EV_RILU_1_1_16
+Ar(neutral) - EV_RILU_1_1_17
+Er(happy) - EV_RILU_1_1_18
+Ar - EV_RILU_1_1_19
+Ro(shock) - EV_RILU_1_1_20
+Ar - EV_RILU_1_1_21
+Ar - EV_RILU_1_1_22
+Er(happy) - EV_RILU_1_1_23
+Er - EV_RILU_1_1_24
+Em(happy) - EV_RILU_1_1_25
+Ro - EV_RILU_1_1_26
+Ar - EV_RILU_1_1_27
+Em - EV_RILU_1_1_28
+=SOUND sound_lid=
+EV_RILU_1_1_29
 =MUSIC rilu_theme=
 =GUI_HIDE=
 =SPRITE_FADE 0.2=
@@ -51,74 +51,74 @@ As the heavy lid is removed it reveals a young girl lying inside. & EV_RILU_1_1_
 =DELAY 1=
 =GUI_NORMAL=
 =BG scenes/rilu_1=
-Ro - Eh? & EV_RILU_1_1_30
-Er - ... & EV_RILU_1_1_31
-Ar - ... & EV_RILU_1_1_32
-Ro - Could she be... the necromancer? & EV_RILU_1_1_33
-Er - Hmm, she does give off a bit of a creepy vibe. & EV_RILU_1_1_34
-Em - What do we do now? & EV_RILU_1_1_35
-Ro - ...Master? & EV_RILU_1_1_36
-Ar - She's kinda cute.  & EV_RILU_1_1_37
-Ro(sarcastic) - ...Really? & EV_RILU_1_1_38
-Arron extended his arm and poked the lying girl's face.  & EV_RILU_1_1_39
-Ro(shock) - Master! & EV_RILU_1_1_40
-Ar - Oh, she's actually warm. & EV_RILU_1_1_41
-Ro(shock) - This is dangerous! & EV_RILU_1_1_42
-Ar - Nah, it can't be. & EV_RILU_1_1_43
-Ar - Cute girls can't be evil. & EV_RILU_1_1_44
-Ro - No, no, that's certainly a possibility here. & EV_RILU_1_1_45
-Ar - Rose, don't be so prejudiced. We might end up in a similar coffin one day. & EV_RILU_1_1_46
-Ar - It would be pretty sad if you were treated evil just because of that, wouldn't it? & EV_RILU_1_1_47
-Ar - Also, isn't it like a Snow White story? & EV_RILU_1_1_48
-Ar - I admit, the dwarves are not quite what I imagined, but I'll take it as an unusual twist. & EV_RILU_1_1_49
-Ro - I beg you, don't dare- & EV_RILU_1_1_50
+Ro - EV_RILU_1_1_30
+Er - EV_RILU_1_1_31
+Ar - EV_RILU_1_1_32
+Ro - EV_RILU_1_1_33
+Er - EV_RILU_1_1_34
+Em - EV_RILU_1_1_35
+Ro - EV_RILU_1_1_36
+Ar - EV_RILU_1_1_37
+Ro(sarcastic) - EV_RILU_1_1_38
+EV_RILU_1_1_39
+Ro(shock) - EV_RILU_1_1_40
+Ar - EV_RILU_1_1_41
+Ro(shock) - EV_RILU_1_1_42
+Ar - EV_RILU_1_1_43
+Ar - EV_RILU_1_1_44
+Ro - EV_RILU_1_1_45
+Ar - EV_RILU_1_1_46
+Ar - EV_RILU_1_1_47
+Ar - EV_RILU_1_1_48
+Ar - EV_RILU_1_1_49
+Ro - EV_RILU_1_1_50
 =BG scenes/rilu_2=
-Ri - Muh... & EV_RILU_1_1_51
-Unexpectedly, the girl in the coffin woke up, opened her eyes and exhaled a sleepy mumble.  & EV_RILU_1_1_52
+Ri - EV_RILU_1_1_51
+EV_RILU_1_1_52
 =BG cave=
 =SPRITE rilu=
 =SPRITE_UNFADE 0.5=
-Ar - ...Hello there.  & EV_RILU_1_1_53
-Ri - Who are th... & EV_RILU_1_1_54
-The girl's face shows a sign of pain and irritation. & EV_RILU_1_1_55
+Ar - EV_RILU_1_1_53
+Ri - EV_RILU_1_1_54
+EV_RILU_1_1_55
 =MUSIC eventgeneric=
-Ri - Darn... & EV_RILU_1_1_56
-Er - She bit her tongue... & EV_RILU_1_1_57
-Ro - She seems pretty clumsy.  & EV_RILU_1_1_58
-Ro - Is it because of sleep? & EV_RILU_1_1_59
-Ar - We were passing by and found this place by chance.  & EV_RILU_1_1_60
-Ar - I'm Arron, this is Rose, Erika, and Ember.  & EV_RILU_1_1_61
-Ar - What about you?  & EV_RILU_1_1_62
-Ri - Me? & EV_RILU_1_1_63
-Ar - Yeah, your name. & EV_RILU_1_1_64
-Ri - ... & EV_RILU_1_1_65
-Ri - Riluth'sierhn. & EV_RILU_1_1_66
-Em - Rilusiah? & EV_RILU_1_1_67
-Ro - Rilutseyn? & EV_RILU_1_1_68
-Er - Rilyseya? & EV_RILU_1_1_69
-Ar - Not even gonna try. How about just Rilu? & EV_RILU_1_1_70
-Ri - I don't really mind. & EV_RILU_1_1_71
-Ro - Excuse me for asking, but are you a... Necromancer? & EV_RILU_1_1_72
-Ro(sarcastic) - Given your look and everything... & EV_RILU_1_1_73
-Ri - I think I used to be called like this at times. & EV_RILU_1_1_74
-Er - So you aren't one? & EV_RILU_1_1_75
-Ri - *shrug* & EV_RILU_1_1_76
-Ar - Who cares. Anyway, we seem to be a bit stuck here. Do you wanna join us? & EV_RILU_1_1_77
-Ri - ... & EV_RILU_1_1_78
-Ri - ..... & EV_RILU_1_1_79
-Ri - Were you the one calling me cute? & EV_RILU_1_1_80
-Ar - Guilty.  & EV_RILU_1_1_81
-Ri - Are you fooling me? & EV_RILU_1_1_82
-Ar - Why would I be? & EV_RILU_1_1_83
-Arron said it sincerely, but after taking a glance at his friends, he spotted their uneasiness. & EV_RILU_1_1_84
-Ri - Huh... a weird man. & EV_RILU_1_1_85
-Ri - Fine. I'll accompany you. & EV_RILU_1_1_86
-Ro - But before that, Rilu, could you tell us what were you doing in that coffin?  & EV_RILU_1_1_87
-Ri - ... & EV_RILU_1_1_88
-Ri - I fell in there a long time ago.  & EV_RILU_1_1_89
-Ri - I think it was cursed and the lid closed on its own. & EV_RILU_1_1_90
-Ro - Really? This is... something I can probably imagine. & EV_RILU_1_1_91
-Ar - Alright, let's try to get out. & EV_RILU_1_1_92
+Ri - EV_RILU_1_1_56
+Er - EV_RILU_1_1_57
+Ro - EV_RILU_1_1_58
+Ro - EV_RILU_1_1_59
+Ar - EV_RILU_1_1_60
+Ar - EV_RILU_1_1_61
+Ar - EV_RILU_1_1_62
+Ri - EV_RILU_1_1_63
+Ar - EV_RILU_1_1_64
+Ri - EV_RILU_1_1_65
+Ri - EV_RILU_1_1_66
+Em - EV_RILU_1_1_67
+Ro - EV_RILU_1_1_68
+Er - EV_RILU_1_1_69
+Ar - EV_RILU_1_1_70
+Ri - EV_RILU_1_1_71
+Ro - EV_RILU_1_1_72
+Ro(sarcastic) - EV_RILU_1_1_73
+Ri - EV_RILU_1_1_74
+Er - EV_RILU_1_1_75
+Ri - EV_RILU_1_1_76
+Ar - EV_RILU_1_1_77
+Ri - EV_RILU_1_1_78
+Ri - EV_RILU_1_1_79
+Ri - EV_RILU_1_1_80
+Ar - EV_RILU_1_1_81
+Ri - EV_RILU_1_1_82
+Ar - EV_RILU_1_1_83
+EV_RILU_1_1_84
+Ri - EV_RILU_1_1_85
+Ri - EV_RILU_1_1_86
+Ro - EV_RILU_1_1_87
+Ri - EV_RILU_1_1_88
+Ri - EV_RILU_1_1_89
+Ri - EV_RILU_1_1_90
+Ro - EV_RILU_1_1_91
+Ar - EV_RILU_1_1_92
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

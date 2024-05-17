@@ -8,36 +8,36 @@
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Ar - This is weird. We got the essence, but Iola hasn't contacted us since that day. & EV_IOLA_2_2_3_0
-Ro - Maybe they let her pass without it? & EV_IOLA_2_2_3_1
-Ar(neutral) - That would suck. & EV_IOLA_2_2_3_2
-Ar - How do we get rewarded for our job then? & EV_IOLA_2_2_3_3
+Ar - EV_IOLA_2_2_3_0
+Ro - EV_IOLA_2_2_3_1
+Ar(neutral) - EV_IOLA_2_2_3_2
+Ar - EV_IOLA_2_2_3_3
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
-Ri - Iola is in trouble.  & EV_IOLA_2_2_3_4
-Ro(talk) - Eh? & EV_IOLA_2_2_3_5
-Ar(neutral) - What do you mean? & EV_IOLA_2_2_3_6
-Ri - She was captured and kept imprisoned. & EV_IOLA_2_2_3_7
-Ar - But how do you know that? & EV_IOLA_2_2_3_8
-Ri - I've planted a small spirit on her. & EV_IOLA_2_2_3_9
-Ro(sarcastic) - Why? & EV_IOLA_2_2_3_10
-Ri - So I can know her condition and location. & EV_IOLA_2_2_3_11
-Ar - That's something new. & EV_IOLA_2_2_3_12
-Ar - Do you do this often? & EV_IOLA_2_2_3_13
-Ri - Don't worry, you won't notice it. & EV_IOLA_2_2_3_14
-Ro(sarcastic) - ...That's not what's wrong with it. & EV_IOLA_2_2_3_15
-Ar(neutral) - Anyway, where's Iola?  & EV_IOLA_2_2_3_16
-Ri - I assume it's her cult grounds. & EV_IOLA_2_2_3_17
-Ri(talk) - We should go there to save her. & EV_IOLA_2_2_3_18
-Ar - Huh, you seem... Kinda worried?  & EV_IOLA_2_2_3_19
-Ar - What happened to the deadpan girl I knew? & EV_IOLA_2_2_3_20
-Ri(talk) - I'm not deadpan. & EV_IOLA_2_2_3_21
-Ro(talk) - You think we should go there?  & EV_IOLA_2_2_3_22
-Ro - This might be quite dangerous. & EV_IOLA_2_2_3_23
-Ar - Well, someone has to pay for the mission we've completed.  & EV_IOLA_2_2_3_24
-Ar - In the worst case we can loot something from there. & EV_IOLA_2_2_3_25
-Ro(sarcastic) - Please, don't. & EV_IOLA_2_2_3_26
-Ro(sarcastic) - We have enough problems without being accused of theft. & EV_IOLA_2_2_3_27
+Ri - EV_IOLA_2_2_3_4
+Ro(talk) - EV_IOLA_2_2_3_5
+Ar(neutral) - EV_IOLA_2_2_3_6
+Ri - EV_IOLA_2_2_3_7
+Ar - EV_IOLA_2_2_3_8
+Ri - EV_IOLA_2_2_3_9
+Ro(sarcastic) - EV_IOLA_2_2_3_10
+Ri - EV_IOLA_2_2_3_11
+Ar - EV_IOLA_2_2_3_12
+Ar - EV_IOLA_2_2_3_13
+Ri - EV_IOLA_2_2_3_14
+Ro(sarcastic) - EV_IOLA_2_2_3_15
+Ar(neutral) - EV_IOLA_2_2_3_16
+Ri - EV_IOLA_2_2_3_17
+Ri(talk) - EV_IOLA_2_2_3_18
+Ar - EV_IOLA_2_2_3_19
+Ar - EV_IOLA_2_2_3_20
+Ri(talk) - EV_IOLA_2_2_3_21
+Ro(talk) - EV_IOLA_2_2_3_22
+Ro - EV_IOLA_2_2_3_23
+Ar - EV_IOLA_2_2_3_24
+Ar - EV_IOLA_2_2_3_25
+Ro(sarcastic) - EV_IOLA_2_2_3_26
+Ro(sarcastic) - EV_IOLA_2_2_3_27
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

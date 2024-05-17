@@ -6,32 +6,32 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-KD - No way... You cursed freaks... & EV_RILU_1_4_0
-Having his forces defeated, the mortally wounded dwarven king fell to the floor.  & EV_RILU_1_4_1
-Ar - Phew... finally.  & EV_RILU_1_4_2
-Ar - Thanks Rilu, you were a great help.  & EV_RILU_1_4_3
-Ro - Indeed, we wouldn't make it without you.  & EV_RILU_1_4_4
-Ro - But how did you... Well... & EV_RILU_1_4_5
+KD - EV_RILU_1_4_0
+EV_RILU_1_4_1
+Ar - EV_RILU_1_4_2
+Ar - EV_RILU_1_4_3
+Ro - EV_RILU_1_4_4
+Ro - EV_RILU_1_4_5
 =SPRITE rilu=
-Ri - It's okay.  & EV_RILU_1_4_6
-Ri - I can't die.  & EV_RILU_1_4_7
-Em - You do bleed a lot though.  & EV_RILU_1_4_8
-Er - Ember, that was a bit too rude. & EV_RILU_1_4_9
-Em(sad) - Oh... Sorry... & EV_RILU_1_4_10
-Ri - Don't worry about it. I have a habit of such. & EV_RILU_1_4_11
-Ro - So, you are the necromancer we've heard about after all? & EV_RILU_1_4_12
-Ri - Can't say I am. I do know spirit magic and can communicate with spirits, though. & EV_RILU_1_4_13
-Ro - (S-spirits? I knew it must be something creepy, but this is even worse...)  & EV_RILU_1_4_14
-Ar - Cool. You can do something like that?  & EV_RILU_1_4_15
-Ar(neutral) - It's quite a waste when people die for no reason. & EV_RILU_1_4_16
-Ar - Can you make stuff like skeletons and zombies? & EV_RILU_1_4_17
-Ri - W-well... & EV_RILU_1_4_18
-Er(happy) - Sir Arron is into some really weird things. & EV_RILU_1_4_19
-Em - Hey Rose, why are you so pale all of a sudden?  & EV_RILU_1_4_20
-Ar - You must be still afraid of ghosts and stuff? Come on, you are an adult now. & EV_RILU_1_4_21
-Ro - I-I'm not, I'm just tired from the fight.  & EV_RILU_1_4_22
-Ro(sarcastic) - Anyway, let's leave this place already. & EV_RILU_1_4_23
-Ri - *Nod* & EV_RILU_1_4_24
+Ri - EV_RILU_1_4_6
+Ri - EV_RILU_1_4_7
+Em - EV_RILU_1_4_8
+Er - EV_RILU_1_4_9
+Em(sad) - EV_RILU_1_4_10
+Ri - EV_RILU_1_4_11
+Ro - EV_RILU_1_4_12
+Ri - EV_RILU_1_4_13
+Ro - EV_RILU_1_4_14
+Ar - EV_RILU_1_4_15
+Ar(neutral) - EV_RILU_1_4_16
+Ar - EV_RILU_1_4_17
+Ri - EV_RILU_1_4_18
+Er(happy) - EV_RILU_1_4_19
+Em - EV_RILU_1_4_20
+Ar - EV_RILU_1_4_21
+Ro - EV_RILU_1_4_22
+Ro(sarcastic) - EV_RILU_1_4_23
+Ri - EV_RILU_1_4_24
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

@@ -8,37 +8,37 @@
 =SPRITE_UNFADE 0.3=
 =DELAY 1=
 =GUI_NORMAL=
-Et - Enough slaughtering of my brethren! What do thou want, fleshling?  & EV_FOREST_2_0
-Ro(shock) - Wow, it can talk. & EV_FOREST_2_1
-Et - Hey, I demand thou doth not disrespect me! Addressing me as 'it' assumes thou doth not recognize my sentience.  & EV_FOREST_2_2
-Et - I am several centuries old and am addressed as a male. & EV_FOREST_2_3
-Ar - That's stupid, trees are hermaphrodites. Since when do you even have a society? & EV_FOREST_2_4
-Et - Since we moved into this groove.  & EV_FOREST_2_5
-Ar - Oh, yeah, about that, we were told there are elves here. Why are you here instead? & EV_FOREST_2_6
-Et - Those elves, thou speak of, hardly live up to the nobility of the elves of my memory. & EV_FOREST_2_7
-Et - We have made them our wards  and we peacefully coexist. & EV_FOREST_2_8
-Ar - Huh... taken into custody by trees? How sad.  Whatever, we want them as well, might still be of some use to us.  & EV_FOREST_2_9
-Et - Thou propose a trade agreement? Of course, we have elves to spare for you and others. Art thou willing to see them? & EV_FOREST_2_10
-Ar - Sure, why not. & EV_FOREST_2_11
-Et - *Groan* & EV_FOREST_2_12
-Another huge treant slowly comes close. Its trunk bark bends to the sides, revealing a semi-conscious naked figure of an elven girl restricted inside of it. & EV_FOREST_2_13
+Et - EV_FOREST_2_0
+Ro(shock) - EV_FOREST_2_1
+Et - EV_FOREST_2_2
+Et - EV_FOREST_2_3
+Ar - EV_FOREST_2_4
+Et - EV_FOREST_2_5
+Ar - EV_FOREST_2_6
+Et - EV_FOREST_2_7
+Et - EV_FOREST_2_8
+Ar - EV_FOREST_2_9
+Et - EV_FOREST_2_10
+Ar - EV_FOREST_2_11
+Et - EV_FOREST_2_12
+EV_FOREST_2_13
 =BLACKUNFADE 1=
 =DELAY 1=
 =SPRITE_HIDE=
 =ABG erika_vine_1=
 =BLACKFADE 1=
 =GUI_FULL=
-Ar - What the hell?  & EV_FOREST_2_14
-Et - This is the elf thou were looking for. & EV_FOREST_2_15
-Ro - Why is she like that?! & EV_FOREST_2_16
-Et - This way we protect them and they feed us with their fluids and energy. & EV_FOREST_2_17
+Ar - EV_FOREST_2_14
+Et - EV_FOREST_2_15
+Ro - EV_FOREST_2_16
+Et - EV_FOREST_2_17
 =ABG erika_vine_2 erika_vine_3=
-As in demonstration, a thick vine moved through the tied elf's crotch. & EV_FOREST_2_18
-Er - Mmmhm... & EV_FOREST_2_19
-Ar - That's enough, you should release her. & EV_FOREST_2_20
-Et - What? No. This is not correct... & EV_FOREST_2_21
-Ar - Rose, pass me the torch. & EV_FOREST_2_22
-Et - Alright, alright... & EV_FOREST_2_23
+EV_FOREST_2_18
+Er - EV_FOREST_2_19
+Ar - EV_FOREST_2_20
+Et - EV_FOREST_2_21
+Ar - EV_FOREST_2_22
+Et - EV_FOREST_2_23
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG forest=
@@ -46,38 +46,38 @@ Et - Alright, alright... & EV_FOREST_2_23
 =GUI_NORMAL=
 =SPRITE erika_n=
 =SPRITE_UNFADE 0.5=
-In a few moments vines have released the girl's body, which fell into Arron's arms. & EV_FOREST_2_24
-Er - Ugh... & EV_FOREST_2_25
-Er - What's going on, Willy?  & EV_FOREST_2_26
-Er - Who's this handsome man holding me?  & EV_FOREST_2_27
-Et - You see, Erika, this is Arron. He wants to... talk to you. & EV_FOREST_2_28
-Ar - Uh... are you alright? & EV_FOREST_2_29
-Er - Just a bit sore, but thanks for worrying, hehe.  & EV_FOREST_2_30
-Ro - Aren't you kept as hostage here...? & EV_FOREST_2_31
-Er(happy) - Me? No, Willies are warm and comfy, and make me feel good! You should try it yourself. & EV_FOREST_2_32
-Ro(sarcastic) - ... I will pass on that. & EV_FOREST_2_33
-Ro - (I guess we were worried for nothing, but what even are these elves then?) & EV_FOREST_2_34
-Et - Thou see now, our union is completely consensual. We even have papers... & EV_FOREST_2_35
-Er - Boring talks again... what a waste of time. & EV_FOREST_2_36
-Ar - Good to see you aren't snobbish at all, looks like we feared for nothing.  & EV_FOREST_2_37
-Ro(talk) - Master! & EV_FOREST_2_38
-Er(happy) - Oh thank you! You are rather pleasant yourself.  & EV_FOREST_2_39
-Et - My apologies, dost thou want to go to slumber again?  & EV_FOREST_2_40
-Er - Now that you mention it... Say Arron, right? & EV_FOREST_2_41
-Er(happy) - I haven't seen anyone like you around here before. & EV_FOREST_2_42
-Ar - I'm certainly a unique being.  & EV_FOREST_2_43
-Erika moves closer to Arron, taking his hand and giving him a sultry look. & EV_FOREST_2_44
-Er - Can I come along with you? I want to see what's going on in the world and ...to get to know you better. & EV_FOREST_2_45
-Ro(sarcastic) - *Frown* & EV_FOREST_2_46
-Ar - With pleasure. & EV_FOREST_2_47
-Ro(shock) - Master! Could you at least consider it for a moment before accepting? & EV_FOREST_2_48
-Er - Don't be so jealous, sweetheart. I'm not going to keep him to myself. & EV_FOREST_2_49
-Er(happy) - In fact, I'd love to know you better as well *wink* ! & EV_FOREST_2_50
-Ro(shock) - I refuse! & EV_FOREST_2_51
-Er(happy) - Ha-ha-ha, you’re so modest. That's cute!  & EV_FOREST_2_52
-Ar - Alright, we can continue this on the way back, would you mind dressing up before we leave?  & EV_FOREST_2_53
-Er - Sure thing honey, give me a moment! & EV_FOREST_2_54
-Ar - Meanwhile, let's settle what we came here for. Hey, willow guy... & EV_FOREST_2_55
+EV_FOREST_2_24
+Er - EV_FOREST_2_25
+Er - EV_FOREST_2_26
+Er - EV_FOREST_2_27
+Et - EV_FOREST_2_28
+Ar - EV_FOREST_2_29
+Er - EV_FOREST_2_30
+Ro - EV_FOREST_2_31
+Er(happy) - EV_FOREST_2_32
+Ro(sarcastic) - EV_FOREST_2_33
+Ro - EV_FOREST_2_34
+Et - EV_FOREST_2_35
+Er - EV_FOREST_2_36
+Ar - EV_FOREST_2_37
+Ro(talk) - EV_FOREST_2_38
+Er(happy) - EV_FOREST_2_39
+Et - EV_FOREST_2_40
+Er - EV_FOREST_2_41
+Er(happy) - EV_FOREST_2_42
+Ar - EV_FOREST_2_43
+EV_FOREST_2_44
+Er - EV_FOREST_2_45
+Ro(sarcastic) - EV_FOREST_2_46
+Ar - EV_FOREST_2_47
+Ro(shock) - EV_FOREST_2_48
+Er - EV_FOREST_2_49
+Er(happy) - EV_FOREST_2_50
+Ro(shock) - EV_FOREST_2_51
+Er(happy) - EV_FOREST_2_52
+Ar - EV_FOREST_2_53
+Er - EV_FOREST_2_54
+Ar - EV_FOREST_2_55
 =GUI_HIDE=
 =SPRITE_FADE 0.2=
 =DELAY 0.2=
@@ -87,11 +87,11 @@ Ar - Meanwhile, let's settle what we came here for. Hey, willow guy... & EV_FORE
 =SPRITE_UNFADE 0.2=
 =DELAY 0.2=
 =GUI_NORMAL=
-Er(happy) - Ready! & EV_FOREST_2_56
-Ro(sarcastic) - ...Really? & EV_FOREST_2_57
-Er - Thanks for asking, but I don't like carrying around heavy stuff, so I've got all I need. & EV_FOREST_2_58
-Ar - Looks good to me, let's go.  & EV_FOREST_2_59
-Ro - (...) & EV_FOREST_2_60
+Er(happy) - EV_FOREST_2_56
+Ro(sarcastic) - EV_FOREST_2_57
+Er - EV_FOREST_2_58
+Ar - EV_FOREST_2_59
+Ro - EV_FOREST_2_60
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

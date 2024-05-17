@@ -5,47 +5,47 @@
 =BG forest=
 =MUSIC event_mysterious=
 =SPRITE victor=
-At the established spot in the clearing the team comes across a lone burly man. & EV_VICTOR_2_3_0_1
-Ar - This guy looks familiar. & EV_VICTOR_2_3_0_2
-Ro - This is Viktor. We've seen him in Aeros. & EV_VICTOR_2_3_1
-I(shock) - Ah, it's the man who was talking to the father at that time. & EV_VICTOR_2_3_2
-V - You shouldn't have come, I only need the mongrel one.  & EV_VICTOR_2_3_3
-V - But I guess you saved me time from killing you later.  & EV_VICTOR_2_3_4
-V - Dimitrius will be happy I had to do his dirty work. & EV_VICTOR_2_3_5
-Em - Why? What do you want from me? & EV_VICTOR_2_3_6
-V - Nothing, you just seem to have something I need. & EV_VICTOR_2_3_7
-V - Damn you look weak. & EV_VICTOR_2_3_8
-Em - Eh? I don't understand.  & EV_VICTOR_2_3_9
-V - You don't? Haven't you been visiting the dragon lately? & EV_VICTOR_2_3_10
-Em - Uncle Qothus?.. & EV_VICTOR_2_3_11
-V - That's its name?  & EV_VICTOR_2_3_12
-V - Sorry, I don't take note how my prey was called.  & EV_VICTOR_2_3_13
-Em - What?.. & EV_VICTOR_2_3_14
-Em - You have... & EV_VICTOR_2_3_15
-V - Yeah, I've slayed it.  & EV_VICTOR_2_3_16
-=MUSIC STOP=
-Em(sad) - ... & EV_VICTOR_2_3_17
-Em(sad) - Why? & EV_VICTOR_2_3_18
-V - *Sigh* Why do men hunt?  & EV_VICTOR_2_3_19
-V - To dominate. To feed. To feel joy. & EV_VICTOR_2_3_20
-V - And also to test himself.  & EV_VICTOR_2_3_21
+EV_VICTOR_2_3_0_1
+Ar - EV_VICTOR_2_3_0_2
+Ro - EV_VICTOR_2_3_1
+I(shock) - EV_VICTOR_2_3_2
+V - EV_VICTOR_2_3_3
+V - EV_VICTOR_2_3_4
+V - EV_VICTOR_2_3_5
+Em - EV_VICTOR_2_3_6
+V - EV_VICTOR_2_3_7
+V - EV_VICTOR_2_3_8
+Em - EV_VICTOR_2_3_9
+V - EV_VICTOR_2_3_10
+Em - EV_VICTOR_2_3_11
+V - EV_VICTOR_2_3_12
+V - EV_VICTOR_2_3_13
+Em - EV_VICTOR_2_3_14
+Em - EV_VICTOR_2_3_15
+V - EV_VICTOR_2_3_16
+=MUSIC_STOP=
+Em(sad) - EV_VICTOR_2_3_17
+Em(sad) - EV_VICTOR_2_3_18
+V - EV_VICTOR_2_3_19
+V - EV_VICTOR_2_3_20
+V - EV_VICTOR_2_3_21
 =MUSIC bosstheme=
-Em - You killed Uncle Qothus! & EV_VICTOR_2_3_22
-Ro - Calm down, Ember! & EV_VICTOR_2_3_23
-V - Yeah, save yourself some energy for the fight. & EV_VICTOR_2_3_24
-Ar(neutral) - So you test yourself by challenging some girl who looks weak and killing senior dragons? & EV_VICTOR_2_3_25
-V - Hmph. You have a sharp tongue, boy. & EV_VICTOR_2_3_26
-V - But you are right, it's not much of a test. & EV_VICTOR_2_3_27
-Ar(neutral) - So what's your deal? & EV_VICTOR_2_3_28
-V - Do you know about dragon souls?  & EV_VICTOR_2_3_29
-Ar(neutral) - More or less. & EV_VICTOR_2_3_30
-V - I've been collecting them for long years. It seems one was hiding by your side. & EV_VICTOR_2_3_31
-Ar(neutral) - And I presume you'd get something by getting them all.  & EV_VICTOR_2_3_32
-V - Strength. Immortality. Power. You name it.  & EV_VICTOR_2_3_33
-V - A reward worthy of a supreme warrior. & EV_VICTOR_2_3_34
-V - And I'm finally gonna be done with this.  & EV_VICTOR_2_3_35
-V - Don't let it bother you, you'll die now anyway.  & EV_VICTOR_2_3_36
-Ar(anger) - I was an idiot thinking we could talk this out... & EV_VICTOR_2_3_37
+Em - EV_VICTOR_2_3_22
+Ro - EV_VICTOR_2_3_23
+V - EV_VICTOR_2_3_24
+Ar(neutral) - EV_VICTOR_2_3_25
+V - EV_VICTOR_2_3_26
+V - EV_VICTOR_2_3_27
+Ar(neutral) - EV_VICTOR_2_3_28
+V - EV_VICTOR_2_3_29
+Ar(neutral) - EV_VICTOR_2_3_30
+V - EV_VICTOR_2_3_31
+Ar(neutral) - EV_VICTOR_2_3_32
+V - EV_VICTOR_2_3_33
+V - EV_VICTOR_2_3_34
+V - EV_VICTOR_2_3_35
+V - EV_VICTOR_2_3_36
+Ar(anger) - EV_VICTOR_2_3_37
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

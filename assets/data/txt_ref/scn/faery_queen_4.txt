@@ -8,48 +8,48 @@
 =SPRITE faeryqueen=
 =SPRITE_UNFADE 0.5=
 =GUI_NORMAL=
-FA - Oh shit, the queen fell! & EV_FAERY_QUEEN_4_0
-FB - Run! & EV_FAERY_QUEEN_4_1
-The other faeries quickly scattered away. & EV_FAERY_QUEEN_4_2
-FQ - Ggh, you fuckers...  & EV_FAERY_QUEEN_4_3
-Ar - You have one nasty mouth.  & EV_FAERY_QUEEN_4_4
-Ar - But we need something of yours. & EV_FAERY_QUEEN_4_5
-FQ - Like I give a fuck! & EV_FAERY_QUEEN_4_6
-Ro - Saint's Pearl. Ring a bell? & EV_FAERY_QUEEN_4_7
-FQ - Hah, what makes you think I'll hand over anything at all to you? & EV_FAERY_QUEEN_4_8
-Em - Because we are the good guys? & EV_FAERY_QUEEN_4_9
-FQ - Even less of a reason for me. & EV_FAERY_QUEEN_4_10
-Er - She won't bend, let's just strip her. & EV_FAERY_QUEEN_4_11
-FQ - What the hell are you thinking, you crazy bimbo?! & EV_FAERY_QUEEN_4_12
-Ar - That seems a bit extreme... & EV_FAERY_QUEEN_4_13
+FA - EV_FAERY_QUEEN_4_0
+FB - EV_FAERY_QUEEN_4_1
+EV_FAERY_QUEEN_4_2
+FQ - EV_FAERY_QUEEN_4_3
+Ar - EV_FAERY_QUEEN_4_4
+Ar - EV_FAERY_QUEEN_4_5
+FQ - EV_FAERY_QUEEN_4_6
+Ro - EV_FAERY_QUEEN_4_7
+FQ - EV_FAERY_QUEEN_4_8
+Em - EV_FAERY_QUEEN_4_9
+FQ - EV_FAERY_QUEEN_4_10
+Er - EV_FAERY_QUEEN_4_11
+FQ - EV_FAERY_QUEEN_4_12
+Ar - EV_FAERY_QUEEN_4_13
 =IF SCENESEEN faery_queen_1_a 0 1=
 =POSITION 0=
-Ro(sarcastic) - Yeah, go for it, Erika.  & EV_FAERY_QUEEN_4_14
-Ro(sarcastic) - Make her pay for what I went through. & EV_FAERY_QUEEN_4_15
-Ar(neutral) - Huh? What do you mean? & EV_FAERY_QUEEN_4_16
-Ro - N-no, it's nothing. & EV_FAERY_QUEEN_4_17
+Ro(sarcastic) - EV_FAERY_QUEEN_4_14
+Ro(sarcastic) - EV_FAERY_QUEEN_4_15
+Ar(neutral) - EV_FAERY_QUEEN_4_16
+Ro - EV_FAERY_QUEEN_4_17
 =POSITION 1=
-Er - No, if we humiliate her in front of others she will lose her authority. & EV_FAERY_QUEEN_4_18
-Em(normal) - Ho-oh, so that's why people wear clothes?  & EV_FAERY_QUEEN_4_19
-Ar(neutral) - Still seems a bit dirty, but if there's nothing else we can do... & EV_FAERY_QUEEN_4_20
-FQ - No, stay away you imbecile perverts! & EV_FAERY_QUEEN_4_21
+Er - EV_FAERY_QUEEN_4_18
+Em(normal) - EV_FAERY_QUEEN_4_19
+Ar(neutral) - EV_FAERY_QUEEN_4_20
+FQ - EV_FAERY_QUEEN_4_21
 =BLACKUNFADE 1=
 =DELAY 1=
-... & EV_FAERY_QUEEN_4_22
+EV_FAERY_QUEEN_4_22
 =SPRITE_HIDE=
 =BLACKFADE 1=
 =DELAY 1=
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
-Er - There it is.  & EV_FAERY_QUEEN_4_23
-Erika held up a small white gem acquired from Faery Queen. & EV_FAERY_QUEEN_4_24
-Ri - Let me see it...  & EV_FAERY_QUEEN_4_25
-Ri - I can't sense any magic from it. & EV_FAERY_QUEEN_4_26
-Ro(shock) - No way, all this for nothing?  & EV_FAERY_QUEEN_4_27
-Ar(neutral) - Well, we might find some use for it in future.  & EV_FAERY_QUEEN_4_28
-Ar - Let's go home for now. & EV_FAERY_QUEEN_4_29
-Er - Good call, I'm already sick of this forest.  & EV_FAERY_QUEEN_4_30
-Ro(sad) - Haaah, how do we find this traveler now... & EV_FAERY_QUEEN_4_31
+Er - EV_FAERY_QUEEN_4_23
+EV_FAERY_QUEEN_4_24
+Ri - EV_FAERY_QUEEN_4_25
+Ri - EV_FAERY_QUEEN_4_26
+Ro(shock) - EV_FAERY_QUEEN_4_27
+Ar(neutral) - EV_FAERY_QUEEN_4_28
+Ar - EV_FAERY_QUEEN_4_29
+Er - EV_FAERY_QUEEN_4_30
+Ro(sad) - EV_FAERY_QUEEN_4_31
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

@@ -7,39 +7,39 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =SPRITE goblin=
-G - Bet I can throw this rock further than you. & EV_IOLA_1_5_0
-Ar - Like hell you can. & EV_IOLA_1_5_1
-*swoosh* & EV_IOLA_1_5_2
-Ar - Hmph, try to beat this. & EV_IOLA_1_5_3
-G - Hah.  & EV_IOLA_1_5_4
-*swoosh* & EV_IOLA_1_5_5
-Ar(shock) - What the heck?! You’re cheating! & EV_IOLA_1_5_6
-Ar(neutral) - No way you can throw it that far with your height.  & EV_IOLA_1_5_7
-G - Pay up for the bet already. & EV_IOLA_1_5_8
-Ar(neutral) - Hmph. & EV_IOLA_1_5_9
-I - Sir Arron? & EV_IOLA_1_5_10
-Ar - Aye. & EV_IOLA_1_5_11
-Ar - *whisper* Hey you, get lost. & EV_IOLA_1_5_12
-G - Sure, loser. & EV_IOLA_1_5_13
+G - EV_IOLA_1_5_0
+Ar - EV_IOLA_1_5_1
+EV_IOLA_1_5_2
+Ar - EV_IOLA_1_5_3
+G - EV_IOLA_1_5_4
+EV_IOLA_1_5_5
+Ar(shock) - EV_IOLA_1_5_6
+Ar(neutral) - EV_IOLA_1_5_7
+G - EV_IOLA_1_5_8
+Ar(neutral) - EV_IOLA_1_5_9
+I - EV_IOLA_1_5_10
+Ar - EV_IOLA_1_5_11
+Ar - EV_IOLA_1_5_12
+G - EV_IOLA_1_5_13
 =SPRITE iola=
-I - What are you doing here? & EV_IOLA_1_5_14
-Ar - Nothing much, Rose and Ember are away until tomorrow to gather some ingredients. & EV_IOLA_1_5_15
-I(sad) - So that's why you are here all alone. & EV_IOLA_1_5_16
-Ar(neutral) - Hey, don't make it sound like I'm some creep. & EV_IOLA_1_5_17
-I - Oh, that wasn't what I meant. & EV_IOLA_1_5_18
-Ar - You look worried, did something happen? & EV_IOLA_1_5_19
-I(sad) - N-no, nothing like that, it's just... & EV_IOLA_1_5_20
-I - I haven’t trained anymore - since the last time. & EV_IOLA_1_5_21
-Ar - ... & EV_IOLA_1_5_22
-Ar(shock) - Why didn't you say so sooner?! & EV_IOLA_1_5_23
-I - I was a bit embarrassed I guess. & EV_IOLA_1_5_24
-Ar - Say no more, let's go! & EV_IOLA_1_5_25
-I - No, wait, I have to prepare myself first. & EV_IOLA_1_5_26
-I - I'll be waiting in your room this evening. & EV_IOLA_1_5_27
-Ar - Sheesh, fine.  & EV_IOLA_1_5_28
+I - EV_IOLA_1_5_14
+Ar - EV_IOLA_1_5_15
+I(sad) - EV_IOLA_1_5_16
+Ar(neutral) - EV_IOLA_1_5_17
+I - EV_IOLA_1_5_18
+Ar - EV_IOLA_1_5_19
+I(sad) - EV_IOLA_1_5_20
+I - EV_IOLA_1_5_21
+Ar - EV_IOLA_1_5_22
+Ar(shock) - EV_IOLA_1_5_23
+I - EV_IOLA_1_5_24
+Ar - EV_IOLA_1_5_25
+I - EV_IOLA_1_5_26
+I - EV_IOLA_1_5_27
+Ar - EV_IOLA_1_5_28
 =SPRITE_FADE 0.5=
-Ar(neutral) - Huh... What do I do now? & EV_IOLA_1_5_29
-Ar - Hey, Gobbo, wanna make a new bet? & EV_IOLA_1_5_30
+Ar(neutral) - EV_IOLA_1_5_29
+Ar - EV_IOLA_1_5_30
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -47,8 +47,8 @@ Ar - Hey, Gobbo, wanna make a new bet? & EV_IOLA_1_5_30
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ar - (Hmm, there's light coming from my room, I guess Iola is already there) & EV_IOLA_1_5_31
-Ar - I'm coming in. & EV_IOLA_1_5_32
+Ar - EV_IOLA_1_5_31
+Ar - EV_IOLA_1_5_32
 =SOUND doorlocked=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -58,67 +58,67 @@ Ar - I'm coming in. & EV_IOLA_1_5_32
 =ABG iola_cuni_01=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Iola kneels on the floor, bending over with one hand between her legs, fingers spreading her smooth pussy-lips apart. & EV_IOLA_1_5_33
-I - Please enter. & EV_IOLA_1_5_34
-Ar - Hoh, there’s a sight for sore eyes. & EV_IOLA_1_5_35
-I - This is... Sort of embarrassing. & EV_IOLA_1_5_36
-Ar - I'd imagine that is part of the point of this training. & EV_IOLA_1_5_37
-I - You are right. & EV_IOLA_1_5_38
-I - Please, teach me what it’s like to have my pussy used. & EV_IOLA_1_5_39
-Ar - I’ll be glad to. & EV_IOLA_1_5_40
-I - But don’t take my virginity… Not yet at least... & EV_IOLA_1_5_41
-Ar - Well, ok, are you ready to begin? & EV_IOLA_1_5_42
-I - ...Yes, go on please. & EV_IOLA_1_5_43
+EV_IOLA_1_5_33
+I - EV_IOLA_1_5_34
+Ar - EV_IOLA_1_5_35
+I - EV_IOLA_1_5_36
+Ar - EV_IOLA_1_5_37
+I - EV_IOLA_1_5_38
+I - EV_IOLA_1_5_39
+Ar - EV_IOLA_1_5_40
+I - EV_IOLA_1_5_41
+Ar - EV_IOLA_1_5_42
+I - EV_IOLA_1_5_43
 =ABG iola_cuni_02 iola_cuni_03=
-Arron reaches out and runs his finger down Iola’s glistening slit. & EV_IOLA_1_5_44
-I - Aaah!.. & EV_IOLA_1_5_45
-Ar - Hey, keep your voice down. & EV_IOLA_1_5_46
-Ar - I've barely even touched you yet. & EV_IOLA_1_5_47
-I - S-Sorry, it's the first time for me... & EV_IOLA_1_5_48
-I - I'm not sure how to react. & EV_IOLA_1_5_49
-Arron keeps stroking Iola’s quivering pussy, gently teasing her clit until it starts to swell & EV_IOLA_1_5_50
-Ar - You are pretty wet already. & EV_IOLA_1_5_51
-Ar - Looks like you are properly aroused. & EV_IOLA_1_5_52
-I - Is it so easy to tell? & EV_IOLA_1_5_53
-I - It feels really good - what you’re doing. & EV_IOLA_1_5_54
+EV_IOLA_1_5_44
+I - EV_IOLA_1_5_45
+Ar - EV_IOLA_1_5_46
+Ar - EV_IOLA_1_5_47
+I - EV_IOLA_1_5_48
+I - EV_IOLA_1_5_49
+EV_IOLA_1_5_50
+Ar - EV_IOLA_1_5_51
+Ar - EV_IOLA_1_5_52
+I - EV_IOLA_1_5_53
+I - EV_IOLA_1_5_54
 =ABG iola_cuni_04 iola_cuni_05=
-I - Aah!  & EV_IOLA_1_5_55
-I - W-What are you doing? & EV_IOLA_1_5_56
-Ar - this is what we are here for, isn’t it?  & EV_IOLA_1_5_57
-Ar - Helping you to feel good and confident. & EV_IOLA_1_5_58
-I - Mnh... This... & EV_IOLA_1_5_59
-I - Your tongue... & EV_IOLA_1_5_60
-I - Ah... I've never felt... like this... & EV_IOLA_1_5_61
-Ar - You are managing nicely. & EV_IOLA_1_5_62
-I - You... Ah... think so? & EV_IOLA_1_5_63
-Ar - Yep, Rose is still very embarrassed by this kind of thing, despite our past. & EV_IOLA_1_5_64
-I - I... can't blame her... & EV_IOLA_1_5_65
+I - EV_IOLA_1_5_55
+I - EV_IOLA_1_5_56
+Ar - EV_IOLA_1_5_57
+Ar - EV_IOLA_1_5_58
+I - EV_IOLA_1_5_59
+I - EV_IOLA_1_5_60
+I - EV_IOLA_1_5_61
+Ar - EV_IOLA_1_5_62
+I - EV_IOLA_1_5_63
+Ar - EV_IOLA_1_5_64
+I - EV_IOLA_1_5_65
 =ABG iola_cuni_06 iola_cuni_07=
-Ar - Hehe, looks like you are getting impatient. & EV_IOLA_1_5_66
-I - Ah... Please... & EV_IOLA_1_5_67
-I - Don't stop... & EV_IOLA_1_5_68
-Ar - For your first time getting cunnilingus you got into it pretty quickly. & EV_IOLA_1_5_69
-I - That must be... because of my mission... & EV_IOLA_1_5_70
-Ar - What a pious follower you are. & EV_IOLA_1_5_71
-I - Ah... I can't... & EV_IOLA_1_5_72
+Ar - EV_IOLA_1_5_66
+I - EV_IOLA_1_5_67
+I - EV_IOLA_1_5_68
+Ar - EV_IOLA_1_5_69
+I - EV_IOLA_1_5_70
+Ar - EV_IOLA_1_5_71
+I - EV_IOLA_1_5_72
 =ABG iola_cuni_08=
-Ar - Hey, slow down a bit.  & EV_IOLA_1_5_73
-I - Aaah...  & EV_IOLA_1_5_74
-I - What... Am I... & EV_IOLA_1_5_75
-Ar - Wow, you are like an animal in heat. & EV_IOLA_1_5_76
-I - I... can't stop... & EV_IOLA_1_5_77
-Ar - Fine, fine, let's finish this. & EV_IOLA_1_5_78
-I - Aahh... Are you..? & EV_IOLA_1_5_79
-I - AAAaahhh!!... & EV_IOLA_1_5_80
+Ar - EV_IOLA_1_5_73
+I - EV_IOLA_1_5_74
+I - EV_IOLA_1_5_75
+Ar - EV_IOLA_1_5_76
+I - EV_IOLA_1_5_77
+Ar - EV_IOLA_1_5_78
+I - EV_IOLA_1_5_79
+I - EV_IOLA_1_5_80
 =ABG iola_cuni_09 iola_cuni_11=
 =WHITE=
 =DELAY 0.5=
-Ar - Wow, that was a bit messy. & EV_IOLA_1_5_81
-I - Ah... hah... I'm sorry... & EV_IOLA_1_5_82
-Ar - It’s fine. & EV_IOLA_1_5_83
-I - I didn't realize that it would be so much better than doing it by myself. & EV_IOLA_1_5_84
-Ar - That's only natural. & EV_IOLA_1_5_85
-I - I see... & EV_IOLA_1_5_86
+Ar - EV_IOLA_1_5_81
+I - EV_IOLA_1_5_82
+Ar - EV_IOLA_1_5_83
+I - EV_IOLA_1_5_84
+Ar - EV_IOLA_1_5_85
+I - EV_IOLA_1_5_86
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1.5=
@@ -129,9 +129,9 @@ I - I see... & EV_IOLA_1_5_86
 =DELAY 0.5=
 =SPRITE iola=
 =GUI_NORMAL=
-I - I want to thank you, Sir Arron. & EV_IOLA_1_5_87
-Ar - Don't mention  it.  & EV_IOLA_1_5_88
-I - I hope you'll keep helping me with my training. & EV_IOLA_1_5_89
-Ar(shock) - You think I'd pass up such an opportunity? & EV_IOLA_1_5_90
-I - Ha-ha, I guess no. & EV_IOLA_1_5_91
+I - EV_IOLA_1_5_87
+Ar - EV_IOLA_1_5_88
+I - EV_IOLA_1_5_89
+Ar(shock) - EV_IOLA_1_5_90
+I - EV_IOLA_1_5_91
 =STOP=

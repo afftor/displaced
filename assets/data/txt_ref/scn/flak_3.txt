@@ -8,18 +8,18 @@
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-F - So she already left, huh. & EV_FLAK_3_0
-F - It can't be helped I guess. & EV_FLAK_3_1
-Ro - We are sorry it was for nothing. & EV_FLAK_3_2
-F - Hardly ya fault, I shouldn't have waited so long. & EV_FLAK_3_3
-Ar - What about the reward? & EV_FLAK_3_4
-F - I said nothing about any reward.  & EV_FLAK_3_5
-Ar(shock) - What?! & EV_FLAK_3_6
-F - And even if I had, you didn't complete the task anyway. & EV_FLAK_3_7
-Ro - That's true. & EV_FLAK_3_8
-Ar - ... & EV_FLAK_3_9
-F - Now go, I still have business to do. & EV_FLAK_3_10
-Ar(shock) - Don't ever dare to ask me to do your deliveries again! & EV_FLAK_3_11
+F - EV_FLAK_3_0
+F - EV_FLAK_3_1
+Ro - EV_FLAK_3_2
+F - EV_FLAK_3_3
+Ar - EV_FLAK_3_4
+F - EV_FLAK_3_5
+Ar(shock) - EV_FLAK_3_6
+F - EV_FLAK_3_7
+Ro - EV_FLAK_3_8
+Ar - EV_FLAK_3_9
+F - EV_FLAK_3_10
+Ar(shock) - EV_FLAK_3_11
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

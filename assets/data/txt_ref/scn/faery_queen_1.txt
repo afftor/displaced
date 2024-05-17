@@ -8,25 +8,25 @@
 =SPRITE faeryqueen=
 =SPRITE_UNFADE 0.5=
 =GUI_NORMAL=
-FQ - Greetings, fuckwits. & EV_FAERY_QUEEN_1_0
-FQ - What do you think you are doing coming here? & EV_FAERY_QUEEN_1_1
-Ar - Huh... I wonder if there's any point in trying to negotiate at all. & EV_FAERY_QUEEN_1_2
-FQ - Huh? Whatcha gonna do, dumbass? Ride that dragon cunt like some damn hero? & EV_FAERY_QUEEN_1_3
-Ar - Whatever, we want the Saint's Pearl. & EV_FAERY_QUEEN_1_4
-FQ - Yeah, and I want your ass roasted by an ogre. Do you think I'm gonna give it to you? & EV_FAERY_QUEEN_1_5
-Ar - ...Get this bitch. & EV_FAERY_QUEEN_1_6
-FQ - Ha, suck it losers. & EV_FAERY_QUEEN_1_7
+FQ - EV_FAERY_QUEEN_1_0
+FQ - EV_FAERY_QUEEN_1_1
+Ar - EV_FAERY_QUEEN_1_2
+FQ - EV_FAERY_QUEEN_1_3
+Ar - EV_FAERY_QUEEN_1_4
+FQ - EV_FAERY_QUEEN_1_5
+Ar - EV_FAERY_QUEEN_1_6
+FQ - EV_FAERY_QUEEN_1_7
 =SPRITE_FADE 0.5=
 =SOUND sound_teleport=
-Ar - Damn it, she got away. & EV_FAERY_QUEEN_1_8
+Ar - EV_FAERY_QUEEN_1_8
 =IF FORCEDCONTENT _ 3 2=
 =POSITION 3=
-Em - Look, there's a portal left after her. & EV_FAERY_QUEEN_1_9
-Ar - Ah, we could follow it. & EV_FAERY_QUEEN_1_10
-Ro(sarcastic) - I don't think this is a good idea.  & EV_FAERY_QUEEN_1_11
-Ro(sarcastic) - We don't know where we might end up. & EV_FAERY_QUEEN_1_12
+Em - EV_FAERY_QUEEN_1_9
+Ar - EV_FAERY_QUEEN_1_10
+Ro(sarcastic) - EV_FAERY_QUEEN_1_11
+Ro(sarcastic) - EV_FAERY_QUEEN_1_12
 =CHOICE EVCH_GO_AFTER_HER|EVCH_BETTER_NOT_TO=
-Ar - ... & EV_FAERY_QUEEN_1_13
+Ar - EV_FAERY_QUEEN_1_13
 =IF LASTCHOICE 0 1 2=
 =POSITION 1=
 =DECISION portal=
