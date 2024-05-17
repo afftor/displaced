@@ -296,4 +296,4 @@ var ULTIMETER_COSTS = {
 	TR_COMBAT_F : 10
 }
 
-const SOUND_LOUD_COR = 10.0
+const SOUND_LOUD_COR = 6.0

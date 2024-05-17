@@ -206,7 +206,6 @@ __meta__ = {
 }
 
 [node name="dev_panel" type="Panel" parent="."]
-visible = false
 margin_left = 139.0
 margin_top = 771.0
 margin_right = 729.0
