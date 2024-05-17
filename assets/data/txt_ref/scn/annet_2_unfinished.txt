@@ -8,124 +8,128 @@
 =SPRITE annet=
 =SPRITE_UNFADE 0.3=
 =MUSIC event_mysterious=
-An - Gh, you degenerates... & EV_ANNET_2_0
-An - Demons, crush them! & EV_ANNET_2_1
+An - EV_ANNET_2_0
+An - EV_ANNET_2_1
 =SPRITE demon=
 =SPRITE_UNFADE 0.3=
-A horde of large demons swarmed the hall from all directions. & EV_ANNET_2_2
-Ar(shock) - Oh shit! & EV_ANNET_2_3
-Ar(shock) - Stay together. & EV_ANNET_2_4
-Ro(shock) - There's too many! & EV_ANNET_2_5
-Em(sad) - Ngh... & EV_ANNET_2_6
-An - How does it feel to be outnumbered now? & EV_ANNET_2_7
-An - Ha-h, lets see how long you'll hold up. & EV_ANNET_2_8
-An - But while we are at it... & EV_ANNET_2_9
-I(sad) - This looks really bad, there's no end to them. & EV_ANNET_2_10
-An - *Chanting* & EV_ANNET_2_11
-An - ***Erika, return to my side*** & EV_ANNET_2_12
+EV_ANNET_2_2
+Ar(shock) - EV_ANNET_2_3
+Ar(shock) - EV_ANNET_2_4
+Ro(shock) - EV_ANNET_2_5
+Em(sad) - EV_ANNET_2_6
+An - EV_ANNET_2_7
+An - EV_ANNET_2_8
+An - EV_ANNET_2_9
+I(sad) - EV_ANNET_2_10
+An - EV_ANNET_2_11
+An - EV_ANNET_2_12
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
-Er(sad) - ..... & EV_ANNET_2_13
-Ro(talk) - Eh... Erika? & EV_ANNET_2_14
-Ar(shock) - What are you doing?! & EV_ANNET_2_15
-Er(sad) - I'm... sorry. & EV_ANNET_2_16
-Ignoring the battle and enemies, Erika left the team and slowly walked into Annet's direction. & EV_ANNET_2_17
-Ro(shock) - No way... & EV_ANNET_2_18
-An - Hahah, you imbeciles! & EV_ANNET_2_19
-An - Did you seriously think I'd leave my toy with no security measures? & EV_ANNET_2_20
-Ro - You are the lowest. & EV_ANNET_2_21
-Ro(talk) - Stop, Erika! & EV_ANNET_2_22
-An - Don't waste your breath. & EV_ANNET_2_23
-An - She was hypnotized long time ago to obey my will on command.  & EV_ANNET_2_24
-Ri - We won't hold without her... & EV_ANNET_2_25
-An - Your really don't know how to secure victory, Arron. & EV_ANNET_2_26
-An - Never leave things to chance. & EV_ANNET_2_27
+Er(sad) - EV_ANNET_2_13
+Ro(talk) - EV_ANNET_2_14
+Ar(shock) - EV_ANNET_2_15
+Er(sad) - EV_ANNET_2_16
+EV_ANNET_2_17
+Ro(shock) - EV_ANNET_2_18
+An - EV_ANNET_2_19
+An - EV_ANNET_2_20
+Ro - EV_ANNET_2_21
+Ro(talk) - EV_ANNET_2_22
+An - EV_ANNET_2_23
+An - EV_ANNET_2_24
+Ri - EV_ANNET_2_25
+An - EV_ANNET_2_26
+An - EV_ANNET_2_27
 =MUSIC_STOP=
-=SPRITE hide=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
-An - Isn't that nice, Eri...? & EV_ANNET_2_28
+=SPRITE_HIDE=
+An - EV_ANNET_2_28
 =BG scenes/annet_erika_1=
 =SOUND sound_stab=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Whole room froze in awe as Erika stabbed Annet's neck. & EV_ANNET_2_29
-An(anger) - Wha...t... & EV_ANNET_2_30
-An(anger) - Why... & EV_ANNET_2_31
-Er(anger) - You are right. & EV_ANNET_2_32
-Er(anger) - Never leave things to chance. & EV_ANNET_2_33
-Er(anger) - You really thought I would never find a way to resist your hypnosis?  & EV_ANNET_2_34
-An(anger) - You... biiitch!..  & EV_ANNET_2_35
-Er(anger) - I've learned from the best. & EV_ANNET_2_36
-An(anger) - Ghhh!.. & EV_ANNET_2_37
+EV_ANNET_2_29
+An(anger) - EV_ANNET_2_30
+An(anger) - EV_ANNET_2_31
+Er(anger) - EV_ANNET_2_32
+Er(anger) - EV_ANNET_2_33
+Er(anger) - EV_ANNET_2_34
+An(anger) - EV_ANNET_2_35
+Er(anger) - EV_ANNET_2_36
+An(anger) - EV_ANNET_2_37
 =SOUND sound_splatter=
 =BG scenes/annet_erika_2=
 =MUSIC event_combat=
-*Slash* & EV_ANNET_2_38
-An(anger) - Nnooo!.. & EV_ANNET_2_39
-A red splash erupted from Annet's neck as the dagger sliced it through. & EV_ANNET_2_40
-Er(anger) - Go to hell, Mistress. & EV_ANNET_2_41
+EV_ANNET_2_38
+An(anger) - EV_ANNET_2_39
+EV_ANNET_2_40
+Er(anger) - EV_ANNET_2_41
 =SOUND sound_fall=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
 =BG burning_city=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
-With Annet's defeat all demons in the hall quickly retreated from sight. & EV_ANNET_2_42
-Er(anger) - Phew...  & EV_ANNET_2_43
-Er(sad) - I'm shaking now. & EV_ANNET_2_44
-Er - But somehow feel great. & EV_ANNET_2_45
-Ar - Yeah, you've saved us. & EV_ANNET_2_46
-Er - Turns out, I'm a pretty good actress, huh? & EV_ANNET_2_47
-Ro - You really made us worried.  & EV_ANNET_2_48
-Er - I've realized she'd always treat me as her victim. & EV_ANNET_2_49
-Er - So I thought this would be a safer approach. & EV_ANNET_2_50
-Ar - Well, looks like we saved a city at least. & EV_ANNET_2_51
+EV_ANNET_2_42
+Er(anger) - EV_ANNET_2_43
+Er(sad) - EV_ANNET_2_44
+Er - EV_ANNET_2_45
+Ar - EV_ANNET_2_46
+Er - EV_ANNET_2_47
+Ro - EV_ANNET_2_48
+Er - EV_ANNET_2_49
+Er - EV_ANNET_2_50
+Ar - EV_ANNET_2_51
 =SPRITE demitrius_demon=
 =SOUND sound_teleport=
 =SPRITE_UNFADE 0.5=
 =SHAKE_SPRITE 0.7=
-De - Nice work, insects.  & EV_ANNET_2_52
-Ar(anger) - Dimitrius! & EV_ANNET_2_53
-De - Now, don't look so mad. & EV_ANNET_2_54
-De - You've done me a great service today and I'll spare your lives for some time. & EV_ANNET_2_55
-Ar(neutral) - You might end up dead by the end of it as well. & EV_ANNET_2_56
-De - Ahahah, nice one, Arron.  & EV_ANNET_2_57
-De - You just have no idea how troublesome it is to kill another demon lord with a big reputation in this world.  & EV_ANNET_2_58
-De - But you actually did it. & EV_ANNET_2_59
-Ro - You wanted her dead? That's why you didn't help her? & EV_ANNET_2_60
-De - That's what I said.  & EV_ANNET_2_61
-De - I thought about giving you a hand on one occasion, but you managed anyway. & EV_ANNET_2_62
-Ri - You've left your kin here to die like that. & EV_ANNET_2_63
-Ro - They don't think of their own any higher than of normal people. & EV_ANNET_2_64
-Em(sad) - You really aren't afraid to lose? & EV_ANNET_2_65
-De - What, do you really  think I should be worried about you? & EV_ANNET_2_66
-De - You just don't understand, do you? & EV_ANNET_2_67
-De - You are not a threat. You killed Annet, but she was weak and stupid.  & EV_ANNET_2_68
-De - I can squash you all like bugs, but you never know when you might need a couple of resourceful mortals. & EV_ANNET_2_69
-I - We'll stop you and end this madness. & EV_ANNET_2_70
-De - Yeah, sure, struggle some more if you wish. & EV_ANNET_2_71
-De - Have your little celebration, for today. & EV_ANNET_2_72
+De - EV_ANNET_2_52
+Ar(anger) - EV_ANNET_2_53
+De - EV_ANNET_2_54
+De - EV_ANNET_2_55
+Ar(neutral) - EV_ANNET_2_56
+De - EV_ANNET_2_57
+De - EV_ANNET_2_58
+De - EV_ANNET_2_59
+Ro - EV_ANNET_2_60
+De - EV_ANNET_2_61
+De - EV_ANNET_2_62
+Ri - EV_ANNET_2_63
+Ro - EV_ANNET_2_64
+Em(sad) - EV_ANNET_2_65
+De - EV_ANNET_2_66
+De - EV_ANNET_2_67
+De - EV_ANNET_2_68
+De - EV_ANNET_2_69
+I - EV_ANNET_2_70
+De - EV_ANNET_2_71
+De - EV_ANNET_2_72
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
-Ar(neutral) - ....He's gone. & EV_ANNET_2_73
-Ri - There seems to be a crowd outside. & EV_ANNET_2_74
-Ro - Those are probably the survivors.  & EV_ANNET_2_75
+Ar(neutral) - EV_ANNET_2_73
+Ri - EV_ANNET_2_74
+Ro - EV_ANNET_2_75
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BLACKFADE 0.5=
 =GUI_NORMAL=
-Surv - It was you? You defeated the demons? & EV_ANNET_2_76
-Ar(neutral) - No, we just were really persuasive. & EV_ANNET_2_77
-Surv - Eh?  & EV_ANNET_2_78
-Ar(neutral) - Let's return to the village.  & EV_ANNET_2_79
-Ro - Indeed, this was a tough day. & EV_ANNET_2_80
-Surv - But what should we do? What if demons return? & EV_ANNET_2_81
-Ar(neutral) - I'm afraid my charisma is too low to take you all. & EV_ANNET_2_82
-Ar - You will have to figure out how to defend yourself eventually. & EV_ANNET_2_83
-The team left puzzled civilians. & EV_ANNET_2_84
-I(sad) - I wonder if we should've left them like this. & EV_ANNET_2_85
-Ar(neutral) - It can't be helped. & EV_ANNET_2_86
-Er(sad) - After seeing what was happening in the city I don't feel like we should've helped them even if we could. & EV_ANNET_2_87
+Surv - EV_ANNET_2_76
+Ar(neutral) - EV_ANNET_2_77
+Surv - EV_ANNET_2_78
+Ar(neutral) - EV_ANNET_2_79
+Ro - EV_ANNET_2_80
+Surv - EV_ANNET_2_81
+Ar(neutral) - EV_ANNET_2_82
+Ar - EV_ANNET_2_83
+EV_ANNET_2_84
+I(sad) - EV_ANNET_2_85
+Ar(neutral) - EV_ANNET_2_86
+Er(sad) - EV_ANNET_2_87
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

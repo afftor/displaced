@@ -5,39 +5,39 @@
 =GUI_NORMAL=
 =SPRITE rose=
 =MUSIC event_combat=
-Ro - We made it... & EV_DIMITRIUS_ENDING_7_0
-Er - Yes, come in, it's after this door. & EV_DIMITRIUS_ENDING_7_1
-Ro(talk) - Great. & EV_DIMITRIUS_ENDING_7_2
-Rose and Erika entered the room filled with glowing glass screens. & EV_DIMITRIUS_ENDING_7_3
-Er - Alright, it's your turn. & EV_DIMITRIUS_ENDING_7_4
-Ro - Uh... This might take some time. & EV_DIMITRIUS_ENDING_7_5
-Er - You sure you can manage it? & EV_DIMITRIUS_ENDING_7_6
-Ro(sarcastic) - No, but you could help me out. & EV_DIMITRIUS_ENDING_7_7
-Er - You know I'm too stupid for this stuff. & EV_DIMITRIUS_ENDING_7_8
-Ro - ...Just let Rilu know we got there.  & EV_DIMITRIUS_ENDING_7_9
+Ro - EV_DIMITRIUS_ENDING_7_0
+Er - EV_DIMITRIUS_ENDING_7_1
+Ro(talk) - EV_DIMITRIUS_ENDING_7_2
+EV_DIMITRIUS_ENDING_7_3
+Er - EV_DIMITRIUS_ENDING_7_4
+Ro - EV_DIMITRIUS_ENDING_7_5
+Er - EV_DIMITRIUS_ENDING_7_6
+Ro(sarcastic) - EV_DIMITRIUS_ENDING_7_7
+Er - EV_DIMITRIUS_ENDING_7_8
+Ro - EV_DIMITRIUS_ENDING_7_9
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
 =SPRITE_HIDE=
 =GUI_NORMAL=
 =BLACKFADE 1=
-Meanwhile Arron kept escaping from Dimitrius. & EV_DIMITRIUS_ENDING_7_10
-After making through another room he ended up in a small room connected to a giant curved structure. & EV_DIMITRIUS_ENDING_7_11
-Without taking a pause he opened a small hatch and jumped inside, sealing it shut behind him. & EV_DIMITRIUS_ENDING_7_12
+EV_DIMITRIUS_ENDING_7_10
+EV_DIMITRIUS_ENDING_7_11
+EV_DIMITRIUS_ENDING_7_12
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG future_city_reactor_inside=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Right as he finished, Dimitrius predictably appeared next to him.  & EV_DIMITRIUS_ENDING_7_13
+EV_DIMITRIUS_ENDING_7_13
 =SPRITE demitrius_demon=
 =SOUND slash=
-Arron attempted to land a surprise attack, but Dimitrius blocked it. & EV_DIMITRIUS_ENDING_7_14
-Ar(anger) - Damn you. & EV_DIMITRIUS_ENDING_7_15
-De - It seems your brilliance is finally overshadowed by your human nature. & EV_DIMITRIUS_ENDING_7_16
-De - What a stupid thing to trap yourself in this place even though I can easily teleport. & EV_DIMITRIUS_ENDING_7_17
-Dimitrius was correct, they appeared to be inside of an isolated curving tunnel only spacious enough to allow one person running in it. & EV_DIMITRIUS_ENDING_7_18
-Ar(anger) - ... & EV_DIMITRIUS_ENDING_7_19
+EV_DIMITRIUS_ENDING_7_14
+Ar(anger) - EV_DIMITRIUS_ENDING_7_15
+De - EV_DIMITRIUS_ENDING_7_16
+De - EV_DIMITRIUS_ENDING_7_17
+EV_DIMITRIUS_ENDING_7_18
+Ar(anger) - EV_DIMITRIUS_ENDING_7_19
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
@@ -45,16 +45,16 @@ Ar(anger) - ... & EV_DIMITRIUS_ENDING_7_19
 =BG future_city_reactor=
 =GUI_NORMAL=
 =BLACKFADE 1=
-Meanwhile Ember, Rilu and Iola ran from the other side of the tunnel.  & EV_DIMITRIUS_ENDING_7_20
+EV_DIMITRIUS_ENDING_7_20
 =SPRITE rilu=
-Ri - Ember, give it to me. & EV_DIMITRIUS_ENDING_7_21
-Em - Sure. & EV_DIMITRIUS_ENDING_7_22
-Ember passed Rilu a small piece of red cloth that she managed to rip off Dimitrius' outfit during the fight. & EV_DIMITRIUS_ENDING_7_23
-Ri - Erika said they got to the control room as well. & EV_DIMITRIUS_ENDING_7_24
-Ri - Iola, you can start making your preparations. & EV_DIMITRIUS_ENDING_7_25
-I - Got it! & EV_DIMITRIUS_ENDING_7_26
+Ri - EV_DIMITRIUS_ENDING_7_21
+Em - EV_DIMITRIUS_ENDING_7_22
+EV_DIMITRIUS_ENDING_7_23
+Ri - EV_DIMITRIUS_ENDING_7_24
+Ri - EV_DIMITRIUS_ENDING_7_25
+I - EV_DIMITRIUS_ENDING_7_26
 =SPRITE demon=
-Demon - Arghh! & EV_DIMITRIUS_ENDING_7_27
-Em - Oh no, they found us! & EV_DIMITRIUS_ENDING_7_28
-Ri - ...We don't really have time for this.  & EV_DIMITRIUS_ENDING_7_29
+Demon - EV_DIMITRIUS_ENDING_7_27
+Em - EV_DIMITRIUS_ENDING_7_28
+Ri - EV_DIMITRIUS_ENDING_7_29
 =STOP=

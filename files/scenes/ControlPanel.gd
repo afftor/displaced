@@ -20,10 +20,17 @@ func _ready():
 	$ControlPanel/Options.connect("pressed",self, 'openmenu')
 	$ControlPanel/Herolist.connect('toggled',self, 'openherolist')
 	$GameOverPanel/ExitButton.connect("pressed",self,"GameOver")
-	$test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
-	$test_event.connect("pressed", self, "test_event")
+	$dev_panel/test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
+	$dev_panel/test_event.connect("pressed", self, "test_event")
+	$dev_panel/dump_ref.connect("pressed", self, "dump_referals")
 	state.connect("money_changed", self, "UpdateMoney")
 	return_button_home()
+
+func dump_referals():
+	if input_handler.scene_node == null:
+		print("there is no scene node")
+		return
+	input_handler.scene_node.dump_referals()
 
 func test_event():
 	globals.play_scene('faery_queen_1')

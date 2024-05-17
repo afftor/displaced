@@ -5,24 +5,24 @@
 =BG forest_fairy=
 =SPRITE rilu=
 =MUSIC rilu_theme=
-Ar(neutral) - Huh... We've gotten pretty far away from the village already. & EV_RILU_2_3_2_0
+Ar(neutral) - EV_RILU_2_3_2_0
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
 =BG castle_interior=
 =SPRITE_FADE 0.1=
 =GUI_NORMAL=
-Arron followed Rilu until she entered Summerhill Keep as she carefully avoided any stray undead. & EV_RILU_2_3_2_1
-However, after a couple of rooms he lost a sight of her. & EV_RILU_2_3_2_2
-Ar(neutral) - Shit, where did she go. & EV_RILU_2_3_2_3
-Ar - Maybe coming like that into an undead ruin wasn't a good idea after all. & EV_RILU_2_3_2_4
+EV_RILU_2_3_2_1
+EV_RILU_2_3_2_2
+Ar(neutral) - EV_RILU_2_3_2_3
+Ar - EV_RILU_2_3_2_4
 =SOUND explosion=
-Arron's thoughts were stopped by a loud noise from one of the halls. & EV_RILU_2_3_2_5
-Ar(shock) - Damnit, what the... & EV_RILU_2_3_2_6
-A couple of undeads appeared rushing to the direction of noise, but spotting Arron.  & EV_RILU_2_3_2_7
+EV_RILU_2_3_2_5
+Ar(shock) - EV_RILU_2_3_2_6
+EV_RILU_2_3_2_7
 =SPRITE skeleton=
-Ar - Not you too.  & EV_RILU_2_3_2_8
-Ar(neutral) - Darn, I don't have time for you. & EV_RILU_2_3_2_9
+Ar - EV_RILU_2_3_2_8
+Ar(neutral) - EV_RILU_2_3_2_9
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

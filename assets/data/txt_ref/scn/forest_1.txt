@@ -9,17 +9,17 @@
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Ro - These woods do not seem like they have any civilized life. How exactly do we find elves?  & EV_FOREST_1_0
-Ar - Dunno, maybe we should yell how we are planning to burn down woods? & EV_FOREST_1_1
-Ro(sarcastic) - Please, don't. & EV_FOREST_1_2
-Ro - I'm curious how they are doing here. I've never seen them in life, but back there people said they act very noble and proud. & EV_FOREST_1_3
-Ar - I've seen a couple in the rare meeting. They indeed appear to be snobbish. & EV_FOREST_1_4
-Ro - ...  & EV_FOREST_1_5
-Ro(talk) - Master, please, don't tell them that to their face. & EV_FOREST_1_6
-Ro - I'm sure they wouldn't like it, and they probably live in much better conditions than we currently do. & EV_FOREST_1_7
-Ar - Hmm... In that case, we should conquer them too! & EV_FOREST_1_8
-Ro - I'll pass.  & EV_FOREST_1_9
-Ar - As if you have a choice. & EV_FOREST_1_10
+Ro - EV_FOREST_1_0
+Ar - EV_FOREST_1_1
+Ro(sarcastic) - EV_FOREST_1_2
+Ro - EV_FOREST_1_3
+Ar - EV_FOREST_1_4
+Ro - EV_FOREST_1_5
+Ro(talk) - EV_FOREST_1_6
+Ro - EV_FOREST_1_7
+Ar - EV_FOREST_1_8
+Ro - EV_FOREST_1_9
+Ar - EV_FOREST_1_10
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

@@ -8,93 +8,90 @@
 =GUI_NORMAL=
 =SPRITE emberhappy=
 =SPRITE_UNFADE 0.3=
-Em - Mornin', Sir Arron! & EV_EMBER_1_5_0
-Ar - What's up? & EV_EMBER_1_5_1
-Em - I wanted to thank you for all the good you've done for me! & EV_EMBER_1_5_2
-Em - You allowed me to move in and you helped with improving my home. & EV_EMBER_1_5_3
-Ro - That's true, you've been very generous to Ember, Master. & EV_EMBER_1_5_4
-Em(sad) - It's the first time someone has done so much for me. & EV_EMBER_1_5_5
-Ar - (Heh, from the look of it, it seems like I'll be able to ask for something nice in return) & EV_EMBER_1_5_6
-Ro - It's very admirable that you did it out of the pureness of your heart. & EV_EMBER_1_5_7
-Ar - ...... (darn it, I can't do anything with Rose around here) & EV_EMBER_1_5_8
-Em - But I'd like to repay you, Sir Arron. & EV_EMBER_1_5_9
-Em - If there's anything I could do for you, please ask away! & EV_EMBER_1_5_10
-Ro - You've been helping us a lot with our needs already, Ember.  & EV_EMBER_1_5_11
-Ar - ...Exactly. & EV_EMBER_1_5_12
-Em(sad) - Is it really enough? I still feel like I owe you. & EV_EMBER_1_5_13
-Ar - .......................... & EV_EMBER_1_5_14
-Ar - Virtue is its own reward. & EV_EMBER_1_5_15
-Em - Okay, if you say so. & EV_EMBER_1_5_16
-Ember despondently left the room. & EV_EMBER_1_5_17
+Em - EV_EMBER_1_5_0
+Ar - EV_EMBER_1_5_1
+Em - EV_EMBER_1_5_2
+Em - EV_EMBER_1_5_3
+Ro - EV_EMBER_1_5_4
+Em(sad) - EV_EMBER_1_5_5
+Ar - EV_EMBER_1_5_6
+Ro - EV_EMBER_1_5_7
+Ar - EV_EMBER_1_5_8
+Em - EV_EMBER_1_5_9
+Em - EV_EMBER_1_5_10
+Ro - EV_EMBER_1_5_11
+Ar - EV_EMBER_1_5_12
+Em(sad) - EV_EMBER_1_5_13
+Ar - EV_EMBER_1_5_14
+Ar - EV_EMBER_1_5_15
+Em - EV_EMBER_1_5_16
+EV_EMBER_1_5_17
 =SPRITE_FADE 0.5=
 =DELAY 0.5=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ro - Hmm? Did something happen, Master? & EV_EMBER_1_5_18
-Ro - You have this unnerving vacant look all of sudden. & EV_EMBER_1_5_19
-Ar(neutral) - I wonder if there's any real benefit in being good. & EV_EMBER_1_5_20
-Ro(sarcastic) - Huh? & EV_EMBER_1_5_21
+Ro - EV_EMBER_1_5_18
+Ro - EV_EMBER_1_5_19
+Ar(neutral) - EV_EMBER_1_5_20
+Ro(sarcastic) - EV_EMBER_1_5_21
 =BLACKUNFADE 1.5=
 =DELAY 1.5=
-Next Day. & EV_EMBER_1_5_22
-=BLACKFADE 0.5=
-=DELAY 0.5=
+EV_EMBER_1_5_22
 =GUI_FULL=
 =MUSIC erotheme=
 =ABG ember_titjob_01=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Em - Good morning, Sir Arron! & EV_EMBER_1_5_23
-Ar - Hmmh, what is this pleasant softness... & EV_EMBER_1_5_24
-Ar - What are you doing in my bed, Ember? & EV_EMBER_1_5_25
-Em - I wanted to give my thanks to you. & EV_EMBER_1_5_26
-Ar - This is not quite what I was expecting. & EV_EMBER_1_5_27
-Em - Erika said you would like it. & EV_EMBER_1_5_28
-Ar - Who could've guessed.  & EV_EMBER_1_5_29
-Em - Here, let me try something... & EV_EMBER_1_5_30
+Em - EV_EMBER_1_5_23
+Ar - EV_EMBER_1_5_24
+Ar - EV_EMBER_1_5_25
+Em - EV_EMBER_1_5_26
+Ar - EV_EMBER_1_5_27
+Em - EV_EMBER_1_5_28
+Ar - EV_EMBER_1_5_29
+Em - EV_EMBER_1_5_30
 =ABG ember_titjob_02 ember_titjob_03=
-=ABG ember_titjob_03 ember_titjob_04=
-Ar - Ooh... & EV_EMBER_1_5_31
-Em - Hehe, it feels funny between my breasts. & EV_EMBER_1_5_32
-Em - I didn’t expect it to feel so good. & EV_EMBER_1_5_33
-Em - They say men like breasts a lot, do you like them, Sir Arron? & EV_EMBER_1_5_34
-Ar - Ghhh.. For sure. & EV_EMBER_1_5_35
-Em - Do you like mine? & EV_EMBER_1_5_36
-Ar - They’re definitely growing on me. & EV_EMBER_1_5_37
-Em - Mmhmm. & EV_EMBER_1_5_38
-Em - This male thing of yours has such a strong smell. & EV_EMBER_1_5_39
-Ar - Sounds from your voice like it's turning you on. & EV_EMBER_1_5_40
-Em - I ought to take this in my mouth, right?  & EV_EMBER_1_5_41
+Ar - EV_EMBER_1_5_31
+Em - EV_EMBER_1_5_32
+Em - EV_EMBER_1_5_33
+Em - EV_EMBER_1_5_34
+Ar - EV_EMBER_1_5_35
+Em - EV_EMBER_1_5_36
+Ar - EV_EMBER_1_5_37
+Em - EV_EMBER_1_5_38
+Em - EV_EMBER_1_5_39
+Ar - EV_EMBER_1_5_40
+Em - EV_EMBER_1_5_41
 =ABG ember_titjob_05 ember_titjob_06=
 =DELAY 2=
-Without waiting for a reply, Ember sucks the head of Arron’s penis into her mouth, keeping his shaft pressed between her tits. & EV_EMBER_1_5_42
-Em - Mhmmm. & EV_EMBER_1_5_43
-Ar - Ghh, darn... & EV_EMBER_1_5_44
-Em - *Slrrrp* & EV_EMBER_1_5_45
-Em - Am I doing it right? & EV_EMBER_1_5_46
-Ar - Aaah... Yeah, pretty much. & EV_EMBER_1_5_47
-Ar - Go a little easier, Ember. & EV_EMBER_1_5_48
-Em - *nod* & EV_EMBER_1_5_49
-Ar - Crap... Your combo is really strong. & EV_EMBER_1_5_50
-Em - Mhmmm... Mmm & EV_EMBER_1_5_51
-Em - My c-combo is strong? Is that good? & EV_EMBER_1_5_52
-Ar - Oh yeah. Keep going. & EV_EMBER_1_5_53
-Ar - Gnnnhh..  & EV_EMBER_1_5_54
-Em - *slurp* *slurp* & EV_EMBER_1_5_55
-Ar - I'm almost there...  & EV_EMBER_1_5_56
-Ember quickens her pace and frees Arron's cock from her mouth at the last moment. & EV_EMBER_1_5_57
+EV_EMBER_1_5_42
+Em - EV_EMBER_1_5_43
+Ar - EV_EMBER_1_5_44
+Em - EV_EMBER_1_5_45
+Em - EV_EMBER_1_5_46
+Ar - EV_EMBER_1_5_47
+Ar - EV_EMBER_1_5_48
+Em - EV_EMBER_1_5_49
+Ar - EV_EMBER_1_5_50
+Em - EV_EMBER_1_5_51
+Em - EV_EMBER_1_5_52
+Ar - EV_EMBER_1_5_53
+Ar - EV_EMBER_1_5_54
+Em - EV_EMBER_1_5_55
+Ar - EV_EMBER_1_5_56
+EV_EMBER_1_5_57
 =ABG ember_titjob_07 ember_titjob_08=
 =WHITE=
 =DELAY 0.5=
-Ar - Ngaahhh! & EV_EMBER_1_5_58
-Em - Wow, there’s so much seed...  & EV_EMBER_1_5_59
-Em - Did I make you feel good, Sir Arron? & EV_EMBER_1_5_60
-Ar - Ha-ahh... & EV_EMBER_1_5_61
-Ar - For your first time that was quite a feat. & EV_EMBER_1_5_62
-Em - Yay! I’m so glad you’re pleased. That was fun. & EV_EMBER_1_5_63
-Ar - Indeed, you should really do it again some day. & EV_EMBER_1_5_64
-Em - Oh I’d like that a lot! But I better get to work now... & EV_EMBER_1_5_65
-Ar - Don't forget to clean your face before you leave.  & EV_EMBER_1_5_66
-Em - Ah! Right...  & EV_EMBER_1_5_67
-Em - I don't really wanna remove Sir Arron's smell but I guess I’d better do as he says. & EV_EMBER_1_5_68
+Ar - EV_EMBER_1_5_58
+Em - EV_EMBER_1_5_59
+Em - EV_EMBER_1_5_60
+Ar - EV_EMBER_1_5_61
+Ar - EV_EMBER_1_5_62
+Em - EV_EMBER_1_5_63
+Ar - EV_EMBER_1_5_64
+Em - EV_EMBER_1_5_65
+Ar - EV_EMBER_1_5_66
+Em - EV_EMBER_1_5_67
+Em - EV_EMBER_1_5_68
 =STOP=

@@ -6,21 +6,21 @@
 =SPRITE demitrius_demon=
 =MUSIC event_combat=
 =SPRITE_UNFADE 0.3=
-De - Hah, you finally came. & EV_DIMITRIUS_ENDING_2_0
-De - How do you like my work?  & EV_DIMITRIUS_ENDING_2_1
-Ro(talk) - This is terrible. Why would you do this? & EV_DIMITRIUS_ENDING_2_2
-De - Don't be so boring. & EV_DIMITRIUS_ENDING_2_3
-De - When else would you be able to see something so different to your insipid lives? & EV_DIMITRIUS_ENDING_2_4
-Ar(neutral) - Pardon my insipidness, but we've came to stop this. & EV_DIMITRIUS_ENDING_2_5
-De - Hahaha, that's a funny joke. Since when you decided to start playing hero? & EV_DIMITRIUS_ENDING_2_6
-De - You wanna fight for this world but it's a lost cause. & EV_DIMITRIUS_ENDING_2_7
-De - I really like your persistence, but look at yourself. & EV_DIMITRIUS_ENDING_2_8
-De - You guys are the only ones who actually came.  & EV_DIMITRIUS_ENDING_2_9
-Ar(neutral) - Wasn't it you, who made locals indifferent to their future?  & EV_DIMITRIUS_ENDING_2_10
-De - Bullshit. It's just your human nature.  & EV_DIMITRIUS_ENDING_2_11
-De - To be cattle for us.  & EV_DIMITRIUS_ENDING_2_12
-Ar(anger) - We'll see about that. & EV_DIMITRIUS_ENDING_2_13
-De - Great, entertain me some more, little moths! & EV_DIMITRIUS_ENDING_2_14
+De - EV_DIMITRIUS_ENDING_2_0
+De - EV_DIMITRIUS_ENDING_2_1
+Ro(talk) - EV_DIMITRIUS_ENDING_2_2
+De - EV_DIMITRIUS_ENDING_2_3
+De - EV_DIMITRIUS_ENDING_2_4
+Ar(neutral) - EV_DIMITRIUS_ENDING_2_5
+De - EV_DIMITRIUS_ENDING_2_6
+De - EV_DIMITRIUS_ENDING_2_7
+De - EV_DIMITRIUS_ENDING_2_8
+De - EV_DIMITRIUS_ENDING_2_9
+Ar(neutral) - EV_DIMITRIUS_ENDING_2_10
+De - EV_DIMITRIUS_ENDING_2_11
+De - EV_DIMITRIUS_ENDING_2_12
+Ar(anger) - EV_DIMITRIUS_ENDING_2_13
+De - EV_DIMITRIUS_ENDING_2_14
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

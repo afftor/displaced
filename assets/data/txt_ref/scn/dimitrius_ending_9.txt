@@ -6,107 +6,107 @@
 =MUSIC event_combat=
 =SPRITE demitrius_demon=
 =SOUND parry=
-After a few clashes Dimitrius has managed to strike Arron's sword from his hands. & EV_DIMITRIUS_ENDING_9_0
-Ar(shock) - Ah! & EV_DIMITRIUS_ENDING_9_1
-De - And it's over. & EV_DIMITRIUS_ENDING_9_2
-Ar(anger) - Like hell it is! & EV_DIMITRIUS_ENDING_9_3
-Taken by surprise, Dimitrius was attacked by barehanded Arron, tackling him on the ground. & EV_DIMITRIUS_ENDING_9_4
+EV_DIMITRIUS_ENDING_9_0
+Ar(shock) - EV_DIMITRIUS_ENDING_9_1
+De - EV_DIMITRIUS_ENDING_9_2
+Ar(anger) - EV_DIMITRIUS_ENDING_9_3
+EV_DIMITRIUS_ENDING_9_4
 =SOUND sound_fall=
-What he didn't see is how Arron pulled the shock baton out of his clothes. & EV_DIMITRIUS_ENDING_9_5
-De - What the- & EV_DIMITRIUS_ENDING_9_6
+EV_DIMITRIUS_ENDING_9_5
+De - EV_DIMITRIUS_ENDING_9_6
 =SOUND shocker=
-Bzzzzt & EV_DIMITRIUS_ENDING_9_7
-De - Arrggh... You bastard... & EV_DIMITRIUS_ENDING_9_8
-As the baton was connected to Dimitrius body, electrical shock ran through his body completely immobilizing and depowering him to the point he couldn't speak easily. & EV_DIMITRIUS_ENDING_9_9
-Ar - Hah, so it does work on you after all.  & EV_DIMITRIUS_ENDING_9_10
-De - You... Will pay for this... & EV_DIMITRIUS_ENDING_9_11
-Arron kept Dimitrius in one spot as electrical current continued to restrict him. & EV_DIMITRIUS_ENDING_9_12
-Ar(neutral) - You know what really gets on my nerves?  & EV_DIMITRIUS_ENDING_9_13
-De - You are... just postponing the inevitable... & EV_DIMITRIUS_ENDING_9_14
-Ar(neutral) - It's your trash attitude towards us.  & EV_DIMITRIUS_ENDING_9_15
-De - You still... can't kill me... & EV_DIMITRIUS_ENDING_9_16
-Ar(neutral) - Humans aren't the animals you take us for. & EV_DIMITRIUS_ENDING_9_17
-De - And once energy... runs out... & EV_DIMITRIUS_ENDING_9_18
-Ar(neutral) - I actually believe we can achieve great things. & EV_DIMITRIUS_ENDING_9_19
-De - You will... fucking die... & EV_DIMITRIUS_ENDING_9_20
-Ar(neutral) - You aren't even listening.  & EV_DIMITRIUS_ENDING_9_21
-Ar - Well, at least you won't tell it to others. & EV_DIMITRIUS_ENDING_9_22
+EV_DIMITRIUS_ENDING_9_7
+De - EV_DIMITRIUS_ENDING_9_8
+EV_DIMITRIUS_ENDING_9_9
+Ar - EV_DIMITRIUS_ENDING_9_10
+De - EV_DIMITRIUS_ENDING_9_11
+EV_DIMITRIUS_ENDING_9_12
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_13
+De - EV_DIMITRIUS_ENDING_9_14
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_15
+De - EV_DIMITRIUS_ENDING_9_16
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_17
+De - EV_DIMITRIUS_ENDING_9_18
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_19
+De - EV_DIMITRIUS_ENDING_9_20
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_21
+Ar - EV_DIMITRIUS_ENDING_9_22
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG future_city_reactor=
 =SPRITE rose=
 =BLACKFADE 0.5=
-Meanwhile Rose has finally grasped the controls of the reactor.  & EV_DIMITRIUS_ENDING_9_23
-Ro(talk) - Alright, I'm starting it. & EV_DIMITRIUS_ENDING_9_24
-Er - Roger, I'll let Rilu know. & EV_DIMITRIUS_ENDING_9_25
-Ro - Master, please be safe. & EV_DIMITRIUS_ENDING_9_26
+EV_DIMITRIUS_ENDING_9_23
+Ro(talk) - EV_DIMITRIUS_ENDING_9_24
+Er - EV_DIMITRIUS_ENDING_9_25
+Ro - EV_DIMITRIUS_ENDING_9_26
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =SPRITE rilu=
 =BLACKFADE 0.5=
-Ri - ...It's starting. & EV_DIMITRIUS_ENDING_9_27
-Ri(talk) - Iola, wait for my signal. & EV_DIMITRIUS_ENDING_9_28
-I - O-okay! & EV_DIMITRIUS_ENDING_9_29
-Rilu began to chant the spell, as lights around the structure began to work. & EV_DIMITRIUS_ENDING_9_30
+Ri - EV_DIMITRIUS_ENDING_9_27
+Ri(talk) - EV_DIMITRIUS_ENDING_9_28
+I - EV_DIMITRIUS_ENDING_9_29
+EV_DIMITRIUS_ENDING_9_30
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG future_city_reactor_inside_red=
 =SPRITE demitrius_demon=
 =BLACKFADE 0.5=
-As Arron kept Dimitrius disabled, he sensed how the mechanisms around him went into motion and small lights turned on. & EV_DIMITRIUS_ENDING_9_31
-Ar(neutral) - It seems I don't have much time left.  & EV_DIMITRIUS_ENDING_9_32
-De - ...Hah... starting to regret... your arrogance? & EV_DIMITRIUS_ENDING_9_33
-Ar(neutral) - I've heard that demons hate light.  & EV_DIMITRIUS_ENDING_9_34
-De - (Keep talking fool, I only need a bit more to break free) & EV_DIMITRIUS_ENDING_9_35
-Ar - You might have no idea, but this weird place is called a fusion reactor.  & EV_DIMITRIUS_ENDING_9_36
-De - Watcha... talking about... & EV_DIMITRIUS_ENDING_9_37
-Ar - Amazingly, it is able to eminate the power of the Sun itself. & EV_DIMITRIUS_ENDING_9_38
-Ar - Given your condition, it seems my shocker has nearly run out of power.  & EV_DIMITRIUS_ENDING_9_39
-Ar - So, say, do you think you will be able to survive fifty millions degree heat? & EV_DIMITRIUS_ENDING_9_40
-De - Enough! & EV_DIMITRIUS_ENDING_9_41
-Dimitrius pushed Arron away with a slowly returning power, still oblivious to what was going on around him.  & EV_DIMITRIUS_ENDING_9_42
+EV_DIMITRIUS_ENDING_9_31
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_32
+De - EV_DIMITRIUS_ENDING_9_33
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_34
+De - EV_DIMITRIUS_ENDING_9_35
+Ar - EV_DIMITRIUS_ENDING_9_36
+De - EV_DIMITRIUS_ENDING_9_37
+Ar - EV_DIMITRIUS_ENDING_9_38
+Ar - EV_DIMITRIUS_ENDING_9_39
+Ar - EV_DIMITRIUS_ENDING_9_40
+De - EV_DIMITRIUS_ENDING_9_41
+EV_DIMITRIUS_ENDING_9_42
 =SOUND sound_fall=
-Ar(shock) - Behind! & EV_DIMITRIUS_ENDING_9_43
-Realizing that Arron indeed saw something behind him, Dimitrius looked around to find a huge cloud of forming plasma spreading through the reactor's coil. & EV_DIMITRIUS_ENDING_9_44
-In the same moment Arron disappeared from his previous place. & EV_DIMITRIUS_ENDING_9_45
-De - ...Teleportation? & EV_DIMITRIUS_ENDING_9_46
-De - You fool, did you forget who I am? & EV_DIMITRIUS_ENDING_9_47
-De - ... & EV_DIMITRIUS_ENDING_9_48
-De - Huh? & EV_DIMITRIUS_ENDING_9_49
-De - Something stops me?  & EV_DIMITRIUS_ENDING_9_50
-De - HOW!? & EV_DIMITRIUS_ENDING_9_51
-De - ARR- & EV_DIMITRIUS_ENDING_9_52
+Ar(shock) - EV_DIMITRIUS_ENDING_9_43
+EV_DIMITRIUS_ENDING_9_44
+EV_DIMITRIUS_ENDING_9_45
+De - EV_DIMITRIUS_ENDING_9_46
+De - EV_DIMITRIUS_ENDING_9_47
+De - EV_DIMITRIUS_ENDING_9_48
+De - EV_DIMITRIUS_ENDING_9_49
+De - EV_DIMITRIUS_ENDING_9_50
+De - EV_DIMITRIUS_ENDING_9_51
+De - EV_DIMITRIUS_ENDING_9_52
 =WHITE=
 =DELAY 0.6=
 =SPRITE_HIDE=
-As the reactor fully powered, plasma erased his body without a trace. & EV_DIMITRIUS_ENDING_9_53
+EV_DIMITRIUS_ENDING_9_53
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG future_city_reactor=
 =SPRITE arron=
 =BLACKFADE 0.5=
-Ar - Thanks Iola, that was rather close. & EV_DIMITRIUS_ENDING_9_54
-I - N-no problem, we were lucky. & EV_DIMITRIUS_ENDING_9_55
-Ri(talk) - Yes, thankfully it worked.  & EV_DIMITRIUS_ENDING_9_56
-Ri - His teleportation wasn't that different from the faeries, only extremely powerf- & EV_DIMITRIUS_ENDING_9_57
+Ar - EV_DIMITRIUS_ENDING_9_54
+I - EV_DIMITRIUS_ENDING_9_55
+Ri(talk) - EV_DIMITRIUS_ENDING_9_56
+Ri - EV_DIMITRIUS_ENDING_9_57
 =SOUND explosion=
 =SHAKE_SCREEN 1=
-Ar(neutral) - Oh-uh. & EV_DIMITRIUS_ENDING_9_58
-Em - What's happening? & EV_DIMITRIUS_ENDING_9_59
-Ri(talk) - Rose says the reactor had a leakage, we should run before the building collapses. & EV_DIMITRIUS_ENDING_9_60
-Ar(neutral) - Will they be alright? & EV_DIMITRIUS_ENDING_9_61
-Ri - Yes, let's go. & EV_DIMITRIUS_ENDING_9_62
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_58
+Em - EV_DIMITRIUS_ENDING_9_59
+Ri(talk) - EV_DIMITRIUS_ENDING_9_60
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_61
+Ri - EV_DIMITRIUS_ENDING_9_62
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG future_city=
 =SPRITE rose=
 =BLACKFADE 0.5=
-Ro(talk) - We made it! & EV_DIMITRIUS_ENDING_9_63
-Ro - Look, demons are gone.  & EV_DIMITRIUS_ENDING_9_64
-Ri - Yes, with Dimitrius dead the dimensions are no longer connected.  & EV_DIMITRIUS_ENDING_9_65
-Ar - Nice work. Time to go home then.  & EV_DIMITRIUS_ENDING_9_66
-Em - Huh... Is this place going to stay in our world though? & EV_DIMITRIUS_ENDING_9_67
-Ar - ...Not my problem.  & EV_DIMITRIUS_ENDING_9_68
+Ro(talk) - EV_DIMITRIUS_ENDING_9_63
+Ro - EV_DIMITRIUS_ENDING_9_64
+Ri - EV_DIMITRIUS_ENDING_9_65
+Ar - EV_DIMITRIUS_ENDING_9_66
+Em - EV_DIMITRIUS_ENDING_9_67
+Ar - EV_DIMITRIUS_ENDING_9_68
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
@@ -115,48 +115,48 @@ Ar - ...Not my problem.  & EV_DIMITRIUS_ENDING_9_68
 =BLACKFADE 1=
 =GUI_NORMAL=
 =MUSIC eventgeneric=
-Ar - Hey, we are back and alive. & EV_DIMITRIUS_ENDING_9_69
-F - Nice to see you then, ex-mayor. & EV_DIMITRIUS_ENDING_9_70
-Ar(neutral) - ...What do you mean, 'ex-mayor'? & EV_DIMITRIUS_ENDING_9_71
-F - Oh, we have elected a new mayor since you were gone and we had no idea if you are even alive. & EV_DIMITRIUS_ENDING_9_72
-Ar(shock) - WHAAAT?! & EV_DIMITRIUS_ENDING_9_73
-F - By the way, there he is. & EV_DIMITRIUS_ENDING_9_74
+Ar - EV_DIMITRIUS_ENDING_9_69
+F - EV_DIMITRIUS_ENDING_9_70
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_71
+F - EV_DIMITRIUS_ENDING_9_72
+Ar(shock) - EV_DIMITRIUS_ENDING_9_73
+F - EV_DIMITRIUS_ENDING_9_74
 =SPRITE caliban=
-Ar - ...Eh? How? & EV_DIMITRIUS_ENDING_9_75
-F - Well, he said that he will stop the end of the world and all those demons if we get him elected.  & EV_DIMITRIUS_ENDING_9_76
-Cy - Oh, Hi Arron. How are you doing? & EV_DIMITRIUS_ENDING_9_77
-Ar - ...I'll fucking murder you.  & EV_DIMITRIUS_ENDING_9_78
-Ar(shock) - It was me who stopped the end of the world, not him! & EV_DIMITRIUS_ENDING_9_79
-G - Yeah, sure, you weren't even around most of the time. & EV_DIMITRIUS_ENDING_9_80
-Ar(shock) - I- & EV_DIMITRIUS_ENDING_9_81
-Ro(talk) - Master, isn't it fine? We have to return home soon anyway. & EV_DIMITRIUS_ENDING_9_82
-Ar(neutral) - ...... & EV_DIMITRIUS_ENDING_9_83
+Ar - EV_DIMITRIUS_ENDING_9_75
+F - EV_DIMITRIUS_ENDING_9_76
+Cy - EV_DIMITRIUS_ENDING_9_77
+Ar - EV_DIMITRIUS_ENDING_9_78
+Ar(shock) - EV_DIMITRIUS_ENDING_9_79
+G - EV_DIMITRIUS_ENDING_9_80
+Ar(shock) - EV_DIMITRIUS_ENDING_9_81
+Ro(talk) - EV_DIMITRIUS_ENDING_9_82
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_83
 =SPRITE_HIDE=
-Ar(neutral) - Whatever. But how do you plan to do it? Dimitrius is gone now. & EV_DIMITRIUS_ENDING_9_84
-I - Umh, I think I've some of those powers, when he died I felt like they went into me.  & EV_DIMITRIUS_ENDING_9_85
-I(sad) - Maybe because we were related. & EV_DIMITRIUS_ENDING_9_86
-I - I think I'll be able to transfer you back to your world. & EV_DIMITRIUS_ENDING_9_87
-F - Well now, don't be so rushy, we surely can celebrate your return before you go. & EV_DIMITRIUS_ENDING_9_88
-Ar - ...Thanks. & EV_DIMITRIUS_ENDING_9_89
+Ar(neutral) - EV_DIMITRIUS_ENDING_9_84
+I - EV_DIMITRIUS_ENDING_9_85
+I(sad) - EV_DIMITRIUS_ENDING_9_86
+I - EV_DIMITRIUS_ENDING_9_87
+F - EV_DIMITRIUS_ENDING_9_88
+Ar - EV_DIMITRIUS_ENDING_9_89
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG finale=
 =GUI_FULL=
 =BLACKFADE 1=
-Er - So what happened when you were left alone with him in there? & EV_DIMITRIUS_ENDING_9_90
-Ar - Obviously I've almost defeated him. Could've managed without those tricks. & EV_DIMITRIUS_ENDING_9_91
-Ro - Master, your nose might grow if you talk too much. & EV_DIMITRIUS_ENDING_9_92
-Ar - I guess you do deserve a praise for your part of the plan. & EV_DIMITRIUS_ENDING_9_93
-Ro - It's hard to imagine how we could ever deal with this otherwise. Cyrex deserved a praise for it. & EV_DIMITRIUS_ENDING_9_94
-Em - Ah, speaking of which, Sir Cyrex, am I still allowed to stay at the village? & EV_DIMITRIUS_ENDING_9_95
-Cy - Why, yes. Craftsmanship brings prosperity to the industry and benefits people. & EV_DIMITRIUS_ENDING_9_96
-F - You truly are a bright individual, Mayor. & EV_DIMITRIUS_ENDING_9_97
-Ar - Grrr, he really pisses me off now. How come he became that good at everything? & EV_DIMITRIUS_ENDING_9_98
-Ro - At least you don't have to fear for stealing all the girls. & EV_DIMITRIUS_ENDING_9_99
-Ar - True, I can settle with that. Must be terrible to live with a face like this. & EV_DIMITRIUS_ENDING_9_100
-Er - Face isn't everything to girls, you know. Even fat guys can fascin... & EV_DIMITRIUS_ENDING_9_101
-Ro - I don't wanna hear about this! The last thing I need is Master not taking care of himself. & EV_DIMITRIUS_ENDING_9_102
-Ar - I deserve some rest after all we've done, don't I? & EV_DIMITRIUS_ENDING_9_103
+Er - EV_DIMITRIUS_ENDING_9_90
+Ar - EV_DIMITRIUS_ENDING_9_91
+Ro - EV_DIMITRIUS_ENDING_9_92
+Ar - EV_DIMITRIUS_ENDING_9_93
+Ro - EV_DIMITRIUS_ENDING_9_94
+Em - EV_DIMITRIUS_ENDING_9_95
+Cy - EV_DIMITRIUS_ENDING_9_96
+F - EV_DIMITRIUS_ENDING_9_97
+Ar - EV_DIMITRIUS_ENDING_9_98
+Ro - EV_DIMITRIUS_ENDING_9_99
+Ar - EV_DIMITRIUS_ENDING_9_100
+Er - EV_DIMITRIUS_ENDING_9_101
+Ro - EV_DIMITRIUS_ENDING_9_102
+Ar - EV_DIMITRIUS_ENDING_9_103
 =GUI_HIDE=
 =BLACKUNFADE 2=
 =DELAY 2=

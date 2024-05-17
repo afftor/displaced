@@ -6,27 +6,27 @@
 =SPRITE_UNFADE 0.3=
 =MUSIC event_tragic=
 =GUI_NORMAL=
-Ro - Maybe we should've helped the survivors back in the city. & EV_DIMITRIUS_2_1_0
-Ar(neutral) - We have enough to deal with on our hands already. & EV_DIMITRIUS_2_1_1
-Ro - What are we gonna do about Dimitrius though? & EV_DIMITRIUS_2_1_2
-Ar(neutral) - Maybe we won't do anything.  & EV_DIMITRIUS_2_1_3
-Ar(neutral) - He seems to be rather dangerous, but isn't hostile to us. & EV_DIMITRIUS_2_1_4
-Ro(talk) - What do you mean? & EV_DIMITRIUS_2_1_5
-Ro(talk) - Now since he got those powers we won't be able to go back too. & EV_DIMITRIUS_2_1_6
-Ar - Rose, why do you think I want to go back?  & EV_DIMITRIUS_2_1_7
-Ar(neutral) - To live the rest of my life in the shadow of my brother, who attempted to get rid of me? & EV_DIMITRIUS_2_1_8
-Ar - Not to mention being chained to the palace and deal with all the stupid people there.  & EV_DIMITRIUS_2_1_9
-Ro - But it was our home.  & EV_DIMITRIUS_2_1_10
-Ar(neutral) - Yes, except barely anyone is waiting for us there.  & EV_DIMITRIUS_2_1_11
-Ar(neutral) - I've never had the freedom to do anything useful in my life until we ended up here. & EV_DIMITRIUS_2_1_12
-Ro - But... What should I do? & EV_DIMITRIUS_2_1_13
-Ar(neutral) - You aren't my slave anymore.  & EV_DIMITRIUS_2_1_14
-Ar(neutral) - You can choose what to do with your own life as well.  & EV_DIMITRIUS_2_1_15
-Ro(talk) - But I don't- & EV_DIMITRIUS_2_1_16
-Ro - ....... & EV_DIMITRIUS_2_1_16_1
-Ro - ...I understand. & EV_DIMITRIUS_2_1_17
-Ro - I don't think we can ignore what's going on around anymore. & EV_DIMITRIUS_2_1_18
-Ro - Excuse me... & EV_DIMITRIUS_2_1_19
+Ro - EV_DIMITRIUS_2_1_0
+Ar(neutral) - EV_DIMITRIUS_2_1_1
+Ro - EV_DIMITRIUS_2_1_2
+Ar(neutral) - EV_DIMITRIUS_2_1_3
+Ar(neutral) - EV_DIMITRIUS_2_1_4
+Ro(talk) - EV_DIMITRIUS_2_1_5
+Ro(talk) - EV_DIMITRIUS_2_1_6
+Ar - EV_DIMITRIUS_2_1_7
+Ar(neutral) - EV_DIMITRIUS_2_1_8
+Ar - EV_DIMITRIUS_2_1_9
+Ro - EV_DIMITRIUS_2_1_10
+Ar(neutral) - EV_DIMITRIUS_2_1_11
+Ar(neutral) - EV_DIMITRIUS_2_1_12
+Ro - EV_DIMITRIUS_2_1_13
+Ar(neutral) - EV_DIMITRIUS_2_1_14
+Ar(neutral) - EV_DIMITRIUS_2_1_15
+Ro(talk) - EV_DIMITRIUS_2_1_16
+Ro - EV_DIMITRIUS_2_1_16_1
+Ro - EV_DIMITRIUS_2_1_17
+Ro - EV_DIMITRIUS_2_1_18
+Ro - EV_DIMITRIUS_2_1_19
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
@@ -35,55 +35,55 @@ Ro - Excuse me... & EV_DIMITRIUS_2_1_19
 =MUSIC event_mysterious=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ro - (Why do I feel so terrible now) & EV_DIMITRIUS_2_1_20
-Ro - (Maybe I really need a break) & EV_DIMITRIUS_2_1_21
-Ro(talk) - Hmm... Who's there?  & EV_DIMITRIUS_2_1_22
+Ro - EV_DIMITRIUS_2_1_20
+Ro - EV_DIMITRIUS_2_1_21
+Ro(talk) - EV_DIMITRIUS_2_1_22
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
-Ro - Iola? & EV_DIMITRIUS_2_1_23
-I - Evening, Rose.  & EV_DIMITRIUS_2_1_24
-I - I'll have to borrow you for a moment. & EV_DIMITRIUS_2_1_25
-Ro(talk) - Huh? & EV_DIMITRIUS_2_1_26
+Ro - EV_DIMITRIUS_2_1_23
+I - EV_DIMITRIUS_2_1_24
+I - EV_DIMITRIUS_2_1_25
+Ro(talk) - EV_DIMITRIUS_2_1_26
 =SOUND sound_hit=
-*Thud* & EV_DIMITRIUS_2_1_27
-With an uncharacteristic strike, Iola knocked Rose out and swiftly disappeared with her into the night. & EV_DIMITRIUS_2_1_28
+EV_DIMITRIUS_2_1_27
+EV_DIMITRIUS_2_1_28
 =SOUND sound_fall=
 =BLACKTRANS 2=
 =DELAY 2=
 =BG cult2=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-After some time Rose regained her consciousness in a vaguely familiar location. & EV_DIMITRIUS_2_1_28_1
-Ro - Ugh... what... Where am I? & EV_DIMITRIUS_2_1_29
-Rose found herself in an enclosed room in a place she hasn't seen before. & EV_DIMITRIUS_2_1_30
+EV_DIMITRIUS_2_1_28_1
+Ro - EV_DIMITRIUS_2_1_29
+EV_DIMITRIUS_2_1_30
 =SPRITE demitrius_demon=
 =SPRITE_UNFADE 0.3=
-The small room only had two other people besides her: Iola and Dimitrius. & EV_DIMITRIUS_2_1_31
-Ro - Iola? Why..? & EV_DIMITRIUS_2_1_32
-Iola acted as she couldn't hear or see Rose.  & EV_DIMITRIUS_2_1_33
-Ro(talk) - What have you done to her!? & EV_DIMITRIUS_2_1_34
-De - Why are mortals so dense?  & EV_DIMITRIUS_2_1_35
-De - Who do you think she is?  & EV_DIMITRIUS_2_1_36
-Ro - Our friend.  & EV_DIMITRIUS_2_1_37
-De - Then you should choose better friends. & EV_DIMITRIUS_2_1_38
-De - She's a member of the cult, you idiot.  & EV_DIMITRIUS_2_1_39
-De - What do you think this cult is for? It was reestablished solely to help us invade this world. & EV_DIMITRIUS_2_1_40
-De - She was trained since her birth to fall under our control and serve us however she might.  & EV_DIMITRIUS_2_1_41
-De - Naturally I've planted a few additional tricks when she was imprisoned, just in case it could prove to be useful. & EV_DIMITRIUS_2_1_42
-Ro - This is disgusting.  & EV_DIMITRIUS_2_1_43
-De - Thanks. But I didn't need your opinion. & EV_DIMITRIUS_2_1_44
-Ro - What do you want of me? & EV_DIMITRIUS_2_1_45
-De - I have a proposal for you. & EV_DIMITRIUS_2_1_46
-Ro(sarcastic) - ...I'm sorry? & EV_DIMITRIUS_2_1_47
-De - To put it briefly, I offer you to take the place of Annet.  & EV_DIMITRIUS_2_1_48
-De - After her death there's some gap in ranks.  & EV_DIMITRIUS_2_1_49
-De - You could fit right in and have the same powers she had. & EV_DIMITRIUS_2_1_50
-De - In return you'll only have to pledge your loyalty to me. & EV_DIMITRIUS_2_1_51
-De - Given that it will save you from the eventual demise of your kind, I see it as an extremely nice offer.  & EV_DIMITRIUS_2_1_52
-Ro - ...... & EV_DIMITRIUS_2_1_53
-De - You will have some time to think about it.  & EV_DIMITRIUS_2_1_54
-De - Take her to the jail cell. & EV_DIMITRIUS_2_1_55
-I - Okay.  & EV_DIMITRIUS_2_1_56
+EV_DIMITRIUS_2_1_31
+Ro - EV_DIMITRIUS_2_1_32
+EV_DIMITRIUS_2_1_33
+Ro(talk) - EV_DIMITRIUS_2_1_34
+De - EV_DIMITRIUS_2_1_35
+De - EV_DIMITRIUS_2_1_36
+Ro - EV_DIMITRIUS_2_1_37
+De - EV_DIMITRIUS_2_1_38
+De - EV_DIMITRIUS_2_1_39
+De - EV_DIMITRIUS_2_1_40
+De - EV_DIMITRIUS_2_1_41
+De - EV_DIMITRIUS_2_1_42
+Ro - EV_DIMITRIUS_2_1_43
+De - EV_DIMITRIUS_2_1_44
+Ro - EV_DIMITRIUS_2_1_45
+De - EV_DIMITRIUS_2_1_46
+Ro(sarcastic) - EV_DIMITRIUS_2_1_47
+De - EV_DIMITRIUS_2_1_48
+De - EV_DIMITRIUS_2_1_49
+De - EV_DIMITRIUS_2_1_50
+De - EV_DIMITRIUS_2_1_51
+De - EV_DIMITRIUS_2_1_52
+Ro - EV_DIMITRIUS_2_1_53
+De - EV_DIMITRIUS_2_1_54
+De - EV_DIMITRIUS_2_1_55
+I - EV_DIMITRIUS_2_1_56
 =SPRITE_FADE 0.3=
 =GUI_HIDE=
 =BLACKTRANS 2=
@@ -91,39 +91,39 @@ I - Okay.  & EV_DIMITRIUS_2_1_56
 =BG villageday=
 =MUSIC eventgeneric=
 =GUI_NORMAL=
-Next day. & EV_DIMITRIUS_2_1_57
+EV_DIMITRIUS_2_1_57
 =SPRITE erika=
 =SPRITE_UNFADE 0.3=
-Ar - Hey, Erika, have you seen Rose? & EV_DIMITRIUS_2_1_58
-Ar - I haven't seen her since yesterday.  & EV_DIMITRIUS_2_1_59
-Er - No, it seems Iola is gone as well. & EV_DIMITRIUS_2_1_60
-Ar - Okay, this is unusual.  & EV_DIMITRIUS_2_1_61
-Ar(neutral) - I'll go see Rilu I suppose. & EV_DIMITRIUS_2_1_62
+Ar - EV_DIMITRIUS_2_1_58
+Ar - EV_DIMITRIUS_2_1_59
+Er - EV_DIMITRIUS_2_1_60
+Ar - EV_DIMITRIUS_2_1_61
+Ar(neutral) - EV_DIMITRIUS_2_1_62
 =SPRITE_FADE 0.3=
 =BLACKTRANS 1=
 =DELAY 1=
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
-Ri - It seems they are with Dimitrus. & EV_DIMITRIUS_2_1_63
-Ar(anger) - WHAT THE HELL!? & EV_DIMITRIUS_2_1_64
-Ri - We can only guess, but Rose is held hostage.  & EV_DIMITRIUS_2_1_65
-Ri - Don't think Iola is staying there willingly either. & EV_DIMITRIUS_2_1_66
-Ar(anger) - Fuck...  & EV_DIMITRIUS_2_1_67
-Ar(anger) - How did this happen... & EV_DIMITRIUS_2_1_68
-Ar(neutral) - We must go after them. & EV_DIMITRIUS_2_1_69
-Ri(talk) - Don't be stupid.  & EV_DIMITRIUS_2_1_70
-Ri - Even if by some miracle we win, he can send them anywhere with his powers. & EV_DIMITRIUS_2_1_71
-Ar(neutral) - ..... & EV_DIMITRIUS_2_1_72
-Ri - We might have a chance, but I'll need your help. & EV_DIMITRIUS_2_1_73
-Ar(neutral) - A chance? & EV_DIMITRIUS_2_1_74
-Ri - We will need to visit the Summerhill Keep first. & EV_DIMITRIUS_2_1_75
-Ar(anger) - You expect me to leave them in this shithead's hands just like that? & EV_DIMITRIUS_2_1_76
-Ri(talk) - I expect you to not be reckless and weight the odds. & EV_DIMITRIUS_2_1_77
-Ri - Acting on your emotions will only make things worse.  & EV_DIMITRIUS_2_1_78
-Ar(anger) - Shit... You don't think I'll just forget about them? & EV_DIMITRIUS_2_1_78_1
-Ri - Arron, you've helped me before and I'm your ally. We don't have much of a chance otherwise. & EV_DIMITRIUS_2_1_78_2
-Ar(neutral) - ..... & EV_DIMITRIUS_2_1_79
-Ri - Let's go then, it's better if we don't waste time.  & EV_DIMITRIUS_2_1_80
+Ri - EV_DIMITRIUS_2_1_63
+Ar(anger) - EV_DIMITRIUS_2_1_64
+Ri - EV_DIMITRIUS_2_1_65
+Ri - EV_DIMITRIUS_2_1_66
+Ar(anger) - EV_DIMITRIUS_2_1_67
+Ar(anger) - EV_DIMITRIUS_2_1_68
+Ar(neutral) - EV_DIMITRIUS_2_1_69
+Ri(talk) - EV_DIMITRIUS_2_1_70
+Ri - EV_DIMITRIUS_2_1_71
+Ar(neutral) - EV_DIMITRIUS_2_1_72
+Ri - EV_DIMITRIUS_2_1_73
+Ar(neutral) - EV_DIMITRIUS_2_1_74
+Ri - EV_DIMITRIUS_2_1_75
+Ar(anger) - EV_DIMITRIUS_2_1_76
+Ri(talk) - EV_DIMITRIUS_2_1_77
+Ri - EV_DIMITRIUS_2_1_78
+Ar(anger) - EV_DIMITRIUS_2_1_78_1
+Ri - EV_DIMITRIUS_2_1_78_2
+Ar(neutral) - EV_DIMITRIUS_2_1_79
+Ri - EV_DIMITRIUS_2_1_80
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

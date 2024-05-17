@@ -205,22 +205,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="test_combat" type="Button" parent="."]
-visible = false
-margin_left = 15.0
-margin_top = 966.0
-margin_right = 97.0
-margin_bottom = 1051.0
+[node name="dev_panel" type="Panel" parent="."]
+margin_left = 139.0
+margin_top = 771.0
+margin_right = 729.0
+margin_bottom = 861.0
+
+[node name="test_combat" type="Button" parent="dev_panel"]
+margin_left = 20.0
+margin_top = 23.0
+margin_right = 102.0
+margin_bottom = 70.0
 text = "test c"
 clip_text = true
 
-[node name="test_event" type="Button" parent="."]
-visible = false
-margin_left = 15.0
-margin_top = 862.0
-margin_right = 97.0
-margin_bottom = 947.0
+[node name="test_event" type="Button" parent="dev_panel"]
+margin_left = 125.0
+margin_top = 19.0
+margin_right = 207.0
+margin_bottom = 72.0
 text = "test e"
+clip_text = true
+
+[node name="dump_ref" type="Button" parent="dev_panel"]
+margin_left = 221.0
+margin_top = 19.0
+margin_right = 348.0
+margin_bottom = 72.0
+text = "dump referals"
 clip_text = true
 
 [node name="foodicon" type="TextureRect" parent="."]

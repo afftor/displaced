@@ -8,24 +8,24 @@
 =SPRITE erika=
 =SPRITE_UNFADE 0.5=
 =GUI_NORMAL=
-Er - Well, this place ain't half bad. & EV_ERIKA_1_0
-Ar - Naturally. I'm the ruler here after all. & EV_ERIKA_1_1
-Er - You won't mind me staying here too? & EV_ERIKA_1_2
-Ar - I would be honored. & EV_ERIKA_1_3
-Ro - I mind. We don't really have a room for guests. & EV_ERIKA_1_4
-Er - Hmm... That's a shame. Say, Arron, you have a nice, big bed. & EV_ERIKA_1_5
-Er - Isn't it a Mayor's responsibility to provide guests with a sleeping place?  & EV_ERIKA_1_6
-Er(happy) - I would love to know you better while you are short on rooms for guests. & EV_ERIKA_1_7
-Ro(shock) - NO! & EV_ERIKA_1_8
-Er - Hm? Why are you against it?  & EV_ERIKA_1_9
-Ro - Because... Guests shouldn't be bothered by others as they sleep. & EV_ERIKA_1_10
-Ro - I can sleep in Master's bed and you take mine. & EV_ERIKA_1_11
-Er - Eeeh? But I don't wanna sleep alone. & EV_ERIKA_1_12
-Er(happy) - Well, if you don't want to get separated from Arron, why don't we all sleep together? & EV_ERIKA_1_13
-Ar - (As appealing as it may sound, I'm afraid this might end up in a disaster. Rose seems quite serious about this. ) & EV_ERIKA_1_14
-Ar - Alright, calm down you two, I believe we have some additional space in the attic. & EV_ERIKA_1_15
-Er - Hmm... Fine, but leave your door unlocked. I might want to visit if I get bored. & EV_ERIKA_1_16
-Ro - Sigh. You are still going at it? & EV_ERIKA_1_17
+Er - EV_ERIKA_1_0
+Ar - EV_ERIKA_1_1
+Er - EV_ERIKA_1_2
+Ar - EV_ERIKA_1_3
+Ro - EV_ERIKA_1_4
+Er - EV_ERIKA_1_5
+Er - EV_ERIKA_1_6
+Er(happy) - EV_ERIKA_1_7
+Ro(shock) - EV_ERIKA_1_8
+Er - EV_ERIKA_1_9
+Ro - EV_ERIKA_1_10
+Ro - EV_ERIKA_1_11
+Er - EV_ERIKA_1_12
+Er(happy) - EV_ERIKA_1_13
+Ar - EV_ERIKA_1_14
+Ar - EV_ERIKA_1_15
+Er - EV_ERIKA_1_16
+Ro - EV_ERIKA_1_17
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

@@ -5,139 +5,139 @@
 =BG castle_interior=
 =SPRITE rilu=
 =MUSIC rilu_theme=
-In a large hall an unknown man laid defeated as Rilu was inspecting something in her hand. & EV_RILU_2_4_0
-Ar(neutral) - Rilu? What's been going on here? & EV_RILU_2_4_1
-Ri - ...Arron. & EV_RILU_2_4_2
-Ri - You've been following me? & EV_RILU_2_4_3
-?(Z) - You should stop her... If you want to live. & EV_RILU_2_4_4
-Ar(neutral) - Hmm? Who's this guy? & EV_RILU_2_4_5
-Ri - It's Zelroth. He used to be my student in the past. & EV_RILU_2_4_6
-Ar(neutral) - I think I've heard this name in town.  & EV_RILU_2_4_7
-Ri - He used to be a gifted scientist and a doctor, but now he seems to prefer to dabble necromancy instead. & EV_RILU_2_4_8
-Ar - ...And that thing in your hand? & EV_RILU_2_4_9
-Ri - ........ & EV_RILU_2_4_10
-Rilu demonstrates a small black ring.  & EV_RILU_2_4_11
-Ri - It's an ancient artifact - The Circle. & EV_RILU_2_4_12
+EV_RILU_2_4_0
+Ar(neutral) - EV_RILU_2_4_1
+Ri - EV_RILU_2_4_2
+Ri - EV_RILU_2_4_3
+?(Z) - EV_RILU_2_4_4
+Ar(neutral) - EV_RILU_2_4_5
+Ri - EV_RILU_2_4_6
+Ar(neutral) - EV_RILU_2_4_7
+Ri - EV_RILU_2_4_8
+Ar - EV_RILU_2_4_9
+Ri - EV_RILU_2_4_10
+EV_RILU_2_4_11
+Ri - EV_RILU_2_4_12
 =SPRITE zelroth=
-Z - She plans to destroy the world with it. & EV_RILU_2_4_13
-Ar - What? & EV_RILU_2_4_14
-Ri(spell) - Stay down. & EV_RILU_2_4_15
+Z - EV_RILU_2_4_13
+Ar - EV_RILU_2_4_14
+Ri(spell) - EV_RILU_2_4_15
 =SPRITE_HIDE=
-Invisible force has pushed Zelroth back onto the floor. & EV_RILU_2_4_16
-Z - Gh!.. & EV_RILU_2_4_17
-Despite that he continued to talk. & EV_RILU_2_4_18
-Z - Long time ago an ancient civilization had this ring. & EV_RILU_2_4_19
-Z - It's the ultimate doomsday device. & EV_RILU_2_4_20
-Z - And it's capable of destroying our whole reality. & EV_RILU_2_4_21
-Ar(neutral) - That's a bit hard to imagine. & EV_RILU_2_4_22
-Z - Why don't you ask your "friend" then. & EV_RILU_2_4_23
+EV_RILU_2_4_16
+Z - EV_RILU_2_4_17
+EV_RILU_2_4_18
+Z - EV_RILU_2_4_19
+Z - EV_RILU_2_4_20
+Z - EV_RILU_2_4_21
+Ar(neutral) - EV_RILU_2_4_22
+Z - EV_RILU_2_4_23
 =SPRITE rilu=
 =SPRITE_UNFADE 0.5=
-Ar(neutral) - ...Rilu? & EV_RILU_2_4_24
-Ri(talk) - I believe it to be true. & EV_RILU_2_4_25
-Ri - The world is in perpetual motion.  & EV_RILU_2_4_26
-Ri - People are born, live and die, their children are born to repeat the cycle.  & EV_RILU_2_4_27
-Ri - The sun rises only to set and then repeats this cycle indefinitely & EV_RILU_2_4_28
-Ri(talk) - That's the nature of existence, the one we are in, at least. & EV_RILU_2_4_29
-Ri(talk) - The Circle supposedly can stop it once and for all. & EV_RILU_2_4_30
-Ar(neutral) - You came here for this? & EV_RILU_2_4_31
-Ri - Yes. This was my goal all along.  & EV_RILU_2_4_32
-Ri - I was planning for it long before we met. & EV_RILU_2_4_33
-Ri - I have deceived you so I could find the ring. & EV_RILU_2_4_34
-Ar(neutral) - But why? & EV_RILU_2_4_35
-Ri - I can explain, but I don't expect you to understand it. & EV_RILU_2_4_36
-Ar(neutral) - No hurt in trying. & EV_RILU_2_4_37
-Ri - ... & EV_RILU_2_4_38
-Ri - I hate this world.  & EV_RILU_2_4_39
-Ri - And I hate this life.   & EV_RILU_2_4_40
-Ri(talk) - I have been evil all along. & EV_RILU_2_4_41
-Ri(talk) - And I want it to be destroyed.  & EV_RILU_2_4_42
-Ar(neutral) - But why would you kill yourself?  & EV_RILU_2_4_43
-Ri(talk) - *Sigh* & EV_RILU_2_4_44
-Ri - Because life to me is endless suffering. & EV_RILU_2_4_45
-Ri - I've told you before, my existence is nothing but agony. & EV_RILU_2_4_46
-Ri(talk) - I'm dead tired of being injured, tortured, left at the mercy of a mob or a toy for some maniac. & EV_RILU_2_4_47
-Ar(neutral) - I don't get it. Aren't you fine now? Don't you have fri- & EV_RILU_2_4_48
-Ri - Like I said, you won't understand it. & EV_RILU_2_4_49
-Ri - This is only a glimpse of peace in my being. & EV_RILU_2_4_50
-Ri - These never last long for me. & EV_RILU_2_4_51
-Ri(talk) - You can live and die, but I'll keep existing. & EV_RILU_2_4_52
-Ri - I'll be feared and hunted again in no time. & EV_RILU_2_4_53
-Ri - I hate people and nothing is better than ending it once for all. & EV_RILU_2_4_55
-Ar(neutral) - ...Is that really so?  & EV_RILU_2_4_56
-Ri(talk) - Yes.  & EV_RILU_2_4_57
-Ar(neutral) - I don't believe you.  & EV_RILU_2_4_58
-Ri(talk) - Stop being stup- & EV_RILU_2_4_59
-Ar(neutral) - You are right. I can't understand how terrible your suffering was.  & EV_RILU_2_4_60
-Ar(neutral) - But I do understand that it's bad enough to make you wish to end the world. & EV_RILU_2_4_61
-Ar(neutral) - It must be why you show so few emotions too. & EV_RILU_2_4_62
-Ar(neutral) - Must really put off the bastards who tortured you for fun. & EV_RILU_2_4_63
-Ri - ....... & EV_RILU_2_4_64
-Ar(neutral) - But you are also lying through your teeth. & EV_RILU_2_4_65
-Ar(neutral) - You aren't evil, and you absolutely don't hate people. You hardly used us either. & EV_RILU_2_4_66
-Ri - You are not making any sense. & EV_RILU_2_4_67
-Ar(neutral) - Despite all hardships you don't blame others. & EV_RILU_2_4_68
-Ar(neutral) - And you don't show any real grudge towards them. & EV_RILU_2_4_69
-Ar(neutral) - You care for me and you cared enough to save Iola, even though you hardly knew her. & EV_RILU_2_4_70
-Ar(neutral) - You pretend to be evil, because this way you hope to make me reject you. & EV_RILU_2_4_71
-Ar(neutral) - So you would have an easier time doing what you've planned & EV_RILU_2_4_72
-Ar - But I won't hate you.  & EV_RILU_2_4_73
-Ar - And I'm sure the other villagers and girls like you as well. & EV_RILU_2_4_74
-Ri(talk) - ...Shut up. & EV_RILU_2_4_75
-Ar(neutral) - What happened to you is unfortunate... No, terrible.  & EV_RILU_2_4_76
-Ar - But I can swear to you that nobody will abuse you as long as I live. & EV_RILU_2_4_77
-Ar - This might be not much for you, but this much I can guarantee.  & EV_RILU_2_4_78
-Ar - Don't you think that killing us all can wait for some time?  & EV_RILU_2_4_79
-Ar - I can't stop you after I'm dead anyway. & EV_RILU_2_4_80
-Ri - ...Y-You won't fool me.	 & EV_RILU_2_4_81
-Ar(neutral) - You know I'm being serious.  & EV_RILU_2_4_82
-Ri - (What's this... Why am I trembling?) & EV_RILU_2_4_83
-Ar(neutral) - So, what do you say?  & EV_RILU_2_4_84
-Ar - The others might get worried if they find out we are missing.  & EV_RILU_2_4_85
-Ar - And it looks like something got in your eyes. & EV_RILU_2_4_86
-Ri - ...... & EV_RILU_2_4_87
-Rilu wiped her face with a sleeve. & EV_RILU_2_4_88
-Ri(talk) - ...Fine, I'll trust you.  & EV_RILU_2_4_89
-Ri - Let's go th- & EV_RILU_2_4_90
-Before Rilu could finish her sentence a large monster broke into the hall. & EV_RILU_2_4_91
+Ar(neutral) - EV_RILU_2_4_24
+Ri(talk) - EV_RILU_2_4_25
+Ri - EV_RILU_2_4_26
+Ri - EV_RILU_2_4_27
+Ri - EV_RILU_2_4_28
+Ri(talk) - EV_RILU_2_4_29
+Ri(talk) - EV_RILU_2_4_30
+Ar(neutral) - EV_RILU_2_4_31
+Ri - EV_RILU_2_4_32
+Ri - EV_RILU_2_4_33
+Ri - EV_RILU_2_4_34
+Ar(neutral) - EV_RILU_2_4_35
+Ri - EV_RILU_2_4_36
+Ar(neutral) - EV_RILU_2_4_37
+Ri - EV_RILU_2_4_38
+Ri - EV_RILU_2_4_39
+Ri - EV_RILU_2_4_40
+Ri(talk) - EV_RILU_2_4_41
+Ri(talk) - EV_RILU_2_4_42
+Ar(neutral) - EV_RILU_2_4_43
+Ri(talk) - EV_RILU_2_4_44
+Ri - EV_RILU_2_4_45
+Ri - EV_RILU_2_4_46
+Ri(talk) - EV_RILU_2_4_47
+Ar(neutral) - EV_RILU_2_4_48
+Ri - EV_RILU_2_4_49
+Ri - EV_RILU_2_4_50
+Ri - EV_RILU_2_4_51
+Ri(talk) - EV_RILU_2_4_52
+Ri - EV_RILU_2_4_53
+Ri - EV_RILU_2_4_55
+Ar(neutral) - EV_RILU_2_4_56
+Ri(talk) - EV_RILU_2_4_57
+Ar(neutral) - EV_RILU_2_4_58
+Ri(talk) - EV_RILU_2_4_59
+Ar(neutral) - EV_RILU_2_4_60
+Ar(neutral) - EV_RILU_2_4_61
+Ar(neutral) - EV_RILU_2_4_62
+Ar(neutral) - EV_RILU_2_4_63
+Ri - EV_RILU_2_4_64
+Ar(neutral) - EV_RILU_2_4_65
+Ar(neutral) - EV_RILU_2_4_66
+Ri - EV_RILU_2_4_67
+Ar(neutral) - EV_RILU_2_4_68
+Ar(neutral) - EV_RILU_2_4_69
+Ar(neutral) - EV_RILU_2_4_70
+Ar(neutral) - EV_RILU_2_4_71
+Ar(neutral) - EV_RILU_2_4_72
+Ar - EV_RILU_2_4_73
+Ar - EV_RILU_2_4_74
+Ri(talk) - EV_RILU_2_4_75
+Ar(neutral) - EV_RILU_2_4_76
+Ar - EV_RILU_2_4_77
+Ar - EV_RILU_2_4_78
+Ar - EV_RILU_2_4_79
+Ar - EV_RILU_2_4_80
+Ri - EV_RILU_2_4_81
+Ar(neutral) - EV_RILU_2_4_82
+Ri - EV_RILU_2_4_83
+Ar(neutral) - EV_RILU_2_4_84
+Ar - EV_RILU_2_4_85
+Ar - EV_RILU_2_4_86
+Ri - EV_RILU_2_4_87
+EV_RILU_2_4_88
+Ri(talk) - EV_RILU_2_4_89
+Ri - EV_RILU_2_4_90
+EV_RILU_2_4_91
 =SHAKE_SCREEN 0.5=
 =SPRITE caliban=
 =SPRITE_UNFADE 0.1=
-C - Master! & EV_RILU_2_4_92
-C - I'm here.  & EV_RILU_2_4_93
-Z - Caliban, get her! & EV_RILU_2_4_94
-C - Raaargh! & EV_RILU_2_4_95
-Before they managed to react, the monster charged into Rilu. & EV_RILU_2_4_96
-Ar(shock) - Oh shit! & EV_RILU_2_4_97
-Arron tackled Rilu out of the way and they both tumbled onto the floor as the monster missed them. & EV_RILU_2_4_98
-=SOUND cling=
-More undead started pouring from all directions. & EV_RILU_2_4_99
+C - EV_RILU_2_4_92
+C - EV_RILU_2_4_93
+Z - EV_RILU_2_4_94
+C - EV_RILU_2_4_95
+EV_RILU_2_4_96
+Ar(shock) - EV_RILU_2_4_97
+EV_RILU_2_4_98
+=SOUND sound_fall=
+EV_RILU_2_4_99
 =SPRITE skeleton=
-Ar(shock) - We are in trouble! & EV_RILU_2_4_100
-Ri(spell) - ..... & EV_RILU_2_4_101
-Rilu casted a spell and the room went pitch dark.  & EV_RILU_2_4_102
+Ar(shock) - EV_RILU_2_4_100
+Ri(spell) - EV_RILU_2_4_101
+EV_RILU_2_4_102
 =SPRITE_FADE 0.2=
-Without wasting any time they snuck from the castle. & EV_RILU_2_4_103
+EV_RILU_2_4_103
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
 =BG forest=
 =GUI_NORMAL=
 =SPRITE rilu=
-Ar - Whew... That was a handy trick. Are you alright? & EV_RILU_2_4_104
-Ri - Yes.  & EV_RILU_2_4_105
-Ri - I didn't think I'd be returning though. & EV_RILU_2_4_106
-Ar - At least you are not doing it alone.  & EV_RILU_2_4_107
-Ar(neutral) - What happened to the ring? & EV_RILU_2_4_108
-Ri - I dropped it when you pushed me. & EV_RILU_2_4_109
-Ar(neutral) - Oh... Sorry. & EV_RILU_2_4_110
-Ri - It's fine.  & EV_RILU_2_4_111
-Ri(talk) - I'm not gonna need it any time soon. & EV_RILU_2_4_112
-Ar - Good to hear that. & EV_RILU_2_4_113
-..... & EV_RILU_2_4_114
-Ri(talk) - Thank you for coming, Arron. & EV_RILU_2_4_115
-Ri - You've done for me more, than anyone before.  & EV_RILU_2_4_116
-Ar - Come on, you’re gonna make me blush. & EV_RILU_2_4_117
+Ar - EV_RILU_2_4_104
+Ri - EV_RILU_2_4_105
+Ri - EV_RILU_2_4_106
+Ar - EV_RILU_2_4_107
+Ar(neutral) - EV_RILU_2_4_108
+Ri - EV_RILU_2_4_109
+Ar(neutral) - EV_RILU_2_4_110
+Ri - EV_RILU_2_4_111
+Ri(talk) - EV_RILU_2_4_112
+Ar - EV_RILU_2_4_113
+EV_RILU_2_4_114
+Ri(talk) - EV_RILU_2_4_115
+Ri - EV_RILU_2_4_116
+Ar - EV_RILU_2_4_117
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

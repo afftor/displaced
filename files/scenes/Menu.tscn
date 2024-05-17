@@ -36,8 +36,8 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
-margin_left = 1.24487
-margin_right = 1923.24
+margin_left = 0.24487
+margin_right = 1922.24
 margin_bottom = 1080.0
 stream = ExtResource( 19 )
 autoplay = true

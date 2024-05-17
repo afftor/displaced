@@ -5,39 +5,39 @@
 =BG hall=
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
-Ar - Hey, how do you like your new home?  & EV_IOLA_2_5_0
-I - It's nice, thanks. & EV_IOLA_2_5_1
-I(sad) - I just don't know what I should do now.  & EV_IOLA_2_5_2
-I(sad) - Father has changed, he would never do something like this. & EV_IOLA_2_5_3
-Ro(talk) - Uh.. I think we should tell you about the time we went with him to the caves. & EV_IOLA_2_5_4
+Ar - EV_IOLA_2_5_0
+I - EV_IOLA_2_5_1
+I(sad) - EV_IOLA_2_5_2
+I(sad) - EV_IOLA_2_5_3
+Ro(talk) - EV_IOLA_2_5_4
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
 =GUI_NORMAL=
-I(sad) - That sounds unreal... But I can't deny your words. & EV_IOLA_2_5_5
-Ar - Just for the note, we aren't demons or anything like that. & EV_IOLA_2_5_6
-Ro(sarcastic) - Not in a literal sense at least. & EV_IOLA_2_5_7
-I(sad) - I believe you. & EV_IOLA_2_5_8
-I - You've mentioned you are looking for some person?  & EV_IOLA_2_5_9
-Ar - Yeah, according to Rilu there's someone who has been living for a really long time and probably came from another world as well. & EV_IOLA_2_5_10
-Ar - And we also got this Saint Pearl from Faery Queen, which seems to be related to him. & EV_IOLA_2_5_11
-I - This reminded me of Sergius.  & EV_IOLA_2_5_12
-I - He's one of the Ancestors' saints.  & EV_IOLA_2_5_13
-I - I've been studying it during my initiation.  & EV_IOLA_2_5_14
-I - And you are planning to find him? & EV_IOLA_2_5_15
-Ar(neutral) - Don't see any better options. & EV_IOLA_2_5_16
-I(sad) - It's hard to believe he'd still be alive.  & EV_IOLA_2_5_17
-I - He was one of the formers a long time ago, but it never said what happened to him. & EV_IOLA_2_5_18
-I - Please, let me help you. If he's actually the Sergius, he would know what's going on.  & EV_IOLA_2_5_19
-I(sad) - Although I don't know why he would just avoid us if he's still alive. & EV_IOLA_2_5_20
-Ro - Maybe he has lost his memory or something.  & EV_IOLA_2_5_21
-Ar - Or just got bored of the religious organization running stuff. & EV_IOLA_2_5_22
-I(shock) - No way! & EV_IOLA_2_5_23
-Ar - What? Don't you ever feel bored by the repetitive rituals? & EV_IOLA_2_5_24
-Ar - It's like brushing your teeth but also everyone makes you feel guilty for not doing it. & EV_IOLA_2_5_25
-Ro(sarcastic) - Master is fooling around. & EV_IOLA_2_5_26
-Ro - I'm sure there must be some serious reason. & EV_IOLA_2_5_27
-I - ...Thanks, I hope we will find him. & EV_IOLA_2_5_28
+I(sad) - EV_IOLA_2_5_5
+Ar - EV_IOLA_2_5_6
+Ro(sarcastic) - EV_IOLA_2_5_7
+I(sad) - EV_IOLA_2_5_8
+I - EV_IOLA_2_5_9
+Ar - EV_IOLA_2_5_10
+Ar - EV_IOLA_2_5_11
+I - EV_IOLA_2_5_12
+I - EV_IOLA_2_5_13
+I - EV_IOLA_2_5_14
+I - EV_IOLA_2_5_15
+Ar(neutral) - EV_IOLA_2_5_16
+I(sad) - EV_IOLA_2_5_17
+I - EV_IOLA_2_5_18
+I - EV_IOLA_2_5_19
+I(sad) - EV_IOLA_2_5_20
+Ro - EV_IOLA_2_5_21
+Ar - EV_IOLA_2_5_22
+I(shock) - EV_IOLA_2_5_23
+Ar - EV_IOLA_2_5_24
+Ar - EV_IOLA_2_5_25
+Ro(sarcastic) - EV_IOLA_2_5_26
+Ro - EV_IOLA_2_5_27
+I - EV_IOLA_2_5_28
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

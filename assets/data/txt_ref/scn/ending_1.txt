@@ -5,30 +5,30 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =SPRITE rose=
-Ro - I've been thinking over what you said.  & EV_ENDING_1_0
-Ro - I think I can stay in this world... & EV_ENDING_1_1
-Ar - Nah, we are going back. & EV_ENDING_1_2
-Ro(shock) - ...What?  & EV_ENDING_1_3
-Ro - But I thought you didn't wanna... & EV_ENDING_1_4
-Ar(neutral) - I think we've stayed long enough. & EV_ENDING_1_5
-Ar - After all I have a home which needs to be taken care of. & EV_ENDING_1_6
-Ar - And I feel like visiting Norbert for a payback. & EV_ENDING_1_7
-Ro - I see.  & EV_ENDING_1_8
-Ro - Somehow it seems you've grown more responsible, Master. & EV_ENDING_1_9
-Ar - Oh yeah, now that I remembered that. You haven't forgot anything, Rose? & EV_ENDING_1_10
-Ro - Yes?.. & EV_ENDING_1_11
-Ar(shock) - It was your fault we've ended up here! Did you really think I'll let it go?! & EV_ENDING_1_12
-Ro(shock) - I'm sorry! & EV_ENDING_1_13
-Ro(sad) - I... was jealous of you getting into every other woman's bed.  & EV_ENDING_1_14
-Ar - Hmm... Well, ain't it a sincere answer from you? & EV_ENDING_1_15
-Ar - I am a nice guy so I'll forgive you for this treason. & EV_ENDING_1_16
-Ro - *gulp* & EV_ENDING_1_17
-Ro - At least it all ended happily, right? & EV_ENDING_1_18
-Ar(neutral) - Oh, it's not entirely over. & EV_ENDING_1_19
-Ro - Eh?.. & EV_ENDING_1_20
-Ar - I'll personally administer your punishment before you can be forgiven. & EV_ENDING_1_21
-Ro(sad) - ...Alright. & EV_ENDING_1_22
-Despite Rose's downed expression, her tail swayed excitedly.  & EV_ENDING_1_23
+Ro - EV_ENDING_1_0
+Ro - EV_ENDING_1_1
+Ar - EV_ENDING_1_2
+Ro(shock) - EV_ENDING_1_3
+Ro - EV_ENDING_1_4
+Ar(neutral) - EV_ENDING_1_5
+Ar - EV_ENDING_1_6
+Ar - EV_ENDING_1_7
+Ro - EV_ENDING_1_8
+Ro - EV_ENDING_1_9
+Ar - EV_ENDING_1_10
+Ro - EV_ENDING_1_11
+Ar(shock) - EV_ENDING_1_12
+Ro(shock) - EV_ENDING_1_13
+Ro(sad) - EV_ENDING_1_14
+Ar - EV_ENDING_1_15
+Ar - EV_ENDING_1_16
+Ro - EV_ENDING_1_17
+Ro - EV_ENDING_1_18
+Ar(neutral) - EV_ENDING_1_19
+Ro - EV_ENDING_1_20
+Ar - EV_ENDING_1_21
+Ro(sad) - EV_ENDING_1_22
+EV_ENDING_1_23
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
@@ -36,45 +36,45 @@ Despite Rose's downed expression, her tail swayed excitedly.  & EV_ENDING_1_23
 =DELAY 1=
 =SPRITE embershock=
 =GUI_NORMAL=
-Em(sad) - Sir Arron, I can't believe you are leaving us! & EV_ENDING_1_24
-Em(sad) - And you too, Rose. It's so unfair! & EV_ENDING_1_25
+Em(sad) - EV_ENDING_1_24
+Em(sad) - EV_ENDING_1_25
 =SPRITE erika=
-Er - Don't be so selfish, Ember. & EV_ENDING_1_26
-Er(happy) - You've done a lot for us after all, didn't you? & EV_ENDING_1_27
-Er - Rose... & EV_ENDING_1_28
-Ro(sarcastic) - Please, don't give me that seductive look. & EV_ENDING_1_29
-Er(happy) - He-he, still playing hard to get. & EV_ENDING_1_30
+Er - EV_ENDING_1_26
+Er(happy) - EV_ENDING_1_27
+Er - EV_ENDING_1_28
+Ro(sarcastic) - EV_ENDING_1_29
+Er(happy) - EV_ENDING_1_30
 =SPRITE rilu=
-Ri - Before you leave. You haven't forgotten anything, have you? & EV_ENDING_1_31
-Ar(neutral) - Hmmm...  & EV_ENDING_1_32
-Ar - Right, my promise to you. & EV_ENDING_1_33
-Ro - Master's promise?  & EV_ENDING_1_34
-Ar(neutral) - Yeah, I've promised to watch over Rilu while I'm alive.  & EV_ENDING_1_35
-Ro(sarcastic) - Eeh..? & EV_ENDING_1_36
-Ar - So, do you wanna come with us? & EV_ENDING_1_37
-Ri - ... & EV_ENDING_1_38
-Ri(talk) - Originally I thought you would pretend to forget or sneak away from it. & EV_ENDING_1_39
-Ro - ...Indeed. & EV_ENDING_1_40
-Ar(shock) - What the hell?! Are you implying I'm irresponsible here? & EV_ENDING_1_41
-Ri - No, I think you've grown more responsible than anything. & EV_ENDING_1_42
-Ar(neutral) - Whatever. So, are you coming or what? & EV_ENDING_1_43
-Ri - Thank you, but I think I gonna need some time. & EV_ENDING_1_44
-Ri(blush) - For... some things. & EV_ENDING_1_45
-Ri - I might visit later though and have you keep your word for certain. & EV_ENDING_1_46
-Ar - Well, all is good as long as you don't try to destroy the reality again. & EV_ENDING_1_47
+Ri - EV_ENDING_1_31
+Ar(neutral) - EV_ENDING_1_32
+Ar - EV_ENDING_1_33
+Ro - EV_ENDING_1_34
+Ar(neutral) - EV_ENDING_1_35
+Ro(sarcastic) - EV_ENDING_1_36
+Ar - EV_ENDING_1_37
+Ri - EV_ENDING_1_38
+Ri(talk) - EV_ENDING_1_39
+Ro - EV_ENDING_1_40
+Ar(shock) - EV_ENDING_1_41
+Ri - EV_ENDING_1_42
+Ar(neutral) - EV_ENDING_1_43
+Ri - EV_ENDING_1_44
+Ri(blush) - EV_ENDING_1_45
+Ri - EV_ENDING_1_46
+Ar - EV_ENDING_1_47
 =SPRITE iola=
-I - What are you saying, Rilu is a good girl and would never have done that. & EV_ENDING_1_48
-Ar - What are you planning to do now, though? & EV_ENDING_1_49
-I - Ah, I will be leading the cult now that Father is gone.  & EV_ENDING_1_50
-I(sad) - It seems many of the followers went missing since the incident though. & EV_ENDING_1_51
-I - But I'm sure we'll change it for good now that demons are gone. & EV_ENDING_1_52
-Ar - Wish you luck.  & EV_ENDING_1_53
-Ar(neutral) - Well, it seems we are done here. We are ready. & EV_ENDING_1_54
-I - It won't take more than a moment... & EV_ENDING_1_55
-Ar - Oh, one last thing. & EV_ENDING_1_56
+I - EV_ENDING_1_48
+Ar - EV_ENDING_1_49
+I - EV_ENDING_1_50
+I(sad) - EV_ENDING_1_51
+I - EV_ENDING_1_52
+Ar - EV_ENDING_1_53
+Ar(neutral) - EV_ENDING_1_54
+I - EV_ENDING_1_55
+Ar - EV_ENDING_1_56
 =SPRITE arron=
-Ro(shock) - There's still something left? & EV_ENDING_1_57
-Ar - I gonna wish that we'll meet again. & EV_ENDING_1_58
+Ro(shock) - EV_ENDING_1_57
+Ar - EV_ENDING_1_58
 =GUI_HIDE=
 =BLACKUNFADE 3=
 =DELAY 3=
