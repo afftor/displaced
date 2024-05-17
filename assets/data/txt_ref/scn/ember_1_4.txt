@@ -8,26 +8,26 @@
 =SPRITE emberhappy=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Em - Sir Arron! & EV_EMBER_1_4_0
-Ar - What’s up, Ember? You look excited.  & EV_EMBER_1_4_1
-Em - Can we have sex? & EV_EMBER_1_4_2
-Ar - ...Sure, but why?  & EV_EMBER_1_4_3
-Em - Because it’s supposed to feel really good and I think it's about time I found out for myself. & EV_EMBER_1_4_4
-Em - And besides, you already said you think I'm pretty. & EV_EMBER_1_4_5
-Ar - This doesn't sound like something you’d come up with yourself. & EV_EMBER_1_4_6
-Ar - Who told you to say that? & EV_EMBER_1_4_7
-Em - My dragon instincts. & EV_EMBER_1_4_8
-Ar - ... & EV_EMBER_1_4_9
-Ar - (Is this a trap?) & EV_EMBER_1_4_10
-Ar - (Nah, It's definitely a trap.) & EV_EMBER_1_4_11
-Ar - Well sure then, the bedroom is right over there. & EV_EMBER_1_4_12
-Em - Ahaha... Okay, sorry - I’m not really sure what I have to do. & EV_EMBER_1_4_13
-Ar - Uh... before we begin, are you sure that you want to do it with me for your first time?  & EV_EMBER_1_4_14
-Em - Yep. Why? & EV_EMBER_1_4_15
-Ar - Well, people usually do it with someone they really like.  & EV_EMBER_1_4_16
-Em - I really like you, Sir Arron! & EV_EMBER_1_4_17
-Ar - Welp, my conscience is satisfied then. & EV_EMBER_1_4_18
-Arron pushes Ember down on the bed while pulling her apron off to reveal her naked body. & EV_EMBER_1_4_19
+Em - EV_EMBER_1_4_0
+Ar - EV_EMBER_1_4_1
+Em - EV_EMBER_1_4_2
+Ar - EV_EMBER_1_4_3
+Em - EV_EMBER_1_4_4
+Em - EV_EMBER_1_4_5
+Ar - EV_EMBER_1_4_6
+Ar - EV_EMBER_1_4_7
+Em - EV_EMBER_1_4_8
+Ar - EV_EMBER_1_4_9
+Ar - EV_EMBER_1_4_10
+Ar - EV_EMBER_1_4_11
+Ar - EV_EMBER_1_4_12
+Em - EV_EMBER_1_4_13
+Ar - EV_EMBER_1_4_14
+Em - EV_EMBER_1_4_15
+Ar - EV_EMBER_1_4_16
+Em - EV_EMBER_1_4_17
+Ar - EV_EMBER_1_4_18
+EV_EMBER_1_4_19
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =GUI_FULL=
@@ -35,78 +35,78 @@ Arron pushes Ember down on the bed while pulling her apron off to reveal her nak
 =ABG ember_miss_1=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Em - Ah... What are we gonna do on the bed? & EV_EMBER_1_4_20
-Em - Aah!... Sir, Arron? & EV_EMBER_1_4_21
-Without a word, Arron starts massaging Ember's virgin mound. She quickly grows warm at his touch. & EV_EMBER_1_4_22
-Em - This is how we have sex? I feel a bit weird. & EV_EMBER_1_4_23
-Ar - This is just the start. It really is your first time, huh?. & EV_EMBER_1_4_24
-Em - Is that bad? & EV_EMBER_1_4_25
-Ar - Nah, I feel honored to be taking your first time. & EV_EMBER_1_4_26
-Saying that, Arron pushes his lips into Ember's while one of his hands squeezes a ripe breast and the other teases her smooth pussy. & EV_EMBER_1_4_27
-Em - Mmmhmmn... You kissed me... & EV_EMBER_1_4_28
-Ar - You didn't like that? & EV_EMBER_1_4_29
-Em - I did! Sex feels really good. & EV_EMBER_1_4_30
-Ar - This isn't sex yet, though. & EV_EMBER_1_4_31
-Em - Huh? It's not?  & EV_EMBER_1_4_32
-Ar - This is just foreplay, you have a lot to learn.  & EV_EMBER_1_4_33
-Arron quickly frees himself from clothes, revealing his manhood to the curious dragon girl. & EV_EMBER_1_4_34
-Em - Woah, it's so big... That's called a penis, right? & EV_EMBER_1_4_35
-Ar - Hmh um, yep, it is great indeed.  & EV_EMBER_1_4_36
-Ar - You’re going to love it. & EV_EMBER_1_4_37
-Ar - Now relax, this might hurt a little the first time. & EV_EMBER_1_4_38
+Em - EV_EMBER_1_4_20
+Em - EV_EMBER_1_4_21
+EV_EMBER_1_4_22
+Em - EV_EMBER_1_4_23
+Ar - EV_EMBER_1_4_24
+Em - EV_EMBER_1_4_25
+Ar - EV_EMBER_1_4_26
+EV_EMBER_1_4_27
+Em - EV_EMBER_1_4_28
+Ar - EV_EMBER_1_4_29
+Em - EV_EMBER_1_4_30
+Ar - EV_EMBER_1_4_31
+Em - EV_EMBER_1_4_32
+Ar - EV_EMBER_1_4_33
+EV_EMBER_1_4_34
+Em - EV_EMBER_1_4_35
+Ar - EV_EMBER_1_4_36
+Ar - EV_EMBER_1_4_37
+Ar - EV_EMBER_1_4_38
 =ABG ember_miss_2 ember_miss_3=
-Arron forcefully enters Ember's tight virgin pussy, slamming his meat into her and bursting her hymen. & EV_EMBER_1_4_39
-Em - Ooh... Aah! & EV_EMBER_1_4_40
-Em - It's inside me! & EV_EMBER_1_4_41
-Ar - Huh... It didn't hurt you? & EV_EMBER_1_4_42
-Em - No, I mean, maybe it stung a little bit, but it feels really good. & EV_EMBER_1_4_43
-Ar - Darn, it must be good to be a dragon's descendant. Oh well. & EV_EMBER_1_4_44
-Em - What are you… Ooh! & EV_EMBER_1_4_45
-With Ember fully compliant, Arron begins to slowly grind on her wet pussy. & EV_EMBER_1_4_46
-Em - Mmh… oooh... I feel all... tingly... inside... & EV_EMBER_1_4_47
-Ar - Yep, now this is what sex is.  & EV_EMBER_1_4_48
-Ar - Do you like it, Ember? & EV_EMBER_1_4_49
-Em - Ahhh... I don't... know… I... & EV_EMBER_1_4_50
-Em - Don't stop, Arron. & EV_EMBER_1_4_51
-Arron feels something has changed in Ember's tone, a maturity that wasn’t there before. & EV_EMBER_1_4_52
-Em - Yes… Oohh... This feels great... & EV_EMBER_1_4_53
-Em - I can feel you inside my body. & EV_EMBER_1_4_54
-Ar - Ember...? & EV_EMBER_1_4_55
-Em - Please, keep moving... & EV_EMBER_1_4_56
+EV_EMBER_1_4_39
+Em - EV_EMBER_1_4_40
+Em - EV_EMBER_1_4_41
+Ar - EV_EMBER_1_4_42
+Em - EV_EMBER_1_4_43
+Ar - EV_EMBER_1_4_44
+Em - EV_EMBER_1_4_45
+EV_EMBER_1_4_46
+Em - EV_EMBER_1_4_47
+Ar - EV_EMBER_1_4_48
+Ar - EV_EMBER_1_4_49
+Em - EV_EMBER_1_4_50
+Em - EV_EMBER_1_4_51
+EV_EMBER_1_4_52
+Em - EV_EMBER_1_4_53
+Em - EV_EMBER_1_4_54
+Ar - EV_EMBER_1_4_55
+Em - EV_EMBER_1_4_56
 =ABG ember_miss_4=
-Ember wasn’t acting like her usual self, but at this point, Arron doesn’t feel like questioning her further. & EV_EMBER_1_4_57
-Em - Ah... I can feel it coming, any second now... & EV_EMBER_1_4_58
-Em - Closer, Arron... & EV_EMBER_1_4_59
-Without giving him any time to react, Ember embraces him tightly to her voluptuous chest. & EV_EMBER_1_4_60
-Em - Yess... Just a bit more...  & EV_EMBER_1_4_61
-Em - You’re cumming too... right? & EV_EMBER_1_4_62
-Just as Arron was considering if he should pull out, Ember's legs coil around his waist, drawing him deeper inside her. & EV_EMBER_1_4_63
+EV_EMBER_1_4_57
+Em - EV_EMBER_1_4_58
+Em - EV_EMBER_1_4_59
+EV_EMBER_1_4_60
+Em - EV_EMBER_1_4_61
+Em - EV_EMBER_1_4_62
+EV_EMBER_1_4_63
 =ABG ember_miss_5 ember_miss_6=
 =WHITE=
 =DELAY 0.5=
-Ember’s tight pussy pulses hot around Arron’s penis as he holds her arms down on the bed. & EV_EMBER_1_4_64
-Em - Ahhhhhhhh! Oooh, yes! Yes!… & EV_EMBER_1_4_65
-Arron keeps pounding Ember’s pussy as the orgasm rocks her, making her heavy tits bounce wildly. & EV_EMBER_1_4_66
-Ar - You like it now, Ember? & EV_EMBER_1_4_67
-Em - Aaahh, oooh, yes, I love it! I love having you inside me! I never want this to end! & EV_EMBER_1_4_68
-Ar - Well, I have some bad news about that...  & EV_EMBER_1_4_69
-Ar - Nnnngh! & EV_EMBER_1_4_70
-Em - Ohh… Something's... filling me up… & EV_EMBER_1_4_71
-Em - Oh, it’s so hot! & EV_EMBER_1_4_72
+EV_EMBER_1_4_64
+Em - EV_EMBER_1_4_65
+EV_EMBER_1_4_66
+Ar - EV_EMBER_1_4_67
+Em - EV_EMBER_1_4_68
+Ar - EV_EMBER_1_4_69
+Ar - EV_EMBER_1_4_70
+Em - EV_EMBER_1_4_71
+Em - EV_EMBER_1_4_72
 =ABG ember_miss_7 ember_miss_8=
-Ember seems to return to her usual self as Arron’s hot seed is pumped into her womb. & EV_EMBER_1_4_73
-Ember’s thighs around his waist hold Arron in place while her newly opened pussy grips his penis tight, squeezing the last drops of cum from him.  & EV_EMBER_1_4_74
-Em - Oh, I'm so sorry! I grabbed you without thinking. & EV_EMBER_1_4_75
-Em - Sir Arron, are you alright? & EV_EMBER_1_4_76
-Ar - I’ve been worse. & EV_EMBER_1_4_77
-Em - Oh... I'm really sorry. & EV_EMBER_1_4_78
-Ar - Don't worry, it felt great. & EV_EMBER_1_4_79
-Em - Really? It was super great for me as well! & EV_EMBER_1_4_80
-Ar - (Hmm I could've sworn something was different about her a moment ago.) & EV_EMBER_1_4_81
-Ar - (Was it just my imagination?) & EV_EMBER_1_4_82
-Em - Can we do it one more time? Please! & EV_EMBER_1_4_83
-Ar - ...  & EV_EMBER_1_4_84
-Ar - Having it too easy like this will soon spoil me. & EV_EMBER_1_4_85
+EV_EMBER_1_4_73
+EV_EMBER_1_4_74
+Em - EV_EMBER_1_4_75
+Em - EV_EMBER_1_4_76
+Ar - EV_EMBER_1_4_77
+Em - EV_EMBER_1_4_78
+Ar - EV_EMBER_1_4_79
+Em - EV_EMBER_1_4_80
+Ar - EV_EMBER_1_4_81
+Ar - EV_EMBER_1_4_82
+Em - EV_EMBER_1_4_83
+Ar - EV_EMBER_1_4_84
+Ar - EV_EMBER_1_4_85
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =STOP=

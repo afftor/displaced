@@ -8,16 +8,16 @@
 =BG mountainsday=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ar - Hey, Rose, you know what? & EV_EMBER_2_2_0
-Ro - Yes?  & EV_EMBER_2_2_1
-Ar(neutral) - I don't think I ever ate a dragon.  & EV_EMBER_2_2_2
-Ar - Can you cook it?  & EV_EMBER_2_2_3
-Ro(talk) - Do you think it's appropriate? I mean there's Ember... & EV_EMBER_2_2_4
-Ar - Oh, I've tasted her already, alright.  & EV_EMBER_2_2_5
-Ro(sarcastic) - ... & EV_EMBER_2_2_6
-Em - Ah, I wanna try it too! & EV_EMBER_2_2_7
-Ro(sarcastic) - Please, let's not distract too much, it's dangerous here.  & EV_EMBER_2_2_8
-Em(sad) - Oh, sorry.  & EV_EMBER_2_2_9
+Ar - EV_EMBER_2_2_0
+Ro - EV_EMBER_2_2_1
+Ar(neutral) - EV_EMBER_2_2_2
+Ar - EV_EMBER_2_2_3
+Ro(talk) - EV_EMBER_2_2_4
+Ar - EV_EMBER_2_2_5
+Ro(sarcastic) - EV_EMBER_2_2_6
+Em - EV_EMBER_2_2_7
+Ro(sarcastic) - EV_EMBER_2_2_8
+Em(sad) - EV_EMBER_2_2_9
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

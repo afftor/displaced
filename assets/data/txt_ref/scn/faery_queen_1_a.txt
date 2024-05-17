@@ -5,145 +5,145 @@
 =BLACKTRANS 1=
 =MUSIC eventgeneric=
 =DELAY 1=
-After going through the portal, Arron finds himself wandering alone in an unknown part of the forest. & EV_FAERY_QUEEN_1_A_0
-Ar - Huh... Anyone else around? & EV_FAERY_QUEEN_1_A_1
-Er - I'm over here. & EV_FAERY_QUEEN_1_A_2
-Ar - Good, where's everyone else? & EV_FAERY_QUEEN_1_A_3
-Er - Looks like we walked into a trap. & EV_FAERY_QUEEN_1_A_4
-Em - Oi, Sir Arron! & EV_FAERY_QUEEN_1_A_5
-Ar(neutral) - Looks like Ember is over there. & EV_FAERY_QUEEN_1_A_6
+EV_FAERY_QUEEN_1_A_0
+Ar - EV_FAERY_QUEEN_1_A_1
+Er - EV_FAERY_QUEEN_1_A_2
+Ar - EV_FAERY_QUEEN_1_A_3
+Er - EV_FAERY_QUEEN_1_A_4
+Em - EV_FAERY_QUEEN_1_A_5
+Ar(neutral) - EV_FAERY_QUEEN_1_A_6
 =BLACKTRANS 1=
 =DELAY 1=
 =SPRITE rose=
-Separated from the rest of the group, Rose finds herself all alone in the depths of the forest. & EV_FAERY_QUEEN_1_A_7
-Ro - I wasn’t expecting this to happen... & EV_FAERY_QUEEN_1_A_8
-Ro - Hm... How will I find others now... & EV_FAERY_QUEEN_1_A_9
-Wandering around Rose doesn’t realize that she is being observed from the bushes. & EV_FAERY_QUEEN_1_A_10
-FA - Hey, look at this dumbass trollop.  & EV_FAERY_QUEEN_1_A_11
-FA - ...She seems to be all alone here. & EV_FAERY_QUEEN_1_A_12
-FB - True. & EV_FAERY_QUEEN_1_A_13
-FB - Hey, I have an idea. & EV_FAERY_QUEEN_1_A_14
-FA - What is it? & EV_FAERY_QUEEN_1_A_15
-FB - Watch this.  & EV_FAERY_QUEEN_1_A_16
-Before Rose could react, a faery snatches a handkerchief from her and dashes to a nearby hollow tree, laughing all the way. & EV_FAERY_QUEEN_1_A_17
-Ro(talk) - What the... Hey you! & EV_FAERY_QUEEN_1_A_18
-Ro(talk) - Argh!.. & EV_FAERY_QUEEN_1_A_19
-Without a second thought, Rose dives into the tree’s hollow, grabbing the handkerchief.  & EV_FAERY_QUEEN_1_A_20
-Ro - Aw sheesh, it's all dirty now. & EV_FAERY_QUEEN_1_A_21
-Ro - Eh? & EV_FAERY_QUEEN_1_A_22
+EV_FAERY_QUEEN_1_A_7
+Ro - EV_FAERY_QUEEN_1_A_8
+Ro - EV_FAERY_QUEEN_1_A_9
+EV_FAERY_QUEEN_1_A_10
+FA - EV_FAERY_QUEEN_1_A_11
+FA - EV_FAERY_QUEEN_1_A_12
+FB - EV_FAERY_QUEEN_1_A_13
+FB - EV_FAERY_QUEEN_1_A_14
+FA - EV_FAERY_QUEEN_1_A_15
+FB - EV_FAERY_QUEEN_1_A_16
+EV_FAERY_QUEEN_1_A_17
+Ro(talk) - EV_FAERY_QUEEN_1_A_18
+Ro(talk) - EV_FAERY_QUEEN_1_A_19
+EV_FAERY_QUEEN_1_A_20
+Ro - EV_FAERY_QUEEN_1_A_21
+Ro - EV_FAERY_QUEEN_1_A_22
 =GUI_FULL=
 =ABG rose_forest_1=
-As Rose tries to pull out of the tree, she realizes how the previously wide hole has shrunk. It is no longer wide enough for her to get out. & EV_FAERY_QUEEN_1_A_23
-Ro - Eeeh!? How!? & EV_FAERY_QUEEN_1_A_24
-Ro - Ugh... What? & EV_FAERY_QUEEN_1_A_25
-Ro - I can't get out. & EV_FAERY_QUEEN_1_A_26
-Ro - Hey, let me out! & EV_FAERY_QUEEN_1_A_27
+EV_FAERY_QUEEN_1_A_23
+Ro - EV_FAERY_QUEEN_1_A_24
+Ro - EV_FAERY_QUEEN_1_A_25
+Ro - EV_FAERY_QUEEN_1_A_26
+Ro - EV_FAERY_QUEEN_1_A_27
 =ABG rose_forest_2 rose_forest_3=
-FB - Ha-ha, did you see that dimwit doxy? Fell right into my trap. & EV_FAERY_QUEEN_1_A_28
-FA - Not bad. Nice ass too. But what now?  & EV_FAERY_QUEEN_1_A_29
-Ro - I can hear you talking out there! & EV_FAERY_QUEEN_1_A_30
-Ro - Let me out of here right now. & EV_FAERY_QUEEN_1_A_31
-FB - Let's try something fun with this silly little vixen. & EV_FAERY_QUEEN_1_A_32
-FB - Look how she sways her ass. & EV_FAERY_QUEEN_1_A_33
-FA - It's like she's inviting us to play with it. & EV_FAERY_QUEEN_1_A_34
-FB - Give me a hand here. & EV_FAERY_QUEEN_1_A_35
+FB - EV_FAERY_QUEEN_1_A_28
+FA - EV_FAERY_QUEEN_1_A_29
+Ro - EV_FAERY_QUEEN_1_A_30
+Ro - EV_FAERY_QUEEN_1_A_31
+FB - EV_FAERY_QUEEN_1_A_32
+FB - EV_FAERY_QUEEN_1_A_33
+FA - EV_FAERY_QUEEN_1_A_34
+FB - EV_FAERY_QUEEN_1_A_35
 =ABG rose_forest_4 rose_forest_5=
-Rose feels her skirt being lifted up over her waist and her panties being pulled roughly down. & EV_FAERY_QUEEN_1_A_36
-Ro - ...! & EV_FAERY_QUEEN_1_A_37
-Ro - Hey! Stop that! This isn’t funny! & EV_FAERY_QUEEN_1_A_38
-Rose can feel the light forest breeze on her bare ass and pussy, even as she hears more giggling from the other side of the tree. & EV_FAERY_QUEEN_1_A_39
-FA - Lovely tight pink pussy, clean and fresh! & EV_FAERY_QUEEN_1_A_40
-FB - Not for long! & EV_FAERY_QUEEN_1_A_41
-Before Rose can move her leg, she realizes it is being held down by something, rendering her completely immobile. & EV_FAERY_QUEEN_1_A_42
-Ro - No way...  & EV_FAERY_QUEEN_1_A_43
-Ro - What are you planning to do there?! & EV_FAERY_QUEEN_1_A_44
-FA - She doesn't look so different from the other humans, does she? & EV_FAERY_QUEEN_1_A_45
-FB - I bet she will be moaning like they all do in a few moments. & EV_FAERY_QUEEN_1_A_46
-Rose can't make out what the faeries are talking about, and neither can she see what's going on outside of the tree. & EV_FAERY_QUEEN_1_A_47
+EV_FAERY_QUEEN_1_A_36
+Ro - EV_FAERY_QUEEN_1_A_37
+Ro - EV_FAERY_QUEEN_1_A_38
+EV_FAERY_QUEEN_1_A_39
+FA - EV_FAERY_QUEEN_1_A_40
+FB - EV_FAERY_QUEEN_1_A_41
+EV_FAERY_QUEEN_1_A_42
+Ro - EV_FAERY_QUEEN_1_A_43
+Ro - EV_FAERY_QUEEN_1_A_44
+FA - EV_FAERY_QUEEN_1_A_45
+FB - EV_FAERY_QUEEN_1_A_46
+EV_FAERY_QUEEN_1_A_47
 =ABG rose_forest_6 rose_forest_7=
-A thick vine conjured by one of the faeries sprouted from the ground, snaking slowly up Rose’s inner thigh and penetrating her unprotected pussy. & EV_FAERY_QUEEN_1_A_48
-Ro - Ah!.. Nha... & EV_FAERY_QUEEN_1_A_49
-FA - Haha, I think I heard a moan. & EV_FAERY_QUEEN_1_A_50
-FB - No blood though.  & EV_FAERY_QUEEN_1_A_51
-FB - She's not a virgin. & EV_FAERY_QUEEN_1_A_52
-FA - Certainly a slut. & EV_FAERY_QUEEN_1_A_53
-FA - Come on, fuck her harder! & EV_FAERY_QUEEN_1_A_54
-FB - Make her scream! & EV_FAERY_QUEEN_1_A_55
-Ro - No... Please... & EV_FAERY_QUEEN_1_A_56
-Ro - Stop!.. & EV_FAERY_QUEEN_1_A_57
-Rose tries to regain composure, but the green tentacle steadily works its way deeper into her helplessly vulnerable vagina, making her wet against her will. & EV_FAERY_QUEEN_1_A_58
-Ro - Please, somebody... I'm over here! & EV_FAERY_QUEEN_1_A_59
-Ro - Master, help me! Please! & EV_FAERY_QUEEN_1_A_60
-FA - Gosh, she's a noisy type. & EV_FAERY_QUEEN_1_A_61
-FB - She is. Better shut her up. & EV_FAERY_QUEEN_1_A_62
+EV_FAERY_QUEEN_1_A_48
+Ro - EV_FAERY_QUEEN_1_A_49
+FA - EV_FAERY_QUEEN_1_A_50
+FB - EV_FAERY_QUEEN_1_A_51
+FB - EV_FAERY_QUEEN_1_A_52
+FA - EV_FAERY_QUEEN_1_A_53
+FA - EV_FAERY_QUEEN_1_A_54
+FB - EV_FAERY_QUEEN_1_A_55
+Ro - EV_FAERY_QUEEN_1_A_56
+Ro - EV_FAERY_QUEEN_1_A_57
+EV_FAERY_QUEEN_1_A_58
+Ro - EV_FAERY_QUEEN_1_A_59
+Ro - EV_FAERY_QUEEN_1_A_60
+FA - EV_FAERY_QUEEN_1_A_61
+FB - EV_FAERY_QUEEN_1_A_62
 =ABG rose_forest_8 rose_forest_9=
-Rose's mouth is suddenly plugged with another thick vine, blocking anything but muffled moans. & EV_FAERY_QUEEN_1_A_63
-FA - This will keep her nasty little mouth busy. & EV_FAERY_QUEEN_1_A_64
-Ro - Mhhm..! & EV_FAERY_QUEEN_1_A_65
-FB - She must like it. & EV_FAERY_QUEEN_1_A_66
-FB - Her cunt is all wet now. & EV_FAERY_QUEEN_1_A_67
-FA - She does like it. She loves it! & EV_FAERY_QUEEN_1_A_68
-FB - She makes real dirty noises. & EV_FAERY_QUEEN_1_A_69
-FB - Look how she squirms in delight. & EV_FAERY_QUEEN_1_A_70
-FA - Can’t help wriggling on that vine in her cunny, can she?  & EV_FAERY_QUEEN_1_A_71
-FA - And she moans like a cow too. & EV_FAERY_QUEEN_1_A_72
-Ro - Mmm!! & EV_FAERY_QUEEN_1_A_73
-FA - But there's still one hole unplugged. & EV_FAERY_QUEEN_1_A_74
-FB - Can’t have that can we? & EV_FAERY_QUEEN_1_A_75
-FA - I should say not! & EV_FAERY_QUEEN_1_A_76
+EV_FAERY_QUEEN_1_A_63
+FA - EV_FAERY_QUEEN_1_A_64
+Ro - EV_FAERY_QUEEN_1_A_65
+FB - EV_FAERY_QUEEN_1_A_66
+FB - EV_FAERY_QUEEN_1_A_67
+FA - EV_FAERY_QUEEN_1_A_68
+FB - EV_FAERY_QUEEN_1_A_69
+FB - EV_FAERY_QUEEN_1_A_70
+FA - EV_FAERY_QUEEN_1_A_71
+FA - EV_FAERY_QUEEN_1_A_72
+Ro - EV_FAERY_QUEEN_1_A_73
+FA - EV_FAERY_QUEEN_1_A_74
+FB - EV_FAERY_QUEEN_1_A_75
+FA - EV_FAERY_QUEEN_1_A_76
 =ABG rose_forest_10 rose_forest_11=
-As Rose's throat and pussy are beingfucked, a new vine arrived, forcefully entering her exposed ass. & EV_FAERY_QUEEN_1_A_77
-Ro - MHMHM!! & EV_FAERY_QUEEN_1_A_78
-FA - Hahahah, she seems to have given up struggling now. & EV_FAERY_QUEEN_1_A_79
-FB - Yeah, that triple penetration always brings them around. & EV_FAERY_QUEEN_1_A_80
-FA - She must really be loving it. & EV_FAERY_QUEEN_1_A_81
-FA - Look how her hips are moving with each thrust. & EV_FAERY_QUEEN_1_A_82
-FB - Anyone would think she wanted this. & EV_FAERY_QUEEN_1_A_83
-FA - Yeah we have done her a favor, ungrateful bitch. & EV_FAERY_QUEEN_1_A_84
-FA - Still, she’s putting on a good show for us though, eh? & EV_FAERY_QUEEN_1_A_85
-FB - Yeah. We should reward her then. & EV_FAERY_QUEEN_1_A_86
-FB - Let's turn her into a sticky mess. & EV_FAERY_QUEEN_1_A_87
-FA - Now there’s an idea! & EV_FAERY_QUEEN_1_A_88
+EV_FAERY_QUEEN_1_A_77
+Ro - EV_FAERY_QUEEN_1_A_78
+FA - EV_FAERY_QUEEN_1_A_79
+FB - EV_FAERY_QUEEN_1_A_80
+FA - EV_FAERY_QUEEN_1_A_81
+FA - EV_FAERY_QUEEN_1_A_82
+FB - EV_FAERY_QUEEN_1_A_83
+FA - EV_FAERY_QUEEN_1_A_84
+FA - EV_FAERY_QUEEN_1_A_85
+FB - EV_FAERY_QUEEN_1_A_86
+FB - EV_FAERY_QUEEN_1_A_87
+FA - EV_FAERY_QUEEN_1_A_88
 =ABG rose_forest_12 rose_forest_13=
-The appendages intruding into her body start moving faster, fucking her three helpless holes roughly & EV_FAERY_QUEEN_1_A_89
-Rose, unable to resist, has no other choice but to wait until the humiliation ends. & EV_FAERY_QUEEN_1_A_90
-Ro - Mmm... & EV_FAERY_QUEEN_1_A_91
-FB - Hehe, she’s really starting to enjoy herself now. & EV_FAERY_QUEEN_1_A_92
-FB - I think she likes it rough. & EV_FAERY_QUEEN_1_A_93
-FA - Her moans make me horny as well.  & EV_FAERY_QUEEN_1_A_94
-FB - Just a few more pushes now. & EV_FAERY_QUEEN_1_A_95
-FB - Almost there... & EV_FAERY_QUEEN_1_A_96
-Ro - Mmmmmh... & EV_FAERY_QUEEN_1_A_97
-FB - Here she cums. & EV_FAERY_QUEEN_1_A_98
-FA - Dirty little slut! & EV_FAERY_QUEEN_1_A_99
+EV_FAERY_QUEEN_1_A_89
+EV_FAERY_QUEEN_1_A_90
+Ro - EV_FAERY_QUEEN_1_A_91
+FB - EV_FAERY_QUEEN_1_A_92
+FB - EV_FAERY_QUEEN_1_A_93
+FA - EV_FAERY_QUEEN_1_A_94
+FB - EV_FAERY_QUEEN_1_A_95
+FB - EV_FAERY_QUEEN_1_A_96
+Ro - EV_FAERY_QUEEN_1_A_97
+FB - EV_FAERY_QUEEN_1_A_98
+FA - EV_FAERY_QUEEN_1_A_99
 =ABG rose_forest_14 rose_forest_15=
-With a long push, the vines bringRose to orgasm, spurting plant juice into her as her calves cramp and her body shakes. & EV_FAERY_QUEEN_1_A_100
-Ro - Mmmh!! Mh.... & EV_FAERY_QUEEN_1_A_101
-FB - Hah. You dirty whore.  & EV_FAERY_QUEEN_1_A_102
-FB - This will teach you to go trespassing in our forest. & EV_FAERY_QUEEN_1_A_103
-FA - Yeah she won’t forget this experience anytime soon. & EV_FAERY_QUEEN_1_A_104
-Er - Rose? Are you there? & EV_FAERY_QUEEN_1_A_105
-FA - Oi, I think there's somebody nearby.  & EV_FAERY_QUEEN_1_A_106
-FB - Her friends? Shit. & EV_FAERY_QUEEN_1_A_107
-FB - Well, it's fine.  & EV_FAERY_QUEEN_1_A_108
-FA - Yeah we had our fun. & EV_FAERY_QUEEN_1_A_109
-FB - She should've learned her lesson. & EV_FAERY_QUEEN_1_A_110
-As the faeries disappear into the woods, the vines slip out of Rose’s body.  & EV_FAERY_QUEEN_1_A_111
-Rose is released from her imprisonment, still shaking from the humiliating experience. & EV_FAERY_QUEEN_1_A_112
+EV_FAERY_QUEEN_1_A_100
+Ro - EV_FAERY_QUEEN_1_A_101
+FB - EV_FAERY_QUEEN_1_A_102
+FB - EV_FAERY_QUEEN_1_A_103
+FA - EV_FAERY_QUEEN_1_A_104
+Er - EV_FAERY_QUEEN_1_A_105
+FA - EV_FAERY_QUEEN_1_A_106
+FB - EV_FAERY_QUEEN_1_A_107
+FB - EV_FAERY_QUEEN_1_A_108
+FA - EV_FAERY_QUEEN_1_A_109
+FB - EV_FAERY_QUEEN_1_A_110
+EV_FAERY_QUEEN_1_A_111
+EV_FAERY_QUEEN_1_A_112
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG forest=
-A few minutes later. & EV_FAERY_QUEEN_1_A_113
+EV_FAERY_QUEEN_1_A_113
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =SPRITE rose=
-Ar(shock) - Rose! Are you alright? & EV_FAERY_QUEEN_1_A_114
-Ar - Sorry, that wasn't a good idea. & EV_FAERY_QUEEN_1_A_115
-Ro(talk) - ...It's nothing, let's finish with this. & EV_FAERY_QUEEN_1_A_116
-Ar - You sure? You look a bit shabby. & EV_FAERY_QUEEN_1_A_117
-Ro - Yes... I was just a bit worried. & EV_FAERY_QUEEN_1_A_118
-Ro(sarcastic) - (Master, you idiot! Because of your stupid decision...) & EV_FAERY_QUEEN_1_A_119
+Ar(shock) - EV_FAERY_QUEEN_1_A_114
+Ar - EV_FAERY_QUEEN_1_A_115
+Ro(talk) - EV_FAERY_QUEEN_1_A_116
+Ar - EV_FAERY_QUEEN_1_A_117
+Ro - EV_FAERY_QUEEN_1_A_118
+Ro(sarcastic) - EV_FAERY_QUEEN_1_A_119
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

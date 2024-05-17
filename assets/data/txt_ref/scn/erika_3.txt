@@ -7,8 +7,8 @@
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-Er(happy) - That one is perfect. & EV_ERIKA_3_0
-Er - Now I'll begin the preparations. Bring Rose with you this evening to my room. & EV_ERIKA_3_1
+Er(happy) - EV_ERIKA_3_0
+Er - EV_ERIKA_3_1
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=

@@ -6,46 +6,48 @@
 =GUI_NORMAL=
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
-Ar - Hey Rose, what happened to Erika? & EV_ERIKA_ANNET_2_3_0
-Ro(talk) - She said she was going to the city market yesterday & EV_ERIKA_ANNET_2_3_1
-Ro - She hasn't returned since then. & EV_ERIKA_ANNET_2_3_2
-Ar - Hmm... That seems a bit unlike her.  & EV_ERIKA_ANNET_2_3_3
-Ro - Would you like to investigate? & EV_ERIKA_ANNET_2_3_4
-Ar(neutral) - Yeah, I've been bored from sitting around here all day. & EV_ERIKA_ANNET_2_3_5
-Ar - I hope she hasn't decided to live in a big city instead. & EV_ERIKA_ANNET_2_3_6
+Ar - EV_ERIKA_ANNET_2_3_0
+Ro(talk) - EV_ERIKA_ANNET_2_3_1
+Ro - EV_ERIKA_ANNET_2_3_2
+Ar - EV_ERIKA_ANNET_2_3_3
+Ro - EV_ERIKA_ANNET_2_3_4
+Ar(neutral) - EV_ERIKA_ANNET_2_3_5
+Ar - EV_ERIKA_ANNET_2_3_6
 =GUI_HIDE=
-=BLACKTRANS 1=
-=DELAY 1=
-=SPRITE_FADE=
+=BLACKUNFADE 0.5=
+=DELAY 0.5=
+=SPRITE_HIDE=
 =BG town_in=
+=BLACKFADE 0.5=
+=DELAY 0.5=
 =GUI_NORMAL=
-=SPRITE stranger=
-Str - The elven girl in skimpy clothes? & EV_ERIKA_ANNET_2_3_7
-Str - Yeah, she was here yesterday.  & EV_ERIKA_ANNET_2_3_8
-Str - Was causing some ruckus, then walked away with Annet. & EV_ERIKA_ANNET_2_3_9
-Ro(talk) - Annet? & EV_ERIKA_ANNET_2_3_10
-Str - Yeah, the city committee member, the one with horns. & EV_ERIKA_ANNET_2_3_11
-Ar(neutral) - Oh, right, that one. & EV_ERIKA_ANNET_2_3_12
-Ar - What she's even about? & EV_ERIKA_ANNET_2_3_13
-Str - Don't know much, really.  & EV_ERIKA_ANNET_2_3_14
-Str - She was elected due to her business influence and money mostly. & EV_ERIKA_ANNET_2_3_15
-Str - I think she's from an aristocratic family, or that's what she looks like anyway.  & EV_ERIKA_ANNET_2_3_16
-Ar(neutral) - Don't you find her weird though?  & EV_ERIKA_ANNET_2_3_17
-Ar - Those horns and tail I mean. & EV_ERIKA_ANNET_2_3_18
-Ar - She kinda looks like a succubus to me. & EV_ERIKA_ANNET_2_3_19
-Str - Hey man, not cool. We aren’t prejudiced. & EV_ERIKA_ANNET_2_3_20
-Str - Anyone can be a good person. & EV_ERIKA_ANNET_2_3_21
-Str - Especially when they have lots of money. & EV_ERIKA_ANNET_2_3_22
-Ar(neutral) - Uh huh, I guess we should check her estate then.  & EV_ERIKA_ANNET_2_3_23
-Str - Yeah... Don't tell her I told you though. & EV_ERIKA_ANNET_2_3_24
-Str - And don't comment on those things.  & EV_ERIKA_ANNET_2_3_25
-Str - She does not seem to like it. & EV_ERIKA_ANNET_2_3_26
-Ar - ...Right & EV_ERIKA_ANNET_2_3_27
+=SPRITE Human_M=
+Str - EV_ERIKA_ANNET_2_3_7
+Str - EV_ERIKA_ANNET_2_3_8
+Str - EV_ERIKA_ANNET_2_3_9
+Ro(talk) - EV_ERIKA_ANNET_2_3_10
+Str - EV_ERIKA_ANNET_2_3_11
+Ar(neutral) - EV_ERIKA_ANNET_2_3_12
+Ar - EV_ERIKA_ANNET_2_3_13
+Str - EV_ERIKA_ANNET_2_3_14
+Str - EV_ERIKA_ANNET_2_3_15
+Str - EV_ERIKA_ANNET_2_3_16
+Ar(neutral) - EV_ERIKA_ANNET_2_3_17
+Ar - EV_ERIKA_ANNET_2_3_18
+Ar - EV_ERIKA_ANNET_2_3_19
+Str - EV_ERIKA_ANNET_2_3_20
+Str - EV_ERIKA_ANNET_2_3_21
+Str - EV_ERIKA_ANNET_2_3_22
+Ar(neutral) - EV_ERIKA_ANNET_2_3_23
+Str - EV_ERIKA_ANNET_2_3_24
+Str - EV_ERIKA_ANNET_2_3_25
+Str - EV_ERIKA_ANNET_2_3_26
+Ar - EV_ERIKA_ANNET_2_3_27
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-After a half hour Arron and Rose have found Annet's estate. & EV_ERIKA_ANNET_2_3_28
+EV_ERIKA_ANNET_2_3_28
 =GUI_HIDE=
 =DELAY 1=
 =BG annet_quarters=
@@ -55,65 +57,65 @@ After a half hour Arron and Rose have found Annet's estate. & EV_ERIKA_ANNET_2_3
 =GUI_NORMAL=
 =BLACKFADE 1=
 =MUSIC event_mysterious=
-Ar - ...So we have been looking for her. & EV_ERIKA_ANNET_2_3_29
-An - I see. Mr. Arron, right? & EV_ERIKA_ANNET_2_3_30
-An - I do indeed know about Erika and where she is right now. & EV_ERIKA_ANNET_2_3_31
-An - But there might be some difficulties. & EV_ERIKA_ANNET_2_3_32
-Ar(neutral) - Such as? & EV_ERIKA_ANNET_2_3_33
-An - You see, she's an old friend of mine and we have just reunited. & EV_ERIKA_ANNET_2_3_34
-An - She wants to stay with me. & EV_ERIKA_ANNET_2_3_35
-Ro - Does she really? & EV_ERIKA_ANNET_2_3_36
-An - Of course she does, silly. & EV_ERIKA_ANNET_2_3_37
-An - You don't believe me? & EV_ERIKA_ANNET_2_3_38
-An - That's fine. Erika, please come in. & EV_ERIKA_ANNET_2_3_39
+Ar - EV_ERIKA_ANNET_2_3_29
+An - EV_ERIKA_ANNET_2_3_30
+An - EV_ERIKA_ANNET_2_3_31
+An - EV_ERIKA_ANNET_2_3_32
+Ar(neutral) - EV_ERIKA_ANNET_2_3_33
+An - EV_ERIKA_ANNET_2_3_34
+An - EV_ERIKA_ANNET_2_3_35
+Ro - EV_ERIKA_ANNET_2_3_36
+An - EV_ERIKA_ANNET_2_3_37
+An - EV_ERIKA_ANNET_2_3_38
+An - EV_ERIKA_ANNET_2_3_39
 =SOUND dooropen=
 =DELAY 0.5=
 =SPRITE erika=
 =SPRITE_UNFADE 0.5=
-Ro - *Huh, she looks quite disturbed* & EV_ERIKA_ANNET_2_3_40
-Ar - Hey, we were worried. How are you doing? & EV_ERIKA_ANNET_2_3_41
-Er(sad) - I'm sorry for my disappearance, Arron, Rose. & EV_ERIKA_ANNET_2_3_42
-Er(sad) - I will be staying with M- & EV_ERIKA_ANNET_2_3_43
-Er(sad) - With Annet from now. & EV_ERIKA_ANNET_2_3_44
-Er(sad) - You don't have to stay here. & EV_ERIKA_ANNET_2_3_45
-Ro(shock) - Huh? & EV_ERIKA_ANNET_2_3_46
+Ro - EV_ERIKA_ANNET_2_3_40
+Ar - EV_ERIKA_ANNET_2_3_41
+Er(sad) - EV_ERIKA_ANNET_2_3_42
+Er(sad) - EV_ERIKA_ANNET_2_3_43
+Er(sad) - EV_ERIKA_ANNET_2_3_44
+Er(sad) - EV_ERIKA_ANNET_2_3_45
+Ro(shock) - EV_ERIKA_ANNET_2_3_46
 =SPRITE annet=
-An - As you see, she's perfectly fine and stays here by her will. & EV_ERIKA_ANNET_2_3_47
-Ar(neutral) - Hmm, this does look a bit fishy. & EV_ERIKA_ANNET_2_3_48
-Ro - ..... & EV_ERIKA_ANNET_2_3_49
-An - You are a clever man, Mr. Arron.  & EV_ERIKA_ANNET_2_3_50
-An - You do look different from most people in this city.  & EV_ERIKA_ANNET_2_3_51
-An - I can tell you aren't of lowly heritage. & EV_ERIKA_ANNET_2_3_52
-Ar(neutral) - Please, you are making me blush. & EV_ERIKA_ANNET_2_3_53
-An - I'm not flattering you.  & EV_ERIKA_ANNET_2_3_54
-An - I can see how others react to you, especially your companions.  & EV_ERIKA_ANNET_2_3_55
-An - Rose, correct?  & EV_ERIKA_ANNET_2_3_56
-Ro - ... & EV_ERIKA_ANNET_2_3_57
-An - You see, to me there are two kinds of people in this world. & EV_ERIKA_ANNET_2_3_58
-An - Those who rule and those who obey.  & EV_ERIKA_ANNET_2_3_59
-An - Erika is obeying me, just as Rose obeys you. & EV_ERIKA_ANNET_2_3_60
-An - That makes us alike, don't you think?  & EV_ERIKA_ANNET_2_3_61
-Ro(talk) - This is absurd. & EV_ERIKA_ANNET_2_3_62
-Ar - Shush, don't make me bring your gag with us next time. & EV_ERIKA_ANNET_2_3_63
-Ro(shock) - !..... & EV_ERIKA_ANNET_2_3_64
-An - Ha, see! You get it. & EV_ERIKA_ANNET_2_3_65
-An - You have come to me so you do hold interest in Erika.  & EV_ERIKA_ANNET_2_3_66
-An - Since she has joined you before, you must be a responsible leader. & EV_ERIKA_ANNET_2_3_67
-An - So I'm not wholly against letting her go. & EV_ERIKA_ANNET_2_3_68
-An - But I do need someone around to help me with my... business. & EV_ERIKA_ANNET_2_3_69
-An - Your girl, Rose, looks quite capable of that.  & EV_ERIKA_ANNET_2_3_70
-An - What would you say if we switch for an uncertain period of time? & EV_ERIKA_ANNET_2_3_71
-Ro(shock) - ..... & EV_ERIKA_ANNET_2_3_72
-Rose noticed how Erika's eyes screamed protest, but they both remained silent. & EV_ERIKA_ANNET_2_3_73
-She was terrified by the idea of being left alone with Annet. & EV_ERIKA_ANNET_2_3_74
-Ar(neutral) - This is a tempting offer... & EV_ERIKA_ANNET_2_3_75
-Ar - But I'll have to consider it first. & EV_ERIKA_ANNET_2_3_76
-Ar - If that's fine with you. & EV_ERIKA_ANNET_2_3_77
-Ro(talk) - (C-consider?) & EV_ERIKA_ANNET_2_3_78
-An - Of course not.  & EV_ERIKA_ANNET_2_3_79
-An - Once you decide, I'll be waiting.  & EV_ERIKA_ANNET_2_3_80
-An - I hope we can have a productive relationship in future. & EV_ERIKA_ANNET_2_3_81
-Ar(neutral) - Likewise. & EV_ERIKA_ANNET_2_3_82
+An - EV_ERIKA_ANNET_2_3_47
+Ar(neutral) - EV_ERIKA_ANNET_2_3_48
+Ro - EV_ERIKA_ANNET_2_3_49
+An - EV_ERIKA_ANNET_2_3_50
+An - EV_ERIKA_ANNET_2_3_51
+An - EV_ERIKA_ANNET_2_3_52
+Ar(neutral) - EV_ERIKA_ANNET_2_3_53
+An - EV_ERIKA_ANNET_2_3_54
+An - EV_ERIKA_ANNET_2_3_55
+An - EV_ERIKA_ANNET_2_3_56
+Ro - EV_ERIKA_ANNET_2_3_57
+An - EV_ERIKA_ANNET_2_3_58
+An - EV_ERIKA_ANNET_2_3_59
+An - EV_ERIKA_ANNET_2_3_60
+An - EV_ERIKA_ANNET_2_3_61
+Ro(talk) - EV_ERIKA_ANNET_2_3_62
+Ar - EV_ERIKA_ANNET_2_3_63
+Ro(shock) - EV_ERIKA_ANNET_2_3_64
+An - EV_ERIKA_ANNET_2_3_65
+An - EV_ERIKA_ANNET_2_3_66
+An - EV_ERIKA_ANNET_2_3_67
+An - EV_ERIKA_ANNET_2_3_68
+An - EV_ERIKA_ANNET_2_3_69
+An - EV_ERIKA_ANNET_2_3_70
+An - EV_ERIKA_ANNET_2_3_71
+Ro(shock) - EV_ERIKA_ANNET_2_3_72
+EV_ERIKA_ANNET_2_3_73
+EV_ERIKA_ANNET_2_3_74
+Ar(neutral) - EV_ERIKA_ANNET_2_3_75
+Ar - EV_ERIKA_ANNET_2_3_76
+Ar - EV_ERIKA_ANNET_2_3_77
+Ro(talk) - EV_ERIKA_ANNET_2_3_78
+An - EV_ERIKA_ANNET_2_3_79
+An - EV_ERIKA_ANNET_2_3_80
+An - EV_ERIKA_ANNET_2_3_81
+Ar(neutral) - EV_ERIKA_ANNET_2_3_82
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

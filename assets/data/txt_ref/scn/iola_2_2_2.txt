@@ -8,49 +8,49 @@
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Meanwhile Iola had finished her routine and was preparing to go to Arron again. & EV_IOLA_2_2_2_0
-I - Phew, almost done here. & EV_IOLA_2_2_2_1
-I - I should warn father, that I'm leaving. & EV_IOLA_2_2_2_2
+EV_IOLA_2_2_2_0
+I - EV_IOLA_2_2_2_1
+I - EV_IOLA_2_2_2_2
 =BLACKTRANS 1=
 =DELAY 1=
 =BG cult1=
-She took a peek at her father's office before entering. & EV_IOLA_2_2_2_3
-I - Huh, he seems to receive guests... & EV_IOLA_2_2_2_4
+EV_IOLA_2_2_2_3
+I - EV_IOLA_2_2_2_4
 =BLACKTRANS 1=
 =DELAY 1=
 =SPRITE demitrius=
 =SPRITE_UNFADE 0.3=
-D - So you got rid of that dwarf king? He's one of potential nuisances for our future plan. & EV_IOLA_2_2_2_5
-D - Even though I doubt he's interested in opposing us. & EV_IOLA_2_2_2_5_1
+D - EV_IOLA_2_2_2_5
+D - EV_IOLA_2_2_2_5_1
 =SPRITE victor=
 =SPRITE_UNFADE 0.3=
-V - Sort of, wasn't me, but I finished the bastard. & EV_IOLA_2_2_2_6
-D - Wasn't you? & EV_IOLA_2_2_2_7
-V - Yeah, it seems like that guy got to him first. & EV_IOLA_2_2_2_8
-D - I thought I ordered you to keep your eyes on him, idiot. & EV_IOLA_2_2_2_9
-V - Whatever, from this world or not, he's no match for me. & EV_IOLA_2_2_2_10
-V - I can kill him any time I want.  & EV_IOLA_2_2_2_11
-D(talk) - That's not what I ordered. & EV_IOLA_2_2_2_12
-D - Maybe we can use him to do our job. & EV_IOLA_2_2_2_13
-V - Your job. & EV_IOLA_2_2_2_14
-D(talk) - It will be your job if you fuck this up.  & EV_IOLA_2_2_2_15
-V - *grunt* & EV_IOLA_2_2_2_16
-D - Now get lost already, it's not good if we are seen here together. & EV_IOLA_2_2_2_17
-V - Oh is it? You probably should take care of peeping toms next time.  & EV_IOLA_2_2_2_18
-D - Huh? & EV_IOLA_2_2_2_19
-=MUSIC STOP=
-Before Iola realized it, the door in front of her was forced in and she was dragged inside. & EV_IOLA_2_2_2_20
+V - EV_IOLA_2_2_2_6
+D - EV_IOLA_2_2_2_7
+V - EV_IOLA_2_2_2_8
+D - EV_IOLA_2_2_2_9
+V - EV_IOLA_2_2_2_10
+V - EV_IOLA_2_2_2_11
+D(talk) - EV_IOLA_2_2_2_12
+D - EV_IOLA_2_2_2_13
+V - EV_IOLA_2_2_2_14
+D(talk) - EV_IOLA_2_2_2_15
+V - EV_IOLA_2_2_2_16
+D - EV_IOLA_2_2_2_17
+V - EV_IOLA_2_2_2_18
+D - EV_IOLA_2_2_2_19
+=MUSIC_STOP=
+EV_IOLA_2_2_2_20
 =SPRITE iola=
 =SPRITE_UNFADE 0.3=
-I(shock) - What?!  & EV_IOLA_2_2_2_21
-I(shock) - Let me go now!  & EV_IOLA_2_2_2_22
-I(shock) - Father! What- & EV_IOLA_2_2_2_23
-*Thud* & EV_IOLA_2_2_2_24
+I(shock) - EV_IOLA_2_2_2_21
+I(shock) - EV_IOLA_2_2_2_22
+I(shock) - EV_IOLA_2_2_2_23
+EV_IOLA_2_2_2_24
 =SOUND punch=
-V - Hell, I hate women. & EV_IOLA_2_2_2_25
-V - Always so noisy. & EV_IOLA_2_2_2_26
-D - Don't dare kill her.  & EV_IOLA_2_2_2_27
-D(talk) - Shit, now I have to deal with this as well... & EV_IOLA_2_2_2_28
+V - EV_IOLA_2_2_2_25
+V - EV_IOLA_2_2_2_26
+D - EV_IOLA_2_2_2_27
+D(talk) - EV_IOLA_2_2_2_28
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

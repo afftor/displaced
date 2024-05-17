@@ -8,17 +8,17 @@
 =BG mountainsday=
 =SPRITE dragon=
 =SPRITE_UNFADE 0.3=
-Dr - Foolish mortals! How dare you approach me? & EV_EMBER_2_3_0
-Ro(talk) - Wow, this one can speak! & EV_EMBER_2_3_1
-Ar(neutral) - Damnit... Now we can't eat them. & EV_EMBER_2_3_2
-Em - Why? & EV_EMBER_2_3_3
-Ar(neutral) - It's obvious, you can't eat sentient things.  & EV_EMBER_2_3_4
-Em - ...Really? & EV_EMBER_2_3_5
-Ro - Stop it. Look, we came here because our friend- & EV_EMBER_2_3_6
-Dr - For this offence you'll have to pay! & EV_EMBER_2_3_7
-Er - I feel like he might not be listening...  & EV_EMBER_2_3_8
-Ri - He looks quite old. & EV_EMBER_2_3_9
-Ar - Darn, I guess there's no choice but to fight. & EV_EMBER_2_3_10
+Dr - EV_EMBER_2_3_0
+Ro(talk) - EV_EMBER_2_3_1
+Ar(neutral) - EV_EMBER_2_3_2
+Em - EV_EMBER_2_3_3
+Ar(neutral) - EV_EMBER_2_3_4
+Em - EV_EMBER_2_3_5
+Ro - EV_EMBER_2_3_6
+Dr - EV_EMBER_2_3_7
+Er - EV_EMBER_2_3_8
+Ri - EV_EMBER_2_3_9
+Ar - EV_EMBER_2_3_10
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

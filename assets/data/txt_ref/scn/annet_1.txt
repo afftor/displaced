@@ -6,24 +6,24 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =MUSIC combattheme=
-The team has barged into the main city hall as Annet meets them there. & EV_ANNET_1_0
+EV_ANNET_1_0
 =SPRITE annet=
 =SPRITE_UNFADE 0.3=
-An - Look what we have here. & EV_ANNET_1_1
-An - Can't say I expected to see you still alive. & EV_ANNET_1_2
-Ar(neutral) - I knew you were a one kind of a bitch after learning your history with Erika. & EV_ANNET_1_3
-Ar(neutral) - But this is a whole different level.  & EV_ANNET_1_4
-An - I'm glad you appreciate my work. & EV_ANNET_1_5
-Ro(shock) - Your work?  & EV_ANNET_1_6
-Ro(shock) - You are slaughtering innocent people! & EV_ANNET_1_7
-An - People, cattle, who cares. & EV_ANNET_1_8
-An - I'm glad we are finally past the acting stage and I don't have to deal with their stupidity. & EV_ANNET_1_9
-An - Won't deny it, I did have my fun a couple of times though. & EV_ANNET_1_10
-An - But it was taking too much time. & EV_ANNET_1_11
-Ar(neutral) - Whatever, let's just beat the shit out of her. & EV_ANNET_1_12
-An - Tsk, you are throwing away the few minutes of life I am gifting you. & EV_ANNET_1_13
-An - And with such bad manners too. & EV_ANNET_1_14
-An - I'll take care of your friends, once you die, Arron. & EV_ANNET_1_15
+An - EV_ANNET_1_1
+An - EV_ANNET_1_2
+Ar(neutral) - EV_ANNET_1_3
+Ar(neutral) - EV_ANNET_1_4
+An - EV_ANNET_1_5
+Ro(shock) - EV_ANNET_1_6
+Ro(shock) - EV_ANNET_1_7
+An - EV_ANNET_1_8
+An - EV_ANNET_1_9
+An - EV_ANNET_1_10
+An - EV_ANNET_1_11
+Ar(neutral) - EV_ANNET_1_12
+An - EV_ANNET_1_13
+An - EV_ANNET_1_14
+An - EV_ANNET_1_15
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

@@ -7,39 +7,39 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =SPRITE emberhappy=
-Arron and Ember have gone to Aeros to get new supplies for the forge. & EV_EMBER_1_6_0
-Em - This is so cool, there are so many people here and nobody threw anything at me yet! & EV_EMBER_1_6_1
-Ar - People around here seem not to care about much at all. & EV_EMBER_1_6_2
-Ar - Including your attire. & EV_EMBER_1_6_3
-Em - Look, this coal looks really fresh! Can we buy it? & EV_EMBER_1_6_4
-Ar - If you say so, I'd rather leave the coal selection to you. & EV_EMBER_1_6_5
+EV_EMBER_1_6_0
+Em - EV_EMBER_1_6_1
+Ar - EV_EMBER_1_6_2
+Ar - EV_EMBER_1_6_3
+Em - EV_EMBER_1_6_4
+Ar - EV_EMBER_1_6_5
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-After a few minutes Ember brings lots of large, full crates and loads them onto the cart. & EV_EMBER_1_6_6
-Em - Phew, hopefully this should be enough. & EV_EMBER_1_6_7
-Ar - Fine, let's return before I lose my mind in this crowd. & EV_EMBER_1_6_8
+EV_EMBER_1_6_6
+Em - EV_EMBER_1_6_7
+Ar - EV_EMBER_1_6_8
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG forest=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Ar - I'm still amazed how you can carry so much, including the cart, all by yourself. & EV_EMBER_1_6_9
-Ar - Must be nice to be so strong. & EV_EMBER_1_6_10
-Em - A-ha, it's nothing really, I'm not that strong. & EV_EMBER_1_6_11
-Ar(neutral) - Really? & EV_EMBER_1_6_12
-Em - Back in my old village some people were stronger than me, like my master, who beat me often to improve my discipline. & EV_EMBER_1_6_13
-Ar - Perhaps that's because you still were a child. & EV_EMBER_1_6_14
-Em - I guess so. I always win in endurance contests though! & EV_EMBER_1_6_15
-Ar - No way. & EV_EMBER_1_6_16
-Em - I'm serious. & EV_EMBER_1_6_17
-Ar - ... & EV_EMBER_1_6_18
-Ar - I bet I could beat you. & EV_EMBER_1_6_19
-Em(happy) - Really? You’re gonna compete with me? Let’s race home and see who gets there first! & EV_EMBER_1_6_20
-Ar - No, I wouldn't wanna break any of the crates. I have a better idea. & EV_EMBER_1_6_21
-Em - Ah? & EV_EMBER_1_6_22
-Ar - Come here. & EV_EMBER_1_6_23
+Ar - EV_EMBER_1_6_9
+Ar - EV_EMBER_1_6_10
+Em - EV_EMBER_1_6_11
+Ar(neutral) - EV_EMBER_1_6_12
+Em - EV_EMBER_1_6_13
+Ar - EV_EMBER_1_6_14
+Em - EV_EMBER_1_6_15
+Ar - EV_EMBER_1_6_16
+Em - EV_EMBER_1_6_17
+Ar - EV_EMBER_1_6_18
+Ar - EV_EMBER_1_6_19
+Em(happy) - EV_EMBER_1_6_20
+Ar - EV_EMBER_1_6_21
+Em - EV_EMBER_1_6_22
+Ar - EV_EMBER_1_6_23
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =GUI_FULL=
@@ -47,56 +47,56 @@ Ar - Come here. & EV_EMBER_1_6_23
 =ABG ember_doggy_03=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Em - Sir Arron, I don't understand. Didn't you want to challenge me? & EV_EMBER_1_6_24
-Ar - Yep, this is the contest. Now face this way and put your hands on that tree... & EV_EMBER_1_6_25
-Em - Eeeh? I've never heard about a contest like this. & EV_EMBER_1_6_26
-Ar - It's more fun than running and we can find out who lasts longer.  & EV_EMBER_1_6_27
-Em - Oooh, I'm not going to lose then! & EV_EMBER_1_6_28
-Ar - We'll see. And so we begin. & EV_EMBER_1_6_29
+Em - EV_EMBER_1_6_24
+Ar - EV_EMBER_1_6_25
+Em - EV_EMBER_1_6_26
+Ar - EV_EMBER_1_6_27
+Em - EV_EMBER_1_6_28
+Ar - EV_EMBER_1_6_29
 =ABG ember_doggy_04 ember_doggy_05=
-Arron unceremoniously enters Ember, shoving his cock into her up to the hilt. & EV_EMBER_1_6_30
-Em - Aaah! Don't put it all the way in so suddenly! & EV_EMBER_1_6_31
-Ar - Sorry. & EV_EMBER_1_6_32
-Em - Nh-aah… It's' so big... & EV_EMBER_1_6_33
-Em - We are doing it again, he-he. & EV_EMBER_1_6_34
-Ar - Hey, stay focused, don’t forget this is a contest. & EV_EMBER_1_6_35
-Em - Aaah!.. & EV_EMBER_1_6_36
-Ar - And you might be losing it soon. & EV_EMBER_1_6_37
-Em - Eeeh!? Why? & EV_EMBER_1_6_38
-Ar - Whoever cums first loses.  & EV_EMBER_1_6_39
-Ar - And you are already so wet. & EV_EMBER_1_6_40
-Em - Ha-ah, that's not fair! & EV_EMBER_1_6_41
-Ar - Sounds like loser talk. & EV_EMBER_1_6_42
-Em - Nhaah, I'm not going to lose so easily! & EV_EMBER_1_6_43
-Ar - Hmh, we'll see about that. Now take this! & EV_EMBER_1_6_44
-Arron increases his speed, pounding Ember’s tight pussy as she braces against the tree. & EV_EMBER_1_6_45
-Em - Aah, this is nothing!... & EV_EMBER_1_6_46
-Em - But it feels so good... & EV_EMBER_1_6_47
-Em - Aaah... & EV_EMBER_1_6_48
-Ar - Haah, perhaps you are a worthy opponent after all. & EV_EMBER_1_6_49
-Em - This is... aah... really different from running... & EV_EMBER_1_6_50
-Em - Aaah! & EV_EMBER_1_6_51
-Em - More, faster, oh yesss... & EV_EMBER_1_6_52
-Ar - Jeez, you are a real fiend. & EV_EMBER_1_6_53
-Ar - Are you ready to lose to me? & EV_EMBER_1_6_54
-Em - No way... Aaah! & EV_EMBER_1_6_55
-Ar - You might be tough, but you are no match for my stamina. & EV_EMBER_1_6_56
-Em - I can- Oh! Oooh! & EV_EMBER_1_6_57
-Em - No, nooo... Aaah, I'm cumming! & EV_EMBER_1_6_58
+EV_EMBER_1_6_30
+Em - EV_EMBER_1_6_31
+Ar - EV_EMBER_1_6_32
+Em - EV_EMBER_1_6_33
+Em - EV_EMBER_1_6_34
+Ar - EV_EMBER_1_6_35
+Em - EV_EMBER_1_6_36
+Ar - EV_EMBER_1_6_37
+Em - EV_EMBER_1_6_38
+Ar - EV_EMBER_1_6_39
+Ar - EV_EMBER_1_6_40
+Em - EV_EMBER_1_6_41
+Ar - EV_EMBER_1_6_42
+Em - EV_EMBER_1_6_43
+Ar - EV_EMBER_1_6_44
+EV_EMBER_1_6_45
+Em - EV_EMBER_1_6_46
+Em - EV_EMBER_1_6_47
+Em - EV_EMBER_1_6_48
+Ar - EV_EMBER_1_6_49
+Em - EV_EMBER_1_6_50
+Em - EV_EMBER_1_6_51
+Em - EV_EMBER_1_6_52
+Ar - EV_EMBER_1_6_53
+Ar - EV_EMBER_1_6_54
+Em - EV_EMBER_1_6_55
+Ar - EV_EMBER_1_6_56
+Em - EV_EMBER_1_6_57
+Em - EV_EMBER_1_6_58
 =WHITE=
 =ABG ember_doggy_06 ember_doggy_07=
-Em - Aaaaaahhhh! You win, you win! & EV_EMBER_1_6_59
-Ar - Hah, and with that… & EV_EMBER_1_6_60
-Arron grips her hips and thrusts his cock deep inside Ember’s pulsing pussy. & EV_EMBER_1_6_61
-Ar - I take my reward! & EV_EMBER_1_6_62
+Em - EV_EMBER_1_6_59
+Ar - EV_EMBER_1_6_60
+EV_EMBER_1_6_61
+Ar - EV_EMBER_1_6_62
 =WHITE=
 =ABG ember_doggy_08 ember_doggy_09=
-Em - AAah... I'm so full of your seed… I think I’m leaking… & EV_EMBER_1_6_63
-Em - I can feel it trickling down my thighs. & EV_EMBER_1_6_64
-Ar - Haaah... You fought well, Ember. & EV_EMBER_1_6_65
-Em - I lost... But, it felt so good… & EV_EMBER_1_6_66
-Ar - You’re still inexperienced, but you have a lot of natural talent & EV_EMBER_1_6_67
-Em - For all the good it did me... & EV_EMBER_1_6_68
+Em - EV_EMBER_1_6_63
+Em - EV_EMBER_1_6_64
+Ar - EV_EMBER_1_6_65
+Em - EV_EMBER_1_6_66
+Ar - EV_EMBER_1_6_67
+Em - EV_EMBER_1_6_68
 =BLACKUNFADE 0.5=
 =DELAY 1.5=
 =MUSIC_STOP=
@@ -106,30 +106,30 @@ Em - For all the good it did me... & EV_EMBER_1_6_68
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =SPRITE emberhappy=
-Em(sad) - Aww, I can't believe that I lost. & EV_EMBER_1_6_69
-Em - You really are strong, Sir Arron.  & EV_EMBER_1_6_70
-Ar - Certainly, but that might've been more skill than pure strength on my part. & EV_EMBER_1_6_71
-Em(sad) - Ooh? What do you mean? & EV_EMBER_1_6_72
-Ar - I'm sure you can learn to last longer.  & EV_EMBER_1_6_73
-Ar - We just need to practice more often. & EV_EMBER_1_6_74
-Em(happy) - We'll train more in future then? & EV_EMBER_1_6_75
-Ar - More and harder. You can bet on it. & EV_EMBER_1_6_76
+Em(sad) - EV_EMBER_1_6_69
+Em - EV_EMBER_1_6_70
+Ar - EV_EMBER_1_6_71
+Em(sad) - EV_EMBER_1_6_72
+Ar - EV_EMBER_1_6_73
+Ar - EV_EMBER_1_6_74
+Em(happy) - EV_EMBER_1_6_75
+Ar - EV_EMBER_1_6_76
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG villageday=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Ro - Oh, Master, you are back. Did everything went well? & EV_EMBER_1_6_77
-Ar - Of course it did. Have I ever failed you? & EV_EMBER_1_6_78
-Ro(sarcastic) - ... & EV_EMBER_1_6_79
-Em - Ah. Hi Rose. Sir Arron is really strong.  & EV_EMBER_1_6_80
-Em - You know, he could even beat me! & EV_EMBER_1_6_81
-Ro - Uh huh. & EV_EMBER_1_6_82
-Em - But I think it's because he trains with you every so often. & EV_EMBER_1_6_83
-Ro - … & EV_EMBER_1_6_84
-Em - He says we’re going to train more… & EV_EMBER_1_6_85
-Em - So I can last longer. & EV_EMBER_1_6_86
-Ro(sarcastic) - Wait, what do you mean he's training with me?  & EV_EMBER_1_6_87
+Ro - EV_EMBER_1_6_77
+Ar - EV_EMBER_1_6_78
+Ro(sarcastic) - EV_EMBER_1_6_79
+Em - EV_EMBER_1_6_80
+Em - EV_EMBER_1_6_81
+Ro - EV_EMBER_1_6_82
+Em - EV_EMBER_1_6_83
+Ro - EV_EMBER_1_6_84
+Em - EV_EMBER_1_6_85
+Em - EV_EMBER_1_6_86
+Ro(sarcastic) - EV_EMBER_1_6_87
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =STOP=

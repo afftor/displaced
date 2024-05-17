@@ -163,47 +163,35 @@ func _init():
 #		TranslationData[i.replace(LocalizationFolder + '/', '').replace('.gd','')] = i
 	
 	#Applying translation
-	var base_translation
+	var base_dict
 	assert(localizations[0] == base_locale, "base_locale has to be first in localizations array!")
 	for locale_num in range(localizations.size()):
 		var locale = localizations[locale_num]
 		var activetranslation = Translation.new()
-		var translationscript = load(TranslationData[locale]).new()
+		var translation_dict = load(TranslationData[locale]).new().TranslationDict
 		#-------should probably be commented befor release------
 		if locale_num == 0:
-			base_translation = translationscript
+			base_dict = translation_dict
 		else:
-			for i in base_translation.TranslationDict:
-				assert(translationscript.TranslationDict.has(i), "locale %s has no %s string" % [locale, i])
+			var integrity_failure = false
+			for i in base_dict:
+				if !translation_dict.has(i):
+					print("locale %s has no %s string" % [locale, i])
+					integrity_failure = true
+			if translation_dict.size() != base_dict.size():
+				print("Locale %s has %d strings against %d" % 
+					[locale, translation_dict.size(), base_dict.size()])
+				integrity_failure = true
+			assert(!integrity_failure, "Integrity failure for locale %s!" % locale)
 		#--------------------------
 		activetranslation.set_locale(locale)
-		for i in translationscript.TranslationDict:
-			activetranslation.add_message(i, translationscript.TranslationDict[i])
+		for i in translation_dict:
+			activetranslation.add_message(i, translation_dict[i])
 		TranslationServer.add_translation(activetranslation)
 	#Settings and folders
 	hotkeys_handler = HotkeysHandler.new()
 	settings_load()
 	TranslationServer.set_locale(globalsettings.ActiveLocalization)
-
-func check_event_translation_integrity(strings :Array):
-	for locale_num in range(localizations.size()):
-		var locale = localizations[locale_num]
-		if locale == base_locale: continue
-		
-		var translationscript = load(TranslationData[locale]).new()
-		var strings_of_translation = {}
-		for key in translationscript.TranslationDict:
-			if key.begins_with("EV_"):
-				strings_of_translation[key] = false
-		for code in strings:
-			if strings_of_translation.has(code):
-				strings_of_translation[code] = true
-			else:
-				print("Integrity failure! No %s in %s" % [code, locale])
-		for key in strings_of_translation:
-			if !strings_of_translation[key]:
-				print("Redundancy! %s in %s has no use" % [key, locale])
-		
 
 func preload_backgrounds():
 	var path = resources.RES_ROOT.bg + '/bg'

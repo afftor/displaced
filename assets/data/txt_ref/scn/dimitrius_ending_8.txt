@@ -4,13 +4,13 @@
 =BG future_city_reactor=
 =MUSIC event_combat=
 =GUI_NORMAL=
-Em - Looks like it was the last of them. & EV_DIMITRIUS_ENDING_8_0
-Ri - Good, now time to start the preparations. & EV_DIMITRIUS_ENDING_8_1
-I - Understood. How's Arron doing? & EV_DIMITRIUS_ENDING_8_2
-Ri - He's struggling, we should hurry. & EV_DIMITRIUS_ENDING_8_3
-Em - What should I do? & EV_DIMITRIUS_ENDING_8_4
-Ri - Stay on guard. & EV_DIMITRIUS_ENDING_8_5
-Em - Okay! & EV_DIMITRIUS_ENDING_8_6
+Em - EV_DIMITRIUS_ENDING_8_0
+Ri - EV_DIMITRIUS_ENDING_8_1
+I - EV_DIMITRIUS_ENDING_8_2
+Ri - EV_DIMITRIUS_ENDING_8_3
+Em - EV_DIMITRIUS_ENDING_8_4
+Ri - EV_DIMITRIUS_ENDING_8_5
+Em - EV_DIMITRIUS_ENDING_8_6
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -18,10 +18,10 @@ Em - Okay! & EV_DIMITRIUS_ENDING_8_6
 =SPRITE demitrius_demon=
 =BLACKFADE 0.5=
 =GUI_NORMAL=
-De - Exhausted from running in circles?  & EV_DIMITRIUS_ENDING_8_7
-De - Too bad you are only a weak human. & EV_DIMITRIUS_ENDING_8_8
+De - EV_DIMITRIUS_ENDING_8_7
+De - EV_DIMITRIUS_ENDING_8_8
 =SOUND arron_parry=
-Arron threw another strike but Dimitirus blocked it. & EV_DIMITRIUS_ENDING_8_9
-Ar(anger) - Gh, you are really starting  to get on my nerves. & EV_DIMITRIUS_ENDING_8_10
-De - Ahaha, fun, isn't it? Let's fool around for the last time! & EV_DIMITRIUS_ENDING_8_11
+EV_DIMITRIUS_ENDING_8_9
+Ar(anger) - EV_DIMITRIUS_ENDING_8_10
+De - EV_DIMITRIUS_ENDING_8_11
 =STOP=

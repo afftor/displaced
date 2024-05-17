@@ -6,42 +6,42 @@
 =MUSIC eventgeneric=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ro - Phew.. It's dead. & EV_IOLA_2_2_1_0
-Em - There's an essence! & EV_IOLA_2_2_1_1
-Ar - It looks fancy.  & EV_IOLA_2_2_1_2
-Ar(neutral) - I wonder what it tastes like... & EV_IOLA_2_2_1_3
-Ri - It doesn't really taste like anything.  & EV_IOLA_2_2_1_4
-Ri - But you might grow a pair of horns if you digest it. & EV_IOLA_2_2_1_5
-Em - Oh? But what if I already have one? & EV_IOLA_2_2_1_6
-Ro(sarcastic) - Let's not try it. & EV_IOLA_2_2_1_7
-Em(sad) - Ew, it's all gross and sticky... & EV_IOLA_2_2_1_8
-Er - Just think of it as of a semen. & EV_IOLA_2_2_1_9
-Ro(sarcastic) - you are really not making this better. & EV_IOLA_2_2_1_10
-Ro - Please let's return, I don't feel very good around here. & EV_IOLA_2_2_1_11
-Ar - These are just walking corpses, I don't get why are you bothered by them. & EV_IOLA_2_2_1_12
-Ro(sarcastic) - Don't make me recall how you reacted after going to family crypt for the first time. & EV_IOLA_2_2_1_13
-Ar - Alright, alright. Let's go then. & EV_IOLA_2_2_1_14
-As the whole team was leaving the room, Rilu slowed down behind. & EV_IOLA_2_2_1_15
+Ro - EV_IOLA_2_2_1_0
+Em - EV_IOLA_2_2_1_1
+Ar - EV_IOLA_2_2_1_2
+Ar(neutral) - EV_IOLA_2_2_1_3
+Ri - EV_IOLA_2_2_1_4
+Ri - EV_IOLA_2_2_1_5
+Em - EV_IOLA_2_2_1_6
+Ro(sarcastic) - EV_IOLA_2_2_1_7
+Em(sad) - EV_IOLA_2_2_1_8
+Er - EV_IOLA_2_2_1_9
+Ro(sarcastic) - EV_IOLA_2_2_1_10
+Ro - EV_IOLA_2_2_1_11
+Ar - EV_IOLA_2_2_1_12
+Ro(sarcastic) - EV_IOLA_2_2_1_13
+Ar - EV_IOLA_2_2_1_14
+EV_IOLA_2_2_1_15
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
-Ar(neutral) - Rilu? You found something over there? & EV_IOLA_2_2_1_16
-Ri - ... & EV_IOLA_2_2_1_17
-Ri - Nevermind, let's go. & EV_IOLA_2_2_1_18
+Ar(neutral) - EV_IOLA_2_2_1_16
+Ri - EV_IOLA_2_2_1_17
+Ri - EV_IOLA_2_2_1_18
 =BLACKTRANS 1=
 =DELAY 1=
 =SPRITE zelrothcaliban=
 =SPRITE_UNFADE 0.3=
-At the other side of the hall two figures were watching from the shadows. & EV_IOLA_2_2_1_19
-?(Z) - Interesting... There's a familiar aura. & EV_IOLA_2_2_1_20
-?(C) - What's aura? & EV_IOLA_2_2_1_21
-?(Z) - Looks like they are the ones who Dimitrius told me about. & EV_IOLA_2_2_1_22
-?(Z) - Bastards destroyed about a week of my work. & EV_IOLA_2_2_1_23
-?(C) - oooh, that's bad. & EV_IOLA_2_2_1_24
-?(Z) - No shit, dumbass. & EV_IOLA_2_2_1_25
-?(Z) - At least they've left. & EV_IOLA_2_2_1_26
-?(Z) - Alright, get back to preparations. & EV_IOLA_2_2_1_27
-?(C) - Preparations for dinner? I'm hungry... & EV_IOLA_2_2_1_28
-?(Z) - No, you imbecile. Now get to work. & EV_IOLA_2_2_1_29
+EV_IOLA_2_2_1_19
+?(Z) - EV_IOLA_2_2_1_20
+?(C) - EV_IOLA_2_2_1_21
+?(Z) - EV_IOLA_2_2_1_22
+?(Z) - EV_IOLA_2_2_1_23
+?(C) - EV_IOLA_2_2_1_24
+?(Z) - EV_IOLA_2_2_1_25
+?(Z) - EV_IOLA_2_2_1_26
+?(Z) - EV_IOLA_2_2_1_27
+?(C) - EV_IOLA_2_2_1_28
+?(Z) - EV_IOLA_2_2_1_29
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

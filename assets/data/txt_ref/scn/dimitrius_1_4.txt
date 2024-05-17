@@ -8,55 +8,55 @@
 =GUI_NORMAL=
 =SPRITE demitrius=
 =SPRITE_UNFADE 0.5=
-Ar - Hmmm... Can't we talk this over?  & EV_DIMITRIUS_1_4_0
-Em(sad) - We are not demons. And sir Arron is a good person! & EV_DIMITRIUS_1_4_1
-D(talk) - Foolish. Even if you are not a demon, you are still being controlled by them. & EV_DIMITRIUS_1_4_2
-D - You can't be trusted. & EV_DIMITRIUS_1_4_3
-D(talk) - This is your last chance, surrender immediately! & EV_DIMITRIUS_1_4_4
-Ar(neutral) - Hmph. You are no fighter, you said so yourself. & EV_DIMITRIUS_1_4_5
-Ar - What are you going to do? Preach us to sleep? & EV_DIMITRIUS_1_4_6
-At those words, a round item came flying from Demitrius falling a few steps away from Arron. & EV_DIMITRIUS_1_4_7
-Ro(shock) - Ah! & EV_DIMITRIUS_1_4_8
+Ar - EV_DIMITRIUS_1_4_0
+Em(sad) - EV_DIMITRIUS_1_4_1
+D(talk) - EV_DIMITRIUS_1_4_2
+D - EV_DIMITRIUS_1_4_3
+D(talk) - EV_DIMITRIUS_1_4_4
+Ar(neutral) - EV_DIMITRIUS_1_4_5
+Ar - EV_DIMITRIUS_1_4_6
+EV_DIMITRIUS_1_4_7
+Ro(shock) - EV_DIMITRIUS_1_4_8
 =SOUND explosion=
 =SHAKE_SCREEN 0.5=
 =DELAY 0.5=
-*Bam* & EV_DIMITRIUS_1_4_9
-The cave walls shook at the heavy explosion with dust falling to the ground. & EV_DIMITRIUS_1_4_10
-Ar(shock) - What the hell was that? A bomb? & EV_DIMITRIUS_1_4_11
-D(talk) - Do not underestimate the Ancestral Cult, you foul creatures. & EV_DIMITRIUS_1_4_12
+EV_DIMITRIUS_1_4_9
+EV_DIMITRIUS_1_4_10
+Ar(shock) - EV_DIMITRIUS_1_4_11
+D(talk) - EV_DIMITRIUS_1_4_12
 =SOUND explosion=
 =SHAKE_SCREEN 0.25=
 =DELAY 0.25=
-*Toss* & EV_DIMITRIUS_1_4_13
-Ar(shock) - You moron, You’re gonna kill us all! & EV_DIMITRIUS_1_4_14
-D - It was your choice to resist me. I'll do what I must. & EV_DIMITRIUS_1_4_15
+EV_DIMITRIUS_1_4_13
+Ar(shock) - EV_DIMITRIUS_1_4_14
+D - EV_DIMITRIUS_1_4_15
 =SOUND explosion=
 =SHAKE_SCREEN 0.5=
 =DELAY 0.5=
 =SOUND sound_crack=
-*Bam* & EV_DIMITRIUS_1_4_16
-Ro(shock) - Look, the ceiling is breaking! & EV_DIMITRIUS_1_4_17
-A large chunk of stone has broken off from the ceiling and fell onto Demitrius. & EV_DIMITRIUS_1_4_18
-D - Ah! & EV_DIMITRIUS_1_4_19
+EV_DIMITRIUS_1_4_16
+Ro(shock) - EV_DIMITRIUS_1_4_17
+EV_DIMITRIUS_1_4_18
+D - EV_DIMITRIUS_1_4_19
 =SHAKE_SPRITE 0.25=
 =DELAY 0.25=
 =SOUND sound_splat=
 =MUSIC_STOP=
-*Splat* & EV_DIMITRIUS_1_4_20
+EV_DIMITRIUS_1_4_20
 =SPRITE_FADE 0.3=
 =DELAY 0.3=
-Demitrius died as a huge rock stuck his head. & EV_DIMITRIUS_1_4_21
+EV_DIMITRIUS_1_4_21
 =GUI_HIDE=
 =GUI_NORMAL=
-Em(sad) - Ah... He should've listened. & EV_DIMITRIUS_1_4_22
-Ro - *Gulp* & EV_DIMITRIUS_1_4_23
-Ar(shock) - What the hell... He's dead now. & EV_DIMITRIUS_1_4_24
-Er - That's unfortunate, but you can't blame yourself for that.  & EV_DIMITRIUS_1_4_25
-Em - What are we gonna do now? & EV_DIMITRIUS_1_4_26
-Ro - We probably should take care of his body... & EV_DIMITRIUS_1_4_27
-Em - Sir Arron, there's like a dozen golems coming! & EV_DIMITRIUS_1_4_28
-Ar(neutral) - Shit, they must have been agitated by the explosions. & EV_DIMITRIUS_1_4_29
-Ar(neutral) - There's no choice, let's retreat. & EV_DIMITRIUS_1_4_30
+Em(sad) - EV_DIMITRIUS_1_4_22
+Ro - EV_DIMITRIUS_1_4_23
+Ar(shock) - EV_DIMITRIUS_1_4_24
+Er - EV_DIMITRIUS_1_4_25
+Em - EV_DIMITRIUS_1_4_26
+Ro - EV_DIMITRIUS_1_4_27
+Em - EV_DIMITRIUS_1_4_28
+Ar(neutral) - EV_DIMITRIUS_1_4_29
+Ar(neutral) - EV_DIMITRIUS_1_4_30
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
@@ -65,9 +65,9 @@ Ar(neutral) - There's no choice, let's retreat. & EV_DIMITRIUS_1_4_30
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
-Ar(neutral) - This isn't good, but we can't tell anyone about this. & EV_DIMITRIUS_1_4_31
-Ro - But won't he be missed...? & EV_DIMITRIUS_1_4_32
-The party agreed to not bring up this incident around the settlement and if anyone would ask, they brought him to the caves and left him alone. & EV_DIMITRIUS_1_4_33
+Ar(neutral) - EV_DIMITRIUS_1_4_31
+Ro - EV_DIMITRIUS_1_4_32
+EV_DIMITRIUS_1_4_33
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

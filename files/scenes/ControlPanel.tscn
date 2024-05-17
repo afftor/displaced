@@ -227,12 +227,12 @@ margin_bottom = 72.0
 text = "test e"
 clip_text = true
 
-[node name="dump_trans" type="Button" parent="dev_panel"]
+[node name="dump_ref" type="Button" parent="dev_panel"]
 margin_left = 221.0
 margin_top = 19.0
-margin_right = 363.0
+margin_right = 348.0
 margin_bottom = 72.0
-text = "dump main"
+text = "dump referals"
 clip_text = true
 
 [node name="foodicon" type="TextureRect" parent="."]

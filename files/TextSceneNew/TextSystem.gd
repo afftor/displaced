@@ -1142,13 +1142,7 @@ func advance_scene() -> void:
 				replica = splitted[1]
 				is_narrator = false
 		
-		if " & " in replica:
-			var splitted = replica.split(" & ")
-			assert(splitted.size() == 2, "inappropriate use of & in %s" % state.CurEvent)
-			if TranslationServer.get_locale() != globals.base_locale:
-				replica = tr(splitted[1])
-			else:
-				replica = splitted[0]
+		replica = tr(replica)
 		
 		ShownCharacters = 0
 		if is_narrator:
@@ -1381,22 +1375,23 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 						if !out[current_scene]["res"]["portrait"].has(res_name):
 							out[current_scene]["res"]["portrait"].append(res_name)
 			
-			#-------should be switched off in most cases, except changes in events------
-			if " & " in i:
-				var tr_id = i.get_slice(" & ", 1)
-				if strings_to_check.has(tr_id):
-					print("Translation double at %s: %s" % [current_scene, tr_id])
+			#-------should probably be commented befor release------
+			if !i.empty():
+				var line_id = i
+				if " - " in i:
+					line_id = i.get_slice(" - ", 1)
+					if line_id.empty():
+						print("No line id at %s: %s" % [current_scene, i])
+				if strings_to_check.has(line_id):
+					print("Translation double at %s: %s" % [current_scene, line_id])
 				else:
-					strings_to_check.append(tr_id)
-			elif !i.empty():
-				print("No translation at %s: %s" % [current_scene, i])
+					strings_to_check.append(line_id)
+				if line_id == tr(line_id):#should find better way to check strings in TranslationServer
+					print("No translation at %s: %s" % [current_scene, line_id])
 			#-----------
 
 		c += 1
 
-	#-------should be switched off in most cases, except changes in events------
-	globals.check_event_translation_integrity(strings_to_check)
-	#---------
 	for original in Explorationdata.cloned_scenes:
 		var clone = Explorationdata.cloned_scenes[original]
 		out[clone] = out[original].duplicate(true)
@@ -1425,7 +1420,56 @@ func can_hide():
 #--------------------
 
 
+func dump_referals():
+	print("Dump started!")
+	var scene_name :String = ""
+	var file_text :String = ""
+	var out_path = "user://referals/"
+	var file_handler = File.new()
+	
+	var dir_handler = Directory.new()
+	if dir_handler.open("user://") != OK:
+		print("can't open user folder")
+		return
+	if !dir_handler.dir_exists("referals"):
+		dir_handler.make_dir("referals")
+	
+	for i in ref_src:
+		if i.begins_with("**") && i.ends_with("**"):
+			if !file_text.empty():
+				file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+				file_handler.store_string(file_text)
+				file_handler.close()
+			file_text = i
+			scene_name = i.replace("**", "").replace(" ", "")
+			continue
+		file_text += "\n"
 
+		if i.begins_with("#"):
+			file_text += i
+			continue
+
+		if i.begins_with("=") && i.ends_with("="):
+			file_text += i
+			continue
+
+		if i.empty():
+			continue
+
+		var line_id = i
+		if " - " in i:
+			var splitted = i.split(" - ", true, 1)
+			if is_char_name(splitted[0]):
+				line_id = splitted[1]
+		file_text += "%s - %s" % [i, tr(line_id)]
+	#last file
+	file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+	file_handler.store_string(file_text)
+	file_handler.close()
+	print('Dump finished! Look at user://referals')
+
+
+#----------legacy code------------
 #This func was intended to be used only once at _ready() with ref_src argument
 #in order to add translation ids to all event files.
 #It was used and now has no purpose. I'm leaving it here only for legacy reason,
@@ -1481,52 +1525,100 @@ func can_hide():
 #	file_handler.store_string(dict_text)
 #	file_handler.close()
 
-func dump_lines_for_translation():
-	print("Dump started!")
-	print('Mind that only \\" and \\n escape codes are supported by now')
-	var dict_text :String = ""
-	for i in ref_src:
-		if i.begins_with("**") && i.ends_with("**"):
-			continue
+#This was used at _ready() to remove actual lines from events' files,
+#to leave there only translation ids (actual lines are all in main.gd)
+#func remove_lines():
+#	var scene_name :String = ""
+#	var file_text :String = ""
+#	var out_path = "user://out/"
+#	var file_handler = File.new()
+#	for i in ref_src:
+#		if i.begins_with("**") && i.ends_with("**"):
+#			if !file_text.empty():
+#				file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+#				file_handler.store_string(file_text)
+#				file_handler.close()
+#			file_text = i
+#			scene_name = i.replace("**", "").replace(" ", "")
+#			continue
+#		file_text += "\n"
+#
+#		if i.begins_with("#"):
+#			file_text += i
+#			continue
+#
+#		if i.begins_with("=") && i.ends_with("="):
+#			file_text += i
+#			continue
+#
+#		if i.empty():
+#			continue
+#
+#		var replica = i
+#		var char_name = ""
+#		if " - " in i:
+#			var splitted = i.split(" - ", true, 1)
+#			if is_char_name(splitted[0]):
+#				char_name = splitted[0]
+#				replica = splitted[1]
+#		assert((" & " in replica), "inappropriate use of & in %s" % replica)
+#		var splitted = replica.split(" & ")
+#		assert(splitted.size() == 2, "inappropriate use of & in %s" % replica)
+#		if !char_name.empty():
+#			file_text += "%s - " % char_name
+#		file_text += splitted[1]
+#	#last file
+#	file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+#	file_handler.store_string(file_text)
+#	file_handler.close()
 
-		if i.begins_with("#"):
-			continue
-
-		if i.begins_with("=") && i.ends_with("="):
-			continue
-
-		if i.empty():
-			continue
-
-		var replica = i
-		if " - " in i:
-			var splitted = i.split(" - ", true, 1)
-			if is_char_name(splitted[0]):
-				replica = splitted[1]
-		assert((" & " in replica), "inappropriate use of & in %s" % replica)
-		var splitted = replica.split(" & ")
-		assert(splitted.size() == 2, "inappropriate use of & in %s" % replica)
-		dict_text += "%s = \"%s\",\n" % [splitted[1], escape_for_translation(splitted[0])]
-	#main
-	var main_trans = load(globals.TranslationData[globals.base_locale]).new().TranslationDict
-	var file_text :String = ""
-	for id in main_trans:
-		file_text += "%s = \"%s\",\n" % [id, escape_for_translation(main_trans[id])]#c_escape()
-	file_text += dict_text
-	#dump
-	var dir_handler = Directory.new()
-	if dir_handler.open("user://") != OK:
-		print("can't open user folder")
-		return
-	if !dir_handler.dir_exists("translation"):
-		dir_handler.make_dir("translation")
-	var file_handler = File.new()
-	file_handler.open("user://translation/main.txt", File.WRITE)
-	file_handler.store_string(file_text)
-	file_handler.close()
-	print('Dump finished! Look at user://translation')
-
-func escape_for_translation(input_line :String) ->String:
-	var line = input_line.replace("\n", "\\n")
-	line = line.replace('\"', '\\"')
-	return line
+#This was used befor removal actual lines from events' files to make artificial main.gd for translation
+#func dump_lines_for_translation():
+#	print("Dump started!")
+#	print('Mind that only \\" and \\n escape codes are supported by now')
+#	var dict_text :String = ""
+#	for i in ref_src:
+#		if i.begins_with("**") && i.ends_with("**"):
+#			continue
+#
+#		if i.begins_with("#"):
+#			continue
+#
+#		if i.begins_with("=") && i.ends_with("="):
+#			continue
+#
+#		if i.empty():
+#			continue
+#
+#		var replica = i
+#		if " - " in i:
+#			var splitted = i.split(" - ", true, 1)
+#			if is_char_name(splitted[0]):
+#				replica = splitted[1]
+#		assert((" & " in replica), "inappropriate use of & in %s" % replica)
+#		var splitted = replica.split(" & ")
+#		assert(splitted.size() == 2, "inappropriate use of & in %s" % replica)
+#		dict_text += "\t%s = \"%s\",\n" % [splitted[1], escape_for_translation(splitted[0])]
+#	#main
+#	var main_trans = load(globals.TranslationData[globals.base_locale]).new().TranslationDict
+#	var file_text :String = "extends Node\n\nvar TranslationDict = {\n"
+#	for id in main_trans:
+#		file_text += "\t%s = \"%s\",\n" % [id, escape_for_translation(main_trans[id])]#c_escape()
+#	file_text += dict_text + "}"
+#	#dump
+#	var dir_handler = Directory.new()
+#	if dir_handler.open("user://") != OK:
+#		print("can't open user folder")
+#		return
+#	if !dir_handler.dir_exists("translation"):
+#		dir_handler.make_dir("translation")
+#	var file_handler = File.new()
+#	file_handler.open("user://translation/main.gd", File.WRITE)
+#	file_handler.store_string(file_text)
+#	file_handler.close()
+#	print('Dump finished! Look at user://translation')
+#
+#func escape_for_translation(input_line :String) ->String:
+#	var line = input_line.replace("\n", "\\n")
+#	line = line.replace('\"', '\\"')
+#	return line

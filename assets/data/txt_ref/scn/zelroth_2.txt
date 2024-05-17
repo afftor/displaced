@@ -5,173 +5,173 @@
 =BG castle_interior=
 =MUSIC event_mysterious=
 =SPRITE zelroth=
-Z - Gh... How... are you... & EV_ZELROTH_2_0
-Z - So strong. & EV_ZELROTH_2_1
+Z - EV_ZELROTH_2_0
+Z - EV_ZELROTH_2_1
 =SOUND sound_fall=
 =SPRITE_HIDE=
-C - Master defeated! I run! & EV_ZELROTH_2_2
-Big monster quickly escapes in one of the halls leaving Zelroth laying on the floor. & EV_ZELROTH_2_3
-Ar(neutral) - Wait! & EV_ZELROTH_2_4
+C - EV_ZELROTH_2_2
+EV_ZELROTH_2_3
+Ar(neutral) - EV_ZELROTH_2_4
 =SPRITE rilu=
-Ri - Ignore it, we don't need him. & EV_ZELROTH_2_5
-Z - Even after you kill me...  & EV_ZELROTH_2_6
-Z -  Dimitrius will get you... & EV_ZELROTH_2_7
-Ri - Keep quiet. I'm not going to kill you. & EV_ZELROTH_2_8
-Rilu proceeded to inspect Zelroth's possessions. & EV_ZELROTH_2_9
-Ri - ... & EV_ZELROTH_2_10
-Ri - Found it. & EV_ZELROTH_2_11
-Ar(neutral) - Uh, are we really going to use this? & EV_ZELROTH_2_12
-Ri - I don't see any other options on hand. & EV_ZELROTH_2_13
-Ar - ...Fine, I'll trust this to you. & EV_ZELROTH_2_14
-Ri - Let's return then. & EV_ZELROTH_2_15
+Ri - EV_ZELROTH_2_5
+Z - EV_ZELROTH_2_6
+Z - EV_ZELROTH_2_7
+Ri - EV_ZELROTH_2_8
+EV_ZELROTH_2_9
+Ri - EV_ZELROTH_2_10
+Ri - EV_ZELROTH_2_11
+Ar(neutral) - EV_ZELROTH_2_12
+Ri - EV_ZELROTH_2_13
+Ar - EV_ZELROTH_2_14
+Ri - EV_ZELROTH_2_15
 =BLACKTRANS 1=
 =DELAY 1=
 =SPRITE zelroth=
-Z - Fuck... I can barely move... & EV_ZELROTH_2_16
+Z - EV_ZELROTH_2_16
 =SPRITE caliban=
-C - ...Master. & EV_ZELROTH_2_17
-Z - Hey, you imbecile, come help me! & EV_ZELROTH_2_18
-Big monster walked over to the lying man. & EV_ZELROTH_2_19
-Z - Wait. What are you doing- & EV_ZELROTH_2_20
-Z - Stop! & EV_ZELROTH_2_21
-C - ..... & EV_ZELROTH_2_22
-Z - What the fuck are you- & EV_ZELROTH_2_23
+C - EV_ZELROTH_2_17
+Z - EV_ZELROTH_2_18
+EV_ZELROTH_2_19
+Z - EV_ZELROTH_2_20
+Z - EV_ZELROTH_2_21
+C - EV_ZELROTH_2_22
+Z - EV_ZELROTH_2_23
 =SOUND sound_splat=
-Z - Arrggh!! & EV_ZELROTH_2_24
-C - ....... & EV_ZELROTH_2_25
+Z - EV_ZELROTH_2_24
+C - EV_ZELROTH_2_25
 =BLACKTRANS 2=
 =DELAY 2=
 =MUSIC event_tragic=
 =BG scenes/dungeon_1=
 =SPRITE rose=
-Behind the iron bars of the jail, Rose sits out in the cold. & EV_ZELROTH_2_26
-Ro - ... & EV_ZELROTH_2_27
-Ro - How do I even get out of this? & EV_ZELROTH_2_28
-Ro - I'm not good at making decisions... Back then it was so simple. & EV_ZELROTH_2_29
+EV_ZELROTH_2_26
+Ro - EV_ZELROTH_2_27
+Ro - EV_ZELROTH_2_28
+Ro - EV_ZELROTH_2_29
 =BLACKUNFADE 1=
 =DELAY 1=
 =GUI_FULL=
 =SPRITE_HIDE=
-..... & EV_ZELROTH_2_30
-? - Poor thing... Losing her parents at such a young age. & EV_ZELROTH_2_31
-?? - You mean last week's fire?  & EV_ZELROTH_2_32
-?? - That was fierce. & EV_ZELROTH_2_33
-? - She’s been in shock since then and barely says anything. Only cries and stares onto the ground. & EV_ZELROTH_2_34
-? - She has no relatives around here, we're gonna have to find her an orphanage. & EV_ZELROTH_2_35
-Woman - I knew her parents. & EV_ZELROTH_2_36
-Woman - I can take care of her. & EV_ZELROTH_2_37
-? - You must have a really kind heart, miss. & EV_ZELROTH_2_38
-Woman - Hey, you are Rose, right?  & EV_ZELROTH_2_39
-Woman - Do you want to be friends with me? & EV_ZELROTH_2_40
-Ro - ..... & EV_ZELROTH_2_41
-... & EV_ZELROTH_2_42
-.... & EV_ZELROTH_2_43
-..... & EV_ZELROTH_2_44
-Woman - Good morning, Rose.  & EV_ZELROTH_2_45
-Woman - How are you feeling today? & EV_ZELROTH_2_46
-Ro - I'm good, thanks. & EV_ZELROTH_2_47
-Rose smiled.  & EV_ZELROTH_2_48
-It's been a few months since the incident and she grew accustomed to her new life. & EV_ZELROTH_2_49
-Woman - Today we go for a walk. Make sure to clean your face.  & EV_ZELROTH_2_50
-Ro - *nod* & EV_ZELROTH_2_51
-... & EV_ZELROTH_2_52
-.... & EV_ZELROTH_2_53
-..... & EV_ZELROTH_2_54
-slavetrader - She's just a child, and untrained one.  & EV_ZELROTH_2_55
-slavetrader - You will not get a lot of money from me for her. & EV_ZELROTH_2_56
-slavetrader - I'll have to smuggle her somewhere far away, so at least her breed will net some worth. & EV_ZELROTH_2_57
-Woman - It's fine.  & EV_ZELROTH_2_58
-Woman - She's an orphan and there's no other relatives. & EV_ZELROTH_2_59
-Woman - I don't want to raise her any further, I've wasted a generous sum of money on her food already. & EV_ZELROTH_2_60
-Rose didn't realize what they were talking about, but since that day she never saw that woman again. & EV_ZELROTH_2_61
-... & EV_ZELROTH_2_62
-.... & EV_ZELROTH_2_63
-..... & EV_ZELROTH_2_64
+EV_ZELROTH_2_30
+? - EV_ZELROTH_2_31
+?? - EV_ZELROTH_2_32
+?? - EV_ZELROTH_2_33
+? - EV_ZELROTH_2_34
+? - EV_ZELROTH_2_35
+Woman - EV_ZELROTH_2_36
+Woman - EV_ZELROTH_2_37
+? - EV_ZELROTH_2_38
+Woman - EV_ZELROTH_2_39
+Woman - EV_ZELROTH_2_40
+Ro - EV_ZELROTH_2_41
+EV_ZELROTH_2_42
+EV_ZELROTH_2_43
+EV_ZELROTH_2_44
+Woman - EV_ZELROTH_2_45
+Woman - EV_ZELROTH_2_46
+Ro - EV_ZELROTH_2_47
+EV_ZELROTH_2_48
+EV_ZELROTH_2_49
+Woman - EV_ZELROTH_2_50
+Ro - EV_ZELROTH_2_51
+EV_ZELROTH_2_52
+EV_ZELROTH_2_53
+EV_ZELROTH_2_54
+slavetrader - EV_ZELROTH_2_55
+slavetrader - EV_ZELROTH_2_56
+slavetrader - EV_ZELROTH_2_57
+Woman - EV_ZELROTH_2_58
+Woman - EV_ZELROTH_2_59
+Woman - EV_ZELROTH_2_60
+EV_ZELROTH_2_61
+EV_ZELROTH_2_62
+EV_ZELROTH_2_63
+EV_ZELROTH_2_64
 =BLACKFADE 1=
 =BG scenes/rose_baby_1=
-slavetrader - What about this one? Looks pretty interesting at least. & EV_ZELROTH_2_65
-slavetrader2 - Yeah, but she's a failure.  & EV_ZELROTH_2_66
-slavetrader2 - After we tried to train her she just became like this. & EV_ZELROTH_2_67
-slavetrader2 - Barely reacts to anything, always has the eyes of a dead fish.  & EV_ZELROTH_2_68
-slavetrader - Won't even wag her tail, like they usually do, huh? & EV_ZELROTH_2_69
-slavetrader2 - Yeah, a shame.  & EV_ZELROTH_2_70
-slavetrader2 - It happens rarely, so we basically got unlucky. & EV_ZELROTH_2_71
-slavetrader2 - Don't think anyone would want to buy a slave like that.  & EV_ZELROTH_2_72
-slavetrader - We might have to dispose of her soon then. & EV_ZELROTH_2_73
-Ro - ... & EV_ZELROTH_2_74
-... & EV_ZELROTH_2_75
-... & EV_ZELROTH_2_76
+slavetrader - EV_ZELROTH_2_65
+slavetrader2 - EV_ZELROTH_2_66
+slavetrader2 - EV_ZELROTH_2_67
+slavetrader2 - EV_ZELROTH_2_68
+slavetrader - EV_ZELROTH_2_69
+slavetrader2 - EV_ZELROTH_2_70
+slavetrader2 - EV_ZELROTH_2_71
+slavetrader2 - EV_ZELROTH_2_72
+slavetrader - EV_ZELROTH_2_73
+Ro - EV_ZELROTH_2_74
+EV_ZELROTH_2_75
+EV_ZELROTH_2_76
 =BLACKTRANS 2=
 =DELAY 2=
-Rose sat on the floor of a small cage, placed in a deserted part of a building.  & EV_ZELROTH_2_77
-She had a visitor. A young, luxuriously clothed boy of her age. & EV_ZELROTH_2_78
+EV_ZELROTH_2_77
+EV_ZELROTH_2_78
 =BG scenes/rose_baby_4=
-Boy - Hey. & EV_ZELROTH_2_79
-Boy - What's your name? & EV_ZELROTH_2_80
-Ro - ..... & EV_ZELROTH_2_81
-Boy - Hey, you heard me.  & EV_ZELROTH_2_82
-Boy - What's your name? & EV_ZELROTH_2_83
-Boy - Why aren't you responding? & EV_ZELROTH_2_84
-Ro - ...What is it? & EV_ZELROTH_2_85
-Boy - I'm wondering what's your name. & EV_ZELROTH_2_86
-Ro - ...It's Rose.  & EV_ZELROTH_2_87
-Ro - Now leave me alone. & EV_ZELROTH_2_88
-Boy - No.  & EV_ZELROTH_2_89
-Ro - .... & EV_ZELROTH_2_90
-Boy - Why are you telling me to leave you alone? & EV_ZELROTH_2_91
+Boy - EV_ZELROTH_2_79
+Boy - EV_ZELROTH_2_80
+Ro - EV_ZELROTH_2_81
+Boy - EV_ZELROTH_2_82
+Boy - EV_ZELROTH_2_83
+Boy - EV_ZELROTH_2_84
+Ro - EV_ZELROTH_2_85
+Boy - EV_ZELROTH_2_86
+Ro - EV_ZELROTH_2_87
+Ro - EV_ZELROTH_2_88
+Boy - EV_ZELROTH_2_89
+Ro - EV_ZELROTH_2_90
+Boy - EV_ZELROTH_2_91
 =BG scenes/rose_baby_3=
-Ro - Are you stupid? I want to be left alone. & EV_ZELROTH_2_92
-Boy - You're rude.  & EV_ZELROTH_2_93
-Boy - So why do you want to be left alone? & EV_ZELROTH_2_94
-Ro - Shut up!  & EV_ZELROTH_2_95
-Ro - I just want to! Why are you so stupid?! & EV_ZELROTH_2_96
-Boy - I'm not stupid.  & EV_ZELROTH_2_97
-Boy - I have a name.  & EV_ZELROTH_2_98
-Ro - And what’s your name?  & EV_ZELROTH_2_99
-Boy - I won't tell you.  & EV_ZELROTH_2_100
-Ro - What the hell do you even want!?  & EV_ZELROTH_2_101
-Boy - Maybe I want you.  & EV_ZELROTH_2_102
-Ro - Are you stupid? You're a child. & EV_ZELROTH_2_103
-Boy - So are you. & EV_ZELROTH_2_104
-Ro - I don't care. I don't want it. & EV_ZELROTH_2_105
-Boy - Why? & EV_ZELROTH_2_106
-Ro - Because I want to be left alone! & EV_ZELROTH_2_107
-Boy - I don't care. & EV_ZELROTH_2_108
-Boy - I don't believe you.  & EV_ZELROTH_2_109
-Ro - ..... & EV_ZELROTH_2_110
-Ro - Why are you even talking to me? & EV_ZELROTH_2_111
-Boy - I like you.  & EV_ZELROTH_2_112
-Boy - You are not like others.  & EV_ZELROTH_2_113
-Ro - Wha..? & EV_ZELROTH_2_114
-Boy - You don't act like you're desperate to please me. & EV_ZELROTH_2_115
-Ro - You are weird.  & EV_ZELROTH_2_116
-Boy - Got to go, see you soon.  & EV_ZELROTH_2_117
-Ro - ..... & EV_ZELROTH_2_118
+Ro - EV_ZELROTH_2_92
+Boy - EV_ZELROTH_2_93
+Boy - EV_ZELROTH_2_94
+Ro - EV_ZELROTH_2_95
+Ro - EV_ZELROTH_2_96
+Boy - EV_ZELROTH_2_97
+Boy - EV_ZELROTH_2_98
+Ro - EV_ZELROTH_2_99
+Boy - EV_ZELROTH_2_100
+Ro - EV_ZELROTH_2_101
+Boy - EV_ZELROTH_2_102
+Ro - EV_ZELROTH_2_103
+Boy - EV_ZELROTH_2_104
+Ro - EV_ZELROTH_2_105
+Boy - EV_ZELROTH_2_106
+Ro - EV_ZELROTH_2_107
+Boy - EV_ZELROTH_2_108
+Boy - EV_ZELROTH_2_109
+Ro - EV_ZELROTH_2_110
+Ro - EV_ZELROTH_2_111
+Boy - EV_ZELROTH_2_112
+Boy - EV_ZELROTH_2_113
+Ro - EV_ZELROTH_2_114
+Boy - EV_ZELROTH_2_115
+Ro - EV_ZELROTH_2_116
+Boy - EV_ZELROTH_2_117
+Ro - EV_ZELROTH_2_118
 =BLACKUNFADE 1=
 =DELAY 1=
-... & EV_ZELROTH_2_119
-.... & EV_ZELROTH_2_120
+EV_ZELROTH_2_119
+EV_ZELROTH_2_120
 =BLACKFADE 1=
 =BG scenes/rose_baby_2=
-? - Young master wants this girl? & EV_ZELROTH_2_121
-? - I think it's better to pick someone who can be a better... caretaker?  & EV_ZELROTH_2_122
-Boy - No.  & EV_ZELROTH_2_123
-?? - You know that once Arron decides there's no turn back. & EV_ZELROTH_2_124
-?? - Plus he refused to take anyone for 3 times straight. & EV_ZELROTH_2_125
-Boy - It's your stupid rule how every royal member must have a personal servant. & EV_ZELROTH_2_126
-?? - It's not MY rule, it's your family's rule.  & EV_ZELROTH_2_127
-?? - This is how you get used to the- & EV_ZELROTH_2_128
-Boy - I don't care. & EV_ZELROTH_2_129
-? - Well, at least she's young so we can teach her literacy and penmanship at this age.  & EV_ZELROTH_2_130
-Boy - Are you done yet?  & EV_ZELROTH_2_131
+? - EV_ZELROTH_2_121
+? - EV_ZELROTH_2_122
+Boy - EV_ZELROTH_2_123
+?? - EV_ZELROTH_2_124
+?? - EV_ZELROTH_2_125
+Boy - EV_ZELROTH_2_126
+?? - EV_ZELROTH_2_127
+?? - EV_ZELROTH_2_128
+Boy - EV_ZELROTH_2_129
+? - EV_ZELROTH_2_130
+Boy - EV_ZELROTH_2_131
 =BLACKTRANS 1=
 =GUI_NORMAL=
 =DELAY 1=
 =BG scenes/dungeon_1=
 =SPRITE rose=
-... & EV_ZELROTH_2_132
-Ro - *sigh* & EV_ZELROTH_2_133
-Ro - I feel terrible. & EV_ZELROTH_2_134
+EV_ZELROTH_2_132
+Ro - EV_ZELROTH_2_133
+Ro - EV_ZELROTH_2_134
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
