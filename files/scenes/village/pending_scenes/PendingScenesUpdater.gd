@@ -47,6 +47,7 @@ func update_pending_scenes():
 			scenes.append(scene_id)
 
 	state.update_pending_scenes(scenes)
+	print(state.pending_scenes)
 
 func character_friend_points(character: String) -> int:
 	return state.heroes[character].friend_points
