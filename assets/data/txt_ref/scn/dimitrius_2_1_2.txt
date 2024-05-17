@@ -4,54 +4,54 @@
 =GUI_NORMAL=
 =BG villageday=
 =MUSIC eventgeneric=
-As Arron returns to the village they are met by an unexpected visitor. & EV_DIMITRIUS_2_1_2_0
+EV_DIMITRIUS_2_1_2_0
 =SPRITE_UNFADE 0.3=
 =SPRITE demitrius_demon=
-De - Ah, it's you, maggots. & EV_DIMITRIUS_2_1_2_1
+De - EV_DIMITRIUS_2_1_2_1
 =MUSIC combattheme=
-Ar(anger) - Demitrius! & EV_DIMITRIUS_2_1_2_2
-De - Hows it been going? & EV_DIMITRIUS_2_1_2_3
-De - Seems you've taken care of Zelroth. Too bad that fool was already useless to me. & EV_DIMITRIUS_2_1_2_4
-Ar(anger) - Where's- & EV_DIMITRIUS_2_1_2_5
-De - Shut up. I wouldn't be here, but there's someone who wanted to come see ya. & EV_DIMITRIUS_2_1_2_6
+Ar(anger) - EV_DIMITRIUS_2_1_2_2
+De - EV_DIMITRIUS_2_1_2_3
+De - EV_DIMITRIUS_2_1_2_4
+Ar(anger) - EV_DIMITRIUS_2_1_2_5
+De - EV_DIMITRIUS_2_1_2_6
 =SPRITE rose=
-Ar(shock) - Rose! Get away from him! & EV_DIMITRIUS_2_1_2_7
-Ro - Stop. & EV_DIMITRIUS_2_1_2_8
+Ar(shock) - EV_DIMITRIUS_2_1_2_7
+Ro - EV_DIMITRIUS_2_1_2_8
 =MUSIC event_mysterious=
-Ro - I wanted to talk to you, Master. & EV_DIMITRIUS_2_1_2_9
-Ar(neutral) - What? & EV_DIMITRIUS_2_1_2_10
-Ro - That thing you said last time, that I can choose what to do with my own life. & EV_DIMITRIUS_2_1_2_11
-Ro - I'm leaving on my own.  & EV_DIMITRIUS_2_1_2_12
-Ar(neutral) - What are you talking about? Are you out of your mind? & EV_DIMITRIUS_2_1_2_13
-Ro - No, and I've come to tell you not to follow me.  & EV_DIMITRIUS_2_1_2_14
-Ar(anger) - Why would I do that? & EV_DIMITRIUS_2_1_2_15
-Ro(talk) - I'm joining Dimitrius. & EV_DIMITRIUS_2_1_2_16
-Er(anger) - What? Why? & EV_DIMITRIUS_2_1_2_17
-Ro - This is for the best. & EV_DIMITRIUS_2_1_2_18
-Ro - I'm tired of all this. & EV_DIMITRIUS_2_1_2_19
-Ro(talk) - Deep inside, I hated every single one of you. & EV_DIMITRIUS_2_1_2_20
-Ro(talk) - Ember is stupid and gullible. & EV_DIMITRIUS_2_1_2_21
-Em(sad) - Eeeh? & EV_DIMITRIUS_2_1_2_22
-Ro(talk) - Erika is a shallow harlot. & EV_DIMITRIUS_2_1_2_23
-Ro(talk) - Rilu, you just creep me out.  & EV_DIMITRIUS_2_1_2_24
-Ri - You wouldn't be the first. & EV_DIMITRIUS_2_1_2_25
-Ro(talk) - And Master... You are the worst irresponsible womanizer I've ever met. & EV_DIMITRIUS_2_1_2_26
-Ar(neutral) - That's the best you've got? & EV_DIMITRIUS_2_1_2_26_1
-Ro - ..... & EV_DIMITRIUS_2_1_2_26_2
-Ro - It was me, who told your brother about your affair with his wife. & EV_DIMITRIUS_2_1_2_27
-Ro(talk) - You told me to choose what I wanna do with my life. & EV_DIMITRIUS_2_1_2_28
-Ro(talk) - I don't want to see any of you anymore from now on. & EV_DIMITRIUS_2_1_2_29
-Er(anger) - ....... & EV_DIMITRIUS_2_1_2_30
-Em(sad) - ..... & EV_DIMITRIUS_2_1_2_31
+Ro - EV_DIMITRIUS_2_1_2_9
+Ar(neutral) - EV_DIMITRIUS_2_1_2_10
+Ro - EV_DIMITRIUS_2_1_2_11
+Ro - EV_DIMITRIUS_2_1_2_12
+Ar(neutral) - EV_DIMITRIUS_2_1_2_13
+Ro - EV_DIMITRIUS_2_1_2_14
+Ar(anger) - EV_DIMITRIUS_2_1_2_15
+Ro(talk) - EV_DIMITRIUS_2_1_2_16
+Er(anger) - EV_DIMITRIUS_2_1_2_17
+Ro - EV_DIMITRIUS_2_1_2_18
+Ro - EV_DIMITRIUS_2_1_2_19
+Ro(talk) - EV_DIMITRIUS_2_1_2_20
+Ro(talk) - EV_DIMITRIUS_2_1_2_21
+Em(sad) - EV_DIMITRIUS_2_1_2_22
+Ro(talk) - EV_DIMITRIUS_2_1_2_23
+Ro(talk) - EV_DIMITRIUS_2_1_2_24
+Ri - EV_DIMITRIUS_2_1_2_25
+Ro(talk) - EV_DIMITRIUS_2_1_2_26
+Ar(neutral) - EV_DIMITRIUS_2_1_2_26_1
+Ro - EV_DIMITRIUS_2_1_2_26_2
+Ro - EV_DIMITRIUS_2_1_2_27
+Ro(talk) - EV_DIMITRIUS_2_1_2_28
+Ro(talk) - EV_DIMITRIUS_2_1_2_29
+Er(anger) - EV_DIMITRIUS_2_1_2_30
+Em(sad) - EV_DIMITRIUS_2_1_2_31
 =SPRITE demitrius_demon=
-De - Hell, I'm already so bored with you.  & EV_DIMITRIUS_2_1_2_32
-De - Enough! We are leaving. & EV_DIMITRIUS_2_1_2_33
+De - EV_DIMITRIUS_2_1_2_32
+De - EV_DIMITRIUS_2_1_2_33
 =SOUND teleport=
 =SPRITE_FADE 0.3=
-Before Arron could protest Rose and Demitrius vanished in thin air. & EV_DIMITRIUS_2_1_2_34
-Ar(anger) - Damnit! & EV_DIMITRIUS_2_1_2_35
-Em(sad) - ... What are we gonna do now? & EV_DIMITRIUS_2_1_2_36
-Ar(neutral) - ...Go after them. & EV_DIMITRIUS_2_1_2_37
+EV_DIMITRIUS_2_1_2_34
+Ar(anger) - EV_DIMITRIUS_2_1_2_35
+Em(sad) - EV_DIMITRIUS_2_1_2_36
+Ar(neutral) - EV_DIMITRIUS_2_1_2_37
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

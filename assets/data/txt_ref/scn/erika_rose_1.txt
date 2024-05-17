@@ -8,21 +8,21 @@
 =SPRITE erika=
 =SPRITE_UNFADE 1=
 =GUI_NORMAL=
-Er - Arron. & EV_ERIKA_ROSE_1_0
-Ar - Erika. What's up? & EV_ERIKA_ROSE_1_1
-Ar - Another irresistible itch demanding a good scratching?  & EV_ERIKA_ROSE_1_2
-Er - No. I mean, yes, but not exactly what you think. & EV_ERIKA_ROSE_1_3
-Er - Remember how you gave me your approval on Rose? & EV_ERIKA_ROSE_1_4
-Ar - Uh-huh. & EV_ERIKA_ROSE_1_5
-Er - She's a tough nut to crack, so I could use your help.  & EV_ERIKA_ROSE_1_6
-Ar(neutral) - I don't think ordering her around will work.  & EV_ERIKA_ROSE_1_7
-Er(anger) - I beg you, I'm never going to force anyone like that. & EV_ERIKA_ROSE_1_8
-Er - What I need is a rare herb we elves often use for relaxation.  & EV_ERIKA_ROSE_1_9
-Er - So can you help me get some of that?  & EV_ERIKA_ROSE_1_10
-Ar(neutral) - I suppose. But is it safe for non-elves?  & EV_ERIKA_ROSE_1_11
-Er(happy) - Of course it is. It's just rather hard to come by since elves cultivate it secretly. & EV_ERIKA_ROSE_1_12
-Ar - Fine, you got my interest. So where are we going? & EV_ERIKA_ROSE_1_13
-Er - Oh, it's not far in the woods. I'll lead the way. & EV_ERIKA_ROSE_1_14
+Er - EV_ERIKA_ROSE_1_0
+Ar - EV_ERIKA_ROSE_1_1
+Ar - EV_ERIKA_ROSE_1_2
+Er - EV_ERIKA_ROSE_1_3
+Er - EV_ERIKA_ROSE_1_4
+Ar - EV_ERIKA_ROSE_1_5
+Er - EV_ERIKA_ROSE_1_6
+Ar(neutral) - EV_ERIKA_ROSE_1_7
+Er(anger) - EV_ERIKA_ROSE_1_8
+Er - EV_ERIKA_ROSE_1_9
+Er - EV_ERIKA_ROSE_1_10
+Ar(neutral) - EV_ERIKA_ROSE_1_11
+Er(happy) - EV_ERIKA_ROSE_1_12
+Ar - EV_ERIKA_ROSE_1_13
+Er - EV_ERIKA_ROSE_1_14
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

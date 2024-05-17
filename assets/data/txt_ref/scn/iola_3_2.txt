@@ -5,15 +5,15 @@
 =BG cave=
 =MUSIC eventgeneric=
 =SPRITE iola=
-I - Wow, these caves are quite dark.  & EV_IOLA_3_2_0
-I - You say you were here all alone, Rilu?  & EV_IOLA_3_2_1
-I - Seems like a scary place for a little girl. & EV_IOLA_3_2_2
-Ri - Please, I'm older than you.  & EV_IOLA_3_2_3
-Ar - Plus you don't have to worry about actually dying. & EV_IOLA_3_2_4
-Ri - I'd be in trouble if you die though. & EV_IOLA_3_2_5
-Ar - Won't we all. & EV_IOLA_3_2_6
-I(sad) - I don't really feel comfortable around here. & EV_IOLA_3_2_7
-Ro - Me neither. Let's find what we need sooner rather than later. & EV_IOLA_3_2_8
+I - EV_IOLA_3_2_0
+I - EV_IOLA_3_2_1
+I - EV_IOLA_3_2_2
+Ri - EV_IOLA_3_2_3
+Ar - EV_IOLA_3_2_4
+Ri - EV_IOLA_3_2_5
+Ar - EV_IOLA_3_2_6
+I(sad) - EV_IOLA_3_2_7
+Ro - EV_IOLA_3_2_8
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

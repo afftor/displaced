@@ -8,34 +8,34 @@
 =SPRITE emberhappy=
 =SPRITE_UNFADE 0.3=
 =BG hall=
-Em - Sir Arron!  & EV_EMBER_2_1_0
-Em - Look what I've found this morning near my bed. & EV_EMBER_2_1_1
-Ar - What's this? A note?  & EV_EMBER_2_1_2
-Ro - Let me see it...  & EV_EMBER_2_1_3
-Ro - "You must go the Dragon Mountains"? & EV_EMBER_2_1_4
-Ar - That's some atrocious writing.  & EV_EMBER_2_1_5
-Ar - Have you written it, Ember? & EV_EMBER_2_1_6
-Em - No, I can't write.  & EV_EMBER_2_1_7
-Ro - You seem weirdly proud of it. & EV_EMBER_2_1_7_1
-Ar - Huh... What are those Dragon Mountains anyway? & EV_EMBER_2_1_8
-Ro(sarcastic) - I wonder. & EV_EMBER_2_1_9
-Er - Its large mountains in the North of Aeros.  & EV_EMBER_2_1_10
-Er - People aren't very common around there, except as a meal. & EV_EMBER_2_1_11
-Em(sad) - I feel like this is important.  & EV_EMBER_2_1_12
-Em - Can we go there? & EV_EMBER_2_1_13
-Ar - If I say "No", are you going to do it anyway? & EV_EMBER_2_1_14
-Em - Yes! & EV_EMBER_2_1_15
-Ro(talk) - That doesn't seem like a very good idea. & EV_EMBER_2_1_16
-Ar(neutral) - Well, looks like we don't have a choice.  & EV_EMBER_2_1_17
-Ar - Ember is an important member of our community. & EV_EMBER_2_1_18
-Ar - And I can't be left without a blacksmith.  & EV_EMBER_2_1_19
-Ar - When I think about it, it feels like I'm being blackmailed. & EV_EMBER_2_1_20
-Em - Hmm, what's blackmailed?  & EV_EMBER_2_1_21
-Ar - You can tell her, Rose. & EV_EMBER_2_1_22
-Ro(sarcastic) - What do you mean by that? & EV_EMBER_2_1_23
-Ar - Pretty sure that's what you've often been doing back at home. & EV_EMBER_2_1_24
-Ro(sarcastic) - That wasn't a blackmail. It was mutually beneficial coercion.  & EV_EMBER_2_1_25
-Ar - ....On other hand, maybe I shouldn't let you teach Ember. & EV_EMBER_2_1_26
+Em - EV_EMBER_2_1_0
+Em - EV_EMBER_2_1_1
+Ar - EV_EMBER_2_1_2
+Ro - EV_EMBER_2_1_3
+Ro - EV_EMBER_2_1_4
+Ar - EV_EMBER_2_1_5
+Ar - EV_EMBER_2_1_6
+Em - EV_EMBER_2_1_7
+Ro - EV_EMBER_2_1_7_1
+Ar - EV_EMBER_2_1_8
+Ro(sarcastic) - EV_EMBER_2_1_9
+Er - EV_EMBER_2_1_10
+Er - EV_EMBER_2_1_11
+Em(sad) - EV_EMBER_2_1_12
+Em - EV_EMBER_2_1_13
+Ar - EV_EMBER_2_1_14
+Em - EV_EMBER_2_1_15
+Ro(talk) - EV_EMBER_2_1_16
+Ar(neutral) - EV_EMBER_2_1_17
+Ar - EV_EMBER_2_1_18
+Ar - EV_EMBER_2_1_19
+Ar - EV_EMBER_2_1_20
+Em - EV_EMBER_2_1_21
+Ar - EV_EMBER_2_1_22
+Ro(sarcastic) - EV_EMBER_2_1_23
+Ar - EV_EMBER_2_1_24
+Ro(sarcastic) - EV_EMBER_2_1_25
+Ar - EV_EMBER_2_1_26
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

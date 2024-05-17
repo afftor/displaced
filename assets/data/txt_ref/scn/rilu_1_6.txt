@@ -8,56 +8,56 @@
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Ri - Now for this thing... & EV_RILU_1_6_0
-Ar - Hey there. Whatcha doing? & EV_RILU_1_6_1
-Ar - What's with this weird figurine. & EV_RILU_1_6_2
-Ri - It's a request from one of the villagers. Seems like this thing is cursed. & EV_RILU_1_6_3
-Ar - A request? Do you take things like that? & EV_RILU_1_6_4
-Ri - Yes. This is crucial for sustaining this miserable existence. & EV_RILU_1_6_5
-Ar - Don't be like that, I'm sure this must be better than being buried alive.  & EV_RILU_1_6_6
-Ri - Yeah. I was talking about everyone else though.  & EV_RILU_1_6_7
-Ar - ... & EV_RILU_1_6_8
-Ar - Can I see it? & EV_RILU_1_6_9
-Ri - Do as you wish.  & EV_RILU_1_6_10
-Ri - ... & EV_RILU_1_6_11
-Ri - There indeed is a malicious spirit inside of it.  & EV_RILU_1_6_12
-Ar - Woah, can you deal with it? & EV_RILU_1_6_13
-Ri - Hmph, who do you think I am? & EV_RILU_1_6_14
-Ri - Let's see... & EV_RILU_1_6_15
-Rilu chanted a spell and a small puff of smoke erupted from the figurine in her hands. & EV_RILU_1_6_16
-To her surprise though, it swiftly dashed towards Arron quickly diving into him. & EV_RILU_1_6_17
-Ri - Oh... & EV_RILU_1_6_18
-Ar(shock) - What the hell? What just happened? & EV_RILU_1_6_19
-Ri - I think it moved inside of you. & EV_RILU_1_6_20
-Ri - It must be stronger than I anticipated. & EV_RILU_1_6_21
-Ar(shock) - Can't you do something? & EV_RILU_1_6_22
-Ri - I... can take a look, but let's go someplace else so it won't go after other people. & EV_RILU_1_6_23
+Ri - EV_RILU_1_6_0
+Ar - EV_RILU_1_6_1
+Ar - EV_RILU_1_6_2
+Ri - EV_RILU_1_6_3
+Ar - EV_RILU_1_6_4
+Ri - EV_RILU_1_6_5
+Ar - EV_RILU_1_6_6
+Ri - EV_RILU_1_6_7
+Ar - EV_RILU_1_6_8
+Ar - EV_RILU_1_6_9
+Ri - EV_RILU_1_6_10
+Ri - EV_RILU_1_6_11
+Ri - EV_RILU_1_6_12
+Ar - EV_RILU_1_6_13
+Ri - EV_RILU_1_6_14
+Ri - EV_RILU_1_6_15
+EV_RILU_1_6_16
+EV_RILU_1_6_17
+Ri - EV_RILU_1_6_18
+Ar(shock) - EV_RILU_1_6_19
+Ri - EV_RILU_1_6_20
+Ri - EV_RILU_1_6_21
+Ar(shock) - EV_RILU_1_6_22
+Ri - EV_RILU_1_6_23
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG hall=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Ri - Alright. Let me see. & EV_RILU_1_6_24
-Ri - ... & EV_RILU_1_6_25
-Ri - It seems the spirit has brought disorder upon you. & EV_RILU_1_6_26
-Ar(shock) - Eh? What is it? & EV_RILU_1_6_27
-Ri - Erectile dysfunction. & EV_RILU_1_6_28
-Ar(shock) - No no no no no no no no no no no....... & EV_RILU_1_6_29
-Ar(neutral) - Can you help with this? You surely can, right? & EV_RILU_1_6_30
-Ar(shock) - It's your fault I was cursed in the first place! & EV_RILU_1_6_31
-Ri - it would be better if you ask Rose or someone else for assistance. & EV_RILU_1_6_32
-Ar(neutral) - No way! Nobody else can ever know about this. & EV_RILU_1_6_33
-Ri - ...  & EV_RILU_1_6_34
-Ri - I see. Well, I guess I have to do it then.  & EV_RILU_1_6_35
-Ri - Excuse my inexperience. & EV_RILU_1_6_36
-Freeing Arron from his pants, Rilu began to clumsily feel up his penis with her hands. & EV_RILU_1_6_37
-Ri - ... & EV_RILU_1_6_38
-Ri - It seems to twitch a bit. & EV_RILU_1_6_39
-Ar - This is a good sign, right? & EV_RILU_1_6_40
-Ri - Perhaps. & EV_RILU_1_6_41
-After another half minute, Rilu backed off dropping her cloak on the floor. & EV_RILU_1_6_42
-Ri - Lay down. & EV_RILU_1_6_43
-With a feeling of uneasiness, Arron landed heavily on the bed. & EV_RILU_1_6_44
+Ri - EV_RILU_1_6_24
+Ri - EV_RILU_1_6_25
+Ri - EV_RILU_1_6_26
+Ar(shock) - EV_RILU_1_6_27
+Ri - EV_RILU_1_6_28
+Ar(shock) - EV_RILU_1_6_29
+Ar(neutral) - EV_RILU_1_6_30
+Ar(shock) - EV_RILU_1_6_31
+Ri - EV_RILU_1_6_32
+Ar(neutral) - EV_RILU_1_6_33
+Ri - EV_RILU_1_6_34
+Ri - EV_RILU_1_6_35
+Ri - EV_RILU_1_6_36
+EV_RILU_1_6_37
+Ri - EV_RILU_1_6_38
+Ri - EV_RILU_1_6_39
+Ar - EV_RILU_1_6_40
+Ri - EV_RILU_1_6_41
+EV_RILU_1_6_42
+Ri - EV_RILU_1_6_43
+EV_RILU_1_6_44
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =GUI_FULL=
@@ -65,70 +65,70 @@ With a feeling of uneasiness, Arron landed heavily on the bed. & EV_RILU_1_6_44
 =ABG rilu_cowgirl_1=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-Rilu awkwardly positioned herself on top of him facing away.  & EV_RILU_1_6_45
-Letting out a small gasp she pressed her naked rear against his flaccid cock. & EV_RILU_1_6_46
-Ar - What are you doing...? & EV_RILU_1_6_47
-Ri - Quiet. You should concentrate now. & EV_RILU_1_6_48
-Ri - It blocks out your sexual energy, so to dampen it you need to have someone else's energy until it breaks. & EV_RILU_1_6_49
-Ri - This is why I said you should ask someone else. & EV_RILU_1_6_50
-Ri - This is the first time I've done something like this... & EV_RILU_1_6_51
-Rilu began to grind her bare crotch against Arron. & EV_RILU_1_6_52
-Ar - ... & EV_RILU_1_6_53
-Ar - (Maybe I should have asked Rose. She's pretty clumsy.) & EV_RILU_1_6_54
-Ar - (Although, she doesn't seem to mind too much.) & EV_RILU_1_6_55
-Ri - Mh... Like this? & EV_RILU_1_6_56
-Ar - (Oh, I can feel her getting wetter.) & EV_RILU_1_6_57
-Ar - (This actually isn't too bad.) & EV_RILU_1_6_58
-Ri - Nhhh… this feels weird... & EV_RILU_1_6_59
-Even without seeing Rilu's face, Arron could tell her voice was showing more feeling. & EV_RILU_1_6_60
-His cock gets warmer with every slow grind of her pussy over it. & EV_RILU_1_6_61
-Rilu’s breath grew more ragged as her juices covered Arron's penis. & EV_RILU_1_6_62
-Ar - Oooh! & EV_RILU_1_6_63
+EV_RILU_1_6_45
+EV_RILU_1_6_46
+Ar - EV_RILU_1_6_47
+Ri - EV_RILU_1_6_48
+Ri - EV_RILU_1_6_49
+Ri - EV_RILU_1_6_50
+Ri - EV_RILU_1_6_51
+EV_RILU_1_6_52
+Ar - EV_RILU_1_6_53
+Ar - EV_RILU_1_6_54
+Ar - EV_RILU_1_6_55
+Ri - EV_RILU_1_6_56
+Ar - EV_RILU_1_6_57
+Ar - EV_RILU_1_6_58
+Ri - EV_RILU_1_6_59
+EV_RILU_1_6_60
+EV_RILU_1_6_61
+EV_RILU_1_6_62
+Ar - EV_RILU_1_6_63
 =ABG rilu_cowgirl_2 rilu_cowgirl_3=
-With a flash through his mind, Arron felt the evil energy leave his body, instantly making his cock rock hard. & EV_RILU_1_6_64
-As Rilu slid her slippery pussy-lips over his shaft, his hips jerked and suddenly his stiff penis was pushing inside the small girl. & EV_RILU_1_6_65
-Ri - Ahhh! & EV_RILU_1_6_66
-Ar - Woah, You did it Rilu! I feel like it’s gone. I’m back! & EV_RILU_1_6_67
-Ri - Nhhh... It went inside me... & EV_RILU_1_6_68
-Being full of Arron's cock, Rilu weakly twitched, unsure what to do. & EV_RILU_1_6_69
-Arron spotted her confusion and decided to take the initiative. & EV_RILU_1_6_70
-Ar - But we better make sure I’m fully functional, right? & EV_RILU_1_6_71
-Ri - What are you... & EV_RILU_1_6_72
-Arron helped Rilu by supporting her body from the back and slowly moving in turn, thrusting his penis deeper into her slick hole. & EV_RILU_1_6_73
-Ar - It wouldn't feel right to me, leaving you all excited like this. & EV_RILU_1_6_74
-Ri - Nnh? Ah... & EV_RILU_1_6_75
-Ar - I should also make you feel good as thanks for your work. & EV_RILU_1_6_76
-Ri - Arron...  & EV_RILU_1_6_77
-Ri - Ahh! & EV_RILU_1_6_78
-Arron slowly pushed himself in and out of Rilu, feeling her quivering pussy clamp around his shaft, gripping it tight. & EV_RILU_1_6_79
-Ar - No surprise, you are pretty tight in there. & EV_RILU_1_6_80
-Ri - You’re stirring up my insides... Nhhh... & EV_RILU_1_6_81
-Ri - I feel so weird... & EV_RILU_1_6_82
-Ar - You really don't have any experience do you? Well then I’ll have to make this a night you’ll always remember. & EV_RILU_1_6_83
-Ar - And yet, you have such a sexy moan. Let me hear it again… & EV_RILU_1_6_84
-Ri - You dare to.. Aaahh... Ridicule me? & EV_RILU_1_6_85
-Ar - Of course not. I like you this way. & EV_RILU_1_6_86
+EV_RILU_1_6_64
+EV_RILU_1_6_65
+Ri - EV_RILU_1_6_66
+Ar - EV_RILU_1_6_67
+Ri - EV_RILU_1_6_68
+EV_RILU_1_6_69
+EV_RILU_1_6_70
+Ar - EV_RILU_1_6_71
+Ri - EV_RILU_1_6_72
+EV_RILU_1_6_73
+Ar - EV_RILU_1_6_74
+Ri - EV_RILU_1_6_75
+Ar - EV_RILU_1_6_76
+Ri - EV_RILU_1_6_77
+Ri - EV_RILU_1_6_78
+EV_RILU_1_6_79
+Ar - EV_RILU_1_6_80
+Ri - EV_RILU_1_6_81
+Ri - EV_RILU_1_6_82
+Ar - EV_RILU_1_6_83
+Ar - EV_RILU_1_6_84
+Ri - EV_RILU_1_6_85
+Ar - EV_RILU_1_6_86
 =ABG rilu_cowgirl_4 rilu_cowgirl_5=
-Ri - Nnnnh... Something... I feel something… & EV_RILU_1_6_87
-Ar - That’s called an orgasm, and it’s your reward for helping me. & EV_RILU_1_6_88
-Ri - I know whaAAAhh! I know what an orgasm is, I just didn’t think it would ffFFFFeeeeel this good! & EV_RILU_1_6_89
-Rilu’s tight pussy began to spasm around Arron’s thrusting penis and he had to grip her hips and pump harder to drive his cock into her. & EV_RILU_1_6_90
-Ar - Wait for it! It’s better if you can hold off a minute. & EV_RILU_1_6_91
-Rilu’s eyes rolled back in her head and she moaned helplessly as Arron’s cock penetrated her, ramming into her soaking wet hole from below. & EV_RILU_1_6_92
-Ri - Please… please… I can’t hold it any longer… & EV_RILU_1_6_93
-The girl’s pussy was convulsing wildly on Arron’s cock as her slim body bounced up and down on him, impaling herself on his rigid penis as her bare ass slapped against his groin. & EV_RILU_1_6_94
-Ar - Alright... Let's cum together.  & EV_RILU_1_6_95
-Ri - Wha..? Nhhh...  & EV_RILU_1_6_96
-Ar - Don't move. I’ve got this. & EV_RILU_1_6_97
+Ri - EV_RILU_1_6_87
+Ar - EV_RILU_1_6_88
+Ri - EV_RILU_1_6_89
+EV_RILU_1_6_90
+Ar - EV_RILU_1_6_91
+EV_RILU_1_6_92
+Ri - EV_RILU_1_6_93
+EV_RILU_1_6_94
+Ar - EV_RILU_1_6_95
+Ri - EV_RILU_1_6_96
+Ar - EV_RILU_1_6_97
 =ABG rilu_cowgirl_6 rilu_cowgirl_7=
 =WHITE=
 =DELAY 0.5=
-Ri - Ahhh! & EV_RILU_1_6_98
-Arron shoots his seed inside of Rilu, filling her with his cum while she arches her back and cries out as her own orgasm overwhelms her. She jerks violently before going limp on top of him. & EV_RILU_1_6_99
-Ri - ...... & EV_RILU_1_6_100
-Rilu is panting hard, exhausted and weak as Arron’s cum slowly leaks out of her. & EV_RILU_1_6_101
-Ar - There now, didn’t I tell you it’d be worth the wait? & EV_RILU_1_6_102
-Ri - I didn’t… Wow… It was never… Aaahhh & EV_RILU_1_6_103
+Ri - EV_RILU_1_6_98
+EV_RILU_1_6_99
+Ri - EV_RILU_1_6_100
+EV_RILU_1_6_101
+Ar - EV_RILU_1_6_102
+Ri - EV_RILU_1_6_103
 =BLACKUNFADE 0.5=
 =DELAY 1.5=
 =BG hall=
@@ -137,12 +137,12 @@ Ri - I didn’t… Wow… It was never… Aaahhh & EV_RILU_1_6_103
 =SPRITE rilu=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Ar - You’ve really never done it before? That's surprising to hear. & EV_RILU_1_6_104
-Ri - Oh, I mean, I’ve done it, but I've never felt quite like this.  & EV_RILU_1_6_105
-Ri - That was… pleasant. More than pleasant.  & EV_RILU_1_6_106
-Ar - That's a relief to hear, glad we both got cured by it. & EV_RILU_1_6_107
-Ri - You are a weird man, Arron. I'm not used to being taken care of. & EV_RILU_1_6_108
-Ri - I know that I creep most people out. & EV_RILU_1_6_109
-Ar - I like having you around.  You don’t have to worry about that with me. & EV_RILU_1_6_110
-Ri - ...I see.  & EV_RILU_1_6_111
+Ar - EV_RILU_1_6_104
+Ri - EV_RILU_1_6_105
+Ri - EV_RILU_1_6_106
+Ar - EV_RILU_1_6_107
+Ri - EV_RILU_1_6_108
+Ri - EV_RILU_1_6_109
+Ar - EV_RILU_1_6_110
+Ri - EV_RILU_1_6_111
 =STOP=

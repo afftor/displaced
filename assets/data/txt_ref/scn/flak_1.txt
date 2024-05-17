@@ -8,22 +8,22 @@
 =SPRITE_UNFADE 0.3=
 =DELAY 1=
 =GUI_NORMAL=
-F - Hey. Do you mind making yourself useful for once? & EV_FLAK_1_0
-Ar(neutral) - What is it? & EV_FLAK_1_1
-F - I have a message you could deliver to Aeros.  & EV_FLAK_1_2
-Ar - Do I look like an errand boy? & EV_FLAK_1_3
-F - You look like someone who has too much time on your hands. & EV_FLAK_1_4
-F - But anyway, weren't you interested in visiting other regions? & EV_FLAK_1_5
+F - EV_FLAK_1_0
+Ar(neutral) - EV_FLAK_1_1
+F - EV_FLAK_1_2
+Ar - EV_FLAK_1_3
+F - EV_FLAK_1_4
+F - EV_FLAK_1_5
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Ro - Yes, we would like to deliver your letter. & EV_FLAK_1_6
-F - I knew I could rely on you, young lady. & EV_FLAK_1_7
-Ro - What do we do about it? & EV_FLAK_1_8
-F - There's one girl who left our village some time ago, I'd like you to pass her this and see how she's doing. & EV_FLAK_1_9
-Ar(neutral) - Why won't you go yourself? & EV_FLAK_1_10
-F - Don't feel like doing it.  & EV_FLAK_1_11
-Ar - Suspicious... Fine, we'll do it. & EV_FLAK_1_12
-F - Good, let me know once you are done. & EV_FLAK_1_13
+Ro - EV_FLAK_1_6
+F - EV_FLAK_1_7
+Ro - EV_FLAK_1_8
+F - EV_FLAK_1_9
+Ar(neutral) - EV_FLAK_1_10
+F - EV_FLAK_1_11
+Ar - EV_FLAK_1_12
+F - EV_FLAK_1_13
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

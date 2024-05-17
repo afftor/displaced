@@ -8,12 +8,12 @@
 =SPRITE_UNFADE 0.3=
 =DELAY 1=
 =GUI_NORMAL=
-F - Hey, big guy, there's some nasty news coming from Aeros. & EV_FLAK_CITY_RAID_0
-Ar - Really? What about? & EV_FLAK_CITY_RAID_1
-F - Dunno, something like a war? & EV_FLAK_CITY_RAID_2
-F -  There seem to be many refugees coming from that direction. & EV_FLAK_CITY_RAID_3
-F - Just thought you'd be interested to know about it. & EV_FLAK_CITY_RAID_4
-Ar(neutral) - Doesn't seem good. I guess we should check it out. & EV_FLAK_CITY_RAID_5
+F - EV_FLAK_CITY_RAID_0
+Ar - EV_FLAK_CITY_RAID_1
+F - EV_FLAK_CITY_RAID_2
+F - EV_FLAK_CITY_RAID_3
+F - EV_FLAK_CITY_RAID_4
+Ar(neutral) - EV_FLAK_CITY_RAID_5
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

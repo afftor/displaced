@@ -5,20 +5,20 @@
 =BG future_city_reactor=
 =MUSIC event_combat=
 =SPRITE demitrius_demon=
-De - Ghah, you idiots.  & EV_DIMITRIUS_ENDING_6_0
-De - Still don't understand that you can't defeat me. & EV_DIMITRIUS_ENDING_6_1
-Ar(shock) - Damnit. You guys escape, I'll hold him back. & EV_DIMITRIUS_ENDING_6_2
-De - ...Seriously? & EV_DIMITRIUS_ENDING_6_3
-De - Fine, I'll play with you for the last time, Arron. & EV_DIMITRIUS_ENDING_6_4
-*snap* & EV_DIMITRIUS_ENDING_6_5
-A number of demon minions jumped from the outside into the building.  & EV_DIMITRIUS_ENDING_6_6
-Ar(anger) - Gh... & EV_DIMITRIUS_ENDING_6_7
-De - Go after them! & EV_DIMITRIUS_ENDING_6_8
-De - Now I made you look like an idiot. Ahaha! & EV_DIMITRIUS_ENDING_6_9
-Ar(neutral) - We'll see about that, bastard. & EV_DIMITRIUS_ENDING_6_10
-Saying that, Arron turned his back and ran away. & EV_DIMITRIUS_ENDING_6_11
-De - ...? & EV_DIMITRIUS_ENDING_6_12
-De - This imbecile never learns.  & EV_DIMITRIUS_ENDING_6_13
+De - EV_DIMITRIUS_ENDING_6_0
+De - EV_DIMITRIUS_ENDING_6_1
+Ar(shock) - EV_DIMITRIUS_ENDING_6_2
+De - EV_DIMITRIUS_ENDING_6_3
+De - EV_DIMITRIUS_ENDING_6_4
+EV_DIMITRIUS_ENDING_6_5
+EV_DIMITRIUS_ENDING_6_6
+Ar(anger) - EV_DIMITRIUS_ENDING_6_7
+De - EV_DIMITRIUS_ENDING_6_8
+De - EV_DIMITRIUS_ENDING_6_9
+Ar(neutral) - EV_DIMITRIUS_ENDING_6_10
+EV_DIMITRIUS_ENDING_6_11
+De - EV_DIMITRIUS_ENDING_6_12
+De - EV_DIMITRIUS_ENDING_6_13
 =SOUND footstep=
 =GUI_HIDE=
 =BLACKUNFADE 1=
@@ -27,15 +27,15 @@ De - This imbecile never learns.  & EV_DIMITRIUS_ENDING_6_13
 =GUI_NORMAL=
 =BLACKFADE 1=
 =SPRITE erika=
-Meanwhile Rose and Erika moved through the lab’s upper floors. & EV_DIMITRIUS_ENDING_6_14
-Ro - Come on, come on. & EV_DIMITRIUS_ENDING_6_15
-Ro(talk) - Erika, you sure you remember the map? & EV_DIMITRIUS_ENDING_6_16
-Er - Of course, elves have an excellent photographic memory.  & EV_DIMITRIUS_ENDING_6_17
-Er - Or so I was told anyway. & EV_DIMITRIUS_ENDING_6_18
-Ro(talk) - Please, we are in a dire situation here.  & EV_DIMITRIUS_ENDING_6_19
-Er - I'm kidding, it should be around this corner.  & EV_DIMITRIUS_ENDING_6_20
+EV_DIMITRIUS_ENDING_6_14
+Ro - EV_DIMITRIUS_ENDING_6_15
+Ro(talk) - EV_DIMITRIUS_ENDING_6_16
+Er - EV_DIMITRIUS_ENDING_6_17
+Er - EV_DIMITRIUS_ENDING_6_18
+Ro(talk) - EV_DIMITRIUS_ENDING_6_19
+Er - EV_DIMITRIUS_ENDING_6_20
 =SPRITE demon=
-Demon - Arrgh! & EV_DIMITRIUS_ENDING_6_21
-Ro(shock) - Oh no, they found us! & EV_DIMITRIUS_ENDING_6_22
-Er(sad) - I guess we will have to fight through them. & EV_DIMITRIUS_ENDING_6_23
+Demon - EV_DIMITRIUS_ENDING_6_21
+Ro(shock) - EV_DIMITRIUS_ENDING_6_22
+Er(sad) - EV_DIMITRIUS_ENDING_6_23
 =STOP=

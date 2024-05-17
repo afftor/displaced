@@ -8,13 +8,13 @@
 =GUI_NORMAL=
 =SPRITE rilu=
 =SPRITE_UNFADE 0.5=
-Ar - This annoying thing is the reason we are stuck here. & EV_RILU_1_2_0
-Ri - Shall I take it down? & EV_RILU_1_2_1
-Ro(shock) - You can do it? It repelled all our attacks. & EV_RILU_1_2_2
-Ri - *Nod* & EV_RILU_1_2_3
-Ri(spell) - Step back. & EV_RILU_1_2_4
+Ar - EV_RILU_1_2_0
+Ri - EV_RILU_1_2_1
+Ro(shock) - EV_RILU_1_2_2
+Ri - EV_RILU_1_2_3
+Ri(spell) - EV_RILU_1_2_4
 =SPRITE rilu_m=
-Rilu faced the wall and began chanting a spell. The barely visible spirits began to gather around her, lighting her up in the dark of the caves. & EV_RILU_1_2_5
+EV_RILU_1_2_5
 =GUI_HIDE=
 =SPRITE_FADE 0.5=
 =BLACKUNFADE 0.5=
@@ -24,8 +24,8 @@ Rilu faced the wall and began chanting a spell. The barely visible spirits began
 =SPRITE kingdwarf1=
 =SPRITE_UNFADE 0.3=
 =GUI_NORMAL=
-Dwarf - The surface dwellers we have trapped on the other side seems to have found a way to disable the spirit wall. & EV_RILU_1_2_6
-KD - Finally. I feared I wouldn’t be able to finish them personally. Arm the cannon.  & EV_RILU_1_2_7
+Dwarf - EV_RILU_1_2_6
+KD - EV_RILU_1_2_7
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
@@ -34,21 +34,21 @@ KD - Finally. I feared I wouldn’t be able to finish them personally. Arm the c
 =DELAY 0.5=
 =SPRITE rilu=
 =GUI_NORMAL=
-A sphere of spirit energy has shot from Rilu and dispelled the wall revealing the ambush behind it.  & EV_RILU_1_2_8
-Ri - ... & EV_RILU_1_2_9
-Dwarf - SHOOT! & EV_RILU_1_2_10
+EV_RILU_1_2_8
+Ri - EV_RILU_1_2_9
+Dwarf - EV_RILU_1_2_10
 =SOUND explosion=
 =MUSIC_stop=
-A loud explosion shook the whole cave as a steel ball flew from the cannon at great speed. & EV_RILU_1_2_11
-With no time to react, Arron and the rest could only shout as it struck Rilu creating a blood-filled smoke.  & EV_RILU_1_2_12
+EV_RILU_1_2_11
+EV_RILU_1_2_12
 =SOUND splatter=
 =SPRITE_FADE 0.5=
 =DELAY 0.3=
-Ro(shock) - No way! & EV_RILU_1_2_13
-Ar(shock) - ... & EV_RILU_1_2_14
-KD - You could only score one target, you damn imbeciles.  & EV_RILU_1_2_15
-KD - Fine, my ax hasn't bathed in surfacer blood for long. & EV_RILU_1_2_16
-Ar(neutral) - ...Kill these bastards. & EV_RILU_1_2_17
+Ro(shock) - EV_RILU_1_2_13
+Ar(shock) - EV_RILU_1_2_14
+KD - EV_RILU_1_2_15
+KD - EV_RILU_1_2_16
+Ar(neutral) - EV_RILU_1_2_17
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

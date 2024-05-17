@@ -5,84 +5,84 @@
 =GUI_NORMAL=
 =SPRITE victor=
 =MUSIC event_combat=
-Defeated Victor fell on his knees not in any condition to continue the fight. & EV_VICTOR_2_4_0
-V - Ghhh... How... Can I lose... & EV_VICTOR_2_4_1
-V - After all... these years... & EV_VICTOR_2_4_2
-V - Defeated... by a bunch of kids... & EV_VICTOR_2_4_3
-Ar(neutral) - This is over, you bastard.  & EV_VICTOR_2_4_4
-Ar(neutral) - Ember.  & EV_VICTOR_2_4_5
-Em - ...*nod* & EV_VICTOR_2_4_6
-Ember steadily advanced to crouching man. & EV_VICTOR_2_4_7
-V - You think... I'm scared of you?...  & EV_VICTOR_2_4_8
+EV_VICTOR_2_4_0
+V - EV_VICTOR_2_4_1
+V - EV_VICTOR_2_4_2
+V - EV_VICTOR_2_4_3
+Ar(neutral) - EV_VICTOR_2_4_4
+Ar(neutral) - EV_VICTOR_2_4_5
+Em - EV_VICTOR_2_4_6
+EV_VICTOR_2_4_7
+V - EV_VICTOR_2_4_8
 =SOUND punch=
 =SPRITE_FADE 0.2=
-*Crack* & EV_VICTOR_2_4_9
-Em - ... & EV_VICTOR_2_4_10
-Ember's fist struck into Victor's face. & EV_VICTOR_2_4_11
-As Victor's skull cracked, the blade fell from his hand. & EV_VICTOR_2_4_12
-Ar - That was an uninspired last line. & EV_VICTOR_2_4_13
-Ro - Wha... What's going on? & EV_VICTOR_2_4_14
-A blade from Victor's hand began shining as it was covered in cracks.  & EV_VICTOR_2_4_15
-After a loud explosion streams of energy began dissipating in all directions. & EV_VICTOR_2_4_16
+EV_VICTOR_2_4_9
+Em - EV_VICTOR_2_4_10
+EV_VICTOR_2_4_11
+EV_VICTOR_2_4_12
+Ar - EV_VICTOR_2_4_13
+Ro - EV_VICTOR_2_4_14
+EV_VICTOR_2_4_15
+EV_VICTOR_2_4_16
 =MUSIC_STOP=
-Ar - These are... & EV_VICTOR_2_4_17
-Ri(talk) - Dragons souls are being freed.  & EV_VICTOR_2_4_18
-Ri(talk) - He can't suppress them any longer inside of his sword. & EV_VICTOR_2_4_19
-Em - Ah...  & EV_VICTOR_2_4_20
-Er - Wow, that's quite a sight. & EV_VICTOR_2_4_21
-Ro - Look, something happens to Ember! & EV_VICTOR_2_4_22
-Being close to the streams, a shining essence has been drawn from Ember's hands. & EV_VICTOR_2_4_23
+Ar - EV_VICTOR_2_4_17
+Ri(talk) - EV_VICTOR_2_4_18
+Ri(talk) - EV_VICTOR_2_4_19
+Em - EV_VICTOR_2_4_20
+Er - EV_VICTOR_2_4_21
+Ro - EV_VICTOR_2_4_22
+EV_VICTOR_2_4_23
 =BLACKUNFADE 1=
 =DELAY 1=
 =BG scenes/ember_dragon=
 =BLACKFADE 1=
-The essence near ember began to form into a dragon shape. & EV_VICTOR_2_4_24
-Em - Is this... & EV_VICTOR_2_4_25
-Em - M-mother? & EV_VICTOR_2_4_26
-Ezet - Yes. & EV_VICTOR_2_4_27
-Ezet - This seems to be at an end. & EV_VICTOR_2_4_28
-Ezet - I'm proud of you, Ember. & EV_VICTOR_2_4_29
-Ezet - Sorry, I was a terrible parent. & EV_VICTOR_2_4_30
-Em - No. & EV_VICTOR_2_4_31
-Em - You were with me all this time.  & EV_VICTOR_2_4_32
-Em - And you gave birth to me. & EV_VICTOR_2_4_33
-Ezet - You've grown well. & EV_VICTOR_2_4_34
-Em - ...Thank you. & EV_VICTOR_2_4_35
-Em - What happens now? & EV_VICTOR_2_4_36
-Ezet - You have freed their souls. & EV_VICTOR_2_4_37
-Ezet - Now they can be reborn into a new hatchling. & EV_VICTOR_2_4_38
-Em - So, we saved them? & EV_VICTOR_2_4_39
-Ezet - Yes, you've done a great deed. & EV_VICTOR_2_4_40
-Ezet - But it seems I'll have to go too. & EV_VICTOR_2_4_41
-Em - ........ & EV_VICTOR_2_4_42
-Em - Thanks for staying with me all this time.  & EV_VICTOR_2_4_43
-Ezet - Hah, I was sure you'd be crying here. & EV_VICTOR_2_4_44
-Em - Maybe we will meet again? & EV_VICTOR_2_4_45
-Ezet - After rebirth we will not remember who we were in previous life. & EV_VICTOR_2_4_46
-Ezet - But I'm glad you have found your place and friends you can rely on. & EV_VICTOR_2_4_47
-Ezet - Arron. You are still to face great dangers, but I trust you to take care of my daughter. & EV_VICTOR_2_4_48
-Ar - Hmm... I'm not sure I'm up to the responsibility yet.  & EV_VICTOR_2_4_49
-Ezet - Don't worry, I'm  sure you can make Ember some fine offspring with more practice. & EV_VICTOR_2_4_50
-Em - Eh?! & EV_VICTOR_2_4_51
-Ezet - After all I've almost had first-hand experience. & EV_VICTOR_2_4_52
-Ar - You had what?! & EV_VICTOR_2_4_53
-Ezet - Don't act so surprised now. & EV_VICTOR_2_4_54
-Ezet - My daughter is too innocent to take initiative, so I gave her a couple of hints. & EV_VICTOR_2_4_55
-Ar - ...And took some liberty in the bedroom...? & EV_VICTOR_2_4_56
-Ezet - That was the best for all of us. & EV_VICTOR_2_4_57
-Ezet - But it's time for me to go. & EV_VICTOR_2_4_58
-Ezet - Good luck, children. & EV_VICTOR_2_4_59
-With last words vanishing in the air so did the image of Ezet. & EV_VICTOR_2_4_60
+EV_VICTOR_2_4_24
+Em - EV_VICTOR_2_4_25
+Em - EV_VICTOR_2_4_26
+Ezet - EV_VICTOR_2_4_27
+Ezet - EV_VICTOR_2_4_28
+Ezet - EV_VICTOR_2_4_29
+Ezet - EV_VICTOR_2_4_30
+Em - EV_VICTOR_2_4_31
+Em - EV_VICTOR_2_4_32
+Em - EV_VICTOR_2_4_33
+Ezet - EV_VICTOR_2_4_34
+Em - EV_VICTOR_2_4_35
+Em - EV_VICTOR_2_4_36
+Ezet - EV_VICTOR_2_4_37
+Ezet - EV_VICTOR_2_4_38
+Em - EV_VICTOR_2_4_39
+Ezet - EV_VICTOR_2_4_40
+Ezet - EV_VICTOR_2_4_41
+Em - EV_VICTOR_2_4_42
+Em - EV_VICTOR_2_4_43
+Ezet - EV_VICTOR_2_4_44
+Em - EV_VICTOR_2_4_45
+Ezet - EV_VICTOR_2_4_46
+Ezet - EV_VICTOR_2_4_47
+Ezet - EV_VICTOR_2_4_48
+Ar - EV_VICTOR_2_4_49
+Ezet - EV_VICTOR_2_4_50
+Em - EV_VICTOR_2_4_51
+Ezet - EV_VICTOR_2_4_52
+Ar - EV_VICTOR_2_4_53
+Ezet - EV_VICTOR_2_4_54
+Ezet - EV_VICTOR_2_4_55
+Ar - EV_VICTOR_2_4_56
+Ezet - EV_VICTOR_2_4_57
+Ezet - EV_VICTOR_2_4_58
+Ezet - EV_VICTOR_2_4_59
+EV_VICTOR_2_4_60
 =MUSIC eventgeneric=
 =BG forest 1=
-Ar - ...Look, it wasn't as lewd as you imagine.  & EV_VICTOR_2_4_61
-Ro - Disgusting. & EV_VICTOR_2_4_62
-Em - Ah, so that's why I acted like that. & EV_VICTOR_2_4_63
-Ri - ... & EV_VICTOR_2_4_64
-Er - Kinky. & EV_VICTOR_2_4_65
-I(sad) - Hmm I'm not sure how ancestors would feel about it. & EV_VICTOR_2_4_66
-Ar - Okay, enough.  & EV_VICTOR_2_4_67
-Ar - Let's get out of here, before someone sees us and blames us for murdering local hero.  & EV_VICTOR_2_4_68
+Ar - EV_VICTOR_2_4_61
+Ro - EV_VICTOR_2_4_62
+Em - EV_VICTOR_2_4_63
+Ri - EV_VICTOR_2_4_64
+Er - EV_VICTOR_2_4_65
+I(sad) - EV_VICTOR_2_4_66
+Ar - EV_VICTOR_2_4_67
+Ar - EV_VICTOR_2_4_68
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

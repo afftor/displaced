@@ -8,11 +8,11 @@
 =GUI_NORMAL=
 =SPRITE rose=
 =SPRITE_UNFADE 0.5=
-Ro - Are we really doing this? You are going to show her her father's corpse? & EV_IOLA_1_2_0
-Ar - If you have nothing better to complain about, shut up and practice your shocked reaction. & EV_IOLA_1_2_1
-Ar - Darn... and she's a beauty, what a chance slipping by because of her dumbass father.  & EV_IOLA_1_2_2
-Ro - ...That's all you can think about? & EV_IOLA_1_2_3
-Ar - Well excuse me, thinking about dead old men is a worse alternative here. & EV_IOLA_1_2_4
+Ro - EV_IOLA_1_2_0
+Ar - EV_IOLA_1_2_1
+Ar - EV_IOLA_1_2_2
+Ro - EV_IOLA_1_2_3
+Ar - EV_IOLA_1_2_4
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=

@@ -8,42 +8,42 @@
 =GUI_NORMAL=
 =SPRITE_UNFADE 0.3=
 =SPRITE rose=
-Ro - Okay, we've searched through the central library.  & EV_AEROS_3_0
-Ar(neutral) - So what have you found? & EV_AEROS_3_1
-Ro - We've gone through Rilu's description and only found scarce mentions of someone matching it.  & EV_AEROS_3_2
-Ro - The person is referred to as the Traveler. They are thought to be some sort of powerful mage or maybe not even a human. & EV_AEROS_3_3
-Ar - Interesting. So you say there's a chance that Traveler is a cute girl?  & EV_AEROS_3_4
-Ro(sarcastic) - Sure, if that makes you motivated.  & EV_AEROS_3_5
-Ro - Problem is we don't really have any leads. There's one book with a detailed description, though. & EV_AEROS_3_6
-Ro - An artifact named "Saint’s Pearl". It's rumored to have great power and is associated with the Traveler.  & EV_AEROS_3_7
-Ro - Perhaps we should investigate it. & EV_AEROS_3_8
-Er - Oh, I know where we can find it.  & EV_AEROS_3_9
-Ro(shock) - You do?! Where is it? & EV_AEROS_3_10
-Er - Hmmm... But what would I get from telling you? & EV_AEROS_3_11
-Ro - *Sigh* What do you want? & EV_AEROS_3_12
-Er - A night together? & EV_AEROS_3_13
-Ro - No. & EV_AEROS_3_14
-Er - A kiss? & EV_AEROS_3_15
-Ro - No.  & EV_AEROS_3_16
-Er - Can I touch your fluffy tail at least, then?  & EV_AEROS_3_17
-Ro(sarcastic) - (I'm not getting out of this one, am I?) & EV_AEROS_3_18
-Ro(talk) - Fine, just do it and tell us already. & EV_AEROS_3_19
-Er - He-he, sure.  & EV_AEROS_3_20
-Er - Don't worry, I'll be gentle... & EV_AEROS_3_21
+Ro - EV_AEROS_3_0
+Ar(neutral) - EV_AEROS_3_1
+Ro - EV_AEROS_3_2
+Ro - EV_AEROS_3_3
+Ar - EV_AEROS_3_4
+Ro(sarcastic) - EV_AEROS_3_5
+Ro - EV_AEROS_3_6
+Ro - EV_AEROS_3_7
+Ro - EV_AEROS_3_8
+Er - EV_AEROS_3_9
+Ro(shock) - EV_AEROS_3_10
+Er - EV_AEROS_3_11
+Ro - EV_AEROS_3_12
+Er - EV_AEROS_3_13
+Ro - EV_AEROS_3_14
+Er - EV_AEROS_3_15
+Ro - EV_AEROS_3_16
+Er - EV_AEROS_3_17
+Ro(sarcastic) - EV_AEROS_3_18
+Ro(talk) - EV_AEROS_3_19
+Er - EV_AEROS_3_20
+Er - EV_AEROS_3_21
 =SHAKE_SPRITE 0.3=
-Ro(shock) - ... Ah! & EV_AEROS_3_22
-Er - Oh, sorry, I didn't expect you to be this sensitive. & EV_AEROS_3_23
-Er - Mhmm it's really soft and nice to touch. & EV_AEROS_3_24
-Ro(talk) - Enough, just tell us.  & EV_AEROS_3_25
-Er - Okay... the Faery Queen has it in her possessions. & EV_AEROS_3_26
-Ar - Faeries? Do you mean those small things in the forest? & EV_AEROS_3_27
-Er - Yep. They are nasty little bastards. & EV_AEROS_3_28
-Er - I'll enjoy tearing a few of their wings on the way there. & EV_AEROS_3_29
-Ro - That seems a bit harsh for you. & EV_AEROS_3_30
-Er - They trick or even attack people on sight so they earn it. And they grow back with time anyway. & EV_AEROS_3_31
-Ar - You know how we can find her? & EV_AEROS_3_32
-Er - Sure, but catching her might prove to be a hard task. & EV_AEROS_3_33
-Ar(neutral) - We'll figure something out once we get there. & EV_AEROS_3_34
+Ro(shock) - EV_AEROS_3_22
+Er - EV_AEROS_3_23
+Er - EV_AEROS_3_24
+Ro(talk) - EV_AEROS_3_25
+Er - EV_AEROS_3_26
+Ar - EV_AEROS_3_27
+Er - EV_AEROS_3_28
+Er - EV_AEROS_3_29
+Ro - EV_AEROS_3_30
+Er - EV_AEROS_3_31
+Ar - EV_AEROS_3_32
+Er - EV_AEROS_3_33
+Ar(neutral) - EV_AEROS_3_34
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

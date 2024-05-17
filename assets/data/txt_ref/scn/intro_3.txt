@@ -9,35 +9,35 @@
 =GUI_NORMAL=
 =SPRITE_UNFADE 0.5=
 =DELAY 0.5=
-Ro - I've finished asking around. & EV_INTRO_3_0
-Ro - It seems there's no known info about Avior, or even where might be.  & EV_INTRO_3_1
-Ar - You made sure not to give away where we came from, right?  & EV_INTRO_3_2
-Ro - Yes. Thankfully, there's plenty of adventurers passing by around here, often anonymously.  & EV_INTRO_3_3
-Ro - Anyway, these lands are called Vienar.  & EV_INTRO_3_4
-Ar(neutral) - Never heard of such a name.  & EV_INTRO_3_5
-Ro - Me neither.  & EV_INTRO_3_6
-Ro - Most of this civilization seems to be  independent city-states, who trade and share frequently, despite their political disagreements..  & EV_INTRO_3_7
-Ro - Our village lies somewhat distant from most other cities, so there's little interest in this place. & EV_INTRO_3_8
-Ar - So... that means we can stay here safely? & EV_INTRO_3_9
-Ro - That also means we have no idea how to get back. & EV_INTRO_3_10
-Ro(sarcastic) - Wait, master, are you actually planning to return?  & EV_INTRO_3_11
-Ar - Hm... Maybe. & EV_INTRO_3_12
-Ro(shock) - What!? We can't stay here for the rest of our lives.  & EV_INTRO_3_13
-Ar - Why not? & EV_INTRO_3_14
-Ro(sarcastic) - Aren’t you going to miss your family? Your royal life? & EV_INTRO_3_15
-Ar - Well, I have to get revenge on Norb, don't I? & EV_INTRO_3_16
-Ar - Relax, I'm just kidding. I guess our only option to get back is the same way we got here. We’re gonna need some skilled mages.  & EV_INTRO_3_17
-Ro - That might prove to be a challenge. From what passing adventurers said, teleportation magic doesn’t seem to be common around here. & EV_INTRO_3_18
-Ar - Well, all the more reason to make sure our position here is nice and stable. & EV_INTRO_3_19
-Ar - Plus when else am I going to get the chance to rule anyone but mere servants? & EV_INTRO_3_20
-Ro - Master, you can't just accept this, can you? This is too mediocre for a man of your caliber. & EV_INTRO_3_21
-Ar(neutral) - Mhmm... & EV_INTRO_3_22
-Ro - Okay, look here, I found some information about the elves living in a forest not far from here. & EV_INTRO_3_23
-Ro(talk) - They should know more about magic and could help us return home. & EV_INTRO_3_24
-Ar - Elven girls are quite cute, aren't they? & EV_INTRO_3_25
-Ro(sarcastic) - ...How would I know? & EV_INTRO_3_26
-Ar - Alright, I'll grant your wish, we'll go see what those elves have to offer. & EV_INTRO_3_27
-Ro - (Sigh. Better this than nothing) & EV_INTRO_3_28
+Ro - EV_INTRO_3_0
+Ro - EV_INTRO_3_1
+Ar - EV_INTRO_3_2
+Ro - EV_INTRO_3_3
+Ro - EV_INTRO_3_4
+Ar(neutral) - EV_INTRO_3_5
+Ro - EV_INTRO_3_6
+Ro - EV_INTRO_3_7
+Ro - EV_INTRO_3_8
+Ar - EV_INTRO_3_9
+Ro - EV_INTRO_3_10
+Ro(sarcastic) - EV_INTRO_3_11
+Ar - EV_INTRO_3_12
+Ro(shock) - EV_INTRO_3_13
+Ar - EV_INTRO_3_14
+Ro(sarcastic) - EV_INTRO_3_15
+Ar - EV_INTRO_3_16
+Ar - EV_INTRO_3_17
+Ro - EV_INTRO_3_18
+Ar - EV_INTRO_3_19
+Ar - EV_INTRO_3_20
+Ro - EV_INTRO_3_21
+Ar(neutral) - EV_INTRO_3_22
+Ro - EV_INTRO_3_23
+Ro(talk) - EV_INTRO_3_24
+Ar - EV_INTRO_3_25
+Ro(sarcastic) - EV_INTRO_3_26
+Ar - EV_INTRO_3_27
+Ro - EV_INTRO_3_28
 =GUI_HIDE=
 =BLACKTRANS 1=
 =DELAY 1=
