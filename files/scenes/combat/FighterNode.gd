@@ -549,12 +549,6 @@ func unmark_unreachable():
 		unreachable = false
 		modulate = Color(1, 1, 1, 1)
 
-func disable_panel_node():
-	panel_node.disabled = true
-	for n in panel_node.get_children():
-		n.visible = false
-	input_handler.combat_node.try_hide_enemy_tooltip(fighter.id)
-
 #obsolete or semi-obsolete
 func defeat():
 #	print("!")
@@ -566,7 +560,7 @@ func defeat():
 	else:
 		set_process_input(false) #it is probably unnecessary since this script started to use _gui_input()
 #		input_handler.FadeAnimation(self, 0.5, 0.3)
-		disable_panel_node()
+		input_handler.combat_node.disable_enemy_panel(fighter.position, fighter.id)
 		input_handler.combat_node.remove_enemy(fighter.position, fighter.id)
 		fighter.displaynode = null
 		visible = false
