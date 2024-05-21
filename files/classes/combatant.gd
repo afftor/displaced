@@ -740,10 +740,10 @@ func heal(value):
 #	#process_event(variables.TR_HEAL)
 #	return tmp
 
-func stat_update(stat, value):
+func stat_update(stat, value, precise = false):
 	var tmp = get(stat)
 	value = round(value)
-	if tmp:
+	if tmp and !precise:
 		set(stat, tmp + value)
 	else:
 		set(stat, value)
