@@ -743,6 +743,9 @@ func remove_enemy(pos, id):
 	enemygroup.erase(pos)
 	battlefield[pos] = null
 
+func try_hide_enemy_tooltip(fighter):
+	gui_node.TryHideEnemyTooltip(fighter)
+
 func checkwinlose():
 	var playergroupcounter = 0
 	var enemygroupcounter = 0

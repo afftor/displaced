@@ -166,12 +166,18 @@ func build_enemy_panels():
 
 
 func ShowEnemyTooltip(fighter):
-	if $enemypanel.ch_id == fighter and $enemypanel.visible:
-		HideEnemyTooltip()
-		return 
-	$enemypanel.build_for_fighter(fighter)
-	$enemypanel.show()
+	if TryHideEnemyTooltip(fighter):
+		return
+	var panel = $enemypanel
+	panel.build_for_fighter(fighter)
+	panel.show()
 
+func TryHideEnemyTooltip(fighter) ->bool:
+	var panel = $enemypanel
+	if !panel.visible or panel.ch_id != fighter:
+		return false
+	HideEnemyTooltip()
+	return true
 
 func HideEnemyTooltip():
 	$enemypanel.hide()

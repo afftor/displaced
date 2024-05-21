@@ -553,6 +553,7 @@ func disable_panel_node():
 	panel_node.disabled = true
 	for n in panel_node.get_children():
 		n.visible = false
+	input_handler.combat_node.try_hide_enemy_tooltip(fighter.id)
 
 #obsolete or semi-obsolete
 func defeat():
