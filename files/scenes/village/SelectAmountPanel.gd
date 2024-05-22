@@ -14,6 +14,7 @@ func _enter_tree():
 func _ready():
 	shop_menu = get_parent().get_parent()
 	$LineEdit.connect("text_entered", self, 'enter_amount')
+	$LineEdit.connect("text_changed", self, 'check_text')
 	$up.connect("pressed", self, 'change_amount', [1])
 	$down.connect("pressed", self, 'change_amount', [-1])
 	$Button.connect("pressed", self, 'confirm')
@@ -72,6 +73,11 @@ func open_sell(id):
 
 
 func set_amount(value):
+	update_amount(value)
+	$LineEdit.text = str(amount)
+
+
+func update_amount(value):
 	amount = value
 	$down.disabled = false
 	$up.disabled = false
@@ -81,7 +87,6 @@ func set_amount(value):
 	if amount >= max_v:
 		amount = max_v
 		$up.disabled = true
-	$LineEdit.text = str(amount)
 	$HBoxContainer2/money.text = str(amount * Items.Items[item_id].price)
 
 
@@ -90,6 +95,12 @@ func enter_amount(txt):
 		set_amount(int(txt))
 	else:
 		$LineEdit.text = str(amount)
+
+
+func check_text(txt :String):
+	if !txt.is_valid_integer():
+		return
+	update_amount(int(txt))
 
 
 func change_amount(val):

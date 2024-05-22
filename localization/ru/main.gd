@@ -4,7 +4,7 @@ var TranslationDict = {
 	#Buildings
 	UPGRADES = "Улучшения",
 	TOWNHALL = "Ратуша",
-	MARKET_TITLE = "Магазин",
+#	MARKET_TITLE = "Магазин",
 	MARKET = "Рынок",
 	BLACKSMITH = "Кузня",
 	BRIDGE = "Выход",
