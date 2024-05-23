@@ -3,7 +3,8 @@ class_name temp_e_progress
 #temp effect that progress on expiring
 
 var tick_event := []
-var rem_event := []
+#all temp effects should be removed on death or combat end
+var rem_event := [variables.TR_COMBAT_F, variables.TR_DEATH]
 var remains := -1
 
 var template_name
@@ -21,9 +22,8 @@ func createfromtemplate(tmp):
 			tick_event.push_back(template.tick_event)
 	if template.has('rem_event'): 
 		if typeof(template.rem_event) == TYPE_ARRAY:
-			rem_event = template.rem_event.duplicate()
+			rem_event.append_array(template.rem_event)
 		else:
-			rem_event.clear()
 			rem_event.push_back(template.rem_event)
 	template_name = template.name
 
