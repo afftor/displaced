@@ -846,7 +846,7 @@ var TranslationDict = {
 	#effects
 	BUFF_DEFENCE = "Halves incoming damage",
 	BUFF_SUMMON = "Summoned unit. Dies after summoner defeated",
-	BUFF_POISON_PERMANENT = "Poison: Takes damage at the end of turn. Can be dispelled.",
+	BUFF_POISON_PERMANENT = "Poison: Takes damage at the end of turn.",#Can be dispelled. (they all can be dispelled now)
 	BUFF_STUN = "Stunned: Can't act next turn. Can be healed",
 	BUFF_INTIMIDATE = "Damage reduced for 50%",
 	BUFF_SILENCE = "Silenced: Can't cast certain spells",

@@ -64,7 +64,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['burn'],
+		tags = ['burn', 'negative'],
 		icon_text = "end",
 		args = [
 			{obj = 'parent_args', param = 0},
@@ -82,7 +82,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['burn'],
+		tags = ['burn', 'negative'],
 		icon_text = "beginning",
 		args = [
 			{obj = 'parent_args', param = 0},
@@ -100,7 +100,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 3,
-		tags = ['poison'],
+		tags = ['poison', 'negative'],
 		icon_text = "Neutral",
 		args = [
 			{obj = 'parent_args', param = 0},
@@ -118,7 +118,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 3,
-		tags = ['poison'],#or may be not
+		tags = ['poison', 'negative'],#or may be not
 		icon_text = "Water",
 		args = [
 			{obj = 'parent_args', param = 0},
@@ -153,7 +153,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['bleed'],
+		tags = ['bleed', 'negative'],
 		icon_text = "end",
 		args = [
 			{obj = 'parent_args', param = 0},
@@ -171,7 +171,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_GET],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 2,
-		tags = ['bleed'],
+		tags = ['bleed', 'negative'],
 		icon_text = "beginning",
 		args = [
 			{obj = 'parent_args', param = 0},
@@ -189,7 +189,7 @@ var effect_table = {
 		duration = 'parent',
 		rem_event = [variables.TR_COMBAT_F],
 		tick_event = [variables.TR_TURN_F],
-		tags = ['stun'],
+		tags = ['stun', 'negative'],
 		disable = true,
 		sub_effects = [rebuild_remove(['tags','has','heal'])],
 		buffs = [{
