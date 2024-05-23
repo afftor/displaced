@@ -2,7 +2,8 @@ extends combatant
 class_name hero
 
 
-signal friend_points_changed(points)
+signal friend_points_changed
+signal lock_status_changed
 
 
 var unlocked = false setget set_unlocked
@@ -31,6 +32,7 @@ func _init():
 
 func set_unlocked(value):
 	unlocked = value
+	emit_signal("lock_status_changed")
 	if !value:
 		position = null
 		input_handler.emit_signal("PositionChanged")
@@ -173,7 +175,7 @@ func set_gear(slot :String, lvl :int):
 
 func set_friend_points(points: int):
 	friend_points = points
-	emit_signal("friend_points_changed", points)
+	emit_signal("friend_points_changed")
 
 func get_item_data_level(slot, level):
 	var res = {icon = null, name = null, description = null, colors = [], type = slot, cost = {}, level = level}

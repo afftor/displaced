@@ -3,6 +3,8 @@ extends Node
 
 signal pending_scenes_updated
 
+signal old_seqs_accessed
+signal old_events_accessed
 #doesn't work for now
 #var date := 1
 #var daytime = 0  setget time_set
@@ -45,8 +47,8 @@ var CurrentScreen
 #var heroguild := {}
 #var guild_save
 
-var OldSeqs = []
-var OldEvents := {}
+var OldSeqs = [] setget ,get_old_seqs
+var OldEvents := {} setget ,get_old_events
 #var gallery_unlocks = []
 #var gallery_event_unlocks = []
 var CurEvent := "" #event name
@@ -750,3 +752,11 @@ func add_money(value, log_f = true):
 #				logupdate(text)
 #	materials = value
 #	oldmaterials = materials.duplicate()
+
+func get_old_seqs() -> Array:
+	emit_signal("old_seqs_accessed")
+	return OldSeqs
+
+func get_old_events() -> Dictionary:
+	emit_signal("old_events_accessed")
+	return OldEvents

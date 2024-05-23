@@ -11,6 +11,8 @@ onready var lock = $lock
 onready var reqs = $reqs
 onready var panel = $panel
 
+export(Material) var highlighted_material
+
 
 func _ready():
 	watch_btn.connect('pressed', self, 'emit_signal', ["show_pressed"])
@@ -28,8 +30,8 @@ func set_unlocked(eventdata :Dictionary):
 	unlock_btn.hide()
 
 func set_highlighted(toggle: bool):
-	panel.material = panel.material.duplicate()
-	panel.material.set("shader_param/_enable", toggle)
+	if toggle: panel.material = highlighted_material
+	else: panel.material = null
 
 func set_unlockable(eventdata :Dictionary):
 	set_preview(eventdata)
