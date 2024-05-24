@@ -1,0 +1,99 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+
+const float UPSCALE = 2.0;
+
+
+uniform vec4 _color: hint_color = vec4(1.0);
+uniform float _thickness = 0.03;
+uniform float _animation_speed = 1.0;
+uniform float _occlude_amount = 1.0;
+uniform vec2 _uv_correction = vec2(0.0);
+
+
+vec2 rotate(vec2 uv, vec2 pivot, float angle) {
+	mat2 rotation = mat2(vec2(sin(angle), -cos(angle)),vec2(cos(angle), sin(angle)));
+	uv -= pivot;
+	uv = uv * rotation;
+	uv += pivot;
+	return uv;
+}
+vec2 polar_uv(vec2 uv, float rotated) {
+
+	uv -= 0.5;
+	uv *= 2.0;
+
+	float dist = length(uv);
+	uv = rotate(uv, vec2(0.0),rotated);
+	float angle = atan(uv.y, uv.x);
+	return vec2(angle / 3.14*2.0, dist);
+}
+float rotation_angle() {
+	return TIME*_animation_speed;
+}
+
+vec2 not_upscaled_uv(vec2 uv) {
+	return uv*UPSCALE;
+}
+
+bool is_in_bounds(vec2 uv) {
+	return (uv.x >= 0.0) && (uv.x <= 1.0) && (uv.y >= 0.0) && (uv.y <= 1.0);
+}
+
+vec4 scale_filtered(vec4 color, vec2 uv) {
+	if (is_in_bounds(uv)) return color; 
+	else return vec4(0.0);
+}
+
+float outlne_mask(sampler2D tex, vec2 uv) {
+	float size = _thickness;
+	
+	float l = scale_filtered(texture(tex, uv+vec2(size, 0.0)), uv+vec2(size, 0.0)).a;
+	float r = scale_filtered(texture(tex, uv+vec2(-size, 0.0)), uv+vec2(-size, 0.0)).a;
+	float d = scale_filtered(texture(tex, uv+vec2(0.0, size)), uv+vec2(0.0, size)).a;
+	float u = scale_filtered(texture(tex, uv+vec2(0.0, -size)), uv+vec2(0.0, -size)).a;
+	float ld = scale_filtered(texture(tex, uv+vec2(size, size)), uv+vec2(size, size)).a;
+	float lu = scale_filtered(texture(tex, uv+vec2(size, -size)), uv+vec2(size, -size)).a;
+	float rd = scale_filtered(texture(tex, uv+vec2(-size, size)), uv+vec2(-size, size)).a;
+	float ru = scale_filtered(texture(tex, uv+vec2(-size, -size)), uv+vec2(-size, -size)).a;
+	
+	return l + r + d + u + ld + lu + rd + ru;
+}
+float occluder_mask(vec2 occluder) {
+	float size = _thickness;
+	
+	float l = (occluder+vec2(size, 0.0)).x;
+	float r = (occluder+vec2(-size, 0.0)).x;
+	float d = (occluder+vec2(0.0, size)).x;
+	float u = (occluder+vec2(0.0, -size)).x;
+	float ld = (occluder+vec2(size, size)).x;
+	float lu = (occluder+vec2(size, -size)).x;
+	float rd = (occluder+vec2(-size, size)).x;
+	float ru = (occluder+vec2(size, -size)).x;
+	
+	return l + r + d + u + ld + lu + rd + ru;
+}
+
+void fragment() {
+	vec2 uv = not_upscaled_uv(UV);
+	vec4 image = scale_filtered(texture(TEXTURE, uv), uv);
+	
+
+	
+	vec2 occluder = step(_occlude_amount, polar_uv(uv, rotation_angle()));
+	float occluder_msk = occluder_mask(occluder);
+	
+	float outline_msk = outlne_mask(TEXTURE, uv);
+	vec4 outline_image = vec4(_color.rgb, outline_msk-= occluder_msk);
+	
+	vec4 final = mix(outline_image, image, image.a);
+	COLOR = final;
+}
+
+void vertex() {
+	VERTEX = VERTEX*UPSCALE;
+}
+"

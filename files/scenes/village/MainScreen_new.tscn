@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://files/scenes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/buttons/main screen/speednorm2.png" type="Texture" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=28]
 [ext_resource path="res://files/scenes/village/ShopMenu.tscn" type="PackedScene" id=29]
 [ext_resource path="res://files/scenes/map/map_label.tscn" type="PackedScene" id=30]
+[ext_resource path="res://files/SFX/outline_material.tres" type="Material" id=31]
+[ext_resource path="res://files/scenes/village/pending_scenes/PendingScenesOutlineIndicator.gd" type="Script" id=32]
 
 [node name="MainScreen" type="Control"]
 theme = ExtResource( 1 )
@@ -58,6 +60,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="townhall_outline" type="TextureRect" parent="."]
+margin_left = 636.102
+margin_top = 213.816
+margin_right = 1088.1
+margin_bottom = 570.816
+texture = ExtResource( 20 )
+
 [node name="townhall" type="TextureButton" parent="."]
 margin_left = 636.102
 margin_top = 213.816
@@ -65,9 +74,6 @@ margin_right = 1088.1
 margin_bottom = 570.816
 texture_normal = ExtResource( 20 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 outline_hover = true
 
 [node name="QuestActive" type="TextureRect" parent="townhall"]
@@ -83,6 +89,11 @@ margin_top = -23.0
 margin_right = 296.0
 margin_bottom = 1.0
 text = "TOWNHALL"
+
+[node name="Indicator" type="Node" parent="townhall"]
+script = ExtResource( 32 )
+visual = NodePath("../../townhall_outline")
+outline_material = ExtResource( 31 )
 
 [node name="bridge" type="TextureButton" parent="."]
 margin_left = 1570.0

@@ -1,6 +1,7 @@
 extends Reference
 class_name combatant
 
+
 var id
 var name
 var base
@@ -965,4 +966,3 @@ func add_permanent_sfx(sfx_code):
 	var sfx_obj = input_handler.gfx_sprite_permanent(displaynode, sfx_code)
 	#we seems not in need of storing sfx_obj here. For now 'effect' do it
 	return sfx_obj
-
