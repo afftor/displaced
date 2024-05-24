@@ -25,7 +25,7 @@ EV_ROSE_1_10
 =GUI_FULL=
 =MUSIC erotheme=
 =DELAY 0.5=
-=ABG rose_minet_1=
+=ABG rose_minet_01=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 EV_ROSE_1_11
@@ -43,7 +43,7 @@ Ar - EV_ROSE_1_22
 Ar - EV_ROSE_1_23
 Ar - EV_ROSE_1_24
 Ar - EV_ROSE_1_25
-=ABG rose_minet_2 rose_minet_3=
+=ABG rose_minet_1 rose_minet_02=
 EV_ROSE_1_26
 EV_ROSE_1_27
 Ro - EV_ROSE_1_28
