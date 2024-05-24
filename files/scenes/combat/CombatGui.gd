@@ -143,35 +143,45 @@ func build_hero_panels():
 			node1.visible = false
 
 
-func build_enemy_panels():
+func clearup_enemy_panels():
 	for pos in range(4, 10):
-		var node = get_enemy_panel(pos)
-#		node.connect("mouse_exited", self, "HideEnemyTooltip")
-		var ch = combat.battlefield[pos]
-		if ch == null:
-			node.modulate = Color(1,1,1,0.4)
-			node.disabled = true
-			for n in node.get_children():
-				n.visible = false
-			if node.is_connected("pressed", self, "ShowEnemyTooltip"):
-				node.disconnect("pressed", self, "ShowEnemyTooltip")
-		else:
-			node.disabled = false
-			node.modulate = Color(1,1,1,1)
-			for n in node.get_children():
-				n.visible = true
-			if node.is_connected("pressed", self, "ShowEnemyTooltip"):
-				node.disconnect("pressed", self, "ShowEnemyTooltip")
-			node.connect("pressed", self, "ShowEnemyTooltip", [ch.id])
+		if combat.battlefield[pos] == null:
+			disable_enemy_panel(pos)
 
+func disable_enemy_panel(pos, fighter_id = null):
+	var node = get_enemy_panel(pos)
+	node.modulate = Color(1,1,1,0.4)
+	node.disabled = true
+	for n in node.get_children():
+		n.visible = false
+	if node.is_connected("pressed", self, "ShowEnemyTooltip"):
+		node.disconnect("pressed", self, "ShowEnemyTooltip")
+	if fighter_id:
+		TryHideEnemyTooltip(fighter_id)
+
+func enable_enemy_panel(pos, fighter_id):
+	var node = get_enemy_panel(pos)
+	node.disabled = false
+	node.modulate = Color(1,1,1,1)
+	for n in node.get_children():
+		n.visible = true
+	if node.is_connected("pressed", self, "ShowEnemyTooltip"):
+		node.disconnect("pressed", self, "ShowEnemyTooltip")
+	node.connect("pressed", self, "ShowEnemyTooltip", [fighter_id])
 
 func ShowEnemyTooltip(fighter):
-	if $enemypanel.ch_id == fighter and $enemypanel.visible:
-		HideEnemyTooltip()
-		return 
-	$enemypanel.build_for_fighter(fighter)
-	$enemypanel.show()
+	if TryHideEnemyTooltip(fighter):
+		return
+	var panel = $enemypanel
+	panel.build_for_fighter(fighter)
+	panel.show()
 
+func TryHideEnemyTooltip(fighter) ->bool:
+	var panel = $enemypanel
+	if !panel.visible or panel.ch_id != fighter:
+		return false
+	HideEnemyTooltip()
+	return true
 
 func HideEnemyTooltip():
 	$enemypanel.hide()

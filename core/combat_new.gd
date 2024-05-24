@@ -247,7 +247,7 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	if debug_btn_on:
 		$test.hide()
 	if music == 'combattheme':
-		var ost_array = ['combattheme', 'combattheme2']
+		var ost_array = ['combattheme']#, 'combattheme2']
 		music = ost_array[globals.rng.randi_range(0, ost_array.size()-1)]
 	hide_resist_tooltip()
 	input_handler.set_handler_node('combat_node', self)
@@ -255,9 +255,6 @@ func start_combat(newenemygroup, level, background, music = 'combattheme'):
 	en_level = level
 	resources.preload_res("music/%s" % music)
 	if resources.is_busy(): yield(resources, "done_work")
-	if music == 'combattheme':
-		var ost_array = ['combattheme']#, 'combattheme2']
-		music = ost_array[globals.rng.randi_range(0, ost_array.size()-1)]
 	rules.clear()
 	aura_effects.ally.clear()
 	aura_effects.enemy.clear()
@@ -331,10 +328,7 @@ func buildenemygroup(group):
 	for i in group:
 		if group[i] == null:
 			battlefield[i] = null
-			var panel = gui_node.get_enemy_panel(i)
-			panel.disabled = true
-			for n in panel.get_children():
-				n.visible = false
+			disable_enemy_panel(i)
 			continue
 		if typeof(group[i]) == TYPE_DICTIONARY:
 			var tempname = group[i].unit
@@ -352,7 +346,7 @@ func buildenemygroup(group):
 		battlefield[i] = enemygroup[i]
 		make_fighter_panel(battlefield[i], i)
 		enemygroup[i].displaynode.appear_move()
-	gui_node.build_enemy_panels()
+	gui_node.clearup_enemy_panels()#redundant?
 	turns += 1
 	for i in enemygroup:
 		enemygroup[i].process_event(variables.TR_COMBAT_S)
@@ -379,11 +373,17 @@ func buildplayergroup():
 func make_fighter_panel(fighter, spot, show = true):
 	var panel = battlefieldpositions[spot]
 	panel.panel_node = gui_node.get_enemy_panel(spot)
+	enable_enemy_panel(spot, fighter.id)
 	panel.setup_character(fighter)
 	panel.set_global_position(positions[spot])
 	panel.visible = show
 	panel.noq_rebuildbuffs(fighter.get_all_buffs())
 
+func disable_enemy_panel(pos, fighter_id = null):
+	gui_node.disable_enemy_panel(pos, fighter_id)
+
+func enable_enemy_panel(pos, fighter_id):
+	gui_node.enable_enemy_panel(pos, fighter_id)
 
 func make_hero_panel(fighter, show = true):
 	var spot = fighter.position
@@ -808,8 +808,9 @@ func advance_frontrow():
 		enemygroup.erase(pos)
 	for i in range(7, 10):
 		if battlefield[i] == null: continue
-		battlefield[i].displaynode.disable_panel_node()
-		battlefield[i].displaynode.visible = false
+		var fighter = battlefield[i]
+		disable_enemy_panel(fighter.position, fighter.id)
+		fighter.displaynode.visible = false
 		battlefield[i] = null
 	for i in range(4, 7):
 		if !enemygroup.has(i): continue
@@ -820,7 +821,7 @@ func advance_frontrow():
 #		battlefield[i].displaynode.appear()
 		battlefield[i].displaynode.advance_move()
 	
-	gui_node.build_enemy_panels()
+	gui_node.clearup_enemy_panels()#redundant?
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1

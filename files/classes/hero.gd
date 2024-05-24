@@ -22,7 +22,7 @@ var curweapon = 'weapon1'
 var base_dmg_type = 'bludgeon' setget , get_weapon_damagetype
 var armorbase = {}
 var armorbonus = {}
-var ultimeter :int = 0
+var ultimeter :int = 0 setget set_ultimeter, get_ultimeter
 var ult_min_lvl :int = 0
 
 var bonusres = []

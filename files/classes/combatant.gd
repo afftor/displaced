@@ -580,12 +580,19 @@ func find_eff_by_item(item_id):
 	return res
 
 func check_status_resist(eff):
+	var all_res = get_stat('status_resists')
+	var applicable_res = []
 	for s in variables.status_list:
-		if !eff.tags.has(s): continue
-		var res = get_stat('status_resists')[s]
-		var roll = globals.rng.randi_range(0, 99)
-		if roll < res: return true
-	return false
+		if eff.tags.has(s): applicable_res.append(all_res[s])
+	if applicable_res.empty():
+		return false
+	
+	#all statuses are 'negative', but effects should be explicitly taged as such
+	#so appending 'negative' resist here is just reassurance
+	applicable_res.append(all_res['negative'])
+	var res = applicable_res.max()
+	var roll = globals.rng.randi_range(0, 99)
+	return roll < res
 
 func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
@@ -741,10 +748,10 @@ func heal(value):
 #	#process_event(variables.TR_HEAL)
 #	return tmp
 
-func stat_update(stat, value):
+func stat_update(stat, value, precise = false):
 	var tmp = get(stat)
 	value = round(value)
-	if tmp:
+	if tmp and !precise:
 		set(stat, tmp + value)
 	else:
 		set(stat, value)

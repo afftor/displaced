@@ -539,6 +539,9 @@ var choice_number = -1
 var replay_mode = false
 var rewind_mode = false
 
+var panel_vis = true
+var panel_user_hidden = false
+
 func _ready() -> void:
 	input_handler.set_handler_node('scene_node', self)
 	extend_char_map()
@@ -562,13 +565,13 @@ func _ready() -> void:
 	$ClosePanel/Confirm.connect("pressed", self, "on_closepanel_confirm")
 
 
-var panel_vis = true
 func toggle_panel():
 	if $MenuPanel.visible: 
 		return
 	if !panel_vis: 
 		return
 	$Panel.visible = !$Panel.visible
+	panel_user_hidden = !$Panel.visible
 
 
 
@@ -682,7 +685,7 @@ func _input(event: InputEvent):
 	if !(event is InputEventKey): return
 	if event.is_action("ctrl"):
 		if event.is_pressed():
-			if !is_panel_visible():
+			if !is_panel_visible() and !panel_user_hidden:
 				skip = true
 		else:
 			skip = false
@@ -717,8 +720,9 @@ func _gui_input(event: InputEvent):
 		toggle_panel()
 		return
 
-	if (event.is_action_pressed("LMB")
-				or event.is_action_pressed("MouseDown")):
+	if ((event.is_action_pressed("LMB")
+			or event.is_action_pressed("MouseDown"))
+			and !panel_user_hidden):
 		if TextField.get_visible_characters() < TextField.get_total_character_count():
 			TextField.set_visible_characters(TextField.get_total_character_count())
 		else:
@@ -1203,6 +1207,7 @@ func play_scene(scene: String, restore = false, force_replay = false) -> void:
 	$Panel/CharPortrait.modulate.a = 0
 	$Panel.visible = false
 	panel_vis = false
+	panel_user_hidden = false
 	$CharImage.modulate.a = 0
 	var BlackScreen_node = $BlackScreen
 	input_handler.force_end_tweens(BlackScreen_node)

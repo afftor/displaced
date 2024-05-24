@@ -57,7 +57,7 @@ var direct_access_stat_list = ['hp', 'alt_mana', 'taunt', 'shield']
 #consider to move it to separate singleton
 #resistlist and status_list are separate for logic reason, but there must be no duplicate entries for presentation reason
 var resistlist = ['damage', 'slash', 'pierce', 'bludgeon', 'light', 'dark', 'air', 'water', 'earth', 'fire']
-var status_list = ['burn', 'stun', 'chill', 'negative', 'poison', 'bleed']
+var status_list = ['negative', 'burn', 'stun', 'chill', 'poison', 'bleed']#all statuses here also considered to be "negative"
 var resist_data = {
 	#resistlist
 	damage = {
@@ -111,6 +111,11 @@ var resist_data = {
 		type = 'damage'
 	},
 	#status_list
+	negative = {
+		name = 'RESIST_NEGATIVE',
+		icon = preload('res://assets/images/iconsskills/rose_3.png'),
+		type = 'status'
+	},
 	burn = {
 		name = 'RESIST_BURN',
 		icon = preload('res://assets/images/iconsskills/rose_4.png'),
@@ -124,11 +129,6 @@ var resist_data = {
 	chill = {
 		name = 'RESIST_CHILL',
 		icon = preload('res://assets/images/iconsskills/erika_5.png'),
-		type = 'status'
-	},
-	negative = {
-		name = 'RESIST_NEGATIVE',
-		icon = preload('res://assets/images/iconsskills/rose_3.png'),
 		type = 'status'
 	},
 	poison = {
