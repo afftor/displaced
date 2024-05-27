@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://files/scenes/village/SceneUnlockScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/sprite/rose.png" type="Texture" id=2]
@@ -19,11 +19,15 @@
 [ext_resource path="res://files/scenes/village/SceneUnlockHero.tscn" type="PackedScene" id=17]
 [ext_resource path="res://files/Close Panel Button/CloseButton.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=19]
+[ext_resource path="res://files/scenes/village/pending_scenes/PendingScenesUpdater.gd" type="Script" id=20]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+
+[node name="PendingScenesUpdater" type="Node" parent="."]
+script = ExtResource( 20 )
 
 [node name="bg" type="TextureRect" parent="."]
 margin_left = 11.0

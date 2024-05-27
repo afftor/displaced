@@ -1,4 +1,5 @@
-class_name PendingScenesVisibleIndicator extends PendingScenesIndicator
+#class_name PendingScenesVisibleIndicator
+extends PendingScenesIndicator
 
 
 func _on_scene_list_update():

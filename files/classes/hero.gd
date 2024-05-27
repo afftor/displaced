@@ -126,7 +126,7 @@ func see_enemy_killed():
 		add_friend_points(1)
 
 func add_friend_points(value):
-	friend_points += value
+	self.friend_points += value#using setter
 	friend_points_new += value
 
 func clear_new_friend_points():

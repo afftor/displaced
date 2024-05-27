@@ -1,5 +1,5 @@
-class_name PendingScenesOutlineIndicator extends PendingScenesIndicator
-
+#class_name PendingScenesOutlineIndicator
+extends PendingScenesIndicator
 
 export(Material) var outline_material
 
