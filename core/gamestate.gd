@@ -2,9 +2,8 @@ extends Node
 
 
 signal pending_scenes_updated
-
-signal old_seqs_accessed
-signal old_events_accessed
+signal old_seqs_updated
+signal old_events_updated#mind that choice is also stored in OldEvents, but not signaled by this
 #doesn't work for now
 #var date := 1
 #var daytime = 0  setget time_set
@@ -47,8 +46,8 @@ var CurrentScreen
 #var heroguild := {}
 #var guild_save
 
-var OldSeqs = [] setget ,get_old_seqs
-var OldEvents := {} setget ,get_old_events
+var OldSeqs = []
+var OldEvents := {}
 #var gallery_unlocks = []
 #var gallery_event_unlocks = []
 var CurEvent := "" #event name
@@ -211,7 +210,7 @@ func _ready():
 
 #this func checks relevancy, so already seen sequence is irrelevant
 func check_sequence(id):
-	if state.OldSeqs.has(id):
+	if OldSeqs.has(id):
 		return false
 	if !Explorationdata.scene_sequences.has(id):
 		print("event seq %s not found" % id)
@@ -223,11 +222,13 @@ func check_sequence(id):
 func store_sequence(id):
 	if OldSeqs.has(id): return
 	OldSeqs.push_back(id)
+	emit_signal("old_seqs_updated")
 
 
 func StoreEvent(nm):
 	if OldEvents.has(nm): return
 	OldEvents[nm] = 1#date#for now (2.03.24) "date" mechanics does not work, so it's bool in practice
+	emit_signal("old_events_updated")
 
 
 func ClearEvent():
@@ -445,7 +446,7 @@ func serialize():
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
 	var arr = ['heroidcounter', 'money', 'CurEvent', 'votelinksseen', 'activearea', 'CurrentScreen']#'date', 'daytime', 'newgame', 'itemidcounter', 'mainprogress', 'stashedarea', 'currentutorial', 'screen'
-	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'OldSeqs', 'OldEvents', 'decisions', 'area_save', 'location_unlock', 'scene_restore_data']#'gallery_unlocks', 'party_save', 'activequests', 'completedquests'
+	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'OldSeqs', 'OldEvents', 'decisions', 'area_save', 'location_unlock', 'scene_restore_data', 'pending_scenes', 'discovered_pending_scenes']#'gallery_unlocks', 'party_save', 'activequests', 'completedquests'
 	for prop in arr:
 		tmp[prop] = get(prop)
 	for prop in arr2:
@@ -453,10 +454,6 @@ func serialize():
 #	tmp['effects'] = effects_pool.serialize()
 	if !effects_pool.serialize().empty():
 		print("!!!!!ALERT!!!!! There are effects for save!")
-		
-	tmp["PENDING_SCENES"] = pending_scenes
-	tmp["DISCOVERED_PENDING_SCENES"] = discovered_pending_scenes
-	
 	return tmp
 
 func deserialize(tmp:Dictionary):
@@ -471,6 +468,10 @@ func deserialize(tmp:Dictionary):
 	if !tmp.has('materials_unlocks'):#only for old savegame compatibility
 		print("old save! reset_materials_unlocks!")
 		reset_materials_unlocks()
+	if !tmp.has("pending_scenes"):#only for old savegame compatibility
+		pending_scenes.clear()
+	if !tmp.has("discovered_pending_scenes"):#only for old savegame compatibility
+		discovered_pending_scenes.clear()
 	cleanup()
 #	combatparty.clear()
 	for key in heroes_save.keys():
@@ -519,12 +520,6 @@ func deserialize(tmp:Dictionary):
 		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 	else:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
-	
-	if tmp.has("PENDING_SCENES"):
-		pending_scenes = tmp["PENDING_SCENES"] 
-	if tmp.has("DISCOVERED_PENDING_SCENES"):
-		discovered_pending_scenes = tmp["DISCOVERED_PENDING_SCENES"]
-	
 #	input_handler.map_node.update_map()
 
 func cleanup():
@@ -753,10 +748,3 @@ func add_money(value, log_f = true):
 #	materials = value
 #	oldmaterials = materials.duplicate()
 
-func get_old_seqs() -> Array:
-	emit_signal("old_seqs_accessed")
-	return OldSeqs
-
-func get_old_events() -> Dictionary:
-	emit_signal("old_events_accessed")
-	return OldEvents

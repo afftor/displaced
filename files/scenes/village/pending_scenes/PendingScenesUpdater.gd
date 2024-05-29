@@ -1,7 +1,8 @@
-class_name PendingScenesUpdater extends Node
+#class_name PendingScenesUpdater
+extends Node
 
 
-onready var _scene_unlock_panel = $"../scenes"
+onready var _scene_unlock_panel = get_parent()
 
 var _is_scene_unlock_panel_open = false
 var _seen_scenes_pannels = []
@@ -10,8 +11,9 @@ func _ready():
 	_scene_unlock_panel.connect("hide", self, "update_discovered_pending_scenes")
 	_scene_unlock_panel.connect("scene_pannel_drawn", self, "scene_pannel_seen")
 	
-	state.connect("old_events_accessed", self, "update_pending_scenes")
-	state.connect("old_seqs_accessed", self, "update_pending_scenes")
+	state.connect("old_events_updated", self, "update_pending_scenes")
+	state.connect("old_seqs_updated", self, "update_pending_scenes")
+	globals.connect("scene_changed", self, "update_pending_scenes")
 
 	for character in state.characters:
 		var hero_instance: hero = state.heroes[character]
@@ -59,9 +61,5 @@ func character_friend_points(character: String) -> int:
 	return state.heroes[character].friend_points
 
 func check_is_force_seq_scene(scene_name: String) -> bool:
-	for trigger in Explorationdata.event_triggers:
-		for event in Explorationdata.event_triggers[trigger]:
-			if event["type"] == "force_seq_seen" && event["value"] == scene_name:
-				return true
-			
-	return false
+	var scene_data = Explorationdata.scene_sequences[scene_name]
+	return (scene_data.has("auto_unlocked") and scene_data.auto_unlocked)

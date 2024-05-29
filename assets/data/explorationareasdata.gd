@@ -609,6 +609,7 @@ var scene_sequences = {
 		name = "GALLERY_ERIKA_VINE",
 		descript = "",
 		gallery = true,
+		auto_unlocked = true,#supposed to be unlocked by story
 		preview = 'erika_vine',
 		initiate_reqs = [{type = 'scene_seen', value = 'forest_2'}],
 		unlock_price = {erika = 0},
@@ -727,6 +728,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		forced_content = true,
+		auto_unlocked = true,
 		preview = 'rose_forest',
 		initiate_reqs = [{type = 'scene_seen', value = 'faery_queen_1_b'}],
 		unlock_price = {rose = 200},
@@ -737,6 +739,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		forced_content = true,
+		auto_unlocked = true,
 		preview = 'erika_annet',
 		initiate_reqs = [{type = 'scene_seen', value = 'erika_annet_2_1'}],
 		unlock_price = {erika = 200},

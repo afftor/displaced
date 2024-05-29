@@ -64,7 +64,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		duration = 2,
 		tags = ['burn', 'negative'],
-		icon_text = "end",
+		icon_text = "BUFF_TURN_END",
 		args = [
 			{obj = 'parent_args', param = 0},
 			{obj = 'template', param = 'icon_text'}],
@@ -81,7 +81,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_GET],
 		duration = 2,
 		tags = ['burn', 'negative'],
-		icon_text = "beginning",
+		icon_text = "BUFF_TURN_BEGINNING",
 		args = [
 			{obj = 'parent_args', param = 0},
 			{obj = 'template', param = 'icon_text'}],
@@ -98,7 +98,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		duration = 3,
 		tags = ['poison', 'negative'],
-		icon_text = "Neutral",
+		icon_text = "BUFF_DAM_NEUTRAL",
 		args = [
 			{obj = 'parent_args', param = 0},
 			{obj = 'template', param = 'icon_text'}],
@@ -115,7 +115,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		duration = 3,
 		tags = ['poison', 'negative'],#or may be not
-		icon_text = "Water",
+		icon_text = "BUFF_DAM_WATER",
 		args = [
 			{obj = 'parent_args', param = 0},
 			{obj = 'template', param = 'icon_text'}],
@@ -148,7 +148,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		duration = 2,
 		tags = ['bleed', 'negative'],
-		icon_text = "end",
+		icon_text = "BUFF_TURN_END",
 		args = [
 			{obj = 'parent_args', param = 0},
 			{obj = 'template', param = 'icon_text'}],
@@ -165,7 +165,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_GET],
 		duration = 2,
 		tags = ['bleed', 'negative'],
-		icon_text = "beginning",
+		icon_text = "BUFF_TURN_BEGINNING",
 		args = [
 			{obj = 'parent_args', param = 0},
 			{obj = 'template', param = 'icon_text'}],
@@ -3986,21 +3986,21 @@ var buffs = {
 	b_bleed = { 
 		icon = "res://assets/images/iconsskills/arron_3.png", 
 		description = "BUFF_BLEED",
-		args = [{obj = 'parent_args', param = 1}],
+		args = [{obj = 'parent_args', param = 1, translate = true}],
 		t_name = 'icon_bleed',
 		bonuseffect = 'duration'
 	},
 	b_poison = {
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "BUFF_POISON",
-		args = [{obj = 'parent_args', param = 1}],
+		args = [{obj = 'parent_args', param = 1, translate = true}],
 		t_name = 'icon_poison',
 		bonuseffect = 'duration'
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
 		description = "BUFF_BURN",
-		args = [{obj = 'parent_args', param = 1}],
+		args = [{obj = 'parent_args', param = 1, translate = true}],
 		t_name = 'icon_burn',
 		bonuseffect = 'duration'
 	},
