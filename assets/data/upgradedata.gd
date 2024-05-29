@@ -264,7 +264,7 @@ func get_refined_bonusdescript(upgrade :String, level :int) ->String:
 		if i == 0:
 			pass
 		elif i == char_list.size()-1:
-			char_str += " and "
+			char_str += " %s " % tr("AND")
 		else:
 			char_str += ", "
 		char_str += char_list[i]

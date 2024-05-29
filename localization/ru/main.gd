@@ -266,6 +266,7 @@ var TranslationDict = {
 	GAMEOVER = 'Гамовер',
 	PRESSANYKEY = "Жми любую клавишу",
 	ERROR = "ошибка",
+	AND = "и",
 
 	BASEDAMAGETYPE = "Тип базовой атаки",
 	BASEDAMAGE = "Базовый урон",
@@ -675,6 +676,10 @@ var TranslationDict = {
 	BUFF_GUSTOFWIND_DEBUFF = " %s%%",
 	BUFF_BLOODLUST = " %s",
 	BUFF_RAGE = " %s",
+	BUFF_TURN_BEGINNING = "начале",
+	BUFF_TURN_END = "конце",
+	BUFF_DAM_NEUTRAL = "Нейтральное",
+	BUFF_DAM_WATER = "Водяное",
 	
 	EF_DEFENCE = "Защита",
 	EF_BURN = "Горение",

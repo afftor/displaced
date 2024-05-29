@@ -54,17 +54,18 @@ func calculate_args():
 			match arg.obj:
 				'self':
 					args.push_back(self_args[arg.param])
-					pass
 				'parent':
 					var par = effects_pool.get_effect_by_id(parent)
 					args.push_back(par.get(arg.param))
-					pass
 				'template':
 					args.push_back(template[arg.param])
 				'parent_args':
 					var par
 					par = effects_pool.get_effect_by_id(parent)
 					args.push_back(par.get_arg(int(arg.param)))
+			if arg.has("translate") and arg.translate:
+				var num = args.size()-1
+				args[num] = tr(args[num])
 
 func get_duration():
 	var par = effects_pool.get_effect_by_id(parent)
