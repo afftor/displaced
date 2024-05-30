@@ -1287,6 +1287,8 @@ func fill_up_level_up(character):
 			var skill_name = skill_planks[skill_num].get_node("SkillText")
 			skill_name.text = tr(skill_info.name)
 			skill_planks[skill_num].visible = true
+			if key == 'termination':
+				TutorialCore.start_tut('ultimate')
 			if skill_num == 1:#unfortunately for this time we can't have more than 2 skills at lvl-up
 				break
 

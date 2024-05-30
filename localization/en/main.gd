@@ -1097,6 +1097,7 @@ var TranslationDict = {
 	TUTORIAL_EXPLORATION_MENU = "Exclamation mark on buildings and locations indicates main plot's events and missions.\n\nLeave village, then select location and select mission you will be attending. The game will autosave befor each combat in mission. You can stop mission for a time, or abandon it to reset progress in combats. You can replay your old missions for materials and experience.",
 	TUTORIAL_QUEST_CHARACTER = "People occasionally came to Townhall in search of your aid. Select Townhall to see their requests.",
 	TUTORIAL_FORGE = "In forge you can craft and upgrade weapons and armor. It will require some materials and gold. Also maximum level of equipment is limited by level of forge itself.\n\nWhile armor upgrade provides resistance increase, weapon determines damage type for basic Attack, and most importantly augments character's skills. With higher level more skills are effected and old augmentations improves. Each character can choose between two different weapons.",
+	TUTORIAL_ULTIMATE = "You've received your first ultimate skill!\nUltimate skills are far stronger than normal, but adheres to specific rule. Character must fill up the 'ultimeter' gauge befor any ultimate skill can be used. Attack, incoming damage or cleared wave of enemies builds up the ultimeter gauge.",
 	
 	CREDITS_TEXT = "[center]Place holder for credits[/center]",
 	CREDITS_BUTTON = "Thanks",

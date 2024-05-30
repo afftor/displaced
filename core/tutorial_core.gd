@@ -55,6 +55,10 @@ var tutorials_data = {
 		no_auto_close = true,
 		message = "TUTORIAL_FORGE"
 	},
+	ultimate = {
+		no_auto_close = true,
+		message = "TUTORIAL_ULTIMATE"
+	},
 }
 
 var scenarios = {
