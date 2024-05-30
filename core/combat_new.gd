@@ -1126,6 +1126,7 @@ func victory():
 		if !i.unlocked:
 			i.baseexp += ceil(rewardsdict.xp)
 			continue
+		i.process_event(variables.TR_VICTORY)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer)
 #		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)
