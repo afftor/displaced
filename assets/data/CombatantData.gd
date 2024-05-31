@@ -28,6 +28,7 @@ var charlist = {
 		bonusres = ['slash', 'light', 'fire', 'earth'],
 		armorbase = {1: 10, 2: 20, 3: 30, 4: 40},
 		armorbonus = {1: 20, 2: 40, 3: 60, 4: 80},
+		#mind, that tutorial considers termination to be first opened ultimate skill
 		skilllist = {'fencing':1, 'parry':3, 'lunge':4, 'sword_mastery':8, 'sideslash':10, 'termination':10, 'swift_s':14, 'smoke_s':19},
 		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")
 	},

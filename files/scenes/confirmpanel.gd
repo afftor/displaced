@@ -22,6 +22,8 @@ func show_confirm(TargetNode, ConfirmFunction, Text, Confirm = '', Cancel = ''):
 	confirm_btn.show()
 	if !Confirm.empty():
 		confirm_btn.get_node("Label").text = Confirm
+	else:
+		confirm_btn.get_node("Label").text = tr("CONFIRM")
 	if !Cancel.empty():
 		cancel_btn.get_node("Label").text = Cancel
 	else:

@@ -818,6 +818,7 @@ var TranslationDict = {
 	TUTORIAL_EXPLORATION_MENU = "",
 	TUTORIAL_QUEST_CHARACTER = "",
 	TUTORIAL_FORGE = "",
+	TUTORIAL_ULTIMATE = "",
 	
 	CREDITS_TEXT = "[center][/center]",
 	CREDITS_BUTTON = "Спасибки",

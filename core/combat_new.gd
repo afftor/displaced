@@ -17,7 +17,8 @@ var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false
 
 var CombatAnimations = preload("res://core/CombatAnimations_new.gd").new()
 onready var gui_node = $gui
-onready var resist_tooltip = $ResistToolTipCont/ResistToolTip
+onready var resist_tooltip = $ResistToolTipLayer/Container/ResistToolTip
+var hp_bar_ontop
 
 var debug_btn_on = false
 var debug_run = false
@@ -1050,6 +1051,9 @@ var rewardsdict
 func victory():
 	if fightover: return
 	fightover = true
+	for ch in state.characters:
+		var i = state.heroes[ch]
+		if i.unlocked: i.process_event(variables.TR_VICTORY)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(cursors.default)
@@ -1287,6 +1291,8 @@ func fill_up_level_up(character):
 			var skill_name = skill_planks[skill_num].get_node("SkillText")
 			skill_name.text = tr(skill_info.name)
 			skill_planks[skill_num].visible = true
+			if key == 'termination':
+				TutorialCore.start_tut('ultimate')
 			if skill_num == 1:#unfortunately for this time we can't have more than 2 skills at lvl-up
 				break
 
@@ -1733,6 +1739,7 @@ func FighterMouseOverFinish(position):
 
 func FighterPress(position):
 	if allowaction == false : return
+	hide_resist_tooltip()
 	match cur_state:
 		T_AUTO:
 			try_select_player_char_by_pos(position)
@@ -2284,10 +2291,25 @@ func show_resist_tooltip(pos :int):
 		- container.rect_size.x * 0.5)
 	if pos == 9:#need to do something with this porn
 		container.rect_position.x -= 30
+	
+	#showing HP bar here is not logical, but more straightforward and thus bugproof
+	var layer = container.get_parent()
+	try_hide_hp_bar_ontop()
+	hp_bar_ontop = fighter.displaynode.get_HPbar_clone()
+	#for some reason add_child() here moves node's position a bit, have to correct it manually
+	var temp_global_pos = hp_bar_ontop.rect_position
+	layer.add_child(hp_bar_ontop)
+	hp_bar_ontop.rect_position = temp_global_pos
 
 func hide_resist_tooltip():
 	resist_tooltip_for_pos = -1
 	resist_tooltip.hide()
+	try_hide_hp_bar_ontop()
+
+func try_hide_hp_bar_ontop():
+	if hp_bar_ontop == null: return
+	hp_bar_ontop.queue_free()
+	hp_bar_ontop = null
 
 func hide_resist_tooltip_if_my(pos :int):
 	if resist_tooltip_for_pos == pos:

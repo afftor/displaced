@@ -1033,7 +1033,8 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'hitrate', value = 20},
+			{type = 'stat_mul', stat = 'hpmax', value = 1.20},
+#			{type = 'stat_add', stat = 'hitrate', value = 20},#old bonus, delate with time
 			{type = 'stat_add_p', stat = 'damage', value = 0.20},
 			],
 		buffs = [{ 

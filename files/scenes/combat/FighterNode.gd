@@ -145,13 +145,13 @@ func setup_character(ch):
 	for n in panel_node.get_children():
 		n.visible = true
 	if fighter is hero:
-		if fighter.has_ult():
+		var has_ult = fighter.has_ult()
+		panel_node.get_node('ProgressUlt').visible = has_ult
+		panel_node2.get_node('ProgressUlt').visible = has_ult
+		if has_ult:
 			ult = fighter.get_ultimeter()
 			panel_node.get_node('ProgressUlt').value = ult
 			panel_node2.get_node('ProgressUlt').value = ult
-		else:
-			panel_node.get_node('ProgressUlt').hide()
-			panel_node2.get_node('ProgressUlt').hide()
 		panel_node.get_node('TextureRect').texture = fighter.portrait()
 		panel_node2.get_node('ProgressBar').max_value = fighter.get_stat('hpmax')
 		panel_node2.get_node('ProgressBar').value = hp
@@ -601,3 +601,7 @@ func set_sprite_2(new_tex :Texture):
 func set_sprite_1(new_tex :Texture):
 	set_sprite(new_tex, $sprite)
 
+func get_HPbar_clone() ->Node:
+	var hp_bar_clone = hp_bar.duplicate()
+	hp_bar_clone.rect_position = hp_bar.rect_global_position
+	return hp_bar_clone
