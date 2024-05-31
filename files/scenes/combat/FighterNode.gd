@@ -601,3 +601,7 @@ func set_sprite_2(new_tex :Texture):
 func set_sprite_1(new_tex :Texture):
 	set_sprite(new_tex, $sprite)
 
+func get_HPbar_clone() ->Node:
+	var hp_bar_clone = hp_bar.duplicate()
+	hp_bar_clone.rect_position = hp_bar.rect_global_position
+	return hp_bar_clone

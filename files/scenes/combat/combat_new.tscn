@@ -477,14 +477,18 @@ margin_right = 932.0
 margin_bottom = 665.0
 bbcode_enabled = true
 
-[node name="ResistToolTipCont" type="CenterContainer" parent="."]
+[node name="ResistToolTipLayer" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Container" type="CenterContainer" parent="ResistToolTipLayer"]
 margin_left = 288.0
 margin_top = 688.0
 margin_right = 788.0
-margin_bottom = 805.0
+margin_bottom = 835.0
 mouse_filter = 2
 
-[node name="ResistToolTip" parent="ResistToolTipCont" instance=ExtResource( 30 )]
+[node name="ResistToolTip" parent="ResistToolTipLayer/Container" instance=ExtResource( 30 )]
 margin_left = 173.0
 margin_right = 326.0
 margin_bottom = 147.0
