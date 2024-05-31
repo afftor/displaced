@@ -1050,6 +1050,9 @@ var rewardsdict
 func victory():
 	if fightover: return
 	fightover = true
+	for ch in state.characters:
+		var i = state.heroes[ch]
+		if i.unlocked: i.process_event(variables.TR_VICTORY)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(cursors.default)
@@ -1126,7 +1129,6 @@ func victory():
 		if !i.unlocked:
 			i.baseexp += ceil(rewardsdict.xp)
 			continue
-		i.process_event(variables.TR_VICTORY)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer)
 #		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)
