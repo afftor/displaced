@@ -461,6 +461,10 @@ func select_actor():
 		newturn()
 #	elif get_avail_char_number('enemy') == 0:
 	elif nextenemy == 10:
+		for ch in enemygroup.values():
+			if ch.defeated: continue
+			ch.process_event(variables.TR_TURN_F)
+			ch.rebuildbuffs()
 		newturn()
 	
 	if get_avail_char_number('ally') > 0:
@@ -475,6 +479,11 @@ func select_actor():
 #		cur_state = T_CHARSELECT
 #		self.charselect = true
 	else:
+		if is_player_turn:
+			for ch in playergroup.values():
+				if ch.defeated: continue
+				ch.process_event(variables.TR_TURN_F)
+				ch.rebuildbuffs()
 		is_player_turn = false
 		enemy_turn(nextenemy)
 
@@ -514,10 +523,10 @@ func player_turn(pos):
 	
 	if !selected_character.can_act():
 		selected_character.acted = true
-		selected_character.process_event(variables.TR_TURN_F)
+#		selected_character.process_event(variables.TR_TURN_F)
+#		selected_character.rebuildbuffs()
 		if selected_character.displaynode:
 			selected_character.displaynode.process_disable()
-		selected_character.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	allowaction = true
@@ -564,8 +573,8 @@ func enemy_turn(pos):
 	if !fighter.can_act():
 		fighter.acted = true
 		#combatlogadd("%s cannot act" % fighter.name)
-		fighter.process_event(variables.TR_TURN_F)
-		fighter.rebuildbuffs()
+#		fighter.process_event(variables.TR_TURN_F)
+#		fighter.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	#Selecting active skill
@@ -2106,7 +2115,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
 		if caster.hp > 0:
-			caster.process_event(variables.TR_TURN_F)
+#			caster.process_event(variables.TR_TURN_F)
 			if caster.displaynode:
 				caster.displaynode.process_disable()
 #				caster.rebuildbuffs()#update_buffs() at the end should cover this
