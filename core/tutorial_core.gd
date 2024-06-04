@@ -141,8 +141,7 @@ func connect_to_button(id :String, obj :Node, method :String) ->void:
 
 func signal_resender(_needles_arg, obj :Node, method :String):
 	if obj == null:
-		#if this happens, it is bug. Need to find and fix it!
-		print("ALERT! tutorial bug. Find me!")
+		#normaly happens when tutorial closed befor pressing button
 		return
 	obj.call(method)
 
