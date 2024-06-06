@@ -730,6 +730,7 @@ func LoadGame(file_name):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.clear_closeable_windows()
+	TutorialCore.clear_buttons()
 	CurrentScene.queue_free()
 	ChangeScene('map');
 	yield(self, "scene_changed")

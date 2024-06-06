@@ -49,6 +49,7 @@ func newgame():
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 
+	TutorialCore.clear_buttons()
 	state.revert()
 #	state.newgame = true
 	state._ready()
