@@ -158,13 +158,13 @@ func setup_character(ch):
 #		connect("signal_RMB_release", input_handler.combat_node, 'HideFighterStats')
 	visible = (position != null)
 	
-	if fighter is hero:
-		hp_bar.hide()
-	else:
-		hp_bar.show()
-		hp_bar.max_value = fighter.get_stat('hpmax')
-		hp_bar.value = hp
-#		center_node_on_sprite(hp_bar)
+#	if fighter is hero:
+#		hp_bar.hide()
+#	else:
+	hp_bar.show()
+	hp_bar.max_value = fighter.get_stat('hpmax')
+	hp_bar.value = hp
+#	center_node_on_sprite(hp_bar)
 	update_hp_label(fighter.hp)
 	
 #	center_node_on_sprite($Buffs)

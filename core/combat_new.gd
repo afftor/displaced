@@ -81,9 +81,9 @@ onready var battlefieldpositions = {
 
 #player party should be placed onto 1-3 positions
 var positions = {
-	1: Vector2(403, 124),
-	2: Vector2(259, 323),
-	3: Vector2(192, 532),
+	1: Vector2(453, 124),#403, 124
+	2: Vector2(309, 323),#259, 323
+	3: Vector2(172, 510),#192, 532
 	4: Vector2(1085, 55),
 	5: Vector2(1170, 325),
 	6: Vector2(1255, 595),
