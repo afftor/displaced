@@ -96,7 +96,7 @@ func open_explore():
 	$ExplorationSelect/about/level.text = ""
 	$ExplorationSelect/about/progress.visible = false
 	input_handler.ClearContainer(arealist, ['Button'])
-	var num_missions = 0
+#	var num_missions = 0
 	if !Explorationdata.locations.has(location): #mission case
 		var areadata = Explorationdata.areas[area]
 		var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
@@ -106,18 +106,19 @@ func open_explore():
 		panel.set_meta('area', area)
 		panel.connect('pressed', self, 'select_area', [area])
 		panel.get_node('Completed').visible = false
-		num_missions += 1
+#		num_missions += 1
 	else: #general case
 		locname.text = tr(Explorationdata.locations[location].name)
 		locdesc.bbcode_text = tr(Explorationdata.locations[location].descript)
 		var completed_missions = []
 		var incompleted_missions = []
-		for a in Explorationdata.locations[location].missions:
-			if !state.areaprogress[a].unlocked: continue
-			if state.areaprogress[a].completed:
-				completed_missions.append(a)
+		for a in range(Explorationdata.locations[location].missions.size()-1,-1,-1):
+			var mission_id = Explorationdata.locations[location].missions[a]
+			if !state.areaprogress[mission_id].unlocked: continue
+			if state.areaprogress[mission_id].completed:
+				completed_missions.append(mission_id)
 			else:
-				incompleted_missions.append(a)
+				incompleted_missions.append(mission_id)
 		for a in incompleted_missions + completed_missions:
 			var areadata = Explorationdata.areas[a]
 			var panel = input_handler.DuplicateContainerTemplate(arealist, 'Button')
@@ -125,7 +126,7 @@ func open_explore():
 			panel.set_meta('area', a)
 			panel.connect('pressed', self, 'select_area', [a])
 			panel.get_node('Completed').visible = state.areaprogress[a].completed
-			num_missions += 1
+#			num_missions += 1
 			if area:
 				panel.pressed = (area == a)
 			if state.activearea:
