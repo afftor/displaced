@@ -2,7 +2,9 @@ extends Node
 
 #defoult struct for button {
 #	obj = Node, sig = String,
-#	parent_obj = Node} this is for dynamic buttons.
+#	sig_obj = Node, #if signal should come from another object
+#	conditions = Array, #if signal carries argument that needs filtering 
+#	parent_obj = Node} #this is for dynamic buttons.
 #parent_obj must have get_tutorial_button(button_name :String)->Node implementation
 var tutorial_buttons = {
 	skill = {},
@@ -73,36 +75,63 @@ func load_scene_if_notyet() ->void:
 	if scene_tutorial != null : return
 	scene_tutorial = load("res://files/scenes/tutorial.tscn")
 
-func obj_is_button(obj :Node, sig :String) ->bool:
+func obj_has_rect(obj :Node) ->bool:
 	return (obj.get('rect_global_position') != null
-		and obj.get('rect_size') != null
-		and obj.has_signal(sig))
+		and obj.get('rect_size') != null)
 
-func register_static_button(id :String, obj :Node, sig :String) ->void:
+func validate_tutorial_button(id :String):
+	var button = tutorial_buttons[id]
+	button['ready'] = false
+	if !button.has('obj') or !button.has('sig'):
+		return
+	var sig_obj = button['obj']
+	if button.has('sig_obj'):
+		sig_obj = button['sig_obj']
+	assert(sig_obj.has_signal(button['sig']), "in tutorial_core valid button has no signal")
+	button['ready'] = true
+
+func register_static_button_base(id :String, obj :Node) ->void:
 	assert(tutorial_buttons.has(id), "tutorial_core is tring to register nonexistent button")
-	assert(obj_is_button(obj, sig), "tutorial_core is tring to register nonbutton as a button")
+	assert(obj_has_rect(obj), "tutorial_core is tring to register button_base with no rect")
 	var button = tutorial_buttons[id]
 	button['obj'] = obj
+	validate_tutorial_button(id)
+
+func register_button_sig(id :String, sig :String, sig_obj :Node = null, conditions :Array = []) ->void:
+	assert(tutorial_buttons.has(id), "tutorial_core is tring to register nonexistent button")
+	assert((sig_obj == null or sig_obj.has_signal(sig)), "tutorial_core is tring to register nonexistent signal")
+	var button = tutorial_buttons[id]
 	button['sig'] = sig
-	button['ready'] = true
+	if sig_obj:
+		button['sig_obj'] = sig_obj
+	if !conditions.empty():
+		#for now there may be only one condition
+		button['conditions'] = conditions
+	validate_tutorial_button(id)
+
+func register_static_button(id :String, obj :Node, sig :String) ->void:
+	register_static_button_base(id, obj)
+	register_button_sig(id, sig)
 
 func register_dynamic_button(id :String, obj :Node, sig :String) ->void:
 	assert(tutorial_buttons.has(id), "tutorial_core is tring to register nonexistent button")
 	assert(obj.has_method('get_tutorial_button'), "tutorial_core is tring to register unacceptable dynamic button")
 	var button = tutorial_buttons[id]
 	button['parent_obj'] = obj
-	button['sig'] = sig
+	register_button_sig(id, sig)
 	button['ready'] = false
 
+func clear_buttons():
+	for btn in tutorial_buttons.values():
+		btn.clear()
 
 func refresh_dynamic_button(id :String) ->bool:#true if successfully refreshed
 	assert(tutorial_buttons.has(id), "tutorial_core is tring to refresh nonexistent button")
 	var button = tutorial_buttons[id]
 	if !button.has('parent_obj'): return true#not dynamic button
-	button['obj'] = button.parent_obj.get_tutorial_button(id)
-	if button['obj'] == null: return false
-	assert(obj_is_button(button.obj, button.sig), "in tutorial_core dynamic button returns nonbutton")
-	button['ready'] = true
+	var obj = button.parent_obj.get_tutorial_button(id)
+	if obj == null: return false
+	register_static_button_base(id, obj)
 	return true
 
 func check_button_ready(id :String):
@@ -120,31 +149,42 @@ func get_button_size(id :String) ->Vector2:
 	check_button_ready(id)
 	return tutorial_buttons[id].obj.rect_size
 
+func get_signaller(id :String) ->Node:
+	var button = tutorial_buttons[id]
+	if button.has('sig_obj'):
+		return button.sig_obj
+	else:
+		return button.obj
+
 func connect_to_button(id :String, obj :Node, method :String) ->void:
 	check_button_ready(id)
 	var button = tutorial_buttons[id]
 	var args_num = -1
-	var signals_list = button.obj.get_signal_list()
+	var signaller = get_signaller(id)
+	var signals_list = signaller.get_signal_list()
 	for sig in signals_list:
 		if sig.name == button.sig:
 			args_num = sig.args.size()
 			break
+	#quite stupid stuff with signals, that can carry an arguments, which is hard to predict
+	#for now we can work only with one argument
+	#maybe it should be refactored somehow
 	assert(args_num > -1, "tutorial_core connect_to_button: args_num not found")
 	assert(args_num < 2, "tutorial_core connect_to_button: too many args (%s)" % args_num)
-	#quite stupid stuff with signals, that can carry an argument, which is hard to predict
-	#it's better to find some another way do deal with it
 	if args_num == 0:
-		button.obj.connect(button.sig, obj, method, [], CONNECT_ONESHOT)
+		signaller.connect(button.sig, obj, method, [], CONNECT_ONESHOT)
 	elif args_num == 1:
-		button.obj.connect(button.sig, self, 'signal_resender', [obj, method], CONNECT_ONESHOT)
+		signaller.connect(button.sig, self, 'signal_filter', [obj, method, id])
 #-----------
 
-func signal_resender(_needles_arg, obj :Node, method :String):
-	if obj == null:
-		#if this happens, it is bug. Need to find and fix it!
-		print("ALERT! tutorial bug. Find me!")
-		return
-	obj.call(method)
+func signal_filter(signal_arg, obj :Node, method :String, btn_id: String):
+	var button = tutorial_buttons[btn_id]
+	if obj != null:#can normaly be null when tutorial closed befor pressing button
+		if button.has('conditions') and signal_arg != button.conditions[0]:
+			return
+		obj.call(method)
+	var signaller = get_signaller(btn_id)
+	signaller.disconnect(button.sig, self, 'signal_filter')
 
 func start_tut(id :String) ->void:
 	assert(tutorials_data.has(id), "tutorial_core is tring to start nonexistent tutorial")

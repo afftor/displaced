@@ -165,9 +165,9 @@ func unlock_area(area_code):
 
 func start_area(area_code, autolevel = false):
 	activearea = area_code
-	if !areaprogress[area_code].unlocked:
-		print("force start locked mission %s" % area_code)
-		areaprogress[area_code].unlocked = true
+#	if !areaprogress[area_code].unlocked:
+#		print("force start locked mission %s" % area_code)
+	areaprogress[area_code].unlocked = true
 #	areaprogress[area_code].stage = 1
 	if autolevel:
 		areaprogress[area_code].level = heroes['arron'].level
@@ -262,7 +262,7 @@ func store_choice(choice, option):
 		print ("warning - choice already stored")
 		return
 	OldEvents[line] = option
-	print("choice stored - %s %d" %[line, option])
+#	print("choice stored - %s %d" %[line, option])
 
 
 func unlock_path(path, is_abg):

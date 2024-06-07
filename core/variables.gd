@@ -17,7 +17,8 @@ enum {TR_CAST,#on skill cast, befor even target refining and any true actions
 	TR_DEF,#same moment, but for target
 	TR_TURN_S,#on new turn start for every players's chars and enemy in combat, except for defeated
 	TR_TURN_GET,#on char gets to make turn (to act)
-	TR_TURN_F,#on char finishing turn (action), if still alive. Takes place even if char can't act in this turn for some reason
+	#TR_TURN_F old concept: on char finishing turn (action), if still alive. Takes place even if char can't act in this turn for some reason
+	TR_TURN_F,#on all chars of one side (player or enemies) has finished their turn (action). Occurs for alive chars of that side (excluding reserve)
 	TR_DEATH,#on char's death
 	TR_KILL,#occurs for caster on death of each target. Occurs also for metaskill, but only once, even if it killed multiple targets
 	TR_DMG,#on char receiving any actual damage (hp reduction)
@@ -38,7 +39,7 @@ enum {TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
 enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER};
 enum {SEQ_NONE, SEQ_SCENE_STARTED}
 enum {CURTAIN_BATTLE, CURTAIN_SCENE}
-enum {DN_NONE, DN_HANDLED, DN_SPRITE}
+enum {DN_NONE, DN_SPRITE, DN_IN_ME}
 #Heroes
 var MaxLevel = 40
 var StartTraitPoints = 0

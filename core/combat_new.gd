@@ -81,9 +81,9 @@ onready var battlefieldpositions = {
 
 #player party should be placed onto 1-3 positions
 var positions = {
-	1: Vector2(403, 124),
-	2: Vector2(259, 323),
-	3: Vector2(192, 532),
+	1: Vector2(453, 124),#403, 124
+	2: Vector2(309, 323),#259, 323
+	3: Vector2(172, 510),#192, 532
 	4: Vector2(1085, 55),
 	5: Vector2(1170, 325),
 	6: Vector2(1255, 595),
@@ -113,18 +113,20 @@ var sounds = {
 enum {
 # T_CHARSELECT,
  T_SKILLSUPPORT, #support skill selected - only targeting mode
- T_SKILLATTACK, #attacking skill selected - T_CHARSELECT + T_SKILLSUPPORT
- T_OVERATTACK, #over possible target for attack
- T_OVERSUPPORT, #over possible target for suuport
+ T_SKILLATTACK, #attacking skill selected - T_CHARSELECT + T_SKILLATTACK
+# T_OVERATTACK, #over possible target for attack
+# T_OVERSUPPORT, #over possible target for suuport
 # T_OVERATTACKALLY,#seems not working now #over friendly char while having attacking skill selected
- T_AUTO #animations active
+# T_AUTO #animations active
+ T_NONE#no skill selected
 }
-var cur_state = T_AUTO
+var cur_state = T_NONE
 
 signal combat_started
 signal turn_started
 signal combat_ended
 signal player_ready
+signal fighter_pressed(fighter_code)#for now used only for tutorial, which is redundant. Refactor!
 #feel free to add state signals per need
 
 var is_player_turn = false
@@ -171,10 +173,10 @@ func _ready():
 	$Rewards/AdvanceButton.connect("pressed",self,'FinishCombat', [true, true])
 	$LevelUp/panel/CloseButton.connect("pressed",self,'on_level_up_close')
 	
-	TutorialCore.register_static_button("enemy",
-		battlefieldpositions[4], 'signal_LMB')
-	TutorialCore.register_static_button("character",
-		battlefieldpositions['rose'], 'signal_LMB')
+	TutorialCore.register_static_button_base("enemy", battlefieldpositions[4])
+	TutorialCore.register_button_sig("enemy", "fighter_pressed", self, ["elvenrat"])
+	TutorialCore.register_static_button_base("character", battlefieldpositions['rose'])
+	TutorialCore.register_button_sig("character", "fighter_pressed", self, ["rose"])
 
 
 #debug section---------------------
@@ -461,6 +463,10 @@ func select_actor():
 		newturn()
 #	elif get_avail_char_number('enemy') == 0:
 	elif nextenemy == 10:
+		for ch in enemygroup.values():
+			if ch.defeated: continue
+			ch.process_event(variables.TR_TURN_F)
+			ch.rebuildbuffs()
 		newturn()
 	
 	if get_avail_char_number('ally') > 0:
@@ -470,11 +476,16 @@ func select_actor():
 		if CombatAnimations.is_busy:
 			yield(CombatAnimations, 'alleffectsfinished')
 #		allowaction = true
-		cur_state = T_AUTO
+		cur_state = T_NONE
 		autoselect_player_char()
 #		cur_state = T_CHARSELECT
 #		self.charselect = true
 	else:
+		if is_player_turn:
+			for ch in playergroup.values():
+				if ch.defeated: continue
+				ch.process_event(variables.TR_TURN_F)
+				ch.rebuildbuffs()
 		is_player_turn = false
 		enemy_turn(nextenemy)
 
@@ -514,10 +525,10 @@ func player_turn(pos):
 	
 	if !selected_character.can_act():
 		selected_character.acted = true
-		selected_character.process_event(variables.TR_TURN_F)
+#		selected_character.process_event(variables.TR_TURN_F)
+#		selected_character.rebuildbuffs()
 		if selected_character.displaynode:
 			selected_character.displaynode.process_disable()
-		selected_character.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	allowaction = true
@@ -564,8 +575,8 @@ func enemy_turn(pos):
 	if !fighter.can_act():
 		fighter.acted = true
 		#combatlogadd("%s cannot act" % fighter.name)
-		fighter.process_event(variables.TR_TURN_F)
-		fighter.rebuildbuffs()
+#		fighter.process_event(variables.TR_TURN_F)
+#		fighter.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	#Selecting active skill
@@ -636,13 +647,14 @@ func SelectSkill(skill):
 	else:
 		cur_state = T_SKILLATTACK
 	gui_node.build_selected_skill(skill)
+	process_cur_displaynode()
 
 func unselect_skill():
 	Input.set_custom_mouse_cursor(cursors.default)
 	activeaction = null
 	ClearSkillTargets()
 	reset_all_highlight()
-	cur_state = T_AUTO
+	cur_state = T_NONE
 	gui_node.unbild_selection()
 
 #helpers
@@ -1425,6 +1437,8 @@ func UpdateSkillTargets(caster):
 	mark_skill_targets()
 
 func mark_skill_targets():
+	if allowedtargets.enemy.empty() and allowedtargets.ally.empty():
+		return
 	for pos in range(4,10):
 		if battlefield[pos] != null:
 			battlefield[pos].displaynode.mark_unreachable()
@@ -1434,7 +1448,9 @@ func mark_skill_targets():
 func reset_all_highlight():
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
-	activecharacter.displaynode.highlight_active()
+	if activecharacter:
+		activecharacter.displaynode.highlight_active()
+	cur_displaynode = null
 
 func ClearSkillTargets():
 	allowedtargets.ally.clear()
@@ -1652,148 +1668,52 @@ func FighterMouseOver(position):
 	show_resist_tooltip(position)
 	var fighter = battlefield[position]
 	var node = fighter.displaynode
-	match cur_state:
-		T_AUTO:
-			return
-#		T_CHARSELECT:
-#			if fighter.combatgroup == 'enemy': return
-#			if fighter.defeated : return
-#			if fighter.acted: return
-#			node.highlight_hover()
-		T_SKILLSUPPORT:
-			if position in allowedtargets.ally:
-				Input.set_custom_mouse_cursor(cursors.support)
-				var cur_targets = []
-#				if swapchar != null:
-#					cur_targets = [fighter]
-#				else:
-				cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
-				for ch in cur_targets:
-					ch.displaynode.highlight_target_ally()
-				cur_state = T_OVERSUPPORT
-				return
-			#probably impossible
-#			if position in allowedtargets.enemy:
-#				Input.set_custom_mouse_cursor(cursors.attack)
-#				reset_all_highlight()
-#				var cur_targets = []
-#				cur_targets = CalculateTargets(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
-#				for ch in cur_targets:
-#					ch.displaynode.highlight_target_enemy()
-#				cur_state = T_OVERSUPPORT
-#				return
-		T_SKILLATTACK:
-			#probably impossible
-#			if position in allowedtargets.ally:
-#				for pos in allowedtargets.ally + allowedtargets.enemy:
-#					battlefield[pos].displaynode.stop_highlight()
-#				if fighter.defeated : return
-#				if fighter.acted: return
-#				node.highlight_hover()
-#				cur_state = T_OVERATTACKALLY
-#				return
-			if position in allowedtargets.enemy:
-				Input.set_custom_mouse_cursor(cursors.attack)
-				var cur_targets = []
-				cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
-				for ch in cur_targets:
-					ch.displaynode.highlight_target_enemy()
-				cur_state = T_OVERATTACK
-				return
-		T_OVERSUPPORT, T_OVERATTACK:#T_OVERATTACKALLY
-			print("warning - mouseover while targets highlighted")
+	if cur_state == T_NONE: return
+	
+	var cursor
+	var highlight_func
+	if cur_state == T_SKILLSUPPORT and position in allowedtargets.ally:
+		cursor = cursors.support
+		highlight_func = "highlight_target_ally"
+	elif cur_state == T_SKILLATTACK and position in allowedtargets.enemy:
+		cursor = cursors.attack
+		highlight_func = "highlight_target_enemy"
+	if !highlight_func: return
+	
+	Input.set_custom_mouse_cursor(cursor)
+	var cur_targets = []
+	cur_targets = CalculateTargetsHighlight(Skillsdata.patch_skill(activeaction, activecharacter), activecharacter, position)
+	for ch in cur_targets:
+		ch.displaynode.call(highlight_func)
 
 
-func FighterMouseOverFinish(position):
-	if position == null: return
+func FighterMouseOverFinish():
 	hide_resist_tooltip()
 	Input.set_custom_mouse_cursor(cursors.default)
-#	var fighter = battlefield[position]
-#	var node = fighter.displaynode
-	match cur_state:
-		T_AUTO:
-			return
-#		T_CHARSELECT:
-#			if fighter.combatgroup == 'enemy': return
-#			if fighter.defeated : return
-#			if fighter.acted: return
-#			node.stop_highlight()
-		T_OVERATTACK, T_OVERSUPPORT:
-			reset_all_highlight()
-			mark_skill_targets()
-			if cur_state == T_OVERATTACK:
-				cur_state = T_SKILLATTACK
-			else:
-				cur_state = T_SKILLSUPPORT
-			return
-#		T_OVERATTACKALLY:
-#			mark_skill_targets()
-#			cur_state = T_SKILLATTACK
-#			return
-		T_SKILLSUPPORT, T_SKILLATTACK:
-			if !(position in allowedtargets.ally + allowedtargets.enemy):
-				return
-			print("warning - mouseover finish while targets not highlighted")
-
+	reset_all_highlight()
+	mark_skill_targets()
 
 
 func FighterPress(position):
 	if allowaction == false : return
 	hide_resist_tooltip()
-	match cur_state:
-		T_AUTO:
+	if cur_state == T_NONE:
+		try_select_player_char_by_pos(position)
+		return
+	
+	var do_use_skill = false
+	if cur_state == T_SKILLATTACK:
+		if allowedtargets.enemy.has(position):
+			activecharacter.skills_autoselect.push_back(activeaction)
+			do_use_skill = true
+		else:
 			try_select_player_char_by_pos(position)
 			return
-#		T_CHARSELECT:
-#			if position > 3:
-#				return
-#			if battlefield[position] == null: return
-#			if battlefield[position].acted: return
-#			if battlefield[position].defeated: return
-#			cur_state = T_AUTO
-#			player_turn(position)
-#			return
-		T_OVERATTACK, T_OVERSUPPORT:
-			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
-				cur_state = T_AUTO
-#				if swapchar != null:
-#					activecharacter.acted = true #idk why active and not target, but if you insisted...
-#					activecharacter.displaynode.process_disable()
-#					swap_heroes_old(position)
-#				else:
-				if allowedtargets.enemy.has(position):
-					activecharacter.skills_autoselect.push_back(activeaction)
-				use_skill(activeaction, activecharacter, position)
-			return
-#		T_OVERATTACKALLY:
-#			if allowedtargets.enemy.has(position):
-#				cur_state = T_AUTO
-#				activecharacter.skills_autoselect.push_back(activeaction)
-#				use_skill(activeaction, activecharacter, position)
-#			elif position in variables.playerparty:
-#				if battlefield[position] == null: return
-#				if battlefield[position].acted: return
-#				if battlefield[position].defeated: return
-#				cur_state = T_AUTO
-#				player_turn(position)
-#			return
-		T_SKILLSUPPORT:
-			#should not be possible
-			if allowedtargets.ally.has(position) or allowedtargets.enemy.has(position):
-				print("warning - allowed target not highlighted properly")
-				cur_state = T_AUTO
-				use_skill(activeaction, activecharacter, position)
-			return
-		T_SKILLATTACK:
-			if !allowedtargets.enemy.has(position):
-				try_select_player_char_by_pos(position)
-			else:
-				#should not be possible
-				print("warning - allowed target not highlighted properly")
-				cur_state = T_AUTO
-				activecharacter.skills_autoselect.push_back(activeaction)
-				use_skill(activeaction, activecharacter, position)
-			return
+	else:
+		do_use_skill = (cur_state == T_SKILLSUPPORT and allowedtargets.ally.has(position))
+	if do_use_skill:
+		cur_state = T_NONE
+		use_skill(activeaction, activecharacter, position)
 
 
 func ProcessSfxTarget(sfxtarget, caster, target):
@@ -2106,7 +2026,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
 		if caster.hp > 0:
-			caster.process_event(variables.TR_TURN_F)
+#			caster.process_event(variables.TR_TURN_F)
 			if caster.displaynode:
 				caster.displaynode.process_disable()
 #				caster.rebuildbuffs()#update_buffs() at the end should cover this
@@ -2315,26 +2235,37 @@ func hide_resist_tooltip_if_my(pos :int):
 	if resist_tooltip_for_pos == pos:
 		hide_resist_tooltip()
 
+#There is major issue with displaynode mouse input processing.
+#With current construction, event don't propagate predictably,
+#so it's better to handle them all in here, than let them be buttons of there own
 func _gui_input(event):
 	if event.is_action_pressed('RMB'):
 		unselect_skill()
 		return
 	
+	if !process_cur_displaynode(): return
+	
+	if event.is_action_pressed('LMB'):
+		FighterPress(cur_displaynode.position)
+		emit_signal('fighter_pressed', cur_displaynode.fighter.base)
+	accept_event()
+
+func process_cur_displaynode() ->bool:#true if found
 	for displaynode in displaynodes:
 		if !displaynode.visible: continue
-		var result = displaynode.custom_gui_input(event)
-		if result == variables.DN_HANDLED:
+		var result = displaynode.mouse_in_me()
+		if result == variables.DN_IN_ME:
 			if !cur_displaynode or cur_displaynode != displaynode:
 				if cur_displaynode:
-					cur_displaynode.check_signal_exited()
+					FighterMouseOverFinish()
 				cur_displaynode = displaynode
-				displaynode.check_signal_entered()
-			accept_event()
-			return
+				FighterMouseOver(cur_displaynode.position)
+			return true
 	#noone handled
 	if cur_displaynode:
-		cur_displaynode.check_signal_exited()
-		cur_displaynode = null
+		FighterMouseOverFinish()
+#		cur_displaynode = null #FighterMouseOverFinish doing this
+	return false
 
 #for CloseableWindowsArray processing------
 func show():

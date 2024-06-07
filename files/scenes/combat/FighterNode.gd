@@ -8,9 +8,6 @@ var panel_node2
 
 #signal signal_RMB
 #signal signal_RMB_release
-signal signal_LMB(position)
-signal signal_entered
-signal signal_exited
 
 var position = 0
 var fighter
@@ -70,11 +67,8 @@ func _ready():
 	input_handler.ClearContainer($Buffs)
 
 
-func custom_gui_input(event):
-	if !(event is InputEventMouse):
-		print("ATTENTION! custom_gui_input() received non InputEventMouse")
+func mouse_in_me() ->int:
 	var mouse_position = get_local_mouse_position()
-	
 	#need to change texture_click_mask in order to differ DN_NONE and DN_SPRITE
 #	if !$sprite.get_rect().has_point(mouse_position):
 #		return variables.DN_NONE
@@ -101,33 +95,12 @@ func custom_gui_input(event):
 	
 	if !mouse_in_mask:
 		return variables.DN_NONE
-	
-	if event.is_pressed():
-		if event.is_action('LMB'):
-			emit_signal("signal_LMB", position)
-#		elif event.is_action("RMB"):
-#			emit_signal("signal_RMB", fighter)
-#			RMBpressed = true
-	
-	return variables.DN_HANDLED
-	
-#	if event.is_action_released("RMB") && RMBpressed == true:
-#		emit_signal("signal_RMB_release")
-#		RMBpressed = false
+	return variables.DN_IN_ME
 
 func set_animation_node(node):
 	animation_node = node
 	sfx_anchor.set_animation_node(node)
 
-func check_signal_exited():
-	if mouse_in_me:
-		emit_signal("signal_exited")
-		mouse_in_me = false
-
-func check_signal_entered():
-	if !mouse_in_me:
-		emit_signal("signal_entered")
-		mouse_in_me = true
 
 func setup_character(ch):
 #	print("%s - %s" % [str(modulate), str(ch.position)])
@@ -183,25 +156,15 @@ func setup_character(ch):
 	
 #		connect("signal_RMB", input_handler.combat_node.gui, "ShowFighterStats")
 #		connect("signal_RMB_release", input_handler.combat_node, 'HideFighterStats')
-	if is_connected("signal_LMB",input_handler.combat_node, 'FighterPress'):
-		disconnect('signal_LMB', input_handler.combat_node, 'FighterPress')
-	connect("signal_LMB", input_handler.combat_node, 'FighterPress')
-	if is_connected('signal_entered', input_handler.combat_node, 'FighterMouseOver'):
-		disconnect('signal_entered', input_handler.combat_node, 'FighterMouseOver')
-	connect("signal_entered", input_handler.combat_node, 'FighterMouseOver', [position])
-	if is_connected("signal_exited", input_handler.combat_node, 'FighterMouseOverFinish'):
-		disconnect("signal_exited", input_handler.combat_node, 'FighterMouseOverFinish')
-	connect("signal_exited", input_handler.combat_node, 'FighterMouseOverFinish', [position])
-	
 	visible = (position != null)
 	
-	if fighter is hero:
-		hp_bar.hide()
-	else:
-		hp_bar.show()
-		hp_bar.max_value = fighter.get_stat('hpmax')
-		hp_bar.value = hp
-#		center_node_on_sprite(hp_bar)
+#	if fighter is hero:
+#		hp_bar.hide()
+#	else:
+	hp_bar.show()
+	hp_bar.max_value = fighter.get_stat('hpmax')
+	hp_bar.value = hp
+#	center_node_on_sprite(hp_bar)
 	update_hp_label(fighter.hp)
 	
 #	center_node_on_sprite($Buffs)

@@ -12,7 +12,7 @@ var e_dot_template = {
 			type = 'oneshot',
 			target = 'owner',
 			args = [{obj = 'parent_args', param = 0}],
-			atomic = [],
+			atomic = [{type = 'sfx', value = 'anim_hit'}],
 		}
 	],
 	buffs = []

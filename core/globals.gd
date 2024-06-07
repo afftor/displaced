@@ -730,6 +730,7 @@ func LoadGame(file_name):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.clear_closeable_windows()
+	TutorialCore.clear_buttons()
 	CurrentScene.queue_free()
 	ChangeScene('map');
 	yield(self, "scene_changed")
@@ -779,7 +780,7 @@ func get_last_save():
 	var max_time = 0
 	var oldest_file
 	for i in dir:
-		if !i.ends_with('.sav') or i.ends_with('%s.sav' % variables.autosave_name):
+		if !i.ends_with('.sav'):# or i.ends_with('%s.sav' % variables.autosave_name)
 			continue
 		var file_time = tmp.get_modified_time(i)
 		if file_time > max_time:

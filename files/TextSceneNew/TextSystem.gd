@@ -1227,7 +1227,7 @@ func play_scene(scene: String, restore = false, force_replay = false) -> void:
 		if !has_res:
 			break
 	if !has_res:
-		print("force loading %s..." % scene)
+#		print("force loading %s..." % scene)
 		preload_scene(scene)
 		if resources.is_busy(): yield(resources, "done_work")
 
