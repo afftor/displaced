@@ -259,7 +259,11 @@ func get_refined_bonusdescript(upgrade :String, level :int) ->String:
 		var char_data = state.heroes[id]
 		if char_data.unlocked:
 			char_list.append(char_data.name)
+		else:
+			char_list.append("???")
 	var char_str = ''
+	#Mind that now (with "???") there always 3 chars, so cycle is no longer necessary
+	#but I'm still leaving it in case of further changes in chars' numbers
 	for i in range(char_list.size()):
 		if i == 0:
 			pass
