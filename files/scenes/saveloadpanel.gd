@@ -48,7 +48,7 @@ func ResetSavePanel():
 		newbutton.get_node("time").text = ""
 		newbutton.set_meta("save_name", "")
 		newbutton.set_meta("file_name", "")
-		newbutton.connect("pressed", self, "choose_save", [""])
+		newbutton.connect("pressed", self, "on_file_click", [""])
 		newbutton.get_node("LineEdit").connect("text_entered", self, 'on_lineedit_enter')
 	
 	var filereader = File.new()
@@ -96,7 +96,7 @@ func on_file_click(file_name :String):
 	var click_time = Time.get_ticks_msec()
 	if (click_time - double_click_info.time < 300
 			and double_click_info.savename == file_name):
-		PressLoadGame()
+		PressSaveGame()
 		return
 	
 	double_click_info.time = click_time
@@ -128,6 +128,7 @@ func PressLoadGame():
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])
 
 func PressSaveGame():
+	if btn_save.disabled: return
 	if cur_save.get_meta("save_name").empty():
 		var editor = cur_save.get_node("LineEdit")
 		if !editor.visible:
