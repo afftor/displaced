@@ -220,6 +220,16 @@ func default_sfx(node, args):
 	return playtime + aftereffectdelay
 
 
+func shake(node, args):
+	var playtime = 0.5
+	var magnitude = 5
+	if args.has('time'):
+		playtime = args.time
+	if args.has('magnitude'):
+		magnitude = args.magnitude
+	input_handler.ShakeAnimation(node, playtime, magnitude)
+	return playtime + aftereffectdelay
+
 func casterattack(node, args = null):#obsolete
 	var playtime = 0
 	var delaytime = 0

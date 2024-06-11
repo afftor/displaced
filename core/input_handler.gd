@@ -85,11 +85,6 @@ func _input(event):
 #			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 
 func _process(delta):
-	#that stuff was bad. It's endlessly trys to hide non-ClosingPanel.gd nodes
-	#keeping this here for a while, if some crutch would fall. Delete in time
-#	for i in CloseableWindowsArray:
-#		if i.is_visible_in_tree() == false:
-#			i.hide()
 	for i in ShakingNodes:
 		if i.time > 0:
 			i.time -= delta

@@ -568,6 +568,7 @@ var skilllist = {
 			{code = 'anim_hit', target = 'target', period = 'effected'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_arron', target = 'full', period = 'cast'},
+			{code = 'shake', target = 'screen', period = 'cast'},
 			{code = 'sfx_fight_arron_combo_sq', target = 'target', period = 'postcast'}],
 		sounddata = {predamage = 'termination'},
 		patches = [
@@ -820,7 +821,8 @@ var skilllist = {
 		sfx = [{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_rose', target = 'full', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_explosion', target = 'target_group', period = 'postcast'}],
+			{code = 'sfx_explosion', target = 'target_group', period = 'postcast'},
+			{code = 'shake', target = 'screen', period = 'cast'}],
 		sounddata = {postcast = 'explosion'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_explosion'}
@@ -1128,9 +1130,10 @@ var skilllist = {
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_heartseeker', target = 'target', period = 'predamage'},
+			{code = 'shake', target = 'screen', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
-			{code = 'sfx_slide_erika', target = 'full', period = 'cast'},],
+			{code = 'sfx_slide_erika', target = 'full', period = 'cast'}],
 		sounddata = {predamage = 'heart_seeker'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_hearts'},
@@ -1411,6 +1414,7 @@ var skilllist = {
 		sfx = [{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_ember', target = 'full', period = 'cast'},
 			{code = 'sfx_earthquake', target = 'target_group', period = 'postcast'},#it's better to make a separate earthquake animation to set up custom delay
+			{code = 'shake', target = 'screen', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'}],
 		sounddata = {postcast = 'earthquake'},
 		patches = [
@@ -1660,11 +1664,12 @@ var skilllist = {
 			Effectdata.rebuild_template({effect = 'e_s_beam_debuff'})],
 		repeat = 1,
 		hidden = false,
-		sfx = [{code = 'sfx_soul_beam', target = 'full', period = 'predamage'},
+		sfx = [{code = 'sfx_soul_beam', target = 'full', period = 'postcast'},
+			{code = 'shake', target = 'screen', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_rilu', target = 'full', period = 'cast'}],
-		sounddata = {predamage = 'sould beam'},
+		sounddata = {postcast = 'sould beam'},
 		patches = [
 			{conditions = [{type = 'gear_level', slot = 'weapon1', level = 4, op = 'gte'}], patch = 'p_beam'},
 		]
@@ -1947,7 +1952,8 @@ var skilllist = {
 		sfx = [{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_iola', target = 'full', period = 'cast'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_purge', target = 'target', period = 'predamage'}
+			{code = 'sfx_purge', target = 'target', period = 'predamage'},
+			{code = 'shake', target = 'screen', period = 'cast'}
 		],
 		sounddata = {predamage = 'purge'},#postdamage = 'bodyarmor'
 		patches = [

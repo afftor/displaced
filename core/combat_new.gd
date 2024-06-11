@@ -1715,6 +1715,19 @@ func FighterPress(position):
 		cur_state = T_NONE
 		use_skill(activeaction, activecharacter, position)
 
+func process_sfx_dict(dict):
+	if dict.code != 'shake': return#for now only 'shake' anim for 'screen' target
+	
+	var data = {
+		node = self,
+		time = input_handler.combat_node.turns,
+		type = dict.code,
+		slot = 'SFX',
+		params = dict.duplicate()
+	}
+	if !data.params.has('time'):
+		data.params.time = 1.5#to synchronize with slider
+	CombatAnimations.add_new_data(data)
 
 func ProcessSfxTarget(sfxtarget, caster, target):
 	match sfxtarget:
@@ -1728,6 +1741,8 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 			return target.displaynode.get_parent().get_parent()
 		'full':
 			return $battlefield
+		'screen':
+			return self
 
 func sound_from_fighter(sound :String, fighter, type_loud = false):
 	if !sound.begins_with('sound/'):
