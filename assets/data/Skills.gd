@@ -1270,7 +1270,7 @@ var skilllist = {
 		repeat = 1,
 		hidden = true,
 		sfx = [{code = 'anim_hit', target = 'target', period = 'postdamage'}],
-		sounddata = {cast = 'aegis'},
+		sounddata = {predamage = 'aegis'},
 		patches = [],
 		not_final = true
 	},
