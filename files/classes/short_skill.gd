@@ -25,7 +25,9 @@ var caster
 var target
 var critchance
 var hit_res
-var best_hit_res#metaskill param, stores best result of it's applicable skills
+#metaskill param, stores best result of it's applicable skills
+#for now RES_MISS also means no hit_roll at all
+var best_hit_res = variables.RES_MISS
 
 var effects = []
 var process_value
@@ -187,7 +189,7 @@ func remember_best_hit_res(new_hit_res):
 		variables.RES_HIT : 1,
 		variables.RES_CRIT : 2
 	}
-	if best_hit_res == null or weight[new_hit_res] > weight[best_hit_res]:
+	if weight[new_hit_res] > weight[best_hit_res]:
 		best_hit_res = new_hit_res
 
 func apply_atomic(tmp):
