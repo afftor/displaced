@@ -1977,6 +1977,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 #		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
 	#=========effected animation
+	#mind that it's not in use for now
 	for effected_pos in effected_positions:
 		var effected = battlefield[effected_pos]
 		if effected == null or effected.defeated:

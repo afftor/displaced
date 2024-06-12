@@ -389,8 +389,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 3,
 		hidden = false,
-		sfx = [#{code = 'anim_attack', target = 'caster', period = 'cast'},
-			{code = 'anim_hit', target = 'target', period = 'effected'},
+		sfx = [{code = 'anim_hit', target = 'target', period = 'predamage'},#effected#at predamage for speed
 			{code = 'sfx_hit', target = 'target', period = 'cast'},
 			{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			],
@@ -565,7 +564,7 @@ var skilllist = {
 		repeat = 4,
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
-			{code = 'anim_hit', target = 'target', period = 'effected'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},#effected#at predamage for speed
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_arron', target = 'full', period = 'cast'},
 			{code = 'shake', target = 'screen', period = 'cast'},
@@ -904,7 +903,7 @@ var skilllist = {
 		casteffects = [],
 		hidden = false,
 		sfx = [{code = 'sfx_arrow_shot', target = 'target', period = 'predamage'},
-			{code = 'anim_hit', target = 'target', period = 'effected'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},#effected#at predamage for speed
 			{code = 'anim_attack', target = 'caster', period = 'predamage'},],
 		sounddata = {predamage = 'arrow_shot'},
 		patches = [
@@ -1188,7 +1187,7 @@ var skilllist = {
 		casteffects = [],#'e_tr_enable_fa'
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
-			{code = 'anim_hit', target = 'target', period = 'effected'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},#effected#at predamage for speed
 			{code = 'sfx_combo', target = 'target', period = 'cast'}],
 		sounddata = {postdamage = 'punch'},#'swift strike12' in cast works well with 'anim_hit' on cast
 		patches = [
@@ -2690,7 +2689,7 @@ var skilllist = {
 		repeat = 2,
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'cast'},
-			{code = 'anim_hit', target = 'target', period = 'effected'},
+			{code = 'anim_hit', target = 'target', period = 'predamage'},#effected#at predamage for speed
 			{code = 'sfx_tail_swipe', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
 		sounddata = {predamage = 'punch'},
@@ -2944,7 +2943,7 @@ var skilllist = {
 		code = '',
 		name = "",
 		description = "",
-		damagetype = ['dark'],
+		damagetype = 'dark',
 		skilltype = 'skill',
 		userange = "any",
 		targetpattern = 'all',

@@ -237,7 +237,7 @@ var default_animations_after_delay = { #generally should be negative, but not ov
 	use = -0.4,
 	cast = -0.4,
 	special = -0.4,
-	hit = 0.0,
+	hit = -0.4,
 	dead = 0,
 	null: 0.0,
 }
