@@ -89,4 +89,6 @@ func createfromtemplate(enemy_id, lvl):
 		ai = ai_base.new()
 	ai.bind(self)
 	animations = template.animations.duplicate()
+	if template.has('anim_scale'):
+		anim_scale = template.anim_scale
 

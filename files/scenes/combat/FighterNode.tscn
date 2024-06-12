@@ -45,6 +45,8 @@ margin_left = -40.0
 margin_top = -66.0
 margin_right = 40.0
 margin_bottom = -38.0
+expand = true
+stretch_mode = 1
 script = ExtResource( 6 )
 
 [node name="shield" type="TextureRect" parent="sprite"]
@@ -73,6 +75,8 @@ margin_top = -66.0
 margin_right = 40.0
 margin_bottom = -38.0
 mouse_filter = 2
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

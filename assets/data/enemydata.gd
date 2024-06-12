@@ -907,6 +907,7 @@ var enemylist = {
 			attack ="Fight/Bosses/Dragon_at" ,
 			cast ="Fight/Bosses/Dragon_cast" ,
 		},
+		anim_scale = 1.5
 	},
 	viktor_boss = {
 		code = '',

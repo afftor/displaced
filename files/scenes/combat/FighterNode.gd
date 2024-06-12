@@ -213,9 +213,13 @@ func regenerate_click_mask(spr1 = true):
 		t = $sprite2.texture.get_data()
 #	var t = texture_normal.get_data()
 	var tt = t.duplicate()
+	var true_rect_size = rect_size
+	if fighter.anim_scale != null:
+		true_rect_size *= fighter.anim_scale
+		tt.resize(true_rect_size.x, true_rect_size.y)
 	tt.lock()
 	var tm = Image.new()
-	tm.create(rect_size.x, rect_size.y, false, 5)
+	tm.create(true_rect_size.x, true_rect_size.y, false, 5)
 	tm.fill(Color8(0, 0, 0, 0))
 	tm.blend_rect(tt, Rect2(Vector2(0, 0), tt.get_size()), $sprite.rect_position)
 	
@@ -553,6 +557,8 @@ func set_sprite(new_tex :Texture, sprite :TextureRect):
 	sprite.texture = new_tex
 	if new_tex != null :
 		var new_size = new_tex.get_size()
+		if fighter.anim_scale != null:
+			new_size *= fighter.anim_scale
 		sprite.rect_position.x = bottom_center.x - new_size.x * 0.5
 		sprite.rect_position.y = bottom_center.y - new_size.y
 		sprite.rect_min_size = new_size

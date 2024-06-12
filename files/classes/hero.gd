@@ -55,6 +55,8 @@ func createfromname(name):
 		if template.status_resists.has(i):
 			status_resists[i] = template.status_resists[i]
 	animations = template.animations.duplicate()
+	if template.has('anim_scale'):
+		anim_scale = template.anim_scale
 	hp = get_stat('hpmax')
 	for skill_id in template.skilllist:
 		var skill_lvl = template.skilllist[skill_id]
