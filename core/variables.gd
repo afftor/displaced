@@ -207,6 +207,7 @@ var default_animations_duration = {
 	cast = 0.6,
 	special = 0.6,
 	hit = 0.6,
+	hit_short = 0.6,
 	dead = 1.4,#for npc only
 	null: 0.5,
 }
@@ -217,6 +218,7 @@ var default_animations_transition = { #those are not added to duration
 	cast = 0.2,
 	special = 0.2,
 	hit = 0.2,
+	hit_short = 0.2,
 	dead = 0.5,
 	null: 0.5,
 }
@@ -227,6 +229,7 @@ var default_animations_delay = {
 	cast = 0.0,
 	special = 0.0,
 	hit = 0.0,
+	hit_short = 0.0,
 	dead = 0,
 	null: 0.5,
 }
@@ -237,7 +240,8 @@ var default_animations_after_delay = { #generally should be negative, but not ov
 	use = -0.4,
 	cast = -0.4,
 	special = -0.4,
-	hit = -0.4,
+	hit = 0,
+	hit_short = -0.4,
 	dead = 0,
 	null: 0.0,
 }
