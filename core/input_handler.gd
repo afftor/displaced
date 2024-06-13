@@ -450,7 +450,7 @@ func SetMusic(res, raise_speed = musicraise_speed_default, fade_speed = musicfad
 		if musicnode.is_playing():
 			MusicFade(fade_speed)
 		return
-	elif musicnode.stream == res and musicnode.is_playing() :
+	elif musicnode.stream == res and musicnode.is_playing() and !musicfading:
 		return
 	setting_music = res
 	musicraise_speed = raise_speed
