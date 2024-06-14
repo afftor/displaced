@@ -20,6 +20,7 @@ func _ready():
 
 func show():
 	globals.make_save_screenshot()
+	input_handler.map_node.pause_daytime(true)
 	.show()
 #	if state.CurrentScreen in ['Map', 'Village', 'Scene']: #can it be 'Scene'?
 #		$VBoxContainer/Save.disabled = false
@@ -28,6 +29,7 @@ func show():
 
 func hide():
 	globals.free_save_screenshot()
+	input_handler.map_node.pause_daytime(false)
 	.hide()
 
 func OptionsOpen():

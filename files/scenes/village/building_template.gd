@@ -70,4 +70,4 @@ func hightlight(flag):
 		material.set_shader_param('highlight', 0.0)
 
 func onclick():
-	get_parent().building_entered(name)
+	input_handler.village_node.building_entered(name)

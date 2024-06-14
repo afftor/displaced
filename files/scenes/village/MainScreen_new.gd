@@ -68,6 +68,10 @@ func _ready():
 	
 	input_handler.connect("UpgradeUnlocked", self, "buildscreen")
 	input_handler.queue_connection("scene_node", "EventFinished", self, "buildscreen")
+	state.connect("daytime_dawn", self, "set_environment_day")
+	state.connect("daytime_sunset", self, "set_environment_night")
+	state.connect("daytime_forced", self, "update_environment")
+	update_environment()
 	
 	if resources.is_busy(): yield(resources, "done_work")
 	if debug == true:
@@ -76,19 +80,9 @@ func _ready():
 #	buildscreen()
 	yield(get_tree(),'idle_frame')
 	
-	TutorialCore.register_static_button("townhall", $townhall, "pressed")
-	TutorialCore.register_static_button("bridge", $bridge, "pressed")
+	TutorialCore.register_static_button("townhall", get_building('townhall'), "pressed")
+	TutorialCore.register_static_button("bridge", get_building('bridge'), "pressed")
 	
-	
-#	if floor(state.daytime) >= 0 && floor(state.daytime) < floor(variables.TimePerDay/4):
-#		EnvironmentColor('morning', true)
-#	elif floor(state.daytime) >= floor(variables.TimePerDay/4) && floor(state.daytime) < floor(variables.TimePerDay/4*2):
-#		EnvironmentColor('day', true)
-#	elif floor(state.daytime) >= floor(variables.TimePerDay/4*2) && floor(state.daytime) < floor(variables.TimePerDay/4*3):
-#		EnvironmentColor('evening', true)
-#	elif floor(state.daytime) >= floor(variables.TimePerDay/4*3) && floor(state.daytime) < floor(variables.TimePerDay):
-#		EnvironmentColor('night',true)
-	#EnvironmentColor('night', true)
 #	set_process(true)
 
 #temporaly unused. It seems that location_pressed()/building_entered() is preferable way
@@ -137,7 +131,7 @@ func hide():
 func buildscreen(empty = null):
 	var res = false
 	for build in Upgradedata.upgradelist:
-		var node = get_node(build)
+		var node = get_building(build)
 		if node != null: node.build_icon()
 		
 		binded_events[build] = null
@@ -156,7 +150,7 @@ func buildscreen(empty = null):
 			node.set_inactive()
 	
 	if $TownHall.build_events():
-		get_node("townhall").set_active()
+		get_building('townhall').set_active()
 		res = true
 	return res
 
@@ -210,3 +204,35 @@ func VoteLinkOpen():
 
 func VotePanelClose():
 	$VotePanel.hide()
+
+
+func set_environment_day():
+	input_handler.FadeAnimation($NightSky, variables.DayTransitionTime)
+	input_handler.tween_property($ground, 'modulate',
+		Color(variables.hexcolordict.night),
+		Color(variables.hexcolordict.day),
+		variables.DayTransitionTime)
+
+func set_environment_night():
+	input_handler.UnfadeAnimation($NightSky, variables.DayTransitionTime)
+	input_handler.tween_property($ground, 'modulate',
+		Color(variables.hexcolordict.day),
+		Color(variables.hexcolordict.night),
+		variables.DayTransitionTime)
+
+func update_environment():
+	var sky = $NightSky
+	var ground = $ground
+	if state.is_daytime_day():
+		sky.modulate.a = 0.0
+		ground.modulate = Color(variables.hexcolordict.day)
+	else:
+		sky.modulate.a = 1.0
+		ground.modulate = Color(variables.hexcolordict.night)
+
+func get_building(b_name):
+	return $ground.get_node_or_null(b_name)
+
+#there is no background buildings for now
+#func get_building_bg(b_name):
+#	return get_node_or_null("ground/Background/"+b_name)

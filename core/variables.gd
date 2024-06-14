@@ -1,9 +1,11 @@
 extends Node
 #Game Settings
-var TimePerDay = 120
+var TimePerDay = 120.0#in seconds
+var TimeDawn = 40.0#0.0 - sunset
+var DayTransitionTime = 3.0
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
-var show_enemy_hp = false
+#var show_enemy_hp = false
 
 enum {RES_MISS = 1,#0b001
 	RES_HIT = 2,#0b010
@@ -291,6 +293,9 @@ var hexcolordict = {
 	highlight_blue = "#4afffe",
 	light_grey = "#dedede",
 	dark_grey = "#8b8b8b",
+	
+	night = "#8C8CB9",
+	day = "#FFFFFF",
 }
 
 const autosave_name = "autosave"

@@ -6,7 +6,7 @@ signal old_seqs_updated
 signal old_events_updated#mind that choice is also stored in OldEvents, but not signaled by this
 #doesn't work for now
 #var date := 1
-#var daytime = 0  setget time_set
+var daytime = 0.0
 #var newgame = false
 #var itemidcounter := 0
 #var mainprogress = 0
@@ -75,14 +75,25 @@ var viewed_tips := []
 
 signal party_changed
 signal money_changed
+signal daytime_dawn
+signal daytime_sunset
+signal daytime_forced
 
-#func time_set(value):
-#	#here may be placed day changing code from main screen
-#	#but for now i place here only new code for rising midday event
-#	if (daytime < variables.TimePerDay / 2) and (value >= variables.TimePerDay / 2):
-#		pass
-##		globals.check_signal('Midday')
-#	daytime = value
+func set_daytime(value):
+	daytime = value
+	emit_signal("daytime_forced")
+
+func add_daytime(value):
+	var old_daytime = daytime
+	daytime += value
+	if old_daytime < variables.TimeDawn and daytime >= variables.TimeDawn:
+		emit_signal("daytime_dawn")
+	if daytime > variables.TimePerDay:
+		daytime -= variables.TimePerDay
+		emit_signal("daytime_sunset")
+
+func is_daytime_day() ->bool:
+	return daytime >= variables.TimeDawn
 
 func update_pending_scenes(scenes: Array):
 	pending_scenes = scenes
@@ -98,7 +109,7 @@ func get_difficulty():
 
 func revert():
 #	date = 1
-#	daytime = 0
+	set_daytime(0.0)
 #	newgame = false
 	votelinksseen = false
 #	itemidcounter = 0
@@ -445,7 +456,7 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['heroidcounter', 'money', 'CurEvent', 'votelinksseen', 'activearea', 'CurrentScreen']#'date', 'daytime', 'newgame', 'itemidcounter', 'mainprogress', 'stashedarea', 'currentutorial', 'screen'
+	var arr = ['heroidcounter', 'money', 'CurEvent', 'votelinksseen', 'activearea', 'CurrentScreen', 'daytime']#'date', 'newgame', 'itemidcounter', 'mainprogress', 'stashedarea', 'currentutorial', 'screen'
 	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'OldSeqs', 'OldEvents', 'decisions', 'area_save', 'location_unlock', 'scene_restore_data', 'pending_scenes', 'discovered_pending_scenes']#'gallery_unlocks', 'party_save', 'activequests', 'completedquests'
 	for prop in arr:
 		tmp[prop] = get(prop)
@@ -461,6 +472,7 @@ func deserialize(tmp:Dictionary):
 	tmp.erase('effects')
 	for prop in tmp.keys():
 		set(prop, tmp[prop])
+	set_daytime(daytime)
 	emit_signal("money_changed")
 	for id in materials:
 		materials[id] = int(materials[id])
