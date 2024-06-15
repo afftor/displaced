@@ -69,8 +69,8 @@ func _input(event):
 			if CloseTopWindow():
 				get_tree().set_input_as_handled()
 		else:
-			if input_handler.menu_node and input_handler.menu_node.visible:
-				input_handler.menu_node.openmenu()
+			if menu_node and menu_node.visible:
+				menu_node.openmenu()
 				get_tree().set_input_as_handled()
 	if event.is_action("F9") && event.is_pressed():
 		OS.window_fullscreen = !OS.window_fullscreen
@@ -92,7 +92,7 @@ func _process(delta):
 		else:
 			i.node.rect_position = i.originpos
 			ShakingNodes.erase(i)
-	soundcooldown -= delta
+#	soundcooldown -= delta
 
 	ProcessMusic(delta)
 
@@ -520,13 +520,13 @@ func PlaySound(res, delay = 0, type_loud = false):
 	yield(soundnode, 'finished')
 	soundnode.queue_free()
 
-var soundcooldown = 0
-
-func PlaySoundIsolated(sound, cooldown):
-	if soundcooldown > 0:
-		return
-	PlaySound(sound)
-	soundcooldown = cooldown
+#seems not in use
+#var soundcooldown = 0
+#func PlaySoundIsolated(sound, cooldown):
+#	if soundcooldown > 0:
+#		return
+#	PlaySound(sound)
+#	soundcooldown = cooldown
 
 func GetSoundNode():
 	var node = get_tree().get_root()
@@ -656,7 +656,7 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 		x.rect_pivot_offset = x.texture.get_size()/2
 		x.rect_rotation = rand_range(0,360)
 
-	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+	FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
 
@@ -701,7 +701,7 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip_h =
 #	if delayuntilfade == null:
 #		delayuntilfade = x.frames.get_frame_count(x.animation) / x.frames.get_animation_speed(x.animation)
 	if delayuntilfade != null:
-		input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+		FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 #	yield(get_tree().create_timer(fadeduration*2), 'timeout')
 	yield(x, 'animation_finished')
@@ -880,7 +880,7 @@ func HideOutline(node):
 	node.material.set_shader_param('opacity', 0)
 
 func ConnectSound(node, sound, action):
-	node.connect(action, input_handler, 'PlaySound', [sound])
+	node.connect(action, self, 'PlaySound', [sound])
 
 #variative get node method stuff
 enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_SOUND_LOUD, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG, NODE_NOTIFICATION, NODE_UNLOCKCHAR} #, NODE_TWEEN, NODE_REPEATTWEEN}
