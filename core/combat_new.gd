@@ -1443,7 +1443,8 @@ func mark_skill_targets():
 		if battlefield[pos] != null:
 			battlefield[pos].displaynode.mark_unreachable()
 	for pos in allowedtargets.enemy:
-		battlefield[pos].displaynode.unmark_unreachable()
+		if battlefield[pos] != null:
+			battlefield[pos].displaynode.unmark_unreachable()
 
 func reset_all_highlight():
 	for nd in battlefieldpositions.values():
