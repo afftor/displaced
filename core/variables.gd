@@ -308,3 +308,18 @@ var ULTIMETER_COSTS = {
 }
 
 const SOUND_LOUD_COR = 6.0
+
+#buff-icon's groups
+#Mind that dispellable effects would rather be BG_NEGATIVE,
+#even if it is logically BG_WEAKNESS or BG_DEFENCE
+enum {BG_NO,#buff-icon can also has no group, thus takes unique place in buff-bar
+	BG_NEGATIVE,#debuffs, negative temporal effects (dispellable), including dispellable weaknesses
+	BG_BUFF,#buffs, positive temporal effects
+	BG_SHIELD,#shields
+	BG_STATIC,#traits, passive and others non temporal effects
+	#are BG_BUFFs for now:
+#	BG_DEFENCE,#all buffs with defence and redirect mechanics
+	#are BG_NEGATIVEs for now:
+#	BG_WEAKNESS,#weakness to damagetype, excluding dispellable (which might be wrong)
+}
+const BG_NO_ID_START = 1000#unique buff-icon groups' id starts from this

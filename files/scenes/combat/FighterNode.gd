@@ -38,6 +38,8 @@ var scan_vecs = [
 ]
 
 var sprite_bottom_margin = 0.0
+var displayed_buffs = {}
+var no_BG_id_max = variables.BG_NO_ID_START
 
 #func _process(delta):
 #	if !hightlight or !highlight_animated: return
@@ -64,7 +66,7 @@ func _ready():
 	var overgrow = 10.0#size of a buffer around sprite for click mask
 	for i in range(0,scan_vecs.size()):
 		scan_vecs[i] *= overgrow
-	input_handler.ClearContainer($Buffs)
+	input_handler.ClearContainer($Buffs, ['Group'])
 
 
 func mouse_in_me() ->int:
@@ -356,29 +358,46 @@ func advance_move():
 
 #control visuals
 func noq_rebuildbuffs(newbuffs):
-	var buffs = $Buffs
 	for b in newbuffs:
-		if buffs.has_node(b.template_name):
+		if displayed_buffs.has(b.template_name):
 			update_buff(b)
 		else:
 			add_buff(b)
-	for buff in buffs.get_children():
-		if !buff.visible: continue#template is invisible
-		if buff.has_meta("just_updated"):
-			buff.remove_meta("just_updated")
+	for b_name in displayed_buffs.keys():
+		var buff_btn = displayed_buffs[b_name]
+		if !buff_btn.visible: continue#template is invisible
+		if buff_btn.has_meta("just_updated"):
+			buff_btn.remove_meta("just_updated")
 		else:
-			buff.hide()
-			buff.queue_free()
+			#remove buff
+			var group_id = buff_btn.get_meta('group_id')
+			get_buff_group_node(group_id).remove_buff(buff_btn)
+			displayed_buffs.erase(buff_btn.name)
 
 func add_buff(buff):
-	var buffs = $Buffs
-	assert(!buffs.has_node(buff.template_name), "%s already has buff %s" % [fighter.name, buff.template_name])
-	var newbuff = input_handler.DuplicateContainerTemplate(buffs)
+	assert(!displayed_buffs.has(buff.template_name), "%s already has buff %s" % [fighter.name, buff.template_name])
+	var group_id = buff.group
+	if group_id == variables.BG_NO:
+		no_BG_id_max += 1
+		group_id = no_BG_id_max
+	var newbuff = get_buff_group_node(group_id).make_buff()
 	newbuff.name = buff.template_name
+	newbuff.set_meta("group_id", group_id)
+	displayed_buffs[buff.template_name] = newbuff
 	update_buff(buff)
 
+func get_buff_group_node(group_id):
+	for group_node in $Buffs.get_children():
+		if !group_node.visible: continue
+		if group_node.get_meta('group_id') == group_id:
+			return group_node
+	
+	var group_node = input_handler.DuplicateContainerTemplate($Buffs, 'Group')
+	group_node.set_meta("group_id", group_id)
+	return group_node
+
 func update_buff(buff):
-	var buff_btn = $Buffs.get_node(buff.template_name)
+	var buff_btn = displayed_buffs[buff.template_name]
 	buff_btn.set_meta("just_updated", true)
 	buff_btn.hint_tooltip = buff.description
 	buff_btn.texture = buff.icon

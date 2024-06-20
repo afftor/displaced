@@ -10,6 +10,7 @@ var self_args := []
 var template_name
 var name setget ,get_name
 var amount = 1
+var group = variables.BG_NO
 
 func _init(caller):
 	parent = caller
@@ -25,6 +26,8 @@ func createfromtemplate(buff_t):
 	template_name = template.t_name
 	if template.has('name'): name = template.name
 	else: name = template_name
+	if template.has('group'):
+		group = template.group
 
 func get_tooltip():
 	calculate_args()
