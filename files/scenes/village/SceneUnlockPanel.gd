@@ -146,4 +146,5 @@ func unlock_show_event(ev):
 		var hero = state.heroes[ch]
 		hero.friend_points -= eventdata.unlock_price[ch]
 	show_event(ev)
+	yield(input_handler.scene_node, "AllEventsFinished")
 	rebuild_scene_list()

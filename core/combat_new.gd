@@ -1443,7 +1443,8 @@ func mark_skill_targets():
 		if battlefield[pos] != null:
 			battlefield[pos].displaynode.mark_unreachable()
 	for pos in allowedtargets.enemy:
-		battlefield[pos].displaynode.unmark_unreachable()
+		if battlefield[pos] != null:
+			battlefield[pos].displaynode.unmark_unreachable()
 
 func reset_all_highlight():
 	for nd in battlefieldpositions.values():
@@ -1715,6 +1716,19 @@ func FighterPress(position):
 		cur_state = T_NONE
 		use_skill(activeaction, activecharacter, position)
 
+func process_sfx_dict(dict):
+	if dict.code != 'shake': return#for now only 'shake' anim for 'screen' target
+	
+	var data = {
+		node = self,
+		time = input_handler.combat_node.turns,
+		type = dict.code,
+		slot = 'SFX',
+		params = dict.duplicate()
+	}
+	if !data.params.has('time'):
+		data.params.time = 1.5#to synchronize with slider
+	CombatAnimations.add_new_data(data)
 
 func ProcessSfxTarget(sfxtarget, caster, target):
 	match sfxtarget:
@@ -1728,6 +1742,8 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 			return target.displaynode.get_parent().get_parent()
 		'full':
 			return $battlefield
+		'screen':
+			return self
 
 func sound_from_fighter(sound :String, fighter, type_loud = false):
 	if !sound.begins_with('sound/'):
@@ -1962,6 +1978,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 #		print('%s finishing step %s of %s' % [caster.position, n, skill.name])
 	#=========effected animation
+	#mind that it's not in use for now
 	for effected_pos in effected_positions:
 		var effected = battlefield[effected_pos]
 		if effected == null or effected.defeated:

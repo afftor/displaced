@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 export var test_mode = false
 
@@ -16,6 +16,8 @@ var binded_events = {
 }
 var village_inside_event = false
 var map_has_event = false
+#should probably use native godot's pause
+var daytime_paused = false
 
 func _ready():
 	input_handler.queue_connection("scene_node", "EventFinished", self, "buildscreen")
@@ -34,8 +36,12 @@ func _ready():
 		test()
 	
 	update_map()
+	state.connect("daytime_dawn", self, "set_environment_day")
+	state.connect("daytime_sunset", self, "set_environment_night")
+	state.connect("daytime_forced", self, "update_environment")
+	update_environment()
 	
-	TutorialCore.register_static_button("exploration_loc", $forest, "pressed")
+	TutorialCore.register_static_button("exploration_loc", get_area('forest'), "pressed")
 # test functions
 #	unlock_area('village')
 	resources.preload_res("music/towntheme")
@@ -79,7 +85,7 @@ func update_map():
 	map_has_event = false
 	for loc in binded_events:
 		check_location(loc)
-		var area_node = get_node(loc)
+		var area_node = get_area(loc)
 
 		if loc == 'cult':
 			if state.location_unlock['modern_city']:
@@ -154,3 +160,32 @@ func check_location(loc_id):
 
 func switch_block_screen(value :bool):
 	$block_screen.visible = value
+
+func set_environment_day():
+	input_handler.tween_property($ground, 'modulate',
+		Color(variables.hexcolordict.night),
+		Color(variables.hexcolordict.day),
+		variables.DayTransitionTime)
+
+func set_environment_night():
+	input_handler.tween_property($ground, 'modulate',
+		Color(variables.hexcolordict.day),
+		Color(variables.hexcolordict.night),
+		variables.DayTransitionTime)
+
+func update_environment():
+	var ground = $ground
+	if state.is_daytime_day():
+		ground.modulate = Color(variables.hexcolordict.day)
+	else:
+		ground.modulate = Color(variables.hexcolordict.night)
+
+func get_area(a_name):
+	return $ground.get_node(a_name)
+
+func pause_daytime(value):
+	daytime_paused = value
+
+func _process(delta):
+	if !daytime_paused:
+		state.add_daytime(delta)

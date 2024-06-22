@@ -37,7 +37,7 @@ func regenerate_click_mask():
 
 
 func _onclick():
-	get_parent().location_pressed(name)
+	input_handler.map_node.location_pressed(name)
 
 
 func m_hide():

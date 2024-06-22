@@ -215,15 +215,15 @@ func unlockupgrade():
 	if upgrade.has('effects_hp'):
 		for ch in state.heroes.values():
 			ch.hp = ch.get_stat('hpmax')
-	if get_parent().has_node(upgrade.townnode):
-		get_parent().get_node(upgrade.townnode).build_icon()
+	var building = get_parent().get_building(upgrade.townnode)
+	if building != null:
+		building.build_icon()
 	
 	#animation
-	var animnode
-	if get_parent().has_node(upgrade.townnode):
-		animnode = get_parent().get_node(upgrade.townnode)
-	else:
-		animnode = get_parent().get_node("Background/"+upgrade.townnode)
+	var animnode = building
+	#there is no background buildings for now
+#	if animnode != null:
+#		animnode = get_parent().get_building_bg(upgrade.townnode)
 	if animnode != null:
 		var building_timer = 2.0
 		input_handler.ShowOutline(animnode)

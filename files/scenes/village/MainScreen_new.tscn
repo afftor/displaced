@@ -14,8 +14,8 @@
 [ext_resource path="res://files/scenes/village/TownHall.tscn" type="PackedScene" id=12]
 [ext_resource path="res://files/scenes/village/MainScreen_new.gd" type="Script" id=13]
 [ext_resource path="res://files/scenes/village/building_template.gd" type="Script" id=14]
-[ext_resource path="res://assets/images/bg/unused/sky.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/bg/unused/sky_night.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/bg/sky.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/bg/sky_night.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/bg/unused/town.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/buildings/mine.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/buildings/gate.png" type="Texture" id=19]
@@ -45,13 +45,15 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="NightSky" type="TextureRect" parent="."]
-modulate = Color( 0.664909, 0.656204, 0.714844, 0 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 440.0
 margin_right = 1920.0
 margin_bottom = 394.0
 texture = ExtResource( 16 )
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="ground" type="Control" parent="."]
+
+[node name="Background" type="TextureRect" parent="ground"]
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 17 )
@@ -60,14 +62,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="townhall_outline" type="TextureRect" parent="."]
+[node name="townhall_outline" type="TextureRect" parent="ground"]
 margin_left = 636.102
 margin_top = 213.816
 margin_right = 1088.1
 margin_bottom = 570.816
 texture = ExtResource( 20 )
 
-[node name="townhall" type="TextureButton" parent="."]
+[node name="townhall" type="TextureButton" parent="ground"]
 margin_left = 636.102
 margin_top = 213.816
 margin_right = 1088.1
@@ -76,26 +78,26 @@ texture_normal = ExtResource( 20 )
 script = ExtResource( 14 )
 outline_hover = true
 
-[node name="QuestActive" type="TextureRect" parent="townhall"]
+[node name="QuestActive" type="TextureRect" parent="ground/townhall"]
 margin_left = 383.435
 margin_top = -38.6175
 margin_right = 517.435
 margin_bottom = 84.3825
 texture = ExtResource( 28 )
 
-[node name="Label" parent="townhall" instance=ExtResource( 30 )]
+[node name="Label" parent="ground/townhall" instance=ExtResource( 30 )]
 margin_left = 191.0
 margin_top = -23.0
 margin_right = 296.0
 margin_bottom = 1.0
 text = "TOWNHALL"
 
-[node name="Indicator" type="Node" parent="townhall"]
+[node name="Indicator" type="Node" parent="ground/townhall"]
 script = ExtResource( 32 )
 visual = NodePath("../../townhall_outline")
 outline_material = ExtResource( 31 )
 
-[node name="bridge" type="TextureButton" parent="."]
+[node name="bridge" type="TextureButton" parent="ground"]
 margin_left = 1570.0
 margin_top = 519.0
 margin_right = 1764.0
@@ -104,7 +106,7 @@ texture_normal = ExtResource( 19 )
 script = ExtResource( 14 )
 outline_hover = true
 
-[node name="QuestActive" type="TextureRect" parent="bridge"]
+[node name="QuestActive" type="TextureRect" parent="ground/bridge"]
 margin_left = 194.498
 margin_top = -9.92053
 margin_right = 293.498
@@ -112,14 +114,14 @@ margin_bottom = 83.0795
 texture = ExtResource( 28 )
 expand = true
 
-[node name="Label" parent="bridge" instance=ExtResource( 30 )]
+[node name="Label" parent="ground/bridge" instance=ExtResource( 30 )]
 margin_left = 79.0
 margin_top = -28.0
 margin_right = 123.0
 margin_bottom = -4.0
 text = "BRIDGE"
 
-[node name="mine" type="TextureButton" parent="."]
+[node name="mine" type="TextureButton" parent="ground"]
 margin_left = 90.6535
 margin_top = 402.904
 margin_right = 409.653
@@ -130,14 +132,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuestActive" type="TextureRect" parent="mine"]
+[node name="QuestActive" type="TextureRect" parent="ground/mine"]
 margin_left = 200.728
 margin_top = -37.2357
 margin_right = 334.728
 margin_bottom = 85.7643
 texture = ExtResource( 28 )
 
-[node name="market" type="TextureButton" parent="."]
+[node name="market" type="TextureButton" parent="ground"]
 margin_left = 222.685
 margin_top = 495.09
 margin_right = 674.685
@@ -149,21 +151,21 @@ __meta__ = {
 }
 outline_hover = true
 
-[node name="Label" parent="market" instance=ExtResource( 30 )]
+[node name="Label" parent="ground/market" instance=ExtResource( 30 )]
 margin_left = 114.0
 margin_top = 76.0
 margin_right = 197.0
 margin_bottom = 100.0
 text = "MARKET"
 
-[node name="QuestActive" type="TextureRect" parent="market"]
+[node name="QuestActive" type="TextureRect" parent="ground/market"]
 margin_left = 222.668
 margin_top = -77.1963
 margin_right = 356.668
 margin_bottom = 45.8037
 texture = ExtResource( 28 )
 
-[node name="farm" type="TextureButton" parent="."]
+[node name="farm" type="TextureButton" parent="ground"]
 margin_left = 1119.19
 margin_top = 455.14
 margin_right = 1554.19
@@ -171,14 +173,14 @@ margin_bottom = 805.14
 texture_normal = ExtResource( 27 )
 script = ExtResource( 14 )
 
-[node name="QuestActive" type="TextureRect" parent="farm"]
+[node name="QuestActive" type="TextureRect" parent="ground/farm"]
 margin_left = 182.102
 margin_top = -59.912
 margin_right = 316.102
 margin_bottom = 63.088
 texture = ExtResource( 28 )
 
-[node name="forge" type="TextureButton" parent="."]
+[node name="forge" type="TextureButton" parent="ground"]
 margin_left = 557.702
 margin_top = 399.123
 margin_right = 876.702
@@ -187,21 +189,21 @@ texture_normal = ExtResource( 23 )
 script = ExtResource( 14 )
 outline_hover = true
 
-[node name="QuestActive" type="TextureRect" parent="forge"]
+[node name="QuestActive" type="TextureRect" parent="ground/forge"]
 margin_left = 274.0
 margin_top = 18.0
 margin_right = 408.0
 margin_bottom = 141.0
 texture = ExtResource( 28 )
 
-[node name="Label" parent="forge" instance=ExtResource( 30 )]
+[node name="Label" parent="ground/forge" instance=ExtResource( 30 )]
 margin_left = 91.0
 margin_top = 72.0
 margin_right = 218.0
 margin_bottom = 96.0
 text = "BLACKSMITH"
 
-[node name="tavern" type="TextureButton" parent="."]
+[node name="tavern" type="TextureButton" parent="ground"]
 margin_left = 1406.62
 margin_top = 642.665
 margin_right = 1857.62
@@ -209,14 +211,14 @@ margin_bottom = 992.665
 texture_normal = ExtResource( 22 )
 script = ExtResource( 14 )
 
-[node name="QuestActive" type="TextureRect" parent="tavern"]
+[node name="QuestActive" type="TextureRect" parent="ground/tavern"]
 margin_left = 396.726
 margin_top = 19.7818
 margin_right = 530.726
 margin_bottom = 142.782
 texture = ExtResource( 28 )
 
-[node name="mill" type="TextureButton" parent="."]
+[node name="mill" type="TextureButton" parent="ground"]
 margin_left = 778.66
 margin_top = 776.495
 margin_right = 1265.66
@@ -227,7 +229,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuestActive" type="TextureRect" parent="mill"]
+[node name="QuestActive" type="TextureRect" parent="ground/mill"]
 margin_left = 272.0
 margin_top = 18.0
 margin_right = 406.0

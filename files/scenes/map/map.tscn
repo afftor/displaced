@@ -37,13 +37,19 @@ shader_param/_animation_speed = 6.0
 shader_param/_occlude_amount = -0.03
 shader_param/_uv_correction = Vector2( 0, 0 )
 
-[node name="map" type="TextureRect"]
+[node name="map" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 13 )
+
+[node name="ground" type="Control" parent="."]
+
+[node name="bg" type="TextureRect" parent="ground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
-script = ExtResource( 13 )
 
-[node name="outer" type="TextureButton" parent="."]
+[node name="outer" type="TextureButton" parent="ground"]
 margin_left = 656.0
 margin_top = -1.0
 margin_right = 1091.0
@@ -53,7 +59,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="clouds" type="Control" parent="outer"]
+[node name="clouds" type="Control" parent="ground/outer"]
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -61,181 +67,181 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="outer/clouds"]
+[node name="bg" type="Control" parent="ground/outer/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_11_2" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_11_2" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( 874.67, 17 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_8_2" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( 1055.67, 60 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_3" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_8_3" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( -282.33, 13 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_7_1" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_7_1" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( 1155.67, 117 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_2" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( -652.33, 31 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_8_1" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( 627.67, 55 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_9_1" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( 1165.67, 61 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_9_2" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_9_2" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( -500.33, 117 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_10_1" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( 873.67, 113 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_10_2" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_10_2" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( -532.33, -1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_1" type="Sprite" parent="outer/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/outer/clouds/bg"]
 position = Vector2( 746.67, 69 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="fg" type="Control" parent="outer/clouds"]
+[node name="fg" type="Control" parent="ground/outer/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="cloud_01" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 496.67
 margin_top = -5.0
 margin_right = 593.67
 margin_bottom = 57.0
 
-[node name="cloud_02" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 673.67
 margin_top = 45.0
 margin_right = 770.67
 margin_bottom = 107.0
 
-[node name="cloud_18" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_18" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 629.67
 margin_top = -22.0
 margin_right = 726.67
 margin_bottom = 40.0
 
-[node name="cloud_03" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 824.67
 margin_top = -17.0
 margin_right = 921.67
 margin_bottom = 45.0
 
-[node name="cloud_04" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 829.67
 margin_top = 97.0
 margin_right = 926.67
 margin_bottom = 159.0
 
-[node name="cloud_05" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 960.67
 margin_top = -17.0
 margin_right = 1057.67
 margin_bottom = 45.0
 
-[node name="cloud_06" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 944.67
 margin_top = 128.0
 margin_right = 1041.67
 margin_bottom = 190.0
 
-[node name="cloud_07" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 1096.67
 margin_top = 121.0
 margin_right = 1193.67
 margin_bottom = 183.0
 
-[node name="cloud_08" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 926.67
 margin_top = 58.0
 margin_right = 1023.67
 margin_bottom = 120.0
 
-[node name="cloud_09" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 1109.67
 margin_top = -23.0
 margin_right = 1206.67
 margin_bottom = 39.0
 
-[node name="cloud_10" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 1195.67
 margin_top = 43.0
 margin_right = 1292.67
 margin_bottom = 105.0
 
-[node name="cloud_11" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -300.33
 margin_top = -49.0
 margin_right = -203.33
 margin_bottom = 13.0
 
-[node name="cloud_12" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_12" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -450.33
 margin_top = 26.0
 margin_right = -353.33
 margin_bottom = 88.0
 
-[node name="cloud_13" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_13" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -568.33
 margin_top = 102.0
 margin_right = -471.33
 margin_bottom = 164.0
 
-[node name="cloud_14" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_14" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -623.33
 margin_top = 36.0
 margin_right = -526.33
 margin_bottom = 98.0
 
-[node name="cloud_15" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_15" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -557.33
 margin_top = -55.0
 margin_right = -460.33
 margin_bottom = 7.0
 
-[node name="cloud_16" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_16" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -728.33
 margin_top = 105.0
 margin_right = -631.33
 margin_bottom = 167.0
 
-[node name="cloud_17" parent="outer/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_17" parent="ground/outer/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -730.33
 margin_top = -36.0
 margin_right = -633.33
 margin_bottom = 26.0
 
-[node name="dragon_mountains" type="TextureButton" parent="."]
+[node name="dragon_mountains" type="TextureButton" parent="ground"]
 margin_left = 656.0
 margin_top = -1.0
 margin_right = 1091.0
@@ -244,14 +250,14 @@ texture_normal = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 
-[node name="Label" parent="dragon_mountains" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/dragon_mountains" instance=ExtResource( 24 )]
 margin_left = 96.0
 margin_top = 138.0
 margin_right = 254.0
 margin_bottom = 162.0
 text = "AREADRAGON_MOUNTAINSNAME"
 
-[node name="active" type="TextureRect" parent="dragon_mountains"]
+[node name="active" type="TextureRect" parent="ground/dragon_mountains"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -262,7 +268,7 @@ margin_bottom = 74.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="clouds" type="Control" parent="dragon_mountains"]
+[node name="clouds" type="Control" parent="ground/dragon_mountains"]
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -270,133 +276,133 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="dragon_mountains/clouds"]
+[node name="bg" type="Control" parent="ground/dragon_mountains/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_11_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( -16.3298, 54 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_8_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( 326.67, 114 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_2" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( 217.67, 18 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_7_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_7_1" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( 447.67, 80 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_2" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( 47.6702, 19 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_9_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( 314.67, 43 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_9_2" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_9_2" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( -153.33, -7 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_10_1" type="Sprite" parent="dragon_mountains/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/dragon_mountains/clouds/bg"]
 position = Vector2( 173.67, 115 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="fg" type="Control" parent="dragon_mountains/clouds"]
+[node name="fg" type="Control" parent="ground/dragon_mountains/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_02" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -256.33
 margin_top = -15.0
 margin_right = -159.33
 margin_bottom = 47.0
 
-[node name="cloud_03" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -351.33
 margin_top = -48.0
 margin_right = -254.33
 margin_bottom = 14.0
 
-[node name="cloud_04" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -137.33
 margin_top = -7.0
 margin_right = -40.3298
 margin_bottom = 55.0
 
-[node name="cloud_05" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -125.33
 margin_top = 48.0
 margin_right = -28.3296
 margin_bottom = 110.0
 
-[node name="cloud_06" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 46.6702
 margin_top = 83.0
 margin_right = 143.67
 margin_bottom = 145.0
 
-[node name="cloud_07" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -17.3298
 margin_top = -24.0
 margin_right = 79.6702
 margin_bottom = 38.0
 
-[node name="cloud_08" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 128.67
 margin_top = 53.0
 margin_right = 225.67
 margin_bottom = 115.0
 
-[node name="cloud_09" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 113.67
 margin_top = -54.0
 margin_right = 210.67
 margin_bottom = 8.0
 
-[node name="cloud_10" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 254.67
 margin_top = 78.0
 margin_right = 351.67
 margin_bottom = 140.0
 
-[node name="cloud_11" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 471.67
 margin_top = -19.0
 margin_right = 568.67
 margin_bottom = 43.0
 
-[node name="cloud_12" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_12" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 357.67
 margin_top = 57.0
 margin_right = 454.67
 margin_bottom = 119.0
 
-[node name="cloud_14" parent="dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_14" parent="ground/dragon_mountains/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 287.67
 margin_top = 2.0
 margin_right = 384.67
 margin_bottom = 64.0
 
-[node name="castle" type="TextureButton" parent="."]
+[node name="castle" type="TextureButton" parent="ground"]
 margin_left = 301.0
 margin_top = 153.0
 margin_right = 502.0
@@ -408,14 +414,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" parent="castle" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/castle" instance=ExtResource( 24 )]
 margin_left = 40.0
 margin_top = -21.0
 margin_right = 172.0
 margin_bottom = 3.0
 text = "AREACASTLENAME"
 
-[node name="active" type="TextureRect" parent="castle"]
+[node name="active" type="TextureRect" parent="ground/castle"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -426,7 +432,7 @@ margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="clouds" type="Control" parent="castle"]
+[node name="clouds" type="Control" parent="ground/castle"]
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -434,7 +440,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="castle/clouds"]
+[node name="bg" type="Control" parent="ground/castle/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( -576.33, -63 )
@@ -442,221 +448,221 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_11_1" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 85.6702, 18 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_11_4" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_11_4" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 383.67, 87 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_11_2" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_11_2" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 171.67, 120 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_11_3" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_11_3" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 440.67, 115 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_8_1" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 210.67, 34 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_7_1" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_1" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( -97.3298, 49 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_7" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_7" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( -15.3298, 25 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_8" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_8" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( -287.33, 57 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_5" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_5" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 637.67, 103 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_6" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_6" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 494.67, 101 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_3" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_3" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 284.67, 74 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_4" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_4" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 304.67, 145 )
 rotation = 0.760027
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_2" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( -298.33, 159 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_9_1" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( -264.33, 109 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_10_1" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( -122.33, 142 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_10_2" type="Sprite" parent="castle/clouds/bg"]
+[node name="cloud_10_2" type="Sprite" parent="ground/castle/clouds/bg"]
 position = Vector2( 523.67, 135 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="fg" type="Control" parent="castle/clouds"]
+[node name="fg" type="Control" parent="ground/castle/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_01" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 595.67
 margin_top = 76.0
 margin_right = 692.67
 margin_bottom = 138.0
 
-[node name="cloud_19" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_19" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 463.67
 margin_top = 74.0
 margin_right = 560.67
 margin_bottom = 136.0
 
-[node name="cloud_20" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_20" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 380.67
 margin_top = 120.0
 margin_right = 477.67
 margin_bottom = 182.0
 
-[node name="cloud_02" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 477.67
 margin_top = 13.0
 margin_right = 574.67
 margin_bottom = 75.0
 
-[node name="cloud_03" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 375.67
 margin_top = 20.0
 margin_right = 472.67
 margin_bottom = 82.0
 
-[node name="cloud_04" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 308.67
 margin_top = 8.0
 margin_right = 405.67
 margin_bottom = 70.0
 
-[node name="cloud_05" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 255.67
 margin_top = 85.0
 margin_right = 352.67
 margin_bottom = 147.0
 
-[node name="cloud_06" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 237.67
 margin_top = 160.0
 margin_right = 334.67
 margin_bottom = 222.0
 
-[node name="cloud_07" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 138.67
 margin_top = 68.0
 margin_right = 235.67
 margin_bottom = 130.0
 
-[node name="cloud_08" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 177.67
 margin_top = -12.0
 margin_right = 274.67
 margin_bottom = 50.0
 
-[node name="cloud_09" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 33.6702
 margin_top = 18.0
 margin_right = 130.67
 margin_bottom = 80.0
 
-[node name="cloud_10" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 53.6702
 margin_top = -55.0
 margin_right = 150.67
 margin_bottom = 7.0
 
-[node name="cloud_11" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 39.6702
 margin_top = 105.0
 margin_right = 136.67
 margin_bottom = 167.0
 
-[node name="cloud_12" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_12" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -106.33
 margin_top = 106.0
 margin_right = -9.32977
 margin_bottom = 168.0
 
-[node name="cloud_13" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_13" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -217.33
 margin_top = 52.0
 margin_right = -120.33
 margin_bottom = 114.0
 
-[node name="cloud_14" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_14" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -292.33
 margin_top = -65.0
 margin_right = -195.33
 margin_bottom = -3.0
 
-[node name="cloud_15" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_15" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -53.3298
 margin_top = -62.0
 margin_right = 43.6702
 margin_bottom = 0.0
 
-[node name="cloud_16" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_16" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -195.33
 margin_top = 85.0
 margin_right = -98.3298
 margin_bottom = 147.0
 
-[node name="cloud_21" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_21" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -183.33
 margin_top = 16.0
 margin_right = -86.3298
 margin_bottom = 78.0
 
-[node name="cloud_17" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_17" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -296.33
 margin_top = 38.0
 margin_right = -199.33
 margin_bottom = 100.0
 
-[node name="cloud_18" parent="castle/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_18" parent="ground/castle/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -344.33
 margin_top = 141.0
 margin_right = -247.33
 margin_bottom = 203.0
 
-[node name="town" type="TextureButton" parent="."]
+[node name="town" type="TextureButton" parent="ground"]
 margin_left = 1126.0
 margin_top = 321.0
 margin_right = 1625.0
@@ -665,14 +671,14 @@ texture_normal = ExtResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
-[node name="Label" parent="town" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/town" instance=ExtResource( 24 )]
 margin_left = 232.0
 margin_top = -32.0
 margin_right = 300.0
 margin_bottom = -8.0
 text = "AREATOWNNAME"
 
-[node name="active" type="TextureRect" parent="town"]
+[node name="active" type="TextureRect" parent="ground/town"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -683,7 +689,7 @@ margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="clouds" type="Control" parent="town"]
+[node name="clouds" type="Control" parent="ground/town"]
 visible = false
 margin_left = -1.67023
 margin_right = 38.3298
@@ -692,281 +698,281 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="town/clouds"]
+[node name="bg" type="Control" parent="ground/town/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_10_3" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_10_3" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 610.67, -88 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_7_1" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_7_1" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( -63.3297, -92 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_6" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_7_6" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 349.67, 48 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_2" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 684.67, -30 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_3" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_7_3" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 746.67, 88 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_5" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_7_5" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 80.6704, 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_8_1" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 169.67, -120 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_3" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_8_3" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 120.67, 113 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_2" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 1.67029, 5 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_9_1" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 193.67, 190 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_10_1" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 344.67, 134 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_10_2" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_10_2" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 454.67, -74 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_1" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 306.67, -150 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_11_2" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_11_2" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 630.67, 133 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_11_3" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_11_3" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 509.67, 41 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_7_4" type="Sprite" parent="town/clouds/bg"]
+[node name="cloud_7_4" type="Sprite" parent="ground/town/clouds/bg"]
 position = Vector2( 217.67, 35 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="fg" type="Control" parent="town/clouds"]
+[node name="fg" type="Control" parent="ground/town/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_01" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 52.6702
 margin_top = 138.0
 margin_right = 149.67
 margin_bottom = 200.0
 
-[node name="cloud_29" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_29" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 131.67
 margin_top = 117.0
 margin_right = 228.67
 margin_bottom = 179.0
 
-[node name="cloud_02" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -7.32977
 margin_top = 51.0
 margin_right = 89.6702
 margin_bottom = 113.0
 
-[node name="cloud_03" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -143.33
 margin_top = -32.0
 margin_right = -46.3298
 margin_bottom = 30.0
 
-[node name="cloud_04" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -160.33
 margin_top = -147.0
 margin_right = -63.3297
 margin_bottom = -85.0
 
-[node name="cloud_05" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -9.32971
 margin_top = -179.0
 margin_right = 87.6703
 margin_bottom = -117.0
 
-[node name="cloud_06" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -5.32971
 margin_top = -71.0
 margin_right = 91.6703
 margin_bottom = -9.0
 
-[node name="cloud_07" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 115.67
 margin_top = 18.0
 margin_right = 212.67
 margin_bottom = 80.0
 
-[node name="cloud_08" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 83.6703
 margin_top = -101.0
 margin_right = 180.67
 margin_bottom = -39.0
 
-[node name="cloud_09" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 106.67
 margin_top = -209.0
 margin_right = 203.67
 margin_bottom = -147.0
 
-[node name="cloud_10" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 200.67
 margin_top = -101.0
 margin_right = 297.67
 margin_bottom = -39.0
 
-[node name="cloud_26" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_26" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 110.67
 margin_top = -65.0
 margin_right = 207.67
 margin_bottom = -3.0
 
-[node name="cloud_27" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_27" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -82.3297
 margin_top = -120.0
 margin_right = 14.6703
 margin_bottom = -58.0
 
-[node name="cloud_11" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 225.67
 margin_top = -273.0
 margin_right = 322.67
 margin_bottom = -211.0
 
-[node name="cloud_12" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_12" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 230.67
 margin_top = 82.0
 margin_right = 327.67
 margin_bottom = 144.0
 
-[node name="cloud_13" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_13" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 379.67
 margin_top = 91.0
 margin_right = 476.67
 margin_bottom = 153.0
 
-[node name="cloud_28" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_28" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 285.67
 margin_top = 114.0
 margin_right = 382.67
 margin_bottom = 176.0
 
-[node name="cloud_14" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_14" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 349.67
 margin_top = -18.0
 margin_right = 446.67
 margin_bottom = 44.0
 
-[node name="cloud_15" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_15" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 411.67
 margin_top = -110.0
 margin_right = 508.67
 margin_bottom = -48.0
 
-[node name="cloud_16" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_16" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 317.67
 margin_top = -169.0
 margin_right = 414.67
 margin_bottom = -107.0
 
-[node name="cloud_17" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_17" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 477.67
 margin_top = 1.0
 margin_right = 574.67
 margin_bottom = 63.0
 
-[node name="cloud_18" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_18" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 502.67
 margin_top = 101.0
 margin_right = 599.67
 margin_bottom = 163.0
 
-[node name="cloud_30" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_30" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 410.67
 margin_top = -54.0
 margin_right = 507.67
 margin_bottom = 8.0
 
-[node name="cloud_19" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_19" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 604.67
 margin_top = 92.0
 margin_right = 701.67
 margin_bottom = 154.0
 
-[node name="cloud_20" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_20" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 543.67
 margin_top = 24.0
 margin_right = 640.67
 margin_bottom = 86.0
 
-[node name="cloud_25" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_25" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 218.67
 margin_top = 15.0
 margin_right = 315.67
 margin_bottom = 77.0
 
-[node name="cloud_21" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_21" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 662.67
 margin_top = 3.0
 margin_right = 759.67
 margin_bottom = 65.0
 
-[node name="cloud_22" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_22" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 670.67
 margin_top = -108.0
 margin_right = 767.67
 margin_bottom = -46.0
 
-[node name="cloud_23" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_23" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 527.67
 margin_top = -106.0
 margin_right = 624.67
 margin_bottom = -44.0
 
-[node name="cloud_31" parent="town/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_31" parent="ground/town/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 527.67
 margin_top = -106.0
 margin_right = 624.67
 margin_bottom = -44.0
 
-[node name="cave" type="TextureButton" parent="."]
+[node name="cave" type="TextureButton" parent="ground"]
 margin_left = 819.0
 margin_top = 387.0
 margin_right = 994.0
@@ -978,12 +984,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" parent="cave" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/cave" instance=ExtResource( 24 )]
 margin_left = 56.0
 margin_right = 112.0
 text = "AREACAVENAME"
 
-[node name="active" type="TextureRect" parent="cave"]
+[node name="active" type="TextureRect" parent="ground/cave"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -994,7 +1000,7 @@ margin_bottom = 50.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="clouds" type="Control" parent="cave"]
+[node name="clouds" type="Control" parent="ground/cave"]
 visible = false
 margin_left = -1.67023
 margin_right = 38.3298
@@ -1003,100 +1009,100 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="cave/clouds"]
+[node name="bg" type="Control" parent="ground/cave/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_8_2" type="Sprite" parent="cave/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/cave/clouds/bg"]
 position = Vector2( -16.3298, 54 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_7_1" type="Sprite" parent="cave/clouds/bg"]
+[node name="cloud_7_1" type="Sprite" parent="ground/cave/clouds/bg"]
 position = Vector2( 69.6702, 16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_8_1" type="Sprite" parent="cave/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/cave/clouds/bg"]
 position = Vector2( -12.3298, 86 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_9_1" type="Sprite" parent="cave/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/cave/clouds/bg"]
 position = Vector2( 126.67, 67 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_11_1" type="Sprite" parent="cave/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/cave/clouds/bg"]
 position = Vector2( 271.67, 111 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="fg" type="Control" parent="cave/clouds"]
+[node name="fg" type="Control" parent="ground/cave/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_01" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -155.33
 margin_top = 11.0
 margin_right = -58.3298
 margin_bottom = 73.0
 
-[node name="cloud_02" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -99.3298
 margin_top = 55.0
 margin_right = -2.32977
 margin_bottom = 117.0
 
-[node name="cloud_03" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -62.3298
 margin_top = -53.0
 margin_right = 34.6702
 margin_bottom = 9.0
 
-[node name="cloud_04" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 53.6702
 margin_top = 7.0
 margin_right = 150.67
 margin_bottom = 69.0
 
-[node name="cloud_05" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 21.6702
 margin_top = 77.0
 margin_right = 118.67
 margin_bottom = 139.0
 
-[node name="cloud_06" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 229.67
 margin_top = 136.0
 margin_right = 326.67
 margin_bottom = 198.0
 
-[node name="cloud_07" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 219.67
 margin_top = 64.0
 margin_right = 316.67
 margin_bottom = 126.0
 
-[node name="cloud_08" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 125.67
 margin_top = 32.0
 margin_right = 222.67
 margin_bottom = 94.0
 
-[node name="cloud_09" parent="cave/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/cave/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 47.6702
 margin_top = -84.0
 margin_right = 144.67
 margin_bottom = -22.0
 
-[node name="forest" type="TextureButton" parent="."]
+[node name="forest" type="TextureButton" parent="ground"]
 margin_left = 342.0
 margin_top = 389.0
 margin_right = 525.0
@@ -1105,14 +1111,14 @@ texture_normal = ExtResource( 6 )
 expand = true
 script = ExtResource( 3 )
 
-[node name="Label" parent="forest" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/forest" instance=ExtResource( 24 )]
 margin_left = 48.0
 margin_top = -12.0
 margin_right = 124.0
 margin_bottom = 12.0
 text = "AREAFORESTNAME"
 
-[node name="active" type="TextureRect" parent="forest"]
+[node name="active" type="TextureRect" parent="ground/forest"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1123,7 +1129,7 @@ margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="clouds" type="Control" parent="forest"]
+[node name="clouds" type="Control" parent="ground/forest"]
 visible = false
 margin_left = -1.67023
 margin_right = 38.3298
@@ -1132,185 +1138,185 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="forest/clouds"]
+[node name="bg" type="Control" parent="ground/forest/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_9_1" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( -42.3298, 20 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_7_1" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_7_1" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( 114.67, 44 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_4" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_7_4" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( -191.33, 59 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_2" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( 28.6702, 161 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_3" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_7_3" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( -130.33, 138 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_8_1" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( 296.67, 109 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_2" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( -273.33, 80 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_9_2" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_9_2" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( 135.67, 152 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_10_1" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( -190.33, 218 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_1" type="Sprite" parent="forest/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/forest/clouds/bg"]
 position = Vector2( -298.33, 127 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="fg" type="Control" parent="forest/clouds"]
+[node name="fg" type="Control" parent="ground/forest/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_01" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 280.67
 margin_top = 92.0
 margin_right = 377.67
 margin_bottom = 154.0
 
-[node name="cloud_02" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 223.67
 margin_top = 18.0
 margin_right = 320.67
 margin_bottom = 80.0
 
-[node name="cloud_03" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 58.6702
 margin_top = 126.0
 margin_right = 155.67
 margin_bottom = 188.0
 
-[node name="cloud_04" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 145.67
 margin_top = 105.0
 margin_right = 242.67
 margin_bottom = 167.0
 
-[node name="cloud_05" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -0.329773
 margin_top = 8.0
 margin_right = 96.6702
 margin_bottom = 70.0
 
-[node name="cloud_06" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -47.3298
 margin_top = 122.0
 margin_right = 49.6702
 margin_bottom = 184.0
 
-[node name="cloud_07" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -128.33
 margin_top = 194.0
 margin_right = -31.3298
 margin_bottom = 256.0
 
-[node name="cloud_08" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -170.33
 margin_top = 111.0
 margin_right = -73.3298
 margin_bottom = 173.0
 
-[node name="cloud_09" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -223.33
 margin_top = 208.0
 margin_right = -126.33
 margin_bottom = 270.0
 
-[node name="cloud_10" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -172.33
 margin_top = -8.0
 margin_right = -75.3298
 margin_bottom = 54.0
 
-[node name="cloud_11" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -51.3298
 margin_top = 66.0
 margin_right = 45.6702
 margin_bottom = 128.0
 
-[node name="cloud_12" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_12" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -91.3298
 margin_top = -42.0
 margin_right = 5.67023
 margin_bottom = 20.0
 
-[node name="cloud_13" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_13" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 114.67
 margin_top = -44.0
 margin_right = 211.67
 margin_bottom = 18.0
 
-[node name="cloud_14" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_14" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -298.33
 margin_top = -40.0
 margin_right = -201.33
 margin_bottom = 22.0
 
-[node name="cloud_15" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_15" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -264.33
 margin_top = 91.0
 margin_right = -167.33
 margin_bottom = 153.0
 
-[node name="cloud_16" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_16" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -272.33
 margin_top = 155.0
 margin_right = -175.33
 margin_bottom = 217.0
 
-[node name="cloud_17" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_17" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -391.33
 margin_top = 178.0
 margin_right = -294.33
 margin_bottom = 240.0
 
-[node name="cloud_18" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_18" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -389.33
 margin_top = 74.0
 margin_right = -292.33
 margin_bottom = 136.0
 
-[node name="cloud_19" parent="forest/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_19" parent="ground/forest/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -345.33
 margin_top = 10.0
 margin_right = -248.33
 margin_bottom = 72.0
 
-[node name="village" type="TextureButton" parent="."]
+[node name="village" type="TextureButton" parent="ground"]
 margin_left = 493.0
 margin_top = 611.0
 margin_right = 845.0
@@ -1319,14 +1325,14 @@ texture_normal = ExtResource( 8 )
 expand = true
 script = ExtResource( 3 )
 
-[node name="Label" parent="village" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/village" instance=ExtResource( 24 )]
 margin_left = 128.0
 margin_top = -31.0
 margin_right = 204.0
 margin_bottom = -7.0
 text = "MAPVILLAGENAME"
 
-[node name="active" type="TextureRect" parent="village"]
+[node name="active" type="TextureRect" parent="ground/village"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1337,7 +1343,7 @@ margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="pending_scene_indicator" type="TextureRect" parent="village"]
+[node name="pending_scene_indicator" type="TextureRect" parent="ground/village"]
 visible = false
 material = SubResource( 1 )
 anchor_left = 1.0
@@ -1349,7 +1355,7 @@ margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="clouds" type="Control" parent="village"]
+[node name="clouds" type="Control" parent="ground/village"]
 visible = false
 margin_left = -1.67023
 margin_right = 38.3298
@@ -1358,334 +1364,334 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="village/clouds"]
+[node name="bg" type="Control" parent="ground/village/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_7_1" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_7_1" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 305.67, 23 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_3" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_7_3" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 322.67, 268 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_6" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_7_6" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 241.67, 310 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_10_2" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_10_2" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 457.67, 216 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_3" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_11_3" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( -88.3298, 200 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_7_2" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 303.67, 142 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_10_4" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_10_4" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 736.67, 420 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_7_5" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_7_5" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 752.67, 355 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_4" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_7_4" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 475.67, 325 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_10_3" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_10_3" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 85.6702, 165 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_4" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_11_4" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 686.67, 316 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_8_1" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 487.67, 30 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_5" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_5" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 547.67, 436 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_8" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_8" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 391.67, 384 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_4" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_4" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 553.67, 158 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_2" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( -25.3298, 75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_11_5" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_11_5" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( -18.3298, 267 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_8_3" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_3" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 138.67, 49 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_6" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_6" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( -344.33, 58 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_7" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_8_7" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( -221.33, 196 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_9_1" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 140.67, 17 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_10_1" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 117.67, 237 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_1" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( -177.33, 102 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_11_2" type="Sprite" parent="village/clouds/bg"]
+[node name="cloud_11_2" type="Sprite" parent="ground/village/clouds/bg"]
 position = Vector2( 577.67, 47 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="fg" type="Control" parent="village/clouds"]
+[node name="fg" type="Control" parent="ground/village/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="cloud_01" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -333.33
 margin_top = 63.0
 margin_right = -236.33
 margin_bottom = 125.0
 
-[node name="cloud_31" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_31" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -472.33
 margin_top = -18.0
 margin_right = -375.33
 margin_bottom = 44.0
 
-[node name="cloud_32" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_32" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -380.33
 margin_top = 20.0
 margin_right = -283.33
 margin_bottom = 82.0
 
-[node name="cloud_02" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -281.33
 margin_top = -1.0
 margin_right = -184.33
 margin_bottom = 61.0
 
-[node name="cloud_03" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -262.33
 margin_top = 139.0
 margin_right = -165.33
 margin_bottom = 201.0
 
-[node name="cloud_04" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -112.33
 margin_top = 115.0
 margin_right = -15.3298
 margin_bottom = 177.0
 
-[node name="cloud_05" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -193.33
 margin_top = -9.0
 margin_right = -96.3298
 margin_bottom = 53.0
 
-[node name="cloud_06" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -103.33
 margin_top = -45.0
 margin_right = -6.32977
 margin_bottom = 17.0
 
-[node name="cloud_07" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -184.33
 margin_top = 214.0
 margin_right = -87.3298
 margin_bottom = 276.0
 
-[node name="cloud_08" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -18.3298
 margin_top = 212.0
 margin_right = 78.6702
 margin_bottom = 274.0
 
-[node name="cloud_09" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -8.32977
 margin_top = 86.0
 margin_right = 88.6702
 margin_bottom = 148.0
 
-[node name="cloud_10" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -79.3298
 margin_top = 5.0
 margin_right = 17.6702
 margin_bottom = 67.0
 
-[node name="cloud_11" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 70.6702
 margin_top = -54.0
 margin_right = 167.67
 margin_bottom = 8.0
 
-[node name="cloud_12" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_12" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 11.6702
 margin_top = 3.0
 margin_right = 108.67
 margin_bottom = 65.0
 
-[node name="cloud_13" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_13" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 194.67
 margin_top = 146.0
 margin_right = 291.67
 margin_bottom = 208.0
 
-[node name="cloud_14" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_14" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 151.67
 margin_top = 203.0
 margin_right = 248.67
 margin_bottom = 265.0
 
-[node name="cloud_15" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_15" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 170.67
 margin_top = 3.0
 margin_right = 267.67
 margin_bottom = 65.0
 
-[node name="cloud_16" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_16" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 241.67
 margin_top = -80.0
 margin_right = 338.67
 margin_bottom = -18.0
 
-[node name="cloud_17" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_17" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 403.67
 margin_top = -47.0
 margin_right = 500.67
 margin_bottom = 15.0
 
-[node name="cloud_18" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_18" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 289.67
 margin_top = 70.0
 margin_right = 386.67
 margin_bottom = 132.0
 
-[node name="cloud_19" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_19" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 403.67
 margin_top = 196.0
 margin_right = 500.67
 margin_bottom = 258.0
 
-[node name="cloud_20" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_20" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 298.67
 margin_top = 146.0
 margin_right = 395.67
 margin_bottom = 208.0
 
-[node name="cloud_21" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_21" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 279.67
 margin_top = 270.0
 margin_right = 376.67
 margin_bottom = 332.0
 
-[node name="cloud_22" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_22" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 350.67
 margin_top = 351.0
 margin_right = 447.67
 margin_bottom = 413.0
 
-[node name="cloud_23" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_23" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 514.67
 margin_top = 384.0
 margin_right = 611.67
 margin_bottom = 446.0
 
-[node name="cloud_24" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_24" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 462.67
 margin_top = 289.0
 margin_right = 559.67
 margin_bottom = 351.0
 
-[node name="cloud_25" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_25" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 652.67
 margin_top = 265.0
 margin_right = 749.67
 margin_bottom = 327.0
 
-[node name="cloud_26" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_26" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 683.67
 margin_top = 372.0
 margin_right = 780.67
 margin_bottom = 434.0
 
-[node name="cloud_27" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_27" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 795.67
 margin_top = 346.0
 margin_right = 892.67
 margin_bottom = 408.0
 
-[node name="cloud_28" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_28" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 548.67
 margin_top = 206.0
 margin_right = 645.67
 margin_bottom = 268.0
 
-[node name="cloud_29" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_29" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 405.67
 margin_top = 75.0
 margin_right = 502.67
 margin_bottom = 137.0
 
-[node name="cloud_30" parent="village/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_30" parent="ground/village/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 531.67
 margin_top = -3.0
 margin_right = 628.67
 margin_bottom = 59.0
 
-[node name="Indicator" type="Node" parent="village"]
+[node name="Indicator" type="Node" parent="ground/village"]
 script = ExtResource( 12 )
 visual = NodePath("../pending_scene_indicator")
 
-[node name="cult" type="TextureButton" parent="."]
+[node name="cult" type="TextureButton" parent="ground"]
 margin_left = 1434.0
 margin_top = 742.0
 margin_right = 1808.0
@@ -1694,14 +1700,14 @@ texture_normal = ExtResource( 9 )
 expand = true
 script = ExtResource( 3 )
 
-[node name="Label" parent="cult" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/cult" instance=ExtResource( 24 )]
 margin_left = 111.0
 margin_top = -13.0
 margin_right = 261.0
 margin_bottom = 11.0
 text = "AREACULTNAME"
 
-[node name="active" type="TextureRect" parent="cult"]
+[node name="active" type="TextureRect" parent="ground/cult"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1712,7 +1718,7 @@ margin_bottom = 35.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="clouds" type="Control" parent="cult"]
+[node name="clouds" type="Control" parent="ground/cult"]
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -1720,278 +1726,278 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="cult/clouds"]
+[node name="bg" type="Control" parent="ground/cult/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_7_4" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_7_4" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 230.67, 100 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_3" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_7_3" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 333.67, -120 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_2" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( -194.33, 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_10_4" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_10_4" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 256.67, 202 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_10_3" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_10_3" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 355.67, -43 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_9_3" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_9_3" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 40.6703, -34 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_9_2" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_9_2" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 447.67, -156 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_8_1" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 65.6703, 199 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_4" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_8_4" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 177.67, 42 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_3" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_8_3" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 67.6703, -133 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_5" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_8_5" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 107.67, 300 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_2" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( -64.3297, -90 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_10_1" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( -71.3298, 83 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_10_2" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_10_2" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 157.67, -157 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_1" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( -222.33, -73 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_11_2" type="Sprite" parent="cult/clouds/bg"]
+[node name="cloud_11_2" type="Sprite" parent="ground/cult/clouds/bg"]
 position = Vector2( 428.67, 100 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="fg" type="Control" parent="cult/clouds"]
+[node name="fg" type="Control" parent="ground/cult/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="cloud_01" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -363.33
 margin_top = -144.0
 margin_right = -266.33
 margin_bottom = -82.0
 
-[node name="cloud_02" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -345.33
 margin_top = -72.0
 margin_right = -248.33
 margin_bottom = -10.0
 
-[node name="cloud_03" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -278.33
 margin_top = -195.0
 margin_right = -181.33
 margin_bottom = -133.0
 
-[node name="cloud_04" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -197.33
 margin_top = -87.0
 margin_right = -100.33
 margin_bottom = -25.0
 
-[node name="cloud_05" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -296.33
 margin_top = 34.0
 margin_right = -199.33
 margin_bottom = 96.0
 
-[node name="cloud_06" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -170.33
 margin_top = 79.0
 margin_right = -73.3298
 margin_bottom = 141.0
 
-[node name="cloud_07" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -71.3298
 margin_top = 173.0
 margin_right = 25.6702
 margin_bottom = 235.0
 
-[node name="cloud_08" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -125.33
 margin_top = 9.0
 margin_right = -28.3298
 margin_bottom = 71.0
 
-[node name="cloud_09" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -60.3298
 margin_top = 88.0
 margin_right = 36.6702
 margin_bottom = 150.0
 
-[node name="cloud_10" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -4.32977
 margin_top = 230.0
 margin_right = 92.6702
 margin_bottom = 292.0
 
-[node name="cloud_11" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 65.6702
 margin_top = 159.0
 margin_right = 162.67
 margin_bottom = 221.0
 
-[node name="cloud_13" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_13" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 179.67
 margin_top = 157.0
 margin_right = 276.67
 margin_bottom = 219.0
 
-[node name="cloud_15" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_15" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 300.67
 margin_top = 121.0
 margin_right = 397.67
 margin_bottom = 183.0
 
-[node name="cloud_17" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_17" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 338.67
 margin_top = 18.0
 margin_right = 435.67
 margin_bottom = 80.0
 
-[node name="cloud_18" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_18" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 408.67
 margin_top = 103.0
 margin_right = 505.67
 margin_bottom = 165.0
 
-[node name="cloud_19" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_19" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 388.67
 margin_top = -95.0
 margin_right = 485.67
 margin_bottom = -33.0
 
-[node name="cloud_20" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_20" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 188.67
 margin_top = -64.0
 margin_right = 285.67
 margin_bottom = -2.0
 
-[node name="cloud_21" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_21" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 100.67
 margin_top = 35.0
 margin_right = 197.67
 margin_bottom = 97.0
 
-[node name="cloud_22" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_22" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 19.6702
 margin_top = -102.0
 margin_right = 116.67
 margin_bottom = -40.0
 
-[node name="cloud_23" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_23" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 113.67
 margin_top = -151.0
 margin_right = 210.67
 margin_bottom = -89.0
 
-[node name="cloud_24" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_24" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 106.67
 margin_top = -56.0
 margin_right = 203.67
 margin_bottom = 6.0
 
-[node name="cloud_25" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_25" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 322.67
 margin_top = -141.0
 margin_right = 419.67
 margin_bottom = -79.0
 
-[node name="cloud_26" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_26" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 219.67
 margin_top = -220.0
 margin_right = 316.67
 margin_bottom = -158.0
 
-[node name="cloud_27" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_27" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 354.67
 margin_top = -247.0
 margin_right = 451.67
 margin_bottom = -185.0
 
-[node name="cloud_28" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_28" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 60.6702
 margin_top = -247.0
 margin_right = 157.67
 margin_bottom = -185.0
 
-[node name="cloud_29" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_29" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -18.3298
 margin_top = -209.0
 margin_right = 78.6702
 margin_bottom = -147.0
 
-[node name="cloud_30" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_30" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -7.32977
 margin_top = -144.0
 margin_right = 89.6702
 margin_bottom = -82.0
 
-[node name="cloud_31" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_31" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -175.33
 margin_top = -205.0
 margin_right = -78.3298
 margin_bottom = -143.0
 
-[node name="cloud_32" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_32" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -146.33
 margin_top = -140.0
 margin_right = -49.3298
 margin_bottom = -78.0
 
-[node name="cloud_33" parent="cult/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_33" parent="ground/cult/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -67.3298
 margin_top = -254.0
 margin_right = 29.6702
 margin_bottom = -192.0
 
-[node name="modern_city" type="TextureButton" parent="."]
+[node name="modern_city" type="TextureButton" parent="ground"]
 visible = false
 margin_left = 1215.09
 margin_top = 656.905
@@ -2004,13 +2010,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="clouds" type="Control" parent="modern_city"]
+[node name="clouds" type="Control" parent="ground/modern_city"]
 visible = false
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
 
-[node name="active" type="TextureRect" parent="modern_city"]
+[node name="active" type="TextureRect" parent="ground/modern_city"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -2021,21 +2027,21 @@ margin_bottom = 48.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="Label" parent="modern_city" instance=ExtResource( 24 )]
+[node name="Label" parent="ground/modern_city" instance=ExtResource( 24 )]
 margin_left = 346.0
 margin_top = -33.0
 margin_right = 385.0
 margin_bottom = -9.0
 text = "???"
 
-[node name="inner" type="TextureButton" parent="."]
+[node name="inner" type="TextureButton" parent="ground"]
 margin_left = 1424.0
 margin_top = 947.0
 margin_right = 1460.0
 margin_bottom = 955.0
 expand = true
 
-[node name="clouds" type="Control" parent="inner"]
+[node name="clouds" type="Control" parent="ground/inner"]
 margin_left = -1.67023
 margin_right = 38.3298
 margin_bottom = 40.0
@@ -2043,184 +2049,184 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Control" parent="inner/clouds"]
+[node name="bg" type="Control" parent="ground/inner/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cloud_7_3" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_7_3" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1024.33, 106 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_2" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_7_2" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -816.33, 126 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_4" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_7_4" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1488.33, -208 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_7_5" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_7_5" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1368.33, -128 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
-[node name="cloud_11_2" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_11_2" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1190.33, -6 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="cloud_8_1" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_8_1" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( 276.67, 154 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_3" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_8_3" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -871.33, 86 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_4" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_8_4" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1163.33, 78 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_8_2" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_8_2" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( 565.67, 68 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 27 )
 
-[node name="cloud_9_1" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_9_1" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( 397.67, 94 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_9_2" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_9_2" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1134.33, 52 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
-[node name="cloud_10_1" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_10_1" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -703.33, 150 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_10_2" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_10_2" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1387.33, -18 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 28 )
 
-[node name="cloud_11_1" type="Sprite" parent="inner/clouds/bg"]
+[node name="cloud_11_1" type="Sprite" parent="ground/inner/clouds/bg"]
 position = Vector2( -1294.33, 70 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 26 )
 
-[node name="fg" type="Control" parent="inner/clouds"]
+[node name="fg" type="Control" parent="ground/inner/clouds"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="cloud_01" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_01" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -665.33
 margin_top = 88.0
 margin_right = -568.33
 margin_bottom = 150.0
 
-[node name="cloud_15" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_15" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 126.67
 margin_top = 80.0
 margin_right = 223.67
 margin_bottom = 142.0
 
-[node name="cloud_16" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_16" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 252.67
 margin_top = 46.0
 margin_right = 349.67
 margin_bottom = 108.0
 
-[node name="cloud_17" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_17" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 376.67
 margin_top = 28.0
 margin_right = 473.67
 margin_bottom = 90.0
 
-[node name="cloud_18" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_18" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = 460.67
 margin_top = -76.0
 margin_right = 557.67
 margin_bottom = -14.0
 
-[node name="cloud_02" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_02" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -831.33
 margin_top = 38.0
 margin_right = -734.33
 margin_bottom = 100.0
 
-[node name="cloud_03" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_03" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -927.33
 margin_top = 40.0
 margin_right = -830.33
 margin_bottom = 102.0
 
-[node name="cloud_04" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_04" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1055.33
 margin_top = -16.0
 margin_right = -958.33
 margin_bottom = 46.0
 
-[node name="cloud_05" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_05" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1147.33
 margin_top = 32.0
 margin_right = -1050.33
 margin_bottom = 94.0
 
-[node name="cloud_06" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_06" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1301.33
 margin_top = 22.0
 margin_right = -1204.33
 margin_bottom = 84.0
 
-[node name="cloud_07" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_07" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1277.33
 margin_top = -62.0
 margin_right = -1180.33
 margin_bottom = 0.0
 
-[node name="cloud_08" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_08" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1451.33
 margin_top = -104.0
 margin_right = -1354.33
 margin_bottom = -42.0
 
-[node name="cloud_09" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_09" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1419.33
 margin_top = 4.0
 margin_right = -1322.33
 margin_bottom = 66.0
 
-[node name="cloud_10" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_10" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1355.33
 margin_top = -158.0
 margin_right = -1258.33
 margin_bottom = -96.0
 
-[node name="cloud_11" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_11" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1407.33
 margin_top = -210.0
 margin_right = -1310.33
 margin_bottom = -148.0
 
-[node name="cloud_12" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_12" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1511.33
 margin_top = -270.0
 margin_right = -1414.33
 margin_bottom = -208.0
 
-[node name="cloud_13" parent="inner/clouds/fg" instance=ExtResource( 11 )]
+[node name="cloud_13" parent="ground/inner/clouds/fg" instance=ExtResource( 11 )]
 margin_left = -1165.33
 margin_top = -70.0
 margin_right = -1068.33

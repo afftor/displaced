@@ -55,6 +55,8 @@ func createfromname(name):
 		if template.status_resists.has(i):
 			status_resists[i] = template.status_resists[i]
 	animations = template.animations.duplicate()
+	if template.has('anim_scale'):
+		anim_scale = template.anim_scale
 	hp = get_stat('hpmax')
 	for skill_id in template.skilllist:
 		var skill_lvl = template.skilllist[skill_id]
@@ -445,10 +447,10 @@ func process_ultimeter(ev, skill = null):#skill :S_Skill
 		do_add = (skill.process_check(['tags', 'has', 'damage'])
 			and skill.process_check(['hit_res', 'mask', variables.RES_HITCRIT]))
 	elif ev == variables.TR_SKILL_FINISH:#S_Skill here is meta-type
-		do_add = (skill.process_check(['tags', 'has', 'damage'])
-			and skill.process_check(['best_hit_res', 'mask', variables.RES_HITCRIT])
-			and !skill.template.has('not_final')
-			and skill.skilltype != 'ultimate')
+		do_add = (!skill.template.has('not_final')
+			and skill.skilltype != 'ultimate'
+			and skill.process_check(['tags', 'has', 'damage'])
+			and skill.process_check(['best_hit_res', 'mask', variables.RES_HITCRIT]))
 	if do_add:
 		add_ultimeter(variables.ULTIMETER_COSTS[ev])
 

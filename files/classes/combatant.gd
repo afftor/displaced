@@ -9,6 +9,7 @@ var base
 var icon
 var combaticon
 var animations = {} setget ,get_animations
+var anim_scale
 
 var race
 

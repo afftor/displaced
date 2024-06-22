@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=2]
@@ -7,7 +7,11 @@
 [ext_resource path="res://files/scenes/combat/FighterNode.gd" type="Script" id=5]
 [ext_resource path="res://files/scenes/combat/char_spride_drag.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/buttons/combat/hpbar_battlegray_filler.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/universal/arrowleft.png" type="Texture" id=8]
 [ext_resource path="res://tooltip_theme.tres" type="Theme" id=9]
+[ext_resource path="res://files/scenes/combat/buff_group.gd" type="Script" id=10]
+[ext_resource path="res://assets/images/gui/universal/b_minus.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/universal/b_plus.png" type="Texture" id=13]
 
 [sub_resource type="StyleBoxFlat" id=2]
 draw_center = false
@@ -45,6 +49,8 @@ margin_left = -40.0
 margin_top = -66.0
 margin_right = 40.0
 margin_bottom = -38.0
+expand = true
+stretch_mode = 1
 script = ExtResource( 6 )
 
 [node name="shield" type="TextureRect" parent="sprite"]
@@ -73,6 +79,8 @@ margin_top = -66.0
 margin_right = 40.0
 margin_bottom = -38.0
 mouse_filter = 2
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -121,25 +129,38 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -109.5
+margin_left = -109.0
 margin_top = -308.0
-margin_right = 109.5
-margin_bottom = -253.0
-rect_min_size = Vector2( 101, 0 )
+margin_right = 110.0
+margin_bottom = -243.0
+rect_min_size = Vector2( 101, 65 )
 mouse_filter = 2
 
-[node name="Button" type="TextureRect" parent="Buffs"]
-visible = false
+[node name="Group" type="Control" parent="Buffs"]
 margin_right = 50.0
-margin_bottom = 55.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 50, 65 )
+rect_clip_content = true
+size_flags_vertical = 0
+script = ExtResource( 10 )
+
+[node name="container" type="VBoxContainer" parent="Buffs/Group"]
+margin_top = 15.0
+margin_right = 50.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
-mouse_filter = 0
+rect_clip_content = true
+
+[node name="Button" type="TextureRect" parent="Buffs/Group/container"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 theme = ExtResource( 9 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Buffs/Button"]
+[node name="Label" type="Label" parent="Buffs/Group/container/Button"]
 visible = false
 margin_left = -10.0
 margin_top = 15.0
@@ -150,3 +171,28 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "555"
 align = 1
+
+[node name="can_expand" type="TextureRect" parent="Buffs/Group"]
+margin_top = 15.0
+margin_right = 15.0
+margin_bottom = 65.0
+rect_rotation = 270.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="added" type="TextureRect" parent="Buffs/Group"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+
+[node name="removed" type="TextureRect" parent="Buffs/Group"]
+margin_top = 15.0
+margin_right = 49.0
+margin_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource( 12 )

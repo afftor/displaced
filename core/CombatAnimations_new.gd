@@ -147,10 +147,13 @@ func sound(node, args):
 func default_animation(node, args):
 #	print("anim %s %s" % [node.name, args.animation])
 	var id = args.animation
+	var time_id = id
+	if args.has('subtype'):
+		time_id = "%s_%s" % [id, args.subtype]
 	var playtime
-	var transition_time = variables.default_animations_transition[id]
-	var delaytime = variables.default_animations_delay[id]
-	var delayafter = variables.default_animations_after_delay[id]
+	var transition_time = variables.default_animations_transition[time_id]
+	var delaytime = variables.default_animations_delay[time_id]
+	var delayafter = variables.default_animations_after_delay[time_id]
 	var tex = null
 	if node.fighter.animations.has(id):
 		tex = node.fighter.animations[id]
@@ -163,7 +166,7 @@ func default_animation(node, args):
 		if tex.oneshot:
 			tex.current_frame = 0
 	else:
-		playtime = variables.default_animations_duration[id]
+		playtime = variables.default_animations_duration[time_id]
 	var back_delay = max(playtime + delaytime - transition_time, 0)
 	#------old variant (bug of Tween node is mostly severe here)
 #	input_handler.force_end_tweens(sp)
@@ -219,6 +222,16 @@ func default_sfx(node, args):
 		input_handler.call_deferred('gfx_sprite', node, id, 0.5, null)
 	return playtime + aftereffectdelay
 
+
+func shake(node, args):
+	var playtime = 0.5
+	var magnitude = 5
+	if args.has('time'):
+		playtime = args.time
+	if args.has('magnitude'):
+		magnitude = args.magnitude
+	input_handler.ShakeAnimation(node, playtime, magnitude)
+	return playtime + aftereffectdelay
 
 func casterattack(node, args = null):#obsolete
 	var playtime = 0

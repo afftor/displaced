@@ -37,7 +37,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/action_2.png", 
 			description = "BUFF_DEFENCE",
 			limit = 1,
-			t_name = 'icon_defence'
+			t_name = 'icon_defence',
+			group = variables.BG_BUFF#BG_DEFENCE
 		}],
 	},
 	e_summon = {
@@ -136,7 +137,8 @@ var effect_table = {
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Debilitate.png", 
 			description = "BUFF_POISON_PERMANENT",
-			t_name = 'icon_poison_permanent'
+			t_name = 'icon_poison_permanent',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_s_bleed = {
@@ -189,7 +191,8 @@ var effect_table = {
 			description = "BUFF_STUN",
 			limit = 1,
 			t_name = 'icon_stun',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 		atomic = [],
 	},
@@ -208,7 +211,8 @@ var effect_table = {
 			icon = "res://assets/images/traits/speeddebuf.png",
 			description = "BUFF_INTIMIDATE",
 			t_name = 'icon_intimidate',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}]
 	},
 	e_silence = {
@@ -246,7 +250,8 @@ var effect_table = {
 			description = "BUFF_WOUND",
 			limit = 1,
 			t_name = 'icon_wound',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_tr_wound = rebuild_template({chance = 0.33, effect = 'e_s_wound', debug_name = "starter_wound"}),
@@ -338,7 +343,8 @@ var effect_table = {
 				description = "BUFF_FENCING_DEBUFF",
 				args = [{obj = 'parent_args', param = 1}],
 				t_name = 'icon_fencing_debuf',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_NEGATIVE
 			}
 		],
 	},
@@ -358,7 +364,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/arron_1.png", 
 			description = "BUFF_SWIFT",
 			t_name = 'icon_swift',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}],
 	},
 	e_s_protect = {
@@ -387,7 +394,8 @@ var effect_table = {
 				description = "BUFF_PARRY_RECEIVER",
 				limit = 1,
 				t_name = 'icon_parry_receiver',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_BUFF#BG_DEFENCE
 			}
 		],
 	},
@@ -424,7 +432,8 @@ var effect_table = {
 				description = "BUFF_PARRY_LISTENER",
 				limit = 1,
 				t_name = 'icon_parry_listener',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_BUFF#BG_DEFENCE
 			}
 		],
 	},
@@ -530,7 +539,8 @@ var effect_table = {
 			description = "BUFF_SWORD_MASTERY",
 			limit = 1,
 			t_name = 'icon_sword_mastery',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}],
 		atomic = [],
 		sub_effects = [],
@@ -622,7 +632,8 @@ var effect_table = {
 				args = [{obj = 'parent_args', param = 1}],
 				limit = 1,
 				t_name = 'icon_termination_buff',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_BUFF
 			}
 		],
 	},
@@ -641,7 +652,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_6.png", 
 				description = "BUFF_SMOKE",
 				args = [],
-				t_name = 'icon_smoke'
+				t_name = 'icon_smoke',
+				group = variables.BG_BUFF
 			}
 		],
 	},
@@ -660,7 +672,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/arron_6.png", 
 				description = "BUFF_SMOKE_RESIST",
 				t_name = 'icon_smoke_resist',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_BUFF
 			}
 		],
 	},
@@ -706,7 +719,8 @@ var effect_table = {
 		buffs = [{
 				icon = "res://assets/images/iconsskills/rose_2.png", 
 				description = "BUFF_FLASH",
-				t_name = 'icon_flash'
+				t_name = 'icon_flash',
+				group = variables.BG_NEGATIVE
 			}
 		],
 	},
@@ -737,7 +751,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/rose_5.png", 
 			description = "BUFF_DELUGE",
 			limit = 1,
-			t_name = 'icon_deluge'
+			t_name = 'icon_deluge',
+			group = variables.BG_NEGATIVE#BG_WEAKNESS
 		}]
 	},
 	e_s_renew = {
@@ -757,7 +772,8 @@ var effect_table = {
 			description = "BUFF_RENEW",
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_renew',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}],
 	},
 	e_renew = {
@@ -848,7 +864,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/erika_2.png", 
 			description = "BUFF_AIR_ARROW",
 			limit = 1,
-			t_name = 'icon_air_arrow'
+			t_name = 'icon_air_arrow',
+			group = variables.BG_NEGATIVE#BG_WEAKNESS
 		}]
 	},
 	e_s_aarrow1 = {
@@ -909,7 +926,8 @@ var effect_table = {
 			description = "BUFF_FREEZE",
 			limit = 1,
 			t_name = 'icon_freeze',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_t_freeze = {
@@ -951,7 +969,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/erika_5.png", 
 			description = "BUFF_CHILL",
 			t_name = 'icon_chill',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_chill = {
@@ -985,7 +1004,8 @@ var effect_table = {
 		buffs = [{
 			icon = "res://assets/images/iconsskills/erika_3.png", 
 			description = "BUFF_ARROW_SHOWER_DEBUFF",
-			t_name = 'icon_arrow_shower_debuff'
+			t_name = 'icon_arrow_shower_debuff',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	#Here is TR_TURN_F-type implementation for e_t_nat_bless. Idea is to secure an ability for each
@@ -1041,7 +1061,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/erika_1.png", 
 			description = "BUFF_NATURE_BLESS",
 			t_name = 'icon_nature_bless',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}],
 	},
 	e_s_hearts = {
@@ -1060,7 +1081,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/erika_7.png", 
 			description = "BUFF_HEARTSEEKER_DEBUFF",
 			t_name = 'icon_heartseeker_debuff',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_s_charm = {
@@ -1079,7 +1101,8 @@ var effect_table = {
 				description = "BUFF_CHARM",
 				limit = 1,
 				t_name = 'icon_charm',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_NEGATIVE
 			}
 		],
 	},
@@ -1154,7 +1177,8 @@ var effect_table = {
 			description = "BUFF_FIREPUNCH_DEBUFF",
 			limit = 1,
 			t_name = 'icon_firepunch_debuff',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_t_firepunch = {
@@ -1223,7 +1247,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/ember_3.png", 
 				description = "BUFF_SHOCKWAVE_DEBUFF",
 				args = [],
-				t_name = 'icon_shockwave_debuff'
+				t_name = 'icon_shockwave_debuff',
+				group = variables.BG_NEGATIVE
 			}],
 	},
 	e_s_uppercut = {
@@ -1243,7 +1268,8 @@ var effect_table = {
 			description = "BUFF_UPPERCUT",
 			limit = 1,
 			t_name = 'icon_uppercut',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_t_uppercut = {
@@ -1312,7 +1338,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/ember_6.png", 
 				description = "BUFF_DEFEND_LISTENER",
 				limit = 1,
-				t_name = 'icon_defend_listener'
+				t_name = 'icon_defend_listener',
+				group = variables.BG_BUFF#BG_DEFENCE
 			}
 		],
 	},
@@ -1332,6 +1359,7 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/ember_6.png", 
 			description = "BUFF_DEFEND_BUFF",
 			t_name = 'icon_defend_buff',
+			group = variables.BG_BUFF
 		}],
 	},
 	e_t_dragonprot = {
@@ -1356,7 +1384,8 @@ var effect_table = {
 			description = "BUFF_DRAGON_PROTECTION",
 			args = [{obj = 'parent_args', param = 1}],
 			limit = 1,
-			t_name = 'icon_dragon_protection'
+			t_name = 'icon_dragon_protection',
+			group = variables.BG_BUFF#BG_DEFENCE
 		}],
 	},
 	#delete with time
@@ -1395,7 +1424,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/ember_8.png", 
 			description = "BUFF_AEGIS",
 			t_name = 'icon_aegis',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}],
 	},
 	e_s_aegis1 = {
@@ -1414,7 +1444,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/ember_8.png",
 			description = "BUFF_AEGIS_HP",
 			t_name = 'icon_aegis_hp',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}],
 	},
 	e_t_orb = {
@@ -1436,7 +1467,8 @@ var effect_table = {
 				description = "BUFF_ORB",
 				limit = 1,
 				t_name = 'icon_orb',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_NEGATIVE
 			}
 		],
 	},
@@ -1483,7 +1515,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/rilu_3.png", 
 				description = "BUFF_MIST_DEBUFF",
 				t_name = 'icon_mist_debuff',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_NEGATIVE
 			}],
 	},
 	e_t_mist = {
@@ -1502,7 +1535,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/rilu_3.png", 
 			description = "BUFF_MIST",
 			t_name = 'icon_mist',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_mist = {
@@ -1537,7 +1571,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/rilu_1.png", 
 			description = "BUFF_AVALANCHE_DEBUFF",
 			t_name = 'icon_avalanche_debuff',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_t_thorns = {
@@ -1586,7 +1621,8 @@ var effect_table = {
 			description = "BUFF_ECHO_SHIELD",
 			args = [{obj = 'parent_args', param = 0}],
 			limit = 1,
-			t_name = 'icon_echo_shield'
+			t_name = 'icon_echo_shield',
+			group = variables.BG_SHIELD
 		}],
 		sub_effects = [],
 	},
@@ -1633,7 +1669,8 @@ var effect_table = {
 			description = "BUFF_BEAM_DEBUFF",
 			limit = 1,
 			t_name = 'icon_beam_debuff',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_t_soulprot = {
@@ -1653,7 +1690,8 @@ var effect_table = {
 			description = "BUFF_SOULPROT",
 			t_name = 'icon_soulprot',
 			limit = 1,
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}]
 	},
 	e_s_gust1 = {
@@ -1723,7 +1761,8 @@ var effect_table = {
 			description = "BUFF_IOLA_BARRIER",
 			args = [{obj = 'parent_args', param = 1}],
 			limit = 1,
-			t_name = 'icon_iola_barrier'
+			t_name = 'icon_iola_barrier',
+			group = variables.BG_SHIELD
 		}],
 	},
 	e_t_bless_caster = {
@@ -1767,7 +1806,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/iola_2.png", 
 			description = "BUFF_BLESS",
 			t_name = 'icon_bless',
-			bonuseffect = 'duration'
+			bonuseffect = 'duration',
+			group = variables.BG_BUFF
 		}],
 	},
 	e_s_sanct = {
@@ -1799,7 +1839,8 @@ var effect_table = {
 			description = "BUFF_CULLING",
 			limit = 1,
 			t_name = 'icon_culling',
-			bonuseffect = 'amount'
+			bonuseffect = 'amount',
+			group = variables.BG_NEGATIVE
 		}],
 	},
 	e_tr_vicen = {
@@ -1825,7 +1866,8 @@ var effect_table = {
 				icon = "res://assets/images/traits/dodge.png", 
 				description = "BUFF_ENERGYBURST_BUFF",
 				t_name = 'icon_energyburst_buff',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_BUFF
 			}
 		],
 	},
@@ -1854,7 +1896,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/ember_6.png", 
 				description = "BUFF_GUARD_ON_CASTER",
 				limit = 1,
-				t_name = 'icon_guard_on_caster'
+				t_name = 'icon_guard_on_caster',
+				group = variables.BG_BUFF#BG_DEFENCE
 			}
 		],
 	},
@@ -1889,7 +1932,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/ember_6.png", 
 				description = "BUFF_GUARD_LISTENER",
 				limit = 1,
-				t_name = 'icon_guard_listener'
+				t_name = 'icon_guard_listener',
+				group = variables.BG_BUFF#BG_DEFENCE
 			}
 		],
 	},
@@ -1921,7 +1965,8 @@ var effect_table = {
 				description = "BUFF_SCROLL_OFFENSE",
 				limit = 1,
 				t_name = 'icon_scroll_offense',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_BUFF
 			}
 		],
 	},
@@ -1941,7 +1986,8 @@ var effect_table = {
 				description = "BUFF_SCROLL_DEFENCE",
 				limit = 1,
 				t_name = 'icon_scroll_defence',
-				bonuseffect = 'duration'
+				bonuseffect = 'duration',
+				group = variables.BG_BUFF
 			}
 		],
 	},
@@ -2035,7 +2081,8 @@ var effect_table = {
 		buffs = [{ 
 			icon = "res://assets/images/iconsskills/erika_1.png", 
 			description = "BUFF_NATURE_BLESS",
-			t_name = 'icon_passive_bless'
+			t_name = 'icon_passive_bless',
+			group = variables.BG_STATIC
 		}],
 	},
 	e_tr_ember = {#ember weapon1 lvl3+ static trait
@@ -2057,7 +2104,8 @@ var effect_table = {
 		buffs = [{
 			icon = "res://assets/images/iconsskills/defaultattack.png", 
 			description = "BUFF_PASSIVE_DAMAGE",
-			t_name = 'icon_passive_damage'
+			t_name = 'icon_passive_damage',
+			group = variables.BG_STATIC
 		}],
 		sub_effects = [],
 	},
@@ -2074,7 +2122,8 @@ var effect_table = {
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_souls',
 			limit = 1,
-			bonuseffect = 'arg', bonusarg = 0
+			bonuseffect = 'arg', bonusarg = 0,
+			group = variables.BG_STATIC
 		}],
 		sfx = [
 			{code = "rilu_spirit_1",
@@ -2128,7 +2177,8 @@ var effect_table = {
 			icon = "res://assets/images/traits/critrate.png",
 			description = "WEAPON_RILU1_EFFECT2",
 			t_name = 'icon_souls_damage',
-			limit = 1
+			limit = 1,
+			group = variables.BG_STATIC
 		}],
 		sub_effects = []
 	},
@@ -2414,6 +2464,7 @@ var effect_table = {
 			description = "BUFF_FAERY_BARRIER",
 			args = [{obj = 'parent_args', param = 0}],
 			t_name = 'icon_faery_barrier',
+			group = variables.BG_STATIC
 		}],
 	},
 	e_fq_blast_info = {
@@ -2424,6 +2475,7 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/erika_5.png", 
 			description = "BUFF_FQUEEN_BLAST_INFO",
 			t_name = 'icon_fqueen_blast_info',
+			group = variables.BG_STATIC
 		}],
 		sub_effects = [],
 	},
@@ -2443,7 +2495,8 @@ var effect_table = {
 		buffs = [{
 			icon = "res://assets/images/iconsskills/unstable.png", 
 			description = "BUFF_UNSTABLE",
-			t_name = 'icon_unstable'
+			t_name = 'icon_unstable',
+			group = variables.BG_STATIC
 		}],
 		sub_effects = ['e_d_bomb1', 'e_d_bomb2'],
 	},
@@ -2492,7 +2545,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/blood_blue.png", 
 			description = "BUFF_RULE_NO_BARRIERS",
 			limit = 1,
-			t_name = 'icon_rule_no_barriers'
+			t_name = 'icon_rule_no_barriers',
+			group = variables.BG_STATIC
 		}],
 		sub_effects = [],
 	},
@@ -2507,7 +2561,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/blood_blue.png", 
 			description = "BUFF_RULE_NO_HEAL",
 			limit = 1,
-			t_name = 'icon_rule_no_heal'
+			t_name = 'icon_rule_no_heal',
+			group = variables.BG_STATIC
 		}],
 		sub_effects = [],
 	},
@@ -2522,7 +2577,8 @@ var effect_table = {
 			icon = "res://assets/images/iconsskills/blood_blue.png", 
 			description = "BUFF_RULE_NO_RES",
 			limit = 1,
-			t_name = 'icon_rule_no_res'
+			t_name = 'icon_rule_no_res',
+			group = variables.BG_STATIC
 		}],
 		sub_effects = [],
 	},
@@ -2614,6 +2670,7 @@ var effect_table = {
 				description = "BUFF_SHIELD_INFO",
 				args = [{obj = 'parent_args', param = 0}],
 				t_name = 'icon_shield_info',
+				group = variables.BG_SHIELD
 			}
 		],
 		sub_effects = [],
@@ -3989,28 +4046,32 @@ var buffs = {
 		description = "BUFF_BLEED",
 		args = [{obj = 'parent_args', param = 1, translate = true}],
 		t_name = 'icon_bleed',
-		bonuseffect = 'duration'
+		bonuseffect = 'duration',
+		group = variables.BG_NEGATIVE
 	},
 	b_poison = {
 		icon = "res://assets/images/iconsskills/Debilitate.png", 
 		description = "BUFF_POISON",
 		args = [{obj = 'parent_args', param = 1, translate = true}],
 		t_name = 'icon_poison',
-		bonuseffect = 'duration'
+		bonuseffect = 'duration',
+		group = variables.BG_NEGATIVE
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/rose_4.png", 
 		description = "BUFF_BURN",
 		args = [{obj = 'parent_args', param = 1, translate = true}],
 		t_name = 'icon_burn',
-		bonuseffect = 'duration'
+		bonuseffect = 'duration',
+		group = variables.BG_NEGATIVE
 	},
 	b_renew1 = {
 		icon = "res://assets/images/iconsskills/rose_8.png", 
 		description = "BUFF_RENEW_RESIST",
 		args = [{obj = 'parent_args', param = 0}],
 		t_name = 'icon_renew_resist',
-		bonuseffect = 'duration'
+		bonuseffect = 'duration',
+		group = variables.BG_BUFF
 	},
 	b_gust = {
 		icon = "res://assets/images/iconsskills/iola_3.png", 
@@ -4018,7 +4079,8 @@ var buffs = {
 		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
 		t_name = 'icon_gustofwind_debuff',
-		bonuseffect = 'duration'
+		bonuseffect = 'duration',
+		group = variables.BG_NEGATIVE
 	},
 	b_bloodlust = {
 		icon = "res://assets/images/iconsskills/tackle.png", 
@@ -4026,7 +4088,8 @@ var buffs = {
 		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
 		t_name = 'icon_bloodlust',
-		bonuseffect = 'amount'
+		bonuseffect = 'amount',
+		group = variables.BG_BUFF
 	},
 	b_enrage = {
 		icon = "res://assets/images/iconsskills/taunt.png", 
@@ -4034,14 +4097,16 @@ var buffs = {
 		args = [{obj = 'parent_args', param = 0}],
 		limit = 1,
 		t_name = 'icon_rage',
-		bonuseffect = 'amount'
+		bonuseffect = 'amount',
+		group = variables.BG_BUFF
 	},
 	b_barrier = {
 		icon = "res://assets/images/traits/armor.png", 
 		description = "BUFF_SHIELD_INFO",
 		args = [{obj = 'parent_args', param = 1}],
 		t_name = 'icon_barrier',
-		bonuseffect = 'duration'
+		bonuseffect = 'duration',
+		group = variables.BG_SHIELD
 	},
 	#not in use or old
 	#icons are defined by path or by name in images.icons, do not load images here!

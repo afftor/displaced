@@ -1,9 +1,11 @@
 extends Node
 #Game Settings
-var TimePerDay = 120
+var TimePerDay = 120.0#in seconds
+var TimeDawn = 40.0#0.0 - sunset
+var DayTransitionTime = 3.0
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
-var show_enemy_hp = false
+#var show_enemy_hp = false
 
 enum {RES_MISS = 1,#0b001
 	RES_HIT = 2,#0b010
@@ -207,6 +209,7 @@ var default_animations_duration = {
 	cast = 0.6,
 	special = 0.6,
 	hit = 0.6,
+	hit_short = 0.6,
 	dead = 1.4,#for npc only
 	null: 0.5,
 }
@@ -217,6 +220,7 @@ var default_animations_transition = { #those are not added to duration
 	cast = 0.2,
 	special = 0.2,
 	hit = 0.2,
+	hit_short = 0.2,
 	dead = 0.5,
 	null: 0.5,
 }
@@ -227,6 +231,7 @@ var default_animations_delay = {
 	cast = 0.0,
 	special = 0.0,
 	hit = 0.0,
+	hit_short = 0.0,
 	dead = 0,
 	null: 0.5,
 }
@@ -237,7 +242,8 @@ var default_animations_after_delay = { #generally should be negative, but not ov
 	use = -0.4,
 	cast = -0.4,
 	special = -0.4,
-	hit = 0.0,
+	hit = 0,
+	hit_short = -0.4,
 	dead = 0,
 	null: 0.0,
 }
@@ -287,6 +293,9 @@ var hexcolordict = {
 	highlight_blue = "#4afffe",
 	light_grey = "#dedede",
 	dark_grey = "#8b8b8b",
+	
+	night = "#8C8CB9",
+	day = "#FFFFFF",
 }
 
 const autosave_name = "autosave"
@@ -299,3 +308,18 @@ var ULTIMETER_COSTS = {
 }
 
 const SOUND_LOUD_COR = 6.0
+
+#buff-icon's groups
+#Mind that dispellable effects would rather be BG_NEGATIVE,
+#even if it is logically BG_WEAKNESS or BG_DEFENCE
+enum {BG_NO,#buff-icon can also has no group, thus takes unique place in buff-bar
+	BG_NEGATIVE,#debuffs, negative temporal effects (dispellable), including dispellable weaknesses
+	BG_BUFF,#buffs, positive temporal effects
+	BG_SHIELD,#shields
+	BG_STATIC,#traits, passive and others non temporal effects
+	#are BG_BUFFs for now:
+#	BG_DEFENCE,#all buffs with defence and redirect mechanics
+	#are BG_NEGATIVEs for now:
+#	BG_WEAKNESS,#weakness to damagetype, excluding dispellable (which might be wrong)
+}
+const BG_NO_ID_START = 1000#unique buff-icon groups' id starts from this
