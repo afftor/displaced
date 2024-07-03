@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=2]
+[gd_resource type="Theme" load_steps=25 format=2]
 
 [ext_resource path="res://assets/images/gui/universal/checkboxpressed.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/universal/checkbox.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/images/gui/universal/tabpanel.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/options/scroll_pressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/options/scroll_hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/options/tabdisabled.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/options/scroll.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/options/scrollbar.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/options/tabinactive.png" type="Texture" id=13]
@@ -27,12 +28,24 @@ texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 579, 482 )
 
 [sub_resource type="StyleBoxTexture" id=4]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
 texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 108, 35 )
 margin_left = 15.0
 margin_right = 15.0605
 
+[sub_resource type="StyleBoxTexture" id=10]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 108, 35 )
+margin_left = 15.0
+margin_right = 15.0
+
 [sub_resource type="StyleBoxTexture" id=5]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 106, 34 )
 margin_left = 15.0
@@ -120,6 +133,7 @@ TabContainer/icons/menu = null
 TabContainer/icons/menu_highlight = null
 TabContainer/styles/panel = SubResource( 3 )
 TabContainer/styles/tab_bg = SubResource( 4 )
+TabContainer/styles/tab_disabled = SubResource( 10 )
 TabContainer/styles/tab_fg = SubResource( 5 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
