@@ -265,6 +265,9 @@ func fill_curve():
 		curve.push_back(curve.back() * 1.02)
 		exp_curve.push_back(exp_curve.back() * 1.02)
 
+func tune_up_max_level():
+	if globals.is_demo_type():
+		MaxLevel = 6
 
 #var gallery_singles_list = [
 #	{path = "rose_sex_1", type = 'abg'},

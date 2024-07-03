@@ -5,7 +5,7 @@ const RES_ROOT = {
 	"abg" : "res://assets",
 	"bg" : "res://assets/images",
 	"sprite" : "res://assets/images",
-	"animated_sprite":"res://assets/images",
+	"animated_sprite" : "res://assets/images",
 	"portrait" : "res://assets/images",
 	"combat" : "res://assets/images",
 	"sound" : "res://assets",
@@ -14,6 +14,10 @@ const RES_ROOT = {
 	"enemies" : "res://assets/images",
 	"scene_preview" : "res://assets/images"
 }
+
+#Mind the order! First to exist will be loaded
+#priority: normal base (demo), normal, steam base (demo), steam
+const RES_RELEASE_PRIOR = ["/r_nude", "/r_full/r_nude", "", "/r_full"]
 
 const RES_EXT = {
 	"abg" : "ogv",
@@ -24,7 +28,7 @@ const RES_EXT = {
 	"combat" : "png",
 	"sound" : "wav",
 	"music" : "ogg",
-	"Fight" : "png",
+	"Fight" : ["png", "tres"],
 	"enemies" : "png",
 	"scene_preview" : "png"
 }
@@ -42,7 +46,6 @@ var queue = {}
 var path_to_delete = []
 
 var busy = 0
-
 
 
 #func _ready() -> void:
@@ -71,6 +74,7 @@ func get_res(path: String) -> Resource:
 	if (res_pool.has(category) && res_pool[category].has(label)):
 		return res_pool[category][label]
 	else:
+#		print("GET_RES NOT FOUND: %s" % path)
 		return null
 
 
@@ -89,8 +93,9 @@ func _loaded(category: String, label: String, path: String, thread: Thread) -> v
 		if !res_pool.has(category):
 			res_pool[category] = {}
 		res_pool[category][label] = res
-	else:
-		print("NOT FOUND: %s" % path)
+	elif !(globals.is_steam_type() or globals.is_demo_type()):
+		#print that only in normal mode (not best idea, but suffice for now)
+		print("NOT FOUND: %s/%s" % [category, label])
 	queue[category].erase(label)
 	busy -= 1
 	if busy == 0:
@@ -102,11 +107,25 @@ func _thread_load(args: Array) -> Resource:
 	var category = args[0]
 	var label = args[1]
 	var thread = args[2]
-	var path = "%s/%s/%s.%s" % [
-		RES_ROOT[category], category, label, RES_EXT[category]]
+	var extensions = []
+	if RES_EXT[category] is Array:
+		extensions = RES_EXT[category]
+	else:
+		extensions.append(RES_EXT[category])
 	var res = null
-	if ResourceLoader.exists(path):
+	var path
+	var has_res = false
+	for release in RES_RELEASE_PRIOR:
+		for ext in extensions:
+			path = "%s/%s%s/%s.%s" % [
+				RES_ROOT[category], category, release, label, ext]
+			has_res = ResourceLoader.exists(path)
+			if has_res: break
+		if has_res: break
+	if has_res:
 		res = ResourceLoader.load(path)
+		if res is AnimatedTexAutofill:
+			res.fill_frames()
 	call_deferred("_loaded", category, label, path, thread)
 	mutex.unlock()
 	return res

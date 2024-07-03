@@ -37,6 +37,7 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	dimitrius_1_4 = [
 		{type = 'show_screen', value = 'map'},
+		{type = 'system', value = 'notification', arg = 'DEMOTEXT', reqs = [{type = 'release_demo'}]},
 	],
 	aeros_1 = [
 		{type = 'system', value = 'unlock_mission', arg = 'caves_dwarf'},
@@ -49,12 +50,14 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'unlock_mission', arg = 'forest_faeries_1'},
 	],
 	erika_annet_2_1 = [
-		{type = 'scene', value = 'erika_annet_2_2', reqs = [{type = 'forced_content'}]},
-		{type = 'system', value = 'enable_character', arg = ['erika', false], reqs = [{type = 'forced_content', value = false}] }
+		{type = 'scene', value = 'erika_annet_2_2',
+			reqs = [{type = 'forced_content'}, {type = 'release_steam', value = false}]},
+		{type = 'system', value = 'enable_character', arg = ['erika', false]}
+			#reqs = [{type = 'forced_content', value = false}, {type = 'release_steam'}]
 	],
 	erika_annet_2_2 = [
 		{type = 'force_seq_seen', value = 'erika_annet'},
-		{type = 'system', value = 'enable_character', arg = ['erika', false] }
+#		{type = 'system', value = 'enable_character', arg = ['erika', false] }
 	],
 	erika_annet_2_4 = [
 		{type = 'system', value = 'enable_character', arg = ['erika', true] }
@@ -326,7 +329,8 @@ var scene_sequences = {
 	
 	iola_arrival = {
 #		initiate_signal = 'village_townhall_iola', 
-		initiate_reqs = [{type = 'mission_complete', value = 'caves_demitrius'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'caves_demitrius'},
+			{type = 'release_demo', value = false}],
 		actions = [
 		{type = 'scene', value = 'iola_1_1'},
 		{type = 'system', value = 'unlock_mission', arg = 'caves_iola'}
@@ -601,7 +605,9 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'rose_public',
-		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'},{type = 'seq_seen', value = 'rose_night'}],
+		initiate_reqs = [{type = 'scene_seen', value = 'aeros_2'},
+			{type = 'seq_seen', value = 'rose_night'},
+			{type = 'release_demo', value = false}],
 		unlock_price = {rose = 150},
 		actions = [{type = 'scene', value = 'rose_3'}]
 	},
@@ -620,7 +626,7 @@ var scene_sequences = {
 		descript = "",
 		gallery = true,
 		preview = 'erika_doggy',
-		initiate_reqs = [],
+		initiate_reqs = [{type = 'release_demo', value = false}],
 		unlock_price = {erika = 50},
 		actions = [{type = 'scene', value = 'erika_2'}]
 	},
@@ -639,7 +645,8 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'ember_missionary',
 		unlock_price = {ember = 50},
-		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'}],
+		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'},
+			{type = 'release_demo', value = false}],
 		actions = [{type = 'scene', value = 'ember_1_4'}]
 	},
 	ember_titjob = {

@@ -3,6 +3,8 @@ extends Node
 # warning-ignore-all:warning-id
 
 const gameversion = '0.1 Alpha'
+var release_steam = false
+var release_demo = false
 
 #const worker = preload("res://files/scripts/worker.gd");
 #const Item = preload("res://src/ItemClass.gd")
@@ -210,6 +212,11 @@ func preload_backgrounds():
 
 
 func _ready():
+	if release_steam or release_demo:
+		print("Warning! Project is not in NORMAL release type!")
+	release_steam = OS.has_feature("steam") or release_steam
+	release_demo = OS.has_feature("demo") or release_demo
+	variables.tune_up_max_level()
 #	OS.window_size = Vector2(1280,720)
 #	OS.window_position = Vector2(300,0)
 	randomize()
@@ -236,7 +243,7 @@ func _ready():
 
 #	yield(preload_backgrounds(), 'completed')
 #	print("Backgrounds preloaded")
-	if resources.is_busy(): yield(resources, "done_work")
+	if resources.is_busy(): yield(resources, "done_work")#remove?
 #	print("preload finished")
 
 
@@ -370,6 +377,8 @@ func play_scene(scene_id, restore = false):
 func dir_contents(target):
 	var dir = Directory.new()
 	var array = []
+	if !dir.dir_exists(target):
+		return array
 	if dir.open(target) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -379,9 +388,9 @@ func dir_contents(target):
 			elif !file_name in ['.','..', null] && dir.current_is_dir():
 				array += dir_contents(target + "/" + file_name)
 			file_name = dir.get_next()
-		return array
 	else:
 		print("An error occurred when trying to access the path.")
+	return array
 
 func evaluate(input): #used to read strings as conditions when needed
 	var script = GDScript.new()
@@ -792,4 +801,16 @@ func get_last_save():
 func get_hotkeys_handler() ->Object:
 	return hotkeys_handler
 
+func is_steam_type() ->bool:
+	return release_steam
 
+func is_demo_type() ->bool:
+	return release_demo
+
+func get_game_version() ->String:
+	var res = gameversion
+	if is_steam_type():
+		res += " Steam"
+	if is_demo_type():
+		res += " Demo"
+	return res

@@ -7,7 +7,7 @@ func _ready():
 	get_tree().set_auto_accept_quit(false)
 
 	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
-	$version.text = "ver. " + globals.gameversion
+	$version.text = "ver. " + globals.get_game_version()
 	globals.CurrentScene = self
 	#input_handler.StopMusic()
 	check_last_save()

@@ -22,7 +22,10 @@ func _ready():
 #	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
 #warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Quests.connect("pressed", $Questlog, 'open')
-	$ButtonPanel/VBoxContainer/Scenes.connect("pressed", $scenes, "open")
+	if globals.is_steam_type():
+		$ButtonPanel/VBoxContainer/Scenes.hide()
+	else:
+		$ButtonPanel/VBoxContainer/Scenes.connect("pressed", $scenes, "open")
 	#globals.AddPanelOpenCloseAnimation($TaskList)
 	globals.AddPanelOpenCloseAnimation($UpgradeList)
 	binded_events.clear()

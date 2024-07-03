@@ -741,7 +741,7 @@ var enemylist = {
 		weaponsound = 'ent at boss',
 		bodyhitsound = 'ent hit boss',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Ent_boss_sqq/Ent.tres"),
+			idle = "Fight/Bosses/Ent_boss_sqq/Ent",
 			hit = "Fight/Bosses/Ent_hit",
 			attack = "Fight/Bosses/Ent_at",
 		},
@@ -808,7 +808,7 @@ var enemylist = {
 		weaponsound = 'dwarf attack armor',
 		bodyhitsound = 'dwarf hit armor',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/King_dwarf_idle_sq/king_dwarf.tres"),
+			idle = "Fight/Bosses/King_dwarf_idle_sq/king_dwarf",
 			hit = "Fight/Bosses/Fight_spritesFHD_0003s_0000_Dwarf_hit",
 			attack ="Fight/Bosses/Fight_spritesFHD_0003s_0001_Dwarf_at" ,
 		},
@@ -835,7 +835,7 @@ var enemylist = {
 		weaponsound = 'dwarf attack armor',
 		bodyhitsound = 'dwarf hit armor',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/King_dwarf_idle_sq/king_dwarf.tres"),
+			idle = "Fight/Bosses/King_dwarf_idle_sq/king_dwarf",
 			hit = "Fight/Bosses/Fight_spritesFHD_0003s_0000_Dwarf_hit",
 			attack ="Fight/Bosses/Fight_spritesFHD_0003s_0001_Dwarf_at",
 		},
@@ -869,7 +869,7 @@ var enemylist = {
 		weaponsound = 'queen fairy cast',
 		bodyhitsound = 'queen fairy hit',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Fairy_sq/FairyQueen.tres"),
+			idle = "Fight/Bosses/Fairy_sq/FairyQueen",
 			hit = "Fight/Bosses/Queen_fairy_hit",
 			attack ="Fight/Bosses/Queen_fairy_cast"
 		},
@@ -902,7 +902,7 @@ var enemylist = {
 		weaponsound = 'dragon at boss',
 		bodyhitsound = 'dragon hit boss',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Dragon_idle_sq/Dragon.tres"),
+			idle = "Fight/Bosses/Dragon_idle_sq/Dragon",
 			hit = "Fight/Bosses/Dragon_hit",
 			attack ="Fight/Bosses/Dragon_at" ,
 			cast ="Fight/Bosses/Dragon_cast" ,
@@ -938,7 +938,7 @@ var enemylist = {
 		weaponsound = 'viktor at',
 		bodyhitsound = 'flash',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Viktor_sq_idle/Viktor.tres"),
+			idle = "Fight/Bosses/Viktor_sq_idle/Viktor",
 			hit = "Fight/Bosses/Viktor_hit",
 			attack = "Fight/Bosses/Viktor_at",
 			cast = "Fight/Bosses/Viktor_sp_at"
@@ -973,7 +973,7 @@ var enemylist = {
 		weaponsound = 'sukkub at',
 		bodyhitsound = 'sukkub hit',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Sukkub_sq_anim/Succubus.tres"),
+			idle = "Fight/Bosses/Sukkub_sq_anim/Succubus",
 			hit = "Fight/Bosses/Sukkub_hit",
 			attack = "Fight/Bosses/Sukkub_at",
 			cast = "Fight/Bosses/Sukkub_cast",
@@ -1008,7 +1008,7 @@ var enemylist = {
 		weaponsound = 'doc at',
 		bodyhitsound = 'doc hit',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Doctor_idle_sq/doc_idle.tres"),
+			idle = "Fight/Bosses/Doctor_idle_sq/doc_idle",
 			hit = "Fight/Bosses/Fight_spritesFHD_0000s_0001_Doc_hit",
 			attack = "Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at",
 			cast = "Fight/Bosses/Fight_spritesFHD_0000s_0000_Doc_at"#for en_enburst skill compatibility
@@ -1042,7 +1042,7 @@ var enemylist = {
 		weaponsound = 'caliban at',
 		bodyhitsound = 'caliban hit',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Monster_idle_sq/monster.tres"),
+			idle = "Fight/Bosses/Monster_idle_sq/monster",
 			hit = "Fight/Bosses/Fight_spritesFHD_0001s_0001_Mnstr_hit",
 			attack ="Fight/Bosses/Fight_spritesFHD_0001s_0000_Mnstr_at" ,
 		},
@@ -1075,7 +1075,7 @@ var enemylist = {
 		weaponsound = 'demitrius at',
 		bodyhitsound = 'demitrius hit',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
+			idle = "Fight/Bosses/Demitrius_idle_sq/Demitrius",
 			hit = "Fight/Bosses/Demitrius_hit",
 			attack ="Fight/Bosses/Demitrius_at",
 			cast ="Fight/Bosses/Demitrius_cast",
@@ -1111,7 +1111,7 @@ var enemylist = {
 		weaponsound = 'demitrius at',
 		bodyhitsound = 'demitrius hit',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
+			idle = "Fight/Bosses/Demitrius_idle_sq/Demitrius",
 			hit = "Fight/Bosses/Demitrius_hit",
 			attack ="Fight/Bosses/Demitrius_at",
 			cast ="Fight/Bosses/Demitrius_cast",
@@ -1147,7 +1147,7 @@ var enemylist = {
 		weaponsound = 'demitrius at',
 		bodyhitsound = 'demitrius hit',
 		animations = {
-			idle = load("res://assets/images/Fight/Bosses/Demitrius_idle_sq/Demitrius.tres"),
+			idle = "Fight/Bosses/Demitrius_idle_sq/Demitrius",
 			hit = "Fight/Bosses/Demitrius_hit",
 			attack ="Fight/Bosses/Demitrius_at",
 			cast ="Fight/Bosses/Demitrius_cast",
@@ -1544,10 +1544,7 @@ func preload_icons():
 #		if ch.bodyimage != null:
 #			resources.preload_res(ch.bodyimage)
 		for an in ch.animations.values():
-			if an is AnimatedTexAutofill:
-				an.fill_frames()
-			else:
-				resources.preload_res(an)
+			resources.preload_res(an)
 		if ch.has('weaponsound'):
 			resources.preload_res('sound/%s' % ch.weaponsound)
 		if ch.has('bodyhitsound'):

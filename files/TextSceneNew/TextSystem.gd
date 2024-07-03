@@ -549,10 +549,11 @@ func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
-	for i in process_path_dir(REF_PATH):
-		f.open(i, File.READ)
-		ref_src.append_array(f.get_as_text().split("\n"))
-		f.close()
+	for refs in [REF_PATH, REF_PATH+"/r_full"]:
+		for i in process_path_dir(refs):
+			f.open(i, File.READ)
+			ref_src.append_array(f.get_as_text().split("\n"))
+			f.close()
 	
 #	ref_src.append_array(process_gallery_singles())
 	scenes_map = build_scenes_map(ref_src)
@@ -1058,6 +1059,9 @@ func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->
 	elif type == "FORCEDCONTENT":
 		#value in this case irrelevant
 		success = globals.globalsettings.forced_content
+	elif type == "RELEASESTEAM":
+		#value in this case irrelevant
+		success = globals.is_steam_type()
 	else:
 		assert(false, "Unknow condition in tag_if!!!")
 		return
@@ -1174,6 +1178,9 @@ func advance_scene() -> void:
 func preload_scene(scene: String) -> void:
 	scene_map = scenes_map[scene]
 	for i in scene_map["res"].keys():
+		#MIND that such simplified condition works only while abg are all nude!
+		if globals.is_steam_type() and i == "abg":
+			continue
 		for j in scene_map["res"][i]:
 			resources.preload_res("%s/%s" % [i, j])
 
@@ -1252,7 +1259,7 @@ func play_scene(scene: String, restore = false, force_replay = false) -> void:
 func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 	var out = {}
 	var c = 0
-	var strings_to_check = []#only for changes in events
+#	var strings_to_check = []#only for changes in events
 
 #	var chardef = false
 #	var chardef_color = Color.black
@@ -1387,10 +1394,12 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 					line_id = i.get_slice(" - ", 1)
 					if line_id.empty():
 						print("No line id at %s: %s" % [current_scene, i])
-				if strings_to_check.has(line_id):
-					print("Translation double at %s: %s" % [current_scene, line_id])
-				else:
-					strings_to_check.append(line_id)
+				#Translation doubles are now seems not to be a problem, since only ids are stored in event files
+				#further more doubles are useful for event branching
+#				if strings_to_check.has(line_id):
+#					print("Translation double at %s: %s" % [current_scene, line_id])
+#				else:
+#					strings_to_check.append(line_id)
 				if line_id == tr(line_id):#should find better way to check strings in TranslationServer
 					print("No translation at %s: %s" % [current_scene, line_id])
 			#-----------
@@ -1399,7 +1408,8 @@ func build_scenes_map(lines: PoolStringArray) -> Dictionary:
 
 	for original in Explorationdata.cloned_scenes:
 		var clone = Explorationdata.cloned_scenes[original]
-		out[clone] = out[original].duplicate(true)
+		if out.has(original):#should be false only in demo version
+			out[clone] = out[original].duplicate(true)
 	current_scene = ""
 	line_dr = ""
 	return out.duplicate(true)#duplicate needed?

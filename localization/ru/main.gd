@@ -109,7 +109,7 @@ var TranslationDict = {
 	#Stats
 	HEALTH = 'Здоровье',
 	LEVELUP = "Новый ур",
-	MAXLEVEL = "Максимальный уровень",
+	MAXLEVEL = "Максимальный",
 	TILLNEXTLEVEL = "До следующего уровня: %s",
 	NEXTLEVEL = "Следующий ур.",
 	FRIENDPOINT = "Очки дружбы",
@@ -828,6 +828,8 @@ var TranslationDict = {
 	WARNTEXT = "[color=#ff4949][center]Детям до 18 запрещено. Всем персонажам не менее 21 года.[/center][/color]",
 	B_ACCEPT = "Принять",
 	B_QUIT = "Выйти",
+	
+	DEMOTEXT = 'Это конец демо. Вы можете переиграть битвы и некоторые сцены, но продолжение сюжета только в полной версии. Спасибо, что играли!',
 	
 	#exploration
 	BATTLE_GROUP = "Партия",
