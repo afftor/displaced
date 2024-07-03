@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/images/gui/gallery/panel_history.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/portrait/EmberNormal.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/scene_preview/ember_boobs.png" type="Texture" id=3]
 [ext_resource path="res://files/SFX/blur_box_ontex.shader" type="Shader" id=4]
 [ext_resource path="res://assets/fonts/mainfont_20.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/themes/button_round.tres" type="Theme" id=6]
@@ -32,7 +31,6 @@ margin_left = 15.0
 margin_top = 30.0
 margin_right = 345.0
 margin_bottom = 216.0
-texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 

@@ -33,7 +33,7 @@ func dump_referals():
 	input_handler.scene_node.dump_referals()
 
 func test_event():
-	globals.play_scene('faery_queen_1')
+	globals.play_scene('erika_annet_2_1')
 
 
 func UpdateMoney():

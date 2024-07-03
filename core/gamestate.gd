@@ -323,6 +323,14 @@ func valuecheck(dict):
 			if dict.has("value"):
 				return globals.globalsettings.forced_content == dict.value
 			return globals.globalsettings.forced_content
+		"release_steam":
+			if dict.has("value"):
+				return globals.is_steam_type() == dict.value
+			return globals.is_steam_type()
+		"release_demo":
+			if dict.has("value"):
+				return globals.is_demo_type() == dict.value
+			return globals.is_demo_type()
 		#old ones, possibly obsolete
 		"has_money":
 			return if_has_money(dict['value'])
@@ -624,6 +632,8 @@ func system_action(action):
 			add_char_to_party(action.arg[0], action.arg[1])
 		'credits':
 			input_handler.get_spec_node(input_handler.NODE_CREDITS).show_end_credits()
+		'notification':
+			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr(action.arg)])
 
 #simple action wrappers
 func unlock_char(code, value = true, notify = true):

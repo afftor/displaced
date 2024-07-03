@@ -359,9 +359,9 @@ func buildplayergroup():
 	var newgroup = {}
 	for ch in state.characters:
 		var hero = state.heroes[ch]
-		make_hero_panel(hero)#it's very bad, that we make panels for locked heros, but rest of the code work with this, so should refactor all that later
 		if !hero.unlocked: continue
 		
+		make_hero_panel(hero)
 		if hero.position != null:
 			battlefield[hero.position] = hero
 			newgroup[hero.position] = hero
@@ -409,6 +409,7 @@ func newturn():
 	nextenemy = 4
 #	for i in playergroup.values() + enemygroup.values():
 	for i in state.heroes.values():
+		if (i is hero) and !i.unlocked: continue
 		i.acted = false
 		if i.defeated: continue
 		i.process_event(variables.TR_TURN_S)
@@ -1163,7 +1164,7 @@ func victory():
 				input_handler.tween_callback_with(subtween, input_handler, 'PlaySound', 1, [sounds["levelup"]])
 			leveled_up_chars.push_back(i)
 		elif i.level == old_level_on_up && i.baseexp >= new_exp_cap:
-			xpbar_node.value = 100
+			xpbar_node.value = xpbar_node.max_value
 			input_handler.tween_property_with(subtween, xpbar_node, 'modulate', xpbar_node.modulate, Color("fffb00"), 0.2, 0, Tween.TRANS_CIRC, Tween.EASE_OUT)
 			input_handler.tween_callback_with(subtween, input_handler, 'DelayedText', 0, [xplabel_node, tr("MAXLEVEL")])
 		else:

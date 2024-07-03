@@ -14,7 +14,7 @@
 [ext_resource path="res://assets/themes/scroll_grey.tres" type="Theme" id=12]
 [ext_resource path="res://assets/themes/button_location.tres" type="Theme" id=13]
 [ext_resource path="res://assets/images/gui/explore/zone_panel_mission.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/combat_load/displaced.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/load_screen/displaced.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/explore/bgroup_bg.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/buttons/explore/bar_dungeon_filler.png" type="Texture" id=18]
 [ext_resource path="res://files/scenes/FullStateCheck_del.gd" type="Script" id=21]
@@ -38,15 +38,15 @@
 [ext_resource path="res://assets/images/buttons/explore/tick_active_hover.png" type="Texture" id=39]
 [ext_resource path="res://files/scenes/FullStateCheck.gd" type="Script" id=40]
 [ext_resource path="res://assets/images/buttons/explore/tick_active_disabled.png" type="Texture" id=41]
-[ext_resource path="res://assets/images/combat_load/caves.png" type="Texture" id=42]
-[ext_resource path="res://assets/images/combat_load/bar_fill.png" type="Texture" id=43]
-[ext_resource path="res://assets/images/combat_load/frame.png" type="Texture" id=44]
-[ext_resource path="res://assets/images/combat_load/bar_back.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/load_screen/caves.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/load_screen/bar_fill.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/load_screen/frame.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/load_screen/bar_back.png" type="Texture" id=45]
 [ext_resource path="res://files/scenes/fake_load.gd" type="Script" id=46]
-[ext_resource path="res://assets/images/combat_load/city.png" type="Texture" id=47]
-[ext_resource path="res://assets/images/combat_load/forest.png" type="Texture" id=48]
-[ext_resource path="res://assets/images/combat_load/mountains.png" type="Texture" id=49]
-[ext_resource path="res://assets/images/combat_load/desert.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/load_screen/city.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/load_screen/forest.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/load_screen/mountains.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/load_screen/desert.png" type="Texture" id=50]
 [ext_resource path="res://assets/fonts/mainfont_bold_30.tres" type="DynamicFont" id=51]
 [ext_resource path="res://assets/fonts/mainfont_14.tres" type="DynamicFont" id=52]
 
@@ -207,7 +207,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="ExplorationSelect/missions/ScrollContainer"]
-margin_right = 725.0
+margin_right = 186.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_vertical = 2

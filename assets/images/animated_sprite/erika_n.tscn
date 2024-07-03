@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/images/sprite/erika_n.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/sprite/erika.png" type="Texture" id=1]
 [ext_resource path="res://files/classes/animated_sprite_delay.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/animated_sprite/erika/final-0003.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/animated_sprite/erika/final-0006.png" type="Texture" id=4]

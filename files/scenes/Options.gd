@@ -38,6 +38,11 @@ func _ready():
 	tabs.set_tab_title(3, tr('OPT_GAME'))
 	tabs.set_tab_title(4, tr('HOTKEYS'))
 
+	if globals.is_steam_type():
+		$TabContainer/Game/forced.hide()
+		#as far as Game tab has only one button, it should also be hidden
+		tabs.set_tab_disabled($TabContainer/Game.get_index(), true)
+
 	hotkeys = globals.get_hotkeys_handler()
 	for remap_node in hotkeys_list.get_children():
 		if remap_node.has_signal("remap"):

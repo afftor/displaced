@@ -9,11 +9,11 @@ var charlist = {
 		combaticon = 'combat/arron_circle',
 #		image = 'Arron',#is it in use?
 		animations = {
-			idle = load("res://assets/images/Fight/Heroes/Arron/Arron_idle/Arron.tres"),
+			idle = "Fight/Heroes/Arron/Arron_idle/Arron",
 			hit = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0000_Arron_hit",
 			attack = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0001_Arron_at",
 			idle_1 = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0002_Arron_idle",
-			dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres"),
+			dead = "Fight/Heroes/Arron/arron_death/arron_d",
 			dead_1 = "Fight/Heroes/Arron/arron_death/Arron-5_only death_10",
 			use = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0003_Arron_use",
 			ultimate = "Fight/Heroes/Arron/Fight_spritesFHD_0005s_0004_Arron_ultimate",
@@ -30,7 +30,7 @@ var charlist = {
 		armorbonus = {1: 20, 2: 40, 3: 60, 4: 80},
 		#mind, that tutorial considers termination to be first opened ultimate skill
 		skilllist = {'fencing':1, 'parry':3, 'lunge':4, 'sword_mastery':8, 'sideslash':10, 'termination':10, 'swift_s':14, 'smoke_s':19},
-		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")
+#		dead = load("res://assets/images/Fight/Heroes/Arron/arron_death/arron_d.tres")#is it in use?
 	},
 	rose = {
 		code = 'rose',
@@ -39,11 +39,11 @@ var charlist = {
 		combaticon = 'combat/rose_circle',
 #		image = 'Rose',
 		animations = {
-			idle = load("res://assets/images/Fight/Heroes/Rose/Rose_idle/Rose.tres"),
+			idle = "Fight/Heroes/Rose/Rose_idle/Rose",
 			hit = "Fight/Heroes/Rose/Rouz_crop_0001_Rouz_hit",
 			attack = "Fight/Heroes/Rose/Rouz_crop_0003_Rouz_at",
 			idle_1 = "Fight/Heroes/Rose/Rouz_crop_0000_Rouz_idle",
-			dead = load("res://assets/images/Fight/Heroes/Rose/Rose_death/rose_d.tres"),
+			dead = "Fight/Heroes/Rose/Rose_death/rose_d",
 			dead_1 = "Fight/Heroes/Rose/Rose_death/rouz_death_20",
 			use = "Fight/Heroes/Rose/Rouz_crop_0003_Rouz_use",
 			ultimate = "Fight/Heroes/Rose/Rouz_crop_0004_Rouz_ult",
@@ -68,11 +68,11 @@ var charlist = {
 		combaticon = 'combat/erika_circle',
 #		image = 'erika',
 		animations = {
-			idle = load("res://assets/images/Fight/Heroes/Erika/Erika_idle/Erika.tres"),
+			idle = "Fight/Heroes/Erika/Erika_idle/Erika",
 			hit = "Fight/Heroes/Erika/Erika_crop_0000_Erika_hit",
 			attack = "Fight/Heroes/Erika/Erika_crop_0002_Erika_at",
 			idle_1 = "Fight/Heroes/Erika/Erika_crop_0001_Erika_-idle",
-			dead = load("res://assets/images/Fight/Heroes/Erika/Erika_death/erika_d.tres"),
+			dead = "Fight/Heroes/Erika/Erika_death/erika_d",
 			dead_1 = "Fight/Heroes/Erika/Erika_death/Erika_death_16",
 			use = "Fight/Heroes/Erika/Erika_crop_0003_Erika_use",
 			ultimate = "Fight/Heroes/Erika/Erika_crop_0004_Erika_ultimate",
@@ -97,11 +97,11 @@ var charlist = {
 		combaticon = 'combat/ember_circle',
 #		image = 'emberhappy',
 		animations = {
-			idle = load("res://assets/images/Fight/Heroes/Ember/Ember_idle/Ember.tres"),
+			idle = "Fight/Heroes/Ember/Ember_idle/Ember",
 			hit = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0001_Ember_hit",
 			attack = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0000_Ember_idle",
 			idle_1 = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0002_Ember_idle",
-			dead = load("res://assets/images/Fight/Heroes/Ember/Ember_death/ember_d.tres"),
+			dead = "Fight/Heroes/Ember/Ember_death/ember_d",
 			dead_1 = "Fight/Heroes/Ember/Ember_death/Ember_death_24",
 			use = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0003_Ember_use",
 			ultimate = "Fight/Heroes/Ember/Fight_spritesFHD_0006s_0004_Ember_ultimate",
@@ -126,12 +126,12 @@ var charlist = {
 		combaticon = 'combat/rilu_circle',
 #		image = 'emberhappy',
 		animations = {
-			idle = load("res://assets/images/Fight/Heroes/Rilu/Rilu_idle/Rilu.tres"),
+			idle = "Fight/Heroes/Rilu/Rilu_idle/Rilu",
 			hit = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0000_Rilu_hit",
 			attack = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0002_Rilu_at",
 			special = "Fight/Heroes/Rilu/heroes_0000s_0002_cast",
 			idle_1 = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0001_Rilu_idle",
-			dead = load("res://assets/images/Fight/Heroes/Rilu/rilu_death/rilu_d.tres"),
+			dead = "Fight/Heroes/Rilu/rilu_death/rilu_d",
 			dead_1 = "Fight/Heroes/Rilu/rilu_death/Rilu_death_17",
 			use = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0003_Rilu_use",
 			ultimate = "Fight/Heroes/Rilu/Fight_spritesFHD_0004s_0004_Rilu_ultimate",
@@ -156,11 +156,11 @@ var charlist = {
 		combaticon = 'combat/iola_circle',
 #		image = 'emberhappy',
 		animations = {
-			idle = load("res://assets/images/Fight/Heroes/Iola/Iola_idle/Iola.tres"),
+			idle = "Fight/Heroes/Iola/Iola_idle/Iola",
 			hit = "Fight/Heroes/Iola/Iola_crop_0000_Iola_hit",
 			attack = "Fight/Heroes/Iola/Iola_crop_0001_Iola_cast",
 			idle_1 = "Fight/Heroes/Iola/Iola_crop_0002_Iola_crop",
-			dead = load("res://assets/images/Fight/Heroes/Iola/iola_death/iola_d.tres"),
+			dead = "Fight/Heroes/Iola/iola_death/iola_d",
 			dead_1 = "Fight/Heroes/Iola/iola_death/iola_death_19",
 			use = "Fight/Heroes/Iola/Iola_crop_0003_Iola_use",
 			ultimate = "Fight/Heroes/Iola/Iola_crop_0004_Iola_ultimate",
@@ -192,8 +192,5 @@ func preload_icons():
 		resources.preload_res(ch.combaticon)
 #		resources.preload_res(ch.image)
 		for an in ch.animations.values():
-			if an is AnimatedTexAutofill:
-				an.fill_frames()
-			elif an is String:
-				resources.preload_res(an)
+			resources.preload_res(an)
 	if resources.is_busy(): yield(resources, "done_work")

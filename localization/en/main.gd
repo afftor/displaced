@@ -199,7 +199,7 @@ var TranslationDict = {
 #	CRITCHANCE = "Crit. Chance",
 #	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
-	MAXLEVEL = "Maximum Level",
+	MAXLEVEL = "Maximum",
 	TILLNEXTLEVEL = "Until next level: %s",
 	NEXTLEVEL = "Next level",
 #	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
@@ -1107,6 +1107,8 @@ var TranslationDict = {
 	WARNTEXT = "[color=#ff4949]This is an alpha version of the game, it features adult content and should not be played by people of age below 18. Mechanics and visuals are a subject for future changes and some visuals and audio aren't final. Please report any issues you come across at discord.[/color]",
 	B_ACCEPT = "Accept",
 	B_QUIT = "Quit",
+	
+	DEMOTEXT = "This is end of the demo. You can replay combats and some events, but the rest of the story is in full version. Thanks for playing.",
 	
 	#exploration
 	BATTLE_GROUP = "Battle group",

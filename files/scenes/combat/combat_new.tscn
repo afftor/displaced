@@ -599,9 +599,6 @@ margin_bottom = 551.0
 custom_constants/vseparation = 5
 custom_constants/hseparation = 14
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="TextureRect" parent="Rewards/HBoxContainer"]
 visible = false
@@ -719,9 +716,6 @@ margin_bottom = 875.0
 rect_pivot_offset = Vector2( 335, 435 )
 texture = ExtResource( 7 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Avatar" type="TextureRect" parent="LevelUp/panel"]
 margin_left = 50.0

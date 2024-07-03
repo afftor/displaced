@@ -197,7 +197,7 @@ _global_script_class_icons={
 config/name="Displaced"
 run/main_scene="res://files/scenes/Menu.tscn"
 config/use_custom_user_dir=true
-boot_splash/image="res://assets/images/bg/loading.png"
+boot_splash/image="res://assets/images/load_screen/loading.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://assets/images/gui/icon256.png"
 

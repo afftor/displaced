@@ -50,6 +50,7 @@ func testmode():
 
 
 func preload_previews():
+	if globals.is_steam_type(): return
 	for event in Explorationdata.scene_sequences:
 		var eventdata = Explorationdata.scene_sequences[event]
 		if eventdata.has('gallery') and eventdata.has('preview'):
@@ -58,6 +59,9 @@ func preload_previews():
 
 
 func open():
+	#MIND that such simplified conditions works only while gallery is all nude!
+	if globals.is_steam_type(): return
+	
 	var def_char = null
 	for ch_id in ['rose', 'ember', 'erika', 'iola', 'rilu']:
 		var ch = charlist.get_node(ch_id)

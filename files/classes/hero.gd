@@ -175,7 +175,7 @@ func set_gear(slot :String, lvl :int):
 	if lvl == 0 and slot == 'armor': return
 	gear_level[slot] = lvl
 
-func set_friend_points(points: int):
+func set_friend_points(points):
 	friend_points = points
 	emit_signal("friend_points_changed")
 

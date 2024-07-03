@@ -80,9 +80,11 @@ func _init():
 func get_animations():
 	var res = {}
 	for key in animations:
-		if animations[key] is AnimatedTexAutofill:
-			res[key] = animations[key]
-		elif typeof(animations[key]) == TYPE_OBJECT:
+		#AnimatedTexAutofill now processed by resources.get_res()
+#		if animations[key] is AnimatedTexAutofill:
+#			res[key] = animations[key]
+#		elif
+		if typeof(animations[key]) == TYPE_OBJECT:
 			res[key] = animations[key]
 		else:
 			res[key] = resources.get_res(animations[key])
