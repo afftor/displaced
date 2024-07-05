@@ -243,8 +243,8 @@ func _ready():
 
 #	yield(preload_backgrounds(), 'completed')
 #	print("Backgrounds preloaded")
-	if resources.is_busy(): yield(resources, "done_work")#remove?
-#	print("preload finished")
+#	if resources.is_busy(): yield(resources, "done_work")
+#	print("globals _ready finished")
 
 
 
