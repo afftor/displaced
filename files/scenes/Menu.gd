@@ -36,8 +36,8 @@ func _ready():
 	var preload_screen = $preload_screen
 	if resources.is_busy():
 		yield(resources, "done_work")
-		input_handler.FadeAnimation(preload_screen, 1.0)
-		yield(get_tree().create_timer(1.0), 'timeout')
+		input_handler.FadeAnimation(preload_screen, 0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
 	preload_screen.hide()
 
 func check_last_save():
