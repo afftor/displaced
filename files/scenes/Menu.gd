@@ -33,6 +33,12 @@ func _ready():
 	
 	resources.preload_res("music/intro")
 	
+	var preload_screen = $preload_screen
+	if resources.is_busy():
+		yield(resources, "done_work")
+		input_handler.FadeAnimation(preload_screen, 0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
+	preload_screen.hide()
 
 func check_last_save():
 	lastsave = globals.get_last_save();

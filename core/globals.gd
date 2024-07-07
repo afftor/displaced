@@ -214,7 +214,7 @@ func preload_backgrounds():
 func _ready():
 	if release_steam or release_demo:
 		print("Warning! Project is not in NORMAL release type!")
-	release_steam = OS.has_feature("steam") or release_steam
+	release_steam = is_steam_unpatched() or release_steam
 	release_demo = OS.has_feature("demo") or release_demo
 	variables.tune_up_max_level()
 #	OS.window_size = Vector2(1280,720)
@@ -243,10 +243,21 @@ func _ready():
 
 #	yield(preload_backgrounds(), 'completed')
 #	print("Backgrounds preloaded")
-	if resources.is_busy(): yield(resources, "done_work")#remove?
-#	print("preload finished")
+#	if resources.is_busy(): yield(resources, "done_work")
+#	print("globals _ready finished")
 
 
+func is_steam_unpatched() ->bool:
+	if !OS.has_feature("steam"):
+		return false
+	var patch_path = "res://nude_patch.pck"
+	if OS.has_feature("demo"):
+		patch_path = "res://nude_patch_demo.pck"
+	if ProjectSettings.load_resource_pack(patch_path):
+		return false
+#	else:
+#		print("no nude_patch")
+	return true
 
 func logupdate(text):
 	state.logupdate(text)
@@ -811,6 +822,9 @@ func get_game_version() ->String:
 	var res = gameversion
 	if is_steam_type():
 		res += " Steam"
+	elif OS.has_feature("steam"):
+		#not steam_type but with feature
+		res += " Patched-Steam"
 	if is_demo_type():
 		res += " Demo"
 	return res

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://files/scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/images/particles/spark_big.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/particles/spark_mid.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/particles/spark_small.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/load_screen/loading.png" type="Texture" id=23]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.255034, 0.630872, 0.986577, 1 )
@@ -371,5 +372,11 @@ damping = 100.0
 damping_random = 1.0
 angle_random = 1.0
 color_ramp = SubResource( 1 )
+
+[node name="preload_screen" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+texture = ExtResource( 23 )
 
 [node name="WarnScreen" parent="." instance=ExtResource( 18 )]
