@@ -19,6 +19,8 @@ const RES_ROOT = {
 #priority: normal base (demo), normal, steam base (demo), steam
 const RES_RELEASE_PRIOR = ["/r_nude", "/r_full/r_nude", "", "/r_full"]
 
+var exist_release_dir = {}#filled automatically
+
 const RES_EXT = {
 	"abg" : "ogv",
 	"bg" : "png",
@@ -48,7 +50,15 @@ var path_to_delete = []
 var busy = 0
 
 
-#func _ready() -> void:
+func _ready() -> void:
+	var dir_checker = Directory.new()
+	for category in RES_ROOT:
+		exist_release_dir[category] = []
+		for release in RES_RELEASE_PRIOR:
+			var release_dir = "%s%s" % [category, release]
+			var dir = "%s/%s" % [RES_ROOT[category], release_dir]
+			if dir_checker.dir_exists(dir):
+				exist_release_dir[category].append(release_dir)
 #	var path = resources.RES_ROOT.bg + '/bg'
 #	var dir = globals.dir_contents(path)
 #	if dir != null:
@@ -115,10 +125,10 @@ func _thread_load(args: Array) -> Resource:
 	var res = null
 	var path
 	var has_res = false
-	for release in RES_RELEASE_PRIOR:
+	for release_dir in exist_release_dir[category]:
 		for ext in extensions:
-			path = "%s/%s%s/%s.%s" % [
-				RES_ROOT[category], category, release, label, ext]
+			path = "%s/%s/%s.%s" % [
+				RES_ROOT[category], release_dir, label, ext]
 			has_res = ResourceLoader.exists(path)
 			if has_res: break
 		if has_res: break
