@@ -302,16 +302,17 @@ func casterattack(node, args = null):#obsolete
 #	return nextanimationtime + aftereffectdelay
 #	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
-func targetfire(node, args = null):
-	var nextanimationtime = 0
-	hp_update_delays[node] = 0 #delay for hp updating during this animation
-	hp_float_delays[node] = 0 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.1)
-	buffs_update_delays[node] = 0.2
-	input_handler.gfx(node, 'gfx/fire')
-#	var tween = input_handler.GetTweenNode(node)
-	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
-#	tween.start()
+#there is no 'gfx/fire'!
+#func targetfire(node, args = null):
+#	var nextanimationtime = 0
+#	hp_update_delays[node] = 0 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0.1)
+#	buffs_update_delays[node] = 0.2
+#	input_handler.gfx(node, 'gfx/fire')
+##	var tween = input_handler.GetTweenNode(node)
+#	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
+##	tween.start()
 
 	return nextanimationtime + aftereffectdelay
 	#postdamagetimer = nextanimationtime + aftereffectdelay

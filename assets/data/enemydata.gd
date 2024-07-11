@@ -1549,4 +1549,6 @@ func preload_icons():
 			resources.preload_res('sound/%s' % ch.weaponsound)
 		if ch.has('bodyhitsound'):
 			resources.preload_res('sound/%s' % ch.bodyhitsound)
+	#not in use for now
+#	resources.preload_res('Fight/dead')
 	if resources.is_busy(): yield(resources, "done_work")

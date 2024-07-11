@@ -1012,18 +1012,19 @@ func tag_abg(res_name: String, sec_res_name: String = "") -> void:
 		vfin += w + "_"
 	vfin = vfin.left(vfin.length() - 1)
 	res_name = vfin + "/" + res_name
-
-	vsplit = sec_res_name.split("_")
-	vsplit.remove(vsplit.size() - 1)
-	if vsplit.size() > 0:
-		vfin = ""
-		for w in vsplit:
-			vfin += w + "_"
-		vfin = vfin.left(vfin.length() - 1)
-		sec_res_name = vfin + "/" + sec_res_name
-
 	var res = resources.get_res("abg/%s" % res_name)
-	var sec_res = resources.get_res("abg/%s" % sec_res_name)
+
+	var sec_res
+	if !sec_res_name.empty():
+		vsplit = sec_res_name.split("_")
+		vsplit.remove(vsplit.size() - 1)
+		if vsplit.size() > 0:
+			vfin = ""
+			for w in vsplit:
+				vfin += w + "_"
+			vfin = vfin.left(vfin.length() - 1)
+			sec_res_name = vfin + "/" + sec_res_name
+		sec_res = resources.get_res("abg/%s" % sec_res_name)
 
 	if rewind_mode:
 		$VideoBunch.force_show(res, sec_res)

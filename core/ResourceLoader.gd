@@ -84,7 +84,7 @@ func get_res(path: String) -> Resource:
 	if (res_pool.has(category) && res_pool[category].has(label)):
 		return res_pool[category][label]
 	else:
-#		print("GET_RES NOT FOUND: %s" % path)
+		print("GET_RES NOT FOUND: %s" % path)
 		return null
 
 
