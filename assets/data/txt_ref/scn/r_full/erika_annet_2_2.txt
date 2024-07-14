@@ -1,4 +1,5 @@
 ** erika_annet_2_2 **
+=BLACKFADE 0.5=
 =MUSIC event_mysterious=
 =GUI_FULL=
 EV_ERIKA_ANNET_2_2_0

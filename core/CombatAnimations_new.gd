@@ -169,34 +169,35 @@ func default_animation(node, args):
 		playtime = variables.default_animations_duration[time_id]
 	var back_delay = max(playtime + delaytime - transition_time, 0)
 	#------old variant (bug of Tween node is mostly severe here)
-#	input_handler.force_end_tweens(sp)
-#	input_handler.force_end_tweens(sp2)
-#	input_handler.FadeAnimation(sp, transition_time, delaytime)
-#	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
-#	input_handler.FadeAnimation(sp2, transition_time, back_delay, true)
-#	input_handler.UnfadeAnimation(sp, transition_time, back_delay, true)
+	#UPDATE: bug of Tween node is seems to be evaded
+	input_handler.force_end_tweens(sp)
+	input_handler.force_end_tweens(sp2)
+	input_handler.FadeAnimation(sp, transition_time, delaytime)
+	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
+	input_handler.FadeAnimation(sp2, transition_time, back_delay, true)
+	input_handler.UnfadeAnimation(sp, transition_time, back_delay, true)
 	#------new variant
-	#force_end_tweens
-	if node.has_meta("tween") and node.get_meta("tween").is_valid():
-		node.get_meta("tween").kill()
-	#new tweens
-	var tween = node.create_tween()
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	node.set_meta("tween", tween)
-	#FadeAnimation/UnfadeAnimation
-	var tweener = tween.tween_property(sp, 'modulate', Color(1,1,1,0), transition_time)
-	tweener.from(Color(1,1,1,1))
-	tweener.set_delay(delaytime)
-	tweener = tween.parallel().tween_property(sp2, 'modulate', Color(1,1,1,1), transition_time)
-	tweener.from(Color(1,1,1,0))
-	tweener.set_delay(delaytime)
-	tweener = tween.tween_property(sp2, 'modulate', Color(1,1,1,0), transition_time)
-	tweener.from(Color(1,1,1,1))
-	tweener.set_delay(back_delay)
-	tweener = tween.parallel().tween_property(sp, 'modulate', Color(1,1,1,1), transition_time)
-	tweener.from(Color(1,1,1,0))
-	tweener.set_delay(back_delay)
+#	#force_end_tweens
+#	if node.has_meta("tween") and node.get_meta("tween").is_valid():
+#		node.get_meta("tween").kill()
+#	#new tweens
+#	var tween = node.create_tween()
+#	tween.set_trans(Tween.TRANS_LINEAR)
+#	tween.set_ease(Tween.EASE_IN_OUT)
+#	node.set_meta("tween", tween)
+#	#FadeAnimation/UnfadeAnimation
+#	var tweener = tween.tween_property(sp, 'modulate', Color(1,1,1,0), transition_time)
+#	tweener.from(Color(1,1,1,1))
+#	tweener.set_delay(delaytime)
+#	tweener = tween.parallel().tween_property(sp2, 'modulate', Color(1,1,1,1), transition_time)
+#	tweener.from(Color(1,1,1,0))
+#	tweener.set_delay(delaytime)
+#	tweener = tween.tween_property(sp2, 'modulate', Color(1,1,1,0), transition_time)
+#	tweener.from(Color(1,1,1,1))
+#	tweener.set_delay(back_delay)
+#	tweener = tween.parallel().tween_property(sp, 'modulate', Color(1,1,1,1), transition_time)
+#	tweener.from(Color(1,1,1,0))
+#	tweener.set_delay(back_delay)
 	#---------
 	if args.has('callback'):
 		input_handler.tween_callback(node, args.callback, back_delay)
