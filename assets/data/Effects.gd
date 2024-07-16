@@ -1724,6 +1724,34 @@ var effect_table = {
 		args = [{obj = 'template', param = 'buff_text'}],
 		buffs = ['b_gust'],
 	},
+	e_t_smash = {
+		type = 'temp_s',
+		screen_name = 'EF_SMASH_DEBUFF',
+		name = 'smash',
+		target = 'target',
+		tags = ['negative'],
+		tick_event = variables.TR_TURN_S,
+		duration = 3,
+		stack = 1,
+		args = [{obj = 'parent_args', param = 0},
+			{obj = 'parent_args', param = 1}],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'resistlight', value = ['parent_args', 0]},
+			{type = 'stat_add', stat = 'resistfire', value = ['parent_args', 0]},
+			{type = 'stat_add', stat = 'resistdark', value = ['parent_args', 0]},
+		],
+		buffs = [{
+				icon = "res://assets/images/iconsskills/iola_6.png",
+				description = "BUFF_SMASH_DEBUFF",
+				args = [{obj = 'parent_args', param = 1}],
+				limit = 1,
+				t_name = 'icon_smash',
+				bonuseffect = 'duration',
+				group = variables.BG_NEGATIVE
+			}
+		],
+	},
 	e_s_cleanse = {
 		type = 'oneshot',
 		target = 'target',
@@ -1798,10 +1826,7 @@ var effect_table = {
 		tags = ['buff'],
 		args = [],
 		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'hitrate', value = 25},
-			{type = 'stat_add_p', stat = 'damage', value = 0.15},
-			],
+		atomic = [{type = 'stat_add_p', stat = 'damage', value = 0.20}],
 		buffs = [{ 
 			icon = "res://assets/images/iconsskills/iola_2.png", 
 			description = "BUFF_BLESS",
@@ -4154,6 +4179,13 @@ func rebuild_template(args):
 		res.duration = args.duration
 	if args.has('push_value'):
 		res.args = [{obj = 'parent', param = 'process_value'}]
+	if args.has('template_args'):
+		var template_args = args.template_args
+		if !res.has('args'): res.args = []
+		for i in range(0, template_args.size()):
+			var arg_name = 'template_arg_%d' % i
+			res[arg_name] = template_args[i]
+			res.args.append({obj = 'template', param = arg_name})
 	
 	if args.has('debug_name'):
 		res.debug_name = args.debug_name

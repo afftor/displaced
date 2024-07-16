@@ -1739,16 +1739,17 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
+		next_target = variables.NT_WEAK,
 		reqs = [],
 		tags = ['damage'],
 		value = ['caster.damage'],
 		cooldown = 0,
-		casteffects = [],
+		casteffects = ['e_fen_addrep'],
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_holy_light', target = 'target', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'anim_attack', target = 'caster', period = 'cast'},],
+			{code = 'anim_attack', target = 'caster', period = 'predamage'},],
 		sounddata = {predamage = 'holy light'},
 		patches = []
 	},
@@ -1795,7 +1796,7 @@ var skilllist = {
 		tags = ['damage', 'debuf'],
 		value = ['caster.damage','*0.8'],
 		cooldown = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.5, duration = 1})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_t_smash', template_args = [-20, 20]})],
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
@@ -3832,7 +3833,7 @@ var patches = {
 			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT2'}]}
 	},
 	p_smash = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1})]},
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_t_smash', template_args = [-40, 40]})]},
 		description_patch = {type = 'append',
 			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT2'}]}
 	},

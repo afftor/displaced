@@ -658,17 +658,17 @@ var TranslationDict = {
 	SKILLSOUL_PROT = "Soul Protection",
 	SKILLSOUL_PROTDESCRIPT = "Consume all spirits. Each spirit heals 10% of maximum health of all allies. Initial target's health can't drop below 1 for 2 turns.",
 	SKILLHOLY_LIGHT = "Holy Light",
-	SKILLHOLY_LIGHTDESCRIPT = "Deals 100% [color=yellow]Light[/color] Damage to a single target.",
+	SKILLHOLY_LIGHTDESCRIPT = "Deals 100% [color=yellow]Light[/color] Damage to a single target. If target dies, recast on random target.",
 	SKILLGUSTOFWIND = "Gust of Wind",
 	SKILLGUSTOFWINDDESCRIPT = "Hit enemies in line with 60% [color=yellow]Air[/color] Damage, apply effect with 40% chance: Deal 15% less damage for 2 turns.",
 	SKILLSMASH = "Smash",
-	SKILLSMASHDESCRIPT = "Deals 80% [color=yellow]Crush[/color] Damage with 50% chance to Stun target for 1 turn.",
+	SKILLSMASHDESCRIPT = "Deals 80% [color=yellow]Crush[/color] Damage, apply debuff +20% damage taken from Light, Fire and Dark attacks for 3 turns.",
 	SKILLCLEANSING = "Cleansing",
 	SKILLCLEANSINGDESCRIPT = "Deals 90% [color=yellow]Fire[/color] Damage to target and it's neighboors. Dispel all positive buffs on target. If target is burning resets effect's duration.",
 	SKILLBARRIER = "Barrier",
 	SKILLBARRIERDESCRIPT = "Shields ally for 50% of their maximum health for 1 turn.",
 	SKILLBLESS = "Bless",
-	SKILLBLESSDESCRIPT = "Heal one ally target for 50% of caster's maximum health. Apply buff: +25 Hit Rate, +15% damage for 2 turns.",
+	SKILLBLESSDESCRIPT = "Heal one ally target for 50% of caster's maximum health. Apply buff: +20% damage for 2 turns.",
 	SKILLSANCTUARY = "Sanctuary",
 	SKILLSANCTUARYDESCRIPT = "Heal all living allies for 35% of caster's maximum health and ressurect the dead ones.",
 	SKILLPURGE = "Purge",
@@ -828,7 +828,7 @@ var TranslationDict = {
 	WEAPON_IOLA2 = "Depths Wand",
 	WEAPON_IOLA1_EFFECT1 = "Reduce cooldown by 1",#Blessing
 	WEAPON_IOLA1_EFFECT1_4 = "Reduce cooldown by 2",#Blessing
-	WEAPON_IOLA1_EFFECT2 = "Stun chance is 100%",#Smash
+	WEAPON_IOLA1_EFFECT2 = "Increase debuff efficiency to 40%",#Smash
 	WEAPON_IOLA1_EFFECT3 = "Applies Burn of 50%BD for 2 turns",#Cleansing
 	WEAPON_IOLA1_EFFECT4 = "Increase Heal amount to 70%",#Sanctuary
 	WEAPON_IOLA2_EFFECT1 = "Also applies to self",#Barrier
@@ -873,7 +873,7 @@ var TranslationDict = {
 	BUFF_CHILL = "Chilled: Takes water damage at the beginning of turn.",
 	BUFF_MIST = "Takes water damage at the beginning of turn.",
 	BUFF_NATURE_BLESS = "Increase all damage by 20% and max hp by 20%",
-	BUFF_BLESS = "Increase all damage by 15% and Hit Rate by 25%",
+	BUFF_BLESS = "Increase all damage by 20%",
 	BUFF_HEARTSEEKER_DEBUFF = "Damage taking increased by 25%",
 	BUFF_AVALANCHE_DEBUFF = "Damage taking increased by 20%",
 	BUFF_CULLING = "Damage taking increased by 20% per stack.\nCan be dispelled.",
@@ -889,6 +889,7 @@ var TranslationDict = {
 	BUFF_DRAGON_PROTECTION = "Barrier (%d remains), can't be debuffed",
 	BUFF_ECHO_SHIELD = "Barrier (%d remains)",
 	BUFF_IOLA_BARRIER = "Barrier (%d remains)",
+	BUFF_SMASH_DEBUFF = "Reduced Light, Fire and Dark resistance by %d%%",
 	BUFF_AEGIS_HP = "Max hp increased by 25%",
 	BUFF_ORB = "Reduced Dark and Light resistance by 25%",
 	BUFF_ECHO_TAUNT = "This unit is taunted and must attack Rilu",
@@ -959,6 +960,7 @@ var TranslationDict = {
 	EF_BEAM_DEBUFF = "Soul Beam debuff",
 	EF_SOULPROT = "Soul Protection",
 	EF_GUSTOFWIND_DEBUFF = "Gust of Wind debuff",
+	EF_SMASH_DEBUFF = "Smash debuff",
 	EF_IOLA_BARRIER = "Barrier",
 	EF_BARRIER = "Barrier",
 	EF_BLESS = "Bless",
