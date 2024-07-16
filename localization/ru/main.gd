@@ -227,6 +227,11 @@ var TranslationDict = {
 	B_SAVE = 'Сохранить',
 	SAVELINEEDIT = "введите имя файла",
 	SAVENEWSAVE = "Новый файл",
+	OPT_DIFFICULTY = "Сложность",
+	OPT_DF_NORMAL = "Норма",
+	OPT_DF_HARD = "Сложно",
+
+	NEWGAMEDIFFICULTY = "Выберите сложность!",
 
 	TEXTSPEED = "Скорость текста",
 	SKIPREAD = "Пропуск фраз",

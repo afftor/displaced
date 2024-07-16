@@ -338,6 +338,11 @@ var TranslationDict = {
 	B_SAVE = 'Save',
 	SAVELINEEDIT = "type file name",
 	SAVENEWSAVE = "New save",
+	OPT_DIFFICULTY = "Difficulty",
+	OPT_DF_NORMAL = "Normal",
+	OPT_DF_HARD = "Hard",
+
+	NEWGAMEDIFFICULTY = "Choose difficulty!",
 
 	TEXTSPEED = "Text Speed",
 	SKIPREAD = "Skip Read",
