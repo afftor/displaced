@@ -561,7 +561,7 @@ var scene_sequences = {
 	erika_rose_init = {
 #		initiate_signal = 'village_townhall_erika', 
 		initiate_reqs = [
-#			{type = 'seq_seen', value = 'erika_doggy'},
+			{type = 'seq_seen', value = 'town_gates'},
 			{type = 'decision', name = 'erika_2_true'},
 		],
 		actions = [
