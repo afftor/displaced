@@ -601,7 +601,7 @@ var TranslationDict = {
 	SKILLSWIPE = "Swipe",
 	SKILLSWIPEDESCRIPT = "Strikes a single enemy with 80% [color=yellow]Slash[/color] Damage, dispelling them.",
 	SKILLFIRE_BOLT = "Fire Bolt",
-	SKILLFIRE_BOLTDESCRIPT = "A fire attack, hits two enemies in a row for 100% [color=yellow]Fire[/color] Damage each, applying Burn effect of 35%BD for 2 turns.",
+	SKILLFIRE_BOLTDESCRIPT = "A fire attack, hits two enemies in a row for 100% [color=yellow]Fire[/color] Damage each, applying Burn effect of 35% Damage for 2 turns.",
 	SKILLFLASH = "Flash",
 	SKILLFLASHDESCRIPT = "Inflicts 30% [color=yellow]Light[/color] Damage and reduces Hit Rate of all enemies by 25 for 1 turn.",
 	SKILLDELUGE = "Deluge",
@@ -779,7 +779,7 @@ var TranslationDict = {
 	WEAPON_ERIKA2 = "The Hawk",
 	WEAPON_ERIKA1_EFFECT1 = "Ignore 35% of target's Air Resist",#Air Arrow
 	WEAPON_ERIKA1_EFFECT1_4 = "Ignore 70% of target's Air Resist",#Air Arrow
-	WEAPON_ERIKA1_EFFECT2 = "Apply Chill effect: 40%BD each of 3 turns",#Frozen Arrow
+	WEAPON_ERIKA1_EFFECT2 = "Apply Chill effect: 40% Damage each of 3 turns",#Frozen Arrow
 	WEAPON_ERIKA1_EFFECT3 = "Always hit same target",#Quick Shot
 	WEAPON_ERIKA1_EFFECT4 = "Increase damage taken by target by 25% for 4 turns",#Heart Seeker
 	WEAPON_ERIKA2_EFFECT1 = "Deals 1 more attack",#Quick Shot
@@ -834,13 +834,13 @@ var TranslationDict = {
 	WEAPON_IOLA1_EFFECT1 = "Reduce cooldown by 1",#Blessing
 	WEAPON_IOLA1_EFFECT1_4 = "Reduce cooldown by 2",#Blessing
 	WEAPON_IOLA1_EFFECT2 = "Increase debuff efficiency to 40%",#Smash
-	WEAPON_IOLA1_EFFECT3 = "Applies Burn of 50%BD for 2 turns",#Cleansing
+	WEAPON_IOLA1_EFFECT3 = "Applies Burn of 50% Damage for 2 turns",#Cleansing
 	WEAPON_IOLA1_EFFECT4 = "Increase Heal amount to 70%",#Sanctuary
 	WEAPON_IOLA2_EFFECT1 = "Also applies to self",#Barrier
 	WEAPON_IOLA2_EFFECT1_4 = "Also applies to all party",#Barrier
 	WEAPON_IOLA2_EFFECT2 = "80% chance to apply 25% reduced damage instead",#Gust of wind
 	WEAPON_IOLA2_EFFECT3 = "Applies to all enemies",#Cleansing
-	WEAPON_IOLA2_EFFECT4 = "Also deal 250%BD Light damage to all enemies",#Purge
+	WEAPON_IOLA2_EFFECT4 = "Also deal 250% Light Damage to all enemies",#Purge
 	ARMOR_IOLA = "Iola's dress",
 #	ARMOR_IOLA_EFFECT1 = "Base resistance 7%",
 #	ARMOR_IOLA_EFFECT2 = "Base resistance 15%",
@@ -1096,7 +1096,7 @@ var TranslationDict = {
 	ITEMITEM_BUFF_DEFDESCRIPT = "Reduce incoming damage by 50% for 3 turns to ally",
 	
 	TUTORIAL = "Tutorial",
-	TUTORIAL_SKILL_USAGE = "Select a skill to use on your enemy. Different skills inflicts different proportions of character's Base Damage (BD), have different additional attributes and elements to them. Selecting correct skill in certain situation is a key to victory.",
+	TUTORIAL_SKILL_USAGE = "Select a skill to use on your enemy. Different skills inflicts different proportions of character's Base Damage, have different additional attributes and elements to them. Selecting correct skill in certain situation is a key to victory.",
 	TUTORIAL_SELECT_CHARACTER = "You can select your characters to make them act first. After all your characters have acted this turn your turn ends.",
 	TUTORIAL_ELEMENTAL_WEAKNESSES = "Different enemies are weak or strong against certain elements and damage types. Strike with correct element to deal more damage. There is also a resistance to harmful states like 'burn'. If enemy is resilient, it can avoid such states. You will discover more damage types as you go.",
 	TUTORIAL_SWAPPING_CHARACTERS = "Drag characters to their positions to place or swap them. This costs no turn.",
