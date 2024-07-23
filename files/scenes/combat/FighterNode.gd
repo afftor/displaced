@@ -333,9 +333,12 @@ func disappear():#stub
 
 
 func process_defeat():
-	var data
-	data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = {animation = 'dead', callback = 'defeat'}}
-	animation_node.add_new_data(data)
+	var params = {animation = 'dead', callback = 'defeat'}
+	if fighter is hero:
+		params['transition_back'] = 0.0#expects "dead" anim to be oneshot AnimatedTexAutofill
+	animation_node.add_new_data({
+		node = self, time = input_handler.combat_node.turns,
+		type = 'default_animation', slot = 'sprite2', params = params})
 
 
 func process_resurrect():
