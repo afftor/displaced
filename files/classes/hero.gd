@@ -6,7 +6,7 @@ signal friend_points_changed
 signal lock_status_changed
 
 
-var unlocked = false setget set_unlocked
+var unlocked = false
 var friend_points = 0.0 setget set_friend_points
 var friend_points_new = 0.0
 

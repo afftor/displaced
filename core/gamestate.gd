@@ -639,7 +639,7 @@ func system_action(action):
 
 #simple action wrappers
 func unlock_char(code, value = true, notify = true):
-	heroes[code].unlocked = value
+	heroes[code].set_unlocked(value)
 	if !value:
 		heroes[code].position = null
 	if notify:
