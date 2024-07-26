@@ -38,10 +38,10 @@ EV_RILU_1_2_8
 Ri - EV_RILU_1_2_9
 Dwarf - EV_RILU_1_2_10
 =SOUND explosion=
-=MUSIC_stop=
+=MUSIC_STOP=
 EV_RILU_1_2_11
 EV_RILU_1_2_12
-=SOUND splatter=
+=SOUND sound_splatter=
 =SPRITE_FADE 0.5=
 =DELAY 0.3=
 Ro(shock) - EV_RILU_1_2_13
