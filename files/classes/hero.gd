@@ -191,6 +191,8 @@ func get_item_data_level(slot, level):
 	else:#weapon
 		res.description = Items.form_weapon_lvl_desc(template.leveldata[level].lvldesc)
 	res.cost = template.leveldata[level].cost.duplicate()
+	if template.has('damagetype'):#only for weapons
+		res.damagetype = template.damagetype
 	return res
 
 func get_item_data(slot):

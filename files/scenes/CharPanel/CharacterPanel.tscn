@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/themes/statlist.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://files/scenes/charinfo_portrait.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/iconsskills/arron_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/buttons/charpanel/button_skill.png" type="Texture" id=9]
+[ext_resource path="res://files/scenes/combat/ResistIcon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/images/buttons/charpanel/button_skill_hover.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/buttons/charpanel/hpbar_charinfo_filler.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/iconsgear/arron_weapon1_1.png" type="Texture" id=13]
@@ -342,9 +343,12 @@ rect_min_size = Vector2( 220, 220 )
 texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="dam_type" parent="Panel/weapon1" instance=ExtResource( 10 )]
+margin_left = 193.0
+margin_top = 10.0
+margin_right = 223.0
+margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="Panel/weapon1"]
 anchor_right = 1.0
@@ -353,9 +357,6 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 2 )
 text = "Level 1"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="Panel/weapon1"]
 anchor_top = 1.0
@@ -402,6 +403,12 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="dam_type" parent="Panel/weapon2" instance=ExtResource( 10 )]
+margin_left = 193.0
+margin_top = 10.0
+margin_right = 223.0
+margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="Panel/weapon2"]
 anchor_right = 1.0

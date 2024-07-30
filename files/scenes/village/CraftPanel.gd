@@ -98,10 +98,17 @@ func rebuild_gear(cid = selected_char):
 func rebuild_gear_slot(node, data, newdata):
 	node.get_node("Icon").texture = data.icon
 	node.get_node("Label2").text = data.name
+	if data.has('damagetype'):#only for weapons
+		var dam_type = node.get_node("dam_type")
+		dam_type.set_resist_type(data.damagetype)
+		dam_type.show()
 	if data.level > 0:
 		node.get_node("Label").text = tr("LEVEL") + " %d" % data.level
 	else:
-		node.get_node("Label").text = ""
+		node.get_node("Label").text = "Basic"
+		if data.type == 'weapon2':
+			node.get_node("dam_type").hide()
+			node.get_node("Label").text = ""
 	if newdata != null:
 		var forge_can :bool = state.if_has_upgrade('forge', newdata.level)
 		node.get_node("Button").visible = forge_can

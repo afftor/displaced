@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://files/scenes/village/CraftPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/images/portrait/ArronNormal.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_portrait_hover.png" type="Texture" id=9]
 [ext_resource path="res://assets/fonts/mainfont_32.tres" type="DynamicFont" id=10]
+[ext_resource path="res://files/scenes/combat/ResistIcon.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_big.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_resources.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/forge/panel_forge_gear.png" type="Texture" id=15]
@@ -139,6 +140,12 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="dam_type" parent="Panel/weapon1" instance=ExtResource( 11 )]
+margin_left = 195.0
+margin_top = 15.0
+margin_right = 225.0
+margin_bottom = 45.0
 
 [node name="Button" type="Button" parent="Panel/weapon1"]
 anchor_left = 0.5
@@ -288,6 +295,12 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="dam_type" parent="Panel/weapon2" instance=ExtResource( 11 )]
+margin_left = 195.0
+margin_top = 15.0
+margin_right = 225.0
+margin_bottom = 45.0
 
 [node name="Button" type="Button" parent="Panel/weapon2"]
 anchor_left = 0.5
