@@ -984,7 +984,9 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				args = [{obj = 'parent_args', param = 0}],
-				atomic = [{type = 'damage', source = 'water', value = [['parent_args', 0], '/', 2.25]}],#skill gives 0.9 of base damage 0.9/2.25 = 0.4
+				atomic = [
+					{type = 'damage', source = 'water', value = [['parent_args', 0], '/', 2.25]},#skill gives 0.9 of base damage 0.9/2.25 = 0.4
+					{type = 'sfx', value = 'anim_hit'}],
 			}
 		],
 		buffs = []
@@ -1550,7 +1552,9 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				args = [{obj = 'parent_args', param = 0}],
-				atomic = [{type = 'damage', source = 'water', value = [['parent_args', 0], '*', 2]}],
+				atomic = [
+					{type = 'damage', source = 'water', value = [['parent_args', 0], '*', 2]},
+					{type = 'sfx', value = 'anim_hit'}],
 			}
 		],
 		buffs = []
@@ -2511,7 +2515,8 @@ var effect_table = {
 			{type = 'stats', stat = 'base', value = 'bomber', operant = 'neq' } 
 		],
 		args = [{obj = 'parent_args', param = 0}],
-		atomic = ['a_burn']
+		atomic = ['a_burn',
+			{type = 'sfx', value = 'anim_hit'}]
 	},
 	e_tr_unstable = {
 		type = 'static',
