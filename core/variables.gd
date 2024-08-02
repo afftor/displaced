@@ -131,7 +131,7 @@ var resist_data = {
 	},
 	stun = {
 		name = 'RESIST_STUN',
-		icon = preload('res://assets/images/iconsskills/iola_6.png'),
+		icon = preload('res://assets/images/traits/experience.png'),
 		type = 'status'
 	},
 	chill = {
