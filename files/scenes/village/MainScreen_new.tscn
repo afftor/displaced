@@ -62,13 +62,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="townhall_outline" type="TextureRect" parent="ground"]
-margin_left = 636.102
-margin_top = 213.816
-margin_right = 1088.1
-margin_bottom = 570.816
-texture = ExtResource( 20 )
-
 [node name="townhall" type="TextureButton" parent="ground"]
 margin_left = 636.102
 margin_top = 213.816
@@ -94,7 +87,7 @@ text = "TOWNHALL"
 
 [node name="Indicator" type="Node" parent="ground/townhall"]
 script = ExtResource( 32 )
-visual = NodePath("../../townhall_outline")
+visual = NodePath("..")
 outline_material = ExtResource( 31 )
 
 [node name="bridge" type="TextureButton" parent="ground"]

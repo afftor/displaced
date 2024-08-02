@@ -42,13 +42,17 @@ enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CAS
 enum {SEQ_NONE, SEQ_SCENE_STARTED}
 enum {CURTAIN_BATTLE, CURTAIN_SCENE}
 enum {DN_NONE, DN_SPRITE, DN_IN_ME}
+enum {DF_NORMAL, DF_HARD}#difficulty levels
 #Heroes
 var MaxLevel = 40
 var StartTraitPoints = 0
 var TraitPointsPerLevel = 1
 
-#enemies
-var EasyDiffMul = 0.7
+#difficulty
+var DIFF_MUL = {
+	hp = {DF_HARD : 1.3},
+	damage = {DF_HARD : 1.3},
+}
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
@@ -127,7 +131,7 @@ var resist_data = {
 	},
 	stun = {
 		name = 'RESIST_STUN',
-		icon = preload('res://assets/images/iconsskills/iola_6.png'),
+		icon = preload('res://assets/images/traits/experience.png'),
 		type = 'status'
 	},
 	chill = {

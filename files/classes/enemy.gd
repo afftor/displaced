@@ -24,15 +24,15 @@ func get_reward():
 
 func hpmax_get():
 	var res = .hpmax_get()
-	if state.get_difficulty() == 'easy':
-		res *= variables.EasyDiffMul
+	if state.get_difficulty() != variables.DF_NORMAL:
+		res *= variables.DIFF_MUL.hp[state.get_difficulty()]
 	return res
 
 
 func damage_get():
 	var res = .damage_get()
-	if state.get_difficulty() == 'easy':
-		res *= variables.EasyDiffMul
+	if state.get_difficulty() != variables.DF_NORMAL:
+		res *= variables.DIFF_MUL.damage[state.get_difficulty()]
 	return res
 
 #confirmed getters
@@ -74,7 +74,7 @@ func createfromtemplate(enemy_id, lvl):
 		if !template.has('resists'): continue
 		if template.resists.has(i):
 			resists[i] = template.resists[i]
-		if state.get_difficulty() == 'easy' and resists[i] > 0: resists[i] /= 2
+#		if state.get_difficulty() == 'easy' and resists[i] > 0: resists[i] /= 2
 	for i in variables.status_list:
 		status_resists[i] = 0
 		if !template.has('status_resists'): continue

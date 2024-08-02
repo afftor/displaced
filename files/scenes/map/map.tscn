@@ -425,10 +425,10 @@ text = "AREACASTLENAME"
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -33.0
-margin_top = -32.0
-margin_right = 31.0
-margin_bottom = 35.0
+margin_left = -17.0
+margin_top = 8.0
+margin_right = 47.0
+margin_bottom = 75.0
 texture = ExtResource( 19 )
 expand = true
 

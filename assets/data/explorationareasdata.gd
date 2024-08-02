@@ -96,7 +96,7 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	
 	victor_2_3 = [
-		{type = 'mission', value = 'town_viktor_fight'},
+		{type = 'mission', value = 'town_viktor_fight', auto_advance = true},
 	],
 	rilu_2_3_1 = [
 		{type = 'system', value = 'enable_character', arg = ['rilu', false]}
@@ -107,7 +107,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'enable_character', arg = ['rose', false, false]},
 		{type = 'system', value = 'enable_character', arg = ['erika', false, false]},
 		{type = 'system', value = 'add_to_party', arg = ['arron', 2]},
-		{type = 'mission', value = 'castle_rilu'},
+		{type = 'mission', value = 'castle_rilu', auto_advance = true},
 	],
 	rilu_2_4 = [
 		{type = 'system', value = 'enable_character', arg = ['ember', true, false]},
@@ -129,6 +129,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	iola_2_5 = [
 		{type = 'system', value = 'enable_character', arg = ['iola', true]}
+	],
+	iola_3_3 = [
+		{type = 'show_screen', value = 'map'},
 	],
 	dimitrius_2_1_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
@@ -216,7 +219,7 @@ var locations = { #added seqs bindings and other fields
 #		missions = ['town_viktor_fight','town_siege'],
 		missions = ['road_to_town', 'town_siege'],
 #		function = '',
-		events = ['town_gates', 'search_clues', 'viktor_introduction', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', 'city_raid']
+		events = ['town_gates', 'viktor_introduction', 'search_clues', 'annet_introduction', 'erika_meet_annet', 'arron_meet_annet', 'rose_annet_rescue', 'viktor_duel', 'city_raid']
 	},
 	castle =  {
 		code = 'castle',
@@ -561,7 +564,7 @@ var scene_sequences = {
 	erika_rose_init = {
 #		initiate_signal = 'village_townhall_erika', 
 		initiate_reqs = [
-#			{type = 'seq_seen', value = 'erika_doggy'},
+			{type = 'seq_seen', value = 'town_gates'},
 			{type = 'decision', name = 'erika_2_true'},
 		],
 		actions = [
@@ -645,7 +648,8 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'ember_missionary',
 		unlock_price = {ember = 50},
-		initiate_reqs = [{type = 'mission_complete', value = 'road_to_town'},
+		initiate_reqs = [{type = 'seq_seen', value = 'ember_boobs'},
+			{type = 'mission_complete', value = 'road_to_town'},
 			{type = 'release_demo', value = false}],
 		actions = [{type = 'scene', value = 'ember_1_4'}]
 	},
@@ -1024,11 +1028,10 @@ var areas = { #missions in new terminology
 				],
 			5 : [
 				{1 : ['treant'], 3 : ['treant'], 4: ['treant'], 6:['treant']},
-				
 				],
 			6 : [
 				{1 : ['faery_2'], 3 : ['faery_2'], 4: ['faery'], 6:['faery']},
-				{4 : ['faery'], 5 : ['faery_2'], 6 : ['faery']}
+				{1 : ['faery'], 2 : ['faery_2'], 3 : ['faery']}
 				],
 			},
 		},
@@ -1288,6 +1291,7 @@ var areas = { #missions in new terminology
 		image = ['combat_palace_1', 'combat_palace_2', 'combat_palace_3'],
 		explore_image = 'castle_interior', #or not
 		no_escape = true, #added due to possible inability to return to it from explore
+		auto_advance = true,
 		stages = 4, 
 		level = 25,
 		events = {

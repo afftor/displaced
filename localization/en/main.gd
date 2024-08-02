@@ -338,6 +338,11 @@ var TranslationDict = {
 	B_SAVE = 'Save',
 	SAVELINEEDIT = "type file name",
 	SAVENEWSAVE = "New save",
+	OPT_DIFFICULTY = "Difficulty",
+	OPT_DF_NORMAL = "Normal",
+	OPT_DF_HARD = "Hard",
+
+	NEWGAMEDIFFICULTY = "Choose difficulty!",
 
 	TEXTSPEED = "Text Speed",
 	SKIPREAD = "Skip Read",
@@ -574,7 +579,7 @@ var TranslationDict = {
 	FLAVOR_IOLA = "One of a cult's sisters and a daughter of the current leader, Dimitrius, who has sided with us. ",
 	
 	SKILLATTACK = "Base Attack",
-	SKILLATTACKDESCRIPT = "The most generic attack with no strengths or weaknesses. Deals Base Damage of 100% using equipped [Color=yellow]Weapon Element[/color].",
+	SKILLATTACKDESCRIPT = "The most generic attack with no strengths or weaknesses. Deals Base Damage of 100% using equipped [color=yellow]Weapon Element[/color].",
 	SKILLDEFENCE = "Defence",
 	SKILLDEFENCEDESCRIPT = "Reduces incoming damage by 50% until next turn.",
 	SKILLFENCING = "Fencing",
@@ -596,7 +601,7 @@ var TranslationDict = {
 	SKILLSWIPE = "Swipe",
 	SKILLSWIPEDESCRIPT = "Strikes a single enemy with 80% [color=yellow]Slash[/color] Damage, dispelling them.",
 	SKILLFIRE_BOLT = "Fire Bolt",
-	SKILLFIRE_BOLTDESCRIPT = "A fire attack, hits two enemies in a row for 100% [color=yellow]Fire[/color] Damage each, applying Burn effect of 35%BD for 2 turns.",
+	SKILLFIRE_BOLTDESCRIPT = "A fire attack, hits two enemies in a row for 100% [color=yellow]Fire[/color] Damage each, applying Burn effect of 35% Damage for 2 turns.",
 	SKILLFLASH = "Flash",
 	SKILLFLASHDESCRIPT = "Inflicts 30% [color=yellow]Light[/color] Damage and reduces Hit Rate of all enemies by 25 for 1 turn.",
 	SKILLDELUGE = "Deluge",
@@ -658,17 +663,17 @@ var TranslationDict = {
 	SKILLSOUL_PROT = "Soul Protection",
 	SKILLSOUL_PROTDESCRIPT = "Consume all spirits. Each spirit heals 10% of maximum health of all allies. Initial target's health can't drop below 1 for 2 turns.",
 	SKILLHOLY_LIGHT = "Holy Light",
-	SKILLHOLY_LIGHTDESCRIPT = "Deals 100% [color=yellow]Light[/color] Damage to a single target.",
+	SKILLHOLY_LIGHTDESCRIPT = "Deals 100% [color=yellow]Light[/color] Damage to a single target. If target dies, recast on random target.",
 	SKILLGUSTOFWIND = "Gust of Wind",
 	SKILLGUSTOFWINDDESCRIPT = "Hit enemies in line with 60% [color=yellow]Air[/color] Damage, apply effect with 40% chance: Deal 15% less damage for 2 turns.",
 	SKILLSMASH = "Smash",
-	SKILLSMASHDESCRIPT = "Deals 80% [color=yellow]Crush[/color] Damage with 50% chance to Stun target for 1 turn.",
+	SKILLSMASHDESCRIPT = "Deals 80% [color=yellow]Crush[/color] Damage, apply debuff +20% damage taken from Light, Fire and Dark attacks for 3 turns.",
 	SKILLCLEANSING = "Cleansing",
 	SKILLCLEANSINGDESCRIPT = "Deals 90% [color=yellow]Fire[/color] Damage to target and it's neighboors. Dispel all positive buffs on target. If target is burning resets effect's duration.",
 	SKILLBARRIER = "Barrier",
 	SKILLBARRIERDESCRIPT = "Shields ally for 50% of their maximum health for 1 turn.",
 	SKILLBLESS = "Bless",
-	SKILLBLESSDESCRIPT = "Heal one ally target for 50% of caster's maximum health. Apply buff: +25 Hit Rate, +15% damage for 2 turns.",
+	SKILLBLESSDESCRIPT = "Heal one ally target for 50% of caster's maximum health. Apply buff: +20% damage for 2 turns.",
 	SKILLSANCTUARY = "Sanctuary",
 	SKILLSANCTUARYDESCRIPT = "Heal all living allies for 35% of caster's maximum health and ressurect the dead ones.",
 	SKILLPURGE = "Purge",
@@ -774,7 +779,7 @@ var TranslationDict = {
 	WEAPON_ERIKA2 = "The Hawk",
 	WEAPON_ERIKA1_EFFECT1 = "Ignore 35% of target's Air Resist",#Air Arrow
 	WEAPON_ERIKA1_EFFECT1_4 = "Ignore 70% of target's Air Resist",#Air Arrow
-	WEAPON_ERIKA1_EFFECT2 = "Apply Chill effect: 40%BD each of 3 turns",#Frozen Arrow
+	WEAPON_ERIKA1_EFFECT2 = "Apply Chill effect: 40% Damage each of 3 turns",#Frozen Arrow
 	WEAPON_ERIKA1_EFFECT3 = "Always hit same target",#Quick Shot
 	WEAPON_ERIKA1_EFFECT4 = "Increase damage taken by target by 25% for 4 turns",#Heart Seeker
 	WEAPON_ERIKA2_EFFECT1 = "Deals 1 more attack",#Quick Shot
@@ -828,14 +833,14 @@ var TranslationDict = {
 	WEAPON_IOLA2 = "Depths Wand",
 	WEAPON_IOLA1_EFFECT1 = "Reduce cooldown by 1",#Blessing
 	WEAPON_IOLA1_EFFECT1_4 = "Reduce cooldown by 2",#Blessing
-	WEAPON_IOLA1_EFFECT2 = "Stun chance is 100%",#Smash
-	WEAPON_IOLA1_EFFECT3 = "Applies Burn of 50%BD for 2 turns",#Cleansing
+	WEAPON_IOLA1_EFFECT2 = "Increase debuff efficiency to 40%",#Smash
+	WEAPON_IOLA1_EFFECT3 = "Applies Burn of 50% Damage for 2 turns",#Cleansing
 	WEAPON_IOLA1_EFFECT4 = "Increase Heal amount to 70%",#Sanctuary
 	WEAPON_IOLA2_EFFECT1 = "Also applies to self",#Barrier
 	WEAPON_IOLA2_EFFECT1_4 = "Also applies to all party",#Barrier
 	WEAPON_IOLA2_EFFECT2 = "80% chance to apply 25% reduced damage instead",#Gust of wind
 	WEAPON_IOLA2_EFFECT3 = "Applies to all enemies",#Cleansing
-	WEAPON_IOLA2_EFFECT4 = "Also deal 250%BD Light damage to all enemies",#Purge
+	WEAPON_IOLA2_EFFECT4 = "Also deal 250% Light Damage to all enemies",#Purge
 	ARMOR_IOLA = "Iola's dress",
 #	ARMOR_IOLA_EFFECT1 = "Base resistance 7%",
 #	ARMOR_IOLA_EFFECT2 = "Base resistance 15%",
@@ -873,7 +878,7 @@ var TranslationDict = {
 	BUFF_CHILL = "Chilled: Takes water damage at the beginning of turn.",
 	BUFF_MIST = "Takes water damage at the beginning of turn.",
 	BUFF_NATURE_BLESS = "Increase all damage by 20% and max hp by 20%",
-	BUFF_BLESS = "Increase all damage by 15% and Hit Rate by 25%",
+	BUFF_BLESS = "Increase all damage by 20%",
 	BUFF_HEARTSEEKER_DEBUFF = "Damage taking increased by 25%",
 	BUFF_AVALANCHE_DEBUFF = "Damage taking increased by 20%",
 	BUFF_CULLING = "Damage taking increased by 20% per stack.\nCan be dispelled.",
@@ -889,6 +894,7 @@ var TranslationDict = {
 	BUFF_DRAGON_PROTECTION = "Barrier (%d remains), can't be debuffed",
 	BUFF_ECHO_SHIELD = "Barrier (%d remains)",
 	BUFF_IOLA_BARRIER = "Barrier (%d remains)",
+	BUFF_SMASH_DEBUFF = "Reduced Light, Fire and Dark resistance by %d%%",
 	BUFF_AEGIS_HP = "Max hp increased by 25%",
 	BUFF_ORB = "Reduced Dark and Light resistance by 25%",
 	BUFF_ECHO_TAUNT = "This unit is taunted and must attack Rilu",
@@ -959,6 +965,7 @@ var TranslationDict = {
 	EF_BEAM_DEBUFF = "Soul Beam debuff",
 	EF_SOULPROT = "Soul Protection",
 	EF_GUSTOFWIND_DEBUFF = "Gust of Wind debuff",
+	EF_SMASH_DEBUFF = "Smash debuff",
 	EF_IOLA_BARRIER = "Barrier",
 	EF_BARRIER = "Barrier",
 	EF_BLESS = "Bless",
@@ -1089,7 +1096,7 @@ var TranslationDict = {
 	ITEMITEM_BUFF_DEFDESCRIPT = "Reduce incoming damage by 50% for 3 turns to ally",
 	
 	TUTORIAL = "Tutorial",
-	TUTORIAL_SKILL_USAGE = "Select a skill to use on your enemy. Different skills inflicts different proportions of character's Base Damage (BD), have different additional attributes and elements to them. Selecting correct skill in certain situation is a key to victory.",
+	TUTORIAL_SKILL_USAGE = "Select a skill to use on your enemy. Different skills inflicts different proportions of character's Base Damage, have different additional attributes and elements to them. Selecting correct skill in certain situation is a key to victory.",
 	TUTORIAL_SELECT_CHARACTER = "You can select your characters to make them act first. After all your characters have acted this turn your turn ends.",
 	TUTORIAL_ELEMENTAL_WEAKNESSES = "Different enemies are weak or strong against certain elements and damage types. Strike with correct element to deal more damage. There is also a resistance to harmful states like 'burn'. If enemy is resilient, it can avoid such states. You will discover more damage types as you go.",
 	TUTORIAL_SWAPPING_CHARACTERS = "Drag characters to their positions to place or swap them. This costs no turn.",
@@ -1458,7 +1465,7 @@ var TranslationDict = {
 	EV_DIMITRIUS_1_3_11 = "Ugh... What was that...",
 	EV_DIMITRIUS_1_3_12 = "Is everyone alright?",
 	EV_DIMITRIUS_1_3_13 = "More or less.",
-	EV_DIMITRIUS_1_3_14 = "Demitrius at some distance from the group Demitrius was standing tall with eyes wide open. ",
+	EV_DIMITRIUS_1_3_14 = "At some distance from the group Demitrius was standing tall with eyes wide open. ",
 	EV_DIMITRIUS_1_3_15 = "Freeze. I know who you are!",
 	EV_DIMITRIUS_1_3_16 = "Eh?",
 	EV_DIMITRIUS_1_3_17 = "You are not of this world!",
@@ -5127,7 +5134,8 @@ var TranslationDict = {
 	EV_ROSE_1_64 = "I-It's your fault, making me like this…",
 	EV_ROSE_1_65 = "Suddenly she bit her lip, knowing she had spoken out of turn",
 	EV_ROSE_1_66 = "Aha, talking back to your Master now? ",
-	EV_ROSE_1_67 = "I wonder who made you so cheeky.Rose couldn’t help herself any longer. She reached between her legs and took hold of Arron’s cock, guiding it into her slipperypussy.",
+	EV_ROSE_1_67 = "I wonder who made you so cheeky.",
+	EV_ROSE_1_67_1 = "Rose couldn’t help herself any longer. She reached between her legs and took hold of Arron’s cock, guiding it into her slippery pussy.",
 	EV_ROSE_1_68 = "And now you’re putting my dick inside you without permission as well?",
 	EV_ROSE_1_69 = "Ignoring her Master's mocking tone, Rose longingly impaled herself on his cock.",
 	EV_ROSE_1_70 = "Oooouuunhh!",
@@ -5836,7 +5844,7 @@ var TranslationDict = {
 	EV_FAERY_QUEEN_1_A_74 = "But there's still one hole unplugged.",
 	EV_FAERY_QUEEN_1_A_75 = "Can’t have that can we?",
 	EV_FAERY_QUEEN_1_A_76 = "I should say not!",
-	EV_FAERY_QUEEN_1_A_77 = "As Rose's throat and pussy are beingfucked, a new vine arrived, forcefully entering her exposed ass.",
+	EV_FAERY_QUEEN_1_A_77 = "As Rose's throat and pussy are being fucked, a new vine arrived, forcefully entering her exposed ass.",
 	EV_FAERY_QUEEN_1_A_78 = "MHMHM!!",
 	EV_FAERY_QUEEN_1_A_79 = "Hahahah, she seems to have given up struggling now.",
 	EV_FAERY_QUEEN_1_A_80 = "Yeah, that triple penetration always brings them around.",
@@ -5859,7 +5867,7 @@ var TranslationDict = {
 	EV_FAERY_QUEEN_1_A_97 = "Mmmmmh...",
 	EV_FAERY_QUEEN_1_A_98 = "Here she cums.",
 	EV_FAERY_QUEEN_1_A_99 = "Dirty little slut!",
-	EV_FAERY_QUEEN_1_A_100 = "With a long push, the vines bringRose to orgasm, spurting plant juice into her as her calves cramp and her body shakes.",
+	EV_FAERY_QUEEN_1_A_100 = "With a long push, the vines bring Rose to orgasm, spurting plant juice into her as her calves cramp and her body shakes.",
 	EV_FAERY_QUEEN_1_A_101 = "Mmmh!! Mh....",
 	EV_FAERY_QUEEN_1_A_102 = "Hah. You dirty whore. ",
 	EV_FAERY_QUEEN_1_A_103 = "This will teach you to go trespassing in our forest.",

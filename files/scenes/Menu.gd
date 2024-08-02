@@ -1,6 +1,7 @@
 extends Node
 
 var lastsave = null
+onready var difficulty_node = $difficulty_ask
 
 func _ready():
 
@@ -18,6 +19,9 @@ func _ready():
 
 #warning-ignore:return_value_discarded
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
+
+	$difficulty_ask/TextureRect/Normal.connect("pressed", self, "start_newgame", [variables.DF_NORMAL])
+	$difficulty_ask/TextureRect/Hard.connect("pressed", self, "start_newgame", [variables.DF_HARD])
 
 	if globals.globalsettings.warnseen == true:
 		$DemoPanel.hide()
@@ -51,6 +55,11 @@ func continueb():
 	globals.LoadGame(lastsave.get_file().get_basename());
 
 func newgame():
+	difficulty_node.show()
+
+func start_newgame(difficulty):
+	difficulty_node.hide()
+	state.set_difficulty(difficulty)
 	#state = load("res://src/gamestate.gd").new()
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')

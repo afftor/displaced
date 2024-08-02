@@ -30,14 +30,18 @@ func build_upgrade_tooltip(hero_id, slot):
 	build_slot_tooltip(hero_id, slot)
 	container.get_node("divider").show()
 	var next_level = container.get_node("next_level")
+	var dam_type = next_level.get_node("dam_type")
+	dam_type.hide()
+	next_level.show()
 	var hero = state.heroes[hero_id]
 	var upgrade_data = hero.get_item_upgrade_data(slot)
 	if !upgrade_data:
 		next_level.text = tr("MAXLEVEL")
-		next_level.show()
 		return
+	if slot == "weapon2" and upgrade_data.level == 1:
+		dam_type.set_resist_type(upgrade_data.damagetype)
+		dam_type.show()
 	next_level.text = tr("NEXTLEVEL") + " %d" % upgrade_data.level
-	next_level.show()
 	var next_desc = container.get_node("next_desc")
 	next_desc.text = upgrade_data.description
 	next_desc.show()

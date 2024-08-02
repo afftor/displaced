@@ -170,18 +170,27 @@ func setup_character(ch):
 	update_hp_label(fighter.hp)
 	
 #	center_node_on_sprite($Buffs)
-	put_above($Buffs, sprite1)
-	if fighter is h_rose:
-		#Rose got blank area on top of her sprite, so patch is in order.
-		#It may be better to fix image file itself, but for now I'll leave it as it is
-		var roses_height = 285
-		$Buffs.rect_position.y = (get_sprite_bottom_center().y
-				- roses_height - $Buffs.rect_size.y)
-	
+	update_buffs_pos()#redundant for now, as setup_position() goes strictly after setup_character()
 	#names are disabled for now
 #	$Label.text = fighter.name
 #	center_node_on_sprite($Label)
 #	put_above($Label, $Buffs)
+
+func update_buffs_pos():
+	var buff_panel = $Buffs
+	put_above(buff_panel, $sprite)
+	if fighter is h_rose:
+		#Rose got blank area on top of her sprite, so patch is in order.
+		#It may be better to fix image file itself, but for now I'll leave it as it is
+		var roses_height = 285
+		buff_panel.rect_position.y = (get_sprite_bottom_center().y
+				- roses_height - buff_panel.rect_size.y)
+	if buff_panel.rect_global_position.y < 0:
+		buff_panel.rect_global_position.y = 0
+
+func setup_position(new_pos :Vector2):
+	set_global_position(new_pos)
+	update_buffs_pos()
 
 #for now sprite is no longer changes it's center
 #func center_node_on_sprite(node :Control):
@@ -333,9 +342,12 @@ func disappear():#stub
 
 
 func process_defeat():
-	var data
-	data = {node = self, time = input_handler.combat_node.turns, type = 'default_animation', slot = 'sprite2', params = {animation = 'dead', callback = 'defeat'}}
-	animation_node.add_new_data(data)
+	var params = {animation = 'dead', callback = 'defeat'}
+	if fighter is hero:
+		params['transition_back'] = 0.0#expects "dead" anim to be oneshot AnimatedTexAutofill
+	animation_node.add_new_data({
+		node = self, time = input_handler.combat_node.turns,
+		type = 'default_animation', slot = 'sprite2', params = params})
 
 
 func process_resurrect():

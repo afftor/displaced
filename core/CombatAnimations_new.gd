@@ -151,7 +151,12 @@ func default_animation(node, args):
 	if args.has('subtype'):
 		time_id = "%s_%s" % [id, args.subtype]
 	var playtime
-	var transition_time = variables.default_animations_transition[time_id]
+	var trans_forth_time = variables.default_animations_transition[time_id]
+	var trans_back_time = trans_forth_time
+	if args.has('transition_forth'):#not in use for now, but should come handy
+		trans_forth_time = args.transition_forth
+	if args.has('transition_back'):
+		trans_back_time = args.transition_back
 	var delaytime = variables.default_animations_delay[time_id]
 	var delayafter = variables.default_animations_after_delay[time_id]
 	var tex = null
@@ -161,42 +166,49 @@ func default_animation(node, args):
 	var sp2 = node.get_node('sprite2')
 	node.set_sprite_2(tex)
 	sp2.visible = true
+	#playtime - is time from start of transition to sp2, til end of transition
+	#back to sp, that's why trans_back_time must be subtracted in back_delay
+	#and that's why it should't for oneshot AnimatedTexAutofill (like "dead"),
+	#in order to see full animation
+	#UPDATE: not quite relevant since trans_back_time could be 0, but still right thing to do
 	if tex is AnimatedTexAutofill:
 		playtime = tex.frames / tex.fps
 		if tex.oneshot:
 			tex.current_frame = 0
+			playtime += trans_back_time
 	else:
 		playtime = variables.default_animations_duration[time_id]
-	var back_delay = max(playtime + delaytime - transition_time, 0)
+	var back_delay = max(playtime + delaytime - trans_back_time, 0)
 	#------old variant (bug of Tween node is mostly severe here)
-#	input_handler.force_end_tweens(sp)
-#	input_handler.force_end_tweens(sp2)
-#	input_handler.FadeAnimation(sp, transition_time, delaytime)
-#	input_handler.UnfadeAnimation(sp2, transition_time, delaytime)
-#	input_handler.FadeAnimation(sp2, transition_time, back_delay, true)
-#	input_handler.UnfadeAnimation(sp, transition_time, back_delay, true)
+	#UPDATE: bug of Tween node is seems to be evaded
+	input_handler.force_end_tweens(sp)
+	input_handler.force_end_tweens(sp2)
+	input_handler.FadeAnimation(sp, trans_forth_time, delaytime)
+	input_handler.UnfadeAnimation(sp2, trans_forth_time, delaytime)
+	input_handler.FadeAnimation(sp2, trans_back_time, back_delay, true)
+	input_handler.UnfadeAnimation(sp, trans_back_time, back_delay, true)
 	#------new variant
-	#force_end_tweens
-	if node.has_meta("tween") and node.get_meta("tween").is_valid():
-		node.get_meta("tween").kill()
-	#new tweens
-	var tween = node.create_tween()
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	node.set_meta("tween", tween)
-	#FadeAnimation/UnfadeAnimation
-	var tweener = tween.tween_property(sp, 'modulate', Color(1,1,1,0), transition_time)
-	tweener.from(Color(1,1,1,1))
-	tweener.set_delay(delaytime)
-	tweener = tween.parallel().tween_property(sp2, 'modulate', Color(1,1,1,1), transition_time)
-	tweener.from(Color(1,1,1,0))
-	tweener.set_delay(delaytime)
-	tweener = tween.tween_property(sp2, 'modulate', Color(1,1,1,0), transition_time)
-	tweener.from(Color(1,1,1,1))
-	tweener.set_delay(back_delay)
-	tweener = tween.parallel().tween_property(sp, 'modulate', Color(1,1,1,1), transition_time)
-	tweener.from(Color(1,1,1,0))
-	tweener.set_delay(back_delay)
+#	#force_end_tweens
+#	if node.has_meta("tween") and node.get_meta("tween").is_valid():
+#		node.get_meta("tween").kill()
+#	#new tweens
+#	var tween = node.create_tween()
+#	tween.set_trans(Tween.TRANS_LINEAR)
+#	tween.set_ease(Tween.EASE_IN_OUT)
+#	node.set_meta("tween", tween)
+#	#FadeAnimation/UnfadeAnimation
+#	var tweener = tween.tween_property(sp, 'modulate', Color(1,1,1,0), trans_forth_time)
+#	tweener.from(Color(1,1,1,1))
+#	tweener.set_delay(delaytime)
+#	tweener = tween.parallel().tween_property(sp2, 'modulate', Color(1,1,1,1), trans_forth_time)
+#	tweener.from(Color(1,1,1,0))
+#	tweener.set_delay(delaytime)
+#	tweener = tween.tween_property(sp2, 'modulate', Color(1,1,1,0), trans_back_time)
+#	tweener.from(Color(1,1,1,1))
+#	tweener.set_delay(back_delay)
+#	tweener = tween.parallel().tween_property(sp, 'modulate', Color(1,1,1,1), trans_back_time)
+#	tweener.from(Color(1,1,1,0))
+#	tweener.set_delay(back_delay)
 	#---------
 	if args.has('callback'):
 		input_handler.tween_callback(node, args.callback, back_delay)
@@ -302,16 +314,17 @@ func casterattack(node, args = null):#obsolete
 #	return nextanimationtime + aftereffectdelay
 #	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
-func targetfire(node, args = null):
-	var nextanimationtime = 0
-	hp_update_delays[node] = 0 #delay for hp updating during this animation
-	hp_float_delays[node] = 0 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.1)
-	buffs_update_delays[node] = 0.2
-	input_handler.gfx(node, 'gfx/fire')
-#	var tween = input_handler.GetTweenNode(node)
-	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
-#	tween.start()
+#there is no 'gfx/fire'!
+#func targetfire(node, args = null):
+#	var nextanimationtime = 0
+#	hp_update_delays[node] = 0 #delay for hp updating during this animation
+#	hp_float_delays[node] = 0 #delay for hp updating during this animation
+#	log_update_delay = max(log_update_delay, 0.1)
+#	buffs_update_delays[node] = 0.2
+#	input_handler.gfx(node, 'gfx/fire')
+##	var tween = input_handler.GetTweenNode(node)
+#	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
+##	tween.start()
 
 	return nextanimationtime + aftereffectdelay
 	#postdamagetimer = nextanimationtime + aftereffectdelay

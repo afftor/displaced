@@ -71,7 +71,9 @@ func buildscreen(empty = null):
 func location_pressed(locname):
 	if !state.location_unlock[locname]: return
 	if binded_events[locname] != null:
-		globals.run_seq(binded_events[locname])
+		var output = globals.run_seq(binded_events[locname])
+		if output == variables.SEQ_SCENE_STARTED :
+			yield(input_handler.scene_node, "EventOnScreen")
 	else:
 		if locname == 'village':
 			input_handler.village_node.show_anim()

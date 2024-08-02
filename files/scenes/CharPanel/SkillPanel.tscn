@@ -353,10 +353,12 @@ margin_left = 508.0
 margin_right = 538.0
 margin_bottom = 31.0
 
-[node name="descript" type="Label" parent="skills/list/Panel/VBoxContainer"]
+[node name="descript" type="RichTextLabel" parent="skills/list/Panel/VBoxContainer"]
 margin_top = 35.0
 margin_right = 538.0
-margin_bottom = 59.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+margin_bottom = 60.0
+custom_colors/default_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+bbcode_enabled = true
+bbcode_text = "Skill Descrpit"
 text = "Skill Descrpit"
-autowrap = true
+fit_content_height = true

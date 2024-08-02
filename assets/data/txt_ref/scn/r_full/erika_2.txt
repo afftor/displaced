@@ -81,7 +81,7 @@ Er - EV_ERIKA_2_58
 Ar - EV_ERIKA_2_59
 Er - EV_ERIKA_2_60
 EV_ERIKA_2_61
-=ABG erika_sex_6 erika_sex_7=
+=ABG erika_sex_6=
 EV_ERIKA_2_62
 Er - EV_ERIKA_2_63
 Er - EV_ERIKA_2_64
@@ -99,18 +99,19 @@ Er - EV_ERIKA_2_75
 Er - EV_ERIKA_2_76
 Er - EV_ERIKA_2_77
 Ar - EV_ERIKA_2_78
-=ABG erika_sex_8 erika_sex_9=
+=ABG erika_sex_7 erika_sex_8=
 =WHITE=
 =DELAY 0.5=
 Er - EV_ERIKA_2_79
+=GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 1.5=
 =MUSIC_STOP=
-=GUI_NORMAL=
 =MUSIC eventlight=
 =BG hall=
 =BLACKFADE 0.5=
 =DELAY 0.5=
+=GUI_NORMAL=
 Er(happy) - EV_ERIKA_2_80
 Ar - EV_ERIKA_2_81
 Ar - EV_ERIKA_2_82

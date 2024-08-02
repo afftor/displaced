@@ -1,11 +1,9 @@
 ** ember_2_3 **
 =MUSIC combattheme=
-=BLACKUNFADE 0.5=
-=DELAY 0.5=
-=BLACKFADE 0.5=
-=DELAY 0.5=
-=GUI_NORMAL=
+=BLACKFADE 1=
 =BG mountainsday=
+=DELAY 1=
+=GUI_NORMAL=
 =SPRITE dragon=
 =SPRITE_UNFADE 0.3=
 Dr - EV_EMBER_2_3_0

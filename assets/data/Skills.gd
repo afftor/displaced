@@ -389,7 +389,7 @@ var skilllist = {
 		casteffects = [],
 		repeat = 3,
 		hidden = false,
-		sfx = [{code = 'anim_hit', subtype = 'short', target = 'target', period = 'predamage'},#effected#at predamage for speed
+		sfx = [{code = 'anim_hit', subtype = 'short', target = 'target', period = 'postdamage'},#effected
 			{code = 'sfx_hit', target = 'target', period = 'cast'},
 			{code = 'anim_attack', target = 'caster', period = 'predamage'},
 			],
@@ -564,7 +564,7 @@ var skilllist = {
 		repeat = 4,
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
-			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'predamage'},#effected#at predamage for speed
+			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'postdamage'},#effected
 			{code = 'anim_ultimate', target = 'caster', period = 'cast'},
 			{code = 'sfx_slide_arron', target = 'full', period = 'cast'},
 			{code = 'shake', target = 'screen', period = 'cast'},
@@ -759,8 +759,8 @@ var skilllist = {
 		evade = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_renew', push_value = true})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
-			{code = 'sfx_soul_prot', target = 'target', period = 'predamage'},
+		sfx = [{code = 'sfx_soul_prot', target = 'target', period = 'predamage'},
+#			{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'anim_attack', target = 'caster', period = 'cast'},],
 		sounddata = {cast = 'renew'},
 		patches = [
@@ -790,8 +790,8 @@ var skilllist = {
 		evade = 0,
 		casteffects = ['e_s_dispel'],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
-			{code = 'sfx_dispel', target = 'target', period = 'predamage'},
+		sfx = [{code = 'sfx_dispel', target = 'target', period = 'predamage'},
+#			{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'anim_attack', target = 'caster', period = 'cast'},],
 		sounddata = {cast = 'barrier2'},
 		patches = [
@@ -903,7 +903,7 @@ var skilllist = {
 		casteffects = [],
 		hidden = false,
 		sfx = [{code = 'sfx_arrow_shot', target = 'target', period = 'predamage'},
-			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'predamage'},#effected#at predamage for speed
+			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'postdamage'},#effected
 			{code = 'anim_attack', target = 'caster', period = 'predamage'},],
 		sounddata = {predamage = 'arrow_shot'},
 		patches = [
@@ -1187,7 +1187,7 @@ var skilllist = {
 		casteffects = [],#'e_tr_enable_fa'
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
-			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'predamage'},#effected#at predamage for speed
+			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'postdamage'},#effected
 			{code = 'sfx_combo', target = 'target', period = 'cast'}],
 		sounddata = {postdamage = 'punch'},#'swift strike12' in cast works well with 'anim_hit' on cast
 		patches = [
@@ -1352,8 +1352,8 @@ var skilllist = {
 		evade = 0,
 		casteffects = [Effectdata.rebuild_template({effect = 'e_t_dragonprot', push_value = true})],
 		hidden = false,
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'},
-			{code = 'sfx_shield_up', target = 'target', period = 'predamage'},
+		sfx = [{code = 'sfx_shield_up', target = 'target', period = 'predamage'},
+#			{code = 'targetfire', target = 'target', period = 'postdamage'},
 			{code = 'anim_attack', target = 'caster', period = 'cast'},
 		],
 		sounddata = {cast = 'dragon protection'},
@@ -1739,16 +1739,17 @@ var skilllist = {
 		targetpattern = 'single',
 		allowedtargets = ['enemy'],
 		keep_target = variables.TARGET_KEEP,
+		next_target = variables.NT_WEAK,
 		reqs = [],
 		tags = ['damage'],
 		value = ['caster.damage'],
 		cooldown = 0,
-		casteffects = [],
+		casteffects = ['e_fen_addrep'],
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'sfx_holy_light', target = 'target', period = 'predamage'},
 			{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'anim_attack', target = 'caster', period = 'cast'},],
+			{code = 'anim_attack', target = 'caster', period = 'predamage'},],
 		sounddata = {predamage = 'holy light'},
 		patches = []
 	},
@@ -1795,7 +1796,7 @@ var skilllist = {
 		tags = ['damage', 'debuf'],
 		value = ['caster.damage','*0.8'],
 		cooldown = 0,
-		casteffects = [Effectdata.rebuild_template({effect = 'e_stun', chance = 0.5, duration = 1})],
+		casteffects = [Effectdata.rebuild_template({effect = 'e_t_smash', template_args = [-20, 20]})],
 		repeat = 1,
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'predamage'},
@@ -2689,7 +2690,7 @@ var skilllist = {
 		repeat = 2,
 		hidden = false,
 		sfx = [{code = 'anim_attack', target = 'caster', period = 'cast'},
-			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'predamage'},#effected#at predamage for speed
+			{code = 'anim_hit', subtype = 'short', target = 'target', period = 'postdamage'},#effected
 			{code = 'sfx_tail_swipe', target = 'target', period = 'predamage', flip_h = true}],
 		patches = [],
 		sounddata = {predamage = 'punch'},
@@ -3832,7 +3833,7 @@ var patches = {
 			value = [{weapon = 'WEAPON_IOLA2', effect = 'WEAPON_IOLA2_EFFECT2'}]}
 	},
 	p_smash = {
-		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_stun', duration = 1})]},
+		casteffects = {type = 'replace', value = [Effectdata.rebuild_template({effect = 'e_t_smash', template_args = [-40, 40]})]},
 		description_patch = {type = 'append',
 			value = [{weapon = 'WEAPON_IOLA1', effect = 'WEAPON_IOLA1_EFFECT2'}]}
 	},

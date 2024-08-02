@@ -90,8 +90,10 @@ func get_animations():
 			res[key] = resources.get_res(animations[key])
 	if !animations.has('idle_1'):
 		res.idle_1 = res.idle.duplicate()
-	if !animations.has('dead'):
-		res.dead = resources.get_res('Fight/dead')
+	#current visual solution assume no dead image for enemies
+	#heros has there "animations.dead"
+#	if !animations.has('dead'):
+#		res.dead = resources.get_res('Fight/dead')
 	return res
 
 

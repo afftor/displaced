@@ -13,7 +13,7 @@ var daytime = 0.0
 #var activequests := []
 #var completedquests := []
 
-var difficulty = 'normal'
+var difficulty = variables.DF_NORMAL
 
 var votelinksseen = false
 
@@ -104,8 +104,10 @@ func clear_pending_scenes():
 	emit_signal("pending_scenes_updated")
 
 func get_difficulty():
-	return difficulty #or change this to settings record if diff to be session-relatad instead of party-related
-#	return globals.globalsettings.difficulty
+	return difficulty
+
+func set_difficulty(new_diff):
+	difficulty = new_diff
 
 func revert():
 #	date = 1
@@ -464,7 +466,7 @@ func serialize():
 	for i in characters:
 		tmp['heroes_save'][i] = heroes[i].serialize()
 
-	var arr = ['heroidcounter', 'money', 'CurEvent', 'votelinksseen', 'activearea', 'CurrentScreen', 'daytime']#'date', 'newgame', 'itemidcounter', 'mainprogress', 'stashedarea', 'currentutorial', 'screen'
+	var arr = ['heroidcounter', 'money', 'CurEvent', 'votelinksseen', 'activearea', 'CurrentScreen', 'daytime', 'difficulty']#'date', 'newgame', 'itemidcounter', 'mainprogress', 'stashedarea', 'currentutorial', 'screen'
 	var arr2 = ['town_save', 'materials', 'materials_unlocks', 'resist_unlocks', 'OldSeqs', 'OldEvents', 'decisions', 'area_save', 'location_unlock', 'scene_restore_data', 'pending_scenes', 'discovered_pending_scenes']#'gallery_unlocks', 'party_save', 'activequests', 'completedquests'
 	for prop in arr:
 		tmp[prop] = get(prop)
@@ -637,7 +639,7 @@ func system_action(action):
 
 #simple action wrappers
 func unlock_char(code, value = true, notify = true):
-	heroes[code].unlocked = value
+	heroes[code].set_unlocked(value)
 	if !value:
 		heroes[code].position = null
 	if notify:

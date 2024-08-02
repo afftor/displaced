@@ -378,7 +378,7 @@ func make_fighter_panel(fighter, spot, show = true):
 	panel.panel_node = gui_node.get_enemy_panel(spot)
 	enable_enemy_panel(spot, fighter.id)
 	panel.setup_character(fighter)
-	panel.set_global_position(positions[spot])
+	panel.setup_position(positions[spot])
 	panel.visible = show
 	panel.noq_rebuildbuffs(fighter.get_all_buffs())
 
@@ -396,10 +396,10 @@ func make_hero_panel(fighter, show = true):
 	panel.setup_character(fighter)
 	panel.visible = show
 	if spot != null:
-		panel.set_global_position(positions[spot])
+		panel.setup_position(positions[spot])
 #		print(panel.rect_global_position)
 	else:
-		panel.set_global_position(Vector2(0,0))
+		panel.setup_position(Vector2(0,0))
 		panel.visible = false
 	panel.noq_rebuildbuffs(fighter.get_all_buffs())
 

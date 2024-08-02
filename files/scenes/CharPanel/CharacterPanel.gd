@@ -108,10 +108,16 @@ func build_slot(slot):
 	if data.level > 0:
 		panel.get_node("Label").text = tr("LEVEL") + " %d" % data.level
 	else:
-		panel.get_node("Label").text = "" #stub
+		panel.get_node("Label").text = "Basic" #stub
+	if data.has('damagetype'):#only for weapons
+		var dam_type = panel.get_node("dam_type")
+		dam_type.set_resist_type(data.damagetype)
+		dam_type.show()
 	if slot == 'weapon2' and data.level < 1:
 		panel.disabled = true
+		panel.get_node("Label").text = ""
 		panel.get_node("Label2").text = "???" #stub
+		panel.get_node("dam_type").hide()
 	else:
 		panel.disabled = false
 		panel.get_node("Label2").text = data.name
