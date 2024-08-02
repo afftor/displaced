@@ -1,10 +1,10 @@
 ** rilu_2_3_2 **
 =BLACKFADE 1=
-=DELAY 1=
-=GUI_NORMAL=
 =BG forest_fairy=
 =SPRITE rilu=
 =MUSIC rilu_theme=
+=DELAY 1=
+=GUI_NORMAL=
 Ar(neutral) - EV_RILU_2_3_2_0
 =GUI_HIDE=
 =BLACKTRANS 1=

@@ -80,14 +80,15 @@ D - EV_IOLA_2_4_54
 =GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
+=SPRITE_HIDE=
 =MUSIC event_tragic=
 =BG forest=
-=SPRITE iola=
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
 EV_IOLA_2_4_54_1
 EV_IOLA_2_4_54_2
+=SPRITE iola=
 I(sad) - EV_IOLA_2_4_55
 I(sad) - EV_IOLA_2_4_56
 Ri - EV_IOLA_2_4_57

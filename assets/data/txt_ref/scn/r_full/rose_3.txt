@@ -1,8 +1,8 @@
 ** rose_3 **
 =MUSIC eventlight=
+=BLACKFADE 1=
 =BG town_in=
 =SPRITE rose=
-=BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
 EV_ROSE_3_0_1
@@ -56,8 +56,8 @@ Ro - EV_ROSE_3_37
 Ar - EV_ROSE_3_38
 Ro - EV_ROSE_3_39
 Ar - EV_ROSE_3_40
-=ABG rose_town_2 rose_town_3=
 EV_ROSE_3_41
+=ABG rose_town_2 rose_town_3=
 Ro - EV_ROSE_3_42
 Ar - EV_ROSE_3_43
 Ar - EV_ROSE_3_44

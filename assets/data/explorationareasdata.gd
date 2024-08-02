@@ -96,7 +96,7 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	
 	victor_2_3 = [
-		{type = 'mission', value = 'town_viktor_fight'},
+		{type = 'mission', value = 'town_viktor_fight', auto_advance = true},
 	],
 	rilu_2_3_1 = [
 		{type = 'system', value = 'enable_character', arg = ['rilu', false]}
@@ -107,7 +107,7 @@ var event_triggers = {#reworked to same syntax as seqs
 		{type = 'system', value = 'enable_character', arg = ['rose', false, false]},
 		{type = 'system', value = 'enable_character', arg = ['erika', false, false]},
 		{type = 'system', value = 'add_to_party', arg = ['arron', 2]},
-		{type = 'mission', value = 'castle_rilu'},
+		{type = 'mission', value = 'castle_rilu', auto_advance = true},
 	],
 	rilu_2_4 = [
 		{type = 'system', value = 'enable_character', arg = ['ember', true, false]},
@@ -129,6 +129,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	iola_2_5 = [
 		{type = 'system', value = 'enable_character', arg = ['iola', true]}
+	],
+	iola_3_3 = [
+		{type = 'show_screen', value = 'map'},
 	],
 	dimitrius_2_1_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
@@ -1288,6 +1291,7 @@ var areas = { #missions in new terminology
 		image = ['combat_palace_1', 'combat_palace_2', 'combat_palace_3'],
 		explore_image = 'castle_interior', #or not
 		no_escape = true, #added due to possible inability to return to it from explore
+		auto_advance = true,
 		stages = 4, 
 		level = 25,
 		events = {

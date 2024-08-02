@@ -126,7 +126,7 @@ func _get_action(hide_ignore = false):
 		if tmp > 0: actions.push_back([s_n, tmp])
 	if actions.size() == 0:
 		if app_obj.taunt != null:
-			print ("can't attack taunt")
+#			print ("can't attack taunt")
 			app_obj.taunt = null
 			return _get_action(hide_ignore)
 		else:

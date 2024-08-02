@@ -579,7 +579,7 @@ var TranslationDict = {
 	FLAVOR_IOLA = "One of a cult's sisters and a daughter of the current leader, Dimitrius, who has sided with us. ",
 	
 	SKILLATTACK = "Base Attack",
-	SKILLATTACKDESCRIPT = "The most generic attack with no strengths or weaknesses. Deals Base Damage of 100% using equipped [Color=yellow]Weapon Element[/color].",
+	SKILLATTACKDESCRIPT = "The most generic attack with no strengths or weaknesses. Deals Base Damage of 100% using equipped [color=yellow]Weapon Element[/color].",
 	SKILLDEFENCE = "Defence",
 	SKILLDEFENCEDESCRIPT = "Reduces incoming damage by 50% until next turn.",
 	SKILLFENCING = "Fencing",
