@@ -45,8 +45,8 @@ EV_IOLA_2_2_2_20
 I(shock) - EV_IOLA_2_2_2_21
 I(shock) - EV_IOLA_2_2_2_22
 I(shock) - EV_IOLA_2_2_2_23
-EV_IOLA_2_2_2_24
 =SOUND punch=
+EV_IOLA_2_2_2_24
 V - EV_IOLA_2_2_2_25
 V - EV_IOLA_2_2_2_26
 D - EV_IOLA_2_2_2_27

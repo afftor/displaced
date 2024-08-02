@@ -11,10 +11,10 @@ Guard - EV_AEROS_2_1
 Ar(neutral) - EV_AEROS_2_2
 Guard - EV_AEROS_2_3
 Ar - EV_AEROS_2_4
-Guard_2 - EV_AEROS_2_5
+Guard - EV_AEROS_2_5
 Ar(neutral) - EV_AEROS_2_6
-Guard_2 - EV_AEROS_2_7
-Guard_2 - EV_AEROS_2_8
+Guard - EV_AEROS_2_7
+Guard - EV_AEROS_2_8
 Ar - EV_AEROS_2_9
 Ro - EV_AEROS_2_10
 Ar(neutral) - EV_AEROS_2_11

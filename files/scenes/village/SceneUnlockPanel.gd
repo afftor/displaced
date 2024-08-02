@@ -105,8 +105,7 @@ func rebuild_scene_list():
 		if is_unlocked:
 			panel.set_unlocked(scene_data)
 			panel.connect('show_pressed', self, 'show_event', [scene_id])
-			#If not unlocked yet but unlockable
-		elif is_unlockable:
+		elif is_unlockable:#If not unlocked yet but unlockable
 			panel.set_unlockable(scene_data)
 			panel.connect('unlocked_pressed', self, 'unlock_show_event', [scene_id])
 			panel.set_highlighted(scene_id in state.pending_scenes)

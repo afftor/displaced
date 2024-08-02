@@ -10,7 +10,7 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 20.0
@@ -31,7 +31,6 @@ __meta__ = {
 }
 
 [node name="AnimatedSpriteDelay" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 353.136, 541.227 )
 frames = SubResource( 1 )
 script = ExtResource( 2 )

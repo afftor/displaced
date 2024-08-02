@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://files/scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
@@ -23,6 +23,10 @@
 [ext_resource path="res://assets/images/particles/spark_mid.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/particles/spark_small.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/load_screen/loading.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=27]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.255034, 0.630872, 0.986577, 1 )
@@ -132,6 +136,72 @@ rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 15 )
 expand = true
 stretch_mode = 5
+
+[node name="difficulty_ask" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="difficulty_ask"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -109.0
+margin_right = 342.0
+margin_bottom = 130.0
+texture = ExtResource( 25 )
+expand = true
+
+[node name="Label" type="Label" parent="difficulty_ask/TextureRect"]
+margin_left = 49.0
+margin_top = 58.0
+margin_right = 416.0
+margin_bottom = 162.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NEWGAMEDIFFICULTY"
+align = 1
+
+[node name="Normal" type="TextureButton" parent="difficulty_ask/TextureRect"]
+margin_left = 41.0
+margin_top = 164.0
+margin_right = 203.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 162, 47 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 26 )
+
+[node name="Label" type="Label" parent="difficulty_ask/TextureRect/Normal"]
+margin_left = 10.0
+margin_top = 13.0
+margin_right = 152.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "OPT_DF_NORMAL"
+align = 1
+clip_text = true
+
+[node name="Hard" type="TextureButton" parent="difficulty_ask/TextureRect"]
+margin_left = 264.0
+margin_top = 164.0
+margin_right = 426.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 162, 47 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 26 )
+
+[node name="Label" type="Label" parent="difficulty_ask/TextureRect/Hard"]
+margin_left = 10.0
+margin_top = 13.0
+margin_right = 153.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "OPT_DF_HARD"
+align = 1
+clip_text = true
 
 [node name="Options" parent="." instance=ExtResource( 16 )]
 visible = false

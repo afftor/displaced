@@ -84,9 +84,9 @@ EV_RILU_1_6_60
 EV_RILU_1_6_61
 EV_RILU_1_6_62
 Ar - EV_RILU_1_6_63
-=ABG rilu_cowgirl_2 rilu_cowgirl_3=
 EV_RILU_1_6_64
 EV_RILU_1_6_65
+=ABG rilu_cowgirl_2 rilu_cowgirl_3=
 Ri - EV_RILU_1_6_66
 Ar - EV_RILU_1_6_67
 Ri - EV_RILU_1_6_68
@@ -106,21 +106,22 @@ Ri - EV_RILU_1_6_81
 Ri - EV_RILU_1_6_82
 Ar - EV_RILU_1_6_83
 Ar - EV_RILU_1_6_84
+=ABG rilu_cowgirl_4=
 Ri - EV_RILU_1_6_85
 Ar - EV_RILU_1_6_86
-=ABG rilu_cowgirl_4 rilu_cowgirl_5=
 Ri - EV_RILU_1_6_87
 Ar - EV_RILU_1_6_88
 Ri - EV_RILU_1_6_89
 EV_RILU_1_6_90
 Ar - EV_RILU_1_6_91
 EV_RILU_1_6_92
+=ABG rilu_cowgirl_5 rilu_cowgirl_6=
 Ri - EV_RILU_1_6_93
 EV_RILU_1_6_94
 Ar - EV_RILU_1_6_95
 Ri - EV_RILU_1_6_96
 Ar - EV_RILU_1_6_97
-=ABG rilu_cowgirl_6 rilu_cowgirl_7=
+=ABG rilu_cowgirl_7 rilu_cowgirl_8=
 =WHITE=
 =DELAY 0.5=
 Ri - EV_RILU_1_6_98

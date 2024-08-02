@@ -102,7 +102,7 @@ var globalsettings = {
 	disabletips = false,
 	disable_tutorial = false,
 	
-	tuts_enabled = false,
+#	tuts_enabled = false,#what is this?
 	forced_content = true
 } setget settings_save
 
@@ -473,10 +473,13 @@ func connectskilltooltip(node, character_id, skill):
 	node.connect("mouse_entered",self,'showskilltooltip', [skill, node, character_id])
 	if !node.is_connected("mouse_exited", self ,'hideskilltooltip'):
 		node.connect("mouse_exited", self ,'hideskilltooltip')
+	if node.is_connected("hide", self, 'hidemyskilltooltip'):
+		node.disconnect("hide", self, 'hidemyskilltooltip')
+	node.connect("hide", self, 'hidemyskilltooltip', [skill])
 
 func showskilltooltip(skill, node, character_id):
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
-	skilltooltip.prepare(node, character_id, skill)
+	skilltooltip.prepare(character_id, skill)
 	var node_rect = node.get_global_rect()
 	var tip_width = skilltooltip.rect_size.x
 	var tip_height = skilltooltip.get_estimated_height()
@@ -489,6 +492,11 @@ func showskilltooltip(skill, node, character_id):
 func hideskilltooltip():
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
 	skilltooltip.hide()
+
+func hidemyskilltooltip(skill):
+	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP)
+	if skilltooltip.get_skillcode() == skill:
+		skilltooltip.hide()
 
 #func disconnectitemtooltip(node, item):
 #	if node.is_connected("mouse_entered",item,'tooltip'):

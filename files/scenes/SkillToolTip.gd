@@ -2,6 +2,7 @@ extends NinePatchRect
 
 export(float) var desc_bottom_margin
 onready var desc_node = $descript
+var cur_skill :String = ""
 
 func _ready():
 	desc_node.connect("item_rect_changed", self, "on_desc_rect_changed")
@@ -9,7 +10,8 @@ func _ready():
 func on_desc_rect_changed() ->void:
 	rect_size.y = desc_node.get_rect().end.y + desc_bottom_margin
 
-func prepare(node, character_id, skillcode):
+func prepare(character_id, skillcode):
+	cur_skill = skillcode
 	var character = state.heroes[character_id]
 	var skill = Skillsdata.patch_skill(skillcode, character)
 	$name.text = tr(skill.name)
@@ -35,6 +37,7 @@ func prepare(node, character_id, skillcode):
 		damage_type_node.show()
 		damage_type_node.set_resist_type(damage_type)
 	
+	#mind, that this probably usless, as we position tooltip after prepare()
 	var screen = get_viewport().get_visible_rect()
 	if get_rect().end.x >= screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
@@ -48,5 +51,6 @@ func get_estimated_height() ->float:
 		text_height = desc_node.rect_min_size.y
 	return desc_node.rect_position.y + text_height + desc_bottom_margin
 
-
+func get_skillcode() -> String:
+	return cur_skill
 

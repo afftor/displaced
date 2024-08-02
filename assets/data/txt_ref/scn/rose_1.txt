@@ -22,12 +22,13 @@ EV_ROSE_1_7
 EV_ROSE_1_8
 Ro - EV_ROSE_1_9
 EV_ROSE_1_10
-=GUI_FULL=
 =MUSIC erotheme=
 =DELAY 0.5=
+=SPRITE_HIDE=
 =ABG rose_minet_01=
 =BLACKFADE 0.5=
 =DELAY 0.5=
+=GUI_FULL=
 EV_ROSE_1_11
 Ro - EV_ROSE_1_12
 Ro - EV_ROSE_1_13
@@ -43,8 +44,8 @@ Ar - EV_ROSE_1_22
 Ar - EV_ROSE_1_23
 Ar - EV_ROSE_1_24
 Ar - EV_ROSE_1_25
-=ABG rose_minet_1 rose_minet_02=
 EV_ROSE_1_26
+=ABG rose_minet_1 rose_minet_02=
 EV_ROSE_1_27
 Ro - EV_ROSE_1_28
 EV_ROSE_1_29
@@ -81,6 +82,7 @@ EV_ROSE_1_55
 Ar - EV_ROSE_1_56
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
+=BG_EMPTY=
 =ABG rose_sex_1=
 EV_ROSE_1_57
 =BLACKFADE 0.5=
@@ -98,8 +100,8 @@ Ar - EV_ROSE_1_67
 EV_ROSE_1_67_1
 Ar - EV_ROSE_1_68
 EV_ROSE_1_69
-Ro - EV_ROSE_1_70
 =ABG rose_sex_2 rose_sex_3=
+Ro - EV_ROSE_1_70
 EV_ROSE_1_71
 Ro - EV_ROSE_1_72
 Ar - EV_ROSE_1_73

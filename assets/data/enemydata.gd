@@ -936,7 +936,7 @@ var enemylist = {
 		aiposition = 'melee',
 		loottable = 'viktorbossloot',
 		weaponsound = 'viktor at',
-		bodyhitsound = 'flash',
+		bodyhitsound = 'cultarcher hit',
 		animations = {
 			idle = "Fight/Bosses/Viktor_sq_idle/Viktor",
 			hit = "Fight/Bosses/Viktor_hit",
@@ -1549,4 +1549,6 @@ func preload_icons():
 			resources.preload_res('sound/%s' % ch.weaponsound)
 		if ch.has('bodyhitsound'):
 			resources.preload_res('sound/%s' % ch.bodyhitsound)
+	#not in use for now
+#	resources.preload_res('Fight/dead')
 	if resources.is_busy(): yield(resources, "done_work")

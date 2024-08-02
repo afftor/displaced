@@ -161,22 +161,32 @@ func GetTweenNode(node):
 #	return node.get_meta("tween")
 	#old variant with Tween node. As of Godot v3.5.2 Tween node has a bug with tweeners processing.
 	#so the new variant above goes through SceneTreeTween with more direct control over tweeners
-	var tweennode
-	if node.has_node('tween'):
-		tweennode = node.get_node('tween')
-	else:
+	#UPDATE: for now, with Tween destruction on force_end_tweens(), bug seems to be evaded
+	var tweennode = GetTweenNodeIfHas(node)
+	if tweennode == null:
 		tweennode = Tween.new()
 		tweennode.name = 'tween'
 		node.add_child(tweennode)
+#		print("creating %s for %s" % [tweennode, node])
 	return tweennode
 
+func GetTweenNodeIfHas(node):
+	#old variant with Tween node
+	if node.has_node('tween'):
+		return node.get_node('tween')
+
 func force_end_tweens(node):
-	var tween = GetTweenNode(node)
 	#new variant
+#	var tween = GetTweenNode(node)
 #	tween.kill()
 #	node.remove_meta("tween")
 	#old variant with Tween node
+	var tween = GetTweenNodeIfHas(node)
+	if tween == null:
+		return
 	tween.stop_all()
+	tween.name = 'tween_old'
+	tween.queue_free()
 #	tween.remove_all()
 
 func tween_property(node :Node, property :String, from_val, to_val, transition :float, delay :float = 0, trans_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):

@@ -59,7 +59,7 @@ var charlist = {
 		bonusres = ['slash', 'water', 'air', 'dark'],
 		armorbase = {1: 7, 2: 15, 3: 23, 4: 30},
 		armorbonus = {1: 15, 2: 30, 3: 45, 4: 60},
-		skilllist = {'fire_bolt':1, 'renew':2, 'swipe':5, 'deluge':8, 'dispel':22, 'explosion':10, 'flash':14,  'protect':18},
+		skilllist = {'fire_bolt':1, 'renew':2, 'swipe':5, 'deluge':8, 'flash':14, 'dispel':22, 'explosion':10, 'protect':18},
 	},
 	erika = {
 		code = 'erika',
@@ -175,7 +175,7 @@ var charlist = {
 		bonusres = ['bludgeon', 'dark', 'fire', 'air'],
 		armorbase = {1: 7, 2: 15, 3: 23, 4: 30},
 		armorbonus = {1: 15, 2: 30, 3: 45, 4: 60},
-		skilllist = {'holy_light':1, 'barrier':8, 'gustofwind':12, 'sanctuary':20, 'smash':18, 'cleansing':14, 'bless':16, 'purge':25},
+		skilllist = {'holy_light':1, 'barrier':8, 'gustofwind':12, 'cleansing':14, 'bless':16, 'smash':18, 'sanctuary':20, 'purge':25},
 	},
 }
 

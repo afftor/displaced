@@ -39,7 +39,6 @@ Ro(sarcastic) - EV_INTRO_3_26
 Ar - EV_INTRO_3_27
 Ro - EV_INTRO_3_28
 =GUI_HIDE=
-=BLACKTRANS 1=
+=BLACKUNFADE 1=
 =DELAY 1=
-=BG null=
 =STOP=

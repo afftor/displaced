@@ -6,6 +6,10 @@ var menu_open_sound = "sound/menu_open"
 onready var hotkeys_list = $TabContainer/Hotkeys/ScrollContainer/VBoxContainer
 onready var remap_panel = $remap_panel
 onready var locale_panel = $TabContainer/Text/locale
+onready var diff_nodes = {
+	variables.DF_NORMAL : $TabContainer/Game/difficulty/normal,
+	variables.DF_HARD : $TabContainer/Game/difficulty/hard
+}
 var remaping_hotkey :String = ""
 var demaping_hotkey :String = ""
 var hotkeys
@@ -50,6 +54,9 @@ func _ready():
 		if remap_node.name == "default" and remap_node.has_node("Button"):
 			remap_node.get_node("Button").connect("pressed", self, "default_hotkeys_ask")
 
+	for diff_type in diff_nodes:
+		diff_nodes[diff_type].connect("pressed", self, 'pressed_difficulty', [diff_type])
+
 func open():
 	show()
 	$TabContainer/Text/skipread.pressed = globals.globalsettings.skipread
@@ -62,6 +69,7 @@ func open():
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
 		i.get_node("HSlider").editable = !i.get_node("CheckBox").pressed
 	locale_update()
+	update_difficulty()
 
 func togglefullscreen():
 	globals.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
@@ -172,3 +180,13 @@ func pressed_locale(new_locale :String):
 func locale_update():
 	for locale in globals.localizations:
 		locale_panel.get_node(locale).pressed = (globals.globalsettings.ActiveLocalization == locale)
+
+
+func pressed_difficulty(new_difficulty :int):
+	state.set_difficulty(new_difficulty)
+	update_difficulty()
+
+func update_difficulty():
+	var diff = state.get_difficulty()
+	for diff_type in diff_nodes:
+		diff_nodes[diff_type].pressed = (diff_type == diff)

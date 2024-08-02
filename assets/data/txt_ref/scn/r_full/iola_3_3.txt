@@ -78,8 +78,9 @@ Ar - EV_IOLA_3_3_56
 T - EV_IOLA_3_3_57
 T - EV_IOLA_3_3_58
 EV_IOLA_3_3_59
-=SOUND slash=
+=SOUND explosion=
 D - EV_IOLA_3_3_60
+=SOUND slash=
 =MUSIC bosstheme=
 T - EV_IOLA_3_3_61
 EV_IOLA_3_3_62

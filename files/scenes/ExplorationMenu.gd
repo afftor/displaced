@@ -326,7 +326,7 @@ func advance_area():
 		if areadata.has('image') and areadata.image != null and (areadata.image is Array or areadata.image != ""):
 			bg = areadata.image
 		#2add set sound
-		if areadata.has("tutorials") and areadata.tutorials.has(areastate.stage):
+		if areadata.has("tutorials") and !areastate.completed and areadata.tutorials.has(areastate.stage):
 			TutorialCore.scenario_connect(
 				areadata.tutorials[areastate.stage], combat_node)
 		combat_node.show()

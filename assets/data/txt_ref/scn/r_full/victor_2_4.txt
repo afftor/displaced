@@ -36,6 +36,7 @@ EV_VICTOR_2_4_23
 =DELAY 1=
 =BG scenes/ember_dragon=
 =BLACKFADE 1=
+=MUSIC event_tragic=
 EV_VICTOR_2_4_24
 Em - EV_VICTOR_2_4_25
 Em - EV_VICTOR_2_4_26
