@@ -6,6 +6,8 @@ var cur_skill :String = ""
 
 func _ready():
 	desc_node.connect("item_rect_changed", self, "on_desc_rect_changed")
+	#input_handler.get_spec_node() can show it on enquire, so we should remain hidden on ready
+	visible = false
 
 func on_desc_rect_changed() ->void:
 	rect_size.y = desc_node.get_rect().end.y + desc_bottom_margin
