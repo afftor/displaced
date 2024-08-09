@@ -153,6 +153,12 @@ func get_stat(statname):
 #			add_stat(rec, ls[rec], true)
 
 func add_bonus(b_rec:String, value, revert = false):
+	#IMPORTANT TO UNDERSTAND:
+	#entry in `bonuses` is a temporal deviation from normal stat. By itself it does not mean that
+	#there is some effect on combatant. If one effect give +1, and another -1,
+	#there will be no bonus, as there will be no deviation.
+	#Mind it while working with `revert` flag!
+	
 	#classification
 	var BTYPE = {ADD = 0, MUL = 1, PART = 2}
 	var bonus_type :int = -1
@@ -183,15 +189,16 @@ func add_bonus(b_rec:String, value, revert = false):
 		if revert:
 			if bonus_type == BTYPE.MUL: bonuses[b_rec] /= value
 			else: bonuses[b_rec] -= value
-			if bonus_type == BTYPE.ADD:
-				if bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
-			elif bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
 		else:
 			if bonus_type == BTYPE.MUL: bonuses[b_rec] *= value
 			else: bonuses[b_rec] += value
+		if bonus_type == BTYPE.ADD:
+			if bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
+		elif bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
 	else:
-		assert(!revert, 'error bonus not found')
-		if bonus_type == BTYPE.PART: bonuses[b_rec] = 1.0 + value
+		if bonus_type == BTYPE.PART:
+			if revert: bonuses[b_rec] = 1.0 - value
+			else: bonuses[b_rec] = 1.0 + value
 		else: bonuses[b_rec] = value
 	
 	#hpmax change reaction
@@ -663,7 +670,6 @@ func remove_effect(eff_id):
 func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
 	var eff = effects_pool.get_effect_by_id(eff_id)
 	eff.remove()
-	pass
 
 #func remove_all_temp_effects():
 #	for e in temp_effects:
