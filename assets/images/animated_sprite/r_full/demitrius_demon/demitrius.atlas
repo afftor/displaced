@@ -1,0 +1,49 @@
+demitrius.png
+size:1914,1615
+filter:Linear,Linear
+pma:true
+lights2
+bounds:356,1081,301,309
+offsets:16,20,329,343
+rotate:90
+воротник
+bounds:448,622,888,390
+воротник зад
+bounds:771,1330,376,283
+воротник2
+bounds:667,1014,751,314
+глаза
+bounds:188,1539,184,74
+offsets:0,15,184,95
+глаза 2
+bounds:2,1572,184,41
+голова
+bounds:1420,1014,314,492
+offsets:4,0,318,495
+rotate:90
+плечо левое
+bounds:374,1384,229,395
+rotate:90
+рука левая
+bounds:2,1237,300,352
+rotate:90
+рука правая
+bounds:1149,1330,283,679
+rotate:90
+сфера
+bounds:2,673,444,406
+offsets:15,31,485,460
+тело низ
+bounds:2,2,1334,618
+туловище
+bounds:1338,292,532,720
+offsets:0,0,533,728
+
+demitrius_2.png
+size:1812,1621
+filter:Linear,Linear
+pma:true
+плащ зад
+bounds:2,516,1486,1103
+плащ перед
+bounds:2,2,1808,512
