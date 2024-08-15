@@ -26,7 +26,7 @@ const AVAIL_EFFECTS = [
 	"IF", "MOVETO", "POSITION", "BG_EMPTY"
 	]
 
-const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth','zelrothcaliban', 'rilu', 'demitrius', 'demitrius_demon', 'goblin', 'goblin2'] #idk if they are named this way in scenes
+const animated_sprites = ['arron', 'rose', 'annet', 'erika', 'erika_n', 'iola', 'emberhappy', 'embershock', 'caliban', 'dragon', 'kingdwarf', 'victor', 'zelroth','zelrothcaliban', 'rilu', 'rilu_m', 'demitrius', 'demitrius_demon', 'goblin', 'goblin2'] #idk if they are named this way in scenes
 #demitrius sprites are from 'unused folder' - so don't remove them accidentally
 #others sprites are not used (or i did not textfind them in scenes for some reasons - write me if they are there)
 var char_map = {
