@@ -77,12 +77,13 @@ func open():
 
 
 func select_hero(cid):
+	for ch in charlist.get_children():
+		ch.pressed = (ch.get_meta('hero') == cid)
 	if cid == selected_char:
 		rebuild_scene_list()
 		return
+	
 	selected_char = cid
-	for ch in charlist.get_children():
-		ch.pressed = (ch.get_meta('hero') == cid)
 	rebuild_scene_list()
 	var sprite_bound = $panel_hero/hero/boundaries
 	if sprite_bound.get_child_count() > 0:
