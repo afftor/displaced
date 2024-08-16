@@ -13,18 +13,22 @@ Ar - EV_EMBER_1_6_2
 Ar - EV_EMBER_1_6_3
 Em - EV_EMBER_1_6_4
 Ar - EV_EMBER_1_6_5
+=GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BLACKFADE 0.5=
 =DELAY 0.5=
+=GUI_NORMAL=
 EV_EMBER_1_6_6
 Em - EV_EMBER_1_6_7
 Ar - EV_EMBER_1_6_8
+=GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG forest=
 =BLACKFADE 0.5=
 =DELAY 0.5=
+=GUI_NORMAL=
 Ar - EV_EMBER_1_6_9
 Ar - EV_EMBER_1_6_10
 Em - EV_EMBER_1_6_11
@@ -44,17 +48,18 @@ Ar - EV_EMBER_1_6_23
 =DELAY 0.5=
 =GUI_FULL=
 =MUSIC erotheme=
-=ABG ember_doggy_03=
+=ABG ember_doggy_01=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 Em - EV_EMBER_1_6_24
 Ar - EV_EMBER_1_6_25
 Em - EV_EMBER_1_6_26
 Ar - EV_EMBER_1_6_27
+=ABG ember_doggy_02 ember_doggy_03=
 Em - EV_EMBER_1_6_28
 Ar - EV_EMBER_1_6_29
-=ABG ember_doggy_04 ember_doggy_05=
 EV_EMBER_1_6_30
+=ABG ember_doggy_04 ember_doggy_05=
 Em - EV_EMBER_1_6_31
 Ar - EV_EMBER_1_6_32
 Em - EV_EMBER_1_6_33
@@ -70,6 +75,7 @@ Ar - EV_EMBER_1_6_42
 Em - EV_EMBER_1_6_43
 Ar - EV_EMBER_1_6_44
 EV_EMBER_1_6_45
+=ABG ember_doggy_06 ember_doggy_07=
 Em - EV_EMBER_1_6_46
 Em - EV_EMBER_1_6_47
 Em - EV_EMBER_1_6_48
@@ -84,7 +90,6 @@ Ar - EV_EMBER_1_6_56
 Em - EV_EMBER_1_6_57
 Em - EV_EMBER_1_6_58
 =WHITE=
-=ABG ember_doggy_06 ember_doggy_07=
 Em - EV_EMBER_1_6_59
 Ar - EV_EMBER_1_6_60
 EV_EMBER_1_6_61
@@ -97,6 +102,7 @@ Ar - EV_EMBER_1_6_65
 Em - EV_EMBER_1_6_66
 Ar - EV_EMBER_1_6_67
 Em - EV_EMBER_1_6_68
+=GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 1.5=
 =MUSIC_STOP=
@@ -105,7 +111,6 @@ Em - EV_EMBER_1_6_68
 =BG forest=
 =BLACKFADE 0.5=
 =DELAY 0.5=
-=SPRITE emberhappy=
 Em(sad) - EV_EMBER_1_6_69
 Em - EV_EMBER_1_6_70
 Ar - EV_EMBER_1_6_71
@@ -114,11 +119,13 @@ Ar - EV_EMBER_1_6_73
 Ar - EV_EMBER_1_6_74
 Em(happy) - EV_EMBER_1_6_75
 Ar - EV_EMBER_1_6_76
+=GUI_HIDE=
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =BG villageday=
 =BLACKFADE 0.5=
 =DELAY 0.5=
+=GUI_NORMAL=
 Ro - EV_EMBER_1_6_77
 Ar - EV_EMBER_1_6_78
 Ro(sarcastic) - EV_EMBER_1_6_79

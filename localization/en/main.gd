@@ -591,7 +591,7 @@ var TranslationDict = {
 	SKILLSWIFT_S = "Swift Strike",
 	SKILLSWIFT_SDESCRIPT = "Strikes single target with 120% [color=yellow]Air[/color] Damage and gain +20 evasion for 1 turn.",
 	SKILLPARRY = "Parry",
-	SKILLPARRYDESCRIPT = "Select an ally target. Single target attacks will be redirected to you for 2 turns. 50% chance to receive no damage at all. Deals 100% [color=yellow]Slash[/color] Damage for every attack redirected to you.",
+	SKILLPARRYDESCRIPT = "Select an ally target. Single target attacks will be redirected to you for 1 turn. 50% chance to receive no damage at all. Deals 100% [color=yellow]Slash[/color] Damage for every attack redirected to you.",
 	SKILLSWORD_MASTERY = "Sword Mastery",
 	SKILLSWORD_MASTERYDESCRIPT = "Self: your next attack in 3 turns deals additional 150% damage.",
 	SKILLTERMINATION = "Termination",

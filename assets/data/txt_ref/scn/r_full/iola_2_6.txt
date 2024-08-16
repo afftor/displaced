@@ -1,4 +1,5 @@
 ** iola_2_6 **
+=MUSIC eventlight=
 =BLACKFADE 1=
 =DELAY 1=
 =GUI_NORMAL=
@@ -19,11 +20,11 @@ I - EV_IOLA_2_6_11
 Ar - EV_IOLA_2_6_12
 I - EV_IOLA_2_6_13
 Ar - EV_IOLA_2_6_14
-EV_IOLA_2_6_15
 =BLACKUNFADE 0.5=
 =DELAY 0.5=
 =SPRITE_HIDE=
 =BG villageday=
+EV_IOLA_2_6_15
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =SOUND knocking=
@@ -71,8 +72,8 @@ I - EV_IOLA_2_6_48
 Ar - EV_IOLA_2_6_49
 Ar - EV_IOLA_2_6_50
 I - EV_IOLA_2_6_51
-=ABG iola_minet_2 iola_minet_3=
 EV_IOLA_2_6_52
+=ABG iola_minet_2 iola_minet_3=
 I - EV_IOLA_2_6_53
 Ar - EV_IOLA_2_6_54
 Ar - EV_IOLA_2_6_55
@@ -83,8 +84,8 @@ I - EV_IOLA_2_6_59
 EV_IOLA_2_6_60
 I - EV_IOLA_2_6_61
 I - EV_IOLA_2_6_62
-=ABG iola_minet_4 iola_minet_5=
 EV_IOLA_2_6_63
+=ABG iola_minet_4 iola_minet_5=
 Ar - EV_IOLA_2_6_64
 I - EV_IOLA_2_6_65
 I - EV_IOLA_2_6_66
@@ -98,10 +99,10 @@ I - EV_IOLA_2_6_73
 I - EV_IOLA_2_6_74
 I - EV_IOLA_2_6_75
 Ar - EV_IOLA_2_6_76
-=ABG iola_minet_6 iola_minet_7=
 I - EV_IOLA_2_6_77
 I - EV_IOLA_2_6_78
 I - EV_IOLA_2_6_79
+=ABG iola_minet_6 iola_minet_7=
 Ar - EV_IOLA_2_6_80
 Ar - EV_IOLA_2_6_81
 Ar - EV_IOLA_2_6_82
