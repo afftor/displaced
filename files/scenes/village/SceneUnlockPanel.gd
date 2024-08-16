@@ -30,7 +30,7 @@ func _ready():
 		var cid = ch.name.to_lower()
 		ch.set_meta('hero', cid)
 		ch.connect('pressed', self, 'select_hero', [cid])
-		if char_sprites.has(cid): resources.preload_res("sprite/%s" % char_sprites[cid])
+		if char_sprites.has(cid): resources.preload_res("animated_sprite/%s" % char_sprites[cid])
 	#TODO full preload of previews is a bad idea! Need to optimise it somehow
 	preload_previews()
 	if test_mode:
@@ -84,11 +84,13 @@ func select_hero(cid):
 	for ch in charlist.get_children():
 		ch.pressed = (ch.get_meta('hero') == cid)
 	rebuild_scene_list()
+	var sprite_bound = $panel_hero/hero/boundaries
+	if sprite_bound.get_child_count() > 0:
+		sprite_bound.get_child(0).queue_free()
 	if selected_char != 'all': #simple sprite setup. tell me if animated sprite is needed
-		var tmp = resources.get_res("sprite/%s" % char_sprites[selected_char]) 
-		$panel_hero/hero.texture = tmp
-	else:
-		$panel_hero/hero.texture = null
+		var tmp = resources.get_res("animated_sprite/%s" % char_sprites[selected_char]).instance()
+		sprite_bound.add_child(tmp)
+		tmp.set_anchors_and_margins_preset(PRESET_WIDE)
 
 
 func rebuild_scene_list():
