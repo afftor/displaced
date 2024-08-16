@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://files/scenes/village/SceneUnlockScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/sprite/rose.png" type="Texture" id=2]
 [ext_resource path="res://files/scenes/village/SceneUnlockPanel.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/animated_sprite/rose.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/gui/gallery/panel_gallery_choose.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/gallery/panel_hero.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/gallery/panel_gallery.png" type="Texture" id=11]
@@ -41,7 +42,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hero" type="TextureRect" parent="panel_hero"]
+[node name="hero" type="Control" parent="panel_hero"]
+margin_left = 35.0
+margin_top = 24.0
+margin_right = 659.0
+margin_bottom = 904.0
+rect_clip_content = true
+
+[node name="boundaries" type="Control" parent="panel_hero/hero"]
+margin_left = -78.0
+margin_top = -21.0
+margin_right = 702.0
+margin_bottom = 944.0
+
+[node name="sprite" parent="panel_hero/hero/boundaries" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="hero-old" type="TextureRect" parent="panel_hero"]
+visible = false
 margin_left = 35.0
 margin_top = 24.0
 margin_right = 659.0

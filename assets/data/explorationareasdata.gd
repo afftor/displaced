@@ -133,6 +133,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	iola_3_3 = [
 		{type = 'show_screen', value = 'map'},
 	],
+	city_raid = [
+		{type = 'show_screen', value = 'exploration', arg = 'town'},
+	],
 	dimitrius_2_1_2 = [
 		{type = 'system', value = 'unlock_mission', arg = 'cult_rose_rescue'},
 	],
