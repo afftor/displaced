@@ -359,7 +359,9 @@ func buildplayergroup():
 	var newgroup = {}
 	for ch in state.characters:
 		var hero = state.heroes[ch]
-		if !hero.unlocked: continue
+		if !hero.unlocked:
+			hide_hero_panel(hero)#in case hero was unlocked and participated in last combat
+			continue
 		
 		make_hero_panel(hero)
 		if hero.position != null:
@@ -402,6 +404,11 @@ func make_hero_panel(fighter, show = true):
 		panel.setup_position(Vector2(0,0))
 		panel.visible = false
 	panel.noq_rebuildbuffs(fighter.get_all_buffs())
+
+func hide_hero_panel(fighter):
+	var panel = battlefieldpositions[fighter.id]
+	panel.setup_position(Vector2(0,0))
+	panel.visible = false
 
 
 #main loop
