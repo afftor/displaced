@@ -1,7 +1,7 @@
 ** ending_1 **
+=BLACKFADE 0.5=
 =BG hall=
 =MUSIC eventlight=
-=BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
 =SPRITE rose=
@@ -32,6 +32,7 @@ EV_ENDING_1_23
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=
+=SPRITE_HIDE=
 =BLACKFADE 1=
 =DELAY 1=
 =SPRITE embershock=

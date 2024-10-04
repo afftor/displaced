@@ -56,7 +56,7 @@ EV_ROSE_1_33
 EV_ROSE_1_34
 EV_ROSE_1_35
 EV_ROSE_1_36
-=ABG rose_minet_4=
+=ABG rose_minet_2 rose_minet_4=
 Ro - EV_ROSE_1_37
 Ar - EV_ROSE_1_38
 Ro - EV_ROSE_1_39

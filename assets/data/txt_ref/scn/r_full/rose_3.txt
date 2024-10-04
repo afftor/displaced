@@ -91,7 +91,7 @@ Ro - EV_ROSE_3_69
 Ar - EV_ROSE_3_70
 Ro - EV_ROSE_3_71
 Ar - EV_ROSE_3_72
-=ABG rose_town_8=
+=ABG rose_town_7-1 rose_town_8=
 Ro - EV_ROSE_3_73
 Ro - EV_ROSE_3_74
 Ar - EV_ROSE_3_75
