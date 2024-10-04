@@ -81,8 +81,8 @@ Er - EV_IOLA_2_7_57
 Ar - EV_IOLA_2_7_58
 I - EV_IOLA_2_7_59
 Ar - EV_IOLA_2_7_60
-=DELAY 1=
 =ABG rose_erika_iola_2 rose_erika_iola_3=
+=DELAY 1=
 Er - EV_IOLA_2_7_61
 Er - EV_IOLA_2_7_62
 Ar - EV_IOLA_2_7_63
@@ -98,8 +98,6 @@ I - EV_IOLA_2_7_72
 I - EV_IOLA_2_7_73
 Ro - EV_IOLA_2_7_74
 Ro - EV_IOLA_2_7_75
-=DELAY 1=
-=ABG rose_erika_iola_4=
 EV_IOLA_2_7_76
 Ar - EV_IOLA_2_7_77
 Ro - EV_IOLA_2_7_78
@@ -107,21 +105,24 @@ Ro - EV_IOLA_2_7_79
 I - EV_IOLA_2_7_80
 I - EV_IOLA_2_7_81
 Ar - EV_IOLA_2_7_82
+=ABG rose_erika_iola_3-1 rose_erika_iola_4=
+=DELAY 1=
 Er - EV_IOLA_2_7_83
 Er - EV_IOLA_2_7_84
 Er - EV_IOLA_2_7_85
 Er - EV_IOLA_2_7_86
 Ar - EV_IOLA_2_7_87
 Er - EV_IOLA_2_7_88
-=DELAY 1=
 =ABG rose_erika_iola_5 rose_erika_iola_6=
+=DELAY 1=
+=WHITE=
 Ar - EV_IOLA_2_7_89
 Er - EV_IOLA_2_7_90
 Er - EV_IOLA_2_7_91
 Ro - EV_IOLA_2_7_92
 Ar - EV_IOLA_2_7_93
-=DELAY 1=
 =ABG rose_erika_iola_7 rose_erika_iola_8=
+=DELAY 1=
 I - EV_IOLA_2_7_94
 I - EV_IOLA_2_7_95
 I - EV_IOLA_2_7_96
@@ -135,18 +136,19 @@ Er - EV_IOLA_2_7_103
 Er - EV_IOLA_2_7_104
 Ro - EV_IOLA_2_7_105
 Er - EV_IOLA_2_7_106
-=DELAY 1=
-=ABG rose_erika_iola_9=
 EV_IOLA_2_7_107
+=ABG rose_erika_iola_8-1 rose_erika_iola_9=
+=DELAY 1=
 I - EV_IOLA_2_7_108
 I - EV_IOLA_2_7_109
 I - EV_IOLA_2_7_110
 Ar - EV_IOLA_2_7_111
 I - EV_IOLA_2_7_112
 I - EV_IOLA_2_7_113
-=DELAY 1=
-=ABG rose_erika_iola_10 rose_erika_iola_11=
 EV_IOLA_2_7_114
+=ABG rose_erika_iola_10 rose_erika_iola_11=
+=DELAY 1=
+=WHITE=
 I - EV_IOLA_2_7_115
 Ar - EV_IOLA_2_7_116
 Ar - EV_IOLA_2_7_117
@@ -160,9 +162,9 @@ Ar - EV_IOLA_2_7_124
 Ro - EV_IOLA_2_7_125
 Er - EV_IOLA_2_7_126
 Ar - EV_IOLA_2_7_127
-=DELAY 1=
-=ABG rose_erika_iola_12 rose_erika_iola_13=
 EV_IOLA_2_7_128
+=ABG rose_erika_iola_12 rose_erika_iola_13=
+=DELAY 1=
 Ro - EV_IOLA_2_7_129
 Ro - EV_IOLA_2_7_130
 Ar - EV_IOLA_2_7_131
@@ -174,8 +176,8 @@ Ro - EV_IOLA_2_7_136
 Ro - EV_IOLA_2_7_137
 Ar - EV_IOLA_2_7_138
 Ar - EV_IOLA_2_7_139
+=ABG rose_erika_iola_13-1 rose_erika_iola_14=
 =DELAY 1=
-=ABG rose_erika_iola_14=
 Ro - EV_IOLA_2_7_140
 Er - EV_IOLA_2_7_141
 I - EV_IOLA_2_7_142
@@ -187,8 +189,9 @@ Ar - EV_IOLA_2_7_147
 Ar - EV_IOLA_2_7_148
 Ro - EV_IOLA_2_7_149
 Ro - EV_IOLA_2_7_150
-=DELAY 1=
 =ABG rose_erika_iola_15 rose_erika_iola_16=
+=DELAY 1=
+=WHITE=
 Ar - EV_IOLA_2_7_151
 Ro - EV_IOLA_2_7_152
 Ro - EV_IOLA_2_7_153

@@ -69,8 +69,8 @@ Ar - EV_IOLA_1_5_40
 I - EV_IOLA_1_5_41
 Ar - EV_IOLA_1_5_42
 I - EV_IOLA_1_5_43
-=ABG iola_cuni_02 iola_cuni_03=
 EV_IOLA_1_5_44
+=ABG iola_cuni_02 iola_cuni_03=
 I - EV_IOLA_1_5_45
 Ar - EV_IOLA_1_5_46
 Ar - EV_IOLA_1_5_47
@@ -101,7 +101,7 @@ Ar - EV_IOLA_1_5_69
 I - EV_IOLA_1_5_70
 Ar - EV_IOLA_1_5_71
 I - EV_IOLA_1_5_72
-=ABG iola_cuni_08=
+=ABG iola_cuni_08 iola_cuni_09=
 Ar - EV_IOLA_1_5_73
 I - EV_IOLA_1_5_74
 I - EV_IOLA_1_5_75
@@ -110,7 +110,7 @@ I - EV_IOLA_1_5_77
 Ar - EV_IOLA_1_5_78
 I - EV_IOLA_1_5_79
 I - EV_IOLA_1_5_80
-=ABG iola_cuni_09 iola_cuni_11=
+=ABG iola_cuni_10 iola_cuni_11=
 =WHITE=
 =DELAY 0.5=
 Ar - EV_IOLA_1_5_81

@@ -36,17 +36,17 @@ Ar - EV_RILU_2_1_19
 Ri - EV_RILU_2_1_20
 Ri - EV_RILU_2_1_21
 Ri - EV_RILU_2_1_22
-Ar - EV_RILU_2_1_23
 =ABG rilu_minet_2=
+Ar - EV_RILU_2_1_23
 Ri - EV_RILU_2_1_24
 EV_RILU_2_1_25
+=ABG rilu_minet_3 rilu_minet_4=
 Ri - EV_RILU_2_1_26
 Ar - EV_RILU_2_1_27
 Ar - EV_RILU_2_1_28
 Ri - EV_RILU_2_1_29
 Ri - EV_RILU_2_1_30
 Ri - EV_RILU_2_1_31
-=ABG rilu_minet_3 rilu_minet_4=
 EV_RILU_2_1_32
 Ar - EV_RILU_2_1_33
 Ri - EV_RILU_2_1_34
@@ -54,8 +54,8 @@ Ar - EV_RILU_2_1_35
 Ar - EV_RILU_2_1_36
 Ri - EV_RILU_2_1_37
 Ri - EV_RILU_2_1_38
-=ABG rilu_minet_5 rilu_minet_6=
 EV_RILU_2_1_39
+=ABG rilu_minet_5 rilu_minet_6=
 Ri - EV_RILU_2_1_40
 EV_RILU_2_1_41
 Ar - EV_RILU_2_1_42
@@ -64,6 +64,7 @@ Ar - EV_RILU_2_1_44
 Ar - EV_RILU_2_1_45
 Ri - EV_RILU_2_1_46
 EV_RILU_2_1_47
+=ABG rilu_minet_6-1=
 Ri - EV_RILU_2_1_48
 Ri - EV_RILU_2_1_49
 Ar - EV_RILU_2_1_50
@@ -91,8 +92,8 @@ Ar - EV_RILU_2_1_63
 =ABG rilu_doggy_2 rilu_doggy_3=
 Ar - EV_RILU_2_1_64
 Ri - EV_RILU_2_1_65
-=ABG rilu_doggy_4 rilu_doggy_5=
 EV_RILU_2_1_66
+=ABG rilu_doggy_4 rilu_doggy_5=
 Ri - EV_RILU_2_1_67
 Ar - EV_RILU_2_1_68
 Ri - EV_RILU_2_1_69
@@ -110,15 +111,15 @@ Ri - EV_RILU_2_1_80
 Ar - EV_RILU_2_1_81
 Ri - EV_RILU_2_1_82
 Ar - EV_RILU_2_1_83
-=ABG rilu_doggy_6=
+=ABG rilu_doggy_5-1 rilu_doggy_6=
 Ri - EV_RILU_2_1_84
 Ar - EV_RILU_2_1_85
 Ri - EV_RILU_2_1_86
 Ri - EV_RILU_2_1_87
 Ar - EV_RILU_2_1_88
+EV_RILU_2_1_89
 =ABG rilu_doggy_7 rilu_doggy_8=
 =WHITE=
-EV_RILU_2_1_89
 Ri - EV_RILU_2_1_90
 Ri - EV_RILU_2_1_91
 Ar - EV_RILU_2_1_92

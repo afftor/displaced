@@ -3,9 +3,9 @@
 =DELAY 0.5=
 =GUI_NORMAL=
 =BG hall=
-=SPRITE rose=
 =MUSIC eventgeneric=
 EV_RILU_2_2_0
+=SPRITE rose=
 Em - EV_RILU_2_2_1
 Em(sad) - EV_RILU_2_2_2
 Ro(talk) - EV_RILU_2_2_3
@@ -102,9 +102,9 @@ Ri - EV_RILU_2_2_76
 Ar - EV_RILU_2_2_77
 Ri - EV_RILU_2_2_78
 Ar - EV_RILU_2_2_79
+EV_RILU_2_2_80
 =ABG rilu_anal_2 rilu_anal_3=
 =DELAY 1=
-EV_RILU_2_2_80
 Ri - EV_RILU_2_2_81
 Ar - EV_RILU_2_2_82
 Ri - EV_RILU_2_2_83
@@ -113,9 +113,9 @@ Ar - EV_RILU_2_2_85
 Ri - EV_RILU_2_2_86
 Ar - EV_RILU_2_2_87
 Ar - EV_RILU_2_2_88
+EV_RILU_2_2_89
 =ABG rilu_anal_4 rilu_anal_5=
 =DELAY 1=
-EV_RILU_2_2_89
 Ri - EV_RILU_2_2_90
 Ar - EV_RILU_2_2_91
 Ar - EV_RILU_2_2_92
@@ -135,8 +135,6 @@ Ar - EV_RILU_2_2_105
 Ri - EV_RILU_2_2_106
 Ar - EV_RILU_2_2_107
 Ri - EV_RILU_2_2_108
-=ABG rilu_anal_5 rilu_anal_6=
-=DELAY 1=
 =WHITE=
 Ri - EV_RILU_2_2_109
 Ri - EV_RILU_2_2_110
@@ -144,9 +142,9 @@ Ar - EV_RILU_2_2_111
 Ri - EV_RILU_2_2_112
 Ar - EV_RILU_2_2_113
 Ri - EV_RILU_2_2_114
-=DELAY 1=
-=ABG rilu_anal_6 rilu_anal_7=
 EV_RILU_2_2_115
+=ABG rilu_anal_6 rilu_anal_7=
+=DELAY 1=
 Ri - EV_RILU_2_2_116
 Ri - EV_RILU_2_2_117
 Ar - EV_RILU_2_2_118
@@ -180,12 +178,14 @@ Ar - EV_RILU_2_2_142
 Ri - EV_RILU_2_2_143
 Ri - EV_RILU_2_2_144
 Ar - EV_RILU_2_2_145
-=DELAY 1=
-=GUI_NORMAL=
-=BLACKTRANS 1=
+=GUI_HIDE=
+=BLACKUNFADE 1=
 =DELAY 1=
 =BG hall=
 =SPRITE rilu=
+=BLACKFADE 1=
+=DELAY 1=
+=GUI_NORMAL=
 Ar(neutral) - EV_RILU_2_2_146
 Ri - EV_RILU_2_2_147
 Ri(talk) - EV_RILU_2_2_148

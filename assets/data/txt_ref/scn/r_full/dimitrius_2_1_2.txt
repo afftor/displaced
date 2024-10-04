@@ -7,8 +7,8 @@
 EV_DIMITRIUS_2_1_2_0
 =SPRITE_UNFADE 0.3=
 =SPRITE demitrius_demon=
-De - EV_DIMITRIUS_2_1_2_1
 =MUSIC combattheme=
+De - EV_DIMITRIUS_2_1_2_1
 Ar(anger) - EV_DIMITRIUS_2_1_2_2
 De - EV_DIMITRIUS_2_1_2_3
 De - EV_DIMITRIUS_2_1_2_4

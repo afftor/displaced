@@ -145,9 +145,7 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	dimitrius_2_2 = [
 		{type = 'system', value = 'enable_character', arg = ['iola', true] },
-	],
-	rose_2 = [
-		{type = 'system', value = 'enable_character', arg = ['rose', true] },
+		{type = 'system', value = 'enable_character', arg = ['rose', true] }
 	],
 	dimitrius_ending_1 = [
 		{type = 'show_screen', value = 'exploration', arg = 'modern_city'},

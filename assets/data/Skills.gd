@@ -2463,8 +2463,8 @@ var skilllist = {
 		casteffects = [Effectdata.rebuild_template({effect = 'e_s_suicide', push_value = true})],
 		repeat = 1,
 		hidden = true,
-		sfx = [{code = 'anim_hit', target = 'target', period = 'postdamage'},
-			{code = 'sfx_zombie_boom', target = 'target_group', period = 'predamage'},
+		sfx = [{code = 'sfx_zombie_boom', target = 'target_group', period = 'predamage'},
+#			{code = 'anim_hit', target = 'target', period = 'postdamage'},
 #			{code = 'sfx_explosion', target = 'target_group', period = 'predamage'}
 			],
 		patches = [],
