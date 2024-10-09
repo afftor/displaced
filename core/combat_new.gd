@@ -132,7 +132,8 @@ signal fighter_pressed(fighter_code)#for now used only for tutorial, which is re
 var is_player_turn = false
 var skill_in_progress = false
 
-var resist_tooltip_for_pos = -1
+var mouse_presence_on_pos = -1
+var overlaping = []
 
 onready var displaynodes = [#in display order
 	battlefieldpositions['arron'],
@@ -1674,7 +1675,7 @@ func get_random_target():
 #visuals
 func FighterMouseOver(position):
 	if position == null: return
-	show_resist_tooltip(position)
+	start_mouse_presence(position)
 	var fighter = battlefield[position]
 	var node = fighter.displaynode
 	if cur_state == T_NONE: return
@@ -1697,10 +1698,12 @@ func FighterMouseOver(position):
 
 
 func FighterMouseOverFinish():
+	stop_mouse_presence()
 	hide_resist_tooltip()
 	Input.set_custom_mouse_cursor(cursors.default)
 	reset_all_highlight()
 	mark_skill_targets()
+	stop_overlap_transparent()
 
 
 func FighterPress(position):
@@ -2210,19 +2213,29 @@ func add_bonus(party, b_rec:String, value, revert = false):
 			else: aura_bonuses[party][b_rec] = value
 
 
+func start_mouse_presence(pos :int):
+	mouse_presence_on_pos = pos
+	yield(get_tree().create_timer(1), 'timeout')
+	
+	if mouse_presence_on_pos != pos:
+		return
+	var fighter = battlefield[pos]
+	if !fighter or fighter.defeated:
+		mouse_presence_on_pos = -1
+		return
+	
+	show_resist_tooltip(pos)
+	start_overlap_transparent(pos)
+
+func stop_mouse_presence():
+	mouse_presence_on_pos = -1
+
 #resist_tooltip
 func show_resist_tooltip(pos :int):
 	if pos < 4 :
 		return
-	resist_tooltip_for_pos = pos
-	yield(get_tree().create_timer(1), 'timeout')
 	
-	if resist_tooltip_for_pos != pos:
-		return
 	var fighter = battlefield[pos]
-	if !fighter or fighter.defeated:
-		resist_tooltip_for_pos = -1
-		return
 	resist_tooltip.show_up(fighter.id)
 	var container = resist_tooltip.get_parent()
 	var pos_rect = fighter.displaynode.get_global_rect()
@@ -2247,7 +2260,6 @@ func show_resist_tooltip(pos :int):
 	hp_bar_ontop.rect_position = temp_global_pos
 
 func hide_resist_tooltip():
-	resist_tooltip_for_pos = -1
 	resist_tooltip.hide()
 	try_hide_hp_bar_ontop()
 
@@ -2257,7 +2269,7 @@ func try_hide_hp_bar_ontop():
 	hp_bar_ontop = null
 
 func hide_resist_tooltip_if_my(pos :int):
-	if resist_tooltip_for_pos == pos:
+	if mouse_presence_on_pos == pos:
 		hide_resist_tooltip()
 
 #There is major issue with displaynode mouse input processing.
@@ -2291,6 +2303,25 @@ func process_cur_displaynode() ->bool:#true if found
 		FighterMouseOverFinish()
 #		cur_displaynode = null #FighterMouseOverFinish doing this
 	return false
+
+func start_overlap_transparent(pos :int):
+	if !variables.overlap_risks.has(pos): return
+	
+	var crucial_rect = battlefield[pos].displaynode.get_sprite_global_rect()
+	for i in variables.overlap_risks[pos]:
+		var fighter = battlefield[i]
+		if !fighter or fighter.defeated: continue
+		
+		if crucial_rect.intersects(fighter.displaynode.get_sprite_global_rect()):
+			fighter.displaynode.make_transparent()
+			overlaping.append(i)
+
+func stop_overlap_transparent():
+	for i in overlaping:
+		var fighter = battlefield[i]
+		if fighter:
+			fighter.displaynode.unmake_transparent()
+	overlaping.clear()
 
 #for CloseableWindowsArray processing------
 func show():

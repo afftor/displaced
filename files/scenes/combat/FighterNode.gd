@@ -452,6 +452,7 @@ func update_hp_label(newhp):
 func stop_highlight():
 	$sprite.material.set_shader_param('opacity', 0.0)
 	unmark_unreachable()
+#	unmake_transparent()
 #	hightlight = false
 
 func highlight_active():
@@ -540,12 +541,18 @@ func enable():
 
 func mark_unreachable():
 	unreachable = true
-	modulate = Color(0.4, 0.4, 0.4, 1)
+#	modulate = Color(0.4, 0.4, 0.4, 1)
+	modulate.r = 0.4
+	modulate.g = modulate.r
+	modulate.b = modulate.r
 
 func unmark_unreachable():
 	if unreachable:
 		unreachable = false
-		modulate = Color(1, 1, 1, 1)
+#		modulate = Color(1, 1, 1, 1)
+		modulate.r = 1.0
+		modulate.g = modulate.r
+		modulate.b = modulate.r
 
 #obsolete or semi-obsolete
 func defeat():
@@ -605,3 +612,14 @@ func get_HPbar_clone() ->Node:
 	var hp_bar_clone = hp_bar.duplicate()
 	hp_bar_clone.rect_position = hp_bar.rect_global_position
 	return hp_bar_clone
+
+func make_transparent():
+	modulate.a = 0.4
+
+func unmake_transparent():
+	modulate.a = 1.0
+
+func get_sprite_global_rect() -> Rect2:
+	return $sprite.get_global_rect()
+
+
