@@ -8,6 +8,7 @@ var panel_node2
 
 #signal signal_RMB
 #signal signal_RMB_release
+signal pressed_supervision#emited when pressing decision made by supervisor-algorithm
 
 var position = 0
 var fighter

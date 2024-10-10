@@ -126,7 +126,6 @@ signal combat_started
 signal turn_started
 signal combat_ended
 signal player_ready
-signal fighter_pressed(fighter_code)#for now used only for tutorial, which is redundant. Refactor!
 #feel free to add state signals per need
 
 var is_player_turn = false
@@ -174,10 +173,8 @@ func _ready():
 	$Rewards/AdvanceButton.connect("pressed",self,'FinishCombat', [true, true])
 	$LevelUp/panel/CloseButton.connect("pressed",self,'on_level_up_close')
 	
-	TutorialCore.register_static_button_base("enemy", battlefieldpositions[4])
-	TutorialCore.register_button_sig("enemy", "fighter_pressed", self, ["elvenrat"])
-	TutorialCore.register_static_button_base("character", battlefieldpositions['rose'])
-	TutorialCore.register_button_sig("character", "fighter_pressed", self, ["rose"])
+	TutorialCore.register_static_button("enemy", battlefieldpositions[4], "pressed_supervision")
+	TutorialCore.register_static_button("character", battlefieldpositions['rose'], "pressed_supervision")
 
 
 #debug section---------------------
@@ -2284,7 +2281,7 @@ func _gui_input(event):
 	
 	if event.is_action_pressed('LMB'):
 		FighterPress(cur_displaynode.position)
-		emit_signal('fighter_pressed', cur_displaynode.fighter.base)
+		cur_displaynode.emit_signal("pressed_supervision")
 	accept_event()
 
 func process_cur_displaynode() ->bool:#true if found
