@@ -1959,7 +1959,7 @@ func use_skill(skill_code, caster, target_pos): #code, caster, target_position
 				#applying resists
 				s_skill2.calculate_dmg()
 				#logging result & dealing damage
-				execute_skill(s_skill2)
+				execute_skill(s_skill2, s_skill1)
 				effected_positions[s_skill2.target.position] = true
 		turns += 1
 		#wait for damage animations from execute_skill()
@@ -2078,7 +2078,7 @@ func enqueue_skill(skill_code, caster, target_pos):
 	else:
 		yield(use_skill(skill_code, caster, target_pos), 'completed')
 
-func execute_skill(s_skill2):
+func execute_skill(s_skill2, s_skill1):#first - applicable skill, second - metaskill
 	var text = ''
 	var args = {critical = false, group = s_skill2.target.combatgroup}
 #	var data = {node = self, time = turns, type = 'damage_float', slot = 'damage', params = args.duplicate()}
@@ -2095,7 +2095,8 @@ func execute_skill(s_skill2):
 		if s_skill2.damagestat[i] == '+damage_hp': #damage, damage no log, negative damage
 			var tmp = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
 			if tmp.hp >= 0:
-				s_skill2.damage_dealt_hp = tmp.true_hp
+				s_skill2.log_damage_dealt(tmp.true_hp)
+				s_skill1.log_damage_dealt_meta(tmp.true_hp)
 				args.type = s_skill2.damagetype
 				args.damage = tmp
 				if !s_skill2.tags.has('no_log'):

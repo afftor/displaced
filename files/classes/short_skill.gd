@@ -13,7 +13,8 @@ var tags
 var value = []
 var long_value = []
 var long_value_min = []
-var damage_dealt_hp = 0#actual hp damage done by applicable skill
+var damage_dealt_hp = -1#actual hp damage done by applicable skill (-1 means no one was hit)
+var meta_damage_dealt = -1#sum of all damage for metaskill (-1 means no one was hit)
 #var manacost
 var userange
 var targetpattern
@@ -296,3 +297,11 @@ func get_exception_type() ->String:
 	if damagetype is String and damagetype == 'summon':
 		return 'summon'
 	return ''
+
+func log_damage_dealt(damage):
+	damage_dealt_hp = damage
+
+func log_damage_dealt_meta(damage):
+	if meta_damage_dealt < 0:
+		meta_damage_dealt = 0
+	meta_damage_dealt += damage

@@ -446,13 +446,11 @@ func process_ultimeter(ev, skill = null):#skill :S_Skill
 	if !has_ult(): return
 	var do_add = variables.ULTIMETER_COSTS.has(ev)
 	if ev == variables.TR_POST_TARG:#S_Skill here is applicable-type
-		do_add = (skill.process_check(['tags', 'has', 'damage'])
-			and skill.process_check(['hit_res', 'mask', variables.RES_HITCRIT]))
+		do_add = skill.process_check(['damage_dealt_hp', 'gte', 0])
 	elif ev == variables.TR_SKILL_FINISH:#S_Skill here is meta-type
 		do_add = (!skill.template.has('not_final')
 			and skill.skilltype != 'ultimate'
-			and skill.process_check(['tags', 'has', 'damage'])
-			and skill.process_check(['best_hit_res', 'mask', variables.RES_HITCRIT]))
+			and skill.process_check(['meta_damage_dealt', 'gte', 0]))
 	if do_add:
 		add_ultimeter(variables.ULTIMETER_COSTS[ev])
 

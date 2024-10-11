@@ -2227,8 +2227,7 @@ var effect_table = {
 		debug_name = "souls_heal",
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
-			{type = 'skill', value = ['tags', 'has', 'damage']},
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['damage_dealt_hp', 'gte', 0]}
 		],
 		req_skill = true,
 		args = [
@@ -2408,8 +2407,7 @@ var effect_table = {
 		debug_name = "dwarf_enrage_starter",
 		trigger = [variables.TR_POST_TARG],
 		conditions = [
-			{type = 'skill', value = ['tags','has', 'damage'] },
-			{type = 'skill', value = ['hit_res','mask',variables.RES_HITCRIT] }
+			{type = 'skill', value = ['damage_dealt_hp', 'gte', 0]}
 		],
 		req_skill = true,
 		sub_effects = ['e_rage_1'],
