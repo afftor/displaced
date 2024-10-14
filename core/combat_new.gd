@@ -2095,8 +2095,8 @@ func execute_skill(s_skill2, s_skill1):#first - applicable skill, second - metas
 		if s_skill2.damagestat[i] == '+damage_hp': #damage, damage no log, negative damage
 			var tmp = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damagetype)
 			if tmp.hp >= 0:
-				s_skill2.log_damage_dealt(tmp.true_hp)
-				s_skill1.log_damage_dealt_meta(tmp.true_hp)
+				s_skill2.log_damage_dealt(tmp.hp, tmp.shield, tmp.true_hp)
+				s_skill1.log_damage_dealt_meta(tmp.hp, tmp.shield, tmp.true_hp)
 				args.type = s_skill2.damagetype
 				args.damage = tmp
 				if !s_skill2.tags.has('no_log'):
