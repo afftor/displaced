@@ -1,0 +1,38 @@
+** erika_intermission **
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=MUSIC event_light=
+=SPRITE rose=
+=SPRITE_UNFADE 0.3=
+Ar - It's really hot today, isn't it?
+Ro - It's hot every day around here. We shouldn't have chosen such a hot location to settle.
+Ar(neutral) - Why didn't you say so sooner?
+Er - I don't think it's that bad. Barely warmer than in forests.
+Ro - That's because of the way you dress.
+Er - Might be. Why don't you try it too, Rose? I'm sure you'd look great.
+Ar(neutral) - No way, there's too many horny green man around here.
+Ro - For a time you are being sensible, but... 
+Er - .....
+Er - To tell the truth, I also help myself to cool down with some ice magic. 
+Ro - Really? I'm envious. 
+Er - Oh, let me show you.
+=SPRITE erika=
+=SPRITE_UNFADE 0.3=
+Erika moves closer to Rose and puts her hands on her back.
+Ro - Ooh, that does feel nice and cool. 
+Er(happy) - See? 
+Ar - That's convenient.
+Ro - Yeah... this is...
+Rose has dashed away from Erika's caress.
+Ro - ..! Where are you touching me?
+Er(happy) - Sorry, my hand has slipped.
+Ar - Damn, I should've studied magic to have useful tricks like this.
+Ro(sarcasm) - Ugh, I can't believe you.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

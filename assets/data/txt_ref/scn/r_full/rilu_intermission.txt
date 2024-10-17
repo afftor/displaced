@@ -1,0 +1,36 @@
+** rilu_intermission **
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG city=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=MUSIC event_light=
+=SPRITE rose=
+=SPRITE_UNFADE 0.3=
+Rose, Erika and Rilu went to the town doing shopping.
+Ro - Wow, look at that dress, it looks so pretty.
+Er - We've already stocked on the spare clothes.
+Ro - Yeah... Except for Rilu.
+=SPRITE rilu=
+Ri - Clothes?
+Er - Yeah, you wear some bad rags you know. And what's up with the bandages?
+Ro - We could get you something better.
+Ri - There's no need. And the bandages are useful for patching wounds. I clean them up afterwards.
+Ro(shock) - Huh?
+Ri - If I get new clothes they'll be tattered rather quickly just like these.
+Ro - That's weird. I'd imagine being immortal would make you wear much better clothes and get less damage...
+Ri - No, it's the opposite. When you are immortal you get damaged more often because of it. 
+Ri - Maybe I'm also not treating my wellbeing as important which leads to being under fire even more often. 
+Ri - It's a pain to maintain your clothes in a good state like this.
+Er - Why not going around naked then? 
+Ri - .....
+Ri - I actually never thought about that.
+Ro(sarcastic) - No, you can't, you absolutely can't do that.
+Er - Silly social rules. 
+Er - But it's a thing you should wanna do on your own. Nudity is great.
+Ro - Whatever, let's go back before too many people hear us.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

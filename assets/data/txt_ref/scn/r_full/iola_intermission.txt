@@ -1,0 +1,39 @@
+** iola_intermission **
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG hall=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=MUSIC event_light=
+=SPRITE iola=
+=SPRITE_UNFADE 0.3=
+Io - Hey!
+Io - I brought you some food from the cult as a thank you for your help
+Ro - You didn't have to. 
+Ar - Nah, thank you too. I'm tired of only eating dried meat and roots all day.
+Iola leaves a basket filled with fruit and berries and goes away.
+=SPRITE rose=
+Ro - I have never seen berries like this back at home.
+Ar - What are you talking about?
+Ro - I mean, have you considered that food from here might be poisonous to us?
+As Rose looked at Arron he had his face stuffed with berries from the basket.
+Ar - I dunno, they taste good.
+Ro(shock) - Gosh, Master!
+Ar(neutral) - We were fine before now so it will probably be okay. 
+Ar - Are gonna try it or I eat it all?
+Ro - ......
+Ro - They aren't bad.
+=SPRITE erika=
+Er - Hey, that's some generous gift Iola brought us.
+Ar - It's not poisonous, is it?
+Er - No, we have these grew in the forests, completely safe, as long as you cook them. But I see you like them raw.
+Ar - ...Oh. 
+Ro(sad) - I... Don't feel so good...
+Er - They can cause diarrhea. 
+Ar - I guess that's enough for me for today then.
+Rose dashes out of the room and was not seen for a few hours.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=

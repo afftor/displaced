@@ -1,0 +1,31 @@
+** ember_intermission **
+=BLACKUNFADE 1=
+=DELAY 1=
+=BG blacksmith=
+=BLACKFADE 0.5=
+=DELAY 0.5=
+=GUI_NORMAL=
+=MUSIC event_light=
+=SPRITE ember=
+=SPRITE_UNFADE 0.3=
+Ro - This seems much bigger on the inside.
+Ar - It's really hot in here though. 
+Ro - It's natural for a forge.
+Em - Is it? It feels normal to me.
+Ro - Well, that's because you are a dragon.
+Ar - What's with the big wheels on the sides?
+Em - It helps me carry it around.
+Ro(shock) - You carry around your own forge all by yourself? 
+Em - And there's Mister Bitey on the table.
+Ar - You certainly are strong to perform something like this.
+Em - Thank you! I haven't made this into a cart on my own though.
+Em - It's not really heavy to me.
+Ro - I don't think I ever seen anyone being able to drag whole building on their own.
+Ar - Now that you mention it...
+Ar - I never rode a forge in my life. How fast can you go while carrying it?
+Em - Oh, I can run!
+Ro(sarcasm) - I beg you to reconsider.
+=GUI_HIDE=
+=BLACKUNFADE 1=
+=DELAY 1=
+=STOP=
