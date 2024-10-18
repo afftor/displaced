@@ -261,12 +261,12 @@ var buildings = { #for binding village buidings events
 
 var characters = { #for binding village characters events
 	#i was forced to use scendata keys due to having characters that are not heroes here and reqirement to get their portarits
-	Em = ['ember_arrival', 'ember_arc_initiate', 'viktor_sends_threat'],
-	I = ['iola_arrival', 'iola_second_visit', 'iola_recruited', 'iola_wanderer'],
+	Em = ['ember_arrival', 'ember_intermission_seq', 'ember_arc_initiate', 'viktor_sends_threat'],
+	I = ['iola_arrival', 'iola_intermission_seq', 'iola_second_visit', 'iola_recruited', 'iola_wanderer'],
 	D = ['dimitrius_arrival'], #there is a problem in this - it appears directly after closing ember arrival scene, that is not good
 	F = ['flak_task', 'flak_task_return', 'flak_town_raid', 'flak_modern_city'],
-	Ri = ['rilu_accepted', 'rilu_reports_iola', 'rilu_disappear'],
-	Ro = ['rose_kidnap'],
+	Ri = ['rilu_accepted', 'rilu_intermission_seq', 'rilu_reports_iola', 'rilu_disappear'],
+	Ro = ['erika_intermission_seq', 'rose_kidnap'],
 	Er = ['erika_rose_init'],
 }
 
@@ -313,6 +313,13 @@ var scene_sequences = {
 		]
 	},
 	
+	ember_intermission_seq = {
+		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
+		actions = [
+		{type = 'scene', value = 'ember_intermission'},
+		]
+	},
+	
 	ember_smith = {
 #		initiate_signal = 'village_smith', 
 		initiate_reqs = [{type = 'seq_seen', value = 'ember_arrival'}],
@@ -341,6 +348,13 @@ var scene_sequences = {
 		]
 	},
 	
+	erika_intermission_seq = {
+		initiate_reqs = [{type = 'seq_seen', value = 'iola_arrival'}],
+		actions = [
+		{type = 'scene', value = 'erika_intermission'},
+		]
+	},
+	
 	flak_task = {
 #		initiate_signal = 'village_townhall_fask', 
 		initiate_reqs = [{type = 'mission_complete', value = 'caves_iola'}],
@@ -348,6 +362,13 @@ var scene_sequences = {
 		{type = 'scene', value = 'flak_1'},
 		{type = 'system', value = 'unlock_area', arg = 'town'},
 		{type = 'system', value = 'unlock_mission', arg = 'road_to_town'}
+		]
+	},
+	
+	iola_intermission_seq = {
+		initiate_reqs = [{type = 'scene_seen', value = 'aeros_1'}],
+		actions = [
+		{type = 'scene', value = 'iola_intermission'},
 		]
 	},
 	
@@ -374,6 +395,13 @@ var scene_sequences = {
 		initiate_reqs = [{type = 'scene_seen', value = 'rilu_1_5'}],
 		actions = [
 		{type = 'scene', value = 'aeros_3'},
+		]
+	},
+	
+	rilu_intermission_seq = {
+		initiate_reqs = [{type = 'scene_seen', value = 'faery_queen_1_b'}],
+		actions = [
+		{type = 'scene', value = 'rilu_intermission'},
 		]
 	},
 	

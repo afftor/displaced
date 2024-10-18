@@ -13,8 +13,12 @@ var tags
 var value = []
 var long_value = []
 var long_value_min = []
-var damage_dealt_hp = -1#actual hp damage done by applicable skill (-1 means no one was hit)
-var meta_damage_dealt = -1#sum of all damage for metaskill (-1 means no one was hit)
+#(-1 means no one was hit)
+#storing shield damage separately is redundant for now, add on necessity
+var damage_dealt = -1#nominal (shield+hp) damage done by applicable skill
+var damage_dealt_hp = -1#actual hp damage done by applicable skill
+var meta_damage_dealt = -1#sum of all nominal damage for metaskill
+var meta_damage_dealt_hp = -1#sum of all actual damage for metaskill
 #var manacost
 var userange
 var targetpattern
@@ -298,10 +302,13 @@ func get_exception_type() ->String:
 		return 'summon'
 	return ''
 
-func log_damage_dealt(damage):
-	damage_dealt_hp = damage
+func log_damage_dealt(dam_hp, dam_shield, true_dam_hp):
+	damage_dealt = dam_hp + dam_shield
+	damage_dealt_hp = true_dam_hp
 
-func log_damage_dealt_meta(damage):
-	if meta_damage_dealt < 0:
+func log_damage_dealt_meta(dam_hp, dam_shield, true_dam_hp):
+	if meta_damage_dealt < 0:#and meta_damage_dealt_hp < 0
 		meta_damage_dealt = 0
-	meta_damage_dealt += damage
+		meta_damage_dealt_hp = 0
+	meta_damage_dealt += dam_hp + dam_shield
+	meta_damage_dealt_hp += true_dam_hp

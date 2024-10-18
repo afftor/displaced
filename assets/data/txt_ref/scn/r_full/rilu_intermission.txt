@@ -1,35 +1,35 @@
 ** rilu_intermission **
 =BLACKUNFADE 1=
 =DELAY 1=
-=BG city=
+=BG town_in=
 =BLACKFADE 0.5=
 =DELAY 0.5=
 =GUI_NORMAL=
-=MUSIC event_light=
+=MUSIC eventlight=
 =SPRITE rose=
 =SPRITE_UNFADE 0.3=
-Rose, Erika and Rilu went to the town doing shopping.
-Ro - Wow, look at that dress, it looks so pretty.
-Er - We've already stocked on the spare clothes.
-Ro - Yeah... Except for Rilu.
+EV_RILU_INTERMISSION_0
+Ro - EV_RILU_INTERMISSION_1
+Er - EV_RILU_INTERMISSION_2
+Ro - EV_RILU_INTERMISSION_3
 =SPRITE rilu=
-Ri - Clothes?
-Er - Yeah, you wear some bad rags you know. And what's up with the bandages?
-Ro - We could get you something better.
-Ri - There's no need. And the bandages are useful for patching wounds. I clean them up afterwards.
-Ro(shock) - Huh?
-Ri - If I get new clothes they'll be tattered rather quickly just like these.
-Ro - That's weird. I'd imagine being immortal would make you wear much better clothes and get less damage...
-Ri - No, it's the opposite. When you are immortal you get damaged more often because of it. 
-Ri - Maybe I'm also not treating my wellbeing as important which leads to being under fire even more often. 
-Ri - It's a pain to maintain your clothes in a good state like this.
-Er - Why not going around naked then? 
-Ri - .....
-Ri - I actually never thought about that.
-Ro(sarcastic) - No, you can't, you absolutely can't do that.
-Er - Silly social rules. 
-Er - But it's a thing you should wanna do on your own. Nudity is great.
-Ro - Whatever, let's go back before too many people hear us.
+Ri - EV_RILU_INTERMISSION_4
+Er - EV_RILU_INTERMISSION_5
+Ro - EV_RILU_INTERMISSION_6
+Ri - EV_RILU_INTERMISSION_7
+Ro(shock) - EV_RILU_INTERMISSION_8
+Ri - EV_RILU_INTERMISSION_9
+Ro - EV_RILU_INTERMISSION_10
+Ri - EV_RILU_INTERMISSION_11
+Ri - EV_RILU_INTERMISSION_12
+Ri - EV_RILU_INTERMISSION_13
+Er - EV_RILU_INTERMISSION_14
+Ri - EV_RILU_INTERMISSION_15
+Ri - EV_RILU_INTERMISSION_16
+Ro(sarcastic) - EV_RILU_INTERMISSION_17
+Er - EV_RILU_INTERMISSION_18
+Er - EV_RILU_INTERMISSION_19
+Ro - EV_RILU_INTERMISSION_20
 =GUI_HIDE=
 =BLACKUNFADE 1=
 =DELAY 1=

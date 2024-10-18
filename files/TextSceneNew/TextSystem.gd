@@ -549,13 +549,22 @@ func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
 	var f = File.new()
-	for refs in [REF_PATH, REF_PATH+"/r_full"]:
-		for i in process_path_dir(refs):
-			f.open(i, File.READ)
-			ref_src.append_array(f.get_as_text().split("\n"))
-			f.close()
+	for i in process_path_dir(REF_PATH):
+		f.open(i, File.READ)
+		ref_src.append_array(f.get_as_text().split("\n"))
+		f.close()
 	
 #	ref_src.append_array(process_gallery_singles())
+	
+	#use to make new events translatable.
+	#mind, that build_scenes_map() will still end up with error on this run
+#	make_lines_translatable([
+#		"ember_intermission",
+#		"erika_intermission",
+#		"iola_intermission",
+#		"rilu_intermission"
+#	])
+	
 	scenes_map = build_scenes_map(ref_src)
 
 	globals.AddPanelOpenCloseAnimation($LogPanel)
@@ -1484,6 +1493,80 @@ func dump_referals():
 	file_handler.close()
 	print('Dump finished! Look at user://referals')
 
+#use at _ready() with list of new events, that needed to be made translatable
+func make_lines_translatable(new_events :Array = []):
+	var scene_name :String = ""
+	var string_name :String = ""
+	var string_count :int = 0
+	var file_text :String = ""
+	var dict_text :String = ""
+	
+	var out_path = "user://out/"
+	var dir_handler = Directory.new()
+	if dir_handler.open("user://") != OK:
+		print("can't open user folder")
+		return
+	if !dir_handler.dir_exists("out"):
+		dir_handler.make_dir("out")
+
+	var file_handler = File.new()
+	var is_old :bool = false
+	for i in ref_src:
+		if i.begins_with("**") && i.ends_with("**"):
+			if !file_text.empty():
+				file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+				file_handler.store_string(file_text)
+				file_handler.close()
+				file_text = ""
+			scene_name = i.replace("**", "").replace(" ", "")
+			is_old = !new_events.empty() and !(scene_name in new_events)
+			if is_old:
+				continue
+			
+			file_text = i
+			string_name = "EV_%s_" % scene_name.to_upper()
+			string_count = 0
+			continue
+		
+		if is_old:
+			continue
+		
+		file_text += "\n"
+
+		if i.begins_with("#"):
+			file_text += i
+			continue
+
+		if i.begins_with("=") && i.ends_with("="):
+			file_text += i
+			continue
+
+		if i.empty():
+			continue
+
+		var replica = i
+		var char_name = ""
+		if " - " in i:
+			var splitted = i.split(" - ", true, 1)
+			if is_char_name(splitted[0]):
+				replica = splitted[1]
+				char_name = splitted[0]
+		var string_name_full = string_name + str(string_count)
+		dict_text += "%s = \"%s\",\n" % [string_name_full, replica]
+		if !char_name.empty():
+			file_text += "%s - %s" % [char_name, string_name_full]
+		else:
+			file_text += string_name_full
+		string_count += 1
+	#last file
+	if !file_text.empty():
+		file_handler.open(out_path + scene_name + ".txt", File.WRITE)
+		file_handler.store_string(file_text)
+		file_handler.close()
+	#dictionary
+	file_handler.open(out_path + "main.txt", File.WRITE)
+	file_handler.store_string(dict_text)
+	file_handler.close()
 
 #----------legacy code------------
 #This func was intended to be used only once at _ready() with ref_src argument
