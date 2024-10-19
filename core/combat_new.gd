@@ -244,11 +244,11 @@ func test_combat():
 
 
 #battlefield setup
-func start_combat(newenemygroup, level, background, music = 'combattheme'):
+func start_combat(newenemygroup, level, background, music = ''):
 	if debug_btn_on:
 		$test.hide()
-	if music == 'combattheme':
-		var ost_array = ['combattheme']#, 'combattheme2']
+	if music.empty():
+		var ost_array = ['combattheme', 'combat2']#, 'combattheme2']
 		music = ost_array[globals.rng.randi_range(0, ost_array.size()-1)]
 	hide_resist_tooltip()
 	input_handler.set_handler_node('combat_node', self)
