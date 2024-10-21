@@ -245,16 +245,7 @@ func _ready():
 
 
 func is_steam_unpatched() ->bool:
-	if !OS.has_feature("steam"):
-		return false
-	var patch_path = "res://nude_patch.pck"
-	if OS.has_feature("demo"):
-		patch_path = "res://nude_patch_demo.pck"
-	if ProjectSettings.load_resource_pack(patch_path):
-		return false
-#	else:
-#		print("no nude_patch")
-	return true
+	return OS.has_feature("steam") and !resources.has_nude_patch()
 
 func logupdate(text):
 	state.logupdate(text)

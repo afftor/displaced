@@ -48,9 +48,10 @@ var queue = {}
 var path_to_delete = []
 
 var busy = 0
-
+var nude_patch_loaded = false
 
 func _ready() -> void:
+	try_load_nude_patch()
 	var dir_checker = Directory.new()
 	for category in RES_ROOT:
 		exist_release_dir[category] = []
@@ -67,6 +68,17 @@ func _ready() -> void:
 #			resources.preload_res(fl.trim_prefix(resources.RES_ROOT.bg + '/').trim_suffix('.' + resources.RES_EXT.bg))
 #	yield(resources, "done_work")
 #	print('debug')
+
+func try_load_nude_patch():
+	if !OS.has_feature("steam"):
+		return
+	var patch_path = "res://nude_patch.pck"
+	if OS.has_feature("demo"):
+		patch_path = "res://nude_patch_demo.pck"
+	nude_patch_loaded = ProjectSettings.load_resource_pack(patch_path)
+
+func has_nude_patch() ->bool:
+	return nude_patch_loaded
 
 func split_path(path: String):
 	var psplit = path.split("/", true, 1)
@@ -97,7 +109,7 @@ func has_res(path: String) -> bool:
 	return res_pool.has(category) and res_pool[category].has(label)
 
 
-func _loaded(category: String, label: String, path: String, thread: Thread) -> void:
+func _loaded(category: String, label: String, thread: Thread) -> void:
 	var res = thread.wait_to_finish()
 	if res:
 		if !res_pool.has(category):
@@ -136,7 +148,7 @@ func _thread_load(args: Array) -> Resource:
 		res = ResourceLoader.load(path)
 		if res is AnimatedTexAutofill:
 			res.fill_frames()
-	call_deferred("_loaded", category, label, path, thread)
+	call_deferred("_loaded", category, label, thread)
 	mutex.unlock()
 	return res
 
