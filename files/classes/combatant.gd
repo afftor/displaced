@@ -1,6 +1,9 @@
-extends Reference
+extends Object
 class_name combatant
-
+#There are too much reference for combatants, I couldn't find all of them.
+#For this reason we can't use Reference extension, as entities are not freed correctly.
+#MIND(!), that with Object extension combatants are now must be freed manually,
+#with the risk of breaking odd references. Keep open eye for such references, as thay should be fixed.
 
 var id
 var name
