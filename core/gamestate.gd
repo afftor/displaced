@@ -544,12 +544,22 @@ func deserialize(tmp:Dictionary):
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 #	input_handler.map_node.update_map()
 
+func remove_hero(id):
+	if !heroes.has(id): return
+	heroes[id].free()
+	heroes.erase(id)
+
 func cleanup():
 	for ch in heroes.keys().duplicate():
-		if !(ch in characters): heroes.erase(ch)
+		if !(ch in characters):
+			remove_hero(ch)
+
+func cleanup_full():
+	for ch in heroes.keys().duplicate():
+		remove_hero(ch)
 
 func reset_heroes():
-	cleanup()
+	cleanup_full()
 	var tmp
 	h_arron.new()
 	h_ember.new()
@@ -753,6 +763,9 @@ func add_money(value, log_f = true):
 		text += str(-tmp) + ' {color=yellow|' + 'Gold' + '}'
 		logupdate(text)
 
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		cleanup_full()
 
 #obsolete setter
 #func materials_set(value):

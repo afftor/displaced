@@ -1132,7 +1132,7 @@ func victory():
 				elif state.heroes.arron.level < en_level:
 					tmp *= 2
 				rewardsdict.xp += tmp
-		state.heroes.erase(i.id)
+		state.remove_hero(i.id)
 	defeated.clear()
 	
 	if rewards_bonus:

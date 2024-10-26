@@ -623,4 +623,6 @@ func unmake_transparent():
 func get_sprite_global_rect() -> Rect2:
 	return $sprite.get_global_rect()
 
-
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		sfx_anchor.free()

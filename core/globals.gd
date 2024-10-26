@@ -167,7 +167,8 @@ func _init():
 	for locale_num in range(localizations.size()):
 		var locale = localizations[locale_num]
 		var activetranslation = Translation.new()
-		var translation_dict = load(TranslationData[locale]).new().TranslationDict
+		var translation_data = load(TranslationData[locale]).new()
+		var translation_dict = translation_data.TranslationDict
 		#-------should probably be commented befor release------
 		if locale_num == 0:
 			base_dict = translation_dict

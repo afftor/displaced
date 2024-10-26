@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://files/classes/buff.gd"
 }, {
-"base": "Object",
+"base": "Reference",
 "class": "HotkeysHandler",
 "language": "GDScript",
 "path": "res://core/hotkeys.gd"
@@ -69,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://files/classes/base_effect.gd"
 }, {
-"base": "Reference",
+"base": "Object",
 "class": "combatant",
 "language": "GDScript",
 "path": "res://files/classes/combatant.gd"
