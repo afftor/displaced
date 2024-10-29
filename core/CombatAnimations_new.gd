@@ -161,7 +161,7 @@ func default_animation(node, args):
 	var delayafter = variables.default_animations_after_delay[time_id]
 	var tex = null
 	if node.fighter.animations.has(id):
-		tex = node.fighter.animations[id]
+		tex = node.fighter.get_animation(id)
 	var sp = node.get_node('sprite')
 	var sp2 = node.get_node('sprite2')
 	node.set_sprite_2(tex)
