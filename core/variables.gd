@@ -339,3 +339,5 @@ enum {BG_NO,#buff-icon can also has no group, thus takes unique place in buff-ba
 #	BG_WEAKNESS,#weakness to damagetype, excluding dispellable (which might be wrong)
 }
 const BG_NO_ID_START = 1000#unique buff-icon groups' id starts from this
+
+const portrait_dummy = "portrait/Goblin"#that should be loadable in any version!

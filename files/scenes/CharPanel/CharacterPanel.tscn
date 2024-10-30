@@ -115,9 +115,6 @@ margin_bottom = 177.5
 texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/panel"]
 anchor_right = 1.0

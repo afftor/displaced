@@ -820,7 +820,10 @@ func sprite():
 
 func portrait():
 	if icon != null:
-		return resources.get_res(icon)
+		var port = resources.get_res(icon, true)
+		if port == null:#for fullgame portrait unavailable in demo
+			port = resources.get_res(variables.portrait_dummy)
+		return port
 
 func combat_portrait():
 	if combaticon != null:

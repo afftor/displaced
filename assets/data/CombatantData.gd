@@ -193,4 +193,5 @@ func preload_icons():
 #		resources.preload_res(ch.image)
 		for an in ch.animations.values():
 			resources.preload_res(an)
+	resources.preload_res(variables.portrait_dummy)
 	if resources.is_busy(): yield(resources, "done_work")

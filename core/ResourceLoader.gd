@@ -87,16 +87,21 @@ func split_path(path: String):
 		return
 	return psplit
 
-func get_res(path: String) -> Resource:
+#null_ready - is for code, that expects null and can work with it
+#in any other cases null is error
+func get_res(path: String, null_ready = false) -> Resource:
 	var psplit = split_path(path)
 	if !psplit:
+		if !null_ready:
+			print("GET_RES CANT SPLIT: %s" % path)
 		return null
 	var category = psplit[0]
 	var label = psplit[1]
 	if (res_pool.has(category) && res_pool[category].has(label)):
 		return res_pool[category][label]
 	else:
-		print("GET_RES NOT FOUND: %s" % path)
+		if !null_ready:
+			print("GET_RES NOT FOUND: %s" % path)
 		return null
 
 
