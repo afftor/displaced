@@ -26,7 +26,7 @@ func RepositionCloseButton():
 func build_stats():
 	stats_list.get_node('name').text = character.name
 	stats_list.get_node('desc').bbcode_text = tr(character.flavor)
-	stats_list.get_node("icon_bounds/icon").texture = character.animations.idle_1
+	stats_list.get_node("icon_bounds/icon").texture = character.get_animation('idle_1')
 	var v1 = character.get_stat('baseexp')
 	var v2 = character.get_stat('exp_cap')
 	stats_list.get_node("exp").max_value = v2

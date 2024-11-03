@@ -141,11 +141,11 @@ func setup_character(ch):
 	input_handler.force_end_tweens(sprite2)
 #	sprite1.texture = null
 	if fighter.defeated:
-		set_sprite_1(fighter.animations.dead_1)
+		set_sprite_1(fighter.get_animation('dead_1'))
 		panel_node.modulate = Color(1,1,1,0.4)
 		panel_node2.modulate = Color(1,1,1,0.4)
 	else:
-		set_sprite_1(fighter.animations.idle)
+		set_sprite_1(fighter.get_animation('idle'))
 		panel_node.modulate = Color(1,1,1,1)
 		panel_node2.modulate = Color(1,1,1,1)
 #		reset_shield()
@@ -559,7 +559,7 @@ func unmark_unreachable():
 func defeat():
 #	print("!")
 	if fighter is hero:
-		set_sprite_1(fighter.animations.dead_1)
+		set_sprite_1(fighter.get_animation('dead_1'))
 		regenerate_click_mask()
 		panel_node.modulate = Color(1,1,1,0.4)
 		panel_node2.modulate = Color(1,1,1,0.4)
@@ -572,7 +572,7 @@ func defeat():
 		visible = false
 
 func resurrect():
-	set_sprite_1(fighter.animations.idle)
+	set_sprite_1(fighter.get_animation('idle'))
 	regenerate_click_mask()
 #	input_handler.FadeAnimation($sprite2, 0.3)
 #	input_handler.UnfadeAnimation($sprite, 0.3)

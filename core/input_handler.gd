@@ -391,6 +391,10 @@ func FloatDmg(node, args, time = 3, fadetime = 0.5, positionoffset = Vector2(50,
 #		floatnode.add_child(iconnode)
 		floatnode.add_child(textnode)
 	
+	if !floatnode.is_a_parent_of(textnode):
+		textnode.queue_free()
+	if !floatnode.is_a_parent_of(textnode2):
+		textnode2.queue_free()
 	get_tree().get_root().add_child(floatnode)
 	floatnode.rect_global_position = node.rect_global_position + node.rect_size * 0.5  + positionoffset 
 	if args.group == 'ally':
@@ -891,10 +895,10 @@ func ConnectSound(node, sound, action):
 	node.connect(action, self, 'PlaySound', [sound])
 
 #variative get node method stuff
-enum {NODE_GAMETIP, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG, NODE_NOTIFICATION, NODE_UNLOCKCHAR} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CONFIRMPANEL, NODE_MUSIC, NODE_SOUND, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_SLAVEPANEL, NODE_GEARTOOLTIP, NODE_CREDITS, NODE_CONFIRMPANELBIG, NODE_NOTIFICATION, NODE_UNLOCKCHAR} #, NODE_TWEEN, NODE_REPEATTWEEN, NODE_GAMETIP, NODE_EVENT, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_COMBATPOSITIONS}
 
 var node_data = {
-	NODE_GAMETIP : {name = 'GameTips', mode = 'scene', scene = preload("res://files/scenes/GameplayTips.tscn")},
+#	NODE_GAMETIP : {name = 'GameTips', mode = 'scene', scene = preload("res://files/scenes/GameplayTips.tscn")},
 #	NODE_CHAT : {name = 'chatwindow', mode = 'scene', scene = preload("res://src/scenes/ChatNode.tscn")},
 #	NODE_TUTORIAL : {name = 'TutorialNode', mode = 'scene', scene = preload("res://files/scenes/Tutorial.tscn")},
 #	NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
@@ -906,7 +910,7 @@ var node_data = {
 	NODE_NOTIFICATION : {name = 'ConfirmPanel', mode = 'scene', scene = preload("res://files/scenes/ConfirmPanel.tscn"), calls = 'show_notify'},
 #	NODE_SLAVESELECT : {name = 'SlaveSelectMenu', mode = 'scene', scene = preload("res://src/SlaveSelectMenu.tscn")},
 #	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
-	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextSceneNew/TextSystem.tscn")},
+#	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextSceneNew/TextSystem.tscn")},
 	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
 	NODE_SOUND : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
 	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},

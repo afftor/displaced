@@ -11,7 +11,7 @@ var base
 
 var icon
 var combaticon
-var animations = {} setget ,get_animations
+var animations = {}#no getter from now on. Use get_animation() manually!
 var anim_scale
 
 var race
@@ -80,24 +80,13 @@ var taunt = null
 func _init():
 	animations = {}
 
-func get_animations():
-	var res = {}
-	for key in animations:
-		#AnimatedTexAutofill now processed by resources.get_res()
-#		if animations[key] is AnimatedTexAutofill:
-#			res[key] = animations[key]
-#		elif
-		if typeof(animations[key]) == TYPE_OBJECT:
-			res[key] = animations[key]
-		else:
-			res[key] = resources.get_res(animations[key])
-	if !animations.has('idle_1'):
-		res.idle_1 = res.idle.duplicate()
-	#current visual solution assume no dead image for enemies
-	#heros has there "animations.dead"
-#	if !animations.has('dead'):
-#		res.dead = resources.get_res('Fight/dead')
-	return res
+func get_animation(key :String):
+	if key == 'idle_1' and !animations.has('idle_1'):
+		key = 'idle'
+	if typeof(animations[key]) == TYPE_OBJECT:
+		return animations[key]
+	else:
+		return resources.get_res(animations[key])
 
 
 func get_weapon_sound():
@@ -831,7 +820,10 @@ func sprite():
 
 func portrait():
 	if icon != null:
-		return resources.get_res(icon)
+		var port = resources.get_res(icon, true)
+		if port == null:#for fullgame portrait unavailable in demo
+			port = resources.get_res(variables.portrait_dummy)
+		return port
 
 func combat_portrait():
 	if combaticon != null:

@@ -99,7 +99,7 @@ var globalsettings = {
 	skipread = false,
 	textmonocolor = false,
 	warnseen = false,
-	disabletips = false,
+#	disabletips = false,
 	disable_tutorial = false,
 	
 #	tuts_enabled = false,#what is this?
@@ -392,13 +392,14 @@ func dir_contents(target):
 		print("An error occurred when trying to access the path.")
 	return array
 
-func evaluate(input): #used to read strings as conditions when needed
-	var script = GDScript.new()
-	script.set_source_code("func eval():\n\treturn " + input)
-	script.reload()
-	var obj = Reference.new()
-	obj.set_script(script)
-	return obj.eval()
+#seems not to be in use. Memory leak possible
+#func evaluate(input): #used to read strings as conditions when needed
+#	var script = GDScript.new()
+#	script.set_source_code("func eval():\n\treturn " + input)
+#	script.reload()
+#	var obj = Reference.new()
+#	obj.set_script(script)
+#	return obj.eval()
 
 
 
