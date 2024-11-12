@@ -2164,7 +2164,25 @@ func log_get_damage(result :Dictionary, char_name :String) ->String:#result - pr
 func log_get_heal(value, char_name :String) ->String:
 	return tr("IS_HEALED") % [char_name, value]
 
-#TODO: add other log_ funcs and use them at combatant.apply_atomic()
+#loging combatant.apply_atomic() seems to have no use, but floods the log
+#I'am leaving this here for some time (at 12.11.24), just in case.
+#Delete, if it will not come in handy with time
+#func log_get_stat_add(stat, value, char_name :String) ->String:
+#	return "%s: added %s to %s." % [char_name, value, tr(stat)]
+#func log_get_stat_add_r(stat, value, char_name :String) ->String:
+#	return "%s: removed %s from %s." % [char_name, value, tr(stat)]
+#func log_get_stat_mul(stat, value, char_name :String) ->String:
+#	return "%s: %s multiplied by %s." % [char_name, tr(stat), value]
+#func log_get_stat_mul_r(stat, value, char_name :String) ->String:
+#	return "%s: %s no longer multiplied by %s." % [char_name, tr(stat), value]
+#func log_get_stat_add_p(stat, value, char_name :String) ->String:
+#	return "%s: added %s%% to %s." % [char_name, value, tr(stat)]
+#func log_get_stat_add_p_r(stat, value, char_name :String) ->String:
+#	return "%s: removed %s%% from %s." % [char_name, value, tr(stat)]
+#func log_get_shield(value, char_name :String) ->String:
+#	return "%s's shield increased for %d." % [char_name, value]
+#func log_get_shield_r(value, char_name :String) ->String:
+#	return "%s's shield withered for %d." % [char_name, value]
 
 func clean_summons():
 	for pos in battlefield:

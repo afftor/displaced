@@ -1609,7 +1609,7 @@ var effect_table = {
 		conditions = [],
 		req_skill = true,
 		args = [{obj = 'parent', param = 'caster'}],
-		sub_effects = ['e_echo_taunt', 'e_echo_shield_icon'],
+		sub_effects = ['e_echo_taunt'],
 		buffs = []
 	},
 	e_echo_shield_icon = {
@@ -4193,7 +4193,10 @@ func rebuild_template(args):
 	if args.has('debug_name'):
 		res.debug_name = args.debug_name
 	
-	res.sub_effects.push_back(args.effect)
+	if args.effect is Array:
+		res.sub_effects = args.effect
+	else:
+		res.sub_effects.push_back(args.effect)
 	
 	return res
 
