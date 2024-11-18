@@ -249,6 +249,11 @@ func remove_temporal_shield(temporal_id :String):
 	add_stat('shield', temporal_shields[temporal_id], true)
 	temporal_shields.erase(temporal_id)
 
+#not in use, but could come handy
+#func get_temporal_shield(temporal_id :String):
+#	if !temporal_shields.has(temporal_id): return 0
+#	return temporal_shields[temporal_id]
+
 func wither_temporal_shields(value):
 	for shield_id in temporal_shields.keys():
 		temporal_shields[shield_id] -= value

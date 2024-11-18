@@ -1600,7 +1600,7 @@ var skilllist = {
 		value = [['caster.hpmax', '*0.3'],['caster.damage','*0.6']],
 		damagestat = ['no_stat', '+damage_hp'],
 		cooldown = 1,
-		casteffects = ['e_pay_soul', 'e_s_echo', Effectdata.rebuild_template({trigger = variables.TR_CAST, effect = 'e_echo_shield', push_value = true})],
+		casteffects = ['e_pay_soul', 'e_s_echo', Effectdata.rebuild_template({trigger = variables.TR_CAST, effect = ['e_echo_shield', 'e_echo_shield_icon'], push_value = true})],
 		hidden = false,
 		sfx = [{code = 'anim_special', target = 'caster', period = 'cast'},
 			{code = 'sfx_dark_echoes', target = 'target', period = 'predamage'}, 
