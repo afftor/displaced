@@ -22,6 +22,7 @@ func _ready():
 
 	$difficulty_ask/TextureRect/Normal.connect("pressed", self, "start_newgame", [variables.DF_NORMAL])
 	$difficulty_ask/TextureRect/Hard.connect("pressed", self, "start_newgame", [variables.DF_HARD])
+	$difficulty_ask/TextureRect/cancel.connect("pressed", difficulty_node, "hide")
 
 	if globals.globalsettings.warnseen == true:
 		$DemoPanel.hide()

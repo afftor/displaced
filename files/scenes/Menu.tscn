@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://files/scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=27]
+[ext_resource path="res://files/Close Panel Button/CloseButton.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.255034, 0.630872, 0.986577, 1 )
@@ -202,6 +203,11 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "OPT_DF_HARD"
 align = 1
 clip_text = true
+
+[node name="cancel" parent="difficulty_ask/TextureRect" instance=ExtResource( 28 )]
+margin_left = 415.0
+margin_right = 464.0
+margin_bottom = 49.0
 
 [node name="Options" parent="." instance=ExtResource( 16 )]
 visible = false
