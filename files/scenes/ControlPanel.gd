@@ -23,6 +23,7 @@ func _ready():
 	$dev_panel/test_combat.connect("pressed",get_parent().get_node("combat"),"test_combat")
 	$dev_panel/test_event.connect("pressed", self, "test_event")
 	$dev_panel/dump_ref.connect("pressed", self, "dump_referals")
+	$dev_panel/gallery.connect("pressed", self, "unlock_gallery")
 	state.connect("money_changed", self, "UpdateMoney")
 	return_button_home()
 
@@ -35,6 +36,8 @@ func dump_referals():
 func test_event():
 	globals.play_scene('erika_annet_2_1')
 
+func unlock_gallery():
+	globals.opened_gallery = !globals.opened_gallery
 
 func UpdateMoney():
 	$ControlPanel/Gold.text = str(state.money)

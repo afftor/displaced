@@ -2,9 +2,10 @@ extends Node
 
 # warning-ignore-all:warning-id
 
-const gameversion = '1.0'
+const gameversion = '0.1 Alpha'
 var release_steam = false
 var release_demo = false
+var opened_gallery = false
 
 #const worker = preload("res://files/scripts/worker.gd");
 #const Item = preload("res://src/ItemClass.gd")
@@ -270,7 +271,7 @@ func StartGame():
 	if output == variables.SEQ_SCENE_STARTED :
 		input_handler.curtains.show_inst(variables.CURTAIN_SCENE)
 
-func run_seq(id, force_replay = true):
+func run_seq(id, force_replay = false):
 	var replay = (force_replay or state.OldSeqs.has(id))
 	if !replay and !state.check_sequence(id): return
 	if Explorationdata.is_seq_needs_autosave(id):

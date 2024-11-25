@@ -221,19 +221,27 @@ text = "test c"
 clip_text = true
 
 [node name="test_event" type="Button" parent="dev_panel"]
-margin_left = 125.0
+margin_left = 107.0
 margin_top = 19.0
-margin_right = 207.0
+margin_right = 189.0
 margin_bottom = 72.0
 text = "test e"
 clip_text = true
 
 [node name="dump_ref" type="Button" parent="dev_panel"]
-margin_left = 221.0
+margin_left = 197.0
 margin_top = 19.0
-margin_right = 348.0
+margin_right = 324.0
 margin_bottom = 72.0
 text = "dump referals"
+clip_text = true
+
+[node name="gallery" type="Button" parent="dev_panel"]
+margin_left = 331.0
+margin_top = 19.0
+margin_right = 502.0
+margin_bottom = 72.0
+text = "unlock gallery"
 clip_text = true
 
 [node name="foodicon" type="TextureRect" parent="."]
