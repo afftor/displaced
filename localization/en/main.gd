@@ -1111,7 +1111,7 @@ var TranslationDict = {
 	L_EN = "En",
 	L_RU = "Ru",
 	
-	WARNTEXT = "[color=#ff4949]This is a game made for adutls, it features explicit content and mature themes. All characters in the game are over the age of 18.[/color]",
+	WARNTEXT = "[color=#ff4949]This is an alpha version of the game, it features adult content and should not be played by people of age below 18. Mechanics and visuals are a subject for future changes and some visuals and audio aren't final. Please report any issues you come across at discord.[/color]",
 	B_ACCEPT = "Accept",
 	B_QUIT = "Quit",
 	

@@ -65,7 +65,7 @@ func open():
 	var def_char = null
 	for ch_id in ['rose', 'ember', 'erika', 'iola', 'rilu']:
 		var ch = charlist.get_node(ch_id)
-		if state.heroes[ch_id].unlocked || true:
+		if state.heroes[ch_id].unlocked:
 			ch.visible = true
 			if selected_char == ch_id or def_char == null:
 				def_char = ch_id
@@ -105,7 +105,7 @@ func rebuild_scene_list():
 
 
 		var panel = input_handler.DuplicateContainerTemplate(scenelist, 'Button')
-		if is_unlocked || true:
+		if is_unlocked:
 			panel.set_unlocked(scene_data)
 			panel.connect('show_pressed', self, 'show_event', [scene_id])
 		elif is_unlockable:#If not unlocked yet but unlockable
@@ -119,7 +119,7 @@ func rebuild_scene_list():
 	
 func _get_scenes_to_show() -> Dictionary:
 	var id_and_scene_data = {}
-	
+
 	for scene_id in Explorationdata.scene_sequences:
 		var scene_data = Explorationdata.scene_sequences[scene_id]
 		if !scene_data.has('gallery'): continue
@@ -129,14 +129,15 @@ func _get_scenes_to_show() -> Dictionary:
 		if selected_char != 'all' and !(selected_char in scene_characters): continue
 
 		var character_locked = false
-#		for chartater in scene_characters:
-#			if !state.heroes[chartater].unlocked:
-#				character_locked = true
-#				break
+		for chartater in scene_characters:
+			if !state.heroes[chartater].unlocked:
+				character_locked = true
+				break
 		if character_locked: continue
 		
 		
 		id_and_scene_data[scene_id] = scene_data
+
 	return id_and_scene_data
 
 func show_event(ev):
