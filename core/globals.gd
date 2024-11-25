@@ -5,6 +5,7 @@ extends Node
 const gameversion = '0.1 Alpha'
 var release_steam = false
 var release_demo = false
+var opened_gallery = false
 
 #const worker = preload("res://files/scripts/worker.gd");
 #const Item = preload("res://src/ItemClass.gd")

@@ -3,7 +3,7 @@ extends Node
 var TimePerDay = 120.0#in seconds
 var TimeDawn = 40.0#0.0 - sunset
 var DayTransitionTime = 3.0
-var NoScenes = false
+#var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 #var show_enemy_hp = false
 
