@@ -1106,7 +1106,7 @@ var TranslationDict = {
 	TUTORIAL_FORGE = "In forge you can craft and upgrade weapons and armor. It will require some materials and gold. Also maximum level of equipment is limited by level of forge itself.\n\nWhile armor upgrade provides resistance increase, weapon determines damage type for basic Attack, and most importantly augments character's skills. With higher level more skills are effected and old augmentations improves. Each character can choose between two different weapons.",
 	TUTORIAL_ULTIMATE = "You've received your first ultimate skill!\nUltimate skills are far stronger than normal, but adheres to specific rule. Character must fill up the 'ultimeter' gauge befor any ultimate skill can be used. Attack, incoming damage or cleared wave of enemies builds up the ultimeter gauge.",
 	
-	CREDITS_TEXT = "[center]Place holder for credits[/center]",
+#	CREDITS_TEXT = "[center]Place holder for credits[/center]",
 	CREDITS_BUTTON = "Thanks",
 	L_EN = "En",
 	L_RU = "Ru",

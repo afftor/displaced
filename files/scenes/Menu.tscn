@@ -89,6 +89,13 @@ texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
 
+[node name="creditsbutton" type="Button" parent="VBoxContainer"]
+visible = false
+margin_top = 304.0
+margin_right = 600.0
+margin_bottom = 334.0
+text = "Credits"
+
 [node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 304.0
 margin_right = 600.0
