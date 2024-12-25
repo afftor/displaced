@@ -1,6 +1,6 @@
 extends Node
 
-
+var release = variables.R_NUDE
 const RES_ROOT = {
 	"abg" : "res://assets",
 	"bg" : "res://assets/images",
@@ -15,9 +15,36 @@ const RES_ROOT = {
 	"scene_preview" : "res://assets/images"
 }
 
+#Here comes a complicated part:
+#The very "base" release is BORING_DEMO - it uses no subfolder, and every other
+# release uses it's files.
+#BORING has files for endgame (r_full folder), but no nudes.
+#NUDE_DEMO and CENSORED_DEMO have no endgame, but have nudes.
+#NUDE and CENSORED are most completed releases: they have endgame folder, endgame nudes
+# and demo nudes.
+#For all nude releases there are two folder for nudes:
+# one that need to be censored (r_cens or r_uncen), and one with no such need (r_nude)
+# thus used in both "censored" and "nude" releases.
+#Complete folder list:
+#r_uncen - uncensored endgame nudes
+#r_cens - censored endgame nudes
+#r_nude - endgame nudes used in both censored and uncensored releases
+#r_uncen_d - uncensored demo nudes used also in full release
+#r_cens_d - censored demo nudes used also in full release
+#r_nude_d - nudes used in all censored and uncensored, demo and full releases
+#r_full - non-nude endgame content
+#Content outside of any folders used in all releases
 #Mind the order! First to exist will be loaded
-#priority: normal base (demo), normal, steam base (demo), steam
-const RES_RELEASE_PRIOR = ["/r_nude", "/r_full/r_nude", "", "/r_full"]
+onready var RES_RELEASE_PRIOR = {
+	variables.R_NUDE_DEMO : ["/r_uncen_d", "/r_nude_d", ""],
+	variables.R_NUDE : ["/r_uncen", "/r_nude", "/r_uncen_d", "/r_nude_d", "/r_full", ""],
+	variables.R_BORING_DEMO : [""],
+	variables.R_BORING : ["/r_full", ""],
+	variables.R_CENSORED_DEMO : ["/r_cens_d", "/r_nude_d", ""],
+	variables.R_CENSORED : ["/r_cens", "/r_nude", "/r_cens_d", "/r_nude_d", "/r_full", ""],
+}
+#HINT on export templates: list of exclusions for certain release is list of all folders,
+# excluding corresponding list from RES_RELEASE_PRIOR
 
 var exist_release_dir = {}#filled automatically
 
@@ -52,14 +79,16 @@ var nude_patch_loaded = false
 
 func _ready() -> void:
 	try_load_nude_patch()
+	determine_release_type()
 	var dir_checker = Directory.new()
 	for category in RES_ROOT:
 		exist_release_dir[category] = []
-		for release in RES_RELEASE_PRIOR:
+		for release in RES_RELEASE_PRIOR[globals.get_release_type()]:
 			var release_dir = "%s%s" % [category, release]
 			var dir = "%s/%s" % [RES_ROOT[category], release_dir]
 			if dir_checker.dir_exists(dir):
 				exist_release_dir[category].append(release_dir)
+#	print("determine_release_dirs: ", exist_release_dir)
 #	var path = resources.RES_ROOT.bg + '/bg'
 #	var dir = globals.dir_contents(path)
 #	if dir != null:
@@ -70,12 +99,36 @@ func _ready() -> void:
 #	print('debug')
 
 func try_load_nude_patch():
-	if !OS.has_feature("steam"):
+	if OS.has_feature(variables.feat_nude) or OS.has_feature(variables.feat_nude_demo):
 		return
 	var patch_path = "res://nude_patch.pck"
-	if OS.has_feature("demo"):
+	if globals.is_demo_by_feature():
 		patch_path = "res://nude_patch_demo.pck"
 	nude_patch_loaded = ProjectSettings.load_resource_pack(patch_path)
+
+func determine_release_type():
+	if release != variables.R_NUDE:
+		print("Warning! Project is not in NORMAL release type! No determination.")
+		return
+	if has_nude_patch():
+		if (OS.has_feature(variables.feat_boring_demo)
+			or OS.has_feature(variables.feat_cens_demo)
+		):
+			release = variables.R_NUDE_DEMO
+		elif (OS.has_feature(variables.feat_boring)
+			or OS.has_feature(variables.feat_cens)
+		):
+			release = variables.R_NUDE
+	elif OS.has_feature(variables.feat_nude_demo):
+		release = variables.R_NUDE_DEMO
+	elif OS.has_feature(variables.feat_boring_demo):
+		release = variables.R_BORING_DEMO
+	elif OS.has_feature(variables.feat_boring):
+		release = variables.R_BORING
+	elif OS.has_feature(variables.feat_cens_demo):
+		release = variables.R_CENSORED_DEMO
+	elif OS.has_feature(variables.feat_cens):
+		release = variables.R_CENSORED
 
 func has_nude_patch() ->bool:
 	return nude_patch_loaded
@@ -120,7 +173,7 @@ func _loaded(category: String, label: String, thread: Thread) -> void:
 		if !res_pool.has(category):
 			res_pool[category] = {}
 		res_pool[category][label] = res
-	elif !(globals.is_steam_type() or globals.is_demo_type()):
+	elif globals.is_normal_type():
 		#print that only in normal mode (not best idea, but suffice for now)
 		print("NOT FOUND: %s/%s" % [category, label])
 	queue[category].erase(label)
