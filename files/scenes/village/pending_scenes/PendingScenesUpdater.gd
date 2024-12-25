@@ -11,7 +11,7 @@ func _ready():
 	#MIND that such simplified conditions works only while gallery is all nude!
 	#So no pending update done, if no connection made
 	#change this, if adding here something extra, not about connections
-	if globals.is_steam_type(): return
+	if globals.is_boring_type(): return
 	
 	_scene_unlock_panel.connect("hide", self, "update_discovered_pending_scenes")
 	_scene_unlock_panel.connect("scene_pannel_drawn", self, "scene_pannel_seen")

@@ -22,7 +22,7 @@ func _ready():
 #	$ButtonPanel/VBoxContainer/Food.connect('pressed', $FoodConvert, "open")
 #warning-ignore:return_value_discarded
 	$ButtonPanel/VBoxContainer/Quests.connect("pressed", $Questlog, 'open')
-	if globals.is_steam_type():
+	if globals.is_boring_type():
 		$ButtonPanel/VBoxContainer/Scenes.hide()
 	else:
 		$ButtonPanel/VBoxContainer/Scenes.connect("pressed", $scenes, "open")

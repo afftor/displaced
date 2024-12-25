@@ -43,6 +43,13 @@ enum {SEQ_NONE, SEQ_SCENE_STARTED}
 enum {CURTAIN_BATTLE, CURTAIN_SCENE}
 enum {DN_NONE, DN_SPRITE, DN_IN_ME}
 enum {DF_NORMAL, DF_HARD}#difficulty levels
+enum {R_NUDE_DEMO, R_NUDE, R_BORING_DEMO, R_BORING, R_CENSORED_DEMO, R_CENSORED}#release types
+const feat_nude_demo = "nude_demo"
+const feat_nude = "nude"
+const feat_boring_demo = "steam_demo"
+const feat_boring = "steam"
+const feat_cens_demo = "censored_demo"
+const feat_cens = "censored"
 #Heroes
 var MaxLevel = 40
 var StartTraitPoints = 0

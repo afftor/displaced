@@ -1071,7 +1071,7 @@ func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->
 		success = globals.globalsettings.forced_content
 	elif type == "RELEASESTEAM":
 		#value in this case irrelevant
-		success = globals.is_steam_type()
+		success = globals.is_boring_type()
 	else:
 		assert(false, "Unknow condition in tag_if!!!")
 		return
@@ -1189,7 +1189,7 @@ func preload_scene(scene: String) -> void:
 	scene_map = scenes_map[scene]
 	for i in scene_map["res"].keys():
 		#MIND that such simplified condition works only while abg are all nude!
-		if globals.is_steam_type() and i == "abg":
+		if globals.is_boring_type() and i == "abg":
 			continue
 		for j in scene_map["res"][i]:
 			resources.preload_res("%s/%s" % [i, j])

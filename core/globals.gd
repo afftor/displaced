@@ -3,8 +3,6 @@ extends Node
 # warning-ignore-all:warning-id
 
 const gameversion = '0.1 Alpha'
-var release_steam = false
-var release_demo = false
 var opened_gallery = false
 
 #const worker = preload("res://files/scripts/worker.gd");
@@ -211,10 +209,6 @@ func preload_backgrounds():
 
 
 func _ready():
-	if release_steam or release_demo:
-		print("Warning! Project is not in NORMAL release type!")
-	release_steam = is_steam_unpatched() or release_steam
-	release_demo = OS.has_feature("demo") or release_demo
 	variables.tune_up_max_level()
 #	OS.window_size = Vector2(1280,720)
 #	OS.window_position = Vector2(300,0)
@@ -245,9 +239,6 @@ func _ready():
 #	if resources.is_busy(): yield(resources, "done_work")
 #	print("globals _ready finished")
 
-
-func is_steam_unpatched() ->bool:
-	return OS.has_feature("steam") and !resources.has_nude_patch()
 
 func logupdate(text):
 	state.logupdate(text)
@@ -811,19 +802,45 @@ func get_last_save():
 func get_hotkeys_handler() ->Object:
 	return hotkeys_handler
 
-func is_steam_type() ->bool:
-	return release_steam
+func is_normal_type() -> bool:
+	return resources.release == variables.R_NUDE
+
+func is_boring_type() ->bool:
+	return resources.release in [variables.R_BORING_DEMO, variables.R_BORING]
+
+func is_boring_by_feature() ->bool:
+	return (OS.has_feature(variables.feat_boring)
+		or OS.has_feature(variables.feat_boring_demo))
 
 func is_demo_type() ->bool:
-	return release_demo
+	return resources.release in [variables.R_NUDE_DEMO, variables.R_BORING_DEMO, variables.R_CENSORED_DEMO]
+
+func is_demo_by_feature() -> bool:
+	return (OS.has_feature(variables.feat_nude_demo)
+		or OS.has_feature(variables.feat_boring_demo)
+		or OS.has_feature(variables.feat_cens_demo))
+
+func is_censored_type() ->bool:
+	return resources.release in [variables.R_CENSORED_DEMO, variables.R_CENSORED]
+
+func is_censored_by_feature() ->bool:
+	return (OS.has_feature(variables.feat_cens)
+		or OS.has_feature(variables.feat_cens_demo))
+
+func get_release_type():
+	return resources.release
 
 func get_game_version() ->String:
 	var res = gameversion
-	if is_steam_type():
+	if is_boring_type():
 		res += " Steam"
-	elif OS.has_feature("steam"):
+	elif is_boring_by_feature():
 		#not steam_type but with feature
 		res += " Patched-Steam"
+	if is_censored_type():
+		res += " Censored"
+	elif is_censored_by_feature():
+		res += " Patched-Censored"
 	if is_demo_type():
 		res += " Demo"
 	return res

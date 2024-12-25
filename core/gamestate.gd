@@ -327,8 +327,8 @@ func valuecheck(dict):
 			return globals.globalsettings.forced_content
 		"release_steam":
 			if dict.has("value"):
-				return globals.is_steam_type() == dict.value
-			return globals.is_steam_type()
+				return globals.is_boring_type() == dict.value
+			return globals.is_boring_type()
 		"release_demo":
 			if dict.has("value"):
 				return globals.is_demo_type() == dict.value
