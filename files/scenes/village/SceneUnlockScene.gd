@@ -60,4 +60,11 @@ func set_unknown():
 
 func set_preview(eventdata :Dictionary):
 	if eventdata.has('preview'):
-		image.texture = resources.get_res("scene_preview/%s" % eventdata.preview)
+		var res_name = "scene_preview/%s" % eventdata.preview
+		if !resources.has_res(res_name):
+			resources.preload_res("scene_preview/%s" % eventdata.preview)
+			if resources.is_busy():
+				image.hide()
+				yield(resources, "done_work")
+				image.show()
+		image.texture = resources.get_res(res_name)

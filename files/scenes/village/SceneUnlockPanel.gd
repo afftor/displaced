@@ -31,8 +31,6 @@ func _ready():
 		ch.set_meta('hero', cid)
 		ch.connect('pressed', self, 'select_hero', [cid])
 		if char_sprites.has(cid): resources.preload_res("animated_sprite/%s" % char_sprites[cid])
-	#TODO full preload of previews is a bad idea! Need to optimise it somehow
-	preload_previews()
 	if test_mode:
 		testmode()
 		if resources.is_busy(): yield(resources, "done_work")
@@ -47,15 +45,6 @@ func testmode():
 #	input_handler.scene_node = tnode #will be set on add_child anyway
 #	tnode.hide()
 #	add_child(tnode)
-
-
-func preload_previews():
-	if globals.is_boring_type(): return
-	for event in Explorationdata.scene_sequences:
-		var eventdata = Explorationdata.scene_sequences[event]
-		if eventdata.has('gallery') and eventdata.has('preview'):
-			resources.preload_res("scene_preview/%s" % eventdata.preview)
-
 
 
 func open():

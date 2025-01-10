@@ -583,7 +583,7 @@ var TranslationDict = {
 	SKILLDEFENCE = "Защита",
 	SKILLDEFENCEDESCRIPT = "Уменьшает входящий урон на 50% до следующего хода.",
 	SKILLFENCING = "Фехтование",
-	SKILLFENCINGDESCRIPT = "Наносит противнику 3 удара с 65% [color=yellow]нейтрального[/color] урона. Если цель умирает, переключается на другого врага.",
+	SKILLFENCINGDESCRIPT = "Наносит противнику 3 удара с 65% [color=yellow]Режущего[/color] урона. Если цель умирает, переключается на другого врага.",
 	SKILLLUNGE = "Выпад",
 	SKILLLUNGEDESCRIPT = "Наносит одной цели 120% [color=yellow]Колющего[/color] урона и накладывает эффект 'Кровотечение', который наносит 40% [color=yellow]Нейтрального[/color] урона в течении 3 ходов.",
 	SKILLSIDESLASH = "Боковой удар",
