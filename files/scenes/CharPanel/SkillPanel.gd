@@ -13,6 +13,7 @@ func _ready():
 func open(hero):
 	character = hero
 	build_stats()
+	$skills.scroll_vertical = 0
 	show()
 
 
