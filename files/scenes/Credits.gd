@@ -87,8 +87,8 @@ func show_credits() -> void:
 				char_texs.append(tex)
 		texs_ready = true
 	
-	cur_bg_texs = bg_texs.duplicate()
-	cur_char_texs = char_texs.duplicate()
+	cur_bg_texs.clear()
+	cur_char_texs.clear()
 	text_node.bbcode_text = credits_text
 	next_bg()
 	set_process(true)
@@ -161,6 +161,8 @@ func next_bg():
 	else:
 		cur_bg_num = 0
 	var cur_bg = bgs[cur_bg_num]
+	if cur_bg_texs.empty():
+		cur_bg_texs = bg_texs.duplicate()
 	var next_tex_num = randi() % cur_bg_texs.size()
 	cur_bg.texture = resources.get_res("bg/%s" % cur_bg_texs[next_tex_num])
 	cur_bg_texs.remove(next_tex_num)
@@ -174,6 +176,8 @@ func next_char():
 	var temp = cur_char_num
 	cur_char_num = old_char_num
 	old_char_num = temp
+	if cur_char_texs.empty():
+		cur_char_texs = char_texs.duplicate()
 	var cur_char = chars[cur_char_num]
 	var next_tex_num = randi() % cur_char_texs.size()
 	cur_char.texture = resources.get_res("sprite/%s" % cur_char_texs[next_tex_num])
