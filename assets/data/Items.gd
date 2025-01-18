@@ -363,7 +363,7 @@ var hero_items_data = {
 					{skill = 'SKILLFENCING', effect = "WEAPON_ARRON1_EFFECT1"},
 					{skill = 'SKILLSWORD_MASTERY', effect = "WEAPON_ARRON1_EFFECT2"}
 				],
-				cost = {wood = 10, gold = 1000},
+				cost = {wood = 10, gold = 600},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_3.png",
@@ -372,7 +372,7 @@ var hero_items_data = {
 					{skill = 'SKILLSWORD_MASTERY', effect = "WEAPON_ARRON1_EFFECT2"},
 					{skill = 'SKILLSWIFT_S', effect = "WEAPON_ARRON1_EFFECT3"}
 				],
-				cost = {chitine = 10, gold = 3000},
+				cost = {chitine = 10, gold = 2000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_weapon1_4.png",
@@ -382,7 +382,7 @@ var hero_items_data = {
 					{skill = 'SKILLSWIFT_S', effect = "WEAPON_ARRON1_EFFECT3"},
 					{skill = 'SKILLTERMINATION', effect = "WEAPON_ARRON1_EFFECT4"}
 				],
-				cost = {demonic = 5, gold = 5000},
+				cost = {demonic = 5, gold = 3000},
 				},
 		}
 	},
@@ -405,7 +405,7 @@ var hero_items_data = {
 				lvldesc = [
 					{skill = 'SKILLFENCING', effect = "WEAPON_ARRON2_EFFECT1"}
 				],
-				cost = {wood = 1, gold = 350},
+				cost = {wood = 1, gold = 250},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_2.png",
@@ -413,7 +413,7 @@ var hero_items_data = {
 					{skill = 'SKILLFENCING', effect = "WEAPON_ARRON2_EFFECT1"},
 					{skill = 'SKILLPARRY', effect = "WEAPON_ARRON2_EFFECT2"}
 				],
-				cost = {metal = 10, gold = 2500},
+				cost = {metal = 10, gold = 1500},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_3.png",
@@ -422,7 +422,7 @@ var hero_items_data = {
 					{skill = 'SKILLPARRY', effect = "WEAPON_ARRON2_EFFECT2"},
 					{skill = 'SKILLLUNGE', effect = "WEAPON_ARRON2_EFFECT3"}
 				],
-				cost = {scales = 7, gold = 5000},
+				cost = {scales = 7, gold = 3000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_weapon2_4.png",
@@ -432,7 +432,7 @@ var hero_items_data = {
 					{skill = 'SKILLLUNGE', effect = "WEAPON_ARRON2_EFFECT3"},
 					{skill = 'SKILLSMOKE_S', effect = "WEAPON_ARRON2_EFFECT4"}
 				],
-				cost = {demonic = 7, gold = 750},
+				cost = {demonic = 7, gold = 4500},
 				},
 		}
 	},
@@ -448,17 +448,17 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/arron_armor_2.png",
 #				lvldesc = [{effect = "ARMOR_ARRON_EFFECT2"}],
-				cost = {stone = 5, gold = 1000},
+				cost = {stone = 5, gold = 600},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/arron_armor_3.png",
 #				lvldesc = [{effect = "ARMOR_ARRON_EFFECT3"}],
-				cost = {metal = 10, gold = 3500},
+				cost = {metal = 10, gold = 2500},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/arron_armor_4.png",
 #				lvldesc = [{effect = "ARMOR_ARRON_EFFECT4"}],
-				cost = {otherworld = 10, gold = 7000},
+				cost = {otherworld = 10, gold = 4000},
 				},
 		}
 	},
@@ -489,7 +489,7 @@ var hero_items_data = {
 					{skill = 'SKILLDARK_ORB', effect = "WEAPON_RILU1_EFFECT1"},
 					{effect = "WEAPON_RILU1_EFFECT2"}
 				],
-				cost = {metal = 15, gold = 1000},
+				cost = {metal = 15, gold = 600},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_3.png",
@@ -498,7 +498,7 @@ var hero_items_data = {
 					{effect = "WEAPON_RILU1_EFFECT2"},
 					{skill = 'SKILLRESTORATION', effect = "WEAPON_RILU1_EFFECT3"}
 				],
-				cost = {leather = 10, gold = 8000},
+				cost = {leather = 10, gold = 5000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_weapon1_4.png",
@@ -508,7 +508,7 @@ var hero_items_data = {
 					{skill = 'SKILLRESTORATION', effect = "WEAPON_RILU1_EFFECT3"},
 					{skill = 'SKILLSOUL_BEAM', effect = "WEAPON_RILU1_EFFECT4"}
 				],
-				cost = {demonic = 10, gold = 17000},
+				cost = {demonic = 10, gold = 10000},
 				},
 		}
 	},
@@ -531,7 +531,7 @@ var hero_items_data = {
 				lvldesc = [
 					{skill = 'SKILLDARK_ECHOES', effect = "WEAPON_RILU2_EFFECT1"}
 				],
-				cost = {stone = 1, gold = 250},
+				cost = {stone = 1, gold = 150},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_2.png",
@@ -539,7 +539,7 @@ var hero_items_data = {
 					{skill = 'SKILLDARK_ECHOES', effect = "WEAPON_RILU2_EFFECT1"},
 					{skill = 'SKILLAVALANCHE', effect = "WEAPON_RILU2_EFFECT2"}
 				],
-				cost = {leather = 10, gold = 2500},
+				cost = {leather = 10, gold = 1500},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_3.png",
@@ -548,7 +548,7 @@ var hero_items_data = {
 					{skill = 'SKILLAVALANCHE', effect = "WEAPON_RILU2_EFFECT2"},
 					{skill = 'SKILLPALE_MIST', effect = "WEAPON_RILU2_EFFECT3"}
 				],
-				cost = {chitine = 10, gold = 4000},
+				cost = {chitine = 10, gold = 2500},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_weapon2_4.png",
@@ -558,7 +558,7 @@ var hero_items_data = {
 					{skill = 'SKILLPALE_MIST', effect = "WEAPON_RILU2_EFFECT3"},
 					{skill = 'SKILLSOUL_PROT', effect = "WEAPON_RILU2_EFFECT4"}
 				],
-				cost = {otherworld = 10, gold = 6000},
+				cost = {otherworld = 10, gold = 4000},
 				},
 		}
 	},
@@ -574,17 +574,17 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/rilu_armor_2.png",
 #				lvldesc = [{effect = "ARMOR_RILU_EFFECT2"}],
-				cost = {chitine = 5, gold = 1250},
+				cost = {chitine = 5, gold = 750},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rilu_armor_3.png",
 #				lvldesc = [{effect = "ARMOR_RILU_EFFECT3"}],
-				cost = {scales = 5, gold = 4500},
+				cost = {scales = 5, gold = 2500},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rilu_armor_4.png",
 #				lvldesc = [{effect = "ARMOR_RILU_EFFECT4"}],
-				cost = {otherworld = 3, gold = 7500},
+				cost = {otherworld = 3, gold = 4500},
 				},
 		}
 	},
@@ -615,7 +615,7 @@ var hero_items_data = {
 					{skill = 'SKILLBLESS', effect = "WEAPON_IOLA1_EFFECT1"},
 					{skill = 'SKILLSMASH', effect = "WEAPON_IOLA1_EFFECT2"}
 				],
-				cost = {chitine = 8, gold = 1000},
+				cost = {chitine = 8, gold = 600},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_3.png",
@@ -624,7 +624,7 @@ var hero_items_data = {
 					{skill = 'SKILLSMASH', effect = "WEAPON_IOLA1_EFFECT2"},
 					{skill = 'SKILLCLEANSING', effect = "WEAPON_IOLA1_EFFECT3"}
 				],
-				cost = {scales = 10, gold = 3000},
+				cost = {scales = 10, gold = 2000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_weapon1_4.png",
@@ -634,7 +634,7 @@ var hero_items_data = {
 					{skill = 'SKILLCLEANSING', effect = "WEAPON_IOLA1_EFFECT3"},
 					{skill = 'SKILLSANCTUARY', effect = "WEAPON_IOLA1_EFFECT4"}
 				],
-				cost = {otherworld = 9, gold = 5000},
+				cost = {otherworld = 9, gold = 3000},
 				},
 		}
 	},
@@ -657,7 +657,7 @@ var hero_items_data = {
 				lvldesc = [
 					{skill = 'SKILLBARRIER', effect = "WEAPON_IOLA2_EFFECT1"}
 				],
-				cost = {wood = 1, gold = 500},
+				cost = {wood = 1, gold = 300},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_2.png",
@@ -665,7 +665,7 @@ var hero_items_data = {
 					{skill = 'SKILLBARRIER', effect = "WEAPON_IOLA2_EFFECT1"},
 					{skill = 'SKILLGUSTOFWIND', effect = "WEAPON_IOLA2_EFFECT2"}
 				],
-				cost = {metal = 10, gold = 2000},
+				cost = {metal = 10, gold = 1200},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_3.png",
@@ -674,7 +674,7 @@ var hero_items_data = {
 					{skill = 'SKILLGUSTOFWIND', effect = "WEAPON_IOLA2_EFFECT2"},
 					{skill = 'SKILLCLEANSING', effect = "WEAPON_IOLA2_EFFECT3"}
 				],
-				cost = {leather = 10, gold = 4500},
+				cost = {leather = 10, gold = 2500},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_weapon2_4.png",
@@ -684,7 +684,7 @@ var hero_items_data = {
 					{skill = 'SKILLCLEANSING', effect = "WEAPON_IOLA2_EFFECT3"},
 					{skill = 'SKILLPURGE', effect = "WEAPON_IOLA2_EFFECT4"}
 				],
-				cost = {otherworld = 10, gold = 8000},
+				cost = {otherworld = 10, gold = 5000},
 				},
 		}
 	},
@@ -700,17 +700,17 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/iola_armor_2.png",
 #				lvldesc = [{effect = "ARMOR_IOLA_EFFECT2"}],
-				cost = {metal = 10, gold = 700},
+				cost = {metal = 10, gold = 400},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/iola_armor_3.png",
 #				lvldesc = [{effect = "ARMOR_IOLA_EFFECT3"}],
-				cost = {leather = 10, gold = 3000},
+				cost = {leather = 10, gold = 2000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/iola_armor_4.png",
 #				lvldesc = [{effect = "ARMOR_IOLA_EFFECT4"}],
-				cost = {demonic = 10, gold = 7000},
+				cost = {demonic = 10, gold = 4000},
 				},
 		}
 	},
@@ -741,7 +741,7 @@ var hero_items_data = {
 					{skill = 'SKILLFIRE_BOLT', effect = "WEAPON_ROSE1_EFFECT1"},
 					{effect = "WEAPON_ROSE1_EFFECT2"}
 				],
-				cost = {stone = 10, gold = 1000},
+				cost = {stone = 10, gold = 600},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_3.png",
@@ -750,7 +750,7 @@ var hero_items_data = {
 					{effect = "WEAPON_ROSE1_EFFECT2"},
 					{skill = 'SKILLFLASH', effect = "WEAPON_ROSE1_EFFECT3"},
 				],
-				cost = {scales = 6, gold = 5000},
+				cost = {scales = 6, gold = 3000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rose_weapon1_4.png",
@@ -760,7 +760,7 @@ var hero_items_data = {
 					{skill = 'SKILLFLASH', effect = "WEAPON_ROSE1_EFFECT3_4"},
 					{skill = 'SKILLEXPLOSION', effect = "WEAPON_ROSE1_EFFECT4"}
 				],
-				cost = {demonic = 4, gold = 8000},
+				cost = {demonic = 4, gold = 5000},
 				},
 		}
 	},
@@ -781,7 +781,7 @@ var hero_items_data = {
 				lvldesc = [
 					{skill = 'SKILLRENEW', effect = "WEAPON_ROSE2_EFFECT1"}
 				],
-				cost = {wood = 1, gold = 500},
+				cost = {wood = 1, gold = 300},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_2.png",
@@ -789,7 +789,7 @@ var hero_items_data = {
 					{skill = 'SKILLRENEW', effect = "WEAPON_ROSE2_EFFECT1"},
 					{skill = 'SKILLDISPEL', effect = "WEAPON_ROSE2_EFFECT2"}
 				],
-				cost = {metal = 10, gold = 1500},
+				cost = {metal = 10, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_3.png",
@@ -798,7 +798,7 @@ var hero_items_data = {
 					{skill = 'SKILLDISPEL', effect = "WEAPON_ROSE2_EFFECT2"},
 					{skill = 'SKILLDELUGE', effect = "WEAPON_ROSE2_EFFECT3"}
 				],
-				cost = {scales = 5, gold = 4500},
+				cost = {scales = 5, gold = 2500},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rose_weapon2_4.png",
@@ -808,7 +808,7 @@ var hero_items_data = {
 					{skill = 'SKILLDELUGE', effect = "WEAPON_ROSE2_EFFECT3"},
 					{skill = 'SKILLPROTECT', effect = "WEAPON_ROSE2_EFFECT4"}
 				],
-				cost = {demonic = 10, gold = 7000},
+				cost = {demonic = 10, gold = 4000},
 				},
 		}
 	},
@@ -824,17 +824,17 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/rose_armor_2.png",
 #				lvldesc = [{effect = "ARMOR_ROSE_EFFECT2"}],
-				cost = {leather = 5, gold = 700},
+				cost = {leather = 5, gold = 400},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/rose_armor_3.png",
 #				lvldesc = [{effect = "ARMOR_ROSE_EFFECT3"}],
-				cost = {chitine = 10, gold = 3000},
+				cost = {chitine = 10, gold = 2000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/rose_armor_4.png",
 #				lvldesc = [{effect = "ARMOR_ROSE_EFFECT4"}],
-				cost = {demonic = 5, gold = 10000},
+				cost = {demonic = 5, gold = 6000},
 				},
 		}
 	},
@@ -865,7 +865,7 @@ var hero_items_data = {
 					{skill = 'SKILLCOMBO', effect = "WEAPON_EMBER1_EFFECT1"},
 					{skill = 'SKILLFIREPUNCH', effect = "WEAPON_EMBER1_EFFECT2"}
 				],
-				cost = {stone = 15, gold = 1000},
+				cost = {stone = 15, gold = 600},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_3.png",
@@ -874,7 +874,7 @@ var hero_items_data = {
 					{skill = 'SKILLFIREPUNCH', effect = "WEAPON_EMBER1_EFFECT2"},
 					{effect = "WEAPON_EMBER1_EFFECT3"}
 				],
-				cost = {chitine = 15, gold = 8000},
+				cost = {chitine = 15, gold = 5000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_weapon1_4.png",
@@ -884,7 +884,7 @@ var hero_items_data = {
 					{effect = "WEAPON_EMBER1_EFFECT3"},
 					{skill = 'SKILLEARTHQUAKE', effect = "WEAPON_EMBER1_EFFECT4"}
 				],
-				cost = {otherworld = 5, gold = 17000},
+				cost = {otherworld = 5, gold = 10000},
 				},
 		}
 	},
@@ -905,7 +905,7 @@ var hero_items_data = {
 				lvldesc = [
 					{skill = 'SKILLDEFEND', effect = "WEAPON_EMBER2_EFFECT1"}
 				],
-				cost = {stone = 15, gold = 500},
+				cost = {stone = 15, gold = 300},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_2.png",
@@ -913,7 +913,7 @@ var hero_items_data = {
 					{skill = 'SKILLDEFEND', effect = "WEAPON_EMBER2_EFFECT1"},
 					{skill = 'SKILLSHOCKWAVE', effect = "WEAPON_EMBER2_EFFECT2"}
 				],
-				cost = {chitine = 15, gold = 5000},
+				cost = {chitine = 15, gold = 3000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_3.png",
@@ -922,7 +922,7 @@ var hero_items_data = {
 					{skill = 'SKILLSHOCKWAVE', effect = "WEAPON_EMBER2_EFFECT2"},
 					{skill = 'SKILLDRAGON_PROTECTION', effect = "WEAPON_EMBER2_EFFECT3"}
 				],
-				cost = {scales = 10, gold = 10000},
+				cost = {scales = 10, gold = 6000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_weapon2_4.png",
@@ -932,7 +932,7 @@ var hero_items_data = {
 					{skill = 'SKILLDRAGON_PROTECTION', effect = "WEAPON_EMBER2_EFFECT3"},
 					{skill = 'SKILLAEGIS', effect = "WEAPON_EMBER2_EFFECT4"}
 				],
-				cost = {demonic = 10, gold = 15000},
+				cost = {demonic = 10, gold = 9000},
 				},
 		}
 	},
@@ -948,17 +948,17 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/ember_armor_2.png",
 #				lvldesc = [{effect = "ARMOR_EMBER_EFFECT2"}],
-				cost = {wood = 15, gold = 700},
+				cost = {wood = 15, gold = 300},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/ember_armor_3.png",
 #				lvldesc = [{effect = "ARMOR_EMBER_EFFECT3"}],
-				cost = {leather = 15, gold = 4000},
+				cost = {leather = 15, gold = 2500},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/ember_armor_4.png",
 #				lvldesc = [{effect = "ARMOR_EMBER_EFFECT4"}],
-				cost = {otherworld = 4, gold = 7500},
+				cost = {otherworld = 4, gold = 4500},
 				},
 		}
 	},
@@ -989,7 +989,7 @@ var hero_items_data = {
 					{skill = 'SKILLAARROW', effect = "WEAPON_ERIKA1_EFFECT1"},
 					{skill = 'SKILLFROST_ARROW', effect = "WEAPON_ERIKA1_EFFECT2"}
 				],
-				cost = {wood = 5, gold = 1500},
+				cost = {wood = 5, gold = 1000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_3.png",
@@ -998,7 +998,7 @@ var hero_items_data = {
 					{skill = 'SKILLFROST_ARROW', effect = "WEAPON_ERIKA1_EFFECT2"},
 					{skill = 'SKILLQSHOT', effect = "WEAPON_ERIKA1_EFFECT3"}
 				],
-				cost = {scales = 8, gold = 3000},
+				cost = {scales = 8, gold = 2000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_weapon1_4.png",
@@ -1008,7 +1008,7 @@ var hero_items_data = {
 					{skill = 'SKILLQSHOT', effect = "WEAPON_ERIKA1_EFFECT3"},
 					{skill = 'SKILLHEARTSEEKER', effect = "WEAPON_ERIKA1_EFFECT4"}
 				],
-				cost = {otherworld = 10, gold = 8000},
+				cost = {otherworld = 10, gold = 5000},
 				},
 		}
 	},
@@ -1029,7 +1029,7 @@ var hero_items_data = {
 				lvldesc = [
 					{skill = 'SKILLQSHOT', effect = "WEAPON_ERIKA2_EFFECT1"}
 				],
-				cost = {wood = 1, gold = 500},
+				cost = {wood = 1, gold = 300},
 				},
 			2:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_2.png",
@@ -1037,7 +1037,7 @@ var hero_items_data = {
 					{skill = 'SKILLQSHOT', effect = "WEAPON_ERIKA2_EFFECT1"},
 					{skill = 'SKILLARR_SHOWER', effect = "WEAPON_ERIKA2_EFFECT2"}
 				],
-				cost = {leather = 10, gold = 3000},
+				cost = {leather = 10, gold = 2000},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_3.png",
@@ -1046,7 +1046,7 @@ var hero_items_data = {
 					{skill = 'SKILLARR_SHOWER', effect = "WEAPON_ERIKA2_EFFECT2"},
 					{skill = 'SKILLNAT_BLESS', effect = "WEAPON_ERIKA2_EFFECT3"}
 				],
-				cost = {chitine = 10, gold = 5000},
+				cost = {chitine = 10, gold = 3000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_weapon2_4.png",
@@ -1056,7 +1056,7 @@ var hero_items_data = {
 					{skill = 'SKILLNAT_BLESS', effect = "WEAPON_ERIKA2_EFFECT3"},
 					{skill = 'SKILLCHARM', effect = "WEAPON_ERIKA2_EFFECT4"}
 				],
-				cost = {otherworld = 5, gold = 7000},
+				cost = {otherworld = 5, gold = 4000},
 				},
 		}
 	},
@@ -1072,17 +1072,17 @@ var hero_items_data = {
 			2:{
 				icon = "res://assets/images/iconsgear/erika_armor_2.png",
 #				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT2"}],
-				cost = {wood = 10, gold = 700},
+				cost = {wood = 10, gold = 400},
 				},
 			3:{
 				icon = "res://assets/images/iconsgear/erika_armor_3.png",
 #				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT3"}],
-				cost = {metal = 10, gold = 3000},
+				cost = {metal = 10, gold = 2000},
 				},
 			4:{
 				icon = "res://assets/images/iconsgear/erika_armor_4.png",
 #				lvldesc = [{effect = "ARMOR_ERIKA_EFFECT4"}],
-				cost = {demonic = 10, gold = 6000},
+				cost = {demonic = 10, gold = 3500},
 				},
 		}
 	},
