@@ -1455,7 +1455,7 @@ func mark_skill_targets():
 func reset_all_highlight():
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
-	if activecharacter:
+	if activecharacter and !activecharacter.acted:
 		activecharacter.displaynode.highlight_active()
 	cur_displaynode = null
 
