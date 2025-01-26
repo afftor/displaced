@@ -2,7 +2,9 @@ extends Node
 
 # warning-ignore-all:warning-id
 
-const gameversion = '0.1 Alpha'
+const gameversion = '1.0'
+var release_steam = false
+var release_demo = false
 var opened_gallery = false
 
 #const worker = preload("res://files/scripts/worker.gd");
