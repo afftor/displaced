@@ -1108,7 +1108,7 @@ var TranslationDict = {
 
 	
 #	CREDITS_TEXT = "[center]Заглушка для титров[/center]",
-	CREDITS_BUTTON = "Спасибо",
+	CREDITS_BUTTON = "Закрыть",
 	L_EN = "En",
 	L_RU = "Ru",
 	

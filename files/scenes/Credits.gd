@@ -64,6 +64,7 @@ func show_credits() -> void:
 		bg.modulate.a = 0.0
 	cur_char_num = 0
 	old_char_num = 1
+	input_handler.SetMusic("outro")
 	chars[cur_char_num].modulate.a = 1.0
 	chars[cur_char_num].texture = null
 	char_timer = 0
@@ -147,12 +148,17 @@ func read_credits_text():
 	var content = []
 	file.open("res://localization/credits/%s.csv" % TranslationServer.get_locale(), File.READ)
 	while file.get_position() < file.get_len():
-		content.append(file.get_line().split(","))
+		content.append(file.get_line().split("|"))
 	file.close()
 	
 	credits_text = "[center]"
 	for line in content:
-		credits_text += "%s\n%s\n\n\n\n" % [line[0], line[1]]
+		credits_text += "[color=yellow]%s[/color]" % [line[0]]
+		var counter = 0
+		while line.size() > (counter+1):
+			credits_text += "\n%s" % [line[counter+1]]
+			counter += 1
+		credits_text += "\n\n\n\n"
 	credits_text += "[/center]"
 
 func next_bg():

@@ -37,6 +37,7 @@ func _ready():
 	
 	
 	resources.preload_res("music/intro")
+	resources.preload_res("music/outro")
 	
 	var preload_screen = $preload_screen
 	if resources.is_busy():
@@ -57,6 +58,7 @@ func continueb():
 
 func newgame():
 	difficulty_node.show()
+	difficulty_node.get_node("TextureRect/Label").bbcode_text = tr("NEWGAMEDIFFICULTY")
 
 func start_newgame(difficulty):
 	difficulty_node.hide()

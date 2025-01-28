@@ -90,16 +90,15 @@ texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
 
 [node name="creditsbutton" type="Button" parent="VBoxContainer"]
-visible = false
 margin_top = 304.0
 margin_right = 600.0
 margin_bottom = 334.0
 text = "Credits"
 
 [node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 304.0
+margin_top = 342.0
 margin_right = 600.0
-margin_bottom = 372.0
+margin_bottom = 410.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 12 )
@@ -162,14 +161,15 @@ margin_bottom = 130.0
 texture = ExtResource( 25 )
 expand = true
 
-[node name="Label" type="Label" parent="difficulty_ask/TextureRect"]
+[node name="Label" type="RichTextLabel" parent="difficulty_ask/TextureRect"]
 margin_left = 49.0
 margin_top = 58.0
 margin_right = 416.0
 margin_bottom = 162.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "NEWGAMEDIFFICULTY"
 text = "NEWGAMEDIFFICULTY"
-align = 1
 
 [node name="Normal" type="TextureButton" parent="difficulty_ask/TextureRect"]
 margin_left = 41.0
