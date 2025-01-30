@@ -144,20 +144,13 @@ func _process(delta):
 			next_char()
 
 func read_credits_text():
-	var file = File.new()
-	var content = []
-	file.open("res://localization/credits/%s.csv" % TranslationServer.get_locale(), File.READ)
-	while file.get_position() < file.get_len():
-		content.append(file.get_line().split("|"))
-	file.close()
+	var content = load("res://localization/credits/%s.gd" % TranslationServer.get_locale()).new()
 	
 	credits_text = "[center]"
-	for line in content:
-		credits_text += "[color=yellow]%s[/color]" % [line[0]]
-		var counter = 0
-		while line.size() > (counter+1):
-			credits_text += "\n%s" % [line[counter+1]]
-			counter += 1
+	for block in content.credits:
+		credits_text += "[color=yellow]%s[/color]" % [block.role]
+		for line in block.performer:
+			credits_text += "\n%s" % [line]
 		credits_text += "\n\n\n\n"
 	credits_text += "[/center]"
 
