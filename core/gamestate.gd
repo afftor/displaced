@@ -543,6 +543,7 @@ func deserialize(tmp:Dictionary):
 	else:
 		input_handler.curtains.hide_anim(variables.CURTAIN_SCENE)
 #	input_handler.map_node.update_map()
+	set_difficulty(int(difficulty))#parse_json() considers it to be float
 
 func remove_hero(id):
 	if !heroes.has(id): return
