@@ -1455,7 +1455,7 @@ func mark_skill_targets():
 func reset_all_highlight():
 	for nd in battlefieldpositions.values():
 		nd.stop_highlight()
-	if activecharacter and !activecharacter.acted:
+	if is_decision_in_making():
 		activecharacter.displaynode.highlight_active()
 	cur_displaynode = null
 
@@ -2236,7 +2236,7 @@ func start_mouse_presence(pos :int):
 	if mouse_presence_on_pos != pos:
 		return
 	var fighter = battlefield[pos]
-	if !fighter or fighter.defeated:
+	if !fighter or fighter.defeated or !is_decision_in_making():
 		mouse_presence_on_pos = -1
 		return
 	
@@ -2352,3 +2352,7 @@ func hide():
 func can_hide():
 	return false
 #--------------------
+
+#player choosing an action
+func is_decision_in_making():
+	return activecharacter and !activecharacter.acted
