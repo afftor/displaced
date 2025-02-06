@@ -139,6 +139,11 @@ func PressSaveGame():
 		if editor.text.empty():
 			input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("NOSAVENAMENOTE")])
 			return
+		var all_chars = editor.get_font("font").get_available_chars()
+		for letter in editor.text:
+			if !(letter in all_chars):
+				input_handler.get_spec_node(input_handler.NODE_NOTIFICATION, [tr("WRONGLETTERNOTE")])
+				return
 		cur_save.set_meta("save_name", editor.text)
 		SaveGame()
 	else:
