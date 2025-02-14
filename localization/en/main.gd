@@ -485,6 +485,7 @@ var TranslationDict = {
 	#notes
 	NOSAVENAMENOTE = "Please, type a name for save file!",
 	REBOOTNOTE = "Please, restart the game so changes could take place.",
+	WRONGLETTERNOTE = "Some letters can't be depicted. Please, type name in English or game's current language!",
 
 	#unlocks
 	UNLOCKMATERIAL = "New material unlocked!\nYou can now trade it on the market.",
