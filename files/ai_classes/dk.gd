@@ -4,6 +4,7 @@ extends ai_base
 func get_skill_list():
 	var skill_list :Array = app_obj.get_skills()
 	if app_obj.has_status('execute_charged'):
+		skill_list = skill_list.duplicate()
 		skill_list.append('dk_execute')
 	return skill_list
 
