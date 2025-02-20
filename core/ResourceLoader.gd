@@ -22,13 +22,16 @@ const RES_ROOT = {
 #NUDE_DEMO and CENSORED_DEMO have no endgame, but have nudes.
 #NUDE and CENSORED are most completed releases: they have endgame folder, endgame nudes
 # and demo nudes.
+#RILULESS same as NUDE, but with no Rilu's nudes
 #For all nude releases there are two folder for nudes:
 # one that need to be censored (r_cens or r_uncen), and one with no such need (r_nude)
 # thus used in both "censored" and "nude" releases.
 #Complete folder list:
-#r_uncen - uncensored endgame nudes
-#r_cens - censored endgame nudes
-#r_nude - endgame nudes used in both censored and uncensored releases
+#r_uncen - uncensored endgame nudes, without Rilu's
+#r_rilu_uc - uncensored Rilu's endgame nudes
+#r_cens - censored endgame nudes, including Rilu's
+#r_nude - endgame nudes used in both censored and uncensored releases, without Rilu's
+#r_rilu_nu - Rilu's endgame nudes used in both censored and uncensored releases
 #r_uncen_d - uncensored demo nudes used also in full release
 #r_cens_d - censored demo nudes used also in full release
 #r_nude_d - nudes used in all censored and uncensored, demo and full releases
@@ -37,11 +40,12 @@ const RES_ROOT = {
 #Mind the order! First to exist will be loaded
 onready var RES_RELEASE_PRIOR = {
 	variables.R_NUDE_DEMO : ["/r_uncen_d", "/r_nude_d", ""],
-	variables.R_NUDE : ["/r_uncen", "/r_nude", "/r_uncen_d", "/r_nude_d", "/r_full", ""],
+	variables.R_NUDE : ["/r_uncen", "/r_rilu_uc", "/r_nude", "/r_rilu_nu", "/r_uncen_d", "/r_nude_d", "/r_full", ""],
+	variables.R_RILULESS : ["/r_uncen", "/r_nude", "/r_uncen_d", "/r_nude_d", "/r_full", ""],
 	variables.R_BORING_DEMO : [""],
 	variables.R_BORING : ["/r_full", ""],
 	variables.R_CENSORED_DEMO : ["/r_cens_d", "/r_nude_d", ""],
-	variables.R_CENSORED : ["/r_cens", "/r_nude", "/r_cens_d", "/r_nude_d", "/r_full", ""],
+	variables.R_CENSORED : ["/r_cens", "/r_nude", "/r_rilu_nu", "/r_cens_d", "/r_nude_d", "/r_full", ""],
 }
 #HINT on export templates: list of exclusions for certain release is list of all folders,
 # excluding corresponding list from RES_RELEASE_PRIOR
@@ -117,6 +121,7 @@ func determine_release_type():
 			release = variables.R_NUDE_DEMO
 		elif (OS.has_feature(variables.feat_boring)
 			or OS.has_feature(variables.feat_cens)
+			or OS.has_feature(variables.feat_riluless)
 		):
 			release = variables.R_NUDE
 	elif OS.has_feature(variables.feat_nude_demo):
@@ -129,6 +134,8 @@ func determine_release_type():
 		release = variables.R_CENSORED_DEMO
 	elif OS.has_feature(variables.feat_cens):
 		release = variables.R_CENSORED
+	elif OS.has_feature(variables.feat_riluless):
+		release = variables.R_RILULESS
 
 func has_nude_patch() ->bool:
 	return nude_patch_loaded
