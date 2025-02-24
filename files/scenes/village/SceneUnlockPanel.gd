@@ -15,6 +15,7 @@ const char_sprites = {
 	iola = 'iola',
 	rilu = 'rilu'
 }
+var btn_list = ['rose', 'ember', 'erika', 'iola']#'rilu' added in _ready()
 
 
 export var test_mode = false
@@ -31,6 +32,12 @@ func _ready():
 		ch.set_meta('hero', cid)
 		ch.connect('pressed', self, 'select_hero', [cid])
 		if char_sprites.has(cid): resources.preload_res("animated_sprite/%s" % char_sprites[cid])
+	#move it to open(), if button would appear where shouldn't
+	if globals.is_riluless_type():
+		charlist.get_node('rilu').hide()
+	else:
+		btn_list.append('rilu')
+	
 	if test_mode:
 		testmode()
 		if resources.is_busy(): yield(resources, "done_work")
@@ -52,7 +59,7 @@ func open():
 	if globals.is_boring_type(): return
 	
 	var def_char = null
-	for ch_id in ['rose', 'ember', 'erika', 'iola', 'rilu']:
+	for ch_id in btn_list:
 		var ch = charlist.get_node(ch_id)
 		if state.heroes[ch_id].unlocked:
 			ch.visible = true
@@ -112,7 +119,7 @@ func _get_scenes_to_show() -> Dictionary:
 	for scene_id in Explorationdata.scene_sequences:
 		var scene_data = Explorationdata.scene_sequences[scene_id]
 		if !scene_data.has('gallery'): continue
-		if scene_data.has('forced_content') and !globals.globalsettings.forced_content: continue
+		if scene_data.has('permit_reqs') and !state.checkreqs(scene_data.permit_reqs): continue
 
 		var scene_characters = scene_data.unlock_price.keys()
 		if selected_char != 'all' and !(selected_char in scene_characters): continue

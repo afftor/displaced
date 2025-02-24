@@ -325,10 +325,14 @@ func valuecheck(dict):
 			if dict.has("value"):
 				return globals.globalsettings.forced_content == dict.value
 			return globals.globalsettings.forced_content
-		"release_steam":
+		"release_boring":
 			if dict.has("value"):
 				return globals.is_boring_type() == dict.value
 			return globals.is_boring_type()
+		"release_riluless":
+			if dict.has("value"):
+				return globals.is_riluless_type() == dict.value
+			return globals.is_riluless_type()
 		"release_demo":
 			if dict.has("value"):
 				return globals.is_demo_type() == dict.value

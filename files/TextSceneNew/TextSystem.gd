@@ -1069,7 +1069,7 @@ func tag_if(type :String, value :String, true_pos :String, false_pos :String) ->
 	elif type == "FORCEDCONTENT":
 		#value in this case irrelevant
 		success = globals.globalsettings.forced_content
-	elif type == "RELEASESTEAM":
+	elif type == "RELEASEBORING":
 		#value in this case irrelevant
 		success = globals.is_boring_type()
 	else:

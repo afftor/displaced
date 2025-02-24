@@ -51,9 +51,9 @@ var event_triggers = {#reworked to same syntax as seqs
 	],
 	erika_annet_2_1 = [
 		{type = 'scene', value = 'erika_annet_2_2',
-			reqs = [{type = 'forced_content'}, {type = 'release_steam', value = false}]},
+			reqs = [{type = 'forced_content'}, {type = 'release_boring', value = false}]},
 		{type = 'system', value = 'enable_character', arg = ['erika', false]}
-			#reqs = [{type = 'forced_content', value = false}, {type = 'release_steam'}]
+			#reqs = [{type = 'forced_content', value = false}, {type = 'release_boring'}]
 	],
 	erika_annet_2_2 = [
 		{type = 'force_seq_seen', value = 'erika_annet'},
@@ -613,7 +613,7 @@ var scene_sequences = {
 	
 	
 	#Gallery scenes
-	#params 'gallery' and 'forced_content' can't be false. If they are, they true
+	#param 'gallery' can't be false. Script checks it's existence
 	ember_boobs = {
 		name = "GALLERY_EMBER_BOOBS",
 		descript = "",
@@ -707,6 +707,7 @@ var scene_sequences = {
 		preview = 'rilu_cowgirl',
 		unlock_price = {rilu = 50},
 		initiate_reqs = [],
+		permit_reqs = [{type = 'release_riluless', value = false}],
 		actions = [{type = 'scene', value = 'rilu_1_6'}]
 	},
 	rilu_doggy = {
@@ -715,6 +716,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'rilu_doggy',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_cowgirl'}],
+		permit_reqs = [{type = 'release_riluless', value = false}],
 		unlock_price = {rilu = 125},
 		actions = [{type = 'scene', value = 'rilu_2_1'}]
 	},
@@ -724,6 +726,7 @@ var scene_sequences = {
 		gallery = true,
 		preview = 'rilu_anal',
 		initiate_reqs = [{type = 'seq_seen', value = 'rilu_doggy'}],
+		permit_reqs = [{type = 'release_riluless', value = false}],
 		unlock_price = {rilu = 150},
 		actions = [{type = 'scene', value = 'rilu_2_2'}]
 	},
@@ -767,10 +770,10 @@ var scene_sequences = {
 		name = "GALLERY_ROSE_FOREST",
 		descript = "",
 		gallery = true,
-		forced_content = true,
 		auto_unlocked = true,
 		preview = 'rose_forest',
 		initiate_reqs = [{type = 'scene_seen', value = 'faery_queen_1_b'}],
+		permit_reqs = [{type = 'forced_content'}],
 		unlock_price = {rose = 200},
 		actions = [{type = 'scene', value = 'rose_forest_clone'}]
 	},
@@ -778,10 +781,10 @@ var scene_sequences = {
 		name = "GALLERY_ERIKA_ANNET",
 		descript = "",
 		gallery = true,
-		forced_content = true,
 		auto_unlocked = true,
 		preview = 'erika_annet',
 		initiate_reqs = [{type = 'scene_seen', value = 'erika_annet_2_1'}],
+		permit_reqs = [{type = 'forced_content'}],
 		unlock_price = {erika = 200},
 		actions = [{type = 'scene', value = 'erika_annet_clone'}]
 	},

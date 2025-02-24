@@ -43,6 +43,7 @@ func update_pending_scenes():
 	for scene_id in Explorationdata.scene_sequences:
 		var scene_data = Explorationdata.scene_sequences[scene_id]
 		if !scene_data.has("gallery"): continue
+		if scene_data.has('permit_reqs') and !state.checkreqs(scene_data.permit_reqs): continue
 		
 		var reqs_fullfilled = state.checkreqs(scene_data.initiate_reqs)
 		

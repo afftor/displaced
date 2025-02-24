@@ -3,8 +3,6 @@ extends Node
 # warning-ignore-all:warning-id
 
 const gameversion = '1.0'
-var release_steam = false
-var release_demo = false
 var opened_gallery = false
 
 #const worker = preload("res://files/scripts/worker.gd");
@@ -829,20 +827,30 @@ func is_censored_by_feature() ->bool:
 	return (OS.has_feature(variables.feat_cens)
 		or OS.has_feature(variables.feat_cens_demo))
 
+func is_riluless_type() -> bool:
+	return resources.release == variables.R_RILULESS
+
+func is_riluless_by_feature() ->bool:
+	return OS.has_feature(variables.feat_riluless)
+
 func get_release_type():
 	return resources.release
 
 func get_game_version() ->String:
 	var res = gameversion
 	if is_boring_type():
-		res += " Steam"
+		res += " Boring"
 	elif is_boring_by_feature():
-		#not steam_type but with feature
-		res += " Patched-Steam"
+		#not boring_type but with feature
+		res += " Patched-Boring"
 	if is_censored_type():
 		res += " Censored"
 	elif is_censored_by_feature():
 		res += " Patched-Censored"
+	if is_riluless_type():
+		res += " Steam"
+	elif is_riluless_by_feature():
+		res += " Patched-Steam"
 	if is_demo_type():
 		res += " Demo"
 	return res
