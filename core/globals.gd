@@ -2,7 +2,7 @@ extends Node
 
 # warning-ignore-all:warning-id
 
-const gameversion = '1.0'
+const gameversion = '1.0.2'
 var release_steam = false
 var release_demo = false
 var opened_gallery = false
