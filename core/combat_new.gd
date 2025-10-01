@@ -1333,6 +1333,8 @@ func FinishCombat(victorious :bool, do_advance :bool = false):
 		ch.displaynode = null
 		ch.clear_traits()
 		ch.clean_effects()#in fact, that shouldn't be necessary, as all effects must stop themselfs, still to be safe
+		if !ch.bonuses.empty():
+			print("%s's bonuses are not empty, which may signify an error. We recommend to send us your save-file for consideration!" % ch.name)
 	
 	for pos in variables.enemyparty:
 		if battlefield[pos] == null: continue
@@ -2214,6 +2216,7 @@ func update_buffs():
 
 
 func add_bonus(party, b_rec:String, value, revert = false):
+	#MIND, that '_mul' modifier here works differently from combatant's add_bonus()!
 	if value == 0: return
 	if aura_bonuses[party].has(b_rec):
 		if revert:

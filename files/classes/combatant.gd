@@ -152,13 +152,9 @@ func add_bonus(b_rec:String, value, revert = false):
 	#Mind it while working with `revert` flag!
 	
 	#classification
-	var BTYPE = {ADD = 0, MUL = 1, PART = 2}
+	var BTYPE = {ADD = 0, MUL = 1}
 	var bonus_type :int = -1
-	if b_rec.ends_with('_part'):#all _part thing is for add_part_stat(), which should be refactored down to mul_stat() someday
-		bonus_type = BTYPE.PART
-		b_rec = b_rec.trim_suffix("_part")
-		b_rec += '_mul'
-	elif b_rec.ends_with('_mul'):
+	if b_rec.ends_with('_mul'):
 		bonus_type = BTYPE.MUL
 	elif b_rec.ends_with('_add'):
 		bonus_type = BTYPE.ADD
@@ -188,14 +184,10 @@ func add_bonus(b_rec:String, value, revert = false):
 			if bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
 		elif bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
 	else:
-		if bonus_type == BTYPE.PART:
-			if revert: bonuses[b_rec] = 1.0 - value
-			else: bonuses[b_rec] = 1.0 + value
-		else: bonuses[b_rec] = value
+		bonuses[b_rec] = value
 	
 	#hpmax change reaction
 	if statname == 'hpmax':
-		assert(bonus_type != BTYPE.PART, "avoid using stat_add_p atomic effect with hpmax!")
 		var new_hp
 		if revert:
 			if bonus_type == BTYPE.MUL: new_hp = hp / value
@@ -230,12 +222,13 @@ func mul_stat(statname, value, revert = false):
 	recheck_effect_tag('recheck_stats')
 
 func add_part_stat(statname, value, revert = false):
-	if variables.direct_access_stat_list.has(statname):
-		if revert: set(statname, get(statname) / (1.0 + value))
-		else: set(statname, get(statname) * (1.0 + value))
-	else:
-		add_bonus(statname+'_part', value, revert)
-	recheck_effect_tag('recheck_stats')
+	#stat_add_p needed in cases, when math returns "+0.5" insted of "*1.5",
+	#full refactoring is risky past the point of release, but bonuses are already
+	#works only with "_mul" concept. So I'm make this patch, duplicating "_mul"
+	#instead of old "_part" logic. Also because there was a bug with "_part"
+	#modifier being added to "_mul" bonus container
+	var mul_value = 1.0 + value
+	mul_stat(statname, mul_value, revert)
 
 func add_temporal_shield(value, temporal_id :String):
 	if !temporal_shields.has(temporal_id):
@@ -443,7 +436,7 @@ func apply_atomic(template):
 			set(template.stat, template.value)
 		'stat_add':
 			add_stat(template.stat, template.value)
-		'stat_mul':#do not mix add_p and mul for the sake of logic
+		'stat_mul':#do not mix add_p and mul for the sake of logic (old comment, obsolete?)
 			mul_stat(template.stat, template.value)
 		'stat_add_p':
 			add_part_stat(template.stat, template.value)
